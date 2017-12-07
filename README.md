@@ -8,7 +8,7 @@ In order for a contribution to be considered, the following conditions must be m
 
 * `ng lint` should result in `All files pass linting`
     * note: for purposes of aot compilation, strict null checking has been enabled
-* `ng test` and `ng e2e` should result in all tests passing
+* `ng test` should result in all tests passing
 *  New components and directives must be accompanied by a component demonstrating the functionality. This component should be added to the demo app's routes
 * New components and directives must be accompanied by unit tests demonstrating that it functions as intended. 
 * The component should adhere to the Health Catalyst style 
@@ -39,8 +39,3 @@ Run `ng serve` to begin serving the demo application on port 4200
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
