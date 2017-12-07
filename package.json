@@ -12,6 +12,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "test-single-run": "ng test --single-run",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "package": "node build.js",
