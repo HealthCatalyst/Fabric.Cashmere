@@ -79,7 +79,7 @@ function removeModuleId(content) {
     return content.replace(/\s*moduleId:\s*module\.id\s*,?\s*/gm, '');
 }
 
-glob('./stage/**/*.ts', function(err, matches) {
+glob('./lib/**/*.ts', function(err, matches) {
     for (let match of matches) {
         var code = fs.readFileSync(match, { encoding: 'utf-8' });
         var urlResolverFn = function(url) {

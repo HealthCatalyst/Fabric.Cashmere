@@ -36,6 +36,7 @@ testem.log
 /publish
 /build
 /stage
+/lib
 
 # e2e
 /e2e/*.js

@@ -5,13 +5,13 @@ const chalk = require('chalk');
 
 const PACKAGE = `cashmere`;
 const NPM_DIR = `dist`;
-const STAGE = `stage`;
+const STAGE = `lib`;
 const SOURCE = `src/app/lib`;
 const ESM2015_DIR = `${NPM_DIR}/esm2015`;
 const ESM5_DIR = `${NPM_DIR}/esm5`;
 const BUNDLES_DIR = `${NPM_DIR}/bundles`;
 const OUT_DIR_ESM5 = `${NPM_DIR}/package/esm5`;
-const GLOBAL_SCSS = `stage/colors.scss`;
+const GLOBAL_SCSS = `lib/colors.scss`;
 
 shell.echo(`Start building...`);
 
@@ -29,14 +29,14 @@ if (shell.cp('-R', `${SOURCE}/*`, STAGE).code !== 0) {
 shell.echo(chalk.green(`Stage Directory Created`));
 
 /* Compile sass */
-if (shell.exec(`node-sass ./stage -o ./stage`).code !== 0) {
+if (shell.exec(`node-sass ./lib -o ./lib`).code !== 0) {
     shell.echo(chalk.red(`Sass compilation failed`));
     shell.exit(1);
 }
 shell.echo(chalk.green(`Sass compiled successfully`));
 
 /* Replace .scss with .css in component.ts files */
-shell.ls('stage/**/*.component.ts').forEach(function(file) {
+shell.ls('lib/**/*.component.ts').forEach(function(file) {
     shell.sed('-i', '.scss', '.css', file);
 });
 shell.echo(chalk.green(`.scss replaced with .css successfully`));
