@@ -1,0 +1,66 @@
+.sample-buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 65%;
+}
+pre code {
+    background-color: rgba(0,0,0,.03);
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+  }
+  
+  code {
+      font-size: 120%;
+      line-height: 140%;
+  }
+  
+  pre {
+      margin: 0;
+  }
+  
+  .codeToggle {
+      padding-top: 15px;
+      padding-bottom: 0px;			
+  }
+  
+  .toggleOptionOff {
+      width: 180px;
+      padding-bottom: 8px;
+      text-align: center;
+      display: inline-block;
+      cursor: pointer;
+  }
+  
+  .toggleOptionOn {
+      width: 180px;
+      padding-bottom: 8px;
+      text-align: center;
+      display: inline-block;
+      border-bottom: 3px solid #00aeff;
+  }
+  
+  .apiTable {
+      table-layout: auto;
+      word-break: normal;
+      font-size: 13px;
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 740px;
+      table-layout: fixed;
+  }
+  
+  .parameters > tbody > tr > td {
+      border-bottom: 1px dashed #e0e0e0;
+      padding-top: 1em;
+      padding-bottom: 1em;
+  }
+  
+  .parameters {
+      min-width: 903px;
+  }
+  .parameters span {
+      color: #959595;
+      display: block;
+      font-size: 11px;
+  }

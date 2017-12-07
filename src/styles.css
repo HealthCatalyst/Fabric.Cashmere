@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    max-width: 1540px;
+    background-color: #021D30;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.demo-page{
+    padding: 20px;
+    max-height: 94%;
+    overflow-y: auto;
+}

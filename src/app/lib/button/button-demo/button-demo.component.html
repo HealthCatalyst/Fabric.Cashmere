@@ -1,0 +1,136 @@
+<div class="demo-page">
+  <h2 style="margin: 0">Buttons</h2>
+  <h4 style="font-weight: 300; margin-top: 0">Buttons communicate the action that will occur when the user touches them.</h4>
+  <h5>
+    Primary Buttons
+  </h5>
+  <div class="sample-buttons">
+    <hc-button [options]="primaryButton1Options"></hc-button>
+    <hc-button [options]="primaryButton2Options"></hc-button>
+    <hc-button [options]="primaryButton3Options"></hc-button>
+    <hc-button [options]="primaryButton4Options"></hc-button>
+  </div>
+  <h5>
+    Secondary Buttons
+  </h5>
+  <hc-button [options]="secondaryButtonOptions"></hc-button>
+  <h5>
+    Disabled Buttons
+  </h5>
+  <hc-button [options]="disabledButtonOptions"></hc-button>
+  <h5>
+    Tertiary Buttons
+  </h5>
+  <hc-button [options]="tertiaryButtonOptions"></hc-button>
+  <br>
+  <br>
+  <hr style="height:1px;border:none;background-color:#E5E5E5;">
+  <br>
+
+  <p class="description">
+    <b>Color Variations</b>
+    <br>Above are all acceptable colors and their active states. Green should be used for most cases and especially cases the
+    action is positve or in agreement. For negative actions use red. The purple and gray variations should be used only in
+    cases where more colors are needed or if they are being placed on backgrounds which green doesn’t contrast well enough.
+    Icons, if needed, should match text color of the button.</p>
+  <br>
+  <p class="description">
+    <b>Usage</b>
+    <br>Generally, there should only be one primary button per page. All other interactive items should either be secondary buttons
+    or text links. A few scenarios in which there would be multiple primary buttons: a modal with both an “accept” and “decline”
+    action, a page who’s content are non related and each content section have disparate actions associated with them. For
+    modals the preference is one primary button and a cancel action set as a text link. Below are some examples of buttons
+    usage.
+  </p>
+
+  <br>
+  <hr style="height:1px;border:none;background-color:#E5E5E5;">
+  <br>
+
+  <div class="headerName">Angular Component</div>
+  <br>
+  <div id="HTML" *ngIf="showTemplate">
+    <div class="codeToggle">
+      <span class="toggleOptionOn" (click)="viewToggle('html')">HTML</span>
+      <span class="toggleOptionOff" (click)="viewToggle('ts')">TypeScript</span>
+    </div>
+    <pre><code>&#x3C;hc-button
+	[options]=&#x22;&#123;
+		buttonName: &#x27;Save&#x27;,
+		buttonType: &#x27;primary&#x27;,
+		buttonDisplayed: true
+	&#125;&#x22;&#x3E;
+&#x3C;/hc-button&#x3E;</code></pre>
+    <br>
+  </div>
+
+  <div id="TS" *ngIf="!showTemplate">
+    <div class="codeToggle">
+      <span class="toggleOptionOff" (click)="viewToggle('html')">HTML</span>
+      <span class="toggleOptionOn" (click)="viewToggle('ts')">TypeScript</span>
+    </div>
+    <pre><code>import &#123; ButtonModule &#125; from &#x27;@healthcatalyst/cashmere&#x27;;
+
+@NgModule(&#123;
+  imports: [
+     ...,
+    ButtonModule,
+  ],
+  declarations: [ValueSetModalComponent],
+  exports: [ValueSetModalComponent]
+&#125;)
+export class ValueSetModalModule &#123; &#125;</code></pre>
+    <br>
+  </div>
+
+  <br>
+  <hr style="height:1px;border:none;background-color:#E5E5E5;">
+  <br>
+  <div class="headerName">Component Parameters</div>
+  <br>
+
+  <table class="apiTable parameters">
+    <tr>
+      <td style="font-weight: 600">buttonName</td>
+      <td>
+        <span>Type:</span> String</td>
+      <td width=50%>The text that will appear on the button</td>
+    </tr>
+    <tr>
+      <td style="font-weight: 600">buttonIcon</td>
+      <td>
+        <span>Type:</span> String</td>
+      <td width=50%>The font-awesome icon that will appear on the button ('fa fa-plus')</td>
+    </tr>
+    <tr>
+      <td style="font-weight: 600">buttonType</td>
+      <td>
+        <span>Type:</span> 'primary-green',
+        <br>'primary-red',
+        <br>'primary-purple',
+        <br>'primary-gray',
+        <br>'secondary',
+        <br>'tertiary'</td>
+      <td width=50%>Button theme (see examples above)</td>
+    </tr>
+    <tr>
+      <td style="font-weight: 600">buttonDisabled</td>
+      <td>
+        <span>Type:</span> Boolean</td>
+      <td width=50%>Boolean value that enables/disables the button</td>
+    </tr>
+    <tr>
+      <td style="font-weight: 600">buttonDisplayed</td>
+      <td>
+        <span>Type:</span> Boolean</td>
+      <td width=50%>Boolean that will hide/show the button</td>
+    </tr>
+    <tr>
+      <td style="font-weight: 600">tooltip</td>
+      <td>
+        <span>Type:</span> String</td>
+      <td width=50%>Text value that will appear on button hover</td>
+    </tr>
+  </table>
+
+</div>

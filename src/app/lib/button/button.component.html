@@ -1,0 +1,15 @@
+<button type="button"
+[disabled]="options.buttonDisabled"
+[ngClass]="[options.buttonDisplayed ? '' : 'hide',
+			options.buttonType === 'primary' ? 'btn btn-primary': '',
+			options.buttonType === 'primary-alt1' ? 'btn btn-primary-alt1': '',
+			options.buttonType === 'primary-alt2' ? 'btn btn-primary-alt2': '',
+			options.buttonType === 'primary-alt3' ? 'btn btn-primary-alt3': '',
+			options.buttonType === 'secondary' ? 'btn btn-secondary': '',
+			options.buttonType === 'tertiary' ? 'btn btn-tertiary': ''
+			]"
+			(click)="clickButton(true)"
+			[attr.title]="options.tooltip">
+<span class="{{options.buttonIcon}}"></span>
+{{options.buttonName}}
+</button>

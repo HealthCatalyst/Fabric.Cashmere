@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [{
+        "name": "Debug App",
+        "type": "chrome",
+        "request": "launch",
+        "runtimeArgs": [" --disable-web-security", "--user-data-dir"],
+        "url": "http://localhost:4200",
+        "sourceMaps": true,
+        "webRoot": "${workspaceRoot}"
+      }
+    ]
+  }
