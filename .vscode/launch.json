@@ -1,12 +1,20 @@
 {
     "version": "0.2.0",
-    "configurations": [{
+    "configurations": [
+    {
         "name": "Debug App",
         "type": "chrome",
         "request": "launch",
         "runtimeArgs": [" --disable-web-security", "--user-data-dir"],
         "url": "http://localhost:4200",
         "sourceMaps": true,
+        "webRoot": "${workspaceRoot}"
+      },
+      {
+        "name": "ng test",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:9876/debug.html",
         "webRoot": "${workspaceRoot}"
       }
     ]
