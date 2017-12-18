@@ -1,4 +1,4 @@
-# @healthcatalyst/cashmere
+![Cashmere Banner](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/CashmereBanner.png)
 
 An angular component library that makes any task feel luxurious.
 
