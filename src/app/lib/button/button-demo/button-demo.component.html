@@ -18,7 +18,8 @@
     <h5>
         Disabled Buttons
     </h5>
-    <button hc-button title="Disabled Button" color="primary" disabled>Disabled Button</button>
+    <button hc-button title="Disabled Button" color="primary" [disabled]="true">Disabled Button</button>
+    <a hc-button title="Disabled Link" color="primary" [disabled]="true">Disabled Link</a>
     <h5>
         Tertiary Buttons
     </h5>
@@ -62,13 +63,21 @@
             <span class="toggleOptionOn" (click)="viewToggle('html')">HTML</span>
             <span class="toggleOptionOff" (click)="viewToggle('ts')">TypeScript</span>
         </div>
-        <pre><code>&#x3C;hc-button
-	[options]=&#x22;&#123;
-		buttonName: &#x27;Save&#x27;,
-		buttonType: &#x27;primary&#x27;,
-		buttonDisplayed: true
-	&#125;&#x22;&#x3E;
-&#x3C;/hc-button&#x3E;</code></pre>
+        <pre>
+            <code>
+                &#x3C;button hc-button
+		            color=&#x27;primary&#x27;
+                    &#91;disabled&#93;=&#x27;false&#x27;
+                &#x3C;/button&#x3E;
+            </code>
+
+            <code>
+                &#x3C;a hc-button
+		            color=&#x27;primary&#x27;
+                    &#91;disabled&#93;=&#x27;false&#x27;
+                &#x3C;/a&#x3E;
+            </code>
+        </pre>
         <br>
     </div>
 
@@ -99,51 +108,18 @@ export class SomeModule &#123; &#125;</code></pre>
 
     <table class="apiTable parameters">
         <tr>
-            <td style="font-weight: 600">buttonName</td>
+            <td style="font-weight: 600">color</td>
             <td>
                 <span>Type:</span> String
             </td>
-            <td width=50%>The text that will appear on the button</td>
+            <td width=50%>Sets the button's theme color</td>
         </tr>
         <tr>
-            <td style="font-weight: 600">buttonIcon</td>
-            <td>
-                <span>Type:</span> String
-            </td>
-            <td width=50%>The font-awesome icon that will appear on the button ('fa fa-plus')</td>
-        </tr>
-        <tr>
-            <td style="font-weight: 600">buttonType</td>
-            <td>
-                <span>Type:</span> 'primary-green',
-                <br>'primary-red',
-                <br>'primary-purple',
-                <br>'primary-gray',
-                <br>'secondary',
-                <br>'tertiary'
-            </td>
-            <td width=50%>Button theme (see examples above)</td>
-        </tr>
-        <tr>
-            <td style="font-weight: 600">buttonDisabled</td>
+            <td style="font-weight: 600">disabled</td>
             <td>
                 <span>Type:</span> Boolean
             </td>
             <td width=50%>Boolean value that enables/disables the button</td>
-        </tr>
-        <tr>
-            <td style="font-weight: 600">buttonDisplayed</td>
-            <td>
-                <span>Type:</span> Boolean
-            </td>
-            <td width=50%>Boolean that will hide/show the button</td>
-        </tr>
-        <tr>
-            <td style="font-weight: 600">tooltip</td>
-            <td>
-                <span>Type:</span> String
-            </td>
-            <td width=50%>Text value that will appear on button hover</td>
         </tr>
     </table>
 

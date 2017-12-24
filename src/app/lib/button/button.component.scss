@@ -16,7 +16,7 @@
     background-color: $background-color-focus;
     color: $white;
   }
-  &:disabled {
+  &[disabled] {
     background-color: #f7f7f7;
     color: #999;
     border: none;
@@ -41,7 +41,7 @@
   border-radius: 6px;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  &:focus, &:active:focus {
+  &:not([disabled]):focus, &:not([disabled]):active:focus {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
   }
@@ -50,11 +50,12 @@
     outline: 0;
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
   }
-  &:disabled {
+  &[disabled] {
     cursor: not-allowed;
     filter: alpha(opacity=65);
     box-shadow: none;
     opacity: .65;
+    outline: none;
 
     &:hover, &:focus {
       background-color: #f7f7f7;
@@ -70,23 +71,23 @@
   }
 }
 
-:host(.primary) {
+:host(.hc-primary) {
   @include primary-button-theme($primary-button, $primary-button-hover, $primary-button-pressed, $primary-button-pressed);
 }
 
-:host(.primary-alt1) {
+:host(.hc-primary-alt1) {
   @include primary-button-theme($primary-button-alt1, $primary-button-alt1-hover, $primary-button-alt1-pressed, $primary-button-alt1-pressed);
 }
 
-:host(.primary-alt2) {
+:host(.hc-primary-alt2) {
   @include primary-button-theme($primary-button-alt2, $primary-button-alt2-hover, $primary-button-alt2-pressed, $primary-button-alt2-pressed);
 }
 
-:host(.primary-alt3) {
+:host(.hc-primary-alt3) {
   @include primary-button-theme($primary-button-alt3, $primary-button-alt3-hover, $primary-button-alt3-pressed, $primary-button-alt3-pressed);
 }
 
-:host(.secondary) {
+:host(.hc-secondary) {
   background-color: $secondary-button;
   color: $secondary-button-text;
   border: 2px solid $secondary-button-border;
@@ -105,14 +106,14 @@
     color: $secondary-button-hover-text;
     border-color: $secondary-button-pressed-border;
   }
-  &:disabled {
+  &[disabled] {
     background-color: #f7f7f7;
     color: #999;
     border: none;
   }
 }
 
-:host(.tertiary) {
+:host(.hc-tertiary) {
   background-color: transparent;
   color: $primary-blue;
   font-weight: bold;
@@ -125,7 +126,7 @@
     background-color: transparent;
     color: darken($primary-blue, 10%);
   }
-  &:disabled {
+  &[disabled] {
     background-color: transparent;
     color: $hc-gray;
     border: none;
