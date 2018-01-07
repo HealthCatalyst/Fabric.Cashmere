@@ -5,6 +5,48 @@ import { ButtonComponent } from './button.component';
 import { ButtonModule } from './button.module';
 import { By } from '@angular/platform-browser';
 
+@Component({
+  template: `
+      <button hc-button [color]="buttonColor" [disabled]="isDisabled" (click)="buttonClick()">Button</button>
+      <a hc-button [color]="buttonColor" [disabled]="isDisabled" href="https://www.healthcatalyst.com">Link</a>
+  `
+})
+class TestAppComponent {
+  buttonColor = 'primary';
+  isDisabled = false;
+  clickCount = 0;
+
+  buttonClick() {
+    this.clickCount++;
+  }
+}
+
+class TestAppReference {
+  fixture: ComponentFixture<TestAppComponent>;
+  testAppComponent: TestAppComponent;
+  buttonDebugElement: DebugElement;
+  aDebugElement: DebugElement;
+
+  constructor() {
+    this.fixture = TestBed.createComponent(TestAppComponent);
+    this.testAppComponent = this.fixture.debugElement.componentInstance;
+    this.buttonDebugElement = this.fixture.debugElement.query(By.css('button'));
+    this.aDebugElement = this.fixture.debugElement.query(By.css('a'));
+  }
+
+  setColor(color: string): void {
+    this.testAppComponent.buttonColor = color;
+  }
+
+  setIsDisabled(isDisabled: boolean): void {
+    this.testAppComponent.isDisabled = isDisabled;
+  }
+
+  detectChanges() {
+    this.fixture.detectChanges();
+  }
+}
+
 describe('ButtonComponent', () => {
   beforeEach(async(() => {
       TestBed.configureTestingModule({
@@ -127,45 +169,3 @@ describe('ButtonComponent', () => {
     });
   });
 });
-
-class TestAppReference {
-  fixture: ComponentFixture<TestAppComponent>;
-  testAppComponent: TestAppComponent;
-  buttonDebugElement: DebugElement;
-  aDebugElement: DebugElement;
-
-  constructor() {
-    this.fixture = TestBed.createComponent(TestAppComponent);
-    this.testAppComponent = this.fixture.debugElement.componentInstance;
-    this.buttonDebugElement = this.fixture.debugElement.query(By.css('button'));
-    this.aDebugElement = this.fixture.debugElement.query(By.css('a'));
-  }
-
-  setColor(color: string): void {
-    this.testAppComponent.buttonColor = color;
-  }
-
-  setIsDisabled(isDisabled: boolean): void {
-    this.testAppComponent.isDisabled = isDisabled;
-  }
-
-  detectChanges() {
-    this.fixture.detectChanges();
-  }
-}
-
-@Component({
-  template: `
-      <button hc-button [color]="buttonColor" [disabled]="isDisabled" (click)="buttonClick()">Button</button>
-      <a hc-button [color]="buttonColor" [disabled]="isDisabled" href="https://www.healthcatalyst.com">Link</a>
-  `
-})
-class TestAppComponent {
-  buttonColor = 'primary';
-  isDisabled = false;
-  clickCount = 0;
-
-  buttonClick() {
-    this.clickCount++;
-  }
-}
