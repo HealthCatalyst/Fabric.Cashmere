@@ -9,13 +9,15 @@ import { ComponentLibraryComponent } from './demo/component-library/component-li
 import { SideNavComponent } from './demo/side-nav/side-nav.component';
 import { ButtonDemoComponent } from 'app/lib/button/button-demo/button-demo.component';
 import { NavbarModule } from 'app/lib/navbar/navbar.module';
+import { NavbarDemoComponent } from './lib/navbar/navbar-demo/navbar-demo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComponentLibraryComponent,
     SideNavComponent,
-    ButtonDemoComponent
+    ButtonDemoComponent,
+    NavbarDemoComponent
   ],
   imports: [
     BrowserModule,
