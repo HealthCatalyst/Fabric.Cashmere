@@ -1,7 +1,11 @@
 .navbar {
     height: 53px;
-    background-color: #384855;
+    background-color: #384855;    
     display:flex;
+}
+
+.icon.links {
+    margin-left: auto;
 }
 
 .navbar-brand-background {
@@ -12,6 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .tri-flame {
@@ -39,7 +44,21 @@
     overflow: hidden;
     &>li {
         padding: 0;
-        margin: 0 0 -4px 0;
+        &>i,>span{
+            height: 100%;
+            cursor: pointer;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 15px;
+            &.vertical-separator::after {
+                content: '|';
+                font-size: 18px;
+                text-align: center;
+                line-height: 0.5;
+            }
+        }
         &>a{
             height: 100%;
             box-sizing: border-box;
@@ -48,12 +67,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border-bottom: 8px solid transparent;
-            &.active{
-                border-bottom: 8px solid #00aeff;
+            border-bottom: 5px solid transparent;
+            text-decoration: none;
+            &.active {
+                border-bottom: 5px solid #00aeff;
             }
-            &:active,&:hover {
-                color: #fff;
+            &.active,&:hover,&:active{
+                color: #fff;                
             }
         }
     }
