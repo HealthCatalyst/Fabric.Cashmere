@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    height: 100%;
+}
+
+.sidebar {
+    flex: 1 1 0px;
+    border-right: 1px solid #888;
+}
+
+.content {
+    flex: 5 5 0px;
+}
