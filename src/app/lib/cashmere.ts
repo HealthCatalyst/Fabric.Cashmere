@@ -6,3 +6,6 @@ export * from './button/button.component';
 
 // Navbar
 export * from './navbar/navbar.module';
+
+// Popover
+export * from './popover/popover.module';
