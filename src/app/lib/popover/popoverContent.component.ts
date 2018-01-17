@@ -127,7 +127,7 @@ export class PopoverContentComponent implements AfterViewInit, OnDestroy {
     // -------------------------------------------------------------------------
     // Protected Methods
     // -------------------------------------------------------------------------
-    protected positionElements(hostEl: HTMLElement, targetEl: HTMLElement, positionStr: string, appendToBody: boolean = false): 
+    protected positionElements(hostEl: HTMLElement, targetEl: HTMLElement, positionStr: string, appendToBody: boolean = false):
         { top: number, left: number } {
         const positionStrParts: string[] = positionStr.split('-');
         let pos0: string = positionStrParts[0];
