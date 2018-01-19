@@ -12,7 +12,7 @@ type ButtonColor = 'primary' | 'primary-alt1' | 'primary-alt2' | 'primary-alt3' 
 
 @Component({
   selector: 'button[hc-button]',
-  template: `<i *ngIf="glyph" class="fa {{glyph}} button-glyph"></i> 
+  template: `<i *ngIf="glyph" class="fa {{glyph}} button-glyph"></i>
   <ng-content></ng-content>
   <i *ngIf="dropdown" class="fa fa-chevron-down fa-fw button-dropdown"></i>`,
   styleUrls: ['./button.component.scss'],
@@ -26,9 +26,9 @@ export class ButtonComponent implements OnChanges {
 
   @Input() color: ButtonColor = 'primary';
   @Input() disabled = false;
-  @Input() large:boolean = false;
-  @Input() dropdown:boolean = false;
-  @Input() glyph:string;
+  @Input() large: boolean = false;
+  @Input() dropdown: boolean = false;
+  @Input() glyph: string;
 
   constructor(private elementRef: ElementRef,
               private renderer: Renderer2) {
@@ -50,6 +50,8 @@ export class ButtonComponent implements OnChanges {
     }
     this.renderer.addClass(this.elementRef.nativeElement, `hc-${newColor}`);
 
-    if( this.large ) this.renderer.addClass(this.elementRef.nativeElement, `button-large`);
+    if( this.large ) {
+      this.renderer.addClass(this.elementRef.nativeElement, `button-large`);
+    }
   }
 }
