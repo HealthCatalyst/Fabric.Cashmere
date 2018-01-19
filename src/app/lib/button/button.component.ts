@@ -23,6 +23,7 @@ export class ButtonComponent implements OnChanges {
   private supportedColors = ['primary', 'primary-alt1', 'primary-alt2', 'primary-alt3', 'secondary', 'tertiary'];
 
   @Input() color: ButtonColor = 'primary';
+  @Input() size = false;
   @Input() disabled = false;
 
   constructor(private elementRef: ElementRef,

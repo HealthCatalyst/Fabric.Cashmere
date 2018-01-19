@@ -3,13 +3,22 @@
     <h4 style="font-weight: 300; margin-top: 0">Buttons communicate the action that will occur when the user touches
         them.</h4>
     <h5>
-        Primary Buttons
+        Primary Buttons (Normal Size)
     </h5>
     <div class="sample-buttons">
-        <button hc-button title="Primary Button" color="primary">Primary Button</button>
+        <button hc-button title="Primary Buttons (Large)" color="primary">Primary Button</button>
         <button hc-button title="Primary-Alt1 Button" color="primary-alt1">Primary Alt1 Button</button>
         <button hc-button title="Primary-Alt2 Button" color="primary-alt2">Primary Alt2 Button</button>
-        <button hc-button title="Primary-Alt3 Button" color="primary-alt3">Primary Alt3 Button</button>
+        <button hc-button title="Primary-Alt3 Button" color="primary-alt3" >Primary Alt3 Button</button>
+    </div>
+    <h5>
+        Primary Buttons (Small Size)
+    </h5>
+    <div class="sample-buttons">
+        <button hc-button title="Primary Buttons (Large)" color="primary" class="button-small">Primary Button</button>
+        <button hc-button title="Primary-Alt1 Button" color="primary-alt1" class="button-small">Primary Alt1 Button</button>
+        <button hc-button title="Primary-Alt2 Button" color="primary-alt2" class="button-small">Primary Alt2 Button</button>
+        <button hc-button title="Primary-Alt3 Button" color="primary-alt3" class="button-small" >Primary Alt3 Button</button>
     </div>
     <h5>
         Secondary Buttons
@@ -19,7 +28,6 @@
         Disabled Buttons
     </h5>
     <button hc-button title="Disabled Button" color="primary" [disabled]="true">Disabled Button</button>
-    <a hc-button title="Disabled Link" color="primary" [disabled]="true">Disabled Link</a>
     <h5>
         Tertiary Buttons
     </h5>
@@ -120,6 +128,13 @@ export class SomeModule &#123; &#125;</code></pre>
                 <span>Type:</span> Boolean
             </td>
             <td width=50%>Boolean value that enables/disables the button</td>
+        </tr>
+        <tr>
+            <td style="font-weight: 600">class</td>
+            <td>
+                <span>Type:</span> String
+            </td>
+            <td width=50%>Set to "button-small" for reduced size version</td>
         </tr>
     </table>
 
