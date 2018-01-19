@@ -50,7 +50,7 @@ export class ButtonComponent implements OnChanges {
     }
     this.renderer.addClass(this.elementRef.nativeElement, `hc-${newColor}`);
 
-    if( this.large ) {
+    if (this.large) {
       this.renderer.addClass(this.elementRef.nativeElement, `button-large`);
     }
   }
