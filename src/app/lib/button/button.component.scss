@@ -24,14 +24,14 @@
 }
 
 :host {
-  padding: 0px 24px;
+  padding: 0px 20px;
   height: 40px;
-  min-width: 180px;
+  min-width: 150px;
   font-size: 16px;
+  line-height: 20px;
   display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
-  line-height: 1.42857143;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -140,6 +140,18 @@
   font-size: 12px;
 }
 
+.button-glyph {
+  display: inline-block;
+  vertical-align: bottom;
+  font-size: 23px;
+  padding-right: 7px;
+  line-height: 20px;
+}
 
-
-
+.button-dropdown {
+  display: inline-block;
+  vertical-align: bottom;
+  font-size: 13px;
+  padding-left: 3px;
+  line-height: 20px;
+}

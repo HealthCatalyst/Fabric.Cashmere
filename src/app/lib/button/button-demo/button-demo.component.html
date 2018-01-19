@@ -6,19 +6,27 @@
         Primary Buttons (Normal Size)
     </h5>
     <div class="sample-buttons">
-        <button hc-button title="Primary Buttons (Large)" color="primary">Primary Button</button>
-        <button hc-button title="Primary-Alt1 Button" color="primary-alt1">Primary Alt1 Button</button>
-        <button hc-button title="Primary-Alt2 Button" color="primary-alt2">Primary Alt2 Button</button>
-        <button hc-button title="Primary-Alt3 Button" color="primary-alt3" >Primary Alt3 Button</button>
+        <button hc-button title="Primary Button" color="primary">Primary</button>
+        <button hc-button title="Primary-Alt1 Button" color="primary-alt1">Primary Alt1</button>
+        <button hc-button title="Primary-Alt2 Button" color="primary-alt2">Primary Alt2</button>
+        <button hc-button title="Primary-Alt3 Button" color="primary-alt3" >Primary Alt3</button>
     </div>
     <h5>
         Primary Buttons (Small Size)
     </h5>
     <div class="sample-buttons">
-        <button hc-button title="Primary Buttons (Large)" color="primary" class="button-small">Primary Button</button>
-        <button hc-button title="Primary-Alt1 Button" color="primary-alt1" class="button-small">Primary Alt1 Button</button>
-        <button hc-button title="Primary-Alt2 Button" color="primary-alt2" class="button-small">Primary Alt2 Button</button>
-        <button hc-button title="Primary-Alt3 Button" color="primary-alt3" class="button-small" >Primary Alt3 Button</button>
+        <button hc-button title="Primary Button" color="primary" small="true">Primary Button</button>
+        <button hc-button title="Primary-Alt1 Button" color="primary-alt1" small="true">Primary Alt1 Button</button>
+        <button hc-button title="Primary-Alt2 Button" color="primary-alt2" small="true">Primary Alt2 Button</button>
+        <button hc-button title="Primary-Alt3 Button" color="primary-alt3" small="true" >Primary Alt3 Button</button>
+    </div>
+    <h5>
+        Buttons w/ Glyphs
+    </h5>
+    <div class="sample-buttons">
+        <button hc-button title="Glyph Dropdown Button" color="primary" glyph="fa-cog" dropdown="true">Options</button>
+        <button hc-button title="Dropdown Button" color="primary-alt1" dropdown="true">Dropdown</button>
+        <button hc-button title="Glyph Button" color="primary-alt2" glyph="fa-home">Options</button>
     </div>
     <h5>
         Secondary Buttons
@@ -135,6 +143,20 @@ export class SomeModule &#123; &#125;</code></pre>
                 <span>Type:</span> String
             </td>
             <td width=50%>Set to "button-small" for reduced size version</td>
+        </tr>
+        <tr>
+            <td style="font-weight: 600">glyph</td>
+            <td>
+                <span>Type:</span> String
+            </td>
+            <td width=50%>FontAwesome glyph to include before the button name (eg. "fa-cog")</td>
+        </tr>
+        <tr>
+            <td style="font-weight: 600">dropdown</td>
+            <td>
+                <span>Type:</span> Boolean
+            </td>
+            <td width=50%>Set to true to include a dropdown indicator</td>
         </tr>
     </table>
 
