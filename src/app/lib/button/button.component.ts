@@ -26,7 +26,7 @@ export class ButtonComponent implements OnChanges {
 
   @Input() color: ButtonColor = 'primary';
   @Input() disabled = false;
-  @Input() small:boolean = false;
+  @Input() large:boolean = false;
   @Input() dropdown:boolean = false;
   @Input() glyph:string;
 
@@ -50,6 +50,6 @@ export class ButtonComponent implements OnChanges {
     }
     this.renderer.addClass(this.elementRef.nativeElement, `hc-${newColor}`);
 
-    if( this.small ) this.renderer.addClass(this.elementRef.nativeElement, `button-small`);
+    if( this.large ) this.renderer.addClass(this.elementRef.nativeElement, `button-large`);
   }
 }
