@@ -1,0 +1,13 @@
+.side-bar-container {
+    width: 20%;
+    float: left;
+    height: 100%;
+}
+
+.content-container {
+    width:80%;
+    float: right;
+    height: 100%;
+    border-left: gray 1px solid;
+    margin-left: -1px;
+}
