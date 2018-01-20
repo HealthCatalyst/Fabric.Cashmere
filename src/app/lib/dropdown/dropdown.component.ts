@@ -7,11 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DropdownComponent implements OnInit {
 
-  @Input() placeholder:string;
+  @Input() placeholder: string;
   @Input() options = [];
-  @Input() width:string;
+  @Input() width: string;
 
-  selectWidth = "350px";
+  selectWidth = '350px';
 
   constructor() { }
 
