@@ -13,8 +13,7 @@
     color: $white;
   }
   &:focus {
-    background-color: $background-color-focus;
-    color: $white;
+    outline: none !important;
   }
   &[disabled] {
     background-color: #f7f7f7;
@@ -24,7 +23,8 @@
 }
 
 :host {
-  padding: 0px 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   height: 35px;
   min-width: 150px;
   font-size: 15px;
@@ -49,7 +49,6 @@
   }
   &:active {
     background-image: none;
-    outline: 0;
   }
   &[disabled] {
     cursor: not-allowed;
@@ -100,11 +99,10 @@
     background-color: $secondary-button-pressed;
     color: $secondary-button-hover-text;
     border: 2px solid $secondary-button-pressed-border;
+    outline: none !important;
   }
   &:focus {
-    background-color: $secondary-button-pressed;
-    color: $secondary-button-hover-text;
-    border: 2px solid $secondary-button-pressed-border;
+    outline: none;
   }
   &[disabled] {
     background-color: #f7f7f7;
@@ -125,6 +123,10 @@
   &:active {
     background-color: transparent;
     color: darken($primary-blue, 10%);
+    outline: none !important;
+  }
+  &:focus {
+    outline: none;
   }
   &[disabled] {
     background-color: transparent;
