@@ -11,8 +11,6 @@
   &:active {
     background-color: $background-color-active;
     color: $white;
-  }
-  &:focus {
     outline: none !important;
   }
   &[disabled] {
@@ -101,9 +99,6 @@
     border: 2px solid $secondary-button-pressed-border;
     outline: none !important;
   }
-  &:focus {
-    outline: none;
-  }
   &[disabled] {
     background-color: #f7f7f7;
     color: #999;
@@ -124,9 +119,6 @@
     background-color: transparent;
     color: darken($primary-blue, 10%);
     outline: none !important;
-  }
-  &:focus {
-    outline: none;
   }
   &[disabled] {
     background-color: transparent;
