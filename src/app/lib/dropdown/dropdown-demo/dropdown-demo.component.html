@@ -17,49 +17,14 @@
 
   <div class="headerName">Angular Component</div>
   <br>
-  <div id="HTML" *ngIf="showTemplate">
-      <div class="codeToggle">
-          <span class="toggleOptionOn" (click)="viewToggle('html')">HTML</span>
-          <span class="toggleOptionOff" (click)="viewToggle('ts')">TypeScript</span>
-      </div>
       <pre>
           <code>
-              &#x3C;button hc-button
-              color=&#x27;primary&#x27;
-                  &#91;disabled&#93;=&#x27;false&#x27;
-              &#x3C;/button&#x3E;
-          </code>
-
-          <code>
-              &#x3C;a hc-button
-              color=&#x27;primary&#x27;
-                  &#91;disabled&#93;=&#x27;false&#x27;
-              &#x3C;/a&#x3E;
+&#x3C;hc-dropdown width=&#x22;350px&#x22; placeholder=&#x22;Select a city:&#x22;
+    [options]=&#x22;[&#x27;Philadelphia&#x27;, &#x27;Atlanta&#x27;, &#x27;Salt Lake City&#x27;, &#x27;Chicago&#x27;, &#x27;Orlando&#x27;]&#x22;&#x3E;
+&#x3C;/hc-dropdown&#x3E;
           </code>
       </pre>
       <br>
-  </div>
-
-  <div id="TS" *ngIf="!showTemplate">
-      <div class="codeToggle">
-          <span class="toggleOptionOff" (click)="viewToggle('html')">HTML</span>
-          <span class="toggleOptionOn" (click)="viewToggle('ts')">TypeScript</span>
-      </div>
-      <pre><code>import &#123; ButtonModule &#125; from &#x27;@healthcatalyst/cashmere&#x27;;
-
-@NgModule(&#123;
-imports: [
-   ...,
-  ButtonModule,
-],
-declarations: [...],
-exports: [..]
-&#125;)
-export class SomeModule &#123; &#125;</code></pre>
-      <br>
-  </div>
-
-  <br>
   <hr style="height:1px;border:none;background-color:#E5E5E5;">
   <br>
   <div class="headerName">Component Parameters</div>
@@ -67,19 +32,26 @@ export class SomeModule &#123; &#125;</code></pre>
 
   <table class="apiTable parameters">
       <tr>
-          <td style="font-weight: 600">color</td>
+          <td style="font-weight: 600">width</td>
           <td>
               <span>Type:</span> String
           </td>
-          <td width=50%>Sets the button's theme color</td>
+          <td width=50%>Defines the width of the dropdown (eg "350px")</td>
       </tr>
       <tr>
-          <td style="font-weight: 600">disabled</td>
+          <td style="font-weight: 600">placeholder</td>
           <td>
-              <span>Type:</span> Boolean
+              <span>Type:</span> String
           </td>
-          <td width=50%>Boolean value that enables/disables the button</td>
+          <td width=50%>Optional string of text to appear before selection is made</td>
       </tr>
+      <tr>
+        <td style="font-weight: 600">[options]</td>
+        <td>
+            <span>Type:</span> Array
+        </td>
+        <td width=50%>An array of strings for the dropdown options</td>
+    </tr>
   </table>
 
 </div>
