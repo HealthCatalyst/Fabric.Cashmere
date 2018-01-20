@@ -1,0 +1,85 @@
+<div class="demo-page">
+  <h2 style="margin: 0">Dropdown Menu</h2>
+  <h4 style="font-weight: 300; margin-top: 0">Menus display a list of choices with one choice per line.
+  </h4>
+  <h5>
+      Standard Dropdown Menu
+  </h5>
+  <hc-dropdown width="350px" placeholder="Select a city:" [options]="['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando']"></hc-dropdown>
+
+  <br>
+  <p class="description">
+      <b>Dropdown Types</b>
+      <br>There are two primary types of dropdowns used in Cashmere: one is an extension of the <i>button</i> component, and the other is this <i>dropdown</i> component.  The guidelines for which dropdown to use is based off what items are contained in the dropdown. The button dropdown is for a list with action items (e.g. delete all selected items). If the dropdown contains a list of selectable items, then this component should be used.</p>
+  <br>
+  <hr style="height:1px;border:none;background-color:#E5E5E5;">
+  <br>
+
+  <div class="headerName">Angular Component</div>
+  <br>
+  <div id="HTML" *ngIf="showTemplate">
+      <div class="codeToggle">
+          <span class="toggleOptionOn" (click)="viewToggle('html')">HTML</span>
+          <span class="toggleOptionOff" (click)="viewToggle('ts')">TypeScript</span>
+      </div>
+      <pre>
+          <code>
+              &#x3C;button hc-button
+              color=&#x27;primary&#x27;
+                  &#91;disabled&#93;=&#x27;false&#x27;
+              &#x3C;/button&#x3E;
+          </code>
+
+          <code>
+              &#x3C;a hc-button
+              color=&#x27;primary&#x27;
+                  &#91;disabled&#93;=&#x27;false&#x27;
+              &#x3C;/a&#x3E;
+          </code>
+      </pre>
+      <br>
+  </div>
+
+  <div id="TS" *ngIf="!showTemplate">
+      <div class="codeToggle">
+          <span class="toggleOptionOff" (click)="viewToggle('html')">HTML</span>
+          <span class="toggleOptionOn" (click)="viewToggle('ts')">TypeScript</span>
+      </div>
+      <pre><code>import &#123; ButtonModule &#125; from &#x27;@healthcatalyst/cashmere&#x27;;
+
+@NgModule(&#123;
+imports: [
+   ...,
+  ButtonModule,
+],
+declarations: [...],
+exports: [..]
+&#125;)
+export class SomeModule &#123; &#125;</code></pre>
+      <br>
+  </div>
+
+  <br>
+  <hr style="height:1px;border:none;background-color:#E5E5E5;">
+  <br>
+  <div class="headerName">Component Parameters</div>
+  <br>
+
+  <table class="apiTable parameters">
+      <tr>
+          <td style="font-weight: 600">color</td>
+          <td>
+              <span>Type:</span> String
+          </td>
+          <td width=50%>Sets the button's theme color</td>
+      </tr>
+      <tr>
+          <td style="font-weight: 600">disabled</td>
+          <td>
+              <span>Type:</span> Boolean
+          </td>
+          <td width=50%>Boolean value that enables/disables the button</td>
+      </tr>
+  </table>
+
+</div>

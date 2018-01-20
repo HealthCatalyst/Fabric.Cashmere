@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { ComponentLibraryComponent } from './demo/component-library/component-library.component';
 import { SideNavComponent } from './demo/side-nav/side-nav.component';
 import { ButtonDemoComponent } from 'app/lib/button/button-demo/button-demo.component';
+import { DropdownComponent } from 'app/lib/dropdown/dropdown.component';
+import { DropdownDemoComponent } from 'app/lib/dropdown/dropdown-demo/dropdown-demo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComponentLibraryComponent,
     SideNavComponent,
-    ButtonDemoComponent
+    ButtonDemoComponent,
+    DropdownComponent,
+    DropdownDemoComponent
   ],
   imports: [
     BrowserModule,
