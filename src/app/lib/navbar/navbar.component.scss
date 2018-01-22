@@ -1,81 +1,104 @@
 @import '../colors.scss';
 
+$navbar-color: $header-blue !default;
+$navbar-brand: $primary-blue !default;
+$navbar-height: 53px !default;
+$navbar-app-padding: 0 75px 0 25px !default;
+$navbar-text: $white;
+$navbar-text-inactive: $menu-gray;
+
 .navbar {
-    height: 53px;
-    background-color: #384855;    
+    height: $navbar-height;
+    background-color: $navbar-color;   
     display:flex;
-}
 
-.icon.links {
-    margin-left: auto;
-}
+    .icon.links {
+        margin-left: auto;
+    }
 
-.navbar-brand-background {
-    background-color: $primary-blue;
-    width: 55px;
-    flex-basis: auto;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
+    .navbar-brand {
+        background-color: $navbar-brand;
+        width: 55px;
+        flex-basis: auto;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-.tri-flame {
-    width: 23px;
-}
-
-.navbar-app-background {
-    height: 100%;
-    padding: 0 75px 0 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.app-logo {
-    height: 27px;
-}
-
-.links {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    padding-left:0;
-    overflow: hidden;
-    &>li {
-        padding: 0;
-        &>i,>span{
-            height: 100%;
-            cursor: pointer;
-            color: #fff;
+        .brand {
+            &>img {
+                max-width:70%;
+                max-height:70%;
+            }
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0 15px;
-            &.vertical-separator::after {
-                content: '|';
-                font-size: 18px;
-                text-align: center;
-                line-height: 0.5;
-            }
+            height: 100%;
+            width: 100%;
         }
-        &>a{
-            height: 100%;
-            box-sizing: border-box;
-            padding: 0 30px;
-            color: #C5C6C8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-bottom: 5px solid transparent;
-            text-decoration: none;
-            &.active {
-                border-bottom: 5px solid #00aeff;
+    }
+
+    .navbar-app {
+        height: 100%;
+        padding: $navbar-app-padding;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .app {
+        &>img {
+            max-height:70%;
+            max-width:70%;
+        }
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .links {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        padding-left:0;
+        overflow: hidden;
+        .navbar-item {
+            padding: 0;
+            i {
+                cursor: pointer;
             }
-            &.active,&:hover,&:active{
-                color: #fff;                
+
+            &>i,>span{
+                height: 100%;
+                color: $navbar-text;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 15px;
+                &.vertical-separator::after {
+                    content: '|';
+                    font-size: 18px;
+                    text-align: center;
+                    line-height: 0.5;
+                }
+            }
+            &>a{
+                height: 100%;
+                box-sizing: border-box;
+                padding: 0 30px;
+                color: $navbar-text-inactive;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-bottom: 5px solid transparent;
+                text-decoration: none;
+                &.active {
+                    border-bottom: 5px solid $primary-blue;
+                }
+                &.active,&:hover,&:active{
+                    color: $navbar-text;                
+                }
             }
         }
     }

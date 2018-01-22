@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, QueryList, ContentChildren } from '@angular/core';
+import { NavbarLinkComponent } from 'app/lib/navbar/navbar-link/navbar-link.component';
 
 @Component({
   selector: 'hc-navbar',
@@ -7,6 +8,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class NavbarComponent implements OnInit {
+
+  @Input() user: string;
+
+  @Input() appIcon: string;
+
+  @Input() homeUri: string;
+
+  @ContentChildren(NavbarLinkComponent) navbarLinks: QueryList<NavbarLinkComponent>;
 
   constructor() { }
 

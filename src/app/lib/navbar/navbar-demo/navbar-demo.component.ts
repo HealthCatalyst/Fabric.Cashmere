@@ -15,14 +15,16 @@ export class NavbarDemoComponent implements OnInit {
 
   getcode(): string {
     const code =
-`<hc-navbar app-icon="app.svf" app-text="optional" user="optional">
-  <hc-app-switcher></hc-app-switcher>
-  <hc-navbar-link text="Home" routerLink="/home"></hc-navbar-link>
-  <hc-navbar-link text="Link1" routerLink="/link1"></hc-navbar-link>
-  <hc-navbar-link text="Link2" routerLink="/link2"></hc-navbar-link>
-  <hc-navbar-icon class="fa fa-search fa-lg" (click)="popup"></hc-navbar-icon>
-  <hc-navbar-icon class="fa fa-question-circle-o fa-lg" (click)="popup"></hc-navbar-icon>
-</hc-navbar>`;
+`<hc-navbar appIcon="./assets/Application-Logo.svg" user="Christine K." homeUri="/library/navbar">
+<hc-navbar-link Uri="/library/navbar">Home</hc-navbar-link>
+<hc-navbar-link Uri="/library/buttons">Buttons</hc-navbar-link>
+<hc-navbar-icon>
+    <i class="fa fa-search fa-lg white"></i>
+</hc-navbar-icon>
+<hc-navbar-icon>
+    <i class="fa fa-question-circle-o fa-lg question-pos white"></i>
+</hc-navbar-icon>
+</hc-navbar>  `;
     return code;
   }
 }

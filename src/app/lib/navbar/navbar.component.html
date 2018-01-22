@@ -1,41 +1,24 @@
 <nav class="navbar">
-    <div class="navbar-brand-background">
-        <img class="tri-flame" src="./assets/TriFlame.svg">
-    </div>
-    <div class="navbar-app-background">
-        <a href="#">
-            <img class="app-logo" src="./assets/Application-Logo.svg">
+    <div class="navbar-brand">
+        <a routerLink="homeUri" class="brand">
+            <img src="./assets/TriFlame.svg">
         </a>
     </div>
-    <ul class="links">
-        <li>
-            <a href="#" class="active">
-                <span>Home</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span>Link 1</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span>Link 2</span>
-            </a>
-        </li>
-    </ul>
-    <ul class="icon links">
-        <li>
-            <i class="fa fa-search fa-lg white"></i>
-        </li>
-        <li>
-            <i class="fa fa-question-circle-o fa-lg navbar-brand question-pos white"></i>
-        </li>
-        <li>
+    <div class="navbar-app">
+        <a routerLink="homeUri" class="app" *ngIf="appIcon">
+            <img src="{{appIcon}}">
+        </a>
+    </div>
+    <div class="links">
+        <ng-content select="hc-navbar-link"></ng-content>
+    </div>
+    <div class="icon links">
+        <ng-content select="hc-navbar-icon"></ng-content>
+        <div class="navbar-item">
             <span class="vertical-separator"></span>
-        </li>
-        <li>
-            <span>Christine K.</span>
-        </li>
-    </ul>
+        </div>
+        <div class="navbar-item">
+            <span>{{user}}</span>
+        </div>
+    </div>
 </nav>
