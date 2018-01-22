@@ -5,7 +5,7 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
   template: '<ng-content></ng-content>'
 })
 export class NavbarIconComponent implements OnInit {
-  @HostBinding('class') HostClass = 'navbar-item';
+  @HostBinding('class') hostClass = 'navbar-item';
   constructor() { }
 
   ngOnInit() {

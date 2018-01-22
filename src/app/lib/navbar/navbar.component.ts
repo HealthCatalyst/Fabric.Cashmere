@@ -15,8 +15,6 @@ export class NavbarComponent implements OnInit {
 
   @Input() homeUri: string;
 
-  @ContentChildren(NavbarLinkComponent) navbarLinks: QueryList<NavbarLinkComponent>;
-
   constructor() { }
 
   ngOnInit() {
