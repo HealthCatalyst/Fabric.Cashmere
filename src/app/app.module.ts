@@ -1,32 +1,22 @@
-import { ButtonModule } from './lib/button/button.module';
 import { routes } from './routes';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ComponentLibraryComponent } from './demo/component-library/component-library.component';
 import { SideNavComponent } from './demo/side-nav/side-nav.component';
-import { ButtonDemoComponent } from 'app/lib/button/button-demo/button-demo.component';
-import { NavbarModule } from 'app/lib/navbar/navbar.module';
-import { NavbarDemoComponent } from './lib/navbar/navbar-demo/navbar-demo.component';
-import { PopoverModule } from 'app/lib/popover/popover.module';
-import { PopoverDemoComponent } from 'app/lib/popover/popover-demo/popover-demo.component';
+import { HomeComponent } from 'app/home/home.component';
+import { DemoComponent } from 'app/demo/demo.component';
+import { DemoModule } from 'app/demo/demo.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ComponentLibraryComponent,
-    SideNavComponent,
-    ButtonDemoComponent,
-    NavbarDemoComponent,
-    PopoverDemoComponent
+    HomeComponent,
   ],
   imports: [
+    DemoModule,
     BrowserModule,
-    ButtonModule,
-    NavbarModule,
-    PopoverModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
