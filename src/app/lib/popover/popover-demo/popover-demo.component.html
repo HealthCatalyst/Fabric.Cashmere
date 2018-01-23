@@ -1,4 +1,7 @@
-<button hc-button title="Primary Button" color="primary" [hcPopover]="menuPopContent" placement="bottom" aria-hidden="true">Click to toggle popover / Click outside to close</button>
-<hc-popover-content #menuPopContent [closeOnClickOutside]="true" class="navbar-popover menu-popover" title="title">
-  And here's some amazing content. It's very engaging. Right?  
-</hc-popover-content>
+<div class="demo-page">
+  <h2 style="margin: 0">Popover</h2>
+  <button hc-button title="Primary Button" color="primary" [hcPopover]="menuPopContent" placement="bottom" aria-hidden="true">Click Me</button>
+  <hc-popover-content #menuPopContent [closeOnClickOutside]="true" title="title">
+    And here's some amazing content. It's very engaging. Right?
+  </hc-popover-content>
+</div>
