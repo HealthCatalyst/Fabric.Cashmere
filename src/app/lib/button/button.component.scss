@@ -142,3 +142,24 @@
   padding-left: 3px;
   line-height: 20px;
 }
+
+:host( a ) {
+  color: $primary-blue;
+  padding-left: 0px;
+  padding-right: 0px;
+  min-width: 0px;
+  height:auto;
+  text-decoration: none;
+  border: none;
+
+  &:hover {
+    background-color: transparent;
+    color: lighten($primary-blue, 10%);
+  }
+  &:active:hover,
+  &:active:focus {
+    background-color: transparent;
+    color: darken($primary-blue, 10%);
+    outline: none !important;
+  }
+}

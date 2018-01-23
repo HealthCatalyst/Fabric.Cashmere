@@ -30,7 +30,11 @@
     <h5>
         Tertiary Buttons
     </h5>
-    <button hc-button title="Tertiary Button/Link" color="tertiary">Tertiary Button/Link</button>
+    <button hc-button title="Tertiary Button" color="tertiary">Tertiary Button</button>
+    <h5>
+        Anchor Links
+    </h5>
+    <a hc-button title="Anchor Link">Anchor Link</a>
     <br>
     <br>
     <hr style="height:1px;border:none;background-color:#E5E5E5;">
@@ -72,20 +76,15 @@
         </div>
         <pre>
             <code>
-                &#x3C;button hc-button
-		            color=&#x27;primary&#x27;
-                    &#91;disabled&#93;=&#x27;false&#x27;
-                &#x3C;/button&#x3E;
+    &#x3C;button hc-button 
+        title=&#x22;Button Tile&#x22; color=&#x22;primary&#x22; glyph=&#x22;fa-cog&#x22; dropdown=&#x22;true&#x22; [disabled]=false&#x3E;
+            Button Name
+    &#x3C;/button&#x3E;
             </code>
-
             <code>
-                &#x3C;a hc-button
-		            color=&#x27;primary&#x27;
-                    &#91;disabled&#93;=&#x27;false&#x27;
-                &#x3C;/a&#x3E;
+    &#x3C;a hc-button title=&#x22;Anchor Link&#x22; [disabled]=false&#x3E;Anchor Link&#x3C;/a&#x3E;
             </code>
         </pre>
-        <br>
     </div>
 
     <div id="TS" *ngIf="!showTemplate">
