@@ -12,7 +12,9 @@ type ButtonColor = 'primary' | 'primary-alt1' | 'primary-alt2' | 'primary-alt3' 
 
 @Component({
   selector: 'button[hc-button]',
-  template: '<ng-content></ng-content>',
+  template: `<i *ngIf="glyph" class="fa {{glyph}} button-glyph"></i>
+  <ng-content></ng-content>
+  <i *ngIf="dropdown" class="fa fa-chevron-down fa-fw button-dropdown"></i>`,
   styleUrls: ['./button.component.scss'],
   host: {
     '[disabled]': 'disabled || null',
@@ -24,6 +26,8 @@ export class ButtonComponent implements OnChanges {
 
   @Input() color: ButtonColor = 'primary';
   @Input() disabled = false;
+  @Input() dropdown: boolean = false;
+  @Input() glyph: string;
 
   constructor(private elementRef: ElementRef,
               private renderer: Renderer2) {

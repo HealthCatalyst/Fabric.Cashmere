@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { DemoComponent } from 'app/demo/demo.component';
 import { ButtonDemoComponent } from 'app/lib/button/button-demo/button-demo.component';
+import { DemoComponent } from 'app/demo/demo.component';
 import { NavbarDemoComponent } from 'app/lib/navbar/navbar-demo/navbar-demo.component';
 import { PopoverDemoComponent } from 'app/lib/popover/popover-demo/popover-demo.component';
 

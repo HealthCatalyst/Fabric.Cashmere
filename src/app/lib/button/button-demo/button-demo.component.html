@@ -3,13 +3,21 @@
     <h4 style="font-weight: 300; margin-top: 0">Buttons communicate the action that will occur when the user touches
         them.</h4>
     <h5>
-        Primary Buttons
+        Primary Buttons (Normal Size)
     </h5>
     <div class="sample-buttons">
-        <button hc-button title="Primary Button" color="primary">Primary Button</button>
-        <button hc-button title="Primary-Alt1 Button" color="primary-alt1">Primary Alt1 Button</button>
-        <button hc-button title="Primary-Alt2 Button" color="primary-alt2">Primary Alt2 Button</button>
-        <button hc-button title="Primary-Alt3 Button" color="primary-alt3">Primary Alt3 Button</button>
+        <button hc-button title="Primary Button" color="primary">Primary</button>
+        <button hc-button title="Primary-Alt1 Button" color="primary-alt1">Primary Alt1</button>
+        <button hc-button title="Primary-Alt2 Button" color="primary-alt2">Primary Alt2</button>
+        <button hc-button title="Primary-Alt3 Button" color="primary-alt3" >Primary Alt3</button>
+    </div>
+    <h5>
+        Buttons w/ Glyphs
+    </h5>
+    <div class="sample-buttons" style="width: 50%">
+        <button hc-button title="Glyph Dropdown Button" color="primary" glyph="fa-cog" dropdown="true">Options</button>
+        <button hc-button title="Dropdown Button" color="primary-alt1" dropdown="true">Dropdown</button>
+        <button hc-button title="Glyph Button" color="primary-alt2" glyph="fa-home">Home</button>
     </div>
     <h5>
         Secondary Buttons
@@ -19,11 +27,14 @@
         Disabled Buttons
     </h5>
     <button hc-button title="Disabled Button" color="primary" [disabled]="true">Disabled Button</button>
-    <a hc-button title="Disabled Link" color="primary" [disabled]="true">Disabled Link</a>
     <h5>
         Tertiary Buttons
     </h5>
-    <button hc-button title="Tertiary Button/Link" color="tertiary">Tertiary Button/Link</button>
+    <button hc-button title="Tertiary Button" color="tertiary">Tertiary Button</button>
+    <h5>
+        Anchor Links
+    </h5>
+    <a hc-button title="Anchor Link">Anchor Link</a>
     <br>
     <br>
     <hr style="height:1px;border:none;background-color:#E5E5E5;">
@@ -63,15 +74,17 @@
             <span class="toggleOptionOn" (click)="viewToggle('html')">HTML</span>
             <span class="toggleOptionOff" (click)="viewToggle('ts')">TypeScript</span>
         </div>
-<pre><code>&#x3C;button hc-button
-    color=&#x27;primary&#x27;
-    &#91;disabled&#93;=&#x27;false&#x27;
-&#x3C;/button&#x3E;</code>
-<code>&#x3C;a hc-button
-    color=&#x27;primary&#x27;
-    &#91;disabled&#93;=&#x27;false&#x27;
-&#x3C;/a&#x3E;</code></pre>
-        <br>
+        <pre>
+            <code>
+    &#x3C;button hc-button 
+        title=&#x22;Button Tile&#x22; color=&#x22;primary&#x22; glyph=&#x22;fa-cog&#x22; dropdown=&#x22;true&#x22; [disabled]=false&#x3E;
+            Button Name
+    &#x3C;/button&#x3E;
+            </code>
+            <code>
+    &#x3C;a hc-button title=&#x22;Anchor Link&#x22; [disabled]=false&#x3E;Anchor Link&#x3C;/a&#x3E;
+            </code>
+        </pre>
     </div>
 
     <div id="TS" *ngIf="!showTemplate">
@@ -101,18 +114,32 @@ export class SomeModule &#123; &#125;</code></pre>
 
     <table class="apiTable parameters">
         <tr>
-            <td style="font-weight: 600">color</td>
+            <th>color</th>
             <td>
                 <span>Type:</span> String
             </td>
             <td width=50%>Sets the button's theme color</td>
         </tr>
         <tr>
-            <td style="font-weight: 600">disabled</td>
+            <th>disabled</th>
             <td>
                 <span>Type:</span> Boolean
             </td>
             <td width=50%>Boolean value that enables/disables the button</td>
+        </tr>
+        <tr>
+            <th>glyph</th>
+            <td>
+                <span>Type:</span> String
+            </td>
+            <td width=50%>FontAwesome glyph to include before the button name (eg. "fa-cog")</td>
+        </tr>
+        <tr>
+            <th>dropdown</th>
+            <td>
+                <span>Type:</span> Boolean
+            </td>
+            <td width=50%>Set to true to include a dropdown indicator</td>
         </tr>
     </table>
 
