@@ -30,7 +30,7 @@ describe('PopoverContentComponent', () => {
         fixture = TestBed.createComponent(PopoverContentComponent);
         component = fixture.componentInstance;
         directive = new PopoverDirective(mockViewContainerRef, mockResolver);
-        component.popover = new PopoverDirective(mockViewContainerRef, mockResolver);
+        component.hcPopover = new PopoverDirective(mockViewContainerRef, mockResolver);
         fixture.detectChanges();
     });
 

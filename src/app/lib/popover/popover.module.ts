@@ -12,6 +12,9 @@ import { PopoverDemoComponent } from './popover-demo/popover-demo.component';
     exports: [
         PopoverDirective,
         PopoverContentComponent
+    ],
+    entryComponents: [
+        PopoverContentComponent
     ]
 })
 export class PopoverModule { }

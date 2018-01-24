@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./popover-demo.component.scss']
 })
 export class PopoverDemoComponent implements OnInit {
-
+  public body: string = 'dynamic content';
   constructor() { }
 
   ngOnInit() {

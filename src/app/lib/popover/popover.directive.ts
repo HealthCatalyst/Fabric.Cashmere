@@ -15,7 +15,7 @@ export class PopoverDirective implements OnChanges {
   // -------------------------------------------------------------------------
 
   protected PopoverComponent: any = PopoverContentComponent;
-  protected popover: ComponentRef<PopoverContentComponent>;
+  protected hcPopover: ComponentRef<PopoverContentComponent>;
   protected visible: boolean;
 
   // -------------------------------------------------------------------------
@@ -120,9 +120,9 @@ export class PopoverDirective implements OnChanges {
       const factory: ComponentFactory<PopoverContentComponent> = this.resolver.resolveComponentFactory(this.PopoverComponent);
       if (!this.visible) { return; }
 
-      this.popover = this.viewContainerRef.createComponent(factory);
-      const popoverContent: PopoverContentComponent = this.popover.instance as PopoverContentComponent;
-      popoverContent.popover = this;
+      this.hcPopover = this.viewContainerRef.createComponent(factory);
+      const popoverContent: PopoverContentComponent = this.hcPopover.instance as PopoverContentComponent;
+      popoverContent.hcPopover = this;
       popoverContent.content = this.content as string;
       if (this.popoverPlacement !== undefined) { popoverContent.placement = this.popoverPlacement; }
       if (this.popoverAnimation !== undefined) { popoverContent.animation = this.popoverAnimation; }
@@ -135,7 +135,7 @@ export class PopoverDirective implements OnChanges {
       if (this.popoverDismissTimeout > 0) { setTimeout(() => this.hide(), this.popoverDismissTimeout); }
     } else {
       const popover: PopoverContentComponent = this.content as PopoverContentComponent;
-      popover.popover = this;
+      popover.hcPopover = this;
       if (this.popoverPlacement !== undefined) { popover.placement = this.popoverPlacement; }
       if (this.popoverAnimation !== undefined) { popover.animation = this.popoverAnimation; }
       if (this.popoverTitle !== undefined) { popover.title = this.popoverTitle; }
@@ -155,7 +155,7 @@ export class PopoverDirective implements OnChanges {
     if (!this.visible) { return; }
 
     this.visible = false;
-    if (this.popover) { this.popover.destroy(); }
+    if (this.hcPopover) { this.hcPopover.destroy(); }
 
     if (this.content instanceof PopoverContentComponent) { (this.content as PopoverContentComponent).hideFromPopover(); }
 

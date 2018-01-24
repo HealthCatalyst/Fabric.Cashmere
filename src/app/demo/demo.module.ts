@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'app/lib/button/button.module';
 import { DemoComponent } from 'app/demo/demo.component';
@@ -18,6 +19,7 @@ import { routes } from './demo-routes';
         ButtonModule,
         NavbarModule,
         PopoverModule,
+        FormsModule,
         RouterModule.forRoot(routes)
     ],
     exports: [

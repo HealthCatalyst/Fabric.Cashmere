@@ -40,7 +40,7 @@ export class PopoverContentComponent implements AfterViewInit, OnDestroy {
     @ViewChild('popoverDiv')
     popoverDiv: ElementRef;
 
-    popover: PopoverDirective;
+    hcPopover: PopoverDirective;
     onCloseFromOutside: EventEmitter<any> = new EventEmitter();
     top: number = -10000;
     left: number = -10000;
@@ -56,8 +56,8 @@ export class PopoverContentComponent implements AfterViewInit, OnDestroy {
      */
     onDocumentMouseDown = (event: any) => {
         const element: any = this.element.nativeElement;
-        if (!element || !this.popover) { return; }
-        if (element.contains(event.target) || this.popover.getElement().contains(event.target)) { return; }
+        if (!element || !this.hcPopover) { return; }
+        if (element.contains(event.target) || this.hcPopover.getElement().contains(event.target)) { return; }
         this.hide();
         this.onCloseFromOutside.emit(undefined);
     }
@@ -99,12 +99,12 @@ export class PopoverContentComponent implements AfterViewInit, OnDestroy {
     // Public Methods
     // -------------------------------------------------------------------------
     show(): void {
-        if (!this.popover || !this.popover.getElement()) {
+        if (!this.hcPopover || !this.hcPopover.getElement()) {
             return;
         }
 
         const p: { top: number, left: number } =
-            this.positionElements(this.popover.getElement(), this.popoverDiv.nativeElement, this.placement);
+            this.positionElements(this.hcPopover.getElement(), this.popoverDiv.nativeElement, this.placement);
         this.displayType = 'block';
         this.top = p.top;
         this.left = p.left;
@@ -115,7 +115,7 @@ export class PopoverContentComponent implements AfterViewInit, OnDestroy {
         this.top = -10000;
         this.left = -10000;
         this.isIn = true;
-        this.popover.hide();
+        this.hcPopover.hide();
     }
 
     hideFromPopover() {
