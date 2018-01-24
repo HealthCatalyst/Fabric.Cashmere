@@ -1,0 +1,94 @@
+<div class="demo-page">
+    <h2>Color</h2>
+    <p>
+        Following are the suggested colors for use within your application. Some expansion beyond the general palette is acceptable as long as the
+        additional colors are similar in value/saturation. It's reccommended that you import the colors and leverage the sass variables.
+    </p>
+    
+    <h4>Primary Palette</h4>
+    <p>The primary colors used for branding, calls to action (buttons, links, etc), and other accents.</p>
+    <div class="palette-row primary">
+            <hc-swatch-component hex="#00AEFF" name="blue" [isLarge]="true"></hc-swatch-component>
+            <hc-swatch-component hex="#00A859" name="green" [isLarge]="true"></hc-swatch-component>
+            <hc-swatch-component hex="#6E53A3" name="purple" [isLarge]="true"></hc-swatch-component>
+            <hc-swatch-component hex="#F13C45" name="red" [isLarge]="true"></hc-swatch-component>
+            <hc-swatch-component hex="#F8961D" name="orange" [isLarge]="true"></hc-swatch-component>
+    </div>
+
+    <h4>Neutral Palette</h4>
+    <p>The colors used for backgrounds, text, etc.</p>
+    <div class="palette-row">
+        <hc-swatch-component hex="#FFFFFF" name="white" [needsBorder]="true"></hc-swatch-component>
+        <hc-swatch-component hex="#000000" name="black"></hc-swatch-component>
+        <hc-swatch-component hex="#333333" name="offblack"></hc-swatch-component>
+        <hc-swatch-component hex="rgba(0, 0, 0, 0.1)" name="shadow"></hc-swatch-component>
+        <hc-swatch-component hex="#006d9a" name="dark-blue"></hc-swatch-component>
+        <hc-swatch-component hex="#384655" name="charcoal-blue"></hc-swatch-component>
+    </div>
+    <div class="palette-row">
+            <hc-swatch-component hex="#f0f3f6" name="slate-gray-100"></hc-swatch-component>
+            <hc-swatch-component hex="#d7dde4" name="slate-gray-200"></hc-swatch-component>
+            <hc-swatch-component hex="#c0c5cc" name="slate-gray-300"></hc-swatch-component>
+            <hc-swatch-component hex="#708090" name="slate-gray-400"></hc-swatch-component>
+            <hc-swatch-component hex="#5e676f" name="slate-gray-500"></hc-swatch-component>
+            <hc-swatch-component hex="#4f565c" name="slate-gray-600"></hc-swatch-component>
+    </div>
+    <div class="palette-row">
+            <hc-swatch-component hex="#f1f1f1" name="gray-100"></hc-swatch-component>
+            <hc-swatch-component hex="#e0e0e0" name="gray-200"></hc-swatch-component>
+            <hc-swatch-component hex="#cccccc" name="gray-300"></hc-swatch-component>
+            <hc-swatch-component hex="#a1a1a1" name="gray-400"></hc-swatch-component>
+            <hc-swatch-component hex="#6D6E70" name="gray-500"></hc-swatch-component>
+            <hc-swatch-component hex="#515353" name="gray-600"></hc-swatch-component>
+    </div>
+
+    <h4>Secondary Palette</h4>
+    <p>Additional options for accent colors.</p>
+    <div class="palette-row">
+        <hc-swatch-component hex="#951c1e" name="ruby-red"></hc-swatch-component>
+        <hc-swatch-component hex="#cc2027" name="deep-red"></hc-swatch-component>
+        <hc-swatch-component hex="#f05323" name="red-orange"></hc-swatch-component>
+        <hc-swatch-component hex="#ef4767" name="pink"></hc-swatch-component>
+        <hc-swatch-component hex="#006d9a" name="light-pink"></hc-swatch-component>
+        <hc-swatch-component hex="#553e36" name="brown"></hc-swatch-component>
+    </div>
+    <div class="palette-row">
+        <hc-swatch-component hex="#a94c9d" name="magneta"></hc-swatch-component>
+        <hc-swatch-component hex="#776c7f" name="purple-gray"></hc-swatch-component>
+        <hc-swatch-component hex="#007bff" name="azure"></hc-swatch-component>
+        <hc-swatch-component hex="#00acac" name="teal"></hc-swatch-component>
+        <hc-swatch-component hex="#006c4e" name="dark-green"></hc-swatch-component>
+        <hc-swatch-component hex="#9fd4ae" name="light-green"></hc-swatch-component>
+    </div>
+    <div class="palette-row">
+        <hc-swatch-component hex="#ebba82" name="tan"></hc-swatch-component>
+        <hc-swatch-component hex="#f5ed56" name="yellow"></hc-swatch-component>
+        <hc-swatch-component hex="#e7c447" name="yellow-orange"></hc-swatch-component>
+        <hc-swatch-component hex="" name=""></hc-swatch-component>
+        <hc-swatch-component hex="" name=""></hc-swatch-component>
+        <hc-swatch-component hex="" name=""></hc-swatch-component>
+    </div>
+
+    <hr>
+
+    <h4>Stratifying and Adding Colors</h4>
+    <p class="description">
+        There may be times that a product may either need a variation of a color in either in saturation or value, or
+        even still just need a more expansive color pallet. In these cases we recommend using coolors.co to stratify the
+        base colors spelled out on the previous page or to generate colors while keeping close to the same color
+        scheme. This color tool will also help you determine you should use dark or light on top of your color.
+    </p>
+
+    <hr>
+
+    <h4>How to Use</h4>
+    <pre>
+        <code>
+        &#x00040;import &quot;../colors&quot;;
+
+        .my-component &#123;
+            background-color: $slate-gray-100;
+        &#125;
+        </code>
+    </pre>
+</div>

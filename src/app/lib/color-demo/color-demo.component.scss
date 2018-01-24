@@ -1,0 +1,132 @@
+@import "../colors";
+.palette-row{
+    display: flex;
+
+    & + .palette-row {
+        margin-top: 40px;
+    }
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: $gray-200;
+    margin: 40px 0;
+}
+
+h4 {
+    margin-top: 50px;
+    margin-bottom: 0px;
+}
+
+p {
+    margin: 8px 0 20px;
+}
+
+hc-swatch-component {
+    flex: 1 1 auto;
+    width: 14%;
+    margin-right: 2%;
+}
+
+.primary .swatch-container{
+    width: 18%;
+    margin-right: 2%;
+    &:last-child { margin-right: 0; }
+}
+
+.swatch-stack {
+    width: 45%;
+    margin-right: 10%;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    .swatch-container {
+        width: 100%;
+        text-align: right;
+        display: flex;
+    }
+
+    .swatch {
+        flex: 1 1 0;
+        margin-left: 10px;
+    }
+
+}
+
+.slate-gray-100 { background-color: $slate-gray-100; }
+.slate-gray-200 { background-color: $slate-gray-200; }
+.slate-gray-300 { background-color: $slate-gray-300; }
+.slate-gray-400 { background-color: $slate-gray-400; }
+.slate-gray-500 { background-color: $slate-gray-500; }
+.slate-gray-600 { background-color: $slate-gray-600; }
+.gray-100 { background-color: $gray-100; }
+.gray-200 { background-color: $gray-200; }
+.gray-300 { background-color: $gray-300; }
+.gray-400 { background-color: $gray-400; }
+.gray-500 { background-color: $gray-500; }
+.gray-600 { background-color: $gray-600; }
+
+pre code {
+    background-color: rgba(0,0,0,.03);
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+  }
+  
+  code {
+      font-size: 120%;
+      line-height: 140%;
+  }
+  
+  pre {
+      margin: 0;
+  }
+  
+  .codeToggle {
+      padding-top: 15px;
+      padding-bottom: 0px;			
+  }
+  
+  .toggleOptionOff {
+      width: 180px;
+      padding-bottom: 8px;
+      text-align: center;
+      display: inline-block;
+      cursor: pointer;
+  }
+  
+  .toggleOptionOn {
+      width: 180px;
+      padding-bottom: 8px;
+      text-align: center;
+      display: inline-block;
+      border-bottom: 3px solid #00aeff;
+  }
+  
+  .apiTable {
+      table-layout: auto;
+      word-break: normal;
+      font-size: 13px;
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 740px;
+      table-layout: fixed;
+  }
+  
+  .parameters > tbody > tr > td {
+      border-bottom: 1px dashed #e0e0e0;
+      padding-top: 1em;
+      padding-bottom: 1em;
+  }
+  
+  .parameters {
+      min-width: 903px;
+  }
+  .parameters span {
+      color: #959595;
+      display: block;
+      font-size: 11px;
+  }
