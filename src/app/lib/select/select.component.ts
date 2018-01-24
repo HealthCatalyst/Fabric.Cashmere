@@ -14,7 +14,7 @@ export class SelectComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { 
+  ngOnInit() {
     if (this.disabled) {
       this.alpha = 0.4;
     }
