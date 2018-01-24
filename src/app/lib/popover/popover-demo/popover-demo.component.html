@@ -9,17 +9,24 @@
     <li>I am just filling up space so I can demo a top placement popover</li>
   </ul>
   <h3>Placement</h3>
-  <button hc-button title="Primary Button" [popoverCloseOnClickOutside]="true" color="primary-alt3" hcPopover="left" popoverPlacement="left" aria-hidden="true">Left</button>
-  <button hc-button title="Primary Button" [popoverCloseOnClickOutside]="true" color="primary" hcPopover="top" popoverPlacement="top" aria-hidden="true">Top</button>
-  <button hc-button title="Primary Button" [popoverCloseOnClickOutside]="true" color="primary-alt1" hcPopover="bottom" popoverPlacement="bottom" aria-hidden="true">Bottom</button>
-  <button hc-button title="Primary Button" [popoverCloseOnClickOutside]="true" color="primary-alt2" hcPopover="right" popoverPlacement="right" aria-hidden="true">Right</button>  
+  <button hc-button [popoverCloseOnClickOutside]="true" color="primary-alt3" hcPopover="left" popoverPlacement="left" aria-hidden="true">Left</button>
+  <button hc-button [popoverCloseOnClickOutside]="true" color="primary" hcPopover="top" popoverPlacement="top" aria-hidden="true">Top</button>
+  <button hc-button [popoverCloseOnClickOutside]="true" color="primary-alt1" hcPopover="bottom" popoverPlacement="bottom" aria-hidden="true">Bottom</button>
+  <button hc-button [popoverCloseOnClickOutside]="true" color="primary-alt2" hcPopover="right" popoverPlacement="right" aria-hidden="true">Right</button>  
   <h3>Dynamic content</h3>
   <div>
       <label>Body</label><br>
       <input type="text" [(ngModel)]="body">
     </div>
-  <button hc-button title="Primary Button" color="primary" [hcPopover]="dynamic" popoverPlacement="bottom" aria-hidden="true">Click Me</button>
+  <button hc-button color="primary" [hcPopover]="dynamic" popoverPlacement="bottom" aria-hidden="true">Click Me</button>
   <hc-popover-content #dynamic title="title">
     <span [(innerText)]="body"></span>
   </hc-popover-content>
+  <h3>Popover with List Items</h3>
+  <button hc-button color="primary" [hcPopover]="options" popoverPlacement="bottom" aria-hidden="true">Options&nbsp;<i class="fa fa-angle-down" aria-hidden="true"></i></button>
+  <hc-popover-content #options>
+      <hc-popover-list-item><button hc-button>Choice 1</button></hc-popover-list-item>
+      <hc-popover-list-item></hc-popover-list-item>
+      <hc-popover-list-item></hc-popover-list-item>
+    </hc-popover-content>
 </div>
