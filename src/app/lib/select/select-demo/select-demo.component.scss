@@ -1,8 +1,3 @@
-.sample-buttons{
-    display: flex;
-    justify-content: space-between;
-    width: 65%;
-}
 pre code {
     background-color: rgba(0,0,0,.03);
     border: 1px solid #999;
@@ -55,22 +50,12 @@ pre code {
       padding-top: 1em;
       padding-bottom: 1em;
   }
-
-  .parameters > tbody > tr > th {
-    border-bottom: 1px dashed #e0e0e0;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    text-align: left;
-  }
-
+  
   .parameters {
       min-width: 903px;
   }
-
   .parameters span {
       color: #959595;
       display: block;
       font-size: 11px;
   }
-
-  

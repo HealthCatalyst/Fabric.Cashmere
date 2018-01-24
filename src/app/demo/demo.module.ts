@@ -8,6 +8,8 @@ import { ButtonDemoComponent } from 'app/lib/button/button-demo/button-demo.comp
 import { ColorDemoComponent } from 'app/lib/color-demo/color-demo.component';
 import { SwatchComponent } from 'app/lib/color-demo/swatch.component';
 import { routes } from './demo-routes';
+import { SelectComponent } from 'app/lib/select/select.component';
+import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
 
 @NgModule({
     imports: [
@@ -23,7 +25,9 @@ import { routes } from './demo-routes';
         SideNavComponent,
         ButtonDemoComponent,
         ColorDemoComponent,
-        SwatchComponent
+        SwatchComponent,
+        SelectComponent,
+        SelectDemoComponent
     ]
 })
 export class DemoModule { }
