@@ -1,11 +1,11 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
-    selector: 'hc-swatch-component',
-    templateUrl: './swatch.component.html',
-    styleUrls: ['./swatch.component.scss']
+    selector: 'hc-swatch-demo-component',
+    templateUrl: './swatch-demo.component.html',
+    styleUrls: ['./swatch-demo.component.scss']
 })
-export class SwatchComponent {
+export class SwatchDemoComponent {
     @Input() public name: String;
     @Input() public hex: String;
     @Input() public isLarge = false;
