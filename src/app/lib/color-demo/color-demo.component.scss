@@ -56,18 +56,25 @@ hc-swatch-component {
 
 }
 
-.slate-gray-100 { background-color: $slate-gray-100; }
-.slate-gray-200 { background-color: $slate-gray-200; }
-.slate-gray-300 { background-color: $slate-gray-300; }
-.slate-gray-400 { background-color: $slate-gray-400; }
-.slate-gray-500 { background-color: $slate-gray-500; }
-.slate-gray-600 { background-color: $slate-gray-600; }
-.gray-100 { background-color: $gray-100; }
-.gray-200 { background-color: $gray-200; }
-.gray-300 { background-color: $gray-300; }
-.gray-400 { background-color: $gray-400; }
-.gray-500 { background-color: $gray-500; }
-.gray-600 { background-color: $gray-600; }
+.color-var-list {
+    li {
+        margin: 10px 0;
+    }
+
+    .mini-swatch {
+        display: inline-block;
+        height: 30px;
+        width: 100px;
+        position: relative;
+        top: 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+    .color-ref {
+        color: $gray-400;
+    }
+}
 
 pre code {
     background-color: rgba(0,0,0,.03);
@@ -83,50 +90,4 @@ pre code {
   
   pre {
       margin: 0;
-  }
-  
-  .codeToggle {
-      padding-top: 15px;
-      padding-bottom: 0px;			
-  }
-  
-  .toggleOptionOff {
-      width: 180px;
-      padding-bottom: 8px;
-      text-align: center;
-      display: inline-block;
-      cursor: pointer;
-  }
-  
-  .toggleOptionOn {
-      width: 180px;
-      padding-bottom: 8px;
-      text-align: center;
-      display: inline-block;
-      border-bottom: 3px solid #00aeff;
-  }
-  
-  .apiTable {
-      table-layout: auto;
-      word-break: normal;
-      font-size: 13px;
-      margin-bottom: 30px;
-      width: 100%;
-      max-width: 740px;
-      table-layout: fixed;
-  }
-  
-  .parameters > tbody > tr > td {
-      border-bottom: 1px dashed #e0e0e0;
-      padding-top: 1em;
-      padding-bottom: 1em;
-  }
-  
-  .parameters {
-      min-width: 903px;
-  }
-  .parameters span {
-      color: #959595;
-      display: block;
-      font-size: 11px;
   }
