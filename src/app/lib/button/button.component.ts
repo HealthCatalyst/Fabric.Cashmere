@@ -8,7 +8,7 @@ export function throwErrorForInvalidButtonColor() {
   throw Error('Unsupported color input value');
 }
 
-type ButtonColor = 'primary' | 'primary-alt1' | 'primary-alt2' | 'primary-alt3' | 'secondary' | 'tertiary';
+type ButtonColor = 'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'tertiary';
 
 @Component({
   selector: 'button[hc-button]',
@@ -22,7 +22,7 @@ type ButtonColor = 'primary' | 'primary-alt1' | 'primary-alt2' | 'primary-alt3' 
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent implements OnChanges {
-  private supportedColors = ['primary', 'primary-alt1', 'primary-alt2', 'primary-alt3', 'secondary', 'tertiary'];
+  private supportedColors = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary'];
 
   @Input() color: ButtonColor = 'primary';
   @Input() disabled = false;

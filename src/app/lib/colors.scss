@@ -47,45 +47,8 @@ $yellow-orange: #e7c447;
 // General Color Vars
 $primary-brand: $blue;
 $primary-action: $green;
-$secondary-action: $purple;
+$primary-alt-action: $purple;
 $destructive-action: $red;
-$neutral-action: $gray-400;
+$neutral-action: $gray-500;
 $error: $deep-red;
 $text: $offblack;
-
-
-// TODO: pull all this stuff out of button components... create button mixin -----
-$primary-button: #00a859;
-$primary-button-hover: #038944;
-$primary-button-pressed: #1a6b36;
-$primary-button-alt1: #ef3f46;
-$primary-button-alt1-hover: #e3233b;
-$primary-button-alt1-pressed: #cc202e;
-$primary-button-alt2: #6e53a3;
-$primary-button-alt2-hover: #60488f;
-$primary-button-alt2-pressed: #513e7a;
-$primary-button-alt3: #6e6f71;
-$primary-button-alt3-hover: #626465;
-$primary-button-alt3-pressed: #515351;
-$secondary-button: #f3f3f4;
-$secondary-button-hover: #eaeaea;
-$secondary-button-pressed: #e2e2e2;
-$secondary-button-text: #555555;
-$secondary-button-border: #cccccc;
-$secondary-button-hover-text: #333333;
-$secondary-button-hover-border: #bababa;
-$secondary-button-pressed-border: #cccccb;
-$cancel-button: #a1a1a1;
-$cancel-button-hover: #6d6e70;
-$cancel-button-pressed: #515353;
-$primary-blue: $blue;
-$hc-gray: #6d6e70;
-// ---------------------------------------------------------------------------
-
-// 1. Colors we don't need?
-// 2. Colors we're missing?
-// 3. -300, -400 type colors ok?
-// 4. Encourage lighten/darken if needed color isn't available?
-// 5. Demo page review
-// 6. Button mixin review
-// 6. Namespacing?

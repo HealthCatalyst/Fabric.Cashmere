@@ -75,10 +75,11 @@
     <p class="description">
         Some general-use color variables, referencing variables above, to decouple color name from an intended purpose.
     </p>
+
     <ul class="color-var-list">
         <li><span class="mini-swatch" [style.backgroundColor]="'#00aeff'"></span><strong>$primary-brand</strong> - $blue</li>
         <li><span class="mini-swatch" [style.backgroundColor]="'#00a859'"></span><strong>$primary-action</strong> - $green</li>
-        <li><span class="mini-swatch" [style.backgroundColor]="'#6e53a3'"></span><strong>$secondary-action</strong> - $purple</li>
+        <li><span class="mini-swatch" [style.backgroundColor]="'#6e53a3'"></span><strong>$primary-alt-action</strong> - $purple</li>
         <li><span class="mini-swatch" [style.backgroundColor]="'#f13c45'"></span><strong>$destructive-action</strong> - $red</li>
         <li><span class="mini-swatch" [style.backgroundColor]="'#a1a1a1'"></span><strong>$neutral-action</strong> - $gray-400</li>
         <li><span class="mini-swatch" [style.backgroundColor]="'#cc2027'"></span><strong>$error</strong> - $deep-red</li>
@@ -94,14 +95,15 @@
     </p>
 
     <ol>
-        <li>If importing the sass variables into your application, first try using the <code>darken()</code> or <code>lighten()</code>
-            functions on an existing color variable.
+        <li>If importing the sass variables into your application, first try manipulating an existing color variable using the built in sass functions
+            <code>darken()</code> or <code>lighten()</code>, or the library provided <code>shade()</code> or <code>tint()</code> functions.
             <pre>
             <code>
             &#x00040;import &quot;../colors&quot;;
     
             .my-component &#123;
-                color: darken($slate-gray-100, 5%);
+                background-color: darken($slate-gray-100, 5%);
+                color: tint($dark-blue, 5%);
             &#125;
             </code>
             </pre>
