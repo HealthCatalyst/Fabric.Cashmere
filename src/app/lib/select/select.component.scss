@@ -1,0 +1,39 @@
+:host select {
+    display: inline-block;
+    color: #333333;
+    background-color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    padding-left: 10px;
+    border: 1.5px solid #D7D7D7;
+    border-radius: 0;
+    height: 35px;
+    width: 100%;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    cursor:pointer;
+
+    &[disabled] {
+        cursor: not-allowed;
+      }
+}
+
+:host label {
+    overflow: hidden; 
+    height: 35px;    
+    position: relative;
+    display: block;
+}
+
+:host label:after {
+    content:"\f078";
+    font-family: FontAwesome;
+    color: #00aeff;
+    padding: 9.5px 18px;
+    position: absolute; right: 0; top: 0;
+    z-index: 1;
+    text-align: center;
+    height: 100%;      
+    pointer-events: none;
+    box-sizing: border-box;   
+}

@@ -12,6 +12,8 @@ import { NavbarModule } from 'app/lib/navbar/navbar.module';
 import { PopoverModule } from 'app/lib/popover/popover.module';
 import { NavbarDemoComponent } from 'app/lib/navbar/navbar-demo/navbar-demo.component';
 import { PopoverDemoComponent } from 'app/lib/popover/popover-demo/popover-demo.component';
+import { SelectComponent } from 'app/lib/select/select.component';
+import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
 
 @NgModule({
     imports: [
@@ -33,6 +35,8 @@ import { PopoverDemoComponent } from 'app/lib/popover/popover-demo/popover-demo.
         ButtonDemoComponent,
         NavbarDemoComponent,
         PopoverDemoComponent,
+        SelectComponent,
+        SelectDemoComponent
     ]
 })
 export class DemoModule { }
