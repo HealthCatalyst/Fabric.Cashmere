@@ -4,10 +4,3 @@
 ul{
     list-style: none;
 }
-a {
-    color: deepskyblue;
-    text-decoration: none;
-    &:hover{
-        color: darken(deepskyblue, 10%);
-    }
-}
