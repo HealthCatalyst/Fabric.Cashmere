@@ -8,7 +8,7 @@ export function throwErrorForInvalidButtonColor() {
   throw Error('Unsupported color input value');
 }
 
-type ButtonColor = 'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'tertiary';
+export type ButtonColor = 'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'tertiary';
 
 @Component({
   selector: 'button[hc-button]',
@@ -36,14 +36,14 @@ export class ButtonComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     const color = changes['color'];
     if (color) {
-      if (!this.supportedColors.includes(color.currentValue)) {
+      if (!(this.supportedColors.indexOf(color.currentValue) < 0)) {
         throwErrorForInvalidButtonColor();
       }
       this.changeColor(color.previousValue, color.currentValue);
     }
   }
 
-  private changeColor(previousColor, newColor): void {
+  private changeColor(previousColor: ButtonColor, newColor: ButtonColor): void {
     if (previousColor) {
       this.renderer.removeClass(this.elementRef.nativeElement, `hc-${previousColor}`);
     }
