@@ -36,7 +36,7 @@ export class ButtonComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     const color = changes['color'];
     if (color) {
-      if (!(this.supportedColors.indexOf(color.currentValue) < 0)) {
+      if (this.supportedColors.indexOf(color.currentValue) < 0) {
         throwErrorForInvalidButtonColor();
       }
       this.changeColor(color.previousValue, color.currentValue);
