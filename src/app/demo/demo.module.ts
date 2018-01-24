@@ -6,8 +6,8 @@ import { DemoComponent } from 'app/demo/demo.component';
 import { SideNavComponent } from 'app/demo/side-nav/side-nav.component';
 import { ButtonDemoComponent } from 'app/lib/button/button-demo/button-demo.component';
 import { routes } from './demo-routes';
-import { DropdownComponent } from 'app/lib/dropdown/dropdown.component';
-import { DropdownDemoComponent } from 'app/lib/dropdown/dropdown-demo/dropdown-demo.component';
+import { SelectComponent } from 'app/lib/select/select.component';
+import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
 
 @NgModule({
     imports: [
@@ -22,8 +22,8 @@ import { DropdownDemoComponent } from 'app/lib/dropdown/dropdown-demo/dropdown-d
         DemoComponent,
         SideNavComponent,
         ButtonDemoComponent,
-        DropdownComponent,
-        DropdownDemoComponent
+        SelectComponent,
+        SelectDemoComponent
     ]
 })
 export class DemoModule { }

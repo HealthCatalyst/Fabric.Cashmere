@@ -8,9 +8,14 @@
     border: 1.5px solid #D7D7D7;
     border-radius: 0;
     height: 35px;
+    width: 100%;
     -webkit-appearance:none;
     -moz-appearance:none;
     cursor:pointer;
+
+    &[disabled] {
+        cursor: not-allowed;
+      }
 }
 
 :host label {
