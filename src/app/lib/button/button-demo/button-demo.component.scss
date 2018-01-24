@@ -1,11 +1,13 @@
-.sample-buttons{
+@import "../../colors.scss";
+
+.sample-buttons {
     display: flex;
     justify-content: space-between;
     width: 65%;
 }
 pre code {
-    background-color: rgba(0,0,0,.03);
-    border: 1px solid #999;
+    background-color: $gray-100;
+    border: 1px solid $gray-400;
     display: block;
     padding: 20px;
   }
@@ -37,7 +39,7 @@ pre code {
       padding-bottom: 8px;
       text-align: center;
       display: inline-block;
-      border-bottom: 3px solid #00aeff;
+      border-bottom: 3px solid $primary-brand;
   }
   
   .apiTable {
@@ -51,13 +53,13 @@ pre code {
   }
   
   .parameters > tbody > tr > td {
-      border-bottom: 1px dashed #e0e0e0;
+      border-bottom: 1px dashed $gray-200;
       padding-top: 1em;
       padding-bottom: 1em;
   }
 
   .parameters > tbody > tr > th {
-    border-bottom: 1px dashed #e0e0e0;
+    border-bottom: 1px dashed $gray-200;
     padding-top: 1em;
     padding-bottom: 1em;
     text-align: left;
@@ -68,9 +70,7 @@ pre code {
   }
 
   .parameters span {
-      color: #959595;
+      color: $gray-500;
       display: block;
       font-size: 11px;
   }
-
-  

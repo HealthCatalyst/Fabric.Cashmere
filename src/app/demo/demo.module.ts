@@ -5,6 +5,8 @@ import { ButtonModule } from 'app/lib/button/button.module';
 import { DemoComponent } from 'app/demo/demo.component';
 import { SideNavComponent } from 'app/demo/side-nav/side-nav.component';
 import { ButtonDemoComponent } from 'app/lib/button/button-demo/button-demo.component';
+import { ColorDemoComponent } from 'app/lib/color-demo/color-demo.component';
+import { SwatchDemoComponent } from 'app/lib/color-demo/swatch-demo.component';
 import { routes } from './demo-routes';
 import { SelectComponent } from 'app/lib/select/select.component';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
@@ -22,6 +24,8 @@ import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.comp
         DemoComponent,
         SideNavComponent,
         ButtonDemoComponent,
+        ColorDemoComponent,
+        SwatchDemoComponent,
         SelectComponent,
         SelectDemoComponent
     ]
