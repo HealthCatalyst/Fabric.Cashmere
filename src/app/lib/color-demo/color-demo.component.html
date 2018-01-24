@@ -2,7 +2,7 @@
     <h2>Color</h2>
     <p>
         Following are the suggested colors for use within your application. Some expansion beyond the general palette is acceptable as long as the
-        additional colors are similar in value/saturation. It's reccommended that you import the colors and leverage the sass variables.
+        additional colors are similar in value/saturation. It's recommended that you import the colors and leverage the sass variables.
     </p>
     
     <h4>Primary Palette</h4>
@@ -71,24 +71,46 @@
 
     <hr>
 
-    <h4>Stratifying and Adding Colors</h4>
+    <h4>General Color Variables</h4>
     <p class="description">
-        There may be times that a product may either need a variation of a color in either in saturation or value, or
-        even still just need a more expansive color pallet. In these cases we recommend using coolors.co to stratify the
-        base colors spelled out on the previous page or to generate colors while keeping close to the same color
-        scheme. This color tool will also help you determine you should use dark or light on top of your color.
+        Some general-use color variables, referencing variables above, to decouple color name from an intended purpose.
     </p>
+    <ul class="color-var-list">
+        <li><span class="mini-swatch" [style.backgroundColor]="'#00aeff'"></span><strong>$primary-brand</strong> - $blue</li>
+        <li><span class="mini-swatch" [style.backgroundColor]="'#00a859'"></span><strong>$primary-action</strong> - $green</li>
+        <li><span class="mini-swatch" [style.backgroundColor]="'#6e53a3'"></span><strong>$secondary-action</strong> - $purple</li>
+        <li><span class="mini-swatch" [style.backgroundColor]="'#f13c45'"></span><strong>$destructive-action</strong> - $red</li>
+        <li><span class="mini-swatch" [style.backgroundColor]="'#a1a1a1'"></span><strong>$neutral-action</strong> - $gray-400</li>
+        <li><span class="mini-swatch" [style.backgroundColor]="'#cc2027'"></span><strong>$error</strong> - $deep-red</li>
+        <li><span class="mini-swatch" [style.backgroundColor]="'#333333'"></span><strong>$text</strong> - $offblack</li>
+    </ul>
 
     <hr>
 
-    <h4>How to Use</h4>
-    <pre>
-        <code>
-        &#x00040;import &quot;../colors&quot;;
+    <h4>Stratifying and Adding Colors</h4>
+    <p class="description">
+        There may be times that a product will need to expand the color palette, or use a variation on
+        exisiting colors. In these cases we recommend one of two approaches:
+    </p>
 
-        .my-component &#123;
-            background-color: $slate-gray-100;
-        &#125;
-        </code>
-    </pre>
+    <ol>
+        <li>If importing the sass variables into your application, first try using the <code>darken()</code> or <code>lighten()</code>
+            functions on an existing color variable.
+            <pre>
+            <code>
+            &#x00040;import &quot;../colors&quot;;
+    
+            .my-component &#123;
+                color: darken($slate-gray-100, 5%);
+            &#125;
+            </code>
+            </pre>
+        
+        
+        </li>
+        <li>If that doesn't suffice, or you are not using the sass variables, try using <a hc-button href="coolors.co" target="_blank">coolors.co</a>
+            to help you stratify the base colors above or to generate new colors that fit within the color scheme. This color tool will also help you determine
+            when you should use dark or light text on top of your color.
+        </li>
+    </ol>
 </div>
