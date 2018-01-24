@@ -1,11 +1,11 @@
 @import '../colors.scss';
 
-$navbar-color: $header-blue !default;
-$navbar-brand: $primary-blue !default;
+$navbar-color: $charcoal-blue !default;
+$navbar-brand: $blue !default;
 $navbar-height: 53px !default;
 $navbar-app-padding: 0 75px 0 25px !default;
 $navbar-text: $white;
-$navbar-text-inactive: $menu-gray;
+$navbar-text-inactive: $gray-300;
 
 .navbar {
     height: $navbar-height;
@@ -94,7 +94,7 @@ $navbar-text-inactive: $menu-gray;
                 border-bottom: 5px solid transparent;
                 text-decoration: none;
                 &.active {
-                    border-bottom: 5px solid $primary-blue;
+                    border-bottom: 5px solid $blue;
                 }
                 &.active,&:hover,&:active{
                     color: $navbar-text;                

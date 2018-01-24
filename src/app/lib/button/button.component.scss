@@ -1,22 +1,24 @@
 @import '../colors.scss';
+@import '../mixins.scss';
 
-@mixin primary-button-theme($background-color, $background-color-hover,$background-color-active, $background-color-focus) {
-  background-color: $background-color;
+/// Sets up colors for a button
+/// @param {Color} $color - base color of the button
+/// @param {Number} $darken-pct - percentage amount by which to darken color in hover(1x) and active(2x) states
+/// @return {Color}
+@mixin colorButton($color, $darken-pct: 10%){
   color: $white;
-  border: none;
+  background-color: $color;
+
   &:hover {
-    background-color: $background-color-hover;
-    color: $white;
+    background-color: shade($color, $darken-pct);
   }
   &:active {
-    background-color: $background-color-active;
-    color: $white;
-    outline: none !important;
+    background-color: shade($color, $darken-pct * 2);
   }
-  &[disabled] {
-    background-color: #f7f7f7;
-    color: #999;
-    border: none;
+  &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active {
+    cursor: not-allowed;
+    background-color: $gray-100;
+    color: $gray-300;
   }
 }
 
@@ -37,93 +39,46 @@
   cursor: pointer;
   user-select: none;
   background-image: none;
-  border: 1px solid transparent;
+  border: none;
   border-radius: 5px;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  &:not([disabled]):focus, &:not([disabled]):active:focus {
+  &:focus {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
   }
+
   &:active {
     background-image: none;
-  }
-  &[disabled] {
-    cursor: not-allowed;
-    filter: alpha(opacity=65);
-    opacity: .65;
     outline: none;
-
-    &:hover, &:focus {
-      background-color: #f7f7f7;
-      border: none;
-      color: #999;
-    }
-  }
-  &:active:hover,
-  &:active:focus {
-    color: #fff;
-    background-color: $primary-button-pressed;
-    border: none;
   }
 }
 
-:host(.hc-primary) {
-  @include primary-button-theme($primary-button, $primary-button-hover, $primary-button-pressed, $primary-button-pressed);
-}
-
-:host(.hc-primary-alt1) {
-  @include primary-button-theme($primary-button-alt1, $primary-button-alt1-hover, $primary-button-alt1-pressed, $primary-button-alt1-pressed);
-}
-
-:host(.hc-primary-alt2) {
-  @include primary-button-theme($primary-button-alt2, $primary-button-alt2-hover, $primary-button-alt2-pressed, $primary-button-alt2-pressed);
-}
-
-:host(.hc-primary-alt3) {
-  @include primary-button-theme($primary-button-alt3, $primary-button-alt3-hover, $primary-button-alt3-pressed, $primary-button-alt3-pressed);
-}
+:host(.hc-primary) { @include colorButton($primary-action);}
+:host(.hc-primary-alt) { @include colorButton($primary-alt-action); }
+:host(.hc-destructive) { @include colorButton($destructive-action); }
+:host(.hc-neutral) { @include colorButton($neutral-action); }
 
 :host(.hc-secondary) {
-  background-color: $secondary-button;
-  color: $secondary-button-text;
-  border: 2px solid $secondary-button-border;
-  &:hover {
-    background-color: $secondary-button-hover;
-    color: $secondary-button-hover-text;
-    border: 2px solid $secondary-button-hover-border;
-  }
-  &:active {
-    background-color: $secondary-button-pressed;
-    color: $secondary-button-hover-text;
-    border: 2px solid $secondary-button-pressed-border;
-    outline: none !important;
-  }
-  &[disabled] {
-    background-color: #f7f7f7;
-    color: #999;
-    border: none;
-  }
+  @include colorButton($gray-100, 5%);
+  color: $gray-600;
+  border: 2px solid $gray-300;
 }
 
 :host(.hc-tertiary) {
   background-color: transparent;
-  color: $primary-blue;
+  color: $primary-brand;
   font-weight: bold;
-  border: none;
+
   &:hover {
-    background-color: transparent;
-    color: lighten($primary-blue, 10%);
+    color: lighten($primary-brand, 10%);
   }
   &:active {
-    background-color: transparent;
-    color: darken($primary-blue, 10%);
-    outline: none !important;
+    color: darken($primary-brand, 10%);
   }
+
   &[disabled] {
-    background-color: transparent;
-    color: $hc-gray;
-    border: none;
+    color: $gray-500;
   }
 }
 
@@ -144,7 +99,7 @@
 }
 
 :host( a ) {
-  color: $primary-blue;
+  color: $primary-brand;
   padding-left: 0px;
   padding-right: 0px;
   min-width: 0px;
@@ -154,12 +109,12 @@
 
   &:hover {
     background-color: transparent;
-    color: lighten($primary-blue, 10%);
+    color: lighten($primary-brand, 10%);
   }
   &:active:hover,
   &:active:focus {
     background-color: transparent;
-    color: darken($primary-blue, 10%);
+    color: darken($primary-brand, 10%);
     outline: none !important;
   }
 }

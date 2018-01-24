@@ -1,0 +1,5 @@
+<div class="swatch-container">
+    <div class="swatch" [ngClass]="{'large': isLarge, 'add-border': needsBorder}" [style.backgroundColor]="hex"></div>
+    <div *ngIf="name">${{name}}</div>
+    <div class="hex">{{hex}}</div>
+</div>

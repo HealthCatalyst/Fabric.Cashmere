@@ -4,7 +4,7 @@ $zindex-popover:                      1060 !default;
 $popover-bg:                          $white !default;
 $popover-max-width:                   276px !default;
 $popover-border-color:                rgba($black,.2) !default;
-$popover-fallback-border-color:       $modal-border-gray !default;
+$popover-fallback-border-color:       $slate-gray-600 !default;
 $popover-title-bg:                    darken($popover-bg, 3%) !default;
 $popover-arrow-width:                 10px !default;
 $popover-arrow-color:                 $popover-bg !default;
