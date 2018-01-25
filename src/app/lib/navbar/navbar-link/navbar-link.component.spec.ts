@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavbarLinkComponent } from './navbar-link.component';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('NavbarLinkComponent', () => {
   let component: NavbarLinkComponent;
@@ -8,7 +10,11 @@ describe('NavbarLinkComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarLinkComponent ]
+      imports: [
+        RouterModule.forRoot([{ path: '', component: NavbarLinkComponent}])
+      ],
+      declarations: [ NavbarLinkComponent ],
+      providers: [{provide: APP_BASE_HREF, useValue : '/' }]
     })
     .compileComponents();
   }));
