@@ -11,11 +11,12 @@ export const routes: Routes = [
         path: 'demo',
         component: DemoComponent,
         children: [
-            { path: 'buttons', component: ButtonDemoComponent, pathMatch: 'full'},
-            { path: 'navbar', component: NavbarDemoComponent, pathMatch: 'full'},
-            { path: 'popover', component: PopoverDemoComponent, pathMatch: 'full'},
-            { path: 'select', component: SelectDemoComponent, pathMatch: 'full' },
-            { path: 'color', component: ColorDemoComponent, pathMatch: 'full'  }
+            { path: 'buttons', component: ButtonDemoComponent},
+            { path: 'navbar', component: NavbarDemoComponent},
+            { path: 'popover', component: PopoverDemoComponent},
+            { path: 'select', component: SelectDemoComponent },
+            { path: 'color', component: ColorDemoComponent  },
+            { path: '**', redirectTo: 'buttons' }
         ]
     }
 ];

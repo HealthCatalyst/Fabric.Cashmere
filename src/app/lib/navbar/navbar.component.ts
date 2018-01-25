@@ -15,6 +15,8 @@ export class NavbarComponent implements OnInit {
 
   @Input() homeUri: string;
 
+  @Input() fixedTop: boolean = false;
+
   constructor() { }
 
   ngOnInit() {

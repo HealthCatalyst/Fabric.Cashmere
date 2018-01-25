@@ -4,13 +4,22 @@ $navbar-color: $charcoal-blue !default;
 $navbar-brand: $blue !default;
 $navbar-height: 53px !default;
 $navbar-app-padding: 0 75px 0 25px !default;
-$navbar-text: $white;
-$navbar-text-inactive: $gray-300;
+$navbar-text: $white !default;
+$navbar-text-inactive: $gray-300 !default;
+$navbar-z-index: 1030 !default;
 
 .navbar {
     height: $navbar-height;
     background-color: $navbar-color;   
     display:flex;
+
+    &.fixed-top {
+        top: 0;
+        position: fixed;
+        right: 0;
+        left: 0;
+        z-index: $navbar-z-index;
+    }
 
     .icon.links {
         margin-left: auto;
