@@ -1,4 +1,4 @@
-w<div class="demo-page">
+<div class="demo-page">
   <h2>Popover</h2>
   <p>A lightweight, extensible component for fancy popover creation. The popover directive supports multiple placements, optional
     transition animation, and more.</p>
@@ -11,22 +11,29 @@ w<div class="demo-page">
   <h3>Placement</h3>
   <button hc-button [popoverCloseOnClickOutside]="true" color="primary-alt" hcPopover="left" popoverPlacement="left" aria-hidden="true">Left</button>
   <button hc-button [popoverCloseOnClickOutside]="true" color="primary" hcPopover="top" popoverPlacement="top" aria-hidden="true">Top</button>
-  <button hc-button [popoverCloseOnClickOutside]="true" color="destructive" hcPopover="bottom" popoverPlacement="bottom" aria-hidden="true">Bottom</button>
-  <button hc-button [popoverCloseOnClickOutside]="true" color="neutral" hcPopover="right" popoverPlacement="right" aria-hidden="true">Right</button>  
+  <button hc-button [popoverCloseOnClickOutside]="true" color="neutral" hcPopover="bottom" popoverPlacement="bottom" aria-hidden="true">Bottom</button>
+  <button hc-button [popoverCloseOnClickOutside]="true" color="secondary" hcPopover="right" popoverPlacement="right" aria-hidden="true">Right</button>
   <h3>Dynamic content</h3>
   <div>
-      <label>Body</label><br>
-      <input type="text" [(ngModel)]="body">
-    </div>
+    <label>Body</label>
+    <br>
+    <input type="text" [(ngModel)]="body">
+  </div>
   <button hc-button color="primary" [hcPopover]="dynamic" popoverPlacement="bottom" aria-hidden="true">Click Me</button>
   <hc-popover-content #dynamic title="title">
     <span [(innerText)]="body"></span>
   </hc-popover-content>
   <h3>Popover with List Items</h3>
-  <button hc-button color="primary" [hcPopover]="options" popoverPlacement="bottom" aria-hidden="true">Options&nbsp;<i class="fa fa-angle-down" aria-hidden="true"></i></button>
+  <button hc-button color="primary" [hcPopover]="options" popoverPlacement="top auto" aria-hidden="true">
+    <i class="fa fa-gear" aria-hidden="true"></i>
+    &nbsp;Options&nbsp;
+    <i class="fa fa-angle-down" aria-hidden="true"></i>
+  </button>
   <hc-popover-content #options>
-      <hc-popover-list-item><button hc-button>Choice 1</button></hc-popover-list-item>
-      <hc-popover-list-item></hc-popover-list-item>
-      <hc-popover-list-item></hc-popover-list-item>
-    </hc-popover-content>
+    <a hc-button>Choice 1</a>
+    <hr>
+    <a hc-button>Choice 2</a>
+    <hr>
+    <a hc-button>Choice 3</a>
+  </hc-popover-content>
 </div>
