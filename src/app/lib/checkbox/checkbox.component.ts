@@ -9,7 +9,6 @@ import { ControlValueAccessor } from '@angular/forms';
     styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent implements OnInit, ControlValueAccessor {
-    @Input() label: string;
     @Input() name: string;
     @Input() disabled: boolean = false;
 

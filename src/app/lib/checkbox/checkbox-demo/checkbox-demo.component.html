@@ -1,10 +1,50 @@
 <div class="demo-page">
     <h2 style="margin: 0">Checkbox</h2>
-    <h4 style="font-weight: 300; margin-top: 0">Checkboxes are boxes you can check.</h4>
+    <h4 style="font-weight: 300; margin-top: 0">Checkboxes allow the user to make a binary choice, i.e. a choice between one of two possible mutually exclusive options.</h4>
 
     <h5>Standard</h5>
-    <hc-checkbox color="light" name="light">Light Checkbox</hc-checkbox>
+    <hc-checkbox name="light">Light Checkbox</hc-checkbox>
 
     <h5>Disabled</h5>
-    <hc-checkbox color="dark" disabled="true" name="disabled">Disabled Checkbox</hc-checkbox>
+    <hc-checkbox disabled="true" name="disabled">Disabled Checkbox</hc-checkbox>
+
+    <br>
+    <br>
+    <hr style="height:1px;border:none;background-color:#E5E5E5;">
+    <br>
+    <p class="description">
+        <b>Checkbox Usage</b>
+        <br>Checkboxes are typically used with labels, but can be used without in certain situations (table columns, etc).</p>
+    <br>
+    <hr style="height:1px;border:none;background-color:#E5E5E5;">
+    <br>
+    <div class="headerName">Angular Component</div>
+  <br>
+      <pre>
+          <code>
+&#x3C;hc-checkbox name=&#x22;name&#x22;&#x3E;Checkbox Label&#x3C;/hc-checkbox&#x3E;
+          </code>
+      </pre>
+      <br>
+  <hr style="height:1px;border:none;background-color:#E5E5E5;">
+  <br>
+  <div class="headerName">Component Parameters</div>
+  <br>
+
+  <table class="apiTable parameters">
+      <tr>
+          <th>name</th>
+          <td>
+              <span>Type:</span> String
+          </td>
+          <td width=50%>Required ndentifier used to connect the checkbox and label</td>
+      </tr>
+      <tr>
+        <th>[disabled]</th>
+        <td>
+            <span>Type:</span> Boolean
+        </td>
+        <td width=50%>Boolean value that enables/disables the button</td>
+      </tr>
+  </table>
 </div>
