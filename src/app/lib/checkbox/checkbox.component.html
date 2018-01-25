@@ -1,6 +1,6 @@
 <div class="hc-checkbox-container" [ngClass]="{'disabled': disabled}">
     <input type="checkbox" [attr.id]="name" [disabled]="disabled" [(ngModel)]="model" />
-    <label class="hc-checkbox-overlay" [attr.for]="name" [ngClass]="color"></label>
+    <label class="hc-checkbox-overlay" [attr.for]="name"></label>
     <label class="hc-checkbox-label" [attr.for]="name">
         <ng-content></ng-content>
     </label>
