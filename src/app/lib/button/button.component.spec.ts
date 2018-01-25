@@ -59,7 +59,7 @@ describe('ButtonComponent', () => {
 
   it('should apply class based on color property', () => {
     const testApp = new TestAppReference();
-    const buttonColors = ['primary', 'primary-alt1', 'primary-alt2', 'primary-alt3', 'secondary', 'tertiary'];
+    const buttonColors = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary'];
 
     buttonColors.forEach(color => {
       testApp.setColor(color);

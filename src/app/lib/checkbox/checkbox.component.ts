@@ -3,15 +3,12 @@
 import { Component, Input, ElementRef, OnInit } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
-type CheckboxColor = 'dark' | 'light';
-
 @Component({
     selector: 'hc-checkbox',
     templateUrl: './checkbox.component.html',
     styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent implements OnInit, ControlValueAccessor {
-    @Input() color: CheckboxColor = 'light';
     @Input() label: string;
     @Input() name: string;
     @Input() disabled: boolean = false;
