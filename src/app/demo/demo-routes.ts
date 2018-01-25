@@ -15,7 +15,7 @@ export const routes: Routes = [
                 component: ColorDemoComponent
             },
             {
-                path: 'buttons',
+                path: 'button',
                 component: ButtonDemoComponent
             },
             {

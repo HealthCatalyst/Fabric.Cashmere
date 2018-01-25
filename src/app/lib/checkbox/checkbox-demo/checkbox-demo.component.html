@@ -3,7 +3,7 @@
     <h4 style="font-weight: 300; margin-top: 0">Checkboxes allow the user to make a binary choice, i.e. a choice between one of two possible mutually exclusive options.</h4>
 
     <h5>Standard</h5>
-    <hc-checkbox name="light">Light Checkbox</hc-checkbox>
+    <hc-checkbox name="light">Standard Checkbox</hc-checkbox>
 
     <h5>Disabled</h5>
     <hc-checkbox disabled="true" name="disabled">Disabled Checkbox</hc-checkbox>
@@ -37,14 +37,21 @@
           <td>
               <span>Type:</span> String
           </td>
-          <td width=50%>Required ndentifier used to connect the checkbox and label</td>
+          <td width=50%>Required identifier used to connect the checkbox and label</td>
       </tr>
       <tr>
         <th>[disabled]</th>
         <td>
             <span>Type:</span> Boolean
         </td>
-        <td width=50%>Boolean value that enables/disables the button</td>
+        <td width=50%>Boolean value that enables/disables the checkbox</td>
+      </tr>
+      <tr>
+        <th>[(model)]</th>
+        <td>
+            <span>Type:</span> Boolean
+        </td>
+        <td width=50%>Boolean value for two way binding to the checkbox</td>
       </tr>
   </table>
 </div>
