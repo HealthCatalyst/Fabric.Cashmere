@@ -8,6 +8,9 @@ import { ButtonDemoComponent } from 'app/lib/button/button-demo/button-demo.comp
 import { ColorDemoComponent } from 'app/lib/color-demo/color-demo.component';
 import { SwatchDemoComponent } from 'app/lib/color-demo/swatch-demo.component';
 import { routes } from './demo-routes';
+import { CheckboxDemoComponent } from 'app/lib/checkbox/checkbox-demo/checkbox-demo.component';
+import { CheckboxModule } from 'app/lib/checkbox/checkbox.module';
+import { CheckboxComponent } from 'app/lib/checkbox/checkbox.component';
 import { SelectComponent } from 'app/lib/select/select.component';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
 
@@ -15,6 +18,7 @@ import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.comp
     imports: [
         BrowserModule,
         ButtonModule,
+        CheckboxModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -24,6 +28,7 @@ import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.comp
         DemoComponent,
         SideNavComponent,
         ButtonDemoComponent,
+        CheckboxDemoComponent,
         ColorDemoComponent,
         SwatchDemoComponent,
         SelectComponent,
