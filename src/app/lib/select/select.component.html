@@ -1,0 +1,6 @@
+<label [style.opacity]="alpha">
+    <select [disabled]="disabled" required>
+      <option *ngIf="placeholder" value="" disabled selected hidden>{{placeholder}}</option>
+      <option *ngFor="let line of options" value="{{line}}">{{line}}</option>
+    </select>
+</label>
