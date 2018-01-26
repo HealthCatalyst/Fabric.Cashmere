@@ -19,6 +19,7 @@ import { CheckboxModule } from 'app/lib/checkbox/checkbox.module';
 import { CheckboxComponent } from 'app/lib/checkbox/checkbox.component';
 import { SelectComponent } from 'app/lib/select/select.component';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
+import { AppSwitcherModule } from 'app/lib/app-switcher/app-switcher.module';
 
 @NgModule({
     imports: [
@@ -28,12 +29,15 @@ import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.comp
         PopoverModule,
         FormsModule,
         CheckboxModule,
+        AppSwitcherModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
         ButtonModule,
         NavbarModule,
-        PopoverModule
+        PopoverModule,
+        AppSwitcherModule,
+        CheckboxModule
     ],
     declarations: [
         DemoComponent,

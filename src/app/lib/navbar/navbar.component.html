@@ -1,8 +1,12 @@
 <nav class="navbar" [ngClass]="{'fixed-top': fixedTop}">
-    <div class="navbar-brand">
+    <div #defaultbrand class="navbar-brand" *ngIf="appswitcherbrand.children.length == 0">
         <a [routerLink]="homeUri" class="brand">
             <img src="./assets/TriFlame.svg">
         </a>
+    </div>
+    <div #appswitcherbrand class="navbar-brand">
+        <ng-content select="hc-app-switcher">            
+        </ng-content>
     </div>
     <div class="navbar-app">
         <a [routerLink]="homeUri" class="app" *ngIf="appIcon">

@@ -33,7 +33,10 @@ $navbar-z-index: 1030 !default;
         display: flex;
         justify-content: center;
         align-items: center;
-
+        // if <hc-app-switcher> is not present, hide it
+        & + .navbar-brand {
+            display:none;
+        }
         .brand {
             &>img {
                 max-width:70%;
@@ -57,8 +60,8 @@ $navbar-z-index: 1030 !default;
 
     .app {
         &>img {
-            max-height:70%;
-            max-width:70%;
+            height:70%;
+            width:70%;
         }
         display: flex;
         align-items: center;
