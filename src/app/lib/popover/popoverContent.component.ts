@@ -1,11 +1,12 @@
-import { Component, Input, AfterViewInit, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter, Renderer2,
+import { Component, ViewEncapsulation, Input, AfterViewInit, ChangeDetectorRef, OnDestroy, ViewChild, EventEmitter, Renderer2,
     ElementRef } from '@angular/core';
 import { PopoverDirective } from './popover.directive';
 
 @Component({
     styleUrls: ['./popoverContent.component.scss'],
     selector: 'hc-popover-content',
-    templateUrl: './popoverContent.component.html'
+    templateUrl: './popoverContent.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 export class PopoverContentComponent implements AfterViewInit, OnDestroy {
     listenClickFunc: any;

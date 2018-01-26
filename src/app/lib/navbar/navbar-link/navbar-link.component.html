@@ -1,4 +1,4 @@
-<a [routerLink]="uri" routerLinkActive="active" [ngClass]="{'active': active }">
+<a [routerLink]="uri" routerLinkActive="active" [ngClass]="{'active': active }" [routerLinkActiveOptions]="{exact: exact}">
     <span>
         <ng-content></ng-content>
     </span>

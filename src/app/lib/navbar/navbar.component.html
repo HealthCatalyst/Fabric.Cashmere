@@ -1,11 +1,11 @@
 <nav class="navbar" [ngClass]="{'fixed-top': fixedTop}">
     <div class="navbar-brand">
-        <a routerLink="homeUri" class="brand">
+        <a [routerLink]="homeUri" class="brand">
             <img src="./assets/TriFlame.svg">
         </a>
     </div>
     <div class="navbar-app">
-        <a routerLink="homeUri" class="app" *ngIf="appIcon">
+        <a [routerLink]="homeUri" class="app" *ngIf="appIcon">
             <img src="{{appIcon}}">
         </a>
     </div>

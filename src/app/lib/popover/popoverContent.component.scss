@@ -40,6 +40,16 @@ $popover-arrow-outer-fallback-color:  darken($popover-fallback-border-color, 20%
     background-color: $popover-title-bg;
     border-bottom: 1px solid darken($popover-title-bg, 5%);
   }
+
+  hr {
+      margin: 0;
+      border: 0;
+      border-bottom: 1px solid #dad9d8;
+  }
+
+  .popover-option {
+      margin: 10px 10px 10px 0px;
+  }
   
   .popover-content {
     padding: 9px 14px;
