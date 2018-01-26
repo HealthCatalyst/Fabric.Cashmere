@@ -14,6 +14,9 @@ import { NavbarModule } from 'app/lib/navbar/navbar.module';
 import { PopoverModule } from 'app/lib/popover/popover.module';
 import { NavbarDemoComponent } from 'app/lib/navbar/navbar-demo/navbar-demo.component';
 import { PopoverDemoComponent } from 'app/lib/popover/popover-demo/popover-demo.component';
+import { CheckboxDemoComponent } from 'app/lib/checkbox/checkbox-demo/checkbox-demo.component';
+import { CheckboxModule } from 'app/lib/checkbox/checkbox.module';
+import { CheckboxComponent } from 'app/lib/checkbox/checkbox.component';
 import { SelectComponent } from 'app/lib/select/select.component';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
 
@@ -24,6 +27,7 @@ import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.comp
         NavbarModule,
         PopoverModule,
         FormsModule,
+        CheckboxModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -37,6 +41,7 @@ import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.comp
         ButtonDemoComponent,
         NavbarDemoComponent,
         PopoverDemoComponent,
+        CheckboxDemoComponent,
         ColorDemoComponent,
         SwatchDemoComponent,
         SelectComponent,

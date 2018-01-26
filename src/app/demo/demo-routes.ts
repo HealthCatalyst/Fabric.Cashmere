@@ -5,18 +5,41 @@ import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.comp
 import { DemoComponent } from 'app/demo/demo.component';
 import { NavbarDemoComponent } from 'app/lib/navbar/navbar-demo/navbar-demo.component';
 import { PopoverDemoComponent } from 'app/lib/popover/popover-demo/popover-demo.component';
+import { CheckboxDemoComponent } from 'app/lib/checkbox/checkbox-demo/checkbox-demo.component';
 
 export const routes: Routes = [
     {
         path: 'demo',
         component: DemoComponent,
         children: [
-            { path: 'buttons', component: ButtonDemoComponent},
-            { path: 'navbar', component: NavbarDemoComponent},
-            { path: 'popover', component: PopoverDemoComponent},
-            { path: 'select', component: SelectDemoComponent },
-            { path: 'color', component: ColorDemoComponent  },
-            { path: '**', redirectTo: 'buttons' }
+            {
+                path: 'color',
+                component: ColorDemoComponent
+            },
+            {
+                path: 'button',
+                component: ButtonDemoComponent
+            },
+            {
+                path: 'select',
+                component: SelectDemoComponent
+            },
+            {
+                path: 'checkbox',
+                component: CheckboxDemoComponent
+            },
+            {
+                path: 'navbar',
+                component: NavbarDemoComponent
+            },
+            {
+                path: 'popover',
+                component: PopoverDemoComponent
+            },
+            {
+                path: '**',
+                redirectTo: 'color'
+            }
         ]
     }
 ];

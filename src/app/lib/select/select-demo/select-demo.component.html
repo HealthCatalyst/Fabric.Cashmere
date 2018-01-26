@@ -11,6 +11,9 @@
     <hc-select [disabled]="true" placeholder="Select a city:" [options]="['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando']"></hc-select>
   </div>
   <br>
+  <br>
+    <hr style="height:1px;border:none;background-color:#E5E5E5;">
+  <br>
   <p class="description">
       <b>Select Types</b>
       <br>There are two primary types of dropdown menus used in Cashmere: one is an extension of the <i>button</i> component, and the other is this <i>select</i> component.  The guidelines for which dropdown to use is based off what items are contained in the dropdown. The button dropdown is for a list with action items (e.g. delete all selected items). If the dropdown contains a list of selectable items, then this component should be used.</p>
@@ -35,18 +38,25 @@
 
   <table class="apiTable parameters">
       <tr>
-          <td style="font-weight: 600">placeholder</td>
+          <th>placeholder</th>
           <td>
               <span>Type:</span> String
           </td>
           <td width=50%>Optional string of text to appear before selection is made</td>
       </tr>
       <tr>
-        <td style="font-weight: 600">[options]</td>
+        <th>[options]</th>
         <td>
             <span>Type:</span> Array
         </td>
         <td width=50%>An array of strings for the select options</td>
+    </tr>
+    <tr>
+        <th>[disabled]</th>
+        <td>
+            <span>Type:</span> Boolean
+        </td>
+        <td width=50%>Boolean value that enables/disables the button</td>
     </tr>
   </table>
 
