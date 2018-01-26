@@ -18,7 +18,7 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() placeholder: string;
   @Input() options: Array<string> = [];
   @Input() disabled: boolean = false;
-  _value: any;
+  _value: string;
   onChange: any = () => { };
   onTouched: any = () => { };
 
@@ -30,7 +30,7 @@ export class SelectComponent implements ControlValueAccessor {
     return this._value;
   }
 
-  set value(val) {
+  set value(val: string) {
     this._value = val;
     this.onChange(val);
     this.onTouched();
@@ -38,15 +38,15 @@ export class SelectComponent implements ControlValueAccessor {
 
   constructor() {}
 
-  registerOnChange(fn) {
+  registerOnChange(fn: any) {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn) {
+  registerOnTouched(fn: any) {
     this.onTouched = fn;
   }
 
-  writeValue(value) {
+  writeValue(value: string) {
     if (value) {
       this.value = value;
     }
