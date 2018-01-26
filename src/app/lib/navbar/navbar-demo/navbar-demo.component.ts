@@ -13,7 +13,7 @@ export class NavbarDemoComponent implements OnInit {
   ngOnInit() {
   }
 
-  getcode(): string {
+  navbar(): string {
     const code =
       `<hc-navbar appIcon="./assets/Application-Logo.svg" user="Christine K." [homeUri]="undefined">
 <hc-navbar-link [uri]="undefined">Home</hc-navbar-link>
@@ -33,6 +33,14 @@ export class NavbarDemoComponent implements OnInit {
 <hr>
 <a hc-button href="http://cashmere.azurewebsites.net/">Cashmere Demo</a>
 </hc-popover-content>`;
+    return code;
+  }
+
+  fixedTopNavbar(): string {
+    const code =
+      `body {
+  padding-top: 53px;
+}`;
     return code;
   }
 }
