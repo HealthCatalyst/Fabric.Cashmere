@@ -13,12 +13,15 @@ import { CheckboxModule } from 'app/lib/checkbox/checkbox.module';
 import { CheckboxComponent } from 'app/lib/checkbox/checkbox.component';
 import { SelectComponent } from 'app/lib/select/select.component';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
+import { RadioButtonModule } from 'app/lib/radio-button/radio-button.module';
+import { RadioButtonDemoComponent } from 'app/lib/radio-button/radio-button-demo/radio-button-demo.component';
 
 @NgModule({
     imports: [
         BrowserModule,
         ButtonModule,
         CheckboxModule,
+        RadioButtonModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -29,6 +32,7 @@ import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.comp
         SideNavComponent,
         ButtonDemoComponent,
         CheckboxDemoComponent,
+        RadioButtonDemoComponent,
         ColorDemoComponent,
         SwatchDemoComponent,
         SelectComponent,

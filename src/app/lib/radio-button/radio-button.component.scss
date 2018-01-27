@@ -1,0 +1,69 @@
+@import '../colors';
+
+.hc-radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:hover input ~ .hc-radio-overlay {
+        border-color: $primary-brand;
+    }
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+
+        &:checked ~ .hc-radio-overlay {
+            background-color: $primary-brand;
+            border-color: $primary-brand;
+
+            &:after {
+                display: block;
+            }
+        }
+    }
+
+    .hc-radio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 18px;
+        width: 18px;
+        border: 2px solid $gray-300; 
+        background-color: $white;
+        border-radius: 50%;
+    }
+
+    .hc-radio-overlay:after {
+        top: 5px;
+        left: 5px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: $white;
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        color: $gray-300;
+
+        &:hover input ~ .hc-radio-overlay {
+            border-color: $gray-300;
+        }
+
+        input:checked ~ .hc-radio-overlay {
+            background-color: $gray-200;
+            border-color: $gray-300;
+        }
+    }
+}
