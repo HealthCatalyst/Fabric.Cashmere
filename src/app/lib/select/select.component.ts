@@ -50,7 +50,7 @@ export class SelectComponent implements ControlValueAccessor {
 
   writeValue(value: string) {
     if (value) {
-      this.value = value;
+      this._value = value;
     }
   }
 
