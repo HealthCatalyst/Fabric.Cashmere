@@ -16,13 +16,18 @@ import { SelectModule } from 'app/lib/select/select.module';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
 import { IconModule } from '../lib/icon/icon.module';
 import { HomeComponent } from 'app/home/home.component';
+import { DrawerDemoComponent } from '../lib/drawer/drawer-demo/drawer-demo.component';
+import { DrawerModule } from '../lib/drawer/drawer.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     ButtonModule,
     CheckboxModule,
     IconModule,
+    DrawerModule,
     VerticalTabsModule,
     SelectModule,
     RouterModule.forRoot(routes)
@@ -36,6 +41,7 @@ import { HomeComponent } from 'app/home/home.component';
     ColorDemoComponent,
     SwatchDemoComponent,
     SelectDemoComponent,
+    DrawerDemoComponent,
     VerticalTabsDemoComponent
   ]
 })
