@@ -13,6 +13,7 @@ import { CheckboxModule } from 'app/lib/checkbox/checkbox.module';
 import { CheckboxComponent } from 'app/lib/checkbox/checkbox.component';
 import { SelectModule } from './../lib/select/select.module';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
+import { HomeComponent } from 'app/home/home.component';
 
 @NgModule({
     imports: [
@@ -24,12 +25,13 @@ import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.comp
     ],
     declarations: [
         DemoComponent,
+        HomeComponent,
         SideNavComponent,
         ButtonDemoComponent,
         CheckboxDemoComponent,
         ColorDemoComponent,
         SwatchDemoComponent,
-        SelectDemoComponent
+        SelectDemoComponent,
     ]
 })
 export class DemoModule { }
