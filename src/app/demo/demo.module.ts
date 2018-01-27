@@ -35,8 +35,9 @@ import { HomeComponent } from 'app/home/home.component';
     CheckboxDemoComponent,
     ColorDemoComponent,
     SwatchDemoComponent,
-    SelectComponent,
-    SelectDemoComponent
+    SelectDemoComponent,
+    VerticalTabsDemoComponent
   ]
 })
-export class DemoModule { }
+export class DemoModule {
+}
