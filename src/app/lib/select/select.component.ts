@@ -25,7 +25,7 @@ export class SelectComponent implements ControlValueAccessor {
   onTouched: any = () => { };
 
   get alpha() {
-    return this.disabled ? 0.4 : 1.0;
+    return this.disabled ? this.disabledAlpha : this.enabledAlpha;
   }
 
   get value() {
