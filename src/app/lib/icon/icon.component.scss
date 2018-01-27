@@ -1,0 +1,11 @@
+$default-icon-size: 24px !default;
+
+.hc-icon {
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  text-align: center;
+  line-height: $default-icon-size;
+  height: $default-icon-size;
+  width: $default-icon-size;
+}
