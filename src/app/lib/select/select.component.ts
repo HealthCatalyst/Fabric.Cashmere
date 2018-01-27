@@ -18,6 +18,8 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() placeholder: string;
   @Input() options: Array<string> = [];
   @Input() disabled: boolean = false;
+  disabledAlpha = 0.4;
+  enabledAlpha = 1.0;
   _value: string;
   onChange: any = () => { };
   onTouched: any = () => { };
