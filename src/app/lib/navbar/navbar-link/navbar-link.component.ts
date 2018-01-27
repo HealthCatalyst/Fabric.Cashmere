@@ -6,7 +6,7 @@ import { Component, OnInit, HostBinding, Input } from '@angular/core';
 })
 export class NavbarLinkComponent implements OnInit {
   @HostBinding('class') hostClass = 'navbar-item';
-  @Input() active: boolean;
+  @Input() active?: boolean;
   @Input() uri: string;
   @Input() exact: boolean = false;
 

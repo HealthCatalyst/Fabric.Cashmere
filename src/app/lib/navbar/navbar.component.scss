@@ -105,7 +105,7 @@ $navbar-z-index: 1030 !default;
                 align-items: center;
                 border-bottom: 5px solid transparent;
                 text-decoration: none;
-                &.active {
+                &.active:not(.inactive) {
                     border-bottom: 5px solid $blue;
                 }
                 &.active,&:hover,&:active{

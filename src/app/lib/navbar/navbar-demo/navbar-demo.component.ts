@@ -15,23 +15,24 @@ export class NavbarDemoComponent implements OnInit {
 
   navbar(): string {
     const code =
-      `<hc-navbar appIcon="./assets/Application-Logo.svg" user="Christine K." [homeUri]="undefined">
-<hc-navbar-link [uri]="undefined">Home</hc-navbar-link>
-<hc-navbar-link [uri]="undefined" exact="true">Buttons</hc-navbar-link>
-<hc-navbar-icon>
-    <i class="fa fa-search fa-lg white"></i>
-</hc-navbar-icon>
-<hc-navbar-icon>
-    <i class="fa fa-question-circle-o fa-lg question-pos white" [hcPopover]="options" popoverPlacement="bottom"></i>
-</hc-navbar-icon>
+      `<hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
+  <hc-app-switcher></hc-app-switcher>
+  <hc-navbar-link [active]="true" [uri]="undefined">Home</hc-navbar-link>
+  <hc-navbar-link [active]="false" [uri]="undefined" exact="true">Buttons</hc-navbar-link>
+  <hc-navbar-icon>
+      <i class="fa fa-search fa-lg white"></i>
+  </hc-navbar-icon>
+  <hc-navbar-icon>
+      <i class="fa fa-question-circle-o fa-lg question-pos white" [hcPopover]="options" popoverPlacement="bottom"></i>
+  </hc-navbar-icon>
 </hc-navbar>
 
 <hc-popover-content #options>
-<a hc-button href="https://www.healthcatalyst.com/">Health Catalyst</a>
-<hr>
-<a hc-button href="https://github.com/HealthCatalyst/Fabric.Cashmere">Cashmere</a>
-<hr>
-<a hc-button href="http://cashmere.azurewebsites.net/">Cashmere Demo</a>
+    <a hc-button class="popover-option" href="https://www.healthcatalyst.com/">Health Catalyst</a>
+    <hr>
+    <a hc-button class="popover-option" href="https://github.com/HealthCatalyst/Fabric.Cashmere">Cashmere</a>
+    <hr>
+    <a hc-button class="popover-option" href="http://cashmere.azurewebsites.net/">Cashmere Demo</a>
 </hc-popover-content>`;
     return code;
   }
