@@ -65,5 +65,13 @@
             background-color: $gray-200;
             border-color: $gray-300;
         }
+
+        .hc-radio-overlay {
+            background-color: $gray-200;
+        }
+
+        .hc-radio-overlay:after {
+            background: $gray-200;
+        }
     }
 }
