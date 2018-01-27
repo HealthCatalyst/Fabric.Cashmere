@@ -1,3 +1,19 @@
-<div class="brand">
+<div class="brand" [hcPopover]="appSwitcherContent" popoverPlacement="bottom">
     <img src="./assets/TriFlame.svg">
 </div>
+
+
+<hc-popover-content #appSwitcherContent>
+    <pre *ngIf="!(applications | async)">loading applications...</pre>
+    <div class="row">
+        <div class="col-sm-3 app-tile" *ngFor="let app of applications | async">
+            <a class="thumbnail" title="{{app.Description}}" href="{{app.ServiceUrl}}" target="_blank">
+                <img class="popover-icon img-responsive" src={{app.Icon}}>
+                <div class="app-tile-text">{{app?.FriendlyName | ellipsis:18}}</div>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <a class="all-apps-link" href={{appSwitcherUrl}}>View all my applications</a>
+    </div>
+</hc-popover-content>
