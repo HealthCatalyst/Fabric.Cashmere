@@ -14,16 +14,18 @@ import { CheckboxDemoComponent } from 'app/lib/checkbox/checkbox-demo/checkbox-d
 import { CheckboxModule } from 'app/lib/checkbox/checkbox.module';
 import { SelectModule } from 'app/lib/select/select.module';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
-import { IconModule } from '../lib/icon/icon.module';
+import { IconModule } from '../lib/icon';
+import { FormsModule } from '@angular/forms';
 import { HomeComponent } from 'app/home/home.component';
 import { DrawerDemoComponent } from '../lib/drawer/drawer-demo/drawer-demo.component';
-import { DrawerModule } from '../lib/drawer/drawer.module';
+import { DrawerModule } from '../lib/drawer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
     ButtonModule,
     CheckboxModule,
     IconModule,
