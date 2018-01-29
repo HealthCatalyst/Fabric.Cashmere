@@ -1,6 +1,7 @@
 {
   "name": "@healthcatalyst/cashmere",
   "version": "0.0.2",
+  "license": "Apache-2.0",
   "description": "Reusable Health Catalyst Components",
   "main": "./bundles/cashmere.umd.js",
   "module": "./esm5/cashmere.js",

@@ -8,11 +8,13 @@ export function throwErrorForInvalidButtonColor() {
   throw Error('Unsupported color input value');
 }
 
-type ButtonColor = 'primary' | 'primary-alt1' | 'primary-alt2' | 'primary-alt3' | 'secondary' | 'tertiary';
+export type ButtonColor = 'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'tertiary';
 
 @Component({
   selector: 'button[hc-button]',
-  template: '<ng-content></ng-content>',
+  template: `<i *ngIf="glyph" class="fa {{glyph}} button-glyph"></i>
+  <ng-content></ng-content>
+  <i *ngIf="dropdown" class="fa fa-chevron-down fa-fw button-dropdown"></i>`,
   styleUrls: ['./button.component.scss'],
   host: {
     '[disabled]': 'disabled || null',
@@ -20,10 +22,12 @@ type ButtonColor = 'primary' | 'primary-alt1' | 'primary-alt2' | 'primary-alt3' 
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent implements OnChanges {
-  private supportedColors = ['primary', 'primary-alt1', 'primary-alt2', 'primary-alt3', 'secondary', 'tertiary'];
+  private supportedColors = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary'];
 
   @Input() color: ButtonColor = 'primary';
   @Input() disabled = false;
+  @Input() dropdown: boolean = false;
+  @Input() glyph: string;
 
   constructor(private elementRef: ElementRef,
               private renderer: Renderer2) {
@@ -32,14 +36,14 @@ export class ButtonComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     const color = changes['color'];
     if (color) {
-      if (!this.supportedColors.includes(color.currentValue)) {
+      if (this.supportedColors.indexOf(color.currentValue) < 0) {
         throwErrorForInvalidButtonColor();
       }
       this.changeColor(color.previousValue, color.currentValue);
     }
   }
 
-  private changeColor(previousColor, newColor): void {
+  private changeColor(previousColor: ButtonColor, newColor: ButtonColor): void {
     if (previousColor) {
       this.renderer.removeClass(this.elementRef.nativeElement, `hc-${previousColor}`);
     }

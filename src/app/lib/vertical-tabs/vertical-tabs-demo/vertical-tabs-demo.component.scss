@@ -1,10 +1,10 @@
-@import "../../colors.scss";
+@import '../../colors.scss';
 
-.sample-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 65%;
+.tab-demo {
+    height: 350px;
+    border: 1px solid $gray-200;
 }
+
 pre code {
     background-color: $gray-100;
     border: 1px solid $gray-400;
@@ -57,18 +57,10 @@ pre code {
       padding-top: 1em;
       padding-bottom: 1em;
   }
-
-  .parameters > tbody > tr > th {
-    border-bottom: 1px dashed $gray-200;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    text-align: left;
-  }
-
+  
   .parameters {
       min-width: 903px;
   }
-
   .parameters span {
       color: $gray-500;
       display: block;
