@@ -1,7 +1,16 @@
 <div class="hc-checkbox-container" [ngClass]="{'disabled': disabled}">
-    <input type="checkbox" [attr.id]="name" [disabled]="disabled" [(ngModel)]="model" />
-    <label class="hc-checkbox-overlay" [attr.for]="name"></label>
-    <label class="hc-checkbox-label" [attr.for]="name">
-        <ng-content></ng-content>
-    </label>
+  <input type="checkbox"
+         [id]="inputId"
+         [attr.value]="value"
+         [attr.name]="name"
+         [tabIndex]="tabIndex"
+         [indeterminate]="indeterminate"
+         [disabled]="disabled"
+         [required]="required"
+         (change)="stopChangeEvent($event)"
+         (click)="clickEvent($event)"/>
+  <label class="hc-checkbox-overlay" [attr.for]="inputId"></label>
+  <label class="hc-checkbox-label" [attr.for]="inputId">
+    <ng-content></ng-content>
+  </label>
 </div>
