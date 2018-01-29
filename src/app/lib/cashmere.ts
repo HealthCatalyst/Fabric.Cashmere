@@ -13,3 +13,4 @@ export * from './vertical-tabs/vertical-tabs.component';
 
 
 export * from './icon';
+export * from './drawer';
