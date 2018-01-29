@@ -11,28 +11,27 @@ import { routes } from './demo-routes';
 import { CheckboxDemoComponent } from 'app/lib/checkbox/checkbox-demo/checkbox-demo.component';
 import { CheckboxModule } from 'app/lib/checkbox/checkbox.module';
 import { CheckboxComponent } from 'app/lib/checkbox/checkbox.component';
-import { SelectComponent } from 'app/lib/select/select.component';
+import { SelectModule } from './../lib/select/select.module';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
+import { HomeComponent } from 'app/home/home.component';
 
 @NgModule({
     imports: [
         BrowserModule,
         ButtonModule,
         CheckboxModule,
+        SelectModule,
         RouterModule.forRoot(routes)
-    ],
-    exports: [
-        ButtonModule
     ],
     declarations: [
         DemoComponent,
+        HomeComponent,
         SideNavComponent,
         ButtonDemoComponent,
         CheckboxDemoComponent,
         ColorDemoComponent,
         SwatchDemoComponent,
-        SelectComponent,
-        SelectDemoComponent
+        SelectDemoComponent,
     ]
 })
 export class DemoModule { }
