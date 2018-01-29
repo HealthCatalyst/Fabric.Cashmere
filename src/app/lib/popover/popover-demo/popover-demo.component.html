@@ -2,29 +2,8 @@
   <h2>Popover</h2>
   <p>A lightweight, extensible component for fancy popover creation. The popover directive supports multiple placements, optional
     transition animation, and more.</p>
-  <h3>Features</h3>
-  <ul>
-    <li>Placement: bottom, top ..etc</li>
-    <li>Title</li>
-    <li>I am just filling up space so I can demo a top placement popover</li>
-  </ul>
-  <h3>Placement</h3>
-  <button hc-button [popoverCloseOnClickOutside]="true" color="primary-alt" hcPopover="left" popoverPlacement="left" aria-hidden="true">Left</button>
-  <button hc-button [popoverCloseOnClickOutside]="true" color="primary" hcPopover="top" popoverPlacement="top" aria-hidden="true">Top</button>
-  <button hc-button [popoverCloseOnClickOutside]="true" color="neutral" hcPopover="bottom" popoverPlacement="bottom" aria-hidden="true">Bottom</button>
-  <button hc-button [popoverCloseOnClickOutside]="true" color="secondary" hcPopover="right" popoverPlacement="right" aria-hidden="true">Right</button>
-  <h3>Dynamic content</h3>
-  <div>
-    <label>Body</label>
-    <br>
-    <input type="text" [(ngModel)]="body">
-  </div>
-  <button hc-button color="primary" [hcPopover]="dynamic" popoverPlacement="bottom" aria-hidden="true">Click Me</button>
-  <hc-popover-content #dynamic title="title">
-    <span [(innerText)]="body"></span>
-  </hc-popover-content>
   <h3>Popover with List Items</h3>
-  <button hc-button color="primary" [hcPopover]="options" popoverPlacement="top auto" aria-hidden="true">
+  <button hc-button color="primary" [hcPopover]="options" popperPlacement="bottom" aria-hidden="true">
     <i class="fa fa-gear" aria-hidden="true"></i>
     &nbsp;Options&nbsp;
     <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -36,4 +15,25 @@
     <hr>
     <a hc-button class="popover-option">Choice 3</a>
   </hc-popover-content>
+  <h3>Placement</h3>
+  <button hc-button color="primary" hcPopover="top" popperPlacement="top" aria-hidden="true">Top</button>
+  <button hc-button color="neutral" hcPopover="bottom" popperPlacement="bottom" aria-hidden="true">Bottom</button>
+  <button hc-button color="primary-alt" hcPopover="left" popperPlacement="left" aria-hidden="true">Left</button>
+  <button hc-button color="secondary" hcPopover="right" popperPlacement="right" aria-hidden="true">Right</button>
+  <h3>Dynamic content</h3>
+  <div>
+    <label>Body</label>
+    <br>
+    <input type="text" [(ngModel)]="body">
+  </div>
+  <button hc-button color="primary" [hcPopover]="dynamic" popperPlacement="bottom" [popperCloseOnClickOutside]="false" aria-hidden="true">Click Me</button>
+  <hc-popover-content #dynamic title="title">
+    <span [(innerText)]="body"></span>
+  </hc-popover-content>
+  <h3>Features</h3>
+  <ul>
+    <li>Placement: bottom, top ..etc</li>
+    <li>Title</li>
+    <li>I am just filling up space so I can demo a top placement popover</li>
+  </ul>
 </div>

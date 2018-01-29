@@ -1,14 +1,8 @@
-<div #popoverDiv class="popover {{ effectivePlacement }}"
-     [style.top]="top + 'px'"
-     [style.left]="left + 'px'"
-     [class.in]="isIn"
-     [class.fade]="animation"
-     role="popover">
-    <div [hidden]="!closeOnMouseOutside" class="virtual-area"></div>
-    <div class="arrow"></div>
-    <h3 class="popover-title" [hidden]="!title">{{ title }}</h3>
-    <div class="popover-content">
-        <ng-content></ng-content>
-        {{ content }}
-    </div>
+<div #popperViewRef 
+     [ngClass] = "{'popoverContainer': !popperOptions.disableDefaultStyling, 'animation': !popperOptions.disableAnimation}"
+     [style.display]="displayType"
+     [style.opacity]="opacity"
+     role="popper">        
+      <div class="inner"><ng-content ></ng-content>  {{ text }} </div>
+      <div class="arrow"></div>  
 </div>

@@ -1,168 +1,338 @@
+
 import {
-  Directive, HostListener, ComponentRef, ViewContainerRef, ComponentFactoryResolver, ComponentFactory, Input,
-  OnChanges, SimpleChange, Output, EventEmitter
+  Directive,
+  HostListener,
+  ComponentRef,
+  ViewContainerRef,
+  ComponentFactoryResolver,
+  Input,
+  OnChanges,
+  SimpleChange,
+  Output,
+  EventEmitter, OnInit, Renderer2, ChangeDetectorRef, Inject, OnDestroy
 } from '@angular/core';
-import { PopoverContentComponent } from './popoverContent.component';
+import { Placement, Placements, PopperContentOptions, Trigger, Triggers } from 'app/lib/popover/popover.model';
+import { PopoverContentComponent } from 'app/lib/popover/popoverContent.component';
 
 @Directive({
   selector: '[hcPopover]',
   exportAs: 'hcPopover'
 })
-export class PopoverDirective implements OnChanges {
+export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
+  public static baseOptions: PopperContentOptions = <PopperContentOptions>{
+    placement: Placements.Auto,
+    hideOnClickOutside: true,
+    hideOnScroll: false,
+    showTrigger: Triggers.HOVER
+  };
 
-  // -------------------------------------------------------------------------
-  // Properties
-  // -------------------------------------------------------------------------
-
-  protected PopoverComponent: any = PopoverContentComponent;
-  protected hcPopover: ComponentRef<PopoverContentComponent>;
-  protected visible: boolean;
-
-  // -------------------------------------------------------------------------
-  // Inputs / Outputs
-  // -------------------------------------------------------------------------
+  private PopoverContentComponentClass = PopoverContentComponent;
+  private PopoverContentComponentRef: ComponentRef<PopoverContentComponent>;
+  private shown: boolean = false;
+  private scheduledShowTimeout: any;
+  private scheduledHideTimeout: any;
+  private subscriptions: any[] = [];
+  private globalClick: any;
+  private globalScroll: any;
 
   // tslint:disable-next-line:no-input-rename
   @Input('hcPopover')
   content: string | PopoverContentComponent;
 
-  @Input()
-  popoverDisabled: boolean;
+  @Input() popperDisabled: boolean;
 
-  @Input()
-  popoverAnimation: boolean;
+  @Input() popperPlacement: Placement;
 
-  @Input()
-  popoverPlacement: 'top' | 'bottom' | 'left' | 'right' | 'auto' | 'auto top' | 'auto bottom' | 'auto left' | 'auto right';
+  @Input() popperTrigger: Trigger | undefined;
 
-  @Input()
-  popoverTitle: string;
+  @Input() popperTarget: HTMLElement;
 
-  @Input()
-  popoverOnHover: boolean = false;
+  @Input() popperDelay: number = 0;
 
-  @Input()
-  popoverCloseOnClickOutside: boolean;
+  @Input() popperTimeout: number = 0;
 
-  @Input()
-  popoverCloseOnMouseOutside: boolean;
+  @Input() popperTimeoutAfterShow: number = 0;
 
-  @Input()
-  popoverDismissTimeout: number = 0;
+  @Input() popperBoundaries: string;
 
-  @Output()
-  shown: EventEmitter<PopoverDirective> = new EventEmitter<PopoverDirective>();
+  @Input() popperShowOnStart: boolean;
 
-  @Output()
-  hidden: EventEmitter<PopoverDirective> = new EventEmitter<PopoverDirective>();
+  @Input() popperCloseOnClickOutside: boolean;
 
-  // -------------------------------------------------------------------------
-  // Constructor
-  // -------------------------------------------------------------------------
+  @Input() popoverCloseOnClickOutside: boolean | undefined;
 
-  constructor(protected viewContainerRef: ViewContainerRef,
-    protected resolver: ComponentFactoryResolver) {
+  @Input() popperHideOnScroll: boolean | undefined;
+
+  @Input() popperPositionFixed: boolean;
+
+  @Input() popperModifiers: {};
+
+  @Input() popperDisableStyle: boolean;
+
+  @Input() popperDisableAnimation: boolean;
+
+  @Input() popperForceDetection: boolean;
+
+  @Output() popperOnShown = new EventEmitter<PopoverDirective>();
+
+  @Output() popperOnHidden = new EventEmitter<PopoverDirective>();
+
+  @HostListener('touchstart', ['$event'])
+
+  static assignDefined(target: any, ...sources: any[]) {
+    for (const source of sources) {
+      for (const key of Object.keys(source)) {
+        const val = source[key];
+        if (val !== undefined) {
+          target[key] = val;
+        }
+      }
+    }
+    return target;
   }
 
-  // -------------------------------------------------------------------------
-  // Event listeners
-  // -------------------------------------------------------------------------
-
-  @HostListener('click')
-  showOrHideOnClick(): void {
-    if (this.popoverOnHover) { return; }
-    if (this.popoverDisabled) { return; }
+  @HostListener('click', ['$event'])
+  showOrHideOnClick($event: MouseEvent): void {
+    if (this.popperDisabled || this.popperTrigger !== Triggers.CLICK) {
+      return;
+    }
     this.toggle();
   }
 
-  @HostListener('focusin')
-  @HostListener('mouseenter')
-  showOnHover(): void {
-    if (!this.popoverOnHover) { return; }
-    if (this.popoverDisabled) { return; }
-    this.show();
+  constructor(private viewContainerRef: ViewContainerRef,
+    private changeDetectorRef: ChangeDetectorRef,
+    private resolver: ComponentFactoryResolver,
+    private renderer: Renderer2) {
+
+    PopoverDirective.baseOptions = {
+      disableAnimation: false,
+      disableDefaultStyling: false,
+      placement: undefined,
+      trigger: Triggers.CLICK,
+      positionFixed: true,
+      hideOnClickOutside: true,
+      hideOnScroll: false,
+    }
   }
 
-  @HostListener('focusout')
-  @HostListener('mouseleave')
-  hideOnHover(): void {
-    if (this.popoverCloseOnMouseOutside) { return; } // don't do anything since not we control this
-    if (!this.popoverOnHover) { return; }
-    if (this.popoverDisabled) { return; }
-    this.hide();
+  @HostListener('touchstart', ['$event'])
+  @HostListener('mousedown', ['$event'])
+  showOrHideOnMouseOver($event: MouseEvent): void {
+    if (this.popperDisabled || this.popperTrigger !== Triggers.MOUSEDOWN) {
+      return;
+    }
+    this.toggle();
+  }
+
+  @HostListener('mouseenter', ['$event'])
+  showOnHover(): void {
+    if (this.popperDisabled || this.popperTrigger !== Triggers.HOVER) {
+      return;
+    }
+    this.scheduledShow();
+  }
+
+  hideOnClickOutsideHandler($event: MouseEvent): void {
+    if (this.popperDisabled || !this.popoverCloseOnClickOutside) {
+      return;
+    }
+    this.scheduledHide($event, this.popperTimeout);
+  }
+
+  hideOnScrollHandler($event: MouseEvent): void {
+    if (this.popperDisabled || !this.popperHideOnScroll) {
+      return;
+    }
+    this.scheduledHide($event, this.popperTimeout);
+  }
+
+  @HostListener('touchend', ['$event'])
+  @HostListener('touchcancel', ['$event'])
+  @HostListener('mouseleave', ['$event'])
+  hideOnLeave($event: MouseEvent): void {
+    if (this.popperDisabled || this.popperTrigger !== Triggers.HOVER) {
+      return;
+    }
+    this.scheduledHide(null, this.popperTimeout);
+  }
+
+
+
+  ngOnInit() {
+    // Support legacy prop
+    this.popoverCloseOnClickOutside = typeof this.popoverCloseOnClickOutside === 'undefined' ?
+      this.popperCloseOnClickOutside : this.popoverCloseOnClickOutside;
+
+    if (typeof this.content === 'string') {
+      const text = this.content;
+      this.content = this.constructContent();
+      this.content.text = text;
+    }
+    const popperRef = this.content as PopoverContentComponent;
+    popperRef.referenceObject = this.getRefElement();
+    this.setContentProperties(popperRef);
+    this.setDefaults();
+
+    if (this.popperShowOnStart) {
+      this.scheduledShow();
+    }
   }
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
-    if (changes['popoverDisabled']) {
-      if (changes['popoverDisabled'].currentValue) {
+    if (changes['popperDisabled']) {
+      if (changes['popperDisabled'].currentValue) {
         this.hide();
       }
     }
   }
 
-  // -------------------------------------------------------------------------
-  // Public Methods
-  // -------------------------------------------------------------------------
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe && sub.unsubscribe());
+    this.subscriptions.length = 0;
+    this.clearEventListeners();
+  }
 
   toggle() {
-    if (!this.visible) {
-      this.show();
-    } else {
-      this.hide();
-    }
+    this.shown ? this.scheduledHide(null, this.popperTimeout) : this.scheduledShow();
   }
 
   show() {
-    if (this.visible) { return; }
-
-    this.visible = true;
-    if (typeof this.content === 'string') {
-      const factory: ComponentFactory<PopoverContentComponent> = this.resolver.resolveComponentFactory(this.PopoverComponent);
-      if (!this.visible) { return; }
-
-      this.hcPopover = this.viewContainerRef.createComponent(factory);
-      const popoverContent: PopoverContentComponent = this.hcPopover.instance as PopoverContentComponent;
-      popoverContent.hcPopover = this;
-      popoverContent.content = this.content as string;
-      if (this.popoverPlacement !== undefined) { popoverContent.placement = this.popoverPlacement; }
-      if (this.popoverAnimation !== undefined) { popoverContent.animation = this.popoverAnimation; }
-      if (this.popoverTitle !== undefined) { popoverContent.title = this.popoverTitle; }
-      if (this.popoverCloseOnClickOutside !== undefined) { popoverContent.closeOnClickOutside = this.popoverCloseOnClickOutside; }
-      if (this.popoverCloseOnMouseOutside !== undefined) { popoverContent.closeOnMouseOutside = this.popoverCloseOnMouseOutside; }
-
-      popoverContent.onCloseFromOutside.subscribe(() => this.hide());
-      // if dismissTimeout option is set, then this popover will be dismissed in dismissTimeout time
-      if (this.popoverDismissTimeout > 0) { setTimeout(() => this.hide(), this.popoverDismissTimeout); }
-    } else {
-      const popover: PopoverContentComponent = this.content as PopoverContentComponent;
-      popover.hcPopover = this;
-      if (this.popoverPlacement !== undefined) { popover.placement = this.popoverPlacement; }
-      if (this.popoverAnimation !== undefined) { popover.animation = this.popoverAnimation; }
-      if (this.popoverTitle !== undefined) { popover.title = this.popoverTitle; }
-      if (this.popoverCloseOnClickOutside !== undefined) { popover.closeOnClickOutside = this.popoverCloseOnClickOutside; }
-      if (this.popoverCloseOnMouseOutside !== undefined) { popover.closeOnMouseOutside = this.popoverCloseOnMouseOutside; }
-
-      popover.onCloseFromOutside.subscribe(() => this.hide());
-      // if dismissTimeout option is set, then this popover will be dismissed in dismissTimeout time
-      if (this.popoverDismissTimeout > 0) { setTimeout(() => this.hide(), this.popoverDismissTimeout); }
-      popover.show();
+    if (this.shown) {
+      this.overrideHideTimeout();
+      return;
     }
 
-    this.shown.emit(this);
+    this.shown = true;
+    const popperRef = this.content as PopoverContentComponent;
+    const element = this.getRefElement();
+    if (popperRef.referenceObject !== element) {
+      popperRef.referenceObject = element;
+    }
+    this.setContentProperties(popperRef);
+    popperRef.show();
+    this.popperOnShown.emit(this);
+    if (this.popperTimeoutAfterShow > 0) {
+      this.scheduledHide(null, this.popperTimeoutAfterShow);
+    }
+    this.globalClick = this.renderer.listen('document', 'click', this.hideOnClickOutsideHandler.bind(this));
+    this.globalScroll = this.renderer.listen(this.getScrollParent(this.getRefElement()), 'scroll', this.hideOnScrollHandler.bind(this));
   }
 
   hide() {
-    if (!this.visible) { return; }
+    if (!this.shown) {
+      this.overrideShowTimeout();
+      return;
+    }
 
-    this.visible = false;
-    if (this.hcPopover) { this.hcPopover.destroy(); }
-
-    if (this.content instanceof PopoverContentComponent) { (this.content as PopoverContentComponent).hideFromPopover(); }
-
-    this.hidden.emit(this);
+    this.shown = false;
+    if (this.PopoverContentComponentRef) {
+      this.PopoverContentComponentRef.instance.hide();
+    } else {
+      (this.content as PopoverContentComponent).hide();
+    }
+    this.popperOnHidden.emit(this);
+    this.clearEventListeners();
   }
 
-  getElement() {
-    return this.viewContainerRef.element.nativeElement;
+  scheduledShow(delay: number = this.popperDelay) {
+    this.overrideHideTimeout();
+    this.scheduledShowTimeout = setTimeout(() => {
+      this.show();
+      this.applyChanges();
+    }, delay)
+  }
+
+  scheduledHide($event: any = null, delay: number = 0) {
+    this.overrideShowTimeout();
+    this.scheduledHideTimeout = setTimeout(() => {
+      const toElement = $event ? $event.toElement : null;
+      const PopoverContentComponentView = (this.content as PopoverContentComponent).popperViewRef ?
+        (this.content as PopoverContentComponent).popperViewRef.nativeElement : false;
+
+      if (!PopoverContentComponentView ||
+        PopoverContentComponentView === toElement ||
+        PopoverContentComponentView.contains(toElement) ||
+        (this.content as PopoverContentComponent).isMouseOver) {
+        return;
+      }
+      this.hide();
+      this.applyChanges();
+    }, delay)
+  }
+
+  getRefElement() {
+    return this.popperTarget || this.viewContainerRef.element.nativeElement;
+  }
+
+  private applyChanges() {
+    this.changeDetectorRef.markForCheck();
+    if (this.popperForceDetection) {
+      this.changeDetectorRef.detectChanges();
+    }
+  }
+
+  private setDefaults() {
+    this.popperTrigger = typeof this.popperTrigger === 'undefined' ? PopoverDirective.baseOptions.trigger : this.popperTrigger;
+    this.popoverCloseOnClickOutside = typeof this.popoverCloseOnClickOutside === 'undefined' ?
+      PopoverDirective.baseOptions.hideOnClickOutside : this.popoverCloseOnClickOutside;
+    this.popperHideOnScroll = typeof this.popperHideOnScroll === 'undefined' ?
+      PopoverDirective.baseOptions.hideOnScroll : this.popperHideOnScroll;
+  }
+
+  private clearEventListeners() {
+    if (this.globalClick && typeof this.globalClick === 'function') {
+      this.globalClick();
+    }
+
+    if (this.globalScroll && typeof this.globalScroll === 'function') {
+      this.globalScroll();
+    }
+  }
+
+  private overrideShowTimeout() {
+    if (this.scheduledShowTimeout) {
+      clearTimeout(this.scheduledShowTimeout);
+      this.scheduledHideTimeout = 0;
+    }
+  }
+
+  private overrideHideTimeout() {
+    if (this.scheduledHideTimeout) {
+      clearTimeout(this.scheduledHideTimeout);
+      this.scheduledHideTimeout = 0;
+    }
+  }
+
+  private constructContent(): PopoverContentComponent {
+    const factory = this.resolver.resolveComponentFactory(this.PopoverContentComponentClass);
+    this.PopoverContentComponentRef = this.viewContainerRef.createComponent(factory);
+    return this.PopoverContentComponentRef.instance as PopoverContentComponent;
+  }
+
+  private setContentProperties(popperRef: PopoverContentComponent) {
+    popperRef.popperOptions = PopoverDirective.assignDefined(popperRef.popperOptions, PopoverDirective.baseOptions, {
+      disableAnimation: this.popperDisableAnimation,
+      disableDefaultStyling: this.popperDisableStyle,
+      placement: this.popperPlacement,
+      boundariesElement: this.popperBoundaries,
+      trigger: this.popperTrigger,
+      positionFixed: this.popperPositionFixed,
+      popperModifiers: this.popperModifiers,
+    });
+    this.subscriptions.push(popperRef.onHidden.subscribe(this.hide.bind(this)));
+  }
+
+  private getScrollParent(node) {
+    const isElement = node instanceof HTMLElement;
+    const overflowY = isElement && window.getComputedStyle(node).overflowY;
+    const isScrollable = overflowY !== 'visible' && overflowY !== 'hidden';
+
+    if (!node) {
+      return null;
+    } else if (isScrollable && node.scrollHeight >= node.clientHeight) {
+      return node;
+    }
+
+    return this.getScrollParent(node.parentNode) || document;
   }
 }

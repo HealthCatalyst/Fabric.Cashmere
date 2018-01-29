@@ -6,16 +6,14 @@
         <i class="fa fa-search fa-lg white"></i>
     </hc-navbar-icon>
     <hc-navbar-icon>
-        <i class="fa fa-question-circle-o fa-lg question-pos white" [hcPopover]="options" popoverPlacement="bottom"></i>
+        <i class="fa fa-question-circle-o fa-lg question-pos white" [hcPopover]="options" popperPlacement="bottom"></i>
     </hc-navbar-icon>
 </hc-navbar>
 
 <hc-popover-content #options>    
-    <a hc-button class="popover-option" href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
-    <hr>
-    <a hc-button class="popover-option" href="https://github.com/HealthCatalyst/Fabric.Cashmere" target="_blank">Cashmere</a>
-    <hr>
-    <a hc-button class="popover-option" href="http://cashmere.azurewebsites.net/" target="_blank">Cashmere Demo</a>
+    <a hc-button href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
+    <a hc-button href="https://github.com/HealthCatalyst/Fabric.Cashmere" target="_blank">Cashmere</a>
+    <a hc-button href="http://cashmere.azurewebsites.net/" target="_blank">Cashmere Demo</a>
 </hc-popover-content>
 
 <pre><code>{{navbar()}}</code></pre>
