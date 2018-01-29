@@ -1,0 +1,33 @@
+@import '../colors.scss';
+
+.tab-bar{
+  padding-top: 15px;
+  background-color: $white;
+  width: 20%;
+  float: left;
+}
+
+.tab {
+  background-color: $white;
+  color: $offblack;
+  padding: 15px 20px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.active {
+  background-color: $slate-gray-100;
+  border-left: $blue 8px solid;
+  color: $blue;
+  font-weight: bold;
+  padding-left: 12px;
+}
+
+.tab-content {
+  background-color: $slate-gray-100;
+  width: calc(80% - 20px);
+  float: right;
+  height: calc(100% - 20px);
+  padding: 10px;
+}

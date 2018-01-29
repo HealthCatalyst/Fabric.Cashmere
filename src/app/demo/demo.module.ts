@@ -1,3 +1,5 @@
+import { VerticalTabsDemoComponent } from 'app/lib/vertical-tabs/vertical-tabs-demo/vertical-tabs-demo.component';
+import { VerticalTabsModule } from 'app/lib/vertical-tabs/vertical-tabs.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,7 +13,7 @@ import { routes } from './demo-routes';
 import { CheckboxDemoComponent } from 'app/lib/checkbox/checkbox-demo/checkbox-demo.component';
 import { CheckboxModule } from 'app/lib/checkbox/checkbox.module';
 import { CheckboxComponent } from 'app/lib/checkbox/checkbox.component';
-import { SelectModule } from './../lib/select/select.module';
+import { SelectModule } from 'app/lib/select/select.module';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
 import { HomeComponent } from 'app/home/home.component';
 
@@ -20,6 +22,7 @@ import { HomeComponent } from 'app/home/home.component';
         BrowserModule,
         ButtonModule,
         CheckboxModule,
+        VerticalTabsModule,
         SelectModule,
         RouterModule.forRoot(routes)
     ],
@@ -32,6 +35,7 @@ import { HomeComponent } from 'app/home/home.component';
         ColorDemoComponent,
         SwatchDemoComponent,
         SelectDemoComponent,
+        VerticalTabsDemoComponent
     ]
 })
 export class DemoModule { }
