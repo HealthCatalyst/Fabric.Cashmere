@@ -20,6 +20,7 @@ import { CheckboxComponent } from 'app/lib/checkbox/checkbox.component';
 import { SelectComponent } from 'app/lib/select/select.component';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
 import { AppSwitcherModule } from 'app/lib/app-switcher/app-switcher.module';
+import { MockAppSwitcherService } from 'app/lib/app-switcher/app-switcher.service';
 
 @NgModule({
     imports: [
@@ -50,6 +51,12 @@ import { AppSwitcherModule } from 'app/lib/app-switcher/app-switcher.module';
         SwatchDemoComponent,
         SelectComponent,
         SelectDemoComponent
+    ],
+    providers: [
+        {
+            provide: 'IAppSwitcherService',
+            useClass: MockAppSwitcherService
+        }
     ]
 })
 export class DemoModule { }

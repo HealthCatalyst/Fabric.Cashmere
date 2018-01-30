@@ -5,7 +5,7 @@ import { PopoverDirective } from './popover.directive';
 describe('PopoverContentComponent', () => {
     let component: PopoverContentComponent;
     let fixture: ComponentFixture<PopoverContentComponent>;
-    const mockPopoverComponent: PopoverContentComponent = new PopoverContentComponent(<any>undefined, <any>undefined, <any>undefined);
+    const mockPopoverComponent: PopoverContentComponent = new PopoverContentComponent(<any>undefined);
     const mockViewContainerRef: any = {
       createComponent : jasmine.createSpy('createComponent')
           .and.returnValue({
@@ -29,8 +29,7 @@ describe('PopoverContentComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(PopoverContentComponent);
         component = fixture.componentInstance;
-        directive = new PopoverDirective(mockViewContainerRef, mockResolver);
-        component.hcPopover = new PopoverDirective(mockViewContainerRef, mockResolver);
+        directive = new PopoverDirective(mockViewContainerRef, mockResolver, <any>undefined, <any>undefined);
         fixture.detectChanges();
     });
 

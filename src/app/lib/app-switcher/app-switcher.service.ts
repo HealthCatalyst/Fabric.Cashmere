@@ -1,31 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import { Injectable } from '@angular/core';
-import { getMockApplication } from './app-switcher-mock';
+import { Injectable, Inject } from '@angular/core';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
 
-export interface IDiscoveryApplication {
-    ServiceName: string;
-    FriendlyName: string;
-    Description: string;
-    BuildNumber: string | null;
-    Version: number;
-    DiscoveryServiceId: number | null;
-    ServiceUrl: string;
-    Heartbeat?: Date;
-    IsHidden?: boolean;
-    DiscoveryType: string;
-    Icon: string;
+import { getMockApplication } from './app-switcher-mock';
+import { IAppSwitcherService, IDiscoveryRequest, IAppSwitcherConfig } from 'app/lib/app-switcher/app-switcher-interfaces';
+
+export class MockAppSwitcherService implements IAppSwitcherService {
+    public readonly allApplicationsUri: string = '#';
+
+    constructor() { }
+
+    public getApplications(): Observable<IDiscoveryRequest> {
+        return Observable.of({ value: getMockApplication(5) }).delay(500);
+    }
 }
 
 @Injectable()
-export class AppSwitcherService {
-    constructor(private http: HttpClient) { }
+export class AppSwitcherService implements IAppSwitcherService {
+    public readonly allApplicationsUri: string;
 
-    public getApplications(): Observable<IDiscoveryApplication[]> {
-        // return this.http.get<IDiscoveryApplication[]>('/src/lib/app-switcher/app-switcher-mock.json');
-        return Observable.of(getMockApplication(5)).delay(500);
+    constructor(private http: HttpClient, @Inject('IAppSwitcherConfig') private config: IAppSwitcherConfig) {
+        this.allApplicationsUri = `${this.config.discoveryServiceUri}/apps`;
+    }
+
+    public getApplications(): Observable<IDiscoveryRequest> {
+        const url = `${this.config.discoveryServiceUri}/v1/Services/?$filter=DiscoveryType eq 'Application' and IsHidden eq false&$top=12`;
+        return this.http.get<IDiscoveryRequest>(url);
     }
 }

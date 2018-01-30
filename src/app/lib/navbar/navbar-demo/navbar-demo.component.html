@@ -1,3 +1,6 @@
+<h2 style="margin: 0">Navbar</h2>
+<h4 style="font-weight: 300; margin-top: 0">The navbar is a wrapper that positions branding, navigation, and other elements in a concise header.</h4>
+
 <hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
     <hc-app-switcher></hc-app-switcher>
     <hc-navbar-link [active]="true" [uri]="undefined">Home</hc-navbar-link>
@@ -24,12 +27,20 @@
     </ul>
 </hc-popover-content>
 
-<pre><code>{{navbar()}}</code></pre>
+<pre><code>{{navbar}}</code></pre>
 
 <i>uri's are purposely left undefined for demo purposes</i>
+
+<h2>App Switcher</h2>
+Include the following markup within hc-navbar
+<pre><code>&lt;hc-app-switcher&gt;&lt;/hc-app-switcher&gt;</code></pre>
+setup is required for the module
+<pre><code>{{moduleSetup}}</code></pre>
+
 
 <h2>Fixed Top</h2>
 <p>set fixed top property</p>
 <pre><code>fixedTop="true"</code></pre>
 <p>add the following to your body style sheet</p>
-<pre><code>{{fixedTopNavbar()}}</code></pre>
+<pre><code>{{fixedTopNavbar}}</code></pre>
+

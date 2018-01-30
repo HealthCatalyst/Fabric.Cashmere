@@ -6,16 +6,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./navbar-demo.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class NavbarDemoComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  navbar(): string {
-    const code =
-      `<hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
+export class NavbarDemoComponent {
+  navbar: string = `<hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
   <hc-app-switcher></hc-app-switcher>
   <hc-navbar-link [active]="true" [uri]="undefined">Home</hc-navbar-link>
   <hc-navbar-link [active]="false" [uri]="undefined" exact="true">Buttons</hc-navbar-link>
@@ -40,16 +32,16 @@ export class NavbarDemoComponent implements OnInit {
     </li>
   </ul>
 </hc-popover-content>`;
-    return code;
-  }
 
-  fixedTopNavbar(): string {
-    const code =
-      `body {
+  fixedTopNavbar: string = `body {
   padding-top: 53px;
 }`;
-    return code;
-  }
+
+  moduleSetup: string = `@NgModule({
+imports: [
+    AppSwitcherModule.forRoot({discoveryServiceUri: 'http://SERVER/DiscoveryService'})
+],
+...`;
 
   aboutClick($event) {
     alert('about us!');
