@@ -80,4 +80,147 @@
     &lt;/table&gt;
         </code>
     </pre>
+
+    <hr>
+
+    <h4>Sorting Indicators</h4>
+    <p>Add <code>.hc-col-sortable</code> to a <code>th</code> so that it appears sortable.</p>
+    <ul>
+        <li>Use <code>.hc-active-sort</code> to designate the currently sorted column</li>
+        <li>Use <code>.hc-sort-asc</code> and <code>.hc-sort-desc</code> to designate sort direction</li>
+        <li>For a left aligned sort indicator, use <code>.hc-col-sortable-left</code></li>
+    </ul>
+    <table class="hc-table">
+        <thead>
+          <tr>
+            <th class="hc-col-sortable">Sortable</th>
+            <th class="hc-col-sortable hc-active-sort hc-sort-asc">Active Sort (Ascending)</th>
+            <th>Nope</th>
+            <th class="hc-col-sortable hc-active-sort hc-sort-desc">Active Sort (Descending)</th>
+            <th class="hc-col-sortable-left">Left aligned</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Samuel</td>
+            <td>Walker</td>
+            <td>Z1223334444</td>
+            <td>Mar 27, 1978</td>
+            <td>MetLife</td>
+          </tr>
+          <tr>
+            <td>Whitney</td>
+            <td>Allen</td>
+            <td>Z5223335555</td>
+            <td>Jan 14, 1954</td>
+            <td>New York Life</td>
+          </tr>
+          <tr>
+            <td>Kendra</td>
+            <td>Jacobs</td>
+            <td>Z6223336666</td>
+            <td>Aug 27, 1990</td>
+            <td>Prudential Financial</td>
+          </tr>
+        </tbody>
+      </table>
+
+    <hr>
+
+    <h4>Borders</h4>
+    <p>Add <code>.hc-table-borders</code> (in addition to <code>.hc-table</code>) for borders all around.</p>
+    <table class="hc-table hc-table-borders">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>MRN</th>
+            <th>Birth Date</th>
+            <th>Payor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Samuel</td>
+            <td>Walker</td>
+            <td>Z1223334444</td>
+            <td>Mar 27, 1978</td>
+            <td>MetLife</td>
+          </tr>
+          <tr>
+            <td>Whitney</td>
+            <td>Allen</td>
+            <td>Z5223335555</td>
+            <td>Jan 14, 1954</td>
+            <td>New York Life</td>
+          </tr>
+          <tr>
+            <td>Kendra</td>
+            <td>Jacobs</td>
+            <td>Z6223336666</td>
+            <td>Aug 27, 1990</td>
+            <td>Prudential Financial</td>
+          </tr>
+        </tbody>
+      </table>
+
+    <pre>
+        <code>
+    &lt;table class=&quot;hc-table hc-table-borders&quot;&gt;
+        ...
+    &lt;/table&gt;
+        </code>
+    </pre>
+
+    <p>You can also <code>.hc-cell-borders</code> at the <code>td</code> or <code>th</code> level.</p>
+    <table class="hc-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>MRN</th>
+            <th>Birth Date</th>
+            <th>Payor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="hc-cell-borders">Borders!</td>
+            <td>Samuel Walker</td>
+            <td>Z1223334444</td>
+            <td>Mar 27, 1978</td>
+            <td>MetLife</td>
+          </tr>
+          <tr>
+            <td class="hc-cell-borders">Borders!</td>
+            <td>Whitney Allen</td>
+            <td>Z5223335555</td>
+            <td>Jan 14, 1954</td>
+            <td>New York Life</td>
+          </tr>
+          <tr>
+            <td class="hc-cell-borders">Borders!</td>
+            <td>Kendra Jacobs</td>
+            <td>Z6223336666</td>
+            <td>Aug 27, 1990</td>
+            <td>Prudential Financial</td>
+          </tr>
+        </tbody>
+      </table>
+
+    <pre>
+        <code>
+    &lt;table class="hc-table"&gt;
+        ...
+            &lt;tr&gt;
+                &lt;td class="hc-cell-borders"&gt;Borders!&lt;/td&gt;
+                &lt;td&gt;Samuel Walker&lt;/td&gt;
+                &lt;td&gt;Z1223334444&lt;/td&gt;
+                &lt;td&gt;Mar 27, 1978&lt;/td&gt;
+                &lt;td&gt;MetLife&lt;/td&gt;
+            &lt;/tr&gt;
+        ...
+        &lt;/table&gt;
+        </code>
+    </pre>
 </div>

@@ -32,6 +32,7 @@ table.hc-table {
     }
 
     tbody {
+        font-size: 15px;
         border-left: 1px solid $slate-gray-200;
         border-right: 1px solid $slate-gray-200;
 
@@ -53,71 +54,79 @@ table.hc-table {
             vertical-align: top;
         }
     }
-}
 
-/*** Sorting ***/
-table.table.ppr-list-table {
-    th.sortable {
+    // Add Borders
+    &.hc-table-borders {
+        td, th { border: 1px solid $slate-gray-200; }
+        th { border-bottom: 2px solid $slate-gray-300; }
+    }
+
+    td, th {
+        &.hc-cell-borders {
+            border: 1px solid $slate-gray-200;
+        }
+    }
+
+    // TODO: Condensed
+
+    // TODO: Special Row Styles
+
+    // Sorting
+    th.hc-col-sortable, th.hc-col-sortable-left {
+        position: relative;
         cursor: pointer;
+        padding-right: 35px;
 
-        &.selected-sort {
-            color: $green;
+        &:hover {
+            background-color: tint($primary-brand, 75%);
         }
 
-        .sort-indicator span {
-            &:before {
-                position: relative;
-                top: 2px;
-                font-size: 15px;
-            }
-
-            &.icon-sortable:before {
-                color: $gray-400;
-            }
+        //TODO: redo the guts of these icons when we roll our own icon font
+        &:before, &:after {
+            display: inline-block;
+            position: absolute;
+            bottom: 12px;
+            font: normal normal normal 12px/1 FontAwesome;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
         }
-    }
-
-    tbody {
-        td.clickable-col {
-            cursor: pointer;
-        }
-        td.not-clickable {
-            cursor: default;
-        }
-    }
-}
-
-table tbody tr.empty-table-row, table.table.table-striped tbody tr.empty-table-row:nth-child(2n + 1) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 300px;
-    width: 100%;
-    background-color: $white;
-    flex-direction: column;
-    position: absolute;
-
-    .icon-empty {
-        margin-bottom: 10px;
-
         &:before {
-            font-size: 56px;
+            right: 23px;
+            content: "\F175";
+        }
+        &:after {
+            right: 18px;
+            margin-top: -1px;
+            content: "\F175";
+            transform: rotate(180deg)
+        }
+
+        &.hc-active-sort {
+            color: $green;
+
+            &.hc-sort-asc {
+                &:before { content: "\F160"; right: 16px;}
+                &:after { content: none; }
+            }
+
+            &.hc-sort-desc {
+                &:before { content: "\F161"; right: 16px;}
+                &:after { content: none; }
+            }
         }
     }
-}
 
-.show-more-btn {
-    font-size: 12px;
-}
+    // align sort icons on left of th
+    th.hc-col-sortable-left {
+        padding-right: 16px;
+        padding-left: 35px;
 
-.table-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-    border-bottom: 2px solid $slate-gray-200;
+        &:before { left: 16px; right: auto; }
+        &:after { left: 21px; right: auto; }
 
-    .ppr-search {
-        flex: 0 0 300px;
+        &.hc-active-sort {
+            &.hc-sort-asc:before { left: 16px; right: auto; }
+            &.hc-sort-desc:before { left: 16px; right: auto; }
+        }
     }
 }
