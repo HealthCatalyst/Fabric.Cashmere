@@ -1,4 +1,3 @@
-
 import {
   Directive,
   HostListener,
@@ -11,8 +10,8 @@ import {
   Output,
   EventEmitter, OnInit, Renderer2, ChangeDetectorRef, Inject, OnDestroy
 } from '@angular/core';
-import { Placement, Placements, PopperContentOptions, Trigger, Triggers } from 'app/lib/popover/popover.model';
-import { PopoverContentComponent } from 'app/lib/popover/popoverContent.component';
+import { Placement, Placements, PopperContentOptions, Trigger, Triggers } from './popover.model';
+import { PopoverContentComponent } from './popoverContent.component';
 
 @Directive({
   selector: '[hcPopover]',
@@ -322,7 +321,7 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
     this.subscriptions.push(popperRef.onHidden.subscribe(this.hide.bind(this)));
   }
 
-  private getScrollParent(node) {
+  private getScrollParent(node: HTMLElement): HTMLElement | Document | null {
     const isElement = node instanceof HTMLElement;
     const overflowY = isElement && window.getComputedStyle(node).overflowY;
     const isScrollable = overflowY !== 'visible' && overflowY !== 'hidden';
@@ -333,6 +332,6 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
       return node;
     }
 
-    return this.getScrollParent(node.parentNode) || document;
+    return this.getScrollParent(<HTMLElement>node.parentNode) || document;
   }
 }

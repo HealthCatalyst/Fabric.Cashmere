@@ -6,7 +6,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
 
 import { getMockApplication } from './app-switcher-mock';
-import { IAppSwitcherService, IDiscoveryRequest, IAppSwitcherConfig } from 'app/lib/app-switcher/app-switcher-interfaces';
+import { IAppSwitcherService, IDiscoveryRequest, IAppSwitcherConfig } from './app-switcher-interfaces';
 
 export class MockAppSwitcherService implements IAppSwitcherService {
     public readonly allApplicationsUri: string = '#';

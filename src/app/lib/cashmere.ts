@@ -6,6 +6,9 @@ export * from './tabs/tabs.module';
 export * from './navbar/navbar.module';
 export * from './popover/popover.module';
 export * from './app-switcher/app-switcher.module';
+export * from './icon/icon.module';
+export * from './drawer/drawer.module';
+export * from './pipes/pipes.module';
 
 // Components
 export * from './button/button.component';
@@ -17,6 +20,5 @@ export * from './navbar/navbar.component';
 export * from './popover/popover.directive';
 export * from './popover/popoverContent.component';
 export * from './app-switcher/app-switcher.component';
-export * from './icon';
-export * from './drawer';
-export * from './checkbox';
+export * from './icon/icon.component';
+export * from './drawer/drawer.component';

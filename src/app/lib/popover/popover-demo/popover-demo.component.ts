@@ -22,7 +22,7 @@ export class PopoverDemoComponent implements OnInit {
       <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
     </li>
     <li>
-      <button (click)="aboutClick($event)">About</button>
+      <button (click)="aboutClick()">About</button>
     </li>
   </ul>
 </hc-popover-content>`;
@@ -31,7 +31,7 @@ export class PopoverDemoComponent implements OnInit {
   ngOnInit() {
   }
 
-  aboutClick($event) {
+  aboutClick() {
     alert('about us!');
   }
 }

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 
-import { IAppSwitcherService, IDiscoveryApplication } from 'app/lib/app-switcher/app-switcher-interfaces';
+import { IAppSwitcherService, IDiscoveryApplication } from './app-switcher-interfaces';
 
 @Component({
   selector: 'hc-app-switcher',
