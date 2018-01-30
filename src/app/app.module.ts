@@ -5,18 +5,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { DemoModule } from 'app/demo/demo.module';
-import { HomeComponent } from './home/home.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomeComponent
-    ],
-    imports: [
-        DemoModule,
-        RouterModule.forRoot(routes)
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    DemoModule,
+    RouterModule.forRoot(routes)
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

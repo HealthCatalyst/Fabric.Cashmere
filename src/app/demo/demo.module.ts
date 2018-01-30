@@ -1,7 +1,10 @@
+import { TabsDemoComponent } from 'app/lib/tabs/tabs-demo/tabs-demo.component';
+import { TabsModule } from 'app/lib/tabs/tabs.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ButtonModule } from 'app/lib/button/button.module';
 import { DemoComponent } from 'app/demo/demo.component';
@@ -16,14 +19,19 @@ import { NavbarDemoComponent } from 'app/lib/navbar/navbar-demo/navbar-demo.comp
 import { PopoverDemoComponent } from 'app/lib/popover/popover-demo/popover-demo.component';
 import { CheckboxDemoComponent } from 'app/lib/checkbox/checkbox-demo/checkbox-demo.component';
 import { CheckboxModule } from 'app/lib/checkbox/checkbox.module';
-import { CheckboxComponent } from 'app/lib/checkbox/checkbox.component';
-import { SelectComponent } from 'app/lib/select/select.component';
+import { SelectModule } from 'app/lib/select/select.module';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
 import { AppSwitcherModule } from 'app/lib/app-switcher/app-switcher.module';
 import { MockAppSwitcherService } from 'app/lib/app-switcher/app-switcher.service';
+import { SelectComponent } from 'app/lib/select/select.component';
+import { DrawerDemoComponent } from 'app/lib/drawer/drawer-demo/drawer-demo.component';
+import { IconModule } from 'app/lib/icon';
+import { DrawerModule } from 'app/lib/drawer';
+import { HomeComponent } from 'app/home/home.component';
 
 @NgModule({
     imports: [
+        BrowserAnimationsModule,
         BrowserModule,
         ButtonModule,
         NavbarModule,
@@ -31,17 +39,19 @@ import { MockAppSwitcherService } from 'app/lib/app-switcher/app-switcher.servic
         FormsModule,
         CheckboxModule,
         AppSwitcherModule,
+        IconModule,
+        DrawerModule,
+        TabsModule,
+        SelectModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
-        ButtonModule,
         NavbarModule,
-        PopoverModule,
         AppSwitcherModule,
-        CheckboxModule
     ],
     declarations: [
         DemoComponent,
+        HomeComponent,
         SideNavComponent,
         ButtonDemoComponent,
         NavbarDemoComponent,
@@ -49,8 +59,9 @@ import { MockAppSwitcherService } from 'app/lib/app-switcher/app-switcher.servic
         CheckboxDemoComponent,
         ColorDemoComponent,
         SwatchDemoComponent,
-        SelectComponent,
-        SelectDemoComponent
+        SelectDemoComponent,
+        DrawerDemoComponent,
+        TabsDemoComponent
     ],
     providers: [
         {
@@ -59,4 +70,5 @@ import { MockAppSwitcherService } from 'app/lib/app-switcher/app-switcher.servic
         }
     ]
 })
-export class DemoModule { }
+export class DemoModule {
+}
