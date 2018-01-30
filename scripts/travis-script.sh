@@ -16,4 +16,6 @@ elif is_unit; then
     npm run ci:test
 elif is_e2e; then
     npm run e2e
+elif is_lib_build; then
+    npm run lib:build
 fi
