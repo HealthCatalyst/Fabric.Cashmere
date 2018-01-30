@@ -13,31 +13,41 @@ import { SwatchDemoComponent } from 'app/lib/color-demo/swatch-demo.component';
 import { routes } from './demo-routes';
 import { CheckboxDemoComponent } from 'app/lib/checkbox/checkbox-demo/checkbox-demo.component';
 import { CheckboxModule } from 'app/lib/checkbox/checkbox.module';
-import { CheckboxComponent } from 'app/lib/checkbox/checkbox.component';
 import { SelectModule } from 'app/lib/select/select.module';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
+import { IconModule } from '../lib/icon';
+import { FormsModule } from '@angular/forms';
 import { HomeComponent } from 'app/home/home.component';
+import { DrawerDemoComponent } from '../lib/drawer/drawer-demo/drawer-demo.component';
+import { DrawerModule } from '../lib/drawer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        ButtonModule,
-        CheckboxModule,
-        VerticalTabsModule,
-        SelectModule,
-        RouterModule.forRoot(routes)
-    ],
-    declarations: [
-        DemoComponent,
-        HomeComponent,
-        SideNavComponent,
-        ButtonDemoComponent,
-        CheckboxDemoComponent,
-        ColorDemoComponent,
-        SwatchDemoComponent,
-        TableDemoComponent,
-        SelectDemoComponent,
-        VerticalTabsDemoComponent
-    ]
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    ButtonModule,
+    CheckboxModule,
+    IconModule,
+    DrawerModule,
+    VerticalTabsModule,
+    SelectModule,
+    RouterModule.forRoot(routes)
+  ],
+  declarations: [
+    DemoComponent,
+    HomeComponent,
+    SideNavComponent,
+    ButtonDemoComponent,
+    CheckboxDemoComponent,
+    ColorDemoComponent,
+    SwatchDemoComponent,
+    TableDemoComponent,
+    SelectDemoComponent,
+    DrawerDemoComponent,
+    VerticalTabsDemoComponent
+  ]
 })
-export class DemoModule { }
+export class DemoModule {
+}

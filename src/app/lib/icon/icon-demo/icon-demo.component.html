@@ -1,0 +1,68 @@
+<div class="demo-page">
+  <h2 style="margin: 0">Icon</h2>
+  <h4 style="font-weight: 300; margin-top: 0">Icon is an encapsulation of font icons</h4>
+
+  <div>
+    <hc-icon fontSet="fa" fontIcon="fa-snowflake-o" icon-sm></hc-icon>
+    <span>Small icon</span>
+  </div>
+
+  <div>
+    <hc-icon fontSet="fa" fontIcon="fa-snowflake-o" icon-md></hc-icon>
+    <span>Medium(default) icon</span>
+  </div>
+
+  <div>
+    <hc-icon fontSet="fa" fontIcon="fa-snowflake-o" icon-lg></hc-icon>
+    <span>Large icon</span>
+  </div>
+
+  <br>
+  <br>
+  <hr style="height:1px;border:none;background-color:#E5E5E5;">
+  <br>
+  <p class="description">
+    <b>Icon Usage</b>
+    <br>hc-icons provides an abstraction that makes using icons easier and more uniform. Another benefit is that
+    component developers can "select" the icon from the "transcluded" user content, allowing the icon to be placed
+    appropriately
+  </p>
+  <br>
+  <hr style="height:1px;border:none;background-color:#E5E5E5;">
+  <br>
+  <div class="headerName">Angular Component</div>
+  <br>
+
+  <div class="disclaimer">
+    Future improvement to include service that sets a default fontSet so you don't need to set it for every icon
+  </div>
+  <pre>
+          <code>
+&#x3C;hc-icon fontSet=&#x22;fa&#x22; fontIcon=&#x22;fa-snowflake-o&#x22;&#x3E;&#x3C;/hc-icon&#x3E;
+          </code>
+      </pre>
+  <br>
+  <hr style="height:1px;border:none;background-color:#E5E5E5;">
+  <br>
+  <div class="headerName">Component Parameters</div>
+  <br>
+
+  <table class="apiTable parameters">
+    <tr>
+      <th>fontSet</th>
+      <td>
+        <span>Type:</span> String
+      </td>
+      <td width=50%>
+        Required - font icon family to use. For example to use fontawesome, you need to provide "fa"
+      </td>
+    </tr>
+    <tr>
+      <th>fontIcon</th>
+      <td>
+        <span>Type:</span> String
+      </td>
+      <td width=50%>Required - font icon to use from the specified font icon family</td>
+    </tr>
+  </table>
+</div>

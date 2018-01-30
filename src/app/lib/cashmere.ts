@@ -10,3 +10,8 @@ export * from './checkbox/checkbox.component';
 export * from './select/select.component';
 export * from './vertical-tabs/vertical-tab.component';
 export * from './vertical-tabs/vertical-tabs.component';
+
+
+export * from './icon';
+export * from './drawer';
+export * from './checkbox';
