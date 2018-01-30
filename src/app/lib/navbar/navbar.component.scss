@@ -18,10 +18,9 @@ $navbar-z-index: 1030 !default;
 
 .navbar::ng-deep {
     height: $navbar-height;
-    background-color: $navbar-color;   
+    background-color: $navbar-color;
     display:flex;
-
-    
+    font-size: 15px;
 
     .icon.links {
         margin-left: auto;
@@ -62,8 +61,8 @@ $navbar-z-index: 1030 !default;
 
     .app {
         &>img {
-            height:70%;
-            width:70%;
+            height: 30px;
+            width: auto;
         }
         display: flex;
         align-items: center;
@@ -98,20 +97,26 @@ $navbar-z-index: 1030 !default;
                 }
             }
             &>a{
+                display: inline-block;
                 height: 100%;
                 box-sizing: border-box;
-                padding: 0 30px;
+                padding: 18px 30px 0 30px;
                 color: $navbar-text-inactive;
-                display: flex;
-                justify-content: center;
                 align-items: center;
                 border-bottom: 5px solid transparent;
                 text-decoration: none;
+                transition: background-color 0.25s;
                 &.active:not(.inactive) {
                     border-bottom: 5px solid $blue;
                 }
-                &.active,&:hover,&:active{
-                    color: $navbar-text;                
+                &:hover,&:focus {
+                    outline: none;
+                    color: $navbar-text;
+                    background-color: darken($navbar-color, 5%);
+                    border-bottom: 5px solid $blue;
+                }
+                &.active,&:active {
+                    color: $navbar-text;
                 }
             }
         }
