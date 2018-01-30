@@ -28,11 +28,17 @@ export class NavbarDemoComponent implements OnInit {
 </hc-navbar>
 
 <hc-popover-content #options>
-    <a hc-button class="popover-option" href="https://www.healthcatalyst.com/">Health Catalyst</a>
-    <hr>
-    <a hc-button class="popover-option" href="https://github.com/HealthCatalyst/Fabric.Cashmere">Cashmere</a>
-    <hr>
-    <a hc-button class="popover-option" href="http://cashmere.azurewebsites.net/">Cashmere Demo</a>
+  <ul class="list-options">
+    <li>
+        <a href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
+    </li>
+    <li>
+        <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
+    </li>
+    <li>
+        <button (click)="aboutClick($event)">About</button>
+    </li>
+  </ul>
 </hc-popover-content>`;
     return code;
   }
@@ -43,5 +49,9 @@ export class NavbarDemoComponent implements OnInit {
   padding-top: 53px;
 }`;
     return code;
+  }
+
+  aboutClick($event) {
+    alert('about us!');
   }
 }

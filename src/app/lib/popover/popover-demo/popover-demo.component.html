@@ -9,11 +9,17 @@
     <i class="fa fa-angle-down" aria-hidden="true"></i>
   </button>
   <hc-popover-content #options>
-    <a hc-button class="popover-option">Choice 1</a>
-    <hr>
-    <a hc-button class="popover-option">Choice 2</a>
-    <hr>
-    <a hc-button class="popover-option">Choice 3</a>
+    <ul class="list-options">
+      <li>
+        <a href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
+      </li>
+      <li>
+        <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
+      </li>
+      <li>
+        <button (click)="aboutClick($event)">About</button>
+      </li>
+    </ul>
   </hc-popover-content>
   <h3>Placement</h3>
   <button hc-button color="primary" hcPopover="top" popperPlacement="top" aria-hidden="true">Top</button>

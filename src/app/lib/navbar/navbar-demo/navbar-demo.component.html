@@ -10,10 +10,18 @@
     </hc-navbar-icon>
 </hc-navbar>
 
-<hc-popover-content #options>    
-    <a hc-button href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
-    <a hc-button href="https://github.com/HealthCatalyst/Fabric.Cashmere" target="_blank">Cashmere</a>
-    <a hc-button href="http://cashmere.azurewebsites.net/" target="_blank">Cashmere Demo</a>
+<hc-popover-content #options>
+    <ul class="list-options">
+        <li>
+            <a href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
+        </li>
+        <li>
+            <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
+        </li>
+        <li>
+            <button (click)="aboutClick($event)">About</button>
+        </li>
+    </ul>
 </hc-popover-content>
 
 <pre><code>{{navbar()}}</code></pre>

@@ -12,4 +12,7 @@ export class PopoverDemoComponent implements OnInit {
   ngOnInit() {
   }
 
+  aboutClick($event) {
+    alert('about us!');
+  }
 }
