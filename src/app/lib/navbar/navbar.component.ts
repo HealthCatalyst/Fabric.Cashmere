@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, QueryList, ContentChildren } from '@angular/core';
-import { NavbarLinkComponent } from 'app/lib/navbar/navbar-link/navbar-link.component';
 
 @Component({
   selector: 'hc-navbar',

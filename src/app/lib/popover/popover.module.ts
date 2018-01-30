@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { PopoverDirective } from 'app/lib/popover/popover.directive';
-import { PopoverContentComponent } from 'app/lib/popover/popoverContent.component';
 import { PopoverDemoComponent } from './popover-demo/popover-demo.component';
 import { CommonModule } from '@angular/common';
+import { PopoverContentComponent } from './popoverContent.component';
+import { PopoverDirective } from './popover.directive';
 
 @NgModule({
     imports: [

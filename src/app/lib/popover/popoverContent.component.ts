@@ -7,7 +7,7 @@ import {
     HostListener, Renderer2,
 } from '@angular/core';
 import Popper from 'popper.js';
-import { Placements, Triggers, PopperContentOptions } from 'app/lib/popover/popover.model';
+import { Placements, Triggers, PopperContentOptions } from './popover.model';
 
 @Component({
     styleUrls: ['./popoverContent.component.scss'],
