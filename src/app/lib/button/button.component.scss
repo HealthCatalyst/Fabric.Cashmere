@@ -83,19 +83,12 @@
 }
 
 .button-glyph {
-  display: inline-block;
   vertical-align: bottom;
-  font-size: 20px;
-  padding-right: 7px;
-  line-height: 20px;
+  padding-right: 6px;
 }
 
 .button-dropdown {
-  display: inline-block;
-  vertical-align: bottom;
-  font-size: 12px;
-  padding-left: 3px;
-  line-height: 20px;
+  padding-left: 2px;
 }
 
 :host( a ) {

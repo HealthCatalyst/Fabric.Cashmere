@@ -12,9 +12,9 @@ export type ButtonColor = 'primary' | 'primary-alt' | 'destructive' | 'neutral' 
 
 @Component({
   selector: 'button[hc-button]',
-  template: `<i *ngIf="glyph" class="fa {{glyph}} button-glyph"></i>
+  template: `<hc-icon *ngIf="glyph" fontSet="fa" fontIcon="{{glyph}}" class="button-glyph"></hc-icon>
   <ng-content></ng-content>
-  <i *ngIf="dropdown" class="fa fa-chevron-down fa-fw button-dropdown"></i>`,
+  <hc-icon *ngIf="dropdown" fontSet="fa" fontIcon="fa-chevron-down" class="button-dropdown" icon-sm></hc-icon>`,
   styleUrls: ['./button.component.scss'],
   host: {
     '[disabled]': 'disabled || null',
