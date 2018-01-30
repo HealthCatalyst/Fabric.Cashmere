@@ -8,6 +8,7 @@ import { DemoComponent } from 'app/demo/demo.component';
 import { SideNavComponent } from 'app/demo/side-nav/side-nav.component';
 import { ButtonDemoComponent } from 'app/lib/button/button-demo/button-demo.component';
 import { ColorDemoComponent } from 'app/lib/color-demo/color-demo.component';
+import { TableDemoComponent } from 'app/lib/table-demo/table-demo.component';
 import { SwatchDemoComponent } from 'app/lib/color-demo/swatch-demo.component';
 import { routes } from './demo-routes';
 import { CheckboxDemoComponent } from 'app/lib/checkbox/checkbox-demo/checkbox-demo.component';
@@ -34,6 +35,7 @@ import { HomeComponent } from 'app/home/home.component';
         CheckboxDemoComponent,
         ColorDemoComponent,
         SwatchDemoComponent,
+        TableDemoComponent,
         SelectDemoComponent,
         VerticalTabsDemoComponent
     ]

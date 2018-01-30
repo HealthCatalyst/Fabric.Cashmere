@@ -1,0 +1,123 @@
+@import "./colors.scss";
+@import "./mixins.scss";
+
+// TODO: move into reset/normalize type file
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    th {
+        text-align: inherit;
+    }
+}
+//-----------------------------------------
+
+table.hc-table {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    color: $text;
+
+    td, th {
+        padding: 8px 16px;
+        border-top: none;
+        border-bottom: 1px solid $slate-gray-200;
+        word-break: break-word;
+    }
+
+    thead th {
+        font-size: 14px;
+        color: $dark-blue;
+        vertical-align: bottom;
+    }
+
+    tbody {
+        border-left: 1px solid $slate-gray-200;
+        border-right: 1px solid $slate-gray-200;
+
+        tr {
+            &:nth-child(2n) {
+                background-color: $white;
+            }
+
+            &:nth-child(2n + 1) {
+                background-color: $slate-gray-100;
+            }
+
+            &:not(.empty-table-row):hover {
+                background-color: tint($primary-brand, 75%);
+            }
+        }
+
+        td {
+            vertical-align: top;
+        }
+    }
+}
+
+/*** Sorting ***/
+table.table.ppr-list-table {
+    th.sortable {
+        cursor: pointer;
+
+        &.selected-sort {
+            color: $green;
+        }
+
+        .sort-indicator span {
+            &:before {
+                position: relative;
+                top: 2px;
+                font-size: 15px;
+            }
+
+            &.icon-sortable:before {
+                color: $gray-400;
+            }
+        }
+    }
+
+    tbody {
+        td.clickable-col {
+            cursor: pointer;
+        }
+        td.not-clickable {
+            cursor: default;
+        }
+    }
+}
+
+table tbody tr.empty-table-row, table.table.table-striped tbody tr.empty-table-row:nth-child(2n + 1) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    width: 100%;
+    background-color: $white;
+    flex-direction: column;
+    position: absolute;
+
+    .icon-empty {
+        margin-bottom: 10px;
+
+        &:before {
+            font-size: 56px;
+        }
+    }
+}
+
+.show-more-btn {
+    font-size: 12px;
+}
+
+.table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-bottom: 2px solid $slate-gray-200;
+
+    .ppr-search {
+        flex: 0 0 300px;
+    }
+}
