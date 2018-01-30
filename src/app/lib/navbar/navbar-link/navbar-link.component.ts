@@ -8,6 +8,7 @@ export class NavbarLinkComponent implements OnInit {
   @HostBinding('class') hostClass = 'navbar-item';
   @Input() active?: boolean;
   @Input() uri: string;
+  @Input() linkText: string;
   @Input() exact: boolean = false;
 
   constructor() { }
