@@ -1,0 +1,41 @@
+pre code {
+    background-color: rgba(0,0,0,.03);
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+  }
+  
+  code {
+      font-size: 120%;
+      line-height: 140%;
+  }
+  
+  pre {
+      margin: 0;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 18px 0 24px 0;
+    border-style: hidden;
+    outline: 1px solid #c7c7c7;
+    width: 300px;
+    
+    thead {
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    tbody {
+        margin-top: 10px;
+    }
+    tr {
+        border: 1px solid rgba(0,0,0,0.08);
+    }
+    tr:nth-child(even) {
+        background-color: #eee;
+    }
+    th, td {
+        padding: 6px 13px;
+        text-align: left;
+    }
+}

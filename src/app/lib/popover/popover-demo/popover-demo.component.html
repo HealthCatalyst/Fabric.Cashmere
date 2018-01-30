@@ -21,6 +21,8 @@
       </li>
     </ul>
   </hc-popover-content>
+  <pre><code>{{popoverWithListItems}}</code></pre>
+
   <h3>Placement</h3>
   <button hc-button color="primary" hcPopover="top" popperPlacement="top" aria-hidden="true">Top</button>
   <button hc-button color="neutral" hcPopover="bottom" popperPlacement="bottom" aria-hidden="true">Bottom</button>
@@ -36,10 +38,117 @@
   <hc-popover-content #dynamic>
     <span [(innerText)]="body"></span>
   </hc-popover-content>
-  <h3>Features</h3>
-  <ul>
-    <li>Placement: bottom, top ..etc</li>
-    <li>Trigger events</li>
-    <li>Animation</li>
-  </ul>
+  <h3>Properties</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Type</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>popperDisableAnimation</td>
+        <td>boolean</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>popperDisableStyle</td>
+        <td>boolean</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>popperDisabled</td>
+        <td>boolean</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>popperDelay</td>
+        <td>number</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>popperTimeout</td>
+        <td>number</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>popperTimeoutAfterShow</td>
+        <td>number</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>popperPlacement</td>
+        <td>Placement(string)</td>
+        <td>auto</td>
+      </tr>
+      <tr>
+        <td>popperTarget</td>
+        <td>HtmlElement</td>
+        <td>auto</td>
+      </tr>
+      <tr>
+        <td>popperBoundaries</td>
+        <td>string(selector)</td>
+        <td>undefined</td>
+      </tr>
+      <tr>
+        <td>popperShowOnStart</td>
+        <td>number</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>popperTrigger</td>
+        <td>Trigger(string)</td>
+        <td>hover</td>
+      </tr>
+      <tr>
+        <td>popperPositionFixed</td>
+        <td>boolean</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>popperHideOnClickOutside</td>
+        <td>boolean</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>popperHideOnScroll</td>
+        <td>boolean</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>popperForceDetection</td>
+        <td>boolean</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>popperTrigger</td>
+        <td>Trigger(string)</td>
+        <td>hover</td>
+      </tr>
+      <tr>
+        <td>popperModifiers</td>
+        <td>popperModifier</td>
+        <td>undefined</td>
+      </tr>
+      <tr>
+        <td>popperOnShown</td>
+        <td>EventEmitter</td>
+        <td>$event</td>
+      </tr>
+      <tr>
+        <td>popperOnHidden</td>
+        <td>EventEmitter</td>
+        <td>$event</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>popperPlacement</h3>
+  <pre><code>'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'bottom-start' | 'left-start' | 'right-start' | 'top-end' | 
+'bottom-end' | 'left-end' | 'right-end' | 'auto' | 'auto-top' | 'auto-bottom' | 'auto-left' | 'auto-right' | Function</code></pre>
+
+  <h3>popperTrigger</h3>
+  <pre><code>'click' | 'mousedown' | 'hover' | 'none'</code></pre>
 </div>
