@@ -7,13 +7,14 @@
 </div>
 
 <hc-popover-content #appSwitcherContent>
-    <div class="app-switcher-content">
+    <div class="popover-content">
+        <h4>Applications</h4>
         <pre *ngIf="!(applications | async)">loading applications...</pre>
-        <div class="app-switcher-container">
-            <div class="app-tile" *ngFor="let app of applications | async">
+        <div class="apps">
+            <div class="app" *ngFor="let app of applications | async">
                 <a class="thumbnail" title="{{app.Description}}" href="{{app.ServiceUrl}}" target="_blank">
                     <img class="popover-icon img-responsive" src={{app.Icon}}>
-                    <div class="app-tile-text">{{app?.FriendlyName | ellipsis:18}}</div>
+                    <div class="title">{{app?.FriendlyName | ellipsis:18}}</div>
                 </a>
             </div>
         </div>

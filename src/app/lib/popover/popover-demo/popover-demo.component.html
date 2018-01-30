@@ -33,13 +33,13 @@
     <input type="text" [(ngModel)]="body">
   </div>
   <button hc-button color="primary" [hcPopover]="dynamic" popperPlacement="bottom" [popperCloseOnClickOutside]="false" aria-hidden="true">Click Me</button>
-  <hc-popover-content #dynamic title="title">
+  <hc-popover-content #dynamic>
     <span [(innerText)]="body"></span>
   </hc-popover-content>
   <h3>Features</h3>
   <ul>
     <li>Placement: bottom, top ..etc</li>
-    <li>Title</li>
-    <li>I am just filling up space so I can demo a top placement popover</li>
+    <li>Trigger events</li>
+    <li>Animation</li>
   </ul>
 </div>

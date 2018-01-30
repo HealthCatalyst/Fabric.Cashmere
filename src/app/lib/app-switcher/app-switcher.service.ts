@@ -26,6 +26,6 @@ export class AppSwitcherService {
 
     public getApplications(): Observable<IDiscoveryApplication[]> {
         // return this.http.get<IDiscoveryApplication[]>('/src/lib/app-switcher/app-switcher-mock.json');
-        return Observable.of(getMockApplication(3)).delay(500);
+        return Observable.of(getMockApplication(5)).delay(500);
     }
 }
