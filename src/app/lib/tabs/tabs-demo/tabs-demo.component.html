@@ -1,0 +1,128 @@
+<div class="demo-page">
+  <h2 style="margin: 0">Tabs</h2>
+  <h4 style="font-weight: 300; margin-top: 0">
+    Tabs ease the burden of large pages by dividing them into easy to digest sub-pages
+  </h4>
+
+  <h5>Vertical Example </h5>
+  <div class="tab-demo">
+    <hc-tab-set>
+      <hc-tab title="Tab 1">
+        Tab content 1
+      </hc-tab>
+      <hc-tab title="Tab 2">
+        Tab content 2
+      </hc-tab>
+      <hc-tab title="Tab 3">
+          Tab content 3
+        </hc-tab>
+    </hc-tab-set>
+  </div>
+
+  <h5>Horizontal Example </h5>
+  <div class="tab-demo">
+    <hc-tab-set direction="horizontal">
+      <hc-tab title="Tab 1">
+        Tab content 1
+      </hc-tab>
+      <hc-tab title="Tab 2">
+        Tab content 2
+      </hc-tab>
+      <hc-tab title="Tab 3">
+          Tab content 3
+        </hc-tab>
+    </hc-tab-set>
+  </div>
+
+  <h5>Together Example </h5>
+  <div class="tab-demo">
+    <hc-tab-set>
+      <hc-tab title="Tab 1">
+             <hc-tab-set direction="horizontal">
+               <hc-tab title="Tab 1">
+                 Horizontal Tab content 1
+               </hc-tab>
+               <hc-tab title="Tab 2">
+                 Horizontal Tab content 2
+               </hc-tab>
+               <hc-tab title="Tab 3">
+                 Horizontal Tab content 3
+                 </hc-tab>
+             </hc-tab-set>
+      </hc-tab>
+      <hc-tab title="Tab 2">
+        Vertical Tab content 2
+      </hc-tab>
+      <hc-tab title="Tab 3">
+        Vertical Tab content 3
+        </hc-tab>
+    </hc-tab-set>
+  </div>
+
+  <br>
+  <br>
+  <hr style="height:1px;border:none;background-color:#E5E5E5;">
+  <br>
+  <p class="description">
+      <b>Vertcal Tab Usage</b>
+      <br>
+      Vertical Tabs are most often used as a form of secondary navigation on pages that have a 
+      large number of sub-pages. For those with a fixed, smaller number of sub-pages,
+       using Horizontal Tabs might be more appropriate.     
+    </p>
+
+    <p class="description">
+      <b>Horizontal Tab Usage</b>
+      <br>
+      Horizontal tabs can be used anywhere, but are most commonly used as a secondary navigational
+      elements on pages that have a limited number of sub pages. 
+      Those with long lists of sub pages are better served using Vertical Tabs.
+    </p>
+
+    <p class="description">
+      <b>Together</b>
+      <br>
+      Horizontal and Vertical tabs may be used in conjunction on pages where secondary and 
+      tertiary levels of navigation are required.
+    </p>
+
+  <br>
+  <hr style="height:1px;border:none;background-color:#E5E5E5;">
+  <br>
+  <div class="headerName">Angular Component</div>
+<br>
+    <pre>
+        <code>
+            &lt;hc-tab-set direction=&quot;horizontal&quot;&gt;
+            &#9;&lt;hc-tab title=&quot;Tab 1&quot;&gt;
+            &#9;&#9;Tab content 1
+            &#9;&lt;/hc-tab&gt;
+            &#9;&lt;hc-tab title=&quot;Tab 2&quot;&gt;
+            &#9;&#9;Tab content 2
+            &#9;&lt;/hc-tab&gt;
+            &lt;/hc-tab-set&gt;
+        </code>
+    </pre>
+    <br>
+<hr style="height:1px;border:none;background-color:#E5E5E5;">
+<br>
+<div class="headerName">Component Parameters</div>
+<br>
+
+<table class="apiTable parameters">
+    <tr>
+        <th>title</th>
+        <td>
+            <span>Type:</span> String
+        </td>
+        <td width=50%> On Tab Component. Use to change the title of the tab</td>
+    </tr>
+    <tr>
+      <th>direction</th>
+      <td>
+        <span>Type:</span> 'vertical' | 'horizontal' (default: 'vertical')
+      </td>
+      <td width=50%>On Tab Set component. Determines whether horizontal or vertical tabs.</td>
+    </tr>
+</table>
+</div>

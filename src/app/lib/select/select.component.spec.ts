@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SelectComponent } from './select.component';
 
 describe('SelectComponent', () => {
@@ -8,6 +7,8 @@ describe('SelectComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [],
+      providers: [],
       declarations: [ SelectComponent ]
     })
     .compileComponents();
@@ -22,4 +23,9 @@ describe('SelectComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should change opacity when disabled', () => {
+    component.disabled = true;
+    expect(component.alpha).toEqual(component.disabledAlpha);
+  })
 });

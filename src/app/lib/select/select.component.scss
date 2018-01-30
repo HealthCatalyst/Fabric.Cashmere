@@ -15,6 +15,10 @@
     -moz-appearance:none;
     cursor:pointer;
 
+    &::-ms-expand {
+        display: none;
+    }
+
     &[disabled] {
         cursor: not-allowed;
       }
