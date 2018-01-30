@@ -8,18 +8,20 @@ $navbar-text: $white !default;
 $navbar-text-inactive: $gray-300 !default;
 $navbar-z-index: 1030 !default;
 
-.navbar {
+.navbar.fixed-top::ng-deep {
+    top: 0;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: $navbar-z-index;
+}
+
+.navbar::ng-deep {
     height: $navbar-height;
     background-color: $navbar-color;   
     display:flex;
 
-    &.fixed-top {
-        top: 0;
-        position: fixed;
-        right: 0;
-        left: 0;
-        z-index: $navbar-z-index;
-    }
+    
 
     .icon.links {
         margin-left: auto;

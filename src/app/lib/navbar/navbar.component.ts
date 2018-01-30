@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewEncapsulation, Input, QueryList, ContentChildren } from '@angular/core';
+import { Component, OnInit, Input, QueryList, ContentChildren } from '@angular/core';
 import { NavbarLinkComponent } from 'app/lib/navbar/navbar-link/navbar-link.component';
 
 @Component({
   selector: 'hc-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
 
