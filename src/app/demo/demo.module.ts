@@ -1,5 +1,5 @@
-import { VerticalTabsDemoComponent } from 'app/lib/vertical-tabs/vertical-tabs-demo/vertical-tabs-demo.component';
-import { VerticalTabsModule } from 'app/lib/vertical-tabs/vertical-tabs.module';
+import { TabsDemoComponent } from 'app/lib/tabs/tabs-demo/tabs-demo.component';
+import { TabsModule } from 'app/lib/tabs/tabs.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,7 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CheckboxModule,
     IconModule,
     DrawerModule,
-    VerticalTabsModule,
+    TabsModule,
     SelectModule,
     RouterModule.forRoot(routes)
   ],
@@ -44,7 +44,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SwatchDemoComponent,
     SelectDemoComponent,
     DrawerDemoComponent,
-    VerticalTabsDemoComponent
+    TabsDemoComponent
   ]
 })
 export class DemoModule {
