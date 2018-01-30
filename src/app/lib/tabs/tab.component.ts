@@ -4,10 +4,10 @@ import { Component, Input } from '@angular/core';
   template: `<div [hidden]="!active">
              <ng-content></ng-content>
              </div>`,
-  selector: `hc-vertical-tab`,
+  selector: `hc-tab`,
   styles: []
 })
-export class VerticalTabComponent {
+export class TabComponent {
   @Input() title: string = '';
   active: boolean = false;
 }

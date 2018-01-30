@@ -1,16 +1,16 @@
-import { VerticalTabsComponent } from './vertical-tabs.component';
-import { VerticalTabComponent } from './vertical-tab.component';
+import { TabSetComponent } from './tab-set.component';
+import { TabComponent } from './tab.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-describe('VerticalTabsComponent', () => {
-    let component: VerticalTabsComponent;
-    let fixture: ComponentFixture<VerticalTabsComponent>;
+describe('TabSetComponent', () => {
+    let component: TabSetComponent;
+    let fixture: ComponentFixture<TabSetComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
-                VerticalTabsComponent,
-                VerticalTabComponent
+                TabSetComponent,
+                TabComponent
             ],
             imports: []
         })
@@ -18,7 +18,7 @@ describe('VerticalTabsComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(VerticalTabsComponent);
+        fixture = TestBed.createComponent(TabSetComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
