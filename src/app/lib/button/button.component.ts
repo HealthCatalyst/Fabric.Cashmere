@@ -4,17 +4,15 @@
 
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
 
-export function throwErrorForInvalidButtonColor() {
-  throw Error('Unsupported color input value');
+export function throwErrorForInvalidButtonColor(unsupportedColor: string) {
+  throw Error('Unsupported color input value: ' + unsupportedColor);
 }
 
 export type ButtonColor = 'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'tertiary';
 
 @Component({
   selector: 'button[hc-button]',
-  template: `<i *ngIf="glyph" class="fa {{glyph}} button-glyph"></i>
-  <ng-content></ng-content>
-  <i *ngIf="dropdown" class="fa fa-chevron-down fa-fw button-dropdown"></i>`,
+  template: `<ng-content></ng-content>`,
   styleUrls: ['./button.component.scss'],
   host: {
     '[disabled]': 'disabled || null',
@@ -26,8 +24,6 @@ export class ButtonComponent implements OnChanges {
 
   @Input() color: ButtonColor = 'primary';
   @Input() disabled = false;
-  @Input() dropdown: boolean = false;
-  @Input() glyph: string;
 
   constructor(private elementRef: ElementRef,
               private renderer: Renderer2) {
@@ -37,7 +33,7 @@ export class ButtonComponent implements OnChanges {
     const color = changes['color'];
     if (color) {
       if (this.supportedColors.indexOf(color.currentValue) < 0) {
-        throwErrorForInvalidButtonColor();
+        throwErrorForInvalidButtonColor(color.currentValue);
       }
       this.changeColor(color.previousValue, color.currentValue);
     }

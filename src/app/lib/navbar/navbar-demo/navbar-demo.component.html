@@ -1,0 +1,74 @@
+<div class="demo-page">
+    <h2 style="margin: 0">Navbar</h2>
+    <h4 style="font-weight: 300; margin-top: 0">The navbar is a wrapper that positions branding, navigation, and other elements in a concise header.</h4>
+
+    <hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
+        <hc-app-switcher></hc-app-switcher>
+        <hc-navbar-link [active]="true" [uri]="undefined" linkText="Home"></hc-navbar-link>
+        <hc-navbar-link [active]="false" [uri]="undefined" linkText="Buttons"></hc-navbar-link>
+        <hc-navbar-icon>
+            <i class="fa fa-search fa-lg white"></i>
+        </hc-navbar-icon>
+        <hc-navbar-icon>
+            <i class="fa fa-question-circle-o fa-lg question-pos white" [hcPopover]="options" popperPlacement="bottom"></i>
+        </hc-navbar-icon>
+    </hc-navbar>
+
+    <hc-popover-content #options>
+        <ul class="list-options">
+            <li>
+                <a href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
+            </li>
+            <li>
+                <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
+            </li>
+            <li>
+                <button (click)="aboutClick($event)">About</button>
+            </li>
+        </ul>
+    </hc-popover-content>
+
+    <pre><code>{{navbar}}</code></pre>
+
+    <i>uri's are purposely left undefined for demo purposes</i>
+
+
+    <h2>Properties</h2>
+    <ul>
+        <li>user - current user</li>
+        <li>appIcon - path to svg</li>
+        <li>homeUri -
+            <a href="https://angular.io/api/router/RouterLink">RouterLink</a> uri to home page</li>
+        <li>fixedTop - statically positions the navbar to the top of the page
+            <i>see below</i>
+        </li>
+        <li>
+            <strong>hc-navbar-link</strong> - main navigation links</li>
+        <ul>
+            <li>linkText - the text to display</li>
+            <li>active (optional) - forces active state (default = null)</li>
+            <li>uri -
+                <a href="https://angular.io/api/router/RouterLink">RouterLink</a> uri</li>
+            <li>exact - sets the
+                <a href="https://angular.io/api/router/RouterLinkActive#description">RouterLinkActive</a> options to match the url exactly to set active state. (default = false)</li>
+        </ul>
+        <li>
+            <strong>hc-navbar-icon</strong> - icons and buttons displayed on the right side</li>
+        <li>
+            <strong>hc-app-switcher</strong> - include app switcher functionality, if this element is not present, it will revert
+            to navigating to the home page</li>
+    </ul>
+
+    <h2>App Switcher</h2>
+    Include the following markup within hc-navbar
+    <pre><code>&lt;hc-app-switcher&gt;&lt;/hc-app-switcher&gt;</code></pre> setup is required for the module
+    <pre><code>{{moduleSetup}}</code></pre>
+
+
+    <h2>Fixed Top</h2>
+    <p>set fixed top property</p>
+    <pre><code>fixedTop="true"</code></pre>
+    <p>add the following to your body style sheet</p>
+    <pre><code>{{fixedTopNavbar}}</code></pre>
+
+</div>

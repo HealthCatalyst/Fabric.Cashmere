@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 import { ColorDemoComponent } from 'app/lib/color-demo/color-demo.component';
+import { ButtonDemoComponent } from 'app/lib/button/button-demo/button-demo.component';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
 import { DemoComponent } from 'app/demo/demo.component';
-import { ButtonDemoComponent } from 'app/lib/button/button-demo/button-demo.component';
+import { NavbarDemoComponent } from 'app/lib/navbar/navbar-demo/navbar-demo.component';
+import { PopoverDemoComponent } from 'app/lib/popover/popover-demo/popover-demo.component';
 import { CheckboxDemoComponent } from 'app/lib/checkbox/checkbox-demo/checkbox-demo.component';
 import { RadioButtonDemoComponent } from 'app/lib/radio-button/radio-button-demo/radio-button-demo.component';
 import { IconDemoComponent } from 'app/lib/icon/icon-demo/icon-demo.component';
@@ -45,6 +47,18 @@ export const routes: Routes = [
             {
                 path: 'tabs',
                 component: TabsDemoComponent
+            },
+            {
+                path: 'navbar',
+                component: NavbarDemoComponent
+            },
+            {
+                path: 'popover',
+                component: PopoverDemoComponent
+            },
+            {
+                path: '**',
+                redirectTo: 'color'
             }
         ]
     }

@@ -42,7 +42,7 @@
   border: none;
   border-radius: 5px;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
+  
   &:focus {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
@@ -82,20 +82,9 @@
   }
 }
 
-.button-glyph {
-  display: inline-block;
+:host /deep/ hc-icon {
   vertical-align: bottom;
-  font-size: 20px;
-  padding-right: 7px;
-  line-height: 20px;
-}
-
-.button-dropdown {
-  display: inline-block;
-  vertical-align: bottom;
-  font-size: 12px;
-  padding-left: 3px;
-  line-height: 20px;
+  padding-right: 6px;
 }
 
 :host( a ) {

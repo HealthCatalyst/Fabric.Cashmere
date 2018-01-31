@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, ContentChildren, ElementRef, QueryList, Renderer2 } from '@angular/core';
-import { DrawerComponent } from './drawer.component';
+import { DrawerComponent, DrawerPromiseResult } from './drawer.component';
 
 function throwDrawerContainerError(align: string) {
   throw new Error(`A drawer was already declared for 'align="${align}"'`);
@@ -30,11 +30,11 @@ export class DrawerContainerComponent implements AfterContentInit {
     this.validateDrawers();
   }
 
-  open() {
+  open(): Promise<DrawerPromiseResult[]> {
     return Promise.all([this.leftDrawer, this.rightDrawer].map(drawer => drawer && drawer.toggleOpen()));
   }
 
-  close() {
+  close(): Promise<DrawerPromiseResult[]> {
     return Promise.all([this.leftDrawer, this.rightDrawer].map(drawer => drawer && drawer.toggleClose()));
   }
 
