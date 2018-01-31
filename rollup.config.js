@@ -40,22 +40,27 @@ const globals = {
 export default {
     external: Object.keys(globals),
     plugins: [resolve(), sourcemaps()],
-    onwarn: () => { return },
+    onwarn: function (message) {
+    },
     output: {
         format: 'umd',
-        name: 'ng.hcCashmere',
-        globals: globals,
-        sourcemap: true,
-        exports: 'named'
+        name:
+            'ng.hcCashmere',
+        globals:
+        globals,
+        sourcemap:
+            true,
+        exports:
+            'named'
     },
     plugins: [
-      resolve({
-        module: true,
-        jsnext: true,
-        main: true,
-        extensions: ['.js', '.json'],
-        preferBuiltins: false,
-        modulesOnly: true
-      })
+        resolve({
+            module: true,
+            jsnext: true,
+            main: true,
+            extensions: ['.js', '.json'],
+            preferBuiltins: false,
+            modulesOnly: true
+        })
     ]
 }

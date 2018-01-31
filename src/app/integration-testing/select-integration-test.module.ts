@@ -11,6 +11,7 @@ import { SelectModule } from '../lib/select/select.module';
         ReactiveFormsModule,
         SelectModule
     ],
-    declarations: [ SelectIntegrationTestComponent ]
+    declarations: [SelectIntegrationTestComponent]
 })
-export class SelectIntegrationTestModule { }
+export class SelectIntegrationTestModule {
+}

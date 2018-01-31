@@ -1,16 +1,16 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'hc-select-demo',
-  templateUrl: './select-demo.component.html',
-  styleUrls: ['./select-demo.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'hc-select-demo',
+    templateUrl: './select-demo.component.html',
+    styleUrls: ['./select-demo.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class SelectDemoComponent {
-  showTemplate: boolean = true;
+    showTemplate: boolean = true;
 
-  viewToggle(show: 'ts' | 'html') {
-    this.showTemplate = show === 'html';
-  }
+    viewToggle(show: 'ts' | 'html') {
+        this.showTemplate = show === 'html';
+    }
 
 }

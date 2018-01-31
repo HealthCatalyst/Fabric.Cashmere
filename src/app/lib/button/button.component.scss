@@ -6,94 +6,94 @@
 /// @param {Number} $darken-pct - percentage amount by which to darken color in hover(1x) and active(2x) states
 /// @return {Color}
 @mixin colorButton($color, $darken-pct: 10%) {
-  color: $white;
-  background-color: $color;
+    color: $white;
+    background-color: $color;
 
-  &:hover {
-    background-color: shade($color, $darken-pct);
-  }
-  &:active {
-    background-color: shade($color, $darken-pct * 2);
-  }
-  &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active {
-    cursor: not-allowed;
-    background-color: $gray-100;
-    color: $gray-300;
-  }
+    &:hover {
+        background-color: shade($color, $darken-pct);
+    }
+    &:active {
+        background-color: shade($color, $darken-pct * 2);
+    }
+    &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active {
+        cursor: not-allowed;
+        background-color: $gray-100;
+        color: $gray-300;
+    }
 }
 
 .hc-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-  height: 35px;
-  min-width: 150px;
-  font-size: 15px;
-  line-height: 35px;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
-  user-select: none;
-  background-image: none;
-  border: none;
-  border-radius: 5px;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
-  &:focus {
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-  }
-
-  &:active {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    height: 35px;
+    min-width: 150px;
+    font-size: 15px;
+    line-height: 35px;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
     background-image: none;
-    outline: none;
-  }
+    border: none;
+    border-radius: 5px;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  &.hc-button-primary {
-    @include colorButton($primary-action);
-  }
-
-  &.hc-button-primary-alt {
-    @include colorButton($primary-alt-action);
-  }
-
-  &.hc-button-destructive {
-    @include colorButton($destructive-action);
-  }
-
-  &.hc-button-neutral {
-    @include colorButton($neutral-action);
-  }
-
-  &.hc-button-secondary {
-    @include colorButton($gray-100, 5%);
-    color: $gray-600;
-    border: 2px solid $gray-300;
-  }
-
-  &.hc-button-tertiary {
-    background-color: transparent;
-    color: $primary-brand;
-    font-weight: bold;
-
-    &:hover {
-      color: lighten($primary-brand, 10%);
+    &:focus {
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
     }
+
     &:active {
-      color: darken($primary-brand, 10%);
+        background-image: none;
+        outline: none;
     }
 
-    &[disabled] {
-      color: $gray-500;
+    &.hc-button-primary {
+        @include colorButton($primary-action);
     }
-  }
 
-  hc-icon {
-    padding-right: 6px;
-  }
+    &.hc-button-primary-alt {
+        @include colorButton($primary-alt-action);
+    }
+
+    &.hc-button-destructive {
+        @include colorButton($destructive-action);
+    }
+
+    &.hc-button-neutral {
+        @include colorButton($neutral-action);
+    }
+
+    &.hc-button-secondary {
+        @include colorButton($gray-100, 5%);
+        color: $gray-600;
+        border: 2px solid $gray-300;
+    }
+
+    &.hc-button-tertiary {
+        background-color: transparent;
+        color: $primary-brand;
+        font-weight: bold;
+
+        &:hover {
+            color: lighten($primary-brand, 10%);
+        }
+        &:active {
+            color: darken($primary-brand, 10%);
+        }
+
+        &[disabled] {
+            color: $gray-500;
+        }
+    }
+
+    hc-icon {
+        padding-right: 6px;
+    }
 }

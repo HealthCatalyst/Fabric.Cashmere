@@ -13,4 +13,5 @@ import { SelectComponent } from './select.component';
         SelectComponent
     ]
 })
-export class SelectModule { }
+export class SelectModule {
+}

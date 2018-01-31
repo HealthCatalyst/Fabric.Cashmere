@@ -10,4 +10,5 @@ import { EllipsisPipe } from './ellipsis.pipe';
         EllipsisPipe,
     ]
 })
-export class PipesModule { }
+export class PipesModule {
+}

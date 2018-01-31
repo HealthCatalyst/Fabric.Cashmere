@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'hc-navbar-demo',
-  templateUrl: './navbar-demo.component.html',
-  styleUrls: ['./navbar-demo.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'hc-navbar-demo',
+    templateUrl: './navbar-demo.component.html',
+    styleUrls: ['./navbar-demo.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class NavbarDemoComponent {
-  navbar: string = `<hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
+    navbar: string = `<hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
   <hc-app-switcher></hc-app-switcher>
   <hc-navbar-link [active]="true" [uri]="undefined">Home</hc-navbar-link>
   <hc-navbar-link [active]="false" [uri]="undefined" exact="true">Buttons</hc-navbar-link>
@@ -33,17 +33,17 @@ export class NavbarDemoComponent {
   </ul>
 </hc-popover-content>`;
 
-  fixedTopNavbar: string = `body {
+    fixedTopNavbar: string = `body {
   padding-top: 53px;
 }`;
 
-  moduleSetup: string = `@NgModule({
+    moduleSetup: string = `@NgModule({
 imports: [
     AppSwitcherModule.forRoot({discoveryServiceUri: 'http://SERVER/DiscoveryService'})
 ],
 ...`;
 
-  aboutClick($event) {
-    alert('about us!');
-  }
+    aboutClick($event) {
+        alert('about us!');
+    }
 }

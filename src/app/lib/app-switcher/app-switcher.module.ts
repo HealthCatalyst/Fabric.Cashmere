@@ -9,29 +9,29 @@ import { PipesModule } from '../pipes/pipes.module';
 import { IAppSwitcherConfig } from './app-switcher-interfaces';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    PopoverModule,
-    HttpClientModule,
-    PipesModule
-  ],
-  declarations: [AppSwitcherComponent],
-  exports: [AppSwitcherComponent],
-  providers: [AppSwitcherService,
-    {
-      provide: 'IAppSwitcherService',
-      useClass: AppSwitcherService
-    }]
+    imports: [
+        CommonModule,
+        PopoverModule,
+        HttpClientModule,
+        PipesModule
+    ],
+    declarations: [AppSwitcherComponent],
+    exports: [AppSwitcherComponent],
+    providers: [AppSwitcherService,
+        {
+            provide: 'IAppSwitcherService',
+            useClass: AppSwitcherService
+        }]
 })
 export class AppSwitcherModule {
-  static forRoot(config: IAppSwitcherConfig): ModuleWithProviders {
-    return {
-      ngModule: AppSwitcherModule,
-      providers: [
-        {
-          provide: 'IAppSwitcherConfig',
-          useValue: config
-        }]
-    };
-  }
+    static forRoot(config: IAppSwitcherConfig): ModuleWithProviders {
+        return {
+            ngModule: AppSwitcherModule,
+            providers: [
+                {
+                    provide: 'IAppSwitcherConfig',
+                    useValue: config
+                }]
+        };
+    }
 }

@@ -5,4 +5,5 @@ import { Component, ViewEncapsulation } from '@angular/core';
     templateUrl: './color-demo.component.html',
     styleUrls: ['./color-demo.component.scss']
 })
-export class ColorDemoComponent {}
+export class ColorDemoComponent {
+}

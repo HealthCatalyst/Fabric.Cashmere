@@ -92,7 +92,7 @@ export class PopoverContentComponent implements OnDestroy {
         let boundariesElement = this.popperOptions.boundariesElement && document.querySelector(this.popperOptions.boundariesElement);
 
         if (popperOptions.modifiers && boundariesElement) {
-            popperOptions.modifiers.preventOverflow = { boundariesElement };
+            popperOptions.modifiers.preventOverflow = {boundariesElement};
         }
 
         popperOptions.modifiers = Object.assign(popperOptions.modifiers, this.popperOptions.popperModifiers);
@@ -105,7 +105,7 @@ export class PopoverContentComponent implements OnDestroy {
         (this.popperInstance as any).enableEventListeners();
         this.scheduleUpdate();
         this.toggleVisibility(true);
-        this.globalResize = this.renderer.listen('document', 'resize', this.onDocumentResize.bind(this))
+        this.globalResize = this.renderer.listen('document', 'resize', this.onDocumentResize.bind(this));
     }
 
     update(): void {

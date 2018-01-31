@@ -1,154 +1,157 @@
 <div class="demo-page">
-  <h2>Popover</h2>
-  <p>A lightweight, extensible component for fancy popover creation. The popover directive supports multiple placements, optional
-    transition animation, and more.</p>
-  <h3>Popover with List Items</h3>
-  <button hc-button color="primary" [hcPopover]="options" popperPlacement="bottom" aria-hidden="true">
-    <i class="fa fa-gear" aria-hidden="true"></i>
-    &nbsp;Options&nbsp;
-    <i class="fa fa-angle-down" aria-hidden="true"></i>
-  </button>
-  <hc-popover-content #options>
-    <ul class="list-options">
-      <li>
-        <a href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
-      </li>
-      <li>
-        <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
-      </li>
-      <li>
-        <button (click)="aboutClick()">About</button>
-      </li>
-    </ul>
-  </hc-popover-content>
-  <pre><code>{{popoverWithListItems}}</code></pre>
+    <h2>Popover</h2>
+    <p>A lightweight, extensible component for fancy popover creation. The popover directive supports multiple
+        placements, optional
+        transition animation, and more.</p>
+    <h3>Popover with List Items</h3>
+    <button hc-button color="primary" [hcPopover]="options" popperPlacement="bottom" aria-hidden="true">
+        <i class="fa fa-gear" aria-hidden="true"></i>
+        &nbsp;Options&nbsp;
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+    </button>
+    <hc-popover-content #options>
+        <ul class="list-options">
+            <li>
+                <a href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
+            </li>
+            <li>
+                <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
+            </li>
+            <li>
+                <button (click)="aboutClick()">About</button>
+            </li>
+        </ul>
+    </hc-popover-content>
+    <pre><code>{{popoverWithListItems}}</code></pre>
 
-  <h3>Placement</h3>
-  <button hc-button color="primary" hcPopover="top" popperPlacement="top" aria-hidden="true">Top</button>
-  <button hc-button color="neutral" hcPopover="bottom" popperPlacement="bottom" aria-hidden="true">Bottom</button>
-  <button hc-button color="primary-alt" hcPopover="left" popperPlacement="left" aria-hidden="true">Left</button>
-  <button hc-button color="secondary" hcPopover="right" popperPlacement="right" aria-hidden="true">Right</button>
-  <h3>Dynamic content</h3>
-  <div>
-    <label>Body</label>
-    <br>
-    <input type="text" [(ngModel)]="body">
-  </div>
-  <button hc-button color="primary" [hcPopover]="dynamic" popperPlacement="bottom" [popperCloseOnClickOutside]="false" aria-hidden="true">Click Me</button>
-  <hc-popover-content #dynamic>
-    <span [(innerText)]="body"></span>
-  </hc-popover-content>
-  <h3>Properties</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Option</th>
-        <th>Type</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>popperDisableAnimation</td>
-        <td>boolean</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>popperDisableStyle</td>
-        <td>boolean</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>popperDisabled</td>
-        <td>boolean</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>popperDelay</td>
-        <td>number</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>popperTimeout</td>
-        <td>number</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>popperTimeoutAfterShow</td>
-        <td>number</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>popperPlacement</td>
-        <td>Placement(string)</td>
-        <td>auto</td>
-      </tr>
-      <tr>
-        <td>popperTarget</td>
-        <td>HtmlElement</td>
-        <td>auto</td>
-      </tr>
-      <tr>
-        <td>popperBoundaries</td>
-        <td>string(selector)</td>
-        <td>undefined</td>
-      </tr>
-      <tr>
-        <td>popperShowOnStart</td>
-        <td>number</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>popperTrigger</td>
-        <td>Trigger(string)</td>
-        <td>hover</td>
-      </tr>
-      <tr>
-        <td>popperPositionFixed</td>
-        <td>boolean</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>popperHideOnClickOutside</td>
-        <td>boolean</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>popperHideOnScroll</td>
-        <td>boolean</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>popperForceDetection</td>
-        <td>boolean</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>popperTrigger</td>
-        <td>Trigger(string)</td>
-        <td>hover</td>
-      </tr>
-      <tr>
-        <td>popperModifiers</td>
-        <td>popperModifier</td>
-        <td>undefined</td>
-      </tr>
-      <tr>
-        <td>popperOnShown</td>
-        <td>EventEmitter</td>
-        <td>$event</td>
-      </tr>
-      <tr>
-        <td>popperOnHidden</td>
-        <td>EventEmitter</td>
-        <td>$event</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3>popperPlacement</h3>
-  <pre><code>'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'bottom-start' | 'left-start' | 'right-start' | 'top-end' | 
+    <h3>Placement</h3>
+    <button hc-button color="primary" hcPopover="top" popperPlacement="top" aria-hidden="true">Top</button>
+    <button hc-button color="neutral" hcPopover="bottom" popperPlacement="bottom" aria-hidden="true">Bottom</button>
+    <button hc-button color="primary-alt" hcPopover="left" popperPlacement="left" aria-hidden="true">Left</button>
+    <button hc-button color="secondary" hcPopover="right" popperPlacement="right" aria-hidden="true">Right</button>
+    <h3>Dynamic content</h3>
+    <div>
+        <label>Body</label>
+        <br>
+        <input type="text" [(ngModel)]="body">
+    </div>
+    <button hc-button color="primary" [hcPopover]="dynamic" popperPlacement="bottom" [popperCloseOnClickOutside]="false"
+            aria-hidden="true">Click Me
+    </button>
+    <hc-popover-content #dynamic>
+        <span [(innerText)]="body"></span>
+    </hc-popover-content>
+    <h3>Properties</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Option</th>
+            <th>Type</th>
+            <th>Default</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>popperDisableAnimation</td>
+            <td>boolean</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>popperDisableStyle</td>
+            <td>boolean</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>popperDisabled</td>
+            <td>boolean</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>popperDelay</td>
+            <td>number</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>popperTimeout</td>
+            <td>number</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>popperTimeoutAfterShow</td>
+            <td>number</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>popperPlacement</td>
+            <td>Placement(string)</td>
+            <td>auto</td>
+        </tr>
+        <tr>
+            <td>popperTarget</td>
+            <td>HtmlElement</td>
+            <td>auto</td>
+        </tr>
+        <tr>
+            <td>popperBoundaries</td>
+            <td>string(selector)</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>popperShowOnStart</td>
+            <td>number</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>popperTrigger</td>
+            <td>Trigger(string)</td>
+            <td>hover</td>
+        </tr>
+        <tr>
+            <td>popperPositionFixed</td>
+            <td>boolean</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>popperHideOnClickOutside</td>
+            <td>boolean</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>popperHideOnScroll</td>
+            <td>boolean</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>popperForceDetection</td>
+            <td>boolean</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>popperTrigger</td>
+            <td>Trigger(string)</td>
+            <td>hover</td>
+        </tr>
+        <tr>
+            <td>popperModifiers</td>
+            <td>popperModifier</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>popperOnShown</td>
+            <td>EventEmitter</td>
+            <td>$event</td>
+        </tr>
+        <tr>
+            <td>popperOnHidden</td>
+            <td>EventEmitter</td>
+            <td>$event</td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>popperPlacement</h3>
+    <pre><code>'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'bottom-start' | 'left-start' | 'right-start' | 'top-end' |
 'bottom-end' | 'left-end' | 'right-end' | 'auto' | 'auto-top' | 'auto-bottom' | 'auto-left' | 'auto-right' | Function</code></pre>
 
-  <h3>popperTrigger</h3>
-  <pre><code>'click' | 'mousedown' | 'hover' | 'none'</code></pre>
+    <h3>popperTrigger</h3>
+    <pre><code>'click' | 'mousedown' | 'hover' | 'none'</code></pre>
 </div>

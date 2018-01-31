@@ -4,7 +4,7 @@ import { TabComponent } from './tab.component';
 export type TabDirection = 'horizontal' | 'vertical';
 
 @Component({
-  template: `
+    template: `
             <div class="tab-bar-{{direction}}">
                 <div *ngFor="let tab of tabs"
                      class="tab-{{direction}}"
@@ -17,22 +17,22 @@ export type TabDirection = 'horizontal' | 'vertical';
                  <ng-content></ng-content>
              </div>
            `,
-  selector: `hc-tab-set`,
-  styleUrls: ['./tab-set.component.scss']
+    selector: `hc-tab-set`,
+    styleUrls: ['./tab-set.component.scss']
 })
 export class TabSetComponent implements AfterContentInit {
-  @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
-  @Input() direction: TabDirection = 'vertical';
+    @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
+    @Input() direction: TabDirection = 'vertical';
 
-  public setActive(tab: TabComponent) {
-    this.tabs.forEach(t => t.active = false);
-    tab.active = true;
-  }
-
-  ngAfterContentInit() {
-    if (this.tabs.first) {
-      this.tabs.first.active = true;
+    public setActive(tab: TabComponent) {
+        this.tabs.forEach(t => t.active = false);
+        tab.active = true;
     }
-  }
+
+    ngAfterContentInit() {
+        if (this.tabs.first) {
+            this.tabs.first.active = true;
+        }
+    }
 
 }

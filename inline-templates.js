@@ -13,14 +13,13 @@ var eval2 = eval;
  */
 function inlineResourcesFromString(content, urlResolver) {
     // Curry through the inlining functions.
-    return [inlineTemplate, inlineStyle, removeModuleId].reduce(function(
-        prevContent,
-        fn
-    ) {
-        return fn(prevContent, urlResolver);
-    },
-    content);
+    return [inlineTemplate, inlineStyle, removeModuleId].reduce(function (prevContent,
+                                                                          fn) {
+            return fn(prevContent, urlResolver);
+        },
+        content);
 }
+
 /**
  * Inline the templates for a source file. Simply search for instances of `templateUrl: ...` and
  * replace with `template: ...` (with the content of the file included).
@@ -31,7 +30,7 @@ function inlineResourcesFromString(content, urlResolver) {
 function inlineTemplate(content, urlResolver) {
     return content.replace(
         /templateUrl:\s*[`'"]([^`'"]+?\.html)[`'"]/g,
-        function(_m, templateUrl) {
+        function (_m, templateUrl) {
             var templateFile = urlResolver(templateUrl);
             var templateContent = fs.readFileSync(templateFile, 'utf-8');
             var shortenedTemplate = templateContent
@@ -41,6 +40,7 @@ function inlineTemplate(content, urlResolver) {
         }
     );
 }
+
 /**
  * Inline the styles for a source file. Simply search for instances of `styleUrls: [...]` and
  * replace with `styles: [...]` (with the content of the file included).
@@ -49,15 +49,13 @@ function inlineTemplate(content, urlResolver) {
  * @return {string} The content with all styles inlined.
  */
 function inlineStyle(content, urlResolver) {
-    return content.replace(/styleUrls:\s*(\[[\s\S]*?\])/gm, function(
-        _m,
-        styleUrls
-    ) {
+    return content.replace(/styleUrls:\s*(\[[\s\S]*?\])/gm, function (_m,
+                                                                      styleUrls) {
         var urls = eval2(styleUrls);
         return (
             'styles: [' +
             urls
-                .map(function(styleUrl) {
+                .map(function (styleUrl) {
                     var styleFile = urlResolver(styleUrl);
                     var styleContent = fs.readFileSync(styleFile, 'utf-8');
                     var shortenedStyle = styleContent
@@ -70,6 +68,7 @@ function inlineStyle(content, urlResolver) {
         );
     });
 }
+
 /**
  * Remove every mention of `moduleId: module.id`.
  * @param content {string} The source file's content.
@@ -79,13 +78,13 @@ function removeModuleId(content) {
     return content.replace(/\s*moduleId:\s*module\.id\s*,?\s*/gm, '');
 }
 
-glob('./lib/**/*.ts', function(err, matches) {
+glob('./lib/**/*.ts', function (err, matches) {
     for (let match of matches) {
-        var code = fs.readFileSync(match, { encoding: 'utf-8' });
-        var urlResolverFn = function(url) {
+        var code = fs.readFileSync(match, {encoding: 'utf-8'});
+        var urlResolverFn = function (url) {
             return path.join(path.dirname(match), url);
         };
         var inlined = inlineResourcesFromString(code, urlResolverFn);
-        fs.writeFileSync(match, inlined, { encoding: 'utf-8' });
+        fs.writeFileSync(match, inlined, {encoding: 'utf-8'});
     }
 });

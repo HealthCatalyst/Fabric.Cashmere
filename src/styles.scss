@@ -4,35 +4,35 @@ $fa-font-path: '../node_modules/font-awesome/fonts';
 
 html,
 body {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  margin: 0;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
 }
 
 body {
-  // navbar spacing
-  padding-top: 53px;
+    // navbar spacing
+    padding-top: 53px;
 }
 
 .demo-page {
-  padding: 20px;
-  max-height: 94%;
-  overflow-y: auto;
+    padding: 20px;
+    max-height: 94%;
+    overflow-y: auto;
 }
 
 a {
-  color: $primary-brand;
-  height: auto;
-  text-decoration: none;
-  border: none;
+    color: $primary-brand;
+    height: auto;
+    text-decoration: none;
+    border: none;
 
-  &:hover {
-    background-color: transparent;
-    color: lighten($primary-brand, 10%);
-  }
-  &:active:hover,
-  &:active:focus {
-    background-color: transparent;
-    color: darken($primary-brand, 10%);
-    outline: none !important;
-  }
+    &:hover {
+        background-color: transparent;
+        color: lighten($primary-brand, 10%);
+    }
+    &:active:hover,
+    &:active:focus {
+        background-color: transparent;
+        color: darken($primary-brand, 10%);
+        outline: none !important;
+    }
 }
