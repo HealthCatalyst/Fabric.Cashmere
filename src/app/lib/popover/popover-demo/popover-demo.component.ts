@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'hc-popover-demo',
-  templateUrl: './popover-demo.component.html',
-  styleUrls: ['./popover-demo.component.scss']
+    selector: 'hc-popover-demo',
+    templateUrl: './popover-demo.component.html',
+    styleUrls: ['./popover-demo.component.scss']
 })
 export class PopoverDemoComponent implements OnInit {
-  public body: string = 'dynamic content';
-  public popoverWithListItems: string =
-`<button hc-button color="primary" [hcPopover]="options" popperPlacement="bottom" aria-hidden="true">
+    public body: string = 'dynamic content';
+    public popoverWithListItems: string =
+        `<button hc-button color="primary" [hcPopover]="options" popperPlacement="bottom" aria-hidden="true">
   <i class="fa fa-gear" aria-hidden="true"></i>
   &nbsp;Options&nbsp;
   <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -26,12 +26,14 @@ export class PopoverDemoComponent implements OnInit {
     </li>
   </ul>
 </hc-popover-content>`;
-  constructor() { }
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
 
-  aboutClick() {
-    alert('about us!');
-  }
+    ngOnInit() {
+    }
+
+    aboutClick() {
+        alert('about us!');
+    }
 }

@@ -11,10 +11,11 @@ import { IAppSwitcherService, IDiscoveryRequest, IAppSwitcherConfig } from './ap
 export class MockAppSwitcherService implements IAppSwitcherService {
     public readonly allApplicationsUri: string = '#';
 
-    constructor() { }
+    constructor() {
+    }
 
     public getApplications(): Observable<IDiscoveryRequest> {
-        return Observable.of({ value: getMockApplication(5) }).delay(500);
+        return Observable.of({value: getMockApplication(5)}).delay(500);
     }
 }
 

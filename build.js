@@ -37,7 +37,7 @@ if (shell.exec(`node-sass ./lib -o ./lib`).code !== 0) {
 shell.echo(chalk.green(`Sass compiled successfully`));
 
 /* Replace .scss with .css in component.ts files */
-shell.ls('lib/**/*.component.ts').forEach(function(file) {
+shell.ls('lib/**/*.component.ts').forEach(function (file) {
     shell.sed('-i', '.scss', '.css', file);
 });
 shell.echo(chalk.green(`.scss replaced with .css successfully`));
@@ -123,6 +123,6 @@ shell.rm(`-Rf`, `${NPM_DIR}/src/**/*.js`);
 shell.rm(`-Rf`, `${NPM_DIR}/src/**/*.js.map`);
 
 shell.cp(`-Rf`, [`package.json`, `LICENSE`, `README.md`], `${NPM_DIR}`);
-shell.sed('-i', 'dependencies','peerDependencies','dist/package.json');
+shell.sed('-i', 'dependencies', 'peerDependencies', 'dist/package.json');
 
 shell.echo(chalk.green(`End building`));

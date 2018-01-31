@@ -5,105 +5,95 @@
 /// @param {Color} $color - base color of the button
 /// @param {Number} $darken-pct - percentage amount by which to darken color in hover(1x) and active(2x) states
 /// @return {Color}
-@mixin colorButton($color, $darken-pct: 10%){
-  color: $white;
-  background-color: $color;
+@mixin colorButton($color, $darken-pct: 10%) {
+    color: $white;
+    background-color: $color;
 
-  &:hover {
-    background-color: shade($color, $darken-pct);
-  }
-  &:active {
-    background-color: shade($color, $darken-pct * 2);
-  }
-  &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active {
-    cursor: not-allowed;
-    background-color: $gray-100;
-    color: $gray-300;
-  }
+    &:hover {
+        background-color: shade($color, $darken-pct);
+    }
+    &:active {
+        background-color: shade($color, $darken-pct * 2);
+    }
+    &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active {
+        cursor: not-allowed;
+        background-color: $gray-100;
+        color: $gray-300;
+    }
 }
 
-:host {
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 35px;
-  min-width: 150px;
-  font-size: 15px;
-  line-height: 20px;
-  display: inline-block;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
-  user-select: none;
-  background-image: none;
-  border: none;
-  border-radius: 5px;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  
-  &:focus {
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-  }
-
-  &:active {
+.hc-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    height: 35px;
+    min-width: 150px;
+    font-size: 15px;
+    line-height: 35px;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
     background-image: none;
-    outline: none;
-  }
-}
+    border: none;
+    border-radius: 5px;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-:host(.hc-primary) { @include colorButton($primary-action);}
-:host(.hc-primary-alt) { @include colorButton($primary-alt-action); }
-:host(.hc-destructive) { @include colorButton($destructive-action); }
-:host(.hc-neutral) { @include colorButton($neutral-action); }
+    &:focus {
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+    }
 
-:host(.hc-secondary) {
-  @include colorButton($gray-100, 5%);
-  color: $gray-600;
-  border: 2px solid $gray-300;
-}
+    &:active {
+        background-image: none;
+        outline: none;
+    }
 
-:host(.hc-tertiary) {
-  background-color: transparent;
-  color: $primary-brand;
-  font-weight: bold;
+    &.hc-button-primary {
+        @include colorButton($primary-action);
+    }
 
-  &:hover {
-    color: lighten($primary-brand, 10%);
-  }
-  &:active {
-    color: darken($primary-brand, 10%);
-  }
+    &.hc-button-primary-alt {
+        @include colorButton($primary-alt-action);
+    }
 
-  &[disabled] {
-    color: $gray-500;
-  }
-}
+    &.hc-button-destructive {
+        @include colorButton($destructive-action);
+    }
 
-:host /deep/ hc-icon {
-  vertical-align: bottom;
-  padding-right: 6px;
-}
+    &.hc-button-neutral {
+        @include colorButton($neutral-action);
+    }
 
-:host( a ) {
-  color: $primary-brand;
-  padding-left: 0px;
-  padding-right: 0px;
-  min-width: 0px;
-  height:auto;
-  text-decoration: none;
-  border: none;
+    &.hc-button-secondary {
+        @include colorButton($gray-100, 5%);
+        color: $gray-600;
+        border: 2px solid $gray-300;
+    }
 
-  &:hover {
-    background-color: transparent;
-    color: lighten($primary-brand, 10%);
-  }
-  &:active:hover,
-  &:active:focus {
-    background-color: transparent;
-    color: darken($primary-brand, 10%);
-    outline: none !important;
-  }
+    &.hc-button-tertiary {
+        background-color: transparent;
+        color: $primary-brand;
+        font-weight: bold;
+
+        &:hover {
+            color: lighten($primary-brand, 10%);
+        }
+        &:active {
+            color: darken($primary-brand, 10%);
+        }
+
+        &[disabled] {
+            color: $gray-500;
+        }
+    }
+
+    hc-icon {
+        padding-right: 6px;
+    }
 }

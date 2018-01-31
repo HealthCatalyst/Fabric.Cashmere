@@ -1,92 +1,93 @@
 <div class="demo-page">
-  <h2 style="margin: 0">Checkbox</h2>
-  <h4 style="font-weight: 300; margin-top: 0">Checkboxes allow the user to make a binary choice, i.e. a choice between
-    one of two possible mutually exclusive options.</h4>
+    <h2 style="margin: 0">Checkbox</h2>
+    <h4 style="font-weight: 300; margin-top: 0">Checkboxes allow the user to make a binary choice, i.e. a choice between
+        one of two possible mutually exclusive options.</h4>
 
-  <h5>Standard</h5>
-  <hc-checkbox id="light">Standard Checkbox</hc-checkbox>
+    <h5>Standard</h5>
+    <hc-checkbox id="light">Standard Checkbox</hc-checkbox>
 
-  <h5>Disabled</h5>
-  <hc-checkbox id="disabled" disabled="true">Disabled Checkbox</hc-checkbox>
+    <h5>Disabled</h5>
+    <hc-checkbox id="disabled" disabled="true">Disabled Checkbox</hc-checkbox>
 
-  <h5>Forms Support(two-way data binding and Reactive Forms)</h5>
-  <hc-checkbox id="ngModel" [(ngModel)]="isChecked">{{getCheckboxText()}}</hc-checkbox>
+    <h5>Forms Support(two-way data binding and Reactive Forms)</h5>
+    <hc-checkbox id="ngModel" [(ngModel)]="isChecked">{{getCheckboxText()}}</hc-checkbox>
 
-  <br>
-  <br>
-  <hr style="height:1px;border:none;background-color:#E5E5E5;">
-  <br>
-  <p class="description">
-    <b>Checkbox Usage</b>
-    <br>Checkboxes are typically used with labels, but can be used without in certain situations (table columns, etc).
-    <br>This checkbox can be used with both reactive and template forms
-  </p>
-  <br>
-  <hr style="height:1px;border:none;background-color:#E5E5E5;">
-  <br>
-  <div class="headerName">Angular Component</div>
-  <br>
-  <pre>
+    <br>
+    <br>
+    <hr style="height:1px;border:none;background-color:#E5E5E5;">
+    <br>
+    <p class="description">
+        <b>Checkbox Usage</b>
+        <br>Checkboxes are typically used with labels, but can be used without in certain situations (table columns,
+        etc).
+        <br>This checkbox can be used with both reactive and template forms
+    </p>
+    <br>
+    <hr style="height:1px;border:none;background-color:#E5E5E5;">
+    <br>
+    <div class="headerName">Angular Component</div>
+    <br>
+    <pre>
           <code>
             &#x3C;hc-checkbox id=&#x22;checkbox-id&#x22;&#x3E;Checkbox Label&#x3C;/hc-checkbox&#x3E;
             &#x3C;hc-checkbox id=&#x22;checkbox-id&#x22; [(ngModel)]=&#x22;data&#x22;&#x3E;Checkbox Label&#x3C;/hc-checkbox&#x3E;
           </code>
       </pre>
-  <br>
-  <hr style="height:1px;border:none;background-color:#E5E5E5;">
-  <br>
-  <div class="headerName">Component Parameters</div>
-  <br>
+    <br>
+    <hr style="height:1px;border:none;background-color:#E5E5E5;">
+    <br>
+    <div class="headerName">Component Parameters</div>
+    <br>
 
-  <table class="apiTable parameters">
-    <tr>
-      <th>id</th>
-      <td>
-        <span>Type:</span> String
-      </td>
-      <td width=50%>Optional - checkbox identifier</td>
-    </tr>
-    <tr>
-      <th>disabled</th>
-      <td>
-        <span>Type:</span> string|boolean
-      </td>
-      <td width=50%>Optional - disables the checkbox</td>
-    </tr>
-    <tr>
-      <th>required</th>
-      <td>
-        <span>Type:</span> string|boolean
-      </td>
-      <td width=50%>Optional - whether the checkbox is required</td>
-    </tr>
-    <tr>
-      <th>name</th>
-      <td>
-        <span>Type:</span> string
-      </td>
-      <td width=50%>Optional - name to be applied to input element</td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td>
-        <span>Type:</span> string
-      </td>
-      <td width=50%>Optional - value attribute for the input element</td>
-    </tr>
-    <tr>
-      <th>tabIndex</th>
-      <td>
-        <span>Type:</span> number
-      </td>
-      <td width=50%>Optional - tabIndex for the element</td>
-    </tr>
-    <tr>
-      <th>checked</th>
-      <td>
-        <span>Type:</span> number
-      </td>
-      <td width=50%>Optional - whether the checkbox is checked or not</td>
-    </tr>
-  </table>
+    <table class="apiTable parameters">
+        <tr>
+            <th>id</th>
+            <td>
+                <span>Type:</span> String
+            </td>
+            <td width=50%>Optional - checkbox identifier</td>
+        </tr>
+        <tr>
+            <th>disabled</th>
+            <td>
+                <span>Type:</span> string|boolean
+            </td>
+            <td width=50%>Optional - disables the checkbox</td>
+        </tr>
+        <tr>
+            <th>required</th>
+            <td>
+                <span>Type:</span> string|boolean
+            </td>
+            <td width=50%>Optional - whether the checkbox is required</td>
+        </tr>
+        <tr>
+            <th>name</th>
+            <td>
+                <span>Type:</span> string
+            </td>
+            <td width=50%>Optional - name to be applied to input element</td>
+        </tr>
+        <tr>
+            <th>value</th>
+            <td>
+                <span>Type:</span> string
+            </td>
+            <td width=50%>Optional - value attribute for the input element</td>
+        </tr>
+        <tr>
+            <th>tabIndex</th>
+            <td>
+                <span>Type:</span> number
+            </td>
+            <td width=50%>Optional - tabIndex for the element</td>
+        </tr>
+        <tr>
+            <th>checked</th>
+            <td>
+                <span>Type:</span> number
+            </td>
+            <td width=50%>Optional - whether the checkbox is checked or not</td>
+        </tr>
+    </table>
 </div>

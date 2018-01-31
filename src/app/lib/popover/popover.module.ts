@@ -20,4 +20,5 @@ import { PopoverDirective } from './popover.directive';
         PopoverContentComponent
     ]
 })
-export class PopoverModule { }
+export class PopoverModule {
+}

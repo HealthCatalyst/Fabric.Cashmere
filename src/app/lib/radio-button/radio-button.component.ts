@@ -9,7 +9,8 @@ export class RadioButtonComponent implements OnInit {
 
     @Input() disabled: boolean = false;
 
-    constructor() { }
+    constructor() {
+    }
 
     ngOnInit() {
     }

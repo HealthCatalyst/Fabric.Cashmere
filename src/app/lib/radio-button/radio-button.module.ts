@@ -14,4 +14,5 @@ import { RadioButtonDemoComponent } from './radio-button-demo/radio-button-demo.
         RadioButtonComponent
     ]
 })
-export class RadioButtonModule { }
+export class RadioButtonModule {
+}

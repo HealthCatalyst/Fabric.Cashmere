@@ -1,5 +1,6 @@
 @import "../colors";
-.palette-row{
+
+.palette-row {
     display: flex;
 
     & + .palette-row {
@@ -33,10 +34,12 @@ hc-swatch-demo-component {
     margin-right: 2%;
 }
 
-.primary .swatch-container{
+.primary .swatch-container {
     width: 18%;
     margin-right: 2%;
-    &:last-child { margin-right: 0; }
+    &:last-child {
+        margin-right: 0;
+    }
 }
 
 .swatch-stack {
@@ -85,13 +88,13 @@ pre code {
     border: 1px solid $gray-400;
     display: block;
     padding: 20px;
-  }
-  
-  code {
-      font-size: 120%;
-      line-height: 140%;
-  }
-  
-  pre {
-      margin: 0;
-  }
+}
+
+code {
+    font-size: 120%;
+    line-height: 140%;
+}
+
+pre {
+    margin: 0;
+}

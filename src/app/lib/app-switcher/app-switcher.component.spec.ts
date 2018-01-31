@@ -6,30 +6,30 @@ import { MockAppSwitcherService } from 'app/lib/app-switcher/app-switcher.servic
 import { PipesModule } from 'app/lib/pipes/pipes.module';
 
 describe('AppSwitcherComponent', () => {
-  let component: AppSwitcherComponent;
-  let fixture: ComponentFixture<AppSwitcherComponent>;
+    let component: AppSwitcherComponent;
+    let fixture: ComponentFixture<AppSwitcherComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [ PopoverModule, PipesModule ],
-      declarations: [ AppSwitcherComponent ],
-      providers: [
-      {
-          provide: 'IAppSwitcherService',
-          useClass: MockAppSwitcherService
-      }
-    ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [PopoverModule, PipesModule],
+            declarations: [AppSwitcherComponent],
+            providers: [
+                {
+                    provide: 'IAppSwitcherService',
+                    useClass: MockAppSwitcherService
+                }
+            ]
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AppSwitcherComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AppSwitcherComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

@@ -7,17 +7,17 @@ describe('PopoverContentComponent', () => {
     let fixture: ComponentFixture<PopoverContentComponent>;
     const mockPopoverComponent: PopoverContentComponent = new PopoverContentComponent(<any>undefined);
     const mockViewContainerRef: any = {
-      createComponent : jasmine.createSpy('createComponent')
-          .and.returnValue({
-            'instance': mockPopoverComponent,
-            'destroy': jasmine.createSpy('destroy')
-        }),
-      element : {nativeElement: ''}
+        createComponent: jasmine.createSpy('createComponent')
+            .and.returnValue({
+                'instance': mockPopoverComponent,
+                'destroy': jasmine.createSpy('destroy')
+            }),
+        element: {nativeElement: ''}
     };
     let directive: PopoverDirective;
 
     const mockResolver: any = {
-      resolveComponentFactory: jasmine.createSpy('resolveComponentFactory')
+        resolveComponentFactory: jasmine.createSpy('resolveComponentFactory')
     };
     beforeEach(async(() => {
         TestBed.configureTestingModule({

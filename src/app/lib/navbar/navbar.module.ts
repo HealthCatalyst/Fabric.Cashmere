@@ -6,11 +6,12 @@ import { NavbarIconComponent } from './navbar-icon/navbar-icon.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule
-  ],
-  declarations: [NavbarComponent, NavbarLinkComponent, NavbarIconComponent],
-  exports: [NavbarComponent, NavbarLinkComponent, NavbarIconComponent]
+    imports: [
+        CommonModule,
+        RouterModule
+    ],
+    declarations: [NavbarComponent, NavbarLinkComponent, NavbarIconComponent],
+    exports: [NavbarComponent, NavbarLinkComponent, NavbarIconComponent]
 })
-export class NavbarModule { }
+export class NavbarModule {
+}
