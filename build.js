@@ -12,6 +12,7 @@ const ESM5_DIR = `${NPM_DIR}/esm5`;
 const BUNDLES_DIR = `${NPM_DIR}/bundles`;
 const OUT_DIR_ESM5 = `${NPM_DIR}/package/esm5`;
 const GLOBAL_SCSS = `lib/colors.scss`;
+const EXTERNAL_LIBRARIES = [`node_modules/popper.js/dist/umd/popper.min.js`];
 
 shell.echo(`Start building...`);
 
@@ -49,6 +50,10 @@ if (shell.exec(`node ./inline-templates.js`).code !== 0) {
 shell.echo(chalk.green(`Templates and Styles Inlined`));
 
 shell.cp('-P', GLOBAL_SCSS, NPM_DIR);
+
+for (let lib of EXTERNAL_LIBRARIES) {
+    shell.cp('-P', lib, NPM_DIR);
+}
 
 /* TSLint with Codelyzer */
 // https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts
