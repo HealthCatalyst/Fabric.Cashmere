@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ButtonModule } from 'app/lib/button/button.module';
 import { DemoComponent } from 'app/demo/demo.component';
 import { SideNavComponent } from 'app/demo/side-nav/side-nav.component';
@@ -26,27 +25,29 @@ import { SelectModule } from 'app/lib/select/select.module';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
 import { AppSwitcherModule } from 'app/lib/app-switcher/app-switcher.module';
 import { MockAppSwitcherService } from 'app/lib/app-switcher/app-switcher.service';
-import { SelectComponent } from 'app/lib/select/select.component';
-import { DrawerDemoComponent } from 'app/lib/drawer/drawer-demo/drawer-demo.component';
 import { IconModule } from 'app/lib/icon';
-import { DrawerModule } from 'app/lib/drawer';
 import { HomeComponent } from 'app/home/home.component';
+import { DrawerDemoComponent } from '../lib/drawer/drawer-demo/drawer-demo.component';
+import { DrawerModule } from '../lib/drawer';
+import { ListDemoComponent } from '../lib/list/list-demo/list-demo.component';
+import { ListModule } from '../lib/list';
 
 @NgModule({
     imports: [
         BrowserAnimationsModule,
         BrowserModule,
+        FormsModule,
         ButtonModule,
         NavbarModule,
         PopoverModule,
-        FormsModule,
-        CheckboxModule,
-        RadioButtonModule,
         AppSwitcherModule,
+        RadioButtonModule,
+        CheckboxModule,
         IconModule,
         DrawerModule,
         TabsModule,
         SelectModule,
+        ListModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -61,13 +62,14 @@ import { HomeComponent } from 'app/home/home.component';
         NavbarDemoComponent,
         PopoverDemoComponent,
         CheckboxDemoComponent,
-        RadioButtonDemoComponent,
         ColorDemoComponent,
         TableDemoComponent,
         SwatchDemoComponent,
         SelectDemoComponent,
         DrawerDemoComponent,
-        TabsDemoComponent
+        TabsDemoComponent,
+        ListDemoComponent,
+        RadioButtonDemoComponent
     ],
     providers: [
         {
