@@ -2,7 +2,17 @@
 /* tslint:disable:use-host-property-decorator */
 // https://github.com/mgechev/codelyzer/issues/178#issuecomment-265154480
 
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  HostBinding,
+  Input,
+  OnChanges,
+  Renderer2,
+  SimpleChanges,
+  ViewEncapsulation
+} from '@angular/core';
 
 export function throwErrorForInvalidButtonColor(unsupportedColor: string) {
   throw Error('Unsupported color input value: ' + unsupportedColor);
@@ -12,22 +22,24 @@ export type ButtonColor = 'primary' | 'primary-alt' | 'destructive' | 'neutral' 
 
 @Component({
   selector: 'button[hc-button]',
-  template: `<i *ngIf="glyph" class="fa {{glyph}} button-glyph"></i>
-  <ng-content></ng-content>
-  <i *ngIf="dropdown" class="fa fa-chevron-down fa-fw button-dropdown"></i>`,
+  template: '<ng-content></ng-content>',
   styleUrls: ['./button.component.scss'],
   host: {
     '[disabled]': 'disabled || null',
   },
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class ButtonComponent implements OnChanges {
   private supportedColors = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary'];
 
   @Input() color: ButtonColor = 'primary';
   @Input() disabled = false;
-  @Input() dropdown: boolean = false;
-  @Input() glyph: string;
+
+  @HostBinding('class.hc-button')
+  get hostClass(): boolean {
+    return true;
+  }
 
   constructor(private elementRef: ElementRef,
               private renderer: Renderer2) {

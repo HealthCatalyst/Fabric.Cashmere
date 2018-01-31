@@ -2,7 +2,7 @@
 /* tslint:disable:use-host-property-decorator */
 // https://github.com/mgechev/codelyzer/issues/178#issuecomment-265154480
 
-import { ChangeDetectionStrategy, Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, HostListener, Renderer2 } from '@angular/core';
 import { ButtonComponent } from './button.component';
 
 @Component({
@@ -17,6 +17,12 @@ import { ButtonComponent } from './button.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AnchorComponent extends ButtonComponent {
+
+  @HostBinding('class.hc-anchor')
+  get getAnchorClass(): boolean {
+    return true;
+  }
+
   constructor(elementRef: ElementRef,
               renderer: Renderer2) {
     super(elementRef, renderer);
