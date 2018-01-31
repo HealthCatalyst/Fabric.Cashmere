@@ -1,11 +1,14 @@
 $fa-font-path: '../node_modules/font-awesome/fonts';
 @import '../node_modules/font-awesome/scss/font-awesome';
 @import './app/lib/colors';
+@import './app/lib/tables.scss';
 
 html,
 body {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
+    background-color: $white;
+    color: $text;
 }
 
 body {
