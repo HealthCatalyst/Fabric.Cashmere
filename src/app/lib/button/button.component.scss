@@ -5,7 +5,7 @@
 /// @param {Color} $color - base color of the button
 /// @param {Number} $darken-pct - percentage amount by which to darken color in hover(1x) and active(2x) states
 /// @return {Color}
-@mixin colorButton($color, $darken-pct: 10%){
+@mixin colorButton($color, $darken-pct: 10%) {
   color: $white;
   background-color: $color;
 
@@ -22,19 +22,19 @@
   }
 }
 
-:host {
-  padding-left: 20px;
-  padding-right: 20px;
+.hc-button {
+  padding: 0 20px;
   height: 35px;
   min-width: 150px;
   font-size: 15px;
-  line-height: 20px;
+  line-height: 35px;
   display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
   text-align: center;
   white-space: nowrap;
-  vertical-align: middle;
+  vertical-align: baseline;
+
   touch-action: manipulation;
   cursor: pointer;
   user-select: none;
@@ -52,58 +52,61 @@
     background-image: none;
     outline: none;
   }
+
+  .hc-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+  }
+
+  &.hc-primary {
+    @include colorButton($primary-action);
+  }
+
+  &.hc-primary-alt {
+    @include colorButton($primary-alt-action);
+  }
+
+  &.hc-destructive {
+    @include colorButton($destructive-action);
+  }
+
+  &.hc-neutral {
+    @include colorButton($neutral-action);
+  }
+
+  &.hc-secondary {
+    @include colorButton($gray-100, 5%);
+    color: $gray-600;
+    border: 2px solid $gray-300;
+  }
+
+  &.hc-tertiary {
+    background-color: transparent;
+    color: $primary-brand;
+    font-weight: bold;
+
+    &:hover {
+      color: lighten($primary-brand, 10%);
+    }
+    &:active {
+      color: darken($primary-brand, 10%);
+    }
+
+    &[disabled] {
+      color: $gray-500;
+    }
+  }
 }
 
-:host(.hc-primary) { @include colorButton($primary-action);}
-:host(.hc-primary-alt) { @include colorButton($primary-alt-action); }
-:host(.hc-destructive) { @include colorButton($destructive-action); }
-:host(.hc-neutral) { @include colorButton($neutral-action); }
-
-:host(.hc-secondary) {
-  @include colorButton($gray-100, 5%);
-  color: $gray-600;
-  border: 2px solid $gray-300;
-}
-
-:host(.hc-tertiary) {
-  background-color: transparent;
+.hc-anchor {
   color: $primary-brand;
-  font-weight: bold;
 
-  &:hover {
-    color: lighten($primary-brand, 10%);
-  }
-  &:active {
-    color: darken($primary-brand, 10%);
-  }
-
-  &[disabled] {
-    color: $gray-500;
-  }
-}
-
-.button-glyph {
-  display: inline-block;
-  vertical-align: bottom;
-  font-size: 20px;
-  padding-right: 7px;
-  line-height: 20px;
-}
-
-.button-dropdown {
-  display: inline-block;
-  vertical-align: bottom;
-  font-size: 12px;
-  padding-left: 3px;
-  line-height: 20px;
-}
-
-:host( a ) {
-  color: $primary-brand;
-  padding-left: 0px;
-  padding-right: 0px;
-  min-width: 0px;
-  height:auto;
+  padding-left: 0;
+  padding-right: 0;
+  min-width: 0;
+  height: auto;
   text-decoration: none;
   border: none;
 
