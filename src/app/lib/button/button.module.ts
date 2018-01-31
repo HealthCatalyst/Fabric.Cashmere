@@ -4,17 +4,17 @@ import { CommonModule } from '@angular/common';
 import { AnchorComponent } from './anchor.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    ButtonComponent,
-    AnchorComponent
-  ],
-  exports: [
-    ButtonComponent,
-    AnchorComponent
-  ]
+    imports: [
+        CommonModule
+    ],
+    declarations: [
+        ButtonComponent,
+        AnchorComponent
+    ],
+    exports: [
+        ButtonComponent,
+        AnchorComponent
+    ]
 })
 export class ButtonModule {
 }

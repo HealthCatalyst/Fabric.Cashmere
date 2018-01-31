@@ -4,15 +4,15 @@ import { DrawerComponent } from './drawer.component';
 import { DrawerContainerComponent } from './drawer-container.component';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [
-    DrawerComponent,
-    DrawerContainerComponent
-  ],
-  exports: [
-    DrawerComponent,
-    DrawerContainerComponent
-  ]
+    imports: [CommonModule],
+    declarations: [
+        DrawerComponent,
+        DrawerContainerComponent
+    ],
+    exports: [
+        DrawerComponent,
+        DrawerContainerComponent
+    ]
 })
 export class DrawerModule {
 }

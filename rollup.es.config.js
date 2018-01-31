@@ -10,14 +10,14 @@ export default {
         sourcemap: true
     },
     plugins: [
-      resolve({
-        module: true,
-        jsnext: true,
-        main: true,
-        extensions: ['.js', '.json'],
-        preferBuiltins: false,
-        modulesOnly: true
-      }),
+        resolve({
+            module: true,
+            jsnext: true,
+            main: true,
+            extensions: ['.js', '.json'],
+            preferBuiltins: false,
+            modulesOnly: true
+        }),
         sourcemaps(),
         license({
             sourceMap: true,
@@ -28,5 +28,6 @@ export default {
             }
         })
     ],
-    onwarn: () => { return }
+    onwarn: function (message) {
+    }
 }

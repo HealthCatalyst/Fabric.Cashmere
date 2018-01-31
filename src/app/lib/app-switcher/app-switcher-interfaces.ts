@@ -20,6 +20,7 @@ export interface IDiscoveryRequest {
 
 export interface IAppSwitcherService {
     allApplicationsUri: string;
+
     getApplications(): Observable<IDiscoveryRequest>
 }
 

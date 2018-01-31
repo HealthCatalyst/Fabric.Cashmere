@@ -1,5 +1,6 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component } from '@angular/core';
+
 /**
  * This component exists solely to test the
  * ability of the select component to be compatible with
@@ -23,13 +24,13 @@ export class SelectIntegrationTestComponent {
 
     constructor(private fb: FormBuilder) {
         this.createTestForm();
-     }
+    }
 
-     createTestForm(): void {
-         this.cityForm = this.fb.group({
-             city: 'NYC',
-             state: 'New York'
-         })
-     }
+    createTestForm(): void {
+        this.cityForm = this.fb.group({
+            city: 'NYC',
+            state: 'New York'
+        });
+    }
 
 }
