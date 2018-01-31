@@ -1,6 +1,24 @@
 @import "./colors.scss";
 @import "./mixins.scss";
 
+$table-border: 1px solid $slate-gray-200 !default;
+$table-condensed-font-size: 13px;
+$header-border-thick: 2px solid $slate-gray-300 !default;
+$cell-padding: 8px 16px !default;
+$cell-padding-condensed: 5px 16px !default;
+$thead-font-size: 14px !default;
+$thead-font-color: $dark-blue !default;
+$thead-active-font-color: $green !default;
+$tbody-font-size: 15px !default;
+$tbody-font-color: $text !default;
+$row-color: $white !default;
+$row-color-alt: $slate-gray-100 !default;
+$row-color-hover: tint($primary-brand, 75%) !default;
+$row-color-selected: $azure !default;
+$row-color-selected-hover: tint($azure, 20%) !default;
+$row-selected-font-color: $white;
+$row-selected-border-color: $white;
+
 // TODO: move into reset/normalize type file
 table {
     border-collapse: collapse;
@@ -16,37 +34,44 @@ table.hc-table {
     position: relative;
     width: 100%;
     max-width: 100%;
-    color: $text;
+    color: $tbody-font-color;
 
     td, th {
-        padding: 8px 16px;
+        padding: $cell-padding;
         border-top: none;
-        border-bottom: 1px solid $slate-gray-200;
+        border-bottom: $table-border;
         word-break: break-word;
     }
 
     thead th {
-        font-size: 14px;
-        color: $dark-blue;
+        font-size: $thead-font-size;
+        color: $thead-font-color;
         vertical-align: bottom;
     }
 
     tbody {
-        font-size: 15px;
-        border-left: 1px solid $slate-gray-200;
-        border-right: 1px solid $slate-gray-200;
+        font-size: $tbody-font-size;
+        border-left: $table-border;
+        border-right: $table-border;
 
         tr {
             &:nth-child(2n) {
-                background-color: $white;
+                background-color: $row-color;
             }
 
             &:nth-child(2n + 1) {
-                background-color: $slate-gray-100;
+                background-color: $row-color-alt;
             }
 
             &:not(.empty-table-row):hover {
-                background-color: tint($primary-brand, 75%);
+                background-color: $row-color-hover;
+            }
+
+            &.hc-row-selected {
+                background-color: $row-color-selected;
+                color: $row-selected-font-color;
+                &:hover { background-color: $row-color-selected-hover; }
+                td { border-color: $row-selected-border-color; }
             }
         }
 
@@ -57,29 +82,19 @@ table.hc-table {
 
     // Add Borders
     &.hc-table-borders {
-        td, th { border: 1px solid $slate-gray-200; }
-        th { border-bottom: 2px solid $slate-gray-300; }
+        td, th { border: $table-border }
+        th { border-bottom: $header-border-thick }
     }
 
     td, th {
         &.hc-cell-borders {
-            border: 1px solid $slate-gray-200;
+            border: $table-border;
         }
     }
 
     // Condensed
     &.hc-table-small {
-        td, th { padding: 5px 16px; font-size: 13px;}
-    }
-
-    // Special Row Styles
-    tbody tr.hc-row-selected {
-        background-color: $azure;
-        &:hover {
-            background-color: tint($azure, 20%);
-        }
-        color: $white;
-        td { border-color: $white; }
+        td, th { padding: $cell-padding-condensed; font-size: $table-condensed-font-size;}
     }
 
     // Sorting
@@ -89,7 +104,7 @@ table.hc-table {
         padding-right: 35px;
 
         &:hover {
-            background-color: tint($primary-brand, 75%);
+            background-color: $row-color-hover;
         }
 
         //TODO: redo the guts of these icons when we roll our own icon font
@@ -104,25 +119,25 @@ table.hc-table {
         &:before {
             right: 23px;
             bottom: 11px;
-            content: "\F175";
+            content: $fa-var-long-arrow-down;
         }
         &:after {
             right: 18px;
             margin-top: -1px;
-            content: "\F175";
+            content: $fa-var-long-arrow-down;
             transform: rotate(180deg)
         }
 
         &.hc-active-sort {
-            color: $green;
+            color: $thead-active-font-color;
 
             &.hc-sort-asc {
-                &:before { content: "\F160"; right: 16px;}
+                &:before { content: $fa-var-sort-amount-asc; right: 16px;}
                 &:after { content: none; }
             }
 
             &.hc-sort-desc {
-                &:before { content: "\F161"; right: 16px;}
+                &:before { content: $fa-var-sort-amount-desc; right: 16px;}
                 &:after { content: none; }
             }
         }
