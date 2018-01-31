@@ -13,6 +13,7 @@ jobs:
     - env: "PHASE=lint"
     - env: "PHASE=aot"
     - env: "PHASE=unit"
+    - env: "PHASE=lib_build"
 #    - env: "PHASE=e2e"
 
 install:
