@@ -4,8 +4,8 @@
 
     <hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
         <hc-app-switcher></hc-app-switcher>
-        <hc-navbar-link [active]="true" [uri]="undefined">Home</hc-navbar-link>
-        <hc-navbar-link [active]="false" [uri]="undefined" exact="true">Buttons</hc-navbar-link>
+        <hc-navbar-link [active]="true" [uri]="undefined" linkText="Home"></hc-navbar-link>
+        <hc-navbar-link [active]="false" [uri]="undefined" linkText="Buttons"></hc-navbar-link>
         <hc-navbar-icon>
             <i class="fa fa-search fa-lg white"></i>
         </hc-navbar-icon>
@@ -45,6 +45,7 @@
         <li>
             <strong>hc-navbar-link</strong> - main navigation links</li>
         <ul>
+            <li>linkText - the text to display</li>
             <li>active (optional) - forces active state (default = null)</li>
             <li>uri -
                 <a href="https://angular.io/api/router/RouterLink">RouterLink</a> uri</li>
