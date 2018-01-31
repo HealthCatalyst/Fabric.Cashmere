@@ -19,6 +19,8 @@ import { NavbarDemoComponent } from 'app/lib/navbar/navbar-demo/navbar-demo.comp
 import { PopoverDemoComponent } from 'app/lib/popover/popover-demo/popover-demo.component';
 import { CheckboxDemoComponent } from 'app/lib/checkbox/checkbox-demo/checkbox-demo.component';
 import { CheckboxModule } from 'app/lib/checkbox/checkbox.module';
+import { RadioButtonModule } from 'app/lib/radio-button/radio-button.module';
+import { RadioButtonDemoComponent } from 'app/lib/radio-button/radio-button-demo/radio-button-demo.component';
 import { SelectModule } from 'app/lib/select/select.module';
 import { SelectDemoComponent } from 'app/lib/select/select-demo/select-demo.component';
 import { AppSwitcherModule } from 'app/lib/app-switcher/app-switcher.module';
@@ -38,6 +40,7 @@ import { HomeComponent } from 'app/home/home.component';
         PopoverModule,
         FormsModule,
         CheckboxModule,
+        RadioButtonModule,
         AppSwitcherModule,
         IconModule,
         DrawerModule,
@@ -57,6 +60,7 @@ import { HomeComponent } from 'app/home/home.component';
         NavbarDemoComponent,
         PopoverDemoComponent,
         CheckboxDemoComponent,
+        RadioButtonDemoComponent,
         ColorDemoComponent,
         SwatchDemoComponent,
         SelectDemoComponent,

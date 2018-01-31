@@ -1,5 +1,6 @@
 export * from './button';
 export * from './checkbox';
+export * from './radio-button';
 export * from './drawer';
 export * from './icon';
 export * from './select';
