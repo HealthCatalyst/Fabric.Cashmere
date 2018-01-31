@@ -7,8 +7,8 @@ import { By } from '@angular/platform-browser';
 
 @Component({
   template: `
-      <button hc-button [color]="buttonColor" [disabled]="isDisabled" (click)="buttonClick()">Button</button>
-      <a hc-button [color]="buttonColor" [disabled]="isDisabled" href="https://www.healthcatalyst.com">Link</a>
+    <button hc-button [color]="buttonColor" [disabled]="isDisabled" (click)="buttonClick()">Button</button>
+    <a hc-button [color]="buttonColor" [disabled]="isDisabled" href="https://www.healthcatalyst.com">Link</a>
   `
 })
 class TestAppComponent {
@@ -64,8 +64,8 @@ describe('ButtonComponent', () => {
     buttonColors.forEach(color => {
       testApp.setColor(color);
       testApp.detectChanges();
-      expect(testApp.buttonDebugElement.nativeElement.classList.contains(`hc-${color}`)).toBe(true);
-      expect(testApp.aDebugElement.nativeElement.classList.contains(`hc-${color}`)).toBe(true);
+      expect(testApp.buttonDebugElement.nativeElement.classList.contains(`hc-button-${color}`)).toBe(true);
+      expect(testApp.aDebugElement.nativeElement.classList.contains(`hc-button-${color}`)).toBe(true);
     });
   });
 
@@ -77,19 +77,19 @@ describe('ButtonComponent', () => {
     testApp.setColor('primary');
     testApp.detectChanges();
 
-    expect(testApp.buttonDebugElement.nativeElement.classList.contains('hc-primary')).toBe(true);
+    expect(testApp.buttonDebugElement.nativeElement.classList.contains('hc-button-primary')).toBe(true);
     expect(testApp.buttonDebugElement.nativeElement.classList.contains('user-class')).toBe(true);
 
-    expect(testApp.aDebugElement.nativeElement.classList.contains('hc-primary')).toBe(true);
+    expect(testApp.aDebugElement.nativeElement.classList.contains('hc-button-primary')).toBe(true);
     expect(testApp.aDebugElement.nativeElement.classList.contains('user-class')).toBe(true);
 
     testApp.setColor('secondary');
     testApp.detectChanges();
 
-    expect(testApp.buttonDebugElement.nativeElement.classList.contains('hc-secondary')).toBe(true);
+    expect(testApp.buttonDebugElement.nativeElement.classList.contains('hc-button-secondary')).toBe(true);
     expect(testApp.buttonDebugElement.nativeElement.classList.contains('user-class')).toBe(true);
 
-    expect(testApp.aDebugElement.nativeElement.classList.contains('hc-secondary')).toBe(true);
+    expect(testApp.aDebugElement.nativeElement.classList.contains('hc-button-secondary')).toBe(true);
     expect(testApp.aDebugElement.nativeElement.classList.contains('user-class')).toBe(true);
   });
 
@@ -98,7 +98,7 @@ describe('ButtonComponent', () => {
 
     expect(() => {
       testApp.setColor('bigBirdYellow');
-      testApp.detectChanges()
+      testApp.detectChanges();
     }).toThrow();
   });
 
@@ -136,6 +136,14 @@ describe('ButtonComponent', () => {
   });
 
   describe('a[hc-button]', () => {
+    it('should remove tabindex when disabled', () => {
+      const testApp = new TestAppReference();
+      testApp.setIsDisabled(true);
+      testApp.detectChanges();
+
+      expect(testApp.aDebugElement.nativeElement.getAttribute('tabindex')).toBe('-1');
+    });
+
     it('should not redirect if disabled', () => {
       const testApp = new TestAppReference();
       testApp.setIsDisabled(true);
@@ -148,12 +156,10 @@ describe('ButtonComponent', () => {
       const testApp = new TestAppReference();
       testApp.detectChanges();
       expect(testApp.aDebugElement.nativeElement.getAttribute('aria-disabled')).toBe('false');
-      expect(testApp.aDebugElement.nativeElement.getAttribute('disabled')).toBeNull();
 
       testApp.setIsDisabled(true);
       testApp.detectChanges();
       expect(testApp.aDebugElement.nativeElement.getAttribute('aria-disabled')).toBe('true');
-      expect(testApp.aDebugElement.nativeElement.getAttribute('disabled')).not.toBeNull();
     });
 
     it('should not add aria-disabled when disabled is false', () => {
