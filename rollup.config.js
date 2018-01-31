@@ -3,7 +3,7 @@ import sourcemaps from 'rollup-plugin-sourcemaps';
 
 /**
  * Add here external dependencies that actually you use.
- * 
+ *
  * About RxJS
  * Each RxJS functionality that you use in the library must be added as external dependency.
  * - For main classes use 'Rx':
@@ -46,5 +46,15 @@ export default {
         globals: globals,
         sourcemap: true,
         exports: 'named'
-    }
+    },
+    plugins: [
+      resolve({
+        module: true,
+        jsnext: true,
+        main: true,
+        extensions: ['.js', '.json'],
+        preferBuiltins: false,
+        modulesOnly: true
+      })
+    ]
 }
