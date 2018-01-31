@@ -10,6 +10,7 @@ import {
   Output
 } from '@angular/core';
 import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
+import { anyToBoolean } from '../util';
 
 export class DrawerPromiseResult {
   constructor(public type: 'open' | 'close') {
@@ -64,7 +65,7 @@ export class DrawerComponent implements AfterContentInit {
   }
 
   set opened(opened) {
-    this.toggle(this.anyToBoolean(opened));
+    this.toggle(anyToBoolean(opened));
   }
 
   get width(): number {
@@ -169,15 +170,5 @@ export class DrawerComponent implements AfterContentInit {
       });
     }
     return this.animationPromise;
-  }
-
-  // TODO: this should be moved to some kind of utility class
-  private anyToBoolean(value: any): boolean {
-    if (typeof value === 'boolean') {
-      return value;
-    } else if (typeof value === 'string') {
-      return value === 'true';
-    }
-    return !!value;
   }
 }

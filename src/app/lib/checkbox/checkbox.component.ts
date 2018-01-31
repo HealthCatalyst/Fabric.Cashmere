@@ -11,6 +11,7 @@ import {
   Output
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { anyToBoolean } from '../util';
 
 let nextCheckboxId = 1;
 
@@ -63,7 +64,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   set required(required) {
-    this._required = this.anyToBoolean(required);
+    this._required = anyToBoolean(required);
   }
 
   @Input()
@@ -72,7 +73,7 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   set disabled(isDisabled) {
-    this._disabled = this.anyToBoolean(isDisabled);
+    this._disabled = anyToBoolean(isDisabled);
   }
 
   @Input()
@@ -144,15 +145,5 @@ export class CheckboxComponent implements ControlValueAccessor {
   private emitChangeEvent(): void {
     this.onChangeFunc(this.checked);
     this.change.emit(new CheckboxChangeEvent(this, this.checked));
-  }
-
-  private anyToBoolean(value: any): boolean {
-    if (typeof value === 'boolean') {
-      return value;
-    }
-    if (typeof value === 'string') {
-      return value === 'true';
-    }
-    return !!value;
   }
 }

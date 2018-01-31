@@ -1,25 +1,34 @@
 /* tslint:disable:component-selector */
-/* tslint:disable:use-host-property-decorator */
 // https://github.com/mgechev/codelyzer/issues/178#issuecomment-265154480
 
-import { ChangeDetectionStrategy, Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Renderer2,
+  ViewEncapsulation
+} from '@angular/core';
 import { ButtonComponent } from './button.component';
 
 @Component({
   selector: 'a[hc-button]',
   template: '<ng-content></ng-content>',
   styleUrls: ['./button.component.scss'],
-  host: {
-    '[attr.tabindex]': 'disabled ? -1 : 0',
-    '[attr.disabled]': 'disabled || null',
-    '[attr.aria-disabled]': 'disabled.toString()'
-  },
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class AnchorComponent extends ButtonComponent {
-  constructor(elementRef: ElementRef,
-              renderer: Renderer2) {
-    super(elementRef, renderer);
+
+  @HostBinding('attr.aria-disabled')
+  get hostAriaDisabled(): string {
+    return this.disabled ? this.disabled.toString() : 'false';
+  }
+
+  @HostBinding('attr.tabindex')
+  get hostTabIndex(): number {
+    return this.disabled ? -1 : 0;
   }
 
   @HostListener('click', ['$event'])
@@ -28,5 +37,10 @@ export class AnchorComponent extends ButtonComponent {
       event.preventDefault();
       event.stopPropagation();
     }
+  }
+
+  constructor(elementRef: ElementRef,
+              renderer: Renderer2) {
+    super(elementRef, renderer);
   }
 }
