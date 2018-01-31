@@ -4,3 +4,7 @@ export * from './drawer';
 export * from './icon';
 export * from './select';
 export * from './tabs';
+export * from './navbar';
+export * from './pipes';
+export * from './app-switcher';
+export * from './popover';

@@ -27,6 +27,7 @@ const globals = {
     'rxjs/Observable': 'Rx',
     'rxjs/BehaviorSubject': 'Rx',
     'rxjs/ReplaySubject': 'Rx',
+    'rxjs/Subject': 'Rx',
     'rxjs/operators': 'Rx.Observable.prototype',
     'rxjs/operator/mergeMap': 'Rx.Observable.prototype',
     'rxjs/operator/concatMap': 'Rx.Observable.prototype',
