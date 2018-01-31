@@ -1,0 +1,136 @@
+@import '../colors.scss';
+
+$navbar-color: $charcoal-blue !default;
+$navbar-brand: $blue !default;
+$navbar-height: 53px !default;
+$navbar-app-padding: 0 75px 0 25px !default;
+$navbar-text: $white !default;
+$navbar-text-inactive: $gray-300 !default;
+$navbar-z-index: 1030 !default;
+
+.navbar.fixed-top::ng-deep {
+    top: 0;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: $navbar-z-index;
+}
+
+.navbar::ng-deep {
+    height: $navbar-height;
+    background-color: $navbar-color;
+    display:flex;
+    font-size: 15px;
+
+    .icon.links {
+        margin-left: auto;
+    }
+
+    .navbar-brand {
+        background-color: $navbar-brand;
+        width: 55px;
+        flex-basis: auto;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // if <hc-app-switcher> is not present, hide it
+        & + .navbar-brand {
+            display:none;
+        }
+        .brand {
+            &>img {
+                max-width:70%;
+                max-height:70%;
+            }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .navbar-app {
+        height: 100%;
+        padding: $navbar-app-padding;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .app {
+        &>img {
+            height: 30px;
+            width: auto;
+        }
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .links {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        padding-left:0;
+        overflow: hidden;
+        .navbar-item {
+            padding: 0;
+            i {
+                cursor: pointer;
+            }
+
+            &>i,>span{
+                height: 100%;
+                color: $navbar-text;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 15px;
+                &.vertical-separator::after {
+                    content: '|';
+                    font-size: 18px;
+                    text-align: center;
+                    line-height: 0.5;
+                }
+            }
+            &>a{
+                display: inline-block;
+                height: 100%;
+                box-sizing: border-box;
+                padding: 18px 30px 0 30px;
+                text-align: center;
+                color: $navbar-text-inactive;
+                border-bottom: 5px solid transparent;
+                text-decoration: none;
+                transition: background-color 0.25s;
+                &:hover,&:focus {
+                    outline: none;
+                    color: $navbar-text;
+                    background-color: darken($navbar-color, 5%);
+                }
+                &.active:not(.inactive),&:active {
+                    color: $navbar-text;
+                    font-weight: bold;
+                    border-bottom: 5px solid $blue;
+                }
+
+                // This piece of code allows to use the bold styling from the style guide, while
+                // avoiding the css jitter that normally would accompany such an effect
+                // https://stackoverflow.com/questions/556153/inline-elements-shifting-when-made-bold-on-hover
+                &:before {
+                    display: block;
+                    content: attr(title);
+                    font-weight: bold;
+                    height: 1px;
+                    color: transparent;
+                    overflow: hidden;
+                    visibility: hidden;
+                    margin-bottom: -1px;
+                }
+            }
+        }
+    }
+}

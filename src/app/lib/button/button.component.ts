@@ -4,8 +4,8 @@
 
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
 
-export function throwErrorForInvalidButtonColor() {
-  throw Error('Unsupported color input value');
+export function throwErrorForInvalidButtonColor(unsupportedColor: string) {
+  throw Error('Unsupported color input value: ' + unsupportedColor);
 }
 
 export type ButtonColor = 'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'tertiary';
@@ -33,7 +33,7 @@ export class ButtonComponent implements OnChanges {
     const color = changes['color'];
     if (color) {
       if (this.supportedColors.indexOf(color.currentValue) < 0) {
-        throwErrorForInvalidButtonColor();
+        throwErrorForInvalidButtonColor(color.currentValue);
       }
       this.changeColor(color.previousValue, color.currentValue);
     }

@@ -1,0 +1,28 @@
+<nav class="navbar" [ngClass]="{'fixed-top': fixedTop}">
+    <div #defaultbrand class="navbar-brand" *ngIf="appswitcherbrand.children.length == 0">
+        <a [routerLink]="homeUri" class="brand">
+            <img src="./assets/TriFlame.svg">
+        </a>
+    </div>
+    <div #appswitcherbrand class="navbar-brand">
+        <ng-content select="hc-app-switcher">            
+        </ng-content>
+    </div>
+    <div class="navbar-app">
+        <a [routerLink]="homeUri" class="app" *ngIf="appIcon">
+            <img src="{{appIcon}}">
+        </a>
+    </div>
+    <div class="links">
+        <ng-content select="hc-navbar-link"></ng-content>
+    </div>
+    <div class="icon links">
+        <ng-content select="hc-navbar-icon"></ng-content>
+        <div class="navbar-item" *ngIf="user">
+            <span class="vertical-separator"></span>
+        </div>
+        <div class="navbar-item" *ngIf="user">
+            <span>{{user}}</span>
+        </div>
+    </div>
+</nav>
