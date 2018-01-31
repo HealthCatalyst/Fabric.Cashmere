@@ -1,4 +1,8 @@
 @import "../colors";
+.demo-inner {
+    max-width: 900px;
+}
+
 hr {
     border: none;
     height: 1px;
@@ -23,6 +27,7 @@ code {
     color: $magneta;
     font-size: 120%;
     line-height: 140%;
+    overflow-x: auto;
 }
 
 pre {

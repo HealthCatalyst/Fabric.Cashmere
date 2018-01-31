@@ -67,9 +67,20 @@ table.hc-table {
         }
     }
 
-    // TODO: Condensed
+    // Condensed
+    &.hc-table-small {
+        td, th { padding: 5px 16px; font-size: 13px;}
+    }
 
-    // TODO: Special Row Styles
+    // Special Row Styles
+    tbody tr.hc-row-selected {
+        background-color: $azure;
+        &:hover {
+            background-color: tint($azure, 20%);
+        }
+        color: $white;
+        td { border-color: $white; }
+    }
 
     // Sorting
     th.hc-col-sortable, th.hc-col-sortable-left {
@@ -92,6 +103,7 @@ table.hc-table {
         }
         &:before {
             right: 23px;
+            bottom: 11px;
             content: "\F175";
         }
         &:after {
