@@ -15,9 +15,9 @@
         Buttons w/ Glyphs
     </h5>
     <div class="sample-buttons" style="width: 50%">
-        <button hc-button title="Glyph Dropdown Button" color="primary" glyph="fa-cog" dropdown="true">Options</button>
-        <button hc-button title="Dropdown Button" color="primary-alt" dropdown="true">Dropdown</button>
-        <button hc-button title="Glyph Button" color="neutral" glyph="fa-home">Home</button>
+        <button hc-button title="Glyph Button" color="primary" ><hc-icon fontSet="fa" fontIcon="fa-save"></hc-icon>Save All</button>
+        <button hc-button title="Glyph Button" color="primary-alt" ><hc-icon fontSet="fa" fontIcon="fa-undo"></hc-icon>Undo</button>
+        <button hc-button title="Glyph Button" color="neutral" ><hc-icon fontSet="fa" fontIcon="fa-home"></hc-icon>Home</button>
     </div>
     <h5>
         Secondary Buttons
@@ -76,8 +76,7 @@
         </div>
         <pre>
             <code>
-    &#x3C;button hc-button 
-        title=&#x22;Button Tile&#x22; color=&#x22;primary&#x22; glyph=&#x22;fa-cog&#x22; dropdown=&#x22;true&#x22; &#91;disabled&#93;=&#x27;false&#x27;&#x3E;
+    &#x3C;button hc-button title=&#x22;Button Tile&#x22; color=&#x22;primary&#x22; &#91;disabled&#93;=&#x27;false&#x27;&#x3E;
             Button Name
     &#x3C;/button&#x3E;
             </code>
@@ -126,20 +125,6 @@ export class SomeModule &#123; &#125;</code></pre>
                 <span>Type:</span> Boolean
             </td>
             <td width=50%>Boolean value that enables/disables the button</td>
-        </tr>
-        <tr>
-            <th>glyph</th>
-            <td>
-                <span>Type:</span> String
-            </td>
-            <td width=50%>FontAwesome glyph to include before the button name (eg. "fa-cog")</td>
-        </tr>
-        <tr>
-            <th>dropdown</th>
-            <td>
-                <span>Type:</span> Boolean
-            </td>
-            <td width=50%>Set to true to include a dropdown indicator</td>
         </tr>
     </table>
 
