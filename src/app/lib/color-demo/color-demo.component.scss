@@ -8,26 +8,6 @@
     }
 }
 
-hr {
-    border: none;
-    height: 1px;
-    background-color: $gray-200;
-    margin: 40px 0;
-}
-
-h2 {
-    margin: 0;
-}
-
-h4 {
-    margin-top: 50px;
-    margin-bottom: 0px;
-}
-
-p {
-    margin: 8px 0 20px;
-}
-
 hc-swatch-demo-component {
     flex: 1 1 auto;
     width: 14%;
@@ -81,20 +61,4 @@ hc-swatch-demo-component {
     .color-ref {
         color: $gray-400;
     }
-}
-
-pre code {
-    background-color: $gray-100;
-    border: 1px solid $gray-400;
-    display: block;
-    padding: 20px;
-}
-
-code {
-    font-size: 120%;
-    line-height: 140%;
-}
-
-pre {
-    margin: 0;
 }

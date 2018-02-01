@@ -1,20 +1,17 @@
 <div class="demo-page">
-    <h2 style="margin: 0">Button</h2>
-    <h4 style="font-weight: 300; margin-top: 0">Buttons communicate the action that will occur when the user touches
-        them.</h4>
-    <h5>
-        Primary Buttons (Normal Size)
-    </h5>
-    <div class="sample-buttons">
+    <h2>Button</h2>
+    <p>Buttons communicate the action that will occur when the user touches them.</p>
+    
+    <h4>Primary Buttons (Normal Size)</h4>
+    <div class="sample-container">
         <button hc-button title="Primary Button" color="primary">Primary</button>
         <button hc-button title="Primary-Alt Button" color="primary-alt">Primary Alt</button>
         <button hc-button title="Destructive Button" color="destructive">Destructive</button>
         <button hc-button title="Neutral Button" color="neutral">Neutral</button>
     </div>
-    <h5>
-        Buttons w/ Glyphs
-    </h5>
-    <div class="sample-buttons" style="width: 50%">
+    
+    <h4>Buttons w/ Glyphs</h4>
+    <div class="sample-container">
         <button hc-button title="Glyph Button" color="primary">
             <hc-icon fontSet="fa" fontIcon="fa-save"></hc-icon>
             Save All
@@ -28,113 +25,92 @@
             Home
         </button>
     </div>
-    <h5>
-        Secondary Buttons
-    </h5>
-    <button hc-button title="Secondary Button" color="secondary">Secondary Button</button>
-    <h5>
-        Disabled Buttons
-    </h5>
-    <button hc-button title="Disabled Button" color="primary" [disabled]="true">Disabled Button</button>
-    <h5>
-        Tertiary Buttons
-    </h5>
-    <button hc-button title="Tertiary Button" color="tertiary">Tertiary Button</button>
-    <h5>
-        Anchor Button
-    </h5>
-    <a hc-button title="Anchor Button">Anchor Button</a>
-    <br>
-    <br>
-    <hr style="height:1px;border:none;background-color:#E5E5E5;">
-    <br>
 
-    <p class="description">
-        <b>Color Variations</b>
-        <br>Above are all acceptable colors and their active states. Green should be used for most cases and especially
-        cases the
-        action is positive or in agreement. For negative actions use red. The purple and gray variations should be used
-        only in
-        cases where more colors are needed or if they are being placed on backgrounds which green doesn’t contrast well
-        enough.
-        Icons, if needed, should match text color of the button.</p>
-    <br>
-    <p class="description">
-        <b>Usage</b>
-        <br>Generally, there should only be one primary button per page. All other interactive items should either be
-        secondary buttons
-        or text links. A few scenarios in which there would be multiple primary buttons: a modal with both an “accept”
-        and “decline”
-        action, a page who’s content are non related and each content section have disparate actions associated with
-        them. For
-        modals the preference is one primary button and a cancel action set as a text link. Below are some examples of
-        buttons
-        usage.
+    <h4>Secondary Buttons</h4>
+    <div class="sample-container">
+        <button hc-button title="Secondary Button" color="secondary">Secondary Button</button>
+    </div>
+
+    <h4>Disabled Buttons</h4>
+    <div class="sample-container">
+        <button hc-button title="Disabled Button" color="primary" [disabled]="true">Disabled Button</button>
+    </div>
+
+    <h4>Tertiary Buttons</h4>
+    <div class="sample-container">
+        <button hc-button title="Tertiary Button" color="tertiary">Tertiary Button</button>
+    </div>
+    
+    <h4>Anchor Button</h4>
+    <div class="sample-container">
+        <a hc-button title="Anchor Button">Anchor Button</a>
+    </div>
+
+    <hr>
+
+    <h3>Color Variations</h3>
+    <p>
+        Above are all acceptable colors and their active states. Green should be used for most cases and
+        especially cases the action is positive or in agreement. For negative actions use red. The purple
+        and gray variations should be used only in cases where more colors are needed or if they are being
+        placed on backgrounds which green doesn’t contrast well enough. Icons, if needed, should match text
+        color of the button.
     </p>
 
-    <br>
-    <hr style="height:1px;border:none;background-color:#E5E5E5;">
-    <br>
+    <h3>Usage</h3>
+    <p>
+        Generally, there should only be one primary button per page. All other interactive items should either
+        be secondary buttons or text links. A few scenarios in which there would be multiple primary buttons:
+        a modal with both an “accept” and “decline” action, a page who’s content are non related and each content
+        section have disparate actions associated with them. For modals the preference is one primary button and
+        a cancel action set as a text link. Below are some examples of buttons usage.
+    </p>
 
-    <div class="headerName">Angular Component</div>
-    <br>
-    <div id="HTML" *ngIf="showTemplate">
-        <div class="codeToggle">
-            <span class="toggleOptionOn" (click)="viewToggle('html')">HTML</span>
-            <span class="toggleOptionOff" (click)="viewToggle('ts')">TypeScript</span>
-        </div>
-        <pre>
-            <code>
+    <hr>
+
+    <h3>Angular Component</h3>
+    <hc-tab-set direction="horizontal">
+        <hc-tab title="HTML">
+            <pre><code>
     &#x3C;button hc-button title=&#x22;Button Tile&#x22; color=&#x22;primary&#x22; &#91;disabled&#93;=&#x27;false&#x27;&#x3E;
             Button Name
     &#x3C;/button&#x3E;
             </code>
+
             <code>
     &#x3C;a hc-button title=&#x22;Anchor Button&#x22; [disabled]=false&#x3E;Anchor Button&#x3C;/a&#x3E;
-            </code>
-        </pre>
-    </div>
+            </code></pre>
+        </hc-tab>
+        <hc-tab title="TypeScript">
+            <pre><code>
+    import &#123; ButtonModule &#125; from &#x27;@healthcatalyst/cashmere&#x27;;
 
-    <div id="TS" *ngIf="!showTemplate">
-        <div class="codeToggle">
-            <span class="toggleOptionOff" (click)="viewToggle('html')">HTML</span>
-            <span class="toggleOptionOn" (click)="viewToggle('ts')">TypeScript</span>
-        </div>
-        <pre><code>import &#123; ButtonModule &#125; from &#x27;@healthcatalyst/cashmere&#x27;;
+    @NgModule(&#123;
+        imports: [
+            ...,
+        ButtonModule,
+        ],
+        declarations: [...],
+        exports: [..]
+    &#125;)
+    export class SomeModule &#123; &#125;
+            </code></pre>
+        </hc-tab>
+    </hc-tab-set>
 
-@NgModule(&#123;
-  imports: [
-     ...,
-    ButtonModule,
-  ],
-  declarations: [...],
-  exports: [..]
-&#125;)
-export class SomeModule &#123; &#125;</code></pre>
-        <br>
-    </div>
+    <hr>
 
-    <br>
-    <hr style="height:1px;border:none;background-color:#E5E5E5;">
-    <br>
-    <div class="headerName">Component Parameters</div>
-    <br>
-
+    <h3>Component Parameters</h3>
     <table class="apiTable parameters">
         <tr>
             <th>color</th>
-            <td>
-                <span>Type:</span> String
-            </td>
-            <td width=50%>Sets the button's theme color</td>
+            <td><span>Type:</span> String</td>
+            <td>Sets the button's theme color</td>
         </tr>
         <tr>
             <th>[disabled]</th>
-            <td>
-                <span>Type:</span> Boolean
-            </td>
-            <td width=50%>Boolean value that enables/disables the button</td>
+            <td><span>Type:</span> Boolean</td>
+            <td>Boolean value that enables/disables the button</td>
         </tr>
     </table>
-
 </div>

@@ -1,7 +1,8 @@
 <div class="demo-page">
-    <h2 style="margin: 0">Drawer</h2>
-
-    <h4 style="font-weight: 300; margin-top: 0">You can have both a left and right drawer</h4>
+    <h2>Drawer</h2>
+    <p>Drawers are great if you need to have content which doesn't fit in a toolbar.</p>
+    
+    <h4>You can have both a left and right drawer</h4>
     <div class="drawer-container">
         <hc-drawer-container>
             <hc-drawer align="left" #leftDrawer>
@@ -16,7 +17,7 @@
         </hc-drawer-container>
     </div>
 
-    <h4 style="font-weight: 300; margin-top: 0">You can have the drawer push or overlay your content</h4>
+    <h4>You can have the drawer push or overlay your content</h4>
     <div class="drawer-container">
         <hc-drawer-container>
             <hc-drawer align="left" mode="over" #leftOverDrawer>
@@ -31,35 +32,23 @@
         </hc-drawer-container>
     </div>
 
-    <br>
-    <br>
-    <hr style="height:1px;border:none;background-color:#E5E5E5;">
-    <br>
-    <p class="description">
-        <b>Drawer Usage</b>
-        <br>Drawers are great if you need to have content which doesn't fit in a toolbar
-    </p>
-    <br>
-    <hr style="height:1px;border:none;background-color:#E5E5E5;">
-    <br>
-    <div class="headerName">Angular Component</div>
-    <br>
+    <hr>
+
+    <h3 class="headerName">Angular Component</h3>
     <pre>
-          <code>
+        <code>
 &#x3C;hc-drawer-container&#x3E;
   &#x3C;hc-drawer&#x3E;
     Drawer Content
   &#x3C;/hc-drawer&#x3E;
   Main Content
 &#x3C;/hc-drawer-container&#x3E;
-          </code>
-      </pre>
-    <br>
-    <hr style="height:1px;border:none;background-color:#E5E5E5;">
-    <br>
-    <div class="headerName">Component Parameters for hc-drawer</div>
-    <br>
+        </code>
+    </pre>
 
+    <hr>
+
+    <h3>Component Parameters</h3>
     <table class="apiTable parameters">
         <tr>
             <th>mode</th>
@@ -84,10 +73,5 @@
         </tr>
     </table>
 
-    <h3>Drawer Container Note</h3>
-    <p class="drawer-note">
-        An error will be thrown if there are more than two drawers in hc-drawer-container or if both drawers have the
-        same
-        alignment
-    </p>
+    <em>*Note: An error will be thrown if there are more than two drawers in hc-drawer-container or if both drawers have the same alignment </em>
 </div>
