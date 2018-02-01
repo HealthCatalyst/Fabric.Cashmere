@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { DemoModule } from 'app/demo/demo.module';
+import { IconModule } from './lib/icon';
 
 @NgModule({
     declarations: [
@@ -11,6 +12,7 @@ import { DemoModule } from 'app/demo/demo.module';
     ],
     imports: [
         DemoModule,
+        IconModule,
         RouterModule.forRoot(routes)
     ],
     providers: [],

@@ -1,0 +1,17 @@
+@import './lib/colors.scss';
+
+a {
+    position: fixed;
+    top: 14px;
+    right: 20px;
+    z-index: 1031;
+    color: $white;
+
+    &:hover {
+        color: $gray-300;
+    }
+
+    hc-icon {
+        font-size: 26px;
+    }
+}
