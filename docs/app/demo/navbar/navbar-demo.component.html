@@ -1,7 +1,9 @@
-<div class="demo-page">
-    <h2 style="margin: 0">Navbar</h2>
-    <h4 style="font-weight: 300; margin-top: 0">The navbar is a wrapper that positions branding, navigation, and other
-        elements in a concise header.</h4>
+<div class="subheader">
+    <h2>Navbar</h2>
+</div>
+
+<div class="demo-content">
+    <p>The navbar is a wrapper that positions branding, navigation, and other elements in a concise header.</p>
 
     <hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
         <hc-app-switcher></hc-app-switcher>
@@ -32,54 +34,93 @@
 
     <pre><code>{{navbar}}</code></pre>
 
-    <i>uri's are purposely left undefined for demo purposes</i>
+    <em>*uri's are purposely left undefined for demo purposes</em>
 
+    <hr>
 
-    <h2>Properties</h2>
+    <h3>Navbar Usage</h3>
+    <p>The Navbar consists of four componenets:</p>
     <ul>
-        <li>user - current user</li>
-        <li>appIcon - path to svg</li>
-        <li>homeUri -
-            <a href="https://angular.io/api/router/RouterLink">RouterLink</a> uri to home page
-        </li>
-        <li>fixedTop - statically positions the navbar to the top of the page
-            <i>see below</i>
-        </li>
+        <li><code>hc-navbar</code> - the main wrapper component</li>
+        <li><code>hc-navbar-link</code> - the main navigation links</li>
+        <li><code>hc-navbar-icon</code> - icons and buttons displayed on the right side</li>
         <li>
-            <strong>hc-navbar-link</strong> - main navigation links
-        </li>
-        <ul>
-            <li>linkText - the text to display</li>
-            <li>active (optional) - forces active state (default = null)</li>
-            <li>uri -
-                <a href="https://angular.io/api/router/RouterLink">RouterLink</a> uri
-            </li>
-            <li>exact - sets the
-                <a href="https://angular.io/api/router/RouterLinkActive#description">RouterLinkActive</a> options to
-                match the url exactly to set active state. (default = false)
-            </li>
-        </ul>
-        <li>
-            <strong>hc-navbar-icon</strong> - icons and buttons displayed on the right side
-        </li>
-        <li>
-            <strong>hc-app-switcher</strong> - include app switcher functionality, if this element is not present, it
-            will revert
-            to navigating to the home page
+            <code>hc-app-switcher</code> - include app switcher functionality, if this element is not present, the catalyst flame
+            will revert to navigating to the home page when clicked
         </li>
     </ul>
 
-    <h2>App Switcher</h2>
-    Include the following markup within hc-navbar
-    <pre><code>&lt;hc-app-switcher&gt;&lt;/hc-app-switcher&gt;</code></pre>
-    setup is required for the module
-    <pre><code>{{moduleSetup}}</code></pre>
+    <hr>
 
+    <h3>App Switcher</h3>
+    <p>To include the app switcher, do the following:</p>
+    <hc-tab-set direction="horizontal">
+        <hc-tab title="HTML">
+                <pre><code>&lt;hc-app-switcher&gt;&lt;/hc-app-switcher&gt;</code></pre>
+        </hc-tab>
+        <hc-tab title="TypeScript">
+                <pre><code>{{moduleSetup}}</code></pre>
+        </hc-tab>
+    </hc-tab-set>
 
-    <h2>Fixed Top</h2>
-    <p>set fixed top property</p>
-    <pre><code>fixedTop="true"</code></pre>
-    <p>add the following to your body style sheet</p>
+    <hr>
+
+    <h3>Fixed Top</h3>
+    <p>
+        To fix the navigation bar to top of the screen, such that it stays put when your scroll, set the
+        <code>fixedTop</code> property to true. You'll need to also add the following to your body style sheet:
+    </p>
     <pre><code>{{fixedTopNavbar}}</code></pre>
 
+    <hr>
+
+    <h3>Component Parameters</h3>
+    <table class="api-table">
+        <thead><th colspan="3">Navbar Component</th></thead>
+        <tr>
+            <th>user</th>
+            <td><span class="type-label">Type:</span> String</td>
+            <td>Current user</td>
+        </tr>
+        <tr>
+            <th>appIcon</th>
+            <td><span class="type-label">Type:</span> String</td>
+            <td>Path to svg of app logo</td>
+        </tr>
+        <tr>
+            <th>homeUri</th>
+            <td><span class="type-label">Type:</span> String</td>
+            <td><a href="https://angular.io/api/router/RouterLink" target="_blank">RouterLink</a> uri to home page</td>
+        </tr>
+        <tr>
+            <th>fixedTop</th>
+            <td><span class="type-label">Type:</span> Boolean</td>
+            <td>Statically positions the navbar to the top of the page <em>(See Fixed Top section above)</em></td>
+        </tr>
+    </table>
+
+    <table class="api-table">
+        <thead><th colspan="3">Navbar Link Component</th></thead>
+        <tr>
+            <th>linkText</th>
+            <td><span class="type-label">Type:</span> String</td>
+            <td>The text to display</td>
+        </tr>
+        <tr>
+            <th>active</th>
+            <td><span class="type-label">Type:</span> boolean</td>
+            <td>(optional) forces active state (default = null)</td>
+        </tr>
+        <tr>
+            <th>uri</th>
+            <td><span class="type-label">Type:</span> String</td>
+            <td><a href="https://angular.io/api/router/RouterLink" target="_blank">RouterLink</a> uri</td>
+        </tr>
+        <tr>
+            <th>exact</th>
+            <td><span class="type-label">Type:</span> Boolean</td>
+            <td>Sets the <a href="https://angular.io/api/router/RouterLinkActive#description" target="_blank">RouterLinkActive</a> options to
+                match the url exactly to set active state. (default = false)</td>
+        </tr>
+    </table>
 </div>

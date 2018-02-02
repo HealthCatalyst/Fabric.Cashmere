@@ -1,5 +1,5 @@
 @import "./colors.scss";
-@import "./mixins.scss";
+@import "./functions.scss";
 @import "../node_modules/font-awesome/scss/variables"; // get rid of this when we roll our own font
 
 $table-border: 1px solid $slate-gray-200 !default;

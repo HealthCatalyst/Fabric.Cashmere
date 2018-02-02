@@ -1,7 +1,37 @@
+@import "../../../cashmere-import.scss";
+
 .side-nav {
     padding: 20px;
 }
 
+h4 {
+    color: $dark-blue;
+    font-size: 14px;
+    margin: 36px 0 8px;
+}
+
 ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
+
+    a {
+        color: $gray-500;
+        margin: 0 -20px;
+        display: block;
+        padding: 10px 20px 10px 12px;
+        text-decoration: none;
+        border-left: 8px solid transparent;
+
+        &:hover {
+            background-color: shade($slate-gray-100, 3%);
+            color: $gray-600;
+        }
+
+        &.active {
+            border-left: 8px solid $primary-brand;
+            color: $primary-brand;
+            font-weight: 600;
+        }
+    }
 }

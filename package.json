@@ -14,7 +14,7 @@
         "release": "ng build --target production --build-optimizer",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "verify": "npm test && node lib/build.js --local"
+        "verify": "node lib/build.js --local"
     },
     "dependencies": {
         "@angular/animations": "5.1.0",
