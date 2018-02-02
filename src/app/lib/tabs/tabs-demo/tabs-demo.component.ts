@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './tabs-demo.component.html',
     styleUrls: [
         './tabs-demo.component.scss',
-        '../../../demo/shared-demo-styles.scss'
+        '../../shared-demo-styles.scss'
     ]
 })
 export class TabsDemoComponent {}

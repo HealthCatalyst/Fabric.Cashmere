@@ -5,7 +5,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     templateUrl: './select-demo.component.html',
     styleUrls: [
         './select-demo.component.scss',
-        '../../../demo/shared-demo-styles.scss'
+        '../../shared-demo-styles.scss'
     ]
 })
 export class SelectDemoComponent {

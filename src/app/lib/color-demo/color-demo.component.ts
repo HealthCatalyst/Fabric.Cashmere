@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './color-demo.component.html',
     styleUrls: [
         './color-demo.component.scss',
-        '../../demo/shared-demo-styles.scss'
+        '../shared-demo-styles.scss'
     ]
 })
 export class ColorDemoComponent {

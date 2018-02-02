@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'hc-popover-demo',
     templateUrl: './popover-demo.component.html',
-    styleUrls: ['../../../demo/shared-demo-styles.scss']
+    styleUrls: ['../../shared-demo-styles.scss']
 })
 export class PopoverDemoComponent {
     public body: string = 'dynamic content';

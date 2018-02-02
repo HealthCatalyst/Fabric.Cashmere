@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './button-demo.component.html',
     styleUrls: [
         './button-demo.component.scss',
-        '../../../demo/shared-demo-styles.scss'
+        '../../shared-demo-styles.scss'
     ]
 })
 export class ButtonDemoComponent {

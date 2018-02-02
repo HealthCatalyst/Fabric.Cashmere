@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'hc-navbar-demo',
     templateUrl: './navbar-demo.component.html',
-    styleUrls: ['../../../demo/shared-demo-styles.scss']
+    styleUrls: ['../../shared-demo-styles.scss']
 })
 export class NavbarDemoComponent {
     navbar: string = `<hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
