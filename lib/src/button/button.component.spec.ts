@@ -1,3 +1,4 @@
+import { AnchorComponent } from './anchor.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, DebugElement } from '@angular/core';
 
@@ -50,8 +51,7 @@ class TestAppReference {
 describe('ButtonComponent', () => {
     beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [ButtonModule],
-                declarations: [TestAppComponent]
+                declarations: [TestAppComponent, ButtonComponent, AnchorComponent]
             })
                 .compileComponents();
         })
