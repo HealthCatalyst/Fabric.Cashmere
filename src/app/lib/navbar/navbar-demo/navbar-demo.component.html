@@ -1,5 +1,8 @@
-<div class="demo-page">
+<div class="subheader">
     <h2>Navbar</h2>
+</div>
+
+<div class="demo-content">
     <p>The navbar is a wrapper that positions branding, navigation, and other elements in a concise header.</p>
 
     <hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
@@ -72,51 +75,51 @@
     <hr>
 
     <h3>Component Parameters</h3>
-    <table class="apiTable parameters">
+    <table class="api-table">
         <thead><th colspan="3">Navbar Component</th></thead>
         <tr>
             <th>user</th>
-            <td><span>Type:</span> String</td>
+            <td><span class="type-label">Type:</span> String</td>
             <td>Current user</td>
         </tr>
         <tr>
             <th>appIcon</th>
-            <td><span>Type:</span> String</td>
+            <td><span class="type-label">Type:</span> String</td>
             <td>Path to svg of app logo</td>
         </tr>
         <tr>
             <th>homeUri</th>
-            <td><span>Type:</span> String</td>
-            <td><a href="https://angular.io/api/router/RouterLink">RouterLink</a> uri to home page</td>
+            <td><span class="type-label">Type:</span> String</td>
+            <td><a href="https://angular.io/api/router/RouterLink" target="_blank">RouterLink</a> uri to home page</td>
         </tr>
         <tr>
             <th>fixedTop</th>
-            <td><span>Type:</span> Boolean</td>
+            <td><span class="type-label">Type:</span> Boolean</td>
             <td>Statically positions the navbar to the top of the page <em>(See Fixed Top section above)</em></td>
         </tr>
     </table>
 
-    <table class="apiTable parameters">
+    <table class="api-table">
         <thead><th colspan="3">Navbar Link Component</th></thead>
         <tr>
             <th>linkText</th>
-            <td><span>Type:</span> String</td>
+            <td><span class="type-label">Type:</span> String</td>
             <td>The text to display</td>
         </tr>
         <tr>
             <th>active</th>
-            <td><span>Type:</span> boolean</td>
+            <td><span class="type-label">Type:</span> boolean</td>
             <td>(optional) forces active state (default = null)</td>
         </tr>
         <tr>
             <th>uri</th>
-            <td><span>Type:</span> String</td>
-            <td><a href="https://angular.io/api/router/RouterLink">RouterLink</a> uri</td>
+            <td><span class="type-label">Type:</span> String</td>
+            <td><a href="https://angular.io/api/router/RouterLink" target="_blank">RouterLink</a> uri</td>
         </tr>
         <tr>
             <th>exact</th>
-            <td><span>Type:</span> Boolean</td>
-            <td>Sets the <a href="https://angular.io/api/router/RouterLinkActive#description">RouterLinkActive</a> options to
+            <td><span class="type-label">Type:</span> Boolean</td>
+            <td>Sets the <a href="https://angular.io/api/router/RouterLinkActive#description" target="_blank">RouterLinkActive</a> options to
                 match the url exactly to set active state. (default = false)</td>
         </tr>
     </table>

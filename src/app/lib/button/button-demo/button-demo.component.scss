@@ -1,6 +1,7 @@
 @import "../../colors.scss";
 
 .sample-container {
-    display: flex;
-    justify-content: space-between;
+    .hc-button {
+        margin-right: 30px;
+    }
 }

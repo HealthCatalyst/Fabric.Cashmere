@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'hc-popover-demo',
-    templateUrl: './popover-demo.component.html'
+    templateUrl: './popover-demo.component.html',
+    styleUrls: ['../../../demo/shared-demo-styles.scss']
 })
-export class PopoverDemoComponent implements OnInit {
+export class PopoverDemoComponent {
     public body: string = 'dynamic content';
     public popoverWithListItems: string =
         `<button hc-button color="primary" [hcPopover]="options" popperPlacement="bottom" aria-hidden="true">
@@ -25,12 +26,6 @@ export class PopoverDemoComponent implements OnInit {
     </li>
   </ul>
 </hc-popover-content>`;
-
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
 
     aboutClick() {
         alert('about us!');

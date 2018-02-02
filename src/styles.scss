@@ -2,7 +2,6 @@ $fa-font-path: '../node_modules/font-awesome/fonts';
 @import '../node_modules/font-awesome/scss/font-awesome';
 @import './app/lib/colors';
 @import './app/lib/tables.scss';
-@import './app/demo/shared-demo-styles';
 
 html,
 body {
@@ -15,28 +14,4 @@ body {
 body {
     // navbar spacing
     padding-top: 53px;
-}
-
-.demo-page {
-    padding: 20px;
-    max-height: 94%;
-    overflow-y: auto;
-}
-
-a {
-    color: $primary-brand;
-    height: auto;
-    text-decoration: none;
-    border: none;
-
-    &:hover {
-        background-color: transparent;
-        color: lighten($primary-brand, 10%);
-    }
-    &:active:hover,
-    &:active:focus {
-        background-color: transparent;
-        color: darken($primary-brand, 10%);
-        outline: none !important;
-    }
 }

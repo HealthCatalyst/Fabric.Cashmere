@@ -1,5 +1,8 @@
-<div class="demo-page">
+<div class="subheader">
     <h2>Popover</h2>
+</div>
+
+<div class="demo-content">
     <p>A lightweight, extensible component for fancy popover creation. The popover directive supports multiple
         placements, optional transition animation, and more.</p>
 
@@ -53,102 +56,112 @@
     <hr>
 
     <h3>Properties</h3>
-    <p>For more info on the properties, go to <a href="https://popper.js.org/popper-documentation.html">popper.js.org</a>.</p>
-    <table class="apiTable parameters">
+    <p>For more info on the properties, go to <a href="https://popper.js.org/popper-documentation.html" target="_blank" >popper.js.org</a>.</p>
+    <table class="api-table">
         <tr>
             <th>popperDisableAnimation</th>
-            <td><span>Type:</span>boolean</td>
+            <td><span class="type-label">Type:</span>boolean</td>
             <td>default: false</td>
         </tr>
         <tr>
             <th>popperDisableStyle</th>
-            <td><span>Type:</span>boolean</td>
+            <td><span class="type-label">Type:</span>boolean</td>
             <td>default: false</td>
         </tr>
         <tr>
             <th>popperDisabled</th>
-            <td><span>Type:</span>boolean</td>
+            <td><span class="type-label">Type:</span>boolean</td>
             <td>default: false</td>
         </tr>
         <tr>
             <th>popperDelay</th>
-            <td><span>Type:</span>number</td>
+            <td><span class="type-label">Type:</span>number</td>
             <td>default: 0</td>
         </tr>
         <tr>
             <th>popperTimeout</th>
-            <td><span>Type:</span>number</td>
+            <td><span class="type-label">Type:</span>number</td>
             <td>default: 0</td>
         </tr>
         <tr>
             <th>popperTimeoutAfterShow</th>
-            <td><span>Type:</span>number</td>
+            <td><span class="type-label">Type:</span>number</td>
             <td>default: 0</td>
         </tr>
         <tr>
             <th>popperPlacement</th>
-            <td><span>Type:</span>string</td>
-            <td>default: auto <code>'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'bottom-start' | 'left-start' | 'right-start' | 'top-end' |
-                    'bottom-end' | 'left-end' | 'right-end' | 'auto' | 'auto-top' | 'auto-bottom' | 'auto-left' | 'auto-right' | Function</code></td>
+            <td><span class="type-label">Type:</span>string</td>
+            <td>
+                default: auto
+                <div><code>
+                    'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'bottom-start' | 'left-start' | 'right-start' | 'top-end' |
+                    'bottom-end' | 'left-end' | 'right-end' | 'auto' | 'auto-top' | 'auto-bottom' | 'auto-left' | 'auto-right' | Function
+                </code></div>
+            </td>
         </tr>
         <tr>
             <th>popperTarget</th>
-            <td><span>Type:</span>HtmlElement</td>
+            <td><span class="type-label">Type:</span>HtmlElement</td>
             <td>default:auto</td>
         </tr>
         <tr>
             <th>popperBoundaries</th>
-            <td><span>Type:</span>default: (selector)</td>
+            <td><span class="type-label">Type:</span>string</td>
             <td>default:undefined</td>
         </tr>
         <tr>
             <th>popperShowOnStart</th>
-            <td><span>Type:</span>number</td>
+            <td><span class="type-label">Type:</span>number</td>
             <td>default:0</td>
         </tr>
         <tr>
             <th>popperTrigger</th>
-            <td><span>Type:</span>Trigger(string)</td>
+            <td><span class="type-label">Type:</span>Trigger(string)</td>
             <td>default:hover</td>
         </tr>
         <tr>
             <th>popperPositionFixed</th>
-            <td><span>Type:</span>boolean</td>
+            <td><span class="type-label">Type:</span>boolean</td>
             <td>default:false</td>
         </tr>
         <tr>
             <th>popperHideOnClickOutside</th>
-            <td><span>Type:</span>boolean</td>
+            <td><span class="type-label">Type:</span>boolean</td>
             <td>default:true</td>
         </tr>
         <tr>
             <th>popperHideOnScroll</th>
-            <td><span>Type:</span>boolean</td>
+            <td><span class="type-label">Type:</span>boolean</td>
             <td>default:false</td>
         </tr>
         <tr>
             <th>popperForceDetection</th>
-            <td><span>Type:</span>boolean</td>
+            <td><span class="type-label">Type:</span>boolean</td>
             <td>default:false</td>
         </tr>
         <tr>
             <th>popperTrigger</th>
-            <td><span>Type:</span>Trigger(string)</td>
-            <td>default: hover <code>'click' | 'mousedown' | 'hover' | 'none'</code></td>
+            <td><span class="type-label">Type:</span>Trigger(string)</td>
+            <td>
+                default: hover
+                <div><code>
+                    'click' | 'mousedown' | 'hover' | 'none'
+                </code></div>
+            </td>
         </tr>
         <tr>
             <th>popperModifiers</th>
-            <td><span>Type:</span>popperModifier</td>
+            <td><span class="type-label">Type:</span>popperModifier</td>
             <td>default: undefined</td>
         </tr>
         <tr>
             <th>popperOnShown</th>
-            <td><span>Type:</span>EventEmitter</td>
+            <td><span class="type-label">Type:</span>EventEmitter</td>
             <td>$event</td>
         </tr>
         <tr>
             <th>popperOnHidden</th>
-            <td><span>Type:</span>EventEmitter</td>
+            <td><span class="type-label">Type:</span>EventEmitter</td>
             <td>$event</td>
         </tr>
     </table>

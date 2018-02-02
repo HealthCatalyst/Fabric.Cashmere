@@ -1,9 +1,12 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'hc-color-demo',
     templateUrl: './color-demo.component.html',
-    styleUrls: ['./color-demo.component.scss']
+    styleUrls: [
+        './color-demo.component.scss',
+        '../../demo/shared-demo-styles.scss'
+    ]
 })
 export class ColorDemoComponent {
 }

@@ -3,8 +3,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 @Component({
     selector: 'hc-select-demo',
     templateUrl: './select-demo.component.html',
-    styleUrls: ['./select-demo.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    styleUrls: [
+        './select-demo.component.scss',
+        '../../../demo/shared-demo-styles.scss'
+    ]
 })
 export class SelectDemoComponent {
     showTemplate: boolean = true;
@@ -12,5 +14,4 @@ export class SelectDemoComponent {
     viewToggle(show: 'ts' | 'html') {
         this.showTemplate = show === 'html';
     }
-
 }

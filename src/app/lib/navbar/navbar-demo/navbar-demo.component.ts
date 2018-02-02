@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'hc-navbar-demo',
     templateUrl: './navbar-demo.component.html',
-    encapsulation: ViewEncapsulation.None
+    styleUrls: ['../../../demo/shared-demo-styles.scss']
 })
 export class NavbarDemoComponent {
     navbar: string = `<hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
