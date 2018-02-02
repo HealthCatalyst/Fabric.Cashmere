@@ -16,6 +16,7 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     public subscription: Subscription;
 
     private ngUnsubscribe: any = new Subject();
+    private brandBg = 'brand';
 
     constructor(@Inject('IAppSwitcherService') public appSwitcherService: IAppSwitcherService) {
     }
@@ -31,5 +32,13 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.ngUnsubscribe.next();
         this.ngUnsubscribe.complete();
+    }
+
+    buttonOn() {
+        this.brandBg = 'brand brandOn';
+    }
+
+    buttonOff() {
+        this.brandBg = 'brand';
     }
 }
