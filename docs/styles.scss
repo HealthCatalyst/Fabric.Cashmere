@@ -1,7 +1,7 @@
 $fa-font-path: '../node_modules/font-awesome/fonts';
 @import '../node_modules/font-awesome/scss/font-awesome';
-@import './app/lib/colors';
-@import './app/lib/tables.scss';
+@import '../lib/src/colors';
+@import '../lib/src/tables.scss';
 
 html,
 body {

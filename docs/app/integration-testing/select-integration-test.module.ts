@@ -2,7 +2,7 @@ import { SelectIntegrationTestComponent } from './select-integration-test.compon
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SelectModule } from '../lib/select/select.module';
+import { SelectModule } from '../../../lib/src/select/select.module';
 
 @NgModule({
     imports: [
