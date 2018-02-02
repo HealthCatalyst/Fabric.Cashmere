@@ -26,8 +26,10 @@ getTestBed().initTestEnvironment(
     platformBrowserDynamicTesting()
 );
 // Then we find all the tests.
-const context = require.context('./', true, /\.spec\.ts$/);
+const docsContext = require.context('./', true, /\.spec\.ts$/);
+const libContext = require.context('../lib/src/', true, /\.spec\.ts$/);
 // And load the modules.
-context.keys().map(context);
+docsContext.keys().map(docsContext);
+libContext.keys().map(libContext);
 // Finally, start Karma to run the tests.
 __karma__.start();

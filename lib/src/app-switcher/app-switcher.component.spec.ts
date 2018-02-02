@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppSwitcherComponent } from './app-switcher.component';
-import { PopoverModule } from 'app/lib/popover/popover.module';
-import { MockAppSwitcherService } from 'app/lib/app-switcher/app-switcher.service';
-import { PipesModule } from 'app/lib/pipes/pipes.module';
+import { PopoverModule } from '../popover/popover.module';
+import { MockAppSwitcherService } from './app-switcher.service';
+import { PipesModule } from '../pipes/pipes.module';
 
 describe('AppSwitcherComponent', () => {
     let component: AppSwitcherComponent;

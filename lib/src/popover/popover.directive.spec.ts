@@ -1,7 +1,7 @@
 import { PopoverDirective } from './popover.directive';
 import { SimpleChange, ViewContainerRef } from '@angular/core';
 import { PopoverContentComponent } from './popoverContent.component';
-import { Triggers } from 'app/lib/popover/popover.model';
+import { Triggers } from './popover.model';
 
 describe('PopoverDirective', () => {
     let directive: PopoverDirective;
