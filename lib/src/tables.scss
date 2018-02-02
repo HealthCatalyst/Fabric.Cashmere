@@ -1,0 +1,160 @@
+@import "./colors.scss";
+@import "./functions.scss";
+@import "../node_modules/font-awesome/scss/variables"; // get rid of this when we roll our own font
+
+$table-border: 1px solid $slate-gray-200 !default;
+$table-condensed-font-size: 13px;
+$header-border-thick: 2px solid $slate-gray-300 !default;
+$cell-padding: 8px 16px !default;
+$cell-padding-condensed: 5px 16px !default;
+$thead-font-size: 14px !default;
+$thead-font-color: $dark-blue !default;
+$thead-active-font-color: $green !default;
+$tbody-font-size: 15px !default;
+$tbody-font-color: $text !default;
+$row-color: $white !default;
+$row-color-alt: $slate-gray-100 !default;
+$row-color-hover: tint($primary-brand, 75%) !default;
+$row-color-selected: $azure !default;
+$row-color-selected-hover: tint($azure, 20%) !default;
+$row-selected-font-color: $white;
+$row-selected-border-color: $white;
+
+// TODO: move into reset/normalize type file
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    th {
+        text-align: inherit;
+    }
+}
+//-----------------------------------------
+
+table.hc-table {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    color: $tbody-font-color;
+
+    td, th {
+        padding: $cell-padding;
+        border-top: none;
+        border-bottom: $table-border;
+        word-break: break-word;
+    }
+
+    thead th {
+        font-size: $thead-font-size;
+        color: $thead-font-color;
+        vertical-align: bottom;
+    }
+
+    tbody {
+        font-size: $tbody-font-size;
+        border-left: $table-border;
+        border-right: $table-border;
+
+        tr {
+            &:nth-child(2n) {
+                background-color: $row-color;
+            }
+
+            &:nth-child(2n + 1) {
+                background-color: $row-color-alt;
+            }
+
+            &:not(.empty-table-row):hover {
+                background-color: $row-color-hover;
+            }
+
+            &.hc-row-selected {
+                background-color: $row-color-selected;
+                color: $row-selected-font-color;
+                &:hover { background-color: $row-color-selected-hover; }
+                td { border-color: $row-selected-border-color; }
+            }
+        }
+
+        td {
+            vertical-align: top;
+        }
+    }
+
+    // Add Borders
+    &.hc-table-borders {
+        td, th { border: $table-border }
+        th { border-bottom: $header-border-thick }
+    }
+
+    td, th {
+        &.hc-cell-borders {
+            border: $table-border;
+        }
+    }
+
+    // Condensed
+    &.hc-table-small {
+        td, th { padding: $cell-padding-condensed; font-size: $table-condensed-font-size;}
+    }
+
+    // Sorting
+    th.hc-col-sortable, th.hc-col-sortable-left {
+        position: relative;
+        cursor: pointer;
+        padding-right: 35px;
+
+        &:hover {
+            background-color: $row-color-hover;
+        }
+
+        //TODO: redo the guts of these icons when we roll our own icon font
+        &:before, &:after {
+            display: inline-block;
+            position: absolute;
+            bottom: 12px;
+            font: normal normal normal 12px/1 FontAwesome;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+        }
+        &:before {
+            right: 23px;
+            bottom: 11px;
+            content: $fa-var-long-arrow-down;
+        }
+        &:after {
+            right: 18px;
+            margin-top: -1px;
+            content: $fa-var-long-arrow-down;
+            transform: rotate(180deg)
+        }
+
+        &.hc-active-sort {
+            color: $thead-active-font-color;
+
+            &.hc-sort-asc {
+                &:before { content: $fa-var-sort-amount-asc; right: 16px;}
+                &:after { content: none; }
+            }
+
+            &.hc-sort-desc {
+                &:before { content: $fa-var-sort-amount-desc; right: 16px;}
+                &:after { content: none; }
+            }
+        }
+    }
+
+    // align sort icons on left of the col header
+    th.hc-col-sortable-left {
+        padding-right: 16px;
+        padding-left: 35px;
+
+        &:before { left: 16px; right: auto; }
+        &:after { left: 21px; right: auto; }
+
+        &.hc-active-sort {
+            &.hc-sort-asc:before { left: 16px; right: auto; }
+            &.hc-sort-desc:before { left: 16px; right: auto; }
+        }
+    }
+}
