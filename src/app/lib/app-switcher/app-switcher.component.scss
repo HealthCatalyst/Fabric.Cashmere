@@ -7,12 +7,18 @@
 
 .brand {
     cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.brandOn {
+    background-color: $dark-blue;
 }
 
 .popover-content {
     max-width: 410px;
     & > h4 {
         margin: 10px 0;
+        padding-bottom: 5px;
         border-bottom: 1px solid $gray-300;
     }
 
@@ -20,7 +26,6 @@
         margin: 10px 0;
         display: block;
         text-align: right;
-        color: $blue;
         text-decoration: none;
     }
 

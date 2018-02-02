@@ -14,8 +14,10 @@ import { IAppSwitcherService, IDiscoveryApplication } from './app-switcher-inter
 export class AppSwitcherComponent implements OnInit, OnDestroy {
     public applications: IDiscoveryApplication[];
     public subscription: Subscription;
+    public brandBg = 'brand';
 
     private ngUnsubscribe: any = new Subject();
+
 
     constructor(@Inject('IAppSwitcherService') public appSwitcherService: IAppSwitcherService) {
     }
@@ -31,5 +33,13 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.ngUnsubscribe.next();
         this.ngUnsubscribe.complete();
+    }
+
+    buttonOn() {
+        this.brandBg = 'brand brandOn';
+    }
+
+    buttonOff() {
+        this.brandBg = 'brand';
     }
 }

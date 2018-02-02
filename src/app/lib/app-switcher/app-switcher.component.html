@@ -2,7 +2,9 @@
      [popperTarget]="brand"
      [hcPopover]="appSwitcherContent"
      popperPlacement="top-start"
-     class="brand">
+     [className]="brandBg"
+     (popperOnShown)="buttonOn()"
+     (popperOnHidden)="buttonOff()">
     <img src="./assets/TriFlame.svg">
 </div>
 
