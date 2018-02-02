@@ -28,7 +28,6 @@ $navbar-z-index: 1030 !default;
 
     .navbar-brand {
         background-color: $navbar-brand;
-        transition: background-color 0.25s ease;
         width: 55px;
         flex-basis: auto;
         height: 100%;
@@ -44,6 +43,7 @@ $navbar-z-index: 1030 !default;
                 max-width: 70%;
                 max-height: 70%;
             }
+            transition: background-color 0.25s ease;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -52,7 +52,6 @@ $navbar-z-index: 1030 !default;
 
             &:hover, &:focus {
                 background-color: $dark-blue;
-                transition: 0.25s ease;
             }
         }
 
