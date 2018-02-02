@@ -1,0 +1,30 @@
+$default-icon-size: 20px;
+
+@mixin iconHeight($height) {
+    font-size: $height !important;
+    height: $height !important;
+    width: $height !important;
+}
+
+[icon-sm] {
+    @include iconHeight(14px);
+}
+
+[icon-md] {
+    @include iconHeight($default-icon-size);
+}
+
+[icon-lg] {
+    @include iconHeight(36px);
+}
+
+.hc-icon {
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    text-align: center;
+
+    font-size: $default-icon-size;
+    height: $default-icon-size;
+    width: $default-icon-size;
+}

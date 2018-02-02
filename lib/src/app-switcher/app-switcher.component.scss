@@ -1,0 +1,50 @@
+@import '../colors.scss';
+
+:host {
+    height: 100%;
+    width: 100%;
+}
+
+.brand {
+    cursor: pointer;
+}
+
+.popover-content {
+    max-width: 410px;
+    & > h4 {
+        margin: 10px 0;
+        border-bottom: 1px solid $gray-300;
+    }
+
+    .all-apps-link {
+        margin: 10px 0;
+        display: block;
+        text-align: right;
+        color: $blue;
+        text-decoration: none;
+    }
+
+    .apps {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        .app {
+            flex: 0 0 33%;
+            & > a {
+                padding: 10px;
+                text-decoration: none;
+
+                & > img {
+                    width: 100px;
+                }
+            }
+
+            .title {
+                text-align: center;
+                color: $offblack;
+                padding-top: 8px;
+                font-weight: 800;
+            }
+        }
+    }
+}
