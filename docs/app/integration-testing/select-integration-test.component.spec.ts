@@ -1,6 +1,6 @@
 import { By } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { SelectModule } from './../lib/select/select.module';
+import { SelectModule } from '../../../lib/src/select/select.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectIntegrationTestComponent } from './select-integration-test.component';
