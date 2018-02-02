@@ -1,7 +1,7 @@
 @import '../colors.scss';
 
 $navbar-color: $charcoal-blue !default;
-$navbar-brand: $blue !default;
+$navbar-brand: $primary-brand !default;
 $navbar-height: 53px !default;
 $navbar-app-padding: 0 75px 0 25px !default;
 $navbar-text: $white !default;
@@ -45,12 +45,18 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
                 max-width: 70%;
                 max-height: 70%;
             }
+            transition: background-color 0.25s ease;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100%;
             width: 100%;
+
+            &:hover, &:focus {
+                background-color: $dark-blue;
+            }
         }
+
     }
 
     .navbar-app {
