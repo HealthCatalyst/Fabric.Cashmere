@@ -1,7 +1,7 @@
 import { ButtonComponent } from './button.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { AnchorComponent } from './anchor.component';
+import { AnchorComponent } from './anchor.component';
 
 @NgModule({
     imports: [
@@ -9,11 +9,11 @@ import { CommonModule } from '@angular/common';
     ],
     declarations: [
         ButtonComponent,
-        // AnchorComponent
+        AnchorComponent
     ],
     exports: [
         ButtonComponent,
-        // AnchorComponent
+        AnchorComponent
     ]
 })
 export class ButtonModule {

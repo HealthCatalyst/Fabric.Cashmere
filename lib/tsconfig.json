@@ -25,7 +25,7 @@
         "inlineSources": true
     },
     "files": [
-        "src/cashmere.ts"
+        "public_api.ts"
     ],
     "angularCompilerOptions": {
         "skipTemplateCodegen": true,
