@@ -1,7 +1,11 @@
-<div class="demo-page">
-    <h2 style="margin: 0">Drawer</h2>
+<div class="subheader">
+    <h2>Drawer</h2>
+</div>
 
-    <h4 style="font-weight: 300; margin-top: 0">You can have both a left and right drawer</h4>
+<div class="demo-content">
+    <p>Drawers are great for content that you want tucked away, like filters.</p>
+    
+    <h4>You can have both a left and right drawer</h4>
     <div class="drawer-container">
         <hc-drawer-container>
             <hc-drawer align="left" #leftDrawer>
@@ -16,7 +20,7 @@
         </hc-drawer-container>
     </div>
 
-    <h4 style="font-weight: 300; margin-top: 0">You can have the drawer push or overlay your content</h4>
+    <h4>You can have the drawer push or overlay your content</h4>
     <div class="drawer-container">
         <hc-drawer-container>
             <hc-drawer align="left" mode="over" #leftOverDrawer>
@@ -31,63 +35,40 @@
         </hc-drawer-container>
     </div>
 
-    <br>
-    <br>
-    <hr style="height:1px;border:none;background-color:#E5E5E5;">
-    <br>
-    <p class="description">
-        <b>Drawer Usage</b>
-        <br>Drawers are great if you need to have content which doesn't fit in a toolbar
-    </p>
-    <br>
-    <hr style="height:1px;border:none;background-color:#E5E5E5;">
-    <br>
-    <div class="headerName">Angular Component</div>
-    <br>
+    <hr>
+
+    <h3 class="headerName">Angular Component</h3>
     <pre>
-          <code>
+        <code>
 &#x3C;hc-drawer-container&#x3E;
   &#x3C;hc-drawer&#x3E;
     Drawer Content
   &#x3C;/hc-drawer&#x3E;
   Main Content
 &#x3C;/hc-drawer-container&#x3E;
-          </code>
-      </pre>
-    <br>
-    <hr style="height:1px;border:none;background-color:#E5E5E5;">
-    <br>
-    <div class="headerName">Component Parameters for hc-drawer</div>
-    <br>
+        </code>
+    </pre>
 
-    <table class="apiTable parameters">
+    <hr>
+
+    <h3>Component Parameters</h3>
+    <table class="api-table">
         <tr>
             <th>mode</th>
-            <td>
-                <span>Type:</span> 'over' | 'push' (default: 'push')
-            </td>
-            <td width=50%>Optional - overlay or push content</td>
+            <td><span class="type-label">Type:</span> 'over' | 'push' (default: 'push')</td>
+            <td>Optional - overlay or push content</td>
         </tr>
         <tr>
             <th>align</th>
-            <td>
-                <span>Type:</span> 'left' | 'right' (default: 'left')
-            </td>
-            <td width=50%>Optional - alignment of the drawer.</td>
+            <td><span class="type-label">Type:</span> 'left' | 'right' (default: 'left')</td>
+            <td>Optional - alignment of the drawer.</td>
         </tr>
         <tr>
             <th>opened</th>
-            <td>
-                <span>Type:</span> Boolean (default: false)
-            </td>
-            <td width=50%>Optional - whether the drawer starts out opened/closed</td>
+            <td><span class="type-label">Type:</span> Boolean (default: false)</td>
+            <td>Optional - whether the drawer starts out opened/closed</td>
         </tr>
     </table>
 
-    <h3>Drawer Container Note</h3>
-    <p class="drawer-note">
-        An error will be thrown if there are more than two drawers in hc-drawer-container or if both drawers have the
-        same
-        alignment
-    </p>
+    <em>*Note: An error will be thrown if there are more than two drawers in hc-drawer-container or if both drawers have the same alignment </em>
 </div>

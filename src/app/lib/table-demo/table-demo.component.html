@@ -1,344 +1,343 @@
-<div class="demo-page">
-    <div class="demo-inner">
-        <h2>Table</h2>
-        <p>
-            Helper classes for styling your tables.
-        </p>
+<div class="subheader">
+    <h2>Table</h2>
+</div>
 
-        <h4>Basic Example</h4>
-        <p>Add the base class
-            <code>.hc-table</code> to an HTML
-            <code>&lt;table&gt;</code> to get the default Catalyst table stylings.</p>
-        <table class="hc-table">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>MRN</th>
-                    <th>Birth Date</th>
-                    <th>Payor</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Samuel</td>
-                    <td>Walker</td>
-                    <td>Z1223334444</td>
-                    <td>Mar 27, 1978</td>
-                    <td>MetLife</td>
-                </tr>
-                <tr>
-                    <td>Whitney</td>
-                    <td>Allen</td>
-                    <td>Z5223335555</td>
-                    <td>Jan 14, 1954</td>
-                    <td>New York Life</td>
-                </tr>
-                <tr>
-                    <td>Kendra</td>
-                    <td>Jacobs</td>
-                    <td>Z6223336666</td>
-                    <td>Aug 27, 1990</td>
-                    <td>Prudential Financial</td>
-                </tr>
-                <tr>
-                    <td>Gerald</td>
-                    <td>Lynch</td>
-                    <td>Z7223337777</td>
-                    <td>Mar 15, 1981</td>
-                    <td>MetLife</td>
-                </tr>
-            </tbody>
-        </table>
+<div class="demo-content">
+    <p>
+        Helper classes for styling your tables.
+    </p>
 
-        <pre>
-        <code>
+    <h3>Basic Example</h3>
+    <p>Add the base class
+        <code>.hc-table</code> to an HTML
+        <code>&lt;table&gt;</code> to get the default Catalyst table stylings.</p>
+    <table class="hc-table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>MRN</th>
+                <th>Birth Date</th>
+                <th>Payor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Samuel</td>
+                <td>Walker</td>
+                <td>Z1223334444</td>
+                <td>Mar 27, 1978</td>
+                <td>MetLife</td>
+            </tr>
+            <tr>
+                <td>Whitney</td>
+                <td>Allen</td>
+                <td>Z5223335555</td>
+                <td>Jan 14, 1954</td>
+                <td>New York Life</td>
+            </tr>
+            <tr>
+                <td>Kendra</td>
+                <td>Jacobs</td>
+                <td>Z6223336666</td>
+                <td>Aug 27, 1990</td>
+                <td>Prudential Financial</td>
+            </tr>
+            <tr>
+                <td>Gerald</td>
+                <td>Lynch</td>
+                <td>Z7223337777</td>
+                <td>Mar 15, 1981</td>
+                <td>MetLife</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <pre>
+    <code>
+&lt;table class=&quot;hc-table&quot;&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;First Name&lt;/th&gt;
+            &lt;th&gt;Last Name&lt;/th&gt;
+            &lt;th&gt;MRN&lt;/th&gt;
+            &lt;th&gt;Birth Date&lt;/th&gt;
+            &lt;th&gt;Payor&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Samuel&lt;/td&gt;
+            &lt;td&gt;Walker&lt;/td&gt;
+            &lt;td&gt;Z1223334444&lt;/td&gt;
+            &lt;td&gt;Mar 27, 1978&lt;/td&gt;
+            &lt;td&gt;MetLife&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Whitney&lt;/td&gt;
+            &lt;td&gt;Allen&lt;/td&gt;
+            &lt;td&gt;Z5223335555&lt;/td&gt;
+            &lt;td&gt;Jan 14, 1954&lt;/td&gt;
+            &lt;td&gt;New York Life&lt;/td&gt;
+        &lt;/tr&gt;
+        ...
+    &lt;/tbody&gt;
+&lt;/table&gt;
+    </code>
+</pre>
+
+    <hr>
+
+    <h3>Sorting Indicators</h3>
+    <p>Add
+        <code>.hc-col-sortable</code> to a
+        <code>&lt;th&gt;</code> so that it appears sortable.</p>
+    <ul>
+        <li>Use
+            <code>.hc-active-sort</code> to designate the currently sorted column</li>
+        <li>Use
+            <code>.hc-sort-asc</code> and
+            <code>.hc-sort-desc</code> to designate sort direction</li>
+        <li>For a left aligned sort indicator, use
+            <code>.hc-col-sortable-left</code>
+        </li>
+    </ul>
+    <table class="hc-table">
+        <thead>
+            <tr>
+                <th class="hc-col-sortable">Sortable</th>
+                <th class="hc-col-sortable hc-active-sort hc-sort-asc">Active Sort (Ascending)</th>
+                <th>Nope</th>
+                <th class="hc-col-sortable hc-active-sort hc-sort-desc">Active Sort (Descending)</th>
+                <th class="hc-col-sortable-left">Left aligned</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Samuel</td>
+                <td>Walker</td>
+                <td>Z1223334444</td>
+                <td>Mar 27, 1978</td>
+                <td>MetLife</td>
+            </tr>
+            <tr>
+                <td>Whitney</td>
+                <td>Allen</td>
+                <td>Z5223335555</td>
+                <td>Jan 14, 1954</td>
+                <td>New York Life</td>
+            </tr>
+            <tr>
+                <td>Kendra</td>
+                <td>Jacobs</td>
+                <td>Z6223336666</td>
+                <td>Aug 27, 1990</td>
+                <td>Prudential Financial</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <pre>
+    <code>
     &lt;table class=&quot;hc-table&quot;&gt;
         &lt;thead&gt;
             &lt;tr&gt;
-                &lt;th&gt;First Name&lt;/th&gt;
-                &lt;th&gt;Last Name&lt;/th&gt;
-                &lt;th&gt;MRN&lt;/th&gt;
-                &lt;th&gt;Birth Date&lt;/th&gt;
-                &lt;th&gt;Payor&lt;/th&gt;
+            &lt;th class=&quot;hc-col-sortable&quot;&gt;Sortable&lt;/th&gt;
+            &lt;th class=&quot;hc-col-sortable hc-active-sort hc-sort-asc&quot;&gt;Active Sort (Ascending)&lt;/th&gt;
+            &lt;th&gt;Nope&lt;/th&gt;
+            &lt;th class=&quot;hc-col-sortable hc-active-sort hc-sort-desc&quot;&gt;Active Sort (Descending)&lt;/th&gt;
+            &lt;th class=&quot;hc-col-sortable-left&quot;&gt;Left aligned&lt;/th&gt;
             &lt;/tr&gt;
         &lt;/thead&gt;
-        &lt;tbody&gt;
-            &lt;tr&gt;
-                &lt;td&gt;Samuel&lt;/td&gt;
-                &lt;td&gt;Walker&lt;/td&gt;
-                &lt;td&gt;Z1223334444&lt;/td&gt;
-                &lt;td&gt;Mar 27, 1978&lt;/td&gt;
-                &lt;td&gt;MetLife&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;Whitney&lt;/td&gt;
-                &lt;td&gt;Allen&lt;/td&gt;
-                &lt;td&gt;Z5223335555&lt;/td&gt;
-                &lt;td&gt;Jan 14, 1954&lt;/td&gt;
-                &lt;td&gt;New York Life&lt;/td&gt;
-            &lt;/tr&gt;
-            ...
-        &lt;/tbody&gt;
-    &lt;/table&gt;
-        </code>
-    </pre>
-
-        <hr>
-
-        <h4>Sorting Indicators</h4>
-        <p>Add
-            <code>.hc-col-sortable</code> to a
-            <code>&lt;th&gt;</code> so that it appears sortable.</p>
-        <ul>
-            <li>Use
-                <code>.hc-active-sort</code> to designate the currently sorted column</li>
-            <li>Use
-                <code>.hc-sort-asc</code> and
-                <code>.hc-sort-desc</code> to designate sort direction</li>
-            <li>For a left aligned sort indicator, use
-                <code>.hc-col-sortable-left</code>
-            </li>
-        </ul>
-        <table class="hc-table">
-            <thead>
-                <tr>
-                    <th class="hc-col-sortable">Sortable</th>
-                    <th class="hc-col-sortable hc-active-sort hc-sort-asc">Active Sort (Ascending)</th>
-                    <th>Nope</th>
-                    <th class="hc-col-sortable hc-active-sort hc-sort-desc">Active Sort (Descending)</th>
-                    <th class="hc-col-sortable-left">Left aligned</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Samuel</td>
-                    <td>Walker</td>
-                    <td>Z1223334444</td>
-                    <td>Mar 27, 1978</td>
-                    <td>MetLife</td>
-                </tr>
-                <tr>
-                    <td>Whitney</td>
-                    <td>Allen</td>
-                    <td>Z5223335555</td>
-                    <td>Jan 14, 1954</td>
-                    <td>New York Life</td>
-                </tr>
-                <tr>
-                    <td>Kendra</td>
-                    <td>Jacobs</td>
-                    <td>Z6223336666</td>
-                    <td>Aug 27, 1990</td>
-                    <td>Prudential Financial</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <pre>
-        <code>
-      &lt;table class=&quot;hc-table&quot;&gt;
-          &lt;thead&gt;
-              &lt;tr&gt;
-                &lt;th class=&quot;hc-col-sortable&quot;&gt;Sortable&lt;/th&gt;
-                &lt;th class=&quot;hc-col-sortable hc-active-sort hc-sort-asc&quot;&gt;Active Sort (Ascending)&lt;/th&gt;
-                &lt;th&gt;Nope&lt;/th&gt;
-                &lt;th class=&quot;hc-col-sortable hc-active-sort hc-sort-desc&quot;&gt;Active Sort (Descending)&lt;/th&gt;
-                &lt;th class=&quot;hc-col-sortable-left&quot;&gt;Left aligned&lt;/th&gt;
-              &lt;/tr&gt;
-          &lt;/thead&gt;
-          ...
-      &lt;/table&gt;
-          </code>
-      </pre>
-
-        <hr>
-
-        <h4>Condensed Table</h4>
-        <p>Add
-            <code>.hc-table-small</code> (in addition to
-            <code>.hc-table</code>) for a smaller table.</p>
-        <table class="hc-table hc-table-small">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>MRN</th>
-                    <th>Birth Date</th>
-                    <th>Payor</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Samuel</td>
-                    <td>Walker</td>
-                    <td>Z1223334444</td>
-                    <td>Mar 27, 1978</td>
-                    <td>MetLife</td>
-                </tr>
-                <tr>
-                    <td>Whitney</td>
-                    <td>Allen</td>
-                    <td>Z5223335555</td>
-                    <td>Jan 14, 1954</td>
-                    <td>New York Life</td>
-                </tr>
-                <tr>
-                    <td>Kendra</td>
-                    <td>Jacobs</td>
-                    <td>Z6223336666</td>
-                    <td>Aug 27, 1990</td>
-                    <td>Prudential Financial</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <pre>
-      <code>
-    &lt;table class=&quot;hc-table hc-table-small&quot;&gt;
         ...
     &lt;/table&gt;
         </code>
     </pre>
 
-        <hr>
+    <hr>
 
-        <h4>Selected Row</h4>
-        <p>Add
-            <code>.hc-row-selected</code> to a
-            <code>&lt;tr&gt;</code> so it appears selected.</p>
-        <table class="hc-table">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>MRN</th>
-                    <th>Birth Date</th>
-                    <th>Payor</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Samuel</td>
-                    <td>Walker</td>
-                    <td>Z1223334444</td>
-                    <td>Mar 27, 1978</td>
-                    <td>MetLife</td>
-                </tr>
-                <tr class="hc-row-selected">
-                    <td>Whitney</td>
-                    <td>Allen</td>
-                    <td>Z5223335555</td>
-                    <td>Jan 14, 1954</td>
-                    <td>New York Life</td>
-                </tr>
-                <tr>
-                    <td>Kendra</td>
-                    <td>Jacobs</td>
-                    <td>Z6223336666</td>
-                    <td>Aug 27, 1990</td>
-                    <td>Prudential Financial</td>
-                </tr>
-            </tbody>
-        </table>
+    <h3>Condensed Table</h3>
+    <p>Add
+        <code>.hc-table-small</code> (in addition to
+        <code>.hc-table</code>) for a smaller table.</p>
+    <table class="hc-table hc-table-small">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>MRN</th>
+                <th>Birth Date</th>
+                <th>Payor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Samuel</td>
+                <td>Walker</td>
+                <td>Z1223334444</td>
+                <td>Mar 27, 1978</td>
+                <td>MetLife</td>
+            </tr>
+            <tr>
+                <td>Whitney</td>
+                <td>Allen</td>
+                <td>Z5223335555</td>
+                <td>Jan 14, 1954</td>
+                <td>New York Life</td>
+            </tr>
+            <tr>
+                <td>Kendra</td>
+                <td>Jacobs</td>
+                <td>Z6223336666</td>
+                <td>Aug 27, 1990</td>
+                <td>Prudential Financial</td>
+            </tr>
+        </tbody>
+    </table>
 
-        <pre>
-      <code>
-    &lt;table class=&quot;hc-table&quot;&gt;
-        ...
-        &lt;tr class=&quot;hc-row-selected&quot;&gt;...&lt;/tr&gt;
+    <pre>
+    <code>
+&lt;table class=&quot;hc-table hc-table-small&quot;&gt;
+    ...
+&lt;/table&gt;
+    </code>
+</pre>
+
+    <hr>
+
+    <h3>Selected Row</h3>
+    <p>Add
+        <code>.hc-row-selected</code> to a
+        <code>&lt;tr&gt;</code> so it appears selected.</p>
+    <table class="hc-table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>MRN</th>
+                <th>Birth Date</th>
+                <th>Payor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Samuel</td>
+                <td>Walker</td>
+                <td>Z1223334444</td>
+                <td>Mar 27, 1978</td>
+                <td>MetLife</td>
+            </tr>
+            <tr class="hc-row-selected">
+                <td>Whitney</td>
+                <td>Allen</td>
+                <td>Z5223335555</td>
+                <td>Jan 14, 1954</td>
+                <td>New York Life</td>
+            </tr>
+            <tr>
+                <td>Kendra</td>
+                <td>Jacobs</td>
+                <td>Z6223336666</td>
+                <td>Aug 27, 1990</td>
+                <td>Prudential Financial</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <pre>
+    <code>
+&lt;table class=&quot;hc-table&quot;&gt;
+    ...
+    &lt;tr class=&quot;hc-row-selected&quot;&gt;...&lt;/tr&gt;
+    ...
+&lt;/table&gt;
+    </code>
+</pre>
+
+    <hr>
+
+    <h3>Borders</h3>
+    <p>Add
+        <code>.hc-table-borders</code> (in addition to
+        <code>.hc-table</code>) for borders all around.</p>
+    <table class="hc-table hc-table-borders">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>MRN</th>
+                <th>Birth Date</th>
+                <th>Payor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Samuel</td>
+                <td>Walker</td>
+                <td>Z1223334444</td>
+                <td>Mar 27, 1978</td>
+                <td>MetLife</td>
+            </tr>
+            <tr>
+                <td>Whitney</td>
+                <td>Allen</td>
+                <td>Z5223335555</td>
+                <td>Jan 14, 1954</td>
+                <td>New York Life</td>
+            </tr>
+            <tr>
+                <td>Kendra</td>
+                <td>Jacobs</td>
+                <td>Z6223336666</td>
+                <td>Aug 27, 1990</td>
+                <td>Prudential Financial</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <pre>
+    <code>
+    &lt;table class=&quot;hc-table hc-table-borders&quot;&gt;
         ...
     &lt;/table&gt;
         </code>
     </pre>
 
-        <hr>
+    <br>
 
-        <h4>Borders</h4>
-        <p>Add
-            <code>.hc-table-borders</code> (in addition to
-            <code>.hc-table</code>) for borders all around.</p>
-        <table class="hc-table hc-table-borders">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>MRN</th>
-                    <th>Birth Date</th>
-                    <th>Payor</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Samuel</td>
-                    <td>Walker</td>
-                    <td>Z1223334444</td>
-                    <td>Mar 27, 1978</td>
-                    <td>MetLife</td>
-                </tr>
-                <tr>
-                    <td>Whitney</td>
-                    <td>Allen</td>
-                    <td>Z5223335555</td>
-                    <td>Jan 14, 1954</td>
-                    <td>New York Life</td>
-                </tr>
-                <tr>
-                    <td>Kendra</td>
-                    <td>Jacobs</td>
-                    <td>Z6223336666</td>
-                    <td>Aug 27, 1990</td>
-                    <td>Prudential Financial</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <pre>
-        <code>
-      &lt;table class=&quot;hc-table hc-table-borders&quot;&gt;
-          ...
-      &lt;/table&gt;
-          </code>
-      </pre>
-
-        <br>
-
-        <p>You can also
-            <code>.hc-cell-borders</code> at the
-            <code>td</code> or
-            <code>th</code> level.</p>
-        <table class="hc-table">
-            <thead>
-                <tr>
-                    <th class="hc-cell-borders">Borders!</th>
-                    <th>Name</th>
-                    <th>MRN</th>
-                    <th>Birth Date</th>
-                    <th>Payor</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="hc-cell-borders">Borders!</td>
-                    <td>Samuel Walker</td>
-                    <td>Z1223334444</td>
-                    <td>Mar 27, 1978</td>
-                    <td>MetLife</td>
-                </tr>
-                <tr>
-                    <td class="hc-cell-borders">Borders!</td>
-                    <td>Whitney Allen</td>
-                    <td>Z5223335555</td>
-                    <td>Jan 14, 1954</td>
-                    <td>New York Life</td>
-                </tr>
-                <tr>
-                    <td class="hc-cell-borders">Borders!</td>
-                    <td>Kendra Jacobs</td>
-                    <td>Z6223336666</td>
-                    <td>Aug 27, 1990</td>
-                    <td>Prudential Financial</td>
-                </tr>
-            </tbody>
-        </table>
+    <p>You can also use <code>.hc-cell-borders</code> at the <code>&lt;td&gt;</code> or <code>&lt;th&gt;</code> level.</p>
+    <table class="hc-table">
+        <thead>
+            <tr>
+                <th class="hc-cell-borders">Borders!</th>
+                <th>Name</th>
+                <th>MRN</th>
+                <th>Birth Date</th>
+                <th>Payor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="hc-cell-borders">Borders!</td>
+                <td>Samuel Walker</td>
+                <td>Z1223334444</td>
+                <td>Mar 27, 1978</td>
+                <td>MetLife</td>
+            </tr>
+            <tr>
+                <td class="hc-cell-borders">Borders!</td>
+                <td>Whitney Allen</td>
+                <td>Z5223335555</td>
+                <td>Jan 14, 1954</td>
+                <td>New York Life</td>
+            </tr>
+            <tr>
+                <td class="hc-cell-borders">Borders!</td>
+                <td>Kendra Jacobs</td>
+                <td>Z6223336666</td>
+                <td>Aug 27, 1990</td>
+                <td>Prudential Financial</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

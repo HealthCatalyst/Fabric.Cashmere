@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'hc-sidenav-demo',
     templateUrl: './drawer-demo.component.html',
-    styleUrls: ['./drawer-demo.component.scss']
+    styleUrls: ['../../shared-demo-styles.scss']
 })
-export class DrawerDemoComponent {
-}
+export class DrawerDemoComponent {}

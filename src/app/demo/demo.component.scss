@@ -1,13 +1,22 @@
+@import "../lib/colors.scss";
+
+$sidebar-nav-width: 280px;
+$header-height: 53px;
+
 .side-bar-container {
-    width: 20%;
-    float: left;
-    height: 100%;
+    position: fixed;
+    left: 0;
+    top: $header-height;
+    height: calc(100% - #{$header-height});
+    width: $sidebar-nav-width;
+    overflow-y: auto;
+    margin-right: -1px;
+    box-shadow: 2px 0 6px $shadow;
+    background-color: $slate-gray-100;
 }
 
 .content-container {
-    width: 80%;
-    float: right;
-    height: 100%;
-    border-left: gray 1px solid;
-    margin-left: -1px;
+    width: 100%;
+    padding-left: $sidebar-nav-width;
+    box-sizing: border-box;
 }

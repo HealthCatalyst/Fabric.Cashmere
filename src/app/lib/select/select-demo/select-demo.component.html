@@ -1,81 +1,64 @@
-<div class="demo-page">
-    <h2 style="margin: 0">Select</h2>
-    <h4 style="font-weight: 300; margin-top: 0">Menus display a list of choices with one choice per line.
-    </h4>
-    <h5>Standard Select Component</h5>
-    <div style="width:350px">
+<div class="subheader">
+    <h2>Select</h2>
+</div>
+
+<div class="demo-content">
+    <p>Select one of many options from a dropdown.</p>
+    <h4>Standard Select Component</h4>
+    <div class="select-sample">
         <hc-select placeholder="Select a city:"
                    [options]="['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando']"></hc-select>
     </div>
-    <h5>Disabled Select Component</h5>
-    <div style="width:350px">
+    <h4>Disabled Select Component</h4>
+    <div class="select-sample">
         <hc-select [disabled]="true" placeholder="Select a city:"
                    [options]="['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando']"></hc-select>
     </div>
-    <br>
-    <br>
-    <hr style="height:1px;border:none;background-color:#E5E5E5;">
-    <br>
-    <p class="description">
-        <b>Select Types</b>
-        <br>There are two primary types of dropdown menus used in Cashmere: one is an extension of the <i>button</i>
-        component, and the other is this <i>select</i> component. The guidelines for which dropdown to use is based off
-        what items are contained in the dropdown. The button dropdown is for a list with action items (e.g. delete all
-        selected items). If the dropdown contains a list of selectable items, then this component should be used.</p>
-    <p class="description">
-        <b>Template Forms</b>
-        <br>The Select Component is compatible with both template forms and reactive forms in angular.
-        To interact with template forms specify <code>[(ngModel)]=</code> on the component.
+
+    <hr>
+
+    <h3>Template Forms</h3>
+    <p>
+        The Select Component is compatible with both template forms and reactive forms in angular.
+        To interact with template forms use <code>[(ngModel)]</code> on the component.
         Remember to import the <code>FormsModule</code> into your application.
-        <br>
     </p>
-    <p class="description">
-        <b>Reactive Forms</b>
-        <br>
-        To interact with reactive forms specify <code>formControlName=</code> on the component.
+
+    <h3>Reactive Forms</h3>
+    <p>
+        To interact with reactive forms specify a <code>formControlName</code> on the component.
         Remember to import the <code>ReactiveFormsModule</code> into your application.
     </p>
-    <br>
-    <hr style="height:1px;border:none;background-color:#E5E5E5;">
-    <br>
 
-    <div class="headerName">Angular Component</div>
-    <br>
+    <hr>
+
+    <h3>Angular Component</h3>
     <pre>
           <code>
 &#x3C;hc-select formControlName=&#x22;city&#x22; &#91;disabled&#93;=&#x27;false&#x27; placeholder=&#x22;Select a city:&#x22;
     [options]=&#x22;[&#x27;Philadelphia&#x27;, &#x27;Atlanta&#x27;, &#x27;Salt Lake City&#x27;, &#x27;Chicago&#x27;, &#x27;Orlando&#x27;]&#x22;&#x3E;
 &#x3C;/hc-select&#x3E;
           </code>
-      </pre>
-    <br>
-    <hr style="height:1px;border:none;background-color:#E5E5E5;">
-    <br>
-    <div class="headerName">Component Parameters</div>
-    <br>
+    </pre>
 
-    <table class="apiTable parameters">
+    <hr>
+
+    <h3>Component Parameters</h3>
+    <table class="api-table">
         <tr>
             <th>placeholder</th>
-            <td>
-                <span>Type:</span> String
-            </td>
-            <td width=50%>Optional string of text to appear before selection is made</td>
+            <td><span class="type-label">Type:</span> String</td>
+            <td>Optional string of text to appear before selection is made</td>
         </tr>
         <tr>
             <th>[options]</th>
-            <td>
-                <span>Type:</span> Array
-            </td>
-            <td width=50%>An array of strings for the select options</td>
+            <td><span class="type-label">Type:</span> Array</td>
+            <td>An array of strings for the select options</td>
         </tr>
         <tr>
             <th>[disabled]</th>
-            <td>
-                <span>Type:</span> Boolean
-            </td>
-            <td width=50%>Boolean value that enables/disables the button</td>
+            <td><span class="type-label">Type:</span> Boolean</td>
+            <td>Boolean value that enables/disables the button</td>
         </tr>
     </table>
-
 </div>
