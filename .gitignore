@@ -38,6 +38,7 @@ testem.log
 /stage
 /lib/dist/
 /lib/node_modules/
+debug.log
 
 # e2e
 /e2e/*.js
