@@ -54,6 +54,11 @@ a, a:visited {
     vertical-align: middle;
 }
 
+.sectionCenter {
+    display: flex;
+    align-items: center;
+}
+
 .getStarted {
     margin: auto;
     display: table;
