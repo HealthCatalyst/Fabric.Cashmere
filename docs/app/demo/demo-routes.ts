@@ -1,3 +1,6 @@
+import { Tab3DemoComponent } from './tabs/tab3-demo.component';
+import { Tab2DemoComponent } from './tabs/tab2-demo.component';
+import { Tab1DemoComponent } from './tabs/tab1-demo.component';
 import { Routes } from '@angular/router';
 import { ColorDemoComponent } from './color/color-demo.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
@@ -52,7 +55,21 @@ export const routes: Routes = [
             },
             {
                 path: 'tabs',
-                component: TabsDemoComponent
+                component: TabsDemoComponent,
+                children: [
+                    {
+                        path: 'tab1',
+                        component: Tab1DemoComponent
+                    },
+                    {
+                        path: 'tab2',
+                        component: Tab2DemoComponent
+                    },
+                    {
+                        path: 'tab3',
+                        component: Tab3DemoComponent
+                    }
+                ]
             },
 
             {

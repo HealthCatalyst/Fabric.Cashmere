@@ -9,5 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 export class TabComponent {
     @Input() title: string = '';
+    @Input() routerLink: string;
     active: boolean = false;
 }
