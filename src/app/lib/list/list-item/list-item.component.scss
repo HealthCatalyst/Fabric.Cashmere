@@ -1,0 +1,48 @@
+// TODO: Go over styling with Andrew Frueh
+
+.hc-list-item {
+    display: block;
+    height: 56px;
+    color: rgba(0, 0, 0, .87);
+    font-size: 16px;
+}
+
+.hc-list-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: inherit;
+    padding: 0 12px;
+}
+
+.hc-list-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 16px;
+}
+
+.hc-list-icon, .hc-list-avatar {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+}
+
+.hc-list-avatar {
+    border-radius: 50%;
+}
+
+.hc-list {
+    .hc-list-line {
+        display: block;
+        padding: 0;
+        margin: 0;
+        font-weight: 400;
+        font-size: inherit;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
