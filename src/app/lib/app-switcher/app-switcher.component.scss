@@ -27,6 +27,7 @@
         display: block;
         text-align: right;
         text-decoration: none;
+        color: $primary-brand;
     }
 
     .apps {
@@ -48,7 +49,7 @@
                 text-align: center;
                 color: $offblack;
                 padding-top: 8px;
-                font-weight: 800;
+                font-weight: 600;
             }
         }
     }
