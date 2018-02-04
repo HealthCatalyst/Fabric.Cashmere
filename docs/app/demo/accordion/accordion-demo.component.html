@@ -1,0 +1,96 @@
+<hc-subnav>
+    <h2>Accordion</h2>
+</hc-subnav>
+
+<div class="demo-content">
+    <p>Accordion allows you to expand/contract </p>
+
+    <h4>Accordion</h4>
+    <div class="sample-container">
+        <hc-accordion [triggerAlign]="alignment" [hideToolbar]="hideToolbar" #accordion>
+            <hc-accordion-toolbar>Toolbar</hc-accordion-toolbar>
+            Content
+        </hc-accordion>
+
+        <button hc-button (click)="accordion.toggle()">Toggle</button>
+        <button hc-button (click)="toggleAlign()">Toggle Alignment</button>
+        <button hc-button (click)="toggleToolbar()">Toggle Toolbar</button>
+    </div>
+
+    <hr>
+
+    <h3>Accordion Usage</h3>
+    <p>When you have auxiliary data to show the user that isn't necessary for them to see</p>
+
+    <hr>
+
+    <h3>Angular Component</h3>
+    <hc-tab-set direction="horizontal">
+        <hc-tab title="HTML">
+            <pre>
+            <code>
+                &lt;hc-accordion [triggerAlign]=&quot;alignment&quot; [hideToolbar]=&quot;showToolbar&quot;&gt;
+                    &lt;hc-accordion-toolbar&gt;Toolbar&lt;/hc-accordion-toolbar&gt;
+                    Accordion content
+                &lt;/hc-accordion&gt;
+            </code>
+            </pre>
+        </hc-tab>
+        <hc-tab title="TypeScript">
+            <pre><code>
+    import &#123; AccordionModule &#125; from &#x27;@healthcatalyst/cashmere&#x27;;
+
+    @NgModule(&#123;
+        imports: [
+            ...,
+        AccordionModule,
+        ],
+        declarations: [...],
+        exports: [..]
+    &#125;)
+    export class SomeModule &#123; &#125;
+            </code></pre>
+        </hc-tab>
+    </hc-tab-set>
+
+    <hr>
+
+    <h3>Inputs</h3>
+    <table class="api-table">
+        <tr>
+            <th>triggerAlign</th>
+            <td><span class="type-label">Type:</span>'left' | 'right' (default: 'left')</td>
+            <td>Placement of the toolbar button</td>
+        </tr>
+        <tr>
+            <th>hideToolbar</th>
+            <td><span class="type-label">Type:</span> Boolean</td>
+            <td>Show/Hide the accordion toolbar</td>
+        </tr>
+        <tr>
+            <th>open</th>
+            <td><span class="type-label">Type:</span> Boolean</td>
+            <td>Set accordion opened state</td>
+        </tr>
+    </table>
+
+    <h3>Events</h3>
+    <table class="api-table">
+        <tr>
+            <th>opened</th>
+            <td>Accordion is in the open state</td>
+        </tr>
+        <tr>
+            <th>openStart</th>
+            <td>Accordion is beginning to open</td>
+        </tr>
+        <tr>
+            <th>closed</th>
+            <td>Accordion is in close state</td>
+        </tr>
+        <tr>
+            <th>closeStart</th>
+            <td>Accordion is beginning to close</td>
+        </tr>
+    </table>
+</div>
