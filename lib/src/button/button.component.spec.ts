@@ -64,8 +64,8 @@ describe('ButtonComponent', () => {
         buttonColors.forEach(color => {
             testApp.setColor(color);
             testApp.detectChanges();
-            expect(testApp.buttonDebugElement.nativeElement.classList.contains(`hc-button-${color}`)).toBe(true);
-            expect(testApp.aDebugElement.nativeElement.classList.contains(`hc-button-${color}`)).toBe(true);
+            expect(testApp.buttonDebugElement.nativeElement.classList.contains(`hc-${color}`)).toBe(true);
+            expect(testApp.aDebugElement.nativeElement.classList.contains(`hc-${color}`)).toBe(true);
         });
     });
 
@@ -77,19 +77,19 @@ describe('ButtonComponent', () => {
         testApp.setColor('primary');
         testApp.detectChanges();
 
-        expect(testApp.buttonDebugElement.nativeElement.classList.contains('hc-button-primary')).toBe(true);
+        expect(testApp.buttonDebugElement.nativeElement.classList.contains('hc-primary')).toBe(true);
         expect(testApp.buttonDebugElement.nativeElement.classList.contains('user-class')).toBe(true);
 
-        expect(testApp.aDebugElement.nativeElement.classList.contains('hc-button-primary')).toBe(true);
+        expect(testApp.aDebugElement.nativeElement.classList.contains('hc-primary')).toBe(true);
         expect(testApp.aDebugElement.nativeElement.classList.contains('user-class')).toBe(true);
 
         testApp.setColor('secondary');
         testApp.detectChanges();
 
-        expect(testApp.buttonDebugElement.nativeElement.classList.contains('hc-button-secondary')).toBe(true);
+        expect(testApp.buttonDebugElement.nativeElement.classList.contains('hc-secondary')).toBe(true);
         expect(testApp.buttonDebugElement.nativeElement.classList.contains('user-class')).toBe(true);
 
-        expect(testApp.aDebugElement.nativeElement.classList.contains('hc-button-secondary')).toBe(true);
+        expect(testApp.aDebugElement.nativeElement.classList.contains('hc-secondary')).toBe(true);
         expect(testApp.aDebugElement.nativeElement.classList.contains('user-class')).toBe(true);
     });
 
