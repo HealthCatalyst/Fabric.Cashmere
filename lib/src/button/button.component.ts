@@ -8,23 +8,22 @@ import {
     ElementRef,
     HostBinding,
     Input,
-    OnChanges,
     Renderer2,
-    SimpleChanges,
     ViewEncapsulation
 } from '@angular/core';
 import { anyToBoolean } from '../util';
 
-export function throwErrorForInvalidButtonColor(unsupportedColor: string) {
-    throw Error('Unsupported color input value: ' + unsupportedColor);
-}
+const supportedColors = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary'];
 
-export type ButtonColor = 'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'tertiary';
+export function validateButtonColor(btnColor: string) {
+    if (supportedColors.indexOf(btnColor) < 0) {
+        throw Error('Unsupported color input value: ' + btnColor);
+    }
+}
 
 @Component({
     selector: 'button[hc-button]',
-    template: `
-    <ng-content></ng-content>`,
+    template: '<ng-content></ng-content>',
     styleUrls: ['./button.component.scss'],
     host: {
         '[disabled]': 'disabled || null',
@@ -32,15 +31,22 @@ export type ButtonColor = 'primary' | 'primary-alt' | 'destructive' | 'neutral' 
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
-export class ButtonComponent implements OnChanges {
-    private supportedColors = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary'];
-    protected _disabled = false;
+export class ButtonComponent {
+    private _disabled = false;
+    private _color: string;
+    private previousColor: string;
 
-    @Input() color: ButtonColor = 'primary';
+    @Input()
+    get color(): string {
+        return this._color;
+    }
 
-    @HostBinding('class.hc-button')
-    get buttonClass(): boolean {
-        return true;
+    set color(btnColor: string) {
+        validateButtonColor(btnColor);
+
+        this.setHostColor(btnColor);
+        this.previousColor = this._color;
+        this._color = btnColor;
     }
 
     @Input()
@@ -52,24 +58,33 @@ export class ButtonComponent implements OnChanges {
         this._disabled = anyToBoolean(isDisabled);
     }
 
+
+    @HostBinding('class.hc-button')
+    get buttonClass(): boolean {
+        return true;
+    }
+
     constructor(private elementRef: ElementRef,
                 private renderer: Renderer2) {
+        this.color = 'primary';
+        this.previousColor = this.color;
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        const color = changes['color'];
-        if (color) {
-            if (this.supportedColors.indexOf(color.currentValue) < 0) {
-                throwErrorForInvalidButtonColor(color.currentValue);
+    focus(): void {
+        this.elementRef.nativeElement.focus();
+    }
+
+    private setHostColor(color: string) {
+        if (this.previousColor !== color) {
+            console.log(`previous ${this.previousColor}, current ${color}`);
+            if (this.previousColor) {
+                this.renderer.removeClass(this.elementRef.nativeElement, this.colorClass(this.previousColor));
             }
-            this.changeColor(color.previousValue, color.currentValue);
+            this.renderer.addClass(this.elementRef.nativeElement, this.colorClass(color));
         }
     }
 
-    private changeColor(previousColor: ButtonColor, newColor: ButtonColor): void {
-        if (previousColor) {
-            this.renderer.removeClass(this.elementRef.nativeElement, `hc-button-${previousColor}`);
-        }
-        this.renderer.addClass(this.elementRef.nativeElement, `hc-button-${newColor}`);
+    private colorClass(color: string): string {
+        return `hc-${color}`;
     }
 }
