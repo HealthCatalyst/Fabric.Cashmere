@@ -115,7 +115,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
                 border-bottom: 5px solid transparent;
                 text-decoration: none;
                 transition: background-color 0.25s;
-                &:hover, &:focus {
+                &:hover:not(.active), &.inactive:hover {
                     outline: none;
                     color: $navbar-text;
                     background-color: darken($navbar-color, 5%);
