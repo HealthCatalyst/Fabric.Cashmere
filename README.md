@@ -24,7 +24,7 @@ In order for a contribution to be considered, the following conditions must be m
 * Ensure all linting and tests pass
 * Develop new component or feature
 * Ensure all linting and tests pass
-* Package the library `npm run lib:build --local`
+* Package the library `node lib/build --local`
 * If the build succeeds, it will give you a command to install the package into another project.
     In another angular application run that command.  It will look something like
     ```bash
@@ -35,7 +35,7 @@ In order for a contribution to be considered, the following conditions must be m
 
 ## Packaging the Library
 
-Run `npm run lib:build --local` to bundle the library.
+Run `node lib/build --local` to bundle the library.
 
 ## Running the Demo App
 

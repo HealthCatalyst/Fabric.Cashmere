@@ -11,6 +11,7 @@ import { RadioButtonDemoComponent } from './radio-button/radio-button-demo.compo
 import { IconDemoComponent } from './icon/icon-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { DrawerDemoComponent } from './drawer/drawer-demo.component';
+import { ListDemoComponent } from './list/list-demo.component';
 
 export const routes: Routes = [
     {
@@ -22,8 +23,8 @@ export const routes: Routes = [
                 component: ColorDemoComponent
             },
             {
-              path: 'table',
-              component: TableDemoComponent
+                path: 'table',
+                component: TableDemoComponent
             },
             {
                 path: 'button',
@@ -53,6 +54,7 @@ export const routes: Routes = [
                 path: 'tabs',
                 component: TabsDemoComponent
             },
+
             {
                 path: 'navbar',
                 component: NavbarDemoComponent
@@ -60,6 +62,10 @@ export const routes: Routes = [
             {
                 path: 'popover',
                 component: PopoverDemoComponent
+            },
+            {
+                path: 'list',
+                component: ListDemoComponent
             },
             {
                 path: '**',

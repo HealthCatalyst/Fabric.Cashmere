@@ -3,6 +3,7 @@ export * from './src/button/button.module';
 export * from './src/checkbox/checkbox.module';
 export * from './src/drawer/drawer.module';
 export * from './src/icon/icon.module';
+export * from './src/list/list.module';
 export * from './src/navbar/navbar.module';
 export * from './src/pipes/pipes.module';
 export * from './src/popover/popover.module';

@@ -32,7 +32,7 @@ class TestAppReference {
         this.fixture = TestBed.createComponent(TestAppComponent);
         this.testAppComponent = this.fixture.debugElement.componentInstance;
         this.buttonDebugElement = this.fixture.debugElement.query(By.css('button') as any) as any;
-        this.aDebugElement = this.fixture.debugElement.query(By.css('a'));
+        this.aDebugElement = this.fixture.debugElement.query(By.css('a') as any) as any;
     }
 
     setColor(color: string): void {

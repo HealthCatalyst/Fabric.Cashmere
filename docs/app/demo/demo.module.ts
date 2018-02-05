@@ -21,6 +21,7 @@ import { PopoverDemoComponent } from './popover/popover-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 import { CheckboxModule } from '../../../lib/src/checkbox/checkbox.module';
 import { RadioButtonModule } from '../../../lib/src/radio-button/radio-button.module';
+import { ListModule } from '../../../lib/src/list/list.module';
 import { RadioButtonDemoComponent } from './radio-button/radio-button-demo.component';
 import { SelectModule } from '../../../lib/src/select/select.module';
 import { SelectDemoComponent } from './select/select-demo.component';
@@ -32,6 +33,7 @@ import { IconModule } from '../../../lib/src/icon';
 import { DrawerModule } from '../../../lib/src/drawer';
 import { HomeComponent } from '../home/home.component';
 import { IconDemoComponent } from './icon/icon-demo.component';
+import { ListDemoComponent } from './list/list-demo.component';
 
 @NgModule({
     imports: [
@@ -48,6 +50,7 @@ import { IconDemoComponent } from './icon/icon-demo.component';
         DrawerModule,
         TabsModule,
         SelectModule,
+        ListModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -69,7 +72,8 @@ import { IconDemoComponent } from './icon/icon-demo.component';
         SelectDemoComponent,
         DrawerDemoComponent,
         TabsDemoComponent,
-        IconDemoComponent
+        IconDemoComponent,
+        ListDemoComponent
     ],
     providers: [
         {
