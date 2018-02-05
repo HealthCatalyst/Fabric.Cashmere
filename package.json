@@ -1,13 +1,8 @@
 {
-    "name": "@healthcatalyst/cashmere",
+    "name": "@healthcatalyst/cashmere-docs",
     "version": "0.0.2",
     "license": "Apache-2.0",
-    "description": "Reusable Health Catalyst Components",
-    "main": "./bundles/cashmere.umd.js",
-    "module": "./esm5/cashmere.js",
-    "es2015": "./esm2015/cashmere.js",
-    "jsnext": "./esm2015/cashmere.js",
-    "typings": "./cashmere.d.ts",
+    "description": "Cashmere documentation website",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
@@ -15,10 +10,11 @@
         "test": "ng test",
         "ci:build": "ng build --prod --no-progress",
         "ci:test": "ng test --single-run --code-coverage --no-progress",
-        "lib:build": "node build.js",
+        "lib:build": "node lib/build.js",
         "release": "ng build --target production --build-optimizer",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "verify": "node lib/build.js --local"
     },
     "dependencies": {
         "@angular/animations": "5.1.0",
@@ -45,6 +41,7 @@
         "@types/jasminewd2": "~2.0.2",
         "@types/moment": "^2.13.0",
         "@types/node": "6.0.92",
+        "@types/popper.js": "^1.11.0",
         "chalk": "^2.3.0",
         "codelyzer": "~3.0.1",
         "glob": "^7.1.2",
