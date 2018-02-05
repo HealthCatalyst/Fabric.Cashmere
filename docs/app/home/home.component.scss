@@ -1,0 +1,91 @@
+@import '../../cashmere-import.scss';
+
+header {
+    width: 660px;
+    margin: 50px auto 70px auto;
+}
+
+main {
+    background-color: #fafafa;
+    width: 100%;
+    border-top-width: 2px;
+    border-top-color: #eaeaea;
+    border-top-style: solid;
+    align-content: center;
+    padding-top: 90px;
+}
+
+section {
+    width: 1024px;
+    margin: auto;
+    display: flex;
+    padding-bottom: 90px;
+}
+
+footer {
+    background-color: $charcoal-blue;
+    color: $white;
+    height: 80px;
+    width: 100%;
+}
+
+button {
+    width: 180px;
+}
+
+a, a:visited {
+    color: $primary-brand;
+}
+
+.headerLeft {
+    display: inline-block;
+    padding-right: 80px;
+    vertical-align: middle;
+}
+
+.headerCopy {
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.headerRight {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sectionCenter {
+    display: flex;
+    align-items: center;
+}
+
+.getStarted {
+    margin: auto;
+    display: table;
+}
+
+.footerLogo {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px 0px 20px 30px;
+}
+
+.footerVersion {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+.footerLicense {
+    float: right;
+    display: table;
+    height: 80px;
+    font-size: 13px;
+    margin-right: 20px;
+}
+
+.footerLicense p {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+}
