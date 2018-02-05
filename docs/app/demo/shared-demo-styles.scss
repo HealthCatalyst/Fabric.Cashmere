@@ -1,0 +1,134 @@
+@import "../../cashmere-import.scss";
+
+.subheader {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 22px;
+    padding: 20px 30px;
+    background-color: $slate-gray-200;
+    border-bottom: 1px solid $slate-gray-300;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.demo-content {
+    width: 80%;
+    max-width: 940px;
+    min-width: 700px;
+    margin: 0 auto;
+    padding: 0 30px 50px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: $black;
+}
+
+h3 {
+    margin: 50px 0 0;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: $text;
+}
+
+h4 {
+    margin: 36px 0 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $text;
+    line-height: 1.2;
+}
+
+p {
+    margin: 8px 0 20px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $text;
+}
+
+a {
+    text-decoration: none;
+    color: $primary-brand;
+    &:hover { color: lighten($primary-brand, 10%); }
+    &:active { color: darken($primary-brand, 10%); }
+}
+
+em {
+    font-size: 14px;
+    color: $gray-500;
+    margin-top: 12px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: $gray-200;
+    margin: 40px 0;
+}
+
+ul {
+    font-size: 16px;
+}
+
+// for inline code
+code {
+    color: $magneta;
+    overflow-x: auto;
+}
+
+// for code blocks
+pre {
+    margin: 10px 0;
+    overflow-x: auto;
+
+    code {
+        font-size: 120%;
+        line-height: 140%;
+        background-color: $gray-100;
+        color: $text;
+        border: 1px solid $gray-400;
+        display: block;
+        padding: 20px;
+    }
+}
+
+.sample-component {
+    margin: 20px 0;
+}
+
+.api-table {
+    width: 100%;
+    font-size: 13px;
+    margin: 30px 0;
+
+    thead > th {
+        background-color: $charcoal-blue;
+        color: $white;
+        padding: 3px 15px;
+    }
+
+    tbody > tr > {
+        td, th {
+            border-bottom: 1px dashed $gray-200;
+            padding-top: 1em;
+            padding-bottom: 1em;
+        }
+    }
+
+    .type-label {
+        color: $gray-500;
+        display: block;
+        font-size: 11px;
+    }
+
+    em {
+        font-size: 13px;
+    }
+}
