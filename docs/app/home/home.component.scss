@@ -20,6 +20,11 @@ a, a:visited {
     vertical-align: middle;
 }
 
+.headerLeft img {
+    height: 190px;
+    width: auto;
+}
+
 .headerCopy {
     font-weight: 300;
     margin-top: 0;
@@ -80,6 +85,10 @@ section {
     padding-bottom: 80px;
 }
 
+section button {
+    margin: auto;
+}
+
 .sectionCenter {
     display: flex;
     align-items: center;
@@ -87,6 +96,7 @@ section {
 }
 
 .sectionOneText { padding-left: 100px; }
+.sectionOneTextWrapper { max-height: 370px; }
 .sectionOneImg { width: 100%; }
 .sectionOneImg img {
     max-width: 432px;
@@ -94,6 +104,7 @@ section {
     height: auto;
 }
 
+.sectionTwo { padding-bottom: 30px; }
 .sectionTwoText { padding-right: 20%; }
 .sectionTwoImg {
     width: 100%;
@@ -106,6 +117,7 @@ section {
 }
 
 .sectionThreeText { padding-left: 15%; }
+.sectionThreeTextWrapper { max-height: 472px; }
 .sectionThreeImg {
     width: 100%;
     max-width: 300px;
@@ -168,6 +180,11 @@ footer {
     display: inline-block;
     vertical-align: middle;
     margin: 20px 0px 20px 30px;
+}
+
+.footerLogo img {
+    height: 40px;
+    width: auto
 }
 
 .footerVersion {
