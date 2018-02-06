@@ -50,7 +50,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
             justify-content: center;
             align-items: center;
             height: 100%;
-            width: 100%;
+            width: 55px;
 
             &:hover, &:focus {
                 background-color: $dark-blue;
@@ -87,25 +87,28 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         overflow: hidden;
         .navbar-item {
             padding: 0;
-            i {
+            & > hc-icon, & > a > hc-icon, > span {
                 cursor: pointer;
-            }
-
-            & > i, > span {
-                height: 100%;
+                height: 53px !important;
                 color: $navbar-text;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 padding: 0 15px;
+                transition: background-color 0.25s;
                 &.vertical-separator::after {
                     content: '|';
                     font-size: 18px;
                     text-align: center;
                     line-height: 0.5;
                 }
+                &:hover:not(.active), &.inactive:hover {
+                    outline: none;
+                    color: $navbar-text;
+                    background-color: darken($navbar-color, 5%);
+                }
             }
-            & > a {
+            &:not(hc-navbar-icon) > a {
                 display: inline-block;
                 height: 100%;
                 box-sizing: border-box;

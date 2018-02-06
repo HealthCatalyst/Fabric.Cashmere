@@ -2,7 +2,7 @@
 
 header {
     max-width: 720px;
-    margin: 50px auto 70px auto;
+    margin: 50px auto 60px auto;
 }
 
 button {
@@ -55,7 +55,10 @@ a, a:visited {
         display: flex;
     }
 
-    .headerLeft img { margin: auto; }
+    .headerLeft img {
+        margin: auto;
+        padding-top: 20px;
+    }
 
     .headerRight {
         text-align: center;
