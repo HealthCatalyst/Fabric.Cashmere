@@ -8,13 +8,13 @@
     <h4>Vertical Example </h4>
     <div class="tab-demo">
         <hc-tab-set>
-            <hc-tab title="Tab 1">
+            <hc-tab title="Tab 1" routerLink="/demo/tabs/tab1">
                 Tab content 1
             </hc-tab>
-            <hc-tab title="Tab 2">
+            <hc-tab title="Tab 2" routerLink="/demo/tabs/tab2">
                 Tab content 2
             </hc-tab>
-            <hc-tab title="Tab 3">
+            <hc-tab title="Tab 3" routerLink="/demo/tabs/tab3">
                 Tab content 3
             </hc-tab>
         </hc-tab-set>
@@ -24,13 +24,19 @@
     <div class="tab-demo">
         <hc-tab-set direction="horizontal">
             <hc-tab title="Tab 1">
-                Tab content 1
+                <div class="demo-tab-content">
+                    Tab content 1
+                </div>
             </hc-tab>
             <hc-tab title="Tab 2">
-                Tab content 2
+                <div class="demo-tab-content">
+                    Tab content 2
+                </div>
             </hc-tab>
             <hc-tab title="Tab 3">
-                Tab content 3
+                <div class="demo-tab-content">
+                    Tab content 3
+                </div>
             </hc-tab>
         </hc-tab-set>
     </div>
@@ -41,21 +47,31 @@
             <hc-tab title="Tab 1">
                 <hc-tab-set direction="horizontal">
                     <hc-tab title="Tab 1">
-                        Horizontal Tab content 1
+                        <div class="demo-tab-content">
+                            Horizontal Tab content 1
+                        </div>
                     </hc-tab>
                     <hc-tab title="Tab 2">
-                        Horizontal Tab content 2
+                        <div class="demo-tab-content">
+                            Horizontal Tab content 2
+                        </div>
                     </hc-tab>
                     <hc-tab title="Tab 3">
-                        Horizontal Tab content 3
+                        <div class="demo-tab-content">
+                            Horizontal Tab content 3
+                        </div>
                     </hc-tab>
                 </hc-tab-set>
             </hc-tab>
             <hc-tab title="Tab 2">
-                Vertical Tab content 2
+                <div class="demo-tab-content">
+                    Vertical Tab content 2
+                </div>
             </hc-tab>
             <hc-tab title="Tab 3">
-                Vertical Tab content 3
+                <div class="demo-tab-content">
+                    Vertical Tab content 3
+                </div>
             </hc-tab>
         </hc-tab-set>
     </div>
@@ -75,8 +91,7 @@
     <p>
         Horizontal tabs can be used anywhere, but are most commonly used as a secondary navigational
         elements on pages that have a limited number of sub pages.
-        Those with long lists of sub pages are better served using Vertical Tabs.
-    </p>
+        Those with long lists of sub pages are better served using Vertical Tabs.</p>
 
     <h4>Together</h4>
     <p>
@@ -89,13 +104,23 @@
     <h3>Angular Component</h3>
     <pre>
         <code>
-    &lt;hc-tab-set direction=&quot;horizontal&quot;&gt;
+    &lt;hc-tab-set direction=&quot;horizontal&quot; &gt;
     &#9;&lt;hc-tab title=&quot;Tab 1&quot;&gt;
     &#9;&#9;Tab content 1
     &#9;&lt;/hc-tab&gt;
     &#9;&lt;hc-tab title=&quot;Tab 2&quot;&gt;
     &#9;&#9;Tab content 2
     &#9;&lt;/hc-tab&gt;
+    &lt;/hc-tab-set&gt;
+        </code>
+    </pre>
+
+    <h3>Angular Component&nbsp;(With Router)</h3>
+    <pre>
+        <code>
+    &lt;hc-tab-set&gt;
+    &#9;&lt;hc-tab title=&quot;Tab 1&quot; routerLink=&quot;/demo/tabs/tab1&quot;&gt;&lt;/hc-tab&gt;
+    &#9;&lt;hc-tab title=&quot;Tab 2&quot; routerLink=&quot;/demo/tabs/tab2&quot;&gt;&lt;/hc-tab&gt;
     &lt;/hc-tab-set&gt;
         </code>
     </pre>
@@ -108,6 +133,11 @@
             <th>title</th>
             <td><span class="type-label">Type:</span> String</td>
             <td> On Tab Component. Use to change the title of the tab</td>
+        </tr>
+        <tr>
+            <th>routerLink</th>
+            <td><span class="type-label">Type:</span> String</td>
+            <td> On Tab Component. Use to set the router location for the tab. Must be set for all tabs or no tabs</td>
         </tr>
         <tr>
             <th>direction</th>
