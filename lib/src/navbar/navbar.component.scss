@@ -85,6 +85,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         padding: 0;
         padding-left: 0;
         overflow: hidden;
+        a { text-decoration: none; }
         .navbar-item {
             padding: 0;
             & > hc-icon, & > a > hc-icon, > span {
@@ -116,7 +117,6 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
                 text-align: center;
                 color: $navbar-text-inactive;
                 border-bottom: 5px solid transparent;
-                text-decoration: none;
                 transition: background-color 0.25s;
                 &:hover:not(.active), &.inactive:hover {
                     outline: none;
