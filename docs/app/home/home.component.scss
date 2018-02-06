@@ -224,16 +224,16 @@ footer {
     }
 
     .footerVersion {
-        width: 100%;
+        width: 90%;
         margin: 0;
     }
 
     .footerLicense {
-        width: 100%;
+        width: 90%;
         float: none;
-        display: unset;
+        display: inline-table;
+        height: unset;
         margin: 0;
-        padding-bottom: 20px;
     }
 
     .footerLicense p { text-align: center; }
