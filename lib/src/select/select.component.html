@@ -1,6 +1,6 @@
 <label (click)="toggleArrow($event.target)" (focusout)="resetArrow($event.target)" class="closed" [style.opacity]="alpha">
     <select [disabled]="disabled" (change)="value = $event.target.value" required>
-      <option *ngIf="placeholder" [value]="null" selected disabled hidden>{{placeholder}}</option>
+      <option *ngIf="placeholder" [value]="null" selected disabled>{{placeholder}}</option>
       <option *ngFor="let option of options" [value]="option" [selected]="option === value">{{option}}</option>
     </select>
 </label>
