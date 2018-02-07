@@ -10,8 +10,7 @@
             "assets": [
                 "assets",
                 "favicon.ico",
-                "web.config",
-                "../node_modules/npm-font-open-sans/fonts"
+                "web.config"
             ],
             "index": "index.html",
             "main": "main.ts",
