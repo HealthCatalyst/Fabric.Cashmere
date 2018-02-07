@@ -8,11 +8,11 @@ import { NavbarMenuComponent } from './navbar-menu/navbar-menu.component';
 })
 export class NavbarComponent implements OnInit {
 
-    @Input() user: string;
+    @Input() user: string = '';
 
-    @Input() appIcon: string;
+    @Input() appIcon: string = '';
 
-    @Input() homeUri: string;
+    @Input() homeUri: string = '';
 
     @Input() fixedTop: boolean = false;
 
@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit {
         }
     }
 
-    menuClick( event ) {
+    menuClick( event: any ) {
         let clickTarget: string = event.target.classList[0];
 
         // Verify that the click in the mobile menu came from a navigation item
