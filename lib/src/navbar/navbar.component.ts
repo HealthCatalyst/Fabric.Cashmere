@@ -16,6 +16,9 @@ export class NavbarComponent implements OnInit {
 
     @Input() fixedTop: boolean = false;
 
+    constructor() {
+    }
+
     menuOpen: boolean = false;
     hamburger: string = 'inline';
     hamburgerClose: string = 'none';
