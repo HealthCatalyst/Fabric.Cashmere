@@ -1,4 +1,7 @@
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
+import { Tab3DemoComponent } from './tabs/tab3-demo.component';
+import { Tab2DemoComponent } from './tabs/tab2-demo.component';
+import { Tab1DemoComponent } from './tabs/tab1-demo.component';
 import { TabsModule } from '../../../lib/src/tabs/tabs.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -72,6 +75,9 @@ import { ListDemoComponent } from './list/list-demo.component';
         SelectDemoComponent,
         DrawerDemoComponent,
         TabsDemoComponent,
+        Tab1DemoComponent,
+        Tab2DemoComponent,
+        Tab3DemoComponent,
         IconDemoComponent,
         ListDemoComponent
     ],

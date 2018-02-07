@@ -11,8 +11,22 @@
         <button hc-button title="Primary-Alt Button" color="primary-alt">Primary Alt</button>
         <button hc-button title="Destructive Button" color="destructive">Destructive</button>
         <button hc-button title="Neutral Button" color="neutral">Neutral</button>
+        <hc-split-button>
+            Main Button
+            <div hcButtonItem>Button menu</div>
+        </hc-split-button>
+
+        <hc-split-button color="destructive">
+            Main Button
+            <div hcButtonItem>Button menu</div>
+        </hc-split-button>
+
+        <hc-split-button disabled="true">
+            Disabled Split Button
+            <div hcButtonItem>Button menu</div>
+        </hc-split-button>
     </div>
-    
+
     <h4>Buttons w/ Glyphs</h4>
     <div class="sample-container">
         <button hc-button title="Glyph Button" color="primary">
@@ -36,14 +50,14 @@
 
     <h4>Disabled Buttons</h4>
     <div class="sample-container">
-        <button hc-button title="Disabled Button" color="primary" [disabled]="true">Disabled Button</button>
+        <button hc-button title="Disabled Button" color="primary" disabled="true">Disabled Button</button>
     </div>
 
     <h4>Tertiary Buttons</h4>
     <div class="sample-container">
         <button hc-button title="Tertiary Button" color="tertiary">Tertiary Button</button>
     </div>
-    
+
     <h4>Anchor Button</h4>
     <div class="sample-container">
         <a hc-button title="Anchor Button">Anchor Button</a>
@@ -74,15 +88,22 @@
     <h3>Angular Component</h3>
     <hc-tab-set direction="horizontal">
         <hc-tab title="HTML">
-            <pre><code>
-    &#x3C;button hc-button title=&#x22;Button Tile&#x22; color=&#x22;primary&#x22; &#91;disabled&#93;=&#x27;false&#x27;&#x3E;
-            Button Name
-    &#x3C;/button&#x3E;
-            </code>
-
+            <pre>
             <code>
-    &#x3C;a hc-button title=&#x22;Anchor Button&#x22; [disabled]=false&#x3E;Anchor Button&#x3C;/a&#x3E;
-            </code></pre>
+                &#x3C;button hc-button title=&#x22;Button Tile&#x22; color=&#x22;primary&#x22; disabled=&#x27;false&#x27;&#x3E;
+                        Button Name
+                &#x3C;/button&#x3E;
+            </code>
+            <code>
+                &#x3C;a hc-button title=&#x22;Anchor Button&#x22; disabled=false&#x3E;Anchor Button&#x3C;/a&#x3E;
+            </code>
+            <code>
+                &lt;hc-split-button disabled=&quot;true&quot;&gt;
+                    Disabled Split Button
+                    &lt;div hcButtonItem&gt;Button menu&lt;/div&gt;
+                &lt;/hc-split-button&gt;
+            </code>
+            </pre>
         </hc-tab>
         <hc-tab title="TypeScript">
             <pre><code>
@@ -111,9 +132,22 @@
             <td>Sets the button's theme color</td>
         </tr>
         <tr>
-            <th>[disabled]</th>
+            <th>disabled</th>
             <td><span class="type-label">Type:</span> Boolean</td>
             <td>Boolean value that enables/disables the button</td>
         </tr>
     </table>
+
+    <h3>hc-split-button</h3>
+    <p>
+        This is a button that also has an attached dropdown menu. To use you just encapsulate the content you want
+        to be shown on the button. Anything marked with the directive hcButtonItem will get transferred into the
+        dropdown menu. Everything else will be shown as the main button's content
+    </p>
+
+    <h3>hcButtonItem</h3>
+    <p>
+        Marks an element for being put into the dropdown menu of the button. Multiple things can be marked with this
+        directive
+    </p>
 </div>
