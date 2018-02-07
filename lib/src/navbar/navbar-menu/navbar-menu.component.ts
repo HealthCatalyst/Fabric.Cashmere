@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, OnDestroy } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { IconModule } from '../../icon/icon.module';
 import { IAppSwitcherService, IDiscoveryApplication } from '../../app-switcher/app-switcher-interfaces';
@@ -22,16 +22,16 @@ import { Subject } from 'rxjs/Subject';
         ]),
       ]
 })
-export class NavbarMenuComponent implements OnInit {
+export class NavbarMenuComponent implements OnInit, OnDestroy {
 
     public applications: IDiscoveryApplication[];
     public subscription: Subscription;
 
     private ngUnsubscribe: any = new Subject();
 
-    menuState:string = 'in';
+    menuState: string = 'in';
 
-    @Input() appSwitcher: boolean = true;
+    @Input() appSwitcher: string = "true";
 
     constructor( @Inject('IAppSwitcherService') public appSwitcherService: IAppSwitcherService ) { }
 

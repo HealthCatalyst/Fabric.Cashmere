@@ -16,27 +16,26 @@ export class NavbarComponent implements OnInit {
 
     @Input() fixedTop: boolean = false;
 
-    constructor() {
-    }
+    @ContentChildren(NavbarMenuComponent) mobileMenu: QueryList <NavbarMenuComponent>;
 
     menuOpen: boolean = false;
     hamburger: string = 'inline';
     hamburgerClose: string = 'none';
 
-    @ContentChildren(NavbarMenuComponent) mobileMenu: QueryList <NavbarMenuComponent>;
+    constructor() {
+    }
 
     ngOnInit() {
     }
 
     toggleMobileMenu() {
-        if( this.mobileMenu.first ) {
-            if( this.menuOpen ) {
+        if ( this.mobileMenu.first ) {
+            if ( this.menuOpen ) {
                 this.mobileMenu.first.hide();
                 this.menuOpen = false;
                 this.hamburger = 'inline';
                 this.hamburgerClose = 'none';
-            }
-            else {
+            } else {
                 this.mobileMenu.first.show();
                 this.menuOpen = true;
                 this.hamburger = 'none';
@@ -48,9 +47,9 @@ export class NavbarComponent implements OnInit {
     menuClick( event ) {
         let clickTarget: string = event.target.classList[0];
 
-        //Verify that the click in the mobile menu came from a navigation item
-        if( clickTarget.indexOf("menu-dropdown") == -1 )
+        // Verify that the click in the mobile menu came from a navigation item
+        if ( clickTarget.indexOf('menu-dropdown') === -1 ) {
             this.toggleMobileMenu();
-
+        }
     }
 }
