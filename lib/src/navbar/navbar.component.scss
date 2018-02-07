@@ -56,7 +56,6 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
                 background-color: $dark-blue;
             }
         }
-
     }
 
     .navbar-app {
@@ -128,7 +127,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
                 &.active:not(.inactive), &:active {
                     color: $navbar-text;
                     font-weight: bold;
-                    border-bottom: 5px solid $blue;
+                    border-bottom: 5px solid $navbar-brand;
                 }
 
                 // This piece of code allows to use the bold styling from the style guide, while
