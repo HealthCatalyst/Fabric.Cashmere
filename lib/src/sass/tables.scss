@@ -1,6 +1,8 @@
-@import "colors";
-@import "mixins";
-@import "../../../node_modules/font-awesome/scss/variables"; // get rid of this when we roll our own font
+$fa-font-path: '../../../node_modules/font-awesome/fonts';
+@import 'font-awesome';
+
+@import "./colors";
+@import "./mixins";
 
 $table-border: 1px solid $slate-gray-200 !default;
 $table-condensed-font-size: 13px;

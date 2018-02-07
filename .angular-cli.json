@@ -10,7 +10,8 @@
             "assets": [
                 "assets",
                 "favicon.ico",
-                "web.config"
+                "web.config",
+                "../node_modules/npm-font-open-sans/fonts"
             ],
             "index": "index.html",
             "main": "main.ts",
@@ -22,6 +23,13 @@
             "styles": [
                 "styles.scss"
             ],
+            "stylePreprocessorOptions": {
+                "includePaths": [
+                    "../node_modules/font-awesome/scss",
+                    "../node_modules/npm-font-open-sans",
+                    "../lib/src/sass"
+                ]
+            },
             "scripts": [
                 "../node_modules/popper.js/dist/umd/popper.min.js"
             ],
