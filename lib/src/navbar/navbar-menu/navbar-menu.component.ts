@@ -31,7 +31,7 @@ export class NavbarMenuComponent implements OnInit, OnDestroy {
 
     menuState: string = 'in';
 
-    @Input() appSwitcher: string = "true";
+    @Input() appSwitcher: string = 'true';
 
     constructor( @Inject('IAppSwitcherService') public appSwitcherService: IAppSwitcherService ) { }
 
