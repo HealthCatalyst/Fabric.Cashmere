@@ -1,5 +1,4 @@
-$fa-font-path: '../../../node_modules/font-awesome/fonts';
-@import 'font-awesome';
+@import '../../../node_modules/font-awesome/scss/variables';
 
 @import "./colors";
 @import "./mixins";
@@ -21,17 +20,6 @@ $row-color-selected: $azure !default;
 $row-color-selected-hover: tint($azure, 20%) !default;
 $row-selected-font-color: $white;
 $row-selected-border-color: $white;
-
-// TODO: move into reset/normalize type file
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-
-    th {
-        text-align: inherit;
-    }
-}
-//-----------------------------------------
 
 table.hc-table {
     position: relative;
