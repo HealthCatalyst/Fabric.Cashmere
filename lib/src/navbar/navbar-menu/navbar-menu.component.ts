@@ -8,19 +8,7 @@ import { Subject } from 'rxjs/Subject';
 @Component({
     selector: 'hc-navbar-menu',
     templateUrl: './navbar-menu.component.html',
-    styleUrls: ['./navbar-menu.component.scss'],
-    animations: [
-        trigger('slideInOut', [
-            state('in', style({
-                transform: 'translate3d(0, -100%, 0)'
-            })),
-            state('out', style({
-                transform: 'translate3d(0, 0, 0)'
-            })),
-            transition('in => out', animate('400ms ease-in-out')),
-            transition('out => in', animate('400ms ease-in-out'))
-        ]),
-      ]
+    styleUrls: ['./navbar-menu.component.scss']
 })
 export class NavbarMenuComponent implements OnInit, OnDestroy {
 
@@ -29,7 +17,7 @@ export class NavbarMenuComponent implements OnInit, OnDestroy {
 
     private ngUnsubscribe: any = new Subject();
 
-    menuState: string = 'in';
+    yPos: string = '-100';
 
     @Input() appSwitcher: string = 'true';
 
@@ -48,7 +36,7 @@ export class NavbarMenuComponent implements OnInit, OnDestroy {
         this.ngUnsubscribe.complete();
     }
 
-    show(): void { this.menuState = 'out'; }
+    show(): void { this.yPos = '0'; }
 
-    hide(): void { this.menuState = 'in'; }
+    hide(): void { this.yPos = '-100'}
 }

@@ -1,4 +1,4 @@
-<div class="menu-dropdown" [@slideInOut]="menuState">
+<div class="menu-dropdown" [style.top.%]="yPos">
     <ng-content></ng-content>
     <div class="bottomSpacer"></div>
     <a *ngIf="appSwitcher=='true'" class="app-switcher" href={{appSwitcherService.allApplicationsUri}}>
