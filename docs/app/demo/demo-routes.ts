@@ -15,6 +15,7 @@ import { IconDemoComponent } from './icon/icon-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { DrawerDemoComponent } from './drawer/drawer-demo.component';
 import { ListDemoComponent } from './list/list-demo.component';
+import { SubnavDemoComponent } from './subnav/subnav-demo.component';
 
 export const routes: Routes = [
     {
@@ -71,7 +72,6 @@ export const routes: Routes = [
                     }
                 ]
             },
-
             {
                 path: 'navbar',
                 component: NavbarDemoComponent
@@ -79,6 +79,10 @@ export const routes: Routes = [
             {
                 path: 'popover',
                 component: PopoverDemoComponent
+            },
+            {
+                path: 'subnav',
+                component: SubnavDemoComponent
             },
             {
                 path: 'list',

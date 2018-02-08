@@ -1,0 +1,27 @@
+@import "../colors.scss";
+
+.subnav {
+    width: 100%;
+    min-height: 52px;
+    box-sizing: border-box;
+    margin-bottom: 22px;
+    padding: 8px 20px;
+    background-color: $slate-gray-200;
+    border-bottom: 1px solid $slate-gray-300;
+    display: flex;
+    align-items: center;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.subnav::ng-deep .subnav-right {
+    margin-left:auto;
+    margin-right:0;
+}
+
+.subnav.fixed-top::ng-deep {
+    top: 53px;
+    position: fixed;
+}

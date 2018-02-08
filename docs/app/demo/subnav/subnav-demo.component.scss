@@ -1,0 +1,19 @@
+@import "../../../cashmere-import.scss";
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-arrow {
+    font-size: 10px !important;
+    height: 10px !important;
+    color: $gray-400;
+    margin-top: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.breadcrumb-text {
+    color: $slate-gray-500;
+}
