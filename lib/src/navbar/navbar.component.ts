@@ -19,8 +19,6 @@ export class NavbarComponent implements OnInit {
     @ContentChildren(NavbarMenuComponent) mobileMenu: QueryList <NavbarMenuComponent>;
 
     menuOpen: boolean = false;
-    hamburger: string = 'inline';
-    hamburgerClose: string = 'none';
 
     constructor() {
     }
@@ -33,13 +31,9 @@ export class NavbarComponent implements OnInit {
             if ( this.menuOpen ) {
                 this.mobileMenu.first.hide();
                 this.menuOpen = false;
-                this.hamburger = 'inline';
-                this.hamburgerClose = 'none';
             } else {
                 this.mobileMenu.first.show();
                 this.menuOpen = true;
-                this.hamburger = 'none';
-                this.hamburgerClose = 'inline';
             }
         }
     }
@@ -51,5 +45,9 @@ export class NavbarComponent implements OnInit {
         if ( clickTarget.indexOf('menu-dropdown') === -1 ) {
             this.toggleMobileMenu();
         }
+    }
+
+    get mobileMenuIcon(): string {
+        return this.menuOpen ? 'fa-times' : 'fa-bars';
     }
 }
