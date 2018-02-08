@@ -1,0 +1,59 @@
+@import './colors';
+@import './mixins';
+
+$modal-padding: 20px;
+$header-footer-height: 75px;
+$modal-border: 1px solid $gray-200;
+$body-height: 100%;
+
+.hc-modal-header {
+    padding: $modal-padding;
+    height: $header-footer-height;
+    border-bottom: $modal-border;
+    font-size: calculateRem(18px);
+    color: $offblack;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hc-modal-body {
+    padding: $modal-padding;
+    height: $body-height;
+}
+
+.hc-modal-close-button {
+    background-color: transparent;
+    font-weight: bold;
+    padding: 0;
+    cursor: pointer;
+    border: 0;
+    -webkit-appearance: none;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+    color: $offblack;
+    text-shadow: 0 1px 0 $white;
+    opacity: 0.5;
+    &:focus, &:hover {
+        color: $offblack;
+        text-decoration: none;
+        opacity: .75;
+      }
+}
+
+.hc-modal-footer {
+    padding: $modal-padding;
+    height: $header-footer-height;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: $modal-border;
+}
+
+.hc-modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: $body-height;
+}

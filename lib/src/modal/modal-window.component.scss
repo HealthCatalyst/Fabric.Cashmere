@@ -1,0 +1,37 @@
+@import '../sass/colors';
+@import '../sass/functions.scss';
+@import '../sass/mixins.scss';
+
+:host {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $white;
+    border-radius: 6px;
+    display: block;
+}
+
+.hc-modal {
+    overflow: auto;
+}
+
+.hc-modal-sm {
+    width: 300px;
+    height: 200px;
+}
+
+.hc-modal-md {
+    width: 500px;
+    height: 300px;
+}
+
+.hc-modal-lg {
+    width: 800px;
+    height: 500px;
+}
+
+.hc-modal-xl {
+    width: 992px;
+    height: 650px;
+}

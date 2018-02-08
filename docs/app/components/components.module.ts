@@ -1,3 +1,6 @@
+import { SubModalDemoComponent } from './modal/sub-modal-demo.component';
+import { ModalDemoComponent } from './modal/modal-demo.component';
+import { ModalModule } from './../../../lib/src/modal/modal.module';
 import { TypeformSurveyModule } from './../../../lib/src/typeform-survey/typeform-survey.module';
 import { TypeFormSurveyDemoComponent } from './typeform-survey/typeform-survey-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
@@ -56,6 +59,7 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         CheckboxModule,
         RadioButtonModule,
         AppSwitcherModule,
+        ModalModule,
         IconModule,
         DrawerModule,
         TabsModule,
@@ -67,6 +71,7 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         TypeformSurveyModule,
         TileModule,
         ChipModule,
+        ModalModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -87,22 +92,28 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         TabDemoComponent,
         IconDemoComponent,
         ListDemoComponent,
+        ModalDemoComponent,
         SubnavDemoComponent,
         AccordionDemoComponent,
         SubnavDemoComponent,
+        SubModalDemoComponent,
         BreadcrumbsDemoComponent,
         Breadcrumb1DemoComponent,
         Breadcrumb2DemoComponent,
         TileDemoComponent,
         ChipDemoComponent,
         FilterButtonComponent,
-        TypeFormSurveyDemoComponent
+        TypeFormSurveyDemoComponent,
+        ModalDemoComponent
     ],
     providers: [
         {
             provide: 'IAppSwitcherService',
             useClass: MockAppSwitcherService
         }
+    ],
+    entryComponents: [
+        SubModalDemoComponent,
     ]
 })
 export class ComponentsModule {
