@@ -7,6 +7,11 @@
     position: fixed;
     z-index: 1025;
     padding-top: 15px;
+    display: none;
+}
+
+@media screen and (max-width: 740px) {
+    .menu-dropdown { display: inline; }
 }
 
 .app-switcher {
