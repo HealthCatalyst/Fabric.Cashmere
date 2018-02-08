@@ -16,11 +16,11 @@ import {
     encapsulation: ViewEncapsulation.None, // need to have this to allow users to easily change colors,size, alignment
 })
 export class IconComponent implements OnChanges {
-    private _fontIcon: string;
-    private _fontSet: string;
+    private _fontIcon: string = '';
+    private _fontSet: string = '';
 
-    private previousFontIcon: string;
-    private previousFontSet: string;
+    private previousFontIcon: string = '';
+    private previousFontSet: string = '';
 
     @HostBinding('class.hc-icon')
     get hcIconClass(): boolean {
@@ -65,6 +65,7 @@ export class IconComponent implements OnChanges {
             }
             if (this._fontIcon) {
                 element.classList.add(this._fontIcon);
+                this.previousFontIcon = this._fontIcon;
             }
         }
 
@@ -74,6 +75,7 @@ export class IconComponent implements OnChanges {
             }
             if (this._fontSet) {
                 element.classList.add(this._fontSet);
+                this.previousFontSet = this._fontSet;
             }
         }
     }

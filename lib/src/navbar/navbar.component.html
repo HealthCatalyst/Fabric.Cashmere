@@ -25,4 +25,10 @@
             <span>{{user}}</span>
         </div>
     </div>
+    <div class="mobile-menu" (click)="toggleMobileMenu()">
+        <hc-icon fontSet="fa" [fontIcon]="mobileMenuIcon" icon-md></hc-icon>
+    </div>
 </nav>
+<div (click)="menuClick($event)">
+    <ng-content select="hc-navbar-menu"></ng-content>
+</div>

@@ -1,0 +1,76 @@
+@import '../../colors.scss';
+
+.menu-dropdown {
+    width: 100%;
+    background-color: $slate-blue;
+    margin-top: 53px;
+    position: fixed;
+    z-index: 1025;
+    padding-top: 15px;
+    display: none;
+    transition: top 0.7s ease;
+}
+
+@media screen and (max-width: 740px) {
+    .menu-dropdown { display: inline; }
+}
+
+.app-switcher {
+    margin-top:35px;
+    height: 55px;
+    padding-left: 2%;
+    display: flex;
+    align-items: center;
+    color: $slate-gray-300;
+    border-top: 1px solid lighten($slate-blue, 20%);
+    text-decoration: none;
+    transition: background-color 0.25s ease;
+
+    &:hover {
+        background-color: darken($slate-blue, 5%);
+    }
+
+    span { padding-left: 16px; }
+    hc-icon { padding-left: 28px; color: $slate-gray-400; }
+}
+
+.bottomSpacer {
+    padding-bottom: 15px;
+}
+
+:host::ng-deep hr {
+    border: 0;
+    height: 1px;
+    background-color: lighten($slate-blue, 20%);
+    margin-left: 5%;
+}
+
+:host::ng-deep hc-list {
+
+    a { text-decoration: none; }
+
+    .hc-list-item {
+        color: $slate-gray-200;
+        display: block;
+        padding-left: 2%;
+        cursor: pointer;
+        transition: background-color 0.25s ease;
+
+        &:hover {
+            background-color: darken($slate-blue, 5%);
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .active-link {
+        background-color: darken($slate-blue, 5%);
+        color: $white;
+        font-weight: bold;
+        border-left: 8px solid $primary-brand;
+
+        &.hc-list-item .hc-list-content { padding-left: 4px; }
+    }
+}
