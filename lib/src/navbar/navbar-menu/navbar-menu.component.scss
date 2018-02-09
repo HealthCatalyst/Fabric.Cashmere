@@ -1,11 +1,13 @@
 @import '../../colors.scss';
 
+$menu-z-index: 1025 !default;
+
 .menu-dropdown {
     width: 100%;
     background-color: $slate-blue;
     margin-top: 53px;
     position: fixed;
-    z-index: 1025;
+    z-index: $menu-z-index;
     padding-top: 15px;
     display: none;
     transition: top 0.7s ease;
