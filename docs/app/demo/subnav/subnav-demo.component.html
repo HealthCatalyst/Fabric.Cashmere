@@ -1,6 +1,6 @@
-<div class="subheader">
+<hc-subnav>
     <h2>Subnavbar</h2>
-</div>
+</hc-subnav>
 
 <div class="demo-content">
     <p>Secondary navigation bar appearing below the primary <a routerLink="/demo/navbar" routerLinkActive="active">navbar</a>.</p>
@@ -31,14 +31,14 @@
     <hr>
     <h3>Angular Component</h3>
     <pre>
-          <code>
+        <code>
 &#x3C;hc-subnav&#x3E;
     &#x3C;div&#x3E;Content goes here&#x3C;/div&#x3E;
     &#x3C;div hcSubnavRight&#x3E;
         &#x3C;button hc-button color=&#x22;primary&#x22;&#x3E;Example&#x3C;/button&#x3E;
     &#x3C;/div&#x3E;
 &#x3C;/hc-subnav&#x3E;
-          </code>
+        </code>
     </pre>
 
     <hr>
@@ -49,18 +49,18 @@
         <hc-navbar-link [active]="true" [uri]="undefined" linkText="Home"></hc-navbar-link>
         <hc-navbar-link [active]="false" [uri]="undefined" linkText="Buttons"></hc-navbar-link>
         <hc-navbar-icon>
-            <hc-icon fontSet="fa" fontIcon="fa-question-circle-o" [hcPopover]="options" popperPlacement="bottom"></hc-icon>
+            <hc-icon fontSet="fa" fontIcon="fa-question-circle-o"></hc-icon>
         </hc-navbar-icon>
         <hc-subnav>
-                <div class="breadcrumbs">
-                    <a href="">Home</a>
-                    <hc-icon fontSet="fa" fontIcon="fa-chevron-right" class="breadcrumb-arrow"></hc-icon>
-                    <span class="breadcrumb-text">Example Breadcrumbs</span>
-                </div>
-                <div hcSubnavRight>
-                    <button hc-button title="Secondary Button" color="secondary">Secondary Action</button>
-                    <button hc-button title="Primary Button" color="primary">Primary Action</button>
-                </div>
+            <div class="breadcrumbs">
+                <a href="">Home</a>
+                <hc-icon fontSet="fa" fontIcon="fa-chevron-right" class="breadcrumb-arrow"></hc-icon>
+                <span class="breadcrumb-text">Example Breadcrumbs</span>
+            </div>
+            <div hcSubnavRight>
+                <button hc-button title="Secondary Button" color="secondary">Secondary Action</button>
+                <button hc-button title="Primary Button" color="primary">Primary Action</button>
+            </div>
         </hc-subnav>
     </hc-navbar>
 
@@ -68,7 +68,7 @@
         <code>hc-subnav</code> may be placed directly on the page or included within the hc-navbar tag to attach it to the primary navbar.
     </p>
     <pre>
-            <code>
+        <code>
 &#x3C;hc-navbar&#x3E;
     &#x3C;hc-app-switcher&#x3E;&#x3C;/hc-app-switcher&#x3E;
     &#x3C;hc-navbar-link&#x3E;&#x3C;/hc-navbar-link&#x3E;
@@ -77,6 +77,25 @@
     &#x3C;hc-subnav&#x3E;&#x3C;/hc-subnav&#x3E;
     &#x3C;hc-navbar-menu&#x3E;&#x3C;/hc-navbar-menu&#x3E;
 &#x3C;/hc-navbar&#x3E;
-            </code>
-      </pre>
+        </code>
+    </pre>
+
+    <hr>
+
+    <h3>Directives</h3>
+    <p><b>hcSubnavRight</b><br>
+        Can be added to a <code>div</code> or individual component to align it to the right side of the subnav.
+        Primary action buttons are often placed on the right side of the subnav.
+    </p>
+
+    <hr>
+
+    <h3>Component Parameters</h3>
+    <table class="api-table">
+        <tr>
+            <th>fixedTop</th>
+            <td><span class="type-label">Type:</span> Boolean</td>
+            <td>Statically positions the subnav below the navbar (not needed subnav is included in hc-navbar)</td>
+        </tr>
+    </table>
 </div>
