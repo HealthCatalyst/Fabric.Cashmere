@@ -16,23 +16,24 @@ interface IBreadcrumb {
 export class BreadcrumbsComponent implements OnInit {
 
     public breadcrumbs: IBreadcrumb[];
+    public routerSubscription: any;
 
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private router: Router
-    ) {
+    constructor( private activatedRoute: ActivatedRoute, private router: Router ) {
         this.breadcrumbs = [];
     }
 
     ngOnInit() {
         const ROUTE_DATA_BREADCRUMB: string = "breadcrumb";
 
-        //subscribe to the NavigationEnd event
-        this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
+        //Add the first breadcrumb for the base page
+        let root: ActivatedRoute = this.activatedRoute.root;
+        this.breadcrumbs = this.getBreadcrumbs(root);
 
-          //set breadcrumbs
-          let root: ActivatedRoute = this.activatedRoute.root;
-          this.breadcrumbs = this.getBreadcrumbs(root);
+        //subscribe to the NavigationEnd event
+        this.routerSubscription = this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
+            //set breadcrumbs
+            let root: ActivatedRoute = this.activatedRoute.root;
+            this.breadcrumbs = this.getBreadcrumbs(root);
         });
     }
 
@@ -66,11 +67,16 @@ export class BreadcrumbsComponent implements OnInit {
             url += `/${routeURL}`;
 
             //add breadcrumb
+            let parent: any = this.activatedRoute.parent;
+            let fullURL: string = "/";
+            fullURL += parent.snapshot.url.map(segment => segment.path).join("/");
+            fullURL += `${url}`;
             let breadcrumb: IBreadcrumb = {
                 label: child.snapshot.data[ROUTE_DATA_BREADCRUMB],
                 params: child.snapshot.params,
-                url: url
+                url: fullURL
             };
+
             breadcrumbs.push(breadcrumb);
 
             //recursive
@@ -79,5 +85,9 @@ export class BreadcrumbsComponent implements OnInit {
 
             //we should never get here, but just in case
             return breadcrumbs;
+    }
+
+    ngOnDestroy(): void {
+        this.routerSubscription.unsubscribe();
     }
 }

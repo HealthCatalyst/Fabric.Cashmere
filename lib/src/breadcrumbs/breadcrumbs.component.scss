@@ -5,33 +5,27 @@
     margin: 0;
     list-style: none;
     display: flex;
+    color: $slate-gray-500;
 
     a {
         color: $dark-blue;
         text-decoration: none;
     }
+
+    span {
+        display: flex;
+        align-items: center;
+    }
+
+    li { display: flex; }
+
 }
 
-.breadcrumb > li {
-    display: flex;
-    align-items: center;
-}
-
-.breadcrumb > li + li:before {
-    font-family: FontAwesome;
-    content: "\f054";
+.breadcrumb-arrow {
     font-size: 10px !important;
-    width: 20px !important;
+    height: 10px !important;
     color: $gray-400;
-    text-align: center;
+    margin-top: 3px;
     padding-left: 5px;
     padding-right: 5px;
-    margin-top: 3px;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.breadcrumb > .active {
-    color: #777;
 }

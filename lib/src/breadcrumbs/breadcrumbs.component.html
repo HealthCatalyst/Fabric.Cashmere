@@ -1,6 +1,11 @@
 <ol class="breadcrumb">
-    <li><a routerLink="" class="breadcrumb">Home</a></li>
-    <li *ngFor="let breadcrumb of breadcrumbs">
-        <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{breadcrumb.label}}</a>
+    <li *ngFor="let breadcrumb of breadcrumbs; let last = last">
+        <span *ngIf="!last">
+            <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{breadcrumb.label}}</a>
+            <hc-icon fontSet="fa" fontIcon="fa-chevron-right" class="breadcrumb-arrow"></hc-icon>
+        </span>
+        <span *ngIf="last">
+            {{breadcrumb.label}}
+        </span>
     </li>
 </ol>
