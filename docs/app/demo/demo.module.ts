@@ -42,6 +42,7 @@ import { SubnavDemoComponent } from './subnav/subnav-demo.component';
 import { BreadcrumbsModule } from '../../../lib/src/breadcrumbs/breadcrumbs.module';
 import { BreadcrumbsDemoComponent } from './breadcrumbs/breadcrumbs-demo.component';
 import{ Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.component';
+import{ Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
 
 @NgModule({
     imports: [
@@ -89,7 +90,8 @@ import{ Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.compone
         ListDemoComponent,
         SubnavDemoComponent,
         BreadcrumbsDemoComponent,
-        Breadcrumb1DemoComponent
+        Breadcrumb1DemoComponent,
+        Breadcrumb2DemoComponent
     ],
     providers: [
         {

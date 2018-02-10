@@ -13,7 +13,8 @@
 
     <router-outlet></router-outlet>
 
-    <button hc-button routerLink="/demo/breadcrumbs/breadcrumb1" title="Test Breadcrumb" color="primary">Jump to Second Page</button>
+    <button hc-button routerLink="/demo/breadcrumbs/breadcrumb1" title="First Breadcrumb" color="primary">Jump to Second Page</button>
+    <button hc-button routerLink="/demo/breadcrumbs/breadcrumb1/breadcrumb2" title="Second Breadcrumb" color="primary">Jump to Third Page</button>
 
     <hr>
     <h3>Angular Component</h3>
@@ -50,7 +51,7 @@
     <hr>
     <h3>Responsive Behavior</h3>
     <p>
-        At phone resolution, the component's media query will remove the navigation tree and display a "&#x3C; Back" button
+        At phone resolution, the component's media query will remove the navigation tree and display a "Back" button
         linking to the previous page.  If currently at the root of the tree, the current page name will be displayed.
     </p>
 
