@@ -8,4 +8,10 @@
             {{breadcrumb.label}}
         </span>
     </li>
+    <div class="responsive-container">
+        <div class="back-button" [style.display]="backShow">
+            <a [routerLink]="backURL"><hc-icon fontSet="fa" fontIcon="fa-chevron-left" class="back-arrow"></hc-icon>Back</a>
+        </div>
+        {{locationLabel}}
+    </div>
 </ol>

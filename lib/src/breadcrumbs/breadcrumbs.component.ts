@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from "@angular/router";
 import "rxjs/add/operator/filter";
 
@@ -17,6 +17,9 @@ export class BreadcrumbsComponent implements OnInit {
 
     public breadcrumbs: IBreadcrumb[];
     public routerSubscription: any;
+    @Input() backURL: string;
+    @Input() backShow: string = "none";
+    @Input() locationLabel: string = "";
 
     constructor( private activatedRoute: ActivatedRoute, private router: Router ) {
         this.breadcrumbs = [];
@@ -24,7 +27,6 @@ export class BreadcrumbsComponent implements OnInit {
 
     ngOnInit() {
         const ROUTE_DATA_BREADCRUMB: string = "breadcrumb";
-
         //Add the first breadcrumb for the base page
         let root: ActivatedRoute = this.activatedRoute.root;
         this.breadcrumbs = this.getBreadcrumbs(root);
@@ -34,6 +36,14 @@ export class BreadcrumbsComponent implements OnInit {
             //set breadcrumbs
             let root: ActivatedRoute = this.activatedRoute.root;
             this.breadcrumbs = this.getBreadcrumbs(root);
+            if ( this.breadcrumbs.length > 1 ) {
+                this.backURL =  this.breadcrumbs[ this.breadcrumbs.length-2 ].url;
+                this.backShow = "inline";
+                this.locationLabel = "";
+            } else {
+                this.backShow = "none";
+                this.locationLabel = this.breadcrumbs[ this.breadcrumbs.length-1 ].label;
+            }
         });
     }
 
@@ -68,8 +78,10 @@ export class BreadcrumbsComponent implements OnInit {
 
             //add breadcrumb
             let parent: any = this.activatedRoute.parent;
-            let fullURL: string = "/";
-            fullURL += parent.snapshot.url.map(segment => segment.path).join("/");
+            let fullURL: string = "";
+            if (parent !== null ) {
+                fullURL += "/" + parent.snapshot.url.map(segment => segment.path).join("/");
+            }
             fullURL += `${url}`;
             let breadcrumb: IBreadcrumb = {
                 label: child.snapshot.data[ROUTE_DATA_BREADCRUMB],
