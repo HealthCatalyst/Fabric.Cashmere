@@ -1,13 +1,11 @@
 $fa-font-path: '../node_modules/font-awesome/fonts';
-@import 'font-awesome';
+@import '../node_modules/font-awesome/scss/font-awesome';
 
 $FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
-@import 'open-sans.scss';
+@import '../node_modules/npm-font-open-sans/open-sans';
 
-@import './cashmere-import';
-// *, *::before, *::after {
-//     box-sizing: border-box;
-// }
+@import 'cashmere';
+
 html,
 body {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
