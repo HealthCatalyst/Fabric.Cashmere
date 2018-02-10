@@ -90,17 +90,17 @@ export const routes: Routes = [
             {
                 path: 'breadcrumbs',
                 component: BreadcrumbsDemoComponent,
-                data: { breadcrumb: "Home Page" },
+                data: { breadcrumb: 'Home Page' },
                 children: [
                     {
                         path: 'breadcrumb1',
                         component: Breadcrumb1DemoComponent,
-                        data: { breadcrumb: "Second Page" },
+                        data: { breadcrumb: 'Second Page' },
                         children: [
                             {
                                 path: 'breadcrumb2',
                                 component: Breadcrumb2DemoComponent,
-                                data: { breadcrumb: "Third Page" }
+                                data: { breadcrumb: 'Third Page' }
                             }
                         ]
                     }
