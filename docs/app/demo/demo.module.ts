@@ -39,6 +39,10 @@ import { IconDemoComponent } from './icon/icon-demo.component';
 import { ListDemoComponent } from './list/list-demo.component';
 import { SubnavModule } from '../../../lib/src/subnav/subnav.module';
 import { SubnavDemoComponent } from './subnav/subnav-demo.component';
+import { BreadcrumbsModule } from '../../../lib/src/breadcrumbs/breadcrumbs.module';
+import { BreadcrumbsDemoComponent } from './breadcrumbs/breadcrumbs-demo.component';
+import{ Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.component';
+import{ Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
 
 @NgModule({
     imports: [
@@ -57,6 +61,7 @@ import { SubnavDemoComponent } from './subnav/subnav-demo.component';
         SelectModule,
         ListModule,
         SubnavModule,
+        BreadcrumbsModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -83,7 +88,10 @@ import { SubnavDemoComponent } from './subnav/subnav-demo.component';
         Tab3DemoComponent,
         IconDemoComponent,
         ListDemoComponent,
-        SubnavDemoComponent
+        SubnavDemoComponent,
+        BreadcrumbsDemoComponent,
+        Breadcrumb1DemoComponent,
+        Breadcrumb2DemoComponent
     ],
     providers: [
         {
