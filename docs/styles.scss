@@ -1,7 +1,10 @@
 $fa-font-path: '../node_modules/font-awesome/fonts';
 @import '../node_modules/font-awesome/scss/font-awesome';
-@import '../lib/src/colors';
-@import '../lib/src/tables.scss';
+
+$FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
+@import '../node_modules/npm-font-open-sans/open-sans';
+
+@import 'cashmere';
 
 html,
 body {

@@ -1,4 +1,4 @@
-@import "../../cashmere-import.scss";
+@import "colors";
 
 .subheader {
     width: 100%;
@@ -15,7 +15,7 @@
 
 .demo-content {
     width: 80%;
-    max-width: 940px;
+    max-width: 1000px;
     min-width: 700px;
     margin: 0 auto;
     padding: 0 30px 50px;
@@ -75,6 +75,12 @@ hr {
 
 ul {
     font-size: 16px;
+    line-height: 1.5;
+}
+
+ol {
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 // for inline code
@@ -126,6 +132,7 @@ pre {
         color: $gray-500;
         display: block;
         font-size: 11px;
+        line-height: 1.5;
     }
 
     em {

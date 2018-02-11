@@ -1,4 +1,4 @@
-@import "../../../cashmere-import.scss";
+@import "colors";
 
 .swatch-container {
     text-align: center;
@@ -6,6 +6,7 @@
 
     .hex {
         font-size: 13px;
+        line-height: 1.4;
         color: $gray-400;
     }
 
