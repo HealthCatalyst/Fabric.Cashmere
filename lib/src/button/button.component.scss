@@ -31,7 +31,7 @@
     min-width: 150px;
     font-size: 15px;
     line-height: 35px;
-    margin-bottom: 0;
+    margin: 0 4px 0 4px;
     font-weight: normal;
     text-align: center;
     white-space: nowrap;
@@ -78,6 +78,13 @@
         @include colorButton($gray-100, 5%);
         color: $gray-600;
         border: 2px solid $gray-300;
+        height: 37px;
+        line-height: 33px;
+        padding-right: 19px;
+
+        &:hover {
+            color: $offblack;
+        }
     }
 
     &.hc-tertiary {
