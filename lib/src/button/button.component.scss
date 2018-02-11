@@ -1,5 +1,4 @@
-@import '../colors.scss';
-@import '../functions.scss';
+@import '../sass/cashmere';
 
 /// Sets up colors for a button
 /// @param {Color} $color - base color of the button
@@ -11,12 +10,13 @@
 
     &:hover {
         background-color: shade($color, $darken-pct);
+        color: $white;
     }
     &:active {
         background-color: shade($color, $darken-pct * 2);
+        color: $white;
     }
     &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active {
-        cursor: not-allowed;
         background-color: $gray-100;
         color: $gray-300;
     }
@@ -31,7 +31,7 @@
     min-width: 150px;
     font-size: 15px;
     line-height: 35px;
-    margin-bottom: 0;
+    margin: 0 4px 0 4px;
     font-weight: normal;
     text-align: center;
     white-space: nowrap;
@@ -44,6 +44,10 @@
     border-radius: 5px;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
+    &[disabled] {
+        cursor: not-allowed;
+    }
+
     &:focus {
         outline: 5px auto -webkit-focus-ring-color;
         outline-offset: -2px;
@@ -54,29 +58,36 @@
         outline: none;
     }
 
-    &.hc-button-primary {
+    &.hc-primary {
         @include colorButton($primary-action);
     }
 
-    &.hc-button-primary-alt {
+    &.hc-primary-alt {
         @include colorButton($primary-alt-action);
     }
 
-    &.hc-button-destructive {
+    &.hc-destructive {
         @include colorButton($destructive-action);
     }
 
-    &.hc-button-neutral {
+    &.hc-neutral {
         @include colorButton($neutral-action);
     }
 
-    &.hc-button-secondary {
+    &.hc-secondary {
         @include colorButton($gray-100, 5%);
         color: $gray-600;
         border: 2px solid $gray-300;
+        height: 37px;
+        line-height: 33px;
+        padding-right: 19px;
+
+        &:hover {
+            color: $offblack;
+        }
     }
 
-    &.hc-button-tertiary {
+    &.hc-tertiary {
         background-color: transparent;
         color: $primary-brand;
         font-weight: bold;
@@ -92,8 +103,34 @@
             color: $gray-500;
         }
     }
+}
 
-    hc-icon {
-        padding-right: 6px;
+.hc-split-button {
+    display: inline-flex;
+
+    .hc-split-button-main {
+        margin-right: 0;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .hc-split-button-toggle {
+        min-width: auto;
+        padding: 8px 12px;
+        margin-left: 0;
+        border-left: 1px solid rgba(0, 0, 0, .12);
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+
+        &::after {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            vertical-align: middle;
+            content: "";
+            border-top: .3em solid;
+            border-right: .3em solid transparent;
+            border-left: .3em solid transparent;
+        }
     }
 }

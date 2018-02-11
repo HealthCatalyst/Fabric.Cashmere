@@ -1,4 +1,7 @@
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
+import { Tab3DemoComponent } from './tabs/tab3-demo.component';
+import { Tab2DemoComponent } from './tabs/tab2-demo.component';
+import { Tab1DemoComponent } from './tabs/tab1-demo.component';
 import { TabsModule } from '../../../lib/src/tabs/tabs.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -34,6 +37,8 @@ import { DrawerModule } from '../../../lib/src/drawer';
 import { HomeComponent } from '../home/home.component';
 import { IconDemoComponent } from './icon/icon-demo.component';
 import { ListDemoComponent } from './list/list-demo.component';
+import { SubnavModule } from '../../../lib/src/subnav/subnav.module';
+import { SubnavDemoComponent } from './subnav/subnav-demo.component';
 
 @NgModule({
     imports: [
@@ -51,6 +56,7 @@ import { ListDemoComponent } from './list/list-demo.component';
         TabsModule,
         SelectModule,
         ListModule,
+        SubnavModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -72,8 +78,12 @@ import { ListDemoComponent } from './list/list-demo.component';
         SelectDemoComponent,
         DrawerDemoComponent,
         TabsDemoComponent,
+        Tab1DemoComponent,
+        Tab2DemoComponent,
+        Tab3DemoComponent,
         IconDemoComponent,
-        ListDemoComponent
+        ListDemoComponent,
+        SubnavDemoComponent
     ],
     providers: [
         {

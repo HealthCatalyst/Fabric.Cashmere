@@ -1,8 +1,29 @@
 <hc-navbar appIcon="./assets/CashmereAppLogo.svg" homeUri="/home" fixedTop="true">
     <hc-navbar-link uri="/home" linkText="Home"></hc-navbar-link>
     <hc-navbar-link uri="/demo" linkText="Components"></hc-navbar-link>
+    <hc-navbar-icon>
+        <a title="View on GitHub" href="https://github.com/HealthCatalyst/Fabric.Cashmere" target="blank">
+            <hc-icon fontSet="fa" fontIcon="fa-github" icon-lg></hc-icon>
+        </a>
+    </hc-navbar-icon>
+    <hc-navbar-menu appSwitcher="true">
+        <hc-list>
+            <hc-list-item routerLink="/home" routerLinkActive="active-link">
+                <span hcListLine>Home</span>
+            </hc-list-item>
+            <hc-list-item routerLink="/demo" routerLinkActive="active-link">
+                <span hcListLine>Components</span>
+            </hc-list-item>
+        </hc-list>
+        <hr>
+        <hc-list>
+            <a href="https://github.com/HealthCatalyst/Fabric.Cashmere">
+                <hc-list-item>
+                    <span hcListLine>View on GitHub</span>
+                </hc-list-item>
+            </a>
+        </hc-list>
+    </hc-navbar-menu>
 </hc-navbar>
-<a hc-button title="View on Github" href="https://github.com/HealthCatalyst/Fabric.Cashmere" target="_blank" color="primary">
-    <hc-icon fontSet="fa" fontIcon="fa-github"></hc-icon>
-</a>
+
 <router-outlet></router-outlet>

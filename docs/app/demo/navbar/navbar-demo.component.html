@@ -1,6 +1,6 @@
-<div class="subheader">
+<hc-subnav>
     <h2>Navbar</h2>
-</div>
+</hc-subnav>
 
 <div class="demo-content">
     <p>The navbar is a wrapper that positions branding, navigation, and other elements in a concise header.</p>
@@ -10,11 +10,11 @@
         <hc-navbar-link [active]="true" [uri]="undefined" linkText="Home"></hc-navbar-link>
         <hc-navbar-link [active]="false" [uri]="undefined" linkText="Buttons"></hc-navbar-link>
         <hc-navbar-icon>
-            <i class="fa fa-search fa-lg white"></i>
+            <hc-icon fontSet="fa" fontIcon="fa-search"></hc-icon>
         </hc-navbar-icon>
         <hc-navbar-icon>
-            <i class="fa fa-question-circle-o fa-lg question-pos white" [hcPopover]="options"
-               popperPlacement="bottom"></i>
+            <hc-icon fontSet="fa" fontIcon="fa-question-circle-o" [hcPopover]="options"
+            popperPlacement="bottom"></hc-icon>
         </hc-navbar-icon>
     </hc-navbar>
 
@@ -39,7 +39,7 @@
     <hr>
 
     <h3>Navbar Usage</h3>
-    <p>The Navbar consists of four componenets:</p>
+    <p>The Navbar consists of five componenets:</p>
     <ul>
         <li><code>hc-navbar</code> - the main wrapper component</li>
         <li><code>hc-navbar-link</code> - the main navigation links</li>
@@ -48,6 +48,7 @@
             <code>hc-app-switcher</code> - include app switcher functionality, if this element is not present, the catalyst flame
             will revert to navigating to the home page when clicked
         </li>
+        <li><code>hc-navbar-menu</code> - the responsive menu triggered when the navbar is used on smaller screens</li>
     </ul>
 
     <hr>
@@ -72,6 +73,16 @@
     </p>
     <pre><code>{{fixedTopNavbar}}</code></pre>
 
+    <hr>
+
+    <h3>Responsive Menu</h3>
+    <p>
+        Unlike some responsive menus that automatically pull content from the navbar into them, we intentially left ours
+        configurable so that developers can determine what should or shouldn't be included on smaller screens.  Use the
+        <code>appSwitcher</code> property to set whether the "View all applications" button is included at the bottom of the menu.
+        <code>hc-list</code> components should be used for the menu options with <code><hr></code> separators in between.  See
+        the demo code at the top of this page for an example of how to define a responsive menu for hc-navbar.
+    </p>
     <hr>
 
     <h3>Component Parameters</h3>
@@ -123,4 +134,13 @@
                 match the url exactly to set active state. (default = false)</td>
         </tr>
     </table>
+
+    <table class="api-table">
+            <thead><th colspan="3">Navbar Menu Component</th></thead>
+            <tr>
+                <th>appSwitcher</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>Whether to display the "View all applications" button at the bottom of the menu (default = true)</td>
+            </tr>
+        </table>
 </div>

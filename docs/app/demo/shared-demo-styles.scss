@@ -1,21 +1,8 @@
-@import "../../cashmere-import.scss";
-
-.subheader {
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 22px;
-    padding: 20px 30px;
-    background-color: $slate-gray-200;
-    border-bottom: 1px solid $slate-gray-300;
-
-    p {
-        margin-bottom: 0;
-    }
-}
+@import "colors";
 
 .demo-content {
     width: 80%;
-    max-width: 940px;
+    max-width: 1000px;
     min-width: 700px;
     margin: 0 auto;
     padding: 0 30px 50px;
@@ -27,6 +14,7 @@ h2 {
     font-weight: 600;
     line-height: 1.2;
     color: $black;
+    padding: 12px 0 12px 10px;
 }
 
 h3 {
@@ -75,6 +63,12 @@ hr {
 
 ul {
     font-size: 16px;
+    line-height: 1.5;
+}
+
+ol {
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 // for inline code
@@ -126,6 +120,7 @@ pre {
         color: $gray-500;
         display: block;
         font-size: 11px;
+        line-height: 1.5;
     }
 
     em {

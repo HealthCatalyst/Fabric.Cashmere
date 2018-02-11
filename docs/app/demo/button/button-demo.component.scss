@@ -1,7 +1,16 @@
-@import "../../../cashmere-import.scss";
-
 .sample-container {
-    .hc-button {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    [hc-button], hc-split-button {
+        margin-top: 10px;
         margin-right: 30px;
+    }
+}
+
+[hc-button] {
+    hc-icon {
+        margin-right: 6px;
     }
 }
