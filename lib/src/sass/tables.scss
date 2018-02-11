@@ -1,6 +1,7 @@
-@import "./colors.scss";
-@import "./functions.scss";
-@import "../../node_modules/font-awesome/scss/variables"; // get rid of this when we roll our own font
+@import '../../../node_modules/font-awesome/scss/variables';
+
+@import "./colors";
+@import "./mixins";
 
 $table-border: 1px solid $slate-gray-200 !default;
 $table-condensed-font-size: 13px;
@@ -19,17 +20,6 @@ $row-color-selected: $azure !default;
 $row-color-selected-hover: tint($azure, 20%) !default;
 $row-selected-font-color: $white;
 $row-selected-border-color: $white;
-
-// TODO: move into reset/normalize type file
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-
-    th {
-        text-align: inherit;
-    }
-}
-//-----------------------------------------
 
 table.hc-table {
     position: relative;
