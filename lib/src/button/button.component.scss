@@ -123,14 +123,11 @@
         border-top-left-radius: 0;
 
         &::after {
-            display: inline-block;
-            width: 0;
-            height: 0;
-            vertical-align: middle;
-            content: "";
-            border-top: .3em solid;
-            border-right: .3em solid transparent;
-            border-left: .3em solid transparent;
+            display: flex;
+            height: 20px;
+            align-items: center;
+            font: normal normal normal 12px/1 FontAwesome;
+            content: "\f078";
         }
     }
 }
