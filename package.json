@@ -8,6 +8,7 @@
         "start": "ng serve",
         "build": "ng build",
         "test": "ng test",
+        "style": "ng serve --sourcemap --extractCss",        
         "ci:build": "ng build --prod --no-progress",
         "ci:test": "ng test --single-run --code-coverage --no-progress",
         "lib:build": "node lib/build.js",
