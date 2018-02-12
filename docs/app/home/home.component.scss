@@ -13,6 +13,17 @@ a, a:visited {
     color: $primary-brand;
 }
 
+h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.4;
+}
+
+p {
+    line-height: 1.4;
+}
+
 .headerLeft {
     display: inline-block;
     padding-left: 40px;
@@ -67,6 +78,7 @@ a, a:visited {
     }
 
     .headerRight img { height: unset; }
+    h2{ margin: 10px 0 15px 0; }
 }
 
 main {
@@ -108,7 +120,10 @@ section button {
 }
 
 .sectionTwo { padding-bottom: 30px; }
-.sectionTwoText { padding-right: 20%; }
+.sectionTwoText {
+    padding-right: 20%;
+    margin-bottom: 40px;
+}
 .sectionTwoImg {
     width: 100%;
     max-width: 280px;
@@ -164,10 +179,14 @@ section button {
     .sectionTwoImg img { padding-top: 30px; }
     .sectionThreeImg img { padding-bottom: 30px; }
 
-    .sectionOneText, .sectionTwoText, .sectionThreeText {
+    .sectionOneText {
         padding: 0;
-        margin-left: 40px;
-        margin-right: 40px;
+        margin: 40px 40px 0 40px;
+    }
+
+    .sectionTwoText, .sectionThreeText {
+        padding: 0;
+        margin: 0 40px 20px 40px;
     }
 
 }
