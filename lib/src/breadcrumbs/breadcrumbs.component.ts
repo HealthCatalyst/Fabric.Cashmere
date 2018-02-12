@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 
 interface IBreadcrumb {
@@ -16,7 +17,7 @@ interface IBreadcrumb {
 export class BreadcrumbsComponent implements OnInit, OnDestroy {
 
     public breadcrumbs: IBreadcrumb[];
-    public routerSubscription: any;
+    public routerSubscription: Subscription;
     @Input() backURL: string;
     @Input() backShow: string = 'none';
     @Input() locationLabel: string = '';
