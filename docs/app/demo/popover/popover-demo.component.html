@@ -9,9 +9,8 @@
     <h3>Popover with List Items</h3>
     <div class="sample-component">
         <button hc-button color="primary" [hcPopover]="options" popperPlacement="bottom" aria-hidden="true">
-            <i class="fa fa-gear" aria-hidden="true"></i>
-            &nbsp;Options&nbsp;
-            <i class="fa fa-angle-down" aria-hidden="true"></i>
+            Dropdown
+            <hc-icon fontSet="fa" fontIcon="fa-chevron-down" icon-sm class="icon-right"></hc-icon>
         </button>
         <hc-popover-content #options>
             <ul class="list-options">

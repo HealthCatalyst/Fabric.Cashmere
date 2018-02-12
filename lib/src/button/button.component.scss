@@ -90,7 +90,7 @@
     &.hc-tertiary {
         background-color: transparent;
         color: $primary-brand;
-        font-weight: bold;
+        font-weight: 600;
 
         &:hover {
             color: lighten($primary-brand, 10%);
@@ -112,6 +112,7 @@
         margin-right: 0;
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
+        min-width: unset;
     }
 
     .hc-split-button-toggle {
