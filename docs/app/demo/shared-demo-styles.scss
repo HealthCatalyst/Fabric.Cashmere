@@ -1,8 +1,8 @@
-@import "../../cashmere-import.scss";
+@import "colors";
 
 .demo-content {
     width: 80%;
-    max-width: 940px;
+    max-width: 1000px;
     min-width: 700px;
     margin: 0 auto;
     padding: 0 30px 50px;
@@ -63,6 +63,12 @@ hr {
 
 ul {
     font-size: 16px;
+    line-height: 1.5;
+}
+
+ol {
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 // for inline code
@@ -75,9 +81,10 @@ code {
 pre {
     margin: 10px 0;
     overflow-x: auto;
+    overflow-y: hidden;
 
     code {
-        font-size: 120%;
+        font-size: 100%;
         line-height: 140%;
         background-color: $gray-100;
         color: $text;
@@ -114,9 +121,13 @@ pre {
         color: $gray-500;
         display: block;
         font-size: 11px;
+        line-height: 1.5;
     }
 
     em {
         font-size: 13px;
     }
 }
+
+.icon-right { margin-left: 8px; }
+.icon-left { margin-right: 8px; }

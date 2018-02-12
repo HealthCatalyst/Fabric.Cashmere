@@ -22,6 +22,11 @@
             "styles": [
                 "styles.scss"
             ],
+            "stylePreprocessorOptions": {
+                "includePaths": [
+                    "../lib/src/sass"
+                ]
+            },
             "scripts": [
                 "../node_modules/popper.js/dist/umd/popper.min.js"
             ],
