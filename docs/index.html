@@ -1,14 +1,105 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Cashmere</title>
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet"> -->
 </head>
+
 <body>
-<hc-root></hc-root>
+    <hc-root>
+        <style type="text/css">
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #pre-bootstrap {
+                background-color: #2E3946;
+                bottom: 0px;
+                left: 0px;
+                position: fixed;
+                right: 0px;
+                top: 0px;
+                z-index: 999999;
+            }
+
+            #pre-bootstrap div.messaging {
+                color: #FFFFFF;
+                left: 0px;
+                margin-top: -37px;
+                position: absolute;
+                right: 0px;
+                text-align: center;
+                top: 40%;
+            }
+
+            #pre-bootstrap h1 {
+                font-size: 28px;
+                line-height: 33px;
+                margin: 5px;
+            }
+
+            #pre-bootstrap .loader {
+                border: 3px solid #f3f3f3;
+                border-radius: 50%;
+                border-top: 3px solid #3498db;
+                width: 30px;
+                height: 30px;
+                -webkit-animation: spin 2s linear infinite;
+                animation: spin 2s linear infinite;
+                align-content: center;
+                margin: auto;
+                margin-top: 25px;
+            }
+
+            #pre-bootstrap .logo-background-brand {
+                position: relative;
+                background-image: url("./assets/CashmereAppLogo.svg");
+                background-size: contain;
+                width: 200px;
+                margin: auto;
+                height: 50px;
+                background-position-x: center;
+                display: inline-block;
+                background-repeat: no-repeat;
+                background-position-y: center;
+            }
+
+            @-webkit-keyframes spin {
+                0% {
+                    -webkit-transform: rotate(0deg);
+                }
+
+                100% {
+                    -webkit-transform: rotate(360deg);
+                }
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+        <div id="pre-bootstrap">
+            <div class="messaging">
+                <h1>
+                    <img src="./assets/TriFlame.svg" style="width:24px">
+                </h1>
+                <div class="logo-background-brand">
+                </div>
+                <div class="loader"></div>
+            </div>
+        </div>
+    </hc-root>
 </body>
+
 </html>
