@@ -79,7 +79,7 @@
     <h3>Button Usage</h3>
     <p>
         Generally, there should only be one primary button per page. All other interactive items should either
-        be secondary buttons or anchor links. A few scenarios in which there would be multiple primary buttons:
+        be secondary or tertiary buttons. A few scenarios in which there would be multiple primary buttons:
         a page with both an “accept” and “decline” action, a page who’s content are non related and each content
         section have disparate actions associated with them. For modals the preference is one primary button and
         a cancel action set as a tertiary button.
@@ -88,6 +88,10 @@
         A split button should be used when there is a single action most commonly used, but a series of alternate
         actions that a user may occassionally take.  An example would be a "Save" button, which includes options
         such as "Save As" and "Save a Copy" in the split popover.
+    </p>
+    <p>
+        Button styles may be used either within <code>&#x3C;button&#x3E;</code> or <code>&#x3C;a&#x3E;</code> tags depending on which
+        is best for the particular situation.
     </p>
 
     <hr>
@@ -100,6 +104,9 @@
                 &#x3C;button hc-button title=&#x22;Button Tile&#x22; color=&#x22;primary&#x22; disabled=&#x27;false&#x27;&#x3E;
                         Button Name
                 &#x3C;/button&#x3E;
+            </code>
+            <code>
+                &#x3C;a hc-button title=&#x22;Anchor Button&#x22; disabled=false&#x3E;Anchor Button&#x3C;/a&#x3E;
             </code>
             <code>
                 &lt;hc-split-button disabled=&quot;true&quot;&gt;
