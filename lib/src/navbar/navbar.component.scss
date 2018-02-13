@@ -52,7 +52,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
             height: 100%;
             width: 55px;
 
-            &:hover, &:focus {
+            &:hover, &:focus:not(.no-switcher) {
                 background-color: $dark-blue;
             }
         }
