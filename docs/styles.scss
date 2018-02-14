@@ -18,12 +18,6 @@ body {
     padding-top: 53px;
 }
 
-@mixin ignore-demo() {
-    &:not(.ignore-demo) {
-        @content;
-    }
-}
-
 .demo-content {
     width: 80%;
     max-width: 1000px;
@@ -33,27 +27,19 @@ body {
 }
 
 h2 {
-    @include ignore-demo() {
-        margin: 0;
-    }
+    margin: 0;
 }
 
 h3 {
-    @include ignore-demo() {
-        margin: 50px 0 0;
-    }
+    margin: 50px 0 0;
 }
 
 h4 {
-    @include ignore-demo() {
-        margin: 36px 0 12px;
-    }
+    margin: 36px 0 12px;
 }
 
 p {
-    @include ignore-demo() {
-        margin: 8px 0 20px;
-    }
+    margin: 8px 0 20px;
 }
 
 em {
@@ -68,12 +54,12 @@ hr {
 }
 
 ul {
-    font-size: 16px;
+    @include fontSize(16px);    
     line-height: 1.5;
 }
 
 ol {
-    font-size: 16px;
+    @include fontSize(16px);
     line-height: 1.5;
 }
 
@@ -87,7 +73,7 @@ hc-subnav {
 
 .api-table {
     width: 100%;
-    font-size: 13px;
+    @include fontSize(13px);
     margin: 30px 0;
 
     thead > th {
@@ -107,11 +93,11 @@ hc-subnav {
     .type-label {
         color: $gray-500;
         display: block;
-        font-size: 11px;
+        @include fontSize(11px);
         line-height: 1.5;
     }
 
     em {
-        font-size: 13px;
+        @include fontSize(13px);
     }
 }

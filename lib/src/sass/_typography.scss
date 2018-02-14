@@ -1,5 +1,6 @@
 @import './colors';
 @import './variables';
+@import './mixins';
 
 html, body {
     font-family: $default-font-family;
@@ -8,35 +9,35 @@ html, body {
 }
 
 h1,.h1 {
-    font-size: 2.571rem;
+    @include fontSize(36px);
     font-weight: 600;
     line-height: 2.625em;    
     color: $text;
 }
 
 h2,.h2 {
-    font-size: 1.571rem;
+    @include fontSize(22px);
     font-weight: 400;
     line-height: 1.5em;
     color: $dark-blue;
 }
 
 h3,.h3 {
-    font-size: 1.429rem;
+    @include fontSize(20px);
     font-weight: 300;
     line-height: 1.5em;
     color: $gray-500;
 }
 
 h4,.h4 {
-    font-size: 1.2rem;
+    @include fontSize(17px);
     font-weight: 300;
     line-height: 1.313em;
     color: $text;
 }
 
 p,.p {
-    font-size: 1.143rem;
+    @include fontSize(16px);
     font-weight: 300;
     line-height: 1.25em;
     color: $text;
@@ -54,7 +55,7 @@ pre {
     overflow-x: auto;
 
     code {
-        font-size: 1.2rem;
+        @include fontSize(16px);
         line-height: 140%;
         background-color: $gray-100;
         color: $text;
@@ -72,11 +73,17 @@ a {
 }
 
 strong {
-    font-weight: 700;
+    font-weight: 600;
 }
 
 em {
     color: $gray-500;
     margin-top: 12px;
     font-style: italic;
+}
+
+#logo {
+    background-color:#384655; 
+    width:500px; 
+    margin-top:15px;
 }

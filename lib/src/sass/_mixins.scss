@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'functions';
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
 // Makes the @content apply to the given breakpoint and wider.
@@ -24,4 +25,8 @@
     } @else {
       @content;
     }
+}
+
+@mixin fontSize($size) {
+  font-size: calculateRem($size);
 }
