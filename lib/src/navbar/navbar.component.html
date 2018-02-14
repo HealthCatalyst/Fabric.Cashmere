@@ -1,6 +1,6 @@
 <nav class="navbar" [ngClass]="{'fixed-top': fixedTop}">
     <div #defaultbrand class="navbar-brand" *ngIf="appswitcherbrand.children.length == 0">
-        <a [routerLink]="homeUri" class="brand">
+        <a [routerLink]="homeUri" class="brand no-switcher">
             <img src="./assets/TriFlame.svg">
         </a>
     </div>

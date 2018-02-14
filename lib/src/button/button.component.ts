@@ -76,7 +76,6 @@ export class ButtonComponent {
 
     private setHostColor(color: string) {
         if (this.previousColor !== color) {
-            console.log(`previous ${this.previousColor}, current ${color}`);
             if (this.previousColor) {
                 this.renderer.removeClass(this.elementRef.nativeElement, this.colorClass(this.previousColor));
             }

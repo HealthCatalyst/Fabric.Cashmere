@@ -37,12 +37,6 @@
                 top: 40%;
             }
 
-            #pre-bootstrap h1 {
-                font-size: 28px;
-                line-height: 33px;
-                margin: 5px;
-            }
-
             #pre-bootstrap .loader {
                 border: 3px solid #f3f3f3;
                 border-radius: 50%;
@@ -54,19 +48,6 @@
                 align-content: center;
                 margin: auto;
                 margin-top: 25px;
-            }
-
-            #pre-bootstrap .logo-background-brand {
-                position: relative;
-                background-image: url("./assets/CashmereAppLogo.svg");
-                background-size: contain;
-                width: 200px;
-                margin: auto;
-                height: 50px;
-                background-position-x: center;
-                display: inline-block;
-                background-repeat: no-repeat;
-                background-position-y: center;
             }
 
             @-webkit-keyframes spin {
@@ -89,16 +70,14 @@
                 }
             }
         </style>
-        <div id="pre-bootstrap">
-            <div class="messaging">
-                <h1>
-                    <img src="./assets/TriFlame.svg" style="width:24px">
-                </h1>
-                <div class="logo-background-brand">
+                <div id="pre-bootstrap">
+                    <div class="messaging">
+                        <h1>
+                            <img src="./assets/TriFlame.svg" width="24" height="41"><br><img src="./assets/CashmereAppLogo.svg" width="200" height="50">
+                        </h1>
+                        <div class="loader"></div>
+                    </div>
                 </div>
-                <div class="loader"></div>
-            </div>
-        </div>
     </hc-root>
 </body>
 
