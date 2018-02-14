@@ -1,4 +1,5 @@
-@import '../../sass/cashmere';
+@import 'colors';
+@import 'mixins';
 
 $menu-z-index: 1025 !default;
 
@@ -13,12 +14,11 @@ $menu-z-index: 1025 !default;
     transition: top 0.7s ease;
 }
 
-@media screen and (max-width: 740px) {
+@include media-breakpoint-down(md) {
     .menu-dropdown { display: inline; }
 }
 
 .app-switcher {
-    margin-top:35px;
     height: 55px;
     padding-left: 2%;
     display: flex;
@@ -32,7 +32,7 @@ $menu-z-index: 1025 !default;
         background-color: darken($slate-blue, 5%);
     }
 
-    span { padding-left: 35px; }
+    span { padding-left: 33px; }
     hc-icon { padding-left: 28px; color: $slate-gray-400; }
 }
 

@@ -1,13 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 
 @Component({
     selector: 'hc-subnav',
-    template: `<div class="subnav" [ngClass]="{'fixed-top': fixedTop}"><ng-content></ng-content></div>`,
+    template: `<ng-content></ng-content>`,
     styleUrls: ['./subnav.component.scss']
 })
 export class SubnavComponent {
-
-    @Input() fixedTop: boolean = false;
+    @HostBinding('class.fixed-top') @Input() fixedTop: boolean = false;
 
     constructor() {
     }

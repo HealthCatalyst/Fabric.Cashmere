@@ -8,7 +8,6 @@ $FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
 
 html,
 body {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
     background-color: $white;
     color: $text;
@@ -17,4 +16,88 @@ body {
 body {
     // navbar spacing
     padding-top: 53px;
+}
+
+.demo-content {
+    width: 80%;
+    max-width: 1000px;
+    min-width: 700px;
+    margin: 0 auto;
+    padding: 0 30px 50px;
+}
+
+h2 {
+    margin: 0;
+}
+
+h3 {
+    margin: 50px 0 0;
+}
+
+h4 {
+    margin: 36px 0 12px;
+}
+
+p {
+    margin: 8px 0 20px;
+}
+
+em {
+    margin-top: 12px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: $gray-200;
+    margin: 40px 0;
+}
+
+ul {
+    @include fontSize(16px);    
+    line-height: 1.5;
+}
+
+ol {
+    @include fontSize(16px);
+    line-height: 1.5;
+}
+
+.sample-component {
+    margin: 20px 0;
+}
+
+hc-subnav {
+    padding: 20px;
+}
+
+.api-table {
+    width: 100%;
+    @include fontSize(13px);
+    margin: 30px 0;
+
+    thead > th {
+        background-color: $charcoal-blue;
+        color: $white;
+        padding: 3px 15px;
+    }
+
+    tbody > tr > {
+        td, th {
+            border-bottom: 1px dashed $gray-200;
+            padding: 1em 5px;
+            vertical-align: middle;
+        }
+    }
+
+    .type-label {
+        color: $gray-500;
+        display: block;
+        @include fontSize(11px);
+        line-height: 1.5;
+    }
+
+    em {
+        @include fontSize(13px);
+    }
 }
