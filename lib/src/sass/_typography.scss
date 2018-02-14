@@ -1,0 +1,72 @@
+@import './colors';
+@import './variables';
+
+html, body {
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    color: $text;
+}
+
+h1,.h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 2.625em;    
+    color: $text;
+}
+
+h2,.h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5em;
+    color: $dark-blue;
+}
+
+h3,.h3 {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.5em;
+    color: $gray-500;
+}
+
+h4,.h4 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.313em;
+    color: $text;
+}
+
+p,.p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.25em;
+    color: $text;
+}
+
+// for inline code
+code {
+    color: $magneta;
+    overflow-x: auto;
+}
+
+// for code blocks
+pre {
+    margin: 10px 0;
+    overflow-x: auto;
+
+    code {
+        font-size: 1.2rem;
+        line-height: 140%;
+        background-color: $gray-100;
+        color: $text;
+        border: 1px solid $gray-400;
+        display: block;
+        padding: 20px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $primary-brand;
+    &:hover { color: lighten($primary-brand, 10%); }
+    &:active { color: darken($primary-brand, 10%); }
+}

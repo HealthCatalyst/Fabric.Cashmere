@@ -8,7 +8,6 @@ $FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
 
 html,
 body {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
     background-color: $white;
     color: $text;
@@ -17,4 +16,104 @@ body {
 body {
     // navbar spacing
     padding-top: 53px;
+}
+
+@mixin ignore-demo() {
+    &:not(.ignore-demo) {
+        @content;
+    }
+}
+
+.demo-content {
+    width: 80%;
+    max-width: 1000px;
+    min-width: 700px;
+    margin: 0 auto;
+    padding: 0 30px 50px;
+}
+
+h2 {
+    @include ignore-demo() {
+        margin: 0;
+    }
+}
+
+h3 {
+    @include ignore-demo() {
+        margin: 50px 0 0;
+    }
+}
+
+h4 {
+    @include ignore-demo() {
+        margin: 36px 0 12px;
+    }
+}
+
+p {
+    @include ignore-demo() {
+        margin: 8px 0 20px;
+    }
+}
+
+em {
+    font-size: 14px;
+    color: $gray-500;
+    margin-top: 12px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: $gray-200;
+    margin: 40px 0;
+}
+
+ul {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+ol {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.sample-component {
+    margin: 20px 0;
+}
+
+hc-subnav {
+    padding: 20px;
+}
+
+.api-table {
+    width: 100%;
+    font-size: 13px;
+    margin: 30px 0;
+
+    thead > th {
+        background-color: $charcoal-blue;
+        color: $white;
+        padding: 3px 15px;
+    }
+
+    tbody > tr > {
+        td, th {
+            border-bottom: 1px dashed $gray-200;
+            padding: 1em 5px;
+            vertical-align: middle;
+        }
+    }
+
+    .type-label {
+        color: $gray-500;
+        display: block;
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    em {
+        font-size: 13px;
+    }
 }

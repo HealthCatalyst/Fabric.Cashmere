@@ -39,6 +39,7 @@ import { IconDemoComponent } from './icon/icon-demo.component';
 import { ListDemoComponent } from './list/list-demo.component';
 import { SubnavModule } from '../../../lib/src/subnav/subnav.module';
 import { SubnavDemoComponent } from './subnav/subnav-demo.component';
+import { TypographyDemoComponent } from './typography/typography-demo.component';
 
 @NgModule({
     imports: [
@@ -83,7 +84,8 @@ import { SubnavDemoComponent } from './subnav/subnav-demo.component';
         Tab3DemoComponent,
         IconDemoComponent,
         ListDemoComponent,
-        SubnavDemoComponent
+        SubnavDemoComponent,
+        TypographyDemoComponent
     ],
     providers: [
         {
