@@ -40,9 +40,13 @@
             cursor: not-allowed;
         }
 
-        .hc-checkbox-label {
+        .hc-checkbox-content {
             color: $gray-300;
             cursor: not-allowed;
+
+            label {
+                background: none; 
+            }
         }
     }
 
@@ -59,8 +63,10 @@
         }
     }
 
-    .hc-checkbox-label {
-        margin-left: 10px;
+    .hc-checkbox-content {
+        float: left;
+        padding-top: 3px;
+        padding-left: 35px;
         cursor: pointer;
     }
 }
