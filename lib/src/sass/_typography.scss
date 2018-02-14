@@ -52,7 +52,6 @@ code {
 // for code blocks
 pre {
     margin: 10px 0;
-    overflow-x: auto;
 
     code {
         @include fontSize(16px);

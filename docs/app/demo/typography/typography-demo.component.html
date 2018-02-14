@@ -419,4 +419,21 @@
       </tr>
     </tbody>
   </table>
+  
+  <h3>Sass Text Utilities</h3>
+  <code>fontSize sass mixin</code>
+  <pre>
+    <code>@import &#39;../node_modules/cashmere/sass/cashmere&#39;;
+.some-class {{ '{' }}
+    @include fontSize(16px);    
+{{ '}' }}</code>
+  </pre>
+
+  <p>The following code generates the following css</p>
+  <pre>
+    <code>@import &#39;../node_modules/cashmere/sass/cashmere&#39;;
+.some-class {{ '{' }}
+    font-size: 1.143rem;
+{{ '}' }}</code>
+  </pre>
 </div>
