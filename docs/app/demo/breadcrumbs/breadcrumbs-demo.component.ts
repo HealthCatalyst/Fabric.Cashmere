@@ -1,9 +1,8 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'hc-breadcrumbs-demo',
-    templateUrl: './breadcrumbs-demo.component.html',
-    styleUrls: [ '../shared-demo-styles.scss' ]
+    templateUrl: './breadcrumbs-demo.component.html'
 })
 export class BreadcrumbsDemoComponent {
     showTemplate: boolean = true;
