@@ -7,8 +7,8 @@
     <h3>Fonts</h3>
     
     <h4>Open Sans</h4>
-    <p><em>Our primary font for all things web.</em></p>
-    <p><a href="https://fonts.google.com/specimen/Open+Sans">https://fonts.google.com/specimen/Open+Sans</a></p>
+    <em>Our primary font for all things web.</em>
+    <p><a href="https://fonts.google.com/specimen/Open+Sans" target="_blank">https://fonts.google.com/specimen/Open+Sans</a></p>
     
     <h4>Flexo</h4>
     <em>The Health Catalyst corporate font. Only to be used for product names displayed in the header</em>
@@ -229,9 +229,11 @@
     </table>
 
     <h3>Font Size</h3>
-    The default font of the body is
-    <code>14px</code> and all other font sizes are based off that using
-    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size#Rems">rems</a> or relative ems that are relative the the font size of the html element
+    <p>
+        The default font of the body is <code>14px</code> and all other font sizes are based off that using
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size#Rems">rems</a> or relative ems
+        that are relative the the font size of the html element.
+    </p>
     <table class="hc-table">
         <thead>
             <tr>
@@ -301,20 +303,14 @@
         </tbody>
     </table>
 
-    <h3>Sass Text Utilities</h3>
-    <code>fontSize sass mixin</code>
-    <pre>
-    <code>@import &#39;../node_modules/cashmere/sass/cashmere&#39;;
-.some-class {{ '{' }}
-    @include fontSize(16px);    
-{{ '}' }}</code>
-  </pre>
+    <hr>
 
-    <p>The following code generates the following css</p>
+    <h3>Sass Text Utilities</h3>
+    <p> Save yourself the trouble of looking up or recalculating rem sizes using the <code>fontSize()</code> sass mixin.</p>
     <pre>
     <code>@import &#39;../node_modules/cashmere/sass/cashmere&#39;;
 .some-class {{ '{' }}
-    font-size: 1.143rem;
+    @include fontSize(16px); // generates font-size: 1.143rem;
 {{ '}' }}</code>
   </pre>
 </div>
