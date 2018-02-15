@@ -102,19 +102,19 @@ table.hc-table {
         &:before, &:after {
             display: inline-block;
             position: absolute;
-            bottom: 12px;
+            bottom: 11px;
             font: normal normal normal 12px/1 FontAwesome;
             text-rendering: auto;
             -webkit-font-smoothing: antialiased;
         }
         &:before {
             right: 23px;
-            bottom: 11px;
+            bottom: 9px;
             content: $fa-var-long-arrow-down;
         }
         &:after {
             right: 18px;
-            margin-top: -1px;
+            bottom: 10px;
             content: $fa-var-long-arrow-down;
             transform: rotate(180deg)
         }
