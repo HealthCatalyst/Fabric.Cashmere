@@ -11,42 +11,42 @@ html, body {
 h1,.h1 {
     @include fontSize(36px);
     font-weight: 600;
-    line-height: 2.625em;    
+    line-height: 1.5;
     color: $text;
 }
 
 h2,.h2 {
     @include fontSize(22px);
-    font-weight: 400;
-    line-height: 1.5em;
-    color: $dark-blue;
+    font-weight: 600;
+    line-height: 1.5;
+    color: $text;
 }
 
 h3,.h3 {
-    @include fontSize(20px);
-    font-weight: 300;
-    line-height: 1.5em;
-    color: $gray-500;
+    @include fontSize(18px);
+    font-weight: 600;
+    line-height: 1.5;
+    color: $text;
 }
 
 h4,.h4 {
-    @include fontSize(17px);
-    font-weight: 300;
-    line-height: 1.313em;
+    @include fontSize(14px);
+    font-weight: 600;
+    line-height: 1.5;
     color: $text;
 }
 
 p,.p {
     @include fontSize(16px);
-    font-weight: 300;
-    line-height: 1.25em;
+    font-weight: 400;
+    line-height: 1.5;
     color: $text;
 }
 
 // for inline code
 code {
     color: $magneta;
-    overflow-x: auto;
+    font-family: monospace;
 }
 
 // for code blocks
@@ -55,12 +55,13 @@ pre {
 
     code {
         @include fontSize(16px);
-        line-height: 140%;
+        display: block;
+        padding: 20px;
+        line-height: 1.4;
         background-color: $gray-100;
         color: $text;
         border: 1px solid $gray-400;
-        display: block;
-        padding: 20px;
+        overflow-x: auto;
     }
 }
 
@@ -82,7 +83,7 @@ em {
 }
 
 #logo {
-    background-color:#384655; 
-    width:500px; 
+    background-color: #384655;
+    width: 500px;
     margin-top:15px;
 }
