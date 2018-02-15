@@ -24,6 +24,15 @@ body {
     min-width: 700px;
     margin: 0 auto;
     padding: 0 30px 50px;
+
+    ul {
+        margin: 12px 0;
+        list-style: disc inside;
+    }
+
+    li {
+        margin-left: 24px;
+    }
 }
 
 h2 {
@@ -54,7 +63,7 @@ hr {
 }
 
 ul {
-    @include fontSize(16px);    
+    @include fontSize(16px);
     line-height: 1.5;
 }
 
@@ -82,6 +91,10 @@ hc-subnav {
         padding: 3px 15px;
     }
 
+    th {
+        font-weight: 600;
+    }
+
     tbody > tr > {
         td, th {
             border-bottom: 1px dashed $gray-200;
@@ -99,5 +112,9 @@ hc-subnav {
 
     em {
         @include fontSize(13px);
+    }
+
+    ul {
+        list-style: none;
     }
 }
