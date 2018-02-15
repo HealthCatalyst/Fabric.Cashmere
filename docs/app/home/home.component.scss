@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'mixins';
 
 header {
     max-width: 720px;
@@ -53,8 +54,7 @@ p {
     width: auto;
 }
 
-@media screen and (max-width: 740px)
-{
+@include media-breakpoint-down(md) {
     header {
         margin: 30px auto 40px auto;
         display: block;
@@ -151,8 +151,8 @@ section button {
     display: table;
 }
 
-@media screen and (max-width: 740px)
-{
+
+@include media-breakpoint-down(md) {
     main { text-align: center; }
 
     section {
@@ -229,8 +229,7 @@ footer {
     text-align: right;
 }
 
-@media screen and (max-width: 740px)
-{
+@include media-breakpoint-down(md) {
     footer {
         display: block;
         text-align: center;

@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
     selector: 'hc-icon-demo',
     templateUrl: './icon-demo.component.html',
     styleUrls: [
-        './icon-demo.component.scss',
-        '../shared-demo-styles.scss'
+        './icon-demo.component.scss'
     ]
 })
 export class IconDemoComponent {}

@@ -2,7 +2,7 @@
 
 $subnav-z-index: 1020 !default;
 
-.subnav {
+:host {
     width: 100%;
     min-height: 52px;
     box-sizing: border-box;
@@ -14,17 +14,19 @@ $subnav-z-index: 1020 !default;
     align-items: center;
     z-index: $subnav-z-index;
 
+    &.fixed-top::ng-deep {
+        top: 53px;
+        position: fixed;
+    }
+
     p {
         margin-bottom: 0;
     }
 }
 
-.subnav::ng-deep .subnav-right {
+:host::ng-deep .subnav-right {
     margin-left:auto;
     margin-right:0;
 }
 
-.subnav.fixed-top::ng-deep {
-    top: 53px;
-    position: fixed;
-}
+

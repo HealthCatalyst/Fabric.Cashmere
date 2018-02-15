@@ -1,0 +1,24 @@
+@import 'variables';
+
+/// Slightly lighten a color
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+    @return mix(black, $color, $percentage);
+}
+
+/// Returns the rem value based on the px value that has been passed in
+/// @param {Size} $size - pixel based size to convert to rem
+@function calculateRem($size) {
+    $remSize: $size / $default-font-size;
+    @return #{$remSize}rem;
+  }

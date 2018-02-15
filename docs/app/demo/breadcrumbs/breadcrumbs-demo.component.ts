@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'hc-button-demo',
-    templateUrl: './button-demo.component.html',
-    styleUrls: ['./button-demo.component.scss']
+    selector: 'hc-breadcrumbs-demo',
+    templateUrl: './breadcrumbs-demo.component.html'
 })
-export class ButtonDemoComponent {
+export class BreadcrumbsDemoComponent {
     showTemplate: boolean = true;
 
     viewToggle(show: 'ts' | 'html') {

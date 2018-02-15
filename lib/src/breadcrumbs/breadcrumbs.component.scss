@@ -1,0 +1,53 @@
+@import '../sass/cashmere';
+
+.breadcrumb {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    color: $slate-gray-500;
+
+    a {
+        color: $dark-blue;
+        text-decoration: none;
+    }
+
+    li { display: flex; }
+
+    span {
+        display: flex;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 420px) {
+        li { display: none; }
+    }
+}
+
+.breadcrumb-arrow {
+    font-size: 10px !important;
+    height: 10px !important;
+    width: 10px !important;
+    color: $gray-400;
+    margin-top: 3px;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.responsive-container { display: none; }
+@media screen and (max-width: 420px) {
+    .responsive-container { display: flex; }
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+}
+
+.back-arrow {
+    font-size: 15px;
+    height: 15px;
+    width: 15px;
+    margin-top: 2px;
+    margin-right: 5px;
+}

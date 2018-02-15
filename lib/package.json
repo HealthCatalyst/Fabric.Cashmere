@@ -11,7 +11,10 @@
     "typings": "./cashmere.d.ts",
     "ngPackage": {
         "lib": {
-            "entryFile": "public_api.ts"
+            "entryFile": "public_api.ts",
+            "sassIncludePaths": [
+                "./src/sass"
+            ]
         }
     },
     "scripts": {
@@ -41,7 +44,7 @@
         "codelyzer": "~3.0.1",
         "core-js": "^2.4.1",
         "font-awesome": "^4.7.0",
-        "ng-packagr": "1.6.0",
+        "ng-packagr": "~2.0.0",
         "node-sass": "4.7.2",
         "popper.js": "^1.12.9",
         "rxjs": "5.5.5",

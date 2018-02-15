@@ -4,8 +4,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
     selector: 'hc-select-demo',
     templateUrl: './select-demo.component.html',
     styleUrls: [
-        './select-demo.component.scss',
-        '../shared-demo-styles.scss'
+        './select-demo.component.scss'
     ]
 })
 export class SelectDemoComponent {

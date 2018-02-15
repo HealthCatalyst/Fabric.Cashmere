@@ -31,11 +31,11 @@ table.hc-table {
         padding: $cell-padding;
         border-top: none;
         border-bottom: $table-border;
-        word-break: break-word;
     }
 
     thead th {
         font-size: $thead-font-size;
+        font-weight: 600;
         color: $thead-font-color;
         vertical-align: bottom;
     }
@@ -102,19 +102,19 @@ table.hc-table {
         &:before, &:after {
             display: inline-block;
             position: absolute;
-            bottom: 12px;
+            bottom: 11px;
             font: normal normal normal 12px/1 FontAwesome;
             text-rendering: auto;
             -webkit-font-smoothing: antialiased;
         }
         &:before {
             right: 23px;
-            bottom: 11px;
+            bottom: 9px;
             content: $fa-var-long-arrow-down;
         }
         &:after {
             right: 18px;
-            margin-top: -1px;
+            bottom: 10px;
             content: $fa-var-long-arrow-down;
             transform: rotate(180deg)
         }
