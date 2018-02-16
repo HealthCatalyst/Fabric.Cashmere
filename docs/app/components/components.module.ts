@@ -10,13 +10,9 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ButtonModule } from '../../../lib/src/button/button.module';
-import { DemoComponent } from './demo.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
+import { ComponentsComponent } from './components.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
-import { ColorDemoComponent } from './color/color-demo.component';
-import { TableDemoComponent } from './table/table-demo.component';
-import { SwatchDemoComponent } from './color/swatch-demo.component';
-import { routes } from './demo-routes';
+import { routes } from './components-routes';
 import { NavbarModule } from '../../../lib/src/navbar/navbar.module';
 import { PopoverModule } from '../../../lib/src/popover/popover.module';
 import { NavbarDemoComponent } from './navbar/navbar-demo.component';
@@ -39,7 +35,6 @@ import { IconDemoComponent } from './icon/icon-demo.component';
 import { ListDemoComponent } from './list/list-demo.component';
 import { SubnavModule } from '../../../lib/src/subnav/subnav.module';
 import { SubnavDemoComponent } from './subnav/subnav-demo.component';
-import { TypographyDemoComponent } from './typography/typography-demo.component';
 import { BreadcrumbsModule } from '../../../lib/src/breadcrumbs/breadcrumbs.module';
 import { BreadcrumbsDemoComponent } from './breadcrumbs/breadcrumbs-demo.component';
 import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.component';
@@ -70,17 +65,13 @@ import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.compon
         AppSwitcherModule,
     ],
     declarations: [
-        DemoComponent,
+        ComponentsComponent,
         HomeComponent,
-        SideNavComponent,
         ButtonDemoComponent,
         NavbarDemoComponent,
         PopoverDemoComponent,
         CheckboxDemoComponent,
         RadioButtonDemoComponent,
-        ColorDemoComponent,
-        TableDemoComponent,
-        SwatchDemoComponent,
         SelectDemoComponent,
         DrawerDemoComponent,
         TabsDemoComponent,
@@ -90,7 +81,6 @@ import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.compon
         IconDemoComponent,
         ListDemoComponent,
         SubnavDemoComponent,
-        TypographyDemoComponent,
         BreadcrumbsDemoComponent,
         Breadcrumb1DemoComponent,
         Breadcrumb2DemoComponent
@@ -102,5 +92,5 @@ import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.compon
         }
     ]
 })
-export class DemoModule {
+export class ComponentsModule {
 }

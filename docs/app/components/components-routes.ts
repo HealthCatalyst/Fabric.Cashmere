@@ -2,11 +2,9 @@ import { Tab3DemoComponent } from './tabs/tab3-demo.component';
 import { Tab2DemoComponent } from './tabs/tab2-demo.component';
 import { Tab1DemoComponent } from './tabs/tab1-demo.component';
 import { Routes } from '@angular/router';
-import { ColorDemoComponent } from './color/color-demo.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
-import { TableDemoComponent } from './table/table-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
-import { DemoComponent } from './demo.component';
+import { ComponentsComponent } from './components.component';
 import { NavbarDemoComponent } from './navbar/navbar-demo.component';
 import { PopoverDemoComponent } from './popover/popover-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
@@ -16,28 +14,15 @@ import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { DrawerDemoComponent } from './drawer/drawer-demo.component';
 import { ListDemoComponent } from './list/list-demo.component';
 import { SubnavDemoComponent } from './subnav/subnav-demo.component';
-import { TypographyDemoComponent } from './typography/typography-demo.component';
 import { BreadcrumbsDemoComponent } from './breadcrumbs/breadcrumbs-demo.component';
 import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.component';
 import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
 
 export const routes: Routes = [
     {
-        path: 'demo',
-        component: DemoComponent,
+        path: 'components',
+        component: ComponentsComponent,
         children: [
-            {
-                path: 'color',
-                component: ColorDemoComponent
-            },
-            {
-                path: 'table',
-                component: TableDemoComponent
-            },
-            {
-                path: 'typography',
-                component: TypographyDemoComponent
-            },
             {
                 path: 'button',
                 component: ButtonDemoComponent
@@ -117,7 +102,7 @@ export const routes: Routes = [
             },
             {
                 path: '**',
-                redirectTo: 'color'
+                redirectTo: 'button'
             }
         ]
     }
