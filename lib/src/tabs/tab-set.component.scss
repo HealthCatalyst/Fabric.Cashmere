@@ -11,7 +11,7 @@
 .tab-vertical {
     background-color: $white;
     color: $offblack;
-    padding: 15px 20px;
+    padding: 20px;
     display: block;
     text-decoration: none;
     &:hover {
@@ -21,7 +21,7 @@
         background-color: $slate-gray-100;
         border-left: $blue 8px solid;
         color: $blue;
-        font-weight: bold;
+        font-weight: 600;
         padding-left: 12px;
     }
 }

@@ -39,6 +39,8 @@ import { BreadcrumbsModule } from '../../../lib/src/breadcrumbs/breadcrumbs.modu
 import { BreadcrumbsDemoComponent } from './breadcrumbs/breadcrumbs-demo.component';
 import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.component';
 import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
+import { TileModule } from '../../../lib/src/tile/tile.module';
+import { TileComponent } from '../../../lib/src/tile';
 
 @NgModule({
     imports: [
@@ -59,6 +61,7 @@ import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.compon
         SubnavModule,
         BreadcrumbsModule,
         AccordionModule,
+        TileModule,
         RouterModule.forRoot(routes)
     ],
     exports: [

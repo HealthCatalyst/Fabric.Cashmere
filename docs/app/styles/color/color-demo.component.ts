@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
     ]
 })
 export class ColorDemoComponent {
+
+    lastModified: Date = new Date( document.lastModified );
 }

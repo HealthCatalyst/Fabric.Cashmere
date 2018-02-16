@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TabsModule } from '../../../lib/src/tabs/tabs.module';
 import { StylesComponent } from './styles.component';
 import { SubnavModule } from '../../../lib/src/subnav/subnav.module';
+import { TileModule } from '../../../lib/src/tile/tile.module';
 
 import { ColorDemoComponent } from './color/color-demo.component';
 import { TableDemoComponent } from './table/table-demo.component';
@@ -18,6 +19,7 @@ import { TypographyDemoComponent } from './typography/typography-demo.component'
         FormsModule,
         TabsModule,
         SubnavModule,
+        TileModule,
         RouterModule.forRoot(routes)
     ],
     declarations: [

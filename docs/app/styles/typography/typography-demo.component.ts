@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./typography-demo.component.scss']
 })
 export class TypographyDemoComponent {
+
+    lastModified: Date = new Date( document.lastModified );
 }
