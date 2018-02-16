@@ -2,15 +2,8 @@
     margin: 15px 0;
 }
 
-h2, h3, h4, p {
+h1, h2, h3, h4, p {
     &.no-margin {
-        margin: 0;
-    }
-}
-
-h1 {
-    &.no-margin {
-        font-weight: 600;
         margin: 0;
     }
 }

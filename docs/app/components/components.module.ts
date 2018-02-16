@@ -40,7 +40,7 @@ import { BreadcrumbsDemoComponent } from './breadcrumbs/breadcrumbs-demo.compone
 import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.component';
 import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
 import { TileModule } from '../../../lib/src/tile/tile.module';
-import { TileComponent } from '../../../lib/src/tile';
+import { TileDemoComponent } from './tile/tile-demo.component';
 
 @NgModule({
     imports: [
@@ -89,7 +89,8 @@ import { TileComponent } from '../../../lib/src/tile';
         SubnavDemoComponent,
         BreadcrumbsDemoComponent,
         Breadcrumb1DemoComponent,
-        Breadcrumb2DemoComponent
+        Breadcrumb2DemoComponent,
+        TileDemoComponent
     ],
     providers: [
         {

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'hc-sidenav-demo',
-    templateUrl: './drawer-demo.component.html'
+    selector: 'hc-tile-demo',
+    templateUrl: './tile-demo.component.html'
 })
-export class DrawerDemoComponent {
+export class TileDemoComponent {
     lastModified: Date = new Date( document.lastModified );
 }

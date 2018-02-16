@@ -4,4 +4,6 @@ import { Component } from '@angular/core';
     selector: 'hc-radio-button-demo',
     templateUrl: './radio-button-demo.component.html'
 })
-export class RadioButtonDemoComponent {}
+export class RadioButtonDemoComponent {
+    lastModified: Date = new Date( document.lastModified );
+}

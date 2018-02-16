@@ -1,37 +1,43 @@
-<hc-subnav>
-    <h2>Breadcrumbs</h2>
-</hc-subnav>
-
 <div class="demo-content">
-    <p>Breadcrumbs are a graphical control element used as a navigational aid within our app subheader.
-    It allows users to keep track of their location within the current application. Typically positioned on
-    the left side of the <a routerLink="/components/subnav" routerLinkActive="active">subnavbar</a>.</p>
+    <h1>Breadcrumbs</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
-    <hc-subnav>
-        <hc-breadcrumbs></hc-breadcrumbs>
-    </hc-subnav>
+    <hc-tile>
+        <h5>About</h5>
+        <p>Breadcrumbs are a graphical control element used as a navigational aid within our app subheader.
+        It allows users to keep track of their location within the current application. Typically positioned on
+        the left side of the <a routerLink="/components/subnav" routerLinkActive="active">subnavbar</a>.</p>
+    </hc-tile>
 
-    <router-outlet></router-outlet>
+    <hc-tile>
+        <h5>Example</h5>
+        <hc-subnav>
+            <hc-breadcrumbs></hc-breadcrumbs>
+        </hc-subnav>
 
-    <button hc-button routerLink="/components/breadcrumbs/breadcrumb1" title="First Breadcrumb" color="primary">Jump to Second Page</button>
-    <button hc-button routerLink="/components/breadcrumbs/breadcrumb1/breadcrumb2" title="Second Breadcrumb" color="primary">Jump to Third Page</button>
+        <router-outlet></router-outlet>
 
-    <hr>
-    <h3>Angular Component</h3>
-    <pre>
-        <code>
+        <button hc-button routerLink="/components/breadcrumbs/breadcrumb1" title="First Breadcrumb" color="primary">Jump to Second Page</button>
+        <button hc-button routerLink="/components/breadcrumbs/breadcrumb1/breadcrumb2" title="Second Breadcrumb" color="primary">Jump to Third Page</button>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Angular Component</h5>
+        <pre>
+            <code>
     &#x3C;hc-breadcrumbs&#x3E;&#x3C;/hc-breadcrumbs&#x3E;
-        </code>
-    </pre>
+            </code>
+        </pre>
+    </hc-tile>
 
-    <hr>
-    <h3>Router Setup</h3>
-    <p>
-        The <code>hc-breadcrumb</code> component makes use of the angular <code>Router</code> with the scope of the routing
-        module in which it is placed.  A custom data element named "breadcrumb" must be added to its Routes in order for the breadcrumb component
-        to function properly.  Below in an example of a properly configured Route:
-    </p>
-    <pre>
+    <hc-tile>
+        <h5>Router Setup</h5>
+        <p>
+            The <code>hc-breadcrumb</code> component makes use of the angular <code>Router</code> with the scope of the routing
+            module in which it is placed.  A custom data element named "breadcrumb" must be added to its Routes in order for the breadcrumb component
+            to function properly.  Below in an example of a properly configured Route:
+        </p>
+        <pre>
             <code>
     &#x7B;
         path: &#x27;breadcrumbs&#x27;,
@@ -47,12 +53,14 @@
     &#x7D;
             </code>
         </pre>
+    </hc-tile>
 
-    <hr>
-    <h3>Responsive Behavior</h3>
-    <p>
-        At phone resolution, the component's media query will remove the navigation tree and display a "Back" button
-        linking to the previous page.  If currently at the root of the tree, the current page name will be displayed.
-    </p>
+    <hc-tile>
+        <h5>Responsive Behavior</h5>
+        <p>
+            At phone resolution, the component's media query will remove the navigation tree and display a "Back" button
+            linking to the previous page.  If currently at the root of the tree, the current page name will be displayed.
+        </p>
+    </hc-tile>
 
 </div>

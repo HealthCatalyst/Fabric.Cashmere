@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
         './icon-demo.component.scss'
     ]
 })
-export class IconDemoComponent {}
+export class IconDemoComponent {
+    lastModified: Date = new Date( document.lastModified );
+}

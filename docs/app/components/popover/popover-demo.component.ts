@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './popover-demo.component.html'
 })
 export class PopoverDemoComponent {
+    lastModified: Date = new Date( document.lastModified );
     public body: string = 'dynamic content';
     public popoverWithListItems: string =
         `<button hc-button color="primary" [hcPopover]="options" popperPlacement="bottom" aria-hidden="true">

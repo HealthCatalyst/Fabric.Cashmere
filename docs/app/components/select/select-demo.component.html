@@ -1,64 +1,73 @@
-<hc-subnav>
-    <h2>Select</h2>
-</hc-subnav>
-
 <div class="demo-content">
-    <p>Select one of many options from a dropdown.</p>
-    <h4>Standard Select Component</h4>
-    <div class="select-sample">
-        <hc-select placeholder="Select a city:"
-                   [options]="['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando']"></hc-select>
-    </div>
-    <h4>Disabled Select Component</h4>
-    <div class="select-sample">
-        <hc-select [disabled]="true" placeholder="Select a city:"
-                   [options]="['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando']"></hc-select>
-    </div>
+    <h1>Select</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
-    <hr>
+    <hc-tile>
+        <h5>About</h5>
+        <p>Select one of many options from a dropdown. This is a styled version of the native
+        <code>&#x3C;select&#x3E;</code> element.  Component may be disabled if not applicable to a certain context.</p>
+    </hc-tile>
 
-    <h3>Template Forms</h3>
-    <p>
-        The Select Component is compatible with both template forms and reactive forms in angular.
-        To interact with template forms use <code>[(ngModel)]</code> on the component.
-        Remember to import the <code>FormsModule</code> into your application.
-    </p>
+    <hc-tile>
+        <h5>Examples</h5>
+        <h4>Standard Select Component</h4>
+        <div class="select-sample">
+            <hc-select placeholder="Select a city:"
+                    [options]="['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando']"></hc-select>
+        </div>
+        <h4>Disabled Select Component</h4>
+        <div class="select-sample">
+            <hc-select [disabled]="true" placeholder="Select a city:"
+                    [options]="['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando']"></hc-select>
+        </div>
+        <br>
+    </hc-tile>
 
-    <h3>Reactive Forms</h3>
-    <p>
-        To interact with reactive forms specify a <code>formControlName</code> on the component.
+    <hc-tile>
+        <h5>Template Forms</h5>
+        <p>
+            The Select Component is compatible with both template forms and reactive forms in angular.
+            To interact with template forms use <code>[(ngModel)]</code> on the component.
+            Remember to import the <code>FormsModule</code> into your application.
+        </p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Reactive Forms</h5>
+        <p>To interact with reactive forms specify a <code>formControlName</code> on the component.
         Remember to import the <code>ReactiveFormsModule</code> into your application.
-    </p>
+        </p>
+    </hc-tile>
 
-    <hr>
-
-    <h3>Angular Component</h3>
-    <pre>
-          <code>
+    <hc-tile>
+        <h5>Angular Component</h5>
+        <pre>
+            <code>
 &#x3C;hc-select formControlName=&#x22;city&#x22; &#91;disabled&#93;=&#x27;false&#x27; placeholder=&#x22;Select a city:&#x22;
     [options]=&#x22;[&#x27;Philadelphia&#x27;, &#x27;Atlanta&#x27;, &#x27;Salt Lake City&#x27;, &#x27;Chicago&#x27;, &#x27;Orlando&#x27;]&#x22;&#x3E;
 &#x3C;/hc-select&#x3E;
-          </code>
-    </pre>
+            </code>
+        </pre>
+    </hc-tile>
 
-    <hr>
-
-    <h3>Component Parameters</h3>
-    <table class="api-table">
-        <tr>
-            <th>placeholder</th>
-            <td><span class="type-label">Type:</span> String</td>
-            <td>Optional string of text to appear before selection is made</td>
-        </tr>
-        <tr>
-            <th>[options]</th>
-            <td><span class="type-label">Type:</span> Array</td>
-            <td>An array of strings for the select options</td>
-        </tr>
-        <tr>
-            <th>[disabled]</th>
-            <td><span class="type-label">Type:</span> Boolean</td>
-            <td>Boolean value that enables/disables the button</td>
-        </tr>
-    </table>
+    <hc-tile>
+        <h5>Component Parameters</h5>
+        <table class="api-table">
+            <tr>
+                <th>placeholder</th>
+                <td><span class="type-label">Type:</span> String</td>
+                <td>Optional string of text to appear before selection is made</td>
+            </tr>
+            <tr>
+                <th>[options]</th>
+                <td><span class="type-label">Type:</span> Array</td>
+                <td>An array of strings for the select options</td>
+            </tr>
+            <tr>
+                <th>[disabled]</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>Boolean value that enables/disables the button</td>
+            </tr>
+        </table>
+    </hc-tile>
 </div>

@@ -9,6 +9,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class SelectDemoComponent {
     showTemplate: boolean = true;
+    lastModified: Date = new Date( document.lastModified );
 
     viewToggle(show: 'ts' | 'html') {
         this.showTemplate = show === 'html';

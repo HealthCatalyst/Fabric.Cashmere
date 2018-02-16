@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './navbar-demo.component.html'
 })
 export class NavbarDemoComponent {
+    lastModified: Date = new Date( document.lastModified );
     navbar: string = `<hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
   <hc-app-switcher></hc-app-switcher>
   <hc-navbar-link [active]="true" [uri]="undefined">Home</hc-navbar-link>

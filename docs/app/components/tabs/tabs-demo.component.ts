@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
     templateUrl: './tabs-demo.component.html',
     styleUrls: ['./tabs-demo.component.scss']
 })
-export class TabsDemoComponent {}
+export class TabsDemoComponent {
+    lastModified: Date = new Date( document.lastModified );
+}

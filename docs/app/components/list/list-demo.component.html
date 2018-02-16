@@ -1,40 +1,37 @@
-<hc-subnav>
-    <h2>List</h2>
-</hc-subnav>
-
 <div class="demo-content">
-    <p>Display a row of items that can have multiple lines per item with icons</p>
+    <h1>List</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
-    <div class="list-demo-container">
-        <hc-list>
-            <hc-list-item>
-                <hc-icon fontSet="fa" fontIcon="fa-snowflake-o" hcListIcon></hc-icon>
-                <h4 hcListLine>SnowFlake</h4>
-                <span hcListLine>Second Line</span>
-            </hc-list-item>
-            <hc-list-item>
-                <img src="assets/CashmereLogo.svg" hcListAvatar>
-                <h4 hcListLine>Address Line 1</h4>
-                <span hcListLine>Address Line 2</span>
-                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
-            </hc-list-item>
-        </hc-list>
-    </div>
+    <hc-tile>
+        <h5>About</h5>
+        <p>Displays a row of items that can have multiple lines per item with icons.  Useful in a variety of
+        situations including menus, filter lists, etc.</p>
+    </hc-tile>
 
-    <hr>
-    <h3>List Usage</h3>
-    <p>
-        The <code>hc-icon</code> component provides an abstraction that makes using icons easier and
-        more uniform. Another benefit is that component developers can "select" the icon from the
-        "transcluded" user content, allowing the icon to be placed appropriately.
-    </p>
+    <hc-tile>
+        <h5>Example</h5>
+        <div class="list-demo-container">
+            <hc-list>
+                <hc-list-item>
+                    <hc-icon fontSet="fa" fontIcon="fa-snowflake-o" hcListIcon></hc-icon>
+                    <h4 hcListLine>SnowFlake</h4>
+                    <span hcListLine>Second Line</span>
+                </hc-list-item>
+                <hc-list-item>
+                    <img src="assets/CashmereLogo.svg" hcListAvatar>
+                    <h4 hcListLine>Address Line 1</h4>
+                    <span hcListLine>Address Line 2</span>
+                    <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+                </hc-list-item>
+            </hc-list>
+        </div>
+    </hc-tile>
 
-    <hr>
+    <hc-tile>
+        <h5>Angular Component</h5>
 
-    <h3>Angular Component</h3>
-
-    <pre>
-          <code>
+        <pre>
+            <code>
 &lt;hc-list&gt;
     &lt;hc-list-item&gt;
         &lt;hc-icon fontSet=&quot;fa&quot; fontIcon=&quot;fa-snowflake-o&quot; hcListIcon&gt;&lt;/hc-icon&gt;
@@ -48,47 +45,50 @@
         &lt;hc-icon fontSet=&quot;fa&quot; fontIcon=&quot;fa-plus&quot;&gt;&lt;/hc-icon&gt;
     &lt;/hc-list-item&gt;
 &lt;/hc-list&gt;
-          </code>
-      </pre>
+            </code>
+        </pre>
+    </hc-tile>
 
-    <hr>
-    <h2>Components</h2>
+    <hc-tile>
+        <h5>Components</h5>
 
-    <div class="directive-description">
-        <h3>hc-list</h3>
-        <p>This is the container for the hc-list-items</p>
-    </div>
+        <div class="directive-description">
+            <h3>hc-list</h3>
+            <p>This is the container for the hc-list-items</p>
+        </div>
 
-    <div class="directive-description">
-        <h3>hc-list-item</h3>
-        <p>
-            Acts as a host element for the individual items found in a hc-list-item. Represents an item within the
-            hc-list-items
-        </p>
-    </div>
+        <div class="directive-description">
+            <h3>hc-list-item</h3>
+            <p>
+                Acts as a host element for the individual items found in a hc-list-item. Represents an item within the
+                hc-list-items
+            </p>
+        </div>
+    </hc-tile>
 
+    <hc-tile>
+        <h5>Directives</h5>
 
-    <h2>Directives</h2>
+        <div class="directive-description">
+            <h3>hcListIcon</h3>
+            <p>
+                Positions the element to the left and styled as an icon. Should be used in conjunction with hc-icon
+            </p>
+        </div>
 
-    <div class="directive-description">
-        <h3>hcListIcon</h3>
-        <p>
-            Positions the element to the left and styled as an icon. Should be used in conjunction with hc-icon
-        </p>
-    </div>
+        <div class="directive-description">
+            <h3>hcListAvatar</h3>
+            <p>
+                Positions the element to the left and gives it a circular border
+            </p>
+        </div>
 
-    <div class="directive-description">
-        <h3>hcListAvatar</h3>
-        <p>
-            Positions the element to the left and gives it a circular border
-        </p>
-    </div>
-
-    <div class="directive-description">
-        <h3>hcListLine</h3>
-        <p>
-            This is the main text content of the hc-list-item. At the moment it's only styled to provide up to two
-            lines, but in the future you can have as many as you want.
-        </p>
-    </div>
+        <div class="directive-description">
+            <h3>hcListLine</h3>
+            <p>
+                This is the main text content of the hc-list-item. At the moment it's only styled to provide up to two
+                lines, but in the future you can have as many as you want.
+            </p>
+        </div>
+    </hc-tile>
 </div>
