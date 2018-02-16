@@ -53,6 +53,10 @@
         display: none;
     }
 
+    .hc-radio-content {
+        padding-top: 3px;
+    }
+
     &.disabled {
         cursor: not-allowed;
         color: $gray-300;
