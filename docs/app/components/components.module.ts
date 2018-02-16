@@ -8,7 +8,6 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ButtonModule } from '../../../lib/src/button/button.module';
 import { ComponentsComponent } from './components.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
@@ -26,7 +25,6 @@ import { SelectModule } from '../../../lib/src/select/select.module';
 import { SelectDemoComponent } from './select/select-demo.component';
 import { AppSwitcherModule } from '../../../lib/src/app-switcher/app-switcher.module';
 import { MockAppSwitcherService } from '../../../lib/src/app-switcher/app-switcher.service';
-import { SelectComponent } from '../../../lib/src/select/select.component';
 import { DrawerDemoComponent } from './drawer/drawer-demo.component';
 import { IconModule } from '../../../lib/src/icon';
 import { DrawerModule } from '../../../lib/src/drawer';
@@ -35,6 +33,8 @@ import { IconDemoComponent } from './icon/icon-demo.component';
 import { ListDemoComponent } from './list/list-demo.component';
 import { SubnavModule } from '../../../lib/src/subnav/subnav.module';
 import { SubnavDemoComponent } from './subnav/subnav-demo.component';
+import { AccordionModule } from '../../../lib/src/accordion/accordion.module';
+import { AccordionDemoComponent } from './accordion/accordion-demo.component';
 import { BreadcrumbsModule } from '../../../lib/src/breadcrumbs/breadcrumbs.module';
 import { BreadcrumbsDemoComponent } from './breadcrumbs/breadcrumbs-demo.component';
 import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.component';
@@ -58,6 +58,7 @@ import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.compon
         ListModule,
         SubnavModule,
         BreadcrumbsModule,
+        AccordionModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -80,6 +81,8 @@ import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.compon
         Tab3DemoComponent,
         IconDemoComponent,
         ListDemoComponent,
+        SubnavDemoComponent,
+        AccordionDemoComponent,
         SubnavDemoComponent,
         BreadcrumbsDemoComponent,
         Breadcrumb1DemoComponent,
