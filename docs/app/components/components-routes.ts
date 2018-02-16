@@ -14,11 +14,7 @@ import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { DrawerDemoComponent } from './drawer/drawer-demo.component';
 import { ListDemoComponent } from './list/list-demo.component';
 import { SubnavDemoComponent } from './subnav/subnav-demo.component';
-<<<<<<< HEAD:docs/app/components/components-routes.ts
-=======
 import { AccordionDemoComponent } from './accordion/accordion-demo.component';
-import { TypographyDemoComponent } from './typography/typography-demo.component';
->>>>>>> upstream/master:docs/app/demo/demo-routes.ts
 import { BreadcrumbsDemoComponent } from './breadcrumbs/breadcrumbs-demo.component';
 import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.component';
 import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
@@ -111,7 +107,7 @@ export const routes: Routes = [
             },
             {
                 path: '**',
-                redirectTo: 'button'
+                redirectTo: 'accordion'
             }
         ]
     }
