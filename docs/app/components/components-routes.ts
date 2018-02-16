@@ -27,7 +27,13 @@ export const routes: Routes = [
         children: [
             {
                 path: 'button',
-                component: ButtonDemoComponent
+                component: ButtonDemoComponent,
+                children: [
+                    {
+                        path: 'breadcrumb1',
+                        component: Breadcrumb1DemoComponent,
+                    }
+                ]
             },
             {
                 path: 'select',

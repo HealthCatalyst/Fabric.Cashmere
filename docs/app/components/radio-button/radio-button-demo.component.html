@@ -2,6 +2,9 @@
     <h1>Radio Buttons</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
     <hc-tile>
         <h5>About</h5>
         <p>Radio buttons allow the user to choose only one of a predefined set of
@@ -32,6 +35,9 @@
         <p>A default button should be set to checked when the form is initialized.</p>
     </hc-tile>
 
+    </hc-tab>
+    <hc-tab title="Documentation">
+
     <hc-tile>
         <h5>Angular Component</h5>
         <pre>
@@ -42,7 +48,7 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Component Parameters</h5>
+        <h5>Properties</h5>
         <table class="api-table">
             <tr>
                 <th>[disabled]</th>
@@ -51,4 +57,7 @@
             </tr>
         </table>
     </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
 </div>

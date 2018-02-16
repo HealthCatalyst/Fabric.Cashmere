@@ -2,6 +2,9 @@
     <h1>Select</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
     <hc-tile>
         <h5>About</h5>
         <p>Select one of many options from a dropdown. This is a styled version of the native
@@ -39,6 +42,9 @@
         </p>
     </hc-tile>
 
+    </hc-tab>
+    <hc-tab title="Documentation">
+
     <hc-tile>
         <h5>Angular Component</h5>
         <pre>
@@ -51,7 +57,7 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Component Parameters</h5>
+        <h5>Properties</h5>
         <table class="api-table">
             <tr>
                 <th>placeholder</th>
@@ -70,4 +76,7 @@
             </tr>
         </table>
     </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
 </div>

@@ -2,6 +2,9 @@
     <h1>Tabs</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
     <hc-tile>
         <h5>About</h5>
         <p>Tabs ease the burden of large pages by dividing them into easy to digest sub-pages</p>
@@ -107,6 +110,9 @@
         </p>
     </hc-tile>
 
+    </hc-tab>
+    <hc-tab title="Documentation">
+
     <hc-tile>
         <h5>Angular Component</h5>
         <pre>
@@ -122,7 +128,7 @@
         </code>
     </pre>
 
-    <h3>Angular Component&nbsp;(With Router)</h3>
+    <h3>Component&nbsp;(With Router)</h3>
     <pre>
         <code>
     &lt;hc-tab-set&gt;
@@ -134,7 +140,7 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Component Parameters</h5>
+        <h5>Properties</h5>
         <table class="api-table">
             <tr>
                 <th>title</th>
@@ -153,4 +159,7 @@
             </tr>
         </table>
     </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
 </div>

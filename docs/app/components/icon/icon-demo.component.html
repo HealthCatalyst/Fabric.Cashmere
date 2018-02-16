@@ -1,7 +1,9 @@
 <div class="demo-content">
     <h1>Icon</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
-    <p></p>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
 
     <hc-tile>
         <h5>About</h5>
@@ -29,6 +31,9 @@
         </table>
     </hc-tile>
 
+    </hc-tab>
+    <hc-tab title="Documentation">
+
     <hc-tile>
         <h5>Angular Component</h5>
         <em>*Future improvement to include service that sets a default fontSet so you don't need to set it for every icon</em>
@@ -41,7 +46,7 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Component Parameters</h5>
+        <h5>Properties</h5>
         <table class="api-table">
             <tr>
                 <th>fontSet</th>
@@ -55,4 +60,7 @@
             </tr>
         </table>
     </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
 </div>

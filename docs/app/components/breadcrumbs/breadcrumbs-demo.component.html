@@ -2,6 +2,9 @@
     <h1>Breadcrumbs</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
     <hc-tile>
         <h5>About</h5>
         <p>Breadcrumbs are a graphical control element used as a navigational aid within our app subheader.
@@ -20,6 +23,17 @@
         <button hc-button routerLink="/components/breadcrumbs/breadcrumb1" title="First Breadcrumb" color="primary">Jump to Second Page</button>
         <button hc-button routerLink="/components/breadcrumbs/breadcrumb1/breadcrumb2" title="Second Breadcrumb" color="primary">Jump to Third Page</button>
     </hc-tile>
+
+    <hc-tile>
+        <h5>Responsive Behavior</h5>
+        <p>
+            At phone resolution, the component's media query will remove the navigation tree and display a "Back" button
+            linking to the previous page.  If currently at the root of the tree, the current page name will be displayed.
+        </p>
+    </hc-tile>
+
+    </hc-tab>
+    <hc-tab title="Documentation">
 
     <hc-tile>
         <h5>Angular Component</h5>
@@ -55,12 +69,6 @@
         </pre>
     </hc-tile>
 
-    <hc-tile>
-        <h5>Responsive Behavior</h5>
-        <p>
-            At phone resolution, the component's media query will remove the navigation tree and display a "Back" button
-            linking to the previous page.  If currently at the root of the tree, the current page name will be displayed.
-        </p>
-    </hc-tile>
-
+    </hc-tab>
+    </hc-tab-set>
 </div>

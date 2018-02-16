@@ -2,6 +2,9 @@
     <h1>Drawer</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
     <hc-tile>
         <h5>About</h5>
         <p>Drawers are great for content that you want tucked away, like filters.  They cover the entire height
@@ -43,6 +46,9 @@
         <br>
     </hc-tile>
 
+    </hc-tab>
+    <hc-tab title="Documentation">
+
     <hc-tile>
         <h5>Angular Component</h5>
         <pre>
@@ -58,7 +64,7 @@ Main Content
     </hc-tile>
 
     <hc-tile>
-        <h5>Component Parameters</h5>
+        <h5>Properties</h5>
         <table class="api-table">
             <tr>
                 <th>mode</th>
@@ -76,7 +82,10 @@ Main Content
                 <td>Optional - whether the drawer starts out opened/closed</td>
             </tr>
         </table>
-
+        <br>
         <em>*Note: An error will be thrown if there are more than two drawers in hc-drawer-container or if both drawers have the same alignment </em>
     </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
 </div>

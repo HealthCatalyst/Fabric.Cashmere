@@ -2,6 +2,9 @@
     <h1>Accordion</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
     <hc-tile>
         <h5>About</h5>
         <p>The accordion component allows the user to expand or contract blocks of content.
@@ -22,6 +25,9 @@
             <button hc-button (click)="toggleToolbar()">Toggle Toolbar</button>
         </div>
     </hc-tile>
+
+    </hc-tab>
+    <hc-tab title="Documentation">
 
     <hc-tile>
         <h5>Angular Component</h5>
@@ -96,4 +102,7 @@
             </tr>
         </table>
     </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
 </div>

@@ -2,6 +2,9 @@
     <h1>List</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
     <hc-tile>
         <h5>About</h5>
         <p>Displays a row of items that can have multiple lines per item with icons.  Useful in a variety of
@@ -26,6 +29,9 @@
             </hc-list>
         </div>
     </hc-tile>
+
+    </hc-tab>
+    <hc-tab title="Documentation">
 
     <hc-tile>
         <h5>Angular Component</h5>
@@ -91,4 +97,7 @@
             </p>
         </div>
     </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
 </div>

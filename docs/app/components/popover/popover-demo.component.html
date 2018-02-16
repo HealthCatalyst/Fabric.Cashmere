@@ -2,6 +2,9 @@
     <h1>Popover</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
     <hc-tile>
         <h5>About</h5>
         <p>A lightweight, extensible component for fancy popover creation. The popover directive supports multiple
@@ -32,11 +35,6 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Angular Component</h5>
-        <pre><code>{{popoverWithListItems}}</code></pre>
-    </hc-tile>
-
-    <hc-tile>
         <h5>Placement</h5>
         <div class="sample-component">
             <button hc-button color="primary" hcPopover="top" popperPlacement="top" aria-hidden="true">Top</button>
@@ -58,6 +56,14 @@
                 <span [(innerText)]="body"></span>
             </hc-popover-content>
         </div>
+    </hc-tile>
+
+    </hc-tab>
+    <hc-tab title="Documentation">
+
+    <hc-tile>
+        <h5>Angular Component</h5>
+        <pre><code>{{popoverWithListItems}}</code></pre>
     </hc-tile>
 
     <hc-tile>
@@ -172,4 +178,7 @@
             </tr>
         </table>
     </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
 </div>

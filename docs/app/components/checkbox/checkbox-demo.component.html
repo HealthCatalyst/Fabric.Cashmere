@@ -2,6 +2,9 @@
     <h1>Checkbox</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
     <hc-tile>
         <h5>About</h5>
         <p>Checkboxes allow the user to make a binary choice, i.e. a choice between one of two possible mutually exclusive options.</p>
@@ -26,6 +29,9 @@
         <p>This checkbox can be used with both reactive and template form.</p>
     </hc-tile>
 
+    </hc-tab>
+    <hc-tab title="Documentation">
+
     <hc-tile>
         <h5>Angular Component</h5>
         <pre>
@@ -37,7 +43,7 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Component Parameters</h5>
+        <h5>Properties</h5>
 
         <table class="api-table">
             <tr>
@@ -77,4 +83,7 @@
             </tr>
         </table>
     </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
 </div>

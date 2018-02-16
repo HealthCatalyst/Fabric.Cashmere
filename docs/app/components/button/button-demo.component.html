@@ -1,6 +1,10 @@
 <div class="demo-content">
     <h1>Button</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
     <hc-tile>
         <h5>About</h5>
         <p>Buttons communicate the action that will occur when the user touches them.
@@ -99,6 +103,9 @@
         </p>
     </hc-tile>
 
+    </hc-tab>
+    <hc-tab title="Documentation">
+
     <hc-tile>
         <h5>Angular Component</h5>
         <hc-tab-set direction="horizontal">
@@ -140,7 +147,7 @@ export class SomeModule &#123; &#125;
     </hc-tile>
 
     <hc-tile>
-        <h5>Component Parameters</h5>
+        <h5>Properties</h5>
         <table class="api-table">
             <tr>
                 <th>color</th>
@@ -167,4 +174,7 @@ export class SomeModule &#123; &#125;
             directive
         </p>
     </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
 </div>

@@ -2,6 +2,9 @@
     <h1>Navbar</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
     <hc-tile>
         <h5>About</h5>
         <p>The navbar is a wrapper that positions branding, navigation, and other elements in a concise header.</p>
@@ -36,6 +39,9 @@
             </ul>
         </hc-popover-content>
     </hc-tile>
+
+    </hc-tab>
+    <hc-tab title="Documentation">
 
     <hc-tile>
         <h5>Angular Component</h5>
@@ -94,7 +100,7 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Component Parameters</h5>
+        <h5>Properties</h5>
         <table class="api-table">
             <thead><th colspan="3">Navbar Component</th></thead>
             <tr>
@@ -153,4 +159,7 @@
             </tr>
         </table>
     </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
 </div>
