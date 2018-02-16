@@ -16,6 +16,7 @@ import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { DrawerDemoComponent } from './drawer/drawer-demo.component';
 import { ListDemoComponent } from './list/list-demo.component';
 import { SubnavDemoComponent } from './subnav/subnav-demo.component';
+import { AccordionDemoComponent } from './accordion/accordion-demo.component';
 import { TypographyDemoComponent } from './typography/typography-demo.component';
 import { BreadcrumbsDemoComponent } from './breadcrumbs/breadcrumbs-demo.component';
 import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.component';
@@ -114,6 +115,10 @@ export const routes: Routes = [
             {
                 path: 'list',
                 component: ListDemoComponent
+            },
+            {
+                path: 'accordion',
+                component: AccordionDemoComponent
             },
             {
                 path: '**',

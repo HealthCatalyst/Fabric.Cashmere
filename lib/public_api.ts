@@ -1,3 +1,4 @@
+export * from './src/accordion/accordion.module';
 export * from './src/app-switcher/app-switcher.module';
 export * from './src/button/button.module';
 export * from './src/checkbox/checkbox.module';
