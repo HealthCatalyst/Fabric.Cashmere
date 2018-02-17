@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { ComponentsComponent } from './components.component';
+import { TabsModule } from '../../../lib/src/tabs';
 
 describe('ComponentsComponent', () => {
     let component: ComponentsComponent;
@@ -11,7 +12,8 @@ describe('ComponentsComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ComponentsComponent],
             imports: [
-                RouterTestingModule
+                RouterTestingModule,
+                TabsModule
             ]
         })
             .compileComponents();
