@@ -7,6 +7,7 @@ import { ComponentsModule } from './components/components.module';
 import { StylesModule } from './styles/styles.module';
 import { IconModule } from '../../lib/src/icon/icon.module';
 import { ListModule } from '../../lib/src/list/list.module';
+import { GuidesModule } from './guides/guides.module';
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { ListModule } from '../../lib/src/list/list.module';
     imports: [
         ComponentsModule,
         StylesModule,
+        GuidesModule,
         IconModule,
         ListModule,
         RouterModule.forRoot(routes)

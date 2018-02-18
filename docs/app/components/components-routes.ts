@@ -26,6 +26,10 @@ export const routes: Routes = [
         component: ComponentsComponent,
         children: [
             {
+                path: 'accordion',
+                component: AccordionDemoComponent
+            },
+            {
                 path: 'button',
                 component: ButtonDemoComponent,
                 children: [
@@ -107,10 +111,6 @@ export const routes: Routes = [
             {
                 path: 'list',
                 component: ListDemoComponent
-            },
-            {
-                path: 'accordion',
-                component: AccordionDemoComponent
             },
             {
                 path: 'tile',
