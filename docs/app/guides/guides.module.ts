@@ -9,6 +9,7 @@ import { SubnavModule } from '../../../lib/src/subnav';
 import { TileModule } from '../../../lib/src/tile';
 import { RouterModule } from '@angular/router';
 import { routes } from './guides-routes';
+import { MarkdownDirective } from '../markdown.directive';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { routes } from './guides-routes';
     CommonModule,
     RouterModule.forRoot(routes)
   ],
-  declarations: [GettingStartedComponent, GuidesComponent]
+  declarations: [GettingStartedComponent, GuidesComponent, MarkdownDirective]
 })
 export class GuidesModule { }
