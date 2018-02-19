@@ -2,6 +2,8 @@
 @import './variables';
 @import './mixins';
 
+$code-padding: 10px;
+
 html, body {
     font-family: $default-font-family;
     font-size: $default-font-size;
@@ -10,9 +12,12 @@ html, body {
 
 h1,.h1 {
     @include fontSize(36px);
-    font-weight: 600;
+    font-weight: 300;
     line-height: 1.5;
     color: $text;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 }
 
 h2,.h2 {
@@ -46,22 +51,33 @@ p,.p {
 // for inline code
 code {
     color: $magneta;
-    font-family: monospace;
+    font-family: Consolas, Menlo, "Ubuntu Mono", monospace;
 }
 
 // for code blocks
 pre {
-    margin: 10px 0;
+    border: 1px solid $gray-400;
+    padding: 20px;
+    margin: 16px auto;
+    border-radius: 5px;
+    display: block;
+    background-color: $block-text-background;
 
-    code {
-        @include fontSize(16px);
-        display: block;
-        padding: 20px;
+    > span {
+        @include fontSize(16px);    
         line-height: 1.4;
-        background-color: $gray-100;
-        color: $text;
-        border: 1px solid $gray-400;
+        padding: $code-padding 0;
+        background-color: $block-text-background;
+    }
+
+    > code {
         overflow-x: auto;
+        display: block;
+        @include fontSize(16px);
+        padding: $code-padding;
+        line-height: 1.4;
+        background-color: $block-text-background;
+        color: $text;
     }
 }
 

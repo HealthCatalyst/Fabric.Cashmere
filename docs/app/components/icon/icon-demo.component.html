@@ -1,0 +1,66 @@
+<div class="demo-content">
+    <h1>Icon</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
+    <hc-tile>
+        <h5>About</h5>
+        <p>The icon component encapsulates font icons.  It provides an abstraction that makes using icons easier and
+        more uniform. Another benefit is that component developers can "select" the icon from the
+        "transcluded" user content, allowing the icon to be placed appropriately.
+        </p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Examples</h5>
+        <table class="sample">
+            <tr>
+                <td><hc-icon fontSet="fa" fontIcon="fa-snowflake-o" icon-sm></hc-icon></td>
+                <td>Small icon</td>
+            </tr>
+            <tr>
+                <td><hc-icon fontSet="fa" fontIcon="fa-snowflake-o" icon-md></hc-icon></td>
+                <td>Medium icon (default)</td>
+            </tr>
+            <tr>
+                <td><hc-icon fontSet="fa" fontIcon="fa-snowflake-o" icon-lg></hc-icon></td>
+                <td>Large icon</td>
+            </tr>
+        </table>
+    </hc-tile>
+
+    </hc-tab>
+    <hc-tab title="Documentation">
+
+    <hc-tile>
+        <h5>Angular Component</h5>
+        <em>*Future improvement to include service that sets a default fontSet so you don't need to set it for every icon</em>
+
+        <pre>
+            <code>
+&#x3C;hc-icon fontSet=&#x22;fa&#x22; fontIcon=&#x22;fa-snowflake-o&#x22;&#x3E;&#x3C;/hc-icon&#x3E;
+            </code>
+        </pre>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Properties</h5>
+        <table class="api-table">
+            <tr>
+                <th>fontSet</th>
+                <td><span class="type-label">Type:</span> String</td>
+                <td>Required - font icon family to use. For example to use fontawesome, you need to provide "fa"</td>
+            </tr>
+            <tr>
+                <th>fontIcon</th>
+                <td><span class="type-label">Type:</span> String</td>
+                <td>Required - font icon to use from the specified font icon family</td>
+            </tr>
+        </table>
+    </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
+</div>
