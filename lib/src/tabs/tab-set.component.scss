@@ -33,8 +33,9 @@
 .tab-content-vertical {
     background-color: $slate-gray-100;
     width: 80%;
-    display: table-cell;
-    vertical-align: top;
+    float: right;
+    height: 100%;
+    overflow: auto;
 }
 
 .tab-bar-horizontal {
