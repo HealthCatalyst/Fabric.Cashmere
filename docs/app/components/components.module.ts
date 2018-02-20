@@ -41,6 +41,8 @@ import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.compon
 import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
 import { TileModule } from '../../../lib/src/tile/tile.module';
 import { TileDemoComponent } from './tile/tile-demo.component';
+import { ChipModule } from '../../../lib/src/chip/chip.module';
+import { ChipDemoComponent } from './chip/chip-demo.component';
 
 @NgModule({
     imports: [
@@ -62,6 +64,7 @@ import { TileDemoComponent } from './tile/tile-demo.component';
         BreadcrumbsModule,
         AccordionModule,
         TileModule,
+        ChipModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -90,7 +93,8 @@ import { TileDemoComponent } from './tile/tile-demo.component';
         BreadcrumbsDemoComponent,
         Breadcrumb1DemoComponent,
         Breadcrumb2DemoComponent,
-        TileDemoComponent
+        TileDemoComponent,
+        ChipDemoComponent
     ],
     providers: [
         {

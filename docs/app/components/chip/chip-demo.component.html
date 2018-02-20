@@ -1,0 +1,42 @@
+<div class="demo-content">
+    <h1>Chips</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
+        <hc-tile>
+            <h5>About</h5>
+            <p>Checkboxes allow the user to make a binary choice, i.e. a choice between one of two possible mutually exclusive options.</p>
+        </hc-tile>
+
+        <hc-tile>
+            <h5>Examples</h5>
+            <h4>Basic</h4>
+            <hc-chip>Basic Chip</hc-chip>
+
+            <h4>Action Chips</h4>
+            <hc-chip action="true" (click)="hideChip($event);">Action One</hc-chip>
+            <hc-chip action="true" (click)="hideChip($event);">Action Two</hc-chip>
+
+            <h4>Chip Row and Filter Button</h4>
+            <hc-chip-row>
+                <hc-filter-button></hc-filter-button>
+                <hc-chip action="true" (click)="hideChip($event);">Hospital (2)</hc-chip>
+                <hc-chip action="true" (click)="hideChip($event);">MS-DRG (43)</hc-chip>
+                <hc-chip action="true" (click)="hideChip($event);">Payer (11)</hc-chip>
+                <hc-chip action="true" (click)="hideChip($event);">Clinical Program (103)</hc-chip>
+                <hc-chip action="true" (click)="hideChip($event);">Care Process (4)</hc-chip>
+                <hc-chip action="true" (click)="hideChip($event);">Age (1)</hc-chip>
+                <hc-chip action="true" (click)="hideChip($event);">Discharge Status (37)</hc-chip>
+                <hc-chip action="true" (click)="hideChip($event);">Gender (1)</hc-chip>
+                <hc-chip action="true" (click)="hideChip($event);">ER Visit (3)</hc-chip>
+            </hc-chip-row>
+        </hc-tile>
+
+    </hc-tab>
+    <hc-tab title="Documentation">
+
+    </hc-tab>
+    </hc-tab-set>
+</div>

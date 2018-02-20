@@ -1,0 +1,49 @@
+@import '../sass/cashmere';
+
+.chip {
+    color: $text;
+    border-radius: 6px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    display: inline-block;
+    padding: 0 15px;
+    background-color: #E5E5E5;
+    cursor: pointer;
+    margin: 0 5px 10px 5px;
+}
+
+.close:after {
+    content:"\f00d";
+    font-family: FontAwesome;
+    font-size: 15px;
+    color: #B6B6B6;
+    padding-left: 12px;
+}
+
+:host(.filter-button) {
+    font-weight: 600;
+    display: inline-block;
+    font-size: 16px;
+    width: 120px;
+    line-height: 32px;
+    color: $primary-brand;
+    cursor: pointer;
+}
+
+.filter-img {
+    height: 27px;
+    width: 27px;
+    padding: 2px 8px 4px 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+:host(.chip-row) { display: table; }
+
+.chip-row-button { display: table-cell; }
+
+.chip-row-content {
+    max-height: 80px;
+    overflow-y: hidden;
+}
