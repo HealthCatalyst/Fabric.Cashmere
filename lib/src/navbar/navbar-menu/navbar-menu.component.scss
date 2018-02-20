@@ -44,7 +44,7 @@ $menu-z-index: 1025 !default;
     border: 0;
     height: 1px;
     background-color: lighten($slate-blue, 20%);
-    margin-left: 5%;
+    margin: 0 0 0 5% !important;
 }
 
 :host::ng-deep hc-list {

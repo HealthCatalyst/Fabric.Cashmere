@@ -19,7 +19,7 @@ body {
 }
 
 .demo-content {
-    width: 80%;
+    width: 90%;
     max-width: 1000px;
     min-width: 700px;
     margin: 0 auto;
@@ -33,6 +33,16 @@ body {
     li {
         margin-left: 24px;
     }
+
+    .tab-bar-horizontal { margin-bottom: 25px; }
+
+    code {
+        max-width: 870px;
+    }
+}
+
+h1 {
+    margin-top: 20px;
 }
 
 h2 {
@@ -47,8 +57,22 @@ h4 {
     margin: 36px 0 12px;
 }
 
+h5 {
+    @include fontSize(15px);
+    text-transform: uppercase;
+    color: $dark-blue;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+h6 {
+    @include fontSize(14px);
+    font-weight: 300;
+    margin: 3px 0 35px 0;
+}
+
 p {
-    margin: 8px 0 20px;
+    margin: 8px 0 8px;
 }
 
 em {
@@ -83,7 +107,6 @@ hc-subnav {
 .api-table {
     width: 100%;
     @include fontSize(13px);
-    margin: 30px 0;
 
     thead > th {
         background-color: $charcoal-blue;

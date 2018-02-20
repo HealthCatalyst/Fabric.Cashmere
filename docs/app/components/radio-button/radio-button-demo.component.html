@@ -1,0 +1,63 @@
+<div class="demo-content">
+    <h1>Radio Buttons</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
+    <hc-tile>
+        <h5>About</h5>
+        <p>Radio buttons allow the user to choose only one of a predefined set of
+        mutually exclusive options.</p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Examples</h5>
+        <h4>Standard Radio Buttons</h4>
+        <form>
+            <hc-radio-button checked="true">The Office</hc-radio-button>
+            <hc-radio-button>Parks and Rec</hc-radio-button>
+            <hc-radio-button>Arrested Development</hc-radio-button>
+        </form>
+
+        <h4>Disabled Radio Buttons</h4>
+        <form>
+            <hc-radio-button checked="true" disabled="true">30 Rock</hc-radio-button>
+            <hc-radio-button disabled="true">Seinfeld</hc-radio-button>
+        </form>
+        <br>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Radio Button Usage</h5>
+        <p>Radio buttons are used in groups and always include labels.</p>
+        <p>When enabled, only one radio button in the group should be set to checked.</p>
+        <p>A default button should be set to checked when the form is initialized.</p>
+    </hc-tile>
+
+    </hc-tab>
+    <hc-tab title="Documentation">
+
+    <hc-tile>
+        <h5>Angular Component</h5>
+        <pre>
+            <code>
+&#x3C;hc-radio-button &#91;disabled&#93;=&#x27;false&#x27;&#x3E;Radio Button Label&#x3C;/hc-radio-button&#x3E;
+            </code>
+        </pre>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Properties</h5>
+        <table class="api-table">
+            <tr>
+                <th>[disabled]</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>Boolean value that enables/disables the radio button</td>
+            </tr>
+        </table>
+    </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
+</div>

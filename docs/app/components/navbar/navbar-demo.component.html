@@ -1,0 +1,165 @@
+<div class="demo-content">
+    <h1>Navbar</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab title="Overview">
+
+    <hc-tile>
+        <h5>About</h5>
+        <p>The navbar is a wrapper that positions branding, navigation, and other elements in a concise header.</p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Example</h5>
+        <hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
+            <hc-app-switcher></hc-app-switcher>
+            <hc-navbar-link [active]="true" [uri]="undefined" linkText="Home"></hc-navbar-link>
+            <hc-navbar-link [active]="false" [uri]="undefined" linkText="Buttons"></hc-navbar-link>
+            <hc-navbar-icon>
+                <hc-icon fontSet="fa" fontIcon="fa-search"></hc-icon>
+            </hc-navbar-icon>
+            <hc-navbar-icon>
+                <hc-icon fontSet="fa" fontIcon="fa-question-circle-o" [hcPopover]="options"
+                popperPlacement="bottom"></hc-icon>
+            </hc-navbar-icon>
+        </hc-navbar>
+
+        <hc-popover-content #options>
+            <ul class="list-options">
+                <li>
+                    <a href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
+                </li>
+                <li>
+                    <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
+                </li>
+                <li>
+                    <button (click)="aboutClick($event)">About</button>
+                </li>
+            </ul>
+        </hc-popover-content>
+    </hc-tile>
+
+    </hc-tab>
+    <hc-tab title="Documentation">
+
+    <hc-tile>
+        <h5>Angular Component</h5>
+
+        <pre><code>{{navbar}}</code></pre>
+
+        <em>*uri's are purposely left undefined for demo purposes</em>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Navbar Usage</h5>
+        <p>The Navbar consists of five componenets:</p>
+        <ul>
+            <li><code>hc-navbar</code> - the main wrapper component</li>
+            <li><code>hc-navbar-link</code> - the main navigation links</li>
+            <li><code>hc-navbar-icon</code> - icons and buttons displayed on the right side</li>
+            <li>
+                <code>hc-app-switcher</code> - include app switcher functionality, if this element is not present, the catalyst flame
+                will revert to navigating to the home page when clicked
+            </li>
+            <li><code>hc-navbar-menu</code> - the responsive menu triggered when the navbar is used on smaller screens</li>
+        </ul>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>App Switcher</h5>
+        <p>To include the app switcher, do the following:</p>
+        <hc-tab-set direction="horizontal">
+            <hc-tab title="HTML">
+                    <pre><code>&lt;hc-app-switcher&gt;&lt;/hc-app-switcher&gt;</code></pre>
+            </hc-tab>
+            <hc-tab title="TypeScript">
+                    <pre><code>{{moduleSetup}}</code></pre>
+            </hc-tab>
+        </hc-tab-set>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Fixed Top</h5>
+        <p>
+            To fix the navigation bar to top of the screen, such that it stays put when your scroll, set the
+            <code>fixedTop</code> property to true. You'll need to also add the following to your body style sheet:
+        </p>
+        <pre><code>{{fixedTopNavbar}}</code></pre>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Responsive Menu</h5>
+        <p>
+            Unlike some responsive menus that automatically pull content from the navbar into them, we intentially left ours
+            configurable so that developers can determine what should or shouldn't be included on smaller screens.  Use the
+            <code>appSwitcher</code> property to set whether the "View all applications" button is included at the bottom of the menu.
+            <code>hc-list</code> components should be used for the menu options with <code>&lt;hr&gt;</code> separators in between.  See
+            the demo code at the top of this page for an example of how to define a responsive menu for hc-navbar.
+        </p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Properties</h5>
+        <table class="api-table">
+            <thead><th colspan="3">Navbar Component</th></thead>
+            <tr>
+                <th>user</th>
+                <td><span class="type-label">Type:</span> String</td>
+                <td>Current user</td>
+            </tr>
+            <tr>
+                <th>appIcon</th>
+                <td><span class="type-label">Type:</span> String</td>
+                <td>Path to svg of app logo</td>
+            </tr>
+            <tr>
+                <th>homeUri</th>
+                <td><span class="type-label">Type:</span> String</td>
+                <td><a href="https://angular.io/api/router/RouterLink" target="_blank">RouterLink</a> uri to home page</td>
+            </tr>
+            <tr>
+                <th>fixedTop</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>Statically positions the navbar to the top of the page <em>(See Fixed Top section above)</em></td>
+            </tr>
+        </table>
+        <br><br>
+        <table class="api-table">
+            <thead><th colspan="3">Navbar Link Component</th></thead>
+            <tr>
+                <th>linkText</th>
+                <td><span class="type-label">Type:</span> String</td>
+                <td>The text to display</td>
+            </tr>
+            <tr>
+                <th>active</th>
+                <td><span class="type-label">Type:</span> boolean</td>
+                <td>(optional) forces active state (default = null)</td>
+            </tr>
+            <tr>
+                <th>uri</th>
+                <td><span class="type-label">Type:</span> String</td>
+                <td><a href="https://angular.io/api/router/RouterLink" target="_blank">RouterLink</a> uri</td>
+            </tr>
+            <tr>
+                <th>exact</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>Sets the <a href="https://angular.io/api/router/RouterLinkActive#description" target="_blank">RouterLinkActive</a> options to
+                    match the url exactly to set active state. (default = false)</td>
+            </tr>
+        </table>
+        <br><br>
+        <table class="api-table">
+            <thead><th colspan="3">Navbar Menu Component</th></thead>
+            <tr>
+                <th>appSwitcher</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>Whether to display the "View all applications" button at the bottom of the menu (default = true)</td>
+            </tr>
+        </table>
+    </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
+</div>

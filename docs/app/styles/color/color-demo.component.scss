@@ -1,0 +1,64 @@
+@import "colors";
+
+.palette-row {
+    display: flex;
+
+    & + .palette-row {
+        margin-top: 40px;
+    }
+}
+
+hc-swatch-demo-component {
+    flex: 1 1 auto;
+    width: 14%;
+    margin-right: 2%;
+}
+
+.primary .swatch-container {
+    width: 18%;
+    margin-right: 2%;
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.swatch-stack {
+    width: 45%;
+    margin-right: 10%;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    .swatch-container {
+        width: 100%;
+        text-align: right;
+        display: flex;
+    }
+
+    .swatch {
+        flex: 1 1 0;
+        margin-left: 10px;
+    }
+
+}
+
+.color-var-list {
+    li {
+        margin: 10px 0 10px 24px;
+    }
+
+    .mini-swatch {
+        display: inline-block;
+        height: 30px;
+        width: 100px;
+        position: relative;
+        top: 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+    .color-ref {
+        color: $gray-400;
+    }
+}
