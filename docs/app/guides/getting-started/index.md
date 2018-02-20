@@ -1,4 +1,5 @@
 # Getting Started
+###### Last updated February 20, 2018
 
 The easiest way to start with Angular is to use the [Angular CLI Tool](https://github.com/angular/angular-cli). To scaffold your project structure, follow its [installation instructions](https://github.com/angular/angular-cli#installation).
 

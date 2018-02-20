@@ -39,9 +39,11 @@ export class MarkdownDirective implements OnInit {
     const rowStyle = 'style="display: block;padding: 0 .5em 0 1em;border-right: 1px solid;margin-right: 5px;"';
     pre.innerHTML = '<span class="line-number" ' + style + '></span>' + pre.innerHTML + '<span class="cl"></span>';
     const num = pre.innerHTML.split(/\n/).length;
+    if (num > 2) {
     for (let j = 1; j < num; j++) {
-      const lineNum = pre.getElementsByTagName('span')[0];
-      lineNum.innerHTML += '<span ' + rowStyle + '>' + (j) + '</span>';
+        const lineNum = pre.getElementsByTagName('span')[0];
+        lineNum.innerHTML += '<span ' + rowStyle + '>' + (j) + '</span>';
+        }
     }
   }
 }
