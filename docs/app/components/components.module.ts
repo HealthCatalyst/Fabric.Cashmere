@@ -99,12 +99,8 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         BreadcrumbsDemoComponent,
         Breadcrumb1DemoComponent,
         Breadcrumb2DemoComponent,
-<<<<<<< HEAD:docs/app/components/components.module.ts
         TileDemoComponent,
         ChipDemoComponent
-=======
-        TileDemoComponent
->>>>>>> upstream/master:docs/app/components/components.module.ts
     ],
     providers: [
         {
