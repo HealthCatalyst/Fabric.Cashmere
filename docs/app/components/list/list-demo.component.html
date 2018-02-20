@@ -15,11 +15,18 @@
         <h5>Example</h5>
         <div class="list-demo-container">
             <hc-list>
+                <h3 hcListSubheader>Snow</h3>
                 <hc-list-item>
                     <hc-icon fontSet="fa" fontIcon="fa-snowflake-o" hcListIcon></hc-icon>
-                    <h4 hcListLine>SnowFlake</h4>
-                    <span hcListLine>Second Line</span>
+                    <h4 hcListLine>SnowFlake line 1</h4>
+                    <span hcListLine>SnowFlake line 2</span>
                 </hc-list-item>
+                <hc-list-item>
+                    <hc-icon fontSet="fa" fontIcon="fa-snowflake-o" hcListIcon></hc-icon>
+                    <h4 hcListLine>Another SnowFlake</h4>
+                </hc-list-item>
+                <hc-divider></hc-divider>
+                <h3 hcListSubheader>Address</h3>
                 <hc-list-item>
                     <img src="assets/CashmereLogo.svg" hcListAvatar>
                     <h4 hcListLine>Address Line 1</h4>
@@ -38,19 +45,25 @@
 
         <pre>
             <code>
-&lt;hc-list&gt;
-    &lt;hc-list-item&gt;
-        &lt;hc-icon fontSet=&quot;fa&quot; fontIcon=&quot;fa-snowflake-o&quot; hcListIcon&gt;&lt;/hc-icon&gt;
-        &lt;h4 hcListLine&gt;SnowFlake&lt;/h4&gt;
-        &lt;span hcListLine&gt;Second Line&lt;/span&gt;
-    &lt;/hc-list-item&gt;
-    &lt;hc-list-item&gt;
-        &lt;img src=&quot;assets/CashmereLogo.svg&quot; hcListAvatar&gt;
-        &lt;h4 hcListLine&gt;Address Line 1&lt;/h4&gt;
-        &lt;span hcListLine&gt;Address Line 2&lt;/span&gt;
-        &lt;hc-icon fontSet=&quot;fa&quot; fontIcon=&quot;fa-plus&quot;&gt;&lt;/hc-icon&gt;
-    &lt;/hc-list-item&gt;
-&lt;/hc-list&gt;
+        &lt;hc-list&gt;
+            &lt;h3 hcListSubheader&gt;Snow&lt;/h3&gt;
+            &lt;hc-list-item&gt;
+                &lt;hc-icon fontSet=&quot;fa&quot; fontIcon=&quot;fa-snowflake-o&quot; hcListIcon&gt;&lt;/hc-icon&gt;
+                &lt;h4 hcListLine&gt;SnowFlake line 1&lt;/h4&gt;
+                &lt;span hcListLine&gt;SnowFlake line 2&lt;/span&gt;
+            &lt;/hc-list-item&gt;
+            &lt;hc-list-item&gt;
+                &lt;hc-icon fontSet=&quot;fa&quot; fontIcon=&quot;fa-snowflake-o&quot; hcListIcon&gt;&lt;/hc-icon&gt;
+                &lt;h4 hcListLine&gt;Another SnowFlake&lt;/h4&gt;
+            &lt;/hc-list-item&gt;
+            &lt;h3 hcListSubheader&gt;Address&lt;/h3&gt;
+            &lt;hc-list-item&gt;
+                &lt;img src=&quot;assets/CashmereLogo.svg&quot; hcListAvatar&gt;
+                &lt;h4 hcListLine&gt;Address Line 1&lt;/h4&gt;
+                &lt;span hcListLine&gt;Address Line 2&lt;/span&gt;
+                &lt;hc-icon fontSet=&quot;fa&quot; fontIcon=&quot;fa-plus&quot;&gt;&lt;/hc-icon&gt;
+            &lt;/hc-list-item&gt;
+        &lt;/hc-list&gt;
             </code>
         </pre>
     </hc-tile>
@@ -92,8 +105,15 @@
         <div class="directive-description">
             <h3>hcListLine</h3>
             <p>
-                This is the main text content of the hc-list-item. At the moment it's only styled to provide up to two
-                lines, but in the future you can have as many as you want.
+                This is the main text content of the hc-list-item. Add this directive to content you want to show up in the
+                middle content section
+            </p>
+        </div>
+
+        <div class="directive-description">
+            <h3>hcListSubheader</h3>
+            <p>
+                Gives a list section a header
             </p>
         </div>
     </hc-tile>

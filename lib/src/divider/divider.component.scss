@@ -1,0 +1,11 @@
+$hc-divider-width: 1px;
+
+.hc-divider {
+    display: block;
+    margin: 0;
+
+    // Don't optimize the styles this allows the user to override the individual styles
+    border-top-width: $hc-divider-width;
+    border-top-style: solid;
+    border-top-color: rgba(0, 0, 0, .12);
+}

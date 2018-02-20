@@ -18,6 +18,7 @@ import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.compon
 import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
 import { TileDemoComponent } from './tile/tile-demo.component';
 import { ChipDemoComponent } from './chip/chip-demo.component';
+import { DividerDemoComponent } from './divider/divider-demo.component';
 
 export const routes: Routes = [
     {
@@ -110,6 +111,10 @@ export const routes: Routes = [
             {
                 path: 'chip',
                 component: ChipDemoComponent
+            },
+            {
+                path: 'divider',
+                component: DividerDemoComponent
             },
             {
                 path: '**',
