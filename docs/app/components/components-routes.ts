@@ -18,8 +18,12 @@ import { AccordionDemoComponent } from './accordion/accordion-demo.component';
 import { BreadcrumbsDemoComponent } from './breadcrumbs/breadcrumbs-demo.component';
 import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.component';
 import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
+<<<<<<< HEAD:docs/app/components/components-routes.ts
 import { TileDemoComponent } from './tile/tile-demo.component';
 import { ChipDemoComponent } from './chip/chip-demo.component';
+=======
+import { TileDemoComponent } from './tile/tile-demo.component'
+>>>>>>> upstream/master:docs/app/components/components-routes.ts
 
 export const routes: Routes = [
     {
@@ -118,10 +122,13 @@ export const routes: Routes = [
                 component: TileDemoComponent
             },
             {
+<<<<<<< HEAD:docs/app/components/components-routes.ts
                 path: 'chip',
                 component: ChipDemoComponent
             },
             {
+=======
+>>>>>>> upstream/master:docs/app/components/components-routes.ts
                 path: '**',
                 redirectTo: 'accordion'
             }

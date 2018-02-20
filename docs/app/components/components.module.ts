@@ -41,8 +41,11 @@ import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.compon
 import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
 import { TileModule } from '../../../lib/src/tile/tile.module';
 import { TileDemoComponent } from './tile/tile-demo.component';
+<<<<<<< HEAD:docs/app/components/components.module.ts
 import { ChipModule } from '../../../lib/src/chip/chip.module';
 import { ChipDemoComponent } from './chip/chip-demo.component';
+=======
+>>>>>>> upstream/master:docs/app/components/components.module.ts
 
 @NgModule({
     imports: [
@@ -64,7 +67,10 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         BreadcrumbsModule,
         AccordionModule,
         TileModule,
+<<<<<<< HEAD:docs/app/components/components.module.ts
         ChipModule,
+=======
+>>>>>>> upstream/master:docs/app/components/components.module.ts
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -93,8 +99,12 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         BreadcrumbsDemoComponent,
         Breadcrumb1DemoComponent,
         Breadcrumb2DemoComponent,
+<<<<<<< HEAD:docs/app/components/components.module.ts
         TileDemoComponent,
         ChipDemoComponent
+=======
+        TileDemoComponent
+>>>>>>> upstream/master:docs/app/components/components.module.ts
     ],
     providers: [
         {

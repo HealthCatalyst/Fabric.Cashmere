@@ -1,7 +1,10 @@
 @import '../sass/cashmere';
 
 :host {
+<<<<<<< HEAD
     display: table;
+=======
+>>>>>>> upstream/master
     width: 100%;
 }
 
@@ -9,8 +12,13 @@
     padding-top: 15px;
     background-color: $white;
     width: 20%;
+<<<<<<< HEAD
     display: table-cell;
     vertical-align: top;
+=======
+    float: left;
+    height: 100%;
+>>>>>>> upstream/master
 }
 
 .tab-vertical {
