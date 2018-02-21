@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ChipComponent implements OnInit {
 
     @Input() action: boolean = false;
+    @Input() color: string = 'neutral';
     chipCursor: string = 'auto';
     chipType: string = 'chip';
 
@@ -17,7 +18,9 @@ export class ChipComponent implements OnInit {
     ngOnInit() {
         if (this.action) {
             this.chipCursor = 'pointer';
-            this.chipType = 'chip close';
+            this.chipType += ' close';
         }
+
+        this.chipType += ' ' + this.color;
     }
 }

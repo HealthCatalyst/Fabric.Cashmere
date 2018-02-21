@@ -118,13 +118,10 @@ export const routes: Routes = [
                 component: TileDemoComponent
             },
             {
-<<<<<<< HEAD:docs/app/components/components-routes.ts
                 path: 'chip',
                 component: ChipDemoComponent
             },
             {
-=======
->>>>>>> upstream/master:docs/app/components/components-routes.ts
                 path: '**',
                 redirectTo: 'accordion'
             }

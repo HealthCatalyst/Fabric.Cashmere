@@ -1,24 +1,49 @@
 @import '../sass/cashmere';
 
 .chip {
-    color: $text;
     border-radius: 6px;
     height: 32px;
     line-height: 32px;
     font-size: 14px;
     display: inline-block;
     padding: 0 15px;
-    background-color: #E5E5E5;
     cursor: pointer;
     margin: 0 5px 10px 5px;
 }
+
+.neutral {
+    color: $text;
+    background-color: #E5E5E5;
+}
+
+.red {
+    color: #BA6664;
+    background-color: #F3E0DE;
+    border: 2px solid #EED3D6;
+    line-height: 28px !important;
+}
+
+.yellow {
+    color: #B09606;
+    background-color: #F3F1DE;
+    border: 2px solid #EFE4BC;
+    line-height: 28px !important;
+}
+
+.green {
+    color: #00A859;
+    background-color: #E1F3DE;
+    border: 2px solid #C5EAC4;
+    line-height: 28px !important;
+}
+
 
 .close:after {
     content:"\f00d";
     font-family: FontAwesome;
     font-size: 15px;
-    color: #B6B6B6;
     padding-left: 12px;
+    opacity: 0.4;
 }
 
 :host(.filter-button) {

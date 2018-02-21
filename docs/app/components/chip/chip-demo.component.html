@@ -14,10 +14,16 @@
             <h5>Examples</h5>
             <h4>Basic</h4>
             <hc-chip>Basic Chip</hc-chip>
+            <hc-chip color="red">
+                <hc-icon fontSet="fa" fontIcon="fa-exclamation-triangle" icon-sm></hc-icon>
+                &nbsp;&nbsp;Alert Chip
+            </hc-chip>
+            <hc-chip color="yellow">Warning Chip</hc-chip>
+            <hc-chip color="green">Success Chip</hc-chip>
 
             <h4>Action Chips</h4>
             <hc-chip action="true" (click)="hideChip($event);">Action One</hc-chip>
-            <hc-chip action="true" (click)="hideChip($event);">Action Two</hc-chip>
+            <hc-chip color="red" action="true" (click)="hideChip($event);">Color Action</hc-chip>
 
             <h4>Chip Row and Filter Button</h4>
             <hc-chip-row>
