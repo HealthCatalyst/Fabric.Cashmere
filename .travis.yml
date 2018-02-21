@@ -25,3 +25,11 @@ script:
 cache:
   directories:
     - ./node_modules/
+
+before_deploy: echo -e '/*\n!/dist/' > .gitignore
+
+deploy:
+  provider: azure_web_apps
+  skip_cleanup: true
+  on:
+    branch: master
