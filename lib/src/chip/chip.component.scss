@@ -13,27 +13,27 @@
 
 .neutral {
     color: $text;
-    background-color: #E5E5E5;
+    background-color: tint( $text, 87%);
 }
 
 .red {
-    color: #BA6664;
-    background-color: #F3E0DE;
-    border: 2px solid #EED3D6;
+    color: $ruby-red;
+    background-color: tint( $ruby-red, 85%);
+    border: 2px solid tint( $ruby-red, 75%);
     line-height: 28px !important;
 }
 
 .yellow {
-    color: #B09606;
-    background-color: #F3F1DE;
-    border: 2px solid #EFE4BC;
+    color: shade( $yellow-orange, 25%);
+    background-color: tint( $yellow-orange, 80%);
+    border: 2px solid tint( $yellow-orange, 50%);
     line-height: 28px !important;
 }
 
 .green {
-    color: #00A859;
-    background-color: #E1F3DE;
-    border: 2px solid #C5EAC4;
+    color: $green;
+    background-color: tint( $light-green, 60%);
+    border: 2px solid tint( $light-green, 30%);
     line-height: 28px !important;
 }
 
