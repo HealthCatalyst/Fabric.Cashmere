@@ -6,16 +6,12 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build",
-        "test": "ng test",
-        "style": "ng serve --sourcemap --extractCss",
-        "ci:build": "ng build --prod --no-progress",
-        "ci:test": "ng test --single-run --code-coverage --no-progress",
-        "lib:build": "node lib/build.js",
-        "release": "ng build --target production --build-optimizer",
-        "lint": "ng lint",
-        "e2e": "ng e2e",
-        "verify": "node lib/build.js --local"
+        "test:unit": "ng test --single-run --code-coverage --no-progress",
+        "lint": "tslint -p tsconfig.json",
+        "build:lib": "node lib/build.js",
+        "build:demo": "ng build --prod --no-progress --base-href $DEMO_BASE_HREF",
+        "prebuild": "npm run lint && npm run test:unit",
+        "build": "npm run build:lib && npm run build:demo"
     },
     "dependencies": {
         "@angular/animations": "5.1.0",
