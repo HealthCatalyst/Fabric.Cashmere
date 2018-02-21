@@ -11,6 +11,7 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
 
 @Component({
     template: `
+        <div class="{{direction}}-container">
             <div class="tab-bar-{{direction}}">
                 <div *ngFor="let tab of tabs">
                     <a *ngIf="routerEnabled" class="tab-{{direction}}"
@@ -31,7 +32,8 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
                  <router-outlet *ngIf="routerEnabled"></router-outlet>
                  <ng-content *ngIf="!routerEnabled"></ng-content>
              </div>
-           `,
+        </div>
+    `,
     selector: `hc-tab-set`,
     styleUrls: ['./tab-set.component.scss']
 })
