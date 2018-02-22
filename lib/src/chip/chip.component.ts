@@ -10,6 +10,7 @@ export class ChipComponent implements OnInit {
     @Input() action: boolean = false;
     @Input() color: string = 'neutral';
     chipCursor: string = 'auto';
+    chipDisplay: string = 'inline-block';
     chipType: string = 'chip';
 
     constructor() {

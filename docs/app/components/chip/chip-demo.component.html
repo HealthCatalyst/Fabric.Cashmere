@@ -7,11 +7,14 @@
 
         <hc-tile>
             <h5>About</h5>
-            <p>Checkboxes allow the user to make a binary choice, i.e. a choice between one of two possible mutually exclusive options.</p>
+            <p>Chips represent complex entities in small blocks, such as filters, contacts, or system information - and they may be
+                removed if they display a delete icon. Chips are often grouped in collections, for which a supporting
+                chip-row component may be used.  The most common use case for chips is to display data filters, so a standard filter
+                button is also included which can be dropped into the chip-row.</p>
         </hc-tile>
 
         <hc-tile>
-            <h5>Examples</h5>
+            <h5>Chip Types</h5>
             <h4>Basic</h4>
             <hc-chip>Basic Chip</hc-chip>
             <hc-chip color="red">
@@ -23,11 +26,14 @@
 
             <h4>Action Chips</h4>
             <hc-chip action="true" (click)="hideChip($event);">Action One</hc-chip>
-            <hc-chip color="red" action="true" (click)="hideChip($event);">Color Action</hc-chip>
+            <hc-chip color="red" action="true" (click)="hideExampleChip($event);">Color Action</hc-chip>
+        </hc-tile>
 
-            <h4>Chip Row and Filter Button</h4>
+        <hc-tile>
+            <h5>Chip Rows</h5>
+            <h4>Chip Row and Filter Button (Multi-line)</h4>
             <hc-chip-row>
-                <hc-filter-button></hc-filter-button>
+                <hc-filter-button [buttonState]="firstFilter"></hc-filter-button>
                 <hc-chip action="true" (click)="hideChip($event);">Hospital (2)</hc-chip>
                 <hc-chip action="true" (click)="hideChip($event);">MS-DRG (43)</hc-chip>
                 <hc-chip action="true" (click)="hideChip($event);">Payer (11)</hc-chip>
@@ -38,10 +44,101 @@
                 <hc-chip action="true" (click)="hideChip($event);">Gender (1)</hc-chip>
                 <hc-chip action="true" (click)="hideChip($event);">ER Visit (3)</hc-chip>
             </hc-chip-row>
+
+            <h4>Chip Row (Single Row)</h4>
+            <hc-chip-row singleRow="true">
+                <hc-filter-button [buttonState]="secondFilter"></hc-filter-button>
+                <hc-chip action="true" (click)="hideChipSetTwo($event);">Payer (11)</hc-chip>
+                <hc-chip action="true" (click)="hideChipSetTwo($event);">Clinical Program (103)</hc-chip>
+                <hc-chip action="true" (click)="hideChipSetTwo($event);">Care Process (4)</hc-chip>
+                <hc-chip action="true" (click)="hideChipSetTwo($event);">Discharge Status (37)</hc-chip>
+                <hc-chip action="true" (click)="hideChipSetTwo($event);">Gender (1)</hc-chip>
+                <hc-chip action="true" (click)="hideChipSetTwo($event);">ER Visit (3)</hc-chip>
+            </hc-chip-row>
         </hc-tile>
 
     </hc-tab>
     <hc-tab title="Documentation">
+
+        <hc-tile>
+            <h5>Angular Component</h5>
+            <pre>
+                <code>
+    &#x3C;hc-chip&#x3E;Basic Chip&#x3C;/hc-chip&#x3E;
+
+    &#x3C;hc-chip color=&#x22;red&#x22;&#x3E;
+        &#x3C;hc-icon fontSet=&#x22;fa&#x22; fontIcon=&#x22;fa-exclamation-triangle&#x22; icon-sm&#x3E;&#x3C;/hc-icon&#x3E;
+        &#x26;nbsp;&#x26;nbsp;Alert Chip
+    &#x3C;/hc-chip&#x3E;
+
+    &#x3C;hc-chip color=&#x22;yellow&#x22;&#x3E;Warning Chip&#x3C;/hc-chip&#x3E;
+
+    &#x3C;hc-chip color=&#x22;green&#x22;&#x3E;Success Chip&#x3C;/hc-chip&#x3E;
+
+    &#x3C;hc-chip action=&#x22;true&#x22;&#x3E;Action One&#x3C;/hc-chip&#x3E;
+
+    &#x3C;hc-chip-row singleRow=&#x22;false&#x22;&#x3E;
+        &#x3C;hc-filter-button [buttonState]=&#x22;true&#x22;&#x3E;&#x3C;/hc-filter-button&#x3E;
+        &#x3C;hc-chip action=&#x22;true&#x22;&#x3E;Hospital (2)&#x3C;/hc-chip&#x3E;
+    &#x3C;/hc-chip-row&#x3E;
+                </code>
+            </pre>
+        </hc-tile>
+
+        <hc-tile>
+            <h5>Chip Usage</h5>
+            <p>The chip module consists of three componenets:</p>
+            <ul>
+                <li><code>hc-chip</code> - the base component</li>
+                <li><code>hc-chip-row</code> - the optional container for chips</li>
+                <li><code>hc-filter-button</code> - the optional filter button often used inside a chip-row</li>
+            </ul>
+        </hc-tile>
+
+        <hc-tile>
+            <h5>Properties</h5>
+            <table class="api-table">
+                <thead><th colspan="3">Chip Component</th></thead>
+                <tr>
+                    <th>action</th>
+                    <td><span class="type-label">Type:</span> Boolean</td>
+                    <td>Whether to display a delete button and pointer cursor</td>
+                </tr>
+                <tr>
+                    <th>color</th>
+                    <td><span class="type-label">Type:</span> String</td>
+                    <td>'neutral', 'red', 'yellow', 'green' (default='neutral')</td>
+                </tr>
+            </table>
+            <br><br>
+            <table class="api-table">
+                <thead><th colspan="3">Chip Row Component</th></thead>
+                <tr>
+                    <th>singleRow</th>
+                    <td><span class="type-label">Type:</span> Boolean</td>
+                    <td>If true, constrain the container to one line with overflow ellipses</td>
+                </tr>
+            </table>
+            <br><br>
+            <table class="api-table">
+                <thead><th colspan="3">Filter Button Component</th></thead>
+                <tr>
+                    <th>labelOff</th>
+                    <td><span class="type-label">Type:</span> String</td>
+                    <td>Text to display when button is off (default='Filters off')</td>
+                </tr>
+                <tr>
+                    <th>labelOn</th>
+                    <td><span class="type-label">Type:</span> String</td>
+                    <td>Text to display when button is on (default='Filters on')</td>
+                </tr>
+                <tr>
+                    <th>buttonState</th>
+                    <td><span class="type-label">Type:</span> Boolean</td>
+                    <td>If true, the button will display its 'labelOn' text</td>
+                </tr>
+            </table>
+        </hc-tile>
 
     </hc-tab>
     </hc-tab-set>

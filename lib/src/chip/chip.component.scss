@@ -64,11 +64,14 @@
     vertical-align: middle;
 }
 
-:host(.chip-row) { display: table; }
+:host(.chip-row) { display: flex; }
 
-.chip-row-button { display: table-cell; }
+.chip-row-button { display: inline-block; }
 
-.chip-row-content {
-    max-height: 80px;
-    overflow-y: hidden;
+.chip-row-contents { display: inline-block; }
+
+.single-row {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
