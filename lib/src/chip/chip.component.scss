@@ -71,7 +71,39 @@
 .chip-row-contents { display: inline-block; }
 
 .single-row {
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    height: 32px;
     overflow: hidden;
+}
+
+.single-row:before {
+	content:"";
+	float: left;
+    width: 5px;
+    height: 50px;
+}
+
+.single-row > *:first-child {
+	float: right;
+	width: 100%;
+	margin-left: -5px; }
+
+.single-row:after {
+	content: "\02026more";
+
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+
+    float: right;
+    position: relative;
+    top: -40px;
+    left: 100%;
+    width: 3.5em;
+	margin-left: -3.5em;
+	padding-right: 5px;
+	text-align: right;
+}
+
+.row-buffer {
+    margin-right: 3.5em;
 }
