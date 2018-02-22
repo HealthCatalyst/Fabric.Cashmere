@@ -4,7 +4,7 @@
     border-radius: 6px;
     height: 32px;
     line-height: 32px;
-    font-size: 14px;
+    @include fontSize(14px);
     display: inline-block;
     padding: 0 15px;
     cursor: pointer;
@@ -41,7 +41,7 @@
 .close:after {
     content:"\f00d";
     font-family: FontAwesome;
-    font-size: 15px;
+    @include fontSize(15px);
     padding-left: 12px;
     opacity: 0.4;
 }
@@ -49,7 +49,7 @@
 :host(.filter-button) {
     font-weight: 600;
     display: inline-block;
-    font-size: 16px;
+    @include fontSize(16px);
     width: 120px;
     line-height: 32px;
     color: $primary-brand;
