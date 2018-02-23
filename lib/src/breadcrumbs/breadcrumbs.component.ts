@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
@@ -18,9 +18,9 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
 
     public breadcrumbs: IBreadcrumb[];
     public routerSubscription: Subscription;
-    @Input() backURL: string;
-    @Input() backShow: string = 'none';
-    @Input() locationLabel: string = '';
+    backURL: string;
+    backShow: string = 'none';
+    locationLabel: string = '';
 
     constructor( private activatedRoute: ActivatedRoute, private router: Router ) {
         this.breadcrumbs = [];

@@ -18,7 +18,8 @@ import { AccordionDemoComponent } from './accordion/accordion-demo.component';
 import { BreadcrumbsDemoComponent } from './breadcrumbs/breadcrumbs-demo.component';
 import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.component';
 import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
-import { TileDemoComponent } from './tile/tile-demo.component'
+import { TileDemoComponent } from './tile/tile-demo.component';
+import { ChipDemoComponent } from './chip/chip-demo.component';
 
 export const routes: Routes = [
     {
@@ -115,6 +116,10 @@ export const routes: Routes = [
             {
                 path: 'tile',
                 component: TileDemoComponent
+            },
+            {
+                path: 'chip',
+                component: ChipDemoComponent
             },
             {
                 path: '**',
