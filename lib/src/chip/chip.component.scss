@@ -1,4 +1,6 @@
-@import '../sass/cashmere';
+@import '../sass/colors';
+@import '../sass/functions.scss';
+@import '../sass/mixins.scss';
 
 .chip {
     border-radius: 6px;
@@ -7,7 +9,6 @@
     @include fontSize(14px);
     display: inline-block;
     padding: 0 15px;
-    cursor: pointer;
     margin: 0 5px 10px 5px;
 }
 
@@ -37,6 +38,7 @@
     line-height: 28px !important;
 }
 
+.close { cursor: pointer; }
 
 .close:after {
     content:"\f00d";
@@ -45,28 +47,6 @@
     padding-left: 12px;
     opacity: 0.4;
 }
-
-:host(.filter-button) {
-    font-weight: 600;
-    display: inline-block;
-    @include fontSize(16px);
-    width: 120px;
-    line-height: 32px;
-    color: $primary-brand;
-    cursor: pointer;
-}
-
-.filter-img {
-    height: 27px;
-    width: 27px;
-    padding: 2px 8px 4px 0;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-:host(.chip-row) { display: flex; }
-
-.chip-row-button { display: inline-block; }
 
 .chip-row-contents { display: inline-block; }
 

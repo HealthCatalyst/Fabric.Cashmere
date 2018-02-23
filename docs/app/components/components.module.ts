@@ -42,6 +42,7 @@ import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.compon
 import { TileModule } from '../../../lib/src/tile/tile.module';
 import { TileDemoComponent } from './tile/tile-demo.component';
 import { ChipModule } from '../../../lib/src/chip/chip.module';
+import { FilterButtonComponent } from './chip/filter-button.component';
 import { ChipDemoComponent } from './chip/chip-demo.component';
 
 @NgModule({
@@ -94,7 +95,8 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         Breadcrumb1DemoComponent,
         Breadcrumb2DemoComponent,
         TileDemoComponent,
-        ChipDemoComponent
+        ChipDemoComponent,
+        FilterButtonComponent
     ],
     providers: [
         {

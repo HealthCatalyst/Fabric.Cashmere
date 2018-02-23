@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChipComponent } from './chip.component';
-import { IconModule } from './../icon/icon.module';
 
 describe('SelectComponent', () => {
     let component: ChipComponent;
@@ -8,7 +7,7 @@ describe('SelectComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [IconModule],
+            imports: [],
             providers: [],
             declarations: [ChipComponent]
         })

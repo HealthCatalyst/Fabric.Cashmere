@@ -1,22 +1,28 @@
-import { Component, HostBinding, OnInit, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { ChipComponent } from '../chip.component';
-import { FilterButtonComponent } from '../filter-button/filter-button.component';
+import { anyToBoolean } from '../../util';
 
 @Component({
     selector: 'hc-chip-row',
-    templateUrl: './chip-row.component.html',
-    styleUrls: ['../chip.component.scss']
+    template: `<div [ngClass]="contentClass"><div><div class="row-buffer"><ng-content></ng-content></div></div></div>`,
+    styleUrls: ['../chip.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
-export class ChipRowComponent implements OnInit {
-    @HostBinding('class') hostClass = 'chip-row';
-    @Input() singleRow: boolean = false;
+export class ChipRowComponent {
+    _wrap: boolean = true;
     contentClass: string = 'chip-row-contents';
 
     constructor( ) {
     }
 
-    ngOnInit() {
-        if ( this.singleRow ) {
+    @Input()
+    get wrap(): boolean {
+        return this._wrap;
+    }
+
+    set wrap(doWrap) {
+        this._wrap = anyToBoolean(doWrap);
+        if ( !this._wrap ) {
             this.contentClass = 'chip-row-contents single-row';
         }
     }

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { FilterButtonComponent } from './filter-button.component';
 
 @Component({
     selector: 'hc-chip-demo',
-    templateUrl: './chip-demo.component.html'
+    templateUrl: './chip-demo.component.html',
+    styles: [ '.chip-row-wrapper { display: flex; }', '.chip-row-button { display: inline-block; }' ]
 })
 
 export class ChipDemoComponent {
