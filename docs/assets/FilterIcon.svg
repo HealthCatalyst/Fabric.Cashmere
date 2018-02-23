@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="5461 47.25 19.281 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #00aeff;
+      }
+    </style>
+  </defs>
+  <g id="Filters_Button" data-name="Filters Button" transform="translate(5461 67.25) rotate(-90)">
+    <path id="Path_304" data-name="Path 304" class="cls-1" d="M9.939,2.993V.719A.719.719,0,0,0,8.5.719v2.36m0,4.892v10.59h0a.719.719,0,1,0,1.439,0V7.942" transform="translate(-6.054)"/>
+    <path id="Path_305" data-name="Path 305" class="cls-1" d="M6.475,11.023a3.237,3.237,0,0,0-6.475,0,3.237,3.237,0,0,0,6.475,0Zm-5.036,0a1.784,1.784,0,1,1,1.784,1.784A1.793,1.793,0,0,1,1.439,11.023Z" transform="translate(0 -5.555)"/>
+    <path id="Path_306" data-name="Path 306" class="cls-1" d="M56.939,2.993V.719a.719.719,0,0,0-1.439,0v2.36m0,4.892v10.59h0a.719.719,0,1,0,1.439,0V7.942" transform="translate(-39.529)"/>
+    <path id="Path_307" data-name="Path 307" class="cls-1" d="M53.475,11.023a3.237,3.237,0,1,0-3.252,3.223A3.218,3.218,0,0,0,53.475,11.023Zm-5.036,0a1.784,1.784,0,1,1,1.784,1.784A1.793,1.793,0,0,1,48.439,11.023Z" transform="translate(-33.475 -5.555)"/>
+    <path id="Path_308" data-name="Path 308" class="cls-1" d="M32.5,16.288v2.273a.719.719,0,0,0,1.439,0V16.2m0-4.892V.719h0a.719.719,0,0,0-1.439,0V11.338" transform="translate(-23.147)"/>
+    <path id="Path_309" data-name="Path 309" class="cls-1" d="M23.5,40.023A3.237,3.237,0,1,0,26.752,36.8,3.218,3.218,0,0,0,23.5,40.023Zm5.036,0a1.784,1.784,0,1,1-1.784-1.784A1.793,1.793,0,0,1,28.536,40.023Z" transform="translate(-16.737 -26.21)"/>
+  </g>
+</svg>
