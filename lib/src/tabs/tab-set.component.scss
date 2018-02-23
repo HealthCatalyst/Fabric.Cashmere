@@ -6,16 +6,15 @@
 }
 
 .vertical-container {
-    display: table;
     height: 100%;
     width: 100%;
+    display: flex;
 }
 
 .tab-bar-vertical {
     padding-top: 15px;
     background-color: $white;
     width: 20%;
-    display: table-cell;
 }
 
 .tab-vertical {
@@ -39,7 +38,6 @@
 .tab-content-vertical {
     background-color: $slate-gray-100;
     width: 80%;
-    display: table-cell;
 }
 
 .tab-bar-horizontal {

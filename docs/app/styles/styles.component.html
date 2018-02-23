@@ -1,4 +1,12 @@
-<hc-tab-set>
+<hc-subnav class="responsive-subnav">
+    <div class="subnav-container">
+        <span class="subnav-label">Styles: </span>
+        <span class="subnav-select">
+            <hc-select [options]="['Colors', 'Tables', 'Typography']"></hc-select>
+        </span>
+    </div>
+</hc-subnav>
+<hc-tab-set class="full-height">
     <hc-tab title="Color" routerLink="/styles/color">
         Color
     </hc-tab>
