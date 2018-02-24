@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
     templateUrl: './accordion-demo.component.html',
-    styleUrls: ['./accordion-demo.component.scss']
+    styles: [ '[hc-button] { margin-top: 10px; margin-right: 10px;}' ]
 })
 export class AccordionDemoComponent {
     alignment = 'left';

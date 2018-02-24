@@ -2,16 +2,16 @@
     <div class="subnav-container">
         <span class="subnav-label">Styles: </span>
         <span class="subnav-select">
-            <hc-select [options]="['Colors', 'Tables', 'Typography']"></hc-select>
+            <hc-select [options]="['Colors', 'Tables', 'Typography']" [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)"></hc-select>
         </span>
     </div>
 </hc-subnav>
 <hc-tab-set class="full-height">
-    <hc-tab title="Color" routerLink="/styles/color">
-        Color
+    <hc-tab title="Colors" routerLink="/styles/color">
+        Colors
     </hc-tab>
-    <hc-tab title="Table" routerLink="/styles/table">
-        Table
+    <hc-tab title="Tables" routerLink="/styles/table">
+        Tables
     </hc-tab>
     <hc-tab title="Typography" routerLink="/styles/typography">
         Typography
