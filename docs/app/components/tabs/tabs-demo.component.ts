@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class TabsDemoComponent {
     lastModified: Date = new Date( document.lastModified );
+
+    tabs = [
+        {
+            id: 1,
+            title: 'tab1'
+        },
+        {
+            id: 2,
+            title: 'tab2'
+        },
+        {
+            id: 3,
+            title: 'tab3'
+        }
+    ]
 }
