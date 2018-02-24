@@ -11,16 +11,16 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Vertical Example </h5>
+        <h5>Vertical Example</h5>
         <div class="tab-demo">
             <hc-tab-set>
-                <hc-tab title="Tab 1" routerLink="/components/tabs/tab1">
+                <hc-tab title="Tab 1" [routerLink]="['/components/tabs', 1]">
                     Tab content 1
                 </hc-tab>
-                <hc-tab title="Tab 2" routerLink="/components/tabs/tab2">
+                <hc-tab title="Tab 2" [routerLink]="['/components/tabs', 2]">
                     Tab content 2
                 </hc-tab>
-                <hc-tab title="Tab 3" routerLink="/components/tabs/tab3">
+                <hc-tab title="Tab 3" [routerLink]="['/components/tabs', 3]">
                     Tab content 3
                 </hc-tab>
             </hc-tab-set>
