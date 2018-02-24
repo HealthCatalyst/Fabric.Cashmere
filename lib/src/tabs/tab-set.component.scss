@@ -1,7 +1,13 @@
 @import '../sass/cashmere';
 
-:host {
+.horizontal-container {
+    height: auto;
+    width: 100%;
+}
+
+.vertical-container {
     display: table;
+    height: 100%;
     width: 100%;
 }
 
@@ -10,7 +16,6 @@
     background-color: $white;
     width: 20%;
     display: table-cell;
-    vertical-align: top;
 }
 
 .tab-vertical {
@@ -35,7 +40,6 @@
     background-color: $slate-gray-100;
     width: 80%;
     display: table-cell;
-    vertical-align: top;
 }
 
 .tab-bar-horizontal {

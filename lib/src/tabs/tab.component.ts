@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
     template: `<div [hidden]="!active">
@@ -9,6 +10,6 @@ import { Component, Input } from '@angular/core';
 })
 export class TabComponent {
     @Input() title: string = '';
-    @Input() routerLink: string;
+    @Input() routerLink: any[] | string;
     active: boolean = false;
 }

@@ -28,7 +28,7 @@ In order for a contribution to be considered, the following conditions must be m
 * If the build succeeds, it will give you a command to install the package into another project.
     In another angular application run that command.  It will look something like
     ```bash
-    npm install C:\Source\Fabric.Cashmere\lib\dist\healthcatalyst-cashmere-0.0.2.tgz
+    npm install C:\Source\Fabric.Cashmere\lib\dist\healthcatalyst-cashmere-0.0.3.tgz
     ```
 * Ensure external application can do a production/aot build `ng build --prod`
 * Submit pull request from your fork to the main repository.

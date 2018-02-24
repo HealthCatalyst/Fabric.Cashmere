@@ -11,6 +11,7 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
 
 @Component({
     template: `
+        <div class="{{direction}}-container">
             <div class="tab-bar-{{direction}}">
                 <div *ngFor="let tab of tabs">
                     <a *ngIf="routerEnabled" class="tab-{{direction}}"
@@ -31,7 +32,8 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
                  <router-outlet *ngIf="routerEnabled"></router-outlet>
                  <ng-content *ngIf="!routerEnabled"></ng-content>
              </div>
-           `,
+        </div>
+    `,
     selector: `hc-tab-set`,
     styleUrls: ['./tab-set.component.scss']
 })
@@ -54,7 +56,13 @@ export class TabSetComponent implements AfterContentInit {
 
     private defaultToFirstTab() {
         if (this.tabs.first) {
-            this.setActive(this.tabs.first);
+            // setTimeout to avoid change after checked error
+            // when ngFor is used as projected nodes are registered
+            // and stored as part of the existing view, not
+            // the view in which they are projected
+            // embedded views are checked *before* AfterContentInit
+            // is triggered
+            setTimeout(() => this.setActive(this.tabs.first));
         }
     }
 
@@ -74,11 +82,24 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     private defaultToFirstRoute() {
-        const foundRoute = this.tabs.find(tab => tab.routerLink === this.router.url);
+        const foundRoute =
+            this.tabs
+                .map(tab => tab.routerLink)
+                .map(routerLink => this.mapRouterLinkToString(routerLink))
+                .find(routerLink => routerLink === this.router.url);
+
         if (foundRoute) {
             return;
         }
-        const firstRoute = this.tabs.first.routerLink;
+
+        const firstRoute = this.mapRouterLinkToString(this.tabs.first.routerLink);
         this.router.navigate([firstRoute], { relativeTo: this.route });
+    }
+
+    private mapRouterLinkToString(routerLink: string | any[]): string {
+        if (routerLink instanceof Array) {
+            routerLink = routerLink.join('/');
+        }
+        return routerLink;
     }
 }

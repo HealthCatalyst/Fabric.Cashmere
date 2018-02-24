@@ -1,7 +1,5 @@
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
-import { Tab3DemoComponent } from './tabs/tab3-demo.component';
-import { Tab2DemoComponent } from './tabs/tab2-demo.component';
-import { Tab1DemoComponent } from './tabs/tab1-demo.component';
+import { TabDemoComponent } from './tabs/tab-demo.component';
 import { TabsModule } from '../../../lib/src/tabs/tabs.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -41,6 +39,9 @@ import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.compon
 import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
 import { TileModule } from '../../../lib/src/tile/tile.module';
 import { TileDemoComponent } from './tile/tile-demo.component';
+import { ChipModule } from '../../../lib/src/chip/chip.module';
+import { FilterButtonComponent } from './chip/filter-button.component';
+import { ChipDemoComponent } from './chip/chip-demo.component';
 
 @NgModule({
     imports: [
@@ -62,6 +63,7 @@ import { TileDemoComponent } from './tile/tile-demo.component';
         BreadcrumbsModule,
         AccordionModule,
         TileModule,
+        ChipModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -79,9 +81,7 @@ import { TileDemoComponent } from './tile/tile-demo.component';
         SelectDemoComponent,
         DrawerDemoComponent,
         TabsDemoComponent,
-        Tab1DemoComponent,
-        Tab2DemoComponent,
-        Tab3DemoComponent,
+        TabDemoComponent,
         IconDemoComponent,
         ListDemoComponent,
         SubnavDemoComponent,
@@ -90,7 +90,9 @@ import { TileDemoComponent } from './tile/tile-demo.component';
         BreadcrumbsDemoComponent,
         Breadcrumb1DemoComponent,
         Breadcrumb2DemoComponent,
-        TileDemoComponent
+        TileDemoComponent,
+        ChipDemoComponent,
+        FilterButtonComponent
     ],
     providers: [
         {
