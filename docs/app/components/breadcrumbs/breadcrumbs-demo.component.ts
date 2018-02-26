@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'hc-breadcrumbs-demo',
-    templateUrl: './breadcrumbs-demo.component.html',
-    styles: [ '[hc-button] { margin-top: 10px; margin-right: 10px;}' ]
+    templateUrl: './breadcrumbs-demo.component.html'
 })
 export class BreadcrumbsDemoComponent {
     showTemplate: boolean = true;

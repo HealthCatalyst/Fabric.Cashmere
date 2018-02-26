@@ -26,31 +26,38 @@ export const routes: Routes = [
         children: [
             {
                 path: 'button',
-                component: ButtonDemoComponent
+                component: ButtonDemoComponent,
+                data: { title: 'Button' }
             },
             {
                 path: 'select',
-                component: SelectDemoComponent
+                component: SelectDemoComponent,
+                data: { title: 'Select' }
             },
             {
                 path: 'checkbox',
-                component: CheckboxDemoComponent
+                component: CheckboxDemoComponent,
+                data: { title: 'Checkbox' }
             },
             {
                 path: 'radio-button',
-                component: RadioButtonDemoComponent
+                component: RadioButtonDemoComponent,
+                data: { title: 'Radio Button' }
             },
             {
                 path: 'icon',
-                component: IconDemoComponent
+                component: IconDemoComponent,
+                data: { title: 'Icon' }
             },
             {
                 path: 'drawer',
-                component: DrawerDemoComponent
+                component: DrawerDemoComponent,
+                data: { title: 'Drawer' }
             },
             {
                 path: 'tabs',
                 component: TabsDemoComponent,
+                data: { title: 'Tabs' },
                 children: [
                     {
                         path: ':id',
@@ -60,20 +67,23 @@ export const routes: Routes = [
             },
             {
                 path: 'navbar',
-                component: NavbarDemoComponent
+                component: NavbarDemoComponent,
+                data: { title: 'Navbar' }
             },
             {
                 path: 'popover',
-                component: PopoverDemoComponent
+                component: PopoverDemoComponent,
+                data: { title: 'Popover' }
             },
             {
                 path: 'subnav',
-                component: SubnavDemoComponent
+                component: SubnavDemoComponent,
+                data: { title: 'Subnavbar' }
             },
             {
                 path: 'breadcrumbs',
                 component: BreadcrumbsDemoComponent,
-                data: { breadcrumb: 'Home Page' },
+                data: { breadcrumb: 'Home Page', title: 'Breadcrumbs' },
                 children: [
                     {
                         path: 'breadcrumb1',
@@ -91,19 +101,23 @@ export const routes: Routes = [
             },
             {
                 path: 'list',
-                component: ListDemoComponent
+                component: ListDemoComponent,
+                data: { title: 'List' }
             },
             {
                 path: 'accordion',
-                component: AccordionDemoComponent
+                component: AccordionDemoComponent,
+                data: { title: 'Accordion' }
             },
             {
                 path: 'tile',
-                component: TileDemoComponent
+                component: TileDemoComponent,
+                data: { title: 'Tile' }
             },
             {
                 path: 'chip',
-                component: ChipDemoComponent
+                component: ChipDemoComponent,
+                data: { title: 'Chips' }
             },
             {
                 path: '**',

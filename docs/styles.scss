@@ -35,8 +35,6 @@ body {
 
     .tab-bar-horizontal { margin-bottom: 25px; }
 
-    .width-overflow{ overflow-x: auto; }
-
     code {
         max-width: 870px;
     }
@@ -72,6 +70,7 @@ body {
     .responsive-subnav { display: flex !important; }
     hc-tab-set .vertical-container .tab-bar-vertical { display: none; }
     hc-tab-set .vertical-container .tab-content-vertical { width: 100% !important; }
+    hc-tile { overflow-x: auto; }
 }
 
 @include media-breakpoint-down(sm) {
@@ -140,6 +139,11 @@ ol {
 
 .sample-component {
     margin: 20px 0;
+}
+
+.demo-button {
+    margin-top: 10px !important;
+    margin-right: 10px !important;
 }
 
 .api-table {

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-    templateUrl: './accordion-demo.component.html',
-    styles: [ '[hc-button] { margin-top: 10px; margin-right: 10px;}' ]
+    templateUrl: './accordion-demo.component.html'
 })
+
 export class AccordionDemoComponent {
     alignment = 'left';
     hideToolbar = false;

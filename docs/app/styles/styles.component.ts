@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { SelectModule } from '../../../lib/src/select';
 
 @Component({
@@ -10,16 +10,12 @@ export class StylesComponent {
 
     thisPage = 'Colors';
 
-    constructor( private router: Router ) {
+    constructor( private activatedRoute: ActivatedRoute, private router: Router ) {
         // Listen for vertical tab bar navigation and update the select component
         router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd) {
-                if ( event.url === '/styles/color') {
-                    this.thisPage = 'Colors';
-                } else if ( event.url === '/styles/table') {
-                    this.thisPage = 'Tables';
-                } else if ( event.url === '/styles/typography') {
-                    this.thisPage = 'Typography';
+            if ( event instanceof NavigationEnd ) {
+                if ( activatedRoute.firstChild ) {
+                    this.thisPage = activatedRoute.firstChild.snapshot.data['title'];
                 }
             }
         });
@@ -27,13 +23,14 @@ export class StylesComponent {
 
     // Handle changes to the select component and navigate
     selectUpdate ( event: any ) {
-        if ( event === 'Colors') {
-            this.router.navigate(['/styles/color']);
-        } else if ( event === 'Tables') {
-            this.router.navigate(['/styles/table']);
-        } else if ( event === 'Typography') {
-            this.router.navigate(['/styles/typography']);
+        let root = this.activatedRoute.routeConfig;
+        if ( root && root.children ) {
+            for ( let entry of root.children ) {
+                if ( entry.data && event === entry.data.title ) {
+                    this.router.navigate(['/styles/' + entry.path]);
+                    break;
+                }
+            }
         }
     }
-
 }

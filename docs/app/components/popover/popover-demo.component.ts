@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'hc-popover-demo',
-    templateUrl: './popover-demo.component.html',
-    styles: [ '[hc-button] { margin-top: 10px; margin-right: 30px;}']
+    templateUrl: './popover-demo.component.html'
 })
 export class PopoverDemoComponent {
     lastModified: Date = new Date( document.lastModified );
