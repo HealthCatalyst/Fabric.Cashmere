@@ -3,7 +3,7 @@
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
     <hc-tab-set direction="horizontal">
-    <hc-tab title="Overview">
+    <hc-tab tabTitle="Overview">
 
     <hc-tile>
         <h5>About</h5>
@@ -14,13 +14,13 @@
         <h5>Vertical Example</h5>
         <div class="tab-demo">
             <hc-tab-set>
-                <hc-tab title="Tab 1" [routerLink]="['/components/tabs', 1]">
+                <hc-tab tabTitle="Tab 1" [routerLink]="['/components/tabs', 1]">
                     Tab content 1
                 </hc-tab>
-                <hc-tab title="Tab 2" [routerLink]="['/components/tabs', 2]">
+                <hc-tab tabTitle="Tab 2" [routerLink]="['/components/tabs', 2]">
                     Tab content 2
                 </hc-tab>
-                <hc-tab title="Tab 3" [routerLink]="['/components/tabs', 3]">
+                <hc-tab tabTitle="Tab 3" [routerLink]="['/components/tabs', 3]">
                     Tab content 3
                 </hc-tab>
             </hc-tab-set>
@@ -31,17 +31,17 @@
         <h5>Horizontal Example </h5>
         <div class="tab-demo">
             <hc-tab-set direction="horizontal">
-                <hc-tab title="Tab 1">
+                <hc-tab tabTitle="Tab 1">
                     <div class="demo-tab-content">
                         Tab content 1
                     </div>
                 </hc-tab>
-                <hc-tab title="Tab 2">
+                <hc-tab tabTitle="Tab 2">
                     <div class="demo-tab-content">
                         Tab content 2
                     </div>
                 </hc-tab>
-                <hc-tab title="Tab 3">
+                <hc-tab tabTitle="Tab 3">
                     <div class="demo-tab-content">
                         Tab content 3
                     </div>
@@ -54,31 +54,31 @@
         <h5>Together Example </h5>
         <div class="tab-demo">
             <hc-tab-set>
-                <hc-tab title="Tab 1">
+                <hc-tab tabTitle="Tab 1">
                     <hc-tab-set direction="horizontal">
-                        <hc-tab title="Tab 1">
+                        <hc-tab tabTitle="Tab 1">
                             <div class="demo-tab-content">
                                 Horizontal Tab content 1
                             </div>
                         </hc-tab>
-                        <hc-tab title="Tab 2">
+                        <hc-tab tabTitle="Tab 2">
                             <div class="demo-tab-content">
                                 Horizontal Tab content 2
                             </div>
                         </hc-tab>
-                        <hc-tab title="Tab 3">
+                        <hc-tab tabTitle="Tab 3">
                             <div class="demo-tab-content">
                                 Horizontal Tab content 3
                             </div>
                         </hc-tab>
                     </hc-tab-set>
                 </hc-tab>
-                <hc-tab title="Tab 2">
+                <hc-tab tabTitle="Tab 2">
                     <div class="demo-tab-content">
                         Vertical Tab content 2
                     </div>
                 </hc-tab>
-                <hc-tab title="Tab 3">
+                <hc-tab tabTitle="Tab 3">
                     <div class="demo-tab-content">
                         Vertical Tab content 3
                     </div>
@@ -111,17 +111,17 @@
     </hc-tile>
 
     </hc-tab>
-    <hc-tab title="Documentation">
+    <hc-tab tabTitle="Documentation">
 
     <hc-tile>
         <h5>Angular Component</h5>
         <pre>
             <code>
     &lt;hc-tab-set direction=&quot;horizontal&quot; &gt;
-    &#9;&lt;hc-tab title=&quot;Tab 1&quot;&gt;
+    &#9;&lt;hc-tab tabTitle=&quot;Tab 1&quot;&gt;
     &#9;&#9;Tab content 1
     &#9;&lt;/hc-tab&gt;
-    &#9;&lt;hc-tab title=&quot;Tab 2&quot;&gt;
+    &#9;&lt;hc-tab tabTitle=&quot;Tab 2&quot;&gt;
     &#9;&#9;Tab content 2
     &#9;&lt;/hc-tab&gt;
     &lt;/hc-tab-set&gt;
@@ -132,8 +132,8 @@
     <pre>
         <code>
     &lt;hc-tab-set&gt;
-    &#9;&lt;hc-tab title=&quot;Tab 1&quot; routerLink=&quot;/components/tabs/tab1&quot;&gt;&lt;/hc-tab&gt;
-    &#9;&lt;hc-tab title=&quot;Tab 2&quot; routerLink=&quot;/components/tabs/tab2&quot;&gt;&lt;/hc-tab&gt;
+    &#9;&lt;hc-tab tabTitle=&quot;Tab 1&quot; routerLink=&quot;/components/tabs/tab1&quot;&gt;&lt;/hc-tab&gt;
+    &#9;&lt;hc-tab tabTitle=&quot;Tab 2&quot; routerLink=&quot;/components/tabs/tab2&quot;&gt;&lt;/hc-tab&gt;
     &lt;/hc-tab-set&gt;
             </code>
         </pre>
