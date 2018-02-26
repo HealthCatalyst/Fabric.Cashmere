@@ -1,0 +1,58 @@
+<div class="demo-content">
+    <h1>Typeform Survey</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+        <hc-tab title="Overview">
+
+            <hc-tile>
+                <h5>About</h5>
+                <p>Typeform Survey component is a wrapper to the typeform survey embed script. </p>
+            </hc-tile>
+
+            <hc-tile>
+                <h5>Example</h5>
+                <hc-typeform-survey [surveyUri]="surveyUri" #survey></hc-typeform-survey>
+                <button hc-button color="primary" (click)="survey.open()">
+                    Open Survey </button>
+            </hc-tile>
+
+            <hc-tile>
+                <h5>Component Usage</h5>
+
+                <p>
+                    The typeform survey component should be used in conjunction with application specific logic that prompts the user to take
+                    a survey every 30 days.
+                </p>
+            </hc-tile>
+
+        </hc-tab>
+        <hc-tab title="Documentation">
+
+            <hc-tile>
+                <h5>Angular Component</h5>
+                <pre>
+            <code>
+    &lt;hc-typeform-survey surveyUri=&quot;https://exampleCompany.typeform.com&quot; #survey&gt;
+    &lt;/hc-typeform-survey&gt;
+    &lt;button hc-button color=&quot;primary&quot; (click)=&quot;survey.open()&quot; &gt; Open Survey &lt;/button&gt;
+        </code>
+    </pre>
+
+            </hc-tile>
+
+            <hc-tile>
+                <h5>Properties</h5>
+                <table class="api-table">
+                    <tr>
+                        <th>surveyUri</th>
+                        <td>
+                            <span class="type-label">Type:</span> String</td>
+                        <td> Use to swap out the survey that will be administered</td>
+                    </tr>
+                </table>
+            </hc-tile>
+
+        </hc-tab>
+    </hc-tab-set>
+</div>

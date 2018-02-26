@@ -1,3 +1,4 @@
+import { TypeFormSurveyDemoComponent } from './typeform-survey/typeform-survey-demo.component';
 import { TabDemoComponent } from './tabs/tab-demo.component';
 import { Routes } from '@angular/router';
 import { ButtonDemoComponent } from './button/button-demo.component';
@@ -118,6 +119,10 @@ export const routes: Routes = [
                 path: 'chip',
                 component: ChipDemoComponent,
                 data: { title: 'Chips' }
+            },
+            {
+                path: 'typeform-survey',
+                component: TypeFormSurveyDemoComponent
             },
             {
                 path: '**',
