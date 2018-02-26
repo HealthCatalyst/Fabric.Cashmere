@@ -1,8 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
 
 import { StylesComponent } from './styles.component';
 import { TabsModule } from '../../../lib/src/tabs';
+import { SelectModule } from '../../../lib/src/select';
+import { SubnavModule } from '../../../lib/src/subnav';
 
 describe('ComponentsComponent', () => {
     let component: StylesComponent;
@@ -13,7 +16,10 @@ describe('ComponentsComponent', () => {
             declarations: [StylesComponent],
             imports: [
                 RouterTestingModule,
-                TabsModule
+                FormsModule,
+                TabsModule,
+                SelectModule,
+                SubnavModule
             ]
         })
             .compileComponents();

@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class TabsDemoComponent {
     lastModified: Date = new Date( document.lastModified );
+    fullScreenCode: String = `.vertical-container { min-height: calc( 100vh - 53px ); }`;
 
     tabs = [
         {
