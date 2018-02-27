@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
     selector: 'hc-sidenav-demo',
     templateUrl: './drawer-demo.component.html'
 })
+
 export class DrawerDemoComponent {
     lastModified: Date = new Date( document.lastModified );
 }

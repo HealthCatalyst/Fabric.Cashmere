@@ -11,15 +11,18 @@ export const routes: Routes = [
         children: [
             {
                 path: 'color',
-                component: ColorDemoComponent
+                component: ColorDemoComponent,
+                data: { title: 'Colors' }
             },
             {
                 path: 'table',
-                component: TableDemoComponent
+                component: TableDemoComponent,
+                data: { title: 'Tables' }
             },
             {
                 path: 'typography',
-                component: TypographyDemoComponent
+                component: TypographyDemoComponent,
+                data: { title: 'Typography' }
             },
             {
                 path: '**',
