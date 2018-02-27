@@ -42,6 +42,8 @@ import { TileDemoComponent } from './tile/tile-demo.component';
 import { ChipModule } from '../../../lib/src/chip/chip.module';
 import { FilterButtonComponent } from './chip/filter-button.component';
 import { ChipDemoComponent } from './chip/chip-demo.component';
+import { DividerModule } from '../../../lib/src/divider';
+import { DividerDemoComponent } from './divider/divider-demo.component';
 
 @NgModule({
     imports: [
@@ -64,6 +66,7 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         AccordionModule,
         TileModule,
         ChipModule,
+        DividerModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -92,7 +95,8 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         Breadcrumb2DemoComponent,
         TileDemoComponent,
         ChipDemoComponent,
-        FilterButtonComponent
+        FilterButtonComponent,
+        DividerDemoComponent
     ],
     providers: [
         {

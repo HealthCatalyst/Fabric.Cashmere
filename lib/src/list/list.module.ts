@@ -5,6 +5,7 @@ import { ListItemComponent } from './list-item/list-item.component';
 import { ListAvatarDirective } from './list-item/directives/list-avatar.directive';
 import { ListIconDirective } from './list-item/directives/list-icon.directive';
 import { ListLineDirective } from './list-item/directives/list-line.directive';
+import { ListSubheaderDirective } from './list-subheader.directive';
 
 @NgModule({
     imports: [CommonModule],
@@ -13,14 +14,16 @@ import { ListLineDirective } from './list-item/directives/list-line.directive';
         ListItemComponent,
         ListAvatarDirective,
         ListIconDirective,
-        ListLineDirective
+        ListLineDirective,
+        ListSubheaderDirective
     ],
     exports: [
         ListComponent,
         ListItemComponent,
         ListAvatarDirective,
         ListIconDirective,
-        ListLineDirective
+        ListLineDirective,
+        ListSubheaderDirective
     ]
 })
 export class ListModule {

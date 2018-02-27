@@ -1,0 +1,76 @@
+<div class="demo-content">
+    <h1>Divider</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+        <hc-tab title="Overview">
+            <hc-tile>
+                <h5>About</h5>
+                <p>The divider component is used to break-up sections visually by adding a line between content</p>
+            </hc-tile>
+
+            <hc-tile>
+                <div class="list-demo-container">
+                    <hc-list>
+                        <h3 hcListSubheader>Snow</h3>
+                        <hc-list-item>
+                            <h4 hcListLine>SnowFlake line 1</h4>
+                        </hc-list-item>
+                        <hc-list-item>
+                            <h4 hcListLine>Another SnowFlake</h4>
+                        </hc-list-item>
+                        <hc-divider></hc-divider>
+                        <h3 hcListSubheader>Address</h3>
+                        <hc-list-item>
+                            <h4 hcListLine>Address Line 1</h4>
+                        </hc-list-item>
+                    </hc-list>
+                </div>
+            </hc-tile>
+        </hc-tab>
+        <hc-tab title="Documentation">
+            <hc-tile>
+                <h3>Angular Component</h3>
+                <hc-tab-set direction="horizontal">
+                    <hc-tab title="HTML">
+<pre>
+    <code>
+        &lt;hc-list&gt;
+            &lt;h3 hcListSubheader&gt;Snow&lt;/h3&gt;
+            &lt;hc-list-item&gt;
+                &lt;h4 hcListLine&gt;SnowFlake line 1&lt;/h4&gt;
+            &lt;/hc-list-item&gt;
+            &lt;hc-list-item&gt;
+                &lt;h4 hcListLine&gt;Another SnowFlake&lt;/h4&gt;
+            &lt;/hc-list-item&gt;
+            &lt;hc-divider&gt;&lt;/hc-divider&gt;
+            &lt;h3 hcListSubheader&gt;Address&lt;/h3&gt;
+            &lt;hc-list-item&gt;
+                &lt;h4 hcListLine&gt;Address Line 1&lt;/h4&gt;
+            &lt;/hc-list-item&gt;
+        &lt;/hc-list&gt;
+    </code>
+</pre>
+                    </hc-tab>
+                    <hc-tab title="TypeScript">
+<pre>
+    <code>
+        import &#123; DividerModule &#125; from &#x27;@healthcatalyst/cashmere&#x27;;
+
+        @NgModule(&#123;
+            imports: [
+                ...,
+            DividerModule,
+            ],
+            declarations: [...],
+            exports: [..]
+        &#125;)
+        export class SomeModule &#123; &#125;
+    </code>
+</pre>
+                    </hc-tab>
+                </hc-tab-set>
+            </hc-tile>
+        </hc-tab>
+    </hc-tab-set>
+</div>
