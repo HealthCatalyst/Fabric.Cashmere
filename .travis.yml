@@ -14,8 +14,8 @@ jobs:
       env: "PHASE=unit"
     - env: "PHASE=lint"
     - env: "PHASE=build_lib"
-    - stage: Build Demo
-      env: "PHASE=build_demo"
+    - stage: Build/Publish Demo
+      env: "PHASE=publish_github"
       deploy:
         provider: pages
         skip_cleanup: true

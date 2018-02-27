@@ -12,6 +12,6 @@ is_build_lib() {
     [[ "${PHASE}" = build_lib ]]
 }
 
-is_build_demo() {
-    [[ "${PHASE}" = build_demo ]]
+is_publish_github() {
+    [[ "${PHASE}" = publish_github ]]
 }

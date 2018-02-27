@@ -14,6 +14,6 @@ elif is_unit; then
     npm run test:unit
 elif is_build_lib; then
     npm run build:lib
-elif is_build_demo; then
-    npm run build:demo
+elif is_publish_github; then
+    npm run publish:github
 fi

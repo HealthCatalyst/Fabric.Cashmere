@@ -9,9 +9,11 @@
         "test:unit": "ng test --single-run --code-coverage --no-progress",
         "lint": "tslint -p tsconfig.json",
         "build:lib": "node lib/build.js",
-        "build:demo": "ng build --prod --no-progress --base-href $DEMO_BASE_HREF",
+        "build:demo": "ng build --prod --no-progress",
         "prebuild": "npm run lint && npm run test:unit",
-        "build": "npm run build:lib && npm run build:demo"
+        "build": "npm run build:lib && npm run build:demo",
+        "github_404": "cp dist/index.html dist/404.html",
+        "publish:github": "npm run build:demo --  --base-href $DEMO_BASE_HREF && npm run github_404"
     },
     "dependencies": {
         "@angular/animations": "5.1.0",
@@ -42,6 +44,7 @@
         "@types/popper.js": "^1.11.0",
         "chalk": "^2.3.0",
         "codelyzer": "~3.0.1",
+        "cp": "^0.2.0",
         "glob": "^7.1.2",
         "jasmine-core": "~2.6.2",
         "jasmine-spec-reporter": "~4.1.0",
