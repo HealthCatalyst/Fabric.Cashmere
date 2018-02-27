@@ -86,7 +86,10 @@ export class TabSetComponent implements AfterContentInit {
             this.tabs
                 .map(tab => tab.routerLink)
                 .map(routerLink => this.mapRouterLinkToString(routerLink))
-                .find(routerLink => this.routerMatchFound(routerLink));
+                .find(routerLink => {
+                    let currentRoute = this.router.url;
+                    return currentRoute === routerLink || currentRoute.indexOf(`${routerLink}/`) > -1;
+                });
 
         if (foundRoute) {
             return;
@@ -101,21 +104,5 @@ export class TabSetComponent implements AfterContentInit {
             routerLink = routerLink.join('/');
         }
         return routerLink;
-    }
-
-    private routerMatchFound(routerLink: string): boolean {
-        let matchFound = false;
-        let currentRoute = this.router.url;
-        if (currentRoute === routerLink) {
-            matchFound = true;
-            return matchFound;
-        }
-
-        if (currentRoute.indexOf(`${routerLink}/`) > -1) {
-            matchFound = true;
-            return matchFound;
-        }
-
-        return matchFound;
     }
 }
