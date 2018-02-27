@@ -5,7 +5,7 @@ import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 export type TabDirection = 'horizontal' | 'vertical';
 
 export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabComponent[]) {
-    const tabTitles = tabsWithoutRouterLink.map(tab => tab.title);
+    const tabTitles = tabsWithoutRouterLink.map(tab => tab.tabTitle);
     throw Error(`Routerlink missing on ${tabTitles.join(',')}`);
 }
 
@@ -18,12 +18,12 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
                        [routerLink]="tab.routerLink"
                        routerLinkActive="active"
                        (click)="setActive(tab)">
-                          {{tab.title}}
+                          {{tab.tabTitle}}
                     </a>
                     <a *ngIf="!routerEnabled" class="tab-{{direction}}"
                        [class.active]="tab.active"
                        (click)="setActive(tab)">
-                          {{tab.title}}
+                          {{tab.tabTitle}}
                     </a>
 
                 </div>
@@ -86,7 +86,7 @@ export class TabSetComponent implements AfterContentInit {
             this.tabs
                 .map(tab => tab.routerLink)
                 .map(routerLink => this.mapRouterLinkToString(routerLink))
-                .find(routerLink => routerLink === this.router.url);
+                .find(routerLink => this.routerMatchFound(routerLink));
 
         if (foundRoute) {
             return;
@@ -101,5 +101,21 @@ export class TabSetComponent implements AfterContentInit {
             routerLink = routerLink.join('/');
         }
         return routerLink;
+    }
+
+    private routerMatchFound(routerLink: string): boolean {
+        let matchFound = false;
+        let currentRoute = this.router.url;
+        if (currentRoute === routerLink) {
+            matchFound = true;
+            return matchFound;
+        }
+
+        if (currentRoute.indexOf(`${routerLink}/`) > -1) {
+            matchFound = true;
+            return matchFound;
+        }
+
+        return matchFound;
     }
 }
