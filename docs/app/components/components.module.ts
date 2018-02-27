@@ -1,3 +1,5 @@
+import { TypeformSurveyModule } from './../../../lib/src/typeform-survey/typeform-survey.module';
+import { TypeFormSurveyDemoComponent } from './typeform-survey/typeform-survey-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TabDemoComponent } from './tabs/tab-demo.component';
 import { TabsModule } from '../../../lib/src/tabs/tabs.module';
@@ -62,6 +64,7 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         SubnavModule,
         BreadcrumbsModule,
         AccordionModule,
+        TypeformSurveyModule,
         TileModule,
         ChipModule,
         RouterModule.forRoot(routes)
@@ -92,7 +95,8 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         Breadcrumb2DemoComponent,
         TileDemoComponent,
         ChipDemoComponent,
-        FilterButtonComponent
+        FilterButtonComponent,
+        TypeFormSurveyDemoComponent
     ],
     providers: [
         {
