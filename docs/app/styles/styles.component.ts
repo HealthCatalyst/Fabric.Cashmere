@@ -8,7 +8,8 @@ import { SelectModule } from '../../../lib/src/select';
 })
 export class StylesComponent {
 
-    thisPage = 'Colors';
+    thisPage = '';
+    selectOptions: Array<string> = [];
 
     constructor( private activatedRoute: ActivatedRoute, private router: Router ) {
         // Listen for vertical tab bar navigation and update the select component
@@ -19,6 +20,17 @@ export class StylesComponent {
                 }
             }
         });
+
+        // Populate the responsive select component with the router information
+        let root = this.activatedRoute.routeConfig;
+        if ( root && root.children ) {
+            for ( let entry of root.children ) {
+                if ( entry.data && entry.data.title ) {
+                    this.selectOptions.push( entry.data.title );
+                }
+            }
+        }
+        this.selectOptions.sort();
     }
 
     // Handle changes to the select component and navigate
