@@ -3,7 +3,7 @@
     <div class="subnav-container">
         <span class="subnav-label">Styles: </span>
         <span class="subnav-select">
-            <hc-select [options]="['Colors', 'Tables', 'Typography']" [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)"></hc-select>
+            <hc-select [options]="selectOptions" [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)"></hc-select>
         </span>
     </div>
 </hc-subnav>

@@ -2,7 +2,7 @@
     <div class="subnav-container">
         <span class="subnav-label">Components: </span>
         <span class="subnav-select">
-            <hc-select [options]="['Accordion', 'Breadcrumbs', 'Button', 'Checkbox', 'Chips', 'Drawer', 'Icon', 'List', 'Navbar', 'Popover', 'Radio Button', 'Select', 'Subnavbar', 'Tabs', 'Tile']" [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)"></hc-select>
+            <hc-select [options]="selectOptions" [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)"></hc-select>
         </span>
     </div>
 </hc-subnav>

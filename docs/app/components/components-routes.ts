@@ -122,7 +122,8 @@ export const routes: Routes = [
             },
             {
                 path: 'typeform-survey',
-                component: TypeFormSurveyDemoComponent
+                component: TypeFormSurveyDemoComponent,
+                data: { title: 'Typeform Survey' }
             },
             {
                 path: '**',
