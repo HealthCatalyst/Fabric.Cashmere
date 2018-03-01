@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { GuidesComponent } from './guides.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { TabsModule } from '../../../lib/public_api';
+import { TabsModule, SelectModule } from '../../../lib/public_api';
 import { SubnavModule } from '../../../lib/src/subnav';
 import { TileModule } from '../../../lib/src/tile';
 import { RouterModule } from '@angular/router';
@@ -21,6 +21,7 @@ import { SharedModule } from '../shared/shared.module';
     TileModule,
     CommonModule,
     SharedModule,
+    SelectModule,
     RouterModule.forRoot(routes)
   ],
   declarations: [GuidesComponent, GuideComponent],
