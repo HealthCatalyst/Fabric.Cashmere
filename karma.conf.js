@@ -28,10 +28,10 @@ module.exports = function (config) {
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        browsers: ['Chrome'],
+        browsers: ['ChromeHeadless'],
         customLaunchers: {
             ChromeHeadless: {
-                base: 'ChromeHeadless',
+                base: 'Chrome',
                 flags: [
                     '--headless',
                     '--disable-gpu',
