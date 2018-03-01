@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GettingStartedComponent } from './getting-started/getting-started.component';
 import { GuidesComponent } from './guides.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +8,9 @@ import { SubnavModule } from '../../../lib/src/subnav';
 import { TileModule } from '../../../lib/src/tile';
 import { RouterModule } from '@angular/router';
 import { routes } from './guides-routes';
-import { MarkdownDirective } from '../markdown.directive';
+import { GuideComponent } from './guide/guide.component';
+import { GuidesService } from './guides.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -19,8 +20,10 @@ import { MarkdownDirective } from '../markdown.directive';
     SubnavModule,
     TileModule,
     CommonModule,
+    SharedModule,
     RouterModule.forRoot(routes)
   ],
-  declarations: [GettingStartedComponent, GuidesComponent, MarkdownDirective]
+  declarations: [GuidesComponent, GuideComponent],
+  providers: [GuidesService]
 })
 export class GuidesModule { }

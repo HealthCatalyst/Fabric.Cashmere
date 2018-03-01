@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { GuidesComponent } from './guides.component';
-import { GettingStartedComponent } from './getting-started/getting-started.component';
+import { GuideComponent } from './guide/guide.component';
 
 export const routes: Routes = [
     {
@@ -8,12 +8,8 @@ export const routes: Routes = [
         component: GuidesComponent,
         children: [
             {
-                path: 'getting-started',
-                component: GettingStartedComponent
-            },
-            {
-                path: '**',
-                redirectTo: 'getting-started'
+                path: ':id',
+                component: GuideComponent
             }
         ]
     }

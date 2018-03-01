@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MarkdownDirective } from './markdown.directive';
 
-@Component({ template: `<div [markdown]="markdownInput" ></div>` })
+@Component({ template: `<div [hcMarkdown]="markdownInput" ></div>` })
 class Test1Component { markdownInput: string = `hello world`; highlight: boolean; lineNumbers: boolean; }
 
-@Component({ template: `<div [markdown]="markdownInput" [sanitize]="sanitize" [highlight]="highlight" [lineNumbers]="lineNumbers"></div>` })
+@Component({ template: `<div [hcMarkdown]="markdownInput" [sanitize]="sanitize" [highlight]="highlight" [lineNumbers]="lineNumbers"></div>` 
+})
 class Test2Component { markdownInput: string = `hello world`; sanitize: boolean; highlight: boolean = true; lineNumbers: boolean = true; }
 
 describe('MarkdownDirective', () => {
