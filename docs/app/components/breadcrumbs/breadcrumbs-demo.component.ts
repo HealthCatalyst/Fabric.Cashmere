@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 export class BreadcrumbsDemoComponent {
     showTemplate: boolean = true;
     lastModified: Date = new Date( document.lastModified );
-
+    public document: string = require('raw-loader!../../../../guides/components/breadcrumbs.md');
     viewToggle(show: 'ts' | 'html') {
         this.showTemplate = show === 'html';
     }
