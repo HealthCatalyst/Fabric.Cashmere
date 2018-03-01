@@ -1,4 +1,12 @@
-<hc-tab-set>
-    <hc-tab *ngFor="let guide of guidesService.guides" [tabTitle]="guide.title" [routerLink]="['/guides/', guide.route]">        
+<hc-subnav class="responsive-subnav" fixedTop="true">
+    <div class="subnav-container">
+        <span class="subnav-label">Styles: </span>
+        <span class="subnav-select">
+            <hc-select [options]="selectOptions" [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)"></hc-select>
+        </span>
+    </div>
+</hc-subnav>
+<hc-tab-set class="full-height">
+    <hc-tab *ngFor="let guide of guidesService.guides" [tabTitle]="guide.title" [routerLink]="['/guides/', guide.route]">
     </hc-tab>
 </hc-tab-set>
