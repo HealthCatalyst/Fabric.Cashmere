@@ -1,4 +1,6 @@
 @import "colors";
+@import 'variables';
+@import 'mixins';
 
 .palette-row {
     display: flex;
@@ -6,6 +8,10 @@
     & + .palette-row {
         margin-top: 40px;
     }
+}
+
+@include media-breakpoint-down(sm) {
+    .palette-row { display: block; }
 }
 
 hc-swatch-demo-component {

@@ -3,7 +3,7 @@
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
     <hc-tab-set direction="horizontal">
-    <hc-tab title="Overview">
+    <hc-tab tabTitle="Overview">
 
     <hc-tile>
         <h5>About</h5>
@@ -20,8 +20,8 @@
 
         <router-outlet></router-outlet>
 
-        <button hc-button routerLink="/components/breadcrumbs/breadcrumb1" title="First Breadcrumb" color="primary">Jump to Second Page</button>
-        <button hc-button routerLink="/components/breadcrumbs/breadcrumb1/breadcrumb2" title="Second Breadcrumb" color="primary">Jump to Third Page</button>
+        <button hc-button routerLink="/components/breadcrumbs/breadcrumb1" title="First Breadcrumb" color="primary" class="demo-button">Jump to Second Page</button>
+        <button hc-button routerLink="/components/breadcrumbs/breadcrumb1/breadcrumb2" title="Second Breadcrumb" color="primary" class="demo-button">Jump to Third Page</button>
     </hc-tile>
 
     <hc-tile>
@@ -33,7 +33,7 @@
     </hc-tile>
 
     </hc-tab>
-    <hc-tab title="Documentation">
+    <hc-tab tabTitle="Documentation">
 
     <hc-tile>
         <h5>Angular Component</h5>

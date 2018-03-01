@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
     styles: []
 })
 export class TabComponent {
-    @Input() title: string = '';
+    @Input() tabTitle: string = '';
     @Input() routerLink: any[] | string;
     active: boolean = false;
 }

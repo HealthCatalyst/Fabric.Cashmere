@@ -3,7 +3,7 @@
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
     <hc-tab-set direction="horizontal">
-    <hc-tab title="Overview">
+    <hc-tab tabTitle="Overview">
 
     <hc-tile>
         <h5>About</h5>
@@ -37,10 +37,10 @@
     <hc-tile>
         <h5>Placement</h5>
         <div class="sample-component">
-            <button hc-button color="primary" hcPopover="top" popperPlacement="top" aria-hidden="true">Top</button>
-            <button hc-button color="neutral" hcPopover="bottom" popperPlacement="bottom" aria-hidden="true">Bottom</button>
-            <button hc-button color="primary-alt" hcPopover="left" popperPlacement="left" aria-hidden="true">Left</button>
-            <button hc-button color="secondary" hcPopover="right" popperPlacement="right" aria-hidden="true">Right</button>
+            <button hc-button color="primary" hcPopover="top" popperPlacement="top" aria-hidden="true" class="demo-button">Top</button>
+            <button hc-button color="neutral" hcPopover="bottom" popperPlacement="bottom" aria-hidden="true" class="demo-button">Bottom</button>
+            <button hc-button color="primary-alt" hcPopover="left" popperPlacement="left" aria-hidden="true" class="demo-button">Left</button>
+            <button hc-button color="secondary" hcPopover="right" popperPlacement="right" aria-hidden="true" class="demo-button">Right</button>
         </div>
     </hc-tile>
 
@@ -59,7 +59,7 @@
     </hc-tile>
 
     </hc-tab>
-    <hc-tab title="Documentation">
+    <hc-tab tabTitle="Documentation">
 
     <hc-tile>
         <h5>Angular Component</h5>

@@ -6,16 +6,15 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "build": "ng build",
-        "test": "ng test",
-        "style": "ng serve --sourcemap --extractCss",
-        "ci:build": "ng build --prod --no-progress",
-        "ci:test": "ng test --single-run --code-coverage --no-progress",
-        "lib:build": "node lib/build.js",
-        "release": "ng build --target production --build-optimizer",
-        "lint": "ng lint",
-        "e2e": "ng e2e",
-        "verify": "node lib/build.js --local"
+        "test:unit": "ng test --single-run --code-coverage --no-progress",
+        "lint": "tslint -p tsconfig.json",
+        "build:lib": "node lib/build.js",
+        "build:demo": "ng build --prod --no-progress",
+        "prebuild": "npm run lint && npm run test:unit",
+        "build": "npm run build:lib && npm run build:demo",
+        "gh:404": "cp dist/index.html dist/404.html",
+        "gh:cname": "echo $CASHMERE_URL > dist/CNAME",
+        "publish:github": "npm run build:demo && npm run gh:404 && npm run gh:cname"
     },
     "dependencies": {
         "@angular/animations": "5.1.0",
@@ -35,7 +34,7 @@
         "npm-font-open-sans": "^1.1.0",
         "popper.js": "^1.12.9",
         "rxjs": "5.5.5",
-        "zone.js": "^0.8.4"
+        "zone.js": "^0.8.20"
     },
     "devDependencies": {
         "@angular/cli": "1.6.0",
@@ -48,6 +47,7 @@
         "@types/popper.js": "^1.11.0",
         "chalk": "^2.3.0",
         "codelyzer": "~3.0.1",
+        "cp": "^0.2.0",
         "glob": "^7.1.2",
         "jasmine-core": "~2.6.2",
         "jasmine-spec-reporter": "~4.1.0",

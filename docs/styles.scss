@@ -11,7 +11,6 @@ body {
     margin: 0;
     background-color: $white;
     color: $text;
-    height: 100%;
 }
 
 body {
@@ -22,7 +21,6 @@ body {
 .demo-content {
     width: 90%;
     max-width: 1000px;
-    min-width: 700px;
     margin: 0 auto;
     padding: 0 30px 50px;
 
@@ -42,8 +40,53 @@ body {
     }
 }
 
+.full-height > .vertical-container { min-height: calc( 100vh - 53px ); }
+
+.responsive-subnav {
+    margin-bottom: 0 !important;
+    display: none !important;
+    padding: 0 !important;
+}
+
+.subnav-label {
+    @include fontSize(16px);
+}
+
+.subnav-select {
+    width: 90%;
+    max-width: 450px;
+    margin-left: 20px;
+}
+
+.subnav-container {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 90%;
+}
+
+@include media-breakpoint-down(md) {
+    .demo-content { padding: 0; }
+    .responsive-subnav { display: flex !important; }
+    .full-height > .vertical-container > .tab-bar-vertical { display: none; }
+    .full-height > .vertical-container > .tab-content-vertical {
+        width: 100% !important;
+        margin-top: 52px;
+    }
+    hc-tile { overflow-x: auto; }
+}
+
+@include media-breakpoint-down(sm) {
+    .subnav-label { display: none; }
+    .subnav-select {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
 h1 {
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 h2 {
@@ -101,8 +144,9 @@ ol {
     margin: 20px 0;
 }
 
-hc-subnav {
-    padding: 20px;
+.demo-button {
+    margin-top: 10px !important;
+    margin-right: 10px !important;
 }
 
 .api-table {

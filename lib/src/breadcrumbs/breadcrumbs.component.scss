@@ -19,7 +19,7 @@
         align-items: center;
     }
 
-    @media screen and (max-width: 420px) {
+    @include media-breakpoint-down(sm) {
         li { display: none; }
     }
 }
@@ -35,7 +35,7 @@
 }
 
 .responsive-container { display: none; }
-@media screen and (max-width: 420px) {
+@include media-breakpoint-down(sm) {
     .responsive-container { display: flex; }
 }
 

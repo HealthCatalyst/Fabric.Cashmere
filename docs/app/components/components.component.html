@@ -1,47 +1,26 @@
-<hc-tab-set>
-    <hc-tab title="Accordion" routerLink="/components/accordion">
-        Accordion
-    </hc-tab>
-    <hc-tab title="Breadcrumbs" routerLink="/components/breadcrumbs">
-        Breadcrumbs
-    </hc-tab>
-    <hc-tab title="Button" routerLink="/components/button">
-        Button
-    </hc-tab>
-    <hc-tab title="Checkbox" routerLink="/components/checkbox">
-        Checkbox
-    </hc-tab>
-    <hc-tab title="Chips" routerLink="/components/chip">
-        Chip
-    </hc-tab>
-    <hc-tab title="Drawer" routerLink="/components/drawer">
-        Drawer
-    </hc-tab>
-    <hc-tab title="Icon" routerLink="/components/icon">
-        Icon
-    </hc-tab>
-    <hc-tab title="List" routerLink="/components/list">
-        List
-    </hc-tab>
-    <hc-tab title="Navbar" routerLink="/components/navbar">
-        Navbar
-    </hc-tab>
-    <hc-tab title="Popover" routerLink="/components/popover">
-        Popover
-    </hc-tab>
-    <hc-tab title="Radio Button" routerLink="/components/radio-button">
-        Radio Button
-    </hc-tab>
-    <hc-tab title="Select" routerLink="/components/select">
-        Select
-    </hc-tab>
-    <hc-tab title="Subnavbar" routerLink="/components/subnav">
-        Subnavbar
-    </hc-tab>
-    <hc-tab title="Tabs" routerLink="/components/tabs">
-        Tabs
-    </hc-tab>
-    <hc-tab title="Tile" routerLink="/components/tile">
-        Tile
-    </hc-tab>
+<hc-subnav class="responsive-subnav" fixedTop="true">
+    <div class="subnav-container">
+        <span class="subnav-label">Components: </span>
+        <span class="subnav-select">
+            <hc-select [options]="selectOptions" [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)"></hc-select>
+        </span>
+    </div>
+</hc-subnav>
+<hc-tab-set class="full-height">
+    <hc-tab tabTitle="Accordion" routerLink="/components/accordion"></hc-tab>
+    <hc-tab tabTitle="Breadcrumbs" routerLink="/components/breadcrumbs"></hc-tab>
+    <hc-tab tabTitle="Button" routerLink="/components/button"></hc-tab>
+    <hc-tab tabTitle="Checkbox" routerLink="/components/checkbox"></hc-tab>
+    <hc-tab tabTitle="Chips" routerLink="/components/chip"></hc-tab>
+    <hc-tab tabTitle="Drawer" routerLink="/components/drawer"></hc-tab>
+    <hc-tab tabTitle="Icon" routerLink="/components/icon"></hc-tab>
+    <hc-tab tabTitle="List" routerLink="/components/list"></hc-tab>
+    <hc-tab tabTitle="Navbar" routerLink="/components/navbar"></hc-tab>
+    <hc-tab tabTitle="Popover" routerLink="/components/popover"></hc-tab>
+    <hc-tab tabTitle="Radio Button" routerLink="/components/radio-button"></hc-tab>
+    <hc-tab tabTitle="Select" routerLink="/components/select"></hc-tab>
+    <hc-tab tabTitle="Subnavbar" routerLink="/components/subnav"></hc-tab>
+    <hc-tab tabTitle="Tabs" routerLink="/components/tabs"></hc-tab>
+    <hc-tab tabTitle="Tile" routerLink="/components/tile"></hc-tab>
+    <hc-tab tabTitle="Typeform Survey" routerLink="/components/typeform-survey"></hc-tab>
 </hc-tab-set>

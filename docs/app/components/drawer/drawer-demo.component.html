@@ -3,7 +3,7 @@
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
     <hc-tab-set direction="horizontal">
-    <hc-tab title="Overview">
+    <hc-tab tabTitle="Overview">
 
     <hc-tile>
         <h5>About</h5>
@@ -24,8 +24,8 @@
                     Right drawer content
                 </hc-drawer>
 
-                <button hc-button color="primary" (click)="leftDrawer.toggle()">Toggle Left Drawer</button>
-                <button hc-button color="primary" (click)="rightDrawer.toggle()">Toggle Right Drawer</button>
+                <button hc-button color="primary" (click)="leftDrawer.toggle()" class="demo-button">Toggle Left Drawer</button>
+                <button hc-button color="primary" (click)="rightDrawer.toggle()" class="demo-button">Toggle Right Drawer</button>
             </hc-drawer-container>
         </div>
 
@@ -39,15 +39,15 @@
                     Right drawer content
                 </hc-drawer>
 
-                <button hc-button color="primary" (click)="leftOverDrawer.toggle()">Toggle Left Drawer</button>
-                <button hc-button color="primary" (click)="rightPushDrawer.toggle()">Toggle Right Drawer</button>
+                <button hc-button color="primary" (click)="leftOverDrawer.toggle()" class="demo-button">Toggle Left Drawer</button>
+                <button hc-button color="primary" (click)="rightPushDrawer.toggle()" class="demo-button">Toggle Right Drawer</button>
             </hc-drawer-container>
         </div>
         <br>
     </hc-tile>
 
     </hc-tab>
-    <hc-tab title="Documentation">
+    <hc-tab tabTitle="Documentation">
 
     <hc-tile>
         <h5>Angular Component</h5>

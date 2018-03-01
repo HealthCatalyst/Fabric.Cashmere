@@ -13,7 +13,7 @@ html, body {
 h1,.h1 {
     @include fontSize(36px);
     font-weight: 300;
-    line-height: 1.5;
+    line-height: 1.2;
     color: $text;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
