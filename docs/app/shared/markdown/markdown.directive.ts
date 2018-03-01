@@ -16,8 +16,13 @@ export class MarkdownDirective implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         const md = new markdownIt();
+
+        // plugin to markdown-it to interpret :::
         md.use(container_plugin, 'hc-tile', {
             validate: function (params) {
+                // markdown-it-container allows multiple ::: containers
+                // This function allows you to validate this is the one you want
+                // We only have one, so always validate
                 return true;
             }
         });
@@ -43,14 +48,12 @@ export class MarkdownDirective implements OnChanges {
     }
 
     private addLines(pre: HTMLPreElement): void {
-        const style = 'style="float: left;text-align: right;"';
-        const rowStyle = 'style="display: block;padding: 0 .5em 0 1em;border-right: 1px solid;margin-right: 5px;"';
-        pre.innerHTML = '<span class="line-number" ' + style + '></span>' + pre.innerHTML + '<span class="cl"></span>';
+        pre.innerHTML = `<span class="line-number"></span>${pre.innerHTML}<span class="cl"></span>`;
         const num = pre.innerHTML.split(/\n/).length;
         if (num > 2) {
             for (let j = 1; j < num; j++) {
                 const lineNum = pre.getElementsByTagName('span')[0];
-                lineNum.innerHTML += '<span ' + rowStyle + '>' + (j) + '</span>';
+                lineNum.innerHTML += `<span>${j}</span>`;
             }
         }
     }
