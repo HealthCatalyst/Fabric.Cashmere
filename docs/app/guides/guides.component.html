@@ -1,4 +1,4 @@
 <hc-tab-set>
-    <hc-tab *ngFor="let guide of guidesService.guides" [title]="guide.title" [routerLink]="['/guides/', guide.route]">        
+    <hc-tab *ngFor="let guide of guidesService.guides" [tabTitle]="guide.title" [routerLink]="['/guides/', guide.route]">        
     </hc-tab>
 </hc-tab-set>

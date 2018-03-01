@@ -1,5 +1,6 @@
 import { Directive, ElementRef, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { parse } from 'marked';
+import markdownIt from 'markdown-it';
+import container_plugin from 'markdown-it-container';
 import { highlightBlock } from 'highlight.js';
 
 @Directive({
@@ -14,7 +15,15 @@ export class MarkdownDirective implements OnChanges {
     constructor(private el: ElementRef) { }
 
     ngOnChanges(changes: SimpleChanges): void {
-        this.el.nativeElement.innerHTML = parse(this.hcMarkdown, { sanitize: this.sanitize });
+        const md = new markdownIt();
+        md.use(container_plugin, 'hc-tile', {
+            validate: function (params) {
+                return true;
+            }
+        });
+
+
+        this.el.nativeElement.innerHTML = md.render(this.hcMarkdown, { sanitize: this.sanitize });
         if (this.highlight) {
             const preTags: Array<HTMLPreElement> = this.el.nativeElement.getElementsByTagName('pre');
             for (const pre of preTags) {

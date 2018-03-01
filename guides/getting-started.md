@@ -1,10 +1,14 @@
 # Getting Started
 ###### Last updated February 20, 2018
 
-The easiest way to start with Angular is to use the [Angular CLI Tool](https://github.com/angular/angular-cli). To scaffold your project structure, follow its [installation instructions](https://github.com/angular/angular-cli#installation).
+:::
+##### Setting up angular
+The easiest way to start with Angular is to use the [Angular CLI Tool](https://github.com/angular/angular-cli). To scaffold your project structure, follow its [installation instructions](https://github.com/angular/angular-cli#installation). 
 
 The library uses Angular 5, if you have a previous version of angular see [the update guide](https://angular-update-guide.firebaseapp.com/)
+:::
 
+:::
 ## Step 1. Install npm module
 
 ```BASH
@@ -41,3 +45,4 @@ Now, import the SCSS file from the package in `src/styles.scss`:
 
 @import "~@cashmere/sass/cashmere";
 ```
+:::

@@ -4,8 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'hc-guide',
-    templateUrl: './guide.component.html',
-    styleUrls: ['./guide.component.scss']
+    templateUrl: './guide.component.html'
 })
 export class GuideComponent implements OnInit {
     public document: string = '';

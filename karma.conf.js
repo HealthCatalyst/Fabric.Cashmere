@@ -31,7 +31,7 @@ module.exports = function (config) {
         browsers: ['Chrome'],
         customLaunchers: {
             ChromeHeadless: {
-                base: 'Chrome',
+                base: 'ChromeHeadless',
                 flags: [
                     '--headless',
                     '--disable-gpu',
