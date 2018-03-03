@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from './input.component';
 import { InputErrorDirective } from './input-errors.directive';
-import { InputRequiredDirective } from './input-required.directive';
 
 @NgModule({
     imports: [
@@ -10,13 +9,11 @@ import { InputRequiredDirective } from './input-required.directive';
     ],
     exports: [
         InputComponent,
-        InputErrorDirective,
-        InputRequiredDirective
+        InputErrorDirective
     ],
     declarations: [
         InputComponent,
-        InputErrorDirective,
-        InputRequiredDirective
+        InputErrorDirective
     ]
 })
 export class InputModule {

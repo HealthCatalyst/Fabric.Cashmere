@@ -75,7 +75,7 @@ hc-select .invalid {
     .select-errors { display: block; }
 }
 
-hc-select .select-required:after {
+hc-select .select-required label:after {
     content: "*";
     margin-left: 5px;
     color: $red;

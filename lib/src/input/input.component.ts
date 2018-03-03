@@ -11,10 +11,15 @@ import { anyToBoolean } from '../util';
 export class InputComponent {
 
     _valid: boolean = true;
+    _required: boolean = false;
 
     constructor() {}
 
     @Input() get valid(): boolean { return this._valid; }
 
     set valid(validVal) { this._valid = anyToBoolean(validVal); }
+
+    @Input() get required(): boolean { return this._required; }
+
+    set required(isRequired) { this._required = anyToBoolean(isRequired); }
 }

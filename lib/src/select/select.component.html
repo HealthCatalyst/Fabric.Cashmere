@@ -1,4 +1,4 @@
-<div [ngClass]="{'invalid': !_valid}">
+<div [ngClass]="{'invalid': !_valid, 'select-required': _required}">
     <ng-content select="label"></ng-content>
     <span [ngClass]="{'disabled': _disabled}" class="chevron">
         <select [disabled]="_disabled" (change)="value = $event.target.value" required>

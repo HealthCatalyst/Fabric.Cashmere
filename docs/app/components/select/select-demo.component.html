@@ -33,8 +33,8 @@
         </div>
         <h4>Component Validation</h4>
         <div class="select-sample">
-            <hc-select [valid]="validCheck">
-                <label hcSelectRequired>Project Status:</label>
+            <hc-select [valid]="validCheck" required="true">
+                <label>Project Status:</label>
                 <option>Active</option>
                 <option>Inactive</option>
                 <option>In progress</option>
@@ -54,8 +54,8 @@
         <h5>Angular Component</h5>
         <pre>
             <code>
-&#x3C;hc-select formControlName=&#x22;city&#x22; disabled=&#x22;false&#x22; valid=&#x22;true&#x22; placeholder=&#x22;Select a city:&#x22;&#x3E;
-    &#x3C;label hcSelectRequired&#x3E;Location:&#x3C;/label&#x3E;
+&#x3C;hc-select formControlName=&#x22;city&#x22; disabled=&#x22;false&#x22; required=&#x22;true&#x22; valid=&#x22;true&#x22; placeholder=&#x22;Select a city:&#x22;&#x3E;
+    &#x3C;label&#x3E;Location:&#x3C;/label&#x3E;
     &#x3C;option [value]=&#x22;1&#x22; [selected]=&#x22;value === 1&#x22;&#x3E;First&#x3C;/option&#x3E;
     &#x3C;option [value]=&#x22;2&#x22; [selected]=&#x22;value === 2&#x22;&#x3E;Second&#x3C;/option&#x3E;
     &#x3C;div hcSelectErrors&#x3E;
@@ -84,6 +84,11 @@
                 <td><span class="type-label">Type:</span> Boolean</td>
                 <td>When true, highlights the border red and makes any items with the <code>hcSelectErrors</code> directive visible</td>
             </tr>
+            <tr>
+                <th>required</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>Adds a red asterisk to any labels in the component; form values should still be set to required individually</td>
+            </tr>
         </table>
     </hc-tile>
 
@@ -91,10 +96,6 @@
         <h5>Directives</h5>
         <p><strong>hcSelectErrors</strong><br>
             Should be added to an element or group of elements that contain error messages to be displayed when the component's <code>valid</code> flag is set to true.
-        </p>
-        <p><strong>hcSelectRequired</strong><br>
-            Add to any <code>label</code> elements if the select is required for the form to be completed.
-            Adds a red asterisk to the end of the label to designate that it is required.
         </p>
     </hc-tile>
 

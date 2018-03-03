@@ -22,6 +22,7 @@ export class SelectComponent implements ControlValueAccessor {
 
     _disabled: boolean = false;
     _valid: boolean = true;
+    _required: boolean = false;
     _value: string = '';
 
     constructor() { }
@@ -29,6 +30,10 @@ export class SelectComponent implements ControlValueAccessor {
     @Input() get valid(): boolean { return this._valid; }
 
     @Input() get disabled(): boolean { return this._disabled; }
+
+    @Input() get required(): boolean { return this._required; }
+
+    set required(isRequired) { this._required = anyToBoolean(isRequired); }
 
     set disabled(isDisabled) { this._disabled = anyToBoolean(isDisabled); }
 

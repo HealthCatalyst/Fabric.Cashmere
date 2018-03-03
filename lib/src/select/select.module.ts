@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SelectComponent } from './select.component';
 import { SelectErrorDirective } from './select-errors.directive';
-import { SelectRequiredDirective } from './select-required.directive';
 
 @NgModule({
     imports: [
@@ -10,13 +9,11 @@ import { SelectRequiredDirective } from './select-required.directive';
     ],
     exports: [
         SelectComponent,
-        SelectErrorDirective,
-        SelectRequiredDirective
+        SelectErrorDirective
     ],
     declarations: [
         SelectComponent,
-        SelectErrorDirective,
-        SelectRequiredDirective
+        SelectErrorDirective
     ]
 })
 export class SelectModule {

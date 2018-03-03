@@ -41,7 +41,7 @@ hc-input .input-errors {
     display: none;
 }
 
-hc-input .label-required:after {
+hc-input .label-required label:after {
     content: "*";
     margin-left: 5px;
     color: $red;

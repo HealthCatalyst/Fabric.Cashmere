@@ -1,4 +1,4 @@
-<div [ngClass]="{'invalid': !_valid}">
+<div [ngClass]="{'invalid': !_valid, 'label-required': _required}">
     <span [ngClass]="{'input-icon': inputicon.children.length != 0}">
         <ng-content></ng-content>
     </span>
