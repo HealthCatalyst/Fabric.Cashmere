@@ -11,8 +11,8 @@ import { Component } from '@angular/core';
  */
 @Component({
     template: `<form [formGroup]="cityForm">
-                    <hc-select formControlName="city" placeholder="Select a City">
-                        <option *ngFor="let cityName of cities" [ngValue]="cityName">{{cityName}}</option>
+                    <hc-select formControlName="city" placeholder="Select a City" [(ngModel)]="selectVal">
+                        <option *ngFor="let cityName of cities" [value]="cityName" [selected]="cityName===selectVal">{{cityName}}</option>
                     </hc-select>
                </form>
               `,
@@ -23,6 +23,7 @@ export class SelectIntegrationTestComponent {
 
     cityForm: FormGroup;
     cities: Array<string> = ['Atlanta', 'SLC', 'NYC'];
+    selectVal: string = '';
 
     constructor(private fb: FormBuilder) {
         this.createTestForm();

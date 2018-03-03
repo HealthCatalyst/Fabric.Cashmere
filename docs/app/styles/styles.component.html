@@ -3,7 +3,7 @@
         <span class="subnav-label">Styles: </span>
         <span class="subnav-select">
             <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
-                <option *ngFor="let option of selectOptions" [value]="option" [selected]="option === value">{{option}}</option>
+                <option *ngFor="let option of selectOptions" [value]="option" [selected]="option === thisPage">{{option}}</option>
             </hc-select>
         </span>
     </div>
