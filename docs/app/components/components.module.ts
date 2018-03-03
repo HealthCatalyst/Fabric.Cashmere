@@ -44,6 +44,7 @@ import { TileDemoComponent } from './tile/tile-demo.component';
 import { ChipModule } from '../../../lib/src/chip/chip.module';
 import { FilterButtonComponent } from './chip/filter-button.component';
 import { ChipDemoComponent } from './chip/chip-demo.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -67,6 +68,7 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         TypeformSurveyModule,
         TileModule,
         ChipModule,
+        SharedModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
