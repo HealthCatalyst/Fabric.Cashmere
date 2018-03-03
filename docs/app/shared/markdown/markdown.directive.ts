@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import markdownIt from 'markdown-it';
-import container_plugin from 'markdown-it-container';
+import * as markdownIt from 'markdown-it';
+import * as container_plugin from 'markdown-it-container';
 import { highlightBlock } from 'highlight.js';
 
 @Directive({

@@ -71,11 +71,11 @@ describe('MarkdownDirective', () => {
         });
 
         it('should render code with highlighting if language is specified in first line and show line-numbers', () => {
-            comp.markdownInput = '```typescript\nclass A {\nconst x:number;\n}```';
+            comp.markdownInput = '``` typescript\nclass A {\nconst x:number;}\n```\n';
             fixture.detectChanges();
             expect(getHtml('pre.hljs')).toBeDefined();
-            expect(getHtmlCount('.line-number span')).toEqual(3);
-            expect(getText('code')).toBe('class A {\nconst x:number;\n}\n');
+            expect(getHtmlCount('.line-number span')).toEqual(2);
+            expect(getText('code')).toBe('class A {\nconst x:number;}\n');
         });
     });
 
@@ -110,7 +110,7 @@ describe('MarkdownDirective', () => {
         });
 
         it('should render code with highlighting if language is specified in first line and show line-numbers', () => {
-            comp.markdownInput = '```typescript\nclass A {\nconst x:number;\n}```';
+            comp.markdownInput = '```typescript\nclass A {\nconst x:number;\n}\n```\n';
             fixture.detectChanges();
             expect(getHtml('pre.hljs')).toBeDefined();
             expect(getHtmlCount('.line-number span')).toEqual(3);
@@ -118,7 +118,7 @@ describe('MarkdownDirective', () => {
         });
 
         it('should not highlight if highlight Input is set to false', () => {
-            comp.markdownInput = '```typescript\nclass A {\nconst x:number;\n}```';
+            comp.markdownInput = '```typescript\nclass A {\nconst x:number;\n}\n```';
             comp.highlight = false;
             fixture.detectChanges();
             expect(getHtml('pre.hljs')).toBeUndefined();
