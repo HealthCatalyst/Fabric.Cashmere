@@ -10,7 +10,7 @@ import { anyToBoolean } from '../util';
 
 export class ChipComponent {
 
-    @Input() _action: boolean = false;
+    _action: boolean = false;
     @Input() color: 'neutral' | 'yellow' | 'green' | 'red' = 'neutral';
 
     constructor() {}

@@ -1,10 +1,12 @@
-import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { Component, Input, OnInit, forwardRef, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { anyToBoolean } from '../util';
 
 @Component({
     selector: 'hc-select',
     templateUrl: './select.component.html',
     styleUrls: ['./select.component.scss'],
+    encapsulation: ViewEncapsulation.None,
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
@@ -13,26 +15,30 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         }
     ]
 })
+
 export class SelectComponent implements ControlValueAccessor {
 
-    @Input() placeholder: string;
-    @Input() options: Array<string> = [];
-    @Input() disabled: boolean = false;
-    disabledAlpha = 0.4;
-    enabledAlpha = 1.0;
-    _value: string;
-    onChange: any = () => {
-    };
-    onTouched: any = () => {
-    };
+    @Input() placeholder: string = '';
 
-    get alpha() {
-        return this.disabled ? this.disabledAlpha : this.enabledAlpha;
-    }
+    _disabled: boolean = false;
+    _valid: boolean = true;
+    _value: string = '';
 
-    get value() {
-        return this._value;
-    }
+    constructor() { }
+
+    @Input() get valid(): boolean { return this._valid; }
+
+    @Input() get disabled(): boolean { return this._disabled; }
+
+    set disabled(isDisabled) { this._disabled = anyToBoolean(isDisabled); }
+
+    set valid(validVal) { this._valid = anyToBoolean(validVal); }
+
+    onChange: any = () => { };
+
+    onTouched: any = () => { };
+
+    get value() { return this._value; }
 
     set value(val: string) {
         this._value = val;
@@ -40,16 +46,9 @@ export class SelectComponent implements ControlValueAccessor {
         this.onTouched();
     }
 
-    constructor() {
-    }
+    registerOnChange(fn: any) { this.onChange = fn; }
 
-    registerOnChange(fn: any) {
-        this.onChange = fn;
-    }
-
-    registerOnTouched(fn: any) {
-        this.onTouched = fn;
-    }
+    registerOnTouched(fn: any) { this.onTouched = fn; }
 
     writeValue(value: string) {
         if (value) {

@@ -44,6 +44,8 @@ import { TileDemoComponent } from './tile/tile-demo.component';
 import { ChipModule } from '../../../lib/src/chip/chip.module';
 import { FilterButtonComponent } from './chip/filter-button.component';
 import { ChipDemoComponent } from './chip/chip-demo.component';
+import { InputModule } from '../../../lib/src/input/input.module';
+import { InputDemoComponent } from './input/input-demo.component';
 
 @NgModule({
     imports: [
@@ -67,6 +69,7 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         TypeformSurveyModule,
         TileModule,
         ChipModule,
+        InputModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
@@ -96,7 +99,8 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
         TileDemoComponent,
         ChipDemoComponent,
         FilterButtonComponent,
-        TypeFormSurveyDemoComponent
+        TypeFormSurveyDemoComponent,
+        InputDemoComponent
     ],
     providers: [
         {

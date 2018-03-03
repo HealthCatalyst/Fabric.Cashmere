@@ -19,6 +19,7 @@ import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.compon
 import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
 import { TileDemoComponent } from './tile/tile-demo.component';
 import { ChipDemoComponent } from './chip/chip-demo.component';
+import { InputDemoComponent } from './input/input-demo.component';
 
 export const routes: Routes = [
     {
@@ -124,6 +125,11 @@ export const routes: Routes = [
                 path: 'typeform-survey',
                 component: TypeFormSurveyDemoComponent,
                 data: { title: 'Typeform Survey' }
+            },
+            {
+                path: 'input',
+                component: InputDemoComponent,
+                data: { title: 'Input' }
             },
             {
                 path: '**',

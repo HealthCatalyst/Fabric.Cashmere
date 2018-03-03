@@ -15,15 +15,87 @@
         <h5>Examples</h5>
         <h4>Standard Select Component</h4>
         <div class="select-sample">
-            <hc-select placeholder="Select a city:"
-                    [options]="['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando']"></hc-select>
+            <hc-select placeholder="Select a city:">
+                <label>Facility Location:</label>
+                <option>Philadelphia</option>
+                <option>Atlanta</option>
+                <option>Salt Lake City</option>
+                <option>Chicago</option>
+                <option>Orlando</option>
+            </hc-select>
         </div>
         <h4>Disabled Select Component</h4>
         <div class="select-sample">
-            <hc-select [disabled]="true" placeholder="Select a city:"
-                    [options]="['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando']"></hc-select>
+            <hc-select disabled="true" placeholder="Select a city:">
+                <option>Philadelphia</option>
+                <option>Atlanta</option>
+            </hc-select>
+        </div>
+        <h4>Component Validation</h4>
+        <div class="select-sample">
+            <hc-select [valid]="validCheck">
+                <label hcSelectRequired>Project Status:</label>
+                <option>Active</option>
+                <option>Inactive</option>
+                <option>In progress</option>
+                <div hcSelectErrors>
+                    This is an example warning for an invalid response
+                </div>
+            </hc-select>
         </div>
         <br>
+        <button hc-button title="Toggle component validation" color="primary" (click)="toggleValidate()">Toggle Validate</button>
+    </hc-tile>
+
+    </hc-tab>
+    <hc-tab tabTitle="Documentation">
+
+    <hc-tile>
+        <h5>Angular Component</h5>
+        <pre>
+            <code>
+&#x3C;hc-select formControlName=&#x22;city&#x22; disabled=&#x22;false&#x22; valid=&#x22;true&#x22; placeholder=&#x22;Select a city:&#x22;&#x3E;
+    &#x3C;label hcSelectRequired&#x3E;Location:&#x3C;/label&#x3E;
+    &#x3C;option [value]=&#x22;1&#x22; [selected]=&#x22;value === 1&#x22;&#x3E;First&#x3C;/option&#x3E;
+    &#x3C;option [value]=&#x22;2&#x22; [selected]=&#x22;value === 2&#x22;&#x3E;Second&#x3C;/option&#x3E;
+    &#x3C;div hcSelectErrors&#x3E;
+        Error messages are added here
+    &#x3C;/div&#x3E;
+&#x3C;/hc-select&#x3E;
+            </code>
+        </pre>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Properties</h5>
+        <table class="api-table">
+            <tr>
+                <th>placeholder</th>
+                <td><span class="type-label">Type:</span> String</td>
+                <td>Optional string of text to appear before selection is made</td>
+            </tr>
+            <tr>
+                <th>disabled</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>Boolean value that enables/disables the component</td>
+            </tr>
+            <tr>
+                <th>valid</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>When true, highlights the border red and makes any items with the <code>hcSelectErrors</code> directive visible</td>
+            </tr>
+        </table>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Directives</h5>
+        <p><strong>hcSelectErrors</strong><br>
+            Should be added to an element or group of elements that contain error messages to be displayed when the component's <code>valid</code> flag is set to true.
+        </p>
+        <p><strong>hcSelectRequired</strong><br>
+            Add to any <code>label</code> elements if the select is required for the form to be completed.
+            Adds a red asterisk to the end of the label to designate that it is required.
+        </p>
     </hc-tile>
 
     <hc-tile>
@@ -40,41 +112,6 @@
         <p>To interact with reactive forms specify a <code>formControlName</code> on the component.
         Remember to import the <code>ReactiveFormsModule</code> into your application.
         </p>
-    </hc-tile>
-
-    </hc-tab>
-    <hc-tab tabTitle="Documentation">
-
-    <hc-tile>
-        <h5>Angular Component</h5>
-        <pre>
-            <code>
-&#x3C;hc-select formControlName=&#x22;city&#x22; &#91;disabled&#93;=&#x27;false&#x27; placeholder=&#x22;Select a city:&#x22;
-    [options]=&#x22;[&#x27;Philadelphia&#x27;, &#x27;Atlanta&#x27;, &#x27;Salt Lake City&#x27;, &#x27;Chicago&#x27;, &#x27;Orlando&#x27;]&#x22;&#x3E;
-&#x3C;/hc-select&#x3E;
-            </code>
-        </pre>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Properties</h5>
-        <table class="api-table">
-            <tr>
-                <th>placeholder</th>
-                <td><span class="type-label">Type:</span> String</td>
-                <td>Optional string of text to appear before selection is made</td>
-            </tr>
-            <tr>
-                <th>[options]</th>
-                <td><span class="type-label">Type:</span> Array</td>
-                <td>An array of strings for the select options</td>
-            </tr>
-            <tr>
-                <th>[disabled]</th>
-                <td><span class="type-label">Type:</span> Boolean</td>
-                <td>Boolean value that enables/disables the button</td>
-            </tr>
-        </table>
     </hc-tile>
 
     </hc-tab>
