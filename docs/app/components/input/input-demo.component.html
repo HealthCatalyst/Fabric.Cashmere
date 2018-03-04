@@ -47,45 +47,7 @@
 
     </hc-tab>
     <hc-tab tabTitle="Documentation">
-
-    <hc-tile>
-            <h5>Angular Component</h5>
-            <pre>
-                <code>
-    &#x3C;hc-input valid=&#x22;true&#x22; required=&#x22;true&#x22;&#x3E;
-        &#x3C;label&#x3E;Validate an email address:&#x3C;/label&#x3E;
-        &#x3C;input required &#x3E;
-        &#x3C;div hcInputErrors&#x3E;
-            Error messages are added here
-        &#x3C;/div&#x3E;
-    &#x3C;/hc-input&#x3E;
-                </code>
-            </pre>
-        </hc-tile>
-
-        <hc-tile>
-            <h5>Properties</h5>
-            <table class="api-table">
-                <tr>
-                    <th>valid</th>
-                    <td><span class="type-label">Type:</span> Boolean</td>
-                    <td>When true, highlights the border red and makes any items with the <code>hcInputErrors</code> directive visible</td>
-                </tr>
-                <tr>
-                    <th>required</th>
-                    <td><span class="type-label">Type:</span> Boolean</td>
-                    <td>Adds a red asterisk to any labels in the component; form values should still be set to required individually</td>
-                </tr>
-            </table>
-        </hc-tile>
-
-        <hc-tile>
-            <h5>Directives</h5>
-            <p><strong>hcInputErrors</strong><br>
-                Should be added to an element or group of elements that contain error messages to be displayed when the component's <code>valid</code> flag is set to true.
-            </p>
-        </hc-tile>
-
+        <div [hcMarkdown]="document"></div>
     </hc-tab>
     </hc-tab-set>
 </div>

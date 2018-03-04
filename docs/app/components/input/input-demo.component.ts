@@ -11,6 +11,7 @@ export class InputDemoComponent {
     validCheck: boolean = true;
     errorVal: Number = 0;
     emailText: string = '';
+    public document: string = require('raw-loader!../../../../guides/components/input.md');
 
     onSubmit() {
         let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
