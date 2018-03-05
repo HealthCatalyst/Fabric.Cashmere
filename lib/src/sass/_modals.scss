@@ -11,10 +11,11 @@ $body-height: 100%;
     height: $header-footer-height;
     border-bottom: $modal-border;
     font-size: calculateRem(18px);
-    color: $offblack;
+    color: $text;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-weight: 600;
 }
 
 .hc-modal-body {
@@ -32,11 +33,11 @@ $body-height: 100%;
     font-size: 2rem;
     font-weight: bold;
     line-height: 1;
-    color: $offblack;
+    color: $text;
     text-shadow: 0 1px 0 $white;
     opacity: 0.5;
     &:focus, &:hover {
-        color: $offblack;
+        color: $text;
         text-decoration: none;
         opacity: .75;
       }

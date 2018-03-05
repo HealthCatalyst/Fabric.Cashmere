@@ -1,6 +1,6 @@
 <ng-template #content let-close="close" let-dismiss="dismiss" let-data="data">
     <hc-modal>
-        <hc-modal-header [dismiss]="dismiss"> Modal Title </hc-modal-header>
+        <hc-modal-header> Modal Title </hc-modal-header>
         <hc-modal-body> Data: {{data}}</hc-modal-body>
         <hc-modal-footer>
             <button hc-button color="tertiary" (click)="dismiss()"> Cancel </button>
@@ -24,8 +24,8 @@
 
             <hc-tile>
                 <h5>Example</h5>
-                <button hc-button color="primary" (click)="open()"> Open Modal from Component </button>
-                <button hc-button color="secondary" (click)="openTemplate(content)"> Open Modal from Template </button>
+                <button hc-button color="primary" (click)="open()" class="demo-button"> Open Modal from Component </button>
+                <button hc-button color="secondary" (click)="openTemplate(content)" class="demo-button"> Open Modal from Template </button>
             </hc-tile>
 
             <hc-tile>
@@ -92,7 +92,7 @@ export class ModalDemoComponent &#123;
                         <code>
 &lt;ng-template #content let-close="close" let-dismiss="dismiss" let-data="data"&gt;
     &lt;hc-modal&gt;
-        &lt;hc-modal-header [dismiss]="dismiss"&gt;Modal Title&lt;/hc-modal-header&gt;
+        &lt;hc-modal-header&gt;Modal Title&lt;/hc-modal-header&gt;
         &lt;hc-modal-body&gt; body content &lt;/hc-modal-body&gt;
         &lt;hc-modal-footer&gt;
            &lt;button hc-button color="tertiary" (click)="dismiss()"&gt; Cancel &lt;/button&gt;
@@ -221,27 +221,6 @@ this.modalService.open(content, options)
                             <tr>
                                 <th>data</th>
                                 <td> data that was passed in through ModalOptions </td>
-                            </tr>
-                        </table>
-                    </hc-tab>
-                    <hc-tab tabTitle="hc-modal-header">
-                        <table class="api-table">
-                            <tr>
-                                <th>[dismiss]</th>
-                                <td>
-                                    <span class="type-label">Type:</span> Function </td>
-                                <td> When using a template modal, the hc-modal-header component does not have access to the modal
-                                    context's dismiss by itself. In order to be able to dismiss the modal, the appropriate
-                                    dismiss function should be passed in here. Not required when modal is created from a
-                                    component
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>[showCloseButton]</th>
-                                <td>
-                                    <span class="type-label">Type:</span> Boolean </td>
-                                <td> Defaults to true. Use this input to remove the close button from the hc-modal-header
-                                </td>
                             </tr>
                         </table>
                     </hc-tab>

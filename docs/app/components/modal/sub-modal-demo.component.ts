@@ -6,7 +6,7 @@ import { ActiveModal } from '../../../../lib/src/modal/active-modal';
 @Component({
     selector: 'hc-sub-modal-demo',
     template: `<hc-modal>
-                   <hc-modal-header [showCloseButton]="false">Modal Header Title</hc-modal-header>
+                   <hc-modal-header> Modal Header Title</hc-modal-header>
                    <hc-modal-body> Data: {{ activeModal.data }} </hc-modal-body>
                    <hc-modal-footer>
                       <button hc-button color="tertiary" (click)="cancel()"> Cancel </button>
