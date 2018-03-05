@@ -1,0 +1,108 @@
+<div class="demo-content">
+    <h1>Accordion</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab tabTitle="Overview">
+
+    <hc-tile>
+        <h5>About</h5>
+        <p>The accordion component allows the user to expand or contract blocks of content.
+        It allows for progressive disclosure — highlighting important details of a section and revealing more details upon a tap or click, if necessary.
+        As a result, the design stays focused and displays critical information first, while everything else is easily accessible.</p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Examples</h5>
+        <div class="sample-container">
+            <hc-accordion [triggerAlign]="alignment" [hideToolbar]="hideToolbar" #accordion>
+                <hc-accordion-toolbar>Toolbar</hc-accordion-toolbar>
+                Content
+            </hc-accordion>
+
+            <button hc-button (click)="accordion.toggle()" class="demo-button">Toggle</button>
+            <button hc-button (click)="toggleAlign()" class="demo-button">Toggle Alignment</button>
+            <button hc-button (click)="toggleToolbar()" class="demo-button">Toggle Toolbar</button>
+        </div>
+    </hc-tile>
+
+    </hc-tab>
+    <hc-tab tabTitle="Documentation">
+
+    <hc-tile>
+        <h5>Angular Component</h5>
+        <hc-tab-set direction="horizontal">
+            <hc-tab tabTitle="HTML">
+                <pre>
+                <code>
+    &lt;hc-accordion [triggerAlign]=&quot;alignment&quot; [hideToolbar]=&quot;showToolbar&quot;&gt;
+        &lt;hc-accordion-toolbar&gt;Toolbar&lt;/hc-accordion-toolbar&gt;
+        Accordion content
+    &lt;/hc-accordion&gt;
+                </code>
+                </pre>
+            </hc-tab>
+            <hc-tab tabTitle="TypeScript">
+                <pre><code>
+    import &#123; AccordionModule &#125; from &#x27;@healthcatalyst/cashmere&#x27;;
+
+    @NgModule(&#123;
+        imports: [
+            ...,
+        AccordionModule,
+        ],
+        declarations: [...],
+        exports: [..]
+    &#125;)
+    export class SomeModule &#123; &#125;
+                </code></pre>
+            </hc-tab>
+        </hc-tab-set>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Inputs</h5>
+        <table class="api-table">
+            <tr>
+                <th>triggerAlign</th>
+                <td><span class="type-label">Type:</span>'left' | 'right' (default: 'left')</td>
+                <td>Placement of the toolbar button</td>
+            </tr>
+            <tr>
+                <th>hideToolbar</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>Show/Hide the accordion toolbar</td>
+            </tr>
+            <tr>
+                <th>open</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>Set accordion opened state</td>
+            </tr>
+        </table>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Events</h5>
+        <table class="api-table">
+            <tr>
+                <th>opened</th>
+                <td>Accordion is in the open state</td>
+            </tr>
+            <tr>
+                <th>openStart</th>
+                <td>Accordion is beginning to open</td>
+            </tr>
+            <tr>
+                <th>closed</th>
+                <td>Accordion is in close state</td>
+            </tr>
+            <tr>
+                <th>closeStart</th>
+                <td>Accordion is beginning to close</td>
+            </tr>
+        </table>
+    </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
+</div>

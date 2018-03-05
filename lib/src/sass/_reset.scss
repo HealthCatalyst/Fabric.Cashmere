@@ -14,45 +14,45 @@
     border: 0;
     font-size: 1rem;
     font: inherit;
-    vertical-align: baseline; 
+    vertical-align: baseline;
   }
   
 //   /* HTML5 display-role reset for older browsers */
   
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block; 
+  display: block;
 }
 
 body {
-  line-height: 1; 
+  line-height: 1;
 }
 
 // removed ol from this as we want the numbering
 ul {
-  list-style: none; 
+  list-style: none;
 }
 
 blockquote, q {
-  quotes: none; 
+  quotes: none;
 }
 
 blockquote {
   &:before, &:after {
     content: '';
-    content: none; 
+    content: none;
   } 
 }
 
 q {
   &:before, &:after {
     content: '';
-    content: none; 
+    content: none;
   }
 }
   
 table {
   border-collapse: collapse;
-  border-spacing: 0; 
+  border-spacing: 0;
   th {
     text-align: inherit;
   }

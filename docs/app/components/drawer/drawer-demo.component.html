@@ -1,0 +1,91 @@
+<div class="demo-content">
+    <h1>Drawer</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab tabTitle="Overview">
+
+    <hc-tile>
+        <h5>About</h5>
+        <p>Drawers are great for content that you want tucked away, like filters.  They cover the entire height
+        of their parent container, and slide in from either left or right.
+        </p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Examples</h5>
+        <h4>You can have both a left and right drawer</h4>
+        <div class="drawer-container">
+            <hc-drawer-container>
+                <hc-drawer align="left" #leftDrawer>
+                    Left drawer content
+                </hc-drawer>
+                <hc-drawer align="right" #rightDrawer>
+                    Right drawer content
+                </hc-drawer>
+
+                <button hc-button color="primary" (click)="leftDrawer.toggle()" class="demo-button">Toggle Left Drawer</button>
+                <button hc-button color="primary" (click)="rightDrawer.toggle()" class="demo-button">Toggle Right Drawer</button>
+            </hc-drawer-container>
+        </div>
+
+        <h4>You can have the drawer push or overlay your content</h4>
+        <div class="drawer-container">
+            <hc-drawer-container>
+                <hc-drawer align="left" mode="over" #leftOverDrawer>
+                    Left drawer content
+                </hc-drawer>
+                <hc-drawer align="right" mode="push" #rightPushDrawer>
+                    Right drawer content
+                </hc-drawer>
+
+                <button hc-button color="primary" (click)="leftOverDrawer.toggle()" class="demo-button">Toggle Left Drawer</button>
+                <button hc-button color="primary" (click)="rightPushDrawer.toggle()" class="demo-button">Toggle Right Drawer</button>
+            </hc-drawer-container>
+        </div>
+        <br>
+    </hc-tile>
+
+    </hc-tab>
+    <hc-tab tabTitle="Documentation">
+
+    <hc-tile>
+        <h5>Angular Component</h5>
+        <pre>
+            <code>
+&#x3C;hc-drawer-container&#x3E;
+&#x3C;hc-drawer&#x3E;
+    Drawer Content
+&#x3C;/hc-drawer&#x3E;
+Main Content
+&#x3C;/hc-drawer-container&#x3E;
+            </code>
+        </pre>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Properties</h5>
+        <table class="api-table">
+            <tr>
+                <th>mode</th>
+                <td><span class="type-label">Type:</span> 'over' | 'push' (default: 'push')</td>
+                <td>Optional - overlay or push content</td>
+            </tr>
+            <tr>
+                <th>align</th>
+                <td><span class="type-label">Type:</span> 'left' | 'right' (default: 'left')</td>
+                <td>Optional - alignment of the drawer.</td>
+            </tr>
+            <tr>
+                <th>opened</th>
+                <td><span class="type-label">Type:</span> Boolean (default: false)</td>
+                <td>Optional - whether the drawer starts out opened/closed</td>
+            </tr>
+        </table>
+        <br>
+        <em>*Note: An error will be thrown if there are more than two drawers in hc-drawer-container or if both drawers have the same alignment </em>
+    </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
+</div>

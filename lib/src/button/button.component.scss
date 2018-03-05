@@ -1,4 +1,5 @@
-@import 'colors';
+@import '../sass/colors';
+@import '../sass/functions.scss';
 
 /// Sets up colors for a button
 /// @param {Color} $color - base color of the button
@@ -103,6 +104,9 @@
             color: $gray-500;
         }
     }
+
+    .btn-icon-left { margin-right: 5px; }
+    .btn-icon-right { margin-left: 5px; }
 }
 
 .hc-split-button {

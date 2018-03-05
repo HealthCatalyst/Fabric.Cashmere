@@ -18,5 +18,13 @@
             "es2016",
             "dom"
         ]
-    }
+    },
+    "include": [
+        "docs/**/*.ts",
+        "lib/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules/",
+        "lib/node_modules/"
+    ]
 }

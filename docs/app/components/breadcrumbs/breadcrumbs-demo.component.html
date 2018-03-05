@@ -1,0 +1,40 @@
+<div class="demo-content">
+    <h1>Breadcrumbs</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab tabTitle="Overview">
+
+    <hc-tile>
+        <h5>About</h5>
+        <p>Breadcrumbs are a graphical control element used as a navigational aid within our app subheader.
+        It allows users to keep track of their location within the current application. Typically positioned on
+        the left side of the <a routerLink="/components/subnav" routerLinkActive="active">subnavbar</a>.</p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Example</h5>
+        <hc-subnav>
+            <hc-breadcrumbs></hc-breadcrumbs>
+        </hc-subnav>
+
+        <router-outlet></router-outlet>
+
+        <button hc-button routerLink="/components/breadcrumbs/breadcrumb1" title="First Breadcrumb" color="primary" class="demo-button">Jump to Second Page</button>
+        <button hc-button routerLink="/components/breadcrumbs/breadcrumb1/breadcrumb2" title="Second Breadcrumb" color="primary" class="demo-button">Jump to Third Page</button>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Responsive Behavior</h5>
+        <p>
+            At phone resolution, the component's media query will remove the navigation tree and display a "Back" button
+            linking to the previous page.  If currently at the root of the tree, the current page name will be displayed.
+        </p>
+    </hc-tile>
+
+    </hc-tab>
+    <hc-tab tabTitle="Documentation">
+        <div [hcMarkdown]="document"></div>
+    </hc-tab>
+    </hc-tab-set>
+</div>

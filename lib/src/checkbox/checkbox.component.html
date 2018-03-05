@@ -10,7 +10,9 @@
            (change)="stopChangeEvent($event)"
            (click)="clickEvent($event)"/>
     <label class="hc-checkbox-overlay" [attr.for]="inputId"></label>
-    <label class="hc-checkbox-label" [attr.for]="inputId">
-        <ng-content></ng-content>
-    </label>
+    <div class="hc-checkbox-content" >
+        <label [attr.for]="inputId">
+            <ng-content></ng-content>
+        </label>
+    </div>
 </div>

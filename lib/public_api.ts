@@ -1,3 +1,4 @@
+export * from './src/accordion/accordion.module';
 export * from './src/app-switcher/app-switcher.module';
 export * from './src/button/button.module';
 export * from './src/checkbox/checkbox.module';
@@ -10,3 +11,4 @@ export * from './src/popover/popover.module';
 export * from './src/radio-button/radio-button.module';
 export * from './src/select/select.module';
 export * from './src/tabs/tabs.module';
+export * from './src/typeform-survey/typeform-survey.module';

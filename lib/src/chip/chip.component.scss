@@ -1,0 +1,90 @@
+@import '../sass/colors';
+@import '../sass/functions.scss';
+@import '../sass/mixins.scss';
+
+.chip {
+    border-radius: 6px;
+    height: 32px;
+    line-height: 32px;
+    @include fontSize(14px);
+    display: inline-block;
+    padding: 0 15px;
+    margin: 0 5px 10px 5px;
+    white-space: nowrap;
+}
+
+.neutral {
+    color: $text;
+    background-color: tint( $text, 87%);
+}
+
+.red {
+    color: $ruby-red;
+    background-color: tint( $ruby-red, 85%);
+    border: 2px solid tint( $ruby-red, 75%);
+    line-height: 28px !important;
+}
+
+.yellow {
+    color: shade( $yellow-orange, 25%);
+    background-color: tint( $yellow-orange, 80%);
+    border: 2px solid tint( $yellow-orange, 50%);
+    line-height: 28px !important;
+}
+
+.green {
+    color: $green;
+    background-color: tint( $light-green, 60%);
+    border: 2px solid tint( $light-green, 30%);
+    line-height: 28px !important;
+}
+
+.close { cursor: pointer; }
+
+.close:after {
+    content:"\f00d";
+    font-family: FontAwesome;
+    @include fontSize(15px);
+    padding-left: 12px;
+    opacity: 0.4;
+}
+
+.chip-row-contents { display: inline-block; }
+
+.single-row {
+    height: 32px;
+    overflow: hidden;
+}
+
+.single-row:before {
+	content:"";
+	float: left;
+    width: 5px;
+    height: 50px;
+}
+
+.single-row > *:first-child {
+	float: right;
+	width: 100%;
+	margin-left: -5px; }
+
+.single-row:after {
+	content: "\02026more";
+
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+
+    float: right;
+    position: relative;
+    top: -40px;
+    left: 100%;
+    width: 3.5em;
+	margin-left: -3.5em;
+	padding-right: 5px;
+	text-align: right;
+}
+
+.row-buffer {
+    margin-right: 3.5em;
+}

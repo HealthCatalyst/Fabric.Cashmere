@@ -1,17 +1,26 @@
 @import '../sass/cashmere';
 
+.horizontal-container {
+    height: auto;
+    width: 100%;
+}
+
+.vertical-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
 .tab-bar-vertical {
-    padding-top: 15px;
+    padding: 15px 0;
     background-color: $white;
     width: 20%;
-    float: left;
-    height: calc(100% - 15px);
 }
 
 .tab-vertical {
     background-color: $white;
     color: $offblack;
-    padding: 15px 20px;
+    padding: 20px;
     display: block;
     text-decoration: none;
     &:hover {
@@ -21,7 +30,7 @@
         background-color: $slate-gray-100;
         border-left: $blue 8px solid;
         color: $blue;
-        font-weight: bold;
+        font-weight: 600;
         padding-left: 12px;
     }
 }
@@ -29,9 +38,6 @@
 .tab-content-vertical {
     background-color: $slate-gray-100;
     width: 80%;
-    float: right;
-    height: 100%;
-    overflow: auto;
 }
 
 .tab-bar-horizontal {

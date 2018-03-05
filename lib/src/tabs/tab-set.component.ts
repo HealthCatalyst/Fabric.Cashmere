@@ -5,24 +5,25 @@ import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 export type TabDirection = 'horizontal' | 'vertical';
 
 export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabComponent[]) {
-    const tabTitles = tabsWithoutRouterLink.map(tab => tab.title);
+    const tabTitles = tabsWithoutRouterLink.map(tab => tab.tabTitle);
     throw Error(`Routerlink missing on ${tabTitles.join(',')}`);
 }
 
 @Component({
     template: `
+        <div class="{{direction}}-container">
             <div class="tab-bar-{{direction}}">
                 <div *ngFor="let tab of tabs">
                     <a *ngIf="routerEnabled" class="tab-{{direction}}"
                        [routerLink]="tab.routerLink"
                        routerLinkActive="active"
                        (click)="setActive(tab)">
-                          {{tab.title}}
+                          {{tab.tabTitle}}
                     </a>
                     <a *ngIf="!routerEnabled" class="tab-{{direction}}"
                        [class.active]="tab.active"
                        (click)="setActive(tab)">
-                          {{tab.title}}
+                          {{tab.tabTitle}}
                     </a>
 
                 </div>
@@ -31,7 +32,8 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
                  <router-outlet *ngIf="routerEnabled"></router-outlet>
                  <ng-content *ngIf="!routerEnabled"></ng-content>
              </div>
-           `,
+        </div>
+    `,
     selector: `hc-tab-set`,
     styleUrls: ['./tab-set.component.scss']
 })
@@ -54,7 +56,13 @@ export class TabSetComponent implements AfterContentInit {
 
     private defaultToFirstTab() {
         if (this.tabs.first) {
-            this.setActive(this.tabs.first);
+            // setTimeout to avoid change after checked error
+            // when ngFor is used as projected nodes are registered
+            // and stored as part of the existing view, not
+            // the view in which they are projected
+            // embedded views are checked *before* AfterContentInit
+            // is triggered
+            setTimeout(() => this.setActive(this.tabs.first));
         }
     }
 
@@ -74,11 +82,27 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     private defaultToFirstRoute() {
-        const foundRoute = this.tabs.find(tab => tab.routerLink === this.router.url);
+        const foundRoute =
+            this.tabs
+                .map(tab => tab.routerLink)
+                .map(routerLink => this.mapRouterLinkToString(routerLink))
+                .find(routerLink => {
+                    let currentRoute = this.router.url;
+                    return currentRoute === routerLink || currentRoute.indexOf(`${routerLink}/`) > -1;
+                });
+
         if (foundRoute) {
             return;
         }
-        const firstRoute = this.tabs.first.routerLink;
+
+        const firstRoute = this.mapRouterLinkToString(this.tabs.first.routerLink);
         this.router.navigate([firstRoute], { relativeTo: this.route });
+    }
+
+    private mapRouterLinkToString(routerLink: string | any[]): string {
+        if (routerLink instanceof Array) {
+            routerLink = routerLink.join('/');
+        }
+        return routerLink;
     }
 }

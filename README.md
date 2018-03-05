@@ -4,17 +4,6 @@
 
 An angular component library that makes any task feel luxurious.
 
-## Guidelines for Contribution
-
-In order for a contribution to be considered, the following conditions must be met:
-
-* `ng lint` should result in `All files pass linting`
-    * note: for purposes of aot compilation, strict null checking has been enabled
-* `ng test` should result in all tests passing
-*  New components and directives must be accompanied by a component demonstrating the functionality. This component should be added to the demo app's routes
-* New components and directives must be accompanied by unit tests demonstrating that it functions as intended.
-* The component should adhere to the Health Catalyst style
-
 ## Helpful tips
 
 * Certain libraries (like momentjs and lodash) if used by your components will need to be added to the globals object used by rollup.config.js
