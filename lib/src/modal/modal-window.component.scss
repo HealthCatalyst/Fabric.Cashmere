@@ -4,16 +4,19 @@
 
 :host {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: $white;
-    border-radius: 6px;
-    display: block;
+    display: flex;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
 }
 
 .hc-modal {
-    overflow: auto;
+    max-height: calc(100% - 50px);
+    height: calc(100% - 50px);
+    min-height: 135px;
 }
 
 .hc-modal-sm {

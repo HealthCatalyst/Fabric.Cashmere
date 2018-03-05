@@ -1,16 +1,16 @@
 @import './colors';
 @import './mixins';
 
-$modal-padding: 20px;
-$header-footer-height: 75px;
+$modal-padding: 15px;
+$header-footer-height: 55px;
 $modal-border: 1px solid $gray-200;
-$body-max-height: calc( 100vh - #{$header-footer-height});
+$body-max-height: calc( 90% - #{$header-footer-height});
 $body-min-height: 150px;
-$body-height: 100%;
+$body-height: 90%;
 
 .hc-modal-header {
     padding: $modal-padding;
-    height: $header-footer-height;
+    min-height: $header-footer-height;
     border-bottom: $modal-border;
     font-size: calculateRem(18px);
     color: $text;
@@ -22,9 +22,6 @@ $body-height: 100%;
 
 .hc-modal-body {
     padding: $modal-padding;
-    max-height: $body-max-height;
-    min-height: $body-min-height;
-    height: $body-height;
     overflow: auto;
 }
 
@@ -50,7 +47,7 @@ $body-height: 100%;
 
 .hc-modal-footer {
     padding: $modal-padding;
-    height: $header-footer-height;
+    min-height: $header-footer-height;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -58,8 +55,10 @@ $body-height: 100%;
 }
 
 .hc-modal-content {
+    background-color: $white;
+    border-radius: 6px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    max-height: $body-max-height;
+    justify-content: flex-start;
+    max-height: 100%;
 }
