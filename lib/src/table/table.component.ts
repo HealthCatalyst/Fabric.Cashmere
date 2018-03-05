@@ -23,6 +23,7 @@ import { SortableComponent } from './sortable.component';
 export class TableComponent implements AfterContentInit {
     @Input('hc-table') data: any[] = [];
     @HostBinding('class.hc-table') public hcTable = true;
+    @HostBinding('class.hc-table-borders') public borders = true;
     @ContentChildren(SortableComponent) public sortableHeaders: QueryList<SortableComponent>;
 
     ngAfterContentInit() {
