@@ -4,6 +4,8 @@
 $modal-padding: 20px;
 $header-footer-height: 75px;
 $modal-border: 1px solid $gray-200;
+$body-max-height: calc( 100vh - #{$header-footer-height});
+$body-min-height: 150px;
 $body-height: 100%;
 
 .hc-modal-header {
@@ -20,7 +22,10 @@ $body-height: 100%;
 
 .hc-modal-body {
     padding: $modal-padding;
+    max-height: $body-max-height;
+    min-height: $body-min-height;
     height: $body-height;
+    overflow: auto;
 }
 
 .hc-modal-close-button {
@@ -56,5 +61,5 @@ $body-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: $body-height;
+    max-height: $body-max-height;
 }
