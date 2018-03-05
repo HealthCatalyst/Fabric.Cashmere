@@ -12,12 +12,12 @@ import { Component, HostBinding, HostListener, Input, Output, EventEmitter } fro
     template: `<ng-content></ng-content>`
 })
 export class SortableComponent {
-    @Output() sortEvent: EventEmitter<SortEvent> = new EventEmitter<SortEvent>();
     @HostBinding('class.hc-col-sortable') public sortable = true;
     @HostBinding('class.hc-active-sort') public activeSort = false;
     @HostBinding('class.hc-sort-asc') public sortAsc = false;
     @HostBinding('class.hc-sort-desc') public sortDesc = false;
     @Input('hc-sortable') sortableKey: string;
+    @Output() sortEvent: EventEmitter<SortEvent> = new EventEmitter<SortEvent>();
 
     constructor() { }
 
@@ -30,10 +30,12 @@ export class SortableComponent {
             this.activeSort = true;
             this.sortAsc = true;
         }
+
         let sortEvent: SortEvent = {
             sortColumn: this.sortableKey,
             sortDirection: this.sortAsc ? 'asc' : 'desc'
         }
+
         this.sortEvent.emit(sortEvent);
     }
 
