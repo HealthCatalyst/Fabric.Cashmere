@@ -81,6 +81,9 @@ export class ModalService {
                 const componentRef = this.componentFactoryResolver
                     .resolveComponentFactory(modalContent)
                     .create(modalContextInjector);
+
+                // Set host component style to 100% to allow collapsing of body but not header/footer
+                this.renderer.setStyle(componentRef.location.nativeElement, 'height', '100%');
                 this.applicationRef.attachView(componentRef.hostView);
                 hcModal.componentRef = <ComponentRef<T>>componentRef;
                 projectableNodes = [[componentRef.location.nativeElement]];
