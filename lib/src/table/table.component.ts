@@ -1,4 +1,3 @@
-import { SortEvent } from './sort-event';
 /* tslint:disable:component-selector */
 /* tslint:disable:use-host-property-decorator */
 // tslint:disable:no-input-rename
@@ -14,6 +13,7 @@ import {
     Input,
     ContentChildren
 } from '@angular/core';
+import { SortEvent } from './sort-event';
 import { SortableComponent } from './sortable.component';
 
 @Component({
@@ -36,7 +36,6 @@ export class TableComponent implements AfterContentInit {
 
         let sortOrderLeft = sortEvent.sortDirection === 'asc' ? 1 : -1;
         let sortOrderRight = sortEvent.sortDirection === 'desc' ? 1 : -1;
-
 
         this.data.sort((prev, curr) => prev[sortEvent.sortColumn] > curr[sortEvent.sortColumn] ? sortOrderLeft : sortOrderRight)
     }
