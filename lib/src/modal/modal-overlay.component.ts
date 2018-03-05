@@ -29,7 +29,6 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
 })
 export class ModalOverlayComponent {
 
-    @Input() ignoreOverlayClick = false;
     @Input() ignoreEscapeKey = false;
 
     constructor(private activeModal: ActiveModal) { }
@@ -41,13 +40,6 @@ export class ModalOverlayComponent {
     @HostListener('document:keyup.escape', ['$event'])
     escapeKey(event: any) {
         if (!this.ignoreEscapeKey) {
-            this.activeModal.close();
-        }
-    }
-
-    @HostListener('click', ['$event'])
-    overlayClick(event: any) {
-        if (!this.ignoreOverlayClick) {
             this.activeModal.close();
         }
     }

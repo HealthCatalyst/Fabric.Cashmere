@@ -64,7 +64,6 @@ export class ModalService {
                 .create(modalContextInjector);
             this.renderer.setStyle(overlay.location.nativeElement, 'z-index', this.zIndexCounter);
             if (modalOptions) {
-                overlay.instance.ignoreOverlayClick = modalOptions.ignoreOverlayClick || false;
                 overlay.instance.ignoreEscapeKey = modalOptions.ignoreEscapeKey || false;
             }
             this.applicationRef.attachView(overlay.hostView);
@@ -91,11 +90,11 @@ export class ModalService {
             // Apply options
             let window = this.componentFactoryResolver
                 .resolveComponentFactory(ModalWindowComponent)
-                .create(this.injector, projectableNodes);
+                .create(modalContextInjector, projectableNodes);
             this.renderer.setStyle(window.location.nativeElement, 'z-index', this.zIndexCounter + 1);
             if (modalOptions) {
                 window.instance.size = modalOptions.size;
-
+                window.instance.ignoreOverlayClick = modalOptions.ignoreOverlayClick || false;
                 if (modalOptions.data) {
                     hcModal.data = modalOptions.data;
                     activeModalContext.data = modalOptions.data;
