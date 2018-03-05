@@ -3,6 +3,7 @@ import { TypeFormSurveyDemoComponent } from './typeform-survey/typeform-survey-d
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TabDemoComponent } from './tabs/tab-demo.component';
 import { TabsModule } from '../../../lib/src/tabs/tabs.module';
+import { TableModule } from '../../../lib/src/table/table.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -45,6 +46,7 @@ import { ChipModule } from '../../../lib/src/chip/chip.module';
 import { FilterButtonComponent } from './chip/filter-button.component';
 import { ChipDemoComponent } from './chip/chip-demo.component';
 import { SharedModule } from '../shared/shared.module';
+import { TableDemoComponent } from './table/table-demo.component';
 
 @NgModule({
     imports: [
@@ -60,6 +62,7 @@ import { SharedModule } from '../shared/shared.module';
         IconModule,
         DrawerModule,
         TabsModule,
+        TableModule,
         SelectModule,
         ListModule,
         SubnavModule,
@@ -95,6 +98,7 @@ import { SharedModule } from '../shared/shared.module';
         BreadcrumbsDemoComponent,
         Breadcrumb1DemoComponent,
         Breadcrumb2DemoComponent,
+        TableDemoComponent,
         TileDemoComponent,
         ChipDemoComponent,
         FilterButtonComponent,

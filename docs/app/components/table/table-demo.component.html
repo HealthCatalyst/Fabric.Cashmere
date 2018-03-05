@@ -1,0 +1,71 @@
+<div class="demo-content">
+    <h1>Table</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+        <hc-tab tabTitle="Overview">
+
+            <hc-tile>
+                <h5>About</h5>
+                <p>Table is a component</p>
+            </hc-tile>
+
+            <hc-tile>
+                <h5>Example </h5>
+                <table hc-table>
+                    <thead>
+                        <tr>
+                            <th>Heading 1</th>
+                            <th>Heading 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Row 1 Column 1</td>
+                            <td>Row 1 Column 2</td>
+                        </tr>
+                        <tr>
+                            <td>Row 2 Column 1</td>
+                            <td>Row 2 Column 2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </hc-tile>
+
+            <hc-tile>
+                <h5>Component Usage</h5>
+
+                <h4>Stuff</h4>
+                <p>
+                    Description
+                </p>
+            </hc-tile>
+
+        </hc-tab>
+        <hc-tab tabTitle="Documentation">
+
+            <hc-tile>
+                <h5>Angular Component</h5>
+                <pre>
+                <code>
+            </code>
+        </pre>
+
+            </hc-tile>
+
+            <hc-tile>
+                <h5>Properties</h5>
+                <table class="api-table">
+                    <tr>
+                        <th>property</th>
+                        <td>
+                            <span class="type-label">Type:</span> String</td>
+                        <td> Some description </td>
+                    </tr>
+
+                </table>
+            </hc-tile>
+
+        </hc-tab>
+    </hc-tab-set>
+</div>
