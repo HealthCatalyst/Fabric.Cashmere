@@ -34,41 +34,7 @@
 
     </hc-tab>
     <hc-tab tabTitle="Documentation">
-
-    <hc-tile>
-        <h5>Angular Component</h5>
-        <pre>
-            <code>
-    &#x3C;hc-breadcrumbs&#x3E;&#x3C;/hc-breadcrumbs&#x3E;
-            </code>
-        </pre>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Router Setup</h5>
-        <p>
-            The <code>hc-breadcrumb</code> component makes use of the angular <code>Router</code> with the scope of the routing
-            module in which it is placed.  A custom data element named "breadcrumb" must be added to its Routes in order for the breadcrumb component
-            to function properly.  Below in an example of a properly configured Route:
-        </p>
-        <pre>
-            <code>
-    &#x7B;
-        path: &#x27;breadcrumbs&#x27;,
-        component: BreadcrumbsDemoComponent,
-        data: &#x7B; breadcrumb: &#x22;Home Page&#x22; &#x7D;,
-        children: &#x5B;
-            &#x7B;
-                path: &#x27;breadcrumb1&#x27;,
-                component: Breadcrumb1DemoComponent,
-                data: &#x7B; breadcrumb: &#x22;Second Page&#x22; &#x7D;
-            &#x7D;
-        &#x5D;
-    &#x7D;
-            </code>
-        </pre>
-    </hc-tile>
-
+        <div [hcMarkdown]="document"></div>
     </hc-tab>
     </hc-tab-set>
 </div>
