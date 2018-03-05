@@ -54,6 +54,10 @@ export class ModalService {
             this.injector
         );
         if (container) {
+            // disable scrolling when overlay is present
+            this.renderer.addClass(container, 'hc-modal-open');
+            hcModal.removeOpenClass = () => this.renderer.removeClass(container, 'hc-modal-open');
+
             // Create, attach, and append overlay to container
             let overlay = this.componentFactoryResolver
                 .resolveComponentFactory(ModalOverlayComponent)

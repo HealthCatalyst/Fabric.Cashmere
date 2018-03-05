@@ -9,6 +9,7 @@ export class HcModal<T> {
     public overlay: ComponentRef<ModalOverlayComponent> | null;
     public window: ComponentRef<ModalWindowComponent> | null;
     public result: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+    public removeOpenClass: (() => void) | null;
     public data?: any;
 
     public close(result?: any): void {
@@ -39,8 +40,13 @@ export class HcModal<T> {
             this.componentRef.destroy();
         }
 
+        if (this.removeOpenClass) {
+            this.removeOpenClass();
+        }
+
         this.window = null;
         this.overlay = null;
         this.componentRef = null;
+        this.removeOpenClass = null;
     }
 }

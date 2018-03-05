@@ -59,3 +59,7 @@ $modal-border: 1px solid $gray-200;
     justify-content: center;
     max-height: 100%;
 }
+
+.hc-modal-open {
+    overflow: hidden;
+}
