@@ -1,9 +1,10 @@
 import { TableComponent } from './table.component';
 import { NgModule } from '@angular/core';
+import { SortableComponent } from './sortable.component';
 
 @NgModule({
-    declarations: [TableComponent],
-    exports: [TableComponent],
+    declarations: [TableComponent, SortableComponent],
+    exports: [TableComponent, SortableComponent],
     imports: []
 })
 export class TableModule { }
