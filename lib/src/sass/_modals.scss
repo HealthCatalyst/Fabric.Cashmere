@@ -4,9 +4,6 @@
 $modal-padding: 15px;
 $header-footer-height: 55px;
 $modal-border: 1px solid $gray-200;
-$body-max-height: calc( 90% - #{$header-footer-height});
-$body-min-height: 150px;
-$body-height: 90%;
 
 .hc-modal-header {
     padding: $modal-padding;
@@ -59,6 +56,6 @@ $body-height: 90%;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     max-height: 100%;
 }
