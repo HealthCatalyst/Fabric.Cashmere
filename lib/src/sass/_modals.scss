@@ -63,3 +63,10 @@ $modal-border: 1px solid $gray-200;
 .hc-modal-open {
     overflow: hidden;
 }
+
+.hc-modal-center-component {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
