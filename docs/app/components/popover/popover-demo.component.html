@@ -48,8 +48,8 @@
         <h5>Dynamic Content</h5>
         <p>Enter text into the input below to edit the content of the popover:</p>
         <div class="sample-component">
-            <input type="text" [(ngModel)]="body">
-            <button hc-button color="primary" [hcPopover]="dynamic" popperPlacement="bottom" [popperCloseOnClickOutside]="false"
+            <input hc-input type="text" [(ngModel)]="body">
+            <button hc-button class="inline-button" color="primary" [hcPopover]="dynamic" popperPlacement="bottom" [popperCloseOnClickOutside]="false"
                     aria-hidden="true">Click Me
             </button>
             <hc-popover-content #dynamic>
