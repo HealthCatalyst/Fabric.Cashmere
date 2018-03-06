@@ -1,3 +1,5 @@
+import { UpdatePageEvent } from './update-page-event';
+import { PaginatorComponent } from './paginator.component';
 /* tslint:disable:component-selector */
 /* tslint:disable:use-host-property-decorator */
 // tslint:disable:no-input-rename
@@ -11,7 +13,8 @@ import {
     AfterViewInit,
     AfterContentInit,
     Input,
-    ContentChildren
+    ContentChildren,
+    ContentChild
 } from '@angular/core';
 import { SortEvent } from './sort-event';
 import { SortableComponent } from './sortable.component';
@@ -25,9 +28,11 @@ export class TableComponent implements AfterContentInit {
     @HostBinding('class.hc-table') public hcTable = true;
     @HostBinding('class.hc-table-borders') public borders = true;
     @ContentChildren(SortableComponent) public sortableHeaders: QueryList<SortableComponent>;
+    @ContentChild(PaginatorComponent) public paginator: PaginatorComponent;
 
     ngAfterContentInit() {
-        this.sortableHeaders.map(sh => sh.sortEvent.subscribe(se => this.sort(se)))
+        this.sortableHeaders.map(sh => sh.sortEvent.subscribe(se => this.sort(se)));
+        this.paginator.updatePageEvent.subscribe(pe => this.updatePage(pe));
     }
 
     private sort(sortEvent: SortEvent) {
@@ -39,6 +44,10 @@ export class TableComponent implements AfterContentInit {
         let sortOrderRight = sortEvent.sortDirection === 'desc' ? 1 : -1;
 
         this.data.sort((prev, curr) => prev[sortEvent.sortColumn] > curr[sortEvent.sortColumn] ? sortOrderLeft : sortOrderRight)
+    }
+
+    private updatePage(updatePageEvent: UpdatePageEvent) {
+        console.log(updatePageEvent);
     }
 
 }
