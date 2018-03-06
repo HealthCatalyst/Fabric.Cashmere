@@ -3,7 +3,10 @@
 :host {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+}
+
+a {
+    cursor: pointer;
 }
 
 .pagination {
@@ -26,8 +29,8 @@
     line-height: 1.42857143;
     color: $primary-brand;
     text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: $white;
+    border: 1px solid $gray-200;
   }
 
   .pagination>li:first-child>a,
@@ -49,8 +52,8 @@
   .pagination>li>span:focus {
     z-index: 2;
     color: darken($primary-brand, 15%);
-    background-color: #eee;
-    border-color: #ddd;
+    background-color: $gray-100;
+    border-color: $gray-200;
   }
 
   .pagination>.active>a,
@@ -60,7 +63,7 @@
   .pagination>.active>a:focus,
   .pagination>.active>span:focus {
     z-index: 3;
-    color: #fff;
+    color: $white;
     cursor: default;
     background-color: $primary-brand;
     border-color: $primary-brand;
@@ -72,10 +75,10 @@
   .pagination>.disabled>a,
   .pagination>.disabled>a:hover,
   .pagination>.disabled>a:focus {
-    color: #777;
+    color: $gray-400;
     cursor: not-allowed;
-    background-color: #fff;
-    border-color: #ddd;
+    background-color: $white;
+    border-color: $gray-200;
   }
 
   .pagination-lg>li>a,
@@ -119,7 +122,7 @@
 
 .pagination-button {
     min-width: 0;
-    border: 2px solid $gray-200;
+    border: 2px solid $gray-100;
     padding: 0 5px;
     margin: 0;
     border-radius: 0;
@@ -128,4 +131,9 @@
 .pagination-active {
     color: $white !important;
     background-color: $primary-brand !important;
+}
+
+.hc-icon {
+    font-size: 18px !important;
+    width: inherit;
 }

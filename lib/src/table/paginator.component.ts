@@ -4,7 +4,7 @@ import { UpdatePageEvent } from './update-page-event';
 /* tslint:disable:use-host-property-decorator */
 // https://github.com/mgechev/codelyzer/issues/178#issuecomment-265154480
 
-import { Component, HostBinding, HostListener, Input, Output, EventEmitter } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
     selector: 'hc-table-paginator',
@@ -16,14 +16,18 @@ import { Component, HostBinding, HostListener, Input, Output, EventEmitter } fro
                <ng-container *ngIf="showPages">
                <nav aria-label="Page navigation" *ngIf="pages?.length > 1 || paginationType === 'server'">
                <ul class="pagination" id="pagination" [attr.totalpages]='pages.length'>
-                   <li>
+                   <li [class.disabled]="pageNumber === 1">
                        <a id="pageFirst" (click)="firstPage()" aria-label="First">
-                           <span aria-hidden="true">&lt;&lt;</span>
+                           <span aria-hidden="true">
+                               <hc-icon fontSet="fa" fontIcon="fa-angle-double-left"></hc-icon>
+                           </span>
                        </a>
                    </li>
-                   <li>
+                   <li [class.disabled]="pageNumber === 1">
                    <a id="pagePrevious" (click)="previousPage()" aria-label="Previous">
-                       <span aria-hidden="true">&lt;</span>
+                       <span aria-hidden="true">
+                           <hc-icon fontSet="fa" fontIcon="fa-angle-left"></hc-icon>
+                        </span>
                    </a>
                    </li>
                    <li *ngFor="let page of pages | slice:this.getArrayStart(): this.getArrayEnd();
@@ -32,14 +36,18 @@ import { Component, HostBinding, HostListener, Input, Output, EventEmitter } fro
                           {{page}}
                       </a>
                     </li>
-                    <li>
+                    <li [class.disabled]="pageNumber === pages.length">
                     <a id="pageNext" (click)="nextPage()" aria-label="Next">
-                        <span aria-hidden="true">&gt;</span>
+                        <span aria-hidden="true">
+                            <hc-icon fontSet="fa" fontIcon="fa-angle-right"></hc-icon>
+                        </span>
                     </a>
                    </li>
-                   <li>
+                   <li [class.disabled]="pageNumber === pages.length">
                        <a id="pageLast" (click)="lastPage()" aria-label="Last">
-                           <span aria-hidden="true">&gt;&gt;</span>
+                           <span aria-hidden="true">
+                               <hc-icon fontSet="fa" fontIcon="fa-angle-double-right"></hc-icon>
+                           </span>
                        </a>
                    </li>
                </ul>
@@ -48,12 +56,19 @@ import { Component, HostBinding, HostListener, Input, Output, EventEmitter } fro
                </ng-container>`,
     styleUrls: ['./paginator.component.scss']
 })
-export class PaginatorComponent {
+export class PaginatorComponent implements OnChanges {
     @Input() public showPages: boolean = false;
     @Output() updatePageEvent: EventEmitter<UpdatePageEvent> = new EventEmitter<UpdatePageEvent>();
+    @HostBinding('style.justify-content') public alignment = 'center';
     public pageNumber: number = 1;
     public pages: number[] = [];
     private maxPaginationTabsLength = 5;
+
+    ngOnChanges(simpleChanges: SimpleChanges) {
+        if (simpleChanges['showPages']) {
+            this.alignment = this.showPages ? 'flex-end' : 'center';
+        }
+    }
 
     moreResults() {
         this.pageNumber++;
@@ -67,6 +82,9 @@ export class PaginatorComponent {
 
     previousPage() {
         this.pageNumber--;
+        if (this.pageNumber < 1) {
+            this.pageNumber = 1;
+        }
         this.updatePage();
     }
 
@@ -77,6 +95,10 @@ export class PaginatorComponent {
 
     nextPage() {
         this.pageNumber++;
+
+        if (this.pageNumber > this.pages.length) {
+            this.pageNumber = this.pages.length;
+        }
         this.updatePage();
     }
 
