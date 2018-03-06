@@ -68,8 +68,11 @@ body {
 @include media-breakpoint-down(md) {
     .demo-content { padding: 0; }
     .responsive-subnav { display: flex !important; }
-    hc-tab-set .vertical-container .tab-bar-vertical { display: none; }
-    hc-tab-set .vertical-container .tab-content-vertical { width: 100% !important; }
+    .full-height > .vertical-container > .tab-bar-vertical { display: none; }
+    .full-height > .vertical-container > .tab-content-vertical {
+        width: 100% !important;
+        margin-top: 52px;
+    }
     hc-tile { overflow-x: auto; }
 }
 
@@ -181,5 +184,19 @@ ol {
 
     ul {
         list-style: none;
+    }
+}
+
+.line-number{
+    float: left;
+    text-align: right;
+    > span {
+        display: block;
+        padding: 0 .5em 0 1em;
+        border-right: 1px solid;
+        margin-right: 5px;
+        color: rgba($gray-600,0.5);
+        @include fontSize(14px);
+        line-height: 22px;
     }
 }
