@@ -12,7 +12,7 @@
 
             <hc-tile>
                 <h5>Example </h5>
-                <table [hc-table]="rows">
+                <table [hc-table]="rows" [rowsPerPage]="3" #tableExample>
                     <thead>
                         <tr>
                             <th hc-sortable="heading1">Heading 1</th>
@@ -21,7 +21,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let row of rows">
+                        <tr *ngFor="let row of tableExample.rows">
                             <td>{{row.heading1}}</td>
                             <td>{{row.heading2}}</td>
                             <td>{{row.heading3}}</td>
@@ -30,7 +30,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="9999">
-                                <hc-table-paginator></hc-table-paginator>
+                                <hc-table-paginator [showPages]="true"></hc-table-paginator>
                             </td>
                         </tr>
 

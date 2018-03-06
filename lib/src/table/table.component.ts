@@ -14,7 +14,8 @@ import {
     AfterContentInit,
     Input,
     ContentChildren,
-    ContentChild
+    ContentChild,
+    OnChanges
 } from '@angular/core';
 import { SortEvent } from './sort-event';
 import { SortableComponent } from './sortable.component';
@@ -23,12 +24,21 @@ import { SortableComponent } from './sortable.component';
     selector: 'table[hc-table]',
     template: `<ng-content></ng-content>`
 })
-export class TableComponent implements AfterContentInit {
+export class TableComponent implements OnChanges, AfterContentInit {
     @Input('hc-table') data: any[] = [];
+    @Input() rowsPerPage: number = 10;
     @HostBinding('class.hc-table') public hcTable = true;
     @HostBinding('class.hc-table-borders') public borders = true;
     @ContentChildren(SortableComponent) public sortableHeaders: QueryList<SortableComponent>;
     @ContentChild(PaginatorComponent) public paginator: PaginatorComponent;
+    pages: number[] = [];
+    rows: any[] = [];
+    currentPage: number = 1;
+
+    ngOnChanges() {
+        this.calculatePages();
+        this.updatePage({pageNumber: this.currentPage})
+    }
 
     ngAfterContentInit() {
         this.sortableHeaders.map(sh => sh.sortEvent.subscribe(se => this.sort(se)));
@@ -43,11 +53,25 @@ export class TableComponent implements AfterContentInit {
         let sortOrderLeft = sortEvent.sortDirection === 'asc' ? 1 : -1;
         let sortOrderRight = sortEvent.sortDirection === 'desc' ? 1 : -1;
 
-        this.data.sort((prev, curr) => prev[sortEvent.sortColumn] > curr[sortEvent.sortColumn] ? sortOrderLeft : sortOrderRight)
+        this.data.sort((prev, curr) => prev[sortEvent.sortColumn] > curr[sortEvent.sortColumn] ? sortOrderLeft : sortOrderRight);
+        this.currentPage = 1;
+        this.updatePage({ pageNumber: this.currentPage });
+    }
+
+    private calculatePages() {
+        let pageCount = Math.ceil(this.data.length / this.rowsPerPage);
+        for (let i = 1; i <= pageCount; i++) {
+            this.pages.push(i);
+        }
+        if (this.paginator) {
+            this.paginator.pages = this.pages;
+        }
     }
 
     private updatePage(updatePageEvent: UpdatePageEvent) {
-        console.log(updatePageEvent);
+        let startingValue = (updatePageEvent.pageNumber - 1) * this.rowsPerPage;
+        let endingValue = updatePageEvent.pageNumber * this.rowsPerPage;
+        this.rows = [...this.data.slice(startingValue, endingValue)];
     }
 
 }
