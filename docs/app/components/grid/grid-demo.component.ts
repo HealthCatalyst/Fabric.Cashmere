@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'hc-table-demo',
-    templateUrl: './table-demo.component.html',
-    styleUrls: ['./table-demo.component.scss']
+    selector: 'hc-grid-demo',
+    templateUrl: './grid-demo.component.html',
+    styleUrls: ['./grid-demo.component.scss']
 })
-export class TableDemoComponent {
+export class GridDemoComponent {
     lastModified: Date = new Date(document.lastModified);
     rows = [
         {

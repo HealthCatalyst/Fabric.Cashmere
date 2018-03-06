@@ -1,5 +1,5 @@
 <div class="demo-content">
-    <h1>Table</h1>
+    <h1>Data Grid</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
     <hc-tab-set direction="horizontal">
@@ -7,12 +7,12 @@
 
             <hc-tile>
                 <h5>About</h5>
-                <p>Table is a component</p>
+                <p>Data Grid is a component</p>
             </hc-tile>
 
             <hc-tile>
                 <h5>Example </h5>
-                <table [hc-table]="rows" [rowsPerPage]="3" #tableExample>
+                <table [hc-grid]="rows" [rowsPerPage]="3" #tableExample>
                     <thead>
                         <tr>
                             <th hc-sortable="heading1">Heading 1</th>
@@ -30,7 +30,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="9999">
-                                <hc-table-paginator [showPages]="true"></hc-table-paginator>
+                                <hc-grid-paginator [showPages]="true"></hc-grid-paginator>
                             </td>
                         </tr>
 

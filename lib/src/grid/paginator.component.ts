@@ -7,7 +7,7 @@ import { UpdatePageEvent } from './update-page-event';
 import { Component, HostBinding, HostListener, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
-    selector: 'hc-table-paginator',
+    selector: 'hc-grid-paginator',
     template: `<ng-container *ngIf="!showPages && pageNumber !== pages.length">
                    <button hc-button color="secondary" (click)="moreResults()">
                        Show more results

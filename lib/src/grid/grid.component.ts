@@ -21,11 +21,11 @@ import { SortEvent } from './sort-event';
 import { SortableComponent } from './sortable.component';
 
 @Component({
-    selector: 'table[hc-table]',
+    selector: 'table[hc-grid]',
     template: `<ng-content></ng-content>`
 })
-export class TableComponent implements OnChanges, AfterContentInit {
-    @Input('hc-table') fullDataSet: any[] = [];
+export class GridComponent implements OnChanges, AfterContentInit {
+    @Input('hc-grid') fullDataSet: any[] = [];
     @Input() rowsPerPage: number = 10;
     @HostBinding('class.hc-table') public hcTable = true;
     @ContentChildren(SortableComponent) public sortableHeaders: QueryList<SortableComponent>;
