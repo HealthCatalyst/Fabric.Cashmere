@@ -2,16 +2,7 @@
 @import '../sass/functions.scss';
 @import '../sass/mixins.scss';
 
-hc-input { position: relative; }
-
-hc-input label {
-    display: block;
-    color: $gray-500;
-    @include fontSize(15px);
-    margin-bottom: 8px;
-}
-
-hc-input input {
+.hc-input {
     color: $text;
     @include fontSize(14px);
     line-height: 32px;
@@ -20,41 +11,20 @@ hc-input input {
     padding: 0 12px;
 }
 
-hc-input input:disabled {
+.hc-input:disabled {
     border: 1.5px solid $gray-200;
     background-color: $slate-gray-100;
     color: tint( $text, 60%);
     cursor: not-allowed;
 }
 
+.error-highlight { border: 2px solid $red; }
 
-hc-input .invalid {
-    input { border: 2px solid $red; }
-    .input-errors { display: block; }
-}
-
-hc-input .input-errors {
-    margin-top: 8px;
-    color: $red;
-    font-weight: 600;
-    @include fontSize(12px);
-    display: none;
-}
-
-hc-input .label-required label:after {
-    content: "*";
-    margin-left: 5px;
-    color: $red;
-}
-
-hc-input hc-icon {
-    color: $gray-400;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    pointer-events: none;
-    padding-right: 30px;
-}
-
-.icon-container { position: relative; }
 .input-icon input { padding-right: 40px; }
+
+.input-icon hc-icon {
+    color: $gray-400;
+    position: relative;
+    right: 35px;
+    pointer-events: none;
+}

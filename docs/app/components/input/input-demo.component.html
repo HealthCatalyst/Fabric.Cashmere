@@ -16,32 +16,28 @@
         <h5>Example</h5>
         <h4>Input with Validation</h4>
         <form (ngSubmit)="onSubmit()">
-            <hc-input [valid]="validCheck" required="true">
-                <label for="inputEmail">Validate an email address:</label>
-                <input required name="inputEmail" id="inputEmail" [(ngModel)]="emailText" #inputEmail="ngModel" width="250px"  />
-                <div hcInputErrors>
-                    <div *ngIf="errorVal===1">
-                        Email address is required
-                    </div>
-                    <div *ngIf="errorVal===2">
-                        Please enter a valid email address
-                    </div>
+            <label hc-label required="true">Validate an email address:</label>
+            <input hc-input required name="inputEmail" id="inputEmail" [(ngModel)]="emailText" #inputEmail="ngModel" width="250px" type="email" email [highlight]="submitted && inputEmail.invalid">
+            <div class="form-errors" *ngIf="submitted && inputEmail.invalid">
+                <div *ngIf="inputEmail.errors.required">
+                    Email address is required
                 </div>
-            </hc-input>
-            <br>
+                <div *ngIf="!inputEmail.errors.required">
+                    Please enter a valid email address
+                </div>
+            </div>
+            <br><br>
             <button hc-button title="Validate Input Text" color="primary" type="submit">Validate Input</button>
         </form>
 
         <h4>Input with Icon</h4>
-        <hc-input>
-            <input name="search" placeholder="search" width="250px" />
+        <div hcInputIcon>
+            <input hc-input name="search" placeholder="search" width="250px" />
             <hc-icon fontSet="fa" fontIcon="fa-search" class="search-icon"></hc-icon>
-        </hc-input>
+        </div>
 
         <h4>Disabled Input</h4>
-        <hc-input>
-            <input disabled name="disabled" width="250px" />
-        </hc-input>
+        <input hc-input disabled name="disabled" width="250px" />
 
     </hc-tile>
 

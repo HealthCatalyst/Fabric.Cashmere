@@ -1,10 +1,6 @@
-<div [ngClass]="{'invalid': !_valid, 'select-required': _required}">
-    <ng-content select="label"></ng-content>
-    <span [ngClass]="{'disabled': _disabled}" class="chevron">
-        <select [disabled]="_disabled" (change)="value = $event.target.value" required>
-            <option *ngIf="placeholder" [value]="null" selected disabled hidden>{{placeholder}}</option>
-            <ng-content select="option"></ng-content>
-        </select>
-    </span>
-    <ng-content></ng-content>
-</div>
+<span [ngClass]="{'highlight': _highlight, 'disabled': _disabled}" class="chevron">
+    <select [disabled]="_disabled" (change)="value = $event.target.value" required>
+        <option *ngIf="placeholder" [value]="null" selected disabled hidden>{{placeholder}}</option>
+        <ng-content select="option"></ng-content>
+    </select>
+</span>

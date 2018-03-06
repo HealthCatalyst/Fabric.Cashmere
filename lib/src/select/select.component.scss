@@ -55,13 +55,6 @@ hc-select .chevron:after {
     box-sizing: border-box;
 }
 
-hc-select label {
-    display: block;
-    color: $gray-500;
-    @include fontSize(15px);
-    margin-bottom: 8px;
-}
-
 hc-select .select-errors {
     margin-top: 8px;
     color: $red;
@@ -70,7 +63,7 @@ hc-select .select-errors {
     display: none;
 }
 
-hc-select .invalid {
+hc-select .highlight {
     select { border: 2px solid $red; }
     .select-errors { display: block; }
 }

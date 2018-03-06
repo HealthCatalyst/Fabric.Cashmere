@@ -21,13 +21,13 @@ export class SelectComponent implements ControlValueAccessor {
     @Input() placeholder: string = '';
 
     _disabled: boolean = false;
-    _valid: boolean = true;
+    _highlight: boolean = false;
     _required: boolean = false;
     _value: string = '';
 
     constructor() { }
 
-    @Input() get valid(): boolean { return this._valid; }
+    @Input() get highlight(): boolean { return this._highlight; }
 
     @Input() get disabled(): boolean { return this._disabled; }
 
@@ -37,7 +37,7 @@ export class SelectComponent implements ControlValueAccessor {
 
     set disabled(isDisabled) { this._disabled = anyToBoolean(isDisabled); }
 
-    set valid(validVal) { this._valid = anyToBoolean(validVal); }
+    set highlight(highlightVal) { this._highlight = anyToBoolean(highlightVal); }
 
     onChange: any = () => { };
 

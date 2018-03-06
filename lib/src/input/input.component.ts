@@ -1,25 +1,34 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+/* tslint:disable:component-selector */
+/* tslint:disable:use-host-property-decorator */
+// https://github.com/mgechev/codelyzer/issues/178#issuecomment-265154480
+
+import { Component, Input, ViewEncapsulation, HostBinding, Renderer2, ElementRef } from '@angular/core';
 import { anyToBoolean } from '../util';
 
 @Component({
-    selector: 'hc-input',
-    templateUrl: './input.component.html',
+    selector: 'input[hc-input]',
+    template: `<ng-content></ng-content>`,
     styleUrls: ['./input.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 
 export class InputComponent {
 
-    _valid: boolean = true;
-    _required: boolean = false;
+    _highlight: boolean = false;
 
-    constructor() {}
+    @HostBinding('class.hc-input') hostClass = true;
 
-    @Input() get valid(): boolean { return this._valid; }
+    constructor( private elementRef: ElementRef, private renderer: Renderer2 ) { }
 
-    set valid(validVal) { this._valid = anyToBoolean(validVal); }
+    @Input() get highlight(): boolean { return this._highlight; }
 
-    @Input() get required(): boolean { return this._required; }
-
-    set required(isRequired) { this._required = anyToBoolean(isRequired); }
+    set highlight(doHighlight) {
+        let tempVal = anyToBoolean(doHighlight);
+        if ( tempVal && !this._highlight ) {
+            this.renderer.addClass(this.elementRef.nativeElement, 'error-highlight');
+        } else if ( !tempVal && this._highlight  ) {
+            this.renderer.removeClass(this.elementRef.nativeElement, 'error-highlight');
+        }
+        this._highlight = tempVal;
+    }
 }

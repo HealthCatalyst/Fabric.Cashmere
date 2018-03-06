@@ -1,8 +1,0 @@
-<div [ngClass]="{'invalid': !_valid, 'label-required': _required}">
-    <span [ngClass]="{'input-icon': inputicon.children.length != 0}">
-        <ng-content></ng-content>
-    </span>
-    <span #inputicon class="icon-container">
-        <ng-content select="hc-icon"></ng-content>
-    </span>
-</div>

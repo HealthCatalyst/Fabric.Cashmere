@@ -46,6 +46,7 @@ import { FilterButtonComponent } from './chip/filter-button.component';
 import { ChipDemoComponent } from './chip/chip-demo.component';
 import { InputModule } from '../../../lib/src/input/input.module';
 import { InputDemoComponent } from './input/input-demo.component';
+import { LabelModule } from '../../../lib/src/label/label.module';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -71,6 +72,7 @@ import { SharedModule } from '../shared/shared.module';
         TileModule,
         ChipModule,
         InputModule,
+        LabelModule,
         SharedModule,
         RouterModule.forRoot(routes)
     ],

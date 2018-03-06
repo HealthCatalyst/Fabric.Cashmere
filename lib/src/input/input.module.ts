@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from './input.component';
-import { InputErrorDirective } from './input-errors.directive';
+import { InputIconDirective } from './input-icon.directive';
 
 @NgModule({
     imports: [
@@ -9,11 +9,11 @@ import { InputErrorDirective } from './input-errors.directive';
     ],
     exports: [
         InputComponent,
-        InputErrorDirective
+        InputIconDirective
     ],
     declarations: [
         InputComponent,
-        InputErrorDirective
+        InputIconDirective
     ]
 })
 export class InputModule {
