@@ -13,6 +13,8 @@ import { TableDemoComponent } from './table/table-demo.component';
 import { SwatchDemoComponent } from './color/swatch-demo.component';
 import { routes } from './styles-routes';
 import { TypographyDemoComponent } from './typography/typography-demo.component';
+import { CodeDemoComponent } from './code/code-demo.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -22,6 +24,7 @@ import { TypographyDemoComponent } from './typography/typography-demo.component'
         SubnavModule,
         TileModule,
         SelectModule,
+        SharedModule,
         RouterModule.forRoot(routes)
     ],
     declarations: [
@@ -29,7 +32,8 @@ import { TypographyDemoComponent } from './typography/typography-demo.component'
         ColorDemoComponent,
         TableDemoComponent,
         SwatchDemoComponent,
-        TypographyDemoComponent
+        TypographyDemoComponent,
+        CodeDemoComponent
     ]
 })
 export class StylesModule {

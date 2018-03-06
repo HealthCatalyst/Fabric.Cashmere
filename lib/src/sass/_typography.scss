@@ -64,7 +64,7 @@ pre {
     background-color: $block-text-background;
 
     > span {
-        @include fontSize(16px);    
+        @include fontSize(16px);
         line-height: 1.4;
         padding: $code-padding 0;
         background-color: $block-text-background;
@@ -73,7 +73,7 @@ pre {
     > code {
         overflow-x: auto;
         display: block;
-        @include fontSize(16px);
+        @include fontSize(14px);
         padding: $code-padding;
         line-height: 1.4;
         background-color: $block-text-background;
