@@ -17,7 +17,7 @@
         <h4>Input with Validation</h4>
         <form (ngSubmit)="onSubmit()">
             <label hc-label required="true">Validate an email address:</label>
-            <input hc-input required name="inputEmail" id="inputEmail" [(ngModel)]="emailText" #inputEmail="ngModel" width="250px" type="email" email [highlight]="submitted && inputEmail.invalid">
+            <input hc-input required name="inputEmail" id="inputEmail" ngModel #inputEmail="ngModel" width="250px" type="email" email [highlight]="submitted && inputEmail.invalid">
             <div class="form-errors" *ngIf="submitted && inputEmail.invalid">
                 <div *ngIf="inputEmail.errors.required">
                     Email address is required
