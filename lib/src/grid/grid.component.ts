@@ -104,6 +104,7 @@ export class GridComponent implements OnChanges, AfterContentInit {
 
     private calculatePages() {
         let pageCount = this.pageCount || Math.ceil(this.fullDataSet.length / this.rowsPerPage);
+        this.pages = [];
         for (let i = 1; i <= pageCount; i++) {
             this.pages.push(i);
         }
