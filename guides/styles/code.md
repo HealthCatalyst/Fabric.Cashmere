@@ -1,4 +1,9 @@
 :::
+##### Code Font
+Source code should always be displayed using a monospace font. This is the font family used by this Cashmere site: `font-family: Consolas, Menlo, "Ubuntu Mono", monospace;`.
+:::
+
+:::
 ##### Code Blocks
 For blocks of code larger than than three lines, it is recommended that line numbers be included.  The line numbers should be the same font size as the code, but in a light gray color so they aren't distracting.
 
