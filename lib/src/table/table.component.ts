@@ -25,10 +25,9 @@ import { SortableComponent } from './sortable.component';
     template: `<ng-content></ng-content>`
 })
 export class TableComponent implements OnChanges, AfterContentInit {
-    @Input('hc-table') data: any[] = [];
+    @Input('hc-table') fullDataSet: any[] = [];
     @Input() rowsPerPage: number = 10;
     @HostBinding('class.hc-table') public hcTable = true;
-    @HostBinding('class.hc-table-borders') public borders = true;
     @ContentChildren(SortableComponent) public sortableHeaders: QueryList<SortableComponent>;
     @ContentChild(PaginatorComponent) public paginator: PaginatorComponent;
     pages: number[] = [];
@@ -53,13 +52,16 @@ export class TableComponent implements OnChanges, AfterContentInit {
         let sortOrderLeft = sortEvent.sortDirection === 'asc' ? 1 : -1;
         let sortOrderRight = sortEvent.sortDirection === 'desc' ? 1 : -1;
 
-        this.data.sort((prev, curr) => prev[sortEvent.sortColumn] > curr[sortEvent.sortColumn] ? sortOrderLeft : sortOrderRight);
+        this.fullDataSet.sort((prev, curr) => prev[sortEvent.sortColumn] > curr[sortEvent.sortColumn] ? sortOrderLeft : sortOrderRight);
         this.currentPage = 1;
+        if (this.paginator) {
+            this.paginator.pageNumber = 1;
+        }
         this.updatePage({ pageNumber: this.currentPage });
     }
 
     private calculatePages() {
-        let pageCount = Math.ceil(this.data.length / this.rowsPerPage);
+        let pageCount = Math.ceil(this.fullDataSet.length / this.rowsPerPage);
         for (let i = 1; i <= pageCount; i++) {
             this.pages.push(i);
         }
@@ -69,9 +71,9 @@ export class TableComponent implements OnChanges, AfterContentInit {
     }
 
     private updatePage(updatePageEvent: UpdatePageEvent) {
-        let startingValue = (updatePageEvent.pageNumber - 1) * this.rowsPerPage;
+        let startingValue = updatePageEvent.appendResults ? 0 : (updatePageEvent.pageNumber - 1) * this.rowsPerPage;
         let endingValue = updatePageEvent.pageNumber * this.rowsPerPage;
-        this.rows = [...this.data.slice(startingValue, endingValue)];
+        this.rows = [...this.fullDataSet.slice(startingValue, endingValue)];
     }
 
 }
