@@ -15,6 +15,7 @@ import { routes } from './styles-routes';
 import { TypographyDemoComponent } from './typography/typography-demo.component';
 import { CodeDemoComponent } from './code/code-demo.component';
 import { SharedModule } from '../shared/shared.module';
+import { ChartDemoComponent } from './chart/chart-demo.component';
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { SharedModule } from '../shared/shared.module';
         TableDemoComponent,
         SwatchDemoComponent,
         TypographyDemoComponent,
-        CodeDemoComponent
+        CodeDemoComponent,
+        ChartDemoComponent
     ]
 })
 export class StylesModule {
