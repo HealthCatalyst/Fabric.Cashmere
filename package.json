@@ -43,7 +43,6 @@
         "@angular/language-service": "5.1.0",
         "@types/jasmine": "~2.5.53",
         "@types/jasminewd2": "~2.0.2",
-        "@types/moment": "^2.13.0",
         "@types/node": "6.0.92",
         "@types/popper.js": "^1.11.0",
         "chalk": "^2.3.0",

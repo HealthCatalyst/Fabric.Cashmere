@@ -197,6 +197,6 @@ ol {
         margin-right: 5px;
         color: rgba($gray-600,0.5);
         @include fontSize(14px);
-        line-height: 22px;
+        font-family: Consolas, Menlo, "Ubuntu Mono", monospace;
     }
 }

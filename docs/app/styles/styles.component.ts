@@ -30,7 +30,6 @@ export class StylesComponent {
                 }
             }
         }
-        this.selectOptions.sort();
     }
 
     // Handle changes to the select component and navigate
