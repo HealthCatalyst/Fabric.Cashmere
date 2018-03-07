@@ -20,6 +20,7 @@ import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.compon
 import { TileDemoComponent } from './tile/tile-demo.component'
 import { ChipDemoComponent } from './chip/chip-demo.component';
 import { ProgressIndicatorDemoComponent } from './progress-indicator/progress-indicator-demo.component';
+import { ModalDemoComponent } from './modal/modal-demo.component';
 
 export const routes: Routes = [
     {
@@ -116,6 +117,11 @@ export const routes: Routes = [
                 data: { title: 'List' }
             },
             {
+                path: 'modal',
+                component: ModalDemoComponent,
+                data: { title: 'Modal'}
+            },
+            {
                 path: 'accordion',
                 component: AccordionDemoComponent,
                 data: { title: 'Accordion' }
@@ -133,7 +139,7 @@ export const routes: Routes = [
             {
                 path: 'typeform-survey',
                 component: TypeFormSurveyDemoComponent,
-                data: { title: 'Typeform Survey' }
+                data: { title: 'Typeform Survey'}
             },
             {
                 path: '**',
