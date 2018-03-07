@@ -117,7 +117,7 @@ $circle-clipper-animation-timing: 1333ms;
     }
 
     &.left .circle {
-        left: 0;
+        left: 1px;
         border-right-color: transparent !important;
         -webkit-transform: rotate(129deg);
         transform: rotate(129deg);
