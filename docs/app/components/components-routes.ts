@@ -19,6 +19,7 @@ import { Breadcrumb1DemoComponent } from './breadcrumbs/breadcrumbs1-demo.compon
 import { Breadcrumb2DemoComponent } from './breadcrumbs/breadcrumbs2-demo.component';
 import { TileDemoComponent } from './tile/tile-demo.component'
 import { ChipDemoComponent } from './chip/chip-demo.component';
+import { ProgressIndicatorDemoComponent } from './progress-indicator/progress-indicator-demo.component';
 
 export const routes: Routes = [
     {
@@ -79,6 +80,11 @@ export const routes: Routes = [
                 path: 'popover',
                 component: PopoverDemoComponent,
                 data: { title: 'Popover' }
+            },
+            {
+                path: 'progress-indicator',
+                component: ProgressIndicatorDemoComponent,
+                data: { title: 'Progress Indicator' }
             },
             {
                 path: 'subnav',

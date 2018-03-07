@@ -1,0 +1,82 @@
+<div class="demo-content">
+    <h1>Progress Indicator</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab tabTitle="Overview">
+
+    <hc-tile>
+        <h5>About</h5>
+        <p>Prgress-indicators indicate the progress.
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Spinner Examples</h5>
+
+        <div class="spinner-example">
+            <div class="col-1">
+                <label>Color</label>
+                <hc-select
+                    [(ngModel)]="spinnerColor"
+                    placeholder="Select a color..."
+                    [options]="['blue', 'green', 'purple', 'orange', 'red', 'gray', 'white']">
+                </hc-select>
+                <label for="diameter">Diameter</label>
+                <input type="number" min="20" max="250" class="form-control" id="diameter" [(ngModel)]="spinnerDiameter" name="diameter">
+                <hc-checkbox id="checkbox-bg" [(ngModel)]="spinnerHasChannel" [checked]="spinnerHasChannel">BG Channel</hc-checkbox>
+                <hc-checkbox id="checkbox-center" [(ngModel)]="spinnerCentered" [checked]="spinnerCentered">Centered</hc-checkbox>
+                <hr>
+                <hc-checkbox id="checkbox-determinate" [(ngModel)]="spinnerIsDeterminate">Determinate</hc-checkbox>
+                <label for="name">Progress (0-100%)</label>
+                <input type="number" min="0" max="100" class="form-control" id="name" [(ngModel)]="spinnerProgress" [disabled]="!spinnerIsDeterminate" name="name">
+            </div>
+            <div class="col-2">
+                <div class="spinner-component-container" [ngClass]="{'dark-bg': spinnerColor === 'white'}">
+                        <hc-progress-spinner
+                            [diameter]="spinnerDiameter"
+                            [color]="spinnerColor"
+                            [hasChannel]="spinnerHasChannel"
+                            [isCentered]="spinnerCentered"
+                            [isDeterminate]="spinnerIsDeterminate"
+                            [progress]="spinnerProgress"></hc-progress-spinner>
+                    </div>
+            </div>
+        </div>
+    </hc-tile>
+
+    </hc-tab>
+    <hc-tab tabTitle="Documentation">
+
+    <hc-tile>
+        <h5>Angular Component</h5>
+        <pre>
+            <code>
+                za code
+            </code>
+        </pre>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Properties</h5>
+        <table class="api-table">
+            <tr>
+                <th>placeholder</th>
+                <td><span class="type-label">Type:</span> String</td>
+                <td>Optional string of text to appear before selection is made</td>
+            </tr>
+            <tr>
+                <th>[options]</th>
+                <td><span class="type-label">Type:</span> Array</td>
+                <td>An array of strings for the select options</td>
+            </tr>
+            <tr>
+                <th>[disabled]</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>Boolean value that enables/disables the button</td>
+            </tr>
+        </table>
+    </hc-tile>
+
+    </hc-tab>
+    </hc-tab-set>
+</div>
