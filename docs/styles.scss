@@ -149,7 +149,7 @@ ol {
     margin-right: 10px !important;
 }
 
-.api-table {
+table {
     width: 100%;
     @include fontSize(13px);
 
@@ -166,7 +166,7 @@ ol {
     tbody > tr > {
         td, th {
             border-bottom: 1px dashed $gray-200;
-            padding: 1em 5px;
+            padding: 1em 3em 1em 0;
             vertical-align: middle;
         }
     }
@@ -185,6 +185,8 @@ ol {
     ul {
         list-style: none;
     }
+
+    code{ font-size: inherit; }
 }
 
 .line-number{

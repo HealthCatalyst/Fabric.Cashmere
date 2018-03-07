@@ -57,6 +57,7 @@ code {
     padding: 3px 7px;
     @include fontSize(14px);
     font-weight: 400;
+    line-height: 1.4;
 }
 
 // for code blocks
