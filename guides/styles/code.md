@@ -1,11 +1,13 @@
 :::
 ##### Code Font
-Source code should always be displayed using a monospace font. This is the font family used by this Cashmere site: `font-family: Consolas, Menlo, "Ubuntu Mono", monospace;`.
+Display source code in a monospace font. The Cashmere site uses the following: `font-family: Consolas, Menlo, "Ubuntu Mono", monospace;`
 :::
 
 :::
 ##### Code Blocks
-For blocks of code larger than than three lines, it is recommended that line numbers be included.  The line numbers should be the same font size as the code, but in a light gray color so they aren't distracting.
+Include line numbers for blocks of code longer than than three lines. Line numbers should be:
+- The same font size as the code
+- In a light gray color so they aren't distracting
 
 ``` html
     <hc-list>
@@ -20,6 +22,6 @@ For blocks of code larger than than three lines, it is recommended that line num
 
 :::
 ##### Syntax Highlighting
-Syntax highlighting can be useful to make blocks of code more readable.  The highlight.js library is our recommended highligher, using the **"GitHub Gist"** theme.  Visit [https://highlightjs.org/static/demo/](https://highlightjs.org/static/demo/) for more details.
+Syntax highlighting makes blocks of code more readable. The **"GitHub Gist"** theme in the highlight.js library is our recommended highlighter. Visit [https://highlightjs.org/static/demo](https://highlightjs.org/static/demo) for details.
 
 :::
