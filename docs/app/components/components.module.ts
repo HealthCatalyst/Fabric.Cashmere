@@ -1,3 +1,6 @@
+import { SubModalDemoComponent } from './modal/sub-modal-demo.component';
+import { ModalDemoComponent } from './modal/modal-demo.component';
+import { ModalModule } from './../../../lib/src/modal/modal.module';
 import { TypeformSurveyModule } from './../../../lib/src/typeform-survey/typeform-survey.module';
 import { TypeFormSurveyDemoComponent } from './typeform-survey/typeform-survey-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
@@ -60,6 +63,7 @@ import { SharedModule } from '../shared/shared.module';
         CheckboxModule,
         RadioButtonModule,
         AppSwitcherModule,
+        ModalModule,
         IconModule,
         DrawerModule,
         TabsModule,
@@ -73,6 +77,7 @@ import { SharedModule } from '../shared/shared.module';
         ChipModule,
         InputModule,
         LabelModule,
+        ModalModule,
         SharedModule,
         RouterModule.forRoot(routes)
     ],
@@ -94,9 +99,11 @@ import { SharedModule } from '../shared/shared.module';
         TabDemoComponent,
         IconDemoComponent,
         ListDemoComponent,
+        ModalDemoComponent,
         SubnavDemoComponent,
         AccordionDemoComponent,
         SubnavDemoComponent,
+        SubModalDemoComponent,
         BreadcrumbsDemoComponent,
         Breadcrumb1DemoComponent,
         Breadcrumb2DemoComponent,
@@ -104,13 +111,17 @@ import { SharedModule } from '../shared/shared.module';
         ChipDemoComponent,
         FilterButtonComponent,
         TypeFormSurveyDemoComponent,
-        InputDemoComponent
+        InputDemoComponent,
+        ModalDemoComponent
     ],
     providers: [
         {
             provide: 'IAppSwitcherService',
             useClass: MockAppSwitcherService
         }
+    ],
+    entryComponents: [
+        SubModalDemoComponent,
     ]
 })
 export class ComponentsModule {
