@@ -7,13 +7,16 @@
 
     <hc-tile>
         <h5>About</h5>
-        <p>Prgress-indicators indicate the progress.
+        <p>Progress indicators let the user know the app busy at work. Two varieties are available:</p>
+        <ul>
+            <li><code>hc-progress-spinner</code> - can be determinate or indeterminate</li>
+            <li><code>hc-progress-dots</code> - especially useful to be used inline, or when a smaller loading indicator is needed</li>
+        </ul>
     </hc-tile>
 
     <hc-tile>
-        <h5>Spinner Examples</h5>
-
-        <div class="spinner-example">
+        <h5>Spinner Example</h5>
+        <div class="progress-example">
             <div class="col-1">
                 <label>Color</label>
                 <hc-select
@@ -31,7 +34,7 @@
                 <input type="number" min="0" max="100" class="form-control" id="name" [(ngModel)]="spinnerProgress" [disabled]="!spinnerIsDeterminate" name="name">
             </div>
             <div class="col-2">
-                <div class="spinner-component-container" [ngClass]="{'dark-bg': spinnerColor === 'white'}">
+                <div class="progress-component-container" [ngClass]="{'dark-bg': spinnerColor === 'white'}">
                         <hc-progress-spinner
                             [diameter]="spinnerDiameter"
                             [color]="spinnerColor"
@@ -44,14 +47,74 @@
         </div>
     </hc-tile>
 
+    <hc-tile>
+        <h5>Dots Example</h5>
+
+        <div class="progress-example">
+            <div class="col-1">
+                <label>Color</label>
+                <hc-select
+                    [(ngModel)]="dotsColor"
+                    placeholder="Select a color..."
+                    [options]="['light', 'dark']">
+                </hc-select>
+                <hc-checkbox id="checkbox-dots-size" [(ngModel)]="dotsMini" [checked]="dotsMini">Miniature</hc-checkbox>
+                <hc-checkbox id="checkbox-dots-center" [(ngModel)]="dotsCentered" [checked]="dotsCentered">Centered</hc-checkbox>
+            </div>
+            <div class="col-2">
+                <div class="progress-component-container" [ngClass]="{'dark-bg': dotsColor === 'light'}">
+                    <hc-progress-dots
+                        [color]="dotsColor"
+                        [isMini]="dotsMini"
+                        [isCentered]="dotsCentered"></hc-progress-dots>
+                </div>
+            </div>
+        </div>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Special Usage</h5>
+        <p>In some cases, like before the application is loaded, you may want to use the progress indicators without using the angular component.
+            To do so, import the appropriate sass file (<code>sass/progress-spinner.scss</code> or <code>sass/progress-dots.scss</code>)
+            and use the following HTML:
+        </p>
+        <pre>
+            <code>
+    // for spinner
+    &#x3C;div class="hc-spinner indeterminate-spin"&#x3E;
+        &#x3C;div class="spinner-layer spinner-blue spinner-base"&#x3E;
+            &#x3C;div class="circle base-circle"&#x3E;&#x3C;/div&#x3E;
+            &#x3C;div class="circle-clipper left"&#x3E;&#x3C;div class="circle"&#x3E;&#x3C;/div&#x3E;
+            &#x3C;/div&#x3E;&#x3C;div class="gap-patch"&#x3E;&#x3C;div class="circle"&#x3E;&#x3C;/div&#x3E;
+            &#x3C;/div&#x3E;&#x3C;div class="circle-clipper right"&#x3E;&#x3C;div class="circle"&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;
+        &#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+
+    // for dots
+    &#x3C;div class="hc-dots-loader"&#x3E;&#x3C;div class="loader-animate"&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;
+            </code>
+        </pre>
+    </hc-tile>
+
     </hc-tab>
     <hc-tab tabTitle="Documentation">
 
     <hc-tile>
         <h5>Angular Component</h5>
         <pre>
-            <code>
-                za code
+        <code>
+    &#x3C;hc-progress-spinner
+        [diameter]="50"
+        [color]="blue"
+        [hasChannel]="true"
+        [isCentered]="true"
+        [isDeterminate]="true"
+        [progress]="25"&#x3E;&#x3C;/hc-progress-spinner&#x3E;
+
+    &#x3C;hc-progress-dots
+        [color]="dotsColor"
+        [isMini]="dotsMini"
+        [isCentered]="dotsCentered"&#x3E;&#x3C;/hc-progress-dots&#x3E;
             </code>
         </pre>
     </hc-tile>
@@ -59,20 +122,55 @@
     <hc-tile>
         <h5>Properties</h5>
         <table class="api-table">
+            <thead><th colspan="3">Progress Spinner</th></thead>
             <tr>
-                <th>placeholder</th>
-                <td><span class="type-label">Type:</span> String</td>
-                <td>Optional string of text to appear before selection is made</td>
+                <th>diameter</th>
+                <td><span class="type-label">Type:</span> Number</td>
+                <td>Set the diameter of the circle, in pixels. Minimum is 20, maximum is 250.</td>
             </tr>
             <tr>
-                <th>[options]</th>
-                <td><span class="type-label">Type:</span> Array</td>
-                <td>An array of strings for the select options</td>
+                <th>color</th>
+                <td><span class="type-label">Type:</span> string</td>
+                <td><code>'blue' | 'green' | 'purple' | 'orange' | 'red' | 'gray' | 'white'</code></td>
             </tr>
             <tr>
-                <th>[disabled]</th>
+                <th>hasChannel</th>
                 <td><span class="type-label">Type:</span> Boolean</td>
-                <td>Boolean value that enables/disables the button</td>
+                <td>If true, include background "channel" circle</td>
+            </tr>
+            <tr>
+                <th>isCentered</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>If true, the spinner will center itself inside its container</td>
+            </tr>
+            <tr>
+                <th>isDeterminate</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>If true, switches to determinate mode. Must pass in <code>progress</code> (0-100%), instead of having the loader spin freely.</td>
+            </tr>
+            <tr>
+                <th>progress</th>
+                <td><span class="type-label">Type:</span> Number</td>
+                <td>(0-100%) Only used if <code>isDeterminate</code> is set to true.</td>
+            </tr>
+        </table>
+        <br>
+        <table class="api-table">
+            <thead><th colspan="3">Progress Dots</th></thead>
+            <tr>
+                <th>color</th>
+                <td><span class="type-label">Type:</span> string</td>
+                <td><code>'light' | 'dark' Use a light or dark version, depending on your background.</code></td>
+            </tr>
+            <tr>
+                <th>isMini</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>If true, you'll get a teeny tiny little loader.</td>
+            </tr>
+            <tr>
+                <th>isCentered</th>
+                <td><span class="type-label">Type:</span> Boolean</td>
+                <td>If true, the loader will center itself inside its container</td>
             </tr>
         </table>
     </hc-tile>

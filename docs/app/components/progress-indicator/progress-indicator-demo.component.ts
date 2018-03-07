@@ -15,4 +15,8 @@ export class ProgressIndicatorDemoComponent {
     public spinnerDiameter = 50;
     public spinnerHasChannel = true;
     public spinnerCentered = true;
+
+    public dotsColor = 'dark';
+    public dotsMini = false;
+    public dotsCentered = true;
 }

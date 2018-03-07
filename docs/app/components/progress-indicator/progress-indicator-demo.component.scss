@@ -1,6 +1,6 @@
 @import "colors";
 
-.spinner-example {
+.progress-example {
     display: flex;
 
     & > div {
@@ -25,7 +25,7 @@
     flex: 1 0 auto;
 }
 
-.spinner-component-container {
+.progress-component-container {
     height: 100%;
     width: 100%;
     position: relative;
