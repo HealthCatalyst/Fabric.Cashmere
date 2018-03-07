@@ -10,6 +10,7 @@ export class ProgressSpinnerComponent {
     @Input() public hasChannel = true;
     @Input() public isDeterminate = false;
     @Input() public set progress(progress: number) { this.setProgress(progress); };
+    @Input() public get progress() { return this._progress; };
     @Input() public set diameter(diameter: number) { this._diameter = Math.min(Math.max(this.minDiameter, diameter), this.maxDiameter); };
     public get diameter(): number { return this._diameter; };
 
@@ -39,7 +40,7 @@ export class ProgressSpinnerComponent {
         const timing = Math.abs(progress - this._progress) > 40 ? sizeBasedTime : sizeBasedTime / 2;
         const halfTime = timing / 2;
         if ( progress <= 50 && this._progress <= 50 || progress >= 51 && this._progress >= 51) {
-            this.leftCircleTransition = `transform ${timing}s "ease-in-out" 0s`;
+            this.leftCircleTransition = `transform ${timing}s ease-in-out 0s`;
             this.rightCircleTransition = `transform ${timing}s ease-in-out 0s`;
         } else if (progress <= 50 && this._progress >= 51) {
             this.leftCircleTransition = `transform ${halfTime}s ease-in 0s`;
