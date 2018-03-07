@@ -10,9 +10,9 @@ export class ProgressSpinnerComponent {
     @Input() public hasChannel = true;
     @Input() public isDeterminate = false;
     @Input() public set progress(progress: number) { this.setProgress(progress); };
-    @Input() public get progress() { return this._progress; };
+             public get progress() { return this._progress; };
     @Input() public set diameter(diameter: number) { this._diameter = Math.min(Math.max(this.minDiameter, diameter), this.maxDiameter); };
-    public get diameter(): number { return this._diameter; };
+             public get diameter(): number { return this._diameter; };
 
     public rightCircleTransform = '';
     public leftCircleTransform = '';
