@@ -22,6 +22,7 @@ import { PopoverDemoComponent } from './popover/popover-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 import { CheckboxModule } from '../../../lib/src/checkbox/checkbox.module';
 import { RadioButtonModule } from '../../../lib/src/radio-button/radio-button.module';
+import { ProgressIndicatorsModule } from '../../../lib/src/progress-indicators/progress-indicators.module';
 import { ListModule } from '../../../lib/src/list/list.module';
 import { RadioButtonDemoComponent } from './radio-button/radio-button-demo.component';
 import { SelectModule } from '../../../lib/src/select/select.module';
@@ -47,6 +48,7 @@ import { TileDemoComponent } from './tile/tile-demo.component';
 import { ChipModule } from '../../../lib/src/chip/chip.module';
 import { FilterButtonComponent } from './chip/filter-button.component';
 import { ChipDemoComponent } from './chip/chip-demo.component';
+import { ProgressIndicatorDemoComponent } from './progress-indicator/progress-indicator-demo.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -59,6 +61,7 @@ import { SharedModule } from '../shared/shared.module';
         FormsModule,
         CheckboxModule,
         RadioButtonModule,
+        ProgressIndicatorsModule,
         AppSwitcherModule,
         ModalModule,
         IconModule,
@@ -104,6 +107,7 @@ import { SharedModule } from '../shared/shared.module';
         Breadcrumb2DemoComponent,
         TileDemoComponent,
         ChipDemoComponent,
+        ProgressIndicatorDemoComponent,
         FilterButtonComponent,
         TypeFormSurveyDemoComponent,
         ModalDemoComponent
