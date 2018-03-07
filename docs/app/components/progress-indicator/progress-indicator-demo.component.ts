@@ -9,6 +9,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class ProgressIndicatorDemoComponent {
     lastModified: Date = new Date( document.lastModified );
+    public document: string = require('raw-loader!../../../../guides/components/progress-indicator.md');
+
     public spinnerIsDeterminate = false;
     public spinnerProgress = 25;
     public spinnerColor = 'blue'
