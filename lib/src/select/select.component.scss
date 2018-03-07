@@ -25,23 +25,28 @@
 }
 
 :host label {
-    overflow: hidden;
-    height: 35px;
+    &.closed::after {
+        content: "\f078";
+    }
+
+    &.open::after {
+        content: "\f077";
+    }
+
+    &::after {
+        font-family: FontAwesome;
+        color: $primary-brand;
+        padding: 9.5px 18px;
+        position: absolute; right: 0; top: 0;
+        z-index: 1;
+        text-align: center;
+        height: 100%;
+        pointer-events: none;
+        box-sizing: border-box;
+    }
+
+    overflow: hidden; 
+    height: 35px;    
     position: relative;
     display: block;
-}
-
-:host label:after {
-    content: "\f078";
-    font-family: FontAwesome;
-    color: $primary-brand;
-    padding: 9.5px 18px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 1;
-    text-align: center;
-    height: 100%;
-    pointer-events: none;
-    box-sizing: border-box;
 }
