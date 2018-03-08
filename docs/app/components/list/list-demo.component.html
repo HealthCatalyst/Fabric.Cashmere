@@ -32,72 +32,7 @@
 
     </hc-tab>
     <hc-tab tabTitle="Documentation">
-
-    <hc-tile>
-        <h5>Angular Component</h5>
-
-        <pre>
-            <code>
-&lt;hc-list&gt;
-    &lt;hc-list-item&gt;
-        &lt;hc-icon fontSet=&quot;fa&quot; fontIcon=&quot;fa-snowflake-o&quot; hcListIcon&gt;&lt;/hc-icon&gt;
-        &lt;h4 hcListLine&gt;SnowFlake&lt;/h4&gt;
-        &lt;span hcListLine&gt;Second Line&lt;/span&gt;
-    &lt;/hc-list-item&gt;
-    &lt;hc-list-item&gt;
-        &lt;img src=&quot;assets/CashmereLogo.svg&quot; hcListAvatar&gt;
-        &lt;h4 hcListLine&gt;Address Line 1&lt;/h4&gt;
-        &lt;span hcListLine&gt;Address Line 2&lt;/span&gt;
-        &lt;hc-icon fontSet=&quot;fa&quot; fontIcon=&quot;fa-plus&quot;&gt;&lt;/hc-icon&gt;
-    &lt;/hc-list-item&gt;
-&lt;/hc-list&gt;
-            </code>
-        </pre>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Components</h5>
-
-        <div class="directive-description">
-            <h3>hc-list</h3>
-            <p>This is the container for the hc-list-items</p>
-        </div>
-
-        <div class="directive-description">
-            <h3>hc-list-item</h3>
-            <p>
-                Acts as a host element for the individual items found in a hc-list-item. Represents an item within the
-                hc-list-items
-            </p>
-        </div>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Directives</h5>
-
-        <div class="directive-description">
-            <h3>hcListIcon</h3>
-            <p>
-                Positions the element to the left and styled as an icon. Should be used in conjunction with hc-icon
-            </p>
-        </div>
-
-        <div class="directive-description">
-            <h3>hcListAvatar</h3>
-            <p>
-                Positions the element to the left and gives it a circular border
-            </p>
-        </div>
-
-        <div class="directive-description">
-            <h3>hcListLine</h3>
-            <p>
-                This is the main text content of the hc-list-item. At the moment it's only styled to provide up to two
-                lines, but in the future you can have as many as you want.
-            </p>
-        </div>
-    </hc-tile>
-
+        <div [hcMarkdown]="document"></div>
     </hc-tab>
     </hc-tab-set>
 </div>

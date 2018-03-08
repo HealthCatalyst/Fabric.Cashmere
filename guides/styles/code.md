@@ -10,13 +10,13 @@ Include line numbers for blocks of code longer than than three lines. Line numbe
 - In a light gray color so they aren't distracting
 
 ``` html
-    <hc-list>
-        <hc-list-item>
-            <hc-icon fontSet="fa" fontIcon="fa-snowflake-o" hcListIcon></hc-icon>
-            <h4 hcListLine>SnowFlake</h4>
-            <span hcListLine>Second Line</span>
-        </hc-list-item>
-    </hc-list>
+<hc-list>
+    <hc-list-item>
+        <hc-icon fontSet="fa" fontIcon="fa-snowflake-o" hcListIcon></hc-icon>
+        <h4 hcListLine>SnowFlake</h4>
+        <span hcListLine>Second Line</span>
+    </hc-list-item>
+</hc-list>
 ```
 :::
 

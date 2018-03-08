@@ -9,6 +9,8 @@ import { SubModalDemoComponent } from './sub-modal-demo.component';
 })
 export class ModalDemoComponent {
     lastModified: Date = new Date( document.lastModified );
+    public document: string = require('raw-loader!../../../../guides/components/modal.md');
+
     result: any;
     constructor(private modalService: ModalService) { }
 
