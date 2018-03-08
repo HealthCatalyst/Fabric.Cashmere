@@ -1,9 +1,9 @@
 :::
 ##### Angular Component
 ``` html
-    <hc-radio-button disabled="false">
-        Radio Button Label
-    </hc-radio-button>
+<hc-radio-button disabled="false">
+    Radio Button Label
+</hc-radio-button>
 ```
 :::
 

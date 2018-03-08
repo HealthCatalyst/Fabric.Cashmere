@@ -1,12 +1,12 @@
 :::
 ##### Angular Component
 ``` html
-    <hc-drawer-container>
-        <hc-drawer>
-            Drawer Content
-        </hc-drawer>
-        Main Content
-    </hc-drawer-container>
+<hc-drawer-container>
+    <hc-drawer>
+        Drawer Content
+    </hc-drawer>
+    Main Content
+</hc-drawer-container>
 ```
 :::
 

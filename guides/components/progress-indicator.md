@@ -1,18 +1,20 @@
 :::
 ##### Angular Component
 ``` html
-    <hc-progress-spinner
-        [diameter]="50"
-        [color]="blue"
-        [hasChannel]="true"
-        [isCentered]="true"
-        [isDeterminate]="true"
-        [progress]="25"></hc-progress-spinner>
+<hc-progress-spinner
+    [diameter]="50"
+    [color]="blue"
+    [hasChannel]="true"
+    [isCentered]="true"
+    [isDeterminate]="true"
+    [progress]="25">
+</hc-progress-spinner>
 
-    <hc-progress-dots
-        [color]="dotsColor"
-        [isMini]="dotsMini"
-        [isCentered]="dotsCentered"></hc-progress-dots>
+<hc-progress-dots
+    [color]="dotsColor"
+    [isMini]="dotsMini"
+    [isCentered]="dotsCentered">
+</hc-progress-dots>
 ```
 :::
 
@@ -21,18 +23,18 @@
 In some cases, like before the application is loaded, you may want to use the progress indicators without using the angular component. To do so, import the appropriate sass file (`sass/progress-spinner.scss` or `sass/progress-dots.scss`) and use the following HTML:
 
 ``` html
-    // for spinner
-    <div class="hc-spinner indeterminate-spin">
-        <div class="spinner-layer spinner-blue spinner-base">
-            <div class="circle base-circle"></div>
-            <div class="circle-clipper left"><div class="circle"></div>
-            </div><div class="gap-patch"><div class="circle"></div>
-            </div><div class="circle-clipper right"><div class="circle"></div></div>
-        </div>
+// for spinner
+<div class="hc-spinner indeterminate-spin">
+    <div class="spinner-layer spinner-blue spinner-base">
+        <div class="circle base-circle"></div>
+        <div class="circle-clipper left"><div class="circle"></div>
+        </div><div class="gap-patch"><div class="circle"></div>
+        </div><div class="circle-clipper right"><div class="circle"></div></div>
     </div>
+</div>
 
-    // for dots
-    <div class="hc-dots-loader"><div class="loader-animate"></div></div>
+// for dots
+<div class="hc-dots-loader"><div class="loader-animate"></div></div>
 ```
 :::
 

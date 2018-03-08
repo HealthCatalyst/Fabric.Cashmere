@@ -1,10 +1,10 @@
 :::
 ##### Angular Component
 ``` html
-    <hc-accordion [triggerAlign]="alignment" [hideToolbar]="showToolbar">
-        <hc-accordion-toolbar>Toolbar</hc-accordion-toolbar>
-        Accordion content
-    </hc-accordion>
+<hc-accordion [triggerAlign]="alignment" [hideToolbar]="showToolbar">
+    <hc-accordion-toolbar>Toolbar</hc-accordion-toolbar>
+    Accordion content
+</hc-accordion>
 ```
 :::
 

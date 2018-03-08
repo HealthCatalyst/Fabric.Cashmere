@@ -2,29 +2,29 @@
 ##### Creating a modal using a component
 Using the `open` function on `ModalService` you can pass in a component type. This component must be specified in your module's EntryComponents.
 ``` typescript
-    import { ModalService, ModalOptions, HcModal } from '@healthcatalyst/cashmere';
-        @Component({
-            selector: 'hc-modal-demo',
-            templateUrl: './modal-demo.component.html',
-        })
-        export class ModalDemoComponent {
-            result: any;
-            ...
-            constructor(private modalService: ModalService) { }
-            ...
-            public open() {
-                let options: ModalOptions = {
-                    data: 'I got this data from the class that opened me',
-                    ignoreEscapeKey: true,
-                    ignoreOverlayClick: true,
-                    size: 'lg'
-                };
-                let modal: HcModal<ExampleComponent>
-                    = this.modalService.open(ExampleComponent, options);
-                modal.result.subscribe(res => this.result = res);
-            }
-            ...
-        }
+import { ModalService, ModalOptions, HcModal } from '@healthcatalyst/cashmere';
+@Component({
+    selector: 'hc-modal-demo',
+    templateUrl: './modal-demo.component.html',
+})
+export class ModalDemoComponent {
+    result: any;
+    ...
+    constructor(private modalService: ModalService) { }
+    ...
+    public open() {
+        let options: ModalOptions = {
+            data: 'I got this data from the class that opened me',
+            ignoreEscapeKey: true,
+            ignoreOverlayClick: true,
+            size: 'lg'
+        };
+        let modal: HcModal<ExampleComponent>
+            = this.modalService.open(ExampleComponent, options);
+        modal.result.subscribe(res => this.result = res);
+    }
+    ...
+}
 ```
 :::
 
@@ -34,24 +34,24 @@ Using the `open` function on `ModalService` you can pass in a template reference
 
 #### Template
 ``` html
-    <ng-template #content let-close="close" let-dismiss="dismiss" let-data="data">
-        <hc-modal>
-            <hc-modal-header>Modal Title</hc-modal-header>
-            <hc-modal-body> body content </hc-modal-body>
-            <hc-modal-footer>
-            <button hc-button color="tertiary" (click)="dismiss()"> Cancel </button>
-            <button hc-button color="primary" (click)="close()"> OK </button>
-            </hc-modal-footer>
-        </hc-modal>
-    </ng-template>
-    <button hc-button color="primary" (click)="openContent(content)"></button>
+<ng-template #content let-close="close" let-dismiss="dismiss" let-data="data">
+    <hc-modal>
+        <hc-modal-header>Modal Title</hc-modal-header>
+        <hc-modal-body> body content </hc-modal-body>
+        <hc-modal-footer>
+        <button hc-button color="tertiary" (click)="dismiss()"> Cancel </button>
+        <button hc-button color="primary" (click)="close()"> OK </button>
+        </hc-modal-footer>
+    </hc-modal>
+</ng-template>
+<button hc-button color="primary" (click)="openContent(content)"></button>
 ```
 #### Component
 ``` typescript
-    public openContent(content: TemplateRef<any>) {
-        let options: ModalOptions = { size: 'lg' };
-        this.modalService.open(content, options)
-    }
+public openContent(content: TemplateRef<any>) {
+    let options: ModalOptions = { size: 'lg' };
+    this.modalService.open(content, options)
+}
 ```
 :::
 

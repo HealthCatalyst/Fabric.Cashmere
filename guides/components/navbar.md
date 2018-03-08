@@ -1,49 +1,49 @@
 :::
 ##### Angular Component
 ``` html
-    <hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
-        <hc-app-switcher></hc-app-switcher>
-        <hc-navbar-link [active]="true" [uri]="undefined">Home</hc-navbar-link>
-        <hc-navbar-link [active]="false" [uri]="undefined" exact="true">Buttons</hc-navbar-link>
-        <hc-navbar-icon>
-                <i class="fa fa-search fa-lg white"></i>
-        </hc-navbar-icon>
-        <hc-navbar-icon>
-                <i class="fa fa-question-circle-o fa-lg question-pos white" [hcPopover]="options" popoverPlacement="bottom"></i>
-        </hc-navbar-icon>
-        <hc-navbar-menu appSwitcher="true">
-            <hc-list>
-                <hc-list-item routerLink="undefined" routerLinkActive="active-link">
-                    <span hcListLine>Home</span>
+<hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
+    <hc-app-switcher></hc-app-switcher>
+    <hc-navbar-link [active]="true" [uri]="undefined">Home</hc-navbar-link>
+    <hc-navbar-link [active]="false" [uri]="undefined" exact="true">Buttons</hc-navbar-link>
+    <hc-navbar-icon>
+            <i class="fa fa-search fa-lg white"></i>
+    </hc-navbar-icon>
+    <hc-navbar-icon>
+            <i class="fa fa-question-circle-o fa-lg question-pos white" [hcPopover]="options" popoverPlacement="bottom"></i>
+    </hc-navbar-icon>
+    <hc-navbar-menu appSwitcher="true">
+        <hc-list>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Home</span>
+            </hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Buttons</span>
+            </hc-list-item>
+        </hc-list>
+        <hr>
+        <hc-list>
+            <a href="https://github.com/HealthCatalyst/Fabric.Cashmere">
+                <hc-list-item>
+                    <span hcListLine>View on GitHub</span>
                 </hc-list-item>
-                <hc-list-item routerLink="undefined" routerLinkActive="active-link">
-                    <span hcListLine>Buttons</span>
-                </hc-list-item>
-            </hc-list>
-            <hr>
-            <hc-list>
-                <a href="https://github.com/HealthCatalyst/Fabric.Cashmere">
-                    <hc-list-item>
-                        <span hcListLine>View on GitHub</span>
-                    </hc-list-item>
-                </a>
-            </hc-list>
-        </hc-navbar-menu>
-    </hc-navbar>
+            </a>
+        </hc-list>
+    </hc-navbar-menu>
+</hc-navbar>
 
-    <hc-popover-content #options>
-        <ul class="list-options">
-            <li>
-                <a href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
-            </li>
-            <li>
-                <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
-            </li>
-            <li>
-                <button (click)="aboutClick($event)">About</button>
-            </li>
-        </ul>
-    </hc-popover-content>
+<hc-popover-content #options>
+    <ul class="list-options">
+        <li>
+            <a href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
+        </li>
+        <li>
+            <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
+        </li>
+        <li>
+            <button (click)="aboutClick($event)">About</button>
+        </li>
+    </ul>
+</hc-popover-content>
 ```
 
 _*uris are purposely left undefined in this example code_
@@ -54,16 +54,16 @@ _*uris are purposely left undefined in this example code_
 To include the app switcher, do the following:
 #### HTML
 ``` html
-    <hc-app-switcher></hc-app-switcher>
+<hc-app-switcher></hc-app-switcher>
 ```
 
 #### Typescript
 ``` typescript
-    @NgModule({
-        imports: [
-            AppSwitcherModule.forRoot({discoveryServiceUri: 'http://SERVER/DiscoveryService'})
-        ],
-    ...
+@NgModule({
+    imports: [
+        AppSwitcherModule.forRoot({discoveryServiceUri: 'http://SERVER/DiscoveryService'})
+    ],
+...
 ```
 :::
 
@@ -72,9 +72,9 @@ To include the app switcher, do the following:
 To fix the navigation bar to top of the screen, such that it stays put when your scroll, set the `fixedTop` property to `true`. You'll need to also add the following to your body style sheet:
 
 ``` css
-    body {
-        padding-top: 53px;
-    }
+body {
+    padding-top: 53px;
+}
 ```
 :::
 

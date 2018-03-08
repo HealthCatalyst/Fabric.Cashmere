@@ -3,14 +3,14 @@
 Labels are often used with select elements.  When a label is included, add `hc-label` to style it and set the `required` property to add a red asterisk to the end of the label.
 
 ``` html
-    <label hc-label required="true">Project Status:</label>
-    <hc-select highlight="false" placeholder="Select status:">
-        <option>Active</option>
-        <option>Inactive</option>
-    </hc-select>
-    <div class="form-errors" *ngIf="error variable">
-        Use the form-errors class for error messages
-    </div>
+<label hc-label required="true">Project Status:</label>
+<hc-select highlight="false" placeholder="Select status:">
+    <option>Active</option>
+    <option>Inactive</option>
+</hc-select>
+<div class="form-errors" *ngIf="error variable">
+    Use the form-errors class for error messages
+</div>
 ```
 :::
 

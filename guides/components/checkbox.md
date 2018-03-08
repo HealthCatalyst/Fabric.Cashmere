@@ -1,13 +1,13 @@
 :::
 ##### Angular Component
 ``` html
-    <hc-checkbox id="checkbox-id">
-        Checkbox Label
-    </hc-checkbox>
+<hc-checkbox id="checkbox-id">
+    Checkbox Label
+</hc-checkbox>
 
-    <hc-checkbox id="checkbox-id" [(ngModel)]="data">
-        Checkbox Label
-    </hc-checkbox>
+<hc-checkbox id="checkbox-id" [(ngModel)]="data">
+    Checkbox Label
+</hc-checkbox>
 ```
 :::
 

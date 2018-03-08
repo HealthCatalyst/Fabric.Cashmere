@@ -1,12 +1,12 @@
 :::
 ##### Angular Component
 ``` html
-    <hc-subnav>
-        <div>Content goes here</div>
-        <div hcSubnavRight>
-            <button hc-button color="primary">Example</button>
-        </div>
-    </hc-subnav>
+<hc-subnav>
+    <div>Content goes here</div>
+    <div hcSubnavRight>
+        <button hc-button color="primary">Example</button>
+    </div>
+</hc-subnav>
 ```
 :::
 
