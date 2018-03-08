@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SelectComponent } from './select.component';
+import { LabelComponent } from './label.component';
 
 @NgModule({
     imports: [
         CommonModule
     ],
     exports: [
-        SelectComponent
+        LabelComponent
     ],
     declarations: [
-        SelectComponent
+        LabelComponent
     ]
 })
-export class SelectModule {
+export class LabelModule {
 }

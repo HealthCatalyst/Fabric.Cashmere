@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'hc-code',
-    templateUrl: './code-demo.component.html'
+    templateUrl: './code-demo.component.html',
+    styles: [ '.api-table li { margin: 15px 0; }' ]
 })
 
 export class CodeDemoComponent {

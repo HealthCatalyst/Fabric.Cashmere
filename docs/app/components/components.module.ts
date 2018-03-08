@@ -48,6 +48,9 @@ import { TileDemoComponent } from './tile/tile-demo.component';
 import { ChipModule } from '../../../lib/src/chip/chip.module';
 import { FilterButtonComponent } from './chip/filter-button.component';
 import { ChipDemoComponent } from './chip/chip-demo.component';
+import { InputModule } from '../../../lib/src/input/input.module';
+import { InputDemoComponent } from './input/input-demo.component';
+import { LabelModule } from '../../../lib/src/label/label.module';
 import { ProgressIndicatorDemoComponent } from './progress-indicator/progress-indicator-demo.component';
 import { SharedModule } from '../shared/shared.module';
 
@@ -75,6 +78,8 @@ import { SharedModule } from '../shared/shared.module';
         TypeformSurveyModule,
         TileModule,
         ChipModule,
+        InputModule,
+        LabelModule,
         ModalModule,
         SharedModule,
         RouterModule.forRoot(routes)
@@ -110,6 +115,7 @@ import { SharedModule } from '../shared/shared.module';
         ProgressIndicatorDemoComponent,
         FilterButtonComponent,
         TypeFormSurveyDemoComponent,
+        InputDemoComponent,
         ModalDemoComponent
     ],
     providers: [

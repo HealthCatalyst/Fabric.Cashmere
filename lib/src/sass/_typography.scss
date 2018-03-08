@@ -106,3 +106,10 @@ em {
     margin-top: 12px;
     font-style: italic;
 }
+
+.form-errors {
+    margin-top: 8px;
+    color: $red;
+    font-weight: 600;
+    @include fontSize(12px);
+}

@@ -5,8 +5,7 @@ import { SubModalDemoComponent } from './sub-modal-demo.component';
 
 @Component({
     selector: 'hc-modal-demo',
-    templateUrl: './modal-demo.component.html',
-    styleUrls: ['./modal-demo.component.scss']
+    templateUrl: './modal-demo.component.html'
 })
 export class ModalDemoComponent {
     lastModified: Date = new Date( document.lastModified );
