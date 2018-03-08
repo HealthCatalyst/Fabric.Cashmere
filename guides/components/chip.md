@@ -33,7 +33,7 @@ The chip module consists of two componenets:
 | Name | Type | Description |
 | - | - | - |
 |action|boolean|Whether to display a delete button and pointer cursor|
-|color|string|`'neutral', 'red', 'yellow', 'green'` (default='neutral')|
+|color|string|`'neutral', 'red', 'yellow', 'green'` (default=`'neutral'`)|
 :::
 
 :::

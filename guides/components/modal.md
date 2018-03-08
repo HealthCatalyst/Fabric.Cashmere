@@ -59,7 +59,7 @@ Using the `open` function on `ModalService` you can pass in a template reference
 ##### ModalOptions Properties
 | Name | Type | Description |
 | - | - | - |
-|size|string|`sm|md|lg|xl` Allows user to configure the modal size (Default='md') |
+|size|string|`sm|md|lg|xl` Allows user to configure the modal size (Default=`'md'`) |
 |ignoreEscapeKey|boolean|Defaults to false. Set to true to disable the closure of a modal by pressing the escape key.|
 |ignoreOverlayClick|boolean|Defaults to false. Set to true to disable the closure of a modal by clicking on the overlay.|
 |container|HTMLElement|Optional. Specify a different HTML element to append the modal overlay and modal window. If not specified the modal elements will be added to the body|

@@ -19,5 +19,5 @@
 |opened|boolean|Whether the drawer starts out opened/closed|
 
 
-**Note: An error will be thrown if there are more than two drawers in hc-drawer-container or if both drawers have the same alignment*
+**Note: An error will be thrown if there are more than two drawers in `hc-drawer-container` or if both drawers have the same alignment*
 :::

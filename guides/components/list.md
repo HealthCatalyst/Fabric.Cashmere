@@ -21,20 +21,20 @@
 ##### Directives
 **hc-list**
 
-This is the container for the hc-list-items
+This is the container for the `hc-list-items`.
 
 &nbsp;
 
 **hc-list-item**
 
-Acts as a host element for the individual items found in a hc-list-item. Represents an item within the hc-list-items
+Acts as a host element for the individual items found in a `hc-list-item`. Represents an item within the `hc-list-items`.
 :::
 
 :::
 ##### Directives
 **hcListIcon**
 
-Positions the element to the left and styled as an icon. Should be used in conjunction with hc-icon.
+Positions the element to the left and styled as an icon. Should be used in conjunction with `hc-icon`.
 
 &nbsp;
 
@@ -46,5 +46,5 @@ Positions the element to the left and gives it a circular border.
 
 **hcListLine**
 
-This is the main text content of the hc-list-item. At the moment it's only styled to provide up to two lines, but in the future you can have as many as you want.
+This is the main text content of the `hc-list-item`. At the moment it's only styled to provide up to two lines, but in the future you can have as many as you want.
 :::

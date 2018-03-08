@@ -12,7 +12,7 @@
 ##### Inputs
 | Name | Type | Description |
 | - | - | - |
-|triggerAlign|string|`'left' | 'right'` (default: 'left')|
+|triggerAlign|string|`'left' | 'right'` (default: `'left'`)|
 |hideToolbar|boolean|Show/Hide the accordion toolbar|
 |open|boolean|Set accordion opened state|
 :::
