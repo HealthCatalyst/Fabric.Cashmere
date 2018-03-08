@@ -9,6 +9,8 @@ import { FilterButtonComponent } from './filter-button.component';
 
 export class ChipDemoComponent {
     lastModified: Date = new Date( document.lastModified );
+    public document: string = require('raw-loader!../../../../guides/components/chip.md');
+
     numChips: number = 9;
     numChipsSetTwo: number = 6;
     firstFilter: boolean = true;
