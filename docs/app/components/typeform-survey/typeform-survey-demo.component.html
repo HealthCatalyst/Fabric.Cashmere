@@ -42,31 +42,7 @@
 
         </hc-tab>
         <hc-tab tabTitle="Documentation">
-
-            <hc-tile>
-                <h5>Angular Component</h5>
-                <pre>
-            <code>
-    &lt;hc-typeform-survey surveyUri=&quot;https://exampleCompany.typeform.com&quot; #survey&gt;
-    &lt;/hc-typeform-survey&gt;
-    &lt;button hc-button color=&quot;primary&quot; (click)=&quot;survey.open()&quot; &gt; Open Survey &lt;/button&gt;
-        </code>
-    </pre>
-
-            </hc-tile>
-
-            <hc-tile>
-                <h5>Properties</h5>
-                <table class="api-table">
-                    <tr>
-                        <th>surveyUri</th>
-                        <td>
-                            <span class="type-label">Type:</span> String</td>
-                        <td> Use to swap out the survey that will be administered</td>
-                    </tr>
-                </table>
-            </hc-tile>
-
+            <div [hcMarkdown]="document"></div>
         </hc-tab>
     </hc-tab-set>
 </div>

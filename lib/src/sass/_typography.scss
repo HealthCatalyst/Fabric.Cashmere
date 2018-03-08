@@ -57,6 +57,7 @@ code {
     padding: 3px 7px;
     @include fontSize(14px);
     font-weight: 400;
+    line-height: 1.4;
 }
 
 // for code blocks
@@ -104,4 +105,11 @@ em {
     color: $gray-500;
     margin-top: 12px;
     font-style: italic;
+}
+
+.form-errors {
+    margin-top: 8px;
+    color: $red;
+    font-weight: 600;
+    @include fontSize(12px);
 }

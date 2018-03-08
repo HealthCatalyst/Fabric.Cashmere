@@ -15,68 +15,41 @@
         <h5>Examples</h5>
         <h4>Standard Select Component</h4>
         <div class="select-sample">
-            <hc-select placeholder="Select a city:"
-                    [options]="['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando']"></hc-select>
+            <label hc-label>Facility Location:</label>
+            <hc-select placeholder="Select a city:">
+                <option>Philadelphia</option>
+                <option>Atlanta</option>
+                <option>Salt Lake City</option>
+                <option>Chicago</option>
+                <option>Orlando</option>
+            </hc-select>
         </div>
         <h4>Disabled Select Component</h4>
         <div class="select-sample">
-            <hc-select [disabled]="true" placeholder="Select a city:"
-                    [options]="['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando']"></hc-select>
+            <hc-select disabled="true" placeholder="Select a city:">
+                <option>Philadelphia</option>
+                <option>Atlanta</option>
+            </hc-select>
+        </div>
+        <h4>Component Validation</h4>
+        <div class="select-sample">
+            <label hc-label required="true">Project Status:</label>
+            <hc-select [highlight]="!validCheck">
+                <option>Active</option>
+                <option>Inactive</option>
+                <option>In progress</option>
+            </hc-select>
+            <div class="form-errors" *ngIf="!validCheck">
+                This is an example warning for an invalid response
+            </div>
         </div>
         <br>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Template Forms</h5>
-        <p>
-            The Select Component is compatible with both template forms and reactive forms in angular.
-            To interact with template forms use <code>[(ngModel)]</code> on the component.
-            Remember to import the <code>FormsModule</code> into your application.
-        </p>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Reactive Forms</h5>
-        <p>To interact with reactive forms specify a <code>formControlName</code> on the component.
-        Remember to import the <code>ReactiveFormsModule</code> into your application.
-        </p>
+        <button hc-button title="Toggle component validation" color="primary" (click)="toggleValidate()">Toggle Validate</button>
     </hc-tile>
 
     </hc-tab>
     <hc-tab tabTitle="Documentation">
-
-    <hc-tile>
-        <h5>Angular Component</h5>
-        <pre>
-            <code>
-&#x3C;hc-select formControlName=&#x22;city&#x22; &#91;disabled&#93;=&#x27;false&#x27; placeholder=&#x22;Select a city:&#x22;
-    [options]=&#x22;[&#x27;Philadelphia&#x27;, &#x27;Atlanta&#x27;, &#x27;Salt Lake City&#x27;, &#x27;Chicago&#x27;, &#x27;Orlando&#x27;]&#x22;&#x3E;
-&#x3C;/hc-select&#x3E;
-            </code>
-        </pre>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Properties</h5>
-        <table class="api-table">
-            <tr>
-                <th>placeholder</th>
-                <td><span class="type-label">Type:</span> String</td>
-                <td>Optional string of text to appear before selection is made</td>
-            </tr>
-            <tr>
-                <th>[options]</th>
-                <td><span class="type-label">Type:</span> Array</td>
-                <td>An array of strings for the select options</td>
-            </tr>
-            <tr>
-                <th>[disabled]</th>
-                <td><span class="type-label">Type:</span> Boolean</td>
-                <td>Boolean value that enables/disables the button</td>
-            </tr>
-        </table>
-    </hc-tile>
-
+        <div [hcMarkdown]="document"></div>
     </hc-tab>
     </hc-tab-set>
 </div>

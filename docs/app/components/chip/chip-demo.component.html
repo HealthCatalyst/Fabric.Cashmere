@@ -62,66 +62,7 @@
 
     </hc-tab>
     <hc-tab tabTitle="Documentation">
-
-        <hc-tile>
-            <h5>Angular Component</h5>
-            <pre>
-                <code>
-    &#x3C;hc-chip&#x3E;Basic Chip&#x3C;/hc-chip&#x3E;
-
-    &#x3C;hc-chip color=&#x22;red&#x22;&#x3E;
-        &#x3C;hc-icon fontSet=&#x22;fa&#x22; fontIcon=&#x22;fa-exclamation-triangle&#x22; icon-sm&#x3E;&#x3C;/hc-icon&#x3E;
-        &#x26;nbsp;&#x26;nbsp;Alert Chip
-    &#x3C;/hc-chip&#x3E;
-
-    &#x3C;hc-chip color=&#x22;yellow&#x22;&#x3E;Warning Chip&#x3C;/hc-chip&#x3E;
-
-    &#x3C;hc-chip color=&#x22;green&#x22;&#x3E;Success Chip&#x3C;/hc-chip&#x3E;
-
-    &#x3C;hc-chip action=&#x22;true&#x22;&#x3E;Action One&#x3C;/hc-chip&#x3E;
-
-    &#x3C;hc-chip-row singleRow=&#x22;false&#x22;&#x3E;
-        &#x3C;hc-chip action=&#x22;true&#x22;&#x3E;Hospital (2)&#x3C;/hc-chip&#x3E;
-    &#x3C;/hc-chip-row&#x3E;
-                </code>
-            </pre>
-        </hc-tile>
-
-        <hc-tile>
-            <h5>Chip Usage</h5>
-            <p>The chip module consists of two componenets:</p>
-            <ul>
-                <li><code>hc-chip</code> - the base component</li>
-                <li><code>hc-chip-row</code> - the optional container for chips</li>
-            </ul>
-        </hc-tile>
-
-        <hc-tile>
-            <h5>Properties</h5>
-            <table class="api-table">
-                <thead><th colspan="3">Chip Component</th></thead>
-                <tr>
-                    <th>action</th>
-                    <td><span class="type-label">Type:</span> Boolean</td>
-                    <td>Whether to display a delete button and pointer cursor</td>
-                </tr>
-                <tr>
-                    <th>color</th>
-                    <td><span class="type-label">Type:</span> String</td>
-                    <td>'neutral', 'red', 'yellow', 'green' (default='neutral')</td>
-                </tr>
-            </table>
-            <br><br>
-            <table class="api-table">
-                <thead><th colspan="3">Chip Row Component</th></thead>
-                <tr>
-                    <th>wrap</th>
-                    <td><span class="type-label">Type:</span> Boolean</td>
-                    <td>If false, constrain the container to one line with overflow ellipses (default=true)</td>
-                </tr>
-            </table>
-        </hc-tile>
-
+        <div [hcMarkdown]="document"></div>
     </hc-tab>
     </hc-tab-set>
 </div>

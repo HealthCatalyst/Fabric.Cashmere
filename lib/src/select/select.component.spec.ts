@@ -23,9 +23,4 @@ describe('SelectComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
-
-    it('should change opacity when disabled', () => {
-        component.disabled = true;
-        expect(component.alpha).toEqual(component.disabledAlpha);
-    });
 });

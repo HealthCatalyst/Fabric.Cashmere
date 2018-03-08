@@ -1,6 +1,6 @@
-<label [style.opacity]="alpha">
-    <select [disabled]="disabled" (change)="value = $event.target.value" required>
+<span [ngClass]="{'highlight': _highlight, 'disabled': _disabled}" class="chevron">
+    <select [disabled]="_disabled" (change)="value = $event.target.value" required>
         <option *ngIf="placeholder" [value]="null" selected disabled hidden>{{placeholder}}</option>
-        <option *ngFor="let option of options" [value]="option" [selected]="option === value">{{option}}</option>
+        <ng-content select="option"></ng-content>
     </select>
-</label>
+</span>
