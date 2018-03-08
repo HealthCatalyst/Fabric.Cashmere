@@ -3,11 +3,11 @@
 Labels are often used with input elements.  When a label is included, add `hc-label` to style it and set the `required` property to add a red asterisk to the end of the label.
 
 ``` html
-    <label hc-label required="true">Validate an email address:</label>
-    <input hc-input name="inputEmail" required highlight="false">
-    <div class="form-errors" *ngIf="inputEmail.invalid">
-        Use the form-errors class for error messages
-    </div>
+<label hc-label required="true">Validate an email address:</label>
+<input hc-input name="inputEmail" required highlight="false">
+<div class="form-errors" *ngIf="inputEmail.invalid">
+    Use the form-errors class for error messages
+</div>
 ```
 :::
 
@@ -16,10 +16,10 @@ Labels are often used with input elements.  When a label is included, add `hc-la
 Icons may be included in an input box to indicate its function.  Use a `hc-icon` component to add an icon, and it will automatically be positioned to the right side of the input with extra padding added.
 
 ``` html
-    <div hcInputIcon>
-        <input name="search" placeholder="search" />
-        <hc-icon fontSet="fa" fontIcon="fa-search"></hc-icon>
-    </div>
+<div hcInputIcon>
+    <input name="search" placeholder="search" />
+    <hc-icon fontSet="fa" fontIcon="fa-search"></hc-icon>
+</div>
 ```
 :::
 

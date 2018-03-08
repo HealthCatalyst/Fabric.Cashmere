@@ -1,7 +1,7 @@
 :::
 ##### Angular Component
 ``` html
-    <hc-icon fontSet="fa" fontIcon="fa-snowflake-o"></hc-icon>
+<hc-icon fontSet="fa" fontIcon="fa-snowflake-o"></hc-icon>
 ```
 :::
 

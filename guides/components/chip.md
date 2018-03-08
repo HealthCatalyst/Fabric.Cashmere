@@ -1,23 +1,23 @@
 :::
 ##### Angular Component
 ``` html
-    <hc-chip>Basic Chip</hc-chip>
+<hc-chip>Basic Chip</hc-chip>
 
-    <hc-chip color="red">
-        <hc-icon fontSet="fa" fontIcon="fa-exclamation-triangle" icon-sm>
-        </hc-icon>
-        &nbsp;&nbsp;Alert Chip
-    </hc-chip>
+<hc-chip color="red">
+    <hc-icon fontSet="fa" fontIcon="fa-exclamation-triangle" icon-sm>
+    </hc-icon>
+    &nbsp;&nbsp;Alert Chip
+</hc-chip>
 
-    <hc-chip color="yellow">Warning Chip</hc-chip>
+<hc-chip color="yellow">Warning Chip</hc-chip>
 
-    <hc-chip color="green">Success Chip</hc-chip>
+<hc-chip color="green">Success Chip</hc-chip>
 
-    <hc-chip action="true">Action One</hc-chip>
+<hc-chip action="true">Action One</hc-chip>
 
-    <hc-chip-row singleRow="false">
-        <hc-chip action="true">Hospital (2)</hc-chip>
-    </hc-chip-row>
+<hc-chip-row singleRow="false">
+    <hc-chip action="true">Hospital (2)</hc-chip>
+</hc-chip-row>
 ```
 :::
 

@@ -1,7 +1,7 @@
 :::
 ##### Angular Component
 ``` html
-    <hc-breadcrumbs></hc-breadcrumbs>
+<hc-breadcrumbs></hc-breadcrumbs>
 ```
 :::
 

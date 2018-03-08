@@ -1,17 +1,17 @@
 :::
 ##### Angular Component
 ``` html
-    <button hc-button title="Button Tile" color="primary" disabled="false">
-        <hc-icon fontSet="fa" fontIcon="fa-cog" class="btn-icon-left"></hc-icon>
-        Button Name
-    </button>
+<button hc-button title="Button Tile" color="primary" disabled="false">
+    <hc-icon fontSet="fa" fontIcon="fa-cog" class="btn-icon-left"></hc-icon>
+    Button Name
+</button>
 
-    <a hc-button title="Anchor Button" disabled="false">Anchor Button</a>
+<a hc-button title="Anchor Button" disabled="false">Anchor Button</a>
 
-    <hc-split-button disabled="true">
-        Disabled Split Button
-        <div hcButtonItem>Button menu</div>
-    </hc-split-button>
+<hc-split-button disabled="true">
+    Disabled Split Button
+    <div hcButtonItem>Button menu</div>
+</hc-split-button>
 ```
 :::
 
