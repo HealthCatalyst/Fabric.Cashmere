@@ -21,19 +21,23 @@ import {
 } from '@angular/core';
 import { SortEvent } from './sort-event';
 import { SortableComponent } from './sortable.component';
+import { SelectableComponent } from './selectable.component';
+import { SelectEvent } from './select-event';
 
 @Component({
     selector: 'table[hc-grid]',
-    template: `<ng-content></ng-content>`
+    template: `<ng-content></ng-content> <p> {{ selectedRows | json }}</p>`
 })
 export class GridComponent implements OnChanges, AfterContentInit {
     @Input('hc-grid') fullDataSet: any[] = [];
     @Input() gridOptions: GridOptions = { rowsPerPage: 10 };
     @HostBinding('class.hc-table') public hcTable = true;
     @ContentChildren(SortableComponent) public sortableHeaders: QueryList<SortableComponent>;
+    @ContentChildren(SelectableComponent) public selectableRows: QueryList<SelectableComponent>;
     @ContentChild(PaginatorComponent) public paginator: PaginatorComponent;
     pages: number[] = [];
     rows: any[] = [];
+    selectedRows: any[] = [];
     currentPage: number = 1;
     rowsPerPage: number = 10;
     pageCount: number | undefined;
@@ -57,6 +61,7 @@ export class GridComponent implements OnChanges, AfterContentInit {
 
     ngAfterContentInit() {
         this.sortableHeaders.map(sh => sh.sortEvent.subscribe(se => this.sort(se)));
+        this.selectableRows.map(sr => sr.selectEvent.subscribe(se => this.selectRow(se)));
         this.paginator.updatePageEvent.subscribe(pe => this.updatePage(pe));
         this.updateData();
     }
@@ -67,6 +72,19 @@ export class GridComponent implements OnChanges, AfterContentInit {
         this.updatePage({ pageNumber: this.currentPage });
         if (this.sortEvent.sortColumn) {
             this.sort(this.sortEvent);
+        }
+    }
+
+    private selectRow(selectEvent: SelectEvent) {
+        let row = this.fullDataSet.find(r => r === selectEvent.row);
+        row.isSelected = selectEvent.selected;
+        if (!row.isSelected) {
+            let index = this.selectedRows.findIndex(r => r === row);
+            if (index > -1) {
+                this.selectedRows.splice(index, 1);
+            } else {
+                this.selectedRows.push(row);
+            }
         }
     }
 

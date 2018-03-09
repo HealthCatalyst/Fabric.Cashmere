@@ -21,7 +21,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let row of tableExample.rows">
+                        <tr *ngFor="let row of tableExample.rows" [hc-selectable]="row">
                             <td>{{row.heading1}}</td>
                             <td>{{row.heading2}}</td>
                             <td>{{row.heading3}}</td>
