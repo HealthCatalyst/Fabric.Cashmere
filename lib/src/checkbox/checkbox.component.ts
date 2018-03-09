@@ -42,7 +42,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 
     // list out all properties or attributes an input[type=checkbox] can have since we're wrapping the input
     @Input() value: string;
-    @Input() indeterminate: boolean;
+    @Input() indeterminate: boolean = false;
     @Input() id: string = this.uniqueId;
     @Input() name: string | null = null;
 

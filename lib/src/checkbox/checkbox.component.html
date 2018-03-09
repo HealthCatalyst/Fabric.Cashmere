@@ -10,7 +10,7 @@
            [checked]="checked"
            (change)="stopChangeEvent($event)"
            (click)="clickEvent($event)"/>
-    <label class="hc-checkbox-overlay" [attr.for]="inputId"></label>
+    <label [ngClass]="indeterminate ? 'hc-checkbox-indeterminate-overlay' : 'hc-checkbox-overlay'" [attr.for]="inputId"></label>
     <div class="hc-checkbox-content" >
         <label [attr.for]="inputId">
             <ng-content></ng-content>

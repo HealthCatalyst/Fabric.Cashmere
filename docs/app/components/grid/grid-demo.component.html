@@ -12,16 +12,17 @@
 
             <hc-tile>
                 <h5>Example </h5>
-                <table [hc-grid]="rows" [gridOptions]="gridOptions" #tableExample>
+                <table [hc-grid]="rows" [gridOptions]="gridOptions" class="hc-table-borders" #tableExample>
                     <thead>
                         <tr>
+                            <th hc-master-checkbox></th>
                             <th hc-sortable="heading1">Heading 1</th>
                             <th hc-sortable="heading2">Heading 2</th>
                             <th hc-sortable="heading3">Heading 3</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let row of tableExample.rows" [hc-selectable]="row">
+                        <tr *ngFor="let row of tableExample.rows" [hc-selectable]="row" [showCheckbox]="true">
                             <td>{{row.heading1}}</td>
                             <td>{{row.heading2}}</td>
                             <td>{{row.heading3}}</td>
