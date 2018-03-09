@@ -62,13 +62,14 @@ export class GridComponent implements OnChanges, AfterContentInit {
 
     ngAfterContentInit() {
         this.sortableHeaders.map(sh => sh.sortEvent.subscribe(se => this.sort(se)));
-        this.selectableRows.map(sr => sr.selectEvent.subscribe(se => {
-            console.log('hitting subscription');
-            this.selectRow(se);
-        }));
         this.paginator.updatePageEvent.subscribe(pe => this.updatePage(pe));
         this.masterCheckbox.masterCheckboxEvent.subscribe(mc => this.masterCheckboxClicked(mc));
+        this.selectableRows.changes.subscribe(() => this.subscribeToRows())
         this.updateData();
+    }
+
+    private subscribeToRows() {
+        this.selectableRows.map(sr => sr.selectEvent.subscribe(se => this.selectRow(se)));
     }
 
     private updateData() {
@@ -87,7 +88,6 @@ export class GridComponent implements OnChanges, AfterContentInit {
     }
 
     private selectRow(selectEvent: SelectEvent) {
-        console.log('hitting selectRow method');
         let row = this.fullDataSet.find(r => r === selectEvent.row);
         let displayRow = this.rows.find(r => r === selectEvent.row);
         row.selected = selectEvent.selected;
@@ -99,9 +99,12 @@ export class GridComponent implements OnChanges, AfterContentInit {
             this.selectedRows.push(row);
         }
 
-        if (this.selectedRows.length !== this.fullDataSet.length) {
-            this.masterCheckbox.indeterminate = true;
-            this.masterCheckbox.masterChecked = true;
+        if (this.selectedRows.length > 0 && this.selectedRows.length < this.fullDataSet.length) {
+            this.masterCheckbox.setIndeterminateState();
+        } else if (this.selectedRows.length === 0) {
+            this.masterCheckbox.setUncheckedState();
+        } else {
+            this.masterCheckbox.setCheckedState();
         }
     }
 

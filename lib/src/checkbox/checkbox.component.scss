@@ -33,7 +33,7 @@
         }
     }
 
-    .hc-checkbox-indeterminate-overlay {
+    .hc-checkbox-indeterminate {
         background-color: $white;
         border: 2px solid $gray-300;
         border-radius: 3px;
@@ -89,6 +89,15 @@
         }
 
         &:checked + label:after {
+            opacity: 1;
+        }
+
+        &:indeterminate + label {
+            background-color: $primary-brand;
+            border-color: $primary-brand;
+        }
+
+        &:indeterminate + label:after {
             opacity: 1;
         }
     }

@@ -35,7 +35,7 @@ export class SelectableComponent implements OnChanges {
             this.updateStyles();
             let se: SelectEvent = {
                 row: this.row,
-                selected: this.selected
+                selected: this.row.selected
             };
             this.selectEvent.emit(se);
         }
