@@ -15,7 +15,7 @@
                 <table [hc-grid]="rows" [gridOptions]="gridOptions" class="hc-table-borders" #tableExample>
                     <thead>
                         <tr>
-                            <th hc-master-checkbox #master></th>
+                            <th hc-master-checkbox></th>
                             <th hc-sortable="heading1">Heading 1</th>
                             <th hc-sortable="heading2">Heading 2</th>
                             <th hc-sortable="heading3">Heading 3</th>
@@ -37,8 +37,6 @@
 
                     </tfoot>
                 </table>
-                <p>Indeterminate: {{ master.indeterminate }}</p>
-                <p>MasterCheckbox checked: {{ master.masterChecked}}</p>
             </hc-tile>
 
             <hc-tile>
