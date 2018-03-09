@@ -52,6 +52,12 @@ p,.p {
 code {
     color: $magneta;
     font-family: Consolas, Menlo, "Ubuntu Mono", monospace;
+    background-color: $block-text-background;
+    border-radius: 3px;
+    padding: 3px 7px;
+    @include fontSize(14px);
+    font-weight: 400;
+    line-height: 1.4;
 }
 
 // for code blocks
@@ -62,9 +68,10 @@ pre {
     border-radius: 5px;
     display: block;
     background-color: $block-text-background;
+    font-weight: 400;
 
     > span {
-        @include fontSize(16px);    
+        @include fontSize(14px);
         line-height: 1.4;
         padding: $code-padding 0;
         background-color: $block-text-background;
@@ -73,11 +80,13 @@ pre {
     > code {
         overflow-x: auto;
         display: block;
-        @include fontSize(16px);
+        @include fontSize(14px);
         padding: $code-padding;
         line-height: 1.4;
         background-color: $block-text-background;
         color: $text;
+        border: unset;
+        border-radius: unset;
     }
 }
 
@@ -96,4 +105,11 @@ em {
     color: $gray-500;
     margin-top: 12px;
     font-style: italic;
+}
+
+.form-errors {
+    margin-top: 8px;
+    color: $red;
+    font-weight: 600;
+    @include fontSize(12px);
 }

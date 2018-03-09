@@ -1,3 +1,6 @@
+import { SubModalDemoComponent } from './modal/sub-modal-demo.component';
+import { ModalDemoComponent } from './modal/modal-demo.component';
+import { ModalModule } from './../../../lib/src/modal/modal.module';
 import { TypeformSurveyModule } from './../../../lib/src/typeform-survey/typeform-survey.module';
 import { TypeFormSurveyDemoComponent } from './typeform-survey/typeform-survey-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
@@ -20,6 +23,7 @@ import { PopoverDemoComponent } from './popover/popover-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 import { CheckboxModule } from '../../../lib/src/checkbox/checkbox.module';
 import { RadioButtonModule } from '../../../lib/src/radio-button/radio-button.module';
+import { ProgressIndicatorsModule } from '../../../lib/src/progress-indicators/progress-indicators.module';
 import { ListModule } from '../../../lib/src/list/list.module';
 import { RadioButtonDemoComponent } from './radio-button/radio-button-demo.component';
 import { SelectModule } from '../../../lib/src/select/select.module';
@@ -45,6 +49,10 @@ import { TileDemoComponent } from './tile/tile-demo.component';
 import { ChipModule } from '../../../lib/src/chip/chip.module';
 import { FilterButtonComponent } from './chip/filter-button.component';
 import { ChipDemoComponent } from './chip/chip-demo.component';
+import { InputModule } from '../../../lib/src/input/input.module';
+import { InputDemoComponent } from './input/input-demo.component';
+import { LabelModule } from '../../../lib/src/label/label.module';
+import { ProgressIndicatorDemoComponent } from './progress-indicator/progress-indicator-demo.component';
 import { SharedModule } from '../shared/shared.module';
 import { GridDemoComponent } from './grid/grid-demo.component';
 
@@ -58,7 +66,9 @@ import { GridDemoComponent } from './grid/grid-demo.component';
         FormsModule,
         CheckboxModule,
         RadioButtonModule,
+        ProgressIndicatorsModule,
         AppSwitcherModule,
+        ModalModule,
         IconModule,
         DrawerModule,
         TabsModule,
@@ -71,6 +81,9 @@ import { GridDemoComponent } from './grid/grid-demo.component';
         TypeformSurveyModule,
         TileModule,
         ChipModule,
+        InputModule,
+        LabelModule,
+        ModalModule,
         SharedModule,
         RouterModule.forRoot(routes)
     ],
@@ -92,23 +105,31 @@ import { GridDemoComponent } from './grid/grid-demo.component';
         TabDemoComponent,
         IconDemoComponent,
         ListDemoComponent,
+        ModalDemoComponent,
         SubnavDemoComponent,
         AccordionDemoComponent,
         SubnavDemoComponent,
+        SubModalDemoComponent,
         BreadcrumbsDemoComponent,
         Breadcrumb1DemoComponent,
         Breadcrumb2DemoComponent,
         GridDemoComponent,
         TileDemoComponent,
         ChipDemoComponent,
+        ProgressIndicatorDemoComponent,
         FilterButtonComponent,
-        TypeFormSurveyDemoComponent
+        TypeFormSurveyDemoComponent,
+        InputDemoComponent,
+        ModalDemoComponent
     ],
     providers: [
         {
             provide: 'IAppSwitcherService',
             useClass: MockAppSwitcherService
         }
+    ],
+    entryComponents: [
+        SubModalDemoComponent,
     ]
 })
 export class ComponentsModule {

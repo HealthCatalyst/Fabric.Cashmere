@@ -149,7 +149,7 @@ ol {
     margin-right: 10px !important;
 }
 
-.api-table {
+table {
     width: 100%;
     @include fontSize(13px);
 
@@ -166,7 +166,7 @@ ol {
     tbody > tr > {
         td, th {
             border-bottom: 1px dashed $gray-200;
-            padding: 1em 5px;
+            padding: 1em 3em 1em 0;
             vertical-align: middle;
         }
     }
@@ -183,8 +183,10 @@ ol {
     }
 
     ul {
-        list-style: none;
+        list-style: none !important;
     }
+
+    code{ font-size: inherit; }
 }
 
 .line-number{
@@ -197,6 +199,6 @@ ol {
         margin-right: 5px;
         color: rgba($gray-600,0.5);
         @include fontSize(14px);
-        line-height: 22px;
+        font-family: Consolas, Menlo, "Ubuntu Mono", monospace;
     }
 }

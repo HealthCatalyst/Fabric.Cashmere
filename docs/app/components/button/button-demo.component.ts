@@ -6,10 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./button-demo.component.scss']
 })
 export class ButtonDemoComponent {
-    showTemplate: boolean = true;
     lastModified: Date = new Date( document.lastModified );
-
-    viewToggle(show: 'ts' | 'html') {
-        this.showTemplate = show === 'html';
-    }
+    public document: string = require('raw-loader!../../../../guides/components/button.md');
 }

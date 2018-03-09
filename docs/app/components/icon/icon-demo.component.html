@@ -33,34 +33,7 @@
 
     </hc-tab>
     <hc-tab tabTitle="Documentation">
-
-    <hc-tile>
-        <h5>Angular Component</h5>
-        <em>*Future improvement to include service that sets a default fontSet so you don't need to set it for every icon</em>
-
-        <pre>
-            <code>
-&#x3C;hc-icon fontSet=&#x22;fa&#x22; fontIcon=&#x22;fa-snowflake-o&#x22;&#x3E;&#x3C;/hc-icon&#x3E;
-            </code>
-        </pre>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Properties</h5>
-        <table class="api-table">
-            <tr>
-                <th>fontSet</th>
-                <td><span class="type-label">Type:</span> String</td>
-                <td>Required - font icon family to use. For example to use fontawesome, you need to provide "fa"</td>
-            </tr>
-            <tr>
-                <th>fontIcon</th>
-                <td><span class="type-label">Type:</span> String</td>
-                <td>Required - font icon to use from the specified font icon family</td>
-            </tr>
-        </table>
-    </hc-tile>
-
+        <div [hcMarkdown]="document"></div>
     </hc-tab>
     </hc-tab-set>
 </div>

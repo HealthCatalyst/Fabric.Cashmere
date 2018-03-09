@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 export class TypeFormSurveyDemoComponent {
     lastModified: Date = new Date( document.lastModified );
     surveyUri = 'https://healthcatalyst.typeform.com/to/bGDyIK?productname=Fabric.Cashmere';
+    public document: string = require('raw-loader!../../../../guides/components/survey.md');
 }

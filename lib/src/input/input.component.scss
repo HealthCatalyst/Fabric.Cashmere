@@ -1,0 +1,30 @@
+@import '../sass/colors';
+@import '../sass/functions.scss';
+@import '../sass/mixins.scss';
+
+.hc-input {
+    color: $text;
+    @include fontSize(14px);
+    line-height: 32px;
+    border: 1.5px solid $gray-300;
+    font-family: inherit;
+    padding: 0 12px;
+}
+
+.hc-input:disabled {
+    border: 1.5px solid $gray-200;
+    background-color: $slate-gray-100;
+    color: tint( $text, 60%);
+    cursor: not-allowed;
+}
+
+.error-highlight { border: 2px solid $red; }
+
+.input-icon input { padding-right: 40px; }
+
+.input-icon hc-icon {
+    color: $gray-400;
+    position: relative;
+    right: 35px;
+    pointer-events: none;
+}
