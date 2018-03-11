@@ -12,9 +12,9 @@ export class ChartDemoComponent implements OnInit {
 
     lastModified: Date = new Date( document.lastModified );
     loading: boolean = true;
-    private modalHeader: string = 'Chart Information';
-    private chartData: Array<any>;
-    private lineData: Array<any>;
+    modalHeader: string = 'Chart Information';
+    chartData: Array<any>;
+    lineData: Array<any>;
     private hospitals = ['Millrock Physician Group', 'Memorial Physician Group', 'St. Johns Physician Group', 'University Physician Group']
 
     constructor( private modalService: ModalService ) {}
