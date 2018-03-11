@@ -29,15 +29,13 @@ body {
         list-style: disc inside;
     }
 
-    li {
-        margin-left: 24px;
-    }
+    li { margin-left: 24px; }
 
     .tab-bar-horizontal { margin-bottom: 25px; }
+}
 
-    code {
-        max-width: 870px;
-    }
+.popoverContainer {
+    li { margin: 0 10px !important; }
 }
 
 .full-height > .vertical-container { min-height: calc( 100vh - 53px ); }

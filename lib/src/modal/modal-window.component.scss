@@ -3,7 +3,7 @@
 @import '../sass/mixins.scss';
 
 :host {
-    position: absolute;
+    position: fixed;
     display: flex;
     top: 0;
     right: 0;
