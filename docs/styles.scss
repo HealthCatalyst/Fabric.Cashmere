@@ -200,3 +200,78 @@ table {
         font-family: Consolas, Menlo, "Ubuntu Mono", monospace;
     }
 }
+
+/* Documentation */
+/* Lists */
+article ul {
+    list-style-type: none;
+    display: table;
+}
+
+.demo-content li article {
+    margin-left: 0px;
+}
+
+/* List level 1 */
+article > ul > li {
+    display: table;
+}
+
+article ul > li:before {
+    content: "•  ";
+    display: table-cell;
+    padding-right: 10px;
+}
+
+article ul > li:first-child {
+    padding-top: 6px;
+}
+
+article ul > li:last-child {
+    padding-bottom: 6px;
+}
+  
+/* List level 2 */
+article ul li ul li {
+    display: table;
+    margin-left: 0px;
+}
+
+article ul li ul li:before {
+    content: "–  ";
+    display: table-cell;
+    padding-right: 15px;
+}
+  
+article ul li ul li:first-child {
+    padding-top: 6px;
+}
+  
+article ul li ul li:last-child {
+    padding-bottom: 6px;
+
+}
+
+article ol > li > ol > li {
+    list-style-type: lower-alpha;
+}
+  
+/* List level 3 */
+article ul li ul li ul li:before {
+   content: "- ";
+    display: table-cell;
+    padding-right: 15px;
+}
+  
+ /* Bullets inside tables */
+ /*Primary level */
+ article table > tbody > tr > td > ul > li {
+    padding-right: 7px;
+    display: table;
+}
+  
+/* Secondary level */
+article table > tbody > tr > td > ul > li > ul > li {
+    padding-right: 15px;
+    display: table;
+}
