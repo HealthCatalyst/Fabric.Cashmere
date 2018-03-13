@@ -134,11 +134,11 @@ article ul > li:before {
 }
 
 article ul > li:first-child, article ol > li:first-child {
-    padding-top: 6px;
+    margin-top: 6px !important;
 }
 
 article ul > li:last-child, article ol > li:last-child {
-    padding-bottom: 6px;
+    margin-bottom: 6px !important;
 }
 
 article ol > li {
@@ -159,11 +159,11 @@ article ul li ul li:before {
 }
 
 article ul li ul li:first-child, article ol li ol li:first-child {
-    padding-top: 6px;
+    margin-top: 6px !important;
 }
 
 article ul li ul li:last-child, article ol li ol li:last-child {
-    padding-bottom: 6px;
+    margin-bottom: 6px !important;
 }
 
 article ol > li > ol > li {
@@ -180,11 +180,11 @@ article ul li ul li ul li:before {
 }
 
 article ul li ul li ul li:first-child, article ol li ol li ol li:first-child {
-    padding-top: 6px;
+    margin-top: 6px !important;
 }
 
 article ul li ul li ul li:last-child, article ol li ol li ol li:last-child {
-    padding-bottom: 6px;
+    margin-bottom: 6px !important;
 }
 
 article ol li ol li ol li {
