@@ -19,3 +19,18 @@ h1, h2, h3, h4, p {
     margin-top:15px;
     padding: 10px 40px;
 }
+
+.list-table {
+    border-top: 1px solid #c0c5cc;
+    border-bottom: 1px solid #c0c5cc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.list-table-heading {
+    margin-top: 0px;
+}
+
+.demo-content ul li:first-child, .demo-content ol li:first-child {
+    margin-top: 6px;
+}
