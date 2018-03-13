@@ -111,11 +111,12 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
         & > a, button {
             text-decoration: none;
             background-color: $white;
-            color: $blue;
+            color: $primary-brand;
+            font-family: $default-font-family;
             padding: 0;
-            font-weight: 500;
             min-width: 150px;
             text-align: left;
+            justify-content: left;
 
             border: none;
             cursor: pointer;

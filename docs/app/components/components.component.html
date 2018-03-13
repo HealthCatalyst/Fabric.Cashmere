@@ -2,7 +2,9 @@
     <div class="subnav-container">
         <span class="subnav-label">Components: </span>
         <span class="subnav-select">
-            <hc-select [options]="selectOptions" [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)"></hc-select>
+            <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
+                <option *ngFor="let option of selectOptions" [value]="option" [selected]="option === thisPage">{{option}}</option>
+            </hc-select>
         </span>
     </div>
 </hc-subnav>
@@ -14,9 +16,12 @@
     <hc-tab tabTitle="Chips" routerLink="/components/chip"></hc-tab>
     <hc-tab tabTitle="Drawer" routerLink="/components/drawer"></hc-tab>
     <hc-tab tabTitle="Icon" routerLink="/components/icon"></hc-tab>
+    <hc-tab tabTitle="Input" routerLink="/components/input"></hc-tab>
     <hc-tab tabTitle="List" routerLink="/components/list"></hc-tab>
+    <hc-tab tabTitle="Modal" routerLink="/components/modal"></hc-tab>
     <hc-tab tabTitle="Navbar" routerLink="/components/navbar"></hc-tab>
     <hc-tab tabTitle="Popover" routerLink="/components/popover"></hc-tab>
+    <hc-tab tabTitle="Progress Indicator" routerLink="/components/progress-indicator"></hc-tab>
     <hc-tab tabTitle="Radio Button" routerLink="/components/radio-button"></hc-tab>
     <hc-tab tabTitle="Select" routerLink="/components/select"></hc-tab>
     <hc-tab tabTitle="Subnavbar" routerLink="/components/subnav"></hc-tab>

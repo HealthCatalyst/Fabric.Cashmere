@@ -1,0 +1,72 @@
+@import './colors';
+@import './mixins';
+
+$modal-padding: 15px 25px;
+$header-footer-height: 55px;
+$modal-border: 1px solid $gray-200;
+
+.hc-modal-header {
+    padding: $modal-padding;
+    min-height: $header-footer-height;
+    border-bottom: $modal-border;
+    font-size: calculateRem(18px);
+    color: $text;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.hc-modal-body {
+    padding: $modal-padding;
+    overflow: auto;
+}
+
+.hc-modal-close-button {
+    background-color: transparent;
+    font-weight: bold;
+    padding: 0;
+    cursor: pointer;
+    border: 0;
+    -webkit-appearance: none;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+    color: $text;
+    text-shadow: 0 1px 0 $white;
+    opacity: 0.5;
+    &:focus, &:hover {
+        color: $text;
+        text-decoration: none;
+        opacity: .75;
+      }
+}
+
+.hc-modal-footer {
+    padding: $modal-padding;
+    min-height: $header-footer-height;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: $modal-border;
+}
+
+.hc-modal-content {
+    background-color: $white;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 100%;
+}
+
+.hc-modal-open {
+    overflow: hidden;
+}
+
+.hc-modal-center-component {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

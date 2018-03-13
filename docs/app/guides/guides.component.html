@@ -2,7 +2,8 @@
     <div class="subnav-container">
         <span class="subnav-label">Guides: </span>
         <span class="subnav-select">
-            <hc-select [options]="selectOptions" [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)"></hc-select>
+            <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)"></hc-select>
+            <option *ngFor="let option of selectOptions" [value]="option" [selected]="option === thisPage">{{option}}</option>
         </span>
     </div>
 </hc-subnav>

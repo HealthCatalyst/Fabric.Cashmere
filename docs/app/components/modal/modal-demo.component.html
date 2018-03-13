@@ -1,0 +1,46 @@
+<ng-template #content let-close="close" let-dismiss="dismiss" let-data="data">
+    <hc-modal>
+        <hc-modal-header> Modal Title </hc-modal-header>
+        <hc-modal-body> Data: {{data}}</hc-modal-body>
+        <hc-modal-footer>
+            <button hc-button color="tertiary" (click)="dismiss()"> Cancel </button>
+            <button hc-button color="primary" (click)="close()"> OK </button>
+        </hc-modal-footer>
+    </hc-modal>
+</ng-template>
+
+<div class="demo-content">
+    <h1>Modal</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+        <hc-tab tabTitle="Overview">
+
+            <hc-tile>
+                <h5>About</h5>
+                <p>A modal dialog is a window that forces the user to interact with it before they can go back to using the
+                    parent application.</p>
+            </hc-tile>
+
+            <hc-tile>
+                <h5>Example</h5>
+                <button hc-button color="primary" (click)="open()" class="demo-button"> Open Modal from Component </button>
+                <button hc-button color="secondary" (click)="openTemplate(content)" class="demo-button"> Open Modal from Template </button>
+            </hc-tile>
+
+            <hc-tile>
+                <h5>Component Usage</h5>
+                <p>
+                    Modal dialogs can be a useful tool for drilling in to specific items, but they do present some challenges as well. The most
+                    important consideration is that it’s considered bad UX to display a modal on top of a modal. So it’s
+                    important to structure the use of modal dialogs so they focus on performing one task and then can be
+                    closed before moving on to the next task.
+                </p>
+            </hc-tile>
+
+        </hc-tab>
+        <hc-tab tabTitle="Documentation">
+            <div [hcMarkdown]="document"></div>
+        </hc-tab>
+    </hc-tab-set>
+</div>

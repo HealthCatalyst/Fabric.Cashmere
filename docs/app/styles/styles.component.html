@@ -2,7 +2,9 @@
     <div class="subnav-container">
         <span class="subnav-label">Styles: </span>
         <span class="subnav-select">
-            <hc-select [options]="selectOptions" [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)"></hc-select>
+            <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
+                <option *ngFor="let option of selectOptions" [value]="option" [selected]="option === thisPage">{{option}}</option>
+            </hc-select>
         </span>
     </div>
 </hc-subnav>
@@ -13,7 +15,13 @@
     <hc-tab tabTitle="Tables" routerLink="/styles/table">
         Tables
     </hc-tab>
+    <hc-tab tabTitle="Charts" routerLink="/styles/chart">
+        Charts
+    </hc-tab>
     <hc-tab tabTitle="Typography" routerLink="/styles/typography">
         Typography
+    </hc-tab>
+    <hc-tab tabTitle="Code" routerLink="/styles/code">
+        Code
     </hc-tab>
 </hc-tab-set>

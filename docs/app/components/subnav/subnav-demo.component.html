@@ -37,40 +37,7 @@
 
     </hc-tab>
     <hc-tab tabTitle="Documentation">
-
-    <hc-tile>
-        <h5>Angular Component</h5>
-        <pre>
-            <code>
-&#x3C;hc-subnav&#x3E;
-    &#x3C;div&#x3E;Content goes here&#x3C;/div&#x3E;
-    &#x3C;div hcSubnavRight&#x3E;
-        &#x3C;button hc-button color=&#x22;primary&#x22;&#x3E;Example&#x3C;/button&#x3E;
-    &#x3C;/div&#x3E;
-&#x3C;/hc-subnav&#x3E;
-            </code>
-        </pre>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Directives</h5>
-        <p><b>hcSubnavRight</b><br>
-            Can be added to a <code>div</code> or individual component to align it to the right side of the subnav.
-            Primary action buttons are often placed on the right side of the subnav.
-        </p>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Properties</h5>
-        <table class="api-table">
-            <tr>
-                <th>fixedTop</th>
-                <td><span class="type-label">Type:</span> Boolean</td>
-                <td>Statically positions the subnav below the navbar</td>
-            </tr>
-        </table>
-    </hc-tile>
-
+        <div [hcMarkdown]="document"></div>
     </hc-tab>
     </hc-tab-set>
 </div>

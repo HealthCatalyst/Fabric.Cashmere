@@ -105,76 +105,7 @@
 
     </hc-tab>
     <hc-tab tabTitle="Documentation">
-
-    <hc-tile>
-        <h5>Angular Component</h5>
-        <hc-tab-set direction="horizontal">
-            <hc-tab tabTitle="HTML">
-                    <pre>
-                    <code>
-    &#x3C;button hc-button title=&#x22;Button Tile&#x22; color=&#x22;primary&#x22; disabled=&quot;false&quot;&#x3E;
-        &#x3C;hc-icon fontSet="fa" fontIcon="fa-cog" class="btn-icon-left"&#x3E;&#x3C;/hc-icon&#x3E;
-        Button Name
-    &#x3C;/button&#x3E;
-                    </code>
-                    <code>
-    &#x3C;a hc-button title=&#x22;Anchor Button&#x22; disabled=&quot;false&quot;&#x3E;Anchor Button&#x3C;/a&#x3E;
-                    </code>
-                    <code>
-    &lt;hc-split-button disabled=&quot;true&quot;&gt;
-            Disabled Split Button
-            &lt;div hcButtonItem&gt;Button menu&lt;/div&gt;
-    &lt;/hc-split-button&gt;
-                    </code>
-                    </pre>
-                </hc-tab>
-            <hc-tab tabTitle="TypeScript">
-                <pre><code>
-import &#123; ButtonModule &#125; from &#x27;@healthcatalyst/cashmere&#x27;;
-
-@NgModule(&#123;
-    imports: [
-        ...,
-    ButtonModule,
-    ],
-    declarations: [...],
-    exports: [..]
-&#125;)
-export class SomeModule &#123; &#125;
-                </code></pre>
-            </hc-tab>
-        </hc-tab-set>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Properties</h5>
-        <table class="api-table">
-            <tr>
-                <th>color</th>
-                <td><span class="type-label">Type:</span> String</td>
-                <td>Sets the button's theme color</td>
-            </tr>
-            <tr>
-                <th>disabled</th>
-                <td><span class="type-label">Type:</span> Boolean</td>
-                <td>Boolean value that enables/disables the button</td>
-            </tr>
-        </table>
-
-        <h3>hc-split-button</h3>
-        <p>
-            To use <code>hc-split-button</code> you encapsulate the content you want
-            to be shown on the button. Anything marked with the directive <code>hcButtonItem</code> will get transferred into the
-            dropdown menu. Everything else will be shown as the main button's content
-        </p>
-
-        <h3>hcButtonItem</h3>
-        <p>
-            Marks an element for being put into the dropdown menu of the button. Multiple things can be marked with this
-            directive
-        </p>
-    </hc-tile>
-
+        <div [hcMarkdown]="document"></div>
     </hc-tab>
     </hc-tab-set>
 </div>
