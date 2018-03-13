@@ -133,6 +133,14 @@ article ul > li:before {
     padding-right: 10px;
 }
 
+article ul > li:first-child, article ol > li:first-child {
+    margin-top: 6px !important;
+}
+
+article ul > li:last-child, article ol > li:last-child {
+    margin-bottom: 6px !important;
+}
+
 article ol > li {
     padding-left: 6px;
     margin-left: 40px !important;
@@ -150,6 +158,14 @@ article ul li ul li:before {
     padding-right: 15px;
 }
 
+article ul li ul li:first-child, article ol li ol li:first-child {
+    margin-top: 6px !important;
+}
+
+article ul li ul li:last-child, article ol li ol li:last-child {
+    margin-bottom: 6px !important;
+}
+
 article ol > li > ol > li {
     list-style-type: lower-alpha;
     padding-left: 6px;
@@ -161,6 +177,14 @@ article ul li ul li ul li:before {
    content: "- ";
     display: table-cell;
     padding-right: 15px;
+}
+
+article ul li ul li ul li:first-child, article ol li ol li ol li:first-child {
+    margin-top: 6px !important;
+}
+
+article ul li ul li ul li:last-child, article ol li ol li ol li:last-child {
+    margin-bottom: 6px !important;
 }
 
 article ol li ol li ol li {
