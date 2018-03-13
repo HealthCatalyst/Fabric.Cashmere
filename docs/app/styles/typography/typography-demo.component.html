@@ -226,88 +226,62 @@
 
     <hc-tile>
         <h5>Article lists</h5>
-        <table>
-            <tr>
-                <td>
-                    <p>article ul. Unordered list</p>
-                    <div class="article">
-                        <ul>
-                            <li>Item 1</li>
-                            <li> Item 2
-                                <ul>
-                                    <li>Item 3</li>
-                                    <li>Item 4
-                                        <ul>
-                                            <li>Item 5</li>
-                                            <li>Item 6</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </td>
-                <td>
-                    <code>&lt;ul&gt;&lt;li&gt;&lt;ul&gt;&lt;li&gt;&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</code>
-                </td>
-                <td>
+        <p>Additional formatting is provided for nested lists within <code>&lt;article&gt;</code> blocks
+        using either the <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> tags</p>
+
+        <h3>Unordered Lists</h3>
+        <article>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2
                     <ul>
-                        <li>
-                            <span class="type-label">Font-size</span>inherit</li>
-                        <li>
-                            <span class="type-label">Line Height</span>inherit</li>
+                        <li>Item 3</li>
+                        <li>Item 4
+                            <ul>
+                                <li>Item 5</li>
+                                <li>Item 6</li>
+                            </ul>
+                        </li>
                     </ul>
-                </td>
-                <td>
-                    <ul>
-                        <li>
-                            <span class="type-label">Weight</span>inherit</li>
-                        <li>
-                            <span class="type-label">Color</span>inherit</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>article ol. Ordered list</p>
-                    <div class="article">
-                        <ol>
-                            <li>Item 1</li>
-                            <li> Item 2
-                                <ol>
-                                    <li>Item 3</li>
-                                    <li>Item 4
-                                        <ol>
-                                            <li>Item 5</li>
-                                            <li>Item 6</li>
-                                        </ol>
-                                    </li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </div>
-                </td>
-                <td>
-                    <code>&lt;ol&gt;&lt;li&gt;&lt;ol&gt;&lt;li&gt;&lt;ol&gt;&lt;li&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/li&gt;&lt;/ol&gt;</code>
-                </td>
-                <td>
-                    <ul>
-                        <li>
-                            <span class="type-label">Font-size</span>inherit</li>
-                        <li>
-                            <span class="type-label">Line Height</span>inherit</li>
-                    </ul>
-                </td>
-                <td>
-                    <ul>
-                        <li>
-                            <span class="type-label">Weight</span>inherit</li>
-                        <li>
-                            <span class="type-label">Color</span>inherit</li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
+                </li>
+            </ul>
+        </article>
+
+        <h3>Ordered Lists</h3>
+        <article>
+            <ol>
+                <li>Item 1</li>
+                <li>Item 2
+                    <ol>
+                        <li>Item 3</li>
+                        <li>Item 4
+                            <ol>
+                                <li>Item 5</li>
+                                <li>Item 6</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </article>
+
+    <pre><code>&lt;article&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Item 1&lt;/li&gt;
+        &lt;li&gt;Item 2
+            &lt;ul&gt;
+                &lt;li&gt;Item 3&lt;/li&gt;
+                &lt;li&gt;Item 4
+                    &lt;ul&gt;
+                        &lt;li&gt;Item 5&lt;/li&gt;
+                        &lt;li&gt;Item 6&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/article&gt;</code></pre>
+
     </hc-tile>
 
     <hc-tile>
@@ -391,11 +365,9 @@
         <h5>Sass Text Utilities</h5>
         <p> Save yourself the trouble of looking up or recalculating rem sizes using the
             <code>fontSize()</code> sass mixin.</p>
-        <pre>
-        <code>@import &#39;../node_modules/cashmere/sass/cashmere&#39;;
-    .some-class {{ '{' }}
-        @include fontSize(16px); // generates font-size: 1.143rem;
-    {{ '}' }}</code>
-        </pre>
+        <pre><code>@import &#39;../node_modules/cashmere/sass/cashmere&#39;;
+.some-class {{ '{' }}
+    @include fontSize(16px); // generates font-size: 1.143rem;
+{{ '}' }}</code></pre>
     </hc-tile>
 </div>

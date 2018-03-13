@@ -113,3 +113,81 @@ em {
     font-weight: 600;
     @include fontSize(12px);
 }
+
+// Documentation
+// Lists
+article ul {
+    list-style-type: none;
+    display: table;
+}
+
+// List level 1
+article > ul > li {
+    display: table;
+}
+
+article ul > li:before {
+    content: "•  ";
+    display: table-cell;
+    padding-right: 10px;
+}
+
+article ul > li:first-child, article ol > li:first-child {
+    padding-top: 6px;
+}
+
+article ul > li:last-child, article ol > li:last-child {
+    padding-bottom: 6px;
+}
+
+article ol > li {
+    padding-left: 6px;
+    margin-left: 20px !important;
+}
+
+// List level 2
+article ul li ul li {
+    display: table;
+    margin-left: 0px;
+}
+
+article ul li ul li:before {
+    content: "–  ";
+    display: table-cell;
+    padding-right: 15px;
+}
+
+article ul li ul li:first-child, article ol li ol li:first-child {
+    padding-top: 6px;
+}
+
+article ul li ul li:last-child, article ol li ol li:last-child {
+    padding-bottom: 6px;
+}
+
+article ol > li > ol > li {
+    list-style-type: lower-alpha;
+    padding-left: 6px;
+    margin-left: 18px;
+}
+
+// List level 3
+article ul li ul li ul li:before {
+   content: "- ";
+    display: table-cell;
+    padding-right: 15px;
+}
+
+article ul li ul li ul li:first-child, article ol li ol li ol li:first-child {
+    padding-top: 6px;
+}
+
+article ul li ul li ul li:last-child, article ol li ol li ol li:last-child {
+    padding-bottom: 6px;
+}
+
+article ol li ol li ol li {
+    list-style-type: lower-roman;
+    padding-left: 10px;
+    margin-left: 12px;
+}

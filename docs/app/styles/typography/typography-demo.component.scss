@@ -8,87 +8,14 @@ h1, h2, h3, h4, p {
     }
 }
 
+.demo-content ul { margin: 0; }
+.demo-content li { margin: 0; }
+
+.demo-content h3 { margin: 30px 0 0; }
+
 #logo {
     background-color: #384655;
     width: 400px;
     margin-top:15px;
     padding: 10px 40px;
-}
-
-/* Documentation */
-/* Lists */
-.article ul {
-    list-style-type: none;
-    display: table;
-}
-
-/* List level 1 */
-.article > ul > li {
-    display: table;
-}
-
-.article ul > li:before {
-    content: "•  ";
-    display: table-cell;
-    padding-right: 10px;
-}
-
-.article ul > li:first-child, .article ol > li:first-child {
-    padding-top: 6px;
-}
-
-.article ul > li:last-child, .article ol > li:last-child {
-    padding-bottom: 6px;
-}
-
-.article ol > li {
-    padding-left: 6px;
-    margin-left: 50px;
-}
-
-/* List level 2 */
-.article ul li ul li {
-    display: table;
-    margin-left: 0px;
-}
-
-.article ul li ul li:before {
-    content: "–  ";
-    display: table-cell;
-    padding-right: 15px;
-}
-  
-.article ul li ul li:first-child, .article ol li ol li:first-child {
-    padding-top: 6px;
-}
-  
-.article ul li ul li:last-child, .article ol li ol li:last-child {
-    padding-bottom: 6px;
-}
-
-.article ol > li > ol > li {
-    list-style-type: lower-alpha;
-    padding-left: 6px;
-    margin-left: 18px;
-}
-
-/* List level 3 */
-.article ul li ul li ul li:before {
-   content: "- ";
-    display: table-cell;
-    padding-right: 15px;
-}
-
-.article ul li ul li ul li:first-child, .article ol li ol li ol li:first-child {
-    padding-top: 6px;
-}
-  
-.article ul li ul li ul li:last-child, .article ol li ol li ol li:last-child {
-    padding-bottom: 6px;
-}
-
-.article ol li ol li ol li {
-    list-style-type: lower-roman;
-    padding-left: 10px;
-    margin-left: 12px;
 }
