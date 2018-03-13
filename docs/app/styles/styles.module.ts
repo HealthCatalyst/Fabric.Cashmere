@@ -23,6 +23,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ChartDemoComponent } from './chart/chart-demo.component';
 import { BarchartComponent } from './chart/barchart/barchart.component';
 import { LinechartComponent } from './chart/linechart/linechart.component';
+import { ErrorPagesComponent } from './error/error-pages.component';
 
 @NgModule({
     imports: [
@@ -49,7 +50,8 @@ import { LinechartComponent } from './chart/linechart/linechart.component';
         CodeDemoComponent,
         ChartDemoComponent,
         BarchartComponent,
-        LinechartComponent
+        LinechartComponent,
+        ErrorPagesComponent
     ]
 })
 export class StylesModule {

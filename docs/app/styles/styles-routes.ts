@@ -5,6 +5,7 @@ import { TableDemoComponent } from './table/table-demo.component';
 import { TypographyDemoComponent } from './typography/typography-demo.component';
 import { CodeDemoComponent } from './code/code-demo.component';
 import { ChartDemoComponent } from './chart/chart-demo.component';
+import { ErrorPagesComponent } from './error/error-pages.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,11 @@ export const routes: Routes = [
                 path: 'code',
                 component: CodeDemoComponent,
                 data: { title: 'Code' }
+            },
+            {
+                path: 'error',
+                component: ErrorPagesComponent,
+                data: { title: 'Error Pages' }
             },
             {
                 path: '**',
