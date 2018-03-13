@@ -227,9 +227,9 @@
     <hc-tile>
         <h5>Article lists</h5>
         <p>Additional formatting is provided for nested lists within <code>&lt;article&gt;</code> blocks
-        using either the <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> tags</p>
+        using either the <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> tags.</p>
 
-        <h3>Unordered Lists</h3>
+        <h3>Unordered List</h3>
         <article>
             <ul>
                 <li>Item 1</li>
@@ -247,7 +247,7 @@
             </ul>
         </article>
 
-        <h3>Ordered Lists</h3>
+        <h3>Ordered List</h3>
         <article>
             <ol>
                 <li>Item 1</li>
@@ -265,6 +265,47 @@
             </ol>
         </article>
 
+        <h3>Lists in tables</h3>
+        <article>
+            <table style="border-top: 1px solid #c0c5cc; border-bottom: 1px solid #c0c5cc; margin-top: 20px; margin-bottom: 40px !important;">   
+                <tr>
+                    <td>
+                        <h6 style="margin-bottom: 10px;">Unordered list</h6>
+                        <ul>
+                            <li>Item 1</li>
+                            <li>Item 2
+                                <ul>
+                                    <li>Item 3</li>
+                                    <li>Item 4
+                                        <ul>
+                                            <li>Item 5</li>
+                                            <li>Item 6</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <h6 style="margin-bottom: 10px;">Ordered list</h6>
+                        <ol>
+                            <li>Item 1</li>
+                            <li>Item 2
+                                <ol>
+                                    <li>Item 3</li>
+                                    <li>Item 4
+                                        <ol>
+                                            <li>Item 5</li>
+                                            <li>Item 6</li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </td>
+                </tr>
+            </table>
+        </article>
     <pre><code>&lt;article&gt;
     &lt;ul&gt;
         &lt;li&gt;Item 1&lt;/li&gt;

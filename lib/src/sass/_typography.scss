@@ -114,16 +114,17 @@ em {
     @include fontSize(12px);
 }
 
-// Documentation
-// Lists
+// Articles
+// Article paragraph lists
 article ul {
     list-style-type: none;
     display: table;
 }
 
-// List level 1
+// Article paragraph list level 1
 article > ul > li {
     display: table;
+    padding-left: 20px;
 }
 
 article ul > li:before {
@@ -142,10 +143,10 @@ article ul > li:last-child, article ol > li:last-child {
 
 article ol > li {
     padding-left: 6px;
-    margin-left: 20px !important;
+    margin-left: 40px !important;
 }
 
-// List level 2
+// Article paragraph list level 2
 article ul li ul li {
     display: table;
     margin-left: 0px;
@@ -168,10 +169,10 @@ article ul li ul li:last-child, article ol li ol li:last-child {
 article ol > li > ol > li {
     list-style-type: lower-alpha;
     padding-left: 6px;
-    margin-left: 18px;
+    margin-left: 18px !important;
 }
 
-// List level 3
+// Article paragraph list level 3
 article ul li ul li ul li:before {
    content: "- ";
     display: table-cell;
@@ -189,5 +190,51 @@ article ul li ul li ul li:last-child, article ol li ol li ol li:last-child {
 article ol li ol li ol li {
     list-style-type: lower-roman;
     padding-left: 10px;
-    margin-left: 12px;
+    margin-left: 12px !important;
+}
+
+// Article table
+article table tbody > tr > td {
+    vertical-align: top;
+}
+
+// Article table list level 1
+article table ul li {
+    font-size: 14px;
+    margin-left: 15px !important;
+    display: table;
+}
+
+article table ol li {
+    font-size: 14px;
+    margin-left: 30px !important;
+    padding-right: 10px;
+    padding-left: 6px !important;
+}
+
+article table ul > li:last-child {
+    padding-bottom: 6px;
+}
+
+// Article table list level 2
+article table ul li ul li {
+    font-size: 14px;
+    padding-right: 6px;
+    margin-left: 0px !important;
+    display: table;
+}
+
+article table ul li ul li:before {
+    padding-right: 12px;
+}
+
+// Article table list level 3
+article table ul li ul li ul li {
+    font-size: 14px;
+    margin-left: 0px !important;
+    display: table;
+}
+
+article table ul li ul li ul li:before {
+    padding-right: 10px;
 }
