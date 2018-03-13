@@ -44,7 +44,7 @@ export const routes: Routes = [
             },
             {
                 path: '**',
-                redirectTo: 'color'
+                redirectTo: 'chart'
             }
         ]
     }
