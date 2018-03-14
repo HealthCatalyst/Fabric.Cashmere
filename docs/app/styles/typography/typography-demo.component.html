@@ -225,11 +225,12 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Article lists</h5>
-        <p>Additional formatting is provided for nested lists within <code>&lt;article&gt;</code> blocks
+        <h5>Articles</h5>
+        <p>The <code>&lt;article&gt;</code> tag surrounds copy in product documentation. This copy is often denser than what's ideal for application UIs. In limited instances, elements of product documentation require unique typography treatment.</p>
+        <h3>Article lists</h3>
+        <p>Formatting is provided for nested lists in <code>&lt;article&gt;</code> and <code>&lt;article&gt;&lt;table&gt;</code> blocks
         using either the <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> tags.</p>
-        <h3>Lists in paragraphs</h3>
-        <h4>Unordered List</h4>
+        <h4>ul. Unordered List</h4>
         <article>
             <ul>
                 <li>Item 1</li>
@@ -247,7 +248,7 @@
             </ul>
         </article>
 
-        <h4>Ordered List</h4>
+        <h4 class="h4-subsequent">ol. Ordered List</h4>
         <article>
             <ol>
                 <li>Item 1</li>
@@ -265,47 +266,6 @@
             </ol>
         </article>
 
-        <h3>Lists in tables</h3>
-        <article>
-            <table class="list-table">   
-                <tr>
-                    <td>
-                        <h4 class="list-table-heading">Unordered list</h4>
-                        <ul>
-                            <li>Item 1</li>
-                            <li>Item 2
-                                <ul>
-                                    <li>Item 3</li>
-                                    <li>Item 4
-                                        <ul>
-                                            <li>Item 5</li>
-                                            <li>Item 6</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </td>
-                    <td>
-                        <h4 class="list-table-heading">Ordered list</h4>
-                        <ol>
-                            <li>Item 1</li>
-                            <li>Item 2
-                                <ol>
-                                    <li>Item 3</li>
-                                    <li>Item 4
-                                        <ol>
-                                            <li>Item 5</li>
-                                            <li>Item 6</li>
-                                        </ol>
-                                    </li>
-                                </ol>
-                            </li>
-                        </ol>
-                    </td>
-                </tr>
-            </table>
-        </article>
     <pre><code>&lt;article&gt;
     &lt;ul&gt;
         &lt;li&gt;Item 1&lt;/li&gt;
