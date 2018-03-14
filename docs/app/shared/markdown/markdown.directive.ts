@@ -15,7 +15,7 @@ export class MarkdownDirective implements OnChanges {
     constructor(private el: ElementRef) { }
 
     ngOnChanges(changes: SimpleChanges): void {
-        const md = new markdownIt();
+        const md = new markdownIt( { html: true } );
 
         // plugin to markdown-it to interpret :::
         md.use(container_plugin, 'hc-tile', {
