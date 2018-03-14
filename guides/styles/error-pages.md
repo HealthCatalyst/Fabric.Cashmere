@@ -13,7 +13,7 @@ The error page should include the app's `hc-navbar` but without any of the navba
 ``` html
 <div class="error-tile">
     <div class="content-column">
-        <img class="error-img"></img>
+        <div class="error-img"></div>
     </div>
     <div class="content-column">
         <div class="error-header-code">404</div>
@@ -30,7 +30,7 @@ The error page should include the app's `hc-navbar` but without any of the navba
 <br>
 <div class="error-tile">
     <div class="content-column">
-        <img class="error-img"></img>
+        <div class="error-img"></div>
     </div>
     <div class="content-column">
         <div class="error-header-code">404</div>
@@ -59,7 +59,7 @@ For errors that need to display a string of text rather than an error code, the 
 <br>
 <div class="error-tile">
     <div class="content-column">
-        <img class="error-img"></img>
+        <div class="error-img"></div>
     </div>
     <div class="content-column">
         <div class="error-header-string">Access Denied</div>
