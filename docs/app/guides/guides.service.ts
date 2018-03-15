@@ -18,6 +18,11 @@ export class GuidesService {
             title: 'Contribution Guide',
             route: 'contribution-guide',
             document: require('raw-loader!../../../guides/contribution-guide.md')
+        },
+        {
+            title: 'Supported Browsers',
+            route: 'supported-browsers',
+            document: require('raw-loader!../../../guides/supported-browsers.md')
         }
     ];
 }
