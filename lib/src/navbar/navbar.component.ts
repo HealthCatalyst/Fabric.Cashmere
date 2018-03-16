@@ -12,6 +12,8 @@ export class NavbarComponent implements OnInit {
 
     @Input() appIcon: string = '';
 
+    @Input() brandIcon: string = '';
+
     @Input() homeUri: string = '';
 
     @Input() fixedTop: boolean = false;

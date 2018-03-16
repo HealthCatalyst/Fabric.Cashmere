@@ -1,7 +1,7 @@
 :::
 ##### Angular Component
 ``` html
-<hc-navbar appIcon="./assets/CashmereAppLogo.svg" user="Christine K." [homeUri]="undefined">
+<hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" user="Christine K." [homeUri]="undefined">
     <hc-app-switcher></hc-app-switcher>
     <hc-navbar-link [active]="true" [uri]="undefined">Home</hc-navbar-link>
     <hc-navbar-link [active]="false" [uri]="undefined" exact="true">Buttons</hc-navbar-link>
@@ -47,6 +47,16 @@
 ```
 
 _*uris are purposely left undefined in this example code_
+:::
+
+
+::: 
+##### Icon Files
+
+[App Icon File](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/docs/assets/CashmereAppLogo.svg) - Flexo font is used to generate  for `appIcon="./assets/CashmereAppLogo.svg"`
+
+[Brand Icon File](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/docs/assets/TriFlame.svg) -  `brandIcon="./assets/TriFlame.svg"`
+
 :::
 
 :::
