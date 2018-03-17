@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SplitButtonComponent } from './split-button.component';
-import { PopoverModule } from '../../popover';
+import { PopoverModule } from '../../popover/popover.module';
 import { ButtonComponent } from '../button.component';
 
 describe('SplitButtonComponent', () => {

@@ -14,7 +14,14 @@
             "entryFile": "public_api.ts",
             "sassIncludePaths": [
                 "./src/sass"
-            ]
+            ],
+            "externals": {
+                "rxjs/observable/fromPromise": "Rx.Observable",
+                "rxjs/operator/debounceTime": "Rx.Observable.prototype",
+                "rxjs/operator/map": "Rx.Observable.prototype",
+                "rxjs/operator/toPromise": "Rx.Observable.prototype",
+                "rxjs/symbol/observable": "Rx.Symbol"
+            }
         }
     },
     "scripts": {

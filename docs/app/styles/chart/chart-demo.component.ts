@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { ModalOptions, HcModal } from '../../../../lib/src/modal';
+import { HcModal } from '../../../../lib/src/modal/modal';
+import { ModalOptions } from '../../../../lib/src/modal/modal-options';
 import { ModalService } from './../../../../lib/src/modal/modal.service';
 
 @Component({

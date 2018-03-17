@@ -38,6 +38,7 @@ testem.log
 /stage
 /lib/dist/
 /lib/node_modules/
+/lib/.ng_pkg_build/
 debug.log
 
 # e2e
