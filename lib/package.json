@@ -51,6 +51,7 @@
         "codelyzer": "~3.0.1",
         "core-js": "^2.4.1",
         "font-awesome": "^4.7.0",
+        "globby": "^8.0.1",
         "ng-packagr": "~2.0.0",
         "node-sass": "4.7.2",
         "popper.js": "^1.12.9",
