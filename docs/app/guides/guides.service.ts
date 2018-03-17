@@ -15,7 +15,7 @@ export class GuidesService {
             document: require('raw-loader!../../../guides/getting-started.md')
         },
         {
-            title: 'Contribution Guide',
+            title: 'Guidelines for Contribution',
             route: 'contribution-guide',
             document: require('raw-loader!../../../guides/contribution-guide.md')
         },
