@@ -23,8 +23,8 @@ export type ModalContentType = Type<{}> | TemplateRef<any>;
 
 @Injectable()
 export class ModalService {
-    // start at 1040 because navbar is at 1030
-    public zIndexCounter = 1040;
+    // start at 2000 (reserved range for modals, see _variables.scss)
+    public zIndexCounter = 2000;
     private renderer: Renderer2;
 
     constructor(

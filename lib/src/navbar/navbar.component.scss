@@ -6,7 +6,6 @@ $navbar-height: 53px !default;
 $navbar-app-padding: 0 75px 0 25px !default;
 $navbar-text: $white !default;
 $navbar-text-inactive: $gray-300 !default;
-$navbar-z-index: 1030 !default;
 $navbar-fixed-shadow: 0px 2px 6px $shadow;
 
 .navbar.fixed-top::ng-deep {
@@ -14,7 +13,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     position: fixed;
     right: 0;
     left: 0;
-    z-index: $navbar-z-index;
+    z-index: $zindex-navbar;
     box-shadow: $navbar-fixed-shadow;
 }
 

@@ -48,7 +48,7 @@ hc-select .chevron:after {
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 1;
+    z-index: $zindex-dropdown + 1;
     text-align: center;
     height: 100%;
     pointer-events: none;
