@@ -1,14 +1,11 @@
-@import 'colors';
-@import 'mixins';
-
-$menu-z-index: 1025 !default;
+@import '../../sass/cashmere';
 
 .menu-dropdown {
     width: 100%;
     background-color: $slate-blue;
     margin-top: 53px;
     position: fixed;
-    z-index: $menu-z-index;
+    z-index: $zindex-navbar-menu;
     padding-top: 15px;
     display: none;
     transition: top 0.7s ease;

@@ -1,3 +1,5 @@
+@import '../sass/_variables.scss';
+
 $drawer-background-color: #6E6F71;
 $drawer-font-color: #b9babb;
 
@@ -18,7 +20,7 @@ $drawer-font-color: #b9babb;
     position: absolute;
     top: 0;
     bottom: 0;
-    z-index: 5;
+    z-index: $zindex-drawer;
     min-width: 100px;
     outline: 0;
     box-sizing: border-box;
