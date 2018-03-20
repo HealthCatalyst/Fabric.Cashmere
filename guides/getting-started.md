@@ -58,6 +58,6 @@ Now, import the SCSS file from the package in `src/styles.scss`:
 ```scss
 /* You can add global styles to this file, and also import other style files */
 
-@import "~@cashmere/cashmere";
+@import "~@healthcatalyst/cashmere/cashmere";
 ```
 :::
