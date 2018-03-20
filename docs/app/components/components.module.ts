@@ -80,7 +80,6 @@ import { SharedModule } from '../shared/shared.module';
         ChipModule,
         InputModule,
         LabelModule,
-        ModalModule,
         SharedModule,
         RouterModule.forRoot(routes)
     ],

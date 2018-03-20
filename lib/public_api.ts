@@ -1,6 +1,6 @@
 export * from './src/accordion/accordion.module';
 export * from './src/breadcrumbs/breadcrumbs.module';
-export * from './src/app-switcher/app-switcher.module';
+export * from './src/app-switcher/index';
 export * from './src/button/button.module';
 export * from './src/checkbox/checkbox.module';
 export * from './src/chip/chip.module';
@@ -9,7 +9,7 @@ export * from './src/icon/icon.module';
 export * from './src/input/input.module';
 export * from './src/label/label.module';
 export * from './src/list/list.module';
-export * from './src/modal/modal.module';
+export * from './src/modal/index';
 export * from './src/navbar/navbar.module';
 export * from './src/pipes/pipes.module';
 export * from './src/popover/popover.module';

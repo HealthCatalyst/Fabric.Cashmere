@@ -6,6 +6,20 @@
 The easiest way to start with Angular is to use the [Angular CLI Tool](https://github.com/angular/angular-cli). To scaffold your project structure, follow its [installation instructions](https://github.com/angular/angular-cli#installation).
 
 The library uses Angular 5, if you have a previous version of angular see [the update guide](https://angular-update-guide.firebaseapp.com/)
+
+#### Use scss style preprocessing
+
+When you are creating your project with angular cli try this:
+
+`ng new My_New_Project --style=scss` 
+
+This generating all your components with predifined scss files.
+
+If you are changing your existing style in your project
+
+`ng set defaults.styleExt scss`
+
+Cli handles the rest of it.
 :::
 
 :::
@@ -44,6 +58,6 @@ Now, import the SCSS file from the package in `src/styles.scss`:
 ```scss
 /* You can add global styles to this file, and also import other style files */
 
-@import "~@cashmere/sass/cashmere";
+@import "~@cashmere/cashmere";
 ```
 :::
