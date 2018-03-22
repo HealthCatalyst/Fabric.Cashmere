@@ -4,7 +4,6 @@
 /dist
 /tmp
 /out-tsc
-.ng_pkg_build
 
 # dependencies
 /node_modules
@@ -39,6 +38,7 @@ testem.log
 /stage
 /lib/dist/
 /lib/node_modules/
+/lib/.ng_pkg_build/
 debug.log
 
 # e2e

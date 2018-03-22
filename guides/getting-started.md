@@ -1,30 +1,30 @@
 # Getting Started
-###### Last updated February 20, 2018
+###### Last updated March 10, 2018
 
 :::
 ##### Setting up angular
-The easiest way to start with Angular is to use the [Angular CLI Tool](https://github.com/angular/angular-cli). To scaffold your project structure, follow its [installation instructions](https://github.com/angular/angular-cli#installation).
+The easiest way to start with Angular is to use the [Angular CLI tool](https://github.com/angular/angular-cli). To scaffold your project structure, follow its [installation instructions](https://github.com/angular/angular-cli#installation).
 
-The library uses Angular 5, if you have a previous version of angular see [the update guide](https://angular-update-guide.firebaseapp.com/)
+The library uses Angular 5. If you have a previous version of angular, see [the Angular update guide](https://angular-update-guide.firebaseapp.com/).
 :::
 
 :::
-##### Installing npm module
-#### Step 1. Install npm module
+##### Setting up the project
+#### Step 1. Install the npm module.
 
-```BASH
+``` BASH
 npm i --save @healthcatalyst/cashmere
 ```
 
-#### Install peer dependencies (optional)
+#### Install peer dependencies on [Popper.js](https://popper.js.org/), [Font Awesome](https://fontawesome.com), and [Open Sans](https://fonts.google.com/specimen/Open+Sans) (optional).
 
-```BASH
+``` BASH
 npm install --save popper.js font-awesome npm-font-open-sans
 ```
 
-#### Step 2. Import components/modules
+#### Step 2. Import the components/modules.
 
-```typescript
+``` typescript
 import { ButtonModule } from '@healthcatalyst/cashmere';
 
 @NgModule({
@@ -37,13 +37,39 @@ import { ButtonModule } from '@healthcatalyst/cashmere';
 })
 export class SomeModule { }
 ```
-#### Step 3. Adding the styles
+#### Step 3. Add the styles.
 
-Now, import the SCSS file from the package in `src/styles.scss`:
+Import the SCSS file from the package in `src/styles.scss`.
 
-```scss
-/* You can add global styles to this file, and also import other style files */
-
+``` scss
 @import "~@cashmere/sass/cashmere";
+```
+
+#### Step 4. (Optional) Add references to dependencies.
+Add a reference to Popper.js in `.angular-cli.json`.
+``` json
+{
+    ...
+    "apps": [
+        {
+            ...
+            "scripts": [
+                "../node_modules/popper.js/dist/umd/popper.min.js"
+            ]
+            ...
+        }
+    ]
+    ...
+}
+```
+
+Add a reference to Font Awesome ([official instructions](https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/include-font-awesome.md)) and Open Sans by adding references in `src/styles.scss`.
+
+``` scss
+$fa-font-path: '../node_modules/font-awesome/fonts';
+@import '../node_modules/font-awesome/scss/font-awesome';
+
+$FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
+@import '../node_modules/npm-font-open-sans/open-sans';
 ```
 :::

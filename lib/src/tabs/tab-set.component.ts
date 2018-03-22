@@ -101,7 +101,7 @@ export class TabSetComponent implements AfterContentInit {
 
     private mapRouterLinkToString(routerLink: string | any[]): string {
         if (routerLink instanceof Array) {
-            routerLink = routerLink.join('/');
+            routerLink = routerLink.join('/').replace('//', '/');
         }
         return routerLink;
     }
