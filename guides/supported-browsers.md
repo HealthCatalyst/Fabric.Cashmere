@@ -3,7 +3,7 @@
 
 :::
 ##### Browser support table
-Support a more unifed and better user experience Health Catalyst should aim to align the target browser compatibility. Along with a better experience consistent compatibility helps push Health Catalyst products into the future vision of working in a tool switcher.
+To support a more unifed and better user experience, Health Catalyst should aim to align the target browser compatibility. Along with a better experience, consistent compatibility helps push Health Catalyst products into the future vision of working in a tool switcher.
 
 | | | <img src="../assets/windows.png" alt="Windows" style="width: 50px;"/> **Windows** | <img src="../assets/mac.png" alt="Mac" style="width: 50px;"/> **Mac** |
 | -------------: | :------------- |:-------------:| :-------------:|
