@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { SelectModule } from '../../../lib/src/select';
+import { SelectModule } from '../../../lib/src/select/select.module';
 
 @Component({
     selector: 'hc-demo-styles',

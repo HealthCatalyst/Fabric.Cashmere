@@ -1,12 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/filter';
+import { Router, Event, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from '@angular/router';
 
-interface IBreadcrumb {
-  label: string;
-  params?: Params;
-  url: string;
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+
+export interface IBreadcrumb {
+    label: string;
+    params?: Params;
+    url: string;
 }
 
 @Component({
@@ -16,14 +18,13 @@ interface IBreadcrumb {
 })
 export class BreadcrumbsComponent implements OnInit, OnDestroy {
 
-    public breadcrumbs: IBreadcrumb[];
-    public routerSubscription: Subscription;
-    backURL: string;
+    public breadcrumbs: IBreadcrumb[] = [];
+    public routerSubscription: any;
+    backURL: string = '';
     backShow: string = 'none';
     locationLabel: string = '';
 
-    constructor( private activatedRoute: ActivatedRoute, private router: Router ) {
-        this.breadcrumbs = [];
+    constructor(private activatedRoute: ActivatedRoute, private router: Router) {
     }
 
     ngOnInit() {
@@ -33,17 +34,19 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
         this.breadcrumbs = this.getBreadcrumbs(root);
 
         // subscribe to the NavigationEnd event
-        this.routerSubscription = this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
-            // set breadcrumbs
-            root = this.activatedRoute.root;
-            this.breadcrumbs = this.getBreadcrumbs(root);
-            if ( this.breadcrumbs.length > 1 ) {
-                this.backURL = this.breadcrumbs[ this.breadcrumbs.length - 2 ].url;
-                this.backShow = 'inline';
-                this.locationLabel = '';
-            } else {
-                this.backShow = 'none';
-                this.locationLabel = this.breadcrumbs[ this.breadcrumbs.length - 1 ].label;
+        this.routerSubscription = this.router.events.subscribe((event: Event) => {
+            if (event instanceof NavigationEnd) {
+                // set breadcrumbs
+                root = this.activatedRoute.root;
+                this.breadcrumbs = this.getBreadcrumbs(root);
+                if (this.breadcrumbs.length > 1) {
+                    this.backURL = this.breadcrumbs[this.breadcrumbs.length - 2].url;
+                    this.backShow = 'inline';
+                    this.locationLabel = '';
+                } else {
+                    this.backShow = 'none';
+                    this.locationLabel = this.breadcrumbs[this.breadcrumbs.length - 1].label;
+                }
             }
         });
     }
@@ -56,7 +59,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
 
         // return if there are no more children
         if (children.length === 0) {
-          return breadcrumbs;
+            return breadcrumbs;
         }
 
         // iterate over each children
@@ -78,9 +81,9 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
             url += `/${routeURL}`;
 
             // add breadcrumb
-            let parent: any = this.activatedRoute.parent;
+            let parent: ActivatedRoute | null = this.activatedRoute.parent;
             let fullURL: string = '';
-            if (parent !== null ) {
+            if (parent !== null) {
                 fullURL += '/' + parent.snapshot.url.map(segment => segment.path).join('/');
             }
             fullURL += `${url}`;
@@ -94,10 +97,10 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
 
             // recursive
             return this.getBreadcrumbs(child, url, breadcrumbs);
-            }
+        }
 
-            // we should never get here, but just in case
-            return breadcrumbs;
+        // we should never get here, but just in case
+        return breadcrumbs;
     }
 
     ngOnDestroy(): void {

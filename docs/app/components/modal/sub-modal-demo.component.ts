@@ -1,6 +1,6 @@
 import { ModalService } from './../../../../lib/src/modal/modal.service';
 import { Component } from '@angular/core';
-import { ModalOptions } from '../../../../lib/src/modal';
+import { ModalOptions } from '../../../../lib/src/modal/modal-options';
 import { ActiveModal } from '../../../../lib/src/modal/active-modal';
 
 @Component({

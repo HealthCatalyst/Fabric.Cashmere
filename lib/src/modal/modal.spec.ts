@@ -4,7 +4,7 @@ import { ModalService } from './modal.service';
 import { ActiveModal } from './active-modal';
 import { ModalWindowComponent } from './modal-window.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ModalOverlayComponent } from '.';
+import { ModalOverlayComponent } from './modal-overlay.component';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 

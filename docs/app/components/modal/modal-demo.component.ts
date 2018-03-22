@@ -1,6 +1,7 @@
 import { ModalService } from './../../../../lib/src/modal/modal.service';
 import { Component, TemplateRef } from '@angular/core';
-import { ModalOptions, HcModal } from '../../../../lib/src/modal';
+import { ModalOptions } from '../../../../lib/src/modal/modal-options';
+import { HcModal } from '../../../../lib/src/modal/modal';
 import { SubModalDemoComponent } from './sub-modal-demo.component';
 
 @Component({
