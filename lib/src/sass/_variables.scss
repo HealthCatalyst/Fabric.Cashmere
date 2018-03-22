@@ -9,3 +9,16 @@ $grid-breakpoints: (
   lg: 992px,
   xl: 1200px
 ) !default;
+
+/* set standard relative layering for components */
+$zindex-dropdown:           1000 !default;
+$zindex-sticky:             1020 !default;
+$zindex-fixed:              1030 !default;
+$zindex-drawer:             1040 !default;
+$zindex-subnav:             1050 !default;
+$zindex-navbar-menu:        1060 !default;
+$zindex-navbar:             1070 !default;
+// z-index for modals is set in code as an incrementing
+// amount, starting at 2000, see modal.service.ts
+$zindex-popover:            3000 !default;
+$zindex-tooltip:            3010 !default;

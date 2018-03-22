@@ -11,6 +11,7 @@
         "allowSyntheticDefaultImports": true,
         "strictNullChecks": true,
         "target": "es5",
+        "skipLibCheck": true,
         "typeRoots": [
             "node_modules/@types"
         ],
@@ -24,7 +25,7 @@
         "lib/**/*.ts"
     ],
     "exclude": [
-        "node_modules/",
-        "lib/node_modules/"
+        "node_modules/**/*.ts",
+        "lib/node_modules/**/*.ts"
     ]
 }
