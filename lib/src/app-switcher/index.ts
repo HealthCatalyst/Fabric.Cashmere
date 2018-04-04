@@ -1,3 +1,3 @@
-export * from './app-switcher.service';
-export * from './app-switcher.module';
-export * from './app-switcher-interfaces';
+export { AppSwitcherService, MockAppSwitcherService } from './app-switcher.service';
+export { AppSwitcherModule } from './app-switcher.module';
+export { IAppSwitcherConfig, IAppSwitcherService, IDiscoveryApplication, IDiscoveryRequest } from './app-switcher-interfaces';
