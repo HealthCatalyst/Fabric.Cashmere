@@ -48,44 +48,7 @@
 
     </hc-tab>
     <hc-tab tabTitle="Documentation">
-
-    <hc-tile>
-        <h5>Angular Component</h5>
-        <pre>
-            <code>
-&#x3C;hc-drawer-container&#x3E;
-&#x3C;hc-drawer&#x3E;
-    Drawer Content
-&#x3C;/hc-drawer&#x3E;
-Main Content
-&#x3C;/hc-drawer-container&#x3E;
-            </code>
-        </pre>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Properties</h5>
-        <table class="api-table">
-            <tr>
-                <th>mode</th>
-                <td><span class="type-label">Type:</span> 'over' | 'push' (default: 'push')</td>
-                <td>Optional - overlay or push content</td>
-            </tr>
-            <tr>
-                <th>align</th>
-                <td><span class="type-label">Type:</span> 'left' | 'right' (default: 'left')</td>
-                <td>Optional - alignment of the drawer.</td>
-            </tr>
-            <tr>
-                <th>opened</th>
-                <td><span class="type-label">Type:</span> Boolean (default: false)</td>
-                <td>Optional - whether the drawer starts out opened/closed</td>
-            </tr>
-        </table>
-        <br>
-        <em>*Note: An error will be thrown if there are more than two drawers in hc-drawer-container or if both drawers have the same alignment </em>
-    </hc-tile>
-
+        <div [hcMarkdown]="document"></div>
     </hc-tab>
     </hc-tab-set>
 </div>

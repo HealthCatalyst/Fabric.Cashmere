@@ -3,9 +3,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 
 import { ComponentsComponent } from './components.component';
-import { TabsModule } from '../../../lib/src/tabs';
-import { SelectModule } from '../../../lib/src/select';
-import { SubnavModule } from '../../../lib/src/subnav';
+import { TabsModule } from '../../../lib/src/tabs/tabs.module';
+import { SelectModule } from '../../../lib/src/select/select.module';
+import { SubnavModule } from '../../../lib/src/subnav/subnav.module';
 
 describe('ComponentsComponent', () => {
     let component: ComponentsComponent;

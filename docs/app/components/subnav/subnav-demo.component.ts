@@ -6,10 +6,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
     styleUrls: [ './subnav-demo.component.scss' ]
 })
 export class SubnavDemoComponent {
-    showTemplate: boolean = true;
     lastModified: Date = new Date( document.lastModified );
-
-    viewToggle(show: 'ts' | 'html') {
-        this.showTemplate = show === 'html';
-    }
+    public document: string = require('raw-loader!../../../../guides/components/subnav.md');
 }

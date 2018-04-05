@@ -1,12 +1,14 @@
-@import '../sass/cashmere';
+@import '../sass/colors';
+@import '../sass/functions.scss';
+@import '../sass/mixins.scss';
 
-:host select {
+hc-select select {
     display: inline-block;
-    color: $offblack;
+    color: $text;
     background-color: $white;
     font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    padding-left: 10px;
+    @include fontSize(14px);
+    padding-left: 7px;
     border: 1.5px solid $gray-300;
     border-radius: 0;
     height: 35px;
@@ -21,17 +23,24 @@
 
     &[disabled] {
         cursor: not-allowed;
+        border: 1.5px solid $gray-200;
+        background-color: $slate-gray-100;
+        color: tint( $text, 60%);
     }
 }
 
-:host label {
+hc-select .disabled.chevron:after {
+    color: tint( $primary-brand, 60%)
+}
+
+hc-select .chevron {
     overflow: hidden;
     height: 35px;
     position: relative;
     display: block;
 }
 
-:host label:after {
+hc-select .chevron:after {
     content: "\f078";
     font-family: FontAwesome;
     color: $primary-brand;
@@ -39,9 +48,28 @@
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 1;
+    z-index: $zindex-dropdown + 1;
     text-align: center;
     height: 100%;
     pointer-events: none;
     box-sizing: border-box;
+}
+
+hc-select .select-errors {
+    margin-top: 8px;
+    color: $red;
+    font-weight: 600;
+    @include fontSize(12px);
+    display: none;
+}
+
+hc-select .highlight {
+    select { border: 2px solid $red; }
+    .select-errors { display: block; }
+}
+
+hc-select .select-required label:after {
+    content: "*";
+    margin-left: 5px;
+    color: $red;
 }

@@ -57,6 +57,7 @@ code {
     padding: 3px 7px;
     @include fontSize(14px);
     font-weight: 400;
+    line-height: 1.4;
 }
 
 // for code blocks
@@ -104,4 +105,140 @@ em {
     color: $gray-500;
     margin-top: 12px;
     font-style: italic;
+}
+
+.form-errors {
+    margin-top: 8px;
+    color: $red;
+    font-weight: 600;
+    @include fontSize(12px);
+}
+
+// Articles
+// Article paragraph lists
+article ul {
+    list-style-type: none;
+    display: table;
+}
+
+// Article paragraph list level 1
+article > ul > li {
+    display: table;
+    padding-left: 20px;
+}
+
+article ul > li:before {
+    content: "•  ";
+    display: table-cell;
+    padding-right: 10px;
+}
+
+article ul > li:first-child, article ol > li:first-child {
+    margin-top: 6px !important;
+}
+
+article ul > li:last-child, article ol > li:last-child {
+    margin-bottom: 6px !important;
+}
+
+article ol > li {
+    padding-left: 6px;
+    margin-left: 40px !important;
+}
+
+// Article paragraph list level 2
+article ul li ul li {
+    display: table;
+    margin-left: 0px;
+}
+
+article ul li ul li:before {
+    content: "–  ";
+    display: table-cell;
+    padding-right: 15px;
+}
+
+article ul li ul li:first-child, article ol li ol li:first-child {
+    margin-top: 6px !important;
+}
+
+article ul li ul li:last-child, article ol li ol li:last-child {
+    margin-bottom: 6px !important;
+}
+
+article ol > li > ol > li {
+    list-style-type: lower-alpha;
+    padding-left: 6px;
+    margin-left: 18px !important;
+}
+
+// Article paragraph list level 3
+article ul li ul li ul li:before {
+   content: "- ";
+    display: table-cell;
+    padding-right: 15px;
+}
+
+article ul li ul li ul li:first-child, article ol li ol li ol li:first-child {
+    margin-top: 6px !important;
+}
+
+article ul li ul li ul li:last-child, article ol li ol li ol li:last-child {
+    margin-bottom: 6px !important;
+}
+
+article ol li ol li ol li {
+    list-style-type: lower-roman;
+    padding-left: 10px;
+    margin-left: 12px !important;
+}
+
+// Article table
+article table tbody > tr > td {
+    vertical-align: top;
+}
+
+// Article table list level 1
+article table ul li {
+    font-size: 14px;
+    margin-left: 15px !important;
+    display: table;
+}
+
+article table ol li {
+    font-size: 14px;
+    margin-left: 30px !important;
+    padding-right: 10px;
+    padding-left: 6px !important;
+}
+
+// Article table list level 2
+article table ul li ul li {
+    font-size: 14px;
+    padding-right: 6px;
+    margin-left: 0px !important;
+    display: table;
+}
+
+article table ul li ul li:before {
+    padding-right: 12px;
+}
+
+// Article table list level 3
+article table ul li ul li ul li {
+    font-size: 14px;
+    display: table;
+}
+
+article table ul li ul li ul li:before {
+    padding-right: 10px;
+}
+
+// Article list padding
+article ul > li:first-child, article ol > li:first-child, article ul li ul li:first-child, article ol li ol li:first-child, article ul li ul li ul li:first-child, article ol li ol li ol li:first-child, article table ul > li:first-child, article table ol > li:first-child, article table ul li ul > li:first-child, article table ol li ol > li:first-child, article table ul li ul li ul > li:first-child, article table ol li ol li ol > li:first-child {
+    padding-top: 6px;
+}
+
+article ul > li:last-child, article ol > li:last-child, article ul li ul li:last-child, article ol li ol li:last-child, article ul li ul li ul li:last-child, article ol li ol li ol li:last-child, article table ul > li:last-child, article table ol > li:last-child, article table ul li ul > li:last-child, article table ol li ol > li:last-child, article table ul li ul li ul > li:last-child, article table ol li ol li ol > li:last-child {
+    padding-bottom: 6px;
 }

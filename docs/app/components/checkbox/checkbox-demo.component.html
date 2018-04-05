@@ -31,59 +31,7 @@
 
     </hc-tab>
     <hc-tab tabTitle="Documentation">
-
-    <hc-tile>
-        <h5>Angular Component</h5>
-        <pre>
-            <code>
-&#x3C;hc-checkbox id=&#x22;checkbox-id&#x22;&#x3E;Checkbox Label&#x3C;/hc-checkbox&#x3E;
-&#x3C;hc-checkbox id=&#x22;checkbox-id&#x22; [(ngModel)]=&#x22;data&#x22;&#x3E;Checkbox Label&#x3C;/hc-checkbox&#x3E;
-            </code>
-        </pre>
-    </hc-tile>
-
-    <hc-tile>
-        <h5>Properties</h5>
-
-        <table class="api-table">
-            <tr>
-                <th>id</th>
-                <td><span class="type-label">Type:</span> String</td>
-                <td width=50%>Optional - checkbox identifier</td>
-            </tr>
-            <tr>
-                <th>disabled</th>
-                <td><span class="type-label">Type:</span> string|boolean</td>
-                <td width=50%>Optional - disables the checkbox</td>
-            </tr>
-            <tr>
-                <th>required</th>
-                <td><span class="type-label">Type:</span> string|boolean</td>
-                <td width=50%>Optional - whether the checkbox is required</td>
-            </tr>
-            <tr>
-                <th>name</th>
-                <td><span class="type-label">Type:</span> string</td>
-                <td width=50%>Optional - name to be applied to input element</td>
-            </tr>
-            <tr>
-                <th>value</th>
-                <td><span class="type-label">Type:</span> string</td>
-                <td width=50%>Optional - value attribute for the input element</td>
-            </tr>
-            <tr>
-                <th>tabIndex</th>
-                <td><span class="type-label">Type:</span> number</td>
-                <td width=50%>Optional - tabIndex for the element</td>
-            </tr>
-            <tr>
-                <th>checked</th>
-                <td><span class="type-label">Type:</span> number</td>
-                <td width=50%>Optional - whether the checkbox is checked or not</td>
-            </tr>
-        </table>
-    </hc-tile>
-
+        <div [hcMarkdown]="document"></div>
     </hc-tab>
     </hc-tab-set>
 </div>

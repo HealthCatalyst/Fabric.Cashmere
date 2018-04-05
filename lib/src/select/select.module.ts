@@ -4,7 +4,7 @@ import { SelectComponent } from './select.component';
 
 @NgModule({
     imports: [
-        CommonModule,
+        CommonModule
     ],
     exports: [
         SelectComponent
