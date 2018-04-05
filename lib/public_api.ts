@@ -19,6 +19,7 @@ export { LabelModule } from './src/label/label.module';
 export { ListModule } from './src/list/list.module';
 export { ModalModule, ModalContentType, ModalOptions, ModalSize } from './src/modal/index';
 export { NavbarModule } from './src/navbar/navbar.module';
+export { PaginationModule } from './src/pagination/pagination.module';
 export { PipesModule } from './src/pipes/pipes.module';
 export { PopoverModule } from './src/popover/popover.module';
 export { ProgressIndicatorsModule } from './src/progress-indicators/progress-indicators.module';

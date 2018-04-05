@@ -1,0 +1,44 @@
+@import 'mixins';
+
+:host {
+    display: inline-flex;
+
+    .hc-left-button {
+        margin-right: 0;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        min-width: unset;
+    }
+
+    .hc-right-button {
+        margin-right: 0;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        min-width: unset;
+    }
+
+    .hc-inner-button {
+        margin-right: 0;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        min-width: unset;
+    }
+
+    .expanded-page-button {
+        display: block;
+    }
+    .collapsed-page-button {
+        display: none;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .expanded-page-button {
+        display: none;
+    }
+    .collapsed-page-button {
+        display: block;
+    }
+}
