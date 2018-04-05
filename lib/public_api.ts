@@ -1,6 +1,14 @@
 export { AccordionModule } from './src/accordion/accordion.module';
 export { BreadcrumbsModule } from './src/breadcrumbs/breadcrumbs.module';
-export { AppSwitcherModule } from './src/app-switcher/app-switcher.module';
+export {
+    AppSwitcherModule,
+    IAppSwitcherService,
+    IAppSwitcherConfig,
+    IDiscoveryApplication,
+    IDiscoveryRequest,
+    AppSwitcherService,
+    MockAppSwitcherService
+} from './src/app-switcher/index';
 export { ButtonModule } from './src/button/button.module';
 export { CheckboxModule } from './src/checkbox/checkbox.module';
 export { ChipModule } from './src/chip/chip.module';
@@ -9,7 +17,7 @@ export { IconModule } from './src/icon/icon.module';
 export { InputModule } from './src/input/input.module';
 export { LabelModule } from './src/label/label.module';
 export { ListModule } from './src/list/list.module';
-export { ModalModule } from './src/modal/modal.module';
+export { ModalModule, ModalContentType, ModalOptions, ModalSize } from './src/modal/index';
 export { NavbarModule } from './src/navbar/navbar.module';
 export { PipesModule } from './src/pipes/pipes.module';
 export { PopoverModule } from './src/popover/popover.module';
