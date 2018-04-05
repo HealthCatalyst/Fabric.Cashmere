@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, QueryList, ContentChildren } from '@angular/core';
-import { NavbarMenuComponent } from './navbar-menu/navbar-menu.component';
+import { NavbarMobileMenuComponent } from './navbar-mobile-menu/navbar-mobile-menu.component';
 
 @Component({
     selector: 'hc-navbar',
@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
 
     @Input() fixedTop: boolean = false;
 
-    @ContentChildren(NavbarMenuComponent) mobileMenu: QueryList <NavbarMenuComponent>;
+    @ContentChildren(NavbarMobileMenuComponent) mobileMenu: QueryList <NavbarMobileMenuComponent>;
 
     menuOpen: boolean = false;
 

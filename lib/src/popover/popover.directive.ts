@@ -52,7 +52,7 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
 
     @Input() popperTimeoutAfterShow: number = 0;
 
-    @Input() popperBoundaries: string;
+    @Input() popperBoundaries: string = 'body';
 
     @Input() popperShowOnStart: boolean;
 
