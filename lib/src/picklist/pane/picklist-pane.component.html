@@ -1,8 +1,8 @@
 ﻿<div class="hc-picklist-pane">
     <div class="picklist-controls">
-        <div class="hc-search icon-search">
-            <input #search (keyup)="onSearchKeyup()" [(ngModel)]="searchTerm" type="text" [placeholder]="searchPlaceholderString">
-            <!-- <ppr-clear-search-btn [searchEl]="search"></ppr-clear-search-btn> -->
+        <div hcInputIcon>
+            <input hc-input (keyup)="onSearchKeyup()" [(ngModel)]="searchTerm" type="text" [placeholder]="searchPlaceholderString" />
+            <hc-icon icon-sm fontSet="fa" fontIcon="fa-search"></hc-icon>
         </div>
         <div class="flex-space-between">
             <div class="picklist-stats">
