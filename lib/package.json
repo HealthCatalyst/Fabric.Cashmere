@@ -1,7 +1,7 @@
 {
     "$schema": "./node_modules/ng-packagr/package.schema.json",
     "name": "@healthcatalyst/cashmere",
-    "version": "0.0.4",
+    "version": "0.0.6",
     "license": "Apache-2.0",
     "description": "Reusable Health Catalyst Components",
     "main": "./bundles/cashmere.umd.js",
