@@ -9,6 +9,7 @@
     border: 1.5px solid $gray-300;
     font-family: inherit;
     padding: 0 12px;
+    width: 100%;
 }
 
 .hc-input:disabled {
@@ -20,11 +21,16 @@
 
 .error-highlight { border: 2px solid $red; }
 
-.input-icon input { padding-right: 40px; }
+.input-icon {
+    position: relative;
+    input { padding-right: 40px; }
+}
 
 .input-icon hc-icon {
     color: $gray-400;
-    position: relative;
-    right: 35px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
     pointer-events: none;
 }
