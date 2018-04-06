@@ -1,0 +1,80 @@
+@import '../sass/cashmere';
+$pane-header-height: 30px;
+
+.hc-picklist {
+    height: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: stretch;
+    overflow: hidden;
+    background-color: $white;
+
+    .pane {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+
+        .pane-header {
+            flex: 0 0 $pane-header-height;
+            h2 {
+                font-size: 16px;
+                font-weight: bold;
+                margin: 5px 0 8px;
+            }
+
+            ul {
+                width: 240px;
+                font-size: 13px;
+                display: flex;
+                justify-content: flex-end;
+
+                li a {
+                    height: 100%;
+                    padding: 5px 0 0;
+                    flex: 0 0 auto;
+                }
+            }
+        }
+
+        hc-selectbox {
+            display: block;
+            flex: 1 1 auto;
+            height: calc(100% - #{$pane-header-height});
+        }
+
+        hc-selectbox.hide {
+            display: none;
+        }
+    }
+
+    .move-btns {
+        padding-top: 100px;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+
+        // prevents a slight jiggle when animating carets on the valueset options
+        transform-style: preserve-3d;
+        transform: translate3d(0,0,0);
+
+        .hc-button {
+            min-width: 0;
+            padding: 0;
+            width: 30px;
+            height: 60px;
+            margin-top: 12px;
+            color: $white;
+
+            .icon {
+                position: relative;
+                left: -4px;
+            }
+
+            &[disabled], &[disabled]:hover {
+                background-color: $gray-400;
+                border-color: $gray-400;
+            }
+        }
+    }
+}

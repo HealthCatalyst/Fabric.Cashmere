@@ -1,0 +1,225 @@
+﻿@import '../sass/cashmere';
+
+.hc-picklist-pane {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    background-color: $white;
+
+    .picklist-controls {
+        flex: 0 0 auto;
+        display: flex;
+        flex-flow: column;
+        font-size: 12px;
+        background-color: $white;
+        
+
+        .picklist-stats {
+            font-style: italic;
+        }
+
+        .ppr-search {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .second-row-controls {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .flex-space-between {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            margin-left: 10px;
+
+            &.btn-text-link {
+                font-size: 12px;
+                color: $blue;
+                background: transparent;
+                border: none;
+                padding: 0;
+                text-align: left;
+
+                &:active {
+                    outline: none;
+                    box-shadow: none;
+                }
+
+                &:hover {
+                    text-decoration: underline;
+                    color: darken($blue, 5%);
+                }
+
+                &:active {
+                    text-decoration: underline;
+                    color: darken($blue, 10%);
+                }
+
+                &[disabled] {
+                    text-decoration: none;
+                    opacity: 1;
+                    color: $slate-gray-300;
+                    cursor: default;
+                }
+            }
+        }
+    }
+    
+    .loading-list {
+        height: 100%;
+        border: 1px solid $slate-gray-200;
+    }
+
+    .list-container {
+        flex: 1 1 300px;
+        border: 1px solid $slate-gray-200;
+        overflow-y: scroll;
+
+        table {
+            .selected {
+                background-color: $azure;
+                border-color: $azure;
+                color: $white;
+            }
+
+            .value-option-row {
+                font-size: 13px;
+                font-weight: normal;
+                line-height: 1.1;
+                border-bottom: 1px solid darken($slate-gray-100, 5%);
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none;
+                cursor: default;
+            }
+
+            .select-all-matches-row {
+                text-align: center;
+                padding: 10px 15px;
+                background-color: lighten($yellow-orange, 30%);
+                border-color: lighten($yellow-orange, 50%);
+                color: darken($yellow-orange, 30%);
+            }
+
+            .load-more-row {
+                height: 36px;
+                padding: 10px 5px;
+                font-size: 12px;
+
+                td { padding: 8px; }
+            }
+
+            th {
+                padding: 3px 10px;
+                background-color: darken($slate-gray-100, 5%);
+                font-weight: 400;
+                font-style: italic;
+                border-top: 1px solid darken($slate-gray-100, 10%);
+                border-bottom: 1px solid darken($slate-gray-100, 10%);
+                font-size: 12px;
+            }
+
+            tr {
+                td {
+                    padding: 5px 15px;
+                    border-bottom: none;
+
+                    &.col-code {
+                        padding-right: 0;
+                        word-break: normal;
+                        width: 20%;
+                    }
+
+                    &.col-title {
+                        padding-left: 10px
+                    }
+                }
+
+                &.empty-table-row {
+                    height: 100%;
+                    min-height: 0;
+                    display: flex;
+                    background-color: $white;
+                    border-bottom: none;
+
+                    &:hover { background-color: $white; }
+                }
+            }
+
+            &.empty-table {
+                height: 100%;
+                tbody { height: 100% }
+            }
+
+            &.valueset-table {
+                // may be able to remove this block display as the design evolves
+                tr, td, th { display: block; width: 100%; }
+            }
+
+            .valueset-option {
+                .valueset-value-toggle {
+                    cursor: pointer;
+                    color: $blue;
+                    transform: color 0.2s;
+                    &:hover { color: darken($blue, 20%); }
+
+                    .vs-folder {
+                        position: relative;
+                        top: 2px;
+                        left :-2px;
+                        font-size: 16px;
+                        
+                    }
+
+                    .values-caret {
+                        &:before {
+                            display: inline-block;
+                            transform: rotate(180deg);
+                            transition: transform .2s;
+                            font-size: 9px;
+                            position: relative;
+                            top: -2px;
+                        }
+    
+                        &.showing-values:before {
+                            transform: rotate(270deg);
+                        }
+                    }
+                }
+
+                &.selected {
+                    .values-caret, .vs-folder { color: $white; }
+                    ul { background-color: $azure; }
+                }
+
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 10px 0 20px 0;
+                    border: 1px solid darken($slate-gray-100, 8%);
+                    border-radius: 3px;
+                    background-color: $white;
+
+                    li {
+                        padding: 7px 12px;
+                        border-top: 1px solid darken($slate-gray-100, 5%);
+                        border-bottom: none;
+                        &.first-child { border-top: none; }
+
+                        &.dots-loader {
+                            &:before { content: ''; }
+                            padding: 10px 0;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+<div class="demo-content">
+    <h1>Picklist</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab tabTitle="Overview">
+
+    <hc-tile>
+        <h5>Picklist</h5>
+        <p>Pretty cool component I guess.</p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Example</h5>
+        <hc-picklist [model]="picklistModel"></hc-picklist>
+    </hc-tile>
+
+    </hc-tab>
+    <hc-tab tabTitle="Documentation">
+        <!-- <div [hcMarkdown]="document"></div> -->
+        Nothing here yet.
+    </hc-tab>
+    </hc-tab-set>
+</div>

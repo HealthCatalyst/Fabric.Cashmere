@@ -1,0 +1,44 @@
+<div class="hc-picklist">
+    <div class="pane">
+        <div class="pane-header flex-space-between">
+            <h2>Available</h2>
+            <ul *ngIf="picklistModel.allowValuesets" class="tabs">
+                <li> <a title="Search for Value Sets"
+                        (click)="setActivePane('valueSets')"
+                        [ngClass]="{'active': this.available.valueSetList.isActive}">Value Sets</a>
+                </li>
+                <li> <a title="Search for Values"
+                    (click)="setActivePane('values')"
+                    [ngClass]="{'active': this.available.valueList.isActive}">Values</a>
+                </li>
+            </ul>
+        </div>
+        <hc-picklist-pane #availableList
+            emptyMsg="No options available."
+            (moveSelectedItems)="moveSelectedItems($event);">
+        </hc-picklist-pane>
+    </div>
+
+    <div class="move-btns">
+        <button hc-button color="primary-alt" type="button" name="addBtn"
+                (click)="moveSelectedItems({source: available, destination: confirmed});"
+                [disabled]="leftToRightMoveBtnIsDisabled">
+            <span class="icon icon-arrow-right"></span>
+        </button>
+        <button hc-button color="primary-alt" type="button" name="removeBtn"
+                (click)="moveSelectedItems({source: confirmed, destination: available});"
+                [disabled]="!confirmed.isAnySelected()">
+            <span class="icon icon-arrow-left"></span>
+        </button>
+    </div>
+
+    <div class="pane">
+        <div class="pane-header flex-space-between">
+            <h2>Selected</h2>
+        </div>
+        <hc-picklist-pane #confirmedList
+            emptyMsg="No options selected."
+            (moveSelectedItems)="moveSelectedItems($event);">
+        </hc-picklist-pane>
+    </div>
+</div>
