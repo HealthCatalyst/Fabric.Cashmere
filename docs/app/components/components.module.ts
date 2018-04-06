@@ -16,8 +16,10 @@ import { ComponentsComponent } from './components.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
 import { routes } from './components-routes';
 import { NavbarModule } from '../../../lib/src/navbar/navbar.module';
+import { PickListModule } from '../../../lib/src/picklist/picklist.module';
 import { PopoverModule } from '../../../lib/src/popover/popover.module';
 import { NavbarDemoComponent } from './navbar/navbar-demo.component';
+import { PickListDemoComponent } from './picklist/picklist-demo.component';
 import { PopoverDemoComponent } from './popover/popover-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 import { CheckboxModule } from '../../../lib/src/checkbox/checkbox.module';
@@ -60,6 +62,7 @@ import { SharedModule } from '../shared/shared.module';
         BrowserModule,
         ButtonModule,
         NavbarModule,
+        PickListModule,
         PopoverModule,
         FormsModule,
         CheckboxModule,
@@ -92,6 +95,7 @@ import { SharedModule } from '../shared/shared.module';
         HomeComponent,
         ButtonDemoComponent,
         NavbarDemoComponent,
+        PickListDemoComponent,
         PopoverDemoComponent,
         CheckboxDemoComponent,
         RadioButtonDemoComponent,
