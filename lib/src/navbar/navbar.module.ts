@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar.component';
 import { NavbarLinkComponent } from './navbar-link/navbar-link.component';
 import { NavbarIconComponent } from './navbar-icon/navbar-icon.component';
-import { NavbarMenuComponent } from './navbar-menu/navbar-menu.component';
+import { NavbarMobileMenuComponent } from './navbar-mobile-menu/navbar-mobile-menu.component';
 import { RouterModule } from '@angular/router';
 import { IconModule } from '../icon/icon.module';
 
@@ -13,8 +13,8 @@ import { IconModule } from '../icon/icon.module';
         RouterModule,
         IconModule
     ],
-    declarations: [NavbarComponent, NavbarLinkComponent, NavbarIconComponent, NavbarMenuComponent],
-    exports: [NavbarComponent, NavbarLinkComponent, NavbarIconComponent, NavbarMenuComponent]
+    declarations: [NavbarComponent, NavbarLinkComponent, NavbarIconComponent, NavbarMobileMenuComponent],
+    exports: [NavbarComponent, NavbarLinkComponent, NavbarIconComponent, NavbarMobileMenuComponent]
 })
 export class NavbarModule {
 }

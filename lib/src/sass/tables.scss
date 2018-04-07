@@ -15,7 +15,8 @@ $tbody-font-size: 15px !default;
 $tbody-font-color: $text !default;
 $row-color: $white !default;
 $row-color-alt: $slate-gray-100 !default;
-$row-color-hover: tint($primary-brand, 75%) !default;
+$row-color-hover: shade($slate-gray-100, 5%) !default;
+$row-color-action-hover: tint($primary-brand, 75%) !default;
 $row-color-selected: $azure !default;
 $row-color-selected-hover: tint($azure, 20%) !default;
 $row-selected-font-color: $white;
@@ -88,6 +89,25 @@ table.hc-table {
         td, th { padding: $cell-padding-condensed; font-size: $table-condensed-font-size;}
     }
 
+    // Actionable table/row
+    &.hc-action-table {
+        tbody tr:not(.empty-table-row) {
+            &:hover {
+                background-color: $row-color-action-hover;
+                cursor: pointer;
+            }
+            &.hc-row-selected:hover { background-color: $row-color-selected-hover;}
+        }
+    }
+
+    tbody tr.hc-action-row:not(.empty-table-row) {
+        &:hover {
+            background-color: $row-color-action-hover;
+            cursor: pointer;
+        }
+        &.hc-row-selected:hover { background-color: $row-color-selected-hover;}
+    }
+
     // Sorting
     th.hc-col-sortable, th.hc-col-sortable-left {
         position: relative;
@@ -95,7 +115,7 @@ table.hc-table {
         padding-right: 35px;
 
         &:hover {
-            background-color: $row-color-hover;
+            background-color: $row-color-action-hover;
         }
 
         //TODO: redo the guts of these icons when we roll our own icon font
