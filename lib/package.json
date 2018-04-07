@@ -4,6 +4,10 @@
     "version": "0.0.4",
     "license": "Apache-2.0",
     "description": "Reusable Health Catalyst Components",
+    "repository": {
+        "type": "Git",
+        "url": "https://github.com/HealthCatalyst/Fabric.Cashmere"
+    },
     "main": "./bundles/cashmere.umd.js",
     "module": "./esm5/cashmere.js",
     "es2015": "./esm2015/cashmere.js",

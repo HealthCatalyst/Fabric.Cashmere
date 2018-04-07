@@ -1,36 +1,15 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
     selector: 'hc-pagination',
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
-    private _pageNumber: number | null = null;
+export class PaginationComponent implements OnChanges {
     private _totalPages: number | null | undefined = null;
+    private _inputPageNumber: number | null = null;
+    private _pageNumber: number | null = null;
 
-    /**
-     * The current page number (one-based)
-     */
-    @Input()
-    get pageNumber(): number | null {
-        return this._pageNumber;
-    }
-    set pageNumber(value: number | null) {
-        if (!!this.totalPages) {
-            if (typeof value !== 'number' || !value || value < 1) {
-                value = 1;
-            }
-            if (value > this.totalPages) {
-                value = this.totalPages;
-            }
-        } else {
-            value = null;
-        }
-
-        this._pageNumber = value;
-        this.pageNumberChanged.emit(value);
-    }
     /**
      * The total pages possible to navigate to
      */
@@ -43,17 +22,72 @@ export class PaginationComponent implements OnInit {
             value = null;
         }
         this._totalPages = value;
-        this.pageNumber = 1;
     }
+    /**
+     * The current page number (one-based)
+     */
+    @Input('pageNumber')
+    get inputPageNumber(): number | null {
+        return this._inputPageNumber;
+    }
+    set inputPageNumber(value: number | null) {
+        this._inputPageNumber = value;
+        this.pageNumberChange.emit(value);
+        this._pageNumber = this.sanitize(value);
+    }
+    get pageNumber() {
+        return this._pageNumber;
+    }
+    set pageNumber(value: number | null) {
+        this._pageNumber = value;
+        if (this.inputPageNumber !== value) {
+            this.inputPageNumber = value;
+        }
+    }
+
+    private sanitize(pageNumber: any): number | null {
+        /*
+         * Validate current page, making sure it is in the valid range.
+         * values to large are set to the last page, while all other
+         * invalid values are set to 1.  If there are no pages there is
+         * also no current page.
+         */
+        if (!!this.totalPages) {
+            if (typeof pageNumber !== 'number' || isNaN(pageNumber) || !pageNumber || pageNumber < 1) {
+                pageNumber = 1;
+            }
+            if (pageNumber > this.totalPages) {
+                pageNumber = this.totalPages;
+            }
+        } else {
+            pageNumber = null;
+        }
+        return pageNumber;
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes.totalPages && !changes.inputPageNumber) {
+            /*
+             * when total pages is changed the page number is reset to 1
+             */
+            this._pageNumber = 1;
+        } else if (changes.inputPageNumber) {
+            /*
+             * Validate current page, making sure it is in the valid range.
+             * values to large are set to the last page, while all other
+             * invalid values are set to 1.  If there are no pages there is
+             * also no current page.
+             */
+            let value = changes.inputPageNumber.currentValue;
+            this._pageNumber = this.sanitize(value);
+        }
+    }
+
     /**
      * Event for when page number changes
      */
     @Output()
-    readonly pageNumberChanged = new EventEmitter<number | null>();
-
-    constructor() { }
-
-    ngOnInit(): void { }
+    readonly pageNumberChange = new EventEmitter<number | null>();
 
     get isFirstPage() {
         return this.pageNumber === 1;
@@ -140,6 +174,9 @@ export class PaginationComponent implements OnInit {
     }
 
     previousPage() {
+        if (this.isFirstPage) {
+            return;
+        }
         this.goToPage((this.pageNumber || 1) - 1);
     }
 
@@ -148,6 +185,9 @@ export class PaginationComponent implements OnInit {
     }
 
     nextPage() {
+        if (this.isLastPage) {
+            return;
+        }
         this.goToPage((this.pageNumber || 1) + 1);
     }
 }

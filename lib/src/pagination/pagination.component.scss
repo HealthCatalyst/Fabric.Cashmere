@@ -1,7 +1,21 @@
 @import 'mixins';
+@import 'colors';
 
 :host {
     display: inline-flex;
+
+    button {
+        border: solid 2px $gray-200;
+        color: $blue;
+        font-weight: bold;
+
+        &.currentPage {
+            background-color: $blue;
+            color: white;
+        }
+
+        &:focus { outline: none; }
+    }
 
     .hc-left-button {
         margin-right: 0;
@@ -12,8 +26,9 @@
 
     .hc-right-button {
         margin-right: 0;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-left-width: 0;
         min-width: unset;
     }
 
@@ -23,6 +38,7 @@
         border-top-right-radius: 0;
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
+        border-left-width: 0;
         min-width: unset;
     }
 
@@ -31,6 +47,10 @@
     }
     .collapsed-page-button {
         display: none;
+    }
+
+    button.hc-inner-button hc-icon {
+        margin-top: 7px;
     }
 }
 
