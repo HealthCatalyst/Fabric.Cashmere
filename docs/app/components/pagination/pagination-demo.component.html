@@ -25,10 +25,11 @@
                 <input hc-input type="number" [(ngModel)]="currentPage" />
             </div>
         </div>
-        <div>
-            <hc-pagination [totalPages]="totalPages" [(pageNumber)]="currentPage"></hc-pagination>
-        </div>
     </hc-tile>
+
+    <div>
+        <hc-pagination [totalPages]="totalPages" [(pageNumber)]="currentPage"></hc-pagination>
+    </div>
 
     </hc-tab>
     <hc-tab tabTitle="Documentation">

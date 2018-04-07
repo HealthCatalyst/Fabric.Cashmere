@@ -6,12 +6,23 @@
 
     button {
         border: solid 2px $gray-200;
-        color: $blue;
+        background-color: $white;
+        color: $primary-brand;
         font-weight: bold;
 
+        hc-icon {
+            font-size: 13px !important;
+            height: 12px !important;
+            width: 13px !important;
+        }
+
+        &:hover {
+            color: darken($primary-brand, 10%);
+        }
+
         &.currentPage {
-            background-color: $blue;
-            color: white;
+            background-color: $primary-brand;
+            color: $white;
         }
 
         &:focus { outline: none; }
