@@ -15,7 +15,12 @@
         <hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" [homeUri]="undefined" [fixedTop]="false">
             <hc-app-switcher></hc-app-switcher>
             <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
-            <hc-navbar-link [active]="false" uri="undefined" linkText="Buttons"></hc-navbar-link>
+            <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
+            <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
+            <hc-navbar-link [active]="false" uri="undefined" linkText="Pediatric"></hc-navbar-link>
+            <hc-navbar-link [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
+            <hc-navbar-link [active]="false" uri="undefined" linkText="Rehabilition"></hc-navbar-link>
+            <hc-navbar-link [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
             <hc-navbar-icon>
                 <hc-icon fontSet="fa" fontIcon="fa-search"></hc-icon>
             </hc-navbar-icon>
@@ -38,6 +43,17 @@
                 </li>
             </ul>
         </hc-popover-content>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Responsive Behavior</h5>
+        <p>The navbar is fully responsive and collapses in series of steps.  At desktop width, the navbar will check
+            to see if all <code>hc-navbar-links</code> can fit on the screen.  If not, it will reduce the right-side padding on the
+            logo.  If there still isn't enough space, it will begin collapsing <code>hc-navbar-links</code> into a "More" menu.  Once
+            the navbar reaches its first responsive breakpoint (tablet size) it will remove all <code>hc-navbar-links</code> and
+            <code>hc-navbar-icons</code> and insert them into a mobile menu. At the second breakpoint (phone size) the <code>hc-app-switcher</code> is
+            removed as well, leaving only the logo and the mobile menu.
+        </p>
     </hc-tile>
 
     </hc-tab>

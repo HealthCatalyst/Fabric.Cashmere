@@ -63,6 +63,8 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &.logo-condense { padding-right: 25px !important; }
     }
 
     .app {
@@ -217,5 +219,12 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     @include media-breakpoint-down(sm) {
         .navbar-brand { display: none; }
         .navbar-app { padding: 0 0 0 5%; }
+    }
+}
+
+.more-popover a {
+    &.active {
+        color: $text;
+        cursor: default;
     }
 }

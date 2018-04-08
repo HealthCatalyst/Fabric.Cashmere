@@ -1,4 +1,5 @@
 import { IconModule } from './../icon/icon.module';
+import { PopoverModule } from '../popover/popover.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavbarComponent } from './navbar.component';
@@ -10,7 +11,7 @@ describe('NavbarComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [RouterTestingModule, IconModule],
+            imports: [RouterTestingModule, IconModule, PopoverModule],
             declarations: [NavbarComponent]
         })
             .compileComponents();

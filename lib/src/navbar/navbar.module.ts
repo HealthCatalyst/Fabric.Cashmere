@@ -6,12 +6,14 @@ import { NavbarIconComponent } from './navbar-icon/navbar-icon.component';
 import { NavbarMobileMenuComponent } from './navbar-mobile-menu/navbar-mobile-menu.component';
 import { RouterModule } from '@angular/router';
 import { IconModule } from '../icon/icon.module';
+import { PopoverModule } from '../popover/popover.module';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
-        IconModule
+        IconModule,
+        PopoverModule
     ],
     declarations: [NavbarComponent, NavbarLinkComponent, NavbarIconComponent, NavbarMobileMenuComponent],
     exports: [NavbarComponent, NavbarLinkComponent, NavbarIconComponent, NavbarMobileMenuComponent]

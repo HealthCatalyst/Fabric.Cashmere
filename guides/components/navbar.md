@@ -72,7 +72,7 @@ _*uris are purposely left undefined in this example code_
 :::
 
 
-::: 
+:::
 ##### Icon Files
 
 [App Icon File](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/docs/assets/CashmereAppLogo.svg) - Flexo font is used to generate  for `appIcon="./assets/CashmereAppLogo.svg"`
@@ -116,13 +116,13 @@ body {
 :::
 
 :::
-##### Responsive Menu
+##### Mobile Menu
 
 Unlike some responsive menus that automatically pull content from the navbar into them, we intentionally left ours configurable so that developers can determine what should or shouldn't be included on smaller screens. Use the `appSwitcher` property to set whether the "View all applications" button is included at the bottom of the menu. `hc-list` components should be used for the menu options with `<hr>` separators in between. See the demo code at the top of this page for an example of how to define a responsive menu for `hc-navbar`.
 :::
 
 :::
-##### Navbar Component 
+##### Navbar Component
 
 | Property | Type | Description |
 | - | - | - |
@@ -134,7 +134,7 @@ Unlike some responsive menus that automatically pull content from the navbar int
 
 <br><br>
 
-##### Children 
+##### Children
 
 - `<hc-app-switcher>` - Enables app switcher when the app logo is clicked
 - `<hc-navbar-link>` - Primary navigation links

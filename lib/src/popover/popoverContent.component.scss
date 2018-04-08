@@ -107,7 +107,7 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
     & > li {
         display: block;
         padding: 10px 0;
-        min-width: 200px;
+        min-width: 150px;
         list-style: none;
         & > a, button {
             text-decoration: none;

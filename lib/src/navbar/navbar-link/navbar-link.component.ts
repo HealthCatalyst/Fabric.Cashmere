@@ -12,7 +12,7 @@ export class NavbarLinkComponent {
     @Input() exact: boolean = false;
     hidden: boolean = false;
 
-    constructor( private el:ElementRef, private ref: ChangeDetectorRef ) {
+    constructor( private el: ElementRef, private ref: ChangeDetectorRef ) {
     }
 
     hide() { this.hidden = true; this.ref.detectChanges(); }

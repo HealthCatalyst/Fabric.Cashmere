@@ -1,6 +1,8 @@
-import { Component, Input, QueryList, ContentChildren, ElementRef, HostListener, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, QueryList, ContentChildren, ElementRef, HostListener,
+         AfterViewInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { NavbarMobileMenuComponent } from './navbar-mobile-menu/navbar-mobile-menu.component';
 import { NavbarLinkComponent } from './navbar-link/navbar-link.component';
+import { PopoverContentComponent } from '../popover/popoverContent.component';
 
 @Component({
     selector: 'hc-navbar',
@@ -10,65 +12,74 @@ import { NavbarLinkComponent } from './navbar-link/navbar-link.component';
 export class NavbarComponent implements AfterViewInit {
 
     @Input() user: string = '';
-
     @Input() appIcon: string = '';
-
     @Input() brandIcon: string = '';
-
     @Input() homeUri: string = '';
-
     @Input() fixedTop: boolean = false;
 
     @ContentChildren(NavbarMobileMenuComponent) mobileMenu: QueryList <NavbarMobileMenuComponent>;
     @ContentChildren(NavbarLinkComponent) navLinks: QueryList <NavbarLinkComponent>;
+    @ViewChild(PopoverContentComponent) popper: PopoverContentComponent;
 
+    menuOpen: boolean = false;
     linkWidths: Array<number> = [];
-    linksMax = 0;
+    linksMax: number = 0;
     collapse: boolean = false;
+    logoCondense: boolean = false;
+    logoWidth: number = 0;
+    moreList: Array<Object> = [];
 
-    @HostListener('window:resize') navResize()
-    {
-        //If links is zero the page is smaller than the first responsive breakpoint
-        if ( this.el.nativeElement.querySelector('.links').clientWidth > 0 )
-        {
+    @HostListener('window:resize') navResize() {
+        this.popper.hide();
+        this.moreList = [];
+
+        // If links is zero the page is smaller than the first responsive breakpoint
+        if ( this.el.nativeElement.querySelector('.links').clientWidth > 0 ) {
             let navbarWidth: number = this.el.nativeElement.querySelector('.navbar').scrollWidth;
-            let logo: number = this.el.nativeElement.querySelector('.navbar-app').scrollWidth;
             let icons: number = this.el.nativeElement.querySelector('.icon').scrollWidth;
             let more: number = 116;
             let switcher: number = 55;
             let links: number = this.linksMax;
+            if ( this.logoWidth === 0 ) {
+                this.logoWidth = this.el.nativeElement.querySelector('.navbar-app').scrollWidth;
+            }
 
-            console.log( navbarWidth + ", " + switcher + ", " + logo + ", " + links + ", " + icons );
-
-            if ( navbarWidth <= (switcher + logo + links + icons) )
-            {
-                this.collapse = true;
+            if ( navbarWidth <= (switcher + this.logoWidth + links + icons) ) {
+                this.logoCondense = true;
                 let tempArray = this.navLinks.toArray();
                 tempArray.reverse();
 
-                tempArray[0].hide();
-                links -= this.linkWidths[0];
+                if ( navbarWidth <= ( switcher + ( this.logoWidth - 50 ) + links + icons ) ) {
+                    this.collapse = true;
+                    tempArray[0].hide();
+                    links -= this.linkWidths[0];
+                    this.moreList.push( {name: tempArray[0].linkText, uri: tempArray[0].uri} );
 
-                for ( let i = 1; i < tempArray.length; i++ )
-                {
-                    if ( navbarWidth <= (switcher + logo + links + more + icons) ) {
-                        tempArray[i].hide();
-                        links -= this.linkWidths[i];
+                    for ( let i = 1; i < tempArray.length; i++ ) {
+                        if ( navbarWidth <= ( switcher + ( this.logoWidth - 50 ) + links + more + icons ) ) {
+                            tempArray[i].hide();
+                            links -= this.linkWidths[i];
+                            this.moreList.push( {name: tempArray[i].linkText, uri: tempArray[i].uri} );
+                        } else {
+                            tempArray[i].show();
+                        }
                     }
-                    else { tempArray[i].show(); }
+
+                    this.moreList.reverse();
+                } else {
+                    this.collapse = false;
+                    this.navLinks.forEach(t => (t.show()));
                 }
-            }
-            else {
+            } else {
                 this.collapse = false;
+                this.logoCondense = false;
                 this.navLinks.forEach(t => (t.show()));
             }
             this.ref.detectChanges();
         }
     }
 
-    menuOpen: boolean = false;
-
-    constructor( private el:ElementRef, private ref: ChangeDetectorRef ) {
+    constructor( private el: ElementRef, private ref: ChangeDetectorRef ) {
     }
 
     ngAfterViewInit() {
@@ -107,5 +118,9 @@ export class NavbarComponent implements AfterViewInit {
 
     get mobileMenuIcon(): string {
         return this.menuOpen ? 'fa-times' : 'fa-bars';
+    }
+
+    moreClick( ) {
+        this.popper.hide();
     }
 }
