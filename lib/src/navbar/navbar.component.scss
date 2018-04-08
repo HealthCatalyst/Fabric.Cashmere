@@ -84,8 +84,11 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         padding-left: 0;
         overflow: hidden;
         a { text-decoration: none; }
+        .hidden{ display: none !important; }
+
         .navbar-item {
             padding: 0;
+
             & > hc-icon, & > a > hc-icon, > span {
                 height: 53px !important;
                 width: 53px !important;
@@ -144,6 +147,46 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
                     margin-bottom: -1px;
                 }
             }
+        }
+    }
+
+    .more-links {
+        display: inline-block;
+        white-space: nowrap;
+        cursor: pointer;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 18px 30px 0 30px;
+        text-align: center;
+        color: $navbar-text-inactive;
+        border-bottom: 5px solid transparent;
+        transition: background-color 0.25s;
+
+        hc-icon {
+            margin-left: 5px;
+            vertical-align: top;
+            margin-top: 1px;
+            font-size: 13px !important;
+        }
+
+        &:hover:not(.active), &.inactive:hover {
+            outline: none;
+            color: $navbar-text;
+            background-color: darken($navbar-color, 5%);
+        }
+
+        // This piece of code allows to use the bold styling from the style guide, while
+        // avoiding the css jitter that normally would accompany such an effect
+        // https://stackoverflow.com/questions/556153/inline-elements-shifting-when-made-bold-on-hover
+        &:before {
+            display: block;
+            content: attr(title);
+            font-weight: 600;
+            height: 1px;
+            color: transparent;
+            overflow: hidden;
+            visibility: hidden;
+            margin-bottom: -1px;
         }
     }
 

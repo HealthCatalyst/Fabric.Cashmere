@@ -15,7 +15,11 @@
     </div>
     <div class="links">
         <ng-content select="hc-navbar-link"></ng-content>
+        <div class="more-links" title="More" [ngClass]="{'hidden': !collapse}">
+            More<hc-icon fontSet="fa" fontIcon="fa-chevron-down" icon-sm></hc-icon>
+        </div>
     </div>
+
     <div class="icon links">
         <ng-content select="hc-navbar-icon"></ng-content>
         <div class="navbar-item" *ngIf="user">

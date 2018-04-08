@@ -12,10 +12,10 @@
 
     <hc-tile>
         <h5>Example</h5>
-        <hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" user="Christine K." [homeUri]="undefined" [fixedTop]="false">
+        <hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" [homeUri]="undefined" [fixedTop]="false">
             <hc-app-switcher></hc-app-switcher>
-            <hc-navbar-link [active]="true" [uri]="undefined">Home</hc-navbar-link>
-            <hc-navbar-link [active]="false" [uri]="undefined">Buttons</hc-navbar-link>
+            <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
+            <hc-navbar-link [active]="false" uri="undefined" linkText="Buttons"></hc-navbar-link>
             <hc-navbar-icon>
                 <hc-icon fontSet="fa" fontIcon="fa-search"></hc-icon>
             </hc-navbar-icon>
