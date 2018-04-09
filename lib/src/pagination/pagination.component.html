@@ -1,6 +1,6 @@
 <button hc-button color="secondary" class="hc-left-button" (click)="previousPage()" [disabled]="!totalPages || isFirstPage">
     <hc-icon fontSet="fa" fontIcon="fa-chevron-left"></hc-icon>&nbsp;
-    <span>prev</span>
+    <span>PREV</span>
 </button>
 <!-- page navigation buttons to appear normally -->
 <button hc-button color="secondary"
@@ -23,6 +23,6 @@
     <hc-icon *ngIf="!page" fontSet="fa" fontIcon="fa-ellipsis-h"></hc-icon>
 </button>
 <button hc-button color="secondary" class="hc-right-button" (click)="nextPage()" [disabled]="!totalPages || isLastPage">
-    <span>next</span>&nbsp;
+    <span>NEXT</span>&nbsp;
     <hc-icon fontSet="fa" fontIcon="fa-chevron-right"></hc-icon>
 </button>
