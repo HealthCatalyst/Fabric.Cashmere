@@ -18,7 +18,7 @@ export class PickListDemoComponent implements OnInit {
 
     public picklistModel: PicklistModel = {
         codeIsSignificant: true,
-        allowValuesets: false,
+        allowValuesets: true,
         selectedOptions: new PickListOptions(),
         optionsSource: new PicklistOptionsSource()
     };

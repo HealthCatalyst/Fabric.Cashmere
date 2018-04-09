@@ -15,7 +15,7 @@ export class PicklistFilterService {
     public searchTerm = '';
     public get searchTokens(): string[] { return this.searchTerm.toLocaleLowerCase().replace(/\s+/g, ' ').split(' '); }
     public valueListFilterFields = ['title'];
-    public valueSetListFilterFields = ['valueSetName'];
+    public valueSetListFilterFields = ['title'];
 
     constructor(private workTracker: WorkTrackerService, private remoteFilterService: PicklistFilterRemoteService) {}
 
@@ -95,7 +95,7 @@ export class PicklistFilterService {
 
         // specify the sort functions
         this.valueList.sortFunc = this.localeSorter((x) => x.code);
-        this.valueSetList.sortFunc = this.localeSorter((x) => x.option.valueSetName);
+        this.valueSetList.sortFunc = this.localeSorter((x) => x.code);
     }
 
     private localeSorter(getProp: (x) => string): (a, b) => number {

@@ -1,8 +1,9 @@
-@import '../sass/cashmere';
+@import '../sass/colors';
 $pane-header-height: 30px;
 
 .hc-picklist {
     height: 100%;
+    min-width: 650px;
     display: flex;
     flex-flow: row;
     justify-content: space-between;
@@ -16,34 +17,29 @@ $pane-header-height: 30px;
         flex-direction: column;
 
         .pane-header {
+            display: flex;
+            justify-content: space-between;
             flex: 0 0 $pane-header-height;
+
+            .hc-tab-bar-horizontal {
+                border-bottom: none;
+                font-size: 13px;
+            }
+
             h2 {
                 font-size: 16px;
                 font-weight: bold;
                 margin: 5px 0 8px;
             }
-
-            ul {
-                width: 240px;
-                font-size: 13px;
-                display: flex;
-                justify-content: flex-end;
-
-                li a {
-                    height: 100%;
-                    padding: 5px 0 0;
-                    flex: 0 0 auto;
-                }
-            }
         }
 
-        hc-selectbox {
+        hc-picklist-pane {
             display: block;
             flex: 1 1 auto;
             height: calc(100% - #{$pane-header-height});
         }
 
-        hc-selectbox.hide {
+        hc-picklist-pane.hide {
             display: none;
         }
     }
@@ -64,16 +60,11 @@ $pane-header-height: 30px;
             width: 30px;
             height: 60px;
             margin-top: 12px;
-            color: $white;
 
-            .icon {
-                position: relative;
-                left: -4px;
-            }
-
+            .hc-icon { color: $white; }
             &[disabled], &[disabled]:hover {
-                background-color: $gray-400;
-                border-color: $gray-400;
+                background-color: $gray-300;
+                border-color: $gray-300;
             }
         }
     }

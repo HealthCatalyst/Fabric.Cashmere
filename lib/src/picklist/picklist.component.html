@@ -1,17 +1,17 @@
 <div class="hc-picklist">
     <div class="pane">
-        <div class="pane-header flex-space-between">
+        <div class="pane-header">
             <h2>Available</h2>
-            <ul *ngIf="picklistModel.allowValuesets" class="tabs">
-                <li> <a title="Search for Value Sets"
+            <div *ngIf="picklistModel.allowValuesets" class="hc-tab-bar-horizontal">
+                <a title="Search for Value Sets"
                         (click)="setActivePane('valueSets')"
+                        class="hc-tab-horizontal"
                         [ngClass]="{'active': this.available.valueSetList.isActive}">Value Sets</a>
-                </li>
-                <li> <a title="Search for Values"
+                <a title="Search for Values"
                     (click)="setActivePane('values')"
+                    class="hc-tab-horizontal"
                     [ngClass]="{'active': this.available.valueList.isActive}">Values</a>
-                </li>
-            </ul>
+            </div>
         </div>
         <hc-picklist-pane #availableList
             emptyMsg="No options available."
@@ -33,7 +33,7 @@
     </div>
 
     <div class="pane">
-        <div class="pane-header flex-space-between">
+        <div class="pane-header">
             <h2>Selected</h2>
         </div>
         <hc-picklist-pane #confirmedList

@@ -1,4 +1,4 @@
-﻿@import '../sass/cashmere';
+﻿@import '../sass/colors';
 
 .hc-picklist-pane {
     height: 100%;
@@ -128,28 +128,18 @@
                     color: $blue;
                     transform: color 0.2s;
                     &:hover { color: darken($blue, 20%); }
-
-                    .vs-folder {
-                        position: relative;
-                        top: 2px;
-                        left :-2px;
-                        font-size: 16px;
-                        
-                    }
+                    .vs-folder { position: relative; left: -3px; }
 
                     .values-caret {
                         &:before {
-                            display: inline-block;
-                            transform: rotate(180deg);
-                            transition: transform .2s;
-                            font-size: 9px;
                             position: relative;
-                            top: -2px;
+                            top: -1px;
+                            display: inline-block;
+                            transition: transform .2s;
+                            font-size: 13px;
                         }
     
-                        &.showing-values:before {
-                            transform: rotate(270deg);
-                        }
+                        &.showing-values:before { transform: rotate(90deg); }
                     }
                 }
 
