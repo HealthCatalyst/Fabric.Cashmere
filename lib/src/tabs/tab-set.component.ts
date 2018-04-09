@@ -11,16 +11,16 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
 
 @Component({
     template: `
-        <div class="{{direction}}-container">
-            <div class="tab-bar-{{direction}}">
+        <div class="hc-{{direction}}-tab-container">
+            <div class="hc-tab-bar-{{direction}}">
                 <div *ngFor="let tab of tabs">
-                    <a *ngIf="routerEnabled" class="tab-{{direction}}"
+                    <a *ngIf="routerEnabled" class="hc-tab-{{direction}}"
                        [routerLink]="tab.routerLink"
                        routerLinkActive="active"
                        (click)="setActive(tab)">
                           {{tab.tabTitle}}
                     </a>
-                    <a *ngIf="!routerEnabled" class="tab-{{direction}}"
+                    <a *ngIf="!routerEnabled" class="hc-tab-{{direction}}"
                        [class.active]="tab.active"
                        (click)="setActive(tab)">
                           {{tab.tabTitle}}
@@ -28,14 +28,14 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
 
                 </div>
             </div>
-            <div class="tab-content-{{direction}}">
+            <div class="hc-tab-content-{{direction}}">
                  <router-outlet *ngIf="routerEnabled"></router-outlet>
                  <ng-content *ngIf="!routerEnabled"></ng-content>
              </div>
         </div>
     `,
     selector: `hc-tab-set`,
-    styleUrls: ['./tab-set.component.scss']
+    styleUrls: ['../sass/_tabs.scss']
 })
 export class TabSetComponent implements AfterContentInit {
     @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
