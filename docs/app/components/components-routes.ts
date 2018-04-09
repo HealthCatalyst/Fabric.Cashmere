@@ -22,6 +22,7 @@ import { ChipDemoComponent } from './chip/chip-demo.component';
 import { InputDemoComponent } from './input/input-demo.component';
 import { ProgressIndicatorDemoComponent } from './progress-indicator/progress-indicator-demo.component';
 import { ModalDemoComponent } from './modal/modal-demo.component';
+import { PaginationDemoComponent } from './pagination/pagination-demo.component';
 
 export const routes: Routes = [
     {
@@ -77,6 +78,11 @@ export const routes: Routes = [
                 path: 'navbar',
                 component: NavbarDemoComponent,
                 data: { title: 'Navbar' }
+            },
+            {
+                path: 'pagination',
+                component: PaginationDemoComponent,
+                data: { title: 'Pagination' }
             },
             {
                 path: 'popover',

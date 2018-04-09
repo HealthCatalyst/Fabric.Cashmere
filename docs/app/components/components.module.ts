@@ -53,6 +53,8 @@ import { InputDemoComponent } from './input/input-demo.component';
 import { LabelModule } from '../../../lib/src/label/label.module';
 import { ProgressIndicatorDemoComponent } from './progress-indicator/progress-indicator-demo.component';
 import { SharedModule } from '../shared/shared.module';
+import { PaginationModule } from '../../../lib/src/pagination/pagination.module';
+import { PaginationDemoComponent } from './pagination/pagination-demo.component';
 
 @NgModule({
     imports: [
@@ -80,6 +82,7 @@ import { SharedModule } from '../shared/shared.module';
         ChipModule,
         InputModule,
         LabelModule,
+        PaginationModule,
         SharedModule,
         RouterModule.forRoot(routes)
     ],
@@ -115,7 +118,8 @@ import { SharedModule } from '../shared/shared.module';
         FilterButtonComponent,
         TypeFormSurveyDemoComponent,
         InputDemoComponent,
-        ModalDemoComponent
+        ModalDemoComponent,
+        PaginationDemoComponent
     ],
     providers: [
         {
