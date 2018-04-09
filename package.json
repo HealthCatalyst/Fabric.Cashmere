@@ -1,11 +1,12 @@
 {
   "name": "@healthcatalyst/cashmere-docs",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "license": "Apache-2.0",
   "description": "Cashmere documentation website",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "test": "ng test",
     "test:unit": "ng test --single-run --code-coverage --no-progress",
     "lint": "tslint -p tsconfig.json",
     "build:lib": "node lib/build.js",
