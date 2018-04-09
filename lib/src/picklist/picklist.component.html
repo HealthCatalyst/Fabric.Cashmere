@@ -23,12 +23,12 @@
         <button hc-button color="primary-alt" type="button" name="addBtn"
                 (click)="moveSelectedItems({source: available, destination: confirmed});"
                 [disabled]="leftToRightMoveBtnIsDisabled">
-            <span class="icon icon-arrow-right"></span>
+            <hc-icon icon-sm fontSet="fa" fontIcon="fa-arrow-right"></hc-icon>
         </button>
         <button hc-button color="primary-alt" type="button" name="removeBtn"
                 (click)="moveSelectedItems({source: confirmed, destination: available});"
                 [disabled]="!confirmed.isAnySelected()">
-            <span class="icon icon-arrow-left"></span>
+            <hc-icon icon-sm fontSet="fa" fontIcon="fa-arrow-left"></hc-icon>
         </button>
     </div>
 

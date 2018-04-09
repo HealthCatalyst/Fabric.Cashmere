@@ -73,10 +73,6 @@ export class PicklistPaneComponent {
                 (serverMatches + this.valueList.options.size > this.selectAllLimit);
     }
 
-    public get searchPlaceholderString(): string {
-        return 'Search' + (!this.valueSetList.isActive ? ' Values' : '') + (!this.valueList.isActive ? ' Value Sets' : '');
-    }
-
     public shouldShowList<T extends SelectListOption>(list: FilterableSelectList<T>): boolean {
         return list.isActive && (list.filteredOptions.length > 0 || list.additionalRemoteOptions > 0);
     }

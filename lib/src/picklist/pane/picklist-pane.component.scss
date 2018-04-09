@@ -12,28 +12,16 @@
         flex-flow: column;
         font-size: 12px;
         background-color: $white;
-        
-
-        .picklist-stats {
-            font-style: italic;
-        }
-
-        .ppr-search {
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
 
         .second-row-controls {
             display: flex;
             justify-content: space-between;
-        }
-
-        .flex-space-between {
-            display: flex;
-            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0 2px;
         }
 
         button {
+            font-family: 'Open Sans', sans-serif;
             margin-left: 10px;
 
             &.btn-text-link {
@@ -43,6 +31,7 @@
                 border: none;
                 padding: 0;
                 text-align: left;
+                cursor: pointer;
 
                 &:active {
                     outline: none;
@@ -78,19 +67,12 @@
         flex: 1 1 300px;
         border: 1px solid $slate-gray-200;
         overflow-y: scroll;
+        position: relative;
 
-        table {
-            .selected {
-                background-color: $azure;
-                border-color: $azure;
-                color: $white;
-            }
-
+        table.hc-table {
             .value-option-row {
-                font-size: 13px;
                 font-weight: normal;
                 line-height: 1.1;
-                border-bottom: 1px solid darken($slate-gray-100, 5%);
                 -webkit-touch-callout: none; /* iOS Safari */
                 -webkit-user-select: none; /* Safari */
                 -moz-user-select: none; /* Firefox */
@@ -101,7 +83,6 @@
 
             .select-all-matches-row {
                 text-align: center;
-                padding: 10px 15px;
                 background-color: lighten($yellow-orange, 30%);
                 border-color: lighten($yellow-orange, 50%);
                 color: darken($yellow-orange, 30%);
@@ -109,14 +90,10 @@
 
             .load-more-row {
                 height: 36px;
-                padding: 10px 5px;
                 font-size: 12px;
-
-                td { padding: 8px; }
             }
 
             th {
-                padding: 3px 10px;
                 background-color: darken($slate-gray-100, 5%);
                 font-weight: 400;
                 font-style: italic;
@@ -125,36 +102,19 @@
                 font-size: 12px;
             }
 
+            tbody {
+                border: 0;
+            }
+
             tr {
                 td {
-                    padding: 5px 15px;
-                    border-bottom: none;
-
                     &.col-code {
-                        padding-right: 0;
                         word-break: normal;
                         width: 20%;
                     }
-
-                    &.col-title {
-                        padding-left: 10px
-                    }
                 }
 
-                &.empty-table-row {
-                    height: 100%;
-                    min-height: 0;
-                    display: flex;
-                    background-color: $white;
-                    border-bottom: none;
-
-                    &:hover { background-color: $white; }
-                }
-            }
-
-            &.empty-table {
-                height: 100%;
-                tbody { height: 100% }
+                
             }
 
             &.valueset-table {
@@ -193,9 +153,8 @@
                     }
                 }
 
-                &.selected {
+                &.hc-row-selected {
                     .values-caret, .vs-folder { color: $white; }
-                    ul { background-color: $azure; }
                 }
 
                 ul {
@@ -220,6 +179,15 @@
                     
                 }
             }
+        }
+
+        .empty-table-msg {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }

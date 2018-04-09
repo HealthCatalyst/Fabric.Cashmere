@@ -97,13 +97,12 @@ a {
     &:active { color: darken($primary-brand, 10%); }
 }
 
-strong {
+strong, .hc-type-bold {
     font-weight: 600;
 }
 
-em {
+em, .hc-type-em {
     color: $gray-500;
-    margin-top: 12px;
     font-style: italic;
 }
 

@@ -3,7 +3,7 @@
 @import "./colors";
 @import "./mixins";
 
-$table-border: 1px solid $slate-gray-200 !default;
+$table-border: 1px solid shade($slate-gray-100, 6%) !default;
 $table-condensed-font-size: 13px;
 $header-border-thick: 2px solid $slate-gray-300 !default;
 $cell-padding: 8px 16px !default;

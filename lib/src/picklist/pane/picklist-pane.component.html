@@ -1,11 +1,11 @@
 ﻿<div class="hc-picklist-pane">
     <div class="picklist-controls">
         <div hcInputIcon>
-            <input hc-input (keyup)="onSearchKeyup()" [(ngModel)]="searchTerm" type="text" [placeholder]="searchPlaceholderString" />
+            <input hc-input (keyup)="onSearchKeyup()" [(ngModel)]="searchTerm" type="text" placeholder="Search" />
             <hc-icon icon-sm fontSet="fa" fontIcon="fa-search"></hc-icon>
         </div>
-        <div class="flex-space-between">
-            <div class="picklist-stats">
+        <div class="second-row-controls">
+            <div class="hc-type-em">
                 Showing {{optionsShowingCount.toLocaleString()}} of {{optionsAvailableCount.toLocaleString()}}
             </div>
             <div>
@@ -22,7 +22,7 @@
     <div class="list-container" #listContainer>
         <!-- Valuesets -->
         <div *ngIf="valueSetList.isActive && (valueSetList.loadingOptions | async)" class="loading-list"><div class="dots-loader"><div class="loader-animate"></div></div></div>
-        <table *ngIf="shouldShowList(valueSetList) && !(valueSetList.loadingOptions | async)" class="table valueset-table">
+        <table *ngIf="shouldShowList(valueSetList) && !(valueSetList.loadingOptions | async)" class="hc-table hc-table-small hc-action-table valueset-table">
             <tbody>
                 <!-- Header, shown when both values and valuesets are sitting in list at same time -->
                 <tr *ngIf="shouldShowList(valueSetList) && shouldShowList(valueList)"><th colspan="2">Value Sets</th></tr>
@@ -32,7 +32,7 @@
                     (mousedown)="preventIEHighlightBug()"
                     (click)="onItemClicked($event, idx, valueSetList, item);"
                     (dblclick)="onItemDoubleClicked($event, valueSetList, item);"
-                    [ngClass]="{selected: item.selected}"
+                    [ngClass]="{'hc-row-selected': item.selected}"
                     class="valueset-option value-option-row"><td>
                         <div>
                             <span class="valueset-value-toggle" (click)="onValuesetCaretClicked($event, item)">
@@ -51,7 +51,7 @@
                                     (click)="onItemClicked($event, idx, item.subValuesSelectList, subItem);"
                                     (dblclick)="onItemDoubleClicked($event, item.subValuesSelectList, subItem);"
                                     class="value-option-row"
-                                    [ngClass]="{selected: subItem.selected}">
+                                    [ngClass]="{'hc-row-selected': subItem.selected}">
                                         <span *ngIf="codeIsSignificant">{{subItem.option.code}}</span>
                                         <span>{{subItem.option.title || "Untitled"}}</span>
                                 </li>
@@ -71,7 +71,7 @@
 
         <!-- Values -->
         <div *ngIf="valueList.isActive && (valueList.loadingOptions | async)" class="loading-list"><div class="dots-loader"><div class="loader-animate"></div></div></div>
-        <table *ngIf="shouldShowList(valueList) && !(valueList.loadingOptions | async)" class="table" [ngClass]="{'no-code-column': !codeIsSignificant}">
+        <table *ngIf="shouldShowList(valueList) && !(valueList.loadingOptions | async)" class="hc-table hc-table-small hc-action-table" [ngClass]="{'no-code-column': !codeIsSignificant}">
             <tbody>
                 <!-- Header, shown when both values and valuesets are sitting in list at same time -->
                 <tr *ngIf="shouldShowList(valueSetList) && shouldShowList(valueList)"><th colspan="2">Individual Values</th></tr>
@@ -79,7 +79,7 @@
                 <!-- Show when user clicked "select all", and there are more options on server, but too many to load in at once -->
                 <tr *ngIf="showTooManyToSelectAllMsg" class="value-option-row select-all-matches-row">
                     <td colspan="2">
-                        <span class="prb-type-bold">{{valueList.selectedOptions.size}} Selected.</span>
+                        <span class="hc-type-bold">{{valueList.selectedOptions.size}} Selected.</span>
                         <span>Too many results to select all.</span>
                     </td>
                 </tr>
@@ -90,7 +90,7 @@
                     (click)="onItemClicked($event, idx, valueList, item);"
                     (dblclick)="onItemDoubleClicked($event, valueList, item);"
                     class="value-option-row"
-                    [ngClass]="{selected: item.selected}">
+                    [ngClass]="{'hc-row-selected': item.selected}">
                         <td *ngIf="codeIsSignificant" class="col-code">{{item.option.code}}</td>
                         <td class="col-title">{{item.option.title || "Untitled"}}</td>
                 </tr>
@@ -106,12 +106,9 @@
         </table>
 
         <!-- Empty table -->
-        <table *ngIf="!shouldShowList(valueSetList) && !shouldShowList(valueList) && !(valueList.loadingOptions | async) && !(valueSetList.loadingOptions | async)"
-                class="table empty-table">
-            <tr class="empty-table-row prb-type-empty-msg">
+        <div class="empty-table-msg hc-type-em" *ngIf="!shouldShowList(valueSetList) && !shouldShowList(valueList) && !(valueList.loadingOptions | async) && !(valueSetList.loadingOptions | async)">
                 <span *ngIf="listIsFilteredToEmpty(valueList) || listIsFilteredToEmpty(valueSetList); else emptyMessage">Nothing matches your search.</span>
-                <ng-template #emptyMessage>{{emptyMsg}}</ng-template>
-            </tr>
-        </table>
+                <span><ng-template #emptyMessage>{{emptyMsg}}</ng-template></span>
+        </div>
     </div>
 </div>
