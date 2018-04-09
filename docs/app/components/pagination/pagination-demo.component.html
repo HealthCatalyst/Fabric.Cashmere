@@ -1,0 +1,39 @@
+<div class="demo-content">
+    <h1>Pagination</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab tabTitle="Overview">
+
+    <hc-tile>
+        <h5>About</h5>
+        <p>
+            The pagination control enables the user to navigate across paged content.  Although commonly used with tables and data grids,
+            this control may be used any place where paged data is used.
+        </p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Example</h5>
+        <div style="margin-bottom: 10px;">
+            <div style="margin-bottom: 5px;">
+                <label hc-label>Total pages</label>
+                <input hc-input type="number" [(ngModel)]="totalPages" />
+            </div>
+            <div>
+                <label hc-label>Current page</label>
+                <input hc-input type="number" [(ngModel)]="currentPage" />
+            </div>
+        </div>
+    </hc-tile>
+
+    <div>
+        <hc-pagination [totalPages]="totalPages" [(pageNumber)]="currentPage"></hc-pagination>
+    </div>
+
+    </hc-tab>
+    <hc-tab tabTitle="Documentation">
+        <div [hcMarkdown]="document"></div>
+    </hc-tab>
+    </hc-tab-set>
+</div>

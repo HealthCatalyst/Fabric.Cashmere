@@ -1,14 +1,18 @@
 export { AccordionModule } from './src/accordion/accordion.module';
 export { BreadcrumbsModule } from './src/breadcrumbs/breadcrumbs.module';
 export {
-    AppSwitcherModule,
+    AppSwitcherModule
+} from './src/app-switcher/app-switcher.module';
+export {
+    AppSwitcherService,
+    MockAppSwitcherService
+} from './src/app-switcher/app-switcher.service';
+export {
     IAppSwitcherService,
     IAppSwitcherConfig,
     IDiscoveryApplication,
-    IDiscoveryRequest,
-    AppSwitcherService,
-    MockAppSwitcherService
-} from './src/app-switcher/index';
+    IDiscoveryRequest
+} from './src/app-switcher/app-switcher-interfaces';
 export { ButtonModule } from './src/button/button.module';
 export { CheckboxModule } from './src/checkbox/checkbox.module';
 export { ChipModule } from './src/chip/chip.module';
@@ -17,8 +21,18 @@ export { IconModule } from './src/icon/icon.module';
 export { InputModule } from './src/input/input.module';
 export { LabelModule } from './src/label/label.module';
 export { ListModule } from './src/list/list.module';
-export { ModalModule, ModalContentType, ModalOptions, ModalSize } from './src/modal/index';
+export {
+    ModalModule
+} from './src/modal/modal.module';
+export {
+    ModalOptions,
+    ModalSize
+} from './src/modal/modal-options';
+export {
+    ModalContentType, ModalService
+} from './src/modal/modal.service';
 export { NavbarModule } from './src/navbar/navbar.module';
+export { PaginationModule } from './src/pagination/pagination.module';
 export { PipesModule } from './src/pipes/pipes.module';
 export { PopoverModule } from './src/popover/popover.module';
 export { ProgressIndicatorsModule } from './src/progress-indicators/progress-indicators.module';
