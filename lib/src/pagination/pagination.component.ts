@@ -45,25 +45,11 @@ export class PaginationComponent implements OnChanges {
         }
     }
 
-    private sanitize(pageNumber: any): number | null {
-        /*
-         * Validate current page, making sure it is in the valid range.
-         * values to large are set to the last page, while all other
-         * invalid values are set to 1.  If there are no pages there is
-         * also no current page.
-         */
-        if (!!this.totalPages) {
-            if (typeof pageNumber !== 'number' || isNaN(pageNumber) || !pageNumber || pageNumber < 1) {
-                pageNumber = 1;
-            }
-            if (pageNumber > this.totalPages) {
-                pageNumber = this.totalPages;
-            }
-        } else {
-            pageNumber = null;
-        }
-        return pageNumber;
-    }
+    /**
+     * Event for when page number changes
+     */
+    @Output()
+    readonly pageNumberChange = new EventEmitter<number | null>();
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.totalPages && !changes.inputPageNumber) {
@@ -82,12 +68,6 @@ export class PaginationComponent implements OnChanges {
             this._pageNumber = this.sanitize(value);
         }
     }
-
-    /**
-     * Event for when page number changes
-     */
-    @Output()
-    readonly pageNumberChange = new EventEmitter<number | null>();
 
     get isFirstPage() {
         return this.pageNumber === 1;
@@ -189,5 +169,25 @@ export class PaginationComponent implements OnChanges {
             return;
         }
         this.goToPage((this.pageNumber || 1) + 1);
+    }
+
+    private sanitize(pageNumber: any): number | null {
+        /*
+         * Validate current page, making sure it is in the valid range.
+         * values to large are set to the last page, while all other
+         * invalid values are set to 1.  If there are no pages there is
+         * also no current page.
+         */
+        if (!!this.totalPages) {
+            if (typeof pageNumber !== 'number' || isNaN(pageNumber) || !pageNumber || pageNumber < 1) {
+                pageNumber = 1;
+            }
+            if (pageNumber > this.totalPages) {
+                pageNumber = this.totalPages;
+            }
+        } else {
+            pageNumber = null;
+        }
+        return pageNumber;
     }
 }
