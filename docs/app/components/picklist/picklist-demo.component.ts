@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PicklistModel, PicklistOptionsSource, PickListOptions, ISelectOption } from '../../../../lib/src/picklist/picklist.model';
+import {
+    PicklistModel,
+    PicklistOptionsSource, PickListOptions, IValueOption, IValueSetOption } from '../../../../lib/src/picklist/picklist.model';
 import { PicklistComponent } from '../../../../lib/src/picklist/picklist.component';
 
 @Component({
@@ -13,7 +15,7 @@ export class PickListDemoComponent implements OnInit {
 
     private pickListOptions: PickListOptions = {
         values: this.getFakeValues(),
-        valueSets: this.getFakeValues()
+        valueSets: this.getFakeValueSets()
     }
 
     public picklistModel: PicklistModel = {
@@ -28,10 +30,18 @@ export class PickListDemoComponent implements OnInit {
         this.dualSelectBox.resetState(this.picklistModel);
     }
 
-    private getFakeValues(): ISelectOption[] {
-        const fakeValues = new Array<ISelectOption>();
-        for (let i = 0; i < 200; i++) {
+    private getFakeValues(count: number = 200): IValueOption[] {
+        const fakeValues = new Array<IValueOption>();
+        for (let i = 0; i < count; i++) {
             fakeValues.push({code: `${i}${i}`, title: `Option ${i}`});
+        }
+        return fakeValues;
+    }
+
+    private getFakeValueSets(): IValueSetOption[] {
+        const fakeValues = new Array<IValueSetOption>();
+        for (let i = 0; i < 200; i++) {
+            fakeValues.push({code: `${i}${i}`, title: `Option ${i}`, subValues: this.getFakeValues(10) });
         }
         return fakeValues;
     }

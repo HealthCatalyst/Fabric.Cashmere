@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs/Rx';
 
 import { PicklistFilterService } from './picklist-filter.service';
-import { FilterableSelectList, ValueSetListOption, ValueListOption, ISelectOptionGroup, IFilterComponentValueBase,
+import { FilterableSelectList, ValueSetListOption, ValueListOption, IValueOptionGroup, IFilterComponentValueBase,
     PicklistValueType, RemoteMultiselectQueryParams, MultiselectQueryOptions, IPagedSelectOptionGroup,
-    PickListOptions, ISelectOption } from '../picklist.model';
+    PickListOptions, IValueOption, IValueSetOption } from '../picklist.model';
 import { PicklistService } from './picklist.service';
 import * as OptionGuards from '../picklist-model-guards';
 
@@ -57,7 +57,7 @@ export class PicklistFilterRemoteService {
             if (type === 'values' || type === 'both') { this.processPagedValues(options); }
             if (type === 'valuesets' || type === 'both') { this.processPagedValueSets(options); }
         } else {
-            const optionGroup = options as ISelectOptionGroup;
+            const optionGroup = options as IValueOptionGroup;
             this.listService.updateValueList(optionGroup.selectOptions);
             this.listService.updateValueSetList(optionGroup.compatibleValueSets);
             this.valueList.additionalRemoteOptions = 0;
@@ -73,7 +73,7 @@ export class PicklistFilterRemoteService {
     }
 
     private processPagedValueSets(options: IFilterComponentValueBase) {
-        let valueSets = new Array<ISelectOption>(), totalItems = 0;
+        let valueSets = new Array<IValueSetOption>(), totalItems = 0;
         if (OptionGuards.isPagedWithValueSets(options)) {
             valueSets = options.pagedValueSets.values;
             totalItems = options.pagedValueSets.totalItems;

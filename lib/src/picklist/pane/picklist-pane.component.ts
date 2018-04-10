@@ -149,7 +149,7 @@ export class PicklistPaneComponent {
         this.actionService.selectNone();
     }
 
-    private fireMoveSelectedItems(source, destination) {
+    private fireMoveSelectedItems(source: PicklistPaneComponent, destination: PicklistPaneComponent) {
         if (this.companion) {
             this.moveSelectedItems.emit({ source: source, destination: destination });
         }

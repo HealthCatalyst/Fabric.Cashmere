@@ -118,56 +118,7 @@
             }
 
             &.valueset-table {
-                // may be able to remove this block display as the design evolves
                 tr, td, th { display: block; width: 100%; }
-            }
-
-            .valueset-option {
-                .valueset-value-toggle {
-                    cursor: pointer;
-                    color: $blue;
-                    transform: color 0.2s;
-                    &:hover { color: darken($blue, 20%); }
-                    .vs-folder { position: relative; left: -3px; }
-
-                    .values-caret {
-                        &:before {
-                            position: relative;
-                            top: -1px;
-                            display: inline-block;
-                            transition: transform .2s;
-                            font-size: 13px;
-                        }
-    
-                        &.showing-values:before { transform: rotate(90deg); }
-                    }
-                }
-
-                &.hc-row-selected {
-                    .values-caret, .vs-folder { color: $white; }
-                }
-
-                ul {
-                    list-style: none;
-                    padding: 0;
-                    margin: 10px 0 20px 0;
-                    border: 1px solid darken($slate-gray-100, 8%);
-                    border-radius: 3px;
-                    background-color: $white;
-
-                    li {
-                        padding: 7px 12px;
-                        border-top: 1px solid darken($slate-gray-100, 5%);
-                        border-bottom: none;
-                        &.first-child { border-top: none; }
-
-                        &.dots-loader {
-                            &:before { content: ''; }
-                            padding: 10px 0;
-                        }
-                    }
-                    
-                }
             }
         }
 
@@ -179,5 +130,40 @@
             justify-content: center;
             align-items: center;
         }
+    }
+
+    .valueset-option {
+        .valueset-value-toggle {
+            cursor: pointer;
+            color: $blue;
+            transform: color 0.2s;
+            &:hover { color: darken($blue, 20%); }
+            .vs-folder { position: relative; left: -3px; }
+
+            .values-caret {
+                &:before {
+                    position: relative;
+                    top: -1px;
+                    display: inline-block;
+                    transition: transform .2s;
+                    font-size: 13px;
+                }
+
+                &.showing-values:before { transform: rotate(90deg); }
+            }
+        }
+
+        &.hc-row-selected {
+            .values-caret, .vs-folder { color: $white; }
+        }
+    }
+
+    .valueset-sublist-table {
+        margin: 10px 0 20px 0;
+        border: 1px solid darken($slate-gray-100, 8%);
+        overflow: hidden;
+        border-radius: 3px;
+        border-collapse: separate;
+        font-size: 13px;
     }
 }

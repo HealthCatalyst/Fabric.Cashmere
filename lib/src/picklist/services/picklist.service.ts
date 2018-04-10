@@ -6,8 +6,8 @@ import { PicklistFilterService } from './picklist-filter.service';
 import { PicklistValuesetMovingService } from './picklist-valueset-moving.service';
 import { PicklistPaneComponent } from '../pane/picklist-pane.component';
 import {
-    FilterableSelectList, PicklistOptionsSource,
-    SelectListOption, ValueSetListOption, ValueListOption, PicklistValueOptions, ISelectOption } from '../picklist.model';
+    FilterableSelectList, PicklistOptionsSource, IValueSetOption,
+    SelectListOption, ValueSetListOption, ValueListOption, PicklistValueOptions, IValueOption } from '../picklist.model';
 export type PicklistValueType = 'values' | 'valuesets' | 'both';
 
 /**
@@ -46,13 +46,21 @@ export class PicklistService {
         }
     }
 
-    public updateValueList(options: ISelectOption[]) {
+    public updateValueList(options: IValueOption[]) {
         const listOptions = options.map(v => new ValueListOption(v, v.code));
         this.updateList(listOptions, this.valueList, this.pane.companion.valueList);
     }
 
-    public updateValueSetList(options: ISelectOption[]) {
-        const listOptions = options.map(v => new ValueSetListOption(v, v.code));
+    public updateValueSetList(options: IValueSetOption[]) {
+        const listOptions = new Array<ValueSetListOption>();
+        options.forEach(v => {
+            const listOption = new ValueSetListOption(v, v.code);
+            if (v.subValues && v.subValues.length > 0) {
+                const subValueListOptions = v.subValues.map(sv => new ValueListOption(sv, sv.code));
+                this.updateList(subValueListOptions, listOption.subValuesSelectList);
+            }
+            listOptions.push(listOption);
+        });
         this.updateList(listOptions, this.valueSetList, this.pane.companion.valueSetList);
     }
 
@@ -136,8 +144,8 @@ export class PicklistService {
     private updateList<T extends SelectListOption>(
         options: T[],
         list: FilterableSelectList<T>,
-        companionList: FilterableSelectList<T>) {
-            if (!this.optionsSource.isPaged && this.pane.shouldExcludeCompanion) {
+        companionList: FilterableSelectList<T> | null = null) {
+            if (!this.optionsSource.isPaged && this.pane.shouldExcludeCompanion && companionList) {
                 options = options.filter(o => !companionList.options.get(o.code));
             }
             options.forEach(o => {

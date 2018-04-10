@@ -22,7 +22,7 @@
     <div class="list-container" #listContainer>
         <!-- Valuesets -->
         <div *ngIf="valueSetList.isActive && (valueSetList.loadingOptions | async)" class="loading-list"><div class="dots-loader"><div class="loader-animate"></div></div></div>
-        <table *ngIf="shouldShowList(valueSetList) && !(valueSetList.loadingOptions | async)" class="hc-table hc-table-small hc-action-table valueset-table">
+        <table *ngIf="shouldShowList(valueSetList) && !(valueSetList.loadingOptions | async)" class="hc-table hc-table-small hc-no-hover-table valueset-table">
             <tbody>
                 <!-- Header, shown when both values and valuesets are sitting in list at same time -->
                 <tr *ngIf="shouldShowList(valueSetList) && shouldShowList(valueList)"><th colspan="2">Value Sets</th></tr>
@@ -44,18 +44,19 @@
                         </div>
                         <div>
                             <!-- Value set Values List (closed by default) -->
-                            <ul *ngIf="item.showValues">
-                                <li *ngIf="item.loadingValues" class="dots-loader"><span class="loader-animate"></span></li>
-                                <li *ngFor="let subItem of item.subValuesSelectList.filteredOptions; let idx=index;"
+                            <table *ngIf="item.showValues" class="valueset-sublist-table hc-table"><tbody>
+                                <tr *ngIf="item.loadingValues" class="dots-loader"><span class="loader-animate"></span></tr>
+                                <tr *ngFor="let subItem of item.subValuesSelectList.filteredOptions; let idx=index;"
                                     (mousedown)="preventIEHighlightBug()"
                                     (click)="onItemClicked($event, idx, item.subValuesSelectList, subItem);"
                                     (dblclick)="onItemDoubleClicked($event, item.subValuesSelectList, subItem);"
-                                    class="value-option-row"
-                                    [ngClass]="{'hc-row-selected': subItem.selected}">
+                                    class="value-option-row hc-tr"
+                                    [ngClass]="{'hc-row-selected': subItem.selected}"><td>
                                         <span *ngIf="codeIsSignificant">{{subItem.option.code}}</span>
                                         <span>{{subItem.option.title || "Untitled"}}</span>
-                                </li>
-                            </ul>
+                                    </td>
+                                </tr>
+                            </tbody></table>
                         </div>
                 </td></tr>
 
@@ -71,7 +72,7 @@
 
         <!-- Values -->
         <div *ngIf="valueList.isActive && (valueList.loadingOptions | async)" class="loading-list"><div class="dots-loader"><div class="loader-animate"></div></div></div>
-        <table *ngIf="shouldShowList(valueList) && !(valueList.loadingOptions | async)" class="hc-table hc-table-small hc-action-table" [ngClass]="{'no-code-column': !codeIsSignificant}">
+        <table *ngIf="shouldShowList(valueList) && !(valueList.loadingOptions | async)" class="hc-table hc-table-small hc-no-hover-table" [ngClass]="{'no-code-column': !codeIsSignificant}">
             <tbody>
                 <!-- Header, shown when both values and valuesets are sitting in list at same time -->
                 <tr *ngIf="shouldShowList(valueSetList) && shouldShowList(valueList)"><th colspan="2">Individual Values</th></tr>
