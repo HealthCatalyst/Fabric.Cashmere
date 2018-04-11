@@ -6,9 +6,10 @@ import { PicklistComponent } from './picklist.component';
 import { ButtonModule } from '../button/button.module';
 import { IconModule } from '../icon/icon.module';
 import { InputModule } from '../input/input.module';
+import { ProgressIndicatorsModule } from '../progress-indicators/progress-indicators.module'
 
 @NgModule({
-    imports: [CommonModule, FormsModule, ButtonModule, IconModule, InputModule],
+    imports: [CommonModule, FormsModule, ButtonModule, IconModule, InputModule, ProgressIndicatorsModule],
     declarations: [
         PicklistPaneComponent,
         PicklistComponent

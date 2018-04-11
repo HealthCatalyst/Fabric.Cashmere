@@ -156,6 +156,10 @@
         &.hc-row-selected {
             .values-caret, .vs-folder { color: $white; }
         }
+
+        .loading-subvals {
+            height: 40px;
+        }
     }
 
     .valueset-sublist-table {

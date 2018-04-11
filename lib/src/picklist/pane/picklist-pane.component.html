@@ -21,7 +21,7 @@
 
     <div class="list-container" #listContainer>
         <!-- Valuesets -->
-        <div *ngIf="valueSetList.isActive && (valueSetList.loadingOptions | async)" class="loading-list"><div class="dots-loader"><div class="loader-animate"></div></div></div>
+        <div *ngIf="valueSetList.isActive && (valueSetList.loadingOptions | async)" class="loading-list"><hc-progress-dots></hc-progress-dots></div>
         <table *ngIf="shouldShowList(valueSetList) && !(valueSetList.loadingOptions | async)" class="hc-table hc-table-small hc-no-hover-table valueset-table">
             <tbody>
                 <!-- Header, shown when both values and valuesets are sitting in list at same time -->
@@ -45,7 +45,7 @@
                         <div>
                             <!-- Value set Values List (closed by default) -->
                             <table *ngIf="item.showValues" class="valueset-sublist-table hc-table"><tbody>
-                                <tr *ngIf="item.loadingValues" class="dots-loader"><span class="loader-animate"></span></tr>
+                                <tr *ngIf="item.loadingValues" class="loading-subvals"><hc-progress-dots></hc-progress-dots></tr>
                                 <tr *ngFor="let subItem of item.subValuesSelectList.filteredOptions; let idx=index;"
                                     (mousedown)="preventIEHighlightBug()"
                                     (click)="onItemClicked($event, idx, item.subValuesSelectList, subItem);"
@@ -63,15 +63,13 @@
                 <!-- Load More link for value sets, available when paging -->
                 <tr *ngIf="isPaged && optionsShowingCount < optionsAvailableCount" class="text-center value-option-row load-more-row">
                     <a class="text-link" (click)="triggerLoadMore('valuesets')" *ngIf="!(valueSetList.appendingOptions | async)">Load More</a>
-                    <div class="dots-loader loader-appending" *ngIf="valueSetList.appendingOptions | async">
-                        <div class="loader-animate"></div>
-                    </div>
+                    <hc-progress-dots *ngIf="valueSetList.appendingOptions | async"></hc-progress-dots>
                 </tr>
             </tbody>
         </table>
 
         <!-- Values -->
-        <div *ngIf="valueList.isActive && (valueList.loadingOptions | async)" class="loading-list"><div class="dots-loader"><div class="loader-animate"></div></div></div>
+        <div *ngIf="valueList.isActive && (valueList.loadingOptions | async)" class="loading-list"><hc-progress-dots></hc-progress-dots></div>
         <table *ngIf="shouldShowList(valueList) && !(valueList.loadingOptions | async)" class="hc-table hc-table-small hc-no-hover-table" [ngClass]="{'no-code-column': !codeIsSignificant}">
             <tbody>
                 <!-- Header, shown when both values and valuesets are sitting in list at same time -->
@@ -100,7 +98,7 @@
                 <tr *ngIf="isPaged && optionsShowingCount < optionsAvailableCount" class="text-center value-option-row load-more-row">
                     <td colspan="2">
                         <a class="text-link" (click)="triggerLoadMore('values')" *ngIf="!(valueList.appendingOptions | async)">Load More</a>
-                        <div class="dots-loader loader-appending" *ngIf="valueList.appendingOptions | async"><div class="loader-animate"></div></div>
+                        <hc-progress-dots *ngIf="valueList.appendingOptions | async"></hc-progress-dots>
                     </td>
                 </tr>
             </tbody>
