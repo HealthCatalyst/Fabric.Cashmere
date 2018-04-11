@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RadioButtonComponent } from './radio-button.component';
+import { RadioButtonComponent, RadioGroupDirective } from './radio-button.component';
+import { RadioButtonNotifierService } from './radio-button-notifier.service';
 
 @NgModule({
     imports: [
         CommonModule
     ],
     exports: [
-        RadioButtonComponent
+        RadioButtonComponent,
+        RadioGroupDirective
     ],
     declarations: [
-        RadioButtonComponent
-    ]
+        RadioButtonComponent,
+        RadioGroupDirective
+    ],
+    providers: [RadioButtonNotifierService]
 })
 export class RadioButtonModule {
 }
