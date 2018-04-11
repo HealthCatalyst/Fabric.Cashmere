@@ -1,11 +1,11 @@
 import { Component, ViewChild, Output, Input, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { PicklistPaneComponent } from './pane/picklist-pane.component';
-import { PickListOptions, PicklistModel, PicklistOptionsSource } from './picklist.model';
-
-export class SelectBoxes {
-    public source: PicklistPaneComponent;
-    public destination: PicklistPaneComponent;
-}
+import {
+    PicklistSettings,
+    PicklistOptionsSource,
+    IPicklistSettings,
+    IPicklistOptions,
+    IPicklistTransferParams } from './picklist.model';
 
 @Component({
     selector: 'hc-picklist',
@@ -14,55 +14,69 @@ export class SelectBoxes {
     encapsulation: ViewEncapsulation.None
 })
 export class PicklistComponent {
-    @Input() public set model(model: PicklistModel) { this.resetState(model); }
+    @Input() public set settings(settings: PicklistSettings) { this.resetState(settings); }
     @Output() public changed = new EventEmitter();
-    @ViewChild('availableList') public available: PicklistPaneComponent;
-    @ViewChild('confirmedList') public confirmed: PicklistPaneComponent;
-    public picklistModel = new PicklistModel();
+    @ViewChild('availableList') public available: PicklistPaneComponent | undefined;
+    @ViewChild('confirmedList') public confirmed: PicklistPaneComponent | undefined;
+    public picklistSettings = new PicklistSettings();
+    public get leftToRightMoveBtnIsDisabled(): boolean { return this.available ? !this.available.isAnySelected() : false; }
 
-    public get leftToRightMoveBtnIsDisabled(): boolean {
-        return !this.available.isAnySelected();
+    public resetState(settings: IPicklistSettings) {
+        this.picklistSettings = Object.assign(new PicklistSettings(), settings);
+        this.resetPanes(this.picklistSettings);
+        this.resetActiveValueTypeAsNeeded();
     }
 
-    public resetState(model: PicklistModel) {
-        this.picklistModel = model;
-        const confirmedSource = new PicklistOptionsSource();
-        confirmedSource.options.values = this.picklistModel.selectedOptions.values.slice(0);
-        confirmedSource.options.valueSets = this.picklistModel.selectedOptions.valueSets.slice(0);
-        confirmedSource.getValuesForValueset = this.picklistModel.optionsSource.getValuesForValueset;
-        this.confirmed.reset(confirmedSource, this.available, false, this.picklistModel.codeIsSignificant);
+    public setActiveValueType(pane: 'values' | 'valueSets') {
+        if (!this.available) { console.warn('Available picklist pane not available yet.'); return; }
 
-        const availableSource = Object.assign(new PicklistOptionsSource(), this.picklistModel.optionsSource);
-        this.available.reset(availableSource, this.confirmed, true, this.picklistModel.codeIsSignificant);
-
-        if (this.picklistModel.allowValuesets) {
-            this.setActivePane('valueSets');
-        } else {
-            this.setActivePane('values');
-        }
-    }
-
-    public setActivePane(pane: 'values' | 'valueSets') {
         this.available.valueList.isActive = pane === 'values';
         this.available.valueSetList.isActive = pane === 'valueSets';
         this.available.selectNone();
         this.available.scrollToTop();
     }
 
-    public moveSelectedItems(selectBoxes: SelectBoxes) {
+    public moveSelectedItems(selectBoxes: IPicklistTransferParams) {
         const shouldBreakValuesets = selectBoxes.source === this.confirmed;
         const selectedOptions = selectBoxes.source.listService.moveOutSelectedOptions(shouldBreakValuesets);
         selectBoxes.destination.listService.addOptions(selectedOptions);
         selectBoxes.source.filterService.reloadIfEmpty();
-        this.applyConfirmed();
+        this.applyChangeToModel();
     }
 
-    private applyConfirmed() {
+    public getValue(): IPicklistOptions {
+        return this.picklistSettings.selected;
+    }
+
+    private resetPanes(settings: IPicklistSettings) {
+        if (!(this.available && this.confirmed)) { console.warn('Picklist panes not available yet.'); return; }
+
+        const confirmedSource = new PicklistOptionsSource();
+        confirmedSource.values = this.picklistSettings.selected.values.slice(0);
+        confirmedSource.valueSets = this.picklistSettings.selected.valueSets.slice(0);
+        confirmedSource.getValuesForValueset = this.picklistSettings.options.getValuesForValueset;
+        this.confirmed.reset(confirmedSource, this.picklistSettings, this.available, false, this.picklistSettings.codeIsSignificant);
+
+        const availableSource = Object.assign(new PicklistOptionsSource(), this.picklistSettings.options);
+        this.available.reset(availableSource, this.picklistSettings, this.confirmed, true, this.picklistSettings.codeIsSignificant);
+    }
+
+    private resetActiveValueTypeAsNeeded() {
+        if (this.picklistSettings.useValuesets) {
+            this.setActiveValueType('valueSets');
+        } else {
+            this.setActiveValueType('values');
+        }
+    }
+
+    private applyChangeToModel() {
+        if (!(this.available && this.confirmed)) { console.warn('Picklist panes not available yet.'); return; }
+
         this.changed.emit();
-        this.picklistModel.selectedOptions.values.length = 0;
-        this.picklistModel.selectedOptions.valueSets.length = 0;
-        this.confirmed.valueList.options.forEach(e => this.picklistModel.selectedOptions.values.push(e.option));
-        this.confirmed.valueSetList.options.forEach(e => this.picklistModel.selectedOptions.valueSets
+        this.picklistSettings.selected.values.length = 0;
+        this.picklistSettings.selected.valueSets.length = 0;
+        this.confirmed.valueList.options.forEach(e => this.picklistSettings.selected.values.push(e.option));
+        this.confirmed.valueSetList.options.forEach(e => this.picklistSettings.selected.valueSets
             .push(e.option));
     }
 }

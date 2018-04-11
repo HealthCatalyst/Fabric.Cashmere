@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscription } from 'rxjs/Rx';
 
-import { FilterableSelectList, SelectListOption, ValueSetListOption, ValueListOption, PicklistValueType } from '../picklist.model';
+import { FilterableSelectList, SelectListOption, ValueSetListOption, ValueListOption } from '../pane/picklist-pane.model';
+import { PicklistValueType } from '../picklist.model';
 import { WorkTrackerService } from './work-tracker.service';
 import { PicklistService } from './picklist.service';
 import { PicklistFilterRemoteService } from './picklist-filter-remote.service';
@@ -12,10 +13,8 @@ export class PicklistFilterService {
     public get valueList(): FilterableSelectList<ValueListOption> { return this.listService.valueList; }
     public get valueSetList(): FilterableSelectList<ValueSetListOption> { return this.listService.valueSetList; }
     public get codeIsSignificant(): boolean { return this.listService.pane.codeIsSignificant; }
-    public searchTerm = '';
     public get searchTokens(): string[] { return this.searchTerm.toLocaleLowerCase().replace(/\s+/g, ' ').split(' '); }
-    public valueListFilterFields = ['title'];
-    public valueSetListFilterFields = ['title'];
+    public searchTerm = '';
 
     constructor(private workTracker: WorkTrackerService, private remoteFilterService: PicklistFilterRemoteService) {}
 
@@ -23,12 +22,11 @@ export class PicklistFilterService {
         this.remoteFilterService.reset(this, listService);
         this.listService = listService;
         this.searchTerm = '';
-        this.setUpLists();
     }
 
     public runFilter(searchTerm: string) {
         this.searchTerm = searchTerm;
-        if (!this.listService.optionsSource.isPaged) {
+        if (!this.listService.paneSource.isPaged) {
             this.filterListLocally(this.valueList);
             this.filterListLocally(this.valueSetList);
         } else {
@@ -47,21 +45,17 @@ export class PicklistFilterService {
                 list.filteredOptions.push(item);
             }
         });
-        list.filteredOptions.sort(list.sortFunc);
+        list.filteredOptions.sort(this.getSortFunc(list));
     }
 
-    public filterOptionsRemote(
-        type: PicklistValueType = 'both',
-        shouldAppend = false,
-        numberToLoadForSelectAll: number | null = null): Subscription {
-            return this.remoteFilterService.filterOptionsRemote(type, shouldAppend, numberToLoadForSelectAll);
-    }
-
-    public itemHasSearchTokens<T extends SelectListOption>(list: FilterableSelectList<T>, item: T, searchTokens: string[]) {
-        const valuesToSearchIn = list.optionFieldsToSearch
-            .map(fieldName => item.option[fieldName])
-            .filter(val => !!val);
+    public itemHasSearchTokens<T extends SelectListOption>(list: FilterableSelectList<T>, item: T, searchTokens: string[]): boolean {
+        const valuesToSearchIn = [item.option.title, list.codeIsSignificant ? item.option.code : ''];
+        valuesToSearchIn.filter(val => !!val);
         return searchTokens.every(token => valuesToSearchIn.some(value => value.toLocaleLowerCase().indexOf(token) > -1));
+    }
+
+    public filterOptionsRemote(type: PicklistValueType = 'both', shouldAppend = false, selectAllCount: number | null = null): Subscription {
+            return this.remoteFilterService.filterOptionsRemote(type, shouldAppend, selectAllCount);
     }
 
     public loadMore(type: PicklistValueType = 'both', autoLoadMore = false) {
@@ -85,20 +79,8 @@ export class PicklistFilterService {
         }
     }
 
-    private setUpLists() {
-        // specify the filterable fields for each list
-        this.valueList.optionFieldsToSearch = this.valueListFilterFields.slice();
-        this.valueSetList.optionFieldsToSearch = this.valueSetListFilterFields.slice();
-        if (this.codeIsSignificant) {
-            this.valueList.optionFieldsToSearch.push('code');
-        }
-
-        // specify the sort functions
-        this.valueList.sortFunc = this.localeSorter((x) => x.code);
-        this.valueSetList.sortFunc = this.localeSorter((x) => x.code);
-    }
-
-    private localeSorter(getProp: (x) => string): (a, b) => number {
-        return (a, b) => getProp(a).localeCompare(getProp(b));
+    private getSortFunc<T extends SelectListOption>(list: FilterableSelectList<T>): (a: any, b: any) => number {
+        const sortField = list.codeIsSignificant ? 'code' : 'title';
+        return (a, b) => a.option[sortField].localeCompare(b.option[sortField]);
     }
 }

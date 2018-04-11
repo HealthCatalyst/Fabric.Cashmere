@@ -1,12 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgModuleFactoryLoader } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs/Rx';
 
 import { PicklistFilterService } from './picklist-filter.service';
-import { FilterableSelectList, ValueSetListOption, ValueListOption, IValueOptionGroup, IFilterComponentValueBase,
-    PicklistValueType, RemoteMultiselectQueryParams, MultiselectQueryOptions, IPagedSelectOptionGroup,
-    PickListOptions, IValueOption, IValueSetOption } from '../picklist.model';
+import { FilterableSelectList, ValueSetListOption, ValueListOption } from '../pane/picklist-pane.model';
+import {
+    PicklistValueType,
+    IValueOption,
+    IValueSetOption,
+    IPageSettings,
+    IPagedCollection,
+    IPicklistRemoteQueryResponse,
+    PicklistRemoteQueryOptions } from '../picklist.model'
 import { PicklistService } from './picklist.service';
-import * as OptionGuards from '../picklist-model-guards';
 
 @Injectable()
 export class PicklistFilterRemoteService {
@@ -21,7 +26,7 @@ export class PicklistFilterRemoteService {
     private defaultItemsPerPage = 100;
     private cancelSearch = new Subject<void>();
     private get cancelSearch$(): Observable<void> { return this.cancelSearch.asObservable(); };
-    private options$: Observable<IFilterComponentValueBase>;
+    private options$: Observable<IPicklistRemoteQueryResponse> = Observable.from([]);
 
     public reset(filterService: PicklistFilterService, listService: PicklistService) {
         this.filterService = filterService;
@@ -30,102 +35,76 @@ export class PicklistFilterRemoteService {
         this.currentValueSetPage = 1;
     }
 
-    public filterOptionsRemote(
-        type: PicklistValueType = 'both',
-        shouldAppend = false,
-        numberToLoadForSelectAll: number | null = null): Subscription {
+    public filterOptionsRemote(type: PicklistValueType = 'both', shouldAppend = false, selectAllCount: number | null = null): Subscription {
+            if (!this.listService.paneSource.getOptions) {
+                console.warn('Remote query callback not provided for this picklist.')
+                return Observable.from([]).subscribe();
+            }
+
             if (this.options$) { this.cancelSearch.next(); }
-            const params = this.buildRemoteOptionsQueryParams(numberToLoadForSelectAll, type);
-            this.options$ = this.listService.optionsSource.getOptions(params).takeUntil(this.cancelSearch$);
-            if (!shouldAppend) { this.clearFilteredOptions(type); }
-            this.resetPagingIfNeeded(numberToLoadForSelectAll);
+            const params = this.buildRemoteQueryParams(type, selectAllCount, );
+            this.clearFilteredOptionsIfNeeded(type, shouldAppend);
+            this.resetPagingForSelectAllIfNeeded(selectAllCount);
+            this.options$ = this.listService.paneSource.getOptions(params).takeUntil(this.cancelSearch$);
 
             return this.options$.subscribe((options) => {
                     this.processIncomingRemoteOptions(options, type, shouldAppend);
                 }, () => {
-                    console.warn('unable to filter options') // todo: need a better way to handle this
+                    console.warn('Unable to filter options')
                     this.clearListsIfNeeded('both', false);
                     return Observable.of({});
                 }, () => {
-                    // this.options$ = null;
+                    this.options$ = Observable.from([])
                 });
     }
 
-    private processIncomingRemoteOptions(options: IFilterComponentValueBase, type: PicklistValueType = 'both', shouldAppend = false) {
+    private processIncomingRemoteOptions(options: IPicklistRemoteQueryResponse, type: PicklistValueType = 'both', shouldAppend = false) {
         this.clearListsIfNeeded(type, shouldAppend);
-        if (OptionGuards.isPaged(options)) {
-            if (type === 'values' || type === 'both') { this.processPagedValues(options); }
-            if (type === 'valuesets' || type === 'both') { this.processPagedValueSets(options); }
+
+        if (this.listService.paneSource.isPaged) {
+            if (options.pagedValues) { this.processPagedValues(options.pagedValues); }
+            if (options.pagedValueSets) { this.processPagedValueSets(options.pagedValueSets); }
         } else {
-            const optionGroup = options as IValueOptionGroup;
-            this.listService.updateValueList(optionGroup.selectOptions);
-            this.listService.updateValueSetList(optionGroup.compatibleValueSets);
+            if (options.values) { this.listService.updateValueList(options.values); }
+            if (options.valueSets) { this.listService.updateValueSetList(options.valueSets); }
             this.valueList.additionalRemoteOptions = 0;
             this.valueSetList.additionalRemoteOptions = 0;
         }
     }
 
-    private processPagedValues(options: IPagedSelectOptionGroup) {
-        this.listService.updateValueList(options.pagedValues.values);
-        if (options.pagedValues.values.length > 0) {
-            this.valueList.additionalRemoteOptions = options.pagedValues.totalItems - this.valueList.options.size;
-        }
+    private processPagedValues(pagedValues: IPagedCollection<IValueOption>) {
+        this.listService.updateValueList(pagedValues.values);
+        this.valueList.additionalRemoteOptions = pagedValues.totalItems - this.valueList.options.size;
     }
 
-    private processPagedValueSets(options: IFilterComponentValueBase) {
-        let valueSets = new Array<IValueSetOption>(), totalItems = 0;
-        if (OptionGuards.isPagedWithValueSets(options)) {
-            valueSets = options.pagedValueSets.values;
-            totalItems = options.pagedValueSets.totalItems;
-        }
-        this.listService.updateValueSetList(valueSets);
-        this.valueSetList.additionalRemoteOptions = totalItems - this.valueSetList.options.size;
+    private processPagedValueSets(pagedValueSets: IPagedCollection<IValueSetOption>) {
+        this.listService.updateValueSetList(pagedValueSets.values);
+        this.valueSetList.additionalRemoteOptions = pagedValueSets.totalItems - this.valueSetList.options.size;
     }
 
-    private buildRemoteOptionsQueryParams(
-        numberToLoadForSelectAll: number | null = null,
-        type: PicklistValueType): RemoteMultiselectQueryParams {
-
-        const params = new RemoteMultiselectQueryParams();
+    private buildRemoteQueryParams(type: PicklistValueType, selectAllCount: number | null = null, ): PicklistRemoteQueryOptions {
+        const params = new PicklistRemoteQueryOptions(this.listService.picklist, this.searchTerm, type);
         if (type === 'values' || type === 'both') {
-            params.valueQueryOptions = this.buildQueryOptions(this.listService.pane.companion.valueList);
-            params.valuePagerSettings = this.buildPagerSettings(this.currentValuePage, numberToLoadForSelectAll);
+            params.valuePageSettings = this.buildPagerSettings(this.currentValuePage, selectAllCount);
         }
 
         if (type === 'valuesets' || type === 'both') {
-            params.valueSetQueryOptions = this.buildQueryOptions(this.listService.pane.companion.valueSetList);
-            params.valueSetPagerSettings = this.buildPagerSettings(this.currentValueSetPage, numberToLoadForSelectAll);
+            params.valueSetPageSettings = this.buildPagerSettings(this.currentValueSetPage, selectAllCount);
         }
 
         return params;
     }
 
-    private buildQueryOptions(list: FilterableSelectList<any>): MultiselectQueryOptions {
-        const queryOptions = new MultiselectQueryOptions();
-        queryOptions.search = this.searchTerm;
-        queryOptions.shouldSearchCodes = this.codeIsSignificant;
-        queryOptions.sorting = { field: this.codeIsSignificant ? 'code' : 'title'};
-        queryOptions.alreadySelected = this.getAlreadySelectedOptionIds(list);
-        return queryOptions;
-    }
-
-    private buildPagerSettings(currentPage: number, numberToLoadForSelectAll: number | null) {
+    private buildPagerSettings(currentPage: number, selectAllCount: number | null) {
         const pagerSettings = { currentPage: 1, itemsPerPage: this.defaultItemsPerPage };
-        pagerSettings.currentPage = numberToLoadForSelectAll ? 1 : currentPage;
-        pagerSettings.itemsPerPage = numberToLoadForSelectAll || pagerSettings.itemsPerPage;
+        pagerSettings.currentPage = selectAllCount ? 1 : currentPage;
+        pagerSettings.itemsPerPage = selectAllCount || pagerSettings.itemsPerPage;
         return pagerSettings;
     }
 
-    private getAlreadySelectedOptionIds(list: FilterableSelectList<any>): string[] {
-        if (!this.listService.pane.shouldExcludeCompanion) { return []; }
-        const codes = new Array<string>();
-        list.options.forEach(e => codes.push(e.code));
-        return codes;
-    }
-
-    private resetPagingIfNeeded(numberToLoadForSelectAll: number | null = null) {
-        if (numberToLoadForSelectAll) {
-            this.currentValuePage = Math.floor(numberToLoadForSelectAll / this.defaultItemsPerPage);
+    private resetPagingForSelectAllIfNeeded(selectAllCount: number | null = null) {
+        if (selectAllCount) {
+            this.currentValuePage = Math.floor(selectAllCount / this.defaultItemsPerPage);
         }
     }
 
@@ -136,8 +115,10 @@ export class PicklistFilterRemoteService {
         }
     }
 
-    private clearFilteredOptions(type: PicklistValueType) {
-        if (type === 'both' || type === 'values') { this.valueList.filteredOptions.length = 0; }
-        if (type === 'both' || type === 'valuesets') { this.valueSetList.filteredOptions.length = 0; }
+    private clearFilteredOptionsIfNeeded(type: PicklistValueType, shouldAppend: boolean) {
+        if (!shouldAppend) {
+            if (type === 'both' || type === 'values') { this.valueList.filteredOptions.length = 0; }
+            if (type === 'both' || type === 'valuesets') { this.valueSetList.filteredOptions.length = 0; }
+        }
     }
 }

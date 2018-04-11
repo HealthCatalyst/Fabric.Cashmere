@@ -1,14 +1,15 @@
-﻿import { Component, Input, ViewChild, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+﻿import { Component, Input, ViewChild, Output, EventEmitter, ViewEncapsulation, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs/Rx';
 
-import { PicklistService, PicklistValueType } from '../services/picklist.service';
+import { PicklistService } from '../services/picklist.service';
 import { PicklistActionService } from '../services/picklist-action.service';
 import { PicklistFilterService } from '../services/picklist-filter.service';
 import { PicklistFilterRemoteService } from '../services/picklist-filter-remote.service';
 import { PicklistValuesetMovingService } from '../services/picklist-valueset-moving.service';
 import { WorkTrackerService } from '../services/work-tracker.service';
-import { SelectBoxes } from '../picklist.component';
-import { FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOption, PicklistOptionsSource } from '../picklist.model';
+import { IPicklistTransferParams, PicklistSettings } from '../picklist.model';
+import { FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOption } from './picklist-pane.model';
+import { PicklistOptionsSource, PicklistValueType } from '../picklist.model';
 
 @Component({
     selector: 'hc-picklist-pane',
@@ -24,11 +25,11 @@ import { FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOp
     encapsulation: ViewEncapsulation.None
 })
 export class PicklistPaneComponent {
-    @Input() public emptyMsg: string;
-    @Output() public moveSelectedItems = new EventEmitter<SelectBoxes>();
-    @ViewChild('listContainer') public listContainerEl;
-    @ViewChild('search') public searchInputEl;
-    public companion: PicklistPaneComponent;
+    @Input() public emptyMsg: string = 'No options';
+    @Output() public moveSelectedItems = new EventEmitter<IPicklistTransferParams>();
+    @ViewChild('listContainer') public listContainerEl: ElementRef | undefined;
+    @ViewChild('search') public searchInputEl: ElementRef | undefined;
+    public companion: PicklistPaneComponent | null = null;
     public shouldExcludeCompanion = false;
     public codeIsSignificant = false;
     public searchTerm: string = '';
@@ -43,20 +44,23 @@ export class PicklistPaneComponent {
         }
 
     public reset(
-        source: PicklistOptionsSource, companion: PicklistPaneComponent, shouldExcludeCompanion = false, codeIsSignificant: boolean) {
-
+            source: PicklistOptionsSource,
+            settings: PicklistSettings,
+            companion: PicklistPaneComponent,
+            excludeCompanion = false,
+            codeIsSignificant: boolean) {
         this.companion = companion;
-        this.shouldExcludeCompanion = shouldExcludeCompanion;
+        this.shouldExcludeCompanion = excludeCompanion;
         this.codeIsSignificant = codeIsSignificant;
         this.selectAllWasLastClicked = false;
         this.searchTerm = '';
         this.wireUpSearch();
-        this.listService.reset(source, this);
+        this.listService.reset(settings, source, this);
     }
 
     public get valueList(): FilterableSelectList<ValueListOption> { return this.listService.valueList; }
     public get valueSetList(): FilterableSelectList<ValueSetListOption> { return this.listService.valueSetList; }
-    public get isPaged(): boolean { return this.listService.optionsSource.isPaged; }
+    public get isPaged(): boolean { return this.listService.paneSource.isPaged; }
     public get optionsAvailableCount(): number { return (this.PicklistValueOptionsTotal + this.valueSetOptionsTotal); }
     public get PicklistValueOptionsTotal(): number { return this.valueList.isActive ? this.listService.totalValuesCount : 0; }
     public get valueSetOptionsTotal(): number { return this.valueSetList.isActive ? this.listService.totalValueSetsCount : 0; }
@@ -88,7 +92,9 @@ export class PicklistPaneComponent {
     }
 
     public focusSearch() {
-        this.searchInputEl.nativeElement.focus();
+        if (this.searchInputEl) {
+            this.searchInputEl.nativeElement.focus();
+        }
     }
 
     public scrollToTop() {
@@ -149,8 +155,8 @@ export class PicklistPaneComponent {
         this.actionService.selectNone();
     }
 
-    private fireMoveSelectedItems(source: PicklistPaneComponent, destination: PicklistPaneComponent) {
-        if (this.companion) {
+    private fireMoveSelectedItems(source: PicklistPaneComponent, destination: PicklistPaneComponent | null) {
+        if (this.companion && destination) {
             this.moveSelectedItems.emit({ source: source, destination: destination });
         }
     }

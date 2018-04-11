@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { PicklistFilterService } from './picklist-filter.service';
 import { PicklistService } from './picklist.service';
 import { PicklistPaneComponent } from '../pane/picklist-pane.component';
-import { FilterableSelectList, ValueSetListOption, ValueListOption, PicklistValueOptions } from '../picklist.model';
+import { FilterableSelectList, ValueSetListOption, ValueListOption, PicklistValueOptions } from '../pane/picklist-pane.model';
 
 @Injectable()
 export class PicklistValuesetMovingService {

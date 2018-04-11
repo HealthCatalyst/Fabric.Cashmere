@@ -6,9 +6,18 @@ import { PicklistFilterService } from './picklist-filter.service';
 import { PicklistValuesetMovingService } from './picklist-valueset-moving.service';
 import { PicklistPaneComponent } from '../pane/picklist-pane.component';
 import {
-    FilterableSelectList, PicklistOptionsSource, IValueSetOption,
-    SelectListOption, ValueSetListOption, ValueListOption, PicklistValueOptions, IValueOption } from '../picklist.model';
-export type PicklistValueType = 'values' | 'valuesets' | 'both';
+    PicklistOptionsSource,
+    IValueOption,
+    IValueSetOption,
+    PicklistValueType,
+    IPicklistSettings,
+    PicklistSettings } from '../picklist.model';
+import {
+    FilterableSelectList,
+    SelectListOption,
+    ValueSetListOption,
+    ValueListOption,
+    PicklistValueOptions } from '../pane/picklist-pane.model'
 
 /**
  * Handles loading + moving items to/from list
@@ -16,7 +25,8 @@ export type PicklistValueType = 'values' | 'valuesets' | 'both';
 @Injectable()
 export class PicklistService {
     public pane: PicklistPaneComponent;
-    public optionsSource: PicklistOptionsSource;
+    public picklist: PicklistSettings;
+    public paneSource: PicklistOptionsSource = new PicklistOptionsSource();
     public valueList = new FilterableSelectList<ValueListOption>();
     public valueSetList = new FilterableSelectList<ValueSetListOption>();
     public get totalValuesCount(): number { return this.valueList.options.size + this.valueList.additionalRemoteOptions; }
@@ -27,17 +37,18 @@ export class PicklistService {
         private filterService: PicklistFilterService,
         private valuesetMovingService: PicklistValuesetMovingService) {}
 
-    public reset(source: PicklistOptionsSource, pane: PicklistPaneComponent) {
-        this.optionsSource = source;
+    public reset(settings: PicklistSettings, paneSource: PicklistOptionsSource, pane: PicklistPaneComponent) {
+        this.picklist = settings;
         this.pane = pane;
+        this.paneSource = paneSource;
         this.clearList(this.valueList);
         this.clearList(this.valueSetList);
         this.filterService.reset(this);
         this.valuesetMovingService.reset(this, this.filterService);
 
-        if (this.optionsSource.optionsAreLocal) {
-            this.updateValueList(source.options.values);
-            this.updateValueSetList(source.options.valueSets);
+        if (this.paneSource.optionsAreLocal) {
+            this.updateValueList(this.paneSource.values);
+            this.updateValueSetList(this.paneSource.valueSets);
             this.filterService.filterListLocally(this.valueList);
             this.filterService.filterListLocally(this.valueSetList);
         } else {
@@ -48,24 +59,27 @@ export class PicklistService {
 
     public updateValueList(options: IValueOption[]) {
         const listOptions = options.map(v => new ValueListOption(v, v.code));
-        this.updateList(listOptions, this.valueList, this.pane.companion.valueList);
+        const companionList = this.pane.companion ? this.pane.companion.valueList : null;
+        this.valueList.codeIsSignificant = this.pane.codeIsSignificant;
+        this.updateList(listOptions, this.valueList, companionList);
     }
 
     public updateValueSetList(options: IValueSetOption[]) {
         const listOptions = new Array<ValueSetListOption>();
+        const companionList = this.pane.companion ? this.pane.companion.valueSetList : null;
         options.forEach(v => {
             const listOption = new ValueSetListOption(v, v.code);
             if (v.subValues && v.subValues.length > 0) {
-                const subValueListOptions = v.subValues.map(sv => new ValueListOption(sv, sv.code));
+                const subValueListOptions = v.subValues.map((sv: IValueOption) => new ValueListOption(sv, sv.code));
                 this.updateList(subValueListOptions, listOption.subValuesSelectList);
             }
             listOptions.push(listOption);
         });
-        this.updateList(listOptions, this.valueSetList, this.pane.companion.valueSetList);
+        this.updateList(listOptions, this.valueSetList, companionList);
     }
 
     public addOptions(listOptions: PicklistValueOptions) {
-        if (!this.optionsSource.optionsAreLocal) {
+        if (!this.paneSource.optionsAreLocal) {
             this.preFilterOptionsForRemoteMode(listOptions.values, this.valueList);
             this.preFilterOptionsForRemoteMode(listOptions.valueSets, this.valueSetList);
         }
@@ -104,20 +118,21 @@ export class PicklistService {
     }
 
     public loadValuesForValueset(valueset: ValueSetListOption) {
+        // TODO: Fix this
         valueset.loadingValues = true;
-        // todo: what to do here?
-        // return this.optionsSource.getValuesForValueset(valueset.option.valueSetGuid)
-        //     .then(values => {
-        //         valueset.subValuesSelectList.filteredOptions.length = 0;
-        //         values.forEach(v => {
-        //             valueset.subValuesSelectList.filteredOptions.push(new ValueListOption(v, v.code));
-        //         });
-        //     }).catch(() => {
-        //         console.warn('Unable to load values for valueset');
-        //         valueset.showValues = false;
-        //     }).then(() => {
-        //         valueset.loadingValues = false;
-        //     });
+        if (!this.paneSource.getValuesForValueset) { return; }
+        this.paneSource.getValuesForValueset(valueset.option.code)
+            .subscribe(values => {
+                valueset.subValuesSelectList.filteredOptions.length = 0;
+                values.forEach(v => {
+                    valueset.subValuesSelectList.filteredOptions.push(new ValueListOption(v, v.code));
+                });
+            }, () => {
+                console.warn('Unable to load values for valueset');
+                valueset.showValues = false;
+            }, () => {
+                valueset.loadingValues = false;
+            });
     }
 
     public clearList<T extends SelectListOption>(list: FilterableSelectList<T>) {
@@ -145,7 +160,7 @@ export class PicklistService {
         options: T[],
         list: FilterableSelectList<T>,
         companionList: FilterableSelectList<T> | null = null) {
-            if (!this.optionsSource.isPaged && this.pane.shouldExcludeCompanion && companionList) {
+            if (!this.paneSource.isPaged && this.pane.shouldExcludeCompanion && companionList) {
                 options = options.filter(o => !companionList.options.get(o.code));
             }
             options.forEach(o => {

@@ -4,7 +4,7 @@ import { PicklistFilterService } from './picklist-filter.service';
 import { PicklistFilterRemoteService } from './picklist-filter-remote.service';
 import { PicklistValuesetMovingService } from './picklist-valueset-moving.service';
 import { WorkTrackerService } from './work-tracker.service';
-import { SelectListOption, FilterableSelectList } from '../picklist.model';
+import { ValueListOption, FilterableSelectList } from '../pane/picklist-pane.model';
 
 let service: PicklistFilterService;
 
@@ -29,9 +29,9 @@ describe('Picklist',
     () => {
         beforeEach(() => {
             testSetup();
-            this.listItem = new SelectListOption({ code: 'testing1212', title: 'This is not a test zy' }, 'testing1212');
-            this.listItem2 = new SelectListOption({ code: 'zyzyzy', title: 'zyzyzy' }, 'zyzyzy');
-            this.list = new FilterableSelectList<SelectListOption>();
+            this.listItem = new ValueListOption({ code: 'testing1212', title: 'This is not a test zy' }, 'testing1212');
+            this.listItem2 = new ValueListOption({ code: 'zyzyzy', title: 'zyzyzy' }, 'zyzyzy');
+            this.list = new FilterableSelectList<ValueListOption>();
             this.list.options.set(this.listItem.code, this.listItem);
             this.list.options.set(this.listItem2.code, this.listItem2);
             this.list.optionFieldsToSearch = ['code', 'title'];
@@ -64,15 +64,6 @@ describe('Picklist',
                     () => {
                         service.searchTerm = '1212';
                         this.list.optionFieldsToSearch = ['title'];
-                        service.filterListLocally(this.list);
-                        expect(this.list.filteredOptions.length).toBe(0);
-                    });
-
-                it('won\'t break when something is null',
-                    () => {
-                        service.searchTerm = 'nope';
-                        const nullListItem = new SelectListOption({ code: null, title: null }, '');
-                        this.list.options.set(this.listItem.code, nullListItem);
                         service.filterListLocally(this.list);
                         expect(this.list.filteredOptions.length).toBe(0);
                     });

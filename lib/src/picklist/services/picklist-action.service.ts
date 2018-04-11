@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FilterableSelectList, SelectListOption, ValueSetListOption, ValueListOption } from '../picklist.model';
+import { FilterableSelectList, SelectListOption, ValueSetListOption, ValueListOption, isSubList } from '../pane/picklist-pane.model';
 import { PicklistService } from './picklist.service';
-import * as SelectListGuards from '../picklist-model-guards';
 
 @Injectable()
 export class PicklistActionService {
@@ -83,7 +82,7 @@ export class PicklistActionService {
 
     private ctrlClick<T extends SelectListOption>(list: FilterableSelectList<T>, item: T) {
         // if ctrl clicking a sub value of a valueset that is selected (such that all subvalues appear selected)
-        if (SelectListGuards.isSubList(list) && list.parentValueSet.selected) {
+        if (isSubList(list) && list.parentValueSet.selected) {
             this.selectAllInList<ValueListOption>(list);
             this.deselectItem(this.valueSetList, list.parentValueSet);
             this.deselectItem<ValueListOption>(list, item);

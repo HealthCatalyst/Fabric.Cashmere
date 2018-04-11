@@ -1,130 +1,80 @@
 import { Observable } from 'rxjs/Rx';
+import { PicklistPaneComponent } from './pane/picklist-pane.component'
 
 export type PicklistValueType = 'values' | 'valuesets' | 'both';
-
-export class PicklistModel {
-    public codeIsSignificant = false;
-    public allowValuesets = false;
-    public selectedOptions = new PickListOptions(); // options selected in modal
-    public optionsSource = new PicklistOptionsSource();
-}
-
-export class PicklistOptionsSource {
-    public optionsAreLocal = true; // if false, use getOptions function to retrieve options from some external source
-    public isPaged = false;
-    public options = new PickListOptions();
-    public getOptions: (params: RemoteMultiselectQueryParams) => Observable<IFilterComponentValueBase>;
-    public getValuesForValueset: (valueSetGuid: string) => Promise<IValueOption[]>;
-}
 
 export interface IValueOption { code: string, title: string };
 export interface IValueSetOption extends IValueOption { subValues: IValueOption[] };
 
-export class PickListOptions {
-    public values: IValueOption[] = [];
-    public valueSets: IValueSetOption[] = [];
+export interface IPicklistOptions {
+    values: IValueOption[];
+    valueSets: IValueSetOption[];
 }
 
-export class FilterableSelectList<T extends SelectListOption> {
-    public selectedOptions = new Map<string, T>();
-    public lastClickedOption: T | null = null;
-    public filteredOptions = new Array<T>();
-    public optionFieldsToSearch: Array<string> = ['title'];
-    public sortFunc: (a: SelectListOption, b: SelectListOption) => number;
-    public isActive = true;
-
-    public additionalRemoteOptions = 0;
-    public loadingOptions: Observable<boolean>;
-    public appendingOptions: Observable<boolean>;
-    constructor(public options = new Map<string, T>()) {}
+export interface IPicklistTransferParams {
+    source: PicklistPaneComponent;
+    destination: PicklistPaneComponent;
 }
 
-export class SubSelectList extends FilterableSelectList<ValueListOption> {
-    public parentValueSet: ValueSetListOption;
+export interface IPicklistSettings {
+    codeIsSignificant?: boolean;
+    useValuesets?: boolean;
+    selected?: IPicklistOptions; // options selected in modal
+    options: IPicklistOptionsSource; // options available for choosing
 }
 
-export class SelectListOption {
-    public option: any; // needs to be a class that implements the IListOption interface
-    public selected: boolean;
-    public code: string;
-
-    constructor(option: any, code: string) {
-        this.option = option;
-        this.selected = false;
-        this.code = code;
-    }
+export interface IPicklistOptionsSource {
+    values?: IValueOption[];
+    valueSets?: IValueSetOption[];
+    isPaged?: boolean;
+    getOptions?: (params: PicklistRemoteQueryOptions) => Observable<IPicklistRemoteQueryResponse>;
+    getValuesForValueset?: (code: string) => Observable<IValueOption[]>;
 }
 
-export class ValueListOption extends SelectListOption {
-    public option: IValueOption;
+export class PicklistSettings implements IPicklistSettings {
+    public codeIsSignificant = false;
+    public useValuesets = false;
+    public selected = { values: new Array<IValueOption>(), valueSets: new Array<IValueSetOption>() }; // options selected in modal
+    public options = new PicklistOptionsSource(); // options available for choosing
 }
 
-export class ValueSetListOption extends SelectListOption {
-    public option: IValueSetOption;
-    public subValuesSelectList = new SubSelectList();
-    public showValues = false;
-    public loadingValues = false;
-
-    constructor(option: IValueSetOption, code: string) {
-        super(option, code);
-        this.subValuesSelectList.parentValueSet = this;
-        if (option.subValues && option.subValues.length > 0) {
-            new SubSelectList()
-        }
-    }
-}
-
-export class PicklistValueOptions {
-    public values = new Map<string, ValueListOption>();
-    public valueSets = new Map<string, ValueSetListOption>();
+export class PicklistOptionsSource implements IPicklistOptionsSource {
+    public values = new Array<IValueOption>();
+    public valueSets = new Array<IValueSetOption>()
+    public isPaged = false;
+    public getOptions?: (params: PicklistRemoteQueryOptions) => Observable<IPicklistRemoteQueryResponse>;
+    public getValuesForValueset?: (code: string) => Observable<IValueOption[]>;
+    public optionsAreLocal(): boolean { return (this.values && this.values.length > 0) || (this.valueSets && this.valueSets.length > 0) }
 }
 
 
-// Remote server stuff
+/**
+  * Interfaces for Remote Queries
+  */
 export interface IPagedCollection<IT> {
-    pagerSettings: IPagerSettings;
+    pagerSettings: IPageSettings;
     totalItems: number;
     totalPages: number;
     values: IT[];
 }
-export interface IPageQueryOptionsBase {
+
+export interface IPageSettings {
     currentPage: number;
     itemsPerPage: number;
 }
-export interface IPagerSettings {
-    currentPage: number;
-    itemsPerPage: number;
-}
-export interface IFilterComponentValueBase {
-    componentKey: string;
-}
-export interface IPagedSelectOptionGroup {
-    componentKey: string;
-    pagedValues: IPagedCollection<IValueOption>;
+
+export interface IPicklistRemoteQueryResponse {
+    pagedValues?: IPagedCollection<IValueOption>;
+    pagedValueSets?: IPagedCollection<IValueSetOption>;
+    values?: Array<IValueOption>,
+    valueSets?: Array<IValueSetOption>
 }
 
-export interface IValueOptionGroup {
-    componentKey: string;
-    compatibleValueSets: IValueSetOption[];
-    selectOptions: IValueOption[];
-}
-
-export interface IValueSetOptionGroup {
-    componentKey: string;
-    pagedValues: IPagedCollection<IValueOption>;
-    pagedValueSets: IPagedCollection<IValueSetOption>;
-}
-
-export class RemoteMultiselectQueryParams {
-    public valuePagerSettings: IPagerSettings;
-    public valueSetPagerSettings: IPagerSettings;
-    public valueQueryOptions: MultiselectQueryOptions;
-    public valueSetQueryOptions: MultiselectQueryOptions;
-}
-
-export class MultiselectQueryOptions {
-    public alreadySelected: string[] = [];
-    public search: string;
-    public shouldSearchCodes: boolean = false;
-    public sorting: { field: string; };
+export class PicklistRemoteQueryOptions {
+    valuePageSettings?: IPageSettings;
+    valueSetPageSettings?: IPageSettings;
+    constructor(
+        public picklist: IPicklistSettings,
+        public searchTerm: string,
+        public valueTypeToQuery: PicklistValueType) {}
 }
