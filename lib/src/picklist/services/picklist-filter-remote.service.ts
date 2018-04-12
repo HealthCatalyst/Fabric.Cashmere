@@ -23,7 +23,6 @@ export class PicklistFilterRemoteService {
     public get searchTerm(): string { return this.filterService.searchTerm; }
     public currentValuePage = 1;
     public currentValueSetPage = 1;
-    private defaultItemsPerPage = 100;
     private cancelSearch = new Subject<void>();
     private get cancelSearch$(): Observable<void> { return this.cancelSearch.asObservable(); };
     private options$: Observable<IPicklistRemoteQueryResponse> = Observable.from([]);
@@ -96,7 +95,7 @@ export class PicklistFilterRemoteService {
     }
 
     private buildPagerSettings(currentPage: number, selectAllCount: number | null) {
-        const pagerSettings = { currentPage: 1, itemsPerPage: this.defaultItemsPerPage };
+        const pagerSettings = { currentPage: 1, itemsPerPage: this.listService.paneSource.pageSize };
         pagerSettings.currentPage = selectAllCount ? 1 : currentPage;
         pagerSettings.itemsPerPage = selectAllCount || pagerSettings.itemsPerPage;
         return pagerSettings;
@@ -104,7 +103,7 @@ export class PicklistFilterRemoteService {
 
     private resetPagingForSelectAllIfNeeded(selectAllCount: number | null = null) {
         if (selectAllCount) {
-            this.currentValuePage = Math.floor(selectAllCount / this.defaultItemsPerPage);
+            this.currentValuePage = Math.floor(selectAllCount / this.listService.paneSource.pageSize);
         }
     }
 

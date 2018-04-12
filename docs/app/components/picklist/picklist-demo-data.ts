@@ -4,46 +4,57 @@ import {
     IValueSetOption,
     PicklistRemoteQueryOptions,
     IPicklistRemoteQueryResponse,
-    IPicklistSettings } from '../../../../lib/src/picklist/picklist.model';
+    IPicklistSettings,
+    IPageSettings,
+    IPagedCollection,
+    IPicklistOptions } from '../../../../lib/src/picklist/picklist.model';
 import { PicklistComponent } from '../../../../lib/src/picklist/picklist.component';
 
 export class FakeRemoteOptionsService {
     public getOptions(params: PicklistRemoteQueryOptions): Observable<IPicklistRemoteQueryResponse> {
-        const valuePage = params.valuePageSettings ? params.valuePageSettings.currentPage : 1;
-        const valueSetPage = params.valueSetPageSettings ? params.valueSetPageSettings.currentPage : 1;
-        const vals = getFakeValues(undefined, params.searchTerm);
-        const valSets = getFakeValueSets(undefined, params.searchTerm, false);
-        const valStart = (valuePage - 1) * 25;
-        const valSetStart = (valueSetPage - 1) * 25;
 
-        return Observable.of({
-            pagedValues: {
-                pagerSettings: { currentPage: valuePage, itemsPerPage: 25 },
-                totalItems: vals.length,
-                totalPages: vals.length / 25,
-                values: vals.slice(valStart, valStart + 25)
-            },
-            pagedValueSets: {
-                pagerSettings: { currentPage: valuePage, itemsPerPage: 25 },
-                totalItems: valSets.length,
-                totalPages: valSets.length / 25,
-                values: valSets.slice(valSetStart, valSetStart + 25)
-            }
-        }).delay(1000);
+        const response: IPicklistRemoteQueryResponse = {};
+        if (params.valueTypeToQuery === 'values' || params.valueTypeToQuery === 'both' && params.valuePageSettings) {
+            const vals = getFakeValues(params.searchTerm);
+            const alreadySelectedCodes = params.picklist.selected ? params.picklist.selected.values.map(e => e.code) : [];
+            // tslint:disable-next-line:no-non-null-assertion
+            response.pagedValues = this.buildResponse<IValueOption>(params.valuePageSettings!, vals, alreadySelectedCodes);
+        }
+        if (params.valueTypeToQuery === 'valuesets' || params.valueTypeToQuery === 'both' && params.valueSetPageSettings) {
+            const valSets = getFakeValueSets(params.searchTerm, false);
+            const alreadySelectedCodes = params.picklist.selected ? params.picklist.selected.valueSets.map(e => e.code) : [];
+            // tslint:disable-next-line:no-non-null-assertion
+            response.pagedValueSets = this.buildResponse<IValueSetOption>(params.valueSetPageSettings!, valSets, alreadySelectedCodes);
+        }
+
+        return Observable.of(response).delay(1000);
     }
 
     public getValuesForValueset(code: string): Observable<IValueOption[]> {
-        return Observable.of(getFakeValues(10)).delay(1000);
+        return Observable.of(getFakeValues('', 10)).delay(1000);
+    }
+
+    private buildResponse<T extends IValueOption>(pgSettings: IPageSettings, vals: T[], selected: string[]): IPagedCollection<T> {
+        const page = pgSettings.currentPage;
+        const start = (page - 1) * pgSettings.itemsPerPage;
+        const valsToReturn = vals.filter(e => selected ? !selected.some(s => s === e.code ) : true);
+
+        return {
+            pagerSettings: { currentPage: pgSettings.currentPage, itemsPerPage: pgSettings.itemsPerPage },
+            totalItems: valsToReturn.length,
+            totalPages: valsToReturn.length / pgSettings.itemsPerPage,
+            values: valsToReturn.slice(start, start + pgSettings.itemsPerPage)
+        };
     }
 }
 
-export function getFakeValues(count?: number, search: string = ''): IValueOption[] {
+export function getFakeValues(search: string = '', count: number = 100): IValueOption[] {
     return values.filter(e => search ? e.title.toLocaleLowerCase().indexOf(search) > -1 : true).slice(0, count)
 }
 
-export function getFakeValueSets(count?: number, search: string = '', preloadValues: boolean = true): IValueSetOption[] {
-    const subValues = preloadValues ? getFakeValues(10) : [];
-    const valuesets = valueSets.filter(e => search ? e.title.toLocaleLowerCase().indexOf(search) > -1 : true).slice(0, count)
+export function getFakeValueSets(search: string = '', preloadValues: boolean = true): IValueSetOption[] {
+    const subValues = preloadValues ? getFakeValues('', 10) : [];
+    const valuesets = valueSets.filter(e => search ? e.title.toLocaleLowerCase().indexOf(search) > -1 : true);
     valuesets.forEach(e => e.subValues = subValues);
     return valuesets;
 }

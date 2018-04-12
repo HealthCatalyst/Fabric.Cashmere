@@ -17,7 +17,7 @@ export class PicklistValuesetMovingService {
         this.filterService = filterService;
     }
 
-    public moveOutValuesets(optionsToMove: PicklistValueOptions, shouldBreakValuesets: boolean = false) {
+    public moveOutValuesets(optionsToMove: PicklistValueOptions, pane: PicklistPaneComponent, shouldBreakValuesets: boolean = false) {
         this.valueSetList.selectedOptions.forEach(v => {
             v.showValues = false;
             optionsToMove.valueSets.set(v.code, v);
@@ -28,14 +28,14 @@ export class PicklistValuesetMovingService {
             if (valueset.selected || valueset.subValuesSelectList.selectedOptions.size < 1) { return; }
 
             if (shouldBreakValuesets) {
-                this.breakValueset(valueset, optionsToMove);
+                this.breakValueset(valueset, optionsToMove, pane.companion);
             } else {
-                this.moveSubValues(valueset.subValuesSelectList.selectedOptions, this.listService.pane);
+                this.moveSubValues(valueset.subValuesSelectList.selectedOptions, pane);
             }
         });
     }
 
-    private breakValueset(valueset: ValueSetListOption, optionsToMove: PicklistValueOptions) {
+    private breakValueset(valueset: ValueSetListOption, optionsToMove: PicklistValueOptions, companionPane: PicklistPaneComponent | null) {
         valueset.showValues = false;
         optionsToMove.valueSets.set(valueset.code, valueset);
         this.valueSetList.options.delete(valueset.code);
@@ -45,12 +45,15 @@ export class PicklistValuesetMovingService {
             .filter(o => !o.selected)
             .forEach(o => { unselectedSubValues.set(o.code, new ValueListOption(o.option, o.code)); });
 
-        this.moveSubValues(unselectedSubValues, this.listService.pane.companion);
+        if (!companionPane) { return; }
+        this.moveSubValues(unselectedSubValues, companionPane);
     }
 
-    private moveSubValues(valuesMap: Map<string, ValueListOption>, source: PicklistPaneComponent) {
-        this.removeValuesFromPane(valuesMap, source);
-        valuesMap.forEach(o => { source.companion.valueList.options.set(o.code, new ValueListOption(o.option, o.code)); });
+    private moveSubValues(valuesMap: Map<string, ValueListOption>, sourcePane: PicklistPaneComponent) {
+        this.removeValuesFromPane(valuesMap, sourcePane);
+        if (!sourcePane.companion) { return; }
+        // tslint:disable-next-line:no-non-null-assertion
+        valuesMap.forEach(o => { sourcePane.companion!.valueList.options.set(o.code, new ValueListOption(o.option, o.code)); });
     }
 
     /**
@@ -63,7 +66,7 @@ export class PicklistValuesetMovingService {
 
         valuesMap.forEach(v => {
             const optionDeleted = pane.valueList.options.delete(v.code);
-            const optionAlreadyInCompanionList = pane.companion.valueList.options.has(v.code);
+            const optionAlreadyInCompanionList = pane.companion ? pane.companion.valueList.options.has(v.code) : false;
             if (!optionDeleted && pane.isPaged && !optionAlreadyInCompanionList) { pane.valueList.additionalRemoteOptions--; }
         });
     }

@@ -98,7 +98,7 @@ export class PicklistService {
             this.valueList.options.delete(o.code);
         });
 
-        this.valuesetMovingService.moveOutValuesets(optionsToMove, shouldBreakValuesets);
+        this.valuesetMovingService.moveOutValuesets(optionsToMove, this.pane, shouldBreakValuesets);
 
         this.filterService.filterListLocally(this.valueList);
         this.filterService.filterListLocally(this.valueSetList);
