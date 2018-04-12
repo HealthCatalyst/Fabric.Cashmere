@@ -22,6 +22,7 @@ $pane-header-height: 30px;
             flex: 0 0 $pane-header-height;
 
             .hc-tab-bar-horizontal {
+                flex: 0 0 auto;
                 border-bottom: none;
                 a { font-size: 13px; }
             }
@@ -29,7 +30,10 @@ $pane-header-height: 30px;
             h2 {
                 font-size: 16px;
                 font-weight: bold;
-                margin: 5px 0 8px;
+                margin: 3px 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
 

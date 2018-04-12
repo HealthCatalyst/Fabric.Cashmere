@@ -11,14 +11,12 @@ export interface IPicklistOptions {
     valueSets: IValueSetOption[];
 }
 
-export interface IPicklistTransferParams {
-    source: PicklistPaneComponent;
-    destination: PicklistPaneComponent;
-}
-
 export interface IPicklistSettings {
     codeIsSignificant?: boolean;
     useValuesets?: boolean;
+    showHeaderText?: boolean;
+    leftHeaderText?: string;
+    rightHeaderText?: string;
     selected?: IPicklistOptions; // options selected in modal
     options: IPicklistOptionsSource; // options available for choosing
 }
@@ -35,6 +33,9 @@ export interface IPicklistOptionsSource {
 export class PicklistSettings implements IPicklistSettings {
     public codeIsSignificant = false;
     public useValuesets = false;
+    public showHeaderText = true;
+    public leftHeaderText = 'Available';
+    public rightHeaderText = 'Selected';
     public selected = { values: new Array<IValueOption>(), valueSets: new Array<IValueSetOption>() }; // options selected in modal
     public options = new PicklistOptionsSource(); // options available for choosing
 }

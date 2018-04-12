@@ -7,7 +7,7 @@ import { PicklistFilterService } from '../services/picklist-filter.service';
 import { PicklistFilterRemoteService } from '../services/picklist-filter-remote.service';
 import { PicklistValuesetMovingService } from '../services/picklist-valueset-moving.service';
 import { WorkTrackerService } from '../services/work-tracker.service';
-import { IPicklistTransferParams, PicklistSettings } from '../picklist.model';
+import { PicklistSettings } from '../picklist.model';
 import { FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOption } from './picklist-pane.model';
 import { PicklistOptionsSource, PicklistValueType } from '../picklist.model';
 
@@ -26,7 +26,7 @@ import { PicklistOptionsSource, PicklistValueType } from '../picklist.model';
 })
 export class PicklistPaneComponent {
     @Input() public emptyMsg: string = 'No options';
-    @Output() public moveSelectedItems = new EventEmitter<IPicklistTransferParams>();
+    @Output() public moveSelectedItems = new EventEmitter<PicklistPaneComponent>();
     @ViewChild('listContainer') public listContainerEl: ElementRef | undefined;
     @ViewChild('search') public searchInputEl: ElementRef | undefined;
     public companion: PicklistPaneComponent | null = null;
@@ -135,7 +135,7 @@ export class PicklistPaneComponent {
         this.selectAllWasLastClicked = false;
         event.stopPropagation();
         this.actionService.onItemDoubleClicked(event, list, item);
-        this.fireMoveSelectedItems(this, this.companion);
+        this.moveSelectedItems.emit(this);
     }
 
     public selectAll() {
@@ -153,12 +153,6 @@ export class PicklistPaneComponent {
     public selectNone() {
         this.selectAllWasLastClicked = false;
         this.actionService.selectNone();
-    }
-
-    private fireMoveSelectedItems(source: PicklistPaneComponent, destination: PicklistPaneComponent | null) {
-        if (this.companion && destination) {
-            this.moveSelectedItems.emit({ source: source, destination: destination });
-        }
     }
 
     private loadAndSelectAll(numberToLoad: number) {

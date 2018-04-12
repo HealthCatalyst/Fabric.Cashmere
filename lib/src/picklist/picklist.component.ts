@@ -1,11 +1,6 @@
 import { Component, ViewChild, Output, Input, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { PicklistPaneComponent } from './pane/picklist-pane.component';
-import {
-    PicklistSettings,
-    PicklistOptionsSource,
-    IPicklistSettings,
-    IPicklistOptions,
-    IPicklistTransferParams } from './picklist.model';
+import { PicklistSettings, PicklistOptionsSource, IPicklistSettings, IPicklistOptions } from './picklist.model';
 
 @Component({
     selector: 'hc-picklist',
@@ -27,6 +22,10 @@ export class PicklistComponent {
         this.resetActiveValueTypeAsNeeded();
     }
 
+    public getValue(): IPicklistOptions {
+        return this.picklistSettings.selected;
+    }
+
     public setActiveValueType(pane: 'values' | 'valueSets') {
         if (!this.available) { console.warn('Available picklist pane not available yet.'); return; }
 
@@ -36,16 +35,16 @@ export class PicklistComponent {
         this.available.scrollToTop();
     }
 
-    public moveSelectedItems(selectBoxes: IPicklistTransferParams) {
-        const shouldBreakValuesets = selectBoxes.source === this.confirmed;
-        const selectedOptions = selectBoxes.source.listService.moveOutSelectedOptions(shouldBreakValuesets);
-        selectBoxes.destination.listService.addOptions(selectedOptions);
-        selectBoxes.source.filterService.reloadIfEmpty();
+    public moveSelectedItems(pane: PicklistPaneComponent) {
+        const shouldBreakValuesets = pane === this.confirmed;
+        const selectedOptions = pane.listService.moveOutSelectedOptions(shouldBreakValuesets);
+        if (pane.companion) {
+            pane.companion.listService.addOptions(selectedOptions);
+        } else {
+            console.warn('This pane does not have a companion pane to move the select options in to.');
+        }
+        pane.filterService.reloadIfEmpty();
         this.applyChangeToModel();
-    }
-
-    public getValue(): IPicklistOptions {
-        return this.picklistSettings.selected;
     }
 
     private resetPanes(settings: IPicklistSettings) {

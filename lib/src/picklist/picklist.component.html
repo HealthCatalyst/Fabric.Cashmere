@@ -1,7 +1,7 @@
 <div class="hc-picklist">
     <div class="pane">
         <div class="pane-header">
-            <h2>Available</h2>
+            <h2 *ngIf="picklistSettings.showPaneHeaders">{{picklistSettings.leftPaneHeaderText}}</h2>
             <div *ngIf="picklistSettings.useValuesets" class="hc-tab-bar-horizontal">
                 <a title="Search for Value Sets"
                         (click)="setActiveValueType('valueSets')"
@@ -21,12 +21,12 @@
 
     <div class="move-btns">
         <button hc-button color="primary-alt" type="button" name="addBtn"
-                (click)="moveSelectedItems({source: available, destination: confirmed});"
+                (click)="moveSelectedItems(available);"
                 [disabled]="leftToRightMoveBtnIsDisabled">
             <hc-icon icon-sm fontSet="fa" fontIcon="fa-arrow-right"></hc-icon>
         </button>
         <button hc-button color="primary-alt" type="button" name="removeBtn"
-                (click)="moveSelectedItems({source: confirmed, destination: available});"
+                (click)="moveSelectedItems(confirmed);"
                 [disabled]="!confirmed.isAnySelected()">
             <hc-icon icon-sm fontSet="fa" fontIcon="fa-arrow-left"></hc-icon>
         </button>
@@ -34,7 +34,7 @@
 
     <div class="pane">
         <div class="pane-header">
-            <h2>Selected</h2>
+            <h2 *ngIf="picklistSettings.showPaneHeaders">{{picklistSettings.rightPaneHeaderText}}</h2>
         </div>
         <hc-picklist-pane #confirmedList
             emptyMsg="No options selected."
