@@ -12,7 +12,16 @@
 
     <hc-tile>
         <h5>Example</h5>
-        <hc-picklist></hc-picklist>
+        <hc-picklist [settings]="getConfigForSelection()"></hc-picklist>
+
+        <div class="picklist-config">
+            <label hc-label>Change Picklist Configuration:</label>
+            <hc-select [(ngModel)]="selectedConfig">
+                <option value="simpleConfig">Simple</option>
+                <option value="complexConfig">Values + Valuesets</option>
+                <option value="remoteConfig">Loaded From Server: Values + Valusets</option>
+            </hc-select>
+        </div>
     </hc-tile>
 
     </hc-tab>

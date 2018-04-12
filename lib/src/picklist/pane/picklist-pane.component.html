@@ -40,7 +40,7 @@
                                 <hc-icon icon-sm class="vs-folder" fontSet="fa" [fontIcon]="item.showValues ? 'fa-folder-open-o' : 'fa-folder-o'"></hc-icon>
                             </span>
                             <!-- TODO: more deets for the valueset -->
-                            <span class="vs-title">{{item.option.name || "Untitled"}} (20)</span>
+                            <span class="vs-title">{{item.option.title || "Untitled"}} ({{item.option.subValueCount}})</span>
                         </div>
                         <div>
                             <!-- Value set Values List (closed by default) -->
@@ -96,10 +96,8 @@
 
                 <!-- Load More link for values, available when paging -->
                 <tr *ngIf="isPaged && optionsShowingCount < optionsAvailableCount" class="text-center value-option-row load-more-row">
-                    <td colspan="2">
-                        <a class="text-link" (click)="triggerLoadMore('values')" *ngIf="!(valueList.appendingOptions | async)">Load More</a>
-                        <hc-progress-dots *ngIf="valueList.appendingOptions | async"></hc-progress-dots>
-                    </td>
+                    <a class="text-link" (click)="triggerLoadMore('values')" *ngIf="!(valueList.appendingOptions | async)">Load More</a>
+                    <hc-progress-dots *ngIf="valueList.appendingOptions | async"></hc-progress-dots>
                 </tr>
             </tbody>
         </table>

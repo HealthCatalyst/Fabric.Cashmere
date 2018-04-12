@@ -4,7 +4,7 @@ import { PicklistPaneComponent } from './pane/picklist-pane.component'
 export type PicklistValueType = 'values' | 'valuesets' | 'both';
 
 export interface IValueOption { code: string, title: string };
-export interface IValueSetOption extends IValueOption { subValues: IValueOption[] };
+export interface IValueSetOption extends IValueOption { subValueCount: number, subValues: IValueOption[] };
 
 export interface IPicklistOptions {
     values: IValueOption[];
@@ -27,6 +27,7 @@ export interface IPicklistOptionsSource {
     values?: IValueOption[];
     valueSets?: IValueSetOption[];
     isPaged?: boolean;
+    pageSize?: number;
     getOptions?: (params: PicklistRemoteQueryOptions) => Observable<IPicklistRemoteQueryResponse>;
     getValuesForValueset?: (code: string) => Observable<IValueOption[]>;
 }
@@ -42,6 +43,7 @@ export class PicklistOptionsSource implements IPicklistOptionsSource {
     public values = new Array<IValueOption>();
     public valueSets = new Array<IValueSetOption>()
     public isPaged = false;
+    public pageSize = 100;
     public getOptions?: (params: PicklistRemoteQueryOptions) => Observable<IPicklistRemoteQueryResponse>;
     public getValuesForValueset?: (code: string) => Observable<IValueOption[]>;
     public optionsAreLocal(): boolean { return (this.values && this.values.length > 0) || (this.valueSets && this.valueSets.length > 0) }

@@ -46,7 +46,7 @@ export class PicklistService {
         this.filterService.reset(this);
         this.valuesetMovingService.reset(this, this.filterService);
 
-        if (this.paneSource.optionsAreLocal) {
+        if (this.paneSource.optionsAreLocal()) {
             this.updateValueList(this.paneSource.values);
             this.updateValueSetList(this.paneSource.valueSets);
             this.filterService.filterListLocally(this.valueList);
@@ -79,7 +79,7 @@ export class PicklistService {
     }
 
     public addOptions(listOptions: PicklistValueOptions) {
-        if (!this.paneSource.optionsAreLocal) {
+        if (!this.paneSource.optionsAreLocal()) {
             this.preFilterOptionsForRemoteMode(listOptions.values, this.valueList);
             this.preFilterOptionsForRemoteMode(listOptions.valueSets, this.valueSetList);
         }

@@ -89,8 +89,13 @@
             }
 
             .load-more-row {
+                display: block;
                 height: 36px;
                 font-size: 12px;
+                text-align: center;
+                font-weight: bold;
+                padding: 11px;
+                a { cursor: pointer; }
             }
 
             th {
