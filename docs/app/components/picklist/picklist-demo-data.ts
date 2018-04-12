@@ -12,7 +12,7 @@ export class FakeRemoteOptionsService {
         const valuePage = params.valuePageSettings ? params.valuePageSettings.currentPage : 1;
         const valueSetPage = params.valueSetPageSettings ? params.valueSetPageSettings.currentPage : 1;
         const vals = getFakeValues(undefined, params.searchTerm);
-        const valSets = getFakeValueSets(undefined, params.searchTerm);
+        const valSets = getFakeValueSets(undefined, params.searchTerm, false);
         const valStart = (valuePage - 1) * 25;
         const valSetStart = (valueSetPage - 1) * 25;
 
