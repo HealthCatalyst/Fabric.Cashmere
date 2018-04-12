@@ -5,6 +5,8 @@ import { PicklistService } from '../services/picklist.service';
 import { PicklistActionService } from '../services/picklist-action.service';
 import { PicklistFilterService } from '../services/picklist-filter.service';
 import { PicklistFilterRemoteService } from '../services/picklist-filter-remote.service';
+import { PicklistFilterLocalService } from '../services/picklist-filter-local.service';
+import { PicklistStateService } from '../services/picklist-state.service';
 import { PicklistValuesetMovingService } from '../services/picklist-valueset-moving.service';
 import { WorkTrackerService } from '../services/work-tracker.service';
 import { PicklistSettings } from '../picklist.model';
@@ -17,10 +19,12 @@ import { PicklistOptionsSource, PicklistValueType } from '../picklist.model';
     styleUrls: ['picklist-pane.component.scss'],
     providers: [
         PicklistService,
+        PicklistStateService,
         PicklistValuesetMovingService,
         PicklistActionService,
         PicklistFilterService,
         PicklistFilterRemoteService,
+        PicklistFilterLocalService,
         WorkTrackerService ],
     encapsulation: ViewEncapsulation.None
 })
@@ -40,18 +44,12 @@ export class PicklistPaneComponent {
     constructor(
         public listService: PicklistService,
         public actionService: PicklistActionService,
-        public filterService: PicklistFilterService) {
-        }
+        public filterService: PicklistFilterService) {}
 
-    public reset(
-            source: PicklistOptionsSource,
-            settings: PicklistSettings,
-            companion: PicklistPaneComponent,
-            excludeCompanion = false,
-            codeIsSignificant: boolean) {
+    public reset(source: PicklistOptionsSource, settings: PicklistSettings, companion: PicklistPaneComponent, excludeCompanion = false) {
         this.companion = companion;
         this.shouldExcludeCompanion = excludeCompanion;
-        this.codeIsSignificant = codeIsSignificant;
+        this.codeIsSignificant = settings.codeIsSignificant;
         this.selectAllWasLastClicked = false;
         this.searchTerm = '';
         this.wireUpSearch();
@@ -60,7 +58,7 @@ export class PicklistPaneComponent {
 
     public get valueList(): FilterableSelectList<ValueListOption> { return this.listService.valueList; }
     public get valueSetList(): FilterableSelectList<ValueSetListOption> { return this.listService.valueSetList; }
-    public get isPaged(): boolean { return this.listService.paneSource.isPaged; }
+    public get isPaged(): boolean { return this.listService.optionsSource.isPaged; }
     public get optionsAvailableCount(): number { return (this.PicklistValueOptionsTotal + this.valueSetOptionsTotal); }
     public get PicklistValueOptionsTotal(): number { return this.valueList.isActive ? this.listService.totalValuesCount : 0; }
     public get valueSetOptionsTotal(): number { return this.valueSetList.isActive ? this.listService.totalValueSetsCount : 0; }
@@ -171,6 +169,7 @@ export class PicklistPaneComponent {
             .distinctUntilChanged()
             .subscribe(t => {
                 this.filterService.runFilter(t);
+                this.selectNone();
             });
     }
 }

@@ -14,23 +14,20 @@ export class PicklistComponent {
     @ViewChild('availableList') public available: PicklistPaneComponent | undefined;
     @ViewChild('confirmedList') public confirmed: PicklistPaneComponent | undefined;
     public picklistSettings = new PicklistSettings();
+    public get value(): IPicklistOptions { return this.picklistSettings.selected; }
     public get leftToRightMoveBtnIsDisabled(): boolean { return this.available ? !this.available.isAnySelected() : false; }
 
     public resetState(settings: IPicklistSettings) {
         this.picklistSettings = Object.assign(new PicklistSettings(), settings);
         this.resetPanes(this.picklistSettings);
-        this.resetActiveValueTypeAsNeeded();
-    }
-
-    public getValue(): IPicklistOptions {
-        return this.picklistSettings.selected;
+        this.setActiveValueType(this.picklistSettings.useValuesets ? 'valueSets' : 'values');
     }
 
     public setActiveValueType(pane: 'values' | 'valueSets') {
         if (!this.available) { console.warn('Available picklist pane not available yet.'); return; }
 
-        this.available.valueList.isActive = pane === 'values';
-        this.available.valueSetList.isActive = pane === 'valueSets';
+        this.available.valueList.isActive = (pane === 'values');
+        this.available.valueSetList.isActive = (pane === 'valueSets');
         this.available.selectNone();
         this.available.scrollToTop();
     }
@@ -54,18 +51,10 @@ export class PicklistComponent {
         confirmedSource.values = this.picklistSettings.selected.values.slice(0);
         confirmedSource.valueSets = this.picklistSettings.selected.valueSets.slice(0);
         confirmedSource.getValuesForValueset = this.picklistSettings.options.getValuesForValueset;
-        this.confirmed.reset(confirmedSource, this.picklistSettings, this.available, false, this.picklistSettings.codeIsSignificant);
+        this.confirmed.reset(confirmedSource, this.picklistSettings, this.available, false);
 
         const availableSource = Object.assign(new PicklistOptionsSource(), this.picklistSettings.options);
-        this.available.reset(availableSource, this.picklistSettings, this.confirmed, true, this.picklistSettings.codeIsSignificant);
-    }
-
-    private resetActiveValueTypeAsNeeded() {
-        if (this.picklistSettings.useValuesets) {
-            this.setActiveValueType('valueSets');
-        } else {
-            this.setActiveValueType('values');
-        }
+        this.available.reset(availableSource, this.picklistSettings, this.confirmed, true);
     }
 
     private applyChangeToModel() {
@@ -75,7 +64,6 @@ export class PicklistComponent {
         this.picklistSettings.selected.values.length = 0;
         this.picklistSettings.selected.valueSets.length = 0;
         this.confirmed.valueList.options.forEach(e => this.picklistSettings.selected.values.push(e.option));
-        this.confirmed.valueSetList.options.forEach(e => this.picklistSettings.selected.valueSets
-            .push(e.option));
+        this.confirmed.valueSetList.options.forEach(e => this.picklistSettings.selected.valueSets.push(e.option));
     }
 }

@@ -1,21 +1,16 @@
 import { Injectable } from '@angular/core';
 
 import { PicklistFilterService } from './picklist-filter.service';
-import { PicklistService } from './picklist.service';
 import { PicklistPaneComponent } from '../pane/picklist-pane.component';
 import { FilterableSelectList, ValueSetListOption, ValueListOption, PicklistValueOptions } from '../pane/picklist-pane.model';
+import { PicklistStateService } from './picklist-state.service';
 
 @Injectable()
 export class PicklistValuesetMovingService {
-    public listService: PicklistService;
-    public filterService: PicklistFilterService;
-    public get valueList(): FilterableSelectList<ValueListOption> { return this.listService.valueList; }
-    public get valueSetList(): FilterableSelectList<ValueSetListOption> { return this.listService.valueSetList; }
+    public get valueList(): FilterableSelectList<ValueListOption> { return this.stateService.valueList; }
+    public get valueSetList(): FilterableSelectList<ValueSetListOption> { return this.stateService.valueSetList; }
 
-    public reset(listService: PicklistService, filterService: PicklistFilterService) {
-        this.listService = listService;
-        this.filterService = filterService;
-    }
+    public constructor(private filterService: PicklistFilterService, private stateService: PicklistStateService) {}
 
     public moveOutValuesets(optionsToMove: PicklistValueOptions, pane: PicklistPaneComponent, shouldBreakValuesets: boolean = false) {
         this.valueSetList.selectedOptions.forEach(v => {
@@ -61,7 +56,7 @@ export class PicklistValuesetMovingService {
      */
     private removeValuesFromPane(valuesMap: Map<string, ValueListOption>, pane: PicklistPaneComponent) {
         if (pane.isPaged) { // don't bother trying to remove values or decrement count for options that are already filtered out
-            this.listService.preFilterOptionsForRemoteMode(valuesMap, pane.valueList, pane.filterService.searchTokens);
+            this.filterService.preFilterOptionsForRemoteMode(valuesMap, pane.valueList);
         }
 
         valuesMap.forEach(v => {

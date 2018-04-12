@@ -1,7 +1,7 @@
 <div class="hc-picklist">
     <div class="pane">
         <div class="pane-header">
-            <h2 *ngIf="picklistSettings.showPaneHeaders">{{picklistSettings.leftPaneHeaderText}}</h2>
+            <h2 *ngIf="picklistSettings.showHeaderText">{{picklistSettings.leftHeaderText}}</h2>
             <div *ngIf="picklistSettings.useValuesets" class="hc-tab-bar-horizontal">
                 <a title="Search for Value Sets"
                         (click)="setActiveValueType('valueSets')"
@@ -34,7 +34,7 @@
 
     <div class="pane">
         <div class="pane-header">
-            <h2 *ngIf="picklistSettings.showPaneHeaders">{{picklistSettings.rightPaneHeaderText}}</h2>
+            <h2 *ngIf="picklistSettings.showHeaderText">{{picklistSettings.rightHeaderText}}</h2>
         </div>
         <hc-picklist-pane #confirmedList
             emptyMsg="No options selected."

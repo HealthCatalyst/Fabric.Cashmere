@@ -4,70 +4,55 @@ import { Observable, Subscription } from 'rxjs/Rx';
 import { FilterableSelectList, SelectListOption, ValueSetListOption, ValueListOption } from '../pane/picklist-pane.model';
 import { PicklistValueType } from '../picklist.model';
 import { WorkTrackerService } from './work-tracker.service';
-import { PicklistService } from './picklist.service';
 import { PicklistFilterRemoteService } from './picklist-filter-remote.service';
+import { PicklistFilterLocalService } from './picklist-filter-local.service';
+import { PicklistStateService } from './picklist-state.service';
 
 @Injectable()
 export class PicklistFilterService {
-    public listService: PicklistService;
-    public get valueList(): FilterableSelectList<ValueListOption> { return this.listService.valueList; }
-    public get valueSetList(): FilterableSelectList<ValueSetListOption> { return this.listService.valueSetList; }
-    public get codeIsSignificant(): boolean { return this.listService.pane.codeIsSignificant; }
+    public get valueList(): FilterableSelectList<ValueListOption> { return this.stateService.valueList; }
+    public get valueSetList(): FilterableSelectList<ValueSetListOption> { return this.stateService.valueSetList; }
     public get searchTokens(): string[] { return this.searchTerm.toLocaleLowerCase().replace(/\s+/g, ' ').split(' '); }
     public searchTerm = '';
 
-    constructor(private workTracker: WorkTrackerService, private remoteFilterService: PicklistFilterRemoteService) {}
+    constructor(
+        private workTracker: WorkTrackerService,
+        private stateService: PicklistStateService,
+        private remoteFilterService: PicklistFilterRemoteService,
+        private localFilterService: PicklistFilterLocalService) {}
 
-    public reset(listService: PicklistService) {
-        this.remoteFilterService.reset(this, listService);
-        this.listService = listService;
+    public reset() {
+        this.remoteFilterService.reset(this);
         this.searchTerm = '';
     }
 
     public runFilter(searchTerm: string) {
         this.searchTerm = searchTerm;
-        if (!this.listService.paneSource.isPaged) {
-            this.filterListLocally(this.valueList);
-            this.filterListLocally(this.valueSetList);
+        if (!this.stateService.optionsSource.isPaged) {
+            this.localFilterService.filter(this.valueList, this.searchTokens);
+            this.localFilterService.filter(this.valueSetList, this.searchTokens);
         } else {
             this.remoteFilterService.currentValuePage = 1;
             this.remoteFilterService.currentValueSetPage = 1;
-            const workTracker = this.workTracker.startObservable(() => this.remoteFilterService.filterOptionsRemote());
-            this.listService.showListLoadingIndicators(workTracker, 'both');
+            const workTracker = this.workTracker.startObservable(() => this.remoteFilterService.filter());
+            this.showListLoadingIndicators(workTracker, 'both');
         }
-        this.listService.pane.selectNone();
-    }
-
-    public filterListLocally<T extends SelectListOption>(list: FilterableSelectList<T>) {
-        list.filteredOptions = [];
-        list.options.forEach(item => {
-            if (this.itemHasSearchTokens(list, item, this.searchTokens)) {
-                list.filteredOptions.push(item);
-            }
-        });
-        list.filteredOptions.sort(this.getSortFunc(list));
-    }
-
-    public itemHasSearchTokens<T extends SelectListOption>(list: FilterableSelectList<T>, item: T, searchTokens: string[]): boolean {
-        const valuesToSearchIn = [item.option.title, list.codeIsSignificant ? item.option.code : ''];
-        valuesToSearchIn.filter(val => !!val);
-        return searchTokens.every(token => valuesToSearchIn.some(value => value.toLocaleLowerCase().indexOf(token) > -1));
     }
 
     public filterOptionsRemote(type: PicklistValueType = 'both', shouldAppend = false, selectAllCount: number | null = null): Subscription {
-            return this.remoteFilterService.filterOptionsRemote(type, shouldAppend, selectAllCount);
+            return this.remoteFilterService.filter(type, shouldAppend, selectAllCount);
     }
 
     public loadMore(type: PicklistValueType = 'both', autoLoadMore = false) {
         if (type === 'both' || type === 'values') { this.remoteFilterService.currentValuePage++; }
         if (type === 'both' || type === 'valuesets') { this.remoteFilterService.currentValueSetPage++; }
         const loading$ = this.workTracker.startObservable(() => this.filterOptionsRemote(type, true));
-        this.listService.showListLoadingIndicators(loading$, type, !autoLoadMore);
+        this.showListLoadingIndicators(loading$, type, !autoLoadMore);
     }
 
     public loadForSelectAll(numberToLoad: number): Observable<boolean> {
         const loading$ = this.workTracker.startObservable(() => this.filterOptionsRemote('values', false, numberToLoad));
-        this.listService.showListLoadingIndicators(loading$, 'values');
+        this.showListLoadingIndicators(loading$, 'values');
         return loading$;
     }
 
@@ -79,8 +64,24 @@ export class PicklistFilterService {
         }
     }
 
-    private getSortFunc<T extends SelectListOption>(list: FilterableSelectList<T>): (a: any, b: any) => number {
-        const sortField = list.codeIsSignificant ? 'code' : 'title';
-        return (a, b) => a.option[sortField].localeCompare(b.option[sortField]);
+    public preFilterOptionsForRemoteMode(valuesMap: Map<string, SelectListOption>, list: FilterableSelectList<SelectListOption>) {
+            // if server is handling filtering, but I want to avoid the round trip to the server when moving options
+            // I need to double check that those options belong before adding them, or risk errant option counts
+            valuesMap.forEach( v => {
+                if (!this.localFilterService.itemHasSearchTokens(list, v, this.searchTokens)) { valuesMap.delete(v.code); }
+            });
+    }
+
+    public showListLoadingIndicators(workTracker: Observable<boolean>, type: PicklistValueType = 'both', isAppending = false) {
+        if (type === 'both' || type === 'values') { this.showLoadingIndicatorForList(this.valueList, workTracker, isAppending); }
+        if (type === 'both' || type === 'valuesets') { this.showLoadingIndicatorForList(this.valueSetList, workTracker, isAppending); }
+    }
+
+    private showLoadingIndicatorForList(list: FilterableSelectList<SelectListOption>, tracker: Observable<boolean>, isAppending = false) {
+        if (isAppending) {
+            list.appendingOptions = tracker;
+        } else {
+            list.loadingOptions = tracker;
+        }
     }
 }
