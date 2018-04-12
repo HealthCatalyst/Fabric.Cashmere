@@ -30,16 +30,6 @@ export interface IPicklistOptionsSource {
     getValuesForValueset?: (code: string) => Observable<IValueOption[]>;
 }
 
-export class PicklistSettings implements IPicklistSettings {
-    public codeIsSignificant = false;
-    public useValuesets = false;
-    public showHeaderText = true;
-    public leftHeaderText = 'Available';
-    public rightHeaderText = 'Selected';
-    public selected = { values: new Array<IValueOption>(), valueSets: new Array<IValueSetOption>() }; // options selected in modal
-    public options = new PicklistOptionsSource(); // options available for choosing
-}
-
 export class PicklistOptionsSource implements IPicklistOptionsSource {
     public values = new Array<IValueOption>();
     public valueSets = new Array<IValueSetOption>()
@@ -48,6 +38,16 @@ export class PicklistOptionsSource implements IPicklistOptionsSource {
     public getOptions?: (params: PicklistRemoteQueryOptions) => Observable<IPicklistRemoteQueryResponse>;
     public getValuesForValueset?: (code: string) => Observable<IValueOption[]>;
     public optionsAreLocal(): boolean { return (this.values && this.values.length > 0) || (this.valueSets && this.valueSets.length > 0) }
+}
+
+export class PicklistSettings implements IPicklistSettings {
+    public codeIsSignificant = false;
+    public useValuesets = false;
+    public showHeaderText = true;
+    public leftHeaderText = 'Available';
+    public rightHeaderText = 'Selected';
+    public selected = { values: new Array<IValueOption>(), valueSets: new Array<IValueSetOption>() }; // options selected in modal
+    public options = new PicklistOptionsSource(); // options available for choosing
 }
 
 
