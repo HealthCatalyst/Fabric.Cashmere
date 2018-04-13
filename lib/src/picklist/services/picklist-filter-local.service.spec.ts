@@ -10,9 +10,9 @@ describe('Picklist',
             this.listItem = new ValueListOption({ code: 'testing1212', title: 'This is not a test zy' }, 'testing1212');
             this.listItem2 = new ValueListOption({ code: 'zyzyzy', title: 'zyzyzy' }, 'zyzyzy');
             this.list = new FilterableSelectList<ValueListOption>();
+            this.list.codeIsSignificant = true;
             this.list.options.set(this.listItem.code, this.listItem);
             this.list.options.set(this.listItem2.code, this.listItem2);
-            this.list.optionFieldsToSearch = ['code', 'title'];
         });
 
         describe('filter()',
@@ -38,10 +38,10 @@ describe('Picklist',
                         expect(this.list.filteredOptions.length).toBe(1);
                     });
 
-                it('will not keep options when the token are only in the code, but code is not included in optionFieldsToSearch',
+                it('will not keep options when the token are only in the code, but code is not marked as significant',
                     () => {
                         const searchTerms = ['1212'];
-                        this.list.optionFieldsToSearch = ['title'];
+                        this.list.codeIsSignificant = false;
                         service.filter(this.list, searchTerms);
                         expect(this.list.filteredOptions.length).toBe(0);
                     });
@@ -50,21 +50,21 @@ describe('Picklist',
                     () => {
                         it('if it finds some but not all, you\'ll get nothing back',
                             () => {
-                                const searchTerms = ['testing not nope'];
+                                const searchTerms = ['testing', 'not', 'nope'];
                                 service.filter(this.list, searchTerms);
                                 expect(this.list.filteredOptions.length).toBe(0);
                             });
 
                         it('if it finds none of the tokens, you\'ll get nothing back',
                             () => {
-                                const searchTerms = ['nope nah sorry'];
+                                const searchTerms = ['nope', 'nah', 'sorry'];
                                 service.filter(this.list, searchTerms);
                                 expect(this.list.filteredOptions.length).toBe(0);
                             });
 
                         it('if it finds all of the tokens, you\'ll get something back',
                             () => {
-                                const searchTerms = ['testing this is a test 1212'];
+                                const searchTerms = ['testing', 'this', 'is', 'a', 'test', '1212'];
                                 service.filter(this.list, searchTerms);
                                 expect(this.list.filteredOptions.length).toBe(1);
                             });
