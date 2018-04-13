@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { IPicklistSettings } from '../../../../lib/src/picklist/picklist.model';
+import { PicklistComponent, IPicklistSettings } from '../../../../lib/src/picklist/picklist.module';
 import { FakeRemoteOptionsService, getFakeValues, getFakeValueSets } from './picklist-demo-data';
-import { PicklistComponent } from '../../../../lib/src/picklist/picklist.component';
 
 @Component({
     selector: 'hc-picklist-demo',

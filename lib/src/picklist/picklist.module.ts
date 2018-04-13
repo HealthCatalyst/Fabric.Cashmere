@@ -8,6 +8,17 @@ import { IconModule } from '../icon/icon.module';
 import { InputModule } from '../input/input.module';
 import { ProgressIndicatorsModule } from '../progress-indicators/progress-indicators.module'
 
+export { PicklistPaneComponent } from './pane/picklist-pane.component';
+export { PicklistComponent } from './picklist.component';
+export {
+    IValueOption,
+    IValueSetOption,
+    PicklistRemoteQueryOptions,
+    IPicklistRemoteQueryResponse,
+    IPicklistSettings,
+    IPageSettings,
+    IPagedCollection } from './picklist.model';
+
 @NgModule({
     imports: [CommonModule, FormsModule, ButtonModule, IconModule, InputModule, ProgressIndicatorsModule],
     declarations: [

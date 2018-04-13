@@ -4,11 +4,8 @@ import {
     IValueSetOption,
     PicklistRemoteQueryOptions,
     IPicklistRemoteQueryResponse,
-    IPicklistSettings,
     IPageSettings,
-    IPagedCollection,
-    IPicklistOptions } from '../../../../lib/src/picklist/picklist.model';
-import { PicklistComponent } from '../../../../lib/src/picklist/picklist.component';
+    IPagedCollection } from '../../../../lib/src/picklist/picklist.module';
 
 export class FakeRemoteOptionsService {
     public getOptions(params: PicklistRemoteQueryOptions): Observable<IPicklistRemoteQueryResponse> {
