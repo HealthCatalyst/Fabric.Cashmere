@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { PicklistComponent, IPicklistSettings } from '../../../../lib/src/picklist/picklist.module';
+import { Component } from '@angular/core';
+import { IPicklistSettings } from '../../../../lib/src/picklist/picklist.module';
 import { FakeRemoteOptionsService, getFakeValues, getFakeValueSets } from './picklist-demo-data';
 
 @Component({
@@ -8,11 +8,11 @@ import { FakeRemoteOptionsService, getFakeValues, getFakeValueSets } from './pic
     styleUrls: ['./picklist-demo.component.scss']
 })
 export class PickListDemoComponent {
-    @ViewChild(PicklistComponent) public picklist: PicklistComponent;
-    lastModified: Date = new Date( document.lastModified );
-    // public document: string = require('raw-loader!../../../../guides/components/navbar.md');
+    public lastModified: Date = new Date( document.lastModified );
+    public document: string = require('raw-loader!../../../../guides/components/picklist.md');
+    public fakeService = new FakeRemoteOptionsService();
+    public selectedConfig = 'simpleConfig';
 
-    private fakeService = new FakeRemoteOptionsService();
     public simpleConfig: IPicklistSettings = {
         options: { values: [
             { code: '1', title: 'North' },
@@ -25,7 +25,6 @@ export class PickListDemoComponent {
     public complexConfig: IPicklistSettings = {
         codeIsSignificant: true,
         useValuesets: true,
-        selected: { values: [], valueSets: [] },
         options: { values: getFakeValues(), valueSets: getFakeValueSets() }
     };
 
@@ -38,7 +37,6 @@ export class PickListDemoComponent {
             getOptions: (params) => this.fakeService.getOptions(params)
         }
     }
-    public selectedConfig = 'simpleConfig';
 
     public getConfigForSelection(): IPicklistSettings {
         return this[this.selectedConfig];

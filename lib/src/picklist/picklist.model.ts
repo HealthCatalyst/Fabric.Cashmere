@@ -12,22 +12,22 @@ export interface IPicklistOptions {
 }
 
 export interface IPicklistSettings {
-    codeIsSignificant?: boolean;
-    useValuesets?: boolean;
-    showHeaderText?: boolean;
-    leftHeaderText?: string;
-    rightHeaderText?: string;
-    selected?: IPicklistOptions; // options selected in modal
-    options: IPicklistOptionsSource; // options available for choosing
+    codeIsSignificant?: boolean; // True if code is considered important. If so, search and sorting will use the code. Defaults to false.
+    useValuesets?: boolean; // Set to true to use valuesets. Defaults to false.
+    showHeaderText?: boolean; // Set to true to show text in the header. Defaults to true.
+    leftHeaderText?: string; // Text for left header. Defaults to "Available".
+    rightHeaderText?: string; // Text for right header. Defaults to "Selected".
+    selected?: IPicklistOptions; // Pre-seed the modal with selected options.
+    options?: IPicklistOptionsSource; // Available options in the picklist. Set with local values or callbacks to retrieve remote values.
 }
 
 export interface IPicklistOptionsSource {
-    values?: IValueOption[];
-    valueSets?: IValueSetOption[];
-    isPaged?: boolean;
-    pageSize?: number;
-    getOptions?: (params: PicklistRemoteQueryOptions) => Observable<IPicklistRemoteQueryResponse>;
-    getValuesForValueset?: (code: string) => Observable<IValueOption[]>;
+    values?: IValueOption[]; // Collection values to select from.
+    valueSets?: IValueSetOption[]; // Collection valuesets to select from.
+    isPaged?: boolean; // Will the results from the server be paged? Defaults to false.
+    pageSize?: number; // What size results will be returned from the server? Defaults to 100.
+    getOptions?: (params: PicklistRemoteQueryOptions) => Observable<IPicklistRemoteQueryResponse>; // Callback function retrieve values.
+    getValuesForValueset?: (code: string) => Observable<IValueOption[]>; // Callback function to retrieve values for a valueset.
 }
 
 export class PicklistOptionsSource implements IPicklistOptionsSource {

@@ -6,18 +6,22 @@
     <hc-tab tabTitle="Overview">
 
     <hc-tile>
-        <h5>Picklist</h5>
-        <p>Pretty cool component I guess.</p>
+        <h5>About</h5>
+        <p>Allows the user curate a list of values by sliding them to and from side-by-side lists. This component provides support for searching,
+        bundling items together in value sets, and loading values over HTTP.
+        </p>
     </hc-tile>
 
     <hc-tile>
         <h5>Example</h5>
         <hc-picklist [settings]="getConfigForSelection()"></hc-picklist>
 
+        <hr>
+
         <div class="picklist-config">
             <label hc-label>Change Picklist Configuration:</label>
             <hc-select [(ngModel)]="selectedConfig">
-                <option value="simpleConfig">Simple</option>
+                <option value="simpleConfig">Simple Configuration</option>
                 <option value="complexConfig">Values + Valuesets</option>
                 <option value="remoteConfig">Loaded From Server: Values + Valusets</option>
             </hc-select>
@@ -26,8 +30,7 @@
 
     </hc-tab>
     <hc-tab tabTitle="Documentation">
-        <!-- <div [hcMarkdown]="document"></div> -->
-        Nothing here yet.
+        <div [hcMarkdown]="document"></div>
     </hc-tab>
     </hc-tab-set>
 </div>

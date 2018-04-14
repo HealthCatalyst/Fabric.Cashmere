@@ -32,7 +32,17 @@ export {
     ModalContentType, ModalService
 } from './src/modal/modal.service';
 export { NavbarModule } from './src/navbar/navbar.module';
-export { PickListModule } from './src/picklist/picklist.module';
+export {
+    PickListModule,
+    IValueOption,
+    IValueSetOption,
+    IPicklistOptions,
+    IPicklistOptionsSource,
+    PicklistRemoteQueryOptions,
+    IPicklistRemoteQueryResponse,
+    IPicklistSettings,
+    IPageSettings,
+    IPagedCollection } from './src/picklist/picklist.module';
 export { PaginationModule } from './src/pagination/pagination.module';
 export { PipesModule } from './src/pipes/pipes.module';
 export { PopoverModule } from './src/popover/popover.module';

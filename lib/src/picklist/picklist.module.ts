@@ -11,11 +11,13 @@ import { ProgressIndicatorsModule } from '../progress-indicators/progress-indica
 export { PicklistPaneComponent } from './pane/picklist-pane.component';
 export { PicklistComponent } from './picklist.component';
 export {
+    IPicklistSettings,
     IValueOption,
     IValueSetOption,
+    IPicklistOptions,
+    IPicklistOptionsSource,
     PicklistRemoteQueryOptions,
     IPicklistRemoteQueryResponse,
-    IPicklistSettings,
     IPageSettings,
     IPagedCollection } from './picklist.model';
 

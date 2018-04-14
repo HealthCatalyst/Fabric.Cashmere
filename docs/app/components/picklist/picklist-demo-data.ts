@@ -8,8 +8,12 @@ import {
     IPagedCollection } from '../../../../lib/src/picklist/picklist.module';
 
 export class FakeRemoteOptionsService {
-    public getOptions(params: PicklistRemoteQueryOptions): Observable<IPicklistRemoteQueryResponse> {
 
+    /**
+     * This code assumes that paging will always be used.
+     * Simulates latency by using the Observables delay() function.
+     */
+    public getOptions(params: PicklistRemoteQueryOptions): Observable<IPicklistRemoteQueryResponse> {
         const response: IPicklistRemoteQueryResponse = {};
         if (params.valueTypeToQuery === 'values' || params.valueTypeToQuery === 'both' && params.valuePageSettings) {
             const vals = getFakeValues(params.searchTerm);
