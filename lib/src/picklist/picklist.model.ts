@@ -37,7 +37,7 @@ export class PicklistOptionsSource implements IPicklistOptionsSource {
     public pageSize = 100;
     public getOptions?: (params: PicklistRemoteQueryOptions) => Observable<IPicklistRemoteQueryResponse>;
     public getValuesForValueset?: (code: string) => Observable<IValueOption[]>;
-    public optionsAreLocal(): boolean { return (this.values && this.values.length > 0) || (this.valueSets && this.valueSets.length > 0) }
+    public optionsAreLocal(): boolean { return !this.getOptions; }
 }
 
 export class PicklistSettings implements IPicklistSettings {

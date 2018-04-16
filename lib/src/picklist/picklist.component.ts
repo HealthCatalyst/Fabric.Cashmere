@@ -76,7 +76,7 @@ export class PicklistComponent implements ControlValueAccessor {
 
     public setActiveValueType(type: 'values' | 'valueSets') {
         if (!this.available) { console.warn('Available picklist pane not available yet.'); return; }
-        if (!this.settings.useValuesets) { return; }
+        if (!this.settings.useValuesets) { type = 'values'; }
 
         this.available.valueList.isActive = (type === 'values');
         this.available.valueSetList.isActive = (type === 'valueSets');
