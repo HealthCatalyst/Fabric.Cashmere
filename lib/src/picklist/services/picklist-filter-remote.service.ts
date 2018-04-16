@@ -81,16 +81,16 @@ export class PicklistFilterRemoteService {
     private buildRemoteQueryParams(type: PicklistValueType, selectAllCount: number | null = null, ): PicklistRemoteQueryOptions {
         const params = new PicklistRemoteQueryOptions(this.stateService.picklist, this.searchTerm, type);
         if (type === 'values' || type === 'both') {
-            params.valuePageSettings = this.buildPagerSettings(this.currentValuePage, selectAllCount);
+            params.valuePageSettings = this.buildPageSettings(this.currentValuePage, selectAllCount);
         }
 
         if (type === 'valuesets' || type === 'both') {
-            params.valueSetPageSettings = this.buildPagerSettings(this.currentValueSetPage, selectAllCount);
+            params.valueSetPageSettings = this.buildPageSettings(this.currentValueSetPage, selectAllCount);
         }
         return params;
     }
 
-    private buildPagerSettings(currentPage: number, selectAllCount: number | null) {
+    private buildPageSettings(currentPage: number, selectAllCount: number | null) {
         const pagerSettings = { currentPage: 1, itemsPerPage: this.stateService.optionsSource.pageSize };
         pagerSettings.currentPage = selectAllCount ? 1 : currentPage;
         pagerSettings.itemsPerPage = selectAllCount || pagerSettings.itemsPerPage;
