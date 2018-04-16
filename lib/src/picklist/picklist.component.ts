@@ -37,7 +37,7 @@ export class PicklistComponent implements ControlValueAccessor {
             selectedValues.values = model.values || [];
             selectedValues.valueSets = model.valueSets || [];
         }
-        this.updateState({ selected: selectedValues });
+        this.update({ selected: selectedValues });
     }
     public get value(): IPicklistOptions | string[] {
         if (this.stringOptions) {
@@ -56,7 +56,7 @@ export class PicklistComponent implements ControlValueAccessor {
         }
     }
 
-    public updateState(settings: IPicklistSettings) {
+    public update(settings: IPicklistSettings) {
         const updatedSettings = Object.assign(this.picklistSettings, settings);
         this.reset(updatedSettings);
     }
@@ -71,15 +71,15 @@ export class PicklistComponent implements ControlValueAccessor {
     public updateStateFromStringOptions (options: Array<string> | null) {
         const valueOptions = this.convertStringsToValueOptions(options);
         this.stringOptions = options;
-        this.updateState({options: { values: valueOptions || [] }});
+        this.update({options: { values: valueOptions || [] }});
     }
 
-    public setActiveValueType(pane: 'values' | 'valueSets') {
+    public setActiveValueType(type: 'values' | 'valueSets') {
         if (!this.available) { console.warn('Available picklist pane not available yet.'); return; }
         if (!this.settings.useValuesets) { return; }
 
-        this.available.valueList.isActive = (pane === 'values');
-        this.available.valueSetList.isActive = (pane === 'valueSets');
+        this.available.valueList.isActive = (type === 'values');
+        this.available.valueSetList.isActive = (type === 'valueSets');
         this.available.selectNone();
         this.available.scrollToTop();
     }

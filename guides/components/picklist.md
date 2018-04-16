@@ -11,7 +11,7 @@ For the simplest usage, provide an array of unique strings as options.
 :::
 
 :::
-##### Using Value Sets
+##### Using More Advanced Values & Value Sets
 You can pass more advanced configuration into `[settings]`.
 
 #### HTML
@@ -89,22 +89,19 @@ public myremotePicklistSettings: IPicklistSettings = {
 
 ```
 
-#### Gotchas
-- For the best experience, it's important to match the picklist's method of searching and sorting:
-  - When searching, the default is execute the search on the titles of each value, unless `codeIsSignificant` is set to true, in which case
-the codes of values (but not value sets) will be searched. If multiple tokens exist in a search string (i.e, "three search terms"),
-the code will split up the tokens and only return those values that contain **all three tokens**. Review `picklist-filter-local.service.spec.ts`
-on [github](https://github.com/HealthCatalyst/Fabric.Cashmere) for further details on search.
+#### Things to Look Out For
+- For the best experience, it's important to match the picklist's method of searching and sorting. This helps us to avoid unnecessary round trips to the server
+while maintaining a consistent user experience.
+  - When searching, the default is to execute the search on the titles of each value, unless `codeIsSignificant` is set to true, in which case
+the codes of values will be searched as well. (Value sets **will not** be searched by code.) If multiple tokens exist in a search string (i.e, "three search terms"), the code will split up the tokens and only return those values or value sets that contain **all three tokens**. Review `picklist-filter-local.service.spec.ts` on [github](https://github.com/HealthCatalyst/Fabric.Cashmere) for further details on search.
   - When sorting, the javascript function `localCompare()` is used.
 [Read more about it on MDN.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare) 
 By default, the picklist will sort by title, unless `codeIsSignificant` is set to true,
-in which case values (but not value sets) will be sorted by code.
+in which case values will be sorted by code. (Value sets will still be sorted by title.)
 - When returning values or valuesets from the server, it's important not to return values that are **already selected.** Otherwise, the counts of
 total available items or items per page can get out of sync. When implementing `getValues()`, you'll have access to information about the current
-state of picklist, including which values are already selected. See Interfaces for Loading Values over HTTP for more details.
-- The picklist has a "select all" button. When values are being loaded via callback, this button will fire off a request asking for all available values
-to be returned, up to a limit of 2,000. If the number of total values on the server is above that, then 2,00 will be loaded and the user will be notified that
-they hit the limit. If "select all" is clicked with the value set tab active, only the current valuesets in the pane will be selected.
+state of the picklist, including which values are already selected. See "Interfaces for Loading Values over HTTP" for more details.
+- The picklist has a "select all" button. When values are being loaded via callback, this button will fire off a request asking for all available values (matching the current search term, if there is one) to be returned, up to a limit of 2,000. If the number of total values on the server is above that, then 2,00 will be loaded and the user will be notified that they hit the limit. If "select all" is clicked with the value set tab active, only the current valuesets in the pane will be selected.
 - To see a simplified example of implementing loading values over HTTP, [visit the github repo](https://github.com/HealthCatalyst/Fabric.Cashmere) and review the `FakeRemoteOptionsService` in `picklist-demo-data.ts`.
 :::
 
@@ -120,8 +117,8 @@ they hit the limit. If "select all" is clicked with the value set tab active, on
 |@Output() changed|`EventEmitter`|Emits when the value changes.|
 |value|`IPicklistOptions` &verbar; string[]|If `simpleOptions` are being used, this will be an array of the selected strings. Otherwise, you'll get `IPicklistOptions`.|
 |reset()|(settings: `IPicklistSettings`) => void|Will reset the picklist with the given settings.|
-|updateState()|(settings: `IPicklistSettings`) => void|Will update the picklist with the given settings, maintaining any previous settings that have not been overridden.|
-|setActiveValueType()|(pane: `'values'` &verbar; `'valuesets'`) => void|Will change the active tab. (Will do nothing if `settings.useValuesets` is false.)|
+|update()|(settings: `IPicklistSettings`) => void|Will update the picklist with the given settings, maintaining any previous settings that have not been overridden.|
+|setActiveValueType()|(type: `'values'` &verbar; `'valuesets'`) => void|Will change the active tab. (Will do nothing if `settings.useValuesets` is false.)|
 :::
 
 :::
@@ -130,12 +127,12 @@ they hit the limit. If "select all" is clicked with the value set tab active, on
 #### IPicklistSettings
 | Property | Type | Description |
 | - | - | - |
-|codeIsSignificant?|boolean|True if code is considered important. If it is, searches will look at the code property inaddition to the title property. Also, sorting will based on code instead of alphabetically by title. *Defaults to false.*|
+|codeIsSignificant?|boolean|True if code is considered important for values, like ICD codes for diagnoses. If it is, the code will be displayed in the UI, searches will look at the `code` property in addition to the `title` property, and sorting for will based on code instead of alphabetically by title. *Defaults to false.* **All of the above apply only to values, not to value sets.**|
 |useValuesets?|boolean|Set to true to use valuesets. *Defaults to false.*|
 |showHeaderText?|boolean|Set to true to show text in the header. *Defaults to true.*|
 |leftHeaderText?|string|Text for left header. *Defaults to "Available".*|
 |rightHeaderText?|string|Text for right header. *Defaults to "Selected".*|
-|selected?|`IPicklistOptions`|Pre-seed the modal with selected options.|
+|selected?|`IPicklistOptions`|Pre-seed the picklist with selected options.|
 |options?|`IPicklistOptionsSource`|Options available in the picklist. Set with local values or callbacks to retrieve remote values.|
 
 #### IPicklistOptions
@@ -155,17 +152,17 @@ they hit the limit. If "select all" is clicked with the value set tab active, on
 | - | - | - |
 |code|string|Unique code for the value set. |
 |title|string|Title for the value set.|
-|subValues|`IValueOption[]`|Collection of subvalues in this valueset. The code and title of each subvalue should match what is used by the value when used outside of a valueset. **Note**: The subValues array can initially be empty *if* the `getValuesForValueset` callback function is provided.|
+|subValues|`IValueOption[]`|Collection of subvalues in this valueset. The code and title of each subvalue should match what is used by the value when used outside of a valueset. **Note**: The `subValues` array can initially be empty *if* the `getValuesForValueset` callback function is provided.|
 |subValueCount|number|Number of subvalues. Required because of the fact that subvalues aren't always preloaded.|
 
 #### IPicklistOptionsSource
 | Property | Type | Description |
 | - | - | - |
-|values?|`IValueOption[]`|Collection values to select from.|
-|valueSets?|`IValueSetOption[]`|Collection valuesets to select from.|
+|values?|`IValueOption[]`|Collection of values to select from.|
+|valueSets?|`IValueSetOption[]`|Collection of valuesets to select from.|
 |isPaged?|boolean|Will the results from the server be paged? *Defaults to false.* Not used without `getOptions` callback.|
 |pageSize?|number|What size results will be returned from the server? *Defaults to 100.* Not used without `getOptions` callback.|
-|getOptions?|(params: `PicklistRemoteQueryOptions`) => Observable&lt;`IPicklistRemoteQueryResponse`&gt;|Callback function to retrieve values. Return values and/or valuesets, which may or may not be paged.|
+|getOptions?|(params: `PicklistRemoteQueryOptions`) => Observable&lt;`IPicklistRemoteQueryResponse`&gt;|Callback function to retrieve values. Return values and/or valuesets, which may or may not be paged. See "Interfaces for Loading Values over HTTP" for more detail.|
 |getValuesForValueset?|(code: string) => Observable&lt;`IValueOption[]`&gt;|Callback function to retrieve values for a valueset.|
 :::
 
@@ -193,7 +190,7 @@ they hit the limit. If "select all" is clicked with the value set tab active, on
 #### IPagedCollection&lt;T&gt;
 | Property | Type | Description |
 | - | - | - |
-|pagerSettings|IPageSettings|Page being return in the response, and the number of items per page.|
+|pagerSettings|IPageSettings|Page being returned in the response, and the number of items per page.|
 |totalItems|number|Total number of items, including those already on the client or included in this response.|
 |totalPages|number|Total number of pages.|
 |values|`T[]`|An array of `IValueOption` or `IValuesetOption`.|
