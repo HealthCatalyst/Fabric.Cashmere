@@ -6,7 +6,7 @@ import { InputComponent } from './input.component';
     `<hc-icon *ngIf="inputEl?.value.length > 0" icon-sm fontSet="fa" fontIcon="fa-times-circle"
     class="hc-clear-btn" title="Clear" (click)="clear()"></hc-icon>`
 })
-export class ClearInputBtnComponent implements OnDestroy{
+export class ClearInputBtnComponent implements OnDestroy {
     @Input() public set input(input: HTMLInputElement | InputComponent) { this.setInput(input); }
     public inputEl?: HTMLInputElement;
     private checkShouldShowClearBtn = () => { this.cd.detectChanges(); };
