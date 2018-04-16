@@ -12,7 +12,8 @@ For the simplest usage, provide an array of unique strings as options.
 
 :::
 ##### Using More Advanced Values & Value Sets
-You can pass more advanced configuration into `[settings]` to take advantage of value sets, values with unique ids, and other advanced options.
+You can pass more advanced configuration into `[settings]` to take advantage of value sets, values with unique ids, and other options.
+See `IPicklistSettings` for more detail on available settings.
 
 #### HTML
 ``` html
@@ -46,7 +47,7 @@ public myLocalPicklistSettings: IPicklistSettings = {
 };
 ```
 
-Or, you can wire up the settings in your TypeScript code:
+You can also set picklist settings in your TypeScript code:
 ``` typescript
 @ViewChild(PicklistComponent) public myPicklist: PicklistComponent;
 
@@ -58,7 +59,7 @@ this.myPicklist.reset(myLocalPicklistSettings)
 :::
 ##### Loading Values over HTTP
 The picklist can be given callback functions to retrieve values and valuesets from a server. This is needed in cases where there
-are too many items to hold in memory on the browser (More than 1,000 or so.)
+are too many items (1,000+) to hold in memory on the browser.
 - `getOptions: (params: PicklistRemoteQueryOptions) => Observable<IPicklistRemoteQueryResponse>;`
 - `getValuesForValueset: (code: string) => Observable<IValueOption[]>;`
 
