@@ -17,13 +17,41 @@ import { PicklistSettings, PicklistOptionsSource, IPicklistSettings, IPicklistOp
     ]
 })
 export class PicklistComponent implements ControlValueAccessor {
+    /**
+     * Settings for the picklist. Internally, this will trigger a call to `reset()`.
+     */
     @Input() public set settings(settings: PicklistSettings) { this.reset(settings); }
     public get settings(): PicklistSettings { return this.picklistSettings; }
+    /**
+     * An array of unique strings to be used as the picklist options.
+     */
     @Input() public set simpleOptions(options: Array<string> | null) { this.updateStateFromStringOptions(options); }
     public get simpleOptions(): Array<string> | null { return this.stringOptions; }
-    @Output() public changed = new EventEmitter();
+    /**
+     * Set to true to show text in the header. *Defaults to true.*
+     */
+    @Input() public set showHeaderText(shouldShow: boolean) { this.update({ showHeaderText: shouldShow}); }
+    public get showHeaderText(): boolean { return this.picklistSettings.showHeaderText; }
+    /**
+     * Text for left header. *Defaults to "Available".*
+     */
+    @Input() public set leftHeaderText(text: string) { this.update({ leftHeaderText: text || 'Available'}); }
+    public get leftHeaderText(): string { return this.picklistSettings.leftHeaderText; }
+    /**
+     * Text for right header. *Defaults to "Selected".*
+     */
+    @Input() public set rightHeaderText(text: string) { this.update({ rightHeaderText: text || 'Selected'}); }
+    public get rightHeaderText(): string { return this.picklistSettings.rightHeaderText; }
+
+    /**
+     * The left picklist pane containing available options.
+     */
     @ViewChild('availableList') public available: PicklistPaneComponent | undefined;
+    /**
+     * The right picklist pane containing selected options.
+     */
     @ViewChild('confirmedList') public confirmed: PicklistPaneComponent | undefined;
+    @Output() public changed = new EventEmitter();
     private picklistSettings = new PicklistSettings();
     public get leftToRightMoveBtnIsDisabled(): boolean { return this.available ? !this.available.isAnySelected() : false; }
     private stringOptions: Array<string> | null = null;
@@ -56,11 +84,19 @@ export class PicklistComponent implements ControlValueAccessor {
         }
     }
 
+    /**
+     * Will update the picklist with the given settings, maintaining any previous settings that have not been overridden.
+     * @param settings
+     */
     public update(settings: IPicklistSettings) {
         const updatedSettings = Object.assign(this.picklistSettings, settings);
         this.reset(updatedSettings);
     }
 
+    /**
+     * Will reset the picklist settings with the given settings. (Clears out any previous settings.)
+     * @param settings
+     */
     public reset(settings: IPicklistSettings = new PicklistSettings()) {
         this.picklistSettings = Object.assign(new PicklistSettings(), settings);
         this.resetPanes(this.picklistSettings);
@@ -68,12 +104,10 @@ export class PicklistComponent implements ControlValueAccessor {
         this.applyChangeToModel();
     }
 
-    public updateStateFromStringOptions (options: Array<string> | null) {
-        const valueOptions = this.convertStringsToValueOptions(options);
-        this.stringOptions = options;
-        this.update({options: { values: valueOptions || [] }});
-    }
-
+    /**
+     * Will change the active tab. (Will do nothing if `settings.useValuesets` is false.)
+     * @param type {string} 'values' or 'valuesets'
+     */
     public setActiveValueType(type: 'values' | 'valueSets') {
         if (!this.available) { console.warn('Available picklist pane not available yet.'); return; }
         if (!this.settings.useValuesets) { type = 'values'; }
@@ -84,6 +118,10 @@ export class PicklistComponent implements ControlValueAccessor {
         this.available.scrollToTop();
     }
 
+    /**
+     * Will move all selected items from the given pane into its companion pane. Used internally by the left and right arrow buttons.
+     * @param pane the pane from which we are moving items out of.
+     */
     public moveSelectedItems(pane: PicklistPaneComponent) {
         const shouldBreakValuesets = pane === this.confirmed;
         const selectedOptions = pane.listService.moveOutSelectedOptions(shouldBreakValuesets);
@@ -94,6 +132,12 @@ export class PicklistComponent implements ControlValueAccessor {
         }
         pane.filterService.reloadIfEmpty();
         this.applyChangeToModel();
+    }
+
+    private updateStateFromStringOptions (options: Array<string> | null) {
+        const valueOptions = this.convertStringsToValueOptions(options);
+        this.stringOptions = options;
+        this.update({options: { values: valueOptions || [] }});
     }
 
     private resetPanes(settings: IPicklistSettings) {

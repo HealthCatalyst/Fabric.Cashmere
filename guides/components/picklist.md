@@ -12,7 +12,7 @@ For the simplest usage, provide an array of unique strings as options.
 
 :::
 ##### Using More Advanced Values & Value Sets
-You can pass more advanced configuration into `[settings]`.
+You can pass more advanced configuration into `[settings]` to take advantage of value sets, values with unique ids, and other advanced options.
 
 #### HTML
 ``` html
@@ -90,8 +90,8 @@ public myremotePicklistSettings: IPicklistSettings = {
 ```
 
 #### Things to Look Out For
-- For the best experience, it's important to match the picklist's method of searching and sorting. This helps us to avoid unnecessary round trips to the server
-while maintaining a consistent user experience.
+- For the best experience when using the `getValue()` callback function, it's important to match the picklist's method of searching and sorting. 
+This helps us to avoid unnecessary round trips to the server while maintaining a consistent user experience.
   - When searching, the default is to execute the search on the titles of each value, unless `codeIsSignificant` is set to true, in which case
 the codes of values will be searched as well. (Value sets **will not** be searched by code.) If multiple tokens exist in a search string (i.e, "three search terms"), the code will split up the tokens and only return those values or value sets that contain **all three tokens**. Review `picklist-filter-local.service.spec.ts` on [github](https://github.com/HealthCatalyst/Fabric.Cashmere) for further details on search.
   - When sorting, the javascript function `localCompare()` is used.
@@ -112,13 +112,17 @@ state of the picklist, including which values are already selected. See "Interfa
 
 | Property | Type | Description |
 | - | - | - |
-|@Input() settings|`IPicklistSettings`|Settings for the picklist.|
+|@Input() settings|`IPicklistSettings`|Settings for the picklist. Internally, this will trigger a call to `reset()`.|
 |@Input() simpleOptions |string[]|An array of unique strings to be used as the picklist options.|
+|showHeaderText?|boolean|Set to true to show text in the header. *Defaults to true.*|
+|leftHeaderText?|string|Text for left header. *Defaults to "Available".*|
+|rightHeaderText?|string|Text for right header. *Defaults to "Selected".*|
 |@Output() changed|`EventEmitter`|Emits when the value changes.|
 |value|`IPicklistOptions` &verbar; string[]|If `simpleOptions` are being used, this will be an array of the selected strings. Otherwise, you'll get `IPicklistOptions`.|
-|reset()|(settings: `IPicklistSettings`) => void|Will reset the picklist with the given settings.|
+|reset()|(settings: `IPicklistSettings`) => void|Will reset the picklist with the given settings. *Will reset values passed in via an `@Input` as well.*|
 |update()|(settings: `IPicklistSettings`) => void|Will update the picklist with the given settings, maintaining any previous settings that have not been overridden.|
 |setActiveValueType()|(type: `'values'` &verbar; `'valuesets'`) => void|Will change the active tab. (Will do nothing if `settings.useValuesets` is false.)|
+|moveSelectedItems()|(pane: `PicklistPaneComponent`) => void| Will move all selected items from the given pane into its companion pane. Used internally by the left and right arrow buttons.|
 :::
 
 :::
