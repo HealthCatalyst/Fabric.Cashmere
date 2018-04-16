@@ -43,7 +43,7 @@ export class CheckboxComponent implements ControlValueAccessor {
     // list out all properties or attributes an input[type=checkbox] can have since we're wrapping the input
     @Input() value: string;
     @Input() indeterminate: boolean;
-    @Input() id: string = this.uniqueId;
+    @Input() id: string;
     @Input() name: string | null = null;
 
     @Output() change = new EventEmitter<CheckboxChangeEvent>();
@@ -97,10 +97,7 @@ export class CheckboxComponent implements ControlValueAccessor {
     }
 
     get inputId() {
-        if (this.id) {
-            return this.id;
-        }
-        return `${this.uniqueId}-input`;
+        return this.id || `${this.uniqueId}-input`;
     }
 
     private onChangeFunc: (value: any) => void = () => {
