@@ -35,12 +35,12 @@ export class PicklistComponent implements ControlValueAccessor {
     /**
      * Text for left header. *Defaults to "Available".*
      */
-    @Input() public set leftHeaderText(text: string) { this.update({ leftHeaderText: text || 'Available'}); }
+    @Input() public set leftHeaderText(text: string) { this.update({ leftHeaderText: text }); }
     public get leftHeaderText(): string { return this.picklistSettings.leftHeaderText; }
     /**
      * Text for right header. *Defaults to "Selected".*
      */
-    @Input() public set rightHeaderText(text: string) { this.update({ rightHeaderText: text || 'Selected'}); }
+    @Input() public set rightHeaderText(text: string) { this.update({ rightHeaderText: text }); }
     public get rightHeaderText(): string { return this.picklistSettings.rightHeaderText; }
 
     /**

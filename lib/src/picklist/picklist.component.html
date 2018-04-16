@@ -27,7 +27,7 @@
         </button>
         <button hc-button color="primary-alt" type="button" name="removeBtn"
                 (click)="moveSelectedItems(confirmedList);"
-                [disabled]="!confirmed.isAnySelected()">
+                [disabled]="!confirmed?.isAnySelected()">
             <hc-icon icon-sm fontSet="fa" fontIcon="fa-arrow-left"></hc-icon>
         </button>
     </div>

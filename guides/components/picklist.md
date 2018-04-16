@@ -113,10 +113,10 @@ state of the picklist, including which values are already selected. See "Interfa
 | Property | Type | Description |
 | - | - | - |
 |@Input() settings|`IPicklistSettings`|Settings for the picklist. Internally, this will trigger a call to `reset()`.|
-|@Input() simpleOptions |string[]|An array of unique strings to be used as the picklist options.|
-|showHeaderText?|boolean|Set to true to show text in the header. *Defaults to true.*|
-|leftHeaderText?|string|Text for left header. *Defaults to "Available".*|
-|rightHeaderText?|string|Text for right header. *Defaults to "Selected".*|
+|@Input() simpleOptions|string[]|An array of unique strings to be used as the picklist options.|
+|@Input() showHeaderText|boolean|Set to true to show text in the header. *Defaults to true.*|
+|@Input() leftHeaderText|string|Text for left header. *Defaults to "Available".*|
+|@Input() rightHeaderText|string|Text for right header. *Defaults to "Selected".*|
 |@Output() changed|`EventEmitter`|Emits when the value changes.|
 |value|`IPicklistOptions` &verbar; string[]|If `simpleOptions` are being used, this will be an array of the selected strings. Otherwise, you'll get `IPicklistOptions`.|
 |reset()|(settings: `IPicklistSettings`) => void|Will reset the picklist with the given settings. *Will reset values passed in via an `@Input` as well.*|
