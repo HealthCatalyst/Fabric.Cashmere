@@ -15,30 +15,31 @@
     <hc-tile>
         <h5>Example</h5>
         <h4>Input with Validation</h4>
-        <form (ngSubmit)="onSubmit()">
-            <label hc-label required="true">Validate an email address:</label>
-            <input hc-input required name="inputEmail" id="inputEmail" ngModel #inputEmail="ngModel" width="250px" type="email" email [highlight]="submitted && inputEmail.invalid">
-            <div class="form-errors" *ngIf="submitted && inputEmail.invalid">
-                <div *ngIf="inputEmail.errors.required">
-                    Email address is required
+        <div class="demo-container">
+            <form (ngSubmit)="onSubmit()">
+                <label hc-label required="true">Validate an email address:</label>
+                <input hc-input required name="inputEmail" id="inputEmail" ngModel #inputEmail="ngModel" width="250px" type="email" email [highlight]="submitted && inputEmail.invalid">
+                <div class="form-errors" *ngIf="submitted && inputEmail.invalid">
+                    <div *ngIf="inputEmail.errors.required">
+                        Email address is required
+                    </div>
+                    <div *ngIf="!inputEmail.errors.required">
+                        Please enter a valid email address
+                    </div>
                 </div>
-                <div *ngIf="!inputEmail.errors.required">
-                    Please enter a valid email address
-                </div>
+                <br><br>
+                <button hc-button title="Validate Input Text" color="primary" type="submit">Validate Input</button>
+            </form>
+
+            <h4>Input with Icon</h4>
+            <div hcInputIcon>
+                <input hc-input name="search" placeholder="search" width="250px" />
+                <hc-icon icon-sm fontSet="fa" fontIcon="fa-search" class="search-icon"></hc-icon>
             </div>
-            <br><br>
-            <button hc-button title="Validate Input Text" color="primary" type="submit">Validate Input</button>
-        </form>
 
-        <h4>Input with Icon</h4>
-        <div hcInputIcon>
-            <input hc-input name="search" placeholder="search" width="250px" />
-            <hc-icon fontSet="fa" fontIcon="fa-search" class="search-icon"></hc-icon>
+            <h4>Disabled Input</h4>
+            <input hc-input disabled name="disabled" width="250px" />
         </div>
-
-        <h4>Disabled Input</h4>
-        <input hc-input disabled name="disabled" width="250px" />
-
     </hc-tile>
 
     </hc-tab>
