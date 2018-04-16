@@ -24,6 +24,18 @@ Icons may be included in an input box to indicate its function.  Use a `hc-icon`
 :::
 
 :::
+##### Input with Clear Button
+Inputs can have a clear button, with or without another icon present. The button will only appear if the input currently has text. Clicking the icon will clear out that text.
+``` html
+<div hcInputIcon hcInputClearable>
+    <input #searchInput hc-input name="search" placeholder="Search" width="250px" />
+    <hc-clear-input-btn [input]="searchInput"></hc-clear-input-btn>
+    <hc-icon icon-sm fontSet="fa" fontIcon="fa-search"></hc-icon>
+</div>
+```
+:::
+
+:::
 ##### Input Properties
 | Name | Type | Description |
 | - | - | - |

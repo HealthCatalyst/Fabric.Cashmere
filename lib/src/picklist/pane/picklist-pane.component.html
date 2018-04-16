@@ -1,7 +1,8 @@
 ﻿<div class="hc-picklist-pane">
     <div class="picklist-controls">
-        <div hcInputIcon>
-            <input hc-input (keyup)="onSearchKeyup()" [(ngModel)]="searchTerm" type="text" placeholder="Search" />
+        <div hcInputIcon hcInputClearable>
+            <input #searchInput hc-input (keyup)="onSearchKeyup()" [(ngModel)]="searchTerm" type="text" placeholder="Search" />
+            <hc-clear-input-btn [input]="searchInput"></hc-clear-input-btn>
             <hc-icon icon-sm fontSet="fa" fontIcon="fa-search"></hc-icon>
         </div>
         <div class="second-row-controls">

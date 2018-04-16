@@ -18,7 +18,7 @@ export class InputComponent {
 
     @HostBinding('class.hc-input') hostClass = true;
 
-    constructor( private elementRef: ElementRef, private renderer: Renderer2 ) { }
+    constructor( public elementRef: ElementRef, private renderer: Renderer2 ) { }
 
     @Input() get highlight(): boolean { return this._highlight; }
 
