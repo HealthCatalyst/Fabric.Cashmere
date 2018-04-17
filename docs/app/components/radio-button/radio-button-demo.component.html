@@ -15,24 +15,36 @@
         <h5>Examples</h5>
         <h4>Standard Radio Buttons</h4>
         <form>
-            <hc-radio-button checked="true">The Office</hc-radio-button>
-            <hc-radio-button>Parks and Rec</hc-radio-button>
-            <hc-radio-button>Arrested Development</hc-radio-button>
+            <hc-radio-group>
+                <hc-radio-button value="1" [checked]="true">The Office</hc-radio-button>
+                <hc-radio-button value="2">Parks and Rec</hc-radio-button>
+                <hc-radio-button value="3">Arrested Development</hc-radio-button>
+            </hc-radio-group>
         </form>
 
         <h4>Disabled Radio Buttons</h4>
         <form>
-            <hc-radio-button checked="true" disabled="true">30 Rock</hc-radio-button>
-            <hc-radio-button disabled="true">Seinfeld</hc-radio-button>
+            <hc-radio-group [disabled]="true">
+                <hc-radio-button>30 Rock</hc-radio-button>
+                <hc-radio-button>Seinfeld</hc-radio-button>
+            </hc-radio-group>
         </form>
+
+        <h4>Radio Buttons using Form Controls</h4>
+        <hc-radio-group [(ngModel)]="favoriteShow">
+            <hc-radio-button *ngFor="let show of shows" [value]="show">{{show}}</hc-radio-button>
+        </hc-radio-group>
+        <p>Current selection: {{favoriteShow ? favoriteShow : 'none'}}</p>
+        <button hc-button title="Primary-Alt Button" color="primary-alt" (click)="reset()">Clear Selection</button>
         <br>
     </hc-tile>
 
     <hc-tile>
         <h5>Radio Button Usage</h5>
         <p>Radio buttons are used in groups and always include labels.</p>
+        <p>Radio buttons can be used with ngModel in reactive or template-driven forms.</p>
         <p>When enabled, only one radio button in the group should be set to checked.</p>
-        <p>A default button should be set to checked when the form is initialized.</p>
+        <p>A default button can be set to checked when the form is initialized (either manually or via ngModel).</p>
     </hc-tile>
 
     </hc-tab>
