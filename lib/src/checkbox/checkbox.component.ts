@@ -11,7 +11,7 @@ import {
     Output
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { anyToBoolean } from '../util';
+import { parseBooleanAttribute } from '../util';
 
 let nextCheckboxId = 1;
 
@@ -64,7 +64,7 @@ export class CheckboxComponent implements ControlValueAccessor {
     }
 
     set required(required) {
-        this._required = anyToBoolean(required);
+        this._required = parseBooleanAttribute(required);
     }
 
     @Input()
@@ -73,7 +73,7 @@ export class CheckboxComponent implements ControlValueAccessor {
     }
 
     set disabled(isDisabled) {
-        this._disabled = anyToBoolean(isDisabled);
+        this._disabled = parseBooleanAttribute(isDisabled);
     }
 
     @Input()

@@ -9,6 +9,7 @@ hc-select select {
     font-family: 'Open Sans', sans-serif;
     @include fontSize(14px);
     padding-left: 7px;
+    padding-right: 50px;
     border: 1.5px solid $gray-300;
     border-radius: 0;
     height: 35px;

@@ -1,5 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { anyToBoolean } from '../util';
+import { parseBooleanAttribute } from '../util';
 
 @Component({
     selector: 'hc-chip',
@@ -17,5 +17,5 @@ export class ChipComponent {
 
     @Input() get action(): boolean { return this._action; }
 
-    set action(isAction) { this._action = anyToBoolean(isAction); }
+    set action(isAction) { this._action = parseBooleanAttribute(isAction); }
 }

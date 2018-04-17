@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, forwardRef, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { anyToBoolean } from '../util';
+import { parseBooleanAttribute } from '../util';
 
 @Component({
     selector: 'hc-select',
@@ -33,11 +33,11 @@ export class SelectComponent implements ControlValueAccessor {
 
     @Input() get required(): boolean { return this._required; }
 
-    set required(isRequired) { this._required = anyToBoolean(isRequired); }
+    set required(isRequired) { this._required = parseBooleanAttribute(isRequired); }
 
-    set disabled(isDisabled) { this._disabled = anyToBoolean(isDisabled); }
+    set disabled(isDisabled) { this._disabled = parseBooleanAttribute(isDisabled); }
 
-    set highlight(highlightVal) { this._highlight = anyToBoolean(highlightVal); }
+    set highlight(highlightVal) { this._highlight = parseBooleanAttribute(highlightVal); }
 
     onChange: any = () => { };
 

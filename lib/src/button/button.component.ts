@@ -11,7 +11,7 @@ import {
     Renderer2,
     ViewEncapsulation
 } from '@angular/core';
-import { anyToBoolean } from '../util';
+import { parseBooleanAttribute } from '../util';
 
 const supportedColors = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary'];
 
@@ -55,7 +55,7 @@ export class ButtonComponent {
     }
 
     set disabled(isDisabled) {
-        this._disabled = anyToBoolean(isDisabled);
+        this._disabled = parseBooleanAttribute(isDisabled);
     }
 
 
