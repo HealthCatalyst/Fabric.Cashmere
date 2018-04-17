@@ -63,6 +63,9 @@
         "component": {
             "inlineStyle": false,
             "inlineTemplate": false
+        },
+        "build": {
+            "showCircularDependencies": false
         }
     }
 }
