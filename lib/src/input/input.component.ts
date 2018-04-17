@@ -3,7 +3,7 @@
 // https://github.com/mgechev/codelyzer/issues/178#issuecomment-265154480
 
 import { Component, Input, ViewEncapsulation, HostBinding, Renderer2, ElementRef } from '@angular/core';
-import { anyToBoolean } from '../util';
+import { parseBooleanAttribute } from '../util';
 
 @Component({
     selector: 'input[hc-input]',
@@ -23,7 +23,7 @@ export class InputComponent {
     @Input() get highlight(): boolean { return this._highlight; }
 
     set highlight(doHighlight) {
-        let tempVal = anyToBoolean(doHighlight);
+        let tempVal = parseBooleanAttribute(doHighlight);
         if ( tempVal && !this._highlight ) {
             this.renderer.addClass(this.elementRef.nativeElement, 'error-highlight');
         } else if ( !tempVal && this._highlight  ) {

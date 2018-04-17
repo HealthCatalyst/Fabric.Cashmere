@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { anyToBoolean } from '../../../../lib/src/util';
+import { parseBooleanAttribute } from '../../../../lib/src/util';
 
 @Component({
     selector: 'hc-filter-button',
@@ -20,7 +20,7 @@ export class FilterButtonComponent  {
     }
 
     set buttonState(whatState) {
-        this._buttonState = anyToBoolean(whatState);
+        this._buttonState = parseBooleanAttribute(whatState);
         if ( this._buttonState ) {
             this.buttonLabel = 'Filters On:';
         } else {
