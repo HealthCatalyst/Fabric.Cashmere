@@ -8,7 +8,7 @@ import {
     Output,
     ViewEncapsulation
 } from '@angular/core';
-import { anyToBoolean } from '../../util';
+import { parseBooleanAttribute } from '../../util';
 import { validateButtonColor } from '../button.component';
 
 export class SplitButtonClickEvent {
@@ -60,7 +60,7 @@ export class SplitButtonComponent {
     }
 
     set disabled(isDisabled) {
-        this._disabled = anyToBoolean(isDisabled);
+        this._disabled = parseBooleanAttribute(isDisabled);
     }
 
     @HostBinding('class.hc-split-button')
