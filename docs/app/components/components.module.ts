@@ -9,7 +9,7 @@ import { TabsModule } from '../../../lib/src/tabs/tabs.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from '../../../lib/src/button/button.module';
 import { ComponentsComponent } from './components.component';
@@ -64,6 +64,7 @@ import { PaginationDemoComponent } from './pagination/pagination-demo.component'
         NavbarModule,
         PopoverModule,
         FormsModule,
+        ReactiveFormsModule,
         CheckboxModule,
         RadioButtonModule,
         ProgressIndicatorsModule,
