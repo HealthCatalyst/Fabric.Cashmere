@@ -1,6 +1,6 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { ChipComponent } from '../chip.component';
-import { anyToBoolean } from '../../util';
+import { parseBooleanAttribute } from '../../util';
 
 @Component({
     selector: 'hc-chip-row',
@@ -17,5 +17,5 @@ export class ChipRowComponent {
 
     @Input() get wrap(): boolean { return this._wrap; }
 
-    set wrap(doWrap) { this._wrap = anyToBoolean(doWrap); }
+    set wrap(doWrap) { this._wrap = parseBooleanAttribute(doWrap); }
 }

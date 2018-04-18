@@ -8,7 +8,7 @@ import {
     ViewEncapsulation
 } from '@angular/core';
 import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
-import { anyToBoolean } from '../util';
+import { parseBooleanAttribute } from '../util';
 
 @Component({
     selector: 'hc-accordion',
@@ -45,7 +45,7 @@ export class AccordionComponent implements AfterContentInit {
     }
 
     set hideToolbar(hide) {
-        this._hideToolbar = anyToBoolean(hide);
+        this._hideToolbar = parseBooleanAttribute(hide);
     }
 
     @Input()
@@ -54,7 +54,7 @@ export class AccordionComponent implements AfterContentInit {
     }
 
     set open(opened: boolean) {
-        this.toggle(anyToBoolean(opened));
+        this.toggle(parseBooleanAttribute(opened));
     }
 
     @Output() opened = new EventEmitter();

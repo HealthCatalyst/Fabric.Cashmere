@@ -10,7 +10,7 @@ import {
     Output
 } from '@angular/core';
 import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
-import { anyToBoolean } from '../util';
+import { parseBooleanAttribute } from '../util';
 
 export class DrawerPromiseResult {
     constructor(public type: 'open' | 'close') {
@@ -65,7 +65,7 @@ export class DrawerComponent implements AfterContentInit {
     }
 
     set opened(opened) {
-        this.toggle(anyToBoolean(opened));
+        this.toggle(parseBooleanAttribute(opened));
     }
 
     get width(): number {
