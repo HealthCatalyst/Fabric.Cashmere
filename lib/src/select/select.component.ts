@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, forwardRef, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, forwardRef, HostBinding, Input, Renderer2, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { anyToBoolean } from '../util';
+import { parseBooleanAttribute } from '../util';
 
 @Component({
     selector: 'hc-select',
@@ -20,45 +20,67 @@ export class SelectComponent implements ControlValueAccessor {
 
     @Input() placeholder: string = '';
 
-    _disabled: boolean = false;
-    _highlight: boolean = false;
-    _required: boolean = false;
-    _value: string = '';
+    @Input()
+    get disabled(): boolean {
+        return this._disabled;
+    }
 
-    constructor() { }
+    set disabled(isDisabled) {
+        this._disabled = parseBooleanAttribute(isDisabled);
+        if (this._disabled) {
+            this.renderer.removeClass(this.element.nativeElement, 'hc-select-disabled');
+        } else {
+            this.renderer.addClass(this.element.nativeElement, 'hc-select-disabled');
+        }
+    }
 
-    @Input() get highlight(): boolean { return this._highlight; }
+    private _disabled = false;
 
-    @Input() get disabled(): boolean { return this._disabled; }
+    @Input()
+    get required(): boolean {
+        return this._required;
+    }
 
-    @Input() get required(): boolean { return this._required; }
+    set required(isRequired) {
+        this._required = parseBooleanAttribute(isRequired);
+    }
 
-    set required(isRequired) { this._required = anyToBoolean(isRequired); }
+    private _required = false;
 
-    set disabled(isDisabled) { this._disabled = anyToBoolean(isDisabled); }
-
-    set highlight(highlightVal) { this._highlight = anyToBoolean(highlightVal); }
-
-    onChange: any = () => { };
-
-    onTouched: any = () => { };
-
-    get value() { return this._value; }
+    get value() {
+        return this._value;
+    }
 
     set value(val: string) {
         this._value = val;
         this.onChange(val);
-        this.onTouched();
     }
 
-    registerOnChange(fn: any) { this.onChange = fn; }
+    private _value = '';
 
-    registerOnTouched(fn: any) { this.onTouched = fn; }
+    @HostBinding('class.hc-select') hostClass = true;
+
+    private onChange: (val: any) => void = () => {
+    };
+
+    private onTouched: (val: any) => void = () => {
+    };
+
+    constructor(private element: ElementRef,
+                private renderer: Renderer2) {
+    }
+
+    registerOnChange(fn: any) {
+        this.onChange = fn;
+    }
+
+    registerOnTouched(fn: any) {
+        this.onTouched = fn;
+    }
 
     writeValue(value: string) {
-        if (value) {
+        if (value !== this._value) {
             this._value = value;
         }
     }
-
 }

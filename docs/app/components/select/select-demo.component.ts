@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'hc-select-demo',
@@ -7,9 +8,19 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 
 export class SelectDemoComponent {
-    validCheck: boolean = true;
-    lastModified: Date = new Date( document.lastModified );
-    public document: string = require('raw-loader!../../../../guides/components/select.md');
+    private validCheck = false;
+    lastModified: Date = new Date(document.lastModified);
+    document: string = require('raw-loader!../../../../guides/components/select.md');
 
-    toggleValidate() { this.validCheck = (this.validCheck) ? false : true; }
+
+    selectControl = new FormControl('');
+
+    toggleValidate() {
+        this.validCheck = !this.validCheck;
+        if (this.validCheck) {
+            this.selectControl.setErrors({'incorrect': true});
+        } else {
+            this.selectControl.setErrors({});
+        }
+    }
 }

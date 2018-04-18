@@ -17,8 +17,8 @@ Icons may be included in an input box to indicate its function.  Use a `hc-icon`
 
 ``` html
 <div hcInputIcon>
-    <input name="search" placeholder="search" />
-    <hc-icon fontSet="fa" fontIcon="fa-search"></hc-icon>
+    <input hc-input name="search" placeholder="search" />
+    <hc-icon icon-sm fontSet="fa" fontIcon="fa-search"></hc-icon>
 </div>
 ```
 :::
