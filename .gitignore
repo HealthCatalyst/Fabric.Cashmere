@@ -1,12 +1,17 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
-/tmp
-/out-tsc
+dist/
+tmp/
+out-tsc/
+publish/
+build/
+.ng_build/
+.ng_pkg_build/
+stage/
 
 # dependencies
-/node_modules
+node_modules/
 
 # IDEs and editors
 /.idea
@@ -32,14 +37,8 @@
 npm-debug.log
 testem.log
 /typings
-/.ng_build
-/publish
-/build
-/stage
-/lib/dist/
-/lib/node_modules/
-/lib/.ng_pkg_build/
 debug.log
+*.tgz
 
 # e2e
 /e2e/*.js

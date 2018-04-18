@@ -3,7 +3,7 @@
 // https://github.com/mgechev/codelyzer/issues/178#issuecomment-265154480
 
 import { Component, Input, ViewEncapsulation, HostBinding } from '@angular/core';
-import { anyToBoolean } from '../util';
+import { parseBooleanAttribute } from '../util';
 
 @Component({
     selector: 'label[hc-label]',
@@ -22,5 +22,5 @@ export class LabelComponent {
 
     @Input() get required(): boolean { return this._required; }
 
-    set required(isRequired) { this._required = anyToBoolean(isRequired); }
+    set required(isRequired) { this._required = parseBooleanAttribute(isRequired); }
 }
