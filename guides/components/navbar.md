@@ -4,8 +4,13 @@
 ``` html
 <hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" user="Christine K." [homeUri]="undefined"  [fixedTop]="false">
     <hc-app-switcher></hc-app-switcher>
-    <hc-navbar-link [active]="true" [uri]="undefined">Home</hc-navbar-link>
-    <hc-navbar-link [active]="false" [uri]="undefined">Buttons</hc-navbar-link>
+    <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Pediatric"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Rehabilition"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
     <hc-navbar-icon>
         <hc-icon fontSet="fa" fontIcon="fa-search"></hc-icon>
     </hc-navbar-icon>
@@ -14,22 +19,31 @@
     </hc-navbar-icon>
     <hc-navbar-mobile-menu appSwitcher="true">
         <hc-list>
-            <hc-list-item routerLink="/home" routerLinkActive="active-link">
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
                 <span hcListLine>Home</span>
             </hc-list-item>
-            <hc-list-item routerLink="/styles" routerLinkActive="active-link">
-                <span hcListLine>Styles</span>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Oncology</span>
             </hc-list-item>
-            <hc-list-item routerLink="/components" routerLinkActive="active-link">
-                <span hcListLine>Components</span>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Surgery</span>
             </hc-list-item>
-            <hc-list-item routerLink="/guides" routerLinkActive="active-link">
-                <span hcListLine>Guides</span>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Pediatric</span>
+            </hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Cardiovascular</span>
+            </hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Rehabilition</span>
+            </hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Intensive Care</span>
             </hc-list-item>
         </hc-list>
         <hr>
         <hc-list>
-            <a href="https://github.com/HealthCatalyst/Fabric.Cashmere">
+            <a href="undefined">
                 <hc-list-item>
                     <span hcListLine>View on GitHub</span>
                 </hc-list-item>

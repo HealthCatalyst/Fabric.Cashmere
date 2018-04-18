@@ -64,7 +64,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         justify-content: center;
         align-items: center;
 
-        &.logo-condense { padding-right: 25px !important; }
+        &.logo-condense { padding-right: 25px; }
     }
 
     .app {
@@ -93,13 +93,13 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 
             & > hc-icon, & > a > hc-icon, > span {
                 height: 53px !important;
-                width: 53px !important;
                 color: $navbar-text;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                padding: 0 15px;
                 &:not(.vertical-separator) {
+                    min-width: 53px;
+                    padding: 0 15px;
                     cursor: pointer;
                     transition: background-color 0.25s;
                     &:hover:not(.active), &.inactive:hover {
