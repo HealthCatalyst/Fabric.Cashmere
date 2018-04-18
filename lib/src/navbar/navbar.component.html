@@ -8,14 +8,18 @@
         <ng-content select="hc-app-switcher">
         </ng-content>
     </div>
-    <div class="navbar-app">
+    <div class="navbar-app" [ngClass]="{'logo-condense': logoCondense}">
         <a [routerLink]="homeUri" class="app" *ngIf="appIcon">
             <img src="{{appIcon}}">
         </a>
     </div>
     <div class="links">
         <ng-content select="hc-navbar-link"></ng-content>
+        <div class="more-links" title="More" [ngClass]="{'hidden': !collapse}" [hcPopover]="navbarMore" popperPlacement="bottom">
+            More<hc-icon fontSet="fa" fontIcon="fa-chevron-down" icon-sm></hc-icon>
+        </div>
     </div>
+
     <div class="icon links">
         <ng-content select="hc-navbar-icon"></ng-content>
         <div class="navbar-item" *ngIf="user">
@@ -32,3 +36,9 @@
 <div (click)="menuClick($event)">
     <ng-content select="hc-navbar-mobile-menu"></ng-content>
 </div>
+
+<hc-popover-content #navbarMore class="more-popover">
+    <ul class="list-options">
+        <li *ngFor="let item of moreList"><a routerLinkActive="active" [routerLink]="item.uri" (click)="moreClick()">{{item.name}}</a></li>
+    </ul>
+</hc-popover-content>
