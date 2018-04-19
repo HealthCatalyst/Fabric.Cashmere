@@ -65,7 +65,7 @@
             "inlineTemplate": false
         },
         "build": {
-            "showCircularDependencies": false
+            "showCircularDependencies": true
         }
     }
 }
