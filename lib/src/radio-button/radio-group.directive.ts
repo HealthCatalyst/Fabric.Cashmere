@@ -10,8 +10,8 @@ import {
     Output,
     QueryList
 } from '@angular/core';
-import { anyToBoolean } from '../util';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { parseBooleanAttribute } from '../util';
 
 let nextUniqueId = 0;
 
@@ -69,7 +69,7 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
     }
 
     set disabled(value) {
-        this._disabled = anyToBoolean(value);
+        this._disabled = parseBooleanAttribute(value);
         this._markRadiosForCheck();
     }
 
@@ -79,7 +79,7 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
     }
 
     set required(value) {
-        this._required = anyToBoolean(value);
+        this._required = parseBooleanAttribute(value);
         this._markRadiosForCheck();
     }
 

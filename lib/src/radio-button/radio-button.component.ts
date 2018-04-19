@@ -10,8 +10,8 @@ import {
     Optional,
     Output,
 } from '@angular/core';
-import { anyToBoolean } from '../util';
 import { RadioGroupDirective } from './radio-group.directive';
+import { parseBooleanAttribute } from '../util';
 
 let nextUniqueId = 0;
 
@@ -65,7 +65,7 @@ export class RadioButtonComponent implements OnInit {
     }
 
     set required(required) {
-        this._required = anyToBoolean(required);
+        this._required = parseBooleanAttribute(required);
     }
 
     @Input()
@@ -74,7 +74,7 @@ export class RadioButtonComponent implements OnInit {
     };
 
     set disabled(isDisabled) {
-        this._disabled = anyToBoolean(isDisabled);
+        this._disabled = parseBooleanAttribute(isDisabled);
     }
 
     @Input()
@@ -83,7 +83,7 @@ export class RadioButtonComponent implements OnInit {
     }
 
     set checked(value: boolean) {
-        let newCheckedState = anyToBoolean(value);
+        let newCheckedState = parseBooleanAttribute(value);
         if (this._checked !== newCheckedState) {
             this._checked = newCheckedState;
             if (newCheckedState && this.radioGroup && this.radioGroup.value !== this.value) {
