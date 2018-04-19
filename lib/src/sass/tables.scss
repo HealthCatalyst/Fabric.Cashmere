@@ -74,8 +74,7 @@ table.hc-table {
 
     // Add Borders
     &.hc-table-borders {
-        td, th { border: $table-border }
-        th { border-bottom: $header-border-thick }
+        td { border: $table-border }
     }
 
     td, th {
