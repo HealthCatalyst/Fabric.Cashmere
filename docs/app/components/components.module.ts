@@ -1,20 +1,16 @@
 import { SubModalDemoComponent } from './modal/sub-modal-demo.component';
 import { ModalDemoComponent } from './modal/modal-demo.component';
-import { ModalModule } from './../../../lib/src/modal/modal.module';
-import { TypeformSurveyModule } from './../../../lib/src/typeform-survey/typeform-survey.module';
+import { ModalModule } from '../../../lib/src/modal/modal.module';
+import { TypeformSurveyModule } from '../../../lib/src/typeform-survey/typeform-survey.module';
 import { TypeFormSurveyDemoComponent } from './typeform-survey/typeform-survey-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TabDemoComponent } from './tabs/tab-demo.component';
 import { TabsModule } from '../../../lib/src/tabs/tabs.module';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from '../../../lib/src/button/button.module';
 import { ComponentsComponent } from './components.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
-import { routes } from './components-routes';
 import { NavbarModule } from '../../../lib/src/navbar/navbar.module';
 import { PopoverModule } from '../../../lib/src/popover/popover.module';
 import { NavbarDemoComponent } from './navbar/navbar-demo.component';
@@ -55,11 +51,12 @@ import { ProgressIndicatorDemoComponent } from './progress-indicator/progress-in
 import { SharedModule } from '../shared/shared.module';
 import { PaginationModule } from '../../../lib/src/pagination/pagination.module';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
+import { ComponentsRoutesModule } from './components-routes.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [
-        BrowserAnimationsModule,
-        BrowserModule,
+        CommonModule,
         ButtonModule,
         NavbarModule,
         PopoverModule,
@@ -85,7 +82,7 @@ import { PaginationDemoComponent } from './pagination/pagination-demo.component'
         LabelModule,
         PaginationModule,
         SharedModule,
-        RouterModule.forRoot(routes)
+        ComponentsRoutesModule
     ],
     exports: [
         NavbarModule,
