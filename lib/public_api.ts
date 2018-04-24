@@ -13,6 +13,7 @@ export * from './src/modal/index';
 export * from './src/navbar/index';
 export * from './src/pagination/index';
 export * from './src/pipes/index';
+export * from './src/picklist/index';
 export * from './src/popover/index';
 export * from './src/progress-indicators/index';
 export * from './src/radio-button/index';

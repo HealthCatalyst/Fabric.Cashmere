@@ -1,0 +1,112 @@
+﻿<div class="hc-picklist-pane">
+    <div class="picklist-controls">
+        <div hcInputIcon hcInputClearable>
+            <input #searchInput hc-input (keyup)="onSearchKeyup()" [(ngModel)]="searchTerm" type="text" placeholder="Search" />
+            <hc-clear-input-btn [input]="searchInput"></hc-clear-input-btn>
+            <hc-icon icon-sm fontSet="fa" fontIcon="fa-search"></hc-icon>
+        </div>
+        <div class="second-row-controls">
+            <div class="hc-type-em">
+                Showing {{optionsShowingCount.toLocaleString()}} of {{optionsAvailableCount.toLocaleString()}}
+            </div>
+            <div>
+                <button type="button" class="btn-text-link" (click)="selectAll()" [disabled]="valueList.filteredOptions.length === 0 && valueSetList.filteredOptions.length === 0">
+                    Select All
+                </button>
+                <button type="button" class="btn-text-link" (click)="selectNone()" [disabled]="!isAnySelected()">
+                    Select None
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="list-container" #listContainer>
+        <!-- Valuesets -->
+        <div *ngIf="valueSetList.isActive && (valueSetList.loadingOptions | async)" class="loading-list"><hc-progress-dots></hc-progress-dots></div>
+        <table *ngIf="shouldShowList(valueSetList) && !(valueSetList.loadingOptions | async)" class="hc-table hc-table-small hc-no-hover-table valueset-table">
+            <tbody>
+                <!-- Header, shown when both values and valuesets are sitting in list at same time -->
+                <tr *ngIf="shouldShowList(valueSetList) && shouldShowList(valueList)"><th colspan="2">Value Sets</th></tr>
+
+                <!-- Value set List Items -->
+                <tr *ngFor="let item of valueSetList.filteredOptions; let idx=index;"
+                    (mousedown)="preventIEHighlightBug()"
+                    (click)="onItemClicked($event, idx, valueSetList, item);"
+                    (dblclick)="onItemDoubleClicked($event, valueSetList, item);"
+                    [ngClass]="{'hc-row-selected': item.selected}"
+                    class="valueset-option value-option-row"><td>
+                        <div>
+                            <span class="valueset-value-toggle" (click)="onValuesetCaretClicked($event, item)">
+                                <hc-icon icon-sm class="values-caret" fontSet="fa" [ngClass]="{'showing-values': item.showValues}" fontIcon="fa-caret-right"></hc-icon>
+                                <hc-icon icon-sm class="vs-folder" fontSet="fa" [fontIcon]="item.showValues ? 'fa-folder-open-o' : 'fa-folder-o'"></hc-icon>
+                            </span>
+                            <!-- TODO: more deets for the valueset -->
+                            <span class="vs-title">{{item.option.title || "Untitled"}} ({{item.option.subValueCount}})</span>
+                        </div>
+                        <div>
+                            <!-- Value set Values List (closed by default) -->
+                            <table *ngIf="item.showValues" class="valueset-sublist-table hc-table"><tbody>
+                                <tr *ngIf="item.loadingValues" class="loading-subvals"><hc-progress-dots></hc-progress-dots></tr>
+                                <tr *ngFor="let subItem of item.subValuesSelectList.filteredOptions; let idx=index;"
+                                    (mousedown)="preventIEHighlightBug()"
+                                    (click)="onItemClicked($event, idx, item.subValuesSelectList, subItem);"
+                                    (dblclick)="onItemDoubleClicked($event, item.subValuesSelectList, subItem);"
+                                    class="value-option-row hc-tr"
+                                    [ngClass]="{'hc-row-selected': subItem.selected}"><td>
+                                        <span *ngIf="codeIsSignificant">{{subItem.option.code}}</span>
+                                        <span>{{subItem.option.title || "Untitled"}}</span>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                </td></tr>
+
+                <!-- Load More link for value sets, available when paging -->
+                <tr *ngIf="isPaged && optionsShowingCount < optionsAvailableCount" class="text-center value-option-row load-more-row">
+                    <a class="text-link" (click)="triggerLoadMore('valuesets')" *ngIf="!(valueSetList.appendingOptions | async)">Load More</a>
+                    <hc-progress-dots *ngIf="valueSetList.appendingOptions | async"></hc-progress-dots>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Values -->
+        <div *ngIf="valueList.isActive && (valueList.loadingOptions | async)" class="loading-list"><hc-progress-dots></hc-progress-dots></div>
+        <table *ngIf="shouldShowList(valueList) && !(valueList.loadingOptions | async)" class="hc-table hc-table-small hc-no-hover-table" [ngClass]="{'no-code-column': !codeIsSignificant}">
+            <tbody>
+                <!-- Header, shown when both values and valuesets are sitting in list at same time -->
+                <tr *ngIf="shouldShowList(valueSetList) && shouldShowList(valueList)"><th colspan="2">Individual Values</th></tr>
+                
+                <!-- Show when user clicked "select all", and there are more options on server, but too many to load in at once -->
+                <tr *ngIf="showTooManyToSelectAllMsg" class="value-option-row select-all-matches-row">
+                    <td colspan="2">
+                        <span class="hc-type-bold">{{valueList.selectedOptions.size}} Selected.</span>
+                        <span>Too many results to select all.</span>
+                    </td>
+                </tr>
+
+                <!-- Value List Items -->
+                <tr *ngFor="let item of valueList.filteredOptions; let idx=index;"
+                    (mousedown)="preventIEHighlightBug()"
+                    (click)="onItemClicked($event, idx, valueList, item);"
+                    (dblclick)="onItemDoubleClicked($event, valueList, item);"
+                    class="value-option-row"
+                    [ngClass]="{'hc-row-selected': item.selected}">
+                        <td *ngIf="codeIsSignificant" class="col-code">{{item.option.code}}</td>
+                        <td class="col-title">{{item.option.title || "Untitled"}}</td>
+                </tr>
+
+                <!-- Load More link for values, available when paging -->
+                <tr *ngIf="isPaged && optionsShowingCount < optionsAvailableCount" class="text-center value-option-row load-more-row">
+                    <a class="text-link" (click)="triggerLoadMore('values')" *ngIf="!(valueList.appendingOptions | async)">Load More</a>
+                    <hc-progress-dots *ngIf="valueList.appendingOptions | async"></hc-progress-dots>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Empty table -->
+        <div class="empty-table-msg hc-type-em" *ngIf="!shouldShowList(valueSetList) && !shouldShowList(valueList) && !(valueList.loadingOptions | async) && !(valueSetList.loadingOptions | async)">
+                <span *ngIf="listIsFilteredToEmpty(valueList) || listIsFilteredToEmpty(valueSetList); else emptyMessage">Nothing matches your search.</span>
+                <span><ng-template #emptyMessage>{{emptyMsg}}</ng-template></span>
+        </div>
+    </div>
+</div>

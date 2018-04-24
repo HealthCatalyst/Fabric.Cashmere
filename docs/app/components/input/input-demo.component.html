@@ -33,8 +33,15 @@
 
             <h4>Input with Icon</h4>
             <div hcInputIcon>
-                <input hc-input name="search" placeholder="search" width="250px" />
-                <hc-icon icon-sm fontSet="fa" fontIcon="fa-search" class="search-icon"></hc-icon>
+                <input hc-input name="username" placeholder="Enter username" width="250px" />
+                <hc-icon icon-sm fontSet="fa" fontIcon="fa-user-circle-o"></hc-icon>
+            </div>
+
+            <h4>Input with Icon & Clear Button</h4>
+            <div hcInputIcon hcInputClearable>
+                <input #searchInput hc-input name="search" placeholder="Search" width="250px" />
+                <hc-clear-input-btn [input]="searchInput"></hc-clear-input-btn>
+                <hc-icon icon-sm fontSet="fa" fontIcon="fa-search"></hc-icon>
             </div>
 
             <h4>Disabled Input</h4>

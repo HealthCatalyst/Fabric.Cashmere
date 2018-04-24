@@ -1,23 +1,23 @@
-@import '../sass/cashmere';
+@import '../sass/colors';
 
-.horizontal-container {
+.hc-horizontal-tab-container {
     height: auto;
     width: 100%;
 }
 
-.vertical-container {
+.hc-vertical-tab-container {
     height: 100%;
     width: 100%;
     display: flex;
 }
 
-.tab-bar-vertical {
+.hc-tab-bar-vertical {
     padding: 15px 0;
     background-color: $white;
     width: 20%;
 }
 
-.tab-vertical {
+.hc-tab-vertical {
     background-color: $white;
     color: $offblack;
     padding: 20px;
@@ -35,19 +35,19 @@
     }
 }
 
-.tab-content-vertical {
+.hc-tab-content-vertical {
     background-color: $slate-gray-100;
     width: 80%;
 }
 
-.tab-bar-horizontal {
+.hc-tab-bar-horizontal {
     background-color: inherit;
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid $slate-gray-300;
 }
 
-.tab-horizontal {
+.hc-tab-horizontal {
     background-color: inherit;
     color: $offblack;
     font-size: 14px;
@@ -64,7 +64,7 @@
     }
 }
 
-.tab-content-horizontal {
+.hc-tab-content-horizontal {
     background-color: inherit;
     width: 100%;
     height: 100%;

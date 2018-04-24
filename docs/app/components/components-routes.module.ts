@@ -5,6 +5,7 @@ import { ButtonDemoComponent } from './button/button-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
 import { ComponentsComponent } from './components.component';
 import { NavbarDemoComponent } from './navbar/navbar-demo.component';
+import { PicklistDemoComponent } from './picklist/picklist-demo.component';
 import { PopoverDemoComponent } from './popover/popover-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 import { RadioButtonDemoComponent } from './radio-button/radio-button-demo.component';
@@ -84,6 +85,11 @@ const routes: Routes = [
                 path: 'pagination',
                 component: PaginationDemoComponent,
                 data: { title: 'Pagination' }
+            },
+            {
+                path: 'picklist',
+                component: PicklistDemoComponent,
+                data: { title: 'Picklist' }
             },
             {
                 path: 'popover',

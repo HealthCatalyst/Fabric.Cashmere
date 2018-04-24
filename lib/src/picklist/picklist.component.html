@@ -1,0 +1,44 @@
+<div class="hc-picklist">
+    <div class="pane">
+        <div class="pane-header">
+            <h2 *ngIf="settings.showHeaderText">{{settings.leftHeaderText}}</h2>
+            <div *ngIf="settings.useValuesets" class="hc-tab-bar-horizontal">
+                <a title="Search for Value Sets"
+                        (click)="setActiveValueType('valueSets')"
+                        class="hc-tab-horizontal"
+                        [ngClass]="{'active': available.valueSetList.isActive}">Value Sets</a>
+                <a title="Search for Values"
+                    (click)="setActiveValueType('values')"
+                    class="hc-tab-horizontal"
+                    [ngClass]="{'active': available.valueList.isActive}">Values</a>
+            </div>
+        </div>
+        <hc-picklist-pane #availableList
+            emptyMsg="No options available."
+            (moveSelectedItems)="moveSelectedItems($event);">
+        </hc-picklist-pane>
+    </div>
+
+    <div class="move-btns">
+        <button hc-button color="primary-alt" type="button" name="addBtn"
+                (click)="moveSelectedItems(availableList);"
+                [disabled]="leftToRightMoveBtnIsDisabled">
+            <hc-icon icon-sm fontSet="fa" fontIcon="fa-arrow-right"></hc-icon>
+        </button>
+        <button hc-button color="primary-alt" type="button" name="removeBtn"
+                (click)="moveSelectedItems(confirmedList);"
+                [disabled]="!confirmed?.isAnySelected()">
+            <hc-icon icon-sm fontSet="fa" fontIcon="fa-arrow-left"></hc-icon>
+        </button>
+    </div>
+
+    <div class="pane">
+        <div class="pane-header">
+            <h2 *ngIf="settings.showHeaderText">{{settings.rightHeaderText}}</h2>
+        </div>
+        <hc-picklist-pane #confirmedList
+            emptyMsg="No options selected."
+            (moveSelectedItems)="moveSelectedItems($event);">
+        </hc-picklist-pane>
+    </div>
+</div>

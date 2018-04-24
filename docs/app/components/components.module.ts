@@ -12,8 +12,10 @@ import { ButtonModule } from '../../../lib/src/button/button.module';
 import { ComponentsComponent } from './components.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
 import { NavbarModule } from '../../../lib/src/navbar/navbar.module';
+import { PicklistModule } from '../../../lib/src/picklist/picklist.module';
 import { PopoverModule } from '../../../lib/src/popover/popover.module';
 import { NavbarDemoComponent } from './navbar/navbar-demo.component';
+import { PicklistDemoComponent } from './picklist/picklist-demo.component';
 import { PopoverDemoComponent } from './popover/popover-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 import { CheckboxModule } from '../../../lib/src/checkbox/checkbox.module';
@@ -59,6 +61,7 @@ import { CommonModule } from '@angular/common';
         CommonModule,
         ButtonModule,
         NavbarModule,
+        PicklistModule,
         PopoverModule,
         FormsModule,
         ReactiveFormsModule,
@@ -93,6 +96,7 @@ import { CommonModule } from '@angular/common';
         HomeComponent,
         ButtonDemoComponent,
         NavbarDemoComponent,
+        PicklistDemoComponent,
         PopoverDemoComponent,
         CheckboxDemoComponent,
         RadioButtonDemoComponent,

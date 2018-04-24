@@ -3,11 +3,11 @@
 @import "./colors";
 @import "./mixins";
 
-$table-border: 1px solid $slate-gray-200 !default;
+$table-border: 1px solid shade($slate-gray-100, 6%) !default;
 $table-condensed-font-size: 13px;
 $header-border-thick: 2px solid $slate-gray-300 !default;
 $cell-padding: 8px 16px !default;
-$cell-padding-condensed: 5px 16px !default;
+$cell-padding-condensed: 6px 16px !default;
 $thead-font-size: 14px !default;
 $thead-font-color: $dark-blue !default;
 $thead-active-font-color: $green !default;
@@ -32,6 +32,7 @@ table.hc-table {
         padding: $cell-padding;
         border-top: none;
         border-bottom: $table-border;
+        line-height: 1.3;
     }
 
     thead th {
@@ -55,7 +56,7 @@ table.hc-table {
                 background-color: $row-color-alt;
             }
 
-            &:not(.empty-table-row):hover {
+            &:hover {
                 background-color: $row-color-hover;
             }
 
@@ -90,7 +91,7 @@ table.hc-table {
 
     // Actionable table/row
     &.hc-action-table {
-        tbody tr:not(.empty-table-row) {
+        tr {
             &:hover {
                 background-color: $row-color-action-hover;
                 cursor: pointer;
@@ -99,7 +100,7 @@ table.hc-table {
         }
     }
 
-    tbody tr.hc-action-row:not(.empty-table-row) {
+    tr.hc-action-row, {
         &:hover {
             background-color: $row-color-action-hover;
             cursor: pointer;
@@ -164,6 +165,14 @@ table.hc-table {
         &.hc-active-sort {
             &.hc-sort-asc:before { left: 16px; right: auto; }
             &.hc-sort-desc:before { left: 16px; right: auto; }
+        }
+    }
+
+    &.hc-no-hover-table {
+        tbody tr {
+            &:nth-child(2n):hover { background-color: $row-color; }
+            &:nth-child(2n + 1):hover { background-color: $row-color-alt; }
+            &.hc-row-selected:hover { background-color: $row-color-selected; }
         }
     }
 }
