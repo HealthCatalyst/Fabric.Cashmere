@@ -1,5 +1,13 @@
 <label class="hc-radio-container" [ngClass]="{'disabled': disabled}">
-    <input type="radio" checked="checked" name="radio" [disabled]="disabled"/>
+    <input type="radio"
+           [id]="inputId"
+           [attr.value]="value"
+           [attr.name]="name"
+           [disabled]="disabled"
+           [required]="required"
+           [checked]="checked"
+           (change)="onInputChange($event)"
+           (click)="onInputClick($event)"/>
     <span class="hc-radio-overlay"></span>
     <div class="hc-radio-content">
         <ng-content></ng-content>

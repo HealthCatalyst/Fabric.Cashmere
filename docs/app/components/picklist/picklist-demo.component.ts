@@ -7,7 +7,7 @@ import { FakeRemoteOptionsService, getFakeValues, getFakeValueSets } from './pic
     templateUrl: './picklist-demo.component.html',
     styleUrls: ['./picklist-demo.component.scss']
 })
-export class PickListDemoComponent {
+export class PicklistDemoComponent {
     public lastModified: Date = new Date( document.lastModified );
     public document: string = require('raw-loader!../../../../guides/components/picklist.md');
     public fakeService = new FakeRemoteOptionsService();

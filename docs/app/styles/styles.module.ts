@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { TabsModule } from '../../../lib/src/tabs/tabs.module';
 import { StylesComponent } from './styles.component';
@@ -16,7 +14,6 @@ import { PopoverModule } from '../../../lib/src/popover/popover.module';
 import { ColorDemoComponent } from './color/color-demo.component';
 import { TableDemoComponent } from './table/table-demo.component';
 import { SwatchDemoComponent } from './color/swatch-demo.component';
-import { routes } from './styles-routes';
 import { TypographyDemoComponent } from './typography/typography-demo.component';
 import { CodeDemoComponent } from './code/code-demo.component';
 import { SharedModule } from '../shared/shared.module';
@@ -24,10 +21,12 @@ import { ChartDemoComponent } from './chart/chart-demo.component';
 import { BarchartComponent } from './chart/barchart/barchart.component';
 import { LinechartComponent } from './chart/linechart/linechart.component';
 import { ErrorPagesComponent } from './error/error-pages.component';
+import { StylesRoutesModule } from './styles-routes.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [
-        BrowserModule,
+        CommonModule,
         FormsModule,
         TabsModule,
         SubnavModule,
@@ -39,7 +38,7 @@ import { ErrorPagesComponent } from './error/error-pages.component';
         ModalModule,
         ButtonModule,
         PopoverModule,
-        RouterModule.forRoot(routes)
+        StylesRoutesModule
     ],
     declarations: [
         StylesComponent,

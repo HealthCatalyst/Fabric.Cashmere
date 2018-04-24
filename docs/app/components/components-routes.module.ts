@@ -1,11 +1,11 @@
 import { TypeFormSurveyDemoComponent } from './typeform-survey/typeform-survey-demo.component';
 import { TabDemoComponent } from './tabs/tab-demo.component';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ButtonDemoComponent } from './button/button-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
 import { ComponentsComponent } from './components.component';
 import { NavbarDemoComponent } from './navbar/navbar-demo.component';
-import { PickListDemoComponent } from './picklist/picklist-demo.component';
+import { PicklistDemoComponent } from './picklist/picklist-demo.component';
 import { PopoverDemoComponent } from './popover/popover-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 import { RadioButtonDemoComponent } from './radio-button/radio-button-demo.component';
@@ -24,8 +24,9 @@ import { InputDemoComponent } from './input/input-demo.component';
 import { ProgressIndicatorDemoComponent } from './progress-indicator/progress-indicator-demo.component';
 import { ModalDemoComponent } from './modal/modal-demo.component';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
+import { NgModule } from '@angular/core';
 
-export const routes: Routes = [
+const routes: Routes = [
     {
         path: 'components',
         component: ComponentsComponent,
@@ -87,7 +88,7 @@ export const routes: Routes = [
             },
             {
                 path: 'picklist',
-                component: PickListDemoComponent,
+                component: PicklistDemoComponent,
                 data: { title: 'Picklist' }
             },
             {
@@ -166,3 +167,10 @@ export const routes: Routes = [
         ]
     }
 ];
+
+@NgModule({
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
+})
+export class ComponentsRoutesModule {
+}

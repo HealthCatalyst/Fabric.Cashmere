@@ -4,8 +4,13 @@
 ``` html
 <hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" user="Christine K." [homeUri]="undefined"  [fixedTop]="false">
     <hc-app-switcher></hc-app-switcher>
-    <hc-navbar-link [active]="true" [uri]="undefined">Home</hc-navbar-link>
-    <hc-navbar-link [active]="false" [uri]="undefined">Buttons</hc-navbar-link>
+    <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Pediatric"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Rehabilition"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
     <hc-navbar-icon>
         <hc-icon fontSet="fa" fontIcon="fa-search"></hc-icon>
     </hc-navbar-icon>
@@ -14,22 +19,31 @@
     </hc-navbar-icon>
     <hc-navbar-mobile-menu appSwitcher="true">
         <hc-list>
-            <hc-list-item routerLink="/home" routerLinkActive="active-link">
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
                 <span hcListLine>Home</span>
             </hc-list-item>
-            <hc-list-item routerLink="/styles" routerLinkActive="active-link">
-                <span hcListLine>Styles</span>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Oncology</span>
             </hc-list-item>
-            <hc-list-item routerLink="/components" routerLinkActive="active-link">
-                <span hcListLine>Components</span>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Surgery</span>
             </hc-list-item>
-            <hc-list-item routerLink="/guides" routerLinkActive="active-link">
-                <span hcListLine>Guides</span>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Pediatric</span>
+            </hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Cardiovascular</span>
+            </hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Rehabilition</span>
+            </hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link">
+                <span hcListLine>Intensive Care</span>
             </hc-list-item>
         </hc-list>
         <hr>
         <hc-list>
-            <a href="https://github.com/HealthCatalyst/Fabric.Cashmere">
+            <a href="undefined">
                 <hc-list-item>
                     <span hcListLine>View on GitHub</span>
                 </hc-list-item>
@@ -72,7 +86,7 @@ _*uris are purposely left undefined in this example code_
 :::
 
 
-::: 
+:::
 ##### Icon Files
 
 [App Icon File](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/docs/assets/CashmereAppLogo.svg) - Flexo font is used to generate  for `appIcon="./assets/CashmereAppLogo.svg"`
@@ -116,13 +130,13 @@ body {
 :::
 
 :::
-##### Responsive Menu
+##### Mobile Menu
 
 Unlike some responsive menus that automatically pull content from the navbar into them, we intentionally left ours configurable so that developers can determine what should or shouldn't be included on smaller screens. Use the `appSwitcher` property to set whether the "View all applications" button is included at the bottom of the menu. `hc-list` components should be used for the menu options with `<hr>` separators in between. See the demo code at the top of this page for an example of how to define a responsive menu for `hc-navbar`.
 :::
 
 :::
-##### Navbar Component 
+##### Navbar Component
 
 | Property | Type | Description |
 | - | - | - |
@@ -134,7 +148,7 @@ Unlike some responsive menus that automatically pull content from the navbar int
 
 <br><br>
 
-##### Children 
+##### Children
 
 - `<hc-app-switcher>` - Enables app switcher when the app logo is clicked
 - `<hc-navbar-link>` - Primary navigation links

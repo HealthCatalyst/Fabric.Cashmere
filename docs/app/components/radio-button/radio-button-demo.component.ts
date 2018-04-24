@@ -5,6 +5,12 @@ import { Component } from '@angular/core';
     templateUrl: './radio-button-demo.component.html'
 })
 export class RadioButtonDemoComponent {
-    lastModified: Date = new Date( document.lastModified );
+    favoriteShow: string|null = 'Silicon Valley';
+    shows = ['Silicon Valley', 'Game of Thrones', 'Better Call Saul'];
+    lastModified: Date = new Date(document.lastModified);
     public document: string = require('raw-loader!../../../../guides/components/radio-button.md');
+
+    reset(): void {
+        this.favoriteShow = null;
+    }
 }

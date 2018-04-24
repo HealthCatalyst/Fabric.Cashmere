@@ -1,25 +1,21 @@
 import { SubModalDemoComponent } from './modal/sub-modal-demo.component';
 import { ModalDemoComponent } from './modal/modal-demo.component';
-import { ModalModule } from './../../../lib/src/modal/modal.module';
-import { TypeformSurveyModule } from './../../../lib/src/typeform-survey/typeform-survey.module';
+import { ModalModule } from '../../../lib/src/modal/modal.module';
+import { TypeformSurveyModule } from '../../../lib/src/typeform-survey/typeform-survey.module';
 import { TypeFormSurveyDemoComponent } from './typeform-survey/typeform-survey-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TabDemoComponent } from './tabs/tab-demo.component';
 import { TabsModule } from '../../../lib/src/tabs/tabs.module';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from '../../../lib/src/button/button.module';
 import { ComponentsComponent } from './components.component';
 import { ButtonDemoComponent } from './button/button-demo.component';
-import { routes } from './components-routes';
 import { NavbarModule } from '../../../lib/src/navbar/navbar.module';
-import { PickListModule } from '../../../lib/src/picklist/picklist.module';
+import { PicklistModule } from '../../../lib/src/picklist/picklist.module';
 import { PopoverModule } from '../../../lib/src/popover/popover.module';
 import { NavbarDemoComponent } from './navbar/navbar-demo.component';
-import { PickListDemoComponent } from './picklist/picklist-demo.component';
+import { PicklistDemoComponent } from './picklist/picklist-demo.component';
 import { PopoverDemoComponent } from './popover/popover-demo.component';
 import { CheckboxDemoComponent } from './checkbox/checkbox-demo.component';
 import { CheckboxModule } from '../../../lib/src/checkbox/checkbox.module';
@@ -57,16 +53,18 @@ import { ProgressIndicatorDemoComponent } from './progress-indicator/progress-in
 import { SharedModule } from '../shared/shared.module';
 import { PaginationModule } from '../../../lib/src/pagination/pagination.module';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
+import { ComponentsRoutesModule } from './components-routes.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [
-        BrowserAnimationsModule,
-        BrowserModule,
+        CommonModule,
         ButtonModule,
         NavbarModule,
-        PickListModule,
+        PicklistModule,
         PopoverModule,
         FormsModule,
+        ReactiveFormsModule,
         CheckboxModule,
         RadioButtonModule,
         ProgressIndicatorsModule,
@@ -87,7 +85,7 @@ import { PaginationDemoComponent } from './pagination/pagination-demo.component'
         LabelModule,
         PaginationModule,
         SharedModule,
-        RouterModule.forRoot(routes)
+        ComponentsRoutesModule
     ],
     exports: [
         NavbarModule,
@@ -98,7 +96,7 @@ import { PaginationDemoComponent } from './pagination/pagination-demo.component'
         HomeComponent,
         ButtonDemoComponent,
         NavbarDemoComponent,
-        PickListDemoComponent,
+        PicklistDemoComponent,
         PopoverDemoComponent,
         CheckboxDemoComponent,
         RadioButtonDemoComponent,

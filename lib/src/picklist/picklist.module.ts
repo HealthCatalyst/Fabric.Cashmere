@@ -32,5 +32,5 @@ export {
         PicklistComponent
     ]
 })
-export class PickListModule {
+export class PicklistModule {
 }

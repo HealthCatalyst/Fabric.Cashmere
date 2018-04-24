@@ -2,11 +2,42 @@
 @import '../sass/functions.scss';
 @import '../sass/mixins.scss';
 
-hc-select select {
+.hc-select {
     display: inline-block;
+
+    &.ng-invalid {
+        .hc-select-input {
+            border: 2px solid $red;
+        }
+    }
+}
+
+.hc-select-container {
+    position: relative;
+}
+
+.hc-select-chevron {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    text-align: center;
+    pointer-events: none;
+
+    &:after {
+        content: "\f078";
+        font-family: FontAwesome;
+        color: #00aeff;
+        pointer-events: none;
+        box-sizing: border-box;
+    }
+}
+
+.hc-select-input {
     color: $text;
     background-color: $white;
-    font-family: 'Open Sans', sans-serif;
     @include fontSize(14px);
     padding-left: 7px;
     padding-right: 50px;
@@ -26,51 +57,12 @@ hc-select select {
         cursor: not-allowed;
         border: 1.5px solid $gray-200;
         background-color: $slate-gray-100;
-        color: tint( $text, 60%);
+        color: tint($text, 60%);
     }
 }
 
-hc-select .disabled.chevron:after {
-    color: tint( $primary-brand, 60%)
-}
-
-hc-select .chevron {
-    overflow: hidden;
-    height: 35px;
-    position: relative;
-    display: block;
-}
-
-hc-select .chevron:after {
-    content: "\f078";
-    font-family: FontAwesome;
-    color: $primary-brand;
-    padding: 9.5px 18px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: $zindex-dropdown + 1;
-    text-align: center;
-    height: 100%;
-    pointer-events: none;
-    box-sizing: border-box;
-}
-
-hc-select .select-errors {
-    margin-top: 8px;
-    color: $red;
-    font-weight: 600;
-    @include fontSize(12px);
-    display: none;
-}
-
-hc-select .highlight {
-    select { border: 2px solid $red; }
-    .select-errors { display: block; }
-}
-
-hc-select .select-required label:after {
-    content: "*";
-    margin-left: 5px;
-    color: $red;
+.hc-select-disabled {
+    .hc-select-chevron {
+        color: tint($primary-brand, 60%)
+    }
 }
