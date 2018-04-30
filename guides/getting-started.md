@@ -55,7 +55,7 @@ export class SomeModule { }
 #### Step 3. Add the styles.
 
 Import the SCSS file from the package in `src/styles.scss`.
-
+```
 @import "~@healthcatalyst/cashmere/cashmere";
 ```
 
