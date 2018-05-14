@@ -55,7 +55,7 @@ table.hc-table {
                 background-color: $row-color-alt;
             }
 
-            &:hover {
+            &:not([disabled]):hover {
                 background-color: $row-color-hover;
             }
 
@@ -90,7 +90,7 @@ table.hc-table {
 
     // Actionable table/row
     &.hc-action-table {
-        tr {
+        tr:not([disabled]) {
             &:hover {
                 background-color: $row-color-action-hover;
                 cursor: pointer;
@@ -99,7 +99,7 @@ table.hc-table {
         }
     }
 
-    tr.hc-action-row, {
+    tr.hc-action-row:not([disabled]) {
         &:hover {
             background-color: $row-color-action-hover;
             cursor: pointer;
