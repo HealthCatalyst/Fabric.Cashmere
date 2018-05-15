@@ -23,6 +23,7 @@ import { LinechartComponent } from './chart/linechart/linechart.component';
 import { ErrorPagesComponent } from './error/error-pages.component';
 import { StylesRoutesModule } from './styles-routes.module';
 import { CommonModule } from '@angular/common';
+import { BreadcrumbsStyleDemoComponent } from './breadcrumbs/breadcrumbs-style-demo.component';
 
 @NgModule({
     imports: [
@@ -50,7 +51,8 @@ import { CommonModule } from '@angular/common';
         ChartDemoComponent,
         BarchartComponent,
         LinechartComponent,
-        ErrorPagesComponent
+        ErrorPagesComponent,
+        BreadcrumbsStyleDemoComponent
     ]
 })
 export class StylesModule {

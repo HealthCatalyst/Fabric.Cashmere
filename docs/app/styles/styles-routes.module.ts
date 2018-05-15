@@ -7,12 +7,18 @@ import { CodeDemoComponent } from './code/code-demo.component';
 import { ChartDemoComponent } from './chart/chart-demo.component';
 import { ErrorPagesComponent } from './error/error-pages.component';
 import { NgModule } from '@angular/core';
+import { BreadcrumbsStyleDemoComponent } from './breadcrumbs/breadcrumbs-style-demo.component';
 
 const routes: Routes = [
     {
         path: 'styles',
         component: StylesComponent,
         children: [
+            {
+                path: 'breadcrumbs',
+                component: BreadcrumbsStyleDemoComponent,
+                data: {title: 'Breadcrumbs'}
+            },
             {
                 path: 'color',
                 component: ColorDemoComponent,
@@ -45,7 +51,7 @@ const routes: Routes = [
             },
             {
                 path: '**',
-                redirectTo: 'chart'
+                redirectTo: 'breadcrumbs'
             }
         ]
     }

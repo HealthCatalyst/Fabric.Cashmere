@@ -1,17 +1,14 @@
 <ol class="breadcrumb">
-    <li *ngFor="let breadcrumb of breadcrumbs; let last = last">
-        <span *ngIf="!last">
-            <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{breadcrumb.label}}</a>
-            <hc-icon fontSet="fa" fontIcon="fa-chevron-right" class="breadcrumb-arrow"></hc-icon>
-        </span>
-        <span *ngIf="last">
-            {{breadcrumb.label}}
-        </span>
-    </li>
-    <div class="responsive-container">
-        <div class="back-button" [style.display]="backShow">
-            <a [routerLink]="backURL"><hc-icon fontSet="fa" fontIcon="fa-chevron-left" class="back-arrow"></hc-icon>Back</a>
-        </div>
-        {{locationLabel}}
-    </div>
+    <li *ngFor="let breadcrumb of breadcrumbs; let last = last" class="breadcrumb-item">
+        <a *ngIf="!last" [routerLink]="[breadcrumb.url, breadcrumb.params]" [innerText]="breadcrumb.label"></a>
+        <span *ngIf="last" [innerText]="breadcrumb.label"></span>
+        <i class="fa fa-chevron-right breadcrumb-arrow"></i>
+    </li>    
 </ol>
+<div class="breadcrumb-responsive-container">
+    <a [style.display]="backShow" class="breadcrumb-back-button" [routerLink]="backURL">
+        <i class="fa fa-chevron-left"></i>
+        <span>Back</span>
+    </a>
+    <span [innerText]="locationLabel"></span>
+</div>
