@@ -1,16 +1,16 @@
-@import 'variables';
-@import 'functions';
+@import "variables";
+@import "functions";
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
 // Makes the @content apply to the given breakpoint and wider.
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
     $min: map-get($breakpoints, $name);
     @if $min {
-      @media (min-width: $min) {
-        @content;
-      }
+        @media (min-width: $min) {
+            @content;
+        }
     } @else {
-      @content;
+        @content;
     }
 }
 
@@ -19,14 +19,22 @@
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
     $max: map-get($breakpoints, $name);
     @if $max {
-      @media (max-width: $max) {
-        @content;
-      }
+        @media (max-width: $max) {
+            @content;
+        }
     } @else {
-      @content;
+        @content;
     }
 }
 
 @mixin fontSize($size) {
-  font-size: calculateRem($size);
+    font-size: calculateRem($size);
+}
+
+@mixin clearfix() {
+    &::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
 }
