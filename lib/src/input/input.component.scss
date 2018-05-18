@@ -5,6 +5,7 @@
 .hc-input {
     color: $text;
     @include fontSize(14px);
+    height: 35px;
     line-height: 32px;
     border: 1.5px solid $gray-300;
     font-family: inherit;
