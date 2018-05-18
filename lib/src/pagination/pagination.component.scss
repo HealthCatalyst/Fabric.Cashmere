@@ -29,28 +29,27 @@
     }
 
     .hc-left-button {
-        margin-right: 0;
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
-        min-width: unset;
     }
 
     .hc-right-button {
-        margin-right: 0;
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
         border-left-width: 0;
-        min-width: unset;
     }
 
     .hc-inner-button {
-        margin-right: 0;
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
         border-left-width: 0;
-        min-width: unset;
+    }
+
+    .hc-page-button {
+        min-width: auto;
+        margin-right: 0;
     }
 
     button.hc-inner-button hc-icon {
