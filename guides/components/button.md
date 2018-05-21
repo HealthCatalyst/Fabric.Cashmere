@@ -19,7 +19,7 @@
 ##### Properties
 | Name | Type | Description |
 | - | - | - |
-|color|string|Sets the button's theme color|
+|color|string|Sets the button's theme color. `primary | primary-alt | destructive | neutral | secondary | tertiary`|
 |disabled|boolean|Boolean value that enables/disables the button|
 :::
 
