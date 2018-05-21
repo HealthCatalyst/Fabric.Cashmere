@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { PicklistOptionsSource, IValueOption, IValueSetOption, PicklistSettings } from '../picklist.model';
-import { FilterableSelectList, SelectListOption, ValueSetListOption, ValueListOption } from '../pane/picklist-pane.model'
-import { PicklistPaneComponent } from '../pane/picklist-pane.component';
-import { PicklistFilterLocalService } from './picklist-filter-local.service';
+import {PicklistOptionsSource, IValueOption, IValueSetOption, PicklistSettings} from '../picklist.model';
+import {FilterableSelectList, SelectListOption, ValueSetListOption, ValueListOption} from '../pane/picklist-pane.model';
+import {PicklistPaneComponent} from '../pane/picklist-pane.component';
+import {PicklistFilterLocalService} from './picklist-filter-local.service';
 
 @Injectable()
 export class PicklistStateService {
@@ -56,14 +56,15 @@ export class PicklistStateService {
         options: T[],
         list: FilterableSelectList<T>,
         companionList: FilterableSelectList<T> | null = null,
-        searchTokens: string[] = []) {
-            if (!this.optionsSource.isPaged && this.pane.shouldExcludeCompanion && companionList) {
-                options = options.filter(o => !companionList.options.get(o.code));
-            }
-            options.forEach(o => {
-                list.options.set(o.code, o);
-                list.filteredOptions.push(o);
-            });
-            this.localFilterService.filter(list, searchTokens);
+        searchTokens: string[] = []
+    ) {
+        if (!this.optionsSource.isPaged && this.pane.shouldExcludeCompanion && companionList) {
+            options = options.filter(o => !companionList.options.get(o.code));
+        }
+        options.forEach(o => {
+            list.options.set(o.code, o);
+            list.filteredOptions.push(o);
+        });
+        this.localFilterService.filter(list, searchTokens);
     }
 }

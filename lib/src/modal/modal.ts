@@ -1,8 +1,8 @@
-import { ModalOverlayComponent } from './modal-overlay.component';
-import { ComponentRef } from '@angular/core';
-import { ModalWindowComponent } from './modal-window.component';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import {ModalOverlayComponent} from './modal-overlay.component';
+import {ComponentRef} from '@angular/core';
+import {ModalWindowComponent} from './modal-window.component';
+import {Observable} from 'rxjs/Observable';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 export class HcModal<T> {
     public componentRef: ComponentRef<T> | null;

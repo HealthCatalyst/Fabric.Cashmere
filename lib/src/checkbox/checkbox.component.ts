@@ -1,23 +1,13 @@
 /* tslint:disable:no-use-before-declare */
 
-import {
-    Attribute,
-    Component,
-    EventEmitter,
-    forwardRef,
-    HostBinding,
-    HostListener,
-    Input,
-    Output
-} from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { parseBooleanAttribute } from '../util';
+import {Attribute, Component, EventEmitter, forwardRef, HostBinding, HostListener, Input, Output} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {parseBooleanAttribute} from '../util';
 
 let nextCheckboxId = 1;
 
 export class CheckboxChangeEvent {
-    constructor(public source: CheckboxComponent, public checked: boolean) {
-    }
+    constructor(public source: CheckboxComponent, public checked: boolean) {}
 }
 
 export const hcCheckboxValueAccessor: any = {
@@ -100,11 +90,9 @@ export class CheckboxComponent implements ControlValueAccessor {
         return this.id || `${this.uniqueId}-input`;
     }
 
-    private onChangeFunc: (value: any) => void = () => {
-    };
+    private onChangeFunc: (value: any) => void = () => {};
 
-    private onTouchFunc: () => any = () => {
-    };
+    private onTouchFunc: () => any = () => {};
 
     constructor(@Attribute('tabindex') tabindex: string) {
         this.tabIndex = parseInt(tabindex, 10) || 0;

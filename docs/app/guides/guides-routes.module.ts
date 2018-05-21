@@ -1,7 +1,7 @@
-import { RouterModule, Routes } from '@angular/router';
-import { GuidesComponent } from './guides.component';
-import { GuideComponent } from './guide/guide.component';
-import { NgModule } from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {GuidesComponent} from './guides.component';
+import {GuideComponent} from './guide/guide.component';
+import {NgModule} from '@angular/core';
 
 const routes: Routes = [
     {
@@ -20,5 +20,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class GuidesRoutesModule {
-}
+export class GuidesRoutesModule {}

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { NavbarIconComponent } from './navbar-icon.component';
+import {NavbarIconComponent} from './navbar-icon.component';
 
 describe('NavbarIconComponent', () => {
     let component: NavbarIconComponent;
@@ -9,8 +9,7 @@ describe('NavbarIconComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [NavbarIconComponent]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {

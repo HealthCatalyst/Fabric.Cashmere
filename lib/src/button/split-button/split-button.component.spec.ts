@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SplitButtonComponent } from './split-button.component';
-import { PopoverModule } from '../../popover/popover.module';
-import { ButtonComponent } from '../button.component';
+import {SplitButtonComponent} from './split-button.component';
+import {PopoverModule} from '../../popover/popover.module';
+import {ButtonComponent} from '../button.component';
 
 describe('SplitButtonComponent', () => {
     let component: SplitButtonComponent;
@@ -11,12 +11,8 @@ describe('SplitButtonComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [PopoverModule],
-            declarations: [
-                ButtonComponent,
-                SplitButtonComponent
-            ]
-        })
-            .compileComponents();
+            declarations: [ButtonComponent, SplitButtonComponent]
+        }).compileComponents();
     }));
 
     beforeEach(() => {

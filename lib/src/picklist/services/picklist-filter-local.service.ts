@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { FilterableSelectList, SelectListOption } from '../pane/picklist-pane.model';
+import {Injectable} from '@angular/core';
+import {FilterableSelectList, SelectListOption} from '../pane/picklist-pane.model';
 
 @Injectable()
 export class PicklistFilterLocalService {

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { GuidesService } from './guides.service';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {GuidesService} from './guides.service';
+import {ActivatedRoute, Router, NavigationEnd} from '@angular/router';
 
 @Component({
     selector: 'hc-guides',
@@ -10,12 +10,11 @@ export class GuidesComponent implements OnInit {
     thisPage = '';
     selectOptions: Array<string> = [];
 
-    constructor(public guidesService: GuidesService, private activatedRoute: ActivatedRoute, private router: Router) {
-    }
+    constructor(public guidesService: GuidesService, private activatedRoute: ActivatedRoute, private router: Router) {}
 
     ngOnInit() {
         // Listen for vertical tab bar navigation and update the select component
-        this.router.events.subscribe((event) => {
+        this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
                 for (let entry of this.guidesService.guides) {
                     if (event.url === `/guides/${entry.route}`) {

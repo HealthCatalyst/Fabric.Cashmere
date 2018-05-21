@@ -1,6 +1,6 @@
-import { ModalWindowComponent } from './modal-window.component';
-import { ModalOverlayComponent } from './modal-overlay.component';
-import { HcModal } from './modal';
+import {ModalWindowComponent} from './modal-window.component';
+import {ModalOverlayComponent} from './modal-overlay.component';
+import {HcModal} from './modal';
 import {
     Injectable,
     ComponentFactoryResolver,
@@ -16,8 +16,8 @@ import {
     Renderer2,
     RendererFactory2
 } from '@angular/core';
-import { ModalOptions } from './modal-options';
-import { ActiveModal } from './active-modal';
+import {ModalOptions} from './modal-options';
+import {ActiveModal} from './active-modal';
 
 export type ModalContentType = Type<{}> | TemplateRef<any>;
 
@@ -36,10 +36,7 @@ export class ModalService {
         this.renderer = rendererFactory.createRenderer(null, null);
     }
 
-    public open<T>(
-        modalContent: ModalContentType,
-        modalOptions?: ModalOptions,
-    ): HcModal<T> {
+    public open<T>(modalContent: ModalContentType, modalOptions?: ModalOptions): HcModal<T> {
         let container: HTMLElement | null = document.querySelector('body');
         if (modalOptions) {
             if (modalOptions.container) {
@@ -50,7 +47,7 @@ export class ModalService {
         let hcModal = new HcModal<T>();
         let activeModalContext = new ActiveModal();
         const modalContextInjector = ReflectiveInjector.resolveAndCreate(
-            [{ provide: ActiveModal, useValue: activeModalContext }],
+            [{provide: ActiveModal, useValue: activeModalContext}],
             this.injector
         );
         if (container) {
@@ -59,9 +56,7 @@ export class ModalService {
             hcModal.removeOpenClass = () => this.renderer.removeClass(container, 'hc-modal-open');
 
             // Create, attach, and append overlay to container
-            let overlay = this.componentFactoryResolver
-                .resolveComponentFactory(ModalOverlayComponent)
-                .create(modalContextInjector);
+            let overlay = this.componentFactoryResolver.resolveComponentFactory(ModalOverlayComponent).create(modalContextInjector);
             this.renderer.setStyle(overlay.location.nativeElement, 'z-index', this.zIndexCounter);
             if (modalOptions) {
                 overlay.instance.ignoreEscapeKey = modalOptions.ignoreEscapeKey || false;
@@ -78,9 +73,7 @@ export class ModalService {
                 this.applicationRef.attachView(embeddedViewRef);
                 projectableNodes = [embeddedViewRef.rootNodes];
             } else {
-                const componentRef = this.componentFactoryResolver
-                    .resolveComponentFactory(modalContent)
-                    .create(modalContextInjector);
+                const componentRef = this.componentFactoryResolver.resolveComponentFactory(modalContent).create(modalContextInjector);
 
                 // Set host component style to 100% to allow collapsing of body but not header/footer
                 this.renderer.addClass(componentRef.location.nativeElement, 'hc-modal-center-component');

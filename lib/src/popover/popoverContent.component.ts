@@ -1,18 +1,11 @@
-import {
-    Component,
-    ElementRef,
-    OnDestroy,
-    ViewChild,
-    EventEmitter,
-    HostListener, Renderer2,
-} from '@angular/core';
+import {Component, ElementRef, OnDestroy, ViewChild, EventEmitter, HostListener, Renderer2} from '@angular/core';
 import Popper from 'popper.js';
-import { Placements, Triggers, PopperContentOptions } from './popover.model';
+import {Placements, Triggers, PopperContentOptions} from './popover.model';
 
 @Component({
     styleUrls: ['./popoverContent.component.scss'],
     selector: 'hc-popover-content',
-    templateUrl: './popoverContent.component.html',
+    templateUrl: './popoverContent.component.html'
 })
 export class PopoverContentComponent implements OnDestroy {
     popperOptions: PopperContentOptions = <PopperContentOptions>{
@@ -41,8 +34,7 @@ export class PopoverContentComponent implements OnDestroy {
 
     private globalResize: any;
 
-    @ViewChild('popperViewRef')
-    popperViewRef: ElementRef;
+    @ViewChild('popperViewRef') popperViewRef: ElementRef;
 
     @HostListener('mouseover')
     onMouseOver() {
@@ -62,8 +54,7 @@ export class PopoverContentComponent implements OnDestroy {
         this.update();
     }
 
-    constructor(private renderer: Renderer2) {
-    }
+    constructor(private renderer: Renderer2) {}
 
     ngOnDestroy() {
         if (!this.popperInstance) {
@@ -71,7 +62,6 @@ export class PopoverContentComponent implements OnDestroy {
         }
         (this.popperInstance as any).disableEventListeners();
         this.popperInstance.destroy();
-
     }
 
     show(): void {
@@ -97,11 +87,7 @@ export class PopoverContentComponent implements OnDestroy {
 
         popperOptions.modifiers = Object.assign(popperOptions.modifiers, this.popperOptions.popperModifiers);
 
-        this.popperInstance = new Popper(
-            this.referenceObject,
-            this.popperViewRef.nativeElement,
-            popperOptions,
-        );
+        this.popperInstance = new Popper(this.referenceObject, this.popperViewRef.nativeElement, popperOptions);
         (this.popperInstance as any).enableEventListeners();
         this.scheduleUpdate();
         this.toggleVisibility(true);

@@ -1,6 +1,8 @@
 :::
+
 ##### Angular Component
-``` html
+
+```html
 <hc-chip>Basic Chip</hc-chip>
 
 <hc-chip color="red">
@@ -19,26 +21,36 @@
     <hc-chip action="true">Hospital (2)</hc-chip>
 </hc-chip-row>
 ```
+
 :::
 
 :::
+
 ##### Chip Usage
+
 The chip module consists of two componenets:
-- `hc-chip` - the base component
-- `hc-chip-row` - the optional container for chips
-:::
+
+*   `hc-chip` - the base component
+*   `hc-chip-row` - the optional container for chips
+    :::
 
 :::
+
 ##### Chip Component Properties
-| Name | Type | Description |
-| - | - | - |
-|action|boolean|Whether to display a delete button and pointer cursor|
-|color|string|`'neutral', 'red', 'yellow', 'green'` (default=`'neutral'`)|
+
+| Name   | Type    | Description                                                 |
+| ------ | ------- | ----------------------------------------------------------- |
+| action | boolean | Whether to display a delete button and pointer cursor       |
+| color  | string  | `'neutral', 'red', 'yellow', 'green'` (default=`'neutral'`) |
+
 :::
 
 :::
+
 ##### Chip Row Properties
-| Name | Type | Description |
-| - | - | - |
-|wrap|boolean|If false, constrain the container to one line with overflow ellipses (default=true)|
+
+| Name | Type    | Description                                                                         |
+| ---- | ------- | ----------------------------------------------------------------------------------- |
+| wrap | boolean | If false, constrain the container to one line with overflow ellipses (default=true) |
+
 :::

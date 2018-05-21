@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, ElementRef, ChangeDetectorRef } from '@angular/core';
+import {Component, HostBinding, Input, ElementRef, ChangeDetectorRef} from '@angular/core';
 
 @Component({
     selector: 'hc-navbar-link',
@@ -12,11 +12,18 @@ export class NavbarLinkComponent {
     @Input() exact: boolean = false;
     hidden: boolean = false;
 
-    constructor( private el: ElementRef, private ref: ChangeDetectorRef ) {
+    constructor(private el: ElementRef, private ref: ChangeDetectorRef) {}
+
+    hide() {
+        this.hidden = true;
+        this.ref.detectChanges();
+    }
+    show() {
+        this.hidden = false;
+        this.ref.detectChanges();
     }
 
-    hide() { this.hidden = true; this.ref.detectChanges(); }
-    show() { this.hidden = false; this.ref.detectChanges(); }
-
-    getWidth() { return this.el.nativeElement.scrollWidth; }
+    getWidth() {
+        return this.el.nativeElement.scrollWidth;
+    }
 }

@@ -8,10 +8,15 @@ import {
     OnChanges,
     SimpleChange,
     Output,
-    EventEmitter, OnInit, Renderer2, ChangeDetectorRef, Inject, OnDestroy
+    EventEmitter,
+    OnInit,
+    Renderer2,
+    ChangeDetectorRef,
+    Inject,
+    OnDestroy
 } from '@angular/core';
-import { Placement, Placements, PopperContentOptions, Trigger, Triggers } from './popover.model';
-import { PopoverContentComponent } from './popoverContent.component';
+import {Placement, Placements, PopperContentOptions, Trigger, Triggers} from './popover.model';
+import {PopoverContentComponent} from './popoverContent.component';
 
 @Directive({
     selector: '[hcPopover]',
@@ -35,8 +40,7 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
     private globalScroll: any;
 
     // tslint:disable-next-line:no-input-rename
-    @Input('hcPopover')
-    content: string | PopoverContentComponent;
+    @Input('hcPopover') content: string | PopoverContentComponent;
 
     @Input() popperDisabled: boolean;
 
@@ -77,7 +81,6 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
     @Output() popperOnHidden = new EventEmitter<PopoverDirective>();
 
     @HostListener('touchstart', ['$event'])
-
     static assignDefined(target: any, ...sources: any[]) {
         for (const source of sources) {
             for (const key of Object.keys(source)) {
@@ -98,11 +101,12 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
         this.toggle();
     }
 
-    constructor(private viewContainerRef: ViewContainerRef,
-                private changeDetectorRef: ChangeDetectorRef,
-                private resolver: ComponentFactoryResolver,
-                private renderer: Renderer2) {
-
+    constructor(
+        private viewContainerRef: ViewContainerRef,
+        private changeDetectorRef: ChangeDetectorRef,
+        private resolver: ComponentFactoryResolver,
+        private renderer: Renderer2
+    ) {
         PopoverDirective.baseOptions = {
             disableAnimation: false,
             disableDefaultStyling: false,
@@ -110,7 +114,7 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
             trigger: Triggers.CLICK,
             positionFixed: true,
             hideOnClickOutside: true,
-            hideOnScroll: false,
+            hideOnScroll: false
         };
     }
 
@@ -155,11 +159,10 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
         this.scheduledHide(null, this.popperTimeout);
     }
 
-
     ngOnInit() {
         // Support legacy prop
-        this.popoverCloseOnClickOutside = typeof this.popoverCloseOnClickOutside === 'undefined' ?
-            this.popperCloseOnClickOutside : this.popoverCloseOnClickOutside;
+        this.popoverCloseOnClickOutside =
+            typeof this.popoverCloseOnClickOutside === 'undefined' ? this.popperCloseOnClickOutside : this.popoverCloseOnClickOutside;
 
         if (typeof this.content === 'string') {
             const text = this.content;
@@ -176,7 +179,7 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
         }
     }
 
-    ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
+    ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
         if (changes['popperDisabled']) {
             if (changes['popperDisabled'].currentValue) {
                 this.hide();
@@ -244,13 +247,16 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
         this.overrideShowTimeout();
         this.scheduledHideTimeout = setTimeout(() => {
             const toElement = $event ? $event.toElement : null;
-            const PopoverContentComponentView = (this.content as PopoverContentComponent).popperViewRef ?
-                (this.content as PopoverContentComponent).popperViewRef.nativeElement : false;
+            const PopoverContentComponentView = (this.content as PopoverContentComponent).popperViewRef
+                ? (this.content as PopoverContentComponent).popperViewRef.nativeElement
+                : false;
 
-            if (!PopoverContentComponentView ||
+            if (
+                !PopoverContentComponentView ||
                 PopoverContentComponentView === toElement ||
                 PopoverContentComponentView.contains(toElement) ||
-                (this.content as PopoverContentComponent).isMouseOver) {
+                (this.content as PopoverContentComponent).isMouseOver
+            ) {
                 return;
             }
             this.hide();
@@ -271,10 +277,12 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
 
     private setDefaults() {
         this.popperTrigger = typeof this.popperTrigger === 'undefined' ? PopoverDirective.baseOptions.trigger : this.popperTrigger;
-        this.popoverCloseOnClickOutside = typeof this.popoverCloseOnClickOutside === 'undefined' ?
-            PopoverDirective.baseOptions.hideOnClickOutside : this.popoverCloseOnClickOutside;
-        this.popperHideOnScroll = typeof this.popperHideOnScroll === 'undefined' ?
-            PopoverDirective.baseOptions.hideOnScroll : this.popperHideOnScroll;
+        this.popoverCloseOnClickOutside =
+            typeof this.popoverCloseOnClickOutside === 'undefined'
+                ? PopoverDirective.baseOptions.hideOnClickOutside
+                : this.popoverCloseOnClickOutside;
+        this.popperHideOnScroll =
+            typeof this.popperHideOnScroll === 'undefined' ? PopoverDirective.baseOptions.hideOnScroll : this.popperHideOnScroll;
     }
 
     private clearEventListeners() {
@@ -315,7 +323,7 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
             boundariesElement: this.popperBoundaries,
             trigger: this.popperTrigger,
             positionFixed: this.popperPositionFixed,
-            popperModifiers: this.popperModifiers,
+            popperModifiers: this.popperModifiers
         });
         this.subscriptions.push(popperRef.onHidden.subscribe(this.hide.bind(this)));
     }

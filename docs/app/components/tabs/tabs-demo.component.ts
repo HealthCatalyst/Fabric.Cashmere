@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'hc-tabs-demo',
@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./tabs-demo.component.scss']
 })
 export class TabsDemoComponent {
-    lastModified: Date = new Date( document.lastModified );
+    lastModified: Date = new Date(document.lastModified);
     public document: string = require('raw-loader!../../../../guides/components/tabs.md');
 
     tabs = [
@@ -22,5 +22,5 @@ export class TabsDemoComponent {
             id: 3,
             title: 'tab3'
         }
-    ]
+    ];
 }

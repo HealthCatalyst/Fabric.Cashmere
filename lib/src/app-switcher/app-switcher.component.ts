@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import {Component, OnInit, OnDestroy, Inject} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 import 'rxjs/add/operator/takeUntil';
-import { Subject } from 'rxjs/Subject';
+import {Subject} from 'rxjs/Subject';
 
-import { IAppSwitcherService, IDiscoveryApplication } from './app-switcher-interfaces';
+import {IAppSwitcherService, IDiscoveryApplication} from './app-switcher-interfaces';
 
 @Component({
     selector: 'hc-app-switcher',
@@ -17,12 +17,11 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
 
     private ngUnsubscribe: any = new Subject();
 
-
-    constructor(@Inject('IAppSwitcherService') public appSwitcherService: IAppSwitcherService) {
-    }
+    constructor(@Inject('IAppSwitcherService') public appSwitcherService: IAppSwitcherService) {}
 
     ngOnInit() {
-        this.subscription = this.appSwitcherService.getApplications()
+        this.subscription = this.appSwitcherService
+            .getApplications()
             .takeUntil(this.ngUnsubscribe)
             .subscribe((response: any) => {
                 this.applications = response.value;

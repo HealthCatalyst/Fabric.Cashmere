@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs/Rx';
-import { IValueOption, IValueSetOption } from '../picklist.model';
+import {Observable} from 'rxjs/Rx';
+import {IValueOption, IValueSetOption} from '../picklist.model';
 
 export class FilterableSelectList<T extends SelectListOption> {
     public selectedOptions = new Map<string, T>();
@@ -10,7 +10,7 @@ export class FilterableSelectList<T extends SelectListOption> {
     public additionalRemoteOptions = 0;
     public loadingOptions: Observable<boolean> = Observable.from([]);
     public appendingOptions: Observable<boolean> = Observable.from([]);
-    public codeIsSignificant: boolean = false
+    public codeIsSignificant: boolean = false;
     constructor(public options = new Map<string, T>()) {}
 }
 
@@ -21,7 +21,7 @@ export class SubSelectList extends FilterableSelectList<ValueListOption> {
 }
 
 export function isSubList(model: FilterableSelectList<SelectListOption>): model is SubSelectList {
-    const subList = (<SubSelectList>model);
+    const subList = <SubSelectList>model;
     return subList && subList.parentValueSet !== undefined;
 }
 
@@ -46,7 +46,7 @@ export class ValueSetListOption extends SelectListOption {
 
     constructor(option: IValueSetOption, code: string) {
         super(option, code);
-        this.subValuesSelectList = new SubSelectList(this)
+        this.subValuesSelectList = new SubSelectList(this);
     }
 }
 

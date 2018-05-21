@@ -1,7 +1,7 @@
-import { ModalService } from './../../../../lib/src/modal/modal.service';
-import { Component } from '@angular/core';
-import { ModalOptions } from '../../../../lib/src/modal/modal-options';
-import { ActiveModal } from '../../../../lib/src/modal/active-modal';
+import {ModalService} from './../../../../lib/src/modal/modal.service';
+import {Component} from '@angular/core';
+import {ModalOptions} from '../../../../lib/src/modal/modal-options';
+import {ActiveModal} from '../../../../lib/src/modal/active-modal';
 
 @Component({
     selector: 'hc-sub-modal-demo',
@@ -16,7 +16,7 @@ import { ActiveModal } from '../../../../lib/src/modal/active-modal';
     `
 })
 export class SubModalDemoComponent {
-    constructor(private modalService: ModalService, public activeModal: ActiveModal) { }
+    constructor(private modalService: ModalService, public activeModal: ActiveModal) {}
 
     public close() {
         this.activeModal.close();

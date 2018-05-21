@@ -1,6 +1,8 @@
 :::
+
 ##### Angular Component
-``` html
+
+```html
 <hc-list>
     <hc-list-item>
         <hc-icon fontSet="fa" fontIcon="fa-snowflake-o" hcListIcon></hc-icon>
@@ -15,10 +17,13 @@
     </hc-list-item>
 </hc-list>
 ```
+
 :::
 
 :::
+
 ##### Directives
+
 **hc-list**
 
 This is the container for the `hc-list-items`.
@@ -31,7 +36,9 @@ Acts as a host element for the individual items found in a `hc-list-item`. Repre
 :::
 
 :::
+
 ##### Directives
+
 **hcListIcon**
 
 Positions the element to the left and styled as an icon. Should be used in conjunction with `hc-icon`.

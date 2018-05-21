@@ -1,17 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { PopoverContentComponent } from './popoverContent.component';
-import { PopoverDirective } from './popover.directive';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {PopoverContentComponent} from './popoverContent.component';
+import {PopoverDirective} from './popover.directive';
 
 describe('PopoverContentComponent', () => {
     let component: PopoverContentComponent;
     let fixture: ComponentFixture<PopoverContentComponent>;
     const mockPopoverComponent: PopoverContentComponent = new PopoverContentComponent(<any>undefined);
     const mockViewContainerRef: any = {
-        createComponent: jasmine.createSpy('createComponent')
-            .and.returnValue({
-                'instance': mockPopoverComponent,
-                'destroy': jasmine.createSpy('destroy')
-            }),
+        createComponent: jasmine.createSpy('createComponent').and.returnValue({
+            instance: mockPopoverComponent,
+            destroy: jasmine.createSpy('destroy')
+        }),
         element: {nativeElement: ''}
     };
     let directive: PopoverDirective;
@@ -22,8 +21,7 @@ describe('PopoverContentComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [PopoverContentComponent]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {

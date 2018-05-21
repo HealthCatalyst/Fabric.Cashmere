@@ -3,6 +3,7 @@
 ###### Last updated May 15, 2018
 
 :::
+
 ##### Example
 
 Add `.subnav` class to the root element with an `<ol>` element with `.breadcrumb` class as a child. Each `<li>` child should have a `.breadcrumb-item` class with either a `<span>` or `<a>`
@@ -31,6 +32,7 @@ Add `.subnav` class to the root element with an `<ol>` element with `.breadcrumb
     </div>
 </div>
 ```
+
 :::
 
 <div class="subnav">
@@ -59,6 +61,8 @@ Add `.subnav` class to the root element with an `<ol>` element with `.breadcrumb
 <br>
 
 :::
+
 ##### Responsive
+
 On smaller phone sized devices the `.breadcrumb` element will be hidden and in its place `.breadcrumb-responsive-container` will show. This container can have anything that would be suitable for smaller screens. Responsive behavior can be disabled by adding `.disable-responsive` to each the `.breadcrumb` and `.breadcrumb-responsive-container` element
 :::

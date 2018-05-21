@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IPicklistSettings } from '../../../../lib/src/picklist/picklist.module';
-import { FakeRemoteOptionsService, getFakeValues, getFakeValueSets } from './picklist-demo-data';
+import {Component} from '@angular/core';
+import {IPicklistSettings} from '../../../../lib/src/picklist/picklist.module';
+import {FakeRemoteOptionsService, getFakeValues, getFakeValueSets} from './picklist-demo-data';
 
 @Component({
     selector: 'hc-picklist-demo',
@@ -8,24 +8,21 @@ import { FakeRemoteOptionsService, getFakeValues, getFakeValueSets } from './pic
     styleUrls: ['./picklist-demo.component.scss']
 })
 export class PicklistDemoComponent {
-    public lastModified: Date = new Date( document.lastModified );
+    public lastModified: Date = new Date(document.lastModified);
     public document: string = require('raw-loader!../../../../guides/components/picklist.md');
     public fakeService = new FakeRemoteOptionsService();
     public selectedConfig = 'simpleConfig';
 
     public simpleConfig: IPicklistSettings = {
-        options: { values: [
-            { code: '1', title: 'North' },
-            { code: '2', title: 'South' },
-            { code: '3', title: 'East' },
-            { code: '4', title: 'West' },
-        ]}
+        options: {
+            values: [{code: '1', title: 'North'}, {code: '2', title: 'South'}, {code: '3', title: 'East'}, {code: '4', title: 'West'}]
+        }
     };
 
     public complexConfig: IPicklistSettings = {
         codeIsSignificant: true,
         useValuesets: true,
-        options: { values: getFakeValues(), valueSets: getFakeValueSets() }
+        options: {values: getFakeValues(), valueSets: getFakeValueSets()}
     };
 
     public remoteConfig: IPicklistSettings = {
@@ -33,10 +30,10 @@ export class PicklistDemoComponent {
         options: {
             isPaged: true,
             pageSize: 25,
-            getValuesForValueset: (code) => this.fakeService.getValuesForValueset(code),
-            getOptions: (params) => this.fakeService.getOptions(params)
+            getValuesForValueset: code => this.fakeService.getValuesForValueset(code),
+            getOptions: params => this.fakeService.getOptions(params)
         }
-    }
+    };
 
     public getConfigForSelection(): IPicklistSettings {
         return this[this.selectedConfig];

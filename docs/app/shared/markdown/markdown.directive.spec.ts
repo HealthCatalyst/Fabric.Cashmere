@@ -1,15 +1,24 @@
 // tslint:disable:max-classes-per-file
-import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MarkdownDirective } from './markdown.directive';
+import {Component} from '@angular/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {MarkdownDirective} from './markdown.directive';
 
-@Component({ template: `<div [hcMarkdown]="markdownInput" ></div>` })
-class Test1Component { markdownInput: string = `hello world`; highlight: boolean; lineNumbers: boolean; }
+@Component({template: `<div [hcMarkdown]="markdownInput" ></div>`})
+class Test1Component {
+    markdownInput: string = `hello world`;
+    highlight: boolean;
+    lineNumbers: boolean;
+}
 
 @Component({
     template: `<div [hcMarkdown]="markdownInput" [sanitize]="sanitize" [highlight]="highlight" [lineNumbers]="lineNumbers"></div>`
 })
-class Test2Component { markdownInput: string = `hello world`; sanitize: boolean; highlight: boolean = true; lineNumbers: boolean = true; }
+class Test2Component {
+    markdownInput: string = `hello world`;
+    sanitize: boolean;
+    highlight: boolean = true;
+    lineNumbers: boolean = true;
+}
 
 describe('MarkdownDirective', () => {
     let fixture: ComponentFixture<Test1Component | Test2Component>;
@@ -43,10 +52,7 @@ describe('MarkdownDirective', () => {
     describe('only markdown parameter is filled in', () => {
         beforeEach(() => {
             TestBed.configureTestingModule({
-                declarations: [
-                    MarkdownDirective,
-                    Test1Component
-                ]
+                declarations: [MarkdownDirective, Test1Component]
             }).compileComponents();
 
             fixture = TestBed.createComponent(Test1Component);
@@ -82,10 +88,7 @@ describe('MarkdownDirective', () => {
     describe('all parameters filled in', () => {
         beforeEach(() => {
             TestBed.configureTestingModule({
-                declarations: [
-                    MarkdownDirective,
-                    Test2Component
-                ]
+                declarations: [MarkdownDirective, Test2Component]
             }).compileComponents();
 
             fixture = TestBed.createComponent(Test2Component);

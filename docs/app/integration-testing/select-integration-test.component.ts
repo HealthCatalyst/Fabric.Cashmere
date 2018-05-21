@@ -1,5 +1,5 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Component } from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {Component} from '@angular/core';
 
 /**
  * This component exists solely to test the
@@ -20,7 +20,6 @@ import { Component } from '@angular/core';
     styles: []
 })
 export class SelectIntegrationTestComponent {
-
     cityForm: FormGroup;
     cities: Array<string> = ['Atlanta', 'SLC', 'NYC'];
     selectVal: string = '';
@@ -34,5 +33,4 @@ export class SelectIntegrationTestComponent {
             city: 'NYC'
         });
     }
-
 }

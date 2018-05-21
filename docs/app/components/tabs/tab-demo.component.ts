@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'hc-tab-demo',
@@ -7,12 +7,11 @@ import { ActivatedRoute } from '@angular/router';
     styles: ['div{ padding: 15px; display: block; height: 198px; }']
 })
 export class TabDemoComponent implements OnInit {
-
     public currentId: number;
 
-    constructor(private route: ActivatedRoute) { }
+    constructor(private route: ActivatedRoute) {}
 
     ngOnInit() {
-        this.route.params.subscribe(params => this.currentId = +params['id']);
+        this.route.params.subscribe(params => (this.currentId = +params['id']));
     }
 }

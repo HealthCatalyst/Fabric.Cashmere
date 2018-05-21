@@ -1,5 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { SubnavComponent } from './subnav.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {SubnavComponent} from './subnav.component';
 
 describe('SelectComponent', () => {
     let component: SubnavComponent;
@@ -10,8 +10,7 @@ describe('SelectComponent', () => {
             imports: [],
             providers: [],
             declarations: [SubnavComponent]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {

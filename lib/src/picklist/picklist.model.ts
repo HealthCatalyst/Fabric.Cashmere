@@ -1,10 +1,16 @@
-import { Observable } from 'rxjs/Rx';
-import { PicklistPaneComponent } from './pane/picklist-pane.component'
+import {Observable} from 'rxjs/Rx';
+import {PicklistPaneComponent} from './pane/picklist-pane.component';
 
 export type PicklistValueType = 'values' | 'valuesets' | 'both';
 
-export interface IValueOption { code: string, title: string };
-export interface IValueSetOption extends IValueOption { subValueCount: number, subValues: IValueOption[] };
+export interface IValueOption {
+    code: string;
+    title: string;
+}
+export interface IValueSetOption extends IValueOption {
+    subValueCount: number;
+    subValues: IValueOption[];
+}
 
 export interface IPicklistOptions {
     values: IValueOption[];
@@ -32,12 +38,14 @@ export interface IPicklistOptionsSource {
 
 export class PicklistOptionsSource implements IPicklistOptionsSource {
     public values = new Array<IValueOption>();
-    public valueSets = new Array<IValueSetOption>()
+    public valueSets = new Array<IValueSetOption>();
     public isPaged = false;
     public pageSize = 100;
     public getOptions?: (params: PicklistRemoteQueryOptions) => Observable<IPicklistRemoteQueryResponse>;
     public getValuesForValueset?: (code: string) => Observable<IValueOption[]>;
-    public optionsAreLocal(): boolean { return !this.getOptions; }
+    public optionsAreLocal(): boolean {
+        return !this.getOptions;
+    }
 }
 
 export class PicklistSettings implements IPicklistSettings {
@@ -46,14 +54,13 @@ export class PicklistSettings implements IPicklistSettings {
     public showHeaderText = true;
     public leftHeaderText = 'Available';
     public rightHeaderText = 'Selected';
-    public selected = { values: new Array<IValueOption>(), valueSets: new Array<IValueSetOption>() }; // options selected in modal
+    public selected = {values: new Array<IValueOption>(), valueSets: new Array<IValueSetOption>()}; // options selected in modal
     public options = new PicklistOptionsSource(); // options available for choosing
 }
 
-
 /**
-  * Interfaces for Remote Queries
-  */
+ * Interfaces for Remote Queries
+ */
 export interface IPagedCollection<IT> {
     pagerSettings: IPageSettings;
     totalItems: number;
@@ -69,15 +76,12 @@ export interface IPageSettings {
 export interface IPicklistRemoteQueryResponse {
     pagedValues?: IPagedCollection<IValueOption>;
     pagedValueSets?: IPagedCollection<IValueSetOption>;
-    values?: Array<IValueOption>,
-    valueSets?: Array<IValueSetOption>
+    values?: Array<IValueOption>;
+    valueSets?: Array<IValueSetOption>;
 }
 
 export class PicklistRemoteQueryOptions {
     valuePageSettings?: IPageSettings;
     valueSetPageSettings?: IPageSettings;
-    constructor(
-        public picklist: IPicklistSettings,
-        public searchTerm: string,
-        public valueTypeToQuery: PicklistValueType) {}
+    constructor(public picklist: IPicklistSettings, public searchTerm: string, public valueTypeToQuery: PicklistValueType) {}
 }

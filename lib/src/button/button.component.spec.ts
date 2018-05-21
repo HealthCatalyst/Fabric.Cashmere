@@ -1,10 +1,10 @@
-import { AnchorComponent } from './anchor.component';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, DebugElement } from '@angular/core';
+import {AnchorComponent} from './anchor.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {Component, DebugElement} from '@angular/core';
 
-import { ButtonComponent } from './button.component';
-import { ButtonModule } from './button.module';
-import { By } from '@angular/platform-browser';
+import {ButtonComponent} from './button.component';
+import {ButtonModule} from './button.module';
+import {By} from '@angular/platform-browser';
 
 @Component({
     template: `
@@ -50,12 +50,10 @@ class TestAppReference {
 
 describe('ButtonComponent', () => {
     beforeEach(async(() => {
-            TestBed.configureTestingModule({
-                declarations: [TestAppComponent, ButtonComponent, AnchorComponent]
-            })
-                .compileComponents();
-        })
-    );
+        TestBed.configureTestingModule({
+            declarations: [TestAppComponent, ButtonComponent, AnchorComponent]
+        }).compileComponents();
+    }));
 
     it('should apply class based on color property', () => {
         const testApp = new TestAppReference();

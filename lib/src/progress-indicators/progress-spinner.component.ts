@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
     selector: 'hc-progress-spinner',
@@ -9,10 +9,20 @@ export class ProgressSpinnerComponent {
     @Input() public isCentered = true;
     @Input() public hasChannel = true;
     @Input() public isDeterminate = false;
-    @Input() public set progress(progress: number) { this.setProgress(progress); };
-             public get progress() { return this._progress; };
-    @Input() public set diameter(diameter: number) { this._diameter = Math.min(Math.max(this.minDiameter, diameter), this.maxDiameter); };
-             public get diameter(): number { return this._diameter; };
+    @Input()
+    public set progress(progress: number) {
+        this.setProgress(progress);
+    }
+    public get progress() {
+        return this._progress;
+    }
+    @Input()
+    public set diameter(diameter: number) {
+        this._diameter = Math.min(Math.max(this.minDiameter, diameter), this.maxDiameter);
+    }
+    public get diameter(): number {
+        return this._diameter;
+    }
 
     public rightCircleTransform = '';
     public leftCircleTransform = '';
@@ -39,7 +49,7 @@ export class ProgressSpinnerComponent {
         const sizeBasedTime = this.diameter > 150 ? 0.6 : 0.4;
         const timing = Math.abs(progress - this._progress) > 40 ? sizeBasedTime : sizeBasedTime / 2;
         const halfTime = timing / 2;
-        if ( progress <= 50 && this._progress <= 50 || progress >= 51 && this._progress >= 51) {
+        if ((progress <= 50 && this._progress <= 50) || (progress >= 51 && this._progress >= 51)) {
             this.leftCircleTransition = `transform ${timing}s ease-in-out 0s`;
             this.rightCircleTransition = `transform ${timing}s ease-in-out 0s`;
         } else if (progress <= 50 && this._progress >= 51) {

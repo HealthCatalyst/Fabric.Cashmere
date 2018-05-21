@@ -1,14 +1,13 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { Component, DebugElement } from '@angular/core';
-import { RadioGroupDirective } from './radio-group.directive';
-import { By } from '@angular/platform-browser';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {FormsModule} from '@angular/forms';
+import {Component, DebugElement} from '@angular/core';
+import {RadioGroupDirective} from './radio-group.directive';
+import {By} from '@angular/platform-browser';
 
 @Component({
     template: `<hc-radio-group [disabled]="true"></hc-radio-group>`
 })
-class TestRadioGroupComponent {
-}
+class TestRadioGroupComponent {}
 
 describe('RadioButtonComponent', () => {
     let component: TestRadioGroupComponent;
@@ -18,8 +17,7 @@ describe('RadioButtonComponent', () => {
         TestBed.configureTestingModule({
             declarations: [TestRadioGroupComponent, RadioGroupDirective],
             imports: [FormsModule]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {
@@ -36,5 +34,5 @@ describe('RadioButtonComponent', () => {
     it('should read disabled attribute input as true', () => {
         const directiveInstance = el.injector.get(RadioGroupDirective);
         expect(directiveInstance.disabled).toBe(true);
-    })
+    });
 });

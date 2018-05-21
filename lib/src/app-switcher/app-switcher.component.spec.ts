@@ -1,9 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AppSwitcherComponent } from './app-switcher.component';
-import { PopoverModule } from '../popover/popover.module';
-import { MockAppSwitcherService } from './app-switcher.service';
-import { PipesModule } from '../pipes/pipes.module';
+import {AppSwitcherComponent} from './app-switcher.component';
+import {PopoverModule} from '../popover/popover.module';
+import {MockAppSwitcherService} from './app-switcher.service';
+import {PipesModule} from '../pipes/pipes.module';
 
 describe('AppSwitcherComponent', () => {
     let component: AppSwitcherComponent;
@@ -19,8 +19,7 @@ describe('AppSwitcherComponent', () => {
                     useClass: MockAppSwitcherService
                 }
             ]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {

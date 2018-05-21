@@ -1,15 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import {
-    Router,
-    Event,
-    ActivatedRoute,
-    NavigationEnd,
-    Params,
-    PRIMARY_OUTLET
-} from '@angular/router';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, Event, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET} from '@angular/router';
 
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
+import {Subscription} from 'rxjs/Subscription';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 export interface IBreadcrumb {
@@ -29,10 +22,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     backShow: string = 'none';
     locationLabel: string = '';
 
-    constructor(
-        private activatedRoute: ActivatedRoute,
-        private router: Router
-    ) {}
+    constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
 
     ngOnInit() {
         const ROUTE_DATA_BREADCRUMB: string = 'breadcrumb';
@@ -41,13 +31,11 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
         this.breadcrumbs = this.getBreadcrumbs(root);
 
         // subscribe to the NavigationEnd event
-        this.routerSubscription = this.router.events.subscribe(
-            (event: Event) => {
-                if (event instanceof NavigationEnd) {
-                    this.setBreadcrumbs();
-                }
+        this.routerSubscription = this.router.events.subscribe((event: Event) => {
+            if (event instanceof NavigationEnd) {
+                this.setBreadcrumbs();
             }
-        );
+        });
 
         // set initial breadcrumb state
         this.setBreadcrumbs();
@@ -62,20 +50,14 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
             this.locationLabel = '';
         } else if (this.breadcrumbs.length === 1) {
             this.backShow = 'none';
-            this.locationLabel = this.breadcrumbs[
-                this.breadcrumbs.length - 1
-            ].label;
+            this.locationLabel = this.breadcrumbs[this.breadcrumbs.length - 1].label;
         } else {
             this.backShow = 'none';
             this.locationLabel = '';
         }
     }
 
-    private getBreadcrumbs(
-        route: ActivatedRoute,
-        url: string = '',
-        breadcrumbs: IBreadcrumb[] = []
-    ): IBreadcrumb[] {
+    private getBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: IBreadcrumb[] = []): IBreadcrumb[] {
         const ROUTE_DATA_BREADCRUMB: string = 'breadcrumb';
 
         // get the child routes
@@ -99,9 +81,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
             }
 
             // get the route's URL segment
-            let routeURL: string = child.snapshot.url
-                .map(segment => segment.path)
-                .join('/');
+            let routeURL: string = child.snapshot.url.map(segment => segment.path).join('/');
 
             // append route URL to URL
             url += `/${routeURL}`;
@@ -110,9 +90,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
             let parent: ActivatedRoute | null = this.activatedRoute.parent;
             let fullURL: string = '';
             if (parent !== null) {
-                fullURL +=
-                    '/' +
-                    parent.snapshot.url.map(segment => segment.path).join('/');
+                fullURL += '/' + parent.snapshot.url.map(segment => segment.path).join('/');
             }
             fullURL += `${url}`;
             let breadcrumb: IBreadcrumb = {

@@ -1,5 +1,5 @@
-import { SimpleChange } from '@angular/core';
-import { PaginationComponent } from './pagination.component';
+import {SimpleChange} from '@angular/core';
+import {PaginationComponent} from './pagination.component';
 
 describe('PaginationCompoent', () => {
     let component: PaginationComponent;
@@ -646,5 +646,4 @@ describe('PaginationCompoent', () => {
             });
         });
     });
-
 });

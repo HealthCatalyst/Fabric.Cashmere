@@ -1,17 +1,16 @@
-import { PopoverDirective } from './popover.directive';
-import { SimpleChange, ViewContainerRef } from '@angular/core';
-import { PopoverContentComponent } from './popoverContent.component';
-import { Triggers } from './popover.model';
+import {PopoverDirective} from './popover.directive';
+import {SimpleChange, ViewContainerRef} from '@angular/core';
+import {PopoverContentComponent} from './popoverContent.component';
+import {Triggers} from './popover.model';
 
 describe('PopoverDirective', () => {
     let directive: PopoverDirective;
     const mockPopoverComponent: PopoverContentComponent = new PopoverContentComponent(<any>undefined);
     const mockViewContainerRef: any = {
-        createComponent: jasmine.createSpy('createComponent')
-            .and.returnValue({
-                'instance': mockPopoverComponent,
-                'destroy': jasmine.createSpy('destroy')
-            }),
+        createComponent: jasmine.createSpy('createComponent').and.returnValue({
+            instance: mockPopoverComponent,
+            destroy: jasmine.createSpy('destroy')
+        }),
         element: {nativeElement: ''}
     };
 

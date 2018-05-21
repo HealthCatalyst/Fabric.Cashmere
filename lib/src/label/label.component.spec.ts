@@ -1,5 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { LabelComponent } from './label.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {LabelComponent} from './label.component';
 
 describe('SelectComponent', () => {
     let component: LabelComponent;
@@ -10,8 +10,7 @@ describe('SelectComponent', () => {
             imports: [],
             providers: [],
             declarations: [LabelComponent]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {

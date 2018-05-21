@@ -1,9 +1,9 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MockAppSwitcherService } from './../../app-switcher/app-switcher.service';
-import { IconModule } from './../../icon/icon.module';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MockAppSwitcherService} from './../../app-switcher/app-switcher.service';
+import {IconModule} from './../../icon/icon.module';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { NavbarMobileMenuComponent } from './navbar-mobile-menu.component';
+import {NavbarMobileMenuComponent} from './navbar-mobile-menu.component';
 
 describe('NavbarMobileMenuComponent', () => {
     let component: NavbarMobileMenuComponent;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'hc-breadcrumbs-demo',
@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 })
 export class BreadcrumbsDemoComponent {
     showTemplate: boolean = true;
-    lastModified: Date = new Date( document.lastModified );
+    lastModified: Date = new Date(document.lastModified);
     public document: string = require('raw-loader!../../../../guides/components/breadcrumbs.md');
     viewToggle(show: 'ts' | 'html') {
         this.showTemplate = show === 'html';

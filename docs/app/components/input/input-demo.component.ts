@@ -1,5 +1,5 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { FormsModule, EmailValidator } from '@angular/forms';
+import {Component, ViewChild, ElementRef} from '@angular/core';
+import {FormsModule, EmailValidator} from '@angular/forms';
 
 @Component({
     selector: 'hc-input-demo',
@@ -7,7 +7,7 @@ import { FormsModule, EmailValidator } from '@angular/forms';
     styleUrls: ['./input-demo.component.scss']
 })
 export class InputDemoComponent {
-    lastModified: Date = new Date( document.lastModified );
+    lastModified: Date = new Date(document.lastModified);
     submitted: boolean = false;
     public document: string = require('raw-loader!../../../../guides/components/input.md');
 

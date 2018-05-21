@@ -1,11 +1,12 @@
-import { Component, HostListener, HostBinding, Input } from '@angular/core';
-import { ActiveModal } from './active-modal';
-import { trigger, state, transition, style, animate } from '@angular/animations';
+import {Component, HostListener, HostBinding, Input} from '@angular/core';
+import {ActiveModal} from './active-modal';
+import {trigger, state, transition, style, animate} from '@angular/animations';
 
 @Component({
     selector: 'hc-modal-overlay',
     template: '',
-    styles: [`:host{
+    styles: [
+        `:host{
                 background-color: #000;
                 position: fixed;
                 top: 0;
@@ -14,28 +15,29 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
                 bottom: 0;
                 opacity: .5;
                 display: block;
-            }`],
-            animations: [
-                trigger('fadeInOut', [
-                    state('in', style({ opacity: .5 })),
-                    transition('void <=> *', [
-                        style({
-                            opacity: 0
-                        }),
-                        animate('0.2s ease-in-out')
-                    ])
-                ])
-            ]
+            }`
+    ],
+    animations: [
+        trigger('fadeInOut', [
+            state('in', style({opacity: 0.5})),
+            transition('void <=> *', [
+                style({
+                    opacity: 0
+                }),
+                animate('0.2s ease-in-out')
+            ])
+        ])
+    ]
 })
 export class ModalOverlayComponent {
-
     @Input() ignoreEscapeKey = false;
 
-    constructor(private activeModal: ActiveModal) { }
+    constructor(private activeModal: ActiveModal) {}
 
-    @HostBinding('@fadeInOut') fadeInOut() {
+    @HostBinding('@fadeInOut')
+    fadeInOut() {
         return state;
-     }
+    }
 
     @HostListener('document:keyup.escape', ['$event'])
     escapeKey(event: any) {

@@ -1,5 +1,5 @@
-import { AfterContentInit, Component, ContentChildren, ElementRef, QueryList, Renderer2 } from '@angular/core';
-import { DrawerComponent, DrawerPromiseResult } from './drawer.component';
+import {AfterContentInit, Component, ContentChildren, ElementRef, QueryList, Renderer2} from '@angular/core';
+import {DrawerComponent, DrawerPromiseResult} from './drawer.component';
 
 function throwDrawerContainerError(align: string) {
     throw new Error(`A drawer was already declared for 'align="${align}"'`);
@@ -11,15 +11,12 @@ function throwDrawerContainerError(align: string) {
     styleUrls: ['drawer-container.component.scss']
 })
 export class DrawerContainerComponent implements AfterContentInit {
-    @ContentChildren(DrawerComponent)
-    drawers: QueryList<DrawerComponent>;
+    @ContentChildren(DrawerComponent) drawers: QueryList<DrawerComponent>;
 
     private leftDrawer: DrawerComponent;
     private rightDrawer: DrawerComponent;
 
-    constructor(private elementRef: ElementRef,
-                private renderer: Renderer2) {
-    }
+    constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
     ngAfterContentInit() {
         this.drawers.changes.subscribe(() => this.validateDrawers());
@@ -73,7 +70,7 @@ export class DrawerContainerComponent implements AfterContentInit {
     }
 
     private getDrawerEffectiveWidth(drawer: DrawerComponent, mode: string): number {
-        return (this.isDrawerOpen(drawer) && drawer.mode === mode) ? drawer.width : 0;
+        return this.isDrawerOpen(drawer) && drawer.mode === mode ? drawer.width : 0;
     }
 
     private getPositionOffsetLeft(): number {

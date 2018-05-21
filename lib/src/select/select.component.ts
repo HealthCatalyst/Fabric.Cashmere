@@ -1,6 +1,6 @@
-import { Component, ElementRef, forwardRef, HostBinding, Input, Renderer2, ViewEncapsulation } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { parseBooleanAttribute } from '../util';
+import {Component, ElementRef, forwardRef, HostBinding, Input, Renderer2, ViewEncapsulation} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {parseBooleanAttribute} from '../util';
 
 @Component({
     selector: 'hc-select',
@@ -15,9 +15,7 @@ import { parseBooleanAttribute } from '../util';
         }
     ]
 })
-
 export class SelectComponent implements ControlValueAccessor {
-
     @Input() placeholder: string = '';
 
     @Input()
@@ -60,15 +58,11 @@ export class SelectComponent implements ControlValueAccessor {
 
     @HostBinding('class.hc-select') hostClass = true;
 
-    private onChange: (val: any) => void = () => {
-    };
+    private onChange: (val: any) => void = () => {};
 
-    private onTouched: (val: any) => void = () => {
-    };
+    private onTouched: (val: any) => void = () => {};
 
-    constructor(private element: ElementRef,
-                private renderer: Renderer2) {
-    }
+    constructor(private element: ElementRef, private renderer: Renderer2) {}
 
     registerOnChange(fn: any) {
         this.onChange = fn;

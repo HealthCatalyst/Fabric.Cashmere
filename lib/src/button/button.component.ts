@@ -2,16 +2,8 @@
 /* tslint:disable:use-host-property-decorator */
 // https://github.com/mgechev/codelyzer/issues/178#issuecomment-265154480
 
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    HostBinding,
-    Input,
-    Renderer2,
-    ViewEncapsulation
-} from '@angular/core';
-import { parseBooleanAttribute } from '../util';
+import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, Renderer2, ViewEncapsulation} from '@angular/core';
+import {parseBooleanAttribute} from '../util';
 
 const supportedColors = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary'];
 
@@ -26,7 +18,7 @@ export function validateButtonColor(btnColor: string) {
     template: '<ng-content></ng-content>',
     styleUrls: ['./button.component.scss'],
     host: {
-        '[disabled]': 'disabled || null',
+        '[disabled]': 'disabled || null'
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
@@ -58,14 +50,12 @@ export class ButtonComponent {
         this._disabled = parseBooleanAttribute(isDisabled);
     }
 
-
     @HostBinding('class.hc-button')
     get buttonClass(): boolean {
         return true;
     }
 
-    constructor(private elementRef: ElementRef,
-                private renderer: Renderer2) {
+    constructor(private elementRef: ElementRef, private renderer: Renderer2) {
         this.color = 'primary';
         this.previousColor = this.color;
     }

@@ -1,4 +1,4 @@
-import { RadioButtonChangeEvent, RadioButtonComponent, } from './radio-button.component';
+import {RadioButtonChangeEvent, RadioButtonComponent} from './radio-button.component';
 import {
     AfterContentInit,
     ChangeDetectorRef,
@@ -10,19 +10,21 @@ import {
     Output,
     QueryList
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { parseBooleanAttribute } from '../util';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {parseBooleanAttribute} from '../util';
 
 let nextUniqueId = 0;
 
 @Directive({
     // tslint:disable:directive-selector
     selector: 'hc-radio-group',
-    providers: [{
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => RadioGroupDirective),
-        multi: true
-    }],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => RadioGroupDirective),
+            multi: true
+        }
+    ],
     exportAs: 'hcRadioGroup'
 })
 export class RadioGroupDirective implements ControlValueAccessor, AfterContentInit {
@@ -35,10 +37,8 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
     private _required = false;
     private _initialized = false; // if value of radio group has been set to initial value
     private _selected: RadioButtonComponent | null = null; // the currently selected radio
-    _onChangeFn: (value: any) => void = () => {
-    };
-    onTouched: () => any = () => {
-    };
+    _onChangeFn: (value: any) => void = () => {};
+    onTouched: () => any = () => {};
 
     @Input()
     get name(): string {
@@ -93,8 +93,7 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
         this._checkSelectedRadio();
     }
 
-    constructor(private _cdRef: ChangeDetectorRef) {
-    }
+    constructor(private _cdRef: ChangeDetectorRef) {}
 
     ngAfterContentInit() {
         this._initialized = true;
@@ -141,7 +140,7 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
                 if (radio.checked) {
                     this._selected = radio;
                 }
-            })
+            });
         }
     }
 

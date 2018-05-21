@@ -1,14 +1,6 @@
-import {
-    AfterContentInit,
-    Component,
-    EventEmitter,
-    HostBinding,
-    Input,
-    Output,
-    ViewEncapsulation
-} from '@angular/core';
-import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
-import { parseBooleanAttribute } from '../util';
+import {AfterContentInit, Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
+import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
+import {parseBooleanAttribute} from '../util';
 
 @Component({
     selector: 'hc-accordion',
@@ -17,13 +9,19 @@ import { parseBooleanAttribute } from '../util';
     exportAs: 'hcAccordion',
     animations: [
         trigger('openState', [
-            state('open, open-instant', style({
-                height: '*'
-            })),
-            state('void', style({
-                height: '0px',
-                visibility: 'hidden'
-            })),
+            state(
+                'open, open-instant',
+                style({
+                    height: '*'
+                })
+            ),
+            state(
+                'void',
+                style({
+                    height: '0px',
+                    visibility: 'hidden'
+                })
+            ),
             transition('void => open-instant', animate('0ms')),
             transition('void <=> open', animate('400ms ease'))
         ])
@@ -31,7 +29,6 @@ import { parseBooleanAttribute } from '../util';
     encapsulation: ViewEncapsulation.None
 })
 export class AccordionComponent implements AfterContentInit {
-
     private animationDisabled = false;
     private currentlyAnimating = false;
     private _hideToolbar = false;

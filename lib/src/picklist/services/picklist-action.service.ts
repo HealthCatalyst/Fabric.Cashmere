@@ -1,11 +1,15 @@
-import { Injectable } from '@angular/core';
-import { FilterableSelectList, SelectListOption, ValueSetListOption, ValueListOption, isSubList } from '../pane/picklist-pane.model';
-import { PicklistService } from './picklist.service';
+import {Injectable} from '@angular/core';
+import {FilterableSelectList, SelectListOption, ValueSetListOption, ValueListOption, isSubList} from '../pane/picklist-pane.model';
+import {PicklistService} from './picklist.service';
 
 @Injectable()
 export class PicklistActionService {
-    public get valueList(): FilterableSelectList<ValueListOption> { return this.listService.valueList; }
-    public get valueSetList(): FilterableSelectList<ValueSetListOption> { return this.listService.valueSetList; }
+    public get valueList(): FilterableSelectList<ValueListOption> {
+        return this.listService.valueList;
+    }
+    public get valueSetList(): FilterableSelectList<ValueSetListOption> {
+        return this.listService.valueSetList;
+    }
     public constructor(private listService: PicklistService) {}
 
     public onItemClicked<T extends SelectListOption>(event: MouseEvent, index: number, list: FilterableSelectList<T>, item: T) {
@@ -34,19 +38,25 @@ export class PicklistActionService {
     }
 
     public selectAll() {
-        this.valueSetList.filteredOptions.forEach(v => { this.clearListSelection(v.subValuesSelectList); }); // deselect sublist items
+        this.valueSetList.filteredOptions.forEach(v => {
+            this.clearListSelection(v.subValuesSelectList);
+        }); // deselect sublist items
         this.selectAllInList(this.valueList);
         this.selectAllInList(this.valueSetList);
     }
 
     public selectNone() {
-        this.valueSetList.filteredOptions.forEach(v => { this.clearListSelection(v.subValuesSelectList); });
+        this.valueSetList.filteredOptions.forEach(v => {
+            this.clearListSelection(v.subValuesSelectList);
+        });
         this.clearListSelection(this.valueList);
         this.clearListSelection(this.valueSetList);
     }
 
     public selectAllInList<T extends SelectListOption>(list: FilterableSelectList<T>) {
-        if (!list.isActive) { return; }
+        if (!list.isActive) {
+            return;
+        }
 
         list.selectedOptions.clear();
         list.lastClickedOption = null;

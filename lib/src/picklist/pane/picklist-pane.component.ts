@@ -1,17 +1,17 @@
-﻿import { Component, Input, ViewChild, Output, EventEmitter, ViewEncapsulation, ElementRef } from '@angular/core';
-import { Subject } from 'rxjs/Rx';
+﻿import {Component, Input, ViewChild, Output, EventEmitter, ViewEncapsulation, ElementRef} from '@angular/core';
+import {Subject} from 'rxjs/Rx';
 
-import { PicklistService } from '../services/picklist.service';
-import { PicklistActionService } from '../services/picklist-action.service';
-import { PicklistFilterService } from '../services/picklist-filter.service';
-import { PicklistFilterRemoteService } from '../services/picklist-filter-remote.service';
-import { PicklistFilterLocalService } from '../services/picklist-filter-local.service';
-import { PicklistStateService } from '../services/picklist-state.service';
-import { PicklistValuesetMovingService } from '../services/picklist-valueset-moving.service';
-import { WorkTrackerService } from '../services/work-tracker.service';
-import { PicklistSettings } from '../picklist.model';
-import { FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOption } from './picklist-pane.model';
-import { PicklistOptionsSource, PicklistValueType } from '../picklist.model';
+import {PicklistService} from '../services/picklist.service';
+import {PicklistActionService} from '../services/picklist-action.service';
+import {PicklistFilterService} from '../services/picklist-filter.service';
+import {PicklistFilterRemoteService} from '../services/picklist-filter-remote.service';
+import {PicklistFilterLocalService} from '../services/picklist-filter-local.service';
+import {PicklistStateService} from '../services/picklist-state.service';
+import {PicklistValuesetMovingService} from '../services/picklist-valueset-moving.service';
+import {WorkTrackerService} from '../services/work-tracker.service';
+import {PicklistSettings} from '../picklist.model';
+import {FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOption} from './picklist-pane.model';
+import {PicklistOptionsSource, PicklistValueType} from '../picklist.model';
 
 @Component({
     selector: 'hc-picklist-pane',
@@ -25,7 +25,8 @@ import { PicklistOptionsSource, PicklistValueType } from '../picklist.model';
         PicklistFilterService,
         PicklistFilterRemoteService,
         PicklistFilterLocalService,
-        WorkTrackerService ],
+        WorkTrackerService
+    ],
     encapsulation: ViewEncapsulation.None
 })
 export class PicklistPaneComponent {
@@ -44,7 +45,8 @@ export class PicklistPaneComponent {
     constructor(
         public listService: PicklistService,
         public actionService: PicklistActionService,
-        public filterService: PicklistFilterService) {}
+        public filterService: PicklistFilterService
+    ) {}
 
     public reset(source: PicklistOptionsSource, settings: PicklistSettings, companion: PicklistPaneComponent, excludeCompanion = false) {
         this.companion = companion;
@@ -56,23 +58,37 @@ export class PicklistPaneComponent {
         this.listService.reset(settings, source, this);
     }
 
-    public get valueList(): FilterableSelectList<ValueListOption> { return this.listService.valueList; }
-    public get valueSetList(): FilterableSelectList<ValueSetListOption> { return this.listService.valueSetList; }
-    public get isPaged(): boolean { return this.listService.optionsSource.isPaged; }
-    public get optionsAvailableCount(): number { return (this.PicklistValueOptionsTotal + this.valueSetOptionsTotal); }
-    public get PicklistValueOptionsTotal(): number { return this.valueList.isActive ? this.listService.totalValuesCount : 0; }
-    public get valueSetOptionsTotal(): number { return this.valueSetList.isActive ? this.listService.totalValueSetsCount : 0; }
+    public get valueList(): FilterableSelectList<ValueListOption> {
+        return this.listService.valueList;
+    }
+    public get valueSetList(): FilterableSelectList<ValueSetListOption> {
+        return this.listService.valueSetList;
+    }
+    public get isPaged(): boolean {
+        return this.listService.optionsSource.isPaged;
+    }
+    public get optionsAvailableCount(): number {
+        return this.PicklistValueOptionsTotal + this.valueSetOptionsTotal;
+    }
+    public get PicklistValueOptionsTotal(): number {
+        return this.valueList.isActive ? this.listService.totalValuesCount : 0;
+    }
+    public get valueSetOptionsTotal(): number {
+        return this.valueSetList.isActive ? this.listService.totalValueSetsCount : 0;
+    }
     public get optionsShowingCount(): number {
         const valueListShowing = this.valueList.isActive ? this.valueList.filteredOptions.length : 0;
         const valueSetListShowing = this.valueSetList.isActive ? this.valueSetList.filteredOptions.length : 0;
-        return (valueListShowing + valueSetListShowing);
+        return valueListShowing + valueSetListShowing;
     }
 
     public get showTooManyToSelectAllMsg(): boolean {
         const serverMatches = this.valueList.additionalRemoteOptions;
-        return  this.selectAllWasLastClicked &&
-                Number.isFinite(serverMatches) &&
-                (serverMatches + this.valueList.options.size > this.selectAllLimit);
+        return (
+            this.selectAllWasLastClicked &&
+            Number.isFinite(serverMatches) &&
+            serverMatches + this.valueList.options.size > this.selectAllLimit
+        );
     }
 
     public shouldShowList<T extends SelectListOption>(list: FilterableSelectList<T>): boolean {
@@ -114,8 +130,12 @@ export class PicklistPaneComponent {
 
     public preventIEHighlightBug() {
         // for IE: https://stackoverflow.com/questions/1527751/disable-text-selection-while-pressing-shift
-        document.onselectstart = function () { return false; };
-        setTimeout(function () { document.onselectstart = () => null; }, 0);
+        document.onselectstart = function() {
+            return false;
+        };
+        setTimeout(function() {
+            document.onselectstart = () => null;
+        }, 0);
     }
 
     public onValuesetCaretClicked(event: MouseEvent, valueset: ValueSetListOption) {

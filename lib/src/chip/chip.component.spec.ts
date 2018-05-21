@@ -1,5 +1,5 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ChipComponent } from './chip.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ChipComponent} from './chip.component';
 
 describe('SelectComponent', () => {
     let component: ChipComponent;
@@ -10,8 +10,7 @@ describe('SelectComponent', () => {
             imports: [],
             providers: [],
             declarations: [ChipComponent]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {

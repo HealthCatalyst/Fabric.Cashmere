@@ -1,14 +1,18 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { PicklistFilterService } from './picklist-filter.service';
-import { PicklistPaneComponent } from '../pane/picklist-pane.component';
-import { FilterableSelectList, ValueSetListOption, ValueListOption, PicklistValueOptions } from '../pane/picklist-pane.model';
-import { PicklistStateService } from './picklist-state.service';
+import {PicklistFilterService} from './picklist-filter.service';
+import {PicklistPaneComponent} from '../pane/picklist-pane.component';
+import {FilterableSelectList, ValueSetListOption, ValueListOption, PicklistValueOptions} from '../pane/picklist-pane.model';
+import {PicklistStateService} from './picklist-state.service';
 
 @Injectable()
 export class PicklistValuesetMovingService {
-    public get valueList(): FilterableSelectList<ValueListOption> { return this.stateService.valueList; }
-    public get valueSetList(): FilterableSelectList<ValueSetListOption> { return this.stateService.valueSetList; }
+    public get valueList(): FilterableSelectList<ValueListOption> {
+        return this.stateService.valueList;
+    }
+    public get valueSetList(): FilterableSelectList<ValueSetListOption> {
+        return this.stateService.valueSetList;
+    }
 
     public constructor(private filterService: PicklistFilterService, private stateService: PicklistStateService) {}
 
@@ -20,7 +24,9 @@ export class PicklistValuesetMovingService {
         });
 
         this.valueSetList.filteredOptions.forEach(valueset => {
-            if (valueset.selected || valueset.subValuesSelectList.selectedOptions.size < 1) { return; }
+            if (valueset.selected || valueset.subValuesSelectList.selectedOptions.size < 1) {
+                return;
+            }
 
             if (shouldBreakValuesets) {
                 this.breakValueset(valueset, optionsToMove, pane.companion);
@@ -36,33 +42,42 @@ export class PicklistValuesetMovingService {
         this.valueSetList.options.delete(valueset.code);
 
         const unselectedSubValues = new Map<string, ValueListOption>();
-        valueset.subValuesSelectList.filteredOptions
-            .filter(o => !o.selected)
-            .forEach(o => { unselectedSubValues.set(o.code, new ValueListOption(o.option, o.code)); });
+        valueset.subValuesSelectList.filteredOptions.filter(o => !o.selected).forEach(o => {
+            unselectedSubValues.set(o.code, new ValueListOption(o.option, o.code));
+        });
 
-        if (!companionPane) { return; }
+        if (!companionPane) {
+            return;
+        }
         this.moveSubValues(unselectedSubValues, companionPane);
     }
 
     private moveSubValues(valuesMap: Map<string, ValueListOption>, sourcePane: PicklistPaneComponent) {
         this.removeValuesFromPane(valuesMap, sourcePane);
-        if (!sourcePane.companion) { return; }
-        // tslint:disable-next-line:no-non-null-assertion
-        valuesMap.forEach(o => { sourcePane.companion!.valueList.options.set(o.code, new ValueListOption(o.option, o.code)); });
+        if (!sourcePane.companion) {
+            return;
+        }
+        valuesMap.forEach(o => {
+            // tslint:disable-next-line:no-non-null-assertion
+            sourcePane.companion!.valueList.options.set(o.code, new ValueListOption(o.option, o.code));
+        });
     }
 
     /**
      * Handles complex logic for when one pane is paged, and we want to keep the "x of y" counts accurate without a round trip to the server
      */
     private removeValuesFromPane(valuesMap: Map<string, ValueListOption>, pane: PicklistPaneComponent) {
-        if (pane.isPaged) { // don't bother trying to remove values or decrement count for options that are already filtered out
+        if (pane.isPaged) {
+            // don't bother trying to remove values or decrement count for options that are already filtered out
             this.filterService.preFilterOptionsForRemoteMode(valuesMap, pane.valueList);
         }
 
         valuesMap.forEach(v => {
             const optionDeleted = pane.valueList.options.delete(v.code);
             const optionAlreadyInCompanionList = pane.companion ? pane.companion.valueList.options.has(v.code) : false;
-            if (!optionDeleted && pane.isPaged && !optionAlreadyInCompanionList) { pane.valueList.additionalRemoteOptions--; }
+            if (!optionDeleted && pane.isPaged && !optionAlreadyInCompanionList) {
+                pane.valueList.additionalRemoteOptions--;
+            }
         });
     }
 }
