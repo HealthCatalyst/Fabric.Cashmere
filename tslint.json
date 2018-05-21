@@ -40,7 +40,6 @@
         "object-literal-sort-keys": false,
         "one-line": [true, "check-open-brace", "check-catch", "check-else", "check-whitespace"],
         "prefer-const": false,
-        "quotemark": [true, "single"],
         "radix": true,
         "semicolon": ["always"],
         "triple-equals": [true, "allow-null-check"],
@@ -56,7 +55,7 @@
         ],
         "unified-signatures": true,
         "variable-name": false,
-        "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type", "check-module"],
+        "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type"],
         "directive-selector": [true, "attribute", "hc", "camelCase"],
         "component-selector": [true, "element", "hc", "kebab-case"],
         "use-input-property-decorator": true,
@@ -69,5 +68,5 @@
         "component-class-suffix": true,
         "directive-class-suffix": true
     },
-    "extends": ["tslint:latest", "tslint-config-prettier"]
+    "extends": ["tslint", "tslint-config-prettier"]
 }

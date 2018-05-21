@@ -1,28 +1,29 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { HcModal } from '../../../../lib/src/modal/modal';
-import { ModalOptions } from '../../../../lib/src/modal/modal-options';
-import { ModalService } from './../../../../lib/src/modal/modal.service';
+import {Component, OnInit, TemplateRef} from '@angular/core';
+import {HcModal} from '../../../../lib/src/modal/modal';
+import {ModalOptions} from '../../../../lib/src/modal/modal-options';
+import {ModalService} from './../../../../lib/src/modal/modal.service';
 
 @Component({
     selector: 'hc-chart-demo',
     templateUrl: './chart-demo.component.html',
-    styleUrls: ['./chart-demo.component.scss'],
+    styleUrls: ['./chart-demo.component.scss']
 })
-
 export class ChartDemoComponent implements OnInit {
-
-    lastModified: Date = new Date( document.lastModified );
+    lastModified: Date = new Date(document.lastModified);
     loading: boolean = true;
     modalHeader: string = 'Chart Information';
     chartData: Array<any>;
     lineData: Array<any>;
-    private hospitals = ['Millrock Physician Group', 'Memorial Physician Group', 'St. Johns Physician Group', 'University Physician Group']
+    private hospitals = ['Millrock Physician Group', 'Memorial Physician Group', 'St. Johns Physician Group', 'University Physician Group'];
 
-    constructor( private modalService: ModalService ) {}
+    constructor(private modalService: ModalService) {}
 
     ngOnInit() {
         // give everything a chance to get loaded before starting the animation to reduce choppiness
-        setTimeout(() => { this.generateData(); this.loading = false; }, 2000);
+        setTimeout(() => {
+            this.generateData();
+            this.loading = false;
+        }, 2000);
     }
 
     generateData() {
@@ -30,17 +31,17 @@ export class ChartDemoComponent implements OnInit {
         this.lineData = [];
 
         for (let i = 0; i < 4; i++) {
-        this.chartData.push([
-            this.hospitals[i],
-            Math.floor(Math.random() * 100),
-            Math.floor(Math.random() * 100),
-            Math.floor(Math.random() * 100)
-        ]);
+            this.chartData.push([
+                this.hospitals[i],
+                Math.floor(Math.random() * 100),
+                Math.floor(Math.random() * 100),
+                Math.floor(Math.random() * 100)
+            ]);
         }
 
-        for (let j = 0; j < (10 + Math.floor(Math.random() * 15)); j++) {
+        for (let j = 0; j < 10 + Math.floor(Math.random() * 15); j++) {
             this.lineData.push([
-                new Date(2016 + Math.floor(j / 12), j % 12 ),
+                new Date(2016 + Math.floor(j / 12), j % 12),
                 Math.floor(Math.random() * 100),
                 40 + Math.floor(Math.random() * 20)
             ]);
@@ -56,7 +57,7 @@ export class ChartDemoComponent implements OnInit {
             size: 'md'
         };
         this.modalHeader = headerName;
-        this.modalService.open(content, options)
+        this.modalService.open(content, options);
     }
 
     public chartShare(content: TemplateRef<any>, headerName) {
@@ -66,6 +67,6 @@ export class ChartDemoComponent implements OnInit {
             size: 'md'
         };
         this.modalHeader = headerName;
-        this.modalService.open(content, options)
+        this.modalService.open(content, options);
     }
 }

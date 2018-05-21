@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import {Component, OnInit, Input, HostBinding} from '@angular/core';
 
 @Component({
     selector: 'hc-navbar-icon',
@@ -7,9 +7,7 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
 export class NavbarIconComponent implements OnInit {
     @HostBinding('class') hostClass = 'navbar-item';
 
-    constructor() {
-    }
+    constructor() {}
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 }

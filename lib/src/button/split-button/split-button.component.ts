@@ -1,19 +1,9 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    EventEmitter,
-    HostBinding,
-    Input,
-    Output,
-    ViewEncapsulation
-} from '@angular/core';
-import { parseBooleanAttribute } from '../../util';
-import { validateButtonColor } from '../button.component';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
+import {parseBooleanAttribute} from '../../util';
+import {validateButtonColor} from '../button.component';
 
 export class SplitButtonClickEvent {
-    constructor(public source: SplitButtonComponent) {
-    }
+    constructor(public source: SplitButtonComponent) {}
 }
 
 @Component({
@@ -68,8 +58,7 @@ export class SplitButtonComponent {
         return true;
     }
 
-    constructor(private elementRef: ElementRef) {
-    }
+    constructor(private elementRef: ElementRef) {}
 
     focus(): void {
         this.elementRef.nativeElement.focus();

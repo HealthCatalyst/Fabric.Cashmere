@@ -1,13 +1,13 @@
-import { RouterModule, Routes } from '@angular/router';
-import { StylesComponent } from './styles.component';
-import { ColorDemoComponent } from './color/color-demo.component';
-import { TableDemoComponent } from './table/table-demo.component';
-import { TypographyDemoComponent } from './typography/typography-demo.component';
-import { CodeDemoComponent } from './code/code-demo.component';
-import { ChartDemoComponent } from './chart/chart-demo.component';
-import { ErrorPagesComponent } from './error/error-pages.component';
-import { NgModule } from '@angular/core';
-import { BreadcrumbsStyleDemoComponent } from './breadcrumbs/breadcrumbs-style-demo.component';
+import {RouterModule, Routes} from '@angular/router';
+import {StylesComponent} from './styles.component';
+import {ColorDemoComponent} from './color/color-demo.component';
+import {TableDemoComponent} from './table/table-demo.component';
+import {TypographyDemoComponent} from './typography/typography-demo.component';
+import {CodeDemoComponent} from './code/code-demo.component';
+import {ChartDemoComponent} from './chart/chart-demo.component';
+import {ErrorPagesComponent} from './error/error-pages.component';
+import {NgModule} from '@angular/core';
+import {BreadcrumbsStyleDemoComponent} from './breadcrumbs/breadcrumbs-style-demo.component';
 
 const routes: Routes = [
     {
@@ -61,5 +61,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class StylesRoutesModule {
-}
+export class StylesRoutesModule {}

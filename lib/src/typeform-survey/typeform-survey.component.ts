@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 export function throwErrorForMissingSurveyUri() {
     throw Error(`SurveyUri must be specified on element hc-typeform-survey`);

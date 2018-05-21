@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'hc-checkbox-demo',
@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 })
 export class CheckboxDemoComponent {
     isChecked: boolean;
-    lastModified: Date = new Date( document.lastModified );
+    lastModified: Date = new Date(document.lastModified);
     public document: string = require('raw-loader!../../../../guides/components/checkbox.md');
 
     getCheckboxText() {

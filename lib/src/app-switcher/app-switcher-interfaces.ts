@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 
 export interface IDiscoveryApplication {
     ServiceName: string;
@@ -21,7 +21,7 @@ export interface IDiscoveryRequest {
 export interface IAppSwitcherService {
     allApplicationsUri: string;
 
-    getApplications(): Observable<IDiscoveryRequest>
+    getApplications(): Observable<IDiscoveryRequest>;
 }
 
 export interface IAppSwitcherConfig {

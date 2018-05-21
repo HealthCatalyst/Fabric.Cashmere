@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import {Component, Input} from '@angular/core';
+import {RouterLink} from '@angular/router';
 
 @Component({
     template: `<div [hidden]="!active">

@@ -4,22 +4,21 @@ import {
     Component,
     EventEmitter,
     forwardRef,
-    HostBinding, Inject,
+    HostBinding,
+    Inject,
     Input,
     OnInit,
     Optional,
-    Output,
+    Output
 } from '@angular/core';
-import { RadioGroupDirective } from './radio-group.directive';
-import { parseBooleanAttribute } from '../util';
+import {RadioGroupDirective} from './radio-group.directive';
+import {parseBooleanAttribute} from '../util';
 
 let nextUniqueId = 0;
 
 export class RadioButtonChangeEvent {
-    constructor(public source: RadioButtonComponent | null, public value: any) {
-    }
+    constructor(public source: RadioButtonComponent | null, public value: any) {}
 }
-
 
 @Component({
     selector: 'hc-radio-button',
@@ -71,7 +70,7 @@ export class RadioButtonComponent implements OnInit {
     @Input()
     get disabled(): boolean {
         return this._disabled || (this.radioGroup && this.radioGroup.disabled);
-    };
+    }
 
     set disabled(isDisabled) {
         this._disabled = parseBooleanAttribute(isDisabled);
@@ -102,9 +101,12 @@ export class RadioButtonComponent implements OnInit {
         return `${this.uniqueId}-input`;
     }
 
-    constructor(@Optional() @Inject(forwardRef(() => RadioGroupDirective)) radioGroup: RadioGroupDirective,
-                private cdRef: ChangeDetectorRef) {
-
+    constructor(
+        @Optional()
+        @Inject(forwardRef(() => RadioGroupDirective))
+        radioGroup: RadioGroupDirective,
+        private cdRef: ChangeDetectorRef
+    ) {
         this.radioGroup = radioGroup;
     }
 
@@ -141,4 +143,3 @@ export class RadioButtonComponent implements OnInit {
         this.cdRef.markForCheck();
     }
 }
-

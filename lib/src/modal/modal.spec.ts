@@ -1,12 +1,12 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
-import { ModalService } from './modal.service';
-import { ActiveModal } from './active-modal';
-import { ModalWindowComponent } from './modal-window.component';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ModalOverlayComponent } from './modal-overlay.component';
-import { BrowserModule, By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CommonModule} from '@angular/common';
+import {ModalService} from './modal.service';
+import {ActiveModal} from './active-modal';
+import {ModalWindowComponent} from './modal-window.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ModalOverlayComponent} from './modal-overlay.component';
+import {BrowserModule, By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
 
 describe('hc-modal', () => {
     let windowComponent: ModalWindowComponent;

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
 
 @Component({
     selector: 'hc-pagination',
@@ -48,8 +48,7 @@ export class PaginationComponent implements OnChanges {
     /**
      * Event for when page number changes
      */
-    @Output()
-    readonly pageNumberChange = new EventEmitter<number | null>();
+    @Output() readonly pageNumberChange = new EventEmitter<number | null>();
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.totalPages && !changes.inputPageNumber) {
@@ -89,7 +88,7 @@ export class PaginationComponent implements OnChanges {
          * if there are less than nine pages, display them all
          */
         if (this.totalPages <= 9) {
-            const visiblePages: number[] = [ ];
+            const visiblePages: number[] = [];
             for (let i = 1; i <= this.totalPages; i++) {
                 visiblePages.push(i);
             }
@@ -107,11 +106,11 @@ export class PaginationComponent implements OnChanges {
         const p = this.pageNumber || 1;
 
         if (p < 6) {
-            return [ 1, 2, 3, 4, 5, 6, null, n - 1, n ];
+            return [1, 2, 3, 4, 5, 6, null, n - 1, n];
         } else if (p >= n - 4) {
-            return [ 1, 2, null, n - 5, n - 4, n - 3, n - 2, n - 1, n ];
+            return [1, 2, null, n - 5, n - 4, n - 3, n - 2, n - 1, n];
         } else {
-            return [ 1, 2, null, p - 1, p, p + 1, null, n - 1, n ];
+            return [1, 2, null, p - 1, p, p + 1, null, n - 1, n];
         }
     }
 
@@ -127,7 +126,7 @@ export class PaginationComponent implements OnChanges {
          * if there are less than five pages, display them all
          */
         if (this.totalPages <= 5) {
-            const visiblePages: number[] = [ ];
+            const visiblePages: number[] = [];
             for (let i = 1; i <= this.totalPages; i++) {
                 visiblePages.push(i);
             }
@@ -145,11 +144,11 @@ export class PaginationComponent implements OnChanges {
         const p = this.pageNumber || 1;
 
         if (p < 4) {
-            return [ 1, 2, 3, null, n ];
+            return [1, 2, 3, null, n];
         } else if (p >= n - 2) {
-            return [ 1, null, n - 2, n - 1, n ];
+            return [1, null, n - 2, n - 1, n];
         } else {
-            return [ 1, null, p, null, n ];
+            return [1, null, p, null, n];
         }
     }
 

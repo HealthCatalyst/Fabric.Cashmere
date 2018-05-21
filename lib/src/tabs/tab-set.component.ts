@@ -1,6 +1,6 @@
-import { AfterContentInit, Component, ContentChildren, Input, QueryList } from '@angular/core';
-import { TabComponent } from './tab.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import {AfterContentInit, Component, ContentChildren, Input, QueryList} from '@angular/core';
+import {TabComponent} from './tab.component';
+import {ActivatedRoute, Router} from '@angular/router';
 
 export type TabDirection = 'horizontal' | 'vertical';
 
@@ -17,14 +17,11 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
 export class TabSetComponent implements AfterContentInit {
     routerEnabled: boolean = false;
 
-    @ContentChildren(TabComponent)
-    tabs: QueryList<TabComponent>;
+    @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
 
     @Input() direction: TabDirection = 'vertical';
 
-    constructor(private router: Router,
-                private route: ActivatedRoute) {
-    }
+    constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngAfterContentInit(): void {
         this.tabs.changes.subscribe(_ => {
@@ -64,14 +61,13 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     private defaultToFirstRoute() {
-        const foundRoute =
-            this.tabs
-                .map(tab => tab.routerLink)
-                .map(routerLink => this.mapRouterLinkToString(routerLink))
-                .find(routerLink => {
-                    let currentRoute = this.router.url;
-                    return currentRoute === routerLink || currentRoute.indexOf(`${routerLink}/`) > -1;
-                });
+        const foundRoute = this.tabs
+            .map(tab => tab.routerLink)
+            .map(routerLink => this.mapRouterLinkToString(routerLink))
+            .find(routerLink => {
+                let currentRoute = this.router.url;
+                return currentRoute === routerLink || currentRoute.indexOf(`${routerLink}/`) > -1;
+            });
 
         if (foundRoute) {
             return;

@@ -9,12 +9,11 @@ import {
     Input,
     Output
 } from '@angular/core';
-import { animate, AnimationEvent, state, style, transition, trigger } from '@angular/animations';
-import { parseBooleanAttribute } from '../util';
+import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
+import {parseBooleanAttribute} from '../util';
 
 export class DrawerPromiseResult {
-    constructor(public type: 'open' | 'close') {
-    }
+    constructor(public type: 'open' | 'close') {}
 }
 
 @Component({
@@ -23,12 +22,18 @@ export class DrawerPromiseResult {
     styleUrls: ['drawer.component.scss'],
     animations: [
         trigger('openState', [
-            state('open, open-instant', style({
-                transform: 'translate3d(0, 0, 0)'
-            })),
-            state('void', style({
-                visibility: 'hidden'
-            })),
+            state(
+                'open, open-instant',
+                style({
+                    transform: 'translate3d(0, 0, 0)'
+                })
+            ),
+            state(
+                'void',
+                style({
+                    visibility: 'hidden'
+                })
+            ),
             transition('void => open-instant', animate('0ms')),
             transition('void <=> open', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)'))
         ])
@@ -36,19 +41,13 @@ export class DrawerPromiseResult {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DrawerComponent implements AfterContentInit {
-    @Input()
-    mode: 'over' | 'push' = 'push';
-    @Input()
-    align: 'left' | 'right' = 'left';
+    @Input() mode: 'over' | 'push' = 'push';
+    @Input() align: 'left' | 'right' = 'left';
 
-    @Output()
-    openStart = new EventEmitter();
-    @Output()
-    closeStart = new EventEmitter();
-    @Output()
-    open = new EventEmitter();
-    @Output()
-    close = new EventEmitter();
+    @Output() openStart = new EventEmitter();
+    @Output() closeStart = new EventEmitter();
+    @Output() open = new EventEmitter();
+    @Output() close = new EventEmitter();
 
     @HostBinding() tabindex = -1;
     @HostBinding('class.drawer') drawerClass = true;
@@ -56,8 +55,7 @@ export class DrawerComponent implements AfterContentInit {
     private animationDisabled = true;
     private drawerOpened = false;
     private animationPromise: Promise<DrawerPromiseResult> | null;
-    private resolveAnimationPromise: () => void = () => {
-    };
+    private resolveAnimationPromise: () => void = () => {};
 
     @Input()
     get opened(): boolean {
@@ -126,8 +124,7 @@ export class DrawerComponent implements AfterContentInit {
 
         if (this.animationPromise) {
             this.resolveAnimationPromise();
-            this.resolveAnimationPromise = () => {
-            };
+            this.resolveAnimationPromise = () => {};
             this.animationPromise = null;
         }
     }
@@ -140,14 +137,12 @@ export class DrawerComponent implements AfterContentInit {
         }
     }
 
-    constructor(private elementRef: ElementRef) {
-    }
+    constructor(private elementRef: ElementRef) {}
 
     ngAfterContentInit() {
         if (this.animationPromise) {
             this.resolveAnimationPromise();
-            this.resolveAnimationPromise = () => {
-            };
+            this.resolveAnimationPromise = () => {};
             this.animationPromise = null;
         }
         this.animationDisabled = false;

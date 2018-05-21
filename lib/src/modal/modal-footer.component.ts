@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 
 @Component({
     selector: 'hc-modal-footer',
@@ -6,5 +6,4 @@ import { Component, HostBinding } from '@angular/core';
 })
 export class ModalFooterComponent {
     @HostBinding('class.hc-modal-footer') modalFooterClass = true;
-
 }

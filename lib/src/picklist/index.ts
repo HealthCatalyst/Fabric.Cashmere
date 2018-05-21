@@ -1,6 +1,6 @@
-export { PicklistPaneComponent } from './pane/picklist-pane.component';
-export { PicklistComponent } from './picklist.component';
-export { PicklistModule } from './picklist.module';
+export {PicklistPaneComponent} from './pane/picklist-pane.component';
+export {PicklistComponent} from './picklist.component';
+export {PicklistModule} from './picklist.module';
 export {
     IPicklistSettings,
     IValueOption,
@@ -10,4 +10,5 @@ export {
     PicklistRemoteQueryOptions,
     IPicklistRemoteQueryResponse,
     IPageSettings,
-    IPagedCollection } from './picklist.model';
+    IPagedCollection
+} from './picklist.model';

@@ -1,18 +1,17 @@
-import { Component, HostBinding, Input } from '@angular/core';
-import { parseBooleanAttribute } from '../../../../lib/src/util';
+import {Component, HostBinding, Input} from '@angular/core';
+import {parseBooleanAttribute} from '../../../../lib/src/util';
 
 @Component({
     selector: 'hc-filter-button',
     template: `<img src="./assets/FilterIcon.svg" class="filter-img">{{buttonLabel}}`,
     styleUrls: ['./filter-button.component.scss']
 })
-export class FilterButtonComponent  {
+export class FilterButtonComponent {
     @HostBinding('class.filter-button') hostClass = true;
     _buttonState: boolean = false;
     buttonLabel: string = 'Filters off';
 
-    constructor() {
-    }
+    constructor() {}
 
     @Input()
     get buttonState(): boolean {
@@ -21,7 +20,7 @@ export class FilterButtonComponent  {
 
     set buttonState(whatState) {
         this._buttonState = parseBooleanAttribute(whatState);
-        if ( this._buttonState ) {
+        if (this._buttonState) {
             this.buttonLabel = 'Filters On:';
         } else {
             this.buttonLabel = 'Filters Off:';

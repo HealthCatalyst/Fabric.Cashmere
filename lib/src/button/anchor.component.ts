@@ -1,16 +1,8 @@
 /* tslint:disable:component-selector */
 // https://github.com/mgechev/codelyzer/issues/178#issuecomment-265154480
 
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    HostBinding,
-    HostListener,
-    Renderer2,
-    ViewEncapsulation
-} from '@angular/core';
-import { ButtonComponent } from './button.component';
+import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, HostListener, Renderer2, ViewEncapsulation} from '@angular/core';
+import {ButtonComponent} from './button.component';
 
 @Component({
     selector: 'a[hc-button]',
@@ -20,7 +12,6 @@ import { ButtonComponent } from './button.component';
     encapsulation: ViewEncapsulation.None
 })
 export class AnchorComponent extends ButtonComponent {
-
     @HostBinding('attr.aria-disabled')
     get hostAriaDisabled(): string {
         return this.disabled ? this.disabled.toString() : 'false';
@@ -39,8 +30,7 @@ export class AnchorComponent extends ButtonComponent {
         }
     }
 
-    constructor(elementRef: ElementRef,
-                renderer: Renderer2) {
+    constructor(elementRef: ElementRef, renderer: Renderer2) {
         super(elementRef, renderer);
     }
 }

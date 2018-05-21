@@ -1,10 +1,10 @@
-import { By } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
-import { SelectModule } from '../../../lib/src/select/select.module';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {CommonModule} from '@angular/common';
+import {SelectModule} from '../../../lib/src/select/select.module';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SelectIntegrationTestComponent } from './select-integration-test.component';
-import { ReactiveFormsModule, FormBuilder, AbstractControl, FormControl } from '@angular/forms';
+import {SelectIntegrationTestComponent} from './select-integration-test.component';
+import {ReactiveFormsModule, FormBuilder, AbstractControl, FormControl} from '@angular/forms';
 
 describe('SelectIntegrationTestComponent', () => {
     let component: SelectIntegrationTestComponent;
@@ -15,8 +15,7 @@ describe('SelectIntegrationTestComponent', () => {
             imports: [CommonModule, ReactiveFormsModule, SelectModule],
             providers: [],
             declarations: [SelectIntegrationTestComponent]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {
@@ -51,5 +50,4 @@ describe('SelectIntegrationTestComponent', () => {
         const city = component.cityForm.controls['city'].value || 'not-found';
         expect(city).toEqual('SLC');
     });
-
 });

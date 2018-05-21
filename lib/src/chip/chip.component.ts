@@ -1,5 +1,5 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { parseBooleanAttribute } from '../util';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {parseBooleanAttribute} from '../util';
 
 @Component({
     selector: 'hc-chip',
@@ -7,15 +7,18 @@ import { parseBooleanAttribute } from '../util';
     styleUrls: ['./chip.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-
 export class ChipComponent {
-
     _action: boolean = false;
     @Input() color: 'neutral' | 'yellow' | 'green' | 'red' = 'neutral';
 
     constructor() {}
 
-    @Input() get action(): boolean { return this._action; }
+    @Input()
+    get action(): boolean {
+        return this._action;
+    }
 
-    set action(isAction) { this._action = parseBooleanAttribute(isAction); }
+    set action(isAction) {
+        this._action = parseBooleanAttribute(isAction);
+    }
 }

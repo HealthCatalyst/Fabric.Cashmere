@@ -1,9 +1,9 @@
-import { RouterModule, Routes } from '@angular/router';
-import { ComponentsComponent } from './components/components.component';
-import { StylesComponent } from './styles/styles.component';
-import { HomeComponent } from './home/home.component';
-import { GuidesComponent } from './guides/guides.component';
-import { NgModule } from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {ComponentsComponent} from './components/components.component';
+import {StylesComponent} from './styles/styles.component';
+import {HomeComponent} from './home/home.component';
+import {GuidesComponent} from './guides/guides.component';
+import {NgModule} from '@angular/core';
 
 const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -18,5 +18,4 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
-export class AppRoutesModule {
-}
+export class AppRoutesModule {}

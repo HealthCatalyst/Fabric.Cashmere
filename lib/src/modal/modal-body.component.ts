@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 
 @Component({
     selector: 'hc-modal-body',
@@ -6,5 +6,4 @@ import { Component, HostBinding } from '@angular/core';
 })
 export class ModalBodyComponent {
     @HostBinding('class.hc-modal-body') modalBodyClass = true;
-
 }

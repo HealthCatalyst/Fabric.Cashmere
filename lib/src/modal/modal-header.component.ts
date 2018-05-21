@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import {Component, Input, HostBinding} from '@angular/core';
 
 @Component({
     selector: 'hc-modal-header',

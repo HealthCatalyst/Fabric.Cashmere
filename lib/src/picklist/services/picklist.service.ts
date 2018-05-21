@@ -1,39 +1,55 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Rx';
 
-import { WorkTrackerService } from './work-tracker.service';
-import { PicklistFilterService } from './picklist-filter.service';
-import { PicklistValuesetMovingService } from './picklist-valueset-moving.service';
-import { PicklistFilterLocalService } from './picklist-filter-local.service';
-import { PicklistStateService } from './picklist-state.service';
-import { PicklistPaneComponent } from '../pane/picklist-pane.component';
-import { PicklistOptionsSource, PicklistSettings } from '../picklist.model';
+import {WorkTrackerService} from './work-tracker.service';
+import {PicklistFilterService} from './picklist-filter.service';
+import {PicklistValuesetMovingService} from './picklist-valueset-moving.service';
+import {PicklistFilterLocalService} from './picklist-filter-local.service';
+import {PicklistStateService} from './picklist-state.service';
+import {PicklistPaneComponent} from '../pane/picklist-pane.component';
+import {PicklistOptionsSource, PicklistSettings} from '../picklist.model';
 import {
     FilterableSelectList,
     SelectListOption,
     ValueSetListOption,
     ValueListOption,
-    PicklistValueOptions } from '../pane/picklist-pane.model'
+    PicklistValueOptions
+} from '../pane/picklist-pane.model';
 
 /**
  * Handles loading + moving items to/from list
  */
 @Injectable()
 export class PicklistService {
-    public get pane(): PicklistPaneComponent { return this.stateService.pane; }
-    public get picklist(): PicklistSettings { return this.stateService.picklist; }
-    public get optionsSource(): PicklistOptionsSource { return this.stateService.optionsSource; }
-    public get valueList(): FilterableSelectList<ValueListOption> { return this.stateService.valueList; }
-    public get valueSetList(): FilterableSelectList<ValueSetListOption> { return this.stateService.valueSetList; }
-    public get totalValuesCount(): number { return this.valueList.options.size + this.valueList.additionalRemoteOptions; }
-    public get totalValueSetsCount(): number { return this.valueSetList.options.size + this.valueSetList.additionalRemoteOptions; }
+    public get pane(): PicklistPaneComponent {
+        return this.stateService.pane;
+    }
+    public get picklist(): PicklistSettings {
+        return this.stateService.picklist;
+    }
+    public get optionsSource(): PicklistOptionsSource {
+        return this.stateService.optionsSource;
+    }
+    public get valueList(): FilterableSelectList<ValueListOption> {
+        return this.stateService.valueList;
+    }
+    public get valueSetList(): FilterableSelectList<ValueSetListOption> {
+        return this.stateService.valueSetList;
+    }
+    public get totalValuesCount(): number {
+        return this.valueList.options.size + this.valueList.additionalRemoteOptions;
+    }
+    public get totalValueSetsCount(): number {
+        return this.valueSetList.options.size + this.valueSetList.additionalRemoteOptions;
+    }
 
     constructor(
         private workTracker: WorkTrackerService,
         private filterService: PicklistFilterService,
         private localFilterService: PicklistFilterLocalService,
         private valuesetMovingService: PicklistValuesetMovingService,
-        private stateService: PicklistStateService) {}
+        private stateService: PicklistStateService
+    ) {}
 
     public reset(settings: PicklistSettings, optionsSource: PicklistOptionsSource, pane: PicklistPaneComponent) {
         this.stateService.reset(settings, optionsSource, pane);
@@ -57,8 +73,12 @@ export class PicklistService {
             this.filterService.preFilterOptionsForRemoteMode(listOptions.valueSets, this.valueSetList);
         }
 
-        listOptions.values.forEach(o => { this.valueList.options.set(o.code, o); });
-        listOptions.valueSets.forEach(o => { this.valueSetList.options.set(o.code, o); });
+        listOptions.values.forEach(o => {
+            this.valueList.options.set(o.code, o);
+        });
+        listOptions.valueSets.forEach(o => {
+            this.valueSetList.options.set(o.code, o);
+        });
         this.localFilterService.filter(this.valueList, this.filterService.searchTokens);
         this.localFilterService.filter(this.valueSetList, this.filterService.searchTokens);
         this.pane.selectNone();
@@ -81,18 +101,23 @@ export class PicklistService {
 
     public loadValuesForValueset(valueset: ValueSetListOption) {
         valueset.loadingValues = true;
-        if (!this.optionsSource.getValuesForValueset) { return; }
-        this.optionsSource.getValuesForValueset(valueset.option.code)
-            .subscribe(values => {
+        if (!this.optionsSource.getValuesForValueset) {
+            return;
+        }
+        this.optionsSource.getValuesForValueset(valueset.option.code).subscribe(
+            values => {
                 valueset.subValuesSelectList.filteredOptions.length = 0;
                 values.forEach(v => {
                     valueset.subValuesSelectList.filteredOptions.push(new ValueListOption(v, v.code));
                 });
-            }, () => {
+            },
+            () => {
                 console.warn('Unable to load values for valueset');
                 valueset.showValues = false;
-            }, () => {
+            },
+            () => {
                 valueset.loadingValues = false;
-            });
+            }
+        );
     }
 }

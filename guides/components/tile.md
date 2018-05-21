@@ -1,6 +1,9 @@
 :::
+
 ##### Angular Component
-``` html
+
+```html
 <hc-tile></hc-tile>
 ```
+
 :::

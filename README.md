@@ -6,13 +6,13 @@ An Angular component library that makes any task feel luxurious.
 
 ## Quick Links
 
-- [Components](http://cashmere.healthcatalyst.net/components)
-- [Styles](http://cashmere.healthcatalyst.net/styles)
-- [Getting Started](http://cashmere.healthcatalyst.net/guides/getting-started)
-- [Guidelines for Contribution](http://cashmere.healthcatalyst.net/guides/contribution-guide)
-- [Packaging Library](http://cashmere.healthcatalyst.net/guides/packaging-library)
-- [Submit an Issue](http://cashmere.healthcatalyst.net/guides/submit-an-issue)
-- [Supported Browsers](http://cashmere.healthcatalyst.net/guides/supported-browsers)
+*   [Components](http://cashmere.healthcatalyst.net/components)
+*   [Styles](http://cashmere.healthcatalyst.net/styles)
+*   [Getting Started](http://cashmere.healthcatalyst.net/guides/getting-started)
+*   [Guidelines for Contribution](http://cashmere.healthcatalyst.net/guides/contribution-guide)
+*   [Packaging Library](http://cashmere.healthcatalyst.net/guides/packaging-library)
+*   [Submit an Issue](http://cashmere.healthcatalyst.net/guides/submit-an-issue)
+*   [Supported Browsers](http://cashmere.healthcatalyst.net/guides/supported-browsers)
 
 ## Installing
 

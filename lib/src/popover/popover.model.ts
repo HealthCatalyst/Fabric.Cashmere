@@ -1,8 +1,4 @@
-export type Trigger =
-    | 'click'
-    | 'mousedown'
-    | 'hover'
-    | 'none' ;
+export type Trigger = 'click' | 'mousedown' | 'hover' | 'none';
 
 export class Triggers {
     static CLICK: Trigger = 'click';
@@ -29,7 +25,7 @@ export type Placement =
     | 'auto-bottom'
     | 'auto-left'
     | 'auto-right'
-    | Function
+    | Function;
 
 export class Placements {
     static Top: Placement = 'top';

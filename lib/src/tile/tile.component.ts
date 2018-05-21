@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 
 @Component({
     selector: 'hc-tile',
@@ -6,8 +6,5 @@ import { Component, HostBinding } from '@angular/core';
     styleUrls: ['./tile.component.scss']
 })
 export class TileComponent {
-
-    constructor() {
-    }
-
+    constructor() {}
 }

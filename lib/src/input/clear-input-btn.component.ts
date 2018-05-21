@@ -1,19 +1,25 @@
-import { Component, Input, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { InputComponent } from './input.component';
+import {Component, Input, ChangeDetectorRef, OnDestroy} from '@angular/core';
+import {InputComponent} from './input.component';
 @Component({
     selector: 'hc-clear-input-btn',
-    template:
-    `<hc-icon *ngIf="inputEl?.value.length > 0" icon-sm fontSet="fa" fontIcon="fa-times-circle"
+    template: `<hc-icon *ngIf="inputEl?.value.length > 0" icon-sm fontSet="fa" fontIcon="fa-times-circle"
     class="hc-clear-btn" title="Clear" (click)="clear()"></hc-icon>`
 })
 export class ClearInputBtnComponent implements OnDestroy {
-    @Input() public set input(input: HTMLInputElement | InputComponent) { this.setInput(input); }
+    @Input()
+    public set input(input: HTMLInputElement | InputComponent) {
+        this.setInput(input);
+    }
     public inputEl?: HTMLInputElement;
-    private checkShouldShowClearBtn = () => { this.cd.detectChanges(); };
+    private checkShouldShowClearBtn = () => {
+        this.cd.detectChanges();
+    };
 
     constructor(private cd: ChangeDetectorRef) {}
 
-    public ngOnDestroy() { this.removeEventListenerIfNeeded(); }
+    public ngOnDestroy() {
+        this.removeEventListenerIfNeeded();
+    }
 
     public setInput(input: HTMLInputElement | InputComponent) {
         this.removeEventListenerIfNeeded();
@@ -36,7 +42,7 @@ export class ClearInputBtnComponent implements OnDestroy {
     }
 
     private isComponent(input: HTMLInputElement | InputComponent): input is InputComponent {
-        const component = (<InputComponent>input);
+        const component = <InputComponent>input;
         return component && !!component.elementRef;
     }
 

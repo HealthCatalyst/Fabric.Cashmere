@@ -1,9 +1,9 @@
-import { Injectable, NgModuleFactoryLoader } from '@angular/core';
-import { Observable, Subject, Subscription } from 'rxjs/Rx';
+import {Injectable, NgModuleFactoryLoader} from '@angular/core';
+import {Observable, Subject, Subscription} from 'rxjs/Rx';
 
-import { PicklistFilterService } from './picklist-filter.service';
-import { PicklistStateService } from './picklist-state.service';
-import { FilterableSelectList, ValueSetListOption, ValueListOption } from '../pane/picklist-pane.model';
+import {PicklistFilterService} from './picklist-filter.service';
+import {PicklistStateService} from './picklist-state.service';
+import {FilterableSelectList, ValueSetListOption, ValueListOption} from '../pane/picklist-pane.model';
 import {
     PicklistValueType,
     IValueOption,
@@ -11,18 +11,27 @@ import {
     IPageSettings,
     IPagedCollection,
     IPicklistRemoteQueryResponse,
-    PicklistRemoteQueryOptions } from '../picklist.model'
+    PicklistRemoteQueryOptions
+} from '../picklist.model';
 
 @Injectable()
 export class PicklistFilterRemoteService {
     public filterService?: PicklistFilterService;
-    public get valueList(): FilterableSelectList<ValueListOption> { return this.stateService.valueList; }
-    public get valueSetList(): FilterableSelectList<ValueSetListOption> { return this.stateService.valueSetList; }
-    public get searchTerm(): string { return this.filterService ? this.filterService.searchTerm : ''; }
+    public get valueList(): FilterableSelectList<ValueListOption> {
+        return this.stateService.valueList;
+    }
+    public get valueSetList(): FilterableSelectList<ValueSetListOption> {
+        return this.stateService.valueSetList;
+    }
+    public get searchTerm(): string {
+        return this.filterService ? this.filterService.searchTerm : '';
+    }
     public currentValuePage = 1;
     public currentValueSetPage = 1;
     private cancelSearch = new Subject<void>();
-    private get cancelSearch$(): Observable<void> { return this.cancelSearch.asObservable(); };
+    private get cancelSearch$(): Observable<void> {
+        return this.cancelSearch.asObservable();
+    }
     private options$: Observable<IPicklistRemoteQueryResponse> = Observable.from([]);
 
     public constructor(private stateService: PicklistStateService) {}
@@ -34,35 +43,55 @@ export class PicklistFilterRemoteService {
     }
 
     public filter(type: PicklistValueType = 'both', shouldAppend = false, selectAllCount: number | null = null): Subscription {
-            if (!this.stateService.optionsSource.getOptions) {
-                console.warn('Remote query callback not provided for this picklist.')
-                return Observable.from([]).subscribe();
+        if (!this.stateService.optionsSource.getOptions) {
+            console.warn('Remote query callback not provided for this picklist.');
+            return Observable.from([]).subscribe();
+        }
+
+        if (this.options$) {
+            this.cancelSearch.next();
+        }
+        const params = this.buildRemoteQueryParams(type, selectAllCount);
+        if (!shouldAppend) {
+            this.clearFilteredOptions(type);
+        }
+        this.resetPagingForSelectAllIfNeeded(selectAllCount);
+        this.options$ = this.stateService.optionsSource.getOptions(params).takeUntil(this.cancelSearch$);
+
+        return this.options$.subscribe(
+            options => {
+                this.processIncomingRemoteOptions(options, type, shouldAppend);
+            },
+            () => {
+                console.warn('Unable to filter options');
+                this.clearLists('both');
+                return Observable.of({});
+            },
+            () => {
+                this.options$ = Observable.of({});
             }
-
-            if (this.options$) { this.cancelSearch.next(); }
-            const params = this.buildRemoteQueryParams(type, selectAllCount, );
-            if (!shouldAppend) { this.clearFilteredOptions(type); }
-            this.resetPagingForSelectAllIfNeeded(selectAllCount);
-            this.options$ = this.stateService.optionsSource.getOptions(params).takeUntil(this.cancelSearch$);
-
-            return this.options$.subscribe((options) => {
-                    this.processIncomingRemoteOptions(options, type, shouldAppend);
-                }, () => {
-                    console.warn('Unable to filter options')
-                    this.clearLists('both');
-                    return Observable.of({});
-                }, () => { this.options$ = Observable.of({}); });
+        );
     }
 
     private processIncomingRemoteOptions(options: IPicklistRemoteQueryResponse, type: PicklistValueType = 'both', shouldAppend = false) {
-        if (!shouldAppend) {this.clearLists(type); }
+        if (!shouldAppend) {
+            this.clearLists(type);
+        }
 
         if (this.stateService.optionsSource.isPaged) {
-            if (options.pagedValues) { this.processPagedValues(options.pagedValues); }
-            if (options.pagedValueSets) { this.processPagedValueSets(options.pagedValueSets); }
+            if (options.pagedValues) {
+                this.processPagedValues(options.pagedValues);
+            }
+            if (options.pagedValueSets) {
+                this.processPagedValueSets(options.pagedValueSets);
+            }
         } else {
-            if (options.values) { this.stateService.updateValueList(options.values); }
-            if (options.valueSets) { this.stateService.updateValueSetList(options.valueSets); }
+            if (options.values) {
+                this.stateService.updateValueList(options.values);
+            }
+            if (options.valueSets) {
+                this.stateService.updateValueSetList(options.valueSets);
+            }
             this.valueList.additionalRemoteOptions = 0;
             this.valueSetList.additionalRemoteOptions = 0;
         }
@@ -78,7 +107,7 @@ export class PicklistFilterRemoteService {
         this.valueSetList.additionalRemoteOptions = pagedValueSets.totalItems - this.valueSetList.options.size;
     }
 
-    private buildRemoteQueryParams(type: PicklistValueType, selectAllCount: number | null = null, ): PicklistRemoteQueryOptions {
+    private buildRemoteQueryParams(type: PicklistValueType, selectAllCount: number | null = null): PicklistRemoteQueryOptions {
         const params = new PicklistRemoteQueryOptions(this.stateService.picklist, this.searchTerm, type);
         if (type === 'values' || type === 'both') {
             params.valuePageSettings = this.buildPageSettings(this.currentValuePage, selectAllCount);
@@ -91,23 +120,33 @@ export class PicklistFilterRemoteService {
     }
 
     private buildPageSettings(currentPage: number, selectAllCount: number | null) {
-        const pagerSettings = { currentPage: 1, itemsPerPage: this.stateService.optionsSource.pageSize };
+        const pagerSettings = {currentPage: 1, itemsPerPage: this.stateService.optionsSource.pageSize};
         pagerSettings.currentPage = selectAllCount ? 1 : currentPage;
         pagerSettings.itemsPerPage = selectAllCount || pagerSettings.itemsPerPage;
         return pagerSettings;
     }
 
     private resetPagingForSelectAllIfNeeded(selectAllCount: number | null = null) {
-        if (selectAllCount) { this.currentValuePage = Math.floor(selectAllCount / this.stateService.optionsSource.pageSize); }
+        if (selectAllCount) {
+            this.currentValuePage = Math.floor(selectAllCount / this.stateService.optionsSource.pageSize);
+        }
     }
 
     private clearLists(type: PicklistValueType) {
-        if (type === 'both' || type === 'values') { this.stateService.clearList(this.valueList); }
-        if (type === 'both' || type === 'valuesets') { this.stateService.clearList(this.valueSetList); }
+        if (type === 'both' || type === 'values') {
+            this.stateService.clearList(this.valueList);
+        }
+        if (type === 'both' || type === 'valuesets') {
+            this.stateService.clearList(this.valueSetList);
+        }
     }
 
     private clearFilteredOptions(type: PicklistValueType) {
-        if (type === 'both' || type === 'values') { this.valueList.filteredOptions.length = 0; }
-        if (type === 'both' || type === 'valuesets') { this.valueSetList.filteredOptions.length = 0; }
+        if (type === 'both' || type === 'values') {
+            this.valueList.filteredOptions.length = 0;
+        }
+        if (type === 'both' || type === 'valuesets') {
+            this.valueSetList.filteredOptions.length = 0;
+        }
     }
 }

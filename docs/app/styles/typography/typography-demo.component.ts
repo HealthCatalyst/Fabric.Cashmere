@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'hc-typography',
@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./typography-demo.component.scss']
 })
 export class TypographyDemoComponent {
-
-    lastModified: Date = new Date( document.lastModified );
+    lastModified: Date = new Date(document.lastModified);
 }

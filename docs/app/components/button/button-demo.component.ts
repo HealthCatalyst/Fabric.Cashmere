@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'hc-button-demo',
@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./button-demo.component.scss']
 })
 export class ButtonDemoComponent {
-    lastModified: Date = new Date( document.lastModified );
+    lastModified: Date = new Date(document.lastModified);
     public document: string = require('raw-loader!../../../../guides/components/button.md');
 }

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProgressSpinnerComponent } from './progress-spinner.component';
+import {ProgressSpinnerComponent} from './progress-spinner.component';
 
 describe('ProgressSpinnerComponent', () => {
     let component: ProgressSpinnerComponent;
@@ -9,8 +9,7 @@ describe('ProgressSpinnerComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [ProgressSpinnerComponent]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {
@@ -52,68 +51,67 @@ describe('ProgressSpinnerComponent', () => {
             expect(component.progress).toBe(100);
         });
 
-
         describe('makes calculations based on progress to determine transition type', () => {
             it('uses ease-in-out transtions if change in progress does not cross 50% threshold', () => {
-                component.progress = 0
+                component.progress = 0;
                 component.progress = 50;
-                expect(component.leftCircleTransition.indexOf('ease-in-out') > -1).toBeTruthy()
-                expect(component.rightCircleTransition.indexOf('ease-in-out') > -1).toBeTruthy()
+                expect(component.leftCircleTransition.indexOf('ease-in-out') > -1).toBeTruthy();
+                expect(component.rightCircleTransition.indexOf('ease-in-out') > -1).toBeTruthy();
             });
             it('uses ease-in for left and ease out for right if progress goes from below to above 50%', () => {
                 component.progress = 60;
                 component.progress = 10;
-                expect(component.leftCircleTransition.indexOf('ease-in') > -1).toBeTruthy()
-                expect(component.rightCircleTransition.indexOf('ease-out') > -1).toBeTruthy()
+                expect(component.leftCircleTransition.indexOf('ease-in') > -1).toBeTruthy();
+                expect(component.rightCircleTransition.indexOf('ease-out') > -1).toBeTruthy();
             });
             it('uses ease-out for left and ease in for right if progress goes from above to below 50%', () => {
                 component.progress = 10;
                 component.progress = 60;
-                expect(component.leftCircleTransition.indexOf('ease-out') > -1).toBeTruthy()
-                expect(component.rightCircleTransition.indexOf('ease-in') > -1).toBeTruthy()
+                expect(component.leftCircleTransition.indexOf('ease-out') > -1).toBeTruthy();
+                expect(component.rightCircleTransition.indexOf('ease-in') > -1).toBeTruthy();
             });
         });
 
         describe('makes calculations based on progress to determine rotation', () => {
             describe('of right inner circle:', () => {
                 it('sets rotation to -135 when progress is 0', () => {
-                    component.progress = 0
-                    expect(component.rightCircleTransform).toBe('rotate(-135deg)')
+                    component.progress = 0;
+                    expect(component.rightCircleTransform).toBe('rotate(-135deg)');
                 });
                 it('sets rotation to 45 when progress is 50 or above', () => {
-                    component.progress = 50
-                    expect(component.rightCircleTransform).toBe('rotate(45deg)')
+                    component.progress = 50;
+                    expect(component.rightCircleTransform).toBe('rotate(45deg)');
 
-                    component.progress = 95
-                    expect(component.rightCircleTransform).toBe('rotate(45deg)')
+                    component.progress = 95;
+                    expect(component.rightCircleTransform).toBe('rotate(45deg)');
                 });
                 it('correctly sets rotation for stuff between 0 and 50', () => {
-                    component.progress = 1
-                    expect(component.rightCircleTransform).toBe('rotate(-131.4deg)')
+                    component.progress = 1;
+                    expect(component.rightCircleTransform).toBe('rotate(-131.4deg)');
 
-                    component.progress = 14
-                    expect(component.rightCircleTransform).toBe('rotate(-84.6deg)')
+                    component.progress = 14;
+                    expect(component.rightCircleTransform).toBe('rotate(-84.6deg)');
                 });
             });
 
             describe('of left inner circle:', () => {
                 it('sets rotation to 135 when progress is 50 or below', () => {
-                    component.progress = 50
-                    expect(component.leftCircleTransform).toBe('rotate(135deg)')
+                    component.progress = 50;
+                    expect(component.leftCircleTransform).toBe('rotate(135deg)');
 
-                    component.progress = 24
-                    expect(component.leftCircleTransform).toBe('rotate(135deg)')
+                    component.progress = 24;
+                    expect(component.leftCircleTransform).toBe('rotate(135deg)');
                 });
                 it('sets rotation to 315 when progress is 100', () => {
-                    component.progress = 100
-                    expect(component.leftCircleTransform).toBe('rotate(315deg)')
+                    component.progress = 100;
+                    expect(component.leftCircleTransform).toBe('rotate(315deg)');
                 });
                 it('correctly sets rotation for stuff between 51 and 100', () => {
-                    component.progress = 53
-                    expect(component.leftCircleTransform).toBe('rotate(145.8deg)')
+                    component.progress = 53;
+                    expect(component.leftCircleTransform).toBe('rotate(145.8deg)');
 
-                    component.progress = 97
-                    expect(component.leftCircleTransform).toBe('rotate(304.2deg)')
+                    component.progress = 97;
+                    expect(component.leftCircleTransform).toBe('rotate(304.2deg)');
                 });
             });
         });
