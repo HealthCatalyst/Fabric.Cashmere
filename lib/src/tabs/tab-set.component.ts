@@ -24,7 +24,10 @@ export class TabSetComponent implements AfterContentInit {
     constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngAfterContentInit(): void {
-        this.tabs.changes.subscribe(_ => {
+        this.defaultToFirstTab();
+        this.checkForRouterUse();
+
+        this.tabs.changes.subscribe(() => {
             this.defaultToFirstTab();
             this.checkForRouterUse();
         });
