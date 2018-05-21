@@ -1,6 +1,6 @@
-import { Component, Input, ContentChildren, AfterContentInit, QueryList } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, Input, QueryList } from '@angular/core';
 import { TabComponent } from './tab.component';
-import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export type TabDirection = 'horizontal' | 'vertical';
 
@@ -10,52 +10,36 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
 }
 
 @Component({
-    template: `
-        <div class="hc-{{direction}}-tab-container">
-            <div class="hc-tab-bar-{{direction}}">
-                <div *ngFor="let tab of tabs">
-                    <a *ngIf="routerEnabled" class="hc-tab-{{direction}}"
-                       [routerLink]="tab.routerLink"
-                       routerLinkActive="active"
-                       (click)="setActive(tab)">
-                          {{tab.tabTitle}}
-                    </a>
-                    <a *ngIf="!routerEnabled" class="hc-tab-{{direction}}"
-                       [class.active]="tab.active"
-                       (click)="setActive(tab)">
-                          {{tab.tabTitle}}
-                    </a>
-
-                </div>
-            </div>
-            <div class="hc-tab-content-{{direction}}">
-                 <router-outlet *ngIf="routerEnabled"></router-outlet>
-                 <ng-content *ngIf="!routerEnabled"></ng-content>
-             </div>
-        </div>
-    `,
     selector: `hc-tab-set`,
+    templateUrl: './tab-set.component.html',
     styleUrls: ['../sass/_tabs.scss']
 })
 export class TabSetComponent implements AfterContentInit {
-    @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
-    @Input() direction: TabDirection = 'vertical';
     routerEnabled: boolean = false;
 
-    constructor(private router: Router, private route: ActivatedRoute) {}
+    @ContentChildren(TabComponent)
+    tabs: QueryList<TabComponent>;
+
+    @Input() direction: TabDirection = 'vertical';
+
+    constructor(private router: Router,
+                private route: ActivatedRoute) {
+    }
+
+    ngAfterContentInit(): void {
+        this.tabs.changes.subscribe(_ => {
+            this.defaultToFirstTab();
+            this.checkForRouterUse();
+        });
+    }
 
     setActive(tab: TabComponent) {
         this.tabs.forEach(t => (t.active = false));
         tab.active = true;
     }
 
-    ngAfterContentInit() {
-        this.defaultToFirstTab();
-        this.checkForRouterUse();
-    }
-
     private defaultToFirstTab() {
-        if (this.tabs.first) {
+        if (!this.tabs.find(tab => tab.active)) {
             // setTimeout to avoid change after checked error
             // when ngFor is used as projected nodes are registered
             // and stored as part of the existing view, not
@@ -67,17 +51,15 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     private checkForRouterUse() {
-        if (this.tabs.length > 0) {
-            const countUsingRouter = this.tabs.filter(tab => tab.routerLink !== undefined).length;
-            if (countUsingRouter > 0 && countUsingRouter < this.tabs.length) {
-                const tabsMissingRouterLink = this.tabs.filter(tab => tab.routerLink === undefined);
-                throwErrorForMissingRouterLink(tabsMissingRouterLink);
-            }
+        const countUsingRouter = this.tabs.filter(tab => tab.routerLink !== undefined).length;
+        if (countUsingRouter > 0 && countUsingRouter < this.tabs.length) {
+            const tabsMissingRouterLink = this.tabs.filter(tab => tab.routerLink === undefined);
+            throwErrorForMissingRouterLink(tabsMissingRouterLink);
+        }
 
-            if (countUsingRouter === this.tabs.length) {
-                this.routerEnabled = true;
-                this.defaultToFirstRoute();
-            }
+        if (countUsingRouter === this.tabs.length) {
+            this.routerEnabled = true;
+            this.defaultToFirstRoute();
         }
     }
 
@@ -96,7 +78,7 @@ export class TabSetComponent implements AfterContentInit {
         }
 
         const firstRoute = this.mapRouterLinkToString(this.tabs.first.routerLink);
-        this.router.navigate([firstRoute], { relativeTo: this.route });
+        this.router.navigate([firstRoute], {relativeTo: this.route});
     }
 
     private mapRouterLinkToString(routerLink: string | any[]): string {

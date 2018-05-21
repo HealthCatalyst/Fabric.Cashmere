@@ -1,10 +1,10 @@
-<button hc-button color="secondary" class="hc-left-button" (click)="previousPage()" [disabled]="!totalPages || isFirstPage">
+<button hc-button color="secondary" class="hc-page-button hc-left-button" (click)="previousPage()" [disabled]="!totalPages || isFirstPage">
     <hc-icon fontSet="fa" fontIcon="fa-chevron-left"></hc-icon>&nbsp;
     <span>PREV</span>
 </button>
 <!-- page navigation buttons to appear normally -->
 <button hc-button color="secondary"
-        class="hc-inner-button expanded-page-button"
+        class="hc-page-button hc-inner-button expanded-page-button"
         *ngFor="let page of visiblePages"
         [disabled]="!page"
         [class.currentPage]="page === pageNumber"
@@ -14,7 +14,7 @@
 </button>
 <!-- page navigation buttons to appear when space is limited -->
 <button hc-button color="secondary"
-        class="hc-inner-button collapsed-page-button"
+        class="hc-page-button hc-inner-button collapsed-page-button"
         *ngFor="let page of collapsedVisiblePages"
         [disabled]="!page"
         [class.currentPage]="page === pageNumber"
@@ -22,7 +22,7 @@
     <span *ngIf="!!page">{{page}}</span>
     <hc-icon *ngIf="!page" fontSet="fa" fontIcon="fa-ellipsis-h"></hc-icon>
 </button>
-<button hc-button color="secondary" class="hc-right-button" (click)="nextPage()" [disabled]="!totalPages || isLastPage">
+<button hc-button color="secondary" class="hc-page-button hc-right-button" (click)="nextPage()" [disabled]="!totalPages || isLastPage">
     <span>NEXT</span>&nbsp;
     <hc-icon fontSet="fa" fontIcon="fa-chevron-right"></hc-icon>
 </button>
