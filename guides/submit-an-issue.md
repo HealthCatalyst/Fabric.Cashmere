@@ -30,4 +30,4 @@ Request a new feature by submitting an issue to our [GitHub Repository](https://
 
 *   For a major feature, first open an issue and outline your proposal so it can be discussed. This also allows us to better coordinate our efforts, prevent duplicate work, and help you craft the change so it is successfully accepted into the project.
 *   Small features can be crafted and directly submitted as a pull request.
-    :::
+:::

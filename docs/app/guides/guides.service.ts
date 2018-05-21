@@ -30,6 +30,11 @@ export class GuidesService {
             document: require('raw-loader!../../../guides/submit-an-issue.md')
         },
         {
+            title: 'User Feedback',
+            route: 'user-feedback',
+            document: require('raw-loader!../../../guides/user-feedback.md')
+        },
+        {
             title: 'Supported Browsers',
             route: 'supported-browsers',
             document: require('raw-loader!../../../guides/supported-browsers.md')
