@@ -24,7 +24,10 @@ export class TabSetComponent implements AfterContentInit {
     constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngAfterContentInit(): void {
-        this.tabs.changes.subscribe(_ => {
+        this.defaultToFirstTab();
+        this.checkForRouterUse();
+
+        this.tabs.changes.subscribe(() => {
             this.defaultToFirstTab();
             this.checkForRouterUse();
         });
@@ -48,6 +51,9 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     private checkForRouterUse() {
+        if (this.tabs.length === 0) {
+            return;
+        }
         const countUsingRouter = this.tabs.filter(tab => tab.routerLink !== undefined).length;
         if (countUsingRouter > 0 && countUsingRouter < this.tabs.length) {
             const tabsMissingRouterLink = this.tabs.filter(tab => tab.routerLink === undefined);
