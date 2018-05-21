@@ -51,6 +51,9 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     private checkForRouterUse() {
+        if (this.tabs.length === 0) {
+            return;
+        }
         const countUsingRouter = this.tabs.filter(tab => tab.routerLink !== undefined).length;
         if (countUsingRouter > 0 && countUsingRouter < this.tabs.length) {
             const tabsMissingRouterLink = this.tabs.filter(tab => tab.routerLink === undefined);
