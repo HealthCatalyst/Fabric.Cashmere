@@ -1,4 +1,4 @@
-@import "colors";
+@import 'colors';
 @import 'variables';
 @import 'mixins';
 
@@ -11,7 +11,9 @@
 }
 
 @include media-breakpoint-down(sm) {
-    .palette-row { display: block; }
+    .palette-row {
+        display: block;
+    }
 }
 
 hc-swatch-demo-component {
@@ -46,7 +48,6 @@ hc-swatch-demo-component {
         flex: 1 1 0;
         margin-left: 10px;
     }
-
 }
 
 .color-var-list {

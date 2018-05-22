@@ -1,5 +1,5 @@
-$accordion-border: 1px solid #DDDDDD;
-$accordion-background-color: #F0F0F0;
+$accordion-border: 1px solid #dddddd;
+$accordion-background-color: #f0f0f0;
 $accordion-toolbar-padding: 0 10px;
 
 .hc-accordion {
@@ -31,7 +31,7 @@ $accordion-toolbar-padding: 0 10px;
             border-top: 2px solid;
             border-left: 2px solid;
             left: 50%;
-            content: "";
+            content: '';
             width: 8px;
             height: 8px;
             position: relative;
@@ -43,7 +43,8 @@ $accordion-toolbar-padding: 0 10px;
         overflow: hidden;
     }
 
-    &.hc-accordion-closed, &.hc-accordion-closing {
+    &.hc-accordion-closed,
+    &.hc-accordion-closing {
         .hc-accordion-trigger::after {
             transform: translate(-50%, -2px) rotate(-134deg);
         }
@@ -84,5 +85,3 @@ $accordion-toolbar-padding: 0 10px;
         transition: transform 500ms cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 }
-
-

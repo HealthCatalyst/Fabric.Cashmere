@@ -1,7 +1,7 @@
 @import '../../../node_modules/font-awesome/scss/variables';
 
-@import "./colors";
-@import "./mixins";
+@import './colors';
+@import './mixins';
 
 $table-border: 1px solid shade($slate-gray-100, 6%) !default;
 $table-condensed-font-size: 13px;
@@ -27,7 +27,8 @@ table.hc-table {
     max-width: 100%;
     color: $tbody-font-color;
 
-    td, th {
+    td,
+    th {
         padding: $cell-padding;
         border-top: none;
         border-bottom: $table-border;
@@ -62,8 +63,12 @@ table.hc-table {
             &.hc-row-selected {
                 background-color: $row-color-selected;
                 color: $row-selected-font-color;
-                &:hover { background-color: $row-color-selected-hover; }
-                td { border-color: $row-selected-border-color; }
+                &:hover {
+                    background-color: $row-color-selected-hover;
+                }
+                td {
+                    border-color: $row-selected-border-color;
+                }
             }
         }
 
@@ -74,10 +79,13 @@ table.hc-table {
 
     // Add Borders
     &.hc-table-borders {
-        td { border: $table-border }
+        td {
+            border: $table-border;
+        }
     }
 
-    td, th {
+    td,
+    th {
         &.hc-cell-borders {
             border: $table-border;
         }
@@ -85,7 +93,11 @@ table.hc-table {
 
     // Condensed
     &.hc-table-small {
-        td, th { padding: $cell-padding-condensed; font-size: $table-condensed-font-size;}
+        td,
+        th {
+            padding: $cell-padding-condensed;
+            font-size: $table-condensed-font-size;
+        }
     }
 
     // Actionable table/row
@@ -95,7 +107,9 @@ table.hc-table {
                 background-color: $row-color-action-hover;
                 cursor: pointer;
             }
-            &.hc-row-selected:hover { background-color: $row-color-selected-hover;}
+            &.hc-row-selected:hover {
+                background-color: $row-color-selected-hover;
+            }
         }
     }
 
@@ -104,11 +118,14 @@ table.hc-table {
             background-color: $row-color-action-hover;
             cursor: pointer;
         }
-        &.hc-row-selected:hover { background-color: $row-color-selected-hover;}
+        &.hc-row-selected:hover {
+            background-color: $row-color-selected-hover;
+        }
     }
 
     // Sorting
-    th.hc-col-sortable, th.hc-col-sortable-left {
+    th.hc-col-sortable,
+    th.hc-col-sortable-left {
         position: relative;
         cursor: pointer;
         padding-right: 35px;
@@ -118,7 +135,8 @@ table.hc-table {
         }
 
         //TODO: redo the guts of these icons when we roll our own icon font
-        &:before, &:after {
+        &:before,
+        &:after {
             display: inline-block;
             position: absolute;
             bottom: 11px;
@@ -135,20 +153,30 @@ table.hc-table {
             right: 18px;
             bottom: 10px;
             content: $fa-var-long-arrow-down;
-            transform: rotate(180deg)
+            transform: rotate(180deg);
         }
 
         &.hc-active-sort {
             color: $thead-active-font-color;
 
             &.hc-sort-asc {
-                &:before { content: $fa-var-sort-amount-asc; right: 16px;}
-                &:after { content: none; }
+                &:before {
+                    content: $fa-var-sort-amount-asc;
+                    right: 16px;
+                }
+                &:after {
+                    content: none;
+                }
             }
 
             &.hc-sort-desc {
-                &:before { content: $fa-var-sort-amount-desc; right: 16px;}
-                &:after { content: none; }
+                &:before {
+                    content: $fa-var-sort-amount-desc;
+                    right: 16px;
+                }
+                &:after {
+                    content: none;
+                }
             }
         }
     }
@@ -158,20 +186,38 @@ table.hc-table {
         padding-right: 16px;
         padding-left: 35px;
 
-        &:before { left: 16px; right: auto; }
-        &:after { left: 21px; right: auto; }
+        &:before {
+            left: 16px;
+            right: auto;
+        }
+        &:after {
+            left: 21px;
+            right: auto;
+        }
 
         &.hc-active-sort {
-            &.hc-sort-asc:before { left: 16px; right: auto; }
-            &.hc-sort-desc:before { left: 16px; right: auto; }
+            &.hc-sort-asc:before {
+                left: 16px;
+                right: auto;
+            }
+            &.hc-sort-desc:before {
+                left: 16px;
+                right: auto;
+            }
         }
     }
 
     &.hc-no-hover-table {
         tbody tr {
-            &:nth-child(2n):hover { background-color: $row-color; }
-            &:nth-child(2n + 1):hover { background-color: $row-color-alt; }
-            &.hc-row-selected:hover { background-color: $row-color-selected; }
+            &:nth-child(2n):hover {
+                background-color: $row-color;
+            }
+            &:nth-child(2n + 1):hover {
+                background-color: $row-color-alt;
+            }
+            &.hc-row-selected:hover {
+                background-color: $row-color-selected;
+            }
         }
     }
 }

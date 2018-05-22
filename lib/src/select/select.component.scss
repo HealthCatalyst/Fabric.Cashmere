@@ -27,7 +27,7 @@
     pointer-events: none;
 
     &:after {
-        content: "\f078";
+        content: '\f078';
         font-family: FontAwesome;
         color: #00aeff;
         pointer-events: none;
@@ -63,6 +63,6 @@
 
 .hc-select-disabled {
     .hc-select-chevron {
-        color: tint($primary-brand, 60%)
+        color: tint($primary-brand, 60%);
     }
 }

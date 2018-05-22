@@ -3,7 +3,9 @@
 @import 'variables';
 @import 'mixins';
 
-.bar-loader { height: 400px; }
+.bar-loader {
+    height: 400px;
+}
 
 .swatch-label {
     @include fontSize(11px);
@@ -20,10 +22,18 @@
     border-radius: 2px;
 }
 
-.swatch.green{ background-color: $green; }
-.swatch.blue{ background-color: $blue; }
-.swatch.purple{ background-color: $purple; }
-.swatch.gray{ background-color: $gray-300; }
+.swatch.green {
+    background-color: $green;
+}
+.swatch.blue {
+    background-color: $blue;
+}
+.swatch.purple {
+    background-color: $purple;
+}
+.swatch.gray {
+    background-color: $gray-300;
+}
 
 .swatch-row {
     display: flex;
@@ -33,8 +43,9 @@
     margin-top: 10px;
 }
 
-.swatch-row.bar { margin-top: 0 !important; }
-
+.swatch-row.bar {
+    margin-top: 0 !important;
+}
 
 .palette-row {
     display: flex;
@@ -45,8 +56,12 @@
 }
 
 @include media-breakpoint-down(sm) {
-    .palette-row { display: block; }
-    .header-right { display: none; }
+    .palette-row {
+        display: block;
+    }
+    .header-right {
+        display: none;
+    }
 }
 
 hc-swatch-demo-component {
@@ -57,10 +72,12 @@ hc-swatch-demo-component {
 
 .chart-header {
     display: inline;
-    .light { font-weight: 300; }
+    .light {
+        font-weight: 300;
+    }
 
     &.dropdown:after {
-        content: "\f078";
+        content: '\f078';
         font-family: FontAwesome;
         font-size: 20px;
         color: $primary-brand;
@@ -77,7 +94,9 @@ hc-swatch-demo-component {
     margin-bottom: 10px;
 }
 
-.header-dropdown { cursor: pointer; }
+.header-dropdown {
+    cursor: pointer;
+}
 
 .header-right {
     margin-left: auto;
@@ -87,8 +106,12 @@ hc-swatch-demo-component {
         margin-left: 20px;
         cursor: pointer;
 
-        &:hover{ color: darken($chart-header-icons, 15%); }
+        &:hover {
+            color: darken($chart-header-icons, 15%);
+        }
     }
 }
 
-.hc-modal-body{ line-height: 1.4; }
+.hc-modal-body {
+    line-height: 1.4;
+}

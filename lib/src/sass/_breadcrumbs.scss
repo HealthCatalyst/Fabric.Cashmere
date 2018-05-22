@@ -1,6 +1,6 @@
-@import "colors";
-@import "variables";
-@import "mixins";
+@import 'colors';
+@import 'variables';
+@import 'mixins';
 
 .breadcrumb {
     padding: 0;
@@ -47,7 +47,7 @@
 
 .breadcrumb-responsive-container {
     display: none;
-    
+
     &:not(.disable-responsive) {
         @include media-breakpoint-down(sm) {
             display: block;

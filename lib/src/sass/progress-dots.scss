@@ -1,4 +1,4 @@
-@import "colors";
+@import 'colors';
 $animation-speed: 1.4s !default;
 $animation-delay: -0.16s !default;
 $dots-diameter: 8px !default;
@@ -25,14 +25,16 @@ $dots-diameter-mini: 4px !default;
         animation: dots-loader $animation-speed ease-in-out infinite;
         animation-delay: $animation-delay;
 
-        &, &:before, &:after {
+        &,
+        &:before,
+        &:after {
             height: $dots-diameter;
             width: $dots-diameter;
             border-radius: 50%;
         }
 
         &:before {
-            content: "";
+            content: '';
             position: absolute;
             top: 0px;
             left: $dots-diameter * -2;
@@ -41,7 +43,7 @@ $dots-diameter-mini: 4px !default;
         }
 
         &:after {
-            content: "";
+            content: '';
             position: absolute;
             top: 0px;
             left: $dots-diameter * 2;
@@ -67,18 +69,39 @@ $dots-diameter-mini: 4px !default;
     }
 
     &.loader-mini .loader-animate {
-        &, &:before, &:after { height: $dots-diameter-mini; width: $dots-diameter-mini; }
-        &:before { left: $dots-diameter-mini * -2; }
-        &:after { left: $dots-diameter-mini * 2; }
+        &,
+        &:before,
+        &:after {
+            height: $dots-diameter-mini;
+            width: $dots-diameter-mini;
+        }
+        &:before {
+            left: $dots-diameter-mini * -2;
+        }
+        &:after {
+            left: $dots-diameter-mini * 2;
+        }
     }
 }
 
-@keyframes dots-loader{
-    0%, 80%, 100% {background-color: transparentize($charcoal-blue, 0.8);}
-    40% {background-color: $charcoal-blue;}
+@keyframes dots-loader {
+    0%,
+    80%,
+    100% {
+        background-color: transparentize($charcoal-blue, 0.8);
+    }
+    40% {
+        background-color: $charcoal-blue;
+    }
 }
 
-@keyframes dots-loader-light{
-    0%, 80%, 100% {background-color: transparentize($white, 0.8);}
-    40% {background-color: transparentize($white, 0.2);}
+@keyframes dots-loader-light {
+    0%,
+    80%,
+    100% {
+        background-color: transparentize($white, 0.8);
+    }
+    40% {
+        background-color: transparentize($white, 0.2);
+    }
 }

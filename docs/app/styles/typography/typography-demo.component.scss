@@ -2,21 +2,31 @@
     margin: 15px 0;
 }
 
-h1, h2, h3, h4, p {
+h1,
+h2,
+h3,
+h4,
+p {
     &.no-margin {
         margin: 0;
     }
 }
 
-.demo-content ul { margin: 0; }
-.demo-content li { margin: 0; }
+.demo-content ul {
+    margin: 0;
+}
+.demo-content li {
+    margin: 0;
+}
 
-.demo-content h3 { margin: 30px 0 0; }
+.demo-content h3 {
+    margin: 30px 0 0;
+}
 
 #logo {
     background-color: #384655;
     width: 400px;
-    margin-top:15px;
+    margin-top: 15px;
     padding: 10px 40px;
 }
 
@@ -31,7 +41,8 @@ h1, h2, h3, h4, p {
     margin-top: 0px;
 }
 
-.demo-content ul li:first-child, .demo-content ol li:first-child {
+.demo-content ul li:first-child,
+.demo-content ol li:first-child {
     margin-top: 6px;
 }
 

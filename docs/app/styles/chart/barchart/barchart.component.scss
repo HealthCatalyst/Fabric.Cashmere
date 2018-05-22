@@ -24,30 +24,42 @@
 
 .d3-bar-chart .bars .green-bar {
     fill: $green;
-    &:hover { fill: darken($green, 5%) }
+    &:hover {
+        fill: darken($green, 5%);
+    }
 }
 
 .d3-bar-chart .bars .blue-bar {
     fill: $blue;
-    &:hover { fill: darken($blue, 5%) }
+    &:hover {
+        fill: darken($blue, 5%);
+    }
 }
 
 .d3-bar-chart .bars .purple-bar {
     fill: $purple;
-    &:hover { fill: darken($purple, 5%) }
+    &:hover {
+        fill: darken($purple, 5%);
+    }
 }
 
 .tip-green {
     border: 1px solid $green !important;
-    .tooltip-header{ color: $green; }
+    .tooltip-header {
+        color: $green;
+    }
 }
 
 .tip-blue {
     border: 1px solid $blue !important;
-    .tooltip-header{ color: $blue; }
+    .tooltip-header {
+        color: $blue;
+    }
 }
 
 .tip-purple {
     border: 1px solid $purple !important;
-    .tooltip-header{ color: $purple; }
+    .tooltip-header {
+        color: $purple;
+    }
 }

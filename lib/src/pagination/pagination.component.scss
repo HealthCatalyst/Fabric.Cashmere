@@ -25,7 +25,9 @@
             color: $white;
         }
 
-        &:focus { outline: none; }
+        &:focus {
+            outline: none;
+        }
     }
 
     .hc-left-button {
@@ -72,5 +74,3 @@
         }
     }
 }
-
-

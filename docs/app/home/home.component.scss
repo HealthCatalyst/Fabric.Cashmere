@@ -10,7 +10,8 @@ button {
     width: 180px;
 }
 
-a, a:visited {
+a,
+a:visited {
     color: $primary-brand;
 }
 
@@ -77,8 +78,12 @@ p {
         margin: 20px;
     }
 
-    .headerRight img { height: unset; }
-    h2{ margin: 10px 0 15px 0; }
+    .headerRight img {
+        height: unset;
+    }
+    h2 {
+        margin: 10px 0 15px 0;
+    }
 }
 
 main {
@@ -110,16 +115,24 @@ section button {
     max-height: 320px;
 }
 
-.sectionOneText { padding-left: 100px; }
-.sectionOneTextWrapper { max-height: 370px; }
-.sectionOneImg { width: 100%; }
+.sectionOneText {
+    padding-left: 100px;
+}
+.sectionOneTextWrapper {
+    max-height: 370px;
+}
+.sectionOneImg {
+    width: 100%;
+}
 .sectionOneImg img {
     max-width: 432px;
     width: 100%;
     height: auto;
 }
 
-.sectionTwo { padding-bottom: 30px; }
+.sectionTwo {
+    padding-bottom: 30px;
+}
 .sectionTwoText {
     padding-right: 20%;
     margin-bottom: 40px;
@@ -134,8 +147,12 @@ section button {
     height: auto;
 }
 
-.sectionThreeText { padding-left: 15%; }
-.sectionThreeTextWrapper { max-height: 472px; }
+.sectionThreeText {
+    padding-left: 15%;
+}
+.sectionThreeTextWrapper {
+    max-height: 472px;
+}
 .sectionThreeImg {
     width: 100%;
     max-width: 300px;
@@ -151,19 +168,21 @@ section button {
     display: table;
 }
 
-
 @include media-breakpoint-down(md) {
-    main { text-align: center; }
+    main {
+        text-align: center;
+    }
 
     section {
         margin: 0;
         display: block;
         text-align: center;
         padding: 0 0 50px 0;
-
     }
 
-    section span{ width: 100%; }
+    section span {
+        width: 100%;
+    }
 
     .sectionCenter {
         max-height: unset;
@@ -171,22 +190,28 @@ section button {
         display: unset;
     }
 
-    .sectionOneImg img, .sectionTwoImg img, .sectionThreeImg img {
+    .sectionOneImg img,
+    .sectionTwoImg img,
+    .sectionThreeImg img {
         display: inline-block;
         width: 70% !important;
     }
 
-    .sectionTwoImg img { padding-top: 30px; }
-    .sectionThreeImg img { padding-bottom: 30px; }
+    .sectionTwoImg img {
+        padding-top: 30px;
+    }
+    .sectionThreeImg img {
+        padding-bottom: 30px;
+    }
 
     .sectionOneText {
         padding: 0;
         margin: 40px 40px 0 40px;
     }
 
-    .sectionTwoText, .sectionThreeText {
+    .sectionTwoText,
+    .sectionThreeText {
         padding: 0;
         margin: 0 40px 20px 40px;
     }
-
 }

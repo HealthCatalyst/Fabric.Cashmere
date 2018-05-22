@@ -23,7 +23,9 @@ $pane-header-height: 30px;
             .hc-tab-bar-horizontal {
                 flex: 0 0 auto;
                 border-bottom: none;
-                a { font-size: 13px; }
+                a {
+                    font-size: 13px;
+                }
             }
 
             h2 {
@@ -55,7 +57,7 @@ $pane-header-height: 30px;
 
         // prevents a slight jiggle when animating carets on the valueset options
         transform-style: preserve-3d;
-        transform: translate3d(0,0,0);
+        transform: translate3d(0, 0, 0);
 
         .hc-button {
             min-width: 0;
@@ -64,8 +66,11 @@ $pane-header-height: 30px;
             height: 60px;
             margin-top: 12px;
 
-            .hc-icon { color: $white; }
-            &[disabled], &[disabled]:hover {
+            .hc-icon {
+                color: $white;
+            }
+            &[disabled],
+            &[disabled]:hover {
                 background-color: $gray-300;
                 border-color: $gray-300;
             }

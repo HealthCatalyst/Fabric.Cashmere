@@ -27,4 +27,5 @@ Before you submit your pull request (PR), consider the following guidelines:
     *   Unit tests demonstrating that it functions as intended
 *   A new component should adhere to the [Health Catalyst style](http://cashmere.healthcatalyst.net).
 *   "Squash and merge" a PR to complete it.
+
 :::

@@ -17,7 +17,10 @@
         background-color: shade($color, $darken-pct * 2);
         color: $white;
     }
-    &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active {
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus,
+    &[disabled]:active {
         background-color: $color;
         opacity: 0.35;
     }
@@ -82,8 +85,12 @@
         line-height: 33px;
         padding-right: 19px;
 
-        &:hover { color: $offblack; }
-        &[disabled]:hover { color: $gray-600; }
+        &:hover {
+            color: $offblack;
+        }
+        &[disabled]:hover {
+            color: $gray-600;
+        }
     }
 
     &.hc-tertiary {
@@ -98,14 +105,21 @@
             color: darken($primary-brand, 10%);
         }
 
-        &[disabled], &[disabled]:hover, &[disabled]:focus, &[disabled]:active {
+        &[disabled],
+        &[disabled]:hover,
+        &[disabled]:focus,
+        &[disabled]:active {
             opacity: 0.35;
             color: $primary-brand;
         }
     }
 
-    .btn-icon-left { margin-right: 5px; }
-    .btn-icon-right { margin-left: 5px; }
+    .btn-icon-left {
+        margin-right: 5px;
+    }
+    .btn-icon-right {
+        margin-left: 5px;
+    }
 }
 
 .hc-split-button {
@@ -122,7 +136,7 @@
         min-width: auto;
         padding: 8px 12px;
         margin-left: 0;
-        border-left: 1px solid rgba(0, 0, 0, .12);
+        border-left: 1px solid rgba(0, 0, 0, 0.12);
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
 
@@ -131,7 +145,7 @@
             height: 20px;
             align-items: center;
             font: normal normal normal 12px/1 FontAwesome;
-            content: "\f078";
+            content: '\f078';
         }
     }
 }

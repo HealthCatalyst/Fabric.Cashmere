@@ -1,7 +1,7 @@
 $fa-font-path: '../node_modules/font-awesome/fonts';
 @import '../node_modules/font-awesome/scss/font-awesome';
 
-$FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
+$FontPathOpenSans: '../node_modules/npm-font-open-sans/fonts';
 @import '../node_modules/npm-font-open-sans/open-sans';
 
 @import 'cashmere';
@@ -29,14 +29,20 @@ body {
         list-style: disc inside;
     }
 
-    .tab-bar-horizontal { margin-bottom: 25px; }
+    .tab-bar-horizontal {
+        margin-bottom: 25px;
+    }
 }
 
 .popoverContainer {
-    li { margin: 0 10px !important; }
+    li {
+        margin: 0 10px !important;
+    }
 }
 
-.full-height > .vertical-container { min-height: calc( 100vh - 53px ); }
+.full-height > .vertical-container {
+    min-height: calc(100vh - 53px);
+}
 
 .responsive-subnav {
     margin-bottom: 0 !important;
@@ -62,18 +68,28 @@ body {
 }
 
 @include media-breakpoint-down(md) {
-    .demo-content { padding: 0; }
-    .responsive-subnav { display: flex !important; }
-    .full-height > .vertical-container > .tab-bar-vertical { display: none; }
+    .demo-content {
+        padding: 0;
+    }
+    .responsive-subnav {
+        display: flex !important;
+    }
+    .full-height > .vertical-container > .tab-bar-vertical {
+        display: none;
+    }
     .full-height > .vertical-container > .tab-content-vertical {
         width: 100% !important;
         margin-top: 52px;
     }
-    hc-tile { overflow-x: auto; }
+    hc-tile {
+        overflow-x: auto;
+    }
 }
 
 @include media-breakpoint-down(sm) {
-    .subnav-label { display: none; }
+    .subnav-label {
+        display: none;
+    }
     .subnav-select {
         width: 100%;
         margin-left: 0;
@@ -160,7 +176,8 @@ table {
     }
 
     tbody > tr > {
-        td, th {
+        td,
+        th {
             line-height: 1.3;
             border-bottom: 1px dashed $gray-200;
             padding: 1em 3em 1em 0;
@@ -183,19 +200,21 @@ table {
         list-style: none !important;
     }
 
-    code{ font-size: inherit; }
+    code {
+        font-size: inherit;
+    }
 }
 
-.line-number{
+.line-number {
     float: left;
     text-align: right;
     > span {
         display: block;
-        padding: 0 .5em 0 1em;
+        padding: 0 0.5em 0 1em;
         border-right: 1px solid;
         margin-right: 5px;
-        color: rgba($gray-600,0.5);
+        color: rgba($gray-600, 0.5);
         @include fontSize(14px);
-        font-family: Consolas, Menlo, "Ubuntu Mono", monospace;
+        font-family: Consolas, Menlo, 'Ubuntu Mono', monospace;
     }
 }

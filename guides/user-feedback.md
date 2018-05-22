@@ -6,7 +6,7 @@
 
 ##### Overview
 
-The purpose of this guide is to explain the methodologies and mechanisms for gathering qualitative user feedback.  It will also provide general templates for body copy that can be used for user prompts.
+The purpose of this guide is to explain the methodologies and mechanisms for gathering qualitative user feedback. It will also provide general templates for body copy that can be used for user prompts.
 :::
 
 :::
@@ -48,7 +48,7 @@ There is no rule of thumb that applies to all situations in terms of how often t
 
 ##### Asking for Feedback in App
 
-It has become common practice to ask users to complete a short form satisfaction survey directly within an application.  Guidelines for frequency are explained in the above tile.  An app will typically prompt their users via a modal dialog on launch.  A basic template for the prompt is as follows:
+It has become common practice to ask users to complete a short form satisfaction survey directly within an application. Guidelines for frequency are explained in the above tile. An app will typically prompt their users via a modal dialog on launch. A basic template for the prompt is as follows:
 
 **Prompt header:**
 Help us improve [product name]
@@ -71,11 +71,11 @@ After agreeing to provide user feedback, it is recommended that the [Typeform Su
 
 With any survey it is important to achieve the highest response rate possible. A personalized invitation to take the survey is generally going to yield the highest response rate. If the product is in alpha or beta phases at a client, for example, having the product team reach out to users directly on an individual level may be best. If you choose to send the users a personal email asking them to click through to the survey, here is a template as a starting point:
 
-*Health Catalyst would like your feedback to help inform improvements to [product name]. It is very important that we hear from you to ensure that [product name] is meeting your needs and helping you to continue to excel as a data-driven organization. Health Catalyst will use your feedback to inform necessary upgrades. The [product name] Survey is anonymous and will take you about 1-3 minutes to complete.*
+_Health Catalyst would like your feedback to help inform improvements to [product name]. It is very important that we hear from you to ensure that [product name] is meeting your needs and helping you to continue to excel as a data-driven organization. Health Catalyst will use your feedback to inform necessary upgrades. The [product name] Survey is anonymous and will take you about 1-3 minutes to complete._
 
-*Please click here to take the survey: {link}*
+_Please click here to take the survey: {link}_
 
-*If you have any questions, please feel free to reach out to me. Thank you for completing the survey by {date}.*
+_If you have any questions, please feel free to reach out to me. Thank you for completing the survey by {date}._
 
 However, it is not always practical to take this personalized approach, especially with more mature products that have a lot of users. In that case MailChimp or another centralized tool that can send automated emails are a good option.
 

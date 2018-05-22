@@ -5,7 +5,9 @@
         display: inline-flex;
         align-items: center;
         cursor: pointer;
-        label { cursor: pointer; }
+        label {
+            cursor: pointer;
+        }
     }
 
     &:not(.disabled) .hc-checkbox-content:hover .hc-checkbox-overlay {
@@ -25,7 +27,7 @@
         border-radius: 3px;
 
         &:after {
-            content: "";
+            content: '';
             position: absolute;
             top: 3.5px;
             left: 3px;
@@ -39,7 +41,7 @@
         }
     }
 
-    input[type="checkbox"] {
+    input[type='checkbox'] {
         display: none;
 
         &:checked + label.hc-checkbox-overlay {
@@ -55,7 +57,9 @@
     &.disabled .hc-checkbox-content {
         color: $gray-300;
         cursor: not-allowed;
-        label { cursor: not-allowed; }
+        label {
+            cursor: not-allowed;
+        }
 
         .hc-checkbox-overlay {
             background-color: $gray-200;
