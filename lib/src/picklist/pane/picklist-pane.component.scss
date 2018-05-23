@@ -55,7 +55,7 @@
             }
         }
     }
-    
+
     .loading-list {
         height: 100%;
         border: 1px solid $slate-gray-200;
@@ -94,7 +94,9 @@
                 text-align: center;
                 font-weight: bold;
                 padding: 11px;
-                a { cursor: pointer; }
+                a {
+                    cursor: pointer;
+                }
             }
 
             th {
@@ -117,12 +119,15 @@
                         width: 20%;
                     }
                 }
-
-                
             }
 
             &.valueset-table {
-                tr, td, th { display: block; width: 100%; }
+                tr,
+                td,
+                th {
+                    display: block;
+                    width: 100%;
+                }
             }
         }
 
@@ -141,24 +146,34 @@
             cursor: pointer;
             color: $blue;
             transform: color 0.2s;
-            &:hover { color: darken($blue, 20%); }
-            .vs-folder { position: relative; left: -3px; }
+            &:hover {
+                color: darken($blue, 20%);
+            }
+            .vs-folder {
+                position: relative;
+                left: -3px;
+            }
 
             .values-caret {
                 &:before {
                     position: relative;
                     top: -1px;
                     display: inline-block;
-                    transition: transform .2s;
+                    transition: transform 0.2s;
                     font-size: 13px;
                 }
 
-                &.showing-values:before { transform: rotate(90deg); }
+                &.showing-values:before {
+                    transform: rotate(90deg);
+                }
             }
         }
 
         &.hc-row-selected {
-            .values-caret, .vs-folder { color: $white; }
+            .values-caret,
+            .vs-folder {
+                color: $white;
+            }
         }
 
         .loading-subvals {

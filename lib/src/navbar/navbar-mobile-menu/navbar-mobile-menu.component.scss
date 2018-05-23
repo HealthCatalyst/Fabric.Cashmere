@@ -13,7 +13,9 @@
 }
 
 @include media-breakpoint-down(md) {
-    .menu-dropdown { display: inline; }
+    .menu-dropdown {
+        display: inline;
+    }
 }
 
 .app-switcher {
@@ -30,8 +32,13 @@
         background-color: darken($slate-blue, 5%);
     }
 
-    span { padding-left: 33px; }
-    hc-icon { padding-left: 28px; color: $slate-gray-400; }
+    span {
+        padding-left: 33px;
+    }
+    hc-icon {
+        padding-left: 28px;
+        color: $slate-gray-400;
+    }
 }
 
 .bottomSpacer {
@@ -46,8 +53,9 @@
 }
 
 :host::ng-deep hc-list {
-
-    a { text-decoration: none; }
+    a {
+        text-decoration: none;
+    }
 
     .hc-list-item {
         color: $slate-gray-200;
@@ -71,6 +79,8 @@
         font-weight: bold;
         border-left: 8px solid $primary-brand;
 
-        &.hc-list-item .hc-list-content { padding-left: 4px; }
+        &.hc-list-item .hc-list-content {
+            padding-left: 4px;
+        }
     }
 }

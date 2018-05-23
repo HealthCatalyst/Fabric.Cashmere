@@ -1,6 +1,6 @@
 @import '../sass/_variables.scss';
 
-$drawer-background-color: #6E6F71;
+$drawer-background-color: #6e6f71;
 $drawer-font-color: #b9babb;
 
 @mixin drawer-transition($open, $close) {
@@ -10,7 +10,8 @@ $drawer-font-color: #b9babb;
         visibility: hidden;
     }
 
-    &.drawer-opening, &.drawer-opened {
+    &.drawer-opening,
+    &.drawer-opened {
         transform: translate3d($open, 0, 0);
     }
 }
@@ -37,11 +38,10 @@ $drawer-font-color: #b9babb;
         @include drawer-transition(0, 100%);
     }
 
-    &.drawer-opening, &.drawer-opened {
+    &.drawer-opening,
+    &.drawer-opened {
         &:not(.drawer-side) {
-            box-shadow: 0 8px 10px -5px rgba(0, 0, 0, .2),
-            0 16px 24px 2px rgba(0, 0, 0, .14),
-            0 6px 30px 5px rgba(0, 0, 0, .12);
+            box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
         }
     }
 }

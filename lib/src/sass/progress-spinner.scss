@@ -1,6 +1,6 @@
 // Styles forked from http://polymer.github.io
 // This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-@import "colors";
+@import 'colors';
 $diameter: 50px;
 
 $spinner-animation-timing: 1568ms;
@@ -52,21 +52,36 @@ $circle-clipper-animation-timing: 1333ms;
     }
 
     &.spinner-base {
-        .base-circle { display: block; }
+        .base-circle {
+            display: block;
+        }
     }
 
-    &.spinner-blue { border-color: $blue; }
-    &.spinner-green { border-color: $green; }
-    &.spinner-purple { border-color: $purple; }
-    &.spinner-orange { border-color: $orange; }
-    &.spinner-red { border-color: $red; }
-    &.spinner-gray { border-color: $slate-gray-400; }
-    &.spinner-white { border-color: $white; }
+    &.spinner-blue {
+        border-color: $blue;
+    }
+    &.spinner-green {
+        border-color: $green;
+    }
+    &.spinner-purple {
+        border-color: $purple;
+    }
+    &.spinner-orange {
+        border-color: $orange;
+    }
+    &.spinner-red {
+        border-color: $red;
+    }
+    &.spinner-gray {
+        border-color: $slate-gray-400;
+    }
+    &.spinner-white {
+        border-color: $white;
+    }
 }
 
-
 .indeterminate-spin .spinner-layer {
-    animation: fill-unfill-rotate $spinner-layer-animation-timing cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
+    animation: fill-unfill-rotate $spinner-layer-animation-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
 }
 
 .large-spinner.indeterminate-spin .spinner-layer {
@@ -131,42 +146,73 @@ $circle-clipper-animation-timing: 1333ms;
 }
 
 .indeterminate-spin .circle-clipper.left .circle {
-    -webkit-animation: left-spin $circle-clipper-animation-timing cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
-    animation: left-spin $circle-clipper-animation-timing cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
+    -webkit-animation: left-spin $circle-clipper-animation-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+    animation: left-spin $circle-clipper-animation-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
 }
 
 .indeterminate-spin .circle-clipper.right .circle {
-    -webkit-animation: right-spin $circle-clipper-animation-timing cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
-    animation: right-spin $circle-clipper-animation-timing cubic-bezier(0.4, 0.0, 0.2, 1) infinite both;
+    -webkit-animation: right-spin $circle-clipper-animation-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+    animation: right-spin $circle-clipper-animation-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
 }
 
-.large-spinner.indeterminate-spin .circle-clipper.right .circle, .large-spinner.indeterminate-spin .circle-clipper.left .circle {
-    animation-duration: $circle-clipper-animation-timing *1.5;
+.large-spinner.indeterminate-spin .circle-clipper.right .circle,
+.large-spinner.indeterminate-spin .circle-clipper.left .circle {
+    animation-duration: $circle-clipper-animation-timing * 1.5;
 }
 
 @keyframes fill-unfill-rotate {
-    12.5% { transform: rotate(135deg);  } /* 0.5 * ARCSIZE */
-    25%   { transform: rotate(270deg);  } /* 1   * ARCSIZE */
-    37.5% { transform: rotate(405deg);  } /* 1.5 * ARCSIZE */
-    50%   { transform: rotate(540deg);  } /* 2   * ARCSIZE */
-    62.5% { transform: rotate(675deg);  } /* 2.5 * ARCSIZE */
-    75%   { transform: rotate(810deg);  } /* 3   * ARCSIZE */
-    87.5% { transform: rotate(945deg);  } /* 3.5 * ARCSIZE */
-    to    { transform: rotate(1080deg); } /* 4   * ARCSIZE */
+    12.5% {
+        transform: rotate(135deg);
+    } /* 0.5 * ARCSIZE */
+    25% {
+        transform: rotate(270deg);
+    } /* 1   * ARCSIZE */
+    37.5% {
+        transform: rotate(405deg);
+    } /* 1.5 * ARCSIZE */
+    50% {
+        transform: rotate(540deg);
+    } /* 2   * ARCSIZE */
+    62.5% {
+        transform: rotate(675deg);
+    } /* 2.5 * ARCSIZE */
+    75% {
+        transform: rotate(810deg);
+    } /* 3   * ARCSIZE */
+    87.5% {
+        transform: rotate(945deg);
+    } /* 3.5 * ARCSIZE */
+    to {
+        transform: rotate(1080deg);
+    } /* 4   * ARCSIZE */
 }
-  
+
 @keyframes container-rotate {
-    to { transform: rotate(360deg) }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes left-spin {
-    from { transform: rotate(130deg); }
-    50% { transform: rotate(-5deg); }
-    to { transform: rotate(130deg); }
+    from {
+        transform: rotate(130deg);
+    }
+    50% {
+        transform: rotate(-5deg);
+    }
+    to {
+        transform: rotate(130deg);
+    }
 }
 
 @keyframes right-spin {
-    from { transform: rotate(-130deg); }
-    50% { transform: rotate(5deg); }
-    to { transform: rotate(-130deg); }
+    from {
+        transform: rotate(-130deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    to {
+        transform: rotate(-130deg);
+    }
 }

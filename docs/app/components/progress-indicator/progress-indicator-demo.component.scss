@@ -1,4 +1,4 @@
-@import "colors";
+@import 'colors';
 
 .progress-example {
     display: flex;
@@ -34,7 +34,6 @@
         background-color: $charcoal-blue;
     }
 }
-
 
 // default styles like this, for ALL basic form controls should probably exists in a global scss file
 input {

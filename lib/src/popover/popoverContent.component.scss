@@ -29,16 +29,16 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
         position: absolute;
         margin: $popover-arrow-width;
     }
-    &[x-placement^="top"],
-    &[x-placement^="bottom"],
-    &[x-placement^="right"],
-    &[x-placement^="left"] {
+    &[x-placement^='top'],
+    &[x-placement^='bottom'],
+    &[x-placement^='right'],
+    &[x-placement^='left'] {
         display: block;
     }
-    &[x-placement^="top"] {
+    &[x-placement^='top'] {
         margin-bottom: 5px;
     }
-    &[x-placement^="top"] .arrow {
+    &[x-placement^='top'] .arrow {
         border-width: $popover-arrow-width $popover-arrow-width 0 $popover-arrow-width;
         border-color: $popover-arrow-outer-color transparent transparent transparent;
         bottom: -$popover-arrow-width;
@@ -46,10 +46,10 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
         margin-top: 0;
         margin-bottom: 0;
     }
-    &[x-placement^="bottom"] {
+    &[x-placement^='bottom'] {
         margin-top: $popover-arrow-width;
     }
-    &[x-placement^="bottom"] .arrow {
+    &[x-placement^='bottom'] .arrow {
         border-width: 0 $popover-arrow-width $popover-arrow-width $popover-arrow-width;
         border-color: transparent transparent $popover-arrow-outer-color transparent;
         top: -$popover-arrow-width;
@@ -57,10 +57,10 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
         margin-top: 0;
         margin-bottom: 0;
     }
-    &[x-placement^="right"] {
+    &[x-placement^='right'] {
         margin-left: $popover-arrow-width;
     }
-    &[x-placement^="right"] .arrow {
+    &[x-placement^='right'] .arrow {
         border-width: $popover-arrow-width $popover-arrow-width $popover-arrow-width 0;
         border-color: transparent $popover-arrow-outer-color transparent transparent;
         left: -$popover-arrow-width;
@@ -68,10 +68,10 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
         margin-left: 0;
         margin-right: 0;
     }
-    &[x-placement^="left"] {
+    &[x-placement^='left'] {
         margin-right: $popover-arrow-width;
     }
-    &[x-placement^="left"] .arrow {
+    &[x-placement^='left'] .arrow {
         border-width: $popover-arrow-width 0 $popover-arrow-width $popover-arrow-width;
         border-color: transparent transparent transparent $popover-arrow-outer-color;
         right: -$popover-arrow-width;
@@ -109,7 +109,8 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
         padding: 10px 0;
         min-width: 150px;
         list-style: none;
-        & > a, button {
+        & > a,
+        button {
             text-decoration: none;
             background-color: $white;
             color: $primary-brand;

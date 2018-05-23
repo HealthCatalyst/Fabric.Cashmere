@@ -8,7 +8,9 @@
         "start": "ng serve",
         "test": "ng test",
         "test:unit": "ng test --single-run --code-coverage --no-progress",
-        "lint": "tslint -p tsconfig.json",
+        "lint": "npm run lint:tslint && npm run lint:prettier",
+        "lint:tslint": "tslint -p tsconfig.json",
+        "lint:prettier": "prettier --list-different '**/*.{ts,js,scss,css,md,json}'",
         "build:lib": "node lib/build.js",
         "build:demo": "ng build --prod --no-progress",
         "prebuild": "npm run lint && npm run test:unit",
@@ -19,8 +21,8 @@
         "precommit": "lint-staged"
     },
     "lint-staged": {
-        "*.{ts,js,json,css,md}": ["prettier --write", "git add"],
-        "*.{ts,tsx}": ["npm run lint --fix", "git add"]
+        "*.{js,scss,css,md,json}": ["prettier --write", "git add"],
+        "*.{ts}": ["prettier --write", "npm run lint --fix", "git add"]
     },
     "dependencies": {
         "@angular/animations": "5.2.9",

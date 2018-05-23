@@ -3,7 +3,7 @@
 .hc-list-item {
     display: block;
     height: 56px;
-    color: rgba(0, 0, 0, .87);
+    color: rgba(0, 0, 0, 0.87);
     font-size: 16px;
 }
 
@@ -22,7 +22,8 @@
     padding-left: 16px;
 }
 
-.hc-list-icon, .hc-list-avatar {
+.hc-list-icon,
+.hc-list-avatar {
     font-size: 24px;
     width: 24px;
     height: 24px;

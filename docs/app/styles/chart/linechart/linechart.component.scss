@@ -23,25 +23,37 @@
 
 .tip-purple {
     border: 1px solid $purple;
-    .tooltip-header{ color: $purple; }
+    .tooltip-header {
+        color: $purple;
+    }
 }
 
 .tip-gray {
     border: 1px solid $gray-500;
-    .tooltip-header{ color: $gray-500; }
+    .tooltip-header {
+        color: $gray-500;
+    }
 }
 
-.d3-line-chart .primary-line { stroke: $purple; }
+.d3-line-chart .primary-line {
+    stroke: $purple;
+}
 .d3-line-chart .primary-scatter circle {
     fill: $purple;
     stroke: $white;
     stroke-width: 2px;
-    &:hover { fill: darken($purple, 15%); }
+    &:hover {
+        fill: darken($purple, 15%);
+    }
 }
-.d3-line-chart .secondary-line { stroke: $gray-300; }
+.d3-line-chart .secondary-line {
+    stroke: $gray-300;
+}
 .d3-line-chart .secondary-scatter circle {
     fill: $gray-300;
     stroke: $white;
     stroke-width: 2px;
-    &:hover { fill: darken($gray-300, 15%); }
+    &:hover {
+        fill: darken($gray-300, 15%);
+    }
 }

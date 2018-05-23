@@ -21,4 +21,4 @@
 @function calculateRem($size) {
     $remSize: $size / $default-font-size;
     @return #{$remSize}rem;
-  }
+}

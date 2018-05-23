@@ -35,11 +35,12 @@ $modal-border: 1px solid $gray-200;
     color: $text;
     text-shadow: 0 1px 0 $white;
     opacity: 0.5;
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
         color: $text;
         text-decoration: none;
-        opacity: .75;
-      }
+        opacity: 0.75;
+    }
 }
 
 .hc-modal-footer {
