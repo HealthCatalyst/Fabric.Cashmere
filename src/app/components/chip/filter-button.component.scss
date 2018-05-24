@@ -1,0 +1,20 @@
+@import 'sass/colors';
+@import 'sass/mixins.scss';
+
+:host(.filter-button) {
+    font-weight: 600;
+    display: inline-block;
+    @include fontSize(16px);
+    width: 120px;
+    line-height: 32px;
+    color: $primary-brand;
+    cursor: pointer;
+}
+
+.filter-img {
+    height: 27px;
+    width: 27px;
+    padding: 2px 8px 4px 0;
+    display: inline-block;
+    vertical-align: middle;
+}

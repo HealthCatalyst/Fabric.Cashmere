@@ -1,0 +1,14 @@
+import {Component, Input} from '@angular/core';
+
+@Component({
+    template: `<div [hidden]="!active">
+             <ng-content></ng-content>
+             </div>`,
+    selector: `hc-tab`,
+    styles: []
+})
+export class TabComponent {
+    @Input() tabTitle: string = '';
+    @Input() routerLink: any[] | string;
+    active: boolean = false;
+}

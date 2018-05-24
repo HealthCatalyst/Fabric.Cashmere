@@ -13,14 +13,14 @@ jobs:
     - stage: Build/Test Lib
       env: "PHASE=unit"
     - env: "PHASE=lint"
-    - env: "PHASE=build_lib"
+    - env: "PHASE=build"
     - stage: Build/Publish Demo
       env: "PHASE=publish_github"
       deploy:
         provider: pages
         skip_cleanup: true
         github-token: $GITHUB_TOKEN
-        local-dir: dist
+        local-dir: dist/user-guide
         on:
           branch: master
 
