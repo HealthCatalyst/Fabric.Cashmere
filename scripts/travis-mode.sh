@@ -8,8 +8,8 @@ is_unit() {
     [[ "${PHASE}" = unit ]]
 }
 
-is_build_lib() {
-    [[ "${PHASE}" = build_lib ]]
+is_build() {
+    [[ "${PHASE}" = build ]]
 }
 
 is_publish_github() {
