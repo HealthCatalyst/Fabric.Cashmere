@@ -1,16 +1,18 @@
-<div class="hc-checkbox-container" [ngClass]="{'disabled': disabled}">
+<div class="hc-checkbox-container">
     <div class="hc-checkbox-content">
-        <input type="checkbox"
-            [id]="inputId"
-            [attr.value]="value"
-            [attr.name]="name"
-            [tabIndex]="tabIndex"
-            [indeterminate]="indeterminate"
-            [disabled]="disabled"
-            [required]="required"
-            [checked]="checked"
-            (change)="stopChangeEvent($event)"
-            (click)="clickEvent($event)"/>
+        <input #checkboxInput
+               type="checkbox"
+               [id]="inputId"
+               [attr.value]="value"
+               [attr.name]="name"
+               [tabIndex]="tabIndex"
+               [indeterminate]="indeterminate"
+               [disabled]="disabled"
+               [required]="required"
+               [checked]="checked"
+               (change)="stopChangeEvent($event)"
+               (click)="clickEvent($event)"
+               (blur)="_onBlur()"/>
         <label class="hc-checkbox-overlay" [attr.for]="inputId"></label>
         <label class="hc-checkbox-label" [attr.for]="inputId">
             <ng-content></ng-content>

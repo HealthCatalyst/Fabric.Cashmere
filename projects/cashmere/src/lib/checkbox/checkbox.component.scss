@@ -1,4 +1,4 @@
-@import '../sass/cashmere';
+@import '../sass/colors';
 
 .hc-checkbox-container {
     .hc-checkbox-content {
@@ -10,7 +10,7 @@
         }
     }
 
-    &:not(.disabled) .hc-checkbox-content:hover .hc-checkbox-overlay {
+    .hc-checkbox-content:hover .hc-checkbox-overlay {
         border: 2px solid $primary-brand;
     }
 
@@ -53,8 +53,10 @@
             opacity: 1;
         }
     }
+}
 
-    &.disabled .hc-checkbox-content {
+.hc-checkbox-disabled {
+    .hc-checkbox-content {
         color: $gray-300;
         cursor: not-allowed;
         label {

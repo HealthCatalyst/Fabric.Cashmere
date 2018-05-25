@@ -1,6 +1,19 @@
 /* tslint:disable:no-use-before-declare */
 
-import {Attribute, Component, EventEmitter, forwardRef, HostBinding, HostListener, Input, Output} from '@angular/core';
+import {
+    Attribute,
+    Component,
+    ElementRef,
+    EventEmitter,
+    forwardRef,
+    HostBinding,
+    HostListener,
+    Input,
+    Output,
+    Renderer2,
+    ViewChild,
+    ViewEncapsulation
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {parseBooleanAttribute} from '../util';
 
@@ -20,6 +33,7 @@ export const hcCheckboxValueAccessor: any = {
     selector: 'hc-checkbox',
     templateUrl: './checkbox.component.html',
     styleUrls: ['./checkbox.component.scss'],
+    encapsulation: ViewEncapsulation.None,
     providers: [hcCheckboxValueAccessor],
     exportAs: 'hcCheckbox'
 })
@@ -33,10 +47,12 @@ export class CheckboxComponent implements ControlValueAccessor {
     // list out all properties or attributes an input[type=checkbox] can have since we're wrapping the input
     @Input() value: string;
     @Input() indeterminate: boolean;
-    @Input() id: string;
+    @Input() id: string = this.uniqueId;
     @Input() name: string | null = null;
 
     @Output() change = new EventEmitter<CheckboxChangeEvent>();
+
+    @ViewChild('checkboxInput') checkboxInput: ElementRef;
 
     @HostListener('blur')
     onBlur() {
@@ -45,7 +61,22 @@ export class CheckboxComponent implements ControlValueAccessor {
 
     @HostBinding('attr.id')
     get getHostId(): string {
-        return this.uniqueId;
+        return this.id;
+    }
+
+    @HostBinding('class.hc-checkbox-checked')
+    get getCheckboxCheckedClass(): boolean {
+        return this.checked;
+    }
+
+    @HostBinding('class.hc-checkbox-disabled')
+    get getCheckboxDisabledClass(): boolean {
+        return this.disabled;
+    }
+
+    @HostBinding('class.hc-checkbox-indeterminate')
+    get getCheckboxIndeterminateClass(): boolean {
+        return this.indeterminate;
     }
 
     @Input()
@@ -87,14 +118,14 @@ export class CheckboxComponent implements ControlValueAccessor {
     }
 
     get inputId() {
-        return this.id || `${this.uniqueId}-input`;
+        return `${this.id || this.uniqueId}-input`;
     }
 
     private onChangeFunc: (value: any) => void = () => {};
 
     private onTouchFunc: () => any = () => {};
 
-    constructor(@Attribute('tabindex') tabindex: string) {
+    constructor(@Attribute('tabindex') tabindex: string, private _renderer: Renderer2) {
         this.tabIndex = parseInt(tabindex, 10) || 0;
     }
 
@@ -108,6 +139,11 @@ export class CheckboxComponent implements ControlValueAccessor {
 
     registerOnTouched(fn: () => any): void {
         this.onTouchFunc = fn;
+    }
+
+    setDisabledState(isDisabled: boolean): void {
+        this.disabled = isDisabled;
+        this._renderer.setProperty(this.checkboxInput.nativeElement, 'disabled', isDisabled);
     }
 
     toggle() {
@@ -130,5 +166,9 @@ export class CheckboxComponent implements ControlValueAccessor {
     private emitChangeEvent(): void {
         this.onChangeFunc(this.checked);
         this.change.emit(new CheckboxChangeEvent(this, this.checked));
+    }
+
+    _onBlur() {
+        this.onTouchFunc();
     }
 }
