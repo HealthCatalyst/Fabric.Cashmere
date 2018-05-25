@@ -1,4 +1,6 @@
-@import '../sass/cashmere';
+@import '../sass/colors';
+@import '../sass/variables';
+@import '../sass/mixins';
 
 $navbar-color: $charcoal-blue !default;
 $navbar-brand: $primary-brand !default;
