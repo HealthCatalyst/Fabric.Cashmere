@@ -60,10 +60,10 @@ export class SomeModule { }
 
 #### Step 3. Add the styles.
 
-Import the SCSS file from the package in `src/styles.scss`.
+Import baseline scss file into your app
 
 ```
-@import "~@healthcatalyst/cashmere/cashmere";
+@import "~@healthcatalyst/cashmere/scss/cashmere";
 ```
 
 #### Step 4. (Optional) Add references to dependencies.

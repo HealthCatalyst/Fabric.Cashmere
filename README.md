@@ -20,4 +20,4 @@ Run `npm i --save @healthcatalyst/cashmere`.
 
 ## Running the Demo App
 
-Run `ng serve` to serve the demo application on port 4200.
+Run `npm run build:lib && ng serve user-guide` to serve the demo application on port 4200.
