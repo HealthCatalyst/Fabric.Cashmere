@@ -21,7 +21,7 @@ Before you submit your pull request (PR), consider the following guidelines:
 *   Run the following commands:
     *   `ng lint` should result in `All files pass linting`
     *   `ng test` should result in `All tests passing`
-    *   `npm run build:lib` should pass and build the library successfully
+    *   `npm run build` should pass and build the library successfully
 *   New components and directives must be accompanied by:
     *   A component demonstrating the functionality; this component should be added to the demo app's routes
     *   Unit tests demonstrating that it functions as intended
