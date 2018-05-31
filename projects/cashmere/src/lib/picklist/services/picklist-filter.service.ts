@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, Subscription} from 'rxjs/Rx';
+import {Observable, Subscription} from 'rxjs';
 
 import {FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOption} from '../pane/picklist-pane.model';
 import {PicklistValueType} from '../picklist.model';

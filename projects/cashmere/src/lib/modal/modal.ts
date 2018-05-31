@@ -1,7 +1,7 @@
 import {ModalOverlayComponent} from './modal-overlay.component';
 import {ComponentRef} from '@angular/core';
 import {ModalWindowComponent} from './modal-window.component';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {BehaviorSubject} from 'rxjs';
 
 export class HcModal<T> {
     public componentRef: ComponentRef<T> | null;

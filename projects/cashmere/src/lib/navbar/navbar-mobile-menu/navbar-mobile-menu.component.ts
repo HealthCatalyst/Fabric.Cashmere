@@ -1,7 +1,7 @@
+import {takeUntil} from 'rxjs/operators';
 import {Component, Inject, Input, OnDestroy, OnInit} from '@angular/core';
 import {IAppSwitcherService, IDiscoveryApplication} from '../../app-switcher/app-switcher-interfaces';
-import {Subscription} from 'rxjs/Subscription';
-import {Subject} from 'rxjs/Subject';
+import {Subject, Subscription} from 'rxjs';
 
 @Component({
     selector: 'hc-navbar-mobile-menu',
@@ -23,7 +23,7 @@ export class NavbarMobileMenuComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.subscription = this.appSwitcherService
             .getApplications()
-            .takeUntil(this.ngUnsubscribe)
+            .pipe(takeUntil(this.ngUnsubscribe))
             .subscribe((response: any) => {
                 this.applications = response.value;
             });

@@ -1,4 +1,4 @@
-import {Observable} from 'rxjs/Rx';
+import {Observable} from 'rxjs';
 
 export type PicklistValueType = 'values' | 'valuesets' | 'both';
 
@@ -6,6 +6,7 @@ export interface IValueOption {
     code: string;
     title: string;
 }
+
 export interface IValueSetOption extends IValueOption {
     subValueCount: number;
     subValues: IValueOption[];
@@ -42,6 +43,7 @@ export class PicklistOptionsSource implements IPicklistOptionsSource {
     public pageSize = 100;
     public getOptions?: (params: PicklistRemoteQueryOptions) => Observable<IPicklistRemoteQueryResponse>;
     public getValuesForValueset?: (code: string) => Observable<IValueOption[]>;
+
     public optionsAreLocal(): boolean {
         return !this.getOptions;
     }
@@ -82,5 +84,6 @@ export interface IPicklistRemoteQueryResponse {
 export class PicklistRemoteQueryOptions {
     valuePageSettings?: IPageSettings;
     valueSetPageSettings?: IPageSettings;
+
     constructor(public picklist: IPicklistSettings, public searchTerm: string, public valueTypeToQuery: PicklistValueType) {}
 }

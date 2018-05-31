@@ -1,5 +1,6 @@
-﻿import {Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
-import {Subject} from 'rxjs/Rx';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Subject} from 'rxjs';
 
 import {PicklistService} from '../services/picklist.service';
 import {PicklistActionService} from '../services/picklist-action.service';
@@ -183,12 +184,9 @@ export class PicklistPaneComponent {
     }
 
     private wireUpSearch() {
-        this.searchTermStream
-            .debounceTime(300)
-            .distinctUntilChanged()
-            .subscribe(t => {
-                this.filterService.runFilter(t);
-                this.selectNone();
-            });
+        this.searchTermStream.pipe(debounceTime(300), distinctUntilChanged()).subscribe(t => {
+            this.filterService.runFilter(t);
+            this.selectNone();
+        });
     }
 }
