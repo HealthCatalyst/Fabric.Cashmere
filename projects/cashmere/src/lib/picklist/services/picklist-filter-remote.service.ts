@@ -1,5 +1,7 @@
+import {from, Observable, of, Subject, Subscription} from 'rxjs';
+
+import {takeUntil} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
-import {Observable, Subject, Subscription} from 'rxjs/Rx';
 
 import {PicklistFilterService} from './picklist-filter.service';
 import {PicklistStateService} from './picklist-state.service';
@@ -31,7 +33,7 @@ export class PicklistFilterRemoteService {
     private get cancelSearch$(): Observable<void> {
         return this.cancelSearch.asObservable();
     }
-    private options$: Observable<IPicklistRemoteQueryResponse> = Observable.from([]);
+    private options$: Observable<IPicklistRemoteQueryResponse> = from([]);
 
     public constructor(private stateService: PicklistStateService) {}
 
@@ -44,7 +46,7 @@ export class PicklistFilterRemoteService {
     public filter(type: PicklistValueType = 'both', shouldAppend = false, selectAllCount: number | null = null): Subscription {
         if (!this.stateService.optionsSource.getOptions) {
             console.warn('Remote query callback not provided for this picklist.');
-            return Observable.from([]).subscribe();
+            return from([]).subscribe();
         }
 
         if (this.options$) {
@@ -55,7 +57,7 @@ export class PicklistFilterRemoteService {
             this.clearFilteredOptions(type);
         }
         this.resetPagingForSelectAllIfNeeded(selectAllCount);
-        this.options$ = this.stateService.optionsSource.getOptions(params).takeUntil(this.cancelSearch$);
+        this.options$ = this.stateService.optionsSource.getOptions(params).pipe(takeUntil(this.cancelSearch$));
 
         return this.options$.subscribe(
             options => {
@@ -64,10 +66,10 @@ export class PicklistFilterRemoteService {
             () => {
                 console.warn('Unable to filter options');
                 this.clearLists('both');
-                return Observable.of({});
+                return of({});
             },
             () => {
-                this.options$ = Observable.of({});
+                this.options$ = of({});
             }
         );
     }

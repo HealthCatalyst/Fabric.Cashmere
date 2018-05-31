@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, ReplaySubject, Subscription} from 'rxjs/Rx';
+import {Observable, ReplaySubject, Subscription} from 'rxjs';
 
 @Injectable()
 export class WorkTrackerService {

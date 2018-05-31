@@ -1,9 +1,8 @@
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import {Inject, Injectable} from '@angular/core';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/delay';
+import {Observable, of} from 'rxjs';
 
+import {delay} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
+import {Inject, Injectable} from '@angular/core';
 import {getMockApplication} from './app-switcher-mock';
 import {IAppSwitcherConfig, IAppSwitcherService, IDiscoveryRequest} from './app-switcher-interfaces';
 
@@ -13,7 +12,7 @@ export class MockAppSwitcherService implements IAppSwitcherService {
     constructor() {}
 
     public getApplications(): Observable<IDiscoveryRequest> {
-        return Observable.of({value: getMockApplication(5)}).delay(500);
+        return of({value: getMockApplication(5)}).pipe(delay(500));
     }
 }
 

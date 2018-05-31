@@ -1,7 +1,6 @@
+import {takeUntil} from 'rxjs/operators';
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import 'rxjs/add/operator/takeUntil';
-import {Subject} from 'rxjs/Subject';
+import {Subject, Subscription} from 'rxjs';
 
 import {IAppSwitcherService, IDiscoveryApplication} from './app-switcher-interfaces';
 
@@ -22,7 +21,7 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.subscription = this.appSwitcherService
             .getApplications()
-            .takeUntil(this.ngUnsubscribe)
+            .pipe(takeUntil(this.ngUnsubscribe))
             .subscribe((response: any) => {
                 this.applications = response.value;
             });

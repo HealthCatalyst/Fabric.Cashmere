@@ -1,3 +1,5 @@
+import {Observable, of} from 'rxjs';
+import {delay} from 'rxjs/operators';
 import {
     IPagedCollection,
     IPageSettings,
@@ -6,7 +8,6 @@ import {
     IValueSetOption,
     PicklistRemoteQueryOptions
 } from '@healthcatalyst/cashmere';
-import {Observable} from 'rxjs/Observable';
 
 export class FakeRemoteOptionsService {
     /**
@@ -28,11 +29,11 @@ export class FakeRemoteOptionsService {
             response.pagedValueSets = this.buildResponse<IValueSetOption>(params.valueSetPageSettings!, valSets, alreadySelectedCodes);
         }
 
-        return Observable.of(response).delay(1000);
+        return of(response).pipe(delay(1000));
     }
 
     public getValuesForValueset(code: string): Observable<IValueOption[]> {
-        return Observable.of(getFakeValues('', 10)).delay(1000);
+        return of(getFakeValues('', 10)).pipe(delay(1000));
     }
 
     private buildResponse<T extends IValueOption>(pgSettings: IPageSettings, vals: T[], selected: string[]): IPagedCollection<T> {

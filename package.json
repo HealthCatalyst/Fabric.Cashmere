@@ -51,8 +51,7 @@
     "npm-font-open-sans": "^1.1.0",
     "popper.js": "^1.12.9",
     "rxjs": "6.2.0",
-    "zone.js": "^0.8.26",
-    "rxjs-compat": "^6.0.0-rc.0"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.3",
@@ -84,6 +83,7 @@
     "node-sass": "4.8.3",
     "prettier": "^1.12.1",
     "protractor": "~5.3.1",
+    "rxjs-tslint": "^0.1.4",
     "tar": "^4.4.3",
     "ts-node": "~5.0.1",
     "tsickle": ">=0.25.5",

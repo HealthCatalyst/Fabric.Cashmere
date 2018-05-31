@@ -1,4 +1,4 @@
-import {Observable} from 'rxjs/Rx';
+import {from, Observable} from 'rxjs';
 import {IValueOption, IValueSetOption} from '../picklist.model';
 
 export class FilterableSelectList<T extends SelectListOption> {
@@ -8,8 +8,8 @@ export class FilterableSelectList<T extends SelectListOption> {
     public isActive = true;
 
     public additionalRemoteOptions = 0;
-    public loadingOptions: Observable<boolean> = Observable.from([]);
-    public appendingOptions: Observable<boolean> = Observable.from([]);
+    public loadingOptions: Observable<boolean> = from([]);
+    public appendingOptions: Observable<boolean> = from([]);
     public codeIsSignificant: boolean = false;
     constructor(public options = new Map<string, T>()) {}
 }
