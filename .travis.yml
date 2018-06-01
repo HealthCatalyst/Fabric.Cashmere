@@ -10,12 +10,13 @@ addons:
 
 jobs:
   include:
-    - stage: Build/Test Lib
+    - stage: Build/Test
       env: "PHASE=unit"
     - env: "PHASE=lint"
     - env: "PHASE=build"
-    - stage: Build/Publish Demo
-      env: "PHASE=publish_github"
+    - stage: Publish
+      if: branch = master AND type IN (push)
+      env: "PHASE=publish"
       deploy:
         provider: pages
         skip_cleanup: true

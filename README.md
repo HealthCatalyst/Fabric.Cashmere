@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/HealthCatalyst/Fabric.Cashmere.svg?branch=master)](https://travis-ci.org/HealthCatalyst/Fabric.Cashmere)
-
+[![Coverage Status](https://coveralls.io/repos/github/HealthCatalyst/Fabric.Cashmere/badge.svg?branch=master)](https://coveralls.io/github/HealthCatalyst/Fabric.Cashmere?branch=master)
 ![Cashmere Banner](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/CashmereBanner.png)
 
 An Angular component library that makes any task feel luxurious.
