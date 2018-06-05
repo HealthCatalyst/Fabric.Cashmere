@@ -14,6 +14,6 @@ elif is_unit; then
     npm run test:unit
 elif is_build; then
     npm run build
-elif is_publish_github; then
-    npm run publish:github
+elif is_publish; then
+    ./scripts/publish.sh
 fi

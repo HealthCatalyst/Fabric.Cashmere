@@ -12,6 +12,6 @@ is_build() {
     [[ "${PHASE}" = build ]]
 }
 
-is_publish_github() {
-    [[ "${PHASE}" = publish_github ]]
+is_publish() {
+    [[ "${PHASE}" = publish ]]
 }
