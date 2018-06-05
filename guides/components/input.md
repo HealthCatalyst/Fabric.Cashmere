@@ -2,14 +2,17 @@
 
 ##### Angular Component
 
-Labels are often used with input elements. When a label is included, add `hc-label` to style it and set the `required` property to add a red asterisk to the end of the label.
+To use the input element you must include [hcInput] on an input element and nest the input element within a hc-form-field component. hc-form-field acts as a coordinator between multiple components and is essential to be able to use all of the features of hcInput
+
+To add a label use an hc-label within a hc-form-field. If the input is required add the required attribute and an asterisk will be shown next to the label
 
 ```html
-<label hc-label required="true">Validate an email address:</label>
-<input hc-input name="inputEmail" required highlight="false">
-<div class="form-errors" *ngIf="inputEmail.invalid">
-    Use the form-errors class for error messages
-</div>
+<hc-form-field>
+    <hc-label>Validate an email address</hc-label>
+    <input hcInput [formControl]="formDemo" required>
+    <hc-icon hcSuffix fontSet="fa" fontIcon="fa-user-circle-o"></hc-icon>
+    <hc-error>Email address is required</hc-error>
+</hc-form-field>
 ```
 
 :::
@@ -18,40 +21,14 @@ Labels are often used with input elements. When a label is included, add `hc-lab
 
 ##### Inputs and Icons
 
-Icons may be included in an input box to indicate its function. Use a `hc-icon` component to add an icon, and it will automatically be positioned to the right side of the input with extra padding added.
+Icons may be included in an input box to indicate its function. Use a `hc-icon` component along with either [hcPrefix] or [hcSuffix] to add an icon
 
 ```html
-<div hcInputIcon>
-    <input hc-input name="search" placeholder="search" />
-    <hc-icon icon-sm fontSet="fa" fontIcon="fa-search"></hc-icon>
-</div>
+<hc-form-field>
+    <input hcInput placeholder="Enter username">
+    <hc-icon hcSuffix fontSet="fa" fontIcon="fa-user-circle-o"></hc-icon>
+</hc-form-field>
 ```
-
-:::
-
-:::
-
-##### Input with Clear Button
-
-Inputs can have a clear button, with or without another icon present. The button will only appear if the input currently has text. Clicking the icon will clear out that text.
-
-```html
-<div hcInputIcon hcInputClearable>
-    <input #searchInput hc-input name="search" placeholder="Search" width="250px" />
-    <hc-clear-input-btn [input]="searchInput"></hc-clear-input-btn>
-    <hc-icon icon-sm fontSet="fa" fontIcon="fa-search"></hc-icon>
-</div>
-```
-
-:::
-
-:::
-
-##### Input Properties
-
-| Name      | Type    | Description                                                                         |
-| --------- | ------- | ----------------------------------------------------------------------------------- |
-| highlight | boolean | When true, highlights the border red - often tied to the valid state of the element |
 
 :::
 
@@ -59,7 +36,42 @@ Inputs can have a clear button, with or without another icon present. The button
 
 ##### Directives
 
-**hcInputIcon**
+**hcPrefix**
 
-Should be applied to a tag that contains both an `hc-input` element and `hc-icon` element. This will format both the input and position the icon to the right side of the box.
+Can be applied to any html element that you want positioned to the left
+
+**hcSuffix**
+
+Can be applied to any html element that you want positioned to the right
+
+:::
+
+:::
+
+##### Components
+
+**form-field**
+
+Is used as a wrapper several components and directives. This is used to give inputs a common styling such as labels, errors and icons
+
+**hc-label**
+
+Gives a form-field a label
+
+**hc-error**
+
+Element that holds error information. Form-field will only display one error at a time. If you have multiple things being validated on an input, you'll need to use an \*ngIf to show/hide the different hc-error elements
+
+```
+<hc-form-field>
+    <input hcInput placeholder="Email" [formControl]="emailFormControl">
+    <hc-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+       Please enter a valid email address
+     </hc-error>
+     <hc-error *ngIf="emailFormControl.hasError('required')">
+       Email is <strong>required</strong>
+     </hc-error>
+<hc-form-field>
+```
+
 :::

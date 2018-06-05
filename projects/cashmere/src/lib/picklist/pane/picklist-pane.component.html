@@ -1,10 +1,9 @@
 ﻿<div class="hc-picklist-pane">
     <div class="picklist-controls">
-        <div hcInputIcon hcInputClearable>
-            <input #searchInput hc-input (keyup)="onSearchKeyup()" [(ngModel)]="searchTerm" type="text" placeholder="Search" />
-            <hc-clear-input-btn [input]="searchInput"></hc-clear-input-btn>
-            <hc-icon icon-sm fontSet="fa" fontIcon="fa-search"></hc-icon>
-        </div>
+        <hc-form-field>
+            <input hcInput #searchInput (keyup)="onSearchKeyup()" [(ngModel)]="searchTerm" type="text" placeholder="Search" >
+            <hc-icon hcSuffix fontSet="fa" fontIcon="fa-search"></hc-icon>
+        </hc-form-field>
         <div class="second-row-controls">
             <div class="hc-type-em">
                 Showing {{optionsShowingCount.toLocaleString()}} of {{optionsAvailableCount.toLocaleString()}}
@@ -75,7 +74,7 @@
             <tbody>
                 <!-- Header, shown when both values and valuesets are sitting in list at same time -->
                 <tr *ngIf="shouldShowList(valueSetList) && shouldShowList(valueList)"><th colspan="2">Individual Values</th></tr>
-                
+
                 <!-- Show when user clicked "select all", and there are more options on server, but too many to load in at once -->
                 <tr *ngIf="showTooManyToSelectAllMsg" class="value-option-row select-all-matches-row">
                     <td colspan="2">
