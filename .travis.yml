@@ -8,6 +8,11 @@ node_js:
 addons:
   chrome: stable
 
+stages:
+  - Build/Test
+  - name: Publish
+    if: (NOT type IN (pull_request)) AND (branch = master)
+
 jobs:
   include:
     - stage: Build/Test
@@ -15,7 +20,6 @@ jobs:
     - env: "PHASE=lint"
     - env: "PHASE=build"
     - stage: Publish
-      if: branch = master AND type IN (push)
       env: "PHASE=publish"
       deploy:
         provider: pages
