@@ -7,7 +7,11 @@ set -e
 cd $(dirname $0)/..
 
 # Build project
+echo "Building app"
 npm run build
+
+echo "Generating code coverage"
+npm run test:unit
 
 # Publish code coverage to Coveralls
 cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
