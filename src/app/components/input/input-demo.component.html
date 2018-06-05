@@ -3,55 +3,51 @@
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
     <hc-tab-set direction="horizontal">
-    <hc-tab tabTitle="Overview">
+        <hc-tab tabTitle="Overview">
 
-    <hc-tile>
-        <h5>About</h5>
-        <p>Text fields allow users to input, edit, and select text.
-            They typically reside inside forms, but can also be used in modal dialogs and subnavigation bars.  Input text fields are also used for
-            search and filtering of content.</p>
-    </hc-tile>
+            <hc-tile>
+                <h5>About</h5>
+                <p>Text fields allow users to input, edit, and select text.
+                    They typically reside inside forms, but can also be used in modal dialogs and subnavigation bars. Input text fields are
+                    also used for
+                    search and filtering of content.</p>
+            </hc-tile>
 
-    <hc-tile>
-        <h5>Example</h5>
-        <h4>Input with Validation</h4>
-        <div class="demo-container">
-            <form (ngSubmit)="onSubmit()">
-                <label hc-label required="true">Validate an email address:</label>
-                <input hc-input required name="inputEmail" id="inputEmail" ngModel #inputEmail="ngModel" width="250px" type="email" email [highlight]="submitted && inputEmail.invalid">
-                <div class="form-errors" *ngIf="submitted && inputEmail.invalid">
-                    <div *ngIf="inputEmail.errors.required">
-                        Email address is required
-                    </div>
-                    <div *ngIf="!inputEmail.errors.required">
-                        Please enter a valid email address
-                    </div>
+            <hc-tile>
+                <h5>Example</h5>
+                <h4>Input with Validation</h4>
+                <div class="demo-container">
+                    <hc-form-field>
+                        <hc-label>Validate an email address</hc-label>
+                        <input hcInput [formControl]="formDemo" required>
+                        <hc-icon hcSuffix fontSet="fa" fontIcon="fa-user-circle-o"></hc-icon>
+                        <hc-error>Email address is required</hc-error>
+                    </hc-form-field>
+
+                    <h4>Input with hcSuffix</h4>
+                    <hc-form-field>
+                        <input hcInput placeholder="Enter username">
+                        <hc-icon hcSuffix fontSet="fa" fontIcon="fa-user-circle-o"></hc-icon>
+                    </hc-form-field>
+
+                    <h4>Input with hcPrefix and hcSuffix</h4>
+                    <hc-form-field>
+                        <hc-icon hcPrefix fontSet="fa" fontIcon="fa-usd"></hc-icon>
+                        <input hcInput placeholder="Enter username">
+                        <hc-icon hcSuffix fontSet="fa" fontIcon="fa-user-circle-o"></hc-icon>
+                    </hc-form-field>
+
+                    <h4>Disabled Input</h4>
+                    <hc-form-field>
+                        <input hcInput placeholder="Enter username" disabled>
+                        <hc-icon hcSuffix fontSet="fa" fontIcon="fa-user-circle-o"></hc-icon>
+                    </hc-form-field>
                 </div>
-                <br><br>
-                <button hc-button title="Validate Input Text" color="primary" type="submit">Validate Input</button>
-            </form>
+            </hc-tile>
 
-            <h4>Input with Icon</h4>
-            <div hcInputIcon>
-                <input hc-input name="username" placeholder="Enter username" width="250px" />
-                <hc-icon icon-sm fontSet="fa" fontIcon="fa-user-circle-o"></hc-icon>
-            </div>
-
-            <h4>Input with Icon & Clear Button</h4>
-            <div hcInputIcon hcInputClearable>
-                <input #searchInput hc-input name="search" placeholder="Search" width="250px" />
-                <hc-clear-input-btn [input]="searchInput"></hc-clear-input-btn>
-                <hc-icon icon-sm fontSet="fa" fontIcon="fa-search"></hc-icon>
-            </div>
-
-            <h4>Disabled Input</h4>
-            <input hc-input disabled name="disabled" width="250px" />
-        </div>
-    </hc-tile>
-
-    </hc-tab>
-    <hc-tab tabTitle="Documentation">
-        <div [hcMarkdown]="document"></div>
-    </hc-tab>
+        </hc-tab>
+        <hc-tab tabTitle="Documentation">
+            <div [hcMarkdown]="document"></div>
+        </hc-tab>
     </hc-tab-set>
 </div>

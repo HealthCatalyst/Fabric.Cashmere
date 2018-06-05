@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
     selector: 'hc-input-demo',
@@ -7,10 +8,7 @@ import {Component} from '@angular/core';
 })
 export class InputDemoComponent {
     lastModified: Date = new Date(document.lastModified);
-    submitted: boolean = false;
-    public document: string = require('raw-loader!../../../../guides/components/input.md');
+    document: string = require('raw-loader!../../../../guides/components/input.md');
 
-    onSubmit() {
-        this.submitted = true;
-    }
+    formDemo = new FormControl('', Validators.required);
 }

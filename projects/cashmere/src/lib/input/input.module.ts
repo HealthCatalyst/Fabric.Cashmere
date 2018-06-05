@@ -1,14 +1,15 @@
 import {NgModule} from '@angular/core';
+import {HcFormFieldComponent} from './hc-form-field.component';
+import {InputDirective} from './input.directive';
 import {CommonModule} from '@angular/common';
-import {InputComponent} from './input.component';
-import {IconModule} from '../icon/icon.module';
-import {InputIconDirective} from './input-icon.directive';
-import {InputClearDirective} from './input-clear.directive';
-import {ClearInputBtnComponent} from './clear-input-btn.component';
+import {HcErrorComponent} from './hc-error.component';
+import {HcSuffixDirective} from './hc-suffix.directive';
+import {HcPrefixDirective} from './hc-prefix.directive';
+import {HcLabelComponent} from './hc-label.component';
 
 @NgModule({
-    imports: [CommonModule, IconModule],
-    exports: [InputComponent, InputIconDirective, InputClearDirective, ClearInputBtnComponent],
-    declarations: [InputComponent, InputIconDirective, InputClearDirective, ClearInputBtnComponent]
+    imports: [CommonModule],
+    declarations: [HcFormFieldComponent, InputDirective, HcErrorComponent, HcPrefixDirective, HcSuffixDirective, HcLabelComponent],
+    exports: [HcFormFieldComponent, InputDirective, HcErrorComponent, HcPrefixDirective, HcSuffixDirective, HcLabelComponent]
 })
 export class InputModule {}
