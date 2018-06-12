@@ -7,14 +7,16 @@ set -e
 cd $(dirname $0)/..
 
 # Build project
-echo "Building app"
 npm run build
 
-echo "Generating code coverage"
+#Generating code coverage
 npm run test:unit
 
 # Publish code coverage to Coveralls
 cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+
+# Publishing to NPM
+npx semantic-release
 
 # Copy redirection error page for Github Pages
 cp dist/user-guide/index.html dist/user-guide/404.html

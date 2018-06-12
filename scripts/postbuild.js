@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const tar = require('tar');
 const fse = require('fs-extra');
 const path = require('path');
 
@@ -18,7 +17,7 @@ const assets = [
 ];
 
 Promise.all(copyAssets(resolveSrcDestPaths(assets)))
-    .then(_ => tarProject())
+    .then(_ => fse.remove('dist/cashmere.tgz'))
     .then(_ => console.log('Finished copying assets'))
     .catch(e => console.log(e));
 
@@ -35,17 +34,4 @@ function copyAssets(files) {
         console.log(`Copying ${srcDest[0]} to ${projectName} dist`);
         return fse.copy(srcDest[0], srcDest[1]);
     });
-}
-
-function tarProject() {
-    return tar.create(
-        {
-            gzip: true,
-            strict: true,
-            portable: true,
-            cwd: resolvePath('../dist'),
-            file: `${resolvePath('../dist')}/${projectName}.tgz`
-        },
-        [projectName]
-    );
 }
