@@ -30,8 +30,15 @@
         "semantic-release": "semantic-release"
     },
     "lint-staged": {
-        "*.{js,scss,css,md,json}": ["prettier --write", "git add"],
-        "*.{ts}": ["prettier --write", "npm run lint --fix", "git add"]
+        "*.{js,scss,css,md,json}": [
+            "prettier --write",
+            "git add"
+        ],
+        "*.{ts}": [
+            "prettier --write",
+            "npm run lint --fix",
+            "git add"
+        ]
     },
     "dependencies": {
         "@angular/animations": "6.0.3",
@@ -64,6 +71,8 @@
         "@commitlint/cli": "^6.2.0",
         "@commitlint/config-conventional": "^6.1.3",
         "@commitlint/travis-cli": "^6.2.0",
+        "@semantic-release/changelog": "^2.0.2",
+        "@semantic-release/git": "^5.0.0",
         "@types/d3": "^5.0.0",
         "@types/jasmine": "~2.8.6",
         "@types/jasminewd2": "~2.0.2",
