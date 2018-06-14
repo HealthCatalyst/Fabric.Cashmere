@@ -11,6 +11,14 @@ We would love for you to contribute to Cashmere and be part of the community mak
 
 :::
 
+#### Setup Environment
+
+To begin please run `npm install -g commitizen`, which will help you with writing angular style commit messages. When you need to commit, instead of using `git commit` use `git cz`, which will guide you through writing a commit message. We use the [angular commit message convention](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines)
+
+:::
+
+:::
+
 ##### Contributing to Cashmere
 
 Before you submit your pull request (PR), consider the following guidelines:
