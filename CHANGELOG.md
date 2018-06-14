@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/HealthCatalyst/Fabric.Cashmere/compare/v1.0.1...v1.0.2) (2018-06-14)
+
+
+### Bug Fixes
+
+* fix incorrect package-lock version ([#324](https://github.com/HealthCatalyst/Fabric.Cashmere/issues/324)) ([2b22477](https://github.com/HealthCatalyst/Fabric.Cashmere/commit/2b22477))
+
 ## [1.0.1](https://github.com/HealthCatalyst/Fabric.Cashmere/compare/v1.0.0...v1.0.1) (2018-06-14)
 
 
