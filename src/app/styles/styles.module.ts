@@ -9,6 +9,7 @@ import {ChartDemoComponent} from './chart/chart-demo.component';
 import {BarchartComponent} from './chart/barchart/barchart.component';
 import {LinechartComponent} from './chart/linechart/linechart.component';
 import {ErrorPagesComponent} from './error/error-pages.component';
+import {LoginPageComponent} from './login/login-page.component';
 import {StylesRoutesModule} from './styles-routes.module';
 import {BreadcrumbsStyleDemoComponent} from './breadcrumbs/breadcrumbs-style-demo.component';
 import {StylesComponent} from './styles.component';
@@ -26,6 +27,7 @@ import {StylesComponent} from './styles.component';
         BarchartComponent,
         LinechartComponent,
         ErrorPagesComponent,
+        LoginPageComponent,
         BreadcrumbsStyleDemoComponent
     ]
 })

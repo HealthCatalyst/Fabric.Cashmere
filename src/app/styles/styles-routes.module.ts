@@ -6,6 +6,7 @@ import {TypographyDemoComponent} from './typography/typography-demo.component';
 import {CodeDemoComponent} from './code/code-demo.component';
 import {ChartDemoComponent} from './chart/chart-demo.component';
 import {ErrorPagesComponent} from './error/error-pages.component';
+import {LoginPageComponent} from './login/login-page.component';
 import {NgModule} from '@angular/core';
 import {BreadcrumbsStyleDemoComponent} from './breadcrumbs/breadcrumbs-style-demo.component';
 
@@ -48,6 +49,11 @@ const routes: Routes = [
                 path: 'error',
                 component: ErrorPagesComponent,
                 data: {title: 'Error Pages'}
+            },
+            {
+                path: 'login',
+                component: LoginPageComponent,
+                data: {title: 'Login Page'}
             },
             {
                 path: '**',
