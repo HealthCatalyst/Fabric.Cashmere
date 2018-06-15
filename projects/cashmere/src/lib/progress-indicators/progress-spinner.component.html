@@ -7,9 +7,9 @@
         [style.marginLeft.px]="isCentered ? diameter / -2 : 0">
         <div class="spinner-layer spinner-{{color}}" [ngClass]="{'spinner-base': hasChannel }">
             <div class="circle base-circle"></div>
-            <div class="circle-clipper left"><div class="circle" [style.transform]="leftCircleTransform" [style.transition]="leftCircleTransition"></div>
+            <div class="circle-clipper left"><div class="circle" [style.transform]="_leftCircleTransform" [style.transition]="_leftCircleTransition"></div>
             </div><div class="gap-patch"><div class="circle"></div>
-            </div><div class="circle-clipper right"><div class="circle" [style.transform]="rightCircleTransform" [style.transition]="rightCircleTransition"></div></div>
+            </div><div class="circle-clipper right"><div class="circle" [style.transform]="_rightCircleTransform" [style.transition]="_rightCircleTransition"></div></div>
         </div>
     </div>
 </div>
