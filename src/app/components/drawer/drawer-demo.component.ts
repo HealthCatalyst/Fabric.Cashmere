@@ -7,5 +7,4 @@ import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 })
 export class DrawerDemoComponent {
     lastModified: Date = new Date(document.lastModified);
-    public document: string = require('raw-loader!../../../../guides/components/drawer.md');
 }

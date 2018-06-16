@@ -8,7 +8,6 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class InputDemoComponent {
     lastModified: Date = new Date(document.lastModified);
-    document: string = require('raw-loader!../../../../guides/components/input.md');
 
     formDemo = new FormControl('', Validators.required);
 }
