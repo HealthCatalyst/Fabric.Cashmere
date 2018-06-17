@@ -1,7 +1,21 @@
-import {AfterContentInit, Component, ContentChildren, DoCheck, ElementRef, QueryList, Renderer2} from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectorRef,
+    Component,
+    ContentChildren,
+    DoCheck,
+    ElementRef,
+    HostBinding,
+    NgZone,
+    OnDestroy,
+    QueryList,
+    Renderer2,
+    ViewEncapsulation
+} from '@angular/core';
 import {DrawerComponent, DrawerPromiseResult} from './drawer.component';
-import {filter, takeUntil} from 'rxjs/operators';
+import {debounceTime, filter, startWith, takeUntil} from 'rxjs/operators';
 import {AnimationEvent} from '@angular/animations';
+import {Subject} from 'rxjs';
 
 function throwDrawerContainerError(align: string) {
     throw new Error(`A drawer was already declared for 'align="${align}"'`);
@@ -10,9 +24,10 @@ function throwDrawerContainerError(align: string) {
 @Component({
     selector: 'hc-drawer-container',
     templateUrl: 'drawer-container.component.html',
-    styleUrls: ['drawer-container.component.scss']
+    styleUrls: ['drawer.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
-export class DrawerContainerComponent implements AfterContentInit, DoCheck {
+export class DrawerContainerComponent implements AfterContentInit, DoCheck, OnDestroy {
     @ContentChildren(DrawerComponent) drawers: QueryList<DrawerComponent>;
 
     private leftDrawer: DrawerComponent;
@@ -20,34 +35,60 @@ export class DrawerContainerComponent implements AfterContentInit, DoCheck {
 
     _contentMargins = {left: 0, right: 0};
 
-    constructor(private elementRef: ElementRef, private renderer: Renderer2) {
-    }
+    private readonly _doCheckSubject = new Subject<void>();
+    private readonly _destroyed = new Subject<void>();
 
+    @HostBinding('class.hc-drawer-container') hostClass = true;
+
+    constructor(
+        private elementRef: ElementRef,
+        private renderer: Renderer2,
+        private _ngZone: NgZone,
+        private _changeDetector: ChangeDetectorRef
+    ) {}
+
+    // If drawer size changes through some async action this will cause it to resize the margins
     ngDoCheck(): void {
-        this._calculateContentMargins();
+        // Run outside of angular's scope because debounceTime will cause infinite loop
+        this._ngZone.runOutsideAngular(() => this._doCheckSubject.next());
     }
 
     ngAfterContentInit() {
-        this.validateDrawers();
+        // debounceTime allows the component to render before the margins are calculated
+        this._doCheckSubject
+            .pipe(
+                debounceTime(10), // arbitrarily small value is used to quickly render the component so incorrect margins aren't shown
+                takeUntil(this._destroyed)
+            )
+            .subscribe(() => this._calculateContentMargins());
 
-        this.drawers.changes.subscribe(() => this.validateDrawers());
-        this.drawers.forEach((drawer: DrawerComponent) => {
-            drawer._animationStarted.pipe(
-                takeUntil(this.drawers.changes),
-                filter((event: AnimationEvent) => event.fromState !== event.toState))
-                .subscribe(() => {
-                    this._calculateContentMargins();
+        // startWith used to cause first iteration
+        this.drawers.changes.pipe(startWith(null)).subscribe(() => {
+            this.validateDrawers();
+
+            this.drawers.forEach((drawer: DrawerComponent) => {
+                drawer._animationStarted
+                    .pipe(takeUntil(this.drawers.changes), filter((event: AnimationEvent) => event.fromState !== event.toState))
+                    .subscribe(() => {
+                        this._calculateContentMargins();
+                    });
+                drawer._openChange.pipe(takeUntil(this.drawers.changes)).subscribe(isOpen => {
+                    if (isOpen) {
+                        this.setContainerClass(true);
+                    } else {
+                        this.setContainerClass(false);
+                    }
                 });
-            drawer.openChange.pipe(
-                takeUntil(this.drawers.changes)
-            ).subscribe(isOpen => {
-                if (isOpen) {
-                    this.setContainerClass(true);
-                } else {
-                    this.setContainerClass(false);
-                }
             });
+
+            if (!this.drawers.length || this._isDrawerOpen(this.leftDrawer) || this._isDrawerOpen(this.rightDrawer)) {
+                this._calculateContentMargins();
+            }
         });
+    }
+
+    private _isDrawerOpen(drawer: DrawerComponent): boolean {
+        return drawer != null && drawer.opened;
     }
 
     open(): Promise<DrawerPromiseResult[]> {
@@ -80,10 +121,11 @@ export class DrawerContainerComponent implements AfterContentInit, DoCheck {
             }
         }
 
-        this._contentMargins = {
-            left,
-            right
-        };
+        if (left !== this._contentMargins.left || right !== this._contentMargins.right) {
+            this._contentMargins = {left, right};
+
+            this._ngZone.run(() => this._changeDetector.markForCheck());
+        }
     }
 
     private validateDrawers(): void {
@@ -104,29 +146,15 @@ export class DrawerContainerComponent implements AfterContentInit, DoCheck {
 
     private setContainerClass(isOpen: boolean): void {
         if (isOpen) {
-            this.renderer.addClass(this.elementRef.nativeElement, 'drawer-opened');
+            this.renderer.addClass(this.elementRef.nativeElement, 'hc-drawer-opened');
         } else {
-            this.renderer.removeClass(this.elementRef.nativeElement, 'drawer-opened');
+            this.renderer.removeClass(this.elementRef.nativeElement, 'hc-drawer-opened');
         }
     }
 
-    private isDrawerOpen(drawer: DrawerComponent): boolean {
-        return drawer && drawer.opened;
-    }
-
-    private getDrawerEffectiveWidth(drawer: DrawerComponent, mode: string): number {
-        return this.isDrawerOpen(drawer) && drawer.mode === mode ? drawer.width : 0;
-    }
-
-    private getPositionOffsetLeft(): number {
-        return this.getDrawerEffectiveWidth(this.leftDrawer, 'push');
-    }
-
-    private getPositionOffsetRight(): number {
-        return this.getDrawerEffectiveWidth(this.rightDrawer, 'push');
-    }
-
-    private getContentPositionOffset(): number {
-        return this.getPositionOffsetLeft() - this.getPositionOffsetRight();
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
+        this._doCheckSubject.complete();
     }
 }
