@@ -11,9 +11,12 @@ import {
 } from '@angular/core';
 import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
 import {parseBooleanAttribute} from '../util';
+import {Observable} from 'rxjs/internal/Observable';
+import {filter, map} from 'rxjs/operators';
 
 export class DrawerPromiseResult {
-    constructor(public type: 'open' | 'close') {}
+    constructor(public type: 'open' | 'close') {
+    }
 }
 
 @Component({
@@ -25,37 +28,57 @@ export class DrawerPromiseResult {
             state(
                 'open, open-instant',
                 style({
-                    transform: 'translate3d(0, 0, 0)'
+                    'transform': 'translate3d(0, 0, 0)',
+                    'visibility': 'visible'
                 })
             ),
             state(
                 'void',
                 style({
-                    visibility: 'hidden'
+                    'box-shadow': 'none',
+                    'visibility': 'hidden'
                 })
             ),
             transition('void => open-instant', animate('0ms')),
-            transition('void <=> open', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)'))
+            transition('void <=> open, open-instant => void', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)'))
         ])
     ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DrawerComponent implements AfterContentInit {
-    @Input() mode: 'over' | 'push' = 'push';
+    @Input() mode: 'over' | 'push' | 'side' = 'push';
     @Input() align: 'left' | 'right' = 'left';
 
-    @Output() openStart = new EventEmitter();
-    @Output() closeStart = new EventEmitter();
-    @Output() open = new EventEmitter();
-    @Output() close = new EventEmitter();
+    @Output()
+    get openStart(): Observable<void> {
+        return this._animationStarted.pipe(
+            filter(event => event.fromState === 'void' && event.toState === 'open'),
+            map(() => {
+            })
+        );
+    }
+
+    @Output()
+    get closeStart(): Observable<void> {
+        return this._animationStarted.pipe(
+            filter(event => event.fromState === 'open' && event.toState === 'void'),
+            map(() => {
+            })
+        );
+    }
+
+    @Output() openChange = new EventEmitter<boolean>();
 
     @HostBinding() tabindex = -1;
     @HostBinding('class.drawer') drawerClass = true;
 
+    _animationStarted = new EventEmitter<AnimationEvent>();
+
     private animationDisabled = true;
     private drawerOpened = false;
     private animationPromise: Promise<DrawerPromiseResult> | null;
-    private resolveAnimationPromise: () => void = () => {};
+    private resolveAnimationPromise: () => void = () => {
+    };
 
     @Input()
     get opened(): boolean {
@@ -105,26 +128,17 @@ export class DrawerComponent implements AfterContentInit {
 
     @HostListener('@openState.start', ['$event'])
     onAnimationStart(event: AnimationEvent) {
-        const {fromState, toState} = event;
-
-        if (fromState === 'void' && toState === 'open') {
-            this.openStart.emit();
-        } else if (fromState === 'open' && toState === 'void') {
-            this.closeStart.emit();
-        }
+        this._animationStarted.emit(event);
     }
 
     @HostListener('@openState.done', ['$event'])
     onAnimationEnd(event: AnimationEvent) {
-        if (this.opened) {
-            this.open.emit();
-        } else {
-            this.close.emit();
-        }
+        this.openChange.emit(this.opened);
 
         if (this.animationPromise) {
             this.resolveAnimationPromise();
-            this.resolveAnimationPromise = () => {};
+            this.resolveAnimationPromise = () => {
+            };
             this.animationPromise = null;
         }
     }
@@ -137,12 +151,14 @@ export class DrawerComponent implements AfterContentInit {
         }
     }
 
-    constructor(private elementRef: ElementRef) {}
+    constructor(private elementRef: ElementRef) {
+    }
 
     ngAfterContentInit() {
         if (this.animationPromise) {
             this.resolveAnimationPromise();
-            this.resolveAnimationPromise = () => {};
+            this.resolveAnimationPromise = () => {
+            };
             this.animationPromise = null;
         }
         this.animationDisabled = false;

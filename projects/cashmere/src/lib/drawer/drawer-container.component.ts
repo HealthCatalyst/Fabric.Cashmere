@@ -1,5 +1,7 @@
-import {AfterContentInit, Component, ContentChildren, ElementRef, QueryList, Renderer2} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, DoCheck, ElementRef, QueryList, Renderer2} from '@angular/core';
 import {DrawerComponent, DrawerPromiseResult} from './drawer.component';
+import {filter, takeUntil} from 'rxjs/operators';
+import {AnimationEvent} from '@angular/animations';
 
 function throwDrawerContainerError(align: string) {
     throw new Error(`A drawer was already declared for 'align="${align}"'`);
@@ -10,21 +12,42 @@ function throwDrawerContainerError(align: string) {
     templateUrl: 'drawer-container.component.html',
     styleUrls: ['drawer-container.component.scss']
 })
-export class DrawerContainerComponent implements AfterContentInit {
+export class DrawerContainerComponent implements AfterContentInit, DoCheck {
     @ContentChildren(DrawerComponent) drawers: QueryList<DrawerComponent>;
 
     private leftDrawer: DrawerComponent;
     private rightDrawer: DrawerComponent;
 
-    constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+    _contentMargins = {left: 0, right: 0};
+
+    constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+    }
+
+    ngDoCheck(): void {
+        this._calculateContentMargins();
+    }
 
     ngAfterContentInit() {
+        this.validateDrawers();
+
         this.drawers.changes.subscribe(() => this.validateDrawers());
         this.drawers.forEach((drawer: DrawerComponent) => {
-            drawer.open.subscribe(() => this.setContainerClass(true));
-            drawer.close.subscribe(() => this.setContainerClass(false));
+            drawer._animationStarted.pipe(
+                takeUntil(this.drawers.changes),
+                filter((event: AnimationEvent) => event.fromState !== event.toState))
+                .subscribe(() => {
+                    this._calculateContentMargins();
+                });
+            drawer.openChange.pipe(
+                takeUntil(this.drawers.changes)
+            ).subscribe(isOpen => {
+                if (isOpen) {
+                    this.setContainerClass(true);
+                } else {
+                    this.setContainerClass(false);
+                }
+            });
         });
-        this.validateDrawers();
     }
 
     open(): Promise<DrawerPromiseResult[]> {
@@ -35,9 +58,31 @@ export class DrawerContainerComponent implements AfterContentInit {
         return Promise.all([this.leftDrawer, this.rightDrawer].map(drawer => drawer && drawer.toggleClose()));
     }
 
-    getStyles() {
-        return {
-            transform: `translate3d(${this.getContentPositionOffset()}px, 0, 0)`
+    private _calculateContentMargins(): void {
+        let left = 0;
+        let right = 0;
+
+        if (this.leftDrawer && this.leftDrawer.opened) {
+            if (this.leftDrawer.mode === 'side') {
+                left += this.leftDrawer.width;
+            } else if (this.leftDrawer.mode === 'push') {
+                left += this.leftDrawer.width;
+                right -= this.leftDrawer.width;
+            }
+        }
+
+        if (this.rightDrawer && this.rightDrawer.opened) {
+            if (this.rightDrawer.mode === 'side') {
+                right += this.rightDrawer.width;
+            } else if (this.rightDrawer.mode === 'push') {
+                right += this.rightDrawer.width;
+                left -= this.rightDrawer.width;
+            }
+        }
+
+        this._contentMargins = {
+            left,
+            right
         };
     }
 
