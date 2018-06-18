@@ -9,7 +9,6 @@ import {FormControl} from '@angular/forms';
 export class SelectDemoComponent {
     private validCheck = false;
     lastModified: Date = new Date(document.lastModified);
-    document: string = require('raw-loader!../../../../guides/components/select.md');
 
     selectControl = new FormControl('');
 
