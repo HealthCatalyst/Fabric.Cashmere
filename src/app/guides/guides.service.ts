@@ -20,11 +20,6 @@ export class GuidesService {
             document: require('raw-loader!../../../guides/contribution-guide.md')
         },
         {
-            title: 'Packaging Library',
-            route: 'packaging-library',
-            document: require('raw-loader!../../../guides/packaging-library.md')
-        },
-        {
             title: 'Submit an Issue',
             route: 'submit-an-issue',
             document: require('raw-loader!../../../guides/submit-an-issue.md')
