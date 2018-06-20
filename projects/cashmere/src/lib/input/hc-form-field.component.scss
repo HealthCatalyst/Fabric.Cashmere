@@ -37,6 +37,8 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
     padding: 0 7px 0 0;
     border: 1.5px solid $gray-300;
+
+    background: $white;
 }
 
 .hc-form-field-prefix,
