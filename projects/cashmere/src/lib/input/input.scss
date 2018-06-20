@@ -1,3 +1,5 @@
+@import '../sass/colors';
+
 .hc-input {
     font: inherit;
     background: inherit;
@@ -21,6 +23,18 @@
     &::-ms-clear,
     &::-ms-reveal {
         display: none;
+    }
+
+    &::placeholder {
+        color: $slate-gray-300;
+    }
+
+    &:-ms-input-placeholder {
+        color: $slate-gray-300;
+    }
+
+    &::-ms-input-placeholder {
+        color: $slate-gray-300;
     }
 }
 
