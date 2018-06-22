@@ -22,34 +22,18 @@ export class TypeformWindow extends Window {
     styles: []
 })
 export class TypeformSurveyComponent {
-    @Input() public surveyUri: string | undefined;
-    private id: string = 'typef_orm_share';
 
-    public getScripts(): void {
-        if (!this.surveyUri) {
-            throwErrorForMissingSurveyUri();
-        }
-        /* this is directly from the embed
-           markup given from TypeForm */
-        let embedScript;
-        let firstScript;
-        const baseUri = 'https://embed.typeform.com/';
-        if (!document.getElementById(this.id)) {
-            // create new embed script with typeform cdn source
-            embedScript = document.createElement('script');
-            embedScript.id = this.id;
-            embedScript.src = `${baseUri}embed.js`;
+    /**
+     * TypeForm survey URI you want to use. Example: https://somecompany.typeform.com/to/surveyId?parameter=parametervalue
+     */
+    @Input() public surveyUri: string;
+    private _id: string = 'typef_orm_share';
 
-            // insert embed script before other js scripts
-            firstScript = document.getElementsByTagName.call(document, 'script')[0];
-            if (firstScript.parentNode) {
-                firstScript.parentNode.insertBefore(embedScript, firstScript);
-            }
-        }
-    }
-
+    /**
+     * Opens the survey specified in the surveyUri
+     */
     public open() {
-        if (!document.getElementById(this.id)) {
+        if (!document.getElementById(this._id)) {
             this.getScripts();
         } else {
             (<TypeformWindow>window).typeformEmbed.makePopup(this.surveyUri, {
@@ -59,6 +43,27 @@ export class TypeformSurveyComponent {
                 autoClose: 0,
                 hideScrollbars: true
             });
+        }
+    }
+
+    private getScripts(): void {
+        if (!this.surveyUri) {
+            throwErrorForMissingSurveyUri();
+        }
+        /* this is directly from the embed
+           markup given from TypeForm */
+        let embedScript, firstScript;
+        if (!document.getElementById(this._id)) {
+            // create new embed script with typeform cdn source
+            embedScript = document.createElement('script');
+            embedScript.id = this._id;
+            embedScript.src = `https://embed.typeform.com/embed.js`;
+
+            // insert embed script before other js scripts
+            firstScript = document.getElementsByTagName.call(document, 'script')[0];
+            if (firstScript.parentNode) {
+                firstScript.parentNode.insertBefore(embedScript, firstScript);
+            }
         }
     }
 }
