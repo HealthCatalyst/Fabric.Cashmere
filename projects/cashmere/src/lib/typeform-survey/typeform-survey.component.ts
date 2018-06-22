@@ -22,7 +22,6 @@ export class TypeformWindow extends Window {
     styles: []
 })
 export class TypeformSurveyComponent {
-
     /**
      * TypeForm survey URI you want to use. Example: https://somecompany.typeform.com/to/surveyId?parameter=parametervalue
      */
