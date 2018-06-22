@@ -7,7 +7,7 @@
                (click)="_setActive(tab)">
                 {{tab.tabTitle}}
             </a>
-            <a *ngIf="!routerEnabled" class="hc-tab-{{direction}}"
+            <a *ngIf="!_routerEnabled" class="hc-tab-{{direction}}"
                [class.active]="tab.active"
                (click)="_setActive(tab)">
                 {{tab.tabTitle}}
