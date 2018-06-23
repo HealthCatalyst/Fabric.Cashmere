@@ -4,18 +4,31 @@ import {ModalWindowComponent} from './modal-window.component';
 import {BehaviorSubject} from 'rxjs';
 
 export class HcModal<T> {
+    /** Allows direct access to the component used to create the modal. Null when TemplateRef is used */
     public componentRef: ComponentRef<T> | null;
+    /** Allows direct access to overlay component which holds the component/template */
     public overlay: ComponentRef<ModalOverlayComponent> | null;
+    /** Allows direct access to window component which holds the component/template */
     public window: ComponentRef<ModalWindowComponent> | null;
+    /** Subscribe to result in order to get access to modal result values passed in ActiveModal.close() */
     public result: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-    public removeOpenClass: (() => void) | null;
+    public _removeOpenClass: (() => void) | null;
+    /** Data that was passed in through ModalOptions */
     public data?: any;
 
+    /** Closes the modal with a result.
+     * Use this close method when opening a modal using a TemplateRef.
+     * To close a modal that was created from a Component, inject ActiveModal and use the close method
+     * on ActiveModal */
     public close(result?: any): void {
         this.removeModalElements();
         this.result.next(result);
     }
 
+    /** Dismisses the modal with no result.
+     * Use this dismiss method when opening a modal using a TemplateRef.
+     * To dismiss a modal that was created from a Component, inject ActiveModal and use the dismiss method
+     * on ActiveModal */
     public dismiss(): void {
         this.removeModalElements();
     }
@@ -39,13 +52,13 @@ export class HcModal<T> {
             this.componentRef.destroy();
         }
 
-        if (this.removeOpenClass) {
-            this.removeOpenClass();
+        if (this._removeOpenClass) {
+            this._removeOpenClass();
         }
 
         this.window = null;
         this.overlay = null;
         this.componentRef = null;
-        this.removeOpenClass = null;
+        this._removeOpenClass = null;
     }
 }

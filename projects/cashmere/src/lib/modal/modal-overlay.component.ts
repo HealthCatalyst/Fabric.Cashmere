@@ -30,18 +30,18 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     ]
 })
 export class ModalOverlayComponent {
-    @Input() ignoreEscapeKey = false;
+    @Input() _ignoreEscapeKey = false;
 
     constructor(private activeModal: ActiveModal) {}
 
     @HostBinding('@fadeInOut')
-    fadeInOut() {
+    _fadeInOut() {
         return state;
     }
 
     @HostListener('document:keyup.escape', ['$event'])
-    escapeKey(event: any) {
-        if (!this.ignoreEscapeKey) {
+    _escapeKey(event: any) {
+        if (!this._ignoreEscapeKey) {
             this.activeModal.close();
         }
     }
