@@ -60,19 +60,19 @@ export class SplitButtonComponent {
 
     constructor(private elementRef: ElementRef) {}
 
+    _stopClick($event: MouseEvent) {
+        $event.stopPropagation();
+    }
+
     focus(): void {
         this.elementRef.nativeElement.focus();
     }
 
-    mainBtnClick(event: Event): void {
+    mainBtnClick(event: MouseEvent): void {
         event.stopPropagation();
 
         if (!this.disabled) {
             this.click.emit(new SplitButtonClickEvent(this));
         }
-    }
-
-    stopMenuClick(event: Event): void {
-        event.stopPropagation();
     }
 }
