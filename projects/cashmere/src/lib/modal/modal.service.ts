@@ -35,7 +35,7 @@ export class ModalService {
 
     /** Opens a new modal either from a Component or a TemplateRef with the options specified in ModalOptions
      * In order to use a component, it must be specified in your module's EntryComponents.
-    */
+     */
     public open<T>(modalContent: ModalContentType, modalOptions?: ModalOptions): HcModal<T> {
         let container: HTMLElement | null = document.querySelector('body');
         if (modalOptions) {
