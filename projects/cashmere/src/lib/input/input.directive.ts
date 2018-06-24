@@ -10,6 +10,7 @@ let uniqueId = 1;
 
 const unsupportedTypes = ['button', 'checkbox', 'file', 'hidden', 'image', 'radio', 'reset'];
 
+/** Directive that allows a native input to work inside a HcFormFieldComponent */
 @Directive({
     selector: '[hcInput]'
 })
@@ -18,10 +19,12 @@ export class InputDirective implements DoCheck {
     private _uniqueInputId = `hc-input-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
 
-    errorState: boolean = false;
+    _errorState: boolean = false;
 
+    /** Hint displayed within the input and disappears on input.  */
     @Input() placeholder: string;
 
+    /** Input type of the element. */
     @Input()
     get type(): string {
         return this._type;
@@ -41,6 +44,7 @@ export class InputDirective implements DoCheck {
 
     private _type = 'input';
 
+    /** Element id. */
     @Input()
     get id(): string {
         return this._id || this._uniqueInputId;
@@ -52,6 +56,7 @@ export class InputDirective implements DoCheck {
 
     private _id: string;
 
+    /** Sets input element as readonly. */
     @Input()
     get readonly(): boolean {
         return this._readonly;
@@ -63,10 +68,11 @@ export class InputDirective implements DoCheck {
 
     private _readonly = false;
 
+    /** Disables the input element. */
     @Input()
     get disabled(): boolean {
-        if (this.ngControl && this.ngControl.disabled) {
-            return this.ngControl.disabled;
+        if (this._ngControl && this._ngControl.disabled) {
+            return this._ngControl.disabled;
         }
         return this._disabled;
     }
@@ -82,6 +88,7 @@ export class InputDirective implements DoCheck {
 
     private _disabled = false;
 
+    /** Sets required attribute. */
     @Input()
     get required(): boolean {
         return this._required;
@@ -93,7 +100,7 @@ export class InputDirective implements DoCheck {
 
     private _required = false;
 
-    @HostBinding('class.hc-input') hostHcInputClass = true;
+    @HostBinding('class.hc-input') _hostHcInputClass = true;
 
     @HostBinding('attr.id')
     get _hostId(): string {
@@ -125,6 +132,7 @@ export class InputDirective implements DoCheck {
         this._changeFocus(true);
     }
 
+    /** Sets value of the input element */
     @Input()
     get value(): string {
         return this._elementRef.nativeElement.value;
@@ -147,18 +155,19 @@ export class InputDirective implements DoCheck {
         @Optional() _parentFormGroup: FormGroupDirective,
         @Optional()
         @Self()
-        public ngControl: NgControl
+        public _ngControl: NgControl
     ) {
         this._form = _parentForm || _parentFormGroup;
     }
 
     ngDoCheck(): void {
         // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this.ngControl) {
-            this.updateErrorState();
+        if (this._ngControl) {
+            this._updateErrorState();
         }
     }
 
+    /** Sets the focus on the input element */
     focus(): void {
         this._elementRef.nativeElement.focus();
     }
@@ -174,14 +183,18 @@ export class InputDirective implements DoCheck {
         return this._elementRef.nativeElement.nodeName.toLowerCase() !== 'textarea';
     }
 
-    private updateErrorState() {
-        const oldState = this.errorState;
+    private _updateErrorState() {
+        const oldState = this._errorState;
 
         // TODO: this could be abstracted out as an @Input() if we need this to be configurable
-        const newState = !!(this.ngControl && this.ngControl.invalid && (this.ngControl.touched || (this._form && this._form.submitted)));
+        const newState = !!(
+            this._ngControl &&
+            this._ngControl.invalid &&
+            (this._ngControl.touched || (this._form && this._form.submitted))
+        );
 
         if (oldState !== newState) {
-            this.errorState = newState;
+            this._errorState = newState;
         }
     }
 }
