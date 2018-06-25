@@ -21,6 +21,7 @@ function throwDrawerContainerError(align: string) {
     throw new Error(`A drawer was already declared for 'align="${align}"'`);
 }
 
+/** Parent component that houses one or two `<hc-drawer>` that applies content styling */
 @Component({
     selector: 'hc-drawer-container',
     templateUrl: 'drawer-container.component.html',
@@ -28,21 +29,21 @@ function throwDrawerContainerError(align: string) {
     encapsulation: ViewEncapsulation.None
 })
 export class DrawerContainerComponent implements AfterContentInit, DoCheck, OnDestroy {
-    @ContentChildren(DrawerComponent) drawers: QueryList<DrawerComponent>;
+    @ContentChildren(DrawerComponent) _drawers: QueryList<DrawerComponent>;
 
-    private leftDrawer: DrawerComponent;
-    private rightDrawer: DrawerComponent;
+    private _leftDrawer: DrawerComponent;
+    private _rightDrawer: DrawerComponent;
 
     _contentMargins = {left: 0, right: 0};
 
     private readonly _doCheckSubject = new Subject<void>();
     private readonly _destroyed = new Subject<void>();
 
-    @HostBinding('class.hc-drawer-container') hostClass = true;
+    @HostBinding('class.hc-drawer-container') _hostClass = true;
 
     constructor(
-        private elementRef: ElementRef,
-        private renderer: Renderer2,
+        private _elementRef: ElementRef,
+        private _renderer: Renderer2,
         private _ngZone: NgZone,
         private _changeDetector: ChangeDetectorRef
     ) {}
@@ -63,25 +64,25 @@ export class DrawerContainerComponent implements AfterContentInit, DoCheck, OnDe
             .subscribe(() => this._calculateContentMargins());
 
         // startWith used to cause first iteration
-        this.drawers.changes.pipe(startWith(null)).subscribe(() => {
-            this.validateDrawers();
+        this._drawers.changes.pipe(startWith(null)).subscribe(() => {
+            this._validateDrawers();
 
-            this.drawers.forEach((drawer: DrawerComponent) => {
+            this._drawers.forEach((drawer: DrawerComponent) => {
                 drawer._animationStarted
-                    .pipe(takeUntil(this.drawers.changes), filter((event: AnimationEvent) => event.fromState !== event.toState))
+                    .pipe(takeUntil(this._drawers.changes), filter((event: AnimationEvent) => event.fromState !== event.toState))
                     .subscribe(() => {
                         this._calculateContentMargins();
                     });
-                drawer._openChange.pipe(takeUntil(this.drawers.changes)).subscribe(isOpen => {
+                drawer._openChange.pipe(takeUntil(this._drawers.changes)).subscribe(isOpen => {
                     if (isOpen) {
-                        this.setContainerClass(true);
+                        this._setContainerClass(true);
                     } else {
-                        this.setContainerClass(false);
+                        this._setContainerClass(false);
                     }
                 });
             });
 
-            if (!this.drawers.length || this._isDrawerOpen(this.leftDrawer) || this._isDrawerOpen(this.rightDrawer)) {
+            if (!this._drawers.length || this._isDrawerOpen(this._leftDrawer) || this._isDrawerOpen(this._rightDrawer)) {
                 this._calculateContentMargins();
             }
         });
@@ -91,33 +92,35 @@ export class DrawerContainerComponent implements AfterContentInit, DoCheck, OnDe
         return drawer != null && drawer.opened;
     }
 
+    /** Open all drawers */
     open(): Promise<DrawerPromiseResult[]> {
-        return Promise.all([this.leftDrawer, this.rightDrawer].map(drawer => drawer && drawer.toggleOpen()));
+        return Promise.all([this._leftDrawer, this._rightDrawer].map(drawer => drawer && drawer.toggleOpen()));
     }
 
+    /** Close all drawers */
     close(): Promise<DrawerPromiseResult[]> {
-        return Promise.all([this.leftDrawer, this.rightDrawer].map(drawer => drawer && drawer.toggleClose()));
+        return Promise.all([this._leftDrawer, this._rightDrawer].map(drawer => drawer && drawer.toggleClose()));
     }
 
     private _calculateContentMargins(): void {
         let left = 0;
         let right = 0;
 
-        if (this.leftDrawer && this.leftDrawer.opened) {
-            if (this.leftDrawer.mode === 'side') {
-                left += this.leftDrawer.width;
-            } else if (this.leftDrawer.mode === 'push') {
-                left += this.leftDrawer.width;
-                right -= this.leftDrawer.width;
+        if (this._leftDrawer && this._leftDrawer.opened) {
+            if (this._leftDrawer.mode === 'side') {
+                left += this._leftDrawer._width;
+            } else if (this._leftDrawer.mode === 'push') {
+                left += this._leftDrawer._width;
+                right -= this._leftDrawer._width;
             }
         }
 
-        if (this.rightDrawer && this.rightDrawer.opened) {
-            if (this.rightDrawer.mode === 'side') {
-                right += this.rightDrawer.width;
-            } else if (this.rightDrawer.mode === 'push') {
-                right += this.rightDrawer.width;
-                left -= this.rightDrawer.width;
+        if (this._rightDrawer && this._rightDrawer.opened) {
+            if (this._rightDrawer.mode === 'side') {
+                right += this._rightDrawer._width;
+            } else if (this._rightDrawer.mode === 'push') {
+                right += this._rightDrawer._width;
+                left -= this._rightDrawer._width;
             }
         }
 
@@ -128,27 +131,27 @@ export class DrawerContainerComponent implements AfterContentInit, DoCheck, OnDe
         }
     }
 
-    private validateDrawers(): void {
-        for (let drawer of this.drawers.toArray()) {
+    private _validateDrawers(): void {
+        for (let drawer of this._drawers.toArray()) {
             if (drawer.align === 'right') {
-                if (this.rightDrawer != null) {
+                if (this._rightDrawer != null) {
                     throwDrawerContainerError('right');
                 }
-                this.rightDrawer = drawer;
+                this._rightDrawer = drawer;
             } else {
-                if (this.leftDrawer != null) {
+                if (this._leftDrawer != null) {
                     throwDrawerContainerError('left');
                 }
-                this.leftDrawer = drawer;
+                this._leftDrawer = drawer;
             }
         }
     }
 
-    private setContainerClass(isOpen: boolean): void {
+    private _setContainerClass(isOpen: boolean): void {
         if (isOpen) {
-            this.renderer.addClass(this.elementRef.nativeElement, 'hc-drawer-opened');
+            this._renderer.addClass(this._elementRef.nativeElement, 'hc-drawer-opened');
         } else {
-            this.renderer.removeClass(this.elementRef.nativeElement, 'hc-drawer-opened');
+            this._renderer.removeClass(this._elementRef.nativeElement, 'hc-drawer-opened');
         }
     }
 
