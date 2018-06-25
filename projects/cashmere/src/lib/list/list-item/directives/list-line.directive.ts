@@ -1,11 +1,9 @@
 import {Directive, HostBinding} from '@angular/core';
 
+/** Represents a line within a `hc-list-item` row. Multiple can be used within `hc-list-item`. */
 @Directive({
     selector: '[hcListLine]'
 })
 export class ListLineDirective {
-    @HostBinding('class.hc-list-line')
-    get hostClass(): boolean {
-        return true;
-    }
+    @HostBinding('class.hc-list-line') _hostClass;
 }
