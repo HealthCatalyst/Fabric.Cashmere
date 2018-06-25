@@ -2,10 +2,12 @@ import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBindin
 import {parseBooleanAttribute} from '../../util';
 import {validateButtonColor} from '../button.component';
 
+/* SplitButton click event */
 export class SplitButtonClickEvent {
     constructor(public source: SplitButtonComponent) {}
 }
 
+/* Split button provides a primary action button along with a secondary menu of actions */
 @Component({
     selector: 'hc-split-button',
     templateUrl: './split-button.component.html',
@@ -18,13 +20,22 @@ export class SplitButtonComponent {
     private _disabled: boolean = false;
     private _color: string = 'primary';
 
+    /* primary button's click event */
     @Output() click = new EventEmitter<SplitButtonClickEvent>();
 
+    /* Additional information shown as tooltip */
     @Input() title: string;
+
+    /* Type of button, possible values: 'submit', 'reset', 'button' */
     @Input() type = 'button';
+
+    /* Used as a reference in JavaScript, or to reference form data after a form is submitted */
     @Input() name: string;
+
+    /* Value of primary button when submitted within a form */
     @Input() value: string;
 
+    /* Button tabindex */
     @Input()
     get tabIndex(): number {
         return this.disabled ? -1 : this._tabIndex;
@@ -34,6 +45,7 @@ export class SplitButtonComponent {
         this._tabIndex = value == null ? 0 : value;
     }
 
+    /** Sets background color to one of: 'primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary' */
     @Input()
     get color(): string {
         return this._color;
@@ -44,6 +56,7 @@ export class SplitButtonComponent {
         this._color = btnColor;
     }
 
+    /** Whether the control is disabled. */
     @Input()
     get disabled(): boolean {
         return this._disabled;
@@ -54,7 +67,7 @@ export class SplitButtonComponent {
     }
 
     @HostBinding('class.hc-split-button')
-    get hostClass(): boolean {
+    get _hostClass(): boolean {
         return true;
     }
 
@@ -68,7 +81,7 @@ export class SplitButtonComponent {
         this.elementRef.nativeElement.focus();
     }
 
-    mainBtnClick(event: MouseEvent): void {
+    _mainBtnClick(event: MouseEvent): void {
         event.stopPropagation();
 
         if (!this.disabled) {

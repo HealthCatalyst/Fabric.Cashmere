@@ -4,6 +4,7 @@
 import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, HostListener, Renderer2, ViewEncapsulation} from '@angular/core';
 import {ButtonComponent} from './button.component';
 
+/* Cashmere button styled anchor */
 @Component({
     selector: 'a[hc-button]',
     template: '<ng-content></ng-content>',
@@ -13,17 +14,17 @@ import {ButtonComponent} from './button.component';
 })
 export class AnchorComponent extends ButtonComponent {
     @HostBinding('attr.aria-disabled')
-    get hostAriaDisabled(): string {
+    get _hostAriaDisabled(): string {
         return this.disabled ? this.disabled.toString() : 'false';
     }
 
     @HostBinding('attr.tabindex')
-    get hostTabIndex(): number {
+    get _hostTabIndex(): number {
         return this.disabled ? -1 : 0;
     }
 
     @HostListener('click', ['$event'])
-    handleClickEvents(event: Event) {
+    _handleClickEvents(event: Event) {
         if (this.disabled) {
             event.preventDefault();
             event.stopPropagation();
