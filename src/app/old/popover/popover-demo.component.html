@@ -1,0 +1,66 @@
+<div class="demo-content">
+    <h1>Popover</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tab-set direction="horizontal">
+    <hc-tab tabTitle="Overview">
+
+    <hc-tile>
+        <h5>About</h5>
+        <p>A lightweight, extensible component for fancy popover creation. The popover directive supports multiple
+        placements, optional transition animation, and more.</p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Example</h5>
+        <div class="sample-component">
+            <button hc-button color="primary" [hcPopover]="options" popperPlacement="bottom" aria-hidden="true">
+                Dropdown
+                <hc-icon fontSet="fa" fontIcon="fa-chevron-down" icon-sm></hc-icon>
+            </button>
+            <hc-popover-content #options>
+                <ul class="list-options">
+                    <li>
+                        <a href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
+                    </li>
+                    <li>
+                        <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
+                    </li>
+                    <li>
+                        <button (click)="aboutClick()">About</button>
+                    </li>
+                </ul>
+            </hc-popover-content>
+        </div>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Placement</h5>
+        <div class="sample-component">
+            <button hc-button color="primary" hcPopover="top" popperPlacement="top" aria-hidden="true" class="demo-button">Top</button>
+            <button hc-button color="neutral" hcPopover="bottom" popperPlacement="bottom" aria-hidden="true" class="demo-button">Bottom</button>
+            <button hc-button color="primary-alt" hcPopover="left" popperPlacement="left" aria-hidden="true" class="demo-button">Left</button>
+            <button hc-button color="secondary" hcPopover="right" popperPlacement="right" aria-hidden="true" class="demo-button">Right</button>
+        </div>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Dynamic Content</h5>
+        <p>Enter text into the input below to edit the content of the popover:</p>
+        <div class="sample-component">
+            <input hc-input type="text" [(ngModel)]="body">
+            <button hc-button class="inline-button" color="primary" [hcPopover]="dynamic" popperPlacement="bottom" [popperCloseOnClickOutside]="false"
+                    aria-hidden="true">Click Me
+            </button>
+            <hc-popover-content #dynamic>
+                <span [(innerText)]="body"></span>
+            </hc-popover-content>
+        </div>
+    </hc-tile>
+
+    </hc-tab>
+    <hc-tab tabTitle="Documentation">
+        <hc-doc-viewer documentUrl="assets/docs/cashmere-popover.html"></hc-doc-viewer>
+    </hc-tab>
+    </hc-tab-set>
+</div>
