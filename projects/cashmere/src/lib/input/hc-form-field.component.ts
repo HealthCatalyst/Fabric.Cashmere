@@ -9,6 +9,7 @@ export function getInputContainerControlMissing(): Error {
      Make sure to add hcInput to the native input or textarea element`);
 }
 
+/** Container for form fields that applies Cashmere styling and behavior */
 @Component({
     selector: 'hc-form-field',
     templateUrl: './hc-form-field.component.html',
@@ -21,10 +22,10 @@ export class HcFormFieldComponent implements AfterContentInit {
     @ContentChildren(HcPrefixDirective) _prefixChildren: QueryList<HcPrefixDirective>;
     @ContentChildren(HcSuffixDirective) _suffixChildren: QueryList<HcSuffixDirective>;
 
-    @HostBinding('class.hc-form-field') classHcFormFieldClass = true;
+    @HostBinding('class.hc-form-field') _classHcFormFieldClass = true;
 
     @HostBinding('class.hc-form-field-disabled')
-    get disabledClass() {
+    get _disabledClass() {
         return this._control.disabled;
     }
 
@@ -35,6 +36,6 @@ export class HcFormFieldComponent implements AfterContentInit {
     }
 
     _shouldShowErrorMessages(): boolean {
-        return this._errorChildren && this._errorChildren.length > 0 && this._control.errorState;
+        return this._errorChildren && this._errorChildren.length > 0 && this._control._errorState;
     }
 }
