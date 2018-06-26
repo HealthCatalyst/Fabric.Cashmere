@@ -7,18 +7,18 @@
         [attr.value]="value"
         [tabIndex]="tabIndex"
         [disabled]="disabled"
-        (click)="mainBtnClick($event)">
+        (click)="_mainBtnClick($event)">
     <ng-content></ng-content>
 </button>
 <button hc-button
         class="hc-split-button-toggle"
         type="button"
         [color]="color"
-        (click)="stopMenuClick($event)"
+        (click)="_stopClick($event)"
         [disabled]="disabled"
         [hcPopover]="buttonMenu"
         popperPlacement="bottom">
 </button>
-<hc-popover-content #buttonMenu>
+<hc-popover-content #buttonMenu (click)="_stopClick($event)">
     <ng-content select="[hcButtonItem]"></ng-content>
 </hc-popover-content>

@@ -1,5 +1,6 @@
 import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
 
+/** Parent component that can house multiple `<hc-list-item>` and applies Cashmere list styling */
 @Component({
     selector: 'hc-list',
     templateUrl: './list.component.html',
@@ -7,8 +8,5 @@ import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
     encapsulation: ViewEncapsulation.None
 })
 export class ListComponent {
-    @HostBinding('class.hc-list')
-    get hostClass(): boolean {
-        return true;
-    }
+    @HostBinding('class.hc-list') _hostClass = true;
 }

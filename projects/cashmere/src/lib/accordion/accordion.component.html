@@ -1,12 +1,12 @@
-<div class="hc-toolbar-wrapper" [ngClass]="alignment" *ngIf="!hideToolbar">
-    <button type="button" class="hc-accordion-trigger" (click)="triggerClick($event)"></button>
+<div class="hc-toolbar-wrapper" [ngClass]="_alignment" *ngIf="!hideToolbar">
+    <button type="button" class="hc-accordion-trigger" (click)="_triggerClick($event)"></button>
     <ng-content select="hc-accordion-toolbar"></ng-content>
 </div>
 
 <div class="hc-accordion-collapse"
-     [@openState]="openState"
-     (@openState.start)="animationStart($event)"
-     (@openState.done)="animationEnd($event)">
+     [@openState]="_openState"
+     (@openState.start)="_animationStart($event)"
+     (@openState.done)="_animationEnd($event)">
     <div class="hc-accordion-content">
         <ng-content></ng-content>
     </div>

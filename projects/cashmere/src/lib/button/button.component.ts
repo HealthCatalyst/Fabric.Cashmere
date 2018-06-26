@@ -1,6 +1,5 @@
 /* tslint:disable:component-selector */
 /* tslint:disable:use-host-property-decorator */
-// https://github.com/mgechev/codelyzer/issues/178#issuecomment-265154480
 
 import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
@@ -13,6 +12,7 @@ export function validateButtonColor(btnColor: string) {
     }
 }
 
+/* Cashmere styled button */
 @Component({
     selector: 'button[hc-button]',
     template: '<ng-content></ng-content>',
@@ -26,8 +26,9 @@ export function validateButtonColor(btnColor: string) {
 export class ButtonComponent {
     private _disabled = false;
     private _color: string;
-    private previousColor: string;
+    private _previousColor: string;
 
+    /** Sets background color to one of: 'primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary' */
     @Input()
     get color(): string {
         return this._color;
@@ -36,11 +37,12 @@ export class ButtonComponent {
     set color(btnColor: string) {
         validateButtonColor(btnColor);
 
-        this.setHostColor(btnColor);
-        this.previousColor = this._color;
+        this._setHostColor(btnColor);
+        this._previousColor = this._color;
         this._color = btnColor;
     }
 
+    /** Whether the control is disabled. */
     @Input()
     get disabled(): boolean {
         return this._disabled;
@@ -51,29 +53,29 @@ export class ButtonComponent {
     }
 
     @HostBinding('class.hc-button')
-    get buttonClass(): boolean {
+    get _buttonClass(): boolean {
         return true;
     }
 
     constructor(private elementRef: ElementRef, private renderer: Renderer2) {
         this.color = 'primary';
-        this.previousColor = this.color;
+        this._previousColor = this.color;
     }
 
     focus(): void {
         this.elementRef.nativeElement.focus();
     }
 
-    private setHostColor(color: string) {
-        if (this.previousColor !== color) {
-            if (this.previousColor) {
-                this.renderer.removeClass(this.elementRef.nativeElement, this.colorClass(this.previousColor));
+    private _setHostColor(color: string) {
+        if (this._previousColor !== color) {
+            if (this._previousColor) {
+                this.renderer.removeClass(this.elementRef.nativeElement, this._colorClass(this._previousColor));
             }
-            this.renderer.addClass(this.elementRef.nativeElement, this.colorClass(color));
+            this.renderer.addClass(this.elementRef.nativeElement, this._colorClass(color));
         }
     }
 
-    private colorClass(color: string): string {
+    private _colorClass(color: string): string {
         return `hc-${color}`;
     }
 }
