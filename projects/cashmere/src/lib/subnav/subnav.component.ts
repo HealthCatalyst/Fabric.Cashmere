@@ -8,9 +8,10 @@ import {Component, HostBinding, Input} from '@angular/core';
 export class SubnavComponent {
     @HostBinding('class.subnav') _hostClass: boolean = true;
 
-    @HostBinding('class.fixed-top')
     /** If true, statically positions the subnav below the navbar (stays pinned on scroll) */
-    @Input() public fixedTop: boolean = false;
+    @HostBinding('class.fixed-top')
+    @Input()
+    public fixedTop: boolean = false;
 
     constructor() {}
 }
