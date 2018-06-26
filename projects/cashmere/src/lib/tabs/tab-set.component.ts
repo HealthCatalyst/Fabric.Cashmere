@@ -2,8 +2,6 @@ import {AfterContentInit, Component, ContentChildren, Input, QueryList} from '@a
 import {TabComponent} from './tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
 
-export type TabDirection = 'horizontal' | 'vertical';
-
 export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabComponent[]) {
     const tabTitles = tabsWithoutRouterLink.map(tab => tab.tabTitle);
     throw Error(`Routerlink missing on ${tabTitles.join(',')}`);
@@ -15,11 +13,12 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
     styleUrls: ['../sass/_tabs.scss']
 })
 export class TabSetComponent implements AfterContentInit {
-    routerEnabled: boolean = false;
+    _routerEnabled: boolean = false;
 
-    @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
+    @ContentChildren(TabComponent) _tabs: QueryList<TabComponent>;
 
-    @Input() direction: TabDirection = 'vertical';
+    /** Optional: Specify direction of the tabs. Defaults to vertical */
+    @Input() direction: 'horizontal' | 'vertical' = 'vertical';
 
     constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -27,47 +26,47 @@ export class TabSetComponent implements AfterContentInit {
         this.defaultToFirstTab();
         this.checkForRouterUse();
 
-        this.tabs.changes.subscribe(() => {
+        this._tabs.changes.subscribe(() => {
             this.defaultToFirstTab();
             this.checkForRouterUse();
         });
     }
 
-    setActive(tab: TabComponent) {
-        this.tabs.forEach(t => (t.active = false));
-        tab.active = true;
+    _setActive(tab: TabComponent) {
+        this._tabs.forEach(t => (t._active = false));
+        tab._active = true;
     }
 
     private defaultToFirstTab() {
-        if (!this.tabs.find(tab => tab.active)) {
+        if (!this._tabs.find(tab => tab._active)) {
             // setTimeout to avoid change after checked error
             // when ngFor is used as projected nodes are registered
             // and stored as part of the existing view, not
             // the view in which they are projected
             // embedded views are checked *before* AfterContentInit
             // is triggered
-            setTimeout(() => this.setActive(this.tabs.first));
+            setTimeout(() => this._setActive(this._tabs.first));
         }
     }
 
     private checkForRouterUse() {
-        if (this.tabs.length === 0) {
+        if (this._tabs.length === 0) {
             return;
         }
-        const countUsingRouter = this.tabs.filter(tab => tab.routerLink !== undefined).length;
-        if (countUsingRouter > 0 && countUsingRouter < this.tabs.length) {
-            const tabsMissingRouterLink = this.tabs.filter(tab => tab.routerLink === undefined);
+        const countUsingRouter = this._tabs.filter(tab => tab.routerLink !== undefined).length;
+        if (countUsingRouter > 0 && countUsingRouter < this._tabs.length) {
+            const tabsMissingRouterLink = this._tabs.filter(tab => tab.routerLink === undefined);
             throwErrorForMissingRouterLink(tabsMissingRouterLink);
         }
 
-        if (countUsingRouter === this.tabs.length) {
-            this.routerEnabled = true;
+        if (countUsingRouter === this._tabs.length) {
+            this._routerEnabled = true;
             this.defaultToFirstRoute();
         }
     }
 
     private defaultToFirstRoute() {
-        const foundRoute = this.tabs
+        const foundRoute = this._tabs
             .map(tab => tab.routerLink)
             .map(routerLink => this.mapRouterLinkToString(routerLink))
             .find(routerLink => {
@@ -79,7 +78,7 @@ export class TabSetComponent implements AfterContentInit {
             return;
         }
 
-        const firstRoute = this.mapRouterLinkToString(this.tabs.first.routerLink);
+        const firstRoute = this.mapRouterLinkToString(this._tabs.first.routerLink);
         this.router.navigate([firstRoute], {relativeTo: this.route});
     }
 

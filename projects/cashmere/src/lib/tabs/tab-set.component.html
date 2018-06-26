@@ -1,22 +1,22 @@
 <div class="hc-{{direction}}-tab-container">
     <div class="hc-tab-bar-{{direction}}">
-        <div *ngFor="let tab of tabs">
-            <a *ngIf="routerEnabled" class="hc-tab-{{direction}}"
+        <div *ngFor="let tab of _tabs">
+            <a *ngIf="_routerEnabled" class="hc-tab-{{direction}}"
                [routerLink]="tab.routerLink"
                routerLinkActive="active"
-               (click)="setActive(tab)">
+               (click)="_setActive(tab)">
                 {{tab.tabTitle}}
             </a>
-            <a *ngIf="!routerEnabled" class="hc-tab-{{direction}}"
+            <a *ngIf="!_routerEnabled" class="hc-tab-{{direction}}"
                [class.active]="tab.active"
-               (click)="setActive(tab)">
+               (click)="_setActive(tab)">
                 {{tab.tabTitle}}
             </a>
 
         </div>
     </div>
     <div class="hc-tab-content-{{direction}}">
-        <router-outlet *ngIf="routerEnabled"></router-outlet>
-        <ng-content *ngIf="!routerEnabled"></ng-content>
+        <router-outlet *ngIf="_routerEnabled"></router-outlet>
+        <ng-content *ngIf="!_routerEnabled"></ng-content>
     </div>
 </div>
