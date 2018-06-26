@@ -21,8 +21,8 @@ export type ModalContentType = Type<{}> | TemplateRef<any>;
 @Injectable()
 export class ModalService {
     // start at 2000 (reserved range for modals, see _variables.scss)
-    public zIndexCounter = 2000;
-    private renderer: Renderer2;
+    private _zIndexCounter = 2000;
+    private _renderer: Renderer2;
 
     constructor(
         private componentFactoryResolver: ComponentFactoryResolver,
@@ -30,9 +30,12 @@ export class ModalService {
         private applicationRef: ApplicationRef,
         rendererFactory: RendererFactory2
     ) {
-        this.renderer = rendererFactory.createRenderer(null, null);
+        this._renderer = rendererFactory.createRenderer(null, null);
     }
 
+    /** Opens a new modal either from a Component or a TemplateRef with the options specified in ModalOptions
+     * In order to use a component, it must be specified in your module's EntryComponents.
+     */
     public open<T>(modalContent: ModalContentType, modalOptions?: ModalOptions): HcModal<T> {
         let container: HTMLElement | null = document.querySelector('body');
         if (modalOptions) {
@@ -49,14 +52,14 @@ export class ModalService {
         );
         if (container) {
             // disable scrolling when overlay is present
-            this.renderer.addClass(container, 'hc-modal-open');
-            hcModal.removeOpenClass = () => this.renderer.removeClass(container, 'hc-modal-open');
+            this._renderer.addClass(container, 'hc-modal-open');
+            hcModal._removeOpenClass = () => this._renderer.removeClass(container, 'hc-modal-open');
 
             // Create, attach, and append overlay to container
             let overlay = this.componentFactoryResolver.resolveComponentFactory(ModalOverlayComponent).create(modalContextInjector);
-            this.renderer.setStyle(overlay.location.nativeElement, 'z-index', this.zIndexCounter);
+            this._renderer.setStyle(overlay.location.nativeElement, 'z-index', this._zIndexCounter);
             if (modalOptions) {
-                overlay.instance.ignoreEscapeKey = modalOptions.ignoreEscapeKey || false;
+                overlay.instance._ignoreEscapeKey = modalOptions.ignoreEscapeKey || false;
             }
             this.applicationRef.attachView(overlay.hostView);
             container.appendChild(overlay.location.nativeElement);
@@ -73,7 +76,7 @@ export class ModalService {
                 const componentRef = this.componentFactoryResolver.resolveComponentFactory(modalContent).create(modalContextInjector);
 
                 // Set host component style to 100% to allow collapsing of body but not header/footer
-                this.renderer.addClass(componentRef.location.nativeElement, 'hc-modal-center-component');
+                this._renderer.addClass(componentRef.location.nativeElement, 'hc-modal-center-component');
                 this.applicationRef.attachView(componentRef.hostView);
                 hcModal.componentRef = <ComponentRef<T>>componentRef;
                 projectableNodes = [[componentRef.location.nativeElement]];
@@ -84,10 +87,10 @@ export class ModalService {
             let window = this.componentFactoryResolver
                 .resolveComponentFactory(ModalWindowComponent)
                 .create(modalContextInjector, projectableNodes);
-            this.renderer.setStyle(window.location.nativeElement, 'z-index', this.zIndexCounter + 1);
+            this._renderer.setStyle(window.location.nativeElement, 'z-index', this._zIndexCounter + 1);
             if (modalOptions) {
-                window.instance.size = modalOptions.size;
-                window.instance.ignoreOverlayClick = modalOptions.ignoreOverlayClick || false;
+                window.instance._size = modalOptions.size;
+                window.instance._ignoreOverlayClick = modalOptions.ignoreOverlayClick || false;
                 if (modalOptions.data) {
                     hcModal.data = modalOptions.data;
                     activeModalContext.data = modalOptions.data;
@@ -104,7 +107,7 @@ export class ModalService {
 
         activeModalContext.dismiss = () => hcModal.dismiss();
 
-        this.zIndexCounter += 2;
+        this._zIndexCounter += 2;
         return hcModal;
     }
 }

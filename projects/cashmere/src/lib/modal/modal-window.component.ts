@@ -5,7 +5,7 @@ import {ActiveModal} from './active-modal';
 
 @Component({
     selector: 'hc-modal-window',
-    template: `<div [class]="'hc-modal hc-modal-' + size">
+    template: `<div [class]="'hc-modal hc-modal-' + _size">
                      <ng-content></ng-content>
                </div>`,
     styleUrls: ['./modal-window.component.scss'],
@@ -22,18 +22,18 @@ import {ActiveModal} from './active-modal';
     ]
 })
 export class ModalWindowComponent {
-    @Input() ignoreOverlayClick = false;
-    @Input() size: ModalSize = 'md';
+    @Input() _ignoreOverlayClick = false;
+    @Input() _size: ModalSize = 'md';
 
     constructor(private activeModal: ActiveModal, private el: ElementRef) {}
 
     @HostBinding('@fadeInOut')
-    fadeInOut() {
+    _fadeInOut() {
         return state;
     }
 
     @HostListener('click', ['$event'])
-    overlayClick(event: any) {
+    _overlayClick(event: any) {
         let modalContentNotPresent = true;
         let modalWindowTargetIncluded = event.path.findIndex(p => p === this.el.nativeElement) > -1;
         let classList: (DOMTokenList | undefined)[] = event.path.map(p => p.classList);
@@ -52,7 +52,7 @@ export class ModalWindowComponent {
                 1. This window element
                 2. Not the hc-modal-content and
                 3. the overlay click option is disabled. */
-        if (!this.ignoreOverlayClick && modalContentNotPresent && modalWindowTargetIncluded) {
+        if (!this._ignoreOverlayClick && modalContentNotPresent && modalWindowTargetIncluded) {
             this.activeModal.close();
         }
     }
