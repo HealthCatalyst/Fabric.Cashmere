@@ -1,22 +1,27 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Event, NavigationEnd, Params, PRIMARY_OUTLET, Router} from '@angular/router';
 
+/**
+ * IBreadcrumb interface is used to store all required data for each breadcrumb element
+ * @docs-private
+ */
 export interface IBreadcrumb {
     label: string;
     params?: Params;
     url: string;
 }
 
+/** A navigational aid that allows users to keep track of their location within the current application  */
 @Component({
     selector: 'hc-breadcrumbs',
     templateUrl: './breadcrumbs.component.html'
 })
 export class BreadcrumbsComponent implements OnInit, OnDestroy {
-    public breadcrumbs: IBreadcrumb[] = [];
-    public routerSubscription: any;
-    backURL: string = '';
-    backShow: string = 'none';
-    locationLabel: string = '';
+    public _breadcrumbs: IBreadcrumb[] = [];
+    public _routerSubscription: any;
+    _backURL: string = '';
+    _backShow: string = 'none';
+    _locationLabel: string = '';
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
 
@@ -24,10 +29,10 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
         const ROUTE_DATA_BREADCRUMB: string = 'breadcrumb';
         // Add the first breadcrumb for the base page
         let root: ActivatedRoute = this.activatedRoute.root;
-        this.breadcrumbs = this.getBreadcrumbs(root);
+        this._breadcrumbs = this.getBreadcrumbs(root);
 
         // subscribe to the NavigationEnd event
-        this.routerSubscription = this.router.events.subscribe((event: Event) => {
+        this._routerSubscription = this.router.events.subscribe((event: Event) => {
             if (event instanceof NavigationEnd) {
                 this.setBreadcrumbs();
             }
@@ -39,17 +44,17 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
 
     private setBreadcrumbs() {
         const root = this.activatedRoute.root;
-        this.breadcrumbs = this.getBreadcrumbs(root);
-        if (this.breadcrumbs.length > 1) {
-            this.backURL = this.breadcrumbs[this.breadcrumbs.length - 2].url;
-            this.backShow = 'inline';
-            this.locationLabel = '';
-        } else if (this.breadcrumbs.length === 1) {
-            this.backShow = 'none';
-            this.locationLabel = this.breadcrumbs[this.breadcrumbs.length - 1].label;
+        this._breadcrumbs = this.getBreadcrumbs(root);
+        if (this._breadcrumbs.length > 1) {
+            this._backURL = this._breadcrumbs[this._breadcrumbs.length - 2].url;
+            this._backShow = 'inline';
+            this._locationLabel = '';
+        } else if (this._breadcrumbs.length === 1) {
+            this._backShow = 'none';
+            this._locationLabel = this._breadcrumbs[this._breadcrumbs.length - 1].label;
         } else {
-            this.backShow = 'none';
-            this.locationLabel = '';
+            this._backShow = 'none';
+            this._locationLabel = '';
         }
     }
 
@@ -106,6 +111,6 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.routerSubscription.unsubscribe();
+        this._routerSubscription.unsubscribe();
     }
 }
