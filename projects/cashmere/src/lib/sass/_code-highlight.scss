@@ -1,90 +1,80 @@
-// custom highlight js based on github theme. See https://highlightjs.org/static/demo/ for details
-@import 'colors';
-
+/** Adapted from https://github.com/atom-material/atom-material-syntax-light */
 .hljs {
     display: block;
     overflow-x: auto;
-    padding: 0.5em;
-    color: #333;
-    background: $block-text-background;
+    padding: 1em;
+    background: #fafafa;
+    color: #37474f;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: 100%;
+    font: 300 100%/1 Roboto Mono, monospace;
+    font-size: 14px;
 }
 
-.hljs-comment,
-.hljs-quote {
-    color: #998;
+.hljs > *::selection,
+.hljs-section {
+    background-color: #d6edea;
+}
+
+.hljs-comment {
+    color: #b0bec5;
     font-style: italic;
 }
 
-.hljs-keyword,
+.hljs-tag,
 .hljs-selector-tag,
-.hljs-subst {
-    color: #333;
-    font-weight: bold;
-}
-
-.hljs-number,
-.hljs-literal,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag .hljs-attr {
-    color: #008080;
+.hljs-regexp,
+.hljs-meta {
+    color: #9c27b0;
 }
 
 .hljs-string,
-.hljs-doctag {
-    color: #d14;
+.hljs-subst {
+    color: #0d904f;
+}
+
+.hljs-number,
+.hljs-variable,
+.hljs-template-variable {
+    color: #80cbc4;
+}
+
+.hljs-name,
+.hljs-keyword,
+.hljs-type,
+.hljs-attribute {
+    color: #3b78e7;
 }
 
 .hljs-title,
-.hljs-section,
-.hljs-selector-id {
-    color: #900;
-    font-weight: bold;
-}
-
-.hljs-subst {
-    font-weight: normal;
-}
-
-.hljs-type,
-.hljs-class .hljs-title {
-    color: #458;
-    font-weight: bold;
-}
-
-.hljs-tag,
-.hljs-name,
-.hljs-attribute {
-    color: #000080;
-    font-weight: normal;
-}
-
-.hljs-regexp,
-.hljs-link {
-    color: #009926;
-}
-
+.hljs-function > .hljs-title,
 .hljs-symbol,
-.hljs-bullet {
-    color: #990073;
-}
-
+.hljs-bullet,
 .hljs-built_in,
-.hljs-builtin-name {
-    color: #0086b3;
+.hljs-builtin-name,
+.hljs-link {
+    color: #6182b8;
 }
 
-.hljs-meta {
-    color: #999;
-    font-weight: bold;
-}
-
-.hljs-deletion {
-    background: #fdd;
+.hljs-params {
+    color: #d81b60;
 }
 
 .hljs-addition {
-    background: #dfd;
+    color: #3b78e7;
+    display: inline-block;
+    width: 100%;
+}
+
+.hljs-deletion {
+    color: #e53935;
+    display: inline-block;
+    width: 100%;
+}
+
+.hljs-selector-id,
+.hljs-selector-class {
+    color: #8796b0;
 }
 
 .hljs-emphasis {
@@ -93,4 +83,8 @@
 
 .hljs-strong {
     font-weight: bold;
+}
+
+.hljs-link {
+    text-decoration: underline;
 }

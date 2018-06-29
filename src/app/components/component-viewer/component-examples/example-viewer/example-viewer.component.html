@@ -1,0 +1,10 @@
+<hc-tab-set direction="horizontal">
+    <hc-tab [tabTitle]="ext" *ngFor="let ext of ['html', 'ts']">
+        <pre>
+            <hc-doc-viewer [documentUrl]="exampleFileUrl(ext)">
+            </hc-doc-viewer>
+        </pre>
+    </hc-tab>
+</hc-tab-set>
+
+<ng-container #vc></ng-container>
