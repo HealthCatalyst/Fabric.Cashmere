@@ -1,0 +1,28 @@
+<hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" user="Christine K." [homeUri]="undefined" [fixedTop]="false">
+    <hc-app-switcher></hc-app-switcher>
+    <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Pediatric"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Rehabilition"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
+    <hc-navbar-icon>
+        <hc-icon fontSet="fa" fontIcon="fa-search"></hc-icon>
+    </hc-navbar-icon>
+    <hc-navbar-icon>
+        <hc-icon fontSet="fa" fontIcon="fa-question-circle-o" [hcPopover]="options"
+                 popperPlacement="bottom"></hc-icon>
+    </hc-navbar-icon>
+</hc-navbar>
+
+<hc-popover-content #options>
+    <ul class="list-options">
+        <li>
+            <a href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
+        </li>
+        <li>
+            <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
+        </li>
+    </ul>
+</hc-popover-content>
