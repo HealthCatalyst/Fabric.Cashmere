@@ -23,10 +23,3 @@ cp dist/user-guide/index.html dist/user-guide/404.html
 
 # Redirect Cashmere Url to CNAME file
 echo $CASHMERE_URL > dist/user-guide/CNAME
-
-# Generate Dgeni docs
-npm run docs
-
-# Copy documentation into UserGuide assets/
-cp -r ./dist/docs/api ./src/assets/docs
-
