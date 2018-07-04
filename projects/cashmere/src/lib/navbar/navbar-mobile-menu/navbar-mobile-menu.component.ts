@@ -1,44 +1,34 @@
-import {takeUntil} from 'rxjs/operators';
-import {Component, Inject, Input, OnDestroy, OnInit} from '@angular/core';
-import {IAppSwitcherService, IDiscoveryApplication} from '../../app-switcher/app-switcher-interfaces';
-import {Subject, Subscription} from 'rxjs';
+import {Component, Inject, Input, Optional} from '@angular/core';
+import {IAppSwitcherService} from '../../app-switcher/app-switcher-interfaces';
 
+/** Navigation dropdown for small screen sizes */
 @Component({
     selector: 'hc-navbar-mobile-menu',
     templateUrl: './navbar-mobile-menu.component.html',
     styleUrls: ['./navbar-mobile-menu.component.scss']
 })
-export class NavbarMobileMenuComponent implements OnInit, OnDestroy {
-    public applications: IDiscoveryApplication[];
-    public subscription: Subscription;
+export class NavbarMobileMenuComponent {
+    public _yPos: string = '-100';
 
-    private ngUnsubscribe: any = new Subject();
-
-    yPos: string = '-100';
-
+    /**
+     * Enables app switcher capabilities
+     *
+     */
     @Input() appSwitcher: string = 'true';
 
-    constructor(@Inject('IAppSwitcherService') public appSwitcherService: IAppSwitcherService) {}
+    constructor(
+        @Optional()
+        @Inject('IAppSwitcherService')
+        public appSwitcherService: IAppSwitcherService
+    ) {}
 
-    ngOnInit() {
-        this.subscription = this.appSwitcherService
-            .getApplications()
-            .pipe(takeUntil(this.ngUnsubscribe))
-            .subscribe((response: any) => {
-                this.applications = response.value;
-            });
-    }
-
-    ngOnDestroy() {
-        this.ngUnsubscribe.next();
-        this.ngUnsubscribe.complete();
-    }
-
+    /** Show the component from view */
     show(): void {
-        this.yPos = '0';
+        this._yPos = '0';
     }
 
+    /** Hide the component from view */
     hide(): void {
-        this.yPos = '-100';
+        this._yPos = '-100';
     }
 }
