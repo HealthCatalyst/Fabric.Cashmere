@@ -1,3 +1,6 @@
-<hc-tab-set direction="horizontal">
-    <hc-tab *ngFor="let section of sections" [tabTitle]="section" [routerLink]="section"></hc-tab>
-</hc-tab-set>
+<div class="demo-content">
+    <h1>{{docItem.name}}</h1>
+    <hc-tab-set direction="horizontal">
+        <hc-tab *ngFor="let section of sections" [tabTitle]="section" [routerLink]="section"></hc-tab>
+    </hc-tab-set>
+</div>

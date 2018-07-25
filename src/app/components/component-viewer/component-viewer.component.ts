@@ -4,11 +4,12 @@ import {map} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-    templateUrl: 'component-viewer.component.html'
+    templateUrl: 'component-viewer.component.html',
+    styleUrls: ['component-viewer.component.scss']
 })
 export class ComponentViewerComponent implements OnInit {
     docItem: DocItem | undefined;
-    sections: Set<string> = new Set(['api']);
+    sections: Set<string> = new Set(['API']);
 
     constructor(private activatedRoute: ActivatedRoute, private docItems: DocumentItemsService) {}
 
@@ -19,9 +20,9 @@ export class ComponentViewerComponent implements OnInit {
             if (this.docItem) {
                 const examples = this.docItem.examples;
                 if (examples && examples.length > 0) {
-                    this.sections.add('examples');
+                    this.sections.add('Examples');
                 } else {
-                    this.sections.delete('examples');
+                    this.sections.delete('Examples');
                 }
             }
         });

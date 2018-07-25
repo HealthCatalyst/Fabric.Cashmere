@@ -45,55 +45,63 @@
   {% include 'interface.template.html' %}
 {% endmacro %}
 
-<div class="docs-api">
-  <h2>
-    API reference for Angular {$ doc.packageDisplayName $} {$ doc.displayName $}
-  </h2>
+<div class="hc-tile">
+    <h3 class="docs-header-link docs-api-h3">
+        Module Import
+    </h3>
 
-  <p class="docs-api-module-import">
-    <code>
-      import {{$ doc.ngModule.name $}} from '{$ doc.moduleImportPath $}';
-    </code>
-  </p>
+    <p class="docs-api-module-import">
+        <code>
+            import {{$ doc.ngModule.name $}} from '{$ doc.moduleImportPath $}';
+        </code>
+    </p>
+</div>
 
-  {%- if doc.services.length -%}
+{%- if doc.services.length -%}
+<div class="hc-tile">
     <h3 id="services" class="docs-header-link docs-api-h3">
-      <span header-link="services"></span>
-      Services
+        <span header-link="services"></span>
+        Services
     </h3>
     {% for service in doc.services %}
-      {$ class(service) $}
+        {$ class(service) $}
     {% endfor %}
-  {%- endif -%}
+</div>
+{%- endif -%}
 
-
-  {%- if doc.directives.length -%}
+{%- if doc.directives.length -%}
+<div class="hc-tile">
     <h3 id="directives" class="docs-header-link docs-api-h3">
-      <span header-link="directives"></span>
-      Directives
+        <span header-link="directives"></span>
+        Directives
     </h3>
     {% for directive in doc.directives %}
-      {$ class(directive) $}
+        {$ class(directive) $}
     {% endfor %}
-  {%- endif -%}
+</div>
+{%- endif -%}
 
-  {%- if doc.additionalClasses.length -%}
+{%- if doc.additionalClasses.length -%}
+<div class="hc-tile">
     <h3 id="additional_classes" class="docs-header-link docs-api-h3">
-      <span header-link="additional_classes"></span>
-      Additional classes
+        <span header-link="additional_classes"></span>
+        Additional classes
     </h3>
     {% for other in doc.additionalClasses %}
-      {$ class(other) $}
+        {$ class(other) $}
     {% endfor %}
-  {%- endif -%}
+</div>
+{%- endif -%}
 
-  {%- if doc.additionalInterfaces.length -%}
+{%- if doc.additionalInterfaces.length -%}
+<div class="hc-tile">
     <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
-      <span header-link="additional_interfaces"></span>
-      Additional interfaces
+        <span header-link="additional_interfaces"></span>
+        Additional interfaces
     </h3>
     {% for item in doc.additionalInterfaces %}
-      {$ interface(item) $}
+        {$ interface(item) $}
     {% endfor %}
-  {%- endif -%}
 </div>
+{%- endif -%}
+

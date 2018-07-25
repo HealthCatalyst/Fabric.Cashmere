@@ -38,6 +38,9 @@ export class ExampleViewerComponent {
     }
 
     exampleFileUrl(ext: string): string {
+        if (ext === 'Typescript') {
+            ext = 'ts';
+        }
         return `/assets/docs/examples/${this.example}-example-${ext.toLowerCase()}.html`;
     }
 }
