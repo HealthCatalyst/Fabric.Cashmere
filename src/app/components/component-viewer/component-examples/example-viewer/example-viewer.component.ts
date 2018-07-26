@@ -24,6 +24,10 @@ export class ExampleViewerComponent {
         return this._example;
     }
 
+    get exampleTitle() {
+        return this._exampleData.title;
+    }
+
     private _example: string;
 
     constructor(private _componentFactoryResolver: ComponentFactoryResolver, private httpClient: HttpClient) {}
@@ -38,6 +42,9 @@ export class ExampleViewerComponent {
     }
 
     exampleFileUrl(ext: string): string {
+        if (ext === 'Typescript') {
+            ext = 'ts';
+        }
         return `/assets/docs/examples/${this.example}-example-${ext.toLowerCase()}.html`;
     }
 }

@@ -4,7 +4,8 @@ import {map} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-    templateUrl: 'component-viewer.component.html'
+    templateUrl: 'component-viewer.component.html',
+    styleUrls: ['component-viewer.component.scss']
 })
 export class ComponentViewerComponent implements OnInit {
     docItem: DocItem | undefined;
