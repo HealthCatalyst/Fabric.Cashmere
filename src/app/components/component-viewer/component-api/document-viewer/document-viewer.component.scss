@@ -21,13 +21,14 @@
 .docs-api-h4 {
     @include fontSize(22px);
     font-weight: 600;
+    margin: 20px 0 0 0;
 }
 
 .docs-api-h5 {
     text-transform: unset;
     color: $text;
     font-weight: 600;
-    @include fontSize(20px);
+    @include fontSize(16px);
     margin: 30px 0 5px 0;
 }
 
