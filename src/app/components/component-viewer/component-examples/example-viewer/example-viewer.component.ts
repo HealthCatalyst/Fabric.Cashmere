@@ -24,6 +24,10 @@ export class ExampleViewerComponent {
         return this._example;
     }
 
+    get exampleTitle() {
+        return this._exampleData.title;
+    }
+
     private _example: string;
 
     constructor(private _componentFactoryResolver: ComponentFactoryResolver, private httpClient: HttpClient) {}
