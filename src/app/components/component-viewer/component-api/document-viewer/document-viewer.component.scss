@@ -1,3 +1,7 @@
+@import 'scss/colors';
+@import 'scss/functions';
+@import 'scss/mixins.scss';
+
 .hc-doc-viewer {
     display: block;
 }
@@ -7,28 +11,28 @@
 }
 
 .docs-api-h3 {
-    font-size: 1.07142857rem;
+    @include fontSize(15px);
     text-transform: uppercase;
-    color: #006d9a;
+    color: $dark-blue;
     font-weight: 600;
     margin: 0 0 20px 0;
 }
 
 .docs-api-h4 {
-    font-size: 1.571rem;
+    @include fontSize(22px);
     font-weight: 600;
 }
 
 .docs-api-h5 {
     text-transform: unset;
-    color: #333333;
+    color: $text;
     font-weight: 600;
-    font-size: 1.14285714rem;
+    @include fontSize(20px);
     margin: 30px 0 5px 0;
 }
 
 .docs-api-class-extends-clauses {
-    font-size: 1.429rem;
+    @include fontSize(20px);
     font-weight: 300;
 }
 
@@ -37,11 +41,11 @@
 }
 
 .docs-api-properties-table {
-    font-size: 0.9286rem;
+    @include fontSize(13px);
     margin-bottom: 40px;
 
     p {
-        font-size: 0.9286rem;
+        @include fontSize(13px);
     }
 }
 
@@ -53,7 +57,7 @@
     font-family: Consolas, Menlo, 'Ubuntu Mono', monospace;
 
     code {
-        font-size: 0.9286rem;
+        @include fontSize(13px);
         background-color: unset;
         border-radius: unset;
         padding: unset;
@@ -69,7 +73,7 @@
 
 .docs-api-method-table {
     th {
-        color: #a94c9d;
+        color: $magneta;
         font-family: Consolas, Menlo, 'Ubuntu Mono', monospace;
         padding-top: 20px;
     }
@@ -79,12 +83,12 @@
     }
 
     p {
-        font-size: 0.9286rem;
+        @include fontSize(13px);
     }
 
     code {
-        font-size: 0.9286rem;
-        color: #333333;
+        @include fontSize(13px);
+        color: $text;
         background-color: unset;
         border-radius: unset;
         padding: unset;
