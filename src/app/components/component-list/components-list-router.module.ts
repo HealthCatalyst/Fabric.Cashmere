@@ -14,9 +14,9 @@ const routes: Route[] = [
                 path: ':id',
                 component: ComponentViewerComponent,
                 children: [
-                    {path: 'API', component: ComponentApiComponent, pathMatch: 'full'},
-                    {path: 'Examples', component: ComponentExamplesComponent, pathMatch: 'full'},
-                    {path: '**', redirectTo: 'API'}
+                    {path: 'api', component: ComponentApiComponent, pathMatch: 'full'},
+                    {path: 'examples', component: ComponentExamplesComponent, pathMatch: 'full'},
+                    {path: '**', redirectTo: 'api'}
                 ]
             }
         ]
