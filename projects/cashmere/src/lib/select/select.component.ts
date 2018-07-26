@@ -2,6 +2,7 @@ import {Component, ElementRef, forwardRef, HostBinding, Input, Renderer2, ViewEn
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {parseBooleanAttribute} from '../util';
 
+/** Select one of many options from a dropdown */
 @Component({
     selector: 'hc-select',
     templateUrl: './select.component.html',
@@ -16,8 +17,10 @@ import {parseBooleanAttribute} from '../util';
     ]
 })
 export class SelectComponent implements ControlValueAccessor {
+    /** Optional string of text to appear before selection is made */
     @Input() placeholder: string = '';
 
+    /** Enables or disables the component */
     @Input()
     get disabled(): boolean {
         return this._disabled;
@@ -34,6 +37,7 @@ export class SelectComponent implements ControlValueAccessor {
 
     private _disabled = false;
 
+    /** Sets whether this is a required form element */
     @Input()
     get required(): boolean {
         return this._required;
@@ -45,6 +49,7 @@ export class SelectComponent implements ControlValueAccessor {
 
     private _required = false;
 
+    /** Get or set the value of the select component */
     get value() {
         return this._value;
     }
@@ -56,7 +61,7 @@ export class SelectComponent implements ControlValueAccessor {
 
     private _value = '';
 
-    @HostBinding('class.hc-select') hostClass = true;
+    @HostBinding('class.hc-select') _hostClass = true;
 
     private onChange: (val: any) => void = () => {};
 
