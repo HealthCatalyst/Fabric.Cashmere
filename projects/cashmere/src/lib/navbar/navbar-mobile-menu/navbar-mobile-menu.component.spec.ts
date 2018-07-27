@@ -12,13 +12,7 @@ describe('NavbarMobileMenuComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [NavbarMobileMenuComponent],
-            imports: [IconModule, BrowserAnimationsModule],
-            providers: [
-                {
-                    provide: 'IAppSwitcherService',
-                    useClass: MockAppSwitcherService
-                }
-            ]
+            imports: [IconModule, BrowserAnimationsModule]
         }).compileComponents();
     }));
 
@@ -28,7 +22,21 @@ describe('NavbarMobileMenuComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it('should create without IAppSwitcherService', () => {
         expect(component).toBeTruthy();
+    });
+
+    describe('show', () => {
+        it('should change the y position', () => {
+            component.show();
+            expect(component._yPos).toBe('0');
+        });
+    });
+
+    describe('hide', () => {
+        it('should change the y position', () => {
+            component.hide();
+            expect(component._yPos).toBe('-100');
+        });
     });
 });
