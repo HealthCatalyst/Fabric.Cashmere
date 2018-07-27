@@ -139,5 +139,6 @@ export class PicklistRemoteQueryOptions {
         /** Search term entered by the user that triggered the request. */
         public searchTerm: string,
         /** Which types of values should we be getting? */
-        public valueTypeToQuery: PicklistValueType) {}
+        public valueTypeToQuery: PicklistValueType
+    ) {}
 }
