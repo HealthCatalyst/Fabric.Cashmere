@@ -73,7 +73,7 @@ export class PicklistComponent implements ControlValueAccessor {
     /** Fired when a change is made to the picklist selection. */
     @Output() public changed = new EventEmitter();
     private picklistSettings = new PicklistSettings();
-    public get leftToRightMoveBtnIsDisabled(): boolean {
+    public get _leftToRightMoveBtnIsDisabled(): boolean {
         return this._available ? !this._available.isAnySelected() : false;
     }
     private stringOptions: Array<string> | null = null;
