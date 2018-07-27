@@ -24,7 +24,7 @@
 
 <h4 id="{$ class.name $}" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="{$ class.name $}"></span>
-  <code>{$ class.name $}</code>
+  {$ class.name $}
   {% if class.extendedDoc %}
   <span class="docs-api-class-extends-clauses">
     <span class="docs-api-class-extends-label">extends</span>
@@ -41,14 +41,14 @@
 <p class="docs-api-directive-selectors">
   <span class="docs-api-class-selector-label">Selector:</span>
   {% for selector in class.directiveSelectors %}
-    <span class="docs-api-class-selector-name">{$ selector $}</span>
+    <code><span class="docs-api-class-selector-name">{$ selector $}</span></code>
   {% endfor %}
 </p>
 {%- endif -%}
 
 {%- if class.directiveExportAs -%}
 <span class="docs-api-class-export-label">Exported as:</span>
-<span class="docs-api-class-export-name">{$ class.directiveExportAs $}</span>
+<code><span class="docs-api-class-export-name">{$ class.directiveExportAs $}</span></code>
 {%- endif -%}
 
 {%- if class.isDeprecated -%}

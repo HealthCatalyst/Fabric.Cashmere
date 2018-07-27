@@ -54,6 +54,8 @@
     padding: 10px 20px;
     text-decoration: none;
     display: block;
+    min-width: 100px;
+    text-align: center;
     &:hover {
         cursor: pointer;
     }

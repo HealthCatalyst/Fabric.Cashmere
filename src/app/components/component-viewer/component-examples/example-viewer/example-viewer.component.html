@@ -1,10 +1,14 @@
-<hc-tab-set direction="horizontal">
-    <hc-tab [tabTitle]="ext" *ngFor="let ext of ['html', 'ts']">
-        <pre>
-            <hc-doc-viewer [documentUrl]="exampleFileUrl(ext)">
-            </hc-doc-viewer>
-        </pre>
-    </hc-tab>
-</hc-tab-set>
+<div class="hc-tile">
+    <h3 class="docs-api-h3" >{{exampleTitle}}</h3>
+    <hc-tab-set direction="horizontal">
+        <hc-tab [tabTitle]="ext" *ngFor="let ext of ['Example', 'HTML', 'Typescript']">
 
-<ng-container #vc></ng-container>
+            <ng-container #vc></ng-container>
+
+            <pre class="html hljs xml" *ngIf="ext != 'Example'">
+                <hc-doc-viewer [documentUrl]="exampleFileUrl(ext)">
+                </hc-doc-viewer>
+            </pre>
+        </hc-tab>
+    </hc-tab-set>
+</div>
