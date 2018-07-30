@@ -126,7 +126,7 @@ export class RadioButtonComponent implements OnInit {
         }
     }
 
-     /**
+    /**
      * Function for binding to the click event
      * @param event - event to be passed through to the handler
      */
