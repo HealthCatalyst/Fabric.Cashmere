@@ -20,6 +20,7 @@ export class RadioButtonChangeEvent {
     constructor(public source: RadioButtonComponent | null, public value: any) {}
 }
 
+/** Radio buttons allow the user to choose only one of a predefined set of mutually exclusive options. */
 @Component({
     selector: 'hc-radio-button',
     templateUrl: './radio-button.component.html',
@@ -28,15 +29,19 @@ export class RadioButtonChangeEvent {
 })
 export class RadioButtonComponent implements OnInit {
     private uniqueId = `hc-radio-button-${nextUniqueId++}`;
+    /** Element id for the radio button. Auto-generated id will be used if none is set */
     @Input() id: string = this.uniqueId;
+    /** Name of radio button */
     @Input() name: string;
+    /** Event emitted when the value of the radio button changes */
     @Output() change = new EventEmitter<RadioButtonChangeEvent>();
-    private _checked: boolean = false; // radio is selected
-    private _value: any = null; // value of radio button
+    private _checked: boolean = false;
+    private _value: any = null;
     private _required: boolean = false;
     private _disabled: boolean = false;
     private readonly radioGroup: RadioGroupDirective;
 
+    /** Value of radio buttons */
     @Input()
     get value() {
         return this._value;
@@ -54,10 +59,11 @@ export class RadioButtonComponent implements OnInit {
     }
 
     @HostBinding('attr.id')
-    get getHostId(): string {
+    get _getHostId(): string {
         return this.uniqueId;
     }
 
+    /** Boolean value of whether the radio button is required */
     @Input()
     get required(): boolean {
         return this._required || (this.radioGroup && this.radioGroup.required);
@@ -67,6 +73,7 @@ export class RadioButtonComponent implements OnInit {
         this._required = parseBooleanAttribute(required);
     }
 
+    /** Boolean value that enables/disables the radio button */
     @Input()
     get disabled(): boolean {
         return this._disabled || (this.radioGroup && this.radioGroup.disabled);
@@ -76,6 +83,7 @@ export class RadioButtonComponent implements OnInit {
         this._disabled = parseBooleanAttribute(isDisabled);
     }
 
+    /** Boolean that returns whether the radio button is selected */
     @Input()
     get checked(): boolean {
         return this._checked;
@@ -94,6 +102,7 @@ export class RadioButtonComponent implements OnInit {
         }
     }
 
+    /** Returns the input id for the radio button */
     get inputId() {
         if (this.id) {
             return this.id;
@@ -117,10 +126,18 @@ export class RadioButtonComponent implements OnInit {
         }
     }
 
+     /**
+     * Function for binding to the click event
+     * @param event - event to be passed through to the handler
+     */
     onInputClick(event: Event) {
         event.stopPropagation();
     }
 
+    /**
+     * Function for binding to the change event
+     * @param event - event to be passed through to the handler
+     */
     onInputChange(event: Event) {
         event.stopPropagation();
         const valueChanged = this.radioGroup && this.value !== this.radioGroup.value;
@@ -139,6 +156,7 @@ export class RadioButtonComponent implements OnInit {
         this.change.emit(new RadioButtonChangeEvent(this, this.value));
     }
 
+    /** Utility function to mark the radio button as changed */
     markForCheck() {
         this.cdRef.markForCheck();
     }
