@@ -119,15 +119,13 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
         this._onTouched = fn;
     }
 
-    /** Used when touch needs to be triggered from child radio button */
-    touch() {
+    _touch() {
         if (this._onTouched) {
             this._onTouched();
         }
     }
 
-    /** Used when the group needs to trigger a change event */
-    emitChangeEvent(): void {
+    _emitChangeEvent(): void {
         if (this._initialized) {
             this.change.emit(new RadioButtonChangeEvent(this._selected, this.value));
         }
@@ -135,7 +133,7 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
 
     private _markRadiosForCheck() {
         if (this._radios) {
-            this._radios.forEach(radio => radio.markForCheck());
+            this._radios.forEach(radio => radio._markForCheck());
         }
     }
 

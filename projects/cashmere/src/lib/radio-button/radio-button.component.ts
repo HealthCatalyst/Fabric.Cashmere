@@ -28,9 +28,9 @@ export class RadioButtonChangeEvent {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RadioButtonComponent implements OnInit {
-    private uniqueId = `hc-radio-button-${nextUniqueId++}`;
+    private _uniqueId = `hc-radio-button-${nextUniqueId++}`;
     /** Element id for the radio button. Auto-generated id will be used if none is set */
-    @Input() id: string = this.uniqueId;
+    @Input() id: string = this._uniqueId;
     /** Name of radio button */
     @Input() name: string;
     /** Event emitted when the value of the radio button changes */
@@ -60,7 +60,7 @@ export class RadioButtonComponent implements OnInit {
 
     @HostBinding('attr.id')
     get _getHostId(): string {
-        return this.uniqueId;
+        return this._uniqueId;
     }
 
     /** Boolean value of whether the radio button is required */
@@ -102,12 +102,11 @@ export class RadioButtonComponent implements OnInit {
         }
     }
 
-    /** Returns the input id for the radio button */
-    get inputId() {
+    get _inputId() {
         if (this.id) {
             return this.id;
         }
-        return `${this.uniqueId}-input`;
+        return `${this._uniqueId}-input`;
     }
 
     constructor(
@@ -126,38 +125,29 @@ export class RadioButtonComponent implements OnInit {
         }
     }
 
-    /**
-     * Function for binding to the click event
-     * @param event - event to be passed through to the handler
-     */
-    onInputClick(event: Event) {
+    _onInputClick(event: Event) {
         event.stopPropagation();
     }
 
-    /**
-     * Function for binding to the change event
-     * @param event - event to be passed through to the handler
-     */
-    onInputChange(event: Event) {
+    _onInputChange(event: Event) {
         event.stopPropagation();
         const valueChanged = this.radioGroup && this.value !== this.radioGroup.value;
         this.checked = true;
-        this.emitChangeEvent();
+        this._emitChangeEvent();
         if (this.radioGroup !== null) {
             this.radioGroup._onChangeFn(this.value);
-            this.radioGroup.touch();
+            this.radioGroup._touch();
             if (valueChanged) {
-                this.radioGroup.emitChangeEvent();
+                this.radioGroup._emitChangeEvent();
             }
         }
     }
 
-    private emitChangeEvent(): void {
+    private _emitChangeEvent(): void {
         this.change.emit(new RadioButtonChangeEvent(this, this.value));
     }
 
-    /** Utility function to mark the radio button as changed */
-    markForCheck() {
+    _markForCheck() {
         this.cdRef.markForCheck();
     }
 }
