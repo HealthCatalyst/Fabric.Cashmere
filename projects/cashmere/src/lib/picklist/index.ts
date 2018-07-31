@@ -1,4 +1,3 @@
-export {PicklistPaneComponent} from './pane/picklist-pane.component';
 export {PicklistComponent} from './picklist.component';
 export {PicklistModule} from './picklist.module';
 export {

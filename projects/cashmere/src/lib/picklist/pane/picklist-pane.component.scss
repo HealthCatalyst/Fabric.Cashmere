@@ -5,6 +5,11 @@
     display: flex;
     flex-flow: column;
 
+    .hc-form-field-wrapper {
+        border: none;
+        padding-bottom: 0;
+    }
+
     .picklist-controls {
         flex: 0 0 auto;
         display: flex;
