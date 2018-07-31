@@ -68,21 +68,19 @@ export class PicklistComponent implements ControlValueAccessor {
         return this.picklistSettings.rightHeaderText;
     }
 
-    /**
-     * The left picklist pane containing available options.
-     */
-    @ViewChild('availableList') public available: PicklistPaneComponent | undefined;
-    /**
-     * The right picklist pane containing selected options.
-     */
-    @ViewChild('confirmedList') public confirmed: PicklistPaneComponent | undefined;
+    @ViewChild('availableList') public _available: PicklistPaneComponent | undefined;
+    @ViewChild('confirmedList') public _confirmed: PicklistPaneComponent | undefined;
+    /** Fired when a change is made to the picklist selection. */
     @Output() public changed = new EventEmitter();
     private picklistSettings = new PicklistSettings();
-    public get leftToRightMoveBtnIsDisabled(): boolean {
-        return this.available ? !this.available.isAnySelected() : false;
+    public get _leftToRightMoveBtnIsDisabled(): boolean {
+        return this._available ? !this._available.isAnySelected() : false;
     }
     private stringOptions: Array<string> | null = null;
 
+    /**
+     * Current selected value of the picklist. Will be either `IPicklistOptions` or `string[]` depending on the type of options provided.
+     */
     public set value(model: IPicklistOptions | string[]) {
         const selectedValues: IPicklistOptions = {values: [], valueSets: []};
         if (this.picklistModelisArray(model)) {
@@ -140,7 +138,7 @@ export class PicklistComponent implements ControlValueAccessor {
      * @param type {string} 'values' or 'valuesets'
      */
     public setActiveValueType(type: 'values' | 'valueSets') {
-        if (!this.available) {
+        if (!this._available) {
             console.warn('Available picklist pane not available yet.');
             return;
         }
@@ -148,10 +146,10 @@ export class PicklistComponent implements ControlValueAccessor {
             type = 'values';
         }
 
-        this.available.valueList.isActive = type === 'values';
-        this.available.valueSetList.isActive = type === 'valueSets';
-        this.available.selectNone();
-        this.available.scrollToTop();
+        this._available.valueList.isActive = type === 'values';
+        this._available.valueSetList.isActive = type === 'valueSets';
+        this._available.selectNone();
+        this._available.scrollToTop();
     }
 
     /**
@@ -159,7 +157,7 @@ export class PicklistComponent implements ControlValueAccessor {
      * @param pane the pane from which we are moving items out of.
      */
     public moveSelectedItems(pane: PicklistPaneComponent) {
-        const shouldBreakValuesets = pane === this.confirmed;
+        const shouldBreakValuesets = pane === this._confirmed;
         const selectedOptions = pane.listService.moveOutSelectedOptions(shouldBreakValuesets);
         if (pane.companion) {
             pane.companion.listService.addOptions(selectedOptions);
@@ -177,7 +175,7 @@ export class PicklistComponent implements ControlValueAccessor {
     }
 
     private resetPanes(settings: IPicklistSettings) {
-        if (!(this.available && this.confirmed)) {
+        if (!(this._available && this._confirmed)) {
             console.warn('Picklist panes not available yet.');
             return;
         }
@@ -186,22 +184,22 @@ export class PicklistComponent implements ControlValueAccessor {
         confirmedSource.values = this.picklistSettings.selected.values.slice(0);
         confirmedSource.valueSets = this.picklistSettings.selected.valueSets.slice(0);
         confirmedSource.getValuesForValueset = this.picklistSettings.options.getValuesForValueset;
-        this.confirmed.reset(confirmedSource, this.picklistSettings, this.available, false);
+        this._confirmed.reset(confirmedSource, this.picklistSettings, this._available, false);
 
         const availableSource = Object.assign(new PicklistOptionsSource(), this.picklistSettings.options);
-        this.available.reset(availableSource, this.picklistSettings, this.confirmed, true);
+        this._available.reset(availableSource, this.picklistSettings, this._confirmed, true);
     }
 
     private applyChangeToModel() {
-        if (!(this.available && this.confirmed)) {
+        if (!(this._available && this._confirmed)) {
             console.warn('Picklist panes not available yet.');
             return;
         }
 
         this.picklistSettings.selected.values.length = 0;
         this.picklistSettings.selected.valueSets.length = 0;
-        this.confirmed.valueList.options.forEach(e => this.picklistSettings.selected.values.push(e.option));
-        this.confirmed.valueSetList.options.forEach(e => this.picklistSettings.selected.valueSets.push(e.option));
+        this._confirmed.valueList.options.forEach(e => this.picklistSettings.selected.values.push(e.option));
+        this._confirmed.valueSetList.options.forEach(e => this.picklistSettings.selected.valueSets.push(e.option));
 
         this.changed.emit();
         this.onChange(this.value);

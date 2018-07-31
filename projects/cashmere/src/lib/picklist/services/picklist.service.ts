@@ -5,7 +5,7 @@ import {PicklistFilterService} from './picklist-filter.service';
 import {PicklistValuesetMovingService} from './picklist-valueset-moving.service';
 import {PicklistFilterLocalService} from './picklist-filter-local.service';
 import {PicklistStateService} from './picklist-state.service';
-import {PicklistPaneComponent} from '..';
+import {PicklistPaneComponent} from '../pane/picklist-pane.component';
 import {PicklistOptionsSource, PicklistSettings} from '../picklist.model';
 import {FilterableSelectList, PicklistValueOptions, ValueListOption, ValueSetListOption} from '../pane/picklist-pane.model';
 

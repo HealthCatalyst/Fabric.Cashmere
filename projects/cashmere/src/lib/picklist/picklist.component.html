@@ -6,11 +6,11 @@
                 <a title="Search for Value Sets"
                         (click)="setActiveValueType('valueSets')"
                         class="hc-tab-horizontal"
-                        [ngClass]="{'active': available?.valueSetList.isActive}">Value Sets</a>
+                        [ngClass]="{'active': _available?.valueSetList.isActive}">Value Sets</a>
                 <a title="Search for Values"
                     (click)="setActiveValueType('values')"
                     class="hc-tab-horizontal"
-                    [ngClass]="{'active': available?.valueList.isActive}">Values</a>
+                    [ngClass]="{'active': _available?.valueList.isActive}">Values</a>
             </div>
         </div>
         <hc-picklist-pane #availableList
@@ -22,12 +22,12 @@
     <div class="move-btns">
         <button hc-button color="primary-alt" type="button" name="addBtn"
                 (click)="moveSelectedItems(availableList);"
-                [disabled]="leftToRightMoveBtnIsDisabled">
+                [disabled]="_leftToRightMoveBtnIsDisabled">
             <hc-icon icon-sm fontSet="fa" fontIcon="fa-arrow-right"></hc-icon>
         </button>
         <button hc-button color="primary-alt" type="button" name="removeBtn"
                 (click)="moveSelectedItems(confirmedList);"
-                [disabled]="!confirmed?.isAnySelected()">
+                [disabled]="!_confirmed?.isAnySelected()">
             <hc-icon icon-sm fontSet="fa" fontIcon="fa-arrow-left"></hc-icon>
         </button>
     </div>

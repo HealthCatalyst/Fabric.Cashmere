@@ -19,7 +19,7 @@ const docs: DocItem[] = [
     {id: 'modal', name: 'Modal', examples: ['modal-overview']},
     {id: 'navbar', name: 'Navbar', examples: ['navbar-overview']},
     {id: 'pagination', name: 'Pagination', examples: ['pagination-overview']},
-    {id: 'picklist', name: 'Picklist'},
+    {id: 'picklist', name: 'Picklist', examples: ['picklist-simple', 'picklist-valueset']},
     {id: 'popover', name: 'Popover', examples: ['popover-overview']},
     {id: 'progress-indicators', name: 'Progress Indicators', examples: ['progress-indicator-overview']},
     {id: 'radio-button', name: 'Radio button', examples: ['radio-button-overview']},
