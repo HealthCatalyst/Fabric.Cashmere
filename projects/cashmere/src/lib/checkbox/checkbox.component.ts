@@ -7,7 +7,6 @@ import {
     EventEmitter,
     forwardRef,
     HostBinding,
-    HostListener,
     Input,
     Output,
     Renderer2,
@@ -38,47 +37,50 @@ export const hcCheckboxValueAccessor: any = {
     exportAs: 'hcCheckbox'
 })
 export class CheckboxComponent implements ControlValueAccessor {
-    private uniqueId = `hc-checkbox-${nextCheckboxId++}`;
+    private _uniqueId = `hc-checkbox-${nextCheckboxId++}`;
     private _checked: boolean = false;
     private _required: boolean = false;
     private _disabled: boolean = false;
     private _tabIndex: number;
 
-    // list out all properties or attributes an input[type=checkbox] can have since we're wrapping the input
+    /** Value attribute of the native checkbox */
     @Input() value: string;
+
+    /** Whether the checkbox is indeterminate. It can represent a checkbox with three states. */
     @Input() indeterminate: boolean;
-    @Input() id: string = this.uniqueId;
+
+    /** Unique id for the checkbox element. If none is supplied, one will be auto-generated. */
+    @Input() id: string = this._uniqueId;
+
+    /** Sets unique name used in a form */
     @Input() name: string | null = null;
 
+    /** Event emitted whenever the state changes */
     @Output() change = new EventEmitter<CheckboxChangeEvent>();
 
-    @ViewChild('checkboxInput') checkboxInput: ElementRef;
-
-    @HostListener('blur')
-    onBlur() {
-        this.onTouchFunc();
-    }
+    @ViewChild('checkboxInput') _checkboxInput: ElementRef;
 
     @HostBinding('attr.id')
-    get getHostId(): string {
+    get _getHostId(): string {
         return this.id;
     }
 
     @HostBinding('class.hc-checkbox-checked')
-    get getCheckboxCheckedClass(): boolean {
+    get _getCheckboxCheckedClass(): boolean {
         return this.checked;
     }
 
     @HostBinding('class.hc-checkbox-disabled')
-    get getCheckboxDisabledClass(): boolean {
+    get _getCheckboxDisabledClass(): boolean {
         return this.disabled;
     }
 
     @HostBinding('class.hc-checkbox-indeterminate')
-    get getCheckboxIndeterminateClass(): boolean {
+    get _getCheckboxIndeterminateClass(): boolean {
         return this.indeterminate;
     }
 
+    /** Whether the checkbox is required. */
     @Input()
     get required(): boolean {
         return this._required;
@@ -88,6 +90,7 @@ export class CheckboxComponent implements ControlValueAccessor {
         this._required = parseBooleanAttribute(required);
     }
 
+    /** Whether the checkbox is disabled. */
     @Input()
     get disabled(): boolean {
         return this._disabled;
@@ -97,6 +100,7 @@ export class CheckboxComponent implements ControlValueAccessor {
         this._disabled = parseBooleanAttribute(isDisabled);
     }
 
+    /** Whether the checkbox is checked. */
     @Input()
     get checked(): boolean {
         return this._checked;
@@ -109,6 +113,7 @@ export class CheckboxComponent implements ControlValueAccessor {
         this._checked = checked;
     }
 
+    /** TabIndex attribute of native checkbox */
     get tabIndex(): number {
         return this.disabled ? -1 : this._tabIndex;
     }
@@ -117,13 +122,13 @@ export class CheckboxComponent implements ControlValueAccessor {
         this._tabIndex = value == null ? 0 : value;
     }
 
-    get inputId() {
-        return `${this.id || this.uniqueId}-input`;
+    get _inputId() {
+        return `${this.id || this._uniqueId}-input`;
     }
 
-    private onChangeFunc: (value: any) => void = () => {};
+    private _onChangeFunc: (value: any) => void = () => {};
 
-    private onTouchFunc: () => any = () => {};
+    private _onTouchFunc: () => any = () => {};
 
     constructor(@Attribute('tabindex') tabindex: string, private _renderer: Renderer2) {
         this.tabIndex = parseInt(tabindex, 10) || 0;
@@ -134,41 +139,41 @@ export class CheckboxComponent implements ControlValueAccessor {
     }
 
     registerOnChange(fn: (value: any) => void): void {
-        this.onChangeFunc = fn;
+        this._onChangeFunc = fn;
     }
 
     registerOnTouched(fn: () => any): void {
-        this.onTouchFunc = fn;
+        this._onTouchFunc = fn;
     }
 
     setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
-        this._renderer.setProperty(this.checkboxInput.nativeElement, 'disabled', isDisabled);
+        this._renderer.setProperty(this._checkboxInput.nativeElement, 'disabled', isDisabled);
     }
 
     toggle() {
         this.checked = !this.checked;
     }
 
-    clickEvent(event: Event) {
+    _clickEvent(event: Event) {
         event.stopPropagation(); // prevent native click event from being dispatched
 
         if (!this.disabled) {
             this.toggle();
-            this.emitChangeEvent();
+            this._emitChangeEvent();
         }
     }
 
-    stopChangeEvent(event: Event) {
+    _stopChangeEvent(event: Event) {
         event.stopPropagation(); // prevent native change event from emitting its own object through output 'change'
     }
 
-    private emitChangeEvent(): void {
-        this.onChangeFunc(this.checked);
+    private _emitChangeEvent(): void {
+        this._onChangeFunc(this.checked);
         this.change.emit(new CheckboxChangeEvent(this, this.checked));
     }
 
     _onBlur() {
-        this.onTouchFunc();
+        this._onTouchFunc();
     }
 }
