@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ComponentViewerComponent implements OnInit {
     docItem: DocItem | undefined;
-    sections: Set<string> = new Set(['api']);
+    sections: Set<string>;
 
     constructor(private activatedRoute: ActivatedRoute, private docItems: DocumentItemsService) {}
 
@@ -17,13 +17,17 @@ export class ComponentViewerComponent implements OnInit {
         this.activatedRoute.params.pipe(map(params => params['id']), map(id => this.docItems.getItemById(id))).subscribe(docItem => {
             this.docItem = docItem;
 
+            let availableSections = ['API'];
+
             if (this.docItem) {
                 const examples = this.docItem.examples;
                 if (examples && examples.length > 0) {
-                    this.sections.add('examples');
-                } else {
-                    this.sections.delete('examples');
+                    availableSections.push('Examples');
                 }
+                if (this.docItem.usageDoc) {
+                    availableSections.push('Usage');
+                }
+                this.sections = new Set<string>(availableSections);
             }
         });
     }

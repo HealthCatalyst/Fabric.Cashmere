@@ -4,17 +4,18 @@ export interface DocItem {
     id: string;
     name: string;
     examples?: string[];
+    usageDoc?: boolean;
 }
 
 const docs: DocItem[] = [
     {id: 'accordion', name: 'Accordion', examples: ['accordion-overview']},
-    {id: 'breadcrumbs', name: 'Breadcrumbs'},
-    {id: 'button', name: 'Button', examples: ['button-types']},
+    {id: 'breadcrumbs', name: 'Breadcrumbs', usageDoc: true},
+    {id: 'button', name: 'Button', usageDoc: true, examples: ['button-types']},
     {id: 'checkbox', name: 'Checkbox', examples: ['checkbox-overview']},
     {id: 'chip', name: 'Chip', examples: ['chip-overview']},
     {id: 'drawer', name: 'Drawer', examples: ['drawer-overview']},
     {id: 'icon', name: 'Icon', examples: ['icon-overview']},
-    {id: 'input', name: 'Input', examples: ['input-overview']},
+    {id: 'input', name: 'Input', usageDoc: true, examples: ['input-overview']},
     {id: 'list', name: 'List', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', examples: ['modal-overview']},
     {id: 'navbar', name: 'Navbar', examples: ['navbar-overview']},
