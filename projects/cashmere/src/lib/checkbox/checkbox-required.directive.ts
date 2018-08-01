@@ -1,5 +1,4 @@
-/* tslint:disable:directive-selector */
-/* tslint:disable:no-use-before-declare */
+/* tslint:disable:directive-selector no-use-before-declare */
 
 import {Directive, forwardRef, HostBinding, Provider} from '@angular/core';
 import {CheckboxRequiredValidator, NG_VALIDATORS} from '@angular/forms';
@@ -10,6 +9,7 @@ export const HC_CHECKBOX_REQUIRED_VALIDATOR: Provider = {
     multi: true
 };
 
+/** @docs-private */
 @Directive({
     selector: `hc-checkbox[required][formControlName],
              hc-checkbox[required][formControl],hc-checkbox[required][ngModel]`,
