@@ -30,8 +30,8 @@ export class PicklistValuesetExample {
             ],
             valueSets: [
                 {
-                    title: 'Cholera',
-                    code: 'bebbf8d1-b4ca-495e-96dd-ed4e2dc32d69',
+                    title: 'Cholera Bundle',
+                    code: 'bebbf8d1-b4ca-495e-96dd-ed4e2dc32d70',
                     subValueCount: 3,
                     subValues: [
                         {code: '001.0', title: 'Cholera due to vibrio cholerae'},
@@ -42,7 +42,7 @@ export class PicklistValuesetExample {
                 {
                     title: 'Typhoid',
                     code: 'bebbf8d1-b4ca-495e-96dd-ed4e2dc32d69',
-                    subValueCount: 10,
+                    subValueCount: 5,
                     subValues: [
                         {code: '002', title: 'Typhoid and paratyphoid fevers'},
                         {code: '002.0', title: 'Typhoid fever'},

@@ -52,7 +52,7 @@
                                     (dblclick)="onItemDoubleClicked($event, item.subValuesSelectList, subItem);"
                                     class="value-option-row hc-tr"
                                     [ngClass]="{'hc-row-selected': subItem.selected}"><td>
-                                        <span *ngIf="codeIsSignificant">{{subItem.option.code}}</span>
+                                        <span *ngIf="codeIsSignificant" class="valueset-code">{{subItem.option.code}}</span>
                                         <span>{{subItem.option.title || "Untitled"}}</span>
                                     </td>
                                 </tr>
