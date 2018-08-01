@@ -58,8 +58,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     display: block;
     position: relative;
     flex: auto;
-    min-width: 0;
-    width: $mat-form-field-default-infix-width;
+    min-width: $mat-form-field-default-infix-width;
 
     padding: $infix-padding 10px;
 }

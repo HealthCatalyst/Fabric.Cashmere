@@ -126,8 +126,8 @@ describe('CheckboxComponent', () => {
             testComponent.checkboxId = null;
             fixture.detectChanges();
 
-            expect(checkboxInstance.inputId).toMatch(/hc-checkbox-\d+/);
-            expect(inputElement.id).toBe(checkboxInstance.inputId);
+            expect(checkboxInstance._inputId).toMatch(/hc-checkbox-\d+/);
+            expect(inputElement.id).toBe(checkboxInstance._inputId);
         });
 
         it('should not trigger the click event multiple times', () => {
