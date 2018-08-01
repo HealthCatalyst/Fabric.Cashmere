@@ -10,7 +10,11 @@ export interface DocItem {
 const docs: DocItem[] = [
     {id: 'accordion', name: 'Accordion', examples: ['accordion-overview']},
     {id: 'breadcrumbs', name: 'Breadcrumbs', usageDoc: true},
-    {id: 'button', name: 'Button', usageDoc: true, examples: ['button-types']},
+    {
+        id: 'button',
+        name: 'Button',
+        examples: ['button-primary', 'button-split', 'button-secondary', 'button-disabled', 'button-tertiary', 'button-icon']
+    },
     {id: 'checkbox', name: 'Checkbox', examples: ['checkbox-overview']},
     {id: 'chip', name: 'Chip', examples: ['chip-overview']},
     {id: 'drawer', name: 'Drawer', examples: ['drawer-overview']},
