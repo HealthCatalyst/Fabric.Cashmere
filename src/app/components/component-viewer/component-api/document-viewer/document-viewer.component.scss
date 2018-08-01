@@ -81,6 +81,7 @@
 
     td {
         padding-top: 5px;
+        border-bottom: none;
     }
 
     p {
@@ -96,4 +97,28 @@
         font-weight: unset;
         line-height: unset;
     }
+}
+
+.docs-api-method-parameters-header-cell,
+.docs-api-method-returns-header-cell {
+    padding-left: 25px;
+    padding-top: 0 !important;
+    color: $text !important;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+.docs-api-method-parameter-name {
+    padding-left: 25px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.docs-api-method-parameter-type,
+.docs-api-method-returns-type {
+    padding-left: 25px !important;
+    font-size: 0.85714286rem !important;
+}
+
+.docs-api-method-name-cell {
+    border-top: 1px dashed $gray-200 !important;
 }
