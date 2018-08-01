@@ -1,7 +1,7 @@
 import {ModalOverlayComponent} from './modal-overlay.component';
 import {ComponentRef} from '@angular/core';
 import {ModalWindowComponent} from './modal-window.component';
-import {BehaviorSubject} from 'rxjs';
+import {Subject} from 'rxjs';
 
 export class HcModal<T> {
     /** Allows direct access to the component used to create the modal. Null when TemplateRef is used */
@@ -11,7 +11,7 @@ export class HcModal<T> {
     /** Allows direct access to window component which holds the component/template */
     public window: ComponentRef<ModalWindowComponent> | null;
     /** Subscribe to result in order to get access to modal result values passed in ActiveModal.close() */
-    public result: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+    public result: Subject<any> = new Subject<any>();
     public _removeOpenClass: (() => void) | null;
     /** Data that was passed in through ModalOptions */
     public data?: any;
