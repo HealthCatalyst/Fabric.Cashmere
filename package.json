@@ -14,7 +14,7 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "docs": "ts-node scripts/docs.ts && node scripts/generate-examples.js",
+        "docs": "ts-node scripts/docs.ts && node scripts/generate-examples-docs.js && node scripts/generate-usage-docs.js",
         "test": "ng test cashmere",
         "test:unit": "ng test cashmere --watch=false --code-coverage --no-progress",
         "lint": "npm run lint:tslint && npm run lint:prettier",

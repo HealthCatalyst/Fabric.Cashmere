@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {DocItem, DocumentItemsService} from '../../core/document-items.service';
+import {DocItem, DocumentItemsService} from '../core/document-items.service';
 
 @Component({
     selector: 'hc-demo-components',
-    templateUrl: './components-list.component.html'
+    templateUrl: './components.component.html'
 })
-export class ComponentsListComponent {
+export class ComponentsComponent {
     docItems: DocItem[];
 
     constructor(docItemService: DocumentItemsService) {

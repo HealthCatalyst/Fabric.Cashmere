@@ -4,6 +4,7 @@ export interface DocItem {
     id: string;
     name: string;
     examples?: string[];
+    usageDoc?: boolean;
 }
 
 const docs: DocItem[] = [
@@ -14,11 +15,12 @@ const docs: DocItem[] = [
         name: 'Button',
         examples: ['button-primary', 'button-split', 'button-secondary', 'button-disabled', 'button-tertiary', 'button-icon']
     },
+    {id: 'breadcrumbs', name: 'Breadcrumbs', usageDoc: true},
     {id: 'checkbox', name: 'Checkbox', examples: ['checkbox-overview']},
     {id: 'chip', name: 'Chip', examples: ['chip-overview']},
     {id: 'drawer', name: 'Drawer', examples: ['drawer-overview']},
     {id: 'icon', name: 'Icon', examples: ['icon-overview']},
-    {id: 'input', name: 'Input', examples: ['input-overview']},
+    {id: 'input', name: 'Input', usageDoc: true, examples: ['input-overview']},
     {id: 'list', name: 'List', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', examples: ['modal-overview']},
     {id: 'navbar', name: 'Navbar', examples: ['navbar-overview']},
