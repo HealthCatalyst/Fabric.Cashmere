@@ -22,7 +22,7 @@ const docs: DocItem[] = [
     {id: 'pagination', name: 'Pagination', examples: ['pagination-overview']},
     {id: 'picklist', name: 'Picklist', examples: ['picklist-simple', 'picklist-valueset']},
     {id: 'popover', name: 'Popover', examples: ['popover-overview']},
-    {id: 'progress-indicators', name: 'Progress Indicators', examples: ['progress-indicator-overview']},
+    {id: 'progress-indicators', name: 'Progress Indicators', examples: ['progress-spinner', 'progress-dots'], usageDoc: true},
     {id: 'radio-button', name: 'Radio button', examples: ['radio-button-overview']},
     {id: 'select', name: 'Select', examples: ['select-overview']},
     {id: 'subnav', name: 'Subnav', examples: ['subnav-overview']},
