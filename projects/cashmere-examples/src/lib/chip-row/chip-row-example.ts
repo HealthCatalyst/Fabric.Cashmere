@@ -9,7 +9,6 @@ import {Component} from '@angular/core';
     styles: ['.chip-row-wrapper { display: flex; }']
 })
 export class ChipRowExample {
-
     hideChip(event: any) {
         event.target.style.display = 'none';
     }

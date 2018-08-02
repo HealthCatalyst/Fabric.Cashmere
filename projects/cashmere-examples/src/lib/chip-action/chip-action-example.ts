@@ -8,7 +8,6 @@ import {Component} from '@angular/core';
     templateUrl: 'chip-action-example.html'
 })
 export class ChipActionExample {
-
     hideChip(event: any) {
         event.target.style.display = 'none';
     }
