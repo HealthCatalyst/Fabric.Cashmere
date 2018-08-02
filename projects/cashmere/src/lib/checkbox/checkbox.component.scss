@@ -1,6 +1,8 @@
 @import '../sass/colors';
 
 .hc-checkbox-container {
+    overflow: hidden;
+
     .hc-checkbox-content {
         display: inline-flex;
         align-items: center;
