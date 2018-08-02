@@ -115,8 +115,11 @@
 
 .docs-api-method-parameter-type,
 .docs-api-method-returns-type {
-    padding-left: 25px !important;
     font-size: 0.85714286rem !important;
+}
+
+.docs-api-method-returns-type {
+    padding-left: 25px !important;
 }
 
 .docs-api-method-name-cell {

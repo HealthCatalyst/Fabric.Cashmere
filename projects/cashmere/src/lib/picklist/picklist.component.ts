@@ -115,7 +115,6 @@ export class PicklistComponent implements ControlValueAccessor {
 
     /**
      * Will update the picklist with the given settings, maintaining any previous settings that have not been overridden.
-     * @param settings
      */
     public update(settings: IPicklistSettings) {
         const updatedSettings = Object.assign(this.picklistSettings, settings);
@@ -124,7 +123,6 @@ export class PicklistComponent implements ControlValueAccessor {
 
     /**
      * Will reset the picklist settings with the given settings. (Clears out any previous settings.)
-     * @param settings
      */
     public reset(settings: IPicklistSettings = new PicklistSettings()) {
         this.picklistSettings = Object.assign(new PicklistSettings(), settings);
@@ -135,7 +133,6 @@ export class PicklistComponent implements ControlValueAccessor {
 
     /**
      * Will change the active tab. (Will do nothing if `settings.useValuesets` is false.)
-     * @param type {string} 'values' or 'valuesets'
      */
     public setActiveValueType(type: 'values' | 'valueSets') {
         if (!this._available) {
@@ -154,7 +151,7 @@ export class PicklistComponent implements ControlValueAccessor {
 
     /**
      * Will move all selected items from the given pane into its companion pane. Used internally by the left and right arrow buttons.
-     * @param pane the pane from which we are moving items out of.
+     * @param pane the pane from which we are moving items out of
      */
     public moveSelectedItems(pane: PicklistPaneComponent) {
         const shouldBreakValuesets = pane === this._confirmed;
