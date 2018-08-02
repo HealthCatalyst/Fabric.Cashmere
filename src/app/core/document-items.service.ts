@@ -28,7 +28,7 @@ const docs: DocItem[] = [
     {
         id: 'drawer',
         name: 'Drawer',
-        examples: ['drawer-basic', 'drawer-overlay', 'drawer-double']
+        examples: ['drawer-basic', 'drawer-overlay', 'drawer-side']
     },
     {id: 'icon', name: 'Icon', examples: ['icon-overview']},
     {
