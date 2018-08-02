@@ -15,22 +15,55 @@ const docs: DocItem[] = [
         name: 'Button',
         examples: ['button-primary', 'button-split', 'button-secondary', 'button-disabled', 'button-tertiary', 'button-icon']
     },
-    {id: 'checkbox', name: 'Checkbox', examples: ['checkbox-overview']},
-    {id: 'chip', name: 'Chip', examples: ['chip-overview']},
-    {id: 'drawer', name: 'Drawer', examples: ['drawer-overview']},
+    {
+        id: 'checkbox',
+        name: 'Checkbox',
+        examples: ['checkbox-standard', 'checkbox-disabled', 'checkbox-forms']
+    },
+    {
+        id: 'chip',
+        name: 'Chip',
+        examples: ['chip-basic', 'chip-action', 'chip-row', 'chip-singlerow']
+    },
+    {
+        id: 'drawer',
+        name: 'Drawer',
+        examples: ['drawer-basic', 'drawer-overlay', 'drawer-side']
+    },
     {id: 'icon', name: 'Icon', examples: ['icon-overview']},
-    {id: 'input', name: 'Input', usageDoc: true, examples: ['input-overview']},
+    {
+        id: 'input',
+        name: 'Input',
+        usageDoc: true,
+        examples: ['input-required', 'input-suffix', 'input-prefix', 'input-disabled']
+    },
     {id: 'list', name: 'List', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', examples: ['modal-overview']},
     {id: 'navbar', name: 'Navbar', examples: ['navbar-overview']},
     {id: 'pagination', name: 'Pagination', examples: ['pagination-overview']},
     {id: 'picklist', name: 'Picklist', examples: ['picklist-simple', 'picklist-valueset'], usageDoc: true},
-    {id: 'popover', name: 'Popover', examples: ['popover-overview']},
+    {
+        id: 'popover',
+        name: 'Popover',
+        examples: ['popover-overview', 'popover-placement', 'popover-dynamic']
+    },
     {id: 'progress-indicators', name: 'Progress Indicators', examples: ['progress-spinner', 'progress-dots'], usageDoc: true},
-    {id: 'radio-button', name: 'Radio button', examples: ['radio-button-overview']},
-    {id: 'select', name: 'Select', examples: ['select-overview']},
+    {
+        id: 'radio-button',
+        name: 'Radio button',
+        examples: ['radio-button-standard', 'radio-button-disabled', 'radio-button-forms']
+    },
+    {
+        id: 'select',
+        name: 'Select',
+        examples: ['select-standard', 'select-disabled', 'select-validation']
+    },
     {id: 'subnav', name: 'Subnav', examples: ['subnav-overview']},
-    {id: 'tabs', name: 'Tabs', examples: ['tabs-overview']},
+    {
+        id: 'tabs',
+        name: 'Tabs',
+        examples: ['tabs-horizontal', 'tabs-vertical']
+    },
     {id: 'tile', name: 'Tile', examples: ['tile-overview']},
     {id: 'typeform-survey', name: 'Typeform survey', examples: ['typeform-survey-overview']}
 ];

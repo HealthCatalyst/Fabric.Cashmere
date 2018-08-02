@@ -151,6 +151,7 @@ export class CheckboxComponent implements ControlValueAccessor {
         this._renderer.setProperty(this._checkboxInput.nativeElement, 'disabled', isDisabled);
     }
 
+    /** Toggles the current checked state of the checkbox */
     toggle() {
         this.checked = !this.checked;
     }

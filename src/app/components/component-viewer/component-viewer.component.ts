@@ -22,7 +22,7 @@ export class ComponentViewerComponent implements OnInit {
             if (this.docItem) {
                 const examples = this.docItem.examples;
                 if (examples && examples.length > 0) {
-                    availableSections.push('Examples');
+                    availableSections = ['Examples', 'API'];
                 }
                 if (this.docItem.usageDoc) {
                     availableSections.push('Usage');

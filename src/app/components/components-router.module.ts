@@ -18,7 +18,7 @@ const routes: Route[] = [
                     {path: 'api', component: ComponentApiComponent, pathMatch: 'full'},
                     {path: 'examples', component: ComponentExamplesComponent, pathMatch: 'full'},
                     {path: 'usage', component: ComponentUsageComponent, pathMatch: 'full'},
-                    {path: '**', redirectTo: 'api'}
+                    {path: '**', redirectTo: 'examples'}
                 ]
             }
         ]

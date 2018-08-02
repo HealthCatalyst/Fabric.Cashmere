@@ -6,7 +6,7 @@ import {Directive, HostBinding} from '@angular/core';
 })
 export class ListAvatarDirective {
     @HostBinding('class.hc-list-avatar')
-    get hostClass(): boolean {
+    get _hostClass(): boolean {
         return true;
     }
 }

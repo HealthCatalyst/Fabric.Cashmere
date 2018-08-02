@@ -12,7 +12,7 @@ export function validateButtonColor(btnColor: string) {
     }
 }
 
-/* Cashmere styled button */
+/** Cashmere styled button */
 @Component({
     selector: 'button[hc-button]',
     template: '<ng-content></ng-content>',
@@ -62,6 +62,7 @@ export class ButtonComponent {
         this._previousColor = this.color;
     }
 
+    /** Used to give focus to the button */
     focus(): void {
         this.elementRef.nativeElement.focus();
     }

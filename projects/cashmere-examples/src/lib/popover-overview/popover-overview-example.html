@@ -1,7 +1,7 @@
 <div class="sample-component">
-    <button hc-button color="primary" [hcPopover]="options" popperPlacement="bottom" aria-hidden="true">
+    <button hc-button color="primary" [hcPopover]="options" popperPlacement="bottom" class="demo-button" aria-hidden="true">
         Dropdown
-        <hc-icon fontSet="fa" fontIcon="fa-chevron-down" icon-sm></hc-icon>
+        <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="icon-right" icon-sm></hc-icon>
     </button>
     <hc-popover-content #options>
         <ul class="list-options">
@@ -12,25 +12,5 @@
                 <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
             </li>
         </ul>
-    </hc-popover-content>
-</div>
-
-<h5>Placement</h5>
-<div class="sample-component">
-    <button hc-button color="primary" hcPopover="top" popperPlacement="top" aria-hidden="true" class="demo-button">Top</button>
-    <button hc-button color="neutral" hcPopover="bottom" popperPlacement="bottom" aria-hidden="true" class="demo-button">Bottom</button>
-    <button hc-button color="primary-alt" hcPopover="left" popperPlacement="left" aria-hidden="true" class="demo-button">Left</button>
-    <button hc-button color="secondary" hcPopover="right" popperPlacement="right" aria-hidden="true" class="demo-button">Right</button>
-</div>
-
-<h5>Dynamic Content</h5>
-<p>Enter text into the input below to edit the content of the popover:</p>
-<div class="sample-component">
-    <input hc-input type="text" [(ngModel)]="body">
-    <button hc-button class="inline-button" color="primary" [hcPopover]="dynamic" popperPlacement="bottom" [popperCloseOnClickOutside]="false"
-            aria-hidden="true">Click Me
-    </button>
-    <hc-popover-content #dynamic>
-        <span [(innerText)]="body"></span>
     </hc-popover-content>
 </div>

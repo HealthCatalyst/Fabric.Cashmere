@@ -1,0 +1,7 @@
+<hc-radio-group [(ngModel)]="favoriteShow">
+    <hc-radio-button *ngFor="let show of shows" [value]="show">{{show}}</hc-radio-button>
+</hc-radio-group>
+<p>Current selection: {{favoriteShow ? favoriteShow : 'none'}}</p>
+<button hc-button title="Primary-Alt Button" color="primary-alt" (click)="reset()">
+    Clear Selection
+</button>

@@ -69,7 +69,7 @@
 
 .directive-spacer {
     display: block;
-    height: 40px;
+    height: 20px;
 }
 
 .docs-api-method-table {
@@ -124,4 +124,13 @@
 
 .docs-api-method-name-cell {
     border-top: 1px dashed $gray-200 !important;
+}
+
+.example-buffer {
+    margin-top: 20px;
+    display: block;
+}
+
+.docs-api-property-name {
+    margin: 0;
 }
