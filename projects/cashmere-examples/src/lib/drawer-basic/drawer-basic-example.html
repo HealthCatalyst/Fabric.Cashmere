@@ -1,0 +1,17 @@
+<div class="drawer-container">
+    <hc-drawer-container>
+        <hc-drawer align="left" #leftDrawer>
+            Left drawer content
+        </hc-drawer>
+        <hc-drawer align="right" #rightDrawer>
+            Right drawer content
+        </hc-drawer>
+
+        <button hc-button color="primary" (click)="leftDrawer.toggle()" class="demo-button">
+            Toggle Left Drawer
+        </button>
+        <button hc-button color="primary" (click)="rightDrawer.toggle()" class="demo-button">
+            Toggle Right Drawer
+        </button>
+    </hc-drawer-container>
+</div>

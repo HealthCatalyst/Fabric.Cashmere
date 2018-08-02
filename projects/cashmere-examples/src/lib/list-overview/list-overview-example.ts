@@ -6,6 +6,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'list-overview-example',
     templateUrl: 'list-overview-example.html',
-    styleUrls: ['list-overview-example.css']
+    styles: ['.hc-list-avatar { background-color: aliceblue; }', 'h4 { margin: 0 !important; }']
 })
+
 export class ListOverviewExample {}

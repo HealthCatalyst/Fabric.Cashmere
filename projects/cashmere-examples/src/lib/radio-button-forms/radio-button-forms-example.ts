@@ -1,0 +1,17 @@
+import {Component} from '@angular/core';
+
+/**
+ * @title Radio Buttons using Form Controls
+ */
+@Component({
+    selector: 'radio-button-forms-example',
+    templateUrl: 'radio-button-forms-example.html'
+})
+export class RadioButtonFormsExample {
+    favoriteShow: string | null = 'Silicon Valley';
+    shows = ['Silicon Valley', 'Game of Thrones', 'Better Call Saul'];
+
+    reset(): void {
+        this.favoriteShow = null;
+    }
+}

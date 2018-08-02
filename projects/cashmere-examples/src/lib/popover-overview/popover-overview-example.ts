@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
 
 /**
- * @title Popover overview
+ * @title Popover Overview
  */
 @Component({
     selector: 'popover-overview-example',
-    templateUrl: 'popover-overview-example.html'
+    templateUrl: 'popover-overview-example.html',
+    styles: ['.icon-right { margin-left: 5px; }']
 })
-export class PopoverOverviewExample {
-    body: string = 'dynamic content';
-}
+export class PopoverOverviewExample {}

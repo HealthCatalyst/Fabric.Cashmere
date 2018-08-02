@@ -3,6 +3,8 @@
     <hc-tab-set direction="horizontal">
         <hc-tab [tabTitle]="ext" *ngFor="let ext of ['Example', 'HTML', 'Typescript']">
 
+            <div class="example-buffer" *ngIf="ext == 'Example'"></div>
+
             <ng-container #vc></ng-container>
 
             <pre class="html hljs xml" *ngIf="ext != 'Example'">
