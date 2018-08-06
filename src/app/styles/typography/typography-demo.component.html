@@ -155,6 +155,8 @@
                 </td>
                 <td>
                     <code>&lt;a href=&quot;...&quot;&gt;&lt;/a&gt;</code>
+                    <span class="type-label">or</span>
+                    <code>.hc-text-link</code>
                 </td>
                 <td>
                     <ul>
@@ -179,6 +181,8 @@
                 </td>
                 <td>
                     <code>&lt;em&gt;&lt;/em&gt;</code>
+                    <span class="type-label">or</span>
+                    <code>.hc-type-em</code>
                 </td>
                 <td>
                     <ul>
@@ -203,6 +207,8 @@
                 </td>
                 <td>
                     <code>&lt;strong&gt;&lt;/strong&gt;</code>
+                    or
+                    <code>.hc-type-bold</code>
                 </td>
                 <td>
                     <ul>
@@ -222,6 +228,130 @@
                 </td>
             </tr>
         </table>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Sizes</h5>
+        <table class="api-table">
+            <tr>
+                <td>
+                    <span class="hc-type-xsm">Extra small</span>
+                </td>
+                <td>
+                    <code>.hc-type-xsm</code>
+                </td>
+                <td>
+                    <span class="type-label">Font-size</span>12px
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hc-type-sm">Small</span>
+                </td>
+                <td>
+                    <code>.hc-type-sm</code>
+                </td>
+                <td>
+                    <span class="type-label">Font-size</span>14px
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hc-type-md">Medium</span>
+                </td>
+                <td>
+                    <code>.hc-type-md</code>
+                </td>
+                <td>
+                    <span class="type-label">Font-size</span>16px
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hc-type-lg">Large</span>
+                </td>
+                <td>
+                    <code>.hc-type-lg</code>
+                </td>
+                <td>
+                    <span class="type-label">Font-size</span>18px
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hc-type-xlg">Extra Large</span>
+                </td>
+                <td>
+                    <code>.hc-type-xlg</code>
+                </td>
+                <td>
+                    <span class="type-label">Font-size</span>22px
+                </td>
+            </tr>
+        </table>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Weights</h5>
+        <table class="api-table">
+            <tr>
+                <td>
+                    <span class="hc-type-light">Light</span>
+                </td>
+                <td>
+                    <code>.hc-type-light</code>
+                </td>
+                <td>
+                    <span class="type-label">Font-weight</span>300
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hc-type-reg">Regular</span>
+                </td>
+                <td>
+                    <code>.hc-type-reg</code>
+                </td>
+                <td>
+                    <span class="type-label">Font-weight</span>400
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hc-type-bold">Bold</span>
+                </td>
+                <td>
+                    <code>.hc-type-bold</code>
+                </td>
+                <td>
+                    <span class="type-label">Font-weight</span>600
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="hc-type-xbold">Extra bold</span>
+                </td>
+                <td>
+                    <code>.hc-type-xbold</code>
+                </td>
+                <td>
+                    <span class="type-label">Font-weight</span>700
+                </td>
+            </tr>
+        </table>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Ellipsis</h5>
+        <p>For truncating a single line of text based on the width of it's containing div, use <code>.hc-type-ellipsis</code>,
+            which is a helper class for the following commonly repeated css:
+        </p>
+        <pre><code>
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+        </code></pre>
+        <p>For cases where you'd like to truncate to certain number of characters, a pipe would be the way to go.</p>
     </hc-tile>
 
     <hc-tile>

@@ -96,7 +96,9 @@ pre {
     }
 }
 
-a {
+// text links
+a,
+.hc-text-link {
     text-decoration: none;
     color: $primary-brand;
     &:hover {
@@ -107,9 +109,49 @@ a {
     }
 }
 
+// sizes
+.hc-type-xsm {
+    @include fontSize(12px);
+}
+
+.hc-type-sm {
+    @include fontSize(14px);
+}
+
+.hc-type-md {
+    @include fontSize(16px);
+}
+
+.hc-type-lg {
+    @include fontSize(18px);
+}
+
+.hc-type-xlg {
+    @include fontSize(22px);
+}
+
+// weights
+.hc-type-light {
+    font-weight: 300;
+}
+
+.hc-type-reg {
+    font-weight: 400;
+}
+
 strong,
 .hc-type-bold {
     font-weight: 600;
+}
+
+.hc-type-xbold {
+    font-weight: 700;
+}
+
+.hc-type-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 em,
