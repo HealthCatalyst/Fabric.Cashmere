@@ -8,11 +8,6 @@ import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss']
 })
-/** 
- * The pagination control enables the user to navigate across paged content. 
- * Although commonly used with tables and data grids, this control may be used 
- * any place where paged data is used. 
- */
 export class PaginationComponent implements OnChanges {
     private _totalPages: number | null | undefined = null;
     private _inputPageNumber: number | null = null;
