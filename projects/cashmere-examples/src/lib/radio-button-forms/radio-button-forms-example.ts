@@ -5,7 +5,8 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'radio-button-forms-example',
-    templateUrl: 'radio-button-forms-example.html'
+    templateUrl: 'radio-button-forms-example.html',
+    styleUrls: ['radio-button-forms-example.css']
 })
 export class RadioButtonFormsExample {
     favoriteShow: string | null = 'Silicon Valley';

@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'input-disabled-example',
     templateUrl: 'input-disabled-example.html',
-    styles: ['.form-container { width: 300px; }', '.hc-form-field { width: 100%; }']
+    styleUrls: ['input-disabled-example.css']
 })
 export class InputDisabledExample {}

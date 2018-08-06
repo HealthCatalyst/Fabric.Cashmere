@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'popover-overview-example',
     templateUrl: 'popover-overview-example.html',
-    styles: ['.icon-right { margin-left: 5px; }']
+    styleUrls: ['popover-overview-example.css']
 })
 export class PopoverOverviewExample {}

@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'button-icon-example',
     templateUrl: 'button-icon-example.html',
-    styles: ['button { margin: 10px; }', '.icon-left { margin-right: 5px; }', '.icon-right { margin-left: 5px; }']
+    styleUrls: ['button-icon-example.css']
 })
 export class ButtonIconExample {}

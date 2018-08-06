@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'input-suffix-example',
     templateUrl: 'input-suffix-example.html',
-    styles: ['.form-container { width: 300px; }', '.hc-form-field { width: 100%; }']
+    styleUrls: ['input-suffix-example.css']
 })
 export class InputSuffixExample {}

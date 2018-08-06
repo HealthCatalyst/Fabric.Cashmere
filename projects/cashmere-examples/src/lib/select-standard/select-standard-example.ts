@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'select-standard-example',
     templateUrl: 'select-standard-example.html',
-    styles: ['select-sample { max-width: 350px; width: 100%; }']
+    styleUrls: ['select-standard-example.css']
 })
 export class SelectStandardExample {}

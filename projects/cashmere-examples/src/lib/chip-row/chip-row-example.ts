@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'chip-row-example',
     templateUrl: 'chip-row-example.html',
-    styles: ['.chip-row-wrapper { display: flex; }']
+    styleUrls: ['chip-row-example.css']
 })
 export class ChipRowExample {
     hideChip(event: any) {
