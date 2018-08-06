@@ -51,7 +51,7 @@ export class NavbarComponent implements AfterViewInit {
 
     @HostListener('window:resize')
     _navResize() {
-        this._navbarMore.hide();
+        this._navbarMore._hide();
         this._moreList = [];
 
         // If links is zero the page is smaller than the first responsive breakpoint
@@ -141,6 +141,6 @@ export class NavbarComponent implements AfterViewInit {
     }
 
     _moreClick() {
-        this._navbarMore.hide();
+        this._navbarMore._hide();
     }
 }
