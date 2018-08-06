@@ -1,5 +1,8 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 
+/** The pagination control enables the user to navigate across paged content.
+ * Although commonly used with tables and data grids, this control may be used any place where paged data is used.
+ * */
 @Component({
     selector: 'hc-pagination',
     templateUrl: './pagination.component.html',
@@ -8,7 +11,7 @@ import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '
 export class PaginationComponent implements OnChanges {
     private _totalPages: number | null | undefined = null;
     private _inputPageNumber: number | null = null;
-    private _pageNumber: number | null = null;
+    private __pageNumber: number | null = null;
 
     /**
      * The total pages possible to navigate to
@@ -24,24 +27,27 @@ export class PaginationComponent implements OnChanges {
         this._totalPages = value;
     }
     /**
-     * The current page number (one-based)
+     * The current page number (one-based).
+     * Should be two-way bound using `[(pageNumber)]` to ensure
+     * that the source property is updated when the control is
+     * used.
      */
-    @Input('pageNumber')
-    get inputPageNumber(): number | null {
+    @Input()
+    get pageNumber(): number | null {
         return this._inputPageNumber;
     }
-    set inputPageNumber(value: number | null) {
+    set pageNumber(value: number | null) {
         this._inputPageNumber = value;
         this.pageNumberChange.emit(value);
         this._pageNumber = this.sanitize(value);
     }
-    get pageNumber() {
-        return this._pageNumber;
+    get _pageNumber() {
+        return this.__pageNumber;
     }
-    set pageNumber(value: number | null) {
-        this._pageNumber = value;
-        if (this.inputPageNumber !== value) {
-            this.inputPageNumber = value;
+    set _pageNumber(value: number | null) {
+        this.__pageNumber = value;
+        if (this.pageNumber !== value) {
+            this.pageNumber = value;
         }
     }
 
@@ -68,15 +74,15 @@ export class PaginationComponent implements OnChanges {
         }
     }
 
-    get isFirstPage() {
-        return this.pageNumber === 1;
+    get _isFirstPage() {
+        return this._pageNumber === 1;
     }
 
-    get isLastPage() {
-        return !!(this.totalPages && this.pageNumber === this.totalPages);
+    get _isLastPage() {
+        return !!(this.totalPages && this._pageNumber === this.totalPages);
     }
 
-    get visiblePages(): Array<number | null> {
+    get _visiblePages(): Array<number | null> {
         /*
          * if there aren't any pages, don't display any
          */
@@ -103,7 +109,7 @@ export class PaginationComponent implements OnChanges {
          * Otherwise, display 1, 2, ..., p-1, p, p+1, ..., n-1, n
          */
         const n = this.totalPages;
-        const p = this.pageNumber || 1;
+        const p = this._pageNumber || 1;
 
         if (p < 6) {
             return [1, 2, 3, 4, 5, 6, null, n - 1, n];
@@ -114,7 +120,7 @@ export class PaginationComponent implements OnChanges {
         }
     }
 
-    get collapsedVisiblePages(): Array<number | null> {
+    get _collapsedVisiblePages(): Array<number | null> {
         /*
          * if there aren't any pages, don't display any
          */
@@ -141,7 +147,7 @@ export class PaginationComponent implements OnChanges {
          * Otherwise, display 1, ..., p, ..., n
          */
         const n = this.totalPages;
-        const p = this.pageNumber || 1;
+        const p = this._pageNumber || 1;
 
         if (p < 4) {
             return [1, 2, 3, null, n];
@@ -152,22 +158,22 @@ export class PaginationComponent implements OnChanges {
         }
     }
 
-    previousPage() {
-        if (this.isFirstPage) {
+    _previousPage() {
+        if (this._isFirstPage) {
             return;
         }
-        this.goToPage((this.pageNumber || 1) - 1);
+        this._goToPage((this._pageNumber || 1) - 1);
     }
 
-    goToPage(pageNum: number) {
-        this.pageNumber = pageNum;
+    _goToPage(pageNum: number) {
+        this._pageNumber = pageNum;
     }
 
-    nextPage() {
-        if (this.isLastPage) {
+    _nextPage() {
+        if (this._isLastPage) {
             return;
         }
-        this.goToPage((this.pageNumber || 1) + 1);
+        this._goToPage((this._pageNumber || 1) + 1);
     }
 
     private sanitize(pageNumber: any): number | null {
