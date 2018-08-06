@@ -5,7 +5,8 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'picklist-valueset-example',
-    templateUrl: 'picklist-valueset-example.html'
+    templateUrl: 'picklist-valueset-example.html',
+    styleUrls: ['picklist-valueset-example.css']
 })
 export class PicklistValuesetExample {
     public myModel: {values: null; valueset: null};

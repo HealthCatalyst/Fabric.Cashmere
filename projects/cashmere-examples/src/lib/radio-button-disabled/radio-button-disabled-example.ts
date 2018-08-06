@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'radio-button-disabled-example',
-    templateUrl: 'radio-button-disabled-example.html'
+    templateUrl: 'radio-button-disabled-example.html',
+    styleUrls: ['radio-button-disabled-example.css']
 })
 export class RadioButtonDisabledExample {}

@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'tile-overview-example',
-    templateUrl: 'tile-overview-example.html'
+    templateUrl: 'tile-overview-example.html',
+    styleUrls: ['tile-overview-example.css']
 })
 export class TileOverviewExample {}

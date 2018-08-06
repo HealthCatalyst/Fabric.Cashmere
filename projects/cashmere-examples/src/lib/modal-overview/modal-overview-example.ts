@@ -8,7 +8,8 @@ import {Component, TemplateRef} from '@angular/core';
  */
 @Component({
     selector: 'modal-overview-example',
-    templateUrl: 'modal-overview-example.html'
+    templateUrl: 'modal-overview-example.html',
+    styleUrls: ['modal-overview-example.css']
 })
 export class ModalOverviewExample {
     result: any;

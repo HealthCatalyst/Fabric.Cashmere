@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'select-disabled-example',
     templateUrl: 'select-disabled-example.html',
-    styles: ['select-sample { max-width: 350px; width: 100%; }']
+    styleUrls: ['select-disabled-example.css']
 })
 export class SelectDisabledExample {}
