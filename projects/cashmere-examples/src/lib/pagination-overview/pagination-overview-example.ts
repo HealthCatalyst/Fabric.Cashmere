@@ -5,7 +5,8 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'pagination-overview-example',
-    templateUrl: 'pagination-overview-example.html'
+    templateUrl: 'pagination-overview-example.html',
+    styleUrls: ['pagination-overview-example.css']
 })
 export class PaginationOverviewExample {
     totalPages = 16;

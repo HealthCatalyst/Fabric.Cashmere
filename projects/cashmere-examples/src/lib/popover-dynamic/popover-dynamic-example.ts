@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'popover-dynamic-example',
     templateUrl: 'popover-dynamic-example.html',
-    styles: ['button { vertical-align: baseline; margin-left: 20px; }']
+    styleUrls: ['popover-dynamic-example.css']
 })
 export class PopoverDynamicExample {
     body: string = 'dynamic content';

@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'button-disabled-example',
     templateUrl: 'button-disabled-example.html',
-    styles: ['button { margin: 10px; }']
+    styleUrls: ['button-disabled-example.css']
 })
 export class ButtonDisabledExample {}

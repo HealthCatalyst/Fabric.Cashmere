@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'input-prefix-example',
     templateUrl: 'input-prefix-example.html',
-    styles: ['.form-container { width: 300px; }', '.hc-form-field { width: 100%; }']
+    styleUrls: ['input-prefix-example.css']
 })
 export class InputPrefixExample {}

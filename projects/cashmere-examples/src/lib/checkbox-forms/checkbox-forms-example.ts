@@ -5,7 +5,8 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'checkbox-forms-example',
-    templateUrl: 'checkbox-forms-example.html'
+    templateUrl: 'checkbox-forms-example.html',
+    styleUrls: ['checkbox-forms-example.css']
 })
 export class CheckboxFormsExample {
     isChecked: boolean;

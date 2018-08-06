@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'button-tertiary-example',
     templateUrl: 'button-tertiary-example.html',
-    styles: ['button { margin: 10px; }']
+    styleUrls: ['button-tertiary-example.css']
 })
 export class ButtonTertiaryExample {}

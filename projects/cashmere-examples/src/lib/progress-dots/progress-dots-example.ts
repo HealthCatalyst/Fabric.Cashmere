@@ -6,13 +6,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'progress-dots-example',
     templateUrl: 'progress-dots-example.html',
-    styles: [
-        `.progress-example { display: flex; margin-top: 20px; }
-        .col-2 { flex: 1 0 auto; margin-left: 20px; }
-        .progress-component-container { height: 100%; width: 100%; position: relative; padding: 15px; border: 1px solid #e5e5e5; }
-        .progress-component-container.dark-bg { background-color: #384655; }
-        label, hc-checkbox { margin: 20px 0 5px; display: block; }`
-    ]
+    styleUrls: ['progress-dots-example.css']
 })
 export class ProgressDotsExample {
     dotsColor = 'dark';

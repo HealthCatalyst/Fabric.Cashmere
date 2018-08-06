@@ -5,7 +5,8 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'chip-action-example',
-    templateUrl: 'chip-action-example.html'
+    templateUrl: 'chip-action-example.html',
+    styleUrls: ['chip-action-example.css']
 })
 export class ChipActionExample {
     hideChip(event: any) {

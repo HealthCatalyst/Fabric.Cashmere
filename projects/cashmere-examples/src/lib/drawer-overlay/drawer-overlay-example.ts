@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'drawer-overlay-example',
     templateUrl: 'drawer-overlay-example.html',
-    styles: ['.hc-drawer { background-color: #6e6f71; color: #b9babb;}']
+    styleUrls: ['drawer-overlay-example.css']
 })
 export class DrawerOverlayExample {}

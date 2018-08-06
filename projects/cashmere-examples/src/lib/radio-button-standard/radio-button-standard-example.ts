@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'radio-button-standard-example',
-    templateUrl: 'radio-button-standard-example.html'
+    templateUrl: 'radio-button-standard-example.html',
+    styleUrls: ['radio-button-standard-example.css']
 })
 export class RadioButtonStandardExample {}

@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'chip-basic-example',
-    templateUrl: 'chip-basic-example.html'
+    templateUrl: 'chip-basic-example.html',
+    styleUrls: ['chip-basic-example.css']
 })
 export class ChipBasicExample {}

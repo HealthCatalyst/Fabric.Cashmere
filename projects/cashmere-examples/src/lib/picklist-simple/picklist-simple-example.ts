@@ -5,7 +5,8 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'picklist-simple-example',
-    templateUrl: 'picklist-simple-example.html'
+    templateUrl: 'picklist-simple-example.html',
+    styleUrls: ['picklist-simple-example.css']
 })
 export class PicklistSimpleExample {
     public mySimpleModel: string[];
