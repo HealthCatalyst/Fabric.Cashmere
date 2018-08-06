@@ -40,7 +40,12 @@ const docs: DocItem[] = [
     {id: 'list', name: 'List', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', examples: ['modal-overview']},
     {id: 'navbar', name: 'Navbar', examples: ['navbar-overview']},
-    {id: 'pagination', name: 'Pagination', examples: ['pagination-overview']},
+    {
+        id: 'pagination',
+        name: 'Pagination',
+        usageDoc: true,
+        examples: ['pagination-overview']
+    },
     {id: 'picklist', name: 'Picklist', examples: ['picklist-simple', 'picklist-valueset'], usageDoc: true},
     {
         id: 'popover',
