@@ -4,7 +4,12 @@
 import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 
-export type ButtonStyle = 'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline';
+const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'link', 'link-inline'];
+export function validateStyleInput(style: string) {
+    if (supportedStyles.indexOf(style) < 0) {
+        throw Error('Unsupported style input value: ' + style);
+    }
+}
 
 /** Cashmere styled button */
 @Component({
@@ -19,31 +24,33 @@ export type ButtonStyle = 'primary' | 'primary-alt' | 'destructive' | 'neutral' 
 })
 export class ButtonComponent {
     private _disabled = false;
-    private _style: ButtonStyle;
-    private previousStyle: ButtonStyle;
+    private _style: string;
+    private previousStyle: string;
 
     /**
      * @deprecated
      * @description Use `buttonStyle` instead
      * */
     @Input()
-    get color(): ButtonStyle {
+    get color(): string {
         return this._style;
     }
 
-    set color(btnColor: ButtonStyle) {
-        this.setHostStyle(btnColor);
+    set color(btnStyle: string) {
+        validateStyleInput(btnStyle);
+        this.setHostStyle(btnStyle);
         this.previousStyle = this._style;
-        this._style = btnColor;
+        this._style = btnStyle;
     }
 
     /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'` */
     @Input()
-    get buttonStyle(): ButtonStyle {
+    get buttonStyle(): string {
         return this._style;
     }
 
-    set buttonStyle(btnStyle: ButtonStyle) {
+    set buttonStyle(btnStyle: string) {
+        validateStyleInput(btnStyle);
         this.setHostStyle(btnStyle);
         this.previousStyle = this._style;
         this._style = btnStyle;

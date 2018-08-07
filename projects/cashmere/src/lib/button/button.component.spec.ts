@@ -1,7 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement} from '@angular/core';
-
-import {ButtonComponent, ButtonStyle} from './button.component';
 import {By} from '@angular/platform-browser';
 import {ButtonModule} from './button.module';
 
@@ -34,7 +32,7 @@ class TestAppReference {
         this.aDebugElement = this.fixture.debugElement.query(By.css('a') as any) as any;
     }
 
-    setStyle(style: ButtonStyle): void {
+    setStyle(style: string): void {
         this.testAppComponent.buttonStyle = style;
     }
 
@@ -57,7 +55,7 @@ describe('ButtonComponent', () => {
 
     it('should apply class based on buttonStyle property', () => {
         const testApp = new TestAppReference();
-        const buttonStyles: ButtonStyle[] = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'link', 'link-inline'];
+        const buttonStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'link', 'link-inline'];
 
         buttonStyles.forEach(style => {
             testApp.setStyle(style);
@@ -89,6 +87,14 @@ describe('ButtonComponent', () => {
 
         expect(testApp.aDebugElement.nativeElement.classList.contains('hc-secondary')).toBe(true);
         expect(testApp.aDebugElement.nativeElement.classList.contains('user-class')).toBe(true);
+    });
+
+    it('should throw an error when unsupported style is used', () => {
+        const testApp = new TestAppReference();
+         expect(() => {
+            testApp.setStyle('bigBirdYellow');
+            testApp.detectChanges();
+        }).toThrow();
     });
 
     describe('button[hc-button]', () => {

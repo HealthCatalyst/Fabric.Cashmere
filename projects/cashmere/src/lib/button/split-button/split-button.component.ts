@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../../util';
-import {ButtonStyle} from '../button.component';
+import {validateStyleInput} from '../button.component';
 
 /** SplitButton click event */
 export class SplitButtonClickEvent {
@@ -18,7 +18,7 @@ export class SplitButtonClickEvent {
 export class SplitButtonComponent {
     private _tabIndex: number;
     private _disabled: boolean = false;
-    private _style: ButtonStyle = 'primary';
+    private _style: string = 'primary';
 
     /** Primary button's click event */
     @Output() click = new EventEmitter<SplitButtonClickEvent>();
@@ -50,21 +50,23 @@ export class SplitButtonComponent {
      * @description Use `buttonStyle` instead
      * */
     @Input()
-    get color(): ButtonStyle {
+    get color(): string {
         return this._style;
     }
 
-    set color(btnStyle: ButtonStyle) {
+    set color(btnStyle: string) {
+        validateStyleInput(btnStyle);
         this._style = btnStyle;
     }
 
     /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'` */
     @Input()
-    get buttonStyle(): ButtonStyle {
+    get buttonStyle(): string {
         return this._style;
     }
 
-    set buttonStyle(btnStyle: ButtonStyle) {
+    set buttonStyle(btnStyle: string) {
+        validateStyleInput(btnStyle);
         this._style = btnStyle;
     }
 
