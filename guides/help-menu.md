@@ -32,11 +32,9 @@ You may not have all these items available. However, include what you have in th
 
 *   **Help Topics** if available—reach out to the Content Team for support)
 *   **Release Notes** (if applicable, again reach out to the Content Team for support)
-*   **About** (a modal with the Health Catalyst logo, full name of the app [e.g., Patient Safety Monitor™ Suite] with appropriate copyright, application version, and a link to healthcatalyst.com)
+*   **About** (a modal with the Health Catalyst logo, full name of the app [e.g., Patient Safety Monitor™ Suite] with appropriate copyright, application version, ands links to healthcatalyst.com, our [terms and conditions](https://www.healthcatalyst.com/terms-conditions/), and [privacy policy](https://www.healthcatalyst.com/privacy-policy/))
 *   **Health Catalyst Community** (link to community space specific to the app)
 *   **Send us your feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/guides/user-feedback))
-*   **Terms and Conditions** (link to: [https://www.healthcatalyst.com/terms-conditions/](https://www.healthcatalyst.com/terms-conditions/))
-*   **Privacy Policy** (link to: [https://www.healthcatalyst.com/privacy-policy/](https://www.healthcatalyst.com/privacy-policy/))
 
 :::
 
@@ -63,12 +61,6 @@ The following example includes all of the above elements:
         </li>
         <li>
            <button (click)="feedbackClick($event)">Send us your feedback</button>
-        </li>
-        <li>
-            <a href="https://www.healthcatalyst.com/terms-conditions/" target="_blank">Terms and Conditions</a>
-        </li>
-        <li>
-            <a href="https://www.healthcatalyst.com/privacy-policy/" target="_blank">Privacy Policy</a>
         </li>
     </ul>
 </hc-popover-content>
