@@ -1,6 +1,6 @@
 import {Component, ElementRef, EventEmitter, HostListener, OnDestroy, Renderer2, ViewChild} from '@angular/core';
 import Popper from 'popper.js';
-import {Placements, PopperContentOptions, Triggers} from './popover.model';
+import {PopperContentOptions} from './popover.model';
 
 @Component({
     styleUrls: ['./popoverContent.component.scss'],
@@ -8,123 +8,124 @@ import {Placements, PopperContentOptions, Triggers} from './popover.model';
     templateUrl: './popoverContent.component.html'
 })
 export class PopoverContentComponent implements OnDestroy {
-    popperOptions: PopperContentOptions = <PopperContentOptions>{
+    /** Default options */
+    _popperOptions: PopperContentOptions = <PopperContentOptions>{
         disableAnimation: false,
         disableDefaultStyling: false,
-        placement: Placements.Auto,
+        placement: 'auto',
         boundariesElement: '',
-        trigger: Triggers.HOVER,
+        trigger: 'hover',
         positionFixed: false,
         popperModifiers: {}
     };
 
-    referenceObject: HTMLElement;
+    _referenceObject: HTMLElement;
 
-    isMouseOver: boolean = false;
+    _isMouseOver: boolean = false;
 
-    onHidden = new EventEmitter();
+    _onHidden = new EventEmitter();
 
-    text: string;
+    _text: string;
 
-    popperInstance: Popper;
+    _popperInstance: Popper;
 
-    displayType: string = 'none';
+    _displayType: string = 'none';
 
-    opacity: number = 0;
+    _opacity: number = 0;
 
     private globalResize: any;
 
-    @ViewChild('popperViewRef') popperViewRef: ElementRef;
+    @ViewChild('popperViewRef') _popperViewRef: ElementRef;
 
     @HostListener('mouseover')
-    onMouseOver() {
-        this.isMouseOver = true;
+    _onMouseOver() {
+        this._isMouseOver = true;
     }
 
     @HostListener('mouseleave')
-    showOnLeave() {
-        this.isMouseOver = false;
-        if (this.popperOptions.trigger !== Triggers.HOVER) {
+    _showOnLeave() {
+        this._isMouseOver = false;
+        if (this._popperOptions.trigger !== 'hover') {
             return;
         }
-        this.hide();
+        this._hide();
     }
 
-    onDocumentResize() {
-        this.update();
+    _onDocumentResize() {
+        this._update();
     }
 
     constructor(private renderer: Renderer2) {}
 
     ngOnDestroy() {
-        if (!this.popperInstance) {
+        if (!this._popperInstance) {
             return;
         }
-        (this.popperInstance as any).disableEventListeners();
-        this.popperInstance.destroy();
+        (this._popperInstance as any).disableEventListeners();
+        this._popperInstance.destroy();
     }
 
-    show(): void {
-        if (!this.referenceObject) {
+    _show(): void {
+        if (!this._referenceObject) {
             return;
         }
 
         let popperOptions: Popper.PopperOptions = <Popper.PopperOptions>{
-            placement: this.popperOptions.placement,
-            positionFixed: this.popperOptions.positionFixed,
+            placement: this._popperOptions.placement,
+            positionFixed: this._popperOptions.positionFixed,
             modifiers: {
                 arrow: {
-                    element: this.popperViewRef.nativeElement.querySelector('.arrow')
+                    element: this._popperViewRef.nativeElement.querySelector('.arrow')
                 }
             }
         };
 
-        let boundariesElement = this.popperOptions.boundariesElement && document.querySelector(this.popperOptions.boundariesElement);
+        let boundariesElement = this._popperOptions.boundariesElement && document.querySelector(this._popperOptions.boundariesElement);
 
         if (popperOptions.modifiers && boundariesElement) {
             popperOptions.modifiers.preventOverflow = {boundariesElement};
         }
 
-        popperOptions.modifiers = Object.assign(popperOptions.modifiers, this.popperOptions.popperModifiers);
+        popperOptions.modifiers = Object.assign(popperOptions.modifiers, this._popperOptions.popperModifiers);
 
-        this.popperInstance = new Popper(this.referenceObject, this.popperViewRef.nativeElement, popperOptions);
-        (this.popperInstance as any).enableEventListeners();
-        this.scheduleUpdate();
-        this.toggleVisibility(true);
-        this.globalResize = this.renderer.listen('document', 'resize', this.onDocumentResize.bind(this));
+        this._popperInstance = new Popper(this._referenceObject, this._popperViewRef.nativeElement, popperOptions);
+        (this._popperInstance as any).enableEventListeners();
+        this._scheduleUpdate();
+        this._toggleVisibility(true);
+        this.globalResize = this.renderer.listen('document', 'resize', this._onDocumentResize.bind(this));
     }
 
-    update(): void {
-        if (this.popperInstance) {
-            (this.popperInstance as any).update();
+    _update(): void {
+        if (this._popperInstance) {
+            (this._popperInstance as any).update();
         }
     }
 
-    scheduleUpdate(): void {
-        if (this.popperInstance) {
-            (this.popperInstance as any).scheduleUpdate();
+    _scheduleUpdate(): void {
+        if (this._popperInstance) {
+            (this._popperInstance as any).scheduleUpdate();
         }
     }
 
-    hide(): void {
-        if (this.popperInstance) {
-            this.popperInstance.destroy();
+    _hide(): void {
+        if (this._popperInstance) {
+            this._popperInstance.destroy();
         }
-        this.toggleVisibility(false);
-        this.onHidden.emit();
+        this._toggleVisibility(false);
+        this._onHidden.emit();
     }
 
-    toggleVisibility(state: boolean) {
+    _toggleVisibility(state: boolean) {
         if (!state) {
-            this.opacity = 0;
-            this.displayType = 'none';
+            this._opacity = 0;
+            this._displayType = 'none';
         } else {
-            this.opacity = 1;
-            this.displayType = 'block';
+            this._opacity = 1;
+            this._displayType = 'block';
         }
     }
 
-    public clearGlobalResize() {
+    public _clearGlobalResize() {
         if (this.globalResize && typeof this.globalResize === 'function') {
             this.globalResize();
         }
