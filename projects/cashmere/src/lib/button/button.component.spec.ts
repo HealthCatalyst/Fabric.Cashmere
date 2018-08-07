@@ -91,7 +91,7 @@ describe('ButtonComponent', () => {
 
     it('should throw an error when unsupported style is used', () => {
         const testApp = new TestAppReference();
-         expect(() => {
+        expect(() => {
             testApp.setStyle('bigBirdYellow');
             testApp.detectChanges();
         }).toThrow();
