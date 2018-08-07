@@ -4,13 +4,7 @@
 import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 
-const supportedColors = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary'];
-
-export function validateButtonColor(btnColor: string) {
-    if (supportedColors.indexOf(btnColor) < 0) {
-        throw Error('Unsupported color input value: ' + btnColor);
-    }
-}
+export type ButtonStyle = 'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline';
 
 /** Cashmere styled button */
 @Component({
@@ -25,21 +19,34 @@ export function validateButtonColor(btnColor: string) {
 })
 export class ButtonComponent {
     private _disabled = false;
-    private _color: string;
-    private _previousColor: string;
+    private _style: ButtonStyle;
+    private previousStyle: ButtonStyle;
 
-    /** Sets background color to one of: 'primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary' */
+    /**
+     * @deprecated
+     * @description Use `buttonStyle` instead
+     * */
     @Input()
-    get color(): string {
-        return this._color;
+    get color(): ButtonStyle {
+        return this._style;
     }
 
-    set color(btnColor: string) {
-        validateButtonColor(btnColor);
+    set color(btnColor: ButtonStyle) {
+        this.setHostStyle(btnColor);
+        this.previousStyle = this._style;
+        this._style = btnColor;
+    }
 
-        this._setHostColor(btnColor);
-        this._previousColor = this._color;
-        this._color = btnColor;
+    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'` */
+    @Input()
+    get buttonStyle(): ButtonStyle {
+        return this._style;
+    }
+
+    set buttonStyle(btnStyle: ButtonStyle) {
+        this.setHostStyle(btnStyle);
+        this.previousStyle = this._style;
+        this._style = btnStyle;
     }
 
     /** Whether the control is disabled. */
@@ -58,8 +65,8 @@ export class ButtonComponent {
     }
 
     constructor(private elementRef: ElementRef, private renderer: Renderer2) {
-        this.color = 'primary';
-        this._previousColor = this.color;
+        this.buttonStyle = 'primary';
+        this.previousStyle = this.buttonStyle;
     }
 
     /** Used to give focus to the button */
@@ -67,16 +74,16 @@ export class ButtonComponent {
         this.elementRef.nativeElement.focus();
     }
 
-    private _setHostColor(color: string) {
-        if (this._previousColor !== color) {
-            if (this._previousColor) {
-                this.renderer.removeClass(this.elementRef.nativeElement, this._colorClass(this._previousColor));
+    private setHostStyle(style: string) {
+        if (this.previousStyle !== style) {
+            if (this.previousStyle) {
+                this.renderer.removeClass(this.elementRef.nativeElement, this._styleClass(this.previousStyle));
             }
-            this.renderer.addClass(this.elementRef.nativeElement, this._colorClass(color));
+            this.renderer.addClass(this.elementRef.nativeElement, this._styleClass(style));
         }
     }
 
-    private _colorClass(color: string): string {
-        return `hc-${color}`;
+    private _styleClass(style: string): string {
+        return `hc-${style}`;
     }
 }

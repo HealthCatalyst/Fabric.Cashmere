@@ -11,8 +11,7 @@ body {
     color: $text;
 }
 
-h1,
-.h1 {
+h1 {
     @include fontSize(36px);
     font-weight: 300;
     line-height: 1.2;
@@ -22,32 +21,28 @@ h1,
     -webkit-font-smoothing: antialiased;
 }
 
-h2,
-.h2 {
+h2 {
     @include fontSize(22px);
     font-weight: 600;
     line-height: 1.5;
     color: $text;
 }
 
-h3,
-.h3 {
+h3 {
     @include fontSize(18px);
     font-weight: 600;
     line-height: 1.5;
     color: $text;
 }
 
-h4,
-.h4 {
+h4 {
     @include fontSize(14px);
     font-weight: 600;
     line-height: 1.5;
     color: $text;
 }
 
-p,
-.p {
+p {
     @include fontSize(16px);
     font-weight: 400;
     line-height: 1.5;
@@ -96,9 +91,8 @@ pre {
     }
 }
 
-// text links
-a,
-.hc-text-link {
+// hyperlinks
+a {
     text-decoration: none;
     color: $primary-brand;
     &:hover {
@@ -148,18 +142,33 @@ strong,
     font-weight: 700;
 }
 
+// case
+.hc-type-titlecase {
+    text-transform: capitalize;
+}
+
+.hc-type-uppercase {
+    text-transform: uppercase;
+}
+
+.hc-type-lowercase {
+    text-transform: lowercase;
+}
+
 .hc-type-ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
+// emphasis
 em,
 .hc-type-em {
     color: $gray-500;
     font-style: italic;
 }
 
+// error text
 .form-errors {
     margin-top: 8px;
     color: $red;
