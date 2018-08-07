@@ -33,11 +33,18 @@ table.hc-table {
         border-top: none;
         border-bottom: $table-border;
         line-height: 1.3;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    th {
+        font-weight: 600;
     }
 
     thead th {
         font-size: $thead-font-size;
-        font-weight: 600;
         color: $thead-font-color;
         vertical-align: bottom;
     }
@@ -46,6 +53,7 @@ table.hc-table {
         font-size: $tbody-font-size;
         border-left: $table-border;
         border-right: $table-border;
+        border-top: $table-border;
 
         tr {
             &:nth-child(2n) {
@@ -101,7 +109,7 @@ table.hc-table {
     }
 
     // Actionable table/row
-    &.hc-action-table {
+    &.hc-action-table tbody {
         tr:not([disabled]) {
             &:hover {
                 background-color: $row-color-action-hover;
