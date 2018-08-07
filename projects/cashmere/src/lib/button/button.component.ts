@@ -33,14 +33,11 @@ export class ButtonComponent {
      * */
     @Input()
     get color(): string {
-        return this._style;
+        return this.buttonStyle;
     }
 
     set color(btnStyle: string) {
-        validateStyleInput(btnStyle);
-        this.setHostStyle(btnStyle);
-        this.previousStyle = this._style;
-        this._style = btnStyle;
+        this.buttonStyle = btnStyle;
     }
 
     /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'` */

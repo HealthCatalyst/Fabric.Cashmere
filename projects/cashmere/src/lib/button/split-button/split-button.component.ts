@@ -51,12 +51,11 @@ export class SplitButtonComponent {
      * */
     @Input()
     get color(): string {
-        return this._style;
+        return this.buttonStyle;
     }
 
     set color(btnStyle: string) {
-        validateStyleInput(btnStyle);
-        this._style = btnStyle;
+        this.buttonStyle = btnStyle;
     }
 
     /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'` */
