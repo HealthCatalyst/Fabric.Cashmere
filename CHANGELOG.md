@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/HealthCatalyst/Fabric.Cashmere/compare/v2.0.0...v2.1.0) (2018-08-08)
+
+
+### Features
+
+* **table:** adds table component ([989da59](https://github.com/HealthCatalyst/Fabric.Cashmere/commit/989da59)), closes [#79](https://github.com/HealthCatalyst/Fabric.Cashmere/issues/79)
+
 # [2.0.0](https://github.com/HealthCatalyst/Fabric.Cashmere/compare/v1.0.2...v2.0.0) (2018-08-07)
 
 
