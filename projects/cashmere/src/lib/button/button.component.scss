@@ -93,7 +93,8 @@
         }
     }
 
-    &.hc-tertiary {
+    &.hc-link,
+    &.hc-link-inline {
         background-color: transparent;
         color: $primary-brand;
         font-weight: 600;
@@ -112,6 +113,20 @@
             opacity: 0.35;
             color: $primary-brand;
         }
+    }
+
+    &.hc-link-inline {
+        padding: 0;
+        height: auto;
+        width: auto;
+        min-width: 0;
+        font-size: inherit;
+        line-height: inherit;
+        text-align: inherit;
+        white-space: inherit;
+        vertical-align: inherit;
+        font-family: inherit;
+        border: none;
     }
 }
 

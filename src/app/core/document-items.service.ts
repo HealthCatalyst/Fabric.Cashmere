@@ -13,7 +13,7 @@ const docs: DocItem[] = [
     {
         id: 'button',
         name: 'Button',
-        examples: ['button-primary', 'button-split', 'button-secondary', 'button-disabled', 'button-tertiary', 'button-icon']
+        examples: ['button-primary', 'button-split', 'button-secondary', 'button-disabled', 'button-anchor', 'button-link', 'button-icon']
     },
     {
         id: 'checkbox',
@@ -63,7 +63,18 @@ const docs: DocItem[] = [
         name: 'Select',
         examples: ['select-standard', 'select-disabled', 'select-validation']
     },
+    {
+        id: 'sort',
+        name: 'Sort',
+        usageDoc: true
+    },
     {id: 'subnav', name: 'Subnav', examples: ['subnav-overview']},
+    {
+        id: 'table',
+        name: 'Table',
+        examples: ['table-overview', 'table-sort', 'table-filter'],
+        usageDoc: true
+    },
     {
         id: 'tabs',
         name: 'Tabs',

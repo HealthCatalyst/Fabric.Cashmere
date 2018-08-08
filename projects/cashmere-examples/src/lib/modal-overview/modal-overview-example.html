@@ -3,15 +3,15 @@
         <hc-modal-header> Modal Title </hc-modal-header>
         <hc-modal-body> Data: {{data}}</hc-modal-body>
         <hc-modal-footer>
-            <button hc-button color="tertiary" (click)="dismiss()"> Cancel </button>
-            <button hc-button color="primary" (click)="close()"> OK </button>
+            <button hc-button buttonStyle="tertiary" (click)="dismiss()"> Cancel </button>
+            <button hc-button buttonStyle="primary" (click)="close()"> OK </button>
         </hc-modal-footer>
     </hc-modal>
 </ng-template>
 
-<button hc-button color="primary" (click)="open()" class="demo-button">
+<button hc-button buttonStyle="primary" (click)="open()" class="demo-button">
     Open Modal from Component
 </button>
-<button hc-button color="secondary" (click)="openTemplate(content)" class="demo-button">
+<button hc-button buttonStyle="secondary" (click)="openTemplate(content)" class="demo-button">
     Open Modal from Template
 </button>
