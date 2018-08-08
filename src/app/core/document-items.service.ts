@@ -63,7 +63,18 @@ const docs: DocItem[] = [
         name: 'Select',
         examples: ['select-standard', 'select-disabled', 'select-validation']
     },
+    {
+        id: 'sort',
+        name: 'Sort',
+        usageDoc: true
+    },
     {id: 'subnav', name: 'Subnav', examples: ['subnav-overview']},
+    {
+        id: 'table',
+        name: 'Table',
+        examples: ['table-overview', 'table-sort', 'table-filter'],
+        usageDoc: true
+    },
     {
         id: 'tabs',
         name: 'Tabs',
