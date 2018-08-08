@@ -36,6 +36,8 @@
 }
 
 .hc-select-input {
+    // Font needs to be inherited, because by default <select> uses a system font
+    font: inherit;
     color: $text;
     background-color: $white;
     @include fontSize(14px);
