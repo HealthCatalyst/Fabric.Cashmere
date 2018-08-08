@@ -19,7 +19,9 @@ import {
     ProgressIndicatorsModule,
     RadioButtonModule,
     SelectModule,
+    SortModule,
     SubnavModule,
+    TableModule,
     TabsModule,
     TileModule,
     TypeformSurveyModule
@@ -46,7 +48,9 @@ import {
         ProgressIndicatorsModule,
         RadioButtonModule,
         SelectModule,
+        SortModule,
         SubnavModule,
+        TableModule,
         TabsModule,
         TileModule,
         TypeformSurveyModule
@@ -71,7 +75,9 @@ import {
         ProgressIndicatorsModule,
         RadioButtonModule,
         SelectModule,
+        SortModule,
         SubnavModule,
+        TableModule,
         TabsModule,
         TileModule,
         TypeformSurveyModule

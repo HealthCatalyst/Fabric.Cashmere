@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../../util';
-import {validateButtonColor} from '../button.component';
+import {validateStyleInput} from '../button.component';
 
 /** SplitButton click event */
 export class SplitButtonClickEvent {
@@ -18,7 +18,7 @@ export class SplitButtonClickEvent {
 export class SplitButtonComponent {
     private _tabIndex: number;
     private _disabled: boolean = false;
-    private _color: string = 'primary';
+    private _style: string = 'primary';
 
     /** Primary button's click event */
     @Output() click = new EventEmitter<SplitButtonClickEvent>();
@@ -45,15 +45,28 @@ export class SplitButtonComponent {
         this._tabIndex = value == null ? 0 : value;
     }
 
-    /** Sets background color to one of: 'primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary' */
+    /**
+     * @deprecated
+     * @description Use `buttonStyle` instead
+     * */
     @Input()
     get color(): string {
-        return this._color;
+        return this.buttonStyle;
     }
 
-    set color(btnColor: string) {
-        validateButtonColor(btnColor);
-        this._color = btnColor;
+    set color(btnStyle: string) {
+        this.buttonStyle = btnStyle;
+    }
+
+    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'` */
+    @Input()
+    get buttonStyle(): string {
+        return this._style;
+    }
+
+    set buttonStyle(btnStyle: string) {
+        validateStyleInput(btnStyle);
+        this._style = btnStyle;
     }
 
     /** Whether the control is disabled. */

@@ -17,6 +17,7 @@
     "jsnext": "./esm2015/cashmere.js",
     "typings": "./cashmere.d.ts",
     "peerDependencies": {
+        "@angular/cdk": "^6.0.0",
         "@angular/common": "^6.0.0",
         "@angular/core": "^6.0.0",
         "@angular/forms": "^6.0.0",

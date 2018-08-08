@@ -20,6 +20,11 @@ export class GuidesService {
             document: require('raw-loader!../../../guides/contribution-guide.md')
         },
         {
+            title: 'Help Menu',
+            route: 'help-menu',
+            document: require('raw-loader!../../../guides/help-menu.md')
+        },
+        {
             title: 'Submit an Issue',
             route: 'submit-an-issue',
             document: require('raw-loader!../../../guides/submit-an-issue.md')
