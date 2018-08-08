@@ -11,8 +11,7 @@ body {
     color: $text;
 }
 
-h1,
-.h1 {
+h1 {
     @include fontSize(36px);
     font-weight: 300;
     line-height: 1.2;
@@ -22,32 +21,28 @@ h1,
     -webkit-font-smoothing: antialiased;
 }
 
-h2,
-.h2 {
+h2 {
     @include fontSize(22px);
     font-weight: 600;
     line-height: 1.5;
     color: $text;
 }
 
-h3,
-.h3 {
+h3 {
     @include fontSize(18px);
     font-weight: 600;
     line-height: 1.5;
     color: $text;
 }
 
-h4,
-.h4 {
+h4 {
     @include fontSize(14px);
     font-weight: 600;
     line-height: 1.5;
     color: $text;
 }
 
-p,
-.p {
+p {
     @include fontSize(16px);
     font-weight: 400;
     line-height: 1.5;
@@ -96,6 +91,7 @@ pre {
     }
 }
 
+// hyperlinks
 a {
     text-decoration: none;
     color: $primary-brand;
@@ -107,17 +103,72 @@ a {
     }
 }
 
+// sizes
+.hc-font-xsm {
+    @include fontSize(12px);
+}
+
+.hc-font-sm {
+    @include fontSize(14px);
+}
+
+.hc-font-md {
+    @include fontSize(16px);
+}
+
+.hc-font-lg {
+    @include fontSize(18px);
+}
+
+.hc-font-xlg {
+    @include fontSize(22px);
+}
+
+// weights
+.hc-font-light {
+    font-weight: 300;
+}
+
+.hc-font-reg {
+    font-weight: 400;
+}
+
 strong,
-.hc-type-bold {
+.hc-font-bold {
     font-weight: 600;
 }
 
+.hc-font-xbold {
+    font-weight: 700;
+}
+
+// case
+.hc-text-titlecase {
+    text-transform: capitalize;
+}
+
+.hc-text-uppercase {
+    text-transform: uppercase;
+}
+
+.hc-text-lowercase {
+    text-transform: lowercase;
+}
+
+.hc-text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// emphasis
 em,
-.hc-type-em {
+.hc-font-em {
     color: $gray-500;
     font-style: italic;
 }
 
+// error text
 .form-errors {
     margin-top: 8px;
     color: $red;

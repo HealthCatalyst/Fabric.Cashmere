@@ -1,18 +1,16 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement} from '@angular/core';
-
-import {ButtonComponent} from './button.component';
 import {By} from '@angular/platform-browser';
 import {ButtonModule} from './button.module';
 
 @Component({
     template: `
-        <button hc-button [color]="buttonColor" [disabled]="isDisabled" (click)="buttonClick()">Button</button>
-        <a hc-button [color]="buttonColor" [disabled]="isDisabled" href="https://www.healthcatalyst.com">Link</a>
+        <button hc-button [color]="buttonStyle" [disabled]="isDisabled" (click)="buttonClick()">Button</button>
+        <a hc-button [color]="buttonStyle" [disabled]="isDisabled" href="https://www.healthcatalyst.com">Link</a>
     `
 })
 class TestAppComponent {
-    buttonColor = 'primary';
+    buttonStyle = 'primary';
     isDisabled = false;
     clickCount = 0;
 
@@ -34,8 +32,8 @@ class TestAppReference {
         this.aDebugElement = this.fixture.debugElement.query(By.css('a') as any) as any;
     }
 
-    setColor(color: string): void {
-        this.testAppComponent.buttonColor = color;
+    setStyle(style: string): void {
+        this.testAppComponent.buttonStyle = style;
     }
 
     setIsDisabled(isDisabled: boolean): void {
@@ -55,15 +53,15 @@ describe('ButtonComponent', () => {
         }).compileComponents();
     }));
 
-    it('should apply class based on color property', () => {
+    it('should apply class based on buttonStyle property', () => {
         const testApp = new TestAppReference();
-        const buttonColors = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'tertiary'];
+        const buttonStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'link', 'link-inline'];
 
-        buttonColors.forEach(color => {
-            testApp.setColor(color);
+        buttonStyles.forEach(style => {
+            testApp.setStyle(style);
             testApp.detectChanges();
-            expect(testApp.buttonDebugElement.nativeElement.classList.contains(`hc-${color}`)).toBe(true);
-            expect(testApp.aDebugElement.nativeElement.classList.contains(`hc-${color}`)).toBe(true);
+            expect(testApp.buttonDebugElement.nativeElement.classList.contains(`hc-${style}`)).toBe(true);
+            expect(testApp.aDebugElement.nativeElement.classList.contains(`hc-${style}`)).toBe(true);
         });
     });
 
@@ -72,7 +70,7 @@ describe('ButtonComponent', () => {
 
         testApp.buttonDebugElement.nativeElement.classList.add('user-class');
         testApp.aDebugElement.nativeElement.classList.add('user-class');
-        testApp.setColor('primary');
+        testApp.setStyle('primary');
         testApp.detectChanges();
 
         expect(testApp.buttonDebugElement.nativeElement.classList.contains('hc-primary')).toBe(true);
@@ -81,7 +79,7 @@ describe('ButtonComponent', () => {
         expect(testApp.aDebugElement.nativeElement.classList.contains('hc-primary')).toBe(true);
         expect(testApp.aDebugElement.nativeElement.classList.contains('user-class')).toBe(true);
 
-        testApp.setColor('secondary');
+        testApp.setStyle('secondary');
         testApp.detectChanges();
 
         expect(testApp.buttonDebugElement.nativeElement.classList.contains('hc-secondary')).toBe(true);
@@ -91,11 +89,10 @@ describe('ButtonComponent', () => {
         expect(testApp.aDebugElement.nativeElement.classList.contains('user-class')).toBe(true);
     });
 
-    it('should throw an error when unsupported color is used', () => {
+    it('should throw an error when unsupported style is used', () => {
         const testApp = new TestAppReference();
-
         expect(() => {
-            testApp.setColor('bigBirdYellow');
+            testApp.setStyle('bigBirdYellow');
             testApp.detectChanges();
         }).toThrow();
     });
