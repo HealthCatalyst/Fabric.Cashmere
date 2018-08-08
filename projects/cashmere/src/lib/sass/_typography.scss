@@ -104,58 +104,58 @@ a {
 }
 
 // sizes
-.hc-type-xsm {
+.hc-font-xsm {
     @include fontSize(12px);
 }
 
-.hc-type-sm {
+.hc-font-sm {
     @include fontSize(14px);
 }
 
-.hc-type-md {
+.hc-font-md {
     @include fontSize(16px);
 }
 
-.hc-type-lg {
+.hc-font-lg {
     @include fontSize(18px);
 }
 
-.hc-type-xlg {
+.hc-font-xlg {
     @include fontSize(22px);
 }
 
 // weights
-.hc-type-light {
+.hc-font-light {
     font-weight: 300;
 }
 
-.hc-type-reg {
+.hc-font-reg {
     font-weight: 400;
 }
 
 strong,
-.hc-type-bold {
+.hc-font-bold {
     font-weight: 600;
 }
 
-.hc-type-xbold {
+.hc-font-xbold {
     font-weight: 700;
 }
 
 // case
-.hc-type-titlecase {
+.hc-text-titlecase {
     text-transform: capitalize;
 }
 
-.hc-type-uppercase {
+.hc-text-uppercase {
     text-transform: uppercase;
 }
 
-.hc-type-lowercase {
+.hc-text-lowercase {
     text-transform: lowercase;
 }
 
-.hc-type-ellipsis {
+.hc-text-ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -163,7 +163,7 @@ strong,
 
 // emphasis
 em,
-.hc-type-em {
+.hc-font-em {
     color: $gray-500;
     font-style: italic;
 }
