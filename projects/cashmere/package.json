@@ -4,8 +4,7 @@
     "license": "Apache-2.0",
     "description": "Reusable Health Catalyst Components",
     "publishConfig": {
-        "registry": "https://registry.npmjs.org/",
-        "tag": "beta"
+        "registry": "https://registry.npmjs.org/"
     },
     "repository": {
         "type": "Git",

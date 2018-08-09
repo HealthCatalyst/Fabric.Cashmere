@@ -4,8 +4,7 @@
     "license": "Apache-2.0",
     "description": "Cashmere documentation website",
     "publishConfig": {
-        "registry": "https://registry.npmjs.org/",
-        "tag": "beta"
+        "registry": "https://registry.npmjs.org/"
     },
     "repository": {
         "type": "git",

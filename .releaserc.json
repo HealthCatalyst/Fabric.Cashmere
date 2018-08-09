@@ -1,5 +1,7 @@
 {
     "pkgRoot": "dist/cashmere",
+    "tarballDir": "dist",
+    "assets": "healthcatalyst-cashmere-*.tgz",
     "verifyConditions": ["@semantic-release/changelog", "@semantic-release/npm", "@semantic-release/git", "@semantic-release/github"],
     "prepare": [
         {
@@ -13,14 +15,5 @@
         },
         "@semantic-release/git"
     ],
-    "publish": [
-        {
-            "path": "@semantic-release/npm",
-            "tarballDir": "dist"
-        },
-        {
-            "path": "@semantic-release/github",
-            "assets": "dist/*.tgz"
-        }
-    ]
+    "publish": ["@semantic-release/npm", "@semantic-release/github"]
 }

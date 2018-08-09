@@ -4,6 +4,8 @@ $accordion-toolbar-padding: 0 10px;
 
 .hc-accordion {
     display: block;
+    background: transparent;
+    color: currentColor;
     box-sizing: border-box;
 
     .hc-toolbar-wrapper {
@@ -63,10 +65,7 @@ $accordion-toolbar-padding: 0 10px;
 }
 
 .hc-accordion-content {
-    background: white;
     padding: 12px;
-    //border: $accordion-border;
-    //border-top: none;
     outline: 0;
 }
 
