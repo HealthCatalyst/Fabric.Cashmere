@@ -20,7 +20,6 @@ export class NavbarMobileMenuComponent {
         @Inject('IAppSwitcherService')
         public _appSwitcherService: IAppSwitcherService*/
 
-
     /** Show the component from view */
     show(): void {
         this._yPos = '0';
