@@ -8,7 +8,7 @@ import {IAppSwitcherService} from '../../app-switcher/app-switcher-interfaces';
     styleUrls: ['./navbar-mobile-menu.component.scss']
 })
 export class NavbarMobileMenuComponent {
-    public _yPos: string = '-50';
+    public _yPos: string = '-100';
 
     /**
      * Enables app switcher capabilities
@@ -27,6 +27,6 @@ export class NavbarMobileMenuComponent {
 
     /** Hide the component from view */
     hide(): void {
-        this._yPos = '-50';
+        this._yPos = '-100';
     }
 }

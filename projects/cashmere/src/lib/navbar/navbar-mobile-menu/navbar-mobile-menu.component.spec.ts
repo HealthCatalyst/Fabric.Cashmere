@@ -36,7 +36,7 @@ describe('NavbarMobileMenuComponent', () => {
     describe('hide', () => {
         it('should change the y position', () => {
             component.hide();
-            expect(component._yPos).toBe('-50');
+            expect(component._yPos).toBe('-100');
         });
     });
 });
