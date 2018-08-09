@@ -47,14 +47,14 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
     /** Disables the popover */
     @Input() popperDisabled: boolean;
 
-    /** Directional position of popover element. Default: 'auto'.
-     * 'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'bottom-start' | 'left-start' | 'right-start' | 'top-end' | 'bottom-end'
-     | 'left-end' | 'right-end' | 'auto' | 'auto-top' | 'auto-bottom' | 'auto-left' | 'auto-right' | Function */
+    /** Directional position of popover element.
+     * `'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'bottom-start' | 'left-start' | 'right-start' | 'top-end' | 'bottom-end'
+     | 'left-end' | 'right-end' | 'auto' | 'auto-top' | 'auto-bottom' | 'auto-left' | 'auto-right' | Function` *Default is 'auto'.* */
     @Input() popperPlacement: Placement;
 
     /** Show trigger for popover visibility.
-     * 'click' | 'mousedown' | 'hover' | 'none'
-     * Default: 'click'
+     * `'click' | 'mousedown' | 'hover' | 'none'`
+     * *Default is 'click'.*
      */
     @Input() popperTrigger: Trigger | undefined;
 
@@ -72,19 +72,19 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
 
     /** Popover element boundary.
      * The positioning of the popover will be changed dynamically to prevent the element from being positioned outside the boundary.
-     * Default: 'body' */
+     * *Default is 'body'.* */
     @Input() popperBoundaries: string = 'body';
 
     /** Show popover on page load */
     @Input() popperShowOnStart: boolean;
 
-    /** Hides popover automatically when user clicks outside of element */
-    @Input() popperCloseOnClickOutside: boolean;
+    /** Hides popover automatically when user clicks outside of element. *Default is true.* */
+    @Input() popperCloseOnClickOutside: boolean = true;
 
     /** Hides popover when user scrolls  */
     @Input() popperHideOnScroll: boolean | undefined;
 
-    /** Set this to true to position popover in ‘fixed’ mode. Default: false */
+    /** Set this to true to position popover in ‘fixed’ mode. *Default is false.* */
     @Input() popperPositionFixed: boolean;
 
     /** List of modifiers used to modify the offsets before they are applied to the popper.
@@ -92,10 +92,10 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
      * See: https://popper.js.org/popper-documentation.html#modifiers */
     @Input() popperModifiers: {};
 
-    /** Disable default styles allowing custom styles to be defined. Default: false */
+    /** Disable default styles allowing custom styles to be defined. *Default is false.* */
     @Input() popperDisableStyle: boolean;
 
-    /** Disable fade animations when showing or hiding popover. Default: false */
+    /** Disable fade animations when showing or hiding popover. *Default is false.* */
     @Input() popperDisableAnimation: boolean;
 
     /** Change Detector detectChanges is used when state changes */
