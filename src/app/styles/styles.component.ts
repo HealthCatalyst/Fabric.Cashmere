@@ -1,17 +1,20 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 @Component({
     selector: 'hc-demo-styles',
     templateUrl: './styles.component.html'
 })
-export class StylesComponent {
+export class StylesComponent implements OnDestroy {
     thisPage = '';
     selectOptions: Array<string> = [];
+    private unsubscribe = new Subject<void>();
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router) {
         // Listen for vertical tab bar navigation and update the select component
-        router.events.subscribe(event => {
+        this.router.events.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
             if (event instanceof NavigationEnd) {
                 if (activatedRoute.firstChild) {
                     this.thisPage = activatedRoute.firstChild.snapshot.data['title'];
@@ -42,5 +45,10 @@ export class StylesComponent {
                 }
             }
         }
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     }
 }
