@@ -8,19 +8,18 @@ import {IAppSwitcherService} from '../../app-switcher/app-switcher-interfaces';
     styleUrls: ['./navbar-mobile-menu.component.scss']
 })
 export class NavbarMobileMenuComponent {
-    public _yPos: string = '-100';
+    public _yPos: string = '-50';
 
     /**
      * Enables app switcher capabilities
      *
      */
-    @Input() appSwitcher: string = 'true';
+    // @Input() appSwitcher: string = 'true';
 
-    constructor(
-        @Optional()
+    constructor() {} /*@Optional()
         @Inject('IAppSwitcherService')
-        public appSwitcherService: IAppSwitcherService
-    ) {}
+        public _appSwitcherService: IAppSwitcherService*/
+
 
     /** Show the component from view */
     show(): void {
@@ -29,6 +28,6 @@ export class NavbarMobileMenuComponent {
 
     /** Hide the component from view */
     hide(): void {
-        this._yPos = '-100';
+        this._yPos = '-50';
     }
 }

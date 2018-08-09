@@ -40,7 +40,7 @@ body {
     }
 }
 
-.full-height > .vertical-container {
+.full-height > .hc-vertical-tab-container {
     min-height: calc(100vh - 53px);
 }
 
@@ -74,10 +74,10 @@ body {
     .responsive-subnav {
         display: flex !important;
     }
-    .full-height > .vertical-container > .tab-bar-vertical {
+    .full-height > .hc-vertical-tab-container > .hc-tab-bar-vertical {
         display: none;
     }
-    .full-height > .vertical-container > .tab-content-vertical {
+    .full-height > .hc-vertical-tab-container > .hc-tab-content-vertical {
         width: 100% !important;
         margin-top: 52px;
     }
