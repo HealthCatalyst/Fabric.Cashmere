@@ -14,13 +14,11 @@ export class NavbarMobileMenuComponent {
      * Enables app switcher capabilities
      *
      */
-    @Input() appSwitcher: string = 'true';
+    // @Input() appSwitcher: string = 'true';
 
-    constructor(
-        @Optional()
+    constructor() {} /*@Optional()
         @Inject('IAppSwitcherService')
-        public appSwitcherService: IAppSwitcherService
-    ) {}
+        public _appSwitcherService: IAppSwitcherService*/
 
     /** Show the component from view */
     show(): void {

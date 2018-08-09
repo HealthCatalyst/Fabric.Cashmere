@@ -12,10 +12,10 @@
 npm i --save @healthcatalyst/cashmere
 ```
 
-#### Install peer dependencies on [Popper.js](https://popper.js.org/), [Font Awesome](https://fontawesome.com), and [Open Sans](https://fonts.google.com/specimen/Open+Sans) (optional).
+#### Install peer dependencies on [Popper.js](https://popper.js.org/), [@angular/cdk](https://material.angular.io/cdk), [Font Awesome](https://fontawesome.com), and [Open Sans](https://fonts.google.com/specimen/Open+Sans) (optional).
 
 ```BASH
-npm install --save popper.js font-awesome npm-font-open-sans
+npm install --save popper.js @angular/cdk font-awesome npm-font-open-sans
 ```
 
 #### Step 2. Create a module to hold Cashmere components.
