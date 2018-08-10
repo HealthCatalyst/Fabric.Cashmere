@@ -8,7 +8,9 @@ import {
     forwardRef,
     Input,
     Output,
-    QueryList
+    QueryList,
+    OnDestroy,
+    OnChanges
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {parseBooleanAttribute} from '../util';
@@ -28,19 +30,20 @@ let nextUniqueId = 0;
     ],
     exportAs: 'hcRadioGroup'
 })
-export class RadioGroupDirective implements ControlValueAccessor, AfterContentInit {
+export class RadioGroupDirective implements ControlValueAccessor, AfterContentInit, OnChanges, OnDestroy {
     /** Event emitted when the value of a radio button changes inside the group. */
     @Output() change: EventEmitter<RadioButtonChangeEvent> = new EventEmitter<RadioButtonChangeEvent>();
-    @ContentChildren(forwardRef(() => RadioButtonComponent), {descendants: true})
-    _radios: QueryList<RadioButtonComponent>;
+    @ContentChildren(RadioButtonComponent, {descendants: true}) _radios: QueryList<RadioButtonComponent>;
+
     private _value: any = null;
     private _name = `hc-radio-group-${nextUniqueId++}`;
     private _disabled = false;
     private _required = false;
     private _initialized = false; // if value of radio group has been set to initial value
     private _selected: RadioButtonComponent | null = null; // the currently selected radio
-    _onChangeFn: (value: any) => void = () => {};
-    _onTouched: () => any = () => {};
+    private _subscriptionList: any[];
+    _onChangeFunc: (value: any) => void = () => {};
+    _onTouchFunc: () => any = () => {};
 
     /** Name of radio group. Auto-generated name will be used if no name is set */
     @Input()
@@ -75,7 +78,10 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
 
     set disabled(value) {
         this._disabled = parseBooleanAttribute(value);
-        this._markRadiosForCheck();
+        if (this._radios) {
+            this._radios.forEach(radio => (radio.disabled = this._disabled));
+            this._markRadiosForCheck();
+        }
     }
 
     /** Boolean value of whether the radio group is required on a form */
@@ -86,7 +92,10 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
 
     set required(value) {
         this._required = parseBooleanAttribute(value);
-        this._markRadiosForCheck();
+        if (this._radios) {
+            this._radios.forEach(radio => (radio.required = this._required));
+            this._markRadiosForCheck();
+        }
     }
 
     /** Gets and sets the currently selected value of the radio button group */
@@ -95,15 +104,33 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
     }
 
     set selected(button: RadioButtonComponent | null) {
-        this._selected = button;
         this.value = button ? button.value : null;
-        this._checkSelectedRadio();
     }
 
     constructor(private _cdRef: ChangeDetectorRef) {}
 
     ngAfterContentInit() {
         this._initialized = true;
+        this.disabled = this._disabled;
+        this.required = this._required;
+        this._subscribeRadios();
+    }
+
+    ngOnChanges() {
+        this._subscribeRadios();
+    }
+
+    _subscribeRadios(): void {
+        if (this._radios) {
+            this._subscriptionList = this._radios.map(item => {
+                // subscribe to each radio button change event and return these subscriptions
+                return item.change.subscribe(value => {
+                    this.selected = value;
+                    this._onChangeFunc(this.value);
+                    this._onTouchFunc();
+                });
+            });
+        }
     }
 
     writeValue(value: any) {
@@ -111,17 +138,17 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
         this._cdRef.markForCheck();
     }
 
-    registerOnChange(fn: any) {
-        this._onChangeFn = fn;
+    registerOnChange(fn: (value: any) => void): void {
+        this._onChangeFunc = fn;
     }
 
-    registerOnTouched(fn: any) {
-        this._onTouched = fn;
+    registerOnTouched(fn: () => any): void {
+        this._onTouchFunc = fn;
     }
 
     _touch() {
-        if (this._onTouched) {
-            this._onTouched();
+        if (this._onTouchFunc) {
+            this._onTouchFunc();
         }
     }
 
@@ -161,6 +188,12 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
             this._radios.forEach(radio => {
                 radio.name = this.name;
             });
+        }
+    }
+
+    ngOnDestroy() {
+        if (this._subscriptionList && this._subscriptionList.length) {
+            this._subscriptionList.forEach(sub => sub.unsubscribe());
         }
     }
 }
