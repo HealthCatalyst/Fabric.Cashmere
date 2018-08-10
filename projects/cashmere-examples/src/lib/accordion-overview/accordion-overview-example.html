@@ -1,5 +1,5 @@
 <div class="sample-container">
-    <hc-accordion [triggerAlign]="alignment" [hideToolbar]="hideToolbar" #accordion>
+    <hc-accordion [triggerAlign]="alignment" [hideToolbar]="hideToolbar" [toolbarTrigger]="triggerToolbar" #accordion>
         <hc-accordion-toolbar>Toolbar</hc-accordion-toolbar>
         Content
     </hc-accordion>
@@ -7,4 +7,5 @@
     <button hc-button (click)="accordion.toggle()" class="demo-button">Toggle</button>
     <button hc-button (click)="toggleAlign()" class="demo-button">Toggle Alignment</button>
     <button hc-button (click)="toggleToolbar()" class="demo-button">Toggle Toolbar</button>
+    <button hc-button (click)="toggleToolbarTrigger()" class="demo-button">{{triggerButton}}</button>
 </div>

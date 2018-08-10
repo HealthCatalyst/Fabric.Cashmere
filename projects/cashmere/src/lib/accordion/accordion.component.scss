@@ -22,10 +22,15 @@ $accordion-toolbar-padding: 0 10px;
                 order: 0;
             }
         }
+
+        &.hc-toolbar-pointer {
+            cursor: pointer;
+        }
     }
 
     .hc-accordion-trigger {
         position: relative;
+        cursor: pointer;
 
         &::after {
             display: block;
