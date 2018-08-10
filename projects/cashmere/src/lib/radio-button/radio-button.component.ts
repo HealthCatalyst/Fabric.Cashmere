@@ -15,12 +15,12 @@ import {parseBooleanAttribute} from '../util';
 
 let nextUniqueId = 0;
 
- /** Event type that is emitted when a radio button or radio button group changes */
+/** Event type that is emitted when a radio button or radio button group changes */
 export class RadioButtonChangeEvent {
     /**
-    * @param source the radio button that fired the event
-    * @param value the value of that radio button
-    */
+     * @param source the radio button that fired the event
+     * @param value the value of that radio button
+     */
     constructor(public source: RadioButtonComponent | null, public value: any) {}
 }
 

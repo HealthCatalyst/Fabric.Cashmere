@@ -33,7 +33,8 @@ let nextUniqueId = 0;
 export class RadioGroupDirective implements ControlValueAccessor, AfterContentInit, OnChanges, OnDestroy {
     /** Event emitted when the value of a radio button changes inside the group. */
     @Output() change: EventEmitter<RadioButtonChangeEvent> = new EventEmitter<RadioButtonChangeEvent>();
-    @ContentChildren(RadioButtonComponent, {descendants: true}) _radios: QueryList<RadioButtonComponent>;
+    @ContentChildren(RadioButtonComponent, {descendants: true})
+    _radios: QueryList<RadioButtonComponent>;
 
     private _value: any = null;
     private _name = `hc-radio-group-${nextUniqueId++}`;
