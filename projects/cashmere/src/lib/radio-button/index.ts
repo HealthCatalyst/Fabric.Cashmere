@@ -1,3 +1,2 @@
-export {RadioButtonComponent} from './radio-button.component';
+export {RadioButtonComponent, RadioGroupDirective, RadioButtonChangeEvent} from './radio';
 export {RadioButtonModule} from './radio-button.module';
-export {RadioGroupDirective} from './radio-group.directive';
