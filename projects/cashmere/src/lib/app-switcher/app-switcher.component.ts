@@ -1,5 +1,5 @@
 import {takeUntil} from 'rxjs/operators';
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit, Input} from '@angular/core';
 import {Subject, Subscription} from 'rxjs';
 
 import {IAppSwitcherService, IDiscoveryApplication} from './app-switcher-interfaces';
@@ -10,6 +10,9 @@ import {IAppSwitcherService, IDiscoveryApplication} from './app-switcher-interfa
     styleUrls: ['./app-switcher.component.scss']
 })
 export class AppSwitcherComponent implements OnInit, OnDestroy {
+    /** Image of brand icon */
+    @Input() brandIcon: string = '';
+
     public applications: IDiscoveryApplication[];
     public subscription: Subscription;
     public brandBg = 'brand';
