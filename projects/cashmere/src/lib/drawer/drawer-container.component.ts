@@ -12,7 +12,7 @@ import {
     Renderer2,
     ViewEncapsulation
 } from '@angular/core';
-import {DrawerComponent, DrawerPromiseResult} from './drawer.component';
+import {Drawer, DrawerPromiseResult} from './drawer.component';
 import {debounceTime, filter, startWith, takeUntil} from 'rxjs/operators';
 import {AnimationEvent} from '@angular/animations';
 import {Subject} from 'rxjs';
@@ -28,11 +28,11 @@ function throwDrawerContainerError(align: string) {
     styleUrls: ['drawer.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class DrawerContainerComponent implements AfterContentInit, DoCheck, OnDestroy {
-    @ContentChildren(DrawerComponent) _drawers: QueryList<DrawerComponent>;
+export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
+    @ContentChildren(Drawer) _drawers: QueryList<Drawer>;
 
-    private _leftDrawer: DrawerComponent;
-    private _rightDrawer: DrawerComponent;
+    private _leftDrawer: Drawer;
+    private _rightDrawer: Drawer;
 
     _contentMargins = {left: 0, right: 0};
 
@@ -67,7 +67,7 @@ export class DrawerContainerComponent implements AfterContentInit, DoCheck, OnDe
         this._drawers.changes.pipe(startWith(null)).subscribe(() => {
             this._validateDrawers();
 
-            this._drawers.forEach((drawer: DrawerComponent) => {
+            this._drawers.forEach((drawer: Drawer) => {
                 drawer._animationStarted
                     .pipe(takeUntil(this._drawers.changes), filter((event: AnimationEvent) => event.fromState !== event.toState))
                     .subscribe(() => {
@@ -88,7 +88,7 @@ export class DrawerContainerComponent implements AfterContentInit, DoCheck, OnDe
         });
     }
 
-    private _isDrawerOpen(drawer: DrawerComponent): boolean {
+    private _isDrawerOpen(drawer: Drawer): boolean {
         return drawer != null && drawer.opened;
     }
 
