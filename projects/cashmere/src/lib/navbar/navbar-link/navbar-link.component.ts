@@ -8,7 +8,7 @@ import {ChangeDetectorRef, Component, ElementRef, HostBinding, Input} from '@ang
 export class NavbarLinkComponent {
     @HostBinding('class') _hostClass = 'navbar-item';
 
-    /** (optional) forces active state (default = null) */
+    /** (optional) forces active state *Default is `null`.* */
     @Input() active?: boolean;
 
     /** RouterLink uri. See https://angular.io/api/router/RouterLink */
@@ -17,7 +17,7 @@ export class NavbarLinkComponent {
     /** The text to display. This can also optionally be the contents within the element */
     @Input() linkText: string;
 
-    /** Sets the RouterLinkActive options to match the url exactly to set active state. (default = false)
+    /** Sets the RouterLinkActive options to match the url exactly to set active state. *Default is false.*
      * See https://angular.io/api/router/RouterLinkActive#description
      */
     @Input() exact: boolean = false;
