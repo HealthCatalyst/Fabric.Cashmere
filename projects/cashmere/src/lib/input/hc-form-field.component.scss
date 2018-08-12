@@ -124,10 +124,6 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
         background-color: $slate-gray-100;
         color: tint($text, 60%);
     }
-
-    .hc-input {
-        cursor: not-allowed;
-    }
 }
 
 .hc-required-marker {

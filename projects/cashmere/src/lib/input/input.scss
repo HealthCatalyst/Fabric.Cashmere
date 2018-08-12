@@ -16,6 +16,10 @@
     vertical-align: bottom;
     text-align: inherit;
 
+    &[disabled] {
+        cursor: not-allowed;
+    }
+
     &:-moz-ui-invalid {
         box-shadow: none;
     }
@@ -35,6 +39,19 @@
 
     &::-ms-input-placeholder {
         color: $slate-gray-300;
+    }
+}
+
+.hc-form-field-disabled {
+    .hc-form-field-flex {
+        cursor: not-allowed;
+        border: 1.5px solid $gray-200;
+        background-color: $slate-gray-100;
+        color: tint($text, 60%);
+    }
+
+    .hc-input {
+        cursor: not-allowed;
     }
 }
 
