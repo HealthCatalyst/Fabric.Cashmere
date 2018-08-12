@@ -1,13 +1,13 @@
 <div class="hc-{{direction}}-tab-container">
     <div class="hc-tab-bar-{{direction}}">
-        <div *ngFor="let tab of _tabs">
-            <a *ngIf="_routerEnabled" class="hc-tab-{{direction}}"
+        <div *ngFor="let tab of _tabs" class="hc-tab-width">
+            <a *ngIf="_routerEnabled" class="hc-tab-{{direction}} hc-text-ellipsis"
                [routerLink]="tab.routerLink"
                routerLinkActive="active"
                (click)="_setActive(tab)">
                 {{tab.tabTitle}}
             </a>
-            <a *ngIf="!_routerEnabled" class="hc-tab-{{direction}}"
+            <a *ngIf="!_routerEnabled" class="hc-tab-{{direction}} hc-text-ellipsis"
                [class.active]="tab._active"
                (click)="_setActive(tab)">
                 {{tab.tabTitle}}
