@@ -23,16 +23,16 @@ export class NavbarComponent implements AfterViewInit {
     /** Display name of current user */
     @Input() user: string = '';
 
-    /** Image of application logo text */
+    /** Url to application logo image file */
     @Input() appIcon: string = '';
 
-    /** Image of brand icon */
+    /** Url to brand icon image file */
     @Input() brandIcon: string = '';
 
-    /** Router link that triggered when home icon is clicked  */
+    /** Router link triggered when home icon is clicked */
     @Input() homeUri: any[] | string = '';
 
-    /** Fixes the position of navbar to the top of the page */
+    /** Fixes the position of navbar to the top of the page. *Default is false.* */
     @Input() fixedTop: boolean = false;
 
     @ContentChildren(NavbarMobileMenuComponent) _mobileMenu: QueryList<NavbarMobileMenuComponent>;
