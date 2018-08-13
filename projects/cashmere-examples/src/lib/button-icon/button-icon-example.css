@@ -1,5 +1,17 @@
-button {
-    margin: 10px;
+h3 {
+    margin: 12px 0;
+}
+
+button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.btn-row {
+    padding: 0 15px;
+}
+
+btn-row:not(:first-child) {
+    margin-bottom: 20px;
 }
 
 .icon-left {

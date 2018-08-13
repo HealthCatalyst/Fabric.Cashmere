@@ -47,6 +47,10 @@
     border-bottom: 1px solid $slate-gray-300;
 }
 
+.hc-tab-width {
+    min-width: 0;
+}
+
 .hc-tab-horizontal {
     background-color: inherit;
     color: $offblack;

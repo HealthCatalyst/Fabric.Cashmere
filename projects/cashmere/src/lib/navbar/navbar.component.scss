@@ -5,7 +5,7 @@
 $navbar-color: $charcoal-blue !default;
 $navbar-brand: $primary-brand !default;
 $navbar-height: 53px !default;
-$navbar-app-padding: 0 75px 0 25px !default;
+$navbar-app-padding: 0 60px 0 25px !default;
 $navbar-text: $white !default;
 $navbar-text-inactive: $gray-300 !default;
 $navbar-fixed-shadow: 0px 2px 6px $shadow;
@@ -53,9 +53,13 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
             height: 100%;
             width: 55px;
 
-            &:hover,
+            &:hover:not(.no-switcher),
             &:focus:not(.no-switcher) {
                 background-color: $dark-blue;
+            }
+
+            &.no-switcher {
+                cursor: default;
             }
         }
     }
@@ -109,8 +113,8 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
                 justify-content: center;
                 align-items: center;
                 &:not(.vertical-separator) {
-                    min-width: 53px;
                     padding: 0 15px;
+                    min-width: 53px;
                     cursor: pointer;
                     transition: background-color 0.25s;
                     &:hover:not(.active),
@@ -124,14 +128,14 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
                     content: '|';
                     font-size: 18px;
                     text-align: center;
-                    line-height: 0.5;
+                    margin-top: -4px;
                 }
             }
             &:not(hc-navbar-icon) > a {
                 display: inline-block;
                 height: 100%;
                 box-sizing: border-box;
-                padding: 18px 30px 0 30px;
+                padding: 22px 30px 0 30px;
                 text-align: center;
                 color: $navbar-text-inactive;
                 border-bottom: 5px solid transparent;
@@ -172,7 +176,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         cursor: pointer;
         height: 100%;
         box-sizing: border-box;
-        padding: 18px 30px 0 30px;
+        padding: 22px 30px 0 30px;
         text-align: center;
         color: $navbar-text-inactive;
         border-bottom: 5px solid transparent;
