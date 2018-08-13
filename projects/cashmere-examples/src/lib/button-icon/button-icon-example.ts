@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 /**
- * @title Buttons with Icons
+ * @title Buttons and icons
  */
 @Component({
     selector: 'button-icon-example',
