@@ -51,15 +51,20 @@ The error page should include the app's `hc-navbar` but without any of the navba
 
 :::
 
-##### Alternate Text Classes
+##### Alternate Classes
 
-For errors that need to display a string of text rather than an error code, the class `error-header-string` may be used instead. For longer error messages (a full sentence or more), the `error-message-light` class should be used.
+For errors that need to display a string of text rather than an error code, the class `error-header-string` may be used instead. For longer error messages (a full sentence or more), the `error-message-light` class should be used. For access errors, an alternate image is available using the `access-error-img` class.
 
 ```html
-<div class="error-header-string">Access Denied</div>
-<div class="error-message-light">
-    Unfortunately you are not authorized to access this application.
-    Please contact your system administrator.
+<div class="content-column">
+    <div class="access-error-img"></div>
+</div>
+<div class="content-column">
+    <div class="error-header-string">Access Denied</div>
+    <div class="error-message-light">
+        Looks like you are missing permissions to access this resource.
+        Please contact your systems administrator.
+    </div>
 </div>
 ```
 
@@ -68,11 +73,11 @@ For errors that need to display a string of text rather than an error code, the 
 <br>
 <div class="error-tile">
     <div class="content-column">
-        <div class="error-img"></div>
+        <div class="access-error-img"></div>
     </div>
     <div class="content-column">
         <div class="error-header-string">Access Denied</div>
-        <div class="error-message-light">Unfortunately you are not authorized to access this application. Please contact your system administrator.</div>
+        <div class="error-message-light">Looks like you are missing permissions to access this resource. Please contact your systems administrator.</div>
     </div>
     <hr>
     <div style="display: flex"><div class="error-button">Go to Homepage</div></div>
