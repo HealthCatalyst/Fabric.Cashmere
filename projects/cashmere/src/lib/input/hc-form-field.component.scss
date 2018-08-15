@@ -8,7 +8,7 @@ $error-font-scale: 0.75;
 $infix-margin-top: 1em * $line-height * $label-font-scale;
 $prefix-suffix-icon-font-size: 125%;
 
-$infix-padding: 0.4375em;
+$infix-padding: 0.393em;
 $error-margin-top: 0.4em / $error-font-scale;
 $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
@@ -118,7 +118,12 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 }
 
 .hc-form-field-disabled {
-    cursor: not-allowed;
+    .hc-form-field-flex {
+        cursor: not-allowed;
+        border: 1.5px solid $gray-200;
+        background-color: $slate-gray-100;
+        color: tint($text, 60%);
+    }
 }
 
 .hc-required-marker {

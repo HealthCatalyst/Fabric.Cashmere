@@ -33,10 +33,21 @@ export class AccordionComponent implements AfterContentInit {
     private _animationDisabled = false;
     private _currentlyAnimating = false;
     private _hideToolbar = false;
+    private _toolbarTrigger = true;
     private __isOpen = false;
 
     /** Side the the accordion trigger is attached to. */
     @Input() triggerAlign: 'left' | 'right' = 'left';
+
+    /** Whether the entire width of the accordion bar is clickable, or only the down arrow button; default = true */
+    @Input()
+    get toolbarTrigger(): boolean {
+        return this._toolbarTrigger;
+    }
+
+    set toolbarTrigger(doTrigger) {
+        this._toolbarTrigger = parseBooleanAttribute(doTrigger);
+    }
 
     /** Hide toolbar. */
     @Input()
@@ -78,6 +89,10 @@ export class AccordionComponent implements AfterContentInit {
 
     get _alignment(): string {
         return this.triggerAlign === 'right' ? 'hc-align-right' : '';
+    }
+
+    get _pointer(): string {
+        return this.toolbarTrigger === true ? 'hc-toolbar-pointer' : '';
     }
 
     get _openState(): 'void' | 'open-instant' | 'open' {
@@ -133,9 +148,11 @@ export class AccordionComponent implements AfterContentInit {
         this._animationDisabled = false;
     }
 
-    _triggerClick(event: Event): void {
-        event.stopPropagation();
-        this.toggle();
+    _triggerClick(event: Event, toolbarClick: boolean): void {
+        if ((toolbarClick && this.toolbarTrigger) || !toolbarClick) {
+            event.stopPropagation();
+            this.toggle();
+        }
     }
 
     /** Opens accordion. */
