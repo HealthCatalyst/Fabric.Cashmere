@@ -9,7 +9,8 @@ $drawer-container-padding: 10px 20px;
     z-index: $z-index;
 }
 
-.hc-drawer {
+.hc-drawer,
+.hc-menu-drawer {
     display: block;
     position: absolute;
     top: 0;

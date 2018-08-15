@@ -1,8 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {Component, DebugElement} from '@angular/core';
-import {RadioGroupDirective} from './radio-group.directive';
 import {By} from '@angular/platform-browser';
+import {RadioGroupDirective} from './radio';
 
 @Component({
     template: `<hc-radio-group [disabled]="true"></hc-radio-group>`

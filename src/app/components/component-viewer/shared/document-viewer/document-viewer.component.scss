@@ -52,6 +52,7 @@
 
 .docs-api-properties-header-row th {
     padding-bottom: 8px;
+    text-align: left;
 }
 
 .docs-api-properties-name-cell {
@@ -77,6 +78,7 @@
         color: $magenta;
         font-family: Consolas, Menlo, 'Ubuntu Mono', monospace;
         padding-top: 20px;
+        text-align: left;
     }
 
     td {

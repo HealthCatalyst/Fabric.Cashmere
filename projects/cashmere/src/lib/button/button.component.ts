@@ -1,19 +1,22 @@
 /* tslint:disable:component-selector */
 /* tslint:disable:use-host-property-decorator */
 
-import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, Renderer2, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 
 const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'link', 'link-inline'];
+
 export function validateStyleInput(style: string) {
     if (supportedStyles.indexOf(style) < 0) {
         throw Error('Unsupported style input value: ' + style);
     }
 }
 
+const buttonAttributes = ['hc-icon-button', 'hc-button'];
+
 /** Cashmere styled button */
 @Component({
-    selector: 'button[hc-button]',
+    selector: 'button[hc-button], button[hc-icon-button]',
     template: '<ng-content></ng-content>',
     styleUrls: ['./button.component.scss'],
     host: {
@@ -63,14 +66,15 @@ export class ButtonComponent {
         this._disabled = parseBooleanAttribute(isDisabled);
     }
 
-    @HostBinding('class.hc-button')
-    get _buttonClass(): boolean {
-        return true;
-    }
-
     constructor(private elementRef: ElementRef, private renderer: Renderer2) {
         this.buttonStyle = 'primary';
         this.previousStyle = this.buttonStyle;
+
+        for (const attr of buttonAttributes) {
+            if (elementRef.nativeElement.hasAttribute(attr)) {
+                renderer.addClass(elementRef.nativeElement, attr);
+            }
+        }
     }
 
     /** Used to give focus to the button */
