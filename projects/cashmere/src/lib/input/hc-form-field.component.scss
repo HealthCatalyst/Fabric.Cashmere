@@ -118,7 +118,12 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 }
 
 .hc-form-field-disabled {
-    cursor: not-allowed;
+    .hc-form-field-flex {
+        cursor: not-allowed;
+        border: 1.5px solid $gray-200;
+        background-color: $slate-gray-100;
+        color: tint($text, 60%);
+    }
 }
 
 .hc-required-marker {
