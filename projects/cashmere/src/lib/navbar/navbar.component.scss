@@ -51,12 +51,6 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
             justify-content: center;
             align-items: center;
             height: 100%;
-            width: 55px;
-
-            &:hover:not(.no-switcher),
-            &:focus:not(.no-switcher) {
-                background-color: $dark-blue;
-            }
 
             &.no-switcher {
                 cursor: default;
