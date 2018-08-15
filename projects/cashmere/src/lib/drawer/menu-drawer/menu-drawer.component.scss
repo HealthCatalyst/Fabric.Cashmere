@@ -1,0 +1,63 @@
+@import '../../sass/colors';
+
+$drawer-toolbar-height: 52px;
+
+.hc-menu-drawer {
+    display: block;
+    overflow: hidden;
+
+    &.hc-drawer-toolbar-visible {
+        .hc-menu-drawer-item-container {
+            height: calc(100% - #{$drawer-toolbar-height});
+        }
+    }
+}
+
+.hc-menu-drawer-toolbar-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    color: $blue;
+    background-color: #555d63;
+}
+
+.hc-drawer-toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 15px 28px;
+    max-height: $drawer-toolbar-height;
+    height: $drawer-toolbar-height;
+    overflow: hidden;
+}
+
+.hc-menu-drawer-item-container {
+    background-color: #5e676f;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 28px;
+}
+
+.hc-drawer-item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 15px 0 15px 15px;
+    color: #ffffff;
+
+    &:not(:first-child) {
+        border-top: 1px solid #6b737b;
+        border-bottom: 1px solid #6b737b;
+    }
+}
+
+.hc-drawer-right {
+    .hc-menu-drawer-item-container {
+        padding: 0 0 0 28px;
+    }
+
+    .hc-drawer-item {
+        padding: 15px 15px 15px 0;
+    }
+}
