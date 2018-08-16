@@ -1,0 +1,67 @@
+<div class="drawer-container">
+    <hc-drawer-container>
+        <hc-menu-drawer align="left" menuTheme="dark-theme" #leftDrawer>
+            <div hcDrawerToolbar>Filter Sets</div>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Clinical Program
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Care Process Family
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Care Process
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Sub-Care Process
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    MS-DRG
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Discharge Status
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    ER Visit
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Payer
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Age
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+        </hc-menu-drawer>
+
+        <div class="drawer-content">
+            <button hc-button buttonStyle="primary" (click)="leftDrawer.toggle()" class="demo-button">
+                Toggle Left Drawer
+            </button>
+        </div>
+    </hc-drawer-container>
+</div>

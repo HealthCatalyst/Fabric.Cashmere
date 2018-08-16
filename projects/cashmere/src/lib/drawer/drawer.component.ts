@@ -48,7 +48,7 @@ export class DrawerPromiseResult {
     ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DrawerComponent implements AfterContentInit {
+export class Drawer implements AfterContentInit {
     readonly _openChange = new EventEmitter<boolean>();
 
     /** Mode of the drawer; one of 'over', 'push' or 'side' */
@@ -163,7 +163,7 @@ export class DrawerComponent implements AfterContentInit {
         }
     }
 
-    constructor(private elementRef: ElementRef) {}
+    constructor(protected elementRef: ElementRef) {}
 
     ngAfterContentInit() {
         if (this._animationPromise) {
@@ -186,6 +186,8 @@ export class DrawerComponent implements AfterContentInit {
 
     /** Toggles the drawer */
     toggle(isOpen: boolean = !this.opened): Promise<DrawerPromiseResult> {
+        this._drawerOpened = isOpen;
+
         if (!this._animationPromise) {
             this._drawerOpened = isOpen;
 
