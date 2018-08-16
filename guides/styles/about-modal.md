@@ -63,6 +63,10 @@ The following code snippet leverages styles in the `about-modal.scss` stylesheet
         <a href="https://www.healthcatalyst.com/terms-conditions/">Terms and Conditions</a>  |  <a href="https://www.healthcatalyst.com/privacy-policy/">Privacy Policy</a>
     </div>
 </div>
+<hr>
+<div class="about-close-container">
+    <button hc-button class="about-close">Close</button>
+</div>
 ```
 
 :::

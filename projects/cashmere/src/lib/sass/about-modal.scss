@@ -72,3 +72,11 @@
     @include fontSize(16px);
     line-height: 24px;
 }
+
+.about-close-container {
+    display: flex;
+}
+
+.about-close {
+    margin: 20px auto;
+}
