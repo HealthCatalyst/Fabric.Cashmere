@@ -1,0 +1,7 @@
+{
+    "Import Cashmere Colors": {
+        "prefix": "hc-colors",
+        "body": ["@import '~@healthcatalyst/cashmere/scss/colors';"],
+        "description": "Insert import for Cashmere Colors"
+    }
+}
