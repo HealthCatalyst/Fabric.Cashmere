@@ -1,0 +1,231 @@
+{
+    "Cashmere Accordion": {
+        "prefix": "hc-accordion",
+        "body": [
+            "<hc-accordion triggerAlign=\"${1|left,right|}\" hideToolbar=\"${2|false,true|}\" toolbarTrigger=\"${3|true,false|}\" #${4:accordion}>",
+            "\t<hc-accordion-toolbar>${5:toolbar text}</hc-accordion-toolbar>",
+            "\t$0",
+            "</hc-accordion>"
+        ],
+        "description": "Insert Cashmere accordion"
+    },
+    "Cashmere Button": {
+        "prefix": "hc-button",
+        "body": [
+            "<button hc-button title=\"${1:Title}\" buttonStyle=\"${2|primary,primary-alt,destructive,neutral,secondary,link,link-inline|}\">${3:Button Text}</button>"
+        ],
+        "description": "Insert Cashmere button"
+    },
+    "Cashmere Checkbox": {
+        "prefix": "hc-checkbox",
+        "body": ["<hc-checkbox disabled=\"${2|false,true|}\" [(ngModel)]=\"${3:model}\">${1:Checkbox Label}</hc-checkbox>"],
+        "description": "Insert Cashmere checkbox"
+    },
+    "Cashmere Chip": {
+        "prefix": "hc-chip",
+        "body": [
+            "<hc-chip color=\"${1|neutral,yellow,green,red|}\" action=\"${2|true,false|}\" (click)=\"${3:functionName}(\\$event)\">${4:Chip Text}</hc-chip>"
+        ],
+        "description": "Insert Cashmere chip"
+    },
+    "Cashmere Drawer": {
+        "prefix": "hc-drawer",
+        "body": [
+            "<hc-drawer-container>",
+            "\t<hc-drawer align=\"${1|left,right|}\" mode=\"${2|over,push,side|}\" #${3:drawer}>",
+            "\t\t$0",
+            "\t</hc-drawer>",
+            "</hc-drawer-container>"
+        ],
+        "description": "Insert Cashmere drawer"
+    },
+    "Cashmere Menu Drawer": {
+        "prefix": "hc-menu-drawer",
+        "body": [
+            "<hc-drawer-container>",
+            "\t<hc-menu-drawer align=\"${1|left,right|}\" mode=\"${2|over,push,side|}\" menuTheme=\"${3|dark-theme|}\" #${4:drawer}>",
+            "\t\t<hc-drawer-item>",
+            "\t\t\t$0",
+            "\t\t</hc-drawer-item>",
+            "\t</hc-drawer>",
+            "</hc-drawer-container>"
+        ],
+        "description": "Insert Cashmere menu drawer"
+    },
+    "Cashmere Icon": {
+        "prefix": "hc-icon",
+        "body": ["<hc-icon fontSet=\"${1:fa}\" fontIcon=\"${2:fa-snowflake-o}\" ${3|icon-sm,icon-md,icon-lg|}>$0</hc-icon>"],
+        "description": "Insert Cashmere icon"
+    },
+    "Cashmere Input": {
+        "prefix": "hc-input",
+        "body": [
+            "<hc-form-field>",
+            "\t<hc-icon hcPrefix fontSet=\"${2:fa}\" fontIcon=\"fa-usd\"></hc-icon>",
+            "\t<input hcInput placeholder=\"${1:Placeholder Text}\" ${3|disabled, |}>",
+            "\t<hc-icon hcSuffix fontSet=\"${2:fa}\" fontIcon=\"fa-user-circle-o\"></hc-icon>",
+            "</hc-form-field>"
+        ],
+        "description": "Insert Cashmere input"
+    },
+    "Cashmere List": {
+        "prefix": "hc-list",
+        "body": [
+            "<hc-list>",
+            "\t<hc-list-item>",
+            "\t\t<hc-icon fontSet=\"${5:fa}\" fontIcon=\"${6:fa-snowflake-o}\" hcListIcon></hc-icon>",
+            "\t\t<${1:div} hcListLine>${3:Line One}</${1:div}>",
+            "\t\t<${2:span} hcListLine>${4:Line Two}</${2:span}>",
+            "\t</hc-list-item>",
+            "</hc-list>"
+        ],
+        "description": "Insert Cashmere list"
+    },
+    "Cashmere Modal": {
+        "prefix": "hc-modal",
+        "body": [
+            "<ng-template #${2:modalName} let-close=\"${3:close}\" let-dismiss=\"${4:dismiss}\" let-data=\"${5:data}\">",
+            "\t<hc-modal>",
+            "\t\t<hc-modal-header>${1:Modal Header}</hc-modal-header>",
+            "\t\t<hc-modal-body>${0:Modal Body}</hc-modal-body>",
+            "\t\t<hc-modal-footer>",
+            "\t\t\t<button hc-button buttonStyle=\"${6|link,primary,primary-alt,destructive,neutral,secondary,link-inline|}\" (click)=\"${7:confirm()}\">${8:OK}</button>",
+            "\t\t\t<button hc-button buttonStyle=\"${9|primary,primary-alt,destructive,neutral,secondary,link,link-inline|}\" (click)=\"${10:cancel()}\">${11:Cancel}</button>",
+            "\t</hc-modal-footer>",
+            "\t</hc-modal>",
+            "</ng-template>"
+        ],
+        "description": "Insert Cashmere modal"
+    },
+    "Cashmere Navbar": {
+        "prefix": "hc-navbar",
+        "body": [
+            "<hc-navbar appIcon=\"${1:./assets/CashmereAppLogo.svg}\" brandIcon=\"${2:./assets/TriFlame.svg}\" user=\"${3:Christine K.}\" [homeUri]=\"${4}\" [fixedTop]=\"${5|true,false|}\">",
+            "\t<hc-app-switcher brandIcon=\"${2:./assets/TriFlame.svg}\"></hc-app-switcher>",
+            "\t<hc-navbar-link [active]=\"${6|true,false|}\" uri=\"${7}\" linkText=\"${8:Home}\"></hc-navbar-link>",
+            "\t<hc-navbar-icon>",
+            "\t\t<hc-icon fontSet=\"${9:fa}\" fontIcon=\"${10:fa-search}\"></hc-icon>",
+            "\t</hc-navbar-icon>",
+            "\t<hc-navbar-mobile-menu appSwitcher=\"${11|true,false|}\">",
+            "\t\t<hc-list>",
+            "\t\t\t<hc-list-item routerLink=\"${12}\" routerLinkActive=\"active-link\">",
+            "\t\t\t\t<span hcListLine>${13}</span>",
+            "\t\t\t</hc-list-item>",
+            "\t\t</hc-list>",
+            "\t</hc-navbar-mobile-menu>",
+            "</hc-navbar>"
+        ],
+        "description": "Insert Cashmere navbar"
+    },
+    "Cashmere Pagination": {
+        "prefix": "hc-pagination",
+        "body": [
+            "<hc-pagination [totalPages]=\"${1:totalPages}\" [(pageNumber)]=\"${2:currentPage}\" (pageNumberChange)=\"${3:onPageNumberChange}(\\$event)\"></hc-pagination>"
+        ],
+        "description": "Insert Cashmere pagination"
+    },
+    "Cashmere Picklist": {
+        "prefix": "hc-picklist",
+        "body": [
+            "<hc-picklist",
+            "\t[(ngModel)]=\"${1:simpleModel}\"",
+            "\tsimpleOptions=\"${2:simpleOptions}\"",
+            "\tsettings=\"${3:config}\"",
+            "\tleftHeaderText=\"${4:leftHeaderText}\"",
+            "\trightHeaderText=\"${5:rightHeaderText}\"",
+            "\tshowHeaderText=\"${6|true,false|}\"",
+            "\t(changed)=\"${7:onPicklistChanged}(\\$event)\">",
+            "</hc-picklist>"
+        ],
+        "description": "Insert Cashmere picklist"
+    },
+    "Cashmere Popover": {
+        "prefix": "hc-popover",
+        "body": [
+            "<hc-popover-content #${2:popoverName}>",
+            "\t<${3:span} [(innerText)]=\"${1:Popover Text}\"></${3:span}>",
+            "</hc-popover-content>"
+        ],
+        "description": "Insert Cashmere popover"
+    },
+    "Cashmere Progress Dots Indicator": {
+        "prefix": "hc-progress-dots",
+        "body": [
+            "<hc-progress-dots color=\"${1|dark,light|}\" isCentered=\"${2|true,false|}\" isMini=\"${3|true,false|}\"></hc-progress-dots>"
+        ],
+        "description": "Insert Cashmere progress dots"
+    },
+    "Cashmere Progress Spinner Indicator": {
+        "prefix": "hc-progress-Spinner",
+        "body": [
+            "<hc-progress-spinner",
+            "color=\"${1|blue,green,purple,orange,red,gray,white|}\"",
+            "diameter=\"${2:20}\"",
+            "hasChannel=\"${3|true,false|}\"",
+            "isCentered=\"${4|true,false|}\"",
+            "isDeterminate=\"${5|true,false|}\"",
+            "progress=\"${6:0}\"></hc-progress-spinner>"
+        ],
+        "description": "Insert Cashmere progress spinner"
+    },
+    "Cashmere Radio Button": {
+        "prefix": "hc-radio-button",
+        "body": [
+            "<hc-radio-group [(ngModel)]=\"${1:itemList}\" required=\"${2|true,false|}\" (change)=\"${3:onChange}(\\$event)\">",
+            "\t<hc-radio-button *ngFor=\"let ${4:item} of ${4:item}s\" [value]=\"${4:item}\">{{${4:item}}}</hc-radio-button>",
+            "</hc-radio-group>"
+        ],
+        "description": "Insert Cashmere radio buttons"
+    },
+    "Cashmere Select": {
+        "prefix": "hc-select",
+        "body": [
+            "<hc-select placeholder=\"${1:Placeholder Text}\">",
+            "\t<option *ngFor=\"let ${2:item} of ${2:item}s\">{{${2:item}}}</option>",
+            "</hc-select>"
+        ],
+        "description": "Insert Cashmere select"
+    },
+    "Cashmere Subnav": {
+        "prefix": "hc-subnav",
+        "body": ["<hc-subnav fixedTop=\"${1|true,false|}\">", "\t$0", "</hc-subnav>"],
+        "description": "Insert Cashmere subnav"
+    },
+    "Cashmere Table": {
+        "prefix": "hc-table",
+        "body": [
+            "<table hc-table [dataSource]=\"${1:dataSource}\">",
+            "",
+            "\t<ng-container hcColumnDef=\"${2:columnDefinition}\">",
+            "\t\t<th hc-header-cell *hcHeaderCellDef>${3:headerTitle}</th>",
+            "\t\t<td hc-cell *hcCellDef=\"let ${4:row}\">{{${5:rowValue}}}</td>",
+            "\t</ng-container>",
+            "",
+            "\t<tr hc-header-row *hcHeaderRowDef=\"${6:displayedColumns} sticky: ${7|true,false|}\"></tr>",
+            "\t<tr hc-row *hcRowDef=\"let ${4:row}; columns: ${6:displayedColumns};\"></tr>",
+            "</table>"
+        ],
+        "description": "Insert Cashmere table"
+    },
+    "Cashmere Tabs": {
+        "prefix": "hc-tabs",
+        "body": [
+            "<hc-tab-set direction=\"${1|horizontal,vertical|}\">",
+            "\t<hc-tab tabTitle=\"${2:Tab Title}\">",
+            "\t\t$0",
+            "\t</hc-tab>",
+            "</hc-tab-set>"
+        ],
+        "description": "Insert Cashmere tabs"
+    },
+    "Cashmere Tile": {
+        "prefix": "hc-tile",
+        "body": ["<hc-tile>$0</hc-tile>"],
+        "description": "Insert Cashmere tile"
+    },
+    "Cashmere Typeform Survey": {
+        "prefix": "hc-typeform-survey",
+        "body": ["<hc-typeform-survey surveyUri=\"https://${1:example-survey.com}\" #${surveyName}></hc-typeform-survey>"],
+        "description": "Insert Cashmere typeform survey"
+    }
+}
