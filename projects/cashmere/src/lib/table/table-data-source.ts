@@ -156,9 +156,9 @@ export class HcTableDataSource<T> extends DataSource<T> {
                     comparatorResult = -1;
                 }
             } else if (valueA != null) {
-                comparatorResult = 1;
-            } else if (valueB != null) {
                 comparatorResult = -1;
+            } else if (valueB != null) {
+                comparatorResult = 1;
             }
 
             return comparatorResult * (direction === 'asc' ? 1 : -1);
