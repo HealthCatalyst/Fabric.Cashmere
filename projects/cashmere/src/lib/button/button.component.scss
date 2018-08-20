@@ -101,6 +101,18 @@ $btn-icon-sz: 18px;
         color: $primary-brand;
         font-weight: 600;
 
+        .label {
+            color: $gray-500;
+            font-weight: 400;
+            margin-right: 10px;
+        }
+
+        .value {
+            color: $text;
+            font-weight: 400;
+            margin-right: 10px;
+        }
+
         &:hover {
             color: lighten($primary-brand, 10%);
         }
@@ -114,6 +126,10 @@ $btn-icon-sz: 18px;
         &[disabled]:active {
             opacity: 0.35;
             color: $primary-brand;
+            .label,
+            .value {
+                color: $text;
+            }
         }
     }
 
