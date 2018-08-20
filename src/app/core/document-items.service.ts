@@ -61,7 +61,7 @@ const docs: DocItem[] = [
     {
         id: 'select',
         name: 'Select',
-        examples: ['select-standard', 'select-disabled', 'select-validation']
+        examples: ['select-standard', 'select-disabled', 'select-validation', 'select-forms']
     },
     {
         id: 'sort',
