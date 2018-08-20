@@ -30,9 +30,9 @@ Using the `hc-navbar` component, the help menu is included as a `hc-navbar-icon`
 
 You may not have all these items available. However, include what you have in this order:
 
-*   **Help Topics** if available—reach out to the Content Team for support)
+*   **Help Topics** (if available—reach out to the Content Team for support)
 *   **Release Notes** (if applicable, again reach out to the Content Team for support)
-*   **About** (a modal with the Health Catalyst logo, full name of the app [e.g., Patient Safety Monitor™ Suite] with appropriate copyright, application version, ands links to healthcatalyst.com, our [terms and conditions](https://www.healthcatalyst.com/terms-conditions/), and [privacy policy](https://www.healthcatalyst.com/privacy-policy/))
+*   **About** (a modal containing app reference information - see the [associated style page](https://cashmere.healthcatalyst.net/styles/about) for guidelines)
 *   **Health Catalyst Community** (link to community space specific to the app)
 *   **Send us your feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/guides/user-feedback))
 
