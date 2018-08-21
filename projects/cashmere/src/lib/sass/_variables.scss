@@ -19,5 +19,5 @@ $zindex-navbar-menu: 1060 !default;
 $zindex-navbar: 1070 !default;
 // z-index for modals is set in code as an incrementing
 // amount, starting at 2000, see modal.service.ts
-$zindex-popover: 3000 !default;
-$zindex-tooltip: 3010 !default;
+$zindex-popover: 1900 !default;
+$zindex-tooltip: 1910 !default;
