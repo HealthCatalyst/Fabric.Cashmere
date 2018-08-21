@@ -1,7 +1,33 @@
 @import '../sass/mixins';
 @import '../sass/colors';
 
-:host {
+.hc-pagination-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hc-page-detail-container {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+
+    label {
+        flex: 0 0 auto;
+    }
+
+    hc-select {
+        flex: 0 0 70px;
+        margin-left: 10px;
+    }
+}
+
+.hc-range-label {
+    flex: 0 0 auto;
+}
+
+.hc-page-btns-container {
     display: inline-flex;
 
     button {

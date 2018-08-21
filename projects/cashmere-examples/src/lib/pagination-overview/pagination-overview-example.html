@@ -1,15 +1,19 @@
 <hc-form-field>
-    <hc-label>Total pages</hc-label>
-    <input hcInput type="number" [(ngModel)]="totalPages">
+    <hc-label>Number of items</hc-label>
+    <input hcInput type="number" [(ngModel)]="length">
 </hc-form-field>
 
 <br>
 
 <hc-form-field>
-    <hc-label>Current page</hc-label>
+    <hc-label>Current page index (zero-based):</hc-label>
     <input hcInput type="number" [(ngModel)]="currentPage">
 </hc-form-field>
 
 <br>
 
-<hc-pagination [totalPages]="totalPages" [(pageNumber)]="currentPage"></hc-pagination>
+<hc-checkbox id="hide-page-size" [(ngModel)]="hidePageSize" [checked]="hidePageSize">Hide page size selector</hc-checkbox>
+
+<br>
+
+<hc-pagination [length]="length" [(pageIndex)]="currentPage" [hidePageSize]="hidePageSize"></hc-pagination>
