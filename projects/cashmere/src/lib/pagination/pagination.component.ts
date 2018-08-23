@@ -1,5 +1,4 @@
-import {Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-
+import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
 
 const DEFAULT_PAGE_SIZE = 20;
 
@@ -67,7 +66,9 @@ export class PaginationComponent implements OnInit {
 
     /** The set of provided page size options to display to the user. */
     @Input()
-    get pageSizeOptions(): number[] { return this._pageSizeOptions; }
+    get pageSizeOptions(): number[] {
+        return this._pageSizeOptions;
+    }
     set pageSizeOptions(value: number[]) {
         this._pageSizeOptions = (value || []).map(p => this._coerceNumberValue(p));
         this._updateDisplayedPageSizeOptions();
@@ -79,7 +80,9 @@ export class PaginationComponent implements OnInit {
 
     /** Whether to hide the page size selection UI from the user. *Defaults to false.* */
     @Input()
-    get hidePageSize(): boolean { return this._hidePageSize; }
+    get hidePageSize(): boolean {
+        return this._hidePageSize;
+    }
     set hidePageSize(value: boolean) {
         this._hidePageSize = !!value;
     }
@@ -218,15 +221,13 @@ export class PaginationComponent implements OnInit {
     }
 
     /**
-    * Updates the list of page size options to display to the user. Includes making sure that
-    * the page size is an option and that the list is sorted.
-    */
+     * Updates the list of page size options to display to the user. Includes making sure that
+     * the page size is an option and that the list is sorted.
+     */
     private _updateDisplayedPageSizeOptions() {
         // If no page size is provided, use the first page size option or the default page size.
         if (!this.pageSize) {
-            this._pageSize = this.pageSizeOptions.length !== 0 ?
-                this.pageSizeOptions[0] :
-                DEFAULT_PAGE_SIZE;
+            this._pageSize = this.pageSizeOptions.length !== 0 ? this.pageSizeOptions[0] : DEFAULT_PAGE_SIZE;
         }
 
         this._displayedPageSizeOptions = this.pageSizeOptions.slice();
