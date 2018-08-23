@@ -1,14 +1,13 @@
 <div class="hc-pagination-container">
-    <div *ngIf="!hidePageSize" class="hc-font-xsm hc-page-detail-container">
-        <label>Items per page:</label>
-        <hc-select [value]="pageSize" (selectionChange)="_changePageSize($event.value)">
+    <div *ngIf="!hidePageSize" class="hc-font-sm hc-page-detail-container">
+        <label>Showing:</label>
+        <hc-select [value]="pageSize" (change)="_changePageSize($event.target.value)">
             <option *ngFor="let pageSizeOption of _displayedPageSizeOptions" [value]="pageSizeOption">
                 {{pageSizeOption}}
             </option>
         </hc-select>
+        <label>of <strong>{{length}}</strong> entries</label>
     </div>
-
-    <div class="hc-range-label">{{_rangeLabel}}</div>
 
     <div class="hc-page-btns-container">
         <button hc-button color="secondary" class="hc-page-button hc-left-button" (click)="_previousPage()" [disabled]="!totalPages || _isFirstPage">
@@ -20,7 +19,7 @@
                 class="hc-page-button hc-inner-button expanded-page-button"
                 *ngFor="let page of _visiblePages"
                 [disabled]="!page"
-                [class.currentPage]="page === pageIndex + 1"
+                [class.currentPage]="page === pageNumber"
                 (click)="_goToPage(page)">
             <span *ngIf="!!page">{{page}}</span>
             <hc-icon *ngIf="!page" fontSet="fa" fontIcon="fa-ellipsis-h"></hc-icon>
@@ -30,7 +29,7 @@
                 class="hc-page-button hc-inner-button collapsed-page-button"
                 *ngFor="let page of _collapsedVisiblePages"
                 [disabled]="!page"
-                [class.currentPage]="page === pageIndex + 1"
+                [class.currentPage]="page === pageNumber"
                 (click)="_goToPage(page)">
             <span *ngIf="!!page">{{page}}</span>
             <hc-icon *ngIf="!page" fontSet="fa" fontIcon="fa-ellipsis-h"></hc-icon>

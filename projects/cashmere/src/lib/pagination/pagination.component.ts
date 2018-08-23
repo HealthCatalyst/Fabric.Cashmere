@@ -9,10 +9,10 @@ const DEFAULT_PAGE_SIZE = 20;
  */
 export class PageEvent {
     /** The current page index */
-    pageIndex: number;
+    pageNumber: number;
 
     /** Index of the page that was selected previously */
-    previousPageIndex?: number;
+    previousPageNumber?: number;
 
     /** The current page size */
     pageSize: number;
@@ -42,26 +42,28 @@ export class PaginationComponent implements OnInit {
     }
     private _length: number = 0;
 
-    /** The zero-based page index of the displayed list of items. *Defaulted to 0.* */
+    /** The currently displayed page. *Defaulted to 1.* */
     @Input()
-    get pageIndex(): number {
-        return this._pageIndex;
+    get pageNumber(): number {
+        return this._pageNumber;
     }
-    set pageIndex(value: number) {
-        const prevPageIndex = this._pageIndex;
-        this._pageIndex = this._sanitizePageIndex(value);
-        this._emitPageEvent(prevPageIndex);
+    set pageNumber(value: number) {
+        const prevPageNumber = this._pageNumber;
+        this._pageNumber = this._sanitizePageNumber(value);
+        this._emitPageEvent(prevPageNumber);
     }
-    private _pageIndex: number = 0;
+    private _pageNumber: number = 1;
 
     /** Number of items to display on a page. *By default set to 20.* */
     @Input()
-    get pageSize(): number { return this._pageSize; }
+    get pageSize(): number {
+        return this._pageSize;
+    }
     set pageSize(value: number) {
         this._pageSize = this._coerceNumberValue(value);
         this._updateDisplayedPageSizeOptions();
     }
-    private _pageSize: number;
+    private _pageSize: number = 20;
 
     /** The set of provided page size options to display to the user. */
     @Input()
@@ -70,7 +72,7 @@ export class PaginationComponent implements OnInit {
         this._pageSizeOptions = (value || []).map(p => this._coerceNumberValue(p));
         this._updateDisplayedPageSizeOptions();
     }
-    private _pageSizeOptions: number[] = [10, 20, 50];
+    private _pageSizeOptions: number[] = [10, 20, 50, 1000];
 
     /** Displayed set of page size options. Will be sorted and include current page size. */
     _displayedPageSizeOptions: number[] = [];
@@ -94,30 +96,16 @@ export class PaginationComponent implements OnInit {
      * The computed total number of pages
      */
     get totalPages(): number {
-        return Math.ceil(this._length / this._pageSize) - 1;
+        return Math.ceil(this._length / this._pageSize);
     }
 
     get _isFirstPage() {
-        return this._pageIndex === 1;
+        return this._pageNumber === 1;
     }
 
     get _isLastPage() {
-        return !!(this.totalPages && this._pageIndex === this.totalPages);
+        return !!(this.totalPages && this._pageNumber === this.totalPages);
     }
-
-    get _rangeLabel(): string {
-        if (this.length === 0 || this.pageSize === 0) { return `0 of ${this.length}`; }
-
-        const length = Math.max(this.length, 0);
-        const startIndex = this.pageIndex * this.pageSize;
-
-        // If the start index exceeds the list length, do not try and fix the end index to the end.
-        const endIndex = startIndex < length ?
-            Math.min(startIndex + this.pageSize, length) :
-            startIndex + this.pageSize;
-
-        return `Showing ${startIndex + 1} - ${endIndex} of ${length}`;
-      }
 
     get _visiblePages(): Array<number | null> {
         /*
@@ -146,7 +134,7 @@ export class PaginationComponent implements OnInit {
          * Otherwise, display 1, 2, ..., p-1, p, p+1, ..., n-1, n
          */
         const n = this.totalPages;
-        const p = this._pageIndex || 1;
+        const p = this._pageNumber || 1;
 
         if (p < 6) {
             return [1, 2, 3, 4, 5, 6, null, n - 1, n];
@@ -184,7 +172,7 @@ export class PaginationComponent implements OnInit {
          * Otherwise, display 1, ..., p, ..., n
          */
         const n = this.totalPages;
-        const p = this._pageIndex || 1;
+        const p = this._pageNumber || 1;
 
         if (p < 4) {
             return [1, 2, 3, null, n];
@@ -199,34 +187,34 @@ export class PaginationComponent implements OnInit {
         if (this._isFirstPage) {
             return;
         }
-        this._goToPage((this._pageIndex || 1) - 1);
+        this._goToPage((this._pageNumber || 1) - 1);
     }
 
     _goToPage(pageNum: number) {
-        this.pageIndex = pageNum;
+        this.pageNumber = pageNum;
     }
 
     _nextPage() {
         if (this._isLastPage) {
             return;
         }
-        this._goToPage((this._pageIndex || 1) + 1);
+        this._goToPage((this._pageNumber || 1) + 1);
     }
 
     /**
      * Changes the page size so that the first item displayed on the page will still be
      * displayed using the new page size.
      *
-     * For example, if the page size is 10 and on the second page (items indexed 10-19) then
+     * For example, if the page size is 10 and on the second page (items indexed 11-20) then
      * switching so that the page size is 5 will set the third page as the current page so
-     * that the 10th item will still be displayed.
+     * that the 11th item will still be displayed.
      */
     _changePageSize(pageSize: number) {
         // Current page needs to be updated to reflect the new page size. Navigate to the page
         // containing the previous page's first item.
-        const startIndex = this.pageIndex * this.pageSize;
-        this.pageIndex = Math.floor(startIndex / pageSize) || 0;
+        const startIndex = (this.pageNumber - 1) * this.pageSize + 1;
         this.pageSize = pageSize;
+        this.pageNumber = Math.ceil(startIndex / pageSize) || 1;
     }
 
     /**
@@ -251,21 +239,24 @@ export class PaginationComponent implements OnInit {
     }
 
     private _coerceNumberValue(value: any): number {
-        if (typeof value !== 'number' || isNaN(value) || value < 0) {
+        if (typeof value === 'string') {
+            value = parseInt(value, 10);
+        }
+        if (isNaN(value) || value < 0) {
             value = 0;
         }
         return value;
     }
 
-    private _sanitizePageIndex(pageIndex: any): number {
-        const index = this._coerceNumberValue(pageIndex);
-        return index > this.totalPages ? this.totalPages : index;
+    private _sanitizePageNumber(pageNumber: any): number {
+        const number = Math.max(this._coerceNumberValue(pageNumber), 1);
+        return number > this.totalPages ? this.totalPages : number;
     }
 
-    private _emitPageEvent(previousPageIndex: number) {
+    private _emitPageEvent(previousPageNumber: number) {
         this.page.emit({
-            previousPageIndex,
-            pageIndex: this.pageIndex,
+            previousPageNumber,
+            pageNumber: this.pageNumber,
             pageSize: this.pageSize,
             length: this.length
         });

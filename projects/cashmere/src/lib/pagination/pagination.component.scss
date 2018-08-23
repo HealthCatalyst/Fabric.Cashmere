@@ -6,29 +6,36 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .hc-page-detail-container {
     display: flex;
-    flex: 1 0 auto;
+    flex: 0 0 auto;
     align-items: center;
+    padding: 5px 0;
+    margin-right: 10px;
 
     label {
         flex: 0 0 auto;
+        color: $gray-500;
     }
 
     hc-select {
-        flex: 0 0 70px;
-        margin-left: 10px;
+        flex: 1 0 65px;
+        margin: 0 7px;
     }
 }
 
 .hc-range-label {
     flex: 0 0 auto;
+    margin-right: 10px;
+    padding: 12px 0;
 }
 
 .hc-page-btns-container {
     display: inline-flex;
+    padding: 5px 0;
 
     button {
         border: solid 2px $gray-200;
@@ -59,15 +66,18 @@
     .hc-left-button {
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
+        padding: 0 15px;
     }
 
     .hc-right-button {
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
         border-left-width: 0;
+        padding: 0 15px;
     }
 
     .hc-inner-button {
+        padding: 0 5px;
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
         border-bottom-left-radius: 0;
@@ -75,8 +85,18 @@
         border-left-width: 0;
     }
 
+    .hc-inner-button[disabled] {
+        opacity: 1;
+        border-top-color: transparentize($gray-300, 0.65);
+        border-bottom-color: transparentize($gray-300, 0.65);
+        color: transparentize($primary-brand, 0.65);
+        &:hover {
+            background-color: $white;
+        }
+    }
+
     .hc-page-button {
-        min-width: auto;
+        min-width: 40px;
         margin-right: 0;
     }
 

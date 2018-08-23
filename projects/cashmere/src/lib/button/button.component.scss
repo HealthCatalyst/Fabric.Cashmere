@@ -82,7 +82,7 @@ $btn-icon-sz: 18px;
     &.hc-secondary {
         @include colorButton($gray-100, 5%);
         color: $gray-600;
-        border: 2px solid $gray-300;
+        border: 1.5px solid $gray-300;
         height: 37px;
         line-height: 33px;
         padding-right: 19px;
