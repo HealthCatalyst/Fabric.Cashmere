@@ -20,11 +20,6 @@ export class GuidesService {
             document: require('raw-loader!../../../guides/contribution-guide.md')
         },
         {
-            title: 'Help Menu',
-            route: 'help-menu',
-            document: require('raw-loader!../../../guides/help-menu.md')
-        },
-        {
             title: 'Naming Conventions',
             route: 'naming-conventions',
             document: require('raw-loader!../../../guides/naming-conventions.md')
