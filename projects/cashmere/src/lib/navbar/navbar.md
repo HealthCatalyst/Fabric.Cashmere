@@ -1,19 +1,6 @@
-# Help Menu Guide
+##### Help Menu
 
-###### Last updated August 6, 2018
-
-:::
-
-##### Overview
-
-All Health Catalyst apps should include a help menu in their navbar. This guide provides a standard menu for the content that should appear in that menu. A standard menu provides users with a consistent experience—they know what to expect from Health Catalyst applications. It also gives them the support and information they need to use the app.
-:::
-
-:::
-
-##### How to include in the navbar
-
-Using the `hc-navbar` component, the help menu is included as a `hc-navbar-icon` that stays pinned to the right side and triggers a popover:
+All Health Catalyst apps should include a help menu in their navbar. This guide provides a standard menu for the content that should appear in that menu. A standard menu provides users with a consistent experience—they know what to expect from Health Catalyst applications. It also gives them the support and information they need to use the app. The help menu is included as a `hc-navbar-icon` that stays pinned to the right side and triggers a popover:
 
 ```
 <hc-navbar-icon>
@@ -22,11 +9,9 @@ Using the `hc-navbar` component, the help menu is included as a `hc-navbar-icon`
 </hc-navbar-icon>
 ```
 
-:::
+&nbsp;
 
-:::
-
-##### What items should go in the menu?
+##### What items should go in the help menu?
 
 You may not have all these items available. However, include what you have in this order:
 
@@ -34,15 +19,7 @@ You may not have all these items available. However, include what you have in th
 *   **Release Notes** (if applicable, again reach out to the Content Team for support)
 *   **About** (a modal containing app reference information - see the [associated style page](https://cashmere.healthcatalyst.net/styles/about) for guidelines)
 *   **Health Catalyst Community** (link to community space specific to the app)
-*   **Send us your feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/guides/user-feedback))
-
-:::
-
-:::
-
-##### Example Popover
-
-The following example includes all of the above elements:
+*   **Send us your feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/components/typeform-survey/usage))
 
 ```
 <hc-popover-content #helpMenu>
@@ -65,5 +42,3 @@ The following example includes all of the above elements:
     </ul>
 </hc-popover-content>
 ```
-
-:::

@@ -39,7 +39,12 @@ const docs: DocItem[] = [
     },
     {id: 'list', name: 'List', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', examples: ['modal-overview']},
-    {id: 'navbar', name: 'Navbar', examples: ['navbar-overview']},
+    {
+        id: 'navbar',
+        name: 'Navbar',
+        examples: ['navbar-overview'],
+        usageDoc: true
+    },
     {
         id: 'pagination',
         name: 'Pagination',
