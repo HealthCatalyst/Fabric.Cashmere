@@ -19,6 +19,11 @@ We would love for you to contribute to Cashmere and be part of the community mak
 4.  Clone your fork.
     Recommendation: name your git remotes `upstream` for `@healthcatalyst/cashmere`
 5.  From the root of the project, run `npm install`.
+6.  Running `npm run build` will build the entire project
+7.  `ng serve` will serve the default project which is `user-guide`
+8.  While developing you can use angular cli's `--watch` to automatically build a project when the source files change
+
+(note: currently `ng-packagr` and the `@angular/cli` don't support moving assets into the dist directory, so `npm postbuild:lib` will need to be called in addition to using `ng build cashmere --watch`)
 
 :::
 
