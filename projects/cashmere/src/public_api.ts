@@ -11,7 +11,6 @@ export * from './lib/chip/index';
 export * from './lib/drawer/index';
 export * from './lib/icon/index';
 export * from './lib/input/index';
-export * from './lib/label/index';
 export * from './lib/list/index';
 export * from './lib/modal/index';
 export * from './lib/navbar/index';
