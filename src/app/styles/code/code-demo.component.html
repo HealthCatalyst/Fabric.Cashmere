@@ -1,0 +1,61 @@
+<div class="demo-content">
+    <h1>Code Display Guidelines</h1>
+    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+
+    <hc-tile>
+        <h5>Overview</h5>
+        <p>Source code often needs to be included within app documentation or within apps themselves.
+            The following are guidelines on how to style code used in these instances, both inline or
+            within larger code blocks. The primary goal of code styling is differentiate it from the
+            surrounding body copy and ensure it is easily readable. Both types of code have a background-color
+            set to <code>$block-text-background</code>.</p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Elements</h5>
+        <table class="api-table">
+            <tr>
+                <td>
+                    <code>Inline code</code>
+                </td>
+                <td>
+                    <code>&lt;code&gt;&lt;/code&gt;</code>
+                </td>
+                <td>
+                    <ul>
+                        <li><span class="type-label">Font-size</span>1rem</li>
+                        <li><span class="type-label">Line Height</span>140%</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><span class="type-label">Weight</span>400</li>
+                        <li><span class="type-label">Color</span>$magenta</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <pre><code>Code blocks</code></pre>
+                </td>
+                <td>
+                    <code>&lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;</code>
+                </td>
+                <td>
+                    <ul>
+                        <li><span class="type-label">Font-size</span>1rem</li>
+                        <li><span class="type-label">Line Height</span>140%</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><span class="type-label">Weight</span>400</li>
+                        <li><span class="type-label">Color</span>$text</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </hc-tile>
+
+    <div [hcMarkdown]="document"></div>
+</div>

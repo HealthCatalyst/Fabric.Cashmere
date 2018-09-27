@@ -1,8 +1,0 @@
-<div class="menu-dropdown" [style.top.%]="yPos">
-    <ng-content></ng-content>
-    <div class="bottomSpacer"></div>
-    <a *ngIf="appSwitcher=='true'" class="app-switcher" href={{appSwitcherService.allApplicationsUri}}>
-        <hc-icon fontSet="fa" fontIcon="fa-th"></hc-icon>
-        <span>View all my applications</span>
-    </a>
-</div>

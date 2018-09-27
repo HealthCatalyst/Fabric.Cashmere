@@ -1,0 +1,11 @@
+<div #popperViewRef
+     [ngClass]="{'popoverContainer': !_popperOptions.disableDefaultStyling, 'animation': !_popperOptions.disableAnimation}"
+     [style.display]="_displayType"
+     [style.opacity]="_opacity"
+     role="popper">
+    <div class="inner">
+        <ng-content></ng-content>
+        {{ _text }}
+    </div>
+    <div class="arrow"></div>
+</div>

@@ -1,0 +1,10 @@
+{
+    "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "dest": "../../dist/cashmere",
+    "lib": {
+        "entryFile": "src/public_api.ts",
+        "umdModuleIds": {
+            "popper.js": "popper.js"
+        }
+    }
+}

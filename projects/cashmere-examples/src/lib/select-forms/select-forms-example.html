@@ -1,0 +1,17 @@
+<form>
+    <hc-select [formControl]="selectControl">
+        <option value="corn">Corn on the cob</option>
+        <option value="chicken">Deep fried chicken</option>
+        <option value="taters">Mashed taters</option>
+    </hc-select>
+</form>
+
+<div class="action-wrapper">
+    <button hc-button (click)="setTaters()">
+        Yummy Taters
+    </button>
+
+    <button hc-button (click)="toggleActive()">
+        Enable/Disable Select
+    </button>
+</div>

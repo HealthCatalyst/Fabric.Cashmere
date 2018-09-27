@@ -1,0 +1,17 @@
+<ng-template #content let-close="close" let-dismiss="dismiss" let-data="data">
+    <hc-modal>
+        <hc-modal-header> Modal Title </hc-modal-header>
+        <hc-modal-body> Data: {{data}}</hc-modal-body>
+        <hc-modal-footer>
+            <button hc-button buttonStyle="link" (click)="dismiss()"> Cancel </button>
+            <button hc-button buttonStyle="primary" (click)="close()"> OK </button>
+        </hc-modal-footer>
+    </hc-modal>
+</ng-template>
+
+<button hc-button buttonStyle="primary" (click)="open()" class="demo-button">
+    Open Modal from Component
+</button>
+<button hc-button buttonStyle="secondary" (click)="openTemplate(content)" class="demo-button">
+    Open Modal from Template
+</button>

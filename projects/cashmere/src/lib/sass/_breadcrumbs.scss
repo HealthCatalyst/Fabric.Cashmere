@@ -1,0 +1,64 @@
+@import 'colors';
+@import 'variables';
+@import 'mixins';
+
+.breadcrumb {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    color: $slate-gray-500;
+
+    &:not(.disable-responsive) {
+        @include media-breakpoint-down(sm) {
+            display: none;
+        }
+    }
+}
+
+.breadcrumb-item {
+    display: flex;
+    margin: 0;
+    white-space: nowrap;
+    align-items: center;
+
+    & > a {
+        color: $dark-blue;
+        text-decoration: none;
+        &[disabled] {
+            color: $black;
+        }
+    }
+
+    .breadcrumb-arrow {
+        font-size: 10px;
+        height: 10px;
+        width: 10px;
+        color: $gray-400;
+        margin-top: 3px;
+        padding-left: 10px;
+        padding-right: 15px;
+    }
+
+    &:last-child .breadcrumb-arrow {
+        display: none;
+    }
+}
+
+.breadcrumb-responsive-container {
+    display: none;
+
+    &:not(.disable-responsive) {
+        @include media-breakpoint-down(sm) {
+            display: block;
+        }
+    }
+}
+
+.breadcrumb-back-button {
+    display: flex;
+    align-items: center;
+    color: $dark-blue;
+    justify-content: space-between;
+    width: 50px;
+}

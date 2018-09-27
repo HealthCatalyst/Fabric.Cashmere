@@ -1,0 +1,231 @@
+@import '~font-awesome/scss/variables';
+
+@import './colors';
+@import './mixins';
+
+$table-border: 1px solid shade($slate-gray-100, 6%) !default;
+$table-condensed-font-size: 13px;
+$header-border-thick: 2px solid $slate-gray-300 !default;
+$cell-padding: 8px 16px !default;
+$cell-padding-condensed: 6px 16px !default;
+$thead-font-size: 14px !default;
+$thead-font-color: $dark-blue !default;
+$thead-active-font-color: $green !default;
+$tbody-font-size: 15px !default;
+$tbody-font-color: $text !default;
+$row-color: $white !default;
+$row-color-alt: $slate-gray-100 !default;
+$row-color-hover: shade($slate-gray-100, 5%) !default;
+$row-color-action-hover: tint($primary-brand, 75%) !default;
+$row-color-selected: $azure !default;
+$row-color-selected-hover: tint($azure, 20%) !default;
+$row-selected-font-color: $white;
+$row-selected-border-color: $white;
+
+table.hc-table {
+    width: 100%;
+    max-width: 100%;
+    color: $tbody-font-color;
+
+    td,
+    th {
+        padding: $cell-padding;
+        border-top: none;
+        border-bottom: $table-border;
+        line-height: 1.3;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    th {
+        font-weight: 600;
+    }
+
+    thead th {
+        font-size: $thead-font-size;
+        color: $thead-font-color;
+        vertical-align: bottom;
+    }
+
+    tbody {
+        font-size: $tbody-font-size;
+        border-left: $table-border;
+        border-right: $table-border;
+        border-top: $table-border;
+
+        tr {
+            &:nth-child(2n) {
+                background-color: $row-color;
+            }
+
+            &:nth-child(2n + 1) {
+                background-color: $row-color-alt;
+            }
+
+            &:not([disabled]):hover {
+                background-color: $row-color-hover;
+            }
+
+            &.hc-row-selected {
+                background-color: $row-color-selected;
+                color: $row-selected-font-color;
+                &:hover {
+                    background-color: $row-color-selected-hover;
+                }
+                td {
+                    border-color: $row-selected-border-color;
+                }
+            }
+        }
+
+        td {
+            vertical-align: top;
+        }
+    }
+
+    // Add Borders
+    &.hc-table-borders {
+        td {
+            border: $table-border;
+        }
+    }
+
+    td,
+    th {
+        &.hc-cell-borders {
+            border: $table-border;
+        }
+    }
+
+    // Condensed
+    &.hc-table-small {
+        td,
+        th {
+            padding: $cell-padding-condensed;
+            font-size: $table-condensed-font-size;
+        }
+    }
+
+    // Actionable table/row
+    &.hc-action-table tbody {
+        tr:not([disabled]) {
+            &:hover {
+                background-color: $row-color-action-hover;
+                cursor: pointer;
+            }
+            &.hc-row-selected:hover {
+                background-color: $row-color-selected-hover;
+            }
+        }
+    }
+
+    tr.hc-action-row:not([disabled]) {
+        &:hover {
+            background-color: $row-color-action-hover;
+            cursor: pointer;
+        }
+        &.hc-row-selected:hover {
+            background-color: $row-color-selected-hover;
+        }
+    }
+
+    // Sorting
+    th.hc-col-sortable,
+    th.hc-col-sortable-left {
+        position: relative;
+        cursor: pointer;
+        padding-right: 35px;
+
+        &:hover {
+            background-color: $row-color-action-hover;
+        }
+
+        //TODO: redo the guts of these icons when we roll our own icon font
+        &:before,
+        &:after {
+            display: inline-block;
+            position: absolute;
+            bottom: 11px;
+            font: normal normal normal 12px/1 FontAwesome;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+        }
+        &:before {
+            right: 23px;
+            bottom: 9px;
+            content: $fa-var-long-arrow-down;
+        }
+        &:after {
+            right: 18px;
+            bottom: 10px;
+            content: $fa-var-long-arrow-down;
+            transform: rotate(180deg);
+        }
+
+        &.hc-active-sort {
+            color: $thead-active-font-color;
+
+            &.hc-sort-asc {
+                &:before {
+                    content: $fa-var-sort-amount-asc;
+                    right: 16px;
+                }
+                &:after {
+                    content: none;
+                }
+            }
+
+            &.hc-sort-desc {
+                &:before {
+                    content: $fa-var-sort-amount-desc;
+                    right: 16px;
+                }
+                &:after {
+                    content: none;
+                }
+            }
+        }
+    }
+
+    // align sort icons on left of the col header
+    th.hc-col-sortable-left {
+        padding-right: 16px;
+        padding-left: 35px;
+
+        &:before {
+            left: 16px;
+            right: auto;
+        }
+        &:after {
+            left: 21px;
+            right: auto;
+        }
+
+        &.hc-active-sort {
+            &.hc-sort-asc:before {
+                left: 16px;
+                right: auto;
+            }
+            &.hc-sort-desc:before {
+                left: 16px;
+                right: auto;
+            }
+        }
+    }
+
+    &.hc-no-hover-table {
+        tbody tr {
+            &:nth-child(2n):hover {
+                background-color: $row-color;
+            }
+            &:nth-child(2n + 1):hover {
+                background-color: $row-color-alt;
+            }
+            &.hc-row-selected:hover {
+                background-color: $row-color-selected;
+            }
+        }
+    }
+}

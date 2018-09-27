@@ -9,11 +9,11 @@ cd $(dirname $0)/..
 source scripts/travis-mode.sh
 
 if is_lint; then
-    npm run lint
+    npm run lint && commitlint-travis
 elif is_unit; then
     npm run test:unit
-elif is_build_lib; then
-    npm run build:lib
-elif is_publish_github; then
-    npm run publish:github
+elif is_build; then
+    npm run build
+elif is_publish; then
+    ./scripts/publish.sh
 fi

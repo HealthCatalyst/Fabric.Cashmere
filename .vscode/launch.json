@@ -5,10 +5,7 @@
             "name": "Debug App",
             "type": "chrome",
             "request": "launch",
-            "runtimeArgs": [
-                " --disable-web-security",
-                "--user-data-dir"
-            ],
+            "runtimeArgs": [" --disable-web-security", "--user-data-dir"],
             "url": "http://localhost:4200",
             "sourceMaps": true,
             "webRoot": "${workspaceRoot}"

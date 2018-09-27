@@ -1,0 +1,17 @@
+<div class="drawer-container">
+    <hc-drawer-container>
+        <hc-drawer align="left" mode="over" #leftOverDrawer>
+            Left drawer content
+        </hc-drawer>
+        <hc-drawer align="right" mode="push" #rightPushDrawer>
+            Right drawer content
+        </hc-drawer>
+
+        <button hc-button buttonStyle="primary" (click)="leftOverDrawer.toggle()" class="demo-button">
+            Overlay Left Drawer
+        </button>
+        <button hc-button buttonStyle="primary" (click)="rightPushDrawer.toggle()" class="demo-button">
+            Push Right Drawer
+        </button>
+    </hc-drawer-container>
+</div>

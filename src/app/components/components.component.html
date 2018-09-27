@@ -1,0 +1,13 @@
+<hc-subnav class="responsive-subnav" fixedTop="true">
+    <div class="subnav-container">
+        <span class="subnav-label">Components: </span>
+        <span class="subnav-select">
+            <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
+                <option *ngFor="let option of docItems" [value]="option.id" [selected]="option.id === thisPage">{{option.name}}</option>
+            </hc-select>
+        </span>
+    </div>
+</hc-subnav>
+<hc-tab-set class="full-height">
+    <hc-tab *ngFor="let docItem of docItems" [tabTitle]="docItem.name" [routerLink]="docItem.id"></hc-tab>
+</hc-tab-set>

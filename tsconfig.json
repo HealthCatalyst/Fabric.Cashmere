@@ -1,31 +1,20 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
+        "baseUrl": "./",
         "outDir": "./dist/out-tsc",
-        "baseUrl": "src",
-        "sourceMap": false,
+        "sourceMap": true,
         "declaration": false,
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "allowSyntheticDefaultImports": true,
         "strictNullChecks": true,
         "target": "es5",
-        "skipLibCheck": true,
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "lib": [
-            "es2016",
-            "dom"
-        ]
-    },
-    "include": [
-        "docs/**/*.ts",
-        "lib/**/*.ts"
-    ],
-    "exclude": [
-        "node_modules/**/*.ts",
-        "lib/node_modules/**/*.ts"
-    ]
+        "typeRoots": ["node_modules/@types"],
+        "lib": ["es2017", "dom"],
+        "paths": {
+            "@healthcatalyst/cashmere": ["dist/cashmere"],
+            "@healthcatalyst/cashmere-examples": ["dist/cashmere-examples"]
+        }
+    }
 }

@@ -1,0 +1,32 @@
+@import 'colors';
+@import 'variables';
+@import 'mixins';
+
+// Chart Fonts
+$chart-font-size: 11px;
+$chart-font-family: $default-font-family;
+
+// Chart Color Vars
+$axis-text: $text;
+$axis-lines: $text;
+$grid-lines: $gray-300;
+$chart-header-icons: $gray-400;
+
+.chart-tooltip {
+    position: absolute;
+    @include fontSize(12px);
+    line-height: 1.4;
+    display: block;
+    padding: 10px 15px 10px 10px;
+    background: $white;
+    color: $gray-500;
+    border: 1px solid $gray-500;
+    border-radius: 5px;
+    pointer-events: none;
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.18);
+
+    .tooltip-header {
+        @include fontSize(13px);
+        font-weight: 600;
+    }
+}

@@ -1,0 +1,11 @@
+<p>Enter text into the input below to edit the content of the popover:</p>
+<hc-form-field>
+    <input hcInput [(ngModel)]="body">
+</hc-form-field>
+<button hc-button buttonStyle="primary" [hcPopover]="dynamic" popperPlacement="bottom" [popperCloseOnClickOutside]="false"
+        aria-hidden="true">Click Me
+</button>
+<hc-popover-content #dynamic>
+    <span [(innerText)]="body"></span>
+</hc-popover-content>
+

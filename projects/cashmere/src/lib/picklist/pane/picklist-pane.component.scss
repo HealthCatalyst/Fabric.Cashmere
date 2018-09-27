@@ -1,0 +1,201 @@
+﻿@import '../../sass/colors';
+
+.hc-picklist-pane {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+
+    .hc-form-field-wrapper {
+        border: none;
+        padding-bottom: 0;
+    }
+
+    .picklist-controls {
+        flex: 0 0 auto;
+        display: flex;
+        flex-flow: column;
+        font-size: 12px;
+
+        .second-row-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0 2px;
+        }
+
+        button {
+            font-family: 'Open Sans', sans-serif;
+            margin-left: 10px;
+
+            &.btn-text-link {
+                font-size: 12px;
+                color: $blue;
+                background: transparent;
+                border: none;
+                padding: 0;
+                text-align: left;
+                cursor: pointer;
+
+                &:active {
+                    outline: none;
+                    box-shadow: none;
+                }
+
+                &:hover {
+                    text-decoration: underline;
+                    color: darken($blue, 5%);
+                }
+
+                &:active {
+                    text-decoration: underline;
+                    color: darken($blue, 10%);
+                }
+
+                &[disabled] {
+                    text-decoration: none;
+                    opacity: 1;
+                    color: $slate-gray-300;
+                    cursor: default;
+                }
+            }
+        }
+    }
+
+    .loading-list {
+        height: 100%;
+        border: 1px solid $slate-gray-200;
+    }
+
+    .list-container {
+        flex: 1 1 300px;
+        border: 1px solid $slate-gray-200;
+        background-color: $white;
+        overflow-y: scroll;
+        position: relative;
+
+        table.hc-table {
+            .value-option-row {
+                font-weight: normal;
+                line-height: 1.1;
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none;
+                cursor: default;
+            }
+
+            .select-all-matches-row {
+                text-align: center;
+                background-color: lighten($yellow-orange, 30%);
+                border-color: lighten($yellow-orange, 50%);
+                color: darken($yellow-orange, 30%);
+            }
+
+            .load-more-row {
+                display: block;
+                height: 36px;
+                font-size: 12px;
+                text-align: center;
+                font-weight: bold;
+                padding: 11px;
+                a {
+                    cursor: pointer;
+                }
+            }
+
+            th {
+                background-color: darken($slate-gray-100, 5%);
+                font-weight: 400;
+                font-style: italic;
+                border-top: 1px solid darken($slate-gray-100, 10%);
+                border-bottom: 1px solid darken($slate-gray-100, 10%);
+                font-size: 12px;
+            }
+
+            tbody {
+                border: 0;
+            }
+
+            tr {
+                td {
+                    &.col-code {
+                        word-break: normal;
+                        width: 20%;
+                    }
+                }
+            }
+
+            &.valueset-table {
+                tr,
+                td,
+                th {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+
+        .empty-table-msg {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .valueset-option {
+        .valueset-value-toggle {
+            cursor: pointer;
+            color: $blue;
+            transform: color 0.2s;
+            &:hover {
+                color: darken($blue, 20%);
+            }
+            .vs-folder {
+                position: relative;
+                left: -3px;
+            }
+
+            .values-caret {
+                &:before {
+                    position: relative;
+                    top: -1px;
+                    display: inline-block;
+                    transition: transform 0.2s;
+                    font-size: 13px;
+                }
+
+                &.showing-values:before {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+
+        &.hc-row-selected {
+            .values-caret,
+            .vs-folder {
+                color: $white;
+            }
+        }
+
+        .loading-subvals {
+            height: 40px;
+        }
+    }
+
+    .valueset-sublist-table {
+        margin: 10px 0 20px 0;
+        border: 1px solid darken($slate-gray-100, 8%);
+        overflow: hidden;
+        border-radius: 3px;
+        border-collapse: separate;
+        font-size: 13px;
+    }
+
+    .valueset-code {
+        margin-right: 5px;
+    }
+}

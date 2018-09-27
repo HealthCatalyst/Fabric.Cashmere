@@ -1,0 +1,23 @@
+$default-font-size: 14px !default;
+
+$default-font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+) !default;
+
+/* set standard relative layering for components */
+$zindex-dropdown: 1000 !default;
+$zindex-sticky: 1020 !default;
+$zindex-fixed: 1030 !default;
+$zindex-subnav: 1050 !default;
+$zindex-navbar-menu: 1060 !default;
+$zindex-navbar: 1070 !default;
+// z-index for modals is set in code as an incrementing
+// amount, starting at 2000, see modal.service.ts
+$zindex-popover: 1900 !default;
+$zindex-tooltip: 1910 !default;

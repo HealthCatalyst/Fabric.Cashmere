@@ -1,0 +1,16 @@
+<div class="sample-component">
+    <button hc-button buttonStyle="primary" [hcPopover]="options" popperPlacement="bottom" class="demo-button" aria-hidden="true">
+        Dropdown
+        <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="icon-right" icon-sm></hc-icon>
+    </button>
+    <hc-popover-content #options>
+        <ul class="list-options">
+            <li>
+                <a href="https://www.healthcatalyst.com/" target="_blank">Health Catalyst</a>
+            </li>
+            <li>
+                <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
+            </li>
+        </ul>
+    </hc-popover-content>
+</div>

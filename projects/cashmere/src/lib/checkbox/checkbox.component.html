@@ -1,0 +1,21 @@
+<div class="hc-checkbox-container">
+    <div class="hc-checkbox-content">
+        <input #checkboxInput
+               type="checkbox"
+               [id]="_inputId"
+               [attr.value]="value"
+               [attr.name]="name"
+               [tabIndex]="tabIndex"
+               [indeterminate]="indeterminate"
+               [disabled]="disabled"
+               [required]="required"
+               [checked]="checked"
+               (change)="_stopChangeEvent($event)"
+               (click)="_clickEvent($event)"
+               (blur)="_onBlur()"/>
+        <label class="hc-checkbox-overlay" [attr.for]="_inputId"></label>
+        <label class="hc-checkbox-label" [attr.for]="_inputId">
+            <ng-content></ng-content>
+        </label>
+    </div>
+</div>

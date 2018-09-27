@@ -1,0 +1,218 @@
+// Styles forked from http://polymer.github.io
+// This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+@import 'colors';
+$diameter: 50px;
+
+$spinner-animation-timing: 1568ms;
+$spinner-layer-animation-timing: 5332ms;
+$circle-clipper-animation-timing: 1333ms;
+
+.hc-spinner-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.hc-spinner {
+    display: inline-block;
+    position: relative;
+    width: $diameter; // default width/height will apply to instances where markup is directly used, instead of implementing the angular component
+    height: $diameter;
+
+    &.indeterminate-spin {
+        animation: container-rotate $spinner-animation-timing linear infinite;
+    }
+
+    &.large-spinner.indeterminate-spin {
+        animation-duration: $spinner-animation-timing * 1.5;
+    }
+}
+
+.center-spinner .hc-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: $diameter / -2;
+    margin-left: $diameter / -2;
+}
+
+.spinner-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-color: $white;
+
+    .base-circle {
+        border: 3px solid transparentize($color: $black, $amount: 0.8);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        border-radius: 50%;
+        display: none;
+    }
+
+    &.spinner-base {
+        .base-circle {
+            display: block;
+        }
+    }
+
+    &.spinner-blue {
+        border-color: $blue;
+    }
+    &.spinner-green {
+        border-color: $green;
+    }
+    &.spinner-purple {
+        border-color: $purple;
+    }
+    &.spinner-orange {
+        border-color: $orange;
+    }
+    &.spinner-red {
+        border-color: $red;
+    }
+    &.spinner-gray {
+        border-color: $slate-gray-400;
+    }
+    &.spinner-white {
+        border-color: $white;
+    }
+}
+
+.indeterminate-spin .spinner-layer {
+    animation: fill-unfill-rotate $spinner-layer-animation-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+
+.large-spinner.indeterminate-spin .spinner-layer {
+    animation-duration: $spinner-layer-animation-timing * 1.5;
+}
+
+/**
+ * Patch the gap that appear between the two adjacent div.circle-clipper while the
+ * spinner is rotating (appears on Chrome 38, Safari 7.1, and IE 11).
+ */
+.gap-patch {
+    position: absolute;
+    top: 0;
+    left: 45%;
+    width: 10%;
+    height: 100%;
+    overflow: hidden;
+    border-color: inherit;
+}
+
+.gap-patch .circle {
+    width: 1000%;
+    left: -450%;
+}
+
+.circle-clipper {
+    display: inline-block;
+    position: relative;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    border-color: inherit;
+
+    .circle {
+        width: 200%;
+        height: 100%;
+        border-width: 3px;
+        border-style: solid;
+        border-color: inherit;
+        border-bottom-color: transparent !important;
+        border-radius: 50%;
+        -webkit-animation: none;
+        animation: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    &.left .circle {
+        left: 1px;
+        border-right-color: transparent !important;
+        -webkit-transform: rotate(129deg);
+        transform: rotate(129deg);
+    }
+    &.right .circle {
+        left: -100%;
+        border-left-color: transparent !important;
+        -webkit-transform: rotate(-129deg);
+        transform: rotate(-129deg);
+    }
+}
+
+.indeterminate-spin .circle-clipper.left .circle {
+    -webkit-animation: left-spin $circle-clipper-animation-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+    animation: left-spin $circle-clipper-animation-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+
+.indeterminate-spin .circle-clipper.right .circle {
+    -webkit-animation: right-spin $circle-clipper-animation-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+    animation: right-spin $circle-clipper-animation-timing cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+
+.large-spinner.indeterminate-spin .circle-clipper.right .circle,
+.large-spinner.indeterminate-spin .circle-clipper.left .circle {
+    animation-duration: $circle-clipper-animation-timing * 1.5;
+}
+
+@keyframes fill-unfill-rotate {
+    12.5% {
+        transform: rotate(135deg);
+    } /* 0.5 * ARCSIZE */
+    25% {
+        transform: rotate(270deg);
+    } /* 1   * ARCSIZE */
+    37.5% {
+        transform: rotate(405deg);
+    } /* 1.5 * ARCSIZE */
+    50% {
+        transform: rotate(540deg);
+    } /* 2   * ARCSIZE */
+    62.5% {
+        transform: rotate(675deg);
+    } /* 2.5 * ARCSIZE */
+    75% {
+        transform: rotate(810deg);
+    } /* 3   * ARCSIZE */
+    87.5% {
+        transform: rotate(945deg);
+    } /* 3.5 * ARCSIZE */
+    to {
+        transform: rotate(1080deg);
+    } /* 4   * ARCSIZE */
+}
+
+@keyframes container-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes left-spin {
+    from {
+        transform: rotate(130deg);
+    }
+    50% {
+        transform: rotate(-5deg);
+    }
+    to {
+        transform: rotate(130deg);
+    }
+}
+
+@keyframes right-spin {
+    from {
+        transform: rotate(-130deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    to {
+        transform: rotate(-130deg);
+    }
+}

@@ -1,0 +1,334 @@
+@import './colors';
+@import './variables';
+@import './mixins';
+
+$code-padding: 10px;
+
+html,
+body {
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    color: $text;
+}
+
+h1 {
+    @include fontSize(36px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: $text;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+h2 {
+    @include fontSize(22px);
+    font-weight: 600;
+    line-height: 1.5;
+    color: $text;
+}
+
+h3 {
+    @include fontSize(18px);
+    font-weight: 600;
+    line-height: 1.5;
+    color: $text;
+}
+
+h4 {
+    @include fontSize(14px);
+    font-weight: 600;
+    line-height: 1.5;
+    color: $text;
+}
+
+p {
+    @include fontSize(16px);
+    font-weight: 400;
+    line-height: 1.5;
+    color: $text;
+}
+
+// for inline code
+code {
+    color: $magenta;
+    font-family: Consolas, Menlo, 'Ubuntu Mono', monospace;
+    background-color: $block-text-background;
+    border-radius: 3px;
+    padding: 3px 7px;
+    @include fontSize(14px);
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+// for code blocks
+pre {
+    border: 1px solid $gray-400;
+    padding: 20px;
+    margin: 16px auto;
+    border-radius: 5px;
+    display: block;
+    background-color: $block-text-background;
+    font-weight: 400;
+
+    > span {
+        @include fontSize(14px);
+        line-height: 1.4;
+        padding: $code-padding 0;
+        background-color: $block-text-background;
+    }
+
+    > code {
+        overflow-x: auto;
+        display: block;
+        @include fontSize(14px);
+        padding: $code-padding;
+        line-height: 1.4;
+        background-color: $block-text-background;
+        color: $text;
+        border: unset;
+        border-radius: unset;
+    }
+}
+
+// hyperlinks
+a {
+    text-decoration: none;
+    color: $primary-brand;
+    &:hover {
+        color: lighten($primary-brand, 10%);
+    }
+    &:active {
+        color: darken($primary-brand, 10%);
+    }
+}
+
+// sizes
+.hc-font-xsm {
+    @include fontSize(12px);
+}
+
+.hc-font-sm {
+    @include fontSize(14px);
+}
+
+.hc-font-md {
+    @include fontSize(16px);
+}
+
+.hc-font-lg {
+    @include fontSize(18px);
+}
+
+.hc-font-xlg {
+    @include fontSize(22px);
+}
+
+// weights
+.hc-font-light {
+    font-weight: 300;
+}
+
+.hc-font-reg {
+    font-weight: 400;
+}
+
+strong,
+.hc-font-bold {
+    font-weight: 600;
+}
+
+.hc-font-xbold {
+    font-weight: 700;
+}
+
+// case
+.hc-text-titlecase {
+    text-transform: capitalize;
+}
+
+.hc-text-uppercase {
+    text-transform: uppercase;
+}
+
+.hc-text-lowercase {
+    text-transform: lowercase;
+}
+
+.hc-text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// emphasis
+em,
+.hc-font-em {
+    color: $gray-500;
+    font-style: italic;
+}
+
+// error text
+.form-errors {
+    margin-top: 8px;
+    color: $red;
+    font-weight: 600;
+    @include fontSize(12px);
+}
+
+// Articles
+// Article paragraph lists
+article ul {
+    list-style-type: none;
+    display: table;
+}
+
+// Article paragraph list level 1
+article > ul > li {
+    display: table;
+    padding-left: 20px;
+}
+
+article ul > li:before {
+    content: '•  ';
+    display: table-cell;
+    padding-right: 10px;
+}
+
+article ul > li:first-child,
+article ol > li:first-child {
+    margin-top: 6px !important;
+}
+
+article ul > li:last-child,
+article ol > li:last-child {
+    margin-bottom: 6px !important;
+}
+
+article ol > li {
+    padding-left: 6px;
+    margin-left: 40px !important;
+}
+
+// Article paragraph list level 2
+article ul li ul li {
+    display: table;
+    margin-left: 0px;
+}
+
+article ul li ul li:before {
+    content: '–  ';
+    display: table-cell;
+    padding-right: 15px;
+}
+
+article ul li ul li:first-child,
+article ol li ol li:first-child {
+    margin-top: 6px !important;
+}
+
+article ul li ul li:last-child,
+article ol li ol li:last-child {
+    margin-bottom: 6px !important;
+}
+
+article ol > li > ol > li {
+    list-style-type: lower-alpha;
+    padding-left: 6px;
+    margin-left: 18px !important;
+}
+
+// Article paragraph list level 3
+article ul li ul li ul li:before {
+    content: '- ';
+    display: table-cell;
+    padding-right: 15px;
+}
+
+article ul li ul li ul li:first-child,
+article ol li ol li ol li:first-child {
+    margin-top: 6px !important;
+}
+
+article ul li ul li ul li:last-child,
+article ol li ol li ol li:last-child {
+    margin-bottom: 6px !important;
+}
+
+article ol li ol li ol li {
+    list-style-type: lower-roman;
+    padding-left: 10px;
+    margin-left: 12px !important;
+}
+
+// Article table
+article table tbody > tr > td {
+    vertical-align: top;
+}
+
+// Article table list level 1
+article table ul li {
+    font-size: 14px;
+    margin-left: 15px !important;
+    display: table;
+}
+
+article table ol li {
+    font-size: 14px;
+    margin-left: 30px !important;
+    padding-right: 10px;
+    padding-left: 6px !important;
+}
+
+// Article table list level 2
+article table ul li ul li {
+    font-size: 14px;
+    padding-right: 6px;
+    margin-left: 0px !important;
+    display: table;
+}
+
+article table ul li ul li:before {
+    padding-right: 12px;
+}
+
+// Article table list level 3
+article table ul li ul li ul li {
+    font-size: 14px;
+    display: table;
+}
+
+article table ul li ul li ul li:before {
+    padding-right: 10px;
+}
+
+// Article list padding
+article ul > li:first-child,
+article ol > li:first-child,
+article ul li ul li:first-child,
+article ol li ol li:first-child,
+article ul li ul li ul li:first-child,
+article ol li ol li ol li:first-child,
+article table ul > li:first-child,
+article table ol > li:first-child,
+article table ul li ul > li:first-child,
+article table ol li ol > li:first-child,
+article table ul li ul li ul > li:first-child,
+article table ol li ol li ol > li:first-child {
+    padding-top: 6px;
+}
+
+article ul > li:last-child,
+article ol > li:last-child,
+article ul li ul li:last-child,
+article ol li ol li:last-child,
+article ul li ul li ul li:last-child,
+article ol li ol li ol li:last-child,
+article table ul > li:last-child,
+article table ol > li:last-child,
+article table ul li ul > li:last-child,
+article table ol li ol > li:last-child,
+article table ul li ul li ul > li:last-child,
+article table ol li ol li ol > li:last-child {
+    padding-bottom: 6px;
+}

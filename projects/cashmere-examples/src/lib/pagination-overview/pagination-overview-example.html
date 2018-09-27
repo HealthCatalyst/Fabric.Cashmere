@@ -1,0 +1,15 @@
+<hc-form-field>
+    <hc-label>Total pages</hc-label>
+    <input hcInput type="number" [(ngModel)]="totalPages">
+</hc-form-field>
+
+<br>
+
+<hc-form-field>
+    <hc-label>Current page</hc-label>
+    <input hcInput type="number" [(ngModel)]="currentPage">
+</hc-form-field>
+
+<br>
+
+<hc-pagination [totalPages]="totalPages" [(pageNumber)]="currentPage"></hc-pagination>

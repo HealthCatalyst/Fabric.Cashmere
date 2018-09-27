@@ -1,0 +1,71 @@
+@import '../sass/colors';
+@import '../sass/functions.scss';
+@import '../sass/mixins.scss';
+
+.hc-select {
+    display: inline-block;
+    width: 100%;
+
+    &.ng-invalid {
+        .hc-select-input {
+            border: 2px solid $red;
+        }
+    }
+}
+
+.hc-select-container {
+    position: relative;
+}
+
+.hc-select-chevron {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    text-align: center;
+    pointer-events: none;
+
+    &:after {
+        content: '\f078';
+        font-family: FontAwesome;
+        color: #00aeff;
+        pointer-events: none;
+        box-sizing: border-box;
+    }
+}
+
+.hc-select-input {
+    // Font needs to be inherited, because by default <select> uses a system font
+    font: inherit;
+    color: $text;
+    background-color: $white;
+    @include fontSize(14px);
+    padding-left: 7px;
+    padding-right: 50px;
+    border: 1.5px solid $gray-300;
+    border-radius: 0;
+    height: 35px;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    &[disabled] {
+        cursor: not-allowed;
+        border: 1.5px solid $gray-200;
+        background-color: $slate-gray-100;
+        color: tint($text, 60%);
+    }
+}
+
+.hc-select-disabled {
+    .hc-select-chevron {
+        color: tint($primary-brand, 60%);
+    }
+}

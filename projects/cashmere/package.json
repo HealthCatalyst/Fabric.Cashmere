@@ -1,0 +1,30 @@
+{
+    "name": "@healthcatalyst/cashmere",
+    "version": "0.0.0-development",
+    "license": "Apache-2.0",
+    "description": "Reusable Health Catalyst Components",
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    },
+    "repository": {
+        "type": "Git",
+        "url": "https://github.com/HealthCatalyst/Fabric.Cashmere"
+    },
+    "main": "./bundles/cashmere.umd.js",
+    "module": "./esm5/cashmere.js",
+    "es2015": "./esm2015/cashmere.js",
+    "jsnext": "./esm2015/cashmere.js",
+    "typings": "./cashmere.d.ts",
+    "peerDependencies": {
+        "@angular/cdk": "^6.0.0",
+        "@angular/common": "^6.0.0",
+        "@angular/core": "^6.0.0",
+        "@angular/forms": "^6.0.0",
+        "core-js": ">= 2.4.0 < 3",
+        "font-awesome": "~4.7.0",
+        "npm-font-open-sans": "^1.1.0",
+        "popper.js": ">= 1.12.9 < 2",
+        "rxjs": "^6.0.0",
+        "zone.js": "~0.8.20"
+    }
+}
