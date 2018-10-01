@@ -155,6 +155,7 @@ table.hc-table {
     // Sorting
     th.hc-col-sortable,
     th.hc-col-sortable-left {
+        background-clip: padding-box;
         position: relative;
         cursor: pointer;
         padding-right: 35px;
