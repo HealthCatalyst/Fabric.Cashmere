@@ -41,6 +41,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     background: $white;
 }
 
+.hc-form-field-invalid {
+    border: 1.5px solid $error;
+}
+
 .hc-form-field-prefix,
 .hc-form-field-suffix {
     white-space: nowrap;
@@ -104,7 +108,6 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 }
 
 .hc-form-field-error-wrapper {
-    position: absolute;
     box-sizing: border-box;
     width: 100%;
     overflow: hidden;
@@ -127,5 +130,5 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 }
 
 .hc-required-marker {
-    color: $red;
+    color: $error;
 }
