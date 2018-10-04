@@ -10,5 +10,5 @@ import {FormControl, Validators} from '@angular/forms';
     styleUrls: ['input-required-example.css']
 })
 export class InputRequiredExample {
-    formDemo = new FormControl('', Validators.required);
+    formDemo = new FormControl('', [Validators.email, Validators.required]);
 }
