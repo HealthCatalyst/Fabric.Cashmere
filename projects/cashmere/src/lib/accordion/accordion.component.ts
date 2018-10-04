@@ -114,14 +114,14 @@ export class AccordionComponent implements AfterContentInit {
     }
 
     _animationEnd(event: AnimationEvent): void {
+        this._currentlyAnimating = false;
+
         const {fromState, toState} = event;
         if (fromState === 'void' && toState === 'open') {
             this.opened.emit();
         } else if (fromState === 'open' && toState === 'void') {
             this.closed.emit();
         }
-
-        this._currentlyAnimating = false;
     }
 
     @HostBinding('class.hc-accordion-opened')

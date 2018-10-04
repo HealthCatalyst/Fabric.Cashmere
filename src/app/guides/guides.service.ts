@@ -20,9 +20,9 @@ export class GuidesService {
             document: require('raw-loader!../../../guides/contribution-guide.md')
         },
         {
-            title: 'Help Menu',
-            route: 'help-menu',
-            document: require('raw-loader!../../../guides/help-menu.md')
+            title: 'Naming Conventions',
+            route: 'naming-conventions',
+            document: require('raw-loader!../../../guides/naming-conventions.md')
         },
         {
             title: 'Submit an Issue',
@@ -33,11 +33,6 @@ export class GuidesService {
             title: 'Supported Browsers',
             route: 'supported-browsers',
             document: require('raw-loader!../../../guides/supported-browsers.md')
-        },
-        {
-            title: 'User Feedback',
-            route: 'user-feedback',
-            document: require('raw-loader!../../../guides/user-feedback.md')
         }
     ];
 }

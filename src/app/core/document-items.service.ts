@@ -39,7 +39,12 @@ const docs: DocItem[] = [
     },
     {id: 'list', name: 'List', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', examples: ['modal-overview']},
-    {id: 'navbar', name: 'Navbar', examples: ['navbar-overview']},
+    {
+        id: 'navbar',
+        name: 'Navbar',
+        examples: ['navbar-overview'],
+        usageDoc: true
+    },
     {
         id: 'pagination',
         name: 'Pagination',
@@ -55,7 +60,7 @@ const docs: DocItem[] = [
     {id: 'progress-indicators', name: 'Progress Indicators', examples: ['progress-spinner', 'progress-dots'], usageDoc: true},
     {
         id: 'radio-button',
-        name: 'Radio button',
+        name: 'Radio Button',
         examples: ['radio-button-standard', 'radio-button-disabled', 'radio-button-forms']
     },
     {
@@ -81,7 +86,12 @@ const docs: DocItem[] = [
         examples: ['tabs-horizontal', 'tabs-vertical']
     },
     {id: 'tile', name: 'Tile', examples: ['tile-overview']},
-    {id: 'typeform-survey', name: 'Typeform survey', examples: ['typeform-survey-overview']}
+    {
+        id: 'typeform-survey',
+        name: 'Typeform Survey',
+        examples: ['typeform-survey-overview'],
+        usageDoc: true
+    }
 ];
 
 @Injectable()
