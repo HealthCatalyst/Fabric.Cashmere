@@ -15,10 +15,24 @@ import {PortalModule} from '@angular/cdk/portal';
 @NgModule({
     imports: [CommonModule, PopoverModule, OverlayModule, PortalModule],
     declarations: [
-        AnchorComponent, ButtonComponent, ButtonItemDirective, SplitButtonComponent,
-        MenuIconDirective, MenuTextDirective, MenuSubTextDirective, DividerDirective],
+        AnchorComponent,
+        ButtonComponent,
+        ButtonItemDirective,
+        SplitButtonComponent,
+        MenuIconDirective,
+        MenuTextDirective,
+        MenuSubTextDirective,
+        DividerDirective
+    ],
     exports: [
-        AnchorComponent, ButtonComponent, ButtonItemDirective, SplitButtonComponent,
-        MenuIconDirective, MenuTextDirective, MenuSubTextDirective, DividerDirective],
+        AnchorComponent,
+        ButtonComponent,
+        ButtonItemDirective,
+        SplitButtonComponent,
+        MenuIconDirective,
+        MenuTextDirective,
+        MenuSubTextDirective,
+        DividerDirective
+    ]
 })
 export class ButtonModule {}

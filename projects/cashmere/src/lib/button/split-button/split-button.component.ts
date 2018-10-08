@@ -1,7 +1,16 @@
-import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter,
-        HostBinding, Input, Output, ViewEncapsulation, ViewChild} from '@angular/core';
-import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { Portal, TemplatePortal } from '@angular/cdk/portal';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    EventEmitter,
+    HostBinding,
+    Input,
+    Output,
+    ViewEncapsulation,
+    ViewChild
+} from '@angular/core';
+import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
+import {Portal, TemplatePortal} from '@angular/cdk/portal';
 
 import {parseBooleanAttribute} from '../../util';
 import {validateStyleInput, ButtonComponent} from '../button.component';
@@ -26,26 +35,34 @@ export class SplitButtonComponent {
     private _style: string = 'primary';
 
     private _menuPortalHost: OverlayRef;
-    @ViewChild('menuPortal') _menuPortal: TemplatePortal<any>;
-    @ViewChild('splitBtnToggle') _splitBtnToggle: ButtonComponent;
+    @ViewChild('menuPortal')
+    _menuPortal: TemplatePortal<any>;
+    @ViewChild('splitBtnToggle')
+    _splitBtnToggle: ButtonComponent;
 
     /** Primary button's click event */
-    @Output() click = new EventEmitter<SplitButtonClickEvent>();
+    @Output()
+    click = new EventEmitter<SplitButtonClickEvent>();
 
     /** Additional information shown as tooltip */
-    @Input() title: string;
+    @Input()
+    title: string;
 
     /** Positioning for the menu. Possible values: 'start', 'end', 'center' */
-    @Input() menuPosition: string = 'end';
+    @Input()
+    menuPosition: string = 'end';
 
     /** Type of button. Possible values: 'submit', 'reset', 'button' */
-    @Input() type = 'button';
+    @Input()
+    type = 'button';
 
     /** Used as a reference in JavaScript, or to reference form data after a form is submitted */
-    @Input() name: string;
+    @Input()
+    name: string;
 
     /** Value of primary button when submitted within a form */
-    @Input() value: string;
+    @Input()
+    value: string;
 
     /** Button tabindex */
     @Input()
@@ -125,17 +142,18 @@ export class SplitButtonComponent {
 
     private _getOverlayConfig(): OverlayConfig {
         const position = this.getPositionForMenu();
-        const positionStrategy = this.overlay.position()
+        const positionStrategy = this.overlay
+            .position()
             .flexibleConnectedTo(this._splitBtnToggle.elementRef)
             .withFlexibleDimensions(true)
-            .withPositions([{ originX: position, originY: 'bottom', overlayX: position, overlayY: 'top' }]);
+            .withPositions([{originX: position, originY: 'bottom', overlayX: position, overlayY: 'top'}]);
 
         const overlayConfig = new OverlayConfig({
-          hasBackdrop: true,
-          backdropClass: 'hc-menu-backdrop',
-          panelClass: 'hc-menu-panel',
-          scrollStrategy: this.overlay.scrollStrategies.block(),
-          positionStrategy: positionStrategy,
+            hasBackdrop: true,
+            backdropClass: 'hc-menu-backdrop',
+            panelClass: 'hc-menu-panel',
+            scrollStrategy: this.overlay.scrollStrategies.block(),
+            positionStrategy: positionStrategy
         });
 
         return overlayConfig;
@@ -143,6 +161,6 @@ export class SplitButtonComponent {
 
     private getPositionForMenu() {
         const pos = this.menuPosition;
-        return (pos !== 'center' && pos !== 'start' && pos !== 'end') ? 'end' : pos;
+        return pos !== 'center' && pos !== 'start' && pos !== 'end' ? 'end' : pos;
     }
 }

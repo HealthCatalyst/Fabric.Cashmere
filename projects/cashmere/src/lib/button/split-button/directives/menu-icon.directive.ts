@@ -5,5 +5,6 @@ import {Directive, HostBinding} from '@angular/core';
     selector: '[hcMenuIcon]'
 })
 export class MenuIconDirective {
-    @HostBinding('class.hc-menu-icon') _hostClass = true;
+    @HostBinding('class.hc-menu-icon')
+    _hostClass = true;
 }
