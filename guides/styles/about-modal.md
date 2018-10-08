@@ -6,7 +6,7 @@
 
 ##### Overview
 
-An "About" modal should be included with every application as place to store important statistical information. It is typically triggered from an item in the [help menu](https://cashmere.healthcatalyst.net/guides/help-menu). This is often used in troubleshooting when a user needs to identify specifics about their app instance. At a minimum, the About modal should contain:
+An "About" modal should be included with every application as place to store important statistical information. It is typically triggered from an item in the [help menu](https://cashmere.healthcatalyst.net/components/navbar/usage). This is often used in troubleshooting when a user needs to identify specifics about their app instance. At a minimum, the About modal should contain:
 
 *   **App Name** - usually an SVG and usually paired with a logo
 *   **Version Number** - the primary element of the modal, should be easy to find
