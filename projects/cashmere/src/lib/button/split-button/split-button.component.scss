@@ -1,7 +1,7 @@
 @import '../../sass/colors';
 @import '../../sass/functions';
 @import '../../sass/mixins';
-@import '~@angular/cdk/overlay.scss';
+@import '../../../../../../node_modules/@angular/cdk/overlay';
 @include cdk-overlay();
 
 .hc-menu-panel {

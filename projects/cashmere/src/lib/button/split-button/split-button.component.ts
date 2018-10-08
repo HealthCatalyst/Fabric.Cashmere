@@ -33,6 +33,7 @@ export class SplitButtonComponent {
     private _tabIndex: number;
     private _disabled: boolean = false;
     private _style: string = 'primary';
+    private _menuClickedCallback = this._menuClicked.bind(this);
 
     private _menuPortalHost: OverlayRef;
     @ViewChild('menuPortal')
@@ -51,6 +52,10 @@ export class SplitButtonComponent {
     /** Positioning for the menu. Possible values: 'start', 'end', 'center' */
     @Input()
     menuPosition: string = 'end';
+
+    /** True if clicking anywhere in the menu should automatically close it. */
+    @Input()
+    autoCloseMenuOnClick = true;
 
     /** Type of button. Possible values: 'submit', 'reset', 'button' */
     @Input()
@@ -132,16 +137,34 @@ export class SplitButtonComponent {
         }
     }
 
-    openMenu() {
-        const menuPortalHost = this.overlay.create(this._getOverlayConfig());
-        menuPortalHost.attach(this._menuPortal);
-        this._menuPortalHost = menuPortalHost;
+    _menuClicked() {
+        if (this.autoCloseMenuOnClick) {
+            this.closeMenu();
+        }
+    }
 
-        menuPortalHost.backdropClick().subscribe(_ => menuPortalHost.dispose());
+    /** Manually close the menu */
+    closeMenu() {
+        this._menuPortalHost.hostElement.removeEventListener('click', this._menuClickedCallback);
+        this._menuPortalHost.dispose();
+    }
+
+    /** Manually open the menu */
+    openMenu() {
+        this._menuPortalHost = this.overlay.create(this._getOverlayConfig());
+        this._menuPortalHost.attach(this._menuPortal);
+
+        this._menuPortalHost.backdropClick().subscribe(_ => this.closeMenu());
+        this._menuPortalHost.hostElement.addEventListener('click', this._menuClickedCallback);
+        this._menuPortalHost.keydownEvents().subscribe(e => {
+            if (e.key === 'Escape') {
+                this.closeMenu();
+            }
+        });
     }
 
     private _getOverlayConfig(): OverlayConfig {
-        const position = this.getPositionForMenu();
+        const position = this._getPositionForMenu();
         const positionStrategy = this.overlay
             .position()
             .flexibleConnectedTo(this._splitBtnToggle.elementRef)
@@ -159,7 +182,7 @@ export class SplitButtonComponent {
         return overlayConfig;
     }
 
-    private getPositionForMenu() {
+    private _getPositionForMenu() {
         const pos = this.menuPosition;
         return pos !== 'center' && pos !== 'start' && pos !== 'end' ? 'end' : pos;
     }
