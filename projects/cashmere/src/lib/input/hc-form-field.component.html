@@ -8,7 +8,7 @@
 
                 </label>
             </span>
-    <div class="hc-form-field-flex">
+    <div [ngClass]="{ 'hc-form-field-flex': true, 'hc-form-field-invalid': _shouldShowErrorMessages() }">
         <div class="hc-form-field-prefix" *ngIf="_prefixChildren.length">
             <ng-content select="[hcPrefix]"></ng-content>
         </div>
