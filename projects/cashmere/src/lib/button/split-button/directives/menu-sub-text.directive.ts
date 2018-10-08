@@ -5,6 +5,5 @@ import {Directive, HostBinding} from '@angular/core';
     selector: '[hcMenuSubText]'
 })
 export class MenuSubTextDirective {
-    @HostBinding('class.hc-menu-sub-text')
-    _hostClass = true;
+    @HostBinding('class.hc-menu-sub-text') _hostClass = true;
 }

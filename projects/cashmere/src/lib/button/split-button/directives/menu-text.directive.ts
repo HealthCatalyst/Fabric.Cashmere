@@ -5,6 +5,5 @@ import {Directive, HostBinding} from '@angular/core';
     selector: '[hcMenuText]'
 })
 export class MenuTextDirective {
-    @HostBinding('class.hc-menu-text')
-    _hostClass = true;
+    @HostBinding('class.hc-menu-text') _hostClass = true;
 }
