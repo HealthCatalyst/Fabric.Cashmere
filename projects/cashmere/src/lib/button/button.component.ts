@@ -66,7 +66,7 @@ export class ButtonComponent {
         this._disabled = parseBooleanAttribute(isDisabled);
     }
 
-    constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+    constructor(public elementRef: ElementRef, private renderer: Renderer2) {
         this.buttonStyle = 'primary';
         this.previousStyle = this.buttonStyle;
 

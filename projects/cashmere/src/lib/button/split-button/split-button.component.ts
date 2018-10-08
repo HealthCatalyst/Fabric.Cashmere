@@ -1,6 +1,10 @@
-import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter,
+        HostBinding, Input, Output, ViewEncapsulation, ViewChild} from '@angular/core';
+import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
+import { Portal, TemplatePortal } from '@angular/cdk/portal';
+
 import {parseBooleanAttribute} from '../../util';
-import {validateStyleInput} from '../button.component';
+import {validateStyleInput, ButtonComponent} from '../button.component';
 
 /** SplitButton click event */
 export class SplitButtonClickEvent {
@@ -11,7 +15,8 @@ export class SplitButtonClickEvent {
 @Component({
     selector: 'hc-split-button',
     templateUrl: './split-button.component.html',
-    styleUrls: ['../button.component.scss'],
+    styleUrls: ['../button.component.scss', './split-button.component.scss'],
+    providers: [Overlay],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
@@ -20,13 +25,20 @@ export class SplitButtonComponent {
     private _disabled: boolean = false;
     private _style: string = 'primary';
 
+    private _menuPortalHost: OverlayRef;
+    @ViewChild('menuPortal') _menuPortal: TemplatePortal<any>;
+    @ViewChild('splitBtnToggle') _splitBtnToggle: ButtonComponent;
+
     /** Primary button's click event */
     @Output() click = new EventEmitter<SplitButtonClickEvent>();
 
     /** Additional information shown as tooltip */
     @Input() title: string;
 
-    /** Type of button, possible values: 'submit', 'reset', 'button' */
+    /** Positioning for the menu. Possible values: 'start', 'end', 'center' */
+    @Input() menuPosition: string = 'end';
+
+    /** Type of button. Possible values: 'submit', 'reset', 'button' */
     @Input() type = 'button';
 
     /** Used as a reference in JavaScript, or to reference form data after a form is submitted */
@@ -84,7 +96,7 @@ export class SplitButtonComponent {
         return true;
     }
 
-    constructor(private elementRef: ElementRef) {}
+    constructor(private elementRef: ElementRef, private overlay: Overlay) {}
 
     _stopClick($event: MouseEvent) {
         $event.stopPropagation();
@@ -101,5 +113,36 @@ export class SplitButtonComponent {
         if (!this.disabled) {
             this.click.emit(new SplitButtonClickEvent(this));
         }
+    }
+
+    openMenu() {
+        const menuPortalHost = this.overlay.create(this._getOverlayConfig());
+        menuPortalHost.attach(this._menuPortal);
+        this._menuPortalHost = menuPortalHost;
+
+        menuPortalHost.backdropClick().subscribe(_ => menuPortalHost.dispose());
+    }
+
+    private _getOverlayConfig(): OverlayConfig {
+        const position = this.getPositionForMenu();
+        const positionStrategy = this.overlay.position()
+            .flexibleConnectedTo(this._splitBtnToggle.elementRef)
+            .withFlexibleDimensions(true)
+            .withPositions([{ originX: position, originY: 'bottom', overlayX: position, overlayY: 'top' }]);
+
+        const overlayConfig = new OverlayConfig({
+          hasBackdrop: true,
+          backdropClass: 'hc-menu-backdrop',
+          panelClass: 'hc-menu-panel',
+          scrollStrategy: this.overlay.scrollStrategies.block(),
+          positionStrategy: positionStrategy,
+        });
+
+        return overlayConfig;
+    }
+
+    private getPositionForMenu() {
+        const pos = this.menuPosition;
+        return (pos !== 'center' && pos !== 'start' && pos !== 'end') ? 'end' : pos;
     }
 }

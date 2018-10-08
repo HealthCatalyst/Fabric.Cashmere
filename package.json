@@ -34,8 +34,15 @@
         "semantic-release": "semantic-release"
     },
     "lint-staged": {
-        "*.{js,scss,css,md,json}": ["prettier --write", "git add"],
-        "*.{ts}": ["prettier --write", "npm run lint --fix", "git add"]
+        "*.{js,scss,css,md,json}": [
+            "prettier --write",
+            "git add"
+        ],
+        "*.{ts}": [
+            "prettier --write",
+            "npm run lint --fix",
+            "git add"
+        ]
     },
     "dependencies": {
         "@angular/animations": "6.1.7",
