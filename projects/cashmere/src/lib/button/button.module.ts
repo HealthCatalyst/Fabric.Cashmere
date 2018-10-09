@@ -8,12 +8,11 @@ import {MenuTextDirective} from './split-button/directives/menu-text.directive';
 import {MenuSubTextDirective} from './split-button/directives/menu-sub-text.directive';
 import {DividerDirective} from './split-button/directives/divider.directive';
 import {SplitButtonComponent} from './split-button/split-button.component';
-import {PopoverModule} from '../popover/popover.module';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {PortalModule} from '@angular/cdk/portal';
 
 @NgModule({
-    imports: [CommonModule, PopoverModule, OverlayModule, PortalModule],
+    imports: [CommonModule, OverlayModule, PortalModule],
     declarations: [
         AnchorComponent,
         ButtonComponent,

@@ -10,7 +10,7 @@ import {
     ViewChild
 } from '@angular/core';
 import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
-import {Portal, TemplatePortal} from '@angular/cdk/portal';
+import {TemplatePortal} from '@angular/cdk/portal';
 
 import {parseBooleanAttribute} from '../../util';
 import {validateStyleInput, ButtonComponent} from '../button.component';
@@ -128,12 +128,6 @@ export class SplitButtonComponent {
         }
     }
 
-    _menuClicked() {
-        if (this.autoCloseMenuOnClick) {
-            this.closeMenu();
-        }
-    }
-
     /** Manually close the menu */
     closeMenu() {
         this._menuPortalHost.hostElement.removeEventListener('click', this._menuClickedCallback);
@@ -145,6 +139,7 @@ export class SplitButtonComponent {
         this._menuPortalHost = this.overlay.create(this._getOverlayConfig());
         this._menuPortalHost.attach(this._menuPortal);
 
+        // close if clicking the backdrop, pressing escape, and optionally if clicking anywhere on the menu itself
         this._menuPortalHost.backdropClick().subscribe(_ => this.closeMenu());
         this._menuPortalHost.hostElement.addEventListener('click', this._menuClickedCallback);
         this._menuPortalHost.keydownEvents().subscribe(e => {
@@ -171,6 +166,12 @@ export class SplitButtonComponent {
         });
 
         return overlayConfig;
+    }
+
+    private _menuClicked() {
+        if (this.autoCloseMenuOnClick) {
+            this.closeMenu();
+        }
     }
 
     private _getPositionForMenu() {
