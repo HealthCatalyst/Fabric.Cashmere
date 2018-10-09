@@ -32,7 +32,7 @@ describe('SplitButtonComponent', () => {
             triggerButton = splitButtonDebugElement.query(By.css('.hc-split-button-toggle')).nativeElement;
         });
 
-        it('should not trigger primary button click when trigger is clicked', () => {
+        it('should not trigger primary button click when a menu item is clicked', () => {
             expect(testComponent.isPrimaryClicked).toBe(false);
             expect(testComponent.isMenuItemClicked).toBe(false);
 
