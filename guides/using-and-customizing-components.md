@@ -19,11 +19,12 @@ The Angular component is not meant to fit every possible use case. Instead, it f
 *   You can import the SCSS mixins and use them in a custom stylesheet for your own component.
 *   You can import the component and use its CSS classes in the markup for your own component.
 *   You can import the component and use it as-is.
-    :::
 
 :::
 
-##### Developing components
+:::
+
+##### Converting existing components
 
 As we convert existing components to the described structure, we follow this process:
 
@@ -200,4 +201,5 @@ Build the documentation and ensure that the component looks the same as it did b
 *   The mixin stylesheet should not include any nested CSS selectors that would make confusing assumptions about the user's HTML structure. That is, the `[disabled]` attribute selector and pseudo-selectors like `:hover` or `:after` are okay, but class or tag names like `.hc-checked` and `input` should be avoided.
 *   Both stylesheets should be as flat as possible. Nesting CSS selectors in SCSS files creates extremely specific selectors, which are hard to override. Cashmere should make it easy to override a style rule if needed. CSS classes can be added to component markup to avoid deep nesting.
 *   If nesting more than 2 levels deep is unavoidable, an overridable SCSS variable (with `!default`) can be added to the mixins file to allow the user to set the rule before importing the mixins.
-    :::
+
+:::
