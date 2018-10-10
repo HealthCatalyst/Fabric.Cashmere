@@ -1,7 +1,7 @@
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
 export interface ModalOptions {
     /** size of the modal window. Defaults to medium */
-    size: ModalSize;
+    size?: ModalSize;
     /** Optional. Specify data that will be available on the active modal context */
     data?: any;
     /** Optional. Specify a different HTML element to append the modal overlay and modal window.
