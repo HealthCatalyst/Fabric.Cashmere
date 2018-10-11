@@ -7,6 +7,14 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
     throw Error(`Routerlink missing on ${tabTitles.join(',')}`);
 }
 
+const supportedDirections = ['horizontal', 'vertical'];
+
+export function validateDirectionInput(inputStr: string) {
+    if (supportedDirections.indexOf(inputStr) < 0) {
+        throw Error('Unsupported tab direction value: ' + inputStr);
+    }
+}
+
 @Component({
     selector: `hc-tab-set`,
     templateUrl: './tab-set.component.html',
@@ -14,11 +22,20 @@ export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabCompone
 })
 export class TabSetComponent implements AfterContentInit {
     _routerEnabled: boolean = false;
+    private _direction: string = 'vertical';
 
     @ContentChildren(TabComponent) _tabs: QueryList<TabComponent>;
 
-    /** Optional: Specify direction of the tabs. Defaults to vertical */
-    @Input() direction: 'horizontal' | 'vertical' = 'vertical';
+    /** Specify direction of tabs as either `horizontal` or `vertical`. Defaults to `vertical` */
+    @Input()
+    get direction(): string {
+        return this._direction;
+    }
+
+    set direction(directionType: string) {
+        validateDirectionInput(directionType);
+        this._direction = directionType;
+    }
 
     constructor(private router: Router, private route: ActivatedRoute) {}
 
