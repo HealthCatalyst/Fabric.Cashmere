@@ -14,7 +14,7 @@ You can use Cashmere components in a few different ways. They're built from thre
 1.  A set of CSS classes that import the mixins and implement them in a default way. Cashmere components don't use view encapsulation, so these CSS classes are global.
 1.  An Angular component, which includes HTML markup and basic functionality.
 
-The Angular component is not meant to fit every possible use case. Instead, it focuses narrowly on the most common, expected use cases. For example, Cashmere's button component includes colored buttons, link buttons, icon buttons, and split buttons, but if you want a button that spawns a dropdown or changes its contents on hover, you'll have to build it yourself. The way components are built makes it easy to do that. You can opt in to the level of flexibility or convenience you need. From most flexible to most convenient:
+The Angular component is not meant to fit every possible use case. Instead, it focuses narrowly on the most common, expected use cases. For example, Cashmere's button component includes colored buttons, link buttons, icon buttons, and split buttons, but if you want a floating action button or a button that changes its contents on hover, you'll have to build it yourself. The way components are built makes it easy to do that. You can opt in to the level of flexibility or convenience you need. From most flexible to most convenient:
 
 *   You can import the SCSS mixins and use them in a custom stylesheet for your own component.
 *   You can import the component and use its CSS classes in the markup for your own component.
