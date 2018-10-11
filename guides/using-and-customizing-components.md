@@ -140,28 +140,28 @@ Copy the class and element CSS selectors back to the component stylesheet, but l
 
 #### Step 4. Create mixins.
 
-Replace the CSS selectors in the new stylesheet with mixin declarations, flattening the structure as you go. Use BEM-like names for the mixins: `{component-name}__{subcomponent-name}--{component-state}`.
+Replace the CSS selectors in the new stylesheet with mixin declarations, flattening the structure as you go. Follow the Cashmere CSS class naming convention for the mixins: `{company-scope}-{block-modifier}-{element}`.
 
 **button.scss:**
 
 ```sass
-@mixin checkbox() {
+@mixin hc-checkbox() {
     border: 1px solid slategray;
 }
 
-@mixin checkbox__input() {
+@mixin hc-checkbox-input() {
     background-color: white;
 }
 
-@mixin checkbox__input--checked() {
+@mixin hc-checkbox-input-checked() {
     background-color: blue;
 }
 
-@mixin checkbox__input--disabled() {
+@mixin hc-checkbox-input-disabled() {
     background-color: lightgray;
 }
 
-@mixin checkbox__label() {
+@mixin hc-checkbox-label() {
     color: slategray;
 }
 ```
@@ -176,20 +176,20 @@ Use the mixins in the component stylesheet. Flatten the structure where possible
 @import '../sass/button.scss';
 
 .hc-checkbox {
-    @include checkbox();
+    @include hc-checkbox();
 
     input {
-        @include checkbox__input();
+        @include hc-checkbox-input();
 
-        &:checked { @include checkbox__input--checked(); }
+        &:checked { @include hc-checkbox-input-checked(); }
     }
 
     &[disabled] input {
-        @include checkbox__input--disabled();
+        @include hc-checkbox-input-disabled();
     }
 }
 
-.hc-label { @include checkbox__label(); }
+.hc-label { @include hc-checkbox-label(); }
 ```
 
 #### Step 6. Review your code.
