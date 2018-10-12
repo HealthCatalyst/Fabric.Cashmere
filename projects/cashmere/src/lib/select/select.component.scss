@@ -15,6 +15,19 @@
 
 .hc-select-container {
     position: relative;
+
+    //Firefox specific CSS to correct highlight on focus that does not cover the entire select box
+    select:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+    }
+
+    @-moz-document url-prefix() {
+        select:focus {
+            outline: $gray-500 dotted 1px;
+            outline-offset: -3px;
+        }
+    }
 }
 
 .hc-select-chevron {
@@ -50,6 +63,7 @@
     width: 100%;
     -webkit-appearance: none;
     -moz-appearance: none;
+    line-height: normal;
     cursor: pointer;
 
     &::-ms-expand {

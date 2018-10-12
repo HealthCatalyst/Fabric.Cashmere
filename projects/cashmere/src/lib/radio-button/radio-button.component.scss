@@ -4,7 +4,7 @@
     display: block;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 12px;
+    margin-bottom: 18px;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -39,6 +39,7 @@
         border: 2px solid $gray-300;
         background-color: $white;
         border-radius: 50%;
+        margin-top: -4px;
     }
 
     .hc-radio-overlay:after {
@@ -51,10 +52,6 @@
         content: '';
         position: absolute;
         display: none;
-    }
-
-    .hc-radio-content {
-        padding-top: 3px;
     }
 
     &.disabled {
