@@ -1,0 +1,16 @@
+.hc-radio-group-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.hc-radio-group-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .hc-radio-container {
+        padding-left: 32px !important;
+        margin-bottom: 0px !important;
+        margin-right: 25px;
+    }
+}
