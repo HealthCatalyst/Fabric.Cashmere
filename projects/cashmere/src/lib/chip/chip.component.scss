@@ -9,7 +9,7 @@
     @include fontSize(14px);
     display: inline-block;
     padding: 0 15px;
-    margin: 0 5px 10px 5px;
+    margin: 5px;
     white-space: nowrap;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .single-row {
-    height: 32px;
+    height: 42px;
     overflow: hidden;
 }
 
@@ -82,7 +82,7 @@
 
     float: right;
     position: relative;
-    top: -40px;
+    top: -35px;
     left: 100%;
     width: 3.5em;
     margin-left: -3.5em;
