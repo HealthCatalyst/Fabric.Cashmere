@@ -1,11 +1,3 @@
 form {
     max-width: 350px;
 }
-
-button {
-    margin: 5px;
-}
-
-.action-wrapper:first-child {
-    margin-left: 0;
-}

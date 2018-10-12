@@ -12,7 +12,7 @@ import {parseBooleanAttribute} from '../util';
     encapsulation: ViewEncapsulation.None
 })
 export class LabelComponent {
-    @HostBinding('class.hc-label') hostClass = true;
+    @HostBinding('class.hc-label-text') hostClass = true;
 
     _required: boolean = false;
 
