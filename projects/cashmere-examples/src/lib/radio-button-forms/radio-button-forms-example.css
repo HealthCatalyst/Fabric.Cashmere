@@ -1,1 +1,11 @@
-/* No CSS rules defined for this example */
+.example-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    margin-top: 30px;
+}
+
+.group-label {
+    padding-right: 15px;
+    font-weight: 600;
+}
