@@ -1,12 +1,30 @@
 import {Component, Input} from '@angular/core';
 
+const supportedColors = ['blue', 'green', 'purple', 'orange', 'red', 'gray', 'white'];
+
+export function validateColorInput(inputStr: string) {
+    if (supportedColors.indexOf(inputStr) < 0) {
+        throw Error('Unsupported progress spinner color value: ' + inputStr);
+    }
+}
+
 @Component({
     selector: 'hc-progress-spinner',
     templateUrl: 'progress-spinner.component.html'
 })
 export class ProgressSpinnerComponent {
-    /** Color of the spinner. Uses standard Cashmere colors. */
-    @Input() public color: 'blue' | 'green' | 'purple' | 'orange' | 'red' | 'gray' | 'white';
+    private _color = 'blue';
+
+    /** Color of the spinner: `blue`, `green`, `purple`, `orange`, `red`, `gray`, `white` */
+    @Input()
+    get color(): string {
+        return this._color;
+    }
+
+    set color(colorVal: string) {
+        validateColorInput(colorVal);
+        this._color = colorVal;
+    }
 
     /** If true, the spinner will center itself inside its container. */
     @Input() public isCentered = true;

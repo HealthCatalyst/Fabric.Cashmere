@@ -2,6 +2,14 @@ import {AfterContentInit, Component, EventEmitter, HostBinding, Input, Output, V
 import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
 import {parseBooleanAttribute} from '../util';
 
+const supportedAligns = ['left', 'right'];
+
+export function validateAlignInput(inputStr: string) {
+    if (supportedAligns.indexOf(inputStr) < 0) {
+        throw Error('Unsupported accordion alignment value: ' + inputStr);
+    }
+}
+
 /** Parent component that can have a `<hc-accordion-toolbar>` and content that is collapsable */
 @Component({
     selector: 'hc-accordion',
@@ -34,10 +42,19 @@ export class AccordionComponent implements AfterContentInit {
     private _currentlyAnimating = false;
     private _hideToolbar = false;
     private _toolbarTrigger = true;
+    private _triggerAlign = 'left';
     private __isOpen = false;
 
-    /** Side the the accordion trigger is attached to. */
-    @Input() triggerAlign: 'left' | 'right' = 'left';
+    /** Side the accordion trigger is attached to: `left` or `right` */
+    @Input()
+    get triggerAlign(): string {
+        return this._triggerAlign;
+    }
+
+    set triggerAlign(alignType: string) {
+        validateAlignInput(alignType);
+        this._triggerAlign = alignType;
+    }
 
     /** Whether the entire width of the accordion bar is clickable, or only the down arrow button; default = true */
     @Input()

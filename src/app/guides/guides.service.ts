@@ -33,6 +33,11 @@ export class GuidesService {
             title: 'Supported Browsers',
             route: 'supported-browsers',
             document: require('raw-loader!../../../guides/supported-browsers.md')
+        },
+        {
+            title: 'Using and Customizing Components',
+            route: 'using-customizing-components',
+            document: require('raw-loader!../../../guides/using-and-customizing-components.md')
         }
     ];
 }
