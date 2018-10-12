@@ -35,6 +35,9 @@ let nextUniqueId = 0;
     exportAs: 'hcRadioGroup'
 })
 export class RadioGroupDirective implements ControlValueAccessor, AfterContentInit {
+    @HostBinding('class.hc-radio-group-vertical') _verticalClass: boolean = true;
+    @HostBinding('class.hc-radio-group-horizontal') _horizontalClass: boolean = false;
+
     /** Event emitted when the value of a radio button changes inside the group. */
     @Output() change: EventEmitter<RadioButtonChangeEvent> = new EventEmitter<RadioButtonChangeEvent>();
     @ContentChildren(forwardRef(() => RadioButtonComponent), {descendants: true})
@@ -43,6 +46,7 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
     private _name = `hc-radio-group-${nextUniqueId++}`;
     private _disabled = false;
     private _required = false;
+    private _vertical = true;
     private _initialized = false; // if value of radio group has been set to initial value
     private _selected: RadioButtonComponent | null = null; // the currently selected radio
     _onChangeFn: (value: any) => void = () => {};
@@ -104,6 +108,18 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
         this._selected = button;
         this.value = button ? button.value : null;
         this._checkSelectedRadio();
+    }
+
+    /** Sets the orientation of the radio button group; defaults to true */
+    @Input()
+    get vertical(): boolean {
+        return this._vertical;
+    }
+
+    set vertical(value) {
+        this._vertical = parseBooleanAttribute(value);
+        this._verticalClass = this._vertical;
+        this._horizontalClass = !this._vertical;
     }
 
     constructor(private _cdRef: ChangeDetectorRef) {}

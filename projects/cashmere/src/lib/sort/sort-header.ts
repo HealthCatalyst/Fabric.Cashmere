@@ -10,7 +10,17 @@
 
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {CdkColumnDef} from '@angular/cdk/table';
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, Optional, ViewEncapsulation} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    Input,
+    OnDestroy,
+    OnInit,
+    Optional,
+    ViewEncapsulation,
+    HostBinding
+} from '@angular/core';
 import {merge, Subscription} from 'rxjs';
 import {HcSort, HcSortable} from './sort';
 import {hcSortAnimations} from './sort-animations';
@@ -54,9 +64,6 @@ export interface ArrowViewStateTransition {
     styleUrls: ['sort-header.scss'],
     host: {
         '(click)': '_handleClick()',
-        '(mouseenter)': '_setIndicatorHintVisible(true)',
-        '(longpress)': '_setIndicatorHintVisible(true)',
-        '(mouseleave)': '_setIndicatorHintVisible(false)',
         '[attr.aria-sort]': '_getAriaSortAttribute()',
         '[class.hc-sort-header-disabled]': '_isDisabled()'
     },
@@ -127,6 +134,8 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
     set disabled(value: any) {
         this._disabled = coerceBooleanProperty(value);
     }
+
+    @HostBinding('class.hc-sort-header') _hostClass = true;
 
     private _disabled: boolean = false;
 
