@@ -9,18 +9,4 @@
     <ng-content></ng-content>
   </button>
 
-  <!-- Disable animations while a current animation is running -->
-  <div class="hc-sort-header-arrow"
-       [@arrowOpacity]="_getArrowViewState()"
-       [@arrowPosition]="_getArrowViewState()"
-       [@allowChildren]="_getArrowDirectionState()"
-       (@arrowPosition.start)="_disableViewStateAnimation = true"
-       (@arrowPosition.done)="_disableViewStateAnimation = false">
-    <div class="hc-sort-header-stem"></div>
-    <div class="hc-sort-header-indicator" [@indicator]="_getArrowDirectionState()">
-      <div class="hc-sort-header-pointer-left" [@leftPointer]="_getArrowDirectionState()"></div>
-      <div class="hc-sort-header-pointer-right" [@rightPointer]="_getArrowDirectionState()"></div>
-      <div class="hc-sort-header-pointer-middle"></div>
-    </div>
-  </div>
-</div>
+  <div [ngClass]="{'hc-sort-header-asc': _getArrowDirectionState() === 'active-asc', 'hc-sort-header-desc': _getArrowDirectionState() === 'active-desc', 'hc-sort-header-off': !_isSorted() }"></div>

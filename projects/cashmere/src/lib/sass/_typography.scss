@@ -171,9 +171,8 @@ em,
 // error text
 .form-errors {
     margin-top: 8px;
-    color: $red;
-    font-weight: 600;
-    @include fontSize(12px);
+    color: $error;
+    font-size: 75%;
 }
 
 // Articles

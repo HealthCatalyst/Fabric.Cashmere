@@ -8,7 +8,7 @@
 
     &.ng-invalid {
         .hc-select-input {
-            border: 2px solid $red;
+            border: 1.5px solid $error;
         }
     }
 }

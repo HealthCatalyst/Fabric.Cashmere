@@ -5,7 +5,7 @@ $mat-form-field-default-infix-width: 120px;
 $line-height: 1.5;
 $label-font-scale: 1;
 $error-font-scale: 0.75;
-$infix-margin-top: 1em * $line-height * $label-font-scale;
+$infix-margin-top: 1.143em * $line-height * $label-font-scale;
 $prefix-suffix-icon-font-size: 125%;
 
 $infix-padding: 0.393em;
@@ -96,7 +96,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
     font: inherit;
     font-size: calculateRem(14px);
-    color: rgba(0, 0, 0, 0.6);
+    color: $gray-500;
     pointer-events: none; // We shouldn't catch mouse events (let them through).
 
     width: 100%;
