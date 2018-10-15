@@ -1,0 +1,72 @@
+@import '../sass/colors';
+
+@mixin hc-checkbox-container() {
+    overflow: hidden;
+}
+
+@mixin hc-checkbox-content() {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+@mixin hc-checkbox-content-label() {
+    cursor: pointer;
+}
+
+@mixin hc-checkbox-content-disabled() {
+    color: $gray-300;
+    cursor: not-allowed;
+}
+
+@mixin hc-checkbox-content-label-disabled() {
+    cursor: not-allowed;
+}
+
+@mixin hc-checkbox-label() {
+    margin-left: 12px;
+}
+
+@mixin hc-checkbox-overlay() {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    background-color: $white;
+    border: 2px solid $gray-300;
+    border-radius: 3px;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 3.5px;
+        left: 3px;
+        width: 12px;
+        height: 7px;
+        opacity: 0;
+        transform: rotate(-45deg);
+        border: 3px solid $white;
+        border-top: none;
+        border-right: none;
+    }
+}
+
+@mixin hc-checkbox-overlay-disabled() {
+    background-color: $gray-200;
+    border-color: $gray-300;
+}
+
+@mixin hc-checkbox-overlay-hover() {
+    border: 2px solid $primary-brand;
+}
+
+@mixin hc-checkbox-overlay-checked() {
+    background-color: $primary-brand;
+    border-color: $primary-brand;
+    &:after {
+        opacity: 1;
+    }
+}
+
+@mixin hc-checkbox-input() {
+    display: none;
+}
