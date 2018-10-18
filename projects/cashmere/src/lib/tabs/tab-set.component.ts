@@ -15,6 +15,10 @@ export function validateDirectionInput(inputStr: string) {
     }
 }
 
+export function tabComponentMissing(): Error {
+    return new Error(`TabSet must contain at least one TabComponent. Make sure to add a hc-tab to the hc-tab-set element.`);
+}
+
 @Component({
     selector: `hc-tab-set`,
     templateUrl: './tab-set.component.html',
@@ -40,6 +44,10 @@ export class TabSetComponent implements AfterContentInit {
     constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngAfterContentInit(): void {
+        if (this._tabs.length == 0) {
+            throw tabComponentMissing();
+        }
+
         this.defaultToFirstTab();
         this.checkForRouterUse();
 
