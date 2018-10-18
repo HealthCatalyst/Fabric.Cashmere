@@ -198,3 +198,43 @@ $btn-icon-sz: 18px;
         content: '\f078';
     }
 }
+
+@mixin hc-split-button-divider() {
+    margin: 5px -16px;
+}
+
+@mixin hc-split-button-item() {
+    @include fontSize(14px);
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: $offblack;
+    padding: 6px 16px;
+    margin: 0 -16px;
+    border: 0;
+    background: 0 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+
+    &[disabled] {
+        opacity: 0.5;
+    }
+
+    &:hover:not([disabled]) {
+        background-color: tint($blue, 70%);
+        cursor: pointer;
+    }
+}
+
+@mixin hc-split-button-menu-icon() {
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+    margin-right: 14px;
+}
+
+@mixin hc-split-button-menu-subtext() {
+    flex: 1 0 auto;
+    margin-left: 15px;
+    color: $gray-300;
+    text-align: right;
+}
