@@ -44,7 +44,7 @@ export class TabSetComponent implements AfterContentInit {
     constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngAfterContentInit(): void {
-        if (this._tabs.length == 0) {
+        if (this._tabs.length === 0) {
             throw tabComponentMissing();
         }
 
