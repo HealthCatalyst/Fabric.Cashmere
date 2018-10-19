@@ -16,7 +16,7 @@
     <div class="links">
         <ng-content select="hc-navbar-link"></ng-content>
         <div class="more-links" title="More" [ngClass]="{'hidden': !_collapse}" [hcPopover]="navbarMore" popperPlacement="bottom">
-            More<hc-icon fontSet="fa" fontIcon="fa-chevron-down" icon-sm></hc-icon>
+            More<hc-icon fontSet="fa" fontIcon="fa-chevron-down" hcIconSm></hc-icon>
         </div>
     </div>
 
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="mobile-menu" (click)="_toggleMobileMenu()">
-        <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" icon-md></hc-icon>
+        <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
     </div>
 </nav>
 <div (click)="_menuClick($event)">
