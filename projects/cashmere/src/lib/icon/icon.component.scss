@@ -6,15 +6,18 @@ $default-icon-size: 20px;
     width: $height !important;
 }
 
-[icon-sm] {
+[icon-sm],
+.hc-icon-sm {
     @include iconHeight(14px);
 }
 
-[icon-md] {
+[icon-md],
+.hc-icon-md {
     @include iconHeight($default-icon-size);
 }
 
-[icon-lg] {
+[icon-lg],
+.hc-icon-lg {
     @include iconHeight(36px);
 }
 
