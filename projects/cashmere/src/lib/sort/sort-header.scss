@@ -20,7 +20,7 @@
     cursor: pointer;
 
     &:hover {
-        background-color: $row-color-action-hover;
+        background-color: $row-color-action-hover !important;
     }
 }
 

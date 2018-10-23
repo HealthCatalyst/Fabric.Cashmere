@@ -26,10 +26,10 @@ $row-selected-font-color: $white;
 $row-selected-border-color: $white;
 
 table.hc-table {
-    border: $table-border;
     width: 100%;
     max-width: 100%;
     color: $tbody-font-color;
+    border: 1px solid transparent;
 
     td,
     th {
@@ -43,22 +43,16 @@ table.hc-table {
             text-align: left;
         }
 
-        &:not(.hc-footer-cell) {
-            border-right: $table-border;
-        }
-
         &:focus {
             outline: none;
         }
     }
 
     th {
-        border-bottom: $table-border;
         font-weight: 600;
     }
 
     thead th {
-        background-color: $row-color-header;
         color: $thead-font-color;
         font-size: $thead-font-size;
         vertical-align: bottom;
@@ -66,7 +60,6 @@ table.hc-table {
 
     tbody {
         font-size: $tbody-font-size;
-        border: $table-border;
 
         tr {
             &:nth-child(2n) {
@@ -95,28 +88,49 @@ table.hc-table {
 
         td {
             vertical-align: top;
+
+            &:first-of-type {
+                border-left: $table-border-interior;
+            }
+
+            &:last-of-type {
+                border-right: $table-border-interior;
+            }
         }
     }
 
-    tr.hc-footer-row {
-        background-color: $row-color-footer;
-    }
-
     tfoot {
-        font-size: $tbody-font-size;
+        font-size: $thead-font-size;
+        font-weight: 600;
+
+        td {
+            border-bottom: none;
+        }
     }
 
     // Add Borders
     &.hc-table-borders {
-        td {
+        td,
+        th {
             border: $table-border;
-        }
-    }
 
-    td,
-    th {
-        &.hc-cell-borders {
-            border: $table-border;
+            &:not(.hc-footer-cell) {
+                border-right: $table-border;
+            }
+        }
+
+        td {
+            &:first-of-type {
+                border-left: $table-border;
+            }
+        }
+
+        thead th {
+            background-color: $row-color-header;
+        }
+
+        tr.hc-footer-row {
+            background-color: $row-color-footer;
         }
     }
 
