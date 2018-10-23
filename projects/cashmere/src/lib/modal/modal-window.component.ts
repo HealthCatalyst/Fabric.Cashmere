@@ -23,7 +23,7 @@ import {ActiveModal} from './active-modal';
 })
 export class ModalWindowComponent {
     @Input() _ignoreOverlayClick = false;
-    @Input() _size: ModalSize = 'md';
+    @Input() _size: ModalSize = 'auto';
 
     constructor(private activeModal: ActiveModal, private el: ElementRef) {}
 
