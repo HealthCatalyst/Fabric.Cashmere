@@ -8,8 +8,20 @@
     @include hc-form-field-wrapper();
 }
 
+.hc-form-field-wrapper-inline {
+    @include hc-form-field-wrapper-inline();
+}
+
 .hc-form-field-flex {
     @include hc-form-field-flex();
+
+    .hc-form-field-disabled & {
+        @include hc-form-field-disabled-flex();
+    }
+}
+
+.hc-form-field-flex-inline {
+    @include hc-form-field-flex-inline();
 
     .hc-form-field-disabled & {
         @include hc-form-field-disabled-flex();
@@ -27,6 +39,14 @@
     .hc-icon {
         @include hc-form-field-prefix-suffix-icon();
     }
+
+    .hc-form-field-disabled & {
+        @include hc-form-field-prefix-suffix-disabled();
+    }
+}
+
+.hc-form-field-prefix {
+    @include hc-form-field-prefix();
 }
 
 .hc-form-field-infix {
@@ -41,8 +61,20 @@
     }
 }
 
+.hc-form-field-label-wrapper-inline {
+    @include hc-form-field-label-wrapper-inline();
+
+    .hc-icon {
+        @include hc-form-field-label-wrapper-icon();
+    }
+}
+
 .hc-form-field-label {
     @include hc-form-field-label();
+}
+
+.hc-form-field-label-inline {
+    @include hc-form-field-label-inline();
 }
 
 .hc-form-field-error-wrapper {
