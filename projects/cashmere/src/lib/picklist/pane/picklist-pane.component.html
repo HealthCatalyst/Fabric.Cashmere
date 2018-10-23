@@ -36,8 +36,8 @@
                     class="valueset-option value-option-row"><td>
                         <div>
                             <span class="valueset-value-toggle" (click)="onValuesetCaretClicked($event, item)">
-                                <hc-icon icon-sm class="values-caret" fontSet="fa" [ngClass]="{'showing-values': item.showValues}" fontIcon="fa-caret-right"></hc-icon>
-                                <hc-icon icon-sm class="vs-folder" fontSet="fa" [fontIcon]="item.showValues ? 'fa-folder-open-o' : 'fa-folder-o'"></hc-icon>
+                                <hc-icon hcIconSm class="values-caret" fontSet="fa" [ngClass]="{'showing-values': item.showValues}" fontIcon="fa-caret-right"></hc-icon>
+                                <hc-icon hcIconSm class="vs-folder" fontSet="fa" [fontIcon]="item.showValues ? 'fa-folder-open-o' : 'fa-folder-o'"></hc-icon>
                             </span>
                             <!-- TODO: more deets for the valueset -->
                             <span class="vs-title">{{item.option.title || "Untitled"}} ({{item.option.subValueCount}})</span>
