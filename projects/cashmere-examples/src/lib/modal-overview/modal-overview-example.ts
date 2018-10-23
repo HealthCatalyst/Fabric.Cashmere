@@ -29,8 +29,7 @@ export class ModalOverviewExample {
 
     openTemplate(content: TemplateRef<any>) {
         let options: ModalOptions = {
-            data: 'I got this data from the class that opened me (Template version)',
-            size: 'lg'
+            data: 'I got this data from the class that opened me (Template version)'
         };
         this.modalService.open(content, options);
     }

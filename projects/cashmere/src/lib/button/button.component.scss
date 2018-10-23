@@ -1,197 +1,43 @@
-@import '../sass/colors';
-@import '../sass/functions.scss';
-
-$btn-icon-sz: 18px;
-
-/// Sets up colors for a button
-/// @param {Color} $color - base color of the button
-/// @param {Number} $darken-pct - percentage amount by which to darken color in hover(1x) and active(2x) states
-/// @return {Color}
-@mixin colorButton($color, $darken-pct: 10%) {
-    color: $white;
-    background-color: $color;
-
-    &:hover {
-        background-color: shade($color, $darken-pct);
-        color: $white;
-    }
-    &:active {
-        background-color: shade($color, $darken-pct * 2);
-        color: $white;
-    }
-    &[disabled],
-    &[disabled]:hover,
-    &[disabled]:focus,
-    &[disabled]:active {
-        background-color: $color;
-        opacity: 0.35;
-    }
-}
+@import '../sass/button.scss';
 
 .hc-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20px;
-    height: 35px;
-    min-width: 150px;
-    font-size: 15px;
-    line-height: 35px;
-    font-weight: normal;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    touch-action: manipulation;
-    cursor: pointer;
-    user-select: none;
-    background-image: none;
-    border: none;
-    border-radius: 5px;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
-    &[disabled] {
-        cursor: not-allowed;
-    }
-
-    &:focus {
-        outline: 5px auto -webkit-focus-ring-color;
-        outline-offset: -2px;
-    }
-
-    &:active {
-        background-image: none;
-        outline: none;
-    }
+    @include hc-button();
 
     &.hc-primary {
-        @include colorButton($primary-action);
+        @include hc-button-primary();
     }
-
     &.hc-primary-alt {
-        @include colorButton($primary-alt-action);
+        @include hc-button-primary-alt();
     }
-
     &.hc-destructive {
-        @include colorButton($destructive-action);
+        @include hc-button-destructive();
     }
-
     &.hc-neutral {
-        @include colorButton($neutral-action);
+        @include hc-button-neutral();
     }
-
     &.hc-secondary {
-        @include colorButton($gray-100, 5%);
-        color: $gray-600;
-        border: 2px solid $gray-300;
-        height: 37px;
-        line-height: 33px;
-        padding-right: 19px;
-
-        &:hover {
-            color: $offblack;
-        }
-        &[disabled]:hover {
-            color: $gray-600;
-        }
+        @include hc-button-secondary();
     }
-
     &.hc-link,
     &.hc-link-inline {
-        background-color: transparent;
-        color: $primary-brand;
-        font-weight: 600;
-
-        .label {
-            color: $gray-500;
-            font-weight: 400;
-            margin-right: 10px;
-        }
-
-        .value {
-            color: $text;
-            font-weight: 400;
-            margin-right: 10px;
-        }
-
-        &:hover {
-            color: lighten($primary-brand, 10%);
-        }
-        &:active {
-            color: darken($primary-brand, 10%);
-        }
-
-        &[disabled],
-        &[disabled]:hover,
-        &[disabled]:focus,
-        &[disabled]:active {
-            opacity: 0.35;
-            color: $primary-brand;
-            .label,
-            .value {
-                color: $text;
-            }
-        }
+        @include hc-button-link();
     }
-
     &.hc-link-inline {
-        padding: 0;
-        height: auto;
-        width: auto;
-        min-width: 0;
-        font-size: inherit;
-        line-height: inherit;
-        text-align: inherit;
-        white-space: inherit;
-        vertical-align: inherit;
-        font-family: inherit;
-        border: none;
+        @include hc-button-link-inline();
     }
 }
 
 .hc-icon-button {
-    display: inline-block;
-    position: relative;
-    height: 35px;
-    width: 35px;
-    line-height: 35px;
-    border-radius: 50%;
-
-    outline: none;
-    border: none;
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    text-decoration: none;
-    cursor: pointer;
-    white-space: nowrap;
-    text-align: center;
-    vertical-align: baseline;
+    @include hc-icon-button();
 }
 
 .hc-split-button {
-    display: inline-flex;
+    @include hc-split-button();
 
     .hc-split-button-main {
-        margin-right: 0;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-        min-width: unset;
+        @include hc-split-button-main();
     }
-
     .hc-split-button-toggle {
-        min-width: auto;
-        padding: 8px 12px;
-        margin-left: 0;
-        border-left: 1px solid rgba(0, 0, 0, 0.12);
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-
-        &::after {
-            display: flex;
-            height: 20px;
-            align-items: center;
-            font: normal normal normal 12px/1 FontAwesome;
-            content: '\f078';
-        }
+        @include hc-split-button-toggle();
     }
 }

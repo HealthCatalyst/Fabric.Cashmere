@@ -35,7 +35,7 @@ const docs: DocItem[] = [
         id: 'input',
         name: 'Input',
         usageDoc: true,
-        examples: ['input-required', 'input-suffix', 'input-prefix', 'input-disabled']
+        examples: ['input-required', 'input-suffix', 'input-prefix']
     },
     {id: 'list', name: 'List', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', examples: ['modal-overview']},

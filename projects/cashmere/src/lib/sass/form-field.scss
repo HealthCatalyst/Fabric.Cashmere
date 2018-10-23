@@ -1,0 +1,168 @@
+@import '../sass/colors';
+@import '../sass/functions';
+
+$mat-form-field-default-infix-width: 120px;
+$line-height: 1.5;
+$label-font-scale: 1;
+$error-font-scale: 0.75;
+$infix-margin-top: 1.143em * $line-height * $label-font-scale;
+$prefix-suffix-icon-font-size: 125%;
+
+$infix-padding: 0.393em;
+$error-margin-top: 0.4em / $error-font-scale;
+$wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
+
+@mixin hc-form-field() {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    font-size: inherit;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: $line-height;
+}
+
+@mixin hc-form-field-wrapper() {
+    position: relative;
+    border-top: $infix-margin-top solid transparent;
+    padding-bottom: $wrapper-padding-bottom;
+}
+
+@mixin hc-form-field-wrapper-inline() {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin hc-form-field-flex() {
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: 100%;
+
+    padding: 0 7px 0 0;
+    border: 1.5px solid $gray-300;
+
+    background: $white;
+}
+
+@mixin hc-form-field-flex-inline() {
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+
+    padding: 0 7px 0 0;
+    border: 1.5px solid $gray-300;
+
+    background: $white;
+}
+
+@mixin hc-form-field-disabled-flex() {
+    cursor: not-allowed;
+    border: 1.5px solid $gray-200;
+    background-color: $slate-gray-100;
+    color: tint($text, 60%);
+}
+
+@mixin hc-form-field-invalid() {
+    border: 1.5px solid $error;
+}
+
+@mixin hc-form-field-prefix-suffix() {
+    white-space: nowrap;
+    flex: none;
+    position: relative;
+}
+
+@mixin hc-form-field-prefix-suffix-disabled {
+    opacity: 0.5;
+}
+
+@mixin hc-form-field-prefix-suffix-icon() {
+    color: $gray-400;
+    font-size: $prefix-suffix-icon-font-size;
+    line-height: $line-height;
+}
+
+@mixin hc-form-field-prefix {
+    padding-left: 7px;
+}
+
+@mixin hc-form-field-infix() {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: $mat-form-field-default-infix-width;
+    padding: $infix-padding 10px;
+}
+
+@mixin hc-form-field-label-wrapper() {
+    position: absolute;
+    left: 0;
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none; // We shouldn't catch mouse events (let them through).
+    top: -$infix-margin-top;
+    padding-top: $infix-margin-top;
+}
+
+@mixin hc-form-field-label-wrapper-inline() {
+    padding: 7px 15px 0 0;
+}
+
+@mixin hc-form-field-label-wrapper-icon() {
+    width: 1em;
+    height: 1em;
+    font-size: inherit;
+    vertical-align: baseline;
+}
+
+@mixin hc-form-field-label() {
+    position: absolute;
+    left: 0;
+
+    font: inherit;
+    font-size: calculateRem(14px);
+    color: $gray-500;
+    pointer-events: none; // We shouldn't catch mouse events (let them through).
+
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    top: $infix-margin-top + $infix-padding;
+    transform: translateY(-$infix-margin-top - $infix-padding) scale($label-font-scale);
+    display: block;
+    transform-origin: 0 0;
+}
+
+@mixin hc-form-field-label-inline() {
+    font: inherit;
+    font-size: calculateRem(14px);
+    color: $gray-500;
+    pointer-events: none; // We shouldn't catch mouse events (let them through).
+
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@mixin hc-form-field-error-wrapper() {
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+    margin-top: $error-margin-top;
+    font-size: $error-font-scale * 100%;
+}
+
+@mixin hc-error() {
+    display: block;
+    color: $error;
+}
+
+@mixin hc-required-marker() {
+    color: $error;
+}

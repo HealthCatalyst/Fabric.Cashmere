@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 /**
- * @title Input with Suffix
+ * @title Inline Inputs with Suffix
  */
 @Component({
     selector: 'input-suffix-example',

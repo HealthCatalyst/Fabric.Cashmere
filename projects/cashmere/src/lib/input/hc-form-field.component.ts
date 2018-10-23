@@ -1,8 +1,9 @@
-import {AfterContentInit, Component, ContentChild, ContentChildren, HostBinding, QueryList, ViewEncapsulation} from '@angular/core';
+import {AfterContentInit, Component, ContentChild, ContentChildren, HostBinding, QueryList, ViewEncapsulation, Input} from '@angular/core';
 import {InputDirective} from './input.directive';
 import {HcErrorComponent} from './hc-error.component';
 import {HcPrefixDirective} from './hc-prefix.directive';
 import {HcSuffixDirective} from './hc-suffix.directive';
+import {parseBooleanAttribute} from '../util';
 
 export function getInputContainerControlMissing(): Error {
     return new Error(`InputContainerComponent must contain a hcInput.
@@ -17,6 +18,8 @@ export function getInputContainerControlMissing(): Error {
     encapsulation: ViewEncapsulation.None
 })
 export class HcFormFieldComponent implements AfterContentInit {
+    private _inline: boolean = false;
+
     @ContentChild(InputDirective) _control: InputDirective;
     @ContentChildren(HcErrorComponent) _errorChildren: QueryList<HcErrorComponent>;
     @ContentChildren(HcPrefixDirective) _prefixChildren: QueryList<HcPrefixDirective>;
@@ -27,6 +30,16 @@ export class HcFormFieldComponent implements AfterContentInit {
     @HostBinding('class.hc-form-field-disabled')
     get _disabledClass() {
         return this._control.disabled;
+    }
+
+    /** Whether the form elements should be stacked (default), or inline */
+    @Input()
+    get inline(): boolean {
+        return this._inline;
+    }
+
+    set inline(isInline) {
+        this._inline = parseBooleanAttribute(isInline);
     }
 
     ngAfterContentInit(): void {

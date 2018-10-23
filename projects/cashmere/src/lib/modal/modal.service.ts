@@ -42,7 +42,7 @@ export class ModalService {
             container,
             data: {},
             ignoreEscapeKey: false,
-            size: 'md',
+            size: 'auto',
             ignoreOverlayClick: false
         };
         const options = {...defaultOptions, ...modalOptions};
