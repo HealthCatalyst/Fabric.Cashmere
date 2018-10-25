@@ -28,11 +28,27 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     padding-bottom: $wrapper-padding-bottom;
 }
 
+@mixin hc-form-field-wrapper-inline() {
+    display: flex;
+    flex-direction: row;
+}
+
 @mixin hc-form-field-flex() {
     display: inline-flex;
     align-items: baseline;
     box-sizing: border-box;
     width: 100%;
+
+    padding: 0 7px 0 0;
+    border: 1.5px solid $gray-300;
+
+    background: $white;
+}
+
+@mixin hc-form-field-flex-inline() {
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
 
     padding: 0 7px 0 0;
     border: 1.5px solid $gray-300;
@@ -57,10 +73,18 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     position: relative;
 }
 
+@mixin hc-form-field-prefix-suffix-disabled {
+    opacity: 0.5;
+}
+
 @mixin hc-form-field-prefix-suffix-icon() {
     color: $gray-400;
     font-size: $prefix-suffix-icon-font-size;
     line-height: $line-height;
+}
+
+@mixin hc-form-field-prefix {
+    padding-left: 7px;
 }
 
 @mixin hc-form-field-infix() {
@@ -81,6 +105,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     pointer-events: none; // We shouldn't catch mouse events (let them through).
     top: -$infix-margin-top;
     padding-top: $infix-margin-top;
+}
+
+@mixin hc-form-field-label-wrapper-inline() {
+    padding: 7px 15px 0 0;
 }
 
 @mixin hc-form-field-label-wrapper-icon() {
@@ -108,6 +136,18 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     transform: translateY(-$infix-margin-top - $infix-padding) scale($label-font-scale);
     display: block;
     transform-origin: 0 0;
+}
+
+@mixin hc-form-field-label-inline() {
+    font: inherit;
+    font-size: calculateRem(14px);
+    color: $gray-500;
+    pointer-events: none; // We shouldn't catch mouse events (let them through).
+
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 @mixin hc-form-field-error-wrapper() {
