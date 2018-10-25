@@ -1,0 +1,29 @@
+<form>
+    <div class="form-sample">
+        <hc-form-field>
+            <hc-label>Item Name:</hc-label>
+            <input hcInput required [formControl]="inputControl">
+            <hc-error>An item name is required</hc-error>
+        </hc-form-field>
+    </div>
+
+    <div class="form-sample">
+        <hc-form-field>
+            <hc-label>Run Frequency:</hc-label>
+            <hc-select placeholder="Select frequency:" [formControl]="selectControl">
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+            </hc-select>
+            <hc-error>Please select the run frequency for this item</hc-error>
+        </hc-form-field>
+    </div>
+
+    <button hc-button buttonStyle="primary" class="demo-button" (click)="invalidInput()">
+        Invalidate Input
+    </button>
+
+    <button hc-button buttonStyle="secondary" class="demo-button" (click)="invalidSelect()">
+        Invalidate Select
+    </button>
+</form>

@@ -1,0 +1,32 @@
+<div [ngClass]="{ 'hc-form-field-wrapper': !inline, 'hc-form-field-wrapper-inline': inline }">
+    <span [ngClass]="{ 'hc-form-field-label-wrapper': !inline, 'hc-form-field-label-wrapper-inline': inline }">
+        <label [ngClass]="{ 'hc-form-field-label': !inline, 'hc-form-field-label-inline': inline }"
+                [attr.for]="_control.componentId">
+            <ng-content select="hc-label"></ng-content>
+            <span class="hc-required-marker" aria-hidden="true"
+                    *ngIf="(_control.isRequired )&& !_control.isDisabled">&nbsp;*</span>
+        </label>
+    </span>
+    <div class="hc-form-field-content-wrapper">
+        <div *ngIf="_inputChildren.length" [ngClass]="{ 'hc-form-field-flex': !inline, 'hc-form-field-flex-inline': inline, 'hc-form-field-invalid': _shouldShowErrorMessages() }">
+            <div class="hc-form-field-prefix" *ngIf="_prefixChildren.length">
+                <ng-content select="[hcPrefix]"></ng-content>
+            </div>
+            <div #inputs class="hc-form-field-infix">
+                <ng-content select="[hcInput]"></ng-content>
+            </div>
+            <div class="hc-form-field-suffix" *ngIf="_suffixChildren.length">
+                <ng-content select="[hcSuffix]"></ng-content>
+            </div>
+        </div>
+
+        <div *ngIf="!_inputChildren.length" [ngClass]="{ 'hc-form-field-non-input': !inline, 'hc-form-field-non-input-inline': inline, 'hc-form-field-invalid': _shouldShowErrorMessages() }">
+            <ng-content></ng-content>
+        </div>
+
+        <div class="hc-form-field-error-wrapper" *ngIf="_shouldShowErrorMessages()">
+            <ng-content select="hc-error"></ng-content>
+        </div>
+    </div>
+</div>
+
