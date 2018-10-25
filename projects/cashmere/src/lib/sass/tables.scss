@@ -5,6 +5,7 @@
 
 $table-border: 2px solid $slate-gray-300 !default;
 $table-border-interior: 1px solid $slate-gray-300 !default;
+$table-border-transparent: 1px solid transparent;
 $table-condensed-font-size: 13px;
 $header-border-thick: 2px solid $slate-gray-300 !default;
 $cell-padding: 8px 16px !default;
@@ -29,7 +30,7 @@ table.hc-table {
     width: 100%;
     max-width: 100%;
     color: $tbody-font-color;
-    border: 1px solid transparent;
+    border: $table-border-transparent;
 
     td,
     th {
