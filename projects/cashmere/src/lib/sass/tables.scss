@@ -61,6 +61,7 @@ table.hc-table {
 
     tbody {
         font-size: $tbody-font-size;
+        border: $table-border-interior;
 
         tr {
             &:nth-child(2n) {
@@ -89,14 +90,6 @@ table.hc-table {
 
         td {
             vertical-align: top;
-
-            &:first-of-type {
-                border-left: $table-border-interior;
-            }
-
-            &:last-of-type {
-                border-right: $table-border-interior;
-            }
         }
     }
 
@@ -114,16 +107,6 @@ table.hc-table {
         td,
         th {
             border: $table-border;
-
-            &:not(.hc-footer-cell) {
-                border-right: $table-border;
-            }
-        }
-
-        td {
-            &:first-of-type {
-                border-left: $table-border;
-            }
         }
 
         thead th {
