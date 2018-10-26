@@ -4,13 +4,13 @@
             <a *ngIf="_routerEnabled" class="hc-tab-{{direction}} hc-text-ellipsis"
                [routerLink]="tab.routerLink"
                routerLinkActive="active"
-               (click)="_setActive(tab)">
-                {{tab.tabTitle}}
+               (click)="_setActive(tab)"
+               [innerHtml]="tab._safeHtmlTitle()">
             </a>
             <a *ngIf="!_routerEnabled" class="hc-tab-{{direction}} hc-text-ellipsis"
                [class.active]="tab._active"
-               (click)="_setActive(tab)">
-                {{tab.tabTitle}}
+               (click)="_setActive(tab)"
+               [innerHtml]="tab._safeHtmlTitle()">
             </a>
 
         </div>
