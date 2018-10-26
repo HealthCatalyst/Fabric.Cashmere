@@ -3,6 +3,7 @@ import {HcTabTitleComponent} from './tab-title.component';
 
 @Component({
     template: `<div [hidden]="!_active">
+             <ng-container *ngIf="false"><ng-content select="hc-tab-title"></ng-content></ng-container>
              <ng-content></ng-content>
              </div>`,
     selector: `hc-tab`,
