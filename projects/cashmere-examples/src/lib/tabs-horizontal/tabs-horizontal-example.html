@@ -1,5 +1,5 @@
 <div class="tab-demo">
-    <hc-tab-set direction="horizontal">
+    <hc-tab-set direction="horizontal" (selectChange)="selectionChanged($event)">
         <hc-tab tabTitle='Pending Tasks'>
             <div class="tab-content">
                 This is where pending tasks would go.
@@ -23,3 +23,5 @@
         </hc-tab>
     </hc-tab-set>
 </div>
+<br>
+Currently Selected Tab Index: {{selectedIndex}}
