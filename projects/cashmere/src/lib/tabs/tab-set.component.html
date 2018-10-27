@@ -5,14 +5,15 @@
                [routerLink]="tab.routerLink"
                routerLinkActive="active"
                (click)="_setActive(tab)">
+                <ng-container *ngIf="tab._htmlTitle" [ngTemplateOutlet]="tab._htmlTitle.tabTitle"></ng-container>
                 {{tab.tabTitle}}
             </a>
             <a *ngIf="!_routerEnabled" class="hc-tab-{{direction}} hc-text-ellipsis"
                [class.active]="tab._active"
                (click)="_setActive(tab)">
+                <ng-container *ngIf="tab._htmlTitle" [ngTemplateOutlet]="tab._htmlTitle.tabTitle"></ng-container>
                 {{tab.tabTitle}}
             </a>
-
         </div>
     </div>
     <div class="hc-tab-content-{{direction}}">
