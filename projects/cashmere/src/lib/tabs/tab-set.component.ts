@@ -64,12 +64,29 @@ export class TabSetComponent implements AfterContentInit {
         });
     }
 
+    /** Sets the currently selected tab by its numerical index  */
+    selectTabByIndex(index: number) {
+        let i: number = 0;
+
+        this._tabs.forEach(t => {
+            if (i === index) {
+                this._setActive(t);
+            }
+            i++;
+        });
+    }
+
+    /** Sets the currently selected tab by its `TabComponent` object  */
+    selectTabByObject(tab: TabComponent) {
+        this._setActive(tab);
+    }
+
     _setActive(tab: TabComponent) {
         let selectedTab: number = 0;
         let index: number = 0;
 
         this._tabs.forEach(t => {
-            if( t === tab) {
+            if (t === tab) {
                 selectedTab = index;
             }
             t._active = false;
