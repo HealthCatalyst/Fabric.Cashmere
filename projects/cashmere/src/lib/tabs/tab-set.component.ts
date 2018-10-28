@@ -64,24 +64,23 @@ export class TabSetComponent implements AfterContentInit {
         });
     }
 
-    /** Sets the currently selected tab by its numerical index  */
-    selectTabByIndex(index: number) {
-        let i: number = 0;
+    /** Sets the currently selected tab by either its numerical index or `TabComponent` object  */
+    selectTab(tab: number | TabComponent) {
+        if (typeof tab === 'number') {
+            let i: number = 0;
 
-        this._tabs.forEach(t => {
-            if (i === index) {
-                this._setActive(t);
-            }
-            i++;
-        });
+            this._tabs.forEach(t => {
+                if (i === tab) {
+                    this._setActive(t);
+                }
+                i++;
+            });
+        } else {
+            this._setActive(tab);
+        }
     }
 
-    /** Sets the currently selected tab by its `TabComponent` object  */
-    selectTabByObject(tab: TabComponent) {
-        this._setActive(tab);
-    }
-
-    _setActive(tab: TabComponent) {
+    _setActive(tab: TabComponent, event?: Event) {
         let selectedTab: number = 0;
         let index: number = 0;
 
@@ -93,6 +92,7 @@ export class TabSetComponent implements AfterContentInit {
             index++;
         });
 
+        tab.tabClick.emit(event);
         tab._active = true;
         this.selectChange.emit(new TabChangeEvent(selectedTab, tab));
     }

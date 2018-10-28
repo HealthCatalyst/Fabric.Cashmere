@@ -21,10 +21,18 @@
                 Incomplete tasks belong here.
             </div>
         </hc-tab>
+        <hc-tab (tabClick)="addTask($event)">
+            <hc-tab-title>
+                <span style="color: #00aeff; font-weight: 600;"><i class="fa fa-plus"></i> Add Task</span>
+            </hc-tab-title>
+            <div class="tab-content">
+                This is an example of a click handler on a tab.
+            </div>
+        </hc-tab>
     </hc-tab-set>
 </div>
 <br>
-<button hc-button title="Set Selection" buttonStyle="primary" (click)="tabSet.selectTabByIndex(1)">
+<button hc-button title="Set Selection" buttonStyle="primary" (click)="tabSet.selectTab(1)">
     Select Complete Tasks
 </button>
 <span class="selection-text">Currently Selected Tab Index: {{selectedIndex}}</span>
