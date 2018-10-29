@@ -35,7 +35,7 @@ export class TabSetComponent implements AfterContentInit {
     @ContentChildren(TabComponent) _tabs: QueryList<TabComponent>;
 
     /** Emits when the selected tab is changed */
-    @Output() selectChange: EventEmitter<TabChangeEvent> = new EventEmitter();
+    @Output() selectedTabChange: EventEmitter<TabChangeEvent> = new EventEmitter();
 
     /** Specify direction of tabs as either `horizontal` or `vertical`. Defaults to `vertical` */
     @Input()
@@ -94,7 +94,7 @@ export class TabSetComponent implements AfterContentInit {
 
         tab.tabClick.emit(event);
         tab._active = true;
-        this.selectChange.emit(new TabChangeEvent(selectedTab, tab));
+        this.selectedTabChange.emit(new TabChangeEvent(selectedTab, tab));
     }
 
     private defaultToFirstTab() {
