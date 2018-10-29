@@ -1,4 +1,4 @@
-import {Component, Input, ContentChildren, QueryList, AfterViewChecked, AfterContentInit} from '@angular/core';
+import {Component, Input, ContentChildren, QueryList, AfterContentInit, Output, EventEmitter} from '@angular/core';
 import {HcTabTitleComponent} from './tab-title.component';
 
 @Component({
@@ -16,8 +16,11 @@ export class TabComponent implements AfterContentInit {
      * Can be specified as '/path/2' or ['path', '2']
      */
     @Input() routerLink: any[] | string;
-    _active: boolean = false;
 
+    /** Emits when this tab is selected; use instead of `(click)` for click binding  */
+    @Output() tabClick: EventEmitter<Event> = new EventEmitter();
+
+    _active: boolean = false;
     _htmlTitle: HcTabTitleComponent;
 
     @ContentChildren(HcTabTitleComponent) _tabTitle: QueryList<HcTabTitleComponent>;
