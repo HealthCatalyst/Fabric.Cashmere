@@ -1,10 +1,8 @@
-<div [ngClass]="{ 'hc-form-field-wrapper': !inline, 'hc-form-field-wrapper-inline': inline }">
-    <span [ngClass]="{ 'hc-form-field-label-wrapper': !inline, 'hc-form-field-label-wrapper-inline': inline }">
-        <label [ngClass]="{ 'hc-form-field-label': !inline, 'hc-form-field-label-inline': inline }"
-                [attr.for]="_control.componentId">
+<div [ngClass]="inline ? 'hc-form-field-wrapper-inline' : 'hc-form-field-wrapper'">
+    <span [ngClass]="inline ? 'hc-form-field-label-wrapper-inline' : 'hc-form-field-label-wrapper'">
+        <label [ngClass]="inline ? 'hc-form-field-label-inline' : 'hc-form-field-label'" [attr.for]="_control.componentId">
             <ng-content select="hc-label"></ng-content>
-            <span class="hc-required-marker" aria-hidden="true"
-                    *ngIf="(_control.isRequired )&& !_control.isDisabled">&nbsp;*</span>
+            <span class="hc-required-marker" aria-hidden="true" *ngIf="(_control.isRequired )&& !_control.isDisabled">&nbsp;*</span>
         </label>
     </span>
     <div class="hc-form-field-content-wrapper">
@@ -29,4 +27,3 @@
         </div>
     </div>
 </div>
-
