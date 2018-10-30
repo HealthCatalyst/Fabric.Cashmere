@@ -40,7 +40,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     private _checked: boolean = false;
     private _tabIndex: number;
 
-    componentId = this._uniqueId;
+    _componentId = this._uniqueId;
 
     /** Value attribute of the native checkbox */
     @Input() value: string;
@@ -51,11 +51,11 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     /** Unique id for the checkbox element. If none is supplied, one will be auto-generated. */
     @Input()
     get id(): string {
-        return this.componentId || this._uniqueId;
+        return this._componentId || this._uniqueId;
     }
 
     set id(idVal: string) {
-        this.componentId = idVal ? idVal : this._uniqueId;
+        this._componentId = idVal ? idVal : this._uniqueId;
     }
 
     /** Sets unique name used in a form */
@@ -81,7 +81,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         if (this._ngControl && this._ngControl.disabled) {
             return this._ngControl.disabled;
         }
-        return this.isDisabled;
+        return this._isDisabled;
     }
 
     @HostBinding('class.hc-checkbox-indeterminate')
@@ -92,11 +92,11 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     /** Whether the checkbox is required. */
     @Input()
     get required(): boolean {
-        return this.isRequired;
+        return this._isRequired;
     }
 
     set required(requiredVal) {
-        this.isRequired = parseBooleanAttribute(requiredVal);
+        this._isRequired = parseBooleanAttribute(requiredVal);
     }
 
     /** Whether the checkbox is disabled. */
@@ -105,11 +105,11 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         if (this._ngControl && this._ngControl.disabled) {
             return this._ngControl.disabled;
         }
-        return this.isDisabled;
+        return this._isDisabled;
     }
 
     set disabled(disabledVal) {
-        this.isDisabled = parseBooleanAttribute(disabledVal);
+        this._isDisabled = parseBooleanAttribute(disabledVal);
     }
 
     /** Whether the checkbox is checked. */
@@ -127,7 +127,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
 
     /** TabIndex attribute of native checkbox */
     get tabIndex(): number {
-        return this.isDisabled ? -1 : this._tabIndex;
+        return this._isDisabled ? -1 : this._tabIndex;
     }
 
     set tabIndex(value: number) {
@@ -214,7 +214,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     }
 
     private _updateErrorState() {
-        const oldState = this.errorState;
+        const oldState = this._errorState;
 
         // TODO: this could be abstracted out as an @Input() if we need this to be configurable
         const newState = !!(
@@ -224,7 +224,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         );
 
         if (oldState !== newState) {
-            this.errorState = newState;
+            this._errorState = newState;
         }
     }
 }

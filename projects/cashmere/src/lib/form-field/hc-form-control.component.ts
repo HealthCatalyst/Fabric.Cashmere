@@ -8,14 +8,14 @@ import {Component, ViewEncapsulation} from '@angular/core';
 })
 export class HcFormControlComponent {
     /** Whether the control should be displaying an associated error */
-    errorState: boolean = false;
+    _errorState: boolean = false;
 
     /** Whether the control is disabled */
-    isDisabled: boolean = false;
+    _isDisabled: boolean = false;
 
     /** ID identifier of the the control */
-    componentId: string;
+    _componentId: string;
 
     /** Whether the control is required */
-    isRequired: boolean = false;
+    _isRequired: boolean = false;
 }
