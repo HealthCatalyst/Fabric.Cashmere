@@ -43,3 +43,9 @@
         @include hc-checkbox-overlay-checked();
     }
 }
+
+.hc-form-field-invalid {
+    .hc-checkbox-overlay {
+        @include hc-checkbox-invalid();
+    }
+}

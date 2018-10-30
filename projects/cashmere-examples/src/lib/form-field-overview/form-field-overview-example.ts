@@ -12,12 +12,11 @@ import {FormControl} from '@angular/forms';
 export class FormFieldOverviewExample {
     selectControl = new FormControl('daily');
     inputControl = new FormControl('');
+    checkControl = new FormControl('');
 
-    invalidInput() {
+    invalidForm() {
         this.inputControl.setErrors({incorrect: true});
-    }
-
-    invalidSelect() {
         this.selectControl.setErrors({incorrect: true});
+        this.checkControl.setErrors({incorrect: true});
     }
 }
