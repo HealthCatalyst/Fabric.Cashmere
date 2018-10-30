@@ -12,6 +12,10 @@
     @include hc-form-field-wrapper-inline();
 }
 
+.hc-form-field-content-wrapper {
+    @include hc-form-field-content-wrapper();
+}
+
 .hc-form-field-flex {
     @include hc-form-field-flex();
 
@@ -28,8 +32,17 @@
     }
 }
 
-.hc-form-field-invalid {
-    @include hc-form-field-invalid();
+.hc-form-field-invalid.hc-form-field-flex,
+.hc-form-field-invalid.hc-form-field-flex-inline {
+    @include hc-form-field-input-invalid();
+}
+
+.hc-form-field-non-input {
+    @include hc-form-field-non-input();
+}
+
+.hc-form-field-non-input-inline {
+    @include hc-form-field-non-input-inline();
 }
 
 .hc-form-field-prefix,

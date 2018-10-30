@@ -1,6 +1,9 @@
-import {Component, forwardRef, HostBinding, Input, ViewEncapsulation} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Component, forwardRef, HostBinding, Input, ViewEncapsulation, ElementRef, Optional, DoCheck, Self} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
+import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
+
+let uniqueId = 1;
 
 /** Select one of many options from a dropdown */
 @Component({
@@ -8,41 +11,49 @@ import {parseBooleanAttribute} from '../util';
     templateUrl: 'select.component.html',
     styleUrls: ['select.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => SelectComponent),
-            multi: true
-        }
-    ]
+    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SelectComponent)}]
 })
-export class SelectComponent implements ControlValueAccessor {
+export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
+    private _uniqueInputId = `hc-select-${uniqueId++}`;
+    private _form: NgForm | FormGroupDirective | null;
+
+    componentId = this._uniqueInputId;
+
     /** Optional string of text to appear before selection is made */
     @Input() placeholder: string;
 
     /** Enables or disables the component */
     @Input()
     get disabled(): boolean {
-        return this._disabled;
+        if (this._ngControl && this._ngControl.disabled) {
+            return this._ngControl.disabled;
+        }
+        return this.isDisabled;
     }
 
-    set disabled(isDisabled) {
-        this._disabled = parseBooleanAttribute(isDisabled);
+    set disabled(disabledVal) {
+        this.isDisabled = parseBooleanAttribute(disabledVal);
     }
-
-    private _disabled = false;
 
     /** Sets whether this is a required form element */
     @Input()
     get required(): boolean {
-        return this._required;
+        return this.isRequired;
     }
 
-    set required(isRequired) {
-        this._required = parseBooleanAttribute(isRequired);
+    set required(requiredVal) {
+        this.isRequired = parseBooleanAttribute(requiredVal);
     }
 
-    private _required = false;
+    /** Element id. */
+    @Input()
+    get id(): string {
+        return this.componentId || this._uniqueInputId;
+    }
+
+    set id(idVal: string) {
+        this.componentId = idVal ? idVal : this._uniqueInputId;
+    }
 
     /** Get or set the value of the select component */
     @Input()
@@ -63,7 +74,26 @@ export class SelectComponent implements ControlValueAccessor {
 
     @HostBinding('class.hc-select-disabled')
     get _disabledClass() {
-        return this.disabled;
+        if (this._ngControl && this._ngControl.disabled) {
+            return this._ngControl.disabled;
+        }
+        return this.isDisabled;
+    }
+
+    constructor(
+        private _elementRef: ElementRef,
+        @Optional() _parentForm: NgForm,
+        @Optional() _parentFormGroup: FormGroupDirective,
+        @Optional()
+        @Self()
+        public _ngControl: NgControl
+    ) {
+        super();
+
+        this._form = _parentForm || _parentFormGroup;
+        if (this._ngControl != null) {
+            this._ngControl.valueAccessor = this;
+        }
     }
 
     private onChange: (val: any) => void = () => {};
@@ -82,7 +112,25 @@ export class SelectComponent implements ControlValueAccessor {
         this._value = value;
     }
 
-    setDisabledState(isDisabled: boolean): void {
-        this.disabled = isDisabled;
+    ngDoCheck(): void {
+        // This needs to be checked every cycle because we can't subscribe to form submissions
+        if (this._ngControl) {
+            this._updateErrorState();
+        }
+    }
+
+    private _updateErrorState() {
+        const oldState = this.errorState;
+
+        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
+        const newState = !!(
+            this._ngControl &&
+            this._ngControl.invalid &&
+            (this._ngControl.touched || (this._form && this._form.submitted))
+        );
+
+        if (oldState !== newState) {
+            this.errorState = newState;
+        }
     }
 }

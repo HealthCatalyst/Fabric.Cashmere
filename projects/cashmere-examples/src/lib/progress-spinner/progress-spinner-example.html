@@ -1,24 +1,30 @@
 <div class="progress-example">
     <!-- Options -->
     <div class="col-1">
-        <label hc-label>Color</label>
-        <hc-select [(ngModel)]="spinnerColor">
-            <option value="blue" [selected]="spinnerColor === 'blue'">blue</option>
-            <option value="green" [selected]="spinnerColor === 'green'">green</option>
-            <option value="purple" [selected]="spinnerColor === 'purple'">purple</option>
-            <option value="orange" [selected]="spinnerColor === 'orange'">orange</option>
-            <option value="red" [selected]="spinnerColor === 'red'">red</option>
-            <option value="gray" [selected]="spinnerColor === 'gray'">gray</option>
-            <option value="white" [selected]="spinnerColor === 'white'">white</option>
-        </hc-select>
-        <label hc-label for="diameter">Diameter</label>
-        <input hc-input type="number" min="20" max="250" class="form-control" id="diameter" [(ngModel)]="spinnerDiameter" name="diameter">
+        <hc-form-field>
+            <hc-label>Color:</hc-label>
+            <hc-select [(ngModel)]="spinnerColor">
+                <option value="blue" [selected]="spinnerColor === 'blue'">blue</option>
+                <option value="green" [selected]="spinnerColor === 'green'">green</option>
+                <option value="purple" [selected]="spinnerColor === 'purple'">purple</option>
+                <option value="orange" [selected]="spinnerColor === 'orange'">orange</option>
+                <option value="red" [selected]="spinnerColor === 'red'">red</option>
+                <option value="gray" [selected]="spinnerColor === 'gray'">gray</option>
+                <option value="white" [selected]="spinnerColor === 'white'">white</option>
+            </hc-select>
+        </hc-form-field>
+        <hc-form-field>
+            <hc-label>Diameter:</hc-label>
+            <input hcInput type="number" min="20" max="250" class="form-control" id="diameter" [(ngModel)]="spinnerDiameter" name="diameter">
+        </hc-form-field>
         <hc-checkbox id="checkbox-bg" [(ngModel)]="spinnerHasChannel" [checked]="spinnerHasChannel">BG Channel</hc-checkbox>
         <hc-checkbox id="checkbox-center" [(ngModel)]="spinnerCentered" [checked]="spinnerCentered">Centered</hc-checkbox>
         <hr>
         <hc-checkbox id="checkbox-determinate" [(ngModel)]="spinnerIsDeterminate">Determinate</hc-checkbox>
-        <label hc-label for="name">Progress (0-100%)</label>
-        <input hc-input type="number" min="0" max="100" class="form-control" id="name" [(ngModel)]="spinnerProgress" [disabled]="!spinnerIsDeterminate" name="name">
+        <hc-form-field inline>
+            <hc-label>Progress (0-100%):</hc-label>
+            <input hcInput type="number" min="0" max="100" class="form-control" id="name" [(ngModel)]="spinnerProgress" [disabled]="!spinnerIsDeterminate" name="name">
+        </hc-form-field>
     </div>
 
     <!-- Spinner -->

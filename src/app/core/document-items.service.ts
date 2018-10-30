@@ -30,6 +30,7 @@ const docs: DocItem[] = [
         name: 'Drawer',
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
     },
+    {id: 'form-field', name: 'Form Field', examples: ['form-field-overview']},
     {id: 'icon', name: 'Icon', examples: ['icon-overview']},
     {
         id: 'input',
@@ -66,13 +67,10 @@ const docs: DocItem[] = [
     {
         id: 'select',
         name: 'Select',
-        examples: ['select-standard', 'select-disabled', 'select-validation', 'select-forms']
-    },
-    {
-        id: 'sort',
-        name: 'Sort',
+        examples: ['select-standard', 'select-disabled', 'select-validation', 'select-forms'],
         usageDoc: true
     },
+    {id: 'sort', name: 'Sort', usageDoc: true},
     {id: 'subnav', name: 'Subnav', examples: ['subnav-overview']},
     {
         id: 'table',

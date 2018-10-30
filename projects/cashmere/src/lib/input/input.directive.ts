@@ -1,5 +1,6 @@
-import {Directive, DoCheck, ElementRef, HostBinding, HostListener, Input, Optional, Self} from '@angular/core';
+import {Directive, DoCheck, ElementRef, HostBinding, HostListener, Input, Optional, Self, forwardRef} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
+import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 
 export function getUnsupportedHCInputType(type: string): Error {
@@ -12,14 +13,15 @@ const unsupportedTypes = ['button', 'checkbox', 'file', 'hidden', 'image', 'radi
 
 /** Directive that allows a native input to work inside a HcFormFieldComponent */
 @Directive({
-    selector: '[hcInput]'
+    selector: '[hcInput]',
+    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => InputDirective)}]
 })
-export class InputDirective implements DoCheck {
+export class InputDirective extends HcFormControlComponent implements DoCheck {
     private _focused = false;
     private _uniqueInputId = `hc-input-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
 
-    _errorState: boolean = false;
+    componentId = this._uniqueInputId;
 
     /** Hint displayed within the input and disappears on input.  */
     @Input() placeholder: string;
@@ -47,14 +49,12 @@ export class InputDirective implements DoCheck {
     /** Element id. */
     @Input()
     get id(): string {
-        return this._id || this._uniqueInputId;
+        return this.componentId || this._uniqueInputId;
     }
 
-    set id(id: string) {
-        this._id = id;
+    set id(idVal: string) {
+        this.componentId = idVal ? idVal : this._uniqueInputId;
     }
-
-    private _id: string;
 
     /** Sets input element as readonly. */
     @Input()
@@ -74,11 +74,11 @@ export class InputDirective implements DoCheck {
         if (this._ngControl && this._ngControl.disabled) {
             return this._ngControl.disabled;
         }
-        return this._disabled;
+        return this.isDisabled;
     }
 
-    set disabled(isDisabled) {
-        this._disabled = parseBooleanAttribute(isDisabled);
+    set disabled(disabledInput) {
+        this.isDisabled = parseBooleanAttribute(disabledInput);
 
         if (this._focused) {
             this._focused = false;
@@ -86,25 +86,21 @@ export class InputDirective implements DoCheck {
         }
     }
 
-    private _disabled = false;
-
     /** Sets required attribute. */
     @Input()
     get required(): boolean {
-        return this._required;
+        return this.isRequired;
     }
 
-    set required(required) {
-        this._required = parseBooleanAttribute(required);
+    set required(requiredInput) {
+        this.isRequired = parseBooleanAttribute(requiredInput);
     }
-
-    private _required = false;
 
     @HostBinding('class.hc-input') _hostHcInputClass = true;
 
     @HostBinding('attr.id')
     get _hostId(): string {
-        return this.id;
+        return this.componentId || this._uniqueInputId;
     }
 
     @HostBinding('readonly')
@@ -114,12 +110,12 @@ export class InputDirective implements DoCheck {
 
     @HostBinding('disabled')
     get _hostDisabled(): boolean {
-        return this.disabled;
+        return this.isDisabled;
     }
 
     @HostBinding('required')
     get _hostRequired(): boolean {
-        return this.required;
+        return this.isRequired;
     }
 
     @HostListener('blur')
@@ -157,6 +153,8 @@ export class InputDirective implements DoCheck {
         @Self()
         public _ngControl: NgControl
     ) {
+        super();
+
         this._form = _parentForm || _parentFormGroup;
     }
 
@@ -184,7 +182,7 @@ export class InputDirective implements DoCheck {
     }
 
     private _updateErrorState() {
-        const oldState = this._errorState;
+        const oldState = this.errorState;
 
         // TODO: this could be abstracted out as an @Input() if we need this to be configurable
         const newState = !!(
@@ -194,7 +192,7 @@ export class InputDirective implements DoCheck {
         );
 
         if (oldState !== newState) {
-            this._errorState = newState;
+            this.errorState = newState;
         }
     }
 }
