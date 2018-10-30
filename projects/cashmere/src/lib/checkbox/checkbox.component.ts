@@ -78,6 +78,9 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
 
     @HostBinding('class.hc-checkbox-disabled')
     get _getCheckboxDisabledClass(): boolean {
+        if (this._ngControl && this._ngControl.disabled) {
+            return this._ngControl.disabled;
+        }
         return this.isDisabled;
     }
 
@@ -99,6 +102,9 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     /** Whether the checkbox is disabled. */
     @Input()
     get disabled(): boolean {
+        if (this._ngControl && this._ngControl.disabled) {
+            return this._ngControl.disabled;
+        }
         return this.isDisabled;
     }
 
