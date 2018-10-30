@@ -1,19 +1,38 @@
 <div class="tab-demo">
-    <hc-tab-set direction="horizontal">
-        <hc-tab tabTitle="Tab 1">
+    <hc-tab-set direction="horizontal" (selectedTabChange)="selectionChanged($event)" #tabSet>
+        <hc-tab tabTitle='Pending Tasks'>
             <div class="tab-content">
-                Tab content 1
+                This is where pending tasks would go.
             </div>
         </hc-tab>
-        <hc-tab tabTitle="Tab 2">
+        <hc-tab>
+            <hc-tab-title>
+                <i class="fa fa-check" style="color: #00a859; font-size: 20px;"></i>  Complete Tasks
+            </hc-tab-title>
             <div class="tab-content">
-                Tab content 2
+                These are completed tasks
             </div>
         </hc-tab>
-        <hc-tab tabTitle="Tab 3">
+        <hc-tab>
+            <hc-tab-title>
+                <i class="fa fa-times" style="color: #f13c45; font-size: 20px;"></i> Incomplete Tasks
+            </hc-tab-title>
             <div class="tab-content">
-                Tab content 3
+                Incomplete tasks belong here.
+            </div>
+        </hc-tab>
+        <hc-tab (tabClick)="addTask($event)">
+            <hc-tab-title>
+                <span style="color: #00aeff; font-weight: 600;"><i class="fa fa-plus"></i> Add Task</span>
+            </hc-tab-title>
+            <div class="tab-content">
+                This is an example of a click handler on a tab.
             </div>
         </hc-tab>
     </hc-tab-set>
 </div>
+<br>
+<button hc-button title="Set Selection" buttonStyle="primary" (click)="tabSet.selectTab(1)">
+    Select Complete Tasks
+</button>
+<span class="selection-text">Currently Selected Tab Index: {{selectedIndex}}</span>

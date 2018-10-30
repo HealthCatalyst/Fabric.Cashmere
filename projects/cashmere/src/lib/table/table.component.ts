@@ -17,18 +17,18 @@ import {
     ElementRef,
     IterableDiffers,
     Optional,
-    ViewEncapsulation
+    ViewEncapsulation,
+    HostBinding,
+    Input
 } from '@angular/core';
 import {Directionality} from '@angular/cdk/bidi';
+import {parseBooleanAttribute} from '../util';
 
 @Component({
     selector: 'hc-table, table[hc-table]',
     exportAs: 'matTable',
     template: CDK_TABLE_TEMPLATE,
     styleUrls: ['table.component.scss'],
-    host: {
-        class: 'hc-table'
-    },
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -44,5 +44,18 @@ export class HcTable<T> extends CdkTable<T> {
         @Optional() protected readonly _dir: Directionality
     ) {
         super(_differs, _changeDetectorRef, _elementRef, role, _dir);
+    }
+
+    @HostBinding('class.hc-table') _hostHcTableClass = true;
+    @HostBinding('class.hc-table-borders') _hostHcBordersClass = true;
+
+    /** Sets whether the table should have a 2px border around each cell (defaults to true) */
+    @Input()
+    get borders(): boolean {
+        return this._hostHcBordersClass;
+    }
+
+    set borders(hasBorders) {
+        this._hostHcBordersClass = parseBooleanAttribute(hasBorders);
     }
 }

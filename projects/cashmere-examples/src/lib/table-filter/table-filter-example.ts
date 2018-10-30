@@ -22,7 +22,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 /**
- * @title Table filtering
+ * @title Filtered Table without Borders
  */
 @Component({
     selector: 'table-filter-example',
