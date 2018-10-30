@@ -19,12 +19,14 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: $line-height;
+    flex-direction: inherit;
 }
 
 @mixin hc-form-field-wrapper() {
     position: relative;
     border-top: $infix-margin-top solid transparent;
     padding-bottom: $wrapper-padding-bottom;
+    flex-direction: inherit;
 }
 
 @mixin hc-form-field-wrapper-inline() {
@@ -34,6 +36,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
 @mixin hc-form-field-content-wrapper() {
     display: inherit;
+    flex-direction: inherit;
     width: 100%;
 }
 
@@ -73,6 +76,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
 @mixin hc-form-field-non-input() {
     display: inline-flex;
+    flex-direction: inherit;
     width: 100%;
 }
 
@@ -122,7 +126,9 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 }
 
 @mixin hc-form-field-label-wrapper-inline() {
-    padding: 7px 15px 0 0;
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
 }
 
 @mixin hc-form-field-label-wrapper-icon() {

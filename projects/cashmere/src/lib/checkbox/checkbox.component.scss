@@ -35,11 +35,17 @@
         @include hc-checkbox-overlay-hover();
     }
 
-    .hc-checkbox.disabled & {
+    .hc-checkbox-disabled & {
         @include hc-checkbox-overlay-disabled();
     }
 
     input[type='checkbox']:checked + & {
         @include hc-checkbox-overlay-checked();
+    }
+}
+
+.hc-form-field-invalid {
+    .hc-checkbox-overlay {
+        @include hc-checkbox-invalid();
     }
 }

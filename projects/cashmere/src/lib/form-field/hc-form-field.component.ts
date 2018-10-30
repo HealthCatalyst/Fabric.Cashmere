@@ -30,7 +30,7 @@ export class HcFormFieldComponent implements AfterContentInit {
 
     @HostBinding('class.hc-form-field-disabled')
     get _disabledClass() {
-        return this._control.isDisabled;
+        return this._control._isDisabled;
     }
 
     /** Whether the form elements should be stacked (default), or inline */
@@ -50,6 +50,6 @@ export class HcFormFieldComponent implements AfterContentInit {
     }
 
     _shouldShowErrorMessages(): boolean {
-        return this._errorChildren && this._errorChildren.length > 0 && this._control.errorState;
+        return this._errorChildren && this._errorChildren.length > 0 && this._control._errorState;
     }
 }
