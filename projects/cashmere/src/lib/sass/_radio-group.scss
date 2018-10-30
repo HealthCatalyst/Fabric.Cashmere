@@ -10,7 +10,12 @@
 
     .hc-radio-container {
         padding-left: 32px !important;
-        margin-bottom: 0px !important;
-        margin-right: 25px;
+        margin-right: 25px !important;
+    }
+}
+
+.hc-form-field-invalid {
+    .hc-radio-overlay {
+        border-color: $error !important;
     }
 }
