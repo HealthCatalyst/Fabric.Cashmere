@@ -18,7 +18,8 @@ const docs: DocItem[] = [
     {
         id: 'checkbox',
         name: 'Checkbox',
-        examples: ['checkbox-standard', 'checkbox-disabled', 'checkbox-forms']
+        examples: ['checkbox-standard', 'checkbox-disabled', 'checkbox-forms'],
+        usageDoc: true
     },
     {
         id: 'chip',
@@ -30,12 +31,13 @@ const docs: DocItem[] = [
         name: 'Drawer',
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
     },
+    {id: 'form-field', name: 'Form Field', examples: ['form-field-overview']},
     {id: 'icon', name: 'Icon', examples: ['icon-overview']},
     {
         id: 'input',
         name: 'Input',
         usageDoc: true,
-        examples: ['input-required', 'input-suffix', 'input-prefix', 'input-disabled']
+        examples: ['input-required', 'input-suffix', 'input-prefix']
     },
     {id: 'list', name: 'List', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', examples: ['modal-overview']},
@@ -61,18 +63,16 @@ const docs: DocItem[] = [
     {
         id: 'radio-button',
         name: 'Radio Button',
-        examples: ['radio-button-standard', 'radio-button-disabled', 'radio-button-forms']
+        examples: ['radio-button-standard', 'radio-button-disabled', 'radio-button-forms'],
+        usageDoc: true
     },
     {
         id: 'select',
         name: 'Select',
-        examples: ['select-standard', 'select-disabled', 'select-validation', 'select-forms']
-    },
-    {
-        id: 'sort',
-        name: 'Sort',
+        examples: ['select-standard', 'select-disabled', 'select-validation', 'select-forms'],
         usageDoc: true
     },
+    {id: 'sort', name: 'Sort', usageDoc: true},
     {id: 'subnav', name: 'Subnav', examples: ['subnav-overview']},
     {
         id: 'table',

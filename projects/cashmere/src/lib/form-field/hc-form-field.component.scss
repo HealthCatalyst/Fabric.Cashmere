@@ -1,0 +1,103 @@
+@import '../sass/form-field';
+
+.hc-form-field {
+    @include hc-form-field();
+}
+
+.hc-form-field-wrapper {
+    @include hc-form-field-wrapper();
+}
+
+.hc-form-field-wrapper-inline {
+    @include hc-form-field-wrapper-inline();
+}
+
+.hc-form-field-content-wrapper {
+    @include hc-form-field-content-wrapper();
+}
+
+.hc-form-field-flex {
+    @include hc-form-field-flex();
+
+    .hc-form-field-disabled & {
+        @include hc-form-field-disabled-flex();
+    }
+}
+
+.hc-form-field-flex-inline {
+    @include hc-form-field-flex-inline();
+
+    .hc-form-field-disabled & {
+        @include hc-form-field-disabled-flex();
+    }
+}
+
+.hc-form-field-invalid.hc-form-field-flex,
+.hc-form-field-invalid.hc-form-field-flex-inline {
+    @include hc-form-field-input-invalid();
+}
+
+.hc-form-field-non-input {
+    @include hc-form-field-non-input();
+}
+
+.hc-form-field-non-input-inline {
+    @include hc-form-field-non-input-inline();
+}
+
+.hc-form-field-prefix,
+.hc-form-field-suffix {
+    @include hc-form-field-prefix-suffix();
+
+    .hc-icon {
+        @include hc-form-field-prefix-suffix-icon();
+    }
+
+    .hc-form-field-disabled & {
+        @include hc-form-field-prefix-suffix-disabled();
+    }
+}
+
+.hc-form-field-prefix {
+    @include hc-form-field-prefix();
+}
+
+.hc-form-field-infix {
+    @include hc-form-field-infix();
+}
+
+.hc-form-field-label-wrapper {
+    @include hc-form-field-label-wrapper();
+
+    .hc-icon {
+        @include hc-form-field-label-wrapper-icon();
+    }
+}
+
+.hc-form-field-label-wrapper-inline {
+    @include hc-form-field-label-wrapper-inline();
+
+    .hc-icon {
+        @include hc-form-field-label-wrapper-icon();
+    }
+}
+
+.hc-form-field-label {
+    @include hc-form-field-label();
+}
+
+.hc-form-field-label-inline {
+    @include hc-form-field-label-inline();
+}
+
+.hc-form-field-error-wrapper {
+    @include hc-form-field-error-wrapper();
+}
+
+.hc-error {
+    @include hc-error();
+}
+
+.hc-required-marker {
+    @include hc-required-marker();
+}

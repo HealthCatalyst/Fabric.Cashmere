@@ -4,7 +4,8 @@
     display: block;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 12px;
+    margin: 7px 0;
+    line-height: 1.5;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -51,10 +52,6 @@
         content: '';
         position: absolute;
         display: none;
-    }
-
-    .hc-radio-content {
-        padding-top: 3px;
     }
 
     &.disabled {

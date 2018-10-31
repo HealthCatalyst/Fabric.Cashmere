@@ -2,9 +2,10 @@
 
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 
-import {getInputContainerControlMissing, HcFormFieldComponent} from './hc-form-field.component';
+import {getControlMissing, HcFormFieldComponent} from './hc-form-field.component';
 import {Component, DebugElement} from '@angular/core';
-import {InputModule} from './input.module';
+import {InputModule} from '../input/input.module';
+import {FormFieldModule} from '../form-field/hc-form-field.module';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 
@@ -14,7 +15,7 @@ describe('HcFormFieldComponent', () => {
     beforeEach(
         fakeAsync(() => {
             TestBed.configureTestingModule({
-                imports: [InputModule, FormsModule, ReactiveFormsModule],
+                imports: [InputModule, FormFieldModule, FormsModule, ReactiveFormsModule],
                 declarations: [SimpleInput, InputMissingHcInput, InputWithFormControl]
             }).compileComponents();
         })
@@ -87,7 +88,7 @@ describe('HcFormFieldComponent', () => {
             'should throw error if hcInput is not present',
             fakeAsync(() => {
                 fixture = TestBed.createComponent(InputMissingHcInput);
-                expect(() => fixture.detectChanges()).toThrowError(getInputContainerControlMissing().message);
+                expect(() => fixture.detectChanges()).toThrowError(getControlMissing().message);
             })
         );
     });

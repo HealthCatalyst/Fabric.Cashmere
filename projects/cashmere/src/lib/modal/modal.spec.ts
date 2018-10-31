@@ -44,7 +44,7 @@ describe('hc-modal', () => {
 
     it('should change size depending on options', () => {
         let div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
-        expect(div.properties['className']).toContain('hc-modal-md');
+        expect(div.properties['className']).toContain('hc-modal-auto');
         windowComponent._size = 'lg';
         windowFixture.detectChanges();
         expect(div.properties['className']).toContain('hc-modal-lg');

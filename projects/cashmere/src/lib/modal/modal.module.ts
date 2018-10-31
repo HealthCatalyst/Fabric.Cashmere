@@ -4,7 +4,6 @@ import {ModalOverlayComponent} from './modal-overlay.component';
 import {ModalService} from './modal.service';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ActiveModal} from './active-modal';
 import {ModalHeaderComponent} from './modal-header.component';
 import {ModalBodyComponent} from './modal-body.component';
 import {ModalComponent} from './modal.component';
@@ -21,6 +20,6 @@ import {ModalComponent} from './modal.component';
     ],
     entryComponents: [ModalOverlayComponent, ModalWindowComponent],
     exports: [ModalHeaderComponent, ModalBodyComponent, ModalFooterComponent, ModalComponent],
-    providers: [ModalService, ActiveModal]
+    providers: [ModalService]
 })
 export class ModalModule {}

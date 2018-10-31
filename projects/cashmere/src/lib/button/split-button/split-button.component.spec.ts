@@ -6,10 +6,11 @@ import {SplitButtonComponent} from './split-button.component';
 import {ButtonModule} from '../button.module';
 import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ButtonItemDirective} from './button-item.directive';
+import {ButtonItemDirective} from './directives/button-item.directive';
 
 describe('SplitButtonComponent', () => {
     let fixture: ComponentFixture<any>;
+    let splitButtonDebugElement: DebugElement;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -20,10 +21,7 @@ describe('SplitButtonComponent', () => {
 
     describe('basic behaviors', () => {
         let testComponent: TestComponent;
-        let splitButtonDebugElement: DebugElement;
-        let splitButtonNative: HTMLElement;
         let triggerButton: HTMLButtonElement;
-        let buttonItems: DebugElement[];
 
         beforeEach(() => {
             fixture = TestBed.createComponent(TestComponent);
@@ -31,18 +29,17 @@ describe('SplitButtonComponent', () => {
 
             testComponent = fixture.debugElement.componentInstance;
             splitButtonDebugElement = fixture.debugElement.query(By.directive(SplitButtonComponent));
-            splitButtonNative = splitButtonDebugElement.nativeElement;
-            buttonItems = splitButtonDebugElement.queryAll(By.directive(ButtonItemDirective));
             triggerButton = splitButtonDebugElement.query(By.css('.hc-split-button-toggle')).nativeElement;
         });
 
-        it('should not trigger primary button click when menu item is clicked', () => {
+        it('should not trigger primary button click when a menu item is clicked', () => {
             expect(testComponent.isPrimaryClicked).toBe(false);
             expect(testComponent.isMenuItemClicked).toBe(false);
 
             triggerButton.click();
             fixture.detectChanges();
 
+            let buttonItems = splitButtonDebugElement.queryAll(By.directive(ButtonItemDirective));
             buttonItems[0].nativeElement.click();
             fixture.detectChanges();
 
