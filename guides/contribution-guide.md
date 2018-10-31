@@ -22,18 +22,20 @@ We would love for you to contribute to Cashmere and be part of the community mak
 6.  Running `npm run build` will build the entire project
 7.  `ng serve` will serve the default project which is `user-guide`
 
-#### While devloping
-
-1.  First, run `npm run build`. (For windows users, sometimes you'll need to manually clear out the `/dist` folder first)
-2.  Run `ng build cashmere --watch`. This will build the cashmere library, and fire off incremental builds when changes to library files are made.
-3.  Run `ng serve`. Will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the cashmere library.
-4.  If you makes changes to example files in `/projects/cashmere-examples/src/lib/` while developing, you'll need to manually rebuild these with `npm run build:examples`.
-
 :::
 
 :::
 
 ##### Contributing to Cashmere
+
+### While Developing
+
+1.  First, run `npm run build`. (For windows users, sometimes you'll need to manually clear out the `/dist` folder first)
+2.  Run `ng build cashmere --watch`. This will build the cashmere library, and fire off incremental builds when changes to library files are made.
+3.  Run `ng serve`. Will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the Cashmere library.
+4.  If you makes changes to example files in `/projects/cashmere-examples/src/lib/` while developing, you'll need to manually rebuild these with `npm run build:examples`.
+
+### PR's
 
 Before you submit your pull request (PR), consider the following guidelines:
 
@@ -43,7 +45,7 @@ Before you submit your pull request (PR), consider the following guidelines:
 *   Verify all changes look and function properly in different browsers and at different resolutions.
 *   Run the following commands:
     *   `ng lint` should result in `All files pass linting`
-    *   If there are problems with prettier linting rules, running `npm run prettier` can be helpful.
+    *   If there are problems with prettier linting rules, running `npm run prettier` can be helpful. This will automatically make needed formatting changes based on our prettier rules.
     *   `ng test` should result in `All tests passing`
     *   `npm run build` should pass and build the library successfully
 *   New components and directives must be accompanied by:
