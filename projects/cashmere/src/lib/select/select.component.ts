@@ -17,7 +17,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     private _uniqueInputId = `hc-select-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
 
-    componentId = this._uniqueInputId;
+    _componentId = this._uniqueInputId;
 
     /** Optional string of text to appear before selection is made */
     @Input() placeholder: string;
@@ -28,31 +28,31 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         if (this._ngControl && this._ngControl.disabled) {
             return this._ngControl.disabled;
         }
-        return this.isDisabled;
+        return this._isDisabled;
     }
 
     set disabled(disabledVal) {
-        this.isDisabled = parseBooleanAttribute(disabledVal);
+        this._isDisabled = parseBooleanAttribute(disabledVal);
     }
 
     /** Sets whether this is a required form element */
     @Input()
     get required(): boolean {
-        return this.isRequired;
+        return this._isRequired;
     }
 
     set required(requiredVal) {
-        this.isRequired = parseBooleanAttribute(requiredVal);
+        this._isRequired = parseBooleanAttribute(requiredVal);
     }
 
     /** Element id. */
     @Input()
     get id(): string {
-        return this.componentId || this._uniqueInputId;
+        return this._componentId || this._uniqueInputId;
     }
 
     set id(idVal: string) {
-        this.componentId = idVal ? idVal : this._uniqueInputId;
+        this._componentId = idVal ? idVal : this._uniqueInputId;
     }
 
     /** Get or set the value of the select component */
@@ -77,7 +77,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         if (this._ngControl && this._ngControl.disabled) {
             return this._ngControl.disabled;
         }
-        return this.isDisabled;
+        return this._isDisabled;
     }
 
     constructor(
@@ -120,7 +120,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     }
 
     private _updateErrorState() {
-        const oldState = this.errorState;
+        const oldState = this._errorState;
 
         // TODO: this could be abstracted out as an @Input() if we need this to be configurable
         const newState = !!(
@@ -130,7 +130,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         );
 
         if (oldState !== newState) {
-            this.errorState = newState;
+            this._errorState = newState;
         }
     }
 }

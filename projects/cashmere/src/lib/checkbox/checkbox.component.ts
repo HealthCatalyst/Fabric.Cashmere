@@ -11,9 +11,13 @@ import {
     Output,
     Renderer2,
     ViewChild,
-    ViewEncapsulation
+    ViewEncapsulation,
+    Self,
+    Optional,
+    DoCheck
 } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
+import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
 
 let nextCheckboxId = 1;
@@ -22,26 +26,21 @@ export class CheckboxChangeEvent {
     constructor(public source: CheckboxComponent, public checked: boolean) {}
 }
 
-export const hcCheckboxValueAccessor: any = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => CheckboxComponent),
-    multi: true
-};
-
 @Component({
     selector: 'hc-checkbox',
     templateUrl: './checkbox.component.html',
     styleUrls: ['./checkbox.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    providers: [hcCheckboxValueAccessor],
+    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => CheckboxComponent)}],
     exportAs: 'hcCheckbox'
 })
-export class CheckboxComponent implements ControlValueAccessor {
+export class CheckboxComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
     private _uniqueId = `hc-checkbox-${nextCheckboxId++}`;
+    private _form: NgForm | FormGroupDirective | null;
     private _checked: boolean = false;
-    private _required: boolean = false;
-    private _disabled: boolean = false;
     private _tabIndex: number;
+
+    _componentId = this._uniqueId;
 
     /** Value attribute of the native checkbox */
     @Input() value: string;
@@ -50,7 +49,14 @@ export class CheckboxComponent implements ControlValueAccessor {
     @Input() indeterminate: boolean;
 
     /** Unique id for the checkbox element. If none is supplied, one will be auto-generated. */
-    @Input() id: string = this._uniqueId;
+    @Input()
+    get id(): string {
+        return this._componentId || this._uniqueId;
+    }
+
+    set id(idVal: string) {
+        this._componentId = idVal ? idVal : this._uniqueId;
+    }
 
     /** Sets unique name used in a form */
     @Input() name: string | null = null;
@@ -72,7 +78,10 @@ export class CheckboxComponent implements ControlValueAccessor {
 
     @HostBinding('class.hc-checkbox-disabled')
     get _getCheckboxDisabledClass(): boolean {
-        return this.disabled;
+        if (this._ngControl && this._ngControl.disabled) {
+            return this._ngControl.disabled;
+        }
+        return this._isDisabled;
     }
 
     @HostBinding('class.hc-checkbox-indeterminate')
@@ -83,21 +92,24 @@ export class CheckboxComponent implements ControlValueAccessor {
     /** Whether the checkbox is required. */
     @Input()
     get required(): boolean {
-        return this._required;
+        return this._isRequired;
     }
 
-    set required(required) {
-        this._required = parseBooleanAttribute(required);
+    set required(requiredVal) {
+        this._isRequired = parseBooleanAttribute(requiredVal);
     }
 
     /** Whether the checkbox is disabled. */
     @Input()
     get disabled(): boolean {
-        return this._disabled;
+        if (this._ngControl && this._ngControl.disabled) {
+            return this._ngControl.disabled;
+        }
+        return this._isDisabled;
     }
 
-    set disabled(isDisabled) {
-        this._disabled = parseBooleanAttribute(isDisabled);
+    set disabled(disabledVal) {
+        this._isDisabled = parseBooleanAttribute(disabledVal);
     }
 
     /** Whether the checkbox is checked. */
@@ -115,7 +127,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 
     /** TabIndex attribute of native checkbox */
     get tabIndex(): number {
-        return this.disabled ? -1 : this._tabIndex;
+        return this._isDisabled ? -1 : this._tabIndex;
     }
 
     set tabIndex(value: number) {
@@ -130,8 +142,24 @@ export class CheckboxComponent implements ControlValueAccessor {
 
     private _onTouchFunc: () => any = () => {};
 
-    constructor(@Attribute('tabindex') tabindex: string, private _renderer: Renderer2) {
+    constructor(
+        @Attribute('tabindex') tabindex: string,
+        private _renderer: Renderer2,
+        private _elementRef: ElementRef,
+        @Optional() _parentForm: NgForm,
+        @Optional() _parentFormGroup: FormGroupDirective,
+        @Optional()
+        @Self()
+        public _ngControl: NgControl
+    ) {
+        super();
+
         this.tabIndex = parseInt(tabindex, 10) || 0;
+
+        this._form = _parentForm || _parentFormGroup;
+        if (this._ngControl != null) {
+            this._ngControl.valueAccessor = this;
+        }
     }
 
     writeValue(value: any): void {
@@ -146,9 +174,9 @@ export class CheckboxComponent implements ControlValueAccessor {
         this._onTouchFunc = fn;
     }
 
-    setDisabledState(isDisabled: boolean): void {
-        this.disabled = isDisabled;
-        this._renderer.setProperty(this._checkboxInput.nativeElement, 'disabled', isDisabled);
+    setDisabledState(disabledVal: boolean): void {
+        this.disabled = disabledVal;
+        this._renderer.setProperty(this._checkboxInput.nativeElement, 'disabled', disabledVal);
     }
 
     /** Toggles the current checked state of the checkbox */
@@ -176,5 +204,27 @@ export class CheckboxComponent implements ControlValueAccessor {
 
     _onBlur() {
         this._onTouchFunc();
+    }
+
+    ngDoCheck(): void {
+        // This needs to be checked every cycle because we can't subscribe to form submissions
+        if (this._ngControl) {
+            this._updateErrorState();
+        }
+    }
+
+    private _updateErrorState() {
+        const oldState = this._errorState;
+
+        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
+        const newState = !!(
+            this._ngControl &&
+            this._ngControl.invalid &&
+            (this._ngControl.touched || (this._form && this._form.submitted))
+        );
+
+        if (oldState !== newState) {
+            this._errorState = newState;
+        }
     }
 }

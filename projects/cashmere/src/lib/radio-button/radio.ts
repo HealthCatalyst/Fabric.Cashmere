@@ -14,10 +14,13 @@ import {
     OnInit,
     Optional,
     Output,
-    QueryList
+    QueryList,
+    DoCheck,
+    Self
 } from '@angular/core';
 import {parseBooleanAttribute} from '../util';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {HcFormControlComponent} from '../form-field/hc-form-control.component';
+import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
 
 let nextUniqueId = 0;
 
@@ -25,16 +28,10 @@ let nextUniqueId = 0;
 @Directive({
     // tslint:disable:directive-selector
     selector: 'hc-radio-group',
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => RadioGroupDirective),
-            multi: true
-        }
-    ],
+    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => RadioGroupDirective), multi: true}],
     exportAs: 'hcRadioGroup'
 })
-export class RadioGroupDirective implements ControlValueAccessor, AfterContentInit {
+export class RadioGroupDirective extends HcFormControlComponent implements ControlValueAccessor, AfterContentInit, DoCheck {
     @HostBinding('class.hc-radio-group-vertical') _verticalClass: boolean = true;
     @HostBinding('class.hc-radio-group-horizontal') _horizontalClass: boolean = false;
 
@@ -44,11 +41,13 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
     _radios: QueryList<RadioButtonComponent>;
     private _value: any = null;
     private _name = `hc-radio-group-${nextUniqueId++}`;
-    private _disabled = false;
-    private _required = false;
-    private _vertical = true;
+    private _inline = false;
     private _initialized = false; // if value of radio group has been set to initial value
     private _selected: RadioButtonComponent | null = null; // the currently selected radio
+    private _form: NgForm | FormGroupDirective | null;
+
+    _componentId = this._name;
+
     _onChangeFn: (value: any) => void = () => {};
     _onTouchFn: () => any = () => {};
 
@@ -61,6 +60,16 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
     set name(value: string) {
         this._name = value;
         this._updateRadioButtonNames();
+    }
+
+    /** Unique id for the radio group. If none is supplied, defaults to name. */
+    @Input()
+    get id(): string {
+        return this._componentId || this._name;
+    }
+
+    set id(idVal: string) {
+        this._componentId = idVal ? idVal : this._name;
     }
 
     /** Value of radio buttons */
@@ -80,22 +89,25 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
     /** Boolean value that enables/disables the radio group */
     @Input()
     get disabled(): boolean {
-        return this._disabled;
+        if (this._ngControl && this._ngControl.disabled) {
+            return this._ngControl.disabled;
+        }
+        return this._isDisabled;
     }
 
     set disabled(value) {
-        this._disabled = parseBooleanAttribute(value);
+        this._isDisabled = parseBooleanAttribute(value);
         this._markRadiosForCheck();
     }
 
     /** Boolean value of whether the radio group is required on a form */
     @Input()
     get required(): boolean {
-        return this._required;
+        return this._isRequired;
     }
 
     set required(value) {
-        this._required = parseBooleanAttribute(value);
+        this._isRequired = parseBooleanAttribute(value);
         this._markRadiosForCheck();
     }
 
@@ -110,19 +122,33 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
         this._checkSelectedRadio();
     }
 
-    /** Sets the orientation of the radio button group; defaults to true */
+    /** Sets the layout orientation of the radio button group; defaults to false */
     @Input()
-    get vertical(): boolean {
-        return this._vertical;
+    get inline(): boolean {
+        return this._inline;
     }
 
-    set vertical(value) {
-        this._vertical = parseBooleanAttribute(value);
-        this._verticalClass = this._vertical;
-        this._horizontalClass = !this._vertical;
+    set inline(value) {
+        this._inline = parseBooleanAttribute(value);
+        this._verticalClass = !this._inline;
+        this._horizontalClass = this._inline;
     }
 
-    constructor(private _cdRef: ChangeDetectorRef) {}
+    constructor(
+        private _cdRef: ChangeDetectorRef,
+        @Optional() _parentForm: NgForm,
+        @Optional() _parentFormGroup: FormGroupDirective,
+        @Optional()
+        @Self()
+        public _ngControl: NgControl
+    ) {
+        super();
+
+        this._form = _parentForm || _parentFormGroup;
+        if (this._ngControl != null) {
+            this._ngControl.valueAccessor = this;
+        }
+    }
 
     ngAfterContentInit() {
         this._initialized = true;
@@ -183,6 +209,28 @@ export class RadioGroupDirective implements ControlValueAccessor, AfterContentIn
             this._radios.forEach(radio => {
                 radio.name = this.name;
             });
+        }
+    }
+
+    ngDoCheck(): void {
+        // This needs to be checked every cycle because we can't subscribe to form submissions
+        if (this._ngControl) {
+            this._updateErrorState();
+        }
+    }
+
+    private _updateErrorState() {
+        const oldState = this._errorState;
+
+        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
+        const newState = !!(
+            this._ngControl &&
+            this._ngControl.invalid &&
+            (this._ngControl.touched || (this._form && this._form.submitted))
+        );
+
+        if (oldState !== newState) {
+            this._errorState = newState;
         }
     }
 }

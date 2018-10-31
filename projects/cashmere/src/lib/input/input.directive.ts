@@ -21,7 +21,7 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
     private _uniqueInputId = `hc-input-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
 
-    componentId = this._uniqueInputId;
+    _componentId = this._uniqueInputId;
 
     /** Hint displayed within the input and disappears on input.  */
     @Input() placeholder: string;
@@ -49,11 +49,11 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
     /** Element id. */
     @Input()
     get id(): string {
-        return this.componentId || this._uniqueInputId;
+        return this._componentId || this._uniqueInputId;
     }
 
     set id(idVal: string) {
-        this.componentId = idVal ? idVal : this._uniqueInputId;
+        this._componentId = idVal ? idVal : this._uniqueInputId;
     }
 
     /** Sets input element as readonly. */
@@ -74,11 +74,11 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         if (this._ngControl && this._ngControl.disabled) {
             return this._ngControl.disabled;
         }
-        return this.isDisabled;
+        return this._isDisabled;
     }
 
     set disabled(disabledInput) {
-        this.isDisabled = parseBooleanAttribute(disabledInput);
+        this._isDisabled = parseBooleanAttribute(disabledInput);
 
         if (this._focused) {
             this._focused = false;
@@ -89,18 +89,18 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
     /** Sets required attribute. */
     @Input()
     get required(): boolean {
-        return this.isRequired;
+        return this._isRequired;
     }
 
     set required(requiredInput) {
-        this.isRequired = parseBooleanAttribute(requiredInput);
+        this._isRequired = parseBooleanAttribute(requiredInput);
     }
 
     @HostBinding('class.hc-input') _hostHcInputClass = true;
 
     @HostBinding('attr.id')
     get _hostId(): string {
-        return this.componentId || this._uniqueInputId;
+        return this._componentId || this._uniqueInputId;
     }
 
     @HostBinding('readonly')
@@ -110,12 +110,12 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
 
     @HostBinding('disabled')
     get _hostDisabled(): boolean {
-        return this.isDisabled;
+        return this._isDisabled;
     }
 
     @HostBinding('required')
     get _hostRequired(): boolean {
-        return this.isRequired;
+        return this._isRequired;
     }
 
     @HostListener('blur')
@@ -182,7 +182,7 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
     }
 
     private _updateErrorState() {
-        const oldState = this.errorState;
+        const oldState = this._errorState;
 
         // TODO: this could be abstracted out as an @Input() if we need this to be configurable
         const newState = !!(
@@ -192,7 +192,7 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         );
 
         if (oldState !== newState) {
-            this.errorState = newState;
+            this._errorState = newState;
         }
     }
 }

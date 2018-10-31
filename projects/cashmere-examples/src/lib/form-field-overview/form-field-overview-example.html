@@ -1,11 +1,21 @@
 <form>
     <div class="form-sample">
         <hc-form-field>
-            <hc-label>Item Name:</hc-label>
+            <hc-label>Job Name:</hc-label>
             <input hcInput required [formControl]="inputControl">
-            <hc-error>An item name is required</hc-error>
+            <hc-error>A job name is required</hc-error>
         </hc-form-field>
     </div>
+
+    <hc-form-field inline="true" class="form-padding">
+        <hc-label>Data Source:</hc-label>
+        <hc-radio-group [formControl]="radioControl" inline="true">
+            <hc-radio-button value="SM">Source Mart</hc-radio-button>
+            <hc-radio-button value="SAM">Subject Area Mart</hc-radio-button>
+            <hc-radio-button value="Other">Other</hc-radio-button>
+        </hc-radio-group>
+        <hc-error>Specified data source does not match description</hc-error>
+    </hc-form-field>
 
     <div class="form-sample">
         <hc-form-field>
@@ -19,11 +29,18 @@
         </hc-form-field>
     </div>
 
-    <button hc-button buttonStyle="primary" class="demo-button" (click)="invalidInput()">
-        Invalidate Input
-    </button>
+    <div class="form-sample flex-column">
+        <hc-form-field>
+            <hc-label>Requested Notifications:</hc-label>
+            <hc-checkbox [formControl]="checkControl">On failure</hc-checkbox>
+            <hc-checkbox [formControl]="checkControl">On sucess</hc-checkbox>
+            <hc-checkbox [formControl]="checkControl">On row-count mismatch</hc-checkbox>
+            <hc-checkbox [formControl]="checkControl">On dependency-wait timeout</hc-checkbox>
+            <hc-error>At least one notification must be selected</hc-error>
+        </hc-form-field>
+    </div>
 
-    <button hc-button buttonStyle="secondary" class="demo-button" (click)="invalidSelect()">
-        Invalidate Select
+    <button hc-button buttonStyle="primary" class="demo-button" (click)="invalidForm()">
+        Invalidate All Fields
     </button>
 </form>
