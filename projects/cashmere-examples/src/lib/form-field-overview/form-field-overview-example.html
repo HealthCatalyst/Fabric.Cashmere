@@ -7,6 +7,16 @@
         </hc-form-field>
     </div>
 
+    <hc-form-field inline="true" class="form-padding">
+        <hc-label>Data Source:</hc-label>
+        <hc-radio-group [formControl]="radioControl" inline="true">
+            <hc-radio-button value="SM">Source Mart</hc-radio-button>
+            <hc-radio-button value="SAM">Subject Area Mart</hc-radio-button>
+            <hc-radio-button value="Other">Other</hc-radio-button>
+        </hc-radio-group>
+        <hc-error>Specified data source does not match description</hc-error>
+    </hc-form-field>
+
     <div class="form-sample">
         <hc-form-field>
             <hc-label>Run Frequency:</hc-label>

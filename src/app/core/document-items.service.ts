@@ -18,7 +18,8 @@ const docs: DocItem[] = [
     {
         id: 'checkbox',
         name: 'Checkbox',
-        examples: ['checkbox-standard', 'checkbox-disabled', 'checkbox-forms']
+        examples: ['checkbox-standard', 'checkbox-disabled', 'checkbox-forms'],
+        usageDoc: true
     },
     {
         id: 'chip',
@@ -62,7 +63,8 @@ const docs: DocItem[] = [
     {
         id: 'radio-button',
         name: 'Radio Button',
-        examples: ['radio-button-standard', 'radio-button-disabled', 'radio-button-forms']
+        examples: ['radio-button-standard', 'radio-button-disabled', 'radio-button-forms'],
+        usageDoc: true
     },
     {
         id: 'select',
