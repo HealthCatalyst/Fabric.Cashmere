@@ -31,7 +31,8 @@
         "precommit": "lint-staged",
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "cm": "git-cz",
-        "semantic-release": "semantic-release"
+        "semantic-release": "semantic-release",
+        "prettier": "prettier --write '**/*.{ts,js,scss,css,md,json}'"
     },
     "lint-staged": {
         "*.{js,scss,css,md,json}": [

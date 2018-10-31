@@ -21,9 +21,13 @@ We would love for you to contribute to Cashmere and be part of the community mak
 5.  From the root of the project, run `npm install`.
 6.  Running `npm run build` will build the entire project
 7.  `ng serve` will serve the default project which is `user-guide`
-8.  While developing you can use angular cli's `--watch` to automatically build a project when the source files change
 
-(note: currently `ng-packagr` and the `@angular/cli` don't support moving assets into the dist directory, so `npm postbuild:lib` will need to be called in addition to using `ng build cashmere --watch`)
+#### While devloping
+
+1.  First, run `npm run build`. (For windows users, sometimes you'll need to manually clear out the `/dist` folder first)
+2.  Run `ng build cashmere --watch`. This will build the cashmere library, and fire off incremental builds when changes to library files are made.
+3.  Run `ng serve`. Will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the cashmere library.
+4.  If you makes changes to example files in `/projects/cashmere-examples/src/lib/` while developing, you'll need to manually rebuild these with `npm run build:examples`.
 
 :::
 
@@ -39,6 +43,7 @@ Before you submit your pull request (PR), consider the following guidelines:
 *   Verify all changes look and function properly in different browsers and at different resolutions.
 *   Run the following commands:
     *   `ng lint` should result in `All files pass linting`
+    *   If there are problems with prettier linting rules, running `npm run prettier` can be helpful.
     *   `ng test` should result in `All tests passing`
     *   `npm run build` should pass and build the library successfully
 *   New components and directives must be accompanied by:
