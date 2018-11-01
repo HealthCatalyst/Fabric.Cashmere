@@ -12,16 +12,16 @@ import { CashmereModule } from './cashmere.module';
   declarations: [
     AppComponent,
     ExampleContainerComponent,
-    /* example-component-declaration */
+    /* example-component-name */
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CashmereModule,
-    /* example-module-import */
+    /* example-module-name */
   ],
   providers: [],
-  entryComponents: [/* example-component-declaration */],
+  entryComponents: [/* example-component-name */],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
