@@ -19,16 +19,16 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
     {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
     {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-    {position: 1, name: 'CasHydrogen', weight: 10.0079, symbol: 'CH'},
-    {position: 2, name: 'CasHelium', weight: 40.0026, symbol: 'CHe'},
-    {position: 3, name: 'CasLithium', weight: 60.941, symbol: 'CLi'},
-    {position: 4, name: 'CasBeryllium', weight: 90.0122, symbol: 'CBe'},
-    {position: 5, name: 'CasBoron', weight: 100.811, symbol: 'CB'},
-    {position: 6, name: 'CasCarbon', weight: 120.0107, symbol: 'CC'},
-    {position: 7, name: 'CasNitrogen', weight: 140.0067, symbol: 'CN'},
-    {position: 8, name: 'CasOxygen', weight: 150.9994, symbol: 'CO'},
-    {position: 9, name: 'CasFluorine', weight: 180.9984, symbol: 'CF'},
-    {position: 10, name: 'CasNeon', weight: 200.1797, symbol: 'CNe'}
+    {position: 11, name: 'CasHydrogen', weight: 10.0079, symbol: 'CH'},
+    {position: 12, name: 'CasHelium', weight: 40.0026, symbol: 'CHe'},
+    {position: 13, name: 'CasLithium', weight: 60.941, symbol: 'CLi'},
+    {position: 14, name: 'CasBeryllium', weight: 90.0122, symbol: 'CBe'},
+    {position: 15, name: 'CasBoron', weight: 100.811, symbol: 'CB'},
+    {position: 16, name: 'CasCarbon', weight: 120.0107, symbol: 'CC'},
+    {position: 17, name: 'CasNitrogen', weight: 140.0067, symbol: 'CN'},
+    {position: 18, name: 'CasOxygen', weight: 150.9994, symbol: 'CO'},
+    {position: 19, name: 'CasFluorine', weight: 180.9984, symbol: 'CF'},
+    {position: 20, name: 'CasNeon', weight: 200.1797, symbol: 'CNe'}
 ];
 
 /**
@@ -43,6 +43,7 @@ export class TablePageExample implements OnInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
     dataSource: HcTableDataSource<PeriodicElement>;
     pageNumber = 1;
+    pageOpts = [5, 10, 20];
     get length(): number { return ELEMENT_DATA.length; }
 
     @ViewChild(PaginationComponent) paginator: PaginationComponent;

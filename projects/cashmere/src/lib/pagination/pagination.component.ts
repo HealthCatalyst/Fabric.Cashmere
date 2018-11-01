@@ -74,7 +74,7 @@ export class PaginationComponent implements OnInit {
         this._pageSizeOptions = (value || []).map(p => coerceNumberProperty(p));
         this._updateDisplayedPageSizeOptions();
     }
-    private _pageSizeOptions: number[] = [10, 20, 50, 1000];
+    private _pageSizeOptions: number[] = [10, 20, 50];
 
     /** Displayed set of page size options. Will be sorted and include current page size. */
     _displayedPageSizeOptions: number[] = [];

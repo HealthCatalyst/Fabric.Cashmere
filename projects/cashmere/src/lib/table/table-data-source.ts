@@ -211,7 +211,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
             merge<Sort|void>(this._sort.sortChange, this._sort.initialized) :
             observableOf(null);
         const pageChange: Observable<PageEvent|null> = this._paginator ?
-            merge<PageEvent>(this._paginator.page) :
+            merge<PageEvent>(this._paginator.page, this._paginator.initialized) :
             observableOf(null);
 
         const dataStream = this._data;
@@ -263,8 +263,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      */
     _pageData(data: T[]): T[] {
       if (!this.paginator) { return data; }
-
-      const startIndex = this.paginator.pageNumber * this.paginator.pageSize;
+      const startIndex = (this.paginator.pageNumber - 1) * this.paginator.pageSize;
       return data.slice().splice(startIndex, this.paginator.pageSize);
     }
 

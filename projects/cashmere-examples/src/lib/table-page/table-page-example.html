@@ -28,4 +28,4 @@
     <tr hc-row *hcRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="10"></hc-pagination>
+<hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="10" [pageSizeOptions]="pageOpts"></hc-pagination>
