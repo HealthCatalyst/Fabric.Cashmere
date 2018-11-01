@@ -9,7 +9,7 @@ import {
     ViewEncapsulation,
     ViewChild
 } from '@angular/core';
-import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
+import {Overlay, OverlayConfig, OverlayRef, ConnectionPositionPair} from '@angular/cdk/overlay';
 import {TemplatePortal} from '@angular/cdk/portal';
 
 import {parseBooleanAttribute} from '../../util';
@@ -155,7 +155,12 @@ export class SplitButtonComponent {
             .position()
             .flexibleConnectedTo(this._splitBtnToggle.elementRef)
             .withFlexibleDimensions(true)
-            .withPositions([{originX: position, originY: 'bottom', overlayX: position, overlayY: 'top'}]);
+            .withPush(true)
+            .withViewportMargin(10)
+            .withPositions([
+                new ConnectionPositionPair({originX: position, originY: 'bottom'}, {overlayX: position, overlayY: 'top'}),
+                new ConnectionPositionPair({originX: position, originY: 'top'}, {overlayX: position, overlayY: 'bottom'})
+            ]);
 
         const overlayConfig = new OverlayConfig({
             hasBackdrop: true,
