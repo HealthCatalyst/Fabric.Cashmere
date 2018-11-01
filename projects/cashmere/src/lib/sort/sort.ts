@@ -45,7 +45,7 @@ export class HcSort implements OnChanges, OnDestroy, OnInit {
     sortables = new Map<string, HcSortable>();
 
     /** Used to notify any child components listening to state changes. */
-    readonly _stateChanges = new Subject<void>();
+    readonly _stateChanges = new Subject<never>();
 
     /** The id of the most recently sorted HcSortable. */
     @Input('hcSortActive') active: string;
@@ -102,13 +102,13 @@ export class HcSort implements OnChanges, OnDestroy, OnInit {
      * during _markInitialized. Set to null after pending subscribers are notified, and should
      * not expect to be populated after.
      */
-    _pendingSubscribers: Subscriber<void>[] | null = [];
+    _pendingSubscribers: Subscriber<never>[] | null = [];
 
     /**
      * Observable stream that emits when the directive initializes. If already initialized, the
      * subscriber is stored to be notified once _markInitialized is called.
      */
-    initialized = new Observable<void>(subscriber => {
+    initialized = new Observable<never>(subscriber => {
         // If initialized, immediately notify the subscriber. Otherwise store the subscriber to notify
         // when _markInitialized is called.
         if (this._isInitialized) {
@@ -135,7 +135,7 @@ export class HcSort implements OnChanges, OnDestroy, OnInit {
     }
 
     /** Emits and completes the subscriber stream (should only emit once). */
-    _notifySubscriber(subscriber: Subscriber<void>): void {
+    _notifySubscriber(subscriber: Subscriber<never>): void {
         subscriber.next();
         subscriber.complete();
     }

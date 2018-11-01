@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 /**
- * @title Input with Prefix and Suffix
+ * @title Disabled Inputs with Prefix and Suffix
  */
 @Component({
     selector: 'input-prefix-example',

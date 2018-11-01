@@ -36,8 +36,12 @@
                 padding: 10px;
                 text-decoration: none;
 
-                & > img {
+                & > .thumbnail-img {
                     width: 100px;
+                    height: 100px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: 50%, 50%;
                 }
             }
 
@@ -46,6 +50,7 @@
                 color: $offblack;
                 padding-top: 8px;
                 font-weight: 600;
+                width: 100px;
             }
         }
     }

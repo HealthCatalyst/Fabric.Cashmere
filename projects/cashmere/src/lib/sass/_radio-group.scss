@@ -1,0 +1,21 @@
+.hc-radio-group-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.hc-radio-group-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .hc-radio-container {
+        padding-left: 32px !important;
+        margin-right: 25px !important;
+    }
+}
+
+.hc-form-field-invalid {
+    .hc-radio-overlay {
+        border-color: $error !important;
+    }
+}

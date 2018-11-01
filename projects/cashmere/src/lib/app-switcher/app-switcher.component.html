@@ -1,11 +1,6 @@
-<div #brand
-     [popperTarget]="brand"
-     [hcPopover]="appSwitcherContent"
-     popperPlacement="bottom-start"
-     [className]="brandBg"
-     (popperOnShown)="buttonOn()"
-     (popperOnHidden)="buttonOff()">
-     <img src="{{brandIcon}}">
+<div #brand [popperTarget]="brand" [hcPopover]="appSwitcherContent" popperPlacement="bottom-start" [className]="brandBg"
+    (popperOnShown)="buttonOn()" (popperOnHidden)="buttonOff()">
+    <img src="{{brandIcon}}">
 </div>
 
 <hc-popover-content #appSwitcherContent>
@@ -15,7 +10,7 @@
         <div class="apps">
             <div class="app" *ngFor="let app of applications">
                 <a class="thumbnail" title="{{app.Description}}" href="{{app.ServiceUrl}}" target="_blank">
-                    <img class="popover-icon img-responsive" src={{app.Icon}}>
+                    <div class="thumbnail-img" [style.background-image]="'url(' + app.icon + ')'"></div>
                     <div class="title">{{app?.FriendlyName | ellipsis:18}}</div>
                 </a>
             </div>

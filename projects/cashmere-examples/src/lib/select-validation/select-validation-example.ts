@@ -12,14 +12,14 @@ import {FormControl} from '@angular/forms';
 export class SelectValidationExample {
     private validCheck = false;
 
-    selectControl = new FormControl('');
+    selectControl = new FormControl('active');
 
     toggleValidate() {
         this.validCheck = !this.validCheck;
         if (this.validCheck) {
             this.selectControl.setErrors({incorrect: true});
         } else {
-            this.selectControl.setErrors({});
+            this.selectControl.setErrors(null);
         }
     }
 }
