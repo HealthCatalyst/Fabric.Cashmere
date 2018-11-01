@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
+import { Initailizable } from '../shared/initializable';
 
 const DEFAULT_PAGE_SIZE = 20;
 
@@ -29,7 +30,7 @@ export class PageEvent {
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent extends Initailizable implements OnInit {
     /**
      * The total number of items to be paged through
      */
@@ -94,6 +95,7 @@ export class PaginationComponent implements OnInit {
 
     ngOnInit() {
         this._updateDisplayedPageSizeOptions();
+        this._markInitialized();
     }
 
     /**
