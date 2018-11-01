@@ -1,4 +1,4 @@
-import { Subscriber, Observable } from 'rxjs';
+import {Subscriber, Observable} from 'rxjs';
 
 /** Abstract class for common initialization functionality */
 export abstract class Initailizable {

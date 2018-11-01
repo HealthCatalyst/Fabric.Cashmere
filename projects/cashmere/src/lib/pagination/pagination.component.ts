@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
-import { Initailizable } from '../shared/initializable';
+import {Initailizable} from '../shared/initializable';
 
 const DEFAULT_PAGE_SIZE = 20;
 

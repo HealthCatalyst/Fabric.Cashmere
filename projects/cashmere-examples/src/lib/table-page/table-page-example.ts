@@ -44,7 +44,9 @@ export class TablePageExample implements OnInit {
     dataSource: HcTableDataSource<PeriodicElement>;
     pageNumber = 1;
     pageOpts = [5, 10, 20];
-    get length(): number { return ELEMENT_DATA.length; }
+    get length(): number {
+        return ELEMENT_DATA.length;
+    }
 
     @ViewChild(PaginationComponent) paginator: PaginationComponent;
 

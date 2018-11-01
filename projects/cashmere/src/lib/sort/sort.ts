@@ -13,7 +13,7 @@ import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {SortDirection} from './sort-direction';
 import {getSortDuplicateSortableIdError, getSortHeaderMissingIdError, getSortInvalidDirectionError} from './sort-errors';
 import {Subject} from 'rxjs';
-import { Initailizable } from '../shared/initializable';
+import {Initailizable} from '../shared/initializable';
 
 /** Interface for a directive that holds sorting state consumed by `HcSortHeaderComponent`. */
 export interface HcSortable {

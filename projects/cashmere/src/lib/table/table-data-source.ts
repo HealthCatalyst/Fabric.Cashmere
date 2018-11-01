@@ -12,7 +12,7 @@ import {BehaviorSubject, combineLatest, merge, Observable, of as observableOf, S
 // import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {HcSort, Sort} from '../sort/index';
 import {map} from 'rxjs/operators';
-import { PaginationComponent, PageEvent } from '../pagination/index';
+import {PaginationComponent, PageEvent} from '../pagination/index';
 
 /**
  * Corresponds to `Number.MAX_SAFE_INTEGER`. Moved out into a variable here due to
@@ -94,10 +94,12 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * e.g. `[pageLength]=100` or `[pageIndex]=1`, then be sure that the paginator's view has been
      * initialized before assigning it to this data source.
      */
-    get paginator(): PaginationComponent | null { return this._paginator; }
+    get paginator(): PaginationComponent | null {
+        return this._paginator;
+    }
     set paginator(paginator: PaginationComponent | null) {
-      this._paginator = paginator;
-      this._updateChangeSubscription();
+        this._paginator = paginator;
+        this._updateChangeSubscription();
     }
     private _paginator: PaginationComponent | null;
 
@@ -207,12 +209,12 @@ export class HcTableDataSource<T> extends DataSource<T> {
         // The `sortChange` and `pageChange` acts as a signal to the combineLatests below so that the
         // pipeline can progress to the next step. Note that the value from these streams are not used,
         // they purely act as a signal to progress in the pipeline.
-        const sortChange: Observable<Sort | null | void> = this._sort ?
-            merge<Sort|void>(this._sort.sortChange, this._sort.initialized) :
-            observableOf(null);
-        const pageChange: Observable<PageEvent|null> = this._paginator ?
-            merge<PageEvent>(this._paginator.page, this._paginator.initialized) :
-            observableOf(null);
+        const sortChange: Observable<Sort | null | void> = this._sort
+            ? merge<Sort | void>(this._sort.sortChange, this._sort.initialized)
+            : observableOf(null);
+        const pageChange: Observable<PageEvent | null> = this._paginator
+            ? merge<PageEvent>(this._paginator.page, this._paginator.initialized)
+            : observableOf(null);
 
         const dataStream = this._data;
         // Watch for base data or filter changes to provide a filtered set of data.
@@ -220,8 +222,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
         // Watch for filtered data or sort changes to provide an ordered set of data.
         const orderedData = combineLatest(filteredData, sortChange).pipe(map(([data]) => this._orderData(data)));
         // Watch for ordered data or page changes to provide a paged set of data.
-        const paginatedData = combineLatest(orderedData, pageChange)
-            .pipe(map(([data]) => this._pageData(data)));
+        const paginatedData = combineLatest(orderedData, pageChange).pipe(map(([data]) => this._pageData(data)));
         // Watched for paged data changes and send the result to the table to render.
         this._renderChangesSubscription.unsubscribe();
         this._renderChangesSubscription = paginatedData.subscribe(data => this._renderData.next(data));
@@ -238,7 +239,9 @@ export class HcTableDataSource<T> extends DataSource<T> {
         // May be overridden for customization.
         this.filteredData = !this.filter ? data : data.filter(obj => this.filterPredicate(obj, this.filter));
 
-        if (this.paginator) { this._updatePaginator(this.filteredData.length); }
+        if (this.paginator) {
+            this._updatePaginator(this.filteredData.length);
+        }
 
         return this.filteredData;
     }
@@ -262,9 +265,11 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * index and length. If there is no paginator provided, returns the data array as provided.
      */
     _pageData(data: T[]): T[] {
-      if (!this.paginator) { return data; }
-      const startIndex = (this.paginator.pageNumber - 1) * this.paginator.pageSize;
-      return data.slice().splice(startIndex, this.paginator.pageSize);
+        if (!this.paginator) {
+            return data;
+        }
+        const startIndex = (this.paginator.pageNumber - 1) * this.paginator.pageSize;
+        return data.slice().splice(startIndex, this.paginator.pageSize);
     }
 
     /**
@@ -273,17 +278,19 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * guard against making property changes within a round of change detection.
      */
     _updatePaginator(filteredDataLength: number) {
-      Promise.resolve().then(() => {
-        if (!this.paginator) { return; }
+        Promise.resolve().then(() => {
+            if (!this.paginator) {
+                return;
+            }
 
-        this.paginator.length = filteredDataLength;
+            this.paginator.length = filteredDataLength;
 
-        // If the page index is set beyond the page, reduce it to the last page.
-        if (this.paginator.pageNumber > 0) {
-          const lastPageIndex = Math.ceil(this.paginator.length / this.paginator.pageSize) - 1 || 0;
-          this.paginator.pageNumber = Math.min(this.paginator.pageNumber, lastPageIndex);
-        }
-      });
+            // If the page index is set beyond the page, reduce it to the last page.
+            if (this.paginator.pageNumber > 0) {
+                const lastPageIndex = Math.ceil(this.paginator.length / this.paginator.pageSize) - 1 || 0;
+                this.paginator.pageNumber = Math.min(this.paginator.pageNumber, lastPageIndex);
+            }
+        });
     }
 
     /**
