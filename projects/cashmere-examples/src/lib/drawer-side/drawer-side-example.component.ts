@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-example',
     templateUrl: 'drawer-side-example.component.html',
-    styleUrls: ['drawer-side-example.component.sass']
+    styleUrls: ['drawer-side-example.component.scss']
 })
 export class DrawerSideExampleComponent {}

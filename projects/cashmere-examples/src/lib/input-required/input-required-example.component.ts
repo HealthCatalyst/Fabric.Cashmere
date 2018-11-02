@@ -7,7 +7,7 @@ import {FormControl, Validators} from '@angular/forms';
 @Component({
     selector: 'hc-example',
     templateUrl: 'input-required-example.component.html',
-    styleUrls: ['input-required-example.component.sass']
+    styleUrls: ['input-required-example.component.scss']
 })
 export class InputRequiredExampleComponent {
     formDemo = new FormControl('', [Validators.email, Validators.required]);

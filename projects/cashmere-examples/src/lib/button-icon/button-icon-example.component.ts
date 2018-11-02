@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-example',
     templateUrl: 'button-icon-example.component.html',
-    styleUrls: ['button-icon-example.component.sass']
+    styleUrls: ['button-icon-example.component.scss']
 })
 export class ButtonIconExampleComponent {}

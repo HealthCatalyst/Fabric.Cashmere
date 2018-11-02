@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-example',
     templateUrl: 'progress-spinner-example.component.html',
-    styleUrls: ['progress-spinner-example.component.sass']
+    styleUrls: ['progress-spinner-example.component.scss']
 })
 export class ProgressSpinnerExampleComponent {
     spinnerIsDeterminate = false;

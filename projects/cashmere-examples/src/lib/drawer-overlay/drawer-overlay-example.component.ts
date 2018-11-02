@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-example',
     templateUrl: 'drawer-overlay-example.component.html',
-    styleUrls: ['drawer-overlay-example.component.sass']
+    styleUrls: ['drawer-overlay-example.component.scss']
 })
 export class DrawerOverlayExampleComponent {}

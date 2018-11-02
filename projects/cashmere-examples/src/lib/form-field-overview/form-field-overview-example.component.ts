@@ -7,7 +7,7 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'hc-example',
     templateUrl: 'form-field-overview-example.component.html',
-    styleUrls: ['form-field-overview-example.component.sass']
+    styleUrls: ['form-field-overview-example.component.scss']
 })
 export class FormFieldOverviewExampleComponent {
     selectControl = new FormControl('daily');

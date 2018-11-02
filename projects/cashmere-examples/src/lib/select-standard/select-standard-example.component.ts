@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-example',
     templateUrl: 'select-standard-example.html',
-    styleUrls: ['select-standard-example.component.sass']
+    styleUrls: ['select-standard-example.component.scss']
 })
 export class SelectStandardExampleComponent {}

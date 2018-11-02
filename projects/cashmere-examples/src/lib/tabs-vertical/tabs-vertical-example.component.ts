@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-example',
     templateUrl: 'tabs-vertical-example.component.html',
-    styleUrls: ['tabs-vertical-example.component.sass']
+    styleUrls: ['tabs-vertical-example.component.scss']
 })
 export class TabsVerticalExample {}

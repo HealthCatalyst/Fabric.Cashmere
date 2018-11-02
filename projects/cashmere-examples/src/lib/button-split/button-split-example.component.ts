@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-example',
     templateUrl: 'button-split-example.component.html',
-    styleUrls: ['button-split-example.component.sass']
+    styleUrls: ['button-split-example.component.scss']
 })
 export class ButtonSplitExampleComponent {}

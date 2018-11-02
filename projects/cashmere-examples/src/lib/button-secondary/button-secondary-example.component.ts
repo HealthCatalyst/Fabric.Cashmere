@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-example',
     templateUrl: 'button-secondary-example.component.html',
-    styleUrls: ['button-secondary-example.component.sass']
+    styleUrls: ['button-secondary-example.component.scss']
 })
 export class ButtonSecondaryExampleComponent {}

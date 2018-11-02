@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-example',
     templateUrl: 'input-suffix-example.component.html',
-    styleUrls: ['input-suffix-example.component.sass']
+    styleUrls: ['input-suffix-example.component.scss']
 })
 export class InputSuffixExampleComponent {}

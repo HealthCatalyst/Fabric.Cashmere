@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-example',
     templateUrl: 'progress-dots-example.component.html',
-    styleUrls: ['progress-dots-example.component.sass']
+    styleUrls: ['progress-dots-example.component.scss']
 })
 export class ProgressDotsExampleComponent {
     dotsColor = 'dark';

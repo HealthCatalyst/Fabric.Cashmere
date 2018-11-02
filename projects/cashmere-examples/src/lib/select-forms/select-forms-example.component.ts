@@ -7,7 +7,7 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'hc-example',
     templateUrl: 'select-forms-example.component.html',
-    styleUrls: ['select-forms-example.component.sass']
+    styleUrls: ['select-forms-example.component.scss']
 })
 export class SelectFormsExampleComponent {
     selectControl = new FormControl('chicken');

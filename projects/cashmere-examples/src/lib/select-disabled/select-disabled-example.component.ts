@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-example',
     templateUrl: 'select-disabled-example.component.html',
-    styleUrls: ['select-disabled-example.component.sass']
+    styleUrls: ['select-disabled-example.component.scss']
 })
 export class SelectDisabledExampleComponent {}
