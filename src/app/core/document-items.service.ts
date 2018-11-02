@@ -44,7 +44,7 @@ const docs: DocItem[] = [
     {
         id: 'navbar',
         name: 'Navbar',
-        examples: ['navbar-overview'],
+        examples: ['navbar-overview', 'navbar-app-switcher'],
         usageDoc: true
     },
     {

@@ -1,5 +1,4 @@
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MockAppSwitcherService} from '../../app-switcher/app-switcher.service';
 import {IconModule} from '../../icon/icon.module';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
