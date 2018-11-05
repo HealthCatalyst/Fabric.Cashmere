@@ -59,8 +59,9 @@
         </hc-menu-drawer>
 
         <div class="drawer-content">
-            <button hc-button buttonStyle="primary" (click)="leftDrawer.toggle()" class="demo-button">
-                Toggle Left Drawer
+            <button hc-button title="Filters" buttonStyle="link" (click)="leftDrawer.toggle()">
+                <span class="hc-filters-icon"></span>
+                Filters off
             </button>
         </div>
     </hc-drawer-container>
