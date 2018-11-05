@@ -82,8 +82,8 @@ $btn-icon-sz: 18px;
 @mixin hc-button-secondary() {
     @include hc-color-button($gray-100, 5%);
     color: $gray-600;
-    border: 2px solid $gray-300;
-    height: 37px;
+    border: 1.5px solid $gray-300;
+    height: 36px;
     line-height: 33px;
     padding-right: 19px;
 

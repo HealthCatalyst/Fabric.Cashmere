@@ -9,6 +9,7 @@ import {Component} from '@angular/core';
     styleUrls: ['pagination-overview-example.css']
 })
 export class PaginationOverviewExample {
-    totalPages = 16;
+    length = 400;
     currentPage = 8;
+    hidePageSize = false;
 }

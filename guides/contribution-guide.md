@@ -45,7 +45,7 @@ Before you submit your pull request (PR), consider the following guidelines:
 *   Verify all changes look and function properly in different browsers and at different resolutions.
 *   Run the following commands:
     *   `ng lint` should result in `All files pass linting`
-    *   If there are problems with prettier linting rules, running `npm run prettier` can be helpful. This will automatically make needed formatting changes based on our prettier rules.
+    *   If there are problems with prettier linting rules, running `npm run prettier` can be helpful. This will automatically make needed formatting changes based on our prettier rules. For Windows users, runs best in bash.
     *   `ng test` should result in `All tests passing`
     *   `npm run build` should pass and build the library successfully
 *   New components and directives must be accompanied by:
