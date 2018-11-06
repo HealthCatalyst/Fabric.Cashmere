@@ -14,7 +14,7 @@ export class ComponentsComponent implements OnDestroy {
     selectOptions: Array<string> = [];
     private unsubscribe = new Subject<void>();
 
-    constructor(docItemService: DocumentItemsService, private activatedRoute: ActivatedRoute, private router: Router) {
+    constructor(docItemService: DocumentItemsService, activatedRoute: ActivatedRoute, private router: Router) {
         this.docItems = docItemService.getDocItems();
 
         // Listen for vertical tab bar navigation and update the select component

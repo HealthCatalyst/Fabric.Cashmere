@@ -46,8 +46,10 @@ export class HcTable<T> extends CdkTable<T> {
         super(_differs, _changeDetectorRef, _elementRef, role, _dir);
     }
 
-    @HostBinding('class.hc-table') _hostHcTableClass = true;
-    @HostBinding('class.hc-table-borders') _hostHcBordersClass = true;
+    @HostBinding('class.hc-table')
+    _hostHcTableClass = true;
+    @HostBinding('class.hc-table-borders')
+    _hostHcBordersClass = true;
 
     /** Sets whether the table should have a 2px border around each cell (defaults to true) */
     @Input()

@@ -48,7 +48,8 @@ export class TablePageExample implements OnInit {
         return ELEMENT_DATA.length;
     }
 
-    @ViewChild(PaginationComponent) paginator: PaginationComponent;
+    @ViewChild(PaginationComponent)
+    paginator: PaginationComponent;
 
     ngOnInit(): void {
         this.dataSource = new HcTableDataSource(ELEMENT_DATA);

@@ -21,25 +21,33 @@ import {PopoverContentComponent} from '../popover/popoverContent.component';
 })
 export class NavbarComponent implements AfterViewInit {
     /** Display name of current user */
-    @Input() user: string = '';
+    @Input()
+    user: string = '';
 
     /** Url to application logo image file */
-    @Input() appIcon: string = '';
+    @Input()
+    appIcon: string = '';
 
     /** Url to brand icon image file */
-    @Input() brandIcon: string = '';
+    @Input()
+    brandIcon: string = '';
 
     /** Router link triggered when home icon is clicked */
-    @Input() homeUri: any[] | string = '';
+    @Input()
+    homeUri: any[] | string = '';
 
     /** Fixes the position of navbar to the top of the page. *Default is false.* */
-    @Input() fixedTop: boolean = false;
+    @Input()
+    fixedTop: boolean = false;
 
-    @ContentChildren(NavbarMobileMenuComponent) _mobileMenu: QueryList<NavbarMobileMenuComponent>;
+    @ContentChildren(NavbarMobileMenuComponent)
+    _mobileMenu: QueryList<NavbarMobileMenuComponent>;
 
-    @ContentChildren(NavbarLinkComponent) _navLinks: QueryList<NavbarLinkComponent>;
+    @ContentChildren(NavbarLinkComponent)
+    _navLinks: QueryList<NavbarLinkComponent>;
 
-    @ViewChild(PopoverContentComponent) _navbarMore: PopoverContentComponent;
+    @ViewChild(PopoverContentComponent)
+    _navbarMore: PopoverContentComponent;
 
     private _menuOpen: boolean = false;
     private _linkWidths: Array<number> = [];

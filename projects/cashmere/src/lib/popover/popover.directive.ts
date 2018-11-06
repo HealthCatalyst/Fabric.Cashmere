@@ -42,70 +42,89 @@ export class PopoverDirective implements OnInit, OnChanges, OnDestroy {
 
     /** Contents of the popover, this can be a string or PopoverContentComponent */
     // tslint:disable-next-line:no-input-rename
-    @Input('hcPopover') content: string | PopoverContentComponent;
+    @Input('hcPopover')
+    content: string | PopoverContentComponent;
 
     /** Disables the popover */
-    @Input() popperDisabled: boolean;
+    @Input()
+    popperDisabled: boolean;
 
     /** Directional position of popover element.
      * `'top' | 'bottom' | 'left' | 'right' | 'top-start' | 'bottom-start' | 'left-start' | 'right-start' | 'top-end' | 'bottom-end'
      | 'left-end' | 'right-end' | 'auto' | 'auto-top' | 'auto-bottom' | 'auto-left' | 'auto-right' | Function` *Default is 'auto'.* */
-    @Input() popperPlacement: Placement;
+    @Input()
+    popperPlacement: Placement;
 
     /** Show trigger for popover visibility.
      * `'click' | 'mousedown' | 'hover' | 'none'`
      * *Default is 'click'.*
      */
-    @Input() popperTrigger: Trigger | undefined;
+    @Input()
+    popperTrigger: Trigger | undefined;
 
     /** Click target to trigger popover visibility event */
-    @Input() popperTarget: HTMLElement;
+    @Input()
+    popperTarget: HTMLElement;
 
     /** Show delay for popover visibility toggle */
-    @Input() popperDelay: number = 0;
+    @Input()
+    popperDelay: number = 0;
 
     /** Hide delay for popover visibility toggle */
-    @Input() popperTimeout: number = 0;
+    @Input()
+    popperTimeout: number = 0;
 
     /** Timeout hidden delay after popover element has been made visible */
-    @Input() popperTimeoutAfterShow: number = 0;
+    @Input()
+    popperTimeoutAfterShow: number = 0;
 
     /** Popover element boundary.
      * The positioning of the popover will be changed dynamically to prevent the element from being positioned outside the boundary.
      * *Default is 'body'.* */
-    @Input() popperBoundaries: string = 'body';
+    @Input()
+    popperBoundaries: string = 'body';
 
     /** Show popover on page load */
-    @Input() popperShowOnStart: boolean;
+    @Input()
+    popperShowOnStart: boolean;
 
     /** Hides popover automatically when user clicks outside of element. *Default is true.* */
-    @Input() popperCloseOnClickOutside: boolean = true;
+    @Input()
+    popperCloseOnClickOutside: boolean = true;
 
     /** Hides popover when user scrolls  */
-    @Input() popperHideOnScroll: boolean | undefined;
+    @Input()
+    popperHideOnScroll: boolean | undefined;
 
     /** Set this to true to position popover in ‘fixed’ mode. *Default is false.* */
-    @Input() popperPositionFixed: boolean;
+    @Input()
+    popperPositionFixed: boolean;
 
     /** List of modifiers used to modify the offsets before they are applied to the popper.
      * They provide most of the functionalities of Popper.js.
      * See: https://popper.js.org/popper-documentation.html#modifiers */
-    @Input() popperModifiers: {};
+    @Input()
+    popperModifiers: {};
 
     /** Disable default styles allowing custom styles to be defined. *Default is false.* */
-    @Input() popperDisableStyle: boolean;
+    @Input()
+    popperDisableStyle: boolean;
 
     /** Disable fade animations when showing or hiding popover. *Default is false.* */
-    @Input() popperDisableAnimation: boolean;
+    @Input()
+    popperDisableAnimation: boolean;
 
     /** Change Detector detectChanges is used when state changes */
-    @Input() popperForceDetection: boolean;
+    @Input()
+    popperForceDetection: boolean;
 
     /** Event when popover is shown */
-    @Output() popperOnShown = new EventEmitter<PopoverDirective>();
+    @Output()
+    popperOnShown = new EventEmitter<PopoverDirective>();
 
     /** Event when popover is hidden */
-    @Output() popperOnHidden = new EventEmitter<PopoverDirective>();
+    @Output()
+    popperOnHidden = new EventEmitter<PopoverDirective>();
 
     @HostListener('touchstart', ['$event'])
     static _assignDefined(target: any, ...sources: any[]) {

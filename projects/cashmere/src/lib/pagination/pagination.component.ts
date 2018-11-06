@@ -91,7 +91,8 @@ export class PaginationComponent extends Initailizable implements OnInit {
     private _hidePageSize = false;
 
     /** Event emitted when the paginator changes the page size or page index. */
-    @Output() readonly page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
+    @Output()
+    readonly page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
     ngOnInit() {
         this._updateDisplayedPageSizeOptions();
