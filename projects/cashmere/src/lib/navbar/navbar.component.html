@@ -1,17 +1,13 @@
 <nav class="hc-navbar" [ngClass]="{'fixed-top': fixedTop}">
-    <div #defaultbrand class="navbar-brand" *ngIf="appswitcherbrand.children.length == 0">
-        <a [routerLink]="homeUri" class="brand no-switcher">
+    <div class="navbar-brand">
+        <a [routerLink]="homeUri" class="brand">
             <img src="{{brandIcon}}">
         </a>
-    </div>
-    <div #appswitcherbrand class="navbar-brand">
-        <ng-content select="hc-app-switcher">
-        </ng-content>
     </div>
     <div class="navbar-app" [ngClass]="{'logo-condense': _logoCondense}">
         <a [routerLink]="homeUri" class="app" *ngIf="appIcon">
             <img src="{{appIcon}}">
-        </a> 
+        </a>
     </div>
     <div class="hc-navbar-link-container">
         <ng-content select="hc-navbar-link"></ng-content>
@@ -21,7 +17,7 @@
     </div>
 
     <div class="hc-navbar-right-container">
-        <ng-content></ng-content>        
+        <ng-content></ng-content>
     </div>
     <div class="hc-navbar-mobile-menu" (click)="_toggleMobileMenu()">
         <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>

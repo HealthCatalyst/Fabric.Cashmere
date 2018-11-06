@@ -34,10 +34,6 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     display: flex;
     justify-content: center;
     align-items: center;
-    // if <hc-app-switcher> is not present, hide it
-    & + .navbar-brand {
-        display: none;
-    }
     .brand {
         & > img {
             height: 37px;
@@ -48,10 +44,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         justify-content: center;
         align-items: center;
         height: 100%;
-
-        &.no-switcher {
-            cursor: default;
-        }
+        cursor: default;
     }
 
     @include media-breakpoint-down(sm) {

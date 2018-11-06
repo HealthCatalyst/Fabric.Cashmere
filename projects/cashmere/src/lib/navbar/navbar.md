@@ -15,11 +15,11 @@ All Health Catalyst apps should include a help menu in their navbar. This guide 
 
 You may not have all these items available. However, include what you have in this order:
 
--   **Help Topics** (if available—reach out to the Content Team for support)
--   **Release Notes** (if applicable, again reach out to the Content Team for support)
--   **About** (a modal containing app reference information - see the [associated style page](https://cashmere.healthcatalyst.net/styles/about) for guidelines)
--   **Health Catalyst Community** (link to community space specific to the app)
--   **Send us your feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/components/typeform-survey/usage))
+*   **Help Topics** (if available—reach out to the Content Team for support)
+*   **Release Notes** (if applicable, again reach out to the Content Team for support)
+*   **About** (a modal containing app reference information - see the [associated style page](https://cashmere.healthcatalyst.net/styles/about) for guidelines)
+*   **Health Catalyst Community** (link to community space specific to the app)
+*   **Send us your feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/components/typeform-survey/usage))
 
 ```html
 <hc-popover-content #helpMenu>
@@ -43,18 +43,25 @@ You may not have all these items available. However, include what you have in th
 </hc-popover-content>
 ```
 
+&nbsp;
+
 ##### App Switcher
 
-To enabled application switcher functionality within the navbar include the `<hc-app-switcher>` and `<hc-app-switcher-links>` in the navbar. See the navbar with app switcher for a complete example
+In addition to the help menu, all Heath Catalyst applications should also include the app switcher in their navbar to the left of the help menu. The app switcher allows users to easily switch between the Health Catalyst apps that they have access to.
 
 ```html
 <hc-navbar>
-    <hc-app-switcher brandIcon="./assets/TriFlame.svg"></hc-app-switcher>
+    ...
+    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-th" [hcPopover]="appSwitcher" popperPlacement="bottom"></hc-icon>
     ...
     <hc-navbar-mobile-menu>
         ...
         <hc-app-switcher-links></hc-app-switcher-links>
     </hc-navbar-mobile-menu>
+    ...
+    <hc-popover-content #appSwitcher>
+        <hc-app-switcher></hc-app-switcher>
+    </hc-popover-content>
 </hc-navbar>
 ```
 
