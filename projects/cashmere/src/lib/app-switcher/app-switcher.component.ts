@@ -11,7 +11,8 @@ import {IAppSwitcherService, IDiscoveryApplication, APP_SWITCHER_SERVICE} from '
 })
 export class AppSwitcherComponent implements OnInit, OnDestroy {
     /** Image of brand icon */
-    @Input() brandIcon: string = '';
+    @Input()
+    brandIcon: string = '';
 
     public applications: IDiscoveryApplication[];
     public subscription: Subscription;

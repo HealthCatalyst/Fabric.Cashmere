@@ -5,5 +5,6 @@ import {Directive, HostBinding} from '@angular/core';
     selector: '[hcListIcon]'
 })
 export class ListIconDirective {
-    @HostBinding('class.hc-list-icon') _hostClass = true;
+    @HostBinding('class.hc-list-icon')
+    _hostClass = true;
 }

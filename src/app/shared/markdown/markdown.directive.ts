@@ -7,10 +7,14 @@ import {highlightBlock} from 'highlight.js';
     selector: '[hcMarkdown]'
 })
 export class MarkdownDirective implements OnChanges {
-    @Input() hcMarkdown: string;
-    @Input() sanitize: boolean;
-    @Input() highlight: boolean = true;
-    @Input() lineNumbers: boolean = true;
+    @Input()
+    hcMarkdown: string;
+    @Input()
+    sanitize: boolean;
+    @Input()
+    highlight: boolean = true;
+    @Input()
+    lineNumbers: boolean = true;
 
     constructor(private el: ElementRef) {}
 

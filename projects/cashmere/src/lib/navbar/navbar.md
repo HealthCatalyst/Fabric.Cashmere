@@ -15,11 +15,11 @@ All Health Catalyst apps should include a help menu in their navbar. This guide 
 
 You may not have all these items available. However, include what you have in this order:
 
-*   **Help Topics** (if available—reach out to the Content Team for support)
-*   **Release Notes** (if applicable, again reach out to the Content Team for support)
-*   **About** (a modal containing app reference information - see the [associated style page](https://cashmere.healthcatalyst.net/styles/about) for guidelines)
-*   **Health Catalyst Community** (link to community space specific to the app)
-*   **Send us your feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/components/typeform-survey/usage))
+-   **Help Topics** (if available—reach out to the Content Team for support)
+-   **Release Notes** (if applicable, again reach out to the Content Team for support)
+-   **About** (a modal containing app reference information - see the [associated style page](https://cashmere.healthcatalyst.net/styles/about) for guidelines)
+-   **Health Catalyst Community** (link to community space specific to the app)
+-   **Send us your feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/components/typeform-survey/usage))
 
 ```html
 <hc-popover-content #helpMenu>

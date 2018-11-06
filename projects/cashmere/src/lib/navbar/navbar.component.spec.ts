@@ -34,7 +34,7 @@ describe('NavbarComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [RouterTestingModule, NavbarModule, ListModule],
-            declarations: [TestAppComponent],
+            declarations: [TestAppComponent]
         }).compileComponents();
     }));
 

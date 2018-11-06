@@ -7,5 +7,6 @@ import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
     encapsulation: ViewEncapsulation.None
 })
 export class HcErrorComponent {
-    @HostBinding('class.hc-error') _hostClass = true;
+    @HostBinding('class.hc-error')
+    _hostClass = true;
 }

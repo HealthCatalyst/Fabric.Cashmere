@@ -14,7 +14,8 @@ export class IconComponent implements OnChanges {
     private _previousFontIcon: string = '';
     private _previousFontSet: string = '';
 
-    @HostBinding('class.hc-icon') _hostClass = true;
+    @HostBinding('class.hc-icon')
+    _hostClass = true;
 
     /** Name of icon within a font set. */
     @Input()

@@ -39,21 +39,21 @@ We would love for you to contribute to Cashmere and be part of the community mak
 
 Before you submit your pull request (PR), consider the following guidelines:
 
-*   Search [GitHub](https://github.com/HealthCatalyst/Fabric.Cashmere/pulls) for an open or closed PR that relates to your submission. You don't want to duplicate effort.
-*   Development happens on the `dev` branch and `master` is used to create a new release
-*   From the dev branch create a new branch. Here is a good [guide](https://gist.github.com/Chaser324/ce0505fbed06b947d962) if you're just getting started.
-*   Verify all changes look and function properly in different browsers and at different resolutions.
-*   Run the following commands:
-    *   `ng lint` should result in `All files pass linting`
-    *   If there are problems with prettier linting rules, running `npm run prettier` can be helpful. This will automatically make needed formatting changes based on our prettier rules. For Windows users, runs best in bash.
-    *   `ng test` should result in `All tests passing`
-    *   `npm run build` should pass and build the library successfully
-*   New components and directives must be accompanied by:
-    *   A component demonstrating the functionality; this component should be added to the demo app's routes
-    *   Unit tests demonstrating that it functions as intended
-*   A new component should adhere to the [Health Catalyst style](http://cashmere.healthcatalyst.net).
-*   When creating a PR you must set the base branch to dev(master is for release only)
-*   "Squash and merge" a PR to complete it.
+-   Search [GitHub](https://github.com/HealthCatalyst/Fabric.Cashmere/pulls) for an open or closed PR that relates to your submission. You don't want to duplicate effort.
+-   Development happens on the `dev` branch and `master` is used to create a new release
+-   From the dev branch create a new branch. Here is a good [guide](https://gist.github.com/Chaser324/ce0505fbed06b947d962) if you're just getting started.
+-   Verify all changes look and function properly in different browsers and at different resolutions.
+-   Run the following commands:
+    -   `ng lint` should result in `All files pass linting`
+    -   If there are problems with prettier linting rules, running `npm run prettier` can be helpful. This will automatically make needed formatting changes based on our prettier rules. For Windows users, runs best in bash.
+    -   `ng test` should result in `All tests passing`
+    -   `npm run build` should pass and build the library successfully
+-   New components and directives must be accompanied by:
+    -   A component demonstrating the functionality; this component should be added to the demo app's routes
+    -   Unit tests demonstrating that it functions as intended
+-   A new component should adhere to the [Health Catalyst style](http://cashmere.healthcatalyst.net).
+-   When creating a PR you must set the base branch to dev(master is for release only)
+-   "Squash and merge" a PR to complete it.
 
 :::
 
@@ -95,17 +95,17 @@ the SHA of the commit being reverted.
 
 Must be one of the following:
 
-*   **feat**: A new feature
-*   **fix**: A bug fix
-*   **docs**: Documentation only changes
-*   **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing
+-   **feat**: A new feature
+-   **fix**: A bug fix
+-   **docs**: Documentation only changes
+-   **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing
     semi-colons, etc)
-*   **refactor**: A code change that neither fixes a bug nor adds a feature
-*   **perf**: A code change that improves performance
-*   **test**: Adding missing tests or correcting existing tests
-*   **build**: Changes that affect the build system, CI configuration or external dependencies
+-   **refactor**: A code change that neither fixes a bug nor adds a feature
+-   **perf**: A code change that improves performance
+-   **test**: Adding missing tests or correcting existing tests
+-   **build**: Changes that affect the build system, CI configuration or external dependencies
     (example scopes: gulp, broccoli, npm)
-*   **chore**: Other changes that don't modify `src` or `test` files
+-   **chore**: Other changes that don't modify `src` or `test` files
 
 ### Scope
 
@@ -116,9 +116,9 @@ The scope could be anything specifying place of the commit change. For example
 
 The subject contains succinct description of the change:
 
-*   use the imperative, present tense: "change" not "changed" nor "changes"
-*   don't capitalize first letter
-*   no dot (.) at the end
+-   use the imperative, present tense: "change" not "changed" nor "changes"
+-   don't capitalize first letter
+-   no dot (.) at the end
 
 ### Body
 

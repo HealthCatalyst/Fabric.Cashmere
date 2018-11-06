@@ -4,14 +4,14 @@ The `hc-breadcrumb` component makes use of the angular `Router` with the scope o
 
 ```json
 {
-    path: "breadcrumbs",
-    component: BreadcrumbsDemoComponent,
-    data: {breadcrumb: "Home Page"},
-    children: [
+    "path": "breadcrumbs",
+    "component": BreadcrumbsDemoComponent,
+    "data": {"breadcrumb": "Home Page"},
+    "children": [
         {
-            path: "breadcrumb1",
-            component: Breadcrumb1DemoComponent,
-            data: {breadcrumb: "Second Page"}
+            "path": "breadcrumb1",
+            "component": Breadcrumb1DemoComponent,
+            "data": {"breadcrumb": "Second Page"}
         }
     ]
 }

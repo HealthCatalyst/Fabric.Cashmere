@@ -29,7 +29,8 @@ function throwDrawerContainerError(align: string) {
     encapsulation: ViewEncapsulation.None
 })
 export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
-    @ContentChildren(Drawer) _drawers: QueryList<Drawer>;
+    @ContentChildren(Drawer)
+    _drawers: QueryList<Drawer>;
 
     private _leftDrawer: Drawer;
     private _rightDrawer: Drawer;
@@ -39,7 +40,8 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
     private readonly _doCheckSubject = new Subject<void>();
     private readonly _destroyed = new Subject<void>();
 
-    @HostBinding('class.hc-drawer-container') _hostClass = true;
+    @HostBinding('class.hc-drawer-container')
+    _hostClass = true;
 
     constructor(
         private _elementRef: ElementRef,
@@ -69,7 +71,10 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
 
             this._drawers.forEach((drawer: Drawer) => {
                 drawer._animationStarted
-                    .pipe(takeUntil(this._drawers.changes), filter((event: AnimationEvent) => event.fromState !== event.toState))
+                    .pipe(
+                        takeUntil(this._drawers.changes),
+                        filter((event: AnimationEvent) => event.fromState !== event.toState)
+                    )
                     .subscribe(() => {
                         this._calculateContentMargins();
                     });

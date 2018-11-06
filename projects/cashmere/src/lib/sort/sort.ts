@@ -49,13 +49,15 @@ export class HcSort extends Initailizable implements OnChanges, OnDestroy, OnIni
     readonly _stateChanges = new Subject<never>();
 
     /** The id of the most recently sorted HcSortable. */
-    @Input('hcSortActive') active: string;
+    @Input('hcSortActive')
+    active: string;
 
     /**
      * The direction to set when an HcSortable is initially sorted.
      * May be overriden by the HcSortable's sort start.
      */
-    @Input('hcSortStart') start: 'asc' | 'desc' = 'asc';
+    @Input('hcSortStart')
+    start: 'asc' | 'desc' = 'asc';
 
     /** The sort direction of the currently active HcSortable. */
     @Input('hcSortDirection')
@@ -93,7 +95,8 @@ export class HcSort extends Initailizable implements OnChanges, OnDestroy, OnIni
     private _disabled: boolean = false;
 
     /** Event emitted when the user changes either the active sort or sort direction. */
-    @Output('hcSortChange') readonly sortChange: EventEmitter<Sort> = new EventEmitter<Sort>();
+    @Output('hcSortChange')
+    readonly sortChange: EventEmitter<Sort> = new EventEmitter<Sort>();
 
     /**
      * Register function to be used by the contained HcSortables. Adds the HcSortable to the

@@ -20,7 +20,8 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     _componentId = this._uniqueInputId;
 
     /** Optional string of text to appear before selection is made */
-    @Input() placeholder: string;
+    @Input()
+    placeholder: string;
 
     /** Enables or disables the component */
     @Input()
@@ -70,7 +71,8 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
 
     private _value: string = '';
 
-    @HostBinding('class.hc-select') _hostClass = true;
+    @HostBinding('class.hc-select')
+    _hostClass = true;
 
     @HostBinding('class.hc-select-disabled')
     get _disabledClass() {

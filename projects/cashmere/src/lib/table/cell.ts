@@ -51,13 +51,16 @@ export class HcFooterCellDef extends CdkFooterCellDef {}
 })
 export class HcColumnDef extends CdkColumnDef {
     /** Unique name for this column. */
-    @Input('hcColumnDef') name: string;
+    @Input('hcColumnDef')
+    name: string;
 
     /** Whether this column should be sticky positioned at the start of the row */
-    @Input() sticky: boolean;
+    @Input()
+    sticky: boolean;
 
     /** Whether this column should be sticky positioned on the end of the row */
-    @Input() stickyEnd: boolean;
+    @Input()
+    stickyEnd: boolean;
 }
 
 /** Header cell template container that adds the right classes and role. */

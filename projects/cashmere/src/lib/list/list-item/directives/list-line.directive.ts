@@ -5,5 +5,6 @@ import {Directive, HostBinding} from '@angular/core';
     selector: '[hcListLine]'
 })
 export class ListLineDirective {
-    @HostBinding('class.hc-list-line') _hostClass;
+    @HostBinding('class.hc-list-line')
+    _hostClass;
 }

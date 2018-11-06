@@ -5,5 +5,6 @@ import {Directive, HostBinding} from '@angular/core';
     selector: '[hcPrefix]'
 })
 export class HcPrefixDirective {
-    @HostBinding('class.hc-prefix') _hostHcPrefixClass = true;
+    @HostBinding('class.hc-prefix')
+    _hostHcPrefixClass = true;
 }

@@ -11,14 +11,12 @@ import {By} from '@angular/platform-browser';
 describe('CheckboxComponent', () => {
     let fixture: ComponentFixture<any>;
 
-    beforeEach(
-        fakeAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [CheckboxModule, FormsModule, ReactiveFormsModule],
-                declarations: [SingleCheckboxComponent, CheckboxWithFormControlComponent, CheckboxWithNgModelComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(fakeAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [CheckboxModule, FormsModule, ReactiveFormsModule],
+            declarations: [SingleCheckboxComponent, CheckboxWithFormControlComponent, CheckboxWithNgModelComponent]
+        }).compileComponents();
+    }));
 
     describe('basic behaviors', () => {
         let checkboxDebugElement: DebugElement;

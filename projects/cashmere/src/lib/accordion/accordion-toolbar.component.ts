@@ -8,5 +8,6 @@ import {ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation} from
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccordionToolbarComponent {
-    @HostBinding('class.hc-accordion-toolbar') _hostClass = true;
+    @HostBinding('class.hc-accordion-toolbar')
+    _hostClass = true;
 }
