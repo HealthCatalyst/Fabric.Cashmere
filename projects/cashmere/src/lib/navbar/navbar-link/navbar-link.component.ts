@@ -6,9 +6,6 @@ import {ChangeDetectorRef, Component, ElementRef, HostBinding, Input} from '@ang
     templateUrl: './navbar-link.component.html'
 })
 export class NavbarLinkComponent {
-    @HostBinding('class')
-    _hostClass = 'navbar-item';
-
     /** (optional) forces active state *Default is `null`.* */
     @Input()
     active?: boolean;

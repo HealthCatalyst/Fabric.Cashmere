@@ -7,7 +7,8 @@ import {
     HostListener,
     Input,
     QueryList,
-    ViewChild
+    ViewChild,
+    ViewEncapsulation
 } from '@angular/core';
 import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu.component';
 import {NavbarLinkComponent} from './navbar-link/navbar-link.component';
@@ -17,7 +18,8 @@ import {PopoverContentComponent} from '../popover/popoverContent.component';
 @Component({
     selector: 'hc-navbar',
     templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.scss']
+    styleUrls: ['./navbar.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class NavbarComponent implements AfterViewInit {
     /** Display name of current user */
@@ -63,9 +65,9 @@ export class NavbarComponent implements AfterViewInit {
         this._moreList = [];
 
         // If links is zero the page is smaller than the first responsive breakpoint
-        if (this.el.nativeElement.querySelector('.links').clientWidth > 0) {
-            let navbarWidth: number = this.el.nativeElement.querySelector('.navbar').scrollWidth;
-            let icons: number = this.el.nativeElement.querySelector('.icon').scrollWidth;
+        if (this.el.nativeElement.querySelector('.hc-navbar-link-container').clientWidth > 0) {
+            let navbarWidth: number = this.el.nativeElement.querySelector('.hc-navbar').scrollWidth;
+            let icons: number = this.el.nativeElement.querySelector('.hc-navbar-right-container').scrollWidth;
             let more: number = 116;
             let switcher: number = 55;
             let links: number = this._linksMax;

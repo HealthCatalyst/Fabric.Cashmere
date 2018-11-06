@@ -8,4 +8,6 @@ import {Component} from '@angular/core';
     templateUrl: 'navbar-app-switcher-example.html',
     styleUrls: ['navbar-app-switcher-example.css']
 })
-export class NavbarAppSwitcherExample {}
+export class NavbarAppSwitcherExample {
+    username = 'Christine K.';
+}
