@@ -54,7 +54,8 @@ export function validateMenuDrawerTheme(menuTheme) {
 export class MenuDrawer extends Drawer implements AfterContentInit {
     private _previousTheme: string | null = null;
 
-    @ContentChild(DrawerToolbar) toolbar: DrawerToolbar;
+    @ContentChild(DrawerToolbar)
+    toolbar: DrawerToolbar;
 
     /** Sets menu style of the drawer. Choose from: `'dark-theme'` */
     @Input()
@@ -72,7 +73,8 @@ export class MenuDrawer extends Drawer implements AfterContentInit {
 
     private _menuTheme: string;
 
-    @HostBinding('class.hc-menu-drawer') _hostClass = true;
+    @HostBinding('class.hc-menu-drawer')
+    _hostClass = true;
 
     constructor(elementRef: ElementRef, private renderer: Renderer2) {
         super(elementRef);

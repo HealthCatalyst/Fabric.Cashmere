@@ -43,10 +43,12 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     _componentId = this._uniqueId;
 
     /** Value attribute of the native checkbox */
-    @Input() value: string;
+    @Input()
+    value: string;
 
     /** Whether the checkbox is indeterminate. It can represent a checkbox with three states. */
-    @Input() indeterminate: boolean;
+    @Input()
+    indeterminate: boolean;
 
     /** Unique id for the checkbox element. If none is supplied, one will be auto-generated. */
     @Input()
@@ -59,12 +61,15 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     }
 
     /** Sets unique name used in a form */
-    @Input() name: string | null = null;
+    @Input()
+    name: string | null = null;
 
     /** Event emitted whenever the state changes */
-    @Output() change = new EventEmitter<CheckboxChangeEvent>();
+    @Output()
+    change = new EventEmitter<CheckboxChangeEvent>();
 
-    @ViewChild('checkboxInput') _checkboxInput: ElementRef;
+    @ViewChild('checkboxInput')
+    _checkboxInput: ElementRef;
 
     @HostBinding('attr.id')
     get _getHostId(): string {

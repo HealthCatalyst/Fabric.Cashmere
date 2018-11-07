@@ -5,5 +5,6 @@ import {Directive, HostBinding} from '@angular/core';
     selector: '[hcDrawerToolbar]'
 })
 export class DrawerToolbar {
-    @HostBinding('class.hc-drawer-toolbar') _hostClass = true;
+    @HostBinding('class.hc-drawer-toolbar')
+    _hostClass = true;
 }

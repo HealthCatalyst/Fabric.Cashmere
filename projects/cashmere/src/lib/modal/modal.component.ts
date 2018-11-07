@@ -5,5 +5,6 @@ import {Component, HostBinding} from '@angular/core';
     template: `<ng-content></ng-content>`
 })
 export class ModalComponent {
-    @HostBinding('class.hc-modal-content') _modalWrapperClass = true;
+    @HostBinding('class.hc-modal-content')
+    _modalWrapperClass = true;
 }

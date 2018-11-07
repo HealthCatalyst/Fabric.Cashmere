@@ -20,13 +20,19 @@ export function getControlMissing(): Error {
 export class HcFormFieldComponent implements AfterContentInit {
     private _inline: boolean = false;
 
-    @ContentChild(HcFormControlComponent) _control: HcFormControlComponent;
-    @ContentChildren(HcErrorComponent) _errorChildren: QueryList<HcErrorComponent>;
-    @ContentChildren(HcPrefixDirective) _prefixChildren: QueryList<HcPrefixDirective>;
-    @ContentChildren(HcSuffixDirective) _suffixChildren: QueryList<HcSuffixDirective>;
-    @ContentChildren(InputDirective) _inputChildren: QueryList<InputDirective>;
+    @ContentChild(HcFormControlComponent)
+    _control: HcFormControlComponent;
+    @ContentChildren(HcErrorComponent)
+    _errorChildren: QueryList<HcErrorComponent>;
+    @ContentChildren(HcPrefixDirective)
+    _prefixChildren: QueryList<HcPrefixDirective>;
+    @ContentChildren(HcSuffixDirective)
+    _suffixChildren: QueryList<HcSuffixDirective>;
+    @ContentChildren(InputDirective)
+    _inputChildren: QueryList<InputDirective>;
 
-    @HostBinding('class.hc-form-field') _classHcFormFieldClass = true;
+    @HostBinding('class.hc-form-field')
+    _classHcFormFieldClass = true;
 
     @HostBinding('class.hc-form-field-disabled')
     get _disabledClass() {

@@ -18,7 +18,7 @@
         "test:unit": "ng test cashmere --watch=false --code-coverage --no-progress",
         "lint": "npm run lint:tslint && npm run lint:prettier",
         "lint:tslint": "tslint -p tsconfig.json",
-        "lint:prettier": "prettier --list-different '**/*.{ts,js,scss,css,md,json}'",
+        "lint:prettier": "prettier --list-different \"**/*.{ts,js,scss,css,md,json}\"",
         "build:lib": "ng build cashmere --prod",
         "postbuild:lib": "node scripts/postbuild.js",
         "build:user": "ng build user-guide",
@@ -28,22 +28,10 @@
         "postbuild": "npm run copy-assets",
         "precopy-assets": "npm run docs",
         "copy-assets": "node scripts/guide-copy-assets.js",
-        "precommit": "lint-staged",
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "cm": "git-cz",
         "semantic-release": "semantic-release",
-        "prettier": "prettier --write '**/*.{ts,js,scss,css,md,json}'"
-    },
-    "lint-staged": {
-        "*.{js,scss,css,md,json}": [
-            "prettier --write",
-            "git add"
-        ],
-        "*.{ts}": [
-            "prettier --write",
-            "npm run lint --fix",
-            "git add"
-        ]
+        "prettier": "prettier --write \"**/*.{ts,js,scss,css,md,json}\""
     },
     "dependencies": {
         "@angular/animations": "6.1.7",
@@ -109,7 +97,7 @@
         "ng-packagr": "~4.1.1",
         "node-sass": "4.8.3",
         "path": "^0.12.7",
-        "prettier": "^1.12.1",
+        "prettier": "^1.14.3",
         "protractor": "~5.3.1",
         "rxjs-tslint": "^0.1.4",
         "semantic-release": "^15.9.5",

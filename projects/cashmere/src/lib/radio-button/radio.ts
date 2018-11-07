@@ -32,11 +32,14 @@ let nextUniqueId = 0;
     exportAs: 'hcRadioGroup'
 })
 export class RadioGroupDirective extends HcFormControlComponent implements ControlValueAccessor, AfterContentInit, DoCheck {
-    @HostBinding('class.hc-radio-group-vertical') _verticalClass: boolean = true;
-    @HostBinding('class.hc-radio-group-horizontal') _horizontalClass: boolean = false;
+    @HostBinding('class.hc-radio-group-vertical')
+    _verticalClass: boolean = true;
+    @HostBinding('class.hc-radio-group-horizontal')
+    _horizontalClass: boolean = false;
 
     /** Event emitted when the value of a radio button changes inside the group. */
-    @Output() change: EventEmitter<RadioButtonChangeEvent> = new EventEmitter<RadioButtonChangeEvent>();
+    @Output()
+    change: EventEmitter<RadioButtonChangeEvent> = new EventEmitter<RadioButtonChangeEvent>();
     @ContentChildren(forwardRef(() => RadioButtonComponent), {descendants: true})
     _radios: QueryList<RadioButtonComponent>;
     private _value: any = null;
@@ -254,11 +257,14 @@ export class RadioButtonChangeEvent {
 export class RadioButtonComponent implements OnInit {
     private _uniqueId = `hc-radio-button-${nextUniqueId++}`;
     /** Element id for the radio button. Auto-generated id will be used if none is set */
-    @Input() id: string = this._uniqueId;
+    @Input()
+    id: string = this._uniqueId;
     /** Name of radio button */
-    @Input() name: string;
+    @Input()
+    name: string;
     /** Event emitted when the value of the radio button changes */
-    @Output() change = new EventEmitter<RadioButtonChangeEvent>();
+    @Output()
+    change = new EventEmitter<RadioButtonChangeEvent>();
     private _checked: boolean = false;
     private _value: any = null;
     private _required: boolean = false;

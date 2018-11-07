@@ -14,21 +14,26 @@ export class ComponentViewerComponent implements OnInit {
     constructor(private activatedRoute: ActivatedRoute, private docItems: DocumentItemsService) {}
 
     ngOnInit(): void {
-        this.activatedRoute.params.pipe(map(params => params['id']), map(id => this.docItems.getItemById(id))).subscribe(docItem => {
-            this.docItem = docItem;
+        this.activatedRoute.params
+            .pipe(
+                map(params => params['id']),
+                map(id => this.docItems.getItemById(id))
+            )
+            .subscribe(docItem => {
+                this.docItem = docItem;
 
-            let availableSections = ['API'];
+                let availableSections = ['API'];
 
-            if (this.docItem) {
-                const examples = this.docItem.examples;
-                if (examples && examples.length > 0) {
-                    availableSections = ['Examples', 'API'];
+                if (this.docItem) {
+                    const examples = this.docItem.examples;
+                    if (examples && examples.length > 0) {
+                        availableSections = ['Examples', 'API'];
+                    }
+                    if (this.docItem.usageDoc) {
+                        availableSections.push('Usage');
+                    }
+                    this.sections = new Set<string>(availableSections);
                 }
-                if (this.docItem.usageDoc) {
-                    availableSections.push('Usage');
-                }
-                this.sections = new Set<string>(availableSections);
-            }
-        });
+            });
     }
 }

@@ -87,22 +87,27 @@ export class AccordionComponent implements AfterContentInit {
     }
 
     /** Event emitted when accordion is opened. */
-    @Output() opened = new EventEmitter();
+    @Output()
+    opened = new EventEmitter();
 
     /** Event emitted when accordion has started to open. */
-    @Output() openStart = new EventEmitter();
+    @Output()
+    openStart = new EventEmitter();
 
     /** Event emitted when accordion is closed. */
-    @Output() closed = new EventEmitter();
+    @Output()
+    closed = new EventEmitter();
 
     /** Event emitted when accordion has started to close. */
-    @Output() closeStart = new EventEmitter();
+    @Output()
+    closeStart = new EventEmitter();
 
     get _isOpen(): boolean {
         return this.__isOpen;
     }
 
-    @HostBinding('class.hc-accordion') _hostClass = true;
+    @HostBinding('class.hc-accordion')
+    _hostClass = true;
 
     get _alignment(): string {
         return this.triggerAlign === 'right' ? 'hc-align-right' : '';

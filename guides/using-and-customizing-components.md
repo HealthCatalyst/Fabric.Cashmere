@@ -16,9 +16,9 @@ You can use Cashmere components in a few different ways. They're built from thre
 
 The Angular component is not meant to fit every possible use case. Instead, it focuses narrowly on the most common, expected use cases. For example, Cashmere's button component includes colored buttons, link buttons, icon buttons, and split buttons, but if you want a floating action button or a button that changes its contents on hover, you'll have to build it yourself. The way components are built makes it easy to do that. You can opt in to the level of flexibility or convenience you need. From most flexible to most convenient:
 
-*   You can import the SCSS mixins and use them in a custom stylesheet for your own component.
-*   You can import the component and use its CSS classes in the markup for your own component.
-*   You can import the component and use it as-is.
+-   You can import the SCSS mixins and use them in a custom stylesheet for your own component.
+-   You can import the component and use its CSS classes in the markup for your own component.
+-   You can import the component and use it as-is.
 
 :::
 
@@ -196,10 +196,10 @@ Use the mixins in the component stylesheet. Flatten the structure where possible
 
 Build the documentation and ensure that the component looks the same as it did before. Make sure it meets the following expectations:
 
-*   The component stylesheet should not include any CSS declarations. It should only have @import statements, CSS selectors, and @include statements. This ensures that all the component's styles can be used via mixins--none of them are bound to the component.
-*   The mixin stylesheet should not include any top-level CSS selectors. Each top-level item should be a mixin.
-*   The mixin stylesheet should not include any nested CSS selectors that would make confusing assumptions about the user's HTML structure. That is, the `[disabled]` attribute selector and pseudo-selectors like `:hover` or `:after` are okay, but class or tag names like `.hc-checked` and `input` should be avoided.
-*   Both stylesheets should be as flat as possible. Nesting CSS selectors in SCSS files creates extremely specific selectors, which are hard to override. Cashmere should make it easy to override a style rule if needed. CSS classes can be added to component markup to avoid deep nesting.
-*   If nesting more than 2 levels deep is unavoidable, an overridable SCSS variable (with `!default`) can be added to the mixins file to allow the user to set the rule before importing the mixins.
+-   The component stylesheet should not include any CSS declarations. It should only have @import statements, CSS selectors, and @include statements. This ensures that all the component's styles can be used via mixins--none of them are bound to the component.
+-   The mixin stylesheet should not include any top-level CSS selectors. Each top-level item should be a mixin.
+-   The mixin stylesheet should not include any nested CSS selectors that would make confusing assumptions about the user's HTML structure. That is, the `[disabled]` attribute selector and pseudo-selectors like `:hover` or `:after` are okay, but class or tag names like `.hc-checked` and `input` should be avoided.
+-   Both stylesheets should be as flat as possible. Nesting CSS selectors in SCSS files creates extremely specific selectors, which are hard to override. Cashmere should make it easy to override a style rule if needed. CSS classes can be added to component markup to avoid deep nesting.
+-   If nesting more than 2 levels deep is unavoidable, an overridable SCSS variable (with `!default`) can be added to the mixins file to allow the user to set the rule before importing the mixins.
 
 :::

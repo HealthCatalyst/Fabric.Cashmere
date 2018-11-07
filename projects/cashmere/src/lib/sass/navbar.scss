@@ -1,0 +1,247 @@
+@import 'colors';
+@import 'variables';
+@import 'mixins';
+
+$navbar-color: $charcoal-blue !default;
+$navbar-brand: $primary-brand !default;
+$navbar-height: 53px !default;
+$navbar-app-padding: 0 60px 0 25px !default;
+$navbar-text: $white !default;
+$navbar-text-inactive: $gray-300 !default;
+$navbar-fixed-shadow: 0px 2px 6px $shadow;
+
+@mixin hc-navbar-fixed-top {
+    top: 0;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: $zindex-navbar;
+    box-shadow: $navbar-fixed-shadow;
+}
+
+@mixin hc-navbar {
+    height: $navbar-height;
+    background-color: $navbar-color;
+    display: flex;
+    font-size: 15px;
+}
+
+@mixin navbar-brand {
+    background-color: $navbar-brand;
+    width: 55px;
+    flex-basis: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .brand {
+        & > img {
+            height: 37px;
+            width: auto;
+        }
+        transition: background-color 0.25s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        cursor: default;
+    }
+
+    @include media-breakpoint-down(sm) {
+        display: none;
+    }
+}
+
+@mixin navbar-app {
+    height: 100%;
+    padding: $navbar-app-padding;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.logo-condense {
+        padding-right: 25px;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        img {
+            height: 30px;
+            width: auto;
+            padding-top: 2px;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        padding: 0 0 0 5%;
+    }
+}
+
+@mixin hc-navbar-link-container {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 0;
+    overflow: hidden;
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
+}
+
+@mixin navbar-link {
+    display: inline-block;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 22px 30px 0 30px;
+    text-align: center;
+    color: $navbar-text-inactive;
+    border-bottom: 5px solid transparent;
+    transition: background-color 0.25s;
+    &:hover:not(.active),
+    &.inactive:hover {
+        outline: none;
+        color: $navbar-text;
+        background-color: darken($navbar-color, 5%);
+    }
+    &.active:not(.inactive),
+    &:active {
+        color: $navbar-text;
+        font-weight: 600;
+        border-bottom: 5px solid $navbar-brand;
+    }
+
+    // This piece of code allows to use the bold styling from the style guide, while
+    // avoiding the css jitter that normally would accompany such an effect
+    // https://stackoverflow.com/questions/556153/inline-elements-shifting-when-made-bold-on-hover
+    &:before {
+        display: block;
+        content: attr(title);
+        font-weight: 600;
+        height: 1px;
+        color: transparent;
+        overflow: hidden;
+        visibility: hidden;
+        margin-bottom: -1px;
+    }
+}
+
+@mixin hc-navbar-right-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: auto;
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
+}
+
+@mixin navbar-item() {
+    height: $navbar-height;
+    color: $navbar-text;
+    cursor: pointer;
+    transition: background-color 0.25s;
+    &:hover:not(.active),
+    &.inactive:hover {
+        outline: none;
+        color: $navbar-text;
+        background-color: darken($navbar-color, 5%);
+    }
+}
+
+@mixin hc-navbar-icon {
+    @include navbar-item();
+    min-width: 53px !important;
+    padding: 18px 0;
+}
+
+@mixin hc-navbar-username {
+    @include navbar-item();
+    padding: 20px 15px 0;
+    > hc-icon {
+        font-size: 12pt;
+    }
+    > span {
+        max-width: 130px;
+    }
+    max-width: 150px;
+    display: flex;
+}
+
+@mixin hc-navbar-vertical-separator {
+    display: flex;
+    align-items: center;
+    &::after {
+        content: '|';
+        font-size: 18px;
+        color: $navbar-text;
+    }
+}
+
+@mixin hc-navbar-more-links {
+    display: inline-block;
+    white-space: nowrap;
+    cursor: pointer;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 22px 30px 0 30px;
+    text-align: center;
+    color: $navbar-text-inactive;
+    border-bottom: 5px solid transparent;
+    transition: background-color 0.25s;
+
+    hc-icon {
+        margin-left: 5px;
+        vertical-align: top;
+        margin-top: 1px;
+        font-size: 13px !important;
+    }
+
+    &:hover:not(.active),
+    &.inactive:hover {
+        outline: none;
+        color: $navbar-text;
+        background-color: darken($navbar-color, 5%);
+    }
+
+    // This piece of code allows to use the bold styling from the style guide, while
+    // avoiding the css jitter that normally would accompany such an effect
+    // https://stackoverflow.com/questions/556153/inline-elements-shifting-when-made-bold-on-hover
+    &:before {
+        display: block;
+        content: attr(title);
+        font-weight: 600;
+        height: 1px;
+        color: transparent;
+        overflow: hidden;
+        visibility: hidden;
+        margin-bottom: -1px;
+    }
+}
+
+@mixin hc-navbar-mobile-menu {
+    background-color: $slate-blue;
+    color: $slate-gray-200;
+    width: 55px;
+    flex-basis: auto;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    cursor: pointer;
+    display: none;
+
+    hc-icon {
+        font-size: 25px !important;
+        height: 25px !important;
+        width: 25px !important;
+    }
+
+    @include media-breakpoint-down(md) {
+        display: flex;
+    }
+}

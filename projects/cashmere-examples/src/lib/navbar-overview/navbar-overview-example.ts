@@ -8,4 +8,6 @@ import {Component} from '@angular/core';
     templateUrl: 'navbar-overview-example.html',
     styleUrls: ['navbar-overview-example.css']
 })
-export class NavbarOverviewExample {}
+export class NavbarOverviewExample {
+    username = 'Christine K.';
+}

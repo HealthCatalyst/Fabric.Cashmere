@@ -15,14 +15,16 @@ export class PaginationLoadMoreExample {
     length = 100;
     pageNumber = 1;
     pageSize = 20;
-    displayed = "1-10";
+    displayed = '1-10';
 
     onLoadMore(pageEvent: PageEvent) {
-        setTimeout(() => { this.updateDisplay(pageEvent); }, 20);
+        setTimeout(() => {
+            this.updateDisplay(pageEvent);
+        }, 20);
     }
 
     updateDisplay(pageEvent: PageEvent) {
         this.displayed = `1-${pageEvent.pageNumber * pageEvent.pageSize}`;
-        console.log("pageEvent", pageEvent);
+        console.log('pageEvent', pageEvent);
     }
 }
