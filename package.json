@@ -28,7 +28,6 @@
         "postbuild": "npm run copy-assets",
         "precopy-assets": "npm run docs",
         "copy-assets": "node scripts/guide-copy-assets.js",
-        "precommit": "lint-staged",
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "cm": "git-cz",
         "semantic-release": "semantic-release",
