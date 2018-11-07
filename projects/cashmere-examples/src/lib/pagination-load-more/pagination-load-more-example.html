@@ -1,0 +1,26 @@
+<hc-form-field inline>
+    <hc-label>Button text</hc-label>
+    <input hcInput [(ngModel)]="buttonText">
+</hc-form-field>
+<hc-form-field inline>
+    <hc-label>Number of items</hc-label>
+    <input hcInput type="number" [(ngModel)]="length">
+</hc-form-field>
+<hc-form-field inline>
+    <hc-label>Current page number:</hc-label>
+    <input hcInput type="number" [(ngModel)]="pageNumber">
+</hc-form-field>
+<hc-form-field inline>
+    <hc-label>Indices displayed:</hc-label>
+    <input hcInput [value]="displayed" disabled>
+</hc-form-field>
+
+<hr>
+
+<hc-load-more-pagination
+    [length]="length"
+    [buttonText]="buttonText"
+    [pageNumber]="pageNumber"
+    [pageSize]="pageSize"
+    (page)="onLoadMore($event)">
+</hc-load-more-pagination>

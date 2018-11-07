@@ -251,5 +251,11 @@ table.hc-table {
 }
 
 .hc-table + hc-pagination {
-    margin-top: 10px;
+    margin-top: 15px;
+    display: block;
+}
+
+.hc-table + hc-load-more-pagination {
+    margin-top: 20px;
+    display: block;
 }

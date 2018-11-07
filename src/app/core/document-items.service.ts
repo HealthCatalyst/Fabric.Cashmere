@@ -51,7 +51,7 @@ const docs: DocItem[] = [
         id: 'pagination',
         name: 'Pagination',
         usageDoc: true,
-        examples: ['pagination-overview']
+        examples: ['pagination-standard', 'pagination-load-more']
     },
     {id: 'picklist', name: 'Picklist', examples: ['picklist-simple', 'picklist-valueset'], usageDoc: true},
     {
@@ -77,7 +77,7 @@ const docs: DocItem[] = [
     {
         id: 'table',
         name: 'Table',
-        examples: ['table-overview', 'table-sort', 'table-filter', 'table-page'],
+        examples: ['table-overview', 'table-sort', 'table-filter', 'table-page', 'table-load-more'],
         usageDoc: true
     },
     {

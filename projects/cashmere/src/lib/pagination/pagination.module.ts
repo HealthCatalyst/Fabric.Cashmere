@@ -4,10 +4,11 @@ import {ButtonModule} from '../button/button.module';
 import {SelectModule} from '../select/select.module';
 import {IconModule} from '../icon/icon.module';
 import {PaginationComponent} from './pagination.component';
+import {LoadMorePaginationComponent} from './load-more-pagination.component';
 
 @NgModule({
     imports: [CommonModule, ButtonModule, IconModule, SelectModule],
-    declarations: [PaginationComponent],
-    exports: [PaginationComponent]
+    declarations: [PaginationComponent, LoadMorePaginationComponent],
+    exports: [PaginationComponent, LoadMorePaginationComponent]
 })
 export class PaginationModule {}
