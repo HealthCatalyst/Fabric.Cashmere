@@ -33,17 +33,6 @@
         "semantic-release": "semantic-release",
         "prettier": "prettier --write \"**/*.{ts,js,scss,css,md,json}\""
     },
-    "lint-staged": {
-        "*.{js,scss,css,md,json}": [
-            "prettier --write",
-            "git add"
-        ],
-        "*.{ts}": [
-            "prettier --write",
-            "npm run lint --fix",
-            "git add"
-        ]
-    },
     "dependencies": {
         "@angular/animations": "6.1.7",
         "@angular/cdk": "^6.4.2",
