@@ -3,7 +3,7 @@
     <input hcInput (keyup)="applyFilter($event.target.value)">
 </hc-form-field>
 
-<table hc-table [dataSource]="dataSource">
+<table hc-table [dataSource]="dataSource" borders="false">
 
     <!-- Position Column -->
     <ng-container hcColumnDef="position">

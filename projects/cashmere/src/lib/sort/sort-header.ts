@@ -106,13 +106,16 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
      * ID of this sort header. If used within the context of a CdkColumnDef, this will default to
      * the column's name.
      */
-    @Input('hc-sort-header') id: string;
+    @Input('hc-sort-header')
+    id: string;
 
     /** Sets the position of the arrow that displays when sorted. */
-    @Input() arrowPosition: 'before' | 'after' = 'after';
+    @Input()
+    arrowPosition: 'before' | 'after' = 'after';
 
     /** Overrides the sort start value of the containing HcSort for this HcSortable. */
-    @Input() start: 'asc' | 'desc';
+    @Input()
+    start: 'asc' | 'desc';
 
     /** Overrides the disable clear value of the containing HcSort for this HcSortable. */
     @Input()
@@ -135,7 +138,8 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
         this._disabled = coerceBooleanProperty(value);
     }
 
-    @HostBinding('class.hc-sort-header') _hostClass = true;
+    @HostBinding('class.hc-sort-header')
+    _hostClass = true;
 
     private _disabled: boolean = false;
 

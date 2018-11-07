@@ -13,24 +13,32 @@ $error-margin-top: 0.4em / $error-font-scale;
 $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
 @mixin hc-form-field() {
-    display: inline-block;
     position: relative;
     text-align: left;
     font-size: inherit;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: $line-height;
+    flex-direction: inherit;
 }
 
 @mixin hc-form-field-wrapper() {
     position: relative;
     border-top: $infix-margin-top solid transparent;
     padding-bottom: $wrapper-padding-bottom;
+    flex-direction: inherit;
 }
 
 @mixin hc-form-field-wrapper-inline() {
-    display: flex;
-    flex-direction: row;
+    display: inline-flex;
+    width: 100%;
+    padding-bottom: inherit;
+}
+
+@mixin hc-form-field-content-wrapper() {
+    display: grid;
+    flex-direction: inherit;
+    width: 100%;
 }
 
 @mixin hc-form-field-flex() {
@@ -63,8 +71,19 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     color: tint($text, 60%);
 }
 
-@mixin hc-form-field-invalid() {
+@mixin hc-form-field-input-invalid() {
     border: 1.5px solid $error;
+}
+
+@mixin hc-form-field-non-input() {
+    display: inline-flex;
+    flex-direction: inherit;
+    width: 100%;
+}
+
+@mixin hc-form-field-non-input-inline() {
+    display: inline-flex;
+    flex: 0 0 100%;
 }
 
 @mixin hc-form-field-prefix-suffix() {

@@ -7,7 +7,8 @@ import {
     HostListener,
     Input,
     QueryList,
-    ViewChild
+    ViewChild,
+    ViewEncapsulation
 } from '@angular/core';
 import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu.component';
 import {NavbarLinkComponent} from './navbar-link/navbar-link.component';
@@ -17,29 +18,38 @@ import {PopoverContentComponent} from '../popover/popoverContent.component';
 @Component({
     selector: 'hc-navbar',
     templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.scss']
+    styleUrls: ['./navbar.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class NavbarComponent implements AfterViewInit {
     /** Display name of current user */
-    @Input() user: string = '';
+    @Input()
+    user: string = '';
 
     /** Url to application logo image file */
-    @Input() appIcon: string = '';
+    @Input()
+    appIcon: string = '';
 
     /** Url to brand icon image file */
-    @Input() brandIcon: string = '';
+    @Input()
+    brandIcon: string = '';
 
     /** Router link triggered when home icon is clicked */
-    @Input() homeUri: any[] | string = '';
+    @Input()
+    homeUri: any[] | string = '';
 
     /** Fixes the position of navbar to the top of the page. *Default is false.* */
-    @Input() fixedTop: boolean = false;
+    @Input()
+    fixedTop: boolean = false;
 
-    @ContentChildren(NavbarMobileMenuComponent) _mobileMenu: QueryList<NavbarMobileMenuComponent>;
+    @ContentChildren(NavbarMobileMenuComponent)
+    _mobileMenu: QueryList<NavbarMobileMenuComponent>;
 
-    @ContentChildren(NavbarLinkComponent) _navLinks: QueryList<NavbarLinkComponent>;
+    @ContentChildren(NavbarLinkComponent)
+    _navLinks: QueryList<NavbarLinkComponent>;
 
-    @ViewChild(PopoverContentComponent) _navbarMore: PopoverContentComponent;
+    @ViewChild(PopoverContentComponent)
+    _navbarMore: PopoverContentComponent;
 
     private _menuOpen: boolean = false;
     private _linkWidths: Array<number> = [];
@@ -55,9 +65,9 @@ export class NavbarComponent implements AfterViewInit {
         this._moreList = [];
 
         // If links is zero the page is smaller than the first responsive breakpoint
-        if (this.el.nativeElement.querySelector('.links').clientWidth > 0) {
-            let navbarWidth: number = this.el.nativeElement.querySelector('.navbar').scrollWidth;
-            let icons: number = this.el.nativeElement.querySelector('.icon').scrollWidth;
+        if (this.el.nativeElement.querySelector('.hc-navbar-link-container').clientWidth > 0) {
+            let navbarWidth: number = this.el.nativeElement.querySelector('.hc-navbar').scrollWidth;
+            let icons: number = this.el.nativeElement.querySelector('.hc-navbar-right-container').scrollWidth;
             let more: number = 116;
             let switcher: number = 55;
             let links: number = this._linksMax;

@@ -5,5 +5,6 @@ import {Directive, HostBinding} from '@angular/core';
     selector: '[hcSuffix]'
 })
 export class HcSuffixDirective {
-    @HostBinding('class.hc-suffix') _hostHcSuffixClass = true;
+    @HostBinding('class.hc-suffix')
+    _hostHcSuffixClass = true;
 }

@@ -2,7 +2,7 @@ import {takeUntil} from 'rxjs/operators';
 import {Component, Inject, OnDestroy, OnInit, Input} from '@angular/core';
 import {Subject, Subscription} from 'rxjs';
 
-import {IAppSwitcherService, IDiscoveryApplication} from './app-switcher-interfaces';
+import {IAppSwitcherService, IDiscoveryApplication, APP_SWITCHER_SERVICE} from './app-switcher-interfaces';
 
 @Component({
     selector: 'hc-app-switcher',
@@ -10,16 +10,13 @@ import {IAppSwitcherService, IDiscoveryApplication} from './app-switcher-interfa
     styleUrls: ['./app-switcher.component.scss']
 })
 export class AppSwitcherComponent implements OnInit, OnDestroy {
-    /** Image of brand icon */
-    @Input() brandIcon: string = '';
-
     public applications: IDiscoveryApplication[];
     public subscription: Subscription;
     public brandBg = 'brand';
 
     private ngUnsubscribe: any = new Subject();
 
-    constructor(@Inject('IAppSwitcherService') public appSwitcherService: IAppSwitcherService) {}
+    constructor(@Inject(APP_SWITCHER_SERVICE) public appSwitcherService: IAppSwitcherService) {}
 
     ngOnInit() {
         this.subscription = this.appSwitcherService
@@ -33,13 +30,5 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.ngUnsubscribe.next();
         this.ngUnsubscribe.complete();
-    }
-
-    buttonOn() {
-        this.brandBg = 'brand brandOn';
-    }
-
-    buttonOff() {
-        this.brandBg = 'brand';
     }
 }

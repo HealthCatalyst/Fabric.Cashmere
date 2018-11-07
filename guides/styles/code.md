@@ -11,8 +11,8 @@ Display source code in a monospace font. The Cashmere site uses the following: `
 
 Include line numbers for blocks of code longer than than three lines. Line numbers should be:
 
-*   The same font size as the code
-*   In a light gray color so they aren't distracting
+-   The same font size as the code
+-   In a light gray color so they aren't distracting
 
 ```html
 <hc-list>

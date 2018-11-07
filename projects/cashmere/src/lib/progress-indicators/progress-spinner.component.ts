@@ -27,13 +27,16 @@ export class ProgressSpinnerComponent {
     }
 
     /** If true, the spinner will center itself inside its container. */
-    @Input() public isCentered = true;
+    @Input()
+    public isCentered = true;
 
     /** If true, include background "channel" circle. */
-    @Input() public hasChannel = true;
+    @Input()
+    public hasChannel = true;
 
     /** If true, switches to determinate mode. Must pass in progress (0-100%), instead of having the loader spin freely. */
-    @Input() public isDeterminate = false;
+    @Input()
+    public isDeterminate = false;
 
     /** (0-100%) Only used if "isDeterminate" is set to true. */
     @Input()
@@ -95,11 +98,11 @@ export class ProgressSpinnerComponent {
      */
     private setProgressTransform(progress: number) {
         if (progress <= 50) {
-            const rightDegrees = progress / 50 * 180 - 135;
+            const rightDegrees = (progress / 50) * 180 - 135;
             this._rightCircleTransform = `rotate(${rightDegrees}deg)`;
             this._leftCircleTransform = `rotate(135deg)`;
         } else if (progress >= 51) {
-            const leftDegrees = (progress - 50) / 50 * 180 + 135;
+            const leftDegrees = ((progress - 50) / 50) * 180 + 135;
             this._leftCircleTransform = `rotate(${leftDegrees}deg)`;
             this._rightCircleTransform = 'rotate(45deg)';
         }

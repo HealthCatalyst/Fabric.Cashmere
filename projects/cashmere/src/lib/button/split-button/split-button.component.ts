@@ -9,7 +9,7 @@ import {
     ViewEncapsulation,
     ViewChild
 } from '@angular/core';
-import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
+import {Overlay, OverlayConfig, OverlayRef, ConnectionPositionPair} from '@angular/cdk/overlay';
 import {TemplatePortal} from '@angular/cdk/portal';
 
 import {parseBooleanAttribute} from '../../util';
@@ -36,29 +36,38 @@ export class SplitButtonComponent {
     private _menuClickedCallback = this._menuClicked.bind(this);
 
     private _menuPortalHost: OverlayRef;
-    @ViewChild('menuPortal') _menuPortal: TemplatePortal<any>;
-    @ViewChild('splitBtnToggle') _splitBtnToggle: ButtonComponent;
+    @ViewChild('menuPortal')
+    _menuPortal: TemplatePortal<any>;
+    @ViewChild('splitBtnToggle')
+    _splitBtnToggle: ButtonComponent;
 
     /** Primary button's click event */
-    @Output() click = new EventEmitter<SplitButtonClickEvent>();
+    @Output()
+    click = new EventEmitter<SplitButtonClickEvent>();
 
     /** Additional information shown as tooltip */
-    @Input() title: string;
+    @Input()
+    title: string;
 
     /** Positioning for the menu. Possible values: 'start', 'end', 'center' */
-    @Input() menuPosition: string = 'end';
+    @Input()
+    menuPosition: string = 'end';
 
     /** True if clicking anywhere in the menu should automatically close it. */
-    @Input() autoCloseMenuOnClick = true;
+    @Input()
+    autoCloseMenuOnClick = true;
 
     /** Type of button. Possible values: 'submit', 'reset', 'button' */
-    @Input() type = 'button';
+    @Input()
+    type = 'button';
 
     /** Used as a reference in JavaScript, or to reference form data after a form is submitted */
-    @Input() name: string;
+    @Input()
+    name: string;
 
     /** Value of primary button when submitted within a form */
-    @Input() value: string;
+    @Input()
+    value: string;
 
     /** Button tabindex */
     @Input()
@@ -155,7 +164,12 @@ export class SplitButtonComponent {
             .position()
             .flexibleConnectedTo(this._splitBtnToggle.elementRef)
             .withFlexibleDimensions(true)
-            .withPositions([{originX: position, originY: 'bottom', overlayX: position, overlayY: 'top'}]);
+            .withPush(true)
+            .withViewportMargin(10)
+            .withPositions([
+                new ConnectionPositionPair({originX: position, originY: 'bottom'}, {overlayX: position, overlayY: 'top'}),
+                new ConnectionPositionPair({originX: position, originY: 'top'}, {overlayX: position, overlayY: 'bottom'})
+            ]);
 
         const overlayConfig = new OverlayConfig({
             hasBackdrop: true,

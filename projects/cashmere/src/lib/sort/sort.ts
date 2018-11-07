@@ -12,7 +12,8 @@ import {Directive, EventEmitter, Input, isDevMode, OnChanges, OnDestroy, OnInit,
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {SortDirection} from './sort-direction';
 import {getSortDuplicateSortableIdError, getSortHeaderMissingIdError, getSortInvalidDirectionError} from './sort-errors';
-import {Observable, Subject, Subscriber} from 'rxjs';
+import {Subject} from 'rxjs';
+import {Initailizable} from '../shared/initializable';
 
 /** Interface for a directive that holds sorting state consumed by `HcSortHeaderComponent`. */
 export interface HcSortable {
@@ -40,7 +41,7 @@ export interface Sort {
     selector: '[hcSort]',
     exportAs: 'hcSort'
 })
-export class HcSort implements OnChanges, OnDestroy, OnInit {
+export class HcSort extends Initailizable implements OnChanges, OnDestroy, OnInit {
     /** Collection of all registered sortables that this directive manages. */
     sortables = new Map<string, HcSortable>();
 
@@ -48,13 +49,15 @@ export class HcSort implements OnChanges, OnDestroy, OnInit {
     readonly _stateChanges = new Subject<never>();
 
     /** The id of the most recently sorted HcSortable. */
-    @Input('hcSortActive') active: string;
+    @Input('hcSortActive')
+    active: string;
 
     /**
      * The direction to set when an HcSortable is initially sorted.
      * May be overriden by the HcSortable's sort start.
      */
-    @Input('hcSortStart') start: 'asc' | 'desc' = 'asc';
+    @Input('hcSortStart')
+    start: 'asc' | 'desc' = 'asc';
 
     /** The sort direction of the currently active HcSortable. */
     @Input('hcSortDirection')
@@ -92,53 +95,8 @@ export class HcSort implements OnChanges, OnDestroy, OnInit {
     private _disabled: boolean = false;
 
     /** Event emitted when the user changes either the active sort or sort direction. */
-    @Output('hcSortChange') readonly sortChange: EventEmitter<Sort> = new EventEmitter<Sort>();
-
-    /** Whether this directive has been marked as initialized. */
-    _isInitialized = false;
-
-    /**
-     * List of subscribers that subscribed before the directive was initialized. Should be notified
-     * during _markInitialized. Set to null after pending subscribers are notified, and should
-     * not expect to be populated after.
-     */
-    _pendingSubscribers: Subscriber<never>[] | null = [];
-
-    /**
-     * Observable stream that emits when the directive initializes. If already initialized, the
-     * subscriber is stored to be notified once _markInitialized is called.
-     */
-    initialized = new Observable<never>(subscriber => {
-        // If initialized, immediately notify the subscriber. Otherwise store the subscriber to notify
-        // when _markInitialized is called.
-        if (this._isInitialized) {
-            this._notifySubscriber(subscriber);
-        } else {
-            this._pendingSubscribers!.push(subscriber);
-        }
-    });
-
-    /**
-     * Marks the state as initialized and notifies pending subscribers. Should be called at the end
-     * of ngOnInit.
-     * @docs-private
-     */
-    _markInitialized(): void {
-        if (this._isInitialized) {
-            throw Error('This directive has already been marked as initialized and ' + 'should not be called twice.');
-        }
-
-        this._isInitialized = true;
-
-        this._pendingSubscribers!.forEach(this._notifySubscriber);
-        this._pendingSubscribers = null;
-    }
-
-    /** Emits and completes the subscriber stream (should only emit once). */
-    _notifySubscriber(subscriber: Subscriber<never>): void {
-        subscriber.next();
-        subscriber.complete();
-    }
+    @Output('hcSortChange')
+    readonly sortChange: EventEmitter<Sort> = new EventEmitter<Sort>();
 
     /**
      * Register function to be used by the contained HcSortables. Adds the HcSortable to the

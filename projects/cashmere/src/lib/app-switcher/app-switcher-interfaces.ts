@@ -1,4 +1,5 @@
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
+import {InjectionToken} from '@angular/core';
 
 export interface IDiscoveryApplication {
     ServiceName: string;
@@ -24,6 +25,18 @@ export interface IAppSwitcherService {
     getApplications(): Observable<IDiscoveryRequest>;
 }
 
+export const APP_SWITCHER_SERVICE = new InjectionToken<IAppSwitcherService>('IAppSwitcherService');
+
 export interface IAppSwitcherConfig {
     discoveryServiceUri: string;
+}
+
+export const APP_SWITCHER_CONFIG = new InjectionToken<IAppSwitcherConfig>('IAppSwitcherConfig');
+
+export class MockAppSwitcherService implements IAppSwitcherService {
+    allApplicationsUri: string;
+
+    getApplications(): Observable<IDiscoveryRequest> {
+        return of({value: []});
+    }
 }

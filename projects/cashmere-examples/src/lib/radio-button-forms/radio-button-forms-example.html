@@ -1,9 +1,9 @@
-<div class="example-group">
-    <span class="group-label">Select your favorite:</span>
-    <hc-radio-group vertical="false" [(ngModel)]="favoriteShow">
+<hc-form-field inline="true">
+    <hc-label>Select your favorite:</hc-label>
+    <hc-radio-group [(ngModel)]="favoriteShow" inline="true">
         <hc-radio-button *ngFor="let show of shows" [value]="show">{{show}}</hc-radio-button>
     </hc-radio-group>
-</div>
+</hc-form-field>
 
 <p>Current selection: {{favoriteShow ? favoriteShow : 'none'}}</p>
 <button hc-button title="Primary-Alt Button" buttonStyle="primary-alt" (click)="reset()">

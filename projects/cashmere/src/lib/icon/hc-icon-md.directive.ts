@@ -5,5 +5,6 @@ import {Directive, HostBinding} from '@angular/core';
     selector: '[hcIconMd]'
 })
 export class HcIconMediumDirective {
-    @HostBinding('class.hc-icon-md') _hostHcIconMediumClass = true;
+    @HostBinding('class.hc-icon-md')
+    _hostHcIconMediumClass = true;
 }

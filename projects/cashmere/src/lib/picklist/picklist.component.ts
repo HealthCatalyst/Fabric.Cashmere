@@ -68,10 +68,13 @@ export class PicklistComponent implements ControlValueAccessor {
         return this.picklistSettings.rightHeaderText;
     }
 
-    @ViewChild('availableList') public _available: PicklistPaneComponent | undefined;
-    @ViewChild('confirmedList') public _confirmed: PicklistPaneComponent | undefined;
+    @ViewChild('availableList')
+    public _available: PicklistPaneComponent | undefined;
+    @ViewChild('confirmedList')
+    public _confirmed: PicklistPaneComponent | undefined;
     /** Fired when a change is made to the picklist selection. */
-    @Output() public changed = new EventEmitter();
+    @Output()
+    public changed = new EventEmitter();
     private picklistSettings = new PicklistSettings();
     public get _leftToRightMoveBtnIsDisabled(): boolean {
         return this._available ? !this._available.isAnySelected() : false;

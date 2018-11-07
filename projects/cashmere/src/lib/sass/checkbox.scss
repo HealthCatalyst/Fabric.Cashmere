@@ -2,6 +2,8 @@
 
 @mixin hc-checkbox-container() {
     overflow: hidden;
+    display: flex;
+    padding: 3px 0;
 }
 
 @mixin hc-checkbox-content() {
@@ -52,7 +54,7 @@
 
 @mixin hc-checkbox-overlay-disabled() {
     background-color: $gray-200;
-    border-color: $gray-300;
+    border: 2px solid $gray-300 !important;
 }
 
 @mixin hc-checkbox-overlay-hover() {
@@ -69,4 +71,8 @@
 
 @mixin hc-checkbox-input() {
     display: none;
+}
+
+@mixin hc-checkbox-invalid() {
+    border-color: $error !important;
 }

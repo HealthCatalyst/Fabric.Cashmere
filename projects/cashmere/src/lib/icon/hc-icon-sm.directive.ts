@@ -5,5 +5,6 @@ import {Directive, HostBinding} from '@angular/core';
     selector: '[hcIconSm]'
 })
 export class HcIconSmallDirective {
-    @HostBinding('class.hc-icon-sm') _hostHcIconSmallClass = true;
+    @HostBinding('class.hc-icon-sm')
+    _hostHcIconSmallClass = true;
 }

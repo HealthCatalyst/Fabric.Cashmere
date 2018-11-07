@@ -41,3 +41,7 @@
         @include hc-split-button-toggle();
     }
 }
+
+.hc-filters-icon {
+    @include hc-filters-icon();
+}
