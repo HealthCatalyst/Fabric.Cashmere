@@ -28,22 +28,10 @@
         "postbuild": "npm run copy-assets",
         "precopy-assets": "npm run docs",
         "copy-assets": "node scripts/guide-copy-assets.js",
-        "precommit": "lint-staged",
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "cm": "git-cz",
         "semantic-release": "semantic-release",
         "prettier": "prettier --write \"**/*.{ts,js,scss,css,md,json}\""
-    },
-    "lint-staged": {
-        "*.{js,scss,css,md,json}": [
-            "prettier --write",
-            "git add"
-        ],
-        "*.{ts}": [
-            "prettier --write",
-            "npm run lint --fix",
-            "git add"
-        ]
     },
     "dependencies": {
         "@angular/animations": "6.1.7",

@@ -10,10 +10,6 @@ import {IAppSwitcherService, IDiscoveryApplication, APP_SWITCHER_SERVICE} from '
     styleUrls: ['./app-switcher.component.scss']
 })
 export class AppSwitcherComponent implements OnInit, OnDestroy {
-    /** Image of brand icon */
-    @Input()
-    brandIcon: string = '';
-
     public applications: IDiscoveryApplication[];
     public subscription: Subscription;
     public brandBg = 'brand';
@@ -34,13 +30,5 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.ngUnsubscribe.next();
         this.ngUnsubscribe.complete();
-    }
-
-    buttonOn() {
-        this.brandBg = 'brand brandOn';
-    }
-
-    buttonOff() {
-        this.brandBg = 'brand';
     }
 }

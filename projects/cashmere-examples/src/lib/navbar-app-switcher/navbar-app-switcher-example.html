@@ -1,5 +1,4 @@
 <hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" [homeUri]="undefined" [fixedTop]="false">
-    <hc-app-switcher brandIcon="./assets/TriFlame.svg"></hc-app-switcher>
     <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
@@ -7,7 +6,7 @@
     <hc-navbar-link [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Rehabilition"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
-    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-search"></hc-icon>
+    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-th" [hcPopover]="appSwitcher" popperPlacement="bottom"></hc-icon>
     <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-question-circle-o" [hcPopover]="options" popperPlacement="bottom"></hc-icon>
     <span class="hc-navbar-vertical-separator"></span>
     <div class="hc-navbar-username" *ngIf="user" [hcPopover]="user" popperPlacement="bottom">
@@ -49,6 +48,10 @@
         <hc-app-switcher-links></hc-app-switcher-links>
     </hc-navbar-mobile-menu>
 </hc-navbar>
+
+<hc-popover-content #appSwitcher>
+    <hc-app-switcher></hc-app-switcher>
+</hc-popover-content>
 
 <hc-popover-content #options>
     <ul class="list-options">

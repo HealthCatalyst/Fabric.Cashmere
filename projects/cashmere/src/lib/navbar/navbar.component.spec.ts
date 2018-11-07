@@ -8,14 +8,13 @@ import {Component} from '@angular/core';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {NavbarModule} from './navbar.module';
 import {ListModule} from '../list/list.module';
-import {AppSwitcherService, APP_SWITCHER_SERVICE} from '../app-switcher';
 
 @Component({
     template: `
     <hc-navbar brandIcon="./assets/TriFlame.svg" user="Christine K."
         [homeUri]="undefined" [fixedTop]="false">
     <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
-    <hc-navbar-mobile-menu appSwitcher="false">
+    <hc-navbar-mobile-menu>
         <hc-list>
             <hc-list-item routerLink="/home" routerLinkActive="active-link">
                 <span hcListLine>Home</span>
@@ -42,9 +41,5 @@ describe('NavbarComponent', () => {
         fixture = TestBed.createComponent(TestAppComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
-    });
-
-    it('should create without IAppSwitcher', () => {
-        expect(component).toBeTruthy();
     });
 });
