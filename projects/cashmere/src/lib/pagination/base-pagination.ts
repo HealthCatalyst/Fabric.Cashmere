@@ -1,12 +1,14 @@
-import {EventEmitter, Input, Output, OnInit} from '@angular/core';
+import {EventEmitter, Input, Output, OnInit, Component} from '@angular/core';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
 import {Initailizable} from '../shared/initializable';
 import {PageEvent} from './page-event';
 
 /**
  * Base Pagination class for shared functionality
- * @docs-private
  * */
+@Component({
+    template: ''
+})
 export class BasePaginationComponent extends Initailizable implements OnInit {
     public static _DEFAULT_PAGE_SIZE = 20;
 
@@ -22,7 +24,7 @@ export class BasePaginationComponent extends Initailizable implements OnInit {
     }
     private _length: number = 0;
 
-    /** The currently displayed page. *Defaulted to 1.* */
+    /** The currently displayed page. *Defaults to 1.* */
     @Input()
     get pageNumber(): number {
         return this._pageNumber;
@@ -34,7 +36,7 @@ export class BasePaginationComponent extends Initailizable implements OnInit {
     }
     private _pageNumber: number = 1;
 
-    /** Number of items to display on a page. *By default set to 20.* */
+    /** Number of items to display on a page. *Defaults to 20.* */
     @Input()
     get pageSize(): number {
         return this._pageSize;

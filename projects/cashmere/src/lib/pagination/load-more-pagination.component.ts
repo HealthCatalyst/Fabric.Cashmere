@@ -3,19 +3,21 @@ import {validateStyleInput} from '../button/button.component';
 import {BasePaginationComponent} from './base-pagination';
 
 /** A simple "load more" pagination button.
+ * @inheritdoc
  * */
 @Component({
     selector: 'hc-load-more-pagination',
-    templateUrl: './load-more-pagination.component.html'
+    templateUrl: './load-more-pagination.component.html',
+    styleUrls: ['./load-more-pagination.component.scss']
 })
 export class LoadMorePaginationComponent extends BasePaginationComponent implements OnInit {
     /**
-     * Text to show on the button
+     * Text to show on the button. *Defaults to 'Load more'.*
      */
     @Input() buttonText = 'Load more';
 
     /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'`.
-     * *Defaults to `primary-alt`.*
+     * *Defaults to `'secondary'`.*
      */
     @Input()
     get buttonStyle(): string {
@@ -26,7 +28,7 @@ export class LoadMorePaginationComponent extends BasePaginationComponent impleme
         validateStyleInput(btnStyle);
         this._style = btnStyle;
     }
-    private _style: string = 'primary-alt';
+    private _style: string = 'secondary';
 
     _loadNextPage() {
         if (this._isLastPage) {

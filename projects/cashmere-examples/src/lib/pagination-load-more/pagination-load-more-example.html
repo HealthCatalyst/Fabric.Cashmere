@@ -1,26 +1,31 @@
-<hc-form-field inline>
-    <hc-label>Button text</hc-label>
-    <input hcInput [(ngModel)]="buttonText">
-</hc-form-field>
-<hc-form-field inline>
-    <hc-label>Number of items</hc-label>
-    <input hcInput type="number" [(ngModel)]="length">
-</hc-form-field>
-<hc-form-field inline>
-    <hc-label>Current page number:</hc-label>
-    <input hcInput type="number" [(ngModel)]="pageNumber">
-</hc-form-field>
-<hc-form-field inline>
-    <hc-label>Indices displayed:</hc-label>
-    <input hcInput [value]="displayed" disabled>
-</hc-form-field>
+<table hc-table [dataSource]="dataSource">
 
-<hr>
+    <!-- Position Column -->
+    <ng-container hcColumnDef="position">
+        <th hc-header-cell *hcHeaderCellDef>No.</th>
+        <td hc-cell *hcCellDef="let element">{{element.position}}</td>
+    </ng-container>
 
-<hc-load-more-pagination
-    [length]="length"
-    [buttonText]="buttonText"
-    [pageNumber]="pageNumber"
-    [pageSize]="pageSize"
-    (page)="onLoadMore($event)">
-</hc-load-more-pagination>
+    <!-- Name Column -->
+    <ng-container hcColumnDef="name">
+        <th hc-header-cell *hcHeaderCellDef>Name</th>
+        <td hc-cell *hcCellDef="let element">{{element.name}}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container hcColumnDef="weight">
+        <th hc-header-cell *hcHeaderCellDef>Weight</th>
+        <td hc-cell *hcCellDef="let element">{{element.weight}}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container hcColumnDef="symbol">
+        <th hc-header-cell *hcHeaderCellDef>Symbol</th>
+        <td hc-cell *hcCellDef="let element">{{element.symbol}}</td>
+    </ng-container>
+
+    <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
+    <tr hc-row *hcRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<hc-load-more-pagination [length]="length" pageSize="5"></hc-load-more-pagination>

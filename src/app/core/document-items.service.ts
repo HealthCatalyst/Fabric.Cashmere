@@ -77,7 +77,7 @@ const docs: DocItem[] = [
     {
         id: 'table',
         name: 'Table',
-        examples: ['table-overview', 'table-sort', 'table-filter', 'table-page', 'table-load-more'],
+        examples: ['table-overview', 'table-sort', 'table-filter'],
         usageDoc: true
     },
     {
