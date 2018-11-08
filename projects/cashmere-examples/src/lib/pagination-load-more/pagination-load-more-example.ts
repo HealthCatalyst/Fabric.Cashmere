@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {PaginationComponent, HcTableDataSource} from '@healthcatalyst/cashmere';
+import {LoadMorePaginationComponent, HcTableDataSource} from '@healthcatalyst/cashmere';
 
 export interface PeriodicElement {
     name: string;
@@ -32,27 +32,25 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 /**
- * @title Table paging
+ * @title Simple button pagination
  */
 @Component({
-    selector: 'table-page-example',
-    templateUrl: 'table-page-example.html',
-    styleUrls: ['table-page-example.css']
+    selector: 'pagination-load-more-example',
+    templateUrl: 'pagination-load-more-example.html',
+    styleUrls: ['pagination-load-more-example.css']
 })
-export class TablePageExample implements OnInit {
+export class PaginationLoadMoreExample implements OnInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
     dataSource: HcTableDataSource<PeriodicElement>;
-    pageNumber = 1;
-    pageOpts = [5, 10, 20];
     get length(): number {
         return ELEMENT_DATA.length;
     }
 
-    @ViewChild(PaginationComponent)
-    paginator: PaginationComponent;
+    @ViewChild(LoadMorePaginationComponent)
+    loadMoreBtn: LoadMorePaginationComponent;
 
     ngOnInit(): void {
         this.dataSource = new HcTableDataSource(ELEMENT_DATA);
-        this.dataSource.paginator = this.paginator;
+        this.dataSource.paginator = this.loadMoreBtn;
     }
 }

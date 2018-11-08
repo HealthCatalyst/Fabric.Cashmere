@@ -12,13 +12,22 @@ import {BehaviorSubject, combineLatest, merge, Observable, of as observableOf, S
 // import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {HcSort, Sort} from '../sort/index';
 import {map} from 'rxjs/operators';
-import {PaginationComponent, PageEvent} from '../pagination/index';
+import {PaginationComponent, LoadMorePaginationComponent, PageEvent} from '../pagination/index';
+import {BasePaginationComponent} from '../pagination/base-pagination';
 
 /**
  * Corresponds to `Number.MAX_SAFE_INTEGER`. Moved out into a variable here due to
  * flaky browser support and the value not being defined in Closure's typings.
  */
 const MAX_SAFE_INTEGER = 9007199254740991;
+
+/**
+ * Use to see what kind of pager we have
+ */
+export function _isLoadMorePaginator(pager: BasePaginationComponent): pager is LoadMorePaginationComponent {
+    const loadMorePager = <LoadMorePaginationComponent>pager;
+    return loadMorePager && loadMorePager.buttonText !== undefined;
+}
 
 /**
  * Data source that accepts a client-side data array and includes native support of filtering,
@@ -94,14 +103,14 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * e.g. `[pageLength]=100` or `[pageIndex]=1`, then be sure that the paginator's view has been
      * initialized before assigning it to this data source.
      */
-    get paginator(): PaginationComponent | null {
+    get paginator(): BasePaginationComponent | null {
         return this._paginator;
     }
-    set paginator(paginator: PaginationComponent | null) {
+    set paginator(paginator: BasePaginationComponent | null) {
         this._paginator = paginator;
         this._updateChangeSubscription();
     }
-    private _paginator: PaginationComponent | null;
+    private _paginator: BasePaginationComponent | null;
 
     /**
      * Data accessor function that is used for accessing data properties for sorting through
@@ -265,11 +274,13 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * index and length. If there is no paginator provided, returns the data array as provided.
      */
     _pageData(data: T[]): T[] {
-        if (!this.paginator) {
+        const pager = this.paginator;
+        if (!pager) {
             return data;
         }
-        const startIndex = (this.paginator.pageNumber - 1) * this.paginator.pageSize;
-        return data.slice().splice(startIndex, this.paginator.pageSize);
+        const startIndex = _isLoadMorePaginator(pager) ? 0 : (pager.pageNumber - 1) * pager.pageSize;
+        const numElsToGrab = _isLoadMorePaginator(pager) ? pager.pageNumber * pager.pageSize : pager.pageSize;
+        return data.slice().splice(startIndex, numElsToGrab);
     }
 
     /**
