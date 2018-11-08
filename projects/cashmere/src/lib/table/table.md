@@ -169,7 +169,6 @@ takes a data object and filter string and returns true if the data object is con
 There are cashmere pagination components available for usage. To learn about how to implement those, visit the
 [pagination component examples](/components/pagination/examples).
 
-
 #### Selection
 
 Right now there is no formal support for adding a selection UI to the table, but Cashmere

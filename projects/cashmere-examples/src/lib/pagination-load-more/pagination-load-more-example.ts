@@ -46,7 +46,8 @@ export class PaginationLoadMoreExample implements OnInit {
         return ELEMENT_DATA.length;
     }
 
-    @ViewChild(LoadMorePaginationComponent) loadMoreBtn: LoadMorePaginationComponent;
+    @ViewChild(LoadMorePaginationComponent)
+    loadMoreBtn: LoadMorePaginationComponent;
 
     ngOnInit(): void {
         this.dataSource = new HcTableDataSource(ELEMENT_DATA);

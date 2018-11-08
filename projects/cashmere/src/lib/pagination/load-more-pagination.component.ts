@@ -14,7 +14,8 @@ export class LoadMorePaginationComponent extends BasePaginationComponent impleme
     /**
      * Text to show on the button. *Defaults to 'Load more'.*
      */
-    @Input() buttonText = 'Load more';
+    @Input()
+    buttonText = 'Load more';
 
     /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'`.
      * *Defaults to `'secondary'`.*
