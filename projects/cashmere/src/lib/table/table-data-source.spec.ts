@@ -1,25 +1,6 @@
 import {PaginationComponent} from '../pagination/pagination.component';
 import {HcTableDataSource} from './table-data-source';
 
-describe('HcTableDataSource', () => {
-    let pager: PaginationComponent;
-    let dataSource: HcTableDataSource<PeriodicElement>;
-    beforeEach(() => {
-        pager = new PaginationComponent();
-    });
-
-    describe('when paged', () => {
-        describe('appropriately sets the page after new data is added', () => {
-            it('page should be 1', () => {
-                dataSource = new HcTableDataSource([]);
-                dataSource.paginator = pager;
-                dataSource.data = ELEMENT_DATA;
-                expect(dataSource.paginator.pageNumber).toBe(1);
-            });
-        });
-    });
-});
-
 interface PeriodicElement {
     name: string;
     position: number;
@@ -49,3 +30,22 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {position: 19, name: 'CasFluorine', weight: 180.9984, symbol: 'CF'},
     {position: 20, name: 'CasNeon', weight: 200.1797, symbol: 'CNe'}
 ];
+
+describe('HcTableDataSource', () => {
+    let pager: PaginationComponent;
+    let dataSource: HcTableDataSource<PeriodicElement>;
+    beforeEach(() => {
+        pager = new PaginationComponent();
+    });
+
+    describe('when paged', () => {
+        describe('appropriately sets the page after new data is added', () => {
+            it('page should be 1', () => {
+                dataSource = new HcTableDataSource([]);
+                dataSource.paginator = pager;
+                dataSource.data = ELEMENT_DATA;
+                expect(dataSource.paginator.pageNumber).toBe(1);
+            });
+        });
+    });
+});
