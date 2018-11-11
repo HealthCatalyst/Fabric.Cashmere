@@ -1,0 +1,52 @@
+<ng-template #templateToast>
+    <div class="custom-toast">
+        <div class="spinner-container"><hc-progress-spinner diameter="70" color="white"></hc-progress-spinner></div>
+        <span>This is entirely <strong>custom</strong> toast created using a template</span>
+    </div>
+</ng-template>
+
+<div class="example-column">
+    <hc-form-field class="example-field">
+        <hc-label>Header Text:</hc-label>
+        <input hcInput [(ngModel)]="toastHeader" />
+    </hc-form-field>
+
+    <hc-form-field class="example-field">
+        <hc-label>Body Text:</hc-label>
+        <input hcInput [(ngModel)]="toastBody" />
+    </hc-form-field>
+
+    <hc-form-field class="example-field">
+        <hc-label>Toast Type:</hc-label>
+        <hc-select [(ngModel)]="toastType">
+            <option value="success">Success</option> <option value="info">Info</option> <option value="warning">Warning</option>
+            <option value="alert">Alert</option> <option value="custom">Custom</option>
+        </hc-select>
+    </hc-form-field>
+</div>
+<div class="example-column">
+    <hc-form-field class="example-field">
+        <hc-label>Toast Position:</hc-label>
+        <hc-select [(ngModel)]="toastPosition">
+            <option value="top-right">Top Right</option> <option value="top-center">Top Center</option>
+            <option value="top-left">Top Left</option> <option value="top-full-width">Top Full Width</option>
+            <option value="bottom-right">Bottom Right</option> <option value="bottom-center">Bottom Center</option>
+            <option value="bottom-left">Bottom Left</option> <option value="bottom-full-width">Bottom Full Width</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field class="example-field">
+        <hc-label>Timeout:</hc-label>
+        <input hcInput type="number" [(ngModel)]="toastTimeout" />
+    </hc-form-field>
+
+    <hc-form-field class="example-field">
+        <hc-label>Event Handling:</hc-label>
+        <hc-checkbox [(ngModel)]="toastClick">Allow clicks to dismiss toast</hc-checkbox>
+    </hc-form-field>
+</div>
+<div class="button-row">
+    <button hc-button buttonStyle="primary" (click)="showToast(templateToast)" class="demo-button">Display Toaster Message</button>
+    <button hc-button buttonStyle="secondary" (click)="closeLastToast()" class="demo-button">Close Last Toast</button>
+    <button hc-button buttonStyle="secondary" (click)="closeAllToasts()" class="demo-button">Close All Toasts</button>
+</div>

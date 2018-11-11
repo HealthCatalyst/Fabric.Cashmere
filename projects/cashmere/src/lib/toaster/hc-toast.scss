@@ -1,0 +1,57 @@
+@import '../sass/colors';
+@import '../sass/functions.scss';
+@import '../sass/mixins.scss';
+
+:host {
+    width: 100%;
+}
+
+.hc-toast {
+    box-sizing: border-box;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: block;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.hc-toast-dismiss {
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.hc-toast-success {
+    background-color: $green;
+}
+
+.hc-toast-info {
+    background-color: $blue;
+}
+
+.hc-toast-warning {
+    background-color: $orange;
+}
+
+.hc-toast-alert {
+    background-color: $red;
+}
+
+.hc-toast-content {
+    color: $white;
+    display: flex;
+    align-content: center;
+    padding: 15px;
+    min-width: 300px;
+}
+.hc-toast-icon {
+    padding-right: 20px;
+}
+
+.hc-toast-header {
+    font-weight: 600;
+    @include fontSize(18px);
+    margin-bottom: 4px;
+}
+
+.hc-toast-body {
+    @include fontSize(12px);
+}
