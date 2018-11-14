@@ -45,6 +45,9 @@ export class HcToasterService {
             _toastRef._componentInstance._closeClick.subscribe(() => {
                 this._removeToastPointer(_toastRef);
                 _toastRef.close();
+                if (options.toastClosed) {
+                    options.toastClosed();
+                }
                 _toastRef._componentInstance._animationStateChanged
                     .pipe(
                         filter(event => event.phaseName === 'done' && event.toState === 'leave'),
@@ -90,6 +93,9 @@ export class HcToasterService {
             setTimeout(() => {
                 this._removeToastPointer(_toastRef);
                 _toastRef.close();
+                if (options.toastClosed) {
+                    options.toastClosed();
+                }
                 _toastRef._componentInstance._animationStateChanged
                     .pipe(
                         filter(event => event.phaseName === 'done' && event.toState === 'leave'),

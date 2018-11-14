@@ -17,7 +17,7 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
     ]
 })
 export class HcToastComponent {
-    _styleTypeVal: string = 'success';
+    _styleType: string = 'success';
     _toastIcon: string = 'fa-check-circle';
     _headerText: string;
     _bodyText: string;
@@ -28,22 +28,6 @@ export class HcToastComponent {
     _toastContent: TemplateRef<any>;
 
     constructor(public _el: ElementRef) {}
-
-    get _styleType(): string {
-        return this._styleTypeVal;
-    }
-    set _styleType(typeVal: string) {
-        this._styleTypeVal = typeVal;
-        if (typeVal === 'success') {
-            this._toastIcon = 'fa-check-circle';
-        } else if (typeVal === 'info') {
-            this._toastIcon = 'fa-info-circle';
-        } else if (typeVal === 'warning') {
-            this._toastIcon = 'fa-exclamation-triangle';
-        } else if (typeVal === 'alert') {
-            this._toastIcon = 'fa-times-circle';
-        }
-    }
 
     _onAnimationStart(event: AnimationEvent) {
         this._animationStateChanged.emit(event);

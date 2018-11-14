@@ -13,6 +13,9 @@ export interface HcToastOptions {
     /** Timeout value in milliseconds sets the amount of time the toast is displayed.
      *  Defaults to 5000. A value of 0 means the toast will not auto-dismiss.*/
     timeout?: number;
-    /** When set to true, the user may click the Toast to dismiss it.  Defaults to false.*/
+    /** When set to true, the user may click the Toast to dismiss it and a close icon is added
+     * to the right side for standard types.  Defaults to false.*/
     clickDismiss?: boolean;
+    /** Function to be called when the toast is closed*/
+    toastClosed?: Function;
 }
