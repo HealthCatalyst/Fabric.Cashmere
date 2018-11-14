@@ -26,7 +26,7 @@
 }
 
 @mixin hc-checkbox-label() {
-    margin-left: 12px;
+    padding: 4px 0 4px 12px;
 }
 
 @mixin hc-checkbox-overlay() {
