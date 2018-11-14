@@ -13,7 +13,7 @@ const docs: DocItem[] = [
     {
         id: 'button',
         name: 'Button',
-        examples: ['button-primary', 'button-split', 'button-secondary', 'button-disabled', 'button-anchor', 'button-link', 'button-icon']
+        examples: ['button-primary', 'button-split', 'button-secondary', 'button-anchor', 'button-link', 'button-icon']
     },
     {
         id: 'checkbox',
