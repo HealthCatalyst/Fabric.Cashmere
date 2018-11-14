@@ -4,7 +4,7 @@
 import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 
-const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'link', 'link-inline'];
+const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
 
 export function validateStyleInput(style: string) {
     if (supportedStyles.indexOf(style) < 0) {
@@ -43,7 +43,8 @@ export class ButtonComponent {
         this.buttonStyle = btnStyle;
     }
 
-    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'` */
+    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' |
+     * 'neutral' | 'secondary' | 'minimal' | link' | 'link-inline'` */
     @Input()
     get buttonStyle(): string {
         return this._style;

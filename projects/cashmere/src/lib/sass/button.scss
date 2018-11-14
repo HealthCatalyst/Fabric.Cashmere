@@ -94,6 +94,25 @@ $btn-icon-sz: 18px;
         color: $gray-600;
     }
 }
+@mixin hc-button-minimal() {
+    background-color: transparent;
+    color: $gray-500;
+
+    &:hover {
+        color: $offblack;
+        background-color: $gray-200;
+    }
+    &:active {
+        background-color: darken($gray-200, 5%);
+    }
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus,
+    &[disabled]:active {
+        background-color: transparent;
+        color: $gray-300;
+    }
+}
 
 // Link button
 

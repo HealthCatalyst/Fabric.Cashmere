@@ -18,6 +18,9 @@
     &.hc-secondary {
         @include hc-button-secondary();
     }
+    &.hc-minimal {
+        @include hc-button-minimal();
+    }
     &.hc-link,
     &.hc-link-inline {
         @include hc-button-link();
