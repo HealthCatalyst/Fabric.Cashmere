@@ -172,7 +172,6 @@ export class SplitButtonComponent {
 
     private _getOverlayConfig(): OverlayConfig {
         const position = this._getPositionForMenu();
-        console.log('toggle', this._splitBtnToggle.elementRef);
         const positionStrategy = this.overlay
             .position()
             .flexibleConnectedTo(this._splitBtnToggle.elementRef)
@@ -183,7 +182,6 @@ export class SplitButtonComponent {
                 new ConnectionPositionPair({originX: position, originY: 'bottom'}, {overlayX: position, overlayY: 'top'}),
                 new ConnectionPositionPair({originX: position, originY: 'top'}, {overlayX: position, overlayY: 'bottom'})
             ]);
-        console.log('positionStrategy', positionStrategy);
 
         const overlayConfig = new OverlayConfig({
             hasBackdrop: true,
