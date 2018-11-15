@@ -86,6 +86,7 @@ const docs: DocItem[] = [
         examples: ['tabs-horizontal', 'tabs-vertical']
     },
     {id: 'tile', name: 'Tile', examples: ['tile-overview']},
+    {id: 'toaster', name: 'Toaster Messages', examples: ['toaster-overview']},
     {
         id: 'typeform-survey',
         name: 'Typeform Survey',
