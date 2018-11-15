@@ -13,7 +13,7 @@ import {Overlay, OverlayConfig, OverlayRef, ConnectionPositionPair} from '@angul
 import {TemplatePortal} from '@angular/cdk/portal';
 
 import {parseBooleanAttribute} from '../../util';
-import {validateStyleInput, ButtonComponent} from '../button.component';
+import {validateStyleInput, validateSizeInput, ButtonComponent} from '../button.component';
 
 /** SplitButton click event */
 export class SplitButtonClickEvent {
@@ -33,6 +33,7 @@ export class SplitButtonComponent {
     private _tabIndex: number;
     private _disabled: boolean = false;
     private _style: string = 'primary';
+    private _size: string = 'md';
     private _menuClickedCallback = this._menuClicked.bind(this);
 
     private _menuPortalHost: OverlayRef;
@@ -103,6 +104,17 @@ export class SplitButtonComponent {
         this._style = btnStyle;
     }
 
+    /** Sets size of button. Choose from: `'sm' | 'md' | 'lg'` */
+    @Input()
+    get size(): string {
+        return this._size;
+    }
+
+    set size(size: string) {
+        validateSizeInput(size);
+        this._size = size;
+    }
+
     /** Whether the control is disabled. */
     @Input()
     get disabled(): boolean {
@@ -160,6 +172,7 @@ export class SplitButtonComponent {
 
     private _getOverlayConfig(): OverlayConfig {
         const position = this._getPositionForMenu();
+        console.log('toggle', this._splitBtnToggle.elementRef);
         const positionStrategy = this.overlay
             .position()
             .flexibleConnectedTo(this._splitBtnToggle.elementRef)
@@ -170,6 +183,7 @@ export class SplitButtonComponent {
                 new ConnectionPositionPair({originX: position, originY: 'bottom'}, {overlayX: position, overlayY: 'top'}),
                 new ConnectionPositionPair({originX: position, originY: 'top'}, {overlayX: position, overlayY: 'bottom'})
             ]);
+        console.log('positionStrategy', positionStrategy);
 
         const overlayConfig = new OverlayConfig({
             hasBackdrop: true,
