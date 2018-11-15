@@ -83,8 +83,8 @@ $btn-icon-sz: 18px;
     padding: 0 30px;
     height: 40px;
     min-width: 200px;
-    @include fontSize(18px);
-    line-height: 18px;
+    @include fontSize(17px);
+    line-height: 17px;
 }
 
 @mixin hc-button-primary() {
