@@ -1,5 +1,6 @@
 @import '../sass/colors';
 @import '../sass/functions.scss';
+@import '../sass/mixins';
 
 $btn-icon-sz: 18px;
 
@@ -66,7 +67,7 @@ $btn-icon-sz: 18px;
     padding: 3px 12px;
     height: 26px;
     min-width: auto;
-    font-size: 14px;
+    @include fontSize(14px);
     line-height: 14px;
 }
 
@@ -74,15 +75,15 @@ $btn-icon-sz: 18px;
     padding: 0 20px;
     height: 35px;
     min-width: 150px;
-    font-size: 15px;
+    @include fontSize(15px);
     line-height: 15px;
 }
 
 @mixin hc-button-lg() {
     padding: 0 30px;
-    height: 45px;
+    height: 40px;
     min-width: 200px;
-    font-size: 18px;
+    @include fontSize(18px);
     line-height: 18px;
 }
 
