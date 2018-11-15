@@ -23,10 +23,6 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
 
     _componentId = this._uniqueInputId;
 
-    /** Hint displayed within the input and disappears on input.  */
-    @Input()
-    placeholder: string;
-
     /** Input type of the element. */
     @Input()
     get type(): string {

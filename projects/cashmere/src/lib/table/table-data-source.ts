@@ -298,7 +298,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
 
             // If the page index is set beyond the page, reduce it to the last page.
             if (this.paginator.pageNumber > 0) {
-                const lastPageIndex = Math.ceil(this.paginator.length / this.paginator.pageSize) - 1 || 0;
+                const lastPageIndex = Math.ceil(this.paginator.length / this.paginator.pageSize) || 1;
                 this.paginator.pageNumber = Math.min(this.paginator.pageNumber, lastPageIndex);
             }
         });
