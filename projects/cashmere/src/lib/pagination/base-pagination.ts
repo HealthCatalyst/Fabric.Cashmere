@@ -2,6 +2,8 @@ import {EventEmitter, Input, Output, OnInit, Component} from '@angular/core';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
 import {Initailizable} from '../shared/initializable';
 import {PageEvent} from './page-event';
+import {map, distinctUntilChanged} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 /**
  * Base Pagination class for shared functionality
@@ -24,6 +26,7 @@ export class BasePaginationComponent extends Initailizable implements OnInit {
     }
     private _length: number = 0;
 
+    private _pageNumber: number = 1;
     /** The currently displayed page. *Defaults to 1.* */
     @Input()
     get pageNumber(): number {
@@ -31,10 +34,15 @@ export class BasePaginationComponent extends Initailizable implements OnInit {
     }
     set pageNumber(value: number) {
         const prevPageNumber = this._pageNumber;
-        this._pageNumber = this._sanitizePageNumber(value);
-        this._emitPageEvent(prevPageNumber);
+        this._pageNumber = value;
+
+        const sanitizedValue = this._sanitizePageNumber(value);
+        if (sanitizedValue !== value) {
+            setTimeout(() => (this.pageNumber = sanitizedValue));
+        } else {
+            this._emitPageEvent(prevPageNumber);
+        }
     }
-    private _pageNumber: number = 1;
 
     /** Number of items to display on a page. *Defaults to 20.* */
     @Input()
@@ -50,6 +58,11 @@ export class BasePaginationComponent extends Initailizable implements OnInit {
     /** Event emitted when the paginator changes the page size or page index. */
     @Output()
     readonly page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
+
+    @Output()
+    readonly pageNumberChange: Observable<number> = this.page.pipe(map(e => e.pageNumber));
+    @Output()
+    readonly pageSizeChange: Observable<number> = this.page.pipe(map(e => e.pageSize));
 
     ngOnInit() {
         this._markInitialized();
@@ -81,9 +94,9 @@ export class BasePaginationComponent extends Initailizable implements OnInit {
     _changePageSize(pageSize: number) {
         // Current page needs to be updated to reflect the new page size. Navigate to the page
         // containing the previous page's first item.
-        const startIndex = (this.pageNumber - 1) * this.pageSize + 1;
+        const startIndex = (this.pageNumber - 1) * this.pageSize;
         this.pageSize = pageSize;
-        this.pageNumber = Math.ceil(startIndex / pageSize) || 1;
+        this.pageNumber = Math.ceil(startIndex / pageSize) + 1;
     }
 
     _pageSizeUpdated() {}
