@@ -22,6 +22,7 @@ import {
     SubnavModule,
     TabsModule,
     TileModule,
+    ToasterModule,
     TypeformSurveyModule
 } from '@healthcatalyst/cashmere';
 import {AppSwitcherServiceModule} from './app-switcher-service.module';
@@ -51,6 +52,7 @@ import {AppSwitcherServiceModule} from './app-switcher-service.module';
         SubnavModule,
         TabsModule,
         TileModule,
+        ToasterModule,
         TypeformSurveyModule
     ]
 })

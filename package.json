@@ -35,7 +35,7 @@
     },
     "dependencies": {
         "@angular/animations": "6.1.7",
-        "@angular/cdk": "^6.4.2",
+        "@angular/cdk": "^7.0.3",
         "@angular/common": "6.1.7",
         "@angular/compiler": "6.1.7",
         "@angular/core": "6.1.7",
@@ -99,6 +99,7 @@
         "path": "^0.12.7",
         "prettier": "^1.14.3",
         "protractor": "~5.3.1",
+        "punycode": "~1.4.1",
         "rxjs-tslint": "^0.1.4",
         "semantic-release": "^15.9.5",
         "ts-node": "^5.0.1",

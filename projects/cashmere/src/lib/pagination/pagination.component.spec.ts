@@ -1,19 +1,46 @@
 import {PaginationComponent} from './pagination.component';
+import {TestBed, ComponentFixture, inject} from '@angular/core/testing';
+import {InputModule} from '../input';
+import {IconModule} from '../icon';
+import {ButtonModule} from '../button';
+import {SelectModule} from '../select';
+import {NgZone} from '@angular/core';
 
 describe('PaginationCompoent', () => {
+    let fixture: ComponentFixture<PaginationComponent>;
     let component: PaginationComponent;
+    let zone: NgZone;
+
     beforeEach(() => {
-        component = new PaginationComponent();
+        TestBed.configureTestingModule({
+            imports: [InputModule, IconModule, ButtonModule, SelectModule],
+            declarations: [PaginationComponent]
+        }).compileComponents();
+        fixture = TestBed.createComponent(PaginationComponent);
+        component = fixture.componentInstance;
+    });
+
+    beforeEach(inject([NgZone], ngZone => (zone = ngZone)));
+
+    describe('upon initialization', () => {
+        beforeEach(() => {
+            fixture.detectChanges();
+        });
+        it('should initialize properly without errors', () => {
+            expect(component).toBeTruthy();
+        });
     });
 
     describe('.pageNumber', () => {
         describe('when there are 10 pages and `pageNumber` is set to 11', () => {
-            beforeEach(() => {
+            beforeEach(done => {
+                component.pageNumberChange.subscribe(done);
+
                 component.length = 100;
                 component.pageSize = 10;
                 component.pageNumber = 11;
             });
-            it('should be `10`', () => {
+            it('should be corrected to `10`', async () => {
                 expect(component.pageNumber).toBe(10);
             });
         });
@@ -48,7 +75,9 @@ describe('PaginationCompoent', () => {
             });
         });
         describe('when there are 10 pages and `pageNumber` is set to 0', () => {
-            beforeEach(() => {
+            beforeEach(done => {
+                component.pageNumberChange.subscribe(done);
+
                 component.length = 100;
                 component.pageSize = 10;
                 component.pageNumber = 0;
@@ -58,7 +87,9 @@ describe('PaginationCompoent', () => {
             });
         });
         describe('when there are 10 pages and `pageNumber` is set to -1', () => {
-            beforeEach(() => {
+            beforeEach(done => {
+                component.pageNumberChange.subscribe(done);
+
                 component.length = 100;
                 component.pageSize = 10;
                 component.pageNumber = -1;
