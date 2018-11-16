@@ -47,7 +47,7 @@ fdescribe('Initializable', () => {
         });
     });
     describe('when initialized is subscribed to and it is not already initialized', () => {
-        it('should add the subscriber to pendingSubscribers', () => {```
+        it('should add the subscriber to pendingSubscribers', () => {
             testInitializable.initialized.subscribe();
             expect(testInitializable._pendingSubscribers!.length).toBe(1);
         });
