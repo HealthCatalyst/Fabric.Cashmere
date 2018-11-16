@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {ColorDemoComponent} from './color/color-demo.component';
+import {IconGuideComponent} from './icons/icon-guide.component';
 import {TableDemoComponent} from './table/table-demo.component';
 import {SwatchDemoComponent} from './color/swatch-demo.component';
 import {TypographyDemoComponent} from './typography/typography-demo.component';
@@ -20,6 +21,7 @@ import {StylesComponent} from './styles.component';
     declarations: [
         StylesComponent,
         ColorDemoComponent,
+        IconGuideComponent,
         TableDemoComponent,
         SwatchDemoComponent,
         TypographyDemoComponent,
