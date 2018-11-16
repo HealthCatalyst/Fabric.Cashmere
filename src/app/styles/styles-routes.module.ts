@@ -1,6 +1,7 @@
 import {RouterModule, Routes} from '@angular/router';
 import {StylesComponent} from './styles.component';
 import {ColorDemoComponent} from './color/color-demo.component';
+import {IconGuideComponent} from './icons/icon-guide.component';
 import {TableDemoComponent} from './table/table-demo.component';
 import {TypographyDemoComponent} from './typography/typography-demo.component';
 import {CodeDemoComponent} from './code/code-demo.component';
@@ -30,6 +31,11 @@ const routes: Routes = [
                 path: 'color',
                 component: ColorDemoComponent,
                 data: {title: 'Colors'}
+            },
+            {
+                path: 'icons',
+                component: IconGuideComponent,
+                data: {title: 'Icons'}
             },
             {
                 path: 'table',
