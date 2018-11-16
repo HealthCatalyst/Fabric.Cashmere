@@ -1,11 +1,12 @@
-export function parseBooleanAttribute(value: any): boolean {
+export function parseBooleanAttribute(value: boolean | string): boolean {
     if (typeof value === 'boolean') {
         return value;
-    } else if (value.toLowerCase() === 'false') {
-        return false;
-    } else if (value.toLowerCase() === 'true' || value === '') {
-        return true;
-    } else {
-        throw Error(String(value) + ' is not a boolean value');
     }
+    if (value.toLowerCase() === 'false') {
+        return false;
+    }
+    if (value.toLowerCase() === 'true' || value === '') {
+        return true;
+    }
+    throw Error(String(value) + ' is not a boolean value');
 }

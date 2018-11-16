@@ -1,5 +1,6 @@
 @import '../sass/colors';
 @import '../sass/functions.scss';
+@import '../sass/mixins';
 
 $btn-icon-sz: 18px;
 
@@ -35,11 +36,6 @@ $btn-icon-sz: 18px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0 20px;
-    height: 35px;
-    min-width: 150px;
-    font-size: 15px;
-    line-height: 35px;
     font-weight: normal;
     text-align: center;
     white-space: nowrap;
@@ -67,6 +63,30 @@ $btn-icon-sz: 18px;
     }
 }
 
+@mixin hc-button-sm() {
+    padding: 3px 12px;
+    height: 26px;
+    min-width: auto;
+    @include fontSize(14px);
+    line-height: 14px;
+}
+
+@mixin hc-button-md() {
+    padding: 0 20px;
+    height: 35px;
+    min-width: 150px;
+    @include fontSize(15px);
+    line-height: 15px;
+}
+
+@mixin hc-button-lg() {
+    padding: 0 30px;
+    height: 40px;
+    min-width: 200px;
+    @include fontSize(17px);
+    line-height: 17px;
+}
+
 @mixin hc-button-primary() {
     @include hc-color-button($primary-action);
 }
@@ -92,6 +112,25 @@ $btn-icon-sz: 18px;
     }
     &[disabled]:hover {
         color: $gray-600;
+    }
+}
+@mixin hc-button-minimal() {
+    background-color: transparent;
+    color: $gray-500;
+
+    &:hover {
+        color: $offblack;
+        background-color: $gray-200;
+    }
+    &:active {
+        background-color: darken($gray-200, 5%);
+    }
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus,
+    &[disabled]:active {
+        background-color: transparent;
+        color: $gray-300;
     }
 }
 
@@ -197,6 +236,14 @@ $btn-icon-sz: 18px;
         font: normal normal normal 12px/1 FontAwesome;
         content: '\f078';
     }
+}
+
+@mixin hc-button-sm-toggle() {
+    padding: 3px 7px;
+}
+
+@mixin hc-button-lg-toggle() {
+    padding: 0px 16px;
 }
 
 @mixin hc-split-button-divider() {

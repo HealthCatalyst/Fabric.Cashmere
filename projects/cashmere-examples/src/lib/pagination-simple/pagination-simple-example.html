@@ -1,0 +1,5 @@
+<hc-form-field> <hc-label>Total number of items</hc-label> <input hcInput type="number" [(ngModel)]="totalItems" /> </hc-form-field>
+<hc-form-field> <hc-label>Page number</hc-label> <input hcInput type="number" [(ngModel)]="pageNumber" /> </hc-form-field>
+<hc-form-field> <hc-label>Page size</hc-label> <input hcInput type="number" [(ngModel)]="pageSize" /> </hc-form-field>
+
+<hc-pagination [(pageNumber)]="pageNumber" [(pageSize)]="pageSize" [length]="totalItems"></hc-pagination>

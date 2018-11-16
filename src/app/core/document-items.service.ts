@@ -13,7 +13,7 @@ const docs: DocItem[] = [
     {
         id: 'button',
         name: 'Button',
-        examples: ['button-primary', 'button-split', 'button-secondary', 'button-disabled', 'button-anchor', 'button-link', 'button-icon']
+        examples: ['button-type', 'button-split', 'button-size', 'button-anchor', 'button-link', 'button-icon']
     },
     {
         id: 'checkbox',
@@ -51,7 +51,7 @@ const docs: DocItem[] = [
         id: 'pagination',
         name: 'Pagination',
         usageDoc: true,
-        examples: ['pagination-overview']
+        examples: ['pagination-standard', 'pagination-load-more', 'pagination-simple']
     },
     {id: 'picklist', name: 'Picklist', examples: ['picklist-simple', 'picklist-valueset'], usageDoc: true},
     {
@@ -77,7 +77,7 @@ const docs: DocItem[] = [
     {
         id: 'table',
         name: 'Table',
-        examples: ['table-overview', 'table-sort', 'table-filter', 'table-page'],
+        examples: ['table-overview', 'table-sort', 'table-filter'],
         usageDoc: true
     },
     {
@@ -86,6 +86,7 @@ const docs: DocItem[] = [
         examples: ['tabs-horizontal', 'tabs-vertical']
     },
     {id: 'tile', name: 'Tile', examples: ['tile-overview']},
+    {id: 'toaster', name: 'Toaster Messages', examples: ['toaster-overview']},
     {
         id: 'typeform-survey',
         name: 'Typeform Survey',
