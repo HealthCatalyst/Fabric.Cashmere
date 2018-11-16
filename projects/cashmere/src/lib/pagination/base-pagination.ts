@@ -56,10 +56,13 @@ export class BasePaginationComponent extends Initailizable implements OnInit {
     private _pageSize: number = BasePaginationComponent._DEFAULT_PAGE_SIZE;
 
     /** Event emitted when the paginator changes the page size or page index. */
-    @Output() readonly page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
+    @Output()
+    readonly page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
-    @Output() readonly pageNumberChange: Observable<number> = this.page.pipe(map(e => e.pageNumber));
-    @Output() readonly pageSizeChange: Observable<number> = this.page.pipe(map(e => e.pageSize));
+    @Output()
+    readonly pageNumberChange: Observable<number> = this.page.pipe(map(e => e.pageNumber));
+    @Output()
+    readonly pageSizeChange: Observable<number> = this.page.pipe(map(e => e.pageSize));
 
     ngOnInit() {
         this._markInitialized();
