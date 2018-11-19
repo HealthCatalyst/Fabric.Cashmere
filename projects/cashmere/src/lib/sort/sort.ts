@@ -13,7 +13,7 @@ import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {SortDirection} from './sort-direction';
 import {getSortDuplicateSortableIdError, getSortHeaderMissingIdError, getSortInvalidDirectionError} from './sort-errors';
 import {Subject} from 'rxjs';
-import {Initailizable} from '../shared/initializable';
+import {Initializable} from '../shared/initializable';
 
 /** Interface for a directive that holds sorting state consumed by `HcSortHeaderComponent`. */
 export interface HcSortable {
@@ -41,7 +41,7 @@ export interface Sort {
     selector: '[hcSort]',
     exportAs: 'hcSort'
 })
-export class HcSort extends Initailizable implements OnChanges, OnDestroy, OnInit {
+export class HcSort extends Initializable implements OnChanges, OnDestroy, OnInit {
     /** Collection of all registered sortables that this directive manages. */
     sortables = new Map<string, HcSortable>();
 
