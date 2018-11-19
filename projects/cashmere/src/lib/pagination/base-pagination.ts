@@ -1,6 +1,6 @@
 import {EventEmitter, Input, Output, OnInit, Component} from '@angular/core';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
-import {Initailizable} from '../shared/initializable';
+import {Initializable} from '../shared/initializable';
 import {PageEvent} from './page-event';
 import {map, distinctUntilChanged} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -11,7 +11,7 @@ import {Observable} from 'rxjs';
 @Component({
     template: ''
 })
-export class BasePaginationComponent extends Initailizable implements OnInit {
+export class BasePaginationComponent extends Initializable implements OnInit {
     public static _DEFAULT_PAGE_SIZE = 20;
 
     /**
