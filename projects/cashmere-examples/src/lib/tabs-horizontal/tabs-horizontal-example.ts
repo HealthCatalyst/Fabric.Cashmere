@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TabChangeEvent} from '@healthcatalyst/cashmere';
+import {TabChangeEvent} from '@wcf/cashmere';
 
 /**
  * @title Horizontal Tabs with Event Handling

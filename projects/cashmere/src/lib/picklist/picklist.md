@@ -14,7 +14,7 @@ The picklist can be given callback functions to retrieve values and valuesets fr
 #### Typescript
 
 ```TypeScript
-import { IPicklistSettings } from '@healthcatalyst/cashmere';
+import { IPicklistSettings } from '@wcf/cashmere';
 
 // ...
 
