@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HcTableDataSource} from '@healthcatalyst/cashmere';
+import {HcTableDataSource} from '@wcf/cashmere';
 
 export interface PeriodicElement {
     name: string;

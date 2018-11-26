@@ -7,7 +7,7 @@ An Angular component library that makes any task feel luxurious.
 ## Quick Links
 
 -   [CHANGELOG](https://github.com/HealthCatalyst/Fabric.Cashmere/blob/master/CHANGELOG.md)
--   [Components](http://cashmere.healthcatalyst.net/components)
+-   [Components](https://wcf-insurance.github.io/index.html)
 -   [Styles](http://cashmere.healthcatalyst.net/styles)
 -   [Getting Started](http://cashmere.healthcatalyst.net/guides/getting-started)
 -   [Guidelines for Contribution](http://cashmere.healthcatalyst.net/guides/contribution-guide)
@@ -16,4 +16,4 @@ An Angular component library that makes any task feel luxurious.
 
 ## Installing
 
-Run `npm i --save @healthcatalyst/cashmere`.
+Run `npm i --save @wcf/cashmere`.

@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {LoadMorePaginationComponent, HcTableDataSource} from '@healthcatalyst/cashmere';
+import {HcTableDataSource, LoadMorePaginationComponent} from '@wcf/cashmere';
 
 export interface PeriodicElement {
     name: string;
@@ -42,6 +42,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class PaginationLoadMoreExample implements OnInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
     dataSource: HcTableDataSource<PeriodicElement>;
+
     get length(): number {
         return ELEMENT_DATA.length;
     }

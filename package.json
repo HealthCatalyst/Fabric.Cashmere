@@ -1,14 +1,14 @@
 {
-    "name": "@healthcatalyst/cashmere-docs",
+    "name": "@wcf/cashmere-docs",
     "version": "2.1.0",
     "license": "Apache-2.0",
     "description": "Cashmere documentation website",
     "publishConfig": {
-        "registry": "https://registry.npmjs.org/"
+        "registry": "http://10.1.0.104:8081/repository/npm-web/"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/HealthCatalyst/Fabric.Cashmere.git"
+        "url": "https://github.com/WCF-Insurance/WCF-Cashmere.git"
     },
     "scripts": {
         "ng": "ng",
@@ -45,6 +45,8 @@
         "@angular/platform-browser-dynamic": "6.1.7",
         "@angular/platform-server": "6.1.7",
         "@angular/router": "6.1.7",
+        "@wcf/cashmere": "0.0.0-development",
+        "@wcf/cashmere-examples": "0.0.1",
         "core-js": "^2.4.1",
         "d3": "^4.13.0",
         "font-awesome": "^4.7.0",

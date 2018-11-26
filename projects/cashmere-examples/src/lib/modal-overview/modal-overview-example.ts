@@ -1,6 +1,6 @@
 /* tslint:disable:no-use-before-declare */
 
-import {ActiveModal, HcModal, ModalOptions, ModalService} from '@healthcatalyst/cashmere';
+import {ActiveModal, HcModal, ModalOptions, ModalService} from '@wcf/cashmere';
 import {Component, TemplateRef} from '@angular/core';
 
 /**
@@ -14,7 +14,8 @@ import {Component, TemplateRef} from '@angular/core';
 export class ModalOverviewExample {
     result: any;
 
-    constructor(private modalService: ModalService) {}
+    constructor(private modalService: ModalService) {
+    }
 
     open() {
         let options: ModalOptions = {
@@ -40,7 +41,8 @@ export class ModalOverviewExample {
     templateUrl: 'modal-overview-example-dialog.html'
 })
 export class DialogOverviewExampleDialog {
-    constructor(public activeModal: ActiveModal) {}
+    constructor(public activeModal: ActiveModal) {
+    }
 
     close() {
         this.activeModal.close();

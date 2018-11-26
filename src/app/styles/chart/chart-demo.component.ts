@@ -1,5 +1,5 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {ModalOptions, ModalService} from '@healthcatalyst/cashmere';
+import {ModalOptions, ModalService} from '@wcf/cashmere';
 
 @Component({
     selector: 'hc-chart-demo',
@@ -14,7 +14,8 @@ export class ChartDemoComponent implements OnInit {
     lineData: Array<any>;
     private hospitals = ['Millrock Physician Group', 'Memorial Physician Group', 'St. Johns Physician Group', 'University Physician Group'];
 
-    constructor(private modalService: ModalService) {}
+    constructor(private modalService: ModalService) {
+    }
 
     ngOnInit() {
         // give everything a chance to get loaded before starting the animation to reduce choppiness
