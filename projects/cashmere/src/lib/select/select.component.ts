@@ -1,4 +1,16 @@
-import {Component, forwardRef, HostBinding, Input, ViewEncapsulation, ElementRef, Optional, DoCheck, Self} from '@angular/core';
+import {
+    Component,
+    forwardRef,
+    HostBinding,
+    Input,
+    ViewEncapsulation,
+    ElementRef,
+    Optional,
+    DoCheck,
+    Self,
+    Output,
+    EventEmitter
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
@@ -68,6 +80,11 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
             this.onChange(val);
         }
     }
+
+    @Output()
+    readonly focus: EventEmitter<void> = new EventEmitter<void>();
+    @Output()
+    readonly blur: EventEmitter<void> = new EventEmitter<void>();
 
     private _value: string = '';
 
