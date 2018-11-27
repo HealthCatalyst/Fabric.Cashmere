@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ButtonModule } from '../button';
-import { LoadMorePaginationComponent } from './load-more-pagination.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ButtonModule} from '../button';
+import {LoadMorePaginationComponent} from './load-more-pagination.component';
 
 describe('PaginationComponent', () => {
     let fixture: ComponentFixture<LoadMorePaginationComponent>;
