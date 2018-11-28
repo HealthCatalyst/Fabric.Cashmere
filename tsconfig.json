@@ -13,8 +13,8 @@
         "typeRoots": ["node_modules/@types"],
         "lib": ["es2017", "dom"],
         "paths": {
-            "@healthcatalyst/cashmere": ["dist/cashmere"],
-            "@healthcatalyst/cashmere-examples": ["dist/cashmere-examples"]
+            "@wcf/cashmere": ["dist/cashmere"],
+            "@wcf/cashmere-examples": ["dist/cashmere-examples"]
         }
     }
 }

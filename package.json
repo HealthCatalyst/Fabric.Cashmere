@@ -45,8 +45,6 @@
         "@angular/platform-browser-dynamic": "6.1.7",
         "@angular/platform-server": "6.1.7",
         "@angular/router": "6.1.7",
-        "@wcf/cashmere": "0.0.0-development",
-        "@wcf/cashmere-examples": "0.0.1",
         "core-js": "^2.4.1",
         "d3": "^4.13.0",
         "font-awesome": "^4.7.0",
