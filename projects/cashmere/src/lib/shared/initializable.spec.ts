@@ -4,7 +4,7 @@ import {Observable, Subscriber} from 'rxjs';
 class MockInitializable extends Initializable {}
 
 let testInitializable: Initializable;
-fdescribe('Initializable', () => {
+describe('Initializable', () => {
     beforeEach(() => {
         testInitializable = new MockInitializable();
     });
