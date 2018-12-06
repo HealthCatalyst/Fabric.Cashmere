@@ -34,9 +34,9 @@ const exampleList = fs.readdirSync(examplesRoot).filter(f => {
     return stat.isDirectory();
 });
 
-const progress = new ProgressBar('[:bar] :percent :exampleName', { total: exampleList.length });
+const progress = new ProgressBar('[:bar] :percent :exampleName', {total: exampleList.length});
 for (let example of exampleList) {
-    progress.tick({ exampleName: example });
+    progress.tick({exampleName: example});
 
     const exampleDir = path.join(examplesRoot, example);
     const exampleBaseName = pascalCase(example);
@@ -83,4 +83,4 @@ for (let example of exampleList) {
     fs.writeFileSync(path.join(outputRoot, `${example}.json`), JSON.stringify(allFiles, null, 2));
 }
 
-progress.tick({ exampleName: '' });
+progress.tick({exampleName: ''});
