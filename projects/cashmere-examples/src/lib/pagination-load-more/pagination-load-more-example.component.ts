@@ -35,9 +35,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
  * @title Simple button pagination
  */
 @Component({
-    selector: 'pagination-load-more-example',
-    templateUrl: 'pagination-load-more-example.html',
-    styleUrls: ['pagination-load-more-example.css']
+    selector: 'hc-pagination-load-more-example',
+    templateUrl: 'pagination-load-more-example.component.html',
+    styleUrls: ['pagination-load-more-example.component.scss']
 })
 export class PaginationLoadMoreExample implements OnInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
@@ -46,8 +46,7 @@ export class PaginationLoadMoreExample implements OnInit {
         return ELEMENT_DATA.length;
     }
 
-    @ViewChild(LoadMorePaginationComponent)
-    loadMoreBtn: LoadMorePaginationComponent;
+    @ViewChild(LoadMorePaginationComponent) loadMoreBtn: LoadMorePaginationComponent;
 
     ngOnInit(): void {
         this.dataSource = new HcTableDataSource(ELEMENT_DATA);

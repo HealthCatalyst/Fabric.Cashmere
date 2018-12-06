@@ -5,7 +5,7 @@ import {FormControl} from '@angular/forms';
  * @title Multiple Form Field Elements
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-form-field-overview-example',
     templateUrl: 'form-field-overview-example.component.html',
     styleUrls: ['form-field-overview-example.component.scss']
 })

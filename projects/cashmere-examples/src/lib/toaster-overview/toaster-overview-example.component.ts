@@ -5,9 +5,9 @@ import {HcToasterService, HcToastOptions, HcToastRef} from '@healthcatalyst/cash
  * @title Toaster Messages overview
  */
 @Component({
-    selector: 'toaster-overview-example',
-    templateUrl: 'toaster-overview-example.html',
-    styleUrls: ['toaster-overview-example.css']
+    selector: 'hc-toaster-overview-example',
+    templateUrl: 'toaster-overview-example.component.html',
+    styleUrls: ['toaster-overview-example.component.scss']
 })
 export class ToasterOverviewExample {
     toastHeader: string = 'Success!';

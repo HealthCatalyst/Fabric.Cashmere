@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ActiveModal} from '@healthcatalyst/cashmere';
 
 @Component({
-    selector: 'modal-overview-example-modal',
+    selector: 'hc-modal-overview-example-modal',
     templateUrl: 'modal-overview-example-modal.component.html'
 })
 export class ModalOverviewExampleModalComponent {

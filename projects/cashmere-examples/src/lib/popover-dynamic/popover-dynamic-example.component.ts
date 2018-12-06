@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
  * @title Dynamic Content
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-popover-dynamic-example',
     templateUrl: 'popover-dynamic-example.component.html',
     styleUrls: ['popover-dynamic-example.component.scss']
 })

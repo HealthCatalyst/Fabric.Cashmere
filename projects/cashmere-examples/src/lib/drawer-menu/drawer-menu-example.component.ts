@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
  * @title Filter menu
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-drawer-menu-example',
     templateUrl: 'drawer-menu-example.component.html',
     styleUrls: ['drawer-menu-example.component.scss']
 })

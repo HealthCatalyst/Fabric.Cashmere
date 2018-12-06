@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
  * @title Inline Radio Buttons using Form Controls
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-radio-button-forms-example',
     templateUrl: 'radio-button-forms-example.component.html'
 })
 export class RadioButtonFormsExampleComponent {

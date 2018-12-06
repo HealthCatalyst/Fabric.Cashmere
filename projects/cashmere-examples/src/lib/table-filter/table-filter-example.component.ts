@@ -25,7 +25,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
  * @title Filtered Table without Borders
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-table-filter-example',
     templateUrl: 'table-filter-example.component.html',
     styleUrls: ['table-filter-example.component.css']
 })

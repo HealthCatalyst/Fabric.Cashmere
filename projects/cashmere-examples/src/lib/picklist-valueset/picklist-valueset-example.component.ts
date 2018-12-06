@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
  * @title Picklist valueset
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-picklist-valueset-example',
     templateUrl: 'picklist-valueset-example.component.html'
 })
 export class PicklistValuesetExampleComponent {

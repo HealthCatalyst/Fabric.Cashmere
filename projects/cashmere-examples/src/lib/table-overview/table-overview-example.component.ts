@@ -24,7 +24,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
  * @title Table overview
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-table-overview-example',
     templateUrl: 'table-overview-example.component.html',
     styleUrls: ['table-overview-example.component.css']
 })

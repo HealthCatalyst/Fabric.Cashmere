@@ -5,7 +5,7 @@ import {FormControl} from '@angular/forms';
  * @title Select using Angular forms
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-select-forms-example',
     templateUrl: 'select-forms-example.component.html',
     styleUrls: ['select-forms-example.component.scss']
 })
