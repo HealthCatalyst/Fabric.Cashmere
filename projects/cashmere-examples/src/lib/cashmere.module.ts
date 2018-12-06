@@ -1,5 +1,8 @@
 import {NgModule} from '@angular/core';
+import {CashmereModule as DocsCashmereModule} from '../../../../src/app/shared/cashmere.module';
 
-/* This is a placeholder file */
-@NgModule({})
+@NgModule({
+    imports: [DocsCashmereModule],
+    exports: [DocsCashmereModule]
+})
 export class CashmereModule {}

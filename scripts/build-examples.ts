@@ -34,7 +34,9 @@ const exampleList = fs.readdirSync(examplesRoot).filter(f => {
     return stat.isDirectory();
 });
 
-const progress = new ProgressBar('[:bar] :percent :exampleName', {total: exampleList.length});
+const progress = new ProgressBar('[:bar] :percent :exampleName', {total: exampleList.length + 1});
+const exampleComponents: Array<{import: string; name: string}> = [];
+const exampleModules: Array<{import: string; name: string}> = [];
 for (let example of exampleList) {
     progress.tick({exampleName: example});
 
@@ -50,21 +52,21 @@ for (let example of exampleList) {
     let appModuleContents: string;
 
     if (fs.existsSync(path.join(exampleDir, `${example}-example.module.ts`))) {
+        const moduleName: string = `${exampleBaseName}ExampleModule`;
+        const $import: string = `import { ${moduleName} } from ' ./${example}/${example}-example.module';`;
+        exampleModules.push({import: $import, name: moduleName});
         appModuleContents = appModuleTemplate
-            .replace(
-                moduleImportCommentPattern,
-                `import { ${exampleBaseName}ExampleModule } from ' ./${example}/${example}-example.module';`
-            )
-            .replace(moduleNameCommentPattern, `${exampleBaseName}ExampleModule`)
+            .replace(moduleImportCommentPattern, $import)
+            .replace(moduleNameCommentPattern, moduleName)
             .replace(componentNameCommentPattern, '')
             .replace(componentImportCommentPattern, '');
     } else {
+        const componentName = `${exampleBaseName}ExampleComponent`;
+        const $import = `import { ${componentName} } from './${example}/${example}-example.component';`;
+        exampleComponents.push({import: $import, name: componentName});
         appModuleContents = appModuleTemplate
-            .replace(
-                componentImportCommentPattern,
-                `import { ${exampleBaseName}ExampleComponent } from './${example}/${example}-example.component';`
-            )
-            .replace(componentNameCommentPattern, `${exampleBaseName}ExampleComponent`)
+            .replace(componentImportCommentPattern, $import)
+            .replace(componentNameCommentPattern, componentName)
             .replace(moduleNameCommentPattern, '')
             .replace(moduleImportCommentPattern, '');
     }
@@ -82,5 +84,28 @@ for (let example of exampleList) {
     const allFiles = Object.assign({}, projectTemplateFiles, exampleFiles, {'src/app/app.module.ts': appModuleContents});
     fs.writeFileSync(path.join(outputRoot, `${example}.json`), JSON.stringify(allFiles, null, 2));
 }
+progress.tick({exampleName: 'examples module'});
+const examplesModule = `/* This file is auto-generated; do not change! */
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CashmereModule } from './cashmere.module';
+${exampleModules
+    .concat(exampleComponents)
+    .map(x => x.import)
+    .join('\n')}
+
+@NgModule({
+    imports: [
+        CommonModule,
+        CashmereModule,
+        ${exampleModules.map(x => x.name).join(',\r\n        ')}
+    ],
+    declarations: [
+        ${exampleComponents.map(x => x.name).join(',\r\n        ')}
+    ]
+})
+export class ExampleModule {}
+`;
+fs.writeFileSync(path.join(examplesRoot, 'examples.generated.module.ts'), examplesModule);
 
 progress.tick({exampleName: ''});

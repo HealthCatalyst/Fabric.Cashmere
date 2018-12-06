@@ -1,7 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/projects/cashmere-examples/src/lib/cashmere-example.module.ts
+projects/cashmere-examples/src/lib/examples.generated.module.ts
 /src/assets/docs
 dist/
 tmp/
