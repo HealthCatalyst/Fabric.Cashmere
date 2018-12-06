@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
  * @title Forms Support
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-checkbox-forms-example',
     templateUrl: 'checkbox-forms-example.component.html'
 })
 export class CheckboxFormsExampleComponent {

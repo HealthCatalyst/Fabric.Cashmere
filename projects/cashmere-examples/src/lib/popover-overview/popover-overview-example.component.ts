@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
  * @title Popover Overview
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-popover-overview-example',
     templateUrl: 'popover-overview-example.component.html',
     styleUrls: ['popover-overview-example.component.scss']
 })

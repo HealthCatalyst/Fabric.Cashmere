@@ -5,7 +5,7 @@ import {TabChangeEvent} from '@healthcatalyst/cashmere';
  * @title Horizontal Tabs with Event Handling
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-tabs-horizontal-example',
     templateUrl: 'tabs-horizontal-example.component.html',
     styleUrls: ['tabs-horizontal-example.component.scss']
 })

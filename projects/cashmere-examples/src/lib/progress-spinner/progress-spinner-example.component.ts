@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
  * @title Progress spinner
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-progress-spinner-example',
     templateUrl: 'progress-spinner-example.component.html',
     styleUrls: ['progress-spinner-example.component.scss']
 })

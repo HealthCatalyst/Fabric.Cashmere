@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
  * @title Inline Inputs with Suffix
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-input-suffix-example',
     templateUrl: 'input-suffix-example.component.html',
     styleUrls: ['input-suffix-example.component.scss']
 })

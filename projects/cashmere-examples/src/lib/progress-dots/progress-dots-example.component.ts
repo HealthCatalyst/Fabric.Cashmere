@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
  * @title Progress dots
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-progress-dots-example',
     templateUrl: 'progress-dots-example.component.html',
     styleUrls: ['progress-dots-example.component.scss']
 })

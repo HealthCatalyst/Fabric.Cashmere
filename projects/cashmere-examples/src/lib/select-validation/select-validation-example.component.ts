@@ -5,7 +5,7 @@ import {FormControl} from '@angular/forms';
  * @title Component Validation
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-select-validation-example',
     templateUrl: 'select-validation-example.component.html',
     styleUrls: ['select-validation-example.component.scss']
 })

@@ -4,9 +4,8 @@ import {Component} from '@angular/core';
  * @title Simple pagination
  */
 @Component({
-    selector: 'pagination-simple-example',
-    templateUrl: 'pagination-simple-example.html',
-    styleUrls: ['pagination-simple-example.css']
+    selector: 'hc-pagination-simple-example',
+    templateUrl: 'pagination-simple-example.component.html'
 })
 export class PaginationSimpleExample {
     _pageNumber: number = 15;

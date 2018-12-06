@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
  * @title Chip Rows
  */
 @Component({
-    selector: 'hc-example',
+    selector: 'hc-chip-row-example',
     templateUrl: 'chip-row-example.component.html',
     styleUrls: ['chip-row-example.component.scss']
 })
