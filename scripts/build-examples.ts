@@ -14,9 +14,13 @@ const projectTemplateRoot = path.join(examplesProjectRoot, 'src/project-template
 const outputRoot = path.join(__dirname, '../src/assets/docs/examples');
 const cashmereModule = fs.readFileSync(path.join(__dirname, '../src/app/shared/cashmere.module.ts')).toString();
 
-glob.sync('**/*', {cwd: outputRoot}).forEach(f => {
-    fs.unlinkSync(path.join(outputRoot, f));
-});
+if (fs.existsSync(outputRoot)) {
+    glob.sync('**/*', {cwd: outputRoot}).forEach(f => {
+        fs.unlinkSync(path.join(outputRoot, f));
+    });
+} else {
+    fs.mkdirSync(outputRoot);
+}
 
 fs.writeFileSync(path.join(projectTemplateRoot, 'src/app/cashmere.module.ts'), cashmereModule);
 const projectTemplateFiles = glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce(
