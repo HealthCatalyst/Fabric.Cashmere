@@ -51,7 +51,7 @@ const MockApplications: IDiscoveryApplication[] = [
     }
 ];
 
-class CustomAppSwitcherService {
+export class CustomAppSwitcherService {
     readonly allApplicationsUri = 'http://example.com/';
 
     getApplications(): Observable<IDiscoveryRequest> {

@@ -9,7 +9,7 @@ import {HcToasterService, HcToastOptions, HcToastRef} from '@healthcatalyst/cash
     templateUrl: 'toaster-overview-example.component.html',
     styleUrls: ['toaster-overview-example.component.scss']
 })
-export class ToasterOverviewExample {
+export class ToasterOverviewExampleComponent {
     toastHeader: string = 'Success!';
     toastBody: string = 'You are awesome!';
     toastPosition: string = 'top-right';

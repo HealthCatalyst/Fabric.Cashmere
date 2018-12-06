@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
     selector: 'hc-pagination-simple-example',
     templateUrl: 'pagination-simple-example.component.html'
 })
-export class PaginationSimpleExample {
+export class PaginationSimpleExampleComponent {
     _pageNumber: number = 15;
     pageSize: number = 20;
     totalItems: number = 1000;

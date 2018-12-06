@@ -26,7 +26,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
     selector: 'hc-table-overview-example',
     templateUrl: 'table-overview-example.component.html',
-    styleUrls: ['table-overview-example.component.css']
+    styleUrls: ['table-overview-example.component.scss']
 })
 export class TableOverviewExampleComponent {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];

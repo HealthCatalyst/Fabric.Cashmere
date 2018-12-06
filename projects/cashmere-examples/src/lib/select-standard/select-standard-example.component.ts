@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'hc-select-standard-example',
-    templateUrl: 'select-standard-example.html',
+    templateUrl: 'select-standard-example.component.html',
     styleUrls: ['select-standard-example.component.scss']
 })
 export class SelectStandardExampleComponent {}

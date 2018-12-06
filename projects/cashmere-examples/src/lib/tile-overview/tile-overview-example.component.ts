@@ -7,4 +7,4 @@ import {Component} from '@angular/core';
     selector: 'hc-tile-overview-example',
     templateUrl: 'tile-overview-example.component.html'
 })
-export class TileOverviewExample {}
+export class TileOverviewExampleComponent {}

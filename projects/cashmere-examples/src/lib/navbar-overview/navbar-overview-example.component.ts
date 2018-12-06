@@ -7,4 +7,6 @@ import {Component} from '@angular/core';
     selector: 'hc-navbar-overview-example',
     templateUrl: 'navbar-overview-example.component.html'
 })
-export class NavbarOverviewExampleComponent {}
+export class NavbarOverviewExampleComponent {
+    username = 'Christine K.';
+}

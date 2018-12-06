@@ -21,17 +21,16 @@ import {
     SelectModule,
     SubnavModule,
     TabsModule,
+    TableModule,
     TileModule,
     ToasterModule,
     TypeformSurveyModule
 } from '@healthcatalyst/cashmere';
-import {AppSwitcherServiceModule} from './app-switcher-service.module';
 
 @NgModule({
     exports: [
         AccordionModule,
         AppSwitcherModule,
-        AppSwitcherServiceModule,
         BreadcrumbsModule,
         ButtonModule,
         CheckboxModule,
@@ -50,6 +49,7 @@ import {AppSwitcherServiceModule} from './app-switcher-service.module';
         RadioButtonModule,
         SelectModule,
         SubnavModule,
+        TableModule,
         TabsModule,
         TileModule,
         ToasterModule,

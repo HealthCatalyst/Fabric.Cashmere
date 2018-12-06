@@ -12,11 +12,13 @@ const examplesProjectRoot = path.join(__dirname, '../projects/cashmere-examples'
 const examplesRoot = path.join(examplesProjectRoot, 'src/lib');
 const projectTemplateRoot = path.join(examplesProjectRoot, 'src/project-template');
 const outputRoot = path.join(__dirname, '../src/assets/docs/examples');
+const cashmereModule = fs.readFileSync(path.join(__dirname, '../src/app/shared/cashmere.module.ts')).toString();
 
 glob.sync('**/*', {cwd: outputRoot}).forEach(f => {
     fs.unlinkSync(path.join(outputRoot, f));
 });
 
+fs.writeFileSync(path.join(projectTemplateRoot, 'src/app/cashmere.module.ts'), cashmereModule);
 const projectTemplateFiles = glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce(
     (prev, curr) => {
         const fullPath = path.join(projectTemplateRoot, curr);
@@ -53,7 +55,7 @@ for (let example of exampleList) {
 
     if (fs.existsSync(path.join(exampleDir, `${example}-example.module.ts`))) {
         const moduleName: string = `${exampleBaseName}ExampleModule`;
-        const $import: string = `import { ${moduleName} } from ' ./${example}/${example}-example.module';`;
+        const $import: string = `import { ${moduleName} } from './${example}/${example}-example.module';`;
         exampleModules.push({import: $import, name: moduleName});
         appModuleContents = appModuleTemplate
             .replace(moduleImportCommentPattern, $import)
@@ -84,10 +86,11 @@ for (let example of exampleList) {
     const allFiles = Object.assign({}, projectTemplateFiles, exampleFiles, {'src/app/app.module.ts': appModuleContents});
     fs.writeFileSync(path.join(outputRoot, `${example}.json`), JSON.stringify(allFiles, null, 2));
 }
-progress.tick({exampleName: 'examples module'});
+progress.tick({exampleName: 'examples modules'});
 const examplesModule = `/* This file is auto-generated; do not change! */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CashmereModule } from './cashmere.module';
 ${exampleModules
     .concat(exampleComponents)
@@ -98,6 +101,8 @@ ${exampleModules
     imports: [
         CommonModule,
         CashmereModule,
+        FormsModule,
+        ReactiveFormsModule,
         ${exampleModules.map(x => x.name).join(',\r\n        ')}
     ],
     declarations: [
@@ -107,5 +112,9 @@ ${exampleModules
 export class ExampleModule {}
 `;
 fs.writeFileSync(path.join(examplesRoot, 'examples.generated.module.ts'), examplesModule);
+fs.writeFileSync(
+    path.join(examplesRoot, 'cashmere.generated.module.ts'),
+    `/* This file is auto-generated; do not change! */\r\n${cashmereModule}`
+);
 
 progress.tick({exampleName: ''});

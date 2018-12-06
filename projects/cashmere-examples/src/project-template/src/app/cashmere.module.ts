@@ -7,6 +7,7 @@ import {
     CheckboxModule,
     ChipModule,
     DrawerModule,
+    FormFieldModule,
     IconModule,
     InputModule,
     ListModule,
@@ -18,41 +19,15 @@ import {
     ProgressIndicatorsModule,
     RadioButtonModule,
     SelectModule,
-    SortModule,
     SubnavModule,
-    TableModule,
     TabsModule,
+    TableModule,
     TileModule,
+    ToasterModule,
     TypeformSurveyModule
 } from '@healthcatalyst/cashmere';
 
 @NgModule({
-    imports: [
-        AccordionModule,
-        AppSwitcherModule,
-        BreadcrumbsModule,
-        ButtonModule,
-        CheckboxModule,
-        ChipModule,
-        DrawerModule,
-        IconModule,
-        InputModule,
-        ListModule,
-        ModalModule,
-        NavbarModule,
-        PaginationModule,
-        PicklistModule,
-        PopoverModule,
-        ProgressIndicatorsModule,
-        RadioButtonModule,
-        SelectModule,
-        SortModule,
-        SubnavModule,
-        TableModule,
-        TabsModule,
-        TileModule,
-        TypeformSurveyModule
-    ],
     exports: [
         AccordionModule,
         AppSwitcherModule,
@@ -61,6 +36,7 @@ import {
         CheckboxModule,
         ChipModule,
         DrawerModule,
+        FormFieldModule,
         IconModule,
         InputModule,
         ListModule,
@@ -72,11 +48,11 @@ import {
         ProgressIndicatorsModule,
         RadioButtonModule,
         SelectModule,
-        SortModule,
         SubnavModule,
         TableModule,
         TabsModule,
         TileModule,
+        ToasterModule,
         TypeformSurveyModule
     ]
 })

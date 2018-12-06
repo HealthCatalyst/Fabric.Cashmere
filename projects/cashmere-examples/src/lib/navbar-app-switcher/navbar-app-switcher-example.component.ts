@@ -7,6 +7,6 @@ import {Component} from '@angular/core';
     selector: 'hc-navbar-app-switcher-example',
     templateUrl: 'navbar-app-switcher-example.component.html'
 })
-export class NavbarAppSwitcherExample {
+export class NavbarAppSwitcherExampleComponent {
     username = 'Christine K.';
 }

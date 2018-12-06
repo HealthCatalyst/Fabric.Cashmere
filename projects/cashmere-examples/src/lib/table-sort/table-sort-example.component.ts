@@ -27,13 +27,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
     selector: 'hc-table-sort-example',
     templateUrl: 'table-sort-example.component.html',
-    styleUrls: ['table-sort-example.component.css']
+    styleUrls: ['table-sort-example.component.scss']
 })
 export class TableSortExampleComponent implements OnInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
     dataSource: HcTableDataSource<PeriodicElement>;
 
-    @ViewChild(HcSort) sort: HcSort;
+    @ViewChild(HcSort)
+    sort: HcSort;
 
     ngOnInit(): void {
         this.dataSource = new HcTableDataSource(ELEMENT_DATA);

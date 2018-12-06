@@ -39,7 +39,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     templateUrl: 'pagination-standard-example.component.html',
     styleUrls: ['pagination-standard-example.component.scss']
 })
-export class PaginationStandardExample implements OnInit {
+export class PaginationStandardExampleComponent implements OnInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
     dataSource: HcTableDataSource<PeriodicElement>;
     pageNumber = 1;
@@ -48,7 +48,8 @@ export class PaginationStandardExample implements OnInit {
         return ELEMENT_DATA.length;
     }
 
-    @ViewChild(PaginationComponent) paginator: PaginationComponent;
+    @ViewChild(PaginationComponent)
+    paginator: PaginationComponent;
 
     ngOnInit(): void {
         this.dataSource = new HcTableDataSource(ELEMENT_DATA);

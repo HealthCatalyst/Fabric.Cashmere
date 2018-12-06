@@ -8,4 +8,4 @@ import {Component} from '@angular/core';
     templateUrl: 'button-size-example.component.html',
     styleUrls: ['button-size-example.component.scss']
 })
-export class ButtonSizeExample {}
+export class ButtonSizeExampleComponent {}
