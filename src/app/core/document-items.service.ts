@@ -14,7 +14,7 @@ const docs: DocItem[] = [
     {
         id: 'button',
         name: 'Button',
-        examples: ['button-primary', 'button-split', 'button-secondary', 'button-anchor', 'button-link', 'button-icon']
+        examples: ['button-type', 'button-split', 'button-size', 'button-anchor', 'button-link', 'button-icon']
     },
     {
         id: 'checkbox',
@@ -52,7 +52,7 @@ const docs: DocItem[] = [
         id: 'pagination',
         name: 'Pagination',
         usageDoc: true,
-        examples: ['pagination-standard', 'pagination-load-more']
+        examples: ['pagination-standard', 'pagination-load-more', 'pagination-simple']
     },
     {id: 'picklist', name: 'Picklist', examples: ['picklist-simple', 'picklist-valueset'], usageDoc: true},
     {
