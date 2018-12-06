@@ -1,0 +1,113 @@
+@import '../sass/colors';
+@import '../sass/functions.scss';
+@import '../sass/mixins.scss';
+
+.hc-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    z-index: $zindex-subnav;
+
+    &.fixed-top {
+        top: 53px;
+        position: fixed;
+    }
+
+    &.hc-banner-dismiss {
+        cursor: pointer;
+        pointer-events: all;
+    }
+
+    &.success {
+        background-color: $green;
+        color: $white;
+
+        .hc-banner-stamp {
+            background-color: $white;
+            color: $green;
+        }
+
+        &.hc-banner-dismiss:hover {
+            background-color: darken($green, 5%);
+        }
+    }
+
+    &.warning {
+        background-color: $orange;
+        color: $white;
+
+        .hc-banner-stamp {
+            background-color: $white;
+            color: $orange;
+        }
+
+        &.hc-banner-dismiss:hover {
+            background-color: darken($orange, 5%);
+        }
+    }
+
+    &.alert {
+        background-color: $red;
+        color: $white;
+
+        .hc-banner-stamp {
+            background-color: $white;
+            color: $red;
+        }
+
+        &.hc-banner-dismiss:hover {
+            background-color: darken($red, 5%);
+        }
+    }
+
+    &.info {
+        background-color: desaturate(lighten($blue, 40%), 50%);
+        border: 1px solid desaturate(lighten($blue, 30%), 50%);
+        border-left: none;
+        border-right: none;
+        color: $offblack;
+
+        .hc-banner-stamp {
+            background-color: darken($blue, 10%);
+            color: $white;
+        }
+
+        &.hc-banner-dismiss:hover {
+            background-color: desaturate(lighten($blue, 35%), 50%);
+        }
+    }
+}
+
+.hc-banner-stamp {
+    border-radius: 4px;
+    @include fontSize(11px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 5px 15px;
+    margin: 0 10px;
+}
+
+.hc-banner-close {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.hc-banner-close-icon {
+    height: 21px;
+    width: 21px;
+    opacity: 0.6;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgY2xpcC1wYXRoOiB1cmwoI2NsaXAtQXJ0Ym9hcmRfMSk7CiAgICAgIH0KCiAgICAgIC5jbHMtMiB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgICBmb250LXNpemU6IDEwMHB4OwogICAgICAgIGZvbnQtZmFtaWx5OiBGb250QXdlc29tZTsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxjbGlwUGF0aCBpZD0iY2xpcC1BcnRib2FyZF8xIj4KICAgICAgPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiLz4KICAgIDwvY2xpcFBhdGg+CiAgPC9kZWZzPgogIDxnIGlkPSJBcnRib2FyZF8xIiBkYXRhLW5hbWU9IkFydGJvYXJkIOKAkyAxIiBjbGFzcz0iY2xzLTEiPgogICAgPHRleHQgaWQ9Il8iIGRhdGEtbmFtZT0i74CNIiBjbGFzcz0iY2xzLTIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDExIDgzKSI+PHRzcGFuIHg9IjAiIHk9IjAiPu+AjTwvdHNwYW4+PC90ZXh0PgogIDwvZz4KPC9zdmc+Cg==');
+}
+
+.hc-banner-close-icon-dark {
+    height: 21px;
+    width: 21px;
+    opacity: 0.6;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSwgLmNscy0zIHsKICAgICAgICBmaWxsOiAjMDA2ZTlhOwogICAgICB9CgogICAgICAuY2xzLTIgewogICAgICAgIGNsaXAtcGF0aDogdXJsKCNjbGlwLXBhdGgpOwogICAgICB9CgogICAgICAuY2xzLTMgewogICAgICAgIGZvbnQtc2l6ZTogMTAwcHg7CiAgICAgICAgZm9udC1mYW1pbHk6IEZvbnRBd2Vzb21lOwogICAgICB9CiAgICA8L3N0eWxlPgogICAgPGNsaXBQYXRoIGlkPSJjbGlwLXBhdGgiPgogICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlXzExMzgiIGRhdGEtbmFtZT0iUmVjdGFuZ2xlIDExMzgiIGNsYXNzPSJjbHMtMSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiLz4KICAgIDwvY2xpcFBhdGg+CiAgPC9kZWZzPgogIDxnIGlkPSJpbmRleCIgY2xhc3M9ImNscy0yIj4KICAgIDx0ZXh0IGlkPSJfIiBkYXRhLW5hbWU9Iu+AjSIgY2xhc3M9ImNscy0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMSA4MykiPjx0c3BhbiB4PSIwIiB5PSIwIj7vgI08L3RzcGFuPjwvdGV4dD4KICA8L2c+Cjwvc3ZnPgo=');
+}

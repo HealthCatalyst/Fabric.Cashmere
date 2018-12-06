@@ -1,0 +1,6 @@
+<div class="hc-banner {{type}}" [ngClass]="{'hc-banner-dismiss': clickDismiss}" (click)="_bannerClick($event)">
+    <ng-content></ng-content>
+    <span *ngIf="clickDismiss" class="hc-banner-close">
+        <div [ngClass]="type != 'info' ? 'hc-banner-close-icon' : 'hc-banner-close-icon-dark'"></div>
+    </span>
+</div>
