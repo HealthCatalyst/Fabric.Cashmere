@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import * as fse from 'fs-extra';
 import * as path from 'path';
 import * as glob from 'glob';
 import {pascalCase} from 'change-case';
@@ -14,13 +15,10 @@ const projectTemplateRoot = path.join(examplesProjectRoot, 'src/project-template
 const outputRoot = path.join(__dirname, '../src/assets/docs/examples');
 const cashmereModule = fs.readFileSync(path.join(__dirname, '../src/app/shared/cashmere.module.ts')).toString();
 
-if (fs.existsSync(outputRoot)) {
-    glob.sync('**/*', {cwd: outputRoot}).forEach(f => {
-        fs.unlinkSync(path.join(outputRoot, f));
-    });
-} else {
-    fs.mkdirSync(outputRoot);
-}
+fse.ensureDirSync(outputRoot);
+glob.sync('**/*', {cwd: outputRoot}).forEach(f => {
+    fs.unlinkSync(path.join(outputRoot, f));
+});
 
 fs.writeFileSync(path.join(projectTemplateRoot, 'src/app/cashmere.module.ts'), cashmereModule);
 const projectTemplateFiles = glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce(

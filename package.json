@@ -70,6 +70,7 @@
         "@semantic-release/exec": "^2.3.0",
         "@semantic-release/git": "^5.0.0",
         "@types/d3": "^5.0.0",
+        "@types/fs-extra": "^5.0.4",
         "@types/glob": "^5.0.35",
         "@types/jasmine": "~2.8.6",
         "@types/jasminewd2": "~2.0.2",
