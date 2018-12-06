@@ -7,5 +7,6 @@ import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
     encapsulation: ViewEncapsulation.None
 })
 export class DrawerItem {
-    @HostBinding('class.hc-drawer-item') _hostClass = true;
+    @HostBinding('class.hc-drawer-item')
+    _hostClass = true;
 }

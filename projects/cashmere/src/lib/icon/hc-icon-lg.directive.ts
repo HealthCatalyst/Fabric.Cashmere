@@ -5,5 +5,6 @@ import {Directive, HostBinding} from '@angular/core';
     selector: '[hcIconLg]'
 })
 export class HcIconLargeDirective {
-    @HostBinding('class.hc-icon-lg') _hostHcIconLargeClass = true;
+    @HostBinding('class.hc-icon-lg')
+    _hostHcIconLargeClass = true;
 }

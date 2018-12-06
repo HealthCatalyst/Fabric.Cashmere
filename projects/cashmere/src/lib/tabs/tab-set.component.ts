@@ -32,10 +32,12 @@ export class TabSetComponent implements AfterContentInit {
     _routerEnabled: boolean = false;
     private _direction: string = 'vertical';
 
-    @ContentChildren(TabComponent) _tabs: QueryList<TabComponent>;
+    @ContentChildren(TabComponent)
+    _tabs: QueryList<TabComponent>;
 
     /** Emits when the selected tab is changed */
-    @Output() selectedTabChange: EventEmitter<TabChangeEvent> = new EventEmitter();
+    @Output()
+    selectedTabChange: EventEmitter<TabChangeEvent> = new EventEmitter();
 
     /** Specify direction of tabs as either `horizontal` or `vertical`. Defaults to `vertical` */
     @Input()

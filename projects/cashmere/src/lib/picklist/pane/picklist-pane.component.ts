@@ -30,10 +30,14 @@ import {FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOpt
     encapsulation: ViewEncapsulation.None
 })
 export class PicklistPaneComponent {
-    @Input() public emptyMsg: string = 'No options';
-    @Output() public moveSelectedItems = new EventEmitter<PicklistPaneComponent>();
-    @ViewChild('listContainer') public listContainerEl: ElementRef | undefined;
-    @ViewChild('search') public searchInputEl: ElementRef | undefined;
+    @Input()
+    public emptyMsg: string = 'No options';
+    @Output()
+    public moveSelectedItems = new EventEmitter<PicklistPaneComponent>();
+    @ViewChild('listContainer')
+    public listContainerEl: ElementRef | undefined;
+    @ViewChild('search')
+    public searchInputEl: ElementRef | undefined;
     public companion: PicklistPaneComponent | null = null;
     public shouldExcludeCompanion = false;
     public codeIsSignificant = false;
@@ -184,9 +188,14 @@ export class PicklistPaneComponent {
     }
 
     private wireUpSearch() {
-        this.searchTermStream.pipe(debounceTime(300), distinctUntilChanged()).subscribe(t => {
-            this.filterService.runFilter(t);
-            this.selectNone();
-        });
+        this.searchTermStream
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged()
+            )
+            .subscribe(t => {
+                this.filterService.runFilter(t);
+                this.selectNone();
+            });
     }
 }

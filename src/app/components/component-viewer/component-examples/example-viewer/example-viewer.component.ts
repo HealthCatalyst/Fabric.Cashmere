@@ -1,6 +1,6 @@
 import {Component, Input, ViewChild, ElementRef, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { titleCase } from 'change-case';
+import {titleCase} from 'change-case';
 import stackblitz from '@stackblitz/sdk';
 
 @Component({
@@ -42,18 +42,22 @@ export class ExampleViewerComponent implements OnInit {
     async loadStackBlitz() {
         const exampleFiles = await this.httpClient.get<FileHash>(`/assets/docs/examples/${this.example}.json`).toPromise();
         const dependencies = JSON.parse(exampleFiles['package.json']).dependencies;
-        await stackblitz.embedProject(this.exampleContainer.nativeElement, {
-            files: exampleFiles,
-            template: 'angular-cli',
-            title: this.exampleTitle,
-            description: this.exampleTitle,
-            dependencies: dependencies;
-        }, {
-            openFile: `src/app/${this.example}/${this.example}-example.component.html`,
-            clickToLoad: true,
-            hideDevTools: true,
-            forceEmbedLayout: true
-        });
+        await stackblitz.embedProject(
+            this.exampleContainer.nativeElement,
+            {
+                files: exampleFiles,
+                template: 'angular-cli',
+                title: this.exampleTitle,
+                description: this.exampleTitle,
+                dependencies: dependencies
+            },
+            {
+                openFile: `src/app/${this.example}/${this.example}-example.component.html`,
+                clickToLoad: true,
+                hideDevTools: true,
+                forceEmbedLayout: true
+            }
+        );
     }
 }
 

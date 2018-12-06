@@ -1,5 +1,6 @@
 @import '../sass/colors';
 @import '../sass/functions.scss';
+@import '../sass/mixins';
 
 $btn-icon-sz: 18px;
 
@@ -35,11 +36,6 @@ $btn-icon-sz: 18px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0 20px;
-    height: 35px;
-    min-width: 150px;
-    font-size: 15px;
-    line-height: 35px;
     font-weight: normal;
     text-align: center;
     white-space: nowrap;
@@ -67,6 +63,30 @@ $btn-icon-sz: 18px;
     }
 }
 
+@mixin hc-button-sm() {
+    padding: 3px 12px;
+    height: 26px;
+    min-width: auto;
+    @include fontSize(14px);
+    line-height: 14px;
+}
+
+@mixin hc-button-md() {
+    padding: 0 20px;
+    height: 35px;
+    min-width: 150px;
+    @include fontSize(15px);
+    line-height: 15px;
+}
+
+@mixin hc-button-lg() {
+    padding: 0 30px;
+    height: 40px;
+    min-width: 200px;
+    @include fontSize(17px);
+    line-height: 17px;
+}
+
 @mixin hc-button-primary() {
     @include hc-color-button($primary-action);
 }
@@ -82,8 +102,8 @@ $btn-icon-sz: 18px;
 @mixin hc-button-secondary() {
     @include hc-color-button($gray-100, 5%);
     color: $gray-600;
-    border: 2px solid $gray-300;
-    height: 37px;
+    border: 1.5px solid $gray-300;
+    height: 36px;
     line-height: 33px;
     padding-right: 19px;
 
@@ -92,6 +112,25 @@ $btn-icon-sz: 18px;
     }
     &[disabled]:hover {
         color: $gray-600;
+    }
+}
+@mixin hc-button-minimal() {
+    background-color: transparent;
+    color: $gray-500;
+
+    &:hover {
+        color: $offblack;
+        background-color: $gray-200;
+    }
+    &:active {
+        background-color: darken($gray-200, 5%);
+    }
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus,
+    &[disabled]:active {
+        background-color: transparent;
+        color: $gray-300;
     }
 }
 
@@ -199,6 +238,14 @@ $btn-icon-sz: 18px;
     }
 }
 
+@mixin hc-button-sm-toggle() {
+    padding: 3px 7px;
+}
+
+@mixin hc-button-lg-toggle() {
+    padding: 0px 16px;
+}
+
 @mixin hc-split-button-divider() {
     margin: 5px -16px;
 }
@@ -237,4 +284,13 @@ $btn-icon-sz: 18px;
     margin-left: 15px;
     color: $gray-300;
     text-align: right;
+}
+
+//Filters button
+@mixin hc-filters-icon() {
+    width: 19px;
+    height: 19px;
+    display: block;
+    margin-right: 7px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjU0NjEgNDcuMjUgMTkuMjgxIDIwIj4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjMDBhZWZmOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8ZyBpZD0iRmlsdGVyc19CdXR0b24iIGRhdGEtbmFtZT0iRmlsdGVycyBCdXR0b24iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU0NjEgNjcuMjUpIHJvdGF0ZSgtOTApIj4KICAgIDxwYXRoIGlkPSJQYXRoXzMwNCIgZGF0YS1uYW1lPSJQYXRoIDMwNCIgY2xhc3M9ImNscy0xIiBkPSJNOS45MzksMi45OTNWLjcxOUEuNzE5LjcxOSwwLDAsMCw4LjUuNzE5djIuMzZtMCw0Ljg5MnYxMC41OWgwYS43MTkuNzE5LDAsMSwwLDEuNDM5LDBWNy45NDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC02LjA1NCkiLz4KICAgIDxwYXRoIGlkPSJQYXRoXzMwNSIgZGF0YS1uYW1lPSJQYXRoIDMwNSIgY2xhc3M9ImNscy0xIiBkPSJNNi40NzUsMTEuMDIzYTMuMjM3LDMuMjM3LDAsMCwwLTYuNDc1LDAsMy4yMzcsMy4yMzcsMCwwLDAsNi40NzUsMFptLTUuMDM2LDBhMS43ODQsMS43ODQsMCwxLDEsMS43ODQsMS43ODRBMS43OTMsMS43OTMsMCwwLDEsMS40MzksMTEuMDIzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNS41NTUpIi8+CiAgICA8cGF0aCBpZD0iUGF0aF8zMDYiIGRhdGEtbmFtZT0iUGF0aCAzMDYiIGNsYXNzPSJjbHMtMSIgZD0iTTU2LjkzOSwyLjk5M1YuNzE5YS43MTkuNzE5LDAsMCwwLTEuNDM5LDB2Mi4zNm0wLDQuODkydjEwLjU5aDBhLjcxOS43MTksMCwxLDAsMS40MzksMFY3Ljk0MiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM5LjUyOSkiLz4KICAgIDxwYXRoIGlkPSJQYXRoXzMwNyIgZGF0YS1uYW1lPSJQYXRoIDMwNyIgY2xhc3M9ImNscy0xIiBkPSJNNTMuNDc1LDExLjAyM2EzLjIzNywzLjIzNywwLDEsMC0zLjI1MiwzLjIyM0EzLjIxOCwzLjIxOCwwLDAsMCw1My40NzUsMTEuMDIzWm0tNS4wMzYsMGExLjc4NCwxLjc4NCwwLDEsMSwxLjc4NCwxLjc4NEExLjc5MywxLjc5MywwLDAsMSw0OC40MzksMTEuMDIzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMzLjQ3NSAtNS41NTUpIi8+CiAgICA8cGF0aCBpZD0iUGF0aF8zMDgiIGRhdGEtbmFtZT0iUGF0aCAzMDgiIGNsYXNzPSJjbHMtMSIgZD0iTTMyLjUsMTYuMjg4djIuMjczYS43MTkuNzE5LDAsMCwwLDEuNDM5LDBWMTYuMm0wLTQuODkyVi43MTloMGEuNzE5LjcxOSwwLDAsMC0xLjQzOSwwVjExLjMzOCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIzLjE0NykiLz4KICAgIDxwYXRoIGlkPSJQYXRoXzMwOSIgZGF0YS1uYW1lPSJQYXRoIDMwOSIgY2xhc3M9ImNscy0xIiBkPSJNMjMuNSw0MC4wMjNBMy4yMzcsMy4yMzcsMCwxLDAsMjYuNzUyLDM2LjgsMy4yMTgsMy4yMTgsMCwwLDAsMjMuNSw0MC4wMjNabTUuMDM2LDBhMS43ODQsMS43ODQsMCwxLDEtMS43ODQtMS43ODRBMS43OTMsMS43OTMsMCwwLDEsMjguNTM2LDQwLjAyM1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNi43MzcgLTI2LjIxKSIvPgogIDwvZz4KPC9zdmc+Cg==');
 }

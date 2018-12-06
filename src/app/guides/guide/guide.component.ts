@@ -7,10 +7,11 @@ import {ActivatedRoute} from '@angular/router';
     templateUrl: './guide.component.html',
     styles: [
         `
-td,th {
-    vertical-align:middle;
-}
-    `
+            td,
+            th {
+                vertical-align: middle;
+            }
+        `
     ]
 })
 export class GuideComponent implements OnInit {

@@ -1,23 +1,27 @@
-<button hc-button
-        class="hc-split-button-main"
-        [attr.type]="type"
-        [color]="color"
-        [attr.title]="title"
-        [attr.name]="name"
-        [attr.value]="value"
-        [tabIndex]="tabIndex"
-        [disabled]="disabled"
-        (click)="_mainBtnClick($event)">
+<button
+    hc-button
+    class="hc-split-button-main"
+    [attr.type]="type"
+    [buttonStyle]="buttonStyle"
+    [size]="size"
+    [attr.title]="title"
+    [attr.name]="name"
+    [attr.value]="value"
+    [tabIndex]="tabIndex"
+    [disabled]="disabled"
+    (click)="_mainBtnClick($event)"
+>
     <ng-content></ng-content>
 </button>
-<button #splitBtnToggle hc-button
-        class="hc-split-button-toggle"
-        type="button"
-        [color]="color"
-        (click)="_stopClick($event); openMenu();"
-        [disabled]="disabled">
-</button>
+<button
+    #splitBtnToggle
+    hc-button
+    class="hc-split-button-toggle"
+    type="button"
+    [buttonStyle]="buttonStyle"
+    [size]="size"
+    (click)="_stopClick($event); openMenu()"
+    [disabled]="disabled"
+></button>
 
-<ng-template cdkPortal #menuPortal='cdkPortal'>
-    <ng-content select="[hcButtonItem]"></ng-content>
-</ng-template>
+<ng-template cdkPortal #menuPortal="cdkPortal"> <ng-content select="[hcButtonItem]"></ng-content> </ng-template>

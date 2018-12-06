@@ -12,14 +12,12 @@ import {By} from '@angular/platform-browser';
 describe('HcFormFieldComponent', () => {
     let fixture: ComponentFixture<any>;
 
-    beforeEach(
-        fakeAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [InputModule, FormFieldModule, FormsModule, ReactiveFormsModule],
-                declarations: [SimpleInput, InputMissingHcInput, InputWithFormControl]
-            }).compileComponents();
-        })
-    );
+    beforeEach(fakeAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [InputModule, FormFieldModule, FormsModule, ReactiveFormsModule],
+            declarations: [SimpleInput, InputMissingHcInput, InputWithFormControl]
+        }).compileComponents();
+    }));
 
     describe('basic behaviors', () => {
         let inputElement: HTMLInputElement;
@@ -84,13 +82,10 @@ describe('HcFormFieldComponent', () => {
     });
 
     describe('validation', () => {
-        it(
-            'should throw error if hcInput is not present',
-            fakeAsync(() => {
-                fixture = TestBed.createComponent(InputMissingHcInput);
-                expect(() => fixture.detectChanges()).toThrowError(getControlMissing().message);
-            })
-        );
+        it('should throw error if hcInput is not present', fakeAsync(() => {
+            fixture = TestBed.createComponent(InputMissingHcInput);
+            expect(() => fixture.detectChanges()).toThrowError(getControlMissing().message);
+        }));
     });
 
     describe('with forms', () => {

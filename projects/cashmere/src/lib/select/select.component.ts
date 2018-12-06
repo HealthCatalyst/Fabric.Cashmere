@@ -1,4 +1,16 @@
-import {Component, forwardRef, HostBinding, Input, ViewEncapsulation, ElementRef, Optional, DoCheck, Self} from '@angular/core';
+import {
+    Component,
+    forwardRef,
+    HostBinding,
+    Input,
+    ViewEncapsulation,
+    ElementRef,
+    Optional,
+    DoCheck,
+    Self,
+    Output,
+    EventEmitter
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
@@ -20,7 +32,8 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     _componentId = this._uniqueInputId;
 
     /** Optional string of text to appear before selection is made */
-    @Input() placeholder: string;
+    @Input()
+    placeholder: string;
 
     /** Enables or disables the component */
     @Input()
@@ -68,9 +81,15 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         }
     }
 
+    @Output()
+    readonly focus: EventEmitter<void> = new EventEmitter<void>();
+    @Output()
+    readonly blur: EventEmitter<void> = new EventEmitter<void>();
+
     private _value: string = '';
 
-    @HostBinding('class.hc-select') _hostClass = true;
+    @HostBinding('class.hc-select')
+    _hostClass = true;
 
     @HostBinding('class.hc-select-disabled')
     get _disabledClass() {

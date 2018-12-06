@@ -18,6 +18,20 @@
     &.hc-secondary {
         @include hc-button-secondary();
     }
+    &.hc-minimal {
+        @include hc-button-minimal();
+    }
+    &.hc-sm {
+        @include hc-button-sm();
+    }
+
+    &.hc-md {
+        @include hc-button-md();
+    }
+
+    &.hc-lg {
+        @include hc-button-lg();
+    }
     &.hc-link,
     &.hc-link-inline {
         @include hc-button-link();
@@ -39,5 +53,15 @@
     }
     .hc-split-button-toggle {
         @include hc-split-button-toggle();
+        &.hc-sm {
+            @include hc-button-sm-toggle();
+        }
+        &.hc-lg {
+            @include hc-button-lg-toggle();
+        }
     }
+}
+
+.hc-filters-icon {
+    @include hc-filters-icon();
 }

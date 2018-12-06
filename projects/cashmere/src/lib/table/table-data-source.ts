@@ -12,12 +12,22 @@ import {BehaviorSubject, combineLatest, merge, Observable, of as observableOf, S
 // import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {HcSort, Sort} from '../sort/index';
 import {map} from 'rxjs/operators';
+import {PaginationComponent, LoadMorePaginationComponent, PageEvent} from '../pagination/index';
+import {BasePaginationComponent} from '../pagination/base-pagination';
 
 /**
  * Corresponds to `Number.MAX_SAFE_INTEGER`. Moved out into a variable here due to
  * flaky browser support and the value not being defined in Closure's typings.
  */
 const MAX_SAFE_INTEGER = 9007199254740991;
+
+/**
+ * Use to see what kind of pager we have
+ */
+export function _isLoadMorePaginator(pager: BasePaginationComponent): pager is LoadMorePaginationComponent {
+    const loadMorePager = <LoadMorePaginationComponent>pager;
+    return loadMorePager && loadMorePager.buttonText !== undefined;
+}
 
 /**
  * Data source that accepts a client-side data array and includes native support of filtering,
@@ -83,22 +93,24 @@ export class HcTableDataSource<T> extends DataSource<T> {
     }
     private _sort: HcSort | null;
 
-    // /**
-    //  * Instance of the MatPaginator component used by the table to control what page of the data is
-    //  * displayed. Page changes emitted by the MatPaginator will trigger an update to the
-    //  * table's rendered data.
-    //  *
-    //  * Note that the data source uses the paginator's properties to calculate which page of data
-    //  * should be displayed. If the paginator receives its properties as template inputs,
-    //  * e.g. `[pageLength]=100` or `[pageIndex]=1`, then be sure that the paginator's view has been
-    //  * initialized before assigning it to this data source.
-    //  */
-    // get paginator(): MatPaginator | null { return this._paginator; }
-    // set paginator(paginator: MatPaginator|null) {
-    //   this._paginator = paginator;
-    //   this._updateChangeSubscription();
-    // }
-    // private _paginator: MatPaginator|null;
+    /**
+     * Instance of the PaginationComponentused by the table to control what page of the data is
+     * displayed. Page changes emitted by the hc-pagination will trigger an update to the
+     * table's rendered data.
+     *
+     * Note that the data source uses the paginator's properties to calculate which page of data
+     * should be displayed. If the paginator receives its properties as template inputs,
+     * e.g. `[pageLength]=100` or `[pageIndex]=1`, then be sure that the paginator's view has been
+     * initialized before assigning it to this data source.
+     */
+    get paginator(): BasePaginationComponent | null {
+        return this._paginator;
+    }
+    set paginator(paginator: BasePaginationComponent | null) {
+        this._paginator = paginator;
+        this._updateChangeSubscription();
+    }
+    private _paginator: BasePaginationComponent | null;
 
     /**
      * Data accessor function that is used for accessing data properties for sorting through
@@ -206,12 +218,12 @@ export class HcTableDataSource<T> extends DataSource<T> {
         // The `sortChange` and `pageChange` acts as a signal to the combineLatests below so that the
         // pipeline can progress to the next step. Note that the value from these streams are not used,
         // they purely act as a signal to progress in the pipeline.
-        const sortChange: Observable<Sort | null> = this._sort
-            ? merge<Sort>(this._sort.sortChange, this._sort.initialized)
+        const sortChange: Observable<Sort | null | void> = this._sort
+            ? merge<Sort | void>(this._sort.sortChange, this._sort.initialized)
             : observableOf(null);
-        // const pageChange: Observable<PageEvent|null> = this._paginator ?
-        //     merge<PageEvent>(this._paginator.page, this._paginator.initialized) :
-        //     observableOf(null);
+        const pageChange: Observable<PageEvent | null> = this._paginator
+            ? merge<PageEvent>(this._paginator.page, this._paginator.initialized)
+            : observableOf(null);
 
         const dataStream = this._data;
         // Watch for base data or filter changes to provide a filtered set of data.
@@ -219,8 +231,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
         // Watch for filtered data or sort changes to provide an ordered set of data.
         const orderedData = combineLatest(filteredData, sortChange).pipe(map(([data]) => this._orderData(data)));
         // Watch for ordered data or page changes to provide a paged set of data.
-        const paginatedData = combineLatest(orderedData) // , pageChange)
-            .pipe(map(([data]) => data)); // this._pageData(data)));
+        const paginatedData = combineLatest(orderedData, pageChange).pipe(map(([data]) => this._pageData(data)));
         // Watched for paged data changes and send the result to the table to render.
         this._renderChangesSubscription.unsubscribe();
         this._renderChangesSubscription = paginatedData.subscribe(data => this._renderData.next(data));
@@ -237,7 +248,9 @@ export class HcTableDataSource<T> extends DataSource<T> {
         // May be overridden for customization.
         this.filteredData = !this.filter ? data : data.filter(obj => this.filterPredicate(obj, this.filter));
 
-        // if (this.paginator) { this._updatePaginator(this.filteredData.length); }
+        if (this.paginator) {
+            this._updatePaginator(this.filteredData.length);
+        }
 
         return this.filteredData;
     }
@@ -256,35 +269,40 @@ export class HcTableDataSource<T> extends DataSource<T> {
         return this.sortData(data.slice(), this.sort);
     }
 
-    // /**
-    //  * Returns a paged splice of the provided data array according to the provided MatPaginator's page
-    //  * index and length. If there is no paginator provided, returns the data array as provided.
-    //  */
-    // _pageData(data: T[]): T[] {
-    //   if (!this.paginator) { return data; }
-    //
-    //   const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-    //   return data.slice().splice(startIndex, this.paginator.pageSize);
-    // }
+    /**
+     * Returns a paged splice of the provided data array according to the provided MatPaginator's page
+     * index and length. If there is no paginator provided, returns the data array as provided.
+     */
+    _pageData(data: T[]): T[] {
+        const pager = this.paginator;
+        if (!pager) {
+            return data;
+        }
+        const startIndex = _isLoadMorePaginator(pager) ? 0 : (pager.pageNumber - 1) * pager.pageSize;
+        const numElsToGrab = _isLoadMorePaginator(pager) ? pager.pageNumber * pager.pageSize : pager.pageSize;
+        return data.slice().splice(startIndex, numElsToGrab);
+    }
 
-    // /**
-    //  * Updates the paginator to reflect the length of the filtered data, and makes sure that the page
-    //  * index does not exceed the paginator's last page. Values are changed in a resolved promise to
-    //  * guard against making property changes within a round of change detection.
-    //  */
-    // _updatePaginator(filteredDataLength: number) {
-    //   Promise.resolve().then(() => {
-    //     if (!this.paginator) { return; }
-    //
-    //     this.paginator.length = filteredDataLength;
-    //
-    //     // If the page index is set beyond the page, reduce it to the last page.
-    //     if (this.paginator.pageIndex > 0) {
-    //       const lastPageIndex = Math.ceil(this.paginator.length / this.paginator.pageSize) - 1 || 0;
-    //       this.paginator.pageIndex = Math.min(this.paginator.pageIndex, lastPageIndex);
-    //     }
-    //   });
-    // }
+    /**
+     * Updates the paginator to reflect the length of the filtered data, and makes sure that the page
+     * index does not exceed the paginator's last page. Values are changed in a resolved promise to
+     * guard against making property changes within a round of change detection.
+     */
+    _updatePaginator(filteredDataLength: number) {
+        Promise.resolve().then(() => {
+            if (!this.paginator) {
+                return;
+            }
+
+            this.paginator.length = filteredDataLength;
+
+            // If the page index is set beyond the page, reduce it to the last page.
+            if (this.paginator.pageNumber > 0) {
+                const lastPageIndex = Math.ceil(this.paginator.length / this.paginator.pageSize) || 1;
+                this.paginator.pageNumber = Math.min(this.paginator.pageNumber, lastPageIndex);
+            }
+        });
+    }
 
     /**
      * Used by the HcTable. Called when it connects to the data source.

@@ -17,17 +17,17 @@ The following general format should be followed when naming classes:
 
 `{company-scope}-{block-modifier}-{element}`
 
-*   {company scope} scopes all of our css to our company
-*   {block modifier} is an element that can standalone within our company scope
-*   {element} is element that can't standalone and requires the block modifier
+-   {company scope} scopes all of our css to our company
+-   {block modifier} is an element that can standalone within our company scope
+-   {element} is element that can't standalone and requires the block modifier
 
 &nbsp;
 
 Example class name: `.hc-form-field-label-wrapper`
 
-*   **company-scope**: hc
-*   **block-modifier**: form-field (component name)
-*   **element**: label-wrapper (css put on element within the component)
+-   **company-scope**: hc
+-   **block-modifier**: form-field (component name)
+-   **element**: label-wrapper (css put on element within the component)
 
 :::
 
@@ -41,14 +41,14 @@ Class names should be written as follows:
 
 `{component-name}-{component-type}`
 
-*   **component-name**: Same as the file name; upper camel case should be used for component definitions with multiple words ("RadioButton")
-*   **component-type**: "Component", "Directive", etc
+-   **component-name**: Same as the file name; upper camel case should be used for component definitions with multiple words ("RadioButton")
+-   **component-type**: "Component", "Directive", etc
 
 &nbsp;
 
 Below is an example of component naming following the above rules:
 
-*   Filename: `app-switcher.component.ts`
-*   Class name: `AppSwitcherComponent`
+-   Filename: `app-switcher.component.ts`
+-   Class name: `AppSwitcherComponent`
 
 :::

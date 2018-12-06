@@ -94,30 +94,44 @@ export class Drawer implements AfterContentInit {
     /** Event emitted when drawer has started to open */
     @Output()
     get openStart(): Observable<void> {
-        return this._animationStarted.pipe(filter(event => event.fromState === 'void' && event.toState === 'open'), map(() => {}));
+        return this._animationStarted.pipe(
+            filter(event => event.fromState === 'void' && event.toState === 'open'),
+            map(() => {})
+        );
     }
 
     /** Event emitted when drawer has started to close */
     @Output()
     get closeStart(): Observable<void> {
-        return this._animationStarted.pipe(filter(event => event.fromState === 'open' && event.toState === 'void'), map(() => {}));
+        return this._animationStarted.pipe(
+            filter(event => event.fromState === 'open' && event.toState === 'void'),
+            map(() => {})
+        );
     }
 
     /** Event emitted when drawer has opened */
     @Output('opened')
     get _openStream() {
-        return this._openChange.pipe(filter(value => value), map(() => {}));
+        return this._openChange.pipe(
+            filter(value => value),
+            map(() => {})
+        );
     }
 
     /** Event emitted when drawer has closed */
     @Output('closed')
     get _closeStream() {
-        return this._openChange.pipe(filter(value => !value), map(() => {}));
+        return this._openChange.pipe(
+            filter(value => !value),
+            map(() => {})
+        );
     }
 
     /** Tabindex of the element */
-    @HostBinding() tabindex = -1;
-    @HostBinding('class.hc-drawer') _drawerClass = true;
+    @HostBinding()
+    tabindex = -1;
+    @HostBinding('class.hc-drawer')
+    _drawerClass = true;
 
     readonly _animationStarted = new EventEmitter<AnimationEvent>();
 

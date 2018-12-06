@@ -5,5 +5,6 @@ import {Directive, HostBinding} from '@angular/core';
     selector: '[hcDivider]'
 })
 export class DividerDirective {
-    @HostBinding('class.hc-divider') _hostClass = true;
+    @HostBinding('class.hc-divider')
+    _hostClass = true;
 }

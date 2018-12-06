@@ -8,8 +8,10 @@ import * as d3 from 'd3';
     encapsulation: ViewEncapsulation.None
 })
 export class LinechartComponent implements OnInit {
-    @ViewChild('chart') private chartContainer: ElementRef;
-    @Input() private data: Array<any>;
+    @ViewChild('chart')
+    private chartContainer: ElementRef;
+    @Input()
+    private data: Array<any>;
     private margin: any = {top: 20, bottom: 60, left: 40, right: 20};
     private chart: any;
     private dotsPrimary: any;
@@ -197,27 +199,24 @@ export class LinechartComponent implements OnInit {
                 let tempDate = new Date(d[0]);
                 let dateArray = tempDate.toString().split(' ');
 
-                tip
-                    .transition()
+                tip.transition()
                     .duration(200)
                     .style('opacity', 1)
                     .attr('class', 'chart-tooltip tip-purple');
-                tip
-                    .html(
-                        '<div class="tooltip-header">Millrock Hospital</div>' +
-                            dateArray[1] +
-                            ' ' +
-                            dateArray[3] +
-                            ': <strong>' +
-                            d[1] +
-                            '</strong>'
-                    )
+                tip.html(
+                    '<div class="tooltip-header">Millrock Hospital</div>' +
+                        dateArray[1] +
+                        ' ' +
+                        dateArray[3] +
+                        ': <strong>' +
+                        d[1] +
+                        '</strong>'
+                )
                     .style('left', d3.event.pageX + 15 + 'px')
                     .style('top', d3.event.pageY - 28 + 'px');
             })
             .on('mouseout', function(d) {
-                tip
-                    .transition()
+                tip.transition()
                     .duration(500)
                     .style('opacity', 0);
             });
@@ -229,27 +228,24 @@ export class LinechartComponent implements OnInit {
                 let tempDate = new Date(d[0]);
                 let dateArray = tempDate.toString().split(' ');
 
-                tip
-                    .transition()
+                tip.transition()
                     .duration(200)
                     .style('opacity', 1)
                     .attr('class', 'chart-tooltip tip-gray');
-                tip
-                    .html(
-                        '<div class="tooltip-header">Touchstone Benchmark</div>' +
-                            dateArray[1] +
-                            ' ' +
-                            dateArray[3] +
-                            ': <strong>' +
-                            d[2] +
-                            '</strong>'
-                    )
+                tip.html(
+                    '<div class="tooltip-header">Touchstone Benchmark</div>' +
+                        dateArray[1] +
+                        ' ' +
+                        dateArray[3] +
+                        ': <strong>' +
+                        d[2] +
+                        '</strong>'
+                )
                     .style('left', d3.event.pageX + 15 + 'px')
                     .style('top', d3.event.pageY - 28 + 'px');
             })
             .on('mouseout', function(d) {
-                tip
-                    .transition()
+                tip.transition()
                     .duration(500)
                     .style('opacity', 0);
             });

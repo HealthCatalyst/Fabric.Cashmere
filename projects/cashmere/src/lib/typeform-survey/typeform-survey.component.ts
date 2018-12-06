@@ -25,7 +25,8 @@ export class TypeformSurveyComponent {
     /**
      * TypeForm survey URI you want to use. Example: https://somecompany.typeform.com/to/surveyId?parameter=parametervalue
      */
-    @Input() public surveyUri: string;
+    @Input()
+    public surveyUri: string;
     private _id: string = 'typef_orm_share';
 
     /**

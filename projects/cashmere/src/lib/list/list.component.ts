@@ -8,5 +8,6 @@ import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
     encapsulation: ViewEncapsulation.None
 })
 export class ListComponent {
-    @HostBinding('class.hc-list') _hostClass = true;
+    @HostBinding('class.hc-list')
+    _hostClass = true;
 }

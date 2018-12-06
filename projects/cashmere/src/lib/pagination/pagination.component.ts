@@ -1,85 +1,46 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {coerceNumberProperty} from '@angular/cdk/coercion';
+import {BasePaginationComponent} from './base-pagination';
 
 /** The pagination control enables the user to navigate across paged content.
  * Although commonly used with tables and data grids, this control may be used any place where paged data is used.
+ * @inheritdoc
  * */
 @Component({
     selector: 'hc-pagination',
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnChanges {
-    private _totalPages: number | null | undefined = null;
-    private _inputPageNumber: number | null = null;
-    private __pageNumber: number | null = null;
-
-    /**
-     * The total pages possible to navigate to
-     */
+export class PaginationComponent extends BasePaginationComponent implements OnInit {
+    /** The set of provided page size options to display to the user. *Defaults to [10, 20, 50].* */
     @Input()
-    get totalPages(): number | null | undefined {
-        return this._totalPages;
+    get pageSizeOptions(): number[] {
+        return this._pageSizeOptions;
     }
-    set totalPages(value: number | null | undefined) {
-        if (typeof value !== 'number') {
-            value = null;
-        }
-        this._totalPages = value;
+    set pageSizeOptions(value: number[]) {
+        this._pageSizeOptions = (value || []).map(p => coerceNumberProperty(p));
+        this._updateDisplayedPageSizeOptions();
     }
-    /**
-     * The current page number (one-based).
-     * Should be two-way bound using `[(pageNumber)]` to ensure
-     * that the source property is updated when the control is
-     * used.
-     */
+    private _pageSizeOptions: number[] = [10, 20, 50];
+
+    isFocused: boolean = false;
+
+    /** Displayed set of page size options. Will be sorted and include current page size. */
+    _displayedPageSizeOptions: number[] = [];
+
+    /** Whether to hide the page size selection UI from the user. *Defaults to false.* */
     @Input()
-    get pageNumber(): number | null {
-        return this._inputPageNumber;
+    get hidePageSize(): boolean {
+        return this._hidePageSize;
     }
-    set pageNumber(value: number | null) {
-        this._inputPageNumber = value;
-        this.pageNumberChange.emit(value);
-        this._pageNumber = this.sanitize(value);
+    set hidePageSize(value: boolean) {
+        this._hidePageSize = !!value;
     }
-    get _pageNumber() {
-        return this.__pageNumber;
-    }
-    set _pageNumber(value: number | null) {
-        this.__pageNumber = value;
-        if (this.pageNumber !== value) {
-            this.pageNumber = value;
-        }
-    }
+    private _hidePageSize = false;
 
-    /**
-     * Event for when page number changes
-     */
-    @Output() readonly pageNumberChange = new EventEmitter<number | null>();
-
-    ngOnChanges(changes: SimpleChanges) {
-        if (changes.totalPages && !changes.inputPageNumber) {
-            /*
-             * when total pages is changed the page number is reset to 1
-             */
-            this._pageNumber = 1;
-        } else if (changes.inputPageNumber) {
-            /*
-             * Validate current page, making sure it is in the valid range.
-             * values to large are set to the last page, while all other
-             * invalid values are set to 1.  If there are no pages there is
-             * also no current page.
-             */
-            let value = changes.inputPageNumber.currentValue;
-            this._pageNumber = this.sanitize(value);
-        }
-    }
-
-    get _isFirstPage() {
-        return this._pageNumber === 1;
-    }
-
-    get _isLastPage() {
-        return !!(this.totalPages && this._pageNumber === this.totalPages);
+    ngOnInit() {
+        this._updateDisplayedPageSizeOptions();
+        super.ngOnInit();
     }
 
     get _visiblePages(): Array<number | null> {
@@ -109,7 +70,7 @@ export class PaginationComponent implements OnChanges {
          * Otherwise, display 1, 2, ..., p-1, p, p+1, ..., n-1, n
          */
         const n = this.totalPages;
-        const p = this._pageNumber || 1;
+        const p = this.pageNumber || 1;
 
         if (p < 6) {
             return [1, 2, 3, 4, 5, 6, null, n - 1, n];
@@ -147,7 +108,7 @@ export class PaginationComponent implements OnChanges {
          * Otherwise, display 1, ..., p, ..., n
          */
         const n = this.totalPages;
-        const p = this._pageNumber || 1;
+        const p = this.pageNumber || 1;
 
         if (p < 4) {
             return [1, 2, 3, null, n];
@@ -158,41 +119,60 @@ export class PaginationComponent implements OnChanges {
         }
     }
 
+    _pageSizeUpdated() {
+        this._updateDisplayedPageSizeOptions();
+    }
+
     _previousPage() {
         if (this._isFirstPage) {
             return;
         }
-        this._goToPage((this._pageNumber || 1) - 1);
+        this._goToPage((this.pageNumber || 1) - 1);
     }
 
     _goToPage(pageNum: number) {
-        this._pageNumber = pageNum;
+        this.pageNumber = pageNum;
     }
 
     _nextPage() {
         if (this._isLastPage) {
             return;
         }
-        this._goToPage((this._pageNumber || 1) + 1);
+        this._goToPage((this.pageNumber || 1) + 1);
     }
 
-    private sanitize(pageNumber: any): number | null {
-        /*
-         * Validate current page, making sure it is in the valid range.
-         * values to large are set to the last page, while all other
-         * invalid values are set to 1.  If there are no pages there is
-         * also no current page.
-         */
-        if (!!this.totalPages) {
-            if (typeof pageNumber !== 'number' || isNaN(pageNumber) || !pageNumber || pageNumber < 1) {
-                pageNumber = 1;
-            }
-            if (pageNumber > this.totalPages) {
-                pageNumber = this.totalPages;
-            }
-        } else {
-            pageNumber = null;
+    /**
+     * Changes the page size so that the first item displayed on the page will still be
+     * displayed using the new page size.
+     *
+     * For example, if the page size is 10 and on the second page (items indexed 11-20) then
+     * switching so that the page size is 5 will set the third page as the current page so
+     * that the 11th item will still be displayed.
+     */
+    _changePageSize(pageSize: number) {
+        // Current page needs to be updated to reflect the new page size. Navigate to the page
+        // containing the previous page's first item.
+        const startIndex = (this.pageNumber - 1) * this.pageSize + 1;
+        this.pageSize = pageSize;
+        this.pageNumber = Math.ceil(startIndex / pageSize) || 1;
+    }
+
+    /**
+     * Updates the list of page size options to display to the user. Includes making sure that
+     * the page size is an option and that the list is sorted.
+     */
+    private _updateDisplayedPageSizeOptions() {
+        // If no page size is provided, use the first page size option or the default page size.
+        if (!this.pageSize) {
+            this.pageSize = this.pageSizeOptions.length !== 0 ? this.pageSizeOptions[0] : BasePaginationComponent._DEFAULT_PAGE_SIZE;
         }
-        return pageNumber;
+
+        this._displayedPageSizeOptions = this.pageSizeOptions.slice();
+        if (this._displayedPageSizeOptions.indexOf(this.pageSize) === -1) {
+            this._displayedPageSizeOptions.push(this.pageSize);
+        }
+
+        // Sort the numbers using a number-specific sort function.
+        this._displayedPageSizeOptions.sort((a, b) => a - b);
     }
 }

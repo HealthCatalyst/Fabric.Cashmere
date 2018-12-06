@@ -23,9 +23,6 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
 
     _componentId = this._uniqueInputId;
 
-    /** Hint displayed within the input and disappears on input.  */
-    @Input() placeholder: string;
-
     /** Input type of the element. */
     @Input()
     get type(): string {
@@ -96,7 +93,8 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         this._isRequired = parseBooleanAttribute(requiredInput);
     }
 
-    @HostBinding('class.hc-input') _hostHcInputClass = true;
+    @HostBinding('class.hc-input')
+    _hostHcInputClass = true;
 
     @HostBinding('attr.id')
     get _hostId(): string {

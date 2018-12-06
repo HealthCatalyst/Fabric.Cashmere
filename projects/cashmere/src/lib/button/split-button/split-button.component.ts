@@ -13,7 +13,7 @@ import {Overlay, OverlayConfig, OverlayRef, ConnectionPositionPair} from '@angul
 import {TemplatePortal} from '@angular/cdk/portal';
 
 import {parseBooleanAttribute} from '../../util';
-import {validateStyleInput, ButtonComponent} from '../button.component';
+import {validateStyleInput, validateSizeInput, ButtonComponent} from '../button.component';
 
 /** SplitButton click event */
 export class SplitButtonClickEvent {
@@ -33,32 +33,42 @@ export class SplitButtonComponent {
     private _tabIndex: number;
     private _disabled: boolean = false;
     private _style: string = 'primary';
+    private _size: string = 'md';
     private _menuClickedCallback = this._menuClicked.bind(this);
 
     private _menuPortalHost: OverlayRef;
-    @ViewChild('menuPortal') _menuPortal: TemplatePortal<any>;
-    @ViewChild('splitBtnToggle') _splitBtnToggle: ButtonComponent;
+    @ViewChild('menuPortal')
+    _menuPortal: TemplatePortal<any>;
+    @ViewChild('splitBtnToggle')
+    _splitBtnToggle: ButtonComponent;
 
     /** Primary button's click event */
-    @Output() click = new EventEmitter<SplitButtonClickEvent>();
+    @Output()
+    click = new EventEmitter<SplitButtonClickEvent>();
 
     /** Additional information shown as tooltip */
-    @Input() title: string;
+    @Input()
+    title: string;
 
     /** Positioning for the menu. Possible values: 'start', 'end', 'center' */
-    @Input() menuPosition: string = 'end';
+    @Input()
+    menuPosition: string = 'end';
 
     /** True if clicking anywhere in the menu should automatically close it. */
-    @Input() autoCloseMenuOnClick = true;
+    @Input()
+    autoCloseMenuOnClick = true;
 
     /** Type of button. Possible values: 'submit', 'reset', 'button' */
-    @Input() type = 'button';
+    @Input()
+    type = 'button';
 
     /** Used as a reference in JavaScript, or to reference form data after a form is submitted */
-    @Input() name: string;
+    @Input()
+    name: string;
 
     /** Value of primary button when submitted within a form */
-    @Input() value: string;
+    @Input()
+    value: string;
 
     /** Button tabindex */
     @Input()
@@ -92,6 +102,17 @@ export class SplitButtonComponent {
     set buttonStyle(btnStyle: string) {
         validateStyleInput(btnStyle);
         this._style = btnStyle;
+    }
+
+    /** Sets size of button. Choose from: `'sm' | 'md' | 'lg'` */
+    @Input()
+    get size(): string {
+        return this._size;
+    }
+
+    set size(size: string) {
+        validateSizeInput(size);
+        this._size = size;
     }
 
     /** Whether the control is disabled. */

@@ -1,5 +1,4 @@
-import {Component, Inject, Input, Optional} from '@angular/core';
-import {IAppSwitcherService} from '../../app-switcher/app-switcher-interfaces';
+import {Component} from '@angular/core';
 
 /** Navigation dropdown for small screen sizes */
 @Component({
@@ -9,16 +8,7 @@ import {IAppSwitcherService} from '../../app-switcher/app-switcher-interfaces';
 })
 export class NavbarMobileMenuComponent {
     public _yPos: string = '-100';
-
-    /**
-     * Enables app switcher capabilities
-     *
-     */
-    // @Input() appSwitcher: string = 'true';
-
-    constructor() {} /*@Optional()
-        @Inject('IAppSwitcherService')
-        public _appSwitcherService: IAppSwitcherService*/
+    constructor() {}
 
     /** Show the component from view */
     show(): void {

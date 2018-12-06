@@ -7,5 +7,6 @@ import {Component, ViewEncapsulation, TemplateRef, ViewChild} from '@angular/cor
     encapsulation: ViewEncapsulation.None
 })
 export class HcTabTitleComponent {
-    @ViewChild('tabTitle') public tabTitle: TemplateRef<any>;
+    @ViewChild('tabTitle')
+    public tabTitle: TemplateRef<any>;
 }

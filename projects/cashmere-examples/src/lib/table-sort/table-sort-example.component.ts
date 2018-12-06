@@ -33,7 +33,8 @@ export class TableSortExampleComponent implements OnInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
     dataSource: HcTableDataSource<PeriodicElement>;
 
-    @ViewChild(HcSort) sort: HcSort;
+    @ViewChild(HcSort)
+    sort: HcSort;
 
     ngOnInit(): void {
         this.dataSource = new HcTableDataSource(ELEMENT_DATA);
