@@ -2,6 +2,7 @@ import {Component, Input, ViewChild, ElementRef, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {titleCase} from 'change-case';
 import stackblitz from '@stackblitz/sdk';
+import {expand} from 'rxjs/operators';
 
 @Component({
     selector: 'hc-example-viewer',
@@ -9,7 +10,8 @@ import stackblitz from '@stackblitz/sdk';
     styleUrls: ['example-viewer.component.scss']
 })
 export class ExampleViewerComponent implements OnInit {
-    @ViewChild('exampleContainer') exampleContainer: ElementRef;
+    @ViewChild('exampleContainer')
+    exampleContainer: ElementRef;
 
     isInitialized = false;
     private _example: string;
@@ -51,26 +53,25 @@ export class ExampleViewerComponent implements OnInit {
             }));
     }
 
-    // async loadStackBlitz() {
-    //     const exampleFiles = await this.httpClient.get<FileHash>(`/assets/docs/examples/${this.example}.json`).toPromise();
-    //     const dependencies = JSON.parse(exampleFiles['package.json']).dependencies;
-    //     await stackblitz.embedProject(
-    //         this.exampleContainer.nativeElement,
-    //         {
-    //             files: exampleFiles,
-    //             template: 'angular-cli',
-    //             title: this.exampleTitle,
-    //             description: this.exampleTitle,
-    //             dependencies: dependencies
-    //         },
-    //         {
-    //             openFile: `src/app/${this.example}/${this.example}-example.component.html`,
-    //             clickToLoad: true,
-    //             hideDevTools: true,
-    //             forceEmbedLayout: true
-    //         }
-    //     );
-    // }
+    async launchStackBlitz() {
+        const exampleFiles = this.allExampleFiles;
+        const containerPath = `src/app/example-container.component.ts`;
+        exampleFiles[containerPath] = exampleFiles[containerPath].replace(/hc-example/g, `hc-${this.example}-example`);
+        const dependencies = JSON.parse(exampleFiles['package.json']).dependencies;
+        await stackblitz.openProject(
+            {
+                files: exampleFiles,
+                template: 'angular-cli',
+                title: this.exampleTitle,
+                description: this.exampleTitle,
+                dependencies: dependencies
+            },
+            {
+                openFile: `src/app/${this.example}/${this.example}-example.component.html`,
+                hideDevTools: true
+            }
+        );
+    }
 }
 
 interface FileHash {

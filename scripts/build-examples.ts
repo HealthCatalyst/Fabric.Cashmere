@@ -52,6 +52,8 @@ for (let example of exampleList) {
     const componentImportCommentPattern = /\/\* example-component-import \*\//g;
     const moduleNameCommentPattern = /\/\* example-module-name \*\//g;
     const componentNameCommentPattern = /\/\* example-component-name \*\//g;
+    const componentCommaPattern = /\/\* component-comma \*\//g;
+    const moduleCommaPattern = /\/\* module-comma \*\//g;
 
     let appModuleContents: string;
 
@@ -62,8 +64,10 @@ for (let example of exampleList) {
         appModuleContents = appModuleTemplate
             .replace(moduleImportCommentPattern, $import)
             .replace(moduleNameCommentPattern, moduleName)
+            .replace(moduleCommaPattern, ',')
             .replace(componentNameCommentPattern, '')
-            .replace(componentImportCommentPattern, '');
+            .replace(componentImportCommentPattern, '')
+            .replace(componentCommaPattern, '');
     } else {
         const componentName = `${exampleBaseName}ExampleComponent`;
         const $import = `import { ${componentName} } from './${example}/${example}-example.component';`;
@@ -71,14 +75,16 @@ for (let example of exampleList) {
         appModuleContents = appModuleTemplate
             .replace(componentImportCommentPattern, $import)
             .replace(componentNameCommentPattern, componentName)
+            .replace(componentCommaPattern, ',')
             .replace(moduleNameCommentPattern, '')
-            .replace(moduleImportCommentPattern, '');
+            .replace(moduleImportCommentPattern, '')
+            .replace(moduleCommaPattern, '');
     }
 
     const exampleFiles = exampleFileList.reduce(
         (prev, curr) => {
             const fullPath = path.join(examplesRoot, example, curr);
-            const content = fs.readFileSync(fullPath).toString();
+            let content = fs.readFileSync(fullPath).toString();
             prev[`src/app/${example}/${curr}`] = content;
             return prev;
         },

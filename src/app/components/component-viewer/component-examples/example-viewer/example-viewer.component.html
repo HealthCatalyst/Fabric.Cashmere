@@ -1,8 +1,12 @@
 <div class="hc-tile">
-    <h3 class="docs-api-h3">{{ exampleTitle }}</h3>
-    <div #exampleContainer></div>
+    <div class="header">
+        <h3 class="docs-api-h3">{{ exampleTitle }}</h3>
+        <button hc-button title="Medium Minimal Button" buttonStyle="minimal" size="md" (click)="launchStackBlitz()">
+            <hc-icon fontSet="fa" fontIcon="fa-edit" class="icon-left"></hc-icon> Edit on StackBlitz
+        </button>
+    </div>
     <hc-tab-set direction="horizontal">
-        <hc-tab tabTitle="Example"> <ng-container #demoContainer></ng-container> </hc-tab>
+        <hc-tab tabTitle="Example"> <div #exampleContainer></div> </hc-tab>
         <hc-tab *ngFor="let file of exampleFiles" [tabTitle]="file.name">
             <pre> <code [highlight]="file.contents" ></code> </pre>
         </hc-tab>

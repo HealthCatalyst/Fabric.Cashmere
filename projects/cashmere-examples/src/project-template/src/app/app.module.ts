@@ -12,14 +12,14 @@ import {CashmereModule} from './cashmere.module';
 @NgModule({
     declarations: [
         AppComponent,
-        ExampleContainerComponent
+        ExampleContainerComponent /* component-comma */
         /* example-component-name */
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
-        CashmereModule
+        CashmereModule /* module-comma */
         /* example-module-name */
     ],
     providers: [],

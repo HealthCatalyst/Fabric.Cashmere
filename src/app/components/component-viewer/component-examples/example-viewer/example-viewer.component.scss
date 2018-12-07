@@ -1,5 +1,25 @@
 @import '~highlight.js/styles/github.css';
 
-.tab-content {
-    padding: 10px 20px;
+.icon-left {
+    margin-right: 5px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+
+    h3 {
+        flex: 1;
+        margin-top: 0;
+    }
+}
+
+pre {
+    padding: 0;
+    overflow: hidden;
+
+    code {
+        margin-top: -15px;
+        margin-bottom: -15px;
+    }
 }
