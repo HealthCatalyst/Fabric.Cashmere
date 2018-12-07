@@ -1,4 +1,10 @@
 <div class="hc-tile">
-    <h3 class="docs-api-h3">{{exampleTitle}}</h3>
+    <h3 class="docs-api-h3">{{ exampleTitle }}</h3>
     <div #exampleContainer></div>
+    <hc-tab-set direction="horizontal">
+        <hc-tab tabTitle="Example"> <ng-container #demoContainer></ng-container> </hc-tab>
+        <hc-tab *ngFor="let file of exampleFiles" [tabTitle]="file.name">
+            <pre> <code [highlight]="file.contents" ></code> </pre>
+        </hc-tab>
+    </hc-tab-set>
 </div>

@@ -9,11 +9,12 @@ import stackblitz from '@stackblitz/sdk';
     styleUrls: ['example-viewer.component.scss']
 })
 export class ExampleViewerComponent implements OnInit {
-    @ViewChild('exampleContainer')
-    exampleContainer: ElementRef;
+    @ViewChild('exampleContainer') exampleContainer: ElementRef;
 
-    private isInitialized = false;
+    isInitialized = false;
     private _example: string;
+    private allExampleFiles: FileHash = {};
+    exampleFiles: Array<{name: string; contents: string}> = [];
 
     constructor(private httpClient: HttpClient) {}
 
@@ -24,7 +25,7 @@ export class ExampleViewerComponent implements OnInit {
     set example(example: string) {
         this._example = example;
         if (example && this.isInitialized) {
-            this.loadStackBlitz();
+            this.loadExampleFiles();
         }
     }
 
@@ -32,33 +33,44 @@ export class ExampleViewerComponent implements OnInit {
         return titleCase(this._example);
     }
 
-    ngOnInit() {
+    async ngOnInit() {
         if (this.example) {
-            this.loadStackBlitz();
+            await this.loadExampleFiles();
+            this.isInitialized = true;
         }
-        this.isInitialized = true;
     }
 
-    async loadStackBlitz() {
-        const exampleFiles = await this.httpClient.get<FileHash>(`/assets/docs/examples/${this.example}.json`).toPromise();
-        const dependencies = JSON.parse(exampleFiles['package.json']).dependencies;
-        await stackblitz.embedProject(
-            this.exampleContainer.nativeElement,
-            {
-                files: exampleFiles,
-                template: 'angular-cli',
-                title: this.exampleTitle,
-                description: this.exampleTitle,
-                dependencies: dependencies
-            },
-            {
-                openFile: `src/app/${this.example}/${this.example}-example.component.html`,
-                clickToLoad: true,
-                hideDevTools: true,
-                forceEmbedLayout: true
-            }
-        );
+    async loadExampleFiles() {
+        this.allExampleFiles = await this.httpClient.get<FileHash>(`/assets/docs/examples/${this.example}.json`).toPromise();
+        const exampleRoot = `src/app/${this.example}/`;
+        this.exampleFiles = Object.keys(this.allExampleFiles)
+            .filter(path => path.startsWith(exampleRoot))
+            .map(path => ({
+                name: path.substr(exampleRoot.length + this.example.length + 1),
+                contents: this.allExampleFiles[path]
+            }));
     }
+
+    // async loadStackBlitz() {
+    //     const exampleFiles = await this.httpClient.get<FileHash>(`/assets/docs/examples/${this.example}.json`).toPromise();
+    //     const dependencies = JSON.parse(exampleFiles['package.json']).dependencies;
+    //     await stackblitz.embedProject(
+    //         this.exampleContainer.nativeElement,
+    //         {
+    //             files: exampleFiles,
+    //             template: 'angular-cli',
+    //             title: this.exampleTitle,
+    //             description: this.exampleTitle,
+    //             dependencies: dependencies
+    //         },
+    //         {
+    //             openFile: `src/app/${this.example}/${this.example}-example.component.html`,
+    //             clickToLoad: true,
+    //             hideDevTools: true,
+    //             forceEmbedLayout: true
+    //         }
+    //     );
+    // }
 }
 
 interface FileHash {
