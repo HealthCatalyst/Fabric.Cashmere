@@ -132,7 +132,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
             // leave them as strings. For more info: https://goo.gl/y5vbSg
             return numberValue < MAX_SAFE_INTEGER ? numberValue : value;
         }
-        if (typeof value === "string") {
+        if (typeof value === 'string') {
             value = value.toLocaleLowerCase();
         }
         return value;
