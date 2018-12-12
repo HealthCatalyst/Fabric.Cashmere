@@ -129,6 +129,8 @@ If you are using the `HcTableDataSource` for your table's data source, provide t
 directive to the data source and it will automatically listen for sorting changes and change the
 order of data rendered by the table.
 
+The default sort order of values is as follows: "[Null]AaBbCc123".
+
 By default, the `HcTableDataSource` sorts with the assumption that the sorted column's name
 matches the data property name that the column displays. For example, the following column
 definition is named `position`, which matches the name of the property displayed in the row cell.

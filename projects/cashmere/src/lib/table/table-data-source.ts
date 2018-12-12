@@ -117,12 +117,13 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * the default sortData function.
      * This default function assumes that the sort header IDs (which defaults to the column name)
      * matches the data's properties (e.g. column Xyz represents data['Xyz']).
+     * Converts strings to lowercase characters. As a result, strings sort like so: "AaBbCc".
      * May be set to a custom function for different behavior.
      * @param data Data object that is being accessed.
      * @param sortHeaderId The name of the column that represents the data.
      */
     sortingDataAccessor: ((data: T, sortHeaderId: string) => string | number) = (data: T, sortHeaderId: string): string | number => {
-        const value: any = data[sortHeaderId];
+        let value: any = data[sortHeaderId];
 
         if (_isNumberValue(value)) {
             const numberValue = Number(value);
@@ -131,7 +132,9 @@ export class HcTableDataSource<T> extends DataSource<T> {
             // leave them as strings. For more info: https://goo.gl/y5vbSg
             return numberValue < MAX_SAFE_INTEGER ? numberValue : value;
         }
-
+        if (typeof value === "string") {
+            value = value.toLocaleLowerCase();
+        }
         return value;
     };
 
