@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {SafeHtml} from "@angular/platform-browser";
 
 @Pipe({name: 'highlight'})
-export class HighLightPipe implements PipeTransform {
+export class HighlightPipe implements PipeTransform {
     /* use this for single match search */
     static SINGLE_MATCH: string = "Single-Match";
     /* use this for single match search with a restriction that target should start with search string */
