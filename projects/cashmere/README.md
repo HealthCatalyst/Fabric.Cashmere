@@ -14,8 +14,7 @@ An Angular component library that makes any task feel luxurious.
 -   [Submit an Issue](http://cashmere.healthcatalyst.net/guides/submit-an-issue)
 -   [Supported Browsers](http://cashmere.healthcatalyst.net/guides/supported-browsers)
 
-## Installing
-
+## Installin
 Run `npm i --save @wcf/cashmere`.
 
 ## Adding a new Component
