@@ -1,0 +1,12 @@
+.wcf-logobox {
+  width: 260px;
+  height: 70px;
+  top: 0;
+  left: 0;
+  text-align: center;
+  background-color: #BA160A;
+}
+
+.wcf-logo {
+  padding-top: 6px;
+}
