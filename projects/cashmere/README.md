@@ -15,7 +15,7 @@ An Angular component library that makes any task feel luxurious.
 -   [Supported Browsers](http://cashmere.healthcatalyst.net/guides/supported-browsers)
 
 ## Installin
-Run `npm i --save @wcf/cashmere`.
+Run `npm i --save @wcf-insurance/cashmere`.
 
 ## Adding a new Component
 <ul>

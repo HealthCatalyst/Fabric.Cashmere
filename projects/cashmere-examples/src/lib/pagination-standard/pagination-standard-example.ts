@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {HcTableDataSource, PaginationComponent} from '@wcf/cashmere';
+import {HcTableDataSource, PaginationComponent} from '@wcf-insurance/cashmere';
 
 export interface PeriodicElement {
     name: string;

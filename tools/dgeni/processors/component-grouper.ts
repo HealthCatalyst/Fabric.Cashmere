@@ -92,7 +92,7 @@ export class ComponentGrouper implements Processor {
             const packageName = documentInfo.packageName;
             const packageDisplayName = 'Cashmere';
 
-            const moduleImportPath = `@healthcatalyst/${packageName}`;
+            const moduleImportPath = `@wcf-insurance/${packageName}`;
             const groupName = packageName + '-' + documentInfo.name;
 
             // Get the group for this doc, or, if one does not exist, create it.

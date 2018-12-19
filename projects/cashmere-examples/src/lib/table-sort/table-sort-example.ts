@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {HcSort, HcTableDataSource} from '@wcf/cashmere';
+import {HcSort, HcTableDataSource} from '@wcf-insurance/cashmere';
 
 export interface PeriodicElement {
     name: string;

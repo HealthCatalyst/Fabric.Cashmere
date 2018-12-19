@@ -1,5 +1,5 @@
 import {Component, ComponentFactoryResolver, Input, ViewChild, ViewContainerRef} from '@angular/core';
-import {EXAMPLE_COMPONENTS, LiveExample} from '@wcf/cashmere-examples';
+import {EXAMPLE_COMPONENTS, LiveExample} from '@wcf-insurance/cashmere-examples';
 
 @Component({
     selector: 'hc-example-viewer',
