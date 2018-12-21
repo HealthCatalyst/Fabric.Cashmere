@@ -4,5 +4,5 @@
 }
 
 .demo-button-width {
-    min-width: unset;
+    min-width: unset !important;
 }
