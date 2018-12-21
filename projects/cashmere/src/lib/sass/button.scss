@@ -114,6 +114,7 @@ $btn-icon-sz: 18px;
         color: $gray-600;
     }
 }
+
 @mixin hc-button-minimal() {
     background-color: transparent;
     color: $gray-500;
@@ -230,20 +231,52 @@ $btn-icon-sz: 18px;
     border-top-left-radius: 0;
 
     &::after {
-        display: flex;
-        height: 20px;
-        align-items: center;
-        font: normal normal normal 12px/1 FontAwesome;
-        content: '\f078';
+        content: '';
+        width: 12px;
+        height: 8px;
+        margin-top: 2px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSI4Ljk4NyIgdmlld0JveD0iMCAwIDE0IDguOTg3Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjZmZmOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cGF0aCBpZD0iUGF0aF81IiBkYXRhLW5hbWU9IlBhdGggNSIgY2xhc3M9ImNscy0xIiBkPSJNMTUuMzQ4LTE0LjRhLjU2MS41NjEsMCwwLDAsMC0uNzkxbC0xLjQ0Mi0xLjQzM2EuNTUxLjU1MSwwLDAsMC0uNzgyLDBMOC41MTEtMTIuMDExLDMuOS0xNi42MjRhLjU1MS41NTEsMCwwLDAtLjc4MiwwTDEuNjc0LTE1LjE5MWEuNTYxLjU2MSwwLDAsMCwwLC43OTFMOC4xMi03Ljk2M2EuNTUxLjU1MSwwLDAsMCwuNzgyLDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMS41MTEgMTYuNzg3KSIvPgo8L3N2Zz4K');
+    }
+}
+
+@mixin hc-button-secondary-toggle() {
+    min-width: auto;
+    padding: 8px 12px;
+    margin-left: 0;
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+
+    &::after {
+        content: '';
+        width: 12px;
+        height: 8px;
+        margin-top: 2px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSI4Ljk4NyIgdmlld0JveD0iMCAwIDE0IDguOTg3Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjMzMzOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cGF0aCBpZD0iUGF0aF81IiBkYXRhLW5hbWU9IlBhdGggNSIgY2xhc3M9ImNscy0xIiBkPSJNMTUuMzQ4LTE0LjRhLjU2MS41NjEsMCwwLDAsMC0uNzkxbC0xLjQ0Mi0xLjQzM2EuNTUxLjU1MSwwLDAsMC0uNzgyLDBMOC41MTEtMTIuMDExLDMuOS0xNi42MjRhLjU1MS41NTEsMCwwLDAtLjc4MiwwTDEuNjc0LTE1LjE5MWEuNTYxLjU2MSwwLDAsMCwwLC43OTFMOC4xMi03Ljk2M2EuNTUxLjU1MSwwLDAsMCwuNzgyLDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMS41MTEgMTYuNzg3KSIvPgo8L3N2Zz4K');
     }
 }
 
 @mixin hc-button-sm-toggle() {
     padding: 3px 7px;
+    &::after {
+        width: 10px;
+        height: 6px;
+        margin-top: 1px;
+    }
 }
 
 @mixin hc-button-lg-toggle() {
     padding: 0px 16px;
+    &::after {
+        width: 14px;
+        height: 9px;
+    }
 }
 
 @mixin hc-split-button-divider() {
