@@ -19,43 +19,68 @@ interface ExampleModuleInfo extends ExampleInfo {
     mainComponentInfo: ExampleInfo;
 }
 
+// paths we'll need later
 const examplesProjectRoot = path.join(__dirname, '../projects/cashmere-examples');
 const examplesRoot = path.join(examplesProjectRoot, 'src/lib');
 const projectTemplateRoot = path.join(examplesProjectRoot, 'src/project-template');
 const outputRoot = path.join(__dirname, '../src/assets/docs/examples');
+
 const cashmereModule = fs.readFileSync(path.join(__dirname, '../src/app/shared/cashmere.module.ts')).toString();
-
-fse.ensureDirSync(outputRoot);
-glob.sync('**/*', {cwd: outputRoot}).forEach(f => {
-    fs.unlinkSync(path.join(outputRoot, f));
-});
-
-fs.writeFileSync(path.join(projectTemplateRoot, 'src/app/cashmere.module.ts'), cashmereModule);
-const projectTemplateFiles = glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce(
-    (prev, curr) => {
-        const fullPath = path.join(projectTemplateRoot, curr);
-        const content = fs.readFileSync(fullPath).toString();
-        prev[curr] = content;
-        return prev;
-    },
-    {} as FileHash
-);
-const appModuleTemplate = projectTemplateFiles['src/app/app.module.ts'];
-
-const exampleList = fs.readdirSync(examplesRoot).filter(f => {
-    const file = path.join(examplesRoot, f);
-    const stat = fs.statSync(file);
-    return stat.isDirectory();
-});
-
-const progress = new ProgressBar('[:bar] :percent :exampleName', {total: exampleList.length + 3});
 const exampleComponents: ExampleInfo[] = [];
 const exampleModules: ExampleModuleInfo[] = [];
-for (let example of exampleList) {
-    progress.tick({exampleName: example});
+const exampleList = getExampleNames();
 
-    const exampleDir = path.join(examplesRoot, example);
-    const exampleBaseName = pascalCase(example);
+//////////////////////////////////
+/// Generate Cashmere Examples ///
+//////////////////////////////////
+cleanOutputDirectory();
+const projectTemplateFiles = getStackBlitzProjectTemplateFiles();
+const appModuleTemplate = projectTemplateFiles['src/app/app.module.ts'];
+const progress = new ProgressBar('[:bar] :percent :exampleName', {total: exampleList.length + 3});
+for (let example of exampleList) {
+    progress.tick({example});
+    generateStackBlitzFiles(example);
+}
+progress.tick({exampleName: 'examples module'});
+generateExamplesModule();
+progress.tick({exampleName: 'example Cashmere module'});
+generateCashmereModule();
+progress.tick({exampleName: 'example component mappings'});
+generateExampleToComponentMappingsFile();
+progress.tick({exampleName: ''});
+//////////////////////////////////
+
+function cleanOutputDirectory() {
+    fse.ensureDirSync(outputRoot);
+    glob.sync('**/*', {cwd: outputRoot}).forEach(f => {
+        fs.unlinkSync(path.join(outputRoot, f));
+    });
+}
+
+function getStackBlitzProjectTemplateFiles() {
+    fs.writeFileSync(path.join(projectTemplateRoot, 'src/app/cashmere.module.ts'), cashmereModule);
+    return glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce(
+        (prev, curr) => {
+            const fullPath = path.join(projectTemplateRoot, curr);
+            const content = fs.readFileSync(fullPath).toString();
+            prev[curr] = content;
+            return prev;
+        },
+        {} as FileHash
+    );
+}
+
+function getExampleNames() {
+    return fs.readdirSync(examplesRoot).filter(f => {
+        const file = path.join(examplesRoot, f);
+        const stat = fs.statSync(file);
+        return stat.isDirectory();
+    });
+}
+
+function generateStackBlitzFiles(exampleName: string) {
+    const exampleDir = path.join(examplesRoot, exampleName);
+    const exampleBaseName = pascalCase(exampleName);
     const exampleFileList = glob.sync('**/*', {nodir: true, dot: true, cwd: exampleDir});
 
     const moduleImportCommentPattern = /\/\* example-module-import \*\//g;
@@ -68,28 +93,44 @@ for (let example of exampleList) {
     let appModuleContents: string;
 
     const componentName = `${exampleBaseName}ExampleComponent`;
-    const componentImport = `import { ${componentName} } from './${example}/${example}-example.component';`;
-    if (fs.existsSync(path.join(exampleDir, `${example}-example.module.ts`))) {
-        // check to make sure the main component is in NgModule.entryComponents
-        const moduleFile = fs.readFileSync(path.join(exampleDir, `${example}-example.module.ts`)).toString();
+    const componentImport = `import { ${componentName} } from './${exampleName}/${exampleName}-example.component';`;
+
+    const mainComponentFilePath = path.join(exampleDir, `${exampleName}-example.component.ts`);
+    if (!fs.existsSync(mainComponentFilePath)) {
+        throw new Error(`Cannot find main component file '${mainComponentFilePath}' for example ${exampleName}`);
+    }
+
+    const mainComponentFileContents = fs.readFileSync(mainComponentFilePath).toString();
+    if (!mainComponentFileContents.includes(`export class ${componentName}`)) {
+        throw new Error(`Expected main component file for example '${exampleName}' to export ${componentName}, but it was not found.`);
+    }
+
+    // if a module file exists, check it and use it (instead of the component) in the generated example module
+    if (fs.existsSync(path.join(exampleDir, `${exampleName}-example.module.ts`))) {
+        // check to make sure the main component is in the NgModule.entryComponents
+        const moduleFile = fs.readFileSync(path.join(exampleDir, `${exampleName}-example.module.ts`)).toString();
         const entryComponentsMatch = /entryComponents\: (\[[^\]]*\])/m.exec(moduleFile);
         if (!entryComponentsMatch) {
-            throw new Error(`Example module for ${example} is missing an 'entryComponents' entry.`);
+            throw new Error(`Example module for ${exampleName} is missing an 'entryComponents' entry.`);
         }
+
         if (!entryComponentsMatch[1].includes(componentName)) {
-            throw new Error(`Example module for ${example} must declare ${componentName} as an entry component.`);
+            throw new Error(`Example module for ${exampleName} must declare ${componentName} as an entry component.`);
         }
 
         const moduleName: string = `${exampleBaseName}ExampleModule`;
-        const moduleImport: string = `import { ${moduleName} } from './${example}/${example}-example.module';`;
+        if (!moduleFile.includes(`export class ${moduleName}`)) {
+            throw new Error(`Expected module file for example '${exampleName}' to export ${moduleName}, but it was not found.`);
+        }
+        const moduleImport: string = `import { ${moduleName} } from './${exampleName}/${exampleName}-example.module';`;
         exampleModules.push({
             import: moduleImport,
             name: moduleName,
-            exampleName: example,
+            exampleName,
             mainComponentInfo: {
                 import: componentImport,
                 name: componentName,
-                exampleName: example
+                exampleName
             }
         });
         appModuleContents = appModuleTemplate
@@ -100,7 +141,7 @@ for (let example of exampleList) {
             .replace(componentImportCommentPattern, '')
             .replace(componentCommaPattern, '');
     } else {
-        exampleComponents.push({import: componentImport, name: componentName, exampleName: example});
+        exampleComponents.push({import: componentImport, name: componentName, exampleName});
         appModuleContents = appModuleTemplate
             .replace(componentImportCommentPattern, componentImport)
             .replace(componentNameCommentPattern, componentName)
@@ -112,28 +153,28 @@ for (let example of exampleList) {
 
     const exampleFiles = exampleFileList.reduce(
         (prev, curr) => {
-            const fullPath = path.join(examplesRoot, example, curr);
+            const fullPath = path.join(examplesRoot, exampleName, curr);
             let content = fs.readFileSync(fullPath).toString();
-            prev[`src/app/${example}/${curr}`] = content;
+            prev[`src/app/${exampleName}/${curr}`] = content;
             return prev;
         },
         {} as FileHash
     );
 
     const allFiles = Object.assign({}, projectTemplateFiles, exampleFiles, {'src/app/app.module.ts': appModuleContents});
-    fs.writeFileSync(path.join(outputRoot, `${example}.json`), JSON.stringify(allFiles, null, 2));
+    fs.writeFileSync(path.join(outputRoot, `${exampleName}.json`), JSON.stringify(allFiles, null, 2));
 }
 
-progress.tick({exampleName: 'examples modules'});
-const examplesModule = `/* This file is auto-generated; do not change! */
+function generateExamplesModule() {
+    const examplesModule = `/* This file is auto-generated; do not change! */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CashmereModule } from './cashmere.module';
 ${(exampleModules as ExampleInfo[])
-    .concat(exampleComponents)
-    .map(x => x.import)
-    .join('\n')}
+        .concat(exampleComponents)
+        .map(x => x.import)
+        .join('\n')}
 
 @NgModule({
     imports: [
@@ -151,28 +192,29 @@ ${(exampleModules as ExampleInfo[])
     ]
 })
 export class ExampleModule {}
-`;
-fs.writeFileSync(path.join(examplesRoot, 'examples.generated.module.ts'), examplesModule);
+    `;
+    fs.writeFileSync(path.join(examplesRoot, 'examples.generated.module.ts'), examplesModule);
+}
 
-progress.tick({exampleName: 'example Cashmere module'});
-fs.writeFileSync(
-    path.join(examplesRoot, 'cashmere.generated.module.ts'),
-    `/* This file is auto-generated; do not change! */\r\n${cashmereModule}`
-);
+function generateCashmereModule() {
+    fs.writeFileSync(
+        path.join(examplesRoot, 'cashmere.generated.module.ts'),
+        `/* This file is auto-generated; do not change! */\r\n${cashmereModule}`
+    );
+}
 
-progress.tick({exampleName: 'example component mappings'});
-const allExampleComponents = exampleModules
-    .map(m => m.mainComponentInfo)
-    .concat(exampleComponents)
-    .sort((a, b) => a.exampleName.localeCompare(b.exampleName));
-const mappingLines = allExampleComponents.map(e => `'${e.exampleName}': ${e.name}`);
-const examplesComponentMappings = `/* This file is auto-generated; do not change! */
+function generateExampleToComponentMappingsFile() {
+    const allExampleComponents = exampleModules
+        .map(m => m.mainComponentInfo)
+        .concat(exampleComponents)
+        .sort((a, b) => a.exampleName.localeCompare(b.exampleName));
+    const mappingLines = allExampleComponents.map(e => `'${e.exampleName}': ${e.name}`);
+    const examplesComponentMappings = `/* This file is auto-generated; do not change! */
 ${allExampleComponents.map(x => x.import).join('\n')}
 
 export const EXAMPLE_COMPONENTS: { [exampleName: string]: any; } = {
     ${mappingLines.join(',\r\n    ')}
 };
-`;
-fs.writeFileSync(path.join(examplesRoot, 'example-mappings.generated.ts'), examplesComponentMappings);
-
-progress.tick({exampleName: ''});
+    `;
+    fs.writeFileSync(path.join(examplesRoot, 'example-mappings.generated.ts'), examplesComponentMappings);
+}
