@@ -5,8 +5,8 @@ import {CashmereModule} from '../cashmere.module';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-    declarations: [ModalOverviewExampleComponent, ModalOverviewExampleModalComponent],
     imports: [CommonModule, CashmereModule],
-    entryComponents: [ModalOverviewExampleModalComponent]
+    declarations: [ModalOverviewExampleComponent, ModalOverviewExampleModalComponent],
+    entryComponents: [ModalOverviewExampleComponent, ModalOverviewExampleModalComponent]
 })
 export class ModalOverviewExampleModule {}

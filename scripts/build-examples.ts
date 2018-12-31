@@ -9,6 +9,16 @@ interface FileHash {
     [path: string]: string;
 }
 
+interface ExampleInfo {
+    import: string;
+    name: string;
+    exampleName: string;
+}
+
+interface ExampleModuleInfo extends ExampleInfo {
+    mainComponentInfo: ExampleInfo;
+}
+
 const examplesProjectRoot = path.join(__dirname, '../projects/cashmere-examples');
 const examplesRoot = path.join(examplesProjectRoot, 'src/lib');
 const projectTemplateRoot = path.join(examplesProjectRoot, 'src/project-template');
@@ -38,9 +48,9 @@ const exampleList = fs.readdirSync(examplesRoot).filter(f => {
     return stat.isDirectory();
 });
 
-const progress = new ProgressBar('[:bar] :percent :exampleName', {total: exampleList.length + 1});
-const exampleComponents: Array<{import: string; name: string}> = [];
-const exampleModules: Array<{import: string; name: string}> = [];
+const progress = new ProgressBar('[:bar] :percent :exampleName', {total: exampleList.length + 3});
+const exampleComponents: ExampleInfo[] = [];
+const exampleModules: ExampleModuleInfo[] = [];
 for (let example of exampleList) {
     progress.tick({exampleName: example});
 
@@ -57,23 +67,42 @@ for (let example of exampleList) {
 
     let appModuleContents: string;
 
+    const componentName = `${exampleBaseName}ExampleComponent`;
+    const componentImport = `import { ${componentName} } from './${example}/${example}-example.component';`;
     if (fs.existsSync(path.join(exampleDir, `${example}-example.module.ts`))) {
+        // check to make sure the main component is in NgModule.entryComponents
+        const moduleFile = fs.readFileSync(path.join(exampleDir, `${example}-example.module.ts`)).toString();
+        const entryComponentsMatch = /entryComponents\: (\[[^\]]*\])/m.exec(moduleFile);
+        if (!entryComponentsMatch) {
+            throw new Error(`Example module for ${example} is missing an 'entryComponents' entry.`);
+        }
+        if (!entryComponentsMatch[1].includes(componentName)) {
+            throw new Error(`Example module for ${example} must declare ${componentName} as an entry component.`);
+        }
+
         const moduleName: string = `${exampleBaseName}ExampleModule`;
-        const $import: string = `import { ${moduleName} } from './${example}/${example}-example.module';`;
-        exampleModules.push({import: $import, name: moduleName});
+        const moduleImport: string = `import { ${moduleName} } from './${example}/${example}-example.module';`;
+        exampleModules.push({
+            import: moduleImport,
+            name: moduleName,
+            exampleName: example,
+            mainComponentInfo: {
+                import: componentImport,
+                name: componentName,
+                exampleName: example
+            }
+        });
         appModuleContents = appModuleTemplate
-            .replace(moduleImportCommentPattern, $import)
+            .replace(moduleImportCommentPattern, moduleImport)
             .replace(moduleNameCommentPattern, moduleName)
             .replace(moduleCommaPattern, ',')
             .replace(componentNameCommentPattern, '')
             .replace(componentImportCommentPattern, '')
             .replace(componentCommaPattern, '');
     } else {
-        const componentName = `${exampleBaseName}ExampleComponent`;
-        const $import = `import { ${componentName} } from './${example}/${example}-example.component';`;
-        exampleComponents.push({import: $import, name: componentName});
+        exampleComponents.push({import: componentImport, name: componentName, exampleName: example});
         appModuleContents = appModuleTemplate
-            .replace(componentImportCommentPattern, $import)
+            .replace(componentImportCommentPattern, componentImport)
             .replace(componentNameCommentPattern, componentName)
             .replace(componentCommaPattern, ',')
             .replace(moduleNameCommentPattern, '')
@@ -94,13 +123,14 @@ for (let example of exampleList) {
     const allFiles = Object.assign({}, projectTemplateFiles, exampleFiles, {'src/app/app.module.ts': appModuleContents});
     fs.writeFileSync(path.join(outputRoot, `${example}.json`), JSON.stringify(allFiles, null, 2));
 }
+
 progress.tick({exampleName: 'examples modules'});
 const examplesModule = `/* This file is auto-generated; do not change! */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CashmereModule } from './cashmere.module';
-${exampleModules
+${(exampleModules as ExampleInfo[])
     .concat(exampleComponents)
     .map(x => x.import)
     .join('\n')}
@@ -115,14 +145,34 @@ ${exampleModules
     ],
     declarations: [
         ${exampleComponents.map(x => x.name).join(',\r\n        ')}
+    ],
+    entryComponents: [
+        ${exampleComponents.map(x => x.name).join(',\r\n        ')}
     ]
 })
 export class ExampleModule {}
 `;
 fs.writeFileSync(path.join(examplesRoot, 'examples.generated.module.ts'), examplesModule);
+
+progress.tick({exampleName: 'example Cashmere module'});
 fs.writeFileSync(
     path.join(examplesRoot, 'cashmere.generated.module.ts'),
     `/* This file is auto-generated; do not change! */\r\n${cashmereModule}`
 );
+
+progress.tick({exampleName: 'example component mappings'});
+const allExampleComponents = exampleModules
+    .map(m => m.mainComponentInfo)
+    .concat(exampleComponents)
+    .sort((a, b) => a.exampleName.localeCompare(b.exampleName));
+const mappingLines = allExampleComponents.map(e => `'${e.exampleName}': ${e.name}`);
+const examplesComponentMappings = `/* This file is auto-generated; do not change! */
+${allExampleComponents.map(x => x.import).join('\n')}
+
+export const EXAMPLE_COMPONENTS: { [exampleName: string]: any; } = {
+    ${mappingLines.join(',\r\n    ')}
+};
+`;
+fs.writeFileSync(path.join(examplesRoot, 'example-mappings.generated.ts'), examplesComponentMappings);
 
 progress.tick({exampleName: ''});

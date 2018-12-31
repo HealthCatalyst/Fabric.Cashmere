@@ -1,7 +1,8 @@
-import {Component, Input, ViewChild, ElementRef, OnInit} from '@angular/core';
+import {Component, Input, ViewChild, ElementRef, OnInit, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {titleCase} from 'change-case';
 import stackblitz from '@stackblitz/sdk';
+import {EXAMPLE_COMPONENTS} from '@healthcatalyst/cashmere-examples';
 import {expand} from 'rxjs/operators';
 
 @Component({
@@ -10,15 +11,15 @@ import {expand} from 'rxjs/operators';
     styleUrls: ['example-viewer.component.scss']
 })
 export class ExampleViewerComponent implements OnInit {
-    @ViewChild('exampleContainer')
-    exampleContainer: ElementRef;
+    @ViewChild('exampleContainer', {read: ViewContainerRef})
+    exampleContainer: ViewContainerRef;
 
     isInitialized = false;
     private _example: string;
     private allExampleFiles: FileHash = {};
     exampleFiles: Array<{name: string; contents: string}> = [];
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient, private componentFactoryResolver: ComponentFactoryResolver) {}
 
     @Input()
     get example() {
@@ -27,7 +28,7 @@ export class ExampleViewerComponent implements OnInit {
     set example(example: string) {
         this._example = example;
         if (example && this.isInitialized) {
-            this.loadExampleFiles();
+            this.loadExample();
         }
     }
 
@@ -37,9 +38,39 @@ export class ExampleViewerComponent implements OnInit {
 
     async ngOnInit() {
         if (this.example) {
-            await this.loadExampleFiles();
+            await this.loadExample();
             this.isInitialized = true;
         }
+    }
+
+    getTabTitle(fileName: string) {
+        switch (fileName) {
+            case 'example.component.ts':
+                return 'TS';
+            case 'example.component.html':
+                return 'HTML';
+            case 'example.component.scss':
+                return 'SCSS';
+        }
+        if (fileName.includes('.module.ts')) {
+            return 'Module';
+        }
+        if (fileName.includes('.component.')) {
+            const parts = fileName.split('.component.');
+            return `${parts[0]} (${parts[1].toUpperCase()})`;
+        }
+        return fileName;
+    }
+
+    async loadExample() {
+        if (this.exampleContainer.length) {
+            this.exampleContainer.clear();
+        }
+
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(EXAMPLE_COMPONENTS[this.example]);
+        this.exampleContainer.createComponent(componentFactory, 0, this.exampleContainer.parentInjector);
+
+        await this.loadExampleFiles();
     }
 
     async loadExampleFiles() {
@@ -50,7 +81,8 @@ export class ExampleViewerComponent implements OnInit {
             .map(path => ({
                 name: path.substr(exampleRoot.length + this.example.length + 1),
                 contents: this.allExampleFiles[path]
-            }));
+            }))
+            .sort((a, b) => b.name.localeCompare(a.name));
     }
 
     async launchStackBlitz() {

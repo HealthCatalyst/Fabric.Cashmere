@@ -3,3 +3,4 @@
  */
 
 export * from './lib/examples.generated.module';
+export * from './lib/example-mappings.generated';

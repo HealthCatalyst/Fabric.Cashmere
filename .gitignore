@@ -3,6 +3,7 @@
 # compiled output
 projects/cashmere-examples/src/lib/examples.generated.module.ts
 projects/cashmere-examples/src/lib/cashmere.generated.module.ts
+projects/cashmere-examples/src/lib/example-mappings.generated.ts
 /src/assets/docs
 dist/
 tmp/
