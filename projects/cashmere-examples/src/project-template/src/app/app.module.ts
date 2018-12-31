@@ -6,6 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ExampleContainerComponent} from './example-container.component';
 import {CashmereModule} from './cashmere.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 /* example-module-import */
 /* example-component-import */
 
@@ -18,6 +19,8 @@ import {CashmereModule} from './cashmere.module';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
         AppRoutingModule,
         CashmereModule /* module-comma */
         /* example-module-name */

@@ -5,16 +5,16 @@ import {Component} from '@angular/core';
  */
 
 @Component({
-    selector: 'banner-overview-example',
-    templateUrl: 'banner-overview-example.html',
-    styleUrls: ['banner-overview-example.css']
+    selector: 'hc-banner-overview-example',
+    templateUrl: 'banner-overview-example.component.html',
+    styleUrls: ['banner-overview-example.component.scss']
 })
-export class BannerOverviewExample {
+export class BannerOverviewExampleComponent {
     private _bannerType: string = 'info';
     bannerClick: boolean = false;
     bannerHide: boolean = false;
 
-    hideBanner(event: MouseEvent) {
+    hideBanner() {
         this.bannerHide = true;
     }
 
@@ -22,7 +22,7 @@ export class BannerOverviewExample {
         return this._bannerType;
     }
 
-    set bannerType(typeVal) {
+    set bannerType(typeVal: string) {
         this._bannerType = typeVal;
         this.bannerHide = false;
     }

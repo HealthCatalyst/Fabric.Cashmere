@@ -3,7 +3,7 @@
     <hc-navbar-link [active]="false" uri="undefined" linkText="Section One"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Section Two"></hc-navbar-link>
 </hc-navbar>
-<hc-banner type="{{bannerType}}" clickDismiss="{{bannerClick}}" (bannerClose)="hideBanner($event)" [ngClass]="{'banner-hide': bannerHide }">
+<hc-banner type="{{ bannerType }}" clickDismiss="{{ bannerClick }}" (bannerClose)="hideBanner()" [ngClass]="{'banner-hide': bannerHide}">
     <span hcBannerStamp>BETA</span> This is a pre-release version of this app and contains experimental features
 </hc-banner>
 
@@ -11,9 +11,7 @@
     <hc-form-field>
         <hc-label>Notification Banner Type:</hc-label>
         <hc-select [(ngModel)]="bannerType">
-            <option value="info">Info</option>
-            <option value="success">Success</option>
-            <option value="warning">Warning</option>
+            <option value="info">Info</option> <option value="success">Success</option> <option value="warning">Warning</option>
             <option value="alert">Alert</option>
         </hc-select>
     </hc-form-field>

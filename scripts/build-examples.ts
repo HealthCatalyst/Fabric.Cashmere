@@ -4,6 +4,8 @@ import * as path from 'path';
 import * as glob from 'glob';
 import {pascalCase} from 'change-case';
 import * as ProgressBar from 'progress';
+import chalk from 'chalk';
+import * as prettier from 'prettier';
 
 interface FileHash {
     [path: string]: string;
@@ -23,31 +25,34 @@ interface ExampleModuleInfo extends ExampleInfo {
 const examplesProjectRoot = path.join(__dirname, '../projects/cashmere-examples');
 const examplesRoot = path.join(examplesProjectRoot, 'src/lib');
 const projectTemplateRoot = path.join(examplesProjectRoot, 'src/project-template');
-const outputRoot = path.join(__dirname, '../src/assets/docs/examples');
+const assetsRoot = path.join(__dirname, '../src/assets/');
+const outputRoot = path.join(assetsRoot, 'docs/examples');
 
 const cashmereModule = fs.readFileSync(path.join(__dirname, '../src/app/shared/cashmere.module.ts')).toString();
 const exampleComponents: ExampleInfo[] = [];
 const exampleModules: ExampleModuleInfo[] = [];
 const exampleList = getExampleNames();
+prettier.resolveConfig.sync(path.join(__dirname, '../.prettierrc.json'));
 
 //////////////////////////////////
 /// Generate Cashmere Examples ///
 //////////////////////////////////
+console.log(chalk.blue('Generating Example Files'));
 cleanOutputDirectory();
 const projectTemplateFiles = getStackBlitzProjectTemplateFiles();
 const appModuleTemplate = projectTemplateFiles['src/app/app.module.ts'];
-const progress = new ProgressBar('[:bar] :percent :exampleName', {total: exampleList.length + 3});
+const progress = new ProgressBar('[:bar] :percent :example', {total: exampleList.length + 4});
 for (let example of exampleList) {
     progress.tick({example});
     generateStackBlitzFiles(example);
 }
-progress.tick({exampleName: 'examples module'});
+progress.tick({example: 'examples module'});
 generateExamplesModule();
-progress.tick({exampleName: 'example Cashmere module'});
+progress.tick({example: 'example Cashmere module'});
 generateCashmereModule();
-progress.tick({exampleName: 'example component mappings'});
+progress.tick({example: 'example component mappings'});
 generateExampleToComponentMappingsFile();
-progress.tick({exampleName: ''});
+progress.tick({example: ''}); // clear the progress bar
 //////////////////////////////////
 
 function cleanOutputDirectory() {
@@ -97,12 +102,16 @@ function generateStackBlitzFiles(exampleName: string) {
 
     const mainComponentFilePath = path.join(exampleDir, `${exampleName}-example.component.ts`);
     if (!fs.existsSync(mainComponentFilePath)) {
-        throw new Error(`Cannot find main component file '${mainComponentFilePath}' for example ${exampleName}`);
+        throw error(`Cannot find main component file '${mainComponentFilePath}' for example ${exampleName}`);
     }
 
     const mainComponentFileContents = fs.readFileSync(mainComponentFilePath).toString();
     if (!mainComponentFileContents.includes(`export class ${componentName}`)) {
-        throw new Error(`Expected main component file for example '${exampleName}' to export ${componentName}, but it was not found.`);
+        throw error(`Expected main component file for example '${exampleName}' to export ${componentName}, but it was not found.`);
+    }
+
+    if (!mainComponentFileContents.includes(`selector: 'hc-${exampleName}-example'`)) {
+        throw error(`Expected selector for main component for example '${exampleName}' to be 'hc-${exampleName}-example', but it was not.`);
     }
 
     // if a module file exists, check it and use it (instead of the component) in the generated example module
@@ -111,16 +120,16 @@ function generateStackBlitzFiles(exampleName: string) {
         const moduleFile = fs.readFileSync(path.join(exampleDir, `${exampleName}-example.module.ts`)).toString();
         const entryComponentsMatch = /entryComponents\: (\[[^\]]*\])/m.exec(moduleFile);
         if (!entryComponentsMatch) {
-            throw new Error(`Example module for ${exampleName} is missing an 'entryComponents' entry.`);
+            throw error(`Example module for ${exampleName} is missing an 'entryComponents' entry.`);
         }
 
         if (!entryComponentsMatch[1].includes(componentName)) {
-            throw new Error(`Example module for ${exampleName} must declare ${componentName} as an entry component.`);
+            throw error(`Example module for ${exampleName} must declare ${componentName} as an entry component.`);
         }
 
         const moduleName: string = `${exampleBaseName}ExampleModule`;
         if (!moduleFile.includes(`export class ${moduleName}`)) {
-            throw new Error(`Expected module file for example '${exampleName}' to export ${moduleName}, but it was not found.`);
+            throw error(`Expected module file for example '${exampleName}' to export ${moduleName}, but it was not found.`);
         }
         const moduleImport: string = `import { ${moduleName} } from './${exampleName}/${exampleName}-example.module';`;
         exampleModules.push({
@@ -153,9 +162,21 @@ function generateStackBlitzFiles(exampleName: string) {
 
     const exampleFiles = exampleFileList.reduce(
         (prev, curr) => {
+            // get formatted file contents
             const fullPath = path.join(examplesRoot, exampleName, curr);
             let content = fs.readFileSync(fullPath).toString();
-            prev[`src/app/${exampleName}/${curr}`] = content;
+            prev[`src/app/${exampleName}/${curr}`] = prettier.format(content, {filepath: fullPath});
+
+            // if the file references any assets, include those too
+            const assetPattern = /".\/assets\/([^"]+)"/g;
+            let match = assetPattern.exec(content);
+            while (match) {
+                const assetName = match[1];
+                const assetContent = fs.readFileSync(path.join(assetsRoot, assetName)).toString();
+                prev[`src/assets/${assetName}`] = assetContent;
+                match = assetPattern.exec(content);
+            }
+
             return prev;
         },
         {} as FileHash
@@ -217,4 +238,9 @@ export const EXAMPLE_COMPONENTS: { [exampleName: string]: any; } = {
 };
     `;
     fs.writeFileSync(path.join(examplesRoot, 'example-mappings.generated.ts'), examplesComponentMappings);
+}
+
+function error(message: string) {
+    console.error(chalk.bold.red(`\nERROR: ${message}`));
+    return new Error(message);
 }
