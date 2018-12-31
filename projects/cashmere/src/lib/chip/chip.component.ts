@@ -12,7 +12,7 @@ export function validateColorInput(inputStr: string) {
 /** Chips represent complex entities in small blocks, such as filters, contacts, or system information */
 @Component({
     selector: 'hc-chip',
-    template: `<div [class]="color" [ngClass]="{'close': action, 'chip': true}"><ng-content></ng-content></div>`,
+    templateUrl: './chip.component.html',
     styleUrls: ['./chip.component.scss'],
     encapsulation: ViewEncapsulation.None
 })

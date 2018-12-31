@@ -14,6 +14,7 @@ $grid-breakpoints: (
 $zindex-dropdown: 900 !default;
 $zindex-sticky: 920 !default;
 $zindex-fixed: 930 !default;
+
 $zindex-subnav: 950 !default;
 $zindex-navbar-menu: 960 !default;
 $zindex-navbar: 970 !default;
@@ -21,4 +22,4 @@ $zindex-navbar: 970 !default;
 // amount, starting at 2000, see modal.service.ts
 $zindex-popover: 1900 !default;
 $zindex-tooltip: 1910 !default;
-//z-index for cdk overlays is 1000
+// z-index for cdk overlays is 1000

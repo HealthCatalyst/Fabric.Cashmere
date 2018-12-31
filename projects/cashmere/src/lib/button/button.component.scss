@@ -52,7 +52,12 @@
         @include hc-split-button-main();
     }
     .hc-split-button-toggle {
-        @include hc-split-button-toggle();
+        &:not(.hc-secondary) {
+            @include hc-split-button-toggle();
+        }
+        &.hc-secondary {
+            @include hc-button-secondary-toggle();
+        }
         &.hc-sm {
             @include hc-button-sm-toggle();
         }
