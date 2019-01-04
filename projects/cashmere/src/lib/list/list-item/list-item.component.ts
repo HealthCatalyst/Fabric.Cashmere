@@ -12,5 +12,6 @@ import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
     encapsulation: ViewEncapsulation.None
 })
 export class ListItemComponent {
-    @HostBinding('class.hc-list-item') _hostClass = true;
+    @HostBinding('class.hc-list-item')
+    _hostClass = true;
 }

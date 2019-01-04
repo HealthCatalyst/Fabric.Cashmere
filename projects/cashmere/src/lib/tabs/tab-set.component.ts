@@ -1,6 +1,10 @@
-import {AfterContentInit, Component, ContentChildren, Input, QueryList} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output, EventEmitter} from '@angular/core';
 import {TabComponent} from './tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
+
+export class TabChangeEvent {
+    constructor(public index: number, public tab: TabComponent) {}
+}
 
 export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabComponent[]) {
     const tabTitles = tabsWithoutRouterLink.map(tab => tab.tabTitle);
@@ -15,6 +19,10 @@ export function validateDirectionInput(inputStr: string) {
     }
 }
 
+export function tabComponentMissing(): Error {
+    return new Error(`TabSet must contain at least one TabComponent. Make sure to add a hc-tab to the hc-tab-set element.`);
+}
+
 @Component({
     selector: `hc-tab-set`,
     templateUrl: './tab-set.component.html',
@@ -24,7 +32,12 @@ export class TabSetComponent implements AfterContentInit {
     _routerEnabled: boolean = false;
     private _direction: string = 'vertical';
 
-    @ContentChildren(TabComponent) _tabs: QueryList<TabComponent>;
+    @ContentChildren(TabComponent)
+    _tabs: QueryList<TabComponent>;
+
+    /** Emits when the selected tab is changed */
+    @Output()
+    selectedTabChange: EventEmitter<TabChangeEvent> = new EventEmitter();
 
     /** Specify direction of tabs as either `horizontal` or `vertical`. Defaults to `vertical` */
     @Input()
@@ -40,6 +53,10 @@ export class TabSetComponent implements AfterContentInit {
     constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngAfterContentInit(): void {
+        if (this._tabs.length === 0) {
+            throw tabComponentMissing();
+        }
+
         this.defaultToFirstTab();
         this.checkForRouterUse();
 
@@ -49,9 +66,37 @@ export class TabSetComponent implements AfterContentInit {
         });
     }
 
-    _setActive(tab: TabComponent) {
-        this._tabs.forEach(t => (t._active = false));
+    /** Sets the currently selected tab by either its numerical index or `TabComponent` object  */
+    selectTab(tab: number | TabComponent) {
+        if (typeof tab === 'number') {
+            let i: number = 0;
+
+            this._tabs.forEach(t => {
+                if (i === tab) {
+                    this._setActive(t);
+                }
+                i++;
+            });
+        } else {
+            this._setActive(tab);
+        }
+    }
+
+    _setActive(tab: TabComponent, event?: Event) {
+        let selectedTab: number = 0;
+        let index: number = 0;
+
+        this._tabs.forEach(t => {
+            if (t === tab) {
+                selectedTab = index;
+            }
+            t._active = false;
+            index++;
+        });
+
+        tab.tabClick.emit(event);
         tab._active = true;
+        this.selectedTabChange.emit(new TabChangeEvent(selectedTab, tab));
     }
 
     private defaultToFirstTab() {

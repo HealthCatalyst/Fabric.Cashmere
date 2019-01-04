@@ -1,11 +1,13 @@
 <div class="progress-example">
     <!-- Options -->
     <div class="col-1">
-        <label hc-label>Color</label>
-        <hc-select [(ngModel)]="dotsColor">
-            <option value="dark" [selected]="dotsColor === 'dark'">dark</option>
-            <option value="light" [selected]="dotsColor === 'light'">light</option>
-        </hc-select>
+        <hc-form-field>
+            <hc-label>Color:</hc-label>
+            <hc-select [(ngModel)]="dotsColor">
+                <option value="dark" [selected]="dotsColor === 'dark'">dark</option>
+                <option value="light" [selected]="dotsColor === 'light'">light</option>
+            </hc-select>
+        </hc-form-field>
         <hc-checkbox id="checkbox-dots-size" [(ngModel)]="dotsMini" [checked]="dotsMini">Miniature</hc-checkbox>
         <hc-checkbox id="checkbox-dots-center" [(ngModel)]="dotsCentered" [checked]="dotsCentered">Centered</hc-checkbox>
     </div>

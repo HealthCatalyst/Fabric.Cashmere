@@ -6,16 +6,17 @@ import {AppSwitcherComponent} from './app-switcher.component';
 import {PopoverModule} from '../popover/popover.module';
 import {AppSwitcherService} from './app-switcher.service';
 import {PipesModule} from '../pipes/pipes.module';
-import {IAppSwitcherConfig} from './app-switcher-interfaces';
+import {IAppSwitcherConfig, APP_SWITCHER_CONFIG, APP_SWITCHER_SERVICE} from './app-switcher-interfaces';
+import {AppSwitcherLinksComponent} from './app-switcher-application-link/app-switcher-links.component';
+import {IconModule} from '../icon/icon.module';
 
 @NgModule({
-    imports: [CommonModule, PopoverModule, HttpClientModule, PipesModule],
-    declarations: [AppSwitcherComponent],
-    exports: [AppSwitcherComponent],
+    imports: [CommonModule, PopoverModule, HttpClientModule, PipesModule, IconModule],
+    declarations: [AppSwitcherComponent, AppSwitcherLinksComponent],
+    exports: [AppSwitcherComponent, AppSwitcherLinksComponent],
     providers: [
-        AppSwitcherService,
         {
-            provide: 'IAppSwitcherService',
+            provide: APP_SWITCHER_SERVICE,
             useClass: AppSwitcherService
         }
     ]
@@ -26,7 +27,7 @@ export class AppSwitcherModule {
             ngModule: AppSwitcherModule,
             providers: [
                 {
-                    provide: 'IAppSwitcherConfig',
+                    provide: APP_SWITCHER_CONFIG,
                     useValue: config
                 }
             ]

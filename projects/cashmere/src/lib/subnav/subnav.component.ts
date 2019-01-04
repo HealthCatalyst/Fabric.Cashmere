@@ -6,9 +6,14 @@ import {Component, HostBinding, Input} from '@angular/core';
     template: `<ng-content></ng-content>`
 })
 export class SubnavComponent {
-    @HostBinding('class.subnav') _hostClass: boolean = true;
+    @HostBinding('class.subnav')
+    _hostClass: boolean = true;
 
-    /** If true, statically positions the subnav below the navbar (stays pinned on scroll) */
+    /**
+     * @deprecated
+     * @description Not compatible with notification banners, so you should set
+     *  the fixed position of the subnav and other header content within your app instead
+     * */
     @HostBinding('class.fixed-top')
     @Input()
     public fixedTop: boolean = false;

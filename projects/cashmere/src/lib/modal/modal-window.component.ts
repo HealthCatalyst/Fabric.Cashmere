@@ -22,8 +22,10 @@ import {ActiveModal} from './active-modal';
     ]
 })
 export class ModalWindowComponent {
-    @Input() _ignoreOverlayClick = false;
-    @Input() _size: ModalSize = 'md';
+    @Input()
+    _ignoreOverlayClick = false;
+    @Input()
+    _size: ModalSize = 'auto';
 
     constructor(private activeModal: ActiveModal, private el: ElementRef) {}
 
@@ -35,8 +37,9 @@ export class ModalWindowComponent {
     @HostListener('click', ['$event'])
     _overlayClick(event: any) {
         let modalContentNotPresent = true;
-        let modalWindowTargetIncluded = event.path.findIndex(p => p === this.el.nativeElement) > -1;
-        let classList: (DOMTokenList | undefined)[] = event.path.map(p => p.classList);
+        let path = this._eventPath(event);
+        let modalWindowTargetIncluded = path.findIndex(p => p === this.el.nativeElement) > -1;
+        let classList: (DOMTokenList | undefined)[] = path.map(p => p.classList);
         for (let cl of classList) {
             if (cl) {
                 if (cl.contains('hc-modal-content')) {
@@ -53,7 +56,35 @@ export class ModalWindowComponent {
                 2. Not the hc-modal-content and
                 3. the overlay click option is disabled. */
         if (!this._ignoreOverlayClick && modalContentNotPresent && modalWindowTargetIncluded) {
-            this.activeModal.close();
+            this.activeModal.dismiss();
         }
+    }
+
+    // Serves as a polyfill for Event.composedPath() or Event.Path
+    _eventPath(evt: any) {
+        let path = (evt.composedPath && evt.composedPath()) || evt.path,
+            target = evt.target;
+
+        if (path != null) {
+            // Safari doesn't include Window, but it should.
+            return path.indexOf(window) < 0 ? path.concat(window) : path;
+        }
+
+        if (target === window) {
+            return [window];
+        }
+
+        function _getParents(node, memo?) {
+            memo = memo || [];
+            let parentNode = node.parentNode;
+
+            if (!parentNode) {
+                return memo;
+            } else {
+                return _getParents(parentNode, memo.concat(parentNode));
+            }
+        }
+
+        return [target].concat(_getParents(target), window);
     }
 }

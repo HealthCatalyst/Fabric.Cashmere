@@ -6,8 +6,12 @@ import {Component, Input} from '@angular/core';
     styleUrls: ['./swatch-demo.component.scss']
 })
 export class SwatchDemoComponent {
-    @Input() public name: String;
-    @Input() public hex: String;
-    @Input() public isLarge = false;
-    @Input() public needsBorder = false;
+    @Input()
+    public name: String;
+    @Input()
+    public hex: String;
+    @Input()
+    public isLarge = false;
+    @Input()
+    public needsBorder = false;
 }

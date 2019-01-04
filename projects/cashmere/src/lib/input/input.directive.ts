@@ -1,5 +1,6 @@
-import {Directive, DoCheck, ElementRef, HostBinding, HostListener, Input, Optional, Self} from '@angular/core';
+import {Directive, DoCheck, ElementRef, HostBinding, HostListener, Input, Optional, Self, forwardRef} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
+import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 
 export function getUnsupportedHCInputType(type: string): Error {
@@ -12,17 +13,15 @@ const unsupportedTypes = ['button', 'checkbox', 'file', 'hidden', 'image', 'radi
 
 /** Directive that allows a native input to work inside a HcFormFieldComponent */
 @Directive({
-    selector: '[hcInput]'
+    selector: '[hcInput]',
+    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => InputDirective)}]
 })
-export class InputDirective implements DoCheck {
+export class InputDirective extends HcFormControlComponent implements DoCheck {
     private _focused = false;
     private _uniqueInputId = `hc-input-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
 
-    _errorState: boolean = false;
-
-    /** Hint displayed within the input and disappears on input.  */
-    @Input() placeholder: string;
+    _componentId = this._uniqueInputId;
 
     /** Input type of the element. */
     @Input()
@@ -47,14 +46,12 @@ export class InputDirective implements DoCheck {
     /** Element id. */
     @Input()
     get id(): string {
-        return this._id || this._uniqueInputId;
+        return this._componentId || this._uniqueInputId;
     }
 
-    set id(id: string) {
-        this._id = id;
+    set id(idVal: string) {
+        this._componentId = idVal ? idVal : this._uniqueInputId;
     }
-
-    private _id: string;
 
     /** Sets input element as readonly. */
     @Input()
@@ -74,11 +71,11 @@ export class InputDirective implements DoCheck {
         if (this._ngControl && this._ngControl.disabled) {
             return this._ngControl.disabled;
         }
-        return this._disabled;
+        return this._isDisabled;
     }
 
-    set disabled(isDisabled) {
-        this._disabled = parseBooleanAttribute(isDisabled);
+    set disabled(disabledInput) {
+        this._isDisabled = parseBooleanAttribute(disabledInput);
 
         if (this._focused) {
             this._focused = false;
@@ -86,25 +83,22 @@ export class InputDirective implements DoCheck {
         }
     }
 
-    private _disabled = false;
-
     /** Sets required attribute. */
     @Input()
     get required(): boolean {
-        return this._required;
+        return this._isRequired;
     }
 
-    set required(required) {
-        this._required = parseBooleanAttribute(required);
+    set required(requiredInput) {
+        this._isRequired = parseBooleanAttribute(requiredInput);
     }
 
-    private _required = false;
-
-    @HostBinding('class.hc-input') _hostHcInputClass = true;
+    @HostBinding('class.hc-input')
+    _hostHcInputClass = true;
 
     @HostBinding('attr.id')
     get _hostId(): string {
-        return this.id;
+        return this._componentId || this._uniqueInputId;
     }
 
     @HostBinding('readonly')
@@ -114,12 +108,12 @@ export class InputDirective implements DoCheck {
 
     @HostBinding('disabled')
     get _hostDisabled(): boolean {
-        return this.disabled;
+        return this._isDisabled;
     }
 
     @HostBinding('required')
     get _hostRequired(): boolean {
-        return this.required;
+        return this._isRequired;
     }
 
     @HostListener('blur')
@@ -157,6 +151,8 @@ export class InputDirective implements DoCheck {
         @Self()
         public _ngControl: NgControl
     ) {
+        super();
+
         this._form = _parentForm || _parentFormGroup;
     }
 

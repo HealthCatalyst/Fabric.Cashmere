@@ -5,6 +5,7 @@
 
 $table-border: 2px solid $slate-gray-300 !default;
 $table-border-interior: 1px solid $slate-gray-300 !default;
+$table-border-transparent: 1px solid transparent;
 $table-condensed-font-size: 13px;
 $header-border-thick: 2px solid $slate-gray-300 !default;
 $cell-padding: 8px 16px !default;
@@ -26,10 +27,10 @@ $row-selected-font-color: $white;
 $row-selected-border-color: $white;
 
 table.hc-table {
-    border: $table-border;
     width: 100%;
     max-width: 100%;
     color: $tbody-font-color;
+    border: $table-border-transparent;
 
     td,
     th {
@@ -43,22 +44,16 @@ table.hc-table {
             text-align: left;
         }
 
-        &:not(.hc-footer-cell) {
-            border-right: $table-border;
-        }
-
         &:focus {
             outline: none;
         }
     }
 
     th {
-        border-bottom: $table-border;
         font-weight: 600;
     }
 
     thead th {
-        background-color: $row-color-header;
         color: $thead-font-color;
         font-size: $thead-font-size;
         vertical-align: bottom;
@@ -66,7 +61,7 @@ table.hc-table {
 
     tbody {
         font-size: $tbody-font-size;
-        border: $table-border;
+        border: $table-border-interior;
 
         tr {
             &:nth-child(2n) {
@@ -98,25 +93,28 @@ table.hc-table {
         }
     }
 
-    tr.hc-footer-row {
-        background-color: $row-color-footer;
-    }
-
     tfoot {
-        font-size: $tbody-font-size;
+        font-size: $thead-font-size;
+        font-weight: 600;
+
+        td {
+            border-bottom: none;
+        }
     }
 
     // Add Borders
     &.hc-table-borders {
-        td {
+        td,
+        th {
             border: $table-border;
         }
-    }
 
-    td,
-    th {
-        &.hc-cell-borders {
-            border: $table-border;
+        thead th {
+            background-color: $row-color-header;
+        }
+
+        tr.hc-footer-row {
+            background-color: $row-color-footer;
         }
     }
 
@@ -164,48 +162,32 @@ table.hc-table {
             background-color: $row-color-action-hover;
         }
 
-        //TODO: redo the guts of these icons when we roll our own icon font
-        &:before,
         &:after {
-            display: inline-block;
+            content: '';
             position: absolute;
-            bottom: 11px;
-            font: normal normal normal 12px/1 FontAwesome;
-            text-rendering: auto;
-            -webkit-font-smoothing: antialiased;
-        }
-        &:before {
-            right: 23px;
-            bottom: 9px;
-            content: $fa-var-long-arrow-down;
-        }
-        &:after {
-            right: 18px;
+            right: 1px;
             bottom: 10px;
-            content: $fa-var-long-arrow-down;
-            transform: rotate(180deg);
+            height: 13px;
+            width: 13px;
+            margin-left: 15px;
+            padding-right: 35px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzYwLjc4IDE3OTIiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojYTNhNWE3O308L3N0eWxlPjwvZGVmcz48dGl0bGU+QXJ0Ym9hcmQgMTwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNTgyLDEzNDIuODlIODA1Ljc5cTMxLjM0LDAsMzcuMzEsMTYuNDJ0LTE0LjkxLDM3LjNMNDg1LDE3NjkuNjNRNDY0LjA3LDE3OTIsNDMyLjc3LDE3OTJ0LTUyLjIxLTIyLjM3bC0zNDMuMjEtMzczcS0yMC45MS0yMC44OC0xNC45MS0zNy4zdDM3LjMtMTYuNDJIMjgzLjU2VjBINTgyWm03OTguMjYtMTMxOSwzNDMuMiwzNzEuNTVxMjAuODUsMjAuOTEsMTQuOTIsMzYuNTV0LTM3LjMxLDE1LjY2SDE0NzcuMjRWMTc5MC41MkgxMTc4LjgyVjQ0Ny42M0g5NTVxLTMxLjMyLDAtMzcuMy0xNS42NnQxNC45MS0zNi41NWwzNDMuMi0zNzEuNTVRMTI5Ni42NiwxLjUsMTMyOCwxLjQ4VDEzODAuMjQsMjMuODdaIi8+PC9zdmc+');
         }
 
         &.hc-active-sort {
             color: $thead-active-font-color;
 
             &.hc-sort-asc {
-                &:before {
-                    content: $fa-var-sort-amount-asc;
-                    right: 16px;
-                }
                 &:after {
-                    content: none;
+                    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzYwLjc4IDE3OTIiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojMDBhODU5O308L3N0eWxlPjwvZGVmcz48dGl0bGU+QXJ0Ym9hcmQgMTwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNzA0Ljc4LDE0NDBxMCwxMi0xMCwyNGwtMzE5LDMxOWEzMy4zNiwzMy4zNiwwLDAsMS0yMyw5cS0xMiwwLTIzLTlsLTMyMC0zMjBxLTE1LTE2LTctMzUsOC0yMCwzMC0yMGgxOTJWMzJxMC0xNCw5LTIzdDIzLTloMTkycTE0LDAsMjMsOXQ5LDIzVjE0MDhoMTkycTE0LDAsMjMsOVQ3MDQuNzgsMTQ0MFptMTA1NiwxMjh2MTkycTAsMTQtOSwyM3QtMjMsOWgtODMycS0xNCwwLTIzLTl0LTktMjNWMTU2OHEwLTE0LDktMjN0MjMtOWg4MzJxMTQsMCwyMyw5VDE3NjAuNzgsMTU2OFptLTE5Mi01MTJ2MTkycTAsMTQtOSwyM3QtMjMsOWgtNjQwcS0xNCwwLTIzLTl0LTktMjNWMTA1NnEwLTE0LDktMjN0MjMtOWg2NDBxMTQsMCwyMyw5VDE1NjguNzgsMTA1NlptLTE5Mi01MTJWNzM2cTAsMTQtOSwyM3QtMjMsOWgtNDQ4cS0xNCwwLTIzLTl0LTktMjNWNTQ0cTAtMTQsOS0yM3QyMy05aDQ0OHExNCwwLDIzLDlUMTM3Ni43OCw1NDRabS0xOTItNTEyVjIyNHEwLDE0LTksMjN0LTIzLDloLTI1NnEtMTQsMC0yMy05dC05LTIzVjMycTAtMTQsOS0yM3QyMy05aDI1NnExNCwwLDIzLDlUMTE4NC43OCwzMloiLz48L3N2Zz4=');
                 }
             }
 
             &.hc-sort-desc {
-                &:before {
-                    content: $fa-var-sort-amount-desc;
-                    right: 16px;
-                }
                 &:after {
-                    content: none;
+                    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzYwLjc4IDE3OTIiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojMDBhODU5O308L3N0eWxlPjwvZGVmcz48dGl0bGU+QXJ0Ym9hcmQgMTwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTE4NC43OCwxNTY4djE5MnEwLDE0LTksMjN0LTIzLDloLTI1NnEtMTQsMC0yMy05dC05LTIzVjE1NjhxMC0xNCw5LTIzdDIzLTloMjU2cTE0LDAsMjMsOVQxMTg0Ljc4LDE1NjhabS00ODAtMTI4cTAsMTItMTAsMjRsLTMxOSwzMTlhMzMuMzYsMzMuMzYsMCwwLDEtMjMsOXEtMTIsMC0yMy05bC0zMjAtMzIwcS0xNS0xNi03LTM1LDgtMjAsMzAtMjBoMTkyVjMycTAtMTQsOS0yM3QyMy05aDE5MnExNCwwLDIzLDl0OSwyM1YxNDA4aDE5MnExNCwwLDIzLDlUNzA0Ljc4LDE0NDBabTY3Mi0zODR2MTkycTAsMTQtOSwyM3QtMjMsOWgtNDQ4cS0xNCwwLTIzLTl0LTktMjNWMTA1NnEwLTE0LDktMjN0MjMtOWg0NDhxMTQsMCwyMyw5VDEzNzYuNzgsMTA1NlptMTkyLTUxMlY3MzZxMCwxNC05LDIzdC0yMyw5aC02NDBxLTE0LDAtMjMtOXQtOS0yM1Y1NDRxMC0xNCw5LTIzdDIzLTloNjQwcTE0LDAsMjMsOVQxNTY4Ljc4LDU0NFptMTkyLTUxMlYyMjRxMCwxNC05LDIzdC0yMyw5aC04MzJxLTE0LDAtMjMtOXQtOS0yM1YzMnEwLTE0LDktMjN0MjMtOWg4MzJxMTQsMCwyMyw5VDE3NjAuNzgsMzJaIi8+PC9zdmc+');
                 }
             }
         }
@@ -216,24 +198,8 @@ table.hc-table {
         padding-right: 16px;
         padding-left: 35px;
 
-        &:before {
-            left: 16px;
-            right: auto;
-        }
         &:after {
-            left: 21px;
-            right: auto;
-        }
-
-        &.hc-active-sort {
-            &.hc-sort-asc:before {
-                left: 16px;
-                right: auto;
-            }
-            &.hc-sort-desc:before {
-                left: 16px;
-                right: auto;
-            }
+            left: -14px;
         }
     }
 

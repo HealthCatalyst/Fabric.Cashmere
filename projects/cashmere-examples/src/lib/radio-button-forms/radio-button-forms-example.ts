@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 /**
- * @title Horizontal Radio Buttons using Form Controls
+ * @title Inline Radio Buttons using Form Controls
  */
 @Component({
     selector: 'radio-button-forms-example',

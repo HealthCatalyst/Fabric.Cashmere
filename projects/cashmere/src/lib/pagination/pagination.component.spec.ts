@@ -1,195 +1,118 @@
-import {SimpleChange} from '@angular/core';
 import {PaginationComponent} from './pagination.component';
+import {TestBed, ComponentFixture, inject} from '@angular/core/testing';
+import {InputModule} from '../input';
+import {IconModule} from '../icon';
+import {ButtonModule} from '../button';
+import {SelectModule} from '../select';
+import {NgZone} from '@angular/core';
 
 describe('PaginationCompoent', () => {
+    let fixture: ComponentFixture<PaginationComponent>;
     let component: PaginationComponent;
+    let zone: NgZone;
+
     beforeEach(() => {
-        component = new PaginationComponent();
+        TestBed.configureTestingModule({
+            imports: [InputModule, IconModule, ButtonModule, SelectModule],
+            declarations: [PaginationComponent]
+        }).compileComponents();
+        fixture = TestBed.createComponent(PaginationComponent);
+        component = fixture.componentInstance;
+    });
+
+    beforeEach(inject([NgZone], ngZone => (zone = ngZone)));
+
+    describe('upon initialization', () => {
+        beforeEach(() => {
+            fixture.detectChanges();
+        });
+        it('should initialize properly without errors', () => {
+            expect(component).toBeTruthy();
+        });
     });
 
     describe('.pageNumber', () => {
-        describe('when `totalPages === null` and `pageNumber` is set to any value', () => {
-            beforeEach(() => {
-                component.totalPages = null;
-                component.pageNumber = 12;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, null, true),
-                    inputPageNumber: new SimpleChange(undefined, 12, true)
-                });
+        describe('when there are 10 pages and `pageNumber` is set to 11', () => {
+            beforeEach(done => {
+                component.pageNumberChange.subscribe(done);
+
+                component.length = 100;
+                component.pageSize = 10;
+                component.pageNumber = 11;
             });
-            it('should be `null`', () => {
-                expect(component._pageNumber).toBe(null);
-            });
-        });
-        describe('when `totalPages === undefined` and `pageNumber` is set to any value', () => {
-            beforeEach(() => {
-                component.totalPages = undefined;
-                component.pageNumber = 12;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, undefined, true),
-                    inputPageNumber: new SimpleChange(undefined, 12, true)
-                });
-            });
-            it('should be `null`', () => {
-                expect(component._pageNumber).toBe(null);
+            it('should be corrected to `10`', async () => {
+                expect(component.pageNumber).toBe(10);
             });
         });
-        describe('when `totalPages === 12` and `pageNumber` is set to 13', () => {
+        describe('when there are 10 pages and `pageNumber` is set to 6', () => {
             beforeEach(() => {
-                component.totalPages = 12;
-                component.pageNumber = 13;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, 12, true),
-                    inputPageNumber: new SimpleChange(undefined, 13, true)
-                });
-            });
-            it('should be `12`', () => {
-                expect(component._pageNumber).toBe(12);
-            });
-        });
-        describe('when `totalPages === 12` and `pageNumber` is set to 6', () => {
-            beforeEach(() => {
-                component.totalPages = 12;
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 6;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, 12, true),
-                    inputPageNumber: new SimpleChange(undefined, 6, true)
-                });
             });
             it('should be `6`', () => {
-                expect(component._pageNumber).toBe(6);
+                expect(component.pageNumber).toBe(6);
             });
         });
-        describe('when `totalPages === 12` and `pageNumber` is set to 1', () => {
+        describe('when there are 10 pages and and `pageNumber` is set to 1', () => {
             beforeEach(() => {
-                component.totalPages = 12;
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 1;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, 12, true),
-                    inputPageNumber: new SimpleChange(undefined, 1, true)
-                });
             });
             it('should be `1`', () => {
-                expect(component._pageNumber).toBe(1);
+                expect(component.pageNumber).toBe(1);
             });
         });
-        describe('when `totalPages === 12` and `pageNumber` is set to 12', () => {
+        describe('when there are 10 pages and `pageNumber` is set to 10', () => {
             beforeEach(() => {
-                component.totalPages = 12;
-                component.pageNumber = 12;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, 12, true),
-                    inputPageNumber: new SimpleChange(undefined, 12, true)
-                });
+                component.length = 100;
+                component.pageSize = 10;
+                component.pageNumber = 10;
             });
-            it('should be `12`', () => {
-                expect(component._pageNumber).toBe(12);
+            it('should be `10`', () => {
+                expect(component.pageNumber).toBe(10);
             });
         });
-        describe('when `totalPages === 12` and `pageNumber` is set to 0', () => {
-            beforeEach(() => {
-                component.totalPages = 12;
+        describe('when there are 10 pages and `pageNumber` is set to 0', () => {
+            beforeEach(done => {
+                component.pageNumberChange.subscribe(done);
+
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 0;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, 12, true),
-                    inputPageNumber: new SimpleChange(undefined, 0, true)
-                });
             });
             it('should be `1`', () => {
-                expect(component._pageNumber).toBe(1);
+                expect(component.pageNumber).toBe(1);
             });
         });
-        describe('when `totalPages === 12` and `pageNumber` is set to -1', () => {
-            beforeEach(() => {
-                component.totalPages = 12;
+        describe('when there are 10 pages and `pageNumber` is set to -1', () => {
+            beforeEach(done => {
+                component.pageNumberChange.subscribe(done);
+
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = -1;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, 12, true),
-                    inputPageNumber: new SimpleChange(undefined, -1, true)
-                });
             });
             it('should be `1`', () => {
-                expect(component._pageNumber).toBe(1);
+                expect(component.pageNumber).toBe(1);
             });
         });
-        describe('when `totalPages === 12` and `pageNumber` is set to `null`', () => {
+        describe('when === 1 and there are 10 pages and .previousPage() is called', () => {
             beforeEach(() => {
-                component.totalPages = 12;
-                component.pageNumber = null;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, 12, true),
-                    inputPageNumber: new SimpleChange(undefined, null, true)
-                });
-            });
-            it('should be `1`', () => {
-                expect(component._pageNumber).toBe(1);
-            });
-        });
-        describe('when `totalPages === 12` and `pageNumber` is set to `undefined`', () => {
-            beforeEach(() => {
-                component.totalPages = 12;
-                component.pageNumber = <any>undefined;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, 12, true),
-                    inputPageNumber: new SimpleChange(undefined, undefined, true)
-                });
-            });
-            it('should be `1`', () => {
-                expect(component._pageNumber).toBe(1);
-            });
-        });
-        describe('when `totalPages === 12` and `pageNumber` is set to `NaN`', () => {
-            beforeEach(() => {
-                component.totalPages = 12;
-                component.pageNumber = NaN;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, 12, true),
-                    inputPageNumber: new SimpleChange(undefined, NaN, true)
-                });
-            });
-            it('should be `1`', () => {
-                expect(component._pageNumber).toBe(1);
-            });
-        });
-        describe('when `totalPages === 12` and `pageNumber` is set to `[]`', () => {
-            beforeEach(() => {
-                component.totalPages = 12;
-                component.pageNumber = [] as any;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, 12, true),
-                    inputPageNumber: new SimpleChange(undefined, [], true)
-                });
-            });
-            it('should be `1`', () => {
-                expect(component._pageNumber).toBe(1);
-            });
-        });
-        describe('when `totalPages === 12` and `pageNumber` is set to `{}`', () => {
-            beforeEach(() => {
-                component.totalPages = 12;
-                component.pageNumber = {} as any;
-                component.ngOnChanges({
-                    totalPages: new SimpleChange(undefined, 12, true),
-                    inputPageNumber: new SimpleChange(undefined, {}, true)
-                });
-            });
-            it('should be `1`', () => {
-                expect(component._pageNumber).toBe(1);
-            });
-        });
-        describe('when === 1 and `totalPages === 12` and .previousPage() is called', () => {
-            beforeEach(() => {
-                component.totalPages = 12;
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 1;
                 component._previousPage();
             });
             it('should be `1`', () => {
-                expect(component._pageNumber).toBe(1);
+                expect(component.pageNumber).toBe(1);
             });
         });
-        describe('when === 2 and `totalPages === 12` and .previousPage() is called', () => {
+        describe('when === 2 and there are 10 pages and .previousPage() is called', () => {
             beforeEach(() => {
-                component.totalPages = 12;
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 2;
                 component._previousPage();
             });
@@ -197,9 +120,10 @@ describe('PaginationCompoent', () => {
                 expect(component.pageNumber).toBe(1);
             });
         });
-        describe('when === 3 and `totalPages === 12` and .previousPage() is called', () => {
+        describe('when === 3 and there are 10 pages and .previousPage() is called', () => {
             beforeEach(() => {
-                component.totalPages = 12;
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 3;
                 component._previousPage();
             });
@@ -207,34 +131,37 @@ describe('PaginationCompoent', () => {
                 expect(component.pageNumber).toBe(2);
             });
         });
-        describe('when === 12 and `totalPages === 12` and .nextPage() is called', () => {
+        describe('when === 10 and there are 10 pages and .nextPage() is called', () => {
             beforeEach(() => {
-                component.totalPages = 12;
-                component.pageNumber = 12;
-                component._nextPage();
-            });
-            it('should be `12`', () => {
-                expect(component.pageNumber).toBe(12);
-            });
-        });
-        describe('when === 11 and `totalPages === 12` and .nextPage() is called', () => {
-            beforeEach(() => {
-                component.totalPages = 12;
-                component.pageNumber = 11;
-                component._nextPage();
-            });
-            it('should be `12`', () => {
-                expect(component.pageNumber).toBe(12);
-            });
-        });
-        describe('when === 10 and `totalPages === 12` and .nextPage() is called', () => {
-            beforeEach(() => {
-                component.totalPages = 12;
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 10;
                 component._nextPage();
             });
-            it('should be `11`', () => {
-                expect(component.pageNumber).toBe(11);
+            it('should be `10`', () => {
+                expect(component.pageNumber).toBe(10);
+            });
+        });
+        describe('when === 9 and there are 10 pages and .nextPage() is called', () => {
+            beforeEach(() => {
+                component.length = 100;
+                component.pageSize = 10;
+                component.pageNumber = 9;
+                component._nextPage();
+            });
+            it('should be `10`', () => {
+                expect(component.pageNumber).toBe(10);
+            });
+        });
+        describe('when === 8 and there are 10 pages and .nextPage() is called', () => {
+            beforeEach(() => {
+                component.length = 100;
+                component.pageSize = 10;
+                component.pageNumber = 8;
+                component._nextPage();
+            });
+            it('should be `9`', () => {
+                expect(component.pageNumber).toBe(9);
             });
         });
     });
@@ -242,7 +169,8 @@ describe('PaginationCompoent', () => {
     describe('.isFirstPage', () => {
         describe('when `pageNumber` is `1`', () => {
             beforeEach(() => {
-                component.totalPages = 10;
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 1;
             });
             it('should be `true`', () => {
@@ -251,7 +179,8 @@ describe('PaginationCompoent', () => {
         });
         describe('when `pageNumber` is `2`', () => {
             beforeEach(() => {
-                component.totalPages = 10;
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 2;
             });
             it('should be `false`', () => {
@@ -260,17 +189,9 @@ describe('PaginationCompoent', () => {
         });
         describe('when `pageNumber` is the last page', () => {
             beforeEach(() => {
-                component.totalPages = 10;
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 10;
-            });
-            it('should be `false`', () => {
-                expect(component._isFirstPage).toBe(false);
-            });
-        });
-        describe('when `pageNumber` is `null', () => {
-            beforeEach(() => {
-                component.totalPages = null;
-                component.pageNumber = null;
             });
             it('should be `false`', () => {
                 expect(component._isFirstPage).toBe(false);
@@ -280,7 +201,8 @@ describe('PaginationCompoent', () => {
     describe('.isLastPage', () => {
         describe('when `pageNumber` is `1`', () => {
             beforeEach(() => {
-                component.totalPages = 10;
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 1;
             });
             it('should be `false`', () => {
@@ -289,7 +211,8 @@ describe('PaginationCompoent', () => {
         });
         describe('when `pageNumber` is the penultimate value', () => {
             beforeEach(() => {
-                component.totalPages = 10;
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 9;
             });
             it('should be `false`', () => {
@@ -298,58 +221,32 @@ describe('PaginationCompoent', () => {
         });
         describe('when `pageNumber` is the last page', () => {
             beforeEach(() => {
-                component.totalPages = 10;
+                component.length = 100;
+                component.pageSize = 10;
                 component.pageNumber = 10;
             });
             it('should be `true`', () => {
                 expect(component._isLastPage).toBe(true);
             });
         });
-        describe('when `pageNumber` is `null', () => {
-            beforeEach(() => {
-                component.totalPages = null;
-                component.pageNumber = null;
-            });
-            it('should be `false`', () => {
-                expect(component._isLastPage).toBe(false);
-            });
-        });
     });
 
     describe('.visiblePages', () => {
         describe('when there are no pages', () => {
-            describe('(totalPages === 0)', () => {
-                beforeEach(() => {
-                    component.totalPages = 0;
-                });
-                it('should be []', () => {
-                    expect(component._visiblePages).toEqual([]);
-                });
+            beforeEach(() => {
+                component.length = 0;
+                component.pageSize = 10;
             });
-            describe('(totalPages === null)', () => {
-                beforeEach(() => {
-                    component.totalPages = null;
-                });
-                it('should be []', () => {
-                    expect(component._visiblePages).toEqual([]);
-                });
-            });
-            describe('(totalPages === undefined)', () => {
-                beforeEach(() => {
-                    component.totalPages = undefined;
-                });
-                it('should be []', () => {
-                    expect(component._visiblePages).toEqual([]);
-                });
-            });
-            afterEach(() => {
+            it('should be []', () => {
+                expect(component._visiblePages).toEqual([]);
                 expect(component._visiblePages.length).toBe(0);
             });
         });
 
         describe('when there is one page', () => {
             beforeEach(() => {
-                component.totalPages = 1;
+                component.length = 10;
+                component.pageSize = 10;
             });
             it('should have a length of 1', () => {
                 expect(component._visiblePages.length).toBe(1);
@@ -361,7 +258,8 @@ describe('PaginationCompoent', () => {
 
         describe('when there are 8 pages', () => {
             beforeEach(() => {
-                component.totalPages = 8;
+                component.length = 80;
+                component.pageSize = 10;
             });
             it('should have a length of 8', () => {
                 expect(component._visiblePages.length).toBe(8);
@@ -373,7 +271,8 @@ describe('PaginationCompoent', () => {
 
         describe('when there are 9 pages', () => {
             beforeEach(() => {
-                component.totalPages = 9;
+                component.length = 90;
+                component.pageSize = 10;
             });
             it('should have a length of 9', () => {
                 expect(component._visiblePages.length).toBe(9);
@@ -385,7 +284,8 @@ describe('PaginationCompoent', () => {
 
         describe('when there are 10 pages', () => {
             beforeEach(() => {
-                component.totalPages = 10;
+                component.length = 100;
+                component.pageSize = 10;
             });
             describe('when pageNumber is 1', () => {
                 beforeEach(() => {
@@ -426,7 +326,8 @@ describe('PaginationCompoent', () => {
 
         describe('when there are 16 pages', () => {
             beforeEach(() => {
-                component.totalPages = 16;
+                component.length = 160;
+                component.pageSize = 10;
             });
             describe('when pageNumber is 1', () => {
                 beforeEach(() => {
@@ -481,40 +382,79 @@ describe('PaginationCompoent', () => {
             });
         });
     });
+    describe('.pageSize', () => {
+        it('will update the total number of pages as expected', () => {
+            component.length = 100;
+            component.pageSize = 10;
+            expect(component.totalPages).toEqual(10);
+
+            component.pageSize = 50;
+            expect(component.totalPages).toEqual(2);
+
+            component.pageSize = 100;
+            expect(component.totalPages).toEqual(1);
+
+            component.pageSize = 200;
+            expect(component.totalPages).toEqual(1);
+        });
+        describe('when set to zero and there are NO page size options', () => {
+            it('will instead use default size of 20', () => {
+                component.pageSizeOptions = [];
+                component.pageSize = 0;
+                expect(component.pageSize).toEqual(20);
+            });
+        });
+        describe('when set to zero and there are page size options', () => {
+            it('will instead use the first given page size option', () => {
+                component.pageSizeOptions = [200, 10, 50];
+                component.pageSize = 0;
+                expect(component.pageSize).toEqual(200);
+            });
+        });
+    });
+    describe('._displayedPageSizeOptions', () => {
+        it('is a numerically sorted version of `pageSizeOptions`', () => {
+            component.pageSize = 10;
+            component.pageSizeOptions = [200, 10, 50];
+            expect(component._displayedPageSizeOptions[0]).toEqual(10);
+            expect(component._displayedPageSizeOptions[1]).toEqual(50);
+            expect(component._displayedPageSizeOptions[2]).toEqual(200);
+        });
+        describe('when `pageSize` is given a size that is not in the available options', () => {
+            it('will select it and add it to `_displayedPageSizeOptions`', () => {
+                component.pageSizeOptions = [200, 10, 50];
+                component.pageSize = 30;
+                expect(component.pageSize).toEqual(30);
+                expect(component._displayedPageSizeOptions[0]).toEqual(10);
+                expect(component._displayedPageSizeOptions[1]).toEqual(30);
+                expect(component._displayedPageSizeOptions[2]).toEqual(50);
+                expect(component._displayedPageSizeOptions[3]).toEqual(200);
+            });
+        });
+    });
+    describe('._changePageSize()', () => {
+        it('will navigate pages as needed to keep whatever item is currently up top still on the page after the page size change', () => {
+            component.length = 100;
+            component.pageSize = 10;
+            component.pageNumber = 2;
+            component._changePageSize(5);
+            expect(component.pageNumber).toEqual(3);
+        });
+    });
     describe('.collapsedVisiblePages', () => {
         describe('when there are no pages', () => {
-            describe('(totalPages === 0)', () => {
-                beforeEach(() => {
-                    component.totalPages = 0;
-                });
-                it('should be []', () => {
-                    expect(component._collapsedVisiblePages).toEqual([]);
-                });
-            });
-            describe('(totalPages === null)', () => {
-                beforeEach(() => {
-                    component.totalPages = null;
-                });
-                it('should be []', () => {
-                    expect(component._collapsedVisiblePages).toEqual([]);
-                });
-            });
-            describe('(totalPages === undefined)', () => {
-                beforeEach(() => {
-                    component.totalPages = undefined;
-                });
-                it('should be []', () => {
-                    expect(component._collapsedVisiblePages).toEqual([]);
-                });
-            });
-            afterEach(() => {
+            it('should be `[]`', () => {
+                component.length = 0;
+                component.pageSize = 10;
+                expect(component._collapsedVisiblePages).toEqual([]);
                 expect(component._collapsedVisiblePages.length).toBe(0);
             });
         });
 
         describe('when there is one page', () => {
             beforeEach(() => {
-                component.totalPages = 1;
+                component.length = 10;
+                component.pageSize = 10;
             });
             it('should have a length of 1', () => {
                 expect(component._collapsedVisiblePages.length).toBe(1);
@@ -526,7 +466,8 @@ describe('PaginationCompoent', () => {
 
         describe('when there are 4 pages', () => {
             beforeEach(() => {
-                component.totalPages = 4;
+                component.length = 40;
+                component.pageSize = 10;
             });
             it('should have a length of 4', () => {
                 expect(component._collapsedVisiblePages.length).toBe(4);
@@ -538,7 +479,8 @@ describe('PaginationCompoent', () => {
 
         describe('when there are 5 pages', () => {
             beforeEach(() => {
-                component.totalPages = 5;
+                component.length = 50;
+                component.pageSize = 10;
             });
             it('should have a length of 5', () => {
                 expect(component._collapsedVisiblePages.length).toBe(5);
@@ -550,7 +492,8 @@ describe('PaginationCompoent', () => {
 
         describe('when there are 6 pages', () => {
             beforeEach(() => {
-                component.totalPages = 6;
+                component.length = 60;
+                component.pageSize = 10;
             });
             describe('when pageNumber is 1', () => {
                 beforeEach(() => {
@@ -591,7 +534,8 @@ describe('PaginationCompoent', () => {
 
         describe('when there are 16 pages', () => {
             beforeEach(() => {
-                component.totalPages = 16;
+                component.length = 160;
+                component.pageSize = 10;
             });
             describe('when pageNumber is 1', () => {
                 beforeEach(() => {

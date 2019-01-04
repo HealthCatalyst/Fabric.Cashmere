@@ -10,7 +10,17 @@
 
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {CdkColumnDef} from '@angular/cdk/table';
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, Optional, ViewEncapsulation} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    Input,
+    OnDestroy,
+    OnInit,
+    Optional,
+    ViewEncapsulation,
+    HostBinding
+} from '@angular/core';
 import {merge, Subscription} from 'rxjs';
 import {HcSort, HcSortable} from './sort';
 import {hcSortAnimations} from './sort-animations';
@@ -54,9 +64,6 @@ export interface ArrowViewStateTransition {
     styleUrls: ['sort-header.scss'],
     host: {
         '(click)': '_handleClick()',
-        '(mouseenter)': '_setIndicatorHintVisible(true)',
-        '(longpress)': '_setIndicatorHintVisible(true)',
-        '(mouseleave)': '_setIndicatorHintVisible(false)',
         '[attr.aria-sort]': '_getAriaSortAttribute()',
         '[class.hc-sort-header-disabled]': '_isDisabled()'
     },
@@ -99,13 +106,16 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
      * ID of this sort header. If used within the context of a CdkColumnDef, this will default to
      * the column's name.
      */
-    @Input('hc-sort-header') id: string;
+    @Input('hc-sort-header')
+    id: string;
 
     /** Sets the position of the arrow that displays when sorted. */
-    @Input() arrowPosition: 'before' | 'after' = 'after';
+    @Input()
+    arrowPosition: 'before' | 'after' = 'after';
 
     /** Overrides the sort start value of the containing HcSort for this HcSortable. */
-    @Input() start: 'asc' | 'desc';
+    @Input()
+    start: 'asc' | 'desc';
 
     /** Overrides the disable clear value of the containing HcSort for this HcSortable. */
     @Input()
@@ -127,6 +137,9 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
     set disabled(value: any) {
         this._disabled = coerceBooleanProperty(value);
     }
+
+    @HostBinding('class.hc-sort-header')
+    _hostClass = true;
 
     private _disabled: boolean = false;
 

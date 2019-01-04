@@ -1,65 +1,9 @@
-@import '../sass/colors';
+@import '../sass/input';
 
 .hc-input {
-    font: inherit;
-    background: inherit;
-    color: currentColor;
-
-    border: none;
-    outline: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-
-    max-width: 100%;
-
-    vertical-align: bottom;
-    text-align: inherit;
-
-    &[disabled] {
-        cursor: not-allowed;
-    }
-
-    &:-moz-ui-invalid {
-        box-shadow: none;
-    }
-
-    &::-ms-clear,
-    &::-ms-reveal {
-        display: none;
-    }
-
-    &::placeholder {
-        color: $slate-gray-300;
-    }
-
-    &:-ms-input-placeholder {
-        color: $slate-gray-300;
-    }
-
-    &::-ms-input-placeholder {
-        color: $slate-gray-300;
-    }
-}
-
-.hc-form-field-disabled {
-    .hc-form-field-flex {
-        cursor: not-allowed;
-        border: 1.5px solid $gray-200;
-        background-color: $slate-gray-100;
-        color: tint($text, 60%);
-    }
+    @include hc-input();
 }
 
 textarea.hc-input {
-    // Only allow resizing along the Y axis.
-    resize: vertical;
-    overflow: auto;
-}
-
-textarea.hc-input {
-    // The 2px padding prevents scrollbars from appearing on Chrome even when they aren't needed.
-    // We also add a negative margin to negate the effect of the padding on the layout.
-    padding: 2px 0;
-    margin: -2px 0;
+    @include hc-textarea();
 }

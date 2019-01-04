@@ -2,14 +2,15 @@ import {NgModule} from '@angular/core';
 import {
     AccordionModule,
     AppSwitcherModule,
+    BannerModule,
     BreadcrumbsModule,
     ButtonModule,
     CheckboxModule,
     ChipModule,
     DrawerModule,
+    FormFieldModule,
     IconModule,
     InputModule,
-    LabelModule,
     ListModule,
     ModalModule,
     NavbarModule,
@@ -24,6 +25,7 @@ import {
     TableModule,
     TabsModule,
     TileModule,
+    ToasterModule,
     TypeformSurveyModule
 } from '@healthcatalyst/cashmere';
 
@@ -31,14 +33,15 @@ import {
     imports: [
         AccordionModule,
         AppSwitcherModule,
+        BannerModule,
         BreadcrumbsModule,
         ButtonModule,
         CheckboxModule,
         ChipModule,
         DrawerModule,
+        FormFieldModule,
         IconModule,
         InputModule,
-        LabelModule,
         ListModule,
         ModalModule,
         NavbarModule,
@@ -53,19 +56,21 @@ import {
         TableModule,
         TabsModule,
         TileModule,
+        ToasterModule,
         TypeformSurveyModule
     ],
     exports: [
         AccordionModule,
         AppSwitcherModule,
+        BannerModule,
         BreadcrumbsModule,
         ButtonModule,
         CheckboxModule,
         ChipModule,
         DrawerModule,
+        FormFieldModule,
         IconModule,
         InputModule,
-        LabelModule,
         ListModule,
         ModalModule,
         NavbarModule,
@@ -80,6 +85,7 @@ import {
         TableModule,
         TabsModule,
         TileModule,
+        ToasterModule,
         TypeformSurveyModule
     ]
 })

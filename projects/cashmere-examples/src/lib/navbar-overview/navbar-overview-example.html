@@ -1,4 +1,4 @@
-<hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" user="Christine K." [homeUri]="undefined" [fixedTop]="false">
+<hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" [homeUri]="undefined" [fixedTop]="false">
     <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
@@ -6,13 +6,12 @@
     <hc-navbar-link [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Rehabilition"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
-    <hc-navbar-icon>
-        <hc-icon fontSet="fa" fontIcon="fa-search"></hc-icon>
-    </hc-navbar-icon>
-    <hc-navbar-icon>
-        <hc-icon fontSet="fa" fontIcon="fa-question-circle-o" [hcPopover]="options"
-                 popperPlacement="bottom"></hc-icon>
-    </hc-navbar-icon>
+    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-question-circle-o" [hcPopover]="options" popperPlacement="bottom"></hc-icon>
+    <span class="hc-navbar-vertical-separator"></span>
+    <div class="hc-navbar-username" *ngIf="user" [hcPopover]="user" popperPlacement="bottom">
+        <span class="hc-text-ellipsis">{{username}}</span>
+        <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
+    </div>
 </hc-navbar>
 
 <hc-popover-content #options>
@@ -31,6 +30,14 @@
         </li>
         <li>
             <a href="" target="_blank">Send us your feedback</a>
+        </li>
+    </ul>
+</hc-popover-content>
+
+<hc-popover-content #user>
+    <ul class="list-options">
+        <li>
+            <a href="" target="_blank">Logout</a>
         </li>
     </ul>
 </hc-popover-content>

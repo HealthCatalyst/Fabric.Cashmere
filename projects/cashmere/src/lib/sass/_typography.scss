@@ -168,14 +168,6 @@ em,
     font-style: italic;
 }
 
-// error text
-.form-errors {
-    margin-top: 8px;
-    color: $red;
-    font-weight: 600;
-    @include fontSize(12px);
-}
-
 // Articles
 // Article paragraph lists
 article ul {

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 /**
- * @title Disabled Select Component
+ * @title Disabled Inline Select Component
  */
 @Component({
     selector: 'select-disabled-example',
