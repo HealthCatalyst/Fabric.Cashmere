@@ -6,6 +6,8 @@ import {HcToastOptions} from './hc-toast-options';
 import {HcToastRef} from './hc-toast-ref';
 import {filter, take} from 'rxjs/operators';
 
+/** Toasts provide users with instant feedback on actions they've taken. For more general information,
+ * use a `hc-banner`. */
 @Injectable()
 export class HcToasterService {
     _toasts: HcToastRef[] = [];

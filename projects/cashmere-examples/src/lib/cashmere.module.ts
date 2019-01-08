@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {
     AccordionModule,
     AppSwitcherModule,
+    BannerModule,
     BreadcrumbsModule,
     ButtonModule,
     CheckboxModule,
@@ -32,6 +33,7 @@ import {
     imports: [
         AccordionModule,
         AppSwitcherModule,
+        BannerModule,
         BreadcrumbsModule,
         ButtonModule,
         CheckboxModule,
@@ -60,6 +62,7 @@ import {
     exports: [
         AccordionModule,
         AppSwitcherModule,
+        BannerModule,
         BreadcrumbsModule,
         ButtonModule,
         CheckboxModule,
