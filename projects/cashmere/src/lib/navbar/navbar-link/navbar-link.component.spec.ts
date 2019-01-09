@@ -1,10 +1,9 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {NavbarLinkComponent} from './navbar-link.component';
 import {RouterModule} from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
-import { By } from '@angular/platform-browser';
+import {By} from '@angular/platform-browser';
 
 @Component({
     selector: `hc-host-component`,
@@ -66,5 +65,5 @@ describe('NavbarLinkComponent', () => {
         spyOnProperty(link.nativeElement, 'scrollWidth', 'get').and.returnValue(2400);
         const width = testHostComponent.navbarLinkComponent._getWidth();
         expect(width).toEqual(2400);
-        });
+    });
 });

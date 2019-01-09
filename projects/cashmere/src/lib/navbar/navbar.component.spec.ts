@@ -27,7 +27,7 @@ class TestAppComponent {
     public navbarComponent: NavbarComponent;
 }
 
-fdescribe('NavbarComponent', () => {
+describe('NavbarComponent', () => {
     let testHostComponent: TestAppComponent;
     let testHostFixture: ComponentFixture<TestAppComponent>;
 
