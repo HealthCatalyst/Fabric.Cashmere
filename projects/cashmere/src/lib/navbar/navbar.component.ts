@@ -62,10 +62,10 @@ export class NavbarComponent implements AfterViewInit {
     @HostListener('window:resize')
     _navResize() {
         this._navbarMore._hide();
-        this._moreList = [];````````````````````````````````
+        this._moreList = [];
 
         // If links is zero the page is smaller than the first responsive breakpoint
-        if (this.el.nativeElement.querySelector('.hc-navbar-link-container````````````````````````````````').clientWidth <= 0) {
+        if (this.el.nativeElement.querySelector('.hc-navbar-link-container').clientWidth <= 0) {
             return;
         }
 
