@@ -3,7 +3,9 @@ import * as d3 from 'd3';
 
 @Component({
     selector: 'hc-demo-linechart',
-    template: `<div class="d3-line-chart" #chart></div>`,
+    template: `
+        <div class="d3-line-chart" #chart></div>
+    `,
     styleUrls: ['./linechart.component.scss'],
     encapsulation: ViewEncapsulation.None
 })

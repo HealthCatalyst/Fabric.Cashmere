@@ -42,9 +42,11 @@ export class PicklistValuesetMovingService {
         this.valueSetList.options.delete(valueset.code);
 
         const unselectedSubValues = new Map<string, ValueListOption>();
-        valueset.subValuesSelectList.filteredOptions.filter(o => !o.selected).forEach(o => {
-            unselectedSubValues.set(o.code, new ValueListOption(o.option, o.code));
-        });
+        valueset.subValuesSelectList.filteredOptions
+            .filter(o => !o.selected)
+            .forEach(o => {
+                unselectedSubValues.set(o.code, new ValueListOption(o.option, o.code));
+            });
 
         if (!companionPane) {
             return;

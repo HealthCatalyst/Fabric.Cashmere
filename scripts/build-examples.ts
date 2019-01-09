@@ -63,7 +63,10 @@ function cleanOutputDirectory() {
 }
 
 function getStackBlitzProjectTemplateFiles() {
-    fs.writeFileSync(path.join(projectTemplateRoot, 'src/app/cashmere.module.ts'), cashmereModule);
+    fs.writeFileSync(
+        path.join(projectTemplateRoot, 'src/app/cashmere.module.ts'),
+        prettier.format(cashmereModule, {filepath: 'cashmere.module.ts'})
+    );
     return glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce(
         (prev, curr) => {
             const fullPath = path.join(projectTemplateRoot, curr);
@@ -182,8 +185,14 @@ function generateStackBlitzFiles(exampleName: string) {
         {} as FileHash
     );
 
-    const allFiles = Object.assign({}, projectTemplateFiles, exampleFiles, {'src/app/app.module.ts': appModuleContents});
-    fs.writeFileSync(path.join(outputRoot, `${exampleName}.json`), JSON.stringify(allFiles, null, 2));
+    const allFiles = Object.assign({}, projectTemplateFiles, exampleFiles, {
+        'src/app/app.module.ts': prettier.format(appModuleContents, {filepath: 'app.module.ts'}),
+        'src/app/cashmere.module.ts': prettier.format(cashmereModule, {filepath: 'cashmere.module.ts'})
+    });
+    fs.writeFileSync(
+        path.join(outputRoot, `${exampleName}.json`),
+        prettier.format(JSON.stringify(allFiles, null, 2), {filepath: `${exampleName}.json`})
+    );
 }
 
 function generateExamplesModule() {
@@ -213,14 +222,17 @@ ${(exampleModules as ExampleInfo[])
     ]
 })
 export class ExampleModule {}
-    `;
-    fs.writeFileSync(path.join(examplesRoot, 'examples.generated.module.ts'), examplesModule);
+`;
+    fs.writeFileSync(
+        path.join(examplesRoot, 'examples.generated.module.ts'),
+        prettier.format(examplesModule, {filepath: 'examples.generated.module.ts'})
+    );
 }
 
 function generateCashmereModule() {
     fs.writeFileSync(
         path.join(examplesRoot, 'cashmere.generated.module.ts'),
-        `/* This file is auto-generated; do not change! */\r\n${cashmereModule}`
+        prettier.format(`/* This file is auto-generated; do not change! */\r\n${cashmereModule}`, {filepath: 'cashmere.module.ts'})
     );
 }
 
@@ -237,7 +249,10 @@ export const EXAMPLE_COMPONENTS: { [exampleName: string]: any; } = {
     ${mappingLines.join(',\r\n    ')}
 };
     `;
-    fs.writeFileSync(path.join(examplesRoot, 'example-mappings.generated.ts'), examplesComponentMappings);
+    fs.writeFileSync(
+        path.join(examplesRoot, 'example-mappings.generated.ts'),
+        prettier.format(examplesComponentMappings, {filepath: 'example-mappings.generated.ts'})
+    );
 }
 
 function error(message: string) {

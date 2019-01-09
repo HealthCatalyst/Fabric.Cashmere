@@ -11,24 +11,12 @@ Add `.subnav` class to the root element with an `<ol>` element with `.breadcrumb
 ```html
 <div class="subnav">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="/styles/breadcrumbs#">First</a>
-            <i class="fa fa-chevron-right breadcrumb-arrow"></i>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="/styles/breadcrumbs#">Second</a>
-            <i class="fa fa-chevron-right breadcrumb-arrow"></i>
-        </li>
-        <li class="breadcrumb-item">
-            <span>Third</span>
-            <i class="fa fa-chevron-right breadcrumb-arrow"></i>
-        </li>
+        <li class="breadcrumb-item"><a href="/styles/breadcrumbs#">First</a> <i class="fa fa-chevron-right breadcrumb-arrow"></i></li>
+        <li class="breadcrumb-item"><a href="/styles/breadcrumbs#">Second</a> <i class="fa fa-chevron-right breadcrumb-arrow"></i></li>
+        <li class="breadcrumb-item"><span>Third</span> <i class="fa fa-chevron-right breadcrumb-arrow"></i></li>
     </ol>
     <div class="breadcrumb-responsive-container">
-        <a class="breadcrumb-back-button">
-            <i class="fa fa-chevron-left"></i>
-            <span>Back</span>
-        </a>
+        <a class="breadcrumb-back-button"> <i class="fa fa-chevron-left"></i> <span>Back</span> </a>
     </div>
 </div>
 ```

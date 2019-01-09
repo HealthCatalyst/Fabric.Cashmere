@@ -4,8 +4,7 @@ All Health Catalyst apps should include a help menu in their navbar. This guide 
 
 ```html
 <hc-navbar-icon>
-    <hc-icon fontSet="fa" fontIcon="fa-question-circle-o"
-        [hcPopover]="helpMenu" popperPlacement="bottom"></hc-icon>
+    <hc-icon fontSet="fa" fontIcon="fa-question-circle-o" [hcPopover]="helpMenu" popperPlacement="bottom"></hc-icon>
 </hc-navbar-icon>
 ```
 
@@ -24,21 +23,11 @@ You may not have all these items available. However, include what you have in th
 ```html
 <hc-popover-content #helpMenu>
     <ul class="list-options">
-        <li>
-            <a href="" target="_blank">Help Topics</a>
-        </li>
-        <li>
-            <a href="" target="_blank">Release Notes</a>
-        </li>
-        <li>
-            <button (click)="aboutClick($event)">About</button>
-        </li>
-        <li>
-            <a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a>
-        </li>
-        <li>
-           <button (click)="feedbackClick($event)">Send us your feedback</button>
-        </li>
+        <li><a href="" target="_blank">Help Topics</a></li>
+        <li><a href="" target="_blank">Release Notes</a></li>
+        <li><button (click)="aboutClick($event)">About</button></li>
+        <li><a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a></li>
+        <li><button (click)="feedbackClick($event)">Send us your feedback</button></li>
     </ul>
 </hc-popover-content>
 ```
@@ -59,9 +48,7 @@ In addition to the help menu, all Heath Catalyst applications should also includ
         <hc-app-switcher-links></hc-app-switcher-links>
     </hc-navbar-mobile-menu>
     ...
-    <hc-popover-content #appSwitcher>
-        <hc-app-switcher></hc-app-switcher>
-    </hc-popover-content>
+    <hc-popover-content #appSwitcher> <hc-app-switcher></hc-app-switcher> </hc-popover-content>
 </hc-navbar>
 ```
 

@@ -71,41 +71,28 @@ The following example does not use angular but a post css Preprocesser is needed
 
 ```html
 <div class="hc-login-container" style="background-image: url(../assets/login_bg.jpg)">
-  <div class="hc-login">
-    <div class="logo">
-      <img src="../assets/HC_logo.svg" alt="Health Catalyst Logo">
+    <div class="hc-login">
+        <div class="logo"><img src="../assets/HC_logo.svg" alt="Health Catalyst Logo" /></div>
+        <form>
+            <label for="email">Email</label> <input class="login-input" required name="email" type="text" placeholder="Enter Full Email" />
+            <label for="email">Password</label> <a href="#" class="forgot-password">Forgot Password</a>
+            <input class="login-input" required name="password" type="password" />
+            <input value="Log in" class="login-button" type="submit" />
+        </form>
+        <div class="privacy">
+            By signing in you agree to our <br />
+            <a href="#">Terms of Use</a> and <a href="#">Privacy Statement</a>
+        </div>
+        <div class="new-to-catalyst"><span>New to Health Catalyst?</span></div>
+        <a href="#" class="new-account">Create a new acount</a>
     </div>
-    <form>
-      <label for="email">Email</label>
-      <input class="login-input" required name="email" type="text" placeholder="Enter Full Email">
-      <label for="email">Password</label>
-      <a href="#" class="forgot-password">Forgot Password</a>
-      <input class="login-input" required name="password" type="password">
-      <input value="Log in" class="login-button" type="submit">
-    </form>
-    <div class="privacy">By signing in you agree to our
-      <br>
-      <a href="#">Terms of Use</a> and
-      <a href="#">Privacy Statement</a>
+    <div class="hc-login-footer">
+        <ul>
+            <li><a href="https://www.healthcatalyst.com/terms-conditions/"> Terms of Use </a></li>
+            <li><a href="https://www.healthcatalyst.com/privacy-policy/">Privacy</a></li>
+            <li><a href="https://www.healthcatalyst.com">HealthCatalyst.com</a></li>
+        </ul>
     </div>
-    <div class="new-to-catalyst">
-      <span>New to Health Catalyst?</span>
-    </div>
-    <a href="#" class="new-account">Create a new acount</a>
-  </div>
-  <div class="hc-login-footer">
-    <ul>
-      <li>
-        <a href="https://www.healthcatalyst.com/terms-conditions/"> Terms of Use </a>
-      </li>
-      <li>
-        <a href="https://www.healthcatalyst.com/privacy-policy/">Privacy</a>
-      </li>
-      <li>
-        <a href="https://www.healthcatalyst.com">HealthCatalyst.com</a>
-      </li>
-    </ul>
-  </div>
 </div>
 ```
 
@@ -115,45 +102,33 @@ The following example uses angular and cashmere and is the preffered method. It 
 
 ```html
 <div class="hc-login-container" style="background-image: url(../assets/login_bg.jpg)">
-  <div class="hc-login">
-    <div class="logo">
-      <img src="../assets/HC_logo.svg" alt="Health Catalyst Logo">
+    <div class="hc-login">
+        <div class="logo"><img src="../assets/HC_logo.svg" alt="Health Catalyst Logo" /></div>
+        <div>
+            <hc-form-field>
+                <hc-label>Email</hc-label>
+                <input hcInput required />
+            </hc-form-field>
+            <hc-form-field>
+                <hc-label>Password</hc-label>
+                <input type="password" hcInput required />
+            </hc-form-field>
+            <a href="#" class="forgot-password" hidden="hidden">Forgot Password</a> <button hc-button class="login-button">Log in</button>
+        </div>
+        <div class="privacy">
+            By signing in you agree to our <br />
+            <a href="#">Terms of Use</a> and <a href="#">Privacy Statement</a>
+        </div>
+        <div class="new-to-catalyst"><span>New to Health Catalyst?</span></div>
+        <a href="#" class="new-account">Create a new acount</a>
     </div>
-    <div>
-      <hc-form-field>
-        <hc-label>Email</hc-label>
-        <input hcInput required>
-      </hc-form-field>
-      <hc-form-field>
-        <hc-label>Password</hc-label>
-        <input type="password" hcInput required>
-      </hc-form-field>
-      <a href="#" class="forgot-password" hidden="hidden">Forgot Password</a>
-      <button hc-button class="login-button">Log in</button>
+    <div class="hc-login-footer">
+        <ul>
+            <li><a href="https://www.healthcatalyst.com/terms-conditions/"> Terms of Use </a></li>
+            <li><a href="https://www.healthcatalyst.com/privacy-policy/">Privacy</a></li>
+            <li><a href="https://www.healthcatalyst.com">HealthCatalyst.com</a></li>
+        </ul>
     </div>
-    <div class="privacy">By signing in you agree to our
-      <br>
-      <a href="#">Terms of Use</a> and
-      <a href="#">Privacy Statement</a>
-    </div>
-    <div class="new-to-catalyst">
-      <span>New to Health Catalyst?</span>
-    </div>
-    <a href="#" class="new-account">Create a new acount</a>
-  </div>
-  <div class="hc-login-footer">
-    <ul>
-      <li>
-        <a href="https://www.healthcatalyst.com/terms-conditions/"> Terms of Use </a>
-      </li>
-      <li>
-        <a href="https://www.healthcatalyst.com/privacy-policy/">Privacy</a>
-      </li>
-      <li>
-        <a href="https://www.healthcatalyst.com">HealthCatalyst.com</a>
-      </li>
-    </ul>
-  </div>
 </div>
 ```
 

@@ -35,6 +35,8 @@ _Please pay close attention to the naming conventions used here, otherwise your 
     ```
     {id: 'subnav', name: 'Subnav', examples: ['subnav-overview', 'format-hard-drive']},
     ```
+8. If you are creating an example to a new Cashmere component, make sure that the corresponding module is added to `src\app\shared\cashmere.module.ts`. The example build process will use this file to generate the `CashmereModule` for both the example modules as well as the StackBlitz project.
+9. Implement your example.
 
 ### Creating a more complex example
 

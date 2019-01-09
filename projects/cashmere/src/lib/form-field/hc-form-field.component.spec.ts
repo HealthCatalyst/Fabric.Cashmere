@@ -127,12 +127,10 @@ describe('HcFormFieldComponent', () => {
 @Component({
     template: `
         <hc-form-field>
-            <hc-label>{{inputLabel}}</hc-label>
-            <input hcInput
-                   [id]="inputId"
-                   [disabled]="isDisabled"
-                   [required]="isRequired">
-        </hc-form-field>`
+            <hc-label>{{ inputLabel }}</hc-label>
+            <input hcInput [id]="inputId" [disabled]="isDisabled" [required]="isRequired" />
+        </hc-form-field>
+    `
 })
 class SimpleInput {
     inputId: string | null = 'test-id';
@@ -143,18 +141,18 @@ class SimpleInput {
 
 @Component({
     template: `
-        <hc-form-field>
-            <input>
-        </hc-form-field>`
+        <hc-form-field> <input /> </hc-form-field>
+    `
 })
 class InputMissingHcInput {}
 
 @Component({
     template: `
         <hc-form-field>
-            <input hcInput [formControl]="formControl">
+            <input hcInput [formControl]="formControl" />
             <hc-error>Input is required</hc-error>
-        </hc-form-field>`
+        </hc-form-field>
+    `
 })
 class InputWithFormControl {
     formControl = new FormControl('', Validators.required);

@@ -29,9 +29,7 @@ The following code snippet leverages styles in the `about-modal.scss` stylesheet
         <div class="about-triflame"></div>
         <div>
             <img src="./assets/Cashmere_About.svg" class="about-app-title" alt="" />
-            <div class="about-version">
-                Version 5.0.0.0
-            </div>
+            <div class="about-version">Version 5.0.0.0</div>
         </div>
     </div>
     <div class="about-reference">
@@ -58,15 +56,13 @@ The following code snippet leverages styles in the `about-modal.scss` stylesheet
         </div>
     </div>
     <div class="about-footer">
-        Copyright 2018 <a href="https://www.healthcatalyst.com/">Health Catalyst</a>. All rights reserved
-        <br>
-        <a href="https://www.healthcatalyst.com/terms-conditions/">Terms and Conditions</a>  |  <a href="https://www.healthcatalyst.com/privacy-policy/">Privacy Policy</a>
+        Copyright 2018 <a href="https://www.healthcatalyst.com/">Health Catalyst</a>. All rights reserved <br />
+        <a href="https://www.healthcatalyst.com/terms-conditions/">Terms and Conditions</a> |
+        <a href="https://www.healthcatalyst.com/privacy-policy/">Privacy Policy</a>
     </div>
 </div>
-<hr>
-<div class="about-close-container">
-    <button hc-button class="about-close">Close</button>
-</div>
+<hr />
+<div class="about-close-container"><button hc-button class="about-close">Close</button></div>
 ```
 
 :::
