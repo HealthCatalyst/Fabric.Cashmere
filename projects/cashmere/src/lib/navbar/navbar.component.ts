@@ -62,52 +62,59 @@ export class NavbarComponent implements AfterViewInit {
     @HostListener('window:resize')
     _navResize() {
         this._navbarMore._hide();
-        this._moreList = [];
+        this._moreList = [];````````````````````````````````
 
         // If links is zero the page is smaller than the first responsive breakpoint
-        if (this.el.nativeElement.querySelector('.hc-navbar-link-container').clientWidth > 0) {
-            let navbarWidth: number = this.el.nativeElement.querySelector('.hc-navbar').scrollWidth;
-            let icons: number = this.el.nativeElement.querySelector('.hc-navbar-right-container').scrollWidth;
-            let more: number = 116;
-            let switcher: number = 55;
-            let links: number = this._linksMax;
-            if (this._logoWidth === 0) {
-                this._logoWidth = this.el.nativeElement.querySelector('.navbar-app').scrollWidth;
-            }
+        if (this.el.nativeElement.querySelector('.hc-navbar-link-container````````````````````````````````').clientWidth <= 0) {
+            return;
+        }
 
-            if (navbarWidth <= switcher + this._logoWidth + links + icons) {
-                this._logoCondense = true;
-                let tempArray = this._navLinks.toArray();
-                tempArray.reverse();
+        // Figure out all the relevant element widths
+        const navbarWidth: number = this.el.nativeElement.querySelector('.hc-navbar').scrollWidth;
+        const icons: number = this.el.nativeElement.querySelector('.hc-navbar-right-container').scrollWidth;
+        const more: number = 116;
+        const switcher: number = 55;
+        let links: number = this._linksMax;
+        if (this._logoWidth === 0) {
+            this._logoWidth = this.el.nativeElement.querySelector('.navbar-app').scrollWidth;
+        }
+        const logoWidth = this._logoWidth;
+        const condensedLogoWidth = logoWidth - 50;
+        const regularWidth = switcher + logoWidth + links + icons;
+        const condensedWidth = switcher + condensedLogoWidth + links + icons;
 
-                if (navbarWidth <= switcher + (this._logoWidth - 50) + links + icons) {
-                    this._collapse = true;
-                    tempArray[0].hide();
-                    links -= this._linkWidths[0];
-                    this._moreList.push({name: tempArray[0].linkText, uri: tempArray[0].uri});
+        if (navbarWidth <= regularWidth) {
+            this._logoCondense = true;
+            let tempArray = this._navLinks.toArray();
+            tempArray.reverse();
 
-                    for (let i = 1; i < tempArray.length; i++) {
-                        if (navbarWidth <= switcher + (this._logoWidth - 50) + links + more + icons) {
-                            tempArray[i].hide();
-                            links -= this._linkWidths[i];
-                            this._moreList.push({name: tempArray[i].linkText, uri: tempArray[i].uri});
-                        } else {
-                            tempArray[i].show();
-                        }
+            if (navbarWidth <= condensedWidth) {
+                this._collapse = true;
+                tempArray[0].hide();
+                links -= this._linkWidths[0];
+                this._moreList.push({name: tempArray[0].linkText, uri: tempArray[0].uri});
+
+                for (let i = 1; i < tempArray.length; i++) {
+                    if (navbarWidth <= switcher + condensedLogoWidth + links + icons + more) {
+                        tempArray[i].hide();
+                        links -= this._linkWidths[i];
+                        this._moreList.push({name: tempArray[i].linkText, uri: tempArray[i].uri});
+                    } else {
+                        tempArray[i].show();
                     }
-
-                    this._moreList.reverse();
-                } else {
-                    this._collapse = false;
-                    this._navLinks.forEach(t => t.show());
                 }
+
+                this._moreList.reverse();
             } else {
                 this._collapse = false;
-                this._logoCondense = false;
                 this._navLinks.forEach(t => t.show());
             }
-            this.ref.detectChanges();
+        } else {
+            this._collapse = false;
+            this._logoCondense = false;
+            this._navLinks.forEach(t => t.show());
         }
+        this.ref.detectChanges();
     }
 
     constructor(private el: ElementRef, private ref: ChangeDetectorRef) {}

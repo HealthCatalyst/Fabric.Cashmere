@@ -14,7 +14,7 @@ class TestHostComponent {
     @ViewChild(NavbarLinkComponent)
     public navbarLinkComponent: NavbarLinkComponent;
 }
-fdescribe('NavbarLinkComponent', () => {
+describe('NavbarLinkComponent', () => {
     let testHostComponent: TestHostComponent;
     let testHostFixture: ComponentFixture<TestHostComponent>;
 
@@ -37,7 +37,6 @@ fdescribe('NavbarLinkComponent', () => {
     it('should set inputs', () => {
         testHostComponent.navbarLinkComponent.uri = 'routerLink';
         testHostComponent.navbarLinkComponent.linkText = 'hello, I am a link';
-        //    testHostFixture.detectChanges();
         expect(testHostComponent.navbarLinkComponent.uri).toEqual('routerLink');
         expect(testHostComponent.navbarLinkComponent.linkText).toEqual('hello, I am a link');
         expect(testHostComponent.navbarLinkComponent.active).toBeFalsy();
