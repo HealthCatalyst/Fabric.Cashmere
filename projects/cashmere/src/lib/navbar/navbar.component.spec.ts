@@ -15,7 +15,7 @@ import {ListModule} from '../list/list.module';
             <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
             <hc-navbar-mobile-menu>
                 <hc-list>
-                    <hc-list-item routerLink="/home" routerLinkActive="active-link"> <span hcListLine>Home</span> </hc-list-item>
+                    <hc-list-item routerLink="/home" routerLinkActive="active-link"><span hcListLine>Home</span></hc-list-item>
                 </hc-list>
             </hc-navbar-mobile-menu>
         </hc-navbar>

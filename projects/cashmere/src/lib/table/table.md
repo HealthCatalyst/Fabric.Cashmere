@@ -17,9 +17,7 @@ The simplest way to provide data to the table is by passing a data array to the 
 input. The table will take the array and render a row for each object in the data array.
 
 ```html
-<table hc-table [dataSource]="”myDataArray”">
-    ...
-</table>
+<table hc-table [dataSource]="”myDataArray”">...</table>
 ```
 
 Since the table optimizes for performance, it will not automatically check for changes to the data
@@ -201,16 +199,14 @@ header and data row.
             (change)="$event ? masterToggle() : null"
             [checked]="selection.hasValue() && isAllSelected()"
             [indeterminate]="selection.hasValue() && !isAllSelected()"
-        >
-        </hc-checkbox>
+        ></hc-checkbox>
     </th>
     <td hc-cell *hcCellDef="let row">
         <hc-checkbox
             (click)="$event.stopPropagation()"
             (change)="$event ? selection.toggle(row) : null"
             [checked]="selection.isSelected(row)"
-        >
-        </hc-checkbox>
+        ></hc-checkbox>
     </td>
 </ng-container>
 ```
@@ -319,20 +315,20 @@ selectors. For example, `<table hc-table>` becomes `<hc-table>`; `<tr hc-row`> b
 <hc-table [dataSource]="dataSource">
     <!-- User name Definition -->
     <ng-container cdkColumnDef="username">
-        <hc-header-cell *cdkHeaderCellDef> User name </hc-header-cell>
-        <hc-cell *cdkCellDef="let row"> {{row.username}} </hc-cell>
+        <hc-header-cell *cdkHeaderCellDef>User name</hc-header-cell>
+        <hc-cell *cdkCellDef="let row">{{row.username}}</hc-cell>
     </ng-container>
 
     <!-- Age Definition -->
     <ng-container cdkColumnDef="age">
-        <hc-header-cell *cdkHeaderCellDef> Age </hc-header-cell>
-        <hc-cell *cdkCellDef="let row"> {{row.age}} </hc-cell>
+        <hc-header-cell *cdkHeaderCellDef>Age</hc-header-cell>
+        <hc-cell *cdkCellDef="let row">{{row.age}}</hc-cell>
     </ng-container>
 
     <!-- Title Definition -->
     <ng-container cdkColumnDef="title">
-        <hc-header-cell *cdkHeaderCellDef> Title </hc-header-cell>
-        <hc-cell *cdkCellDef="let row"> {{row.title}} </hc-cell>
+        <hc-header-cell *cdkHeaderCellDef>Title</hc-header-cell>
+        <hc-cell *cdkCellDef="let row">{{row.title}}</hc-cell>
     </ng-container>
 
     <!-- Header and Row Declarations -->

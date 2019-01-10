@@ -48,7 +48,7 @@ In addition to the help menu, all Heath Catalyst applications should also includ
         <hc-app-switcher-links></hc-app-switcher-links>
     </hc-navbar-mobile-menu>
     ...
-    <hc-popover-content #appSwitcher> <hc-app-switcher></hc-app-switcher> </hc-popover-content>
+    <hc-popover-content #appSwitcher><hc-app-switcher></hc-app-switcher></hc-popover-content>
 </hc-navbar>
 ```
 

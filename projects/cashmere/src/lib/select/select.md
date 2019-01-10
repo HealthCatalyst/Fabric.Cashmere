@@ -5,7 +5,10 @@ To add a label use an hc-label within a hc-form-field. If the select box is requ
 ```html
 <hc-form-field>
     <hc-label>Select your facility:</hc-label>
-    <hc-select required placeholder="Select a city:"> <option>Philadelphia</option> <option>Atlanta</option> </hc-select>
+    <hc-select required placeholder="Select a city:">
+        <option>Philadelphia</option>
+        <option>Atlanta</option>
+    </hc-select>
     <hc-error>Facility is required</hc-error>
 </hc-form-field>
 ```

@@ -19,8 +19,7 @@ export class TypeformWindow extends Window {
             data-submit-close-delay="0"
             target="_blank"
             rel="noopener"
-        >
-        </a>
+        ></a>
     `,
     styles: []
 })
