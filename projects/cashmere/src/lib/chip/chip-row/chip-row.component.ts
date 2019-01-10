@@ -4,9 +4,13 @@ import {parseBooleanAttribute} from '../../util';
 /** Supporting component to help with grouping chips into collections */
 @Component({
     selector: 'hc-chip-row',
-    template: `<div class="chip-row-contents" [ngClass]="{'single-row': !wrap}"><div>
-                    <div class="row-buffer"><ng-content></ng-content></div>
-                </div></div>`,
+    template: `
+        <div class="hc-chip-row-contents" [ngClass]="{'hc-chip-single-row': !wrap}">
+            <div>
+                <div class="hc-chip-row-buffer"><ng-content></ng-content></div>
+            </div>
+        </div>
+    `,
     styleUrls: ['../chip.component.scss'],
     encapsulation: ViewEncapsulation.None
 })

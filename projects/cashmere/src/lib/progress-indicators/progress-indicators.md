@@ -7,9 +7,9 @@ In some cases, like before the application is loaded, you may want to use the pr
 <div class="hc-spinner indeterminate-spin">
     <div class="spinner-layer spinner-blue spinner-base">
         <div class="circle base-circle"></div>
-        <div class="circle-clipper left"><div class="circle"></div>
-        </div><div class="gap-patch"><div class="circle"></div>
-        </div><div class="circle-clipper right"><div class="circle"></div></div>
+        <div class="circle-clipper left"><div class="circle"></div></div>
+        <div class="gap-patch"><div class="circle"></div></div>
+        <div class="circle-clipper right"><div class="circle"></div></div>
     </div>
 </div>
 
