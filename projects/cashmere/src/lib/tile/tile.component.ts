@@ -4,7 +4,9 @@ import {Component} from '@angular/core';
  * The tile will expand to the height and width of the content it contains. */
 @Component({
     selector: 'hc-tile',
-    template: `<ng-content></ng-content>`,
+    template: `
+        <ng-content></ng-content>
+    `,
     styleUrls: ['./tile.component.scss']
 })
 export class TileComponent {

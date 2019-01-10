@@ -3,7 +3,9 @@ import * as d3 from 'd3';
 
 @Component({
     selector: 'hc-demo-barchart',
-    template: `<div class="d3-bar-chart" #chart></div>`,
+    template: `
+        <div class="d3-bar-chart" #chart></div>
+    `,
     styleUrls: ['./barchart.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
