@@ -32,7 +32,7 @@ const cashmereModule = fs.readFileSync(path.join(__dirname, '../src/app/shared/c
 const exampleComponents: ExampleInfo[] = [];
 const exampleModules: ExampleModuleInfo[] = [];
 const exampleList = getExampleNames();
-prettier.resolveConfig.sync(path.join(__dirname, '../.prettierrc.json'));
+const prettierConfig = prettier.resolveConfig.sync(path.join(__dirname, '../.prettierrc.json'));
 
 //////////////////////////////////
 /// Generate Cashmere Examples ///
@@ -65,7 +65,7 @@ function cleanOutputDirectory() {
 function getStackBlitzProjectTemplateFiles() {
     fs.writeFileSync(
         path.join(projectTemplateRoot, 'src/app/cashmere.module.ts'),
-        prettier.format(cashmereModule, {filepath: 'cashmere.module.ts'})
+        prettier.format(cashmereModule, {...prettierConfig, filepath: 'cashmere.module.ts'})
     );
     return glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce(
         (prev, curr) => {
@@ -168,7 +168,7 @@ function generateStackBlitzFiles(exampleName: string) {
             // get formatted file contents
             const fullPath = path.join(examplesRoot, exampleName, curr);
             let content = fs.readFileSync(fullPath).toString();
-            prev[`src/app/${exampleName}/${curr}`] = prettier.format(content, {filepath: fullPath});
+            prev[`src/app/${exampleName}/${curr}`] = prettier.format(content, {...prettierConfig, filepath: fullPath});
 
             // if the file references any assets, include those too
             const assetPattern = /".\/assets\/([^"]+)"/g;
@@ -186,12 +186,12 @@ function generateStackBlitzFiles(exampleName: string) {
     );
 
     const allFiles = Object.assign({}, projectTemplateFiles, exampleFiles, {
-        'src/app/app.module.ts': prettier.format(appModuleContents, {filepath: 'app.module.ts'}),
-        'src/app/cashmere.module.ts': prettier.format(cashmereModule, {filepath: 'cashmere.module.ts'})
+        'src/app/app.module.ts': prettier.format(appModuleContents, {...prettierConfig, filepath: 'app.module.ts'}),
+        'src/app/cashmere.module.ts': prettier.format(cashmereModule, {...prettierConfig, filepath: 'cashmere.module.ts'})
     });
     fs.writeFileSync(
         path.join(outputRoot, `${exampleName}.json`),
-        prettier.format(JSON.stringify(allFiles, null, 2), {filepath: `${exampleName}.json`})
+        prettier.format(JSON.stringify(allFiles, null, 2), {...prettierConfig, filepath: `${exampleName}.json`})
     );
 }
 
@@ -225,14 +225,17 @@ export class ExampleModule {}
 `;
     fs.writeFileSync(
         path.join(examplesRoot, 'examples.generated.module.ts'),
-        prettier.format(examplesModule, {filepath: 'examples.generated.module.ts'})
+        prettier.format(examplesModule, {...prettierConfig, filepath: 'examples.generated.module.ts'})
     );
 }
 
 function generateCashmereModule() {
     fs.writeFileSync(
         path.join(examplesRoot, 'cashmere.generated.module.ts'),
-        prettier.format(`/* This file is auto-generated; do not change! */\r\n${cashmereModule}`, {filepath: 'cashmere.module.ts'})
+        prettier.format(`/* This file is auto-generated; do not change! */\r\n${cashmereModule}`, {
+            ...prettierConfig,
+            filepath: 'cashmere.module.ts'
+        })
     );
 }
 

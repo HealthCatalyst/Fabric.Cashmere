@@ -1,1 +1,7 @@
+$fa-font-path: 'node_modules/font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome';
+
+$FontPathOpenSans: 'node_modules/npm-font-open-sans/fonts';
+@import '~npm-font-open-sans/open-sans';
+
 @import '~@healthcatalyst/cashmere/scss/cashmere';
