@@ -1,0 +1,19 @@
+<button hc-button title="Basic Link Button" buttonStyle="link">Basic Link Button</button>
+<br><br>
+<p>
+    This is an example of an inline <button hc-button title="Link Button" buttonStyle="link-inline">button link</button>.
+</p>
+<br>
+<p>
+    Below is an example of a link style button as a dropdown label:<br><br>
+    <button hc-button title="Date Range" buttonStyle="link" [hcPopover]="example" popperPlacement="bottom">
+        <span class="label">Date Range:</span>
+        <span class="value">
+            <span class="hc-font-bold">Last Month</span> (9/3/17 - 10/3/17)
+        </span>
+        <hc-icon fontSet="fa" fontIcon="fa-chevron-down" hcIconSm></hc-icon>
+    </button>
+</p>
+<hc-popover-content #example>
+    <p>This might contain a date picker, a list of values, input boxes, etc</p>
+</hc-popover-content>

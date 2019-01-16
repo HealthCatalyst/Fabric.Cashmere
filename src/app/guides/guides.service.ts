@@ -38,6 +38,11 @@ export class GuidesService {
             title: 'Using and Customizing Components',
             route: 'using-customizing-components',
             document: require('raw-loader!../../../guides/using-and-customizing-components.md')
+        },
+        {
+            title: 'Working with Examples',
+            route: 'working-with-examples',
+            document: require('raw-loader!../../../guides/working-with-examples.md')
         }
     ];
 }

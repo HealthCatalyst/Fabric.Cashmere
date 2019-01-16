@@ -1,16 +1,16 @@
 <div class="hc-tile">
-    <h3 class="docs-api-h3">{{exampleTitle}}</h3>
+    <div class="header">
+        <h3 class="docs-api-h3">{{ exampleTitle }}</h3>
+        <button hc-button buttonStyle="minimal" size="md" (click)="launchStackBlitz()">
+            <hc-icon fontSet="fa" fontIcon="fa-edit" class="icon-left"></hc-icon>
+            Edit on StackBlitz
+        </button>
+    </div>
     <hc-tab-set direction="horizontal">
-        <hc-tab [tabTitle]="ext" *ngFor="let ext of ['Example', 'HTML', 'Typescript', 'CSS']">
-
-            <div class="example-buffer" *ngIf="ext == 'Example'"></div>
-
-            <ng-container #vc></ng-container>
-
-            <pre class="html hljs xml" *ngIf="ext != 'Example'">
-                <hc-doc-viewer [documentUrl]="exampleFileUrl(ext)">
-                </hc-doc-viewer>
-            </pre>
+        <hc-tab tabTitle="Example"><div class="example-container" #exampleContainer></div></hc-tab>
+        <hc-tab *ngFor="let file of exampleFiles" [tabTitle]="getTabTitle(file.name)" class="example-code-tab">
+            <h4>{{ example }}-{{ file.name }}</h4>
+            <pre> <code [highlight]="file.contents" ></code> </pre>
         </hc-tab>
     </hc-tab-set>
 </div>

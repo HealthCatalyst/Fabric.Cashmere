@@ -22,3 +22,8 @@ Run `npm i --save @wcf-insurance/cashmere`.
 ## Running the Demo App
 
 Run `npm run build && ng serve user-guide` to serve the demo application on port 4200.
+
+## Sponsors
+
+Thanks to [BrowserStack](http://www.browserstack.com) for kindly providing the project with free of charge automatic testing time.
+![BrowserStack](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/Browserstack-logo@2x.png)

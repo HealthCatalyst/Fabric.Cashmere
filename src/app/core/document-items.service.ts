@@ -9,6 +9,7 @@ export interface DocItem {
 
 const docs: DocItem[] = [
     {id: 'accordion', name: 'Accordion', examples: ['accordion-overview']},
+    {id: 'banner', name: 'Banner', examples: ['banner-overview']},
     {id: 'breadcrumbs', name: 'Breadcrumbs', usageDoc: true},
     {
         id: 'button',
