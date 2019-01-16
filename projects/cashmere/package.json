@@ -2,7 +2,7 @@
     "name": "@wcf-insurance/cashmere",
     "version": "0.0.0-development",
     "license": "Apache-2.0",
-    "description": "Reusable Health Catalyst Components",
+    "description": "Reusable UI Components for WCF Insurance",
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
     },
