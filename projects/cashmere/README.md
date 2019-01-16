@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/WCF-Insurance/WCF-Cashmere/badge.svg?branch=master)](https://coveralls.io/github/WCF-Insurance/WCF-Cashmere?branch=master)
 ![Cashmere Banner](https://raw.githubusercontent.com/WCF-Insurance/WCF-Cashmere/master/CashmereBanner.png)
 
-An Angular component library that makes any task feel luxurious.
+An Angular component library that makes any task feel luxurious. WCF Insurance has based our library off of Health Catalysts Cashmere library.
 
 ## Quick Links
 
@@ -14,17 +14,15 @@ An Angular component library that makes any task feel luxurious.
 -   [Submit an Issue](https://wcf-insurance.github.io/guides/submit-an-issue)
 -   [Supported Browsers](https://wcf-insurance.github.io/guides/supported-browsers)
 
-## Installin
+## Installing
 
 Run `npm i --save @wcf-insurance/cashmere`.
 
-## Adding a new Component
+## Running the Demo App
 
-<ul>
-<li>to create a new component in Cashmere</li>
-<li>navigate to WCFCashmere folder</li>
-<li>ng generate component (NameOfComponent) --project=cashmere</li>
-<li>ng build --prod cashmere (Build the library again)</li>
-<li>add html tag to app.component.html</li>
-<li>ng serve to test it.</li>
-</ul>
+Run `npm run build && ng serve user-guide` to serve the demo application on port 4200.
+
+## Sponsors
+
+Thanks to [BrowserStack](http://www.browserstack.com) for kindly providing the project with free of charge automatic testing time.
+![BrowserStack](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/Browserstack-logo@2x.png)
