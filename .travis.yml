@@ -26,6 +26,8 @@ jobs:
         skip_cleanup: true
         github-token: $GITHUB_TOKEN
         local-dir: dist/user-guide
+        repo: WCF-Insurance/WCF-Insurance.github.io
+        target-branch: master
         on:
           branch: master
 
