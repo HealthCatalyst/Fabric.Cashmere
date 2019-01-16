@@ -20,6 +20,3 @@ npx semantic-release
 
 # Copy redirection error page for Github Pages
 cp dist/user-guide/index.html dist/user-guide/404.html
-
-# Redirect Cashmere Url to CNAME file
-echo $CASHMERE_URL > dist/user-guide/CNAME
