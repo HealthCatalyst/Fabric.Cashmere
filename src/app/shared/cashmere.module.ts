@@ -24,7 +24,7 @@ import {
     TileModule,
     ToasterModule,
     TypeformSurveyModule
-} from '@wcf/cashmere';
+} from '@wcf-insurance/cashmere';
 import {AppSwitcherServiceModule} from './app-switcher-service.module';
 
 @NgModule({

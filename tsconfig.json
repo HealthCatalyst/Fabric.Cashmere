@@ -13,8 +13,8 @@
         "typeRoots": ["node_modules/@types"],
         "lib": ["es2017", "dom"],
         "paths": {
-            "@wcf/cashmere": ["dist/cashmere"],
-            "@wcf/cashmere-examples": ["dist/cashmere-examples"]
+            "@wcf-insurance/cashmere": ["dist/cashmere"],
+            "@wcf-insurance/cashmere-examples": ["dist/cashmere-examples"]
         }
     }
 }

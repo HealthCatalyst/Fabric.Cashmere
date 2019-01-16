@@ -5,7 +5,7 @@
     "lib": {
         "entryFile": "src/public_api.ts",
         "umdModuleIds": {
-            "@wcf/cashmere": "@wcf/cashmere"
+            "@wcf-insurance/cashmere": "@wcf-insurance/cashmere"
         }
     }
 }

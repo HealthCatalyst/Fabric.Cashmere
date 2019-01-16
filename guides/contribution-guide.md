@@ -14,10 +14,10 @@ We would love for you to contribute to Cashmere and be part of the community mak
 #### Setup Environment
 
 1.  Install the latest version of `node` with at _least_ version 8.9.
-2.  Fork the `@healthcatalyst/cashmere` repo.
+2.  Fork the `@wcf-insurance/cashmere` repo.
 3.  Run `npm install -g commitizen`, which helps you with writing angular style commit messages.
 4.  Clone your fork.
-    Recommendation: name your git remotes `upstream` for `@healthcatalyst/cashmere`
+    Recommendation: name your git remotes `upstream` for `@wcf-insurance/cashmere`
 5.  From the root of the project, run `npm install`.
 6.  Running `npm run build` will build the entire project
 7.  `ng serve` will serve the default project which is `user-guide`

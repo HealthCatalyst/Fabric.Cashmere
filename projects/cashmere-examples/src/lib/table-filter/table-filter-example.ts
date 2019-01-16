@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HcTableDataSource} from '@wcf/cashmere';
+import {HcTableDataSource} from '@wcf-insurance/cashmere';
 
 export interface PeriodicElement {
     name: string;
