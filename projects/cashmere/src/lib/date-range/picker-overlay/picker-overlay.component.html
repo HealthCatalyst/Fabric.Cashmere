@@ -1,0 +1,37 @@
+<div class="hc-date-range-calendar-container">
+    <div class="hc-date-range-calendar-item">
+        <hc-calendar-wrapper
+            [prefixLabel]="startDatePrefix"
+            [selectedDate]="fromDate"
+            [minDate]="fromMinDate"
+            [maxDate]="fromMaxDate"
+            (selectedDateChange)="updateFromDate($event)"
+        >
+        </hc-calendar-wrapper>
+    </div>
+    <div class="hc-date-range-calendar-item">
+        <hc-calendar-wrapper
+            [prefixLabel]="endDatePrefix"
+            [selectedDate]="toDate"
+            [minDate]="toMinDate"
+            [maxDate]="toMaxDate"
+            (selectedDateChange)="updateToDate($event)"
+        >
+        </hc-calendar-wrapper>
+    </div>
+    <div class="hc-date-range-calendar-item">
+        <div class="hc-date-range-menu">
+            <hc-radio-group (change)="updateRangeByPreset($event)" [(ngModel)]="selectedPreset">
+                <hc-radio-button *ngFor="let p of presets" [value]="p.range">{{p.presetLabel}}</hc-radio-button>
+            </hc-radio-group>
+            <div class="hc-date-range-controls">
+                <button hc-button buttonStyle="link" type="button" (click)="discardNewDates($event)">
+                    {{ cancelLabel }}
+                </button>
+                <button hc-button buttonStyle="primary" type="button" [disabled]="_disabled" (click)="applyNewDates()">
+                    {{ applyLabel }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

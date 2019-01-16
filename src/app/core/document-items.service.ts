@@ -28,6 +28,16 @@ const docs: DocItem[] = [
         examples: ['chip-basic', 'chip-action', 'chip-row', 'chip-singlerow']
     },
     {
+        id: 'datepicker',
+        name: 'Datepicker',
+        examples: ['datepicker']
+    },
+    {
+        id: 'date-range',
+        name: 'DateRange',
+        examples: ['date-range']
+    },
+    {
         id: 'drawer',
         name: 'Drawer',
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
