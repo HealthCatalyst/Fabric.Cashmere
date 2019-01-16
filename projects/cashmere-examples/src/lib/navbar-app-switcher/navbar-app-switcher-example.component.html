@@ -1,0 +1,52 @@
+<hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" [homeUri]="undefined" [fixedTop]="false">
+    <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Pediatric"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Rehabilition"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
+    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-th" [hcPopover]="appSwitcher" popperPlacement="bottom"></hc-icon>
+    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-question-circle-o" [hcPopover]="options" popperPlacement="bottom"></hc-icon>
+    <span class="hc-navbar-vertical-separator"></span>
+    <div class="hc-navbar-username" *ngIf="user" [hcPopover]="user" popperPlacement="bottom">
+        <span class="hc-text-ellipsis">{{ username }}</span>
+        <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
+    </div>
+    <hc-navbar-mobile-menu>
+        <hc-list>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link"><span hcListLine>Home</span></hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link"><span hcListLine>Oncology</span></hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link"><span hcListLine>Surgery</span></hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link"><span hcListLine>Pediatric</span></hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link"><span hcListLine>Cardiovascular</span></hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link"><span hcListLine>Rehabilition</span></hc-list-item>
+            <hc-list-item routerLink="undefined" routerLinkActive="active-link"><span hcListLine>Intensive Care</span></hc-list-item>
+        </hc-list>
+        <hr />
+        <hc-list>
+            <a href="https://github.com/WCF-Insurance/WCF-Cashmere">
+                <hc-list-item><span hcListLine>View on GitHub</span></hc-list-item>
+            </a>
+        </hc-list>
+        <hc-app-switcher-links></hc-app-switcher-links>
+    </hc-navbar-mobile-menu>
+</hc-navbar>
+
+<hc-popover-content #appSwitcher><hc-app-switcher></hc-app-switcher></hc-popover-content>
+
+<hc-popover-content #options>
+    <ul class="list-options">
+        <li><a href="" target="_blank">Help Topics</a></li>
+        <li><a href="" target="_blank">Release Notes</a></li>
+        <li><a href="" target="_blank">About</a></li>
+        <li><a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a></li>
+        <li><a href="" target="_blank">Send us your feedback</a></li>
+    </ul>
+</hc-popover-content>
+
+<hc-popover-content #user>
+    <ul class="list-options">
+        <li><a href="" target="_blank">Logout</a></li>
+    </ul>
+</hc-popover-content>

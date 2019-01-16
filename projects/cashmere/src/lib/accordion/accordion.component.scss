@@ -33,15 +33,17 @@ $accordion-toolbar-padding: 0 10px;
         cursor: pointer;
 
         &::after {
-            display: block;
-            transform: translate(-50%, 2px) rotate(46deg);
-            border-top: 2px solid;
-            border-left: 2px solid;
-            left: 50%;
             content: '';
-            width: 8px;
-            height: 8px;
-            position: relative;
+            transform: rotate(180deg);
+            display: block;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNi45NzgiIGhlaWdodD0iMTcuMzE5IiB2aWV3Qm94PSIwIDAgMjYuOTc4IDE3LjMxOSI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogIzAwYWVmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBhdGggaWQ9IlBhdGhfNSIgZGF0YS1uYW1lPSJQYXRoIDUiIGNsYXNzPSJjbHMtMSIgZD0iTTI4LjE3NS0xMi4xODhhMS4wODEsMS4wODEsMCwwLDAsMC0xLjUyM0wyNS40LTE2LjQ3M2ExLjA2MSwxLjA2MSwwLDAsMC0xLjUwNywwTDE1LTcuNTg0bC04Ljg5LTguODlhMS4wNjEsMS4wNjEsMCwwLDAtMS41MDcsMEwxLjgyNS0xMy43MTFhMS4wODEsMS4wODEsMCwwLDAsMCwxLjUyM0wxNC4yNDcuMjE4YTEuMDYxLDEuMDYxLDAsMCwwLDEuNTA3LDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMS41MTEgMTYuNzg3KSIvPgo8L3N2Zz4K');
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 13px;
+            height: 8.5px;
+            pointer-events: none;
+            box-sizing: border-box;
+            margin-top: 2px;
         }
     }
 
@@ -53,7 +55,7 @@ $accordion-toolbar-padding: 0 10px;
     &.hc-accordion-closed,
     &.hc-accordion-closing {
         .hc-accordion-trigger::after {
-            transform: translate(-50%, -2px) rotate(-134deg);
+            transform: rotate(0deg);
         }
     }
 }

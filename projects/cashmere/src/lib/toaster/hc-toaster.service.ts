@@ -6,6 +6,8 @@ import {HcToastOptions} from './hc-toast-options';
 import {HcToastRef} from './hc-toast-ref';
 import {filter, take} from 'rxjs/operators';
 
+/** Toasts provide users with instant feedback on actions they've taken. For more general information,
+ * use a `hc-banner`. */
 @Injectable()
 export class HcToasterService {
     _toasts: HcToastRef[] = [];
@@ -91,19 +93,21 @@ export class HcToasterService {
         // Set the timeout interval to close the toast if non-zero
         if (options.timeout !== 0) {
             setTimeout(() => {
-                this._removeToastPointer(_toastRef);
-                _toastRef.close();
-                if (options.toastClosed) {
-                    options.toastClosed();
+                if (_toastRef._componentInstance) {
+                    this._removeToastPointer(_toastRef);
+                    _toastRef.close();
+                    if (options.toastClosed) {
+                        options.toastClosed();
+                    }
+                    _toastRef._componentInstance._animationStateChanged
+                        .pipe(
+                            filter(event => event.phaseName === 'done' && event.toState === 'leave'),
+                            take(1)
+                        )
+                        .subscribe(() => {
+                            this._updateToastPositions();
+                        });
                 }
-                _toastRef._componentInstance._animationStateChanged
-                    .pipe(
-                        filter(event => event.phaseName === 'done' && event.toState === 'leave'),
-                        take(1)
-                    )
-                    .subscribe(() => {
-                        this._updateToastPositions();
-                    });
             }, options.timeout);
         }
 

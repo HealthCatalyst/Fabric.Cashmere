@@ -5,7 +5,7 @@ To add a label use an hc-label within a hc-form-field. If the input is required 
 ```html
 <hc-form-field>
     <hc-label>Validate an email address</hc-label>
-    <input hcInput [formControl]="formDemo" required>
+    <input hcInput [formControl]="formDemo" required />
     <hc-error>Email address is required</hc-error>
 </hc-form-field>
 ```
@@ -16,7 +16,7 @@ Icons may be included in an input box to indicate its function. Use a `hc-icon` 
 
 ```html
 <hc-form-field>
-    <input hcInput placeholder="Enter username">
+    <input hcInput placeholder="Enter username" />
     <hc-icon hcSuffix fontSet="fa" fontIcon="fa-user-circle-o"></hc-icon>
 </hc-form-field>
 ```
