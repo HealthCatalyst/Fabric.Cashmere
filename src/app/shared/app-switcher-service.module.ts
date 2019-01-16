@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
-import {of, Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 
-import {IDiscoveryRequest, IDiscoveryApplication, APP_SWITCHER_SERVICE} from '@healthcatalyst/cashmere';
+import {APP_SWITCHER_SERVICE, IDiscoveryApplication, IDiscoveryRequest} from '@wcf/cashmere';
 
 // prettier-ignore
 // tslint:disable-next-line:max-line-length

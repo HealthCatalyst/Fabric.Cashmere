@@ -24,7 +24,7 @@ import {
     TileModule,
     ToasterModule,
     TypeformSurveyModule
-} from '@healthcatalyst/cashmere';
+} from '@wcf/cashmere';
 import {AppSwitcherServiceModule} from './app-switcher-service.module';
 
 @NgModule({

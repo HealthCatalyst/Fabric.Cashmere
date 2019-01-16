@@ -1,5 +1,5 @@
 import {Component, TemplateRef} from '@angular/core';
-import {HcToasterService, HcToastOptions, HcToastRef} from '@healthcatalyst/cashmere';
+import {HcToasterService, HcToastOptions, HcToastRef} from '@wcf/cashmere';
 
 /**
  * @title Toaster Messages overview

@@ -26,7 +26,7 @@ import {
     TileModule,
     ToasterModule,
     TypeformSurveyModule
-} from '@healthcatalyst/cashmere';
+} from '@wcf/cashmere';
 
 @NgModule({
     imports: [

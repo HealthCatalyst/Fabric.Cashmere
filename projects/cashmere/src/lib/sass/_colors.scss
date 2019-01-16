@@ -4,6 +4,9 @@ $green: #00a859;
 $purple: #6e53a3;
 $red: #f13c45;
 $orange: #f8961d;
+$wcf-red: #ba160a;
+$wcf-blue: #719ebc;
+$wcf-error: #f12e49;
 
 // Neutral Palette
 $white: #fff;
@@ -47,9 +50,9 @@ $yellow-orange: #e7c447;
 
 // General Color Vars
 $primary-brand: $blue;
-$primary-action: $green;
-$primary-alt-action: $purple;
-$destructive-action: $red;
+$primary-action: $wcf-red;
+$primary-alt-action: $wcf-blue;
+$destructive-action: $wcf-error;
 $neutral-action: $gray-500;
 $error: $deep-red;
 $text: $offblack;

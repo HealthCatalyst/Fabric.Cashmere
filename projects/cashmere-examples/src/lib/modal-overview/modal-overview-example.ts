@@ -1,6 +1,6 @@
 /* tslint:disable:no-use-before-declare */
 
-import {ActiveModal, HcModal, ModalOptions, ModalService} from '@healthcatalyst/cashmere';
+import {ActiveModal, HcModal, ModalOptions, ModalService} from '@wcf/cashmere';
 import {Component, TemplateRef} from '@angular/core';
 
 /**

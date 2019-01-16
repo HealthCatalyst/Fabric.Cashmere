@@ -69,7 +69,7 @@ The app switcher service must be setup in order for the application switcher to 
 
 ```Typescript
 import { NavbarModule, AppSwitcherModule, IconModule, PopoverModule, ListModule,
-    SelectModule } from '@healthcatalyst/cashmere';
+    SelectModule } from '@wcf/cashmere';
 
 @NgModule({
     imports: [
@@ -95,7 +95,7 @@ import {
     SelectModule,
     APP_SWITCHER_SERVICE,
     IDiscoveryRequest
-} from '@healthcatalyst/cashmere';
+} from '@wcf/cashmere';
 import { of, Observable } from 'rxjs';
 
 const applications: IDiscoveryRequest = {

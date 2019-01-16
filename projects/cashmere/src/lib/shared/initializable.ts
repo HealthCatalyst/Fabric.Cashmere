@@ -1,7 +1,7 @@
 import {Subscriber, Observable} from 'rxjs';
 
 /** Abstract class for common initialization functionality */
-export abstract class Initailizable {
+export abstract class Initializable {
     /** Whether this directive has been marked as initialized. */
     _isInitialized = false;
 

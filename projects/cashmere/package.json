@@ -1,14 +1,14 @@
 {
-    "name": "@healthcatalyst/cashmere",
+    "name": "@wcf/cashmere",
     "version": "0.0.0-development",
     "license": "Apache-2.0",
     "description": "Reusable Health Catalyst Components",
     "publishConfig": {
-        "registry": "https://registry.npmjs.org/"
+        "registry": "http://10.1.0.104:8081/repository/npm-web/"
     },
     "repository": {
         "type": "Git",
-        "url": "https://github.com/HealthCatalyst/Fabric.Cashmere"
+        "url": "https://github.com/WCF-Insurance/WCF-Cashmere.git"
     },
     "main": "./bundles/cashmere.umd.js",
     "module": "./esm5/cashmere.js",

@@ -1,11 +1,14 @@
 {
-    "name": "cashmere-examples",
+    "name": "@wcf/cashmere-examples",
     "version": "0.0.1",
     "main": "./bundles/cashmere-examples.umd.js",
     "module": "./esm5/cashmere-examples.js",
     "es2015": "./esm2015/cashmere-examples.js",
     "jsnext": "./esm2015/cashmere-examples.js",
     "typings": "./cashmere-examples.d.ts",
+    "publishConfig": {
+        "registry": "http://10.1.0.104:8081/repository/npm-web/"
+    },
     "peerDependencies": {
         "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
         "@angular/core": "^6.0.0-rc.0 || ^6.0.0"

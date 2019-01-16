@@ -1,5 +1,5 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {ModalOptions, ModalService} from '@healthcatalyst/cashmere';
+import {ModalOptions, ModalService} from '@wcf/cashmere';
 
 @Component({
     selector: 'hc-chart-demo',
