@@ -17,7 +17,7 @@ An Angular component library that makes any task feel luxurious. WCF Insurance h
 
 ## Installing
 
-Run `npm i --save @healthcatalyst/cashmere`.
+Run `npm i --save @wcf-insurance/cashmere`.
 
 ## Running the Demo App
 

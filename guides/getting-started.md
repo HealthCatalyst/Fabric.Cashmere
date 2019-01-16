@@ -9,7 +9,7 @@
 #### Step 1. Install the npm module.
 
 ```BASH
-npm i --save @healthcatalyst/cashmere
+npm i --save @wcf-insurance/cashmere
 ```
 
 #### Install peer dependencies on [Popper.js](https://popper.js.org/), [@angular/cdk](https://material.angular.io/cdk), [Font Awesome](https://fontawesome.com), and [Open Sans](https://fonts.google.com/specimen/Open+Sans) (optional).
@@ -24,7 +24,7 @@ Create a module that will hold the Cashmere components that your app will need. 
 
 ```typescript
 import {NgModule} from '@angular/core';
-import {BreadcrumbsModule, ButtonModule, CheckboxModule, IconModule} from '@healthcatalyst/cashmere';
+import {BreadcrumbsModule, ButtonModule, CheckboxModule, IconModule} from '@wcf-insurance/cashmere';
 
 @NgModule({
     exports: [BreadcrumbsModule, ButtonModule, CheckboxModule, IconModule]
@@ -50,7 +50,7 @@ Anywhere you import the Shared module, all of the Cashmere components will be ma
 Import baseline scss file into your app's global style sheet `(src/styles.scss)`
 
 ```
-@import "~@healthcatalyst/cashmere/scss/cashmere";
+@import "~@wcf-insurance/cashmere/scss/cashmere";
 ```
 
 #### Step 4. Add references to dependencies.
