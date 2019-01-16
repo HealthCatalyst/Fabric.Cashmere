@@ -1,0 +1,145 @@
+@import '../../sass/colors';
+@import '../../sass/mixins';
+// @import '../core/style/layout-common';
+
+$hc-calendar-padding: 8px !default;
+$hc-calendar-header-divider-width: 2px !default;
+$hc-calendar-controls-vertical-padding: 5%;
+// We use the same padding as the month / year label, but subtract 16px since there is padding
+// between the edge of the button and the text. This ensures that the button text lines up with
+// the month / year label text.
+$hc-calendar-controls-side-margin: calc(33% / 7 - 16px);
+
+$hc-calendar-arrow-size: 5px !default;
+$hc-calendar-arrow-disabled-opacity: 0.5 !default;
+
+// Values chosen to approximate https://material.io/icons/#ic_navigate_before and
+// https://material.io/icons/#ic_navigate_next as closely as possible.
+$hc-calendar-prev-next-icon-border-width: 2px;
+$hc-calendar-prev-next-icon-margin: 15.5px;
+$hc-calendar-prev-icon-transform: translateX(2px) rotate(-45deg);
+$hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
+
+.hc-calendar {
+    display: block;
+}
+
+.hc-calendar-header {
+    padding: $hc-calendar-padding $hc-calendar-padding 0 $hc-calendar-padding;
+}
+
+.hc-calendar-content {
+    padding: 0 $hc-calendar-padding $hc-calendar-padding $hc-calendar-padding;
+    outline: none;
+}
+
+.hc-calendar-controls {
+    display: flex;
+    margin: $hc-calendar-controls-vertical-padding $hc-calendar-controls-side-margin;
+}
+
+.hc-calendar-spacer {
+    flex: 1 1 auto;
+}
+
+.hc-calendar-period-button.hc-md.hc-button.hc-link {
+    min-width: 0;
+    padding: 10px;
+    min-width: inherit;
+}
+
+.hc-calendar-arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: $hc-calendar-arrow-size solid transparent;
+    border-right: $hc-calendar-arrow-size solid transparent;
+    border-top-width: $hc-calendar-arrow-size;
+    border-top-style: solid;
+    margin: 0 0 0 $hc-calendar-arrow-size;
+    vertical-align: middle;
+
+    &.hc-calendar-invert {
+        transform: rotate(180deg);
+    }
+
+    [dir='rtl'] & {
+        margin: 0 $hc-calendar-arrow-size 0 0;
+    }
+}
+
+.hc-calendar-previous-button.hc-md.hc-button.hc-link,
+.hc-calendar-next-button.hc-md.hc-button.hc-link {
+    position: relative;
+    min-width: inherit;
+    height: 40px;
+    width: 40px;
+    padding: 0px;
+
+    &::after {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        content: '';
+        margin: $hc-calendar-prev-next-icon-margin;
+        border: 0 solid currentColor;
+        border-top-width: $hc-calendar-prev-next-icon-border-width;
+    }
+
+    [dir='rtl'] & {
+        transform: rotate(180deg);
+    }
+}
+
+.hc-calendar-previous-button::after {
+    border-left-width: $hc-calendar-prev-next-icon-border-width !important;
+    transform: $hc-calendar-prev-icon-transform;
+}
+
+.hc-calendar-next-button::after {
+    border-right-width: $hc-calendar-prev-next-icon-border-width !important;
+    transform: $hc-calendar-next-icon-transform;
+}
+
+.hc-calendar-today-button.hc-md.hc-button.hc-link {
+    font-weight: 600;
+    color: $primary-brand;
+    @include fontSize(12px);
+    min-width: inherit;
+    padding: 2px 0 0 0;
+    vertical-align: baseline;
+}
+
+.hc-calendar-table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.hc-calendar-table-header th {
+    text-align: center;
+    padding: 0 0 $hc-calendar-padding 0;
+}
+
+.hc-calendar-table-header-divider {
+    position: relative;
+    height: $hc-calendar-header-divider-width;
+
+    // We use an absolutely positioned pseudo-element as the divider line for the table header so we
+    // can extend it all the way to the edge of the calendar.
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: $hc-calendar-header-divider-width;
+    }
+}
+
+.hc-calendar-table-header th {
+    @include fontSize(9px);
+    color: $gray-500;
+}

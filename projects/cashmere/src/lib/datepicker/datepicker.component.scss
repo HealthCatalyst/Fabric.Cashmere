@@ -1,0 +1,301 @@
+@import '../sass/colors';
+@import '../sass/typography';
+@import '../sass/functions';
+@import '../sass/mixins';
+
+
+.hc-datepicker-content {
+    width: 296px;
+    height: 354px;
+}
+
+.hc-datepicker-header {
+    display: flex;
+    align-items: center;
+    width: 262px;
+    border-bottom: 2px solid #e0e0e0;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.hc-datepicker-header-left {
+    margin-right: auto 4px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hc-datepicker-header-right {
+    margin-left: auto;
+    margin-right: 5px;
+    display: flex;
+}
+
+.hc-datepicker-header-text {
+    @include fontSize(14px);
+    color: $gray-500;
+}
+
+.hc-datepicker-header-chevron {
+    margin-left: 8px;
+    width: 11px;
+    height: 8px;
+    display: inline-flex;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMSA3LjA2MSI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogIzAwYWVmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBhdGggaWQ9IlBhdGhfMTMiIGRhdGEtbmFtZT0iUGF0aCAxMyIgY2xhc3M9ImNscy0xIiBkPSJNMTEuNDc2LTQuODM5YS40NDEuNDQxLDAsMCwwLDAtLjYyMUwxMC4zNDMtNi41ODdhLjQzMy40MzMsMCwwLDAtLjYxNCwwTDYuMS0yLjk2MiwyLjQ4LTYuNTg3YS40MzMuNDMzLDAsMCwwLS42MTQsMEwuNzMyLTUuNDYxYS40NDEuNDQxLDAsMCwwLDAsLjYyMUw1LjguMjE5YS40MzMuNDMzLDAsMCwwLC42MTQsMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjYwNCA2LjcxNSkiLz4KPC9zdmc+Cg==');
+}
+
+.hc-datepicker-header-chevron-up {
+    margin-left: 8px;
+    width: 11px;
+    height: 8px;
+    display: inline-flex;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMSA3LjA2MSI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogIzAwYWVmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBhdGggaWQ9ImNoZXZyb24iIGNsYXNzPSJjbHMtMSIgZD0iTTExLjQ3Ni00LjgzOWEuNDQxLjQ0MSwwLDAsMCwwLS42MjFMMTAuMzQzLTYuNTg3YS40MzMuNDMzLDAsMCwwLS4zMDctLjEyOC40MzMuNDMzLDAsMCwwLS4zMDcuMTI4TDYuMS0yLjk2MiwyLjQ4LTYuNTg3YS40MzMuNDMzLDAsMCwwLS4zMDctLjEyOC40MzMuNDMzLDAsMCwwLS4zMDcuMTI4TC43MzItNS40NjFhLjQ0MS40NDEsMCwwLDAsMCwuNjIxTDUuOC4yMTlhLjQzMy40MzMsMCwwLDAsLjMwNy4xMjhBLjQzMy40MzMsMCwwLDAsNi40MTQuMjE5WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTEuNjA0IDAuMzQ3KSByb3RhdGUoMTgwKSIvPgo8L3N2Zz4K');
+}
+
+.hc-datepicker-header-button {
+    cursor: pointer;
+    padding: 9px;
+}
+
+.hc-datepicker-header-leftButton {
+    width: 7px;
+    height: 12px;
+    display: inline-flex;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3IDEyIj4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjMDBhZWZmOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cGF0aCBpZD0iUGF0aF8xNiIgZGF0YS1uYW1lPSJQYXRoIDE2IiBjbGFzcz0iY2xzLTEiIGQ9Ik03LjU3MS05LjUzNmEuNzcuNzcsMCwwLDAtLjc3OC0uNzUuNzg4Ljc4OCwwLDAsMC0uNTQ3LjIyM0wuOC00LjgxM2EuNzMzLjczMywwLDAsMC0uMjMxLjUyN0EuNzMzLjczMywwLDAsMCwuOC0zLjc1OGw1LjQ0NCw1LjI1YS43ODguNzg4LDAsMCwwLC41NDcuMjIzLjc3Ljc3LDAsMCwwLC43NzgtLjc1WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuNTcxIDEwLjI4NikiLz4KPC9zdmc+Cg==');
+}
+
+.hc-datepicker-header-today {
+    font-weight: 600;
+    color: $primary-brand;
+    @include fontSize(12px);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.hc-datepicker-header-rightButton {
+    width: 7px;
+    height: 12px;
+    display: inline-flex;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3IDEyIj4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjMDBhZWZmOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cGF0aCBpZD0iUGF0aF8xNyIgZGF0YS1uYW1lPSJQYXRoIDE3IiBjbGFzcz0iY2xzLTEiIGQ9Ik03LjU3MS05LjUzNmEuNzcuNzcsMCwwLDAtLjc3OC0uNzUuNzg4Ljc4OCwwLDAsMC0uNTQ3LjIyM0wuOC00LjgxM2EuNzMzLjczMywwLDAsMC0uMjMxLjUyN0EuNzMzLjczMywwLDAsMCwuOC0zLjc1OGw1LjQ0NCw1LjI1YS43ODguNzg4LDAsMCwwLC41NDcuMjIzLjc3Ljc3LDAsMCwwLC43NzgtLjc1WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNy41NzEgMS43MTQpIHJvdGF0ZSgxODApIi8+Cjwvc3ZnPgo=');
+}
+
+.hc-datepicker-header-weekdays {
+    margin: 10px 5px;
+}
+
+.hc-datepicker-header-label {
+    @include fontSize(9px);
+    color: $gray-500;
+    width: 36px;
+    display: inline-block;
+    text-align: center;
+}
+
+.hc-datepicker-body {
+    @include fontSize(11px);
+    color: $gray-500;
+    margin: 5px;
+    font-weight: 600;
+}
+
+.hc-datepicker-body-date {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:not(.hc-datepicker-other-month) {
+        &:hover {
+            .hc-datepicker-body-circle {
+                border: 2px solid darken($primary-brand, 10%);
+            }
+        }
+    }
+
+    &.hc-datepicker-selected {
+        .hc-datepicker-body-circle {
+            background-color: darken($primary-brand, 10%);
+            color: $white;
+            font-weight: 700;
+        }
+    }
+
+    &.hc-datepicker-today {
+        .hc-datepicker-body-circle {
+            background-color: $slate-gray-200;
+        }
+    }
+
+    &.hc-datepicker-range {
+        .hc-datepicker-body-circle {
+            background-color: darken($primary-brand, 10%);
+            border-radius: 0;
+            width: 36px;
+            color: $white;
+        }
+    }
+
+    &.hc-datepicker-range-start {
+        height: 29px;
+        background: linear-gradient(to right, $white 50%, darken($primary-brand, 10%) 51%);
+
+        .hc-datepicker-body-circle {
+            background-color: $white;
+            border: 2px solid darken($primary-brand, 10%);
+        }
+    }
+
+    &.hc-datepicker-range-end {
+        height: 29px;
+        background: linear-gradient(to right, darken($primary-brand, 10%) 50%, $white 51%);
+
+        .hc-datepicker-body-circle {
+            background-color: $white;
+            border: 2px solid darken($primary-brand, 10%);
+        }
+    }
+
+    &.hc-datepicker-other-month {
+        color: $slate-gray-300;
+        font-weight: normal;
+        cursor: unset;
+    }
+}
+
+.hc-datepicker-body-circle {
+    border-radius: 50%;
+    width: 29px;
+    height: 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1px;
+}
+
+.hc-datepicker-body-year {
+    width: 63px;
+    height: 36px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    .hc-datepicker-body-circle {
+        width: 56px !important;
+        border-radius: 28px !important;
+    }
+
+    &:hover {
+        .hc-datepicker-body-circle {
+            border: 2px solid darken($primary-brand, 10%);
+        }
+    }
+
+    &.hc-datepicker-selected {
+        .hc-datepicker-body-circle {
+            background-color: darken($primary-brand, 10%);
+            color: $white;
+            font-weight: 700;
+        }
+    }
+
+    &.hc-datepicker-today {
+        .hc-datepicker-body-circle {
+            background-color: $slate-gray-200;
+        }
+    }
+}
+
+// ************************************************************************************************************************************************************************************
+// ********************************************************************** MATERIAL ****************************************************************************************************
+// ************************************************************************************************************************************************************************************
+
+
+$hc-datepicker-calendar-padding: 8px;
+$hc-datepicker-non-touch-calendar-cell-size: 40px;
+$hc-datepicker-non-touch-calendar-width: $hc-datepicker-non-touch-calendar-cell-size * 7 + $hc-datepicker-calendar-padding * 2;
+// Based on the natural height of the calendar in a month with 6 rows of dates
+// (largest the calendar will get).
+$hc-datepicker-non-touch-calendar-height: 354px;
+
+// Ideally the calendar would have a constant aspect ratio, no matter its size, and we would base
+// these measurements off the aspect ratio. Unfortunately, the aspect ratio does change a little as
+// the calendar grows, since some of the elements have pixel-based sizes. These numbers have been
+// chosen to minimize extra whitespace at larger sizes, while still ensuring we won't need
+// scrollbars at smaller sizes.
+$hc-datepicker-touch-landscape-width: 64vh;
+$hc-datepicker-touch-landscape-height: 80vh;
+$hc-datepicker-touch-portrait-width: 80vw;
+$hc-datepicker-touch-portrait-height: 100vw;
+$hc-datepicker-touch-min-width: 250px;
+$hc-datepicker-touch-min-height: 312px;
+$hc-datepicker-touch-max-width: 750px;
+$hc-datepicker-touch-max-height: 788px;
+
+.hc-datepicker-content {
+    display: block;
+    border-radius: 4px;
+
+    .hc-calendar {
+        width: $hc-datepicker-non-touch-calendar-width;
+        height: $hc-datepicker-non-touch-calendar-height;
+    }
+}
+
+.hc-datepicker-content-touch {
+    display: block;
+    // make sure the dialog scrolls rather than being cropped on ludicrously small screens
+    max-height: 80vh;
+    overflow: auto;
+
+    // TODO: hack to offset the padding of the dialog. Can be removed when we switch away
+    // from using dialog.
+    margin: -24px;
+
+    .hc-calendar {
+        min-width: $hc-datepicker-touch-min-width;
+        min-height: $hc-datepicker-touch-min-height;
+        max-width: $hc-datepicker-touch-max-width;
+        max-height: $hc-datepicker-touch-max-height;
+    }
+}
+
+@media all and (orientation: landscape) {
+    .hc-datepicker-content-touch .hc-calendar {
+        width: $hc-datepicker-touch-landscape-width;
+        height: $hc-datepicker-touch-landscape-height;
+    }
+}
+
+@media all and (orientation: portrait) {
+    .hc-datepicker-content-touch .hc-calendar {
+        width: $hc-datepicker-touch-portrait-width;
+        height: $hc-datepicker-touch-portrait-height;
+    }
+}
+
+.hc-datepicker-content {
+    background-color: $white;
+    color: $text;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+}
+
+.hc-datepicker-toggle-active {
+    color: $primary-brand;
+
+    &.hc-accent {
+        color: $primary-alt-action;
+    }
+
+    &.hc-warn {
+        color: $destructive-action;
+    }
+}
+
+
+
