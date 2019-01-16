@@ -69,5 +69,4 @@ class CustomAppSwitcherService {
         }
     ]
 })
-export class AppSwitcherServiceModule {
-}
+export class AppSwitcherServiceModule {}

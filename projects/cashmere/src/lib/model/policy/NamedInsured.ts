@@ -1,7 +1,7 @@
-import {Address} from "../common/Address";
-import {Location} from "./Location";
-import {SimpleObject} from "../common/SimpleObject";
-import {Principal} from "./Principal";
+import {Address} from '../common/Address';
+import {Location} from './Location';
+import {SimpleObject} from '../common/SimpleObject';
+import {Principal} from './Principal';
 
 export class NamedInsured {
     id: number;
@@ -27,11 +27,29 @@ export class NamedInsured {
     coveredStates: Array<SimpleObject> = new Array<SimpleObject>();
     dbaNames: Array<SimpleObject> = new Array<SimpleObject>();
 
-    constructor(id: number, logCounter: number, primary: boolean, businessName: string, firstName: string,
-                middleName: string, lastName: string, mailingAddress: Address, phone: string, taxId: string,
-                naics: number, yearEstablished: number, legalEntityType: SimpleObject, userId: string,
-                status: string, noPrincipalReason: string, deleted: boolean, locations: Array<Location>,
-                principals: Array<Principal>, coveredStates: Array<SimpleObject>, dbaNames: Array<SimpleObject>) {
+    constructor(
+        id: number,
+        logCounter: number,
+        primary: boolean,
+        businessName: string,
+        firstName: string,
+        middleName: string,
+        lastName: string,
+        mailingAddress: Address,
+        phone: string,
+        taxId: string,
+        naics: number,
+        yearEstablished: number,
+        legalEntityType: SimpleObject,
+        userId: string,
+        status: string,
+        noPrincipalReason: string,
+        deleted: boolean,
+        locations: Array<Location>,
+        principals: Array<Principal>,
+        coveredStates: Array<SimpleObject>,
+        dbaNames: Array<SimpleObject>
+    ) {
         this.id = id;
         this.logCounter = logCounter;
         this.businessName = businessName;
@@ -69,8 +87,28 @@ export class NamedInsured {
         let simpleObject: SimpleObject = SimpleObject.createTestSimpleObject();
         coveredStates.push(simpleObject);
         dbaNames.push(simpleObject);
-        return new NamedInsured(345, 1, false, "TestBizName", "John", "Awesome", "Doe", mailingAddr, "8019166347", "563-67-8695",
-            45435, 2001, legalType, "JDoe", "TestStatus", "TestNoPREason", false, locations, principals, coveredStates, dbaNames);
+        return new NamedInsured(
+            345,
+            1,
+            false,
+            'TestBizName',
+            'John',
+            'Awesome',
+            'Doe',
+            mailingAddr,
+            '8019166347',
+            '563-67-8695',
+            45435,
+            2001,
+            legalType,
+            'JDoe',
+            'TestStatus',
+            'TestNoPREason',
+            false,
+            locations,
+            principals,
+            coveredStates,
+            dbaNames
+        );
     }
 }
-

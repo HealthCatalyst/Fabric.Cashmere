@@ -15,9 +15,11 @@ An Angular component library that makes any task feel luxurious.
 -   [Supported Browsers](http://cashmere.healthcatalyst.net/guides/supported-browsers)
 
 ## Installin
+
 Run `npm i --save @wcf/cashmere`.
 
 ## Adding a new Component
+
 <ul>
 <li>to create a new component in Cashmere</li>
 <li>navigate to WCFCashmere folder</li>
@@ -28,6 +30,7 @@ Run `npm i --save @wcf/cashmere`.
 </ul>
 
 ## Setting up NPM to use this project.
+
 <ul>
 <li>npm config set registry http://10.1.0.104:8081/repository/npm-group/</li>
 <li>npm login</li>
@@ -39,6 +42,7 @@ Run `npm i --save @wcf/cashmere`.
 </ul>
 
 ## Publishing wcflibrary
+
 <ul>
 <li>cd into dist/wcf-library</li>
 <li>npm publish</li>

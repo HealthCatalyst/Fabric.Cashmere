@@ -4,9 +4,11 @@ import {Pipe, PipeTransform} from '@angular/core';
     name: 'ssn'
 })
 export class SSNPipe implements PipeTransform {
-
     transform(ssn: string): any {
-        ssn = ssn.toString().trim().replace(/^\+/, '');
+        ssn = ssn
+            .toString()
+            .trim()
+            .replace(/^\+/, '');
         ssn = ssn.replace(/[^0-9]*/g, '');
 
         let first: string;
@@ -18,12 +20,12 @@ export class SSNPipe implements PipeTransform {
         if (ssn.length <= 5) {
             first = ssn.substring(0, 3);
             second = ssn.substring(3, 5);
-            return first + "-" + second;
+            return first + '-' + second;
         }
         first = ssn.substring(0, 3);
         second = ssn.substring(3, 5);
         last = ssn.substring(5, ssn.length);
 
-        return first + "-" + second + "-" + last;
+        return first + '-' + second + '-' + last;
     }
 }

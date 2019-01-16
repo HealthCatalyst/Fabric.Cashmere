@@ -56,5 +56,4 @@ import {AppSwitcherServiceModule} from './app-switcher-service.module';
         TypeformSurveyModule
     ]
 })
-export class CashmereModule {
-}
+export class CashmereModule {}

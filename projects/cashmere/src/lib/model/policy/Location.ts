@@ -1,4 +1,4 @@
-import {Address} from "../common/Address";
+import {Address} from '../common/Address';
 
 export class Location {
     id: number;
@@ -15,9 +15,21 @@ export class Location {
     status: string;
     deleted: boolean = false;
 
-    constructor(id: number, masterLocationId: number, namedInsuredId: number, dbaName: string, nickName: string,
-                noLocationState: string, mailingAddress: Address, physicalAddress: Address, partTimeEmployees: number,
-                fullTimeEmployees: number, userId: string, status: string, deleted: boolean) {
+    constructor(
+        id: number,
+        masterLocationId: number,
+        namedInsuredId: number,
+        dbaName: string,
+        nickName: string,
+        noLocationState: string,
+        mailingAddress: Address,
+        physicalAddress: Address,
+        partTimeEmployees: number,
+        fullTimeEmployees: number,
+        userId: string,
+        status: string,
+        deleted: boolean
+    ) {
         this.id = id;
         this.masterLocationId = masterLocationId;
         this.namedInsuredId = namedInsuredId;
@@ -35,7 +47,20 @@ export class Location {
 
     static createTestLocation(): Location {
         let address: Address = Address.createTestAddress();
-        return new Location(23434, 54656, 545465, "TestDBAName", "TestNickName", "testNoLoc",
-            address, address, 4, 3, "JDoe", "TestStatus", false);
+        return new Location(
+            23434,
+            54656,
+            545465,
+            'TestDBAName',
+            'TestNickName',
+            'testNoLoc',
+            address,
+            address,
+            4,
+            3,
+            'JDoe',
+            'TestStatus',
+            false
+        );
     }
 }

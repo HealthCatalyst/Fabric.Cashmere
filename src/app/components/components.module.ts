@@ -22,5 +22,4 @@ import {ComponentsRouterModule} from './components-router.module';
         ComponentUsageComponent
     ]
 })
-export class ComponentsModule {
-}
+export class ComponentsModule {}

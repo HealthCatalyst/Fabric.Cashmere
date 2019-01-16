@@ -4,14 +4,16 @@ import {Pipe, PipeTransform} from '@angular/core';
     name: 'phone'
 })
 export class PhonePipe implements PipeTransform {
-
     transform(tel: number, args?: string): any {
         let formattedNumber = '';
         if (!tel) {
             return '';
         }
 
-        let value: string = tel.toString().trim().replace(/^\+/, '');
+        let value: string = tel
+            .toString()
+            .trim()
+            .replace(/^\+/, '');
         value = value.replace(/[^0-9]*/g, '');
         if (value.match(/[^0-9]/)) {
             return tel;
@@ -22,16 +24,15 @@ export class PhonePipe implements PipeTransform {
         let end: string = value.substring(6, 10);
 
         if (area) {
-            formattedNumber = ("(" + area + ") ");
+            formattedNumber = '(' + area + ') ';
         }
 
         if (front) {
             formattedNumber += front;
         }
         if (end) {
-            formattedNumber += ("-" + end);
+            formattedNumber += '-' + end;
         }
         return formattedNumber;
     }
-
 }

@@ -17,8 +17,7 @@ export class ToasterOverviewExample {
     toastClick: boolean = false;
     toastType: string = 'success';
 
-    constructor(private toasterService: HcToasterService) {
-    }
+    constructor(private toasterService: HcToasterService) {}
 
     showToast(content: TemplateRef<any>) {
         let options: HcToastOptions = {

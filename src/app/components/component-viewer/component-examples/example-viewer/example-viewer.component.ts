@@ -29,8 +29,7 @@ export class ExampleViewerComponent {
 
     private _example: string;
 
-    constructor(private _componentFactoryResolver: ComponentFactoryResolver) {
-    }
+    constructor(private _componentFactoryResolver: ComponentFactoryResolver) {}
 
     private _attachComponentToOutlet() {
         if (this._demoContainer.length > 0) {
