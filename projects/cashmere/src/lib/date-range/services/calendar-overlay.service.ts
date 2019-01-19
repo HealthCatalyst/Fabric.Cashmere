@@ -1,7 +1,7 @@
-import { Injectable, ElementRef, Injector } from '@angular/core';
-import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
-import { PickerOverlayComponent } from '../picker-overlay/picker-overlay.component';
+import {Injectable, ElementRef, Injector} from '@angular/core';
+import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
+import {ComponentPortal, PortalInjector} from '@angular/cdk/portal';
+import {PickerOverlayComponent} from '../picker-overlay/picker-overlay.component';
 
 @Injectable()
 export class CalendarOverlayService {
@@ -11,8 +11,8 @@ export class CalendarOverlayService {
 
     open(hostElemRef: ElementRef): OverlayRef {
         this.hostElemRef = hostElemRef;
-        const overlayRef = this.createOverlay();
-        const portalInjector = this.createInjector(overlayRef);
+        const overlayRef = this._createOverlay();
+        const portalInjector = this._createInjector(overlayRef);
         const calendarPortal = new ComponentPortal(PickerOverlayComponent, null, portalInjector);
         overlayRef.attach(calendarPortal);
 
@@ -21,12 +21,12 @@ export class CalendarOverlayService {
         return overlayRef;
     }
 
-    private createOverlay(): OverlayRef {
-        const overlayConfig = this.getOverlayConfig();
+    private _createOverlay(): OverlayRef {
+        const overlayConfig = this._getOverlayConfig();
         return this.overlay.create(overlayConfig);
     }
 
-    private getOverlayConfig(): OverlayConfig {
+    private _getOverlayConfig(): OverlayConfig {
         const positionStrategy = this.overlay
             .position()
             .flexibleConnectedTo(this.hostElemRef)
@@ -72,7 +72,7 @@ export class CalendarOverlayService {
         return overlayConfig;
     }
 
-    private createInjector(overlayRef: OverlayRef): PortalInjector {
+    private _createInjector(overlayRef: OverlayRef): PortalInjector {
         const injectionTokens = new WeakMap();
         injectionTokens.set(OverlayRef, overlayRef);
 

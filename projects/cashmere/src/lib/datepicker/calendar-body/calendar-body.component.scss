@@ -20,54 +20,53 @@ $hc-calendar-body-disabled-color: $slate-gray-300 !default;
 }
 
 .hc-calendar-body-label {
-  height: 0;
-  line-height: 0;
-  text-align: left;
-  padding-left: $hc-calendar-body-label-side-padding;
-  padding-right: $hc-calendar-body-label-side-padding;
+    height: 0;
+    line-height: 0;
+    text-align: left;
+    padding-left: $hc-calendar-body-label-side-padding;
+    padding-right: $hc-calendar-body-label-side-padding;
 }
 
 .hc-calendar-body-cell {
-  position: relative;
-  height: 0;
-  line-height: 0;
-  text-align: center;
-  outline: none;
-  cursor: pointer;
+    position: relative;
+    height: 0;
+    line-height: 0;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
 }
 
 .hc-calendar-body-disabled {
-  cursor: default;
+    cursor: default;
 }
 
 .hc-calendar-body-cell-content {
-  position: absolute;
-  top: $hc-calendar-body-cell-content-margin;
-  left: $hc-calendar-body-cell-content-margin;
+    position: absolute;
+    top: $hc-calendar-body-cell-content-margin;
+    left: $hc-calendar-body-cell-content-margin;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  box-sizing: border-box;
-  width: $hc-calendar-body-cell-content-size;
-  height: $hc-calendar-body-cell-content-size;
+    box-sizing: border-box;
+    width: $hc-calendar-body-cell-content-size;
+    height: $hc-calendar-body-cell-content-size;
 
-  // Prevents text being off-center on Android.
-  line-height: 1;
+    // Prevents text being off-center on Android.
+    line-height: 1;
 
-  border-width: $hc-calendar-body-cell-content-border-width;
-  border-style: solid;
+    border-width: $hc-calendar-body-cell-content-border-width;
+    border-style: solid;
 
-  // Choosing a value clearly larger than the height ensures we get the correct capsule shape.
-  border-radius: 999px;
-
+    // Choosing a value clearly larger than the height ensures we get the correct capsule shape.
+    border-radius: 999px;
 }
 
 [dir='rtl'] {
-  .hc-calendar-body-label {
-    text-align: right;
-  }
+    .hc-calendar-body-label {
+        text-align: right;
+    }
 }
 
 $hc-datepicker-selected-today-box-shadow-width: 1px;
@@ -77,14 +76,14 @@ $hc-calendar-body-font-size: 13px !default;
 $hc-calendar-weekday-table-font-size: 11px !default;
 
 .hc-calendar-body {
-  font-size: $default-font-size;
+    font-size: $default-font-size;
 }
 
 .hc-calendar-body-label,
 .hc-calendar-period-button {
-  font: {
-      size: $default-font-size;
-  }
+    font: {
+        size: $default-font-size;
+    }
 }
 
 .hc-calendar-body-selected {
@@ -121,36 +120,35 @@ $hc-calendar-weekday-table-font-size: 11px !default;
     background: #e0e0e0;
 }
 
-
 .hc-calendar-body-label {
-  color: $primary-brand;
+    color: $primary-brand;
 }
 
 .hc-calendar-body-cell-content:not(.hc-calendar-body-selected) {
-  color: $text;
-  border-color: transparent;
+    color: $text;
+    border-color: transparent;
 }
 
 .hc-calendar-body-disabled > .hc-calendar-body-cell-content:not(.hc-calendar-body-selected) {
-  color: $hc-calendar-body-disabled-color;
+    color: $hc-calendar-body-disabled-color;
 }
 
 .hc-calendar-body-cell:not(.hc-calendar-body-disabled):hover,
 .cdk-keyboard-focused .hc-calendar-body-active,
 .cdk-program-focused .hc-calendar-body-active {
-  & > .hc-calendar-body-cell-content:not(.hc-calendar-body-selected) {
-      border: 2px solid darken($primary-brand, 10%);
-  }
+    & > .hc-calendar-body-cell-content:not(.hc-calendar-body-selected) {
+        border: 2px solid darken($primary-brand, 10%);
+    }
 }
 
 .hc-calendar-body-today:not(.hc-calendar-body-selected) {
-  // Note: though it's not text, the border is a hint about the fact that this is today's date,
-  // so we use the hint color.
-  border-color: transparent;
-  background-color: $hc-calendar-body-disabled-color;
+    // Note: though it's not text, the border is a hint about the fact that this is today's date,
+    // so we use the hint color.
+    border-color: transparent;
+    background-color: $hc-calendar-body-disabled-color;
 }
 
 .hc-calendar-body-disabled > .hc-calendar-body-today:not(.hc-calendar-body-selected) {
-  border-color: transparent;
-  background-color: $hc-calendar-body-disabled-color;
+    border-color: transparent;
+    background-color: $hc-calendar-body-disabled-color;
 }

@@ -8,8 +8,8 @@ config object. The `open` method will return an instance of `HcDialogRef`:
 
 ```ts
 let dialogRef = dialog.open(UserProfileComponent, {
-  height: '400px',
-  width: '600px',
+    height: '400px',
+    width: '600px'
 });
 ```
 
@@ -18,7 +18,7 @@ receive notification when the dialog has been closed.
 
 ```ts
 dialogRef.afterClosed().subscribe(result => {
-  console.log(`Dialog result: ${result}`); // Pizza!
+    console.log(`Dialog result: ${result}`); // Pizza!
 });
 
 dialogRef.close('Pizza!');
@@ -29,17 +29,20 @@ in which they are contained. When closing, an optional result value can be provi
 value is forwarded as the result of the `afterClosed` promise.
 
 ```ts
-@Component({/* ... */})
+@Component({
+    /* ... */
+})
 export class YourDialog {
-  constructor(public dialogRef: HcDialogRef<YourDialog>) { }
+    constructor(public dialogRef: HcDialogRef<YourDialog>) {}
 
-  closeDialog() {
-    this.dialogRef.close('Pizza!');
-  }
+    closeDialog() {
+        this.dialogRef.close('Pizza!');
+    }
 }
 ```
 
 ### Specifying global configuration defaults
+
 Default dialog options can be specified by providing an instance of `HcDialogConfig` for
 HC_DIALOG_DEFAULT_OPTIONS in your application's root module.
 
@@ -52,11 +55,12 @@ HC_DIALOG_DEFAULT_OPTIONS in your application's root module.
 ```
 
 ### Sharing data with the Dialog component.
+
 If you want to share data with your dialog, you can use the `data` option to pass information to the dialog component.
 
 ```ts
 let dialogRef = dialog.open(YourDialog, {
-  data: { name: 'austin' },
+    data: {name: 'austin'}
 });
 ```
 
@@ -67,34 +71,36 @@ import {Component, Inject} from '@angular/core';
 import {HC_DIALOG_DATA} from '@angular/material';
 
 @Component({
-  selector: 'your-dialog',
-  template: 'passed in {{ data.name }}',
+    selector: 'your-dialog',
+    template: 'passed in {{ data.name }}'
 })
 export class YourDialog {
-  constructor(@Inject(HC_DIALOG_DATA) public data: any) { }
+    constructor(@Inject(HC_DIALOG_DATA) public data: any) {}
 }
 ```
 
 <!-- example(dialog-data) -->
 
 ### Dialog content
+
 Several directives are available to make it easier to structure your dialog content:
 
-| Name                  | Description                                                                                                   |
-|-----------------------|---------------------------------------------------------------------------------------------------------------|
-| `hc-dialog-title`     | \[Attr] Dialog title, applied to a heading element (e.g., `<h1>`, `<h2>`)                                     |
-| `<hc-dialog-content>` | Primary scrollable content of the dialog                                                                      |
-| `<hc-dialog-actions>` | Container for action buttons at the bottom of the dialog                                                      |
-| `hc-dialog-close`     | \[Attr] Added to a `<button>`, makes the button close the dialog with an optional result from the bound value.|
+| Name                  | Description                                                                                                    |
+| --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `hc-dialog-title`     | \[Attr] Dialog title, applied to a heading element (e.g., `<h1>`, `<h2>`)                                      |
+| `<hc-dialog-content>` | Primary scrollable content of the dialog                                                                       |
+| `<hc-dialog-actions>` | Container for action buttons at the bottom of the dialog                                                       |
+| `hc-dialog-close`     | \[Attr] Added to a `<button>`, makes the button close the dialog with an optional result from the bound value. |
 
 For example:
+
 ```html
 <h2 hc-dialog-title>Delete all</h2>
 <hc-dialog-content>Are you sure?</hc-dialog-content>
 <hc-dialog-actions>
-  <button hc-button hc-dialog-close>No</button>
-  <!-- The hc-dialog-close directive optionally accepts a value as a result for the dialog. -->
-  <button hc-button [hc-dialog-close]="true">Yes</button>
+    <button hc-button hc-dialog-close>No</button>
+    <!-- The hc-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button hc-button [hc-dialog-close]="true">Yes</button>
 </hc-dialog-actions>
 ```
 
@@ -119,27 +125,23 @@ the `ComponentFactory` for it.
 
 ```ts
 @NgModule({
-  imports: [
-    // ...
-    HcDialogModule
-  ],
+    imports: [
+        // ...
+        HcDialogModule
+    ],
 
-  declarations: [
-    AppComponent,
-    ExampleDialogComponent
-  ],
+    declarations: [AppComponent, ExampleDialogComponent],
 
-  entryComponents: [
-    ExampleDialogComponent
-  ],
+    entryComponents: [ExampleDialogComponent],
 
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}
 ```
 
 ### Accessibility
+
 By default, each dialog has `role="dialog"` on the root element. The role can be changed to
 `alertdialog` via the `HcDialogConfig` when opening.
 
@@ -154,6 +156,7 @@ within itself. Once a dialog is closed, it will return focus to the element that
 before the dialog was opened.
 
 #### Focus management
+
 By default, the first tabbable element within the dialog will receive focus upon open. This can
 be configured by setting the `cdkFocusInitial` attribute on another focusable element.
 
@@ -161,6 +164,7 @@ Tabbing through the elements of the dialog will keep focus inside of the dialog 
 wrapping back to the first tabbable element when reaching the end of the tab sequence.
 
 #### Keyboard interaction
+
 By default pressing the escape key will close the dialog. While this behavior can
 be turned off via the `disableClose` option, users should generally avoid doing so
 as it breaks the expected interaction pattern for screen-reader users.

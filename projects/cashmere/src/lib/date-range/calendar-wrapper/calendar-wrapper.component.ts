@@ -15,6 +15,7 @@ import {CalendarComponent} from '../../datepicker/calendar/calendar.component';
 import {DatepickerInputDirective, HcDatepickerInputEvent} from '../../datepicker/datepicker-input/datepicker-input.directive';
 import {D} from '../../datepicker/datetime/date-formats';
 
+/** Component combining a calendar and input as a representation of a date  */
 @Component({
     selector: 'hc-calendar-wrapper',
     templateUrl: './calendar-wrapper.component.html',
@@ -29,18 +30,25 @@ export class CalendarWrapperComponent implements OnInit, OnChanges {
     @ViewChild(DatepickerInputDirective)
     datePickerInput: DatepickerInputDirective;
 
+    /** Emits when selected date has changed. */
     @Output()
     readonly selectedDateChange: EventEmitter<D> = new EventEmitter<D>();
 
+    /** Current selected date. */
     @Input()
     selectedDate: D;
 
     _dateFormat: string;
 
+    /** Prefix label on top of component. */
     @Input()
     prefixLabel: string;
+
+    /** The minimum selectable date. */
     @Input()
     minDate: D;
+
+    /** Flag to filter out weekends. */
     @Input()
     maxDate: D;
     weekendFilter = (d: D) => true;
@@ -67,11 +75,16 @@ export class CalendarWrapperComponent implements OnInit, OnChanges {
         }
     }
 
-    onCalendarChange(date: D) {
+    _onCalendarChange(date: D) {
         this.selectedDateChange.emit(date);
     }
 
-    onInputChange(event: HcDatepickerInputEvent) {
+    _onInputChange(event: HcDatepickerInputEvent) {
         this.selectedDateChange.emit(event.value || undefined);
+    }
+
+    /** Focus inner input */
+    focusInput() {
+        this.datePickerInput.focus();
     }
 }

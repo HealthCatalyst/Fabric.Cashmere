@@ -1,16 +1,33 @@
-import { Directionality } from '@angular/cdk/bidi';
-import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { HcNativeDateModule } from '../datetime/datetime.module';
-import { DatepickerModule } from '../datepicker.module';
-import { HcDatepickerIntl } from '../datepicker-intl';
-import { CalendarComponent } from './calendar.component';
-import { JAN, FEB, DEC } from '../utils/month-constants';
-import { yearsPerPage } from '../multi-year-view/multi-year-view.component';
+import {Directionality} from '@angular/cdk/bidi';
+import {Component} from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {HcNativeDateModule} from '../datetime/datetime.module';
+import {DatepickerModule} from '../datepicker.module';
+import {HcDatepickerIntl} from '../datepicker-intl';
+import {CalendarComponent} from './calendar.component';
+import {JAN, FEB, DEC} from '../utils/month-constants';
+import {yearsPerPage} from '../multi-year-view/multi-year-view.component';
 
 // tslint:disable:no-non-null-assertion
 // tslint:disable:component-class-suffix
+@Component({
+    template: `
+        <hc-calendar
+            [startAt]="startDate"
+            [(selected)]="selected"
+            (yearSelected)="selectedYear = $event"
+            (monthSelected)="selectedMonth = $event"
+        ></hc-calendar>
+    `
+})
+class StandardCalendar {
+    selected: Date;
+    selectedYear: Date;
+    selectedMonth: Date;
+    startDate = new Date(2017, JAN, 31);
+}
+
 describe('HcCalendarHeader', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -19,7 +36,7 @@ describe('HcCalendarHeader', () => {
                 // Test components.
                 StandardCalendar
             ],
-            providers: [HcDatepickerIntl, { provide: Directionality, useFactory: () => ({ value: 'ltr' }) }]
+            providers: [HcDatepickerIntl, {provide: Directionality, useFactory: () => ({value: 'ltr'})}]
         });
 
         TestBed.compileComponents();
@@ -146,21 +163,3 @@ describe('HcCalendarHeader', () => {
         });
     });
 });
-
-@Component({
-    template: `
-        <hc-calendar
-            [startAt]="startDate"
-            [(selected)]="selected"
-            (yearSelected)="selectedYear = $event"
-            (monthSelected)="selectedMonth = $event"
-        >
-        </hc-calendar>
-    `
-})
-class StandardCalendar {
-    selected: Date;
-    selectedYear: Date;
-    selectedMonth: Date;
-    startDate = new Date(2017, JAN, 31);
-}

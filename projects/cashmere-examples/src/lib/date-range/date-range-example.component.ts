@@ -1,15 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { DateRangeOptions, PresetItem, DateRange } from '@healthcatalyst/cashmere';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {DateRangeOptions, PresetItem, DateRange} from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-date-range-example',
-    templateUrl: './date-range-example.component.html',
+    templateUrl: './date-range-example.component.html'
 })
 export class DateRangeExampleComponent implements OnInit {
-    range: DateRange = { fromDate: new Date(), toDate: new Date() };
+    range: DateRange = {fromDate: new Date(), toDate: new Date()};
     options: DateRangeOptions;
     presets: Array<PresetItem> = [];
-    @ViewChild('pickerOne') pickerOne;
+    @ViewChild('pickerOne')
+    pickerOne;
 
     ngOnInit() {
         const today = new Date();
@@ -22,11 +23,11 @@ export class DateRangeExampleComponent implements OnInit {
         this.options = {
             presets: this.presets,
             format: 'mediumDate',
-            range: { fromDate: today, toDate: today },
+            range: {fromDate: today, toDate: today},
             applyLabel: 'Apply',
             // excludeWeekends:true,
-            fromMinMax: { fromDate: fromMin, toDate: fromMax },
-            toMinMax: { fromDate: toMin, toDate: toMax }
+            fromMinMax: {fromDate: fromMin, toDate: fromMax},
+            toMinMax: {fromDate: toMin, toDate: toMax}
         };
     }
 
@@ -52,23 +53,23 @@ export class DateRangeExampleComponent implements OnInit {
         this.presets = [
             {
                 presetLabel: 'Yesterday',
-                range: { fromDate: yesterday, toDate: today }
+                range: {fromDate: yesterday, toDate: today}
             },
             {
                 presetLabel: 'Last 7 Days',
-                range: { fromDate: minus7, toDate: today }
+                range: {fromDate: minus7, toDate: today}
             },
             {
                 presetLabel: 'Last 30 Days',
-                range: { fromDate: minus30, toDate: today }
+                range: {fromDate: minus30, toDate: today}
             },
             {
                 presetLabel: 'This Month',
-                range: { fromDate: currMonthStart, toDate: currMonthEnd }
+                range: {fromDate: currMonthStart, toDate: currMonthEnd}
             },
             {
                 presetLabel: 'Last Month',
-                range: { fromDate: lastMonthStart, toDate: lastMonthEnd }
+                range: {fromDate: lastMonthStart, toDate: lastMonthEnd}
             }
         ];
     }

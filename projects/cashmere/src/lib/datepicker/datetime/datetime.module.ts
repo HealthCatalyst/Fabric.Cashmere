@@ -15,15 +15,12 @@ import {HC_NATIVE_DATE_FORMATS} from './native-date-formats';
 
 @NgModule({
     imports: [PlatformModule],
-    providers: [
-        {provide: DateAdapter, useClass: NativeDateAdapter},
-    ],
+    providers: [{provide: DateAdapter, useClass: NativeDateAdapter}]
 })
 export class NativeDateModule {}
 
-
 @NgModule({
     imports: [NativeDateModule],
-    providers: [{provide: HC_DATE_FORMATS, useValue: HC_NATIVE_DATE_FORMATS}],
+    providers: [{provide: HC_DATE_FORMATS, useValue: HC_NATIVE_DATE_FORMATS}]
 })
 export class HcNativeDateModule {}

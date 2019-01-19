@@ -6,9 +6,9 @@
  * found in the LICENSE file at https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/dev/LICENSE
  */
 
-import { Platform } from '@angular/cdk/platform';
-import { Inject, Injectable, Optional } from '@angular/core';
-import { DateAdapter, HC_DATE_LOCALE } from './date-adapter';
+import {Platform} from '@angular/cdk/platform';
+import {Inject, Injectable, Optional} from '@angular/core';
+import {DateAdapter, HC_DATE_LOCALE} from './date-adapter';
 
 // TODO(mmalerba): Remove when we no longer support safari 9.
 /** Whether the browser supports the Intl API. */
@@ -167,7 +167,12 @@ export class NativeDateAdapter extends DateAdapter<Date> {
      */
     useUtcForDisplay: boolean = true;
 
-    constructor(@Optional() @Inject(HC_DATE_LOCALE) hcDateLocale: string, platform: Platform) {
+    constructor(
+        @Optional()
+        @Inject(HC_DATE_LOCALE)
+        hcDateLocale: string,
+        platform: Platform
+    ) {
         super();
         super.setLocale(hcDateLocale);
 
@@ -194,7 +199,7 @@ export class NativeDateAdapter extends DateAdapter<Date> {
 
     getMonthNames(style: 'long' | 'short' | 'narrow'): string[] {
         if (SUPPORTS_INTL_API) {
-            const dtf = new Intl.DateTimeFormat(this.locale, { month: style, timeZone: 'utc' });
+            const dtf = new Intl.DateTimeFormat(this.locale, {month: style, timeZone: 'utc'});
             return range(12, i => this._stripDirectionalityCharacters(this._format(dtf, new Date(2017, i, 1))));
         }
         return DEFAULT_MONTH_NAMES[style];
@@ -202,7 +207,7 @@ export class NativeDateAdapter extends DateAdapter<Date> {
 
     getDateNames(): string[] {
         if (SUPPORTS_INTL_API) {
-            const dtf = new Intl.DateTimeFormat(this.locale, { day: 'numeric', timeZone: 'utc' });
+            const dtf = new Intl.DateTimeFormat(this.locale, {day: 'numeric', timeZone: 'utc'});
             return range(31, i => this._stripDirectionalityCharacters(this._format(dtf, new Date(2017, 0, i + 1))));
         }
         return DEFAULT_DATE_NAMES;
@@ -210,7 +215,7 @@ export class NativeDateAdapter extends DateAdapter<Date> {
 
     getDayOfWeekNames(style: 'long' | 'short' | 'narrow'): string[] {
         if (SUPPORTS_INTL_API) {
-            const dtf = new Intl.DateTimeFormat(this.locale, { weekday: style, timeZone: 'utc' });
+            const dtf = new Intl.DateTimeFormat(this.locale, {weekday: style, timeZone: 'utc'});
             return range(7, i => this._stripDirectionalityCharacters(this._format(dtf, new Date(2017, 0, i + 1))));
         }
         return DEFAULT_DAY_OF_WEEK_NAMES[style];
@@ -218,7 +223,7 @@ export class NativeDateAdapter extends DateAdapter<Date> {
 
     getYearName(date: Date): string {
         if (SUPPORTS_INTL_API) {
-            const dtf = new Intl.DateTimeFormat(this.locale, { year: 'numeric', timeZone: 'utc' });
+            const dtf = new Intl.DateTimeFormat(this.locale, {year: 'numeric', timeZone: 'utc'});
             return this._stripDirectionalityCharacters(this._format(dtf, date));
         }
         return String(this.getYear(date));
@@ -286,7 +291,7 @@ export class NativeDateAdapter extends DateAdapter<Date> {
                 date.setFullYear(Math.max(1, Math.min(9999, date.getFullYear())));
             }
 
-            displayFormat = { ...displayFormat, timeZone: 'utc' };
+            displayFormat = {...displayFormat, timeZone: 'utc'};
 
             const dtf = new Intl.DateTimeFormat(this.locale, displayFormat);
             return this._stripDirectionalityCharacters(this._format(dtf, date));
@@ -333,7 +338,7 @@ export class NativeDateAdapter extends DateAdapter<Date> {
             // The `Date` constructor accepts formats other than ISO 8601, so we need to make sure the
             // string is the right format first.
             if (ISO_8601_REGEX.test(value)) {
-              const date = new Date(value);
+                const date = new Date(value);
                 if (this.isValid(date)) {
                     return date;
                 }

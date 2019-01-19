@@ -6,12 +6,15 @@
  * found in the LICENSE file at https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/dev/LICENSE
  */
 
-import { Directive, Input, OnChanges, OnInit, Optional, SimpleChanges, ElementRef } from '@angular/core';
-import { DialogService } from './dialog.service';
-import { HcDialogRef } from './dialog-ref';
+import {Directive, Input, OnChanges, OnInit, Optional, SimpleChanges, ElementRef} from '@angular/core';
+import {DialogService} from './dialog.service';
+import {HcDialogRef} from './dialog-ref';
 
 /** Counter used to generate unique IDs for dialog elements. */
 let dialogElementUid = 0;
+
+// tslint:disable:use-host-property-decorator
+// tslint:disable:no-input-rename
 
 /**
  * Button that will close the current dialog.
@@ -27,14 +30,21 @@ let dialogElementUid = 0;
 })
 export class DialogCloseDirective implements OnInit, OnChanges {
     /** Screenreader label for the button. */
-    @Input('aria-label') ariaLabel: string = 'Close dialog';
+    @Input('aria-label')
+    ariaLabel: string = 'Close dialog';
 
     /** Dialog close input. */
-    @Input('hc-dialog-close') dialogResult: any;
+    @Input('hc-dialog-close')
+    dialogResult: any;
 
-    @Input('hcDialogClose') _hcDialogClose: any;
+    @Input('hcDialogClose')
+    _hcDialogClose: any;
 
-    constructor(@Optional() public dialogRef: HcDialogRef<any>, private _elementRef: ElementRef<HTMLElement>, private _dialog: DialogService) {}
+    constructor(
+        @Optional() public dialogRef: HcDialogRef<any>,
+        private _elementRef: ElementRef<HTMLElement>,
+        private _dialog: DialogService
+    ) {}
 
     ngOnInit() {
         if (!this.dialogRef) {
@@ -68,7 +78,8 @@ export class DialogCloseDirective implements OnInit, OnChanges {
     }
 })
 export class DialogTitleDirective implements OnInit {
-    @Input() id = `hc-dialog-title-${dialogElementUid++}`;
+    @Input()
+    id = `hc-dialog-title-${dialogElementUid++}`;
 
     constructor(
         @Optional() private _dialogRef: HcDialogRef<any>,
@@ -98,7 +109,7 @@ export class DialogTitleDirective implements OnInit {
  */
 @Directive({
     selector: `[hc-dialog-content], hc-dialog-content, [hcDialogContent]`,
-    host: { class: 'hc-dialog-content' }
+    host: {class: 'hc-dialog-content'}
 })
 export class DialogContentDirective {}
 
@@ -108,7 +119,7 @@ export class DialogContentDirective {}
  */
 @Directive({
     selector: `[hc-dialog-actions], hc-dialog-actions, [hcDialogActions]`,
-    host: { class: 'hc-dialog-actions' }
+    host: {class: 'hc-dialog-actions'}
 })
 export class DialogActionsDirective {}
 

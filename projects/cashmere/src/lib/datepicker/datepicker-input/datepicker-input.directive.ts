@@ -19,6 +19,10 @@ import {DateAdapter} from '../datetime/date-adapter';
 import {HcFormControlComponent} from '../../form-field/hc-form-control.component';
 import {HcFormFieldComponent} from '../../form-field/hc-form-field.component';
 
+// tslint:disable:use-host-property-decorator
+// tslint:disable:member-ordering
+// tslint:disable:no-use-before-declare
+
 /** @docs-private */
 export const HC_DATEPICKER_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
@@ -52,7 +56,6 @@ export class HcDatepickerInputEvent {
     }
 }
 
-// tslint:disable:member-ordering
 @Directive({
     selector: 'input[hcDatepicker]',
     host: {
@@ -269,6 +272,11 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
      */
     getConnectedOverlayOrigin(): ElementRef {
         return this._formField ? this._formField.getConnectedOverlayOrigin() : this._elementRef;
+    }
+
+    /** Sets the focus on the input element */
+    focus(): void {
+        this._elementRef.nativeElement.focus();
     }
 
     // Implemented as part of ControlValueAccessor.

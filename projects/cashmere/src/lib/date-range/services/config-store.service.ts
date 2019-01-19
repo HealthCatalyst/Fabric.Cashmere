@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { DateRangeOptions } from '../model/model';
+import {Injectable} from '@angular/core';
+import {DateRangeOptions} from '../model/model';
 
 @Injectable()
 export class ConfigStoreService {
@@ -7,11 +7,11 @@ export class ConfigStoreService {
     private defaultOptions: DateRangeOptions = {
         excludeWeekends: false,
         locale: 'en-US',
-        fromMinMax: { fromDate: undefined, toDate: undefined },
-        toMinMax: { fromDate: undefined, toDate: undefined },
+        fromMinMax: {fromDate: undefined, toDate: undefined},
+        toMinMax: {fromDate: undefined, toDate: undefined},
         presets: [],
         format: '',
-        range: { fromDate: undefined, toDate: undefined }
+        range: {fromDate: undefined, toDate: undefined}
     };
 
     constructor() {}
@@ -21,6 +21,6 @@ export class ConfigStoreService {
     }
 
     set DateRangeOptions(options: DateRangeOptions) {
-        this._dateRangeOptions = { ...this.defaultOptions, ...options };
+        this._dateRangeOptions = {...this.defaultOptions, ...options};
     }
 }

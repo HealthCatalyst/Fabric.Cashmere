@@ -11,12 +11,12 @@ import {
     Optional,
     Inject
 } from '@angular/core';
-import { HcCalendarCellCssClasses, CalendarBodyComponent, HcCalendarCell } from '../calendar-body/calendar-body.component';
-import { Directionality } from '@angular/cdk/bidi';
-import { createMissingDateImplError } from '../datetime/datepicker-errors';
-import { LEFT_ARROW, RIGHT_ARROW, UP_ARROW, DOWN_ARROW, HOME, END, PAGE_UP, PAGE_DOWN, ENTER, SPACE } from '@angular/cdk/keycodes';
-import { D, HC_DATE_FORMATS, HcDateFormats } from '../datetime/date-formats';
-import { DateAdapter } from '../datetime/date-adapter';
+import {HcCalendarCellCssClasses, CalendarBodyComponent, HcCalendarCell} from '../calendar-body/calendar-body.component';
+import {Directionality} from '@angular/cdk/bidi';
+import {createMissingDateImplError} from '../datetime/datepicker-errors';
+import {LEFT_ARROW, RIGHT_ARROW, UP_ARROW, DOWN_ARROW, HOME, END, PAGE_UP, PAGE_DOWN, ENTER, SPACE} from '@angular/cdk/keycodes';
+import {D, HC_DATE_FORMATS, HcDateFormats} from '../datetime/date-formats';
+import {DateAdapter} from '../datetime/date-adapter';
 
 const DAYS_PER_WEEK = 7;
 
@@ -25,10 +25,9 @@ const DAYS_PER_WEEK = 7;
  * @docs-private
  */
 @Component({
-    // moduleId: module.id,
     selector: 'hc-month-view',
     templateUrl: './month-view.component.html',
-    exportAs: 'matMonthView',
+    exportAs: 'hcMonthView',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -82,22 +81,28 @@ export class MonthViewComponent implements AfterContentInit {
     private _maxDate: D | null;
 
     /** Function used to filter which dates are selectable. */
-    @Input() dateFilter: (date: D) => boolean;
+    @Input()
+    dateFilter: (date: D) => boolean;
 
     /** Function that can be used to add custom CSS classes to dates. */
-    @Input() dateClass: (date: D) => HcCalendarCellCssClasses;
+    @Input()
+    dateClass: (date: D) => HcCalendarCellCssClasses;
 
     /** Emits when a new date is selected. */
-    @Output() readonly selectedChange: EventEmitter<D | null> = new EventEmitter<D | null>();
+    @Output()
+    readonly selectedChange: EventEmitter<D | null> = new EventEmitter<D | null>();
 
     /** Emits when any date is selected. */
-    @Output() readonly _userSelection: EventEmitter<void> = new EventEmitter<void>();
+    @Output()
+    readonly _userSelection: EventEmitter<void> = new EventEmitter<void>();
 
     /** Emits when any date is activated. */
-    @Output() readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
+    @Output()
+    readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
 
     /** The body of calendar table */
-    @ViewChild(CalendarBodyComponent) _hcCalendarBody: CalendarBodyComponent;
+    @ViewChild(CalendarBodyComponent)
+    _hcCalendarBody: CalendarBodyComponent;
 
     /** The label for this month (e.g. "January 2017"). */
     _monthLabel: string;
@@ -118,11 +123,13 @@ export class MonthViewComponent implements AfterContentInit {
     _todayDate: number | null;
 
     /** The names of the weekdays. */
-    _weekdays: { long: string; narrow: string }[];
+    _weekdays: {long: string; narrow: string}[];
 
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
-        @Optional() @Inject(HC_DATE_FORMATS) private _dateFormats: HcDateFormats,
+        @Optional()
+        @Inject(HC_DATE_FORMATS)
+        private _dateFormats: HcDateFormats,
         @Optional() public _dateAdapter: DateAdapter<D>,
         @Optional() private _dir?: Directionality
     ) {
@@ -139,7 +146,7 @@ export class MonthViewComponent implements AfterContentInit {
 
         // Rotate the labels for days of the week based on the configured first day of the week.
         const weekdays = longWeekdays.map((long, i) => {
-            return { long, narrow: narrowWeekdays[i] };
+            return {long, narrow: narrowWeekdays[i]};
         });
         this._weekdays = weekdays.slice(firstDayOfWeek).concat(weekdays.slice(0, firstDayOfWeek));
 
@@ -296,8 +303,8 @@ export class MonthViewComponent implements AfterContentInit {
         return !!(
             d1 &&
             d2 &&
-            this._dateAdapter.getMonth(d1) == this._dateAdapter.getMonth(d2) &&
-            this._dateAdapter.getYear(d1) == this._dateAdapter.getYear(d2)
+            this._dateAdapter.getMonth(d1) === this._dateAdapter.getMonth(d2) &&
+            this._dateAdapter.getYear(d1) === this._dateAdapter.getYear(d2)
         );
     }
 

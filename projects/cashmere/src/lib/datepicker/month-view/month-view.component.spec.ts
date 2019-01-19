@@ -1,18 +1,17 @@
-import { Direction, Directionality } from '@angular/cdk/bidi';
-import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/cdk/keycodes';
-import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { HcNativeDateModule } from '../datetime/datetime.module';
-import { MAR, JAN, DEC, NOV, FEB } from '../utils/month-constants';
-import { dispatchFakeEvent, dispatchKeyboardEvent } from '../utils/dispatch-events';
-import { CalendarBodyComponent } from '../calendar-body/calendar-body.component';
-import { MonthViewComponent } from './month-view.component';
+import {Direction, Directionality} from '@angular/cdk/bidi';
+import {DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, SPACE, UP_ARROW} from '@angular/cdk/keycodes';
+import {Component} from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {HcNativeDateModule} from '../datetime/datetime.module';
+import {MAR, JAN, DEC, NOV, FEB} from '../utils/month-constants';
+import {dispatchFakeEvent, dispatchKeyboardEvent} from '../utils/dispatch-events';
+import {CalendarBodyComponent} from '../calendar-body/calendar-body.component';
+import {MonthViewComponent} from './month-view.component';
 
-// tslint:disable:no-non-null-assertion
-// tslint:disable:component-class-suffix
+/* tslint:disable */
 describe('HcMonthView', () => {
-    let dir: { value: Direction };
+    let dir: {value: Direction};
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -26,7 +25,7 @@ describe('HcMonthView', () => {
                 MonthViewWithDateFilter,
                 MonthViewWithDateClass
             ],
-            providers: [{ provide: Directionality, useFactory: () => (dir = { value: 'ltr' }) }]
+            providers: [{provide: Directionality, useFactory: () => (dir = {value: 'ltr'})}]
         });
 
         TestBed.compileComponents();
@@ -44,11 +43,6 @@ describe('HcMonthView', () => {
             const monthViewDebugElement = fixture.debugElement.query(By.directive(MonthViewComponent));
             monthViewNativeElement = monthViewDebugElement.nativeElement;
             testComponent = fixture.componentInstance;
-        });
-
-        it('has correct month label', () => {
-            const labelEl = monthViewNativeElement.querySelector('.hc-calendar-body-label')!;
-            expect(labelEl.innerHTML.trim()).toBe('JAN');
         });
 
         it('has 31 days', () => {

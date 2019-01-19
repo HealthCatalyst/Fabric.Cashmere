@@ -3,10 +3,9 @@
 @import '../sass/functions';
 @import '../sass/mixins';
 
-
 .hc-datepicker-content {
-    width: 296px;
-    height: 354px;
+    width: 310px;
+    height: 360px;
 }
 
 .hc-datepicker-header {
@@ -215,7 +214,6 @@
 // ********************************************************************** MATERIAL ****************************************************************************************************
 // ************************************************************************************************************************************************************************************
 
-
 $hc-datepicker-calendar-padding: 8px;
 $hc-datepicker-non-touch-calendar-cell-size: 40px;
 $hc-datepicker-non-touch-calendar-width: $hc-datepicker-non-touch-calendar-cell-size * 7 + $hc-datepicker-calendar-padding * 2;
@@ -282,7 +280,7 @@ $hc-datepicker-touch-max-height: 788px;
 .hc-datepicker-content {
     background-color: $white;
     color: $text;
-    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .hc-datepicker-toggle-active {
@@ -296,6 +294,3 @@ $hc-datepicker-touch-max-height: 788px;
         color: $destructive-action;
     }
 }
-
-
-

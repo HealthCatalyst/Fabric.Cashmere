@@ -1,7 +1,7 @@
-import { Injectable, Inject, InjectionToken } from '@angular/core';
-import { DateRange } from '../model/model';
-import { Subject } from 'rxjs';
-import { D } from '../../datepicker/datetime/date-formats';
+import {Injectable, Inject, InjectionToken} from '@angular/core';
+import {DateRange} from '../model/model';
+import {Subject} from 'rxjs';
+import {D} from '../../datepicker/datetime/date-formats';
 
 export const DATE = new InjectionToken<D>('date');
 
@@ -22,6 +22,6 @@ export class RangeStoreService {
     updateRange(fromDate: D = this._fromDate, toDate: D = this._toDate) {
         this._fromDate = fromDate;
         this._toDate = toDate;
-        this.rangeUpdate$.next({ fromDate: this._fromDate, toDate: this._toDate });
+        this.rangeUpdate$.next({fromDate: this._fromDate, toDate: this._toDate});
     }
 }

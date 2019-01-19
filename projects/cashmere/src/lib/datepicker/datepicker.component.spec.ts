@@ -23,10 +23,306 @@ import {DatepickerInputDirective} from './datepicker-input/datepicker-input.dire
 import {FormFieldModule} from '../form-field/hc-form-field.module';
 import {InputModule} from '../input/input.module';
 import {IconModule} from '../icon/icon.module';
+import {HcFormFieldComponent} from '../form-field/hc-form-field.component';
 
-// tslint:disable:component-class-suffix
-// tslint:disable:radix
-// tslint:disable:no-non-null-assertion
+/* tslint:disable */
+@Component({
+    template: `
+        <input [hcDatepicker]="d" [value]="date" />
+        <hc-datepicker #d [touchUi]="touch" [disabled]="disabled" [opened]="opened"></hc-datepicker>
+    `
+})
+class StandardDatepicker {
+    opened = false;
+    touch = false;
+    disabled = false;
+    date: Date | null = new Date(2020, JAN, 1);
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+    @ViewChild(DatepickerInputDirective)
+    datepickerInput: DatepickerInputDirective;
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="d" />
+        <input [hcDatepicker]="d" />
+        <hc-datepicker #d></hc-datepicker>
+    `
+})
+class MultiInputDatepicker {}
+
+@Component({
+    template: `
+        <hc-datepicker #d></hc-datepicker>
+    `
+})
+class NoInputDatepicker {
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="d" [value]="date" />
+        <hc-datepicker #d [startAt]="startDate"></hc-datepicker>
+    `
+})
+class DatepickerWithStartAt {
+    date = new Date(2020, JAN, 1);
+    startDate = new Date(2010, JAN, 1);
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="d" [value]="date" />
+        <hc-datepicker #d startView="year" (monthSelected)="onYearSelection()"></hc-datepicker>
+    `
+})
+class DatepickerWithStartViewYear {
+    date = new Date(2020, JAN, 1);
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+
+    onYearSelection() {}
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="d" [value]="date" />
+        <hc-datepicker #d startView="multi-year" (yearSelected)="onMultiYearSelection()"></hc-datepicker>
+    `
+})
+class DatepickerWithStartViewMultiYear {
+    date = new Date(2020, JAN, 1);
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+
+    onMultiYearSelection() {}
+}
+
+@Component({
+    template: `
+        <input [(ngModel)]="selected" [hcDatepicker]="d" />
+        <hc-datepicker #d></hc-datepicker>
+    `
+})
+class DatepickerWithNgModel {
+    selected: Date | null = null;
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+    @ViewChild(DatepickerInputDirective)
+    datepickerInput: DatepickerInputDirective;
+}
+
+@Component({
+    template: `
+        <input [formControl]="formControl" [hcDatepicker]="d" />
+        <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
+        <hc-datepicker #d></hc-datepicker>
+    `
+})
+class DatepickerWithFormControl {
+    formControl = new FormControl();
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+    @ViewChild(DatepickerInputDirective)
+    datepickerInput: DatepickerInputDirective;
+    @ViewChild(DatepickerToggleComponent)
+    datepickerToggle: DatepickerToggleComponent;
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="d" />
+        <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
+        <hc-datepicker #d [touchUi]="touchUI"></hc-datepicker>
+    `
+})
+class DatepickerWithToggle {
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+    @ViewChild(DatepickerInputDirective)
+    input: DatepickerInputDirective;
+    touchUI = true;
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="d" />
+        <hc-datepicker-toggle [for]="d"><hc-icon class="custom-icon" hcDatepickerToggleIcon></hc-icon></hc-datepicker-toggle>
+        <hc-datepicker #d></hc-datepicker>
+    `
+})
+class DatepickerWithCustomIcon {}
+
+@Component({
+    template: `
+        <hc-form-field>
+            <input hcInput [hcDatepicker]="d" />
+            <hc-datepicker #d></hc-datepicker>
+        </hc-form-field>
+    `
+})
+class FormFieldDatepicker {
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+    @ViewChild(DatepickerInputDirective)
+    datepickerInput: DatepickerInputDirective;
+    @ViewChild(HcFormFieldComponent)
+    formField: HcFormFieldComponent;
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="d" [(ngModel)]="date" [min]="minDate" [max]="maxDate" />
+        <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
+        <hc-datepicker #d></hc-datepicker>
+    `
+})
+class DatepickerWithMinAndMaxValidation {
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+    date: Date | null;
+    minDate = new Date(2010, JAN, 1);
+    maxDate = new Date(2020, JAN, 1);
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="d" [(ngModel)]="date" [hcDatepickerFilter]="filter" />
+        <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
+        <hc-datepicker #d [touchUi]="true"></hc-datepicker>
+    `
+})
+class DatepickerWithFilterAndValidation {
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+    date: Date;
+    filter = (date: Date) => date.getDate() !== 1;
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="d" (change)="onChange()" (input)="onInput()" (dateChange)="onDateChange()" (dateInput)="onDateInput()" />
+        <hc-datepicker #d [touchUi]="true"></hc-datepicker>
+    `
+})
+class DatepickerWithChangeAndInputEvents {
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+
+    onChange() {}
+
+    onInput() {}
+
+    onDateChange() {}
+
+    onDateInput() {}
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="d" [(ngModel)]="date" />
+        <hc-datepicker #d></hc-datepicker>
+    `
+})
+class DatepickerWithi18n {
+    date: Date | null = new Date(2010, JAN, 1);
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+    @ViewChild(DatepickerInputDirective)
+    datepickerInput: DatepickerInputDirective;
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="d" [(ngModel)]="value" [min]="min" [max]="max" />
+        <hc-datepicker #d [startAt]="startAt"></hc-datepicker>
+    `
+})
+class DatepickerWithISOStrings {
+    value = new Date(2017, JUN, 1).toISOString();
+    min = new Date(2017, JAN, 1).toISOString();
+    max = new Date(2017, DEC, 31).toISOString();
+    startAt = new Date(2017, JUL, 1).toISOString();
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+    @ViewChild(DatepickerInputDirective)
+    datepickerInput: DatepickerInputDirective;
+}
+
+@Component({
+    template: `
+        <input [(ngModel)]="selected" [hcDatepicker]="d" />
+        <hc-datepicker (opened)="openedSpy()" (closed)="closedSpy()" #d></hc-datepicker>
+    `
+})
+class DatepickerWithEvents {
+    selected: Date | null = null;
+    openedSpy = jasmine.createSpy('opened spy');
+    closedSpy = jasmine.createSpy('closed spy');
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+}
+
+@Component({
+    template: `
+        <input (focus)="d.open()" [hcDatepicker]="d" />
+        <hc-datepicker #d="hcDatepicker"></hc-datepicker>
+    `
+})
+class DatepickerOpeningOnFocus {
+    @ViewChild(DatepickerComponent)
+    datepicker: DatepickerComponent;
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="ch" />
+        <hc-datepicker #ch [calendarHeaderComponent]="customHeaderForDatePicker"></hc-datepicker>
+    `
+})
+class DatepickerWithCustomHeader {
+    @ViewChild('ch')
+    datepicker: DatepickerComponent;
+    customHeaderForDatePicker = CustomHeaderForDatepicker;
+}
+
+@Component({
+    template: `
+        <div class="custom-element">Custom element</div>
+        <hc-calendar-header></hc-calendar-header>
+    `
+})
+class CustomHeaderForDatepicker {}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="assignedDatepicker" [value]="date" />
+        <hc-datepicker #d [touchUi]="touch"></hc-datepicker>
+    `
+})
+class DelayedDatepicker {
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+    @ViewChild(DatepickerInputDirective)
+    datepickerInput: DatepickerInputDirective;
+    date: Date | null;
+    assignedDatepicker: DatepickerComponent;
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="d" />
+        <hc-datepicker-toggle tabIndex="7" [for]="d"><div class="custom-icon" hcDatepickerToggleIcon></div></hc-datepicker-toggle>
+        <hc-datepicker #d></hc-datepicker>
+    `
+})
+class DatepickerWithTabindexOnToggle {}
+
 describe('DatepickerComponent', () => {
     const SUPPORTS_INTL = typeof Intl !== 'undefined';
 
@@ -1440,67 +1736,6 @@ describe('DatepickerComponent', () => {
         });
     });
 
-    describe('popup positioning', () => {
-        let fixture: ComponentFixture<StandardDatepicker>;
-        let testComponent: StandardDatepicker;
-        let input: HTMLElement;
-
-        beforeEach(fakeAsync(() => {
-            fixture = createComponent(StandardDatepicker, [HcNativeDateModule]);
-            fixture.detectChanges();
-            testComponent = fixture.componentInstance;
-            input = fixture.debugElement.query(By.css('input')).nativeElement;
-            input.style.position = 'fixed';
-        }));
-
-        it('should be below and to the right when there is plenty of space', () => {
-            input.style.top = input.style.left = '20px';
-            testComponent.datepicker.open();
-            fixture.detectChanges();
-
-            const overlayRect = document.querySelector('.cdk-overlay-pane')!.getBoundingClientRect();
-            const inputRect = input.getBoundingClientRect();
-
-            expect(Math.floor(overlayRect.left)).toBe(Math.floor(inputRect.left), 'Expected popup to align to input left.');
-        });
-
-        it('should be above and to the right when there is no space below', () => {
-            input.style.bottom = input.style.left = '20px';
-            testComponent.datepicker.open();
-            fixture.detectChanges();
-
-            const overlayRect = document.querySelector('.cdk-overlay-pane')!.getBoundingClientRect();
-            const inputRect = input.getBoundingClientRect();
-
-            expect(Math.floor(overlayRect.bottom)).toBe(Math.floor(inputRect.top), 'Expected popup to align to input top.');
-            expect(Math.floor(overlayRect.left)).toBe(Math.floor(inputRect.left), 'Expected popup to align to input left.');
-        });
-
-        it('should be below and to the left when there is no space on the right', () => {
-            input.style.top = input.style.right = '20px';
-            testComponent.datepicker.open();
-            fixture.detectChanges();
-
-            const overlayRect = document.querySelector('.cdk-overlay-pane')!.getBoundingClientRect();
-            const inputRect = input.getBoundingClientRect();
-
-            expect(Math.floor(overlayRect.top)).toBe(Math.floor(inputRect.bottom), 'Expected popup to align to input bottom.');
-            expect(Math.floor(overlayRect.right)).toBe(Math.floor(inputRect.right), 'Expected popup to align to input right.');
-        });
-
-        it('should be above and to the left when there is no space on the bottom', () => {
-            input.style.bottom = input.style.right = '20px';
-            testComponent.datepicker.open();
-            fixture.detectChanges();
-
-            const overlayRect = document.querySelector('.cdk-overlay-pane')!.getBoundingClientRect();
-            const inputRect = input.getBoundingClientRect();
-
-            expect(Math.floor(overlayRect.bottom)).toBe(Math.floor(inputRect.top), 'Expected popup to align to input top.');
-            expect(Math.floor(overlayRect.right)).toBe(Math.floor(inputRect.right), 'Expected popup to align to input right.');
-        });
-    });
-
     describe('internationalization', () => {
         let fixture: ComponentFixture<DatepickerWithi18n>;
         let testComponent: DatepickerWithi18n;
@@ -1570,298 +1805,3 @@ describe('DatepickerComponent', () => {
         }));
     });
 });
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" [value]="date" />
-        <hc-datepicker #d [touchUi]="touch" [disabled]="disabled" [opened]="opened"></hc-datepicker>
-    `
-})
-class StandardDatepicker {
-    opened = false;
-    touch = false;
-    disabled = false;
-    date: Date | null = new Date(2020, JAN, 1);
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
-    datepickerInput: DatepickerInputDirective;
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" /><input [hcDatepicker]="d" /><hc-datepicker #d></hc-datepicker>
-    `
-})
-class MultiInputDatepicker {}
-
-@Component({
-    template: `
-        <hc-datepicker #d></hc-datepicker>
-    `
-})
-class NoInputDatepicker {
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" [value]="date" />
-        <hc-datepicker #d [startAt]="startDate"></hc-datepicker>
-    `
-})
-class DatepickerWithStartAt {
-    date = new Date(2020, JAN, 1);
-    startDate = new Date(2010, JAN, 1);
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" [value]="date" />
-        <hc-datepicker #d startView="year" (monthSelected)="onYearSelection()"></hc-datepicker>
-    `
-})
-class DatepickerWithStartViewYear {
-    date = new Date(2020, JAN, 1);
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-
-    onYearSelection() {}
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" [value]="date" />
-        <hc-datepicker #d startView="multi-year" (yearSelected)="onMultiYearSelection()"></hc-datepicker>
-    `
-})
-class DatepickerWithStartViewMultiYear {
-    date = new Date(2020, JAN, 1);
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-
-    onMultiYearSelection() {}
-}
-
-@Component({
-    template: `
-        <input [(ngModel)]="selected" [hcDatepicker]="d" />
-        <hc-datepicker #d></hc-datepicker>
-    `
-})
-class DatepickerWithNgModel {
-    selected: Date | null = null;
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
-    datepickerInput: DatepickerInputDirective;
-}
-
-@Component({
-    template: `
-        <input [formControl]="formControl" [hcDatepicker]="d" />
-        <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
-        <hc-datepicker #d></hc-datepicker>
-    `
-})
-class DatepickerWithFormControl {
-    formControl = new FormControl();
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
-    datepickerInput: DatepickerInputDirective;
-    @ViewChild(DatepickerToggleComponent)
-    datepickerToggle: DatepickerToggleComponent;
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" />
-        <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
-        <hc-datepicker #d [touchUi]="touchUI"></hc-datepicker>
-    `
-})
-class DatepickerWithToggle {
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
-    input: DatepickerInputDirective;
-    touchUI = true;
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" />
-        <hc-datepicker-toggle [for]="d"> <hc-icon class="custom-icon" hcDatepickerToggleIcon></hc-icon> </hc-datepicker-toggle>
-        <hc-datepicker #d></hc-datepicker>
-    `
-})
-class DatepickerWithCustomIcon {}
-
-@Component({
-    template: `
-        <hc-form-field>
-            <input hcInput [hcDatepicker]="d" />
-            <hc-datepicker #d></hc-datepicker>
-        </hc-form-field>
-    `
-})
-class FormFieldDatepicker {
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
-    datepickerInput: DatepickerInputDirective;
-    @ViewChild(HcFormFieldComponent)
-    formField: HcFormFieldComponent;
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" [(ngModel)]="date" [min]="minDate" [max]="maxDate" />
-        <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
-        <hc-datepicker #d></hc-datepicker>
-    `
-})
-class DatepickerWithMinAndMaxValidation {
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-    date: Date | null;
-    minDate = new Date(2010, JAN, 1);
-    maxDate = new Date(2020, JAN, 1);
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" [(ngModel)]="date" [hcDatepickerFilter]="filter" />
-        <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
-        <hc-datepicker #d [touchUi]="true"></hc-datepicker>
-    `
-})
-class DatepickerWithFilterAndValidation {
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-    date: Date;
-    filter = (date: Date) => date.getDate() !== 1;
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" (change)="onChange()" (input)="onInput()" (dateChange)="onDateChange()" (dateInput)="onDateInput()" />
-        <hc-datepicker #d [touchUi]="true"></hc-datepicker>
-    `
-})
-class DatepickerWithChangeAndInputEvents {
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-
-    onChange() {}
-
-    onInput() {}
-
-    onDateChange() {}
-
-    onDateInput() {}
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" [(ngModel)]="date" />
-        <hc-datepicker #d></hc-datepicker>
-    `
-})
-class DatepickerWithi18n {
-    date: Date | null = new Date(2010, JAN, 1);
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
-    datepickerInput: DatepickerInputDirective;
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" [(ngModel)]="value" [min]="min" [max]="max" />
-        <hc-datepicker #d [startAt]="startAt"></hc-datepicker>
-    `
-})
-class DatepickerWithISOStrings {
-    value = new Date(2017, JUN, 1).toISOString();
-    min = new Date(2017, JAN, 1).toISOString();
-    max = new Date(2017, DEC, 31).toISOString();
-    startAt = new Date(2017, JUL, 1).toISOString();
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
-    datepickerInput: DatepickerInputDirective;
-}
-
-@Component({
-    template: `
-        <input [(ngModel)]="selected" [hcDatepicker]="d" />
-        <hc-datepicker (opened)="openedSpy()" (closed)="closedSpy()" #d></hc-datepicker>
-    `
-})
-class DatepickerWithEvents {
-    selected: Date | null = null;
-    openedSpy = jasmine.createSpy('opened spy');
-    closedSpy = jasmine.createSpy('closed spy');
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-}
-
-@Component({
-    template: `
-        <input (focus)="d.open()" [hcDatepicker]="d" />
-        <hc-datepicker #d="hcDatepicker"></hc-datepicker>
-    `
-})
-class DatepickerOpeningOnFocus {
-    @ViewChild(DatepickerComponent)
-    datepicker: DatepickerComponent;
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="ch" />
-        <hc-datepicker #ch [calendarHeaderComponent]="customHeaderForDatePicker"></hc-datepicker>
-    `
-})
-class DatepickerWithCustomHeader {
-    @ViewChild('ch')
-    datepicker: DatepickerComponent;
-    customHeaderForDatePicker = CustomHeaderForDatepicker;
-}
-
-@Component({
-    template: `
-        <div class="custom-element">Custom element</div>
-        <hc-calendar-header></hc-calendar-header>
-    `
-})
-class CustomHeaderForDatepicker {}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="assignedDatepicker" [value]="date" />
-        <hc-datepicker #d [touchUi]="touch"></hc-datepicker>
-    `
-})
-class DelayedDatepicker {
-    @ViewChild('d')
-    datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
-    datepickerInput: DatepickerInputDirective;
-    date: Date | null;
-    assignedDatepicker: DatepickerComponent;
-}
-
-@Component({
-    template: `
-        <input [hcDatepicker]="d" />
-        <hc-datepicker-toggle tabIndex="7" [for]="d"> <div class="custom-icon" hcDatepickerToggleIcon></div> </hc-datepicker-toggle>
-        <hc-datepicker #d></hc-datepicker>
-    `
-})
-class DatepickerWithTabindexOnToggle {}

@@ -30,12 +30,14 @@ const docs: DocItem[] = [
     {
         id: 'datepicker',
         name: 'Datepicker',
-        examples: ['datepicker']
+        examples: ['datepicker', 'datepicker-sugar', 'datepicker-selected-value'],
+        usageDoc: true
     },
     {
         id: 'date-range',
         name: 'DateRange',
-        examples: ['date-range']
+        examples: ['date-range'],
+        usageDoc: true
     },
     {
         id: 'drawer',

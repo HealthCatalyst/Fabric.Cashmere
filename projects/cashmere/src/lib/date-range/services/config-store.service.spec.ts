@@ -1,6 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {TestBed, inject} from '@angular/core/testing';
 
-import { ConfigStoreService } from './config-store.service';
+import {ConfigStoreService} from './config-store.service';
 
 describe('ConfigStoreService', () => {
     beforeEach(() => {
@@ -17,7 +17,7 @@ describe('ConfigStoreService', () => {
         service.DateRangeOptions = {
             presets: [],
             format: 'mediumDate',
-            range: { fromDate: undefined, toDate: undefined }
+            range: {fromDate: undefined, toDate: undefined}
         };
         expect(Object.keys(service.DateRangeOptions)).toContain('excludeWeekends');
     }));

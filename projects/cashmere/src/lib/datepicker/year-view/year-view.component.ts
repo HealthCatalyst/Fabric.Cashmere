@@ -12,22 +12,21 @@ import {
     Optional,
     Inject
 } from '@angular/core';
-import { CalendarBodyComponent, HcCalendarCell } from '../calendar-body/calendar-body.component';
-import { Directionality } from '@angular/cdk/bidi';
-import { createMissingDateImplError } from '../datetime/datepicker-errors';
-import { LEFT_ARROW, RIGHT_ARROW, UP_ARROW, DOWN_ARROW, HOME, END, PAGE_UP, PAGE_DOWN, ENTER, SPACE } from '@angular/cdk/keycodes';
-import { D, HC_DATE_FORMATS, HcDateFormats } from '../datetime/date-formats';
-import { DateAdapter } from '../datetime/date-adapter';
+import {CalendarBodyComponent, HcCalendarCell} from '../calendar-body/calendar-body.component';
+import {Directionality} from '@angular/cdk/bidi';
+import {createMissingDateImplError} from '../datetime/datepicker-errors';
+import {LEFT_ARROW, RIGHT_ARROW, UP_ARROW, DOWN_ARROW, HOME, END, PAGE_UP, PAGE_DOWN, ENTER, SPACE} from '@angular/cdk/keycodes';
+import {D, HC_DATE_FORMATS, HcDateFormats} from '../datetime/date-formats';
+import {DateAdapter} from '../datetime/date-adapter';
 
 /**
  * An internal component used to display a single year in the datepicker.
  * @docs-private
  */
 @Component({
-    // moduleId: module.id,
     selector: 'hc-year-view',
     templateUrl: './year-view.component.html',
-    exportAs: 'matYearView',
+    exportAs: 'hcYearView',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -38,7 +37,7 @@ export class YearViewComponent implements AfterContentInit {
         return this._activeDate;
     }
     set activeDate(value: D) {
-      const oldActiveDate = this._activeDate;
+        const oldActiveDate = this._activeDate;
         const validDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value)) || this._dateAdapter.today();
         this._activeDate = this._dateAdapter.clampDate(validDate, this.minDate, this.maxDate);
         if (this._dateAdapter.getYear(oldActiveDate) !== this._dateAdapter.getYear(this._activeDate)) {
@@ -79,19 +78,24 @@ export class YearViewComponent implements AfterContentInit {
     private _maxDate: D | null;
 
     /** A function used to filter which dates are selectable. */
-    @Input() dateFilter: (date: D) => boolean;
+    @Input()
+    dateFilter: (date: D) => boolean;
 
     /** Emits when a new month is selected. */
-    @Output() readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
+    @Output()
+    readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
 
     /** Emits the selected month. This doesn't imply a change on the selected date */
-    @Output() readonly monthSelected: EventEmitter<D> = new EventEmitter<D>();
+    @Output()
+    readonly monthSelected: EventEmitter<D> = new EventEmitter<D>();
 
     /** Emits when any date is activated. */
-    @Output() readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
+    @Output()
+    readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
 
     /** The body of calendar table */
-    @ViewChild(CalendarBodyComponent) _hcCalendarBody: CalendarBodyComponent;
+    @ViewChild(CalendarBodyComponent)
+    _hcCalendarBody: CalendarBodyComponent;
 
     /** Grid of calendar cells representing the months of the year. */
     _months: HcCalendarCell[][];
@@ -110,7 +114,9 @@ export class YearViewComponent implements AfterContentInit {
 
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
-        @Optional() @Inject(HC_DATE_FORMATS) private _dateFormats: HcDateFormats,
+        @Optional()
+        @Inject(HC_DATE_FORMATS)
+        private _dateFormats: HcDateFormats,
         @Optional() public _dateAdapter: DateAdapter<D>,
         @Optional() private _dir?: Directionality
     ) {

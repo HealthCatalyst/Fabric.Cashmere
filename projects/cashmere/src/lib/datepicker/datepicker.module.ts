@@ -14,8 +14,8 @@ import {YearViewComponent} from './year-view/year-view.component';
 import {MultiYearViewComponent} from './multi-year-view/multi-year-view.component';
 import {HcDatepickerIntl} from './datepicker-intl';
 import {DatepickerInputDirective} from './datepicker-input/datepicker-input.directive';
-import { ButtonModule } from '../button/button.module';
-import { IconModule } from '../icon/icon.module';
+import {ButtonModule} from '../button/button.module';
+import {IconModule} from '../icon/icon.module';
 
 @NgModule({
     imports: [CommonModule, ButtonModule, IconModule, DialogModule, OverlayModule, A11yModule, PortalModule],

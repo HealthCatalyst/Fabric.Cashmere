@@ -13,11 +13,11 @@ import {
     Attribute,
     SimpleChanges
 } from '@angular/core';
-import { merge, Subscription, of as observableOf } from 'rxjs';
-import { coerceBooleanProperty } from '../utils/boolean-property';
-import { HcDatepickerIntl } from '../datepicker-intl';
-import { DatepickerComponent } from '../datepicker.component';
-import { ButtonComponent } from '../../button/button.component';
+import {merge, Subscription, of as observableOf} from 'rxjs';
+import {coerceBooleanProperty} from '../utils/boolean-property';
+import {HcDatepickerIntl} from '../datepicker-intl';
+import {DatepickerComponent} from '../datepicker.component';
+import {ButtonComponent} from '../../button/button.component';
 
 /** Can be used to override the icon of a `hcDatepickerToggle`. */
 @Directive({
@@ -26,10 +26,10 @@ import { ButtonComponent } from '../../button/button.component';
 export class DatepickerToggleIconDirective {}
 
 @Component({
-    // moduleId: module.id,
     selector: 'hc-datepicker-toggle',
     templateUrl: './datepicker-toggle.component.html',
     styleUrls: ['./datepicker-toggle.component.scss'],
+    // tslint:disable-next-line:use-host-property-decorator
     host: {
         class: 'hc-datepicker-toggle',
         // Always set the tabindex to -1 so that it doesn't overlap with any custom tabindex the
@@ -46,10 +46,13 @@ export class DatepickerToggleComponent implements AfterContentInit, OnChanges, O
     private _stateChanges = Subscription.EMPTY;
 
     /** Datepicker instance that the button will toggle. */
-    @Input('for') datepicker: DatepickerComponent;
+    // tslint:disable-next-line:no-input-rename
+    @Input('for')
+    datepicker: DatepickerComponent;
 
     /** Tabindex for the toggle. */
-    @Input() tabIndex: number | null;
+    @Input()
+    tabIndex: number | null;
 
     /** Whether the toggle button is disabled. */
     @Input()
@@ -62,10 +65,12 @@ export class DatepickerToggleComponent implements AfterContentInit, OnChanges, O
     private _disabled: boolean;
 
     /** Custom icon set by the consumer. */
-    @ContentChild(DatepickerToggleIconDirective) _customIcon: DatepickerToggleIconDirective;
+    @ContentChild(DatepickerToggleIconDirective)
+    _customIcon: DatepickerToggleIconDirective;
 
     /** Underlying button element. */
-    @ViewChild('button') _button: ButtonComponent;
+    @ViewChild('button')
+    _button: ButtonComponent;
 
     constructor(
         public _intl: HcDatepickerIntl,

@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/dev/LICENSE
  */
 
-import { createFakeEvent, createKeyboardEvent, createMouseEvent, createTouchEvent } from './event-objects';
+import {createFakeEvent, createKeyboardEvent, createMouseEvent, createTouchEvent} from './event-objects';
 
 /** Utility to dispatch any event on a Node. */
 export function dispatchEvent(node: Node | Window, event: Event): Event {

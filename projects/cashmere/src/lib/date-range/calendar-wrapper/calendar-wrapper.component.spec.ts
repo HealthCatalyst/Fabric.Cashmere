@@ -5,7 +5,7 @@ import {ConfigStoreService} from '../services/config-store.service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {HcDatepickerInputEvent} from '../../datepicker/datepicker-input/datepicker-input.directive';
 import {InputModule} from '../../input/input.module';
-import { FormFieldModule } from '../../form-field/hc-form-field.module';
+import {FormFieldModule} from '../../form-field/hc-form-field.module';
 
 describe('CalendarWrapperComponent', () => {
     let component: CalendarWrapperComponent;
@@ -51,7 +51,7 @@ describe('CalendarWrapperComponent', () => {
         component.selectedDateChange.subscribe(val => {
             expect(val instanceof Date).toBeTruthy();
         });
-        component.onCalendarChange(new Date());
+        component._onCalendarChange(new Date());
     });
 
     it('should emit input date selection change', fakeAsync(() => {
@@ -60,6 +60,6 @@ describe('CalendarWrapperComponent', () => {
         });
         component.datePickerInput = <any>{value: new Date()};
         const change: HcDatepickerInputEvent = new HcDatepickerInputEvent(component.datePickerInput, <any>null);
-        component.onInputChange(change);
+        component._onInputChange(change);
     }));
 });

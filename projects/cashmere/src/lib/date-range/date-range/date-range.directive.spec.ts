@@ -1,12 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA, Component } from '@angular/core';
-import { CalendarOverlayService } from '../services/calendar-overlay.service';
-import { RangeStoreService, DATE } from '../services/range-store.service';
-import { ConfigStoreService } from '../services/config-store.service';
-import { DatePipe } from '@angular/common';
-import { DateRangeDirective } from './date-range.component';
-import { DateRangeOptions } from '../model/model';
-import { By } from '@angular/platform-browser';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {NO_ERRORS_SCHEMA, Component} from '@angular/core';
+import {CalendarOverlayService} from '../services/calendar-overlay.service';
+import {RangeStoreService, DATE} from '../services/range-store.service';
+import {ConfigStoreService} from '../services/config-store.service';
+import {DateRangeDirective} from './date-range.directive';
+import {DateRangeOptions} from '../model/model';
+import {By} from '@angular/platform-browser';
 
 class MockOverlayService {
     open = jasmine.createSpy('open');
@@ -14,7 +13,7 @@ class MockOverlayService {
 
 @Component({
     template: `
-        <button hc-date-range [options]="options">Click Me</button>
+        <button hcDateRange [options]="options">Click Me</button>
     `
 })
 class TestComponent {
@@ -26,7 +25,7 @@ class TestComponent {
         this.options = {
             presets: [],
             format: 'mediumDate',
-            range: { fromDate: fromDate, toDate: toDate },
+            range: {fromDate: fromDate, toDate: toDate},
             applyLabel: 'Submit'
         };
     }
@@ -39,7 +38,7 @@ describe('DateRangeDirective', () => {
     let overlay: MockOverlayService;
 
     beforeEach(async(() => {
-        overlay  = new MockOverlayService();
+        overlay = new MockOverlayService();
 
         TestBed.configureTestingModule({
             declarations: [TestComponent, DateRangeDirective],
@@ -48,11 +47,10 @@ describe('DateRangeDirective', () => {
             .overrideComponent(DateRangeDirective, {
                 set: {
                     providers: [
-                        { provide: DATE, useValue: new Date() },
-                        { provide: CalendarOverlayService, useValue: overlay },
+                        {provide: DATE, useValue: new Date()},
+                        {provide: CalendarOverlayService, useValue: overlay},
                         RangeStoreService,
-                        ConfigStoreService,
-                        DatePipe
+                        ConfigStoreService
                     ]
                 }
             })
@@ -86,8 +84,8 @@ describe('DateRangeDirective', () => {
         const today = new Date();
         const currMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
         const currMonthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-        const resetRange = { fromDate: currMonthStart, toDate: currMonthEnd };
-        directive.resetDates(resetRange);
+        const resetRange = {fromDate: currMonthStart, toDate: currMonthEnd};
+        directive.setDateRange(resetRange);
         directive.selectedDateRangeChanged.subscribe(range => {
             expect(range.fromDate).toEqual(resetRange.fromDate);
             expect(range.toDate).toEqual(resetRange.toDate);

@@ -10,22 +10,21 @@ import {
     ChangeDetectorRef,
     Optional
 } from '@angular/core';
-import { DateAdapter } from '../datetime/date-adapter';
-import { Directionality } from '@angular/cdk/bidi';
-import { createMissingDateImplError } from '../datetime/datepicker-errors';
-import { LEFT_ARROW, RIGHT_ARROW, UP_ARROW, DOWN_ARROW, HOME, END, PAGE_UP, PAGE_DOWN, ENTER, SPACE } from '@angular/cdk/keycodes';
-import { D } from '../datetime/date-formats';
-import { CalendarBodyComponent, HcCalendarCell } from '../calendar-body/calendar-body.component';
+import {DateAdapter} from '../datetime/date-adapter';
+import {Directionality} from '@angular/cdk/bidi';
+import {createMissingDateImplError} from '../datetime/datepicker-errors';
+import {LEFT_ARROW, RIGHT_ARROW, UP_ARROW, DOWN_ARROW, HOME, END, PAGE_UP, PAGE_DOWN, ENTER, SPACE} from '@angular/cdk/keycodes';
+import {D} from '../datetime/date-formats';
+import {CalendarBodyComponent, HcCalendarCell} from '../calendar-body/calendar-body.component';
 
 export const yearsPerPage = 24;
 
 export const yearsPerRow = 4;
 
 @Component({
-    // moduleId: module.id,
     selector: 'hc-multi-year-view',
     templateUrl: './multi-year-view.component.html',
-    exportAs: 'matMultiYearView',
+    exportAs: 'hcMultiYearView',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -80,19 +79,24 @@ export class MultiYearViewComponent implements AfterContentInit {
     private _maxDate: D | null;
 
     /** A function used to filter which dates are selectable. */
-    @Input() dateFilter: (date: D) => boolean;
+    @Input()
+    dateFilter: (date: D) => boolean;
 
     /** Emits when a new year is selected. */
-    @Output() readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
+    @Output()
+    readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
 
     /** Emits the selected year. This doesn't imply a change on the selected date */
-    @Output() readonly yearSelected: EventEmitter<D> = new EventEmitter<D>();
+    @Output()
+    readonly yearSelected: EventEmitter<D> = new EventEmitter<D>();
 
     /** Emits when any date is activated. */
-    @Output() readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
+    @Output()
+    readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
 
     /** The body of calendar table */
-    @ViewChild(CalendarBodyComponent) _hcCalendarBody: CalendarBodyComponent;
+    @ViewChild(CalendarBodyComponent)
+    _hcCalendarBody: CalendarBodyComponent;
 
     /** Grid of calendar cells representing the currently displayed years. */
     _years: HcCalendarCell[][];
@@ -147,7 +151,6 @@ export class MultiYearViewComponent implements AfterContentInit {
 
     /** Handles keydown events on the calendar body when calendar is in multi-year view. */
     _handleCalendarBodyKeydown(event: KeyboardEvent): void {
-        // TODO(mmalerba): We currently allow keyboard navigation to disabled dates, but just prevent
         // disabled ones from being selected. This may not be ideal, we should look into whether
         // navigation should skip over disabled dates, and if so, how to implement that efficiently.
 

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DateRangeDirective} from './date-range/date-range.component';
+import {DateRangeDirective} from './date-range/date-range.directive';
 import {PickerOverlayComponent} from './picker-overlay/picker-overlay.component';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {CalendarWrapperComponent} from './calendar-wrapper/calendar-wrapper.component';

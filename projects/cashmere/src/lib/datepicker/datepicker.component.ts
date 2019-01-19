@@ -14,22 +14,24 @@ import {
     ViewContainerRef,
     Inject
 } from '@angular/core';
-import { D } from './datetime/date-formats';
-import { DateAdapter } from './datetime/date-adapter';
-import { createMissingDateImplError } from './datetime/datepicker-errors';
-import { Subject, Subscription, merge } from 'rxjs';
-import { ScrollStrategy, Overlay, ComponentType, OverlayRef, OverlayConfig, PositionStrategy } from '@angular/cdk/overlay';
-import { coerceBooleanProperty } from './utils/boolean-property';
-import { HcCalendarCellCssClasses } from './calendar-body/calendar-body.component';
-import { HcDialogRef } from '../dialog/dialog-ref';
-import { DatepickerContentComponent } from './datepicker-content/datepicker-content.component';
-import { ComponentPortal } from '@angular/cdk/portal';
-import { DatepickerInputDirective } from './datepicker-input/datepicker-input.directive';
-import { DialogService } from '../dialog/dialog.service';
-import { Directionality } from '@angular/cdk/bidi';
-import { DOCUMENT } from '@angular/platform-browser';
-import { take, filter } from 'rxjs/operators';
-import { ESCAPE, UP_ARROW } from '@angular/cdk/keycodes';
+import {D} from './datetime/date-formats';
+import {DateAdapter} from './datetime/date-adapter';
+import {createMissingDateImplError} from './datetime/datepicker-errors';
+import {Subject, Subscription, merge} from 'rxjs';
+import {ScrollStrategy, Overlay, ComponentType, OverlayRef, OverlayConfig, PositionStrategy} from '@angular/cdk/overlay';
+import {coerceBooleanProperty} from './utils/boolean-property';
+import {HcCalendarCellCssClasses} from './calendar-body/calendar-body.component';
+import {HcDialogRef} from '../dialog/dialog-ref';
+import {DatepickerContentComponent} from './datepicker-content/datepicker-content.component';
+import {ComponentPortal} from '@angular/cdk/portal';
+import {DatepickerInputDirective} from './datepicker-input/datepicker-input.directive';
+import {DialogService} from '../dialog/dialog.service';
+import {Directionality} from '@angular/cdk/bidi';
+import {DOCUMENT} from '@angular/platform-browser';
+import {take, filter} from 'rxjs/operators';
+import {ESCAPE, UP_ARROW} from '@angular/cdk/keycodes';
+
+// tslint:disable:no-output-rename
 
 /** Used to generate a unique ID for each datepicker instance. */
 let datepickerUid = 0;
@@ -55,9 +57,6 @@ export class HcDatepickerContentBase {
     constructor(public _elementRef: ElementRef) {}
 }
 
-// TODO(mmalerba): We use a component instead of a directive here so the user can use implicit
-// template reference variables (e.g. #d vs #d="hcDatepicker"). We can change this to a directive
-// if angular adds support for `exportAs: '$implicit'` on directives.
 /** Component responsible for managing the datepicker popup/dialog. */
 @Component({
     selector: 'hc-datepicker',
@@ -71,7 +70,8 @@ export class DatepickerComponent implements OnDestroy {
     private _scrollStrategy: () => ScrollStrategy;
 
     /** An input indicating the type of the custom header component for the calendar, if set. */
-    @Input() calendarHeaderComponent: ComponentType<any>;
+    @Input()
+    calendarHeaderComponent: ComponentType<any>;
 
     /** The date to open the calendar to initially. */
     @Input()
@@ -86,7 +86,8 @@ export class DatepickerComponent implements OnDestroy {
     private _startAt: D | null;
 
     /** The view that the calendar should start in. */
-    @Input() startView: 'month' | 'year' | 'multi-year' = 'month';
+    @Input()
+    startView: 'month' | 'year' | 'multi-year' = 'month';
 
     /**
      * Whether the calendar UI is in touch mode. In touch mode the calendar opens in a dialog rather
@@ -120,25 +121,31 @@ export class DatepickerComponent implements OnDestroy {
      * Emits selected year in multiyear view.
      * This doesn't imply a change on the selected date.
      */
-    @Output() readonly yearSelected: EventEmitter<D> = new EventEmitter<D>();
+    @Output()
+    readonly yearSelected: EventEmitter<D> = new EventEmitter<D>();
 
     /**
      * Emits selected month in year view.
      * This doesn't imply a change on the selected date.
      */
-    @Output() readonly monthSelected: EventEmitter<D> = new EventEmitter<D>();
+    @Output()
+    readonly monthSelected: EventEmitter<D> = new EventEmitter<D>();
 
     /** Classes to be passed to the date picker panel. Supports the same syntax as `ngClass`. */
-    @Input() panelClass: string | string[];
+    @Input()
+    panelClass: string | string[];
 
     /** Function that can be used to add custom CSS classes to dates. */
-    @Input() dateClass: (date: D) => HcCalendarCellCssClasses;
+    @Input()
+    dateClass: (date: D) => HcCalendarCellCssClasses;
 
     /** Emits when the datepicker has been opened. */
-    @Output('opened') openedStream: EventEmitter<void> = new EventEmitter<void>();
+    @Output('opened')
+    openedStream: EventEmitter<void> = new EventEmitter<void>();
 
     /** Emits when the datepicker has been closed. */
-    @Output('closed') closedStream: EventEmitter<void> = new EventEmitter<void>();
+    @Output('closed')
+    closedStream: EventEmitter<void> = new EventEmitter<void>();
 
     /** Whether the calendar is open. */
     @Input()
@@ -211,7 +218,9 @@ export class DatepickerComponent implements OnDestroy {
         @Inject(HC_DATEPICKER_SCROLL_STRATEGY) scrollStrategy: any,
         @Optional() private _dateAdapter: DateAdapter<D>,
         @Optional() private _dir: Directionality,
-        @Optional() @Inject(DOCUMENT) private _document: any
+        @Optional()
+        @Inject(DOCUMENT)
+        private _document: any
     ) {
         if (!this._dateAdapter) {
             throw createMissingDateImplError('DateAdapter');

@@ -16,17 +16,18 @@ import {
     OnDestroy,
     OnChanges
 } from '@angular/core';
-import { HcDatepickerIntl } from '../datepicker-intl';
-import { ComponentPortal, Portal, ComponentType } from '@angular/cdk/portal';
-import { createMissingDateImplError } from '../datetime/datepicker-errors';
-import { HC_DATE_FORMATS, HcDateFormats, D } from '../datetime/date-formats';
-import { DateAdapter } from '../datetime/date-adapter';
-import { Subject, Subscription } from 'rxjs';
-import { yearsPerPage, MultiYearViewComponent } from '../multi-year-view/multi-year-view.component';
-import { HcCalendarCellCssClasses } from '../calendar-body/calendar-body.component';
-import { MonthViewComponent } from '../month-view/month-view.component';
-import { YearViewComponent } from '../year-view/year-view.component';
+import {HcDatepickerIntl} from '../datepicker-intl';
+import {ComponentPortal, Portal, ComponentType} from '@angular/cdk/portal';
+import {createMissingDateImplError} from '../datetime/datepicker-errors';
+import {HC_DATE_FORMATS, HcDateFormats, D} from '../datetime/date-formats';
+import {DateAdapter} from '../datetime/date-adapter';
+import {Subject, Subscription} from 'rxjs';
+import {yearsPerPage, MultiYearViewComponent} from '../multi-year-view/multi-year-view.component';
+import {HcCalendarCellCssClasses} from '../calendar-body/calendar-body.component';
+import {MonthViewComponent} from '../month-view/month-view.component';
+import {YearViewComponent} from '../year-view/year-view.component';
 
+// tslint:disable:no-use-before-declare
 /**
  * Possible views for the calendar.
  * @docs-private
@@ -35,7 +36,6 @@ export type CalendarViewComponent = 'month' | 'year' | 'multi-year';
 
 /** Default header for hcCalendar */
 @Component({
-    // moduleId: module.id,
     selector: 'hc-calendar-header',
     templateUrl: 'calendar-header.html',
     exportAs: 'hcCalendarHeader',
@@ -47,7 +47,9 @@ export class CalendarHeaderComponent {
         private _intl: HcDatepickerIntl,
         @Inject(forwardRef(() => CalendarComponent)) public calendar: CalendarComponent,
         @Optional() private _dateAdapter: DateAdapter<D>,
-        @Optional() @Inject(HC_DATE_FORMATS) private _dateFormats: HcDateFormats,
+        @Optional()
+        @Inject(HC_DATE_FORMATS)
+        private _dateFormats: HcDateFormats,
         changeDetectorRef: ChangeDetectorRef
     ) {
         this.calendar.stateChanges.subscribe(() => changeDetectorRef.markForCheck());
@@ -152,10 +154,10 @@ export class CalendarHeaderComponent {
  * @docs-private
  */
 @Component({
-    // moduleId: module.id,
     selector: 'hc-calendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['calendar.component.scss'],
+    // tslint:disable-next-line:use-host-property-decorator
     host: {
         class: 'hc-calendar'
     },
@@ -165,7 +167,8 @@ export class CalendarHeaderComponent {
 })
 export class CalendarComponent implements AfterContentInit, AfterViewChecked, OnDestroy, OnChanges {
     /** An input indicating the type of the header component, if set. */
-    @Input() headerComponent: ComponentType<any>;
+    @Input()
+    headerComponent: ComponentType<any>;
 
     /** A portal containing the header component type for this calendar. */
     _calendarHeaderPortal: Portal<any>;
@@ -190,7 +193,8 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     private _startAt: D | null;
 
     /** Whether the calendar should be started in month or year view. */
-    @Input() startView: CalendarViewComponent = 'month';
+    @Input()
+    startView: CalendarViewComponent = 'month';
 
     /** The currently selected date. */
     @Input()
@@ -223,37 +227,46 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     private _maxDate: D | null;
 
     /** Function used to filter which dates are selectable. */
-    @Input() dateFilter: (date: D) => boolean;
+    @Input()
+    dateFilter: (date: D) => boolean;
 
     /** Function that can be used to add custom CSS classes to dates. */
-    @Input() dateClass: (date: D) => HcCalendarCellCssClasses;
+    @Input()
+    dateClass: (date: D) => HcCalendarCellCssClasses;
 
     /** Emits when the currently selected date changes. */
-    @Output() readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
+    @Output()
+    readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
 
     /**
      * Emits the year chosen in multiyear view.
      * This doesn't imply a change on the selected date.
      */
-    @Output() readonly yearSelected: EventEmitter<D> = new EventEmitter<D>();
+    @Output()
+    readonly yearSelected: EventEmitter<D> = new EventEmitter<D>();
 
     /**
      * Emits the month chosen in year view.
      * This doesn't imply a change on the selected date.
      */
-    @Output() readonly monthSelected: EventEmitter<D> = new EventEmitter<D>();
+    @Output()
+    readonly monthSelected: EventEmitter<D> = new EventEmitter<D>();
 
     /** Emits when any date is selected. */
-    @Output() readonly _userSelection: EventEmitter<void> = new EventEmitter<void>();
+    @Output()
+    readonly _userSelection: EventEmitter<void> = new EventEmitter<void>();
 
     /** Reference to the current month view component. */
-    @ViewChild(MonthViewComponent) monthView: MonthViewComponent;
+    @ViewChild(MonthViewComponent)
+    monthView: MonthViewComponent;
 
     /** Reference to the current year view component. */
-    @ViewChild(YearViewComponent) yearView: YearViewComponent;
+    @ViewChild(YearViewComponent)
+    yearView: YearViewComponent;
 
     /** Reference to the current multi-year view component. */
-    @ViewChild(MultiYearViewComponent) multiYearView: MultiYearViewComponent;
+    @ViewChild(MultiYearViewComponent)
+    multiYearView: MultiYearViewComponent;
 
     /**
      * The current active date. This determines which time period is shown and which date is
@@ -286,7 +299,9 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     constructor(
         _intl: HcDatepickerIntl,
         @Optional() private _dateAdapter: DateAdapter<D>,
-        @Optional() @Inject(HC_DATE_FORMATS) private _dateFormats: HcDateFormats,
+        @Optional()
+        @Inject(HC_DATE_FORMATS)
+        private _dateFormats: HcDateFormats,
         private _changeDetectorRef: ChangeDetectorRef
     ) {
         if (!this._dateAdapter) {

@@ -11,12 +11,15 @@ import {
     NgZone,
     SimpleChanges
 } from '@angular/core';
-import { take } from 'rxjs/operators';
+import {take} from 'rxjs/operators';
+
+// tslint:disable:use-host-property-decorator
+// tslint:disable:component-selector
 
 /**
  * Extra CSS classes that can be associated with a calendar cell.
  */
-export type HcCalendarCellCssClasses = string | string[] | Set<string> | { [key: string]: any };
+export type HcCalendarCellCssClasses = string | string[] | Set<string> | {[key: string]: any};
 
 /**
  * An internal class that represents the data corresponding to a single calendar cell.
@@ -37,7 +40,6 @@ export class HcCalendarCell {
  * @docs-private
  */
 @Component({
-    // moduleId: module.id,
     selector: '[hc-calendar-body]',
     templateUrl: './calendar-body.component.html',
     styleUrls: ['calendar-body.component.scss'],
@@ -52,34 +54,43 @@ export class HcCalendarCell {
 })
 export class CalendarBodyComponent implements OnChanges {
     /** The label for the table. (e.g. "Jan 2017"). */
-    @Input() label: string;
+    @Input()
+    label: string;
 
     /** The cells to display in the table. */
-    @Input() rows: HcCalendarCell[][];
+    @Input()
+    rows: HcCalendarCell[][];
 
     /** The value in the table that corresponds to today. */
-    @Input() todayValue: number;
+    @Input()
+    todayValue: number;
 
     /** The value in the table that is currently selected. */
-    @Input() selectedValue: number;
+    @Input()
+    selectedValue: number;
 
     /** The minimum number of free cells needed to fit the label in the first row. */
-    @Input() labelMinRequiredCells: number;
+    @Input()
+    labelMinRequiredCells: number;
 
     /** The number of columns in the table. */
-    @Input() numCols = 7;
+    @Input()
+    numCols = 7;
 
     /** The cell number of the active cell in the table. */
-    @Input() activeCell = 0;
+    @Input()
+    activeCell = 0;
 
     /**
      * The aspect ratio (width / height) to use for the cells in the table. This aspect ratio will be
      * maintained even as the table resizes.
      */
-    @Input() cellAspectRatio = 1;
+    @Input()
+    cellAspectRatio = 1;
 
     /** Emits when a new value is selected. */
-    @Output() readonly selectedValueChange: EventEmitter<number> = new EventEmitter<number>();
+    @Output()
+    readonly selectedValueChange: EventEmitter<number> = new EventEmitter<number>();
 
     /** The number of blank cells to put at the beginning for the first row. */
     _firstRowOffset: number;
@@ -100,7 +111,7 @@ export class CalendarBodyComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         const columnChanges = changes.numCols;
-        const { rows, numCols } = this;
+        const {rows, numCols} = this;
 
         if (changes.rows || columnChanges) {
             this._firstRowOffset = rows && rows.length && rows[0].length ? numCols - rows[0].length : 0;

@@ -1,7 +1,7 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, AfterViewInit, ViewChild } from '@angular/core';
-import { HcDatepickerAnimations } from '../datepicker-animations';
-import { CalendarComponent } from '../calendar/calendar.component';
-import { DatepickerComponent } from '../datepicker.component';
+import {Component, ViewEncapsulation, ChangeDetectionStrategy, AfterViewInit, ViewChild} from '@angular/core';
+import {HcDatepickerAnimations} from '../datepicker-animations';
+import {CalendarComponent} from '../calendar/calendar.component';
+import {DatepickerComponent} from '../datepicker.component';
 
 /**
  * Component used as the content for the datepicker dialog and popup. We use this instead of using
@@ -11,9 +11,9 @@ import { DatepickerComponent } from '../datepicker.component';
  * @docs-private
  */
 @Component({
-    // moduleId: module.id,
     selector: 'hc-datepicker-content',
     templateUrl: './datepicker-content.component.html',
+    // tslint:disable-next-line:use-host-property-decorator
     host: {
         class: 'hc-datepicker-content',
         '[@transformPanel]': '"enter"',
@@ -26,7 +26,8 @@ import { DatepickerComponent } from '../datepicker.component';
 })
 export class DatepickerContentComponent implements AfterViewInit {
     /** Reference to the internal calendar component. */
-    @ViewChild(CalendarComponent) _calendar: CalendarComponent;
+    @ViewChild(CalendarComponent)
+    _calendar: CalendarComponent;
 
     /** Reference to the datepicker that created the overlay. */
     datepicker: DatepickerComponent;
