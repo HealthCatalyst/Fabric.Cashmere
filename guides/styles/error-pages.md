@@ -17,16 +17,12 @@ The error page should include the app's `hc-navbar` but without any of the navba
 
 ```html
 <div class="error-tile">
-    <div class="content-column">
-        <div class="error-img"></div>
-    </div>
+    <div class="content-column"><div class="error-img"></div></div>
     <div class="content-column">
         <div class="error-header-code">404</div>
-        <div class="error-message">
-            Sorry, we can't find the page you're looking for!
-        </div>
+        <div class="error-message">Sorry, we can't find the page you're looking for!</div>
     </div>
-    <hr>
+    <hr />
     <div class="error-button">Go to Homepage</div>
 </div>
 ```
@@ -56,14 +52,11 @@ The error page should include the app's `hc-navbar` but without any of the navba
 For errors that need to display a string of text rather than an error code, the class `error-header-string` may be used instead. For longer error messages (a full sentence or more), the `error-message-light` class should be used. For access errors, an alternate image is available using the `access-error-img` class.
 
 ```html
-<div class="content-column">
-    <div class="access-error-img"></div>
-</div>
+<div class="content-column"><div class="access-error-img"></div></div>
 <div class="content-column">
     <div class="error-header-string">Access Denied</div>
     <div class="error-message-light">
-        Looks like you are missing permissions to access this resource.
-        Please contact your systems administrator.
+        Looks like you are missing permissions to access this resource. Please contact your systems administrator.
     </div>
 </div>
 ```

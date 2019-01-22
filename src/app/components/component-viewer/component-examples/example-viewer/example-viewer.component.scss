@@ -1,3 +1,48 @@
-.tab-content {
-    padding: 10px 20px;
+@import 'scss/colors';
+@import 'scss/functions';
+@import 'scss/mixins.scss';
+@import '~highlight.js/styles/github.css';
+
+.hc-tile:first-child {
+    margin-top: 20px;
+}
+
+.example-container {
+    padding-top: 20px;
+}
+
+.docs-api-h3 {
+    @include fontSize(15px);
+    text-transform: uppercase;
+    color: $dark-blue;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+}
+
+.icon-left {
+    margin-right: 5px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+
+    h3 {
+        flex: 1;
+        margin-top: 0;
+    }
+}
+
+pre {
+    padding: 0;
+    overflow: hidden;
+
+    code {
+        margin-top: -15px;
+        margin-bottom: -15px;
+    }
+}
+
+.example-code-tab h4 {
+    margin-top: 10px;
 }

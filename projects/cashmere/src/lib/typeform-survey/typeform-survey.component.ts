@@ -10,15 +10,17 @@ export class TypeformWindow extends Window {
 
 @Component({
     selector: 'hc-typeform-survey',
-    template: `<a class="typeform-share link"
-                [href]="surveyUri"
-                data-mode="drawer_right"
-                data-auto-open="true"
-                data-submit-close-delay="0"
-                target="_blank"
-                rel="noopener">
-              </a>
-              `,
+    template: `
+        <a
+            class="typeform-share link"
+            [href]="surveyUri"
+            data-mode="drawer_right"
+            data-auto-open="true"
+            data-submit-close-delay="0"
+            target="_blank"
+            rel="noopener"
+        ></a>
+    `,
     styles: []
 })
 export class TypeformSurveyComponent {
