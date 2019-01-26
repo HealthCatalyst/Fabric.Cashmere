@@ -5,7 +5,9 @@ import {By} from '@angular/platform-browser';
 import {RadioGroupDirective} from './radio';
 
 @Component({
-    template: `<hc-radio-group [disabled]="true"></hc-radio-group>`
+    template: `
+        <hc-radio-group [disabled]="true"></hc-radio-group>
+    `
 })
 class TestRadioGroupComponent {}
 

@@ -7,7 +7,9 @@ import {By} from '@angular/platform-browser';
 
 @Component({
     selector: `hc-host-component`,
-    template: `<hc-navbar-link></hc-navbar-link>`
+    template: `
+        <hc-navbar-link></hc-navbar-link>
+    `
 })
 class TestHostComponent {
     @ViewChild(NavbarLinkComponent)

@@ -8,18 +8,15 @@ import {NavbarModule} from './navbar.module';
 
 @Component({
     template: `
-    <hc-navbar brandIcon="./assets/TriFlame.svg" user="Christine K."
-        [homeUri]="undefined" [fixedTop]="false">
-    <hc-navbar-link class="link" [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
-    <hc-navbar-link class="link" [active]="true" uri="undefined" linkText="Admin"></hc-navbar-link>
-    <hc-navbar-mobile-menu>
-        <hc-list>
-            <hc-list-item routerLink="/home" routerLinkActive="active-link">
-                <span hcListLine>Home</span>
-            </hc-list-item>
-        </hc-list>
-    </hc-navbar-mobile-menu>
-</hc-navbar>
+        <hc-navbar brandIcon="./assets/TriFlame.svg" user="Christine K." [homeUri]="undefined" [fixedTop]="false">
+            <hc-navbar-link class="link" [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
+            <hc-navbar-link class="link" [active]="true" uri="undefined" linkText="Admin"></hc-navbar-link>
+            <hc-navbar-mobile-menu>
+                <hc-list>
+                    <hc-list-item routerLink="/home" routerLinkActive="active-link"><span hcListLine>Home</span></hc-list-item>
+                </hc-list>
+            </hc-navbar-mobile-menu>
+        </hc-navbar>
     `
 })
 class TestAppComponent {

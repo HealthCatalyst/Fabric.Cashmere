@@ -5,9 +5,9 @@ import {ActiveModal} from './active-modal';
 
 @Component({
     selector: 'hc-modal-window',
-    template: `<div [class]="'hc-modal hc-modal-' + _size">
-                     <ng-content></ng-content>
-               </div>`,
+    template: `
+        <div [class]="'hc-modal hc-modal-' + _size"><ng-content></ng-content></div>
+    `,
     styleUrls: ['./modal-window.component.scss'],
     animations: [
         trigger('fadeInOut', [
