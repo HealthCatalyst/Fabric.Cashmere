@@ -1,6 +1,6 @@
 import {PaginationComponent} from '../pagination/pagination.component';
 import {HcTableDataSource} from './table-data-source';
-import { HcSort } from '../sort';
+import {HcSort} from '../sort';
 
 interface PeriodicElement {
     name: string;
@@ -51,13 +51,11 @@ describe('HcTableDataSource', () => {
     });
 
     describe('sortData()', () => {
-        it('sorts numbers',
-         () => {
+        it('sorts numbers', () => {
             const sort = new HcSort();
             sort.direction = 'asc';
             sort.active = 'weight';
-            const result = dataSource.sortData(ELEMENT_DATA,
-                 sort);
+            const result = dataSource.sortData(ELEMENT_DATA, sort);
             expect(result.map(e => e.weight).toString()).toBe(
                 [
                     1.0079,
@@ -80,7 +78,8 @@ describe('HcTableDataSource', () => {
                     150.9994,
                     180.9984,
                     200.1797
-            ].toString());
+                ].toString()
+            );
         });
         it('sorts dates', () => {
             const sort = new HcSort();
@@ -109,7 +108,8 @@ describe('HcTableDataSource', () => {
                     new Date('January 1 2005'),
                     new Date('January 1 2006'),
                     new Date('January 1 2007')
-                ].toString());
+                ].toString()
+            );
         });
         it('sorts strings', () => {
             const sort = new HcSort();
@@ -138,7 +138,8 @@ describe('HcTableDataSource', () => {
                     'Neon',
                     'Nitrogen',
                     'Oxygen'
-                ].toString());
+                ].toString()
+            );
         });
     });
 });

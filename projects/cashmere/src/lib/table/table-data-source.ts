@@ -14,7 +14,7 @@ import {HcSort, Sort} from '../sort/index';
 import {map} from 'rxjs/operators';
 import {PaginationComponent, LoadMorePaginationComponent, PageEvent} from '../pagination/index';
 import {BasePaginationComponent} from '../pagination/base-pagination';
-import { isString } from 'util';
+import {isString} from 'util';
 
 /**
  * Corresponds to `Number.MAX_SAFE_INTEGER`. Moved out into a variable here due to
@@ -126,7 +126,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
     sortingDataAccessor: ((data: T, sortHeaderId: string) => string | number) = (data: T, sortHeaderId: string): string | number => {
         const value: any = data[sortHeaderId];
 
-         if (_isNumberValue(value)) {
+        if (_isNumberValue(value)) {
             const numberValue = Number(value);
 
             // Numbers beyond `MAX_SAFE_INTEGER` can't be compared reliably so we
@@ -141,7 +141,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
 
         // convert null/undefined to an empty string so they sort first
         if (value === null || value === undefined) {
-            return "";
+            return '';
         }
 
         // leave dates or other values as is
