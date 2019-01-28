@@ -18,6 +18,12 @@
         <td hc-cell *hcCellDef="let element">{{element.weight}}</td>
     </ng-container>
 
+    <!-- Discovered -->
+    <ng-container hcColumnDef="discovered">
+        <th hc-header-cell *hcHeaderCellDef hc-sort-header arrowPosition="before">Discovered</th>
+        <td hc-cell *hcCellDef="let element">{{element.discovered | date:'fullDate'}}</td>
+    </ng-container>
+
     <!-- Symbol Column -->
     <ng-container hcColumnDef="symbol">
         <th hc-header-cell *hcHeaderCellDef>Symbol</th>
