@@ -1,4 +1,4 @@
-<nav class="hc-navbar" [ngClass]="{'fixed-top': fixedTop}">
+<nav #navbar class="hc-navbar" [ngClass]="{'fixed-top': fixedTop}">
     <div class="navbar-brand">
         <a [routerLink]="homeUri" class="brand">
             <img src="{{brandIcon}}">
@@ -6,17 +6,17 @@
     </div>
     <div class="navbar-app" [ngClass]="{'logo-condense': _logoCondense}">
         <a [routerLink]="homeUri" class="app" *ngIf="appIcon">
-            <img src="{{appIcon}}">
+            <img src="{{appIcon}}" (load)="appIconLoaded()">
         </a>
     </div>
-    <div class="hc-navbar-link-container">
+    <div #navlinks class="hc-navbar-link-container">
         <ng-content select="hc-navbar-link"></ng-content>
         <div class="hc-navbar-more-links" title="More" *ngIf="_collapse" [hcPopover]="navbarMore" popperPlacement="bottom">
             More<hc-icon fontSet="fa" fontIcon="fa-chevron-down" hcIconSm></hc-icon>
         </div>
     </div>
 
-    <div class="hc-navbar-right-container">
+    <div #rightcontainer class="hc-navbar-right-container">
         <ng-content></ng-content>
     </div>
     <div class="hc-navbar-mobile-menu" (click)="_toggleMobileMenu()">
