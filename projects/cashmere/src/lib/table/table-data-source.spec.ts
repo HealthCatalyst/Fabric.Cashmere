@@ -76,9 +76,9 @@ describe('HcTableDataSource', () => {
                     3,
                     12341234,
                     NaN,
-                    'Thu Jan 01 1970 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Tue Jan 01 1980 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Mon Jan 01 1990 00:00:00 GMT-0700 (Mountain Standard Time)'
+                    new Date('January 1 1970'),
+                    new Date('January 1 1980'),
+                    new Date('January 1 1990')
             ].toString());
         });
         it('sorts numbers',
@@ -119,26 +119,26 @@ describe('HcTableDataSource', () => {
             const result = dataSource.sortData(ELEMENT_DATA, sort);
             expect(result.map(e => e.discoveryDate).toString()).toBe(
                 [
-                    'Mon Jan 01 1010 00:00:00 GMT-0659 (Mountain Standard Time)',
-                    'Wed Jan 01 1800 00:00:00 GMT-0659 (Mountain Standard Time)',
-                    'Mon Jan 01 1900 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Tue Jan 02 1900 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Thu Feb 01 1900 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Tue May 01 1900 00:00:00 GMT-0700 (Mountain Daylight Time)',
-                    'Fri Jun 01 1900 00:00:00 GMT-0700 (Mountain Daylight Time)',
-                    'Thu Nov 01 1900 00:00:00 GMT-0700 (Mountain Daylight Time)',
-                    'Mon Jan 01 1923 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Mon Jan 01 1923 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Mon Jan 01 1945 00:00:00 GMT-0600 (Mountain Standard Time)',
-                    'Sun Jan 01 1956 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Thu Jan 01 1976 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Sat Jan 01 2000 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Mon Jan 01 2001 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Tue Jan 01 2002 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Thu Jan 01 2004 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Sat Jan 01 2005 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Sun Jan 01 2006 00:00:00 GMT-0700 (Mountain Standard Time)',
-                    'Mon Jan 01 2007 00:00:00 GMT-0700 (Mountain Standard Time)'
+                    new Date('January 1 1010'),
+                    new Date('January 1 1800'),
+                    new Date('January 1 1900'),
+                    new Date('January 2 1900'),
+                    new Date('February 1 1900'),
+                    new Date('May 1 1900'),
+                    new Date('June 1 1900'),
+                    new Date('November 1 1900'),
+                    new Date('January 1 1923'),
+                    new Date('January 1 1923'),
+                    new Date('January 1 1945'),
+                    new Date('January 1 1956'),
+                    new Date('January 1 1976'),
+                    new Date('January 1 2000'),
+                    new Date('January 1 2001'),
+                    new Date('January 1 2002'),
+                    new Date('January 1 2004'),
+                    new Date('January 1 2005'),
+                    new Date('January 1 2006'),
+                    new Date('January 1 2007')
                 ].toString());
         });
         it('sorts strings', () => {
