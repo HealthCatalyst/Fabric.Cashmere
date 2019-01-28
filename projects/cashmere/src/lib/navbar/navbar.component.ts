@@ -1,4 +1,5 @@
 import {
+    AfterContentInit,
     AfterViewInit,
     ChangeDetectorRef,
     Component,
@@ -6,13 +7,16 @@ import {
     ElementRef,
     HostListener,
     Input,
+    OnInit,
     QueryList,
     ViewChild,
     ViewEncapsulation
 } from '@angular/core';
-import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu.component';
-import {NavbarLinkComponent} from './navbar-link/navbar-link.component';
+import {forkJoin, Subject} from 'rxjs';
 import {PopoverContentComponent} from '../popover/popoverContent.component';
+import {MoreItem} from './more-item';
+import {NavbarLinkComponent} from './navbar-link/navbar-link.component';
+import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu.component';
 
 /** The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. */
 @Component({
@@ -21,7 +25,7 @@ import {PopoverContentComponent} from '../popover/popoverContent.component';
     styleUrls: ['./navbar.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class NavbarComponent implements AfterViewInit {
+export class NavbarComponent implements OnInit, AfterViewInit, AfterContentInit {
     /** Display name of current user */
     @Input()
     user: string = '';
@@ -48,16 +52,24 @@ export class NavbarComponent implements AfterViewInit {
     @ContentChildren(NavbarLinkComponent)
     _navLinks: QueryList<NavbarLinkComponent>;
 
+    @ViewChild('navbar') navbarContent: ElementRef;
+    @ViewChild('rightcontainer') rightContent: ElementRef;
+    @ViewChild('navlinks') navContent: ElementRef;
+
     @ViewChild(PopoverContentComponent)
     _navbarMore: PopoverContentComponent;
 
+    private _logoReady: Subject<boolean> = new Subject();
+    private _navLinksReady: Subject<boolean> = new Subject();
+    private _rightLinksReady: Subject<boolean> = new Subject();
     private _menuOpen: boolean = false;
     private _linkWidths: Array<number> = [];
+    private _rightWidth: number = 0;
     private _linksMax: number = 0;
     private _logoWidth: number = 0;
     public _collapse: boolean = false;
     public _logoCondense: boolean = false;
-    public _moreList: Array<Object> = [];
+    public _moreList: Array<MoreItem> = [];
 
     @HostListener('window:resize')
     _navResize() {
@@ -65,23 +77,23 @@ export class NavbarComponent implements AfterViewInit {
         this._moreList = [];
 
         // If links is zero the page is smaller than the first responsive breakpoint
-        if (this.el.nativeElement.querySelector('.hc-navbar-link-container').clientWidth <= 0) {
+        if (this.navbarContent.nativeElement.clientWidth <= 0) {
             return;
         }
 
         // Figure out all the relevant element widths
-        const navbarWidth: number = this.el.nativeElement.querySelector('.hc-navbar').scrollWidth;
-        const icons: number = this.el.nativeElement.querySelector('.hc-navbar-right-container').scrollWidth;
+        this._collectNavLinkWidths();
+        this._setRightContainerWidth();
+
+        const navbarWidth: number = this.navbarContent.nativeElement.scrollWidth;
+        const icons: number = this._rightWidth;
         const more: number = 116;
         const switcher: number = 55;
         let links: number = this._linksMax;
-        if (this._logoWidth === 0) {
-            this._logoWidth = this.el.nativeElement.querySelector('.navbar-app').scrollWidth;
-        }
         const logoWidth = this._logoWidth;
         const condensedLogoWidth = logoWidth - 50;
         const regularWidth = switcher + logoWidth + links + icons;
-        const condensedWidth = switcher + condensedLogoWidth + links + icons;
+        const condensedWidth = switcher + condensedLogoWidth + links + more + icons;
 
         if (navbarWidth <= regularWidth) {
             this._logoCondense = true;
@@ -92,7 +104,7 @@ export class NavbarComponent implements AfterViewInit {
                 this._collapse = true;
                 tempArray[0].hide();
                 links -= this._linkWidths[0];
-                this._moreList.push({name: tempArray[0].linkText, uri: tempArray[0].uri});
+                this._moreList.push({name: tempArray[0].linkText, uri: tempArray[0].uri} as MoreItem);
 
                 for (let i = 1; i < tempArray.length; i++) {
                     if (navbarWidth <= switcher + condensedLogoWidth + links + icons + more) {
@@ -119,19 +131,49 @@ export class NavbarComponent implements AfterViewInit {
 
     constructor(private el: ElementRef, private ref: ChangeDetectorRef) {}
 
-    ngAfterViewInit() {
-        let scope = this;
-        setTimeout(function() {
-            scope._navLinks.forEach(t => {
-                scope._linksMax += t._getWidth();
-                scope._linkWidths.push(t._getWidth());
-            });
-            scope._linkWidths.reverse();
-
-            scope._navResize();
-        }, 100);
+    private _setRightContainerWidth() {
+        if (this._rightWidth === 0) {
+            this._rightWidth = this.rightContent.nativeElement.scrollWidth;
+        }
     }
 
+    private _collectNavLinkWidths() {
+        if (this._linkWidths.length === 0 || this._linkWidths.every(linkWidth => linkWidth === 0)) {
+            this._linkWidths = [];
+            this._navLinks.forEach(t => {
+                this._linksMax += t._getWidth();
+                this._linkWidths.push(t._getWidth());
+            });
+            this._linkWidths.reverse();
+        }
+    }
+
+    ngOnInit() {
+        forkJoin([this._logoReady, this._navLinksReady, this._rightLinksReady]).subscribe(() => {
+            this._navResize();
+        });
+        if (!this.appIcon) {
+            this.appIconLoaded();
+        }
+    }
+    appIconLoaded() {
+        this._logoWidth = this.el.nativeElement.querySelector('.navbar-app').scrollWidth;
+        this._logoReady.next(true);
+        this._logoReady.complete();
+    }
+    ngAfterContentInit() {
+        setTimeout(() => {
+            this._navLinksReady.next(true);
+            this._navLinksReady.complete();
+        }, 100);
+    }
+    ngAfterViewInit() {
+        setTimeout(() => {
+            this._setRightContainerWidth();
+            this._rightLinksReady.next(true);
+            this._rightLinksReady.complete();
+        }, 100);
+    }
     _toggleMobileMenu() {
         if (this._mobileMenu.first) {
             if (this._menuOpen) {
