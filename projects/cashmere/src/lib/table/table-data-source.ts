@@ -14,6 +14,7 @@ import {HcSort, Sort} from '../sort/index';
 import {map} from 'rxjs/operators';
 import {PaginationComponent, LoadMorePaginationComponent, PageEvent} from '../pagination/index';
 import {BasePaginationComponent} from '../pagination/base-pagination';
+import {isString} from 'util';
 
 /**
  * Corresponds to `Number.MAX_SAFE_INTEGER`. Moved out into a variable here due to
@@ -122,9 +123,34 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * @param data Data object that is being accessed.
      * @param sortHeaderId The name of the column that represents the data.
      */
-    sortingDataAccessor: ((data: T, sortHeaderId: string) => string) = (data: T, sortHeaderId: string): string => {
-        return `${data[sortHeaderId]}`.toLocaleLowerCase();
+    sortingDataAccessor: ((data: T, sortHeaderId: string) => string | number) = (data: T, sortHeaderId: string): string | number => {
+        const value: any = data[sortHeaderId];
+
+        if (_isNumberValue(value)) {
+            const numberValue = Number(value);
+
+            // Numbers beyond `MAX_SAFE_INTEGER` can't be compared reliably so we
+            // return them as strings. For more info: https://goo.gl/y5vbSg
+            return numberValue < MAX_SAFE_INTEGER ? numberValue : `${value}`;
+        }
+
+        // lowercase strings
+        if (isString(value)) {
+            return value.toLocaleLowerCase();
+        }
+
+        // convert null/undefined to an empty string so they sort first
+        if (value === null || value === undefined) {
+            return '';
+        }
+
+        // leave dates or other values as is
+        return value;
     };
+
+    // sortingDataAccessor: ((data: T, sortHeaderId: string) => string) = (data: T, sortHeaderId: string): string => {
+    //     return `${data[sortHeaderId]}`.toLocaleLowerCase();
+    // };
 
     /**
      * Gets a sorted copy of the data array based on the state of the HcSort. Called
