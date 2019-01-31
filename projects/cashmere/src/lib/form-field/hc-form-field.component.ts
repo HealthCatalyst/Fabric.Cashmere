@@ -1,4 +1,14 @@
-import {AfterContentInit, Component, ContentChild, ContentChildren, HostBinding, QueryList, ViewEncapsulation, Input} from '@angular/core';
+import {
+    AfterContentInit,
+    Component,
+    ContentChild,
+    ContentChildren,
+    HostBinding,
+    QueryList,
+    ViewEncapsulation,
+    Input,
+    ElementRef
+} from '@angular/core';
 import {HcFormControlComponent} from './hc-form-control.component';
 import {HcErrorComponent} from './hc-error.component';
 import {HcPrefixDirective} from './hc-prefix.directive';
@@ -49,10 +59,16 @@ export class HcFormFieldComponent implements AfterContentInit {
         this._inline = parseBooleanAttribute(isInline);
     }
 
+    constructor(private _elementRef: ElementRef<HTMLInputElement>) {}
+
     ngAfterContentInit(): void {
         if (!this._control) {
             throw getControlMissing();
         }
+    }
+
+    getConnectedOverlayOrigin(): ElementRef {
+        return this._elementRef;
     }
 
     _shouldShowErrorMessages(): boolean {

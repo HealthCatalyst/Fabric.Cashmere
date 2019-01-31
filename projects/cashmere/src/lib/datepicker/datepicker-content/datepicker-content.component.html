@@ -1,0 +1,17 @@
+<hc-calendar cdkTrapFocus
+    [id]="datepicker.id"
+    [ngClass]="datepicker.panelClass"
+    [startAt]="datepicker.startAt"
+    [startView]="datepicker.startView"
+    [minDate]="datepicker._minDate"
+    [maxDate]="datepicker._maxDate"
+    [dateFilter]="datepicker._dateFilter"
+    [headerComponent]="datepicker.calendarHeaderComponent"
+    [selected]="datepicker._selected"
+    [dateClass]="datepicker.dateClass"
+    [@fadeInCalendar]="'enter'"
+    (selectedChange)="datepicker.select($event)"
+    (yearSelected)="datepicker._selectYear($event)"
+    (monthSelected)="datepicker._selectMonth($event)"
+    (_userSelection)="datepicker.close()">
+</hc-calendar>

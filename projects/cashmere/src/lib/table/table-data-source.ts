@@ -161,7 +161,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * @param data The array of data that should be sorted.
      * @param sort The connected HcSort that holds the current sort state.
      */
-    sortData: ((data: T[], sort: HcSort) => T[]) = (data: T[], sort: HcSort): T[] => {
+    sortData: (data: T[], sort: HcSort) => T[] = (data: T[], sort: HcSort): T[] => {
         const active = sort.active;
         const direction = sort.direction;
         if (!active || direction === '') {
@@ -204,7 +204,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * @param filter Filter string that has been set on the data source.
      * @returns Whether the filter matches against the data
      */
-    filterPredicate: ((data: T, filter: string) => boolean) = (data: T, filter: string): boolean => {
+    filterPredicate: (data: T, filter: string) => boolean = (data: T, filter: string): boolean => {
         // Transform the data into a lowercase string of all property values.
         const accumulator = (currentTerm, key) => currentTerm + data[key];
         const dataStr = Object.keys(data)
