@@ -23,9 +23,7 @@ export class MyComponent implements OnInit{
 ```
 
 ```html
-<button hc-button hcDateRange [options]="options">
-    Click Me
-</button>
+<button hc-button hcDateRange [options]="options">Click Me</button>
 ```
 
 The default if options are not setup

@@ -202,9 +202,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CashmereModule } from './cashmere.module';
 ${(exampleModules as ExampleInfo[])
-    .concat(exampleComponents)
-    .map(x => x.import)
-    .join('\n')}
+        .concat(exampleComponents)
+        .map(x => x.import)
+        .join('\n')}
 
 @NgModule({
     imports: [

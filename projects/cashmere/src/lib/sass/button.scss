@@ -46,7 +46,7 @@ $btn-icon-sz: 18px;
     background-image: none;
     border: none;
     border-radius: 4px;
-    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
 
     &[disabled] {
         cursor: not-allowed;
@@ -285,7 +285,7 @@ $btn-icon-sz: 18px;
 
 @mixin hc-split-button-item() {
     @include fontSize(14px);
-    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
     color: $offblack;
     padding: 6px 16px;
     margin: 0 -16px;
