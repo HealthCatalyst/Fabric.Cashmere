@@ -43,7 +43,7 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
         border-width: $popover-arrow-width $popover-arrow-width 0 $popover-arrow-width;
         border-color: $popover-arrow-outer-color transparent transparent transparent;
         bottom: -$popover-arrow-width;
-        left: calc(50% - $popover-arrow-width);
+        left: calc(50% - #{$popover-arrow-width});
         margin-top: 0;
         margin-bottom: 0;
     }
@@ -54,7 +54,7 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
         border-width: 0 $popover-arrow-width $popover-arrow-width $popover-arrow-width;
         border-color: transparent transparent $popover-arrow-outer-color transparent;
         top: -$popover-arrow-width;
-        left: calc(50% - $popover-arrow-width);
+        left: calc(50% - #{$popover-arrow-width});
         margin-top: 0;
         margin-bottom: 0;
     }
@@ -65,7 +65,7 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
         border-width: $popover-arrow-width $popover-arrow-width $popover-arrow-width 0;
         border-color: transparent $popover-arrow-outer-color transparent transparent;
         left: -$popover-arrow-width;
-        top: calc(50% - $popover-arrow-width);
+        top: calc(50% - #{$popover-arrow-width});
         margin-left: 0;
         margin-right: 0;
     }
@@ -76,7 +76,7 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
         border-width: $popover-arrow-width 0 $popover-arrow-width $popover-arrow-width;
         border-color: transparent transparent transparent $popover-arrow-outer-color;
         right: -$popover-arrow-width;
-        top: calc(50% - $popover-arrow-width);
+        top: calc(50% - #{$popover-arrow-width});
         margin-left: 0;
         margin-right: 0;
     }
