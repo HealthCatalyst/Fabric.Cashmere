@@ -1,0 +1,20 @@
+.calendar-button {
+    box-sizing: border-box;
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    outline: 0;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    color: inherit;
+    background: 0 0;
+    line-height: 1.5;
+}
