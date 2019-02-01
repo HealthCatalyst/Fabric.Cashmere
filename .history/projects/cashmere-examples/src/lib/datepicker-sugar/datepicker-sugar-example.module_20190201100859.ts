@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {PlatformModule} from '@angular/cdk/platform';
 import {CommonModule} from '@angular/common';
 import createDate from 'sugar/date/internal/createDate';
-import {NativeDateAdapter, DateAdapter} from '@wcf-insurance/cashmere';
+import {NativeDateAdapter, DateAdapter} from '@healthcatalyst/cashmere';
 import {DatepickerSugarExampleComponent} from './datepicker-sugar-example.component';
 import {CashmereModule} from '../cashmere.module';
 
