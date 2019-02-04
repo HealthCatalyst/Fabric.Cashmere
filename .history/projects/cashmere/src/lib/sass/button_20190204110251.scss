@@ -122,7 +122,6 @@ $btn-icon-sz: 18px;
 @mixin hc-button-minimal() {
     background-color: transparent;
     color: $gray-500;
-    box-shadow: none;
 
     &:hover {
         color: $offblack;

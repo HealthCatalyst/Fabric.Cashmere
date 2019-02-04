@@ -122,7 +122,6 @@ $btn-icon-sz: 18px;
 @mixin hc-button-minimal() {
     background-color: transparent;
     color: $gray-500;
-    box-shadow: none;
 
     &:hover {
         color: $offblack;
@@ -214,6 +213,7 @@ $btn-icon-sz: 18px;
     white-space: nowrap;
     text-align: center;
     vertical-align: baseline;
+    box-shadow: none;
 }
 
 // Split button
