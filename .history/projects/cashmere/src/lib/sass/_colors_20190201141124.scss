@@ -18,7 +18,6 @@ $error-bg: #fee5e9;
 $info: #00aeff;
 $info-bg: #dff4ff;
 $white: #ffffff;
-$gray-02: #f6f7f7;
 $gray-05: #e9eaeb;
 $gray-10: #d7d8da;
 $gray-30: #afb2b4;
@@ -68,8 +67,8 @@ $yellow-orange: #e7c447;
 // General Color Vars
 $primary-brand: $blue;
 $primary-action: $wcf-red;
-$primary-alt-action: $secondary-blue;
-$destructive-action: $error;
+$primary-alt-action: $wcf-blue;
+$destructive-action: $wcf-error;
 $neutral-action: $gray-500;
 $error: $deep-red;
 $text: $offblack;

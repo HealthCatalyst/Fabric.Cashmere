@@ -48,23 +48,19 @@ $btn-icon-sz: 18px;
     border: none;
     border-radius: 4px;
     font-family: Roboto, 'Helvetica Neue', sans-serif;
-    box-shadow: 0 3px 5px $shadow;
 
     &[disabled] {
         cursor: not-allowed;
-        box-shadow: none;
     }
 
     &:focus {
         outline: 5px auto -webkit-focus-ring-color;
         outline-offset: -2px;
-        box-shadow: 0 3px 5px $shadow;
     }
 
     &:active {
         background-image: none;
         outline: none;
-        box-shadow: none;
     }
 }
 
@@ -74,6 +70,7 @@ $btn-icon-sz: 18px;
     min-width: auto;
     @include fontSize(14px);
     line-height: 14px;
+    box-shadow: 0 3px 6px $shadow;
 }
 
 @mixin hc-button-md() {
@@ -82,6 +79,7 @@ $btn-icon-sz: 18px;
     min-width: 150px;
     @include fontSize(14px);
     line-height: 15px;
+    box-shadow: 0 3px 6px $shadow;
 }
 
 @mixin hc-button-lg() {
@@ -90,6 +88,7 @@ $btn-icon-sz: 18px;
     min-width: 200px;
     @include fontSize(14px);
     line-height: 17px;
+    box-shadow: 0 3px 6px $shadow;
 }
 
 @mixin hc-button-primary() {
@@ -122,7 +121,6 @@ $btn-icon-sz: 18px;
 @mixin hc-button-minimal() {
     background-color: transparent;
     color: $gray-500;
-    box-shadow: none;
 
     &:hover {
         color: $offblack;
@@ -146,7 +144,6 @@ $btn-icon-sz: 18px;
     background-color: transparent;
     color: $primary-brand;
     font-weight: 600;
-    box-shadow: none;
 
     .label {
         color: $gray-500;
@@ -192,7 +189,6 @@ $btn-icon-sz: 18px;
     vertical-align: inherit;
     font-family: inherit;
     border: none;
-    box-shadow: none;
 }
 
 // Icon button
