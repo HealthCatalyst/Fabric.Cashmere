@@ -1,22 +1,53 @@
-<hc-subnav class="responsive-subnav" fixedTop="true">
-    <div class="subnav-container">
-        <span class="subnav-label">Styles: </span>
-        <span class="subnav-select">
-            <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
-                <option *ngFor="let option of selectOptions" [value]="option" [selected]="option === thisPage">{{ option }}</option>
-            </hc-select>
-        </span>
+<div class="hc-components-container">
+    <hc-subnav class="responsive-subnav" fixedTop="true">
+        <div class="subnav-container">
+            <span class="subnav-label">Styles: </span>
+            <span class="subnav-select">
+                <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
+                    <option *ngFor="let option of selectOptions" [value]="option" [selected]="option === thisPage">{{ option }}</option>
+                </hc-select>
+            </span>
+        </div>
+    </hc-subnav>
+    <div class="hc-components-left-column">
+        <div class="hc-components-nav-container">
+            <hc-tile>
+                <div class="hc-components-nav-list">
+                    <hc-accordion triggerAlign="right" open='true'>
+                        <hc-accordion-toolbar>Foundations</hc-accordion-toolbar>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Colors' == thisPage }" (click)="navUpdate('color')">Colors</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Typography' == thisPage }" (click)="navUpdate('typography')">Typography</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Icons' == thisPage }" (click)="navUpdate('icons')">Icons</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Code' == thisPage }" (click)="navUpdate('code')">Code</div>
+                        <div class="hc-components-nav-spacer"></div>
+                    </hc-accordion>
+                    <div class="hc-components-nav-divider"></div>
+                    <hc-accordion triggerAlign="right" open='true'>
+                        <hc-accordion-toolbar>Visual Guidelines</hc-accordion-toolbar>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'About Modal' == thisPage }" (click)="navUpdate('about')">About Modal</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Breadcrumbs' == thisPage }" (click)="navUpdate('breadcrumbs')">Breadcrumbs</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Charts' == thisPage }" (click)="navUpdate('chart')">Charts</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Error Pages' == thisPage }" (click)="navUpdate('error')">Error Pages</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Login Page' == thisPage }" (click)="navUpdate('login')">Login Page</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Tables' == thisPage }" (click)="navUpdate('table')">Tables</div>
+                        <div class="hc-components-nav-spacer"></div>
+                    </hc-accordion>
+                </div>
+            </hc-tile>
+        </div>
     </div>
-</hc-subnav>
-<hc-tab-set class="full-height">
-    <hc-tab tabTitle="About Modal" routerLink="/styles/about"> About Modal </hc-tab>
-    <hc-tab tabTitle="Breadcrumbs" routerLink="/styles/breadcrumbs"> Breadcrumbs </hc-tab>
-    <hc-tab tabTitle="Charts" routerLink="/styles/chart"> Charts </hc-tab>
-    <hc-tab tabTitle="Code" routerLink="/styles/code"> Code </hc-tab>
-    <hc-tab tabTitle="Colors" routerLink="/styles/color"> Colors </hc-tab>
-    <hc-tab tabTitle="Icons" routerLink="/styles/icons"> Icons </hc-tab>
-    <hc-tab tabTitle="Error Pages" routerLink="/styles/error"> Error Pages </hc-tab>
-    <hc-tab tabTitle="Login Page" routerLink="/styles/login"> Login Page </hc-tab>
-    <hc-tab tabTitle="Tables" routerLink="/styles/table"> Tables </hc-tab>
-    <hc-tab tabTitle="Typography" routerLink="/styles/typography"> Typography </hc-tab>
-</hc-tab-set>
+    <div class="hc-components-right-column">
+        <hc-tab-set class="full-height">
+            <hc-tab tabTitle="About Modal" routerLink="/styles/about"> About Modal </hc-tab>
+            <hc-tab tabTitle="Breadcrumbs" routerLink="/styles/breadcrumbs"> Breadcrumbs </hc-tab>
+            <hc-tab tabTitle="Charts" routerLink="/styles/chart"> Charts </hc-tab>
+            <hc-tab tabTitle="Code" routerLink="/styles/code"> Code </hc-tab>
+            <hc-tab tabTitle="Colors" routerLink="/styles/color"> Colors </hc-tab>
+            <hc-tab tabTitle="Icons" routerLink="/styles/icons"> Icons </hc-tab>
+            <hc-tab tabTitle="Error Pages" routerLink="/styles/error"> Error Pages </hc-tab>
+            <hc-tab tabTitle="Login Page" routerLink="/styles/login"> Login Page </hc-tab>
+            <hc-tab tabTitle="Tables" routerLink="/styles/table"> Tables </hc-tab>
+            <hc-tab tabTitle="Typography" routerLink="/styles/typography"> Typography </hc-tab>
+        </hc-tab-set>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-# Using and Customizing Components
+# Customizing Components
 
 ###### Last updated October 10, 2018
 
