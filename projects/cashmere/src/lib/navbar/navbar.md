@@ -52,7 +52,7 @@ In addition to the help menu, all Heath Catalyst applications should also includ
 </hc-navbar>
 ```
 
-The app switcher service must be setup in order for the application switcher to function. The discovery service uri is required to set this up
+The app switcher service must be set up in order for the application switcher to function. The discovery service uri is required to set this up
 
 ```Typescript
 import { NavbarModule, AppSwitcherModule, IconModule, PopoverModule, ListModule,
@@ -67,6 +67,33 @@ import { NavbarModule, AppSwitcherModule, IconModule, PopoverModule, ListModule,
     exports: [NavbarModule, AppSwitcherModule, IconModule, PopoverModule, ListModule, SelectModule]
 })
 export class CashmereModule {}
+...
+```
+
+When the discovery service uri is determined at runtime (via configuration), you must register a custom app switcher config provider.
+_(The reason you can't use `forRoot` for this is that the Angular AOT compiler will evaluate the expression (i.e. `window.discoveryServiceUri`)
+at build-time using NodeJS and replace it with `null`.)_
+
+```Typescript
+import { NavbarModule, AppSwitcherModule, IconModule, PopoverModule, ListModule,
+    SelectModule, APP_SWITCHER_CONFIG, IAppSwitcherConfig } from '@healthcatalyst/cashmere';
+
+@NgModule({
+    imports: [
+        AppSwitcherModule
+    ],
+    providers: [
+        {provide: APP_SWITCHER_CONFIG, useFactory: getAppSwitcherConfig}
+    ],
+    exports: [AppSwitcherModule, ...]
+})
+export class CashmereModule {}
+
+function getAppSwitcherConfig() {
+    return {
+        discoveryServiceUri: window.discoveryServiceUri
+    } as IAppSwitcherConfig;
+}
 ...
 ```
 
