@@ -4,7 +4,7 @@
     @include hc-button();
 
     &.hc-primary {
-        @include hc-button-primary();
+        @include hc-button-primary-alt();
     }
     &.hc-primary-alt {
         @include hc-button-primary-alt();
