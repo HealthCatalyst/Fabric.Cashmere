@@ -57,9 +57,6 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 @mixin navbar-app {
     height: 100%;
     padding: $navbar-app-padding;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     &.logo-condense {
         padding-right: 25px;
