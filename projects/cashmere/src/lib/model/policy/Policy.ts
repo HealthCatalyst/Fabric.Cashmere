@@ -22,6 +22,7 @@ export class Policy {
     effectiveDate: Date;
     expireDate: Date;
     cancelDate: Date;
+    cancelReason: {value: string, label: string};
     mailingAddress: Address;
     billingAddress: Address;
     producerAddress: Address;
