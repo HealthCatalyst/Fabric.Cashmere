@@ -3,12 +3,10 @@
 @import './colors';
 @import './mixins';
 
-$table-border: 2px solid $slate-gray-300 !default;
-$table-border-interior: 1px solid $slate-gray-300 !default;
-$table-border-off-transparent: 1px solid transparent;
-$table-border-transparent: 2px solid transparent;
+$table-border: 1px solid $slate-gray-300 !default;
+$table-border-transparent: 1px solid transparent;
 $table-condensed-font-size: 13px;
-$header-border-thick: 2px solid $slate-gray-300 !default;
+$header-border-thick: 1px solid $slate-gray-300 !default;
 $cell-padding: 8px 16px !default;
 $cell-padding-condensed: 6px 16px !default;
 $thead-font-size: 14px !default;
@@ -31,11 +29,11 @@ table.hc-table {
     width: 100%;
     max-width: 100%;
     color: $tbody-font-color;
-    border: $table-border-off-transparent;
+    border: $table-border-transparent;
 
     td,
     th {
-        border-bottom: $table-border-interior;
+        border-bottom: $table-border;
         border-top: none;
         line-height: 1.3;
         padding: $cell-padding;
@@ -62,7 +60,7 @@ table.hc-table {
 
     tbody {
         font-size: $tbody-font-size;
-        border: $table-border-interior;
+        border: $table-border;
 
         tr {
             &:nth-child(2n) {
