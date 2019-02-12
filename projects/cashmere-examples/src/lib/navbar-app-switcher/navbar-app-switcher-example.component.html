@@ -13,7 +13,9 @@
         <span class="hc-text-ellipsis">{{ username }}</span>
         <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
     </div>
-    <hc-navbar-mobile-menu>
+    <!-- Inline style is added for example only to prevent its mobile menu from colliding with Cashmere site navigation -->
+    <!-- Do NOT include style="display: none;" in your hc-navbar-mobile-menu tag -->
+    <hc-navbar-mobile-menu style="display: none;">
         <hc-list>
             <hc-list-item routerLink="undefined" routerLinkActive="active-link"><span hcListLine>Home</span></hc-list-item>
             <hc-list-item routerLink="undefined" routerLinkActive="active-link"><span hcListLine>Oncology</span></hc-list-item>
