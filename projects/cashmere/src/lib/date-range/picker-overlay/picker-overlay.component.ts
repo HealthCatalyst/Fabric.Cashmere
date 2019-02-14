@@ -1,12 +1,12 @@
 import {Component, OnInit, ViewEncapsulation, ChangeDetectorRef, AfterViewInit, ViewChildren, QueryList} from '@angular/core';
-import {PresetItem} from '../model/model';
-import {RangeStoreService} from '../services/range-store.service';
+import {DateRangeOptions} from '../model/model';
 import {OverlayRef} from '@angular/cdk/overlay';
 import {ConfigStoreService} from '../services/config-store.service';
 import {DateRange} from '../model/model';
 import {D} from '../../datepicker/datetime/date-formats';
 import {RadioButtonChangeEvent} from '../../radio-button/radio';
 import {CalendarWrapperComponent} from '../calendar-wrapper/calendar-wrapper.component';
+import {Observable} from 'rxjs';
 
 // ** Date range wrapper component */
 @Component({
@@ -16,44 +16,30 @@ import {CalendarWrapperComponent} from '../calendar-wrapper/calendar-wrapper.com
     encapsulation: ViewEncapsulation.None
 })
 export class PickerOverlayComponent implements OnInit, AfterViewInit {
-    _fromDate?: Date;
-    _toDate?: Date;
-    _fromMinDate?: Date;
-    _fromMaxDate?: Date;
-    _toMinDate?: Date;
-    _toMaxDate?: Date;
-    _presets: Array<PresetItem> = [];
-    _startDatePrefix: string;
-    _endDatePrefix: string;
-    _applyLabel: string;
-    _cancelLabel: string;
-    _shouldAnimate: string;
-    _selectedPreset: DateRange | null;
+    options$: Observable<DateRangeOptions>;
+    _fromDate: Date | undefined;
+    _toDate: Date | undefined;
     _disabled: boolean;
+    _selectedPreset: DateRange | null;
 
     @ViewChildren(CalendarWrapperComponent)
     calendarWrappers: QueryList<CalendarWrapperComponent>;
 
-    constructor(
-        private rangeStoreService: RangeStoreService,
-        private configStoreService: ConfigStoreService,
-        private overlayRef: OverlayRef,
-        private cd: ChangeDetectorRef
-    ) {}
+    constructor(public configStoreService: ConfigStoreService, private overlayRef: OverlayRef, private cd: ChangeDetectorRef) {
+        this.options$ = configStoreService.dateRangeOptions$;
+    }
 
     ngOnInit() {
-        this._fromDate = this.rangeStoreService.fromDate;
-        this._toDate = this.rangeStoreService.toDate;
-        this._startDatePrefix = this.configStoreService.DateRangeOptions.startDatePrefix || 'Start Date';
-        this._endDatePrefix = this.configStoreService.DateRangeOptions.endDatePrefix || 'End Date';
-        this._applyLabel = this.configStoreService.DateRangeOptions.applyLabel || 'Apply';
-        this._cancelLabel = this.configStoreService.DateRangeOptions.cancelLabel || 'Cancel';
-        this._presets = this.configStoreService.DateRangeOptions.presets;
-        // ({fromDate: this.fromMinDate, toDate: this.fromMaxDate} = this.configStoreService.DateRangeOptions.fromMinMax);
-        this.configStoreService.DateRangeOptions.fromMinMax = {fromDate: this._fromMinDate, toDate: this._fromMaxDate};
-        // ({fromDate: this.toMinDate, toDate: this.toMaxDate} = this.configStoreService.DateRangeOptions.toMinMax);
-        this.configStoreService.DateRangeOptions.toMinMax = {fromDate: this._toMinDate, toDate: this._toMaxDate};
         this._setValidity();
+        this.configStoreService.rangeUpdate$.subscribe((dateRange: DateRange) => {
+            if (dateRange) {
+                this._fromDate = dateRange.fromDate;
+                this._toDate = dateRange.toDate;
+            } else {
+                this._fromDate = undefined;
+                this._toDate = undefined;
+            }
+        });
     }
 
     ngAfterViewInit(): void {
@@ -64,7 +50,6 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
 
     _updateFromDate(date?: D) {
         this._fromDate = date;
-
         if (this._selectedPreset && this._selectedPreset.fromDate !== date) {
             setTimeout(() => {
                 this._selectedPreset = null;
@@ -76,7 +61,6 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
 
     _updateToDate(date?: D) {
         this._toDate = date;
-
         if (this._selectedPreset && this._selectedPreset.toDate !== date) {
             setTimeout(() => {
                 this._selectedPreset = null;
@@ -95,7 +79,7 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
 
     _applyNewDates() {
         if (!!this._toDate && !!this._fromDate) {
-            this.rangeStoreService.updateRange(this._fromDate, this._toDate);
+            this.configStoreService.updateRange({fromDate: this._fromDate, toDate: this._toDate});
         }
         this.overlayRef.dispose();
     }

@@ -4,7 +4,6 @@ import {DateRangeDirective} from './date-range/date-range.directive';
 import {PickerOverlayComponent} from './picker-overlay/picker-overlay.component';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {CalendarWrapperComponent} from './calendar-wrapper/calendar-wrapper.component';
-import {DATE} from './services/range-store.service';
 import {FormsModule} from '@angular/forms';
 import {HcNativeDateModule} from '../datepicker/datetime/datetime.module';
 import {DatepickerModule} from '../datepicker/datepicker.module';
@@ -26,7 +25,6 @@ import {RadioButtonModule} from '../radio-button/radio-button.module';
         FormsModule
     ],
     declarations: [DateRangeDirective, CalendarWrapperComponent, PickerOverlayComponent],
-    providers: [{provide: DATE, useValue: new Date()}],
     entryComponents: [PickerOverlayComponent],
     exports: [DateRangeDirective]
 })
