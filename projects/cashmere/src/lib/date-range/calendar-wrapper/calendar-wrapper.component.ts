@@ -4,7 +4,6 @@ import {
     Input,
     ChangeDetectionStrategy,
     ViewEncapsulation,
-    OnInit,
     Output,
     EventEmitter,
     OnChanges,
@@ -23,7 +22,7 @@ import {D} from '../../datepicker/datetime/date-formats';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
-export class CalendarWrapperComponent implements OnInit, OnChanges {
+export class CalendarWrapperComponent implements OnChanges {
     @ViewChild(CalendarComponent)
     hcCalendar: CalendarComponent;
 
@@ -38,32 +37,29 @@ export class CalendarWrapperComponent implements OnInit, OnChanges {
     @Input()
     selectedDate: D;
 
-    _dateFormat: string;
+    @Input()
+    dateFormat: string;
 
     /** Prefix label on top of component. */
     @Input()
     prefixLabel: string;
 
+    @Input()
+    excludeWeekends: boolean;
+
     /** The minimum selectable date. */
     @Input()
     minDate: D;
 
+    @Input()
+    invalidDateLabel: string;
+
     /** Flag to filter out weekends. */
     @Input()
     maxDate: D;
-    weekendFilter = (d: D) => true;
+    weekendFilter = () => true;
 
-    constructor(configStore: ConfigStoreService) {
-        this._dateFormat = configStore.DateRangeOptions.format;
-        if (configStore.DateRangeOptions.excludeWeekends) {
-            this.weekendFilter = (d: Date): boolean => {
-                const day = d.getDay();
-                return day !== 0 && day !== 6;
-            };
-        }
-    }
-
-    ngOnInit(): void {}
+    constructor(public configStore: ConfigStoreService) {}
 
     ngOnChanges(changes: SimpleChanges) {
         // Necessary to force view refresh
