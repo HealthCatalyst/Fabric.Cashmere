@@ -3,8 +3,8 @@
         <hc-calendar-wrapper
             [prefixLabel]="options.startDatePrefix"
             [selectedDate]="_fromDate"
-            [minDate]="options.fromMinDate"
-            [maxDate]="options.fromMaxDate"
+            [minDate]="options.fromMinMax?.fromDate"
+            [maxDate]="options.fromMinMax?.toDate"
             (selectedDateChange)="_updateFromDate($event)"
             [excludeWeekends]="options.excludeWeekends"
             [dateFormat]="options.dateFormat"
@@ -16,8 +16,8 @@
         <hc-calendar-wrapper
             [prefixLabel]="options.endDatePrefix"
             [selectedDate]="_toDate"
-            [minDate]="options.toMinDate"
-            [maxDate]="options.toMaxDate"
+            [minDate]="options.toMinMax?.fromDate"
+            [maxDate]="options.toMinMax?.toDate"
             (selectedDateChange)="_updateToDate($event)"
             [excludeWeekends]="options.excludeWeekends"
             [dateFormat]="options.dateFormat"
