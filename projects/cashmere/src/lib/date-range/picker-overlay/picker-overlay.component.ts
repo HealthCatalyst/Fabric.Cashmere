@@ -4,7 +4,6 @@ import {OverlayRef} from '@angular/cdk/overlay';
 import {ConfigStoreService} from '../services/config-store.service';
 import {DateRange} from '../model/model';
 import {D} from '../../datepicker/datetime/date-formats';
-import {RadioButtonChangeEvent} from '../../radio-button/radio';
 import {CalendarWrapperComponent} from '../calendar-wrapper/calendar-wrapper.component';
 import {Observable} from 'rxjs';
 
@@ -70,8 +69,7 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
         this._setValidity();
     }
 
-    _updateRangeByPreset(presetItem: RadioButtonChangeEvent) {
-        const range: DateRange = presetItem.value;
+    _updateRangeByPreset(range: DateRange) {
         this._fromDate = range.fromDate;
         this._toDate = range.toDate;
         this._setValidity();

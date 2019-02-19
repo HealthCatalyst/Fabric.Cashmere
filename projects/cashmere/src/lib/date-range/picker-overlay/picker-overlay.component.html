@@ -27,8 +27,8 @@
     </div>
     <div class="hc-date-range-calendar-item">
         <div class="hc-date-range-menu">
-            <hc-radio-group class="presets" (change)="_updateRangeByPreset($event)" [(ngModel)]="_selectedPreset">
-                <hc-radio-button *ngFor="let p of options.presets" [value]="p.range">{{ p.presetLabel }}</hc-radio-button>
+            <hc-radio-group class="presets" [(ngModel)]="_selectedPreset">
+                <hc-radio-button *ngFor="let p of options.presets" [value]="p.range" (change)="_updateRangeByPreset(p.range)">{{ p.presetLabel }}</hc-radio-button>
             </hc-radio-group>
             <div class="hc-date-range-controls">
                 <button hc-button buttonStyle="link" type="button" (click)="_discardNewDates($event)">
