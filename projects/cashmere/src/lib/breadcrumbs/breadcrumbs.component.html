@@ -1,12 +1,12 @@
 <ol class="breadcrumb">
     <li *ngFor="let breadcrumb of _breadcrumbs; let last = last" class="breadcrumb-item">
-        <a *ngIf="!last" [routerLink]="[breadcrumb.url]" queryParamsHandling="preserve" [innerText]="breadcrumb.label"></a>
+        <a *ngIf="!last" [routerLink]="[breadcrumb.url]" queryParamsHandling="{{queryParamsHandling}}" [innerText]="breadcrumb.label"></a>
         <span *ngIf="last" [innerText]="breadcrumb.label"></span>
         <i class="fa fa-chevron-right breadcrumb-arrow"></i>
     </li>
 </ol>
 <div class="breadcrumb-responsive-container">
-    <a [style.display]="_backShow" class="breadcrumb-back-button" [routerLink]="_backURL">
+    <a [style.display]="_backShow" class="breadcrumb-back-button" [routerLink]="_backURL" queryParamsHandling="{{queryParamsHandling}}">
         <i class="fa fa-chevron-left"></i>
         <span>&nbsp;Back</span>
     </a>
