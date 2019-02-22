@@ -1,6 +1,6 @@
 import {FileSizePipe} from './file-size.pipe';
 
-fdescribe('FileSizePipe', () => {
+describe('FileSizePipe', () => {
     let pipe: FileSizePipe;
     beforeEach(() => {
         pipe = new FileSizePipe();

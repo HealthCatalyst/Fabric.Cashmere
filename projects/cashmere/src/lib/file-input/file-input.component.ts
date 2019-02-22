@@ -1,9 +1,10 @@
-import {Component, forwardRef, OnDestroy, ViewChild, ElementRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Component, forwardRef, OnDestroy, ViewChild, ElementRef, Input, DoCheck, Self, Optional} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl, NgForm, FormGroupDirective} from '@angular/forms';
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil, filter, map} from 'rxjs/operators';
-import {HcFormControlComponent} from '../form-field';
+import {HcFormControlComponent} from '../form-field/index';
 import {FileUpload} from '.';
+import {FileReaderFactory} from './file-reader-factory.service';
 
 @Component({
     selector: 'hc-file-input',
@@ -11,17 +12,12 @@ import {FileUpload} from '.';
     styleUrls: ['file-input.component.scss'],
     providers: [
         {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => FileInputComponent),
-            multi: true
-        },
-        {
             provide: HcFormControlComponent,
             useExisting: forwardRef(() => FileInputComponent)
         }
     ]
 })
-export class FileInputComponent extends HcFormControlComponent implements ControlValueAccessor, OnDestroy {
+export class FileInputComponent extends HcFormControlComponent implements ControlValueAccessor, OnDestroy, DoCheck {
     @Input()
     disabled: boolean = false;
 
@@ -51,13 +47,51 @@ export class FileInputComponent extends HcFormControlComponent implements Contro
         }
     }
 
-    constructor(private _fileReader: FileReader) {
+    private _form: NgForm | FormGroupDirective;
+
+    constructor(
+        private _fileReaderFactory: FileReaderFactory,
+        @Optional()
+        @Self()
+        public _ngControl: NgControl,
+        @Optional()
+        form: NgForm,
+        @Optional()
+        formGroup: FormGroupDirective
+    ) {
         super();
+        this._form = form || formGroup;
+
+        if (this._ngControl != null) {
+            this._ngControl.valueAccessor = this;
+        }
     }
 
     ngOnDestroy() {
         this.onDestroy.next();
         this.onDestroy.complete();
+    }
+
+    ngDoCheck(): void {
+        // This needs to be checked every cycle because we can't subscribe to form submissions
+        if (this._ngControl) {
+            this._updateErrorState();
+        }
+    }
+
+    private _updateErrorState() {
+        const oldState = this._errorState;
+
+        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
+        const newState = !!(
+            this._ngControl &&
+            this._ngControl.invalid &&
+            (this._ngControl.touched || (this._form && this._form.submitted))
+        );
+
+        if (oldState !== newState) {
+            this._errorState = newState;
+        }
     }
 
     _onClick() {
@@ -75,17 +109,19 @@ export class FileInputComponent extends HcFormControlComponent implements Contro
         if (!file) {
             return;
         }
-        this.value = Object.assign({}, file);
+        this.value = {name: file.name, size: file.size, type: file.type, lastModified: file.lastModified};
+        this.onTouched();
 
-        fromEvent(this._fileReader, 'load')
+        const reader = this._fileReaderFactory.create();
+        fromEvent(reader, 'load')
             .pipe(
                 takeUntil(this.onDestroy),
-                filter(() => !!this.value && file.name === this.value.name && file.size === this.value.size && !!this._fileReader.result),
-                map(() => this._fileReader.result.toString())
+                filter(() => !!this.value && file.name === this.value.name && file.size === this.value.size && !!reader.result),
+                map(() => reader.result!.toString())
             )
-            .subscribe(v => (this.value.base64 = v));
+            .subscribe(v => (this.value!.base64 = v));
 
-        this._fileReader.readAsDataURL(file);
+        reader.readAsDataURL(file);
     }
 
     _onBlur() {

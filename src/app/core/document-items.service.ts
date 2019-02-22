@@ -44,6 +44,11 @@ const docs: DocItem[] = [
         name: 'Drawer',
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
     },
+    {
+        id: 'file-input',
+        name: 'File Input',
+        examples: ['file-input-overview', 'file-input-file-size-validation', 'file-input-file-type-validation']
+    },
     {id: 'form-field', name: 'Form Field', examples: ['form-field-overview']},
     {id: 'icon', name: 'Icon', examples: ['icon-overview']},
     {
