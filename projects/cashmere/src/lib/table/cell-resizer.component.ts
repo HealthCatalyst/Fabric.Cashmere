@@ -1,4 +1,4 @@
-/* Based on an example posted at: https://github.com/angular/material2/issues/8312 */
+/* Based on an example posted by Paolo Caleffi at: https://github.com/angular/material2/issues/8312 */
 
 import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {BindObservable} from './bind-observable/bind-observable';
@@ -88,8 +88,13 @@ export class HcCellResizer implements OnInit, OnDestroy {
             });
     }
 
+    private _mouseX: number;
+
     private _resizeColumn(event: MouseEvent) {
-        const newWidth = this.width + event.movementX * this._directionModifier;
+        const deltaX = event.screenX - this._mouseX;
+        const newWidth = this.width + deltaX * this._directionModifier;
+
+        this._mouseX = event.screenX;
 
         if (newWidth >= 0) {
             this.resized.emit(new CellResizeEvent(newWidth, this._directionModifier === -1));
@@ -107,6 +112,8 @@ export class HcCellResizer implements OnInit, OnDestroy {
     // isResizing can be set to true only when the component is not disabled
     @HostListener('mousedown', ['$event']) _startResizing(event: MouseEvent) {
         this.isResizing = !this.disabled;
+
+        this._mouseX = event.screenX;
 
         if ((<Element>event.target).className === 'hc-cell-resizer-left') {
             this._directionModifier = -1;
