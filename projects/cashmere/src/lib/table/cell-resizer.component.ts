@@ -39,6 +39,8 @@ export class HcCellResizer implements OnInit, OnDestroy {
 
     private _directionModifier: number = 1;
 
+    private _mouseX: number;
+
     /**
      * Emits a `CellResizeEvent` when a cell has been resized
      */
@@ -87,8 +89,6 @@ export class HcCellResizer implements OnInit, OnDestroy {
                 }
             });
     }
-
-    private _mouseX: number;
 
     private _resizeColumn(event: MouseEvent) {
         const deltaX = event.screenX - this._mouseX;
