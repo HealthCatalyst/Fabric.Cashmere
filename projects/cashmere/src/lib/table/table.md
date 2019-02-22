@@ -144,6 +144,29 @@ table, since it will not automatically check the array for changes.
 
 The `HcSort` is one provided solution to sorting your table's data, but it is not the only option.
 
+#### Column Resizing
+
+To add column resizing to a table, add `hc-cell-resizer` to the cells where you could like the functionality included.  This can be on any of the header, body, or footer cells, and maybe be used in conjunction with the sorting functionality above.  Those that contain it will change the cursor to the column resize state when the borders are hovered over, and can be dragged to resize.
+
+```html
+<ng-container hcColumnDef="position">
+    <th hc-header-cell *hcHeaderCellDef [style.width]="columnObjects[1].width + 'px'">
+        <span>{{columnObjects[1].title}}</span>
+        <hc-cell-resizer [width]="columnObjects[1].width" (resized)="columnResized(1, $event)" (resizing)="isResizing = $event"></hc-cell-resizer>
+    </th>
+    <td hc-cell *hcCellDef="let element" [style.width]="columnObjects[1].width + 'px'">
+        <span>{{element.position}}</span>
+        <hc-cell-resizer [width]="columnObjects[1].width" (resized)="columnResized(1, $event)" (resizing)="isResizing = $event"></hc-cell-resizer>
+    </td>
+</ng-container>
+```
+
+The example above will allow the user to resize the column from either the header or body cells. The resizer adds the drag targets, handles the dragging functionality, and stores a width value - but it leaves the actually resizing of the cell to the app. So in the example above, note the addition of `[style.width]` to the cell tag, which is bound to an array of column widths the app stores.
+
+The resizer will emit a `CellResizeEvent` via the `resized` property. This will contain the new width and whether the cell was scaled left or right. This is useful in determining how to scale neighboring cells to match. If minimum and maximum widths are needed for cells, the app is responsible to enforce them when setting cell widths. A `resizing` event is also available that will set a boolean value to true while the cell is being dragged.
+
+The dragging values that are returned are based on pixels moved. For pixel perfect dragging, make sure and add `table-layout: fixed` to your table css. This will allow the table to overflow its container.  Otherwise, the table will scale its cells proportionally to the container width - so the column dragging may be faster or slower than your mouse depending on how much the table has been scaled.
+
 #### Filtering
 
 Cashmere does not provide a specific component to be used for filtering the `HcTable`
@@ -152,7 +175,7 @@ since there is no single common approach to adding a filter UI to table data.
 A general strategy is to add an input where users can type in a filter string and listen to this
 input to change what data is offered from the data source to the table.
 
-If you are using the `HcTableDataSource`, simply provide the filter string to the  
+If you are using the `HcTableDataSource`, simply provide the filter string to the
 `HcTableDataSource`. The data source will reduce each row data to a serialized form and will filter
 out the row if it does not contain the filter string. By default, the row data reducing function
 will concatenate all the object values and convert them to lowercase.
