@@ -1,7 +1,15 @@
 <div class="form-container">
     <hc-form-field class="hc-calendar-wrapper-form-field">
         <hc-label [innerText]="prefixLabel"></hc-label>
-        <input hcInput hcDatepicker [(ngModel)]="selectedDate" required (dateChange)="_onInputChange($event)"/>
+        <input
+            hcInput
+            hcDatepicker
+            [(ngModel)]="selectedDate"
+            required
+            (dateChange)="_onInputChange($event)"
+            [min]="minDate"
+            [max]="maxDate"
+        />
         <hc-error [innerText]="invalidDateLabel"></hc-error>
     </hc-form-field>
 </div>
