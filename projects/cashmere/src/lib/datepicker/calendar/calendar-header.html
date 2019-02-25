@@ -30,6 +30,7 @@
             buttonStyle="link"
             type="button"
             class="hc-calendar-today-button"
+            [disabled]="!todayEnabled()"
             (click)="todayClicked()"
             [attr.aria-label]="prevButtonLabel">
             Today

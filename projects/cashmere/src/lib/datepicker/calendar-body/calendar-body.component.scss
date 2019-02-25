@@ -129,7 +129,7 @@ $hc-calendar-weekday-table-font-size: 11px !default;
     border-color: transparent;
 }
 
-.hc-calendar-body-disabled > .hc-calendar-body-cell-content:not(.hc-calendar-body-selected) {
+.hc-calendar-body-disabled > .hc-calendar-body-cell-content:not(.hc-calendar-body-selected):not(.hc-calendar-body-today) {
     color: $hc-calendar-body-disabled-color;
 }
 

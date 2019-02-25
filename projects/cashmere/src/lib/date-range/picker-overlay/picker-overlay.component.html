@@ -4,7 +4,7 @@
             [prefixLabel]="options.startDatePrefix"
             [selectedDate]="_fromDate"
             [minDate]="options.fromMinMax?.fromDate"
-            [maxDate]="options.fromMinMax?.toDate"
+            [maxDate]="!options.fromMinMax || !options.fromMinMax.toDate || !this._toDate || options.fromMinMax?.toDate > _toDate ? _toDate : options.fromMinMax?.toDate"
             (selectedDateChange)="_updateFromDate($event)"
             [excludeWeekends]="options.excludeWeekends"
             [dateFormat]="options.dateFormat"
@@ -16,7 +16,7 @@
         <hc-calendar-wrapper
             [prefixLabel]="options.endDatePrefix"
             [selectedDate]="_toDate"
-            [minDate]="options.toMinMax?.fromDate"
+            [minDate]="!options.toMinMax || !options.toMinMax.fromDate || !this._fromDate || options.toMinMax?.fromDate > _fromDate ? options.toMinMax?.fromDate : _fromDate"
             [maxDate]="options.toMinMax?.toDate"
             (selectedDateChange)="_updateToDate($event)"
             [excludeWeekends]="options.excludeWeekends"
@@ -31,7 +31,7 @@
                 <hc-radio-button *ngFor="let p of options.presets" [value]="p.range" (change)="_updateRangeByPreset(p.range)">{{ p.presetLabel }}</hc-radio-button>
             </hc-radio-group>
             <div class="hc-date-range-controls">
-                <button hc-button buttonStyle="link" type="button" (click)="_discardNewDates($event)">
+                <button hc-button buttonStyle="link" type="button" (click)="_discardNewDates()">
                     {{ options.cancelLabel }}
                 </button>
                 <button hc-button buttonStyle="primary" type="button" [disabled]="_disabled" (click)="_applyNewDates()">
