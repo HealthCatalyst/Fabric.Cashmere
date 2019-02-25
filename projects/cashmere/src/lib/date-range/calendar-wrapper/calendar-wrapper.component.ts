@@ -35,7 +35,7 @@ export class CalendarWrapperComponent implements OnChanges {
 
     /** Current selected date. */
     @Input()
-    selectedDate: D;
+    selectedDate: D | undefined;
 
     @Input()
     dateFormat: string;
@@ -49,25 +49,28 @@ export class CalendarWrapperComponent implements OnChanges {
 
     /** The minimum selectable date. */
     @Input()
-    minDate: D;
+    minDate: D | undefined;
 
     @Input()
     invalidDateLabel: string;
 
     /** Flag to filter out weekends. */
     @Input()
-    maxDate: D;
+    maxDate: D | undefined;
+
     weekendFilter = () => true;
 
     constructor(public configStore: ConfigStoreService) {}
 
     ngOnChanges(changes: SimpleChanges) {
         // Necessary to force view refresh
-        const date: D = changes.selectedDate.currentValue;
-        if (date) {
-            this.hcCalendar.activeDate = date;
-            this.datePickerInput.setDate(date);
-            this.selectedDateChange.emit(date);
+        if (changes.selectedDate) {
+            const date: D = changes.selectedDate.currentValue;
+            if (date) {
+                this.hcCalendar.activeDate = date;
+                this.datePickerInput.setDate(date);
+                this.selectedDateChange.emit(date);
+            }
         }
     }
 
@@ -76,7 +79,12 @@ export class CalendarWrapperComponent implements OnChanges {
     }
 
     _onInputChange(event: HcDatepickerInputEvent) {
-        this.selectedDateChange.emit(event.value || undefined);
+        if (event.value && ((this.minDate && event.value < this.minDate) || (this.maxDate && event.value > this.maxDate))) {
+            this.selectedDate = undefined;
+            this.selectedDateChange.emit(undefined);
+        } else {
+            this.selectedDateChange.emit(event.value || undefined);
+        }
     }
 
     /** Focus inner input */

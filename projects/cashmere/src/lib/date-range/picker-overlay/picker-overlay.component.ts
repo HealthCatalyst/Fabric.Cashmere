@@ -16,8 +16,8 @@ import {Observable} from 'rxjs';
 })
 export class PickerOverlayComponent implements OnInit, AfterViewInit {
     options$: Observable<DateRangeOptions>;
-    _fromDate: Date | undefined;
-    _toDate: Date | undefined;
+    _fromDate: D | undefined;
+    _toDate: D | undefined;
     _disabled: boolean;
     _selectedPreset: DateRange | null;
 
@@ -82,7 +82,7 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
         this.overlayRef.dispose();
     }
 
-    _discardNewDates(e) {
+    _discardNewDates() {
         this.overlayRef.dispose();
     }
 
