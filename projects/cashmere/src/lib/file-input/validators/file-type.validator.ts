@@ -9,7 +9,11 @@ import {FileUpload} from '../file-upload';
  */
 export function fileTypeValidator(allowedExtensions: string[]): ValidatorFn {
     return (control: FormControl) => {
-        const value: FileUpload = control.value || {};
+        if (!control.value) {
+            return null;
+        }
+
+        const value: FileUpload = control.value;
         const extension: string = ((value.name || '').split(/\./g).reverse()[0] || '').toLowerCase();
         if (allowedExtensions.length && !allowedExtensions.includes(extension)) {
             return {fileType: true};
