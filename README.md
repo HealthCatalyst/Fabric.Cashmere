@@ -14,15 +14,18 @@ An Angular component library that makes any task feel luxurious. WCF Insurance h
 -   [Submit an Issue](https://wcf-insurance.github.io/guides/submit-an-issue)
 -   [Supported Browsers](https://wcf-insurance.github.io/guides/supported-browsers)
 
-## Installing
+## Installing to an Existing Project
 
-Run `npm i --save @wcf-insurance/cashmere`.
+-   Run `npm i --save @wcf-insurance/cashmere`.
 
-## Running the Demo App
+## Running the Demo Application
 
-Run `npm run build && ng serve user-guide` to serve the demo application on port 4200.
+-   Clone the repository `git clone https://github.com/WCF-Insurance/WCF-Cashmere.git`
+-   Run `cd WCF-Cashmere && npm install && npm run build && npm start`
+-   View the demo application at `http://localhost:4200`
 
 ## Sponsors
 
 Thanks to [BrowserStack](http://www.browserstack.com) for kindly providing the project with free of charge automatic testing time.
-![BrowserStack](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/Browserstack-logo@2x.png)
+
+![BrowserStack](https://raw.githubusercontent.com/WCF-Insurance/WCF-Cashmere/master/Browserstack-logo@2x.png)

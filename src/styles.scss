@@ -19,10 +19,9 @@ body {
 }
 
 .demo-content {
-    width: 90%;
+    width: 95%;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 0 30px 50px;
 
     ul {
         margin: 12px 0;
@@ -42,6 +41,25 @@ body {
 
 .full-height > .hc-vertical-tab-container {
     min-height: calc(100vh - 53px);
+}
+
+.full-height > .hc-vertical-tab-container > .hc-tab-bar-vertical {
+    display: none;
+}
+
+.full-height > .hc-vertical-tab-container > .hc-tab-content-vertical {
+    width: 100% !important;
+}
+
+.hc-components-nav-container {
+    .hc-accordion-content {
+        padding: 0 !important;
+    }
+
+    .hc-accordion-toolbar {
+        color: $dark-blue;
+        font-weight: 600;
+    }
 }
 
 .responsive-subnav {
@@ -74,11 +92,7 @@ body {
     .responsive-subnav {
         display: flex !important;
     }
-    .full-height > .hc-vertical-tab-container > .hc-tab-bar-vertical {
-        display: none;
-    }
     .full-height > .hc-vertical-tab-container > .hc-tab-content-vertical {
-        width: 100% !important;
         margin-top: 52px;
     }
     hc-tile {
@@ -187,7 +201,7 @@ table {
     tbody > tr:not(:last-child) > {
         td,
         th {
-            border-bottom: 1px dashed $gray-200;
+            border-bottom: 1px solid $gray-300;
         }
     }
 

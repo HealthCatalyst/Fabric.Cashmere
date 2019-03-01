@@ -14,6 +14,7 @@ import {IconModule} from '../icon/icon.module';
     imports: [CommonModule, PopoverModule, HttpClientModule, PipesModule, IconModule],
     declarations: [AppSwitcherComponent, AppSwitcherLinksComponent],
     exports: [AppSwitcherComponent, AppSwitcherLinksComponent],
+    entryComponents: [AppSwitcherComponent],
     providers: [
         {
             provide: APP_SWITCHER_SERVICE,

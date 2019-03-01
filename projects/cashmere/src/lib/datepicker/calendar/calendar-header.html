@@ -7,7 +7,6 @@
             class="hc-calendar-period-button"
             (click)="currentPeriodClicked()"
             [attr.aria-label]="periodButtonLabel"
-            cdkAriaLive="polite"
         >
             {{ periodButtonText }}
             <div class="hc-calendar-arrow" [class.hc-calendar-invert]="calendar.currentView != 'month'"></div>
@@ -31,6 +30,7 @@
             buttonStyle="link"
             type="button"
             class="hc-calendar-today-button"
+            [disabled]="!todayEnabled()"
             (click)="todayClicked()"
             [attr.aria-label]="prevButtonLabel">
             Today

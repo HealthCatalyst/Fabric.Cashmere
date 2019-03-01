@@ -6,16 +6,16 @@ import {Subject} from 'rxjs';
 
 @Component({
     selector: 'hc-guides',
-    templateUrl: './guides.component.html'
+    templateUrl: './guides.component.html',
+    styleUrls: ['../components/components.component.scss']
 })
-export class GuidesComponent implements OnInit, OnDestroy {
+export class GuidesComponent implements OnDestroy {
     thisPage = '';
     selectOptions: Array<string> = [];
+
     private unsubscribe = new Subject<void>();
 
-    constructor(public guidesService: GuidesService, private activatedRoute: ActivatedRoute, private router: Router) {}
-
-    ngOnInit() {
+    constructor(public guidesService: GuidesService, private activatedRoute: ActivatedRoute, private router: Router) {
         // Listen for vertical tab bar navigation and update the select component
         this.router.events.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
             if (event instanceof NavigationEnd) {
@@ -39,9 +39,16 @@ export class GuidesComponent implements OnInit, OnDestroy {
         for (let entry of this.guidesService.guides) {
             if (event === entry.title) {
                 this.router.navigate(['/guides/' + entry.route]);
+                window.scrollTo(0, 0);
                 break;
             }
         }
+    }
+
+    // Handle nav changes via the sidebar
+    navUpdate(page: any) {
+        this.router.navigate(['/guides/' + page]);
+        window.scrollTo(0, 0);
     }
 
     ngOnDestroy(): void {

@@ -1,7 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NO_ERRORS_SCHEMA, Component} from '@angular/core';
 import {CalendarOverlayService} from '../services/calendar-overlay.service';
-import {RangeStoreService, DATE} from '../services/range-store.service';
 import {ConfigStoreService} from '../services/config-store.service';
 import {DateRangeDirective} from './date-range.directive';
 import {DateRangeOptions} from '../model/model';
@@ -25,7 +24,6 @@ class TestComponent {
         this.options = {
             presets: [],
             format: 'mediumDate',
-            range: {fromDate: fromDate, toDate: toDate},
             applyLabel: 'Submit'
         };
     }
@@ -46,12 +44,7 @@ describe('DateRangeDirective', () => {
         })
             .overrideComponent(DateRangeDirective, {
                 set: {
-                    providers: [
-                        {provide: DATE, useValue: new Date()},
-                        {provide: CalendarOverlayService, useValue: overlay},
-                        RangeStoreService,
-                        ConfigStoreService
-                    ]
+                    providers: [{provide: CalendarOverlayService, useValue: overlay}, ConfigStoreService]
                 }
             })
             .compileComponents();
@@ -70,13 +63,7 @@ describe('DateRangeDirective', () => {
     });
 
     it('should set options in config', () => {
-        expect(directive.configStoreService.DateRangeOptions).toBeTruthy();
-    });
-
-    it('should set current date as per options', () => {
-        const updateDateSpy = spyOn(directive.rangeStoreService, 'updateRange');
-        directive.ngOnInit();
-        expect(updateDateSpy).toHaveBeenCalledWith(directive.options.range.fromDate, directive.options.range.toDate);
+        expect(directive.configStoreService.dateRangeOptions$).toBeTruthy();
     });
 
     it('should reset dates as per input', () => {
@@ -85,7 +72,7 @@ describe('DateRangeDirective', () => {
         const currMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
         const currMonthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0);
         const resetRange = {fromDate: currMonthStart, toDate: currMonthEnd};
-        directive.setDateRange(resetRange);
+        directive.selectedDate = resetRange;
         directive.selectedDateRangeChanged.subscribe(range => {
             expect(range.fromDate).toEqual(resetRange.fromDate);
             expect(range.toDate).toEqual(resetRange.toDate);
