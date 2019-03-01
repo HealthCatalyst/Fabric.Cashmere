@@ -197,14 +197,16 @@ function generateStackBlitzFiles(exampleName: string) {
 
 function generateExamplesModule() {
     const examplesModule = `/* This file is auto-generated; do not change! */
+/* tslint:disable:max-line-length */
+/* prettier-ignore-start */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CashmereModule } from './cashmere.module';
 ${(exampleModules as ExampleInfo[])
-        .concat(exampleComponents)
-        .map(x => x.import)
-        .join('\n')}
+    .concat(exampleComponents)
+    .map(x => x.import)
+    .join('\n')}
 
 @NgModule({
     imports: [
@@ -222,6 +224,8 @@ ${(exampleModules as ExampleInfo[])
     ]
 })
 export class ExampleModule {}
+/* tslint:enable:max-line-length */
+/* prettier-ignore-end */
 `;
     fs.writeFileSync(
         path.join(examplesRoot, 'examples.generated.module.ts'),
@@ -246,11 +250,15 @@ function generateExampleToComponentMappingsFile() {
         .sort((a, b) => a.exampleName.localeCompare(b.exampleName));
     const mappingLines = allExampleComponents.map(e => `'${e.exampleName}': ${e.name}`);
     const examplesComponentMappings = `/* This file is auto-generated; do not change! */
+/* tslint:disable:max-line-length */
+/* prettier-ignore-start */
 ${allExampleComponents.map(x => x.import).join('\n')}
 
 export const EXAMPLE_COMPONENTS: { [exampleName: string]: any; } = {
     ${mappingLines.join(',\r\n    ')}
 };
+/* prettier-ignore-end */
+/* tslint:enable:max-line-length */
     `;
     fs.writeFileSync(
         path.join(examplesRoot, 'example-mappings.generated.ts'),

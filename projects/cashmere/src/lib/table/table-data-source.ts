@@ -123,7 +123,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * @param data Data object that is being accessed.
      * @param sortHeaderId The name of the column that represents the data.
      */
-    sortingDataAccessor: ((data: T, sortHeaderId: string) => string | number) = (data: T, sortHeaderId: string): string | number => {
+    sortingDataAccessor: (data: T, sortHeaderId: string) => string | number = (data: T, sortHeaderId: string): string | number => {
         const value: any = data[sortHeaderId];
 
         if (_isNumberValue(value)) {
