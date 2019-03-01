@@ -1,26 +1,59 @@
 import {Injectable} from '@angular/core';
-import {DateRangeOptions} from '../model/model';
+import {DateRangeOptions, DateRange} from '../model/model';
+import {Observable, BehaviorSubject} from 'rxjs';
+import {D} from '../../datepicker';
+import {map, tap} from 'rxjs/operators';
 
 @Injectable()
 export class ConfigStoreService {
-    private _dateRangeOptions: DateRangeOptions;
     private defaultOptions: DateRangeOptions = {
-        excludeWeekends: false,
-        locale: 'en-US',
-        fromMinMax: {fromDate: undefined, toDate: undefined},
-        toMinMax: {fromDate: undefined, toDate: undefined},
         presets: [],
-        format: '',
-        range: {fromDate: undefined, toDate: undefined}
+        format: 'medium',
+        excludeWeekends: false,
+        locale: 'en-us',
+        applyLabel: 'Apply',
+        cancelLabel: 'Cancel',
+        startDatePrefix: 'Start Date',
+        endDatePrefix: 'End Date',
+        invalidDateLabel: 'Please enter valid date'
     };
 
-    constructor() {}
+    private dateRangeOptionsSubject: BehaviorSubject<DateRangeOptions> = new BehaviorSubject<DateRangeOptions>(this.defaultOptions);
+    public dateRangeOptions$: Observable<DateRangeOptions>;
 
-    get DateRangeOptions(): DateRangeOptions {
-        return this._dateRangeOptions;
+    private rangeUpdateSubject: BehaviorSubject<DateRange> = new BehaviorSubject<DateRange>({fromDate: undefined, toDate: undefined});
+    public rangeUpdate$: Observable<DateRange>;
+
+    public weekendFilter: (d: D) => boolean = () => true;
+
+    constructor() {
+        this.dateRangeOptions$ = this.dateRangeOptionsSubject.pipe(
+            map((options: DateRangeOptions) => {
+                return {
+                    ...this.defaultOptions,
+                    ...options
+                };
+            }),
+            tap((options: DateRangeOptions) => {
+                if (!!options.excludeWeekends) {
+                    this.weekendFilter = (d: Date): boolean => {
+                        const day = d.getDay();
+                        return day !== 0 && day !== 6;
+                    };
+                } else {
+                    this.weekendFilter = () => true;
+                }
+            })
+        );
+
+        this.rangeUpdate$ = this.rangeUpdateSubject.pipe();
     }
 
-    set DateRangeOptions(options: DateRangeOptions) {
-        this._dateRangeOptions = {...this.defaultOptions, ...options};
+    updateDateRangeOptions(options: DateRangeOptions) {
+        this.dateRangeOptionsSubject.next(options);
+    }
+
+    updateRange(dateRange: DateRange) {
+        this.rangeUpdateSubject.next(dateRange);
     }
 }

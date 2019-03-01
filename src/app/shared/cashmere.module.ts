@@ -11,6 +11,7 @@ import {
     DateRangeModule,
     DialogModule,
     DrawerModule,
+    FileInputModule,
     FormFieldModule,
     IconModule,
     InputModule,
@@ -29,7 +30,8 @@ import {
     TableModule,
     TileModule,
     ToasterModule,
-    TypeformSurveyModule
+    TypeformSurveyModule,
+    XanthosFileUploadModule
 } from '@wcf-insurance/cashmere';
 
 @NgModule({
@@ -45,6 +47,7 @@ import {
         DateRangeModule,
         DialogModule,
         DrawerModule,
+        FileInputModule,
         FormFieldModule,
         IconModule,
         InputModule,
@@ -63,7 +66,8 @@ import {
         TabsModule,
         TileModule,
         ToasterModule,
-        TypeformSurveyModule
+        TypeformSurveyModule,
+        XanthosFileUploadModule
     ]
 })
 export class CashmereModule {}

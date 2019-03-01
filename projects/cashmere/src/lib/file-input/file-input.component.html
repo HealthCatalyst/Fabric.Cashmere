@@ -1,0 +1,10 @@
+<ng-container *ngIf="value; then selectedFile; else uploadButton"></ng-container>
+<input type="file" #fileInput [disabled]="disabled" (change)="_onFileSelected()" (blur)="_onBlur()" />
+
+<ng-template #uploadButton>
+    <button type="button" hc-button buttonStyle="secondary" (click)="_onClick()" [disabled]="disabled">Upload file</button>
+</ng-template>
+
+<ng-template #selectedFile>
+    <hc-chip action="true" (click)="_deleteFile()">{{ value?.name }} ({{ value?.size | hcFileSize }})</hc-chip>
+</ng-template>

@@ -6,6 +6,7 @@
         buttonStyle="link"
         popperPlacement="bottom"
         (selectedDateRangeChanged)="updateRange($event)"
+        [selectedDate]="range"
         [options]="options"
         #pickerOne
     >

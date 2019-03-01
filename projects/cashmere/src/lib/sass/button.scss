@@ -226,7 +226,7 @@ $btn-icon-sz: 18px;
     margin-right: 0;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
-    min-width: unset;
+    min-width: auto;
 }
 
 @mixin hc-split-button-toggle() {

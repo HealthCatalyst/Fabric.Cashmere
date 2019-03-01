@@ -23,9 +23,7 @@ export class DateRangeExampleComponent implements OnInit {
         this.options = {
             presets: this.presets,
             format: 'mediumDate',
-            range: {fromDate: today, toDate: today},
             applyLabel: 'Apply',
-            // excludeWeekends:true,
             fromMinMax: {fromDate: fromMin, toDate: fromMax},
             toMinMax: {fromDate: toMin, toDate: toMax}
         };

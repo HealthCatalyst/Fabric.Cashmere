@@ -4,7 +4,6 @@ import {
     Input,
     ChangeDetectionStrategy,
     ViewEncapsulation,
-    OnInit,
     Output,
     EventEmitter,
     OnChanges,
@@ -23,7 +22,7 @@ import {D} from '../../datepicker/datetime/date-formats';
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
-export class CalendarWrapperComponent implements OnInit, OnChanges {
+export class CalendarWrapperComponent implements OnChanges {
     @ViewChild(CalendarComponent)
     hcCalendar: CalendarComponent;
 
@@ -36,42 +35,42 @@ export class CalendarWrapperComponent implements OnInit, OnChanges {
 
     /** Current selected date. */
     @Input()
-    selectedDate: D;
+    selectedDate: D | undefined;
 
-    _dateFormat: string;
+    @Input()
+    dateFormat: string;
 
     /** Prefix label on top of component. */
     @Input()
     prefixLabel: string;
 
+    @Input()
+    excludeWeekends: boolean;
+
     /** The minimum selectable date. */
     @Input()
-    minDate: D;
+    minDate: D | undefined;
+
+    @Input()
+    invalidDateLabel: string;
 
     /** Flag to filter out weekends. */
     @Input()
-    maxDate: D;
-    weekendFilter = (d: D) => true;
+    maxDate: D | undefined;
 
-    constructor(configStore: ConfigStoreService) {
-        this._dateFormat = configStore.DateRangeOptions.format;
-        if (configStore.DateRangeOptions.excludeWeekends) {
-            this.weekendFilter = (d: Date): boolean => {
-                const day = d.getDay();
-                return day !== 0 && day !== 6;
-            };
-        }
-    }
+    weekendFilter = () => true;
 
-    ngOnInit(): void {}
+    constructor(public configStore: ConfigStoreService) {}
 
     ngOnChanges(changes: SimpleChanges) {
         // Necessary to force view refresh
-        const date: D = changes.selectedDate.currentValue;
-        if (date) {
-            this.hcCalendar.activeDate = date;
-            this.datePickerInput.setDate(date);
-            this.selectedDateChange.emit(date);
+        if (changes.selectedDate) {
+            const date: D = changes.selectedDate.currentValue;
+            if (date) {
+                this.hcCalendar.activeDate = date;
+                this.datePickerInput.setDate(date);
+                this.selectedDateChange.emit(date);
+            }
         }
     }
 
@@ -80,7 +79,12 @@ export class CalendarWrapperComponent implements OnInit, OnChanges {
     }
 
     _onInputChange(event: HcDatepickerInputEvent) {
-        this.selectedDateChange.emit(event.value || undefined);
+        if (event.value && ((this.minDate && event.value < this.minDate) || (this.maxDate && event.value > this.maxDate))) {
+            this.selectedDate = undefined;
+            this.selectedDateChange.emit(undefined);
+        } else {
+            this.selectedDateChange.emit(event.value || undefined);
+        }
     }
 
     /** Focus inner input */

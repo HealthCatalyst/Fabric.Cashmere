@@ -1,0 +1,16 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <hc-form-field>
+        <hc-label>File</hc-label>
+        <hc-file-input formControlName="file"></hc-file-input>
+        <hc-error>Invalid file type. Allowed file types: {{ displayAllowedFileExtensions }}</hc-error>
+    </hc-form-field>
+    <button type="submit" hc-button buttonStyle="primary" [disabled]="formGroup.invalid">Submit</button>
+</form>
+<div>
+    <h3>Form Value</h3>
+    {{ formGroup.valueChanges | async | json }}
+</div>
+<div>
+    <h3>Submitted Value</h3>
+    {{ submittedValue | json }}
+</div>

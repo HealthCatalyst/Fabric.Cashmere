@@ -17,6 +17,9 @@ $accordion-toolbar-padding: 0 10px;
             .hc-accordion-trigger {
                 order: 1;
                 margin-left: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
             .hc-accordion-toolbar {
                 order: 0;

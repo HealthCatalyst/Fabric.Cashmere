@@ -120,6 +120,13 @@ export class CalendarHeaderComponent {
         this.calendar._userSelection.emit();
     }
 
+    todayEnabled(): boolean {
+        return (
+            (!this.calendar.minDate || this._dateAdapter.compareDate(this._dateAdapter.today(), this.calendar.minDate) < 0) &&
+            (!this.calendar.maxDate || this._dateAdapter.compareDate(this._dateAdapter.today(), this.calendar.maxDate) > 0)
+        );
+    }
+
     /** Whether the previous period button is enabled. */
     previousEnabled(): boolean {
         if (!this.calendar.minDate) {
