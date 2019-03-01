@@ -110,6 +110,11 @@ const docs: DocItem[] = [
         name: 'Typeform Survey',
         examples: ['typeform-survey-overview'],
         usageDoc: true
+    },
+    {
+        id: 'xanthos-file-upload',
+        name: 'Xanthos File Upload',
+        examples: ['xanthos-file-upload-overview']
     }
 ];
 

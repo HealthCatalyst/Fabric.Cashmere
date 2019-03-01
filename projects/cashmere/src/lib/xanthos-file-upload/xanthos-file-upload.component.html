@@ -1,0 +1,13 @@
+<div>
+    <hc-form-field class="file-input-field">
+        <hc-file-input [formControl]="fileControl"></hc-file-input>
+    </hc-form-field>
+
+    <hc-form-field class="file-type-field">
+        <hc-label>File Type</hc-label>
+        <hc-select [formControl]="fileTypeControl" required>
+            <option *ngFor="let type of xanthosFileTypes">{{ type }}</option>
+        </hc-select>
+        <hc-error *ngIf="fileTypeControl.errors?.required">File type is required.</hc-error>
+    </hc-form-field>
+</div>

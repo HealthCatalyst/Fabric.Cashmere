@@ -30,7 +30,8 @@ import {
     TableModule,
     TileModule,
     ToasterModule,
-    TypeformSurveyModule
+    TypeformSurveyModule,
+    XanthosFileUploadModule
 } from '@wcf-insurance/cashmere';
 
 @NgModule({
@@ -65,7 +66,8 @@ import {
         TabsModule,
         TileModule,
         ToasterModule,
-        TypeformSurveyModule
+        TypeformSurveyModule,
+        XanthosFileUploadModule
     ]
 })
 export class CashmereModule {}
