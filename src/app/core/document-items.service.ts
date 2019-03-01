@@ -111,7 +111,7 @@ const docs: DocItem[] = [
         id: 'table',
         name: 'Table',
         category: 'table',
-        examples: ['table-overview', 'table-sort', 'table-filter'],
+        examples: ['resizable-columns', 'table-sort', 'table-filter'],
         usageDoc: true
     },
     {
