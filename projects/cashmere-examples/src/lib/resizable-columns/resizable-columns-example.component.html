@@ -1,0 +1,117 @@
+<table hc-table [dataSource]="dataSource">
+    <!-- Position Column -->
+    <ng-container hcColumnDef="position">
+        <th hc-header-cell *hcHeaderCellDef [style.width]="columnObjects[0].width + 'px'">
+            <span>{{ columnObjects[0].title }}</span>
+            <hc-cell-resizer
+                [width]="columnObjects[0].width"
+                (resized)="columnResized(0, $event)"
+                (resizing)="isResizing = $event"
+            ></hc-cell-resizer>
+        </th>
+        <td hc-cell *hcCellDef="let element" [style.width]="columnObjects[0].width + 'px'">
+            <span>{{ element.position }}</span>
+            <hc-cell-resizer
+                [width]="columnObjects[0].width"
+                (resized)="columnResized(0, $event)"
+                (resizing)="isResizing = $event"
+            ></hc-cell-resizer>
+        </td>
+        <td hc-footer-cell *hcFooterCellDef [style.width]="columnObjects[0].width + 'px'">
+            <span>{{ totalPositions }}</span>
+            <hc-cell-resizer
+                [width]="columnObjects[0].width"
+                (resized)="columnResized(0, $event)"
+                (resizing)="isResizing = $event"
+            ></hc-cell-resizer>
+        </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container hcColumnDef="name">
+        <th hc-header-cell *hcHeaderCellDef [style.width]="columnObjects[1].width + 'px'">
+            <span>{{ columnObjects[1].title }}</span>
+            <hc-cell-resizer
+                [width]="columnObjects[1].width"
+                (resized)="columnResized(1, $event)"
+                (resizing)="isResizing = $event"
+            ></hc-cell-resizer>
+        </th>
+        <td hc-cell *hcCellDef="let element" [style.width]="columnObjects[1].width + 'px'">
+            <span>{{ element.name }}</span>
+            <hc-cell-resizer
+                [width]="columnObjects[1].width"
+                (resized)="columnResized(1, $event)"
+                (resizing)="isResizing = $event"
+            ></hc-cell-resizer>
+        </td>
+        <td hc-footer-cell *hcFooterCellDef [style.width]="columnObjects[1].width + 'px'">
+            <span>{{ totalNames }}</span>
+            <hc-cell-resizer
+                [width]="columnObjects[1].width"
+                (resized)="columnResized(1, $event)"
+                (resizing)="isResizing = $event"
+            ></hc-cell-resizer>
+        </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container hcColumnDef="weight">
+        <th hc-header-cell *hcHeaderCellDef [style.width]="columnObjects[2].width + 'px'">
+            <span>{{ columnObjects[2].title }}</span>
+            <hc-cell-resizer
+                [width]="columnObjects[2].width"
+                (resized)="columnResized(2, $event)"
+                (resizing)="isResizing = $event"
+            ></hc-cell-resizer>
+        </th>
+        <td hc-cell *hcCellDef="let element" [style.width]="columnObjects[2].width + 'px'">
+            <span>{{ element.weight }}</span>
+            <hc-cell-resizer
+                [width]="columnObjects[2].width"
+                (resized)="columnResized(2, $event)"
+                (resizing)="isResizing = $event"
+            ></hc-cell-resizer>
+        </td>
+        <td hc-footer-cell *hcFooterCellDef [style.width]="columnObjects[2].width + 'px'">
+            <span>{{ totalWeight }}</span>
+            <hc-cell-resizer
+                [width]="columnObjects[2].width"
+                (resized)="columnResized(2, $event)"
+                (resizing)="isResizing = $event"
+            ></hc-cell-resizer>
+        </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container hcColumnDef="symbol">
+        <th hc-header-cell *hcHeaderCellDef [style.width]="columnObjects[3].width + 'px'">
+            <span>{{ columnObjects[3].title }}</span>
+            <hc-cell-resizer
+                [width]="columnObjects[3].width"
+                (resized)="columnResized(3, $event)"
+                (resizing)="isResizing = $event"
+            ></hc-cell-resizer>
+        </th>
+        <td hc-cell *hcCellDef="let element" [style.width]="columnObjects[3].width + 'px'">
+            <span>{{ element.symbol }}</span>
+            <hc-cell-resizer
+                [width]="columnObjects[3].width"
+                (resized)="columnResized(3, $event)"
+                (resizing)="isResizing = $event"
+            ></hc-cell-resizer>
+        </td>
+        <td hc-footer-cell *hcFooterCellDef [style.width]="columnObjects[3].width + 'px'">
+            <span>{{ totalSymbols }}</span>
+            <hc-cell-resizer
+                [width]="columnObjects[3].width"
+                (resized)="columnResized(3, $event)"
+                (resizing)="isResizing = $event"
+            ></hc-cell-resizer>
+        </td>
+    </ng-container>
+
+    <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
+    <tr hc-row *hcRowDef="let row; columns: displayedColumns"></tr>
+    <tr hc-footer-row *hcFooterRowDef="displayedColumns"></tr>
+</table>
