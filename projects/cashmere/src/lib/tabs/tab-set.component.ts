@@ -23,6 +23,10 @@ export function tabComponentMissing(): Error {
     return new Error(`TabSet must contain at least one TabComponent. Make sure to add a hc-tab to the hc-tab-set element.`);
 }
 
+export function invalidDefaultTab(tabVal: string) {
+    throw Error('Invalid default tab value: ' + tabVal + ". Must be 'none' or a value less than the total number of tabs in the set.");
+}
+
 @Component({
     selector: `hc-tab-set`,
     templateUrl: './tab-set.component.html',
@@ -31,6 +35,7 @@ export function tabComponentMissing(): Error {
 export class TabSetComponent implements AfterContentInit {
     _routerEnabled: boolean = false;
     private _direction: string = 'vertical';
+    private _defaultTab: string = '0';
 
     @ContentChildren(TabComponent)
     _tabs: QueryList<TabComponent>;
@@ -50,6 +55,21 @@ export class TabSetComponent implements AfterContentInit {
         this._direction = directionType;
     }
 
+    /** Zero-based numerical value specifying which tab to select by default, setting to `none` means no tab
+     * will be immediately selected. Defaults to 0 (the first tab). */
+    @Input()
+    get defaultTab(): string {
+        return this._defaultTab;
+    }
+
+    set defaultTab(tabValue: string) {
+        if (Number(tabValue) !== NaN || tabValue === 'none') {
+            this._defaultTab = tabValue;
+        } else {
+            invalidDefaultTab(tabValue);
+        }
+    }
+
     constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngAfterContentInit(): void {
@@ -57,11 +77,15 @@ export class TabSetComponent implements AfterContentInit {
             throw tabComponentMissing();
         }
 
-        this.defaultToFirstTab();
+        if (this.defaultTab !== 'none') {
+            this.defaultToFirstTab();
+        }
         this.checkForRouterUse();
 
         this._tabs.changes.subscribe(() => {
-            this.defaultToFirstTab();
+            if (this.defaultTab !== 'none') {
+                this.defaultToFirstTab();
+            }
             this.checkForRouterUse();
         });
     }
@@ -107,7 +131,12 @@ export class TabSetComponent implements AfterContentInit {
             // the view in which they are projected
             // embedded views are checked *before* AfterContentInit
             // is triggered
-            setTimeout(() => this._setActive(this._tabs.first));
+            const tabArray = this._tabs.toArray();
+            if (tabArray[Number(this.defaultTab)]) {
+                setTimeout(() => this._setActive(tabArray[Number(this.defaultTab)]));
+            } else {
+                invalidDefaultTab(this.defaultTab);
+            }
         }
     }
 
@@ -123,7 +152,9 @@ export class TabSetComponent implements AfterContentInit {
 
         if (countUsingRouter === this._tabs.length) {
             this._routerEnabled = true;
-            this.defaultToFirstRoute();
+            if (this._defaultTab !== 'none') {
+                this.defaultToFirstRoute();
+            }
         }
     }
 
@@ -140,8 +171,11 @@ export class TabSetComponent implements AfterContentInit {
             return;
         }
 
-        const firstRoute = this.mapRouterLinkToString(this._tabs.first.routerLink);
-        this.router.navigate([firstRoute], {relativeTo: this.route});
+        const tabArray = this._tabs.toArray();
+        if (tabArray[Number(this.defaultTab)]) {
+            const firstRoute = this.mapRouterLinkToString(tabArray[Number(this.defaultTab)].routerLink);
+            this.router.navigate([firstRoute], {relativeTo: this.route});
+        }
     }
 
     private mapRouterLinkToString(routerLink: string | any[]): string {
