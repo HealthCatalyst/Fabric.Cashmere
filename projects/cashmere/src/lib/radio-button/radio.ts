@@ -357,14 +357,16 @@ export class RadioButtonComponent implements OnInit {
     _onInputChange(event: Event) {
         event.stopPropagation();
         const valueChanged = this.radioGroup && this.value !== this.radioGroup.value;
-        this.checked = true;
         this._emitChangeEvent();
         if (this.radioGroup !== null) {
             this.radioGroup._onChangeFn(this.value);
             this.radioGroup._touch();
             if (valueChanged) {
                 this.radioGroup._emitChangeEvent();
+                this.radioGroup.value = this.value;
             }
+        } else {
+            this.checked = true;
         }
     }
 

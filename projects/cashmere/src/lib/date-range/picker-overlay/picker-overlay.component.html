@@ -1,0 +1,43 @@
+<div class="hc-date-range-calendar-container" *ngIf="(options$ | async) as options">
+    <div class="hc-date-range-calendar-item hc-date-range-calendar-wrapper">
+        <hc-calendar-wrapper
+            [prefixLabel]="options.startDatePrefix"
+            [selectedDate]="_fromDate"
+            [minDate]="options.fromMinMax?.fromDate"
+            [maxDate]="_fromMaxDate | async"
+            (selectedDateChange)="_updateFromDate($event)"
+            [excludeWeekends]="options.excludeWeekends"
+            [dateFormat]="options.dateFormat"
+            [invalidDateLabel]="options.invalidDateLabel"
+        >
+        </hc-calendar-wrapper>
+    </div>
+    <div class="hc-date-range-calendar-item hc-date-range-calendar-wrapper">
+        <hc-calendar-wrapper
+            [prefixLabel]="options.endDatePrefix"
+            [selectedDate]="_toDate"
+            [minDate]="_ToMinDate | async"
+            [maxDate]="options.toMinMax?.toDate"
+            (selectedDateChange)="_updateToDate($event)"
+            [excludeWeekends]="options.excludeWeekends"
+            [dateFormat]="options.dateFormat"
+            [invalidDateLabel]="options.invalidDateLabel"
+        >
+        </hc-calendar-wrapper>
+    </div>
+    <div class="hc-date-range-calendar-item">
+        <div class="hc-date-range-menu">
+            <hc-radio-group class="presets" [(ngModel)]="_selectedPreset">
+                <hc-radio-button *ngFor="let p of options.presets" [value]="p.range" (change)="_updateRangeByPreset(p.range)">{{ p.presetLabel }}</hc-radio-button>
+            </hc-radio-group>
+            <div class="hc-date-range-controls">
+                <button hc-button buttonStyle="link" type="button" (click)="_discardNewDates()">
+                    {{ options.cancelLabel }}
+                </button>
+                <button hc-button buttonStyle="primary" type="button" [disabled]="_disabled" (click)="_applyNewDates()">
+                    {{ options.applyLabel }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

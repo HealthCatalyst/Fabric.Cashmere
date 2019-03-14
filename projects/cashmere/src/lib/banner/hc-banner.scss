@@ -5,7 +5,7 @@
 .hc-banner {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
     padding: 10px;
     z-index: $zindex-subnav;

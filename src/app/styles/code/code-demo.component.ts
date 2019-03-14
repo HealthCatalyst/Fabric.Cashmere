@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-code',
     templateUrl: './code-demo.component.html',
-    styles: ['.api-table li { margin: 15px 0; }']
+    styleUrls: ['./code-demo.component.scss']
 })
 export class CodeDemoComponent {
     lastModified: Date = new Date(document.lastModified);

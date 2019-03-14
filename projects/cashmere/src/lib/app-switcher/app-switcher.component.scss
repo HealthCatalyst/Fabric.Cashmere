@@ -26,7 +26,7 @@
         flex-flow: row wrap;
         justify-content: flex-start;
         .app {
-            flex: 0 0 33%;
+            flex: 0 0 auto;
             & > a {
                 padding: 10px;
                 text-decoration: none;

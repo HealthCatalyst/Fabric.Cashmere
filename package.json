@@ -18,7 +18,7 @@
         "test:unit": "ng test cashmere --watch=false --code-coverage --no-progress",
         "lint": "npm run lint:tslint && npm run lint:prettier",
         "lint:tslint": "tslint -p tsconfig.json",
-        "lint:prettier": "prettier --list-different \"**/*.{ts,js,scss,css,md,json}\"",
+        "lint:prettier": "prettier --debug-check \"**/*.{ts,js,scss,css,md,json}\"",
         "build:lib": "ng build cashmere --prod",
         "postbuild:lib": "node scripts/postbuild.js",
         "build:user": "ng build user-guide",
@@ -56,6 +56,7 @@
         "npm-font-open-sans": "^1.1.0",
         "popper.js": "^1.12.9",
         "rxjs": "6.3.2",
+        "sugar": "^2.0.6",
         "zone.js": "^0.8.26"
     },
     "devDependencies": {
@@ -102,7 +103,7 @@
         "ng-packagr": "^4.4.0",
         "node-sass": "4.8.3",
         "path": "^0.12.7",
-        "prettier": "^1.15.3",
+        "prettier": "^1.16.2",
         "progress": "^2.0.3",
         "protractor": "~5.3.1",
         "punycode": "~1.4.1",

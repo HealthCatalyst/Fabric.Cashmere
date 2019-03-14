@@ -5,7 +5,8 @@ import {Subject} from 'rxjs';
 
 @Component({
     selector: 'hc-demo-styles',
-    templateUrl: './styles.component.html'
+    templateUrl: './styles.component.html',
+    styleUrls: ['../components/components.component.scss']
 })
 export class StylesComponent implements OnDestroy {
     thisPage = '';
@@ -41,10 +42,17 @@ export class StylesComponent implements OnDestroy {
             for (let entry of root.children) {
                 if (entry.data && event === entry.data.title) {
                     this.router.navigate(['/styles/' + entry.path]);
+                    window.scrollTo(0, 0);
                     break;
                 }
             }
         }
+    }
+
+    // Handle nav changes via the sidebar
+    navUpdate(page: any) {
+        this.router.navigate(['/styles/' + page]);
+        window.scrollTo(0, 0);
     }
 
     ngOnDestroy(): void {

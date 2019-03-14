@@ -29,6 +29,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 
 @mixin navbar-brand {
     background-color: $navbar-brand;
+    min-width: 55px;
     width: 55px;
     flex-basis: auto;
     height: 100%;
@@ -38,7 +39,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     .brand {
         & > img {
             height: 37px;
-            width: auto;
+            width: 100%;
         }
         transition: background-color 0.25s ease;
         display: flex;
@@ -56,9 +57,6 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 @mixin navbar-app {
     height: 100%;
     padding: $navbar-app-padding;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     &.logo-condense {
         padding-right: 25px;

@@ -36,8 +36,9 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 }
 
 @mixin hc-form-field-content-wrapper() {
-    display: grid;
+    display: flex;
     flex-direction: inherit;
+    flex-wrap: wrap;
     width: 100%;
 }
 
