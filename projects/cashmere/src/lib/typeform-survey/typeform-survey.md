@@ -1,3 +1,9 @@
+##### Usage Notes
+
+If you have a Content Security Policy you will need to add the typeform script link 'https://embed.typeform.com/embed.js' to 'script-src' and your survey uri domain eg 'https://somecompany.typeform.com' to 'frame-src'
+
+&nbsp;
+
 ##### Overview
 
 This usage guide explains the methodologies and mechanisms for gathering qualitative user feedback. It will also provide general templates for body copy that can be used for user prompts.
