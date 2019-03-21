@@ -13,8 +13,19 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     public applications: IDiscoveryApplication[];
     public subscription: Subscription;
     public brandBg = 'brand';
+    private _iconHeight: Number = 100;
 
     private ngUnsubscribe: any = new Subject();
+
+    /** Sets the height of the app thumbnail icons, width is auto (defaults to 100px) */
+    @Input()
+    get iconHeight(): Number {
+        return this._iconHeight;
+    }
+
+    set iconHeight(heightVal: Number) {
+        this._iconHeight = heightVal;
+    }
 
     constructor(@Inject(APP_SWITCHER_SERVICE) public appSwitcherService: IAppSwitcherService) {}
 

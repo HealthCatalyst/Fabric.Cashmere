@@ -234,8 +234,6 @@ export class Drawer implements AfterContentInit {
 
     /** Toggles the drawer */
     toggle(isOpen: boolean = !this.opened): Promise<DrawerPromiseResult> {
-        this._drawerOpened = isOpen;
-
         if (!this._animationPromise) {
             this._drawerOpened = isOpen;
 
