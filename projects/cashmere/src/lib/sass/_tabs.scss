@@ -28,8 +28,8 @@
     }
     &.active {
         background-color: $slate-gray-100;
-        border-left: $blue 8px solid;
-        color: $blue;
+        border-left: $wcf-red 8px solid;
+        color: $wcf-red;
         font-weight: 600;
         padding-left: 12px;
     }
@@ -65,7 +65,7 @@
         cursor: pointer;
     }
     &.active {
-        border-bottom: $blue 4px solid;
+        border-bottom: $wcf-red 4px solid;
         color: $offblack;
         font-weight: bold;
     }
