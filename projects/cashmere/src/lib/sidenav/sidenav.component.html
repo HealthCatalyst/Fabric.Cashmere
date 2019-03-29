@@ -1,19 +1,19 @@
 <!-- TODO: migrate code from https://stackblitz.com/edit/angular-le671z?file=src%2Fapp%2Fdrawer-menu%2Fdrawer-menu-example.component.html -->
-<div class="topBar fixed-top">
+<!-- <div class="topBar fixed-top">
     <div class="hc-sidenav-mobile-menu" (click)="_toggleMobileMenu()">
         <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
     </div>
     <div class="sidenav-app-name" *ngIf="appName">{{ appName }}</div>
-</div>
+</div> -->
 <nav #sidenav class="hc-sidenav" *ngIf="sidenavOpen">
     <div class="sidenav-brand">
         <a [routerLink]="homeUri" class="brand">
             <img src="{{ brandIcon }}" />
         </a>
     </div>
-    <div class="hc-sidenav-mobile-menu" (click)="_toggleMobileMenu()">
+    <!-- <div class="hc-sidenav-mobile-menu" (click)="_toggleMobileMenu()">
         <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
-    </div>
+    </div> -->
     <div class="sidenav-user" *ngIf="user">
         <span class="user">{{ user }}</span>
     </div>

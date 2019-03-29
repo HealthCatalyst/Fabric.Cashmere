@@ -3,9 +3,14 @@ import {Component, Input, ContentChildren, QueryList} from '@angular/core';
 /** Primary navigation links */
 @Component({
     selector: 'hc-sidenav-link',
-    templateUrl: 'sidenav-link.component.html'
+    templateUrl: 'sidenav-link.component.html',
+    styleUrls: ['sidenav-link.component.scss']
 })
 export class SidenavLinkComponent {
+    /** RouterLink uri. See https://angular.io/api/router/RouterLink */
+    @Input()
+    routerLink?: string;
+
     /** RouterLink uri. See https://angular.io/api/router/RouterLink */
     @Input()
     uri?: string;
@@ -19,5 +24,12 @@ export class SidenavLinkComponent {
     linkText: string;
 
     @ContentChildren(SidenavLinkComponent)
-    children?: QueryList<SidenavLinkComponent>;
+    private _children?: QueryList<SidenavLinkComponent>;
+
+    get children() {
+        if (!this._children) {
+            return;
+        }
+        return this._children.filter(c => c !== this);
+    }
 }

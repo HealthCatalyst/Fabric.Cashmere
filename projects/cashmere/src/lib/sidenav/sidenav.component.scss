@@ -1,56 +1,35 @@
-@import '../sass/sidenav.scss';
-
+@import '../sass/colors';
 .hc-sidenav {
-    @include hc-sidenav();
+    background-color: $gray-600;
+    height: 100%;
+    padding: 0;
+    width: 200px;
 
-    &.fixed-top {
-        @include hc-sidenav-fixed-top();
+    .sidenav-brand {
+        background-color: $wcf-red;
+    }
+
+    .hc-sidenav-user {
+        background-color: $black;
     }
 
     .sidenav-brand {
-        @include sidenav-brand();
+        text-align: center;
+        img {
+            max-height: 75px;
+        }
     }
 
-    .sidenav-app {
-        @include sidenav-app();
-    }
-
-    .hc-sidenav-link-container {
-        @include hc-sidenav-link-container();
-    }
-
-    .sidenav-link {
-        @include sidenav-link();
-    }
-
-    .hc-sidenav-right-container {
-        @include hc-sidenav-right-container();
-    }
-
-    .hc-sidenav-icon {
-        @include hc-sidenav-icon();
-    }
-
-    .hc-sidenav-username {
-        @include hc-sidenav-username();
-    }
-
-    .hc-sidenav-vertical-separator {
-        @include hc-sidenav-vertical-separator();
-    }
-
-    .hc-sidenav-more-links {
-        @include hc-sidenav-more-links();
-    }
-
-    .hc-sidenav-mobile-menu {
-        @include hc-sidenav-mobile-menu();
+    .sidenav-user {
+        background-color: $offblack;
+        color: $gray-100;
+        padding: 20px;
+        white-space: normal;
+        overflow: hidden;
+        max-width: 100%;
+        text-overflow: ellipsis;
     }
 }
 
-.more-popover a {
-    &.active {
-        color: $text;
-        cursor: default;
-    }
+.topBar.fixed-top {
 }

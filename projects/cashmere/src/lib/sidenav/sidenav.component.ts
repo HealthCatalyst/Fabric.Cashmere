@@ -9,7 +9,8 @@ import {
     QueryList,
     ViewChild,
     forwardRef,
-    HostBinding
+    HostBinding,
+    ChangeDetectionStrategy
 } from '@angular/core';
 import {trigger, state, style, transition, animate} from '@angular/animations';
 import {Subject} from 'rxjs';
@@ -22,6 +23,7 @@ import {Drawer} from '../drawer/index';
     templateUrl: './sidenav.component.html',
     styleUrls: ['./sidenav.component.scss'],
     providers: [{provide: Drawer, useClass: forwardRef(() => SidenavComponent)}],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [
         trigger('openState', [
             state(
@@ -93,6 +95,7 @@ export class SidenavComponent extends Drawer implements OnInit {
         this._logoReady.subscribe(() => {
             this._navResize();
         });
+        this.toggleOpen();
     }
     appIconLoaded() {
         this._logoReady.next(true);
