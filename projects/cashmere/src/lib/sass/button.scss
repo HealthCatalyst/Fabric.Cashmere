@@ -47,7 +47,7 @@ $btn-icon-sz: 18px;
     background-image: none;
     border: none;
     border-radius: 4px;
-    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
     box-shadow: 0 3px 5px $shadow;
 
     &[disabled] {
@@ -78,7 +78,7 @@ $btn-icon-sz: 18px;
 
 @mixin hc-button-md() {
     padding: 0 20px;
-    height: 35px;
+    height: 40px;
     min-width: 150px;
     @include fontSize(14px);
     line-height: 15px;
@@ -200,9 +200,9 @@ $btn-icon-sz: 18px;
 @mixin hc-icon-button() {
     display: inline-block;
     position: relative;
-    height: 35px;
-    width: 35px;
-    line-height: 35px;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
     border-radius: 50%;
     outline: none;
     border: none;

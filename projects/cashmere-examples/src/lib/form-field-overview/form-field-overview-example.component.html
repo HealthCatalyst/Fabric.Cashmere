@@ -6,7 +6,7 @@
             <hc-error>A job name is required</hc-error>
         </hc-form-field>
     </div>
-
+    <hr /> 
     <hc-form-field inline="true" class="form-padding">
         <hc-label>Data Source:</hc-label>
         <hc-radio-group [formControl]="radioControl" inline="true">
@@ -16,7 +16,7 @@
         </hc-radio-group>
         <hc-error>Specified data source does not match description</hc-error>
     </hc-form-field>
-
+    <hr />
     <div class="form-sample">
         <hc-form-field>
             <hc-label>Run Frequency:</hc-label>
@@ -28,7 +28,7 @@
             <hc-error>Please select the run frequency for this item</hc-error>
         </hc-form-field>
     </div>
-
+    <hr />
     <div class="form-sample flex-column">
         <hc-form-field>
             <hc-label>Requested Notifications:</hc-label>
@@ -39,7 +39,7 @@
             <hc-error>At least one notification must be selected</hc-error>
         </hc-form-field>
     </div>
-
+    <hr />
     <button hc-button buttonStyle="primary" class="demo-button" (click)="invalidForm()">
         Invalidate All Fields
     </button>
