@@ -7,8 +7,9 @@ $label-font-scale: 1;
 $error-font-scale: 0.75;
 $infix-margin-top: 1.143em * $line-height * $label-font-scale;
 $prefix-suffix-icon-font-size: 125%;
+$field-height: 2.85em;
 
-$infix-padding: 0.393em;
+$infix-padding: 0.4em;
 $error-margin-top: 0.4em / $error-font-scale;
 $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
@@ -50,6 +51,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
     padding: 0 7px 0 0;
     border: 1.5px solid $gray-300;
+    border-radius: 1px;
 
     background: $white;
 }
@@ -61,6 +63,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
     padding: 0 7px 0 0;
     border: 1.5px solid $gray-300;
+    border-radius: 1px;
 
     background: $white;
 }
@@ -70,6 +73,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     border: 1.5px solid $gray-200;
     background-color: $slate-gray-100;
     color: tint($text, 60%);
+    border-radius: 1px;
 }
 
 @mixin hc-form-field-input-invalid() {
@@ -113,6 +117,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     flex: auto;
     min-width: $mat-form-field-default-infix-width;
     padding: $infix-padding 10px;
+    height: $field-height;
 }
 
 @mixin hc-form-field-label-wrapper() {
