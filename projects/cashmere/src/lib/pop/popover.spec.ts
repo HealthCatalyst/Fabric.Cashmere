@@ -727,7 +727,7 @@ describe('HcPopover', () => {
             fixture.detectChanges();
             tick();
 
-            expect(comp.lastKeyCode).toBe(undefined, 'no key presses yet');
+            expect(comp.lastKeyCode).toBeFalsy();
 
             // Emit A keydown event on input element
             const currentlyFocusedElement = getActiveElement();
