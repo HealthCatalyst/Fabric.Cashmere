@@ -35,7 +35,7 @@ export class TestAccordionComponent {
     onClosed: (event?: Event) => void = () => {};
 }
 
-fdescribe('AccordionComponent', () => {
+describe('AccordionComponent', () => {
     let component: TestAccordionComponent;
     let fixture: ComponentFixture<TestAccordionComponent>;
 
@@ -70,7 +70,7 @@ fdescribe('AccordionComponent', () => {
         accordionComponent.componentInstance.toggleOpen();
         fixture.detectChanges();
 
-        fixture.whenStable().then(() => {
+        return fixture.whenStable().then(() => {
             expect(component.onOpenStart).toHaveBeenCalledTimes(1);
             expect(component.onOpen).toHaveBeenCalledTimes(1);
         });
@@ -86,7 +86,7 @@ fdescribe('AccordionComponent', () => {
         accordionComponent.componentInstance.toggleClose();
         fixture.detectChanges();
 
-        fixture.whenStable().then(() => {
+        return fixture.whenStable().then(() => {
             expect(component.onCloseStart).toHaveBeenCalledTimes(1);
             expect(component.onClosed).toHaveBeenCalledTimes(1);
         });
