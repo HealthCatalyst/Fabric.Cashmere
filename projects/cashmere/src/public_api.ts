@@ -23,6 +23,7 @@ export * from './lib/pagination/index';
 export * from './lib/pipes/index';
 export * from './lib/picklist/index';
 export * from './lib/popover/index';
+export * from './lib/pop/index';
 export * from './lib/progress-indicators/index';
 export * from './lib/radio-button/index';
 export * from './lib/select/index';

@@ -1,0 +1,62 @@
+<button hc-button buttonStyle="primary" [hcPopoverAnchorFor]="pop" (click)="pop.toggle()">
+    Trigger
+</button>
+
+<hc-pop #pop
+    [verticalAlign]="vAlign"
+    [horizontalAlign]="hAlign"
+    [scrollStrategy]="scrollStrat"
+    [hasBackdrop]="clickAway"
+    [interactiveClose]="clickAway"
+    [shouldAnimate]="shouldAnimate"
+    [forceAlignment]="forceAlignment"
+    [lockAlignment]="lockAlignment">{{popText}}
+</hc-pop>
+
+<hr>
+
+<div class="property-form-row">
+    <hc-form-field>
+        <hc-label>Vertical Alignment:</hc-label>
+        <hc-select placeholder="Select yAlign setting:" [(ngModel)]="vAlign">
+            <option value="above">Above</option>
+            <option value="start">Start</option>
+            <option value="center">Center</option>
+            <option value="end">End</option>
+            <option value="below">Below</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Horizontal Alignment:</hc-label>
+        <hc-select placeholder="Select xAlign setting:" [(ngModel)]="hAlign">
+            <option value="before">Before</option>
+            <option value="start">Start</option>
+            <option value="center">Center</option>
+            <option value="end">End</option>
+            <option value="after">After</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Scroll Strategy:</hc-label>
+        <hc-select placeholder="Select scroll strategy:" [(ngModel)]="scrollStrat">
+            <option value="noop">Noop</option>
+            <option value="block">Block Scrolling</option>
+            <option value="reposition">Reposition Popover</option>
+            <option value="close">Close Popover</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Popover Text:</hc-label>
+        <input hcInput [(ngModel)]="popText"/>
+    </hc-form-field>
+</div>
+
+<div class="property-form-row">
+    <hc-checkbox id="animate" [(ngModel)]="shouldAnimate">Animate Popover</hc-checkbox>
+    <hc-checkbox id="clickAway" [(ngModel)]="clickAway">Click away or ESC to close</hc-checkbox>
+    <hc-checkbox id="forceAlign" [(ngModel)]="forceAlignment" title="Specified alignment will be enforced not matter the position in the viewport">Force Alignment</hc-checkbox>
+    <hc-checkbox id="lockAlign" [(ngModel)]="lockAlignment" title="After opening, alignment will not change from what it was initially">Lock Alignment</hc-checkbox>
+</div>

@@ -1,0 +1,72 @@
+@import '~@angular/cdk/_overlay';
+
+// Include overlay styles
+@include cdk-overlay();
+
+.hc-popover-container {
+
+  &.hc-popover-before.hc-popover-above {
+    transform-origin: right bottom;
+
+    [dir='rtl'] & {
+      transform-origin: left bottom;
+    }
+  }
+
+  &.hc-popover-before.hc-popover-center {
+    transform-origin: right center;
+
+    [dir='rtl'] & {
+      transform-origin: left center;
+    }
+  }
+
+  &.hc-popover-before.hc-popover-below {
+    transform-origin: right top;
+
+    [dir='rtl'] & {
+      transform-origin: left top;
+    }
+  }
+
+  &.hc-popover-center.hc-popover-above {
+    transform-origin: center bottom;
+  }
+
+  &.hc-popover-center.hc-popover-below {
+    transform-origin: center top;
+  }
+
+  &.hc-popover-after.hc-popover-above {
+    transform-origin: left bottom;
+
+    [dir='rtl'] & {
+      transform-origin: right bottom;
+    }
+  }
+
+  &.hc-popover-after.hc-popover-center {
+    transform-origin: left center;
+
+    [dir='rtl'] & {
+      transform-origin: right center;
+    }
+  }
+
+  &.hc-popover-after.hc-popover-below {
+    transform-origin: left top;
+
+    [dir='rtl'] & {
+      transform-origin: right top;
+    }
+  }
+
+  &.hc-popover-container-basic {
+    background-color: #fff;
+    color: #333;
+    padding: 12px;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+  }
+
+}
