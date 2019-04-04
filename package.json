@@ -31,8 +31,7 @@
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "cm": "git-cz",
         "semantic-release": "semantic-release",
-        "prettier": "prettier --write \"**/*.{ts,js,scss,css,md,json}\"",
-        "clean": "Get-ChildItem C:\\Source\\corykon\\Fabric.Cashmere\\dist -Recurse | Remove-Item -Force"
+        "prettier": "prettier --write \"**/*.{ts,js,scss,css,md,json}\""
     },
     "dependencies": {
         "@angular/animations": "6.1.7",
