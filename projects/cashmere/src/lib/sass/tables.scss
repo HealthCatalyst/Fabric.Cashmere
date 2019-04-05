@@ -9,19 +9,19 @@ $table-condensed-font-size: 13px;
 $header-border-thick: 1px solid $slate-gray-300 !default;
 $cell-padding: 8px 16px !default;
 $cell-padding-condensed: 6px 16px !default;
-$thead-font-size: 14px !default;
+$thead-font-size: 16px !default;
 $thead-font-color: $dark-blue !default;
 $thead-active-font-color: $green !default;
 $tbody-font-size: 15px !default;
 $tbody-font-color: $text !default;
 $row-color: $white !default;
-$row-color-alt: tint($slate-gray-100, 60%) !default;
-$row-color-header: $slate-gray-100 !default;
+$row-color-alt: $gray-02 !default;
+$row-color-header: $white !default;
 $row-color-footer: $slate-gray-100 !default;
-$row-color-hover: shade($slate-gray-100, 5%) !default;
-$row-color-action-hover: tint($primary-brand, 75%) !default;
+$row-color-hover: $gray-05 !default;
+$row-color-action-hover: $gray-05 !default;
 $row-color-selected: $azure !default;
-$row-color-selected-hover: tint($azure, 20%) !default;
+$row-color-selected-hover: $gray-05 !default;
 $row-selected-font-color: $white;
 $row-selected-border-color: $white;
 
@@ -33,14 +33,17 @@ table.hc-table {
 
     td,
     th {
-        border-bottom: $table-border;
         border-top: none;
         line-height: 1.3;
         padding: $cell-padding;
-        text-align: right;
+        text-align: left;
 
-        &:first-of-type {
-            text-align: left;
+        &.col-number {
+            text-align: right;
+        }
+
+        &:last-of-type {
+            text-align: right;
         }
 
         &:focus {
@@ -49,7 +52,7 @@ table.hc-table {
     }
 
     th {
-        font-weight: 600;
+        font-weight: 500;
     }
 
     thead th {
@@ -58,17 +61,21 @@ table.hc-table {
         vertical-align: bottom;
     }
 
+    thead {
+        border-bottom: 2px solid $gray-50;
+    }
+
     tbody {
         font-size: $tbody-font-size;
-        border: $table-border;
+        border: none;
 
         tr {
             &:nth-child(2n) {
-                background-color: $row-color;
+                background-color: $row-color-alt;
             }
 
             &:nth-child(2n + 1) {
-                background-color: $row-color-alt;
+                background-color: $row-color;
             }
 
             &:not([disabled]):hover {
@@ -107,7 +114,7 @@ table.hc-table {
 
         td,
         th {
-            border: $table-border;
+            border: none;
         }
 
         thead th {
@@ -207,10 +214,10 @@ table.hc-table {
     &.hc-no-hover-table {
         tbody tr {
             &:nth-child(2n):hover {
-                background-color: $row-color;
+                background-color: $row-color-alt;
             }
             &:nth-child(2n + 1):hover {
-                background-color: $row-color-alt;
+                background-color: $row-color;
             }
             &.hc-row-selected:hover {
                 background-color: $row-color-selected;
