@@ -52,10 +52,10 @@ const EMPTY_TRANSITION = '0ms linear';
 })
 export class HcPopComponent implements OnInit, OnDestroy {
 
-  /** Whether or not to apply default popover container styles. *Defaults to `false`.* */
+  /** Whether or not to disable default popover container styles. *Defaults to `false`.* */
   @Input() disableStyle = false;
 
-  /** Alignment of the popover on the horizontal axis. */
+  /** Alignment of the popover on the horizontal axis. *Defaults to `"center"`.* */
   @Input()
   get horizontalAlign() { return this._horizontalAlign; }
   set horizontalAlign(val: HcPopoverHorizontalAlign) {
@@ -67,12 +67,12 @@ export class HcPopComponent implements OnInit, OnDestroy {
   }
   private _horizontalAlign: HcPopoverHorizontalAlign = 'center';
 
-  /** Alignment of the popover on the x axis. Alias for `horizontalAlign`. */
+  /** Alignment of the popover on the x axis. Alias for `horizontalAlign`. *Defaults to `"center"`.* */
   @Input()
   get xAlign() { return this.horizontalAlign; }
   set xAlign(val: HcPopoverHorizontalAlign) { this.horizontalAlign = val; }
 
-  /** Alignment of the popover on the vertical axis. */
+  /** Alignment of the popover on the vertical axis. *Defaults to `"center"`.* */
   @Input()
   get verticalAlign() { return this._verticalAlign; }
   set verticalAlign(val: HcPopoverVerticalAlign) {
@@ -84,12 +84,12 @@ export class HcPopComponent implements OnInit, OnDestroy {
   }
   private _verticalAlign: HcPopoverVerticalAlign = 'center';
 
-  /** Alignment of the popover on the y axis. Alias for `verticalAlign`. */
+  /** Alignment of the popover on the y axis. Alias for `verticalAlign`. *Defaults to `"center"`.* */
   @Input()
   get yAlign() { return this.verticalAlign; }
   set yAlign(val: HcPopoverVerticalAlign) { this.verticalAlign = val; }
 
-  /** Whether the popover always opens with the specified alignment. */
+  /** Whether the popover always opens with the specified alignment. *Defaults to `false`.* */
   @Input()
   get forceAlignment() { return this._forceAlignment; }
   set forceAlignment(val: boolean) {
@@ -104,6 +104,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
   /**
    * Whether the popover's alignment is locked after opening. This prevents the popover
    * from changing its alignement when scrolling or changing the size of the viewport.
+   * *Defaults to `false`.*
    */
   @Input()
   get lockAlignment() { return this._lockAlignment; }
@@ -116,7 +117,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
   }
   private _lockAlignment = false;
 
-  /** Whether the first focusable element should be focused on open. */
+  /** Whether the first focusable element should be focused on open. *Defaults to `true`.* */
   @Input()
   get autoFocus() { return this._autoFocus && this._autoFocusOverride; }
   set autoFocus(val: boolean) {
@@ -125,7 +126,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
   private _autoFocus = true;
   _autoFocusOverride = true;
 
- /** Whether the popover should return focus to the previously focused element after closing. */
+ /** Whether the popover should return focus to the previously focused element after closing. *Defaults to `true`.* */
  @Input()
   get restoreFocus() { return this._restoreFocus && this._restoreFocusOverride; }
   set restoreFocus(val: boolean) {
@@ -134,7 +135,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
   private _restoreFocus = true;
   _restoreFocusOverride = true;
 
-  /** How the popover should handle scrolling. */
+  /** How the popover should handle scrolling. *Defaults to `"reposition"`.* */
   @Input()
   get scrollStrategy() { return this._scrollStrategy; }
   set scrollStrategy(val: HcPopoverScrollStrategy) {
@@ -146,7 +147,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
   }
   private _scrollStrategy: HcPopoverScrollStrategy = 'reposition';
 
-  /** Whether the popover should have a backdrop (includes closing on click). */
+  /** Whether the popover should have a backdrop (includes closing on click). *Defaults to `false`.* */
   @Input()
   get hasBackdrop() { return this._hasBackdrop; }
   set hasBackdrop(val: boolean) {
@@ -155,7 +156,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
   }
   private _hasBackdrop = false;
 
-  /** Whether the popover should close when the user clicks the backdrop or presses ESC. */
+  /** Whether the popover should close when the user clicks the backdrop or presses ESC. *Defaults to `true`.* */
   @Input()
   get interactiveClose() { return this._interactiveClose; }
   set interactiveClose(val: boolean) {
@@ -164,7 +165,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
   }
   private _interactiveClose = true;
 
-  /** Custom transition to use while opening. */
+  /** Custom transition to use while opening. *Defaults to `'200ms cubic-bezier(0.25, 0.8, 0.25, 1)'`.* */
   @Input()
   get openTransition() { return this._openTransition; }
   set openTransition(val: string) {
@@ -174,7 +175,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
   }
   private _openTransition = DEFAULT_TRANSITION;
 
-  /** Custom transition to use while closing. */
+  /** Custom transition to use while closing. *Defaults to `'200ms cubic-bezier(0.25, 0.8, 0.25, 1)'`.* */
   @Input()
   get closeTransition() { return this._closeTransition; }
   set closeTransition(val: string) {
@@ -187,7 +188,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
   /** Should the popover animate? *Defaults to `true`.* */
   @Input() shouldAnimate = true;
 
-  /** Optional backdrop class. */
+  /** Optional backdrop class. *Defaults to `''`.* */
   @Input() backdropClass = '';
 
   /** Emits when the popover is opened. */
