@@ -19,12 +19,14 @@ Next, hook the popover to an anchor element.
 </hc-pop>
 ```
 
+&nbsp;
 
 ##### Opening and closing
 
 You are in full control of when the popover opens and closes. Both the trigger and popover itself have methods
 you can call. You can also hook into any event or trigger that fits your application's needs. See API for details.
 
+&nbsp;
 
 ##### Focus behavior
 
@@ -64,12 +66,16 @@ restored.
 </button>
 ```
 
+&nbsp;
+
 ##### Styles
 
 The `<hc-pop>` component by default provides some basic styling, but these can be turned off with `disableStyle`.
 This allows for the popover to be used in some very customized and interesting ways. In the case that the basic styles
 are disabled, it is the responsibility of the elements you project inside the popover to style themselves. This
 includes background color, box shadows, margin offsets, etc.
+
+&nbsp;
 
 ##### Animations
 
