@@ -1,35 +1,34 @@
 <table hc-table [dataSource]="dataSource" hcSort>
-
     <!-- Position Column -->
     <ng-container hcColumnDef="position">
         <th hc-header-cell *hcHeaderCellDef hc-sort-header>No.</th>
-        <td hc-cell *hcCellDef="let element">{{element.position}}</td>
+        <td hc-cell *hcCellDef="let element">{{ element.position }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container hcColumnDef="name">
-        <th hc-header-cell *hcHeaderCellDef hc-sort-header arrowPosition="before">Name</th>
-        <td hc-cell *hcCellDef="let element">{{element.name}}</td>
+        <th hc-header-cell *hcHeaderCellDef hc-sort-header arrowPosition="before" style="float: left">Name</th>
+        <td hc-cell *hcCellDef="let element">{{ element.name }}</td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container hcColumnDef="weight">
-        <th hc-header-cell *hcHeaderCellDef hc-sort-header arrowPosition="before">Weight</th>
-        <td hc-cell *hcCellDef="let element">{{element.weight}}</td>
+        <th hc-header-cell *hcHeaderCellDef hc-sort-header arrowPosition="before" class="col-number">Weight</th>
+        <td hc-cell *hcCellDef="let element" class="col-number">{{ element.weight }}</td>
     </ng-container>
 
     <!-- Discovered -->
     <ng-container hcColumnDef="discovered">
-        <th hc-header-cell *hcHeaderCellDef hc-sort-header arrowPosition="before">Discovered</th>
-        <td hc-cell *hcCellDef="let element">{{element.discovered | date:'fullDate'}}</td>
+        <th hc-header-cell *hcHeaderCellDef hc-sort-header arrowPosition="before" class="col-number">Discovered</th>
+        <td hc-cell *hcCellDef="let element" class="col-number">{{ element.discovered | date: 'fullDate' }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container hcColumnDef="symbol">
         <th hc-header-cell *hcHeaderCellDef>Symbol</th>
-        <td hc-cell *hcCellDef="let element">{{element.symbol}}</td>
+        <td hc-cell *hcCellDef="let element">{{ element.symbol }}</td>
     </ng-container>
 
     <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
-    <tr hc-row *hcRowDef="let row; columns: displayedColumns;"></tr>
+    <tr hc-row *hcRowDef="let row; columns: displayedColumns"></tr>
 </table>
