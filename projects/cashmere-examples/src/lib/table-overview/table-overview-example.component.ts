@@ -32,8 +32,8 @@ export class TableOverviewExampleComponent {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
     dataSource = ELEMENT_DATA;
 
-    totalPositions = 'Totals';
-    totalNames = ELEMENT_DATA.length;
-    totalWeight = ELEMENT_DATA.reduce((sum, el) => sum + el.weight, 0);
-    totalSymbols = 'N/A';
+    // totalPositions = 'Totals';
+    // totalNames = ELEMENT_DATA.length;
+    // totalWeight = ELEMENT_DATA.reduce((sum, el) => sum + el.weight, 0);
+    // totalSymbols = 'N/A';
 }
