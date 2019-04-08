@@ -10,21 +10,14 @@ Wrap any component you want to display in a popover with an `<hc-pop>` component
 Next, hook the popover to an anchor element.
 
 ```html
-<button [satPopoverAnchorFor]="contactPopover" (click)="contactPopover.toggle()">
+<button [hcPop]="contactPopover">
   See Contact Details
 </button>
 
-<hc-pop #contactPopover hasBackdrop>
+<hc-pop #contactPopover>
   <app-contact-overview [contact]="myContact"></app-contact-overview>
 </hc-pop>
 ```
-
-&nbsp;
-
-##### Opening and closing
-
-You are in full control of when the popover opens and closes. Both the trigger and popover itself have methods
-you can call. You can also hook into any event or trigger that fits your application's needs. See API for details.
 
 &nbsp;
 
@@ -54,14 +47,14 @@ opening the popover. To disable this, you can set the `restoreFocus` property to
 </hc-pop>
 ```
 
-Alternatively the `open` and `openPopover` methods support an optional `SatPopoverOpenOptions`
+Alternatively the `open` and `openPopover` methods support an optional `HcPopoverOpenOptions`
 object where `autoFocus` and `restoreFocus` options can be set while opening the popover. Note
 that these options do no take precendence over the component inputs. For example, if `restoreFocus`
 is set to `false` either in the open options or via the component input, focus will not be
 restored.
 
 ```html
-<button [satPopoverAnchorFor]="myPopover" (click)="myPopover.open({ restoreFocus: false })">
+<button [hcPop]="myPopover" (click)="myPopover.open({ restoreFocus: false })">
   Open
 </button>
 ```

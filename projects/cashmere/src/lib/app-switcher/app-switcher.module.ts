@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 
 import {AppSwitcherComponent} from './app-switcher.component';
-import {PopoverModule} from '../popover/popover.module';
+import {PopModule} from '../pop/popover.module';
 import {AppSwitcherService} from './app-switcher.service';
 import {PipesModule} from '../pipes/pipes.module';
 import {IAppSwitcherConfig, APP_SWITCHER_CONFIG, APP_SWITCHER_SERVICE} from './app-switcher-interfaces';
@@ -11,7 +11,7 @@ import {AppSwitcherLinksComponent} from './app-switcher-application-link/app-swi
 import {IconModule} from '../icon/icon.module';
 
 @NgModule({
-    imports: [CommonModule, PopoverModule, HttpClientModule, PipesModule, IconModule],
+    imports: [CommonModule, PopModule, HttpClientModule, PipesModule, IconModule],
     declarations: [AppSwitcherComponent, AppSwitcherLinksComponent],
     exports: [AppSwitcherComponent, AppSwitcherLinksComponent],
     entryComponents: [AppSwitcherComponent],

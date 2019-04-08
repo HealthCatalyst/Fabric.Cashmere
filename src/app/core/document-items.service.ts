@@ -79,16 +79,10 @@ const docs: DocItem[] = [
     },
     {id: 'picklist', name: 'Picklist', category: 'layout', examples: ['picklist-simple', 'picklist-valueset'], usageDoc: true},
     {
-        id: 'popover',
-        name: 'Popover (DEPRECIATED)',
-        category: 'popups',
-        examples: ['popover-overview', 'popover-placement', 'popover-dynamic']
-    },
-    {
         id: 'pop',
         name: 'Popover',
         category: 'popups',
-        examples: ['popover-new-overview', 'popover-new-tooltip'],
+        examples: ['popover-simple', 'popover-overview', 'popover-tooltip'],
         usageDoc: true
     },
     {

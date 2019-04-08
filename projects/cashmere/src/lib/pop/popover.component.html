@@ -1,7 +1,7 @@
 <ng-template>
-  <div class="hc-popover-container"
+  <div class="hc-pop-container"
       #focusTrapElement
-      [class.hc-popover-container-basic]="!disableStyle"
+      [class.hc-pop-container-basic]="!disableStyle"
       [ngClass]="_classList"
       [@transformPopover]="_getAnimation()"
       (@transformPopover.done)="_onAnimationDone($event)">

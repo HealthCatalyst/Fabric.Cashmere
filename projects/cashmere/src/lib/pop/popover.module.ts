@@ -6,7 +6,6 @@ import { BidiModule } from '@angular/cdk/bidi';
 
 import { HcPopComponent } from './popover.component';
 import { HcPopoverAnchorDirective } from './popover-anchor.directive';
-import { HcPopoverHoverDirective } from './popover-hover.directive';
 
 @NgModule({
   imports: [
@@ -18,12 +17,10 @@ import { HcPopoverHoverDirective } from './popover-hover.directive';
   declarations: [
     HcPopComponent,
     HcPopoverAnchorDirective,
-    HcPopoverHoverDirective,
   ],
   exports: [
     HcPopComponent,
     HcPopoverAnchorDirective,
-    HcPopoverHoverDirective,
     BidiModule,
   ]
 })

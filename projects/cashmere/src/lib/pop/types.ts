@@ -6,6 +6,14 @@ export const VALID_SCROLL: HcPopoverScrollStrategy[] = [
   'close'
 ];
 
+export type HcPopoverTrigger = 'click' | 'mousedown' | 'hover' | 'none';
+export const VALID_TRIGGER: HcPopoverTrigger[] = [
+    'click',
+    'mousedown',
+    'hover',
+    'none'
+  ];
+
 export type HcPopoverHorizontalAlign = 'before' | 'start' | 'center' | 'end' | 'after';
 export const VALID_HORIZ_ALIGN: HcPopoverHorizontalAlign[] = [
   'before',

@@ -1,3 +1,11 @@
-.icon-right {
-    margin-left: 5px;
+.property-form-row {
+    display: flex;
+
+    hc-form-field, hc-checkbox {
+        margin-right: 20px;
+    }
+
+    hc-checkbox {
+        margin-top: 27px;
+    }
 }

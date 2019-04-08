@@ -4,7 +4,7 @@ All Health Catalyst apps should include a help menu in their navbar. This guide 
 
 ```html
 <hc-navbar-icon>
-    <hc-icon fontSet="fa" fontIcon="fa-question-circle-o" [hcPopover]="helpMenu" popperPlacement="bottom"></hc-icon>
+    <hc-icon fontSet="fa" fontIcon="fa-question-circle-o" [hcPop]="helpMenu"></hc-icon>
 </hc-navbar-icon>
 ```
 
@@ -21,7 +21,7 @@ You may not have all these items available. However, include what you have in th
 -   **Send us your feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/components/typeform-survey/usage))
 
 ```html
-<hc-popover-content #helpMenu>
+<hc-pop #helpMenu>
     <ul class="list-options">
         <li><a href="" target="_blank">Help Topics</a></li>
         <li><a href="" target="_blank">Release Notes</a></li>
@@ -29,7 +29,7 @@ You may not have all these items available. However, include what you have in th
         <li><a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a></li>
         <li><button (click)="feedbackClick($event)">Send us your feedback</button></li>
     </ul>
-</hc-popover-content>
+</hc-pop>
 ```
 
 &nbsp;
@@ -41,21 +41,21 @@ In addition to the help menu, all Heath Catalyst applications should also includ
 ```html
 <hc-navbar>
     ...
-    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-th" [hcPopover]="appSwitcher" popperPlacement="bottom"></hc-icon>
+    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-th" [hcPop]="appSwitcher"></hc-icon>
     ...
     <hc-navbar-mobile-menu>
         ...
         <hc-app-switcher-links></hc-app-switcher-links>
     </hc-navbar-mobile-menu>
     ...
-    <hc-popover-content #appSwitcher><hc-app-switcher></hc-app-switcher></hc-popover-content>
+    <hc-pop #appSwitcher><hc-app-switcher></hc-app-switcher></hc-pop>
 </hc-navbar>
 ```
 
 The app switcher service must be set up in order for the application switcher to function. The discovery service uri is required to set this up
 
 ```Typescript
-import { NavbarModule, AppSwitcherModule, IconModule, PopoverModule, ListModule,
+import { NavbarModule, AppSwitcherModule, IconModule, PopModule, ListModule,
     SelectModule } from '@healthcatalyst/cashmere';
 
 @NgModule({
@@ -64,7 +64,7 @@ import { NavbarModule, AppSwitcherModule, IconModule, PopoverModule, ListModule,
             discoveryServiceUri: 'http://localhost/discoveryservice/v1'
         })
     ],
-    exports: [NavbarModule, AppSwitcherModule, IconModule, PopoverModule, ListModule, SelectModule]
+    exports: [NavbarModule, AppSwitcherModule, IconModule, PopModule, ListModule, SelectModule]
 })
 export class CashmereModule {}
 ...
@@ -75,7 +75,7 @@ _(The reason you can't use `forRoot` for this is that the Angular AOT compiler w
 at build-time using NodeJS and replace it with `null`.)_
 
 ```Typescript
-import { NavbarModule, AppSwitcherModule, IconModule, PopoverModule, ListModule,
+import { NavbarModule, AppSwitcherModule, IconModule, PopModule, ListModule,
     SelectModule, APP_SWITCHER_CONFIG, IAppSwitcherConfig } from '@healthcatalyst/cashmere';
 
 @NgModule({
@@ -104,7 +104,7 @@ import {
     NavbarModule,
     AppSwitcherModule,
     IconModule,
-    PopoverModule,
+    PopModule,
     ListModule,
     SelectModule,
     APP_SWITCHER_SERVICE,
@@ -144,7 +144,7 @@ class CustomAppSwitcherService {
             discoveryServiceUri: 'http://localhost/discoveryservice/v1'
         })
     ],
-    exports: [NavbarModule, AppSwitcherModule, IconModule, PopoverModule, ListModule, SelectModule],
+    exports: [NavbarModule, AppSwitcherModule, IconModule, PopModule, ListModule, SelectModule],
     providers: [
         {
             provide: APP_SWITCHER_SERVICE,

@@ -11,6 +11,7 @@ import {
   OnInit,
   Optional,
   Output,
+  HostListener,
 } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
@@ -72,7 +73,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
   get xAlign() { return this.horizontalAlign; }
   set xAlign(val: HcPopoverHorizontalAlign) { this.horizontalAlign = val; }
 
-  /** Alignment of the popover on the vertical axis. *Defaults to `"center"`.* */
+  /** Alignment of the popover on the vertical axis. *Defaults to `"below"`.* */
   @Input()
   get verticalAlign() { return this._verticalAlign; }
   set verticalAlign(val: HcPopoverVerticalAlign) {
@@ -82,9 +83,9 @@ export class HcPopComponent implements OnInit, OnDestroy {
       this._dispatchConfigNotification(new PopoverNotification(NotificationAction.REPOSITION));
     }
   }
-  private _verticalAlign: HcPopoverVerticalAlign = 'center';
+  private _verticalAlign: HcPopoverVerticalAlign = 'below';
 
-  /** Alignment of the popover on the y axis. Alias for `verticalAlign`. *Defaults to `"center"`.* */
+  /** Alignment of the popover on the y axis. Alias for `verticalAlign`. *Defaults to `"below"`.* */
   @Input()
   get yAlign() { return this.verticalAlign; }
   set yAlign(val: HcPopoverVerticalAlign) { this.verticalAlign = val; }
@@ -147,14 +148,14 @@ export class HcPopComponent implements OnInit, OnDestroy {
   }
   private _scrollStrategy: HcPopoverScrollStrategy = 'reposition';
 
-  /** Whether the popover should have a backdrop (includes closing on click). *Defaults to `false`.* */
+  /** Whether the popover should have a backdrop (includes closing on click). *Defaults to `true`.* */
   @Input()
   get hasBackdrop() { return this._hasBackdrop; }
   set hasBackdrop(val: boolean) {
     this._hasBackdrop = coerceBooleanProperty(val);
     this._dispatchConfigNotification(new PopoverNotification(NotificationAction.UPDATE_CONFIG));
   }
-  private _hasBackdrop = false;
+  private _hasBackdrop = true;
 
   /** Whether the popover should close when the user clicks the backdrop or presses ESC. *Defaults to `true`.* */
   @Input()
@@ -298,13 +299,13 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
   /** Apply alignment classes based on alignment inputs. */
   _setAlignmentClasses(horizAlign = this.horizontalAlign, vertAlign = this.verticalAlign) {
-    this._classList['hc-popover-before'] = horizAlign === 'before' || horizAlign === 'end';
-    this._classList['hc-popover-after']  = horizAlign === 'after' || horizAlign === 'start';
+    this._classList['hc-pop-before'] = horizAlign === 'before' || horizAlign === 'end';
+    this._classList['hc-pop-after']  = horizAlign === 'after' || horizAlign === 'start';
 
-    this._classList['hc-popover-above'] = vertAlign === 'above' || vertAlign === 'end';
-    this._classList['hc-popover-below'] = vertAlign === 'below' || vertAlign === 'start';
+    this._classList['hc-pop-above'] = vertAlign === 'above' || vertAlign === 'end';
+    this._classList['hc-pop-below'] = vertAlign === 'below' || vertAlign === 'start';
 
-    this._classList['hc-popover-center'] = horizAlign === 'center' || vertAlign === 'center';
+    this._classList['hc-pop-center'] = horizAlign === 'center' || vertAlign === 'center';
   }
 
   /** Move the focus inside the focus trap and remember where to return later. */

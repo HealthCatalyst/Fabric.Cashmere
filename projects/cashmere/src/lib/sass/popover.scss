@@ -7,7 +7,9 @@ $popover-fallback-border-color: $slate-gray-600 !default;
 $popover-arrow-width: 10px !default;
 $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
 
-@mixin hc-popover-container() {
+// todo: can I reuse this stuff for arrow styles?
+
+@mixin hc-pop-container() {
     display: none;
     position: absolute;
     padding: 8px 14px;
@@ -21,11 +23,11 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
     z-index: $zindex-popover;
 }
 
-@mixin hc-popover-container-animation() {
+@mixin hc-pop-container-animation() {
     animation: fadein 150ms ease-out;
 }
 
-@mixin hc-popover-arrow() {
+@mixin hc-pop-arrow() {
     width: 0;
     height: 0;
     border-style: solid;
@@ -33,15 +35,15 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
     margin: $popover-arrow-width;
 }
 
-@mixin hc-popover-placed() {
+@mixin hc-pop-placed() {
     display: block;
 }
 
-@mixin hc-popover-top() {
+@mixin hc-pop-top() {
     margin-bottom: 5px;
 }
 
-@mixin hc-popover-top-arrow() {
+@mixin hc-pop-top-arrow() {
     border-width: $popover-arrow-width $popover-arrow-width 0 $popover-arrow-width;
     border-color: $popover-arrow-outer-color transparent transparent transparent;
     bottom: -$popover-arrow-width;
@@ -50,11 +52,11 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
     margin-bottom: 0;
 }
 
-@mixin hc-popover-bottom() {
+@mixin hc-pop-bottom() {
     margin-top: $popover-arrow-width;
 }
 
-@mixin hc-popover-bottom-arrow() {
+@mixin hc-pop-bottom-arrow() {
     border-width: 0 $popover-arrow-width $popover-arrow-width $popover-arrow-width;
     border-color: transparent transparent $popover-arrow-outer-color transparent;
     top: -$popover-arrow-width;
@@ -63,11 +65,11 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
     margin-bottom: 0;
 }
 
-@mixin hc-popover-right() {
+@mixin hc-pop-right() {
     margin-left: $popover-arrow-width;
 }
 
-@mixin hc-popover-right-arrow() {
+@mixin hc-pop-right-arrow() {
     border-width: $popover-arrow-width $popover-arrow-width $popover-arrow-width 0;
     border-color: transparent $popover-arrow-outer-color transparent transparent;
     left: -$popover-arrow-width;
@@ -76,11 +78,11 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
     margin-right: 0;
 }
 
-@mixin hc-popover-left() {
+@mixin hc-pop-left() {
     margin-right: $popover-arrow-width;
 }
 
-@mixin hc-popover-left-arrow() {
+@mixin hc-pop-left-arrow() {
     border-width: $popover-arrow-width 0 $popover-arrow-width $popover-arrow-width;
     border-color: transparent transparent transparent $popover-arrow-outer-color;
     right: -$popover-arrow-width;
@@ -104,23 +106,23 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
     }
 }
 
-@mixin hc-popover-list() {
+@mixin hc-pop-list() {
     padding-left: 0;
     margin: 0;
 }
 
-@mixin hc-popover-list-item-middle() {
+@mixin hc-pop-list-item-middle() {
     border-bottom: 1px solid $slate-gray-200;
 }
 
-@mixin hc-popover-list-item() {
+@mixin hc-pop-list-item() {
     display: block;
     padding: 10px 0;
     min-width: 150px;
     list-style: none;
 }
 
-@mixin hc-popover-list-button {
+@mixin hc-pop-list-button {
     text-decoration: none;
     background-color: $white;
     color: $primary-brand;

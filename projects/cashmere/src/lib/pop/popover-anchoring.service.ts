@@ -31,6 +31,7 @@ import {
 } from './types';
 
 import { PopoverNotificationService, NotificationAction } from './notification.service';
+import { HcPopoverAnchorDirective } from './popover-anchor.directive';
 
 /**
  * Configuration provided by the popover for the anchoring service
@@ -64,8 +65,8 @@ export class HcPopoverAnchoringService implements OnDestroy {
   /** Reference to the view container for the popover template. */
   private _viewContainerRef: ViewContainerRef;
 
-  /** Reference to the anchor element. */
-  private _anchor: ElementRef;
+  /** Reference to the anchor */
+  private _anchor: HcPopoverAnchorDirective;
 
   /** Reference to a template portal where the overlay will be attached. */
   private _portal: TemplatePortal<any>;
@@ -111,7 +112,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
   }
 
   /** Anchor a popover instance to a view and connection element. */
-  anchor(popover: HcPopComponent, viewContainerRef: ViewContainerRef, anchor: ElementRef): void {
+  anchor(popover: HcPopComponent, viewContainerRef: ViewContainerRef, anchor: HcPopoverAnchorDirective): void {
     // Destroy any previous popovers
     this._destroyPopover();
 
@@ -122,7 +123,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
 
     // Provide notification service as a communication channel between popover and anchor.
     // Then subscribe to notifications to take appropriate actions.
-    this._popover._notifications = this._notifications = new PopoverNotificationService();
+    this._popover._notifications = this._notifications = this._anchor._notifications = new PopoverNotificationService();
     this._subscribeToNotifications();
   }
 
@@ -167,7 +168,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
 
   /** Get a reference to the anchor element. */
   getAnchorElement(): ElementRef {
-    return this._anchor;
+    return this._anchor._elementRef;
   }
 
   /** Apply behavior properties on the popover based on the open options. */
@@ -332,17 +333,18 @@ export class HcPopoverAnchoringService implements OnDestroy {
   }
 
   /** Create and return a config for creating the overlay. */
-  private _getOverlayConfig(config: PopoverConfig, anchor: ElementRef): OverlayConfig {
-    console.log("hasBackDrop", config.hasBackdrop);
+  private _getOverlayConfig(config: PopoverConfig, anchor: HcPopoverAnchorDirective): OverlayConfig {
     return new OverlayConfig({
       positionStrategy: this._getPositionStrategy(
         config.horizontalAlign,
         config.verticalAlign,
         config.forceAlignment,
         config.lockAlignment,
-        anchor,
+        anchor._elementRef,
       ),
-      hasBackdrop: config.hasBackdrop,
+      // make it hard for users to shoot themselves in the foot by disabling backdrop if hover is the trigger
+      hasBackdrop: anchor.trigger !== "hover" ? config.hasBackdrop : false,
+
       backdropClass: config.backdropClass || 'cdk-overlay-transparent-backdrop',
       scrollStrategy: this._getScrollStrategyInstance(config.scrollStrategy),
       direction: this._getDirection(),

@@ -3,9 +3,9 @@
 // Include overlay styles
 @include cdk-overlay();
 
-.hc-popover-container {
+.hc-pop-container {
 
-  &.hc-popover-before.hc-popover-above {
+  &.hc-pop-before.hc-pop-above {
     transform-origin: right bottom;
 
     [dir='rtl'] & {
@@ -13,7 +13,7 @@
     }
   }
 
-  &.hc-popover-before.hc-popover-center {
+  &.hc-pop-before.hc-pop-center {
     transform-origin: right center;
 
     [dir='rtl'] & {
@@ -21,7 +21,7 @@
     }
   }
 
-  &.hc-popover-before.hc-popover-below {
+  &.hc-pop-before.hc-pop-below {
     transform-origin: right top;
 
     [dir='rtl'] & {
@@ -29,15 +29,15 @@
     }
   }
 
-  &.hc-popover-center.hc-popover-above {
+  &.hc-pop-center.hc-pop-above {
     transform-origin: center bottom;
   }
 
-  &.hc-popover-center.hc-popover-below {
+  &.hc-pop-center.hc-pop-below {
     transform-origin: center top;
   }
 
-  &.hc-popover-after.hc-popover-above {
+  &.hc-pop-after.hc-pop-above {
     transform-origin: left bottom;
 
     [dir='rtl'] & {
@@ -45,7 +45,7 @@
     }
   }
 
-  &.hc-popover-after.hc-popover-center {
+  &.hc-pop-after.hc-pop-center {
     transform-origin: left center;
 
     [dir='rtl'] & {
@@ -53,7 +53,7 @@
     }
   }
 
-  &.hc-popover-after.hc-popover-below {
+  &.hc-pop-after.hc-pop-below {
     transform-origin: left top;
 
     [dir='rtl'] & {
@@ -61,7 +61,7 @@
     }
   }
 
-  &.hc-popover-container-basic {
+  &.hc-pop-container-basic {
     background-color: #fff;
     color: #333;
     padding: 12px;

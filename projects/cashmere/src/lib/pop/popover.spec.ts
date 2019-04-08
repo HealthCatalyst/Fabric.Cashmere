@@ -29,7 +29,7 @@ import {
  */
 @Component({
     template: `
-      <div [hcPopoverAnchorFor]="invalid">Anchor</div>
+      <div [hcPop]="invalid">Anchor</div>
       <div #invalid>Dummy</div>
     `
 })
@@ -55,7 +55,7 @@ class AnchorlessPopoverTestComponent {
  */
 @Component({
     template: `
-      <div #anchorEl [hcPopoverAnchorFor]="p">Anchor</div>
+      <div #anchorEl [hcPop]="p">Anchor</div>
       <hc-pop #p>Popover</hc-pop>
     `
 })
@@ -71,7 +71,7 @@ class SimplePopoverTestComponent {
  */
 @Component({
     template: `
-      <div [hcPopoverAnchorFor]="p">Anchor</div>
+      <div [hcPop]="p">Anchor</div>
       <hc-pop #p
           [hasBackdrop]="backdrop"
           [backdropClass]="klass"
@@ -93,7 +93,7 @@ class BackdropPopoverTestComponent {
  */
 @Component({
     template: `
-      <div [hcPopoverAnchorFor]="p">Anchor</div>
+      <div [hcPop]="p">Anchor</div>
       <hc-pop #p (overlayKeydown)="lastKeyCode = $event.keyCode">
         Popover
         <input type="text" class="first">
@@ -111,7 +111,7 @@ export class KeyboardPopoverTestComponent {
  */
 @Component({
     template: `
-      <button #b1 [hcPopoverAnchorFor]="p" (click)="p.open()">Button 1</button>
+      <button #b1 [hcPop]="p" (click)="p.open()">Button 1</button>
       <button #b2>Button 2</button>
 
       <hc-pop #p
@@ -133,7 +133,7 @@ export class FocusPopoverTestComponent {
 /** This component is for testing dynamic positioning behavior. */
 @Component({
     template: `
-      <div [hcPopoverAnchorFor]="p">Anchor</div>
+      <div [hcPop]="p">Anchor</div>
       <hc-pop #p
           [horizontalAlign]="hAlign"
           [verticalAlign]="vAlign"
@@ -155,7 +155,7 @@ export class PositioningTestComponent {
 /** This component is for testing position aliases. */
 @Component({
     template: `
-      <div [hcPopoverAnchorFor]="p">Anchor</div>
+      <div [hcPop]="p">Anchor</div>
       <hc-pop #p [xAlign]="xAlign" [yAlign]="yAlign">
         Popover
       </hc-pop>
@@ -171,7 +171,7 @@ export class PositioningAliasTestComponent {
 /** This component is for testing scroll behavior. */
 @Component({
     template: `
-      <div [hcPopoverAnchorFor]="p">Anchor</div>
+      <div [hcPop]="p">Anchor</div>
       <hc-pop #p [scrollStrategy]="strategy">
         Popover
       </hc-pop>
@@ -204,7 +204,7 @@ export class ServiceTestComponent {
 /** This component is for testing the hover directive behavior. */
 @Component({
     template: `
-      <div #anchorEl [hcPopoverAnchorFor]="p" [hcPopoverHover]="delay">Anchor</div>
+      <div #anchorEl [hcPop]="p" [hcPopoverHover]="delay">Anchor</div>
       <hc-pop #p>Popover</hc-pop>
     `
 })
