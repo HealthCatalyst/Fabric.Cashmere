@@ -11,7 +11,6 @@ import {
   OnInit,
   Optional,
   Output,
-  HostListener,
 } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
@@ -192,6 +191,9 @@ export class HcPopComponent implements OnInit, OnDestroy {
   /** Optional backdrop class. *Defaults to `''`.* */
   @Input() backdropClass = '';
 
+  /** Set to true if clicking anywhere inside the popover should close it. *Defaults to `false`.* */
+  @Input() autoCloseOnContentClick = false;
+
   /** Emits when the popover is opened. */
   @Output() opened = new EventEmitter<void>();
 
@@ -233,6 +235,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
   private _focusTrap: FocusTrap | undefined;
 
   constructor(
+      public _elementRef: ElementRef,
     private _focusTrapFactory: FocusTrapFactory,
     @Optional() @Inject(DOCUMENT) private _document: any
   ) { }
@@ -245,6 +248,12 @@ export class HcPopComponent implements OnInit, OnDestroy {
     if (this._notifications) {
       this._notifications.dispose();
     }
+  }
+
+  popContainerClicked(): void {
+      if (this.autoCloseOnContentClick) {
+        this.close();
+      }
   }
 
   /** Open this popover. */

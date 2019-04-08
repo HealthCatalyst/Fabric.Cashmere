@@ -22,6 +22,12 @@
     [size]="size"
     (click)="_stopClick($event); openMenu()"
     [disabled]="disabled"
+    [hcPop]="splitMenu"
+    trigger="none"
 ></button>
 
-<ng-template cdkPortal #menuPortal="cdkPortal"> <ng-content select="[hcButtonItem]"></ng-content> </ng-template>
+<hc-pop #splitMenu [xAlign]="menuPosition" [autoCloseOnContentClick]="autoCloseMenuOnClick">
+    <div class="hc-menu-panel">
+        <ng-content select="[hcButtonItem]"></ng-content>
+    </div>
+</hc-pop>

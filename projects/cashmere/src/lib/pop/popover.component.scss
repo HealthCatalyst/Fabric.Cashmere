@@ -1,4 +1,6 @@
 @import '~@angular/cdk/_overlay';
+@import '../sass/popover.scss';
+
 
 // Include overlay styles
 @include cdk-overlay();
@@ -68,5 +70,20 @@
     box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
     border-radius: 4px;
   }
-
 }
+
+:host::ng-deep ul.list-options {
+    @include hc-pop-list();
+
+    & > li:not(:last-child) {
+        @include hc-pop-list-item-middle();
+    }
+    & > li {
+        @include hc-pop-list-item();
+    }
+    & > li > a,
+    & > li button {
+        @include hc-pop-list-button();
+    }
+}
+

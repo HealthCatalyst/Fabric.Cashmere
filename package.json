@@ -54,7 +54,6 @@
         "markdown-it-container": "^2.0.0",
         "ngx-highlightjs": "^3.0.0",
         "npm-font-open-sans": "^1.1.0",
-        "popper.js": "^1.12.9",
         "rxjs": "6.3.2",
         "sugar": "^2.0.6",
         "zone.js": "^0.8.26"
@@ -77,7 +76,6 @@
         "@types/jasmine": "~2.8.6",
         "@types/jasminewd2": "~2.0.2",
         "@types/node": "9.6.2",
-        "@types/popper.js": "^1.11.0",
         "@types/prettier": "^1.15.2",
         "chalk": "^2.3.0",
         "codelyzer": "~4.2.1",
