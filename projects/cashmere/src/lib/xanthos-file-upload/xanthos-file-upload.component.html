@@ -6,7 +6,7 @@
     <hc-form-field class="file-type-field">
         <hc-label>File Type</hc-label>
         <hc-select [formControl]="fileTypeControl" required>
-            <option *ngFor="let type of xanthosFileTypes">{{ type.description }}</option>
+            <option *ngFor="let type of xanthosFileTypes" [value]="type.code">{{ type.description }}</option>
         </hc-select>
         <hc-error *ngIf="fileTypeControl.errors?.required">File type is required.</hc-error>
     </hc-form-field>
