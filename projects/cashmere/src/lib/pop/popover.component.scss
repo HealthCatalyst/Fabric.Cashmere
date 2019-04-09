@@ -1,5 +1,4 @@
 @import '~@angular/cdk/_overlay';
-@import '../sass/popover.scss';
 
 
 // Include overlay styles
@@ -72,18 +71,5 @@
   }
 }
 
-:host::ng-deep ul.list-options {
-    @include hc-pop-list();
 
-    & > li:not(:last-child) {
-        @include hc-pop-list-item-middle();
-    }
-    & > li {
-        @include hc-pop-list-item();
-    }
-    & > li > a,
-    & > li button {
-        @include hc-pop-list-button();
-    }
-}
 

@@ -105,33 +105,3 @@ $popover-arrow-outer-color: fade_in($popover-border-color, 0.05) !default;
         opacity: 1;
     }
 }
-
-@mixin hc-pop-list() {
-    padding-left: 0;
-    margin: 0;
-}
-
-@mixin hc-pop-list-item-middle() {
-    border-bottom: 1px solid $slate-gray-200;
-}
-
-@mixin hc-pop-list-item() {
-    display: block;
-    padding: 10px 0;
-    min-width: 150px;
-    list-style: none;
-}
-
-@mixin hc-pop-list-button {
-    text-decoration: none;
-    background-color: $white;
-    color: $primary-brand;
-    font-family: $default-font-family;
-    padding: 0;
-    min-width: 150px;
-    text-align: left;
-    justify-content: left;
-    border: none;
-    cursor: pointer;
-    font-size: inherit;
-}
