@@ -1,0 +1,35 @@
+@import '../sass/colors';
+.hc-sidenav {
+    background-color: $gray-600;
+    height: 100%;
+    padding: 0;
+    width: 200px;
+
+    .sidenav-brand {
+        background-color: $wcf-red;
+    }
+
+    .hc-sidenav-user {
+        background-color: $black;
+    }
+
+    .sidenav-brand {
+        text-align: center;
+        img {
+            max-height: 75px;
+        }
+    }
+
+    .sidenav-user {
+        background-color: $offblack;
+        color: $gray-100;
+        padding: 20px;
+        white-space: normal;
+        overflow: hidden;
+        max-width: 100%;
+        text-overflow: ellipsis;
+    }
+}
+
+.topBar.fixed-top {
+}

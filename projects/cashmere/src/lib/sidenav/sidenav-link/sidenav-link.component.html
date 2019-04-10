@@ -1,0 +1,27 @@
+<ng-container *ngIf="routerLink; then routerLinkTemplate; else hrefTemplate"></ng-container>
+
+<ng-template #routerLinkTemplate>
+    <a
+        [title]="linkText"
+        [routerLink]="routerLink"
+        routerLinkActive="active"
+        class="sidenav-link"
+        [routerLinkActiveOptions]="{exact: !children?.length}"
+    >
+        <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+    </a>
+</ng-template>
+<ng-template #hrefTemplate>
+    <a [title]="linkText" [href]="uri" class="sidenav-link" target="_blank">
+        <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+    </a>
+</ng-template>
+
+<ng-template #linkContent>
+    <hc-icon class="icon-left" fontSet="fa" [fontIcon]="fontIcon" icon-sm></hc-icon>
+    {{ linkText }}
+    <div class="children" *ngIf="children?.length">
+        <hr />
+        <ng-content></ng-content>
+    </div>
+</ng-template>

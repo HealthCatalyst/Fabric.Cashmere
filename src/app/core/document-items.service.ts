@@ -111,6 +111,12 @@ const docs: DocItem[] = [
         examples: ['select-standard', 'select-disabled', 'select-validation', 'select-forms'],
         usageDoc: true
     },
+    {
+        id: 'sidenav',
+        name: 'Sidenav',
+        category: 'nav',
+        examples: ['sidenav-overview']
+    },
     {id: 'sort', name: 'Sort', category: 'table', usageDoc: true},
     {id: 'subnav', name: 'Subnav', category: 'nav', examples: ['subnav-overview']},
     {
