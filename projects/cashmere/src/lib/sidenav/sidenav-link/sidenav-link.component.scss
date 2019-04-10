@@ -1,0 +1,18 @@
+@import '../../sass/colors';
+
+a {
+    color: $gray-200;
+    font-size: 12px;
+    display: block;
+    width: 100%;
+    padding: 20px;
+
+    &:hover {
+        background-color: $slate-gray-500;
+        color: $gray-300;
+    }
+
+    hc-icon {
+        margin-right: 10px;
+    }
+}
