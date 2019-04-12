@@ -16,7 +16,8 @@ import {
     Output,
     QueryList,
     DoCheck,
-    Self
+    Self,
+    ElementRef
 } from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
@@ -40,10 +41,12 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     /** Event emitted when the value of a radio button changes inside the group. */
     @Output()
     change: EventEmitter<RadioButtonChangeEvent> = new EventEmitter<RadioButtonChangeEvent>();
+    /** A list of all the radio buttons included in the group */
     @ContentChildren(forwardRef(() => RadioButtonComponent), {descendants: true})
-    _radios: QueryList<RadioButtonComponent>;
+    radios: QueryList<RadioButtonComponent>;
     private _value: any = null;
-    private _name = `hc-radio-group-${nextUniqueId++}`;
+    private _uniqueName = `hc-radio-group-${nextUniqueId++}`;
+    private _name = this._uniqueName;
     private _inline = false;
     private _initialized = false; // if value of radio group has been set to initial value
     private _selected: RadioButtonComponent | null = null; // the currently selected radio
@@ -61,7 +64,7 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     }
 
     set name(value: string) {
-        this._name = value;
+        this._name = value ? value : this._uniqueName;
         this._updateRadioButtonNames();
     }
 
@@ -183,16 +186,16 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     }
 
     private _markRadiosForCheck() {
-        if (this._radios) {
-            this._radios.forEach(radio => radio._markForCheck());
+        if (this.radios) {
+            this.radios.forEach(radio => radio._markForCheck());
         }
     }
 
     private _updateSelectedRadio() {
         let isAlreadySelected = this._selected !== null && this._selected.value === this._value;
-        if (this._radios && !isAlreadySelected) {
+        if (this.radios && !isAlreadySelected) {
             this._selected = null;
-            this._radios.forEach(radio => {
+            this.radios.forEach(radio => {
                 radio.checked = this.value === radio.value;
                 if (radio.checked) {
                     this._selected = radio;
@@ -208,8 +211,8 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     }
 
     private _updateRadioButtonNames(): void {
-        if (this._radios) {
-            this._radios.forEach(radio => {
+        if (this.radios) {
+            this.radios.forEach(radio => {
                 radio.name = this.name;
             });
         }
@@ -290,7 +293,7 @@ export class RadioButtonComponent implements OnInit {
 
     @HostBinding('attr.id')
     get _getHostId(): string {
-        return this._uniqueId;
+        return this.id;
     }
 
     /** Boolean value of whether the radio button is required */
@@ -333,13 +336,10 @@ export class RadioButtonComponent implements OnInit {
     }
 
     get _inputId() {
-        if (this.id) {
-            return this.id;
-        }
-        return `${this._uniqueId}-input`;
+        return `${this.id || this._uniqueId}-input`;
     }
 
-    constructor(@Optional() radioGroup: RadioGroupDirective, private cdRef: ChangeDetectorRef) {
+    constructor(@Optional() radioGroup: RadioGroupDirective, private cdRef: ChangeDetectorRef, public _elementRef: ElementRef) {
         this.radioGroup = radioGroup;
     }
 

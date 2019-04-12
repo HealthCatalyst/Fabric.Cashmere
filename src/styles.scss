@@ -238,3 +238,7 @@ table {
         font-family: Consolas, Menlo, 'Ubuntu Mono', monospace;
     }
 }
+
+.overflow-visible > .hc-horizontal-tab-container > .hc-tab-content-horizontal {
+    overflow: visible !important;
+}
