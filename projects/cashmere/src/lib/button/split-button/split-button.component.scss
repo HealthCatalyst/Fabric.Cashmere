@@ -13,19 +13,3 @@
         @include hc-split-button-toggle();
     }
 }
-
-.hc-divider[hcbuttonitem] {
-    @include hc-split-button-divider();
-}
-
-button[hcbuttonitem] {
-    @include hc-split-button-item();
-
-    .hc-menu-icon {
-        @include hc-split-button-menu-icon();
-    }
-
-    .hc-menu-sub-text {
-        @include hc-split-button-menu-subtext();
-    }
-}

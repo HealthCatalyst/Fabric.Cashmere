@@ -26,7 +26,6 @@
     "@healthcatalyst/cashmere": "*",
     "npm-font-open-sans": "1.1.0",
     "@angular/cdk": "~6.1.0",
-    "popper.js": "1.14.4",
     "font-awesome": "4.7.0"
   },
   "devDependencies": {

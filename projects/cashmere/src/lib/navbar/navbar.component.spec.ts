@@ -74,9 +74,7 @@ describe('NavbarComponent', () => {
         it('should adjust the elements according to the navbar size', () => {
             const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
             spyOnProperty(linkContainer.nativeElement, 'clientWidth', 'get').and.returnValue(0);
-            spyOn(testHostComponent.navbarComponent._navbarMore, '_hide');
             testHostComponent.navbarComponent._navResize();
-            expect(testHostComponent.navbarComponent._navbarMore._hide).toHaveBeenCalled();
             expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
             expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
         });
@@ -87,7 +85,7 @@ describe('NavbarComponent', () => {
         // linkWidths (200 + 300) +
         // icons (400) = 1155
         // and condensedWidth = 1155 - 50 = 1105
-        describe('and  adjust the elements according to the navbar size', () => {
+        describe('and adjust the elements according to the navbar size', () => {
             it('should have nothing in the moreList if the navbar > regularWidth', () => {
                 spyOn(testHostComponent.navbarComponent['ref'], 'detectChanges');
                 const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
@@ -96,7 +94,6 @@ describe('NavbarComponent', () => {
                 spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
                 const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
                 spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(85);
-                spyOn(testHostComponent.navbarComponent._navbarMore, '_hide');
                 spyOn(testHostComponent.navbarComponent._navLinks['_results'][0], 'show');
                 spyOn(testHostComponent.navbarComponent._navLinks['_results'][1], 'show');
 
@@ -104,7 +101,6 @@ describe('NavbarComponent', () => {
                 spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(2400);
 
                 testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._navbarMore._hide).toHaveBeenCalled();
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
                 expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeFalsy();
@@ -123,12 +119,10 @@ describe('NavbarComponent', () => {
                 spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
                 const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
                 spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(85);
-                spyOn(testHostComponent.navbarComponent._navbarMore, '_hide');
                 spyOn(testHostComponent.navbarComponent._navLinks['_results'][0], 'hide');
                 spyOn(testHostComponent.navbarComponent._navLinks['_results'][1], 'hide');
 
                 testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._navbarMore._hide).toHaveBeenCalled();
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(2);
                 expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeTruthy();
@@ -146,13 +140,11 @@ describe('NavbarComponent', () => {
                 spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
                 const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
                 spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOn(testHostComponent.navbarComponent._navbarMore, '_hide');
 
                 const navbar = testHostFixture.debugElement.query(By.css('.hc-navbar'));
                 spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(1155);
 
                 testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._navbarMore._hide).toHaveBeenCalled();
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
                 expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeFalsy();
@@ -168,13 +160,11 @@ describe('NavbarComponent', () => {
                 spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
                 const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
                 spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOn(testHostComponent.navbarComponent._navbarMore, '_hide');
 
                 const navbar = testHostFixture.debugElement.query(By.css('.hc-navbar'));
                 spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(1106);
 
                 testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._navbarMore._hide).toHaveBeenCalled();
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
                 expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeFalsy();
@@ -190,13 +180,11 @@ describe('NavbarComponent', () => {
                 spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
                 const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
                 spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOn(testHostComponent.navbarComponent._navbarMore, '_hide');
 
                 const navbar = testHostFixture.debugElement.query(By.css('.hc-navbar'));
                 spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(1154);
 
                 testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._navbarMore._hide).toHaveBeenCalled();
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
                 expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeFalsy();
@@ -213,7 +201,6 @@ describe('NavbarComponent', () => {
                 spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
                 const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
                 spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOn(testHostComponent.navbarComponent._navbarMore, '_hide');
                 spyOn(testHostComponent.navbarComponent._navLinks['_results'][0], 'show');
                 spyOn(testHostComponent.navbarComponent._navLinks['_results'][1], 'show');
 
@@ -221,7 +208,7 @@ describe('NavbarComponent', () => {
                 spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(1105);
 
                 testHostComponent.navbarComponent._navResize();
-                // expect(testHostComponent.navbarComponent._navbarMore._hide).toHaveBeenCalled();
+
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
                 expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeFalsy();
@@ -240,7 +227,6 @@ describe('NavbarComponent', () => {
                 spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
                 const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
                 spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOn(testHostComponent.navbarComponent._navbarMore, '_hide');
                 spyOn(testHostComponent.navbarComponent._navLinks['_results'][0], 'hide');
                 spyOn(testHostComponent.navbarComponent._navLinks['_results'][1], 'hide');
 
@@ -248,7 +234,6 @@ describe('NavbarComponent', () => {
                 spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(721);
 
                 testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._navbarMore._hide).toHaveBeenCalled();
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(2);
                 expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeTruthy();
@@ -267,7 +252,6 @@ describe('NavbarComponent', () => {
                 spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
                 const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
                 spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOn(testHostComponent.navbarComponent._navbarMore, '_hide');
                 spyOn(testHostComponent.navbarComponent._navLinks['_results'][0], 'show');
                 spyOn(testHostComponent.navbarComponent._navLinks['_results'][1], 'hide');
 
@@ -275,7 +259,6 @@ describe('NavbarComponent', () => {
                 spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(922);
 
                 testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._navbarMore._hide).toHaveBeenCalled();
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(1);
                 expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeTruthy();
@@ -294,7 +277,6 @@ describe('NavbarComponent', () => {
                 spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
                 const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
                 spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOn(testHostComponent.navbarComponent._navbarMore, '_hide');
                 spyOn(testHostComponent.navbarComponent._navLinks['_results'][0], 'show');
                 spyOn(testHostComponent.navbarComponent._navLinks['_results'][1], 'show');
 
@@ -302,7 +284,6 @@ describe('NavbarComponent', () => {
                 spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(921);
 
                 testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._navbarMore._hide).toHaveBeenCalled();
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(1);
                 expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeTruthy();

@@ -20,8 +20,7 @@
                             "includePaths": ["dist/cashmere"]
                         },
                         "assets": ["src/assets", "src/favicon.ico", "src/web.config"],
-                        "styles": ["src/styles.scss"],
-                        "scripts": ["node_modules/popper.js/dist/umd/popper.min.js"]
+                        "styles": ["src/styles.scss"]
                     },
                     "configurations": {
                         "production": {
@@ -67,7 +66,6 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "src/tsconfig.spec.json",
                         "karmaConfig": "src/karma.conf.js",
-                        "scripts": ["node_modules/popper.js/dist/umd/popper.min.js"],
                         "styles": ["src/styles.scss"],
                         "assets": ["src/assets", "src/favicon.ico", "src/web.config"],
                         "stylePreprocessorOptions": {
