@@ -55,6 +55,9 @@ export class HcPopComponent implements OnInit, OnDestroy {
   /** Whether or not to disable default popover container styles. *Defaults to `false`.* */
   @Input() disableStyle = false;
 
+  /** Whether or not to show a connection arrow when possible. *Defaults to `true`.* */
+  @Input() showArrow = true;
+
   /** Alignment of the popover on the horizontal axis. *Defaults to `"center"`.* */
   @Input()
   get horizontalAlign() { return this._horizontalAlign; }
@@ -217,6 +220,8 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
   /** Classes to be added to the popover for setting the correct transform origin. */
   _classList: any = {};
+  _yAlignClass = '';
+  _xAlignClass = '';
 
   /** Whether the popover is presently open. */
   _open = false;
@@ -308,13 +313,27 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
   /** Apply alignment classes based on alignment inputs. */
   _setAlignmentClasses(horizAlign = this.horizontalAlign, vertAlign = this.verticalAlign) {
+    this._setAlignmentClassesForAnimation(horizAlign, vertAlign);
+    this._setAlignmentClassesForArrow();
+  }
+
+  _setAlignmentClassesForAnimation(horizAlign = this.horizontalAlign, vertAlign = this.verticalAlign) {
     this._classList['hc-pop-before'] = horizAlign === 'before' || horizAlign === 'end';
-    this._classList['hc-pop-after']  = horizAlign === 'after' || horizAlign === 'start';
+    this._classList['hc-pop-after'] = horizAlign === 'after' || horizAlign === 'start';
 
     this._classList['hc-pop-above'] = vertAlign === 'above' || vertAlign === 'end';
     this._classList['hc-pop-below'] = vertAlign === 'below' || vertAlign === 'start';
 
     this._classList['hc-pop-center'] = horizAlign === 'center' || vertAlign === 'center';
+  }
+
+  _setAlignmentClassesForArrow(xAlign = this.horizontalAlign, yAlign = this.verticalAlign) {
+    this._classList['hc-pop-show-arrow'] = this.showArrow &&
+      ((xAlign === 'start' || xAlign === 'center' || xAlign === 'end') && (yAlign === 'above' || yAlign === 'below')) ||
+      ((yAlign === 'start' || yAlign === 'center' || yAlign === 'end') && (xAlign === 'before' || xAlign === 'after'));
+
+    this._yAlignClass = this._classList['hc-pop-show-arrow'] ? `hc-pop-arrow-y-${yAlign}` : '';
+    this._xAlignClass = this._classList['hc-pop-show-arrow'] ? `hc-pop-arrow-x-${xAlign}` : '';
   }
 
   /** Move the focus inside the focus trap and remember where to return later. */

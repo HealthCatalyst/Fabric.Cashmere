@@ -8,7 +8,9 @@
     [scrollStrategy]="scrollStrat"
     [hasBackdrop]="clickAway"
     [interactiveClose]="clickAway"
+    [showArrow]="showArrow"
     [shouldAnimate]="shouldAnimate"
+    [lockAlignment]="lockAlignment"
     [forceAlignment]="forceAlignment">
         {{popText}}
 </hc-pop>
@@ -57,14 +59,15 @@
             <option value="none">None</option>
         </hc-select>
     </hc-form-field>
-</div>
 
-<div class="property-form-row">
     <hc-form-field>
         <hc-label>Popover Text:</hc-label>
         <input hcInput [(ngModel)]="popText"/>
     </hc-form-field>
-    <hc-checkbox id="animate" [(ngModel)]="shouldAnimate">Animate Popover</hc-checkbox>
+
+    <hc-checkbox id="animate" [(ngModel)]="shouldAnimate">Animate popover</hc-checkbox>
     <hc-checkbox id="clickAway" [(ngModel)]="clickAway">Click away or ESC to close</hc-checkbox>
-    <hc-checkbox id="forceAlign" [(ngModel)]="forceAlignment" title="Specified alignment will be enforced no matter the position in the viewport">Force Alignment</hc-checkbox>
+    <hc-checkbox id="showArrow" [(ngModel)]="showArrow">Show arrow</hc-checkbox>
+    <hc-checkbox id="forceAlign" [(ngModel)]="forceAlignment" title="Specified alignment will be enforced no matter the position in the viewport">Force alignment</hc-checkbox>
+    <hc-checkbox id="lockAlign" [(ngModel)]="lockAlignment" title="Alignment will not update after overlay is initially displayed">Lock alignment</hc-checkbox>
 </div>

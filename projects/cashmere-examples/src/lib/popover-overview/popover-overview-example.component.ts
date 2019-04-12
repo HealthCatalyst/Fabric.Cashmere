@@ -16,5 +16,7 @@ export class PopoverOverviewExampleComponent {
     public trig = "click";
     public shouldAnimate = true;
     public clickAway = true;
+    public showArrow = true;
     public forceAlignment = false;
+    public lockAlignment = false;
 }

@@ -1,5 +1,6 @@
 @import '~@angular/cdk/_overlay';
 
+$popover-arrow-width: 8px;
 
 // Include overlay styles
 @include cdk-overlay();
@@ -68,6 +69,66 @@
     padding: 12px;
     box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
     border-radius: 4px;
+  }
+
+  // Arrows
+  $popover-arrow-width: 10px;
+
+  &.hc-pop-show-arrow {
+    .hc-pop-arrow {
+        content: " ";
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        position: absolute;
+      }
+
+      &.hc-pop-arrow-y-above, &.hc-pop-arrow-y-below {
+        margin: $popover-arrow-width - 4px;
+        margin-left: 0;
+        margin-right: 0;
+        position: relative;
+      }
+    
+      &.hc-pop-arrow-x-before, &.hc-pop-arrow-x-after {
+        margin: $popover-arrow-width - 4px;
+        margin-top: 0;
+        margin-bottom: 0;
+        position: relative;
+      }
+  }
+
+  &.hc-pop-arrow-x-center .hc-pop-arrow { left: calc(50% - #{$popover-arrow-width}); }
+  &.hc-pop-arrow-x-start .hc-pop-arrow { left: 0; }
+  &.hc-pop-arrow-x-end .hc-pop-arrow { left: calc(100% - #{$popover-arrow-width * 2}); }
+
+  &.hc-pop-arrow-y-center .hc-pop-arrow { top: calc(50% - #{$popover-arrow-width}); }
+  &.hc-pop-arrow-y-start .hc-pop-arrow { top: 0; }
+  &.hc-pop-arrow-y-end .hc-pop-arrow { top: calc(100% - #{$popover-arrow-width * 2}); }
+
+  &.hc-pop-arrow-y-above .hc-pop-arrow {
+    border-width: $popover-arrow-width $popover-arrow-width 0 $popover-arrow-width;
+    border-color: #fff transparent transparent transparent;
+    bottom: -#{$popover-arrow-width - 2px};
+  }
+
+  &.hc-pop-arrow-y-below .hc-pop-arrow {
+    border-width: 0 $popover-arrow-width $popover-arrow-width $popover-arrow-width;
+    border-color: transparent transparent #fff transparent;
+    top: -#{$popover-arrow-width - 2px};
+  }
+
+  &.hc-pop-arrow-x-before .hc-pop-arrow {
+    border-width: $popover-arrow-width 0 $popover-arrow-width $popover-arrow-width;
+    border-color: transparent transparent transparent #fff;
+    right: -#{$popover-arrow-width - 2px};
+  }
+
+  &.hc-pop-arrow-x-after .hc-pop-arrow {
+    border-width: $popover-arrow-width $popover-arrow-width $popover-arrow-width 0;
+    border-color: transparent #fff transparent transparent;
+    left: -#{$popover-arrow-width - 2px};
   }
 }
 

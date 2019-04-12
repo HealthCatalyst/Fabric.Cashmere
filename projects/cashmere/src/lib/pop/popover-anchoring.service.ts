@@ -365,9 +365,13 @@ export class HcPopoverAnchoringService implements OnDestroy {
       .subscribe(change => {
         // Position changes may occur outside the Angular zone
         this._ngZone.run(() => {
-          this._popover._setAlignmentClasses(
+          this._popover._setAlignmentClassesForAnimation(
             getHorizontalPopoverAlignment(change.connectionPair.overlayX),
             getVerticalPopoverAlignment(change.connectionPair.overlayY),
+          );
+          this._popover._setAlignmentClassesForArrow(
+            getHPopAlignmentForArrow(change.connectionPair.overlayX, change.connectionPair.originX),
+            getVPopAlignmentForArrow(change.connectionPair.overlayY, change.connectionPair.originY),
           );
         });
       });
@@ -449,6 +453,40 @@ export class HcPopoverAnchoringService implements OnDestroy {
   }
 
 }
+
+/** Helper function to convert an overlay connection position to equivalent popover alignment for arrow positioning */
+  function getHPopAlignmentForArrow(hOverlay: HorizontalConnectionPos, hOrigin: HorizontalConnectionPos): HcPopoverHorizontalAlign {
+    if (hOverlay === hOrigin) {
+      return hOverlay;
+    }
+
+    if (hOverlay === 'start') {
+      return 'after';
+    }
+
+    if (hOverlay === 'end') {
+      return 'before';
+    }
+
+    return 'center';
+  }
+
+  /** Helper function to convert an overlay connection position to equivalent popover alignment for arrow positioning. */
+  function getVPopAlignmentForArrow(vOverlay: VerticalConnectionPos, vOrigin: VerticalConnectionPos): HcPopoverVerticalAlign {
+    if (vOverlay === vOrigin && (vOverlay === 'top' || vOverlay === 'bottom')) {
+      return vOverlay === 'top' ? 'start' : 'end';
+    }
+
+    if (vOverlay === 'top') {
+      return 'below';
+    }
+
+    if (vOverlay === 'bottom') {
+      return 'above';
+    }
+
+    return 'center';
+  }
 
 /** Helper function to get a cdk position pair from HcPopover alignments. */
 function getPosition(
