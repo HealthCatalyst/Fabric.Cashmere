@@ -1,4 +1,5 @@
 @import '~@angular/cdk/_overlay';
+@import '../sass/colors';
 
 $popover-arrow-width: 8px;
 
@@ -65,6 +66,7 @@ $popover-arrow-width: 8px;
 
   &.hc-pop-container-basic {
     background-color: #fff;
+    border: 1px solid $gray-300;
     color: #333;
     padding: 12px;
     box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
@@ -77,9 +79,12 @@ $popover-arrow-width: 8px;
   &.hc-pop-show-arrow {
     .hc-pop-arrow {
         display: block;
-        width: 0;
-        height: 0;
+        width: $popover-arrow-width;
+        height: $popover-arrow-width;
+        transform: rotate(45deg);
         border-style: solid;
+        border-width: 1px;
+        background-color: #fff;
         position: absolute;
       }
 
@@ -98,36 +103,32 @@ $popover-arrow-width: 8px;
       }
   }
 
-  &.hc-pop-arrow-x-center .hc-pop-arrow { left: calc(50% - #{$popover-arrow-width}); }
-  &.hc-pop-arrow-x-start .hc-pop-arrow { left: 0; }
-  &.hc-pop-arrow-x-end .hc-pop-arrow { left: calc(100% - #{$popover-arrow-width * 2}); }
+  &.hc-pop-arrow-x-center .hc-pop-arrow { left: calc(50% - #{$popover-arrow-width - 4px}); }
+  &.hc-pop-arrow-x-start .hc-pop-arrow { left: 5px; }
+  &.hc-pop-arrow-x-end .hc-pop-arrow { left: calc(100% - #{$popover-arrow-width * 2 - 5px}); }
 
-  &.hc-pop-arrow-y-center .hc-pop-arrow { top: calc(50% - #{$popover-arrow-width}); }
-  &.hc-pop-arrow-y-start .hc-pop-arrow { top: 0; }
-  &.hc-pop-arrow-y-end .hc-pop-arrow { top: calc(100% - #{$popover-arrow-width * 2}); }
+  &.hc-pop-arrow-y-center .hc-pop-arrow { top: calc(50% - #{$popover-arrow-width - 4px}); }
+  &.hc-pop-arrow-y-start .hc-pop-arrow { top: 5px; }
+  &.hc-pop-arrow-y-end .hc-pop-arrow { top: calc(100% - #{$popover-arrow-width * 2 - 5px}); }
 
   &.hc-pop-arrow-y-above .hc-pop-arrow {
-    border-width: $popover-arrow-width $popover-arrow-width 0 $popover-arrow-width;
-    border-color: #fff transparent transparent transparent;
-    bottom: -#{$popover-arrow-width - 2px};
+    border-color: transparent $gray-300 $gray-300 transparent;
+    bottom: -#{$popover-arrow-width - 4px};
   }
 
   &.hc-pop-arrow-y-below .hc-pop-arrow {
-    border-width: 0 $popover-arrow-width $popover-arrow-width $popover-arrow-width;
-    border-color: transparent transparent #fff transparent;
-    top: -#{$popover-arrow-width - 2px};
+    border-color: $gray-300 transparent transparent $gray-300;
+    top: -#{$popover-arrow-width - 4px};
   }
 
   &.hc-pop-arrow-x-before .hc-pop-arrow {
-    border-width: $popover-arrow-width 0 $popover-arrow-width $popover-arrow-width;
-    border-color: transparent transparent transparent #fff;
-    right: -#{$popover-arrow-width - 2px};
+    border-color: $gray-300 $gray-300 transparent transparent;
+    right: -#{$popover-arrow-width - 4px};
   }
 
   &.hc-pop-arrow-x-after .hc-pop-arrow {
-    border-width: $popover-arrow-width $popover-arrow-width $popover-arrow-width 0;
-    border-color: transparent #fff transparent transparent;
-    left: -#{$popover-arrow-width - 2px};
+    border-color: transparent transparent $gray-300 $gray-300;
+    left: -#{$popover-arrow-width - 4px};
   }
 }
 

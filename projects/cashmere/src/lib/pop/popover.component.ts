@@ -40,7 +40,7 @@ import {
 } from './types';
 
 // See http://cubic-bezier.com/#.25,.8,.25,1 for reference.
-const DEFAULT_TRANSITION = '200ms cubic-bezier(0.25, 0.8, 0.25, 1)';
+const DEFAULT_TRANSITION = '100ms linear';
 const EMPTY_TRANSITION = '0ms linear';
 
 @Component({

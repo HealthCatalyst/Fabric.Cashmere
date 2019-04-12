@@ -5,24 +5,12 @@
         background-color: $offblack;
         border-radius: 4px;
         padding: 7px;
+        margin: -1px;
         color: #fff;
     }
     
     .hc-tooltip + .hc-pop-arrow {
-        &.hc-pop-arrow-y-above {
-            border-color: $offblack transparent transparent transparent;
-        }
-    
-        &.hc-pop-arrow-y-below {
-            border-color: transparent transparent $offblack transparent;
-        }
-    
-        &.hc-pop-arrow-x-before {
-            border-color: transparent transparent transparent $offblack;
-        }
-    
-        &.hc-pop-arrow-x-after {
-            border-color: transparent $offblack transparent transparent;
-        }
+        background-color: $offblack !important;
+        border-color: transparent !important;
     }
 }
