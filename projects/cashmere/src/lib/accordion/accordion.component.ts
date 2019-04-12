@@ -79,12 +79,15 @@ export class AccordionComponent implements AfterContentInit {
     /** Whether the accordion is opened. */
     @Input()
     get open(): boolean {
-        return this._isOpen;
+        return this.__isOpen;
     }
 
-    set open(opened: boolean) {
+    set open(opened) {
         this.toggle(parseBooleanAttribute(opened));
     }
+
+    /** Allows for two-way binding of the `open` property */
+    @Output() openChange = new EventEmitter<boolean>();
 
     /** Event emitted when accordion is opened. */
     @Output()
@@ -101,10 +104,6 @@ export class AccordionComponent implements AfterContentInit {
     /** Event emitted when accordion has started to close. */
     @Output()
     closeStart = new EventEmitter();
-
-    get _isOpen(): boolean {
-        return this.__isOpen;
-    }
 
     @HostBinding('class.hc-accordion')
     _hostClass = true;
@@ -191,6 +190,7 @@ export class AccordionComponent implements AfterContentInit {
     toggle(isOpen: boolean = !this.open): void {
         if (!this._currentlyAnimating) {
             this.__isOpen = isOpen;
+            this.openChange.emit(isOpen);
         }
     }
 }
