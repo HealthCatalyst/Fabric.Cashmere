@@ -1,27 +1,28 @@
+@import './colors';
+
 .hc-pop-container {
     .hc-tooltip {
-        background-color: rgba($color: #000000, $alpha: 0.75);
+        background-color: $offblack;
         border-radius: 4px;
         padding: 7px;
         color: #fff;
-        margin: 2px 4px;
     }
     
     .hc-tooltip + .hc-pop-arrow {
         &.hc-pop-arrow-y-above {
-            border-color: rgba($color: #000000, $alpha: 0.75) transparent transparent transparent;
+            border-color: $offblack transparent transparent transparent;
         }
     
         &.hc-pop-arrow-y-below {
-            border-color: transparent transparent rgba($color: #000000, $alpha: 0.75) transparent;
+            border-color: transparent transparent $offblack transparent;
         }
     
         &.hc-pop-arrow-x-before {
-            border-color: transparent transparent transparent rgba($color: #000000, $alpha: 0.75);
+            border-color: transparent transparent transparent $offblack;
         }
     
         &.hc-pop-arrow-x-after {
-            border-color: transparent rgba($color: #000000, $alpha: 0.75) transparent transparent;
+            border-color: transparent $offblack transparent transparent;
         }
     }
 }
