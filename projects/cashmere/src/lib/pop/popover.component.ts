@@ -120,14 +120,14 @@ export class HcPopComponent implements OnInit, OnDestroy {
   }
   private _lockAlignment = false;
 
-  /** Whether the first focusable element should be focused on open. *Defaults to `true`.* */
+  /** Whether the first focusable element should be focused on open. *Defaults to `false`.* */
   @Input()
   get autoFocus() { return this._autoFocus && this._autoFocusOverride; }
   set autoFocus(val: boolean) {
     this._autoFocus = coerceBooleanProperty(val);
   }
-  private _autoFocus = true;
-  _autoFocusOverride = true;
+  private _autoFocus = false;
+  _autoFocusOverride = false;
 
  /** Whether the popover should return focus to the previously focused element after closing. *Defaults to `true`.* */
  @Input()
