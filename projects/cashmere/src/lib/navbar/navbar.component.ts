@@ -13,7 +13,7 @@ import {
     ViewEncapsulation
 } from '@angular/core';
 import {forkJoin, Subject} from 'rxjs';
-import {PopoverContentComponent} from '../popover/popoverContent.component';
+import {HcPopoverAnchorDirective} from '../pop/popover-anchor.directive';
 import {MoreItem} from './more-item';
 import {NavbarLinkComponent} from './navbar-link/navbar-link.component';
 import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu.component';
@@ -56,8 +56,8 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterContentInit 
     @ViewChild('rightcontainer') rightContent: ElementRef;
     @ViewChild('navlinks') navContent: ElementRef;
 
-    @ViewChild(PopoverContentComponent)
-    _navbarMore: PopoverContentComponent;
+    @ViewChild('moreLink')
+    _navbarMore: HcPopoverAnchorDirective;
 
     private _logoReady: Subject<boolean> = new Subject();
     private _navLinksReady: Subject<boolean> = new Subject();
@@ -73,7 +73,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterContentInit 
 
     @HostListener('window:resize')
     _navResize() {
-        this._navbarMore._hide();
+        if (this._navbarMore) { this._navbarMore.closePopover(); }
         this._moreList = [];
 
         // If links is zero the page is smaller than the first responsive breakpoint
@@ -200,6 +200,6 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterContentInit 
     }
 
     _moreClick() {
-        this._navbarMore._hide();
+        if (this._navbarMore) { this._navbarMore.closePopover(); }
     }
 }

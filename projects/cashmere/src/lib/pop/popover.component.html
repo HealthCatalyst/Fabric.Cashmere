@@ -1,0 +1,13 @@
+<ng-template>
+  <div class="hc-pop-container"
+      #focusTrapElement
+      class="{{_yAlignClass}} {{_xAlignClass}}"
+      [class.hc-pop-container-basic]="!disableStyle"
+      [ngClass]="_classList"
+      (click)="popContainerClicked()"
+      [@transformPopover]="_getAnimation()"
+      (@transformPopover.done)="_onAnimationDone($event)">
+    <ng-content></ng-content>
+    <div *ngIf="showArrow" class="hc-pop-arrow {{_yAlignClass}} {{_xAlignClass}}"></div>
+  </div>
+</ng-template>
