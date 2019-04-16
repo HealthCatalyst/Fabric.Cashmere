@@ -37,12 +37,10 @@ table.hc-table {
         border-top: none;
         line-height: 1.3;
         padding: $cell-padding;
-        text-align: right;
         position: relative;
         background-clip: padding-box;
 
         &:first-of-type {
-            text-align: left;
             .hc-cell-resizer-left {
                 display: none;
             }
@@ -159,6 +157,31 @@ table.hc-table {
         }
         &.hc-row-selected:hover {
             background-color: $row-color-selected-hover;
+        }
+    }
+
+    // Column text justify options
+    th.hc-table-justify-left,
+    td.hc-table-justify-left {
+        text-align: left;
+        .hc-sort-header-container {
+            justify-content: left;
+        }
+    }
+
+    th.hc-table-justify-right,
+    td.hc-table-justify-right {
+        text-align: right;
+        .hc-sort-header-container {
+            justify-content: right;
+        }
+    }
+
+    th.hc-table-justify-center,
+    td.hc-table-justify-center {
+        text-align: center;
+        .hc-sort-header-container {
+            justify-content: center;
         }
     }
 

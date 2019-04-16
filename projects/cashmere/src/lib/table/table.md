@@ -100,10 +100,13 @@ The `HcTable` is focused on a single responsibility: efficiently render rows of 
 performant and accessible way.
 
 You'll notice that the table itself doesn't come out of the box with a lot of features, but expects
-that the table will be included in a composition of components that fills out its features.
+that the table will be included in a composition of components that fills out its features. For example,
+you can add sorting to the table by using HcSort and mutating the data provided to the table according to
+their outputs.
 
-For example, you can add sorting to the table by using HcSort and
-mutating the data provided to the table according to their outputs.
+The text alignment of a column may be set using the `justify` property on the `ng-container` of a column.
+It defaults to a value of `left`, but my be set to `right` or `center`. Columns containing numerical data
+should typically be right aligned.
 
 To simplify the use case of having a table that can sort, and filter an array of data,
 the Cashmere library comes with a `HcTableDataSource` that has already implemented
@@ -141,6 +144,9 @@ If you are not using the `HcTableDataSource`, but instead implementing custom lo
 data, listen to the sort's `(hcSortChange)` event and re-order your data according to the sort state.
 If you are providing a data array directly to the table, don't forget to call `renderRows()` on the
 table, since it will not automatically check the array for changes.
+
+The position of the sorting indicator can be set using the `arrowPosition` property.  If set to `before`
+it will place the indicator to the left of the header text.
 
 The `HcSort` is one provided solution to sorting your table's data, but it is not the only option.
 
