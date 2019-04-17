@@ -4,6 +4,10 @@
     height: 100%;
     padding: 0;
     width: 200px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
 
     .sidenav-brand {
         background-color: $wcf-red;
