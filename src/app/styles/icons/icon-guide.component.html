@@ -1,101 +1,503 @@
 <div class="demo-content">
     <h1>Icons</h1>
-    <h6>Last updated November 15, 2018</h6>
+    <h6>Last updated April 18, 2019</h6>
 
     <hc-tile>
-        <h5>Overveiw</h5>
+        <h5>Overview</h5>
         <p>
-            It is recommended that web applications use <a href="https://fontawesome.com/v4.7.0/" target="_blank">Font Awesome</a> for their
-            icons.
+            The purpose of Health Catalyst’s icon set is to provide a standard visual language around concepts frequently used in our
+            applications.  For an optimal user experience, any time elements like data marts, bindings, or columns appear, they should
+            be represented the same way – regardless of the application.
         </p>
         <p>
-            For special cases, reach out to the UX team. Applications such as <a href="https://icomoon.io/app/">IcoMoon</a> can be used to
-            bundle custom icons into an icon font, if desired.
+            This icon set focuses primarily on items related to healthcare data.  It is meant as a compliment to UI glyph libraries like
+            <a href="https://fontawesome.com/v4.7.0/" target="_blank">Font Awesome</a>, not a replacement. Note that Cashmere does not have
+            a dependency on any icon font.  Any glyphs that are used in the components have been base64 encoded into the component’s styles.
         </p>
     </hc-tile>
 
     <hc-tile>
-        <h5>Medical Icons</h5>
-        <p>We also have a small set of medical related icons available as needed. These can be downloaded as SVGs.</p>
-        <a
-            hc-button
-            buttonStyle="primary-alt"
-            download
-            href="./assets/icons/catalyst-medical-icons.zip"
-            title="Download zip file of icon SVGs"
-        >
+        <h5>Usage</h5>
+        <p>Different situations will call for different uses of these glyphs. A set of web fonts title <code>hcicons</code> is included
+        in Cashmere. The same fonts, along with individual svg and png files of the glyphs may be downloaded below.</p>
+        <br>
+        <a hc-button buttonStyle="primary-alt" download href="./assets/hc-icons.zip" title="Download zip file of hcIcons">
             <hc-icon fontSet="fa" fontIcon="fa-cloud-download" class="icon-left"></hc-icon>
             Download Icon Set
         </a>
+    </hc-tile>
+    <hc-tile>
+        <h5>Data Symbols</h5>
         <div class="icon-container">
             <div class="icon-example">
-                <img src="./assets/icons/ambulance.svg" /><span>ambulance</span><span class="alt-text">emergency</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-catalyst-logo" hcIconLg></hc-icon><span>hc-catalyst-logo<span class="unicode"> [e918]</span></span><span class="alt-text">Health Catalyst, tri-flame</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/doctor.svg" /> <span>doctor</span><span class="alt-text">physician, user</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-atlas" hcIconLg></hc-icon><span>hc-atlas<span class="unicode"> [e907]</span></span><span class="alt-text">Atlas</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/dollar.svg" /> <span>dollar</span><span class="alt-text">claim, facility account</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-samd" hcIconLg></hc-icon><span>hc-samd<span class="unicode"> [e9a1]</span></span><span class="alt-text">SAMD, SAM Designer</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/gauge.svg" /> <span>gauge</span><span class="alt-text">blood pressure, metrics</span>
-            </div>
-            <div class="icon-example"><img src="./assets/icons/genome.svg" /> <span>genome</span><span class="alt-text">dna</span></div>
-            <div class="icon-example">
-                <img src="./assets/icons/globe.svg" /> <span>globe</span><span class="alt-text">demographics</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-population" hcIconLg></hc-icon><span>hc-population<span class="unicode"> [e988]</span></span><span class="alt-text">population, cohort</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/hospital.svg" /> <span>hospital</span><span class="alt-text">encounter, clinic</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-nlp" hcIconLg></hc-icon><span>hc-nlp<span class="unicode"> [e97d]</span></span><span class="alt-text">natural language processing</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/hospital-alt.svg" /> <span>hospital-alt</span><span class="alt-text">encounter, clinic</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-binding" hcIconLg></hc-icon><span>hc-binding<span class="unicode"> [e90c]</span></span><span class="alt-text">data, binding, source</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/lab.svg" /> <span>lab</span><span class="alt-text">test, lab results</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-sql-binding" hcIconLg></hc-icon><span>hc-sql-binding<span class="unicode"> [e9b1]</span></span><span class="alt-text">data, binding, SQL</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/medical-briefcase.svg" /> <span>medical-briefcase</span
-                ><span class="alt-text">procedure, medical tools</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-xml-binding" hcIconLg></hc-icon><span>hc-xml-binding<span class="unicode"> [e9c9]</span></span><span class="alt-text">data, binding, XML</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/medical-clipboard.svg" /> <span>medical-clipboard</span
-                ><span class="alt-text">diagnosis, notes</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-r-binding" hcIconLg></hc-icon><span>hc-r-binding<span class="unicode"> [e991]</span></span><span class="alt-text">data, binding, R</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/medical-clipboard-alt.svg" /> <span>medical-clipboard-alt</span
-                ><span class="alt-text">diagnosis, notes</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-python-binding" hcIconLg></hc-icon><span>hc-python-binding<span class="unicode"> [e98e]</span></span><span class="alt-text">data, binding, python</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/medicine-symbol.svg" /> <span>medicine-symbol</span><span class="alt-text">healthcare, order</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-csv-binding" hcIconLg></hc-icon><span>hc-csv-binding<span class="unicode"> [e933]</span></span><span class="alt-text">data, binding, CSV</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/nlp.svg" /> <span>nlp</span><span class="alt-text">text analytics</span>
-            </div>
-            <div class="icon-example"><img src="./assets/icons/patient.svg" /> <span>patient</span><span class="alt-text">user</span></div>
-            <div class="icon-example"><img src="./assets/icons/pill.svg" /> <span>pill</span><span class="alt-text">medication</span></div>
-            <div class="icon-example">
-                <img src="./assets/icons/precise-registry.svg" /> <span>precise-registry</span
-                ><span class="alt-text">population, registry</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-regen-f-bind" hcIconLg></hc-icon><span>hc-regen-f-bind<span class="unicode"> [e999]</span></span><span class="alt-text">binding, full, regenerate</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/prescription-bottle.svg" /> <span>prescription-bottle</span
-                ><span class="alt-text">medication, Rx</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-regen-sel-bind" hcIconLg></hc-icon><span>hc-regen-sel-bind<span class="unicode"> [e99a]</span></span><span class="alt-text">binding, selected, regenerate</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/reflex-hammer.svg" /> <span>reflex-hammer</span><span class="alt-text">procedure</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-val-schema" hcIconLg></hc-icon><span>hc-val-schema<span class="unicode"> [e9c1]</span></span><span class="alt-text">validate, schema</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/risk-umbrella.svg" /> <span>umbrella</span
-                ><span class="alt-text">risk score, risk mitigation</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-val-sel-schema" hcIconLg></hc-icon><span>hc-val-sel-schema<span class="unicode"> [e9c2]</span></span><span class="alt-text">validate, selected, schema</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/stethoscope.svg" /> <span>stethoscope</span><span class="alt-text">doctor, vitals</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-extensions" hcIconLg></hc-icon><span>hc-extensions<span class="unicode"> [e94e]</span></span><span class="alt-text">data mart, entity</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/syringe.svg" /> <span>syringe</span><span class="alt-text">medication adminsitration</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-connecting" hcIconLg></hc-icon><span>hc-connecting<span class="unicode"> [e92f]</span></span><span class="alt-text">metadata, connection</span>
             </div>
             <div class="icon-example">
-                <img src="./assets/icons/vital-sign.svg" /> <span>vital-sign</span><span class="alt-text">heart, observations</span>
+                <hc-icon fontSet="hc-icons" fontIcon="hc-disconnected" hcIconLg></hc-icon><span>hc-disconnected<span class="unicode"> [e93b]</span></span><span class="alt-text">metadata, connection</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-disconnecting" hcIconLg></hc-icon><span>hc-disconnecting<span class="unicode"> [e93c]</span></span><span class="alt-text">metadata, connection</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-connected" hcIconLg></hc-icon><span>hc-connected<span class="unicode"> [e92e]</span></span><span class="alt-text">metadata, connection</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-data-mart" hcIconLg></hc-icon><span>hc-data-mart<span class="unicode"> [e936]</span></span><span class="alt-text">SAM, data-mart</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-new-SM" hcIconLg></hc-icon><span>hc-new-SM<span class="unicode"> [e97c]</span></span><span class="alt-text">SAM, data-mart</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-field" hcIconLg></hc-icon><span>hc-field<span class="unicode"> [e903]</span></span><span class="alt-text">field</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-indexes" hcIconLg></hc-icon><span>hc-indexes<span class="unicode"> [e96b]</span></span><span class="alt-text">index</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-columns" hcIconLg></hc-icon><span>hc-columns<span class="unicode"> [e92b]</span></span><span class="alt-text">column</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-details" hcIconLg></hc-icon><span>hc-details<span class="unicode"> [e93a]</span></span><span class="alt-text">detail</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-attributes" hcIconLg></hc-icon><span>hc-attributes<span class="unicode"> [e908]</span></span><span class="alt-text">attribute</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-metrics" hcIconLg></hc-icon><span>hc-metrics<span class="unicode"> [e977]</span></span><span class="alt-text">values</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-summary-metric" hcIconLg></hc-icon><span style="font-size: 13px;">hc-summary-metric<span class="unicode"> [e9b8]</span></span><span class="alt-text">metric</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-subject-area" hcIconLg></hc-icon><span>hc-subject-area<span class="unicode"> [e9b6]</span></span><span class="alt-text">SAM, data-mart</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-entity" hcIconLg></hc-icon><span>hc-entity<span class="unicode"> [e9b6]</span></span><span class="alt-text">entity</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-results" hcIconLg></hc-icon><span>hc-results<span class="unicode"> [e99d]</span></span><span class="alt-text">results</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-npe" hcIconLg></hc-icon><span>hc-npe<span class="unicode"> [e97e]</span></span><span class="alt-text">non-persisted entity</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-core-entity" hcIconLg></hc-icon><span>hc-core-entity<span class="unicode"> [e931]</span></span><span class="alt-text">core entity</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-data-ent-ent" hcIconLg></hc-icon><span>hc-data-ent-ent<span class="unicode"> [e934]</span></span><span class="alt-text">data entry entity</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-overriding" hcIconLg></hc-icon><span>hc-overriding<span class="unicode"> [e981]</span></span><span class="alt-text">override entity</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-override-b" hcIconLg></hc-icon><span>hc-override-b<span class="unicode"> [e980]</span></span><span class="alt-text">override entity</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-entry-w-d" hcIconLg></hc-icon><span>hc-entry-w-d<span class="unicode"> [e944]</span></span><span class="alt-text">entity</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-view-d-entity" hcIconLg></hc-icon><span>hc-view-d-entity<span class="unicode"> [e9c4]</span></span><span class="alt-text">view entity</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-regen-ent" hcIconLg></hc-icon><span>hc-regen-ent<span class="unicode"> [e998]</span></span><span class="alt-text">regenerate entity</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-select-ent" hcIconLg></hc-icon><span>hc-select-ent<span class="unicode"> [e9a9]</span></span><span class="alt-text">select entity</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-insert-temp" hcIconLg></hc-icon><span>hc-insert-temp<span class="unicode"> [e96d]</span></span><span class="alt-text">code</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-model" hcIconLg></hc-icon><span>hc-model<span class="unicode"> [e978]</span></span><span class="alt-text">data, model</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-er-diagram" hcIconLg></hc-icon><span>hc-er-diagram<span class="unicode"> [e946]</span></span><span class="alt-text">entity, relationship</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-report" hcIconLg></hc-icon><span>hc-report<span class="unicode"> [e99b]</span></span><span class="alt-text">dashboard, analytics, accelerator</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-chart-area" hcIconLg></hc-icon><span>hc-chart-area<span class="unicode"> [e91a]</span></span><span class="alt-text">visualization</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-chart-bar" hcIconLg></hc-icon><span>hc-chart-bar<span class="unicode"> [e91b]</span></span><span class="alt-text">visualization</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-chart-line" hcIconLg></hc-icon><span>hc-chart-line<span class="unicode"> [e91c]</span></span><span class="alt-text">visualization</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-chart-pie" hcIconLg></hc-icon><span>hc-chart-pie<span class="unicode"> [e91d]</span></span><span class="alt-text">visualization</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-database" hcIconLg></hc-icon><span>hc-database<span class="unicode"> [e938]</span></span><span class="alt-text">data, db</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-load-db" hcIconLg></hc-icon><span>hc-load-db<span class="unicode"> [e973]</span></span><span class="alt-text">database</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-query" hcIconLg></hc-icon><span>hc-query<span class="unicode"> [e98f]</span></span><span class="alt-text">database, search</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-ETL" hcIconLg></hc-icon><span>hc-ETL<span class="unicode"> [e948]</span></span><span class="alt-text">extract, transform, load</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-data-flow" hcIconLg></hc-icon><span>hc-data-flow<span class="unicode"> [e935]</span></span><span class="alt-text">database, lineage</span>
+            </div>
+        </div>
+    </hc-tile>
+    <hc-tile>
+        <h5>Software Status</h5>
+        <div class="icon-container">
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-active" hcIconLg></hc-icon><span>hc-active<span class="unicode"> [e900]</span></span><span class="alt-text">ready, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-in-dev" hcIconLg></hc-icon><span>hc-in-dev<span class="unicode"> [e969]</span></span><span class="alt-text">development, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-inactive" hcIconLg></hc-icon><span>hc-inactive<span class="unicode"> [e96a]</span></span><span class="alt-text">disabled, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-ready-delete" hcIconLg></hc-icon><span>hc-ready-delete<span class="unicode"> [e992]</span></span><span class="alt-text">remove, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-ready-review" hcIconLg></hc-icon><span>hc-ready-review<span class="unicode"> [e993]</span></span><span class="alt-text">approve, status</span>
+            </div>
+        </div>
+    </hc-tile>
+    <hc-tile>
+        <h5>Job Status</h5>
+        <div class="icon-container">
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-failure" hcIconLg></hc-icon><span>hc-failure<span class="unicode"> [e950]</span></span><span class="alt-text">error, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-warning" hcIconLg></hc-icon><span>hc-warning<span class="unicode"> [e9c8]</span></span><span class="alt-text">issue, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-skipped" hcIconLg></hc-icon><span>hc-skipped<span class="unicode"> [e9ac]</span></span><span class="alt-text">next, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-canceled" hcIconLg></hc-icon><span>hc-canceled<span class="unicode"> [e916]</span></span><span class="alt-text">stopped, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-success" hcIconLg></hc-icon><span>hc-success<span class="unicode"> [e9b7]</span></span><span class="alt-text">pass, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-waiting" hcIconLg></hc-icon><span>hc-waiting<span class="unicode"> [e9c6]</span></span><span class="alt-text">hold, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-processing" hcIconLg></hc-icon><span>hc-processing<span class="unicode"> [e98d]</span></span><span class="alt-text">calculating, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-dispatched" hcIconLg></hc-icon><span>hc-dispatched<span class="unicode"> [e93d]</span></span><span class="alt-text">launched, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-queued" hcIconLg></hc-icon><span>hc-queued<span class="unicode"> [e990]</span></span><span class="alt-text">ordered, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-scheduled" hcIconLg></hc-icon><span>hc-scheduled<span class="unicode"> [e9a6]</span></span><span class="alt-text">calendar, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-staged" hcIconLg></hc-icon><span>hc-staged<span class="unicode"> [e9b2]</span></span><span class="alt-text">production, status</span>
+            </div>
+        </div>
+    </hc-tile>
+    <hc-tile>
+        <h5>Unique UI Elements</h5>
+        <div class="icon-container">
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-help" hcIconLg></hc-icon><span>hc-help<span class="unicode"> [e964]</span></span><span class="alt-text">guide, support</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-info" hcIconLg></hc-icon><span>hc-info<span class="unicode"> [e96c]</span></span><span class="alt-text">information, tooltip</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-calculate-all" hcIconLg></hc-icon><span>hc-calculate-all<span class="unicode"> [e913]</span></span><span class="alt-text">calculator</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-calculate" hcIconLg></hc-icon><span>hc-calculate<span class="unicode"> [e914]</span></span><span class="alt-text">calculator</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-sign-out" hcIconLg></hc-icon><span>hc-sign-out<span class="unicode"> [e9ab]</span></span><span class="alt-text">log off</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-scratch-pad" hcIconLg></hc-icon><span>hc-scratch-pad<span class="unicode"> [e9a7]</span></span><span class="alt-text">editor</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-archive" hcIconLg></hc-icon><span>hc-archive<span class="unicode"> [e905]</span></span><span class="alt-text">store, delete</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-expand" hcIconLg></hc-icon><span>hc-expand<span class="unicode"> [e92a]</span></span><span class="alt-text">show, open</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-collapse" hcIconLg></hc-icon><span>hc-collapse<span class="unicode"> [e94b]</span></span><span class="alt-text">hide, close</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-expand-multiple" hcIconLg></hc-icon><span>hc-expand-multiple<span class="unicode"> [e94a]</span></span><span class="alt-text">show, open</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-collapse-multiple" hcIconLg></hc-icon><span style="font-size: 13px;">hc-collapse-multiple<span class="unicode"> [e929]</span></span><span class="alt-text">hide, close</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-delete" hcIconLg></hc-icon><span>hc-delete<span class="unicode"> [e939]</span></span><span class="alt-text">trash, remove</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-grip" hcIconLg></hc-icon><span>hc-grip<span class="unicode"> [e95f]</span></span><span class="alt-text">drag, handle</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-resize-grip" hcIconLg></hc-icon><span>hc-resize-grip<span class="unicode"> [e99c]</span></span><span class="alt-text">drag, handle</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-ellipses" hcIconLg></hc-icon><span>hc-ellipses<span class="unicode"> [e942]</span></span><span class="alt-text">more options</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-export" hcIconLg></hc-icon><span>hc-export<span class="unicode"> [e94c]</span></span><span class="alt-text">save</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-import" hcIconLg></hc-icon><span>hc-import<span class="unicode"> [e968]</span></span><span class="alt-text">open</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-find-replace" hcIconLg></hc-icon><span>hc-find-replace<span class="unicode"> [e953]</span></span><span class="alt-text">text search</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-spell-check" hcIconLg></hc-icon><span>hc-spell-check<span class="unicode"> [e9b0]</span></span><span class="alt-text">validate</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-global-r" hcIconLg></hc-icon><span>hc-global-r<span class="unicode"> [e959]</span></span><span class="alt-text">permissions, read</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-global-rw" hcIconLg></hc-icon><span>hc-global-rw<span class="unicode"> [e95a]</span></span><span class="alt-text">permissions, read, write</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-global-w" hcIconLg></hc-icon><span>hc-global-w<span class="unicode"> [e95b]</span></span><span class="alt-text">permissions, write</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-link" hcIconLg></hc-icon><span>hc-link<span class="unicode"> [e972]</span></span><span class="alt-text">anchor, url</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-broken-link" hcIconLg></hc-icon><span>hc-broken-link<span class="unicode"> [e911]</span></span><span class="alt-text">anchor, url</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-copy" hcIconLg></hc-icon><span>hc-copy<span class="unicode"> [e930]</span></span><span class="alt-text">duplicate</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-folder" hcIconLg></hc-icon><span>hc-folder<span class="unicode"> [e961]</span></span><span class="alt-text">group</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-folder-open" hcIconLg></hc-icon><span>hc-folder-open<span class="unicode"> [e97f]</span></span><span class="alt-text">group</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-save-fail" hcIconLg></hc-icon><span>hc-save-fail<span class="unicode"> [e9a2]</span></span><span class="alt-text">disk, error</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-save-success" hcIconLg></hc-icon><span>hc-save-success<span class="unicode"> [e9a3]</span></span><span class="alt-text">disk, pass</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-save" hcIconLg></hc-icon><span>hc-save<span class="unicode"> [e9a4]</span></span><span class="alt-text">disk</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-sort-ascend" hcIconLg></hc-icon><span>hc-sort-ascend<span class="unicode"> [e9ad]</span></span><span class="alt-text">table, column</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-sort-descend" hcIconLg></hc-icon><span>hc-sort-descend<span class="unicode"> [e9ae]</span></span><span class="alt-text">table, column</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-sort" hcIconLg></hc-icon><span>hc-sort<span class="unicode"> [e9af]</span></span><span class="alt-text">table, column</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-text-entry" hcIconLg></hc-icon><span>hc-text-entry<span class="unicode"> [e9bc]</span></span><span class="alt-text">edit, note</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-comment" hcIconLg></hc-icon><span>hc-comment<span class="unicode"> [e92c]</span></span><span class="alt-text">text, note</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-uncomment" hcIconLg></hc-icon><span>hc-uncomment<span class="unicode"> [e9be]</span></span><span class="alt-text">text, undo</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-ungroup" hcIconLg></hc-icon><span>hc-ungroup<span class="unicode"> [e9c0]</span></span><span class="alt-text">combine, separate</span>
+            </div>
+        </div>
+    </hc-tile>
+    <hc-tile>
+        <h5>Symbols</h5>
+        <div class="icon-container">
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-ambulance" hcIconLg></hc-icon><span>hc-ambulance<span class="unicode"> [e902]</span></span><span class="alt-text">emergency, admit</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-apple" hcIconLg></hc-icon><span>hc-apple<span class="unicode"> [e904]</span></span><span class="alt-text">health, diet</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-barrier" hcIconLg></hc-icon><span>hc-barrier<span class="unicode"> [e909]</span></span><span class="alt-text">problem, concern</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-bone" hcIconLg></hc-icon><span>hc-bone<span class="unicode"> [e90e]</span></span><span class="alt-text">anatomy, skeleton</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-brain" hcIconLg></hc-icon><span>hc-brain<span class="unicode"> [e90f]</span></span><span class="alt-text">neuro, mental</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-briefcase-medical" hcIconLg></hc-icon><span style="font-size: 13px;">hc-briefcase-medical<span class="unicode"> [e910]</span></span><span class="alt-text">doctor, kit</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-change-feed" hcIconLg></hc-icon><span>hc-change-feed<span class="unicode"> [e919]</span></span><span class="alt-text">rss, wifi</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-clipboard-medical" hcIconLg></hc-icon><span style="font-size: 13px;">hc-clipboard-medical<span class="unicode"> [e922]</span></span><span class="alt-text">survey, assessment</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-clipboard-pulse" hcIconLg></hc-icon><span>hc-clipboard-pulse<span class="unicode"> [e923]</span></span><span class="alt-text">survey, assessment</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-code" hcIconLg></hc-icon><span>hc-code<span class="unicode"> [e928]</span></span><span class="alt-text">json, html</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-crown" hcIconLg></hc-icon><span>hc-crown<span class="unicode"> [e932]</span></span><span class="alt-text">gold, standard</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-doctor" hcIconLg></hc-icon><span>hc-doctor<span class="unicode"> [e93e]</span></span><span class="alt-text">clinician, medical</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-education" hcIconLg></hc-icon><span>hc-education<span class="unicode"> [e941]</span></span><span class="alt-text">learn, train</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-empty" hcIconLg></hc-icon><span>hc-empty<span class="unicode"> [e943]</span></span><span class="alt-text">results, list</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-error" hcIconLg></hc-icon><span>hc-error<span class="unicode"> [e947]</span></span><span class="alt-text">fail, warning</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-gauge" hcIconLg></hc-icon><span>hc-gauge<span class="unicode"> [e955]</span></span><span class="alt-text">metric, status</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-genome" hcIconLg></hc-icon><span>hc-genome<span class="unicode"> [e957]</span></span><span class="alt-text">dna, genetics</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-glasses" hcIconLg></hc-icon><span>hc-glasses<span class="unicode"> [e958]</span></span><span class="alt-text">visible, inspect</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-globe" hcIconLg></hc-icon><span>hc-globe<span class="unicode"> [e95c]</span></span><span class="alt-text">visible, world</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-goal" hcIconLg></hc-icon><span>hc-goal<span class="unicode"> [e95d]</span></span><span class="alt-text">target, objective</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-grin" hcIconLg></hc-icon><span>hc-grin<span class="unicode"> [e95e]</span></span><span class="alt-text">feedback, success</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-handshake" hcIconLg></hc-icon><span>hc-handshake<span class="unicode"> [e962]</span></span><span class="alt-text">respect, deal</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-hospital-tall" hcIconLg></hc-icon><span>hc-hospital-tall<span class="unicode"> [e966]</span></span><span class="alt-text">clinical, medical</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-hospital-wide" hcIconLg></hc-icon><span>hc-hospital-wide<span class="unicode"> [e967]</span></span><span class="alt-text">clinical, medical</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-lab" hcIconLg></hc-icon><span>hc-lab<span class="unicode"> [e96e]</span></span><span class="alt-text">science, research</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-laptop" hcIconLg></hc-icon><span>hc-laptop<span class="unicode"> [e96f]</span></span><span class="alt-text">computer, monitor</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-lock" hcIconLg></hc-icon><span>hc-lock<span class="unicode"> [e974]</span></span><span class="alt-text">protect, secure</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-medical" hcIconLg></hc-icon><span>hc-medical<span class="unicode"> [e976]</span></span><span class="alt-text">clinical, doctor</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-money-bill" hcIconLg></hc-icon><span>hc-money-bill<span class="unicode"> [e979]</span></span><span class="alt-text">finance, cost</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-patient" hcIconLg></hc-icon><span>hc-patient<span class="unicode"> [e982]</span></span><span class="alt-text">user, sick</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-pill" hcIconLg></hc-icon><span>hc-pill<span class="unicode"> [e985]</span></span><span class="alt-text">pharmaceutical, medicine</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-plant" hcIconLg></hc-icon><span>hc-plant<span class="unicode"> [e986]</span></span><span class="alt-text">grow, green</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-prescription" hcIconLg></hc-icon><span>hc-prescription<span class="unicode"> [e989]</span></span><span class="alt-text">pill, medicine</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-problem" hcIconLg></hc-icon><span>hc-problem<span class="unicode"> [e98b]</span></span><span class="alt-text">concern, complication</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-procedure" hcIconLg></hc-icon><span>hc-procedure<span class="unicode"> [e98c]</span></span><span class="alt-text">surgery, physical</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-reference" hcIconLg></hc-icon><span>hc-reference<span class="unicode"> [e995]</span></span><span class="alt-text">guide, help</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-share-feedback" hcIconLg></hc-icon><span>hc-share-feedback<span class="unicode"> [e9aa]</span></span><span class="alt-text">chat, commment</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-stethoscope" hcIconLg></hc-icon><span>hc-stethoscope<span class="unicode"> [e9b5]</span></span><span class="alt-text">doctor, medical</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-syringe" hcIconLg></hc-icon><span>hc-syringe<span class="unicode"> [e9ba]</span></span><span class="alt-text">treatment, vaccine</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-task" hcIconLg></hc-icon><span>hc-task<span class="unicode"> [e9bb]</span></span><span class="alt-text">assignment, project</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-trophy" hcIconLg></hc-icon><span>hc-trophy<span class="unicode"> [e9bd]</span></span><span class="alt-text">leader, achievement</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-vial" hcIconLg></hc-icon><span>hc-vial<span class="unicode"> [e9c3]</span></span><span class="alt-text">test, lab</span>
+            </div>
+            <div class="icon-example">
+                <hc-icon fontSet="hc-icons" fontIcon="hc-vitals" hcIconLg></hc-icon><span>hc-vitals<span class="unicode"> [e9c5]</span></span><span class="alt-text">blood pressure, heart</span>
             </div>
         </div>
     </hc-tile>
