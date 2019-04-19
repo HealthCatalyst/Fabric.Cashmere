@@ -1,5 +1,15 @@
-import {Component, EventEmitter, ElementRef, TemplateRef} from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    ElementRef,
+    ViewChild,
+    ViewContainerRef,
+    ComponentFactoryResolver,
+    ComponentRef,
+    TemplateRef
+} from '@angular/core';
 import {trigger, state, style, transition, animate, AnimationEvent} from '@angular/animations';
+import {ToastContentType} from './hc-toaster.service';
 
 const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
 
@@ -25,9 +35,13 @@ export class HcToastComponent {
     _animationStateChanged = new EventEmitter<AnimationEvent>();
     _closeClick = new EventEmitter<MouseEvent>();
     _canDismiss: boolean = false;
-    _toastContent: TemplateRef<any>;
+    _toastContent: ToastContentType;
+    /** If creating a custom toast with a component, this is a reference to the custom component's instance */
+    customRef: ComponentRef<any>;
 
-    constructor(public _el: ElementRef) {}
+    @ViewChild('customToastContainer', {read: ViewContainerRef}) _toastContainer: ViewContainerRef;
+
+    constructor(public _el: ElementRef, public _resolver: ComponentFactoryResolver) {}
 
     _onAnimationStart(event: AnimationEvent) {
         this._animationStateChanged.emit(event);
@@ -43,5 +57,13 @@ export class HcToastComponent {
 
     _dismissClick(event: MouseEvent) {
         this._closeClick.emit(event);
+    }
+
+    _isTemplate() {
+        if (!this._toastContent) {
+            return false;
+        } else {
+            return this._toastContent instanceof TemplateRef;
+        }
     }
 }
