@@ -1,19 +1,13 @@
-import {
-    Injectable,
-    ComponentRef,
-    Injector,
-    TemplateRef,
-    Type,
-    ComponentFactory
-} from '@angular/core';
+import {Injectable, ComponentRef, Injector, TemplateRef, Type, ComponentFactory} from '@angular/core';
 import {Overlay, OverlayConfig, OverlayRef, PositionStrategy} from '@angular/cdk/overlay';
-import {ComponentPortal, PortalInjector} from '@angular/cdk/portal';
+import {ComponentPortal, PortalInjector, TemplatePortal} from '@angular/cdk/portal';
 import {HcToastComponent} from './hc-toast.component';
 import {HcToastOptions} from './hc-toast-options';
 import {HcToastRef} from './hc-toast-ref';
 import {filter, take} from 'rxjs/operators';
 
-export type ToastContentType = Type<{}> | TemplateRef<any>;
+export type ComponentSetup<T> = Partial<T> | ((instance: T) => void);
+export type ToastContentType<T> = Type<T> | TemplateRef<any>;
 
 /** Toasts provide users with instant feedback on actions they've taken. For more general information,
  * use a `hc-banner`. */
@@ -22,15 +16,13 @@ export class HcToasterService {
     _toasts: HcToastRef[] = [];
 
     // Inject overlay service
-    constructor(
-        private injector: Injector,
-        private _overlay: Overlay
-    ) { }
+    constructor(private injector: Injector, private _overlay: Overlay) {}
 
     /** Displays a new toaster message with the settings included in `toastOptions`. `toastContent` can be used to
-     * create entirely custom toasts, but only if the type is set to `custom`. Be sure to set `border-radius: 5px`
-     * in the style of your custom content template so it matches the toast container. */
-    addToast(toastOptions?: HcToastOptions, toastContent?: ToastContentType): HcToastRef {
+     * create entirely custom toasts, but only if the type in toastOptions is set to `custom`. Be sure to set `border-radius: 5px`
+     * in the style of your custom content template so it matches the toast container. If your custom toast is
+     * using a component, the `componentSetup` parameter accepts an object or function to configure that component. */
+    addToast<T = any>(toastOptions?: HcToastOptions, toastContent?: ToastContentType<T>, componentSetup?: ComponentSetup<T>): HcToastRef {
         const defaultOptions: HcToastOptions = {
             type: 'success',
             position: 'bottom-right',
@@ -50,10 +42,19 @@ export class HcToasterService {
         _toastRef.componentInstance = overlayComponent;
 
         if (options.type === 'custom' && toastContent) {
-            _toastRef.componentInstance._toastContent = toastContent;
-            if (!(toastContent instanceof TemplateRef)) {
-                const factory: ComponentFactory<any> = _toastRef.componentInstance._resolver.resolveComponentFactory(toastContent);
-                _toastRef.componentInstance.customRef = _toastRef.componentInstance._toastContainer.createComponent(factory);
+            if (toastContent instanceof TemplateRef) {
+                _toastRef.componentInstance._toastPortal = new TemplatePortal(toastContent, _toastRef.componentInstance._viewContainerRef);
+            } else {
+                _toastRef.componentInstance._toastPortal = new ComponentPortal(toastContent);
+                if (componentSetup) {
+                    _toastRef.componentInstance._componentInstance.pipe(filter(c => !!c)).subscribe(c => {
+                        if (componentSetup instanceof Function) {
+                            componentSetup(c);
+                        } else {
+                            Object.keys(componentSetup).forEach(k => (c[k] = componentSetup[k]));
+                        }
+                    });
+                }
             }
         }
 

@@ -1,22 +1,14 @@
-import {
-    Component,
-    EventEmitter,
-    ElementRef,
-    ViewChild,
-    ViewContainerRef,
-    ComponentFactoryResolver,
-    ComponentRef,
-    TemplateRef
-} from '@angular/core';
+import {Component, EventEmitter, ElementRef, ViewContainerRef, ComponentRef} from '@angular/core';
 import {trigger, state, style, transition, animate, AnimationEvent} from '@angular/animations';
-import {ToastContentType} from './hc-toaster.service';
+import {Portal, CdkPortalOutletAttachedRef} from '@angular/cdk/portal';
+import {BehaviorSubject} from 'rxjs';
 
 const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
 
 @Component({
     selector: 'hc-toaster',
-    templateUrl: './hc-toast.html',
-    styleUrls: ['./hc-toast.scss'],
+    templateUrl: './hc-toast.component.html',
+    styleUrls: ['./hc-toast.component.scss'],
     animations: [
         trigger('fade', [
             state('void', style({transform: 'scale(0.9)', opacity: 0})),
@@ -35,13 +27,10 @@ export class HcToastComponent {
     _animationStateChanged = new EventEmitter<AnimationEvent>();
     _closeClick = new EventEmitter<MouseEvent>();
     _canDismiss: boolean = false;
-    _toastContent: ToastContentType;
-    /** If creating a custom toast with a component, this is a reference to the custom component's instance */
-    customRef: ComponentRef<any>;
+    _toastPortal: Portal<any>;
+    readonly _componentInstance = new BehaviorSubject<any>(null);
 
-    @ViewChild('customToastContainer', {read: ViewContainerRef}) _toastContainer: ViewContainerRef;
-
-    constructor(public _el: ElementRef, public _resolver: ComponentFactoryResolver) {}
+    constructor(public _el: ElementRef, public _viewContainerRef: ViewContainerRef) {}
 
     _onAnimationStart(event: AnimationEvent) {
         this._animationStateChanged.emit(event);
@@ -59,11 +48,9 @@ export class HcToastComponent {
         this._closeClick.emit(event);
     }
 
-    _isTemplate() {
-        if (!this._toastContent) {
-            return false;
-        } else {
-            return this._toastContent instanceof TemplateRef;
+    _customComponentAttached(ref: CdkPortalOutletAttachedRef) {
+        if (ref instanceof ComponentRef) {
+            this._componentInstance.next(ref.instance);
         }
     }
 }

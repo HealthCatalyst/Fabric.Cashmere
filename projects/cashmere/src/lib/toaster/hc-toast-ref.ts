@@ -34,10 +34,7 @@ export class HcToastRef {
                 this._overlayRef.dispose();
                 this._afterClosed.next();
                 this._afterClosed.complete();
-
-                if ( this.componentInstance.customRef ) {
-                    this.componentInstance.customRef.destroy();
-                }
+                this.componentInstance._componentInstance.unsubscribe();
                 this.componentInstance = null!;
             });
 
