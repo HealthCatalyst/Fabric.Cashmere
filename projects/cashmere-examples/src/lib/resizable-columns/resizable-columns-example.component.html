@@ -56,7 +56,7 @@
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container hcColumnDef="weight">
+    <ng-container hcColumnDef="weight" justify="right">
         <th hc-header-cell *hcHeaderCellDef [style.width]="columnObjects[2].width + 'px'">
             <span>{{ columnObjects[2].title }}</span>
             <hc-cell-resizer
@@ -84,7 +84,7 @@
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container hcColumnDef="symbol">
+    <ng-container hcColumnDef="symbol" justify="right">
         <th hc-header-cell *hcHeaderCellDef [style.width]="columnObjects[3].width + 'px'">
             <span>{{ columnObjects[3].title }}</span>
             <hc-cell-resizer

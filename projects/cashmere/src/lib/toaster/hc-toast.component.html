@@ -4,8 +4,10 @@
     (@fade.done)="_onAnimationDone($event)"
     (click)="_dismissClick($event)"
     [ngClass]="{'hc-toast-dismiss': _canDismiss}">
-    <div *ngIf="_toastContent" [ngTemplateOutlet]="_toastContent"></div>
-    <div *ngIf="!_toastContent" class="hc-toast-content">
+    <div *ngIf="_styleType === 'custom'">
+        <ng-template (attached)="_customComponentAttached($event)" [cdkPortalOutlet]="_toastPortal"></ng-template>
+    </div>
+    <div *ngIf="_styleType !== 'custom'" class="hc-toast-content">
         <div class="hc-toast-icon-container">
             <div class="hc-toast-icon"></div>
         </div>
