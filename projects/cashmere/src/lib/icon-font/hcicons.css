@@ -303,7 +303,7 @@
   .hc-global-w:before {
     content: "\e95b";
   }
-  .hc-link:before {
+  .hc-web-link:before {
     content: "\e972";
   }
   .hc-broken-link:before {
