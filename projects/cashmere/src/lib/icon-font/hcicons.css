@@ -244,6 +244,12 @@
   .hci-info:before {
     content: "\e96c";
   }
+  .hci-app-switcher:before {
+    content: "\e901";
+  }
+  .hci-filters:before {
+    content: "\e906";
+  }
   .hci-calculate-all:before {
     content: "\e913";
   }
@@ -376,14 +382,18 @@
   .hci-clipboard-pulse:before {
     content: "\e923";
   }
+  .hci-task:before {
+    content: "\e9bb";
+    color: #555;
+  }
+  .hci-assign-task:before {
+    content: "\e90a";
+  }
   .hci-code:before {
     content: "\e928";
   }
   .hci-crown:before {
     content: "\e932";
-  }
-  .hci-doctor:before {
-    content: "\e93e";
   }
   .hci-education:before {
     content: "\e941";
@@ -439,6 +449,9 @@
   .hci-patient:before {
     content: "\e982";
   }
+  .hci-doctor:before {
+    content: "\e93e";
+  }
   .hci-pill:before {
     content: "\e985";
   }
@@ -465,9 +478,6 @@
   }
   .hci-syringe:before {
     content: "\e9ba";
-  }
-  .hci-task:before {
-    content: "\e9bb";
   }
   .hci-trophy:before {
     content: "\e9bd";
