@@ -24,456 +24,467 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-  .hc-catalyst-logo:before {
+  .hci-catalyst-logo:before {
     content: "\e918";
   }
-  .hc-atlas:before {
+  .hci-atlas:before {
     content: "\e907";
   }
-  .hc-samd:before {
+  .hci-samd:before {
     content: "\e9a1";
   }
-  .hc-population:before {
+  .hci-population:before {
     content: "\e988";
   }
-  .hc-nlp:before {
+  .hci-nlp:before {
     content: "\e97d";
   }
-  .hc-binding:before {
+  .hci-binding:before {
     content: "\e90c";
+    color: #555;
   }
-  .hc-sql-binding:before {
+  .hci-sql-binding:before {
     content: "\e9b1";
   }
-  .hc-xml-binding:before {
+  .hci-xml-binding:before {
     content: "\e9c9";
   }
-  .hc-r-binding:before {
+  .hci-r-binding:before {
     content: "\e991";
   }
-  .hc-python-binding:before {
+  .hci-python-binding:before {
     content: "\e98e";
   }
-  .hc-csv-binding:before {
+  .hci-csv-binding:before {
     content: "\e933";
   }
-  .hc-regen-f-bind:before {
+  .hci-regen-f-bind:before {
     content: "\e999";
   }
-  .hc-val-schema:before {
+  .hci-val-schema:before {
     content: "\e9c1";
   }
-  .hc-regen-sel-bind:before {
+  .hci-regen-sel-bind:before {
     content: "\e99a";
   }
-  .hc-val-sel-schema:before {
+  .hci-val-sel-schema:before {
     content: "\e9c2";
   }
-  .hc-extensions:before {
+  .hci-extensions:before {
     content: "\e94e";
   }
-  .hc-connecting:before {
+  .hci-connecting:before {
     content: "\e92f";
   }
-  .hc-disconnected:before {
+  .hci-disconnected:before {
     content: "\e93b";
   }
-  .hc-disconnecting:before {
+  .hci-disconnecting:before {
     content: "\e93c";
   }
-  .hc-connected:before {
+  .hci-connected:before {
     content: "\e92e";
   }
-  .hc-data-mart:before {
+  .hci-data-mart:before {
     content: "\e936";
   }
-  .hc-new-SM:before {
+  .hci-new-SM:before {
     content: "\e97c";
   }
-  .hc-field:before {
+  .hci-field:before {
     content: "\e903";
   }
-  .hc-indexes:before {
+  .hci-indexes:before {
     content: "\e96b";
   }
-  .hc-columns:before {
+  .hci-columns:before {
     content: "\e92b";
   }
-  .hc-details:before {
+  .hci-details:before {
     content: "\e93a";
   }
-  .hc-attributes:before {
+  .hci-attributes:before {
     content: "\e908";
   }
-  .hc-summary-metric:before {
+  .hci-summary-metric:before {
     content: "\e9b8";
   }
-  .hc-subject-area:before {
+  .hci-subject-area:before {
     content: "\e9b6";
   }
-  .hc-entity:before {
+  .hci-entity:before {
     content: "\e94d";
   }
-  .hc-results:before {
+  .hci-results:before {
     content: "\e99d";
   }
-  .hc-npe:before {
+  .hci-npe:before {
     content: "\e97e";
   }
-  .hc-core-entity:before {
+  .hci-core-entity:before {
     content: "\e931";
   }
-  .hc-data-ent-ent:before {
+  .hci-data-ent-ent:before {
     content: "\e934";
   }
-  .hc-overriding:before {
+  .hci-overriding:before {
     content: "\e981";
   }
-  .hc-override-b:before {
+  .hci-override-b:before {
     content: "\e980";
   }
-  .hc-entry-w-d:before {
+  .hci-entry-w-d:before {
     content: "\e944";
   }
-  .hc-view-d-entity:before {
+  .hci-view-d-entity:before {
     content: "\e9c4";
   }
-  .hc-regen-ent:before {
+  .hci-regen-ent:before {
     content: "\e998";
   }
-  .hc-select-ent:before {
+  .hci-select-ent:before {
     content: "\e9a9";
   }
-  .hc-insert-temp:before {
+  .hci-insert-temp:before {
     content: "\e96d";
   }
-  .hc-model:before {
+  .hci-model:before {
     content: "\e978";
   }
-  .hc-er-diagram:before {
+  .hci-er-diagram:before {
     content: "\e946";
   }
-  .hc-report:before {
+  .hci-report:before {
     content: "\e99b";
   }
-  .hc-metrics:before {
+  .hci-metrics:before {
     content: "\e977";
   }
-  .hc-chart-area:before {
+  .hci-chart-area:before {
     content: "\e91a";
   }
-  .hc-chart-bar:before {
+  .hci-chart-bar:before {
     content: "\e91b";
   }
-  .hc-chart-line:before {
+  .hci-chart-line:before {
     content: "\e91c";
   }
-  .hc-chart-pie:before {
+  .hci-chart-pie:before {
     content: "\e91d";
   }
-  .hc-database:before {
+  .hci-database:before {
     content: "\e938";
   }
-  .hc-load-db:before {
+  .hci-load-db:before {
     content: "\e973";
   }
-  .hc-data-steward:before {
+  .hci-data-steward:before {
     content: "\e937";
   }
-  .hc-query:before {
+  .hci-query:before {
     content: "\e98f";
   }
-  .hc-ETL:before {
+  .hci-ETL:before {
     content: "\e948";
   }
-  .hc-data-flow:before {
+  .hci-data-flow:before {
     content: "\e935";
   }
-  .hc-active:before {
+  .hci-active:before {
     content: "\e900";
   }
-  .hc-in-dev:before {
+  .hci-in-dev:before {
     content: "\e969";
   }
-  .hc-inactive:before {
+  .hci-inactive:before {
     content: "\e96a";
   }
-  .hc-ready-delete:before {
+  .hci-ready-delete:before {
     content: "\e992";
   }
-  .hc-ready-review:before {
+  .hci-ready-review:before {
     content: "\e993";
   }
-  .hc-failure:before {
+  .hci-failure:before {
     content: "\e950";
   }
-  .hc-warning:before {
+  .hci-warning:before {
     content: "\e9c8";
   }
-  .hc-skipped:before {
+  .hci-skipped:before {
     content: "\e9ac";
   }
-  .hc-canceled:before {
+  .hci-canceled:before {
     content: "\e916";
   }
-  .hc-success:before {
+  .hci-success:before {
     content: "\e9b7";
   }
-  .hc-waiting:before {
+  .hci-waiting:before {
     content: "\e9c6";
   }
-  .hc-processing:before {
+  .hci-processing:before {
     content: "\e98d";
   }
-  .hc-dispatched:before {
+  .hci-dispatched:before {
     content: "\e93d";
   }
-  .hc-queued:before {
+  .hci-queued:before {
     content: "\e990";
   }
-  .hc-scheduled:before {
+  .hci-scheduled:before {
     content: "\e9a6";
   }
-  .hc-staged:before {
+  .hci-staged:before {
     content: "\e9b2";
   }
-  .hc-help:before {
+  .hci-help:before {
     content: "\e964";
   }
-  .hc-info:before {
+  .hci-info:before {
     content: "\e96c";
   }
-  .hc-calculate-all:before {
+  .hci-app-switcher:before {
+    content: "\e901";
+  }
+  .hci-filters:before {
+    content: "\e906";
+  }
+  .hci-calculate-all:before {
     content: "\e913";
   }
-  .hc-calculate:before {
+  .hci-calculate:before {
     content: "\e914";
   }
-  .hc-sign-out:before {
+  .hci-sign-out:before {
     content: "\e9ab";
   }
-  .hc-scratch-pad:before {
+  .hci-scratch-pad:before {
     content: "\e9a7";
   }
-  .hc-archive:before {
+  .hci-archive:before {
     content: "\e905";
   }
-  .hc-expand:before {
+  .hci-expand:before {
     content: "\e92a";
   }
-  .hc-collapse:before {
+  .hci-collapse:before {
     content: "\e94b";
   }
-  .hc-expand-multiple:before {
+  .hci-expand-multiple:before {
     content: "\e94a";
   }
-  .hc-collapse-multiple:before {
+  .hci-collapse-multiple:before {
     content: "\e929";
   }
-  .hc-delete:before {
+  .hci-delete:before {
     content: "\e939";
   }
-  .hc-grip:before {
+  .hci-grip:before {
     content: "\e95f";
   }
-  .hc-resize-grip:before {
+  .hci-resize-grip:before {
     content: "\e99c";
   }
-  .hc-ellipses:before {
+  .hci-ellipses:before {
     content: "\e942";
   }
-  .hc-export:before {
+  .hci-export:before {
     content: "\e94c";
   }
-  .hc-import:before {
+  .hci-import:before {
     content: "\e968";
   }
-  .hc-find-replace:before {
+  .hci-find-replace:before {
     content: "\e953";
   }
-  .hc-spell-check:before {
+  .hci-spell-check:before {
     content: "\e9b0";
   }
-  .hc-global-r:before {
+  .hci-global-r:before {
     content: "\e959";
   }
-  .hc-global-rw:before {
+  .hci-global-rw:before {
     content: "\e95a";
   }
-  .hc-global-w:before {
+  .hci-global-w:before {
     content: "\e95b";
   }
-  .hc-web-link:before {
+  .hci-web-link:before {
     content: "\e972";
   }
-  .hc-broken-link:before {
+  .hci-broken-link:before {
     content: "\e911";
   }
-  .hc-copy:before {
+  .hci-copy:before {
     content: "\e930";
   }
-  .hc-folder:before {
+  .hci-folder:before {
     content: "\e961";
   }
-  .hc-folder-open:before {
+  .hci-folder-open:before {
     content: "\e97f";
   }
-  .hc-save-fail:before {
+  .hci-save-fail:before {
     content: "\e9a2";
   }
-  .hc-save-success:before {
+  .hci-save-success:before {
     content: "\e9a3";
   }
-  .hc-save:before {
+  .hci-save:before {
     content: "\e9a4";
   }
-  .hc-sort-ascend:before {
+  .hci-sort-ascend:before {
     content: "\e9ad";
   }
-  .hc-sort-descend:before {
+  .hci-sort-descend:before {
     content: "\e9ae";
   }
-  .hc-sort:before {
+  .hci-sort:before {
     content: "\e9af";
   }
-  .hc-text-entry:before {
+  .hci-text-entry:before {
     content: "\e9bc";
   }
-  .hc-comment:before {
+  .hci-comment:before {
     content: "\e92c";
   }
-  .hc-uncomment:before {
+  .hci-uncomment:before {
     content: "\e9be";
   }
-  .hc-ungroup:before {
+  .hci-ungroup:before {
     content: "\e9c0";
   }
-  .hc-ambulance:before {
+  .hci-ambulance:before {
     content: "\e902";
   }
-  .hc-apple:before {
+  .hci-apple:before {
     content: "\e904";
   }
-  .hc-barrier:before {
+  .hci-barrier:before {
     content: "\e909";
   }
-  .hc-bone:before {
+  .hci-bone:before {
     content: "\e90e";
   }
-  .hc-brain:before {
+  .hci-brain:before {
     content: "\e90f";
   }
-  .hc-briefcase-medical:before {
+  .hci-briefcase-medical:before {
     content: "\e910";
   }
-  .hc-change-feed:before {
+  .hci-change-feed:before {
     content: "\e919";
   }
-  .hc-clipboard-medical:before {
+  .hci-clipboard-medical:before {
     content: "\e922";
   }
-  .hc-clipboard-pulse:before {
+  .hci-clipboard-pulse:before {
     content: "\e923";
   }
-  .hc-code:before {
+  .hci-task:before {
+    content: "\e9bb";
+    color: #555;
+  }
+  .hci-assign-task:before {
+    content: "\e90a";
+  }
+  .hci-code:before {
     content: "\e928";
   }
-  .hc-crown:before {
+  .hci-crown:before {
     content: "\e932";
   }
-  .hc-doctor:before {
-    content: "\e93e";
-  }
-  .hc-education:before {
+  .hci-education:before {
     content: "\e941";
   }
-  .hc-empty:before {
+  .hci-empty:before {
     content: "\e943";
   }
-  .hc-error:before {
+  .hci-error-hexagon:before {
     content: "\e947";
   }
-  .hc-gauge:before {
+  .hci-gauge:before {
     content: "\e955";
   }
-  .hc-genome:before {
+  .hci-genome:before {
     content: "\e957";
   }
-  .hc-glasses:before {
+  .hci-glasses:before {
     content: "\e958";
   }
-  .hc-globe:before {
+  .hci-globe:before {
     content: "\e95c";
   }
-  .hc-goal:before {
+  .hci-goal:before {
     content: "\e95d";
   }
-  .hc-grin:before {
+  .hci-grin:before {
     content: "\e95e";
   }
-  .hc-handshake:before {
+  .hci-handshake:before {
     content: "\e962";
   }
-  .hc-hospital-tall:before {
+  .hci-hospital-tall:before {
     content: "\e966";
   }
-  .hc-hospital-wide:before {
+  .hci-hospital-wide:before {
     content: "\e967";
   }
-  .hc-lab:before {
+  .hci-lab:before {
     content: "\e96e";
   }
-  .hc-laptop:before {
+  .hci-laptop:before {
     content: "\e96f";
   }
-  .hc-lock:before {
+  .hci-lock:before {
     content: "\e974";
   }
-  .hc-medical:before {
+  .hci-medical:before {
     content: "\e976";
   }
-  .hc-money-bill:before {
+  .hci-money-bill:before {
     content: "\e979";
   }
-  .hc-patient:before {
+  .hci-patient:before {
     content: "\e982";
   }
-  .hc-pill:before {
+  .hci-doctor:before {
+    content: "\e93e";
+  }
+  .hci-pill:before {
     content: "\e985";
   }
-  .hc-plant:before {
+  .hci-plant:before {
     content: "\e986";
   }
-  .hc-prescription:before {
+  .hci-prescription:before {
     content: "\e989";
   }
-  .hc-problem:before {
+  .hci-problem:before {
     content: "\e98b";
   }
-  .hc-procedure:before {
+  .hci-procedure:before {
     content: "\e98c";
   }
-  .hc-reference:before {
+  .hci-reference:before {
     content: "\e995";
   }
-  .hc-share-feedback:before {
+  .hci-share-feedback:before {
     content: "\e9aa";
   }
-  .hc-stethoscope:before {
+  .hci-stethoscope:before {
     content: "\e9b5";
   }
-  .hc-syringe:before {
+  .hci-syringe:before {
     content: "\e9ba";
   }
-  .hc-task:before {
-    content: "\e9bb";
-  }
-  .hc-trophy:before {
+  .hci-trophy:before {
     content: "\e9bd";
   }
-  .hc-vial:before {
+  .hci-vial:before {
     content: "\e9c3";
   }
-  .hc-vitals:before {
+  .hci-vitals:before {
     content: "\e9c5";
   }
