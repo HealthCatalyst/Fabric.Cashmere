@@ -1,4 +1,4 @@
-import {Component, EventEmitter, ElementRef, ViewContainerRef, ComponentRef} from '@angular/core';
+import {Component, EventEmitter, ElementRef, ViewContainerRef, ComponentRef, ChangeDetectorRef} from '@angular/core';
 import {trigger, state, style, transition, animate, AnimationEvent} from '@angular/animations';
 import {Portal, CdkPortalOutletAttachedRef} from '@angular/cdk/portal';
 import {BehaviorSubject} from 'rxjs';
@@ -30,7 +30,7 @@ export class HcToastComponent {
     _toastPortal: Portal<any>;
     readonly _componentInstance = new BehaviorSubject<any>(null);
 
-    constructor(public _el: ElementRef, public _viewContainerRef: ViewContainerRef) {}
+    constructor(public _el: ElementRef, public _viewContainerRef: ViewContainerRef, public _changeRef: ChangeDetectorRef) {}
 
     _onAnimationStart(event: AnimationEvent) {
         this._animationStateChanged.emit(event);

@@ -119,6 +119,7 @@ export class HcToasterService {
                 _toastRef.componentInstance._closeClick.unsubscribe();
             });
 
+        _toastRef.componentInstance._changeRef.detectChanges();
         this._toasts.push(_toastRef);
         return _toastRef;
     }
