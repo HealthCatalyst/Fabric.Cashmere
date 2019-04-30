@@ -128,6 +128,7 @@ export class HcToasterService {
             }, options.timeout);
         }
 
+        _toastRef.componentInstance._changeRef.detectChanges();
         this._toasts.push(_toastRef);
         return _toastRef;
     }
