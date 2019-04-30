@@ -62,20 +62,7 @@ export class HcToasterService {
         if (options.clickDismiss) {
             _toastRef.componentInstance._canDismiss = options.clickDismiss;
             _toastRef.componentInstance._closeClick.subscribe(() => {
-                this._removeToastPointer(_toastRef);
                 _toastRef.close();
-                if (options.toastClosed) {
-                    options.toastClosed();
-                }
-                _toastRef.componentInstance._animationStateChanged
-                    .pipe(
-                        filter(event => event.phaseName === 'done' && event.toState === 'leave'),
-                        take(1)
-                    )
-                    .subscribe(() => {
-                        this._updateToastPositions();
-                    });
-                _toastRef.componentInstance._closeClick.unsubscribe();
             });
         }
 
@@ -111,23 +98,28 @@ export class HcToasterService {
         if (options.timeout !== 0) {
             setTimeout(() => {
                 if (_toastRef.componentInstance) {
-                    this._removeToastPointer(_toastRef);
                     _toastRef.close();
-                    if (options.toastClosed) {
-                        options.toastClosed();
-                    }
-                    _toastRef.componentInstance._animationStateChanged
-                        .pipe(
-                            filter(event => event.phaseName === 'done' && event.toState === 'leave'),
-                            take(1)
-                        )
-                        .subscribe(() => {
-                            this._updateToastPositions();
-                        });
                 }
             }, options.timeout);
         }
 
+        // Cleanup functions called when the toast close animation is triggered
+        _toastRef.componentInstance._animationStateChanged
+            .pipe(
+                filter(event => event.phaseName === 'done' && event.toState === 'leave'),
+                take(1)
+            )
+            .subscribe(() => {
+                this._removeToastPointer(_toastRef);
+                if (options.toastClosed) {
+                    options.toastClosed();
+                }
+                this._updateToastPositions();
+                _toastRef.componentInstance._animationStateChanged.unsubscribe();
+                _toastRef.componentInstance._closeClick.unsubscribe();
+            });
+
+        _toastRef.componentInstance._changeRef.detectChanges();
         this._toasts.push(_toastRef);
         return _toastRef;
     }
@@ -135,7 +127,7 @@ export class HcToasterService {
     /** Closes the most recent toast displayed */
     closeLastToast() {
         if (this._toasts.length > 0) {
-            const element = this._toasts.pop();
+            const element = this._toasts[this._toasts.length - 1];
             if (element) {
                 element.close();
             }
@@ -146,7 +138,7 @@ export class HcToasterService {
     closeAllToasts() {
         let len = this._toasts.length;
         for (let index = 0; index < len; index++) {
-            const element = this._toasts.pop();
+            const element = this._toasts[index];
             if (element) {
                 element.close();
             }

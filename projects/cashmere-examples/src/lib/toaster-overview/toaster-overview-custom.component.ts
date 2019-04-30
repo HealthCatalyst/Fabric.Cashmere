@@ -10,7 +10,7 @@ import {Component} from '@angular/core';
                 color: white;
                 padding: 20px 10px;
                 display: flex;
-                width: 400px;
+                width: 100%;
             }
             .custom-toast-icon {
                 margin-right: 20px;
@@ -25,6 +25,7 @@ import {Component} from '@angular/core';
             }
             .custom-toast-body {
                 font-size: 12px;
+                width: 319px
             }
         `
     ]
