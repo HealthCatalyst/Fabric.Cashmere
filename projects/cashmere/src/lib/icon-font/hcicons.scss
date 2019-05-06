@@ -1,0 +1,488 @@
+@font-face {
+    font-family: 'hcicons';
+    src: url('#{$hc-icons-font-path}/hcicons.eot');
+    src: url('#{$hc-icons-font-path}/hcicons.eot') format('embedded-opentype'), url('#{$hc-icons-font-path}/hcicons.woff2') format('woff2'),
+        url('#{$hc-icons-font-path}/hcicons.woff') format('woff'), url('#{$hc-icons-font-path}/hcicons.ttf') format('truetype'),
+        url('#{$hc-icons-font-path}/hcicons.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.hc-icons {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'hcicons' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    &.hci-catalyst-logo:before {
+        content: '\e918';
+    }
+    &.hci-atlas:before {
+        content: '\e907';
+    }
+    &.hci-samd:before {
+        content: '\e9a1';
+    }
+    &.hci-population:before {
+        content: '\e988';
+    }
+    &.hci-nlp:before {
+        content: '\e97d';
+    }
+    &.hci-binding:before {
+        content: '\e90c';
+        color: #555;
+    }
+    &.hci-sql-binding:before {
+        content: '\e9b1';
+    }
+    &.hci-xml-binding:before {
+        content: '\e9c9';
+    }
+    &.hci-r-binding:before {
+        content: '\e991';
+    }
+    &.hci-python-binding:before {
+        content: '\e98e';
+    }
+    &.hci-csv-binding:before {
+        content: '\e933';
+    }
+    &.hci-regen-f-bind:before {
+        content: '\e999';
+    }
+    &.hci-val-schema:before {
+        content: '\e9c1';
+    }
+    &.hci-regen-sel-bind:before {
+        content: '\e99a';
+    }
+    &.hci-val-sel-schema:before {
+        content: '\e9c2';
+    }
+    &.hci-extensions:before {
+        content: '\e94e';
+    }
+    &.hci-connecting:before {
+        content: '\e92f';
+    }
+    &.hci-disconnected:before {
+        content: '\e93b';
+    }
+    &.hci-disconnecting:before {
+        content: '\e93c';
+    }
+    &.hci-connected:before {
+        content: '\e92e';
+    }
+    &.hci-data-mart:before {
+        content: '\e936';
+    }
+    &.hci-new-SM:before {
+        content: '\e97c';
+    }
+    &.hci-field:before {
+        content: '\e903';
+    }
+    &.hci-indexes:before {
+        content: '\e96b';
+    }
+    &.hci-columns:before {
+        content: '\e92b';
+    }
+    &.hci-details:before {
+        content: '\e93a';
+    }
+    &.hci-attributes:before {
+        content: '\e908';
+    }
+    &.hci-summary-metric:before {
+        content: '\e9b8';
+    }
+    &.hci-subject-area:before {
+        content: '\e9b6';
+    }
+    &.hci-entity:before {
+        content: '\e94d';
+    }
+    &.hci-results:before {
+        content: '\e99d';
+    }
+    &.hci-npe:before {
+        content: '\e97e';
+    }
+    &.hci-core-entity:before {
+        content: '\e931';
+    }
+    &.hci-data-ent-ent:before {
+        content: '\e934';
+    }
+    &.hci-overriding:before {
+        content: '\e981';
+    }
+    &.hci-override-b:before {
+        content: '\e980';
+    }
+    &.hci-entry-w-d:before {
+        content: '\e944';
+    }
+    &.hci-view-d-entity:before {
+        content: '\e9c4';
+    }
+    &.hci-regen-ent:before {
+        content: '\e998';
+    }
+    &.hci-select-ent:before {
+        content: '\e9a9';
+    }
+    &.hci-insert-temp:before {
+        content: '\e96d';
+    }
+    &.hci-model:before {
+        content: '\e978';
+    }
+    &.hci-er-diagram:before {
+        content: '\e946';
+    }
+    &.hci-report:before {
+        content: '\e99b';
+    }
+    &.hci-metrics:before {
+        content: '\e977';
+    }
+    &.hci-chart-area:before {
+        content: '\e91a';
+    }
+    &.hci-chart-bar:before {
+        content: '\e91b';
+    }
+    &.hci-chart-line:before {
+        content: '\e91c';
+    }
+    &.hci-chart-pie:before {
+        content: '\e91d';
+    }
+    &.hci-database:before {
+        content: '\e938';
+    }
+    &.hci-load-db:before {
+        content: '\e973';
+    }
+    &.hci-data-steward:before {
+        content: '\e937';
+    }
+    &.hci-query:before {
+        content: '\e98f';
+    }
+    &.hci-ETL:before {
+        content: '\e948';
+    }
+    &.hci-data-flow:before {
+        content: '\e935';
+    }
+    &.hci-active:before {
+        content: '\e900';
+    }
+    &.hci-in-dev:before {
+        content: '\e969';
+    }
+    &.hci-inactive:before {
+        content: '\e96a';
+    }
+    &.hci-ready-delete:before {
+        content: '\e992';
+    }
+    &.hci-ready-review:before {
+        content: '\e993';
+    }
+    &.hci-failure:before {
+        content: '\e950';
+    }
+    &.hci-warning:before {
+        content: '\e9c8';
+    }
+    &.hci-skipped:before {
+        content: '\e9ac';
+    }
+    &.hci-canceled:before {
+        content: '\e916';
+    }
+    &.hci-success:before {
+        content: '\e9b7';
+    }
+    &.hci-waiting:before {
+        content: '\e9c6';
+    }
+    &.hci-processing:before {
+        content: '\e98d';
+    }
+    &.hci-dispatched:before {
+        content: '\e93d';
+    }
+    &.hci-queued:before {
+        content: '\e990';
+    }
+    &.hci-scheduled:before {
+        content: '\e9a6';
+    }
+    &.hci-staged:before {
+        content: '\e9b2';
+    }
+    &.hci-help:before {
+        content: '\e964';
+    }
+    &.hci-info:before {
+        content: '\e96c';
+    }
+    &.hci-app-switcher:before {
+        content: '\e901';
+    }
+    &.hci-filters:before {
+        content: '\e906';
+    }
+    &.hci-calculate-all:before {
+        content: '\e913';
+    }
+    &.hci-calculate:before {
+        content: '\e914';
+    }
+    &.hci-sign-out:before {
+        content: '\e9ab';
+    }
+    &.hci-scratch-pad:before {
+        content: '\e9a7';
+    }
+    &.hci-archive:before {
+        content: '\e905';
+    }
+    &.hci-expand:before {
+        content: '\e92a';
+    }
+    &.hci-collapse:before {
+        content: '\e94b';
+    }
+    &.hci-expand-multiple:before {
+        content: '\e94a';
+    }
+    &.hci-collapse-multiple:before {
+        content: '\e929';
+    }
+    &.hci-delete:before {
+        content: '\e939';
+    }
+    &.hci-grip:before {
+        content: '\e95f';
+    }
+    &.hci-resize-grip:before {
+        content: '\e99c';
+    }
+    &.hci-ellipses:before {
+        content: '\e942';
+    }
+    &.hci-export:before {
+        content: '\e94c';
+    }
+    &.hci-import:before {
+        content: '\e968';
+    }
+    &.hci-find-replace:before {
+        content: '\e953';
+    }
+    &.hci-spell-check:before {
+        content: '\e9b0';
+    }
+    &.hci-global-r:before {
+        content: '\e959';
+    }
+    &.hci-global-rw:before {
+        content: '\e95a';
+    }
+    &.hci-global-w:before {
+        content: '\e95b';
+    }
+    &.hci-web-link:before {
+        content: '\e972';
+    }
+    &.hci-broken-link:before {
+        content: '\e911';
+    }
+    &.hci-copy:before {
+        content: '\e930';
+    }
+    &.hci-folder:before {
+        content: '\e961';
+    }
+    &.hci-folder-open:before {
+        content: '\e97f';
+    }
+    &.hci-save-fail:before {
+        content: '\e9a2';
+    }
+    &.hci-save-success:before {
+        content: '\e9a3';
+    }
+    &.hci-save:before {
+        content: '\e9a4';
+    }
+    &.hci-sort-ascend:before {
+        content: '\e9ad';
+    }
+    &.hci-sort-descend:before {
+        content: '\e9ae';
+    }
+    &.hci-sort:before {
+        content: '\e9af';
+    }
+    &.hci-text-entry:before {
+        content: '\e9bc';
+    }
+    &.hci-comment:before {
+        content: '\e92c';
+    }
+    &.hci-uncomment:before {
+        content: '\e9be';
+    }
+    &.hci-ungroup:before {
+        content: '\e9c0';
+    }
+    &.hci-ambulance:before {
+        content: '\e902';
+    }
+    &.hci-apple:before {
+        content: '\e904';
+    }
+    &.hci-barrier:before {
+        content: '\e909';
+    }
+    &.hci-bone:before {
+        content: '\e90e';
+    }
+    &.hci-brain:before {
+        content: '\e90f';
+    }
+    &.hci-briefcase-medical:before {
+        content: '\e910';
+    }
+    &.hci-change-feed:before {
+        content: '\e919';
+    }
+    &.hci-clipboard-medical:before {
+        content: '\e922';
+    }
+    &.hci-clipboard-pulse:before {
+        content: '\e923';
+    }
+    &.hci-task:before {
+        content: '\e9bb';
+        color: #555;
+    }
+    &.hci-assign-task:before {
+        content: '\e90a';
+    }
+    &.hci-code:before {
+        content: '\e928';
+    }
+    &.hci-crown:before {
+        content: '\e932';
+    }
+    &.hci-education:before {
+        content: '\e941';
+    }
+    &.hci-empty:before {
+        content: '\e943';
+    }
+    &.hci-error-hexagon:before {
+        content: '\e947';
+    }
+    &.hci-gauge:before {
+        content: '\e955';
+    }
+    &.hci-genome:before {
+        content: '\e957';
+    }
+    &.hci-glasses:before {
+        content: '\e958';
+    }
+    &.hci-globe:before {
+        content: '\e95c';
+    }
+    &.hci-goal:before {
+        content: '\e95d';
+    }
+    &.hci-grin:before {
+        content: '\e95e';
+    }
+    &.hci-handshake:before {
+        content: '\e962';
+    }
+    &.hci-hospital-tall:before {
+        content: '\e966';
+    }
+    &.hci-hospital-wide:before {
+        content: '\e967';
+    }
+    &.hci-lab:before {
+        content: '\e96e';
+    }
+    &.hci-laptop:before {
+        content: '\e96f';
+    }
+    &.hci-lock:before {
+        content: '\e974';
+    }
+    &.hci-medical:before {
+        content: '\e976';
+    }
+    &.hci-money-bill:before {
+        content: '\e979';
+    }
+    &.hci-patient:before {
+        content: '\e982';
+    }
+    &.hci-doctor:before {
+        content: '\e93e';
+    }
+    &.hci-pill:before {
+        content: '\e985';
+    }
+    &.hci-plant:before {
+        content: '\e986';
+    }
+    &.hci-prescription:before {
+        content: '\e989';
+    }
+    &.hci-problem:before {
+        content: '\e98b';
+    }
+    &.hci-procedure:before {
+        content: '\e98c';
+    }
+    &.hci-reference:before {
+        content: '\e995';
+    }
+    &.hci-share-feedback:before {
+        content: '\e9aa';
+    }
+    &.hci-stethoscope:before {
+        content: '\e9b5';
+    }
+    &.hci-syringe:before {
+        content: '\e9ba';
+    }
+    &.hci-trophy:before {
+        content: '\e9bd';
+    }
+    &.hci-vial:before {
+        content: '\e9c3';
+    }
+    &.hci-vitals:before {
+        content: '\e9c5';
+    }
+}
