@@ -29,6 +29,7 @@
         "precopy-assets": "npm run docs",
         "copy-assets": "node scripts/guide-copy-assets.js",
         "commitmsg": "commitlint -e $GIT_PARAMS",
+        "precommit": "npm run release-mode && git add tsconfig.json",
         "cm": "git-cz",
         "semantic-release": "semantic-release",
         "prettier": "prettier --write \"**/*.{ts,js,scss,css,md,json}\"",
@@ -121,11 +122,6 @@
     "config": {
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
-        }
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm run release-mode && git add tsconfig.json"
         }
     }
 }
