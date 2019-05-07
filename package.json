@@ -12,7 +12,7 @@
     },
     "scripts": {
         "ng": "ng",
-        "start": "ng serve",
+        "start": "npm run dev-mode && ng serve -o",
         "docs": "ts-node scripts/docs.ts && node scripts/generate-usage-docs.js",
         "test": "ng test cashmere",
         "test:unit": "ng test cashmere --watch=false --code-coverage --no-progress",
@@ -24,14 +24,16 @@
         "build:user": "ng build user-guide",
         "prebuild:examples": "ts-node scripts/build-examples.ts",
         "build:examples": "ng build cashmere-examples --prod",
-        "build": "npm run build:lib && npm run build:examples && npm run build:user",
+        "build": "npm run release-mode && npm run build:lib && npm run build:examples && npm run build:user",
         "postbuild": "npm run copy-assets",
         "precopy-assets": "npm run docs",
         "copy-assets": "node scripts/guide-copy-assets.js",
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "cm": "git-cz",
         "semantic-release": "semantic-release",
-        "prettier": "prettier --write \"**/*.{ts,js,scss,css,md,json}\""
+        "prettier": "prettier --write \"**/*.{ts,js,scss,css,md,json}\"",
+        "release-mode": "node scripts/release-mode",
+        "dev-mode": "node scripts/dev-mode"
     },
     "dependencies": {
         "@angular/animations": "6.1.7",
@@ -119,6 +121,11 @@
     "config": {
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run release-mode && git add tsconfig.json"
         }
     }
 }
