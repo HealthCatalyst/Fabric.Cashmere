@@ -15,8 +15,29 @@ cd $(dirname $0)/../dist/cashmere
 # Make it possible to install this version using `npm i -S @healthcatalyst/cashmere@next`
 npm config set tag next
 
-# Set version to timestamped beta version
-npm version 0.0.0-beta.$(date +"%Y%m%d%H%M%S") --git-tag-version false
+# get current published version
+currentVersion=$(npm info @healthcatalyst/cashmere@latest version)
+
+# break down the version number into its components
+regex="([0-9]+).([0-9]+).([0-9]+)"
+[[ $currentVersion =~ $regex ]]
+major="${BASH_REMATCH[1]}"
+minor="${BASH_REMATCH[2]}"
+patch="${BASH_REMATCH[3]}"
+
+# increment the patch portion
+patch=$((patch + 1))
+
+# assemble the version number
+version="${major}.${minor}.${patch}"
+
+# tag it with dev and a timestamp
+fullVersion=$version-dev.$(date +"%Y%m%d%H%M%S")
+
+echo Publishing $fullVersion
+
+# Set version to timestamped dev version
+npm version $fullVersion --git-tag-version false
 
 # Publish the package
 npm publish
