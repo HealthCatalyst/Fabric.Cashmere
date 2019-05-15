@@ -1,0 +1,15 @@
+@import "../../../../../styles/styles.scss";
+
+ul {
+  li {
+    padding: 10px !important;
+    margin: 10px 15px !important;
+    cursor: pointer;
+    color: $black;
+  }
+  
+  li.active {
+    background-color: $blue;
+    color: $white;
+  }
+}
