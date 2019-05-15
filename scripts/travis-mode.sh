@@ -15,3 +15,7 @@ is_build() {
 is_publish() {
     [[ "${PHASE}" = publish ]]
 }
+
+is_publish_dev() {
+    [[ "${PHASE}" = publishdev ]]
+}

@@ -12,6 +12,9 @@ npm run build
 # Go to Cashmere build output directory
 cd $(dirname $0)/../dist/cashmere
 
+# see https://stackoverflow.com/a/8935401/1396477
+hash -r
+
 # Make it possible to install this version using `npm i -S @healthcatalyst/cashmere@next`
 npm config set tag next
 
@@ -38,6 +41,9 @@ echo Publishing $fullVersion
 
 # Set version to timestamped dev version
 npm version $fullVersion --git-tag-version false
+
+# Authorize the publish
+echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
 
 # Publish the package
 npm publish
