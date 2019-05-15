@@ -42,5 +42,8 @@ echo Publishing $fullVersion
 # Set version to timestamped dev version
 npm version $fullVersion --git-tag-version false
 
+# Authorize the publish
+echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+
 # Publish the package
-../../node_modules/.bin/npm publish
+npm publish
