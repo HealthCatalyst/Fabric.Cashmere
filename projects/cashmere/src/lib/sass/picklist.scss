@@ -41,13 +41,13 @@ $pane-header-height: 30px;
     white-space: nowrap;
 }
 
-@mixin hc-picklist-pane() {
+@mixin hc-picklist-pane-outer() {
     display: block;
     flex: 1 1 auto;
     height: calc(100% - #{$pane-header-height});
 }
 
-@mixin hc-picklist-pane-hide() {
+@mixin hc-picklist-pane-outer-hide() {
     display: none;
 }
 

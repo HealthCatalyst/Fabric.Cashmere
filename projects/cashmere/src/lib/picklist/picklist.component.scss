@@ -13,9 +13,9 @@
 
     .pane-tabs a { @include hc-picklist-pane-tab-link(); }
 
-    hc-picklist-pane { @include hc-picklist-pane(); }
+    hc-picklist-pane { @include hc-picklist-pane-outer(); }
 
-    hc-picklist-pane.hide { @include hc-picklist-pane-hide(); }
+    hc-picklist-pane.hide { @include hc-picklist-pane-outer-hide(); }
 
     .move-btns-wrap { @include hc-picklist-move-btns-wrap(); }
 
