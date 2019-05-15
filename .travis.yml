@@ -30,7 +30,7 @@ jobs:
         local-dir: dist/user-guide
         on:
           branch: master
-    - stage: Publish Dev
+    - stage: PublishDev
       env: "PHASE=publishdev"
       on:
         branch: dev
