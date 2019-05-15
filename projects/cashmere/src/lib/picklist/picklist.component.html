@@ -1,8 +1,8 @@
 <div class="hc-picklist">
-    <div class="pane">
+    <div class="pane-wrap">
         <div class="pane-header">
             <h2 *ngIf="settings.showHeaderText">{{settings.leftHeaderText}}</h2>
-            <div *ngIf="settings.useValuesets" class="hc-tab-bar-horizontal">
+            <div *ngIf="settings.useValuesets" class="pane-tabs hc-tab-bar-horizontal">
                 <a title="Search for Value Sets"
                         (click)="setActiveValueType('valueSets')"
                         class="hc-tab-horizontal"
@@ -19,7 +19,7 @@
         </hc-picklist-pane>
     </div>
 
-    <div class="move-btns">
+    <div class="move-btns-wrap">
         <button hc-button color="primary-alt" type="button" name="addBtn"
                 (click)="moveSelectedItems(availableList);"
                 [disabled]="_leftToRightMoveBtnIsDisabled">
@@ -32,7 +32,7 @@
         </button>
     </div>
 
-    <div class="pane">
+    <div class="pane-wrap">
         <div class="pane-header">
             <h2 *ngIf="settings.showHeaderText">{{settings.rightHeaderText}}</h2>
         </div>

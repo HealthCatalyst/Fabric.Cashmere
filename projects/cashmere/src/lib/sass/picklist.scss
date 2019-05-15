@@ -1,0 +1,80 @@
+@import '../sass/colors';
+$pane-header-height: 30px;
+
+@mixin hc-picklist() {
+    align-items: stretch;
+    display: flex;
+    flex-flow: row;
+    height: 100%;
+    justify-content: space-between;
+    min-width: 650px;
+    overflow: hidden;
+}
+
+@mixin hc-picklist-pane-wrap() {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+@mixin hc-picklist-pane-header() {
+    display: flex;
+    flex: 0 0 $pane-header-height;
+    justify-content: space-between;
+}
+
+@mixin hc-picklist-pane-tabs() {
+    border-bottom: none;
+    flex: 0 0 auto;
+}
+
+@mixin hc-picklist-pane-tab-link() {
+    font-size: 13px;
+}
+
+@mixin hc-picklist-pane-header-h2() {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 3px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin hc-picklist-pane() {
+    display: block;
+    flex: 1 1 auto;
+    height: calc(100% - #{$pane-header-height});
+}
+
+@mixin hc-picklist-pane-hide() {
+    display: none;
+}
+
+@mixin hc-picklist-move-btns-wrap() {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding-top: 100px;
+
+    // prevents a slight jiggle when animating carets on the valueset options
+    transform: translate3d(0, 0, 0);
+    transform-style: preserve-3d;
+}
+
+@mixin hc-picklist-move-btn() {
+    height: 60px;
+    margin-top: 12px;
+    min-width: 0;
+    padding: 0;
+    width: 30px;
+}
+
+@mixin hc-picklist-move-btn-disabled() {
+    background-color: $gray-300;
+    border-color: $gray-300;
+}
+
+@mixin hc-picklist-move-btn-icon() {
+    color: $white;
+}
