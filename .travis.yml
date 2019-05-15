@@ -13,7 +13,8 @@ stages:
   - name: Publish
     if: (NOT type IN (pull_request)) AND (branch = master)
   - name: PublishDev
-    if: (NOT type IN (pull_request)) AND (branch = dev)
+    if: branch = dev
+    # if: (NOT type IN (pull_request)) AND (branch = dev)
 
 jobs:
   include:
