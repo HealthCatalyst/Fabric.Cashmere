@@ -6,9 +6,6 @@ set -e
 # change to project root
 cd $(dirname $0)/..
 
-# restore NPM dependencies
-npm ci
-
 # Build project
 npm run build
 

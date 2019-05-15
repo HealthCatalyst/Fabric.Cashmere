@@ -14,7 +14,6 @@ stages:
     if: (NOT type IN (pull_request)) AND (branch = master)
   - name: PublishDev
     if: branch = dev
-    # if: (NOT type IN (pull_request)) AND (branch = dev)
 
 jobs:
   include:
@@ -31,13 +30,6 @@ jobs:
         local-dir: dist/user-guide
         on:
           branch: master
-    - stage: PublishDev
-      env: "PHASE=publishdev"
-      deploy:
-        provider: script
-        script: bash scripts/publish-next.sh
-        on:
-          branch: dev
 
 before_install:
   - dpkg --compare-versions `npm -v` ge 5.8 || npm i -g npm@^5.8
