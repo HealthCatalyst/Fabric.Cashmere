@@ -15,11 +15,11 @@ cd $(dirname $0)/../dist/cashmere
 # see https://stackoverflow.com/a/8935401/1396477
 hash -r
 
-# Make it possible to install this version using `npm i -S @healthcatalyst/cashmere@next`
+# Make it possible to install this version using `npm i -S @wcf-insurance/cashmere@next`
 npm config set tag next
 
 # get current published version
-currentVersion=$(npm info @healthcatalyst/cashmere@latest version)
+currentVersion=$(npm info @wcf-insurance/cashmere@latest version)
 
 # break down the version number into its components
 regex="([0-9]+).([0-9]+).([0-9]+)"

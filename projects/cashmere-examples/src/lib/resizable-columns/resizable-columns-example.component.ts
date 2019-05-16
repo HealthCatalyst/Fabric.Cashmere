@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CellResizeEvent} from '@healthcatalyst/cashmere';
+import {CellResizeEvent} from '@wcf-insurance/cashmere';
 
 export interface PeriodicElement {
     name: string;
