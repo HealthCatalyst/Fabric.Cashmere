@@ -1,12 +1,14 @@
-import {Component, EventEmitter, ElementRef, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, ElementRef, ViewContainerRef, ComponentRef, ChangeDetectorRef} from '@angular/core';
 import {trigger, state, style, transition, animate, AnimationEvent} from '@angular/animations';
+import {Portal, CdkPortalOutletAttachedRef} from '@angular/cdk/portal';
+import {BehaviorSubject} from 'rxjs';
 
 const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
 
 @Component({
     selector: 'hc-toaster',
-    templateUrl: './hc-toast.html',
-    styleUrls: ['./hc-toast.scss'],
+    templateUrl: './hc-toast.component.html',
+    styleUrls: ['./hc-toast.component.scss'],
     animations: [
         trigger('fade', [
             state('void', style({transform: 'scale(0.9)', opacity: 0})),
@@ -25,9 +27,10 @@ export class HcToastComponent {
     _animationStateChanged = new EventEmitter<AnimationEvent>();
     _closeClick = new EventEmitter<MouseEvent>();
     _canDismiss: boolean = false;
-    _toastContent: TemplateRef<any>;
+    _toastPortal: Portal<any>;
+    readonly _componentInstance = new BehaviorSubject<any>(null);
 
-    constructor(public _el: ElementRef) {}
+    constructor(public _el: ElementRef, public _viewContainerRef: ViewContainerRef, public _changeRef: ChangeDetectorRef) {}
 
     _onAnimationStart(event: AnimationEvent) {
         this._animationStateChanged.emit(event);
@@ -43,5 +46,11 @@ export class HcToastComponent {
 
     _dismissClick(event: MouseEvent) {
         this._closeClick.emit(event);
+    }
+
+    _customComponentAttached(ref: CdkPortalOutletAttachedRef) {
+        if (ref instanceof ComponentRef) {
+            this._componentInstance.next(ref.instance);
+        }
     }
 }

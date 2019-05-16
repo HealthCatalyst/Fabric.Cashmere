@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: center;
 
-    img {
+    hc-icon {
         height: 30px;
         margin-bottom: 10px;
         color: #333;
@@ -31,6 +31,12 @@
             font-size: 12px;
             padding-top: 7px;
             text-align: center;
+        }
+
+        &.unicode {
+            font-weight: 400;
+            color: $gray-400;
+            font-size: 12px;
         }
     }
 }

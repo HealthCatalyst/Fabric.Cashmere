@@ -6,6 +6,7 @@ import {DateRange} from '../model/model';
 import {D} from '../../datepicker/datetime/date-formats';
 import {CalendarWrapperComponent} from '../calendar-wrapper/calendar-wrapper.component';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 // ** Date range wrapper component */
 @Component({
@@ -88,5 +89,35 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
 
     _setValidity() {
         this._disabled = !this._toDate || !this._fromDate;
+    }
+
+    get _fromMaxDate(): Observable<Date | undefined> {
+        return this.options$.pipe(
+            map(options => {
+                if (!options || !options.fromMinMax || !options.fromMinMax.toDate) {
+                    return this._toDate;
+                }
+                if (!this._toDate) {
+                    return options.fromMinMax.toDate;
+                }
+
+                return options.fromMinMax.toDate > this._toDate ? this._toDate : options.fromMinMax.toDate;
+            })
+        );
+    }
+
+    get _ToMinDate(): Observable<Date | undefined> {
+        return this.options$.pipe(
+            map(options => {
+                if (!options || !options.toMinMax || !options.toMinMax.fromDate) {
+                    return this._fromDate;
+                }
+                if (!this._fromDate) {
+                    return options.toMinMax.fromDate;
+                }
+
+                return options.toMinMax.fromDate < this._fromDate ? this._fromDate : options.toMinMax.fromDate;
+            })
+        );
     }
 }

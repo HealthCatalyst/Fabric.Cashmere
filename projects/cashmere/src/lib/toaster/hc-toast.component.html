@@ -1,0 +1,22 @@
+<div class="hc-toast hc-toast-{{_styleType}}"
+    [@fade]="_animationState"
+    (@fade.start)="_onAnimationStart($event)"
+    (@fade.done)="_onAnimationDone($event)"
+    (click)="_dismissClick($event)"
+    [ngClass]="{'hc-toast-dismiss': _canDismiss}">
+    <div *ngIf="_styleType === 'custom'">
+        <ng-template (attached)="_customComponentAttached($event)" [cdkPortalOutlet]="_toastPortal"></ng-template>
+    </div>
+    <div *ngIf="_styleType !== 'custom'" class="hc-toast-content">
+        <div class="hc-toast-icon-container">
+            <div class="hc-toast-icon"></div>
+        </div>
+        <div>
+            <div class="hc-toast-header">{{_headerText}}</div>
+            <div class="hc-toast-body">{{_bodyText}}</div>
+        </div>
+        <div *ngIf="_canDismiss" class="hc-toast-close">
+            <div class="hc-toast-close-icon"></div>
+        </div>
+    </div>
+</div>

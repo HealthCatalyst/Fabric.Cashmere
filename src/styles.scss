@@ -4,6 +4,9 @@ $fa-font-path: '../node_modules/font-awesome/fonts';
 $FontPathOpenSans: '../node_modules/npm-font-open-sans/fonts';
 @import '../node_modules/npm-font-open-sans/open-sans';
 
+$hc-icons-font-path: '../dist/cashmere/hcicons';
+@import 'hcicons/hcicons';
+
 @import 'scss/cashmere';
 
 html,
@@ -237,4 +240,8 @@ table {
         @include fontSize(14px);
         font-family: Consolas, Menlo, 'Ubuntu Mono', monospace;
     }
+}
+
+.overflow-visible > .hc-horizontal-tab-container > .hc-tab-content-horizontal {
+    overflow: visible !important;
 }

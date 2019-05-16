@@ -16,13 +16,13 @@ We would love for you to contribute to Cashmere and be part of the community mak
 
 1.  Install the latest version of `node` with at _least_ version 8.9.
 2.  Fork the `@wcf-insurance/cashmere` repo.
-3.  Run `npm install -g commitizen`, which helps you with writing angular style commit messages.
-4.  Clone your fork.
+3.  Clone your fork.
     Recommendation: name your git remotes `upstream` for `@wcf-insurance/cashmere`
-5.  From the root of the project, run `npm install`.
-6.  Running `npm run build` will build the entire project
-7.  `npm start` will serve the default project which is `user-guide`
-    :::
+4.  From the root of the project, run `npm install`.
+5.  Running `npm run build` will build the entire project
+6.  `npm start` will serve the default project which is `user-guide` (the documentation site)
+
+:::
 
 :::
 
@@ -30,10 +30,7 @@ We would love for you to contribute to Cashmere and be part of the community mak
 
 ### While Developing
 
-1.  First, run `npm run build`. (For windows users, sometimes you'll need to manually clear out the `/dist` folder first).
-2.  Run `ng build cashmere --watch`. This will build the cashmere library, and fire off incremental builds when changes to library files are made.
-3.  In a separate console, run `npx ng serve`. This will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the Cashmere library.
-4.  If you make changes to example files in `/projects/cashmere-examples/src/lib/` while developing, you'll need to manually rebuild these with `npm run build:examples`.
+1.  Just run `npm start`. This will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the Cashmere library.
 
 ### PR's
 
@@ -62,9 +59,10 @@ Before you submit your pull request (PR), consider the following guidelines:
 
 We have very precise rules over how our git commit messages can be formatted. This leads to **more
 readable messages** that are easy to follow when looking through the **project history**. But also,
-we use the git commit messages to **generate the Angular Material change log**.
+we use the git commit messages to **generate the Cashmere change log** and **determine the next semver
+version** of the package.
 
-(To help with creating commit messages you can use the tool `commitizen` and run `npx git-cz` when you want to commit)
+(To help with creating commit messages you should use `commitizen` by running `npm run cm` when you want to commit)
 
 ### Commit Message Format
 

@@ -11,6 +11,7 @@ console.log('resolved Lib: ' + resolvePath(libOutDir));
 
 const assets = [
     [libSrcDir + '/src/lib/sass/', libOutDir + '/scss'],
+    [libSrcDir + '/src/lib/icon-font/', libOutDir + '/hcicons'],
     [libSrcDir + '/README.md', libOutDir + '/README.md'],
     ['../LICENSE', libOutDir + '/LICENSE'],
     ['../CashmereBanner.png', libOutDir + '/CashmereBanner.png']

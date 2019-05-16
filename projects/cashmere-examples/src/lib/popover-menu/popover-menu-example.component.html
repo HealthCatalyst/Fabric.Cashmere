@@ -1,0 +1,31 @@
+<button hc-button buttonStyle="secondary" [hcPop]="menu">Menu</button>
+
+<hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false">
+    <div class="hc-menu-panel">
+        <button hcButtonItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-snowflake-o"></hc-icon>
+            <span hcMenuText>Snowflake</span>
+            <span hcMenuSubText>Ctrl + S</span>
+        </button>
+        <button hcButtonItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            <span hcMenuText>Add a new one</span>
+        </button>
+        <div hcButtonItem hcDivider></div>
+        <button hcButtonItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-camera-retro"></hc-icon>
+            <span hcMenuText>Hip Photo</span>
+            <span hcMenuSubText>Ctrl + P</span>
+        </button>
+        <button hcButtonItem disabled>
+            <span hcMenuIcon></span>
+            <span hcMenuText>Menu item 3</span>
+            <span hcMenuSubText>I'm disabled</span>
+        </button>
+    </div>
+</hc-pop>
+
+<p class="hc-font-sm">
+    Note: Must import Cashmere's <code>ButtonModule</code> to use the
+    <code>hcButtonItem</code> & <code>hcMenu*</code> directives.
+</p>
