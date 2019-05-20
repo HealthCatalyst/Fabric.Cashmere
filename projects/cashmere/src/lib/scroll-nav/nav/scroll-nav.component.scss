@@ -1,0 +1,31 @@
+@import '../../sass/colors';
+
+.hc-scroll-nav-links-container {
+    margin-right: 30px;
+
+    .hc-scroll-nav-link {
+        padding: 10px 15px;
+        color: $offblack;
+        font-weight: 500;
+        background-color: $white;
+        cursor: pointer;
+
+        &:hover {
+            background-color: transparentize($slate-gray-200, 0.75);
+        }
+
+        &:active {
+            background-color: transparentize($slate-gray-200, 0.5);
+        }
+
+        &.hc-scroll-nav-active {
+            background-color: $blue;
+            color: $white;
+            font-weight: 500;
+        }
+    }
+
+    ul {
+        list-style: none;
+    }
+}

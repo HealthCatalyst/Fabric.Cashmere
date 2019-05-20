@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    height: 400px;
+}
+
+hc-scroll-nav {
+    flex: 0 0 250px;
+}
+
+hc-scroll-nav-content {
+    flex: 1 1 auto;
+}
