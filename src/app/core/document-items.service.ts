@@ -100,6 +100,12 @@ const docs: DocItem[] = [
         usageDoc: true
     },
     {
+        id: 'scroll-nav',
+        name: 'ScrollNav',
+        category: 'nav',
+        examples: ['scroll-nav']
+    },
+    {
         id: 'select',
         name: 'Select',
         category: 'forms',
