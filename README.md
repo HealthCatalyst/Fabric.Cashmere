@@ -22,7 +22,7 @@ An Angular component library that makes any task feel luxurious.
 ## Running the Demo Application
 
 - Clone the repository `git clone https://github.com/HealthCatalyst/Fabric.Cashmere.git`
-- Run `cd Fabric.Cashmere && npm install && npm run build && npx ng serve user-guide`
+- Run `cd Fabric.Cashmere && npm install && npm start`
 - View the demo application at `http://localhost:4200`
 
 ## Sponsors
