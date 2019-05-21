@@ -16,4 +16,6 @@ elif is_build; then
     npm run build
 elif is_publish; then
     ./scripts/publish.sh
+elif is_publish_dev; then
+    ./scripts/publish-next.sh
 fi
