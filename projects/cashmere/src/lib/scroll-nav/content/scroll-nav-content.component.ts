@@ -102,7 +102,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, OnDestroy {
     private setActiveClass(scrollTarget: string): void {
         if (this.sectionInView !== scrollTarget) {
             this.sectionInView = scrollTarget;
-            this.nav.setActiveClassById(scrollTarget);
+            this.nav._setActiveClassById(scrollTarget);
             this.newSectionInView.next(scrollTarget);
         }
     }

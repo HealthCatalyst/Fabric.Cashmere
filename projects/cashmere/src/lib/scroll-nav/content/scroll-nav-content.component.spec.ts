@@ -1,11 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import {Component} from '@angular/core';
+import {By} from '@angular/platform-browser';
 
 import {HcScrollNavComponent} from '../nav/scroll-nav.component';
 import {HcScrollNavContentComponent} from './scroll-nav-content.component';
 import {ScrollNavModule} from '../scroll-nav.module';
-import { take } from 'rxjs/operators';
+import {take} from 'rxjs/operators';
 
 @Component({
     template: `
@@ -77,8 +77,8 @@ describe('HcScrollNavContentComponent', () => {
     expect(testApp.contentComponent._scrollTargets[2].classList.contains("hc-scroll-nav-target")).toBeTruthy();
   });
 
-  it("should call setActiveClassById in nav when scrolling", () => {
-    let setActiveClassSpy: jasmine.Spy = spyOn(testApp.contentComponent.nav, "setActiveClassById");
+  it("should call _setActiveClassById in nav when scrolling", () => {
+    let setActiveClassSpy: jasmine.Spy = spyOn(testApp.contentComponent.nav, "_setActiveClassById");
 
     testApp.contentComponent._cdkScrollableElement.elementScrolled().pipe(take(1)).subscribe(() => {
       expect(setActiveClassSpy).toHaveBeenCalled();

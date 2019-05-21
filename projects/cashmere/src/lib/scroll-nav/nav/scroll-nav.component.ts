@@ -26,11 +26,10 @@ export class HcScrollNavComponent implements AfterViewInit {
         });
     }
 
-    public setActiveClassById(id: string): void {
+    public _setActiveClassById(id: string): void {
         const link = this._links.find(e => e.getAttribute('hcScrollLink') === id);
         if (!link) {
-            console.warn(`Failed to mark active class. Could not find the element with the data target for id: ${id}.`);
-            return;
+            throw new Error(`Failed to mark active class. Could not find the element with the data target for id: ${id}.`);
         }
         this.setActiveClass(link);
     }
@@ -50,7 +49,7 @@ export class HcScrollNavComponent implements AfterViewInit {
     private navigateToSection(id: string) {
         const el = document.getElementById(id);
         if (!el) {
-            console.warn(`Failed to navigate. Could not find the element with the id: ${id}.`);
+            throw new Error(`Failed to navigate. Could not find the element with the id: ${id}.`);
         } else {
             el.scrollIntoView();
         }

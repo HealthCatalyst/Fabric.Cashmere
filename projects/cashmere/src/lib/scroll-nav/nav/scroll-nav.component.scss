@@ -1,4 +1,5 @@
 @import '../../sass/colors';
+@import '../../sass/mixins';
 
 .hc-scroll-nav-links-container {
     margin-right: 30px;
@@ -7,6 +8,7 @@
         padding: 10px 15px;
         color: $offblack;
         font-weight: 500;
+        @include fontSize(14px);
         background-color: $white;
         cursor: pointer;
 
