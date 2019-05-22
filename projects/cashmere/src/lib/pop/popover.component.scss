@@ -1,7 +1,12 @@
 @import '~@angular/cdk/_overlay';
 @import '../sass/colors';
+@import '../sass/variables';
 
 $popover-arrow-width: 8px;
+
+// override index for implementation inside a modal: https://github.com/HealthCatalyst/Fabric.Cashmere/issues/867
+$cdk-z-index-overlay-container: $zindex-cdk-overlay;
+$cdk-z-index-overlay: $zindex-cdk-overlay;
 
 // Include overlay styles
 @include cdk-overlay();

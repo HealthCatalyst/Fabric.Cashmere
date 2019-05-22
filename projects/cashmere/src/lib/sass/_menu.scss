@@ -1,4 +1,10 @@
 @import '~@angular/cdk/overlay';
+@import './variables';
+
+// override index for implementation inside a modal: https://github.com/HealthCatalyst/Fabric.Cashmere/issues/867
+$cdk-z-index-overlay-container: $zindex-cdk-overlay;
+$cdk-z-index-overlay: $zindex-cdk-overlay;
+
 @include cdk-overlay();
 
 .hc-menu-panel {
