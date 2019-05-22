@@ -1,0 +1,5 @@
+@import 'variables';
+
+.cdk-overlay-container {
+    z-index: $zindex-cdk-overlay; // override index for implementation inside a modal: https://github.com/HealthCatalyst/Fabric.Cashmere/issues/867
+}
