@@ -76,7 +76,7 @@ at build-time using NodeJS and replace it with `null`.)_
 
 ```Typescript
 import { NavbarModule, AppSwitcherModule, IconModule, PopoverModule, ListModule,
-    SelectModule, APP_SWITCHER_CONFIG, IAppSwitcherConfig } from '@healthcatalyst/cashmere';
+    SelectModule, APP_SWITCHER_CONFIG, IAppSwitcherConfig } from '@wcf-insurance/cashmere';
 
 @NgModule({
     imports: [

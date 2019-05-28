@@ -12,6 +12,8 @@ stages:
   - Build/Test
   - name: Publish
     if: (NOT type IN (pull_request)) AND (branch = master)
+  - name: PublishDev
+    if: branch = dev
 
 jobs:
   include:
@@ -30,6 +32,10 @@ jobs:
         target-branch: master
         on:
           branch: master
+    - stage: PublishDev
+      env: "PHASE=publishdev"
+      on:
+        branch: dev
 
 before_install:
   - dpkg --compare-versions `npm -v` ge 5.8 || npm i -g npm@^5.8

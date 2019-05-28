@@ -1,7 +1,7 @@
 {
     "pkgRoot": "dist/cashmere",
     "tarballDir": "dist",
-    "assets": "healthcatalyst-cashmere-*.tgz",
+    "assets": "wcf-cashmere-*.tgz",
     "verifyConditions": ["@semantic-release/changelog", "@semantic-release/npm", "@semantic-release/git", "@semantic-release/github"],
     "prepare": [
         {

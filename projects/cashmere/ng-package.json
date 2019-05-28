@@ -3,9 +3,6 @@
     "dest": "../../dist/cashmere",
     "deleteDestPath": false,
     "lib": {
-        "entryFile": "src/public_api.ts",
-        "umdModuleIds": {
-            "popper.js": "popper.js"
-        }
+        "entryFile": "src/public_api.ts"
     }
 }

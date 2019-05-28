@@ -6,21 +6,21 @@
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container hcColumnDef="name">
-        <th hc-header-cell *hcHeaderCellDef hc-sort-header arrowPosition="before" style="float: left">Name</th>
+    <ng-container hcColumnDef="name" justify="right">
+        <th hc-header-cell *hcHeaderCellDef hc-sort-header>Right Align</th>
         <td hc-cell *hcCellDef="let element">{{ element.name }}</td>
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container hcColumnDef="weight">
-        <th hc-header-cell *hcHeaderCellDef hc-sort-header arrowPosition="before" class="col-number">Weight</th>
-        <td hc-cell *hcCellDef="let element" class="col-number">{{ element.weight }}</td>
+    <ng-container hcColumnDef="weight" justify="center">
+        <th hc-header-cell *hcHeaderCellDef hc-sort-header>Center Align</th>
+        <td hc-cell *hcCellDef="let element">{{ element.weight }}</td>
     </ng-container>
 
     <!-- Discovered -->
-    <ng-container hcColumnDef="discovered">
-        <th hc-header-cell *hcHeaderCellDef hc-sort-header arrowPosition="before" class="col-number">Discovered</th>
-        <td hc-cell *hcCellDef="let element" class="col-number">{{ element.discovered | date: 'fullDate' }}</td>
+    <ng-container hcColumnDef="discovered" justify="right">
+        <th hc-header-cell *hcHeaderCellDef hc-sort-header arrowPosition="before">Left Indicator</th>
+        <td hc-cell *hcCellDef="let element">{{ element.discovered | date: 'fullDate' }}</td>
     </ng-container>
 
     <!-- Symbol Column -->

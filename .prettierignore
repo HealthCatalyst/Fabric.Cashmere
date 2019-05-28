@@ -4,3 +4,4 @@ cashmere-example.module.ts
 CHANGELOG.md
 /coverage
 dist/
+*.yml

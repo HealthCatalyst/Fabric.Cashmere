@@ -6,13 +6,15 @@
         <h5>Basic Example</h5>
         <p>Add the base class
             <code>.hc-table</code> to an HTML
-            <code>&lt;table&gt;</code> to get the default Catalyst table stylings.</p>
+            <code>&lt;table&gt;</code> to get the default Catalyst table stylings. Set the alignment of a cell
+            using <code>.hc-table-justify-left</code> (default), <code>.hc-table-justify-center</code>, or
+            <code>.hc-table-justify-right</code>. Justify right is typically used for numerical values.</p>
         <table class="hc-table">
             <thead>
                 <tr>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>MRN</th>
+                    <th class="hc-table-justify-right">MRN</th>
                     <th>Birth Date</th>
                     <th>Payor</th>
                 </tr>
@@ -21,28 +23,28 @@
                 <tr>
                     <td>Samuel</td>
                     <td>Walker</td>
-                    <td>Z1223334444</td>
+                    <td class="hc-table-justify-right">Z1223334444</td>
                     <td>Mar 27, 1978</td>
                     <td>MetLife</td>
                 </tr>
                 <tr>
                     <td>Whitney</td>
                     <td>Allen</td>
-                    <td>Z5223335555</td>
+                    <td class="hc-table-justify-right">Z5223335555</td>
                     <td>Jan 14, 1954</td>
                     <td>New York Life</td>
                 </tr>
                 <tr>
                     <td>Kendra</td>
                     <td>Jacobs</td>
-                    <td>Z6223336666</td>
+                    <td class="hc-table-justify-right">Z6223336666</td>
                     <td>Aug 27, 1990</td>
                     <td>Prudential Financial</td>
                 </tr>
                 <tr>
                     <td>Gerald</td>
                     <td>Lynch</td>
-                    <td>Z7223337777</td>
+                    <td class="hc-table-justify-right">Z7223337777</td>
                     <td>Mar 15, 1981</td>
                     <td>MetLife</td>
                 </tr>
@@ -106,7 +108,7 @@
                     <th class="hc-col-sortable hc-active-sort hc-sort-asc">Active Sort (Ascending)</th>
                     <th>Nope</th>
                     <th class="hc-col-sortable hc-active-sort hc-sort-desc">Active Sort (Descending)</th>
-                    <th class="hc-col-sortable-left">Left aligned</th>
+                    <th class="hc-col-sortable-left">Left indicator</th>
                 </tr>
             </thead>
             <tbody>

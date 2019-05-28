@@ -2,8 +2,9 @@ import {NgModule} from '@angular/core';
 import {
     AccordionModule,
     AppSwitcherModule,
-    BreadcrumbsModule,
     BannerModule,
+    BreadcrumbsModule,
+    BusyIndicatorModule,
     ButtonModule,
     CheckboxModule,
     ChipModule,
@@ -20,15 +21,15 @@ import {
     NavbarModule,
     PaginationModule,
     PicklistModule,
-    PopoverModule,
+    PopModule,
     ProgressIndicatorsModule,
     RadioButtonModule,
     SelectModule,
     SidenavModule,
     SortModule,
     SubnavModule,
-    TabsModule,
     TableModule,
+    TabsModule,
     TileModule,
     ToasterModule,
     TypeformSurveyModule,
@@ -42,6 +43,7 @@ import {
         BreadcrumbsModule,
         BannerModule,
         ButtonModule,
+        BusyIndicatorModule,
         CheckboxModule,
         ChipModule,
         DatepickerModule,
@@ -57,7 +59,7 @@ import {
         NavbarModule,
         PaginationModule,
         PicklistModule,
-        PopoverModule,
+        PopModule,
         ProgressIndicatorsModule,
         RadioButtonModule,
         SelectModule,
@@ -72,4 +74,5 @@ import {
         XanthosFileUploadModule
     ]
 })
-export class CashmereModule {}
+export class CashmereModule {
+}

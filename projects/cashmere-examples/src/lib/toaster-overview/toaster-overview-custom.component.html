@@ -1,0 +1,9 @@
+<div [ngStyle]="{'background-color': randomColor}" class="custom-toast-component">
+    <div class="custom-toast-icon">
+        <hc-icon fontSet="fa" [fontIcon]="randomIcon" hcIconLg></hc-icon>
+    </div>
+    <div>
+        <div class="custom-toast-header">Random Number: {{ randomID }}</div>
+        <div class="custom-toast-body">This is a custom toast using a component containing several random values.</div>
+    </div>
+</div>

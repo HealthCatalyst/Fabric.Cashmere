@@ -1,0 +1,16 @@
+@import './colors';
+
+.hc-pop-container {
+    .hc-tooltip {
+        background-color: $offblack;
+        border-radius: 4px;
+        padding: 7px;
+        margin: -1px;
+        color: #fff;
+    }
+    
+    .hc-tooltip + .hc-pop-arrow {
+        background-color: $offblack !important;
+        border-color: transparent !important;
+    }
+}
