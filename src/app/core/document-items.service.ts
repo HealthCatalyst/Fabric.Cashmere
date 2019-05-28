@@ -147,6 +147,12 @@ const docs: DocItem[] = [
         name: 'Xanthos File Upload',
         category: 'forms',
         examples: ['xanthos-file-upload-overview']
+    },
+    {
+        id: 'busy-indicator',
+        name: 'Busy Indicator',
+        category: 'buttons',
+        examples: ['busy-indicator-overview']
     }
 ];
 
