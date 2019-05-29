@@ -1,4 +1,4 @@
-import {Directive, HostBinding, ElementRef, Input} from '@angular/core';
+import {Directive, HostBinding, ElementRef, Input, HostListener} from '@angular/core';
 
 /** Marks the host element as a link within an `hc-scroll-nav`. */
 @Directive({
@@ -11,4 +11,17 @@ export class ScrollNavLinkDirective {
     _hostClass = true;
 
     constructor(public _el: ElementRef) {}
+
+    @HostListener('click') onClick() {
+        this.navigateToSection(this.hcScrollLink);
+    }
+
+    private navigateToSection(id: string) {
+        const el = document.getElementById(id);
+        if (!el) {
+            throw new Error(`Failed to navigate. Could not find the element with the id: ${id}.`);
+        } else {
+            el.scrollIntoView();
+        }
+    }
 }

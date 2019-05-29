@@ -9,7 +9,7 @@
         color: $offblack;
         font-weight: 500;
         @include fontSize(14px);
-        background-color: $white;
+        background-color: transparent;
         cursor: pointer;
 
         &:hover {
