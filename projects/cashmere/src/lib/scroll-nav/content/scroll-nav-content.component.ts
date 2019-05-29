@@ -8,7 +8,8 @@ import {
     EventEmitter,
     Output,
     QueryList,
-    ContentChildren
+    ContentChildren,
+    HostListener
 } from '@angular/core';
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {Subject} from 'rxjs';
@@ -27,7 +28,9 @@ export class HcScrollNavContentComponent implements AfterViewInit, OnDestroy {
     private readonly DEFAULT_BUFFER = 40;
     /** Reference to the scroll nav component. */
     @Input() public nav: HcScrollNavComponent;
-    /** If true, will force the height of the final scroll target area to be the height of the scrollable container. *Defaults to true.* */
+    /** If true, will force the height of the final scroll target area to be the height of the scrollable container.
+     * This helpful if you want the last target in the content area to be able to scroll to the top. You can alternatively
+     * target the last item with css. *Defaults to false. */
     @Input() public makeLastTargetFullHeight = true;
     /** Number in pixels, used to give a little leeway in the shifting of the active nav when scrolling. *Defaults to 40.*
      * If showing just the bottom `x` pixels of the section before, count the next section as active. */
@@ -53,27 +56,34 @@ export class HcScrollNavContentComponent implements AfterViewInit, OnDestroy {
                 .elementScrolled()
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe(() => {
-                    this.onScroll();
+                    this.checkActiveSection();
 
                     if (this.makeLastTargetFullHeight && !this.minHeightForLastTargetSet) {
                         this.insureMinHeightForLastTarget();
                     }
-
                 });
         }
     }
 
-    private insureMinHeightForLastTarget() {
-        const containerHeight = this._cdkScrollableElement.getElementRef().nativeElement.offsetHeight;
-        if (containerHeight && this._scrollTargets.length > 0) {
-            const targetEl = this._scrollTargets[this._scrollTargets.length - 1];
-            targetEl.style.minHeight = `${containerHeight + 50}px`;
+    @HostListener('window:resize') onWindowResize() {
+        if (this.makeLastTargetFullHeight) {
+            this.minHeightForLastTargetSet = false;
         }
-
-        this.minHeightForLastTargetSet = true;
     }
 
-    private onScroll(): void {
+    /** Scroll to top and reset the "automatic full height for the last item" setting. */
+    public refresh() {
+        this.scrollToTop();
+        this.minHeightForLastTargetSet = false;
+    }
+
+    /** Helper function to scroll to the top of the content area. */
+    public scrollToTop() {
+        this._cdkScrollableElement.scrollTo({top: 0});
+    }
+
+    /** Will update the navigation state. */
+    public checkActiveSection() {
         let offset: number = this._cdkScrollableElement.measureScrollOffset('top') + this._scrollTargets[0].offsetTop;
 
         this._scrollTargets.forEach((t, index) => {
@@ -97,6 +107,16 @@ export class HcScrollNavContentComponent implements AfterViewInit, OnDestroy {
                 this.setActiveClass(el.getAttribute('id') || '');
             }
         });
+    }
+
+    private insureMinHeightForLastTarget() {
+        const containerHeight = this._cdkScrollableElement.getElementRef().nativeElement.offsetHeight;
+        if (containerHeight && this._scrollTargets.length > 0) {
+            const targetEl = this._scrollTargets[this._scrollTargets.length - 1];
+            targetEl.style.minHeight = `${containerHeight + 50}px`;
+        }
+
+        this.minHeightForLastTargetSet = true;
     }
 
     private setActiveClass(scrollTarget: string): void {
