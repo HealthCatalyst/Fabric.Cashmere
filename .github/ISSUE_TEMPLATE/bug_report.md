@@ -16,7 +16,7 @@ Steps to reproduce:
 3. 
 4. 
 
-Stackblitz reproduction (you can fork from the Stackblitz link in a component example):
+Stackblitz reproduction (click the "Edit on Stackblitz" link on a component example and fork the template):
 
 **Additional context**
 
