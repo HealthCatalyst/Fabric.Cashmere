@@ -1,21 +1,16 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
+about: Suggest an idea for Cashmere
 ---
 
-**Describe the problem this feature request is solving**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+**Describe your idea**
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+_Tell us what you wish Cashmere could do. The rest of this form is optional._
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+**What problem are you trying to solve?**
 
-** If any, which components will have to change, and how **
-
--   Components changed?
--   Are these breaking changes to public interfaces?
+_Ex. I'm always frustrated when ..._
 
 **Additional context**
-Add any other context or screenshots about the feature request here.
+
+_You can share screenshots, alternative solutions or ideas you've considered, which components would need to change, whether or not this would be a breaking change, or anything else that may be relevant._
