@@ -12,9 +12,6 @@ about: Report a bug or unexpected behavior
 Steps to reproduce:
 
 1. 
-2. 
-3. 
-4. 
 
 Stackblitz reproduction (click the "Edit on Stackblitz" link on a component example and fork the template):
 
