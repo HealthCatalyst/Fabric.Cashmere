@@ -9,7 +9,8 @@ import {
     Output,
     QueryList,
     ContentChildren,
-    HostListener
+    HostListener,
+    AfterViewChecked
 } from '@angular/core';
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {Subject} from 'rxjs';
@@ -24,18 +25,20 @@ import {ScrollNavTargetDirective} from './scroll-nav-target.directive';
     styleUrls: ['scroll-nav-content.component.scss'],
     templateUrl: 'scroll-nav-content.component.html'
 })
-export class HcScrollNavContentComponent implements AfterViewInit, OnDestroy {
+export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
     private readonly DEFAULT_BUFFER = 40;
     /** Reference to the scroll nav component. */
     @Input() public nav: HcScrollNavComponent;
     /** If true, will force the height of the final scroll target area to be the height of the scrollable container.
-     * This helpful if you want the last target in the content area to be able to scroll to the top. You can alternatively
-     * target the last item with css. *Defaults to false. */
+     * This is helpful if you want the last target in the content area to be able to scroll to the top. You can alternatively
+     * target the last item with css. *Defaults to false.* */
     @Input() public makeLastTargetFullHeight = true;
     /** Number in pixels, used to give a little leeway in the shifting of the active nav when scrolling. *Defaults to 40.*
-     * If showing just the bottom `x` pixels of the section before, count the next section as active. */
+     * Example: Left at default, if showing just the bottom 40 pixels of the section before, count the next section as active. */
     @Input() public bufferSpace = this.DEFAULT_BUFFER;
-    /** Fires when a new section is scrolled into view. */
+    /** If true, applies smooth scrolling via css. *Defaults to true.* */
+    @Input() public shouldAnimateScroll = true;
+    /** Fires when a new section is scrolled into view. Broadcasts the id of that section. */
     @Output() public newSectionInView: EventEmitter<string> = new EventEmitter<string>();
     @ViewChild(CdkScrollable) public _cdkScrollableElement: CdkScrollable;
     @ContentChildren(ScrollNavTargetDirective) private targets: QueryList<ScrollNavTargetDirective>;
@@ -57,15 +60,17 @@ export class HcScrollNavContentComponent implements AfterViewInit, OnDestroy {
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe(() => {
                     this.checkActiveSection();
-
-                    if (this.makeLastTargetFullHeight && !this.minHeightForLastTargetSet) {
-                        this.insureMinHeightForLastTarget();
-                    }
                 });
         }
     }
 
-    @HostListener('window:resize') onWindowResize() {
+    public ngAfterViewChecked(): void {
+        if (this.makeLastTargetFullHeight && !this.minHeightForLastTargetSet) {
+            this.insureMinHeightForLastTarget();
+        }
+    }
+
+    @HostListener('window:resize') _onWindowResize() {
         if (this.makeLastTargetFullHeight) {
             this.minHeightForLastTargetSet = false;
         }
@@ -114,9 +119,8 @@ export class HcScrollNavContentComponent implements AfterViewInit, OnDestroy {
         if (containerHeight && this._scrollTargets.length > 0) {
             const targetEl = this._scrollTargets[this._scrollTargets.length - 1];
             targetEl.style.minHeight = `${containerHeight + 50}px`;
+            this.minHeightForLastTargetSet = true;
         }
-
-        this.minHeightForLastTargetSet = true;
     }
 
     private setActiveClass(scrollTarget: string): void {

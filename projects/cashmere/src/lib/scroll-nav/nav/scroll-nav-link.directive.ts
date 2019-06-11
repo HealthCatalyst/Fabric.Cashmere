@@ -12,7 +12,7 @@ export class ScrollNavLinkDirective {
 
     constructor(public _el: ElementRef) {}
 
-    @HostListener('click') onClick() {
+    @HostListener('click') _onClick() {
         this.navigateToSection(this.hcScrollLink);
     }
 
