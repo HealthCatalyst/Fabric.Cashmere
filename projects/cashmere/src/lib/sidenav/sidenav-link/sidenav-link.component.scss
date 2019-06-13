@@ -1,7 +1,7 @@
 @import '../../sass/colors';
 
 a {
-    color: $gray-200;
+    color: $white;
     font-size: 12px;
     display: block;
     width: 100%;
@@ -15,4 +15,8 @@ a {
     hc-icon {
         margin-right: 10px;
     }
+}
+
+.active {
+    background-color: $gray-70;
 }

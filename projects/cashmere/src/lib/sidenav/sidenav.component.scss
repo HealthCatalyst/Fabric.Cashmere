@@ -1,6 +1,7 @@
 @import '../sass/colors';
 .hc-sidenav {
-    background-color: $gray-600;
+    background-color: $gray-90;
+    color: $white;
     height: 100%;
     padding: 0;
     width: 200px;
@@ -11,27 +12,36 @@
 
     .sidenav-brand {
         background-color: $wcf-red;
-    }
-
-    .hc-sidenav-user {
-        background-color: $black;
-    }
-
-    .sidenav-brand {
         text-align: center;
         img {
-            max-height: 75px;
+            max-height: 32px;
+            margin: 8px;
         }
     }
 
     .sidenav-user {
-        background-color: $offblack;
-        color: $gray-100;
+        background-color: $black;
+        color: $white;
         padding: 20px;
         white-space: normal;
         overflow: hidden;
         max-width: 100%;
         text-overflow: ellipsis;
+
+        .user {
+            position: relative;
+            top: -5px;
+        }
+
+        .user-avatar {
+            margin-right: 10px;
+
+            img {
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+            }
+        }
     }
 }
 
