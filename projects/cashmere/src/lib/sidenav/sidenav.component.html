@@ -15,7 +15,11 @@
         <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
     </div> -->
     <div class="sidenav-user" *ngIf="user">
-        <span class="user">{{ user }}</span>
+        <span class="user-avatar">
+            <img *ngIf="user.avatar" [src]="user.avatar" />
+            <hc-icon *ngIf="!user.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
+        </span>
+        <span class="user">{{ user.name }}</span>
     </div>
     <div class="sidenav-links">
         <ng-content select="hc-sidenav-link"></ng-content>
