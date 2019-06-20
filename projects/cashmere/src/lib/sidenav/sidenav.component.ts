@@ -51,7 +51,7 @@ export class SidenavComponent extends Drawer implements OnInit {
     user: IUser | null = null;
 
     readonly align = 'left';
-    readonly mode = 'push';
+    readonly mode = 'side';
 
     @HostBinding()
     tabindex = -1;
