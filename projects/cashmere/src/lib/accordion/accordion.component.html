@@ -1,4 +1,4 @@
-<div class="hc-toolbar-wrapper" [ngClass]="[_pointer, _alignment]" (click)="_triggerClick($event, true)" *ngIf="!hideToolbar">
+<div class="hc-accordion-toolbar-wrapper" [ngClass]="[_pointer, _alignment]" (click)="_triggerClick($event, true)" *ngIf="!hideToolbar">
     <button type="button" class="hc-accordion-trigger" (click)="_triggerClick($event, false)"></button>
     <ng-content select="hc-accordion-toolbar"></ng-content>
 </div>
