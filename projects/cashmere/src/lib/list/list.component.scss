@@ -1,3 +1,5 @@
+@import '../sass/list.scss';
+
 .hc-list {
-    display: block;
+    @include hc-list();
 }
