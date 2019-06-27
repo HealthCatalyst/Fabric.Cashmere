@@ -1,33 +1,17 @@
-$default-icon-size: 20px;
+@import '../sass/icon.scss';
 
-@mixin iconHeight($height) {
-    font-size: $height !important;
-    height: $height !important;
-    width: $height !important;
+[icon-sm], .hc-icon-sm {
+    @include hc-icon-height(14px);
 }
 
-[icon-sm],
-.hc-icon-sm {
-    @include iconHeight(14px);
+[icon-md], .hc-icon-md {
+    @include hc-icon-height($default-icon-size);
 }
 
-[icon-md],
-.hc-icon-md {
-    @include iconHeight($default-icon-size);
-}
-
-[icon-lg],
-.hc-icon-lg {
-    @include iconHeight(36px);
+[icon-lg], .hc-icon-lg {
+    @include hc-icon-height(36px);
 }
 
 .hc-icon {
-    background-repeat: no-repeat;
-    display: inline-block;
-    fill: currentColor;
-    text-align: center;
-
-    font-size: $default-icon-size;
-    height: $default-icon-size;
-    width: $default-icon-size;
+    @include hc-icon();
 }
