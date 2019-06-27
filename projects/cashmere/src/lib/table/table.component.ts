@@ -11,7 +11,6 @@
 import {CDK_TABLE_TEMPLATE, CdkTable} from '@angular/cdk/table';
 import {
     Attribute,
-    ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ElementRef,
@@ -29,8 +28,7 @@ import {parseBooleanAttribute} from '../util';
     exportAs: 'matTable',
     template: CDK_TABLE_TEMPLATE,
     styleUrls: ['table.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    encapsulation: ViewEncapsulation.None
 })
 export class HcTable<T> extends CdkTable<T> {
     /** Overrides the sticky CSS class set by the `CdkTable`. */
