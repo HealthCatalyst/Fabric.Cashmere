@@ -43,7 +43,7 @@ echo Publishing $fullVersion
 npm version $fullVersion --git-tag-version false
 
 # Authorize the publish
-echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 
 # Publish the package
 npm publish
