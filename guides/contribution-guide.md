@@ -29,7 +29,8 @@ We would love for you to contribute to Cashmere and be part of the community mak
 
 ### While Developing
 
-1.  Just run `npm start`. This will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the Cashmere library.
+1.  You may need to run `npm run build` before you start, especially if it's your first time running Cashmere.
+2.  Run `npm start`. This will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the Cashmere library.
 
 ### PR's
 
