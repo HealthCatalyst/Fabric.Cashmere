@@ -1,0 +1,58 @@
+@import './colors';
+
+$drawer-toolbar-height: 52px;
+
+@mixin hc-menu-drawer() {
+    display: block;
+    overflow: hidden;
+}
+
+@mixin hc-menu-drawer-item-container() {
+    background-color: #5e676f;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 28px;
+}
+
+@mixin hc-menu-drawer-item-container-visible() {
+    height: calc(100% - #{$drawer-toolbar-height});
+}
+
+@mixin hc-menu-drawer-item-container-right() {
+    padding: 0 0 0 28px;
+}
+
+@mixin hc-menu-drawer-toolbar-container() {
+    background-color: #555d63;
+    color: $blue;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+}
+
+@mixin hc-drawer-toolbar() {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: $drawer-toolbar-height;
+    max-height: $drawer-toolbar-height;
+    overflow: hidden;
+    padding: 15px 28px;
+}
+
+@mixin hc-drawer-item() {
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    padding: 15px 0 15px 15px;
+    width: 100%;
+    
+    &:not(:first-child) {
+        border-bottom: 1px solid #6b737b;
+        border-top: 1px solid #6b737b;
+    }
+}
+
+@mixin hc-drawer-item-right() {
+    padding: 15px 15px 15px 0;
+}
