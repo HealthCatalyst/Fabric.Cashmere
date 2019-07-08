@@ -9,6 +9,9 @@ import {ChartDemoComponent} from './chart/chart-demo.component';
 import {ErrorPagesComponent} from './error/error-pages.component';
 import {LoginPageComponent} from './login/login-page.component';
 import {AboutModalComponent} from './about/about-modal.component';
+import {BrandColorDemoComponent} from './brand-color/brand-color-demo.component';
+import {LogoDemoComponent} from './logo/logo-demo.component';
+import {ProductsDemoComponent} from './products/products-demo.component';
 import {NgModule} from '@angular/core';
 import {BreadcrumbsStyleDemoComponent} from './breadcrumbs/breadcrumbs-style-demo.component';
 
@@ -30,7 +33,7 @@ const routes: Routes = [
             {
                 path: 'color',
                 component: ColorDemoComponent,
-                data: {title: 'Colors'}
+                data: {title: 'UI Colors'}
             },
             {
                 path: 'icons',
@@ -66,6 +69,21 @@ const routes: Routes = [
                 path: 'login',
                 component: LoginPageComponent,
                 data: {title: 'Login Page'}
+            },
+            {
+                path: 'brand-colors',
+                component: BrandColorDemoComponent,
+                data: {title: 'Brand Colors'}
+            },
+            {
+                path: 'logo',
+                component: LogoDemoComponent,
+                data: {title: 'Logo'}
+            },
+            {
+                path: 'products',
+                component: ProductsDemoComponent,
+                data: {title: 'Product Icons'}
             },
             {
                 path: '**',

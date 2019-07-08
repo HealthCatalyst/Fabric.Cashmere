@@ -6,7 +6,7 @@
 
 The login styles provide a unified experience when a user first enters an application. The following examples can be customized for each applications needs. The component is mobile friendly and will adapt for smaller screen sizes.
 
-The library does not ship with image assets, so the following images will need to be downloaded: [Logo](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/docs/assets/HC_logo.svg) and [Background](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/docs/assets/login_bg.jpg)
+The library does not ship with image assets, so the following images will need to be downloaded: [Logo](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/docs/assets/HealthCatalyst_Horizontal.svg) and [Background](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/docs/assets/login_bg.jpg)
 
 :::
 <br>
@@ -72,7 +72,7 @@ The following example does not use angular but a post css Preprocesser is needed
 ```html
 <div class="hc-login-container" style="background-image: url(../assets/login_bg.jpg)">
     <div class="hc-login">
-        <div class="logo"><img src="../assets/HC_logo.svg" alt="Health Catalyst Logo" /></div>
+        <div class="logo"><img src="../assets/HealthCatalyst_Horizontal.svg" alt="Health Catalyst Logo" /></div>
         <form>
             <label for="email">Email</label>
             <input class="login-input" required name="email" type="text" placeholder="Enter Full Email" />
@@ -108,7 +108,7 @@ The following example uses angular and cashmere and is the preffered method. It 
 ```html
 <div class="hc-login-container" style="background-image: url(../assets/login_bg.jpg)">
     <div class="hc-login">
-        <div class="logo"><img src="../assets/HC_logo.svg" alt="Health Catalyst Logo" /></div>
+        <div class="logo"><img src="../assets/HealthCatalyst_Horizontal.svg" alt="Health Catalyst Logo" /></div>
         <div>
             <hc-form-field>
                 <hc-label>Email</hc-label>
