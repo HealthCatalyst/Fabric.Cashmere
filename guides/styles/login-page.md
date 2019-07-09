@@ -6,7 +6,7 @@
 
 The login styles provide a unified experience when a user first enters an application. The following examples can be customized for each applications needs. The component is mobile friendly and will adapt for smaller screen sizes.
 
-The library does not ship with image assets, so the following images will need to be downloaded: [Logo](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/docs/assets/HealthCatalyst_Horizontal.svg) and [Background](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/docs/assets/login_bg.jpg)
+The library does not ship with image assets, so the following images will need to be downloaded: [Logo](https://cashmere.healthcatalyst.net/assets/HealthCatalyst_Horizontal.svg) and [Background](https://cashmere.healthcatalyst.net/assets/login_bg.jpg)
 
 :::
 <br>
@@ -14,7 +14,7 @@ The library does not ship with image assets, so the following images will need t
 <div class="hc-login-container" style="height:650px; background-image: url(../assets/login_bg.jpg)">
   <div class="hc-login">
     <div class="logo">
-      <img src="../assets/HC_logo.svg" alt="Health Catalyst Logo">
+      <img src="../assets/HealthCatalyst_Horizontal.svg" alt="Health Catalyst Logo">
     </div>
     <form>
       <label for="email">Email</label>
