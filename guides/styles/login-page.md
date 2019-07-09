@@ -26,8 +26,8 @@ The library does not ship with image assets, so the following images will need t
     </form>
     <div class="privacy">By signing in you agree to our
       <br>
-      <a href="#">Terms of Use</a> and
-      <a href="#">Privacy Statement</a>
+       <a target="_blank" href="https://www.healthcatalyst.com/terms-conditions/">Terms of Use</a> and
+       <a target="_blank" href="https://www.healthcatalyst.com/privacy-policy/">Privacy Statement</a>
     </div>
     <div class="new-to-catalyst">
       <span>New to Health Catalyst?</span>
@@ -37,13 +37,13 @@ The library does not ship with image assets, so the following images will need t
   <div class="hc-login-footer">
     <ul>
       <li>
-        <a href="https://www.healthcatalyst.com/terms-conditions/"> Terms of Use </a>
+        <a target="_blank" href="https://www.healthcatalyst.com/terms-conditions/"> Terms of Use </a>
       </li>
       <li>
-        <a href="https://www.healthcatalyst.com/privacy-policy/">Privacy</a>
+        <a target="_blank" href="https://www.healthcatalyst.com/privacy-policy/">Privacy</a>
       </li>
       <li>
-        <a href="https://www.healthcatalyst.com">HealthCatalyst.com</a>
+        <a target="_blank" href="https://www.healthcatalyst.com">HealthCatalyst.com</a>
       </li>
     </ul>
   </div>
@@ -84,18 +84,18 @@ The following example does not use angular but a post css Preprocesser is needed
         <div class="privacy">
             By signing in you agree to our
             <br />
-            <a href="#">Terms of Use</a>
+            <a target="_blank" href="https://www.healthcatalyst.com/terms-conditions/">Terms of Use</a>
             and
-            <a href="#">Privacy Statement</a>
+            <a target="_blank" href="https://www.healthcatalyst.com/privacy-policy/">Privacy Statement</a>
         </div>
         <div class="new-to-catalyst"><span>New to Health Catalyst?</span></div>
         <a href="#" class="new-account">Create a new acount</a>
     </div>
     <div class="hc-login-footer">
         <ul>
-            <li><a href="https://www.healthcatalyst.com/terms-conditions/">Terms of Use</a></li>
-            <li><a href="https://www.healthcatalyst.com/privacy-policy/">Privacy</a></li>
-            <li><a href="https://www.healthcatalyst.com">HealthCatalyst.com</a></li>
+            <li><a target="_blank" href="https://www.healthcatalyst.com/terms-conditions/">Terms of Use</a></li>
+            <li><a target="_blank" href="https://www.healthcatalyst.com/privacy-policy/">Privacy</a></li>
+            <li><a target="_blank" href="https://www.healthcatalyst.com">HealthCatalyst.com</a></li>
         </ul>
     </div>
 </div>
@@ -124,18 +124,18 @@ The following example uses angular and cashmere and is the preffered method. It 
         <div class="privacy">
             By signing in you agree to our
             <br />
-            <a href="#">Terms of Use</a>
+            <a target="_blank" href="https://www.healthcatalyst.com/terms-conditions/">Terms of Use</a>
             and
-            <a href="#">Privacy Statement</a>
+            <a target="_blank" href="https://www.healthcatalyst.com/privacy-policy/">Privacy Statement</a>
         </div>
         <div class="new-to-catalyst"><span>New to Health Catalyst?</span></div>
         <a href="#" class="new-account">Create a new acount</a>
     </div>
     <div class="hc-login-footer">
         <ul>
-            <li><a href="https://www.healthcatalyst.com/terms-conditions/">Terms of Use</a></li>
-            <li><a href="https://www.healthcatalyst.com/privacy-policy/">Privacy</a></li>
-            <li><a href="https://www.healthcatalyst.com">HealthCatalyst.com</a></li>
+            <li><a target="_blank" href="https://www.healthcatalyst.com/terms-conditions/">Terms of Use</a></li>
+            <li><a target="_blank" href="https://www.healthcatalyst.com/privacy-policy/">Privacy</a></li>
+            <li><a target="_blank" href="https://www.healthcatalyst.com">HealthCatalyst.com</a></li>
         </ul>
     </div>
 </div>
