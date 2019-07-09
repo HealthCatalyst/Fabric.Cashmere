@@ -1,6 +1,6 @@
 # App "About" Modal
 
-###### Last updated August 15, 2018
+###### Last updated June 28, 2019
 
 :::
 
@@ -9,7 +9,7 @@
 An "About" modal should be included with every application as place to store important statistical information. It is typically triggered from an item in the [help menu](https://cashmere.healthcatalyst.net/components/navbar/usage). This is often used in troubleshooting when a user needs to identify specifics about their app instance. At a minimum, the About modal should contain:
 
 -   **App Name** - using the same SVG as is being used in the navbar
--   **App Icon** - may be omitted if an icon does not exist for the app
+-   **App Icon** - SVGs may be downloaded from the [product icons page](https://cashmere.healthcatalyst.net/styles/products); may be omitted if an icon does not exist for the app
 -   **Version Number** - paired with the app name in the modal header
 -   **Copyright** - usually included in the footer
 -   **Terms and Conditions** - part of the footer and links to our [website terms page](https://www.healthcatalyst.com/terms-conditions/)
