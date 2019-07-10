@@ -16,11 +16,9 @@ export class HcScrollNavComponent implements AfterViewInit {
     constructor(public _elementRef: ElementRef) {}
 
     public ngAfterViewInit(): void {
-        this.linkList.forEach((e, i) => {
-            if (i === 0) {
-                e._el.nativeElement.classList.add(this.ACTIVE_CLASS);
-            }
-        });
+        if (this._links && this._links[0]) {
+            this._links[0].classList.add(this.ACTIVE_CLASS);
+        }
     }
 
     public _setActiveClassById(id: string): void {

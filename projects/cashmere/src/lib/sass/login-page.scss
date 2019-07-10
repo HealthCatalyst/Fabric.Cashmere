@@ -79,6 +79,7 @@
         color: $slate-gray-400;
         padding: 0 30px;
         text-align: center;
+        font-size: 12px;
     }
 
     .new-to-catalyst {
@@ -109,14 +110,16 @@
     .forgot-password {
         float: right;
         font-size: 0.75rem;
+        margin-top: 5px;
     }
 
     .logo {
-        max-width: 266px;
+        max-width: 280px;
         margin-left: auto;
         margin-right: auto;
         width: 100%;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
+        padding-top: 10px;
     }
 
     .new-account {

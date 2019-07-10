@@ -14,4 +14,8 @@ export class SwatchDemoComponent {
     public isLarge = false;
     @Input()
     public needsBorder = false;
+    @Input()
+    public rgb: String;
+    @Input()
+    public cmyk: String;
 }

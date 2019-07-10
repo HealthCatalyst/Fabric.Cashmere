@@ -1,0 +1,57 @@
+$ease-out-duration: 400ms !default;
+$ease-out-timing: cubic-bezier(0.25, 0.8, 0.25, 1) !default;
+
+$drawer-container-padding: 10px 20px;
+
+@mixin drawer-stacking-context($z-index: 1) {
+    position: relative;
+
+    z-index: $z-index;
+}
+
+@mixin hc-drawer() {
+    bottom: 0;
+    box-sizing: border-box;
+    display: block;
+    height: 100%;
+    outline: 0;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    transform: translate3d(-100%, 0, 0);
+    z-index: 3;
+}
+
+@mixin hc-drawer-right() {
+    right: 0;
+    transform: translate3d(100%, 0, 0);
+}
+
+@mixin hc-drawer-open() {
+    box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
+}
+
+@mixin hc-drawer-container() {
+    @include drawer-stacking-context();
+    
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+}
+
+@mixin hc-drawer-content() {
+    @include drawer-stacking-context();
+    
+    display: block;
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    padding: $drawer-container-padding;
+    right: 0;
+    
+    transition: {
+        duration: $ease-out-duration;
+        property: transform, margin-left, margin-right;
+        timing-function: $ease-out-timing;
+    }
+}
