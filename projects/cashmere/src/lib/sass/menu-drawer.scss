@@ -1,4 +1,4 @@
-@import './colors';
+@import 'colors';
 
 $drawer-toolbar-height: 52px;
 
@@ -8,7 +8,7 @@ $drawer-toolbar-height: 52px;
 }
 
 @mixin hc-menu-drawer-item-container() {
-    background-color: #5e676f;
+    background-color: $charcoal-blue;
     height: 100%;
     overflow-y: auto;
     padding-right: 28px;
@@ -23,7 +23,7 @@ $drawer-toolbar-height: 52px;
 }
 
 @mixin hc-menu-drawer-toolbar-container() {
-    background-color: #555d63;
+    background-color: darken($charcoal-blue, 5%);
     color: $blue;
     display: flex;
     flex-direction: column;
@@ -46,7 +46,7 @@ $drawer-toolbar-height: 52px;
     flex-direction: row;
     padding: 15px 0 15px 15px;
     width: 100%;
-    
+
     &:not(:first-child) {
         border-bottom: 1px solid #6b737b;
         border-top: 1px solid #6b737b;
