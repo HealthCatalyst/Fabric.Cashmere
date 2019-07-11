@@ -1,6 +1,5 @@
-import { Component, OnDestroy, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Event, NavigationEnd, Params, PRIMARY_OUTLET, Router } from '@angular/router';
-import { QueryParamsHandling } from '@angular/router/src/config';
+import {Component, OnDestroy, OnInit, Input} from '@angular/core';
+import {ActivatedRoute, Event, NavigationEnd, Params, PRIMARY_OUTLET, Router} from '@angular/router';
 
 /**
  * IBreadcrumb interface is used to store all required data for each breadcrumb element
@@ -11,6 +10,12 @@ export interface IBreadcrumb {
     params?: Params;
     url: string;
 }
+
+/*
+  This type is from @angular/router, but the import location varies by Angular version
+  Including here to allow Cashmere to work regardless of Angular version
+*/
+export type QueryParamsHandling = 'merge' | 'preserve' | '';
 
 /** A navigational aid that allows users to keep track of their location within the current application  */
 @Component({
@@ -35,7 +40,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
         this._queryParamsHandling = queryParamsHandling;
     }
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
+    constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
 
     ngOnInit() {
         const ROUTE_DATA_BREADCRUMB: string = 'breadcrumb';

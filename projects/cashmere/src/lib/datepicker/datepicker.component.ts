@@ -27,7 +27,7 @@ import {ComponentPortal} from '@angular/cdk/portal';
 import {DatepickerInputDirective} from './datepicker-input/datepicker-input.directive';
 import {DialogService} from '../dialog/dialog.service';
 import {Directionality} from '@angular/cdk/bidi';
-import {DOCUMENT} from '@angular/platform-browser';
+import {DOCUMENT} from '@angular/common';
 import {take, filter} from 'rxjs/operators';
 import {ESCAPE, UP_ARROW} from '@angular/cdk/keycodes';
 
