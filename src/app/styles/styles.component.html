@@ -25,14 +25,16 @@
                     <div class="hc-components-nav-divider"></div>
                     <hc-accordion triggerAlign="right" open='true'>
                         <hc-accordion-toolbar>Branding</hc-accordion-toolbar>
-                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'About Modal' == thisPage }" (click)="navUpdate('about')">About Modal</div>
+
                         <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Logo' == thisPage }" (click)="navUpdate('logo')">Logo</div>
                         <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Product Icons' == thisPage }" (click)="navUpdate('products')">Product Icons</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Trademarks' == thisPage }" (click)="navUpdate('trademarks')">Trademarks</div>
                         <div class="hc-components-nav-spacer"></div>
                     </hc-accordion>
                     <div class="hc-components-nav-divider"></div>
                     <hc-accordion triggerAlign="right" open='true'>
-                        <hc-accordion-toolbar>Visual Guidelines</hc-accordion-toolbar>
+                        <hc-accordion-toolbar>User Interface</hc-accordion-toolbar>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'About Modal' == thisPage }" (click)="navUpdate('about')">About Modal</div>
                         <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Breadcrumbs' == thisPage }" (click)="navUpdate('breadcrumbs')">Breadcrumbs</div>
                         <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Charts' == thisPage }" (click)="navUpdate('chart')">Charts</div>
                         <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Error Pages' == thisPage }" (click)="navUpdate('error')">Error Pages</div>
@@ -55,6 +57,7 @@
             <hc-tab tabTitle="Icons" routerLink="/styles/icons"> Icons </hc-tab>
             <hc-tab tabTitle="Logo" routerLink="/styles/logo"> Logo </hc-tab>
             <hc-tab tabTitle="Product Icons" routerLink="/styles/products"> Product Icons </hc-tab>
+            <hc-tab tabTitle="Trademarks" routerLink="/styles/trademarks"> Trademarks </hc-tab>
             <hc-tab tabTitle="Error Pages" routerLink="/styles/error"> Error Pages </hc-tab>
             <hc-tab tabTitle="Login Page" routerLink="/styles/login"> Login Page </hc-tab>
             <hc-tab tabTitle="Tables" routerLink="/styles/table"> Tables </hc-tab>
