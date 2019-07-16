@@ -12,6 +12,7 @@ import {AboutModalComponent} from './about/about-modal.component';
 import {BrandColorDemoComponent} from './brand-color/brand-color-demo.component';
 import {LogoDemoComponent} from './logo/logo-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
+import {TrademarksDemoComponent} from './trademarks/trademarks-demo.component';
 import {NgModule} from '@angular/core';
 import {BreadcrumbsStyleDemoComponent} from './breadcrumbs/breadcrumbs-style-demo.component';
 
@@ -84,6 +85,11 @@ const routes: Routes = [
                 path: 'products',
                 component: ProductsDemoComponent,
                 data: {title: 'Product Icons'}
+            },
+            {
+                path: 'trademarks',
+                component: TrademarksDemoComponent,
+                data: {title: 'Trademarks'}
             },
             {
                 path: '**',
