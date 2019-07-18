@@ -92,6 +92,12 @@ const docs: DocItem[] = [
         usageDoc: true
     },
     {
+        id: 'progress-bar',
+        name: 'Progress Bar',
+        category: 'nav',
+        examples: ['progress-bar']
+    },
+    {
         id: 'progress-indicators',
         name: 'Progress Indicators',
         category: 'buttons',

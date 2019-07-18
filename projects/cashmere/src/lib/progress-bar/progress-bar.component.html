@@ -1,0 +1,50 @@
+<div class="progress-items" [ngStyle]="{'height': height}" [ngClass]="{'progress-items--complete': allItemsCompleted}">
+    <div class="#ba160a-shim"></div>
+    <div class="progress-item" *ngFor="let item of items; index as i;" (click)="itemClicked(item, i)"
+         [ngStyle]="{'height': height}"
+         [ngClass]="{
+         'progress-item--active': item.id === currentSelectedItem?.id,
+         'progress-item--completed': item.status === 'completed',
+         'progress-item--uncompleted': item.status === 'uncompleted'
+         }">
+        <div class="item-body">
+            <svg viewBox="0 0 22 75"  [ngStyle]="{'height': height}">
+                <g>
+                    <polygon points="0 0, 22 0, 22 75, 0 75" fill="white" stroke="white" *ngIf="item.status !== 'completed' && !item.focused"></polygon>
+                    <polygon points="0 0, 22 0, 22 75, 0 75" fill="#ba160a" stroke="#ba160a" *ngIf="item.status === 'completed' || item.focused"></polygon>
+                </g>
+            </svg>
+            <div class="item-title">{{item.title}}</div>
+            <div class="item-tip">
+                <svg viewBox="0 0 65 75" [ngStyle]="{'height': height}" *ngIf="(item.id === currentSelectedItem?.id ||  item.status === 'completed')  && items[i+1]?.status !== 'completed' &&  !items[i+1]?.focused"  xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <polygon points="0 0, 22 0, 62 37.5, 22 75, 0 75" fill="#ba160a"></polygon>
+                        <polyline *ngIf="item.status === 'completed'"  points="10 40, 17 47.5, 34 29" stroke="white" fill="#ba160a" stroke-width="2"></polyline>
+                    </g>
+                </svg>
+                <svg viewBox="0 0 65 75" [ngStyle]="{'height': height}" *ngIf="item.id !== currentSelectedItem?.id &&  item.status !== 'completed'  && (items[i+1]?.status === 'completed' ||  items[i+1]?.focused)"  xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <polygon points="22 0, 62 0, 62 37.5" fill="#ba160a"></polygon>
+                        <polygon points="22 75, 62 75, 62 37.5" fill="#ba160a"></polygon>
+                        <polygon points="62 0, 62 75, 65 75, 65 0" fill="#ba160a" stroke="#ba160a"></polygon>
+                    </g>
+                </svg>
+                <svg viewBox="0 0 65 75" [ngStyle]="{'height': height}" style="background-color: #ba160a" *ngIf="( item.status === 'completed' || item.id === currentSelectedItem?.id) && (items[i+1]?.status === 'completed' ||  items[i+1]?.focused)"  xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <polyline  points="23.5 0, 63.5 37.5, 23.5 75" stroke="white" fill="#ba160a" stroke-width="2"></polyline>
+                        <polyline *ngIf="item.status === 'completed'"  points="10 40, 17 47.5, 34 29" stroke="white" fill="#ba160a" stroke-width="2"></polyline>
+                    </g>
+                </svg>
+                <svg viewBox="0 0 65 75"  [ngStyle]="{'height': height}" style="background-color: white" *ngIf="item.status !== 'completed' && item.id !== currentSelectedItem?.id  && items[i+1]?.status !== 'completed' &&  !items[i+1]?.focused">
+                    <g>
+                    </g>
+                </svg>
+<!--                <div class="white-shim" [ngStyle]="{'height': height}" *ngIf="item.status !== 'completed' && item.id !== currentSelectedItem?.id  && items[i+1]?.status !== 'completed' &&  !items[i+1]?.focused"></div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div *ngFor="let item of items | keyvalue">-->
+<!--    <pre>{{item | json}}</pre>{{item.value.title}}-->
+<!--</div>-->

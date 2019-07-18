@@ -1,0 +1,82 @@
+.progress-bar-example {
+    .progress-bar-wrapper {
+        height: 10em;
+        display: flex;
+        align-items: center;
+        padding: 2em;
+    }
+
+    hc-progress-bar {
+        width: 100%;
+    }
+
+    .progress-bar-example-controls {
+        width: 40%;
+        margin-left: 2em;
+    }
+
+    .progress-bar-example-field {
+        margin-bottom: 2.5em;
+    }
+
+    .progress-bar-example-field-label {
+        color: #878b8f;
+        margin-right: .3em;
+    }
+    .heavy {
+        font-weight: bold;
+    }
+
+    .allow-skip-field {
+        display: flex;
+        align-items: center;
+    }
+
+    .slide-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-top: .75em;
+        .slider-left-value {
+            margin-right: .5em;
+        }
+        .slider-right-value {
+            margin-left: .5em;
+        }
+        /** Adapted graciously from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_rangeslider_round **/
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: .5em;
+            border-radius: 5px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 1.3em;
+            height: 1.3em;
+            border-radius: 50%;
+            background: #ba160a;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 1.3em;
+            height: 1.3em;
+            border-radius: 50%;
+            background: #ba160a;
+            cursor: pointer;
+        }
+    }
+
+}
