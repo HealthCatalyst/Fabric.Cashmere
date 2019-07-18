@@ -1,0 +1,57 @@
+@import '../sass/colors';
+.progress-items {
+    //height: 75px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: white;
+    &--complete {
+        background-color: $wcf-red;
+    }
+    .progress-item {
+        //height: 75px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        cursor: pointer;
+        flex-grow: 1;
+        &--uncompleted {
+            //background-color: lightgray;
+            color: lightgray;
+        }
+        &--completed, &--active {
+            //border-right: 2px solid white;
+            color: white;
+            .item-title {
+                background-color: $wcf-red;
+            }
+        }
+        &--active {
+            //font-weight: bold;
+            text-decoration: underline;
+        }
+        .item-body {
+            height: 100%;
+            display: flex;
+            justify-content: flex-start;
+            flex-grow: 1;
+        }
+        .item-title {
+            // TODO is this needed? seems to work without min-width: 75px;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+            //padding-left: 25px;
+        }
+        .item-tip {
+            svg {
+                //height: 75px;
+                // TODO? width: 65px;
+            }
+        }
+    }
+}
