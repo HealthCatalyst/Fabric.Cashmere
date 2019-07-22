@@ -31,7 +31,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     @Input() public nav: HcScrollNavComponent;
     /** If true, will force the height of the final scroll target area to be the height of the scrollable container.
      * This is helpful if you want the last target in the content area to be able to scroll to the top. You can alternatively
-     * target the last item with css. *Defaults to false.* */
+     * target the last item with css. *Defaults to true.* */
     @Input() public makeLastTargetFullHeight = true;
     /** Number in pixels, used to give a little leeway in the shifting of the active nav when scrolling. *Defaults to 40.*
      * Example: Left at default, if showing just the bottom 40 pixels of the section before, count the next section as active. */
