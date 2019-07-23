@@ -452,6 +452,9 @@
     &.hci-pill:before {
         content: '\e985';
     }
+    &.hci-cancel-pill:before {
+        content: "\e90b";
+    }
     &.hci-plant:before {
         content: '\e986';
     }
