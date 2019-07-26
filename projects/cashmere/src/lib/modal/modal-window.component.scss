@@ -1,43 +1,29 @@
-@import '../sass/colors';
-@import '../sass/functions.scss';
-@import '../sass/mixins.scss';
+@import '../sass/modal.scss';
 
 :host {
-    position: fixed;
-    display: flex;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    align-items: center;
-    justify-content: center;
+    @include hc-modal-outer();
 }
 
 .hc-modal {
-    max-height: calc(100% - 50px);
-    height: calc(100% - 50px);
-    min-height: 135px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include hc-modal();
 }
 
 .hc-modal-auto {
-    width: auto;
+    @include hc-modal-auto();
 }
 
 .hc-modal-sm {
-    width: 300px;
+    @include hc-modal-sm();
 }
 
 .hc-modal-md {
-    width: 500px;
+    @include hc-modal-md();
 }
 
 .hc-modal-lg {
-    width: 800px;
+    @include hc-modal-lg();
 }
 
 .hc-modal-xl {
-    width: 992px;
+    @include hc-modal-xl();
 }
