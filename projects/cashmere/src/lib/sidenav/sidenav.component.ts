@@ -66,6 +66,7 @@ export class SidenavComponent extends Drawer implements OnInit {
     brandIcon: string = '';
 
     /** Router link triggered when home icon is clicked */
+    @Input()
     homeUri: any[] | string = '';
 
     @ContentChildren(SidenavLinkComponent)
