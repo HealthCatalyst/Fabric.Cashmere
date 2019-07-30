@@ -87,7 +87,7 @@ $hc-calendar-weekday-table-font-size: 11px !default;
 }
 
 .hc-calendar-body-selected {
-    background-color: darken($primary-brand, 10%);
+    background-color: $primary-brand;
     color: $white;
     font-weight: 700;
 }
@@ -137,7 +137,7 @@ $hc-calendar-weekday-table-font-size: 11px !default;
 .cdk-keyboard-focused .hc-calendar-body-active,
 .cdk-program-focused .hc-calendar-body-active {
     & > .hc-calendar-body-cell-content:not(.hc-calendar-body-selected) {
-        border: 2px solid darken($primary-brand, 10%);
+        border: 2px solid $primary-brand;
     }
 }
 
