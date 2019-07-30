@@ -48,7 +48,7 @@ import {Drawer} from '../drawer/index';
 export class SidenavComponent extends Drawer implements OnInit {
     /** Display name of current user */
     @Input()
-    user: string = '';
+    user: IUser | null = null;
 
     readonly align = 'left';
     readonly mode = 'side';
@@ -127,4 +127,9 @@ export class SidenavComponent extends Drawer implements OnInit {
     get _mobileMenuIcon(): string {
         return this.sidenavOpen ? 'fa-times' : 'fa-bars';
     }
+}
+
+export interface IUser {
+    name: string;
+    avatar?: string;
 }
