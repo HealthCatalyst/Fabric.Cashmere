@@ -158,7 +158,8 @@ const docs: DocItem[] = [
         id: 'busy-indicator',
         name: 'Busy Indicator',
         category: 'buttons',
-        examples: ['busy-indicator-overview']
+        examples: ['busy-indicator-overview'],
+        usageDoc: true
     }
 ];
 
