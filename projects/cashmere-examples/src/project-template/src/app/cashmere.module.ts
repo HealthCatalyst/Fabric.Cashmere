@@ -33,6 +33,7 @@ import {
     TabsModule,
     TileModule,
     ToasterModule,
+    TypeaheadModule,
     TypeformSurveyModule,
     XanthosFileUploadModule
 } from '@wcf-insurance/cashmere';
@@ -72,6 +73,7 @@ import {
         TabsModule,
         TileModule,
         ToasterModule,
+        TypeaheadModule,
         TypeformSurveyModule,
         XanthosFileUploadModule
     ]
