@@ -1,0 +1,17 @@
+@import '../../sass/_colors.scss';
+
+.result {
+    padding: 5px 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.result:hover {
+    background-color: $info-bg;
+}
+
+.highlighted {
+    background-color: $info;
+}

@@ -160,6 +160,12 @@ const docs: DocItem[] = [
         category: 'buttons',
         examples: ['busy-indicator-overview'],
         usageDoc: true
+    },
+    {
+        id: 'typeahead',
+        name: 'Typeahead',
+        category: 'forms',
+        examples: ['typeahead-overview']
     }
 ];
 
