@@ -1,0 +1,63 @@
+@import '../sass/_colors.scss';
+
+app-typeahead {
+    width: 100%;
+}
+
+.typeahead-container {
+    position: relative;
+
+    .typeahead-results {
+        border: 1px solid $gray-10;
+        position: absolute;
+        top: 66px;
+        width: inherit;
+        min-width: calc(100% - 35px);
+        background-color: $white;
+        max-height: 200px;
+        z-index: 1000;
+        overflow: auto;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .show-all {
+        position: absolute;
+        top: 40px;
+        right: 45px;
+        color: $wcf-red;
+        cursor: pointer;
+    }
+
+    .search {
+        position: absolute;
+        top: 38px;
+        left: 10px;
+        color: $gray-30;
+    }
+
+    .hc-form-field-wrapper {
+        width: calc(100% - 35px);
+    }
+
+    .hc-form-field-infix {
+        padding-right: 25px;
+        padding-left: 30px;
+    }
+
+    .hc-form-field-wrapper-inline {
+        .typeahead-results {
+            top: 66px;
+            left: 0;
+            width: inherit;
+            min-width: 100%;
+        }
+
+        .show-all {
+            top: 40px;
+            right: 40px;
+        }
+    }
+}
