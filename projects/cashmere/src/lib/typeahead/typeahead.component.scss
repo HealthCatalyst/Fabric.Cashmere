@@ -10,9 +10,10 @@ app-typeahead {
     .typeahead-results {
         border: 1px solid $gray-10;
         position: absolute;
-        top: 66px;
+        top: 42px;
+        left: 0;
         width: inherit;
-        min-width: calc(100% - 35px);
+        min-width: 100%;
         background-color: $white;
         max-height: 200px;
         z-index: 1000;
@@ -25,21 +26,21 @@ app-typeahead {
 
     .show-all {
         position: absolute;
-        top: 40px;
-        right: 45px;
+        top: 15px;
+        right: 12px;
         color: $wcf-red;
         cursor: pointer;
     }
 
     .search {
         position: absolute;
-        top: 38px;
-        left: 10px;
+        top: 15px;
+        left: 9px;
         color: $gray-30;
     }
 
     .hc-form-field-wrapper {
-        width: calc(100% - 35px);
+        width: calc(100% - 15px);
     }
 
     .hc-form-field-infix {
@@ -59,5 +60,9 @@ app-typeahead {
             top: 40px;
             right: 40px;
         }
+    }
+
+    .hc-form-field-label-wrapper-inline {
+        padding-right: 0;
     }
 }
