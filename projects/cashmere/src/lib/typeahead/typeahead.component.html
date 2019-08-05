@@ -1,6 +1,7 @@
 <div class="typeahead-container">
-    <hc-form-field>
-        <input #input hcInput [formControl]="_searchTerm" (keydown.enter)="_handleEnterKey($event)" (keyup)="_filterData($event)" [placeholder]="placeholder" autocomplete="off"
+    <hc-form-field [inline]="true">
+        <input #input hcInput [formControl]="_searchTerm" (keydown.enter)="_handleEnterKey($event)" (keyup)="_filterData($event)"
+               [placeholder]="placeholder" autocomplete="off"
                [title]="_value"/>
     </hc-form-field>
 
