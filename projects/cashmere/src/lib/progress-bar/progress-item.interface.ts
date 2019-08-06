@@ -3,4 +3,5 @@ export interface ProgressItem {
     title: string;
     status: string;
     focused?: boolean;
+    beforeSelected?: boolean;
 }
