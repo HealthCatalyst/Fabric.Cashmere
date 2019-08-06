@@ -140,7 +140,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
             this.itemSelectedDefault(this._options.toArray()[this._highlighted].value);
         } else {
             const value = this._inputRef.nativeElement.value;
-            if (value.length >= this.minChars) {
+            if (value.length >= this.minChars && value !== this._value) {
                 if (this._resultPanelHidden) {
                     this.showResultPanel();
                 }
@@ -179,6 +179,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     _toggleShowResults() {
         if (this._resultPanelHidden) {
             this.showResultPanel();
+            this.valueChange.emit('');
         } else {
             this.hideResultPanel();
         }
