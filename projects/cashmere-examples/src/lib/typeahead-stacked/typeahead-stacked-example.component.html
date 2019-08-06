@@ -1,5 +1,5 @@
 <div class="example-content">
-    <hc-form-field [inline]="true">
+    <hc-form-field>
         <hc-label>States:</hc-label>
         <hc-typeahead [value]="selectedItem" (valueChange)="filterData($event)" (optionSelected)="optionSelected($event)">
             <hc-typeahead-item *ngFor="let item of filteredData" [value]="item">
