@@ -1,8 +1,7 @@
 <div class="typeahead-container">
     <hc-form-field [inline]="true">
         <input #input hcInput [formControl]="_searchTerm" (keydown.enter)="_handleEnterKey($event)" (keyup)="_filterData($event)"
-               [placeholder]="placeholder" autocomplete="off"
-               [title]="_value"/>
+               [placeholder]="placeholder" autocomplete="off" [title]="_value"/>
     </hc-form-field>
 
     <hc-icon fontSet="fa" fontIcon="fa-search" class="search" hcIconSm></hc-icon>
