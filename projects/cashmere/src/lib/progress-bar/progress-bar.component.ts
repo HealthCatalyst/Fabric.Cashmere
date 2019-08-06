@@ -15,11 +15,12 @@ export class ProgressBarComponent implements OnInit {
             this._items = itemsList;
             this.greatestCompletedItemIndex = this.findGreatestCompletedIndexFromItems(itemsList);
             const itemToSelect = this.getNextItemToSelectFromItems(itemsList, this.greatestCompletedItemIndex);
-            this.selectProgressItem(itemToSelect);
+            this.selectProgressItem(itemToSelect, true);
         } else {
             this._items = [];
         }
     }
+
     get items(): ProgressItem[] {
         return this._items;
     }
@@ -30,9 +31,11 @@ export class ProgressBarComponent implements OnInit {
     greatestCompletedItemIndex: number;
     allItemsCompleted: boolean;
 
-    constructor() {}
+    constructor() {
+    }
 
-    ngOnInit() {}
+    ngOnInit() {
+    }
 
     /**
      * Finds the index of the last (right-most) completed item in the given array
@@ -57,16 +60,26 @@ export class ProgressBarComponent implements OnInit {
             : items[greatestCompletedItemIndex]; // last completed is the last item left
     }
 
-    private selectProgressItem(itemToSelect: ProgressItem): void {
+    selectProgressItem(itemToSelect: ProgressItem, emit: boolean): void {
         // TODO logic could be placed here to determine if navigation to this step is allowed by consuming component
         let previouslySelectedItem = this.currentSelectedItem;
         // Update progressItem entries to have proper focus
-        this._items = this._items.map(item => {
+        let beforeSelected = true;
+        this._items = this._items.map((item, index) => {
             // Set clicked item as focused
             if (item.id === itemToSelect.id) {
+                beforeSelected = false;
                 this.currentSelectedItem = {...itemToSelect, focused: true};
                 return this.currentSelectedItem;
             }
+
+            // toggle whether the item should be red or not
+            if (beforeSelected) {
+                item.beforeSelected = true;
+            } else {
+                delete item.beforeSelected;
+            }
+
             // unset focus on previously selected item
             if (previouslySelectedItem && item.id === previouslySelectedItem.id) {
                 delete item.focused;
@@ -75,7 +88,9 @@ export class ProgressBarComponent implements OnInit {
             // no change on other items
             return item;
         });
-        this.progressItemSelected.emit(this.currentSelectedItem);
+        if (emit) {
+            this.progressItemSelected.emit(this.currentSelectedItem);
+        }
     }
 
     /**
@@ -99,7 +114,7 @@ export class ProgressBarComponent implements OnInit {
             return itemToReturn;
         });
         if (nextUncompletedItem) {
-            this.selectProgressItem(nextUncompletedItem);
+            this.selectProgressItem(nextUncompletedItem, true);
         } else {
             this.allItemsCompleted = true;
             this.progressBarCompleted.emit(true);
@@ -108,7 +123,7 @@ export class ProgressBarComponent implements OnInit {
 
     itemClicked(item: ProgressItem, index: number): void {
         if (this.allowSkipAhead || index <= this.greatestCompletedItemIndex + 1) {
-            this.selectProgressItem(item);
+            this.selectProgressItem(item, true);
         }
     }
 }

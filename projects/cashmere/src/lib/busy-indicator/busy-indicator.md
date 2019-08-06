@@ -11,11 +11,6 @@ npm i ng-http-loader
 
 app.module.ts:
 ```javascript
-declarations: [
-    ...
-    BusyIndicatorComponent,
-    ...
-],
 imports: [
     ...
     NgHttpLoaderModule.forRoot(),

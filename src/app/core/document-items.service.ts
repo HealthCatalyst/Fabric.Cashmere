@@ -165,7 +165,7 @@ const docs: DocItem[] = [
         id: 'typeahead',
         name: 'Typeahead',
         category: 'forms',
-        examples: ['typeahead-overview']
+        examples: ['typeahead-overview', 'typeahead-stacked']
     }
 ];
 
