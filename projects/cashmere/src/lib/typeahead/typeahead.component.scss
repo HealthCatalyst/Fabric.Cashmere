@@ -1,6 +1,6 @@
 @import '../sass/_colors.scss';
 
-app-typeahead {
+hc-typeahead {
     width: 100%;
 }
 
@@ -64,5 +64,9 @@ app-typeahead {
 
     .hc-form-field-label-wrapper-inline {
         padding-right: 0;
+    }
+
+    .hc-form-field-flex-inline {
+        width: 100%;
     }
 }

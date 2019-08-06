@@ -1,4 +1,5 @@
 @import '../sass/colors';
+
 .progress-items {
     //height: 75px;
     width: 100%;
@@ -6,38 +7,39 @@
     justify-content: flex-start;
     align-items: center;
     background-color: white;
+
     &--complete {
         background-color: $wcf-red;
     }
+
     .progress-item {
         //height: 75px;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;
+        color: gray;
         cursor: pointer;
         flex-grow: 1;
-        &--uncompleted {
-            //background-color: lightgray;
-            color: lightgray;
-        }
-        &--completed, &--active {
-            //border-right: 2px solid white;
+
+        &--active, &--before-selected {
             color: white;
+
             .item-title {
                 background-color: $wcf-red;
             }
         }
+
         &--active {
-            //font-weight: bold;
-            text-decoration: underline;
+            font-weight: bold;
         }
+
         .item-body {
             height: 100%;
             display: flex;
             justify-content: flex-start;
             flex-grow: 1;
         }
+
         .item-title {
             // TODO is this needed? seems to work without min-width: 75px;
             flex-grow: 1;
@@ -47,6 +49,7 @@
             white-space: nowrap;
             //padding-left: 25px;
         }
+
         .item-tip {
             svg {
                 //height: 75px;
