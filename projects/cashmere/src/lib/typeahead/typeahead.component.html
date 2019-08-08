@@ -1,11 +1,13 @@
 <div class="typeahead-container">
     <hc-form-field [inline]="true">
-        <input #input hcInput [formControl]="_searchTerm" (keydown.enter)="_handleEnterKey($event)" (keyup)="_filterData($event)"
-               [placeholder]="placeholder" autocomplete="off" [title]="_value"/>
+        <input #input hcInput [formControl]="_searchTerm" (keydown.tab)="_handleTabKey($event)" (keydown.enter)="_handleEnterKey($event)"
+               (keyup)="_filterData($event)" [placeholder]="placeholder" autocomplete="off" [title]="_value"/>
     </hc-form-field>
 
     <hc-icon fontSet="fa" fontIcon="fa-search" class="search" hcIconSm></hc-icon>
-    <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="show-all" hcIconSm (click)="_toggleShowResults()"></hc-icon>
+    <span #toggle>
+        <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="show-all" hcIconSm (click)="_toggleShowResults()"></hc-icon>
+    </span>
 
     <div #results [ngClass]="{'typeahead-results':true, 'hidden': _resultPanelHidden}" *ngIf="_options.length > 0">
         <ng-content></ng-content>
