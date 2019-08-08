@@ -5,6 +5,7 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
+    Inject,
     Input,
     OnInit,
     Optional,
@@ -18,6 +19,7 @@ import {ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm
 import {TypeaheadItemComponent} from './typeahead-item/typeahead-item.component';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
     selector: 'hc-typeahead',
@@ -61,11 +63,13 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     @ViewChild('input') _inputRef: ElementRef;
     @ViewChild('results') _resultPanel: ElementRef;
+    @ViewChild('toggle') _resultToggle: ElementRef;
 
     constructor(
         private _elementRef: ElementRef,
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
+        @Optional() @Inject(DOCUMENT) private _document: any,
         @Optional()
         @Self()
         public _ngControl: NgControl
@@ -83,6 +87,21 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this._searchTerm = new FormControl(this._value);
         this._resultPanelHidden = true;
         this._highlighted = 0;
+
+        document.body.addEventListener('click', this.handleClick.bind(this));
+    }
+
+    private handleClick(event) {
+        if (this._resultPanelHidden !== true) {
+            const clickTarget = event.target as HTMLElement;
+            if (clickTarget !== this._elementRef.nativeElement &&
+                clickTarget !== this._resultPanel.nativeElement &&
+                !this._resultToggle.nativeElement.contains(clickTarget) &&
+                !this._elementRef.nativeElement.contains(clickTarget) &&
+                !this._resultPanel.nativeElement.contains(clickTarget)) {
+                this.hideResultPanel();
+            }
+        }
     }
 
     ngAfterContentInit() {
@@ -104,6 +123,10 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     _handleEnterKey($event: any) {
         $event.preventDefault();
         $event.stopPropagation();
+    }
+
+    _handleTabKey($event: any) {
+        this.hideResultPanel();
     }
 
     _filterData($event: any) {

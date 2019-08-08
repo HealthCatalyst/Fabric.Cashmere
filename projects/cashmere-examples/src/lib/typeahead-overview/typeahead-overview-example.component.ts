@@ -26,7 +26,6 @@ export class TypeaheadOverviewExampleComponent {
     }
 
     filterData(term) {
-        console.log(term);
         if (term) {
             this.filteredData = this.typeaheadData.filter(item => item.toLowerCase().indexOf(term.toLowerCase()) > -1);
         } else {
