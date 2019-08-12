@@ -59,9 +59,10 @@
         </hc-menu-drawer>
 
         <div class="drawer-content">
-            <button hc-button title="Filters" buttonStyle="link" (click)="leftDrawer.toggle()">
-                <span class="hc-filters-icon"></span>
-                Filters off
+            <button hc-button title="Filters" buttonStyle="primary-alt" (click)="leftDrawer.toggle()">
+                <hc-icon fontSet="hc-icons" fontIcon="hci-filters" class="icon-left"></hc-icon>
+                <span *ngIf="leftDrawer.opened">Hide Filters</span>
+                <span *ngIf="!leftDrawer.opened">Show Filters</span>
             </button>
         </div>
     </hc-drawer-container>
