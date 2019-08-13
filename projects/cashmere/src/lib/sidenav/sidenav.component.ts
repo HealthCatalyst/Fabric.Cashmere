@@ -1,18 +1,18 @@
 import {
+    ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChildren,
     ElementRef,
+    forwardRef,
+    HostBinding,
     HostListener,
     Input,
     OnInit,
     QueryList,
-    ViewChild,
-    forwardRef,
-    HostBinding,
-    ChangeDetectionStrategy
+    ViewChild
 } from '@angular/core';
-import {trigger, state, style, transition, animate} from '@angular/animations';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Subject} from 'rxjs';
 import {SidenavLinkComponent} from './sidenav-link/sidenav-link.component';
 import {Drawer} from '../drawer/index';
@@ -69,6 +69,14 @@ export class SidenavComponent extends Drawer implements OnInit {
     @Input()
     homeUri: any[] | string = '';
 
+    /** Base URL to be used for logging out */
+    @Input()
+    logoutUrl: string;
+
+    /** Whether the logout url should append on a parameter to the current page. Default true */
+    @Input()
+    logoutReturnToCurrent: boolean = true;
+
     @ContentChildren(SidenavLinkComponent)
     _navLinks: QueryList<SidenavLinkComponent>;
 
@@ -98,10 +106,12 @@ export class SidenavComponent extends Drawer implements OnInit {
         });
         this.toggleOpen();
     }
+
     appIconLoaded() {
         this._logoReady.next(true);
         this._logoReady.complete();
     }
+
     _toggleMobileMenu() {
         this.sidenavOpen = !this.sidenavOpen;
         // if (this._mobileMenu.first) {
@@ -122,6 +132,14 @@ export class SidenavComponent extends Drawer implements OnInit {
         if (clickTarget.indexOf('hclistline') >= 0 && clickTarget.indexOf('menu-dropdown') === -1) {
             this._toggleMobileMenu();
         }
+    }
+
+    _logout() {
+        let url = this.logoutUrl;
+        if (this.logoutReturnToCurrent === true) {
+            url += `?service=${window.location.href}`;
+        }
+        window.location.href = url;
     }
 
     get _mobileMenuIcon(): string {

@@ -18,10 +18,10 @@
 </ng-template>
 
 <ng-template #linkContent>
-    <hc-icon class="icon-left" fontSet="fa" [fontIcon]="fontIcon" icon-sm></hc-icon>
+    <hc-icon class="icon-left" fontSet="fa" [fontIcon]="fontIcon"></hc-icon>
     {{ linkText }}
     <div class="children" *ngIf="children?.length">
-        <hr />
+        <hr/>
         <ng-content></ng-content>
     </div>
 </ng-template>
