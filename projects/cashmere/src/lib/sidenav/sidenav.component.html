@@ -8,7 +8,7 @@
 <nav #sidenav class="hc-sidenav" *ngIf="sidenavOpen">
     <div class="sidenav-brand">
         <a [routerLink]="homeUri" class="brand">
-            <img src="{{ brandIcon }}" />
+            <img src="{{ brandIcon }}"/>
         </a>
     </div>
     <!-- <div class="hc-sidenav-mobile-menu" (click)="_toggleMobileMenu()">
@@ -16,13 +16,18 @@
     </div> -->
     <div class="sidenav-user" *ngIf="user">
         <span class="user-avatar">
-            <img *ngIf="user.avatar" [src]="user.avatar" />
+            <img *ngIf="user.avatar" [src]="user.avatar"/>
             <hc-icon *ngIf="!user.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
         </span>
         <span class="user">{{ user.name }}</span>
     </div>
     <div class="sidenav-links">
         <ng-content select="hc-sidenav-link"></ng-content>
+
+        <a title="Log Out" class="logout" (click)="_logout()" *ngIf="user && logoutUrl">
+            <hc-icon class="icon-left" fontSet="fa" fontIcon="fa-sign-out"></hc-icon>
+            Log Out
+        </a>
     </div>
 </nav>
 <div (click)="_menuClick($event)">

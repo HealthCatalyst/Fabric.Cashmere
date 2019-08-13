@@ -8,7 +8,7 @@ import {IUser} from '@wcf-insurance/cashmere';
 })
 export class SidenavOverviewExampleComponent {
     user: IUser = {
-        name: 'Jared Draper',
-        avatar: 'https://tinyurl.com/y3pt56qb'
+        name: 'John Doe',
+        avatar: '/src/assets/avatar.jpg'
     };
 }
