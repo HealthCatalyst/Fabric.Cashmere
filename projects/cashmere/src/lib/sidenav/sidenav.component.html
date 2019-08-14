@@ -25,7 +25,7 @@
         <ng-content select="hc-sidenav-link"></ng-content>
 
         <a title="Log Out" class="logout" (click)="_logout()" *ngIf="user && logoutUrl">
-            <hc-icon class="icon-left" fontSet="fa" fontIcon="fa-sign-out"></hc-icon>
+            <hc-icon class="icon-left" fontSet="fa" [fontIcon]="logoutIcon"></hc-icon>
             Log Out
         </a>
     </div>

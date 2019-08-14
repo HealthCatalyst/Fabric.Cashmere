@@ -77,6 +77,10 @@ export class SidenavComponent extends Drawer implements OnInit {
     @Input()
     logoutReturnToCurrent: boolean = true;
 
+    /** Icon to be used for the logout link */
+    @Input()
+    logoutIcon: string = 'fa-sign-out';
+
     @ContentChildren(SidenavLinkComponent)
     _navLinks: QueryList<SidenavLinkComponent>;
 
