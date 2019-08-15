@@ -1,9 +1,9 @@
-import {Address} from '../common/Address';
-import {Agency} from '../agency/Agency';
-import {Contact} from '../common/Contact';
-import {ClassCode} from './ClassCode';
-import {Emod} from './Emod';
-import {NamedInsured} from './NamedInsured';
+import { Address } from '../common/Address';
+import { Agency } from '../agency/Agency';
+import { Contact } from '../common/Contact';
+import { ClassCode } from './ClassCode';
+import { Emod } from './Emod';
+import { NamedInsured } from './NamedInsured';
 
 export class Policy {
     policyName: string;
@@ -22,7 +22,7 @@ export class Policy {
     effectiveDate: Date;
     expireDate: Date;
     cancelDate: Date;
-    cancelReason: {value: string; label: string};
+    cancelReason: { value: string; label: string };
     mailingAddress: Address;
     billingAddress: Address;
     producerAddress: Address;
@@ -31,6 +31,7 @@ export class Policy {
     bodilyInjuryPolicyLimit: number;
     bodilyInjuryEachEmployee: number;
     waiverOfSubrogation: boolean;
+    waiverofSubrogationType: { value: string; label: string };
 
     contacts: Array<Contact> = new Array<Contact>();
     emodHistory: Array<Emod> = new Array<Emod>();
