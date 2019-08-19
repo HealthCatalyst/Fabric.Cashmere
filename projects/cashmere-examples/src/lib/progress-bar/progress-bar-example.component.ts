@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ProgressBarComponent, ProgressItem} from '@wcf-insurance/cashmere';
-import {ProgressItemStatus} from '../../../../cashmere/src/lib/progress-bar/progress-item-status';
+import {ProgressBarComponent, ProgressItem, ProgressItemStatus} from '@wcf-insurance/cashmere';
 
 @Component({
     selector: 'hc-progress-bar-example',
