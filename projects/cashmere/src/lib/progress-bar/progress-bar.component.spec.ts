@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ProgressBarComponent} from './progress-bar.component';
-import {ProgressItemStatus} from '@wcf-insurance/cashmere';
+import {ProgressItemStatus} from './progress-item-status';
 
 describe('ProgressBarComponent', () => {
     let component: ProgressBarComponent;
