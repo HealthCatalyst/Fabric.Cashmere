@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProgressItem} from './progress-item.interface';
+import {ProgressItemStatus} from './progress-item-status';
 
 @Component({
     selector: 'hc-progress-bar',
@@ -13,9 +14,11 @@ export class ProgressBarComponent implements OnInit {
     @Input() set items(itemsList: ProgressItem[]) {
         if (itemsList && itemsList.length) {
             this._items = itemsList;
-            this.greatestCompletedItemIndex = this.findGreatestCompletedIndexFromItems(itemsList);
-            const itemToSelect = this.getNextItemToSelectFromItems(itemsList, this.greatestCompletedItemIndex);
-            this.selectProgressItem(itemToSelect, true);
+            const focusedIndex = this.findFocusedIndexFromItems(itemsList);
+
+            if (focusedIndex > -1) {
+                this.selectProgressItem(itemsList[focusedIndex], true);
+            }
         } else {
             this._items = [];
         }
@@ -28,8 +31,10 @@ export class ProgressBarComponent implements OnInit {
     @Output() progressItemSelected = new EventEmitter<ProgressItem>();
     @Output() progressBarCompleted = new EventEmitter<boolean>();
     currentSelectedItem: ProgressItem;
-    greatestCompletedItemIndex: number;
     allItemsCompleted: boolean;
+
+    // add enum to a component variable so it can be referenced in the template
+    ProgressItemStatus = ProgressItemStatus;
 
     constructor() {
     }
@@ -38,13 +43,13 @@ export class ProgressBarComponent implements OnInit {
     }
 
     /**
-     * Finds the index of the last (right-most) completed item in the given array
+     * Finds the index of the focused item in the given array
      * @param items
      */
-    findGreatestCompletedIndexFromItems(items: ProgressItem[]): number {
+    findFocusedIndexFromItems(items: ProgressItem[]): number {
         let greatestIndex = -1;
         items.forEach((item, index) => {
-            if (item.status === 'completed') {
+            if (item.focused === true) {
                 greatestIndex = index;
             }
         });
@@ -97,24 +102,25 @@ export class ProgressBarComponent implements OnInit {
      * Mark the current item as completed and select the next uncompleted item
      */
     completeCurrent(): void {
-        if (this.currentSelectedItem.status === 'completed') {
+        if (this.currentSelectedItem.status === ProgressItemStatus.COMPLETE) {
             return; // can't complete an already completed item
         }
         let nextUncompletedItem;
         let index = -1;
+        let currentIndex = 0;
         this._items = this._items.map(item => {
             index++;
             let itemToReturn = item;
             if (item.id === this.currentSelectedItem.id) {
-                itemToReturn = {...this.currentSelectedItem, status: 'completed'};
-                this.greatestCompletedItemIndex = this.greatestCompletedItemIndex < index ? index : this.greatestCompletedItemIndex;
-            } else if (!nextUncompletedItem && item.status === 'uncompleted') {
+                itemToReturn = {...this.currentSelectedItem, status: ProgressItemStatus.COMPLETE};
+                currentIndex = index;
+            } else if (!nextUncompletedItem && item.status === ProgressItemStatus.INCOMPLETE) {
                 nextUncompletedItem = item;
             }
             return itemToReturn;
         });
-        if (nextUncompletedItem) {
-            this.selectProgressItem(nextUncompletedItem, true);
+        if (currentIndex < this._items.length) {
+            this.selectProgressItem(this._items[currentIndex + 1], true);
         } else {
             this.allItemsCompleted = true;
             this.progressBarCompleted.emit(true);
@@ -122,8 +128,6 @@ export class ProgressBarComponent implements OnInit {
     }
 
     itemClicked(item: ProgressItem, index: number): void {
-        if (this.allowSkipAhead || index <= this.greatestCompletedItemIndex + 1) {
-            this.selectProgressItem(item, true);
-        }
+        this.selectProgressItem(item, true);
     }
 }

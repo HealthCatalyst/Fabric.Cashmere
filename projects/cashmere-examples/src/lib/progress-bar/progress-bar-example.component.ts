@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ProgressBarComponent, ProgressItem} from '@wcf-insurance/cashmere';
+import {ProgressBarComponent, ProgressItem, ProgressItemStatus} from '@wcf-insurance/cashmere';
 
 @Component({
     selector: 'hc-progress-bar-example',
@@ -11,11 +11,11 @@ export class ProgressBarExampleComponent implements OnInit {
     currentSelectedItem: ProgressItem;
     progressBarCompleted = false;
     progressItems: ProgressItem[] = [
-        {id: 'company', title: 'Company', status: 'completed'},
-        {id: 'owners', title: 'Owners', status: 'uncompleted'},
-        {id: 'general-info', title: 'General Info', status: 'uncompleted'},
-        {id: 'rating', title: 'Rating', status: 'uncompleted'},
-        {id: 'losses', title: 'Losses', status: 'uncompleted'},
+        {id: 'company', title: 'Company', status: ProgressItemStatus.COMPLETE},
+        {id: 'owners', title: 'Owners', status: ProgressItemStatus.INCOMPLETE},
+        {id: 'general-info', title: 'General Info', status: ProgressItemStatus.INCOMPLETE, focused: true},
+        {id: 'rating', title: 'Rating', status: ProgressItemStatus.INCOMPLETE},
+        {id: 'losses', title: 'Losses', status: ProgressItemStatus.INCOMPLETE},
     ];
     allowSkipAhead: false;
     progressBarHeight: number = 55;
