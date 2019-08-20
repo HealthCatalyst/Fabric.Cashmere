@@ -25,6 +25,7 @@
                     <hc-accordion triggerAlign="right" open='true'>
                         <hc-accordion-toolbar>Visual Guidelines</hc-accordion-toolbar>
                         <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'About Modal' == thisPage }" (click)="navUpdate('about')">About Modal</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Forms' == thisPage }" (click)="navUpdate('forms')">Forms</div>
                         <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Breadcrumbs' == thisPage }" (click)="navUpdate('breadcrumbs')">Breadcrumbs</div>
                         <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Charts' == thisPage }" (click)="navUpdate('chart')">Charts</div>
                         <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Error Pages' == thisPage }" (click)="navUpdate('error')">Error Pages</div>
@@ -39,6 +40,7 @@
     <div class="hc-components-right-column">
         <hc-tab-set class="full-height">
             <hc-tab tabTitle="About Modal" routerLink="/styles/about"> About Modal </hc-tab>
+            <hc-tab tabTitle="Forms" routerLink="/styles/forms"> Forms </hc-tab>
             <hc-tab tabTitle="Breadcrumbs" routerLink="/styles/breadcrumbs"> Breadcrumbs </hc-tab>
             <hc-tab tabTitle="Charts" routerLink="/styles/chart"> Charts </hc-tab>
             <hc-tab tabTitle="Code" routerLink="/styles/code"> Code </hc-tab>
