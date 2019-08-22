@@ -58,6 +58,10 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     @Output()
     optionSelected: EventEmitter<any> = new EventEmitter<any>();
 
+    /** Event emitted when the user hits enter and there is not an option selected (or no results available yet) */
+    @Output()
+    emptyOptionSelected: EventEmitter<any> = new EventEmitter<any>();
+
     @ContentChildren(TypeaheadItemComponent)
     _options: QueryList<TypeaheadItemComponent>;
 
@@ -160,7 +164,11 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
             // handle enter key
             $event.preventDefault();
             $event.stopPropagation();
-            this.itemSelectedDefault(this._options.toArray()[this._highlighted].value);
+            if (this._options.toArray()[this._highlighted]) {
+                this.itemSelectedDefault(this._options.toArray()[this._highlighted].value);
+            } else {
+                this.emptyOptionSelected.emit(this._inputRef.nativeElement.value);
+            }
         } else {
             const value = this._inputRef.nativeElement.value;
             if (value.length >= this.minChars && value !== this._value) {
