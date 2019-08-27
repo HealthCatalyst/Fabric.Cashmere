@@ -1,0 +1,56 @@
+<div class="progress-items" [ngStyle]="{'height': height}" [ngClass]="{'progress-items--all-complete': allItemsCompleted}">
+    <div class="#ba160a-shim"></div>
+    <div class="progress-item" *ngFor="let item of items; index as i;" (click)="itemClicked(item, i)"
+         [ngStyle]="{'height': height}"
+         [ngClass]="{
+         'progress-item--active': item.id === currentSelectedItem?.id,
+         'progress-item--complete': item.status === ProgressItemStatus.COMPLETE,
+         'progress-item--incomplete': item.status === ProgressItemStatus.INCOMPLETE,
+         'progress-item--before-selected': item.beforeSelected === true
+         }">
+        <div class="item-body">
+            <svg viewBox="0 0 22 75" [ngStyle]="{'height': height}">
+                <g>
+                    <polygon points="0 0, 22 0, 22 75, 0 75" fill="white" stroke="white"
+                             *ngIf="!item.focused && !item.beforeSelected"></polygon>
+                    <polygon points="0 0, 22 0, 22 75, 0 75" fill="#ba160a" stroke="#ba160a"
+                             *ngIf="item.focused || item.beforeSelected"></polygon>
+                </g>
+            </svg>
+
+            <div class="item-title">{{item.title}}</div>
+
+            <div class="item-tip">
+                <svg viewBox="0 0 65 75" [ngStyle]="{'height': height}"
+                     *ngIf="(item.id === currentSelectedItem?.id || item.beforeSelected) && !items[i+1]?.focused && !items[i+1]?.beforeSelected"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <polygon points="0 0, 22 0, 62 37.5, 22 75, 0 75" fill="#ba160a" *ngIf="i !== (items.length - 1)"></polygon>
+                        <polygon points="0 0, 62 0, 62 75, 0 75" fill="#ba160a" stroke="#ba160a" *ngIf="i === (items.length - 1)"></polygon>
+                        <polyline *ngIf="item.status === ProgressItemStatus.COMPLETE" points="10 40, 17 47.5, 34 29" stroke="white"
+                                  fill="#ba160a"
+                                  stroke-width="2"></polyline>
+                    </g>
+                </svg>
+                <svg viewBox="0 0 65 75" [ngStyle]="{'height': height}" style="background-color: #ba160a"
+                     *ngIf="(item.id === currentSelectedItem?.id || item.beforeSelected) && (items[i+1]?.focused || items[i+1]?.beforeSelected)"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <polyline points="23.5 0, 63.5 37.5, 23.5 75" stroke="white" fill="#ba160a" stroke-width="2"></polyline>
+                        <polyline *ngIf="item.status === ProgressItemStatus.COMPLETE" points="10 40, 17 47.5, 34 29" stroke="white"
+                                  fill="#ba160a"
+                                  stroke-width="2"></polyline>
+                    </g>
+                </svg>
+                <svg viewBox="0 0 65 75" [ngStyle]="{'height': height}" style="background-color: white"
+                     *ngIf="item.id !== currentSelectedItem?.id && !item.beforeSelected && !items[i+1]?.focused && !items[i+1]?.beforeSelected">
+                    <g>
+                        <polyline *ngIf="item.status === ProgressItemStatus.COMPLETE" points="10 40, 17 47.5, 34 29" stroke="#ba160a"
+                                  fill="white"
+                                  stroke-width="2"></polyline>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,11 +1,11 @@
 @import '../../sass/colors';
 
 a {
-    color: $gray-200;
-    font-size: 12px;
+    color: $white;
+    font-size: 15px;
     display: block;
     width: 100%;
-    padding: 20px;
+    padding: 15px;
 
     &:hover {
         background-color: $slate-gray-500;
@@ -14,5 +14,10 @@ a {
 
     hc-icon {
         margin-right: 10px;
+        vertical-align: middle;
     }
+}
+
+.active {
+    background-color: $gray-70;
 }

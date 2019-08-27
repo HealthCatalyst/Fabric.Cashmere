@@ -38,4 +38,6 @@ export interface DateRangeOptions {
     endDatePrefix?: string;
     /** Text label of invalid date. Default 'Please enter valid date' */
     invalidDateLabel?: string;
+    /** Begining Daterange */
+    range?: DateRange;
 }

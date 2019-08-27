@@ -22,6 +22,7 @@ import {
     PaginationModule,
     PicklistModule,
     PopModule,
+    ProgressBarModule,
     ProgressIndicatorsModule,
     RadioButtonModule,
     SelectModule,
@@ -32,6 +33,7 @@ import {
     TabsModule,
     TileModule,
     ToasterModule,
+    TypeaheadModule,
     TypeformSurveyModule,
     XanthosFileUploadModule
 } from '@wcf-insurance/cashmere';
@@ -60,6 +62,7 @@ import {
         PaginationModule,
         PicklistModule,
         PopModule,
+        ProgressBarModule,
         ProgressIndicatorsModule,
         RadioButtonModule,
         SelectModule,
@@ -70,6 +73,7 @@ import {
         TabsModule,
         TileModule,
         ToasterModule,
+        TypeaheadModule,
         TypeformSurveyModule,
         XanthosFileUploadModule
     ]

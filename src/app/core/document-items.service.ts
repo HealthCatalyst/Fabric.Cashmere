@@ -92,6 +92,12 @@ const docs: DocItem[] = [
         usageDoc: true
     },
     {
+        id: 'progress-bar',
+        name: 'Progress Bar',
+        category: 'nav',
+        examples: ['progress-bar']
+    },
+    {
         id: 'progress-indicators',
         name: 'Progress Indicators',
         category: 'buttons',
@@ -152,7 +158,14 @@ const docs: DocItem[] = [
         id: 'busy-indicator',
         name: 'Busy Indicator',
         category: 'buttons',
-        examples: ['busy-indicator-overview']
+        examples: ['busy-indicator-overview'],
+        usageDoc: true
+    },
+    {
+        id: 'typeahead',
+        name: 'Typeahead',
+        category: 'forms',
+        examples: ['typeahead-overview', 'typeahead-stacked']
     }
 ];
 

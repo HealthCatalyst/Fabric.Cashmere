@@ -7,7 +7,7 @@ $label-font-scale: 1;
 $error-font-scale: 0.75;
 $infix-margin-top: 1.143em * $line-height * $label-font-scale;
 $prefix-suffix-icon-font-size: 125%;
-$field-height: 2.85em;
+$field-height: 2.85rem;
 
 $infix-padding: 0.4em;
 $error-margin-top: 0.4em / $error-font-scale;
@@ -50,7 +50,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     width: 100%;
 
     padding: 0 7px 0 0;
-    border: 1.5px solid $gray-300;
+    border: 1.5px solid $gray-50;
     border-radius: 1px;
 
     background: $white;
@@ -102,7 +102,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 }
 
 @mixin hc-form-field-prefix-suffix-icon() {
-    color: $gray-400;
+    color: $gray-70;
     font-size: $prefix-suffix-icon-font-size;
     line-height: $line-height;
 }
@@ -148,8 +148,8 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     left: 0;
 
     font: inherit;
-    font-size: calculateRem(14px);
-    color: $gray-500;
+    font-size: calculateRem(16px);
+    color: $gray-50;
     pointer-events: none; // We shouldn't catch mouse events (let them through).
 
     width: 100%;

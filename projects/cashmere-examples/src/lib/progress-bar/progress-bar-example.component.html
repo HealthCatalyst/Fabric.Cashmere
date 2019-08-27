@@ -1,0 +1,36 @@
+<div class="progress-bar-example">
+    <div class="progress-bar-wrapper">
+        <hc-progress-bar
+            #progressBarComponent
+            [allowSkipAhead]="allowSkipAhead"
+            [height]="progressBarHeight + 'px'"
+            [items]="progressItems"
+            (progressItemSelected)="selectedProgressItem($event)"
+            (progressBarCompleted)="progressBarCompleted = true"
+        ></hc-progress-bar>
+    </div>
+    <div class="progress-bar-example-controls">
+        <div class="progress-bar-example-field">
+            <span class="progress-bar-example-field-label">Current Selected Item:</span>
+            <span class="heavy">{{currentSelectedItem?.title}}</span>
+        </div>
+        <div class="progress-bar-example-field">
+            <span class="progress-bar-example-field-label">Progress Bar Completed:</span>
+            <span class="heavy">{{progressBarCompleted}}</span>
+        </div>
+        <div class="progress-bar-example-field">
+            <span class="progress-bar-example-field-label">Height:</span>
+            <span class="heavy">{{progressBarHeight}}</span>
+            <div class="slide-wrapper">
+                <span class="slider-left-value">30px</span><input type="range" min="30" max="75" class="slider" [(ngModel)]="progressBarHeight"><span class="slider-right-value">75px</span>
+            </div>
+        </div>
+        <div class="progress-bar-example-field allow-skip-field">
+            <hc-checkbox [(ngModel)]="allowSkipAhead"></hc-checkbox>
+            <span class="progress-bar-example-field-label">Allow skip ahead</span>
+        </div>
+        <div class="progress-bar-example-field">
+            <button hc-button size="sm" buttonStyle="primary" (click)="completeCurrent()">Complete Step</button>
+        </div>
+    </div>
+</div>

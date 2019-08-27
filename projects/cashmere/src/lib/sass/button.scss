@@ -144,9 +144,10 @@ $btn-icon-sz: 18px;
 
 @mixin hc-button-link() {
     background-color: transparent;
-    color: $primary-brand;
+    color: $gray-90;
     font-weight: 600;
     box-shadow: none;
+    text-decoration: underline;
 
     .label {
         color: $gray-500;
@@ -161,7 +162,7 @@ $btn-icon-sz: 18px;
     }
 
     &:hover {
-        color: lighten($primary-brand, 10%);
+        text-decoration: none;
     }
     &:active {
         color: darken($primary-brand, 10%);
