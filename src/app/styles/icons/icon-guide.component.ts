@@ -5,4 +5,6 @@ import {Component} from '@angular/core';
     templateUrl: './icon-guide.component.html',
     styleUrls: ['./icon-guide.component.scss']
 })
-export class IconGuideComponent {}
+export class IconGuideComponent {
+    lastModified: Date = new Date(document.lastModified);
+}

@@ -1,13 +1,12 @@
 <div class="demo-content">
-    <h1>Health Catalyst Brand Colors</h1>
+    <h1>WCF Insurance Colors</h1>
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
     <hc-tile>
         <h5>Overview</h5>
-        <p>Following are the suggested colors for use within your application. Some expansion beyond the general palette is
-        acceptable as long as the
-        additional colors are similar in value/saturation. It's recommended that you import the colors and leverage the
-        sass variables.</p>
+        <p>Following are the suggested colors for use within your application. By adhering to the color guidelines, we can help our products
+            feel like part of a cohesive family.</p>
+        <p>It's recommended that you import the colors and leverage the sass variables.</p>
     </hc-tile>
 
     <hc-tile>
@@ -15,95 +14,75 @@
         <p>The primary colors used for branding, calls to action (buttons, links, etc), and other accents.</p>
         <div class="palette-row primary">
             <hc-swatch-demo-component hex="#ba160a" name="wcf-red" [isLarge]="true"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#406181" name="wcf-blue" [isLarge]="true"></hc-swatch-demo-component>
+        </div>
+        <div class="palette-row">
+            <hc-swatch-demo-component hex="#DB8F91" name="red-light"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#590F12" name="red-dark"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#A1B0BF" name="blue-light"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#1F3040" name="blue-dark"></hc-swatch-demo-component>
         </div>
     </hc-tile>
 
     <hc-tile>
         <h5>Neutral Palette</h5>
-        <p>The colors used for backgrounds, text, etc.</p>
+        <p>The colors used for most interface elements like backgrounds, text, etc.</p>
         <div class="palette-row">
             <hc-swatch-demo-component hex="#ffffff" name="white" [needsBorder]="true"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#000000" name="black"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#333333" name="offblack"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="rgba(0, 0, 0, 0.1)" name="shadow"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#006d9a" name="dark-blue"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#384655" name="charcoal-blue"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#f6f7f7" name="gray-02" [needsBorder]="true"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#e9eaeb" name="gray-05" [needsBorder]="true"></hc-swatch-demo-component>
         </div>
         <div class="palette-row">
-            <hc-swatch-demo-component hex="#f0f3f6" name="slate-gray-100"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#d7dde4" name="slate-gray-200"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#c0c5cc" name="slate-gray-300"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#708090" name="slate-gray-400"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#5e676f" name="slate-gray-500"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#4f565c" name="slate-gray-600"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#d7d8da" name="gray-10"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#afb2b4" name="gray-30"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#878b8f" name="gray-50"></hc-swatch-demo-component>
         </div>
         <div class="palette-row">
-            <hc-swatch-demo-component hex="#f1f1f1" name="gray-100"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#e0e0e0" name="gray-200"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#cccccc" name="gray-300"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#a1a1a1" name="gray-400"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#6d6e70" name="gray-500"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#515353" name="gray-600"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#5e646a" name="gray-70"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#363e44" name="gray-90"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#0e171f" name="black"></hc-swatch-demo-component>
         </div>
     </hc-tile>
 
     <hc-tile>
-        <h5>Secondary Palette</h5>
-        <p>Additional options for accent colors.</p>
+        <h5>Feedback Palette</h5>
+        <p>The colors used to give feedback to users, be it positive, negative, or neutral.</p>
         <div class="palette-row">
-            <hc-swatch-demo-component hex="#951c1e" name="ruby-red"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#cc2027" name="deep-red"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#f05323" name="red-orange"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#a94c9d" name="magenta"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#ef4767" name="pink"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#f8c8db" name="light-pink"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#1ec834" name="success"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#ecac17" name="warning"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#f12e49" name="error"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#00aeff" name="info"></hc-swatch-demo-component>
         </div>
         <div class="palette-row">
-            <hc-swatch-demo-component hex="#007bff" name="azure"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#00acac" name="teal"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#006c4e" name="dark-green"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#9fd4ae" name="light-green"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#553e36" name="brown"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#776c7f" name="purple-gray"></hc-swatch-demo-component>
-        </div>
-        <div class="palette-row">
-            <hc-swatch-demo-component hex="#f5ed56" name="yellow"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#e7c447" name="yellow-orange"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#ebba82" name="tan"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="" name=""></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="" name=""></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="" name=""></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#e3f9e6" name="success-bg"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#fdf5e2" name="warning-bg"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#fee5e9" name="error-bg"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#dff4ff" name="info-bg"></hc-swatch-demo-component>
         </div>
     </hc-tile>
 
     <hc-tile>
-        <h5>General Color Variables</h5>
+        <h5>Default Color Usage</h5>
         <p class="description">
-            Some general-use color variables, referencing variables above, to decouple color name from an intended purpose.
+            Some guidelines on common element and attribute colors.
         </p>
-
         <ul class="color-var-list">
-            <li><span class="mini-swatch" [style.backgroundColor]="'#00aeff'"></span><strong>$primary-brand</strong> - $blue
+            <li><span class="mini-swatch" [style.backgroundColor]="'#878b8f'"></span><strong>Border Default: </strong> $gray-50
             </li>
-            <li><span class="mini-swatch" [style.backgroundColor]="'#00a859'"></span><strong>$primary-action</strong> -
-                $green
+            <li><span class="mini-swatch" [style.backgroundColor]="'#d7d8da'"></span><strong>Disabled State: </strong> $gray-10
             </li>
-            <li><span class="mini-swatch" [style.backgroundColor]="'#6e53a3'"></span><strong>$primary-alt-action</strong> -
-                $purple
+            <li><span class="mini-swatch" [style.backgroundColor]="'#d7d8da'"></span><strong>Divider Line: </strong> $gray-10
             </li>
-            <li><span class="mini-swatch" [style.backgroundColor]="'#f13c45'"></span><strong>$destructive-action</strong> -
-                $red
+            <li><span class="mini-swatch" [style.backgroundColor]="'#5e646a'"></span><strong>Icon Default: </strong> $gray-70
             </li>
-            <li><span class="mini-swatch" [style.backgroundColor]="'#a1a1a1'"></span><strong>$neutral-action</strong> -
-                $gray-400
+            <li><span class="mini-swatch" [style.backgroundColor]="'#878b8f'"></span><strong>Label Default: </strong> $gray-50
             </li>
-            <li><span class="mini-swatch" [style.backgroundColor]="'#cc2027'"></span><strong>$error</strong> - $deep-red
+            <li><span class="mini-swatch" [style.backgroundColor]="'#363e44'"></span><strong>Text Default: </strong> $gray-90
             </li>
-            <li><span class="mini-swatch" [style.backgroundColor]="'#333333'"></span><strong>$text</strong> - $offblack</li>
         </ul>
     </hc-tile>
 
-    <hc-tile>
+    <hc-tile style="display:none;">
         <h5>Stratifying and Adding Colors</h5>
         <p class="description">
             There may be times that a product will need to expand the color palette, or use a variation on

@@ -9,6 +9,7 @@ import {ChartDemoComponent} from './chart/chart-demo.component';
 import {ErrorPagesComponent} from './error/error-pages.component';
 import {LoginPageComponent} from './login/login-page.component';
 import {AboutModalComponent} from './about/about-modal.component';
+import {FormsComponent} from './forms/forms.component';
 import {NgModule} from '@angular/core';
 import {BreadcrumbsStyleDemoComponent} from './breadcrumbs/breadcrumbs-style-demo.component';
 
@@ -21,6 +22,11 @@ const routes: Routes = [
                 path: 'about',
                 component: AboutModalComponent,
                 data: {title: 'About Modal'}
+            },
+            {
+                path: 'forms',
+                component: FormsComponent,
+                data: {title: 'Forms'}
             },
             {
                 path: 'breadcrumbs',
