@@ -98,11 +98,33 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     private handleClick(event) {
         if (this._resultPanelHidden !== true) {
             const clickTarget = event.target as HTMLElement;
-            if (clickTarget !== this._elementRef.nativeElement &&
-                clickTarget !== this._resultPanel.nativeElement &&
-                !this._resultToggle.nativeElement.contains(clickTarget) &&
-                !this._elementRef.nativeElement.contains(clickTarget) &&
-                !this._resultPanel.nativeElement.contains(clickTarget)) {
+            let clickedTypeahead = false;
+
+            // check if the click was in the search input box
+            if (this._elementRef) {
+                if (clickTarget === this._elementRef.nativeElement ||
+                    this._elementRef.nativeElement.contains(clickTarget)) {
+                    clickedTypeahead = true;
+                }
+            }
+
+            // check if the click was in the results panel
+            if (this._resultPanel) {
+                if (clickTarget === this._resultPanel.nativeElement ||
+                    this._resultPanel.nativeElement.contains(clickTarget)) {
+                    clickedTypeahead = true;
+                }
+            }
+
+            // check if the click was on the result toggle (chevron in input box)
+            if (this._resultToggle) {
+                if (this._resultToggle.nativeElement.contains(clickTarget)) {
+                    clickedTypeahead = true;
+                }
+            }
+
+            // if the click was not in the typeahead then close the results panel
+            if (!clickedTypeahead) {
                 this.hideResultPanel();
             }
         }

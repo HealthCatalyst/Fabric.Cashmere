@@ -104,7 +104,7 @@ a {
 }
 
 // sizes
-.hc-font-xsm {
+.hc-font-xs {
     @include fontSize(12px);
 }
 
@@ -117,11 +117,15 @@ a {
 }
 
 .hc-font-lg {
-    @include fontSize(18px);
+    @include fontSize(20px);
 }
 
-.hc-font-xlg {
-    @include fontSize(22px);
+.hc-font-xl {
+    @include fontSize(24px);
+}
+
+.hc-font-xxl {
+    @include fontSize(32px);
 }
 
 // weights
@@ -134,11 +138,11 @@ a {
 }
 
 strong,
-.hc-font-bold {
+.hc-font-medium {
     font-weight: 600;
 }
 
-.hc-font-xbold {
+.hc-font-bold {
     font-weight: 700;
 }
 
