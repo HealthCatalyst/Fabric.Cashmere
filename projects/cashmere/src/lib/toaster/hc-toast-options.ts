@@ -18,4 +18,6 @@ export interface HcToastOptions {
     clickDismiss?: boolean;
     /** Function to be called when the toast is closed*/
     toastClosed?: Function;
+    /**Width of the toast in pixels. Minimum is 300px. Or, pass in 0 for an unconstrained width. Defaults to 300px.*/
+    width?: number;
 }

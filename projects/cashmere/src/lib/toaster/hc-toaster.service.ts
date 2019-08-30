@@ -86,6 +86,11 @@ export class HcToasterService {
             _toastRef.componentInstance._headerText = options.header;
         }
 
+        // Set the toast width
+        if (options.width || options.width === 0) {
+            _toastRef.componentInstance._width = options.width;
+        }
+
         // Set the body text
         if (options.body) {
             _toastRef.componentInstance._bodyText = options.body;

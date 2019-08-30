@@ -14,6 +14,7 @@ $hc-header-font-size: 18px !default;
     border-radius: 5px;
     display: block;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
 }
 
 .hc-toast-dismiss {
@@ -86,7 +87,6 @@ $hc-header-font-size: 18px !default;
     display: flex;
     align-content: center;
     padding: 15px;
-    min-width: 300px;
 }
 
 .hc-toast-icon-container {
@@ -116,8 +116,10 @@ $hc-header-font-size: 18px !default;
     font-weight: 600;
     @include fontSize($hc-header-font-size);
     margin-bottom: 4px;
+    word-break: break-word;
 }
 
 .hc-toast-body {
     @include fontSize($hc-body-font-size);
+    word-break: break-word;
 }

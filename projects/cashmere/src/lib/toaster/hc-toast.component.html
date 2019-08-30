@@ -3,6 +3,7 @@
     (@fade.start)="_onAnimationStart($event)"
     (@fade.done)="_onAnimationDone($event)"
     (click)="_dismissClick($event)"
+    [style.width]="_widthStr"
     [ngClass]="{'hc-toast-dismiss': _canDismiss}">
     <div *ngIf="_styleType === 'custom'">
         <ng-template (attached)="_customComponentAttached($event)" [cdkPortalOutlet]="_toastPortal"></ng-template>

@@ -17,6 +17,7 @@ export class ToasterOverviewExampleComponent {
     toastTimeout: number = 5000;
     toastClick: boolean = false;
     toastType: string = 'success';
+    toastWidth: number = 400;
 
     constructor(private toasterService: HcToasterService) {}
 
@@ -27,7 +28,8 @@ export class ToasterOverviewExampleComponent {
             position: this.toastPosition,
             timeout: this.toastTimeout,
             clickDismiss: this.toastClick,
-            type: this.toastType
+            type: this.toastType,
+            width: this.toastWidth
         };
 
         if (this.toastType === 'custom-template') {
