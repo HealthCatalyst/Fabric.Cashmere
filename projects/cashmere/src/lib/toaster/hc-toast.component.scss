@@ -1,6 +1,8 @@
 @import '../sass/colors';
 @import '../sass/functions.scss';
 @import '../sass/mixins.scss';
+$hc-body-font-size: 14px !default;
+$hc-header-font-size: 18px !default;
 
 :host {
     width: 100%;
@@ -112,10 +114,10 @@
 
 .hc-toast-header {
     font-weight: 600;
-    @include fontSize(18px);
+    @include fontSize($hc-header-font-size);
     margin-bottom: 4px;
 }
 
 .hc-toast-body {
-    @include fontSize(12px);
+    @include fontSize($hc-body-font-size);
 }
