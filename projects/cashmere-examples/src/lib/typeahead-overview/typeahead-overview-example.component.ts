@@ -1,13 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'hc-typeahead-overview-example',
     templateUrl: './typeahead-overview-example.component.html',
     styleUrls: ['./typeahead-overview-example.component.scss']
 })
-export class TypeaheadOverviewExampleComponent {
+export class TypeaheadOverviewExampleComponent implements OnInit {
 
-    selectedItem = '';
+    form: FormGroup;
     filteredData: string[] = [];
     typeaheadData = [
         'Alabama',
@@ -22,10 +23,17 @@ export class TypeaheadOverviewExampleComponent {
         'Georgia'
     ];
 
-    constructor() {
+    constructor(private fb: FormBuilder) {
+    }
+
+    ngOnInit(): void {
+        this.form = this.fb.group({
+            item: ['']
+        });
     }
 
     filterData(term) {
+        this.setValue(term);
         if (term) {
             this.filteredData = this.typeaheadData.filter(item => item.toLowerCase().indexOf(term.toLowerCase()) > -1);
         } else {
@@ -34,6 +42,13 @@ export class TypeaheadOverviewExampleComponent {
     }
 
     optionSelected(item) {
-        this.selectedItem = item;
+        this.setValue(item);
+    }
+
+    private setValue(item) {
+        const control = this.form.get('item');
+        if (control) {
+            control.setValue(item);
+        }
     }
 }
