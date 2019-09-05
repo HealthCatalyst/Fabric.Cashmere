@@ -2,6 +2,7 @@ import {
     AfterContentInit,
     Component,
     ContentChildren,
+    DoCheck,
     ElementRef,
     EventEmitter,
     forwardRef,
@@ -28,7 +29,7 @@ import {DOCUMENT} from '@angular/common';
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => TypeaheadComponent)}]
 })
-export class TypeaheadComponent extends HcFormControlComponent implements OnInit, AfterContentInit, ControlValueAccessor {
+export class TypeaheadComponent extends HcFormControlComponent implements OnInit, AfterContentInit, ControlValueAccessor, DoCheck {
 
     private DIRECTION = {
         UP: 'up',
@@ -198,6 +199,9 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
                     this.showResultPanel();
                 }
 
+                this.markAsDirty();
+                this.onTouched();
+
                 // In case the search returns some of the same results but the top result
                 // has moved down the list we need to remove the highlighting from it
                 // and add highlighting to the new number 1.
@@ -269,6 +273,9 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
 
     private itemSelectedDefault(item) {
+        this.markAsDirty();
+        this.onTouched();
+
         this.hideResultPanel();
         this.optionSelected.emit(item);
     }
@@ -295,7 +302,22 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     private onChange(val: any) {
     }
 
-    private onTouched(val: any) {
+    private onTouched() {
+        this.markAsTouched();
+    }
+
+    markAsDirty() {
+        const control = this._ngControl.control;
+        if (control) {
+            control.markAsDirty();
+        }
+    }
+
+    markAsTouched() {
+        const control = this._ngControl.control;
+        if (control) {
+            control.markAsTouched();
+        }
     }
 
     registerOnChange(fn: any): void {
@@ -323,6 +345,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         if (val !== this._value) {
             this.writeValue(val);
             this.onChange(val);
+            this.onTouched();
         }
     }
 
@@ -347,5 +370,26 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
     set required(requiredVal) {
         this._isRequired = parseBooleanAttribute(requiredVal);
+    }
+
+    ngDoCheck(): void {
+        if (this._ngControl) {
+            this._updateErrorState();
+        }
+    }
+
+    private _updateErrorState() {
+        const oldState = this._errorState;
+
+        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
+        const newState = !!(
+            this._ngControl &&
+            this._ngControl.invalid &&
+            (this._ngControl.touched || (this._form && this._form.submitted))
+        );
+
+        if (oldState !== newState) {
+            this._errorState = newState;
+        }
     }
 }

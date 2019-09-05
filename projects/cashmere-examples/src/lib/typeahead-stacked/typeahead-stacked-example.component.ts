@@ -1,13 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'hc-typeahead-stacked-example',
     templateUrl: './typeahead-stacked-example.component.html',
     styleUrls: ['./typeahead-stacked-example.component.scss']
 })
-export class TypeaheadStackedExampleComponent {
+export class TypeaheadStackedExampleComponent implements OnInit {
 
-    selectedItem = '';
+    form: FormGroup;
     filteredData: string[] = [];
     typeaheadData = [
         'Alabama',
@@ -22,11 +23,17 @@ export class TypeaheadStackedExampleComponent {
         'Georgia'
     ];
 
-    constructor() {
+    constructor(private fb: FormBuilder) {
+    }
+
+    ngOnInit(): void {
+        this.form = this.fb.group({
+            item: ['']
+        });
     }
 
     filterData(term) {
-        console.log(term);
+        this.setValue(term);
         if (term) {
             this.filteredData = this.typeaheadData.filter(item => item.toLowerCase().indexOf(term.toLowerCase()) > -1);
         } else {
@@ -35,6 +42,13 @@ export class TypeaheadStackedExampleComponent {
     }
 
     optionSelected(item) {
-        this.selectedItem = item;
+        this.setValue(item);
+    }
+
+    private setValue(item) {
+        const control = this.form.get('item');
+        if (control) {
+            control.setValue(item);
+        }
     }
 }
