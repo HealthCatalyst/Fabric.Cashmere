@@ -99,6 +99,11 @@ export class HcToasterService {
         // Store the positioning of the toast
         _toastRef._toastPosition = String(options.position);
 
+        // Set progress bar
+        if (options.hasProgressBar) {
+            _toastRef.componentInstance._hasProgressBar = options.hasProgressBar;
+        }
+
         // Set the timeout interval to close the toast if non-zero
         if (options.timeout !== 0) {
             setTimeout(() => {

@@ -45,14 +45,20 @@
         </hc-select>
     </hc-form-field>
 
+    
     <hc-form-field class="example-field">
         <hc-label>Timeout:</hc-label>
         <input hcInput type="number" [(ngModel)]="toastTimeout" />
     </hc-form-field>
-
+    
     <hc-form-field class="example-field">
         <hc-label>Event Handling:</hc-label>
         <hc-checkbox [(ngModel)]="toastClick">Allow clicks to dismiss toast</hc-checkbox>
+    </hc-form-field>
+    
+    <hc-form-field class="example-field">
+        <hc-label>Progress Bar:</hc-label>
+        <hc-checkbox [(ngModel)]="toastProgress">Include progress bar on toast</hc-checkbox>
     </hc-form-field>
 </div>
 <div class="button-row">
