@@ -143,7 +143,7 @@ describe('CheckboxComponent', () => {
 
             expect(inputElement.checked).toBe(true);
 
-            expect(testComponent.onCheckboxClick).toHaveBeenCalledTimes(1);
+            expect(testComponent.onCheckboxClick).toHaveBeenCalledTimes(0);
         });
 
         it('should forward the required attribute', () => {

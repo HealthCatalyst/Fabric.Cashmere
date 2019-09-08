@@ -24,6 +24,10 @@
     }
 }
 
+.hc-form-field-input-focused {
+    @include hc-form-field-input-focused();
+}
+
 .hc-form-field-flex-inline {
     @include hc-form-field-flex-inline();
 
