@@ -59,11 +59,18 @@ export class HcFormFieldComponent implements AfterContentInit {
         this._inline = parseBooleanAttribute(isInline);
     }
 
+    inputFocused = false;
+
     constructor(private _elementRef: ElementRef<HTMLInputElement>) {}
 
     ngAfterContentInit(): void {
         if (!this._control) {
             throw getControlMissing();
+        }
+        if (this._inputChildren.length) {
+            this._inputChildren.first.inputFocused.subscribe((focused) => {
+                this.inputFocused = focused;
+            });
         }
     }
 

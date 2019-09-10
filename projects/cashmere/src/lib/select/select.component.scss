@@ -68,6 +68,12 @@
     line-height: normal;
     cursor: pointer;
 
+    @include formFieldFocusTransition();
+
+    &:focus {
+        @include formFieldFocusedState();
+    }
+
     &::-ms-expand {
         display: none;
     }

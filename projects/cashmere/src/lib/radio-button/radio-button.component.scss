@@ -1,4 +1,13 @@
 @import '../sass/colors';
+@import '../sass/mixins';
+
+:host {
+    &.hc-radio-focused {
+        .hc-radio-overlay {
+            @include formFieldFocusedState();
+        }
+    }
+}
 
 .hc-radio-container {
     display: block;
@@ -40,6 +49,8 @@
         border: 2px solid $gray-50;
         background-color: $white;
         border-radius: 50%;
+
+        @include formFieldFocusTransition();
     }
 
     .hc-radio-overlay:after {

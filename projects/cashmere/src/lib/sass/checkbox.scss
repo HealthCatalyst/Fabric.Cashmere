@@ -1,9 +1,10 @@
 @import '../sass/colors';
+@import '../sass/mixins';
 
 @mixin hc-checkbox-container() {
     overflow: hidden;
     display: flex;
-    padding: 3px 0;
+    padding: 3px 4px;
 }
 
 @mixin hc-checkbox-content() {
@@ -37,6 +38,8 @@
     border: 2px solid $gray-50;
     border-radius: 3px;
 
+    @include formFieldFocusTransition();
+
     &:after {
         content: '';
         position: absolute;
@@ -52,6 +55,11 @@
     }
 }
 
+@mixin hc-checkbox-focused {
+    @include formFieldFocusedState();
+    //border-color: transparent; TODO remove
+}
+
 @mixin hc-checkbox-overlay-disabled() {
     background-color: $gray-02;
     border: 2px solid $gray-10 !important;
@@ -63,7 +71,7 @@
 
 @mixin hc-checkbox-overlay-checked() {
     background-color: $primary-brand;
-    border-color: $primary-brand;
+    border: 2px solid $primary-brand;
     &:after {
         opacity: 1;
     }

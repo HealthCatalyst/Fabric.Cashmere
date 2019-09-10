@@ -274,6 +274,8 @@ export class RadioButtonComponent implements OnInit {
     private _disabled: boolean = false;
     private readonly radioGroup: RadioGroupDirective | null;
 
+    focused = false;
+
     /** Value of radio buttons */
     @Input()
     get value() {
@@ -294,6 +296,11 @@ export class RadioButtonComponent implements OnInit {
     @HostBinding('attr.id')
     get _getHostId(): string {
         return this.id;
+    }
+
+    @HostBinding('class.hc-radio-focused')
+    get _getRadioFocusedClass(): boolean {
+        return this.focused;
     }
 
     /** Boolean value of whether the radio button is required */
@@ -368,6 +375,14 @@ export class RadioButtonComponent implements OnInit {
         } else {
             this.checked = true;
         }
+    }
+
+    _onFocus() {
+        this.focused = true;
+    }
+
+    _onBlur() {
+        this.focused = false;
     }
 
     private _emitChangeEvent(): void {

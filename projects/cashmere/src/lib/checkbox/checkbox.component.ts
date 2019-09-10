@@ -14,7 +14,8 @@ import {
     ViewEncapsulation,
     Self,
     Optional,
-    DoCheck
+    DoCheck,
+    HostListener
 } from '@angular/core';
 import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
@@ -41,6 +42,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     private _tabIndex: number;
 
     _componentId = this._uniqueId;
+    focused = false;
 
     /** Value attribute of the native checkbox */
     @Input()
@@ -48,7 +50,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
 
     /** Whether the checkbox is indeterminate. It can represent a checkbox with three states. */
     @Input()
-    indeterminate: boolean;
+    indeterminate = false;
 
     /** Unique id for the checkbox element. If none is supplied, one will be auto-generated. */
     @Input()
@@ -71,6 +73,9 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     @ViewChild('checkboxInput')
     _checkboxInput: ElementRef;
 
+    @ViewChild('hcCheckBoxOverlay')
+    _checkBoxOverlay: ElementRef;
+
     @HostBinding('attr.id')
     get _getHostId(): string {
         return this.id;
@@ -87,6 +92,20 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
             return this._ngControl.disabled;
         }
         return this._isDisabled;
+    }
+
+    @HostBinding('class.hc-checkbox-focused')
+    get _getCheckboxFocusedClass(): boolean {
+        return this.focused;
+    }
+
+    @HostListener('keydown', ['$event'])
+    _onKeyDown(event: KeyboardEvent) {
+        const spacebarCode = 32;
+        if (event.which === spacebarCode && !this._isDisabled && this.focused) {
+            this.toggle();
+            event.stopPropagation();
+        }
     }
 
     @HostBinding('class.hc-checkbox-indeterminate')
@@ -186,7 +205,9 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
 
     /** Toggles the current checked state of the checkbox */
     toggle() {
+        this.indeterminate = false;
         this.checked = !this.checked;
+        this._emitChangeEvent();
     }
 
     _clickEvent(event: Event) {
@@ -194,21 +215,34 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
 
         if (!this.disabled) {
             this.toggle();
-            this._emitChangeEvent();
         }
+    }
+
+    _labelClickEvent(event: Event) {
+        event.preventDefault();
+        event.stopPropagation(); // prevent native click event from being dispatched
+
+        if (!this.disabled) {
+            this.toggle();
+            this._checkBoxOverlay.nativeElement.focus();
+        }
+    }
+
+    _focusEvent() {
+        this.focused = true;
+    }
+
+    _onBlur() {
+        this._onTouchFunc();
+        this.focused = false;
     }
 
     _stopChangeEvent(event: Event) {
         event.stopPropagation(); // prevent native change event from emitting its own object through output 'change'
     }
-
     private _emitChangeEvent(): void {
         this._onChangeFunc(this.checked);
         this.change.emit(new CheckboxChangeEvent(this, this.checked));
-    }
-
-    _onBlur() {
-        this._onTouchFunc();
     }
 
     ngDoCheck(): void {
