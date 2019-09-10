@@ -95,15 +95,19 @@ $btn-icon-sz: 18px;
 @mixin hc-button-primary() {
     @include hc-color-button($primary-action);
 }
+
 @mixin hc-button-primary-alt() {
     @include hc-color-button($primary-alt-action);
 }
+
 @mixin hc-button-destructive() {
     @include hc-color-button($destructive-action);
 }
+
 @mixin hc-button-neutral() {
     @include hc-color-button($neutral-action);
 }
+
 @mixin hc-button-secondary() {
     @include hc-color-button($gray-100, 5%);
     color: $wcf-blue;
@@ -174,6 +178,7 @@ $btn-icon-sz: 18px;
     &[disabled]:active {
         opacity: 0.35;
         color: $primary-brand;
+
         .label,
         .value {
             color: $text;
@@ -194,6 +199,10 @@ $btn-icon-sz: 18px;
     font-family: inherit;
     border: none;
     box-shadow: none;
+}
+
+@mixin hc-date-range() {
+    text-decoration: none;
 }
 
 // Icon button

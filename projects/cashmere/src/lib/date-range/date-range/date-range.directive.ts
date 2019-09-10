@@ -1,4 +1,16 @@
-import {OnInit, Output, EventEmitter, Input, OnDestroy, ElementRef, Directive, HostListener, OnChanges, SimpleChanges} from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    EventEmitter,
+    HostListener,
+    Input,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    Output,
+    Renderer2,
+    SimpleChanges
+} from '@angular/core';
 import {DatePipe} from '@angular/common';
 import {OverlayRef} from '@angular/cdk/overlay';
 import {CalendarOverlayService} from '../services/calendar-overlay.service';
@@ -27,14 +39,18 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
     constructor(
         private _elementRef: ElementRef<HTMLInputElement>,
         private calendarOverlayService: CalendarOverlayService,
-        public configStoreService: ConfigStoreService
+        public configStoreService: ConfigStoreService,
+        private renderer: Renderer2
     ) {
         configStoreService.rangeUpdate$.subscribe((daterange: DateRange) => {
             this.selectedDateRangeChanged.emit(daterange);
         });
+
+        renderer.addClass(_elementRef.nativeElement, 'hc-date-range');
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+    }
 
     ngOnDestroy() {
         if (this._overlayRef) {
