@@ -9,7 +9,7 @@ $infix-margin-top: 1.143em * $line-height * $label-font-scale;
 $prefix-suffix-icon-font-size: 125%;
 $field-height: 2.85rem;
 
-$infix-padding: 0.4em;
+$infix-padding: 0.572em; //was 0.4em
 $error-margin-top: 0.4em / $error-font-scale;
 $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
@@ -117,7 +117,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     flex: auto;
     min-width: $mat-form-field-default-infix-width;
     padding: $infix-padding 10px;
-    height: $field-height;
+    //height: $field-height;
 }
 
 @mixin hc-form-field-label-wrapper() {
