@@ -154,6 +154,10 @@ $btn-icon-sz: 18px;
     box-shadow: none;
     text-decoration: underline;
 
+    .hc-icon:before {
+        display: inline-block;
+    }
+
     .label {
         color: $gray-500;
         font-weight: 400;
