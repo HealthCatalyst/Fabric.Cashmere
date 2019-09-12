@@ -1,5 +1,6 @@
 @import '../sass/colors';
 @import '../sass/functions';
+@import '../sass/mixins';
 
 $mat-form-field-default-infix-width: 120px;
 $line-height: 1.5;
@@ -62,10 +63,19 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     box-sizing: border-box;
 
     padding: 0 7px 0 0;
-    border: 1.5px solid $gray-300;
+    border: 1.5px solid $gray-50;
     border-radius: 1px;
 
     background: $white;
+
+    @include formFieldFocusTransition();
+}
+
+@mixin hc-form-field-input-focused() {
+    @include formFieldFocusedState();
+    &:not(.hc-form-field-invalid) {
+        padding: 0.5px;
+    }
 }
 
 @mixin hc-form-field-disabled-flex() {

@@ -6,7 +6,7 @@
         </label>
     </span>
     <div class="hc-form-field-content-wrapper">
-        <div *ngIf="_inputChildren.length" [ngClass]="{ 'hc-form-field-flex': !inline, 'hc-form-field-flex-inline': inline, 'hc-form-field-invalid': _shouldShowErrorMessages() }">
+        <div *ngIf="_inputChildren.length" [ngClass]="{ 'hc-form-field-flex': !inline, 'hc-form-field-flex-inline': inline, 'hc-form-field-invalid': _shouldShowErrorMessages(), 'hc-form-field-input-focused': inputFocused }">
             <div class="hc-form-field-prefix" *ngIf="_prefixChildren.length">
                 <ng-content select="[hcPrefix]"></ng-content>
             </div>

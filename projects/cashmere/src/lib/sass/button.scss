@@ -45,10 +45,12 @@ $btn-icon-sz: 18px;
     cursor: pointer;
     user-select: none;
     background-image: none;
-    border: none;
     border-radius: 4px;
     font-family: 'Roboto', 'Helvetica Neue', sans-serif;
     box-shadow: 0 3px 5px $shadow;
+
+    @include formFieldFocusTransition();
+    border: 1px solid transparent;
 
     &[disabled] {
         cursor: not-allowed;
@@ -56,9 +58,8 @@ $btn-icon-sz: 18px;
     }
 
     &:focus {
-        outline: 5px auto -webkit-focus-ring-color;
-        outline-offset: -2px;
-        box-shadow: 0 3px 5px $shadow;
+        outline: none;
+        box-shadow: 0 0 5px $blue-glow;
     }
 
     &:active {
@@ -95,15 +96,19 @@ $btn-icon-sz: 18px;
 @mixin hc-button-primary() {
     @include hc-color-button($primary-action);
 }
+
 @mixin hc-button-primary-alt() {
     @include hc-color-button($primary-alt-action);
 }
+
 @mixin hc-button-destructive() {
     @include hc-color-button($destructive-action);
 }
+
 @mixin hc-button-neutral() {
     @include hc-color-button($neutral-action);
 }
+
 @mixin hc-button-secondary() {
     @include hc-color-button($gray-100, 5%);
     color: $wcf-blue;
@@ -174,6 +179,7 @@ $btn-icon-sz: 18px;
     &[disabled]:active {
         opacity: 0.35;
         color: $primary-brand;
+
         .label,
         .value {
             color: $text;
@@ -194,6 +200,10 @@ $btn-icon-sz: 18px;
     font-family: inherit;
     border: none;
     box-shadow: none;
+}
+
+@mixin hc-date-range() {
+    text-decoration: none;
 }
 
 // Icon button
