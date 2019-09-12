@@ -4,7 +4,8 @@ import {ComponentPortal, PortalInjector, TemplatePortal} from '@angular/cdk/port
 import {HcToastComponent} from './hc-toast.component';
 import {HcToastOptions} from './hc-toast-options';
 import {HcToastRef} from './hc-toast-ref';
-import {filter, take} from 'rxjs/operators';
+import {filter, take, takeUntil} from 'rxjs/operators';
+import { Subject, Observable } from 'rxjs';
 
 export type ComponentSetup<T> = Partial<T> | ((instance: T) => void);
 export type ToastContentType<T> = Type<T> | TemplateRef<any>;
@@ -14,6 +15,8 @@ export type ToastContentType<T> = Type<T> | TemplateRef<any>;
 @Injectable()
 export class HcToasterService {
     _toasts: HcToastRef[] = [];
+    endedToastAnim = new Subject<void>();
+    private get endedToastAnim$(): Observable<void> { return this.endedToastAnim.asObservable(); }
 
     // Inject overlay service
     constructor(private injector: Injector, private _overlay: Overlay) {}
@@ -109,13 +112,14 @@ export class HcToasterService {
                 filter(event => event.phaseName === 'done' && event.toState === 'leave'),
                 take(1)
             )
+            .pipe(takeUntil(this.endedToastAnim$))
             .subscribe(() => {
                 this._removeToastPointer(_toastRef);
                 if (options.toastClosed) {
                     options.toastClosed();
                 }
                 this._updateToastPositions();
-                _toastRef.componentInstance._animationStateChanged.unsubscribe();
+                this.endedToastAnim.next();
                 _toastRef.componentInstance._closeClick.unsubscribe();
             });
 
