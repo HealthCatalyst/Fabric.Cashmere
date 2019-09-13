@@ -48,6 +48,6 @@
 }
 @mixin formFieldFocusedState() {
     box-shadow: 0 0 5px $blue-glow;
-    border: 1px solid $blue-glow;
+    //border: 1px solid $blue-glow;
     outline: none;
 }
