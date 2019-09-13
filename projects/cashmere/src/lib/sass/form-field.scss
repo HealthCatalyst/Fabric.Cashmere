@@ -67,15 +67,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     border-radius: 1px;
 
     background: $white;
-
-    //@include formFieldFocusTransition();
 }
 
 @mixin hc-form-field-input-focused() {
     @include formFieldFocusedState();
-    // &:not(.hc-form-field-invalid) {
-    //     padding: 0.5px;
-    // }
 }
 
 @mixin hc-form-field-disabled-flex() {
@@ -128,7 +123,6 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     min-width: $mat-form-field-default-infix-width;
     line-height: 1.357em; //19px
     padding: $infix-padding 10px 0.714em;
-    //height: $field-height;
 }
 
 @mixin hc-form-field-label-wrapper() {
