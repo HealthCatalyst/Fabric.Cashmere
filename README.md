@@ -6,7 +6,7 @@ An Angular component library that makes any task feel luxurious.
 
 ## Quick Links
 
--   [CHANGELOG](https://github.com/HealthCatalyst/Fabric.Cashmere/blob/master/CHANGELOG.md)
+-   [Releases](https://github.com/HealthCatalyst/Fabric.Cashmere/releases)
 -   [Components](http://cashmere.healthcatalyst.net/components)
 -   [Styles](http://cashmere.healthcatalyst.net/styles)
 -   [Getting Started](http://cashmere.healthcatalyst.net/guides/getting-started)
