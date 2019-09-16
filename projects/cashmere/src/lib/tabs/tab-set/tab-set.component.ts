@@ -1,8 +1,8 @@
 import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output } from '@angular/core';
 import { EventEmitter, TemplateRef, Self, OnInit } from '@angular/core';
-import {TabComponent} from './tab.component';
+import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import { TabsService } from './tabs.service';
+import { TabsService } from '../tabs.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

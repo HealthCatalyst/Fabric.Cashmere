@@ -1,7 +1,7 @@
 import { Component, Input, ContentChildren, QueryList, AfterContentInit, Output } from '@angular/core';
 import { EventEmitter, TemplateRef, ViewChild, OnInit } from '@angular/core';
 import { HcTabTitleComponent } from './tab-title.component';
-import { TabsService } from './tabs.service';
+import { TabsService } from '../tabs.service';
 
 @Component({
     templateUrl: './tab.component.html',

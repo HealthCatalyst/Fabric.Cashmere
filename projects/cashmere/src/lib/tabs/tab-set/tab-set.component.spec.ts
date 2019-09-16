@@ -1,4 +1,4 @@
-import {TabComponent} from './tab.component';
+import {TabComponent} from '../tab/tab.component';
 import {TabSetComponent, TabChangeEvent} from './tab-set.component';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
