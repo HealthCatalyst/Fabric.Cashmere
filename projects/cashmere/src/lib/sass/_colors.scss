@@ -44,7 +44,6 @@ $yellow: #f5ed56;
 $yellow-orange: #e7c447;
 $light-blue: #51cbee;
 $web-safe-light-blue: #66ccff;
-$blue-glow: $light-blue;
 
 // WCF Color Palette
 $wcf-red: #ba160a;
@@ -52,6 +51,7 @@ $red-bg: #f7e2e1;
 $red-light: #DB8F91;
 $red-dark: #590f12;
 $wcf-blue: #406181;
+$wcf-blue-alt: #4890d9;
 $blue-light: #A1B0BF;
 $blue-dark: #1F3040;
 $success: #1ec834;
@@ -62,6 +62,7 @@ $error: #f12e49;
 $error-bg: #fee5e9;
 $info: #00aeff;
 $info-bg: #dff4ff;
+$blue-glow: $wcf-blue-alt;
 
 $white: #ffffff;
 $gray-02: #f6f7f7;
