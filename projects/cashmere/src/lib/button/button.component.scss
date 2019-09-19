@@ -6,21 +6,27 @@
     &.hc-primary {
         @include hc-button-primary();
     }
+
     &.hc-primary-alt {
         @include hc-button-primary-alt();
     }
+
     &.hc-destructive {
         @include hc-button-destructive();
     }
+
     &.hc-neutral {
         @include hc-button-neutral();
     }
+
     &.hc-secondary {
         @include hc-button-secondary();
     }
+
     &.hc-minimal {
         @include hc-button-minimal();
     }
+
     &.hc-sm {
         @include hc-button-sm();
     }
@@ -32,12 +38,18 @@
     &.hc-lg {
         @include hc-button-lg();
     }
+
     &.hc-link,
     &.hc-link-inline {
         @include hc-button-link();
     }
+
     &.hc-link-inline {
         @include hc-button-link-inline();
+    }
+
+    &.hc-date-range {
+        @include hc-date-range();
     }
 }
 
@@ -51,16 +63,20 @@
     .hc-split-button-main {
         @include hc-split-button-main();
     }
+
     .hc-split-button-toggle {
         &:not(.hc-secondary) {
             @include hc-split-button-toggle();
         }
+
         &.hc-secondary {
             @include hc-button-secondary-toggle();
         }
+
         &.hc-sm {
             @include hc-button-sm-toggle();
         }
+
         &.hc-lg {
             @include hc-button-lg-toggle();
         }

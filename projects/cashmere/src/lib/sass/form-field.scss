@@ -1,5 +1,6 @@
 @import '../sass/colors';
 @import '../sass/functions';
+@import '../sass/mixins';
 
 $mat-form-field-default-infix-width: 120px;
 $line-height: 1.5;
@@ -9,7 +10,7 @@ $infix-margin-top: 1.143em * $line-height * $label-font-scale;
 $prefix-suffix-icon-font-size: 125%;
 $field-height: 2.85rem;
 
-$infix-padding: 0.4em;
+$infix-padding: 0.786em; //was 0.4em
 $error-margin-top: 0.4em / $error-font-scale;
 $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
@@ -62,10 +63,14 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     box-sizing: border-box;
 
     padding: 0 7px 0 0;
-    border: 1.5px solid $gray-300;
+    border: 1.5px solid $gray-50;
     border-radius: 1px;
 
     background: $white;
+}
+
+@mixin hc-form-field-input-focused() {
+    @include formFieldFocusedState();
 }
 
 @mixin hc-form-field-disabled-flex() {
@@ -116,8 +121,8 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     position: relative;
     flex: auto;
     min-width: $mat-form-field-default-infix-width;
-    padding: $infix-padding 10px;
-    height: $field-height;
+    line-height: 1.357em; //19px
+    padding: $infix-padding 10px 0.714em;
 }
 
 @mixin hc-form-field-label-wrapper() {
@@ -133,7 +138,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 }
 
 @mixin hc-form-field-label-wrapper-inline() {
-    padding: 7px 15px 0 0;
+    padding: 10px 15px 0 0;
 }
 
 @mixin hc-form-field-label-wrapper-icon() {
@@ -165,7 +170,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
 @mixin hc-form-field-label-inline() {
     font: inherit;
-    font-size: calculateRem(14px);
+    font-size: calculateRem(16px);
     color: $gray-500;
     pointer-events: none; // We shouldn't catch mouse events (let them through).
 

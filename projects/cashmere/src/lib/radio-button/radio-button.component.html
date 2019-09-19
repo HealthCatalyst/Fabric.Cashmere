@@ -7,7 +7,11 @@
            [required]="required"
            [checked]="checked"
            (change)="_onInputChange($event)"
-           (click)="_onInputClick($event)"/>
+           (click)="_onInputClick($event)"
+           (focus)="_onFocus()"
+           (blur)="_onBlur()"
+           tabindex="0"
+    />
     <span class="hc-radio-overlay"></span>
     <div class="hc-radio-content">
         <ng-content></ng-content>

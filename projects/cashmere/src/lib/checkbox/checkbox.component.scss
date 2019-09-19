@@ -31,6 +31,10 @@
 .hc-checkbox-overlay {
     @include hc-checkbox-overlay();
 
+    .hc-checkbox-focused & {
+        @include hc-checkbox-focused();
+    }
+
     .hc-checkbox-content:hover & {
         @include hc-checkbox-overlay-hover();
     }

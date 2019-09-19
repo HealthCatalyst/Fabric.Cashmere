@@ -11,10 +11,9 @@
                [required]="required"
                [checked]="checked"
                (change)="_stopChangeEvent($event)"
-               (click)="_clickEvent($event)"
-               (blur)="_onBlur()"/>
-        <label class="hc-checkbox-overlay" [attr.for]="_inputId"></label>
-        <label class="hc-checkbox-label" [attr.for]="_inputId">
+               (click)="_clickEvent($event)"/>
+        <label class="hc-checkbox-overlay" #hcCheckBoxOverlay [tabIndex]="tabIndex" [attr.for]="_inputId" (focus)="_focusEvent()" (blur)="_onBlur()"></label>
+        <label class="hc-checkbox-label" [attr.for]="_inputId" (click)="_labelClickEvent($event)">
             <ng-content></ng-content>
         </label>
     </div>
