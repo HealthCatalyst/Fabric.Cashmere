@@ -13,17 +13,18 @@ export class HcToastRef {
     /** The HcToast component associated with the toast reference */
     componentInstance: HcToastComponent;
 
-    /** If the `hasProgressBar` option is set to true in `hc-toast-options`, this 0-100 value can be used to make it a determinate progress bar.
-     * If the progress bar is on but not value is set, the progress bar will be indeterminate.*/
+    /** If the `hasProgressBar` option is set to true in `hc-toast-options`, this 0-100 value can
+     * be used to make it a determinate progress bar. If the progress bar is on but a value is not set,
+     * the progress bar will be indeterminate.*/
     @Input()
     get progress(): number {
         return this.componentInstance._progressVal;
     }
 
     set progress(progVal: number) {
-        if( progVal < 0 ) {
+        if ( progVal < 0 ) {
             progVal = 0;
-        } else if( progVal > 100 ) {
+        } else if ( progVal > 100 ) {
             progVal = 100;
         }
         this.componentInstance._progressVal = progVal;
