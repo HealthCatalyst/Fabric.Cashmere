@@ -28,11 +28,6 @@
         </hc-select>
     </hc-form-field>
 
-    <hc-form-field class="example-field">
-        <hc-label>Toast Width:</hc-label>
-        <input hcInput type="number" [(ngModel)]="toastWidth" />
-    </hc-form-field>
-
 </div>
 <div class="example-column">
     <hc-form-field class="example-field">
@@ -45,20 +40,33 @@
         </hc-select>
     </hc-form-field>
 
-    
-    <hc-form-field class="example-field">
+
+    <hc-form-field class="example-field-half right-margin">
         <hc-label>Timeout:</hc-label>
         <input hcInput type="number" [(ngModel)]="toastTimeout" />
     </hc-form-field>
-    
+
+    <hc-form-field class="example-field-half">
+        <hc-label>Toast Width:</hc-label>
+        <input hcInput type="number" [(ngModel)]="toastWidth" />
+    </hc-form-field>
+
     <hc-form-field class="example-field">
         <hc-label>Event Handling:</hc-label>
         <hc-checkbox [(ngModel)]="toastClick">Allow clicks to dismiss toast</hc-checkbox>
     </hc-form-field>
-    
-    <hc-form-field class="example-field">
+</div>
+<div class="progress-row">
+    <hc-form-field>
         <hc-label>Progress Bar:</hc-label>
-        <hc-checkbox [(ngModel)]="toastProgress">Include progress bar on toast</hc-checkbox>
+        <hc-radio-group [(ngModel)]="toastProgress" inline="true">
+            <hc-radio-button value="0">Off</hc-radio-button>
+            <hc-radio-button value="1">Indeterminate</hc-radio-button>
+            <hc-radio-button value="2">Determinate</hc-radio-button>
+        </hc-radio-group>
+    </hc-form-field>
+    <hc-form-field class="progress-input">
+        <input hcInput type="number" [(ngModel)]="progressValue" [disabled]="toastProgress!='2'" />
     </hc-form-field>
 </div>
 <div class="button-row">

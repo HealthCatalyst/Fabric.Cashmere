@@ -8,7 +8,7 @@
     <div *ngIf="_styleType === 'custom'">
         <ng-template (attached)="_customComponentAttached($event)" [cdkPortalOutlet]="_toastPortal"></ng-template>
     </div>
-    <div *ngIf="_styleType !== 'custom'" class="hc-toast-content">
+    <div *ngIf="_styleType !== 'custom'" class="hc-toast-content" [ngClass]="{'hc-toast-progress-offset': _hasProgressBar}">
         <div class="hc-toast-icon-container">
             <div class="hc-toast-icon"></div>
         </div>
@@ -20,5 +20,8 @@
             <div class="hc-toast-close-icon"></div>
         </div>
     </div>
-    <div *ngIf="_hasProgressBar" class="hc-toast-progress"></div>
+    <div *ngIf="_hasProgressBar" class="hc-toast-progress"
+        [ngClass]="{'hc-toast-progress-indeterminate': !_progressVal}"
+        [ngStyle]="{'width': _progressWidth}">
+    </div>
 </div>

@@ -30,6 +30,8 @@ export class HcToastComponent {
     _toastPortal: Portal<any>;
     _width: number = 300;
     _hasProgressBar: boolean = false;
+    _progressVal: number;
+    _progressWidth: string = "100%";
     readonly _componentInstance = new BehaviorSubject<any>(null);
 
     get _widthStr() {

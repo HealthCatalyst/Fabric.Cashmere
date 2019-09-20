@@ -2,14 +2,33 @@ import {OverlayRef} from '@angular/cdk/overlay';
 import {HcToastComponent} from './hc-toast.component';
 import {Subject} from 'rxjs';
 import {filter, take} from 'rxjs/operators';
+import {Input} from '@angular/core';
 
 export class HcToastRef {
     private _beforeClose = new Subject<void>();
     private _afterClosed = new Subject<void>();
 
     _toastPosition: string;
+
     /** The HcToast component associated with the toast reference */
     componentInstance: HcToastComponent;
+
+    /** If the `hasProgressBar` option is set to true in `hc-toast-options`, this 0-100 value can be used to make it a determinate progress bar.
+     * If the progress bar is on but not value is set, the progress bar will be indeterminate.*/
+    @Input()
+    get progress(): number {
+        return this.componentInstance._progressVal;
+    }
+
+    set progress(progVal: number) {
+        if( progVal < 0 ) {
+            progVal = 0;
+        } else if( progVal > 100 ) {
+            progVal = 100;
+        }
+        this.componentInstance._progressVal = progVal;
+        this.componentInstance._progressWidth = progVal + "%";
+    }
 
     constructor(public _overlayRef: OverlayRef) {}
 
