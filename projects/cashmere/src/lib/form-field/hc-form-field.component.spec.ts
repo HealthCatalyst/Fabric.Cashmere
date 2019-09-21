@@ -141,7 +141,7 @@ class SimpleInput {
 
 @Component({
     template: `
-        <hc-form-field><input /></hc-form-field>
+        <hc-form-field><hc-label>Simple:</hc-label><input /></hc-form-field>
     `
 })
 class InputMissingHcInput {}
@@ -149,6 +149,7 @@ class InputMissingHcInput {}
 @Component({
     template: `
         <hc-form-field>
+            <hc-label>Form Control Label:</hc-label>
             <input hcInput [formControl]="formControl" />
             <hc-error>Input is required</hc-error>
         </hc-form-field>
