@@ -55,12 +55,14 @@ export class CalendarHeaderComponent {
         this.calendar.stateChanges.subscribe(() => changeDetectorRef.markForCheck());
     }
 
+    /** The label for the currently visible month */
+    get monthButtonText(): string {
+        return this._dateAdapter.getMonthNames('short')[this._dateAdapter.getMonth(this.calendar.activeDate)];
+    }
+
     /** The label for the current calendar view. */
     get periodButtonText(): string {
-        if (this.calendar.currentView === 'month') {
-            return this._dateAdapter.format(this.calendar.activeDate, this._dateFormats.display.monthYearLabel).toLocaleUpperCase();
-        }
-        if (this.calendar.currentView === 'year') {
+        if (this.calendar.currentView === 'year' || this.calendar.currentView === 'month') {
             return this._dateAdapter.getYearName(this.calendar.activeDate);
         }
         const activeYear = this._dateAdapter.getYear(this.calendar.activeDate);
@@ -73,6 +75,11 @@ export class CalendarHeaderComponent {
 
     get periodButtonLabel(): string {
         return this.calendar.currentView === 'month' ? this._intl.switchToMultiYearViewLabel : this._intl.switchToMonthViewLabel;
+    }
+
+    /** The label for the currently displayed month */
+    get monthButtonLabel(): string {
+        return this._intl.currentMonthLabel;
     }
 
     /** The label for the the previous button. */
@@ -115,9 +122,7 @@ export class CalendarHeaderComponent {
     }
 
     todayClicked(): void {
-        this.calendar.currentView = 'month';
-        this.calendar._dateSelected(this._dateAdapter.today());
-        this.calendar._userSelection.emit();
+        this.calendar.activeDate = this._dateAdapter.today();
     }
 
     todayEnabled(): boolean {

@@ -4,22 +4,6 @@
             hc-button
             buttonStyle="link"
             type="button"
-            class="hc-calendar-period-button"
-            (click)="currentPeriodClicked()"
-            [attr.aria-label]="periodButtonLabel"
-        >
-            {{ periodButtonText }}
-            <div class="hc-calendar-arrow" [class.hc-calendar-invert]="calendar.currentView != 'month'"></div>
-        </button>
-
-        <div class="hc-calendar-spacer"></div>
-
-        <ng-content></ng-content>
-
-        <button
-            hc-button
-            buttonStyle="link"
-            type="button"
             class="hc-calendar-previous-button"
             [disabled]="!previousEnabled()"
             (click)="previousClicked()"
@@ -30,10 +14,11 @@
             buttonStyle="link"
             type="button"
             class="hc-calendar-today-button"
-            [disabled]="!todayEnabled()"
             (click)="todayClicked()"
-            [attr.aria-label]="prevButtonLabel">
-            Today
+            title="Jump to the current date"
+            [attr.aria-label]="monthButtonLabel"
+        >
+            {{ monthButtonText }}
         </button>
         <button
             hc-button
@@ -44,5 +29,22 @@
             (click)="nextClicked()"
             [attr.aria-label]="nextButtonLabel"
         ></button>
+
+        <div class="hc-calendar-spacer"></div>
+
+        <ng-content></ng-content>
+
+        <button
+            hc-button
+            buttonStyle="link"
+            type="button"
+            class="hc-calendar-period-button"
+            (click)="currentPeriodClicked()"
+            [attr.aria-label]="periodButtonLabel"
+        >
+            {{ periodButtonText }}
+            <div class="hc-calendar-arrow" [class.hc-calendar-invert]="calendar.currentView != 'month'"></div>
+        </button>
+
     </div>
 </div>
