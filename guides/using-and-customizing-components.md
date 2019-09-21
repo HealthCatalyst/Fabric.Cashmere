@@ -1,6 +1,6 @@
 # Customizing Components
 
-###### Last updated October 10, 2018
+###### Last updated September 21, 2019
 
 :::
 
@@ -28,7 +28,7 @@ The Angular component is not meant to fit every possible use case. Instead, it f
 
 As we convert existing components to the described structure, we follow this process:
 
-#### Step 1. Prepare files.
+### Step 1. Prepare files
 
 Find the component stylesheet called `{component-name}.component.scss`. Create a SCSS file under `cashmere/src/lib/sass` that follows the format `{component-name}.scss`, e.g. `button.scss`.
 
@@ -62,7 +62,7 @@ Find the component stylesheet called `{component-name}.component.scss`. Create a
 // Nothing here yet
 ```
 
-#### Step 2. Copy styles.
+### Step 2. Copy styles
 
 Copy all component styles into the new SCSS file.
 
@@ -96,7 +96,7 @@ Copy all component styles into the new SCSS file.
 }
 ```
 
-#### Step 3. Move selectors.
+### Step 3. Move selectors
 
 Copy the class and element CSS selectors back to the component stylesheet, but leave them as empty rules.
 
@@ -138,7 +138,7 @@ Copy the class and element CSS selectors back to the component stylesheet, but l
 }
 ```
 
-#### Step 4. Create mixins.
+### Step 4. Create mixins
 
 Replace the CSS selectors in the new stylesheet with mixin declarations, flattening the structure as you go. Follow the Cashmere CSS class naming convention for the mixins: `{company-scope}-{block-modifier}-{element}`.
 
@@ -166,7 +166,7 @@ Replace the CSS selectors in the new stylesheet with mixin declarations, flatten
 }
 ```
 
-#### Step 5. Implement mixins.
+### Step 5. Implement mixins
 
 Use the mixins in the component stylesheet. Flatten the structure where possible, keeping in mind that the stylesheet is not encapsulated.
 
@@ -192,7 +192,7 @@ Use the mixins in the component stylesheet. Flatten the structure where possible
 .hc-label { @include hc-checkbox-label(); }
 ```
 
-#### Step 6. Review your code.
+### Step 6. Review your code
 
 Build the documentation and ensure that the component looks the same as it did before. Make sure it meets the following expectations:
 
