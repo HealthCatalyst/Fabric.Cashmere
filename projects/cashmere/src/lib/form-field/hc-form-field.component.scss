@@ -86,6 +86,10 @@
     @include hc-form-field-label();
 }
 
+.hc-form-field-no-label {
+    @include hc-form-field-no-label();
+}
+
 .hc-form-field-label-inline {
     @include hc-form-field-label-inline();
 }

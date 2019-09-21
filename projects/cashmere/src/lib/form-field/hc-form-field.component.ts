@@ -13,6 +13,7 @@ import {HcFormControlComponent} from './hc-form-control.component';
 import {HcErrorComponent} from './hc-error.component';
 import {HcPrefixDirective} from './hc-prefix.directive';
 import {HcSuffixDirective} from './hc-suffix.directive';
+import {HcLabelComponent} from './hc-label.component';
 import {parseBooleanAttribute} from '../util';
 import {InputDirective} from '../input/input.directive';
 
@@ -40,6 +41,8 @@ export class HcFormFieldComponent implements AfterContentInit {
     _suffixChildren: QueryList<HcSuffixDirective>;
     @ContentChildren(InputDirective)
     _inputChildren: QueryList<InputDirective>;
+    @ContentChildren(HcLabelComponent)
+    _labelChildren: QueryList<HcLabelComponent>;
 
     @HostBinding('class.hc-form-field')
     _classHcFormFieldClass = true;

@@ -138,6 +138,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     vertical-align: baseline;
 }
 
+@mixin hc-form-field-no-label() {
+    border-top: none !important;
+}
+
 @mixin hc-form-field-label() {
     position: absolute;
     left: 0;
