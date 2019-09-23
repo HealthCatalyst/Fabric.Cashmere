@@ -28,7 +28,15 @@ export class HcToastComponent {
     _closeClick = new EventEmitter<MouseEvent>();
     _canDismiss: boolean = false;
     _toastPortal: Portal<any>;
+    _width: number = 300;
+    _hasProgressBar: boolean = false;
+    _progressVal: number;
+    _progressWidth: string = "100%";
     readonly _componentInstance = new BehaviorSubject<any>(null);
+
+    get _widthStr() {
+        return this._width ? `${this._width}px` : "auto";
+    }
 
     constructor(public _el: ElementRef, public _viewContainerRef: ViewContainerRef, public _changeRef: ChangeDetectorRef) {}
 

@@ -17,29 +17,40 @@ export class ToasterOverviewExampleComponent {
     toastTimeout: number = 5000;
     toastClick: boolean = false;
     toastType: string = 'success';
+    toastWidth: number = 400;
+    toastProgress: string = '0';
+    progressValue: number = 75;
 
     constructor(private toasterService: HcToasterService) {}
 
     showToast(content: TemplateRef<any>) {
+        let showProgress = false;
+        if ( parseInt(this.toastProgress, 10) > 0 ) {
+            showProgress = true;
+        }
+
+        let toastOutput: HcToastRef;
         let options: HcToastOptions = {
             header: this.toastHeader,
             body: this.toastBody,
             position: this.toastPosition,
             timeout: this.toastTimeout,
             clickDismiss: this.toastClick,
-            type: this.toastType
+            type: this.toastType,
+            width: this.toastWidth,
+            hasProgressBar: showProgress
         };
 
         if (this.toastType === 'custom-template') {
             options.type = 'custom';
-            this.toasterService.addToast(options, content);
+            toastOutput = this.toasterService.addToast(options, content);
         } else if (this.toastType === 'custom-component') {
             let colorArray: Array<string> = ['#00acac', '#007bff', '#f05323', '#a94c9d', '#e7c447', '#776c7f'];
             let iconArray: Array<string> = ['fa-pied-piper', 'fa-pied-piper-alt', 'fa-leaf', 'fa-coffee', 'fa-beer', 'fa-birthday-cake'];
 
             options.type = 'custom';
 
-            this.toasterService.addToast(options, ToasterOverviewCustomComponent, {
+            toastOutput = this.toasterService.addToast(options, ToasterOverviewCustomComponent, {
                 randomID: Math.ceil(Math.random() * 10000),
                 randomColor: colorArray[Math.floor(Math.random() * colorArray.length)],
                 randomIcon: iconArray[Math.floor(Math.random() * iconArray.length)]
@@ -53,7 +64,11 @@ export class ToasterOverviewExampleComponent {
                     componentInstance.randomIcon = iconArray[Math.floor(Math.random() * iconArray.length)];
             }); */
         } else {
-            this.toasterService.addToast(options);
+            toastOutput = this.toasterService.addToast(options);
+        }
+
+        if ( this.toastProgress === '2' ) {
+            toastOutput.progress = this.progressValue;
         }
     }
 

@@ -14,8 +14,14 @@ export interface HcToastOptions {
      *  Defaults to 5000. A value of 0 means the toast will not auto-dismiss.*/
     timeout?: number;
     /** When set to true, the user may click the Toast to dismiss it and a close icon is added
-     * to the right side for standard types.  Defaults to false.*/
+     * to the right side for standard types. Defaults to false.*/
     clickDismiss?: boolean;
     /** Function to be called when the toast is closed*/
     toastClosed?: Function;
+    /** Width of the toast in pixels. Minimum is 300px. Or, pass in 0 for an unconstrained width. Defaults to 300px.*/
+    width?: number;
+    /** When set to true, a progress bar is added to the bottom of the toast. The default is false.
+     * There is a corresponding 0-100 `progress` value on the `hc-toast-ref` that may be set to make this a determinate progress bar.
+     * If a `progress` value is not set, the progress bar will be indeterminate.*/
+    hasProgressBar?: boolean;
 }

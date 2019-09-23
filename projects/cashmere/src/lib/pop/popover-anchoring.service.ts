@@ -348,6 +348,8 @@ export class HcPopoverAnchoringService implements OnDestroy {
       backdropClass: config.backdropClass || 'cdk-overlay-transparent-backdrop',
       scrollStrategy: this._getScrollStrategyInstance(config.scrollStrategy),
       direction: this._getDirection(),
+
+      panelClass: 'overlay-pointer-events'
     });
   }
 
