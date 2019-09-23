@@ -1,12 +1,12 @@
 # Getting Started
 
-###### Last updated August 2, 2018
+###### Last updated September 21, 2019
 
 :::
 
 ##### Setting up the project
 
-#### Step 1. Install the npm module.
+### Step 1. Install the npm module.
 
 ```BASH
 npm i --save @healthcatalyst/cashmere
@@ -18,7 +18,7 @@ npm i --save @healthcatalyst/cashmere
 npm install --save @angular/cdk font-awesome npm-font-open-sans
 ```
 
-#### Step 2. Create a module to hold Cashmere components.
+### Step 2. Create a module to hold Cashmere components.
 
 Create a module that will hold the Cashmere components that your app will need. Place all the components in the exports field of the NgModule annotation.
 
@@ -45,7 +45,7 @@ export class SharedModule {}
 
 Anywhere you import the Shared module, all of the Cashmere components will be made available to you.
 
-#### Step 3. Add the styles.
+### Step 3. Add the styles.
 
 Import baseline scss file into your app's global style sheet `(src/styles.scss)`
 
