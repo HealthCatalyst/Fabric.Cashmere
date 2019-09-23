@@ -176,9 +176,9 @@ export class HcToasterService {
         let positionStrategy = this._getPositionStrategy(String(config.position), this._toasts.length);
 
         if (config.position === 'top-full-width' || config.position === 'bottom-full-width') {
-            overlayConfig = new OverlayConfig({positionStrategy, width: '96%', panelClass: 'toast-overlay-clicks'});
+            overlayConfig = new OverlayConfig({positionStrategy, width: '96%', panelClass: 'overlay-pointer-events'});
         } else {
-            overlayConfig = new OverlayConfig({positionStrategy, panelClass: 'toast-overlay-clicks'});
+            overlayConfig = new OverlayConfig({positionStrategy, panelClass: 'overlay-pointer-events'});
         }
 
         return overlayConfig;
