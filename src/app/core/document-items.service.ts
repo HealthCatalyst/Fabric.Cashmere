@@ -59,7 +59,7 @@ const docs: DocItem[] = [
         name: 'Input',
         category: 'forms',
         usageDoc: true,
-        examples: ['input-required', 'input-suffix', 'input-prefix']
+        examples: ['input-required', 'input-suffix', 'input-prefix', 'input-text-area']
     },
     {id: 'list', name: 'List', category: 'layout', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', category: 'popups', examples: ['modal-overview']},

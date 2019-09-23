@@ -58,6 +58,10 @@
     }
 }
 
+.hc-form-field-suffix {
+    @include hc-form-field-suffix();
+}
+
 .hc-form-field-prefix {
     @include hc-form-field-prefix();
 }
