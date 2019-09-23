@@ -69,6 +69,16 @@
     }
 }
 
+@mixin hc-checkbox-overlay-indeterminate() {
+    background-color: $primary-brand;
+    border-color: $primary-brand;
+    &:after {
+        opacity: 1;
+        transform: none;
+        border-left: none;
+    }
+}
+
 @mixin hc-checkbox-input() {
     display: none;
 }

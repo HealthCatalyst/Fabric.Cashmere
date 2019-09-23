@@ -1,0 +1,10 @@
+<hc-checkbox [checked]="isChecked()" [indeterminate]="isIndeterminate()" (change)="parentClick()">
+    Parent Checkbox (indeterminate)
+</hc-checkbox>
+
+<div class="checkbox-group">
+    <hc-checkbox [checked]="childChecks[0]" (change)="childClick($event)" id="0">Child Checkbox</hc-checkbox>
+    <hc-checkbox [checked]="childChecks[1]" (change)="childClick($event)" id="1">Child Checkbox</hc-checkbox>
+    <hc-checkbox [checked]="childChecks[2]" (change)="childClick($event)" id="2">Child Checkbox</hc-checkbox>
+    <hc-checkbox [checked]="childChecks[3]" (change)="childClick($event)" id="3">Child Checkbox</hc-checkbox>
+</div>
