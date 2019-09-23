@@ -139,7 +139,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 }
 
 @mixin hc-form-field-no-label() {
-    border-top: none !important;
+    border-top: none;
 }
 
 @mixin hc-form-field-label() {

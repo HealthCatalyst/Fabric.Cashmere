@@ -52,6 +52,16 @@ export class HcFormFieldComponent implements AfterContentInit {
         return this._control._isDisabled;
     }
 
+    /** Read-only boolean value of whether the form field has an associated label element */
+    get hasLabel(): boolean {
+        return !!this._labelChildren.length;
+    }
+
+    /** Read-only boolean value of whether the form field has an input element */
+    get hasInput(): boolean {
+        return !!this._inputChildren.length;
+    }
+
     /** Whether the form elements should be stacked (default), or inline */
     @Input()
     get inline(): boolean {
