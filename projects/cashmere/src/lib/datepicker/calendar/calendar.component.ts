@@ -55,12 +55,14 @@ export class CalendarHeaderComponent {
         this.calendar.stateChanges.subscribe(() => changeDetectorRef.markForCheck());
     }
 
+    /** The label for the currently visible month */
+    get monthButtonText(): string {
+        return this._dateAdapter.getMonthNames('short')[this._dateAdapter.getMonth(this.calendar.activeDate)];
+    }
+
     /** The label for the current calendar view. */
     get periodButtonText(): string {
-        if (this.calendar.currentView === 'month') {
-            return this._dateAdapter.format(this.calendar.activeDate, this._dateFormats.display.monthYearLabel).toLocaleUpperCase();
-        }
-        if (this.calendar.currentView === 'year') {
+        if (this.calendar.currentView === 'year' || this.calendar.currentView === 'month') {
             return this._dateAdapter.getYearName(this.calendar.activeDate);
         }
         const activeYear = this._dateAdapter.getYear(this.calendar.activeDate);
@@ -73,6 +75,11 @@ export class CalendarHeaderComponent {
 
     get periodButtonLabel(): string {
         return this.calendar.currentView === 'month' ? this._intl.switchToMultiYearViewLabel : this._intl.switchToMonthViewLabel;
+    }
+
+    /** The label for the currently displayed month */
+    get monthButtonLabel(): string {
+        return this._intl.currentMonthLabel;
     }
 
     /** The label for the the previous button. */
@@ -112,19 +119,6 @@ export class CalendarHeaderComponent {
             this.calendar.currentView === 'month'
                 ? this._dateAdapter.addCalendarMonths(this.calendar.activeDate, 1)
                 : this._dateAdapter.addCalendarYears(this.calendar.activeDate, this.calendar.currentView === 'year' ? 1 : yearsPerPage);
-    }
-
-    todayClicked(): void {
-        this.calendar.currentView = 'month';
-        this.calendar._dateSelected(this._dateAdapter.today());
-        this.calendar._userSelection.emit();
-    }
-
-    todayEnabled(): boolean {
-        return (
-            (!this.calendar.minDate || this._dateAdapter.compareDate(this._dateAdapter.today(), this.calendar.minDate) < 0) &&
-            (!this.calendar.maxDate || this._dateAdapter.compareDate(this._dateAdapter.today(), this.calendar.maxDate) > 0)
-        );
     }
 
     /** Whether the previous period button is enabled. */
@@ -304,7 +298,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     stateChanges = new Subject<void>();
 
     constructor(
-        _intl: HcDatepickerIntl,
+        private _intl: HcDatepickerIntl,
         @Optional() private _dateAdapter: DateAdapter<D>,
         @Optional()
         @Inject(HC_DATE_FORMATS)
@@ -371,6 +365,24 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         const view = this.currentView === 'month' ? this.monthView : this.currentView === 'year' ? this.yearView : this.multiYearView;
 
         view.ngAfterContentInit();
+    }
+
+    /** The label for the jump to today button */
+    get _todayButtonLabel(): string {
+        return this._intl.switchToTodayLabel;
+    }
+
+    /** Handles clicks on the Jump to current date button */
+
+    _todayClicked(): void {
+        this.activeDate = this._dateAdapter.today();
+    }
+
+    _todayEnabled(): boolean {
+        return (
+            (!this.minDate || this._dateAdapter.compareDate(this.minDate, this._dateAdapter.today()) < 1) &&
+            (!this.maxDate || this._dateAdapter.compareDate(this.maxDate, this._dateAdapter.today()) > -1)
+        );
     }
 
     /** Handles date selection in the month view. */

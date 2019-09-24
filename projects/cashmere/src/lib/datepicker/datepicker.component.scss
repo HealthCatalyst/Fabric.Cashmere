@@ -5,7 +5,7 @@
 
 .hc-datepicker-content {
     width: 310px;
-    height: 360px;
+    height: 400px;
 }
 
 .hc-datepicker-header {
@@ -214,7 +214,7 @@
 // ********************************************************************** MATERIAL ****************************************************************************************************
 // ************************************************************************************************************************************************************************************
 
-$hc-datepicker-calendar-padding: 8px;
+$hc-datepicker-calendar-padding: 15px;
 $hc-datepicker-non-touch-calendar-cell-size: 40px;
 $hc-datepicker-non-touch-calendar-width: $hc-datepicker-non-touch-calendar-cell-size * 7 + $hc-datepicker-calendar-padding * 2;
 // Based on the natural height of the calendar in a month with 6 rows of dates
