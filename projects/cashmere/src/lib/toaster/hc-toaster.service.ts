@@ -4,7 +4,8 @@ import {ComponentPortal, PortalInjector, TemplatePortal} from '@angular/cdk/port
 import {HcToastComponent} from './hc-toast.component';
 import {HcToastOptions} from './hc-toast-options';
 import {HcToastRef} from './hc-toast-ref';
-import {filter, take} from 'rxjs/operators';
+import {filter, take, takeUntil} from 'rxjs/operators';
+import { Subject, Observable } from 'rxjs';
 
 export type ComponentSetup<T> = Partial<T> | ((instance: T) => void);
 export type ToastContentType<T> = Type<T> | TemplateRef<any>;
@@ -14,6 +15,8 @@ export type ToastContentType<T> = Type<T> | TemplateRef<any>;
 @Injectable()
 export class HcToasterService {
     _toasts: HcToastRef[] = [];
+    endedToastAnim = new Subject<void>();
+    private get endedToastAnim$(): Observable<void> { return this.endedToastAnim.asObservable(); }
 
     // Inject overlay service
     constructor(private injector: Injector, private _overlay: Overlay) {}
@@ -86,6 +89,11 @@ export class HcToasterService {
             _toastRef.componentInstance._headerText = options.header;
         }
 
+        // Set the toast width
+        if (options.width || options.width === 0) {
+            _toastRef.componentInstance._width = options.width;
+        }
+
         // Set the body text
         if (options.body) {
             _toastRef.componentInstance._bodyText = options.body;
@@ -93,6 +101,11 @@ export class HcToasterService {
 
         // Store the positioning of the toast
         _toastRef._toastPosition = String(options.position);
+
+        // Set progress bar
+        if (options.hasProgressBar) {
+            _toastRef.componentInstance._hasProgressBar = options.hasProgressBar;
+        }
 
         // Set the timeout interval to close the toast if non-zero
         if (options.timeout !== 0) {
@@ -109,13 +122,14 @@ export class HcToasterService {
                 filter(event => event.phaseName === 'done' && event.toState === 'leave'),
                 take(1)
             )
+            .pipe(takeUntil(this.endedToastAnim$))
             .subscribe(() => {
                 this._removeToastPointer(_toastRef);
                 if (options.toastClosed) {
                     options.toastClosed();
                 }
                 this._updateToastPositions();
-                _toastRef.componentInstance._animationStateChanged.unsubscribe();
+                this.endedToastAnim.next();
                 _toastRef.componentInstance._closeClick.unsubscribe();
             });
 
@@ -172,9 +186,9 @@ export class HcToasterService {
         let positionStrategy = this._getPositionStrategy(String(config.position), this._toasts.length);
 
         if (config.position === 'top-full-width' || config.position === 'bottom-full-width') {
-            overlayConfig = new OverlayConfig({positionStrategy, width: '96%', panelClass: 'toast-overlay-clicks'});
+            overlayConfig = new OverlayConfig({positionStrategy, width: '96%', panelClass: 'overlay-pointer-events'});
         } else {
-            overlayConfig = new OverlayConfig({positionStrategy, panelClass: 'toast-overlay-clicks'});
+            overlayConfig = new OverlayConfig({positionStrategy, panelClass: 'overlay-pointer-events'});
         }
 
         return overlayConfig;

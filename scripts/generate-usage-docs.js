@@ -1,4 +1,4 @@
-const md = require('markdown-it')();
+const md = require('markdown-it')({html: true});
 const glob = require('glob');
 const path = require('path');
 const fs = require('fs');

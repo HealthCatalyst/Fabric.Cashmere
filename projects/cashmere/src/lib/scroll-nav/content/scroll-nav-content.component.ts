@@ -40,7 +40,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     @Input() public shouldAnimateScroll = true;
     /** Fires when a new section is scrolled into view. Broadcasts the id of that section. */
     @Output() public newSectionInView: EventEmitter<string> = new EventEmitter<string>();
-    @ViewChild(CdkScrollable) public _cdkScrollableElement: CdkScrollable;
+    @ViewChild('scrollContainer', { read: CdkScrollable }) public _cdkScrollableElement: CdkScrollable;
     @ContentChildren(ScrollNavTargetDirective) private targets: QueryList<ScrollNavTargetDirective>;
     /** Id of the current section scrolled into view. */
     public sectionInView: string;

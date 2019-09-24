@@ -98,7 +98,7 @@ associated `<input>`.
 
 The following example uses `yearSelected` and `monthSelected` outputs to emulate a month and year
 picker (if you're not familiar with the usage of `MomentDateAdapter` and `HC_DATE_FORMATS`
-you can [read more about them](#choosing-a-date-implementation-and-date-format-settings) below in
+you can [read more about them](/components/datepicker/usage#choosing-date-implementation) below in
 this document to fully understand the example).
 
 ### Setting the selected date
@@ -108,7 +108,7 @@ application. The `NativeDateAdapter`, for example, works directly with plain Jav
 objects. When using the `MomentDateAdapter`, however, the values will all be Moment.js instances.
 This use of the adapter pattern allows the datepicker component to work with any arbitrary date
 representation with a custom `DateAdapter`.
-See [_Choosing a date implementation_](#choosing-a-date-implementation-and-date-format-settings)
+See [Choosing a date implementation](/components/datepicker/usage#choosing-date-implementation)
 for more information.
 
 Depending on the `DateAdapter` being used, the datepicker may automatically deserialize certain date
@@ -133,7 +133,7 @@ from advancing the calendar past the `month` or `year` (depending on current vie
 The second way to add date validation is using the `hcDatepickerFilter` property of the datepicker
 input. This property accepts a function of `<D> => boolean` (where `<D>` is the date type used by
 the datepicker, see
-[_Choosing a date implementation_](#choosing-a-date-implementation-and-date-format-settings)).
+[Choosing a date implementation](/components/datepicker/usage#choosing-date-implementation).
 A result of `true` indicates that the date is valid and a result of `false` indicates that it is
 not. Again this will also disable the dates on the calendar that are invalid. However, one important
 difference between using `hcDatepickerFilter` vs using `min` or `max` is that filtering out all
@@ -201,7 +201,7 @@ from `@angular/core`. If you want to override it, you can provide a new value fo
 export class MyApp {}
 ```
 
-It's also possible to set the locale at runtime using the `setLocale` method of the `DateAdapter`.
+<a name="choosing-date-implementation"></a>It's also possible to set the locale at runtime using the `setLocale` method of the `DateAdapter`.
 
 #### Choosing a date implementation and date format settings
 
@@ -256,7 +256,7 @@ It is also possible to create your own `DateAdapter` that works with any date fo
 requires. This is accomplished by subclassing `DateAdapter` and providing your subclass as the
 `DateAdapter` implementation. You will also want to make sure that the `HC_DATE_FORMATS` provided
 in your app are formats that can be understood by your date implementation. See
-[_Customizing the parse and display formats_](#customizing-the-parse-and-display-formats)for more
+[Customizing the parse and display formats](/components/datepicker/usage#customizing-parse) for more
 information about `HC_DATE_FORMATS`. <!-- TODO(mmalerba): Add a guide about this -->
 
 ```ts
@@ -266,6 +266,8 @@ information about `HC_DATE_FORMATS`. <!-- TODO(mmalerba): Add a guide about this
 })
 export class MyApp {}
 ```
+
+<a name="customizing-parse" style="height:25px; display: block;"></a>
 
 #### Customizing the parse and display formats
 
@@ -393,7 +395,7 @@ In multi-year view:
 This error is thrown if you have not provided all of the injectables the datepicker needs to work.
 The easiest way to resolve this is to import the `HcNativeDateModule` or `HcMomentDateModule` in
 your application's root module. See
-[_Choosing a date implementation_](#choosing-a-date-implementation-and-date-format-settings)) for
+[Choosing a date implementation](/components/datepicker/usage#choosing-date-implementation) for
 more information.
 
 #### Error: A HcDatepicker can only be associated with a single input
