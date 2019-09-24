@@ -9,17 +9,9 @@
             (click)="previousClicked()"
             [attr.aria-label]="prevButtonLabel"
         ></button>
-        <button
-            hc-button
-            buttonStyle="link"
-            type="button"
-            class="hc-calendar-today-button"
-            (click)="todayClicked()"
-            title="Jump to the current date"
-            [attr.aria-label]="monthButtonLabel"
-        >
+        <span class="hc-calendar-today-button">
             {{ monthButtonText }}
-        </button>
+        </span>
         <button
             hc-button
             buttonStyle="link"

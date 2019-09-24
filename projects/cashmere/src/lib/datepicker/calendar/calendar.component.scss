@@ -44,7 +44,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 
 .hc-calendar-period-button.hc-md.hc-button.hc-link {
     min-width: 0;
-    padding: 10px;
+    padding: 13px 10px 10px 10px;
     min-width: inherit;
 }
 
@@ -103,12 +103,22 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
     transform: $hc-calendar-next-icon-transform;
 }
 
-.hc-calendar-today-button.hc-md.hc-button.hc-link {
+.hc-calendar-today-button {
     font-weight: 600;
     color: $primary-brand;
     min-width: 35px;
-    padding: 2px 0 0 0;
+    padding: 3px 0 0 0;
     vertical-align: baseline;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    font-size: calculateRem(15px);
+    line-height: 15px;
+}
+
+.hc-calendar-today-container {
+    text-align: center;
 }
 
 .hc-calendar-table {

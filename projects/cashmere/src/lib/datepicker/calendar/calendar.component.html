@@ -36,3 +36,17 @@
       (selectedChange)="_goToDateInView($event, 'year')">
   </hc-multi-year-view>
 </div>
+
+<div *ngIf="currentView=== 'month'" class="hc-calendar-today-container">
+    <button
+        hc-button
+        buttonStyle="link"
+        size="sm"
+        type="button"
+        (click)="_todayClicked()"
+        [disabled]="!_todayEnabled()"
+        [attr.aria-label]="_todayButtonLabel"
+    >
+        Jump to Today
+    </button>
+</div>
