@@ -1,20 +1,7 @@
-@import './colors';
+@import '../../sass/colors';
 
-.hc-horizontal-tab-container {
-    height: auto;
-    width: 100%;
-}
-
-.hc-vertical-tab-container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-}
-
-.hc-tab-bar-vertical {
-    padding: 15px 0;
-    background-color: $white;
-    width: 20%;
+:host {
+    min-width: 0;
 }
 
 .hc-tab-vertical {
@@ -35,23 +22,6 @@
     }
 }
 
-.hc-tab-content-vertical {
-    background-color: $slate-gray-100;
-    width: 80%;
-}
-
-.hc-tab-bar-horizontal {
-    background-color: inherit;
-    display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid $slate-gray-300;
-    align-items: baseline;
-}
-
-.hc-tab-width {
-    min-width: 0;
-}
-
 .hc-tab-horizontal {
     background-color: inherit;
     color: $offblack;
@@ -69,11 +39,4 @@
         color: $offblack;
         font-weight: bold;
     }
-}
-
-.hc-tab-content-horizontal {
-    background-color: inherit;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
 }
