@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {CheckboxChangeEvent} from '@healthcatalyst/cashmere';
+import {FormGroup, FormArray, FormControl, FormBuilder} from '@angular/forms';
 
 /**
  * @title Indeterminate Checkbox
@@ -10,36 +11,41 @@ import {CheckboxChangeEvent} from '@healthcatalyst/cashmere';
     styleUrls: ['checkbox-indeterminate-example.component.scss']
 })
 export class CheckboxIndeterminateExampleComponent {
-    childChecks = [true, false, true, false];
+    checkboxGroup: FormGroup;
+
+    constructor(_fb: FormBuilder) {
+        let checkboxArray = new FormArray([new FormControl(false), new FormControl(true), new FormControl(false), new FormControl(true)]);
+        this.checkboxGroup = _fb.group({
+            checkValues: checkboxArray
+        });
+    }
+
+    getChecks() {
+        const formArray = this.checkboxGroup.get('checkValues') as FormArray;
+        const controls = formArray.controls as FormControl[];
+        return controls;
+    }
 
     isChecked() {
-        return this.childChecks[0] && this.childChecks[1] && this.childChecks[2] && this.childChecks[3];
+        const checkedCount = this.checkboxGroup.controls['checkValues'].value.filter(c => c).length;
+        return checkedCount === this.checkboxGroup.controls['checkValues'].value.length;
     }
 
     isIndeterminate() {
-        let numChecked = 0;
-        for (let i = 0; i < this.childChecks.length; i++) {
-            if (this.childChecks[i]) {
-                numChecked++;
-            }
-        }
-
-        if (numChecked < 4 && numChecked > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    childClick(event: CheckboxChangeEvent) {
-        this.childChecks[parseInt(event.source.id, 10)] = event.checked;
+        const checkedCount = this.checkboxGroup.controls['checkValues'].value.filter(c => c).length;
+        return !(checkedCount === 0 || checkedCount === this.checkboxGroup.controls['checkValues'].value.length);
     }
 
     parentClick() {
-        if (!(this.childChecks[0] && this.childChecks[1] && this.childChecks[2] && this.childChecks[3])) {
-            this.childChecks[0] = this.childChecks[1] = this.childChecks[2] = this.childChecks[3] = true;
+        const checkedCount = this.checkboxGroup.controls['checkValues'].value.filter(c => c).length;
+        const valueArray = new Array(this.checkboxGroup.controls['checkValues'].value.length);
+
+        if (checkedCount !== this.checkboxGroup.controls['checkValues'].value.length) {
+            valueArray.fill(true);
         } else {
-            this.childChecks[0] = this.childChecks[1] = this.childChecks[2] = this.childChecks[3] = false;
+            valueArray.fill(false);
         }
+
+        this.checkboxGroup.controls['checkValues'].setValue(valueArray);
     }
 }
