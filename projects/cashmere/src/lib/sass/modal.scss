@@ -1,0 +1,43 @@
+@import './colors';
+@import './functions.scss';
+@import './mixins.scss';
+
+@mixin hc-modal-outer() {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+@mixin hc-modal() {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 50px);
+    justify-content: center;
+    max-height: calc(100% - 50px);
+    min-height: 135px;
+}
+
+@mixin hc-modal-auto() {
+    width: auto;
+}
+
+@mixin hc-modal-sm() {
+    width: 300px;
+}
+
+@mixin hc-modal-md() {
+    width: 500px;
+}
+
+@mixin hc-modal-lg() {
+    width: 800px;
+}
+
+@mixin hc-modal-xl() {
+    width: 992px;
+}

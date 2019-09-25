@@ -1,0 +1,143 @@
+@import './mixins';
+@import './colors';
+
+@mixin hc-pagination-container() {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 15px;
+    width: 100%;
+}
+
+@mixin hc-page-detail-container() {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    margin-right: 10px;
+    padding: 5px 0;
+}
+
+@mixin hc-page-detail-label() {
+    color: $gray-500;
+    flex: 0 0 auto;
+}
+
+@mixin hc-page-detail-select() {
+    flex: 1 0 65px;
+    margin: 0 7px;
+}
+
+@mixin hc-range-label() {
+    flex: 0 0 auto;
+    margin-right: 10px;
+    padding: 12px 0;
+}
+
+@mixin hc-page-btns-container() {
+    display: inline-flex;
+    padding: 5px 0;
+}
+
+@mixin hc-page-button() {
+    background-color: $white;
+    border: solid 2px $gray-200;
+    color: $primary-brand;
+    font-weight: bold;
+    margin-right: 0;
+    min-width: 40px;
+
+    &:hover {
+        color: darken($primary-brand, 10%);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+@mixin hc-page-button-currentpage() {
+    background-color: $primary-brand;
+    color: $white;
+}
+
+@mixin hc-page-left-button() {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    padding: 0 15px;
+}
+
+@mixin hc-page-right-button() {
+    border-bottom-left-radius: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    padding: 0 15px;
+}
+
+@mixin hc-page-inner-button() {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 0 5px;
+
+    &[disabled] {
+        border-bottom-color: transparentize($gray-300, 0.65);
+        border-top-color: transparentize($gray-300, 0.65);
+        color: transparentize($primary-brand, 0.65);
+        opacity: 1;
+
+        &:hover {
+            background-color: $white;
+        }
+    }
+}
+
+@mixin hc-page-button-chevron() {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3LjM4NSIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDcuMzg1IDEyIj4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjMDBhZWZmOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cGF0aCBpZD0iUGF0aF81IiBkYXRhLW5hbWU9IlBhdGggNSIgY2xhc3M9ImNscy0xIiBkPSJNMTMuMzcxLTE0LjgyNmEuNDQ4LjQ0OCwwLDAsMCwwLS42NWwtMS4yMzYtMS4xNzhhLjQ4Ni40ODYsMCwwLDAtLjY3LDBsLTMuOTU0LDMuNzktMy45NTQtMy43OWEuNDg2LjQ4NiwwLDAsMC0uNjcsMEwxLjY1MS0xNS40NzVhLjQ0OC40NDgsMCwwLDAsMCwuNjVsNS41MjUsNS4yOWEuNDg2LjQ4NiwwLDAsMCwuNjcsMFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE2Ljc4NyAxMy41MTEpIHJvdGF0ZSgtOTApIi8+Cjwvc3ZnPgo=');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 12px;
+    margin: 1px 3px 0 7px;
+    width: 7px;
+}
+
+@mixin hc-page-button-chevron-left() {
+    margin: 1px 7px 0 3px;
+    transform: rotate(180deg);
+}
+
+@mixin hc-page-button-ellipsis() {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSI1IiB2aWV3Qm94PSIwIDAgMjAgNSI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogIzAwYWVmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBhdGggaWQ9IlBhdGhfNiIgZGF0YS1uYW1lPSJQYXRoIDYiIGNsYXNzPSJjbHMtMSIgZD0iTTUuNDU1LTEzLjc1QTEuMzExLDEuMzExLDAsMCwwLDQuMDkxLTE1SDEuMzY0QTEuMzExLDEuMzExLDAsMCwwLDAtMTMuNzV2Mi41QTEuMzExLDEuMzExLDAsMCwwLDEuMzY0LTEwSDQuMDkxYTEuMzExLDEuMzExLDAsMCwwLDEuMzY0LTEuMjVabTcuMjczLDBBMS4zMTEsMS4zMTEsMCwwLDAsMTEuMzY0LTE1SDguNjM2YTEuMzExLDEuMzExLDAsMCwwLTEuMzY0LDEuMjV2Mi41QTEuMzExLDEuMzExLDAsMCwwLDguNjM2LTEwaDIuNzI3YTEuMzExLDEuMzExLDAsMCwwLDEuMzY0LTEuMjVabTcuMjczLDBBMS4zMTEsMS4zMTEsMCwwLDAsMTguNjM2LTE1SDE1LjkwOWExLjMxMSwxLjMxMSwwLDAsMC0xLjM2NCwxLjI1djIuNUExLjMxMSwxLjMxMSwwLDAsMCwxNS45MDktMTBoMi43MjdBMS4zMTEsMS4zMTEsMCwwLDAsMjAtMTEuMjVaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDE1KSIvPgo8L3N2Zz4K');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 3px;
+    margin-bottom: 1px;
+    opacity: 0.4;
+    width: 11px;
+}
+
+@mixin hc-page-button-expanded() {
+    display: block;
+
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
+}
+
+@mixin hc-page-button-collapsed() {
+    display: none;
+
+    @include media-breakpoint-down(md) {
+        display: block;
+    }
+}
+
+@mixin hc-page-load-more-button() {
+    display: block;
+    margin: 20px auto;
+    min-width: 30%;
+}

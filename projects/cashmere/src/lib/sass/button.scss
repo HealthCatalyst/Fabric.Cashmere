@@ -1,6 +1,6 @@
-@import '../sass/colors';
-@import '../sass/functions.scss';
-@import '../sass/mixins';
+@import './colors';
+@import './functions.scss';
+@import './mixins';
 
 $btn-icon-sz: 18px;
 
@@ -246,7 +246,7 @@ $btn-icon-sz: 18px;
     min-width: auto;
     padding: 8px 12px;
     margin-left: 0;
-    border-left: 1px solid rgba(0, 0, 0, 0.12);
+    border-left: 0;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
 
@@ -260,6 +260,10 @@ $btn-icon-sz: 18px;
         background-size: contain;
         background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSI4Ljk4NyIgdmlld0JveD0iMCAwIDE0IDguOTg3Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjMzMzOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cGF0aCBpZD0iUGF0aF81IiBkYXRhLW5hbWU9IlBhdGggNSIgY2xhc3M9ImNscy0xIiBkPSJNMTUuMzQ4LTE0LjRhLjU2MS41NjEsMCwwLDAsMC0uNzkxbC0xLjQ0Mi0xLjQzM2EuNTUxLjU1MSwwLDAsMC0uNzgyLDBMOC41MTEtMTIuMDExLDMuOS0xNi42MjRhLjU1MS41NTEsMCwwLDAtLjc4MiwwTDEuNjc0LTE1LjE5MWEuNTYxLjU2MSwwLDAsMCwwLC43OTFMOC4xMi03Ljk2M2EuNTUxLjU1MSwwLDAsMCwuNzgyLDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMS41MTEgMTYuNzg3KSIvPgo8L3N2Zz4K');
     }
+}
+
+@mixin hc-button-minimal-toggle() {
+    border-left: 2px solid rgba(0, 0, 0, 0.12) !important;
 }
 
 @mixin hc-button-sm-toggle() {

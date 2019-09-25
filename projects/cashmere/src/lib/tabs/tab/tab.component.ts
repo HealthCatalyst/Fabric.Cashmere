@@ -1,17 +1,14 @@
-import {Component, Input, ContentChildren, QueryList, AfterContentInit, Output, EventEmitter} from '@angular/core';
-import {HcTabTitleComponent} from './tab-title.component';
+import { Component, Input, ContentChildren, QueryList, AfterContentInit, Output } from '@angular/core';
+import { EventEmitter, TemplateRef, ViewChild, OnInit } from '@angular/core';
+import { HcTabTitleComponent } from './tab-title.component';
+import { TabsService } from '../tabs.service';
 
 @Component({
-    template: `
-        <div [hidden]="!_active">
-            <ng-container *ngIf="false"><ng-content select="hc-tab-title"></ng-content></ng-container>
-            <ng-content></ng-content>
-        </div>
-    `,
+    templateUrl: './tab.component.html',
     selector: `hc-tab`,
-    styles: []
+    styleUrls: ['./tab.component.scss']
 })
-export class TabComponent implements AfterContentInit {
+export class TabComponent implements OnInit, AfterContentInit {
     /** Plain text title of the tab; for HTML support include a `hc-tab-title` element */
     @Input()
     tabTitle: string = '';
@@ -25,15 +22,27 @@ export class TabComponent implements AfterContentInit {
     @Output()
     tabClick: EventEmitter<Event> = new EventEmitter();
 
+    /** The template to be used when this tab is selected. Defaults to the content of this tab component.
+     * Not used when the tab set uses routing. */
+    @ViewChild('tabContent')
+    tabContent: TemplateRef<any>;
+
+    _direction: string;
     _active: boolean = false;
     _htmlTitle: HcTabTitleComponent;
 
     @ContentChildren(HcTabTitleComponent)
     _tabTitle: QueryList<HcTabTitleComponent>;
 
+    ngOnInit(): void {
+        this._direction = this._tabsService.direction;
+    }
+
     ngAfterContentInit() {
         if (this._tabTitle) {
             this._htmlTitle = this._tabTitle.first;
         }
     }
+
+    constructor(private _tabsService: TabsService) {}
 }

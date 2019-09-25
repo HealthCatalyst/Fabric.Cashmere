@@ -5,3 +5,16 @@
 .tab-demo {
     border: 1px solid #e0e0e0;
 }
+
+.tab-bar-content {
+    display: flex;
+    align-content: center;
+    align-self: stretch;
+    flex-grow: 1;
+    background: rgba(0, 0, 0, .1);
+    font-weight: bold;
+
+    div {
+        margin: auto 0;
+    }
+}

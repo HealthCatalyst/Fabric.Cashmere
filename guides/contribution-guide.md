@@ -1,6 +1,6 @@
 # Guidelines for Contribution
 
-###### Last updated March 10, 2018
+###### Last updated September 21, 2019
 
 :::
 
@@ -12,7 +12,7 @@ We would love for you to contribute to Cashmere and be part of the community mak
 
 :::
 
-#### Setup Environment
+##### Setup Environment
 
 1.  Install the latest version of `node` with at _least_ version 8.9.
 2.  Fork the `@healthcatalyst/cashmere` repo.
@@ -32,7 +32,7 @@ We would love for you to contribute to Cashmere and be part of the community mak
 1.  You may need to run `npm run build` before you start, especially if it's your first time running Cashmere.
 2.  Run `npm start`. This will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the Cashmere library.
 
-### PR's
+### Pull Requests
 
 Before you submit your pull request (PR), consider the following guidelines:
 
@@ -55,7 +55,7 @@ Before you submit your pull request (PR), consider the following guidelines:
 
 :::
 
-#### Commit Message Guidelines
+##### Commit Message Guidelines
 
 We have very precise rules over how our git commit messages can be formatted. This leads to **more
 readable messages** that are easy to follow when looking through the **project history**. But also,

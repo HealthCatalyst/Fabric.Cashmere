@@ -15,9 +15,9 @@ export class DateRangeExampleComponent implements OnInit {
     ngOnInit() {
         const today = new Date();
         const fromMin = new Date(today.getFullYear(), today.getMonth() - 2, 1);
-        const fromMax = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+        const fromMax = new Date(today.getFullYear(), today.getMonth() + 1, 1);
         const toMin = new Date(today.getFullYear(), today.getMonth() - 1, 1);
-        const toMax = new Date(today.getFullYear(), today.getMonth() + 2, 0);
+        const toMax = new Date(today.getFullYear(), today.getMonth() + 2, 1);
 
         this.setupPresets();
         this.options = {

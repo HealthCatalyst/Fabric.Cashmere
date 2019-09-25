@@ -1,6 +1,6 @@
-@import '../sass/colors';
-@import '../sass/functions.scss';
-@import '../sass/mixins.scss';
+@import './colors';
+@import './functions.scss';
+@import './mixins.scss';
 
 @mixin hc-chip() {
     @include fontSize(14px);

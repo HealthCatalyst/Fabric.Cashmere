@@ -1,6 +1,10 @@
-import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output, EventEmitter} from '@angular/core';
-import {TabComponent} from './tab.component';
+import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output } from '@angular/core';
+import { EventEmitter, TemplateRef, Self, OnInit } from '@angular/core';
+import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
+import { TabsService } from '../tabs.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 export class TabChangeEvent {
     constructor(public index: number, public tab: TabComponent) {}
@@ -30,12 +34,20 @@ export function invalidDefaultTab(tabVal: string) {
 @Component({
     selector: `hc-tab-set`,
     templateUrl: './tab-set.component.html',
-    styleUrls: ['../sass/_tabs.scss']
+    styleUrls: ['./tab-set.component.scss'],
+    providers: [TabsService]
 })
-export class TabSetComponent implements AfterContentInit {
+export class TabSetComponent implements OnInit, AfterContentInit {
     _routerEnabled: boolean = false;
     private _direction: string = 'vertical';
     private _defaultTab: string = '0';
+    private _stopTabSubscriptionSubject: Subject<any> = new Subject();
+
+    /** The content to be displayed for the currently selected tab.
+     * This is read from the tab when it is selected.
+     * Not used when this component uses routing.
+     */
+    tabContent: TemplateRef<any>;
 
     @ContentChildren(TabComponent)
     _tabs: QueryList<TabComponent>;
@@ -70,7 +82,11 @@ export class TabSetComponent implements AfterContentInit {
         }
     }
 
-    constructor(private router: Router, private route: ActivatedRoute) {}
+    constructor(private router: Router, private route: ActivatedRoute, @Self() private _tabsService: TabsService) {}
+
+    ngOnInit(): void {
+        this._tabsService.direction = this.direction;
+    }
 
     ngAfterContentInit(): void {
         if (this._tabs.length === 0) {
@@ -87,7 +103,18 @@ export class TabSetComponent implements AfterContentInit {
                 this.defaultToFirstTab();
             }
             this.checkForRouterUse();
+
+            this.subscribeToTabClicks();
         });
+
+        this.subscribeToTabClicks();
+    }
+
+    private subscribeToTabClicks(): void {
+        this._stopTabSubscriptionSubject.next();
+        this._tabs.forEach(t => t.tabClick
+            .pipe(takeUntil(this._stopTabSubscriptionSubject))
+            .subscribe(() => this._setActive(t)));
     }
 
     /** Sets the currently selected tab by either its numerical index or `TabComponent` object  */
@@ -106,7 +133,7 @@ export class TabSetComponent implements AfterContentInit {
         }
     }
 
-    _setActive(tab: TabComponent, event?: Event) {
+    _setActive(tab: TabComponent) {
         let selectedTab: number = 0;
         let index: number = 0;
 
@@ -118,8 +145,8 @@ export class TabSetComponent implements AfterContentInit {
             index++;
         });
 
-        tab.tabClick.emit(event);
         tab._active = true;
+        this.tabContent = tab.tabContent;
         this.selectedTabChange.emit(new TabChangeEvent(selectedTab, tab));
     }
 

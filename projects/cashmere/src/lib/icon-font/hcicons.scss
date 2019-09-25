@@ -38,7 +38,6 @@
     }
     &.hci-binding:before {
         content: '\e90c';
-        color: #555;
     }
     &.hci-sql-binding:before {
         content: '\e9b1';
@@ -381,7 +380,6 @@
     }
     &.hci-task:before {
         content: '\e9bb';
-        color: #555;
     }
     &.hci-assign-task:before {
         content: '\e90a';

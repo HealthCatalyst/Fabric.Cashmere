@@ -1,5 +1,5 @@
-@import '../sass/colors';
-@import '../sass/functions';
+@import './colors';
+@import './functions';
 
 $mat-form-field-default-infix-width: 120px;
 $line-height: 1.5;
@@ -47,8 +47,6 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     align-items: baseline;
     box-sizing: border-box;
     width: 100%;
-
-    padding: 0 7px 0 0;
     border: 1.5px solid $gray-300;
 
     background: $white;
@@ -58,8 +56,6 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     display: inline-flex;
     align-items: baseline;
     box-sizing: border-box;
-
-    padding: 0 7px 0 0;
     border: 1.5px solid $gray-300;
 
     background: $white;
@@ -105,6 +101,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
 @mixin hc-form-field-prefix {
     padding-left: 7px;
+}
+
+@mixin hc-form-field-suffix {
+    padding-right: 7px;
 }
 
 @mixin hc-form-field-infix() {

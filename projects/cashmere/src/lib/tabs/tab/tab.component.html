@@ -1,0 +1,18 @@
+<a *ngIf="routerLink; else tabWithoutRouting" class="hc-tab-{{_direction}} hc-text-ellipsis"
+    [routerLink]="routerLink"
+    routerLinkActive="active"
+    (click)="tabClick.emit()">
+    <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
+    {{tabTitle}}
+</a>
+<ng-template #tabWithoutRouting>
+    <a class="hc-tab-{{_direction}} hc-text-ellipsis"
+        [class.active]="_active"
+        (click)="tabClick.emit()">
+        <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
+        {{tabTitle}}
+    </a>
+</ng-template>
+<ng-template #tabContent>
+    <ng-content></ng-content>
+</ng-template>
