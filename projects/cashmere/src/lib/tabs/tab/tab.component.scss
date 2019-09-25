@@ -1,42 +1,21 @@
-@import '../../sass/colors';
+@import '../../sass/tab.scss';
 
 :host {
-    min-width: 0;
+    @include hc-tab();
 }
 
 .hc-tab-vertical {
-    background-color: $white;
-    color: $offblack;
-    padding: 20px;
-    display: block;
-    text-decoration: none;
-    &:hover {
-        cursor: pointer;
-    }
+    @include hc-tab-vertical();
+    
     &.active {
-        background-color: $slate-gray-100;
-        border-left: $blue 8px solid;
-        color: $blue;
-        font-weight: 600;
-        padding-left: 12px;
+        @include hc-tab-vertical-active();
     }
 }
 
 .hc-tab-horizontal {
-    background-color: inherit;
-    color: $offblack;
-    font-size: 14px;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: block;
-    min-width: 100px;
-    text-align: center;
-    &:hover {
-        cursor: pointer;
-    }
+    @include hc-tab-horizontal();
+
     &.active {
-        border-bottom: $blue 4px solid;
-        color: $offblack;
-        font-weight: bold;
+        @include hc-tab-horizontal-active();
     }
 }

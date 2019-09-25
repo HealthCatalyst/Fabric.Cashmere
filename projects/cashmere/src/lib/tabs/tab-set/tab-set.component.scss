@@ -1,38 +1,25 @@
-@import '../../sass/colors';
+@import '../../sass/tab.scss';
 
 .hc-horizontal-tab-container {
-    height: auto;
-    width: 100%;
+    @include hc-tab-set-container-horizontal();
 }
 
 .hc-tab-bar-horizontal {
-    background-color: inherit;
-    display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid $slate-gray-300;
-    align-items: baseline;
+    @include hc-tab-set-bar-horizontal();
 }
 
 .hc-tab-content-horizontal {
-    background-color: inherit;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
+    @include hc-tab-set-content-horizontal();
 }
 
 .hc-vertical-tab-container {
-    height: 100%;
-    width: 100%;
-    display: flex;
+    @include hc-tab-set-container-vertical();
 }
 
 .hc-tab-bar-vertical {
-    padding: 15px 0;
-    background-color: $white;
-    width: 20%;
+    @include hc-tab-set-bar-vertical();
 }
 
 .hc-tab-content-vertical {
-    background-color: $slate-gray-100;
-    width: 80%;
+    @include hc-tab-set-content-vertical();
 }
