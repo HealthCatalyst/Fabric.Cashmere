@@ -24,6 +24,9 @@ export class HcDatepickerIntl {
     /** A label for the button used to open the calendar popup (used by screen readers). */
     openCalendarLabel: string = 'Open calendar';
 
+    /** A label for the current month button (used by screen readers). */
+    currentMonthLabel: string = 'Current month';
+
     /** A label for the previous month button (used by screen readers). */
     prevMonthLabel: string = 'Previous month';
 
@@ -47,4 +50,7 @@ export class HcDatepickerIntl {
 
     /** A label for the 'switch to year view' button (used by screen readers). */
     switchToMultiYearViewLabel: string = 'Choose month and year';
+
+    /** A label for the 'jump to the current date' button (used by screen readers). */
+    switchToTodayLabel: string = 'Jump to the current date';
 }
