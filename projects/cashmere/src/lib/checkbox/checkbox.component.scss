@@ -39,6 +39,10 @@
         @include hc-checkbox-overlay-disabled();
     }
 
+    .hc-checkbox-indeterminate & {
+        @include hc-checkbox-overlay-indeterminate();
+    }
+
     input[type='checkbox']:checked + & {
         @include hc-checkbox-overlay-checked();
     }
