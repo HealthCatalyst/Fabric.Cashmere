@@ -1,10 +1,10 @@
-import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output } from '@angular/core';
-import { EventEmitter, TemplateRef, Self, OnInit } from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output} from '@angular/core';
+import {EventEmitter, TemplateRef, Self, OnInit} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import { TabsService } from '../tabs.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {TabsService} from '../tabs.service';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 export class TabChangeEvent {
     constructor(public index: number, public tab: TabComponent) {}
@@ -112,9 +112,7 @@ export class TabSetComponent implements OnInit, AfterContentInit {
 
     private subscribeToTabClicks(): void {
         this._stopTabSubscriptionSubject.next();
-        this._tabs.forEach(t => t.tabClick
-            .pipe(takeUntil(this._stopTabSubscriptionSubject))
-            .subscribe(() => this._setActive(t)));
+        this._tabs.forEach(t => t.tabClick.pipe(takeUntil(this._stopTabSubscriptionSubject)).subscribe(() => this._setActive(t)));
     }
 
     /** Sets the currently selected tab by either its numerical index or `TabComponent` object  */
@@ -190,8 +188,11 @@ export class TabSetComponent implements OnInit, AfterContentInit {
             .map(tab => tab.routerLink)
             .map(routerLink => this.mapRouterLinkToString(routerLink))
             .find(routerLink => {
-                let currentRoute = this.router.url;
-                return currentRoute === routerLink || currentRoute.indexOf(`${routerLink}/`) > -1;
+                const currentRoute = this.router.url;
+                const endIndex = currentRoute.indexOf('?') > 0 ? currentRoute.indexOf('?') : currentRoute.length;
+                return (
+                    currentRoute === routerLink || currentRoute.substring(0, endIndex).replace(/\//g, '') === routerLink.replace(/\//g, '')
+                );
             });
 
         if (foundRoute) {
