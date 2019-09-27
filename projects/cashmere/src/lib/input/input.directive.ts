@@ -34,6 +34,9 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
 
     _componentId = this._uniqueInputId;
 
+
+    @Input() toggleVis: boolean;
+
     /** Input type of the element. */
     @Input()
     get type(): string {
@@ -131,11 +134,17 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
 
     @HostListener('blur')
     _onBlur() {
+        if(this.toggleVis){
+            this._elementRef.nativeElement.setAttribute('type', 'password');
+        }
         this._changeFocus(false);
     }
 
     @HostListener('focus')
     _onFocus() {
+        if(this.toggleVis){
+            this._elementRef.nativeElement.setAttribute('type', 'text');
+        }
         this._changeFocus(true);
     }
 
