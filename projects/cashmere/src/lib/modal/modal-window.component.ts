@@ -34,7 +34,7 @@ export class ModalWindowComponent {
         return state;
     }
 
-    @HostListener('click', ['$event'])
+    @HostListener('mousedown', ['$event'])
     _overlayClick(event: any) {
         let modalContentNotPresent = true;
         let path = this._eventPath(event);
