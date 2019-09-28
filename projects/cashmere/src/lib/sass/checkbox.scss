@@ -3,7 +3,6 @@
 @mixin hc-checkbox-container() {
     overflow: hidden;
     display: flex;
-    padding: 3px 0;
 }
 
 @mixin hc-checkbox-content() {
@@ -27,6 +26,7 @@
 
 @mixin hc-checkbox-label() {
     padding: 4px 0 4px 12px;
+    line-height: 1.5;
 }
 
 @mixin hc-checkbox-overlay() {
