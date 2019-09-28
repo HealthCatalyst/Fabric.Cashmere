@@ -6,7 +6,7 @@ import {SplitButtonComponent} from './split-button.component';
 import {ButtonModule} from '../button.module';
 import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ButtonItemDirective} from './directives/button-item.directive';
+import {ButtonItemDirective} from '../../pop/directives/button-item.directive';
 
 describe('SplitButtonComponent', () => {
     let fixture: ComponentFixture<any>;

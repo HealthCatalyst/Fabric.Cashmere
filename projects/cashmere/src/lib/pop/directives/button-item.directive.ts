@@ -1,6 +1,6 @@
 import {Directive, HostBinding} from '@angular/core';
 
-/** Secondary button menu item */
+/** Use `hcButtonItem` for a secondary button menu item. */
 @Directive({
     selector: '[hcButtonItem]'
 })

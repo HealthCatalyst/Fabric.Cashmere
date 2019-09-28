@@ -35,20 +35,45 @@
     </hc-navbar-mobile-menu>
 </hc-navbar>
 
-<hc-pop #appSwitcher><hc-app-switcher iconHeight="100"></hc-app-switcher></hc-pop>
-
-<hc-pop #options>
-    <ul class="list-options">
-        <li><a href="" target="_blank">Help Topics</a></li>
-        <li><a href="" target="_blank">Release Notes</a></li>
-        <li><a href="" target="_blank">About</a></li>
-        <li><a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a></li>
-        <li><a href="" target="_blank">Send us your feedback</a></li>
-    </ul>
+<hc-pop #appSwitcher [showArrow]="false" horizontalAlign="end">
+    <hc-app-switcher iconHeight="50"></hc-app-switcher>
 </hc-pop>
 
-<hc-pop #user>
-    <ul class="list-options">
-        <li><a href="" target="_blank">Logout</a></li>
-    </ul>
+<hc-pop #options [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
+    <div hcMenu>
+        <button hcButtonItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
+            <span hcMenuText>Read the docs</span>
+        </button>
+        <button hcButtonItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-lightbulb-o"></hc-icon>
+            <span hcMenuText>Request a feature</span>
+        </button>
+        <button hcButtonItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-users"></hc-icon>
+            <span hcMenuText>Ask the community</span>
+        </button>
+        <button hcButtonItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bullhorn"></hc-icon>
+            <span hcMenuText>Find out what's new</span>
+        </button>
+        <button hcButtonItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-comments"></hc-icon>
+            <span hcMenuText>Send feedback</span>
+        </button>
+        <div hcButtonItem hcDivider></div>
+        <button hcButtonItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-info-circle"></hc-icon>
+            <span hcMenuText>About</span>
+        </button>
+    </div>
+</hc-pop>
+
+<hc-pop #user [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
+    <div hcMenu>
+        <button hcButtonItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-sign-out"></hc-icon>
+            <span hcMenuText>Log out of this App</span>
+        </button>
+    </div>
 </hc-pop>

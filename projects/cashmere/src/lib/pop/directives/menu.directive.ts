@@ -1,6 +1,6 @@
 import {Directive, HostBinding} from '@angular/core';
 
-/** The Menu directive provides a standard way of displaying a series of selectable elements in a popover */
+/** The `hcMenu` directive provides a standard way of displaying a series of selectable elements in a popover. */
 @Directive({
     selector: '[hcMenu]'
 })

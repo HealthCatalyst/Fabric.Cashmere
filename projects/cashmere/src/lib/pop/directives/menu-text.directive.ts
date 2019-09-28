@@ -1,6 +1,6 @@
 import {Directive, HostBinding} from '@angular/core';
 
-/** Applies class to properly style main button text inside of an split button menu. */
+/** Use `hcMenuText` for main button text inside of a menu. */
 @Directive({
     selector: '[hcMenuText]'
 })
