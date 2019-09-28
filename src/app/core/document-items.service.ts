@@ -82,7 +82,7 @@ const docs: DocItem[] = [
         id: 'pop',
         name: 'Popover',
         category: 'popups',
-        examples: ['popover-simple', 'popover-overview', 'popover-menu', 'popover-tooltip'],
+        examples: ['popover-simple', 'popover-menu', 'popover-tooltip', 'popover-overview'  ],
         usageDoc: true
     },
     {

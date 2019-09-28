@@ -31,7 +31,7 @@ import {
 } from './types';
 
 import { PopoverNotificationService, NotificationAction } from './notification.service';
-import { HcPopoverAnchorDirective } from './popover-anchor.directive';
+import { HcPopoverAnchorDirective } from './directives/popover-anchor.directive';
 
 /**
  * Configuration provided by the popover for the anchoring service
@@ -349,7 +349,8 @@ export class HcPopoverAnchoringService implements OnDestroy {
       scrollStrategy: this._getScrollStrategyInstance(config.scrollStrategy),
       direction: this._getDirection(),
 
-      panelClass: 'overlay-pointer-events'
+      // disable pointer events for hover popovers to avoid potential flickering issues
+      panelClass: anchor.trigger === "hover" ? 'overlay-pointer-events' : ''
     });
   }
 

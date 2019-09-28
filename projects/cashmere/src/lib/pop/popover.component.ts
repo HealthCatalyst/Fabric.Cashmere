@@ -241,8 +241,8 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
   constructor(
       public _elementRef: ElementRef,
-    private _focusTrapFactory: FocusTrapFactory,
-    @Optional() @Inject(DOCUMENT) private _document: any
+    public _focusTrapFactory: FocusTrapFactory,
+    @Optional() @Inject(DOCUMENT) public _document: any
   ) { }
 
   ngOnInit() {

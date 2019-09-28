@@ -1,7 +1,7 @@
 <button hc-button buttonStyle="secondary" [hcPop]="menu">Menu</button>
 
 <hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false">
-    <div class="hc-menu-panel">
+    <div hcMenu>
         <button hcButtonItem>
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-snowflake-o"></hc-icon>
             <span hcMenuText>Snowflake</span>
@@ -26,6 +26,6 @@
 </hc-pop>
 
 <p class="hc-font-sm">
-    Note: Must import Cashmere's <code>ButtonModule</code> to use the
-    <code>hcButtonItem</code> & <code>hcMenu*</code> directives.
+    The directives <code>hcMenu</code>, <code>hcButtonItem</code>, <code>hcMenuIcon</code>,
+    <code>hcMenuText</code>, and <code>hcMenuSubText</code> may be used to create menus using the popover component.
 </p>
