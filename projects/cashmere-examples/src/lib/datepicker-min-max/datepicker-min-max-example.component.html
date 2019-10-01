@@ -1,0 +1,28 @@
+<div class="example-date-input">
+    <hc-form-field>
+        <hc-label>Date (with min and max):</hc-label>
+        <input hcInput [hcDatepicker]="picker1" [min]="min" [max]="max" [(ngModel)]="date1" placeholder="Custom date parsing..."
+               class="cursor-pointer"/>
+        <hc-datepicker-toggle hcSuffix [for]="picker1">
+        </hc-datepicker-toggle>
+        <hc-datepicker #picker1></hc-datepicker>
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Min Date:</hc-label>
+        <input hcInput [hcDatepicker]="picker2" [(ngModel)]="min" placeholder="Custom date parsing..."
+               class="cursor-pointer"/>
+        <hc-datepicker-toggle hcSuffix [for]="picker2">
+        </hc-datepicker-toggle>
+        <hc-datepicker #picker2></hc-datepicker>
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Max Date:</hc-label>
+        <input hcInput [hcDatepicker]="picker3" [(ngModel)]="max" placeholder="Custom date parsing..."
+               class="cursor-pointer"/>
+        <hc-datepicker-toggle hcSuffix [for]="picker3">
+        </hc-datepicker-toggle>
+        <hc-datepicker #picker3></hc-datepicker>
+    </hc-form-field>
+</div>
