@@ -307,16 +307,20 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     }
 
     markAsDirty() {
-        const control = this._ngControl.control;
-        if (control) {
-            control.markAsDirty();
+        if (this._ngControl) {
+            const control = this._ngControl.control;
+            if (control) {
+                control.markAsDirty();
+            }
         }
     }
 
     markAsTouched() {
-        const control = this._ngControl.control;
-        if (control) {
-            control.markAsTouched();
+        if (this._ngControl) {
+            const control = this._ngControl.control;
+            if (control) {
+                control.markAsTouched();
+            }
         }
     }
 
