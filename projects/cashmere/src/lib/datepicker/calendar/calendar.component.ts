@@ -122,8 +122,8 @@ export class CalendarHeaderComponent {
 
     todayEnabled(): boolean {
         return (
-            (!this.calendar.minDate || this._dateAdapter.compareDate(this._dateAdapter.today(), this.calendar.minDate) < 0) &&
-            (!this.calendar.maxDate || this._dateAdapter.compareDate(this._dateAdapter.today(), this.calendar.maxDate) > 0)
+            (!this.calendar.minDate || this._dateAdapter.compareDate(this._dateAdapter.today(), this.calendar.minDate) > 0) &&
+            (!this.calendar.maxDate || this._dateAdapter.compareDate(this._dateAdapter.today(), this.calendar.maxDate) < 0)
         );
     }
 
