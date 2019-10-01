@@ -1,8 +1,18 @@
 # Working with Examples
 
+###### Last updated September 21, 2019
+
+:::
+
+##### Overview
+
 Adding meaningful examples can greatly enrich the documentation of components in the Cashmere library. Here are some things to remember when creating or modifying examples.
 
-## Examples files
+:::
+
+:::
+
+##### Example files
 
 The following files are used in the creation of examples for the Cashmere documentation website.
 
@@ -22,7 +32,11 @@ The following files are used in the creation of examples for the Cashmere docume
 -   `projects/cashmere-examples/src/project-template` - the directory containing Angular CLI project files used in the StackBlitz
 -   `scripts/build-examples.ts` - the script used to generate the support files needed for the docs site and StackBlitz
 
-## Creating a new example
+:::
+
+:::
+
+##### Creating a new example
 
 _Please pay close attention to the naming conventions used here, otherwise your example may not work on the documentation site and/or StackBlitz._
 
@@ -39,10 +53,16 @@ _Please pay close attention to the naming conventions used here, otherwise your 
 8. If you are creating an example to a new Cashmere component, make sure that the corresponding module is added to `src/app/shared/cashmere.module.ts`. The example build process will use this file to generate the `CashmereModule` for both the example modules as well as the StackBlitz project.
 9. Implement your example.
 
-### Creating a more complex example
+:::
+
+:::
+
+##### Creating a more complex example
 
 Sometimes your example needs more than a single component, such as when you are demonstrating modals. In this case you can create an example module file named `{EXAMPLE_NAME}-example.module.ts` which will declare all components used in your example. When doing this it is important to do the following in your module file:
 
 -   Make sure the exported class name is `{EXAMPLE_NAME}ExampleModule`
 -   Import both `CommonModule` from `@angular/common` and `CashmereModule` from `../cashmere.module`
 -   In addition to any normal `entryComponents` you wire up (such as modal components), also include the main example component in `entryComponents`. This way the component can be created dynamically by the docs site.
+
+:::

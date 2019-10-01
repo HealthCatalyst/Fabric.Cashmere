@@ -31,6 +31,10 @@ body {
         list-style: disc inside;
     }
 
+    :not(article) > ol {
+        margin-left: 18px;
+    }
+
     .tab-bar-horizontal {
         margin-bottom: 25px;
     }
