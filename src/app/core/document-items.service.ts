@@ -56,7 +56,12 @@ const docs: DocItem[] = [
         id: 'file-input',
         name: 'File Input',
         category: 'forms',
-        examples: ['file-input-overview', 'file-input-file-size-validation', 'file-input-file-type-validation']
+        examples: [
+            'file-input-overview',
+            'file-input-file-size-validation',
+            'file-input-file-type-validation',
+            'file-input-custom-label-and-color'
+        ]
     },
     {id: 'form-field', name: 'Form Field', category: 'forms', examples: ['form-field-overview']},
     {id: 'icon', name: 'Icon', category: 'buttons', examples: ['icon-overview']},
