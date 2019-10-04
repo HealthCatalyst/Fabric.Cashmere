@@ -52,6 +52,7 @@ export class BasePaginationComponent extends Initializable implements OnInit {
     set pageSize(value: number) {
         this._pageSize = coerceNumberProperty(value);
         this._pageSizeUpdated();
+        this._emitPageEvent(this.pageNumber);
     }
     private _pageSize: number = BasePaginationComponent._DEFAULT_PAGE_SIZE;
 
