@@ -40,6 +40,7 @@ export class BasePaginationComponent extends Initializable implements OnInit {
         if (sanitizedValue !== value) {
             setTimeout(() => (this.pageNumber = sanitizedValue));
         } else {
+            this.pageNumberChange.emit(this.pageNumber);
             this._emitPageEvent(prevPageNumber);
         }
     }
@@ -52,6 +53,7 @@ export class BasePaginationComponent extends Initializable implements OnInit {
     set pageSize(value: number) {
         this._pageSize = coerceNumberProperty(value);
         this._pageSizeUpdated();
+        this.pageSizeChange.emit(this.pageSize);
         this._emitPageEvent(this.pageNumber);
     }
     private _pageSize: number = BasePaginationComponent._DEFAULT_PAGE_SIZE;
@@ -60,10 +62,12 @@ export class BasePaginationComponent extends Initializable implements OnInit {
     @Output()
     readonly page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
+    /** Emits the new page number when the page number changes. */
     @Output()
-    readonly pageNumberChange: Observable<number> = this.page.pipe(map(e => e.pageNumber));
+    readonly pageNumberChange: EventEmitter<number> = new EventEmitter<number>();
+    /** Emits the new page size when the page size changes. */
     @Output()
-    readonly pageSizeChange: Observable<number> = this.page.pipe(map(e => e.pageSize));
+    readonly pageSizeChange: EventEmitter<number> = new EventEmitter<number>();
 
     ngOnInit() {
         this._markInitialized();
