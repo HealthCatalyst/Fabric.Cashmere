@@ -1,14 +1,13 @@
 import { Component, Input, ContentChildren, QueryList, AfterContentInit, Output } from '@angular/core';
-import { EventEmitter, TemplateRef, ViewChild, OnInit } from '@angular/core';
+import { EventEmitter, TemplateRef, ViewChild } from '@angular/core';
 import { HcTabTitleComponent } from './tab-title.component';
-import { TabsService } from '../tabs.service';
 
 @Component({
     templateUrl: './tab.component.html',
     selector: `hc-tab`,
     styleUrls: ['./tab.component.scss']
 })
-export class TabComponent implements OnInit, AfterContentInit {
+export class TabComponent implements AfterContentInit {
     /** Plain text title of the tab; for HTML support include a `hc-tab-title` element */
     @Input()
     tabTitle: string = '';
@@ -34,15 +33,9 @@ export class TabComponent implements OnInit, AfterContentInit {
     @ContentChildren(HcTabTitleComponent)
     _tabTitle: QueryList<HcTabTitleComponent>;
 
-    ngOnInit(): void {
-        this._direction = this._tabsService.direction;
-    }
-
     ngAfterContentInit() {
         if (this._tabTitle) {
             this._htmlTitle = this._tabTitle.first;
         }
     }
-
-    constructor(private _tabsService: TabsService) {}
 }
