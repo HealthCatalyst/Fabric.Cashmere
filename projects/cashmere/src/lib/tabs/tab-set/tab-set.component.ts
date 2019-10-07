@@ -1,8 +1,7 @@
 import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output } from '@angular/core';
-import { EventEmitter, TemplateRef, Self, OnInit } from '@angular/core';
+import { EventEmitter, TemplateRef } from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import { TabsService } from '../tabs.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -34,10 +33,9 @@ export function invalidDefaultTab(tabVal: string) {
 @Component({
     selector: `hc-tab-set`,
     templateUrl: './tab-set.component.html',
-    styleUrls: ['./tab-set.component.scss'],
-    providers: [TabsService]
+    styleUrls: ['./tab-set.component.scss']
 })
-export class TabSetComponent implements OnInit, AfterContentInit {
+export class TabSetComponent implements AfterContentInit {
     _routerEnabled: boolean = false;
     private _direction: string = 'vertical';
     private _defaultTab: string = '0';
@@ -82,13 +80,14 @@ export class TabSetComponent implements OnInit, AfterContentInit {
         }
     }
 
-    constructor(private router: Router, private route: ActivatedRoute, @Self() private _tabsService: TabsService) {}
-
-    ngOnInit(): void {
-        this._tabsService.direction = this.direction;
-    }
+    constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngAfterContentInit(): void {
+        this.setUpTabs();
+        this._tabs.changes.subscribe(() => this.setUpTabs());
+    }
+
+    private setUpTabs(): void {
         if (this._tabs.length === 0) {
             throw tabComponentMissing();
         }
@@ -97,17 +96,12 @@ export class TabSetComponent implements OnInit, AfterContentInit {
             this.defaultToFirstTab();
         }
         this.checkForRouterUse();
-
-        this._tabs.changes.subscribe(() => {
-            if (this.defaultTab !== 'none') {
-                this.defaultToFirstTab();
-            }
-            this.checkForRouterUse();
-
-            this.subscribeToTabClicks();
-        });
-
+        this.setTabDirection();
         this.subscribeToTabClicks();
+    }
+
+    private setTabDirection(): void {
+        setTimeout(() => this._tabs.forEach(t => t._direction = this.direction));
     }
 
     private subscribeToTabClicks(): void {
@@ -168,9 +162,6 @@ export class TabSetComponent implements OnInit, AfterContentInit {
     }
 
     private checkForRouterUse() {
-        if (this._tabs.length === 0) {
-            return;
-        }
         const countUsingRouter = this._tabs.filter(tab => tab.routerLink !== undefined).length;
         if (countUsingRouter > 0 && countUsingRouter < this._tabs.length) {
             const tabsMissingRouterLink = this._tabs.filter(tab => tab.routerLink === undefined);
