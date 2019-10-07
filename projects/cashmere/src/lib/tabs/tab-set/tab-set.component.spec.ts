@@ -56,8 +56,12 @@ describe('TabSetComponent', () => {
             expect(component.direction).toBe(expectedDirection);
         });
 
-        it('should be set for all children from parent input', () => {
-            component._tabs.forEach(t => expect(t._direction).toBe(expectedDirection));
+        it('should be set for all children from parent input after second change detection cycle', (done: any) => {
+            setTimeout(() => {
+                fixture.detectChanges();
+                component._tabs.forEach(t => expect(t._direction).toBe(expectedDirection));
+                done();
+            });
         });
 
         it('should throw for unsupported direction', () => {
