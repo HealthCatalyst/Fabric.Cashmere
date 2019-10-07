@@ -2,7 +2,7 @@
 <input type="file" #fileInput [disabled]="disabled" (change)="_onFileSelected()" (blur)="_onBlur()"/>
 
 <ng-template #uploadButton>
-    <button hc-button [buttonStyle]="buttonStyle" (click)="_onClick()" [disabled]="disabled">{{label}}</button>
+    <button hc-button type="button" [buttonStyle]="buttonStyle" (click)="_onClick()" [disabled]="disabled">{{label}}</button>
 </ng-template>
 
 <ng-template #selectedFile>
