@@ -1,7 +1,7 @@
-import {Component, forwardRef, OnDestroy, ViewChild, ElementRef, Input, DoCheck, Self, Optional} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl, NgForm, FormGroupDirective} from '@angular/forms';
+import {Component, DoCheck, ElementRef, forwardRef, Input, OnDestroy, Optional, Self, ViewChild} from '@angular/core';
+import {ControlValueAccessor, FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 import {fromEvent, Subject} from 'rxjs';
-import {takeUntil, filter, map} from 'rxjs/operators';
+import {filter, map, takeUntil} from 'rxjs/operators';
 import {HcFormControlComponent} from '../form-field/index';
 import {FileUpload} from '.';
 import {FileReaderFactory} from './file-reader-factory.service';
@@ -30,6 +30,18 @@ export class FileInputComponent extends HcFormControlComponent implements Contro
     @Input()
     accept: string = '*';
 
+    /** Custom label to be displayed on the button. Default: Upload file */
+    @Input()
+    label: string = 'Upload file';
+
+    /** Custom buttonStyle to be used on the button. See Button component for valid buttonStyles. Default: secondary */
+    @Input()
+    buttonStyle: string = 'secondary';
+
+    /** Custom color for the Chip after a file has been selected. See Chip component for valid colors. Default: neutral */
+    @Input()
+    chipColor: string = 'neutral';
+
     @ViewChild('fileInput')
     _fileInput: ElementRef<HTMLInputElement>;
 
@@ -40,6 +52,7 @@ export class FileInputComponent extends HcFormControlComponent implements Contro
     get value(): FileUpload | null {
         return this._value;
     }
+
     set value(value: FileUpload | null) {
         if (this.value !== value) {
             this.writeValue(value);
@@ -55,9 +68,9 @@ export class FileInputComponent extends HcFormControlComponent implements Contro
         @Self()
         public _ngControl: NgControl,
         @Optional()
-        form: NgForm,
+            form: NgForm,
         @Optional()
-        formGroup: FormGroupDirective
+            formGroup: FormGroupDirective
     ) {
         super();
         this._form = form || formGroup;
@@ -133,12 +146,15 @@ export class FileInputComponent extends HcFormControlComponent implements Contro
             this._value = value;
         }
     }
+
     registerOnChange(fn: any): void {
         this.onChange = fn;
     }
+
     registerOnTouched(fn: any): void {
         this.onTouched = fn;
     }
+
     setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
     }
@@ -146,6 +162,7 @@ export class FileInputComponent extends HcFormControlComponent implements Contro
     private onChange(_: FileUpload | null) {
         /* placeholder - overwritten by registerOnChange, called by Angular */
     }
+
     private onTouched() {
         /* placeholder - overwritten by registerOnTouched, called by Angular */
     }

@@ -2,6 +2,7 @@ import {TestBed, ComponentFixture} from '@angular/core/testing';
 import {FileInputComponent} from './file-input.component';
 import {FileSizePipe} from './pipes/file-size.pipe';
 import {ChipModule} from '../chip';
+import {ButtonModule} from '../button';
 import {FileReaderFactory} from './file-reader-factory.service';
 
 describe('FileInputComponent', () => {
@@ -9,7 +10,7 @@ describe('FileInputComponent', () => {
     let fixture: ComponentFixture<FileInputComponent>;
     beforeEach(() =>
         TestBed.configureTestingModule({
-            imports: [ChipModule],
+            imports: [ChipModule, ButtonModule],
             declarations: [FileInputComponent, FileSizePipe],
             providers: [
                 {
