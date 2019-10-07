@@ -1,6 +1,6 @@
 import {Directive, HostBinding} from '@angular/core';
 
-/** Prefixes an icon to the beginning of a button inside of an split button menu. */
+/** Use `hcMenuIcon` to prefix an icon to the beginning of a button inside of a menu. */
 @Directive({
     selector: '[hcMenuIcon]'
 })

@@ -27,8 +27,13 @@
     <ng-content select="hc-navbar-mobile-menu"></ng-content>
 </div>
 
-<hc-pop #navbarMore class="more-popover">
-    <ul class="list-options">
-        <li *ngFor="let item of _moreList"><a routerLinkActive="active" [routerLink]="item.uri" (click)="_moreClick()">{{item.name}}</a></li>
-    </ul>
+<hc-pop #navbarMore [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
+    <div hcMenu>
+        <ng-container *ngFor="let item of _moreList; let i = index">
+            <button hcMenuItem routerLinkActive="active" [routerLink]="item.uri" (click)="_moreClick()">
+                <span hcMenuText>{{item.name}}</span>
+            </button>
+            <div *ngIf="i != _moreList.length - 1" hcMenuItem hcDivider></div>
+        </ng-container>
+    </div>
 </hc-pop>

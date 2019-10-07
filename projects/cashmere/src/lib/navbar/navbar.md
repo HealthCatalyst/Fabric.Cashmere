@@ -14,21 +14,43 @@ All Health Catalyst apps should include a help menu in their navbar. This guide 
 
 You may not have all these items available. However, include what you have in this order:
 
--   **Help Topics** (if available—reach out to the Content Team for support)
--   **Release Notes** (if applicable, again reach out to the Content Team for support)
--   **About** (a modal containing app reference information - see the [associated style page](https://cashmere.healthcatalyst.net/styles/about) for guidelines)
--   **Health Catalyst Community** (link to community space specific to the app)
--   **Send us your feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/components/typeform-survey/usage))
+- [fa-book] **Read the docs** (link to the [docs site](https://www.healthcatalyst.com/docs/) or your help docs repository on HCC)
+- [fa-lightbulb] **Request a feature** (link to your feature request page on Health Catalyst Community)
+- [fa-users] **Ask the community** (link to your Q&A page on Health Catalyst Community)
+- [fa-bullhorn] **Find out what's new** (link to your release notes on Health Catalyst Community)
+- [fa-comments] **Send feedback**  (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/components/typeform-survey/examples))
+- [fa-info-circle] **About** see the [associated style page](https://cashmere.healthcatalyst.net/styles/about) for guidelines)
+
 
 ```html
-<hc-pop #helpMenu>
-    <ul class="list-options">
-        <li><a href="" target="_blank">Help Topics</a></li>
-        <li><a href="" target="_blank">Release Notes</a></li>
-        <li><button (click)="aboutClick($event)">About</button></li>
-        <li><a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a></li>
-        <li><button (click)="feedbackClick($event)">Send us your feedback</button></li>
-    </ul>
+<hc-pop #helpMenu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
+    <div hcMenu>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
+            <span hcMenuText>Read the docs</span>
+        </button>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-lightbulb-o"></hc-icon>
+            <span hcMenuText>Request a feature</span>
+        </button>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-users"></hc-icon>
+            <span hcMenuText>Ask the community</span>
+        </button>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bullhorn"></hc-icon>
+            <span hcMenuText>Find out what's new</span>
+        </button>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-comments"></hc-icon>
+            <span hcMenuText>Send feedback</span>
+        </button>
+        <div hcMenuItem hcDivider></div>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-info-circle"></hc-icon>
+            <span hcMenuText>About</span>
+        </button>
+    </div>
 </hc-pop>
 ```
 
@@ -48,7 +70,7 @@ In addition to the help menu, all Heath Catalyst applications should also includ
         <hc-app-switcher-links></hc-app-switcher-links>
     </hc-navbar-mobile-menu>
     ...
-    <hc-pop #appSwitcher><hc-app-switcher iconHeight="100"></hc-app-switcher></hc-pop>
+    <hc-pop #appSwitcher><hc-app-switcher iconHeight="50"></hc-app-switcher></hc-pop>
 </hc-navbar>
 ```
 

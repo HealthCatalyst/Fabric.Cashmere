@@ -47,10 +47,3 @@
         @include hc-navbar-mobile-menu();
     }
 }
-
-.more-popover a {
-    &.active {
-        color: $text;
-        cursor: default;
-    }
-}
