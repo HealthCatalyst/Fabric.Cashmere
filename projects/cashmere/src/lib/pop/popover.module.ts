@@ -7,7 +7,7 @@ import {BidiModule} from '@angular/cdk/bidi';
 import {HcPopComponent} from './popover.component';
 import {HcPopoverAnchorDirective} from './directives/popover-anchor.directive';
 
-import {ButtonItemDirective} from './directives/button-item.directive';
+import {MenuItemDirective} from './directives/menu-item.directive';
 import {MenuDirective} from './directives/menu.directive';
 import {MenuIconDirective} from './directives/menu-icon.directive';
 import {MenuTextDirective} from './directives/menu-text.directive';
@@ -20,7 +20,7 @@ import {DividerDirective} from './directives/divider.directive';
         HcPopComponent,
         HcPopoverAnchorDirective,
         MenuDirective,
-        ButtonItemDirective,
+        MenuItemDirective,
         MenuIconDirective,
         MenuTextDirective,
         MenuSubTextDirective,
@@ -31,7 +31,7 @@ import {DividerDirective} from './directives/divider.directive';
         HcPopoverAnchorDirective,
         BidiModule,
         MenuDirective,
-        ButtonItemDirective,
+        MenuItemDirective,
         MenuIconDirective,
         MenuTextDirective,
         MenuSubTextDirective,

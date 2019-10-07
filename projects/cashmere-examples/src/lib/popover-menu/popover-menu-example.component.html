@@ -1,23 +1,23 @@
 <button hc-button buttonStyle="secondary" [hcPop]="menu">Menu</button>
 
-<hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false">
+<hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
     <div hcMenu>
-        <button hcButtonItem>
+        <button hcMenuItem>
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-snowflake-o"></hc-icon>
             <span hcMenuText>Snowflake</span>
             <span hcMenuSubText>Ctrl + S</span>
         </button>
-        <button hcButtonItem>
+        <button hcMenuItem>
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-plus"></hc-icon>
             <span hcMenuText>Add a new one</span>
         </button>
-        <div hcButtonItem hcDivider></div>
-        <button hcButtonItem>
+        <div hcMenuItem hcDivider></div>
+        <button hcMenuItem>
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-camera-retro"></hc-icon>
             <span hcMenuText>Hip Photo</span>
             <span hcMenuSubText>Ctrl + P</span>
         </button>
-        <button hcButtonItem disabled>
+        <button hcMenuItem disabled>
             <span hcMenuIcon></span>
             <span hcMenuText>Menu item 3</span>
             <span hcMenuSubText>I'm disabled</span>
@@ -26,6 +26,6 @@
 </hc-pop>
 <br><br>
 <p class="hc-font-sm">
-    The directives <code>hcMenu</code>, <code>hcButtonItem</code>, <code>hcMenuIcon</code>,
+    The directives <code>hcMenu</code>, <code>hcMenuItem</code>, <code>hcMenuIcon</code>,
     <code>hcMenuText</code>, and <code>hcMenuSubText</code> may be used to create menus using the popover component.
 </p>

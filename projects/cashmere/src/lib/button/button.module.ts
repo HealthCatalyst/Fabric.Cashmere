@@ -8,6 +8,6 @@ import {PopModule} from '../pop/popover.module';
 @NgModule({
     imports: [CommonModule, PopModule],
     declarations: [AnchorComponent, ButtonComponent, SplitButtonComponent],
-    exports: [AnchorComponent, ButtonComponent, SplitButtonComponent]
+    exports: [AnchorComponent, ButtonComponent, SplitButtonComponent, PopModule]
 })
 export class ButtonModule {}

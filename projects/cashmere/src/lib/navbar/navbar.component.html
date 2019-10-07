@@ -30,10 +30,10 @@
 <hc-pop #navbarMore [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
     <div hcMenu>
         <ng-container *ngFor="let item of _moreList; let i = index">
-            <button hcButtonItem routerLinkActive="active" [routerLink]="item.uri" (click)="_moreClick()">
+            <button hcMenuItem routerLinkActive="active" [routerLink]="item.uri" (click)="_moreClick()">
                 <span hcMenuText>{{item.name}}</span>
             </button>
-            <div *ngIf="i != _moreList.length - 1" hcButtonItem hcDivider></div>
+            <div *ngIf="i != _moreList.length - 1" hcMenuItem hcDivider></div>
         </ng-container>
     </div>
 </hc-pop>
