@@ -58,7 +58,8 @@ export class HcPopComponent implements OnInit, OnDestroy {
   /** Whether or not to show a connection arrow when possible. *Defaults to `true`.* */
   @Input() showArrow = true;
 
-  /** Alignment of the popover on the horizontal axis. *Defaults to `"center"`.* */
+  /** Alignment of the popover on the horizontal axis. Can be `before`, `start`, `center`, `end`, or `after`.
+   * *Defaults to `center`.* */
   @Input()
   get horizontalAlign() { return this._horizontalAlign; }
   set horizontalAlign(val: HcPopoverHorizontalAlign) {

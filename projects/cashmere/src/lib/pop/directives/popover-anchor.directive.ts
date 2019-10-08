@@ -12,11 +12,11 @@ import {
 import { Subject, merge } from 'rxjs';
 import { tap, takeUntil } from 'rxjs/operators';
 
-import { HcPopComponent } from './popover.component';
-import { getInvalidPopoverError, getInvalidTriggerError } from './popover.errors';
-import { HcPopoverAnchoringService } from './popover-anchoring.service';
-import { HcPopoverOpenOptions, HcPopoverTrigger, VALID_TRIGGER } from './types';
-import { PopoverNotification, PopoverNotificationService, NotificationAction } from './notification.service';
+import { HcPopComponent } from '../popover.component';
+import { getInvalidPopoverError, getInvalidTriggerError } from '../popover.errors';
+import { HcPopoverAnchoringService } from '../popover-anchoring.service';
+import { HcPopoverOpenOptions, HcPopoverTrigger, VALID_TRIGGER } from '../types';
+import { PopoverNotification, PopoverNotificationService, NotificationAction } from '../notification.service';
 
 @Directive({
   selector: '[hcPop]',

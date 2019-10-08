@@ -8,8 +8,8 @@ import {Component} from '@angular/core';
     templateUrl: 'pagination-simple-example.component.html'
 })
 export class PaginationSimpleExampleComponent {
-    _pageNumber: number = 15;
-    pageSize: number = 20;
+    _pageNumber: number = 8;
+    pageSize: number = 100;
     totalItems: number = 1000;
 
     get pageNumber() {
