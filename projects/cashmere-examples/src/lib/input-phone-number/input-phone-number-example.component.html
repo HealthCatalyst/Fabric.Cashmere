@@ -2,9 +2,9 @@
     <div class="form-container">
         <hc-form-field>
             <hc-label>Tel:</hc-label>
-            <input hcInput hcPhoneMask id="tel" 
+            <input hcInput hcPhoneMask
             [formControl]="formDemoPhone" 
-            [preValue]="formDemoPhone.value"  
+            [preValue]="formDemoPhone.value" 
             [phoneControl]="formDemoPhone" maxlength="14" 
             [ngClass]="(formDemoPhone.invalid)? 'errmsg' : 'validmsg'">		
             <hc-error>A valid phone number is required</hc-error>
