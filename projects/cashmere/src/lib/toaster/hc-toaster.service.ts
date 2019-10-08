@@ -15,8 +15,6 @@ export type ToastContentType<T> = Type<T> | TemplateRef<any>;
 @Injectable()
 export class HcToasterService {
     _toasts: HcToastRef[] = [];
-    endedToastAnim = new Subject<void>();
-    private get endedToastAnim$(): Observable<void> { return this.endedToastAnim.asObservable(); }
 
     // Inject overlay service
     constructor(private injector: Injector, private _overlay: Overlay) {}
@@ -122,14 +120,12 @@ export class HcToasterService {
                 filter(event => event.phaseName === 'done' && event.toState === 'leave'),
                 take(1)
             )
-            .pipe(takeUntil(this.endedToastAnim$))
             .subscribe(() => {
                 this._removeToastPointer(_toastRef);
                 if (options.toastClosed) {
                     options.toastClosed();
                 }
                 this._updateToastPositions();
-                this.endedToastAnim.next();
                 _toastRef.componentInstance._closeClick.unsubscribe();
             });
 
