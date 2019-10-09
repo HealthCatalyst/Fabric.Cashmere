@@ -84,6 +84,7 @@
     &.hci-data-mart:before {
         content: '\e936';
     }
+    &.hci-new-DM:before,
     &.hci-new-SM:before {
         content: '\e97c';
     }
@@ -350,6 +351,12 @@
     }
     &.hci-ungroup:before {
         content: '\e9c0';
+    }
+    &.hci-run:before {
+        content: "\e90d";
+    }
+    &.hci-run-options:before {
+        content: "\e912";
     }
     &.hci-ambulance:before {
         content: '\e902';
