@@ -337,7 +337,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     /** Handles blur events on the input. */
     _onBlur() {
         // Reformat the input only if we have a valid value.
-        if (this.value) {
+        if (this.value || this._elementRef.nativeElement.value) {
             this._formatValue(this.value);
         }
 

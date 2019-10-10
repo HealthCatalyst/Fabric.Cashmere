@@ -7,7 +7,8 @@ import {
     Output,
     EventEmitter,
     OnChanges,
-    SimpleChanges
+    SimpleChanges,
+    HostBinding
 } from '@angular/core';
 import {ConfigStoreService} from '../services/config-store.service';
 import {CalendarComponent} from '../../datepicker/calendar/calendar.component';
@@ -23,6 +24,9 @@ import {D} from '../../datepicker/datetime/date-formats';
     encapsulation: ViewEncapsulation.None
 })
 export class CalendarWrapperComponent implements OnChanges {
+    @HostBinding('class.hc-calendar-wrapper')
+    _hostClass = true;
+
     @ViewChild(CalendarComponent)
     hcCalendar: CalendarComponent;
 
