@@ -1,35 +1,54 @@
-<!-- TODO: migrate code from https://stackblitz.com/edit/angular-le671z?file=src%2Fapp%2Fdrawer-menu%2Fdrawer-menu-example.component.html -->
-<!-- <div class="topBar fixed-top">
-    <div class="hc-sidenav-mobile-menu" (click)="_toggleMobileMenu()">
-        <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
+<div class="desktop-layout" *ngIf="!mobileView">
+    <div class="sidenav-pane">
+        <ng-container *ngTemplateOutlet="brandHeader"></ng-container>
+        <ng-container *ngTemplateOutlet="navItems"></ng-container>
     </div>
-    <div class="sidenav-app-name" *ngIf="appName">{{ appName }}</div>
-</div> -->
-<nav #sidenav class="hc-sidenav" *ngIf="sidenavOpen">
-    <div class="sidenav-brand">
+    <ng-container *ngTemplateOutlet="pageContent"></ng-container>
+</div>
+<div class="mobile-layout" *ngIf="mobileView">
+    <ng-container *ngTemplateOutlet="brandHeader"></ng-container>
+    <div class="sidenav-drawer-container">
+        <hc-drawer-container>
+            <hc-drawer align="left" mode="over" #leftOverDrawer>
+                <ng-container *ngTemplateOutlet="navItems"></ng-container>
+            </hc-drawer>
+            <ng-container *ngTemplateOutlet="pageContent"></ng-container>
+        </hc-drawer-container>
+    </div>
+</div>
+
+<ng-template #brandHeader>
+    <div class="sidenav-brand" (click)="dismissSidenavWhenOpen($event)">
+        <div class="sidenav-mobile-menu-trigger" [ngClass]="{'sidenav-mobile-menu-trigger--active': sidenavOpen}" *ngIf="mobileView" (click)="triggerSidenavToggle($event)">
+            <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
+        </div>
         <a [routerLink]="homeUri" class="brand">
             <img src="{{ brandIcon }}"/>
         </a>
     </div>
-    <!-- <div class="hc-sidenav-mobile-menu" (click)="_toggleMobileMenu()">
-        <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
-    </div> -->
-    <div class="sidenav-user" *ngIf="user">
+</ng-template>
+
+<ng-template #pageContent>
+    <div class="sidenav-page-content" [ngClass]="{'sidenavOpen': sidenavOpen}" (click)="dismissSidenavWhenOpen($event)">
+        <ng-content select=".page-content"></ng-content>
+    </div>
+</ng-template>
+
+<ng-template #navItems>
+    <nav>
+        <div class="sidenav-user" *ngIf="user">
         <span class="user-avatar">
             <img *ngIf="user.avatar" [src]="user.avatar"/>
             <hc-icon *ngIf="!user.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
         </span>
-        <span class="user">{{ user.name }}</span>
-    </div>
-    <div class="sidenav-links">
-        <ng-content select="hc-sidenav-link"></ng-content>
-
-        <a title="Log Out" class="logout" (click)="_logout()" *ngIf="user && logoutUrl">
-            <hc-icon class="icon-left" fontSet="fa" [fontIcon]="logoutIcon"></hc-icon>
-            Log Out
-        </a>
-    </div>
-</nav>
-<div (click)="_menuClick($event)">
-    <ng-content select="hc-sidenav-mobile-menu"></ng-content>
-</div>
+            <span class="user">{{ user.name }}</span>
+        </div>
+        <div class="sidenav-links">
+            <ng-content select="hc-sidenav-link"></ng-content>
+            <a title="Log Out" class="logout" (click)="_logout()" *ngIf="user && logoutUrl">
+                <hc-icon class="icon-left" fontSet="fa" [fontIcon]="logoutIcon"></hc-icon>
+                Log Out
+            </a>
+        </div>
+    </nav>
+</ng-template>

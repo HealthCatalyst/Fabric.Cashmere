@@ -22,30 +22,23 @@ import {Drawer} from '../drawer/index';
     selector: 'hc-sidenav',
     templateUrl: './sidenav.component.html',
     styleUrls: ['./sidenav.component.scss'],
-    providers: [{provide: Drawer, useClass: forwardRef(() => SidenavComponent)}],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [
-        trigger('openState', [
-            state(
-                'open, open-instant',
-                style({
-                    transform: 'translate3d(0, 0, 0)',
-                    visibility: 'visible'
-                })
-            ),
-            state(
-                'void',
-                style({
-                    'box-shadow': 'none',
-                    visibility: 'hidden'
-                })
-            ),
-            transition('void => open-instant', animate('0ms')),
-            transition('void <=> open, open-instant => void', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)'))
-        ])
-    ]
 })
-export class SidenavComponent extends Drawer implements OnInit {
+export class SidenavComponent implements OnInit {
+
+    @ViewChild('leftOverDrawer') drawer: Drawer;
+
+    @Input() set mobileView(isMobileView: boolean) {
+        this._mobileView = isMobileView;
+        if (!isMobileView) {
+            this.sidenavOpen = false;
+        }
+    }
+    get mobileView() {
+        return this._mobileView;
+    }
+    _mobileView = false;
+
     /** Display name of current user */
     @Input()
     user: IUser | null = null;
@@ -55,8 +48,9 @@ export class SidenavComponent extends Drawer implements OnInit {
 
     @HostBinding()
     tabindex = -1;
-    @HostBinding('class.hc-drawer')
-    _drawerClass = true;
+
+    @HostBinding('class.hc-sidenav')
+    _sideNavClass = true;
 
     @Input()
     appName: string;
@@ -75,7 +69,7 @@ export class SidenavComponent extends Drawer implements OnInit {
 
     /** Whether the logout url should append on a parameter to the current page. Default true */
     @Input()
-    logoutReturnToCurrent: boolean = true;
+    logoutReturnToCurrent = true;
 
     /** Icon to be used for the logout link */
     @Input()
@@ -86,68 +80,45 @@ export class SidenavComponent extends Drawer implements OnInit {
 
     @ViewChild('navbar') navbarContent: ElementRef;
 
-    private _logoReady: Subject<boolean> = new Subject();
-    sidenavOpen: boolean = true;
-    public _collapse: boolean = false;
-    public _logoCondense: boolean = false;
+    sidenavOpen = false;
 
-    @HostListener('window:resize')
-    _navResize() {
-        // If links is zero the page is smaller than the first responsive breakpoint
-        // if (this.navbarContent.nativeElement.clientWidth <= 0) {
-        //     return;
-        // }
-        // this.ref.detectChanges();
-    }
+    constructor() {}
 
-    constructor(private el: ElementRef, private ref: ChangeDetectorRef) {
-        super(el);
-    }
-
-    ngOnInit() {
-        this._logoReady.subscribe(() => {
-            this._navResize();
-        });
-        this.toggleOpen();
-    }
-
-    appIconLoaded() {
-        this._logoReady.next(true);
-        this._logoReady.complete();
-    }
-
-    _toggleMobileMenu() {
-        this.sidenavOpen = !this.sidenavOpen;
-        // if (this._mobileMenu.first) {
-        //     if (this._menuOpen) {
-        //         this._mobileMenu.first.hide();
-        //         this._menuOpen = false;
-        //     } else {
-        //         this._mobileMenu.first.show();
-        //         this._menuOpen = true;
-        //     }
-        // }
-    }
-
-    _menuClick(event: any) {
-        let clickTarget: string = event.target.outerHTML;
-
-        // Verify that the click in the mobile menu came from a navigation item
-        if (clickTarget.indexOf('hclistline') >= 0 && clickTarget.indexOf('menu-dropdown') === -1) {
-            this._toggleMobileMenu();
-        }
-    }
+    ngOnInit() {}
 
     _logout() {
         let url = this.logoutUrl;
-        if (this.logoutReturnToCurrent === true) {
+        if (this.logoutReturnToCurrent) {
             url += `?service=${window.location.href}`;
         }
         window.location.href = url;
     }
 
     get _mobileMenuIcon(): string {
-        return this.sidenavOpen ? 'fa-times' : 'fa-bars';
+        return this.sidenavOpen ? 'fa-times-circle' : 'fa-bars';
+    }
+
+    triggerSidenavToggle(event) {
+        event.stopPropagation();
+        this.toggleSidenav(event);
+    }
+
+    dismissSidenavWhenOpen(event) {
+        if (this.sidenavOpen) {
+            event.stopPropagation();
+            this.toggleSidenav(event);
+        }
+    }
+
+    /**
+     * Toggles the sidenav state.
+     *
+     * NOTE: Private to force template to call other methods that will decide when to toggle and when to stopPropagation.
+     * This method is strictly the how of toggling not the entry point.
+     */
+    private toggleSidenav(event) {
+        this.drawer.toggle();
+        this.sidenavOpen = !this.sidenavOpen;
     }
 }
 
