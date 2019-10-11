@@ -117,6 +117,13 @@ const docs: DocItem[] = [
         usageDoc: true
     },
     {
+        id: 'requirement',
+        name: 'Requirement',
+        category: 'layout',
+        examples: ['requirement-overview'],
+        usageDoc: true
+    },
+    {
         id: 'select',
         name: 'Select',
         category: 'forms',
