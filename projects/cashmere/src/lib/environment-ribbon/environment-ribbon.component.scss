@@ -1,0 +1,24 @@
+@import '../sass/colors';
+
+.corner-ribbon {
+    width: 250px;
+    background: $error;
+    position: fixed;
+    top: 46px;
+    left: -54px;
+    text-align: center;
+    line-height: 50px;
+    letter-spacing: 1px;
+    color: $error-bg;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+    z-index: 999;
+    opacity: 0.9;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.hidden {
+    display: none;
+}

@@ -178,6 +178,12 @@ const docs: DocItem[] = [
         name: 'Typeahead',
         category: 'forms',
         examples: ['typeahead-overview', 'typeahead-stacked']
+    },
+    {
+        id: 'environment-ribbon',
+        name: 'Environment Ribbon',
+        category: 'buttons',
+        examples: ['environment-ribbon-overview']
     }
 ];
 

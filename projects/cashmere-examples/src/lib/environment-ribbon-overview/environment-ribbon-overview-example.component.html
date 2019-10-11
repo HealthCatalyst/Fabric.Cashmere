@@ -1,0 +1,11 @@
+<div class="example-content">
+    <hc-environment-ribbon [environment]="environment"></hc-environment-ribbon>
+    <p>The ribbon is shown if the environment name does not start with "prod".</p>
+    <div class="form-wrapper">
+        <hc-form-field>
+            <hc-label>Environment:</hc-label>
+            <input hcInput [formControl]="inputControl">
+        </hc-form-field>
+        <button hc-button (click)="changeEnvironment()">Update</button>
+    </div>
+</div>
