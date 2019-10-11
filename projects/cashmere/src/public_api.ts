@@ -30,6 +30,7 @@ export * from './lib/pop/index';
 export * from './lib/progress-bar/index';
 export * from './lib/progress-indicators/index';
 export * from './lib/radio-button/index';
+export * from './lib/requirement/index';
 export * from './lib/select/index';
 export * from './lib/sidenav/index';
 export * from './lib/sort/index';

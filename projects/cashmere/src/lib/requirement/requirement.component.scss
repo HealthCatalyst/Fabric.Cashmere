@@ -1,0 +1,23 @@
+@import '../sass/colors';
+@import '../sass/functions.scss';
+@import '../sass/mixins.scss';
+
+.hc-requirement {
+    background-color: $error-bg;
+    padding: 10px;
+    border-radius: 3px;
+    ::ng-deep p {
+        color: $error;
+        font-size: 12px;
+        margin: 0;
+        &:before {
+            content: "* ";
+        }
+        &:first-child {
+            margin-bottom: 5px;
+        }
+        &:last-child {
+            margin-top: 5px;
+        }
+    }
+}
