@@ -40,6 +40,7 @@ $drawer-container-padding: 10px 20px;
     @include drawer-stacking-context();
 
     display: block;
+    width: 100%;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -47,7 +48,11 @@ $drawer-container-padding: 10px 20px;
 .hc-drawer-content {
     @include drawer-stacking-context();
 
-    padding: $drawer-container-padding;
+    /**
+    TODO:ahunt Notify that it's recommended to not have padding on the drawer-content
+    because the consumer should pass in content that has it's own padding.
+     */
+    //padding: $drawer-container-padding;
     left: 0;
     right: 0;
     display: block;

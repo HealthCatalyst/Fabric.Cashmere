@@ -1,3 +1,11 @@
+:host {
+    display: block;
+    height: 100%;
+    margin-top: 53px;
+    &.demo-mode {
+        margin-top: 0;
+    }
+}
 .hc-navbar-github-button {
     padding: 9px 15px;
     color: white;
