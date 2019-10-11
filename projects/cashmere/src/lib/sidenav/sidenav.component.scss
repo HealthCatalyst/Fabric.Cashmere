@@ -1,25 +1,56 @@
 @import '../sass/colors';
 
-.hc-sidenav {
+$mobile-top-bar-height: 52px;
+
+:host(.hc-sidenav) {
+    outline: none;
+}
+
+.sidenav-brand {
+    display: flex;
+    align-items: center;
+    background-color: $wcf-red;
+    text-align: center;
+    a {
+        margin-left: 14px;
+    }
+    .mobile-layout & {
+        height: $mobile-top-bar-height;
+    }
+    .desktop-layout & {
+        height: 80px;
+        justify-content: center;
+    }
+    .sidenav-mobile-menu-trigger {
+        height: $mobile-top-bar-height;
+        width: $mobile-top-bar-height;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+        &--active {
+            background-color: rgba(0,0,0,0.25);
+        }
+    }
+    .brand {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+
+    }
+}
+nav {
     background-color: $gray-90;
     color: $white;
     height: 100%;
     padding: 0;
-    width: 260px;
-    position: absolute;
     top: 0;
     bottom: 0;
-    overflow: auto;
-
-    .sidenav-brand {
-        background-color: $wcf-red;
-        text-align: center;
-        height: 70px;
-
-        img {
-            padding-top: 18px;
-        }
-    }
+    overflow: hidden;
 
     .sidenav-user {
         background-color: $black;
@@ -50,6 +81,12 @@
         }
     }
 
+    .sidenav-links {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: calc(100% - 60px);;
+    }
+
     .logout {
         color: $white;
         font-size: 15px;
@@ -71,4 +108,70 @@
 }
 
 .topBar.fixed-top {
+}
+
+.sidenav-page-content {
+    color: black;
+    height: 100%;
+    overflow-y: auto;
+    &.sidenavOpen {
+        background-color: rgba(14, 23, 31, .5);
+    }
+}
+
+.page-content {
+    display: block;
+}
+
+.sidenav-drawer-container {
+    display: flex;
+    height: 100%;
+    hc-drawer {
+        width: 300px;
+    }
+}
+
+.hc-drawer-content {
+    overflow-y: auto;
+}
+
+.hc-drawer {
+    background-color: #363e44;
+    color: #fff;
+}
+
+.desktop-layout {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    outline: none;
+    .sidenav-pane {
+        width: 260px;
+        display: flex;
+        flex-direction: column;
+        nav {
+            flex: 1;
+        }
+    }
+    .sidenav-page-content {
+        flex: 1;
+    }
+}
+
+.mobile-layout {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    outline: none;
+    padding-top: $mobile-top-bar-height;
+    box-sizing: border-box;
+    overflow: hidden;
+    .sidenav-brand {
+        margin-top: -$mobile-top-bar-height;
+    }
+    .sidenav-page-content {
+        flex: 1;
+        height: inherit;
+    }
 }

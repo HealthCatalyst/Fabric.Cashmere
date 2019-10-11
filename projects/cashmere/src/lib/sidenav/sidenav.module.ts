@@ -5,9 +5,10 @@ import {SidenavLinkComponent} from './sidenav-link/sidenav-link.component';
 import {RouterModule} from '@angular/router';
 import {IconModule} from '../icon/icon.module';
 import {PopModule} from '../pop/popover.module';
+import {DrawerModule} from '../drawer/drawer.module';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, IconModule, PopModule],
+    imports: [CommonModule, RouterModule, DrawerModule, IconModule, PopModule],
     declarations: [SidenavComponent, SidenavLinkComponent],
     exports: [SidenavComponent, SidenavLinkComponent]
 })

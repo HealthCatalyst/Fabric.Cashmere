@@ -1,9 +1,201 @@
-/* this height constraint is for the demo page only */
+/* this height constraint is for the demos page only */
 hc-sidenav {
     height: 500px;
 }
 
-.drawer-container {
-    position: relative;
+.sidenav-example-container {
     height: 420px;
+    overflow-y: auto;
 }
+
+.hc-drawer {
+    background-color: #6e6f71;
+    color: #b9babb;
+}
+
+.example-controls   {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5em;
+    padding: 1em;
+    border-bottom: 1px solid gray;
+    a.fullScreenDemo {
+        align-self: flex-start;
+        margin-left: auto;
+        cursor: pointer;
+    }
+}
+
+.mobileView {
+    display: block;
+    width: 411px;
+    height: 823px;
+    border: 2em solid black;
+    border-radius: 1em;
+}
+
+.page-content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+// These help show a more realistic scenario. Emulators adapted from https://www.w3schools.com/howto/howto_css_devices.asp
+.emulator-viewport {
+    &.no-emulation .hc-sidenav {
+        display: block;
+    }
+
+    /* The device with borders. Google Pixel 2XL size */
+    &.smartphone-emulator {
+        position: relative;
+        width: 411px;
+        height: 823px;
+        margin: auto;
+        border: 16px black solid;
+        border-top-width: 60px;
+        border-bottom-width: 60px;
+        border-radius: 36px;
+    }
+
+    /* The horizontal line on the top of the device */
+    &.smartphone-emulator:before {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 5px;
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #333;
+        border-radius: 10px;
+    }
+
+    /* The circle on the bottom of the device */
+    &.smartphone-emulator:after {
+        content: '';
+        display: block;
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        left: 50%;
+        bottom: -65px;
+        transform: translate(-50%, -50%);
+        background: #333;
+        border-radius: 50%;
+    }
+
+    /* The screen (or content) of the device */
+    &.smartphone-emulator .content {
+        width: 360px;
+        height: 640px;
+        background: white;
+    }
+
+    /* The device with borders */
+    &.tablet-emulator {
+        position: relative;
+        width: 768px;
+        height: 1024px;
+        margin: auto;
+        border: 16px black solid;
+        border-top-width: 60px;
+        border-bottom-width: 60px;
+        border-radius: 36px;
+    }
+
+    /* The horizontal line on the top of the device */
+    &.tablet-emulator:before {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 5px;
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #333;
+        border-radius: 10px;
+    }
+
+    /* The circle on the bottom of the device */
+    &.tablet-emulator:after {
+        content: '';
+        display: block;
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        left: 50%;
+        bottom: -65px;
+        transform: translate(-50%, -50%);
+        background: #333;
+        border-radius: 50%;
+    }
+
+    /* The screen (or content) of the device */
+    &.tablet-emulator .content {
+        width: 768px;
+        height: 1024px;
+        background: white;
+    }
+
+    /* The laptop with borders */
+    &.laptop-emulator {
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: scale(.6) translate(-50%); /* Scaled down for a better Try-it experience (change to 1 for full scale) */
+        transform: scale(.5) translate(-50%); /* Scaled down for a better Try-it experience (change to 1 for full scale) */
+        left: 50%;
+        position: relative;
+        width: 1366px;
+        height: 800px;
+        border-radius: 6px;
+        border-style: solid;
+        border-color: black;
+        border-width: 24px 24px 80px;
+
+    }
+
+    /* The keyboard of the laptop */
+    &.laptop-emulator:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 1600px;
+        height: 60px;
+        margin: 80px 0 0 -110px;
+        background: black;
+        border-radius: 6px;
+    }
+
+    /* The top of the keyboard */
+    &.laptop-emulator:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 250px;
+        height: 30px;
+        bottom: -110px;
+        left: 50%;
+        -webkit-transform: translate(-50%);
+        transform: translate(-50%);
+        background: #f1f1f1;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        z-index: 1;
+    }
+
+    /* The screen (or content) of the device */
+    &.laptop-emulator .content {
+        width: 1366px;
+        height: 800px;
+        overflow: hidden;
+        border: none;
+    }
+}
+
+
