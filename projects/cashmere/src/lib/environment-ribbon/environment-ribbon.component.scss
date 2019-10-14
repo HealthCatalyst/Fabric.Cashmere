@@ -2,14 +2,14 @@
 
 .corner-ribbon {
     width: 250px;
-    background: $error;
+    background: $info;
     position: fixed;
     top: 46px;
     left: -54px;
     text-align: center;
     line-height: 50px;
     letter-spacing: 1px;
-    color: $error-bg;
+    color: $info-bg;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
     box-shadow: 0 0 3px rgba(0, 0, 0, .3);
