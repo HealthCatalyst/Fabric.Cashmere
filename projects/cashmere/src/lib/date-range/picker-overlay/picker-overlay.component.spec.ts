@@ -19,7 +19,7 @@ describe('RangeComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [PickerOverlayComponent,RadioButtonComponent],
+            declarations: [PickerOverlayComponent, RadioButtonComponent],
             imports: [BrowserAnimationsModule],
             providers: [{provide: OverlayRef, useClass: MockOverlayRef}, ConfigStoreService],
             schemas: [NO_ERRORS_SCHEMA]
@@ -31,7 +31,7 @@ describe('RangeComponent', () => {
         configStoreService.updateDateRangeOptions({
             presets: [{
                 presetLabel: 'Test preset',
-                range: {fromDate: new Date(2010,1,1), toDate: new Date(2010,1,2)}
+                range: {fromDate: new Date(2010, 1, 1), toDate: new Date(2010, 1, 2)}
             }],
             format: 'mediumDate',
             applyLabel: 'Submit'
@@ -49,8 +49,8 @@ describe('RangeComponent', () => {
         let radioDebugElement = fixture.debugElement.query(By.directive(RadioButtonComponent));
         expect(radioDebugElement.componentInstance.checked).toBe(false);
 
-        component._updateFromDate( new Date(2010,1,1) );
-        component._updateToDate( new Date(2010,1,2) );
+        component._updateFromDate( new Date(2010, 1, 1) );
+        component._updateToDate( new Date(2010, 1, 2) );
         fixture.detectChanges();
 
         expect(radioDebugElement.componentInstance.checked).toBe(true);
