@@ -7,6 +7,7 @@ import {D} from '../../datepicker/datetime/date-formats';
 import {CalendarWrapperComponent} from '../calendar-wrapper/calendar-wrapper.component';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {RadioButtonComponent} from '../../radio-button/radio';
 
 // ** Date range wrapper component */
 @Component({
@@ -24,6 +25,9 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
 
     @ViewChildren(CalendarWrapperComponent)
     calendarWrappers: QueryList<CalendarWrapperComponent>;
+
+    @ViewChildren(RadioButtonComponent)
+    _presetRadios: QueryList<RadioButtonComponent>;
 
     constructor(public configStoreService: ConfigStoreService, private overlayRef: OverlayRef, private cd: ChangeDetectorRef) {
         this.options$ = configStoreService.dateRangeOptions$;
@@ -46,6 +50,9 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
         if (this.calendarWrappers.first) {
             this.calendarWrappers.first.focusInput();
         }
+        setTimeout(() => {
+            this._isRangePreset();
+        });
     }
 
     _updateFromDate(date?: D) {
@@ -57,6 +64,7 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
             });
         }
         this._setValidity();
+        this._isRangePreset();
     }
 
     _updateToDate(date?: D) {
@@ -68,12 +76,26 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
             });
         }
         this._setValidity();
+        this._isRangePreset();
     }
 
     _updateRangeByPreset(range: DateRange) {
         this._fromDate = range.fromDate;
         this._toDate = range.toDate;
         this._setValidity();
+    }
+
+    _isRangePreset() {
+        if (this._presetRadios) {
+            this._presetRadios.forEach((radio: RadioButtonComponent) => {
+                let radioRange: DateRange = radio.value;
+                if (this._fromDate && radioRange.fromDate && this._toDate && radioRange.toDate) {
+                    radio.checked =
+                        this._fromDate.toDateString() === radioRange.fromDate.toDateString() &&
+                        this._toDate.toDateString() === radioRange.toDate.toDateString();
+                 }
+            });
+        }
     }
 
     _applyNewDates() {
