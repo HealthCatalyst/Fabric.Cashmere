@@ -1,11 +1,12 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
 import {ConfigStoreService} from '../services/config-store.service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {OverlayRef} from '@angular/cdk/overlay';
 import {PickerOverlayComponent} from './picker-overlay.component';
 import {tap} from 'rxjs/operators';
+import {By} from '@angular/platform-browser';
+import {RadioButtonComponent} from '../../radio-button/radio';
 
 class MockOverlayRef {
     dispose() {}
@@ -18,7 +19,7 @@ describe('RangeComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [PickerOverlayComponent],
+            declarations: [PickerOverlayComponent,RadioButtonComponent],
             imports: [BrowserAnimationsModule],
             providers: [{provide: OverlayRef, useClass: MockOverlayRef}, ConfigStoreService],
             schemas: [NO_ERRORS_SCHEMA]
@@ -28,7 +29,10 @@ describe('RangeComponent', () => {
     beforeEach(() => {
         configStoreService = TestBed.get(ConfigStoreService);
         configStoreService.updateDateRangeOptions({
-            presets: [],
+            presets: [{
+                presetLabel: 'Test preset',
+                range: {fromDate: new Date(2010,1,1), toDate: new Date(2010,1,2)}
+            }],
             format: 'mediumDate',
             applyLabel: 'Submit'
         });
@@ -39,6 +43,17 @@ describe('RangeComponent', () => {
 
     it('should create', () => {
         expect(component).toBeTruthy();
+    });
+
+    it('should select a preset radio if the current dates match that preset\'s range', () => {
+        let radioDebugElement = fixture.debugElement.query(By.directive(RadioButtonComponent));
+        expect(radioDebugElement.componentInstance.checked).toBe(false);
+
+        component._updateFromDate( new Date(2010,1,1) );
+        component._updateToDate( new Date(2010,1,2) );
+        fixture.detectChanges();
+
+        expect(radioDebugElement.componentInstance.checked).toBe(true);
     });
 
     describe('fromMaxDate', () => {
