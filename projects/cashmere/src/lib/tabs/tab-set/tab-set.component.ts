@@ -73,7 +73,7 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     set defaultTab(tabValue: string | number) {
-        if (!isNaN(Number(tabValue)) || tabValue === 'none') {
+        if (!isNaN(+tabValue) || tabValue === 'none') {
             this._defaultTab = tabValue;
         } else {
             invalidDefaultTab(tabValue);
