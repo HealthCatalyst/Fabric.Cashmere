@@ -38,7 +38,7 @@ export function invalidDefaultTab(tabVal: string | number) {
 export class TabSetComponent implements AfterContentInit {
     _routerEnabled: boolean = false;
     private _direction: string = 'vertical';
-    private _defaultTab: string | number = '0';
+    private _defaultTab: string | number = 0;
     private _stopTabSubscriptionSubject: Subject<any> = new Subject();
 
     /** The content to be displayed for the currently selected tab.
@@ -73,7 +73,7 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     set defaultTab(tabValue: string | number) {
-        if (Number(tabValue) !== NaN || tabValue === 'none') {
+        if (!isNaN(Number(tabValue)) || tabValue === 'none') {
             this._defaultTab = tabValue;
         } else {
             invalidDefaultTab(tabValue);
