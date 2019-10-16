@@ -38,16 +38,7 @@ export class CurrencyDirective implements AfterViewInit, OnDestroy {
                 let beforeDecimal = newVal.slice(0, decimalPlace);
                 let afterDecimal = newVal.slice(decimalPlace);
 
-                if (beforeDecimal.length === 0) {
-                    newVal = '';
-                } else if (beforeDecimal.length < 4) {
-                    beforeDecimal = beforeDecimal.replace(/^(\d{0,3})/, '$1');
-                } else if (beforeDecimal.length < 7) {
-                    beforeDecimal = beforeDecimal.replace(/^(\d{1,3})(\d{3})/, '$1,$2');
-                } else if (beforeDecimal.length < 12) {
-                    beforeDecimal = beforeDecimal.replace(/^(\d{1,3})(\d{3})(\d{3})/, '$1,$2,$3');
-                }
-                console.log(afterDecimal.length);
+                beforeDecimal = this.formatNumber(beforeDecimal);
                 if (afterDecimal.length > 3) {
                     afterDecimal = afterDecimal.substr(0, afterDecimal.length - 1);
                 }
@@ -55,17 +46,23 @@ export class CurrencyDirective implements AfterViewInit, OnDestroy {
                 this._currencyControl.setValue(newVal, {emitEvent: false});
             // If there is no decimal
             } else {
-                if (newVal.length === 0) {
-                    newVal = '';
-                } else if (newVal.length < 4) {
-                    newVal = newVal.replace(/^(\d{0,3})/, '$1');
-                } else if (newVal.length < 7) {
-                    newVal = newVal.replace(/^(\d{1,3})(\d{3})/, '$1,$2');
-                } else if (newVal.length < 10) {
-                    newVal = newVal.replace(/^(\d{1,3})(\d{3})(\d{3})/, '$1,$2,$3');
-                }
+                newVal = this.formatNumber(newVal);
                 this._currencyControl.setValue(newVal, {emitEvent: false});
             }
         });
+    }
+
+    formatNumber(val: string) {
+        let formatted = '';
+        if (val.length === 0) {
+            return formatted;
+        } else if (val.length < 4) {
+            formatted = val.replace(/^(\d{0,3})/, '$1');
+        } else if (val.length < 7) {
+            formatted = val.replace(/^(\d{1,3})(\d{3})/, '$1,$2');
+        } else if (val.length < 10) {
+            formatted = val.replace(/^(\d{1,3})(\d{3})(\d{3})/, '$1,$2,$3');
+        }
+        return formatted;
     }
 }
