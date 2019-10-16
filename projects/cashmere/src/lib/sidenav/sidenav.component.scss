@@ -7,15 +7,24 @@ $mobile-top-bar-height: 52px;
 }
 
 .sidenav-brand {
-    display: flex;
-    align-items: center;
+    display: block;
+    position: relative;
     background-color: $wcf-red;
-    text-align: center;
     a {
-        margin-left: 14px;
+        display: block;
+        position: absolute;
+        top: 19px;
+        left: 24px;
+        img {
+            width: 254px;
+        }
     }
     .mobile-layout & {
         height: $mobile-top-bar-height;
+        a {
+            top: 4px;
+            left: 61px;
+        }
     }
     .desktop-layout & {
         height: 80px;
@@ -38,10 +47,6 @@ $mobile-top-bar-height: 52px;
         justify-content: center;
         align-items: center;
     }
-
-    img {
-
-    }
 }
 nav {
     background-color: $gray-90;
@@ -55,7 +60,7 @@ nav {
     .sidenav-user {
         background-color: $black;
         color: $white;
-        padding: 20px 20px 20px 15px;
+        padding: 24px 20px 24px 26px;
         white-space: normal;
         overflow: hidden;
         max-width: 100%;
@@ -66,12 +71,12 @@ nav {
         }
 
         .user-avatar {
-            margin-right: 10px;
+            margin-right: 20px;
 
             img {
                 border-radius: 50%;
-                width: 20px;
-                height: 20px;
+                width: 36px;
+                height: 36px;
                 vertical-align: middle;
             }
 
@@ -84,7 +89,8 @@ nav {
     .sidenav-links {
         overflow-y: auto;
         overflow-x: hidden;
-        height: calc(100% - 60px);;
+        height: calc(100% - 60px);
+        margin-top: 8px;
     }
 
     .logout {
@@ -92,16 +98,16 @@ nav {
         font-size: 15px;
         display: block;
         width: 100%;
-        padding: 15px;
+        padding: 17px 15px 18px 26px;
         cursor: pointer;
 
         &:hover {
-            background-color: $slate-gray-500;
-            color: $gray-300;
+            background-color: $black;
+            color: $gray-05;
         }
 
         hc-icon {
-            margin-right: 10px;
+            margin-right: 34px;
             vertical-align: middle;
         }
     }
@@ -146,7 +152,7 @@ nav {
     display: flex;
     outline: none;
     .sidenav-pane {
-        width: 260px;
+        width: 300px;
         display: flex;
         flex-direction: column;
         nav {
