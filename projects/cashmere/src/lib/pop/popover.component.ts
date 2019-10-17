@@ -38,6 +38,7 @@ import {
   VALID_VERT_ALIGN,
   HcPopoverOpenOptions,
 } from './types';
+import { OverlayRef } from '@angular/cdk/overlay';
 
 // See http://cubic-bezier.com/#.25,.8,.25,1 for reference.
 const DEFAULT_TRANSITION = '100ms linear';
@@ -222,6 +223,9 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
   /** Stores the click coordinates for mouse-based positioning */
   _offsetPos: number[] = [ 0, 0 ];
+
+  /** Stores a reference to the associated overlay */
+  _componentOverlay: OverlayRef;
 
   /** Classes to be added to the popover for setting the correct transform origin. */
   _classList: any = {};

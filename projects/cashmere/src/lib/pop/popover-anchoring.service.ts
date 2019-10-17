@@ -144,7 +144,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
   openPopover(options: HcPopoverOpenOptions = {}): void {
     if (!this._popoverOpen) {
       this._applyOpenOptions(options);
-      this._createOverlay();
+      this._popover._componentOverlay = this._createOverlay();
       this._subscribeToBackdrop();
       this._subscribeToEscape();
       this._subscribeToDetachments();
@@ -154,16 +154,16 @@ export class HcPopoverAnchoringService implements OnDestroy {
 
   /** Closes the popover. */
   closePopover(value?: any): void {
-    if (this._overlayRef) {
+    if (this._popover._componentOverlay) {
       this._saveClosedState(value);
-      this._overlayRef.detach();
+      this._popover._componentOverlay.detach();
     }
   }
 
   /** Realign the popover to the anchor. */
   realignPopoverToAnchor(): void {
-    if (this._overlayRef) {
-      const config = this._overlayRef.getConfig();
+    if (this._popover._componentOverlay) {
+      const config = this._popover._componentOverlay.getConfig();
       const strategy = config.positionStrategy as FlexibleConnectedPositionStrategy;
       strategy.reapplyLastPosition();
     }
