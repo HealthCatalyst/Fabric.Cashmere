@@ -2,18 +2,24 @@
 
 a {
     color: $white;
-    font-size: 15px;
-    display: block;
+    font-size: 16px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
     width: 100%;
-    padding: 15px;
+    padding: 17px 15px 17px 26px;
 
     &:hover {
-        background-color: $slate-gray-500;
-        color: $gray-300;
+        background-color: $black;
+        color: $gray-05;
+    }
+
+    &:active {
+        background-color: $gray-70;
     }
 
     hc-icon {
-        margin-right: 10px;
+        margin-right: 34px;
         vertical-align: middle;
     }
 }
