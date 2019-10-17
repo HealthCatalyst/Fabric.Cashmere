@@ -1,0 +1,14 @@
+<form>
+    <div class="form-container">
+        <hc-form-field>
+            <hc-label>Amount:</hc-label>
+            <hc-icon hcPrefix fontSet="fa" fontIcon="fa-usd"></hc-icon>
+            <input hcInput hcCurrency
+            [formControl]="formDemoCurrency"
+            [currencyControl]="formDemoCurrency" maxlength="14" 
+            [ngClass]="(formDemoCurrency.invalid)? 'errmsg' : 'validmsg'">		
+            <hc-error>A valid amount is required</hc-error>
+        </hc-form-field>
+    </div>
+    <button hc-button [disabled]="formDemoCurrency.status == 'INVALID'" buttonStyle="primary" type="submit">Send</button>
+</form>
