@@ -75,6 +75,10 @@ export class SidenavComponent implements OnInit {
     @Input()
     logoutIcon: string = 'fa-sign-out';
 
+    /** Change positioning to absolute - mostly just for convenience of playing nice with example docs */
+    @Input()
+    absolutePosition: boolean = false;
+
     @ContentChildren(SidenavLinkComponent)
     _navLinks: QueryList<SidenavLinkComponent>;
 
