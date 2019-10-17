@@ -3,27 +3,26 @@
 a {
     color: $white;
     font-size: 16px;
-    line-height: 21px;
+    line-height: 1.19;
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 17px 15px 17px 26px;
+    padding: 19px 15px 18px 28px;
 
     &:hover {
-        background-color: $black;
-        color: $gray-05;
+        background-color: $dark-blue-hover;
     }
 
     &:active {
-        background-color: $gray-70;
+        background-color: $wcf-blue;
     }
 
     hc-icon {
-        margin-right: 34px;
+        margin-right: 32px;
         vertical-align: middle;
     }
 }
 
 .active {
-    background-color: $gray-70;
+    background-color: $wcf-blue;
 }

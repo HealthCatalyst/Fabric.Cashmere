@@ -10,26 +10,32 @@ $mobile-top-bar-height: 52px;
     display: block;
     position: relative;
     background-color: $wcf-red;
+
     a {
         display: block;
         position: absolute;
         top: 19px;
         left: 24px;
+
         img {
             width: 254px;
         }
     }
+
     .mobile-layout & {
         height: $mobile-top-bar-height;
+
         a {
             top: 4px;
             left: 61px;
         }
     }
+
     .desktop-layout & {
         height: 80px;
         justify-content: center;
     }
+
     .sidenav-mobile-menu-trigger {
         height: $mobile-top-bar-height;
         width: $mobile-top-bar-height;
@@ -38,18 +44,21 @@ $mobile-top-bar-height: 52px;
         align-items: center;
         color: #fff;
         cursor: pointer;
+
         &--active {
-            background-color: rgba(0,0,0,0.25);
+            background-color: rgba(0, 0, 0, 0.25);
         }
     }
+
     .brand {
         display: flex;
         justify-content: center;
         align-items: center;
     }
 }
+
 nav {
-    background-color: $gray-90;
+    background-color: $dark-blue-bg;
     color: $white;
     height: 100%;
     padding: 0;
@@ -58,9 +67,10 @@ nav {
     overflow: hidden;
 
     .sidenav-user {
-        background-color: $black;
         color: $white;
-        padding: 24px 20px 24px 26px;
+        display: flex;
+        align-items: center;
+        padding: 16px 20px 16px 26px;
         white-space: normal;
         overflow: hidden;
         max-width: 100%;
@@ -68,6 +78,7 @@ nav {
 
         .user {
             position: relative;
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
         }
 
         .user-avatar {
@@ -86,10 +97,16 @@ nav {
         }
     }
 
+    .sidenav-hr {
+        margin: 0 auto;
+        width: calc(100% - 48px);
+        background-color: $gray-50;
+    }
+
     .sidenav-links {
         overflow-y: auto;
         overflow-x: hidden;
-        height: calc(100% - 60px);
+        height: calc(100% - 68px);
         margin-top: 8px;
     }
 
@@ -98,30 +115,38 @@ nav {
         font-size: 15px;
         display: block;
         width: 100%;
-        padding: 17px 15px 18px 26px;
+        padding: 19px 15px 18px 28px;
         cursor: pointer;
 
         &:hover {
-            background-color: $black;
+            background-color: $dark-blue-hover;
             color: $gray-05;
         }
 
         hc-icon {
-            margin-right: 34px;
+            margin-right: 32px;
             vertical-align: middle;
         }
     }
 }
 
-.topBar.fixed-top {
-}
-
 .sidenav-page-content {
     color: black;
     height: 100%;
-    overflow-y: auto;
+    width: 100%;
+
     &.sidenavOpen {
         background-color: rgba(14, 23, 31, .5);
+        position: fixed;
+        top: $mobile-top-bar-height;
+        bottom: 0;
+    }
+}
+
+.absolute {
+    .sidenavOpen {
+        position: absolute;
+        top: 0;
     }
 }
 
@@ -132,6 +157,7 @@ nav {
 .sidenav-drawer-container {
     display: flex;
     height: 100%;
+
     hc-drawer {
         width: 300px;
     }
@@ -151,16 +177,27 @@ nav {
     width: 100%;
     display: flex;
     outline: none;
+    position: relative;
+
     .sidenav-pane {
         width: 300px;
         display: flex;
         flex-direction: column;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+
         nav {
             flex: 1;
         }
     }
+
+    .sidenav-pane.absolute {
+        position: absolute;
+    }
+
     .sidenav-page-content {
-        flex: 1;
+        margin-left: 300px;
     }
 }
 
@@ -173,11 +210,12 @@ nav {
     padding-top: $mobile-top-bar-height;
     box-sizing: border-box;
     overflow: hidden;
+
     .sidenav-brand {
         margin-top: -$mobile-top-bar-height;
     }
+
     .sidenav-page-content {
-        flex: 1;
         height: inherit;
     }
 }

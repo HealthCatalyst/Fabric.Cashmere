@@ -1,5 +1,5 @@
 <div class="desktop-layout" *ngIf="!mobileView">
-    <div class="sidenav-pane">
+    <div [ngClass]="{'sidenav-pane': true, 'absolute': absolutePosition}" class="sidenav-pane">
         <ng-container *ngTemplateOutlet="brandHeader"></ng-container>
         <ng-container *ngTemplateOutlet="navItems"></ng-container>
     </div>
@@ -7,7 +7,7 @@
 </div>
 <div class="mobile-layout" *ngIf="mobileView">
     <ng-container *ngTemplateOutlet="brandHeader"></ng-container>
-    <div class="sidenav-drawer-container">
+    <div [ngClass]="{'sidenav-drawer-container': true, 'absolute': absolutePosition}">
         <hc-drawer-container>
             <hc-drawer align="left" mode="over" #leftOverDrawer>
                 <ng-container *ngTemplateOutlet="navItems"></ng-container>
@@ -19,7 +19,8 @@
 
 <ng-template #brandHeader>
     <div class="sidenav-brand" (click)="dismissSidenavWhenOpen($event)">
-        <div class="sidenav-mobile-menu-trigger" [ngClass]="{'sidenav-mobile-menu-trigger--active': sidenavOpen}" *ngIf="mobileView" (click)="triggerSidenavToggle($event)">
+        <div class="sidenav-mobile-menu-trigger" [ngClass]="{'sidenav-mobile-menu-trigger--active': sidenavOpen}" *ngIf="mobileView"
+             (click)="triggerSidenavToggle($event)">
             <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
         </div>
         <a [routerLink]="homeUri" class="brand">
@@ -37,12 +38,13 @@
 <ng-template #navItems>
     <nav>
         <div class="sidenav-user" *ngIf="user">
-        <span class="user-avatar">
-            <img *ngIf="user.avatar" [src]="user.avatar"/>
-            <hc-icon *ngIf="!user.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
-        </span>
+            <span class="user-avatar">
+                <img *ngIf="user.avatar" [src]="user.avatar"/>
+                <hc-icon *ngIf="!user.avatar" fontSet="fa" fontIcon="fa-user-circle"></hc-icon>
+            </span>
             <span class="user">{{ user.name }}</span>
         </div>
+        <hr class="sidenav-hr">
         <div class="sidenav-links">
             <ng-content select="hc-sidenav-link"></ng-content>
             <a title="Log Out" class="logout" (click)="_logout()" *ngIf="user && logoutUrl">
