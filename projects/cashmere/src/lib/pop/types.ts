@@ -6,30 +6,33 @@ export const VALID_SCROLL: HcPopoverScrollStrategy[] = [
   'close'
 ];
 
-export type HcPopoverTrigger = 'click' | 'mousedown' | 'hover' | 'none';
+export type HcPopoverTrigger = 'click' | 'mousedown' | 'rightclick' | 'hover' | 'none';
 export const VALID_TRIGGER: HcPopoverTrigger[] = [
     'click',
     'mousedown',
+    'rightclick',
     'hover',
     'none'
   ];
 
-export type HcPopoverHorizontalAlign = 'before' | 'start' | 'center' | 'end' | 'after';
+export type HcPopoverHorizontalAlign = 'before' | 'start' | 'center' | 'end' | 'after' | 'mouse';
 export const VALID_HORIZ_ALIGN: HcPopoverHorizontalAlign[] = [
   'before',
   'start',
   'center',
   'end',
-  'after'
+  'after',
+  'mouse'
 ];
 
-export type HcPopoverVerticalAlign = 'above'  | 'start' | 'center' | 'end' | 'below';
+export type HcPopoverVerticalAlign = 'above'  | 'start' | 'center' | 'end' | 'below' | 'mouse';
 export const VALID_VERT_ALIGN: HcPopoverVerticalAlign[] = [
   'above',
   'start',
   'center',
   'end',
-  'below'
+  'below',
+  'mouse'
 ];
 
 export interface HcPopoverOpenOptions {
