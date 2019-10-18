@@ -62,6 +62,9 @@ export class HcPopoverAnchoringService implements OnDestroy {
   /** Reference to the target popover. */
   private _popover: HcPopComponent;
 
+  /** Stores the context assigned to the popover */
+  _context: any;
+
   /** Reference to the view container for the popover template. */
   private _viewContainerRef: ViewContainerRef;
 
@@ -141,7 +144,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
   openPopover(options: HcPopoverOpenOptions = {}): void {
     if (!this._popoverOpen) {
       this._applyOpenOptions(options);
-      this._createOverlay();
+      this._popover._componentOverlay = this._createOverlay();
       this._subscribeToBackdrop();
       this._subscribeToEscape();
       this._subscribeToDetachments();
@@ -151,16 +154,16 @@ export class HcPopoverAnchoringService implements OnDestroy {
 
   /** Closes the popover. */
   closePopover(value?: any): void {
-    if (this._overlayRef) {
+    if (this._popover._componentOverlay) {
       this._saveClosedState(value);
-      this._overlayRef.detach();
+      this._popover._componentOverlay.detach();
     }
   }
 
   /** Realign the popover to the anchor. */
   realignPopoverToAnchor(): void {
-    if (this._overlayRef) {
-      const config = this._overlayRef.getConfig();
+    if (this._popover._componentOverlay) {
+      const config = this._popover._componentOverlay.getConfig();
       const strategy = config.positionStrategy as FlexibleConnectedPositionStrategy;
       strategy.reapplyLastPosition();
     }
@@ -205,6 +208,15 @@ export class HcPopoverAnchoringService implements OnDestroy {
       );
 
       this._overlayRef = this._overlay.create(overlayConfig);
+    } else if ( this._popover.horizontalAlign === 'mouse' || this._popover.verticalAlign === 'mouse' ) {
+        /* If aligning to mouse clicks - adjust the strategy based on the most current click */
+        this._overlayRef.updatePositionStrategy( this._getPositionStrategy(
+            this._popover.horizontalAlign,
+            this._popover.verticalAlign,
+            this._popover.forceAlignment,
+            this._popover.lockAlignment,
+            this._anchor._elementRef,
+          ) );
     }
 
     // Actually open the popover
@@ -313,7 +325,11 @@ export class HcPopoverAnchoringService implements OnDestroy {
       this._popover._open = this._popoverOpen = true;
 
       this.popoverOpened.next();
-      this._popover.opened.emit();
+      if ( typeof this._context === "undefined" ) {
+        this._popover.opened.emit();
+      } else {
+        this._popover.opened.emit( this._context );
+      }
     }
   }
 
@@ -404,7 +420,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
     anchor: ElementRef,
   ): FlexibleConnectedPositionStrategy {
     // Attach the overlay at the preferred position
-    const targetPosition = getPosition(horizontalTarget, verticalTarget);
+    const targetPosition = getPosition(horizontalTarget, verticalTarget, this._popover._offsetPos);
     const positions = [targetPosition];
 
     const strategy = this._overlay.position()
@@ -436,18 +452,18 @@ export class HcPopoverAnchoringService implements OnDestroy {
     // cover the anchor
     const possibleHorizontalAlignments: HcPopoverHorizontalAlign[] =
       horizontalOverlapAllowed ?
-        ['before', 'start', 'center', 'end', 'after'] :
+        ['before', 'start', 'center', 'end', 'after', 'mouse'] :
         ['before', 'after'];
     const possibleVerticalAlignments: HcPopoverVerticalAlign[] =
       verticalOverlapAllowed ?
-        ['above', 'start', 'center', 'end', 'below'] :
+        ['above', 'start', 'center', 'end', 'below', 'mouse'] :
         ['above', 'below'];
 
     // Create fallbacks for each allowed prioritized fallback alignment combo
     const fallbacks: ConnectionPositionPair[] = [];
     prioritizeAroundTarget(hTarget, possibleHorizontalAlignments).forEach(h => {
       prioritizeAroundTarget(vTarget, possibleVerticalAlignments).forEach(v => {
-        fallbacks.push(getPosition(h, v));
+        fallbacks.push(getPosition(h, v, this._popover._offsetPos));
       });
     });
 
@@ -495,10 +511,11 @@ export class HcPopoverAnchoringService implements OnDestroy {
 function getPosition(
   h: HcPopoverHorizontalAlign,
   v: HcPopoverVerticalAlign,
+  offset: number[]
 ): ConnectionPositionPair {
   const {originX, overlayX} = getHorizontalConnectionPosPair(h);
   const {originY, overlayY} = getVerticalConnectionPosPair(v);
-  return new ConnectionPositionPair({originX, originY}, {overlayX, overlayY});
+  return new ConnectionPositionPair({originX, originY}, {overlayX, overlayY}, offset[0], offset[1]);
 }
 
 /** Helper function to convert an overlay connection position to equivalent popover alignment. */
@@ -534,6 +551,7 @@ function getHorizontalConnectionPosPair(h: HcPopoverHorizontalAlign):
     case 'before':
       return {originX: 'start', overlayX: 'end'};
     case 'start':
+    case 'mouse':
       return {originX: 'start', overlayX: 'start'};
     case 'end':
       return {originX: 'end', overlayX: 'end'};
@@ -551,6 +569,7 @@ function getVerticalConnectionPosPair(v: HcPopoverVerticalAlign):
     case 'above':
       return {originY: 'top', overlayY: 'bottom'};
     case 'start':
+    case 'mouse':
       return {originY: 'top', overlayY: 'top'};
     case 'end':
       return {originY: 'bottom', overlayY: 'bottom'};

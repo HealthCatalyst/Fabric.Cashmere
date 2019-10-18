@@ -26,7 +26,7 @@ export function tabComponentMissing(): Error {
     return new Error(`TabSet must contain at least one TabComponent. Make sure to add a hc-tab to the hc-tab-set element.`);
 }
 
-export function invalidDefaultTab(tabVal: string) {
+export function invalidDefaultTab(tabVal: string | number) {
     throw Error('Invalid default tab value: ' + tabVal + ". Must be 'none' or a value less than the total number of tabs in the set.");
 }
 
@@ -38,7 +38,7 @@ export function invalidDefaultTab(tabVal: string) {
 export class TabSetComponent implements AfterContentInit {
     _routerEnabled: boolean = false;
     private _direction: string = 'vertical';
-    private _defaultTab: string = '0';
+    private _defaultTab: string | number = 0;
     private _stopTabSubscriptionSubject: Subject<any> = new Subject();
 
     /** The content to be displayed for the currently selected tab.
@@ -68,12 +68,12 @@ export class TabSetComponent implements AfterContentInit {
     /** Zero-based numerical value specifying which tab to select by default, setting to `none` means no tab
      * will be immediately selected. Defaults to 0 (the first tab). */
     @Input()
-    get defaultTab(): string {
+    get defaultTab(): string | number {
         return this._defaultTab;
     }
 
-    set defaultTab(tabValue: string) {
-        if (Number(tabValue) !== NaN || tabValue === 'none') {
+    set defaultTab(tabValue: string | number) {
+        if (!isNaN(+tabValue) || tabValue === 'none') {
             this._defaultTab = tabValue;
         } else {
             invalidDefaultTab(tabValue);

@@ -1082,17 +1082,17 @@ describe('DatepickerComponent', () => {
                 expect(inputEl.value).toBe('1/1/2001');
             });
 
-            it('should not reformat invalid dates on blur', () => {
+            it('should not reformat invalid dates on blur if there is an empty string in the input', () => {
                 const inputEl = fixture.debugElement.query(By.css('input')).nativeElement;
 
-                inputEl.value = 'very-valid-date';
+                inputEl.value = '';
                 dispatchFakeEvent(inputEl, 'input');
                 fixture.detectChanges();
 
                 dispatchFakeEvent(inputEl, 'blur');
                 fixture.detectChanges();
 
-                expect(inputEl.value).toBe('very-valid-date');
+                expect(inputEl.value).toBe('');
             });
 
             it('should mark input touched on calendar selection', fakeAsync(() => {

@@ -124,7 +124,7 @@ As with other types of `<input>`, the datepicker works with `@angular/forms` dir
 
 ### Date validation
 
-There are three properties that add date validation to the datepicker input. The first two are the
+Date validation will only occur if the `input` element is bound via `ngModel` or `formControl`. The validator will check to see if the value entered is a valid date. Beyond that, there are three properties that add additional date validation to the datepicker input. The first two are the
 `min` and `max` properties. In addition to enforcing validation on the input, these properties will
 disable all dates on the calendar popup before or after the respective values and prevent the user
 from advancing the calendar past the `month` or `year` (depending on current view) containing the

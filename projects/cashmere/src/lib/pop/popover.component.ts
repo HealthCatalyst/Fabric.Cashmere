@@ -38,6 +38,7 @@ import {
   VALID_VERT_ALIGN,
   HcPopoverOpenOptions,
 } from './types';
+import { OverlayRef } from '@angular/cdk/overlay';
 
 // See http://cubic-bezier.com/#.25,.8,.25,1 for reference.
 const DEFAULT_TRANSITION = '100ms linear';
@@ -58,7 +59,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
   /** Whether or not to show a connection arrow when possible. *Defaults to `true`.* */
   @Input() showArrow = true;
 
-  /** Alignment of the popover on the horizontal axis. Can be `before`, `start`, `center`, `end`, or `after`.
+  /** Alignment of the popover on the horizontal axis. Can be `before`, `start`, `center`, `end`, `after`, or `mouse`.
    * *Defaults to `center`.* */
   @Input()
   get horizontalAlign() { return this._horizontalAlign; }
@@ -76,7 +77,8 @@ export class HcPopComponent implements OnInit, OnDestroy {
   get xAlign() { return this.horizontalAlign; }
   set xAlign(val: HcPopoverHorizontalAlign) { this.horizontalAlign = val; }
 
-  /** Alignment of the popover on the vertical axis. *Defaults to `"below"`.* */
+  /** Alignment of the popover on the vertical axis. Can be `above`, `start`, `center`, `end`, `below`, or `mouse`.
+   * *Defaults to `"below"`.* */
   @Input()
   get verticalAlign() { return this._verticalAlign; }
   set verticalAlign(val: HcPopoverVerticalAlign) {
@@ -198,8 +200,8 @@ export class HcPopComponent implements OnInit, OnDestroy {
   /** Set to true if clicking anywhere inside the popover should close it. *Defaults to `false`.* */
   @Input() autoCloseOnContentClick = false;
 
-  /** Emits when the popover is opened. */
-  @Output() opened = new EventEmitter<void>();
+  /** Emits when the popover is opened. If `context` was set on the anchor, it will be emitted with this event. */
+  @Output() opened = new EventEmitter<any>();
 
   /** Emits when the popover is closed. */
   @Output() closed = new EventEmitter<any>();
@@ -218,6 +220,12 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
   /** Reference to template so it can be placed within a portal. */
   @ViewChild(TemplateRef) _templateRef: TemplateRef<any>;
+
+  /** Stores the click coordinates for mouse-based positioning */
+  _offsetPos: number[] = [ 0, 0 ];
+
+  /** Stores a reference to the associated overlay */
+  _componentOverlay: OverlayRef;
 
   /** Classes to be added to the popover for setting the correct transform origin. */
   _classList: any = {};
