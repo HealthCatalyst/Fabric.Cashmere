@@ -87,7 +87,7 @@ $hc-calendar-weekday-table-font-size: 11px !default;
 }
 
 .hc-calendar-body-selected {
-    background-color: $primary-brand;
+    background-color: $wcf-blue;
     color: $white;
     font-weight: 700;
 }
@@ -101,7 +101,7 @@ $hc-calendar-weekday-table-font-size: 11px !default;
 }
 
 .hc-calendar-arrow {
-    border-top-color: $primary-brand;
+    border-top-color: $wcf-blue;
 }
 
 // The prev/next buttons need a bit more specificity to
@@ -109,11 +109,11 @@ $hc-calendar-weekday-table-font-size: 11px !default;
 .hc-datepicker-toggle,
 .hc-datepicker-content .hc-calendar-next-button,
 .hc-datepicker-content .hc-calendar-previous-button {
-    color: $primary-brand;
+    color: $wcf-blue;
 }
 
 .hc-calendar-table-header {
-    color: $primary-brand;
+    color: $wcf-blue;
 }
 
 .hc-calendar-table-header-divider::after {
@@ -121,7 +121,7 @@ $hc-calendar-weekday-table-font-size: 11px !default;
 }
 
 .hc-calendar-body-label {
-    color: $primary-brand;
+    color: $wcf-blue;
 }
 
 .hc-calendar-body-cell-content:not(.hc-calendar-body-selected) {
@@ -137,7 +137,7 @@ $hc-calendar-weekday-table-font-size: 11px !default;
 .cdk-keyboard-focused .hc-calendar-body-active,
 .cdk-program-focused .hc-calendar-body-active {
     & > .hc-calendar-body-cell-content:not(.hc-calendar-body-selected) {
-        border: 2px solid $primary-brand;
+        border: 2px solid $wcf-blue;
     }
 }
 

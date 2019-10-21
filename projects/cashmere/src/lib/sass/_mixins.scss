@@ -40,13 +40,17 @@
     }
 }
 
-@mixin formFieldFocusTransition() {
-    -webkit-transition: all 0.30s ease-in-out;
-    -moz-transition: all 0.30s ease-in-out;
-    -ms-transition: all 0.30s ease-in-out;
-    -o-transition: all 0.30s ease-in-out;
-}
 @mixin formFieldFocusedState() {
     box-shadow: 0 0 5px $blue-glow;
+    border-color: $wcf-blue !important;
     outline: none;
+
+    @include formFieldFocusTransition();
+}
+
+@mixin formFieldFocusTransition() {
+    -webkit-transition: all 0.25s;
+    -moz-transition: all 0.25s;
+    -ms-transition: all 0.25s;
+    -o-transition: all 0.25s;
 }

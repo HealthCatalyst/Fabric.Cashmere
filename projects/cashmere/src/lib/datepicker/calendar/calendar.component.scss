@@ -46,6 +46,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
     min-width: 0;
     padding: 10px;
     min-width: inherit;
+    text-decoration: none;
 }
 
 .hc-calendar-arrow {
@@ -105,7 +106,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 
 .hc-calendar-today-button.hc-md.hc-button.hc-link {
     font-weight: 600;
-    color: $primary-brand;
+    color: $gray-90;
     min-width: inherit;
     padding: 2px 0 0 0;
     vertical-align: baseline;

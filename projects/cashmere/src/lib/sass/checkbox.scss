@@ -66,12 +66,12 @@
 }
 
 @mixin hc-checkbox-overlay-hover() {
-    border: 2px solid $primary-brand;
+    border: 2px solid $wcf-blue;
 }
 
 @mixin hc-checkbox-overlay-checked() {
-    background-color: $primary-brand;
-    border: 2px solid $primary-brand;
+    background-color: $wcf-blue;
+    border: 2px solid $wcf-blue;
     &:after {
         opacity: 1;
     }
