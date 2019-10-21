@@ -1,30 +1,76 @@
 @import '../sass/colors';
 
-.hc-sidenav {
-    background-color: $gray-90;
-    color: $white;
-    height: 100%;
-    padding: 0;
-    width: 260px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    overflow: auto;
+$mobile-top-bar-height: 52px;
 
-    .sidenav-brand {
-        background-color: $wcf-red;
-        text-align: center;
-        height: 70px;
+:host(.hc-sidenav) {
+    outline: none;
+}
+
+.sidenav-brand {
+    display: block;
+    position: relative;
+    background-color: $wcf-red;
+
+    a {
+        display: block;
+        position: absolute;
+        top: 19px;
+        left: 24px;
 
         img {
-            padding-top: 18px;
+            width: 254px;
         }
     }
 
+    .mobile-layout & {
+        height: $mobile-top-bar-height;
+
+        a {
+            top: 4px;
+            left: 61px;
+        }
+    }
+
+    .desktop-layout & {
+        height: 80px;
+        justify-content: center;
+    }
+
+    .sidenav-mobile-menu-trigger {
+        height: $mobile-top-bar-height;
+        width: $mobile-top-bar-height;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+
+        &--active {
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    .brand {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+nav {
+    background-color: $dark-blue-bg;
+    color: $white;
+    height: 100%;
+    padding: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+
     .sidenav-user {
-        background-color: $black;
         color: $white;
-        padding: 20px 20px 20px 15px;
+        display: flex;
+        align-items: center;
+        padding: 16px 20px 16px 26px;
         white-space: normal;
         overflow: hidden;
         max-width: 100%;
@@ -32,15 +78,16 @@
 
         .user {
             position: relative;
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
         }
 
         .user-avatar {
-            margin-right: 10px;
+            margin-right: 20px;
 
             img {
                 border-radius: 50%;
-                width: 20px;
-                height: 20px;
+                width: 36px;
+                height: 36px;
                 vertical-align: middle;
             }
 
@@ -50,25 +97,125 @@
         }
     }
 
+    .sidenav-hr {
+        margin: 0 auto;
+        width: calc(100% - 48px);
+        background-color: $gray-50;
+    }
+
+    .sidenav-links {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: calc(100% - 68px);
+        margin-top: 8px;
+    }
+
     .logout {
         color: $white;
         font-size: 15px;
         display: block;
         width: 100%;
-        padding: 15px;
+        padding: 19px 15px 18px 28px;
         cursor: pointer;
 
         &:hover {
-            background-color: $slate-gray-500;
-            color: $gray-300;
+            background-color: $dark-blue-hover;
+            color: $gray-05;
         }
 
         hc-icon {
-            margin-right: 10px;
+            margin-right: 32px;
             vertical-align: middle;
         }
     }
 }
 
-.topBar.fixed-top {
+.sidenav-page-content {
+    color: black;
+    height: 100%;
+    width: 100%;
+
+    &.sidenavOpen {
+        background-color: rgba(14, 23, 31, .5);
+        position: fixed;
+        top: $mobile-top-bar-height;
+        bottom: 0;
+    }
+}
+
+.absolute {
+    .sidenavOpen {
+        position: absolute;
+        top: 0;
+    }
+}
+
+.page-content {
+    display: block;
+}
+
+.sidenav-drawer-container {
+    display: flex;
+    height: 100%;
+
+    hc-drawer {
+        width: 300px;
+    }
+}
+
+.hc-drawer-content {
+    overflow-y: auto;
+}
+
+.hc-drawer {
+    background-color: #363e44;
+    color: #fff;
+}
+
+.desktop-layout {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    outline: none;
+    position: relative;
+
+    .sidenav-pane {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+
+        nav {
+            flex: 1;
+        }
+    }
+
+    .sidenav-pane.absolute {
+        position: absolute;
+    }
+
+    .sidenav-page-content {
+        margin-left: 300px;
+    }
+}
+
+.mobile-layout {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    outline: none;
+    padding-top: $mobile-top-bar-height;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    .sidenav-brand {
+        margin-top: -$mobile-top-bar-height;
+    }
+
+    .sidenav-page-content {
+        height: inherit;
+    }
 }

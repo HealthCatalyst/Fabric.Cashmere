@@ -70,7 +70,7 @@ const docs: DocItem[] = [
         name: 'Input',
         category: 'forms',
         usageDoc: true,
-        examples: ['input-required', 'input-suffix', 'input-prefix', 'input-toggle-visible']
+        examples: ['input-required', 'input-suffix', 'input-prefix', 'input-toggle-visible', 'input-phone-number', 'input-currency']
     },
     {id: 'list', name: 'List', category: 'layout', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', category: 'popups', examples: ['modal-overview']},
@@ -114,6 +114,13 @@ const docs: DocItem[] = [
         name: 'Radio Button',
         category: 'forms',
         examples: ['radio-button-standard', 'radio-button-disabled', 'radio-button-forms'],
+        usageDoc: true
+    },
+    {
+        id: 'requirement',
+        name: 'Requirement',
+        category: 'layout',
+        examples: ['requirement-overview'],
         usageDoc: true
     },
     {
@@ -171,6 +178,12 @@ const docs: DocItem[] = [
         name: 'Typeahead',
         category: 'forms',
         examples: ['typeahead-overview', 'typeahead-stacked']
+    },
+    {
+        id: 'environment-ribbon',
+        name: 'Environment Ribbon',
+        category: 'buttons',
+        examples: ['environment-ribbon-overview']
     }
 ];
 

@@ -2,22 +2,27 @@
 
 a {
     color: $white;
-    font-size: 15px;
-    display: block;
+    font-size: 16px;
+    line-height: 1.19;
+    display: flex;
+    align-items: center;
     width: 100%;
-    padding: 15px;
+    padding: 19px 15px 18px 28px;
 
     &:hover {
-        background-color: $slate-gray-500;
-        color: $gray-300;
+        background-color: $dark-blue-hover;
+    }
+
+    &:active {
+        background-color: $wcf-blue;
     }
 
     hc-icon {
-        margin-right: 10px;
+        margin-right: 32px;
         vertical-align: middle;
     }
 }
 
 .active {
-    background-color: $gray-70;
+    background-color: $wcf-blue;
 }
