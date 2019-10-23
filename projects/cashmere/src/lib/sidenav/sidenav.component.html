@@ -31,6 +31,7 @@
 
 <ng-template #pageContent>
     <div class="sidenav-page-content" [ngClass]="{'sidenavOpen': sidenavOpen}" (click)="dismissSidenavWhenOpen($event)">
+        <div class="overlay"></div>
         <ng-content select=".page-content"></ng-content>
     </div>
 </ng-template>
