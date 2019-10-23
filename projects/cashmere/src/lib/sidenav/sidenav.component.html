@@ -44,7 +44,7 @@
             </span>
             <span class="user">{{ user.name }}</span>
         </div>
-        <hr class="sidenav-hr">
+        <hr class="sidenav-hr" *ngIf="user">
         <div class="sidenav-links">
             <ng-content select="hc-sidenav-link"></ng-content>
             <a title="Log Out" class="logout" (click)="_logout()" *ngIf="user && logoutUrl">
