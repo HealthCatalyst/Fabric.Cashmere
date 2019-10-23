@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CheckboxChangeEvent, IUser} from '@wcf-insurance/cashmere';
 import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
     selector: 'hc-sidenav-demo',
@@ -17,7 +16,8 @@ export class SidenavDemoComponent implements OnInit {
 
     dummyContent: string[] = [];
 
-    constructor(public breakpointObserver: BreakpointObserver) {}
+    constructor(public breakpointObserver: BreakpointObserver) {
+    }
 
     ngOnInit() {
         this.breakpointObserver
@@ -32,7 +32,7 @@ export class SidenavDemoComponent implements OnInit {
                 }
             });
 
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 30; i++) {
             this.dummyContent.push(`Content ${i + 1}`);
         }
     }
