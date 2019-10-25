@@ -4,13 +4,13 @@ a {
     color: $white;
     font-size: 16px;
     line-height: 1.19;
-    display: flex;
-    align-items: center;
     width: 100%;
+    display: block;
     padding: 19px 15px 18px 28px;
 
     &:hover {
         background-color: $dark-blue-hover;
+        text-decoration: none;
     }
 
     &:active {
@@ -18,8 +18,12 @@ a {
     }
 
     hc-icon {
-        margin-right: 32px;
+        margin-right: 15px;
         vertical-align: middle;
+    }
+
+    .children {
+        margin-top: 20px;
     }
 }
 
