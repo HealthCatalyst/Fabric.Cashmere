@@ -1,19 +1,14 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ContentChildren,
     ElementRef,
-    forwardRef,
     HostBinding,
-    HostListener,
     Input,
     OnInit,
     QueryList,
     ViewChild
 } from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import {Subject} from 'rxjs';
 import {SidenavLinkComponent} from './sidenav-link/sidenav-link.component';
 import {Drawer} from '../drawer/index';
 
@@ -34,9 +29,11 @@ export class SidenavComponent implements OnInit {
             this.sidenavOpen = false;
         }
     }
+
     get mobileView() {
         return this._mobileView;
     }
+
     _mobileView = false;
 
     /** Display name of current user */
@@ -57,7 +54,7 @@ export class SidenavComponent implements OnInit {
 
     /** Url to brand icon image file */
     @Input()
-    brandIcon: string = '';
+    brandIcon: string = 'https://www.wcf.com/wcf-ui/common/images/WCF-Logo.svg';
 
     /** Router link triggered when home icon is clicked */
     @Input()
@@ -86,9 +83,11 @@ export class SidenavComponent implements OnInit {
 
     sidenavOpen = false;
 
-    constructor() {}
+    constructor() {
+    }
 
-    ngOnInit() {}
+    ngOnInit() {
+    }
 
     _logout() {
         let url = this.logoutUrl;

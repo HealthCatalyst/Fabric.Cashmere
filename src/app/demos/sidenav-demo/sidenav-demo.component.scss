@@ -5,20 +5,12 @@ body {
     margin: 0 !important;
 }
 
-hc-sidenav {
-    height: 100%;
-}
-
-.drawer-container {
-    height: 100%;
-}
-
 .hc-drawer {
     background-color: #6e6f71;
     color: #b9babb;
 }
 
-.example-controls   {
+.example-controls {
     margin-bottom: 2.5em;
     padding: 1em;
     border-bottom: 1px solid gray;
@@ -34,10 +26,10 @@ hc-sidenav {
 
 .page-content {
     height: 100%;
-    width: 100%;
     justify-content: center;
     align-items: center;
     font-size: 1.5em;
+    margin: 0 5%;
 }
 
 .dummyItem {

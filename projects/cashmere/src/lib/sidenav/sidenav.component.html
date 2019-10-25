@@ -31,6 +31,7 @@
 
 <ng-template #pageContent>
     <div class="sidenav-page-content" [ngClass]="{'sidenavOpen': sidenavOpen}" (click)="dismissSidenavWhenOpen($event)">
+        <div class="overlay"></div>
         <ng-content select=".page-content"></ng-content>
     </div>
 </ng-template>
@@ -44,7 +45,7 @@
             </span>
             <span class="user">{{ user.name }}</span>
         </div>
-        <hr class="sidenav-hr">
+        <hr class="sidenav-hr" *ngIf="user">
         <div class="sidenav-links">
             <ng-content select="hc-sidenav-link"></ng-content>
             <a title="Log Out" class="logout" (click)="_logout()" *ngIf="user && logoutUrl">
