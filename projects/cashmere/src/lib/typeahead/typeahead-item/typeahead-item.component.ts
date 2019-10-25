@@ -1,10 +1,9 @@
-import {Component, EventEmitter, Input, Output, Host} from '@angular/core';
-import {TypeaheadComponent} from '../typeahead.component';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
     selector: 'hc-typeahead-item',
     templateUrl: './typeahead-item.component.html',
-    styleUrls: ['./typeahead-item.component.scss'],
+    styleUrls: ['./typeahead-item.component.scss']
 })
 export class TypeaheadItemComponent {
 
@@ -19,10 +18,6 @@ export class TypeaheadItemComponent {
 
     @Output()
     _selected: EventEmitter<any> = new EventEmitter<any>();
-
-    // Constructor(@Host() parent: TypeaheadComponent) {
-    //     console.log('this is parent: ', parent);
-    // }
 
     _itemSelected(item: any) {
         this._selected.emit(item);

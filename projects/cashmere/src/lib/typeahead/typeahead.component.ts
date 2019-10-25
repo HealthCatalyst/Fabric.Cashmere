@@ -223,7 +223,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
                 // and add highlighting to the new number 1.
                 this.setHighlighted(0, false);
                 this.valueChange.emit(value);
-                console.log(this._options);
                 setTimeout(() => this.setHighlighted(0, true));
             }
         }
