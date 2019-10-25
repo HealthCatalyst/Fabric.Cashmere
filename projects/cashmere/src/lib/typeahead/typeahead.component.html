@@ -1,6 +1,7 @@
 <div class="typeahead-container">
     <hc-form-field [inline]="true">
-        <input #input hcInput [formControl]="_searchTerm" (keydown.tab)="_handleTabKey($event)" (keydown.enter)="_handleEnterKey($event)"
+        <input #input hcInput [formControl]="_searchTerm" (keydown.tab)="_handleTabKey($event)" (keydown.enter)="_stopPropogation($event)" 
+                (keydown.arrowup)="_stopPropogation($event)" (keydown.arrowdown)="_stopPropogation($event)"
                (keyup)="_filterData($event)" [placeholder]="placeholder" autocomplete="off" [title]="_value" (blur)="this.markAsTouched()"/>
     </hc-form-field>
 
