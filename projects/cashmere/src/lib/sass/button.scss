@@ -182,7 +182,7 @@ $btn-icon-sz: 18px;
     &[disabled]:focus,
     &[disabled]:active {
         opacity: 0.35;
-        color: $primary-brand;
+        color: $wcf-blue;
 
         .label,
         .value {
