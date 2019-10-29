@@ -1,5 +1,11 @@
 import {Component} from '@angular/core';
 
+export interface ActionChip {
+    color: string;
+    name: string;
+    hidden: boolean;
+}
+
 /**
  * @title Action Chips
  */
@@ -8,7 +14,5 @@ import {Component} from '@angular/core';
     templateUrl: 'chip-action-example.component.html'
 })
 export class ChipActionExampleComponent {
-    hideChip(event: any) {
-        event.target.style.display = 'none';
-    }
+    chipset: ActionChip[] = [{color: 'red', name: 'Action One', hidden: false}, {color: 'neutral', name: 'Action Two', hidden: false}];
 }

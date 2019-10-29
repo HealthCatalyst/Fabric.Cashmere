@@ -1,2 +1,3 @@
-<hc-chip action="true" (click)="hideChip($event);">Action One</hc-chip>
-<hc-chip color="red" action="true" (click)="hideChip($event);">Color Action</hc-chip>
+<hc-chip *ngFor="let chip of chipset" [color]="chip.color" action="true" [hidden]="chip.hidden" (click)="chip.hidden = true">
+    {{ chip.name }}
+</hc-chip>
