@@ -1,10 +1,5 @@
 import {Component} from '@angular/core';
 
-export interface RowChip {
-    name: string;
-    hidden: boolean;
-}
-
 /**
  * @title Chip Rows (Single Row)
  */
@@ -14,12 +9,14 @@ export interface RowChip {
     styleUrls: ['chip-singlerow-example.component.scss']
 })
 export class ChipSinglerowExampleComponent {
-    chipset: RowChip[] = [
-        {name: 'Payer (11)', hidden: false},
-        {name: 'Clinical Program (103)', hidden: false},
-        {name: 'Care Process (4)', hidden: false},
-        {name: 'Discharge Status (37)', hidden: false},
-        {name: 'Gender (1)', hidden: false},
-        {name: 'ER Visit (3)', hidden: false}
-    ];
+    chipset: string[] = ['Payer (11)', 'Clinical Program (103)', 'Care Process (4)', 'Discharge Status (37)', 'Gender (1)', 'ER Visit (3)'];
+
+    closeChip(chip: string) {
+        for (let i = 0; i < this.chipset.length; i++) {
+            if (chip === this.chipset[i]) {
+                this.chipset.splice(i, 1);
+                break;
+            }
+        }
+    }
 }

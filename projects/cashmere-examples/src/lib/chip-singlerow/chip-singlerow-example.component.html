@@ -4,8 +4,8 @@
         Show Filters
     </button>
     <hc-chip-row wrap="false">
-        <hc-chip *ngFor="let chip of chipset" action="true" [hidden]="chip.hidden" (click)="chip.hidden = true">
-            {{ chip.name }}
+        <hc-chip *ngFor="let chip of chipset" hasCloseButton="true" (closeClick)="closeChip(chip)">
+            {{ chip }}
         </hc-chip>
     </hc-chip-row>
 </div>

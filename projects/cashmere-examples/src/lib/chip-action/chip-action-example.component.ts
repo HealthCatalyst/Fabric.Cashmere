@@ -1,18 +1,13 @@
 import {Component} from '@angular/core';
 
-export interface ActionChip {
-    color: string;
-    name: string;
-    hidden: boolean;
-}
-
 /**
  * @title Action Chips
  */
 @Component({
     selector: 'hc-chip-action-example',
-    templateUrl: 'chip-action-example.component.html'
+    templateUrl: 'chip-action-example.component.html',
+    styleUrls: ['chip-action-example.component.scss']
 })
 export class ChipActionExampleComponent {
-    chipset: ActionChip[] = [{color: 'red', name: 'Action One', hidden: false}, {color: 'neutral', name: 'Action Two', hidden: false}];
+    chips: boolean[] = [true, true];
 }
