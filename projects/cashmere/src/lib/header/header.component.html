@@ -4,14 +4,12 @@
             <img alt="Brand Icon" src="{{ brandIcon }}"/>
         </a>
     </div>
-
-    <div class="header-username" *ngIf="username" [hcPop]="_userMenu">
+    <div class="header-username" [hcPop]="_userMenu">
         <span class="hc-text-ellipsis">{{ username }}</span>
-        <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
+        <hc-icon *ngIf="username" fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
     </div>
 </div>
-
-<hc-pop #userMenu *ngIf="username">
+<hc-pop #userMenu>
     <ul class="list-options">
         <li>
             <span class="logout" (click)="_logout()">Logout</span>
