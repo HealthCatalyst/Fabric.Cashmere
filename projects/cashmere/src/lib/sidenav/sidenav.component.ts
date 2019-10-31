@@ -1,14 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ContentChildren,
-    ElementRef,
-    HostBinding,
-    Input,
-    OnInit,
-    QueryList,
-    ViewChild
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ContentChildren, ElementRef, HostBinding, Input, QueryList, ViewChild} from '@angular/core';
 import {SidenavLinkComponent} from './sidenav-link/sidenav-link.component';
 import {Drawer} from '../drawer/index';
 
@@ -19,7 +9,7 @@ import {Drawer} from '../drawer/index';
     styleUrls: ['./sidenav.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent {
 
     @ViewChild('leftOverDrawer') drawer: Drawer;
 
@@ -82,12 +72,6 @@ export class SidenavComponent implements OnInit {
     @ViewChild('navbar') navbarContent: ElementRef;
 
     sidenavOpen = false;
-
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
 
     _logout() {
         let url = this.logoutUrl;
