@@ -184,6 +184,12 @@ const docs: DocItem[] = [
         name: 'Environment Ribbon',
         category: 'buttons',
         examples: ['environment-ribbon-overview']
+    },
+    {
+        id: 'header',
+        name: 'Header',
+        category: 'nav',
+        examples: ['header-overview']
     }
 ];
 
