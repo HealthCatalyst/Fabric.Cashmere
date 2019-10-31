@@ -39,7 +39,7 @@
 
     &:after {
         content: '';
-        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MzgiIGhlaWdodD0iMjY1IiB2aWV3Qm94PSIwIDAgNDM4IDI2NSI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6I2JhMTYwYTt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmNoZXZyb24tdXAtcmVkPC90aXRsZT48cGF0aCBjbGFzcz0iYSIgZD0iTTIwMiwyNTgsNy43LDYzLjZhMjMuOTAxLDIzLjkwMSwwLDAsMSwwLTMzLjlMMzAuNCw3QTIzLjkwMTEsMjMuOTAxMSwwLDAsMSw2NC4zLDdMMjE5LDE2MSwzNzMuNyw3YTI0LjA4MjcsMjQuMDgyNywwLDAsMSwzMy45LDBsMjIuNywyMi43YTIzLjkwMSwyMy45MDEsMCwwLDEsMCwzMy45TDIzNiwyNThhMjQuMjA0MywyNC4yMDQzLDAsMCwxLTM0LDBaIi8+PC9zdmc+');
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDM4IiBoZWlnaHQ9IjI2NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDxkZWZzPgogIDxzdHlsZT4uYXtmaWxsOiM0MDYxODE7fTwvc3R5bGU+CiA8L2RlZnM+CiA8dGl0bGU+Y2hldnJvbi11cC1yZWQ8L3RpdGxlPgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IHg9Ii0xIiB5PSItMSIgd2lkdGg9IjQ0MCIgaGVpZ2h0PSIyNjciIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgZmlsbD0ibm9uZSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGNsYXNzPSJhIiBkPSJtMjAyLDI1OGwtMTk0LjMsLTE5NC40YTIzLjkwMSwyMy45MDEgMCAwIDEgMCwtMzMuOWwyMi43LC0yMi43YTIzLjkwMTEsMjMuOTAxMSAwIDAgMSAzMy45LDBsMTU0LjcsMTU0bDE1NC43LC0xNTRhMjQuMDgyNywyNC4wODI3IDAgMCAxIDMzLjksMGwyMi43LDIyLjdhMjMuOTAxLDIzLjkwMSAwIDAgMSAwLDMzLjlsLTE5NC4zLDE5NC40YTI0LjIwNDMsMjQuMjA0MyAwIDAgMSAtMzQsMHoiIGlkPSJzdmdfMSIvPgogPC9nPgo8L3N2Zz4=');
         background-repeat: no-repeat;
         background-size: contain;
         width: 13px;
@@ -67,8 +67,6 @@
     -moz-appearance: none;
     line-height: normal;
     cursor: pointer;
-
-    @include formFieldFocusTransition();
 
     &:focus {
         @include formFieldFocusedState();

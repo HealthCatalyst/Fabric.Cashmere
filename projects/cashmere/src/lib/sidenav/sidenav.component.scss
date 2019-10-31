@@ -124,7 +124,7 @@ nav {
         }
 
         hc-icon {
-            margin-right: 32px;
+            margin-right: 15px;
             vertical-align: middle;
         }
     }
@@ -135,11 +135,26 @@ nav {
     height: 100%;
     width: 100%;
 
+    .overlay {
+        display: none;
+    }
+
     &.sidenavOpen {
-        background-color: rgba(14, 23, 31, .5);
+
         position: fixed;
         top: $mobile-top-bar-height;
         bottom: 0;
+
+        .overlay {
+            display: block;
+            background-color: rgba(14, 23, 31, .5);
+            position: fixed;
+            top: $mobile-top-bar-height;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
     }
 }
 
@@ -202,7 +217,7 @@ nav {
 }
 
 .mobile-layout {
-    height: 100%;
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;

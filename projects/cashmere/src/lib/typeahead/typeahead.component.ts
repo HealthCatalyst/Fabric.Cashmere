@@ -51,6 +51,9 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     @Input()
     placeholder = '';
 
+    @Input()
+    showHighlighting = true;
+
     /** Event emitted after each key stroke in the typeahead box (after minChars requirement has been met) */
     @Output()
     valueChange: EventEmitter<any> = new EventEmitter<any>();
@@ -134,8 +137,16 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     ngAfterContentInit() {
         this._options.changes.subscribe(() => {
             this.listenForSelection();
-
-            setTimeout(() => this.setHighlighted(0, true));
+            setTimeout(() => {
+                let currentVal = this._options.length > 1 ? this._value : '';
+                if (this.showHighlighting === true) {
+                    this._options.forEach(option => {
+                        option.itemHighlight(currentVal);
+                    });
+                }
+                this.setHighlighted(0, true);
+            }
+            );
         });
     }
 
@@ -147,7 +158,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         });
     }
 
-    _handleEnterKey($event: any) {
+    _stopPropogation($event: any) {
         $event.preventDefault();
         $event.stopPropagation();
     }
@@ -167,7 +178,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
                 this.showResultPanel();
             } else {
                 if (this._highlighted < (this._options.length - 1) && this._options.length > 0) {
-                    this._highlighted = this._highlighted + 1;
+                    this._highlighted += 1;
                     this.changeHighlighted(this.DIRECTION.DOWN);
                 }
 
@@ -177,7 +188,7 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
             // handle arrow up
             if (!this._resultPanelHidden) {
                 if (this._highlighted > 0) {
-                    this._highlighted = this._highlighted - 1;
+                    this._highlighted -= 1;
                     this.changeHighlighted(this.DIRECTION.UP);
                 }
 
@@ -187,13 +198,18 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
             // handle enter key
             $event.preventDefault();
             $event.stopPropagation();
-            if (this._options.toArray()[this._highlighted]) {
-                this.itemSelectedDefault(this._options.toArray()[this._highlighted].value);
+            let theSelection = this._options.toArray()[this._highlighted].value;
+            if (theSelection) {
+                this.itemSelectedDefault(theSelection);
             } else {
                 this.emptyOptionSelected.emit(this._inputRef.nativeElement.value);
             }
         } else {
             const value = this._inputRef.nativeElement.value;
+            if (value.length === 0) {
+                this.valueChange.emit('');
+                this.setHighlighted(0, false);
+            }
             if (value.length >= this.minChars && value !== this._value) {
                 if (this._resultPanelHidden) {
                     this.showResultPanel();
@@ -248,7 +264,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         // set the first option as the highlighted option
         this._highlighted = 0;
         this.setHighlighted(0, true);
-
         this._inputRef.nativeElement.focus();
     }
 
@@ -275,7 +290,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     private itemSelectedDefault(item) {
         this.markAsDirty();
         this.onTouched();
-
         this.hideResultPanel();
         this.optionSelected.emit(item);
     }

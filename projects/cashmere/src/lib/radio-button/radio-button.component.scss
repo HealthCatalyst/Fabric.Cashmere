@@ -22,7 +22,7 @@
     user-select: none;
 
     &:hover input ~ .hc-radio-overlay {
-        border-color: $primary-brand;
+        border-color: $wcf-blue;
     }
 
     input {
@@ -31,8 +31,8 @@
         cursor: pointer;
 
         &:checked ~ .hc-radio-overlay {
-            background-color: $primary-brand;
-            border-color: $primary-brand;
+            background-color: $wcf-blue;
+            border-color: $wcf-blue;
 
             &:after {
                 display: block;

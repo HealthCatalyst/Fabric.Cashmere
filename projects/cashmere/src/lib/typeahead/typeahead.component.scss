@@ -4,6 +4,11 @@ hc-typeahead {
     width: 100%;
 }
 
+.highlight {
+    color: $wcf-red;
+    font-weight: bold;
+  }
+
 .typeahead-container {
     position: relative;
 
@@ -28,7 +33,7 @@ hc-typeahead {
         position: absolute;
         top: 15px;
         right: 12px;
-        color: $wcf-red;
+        color: $wcf-blue;
         cursor: pointer;
     }
 

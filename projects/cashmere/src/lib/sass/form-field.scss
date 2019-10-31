@@ -5,12 +5,14 @@
 $mat-form-field-default-infix-width: 120px;
 $line-height: 1.5;
 $label-font-scale: 1;
+$border-thickness: 2px;
 $error-font-scale: 0.75;
 $infix-margin-top: 1.143em * $line-height * $label-font-scale;
 $prefix-suffix-icon-font-size: 125%;
-$field-height: 2.85rem;
+$field-height: 2.8571rem;
 
-$infix-padding: 0.786em; //was 0.4em
+$infix-padding-top: 0.6428571em; // 9px 
+$infix-padding-bottom: 0.5714285em;  // 8px
 $error-margin-top: 0.4em / $error-font-scale;
 $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
@@ -51,7 +53,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     width: 100%;
 
     padding: 0 7px 0 0;
-    border: 1.5px solid $gray-50;
+    border: $border-thickness solid $gray-50;
     border-radius: 1px;
 
     background: $white;
@@ -63,10 +65,11 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     box-sizing: border-box;
 
     padding: 0 7px 0 0;
-    border: 1.5px solid $gray-50;
+    border: $border-thickness solid $gray-50;
     border-radius: 1px;
 
     background: $white;
+
 }
 
 @mixin hc-form-field-input-focused() {
@@ -75,14 +78,14 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
 @mixin hc-form-field-disabled-flex() {
     cursor: not-allowed;
-    border: 1.5px solid $gray-200;
+    border: $border-thickness solid $gray-200;
     background-color: $slate-gray-100;
     color: tint($text, 60%);
     border-radius: 1px;
 }
 
 @mixin hc-form-field-input-invalid() {
-    border: 1.5px solid $error;
+    border: $border-thickness solid $error;
 }
 
 @mixin hc-form-field-non-input() {
@@ -121,8 +124,8 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     position: relative;
     flex: auto;
     min-width: $mat-form-field-default-infix-width;
-    line-height: 1.357em; //19px
-    padding: $infix-padding 10px 0.714em;
+    line-height: 1.3571428em; //19px
+    padding: $infix-padding-top 10px $infix-padding-bottom;
 }
 
 @mixin hc-form-field-label-wrapper() {
@@ -162,8 +165,8 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     text-overflow: ellipsis;
     overflow: hidden;
 
-    top: $infix-margin-top + $infix-padding;
-    transform: translateY(-$infix-margin-top - $infix-padding) scale($label-font-scale);
+    top: $infix-margin-top + $infix-padding-top;
+    transform: translateY(-$infix-margin-top - $infix-padding-top) scale($label-font-scale);
     display: block;
     transform-origin: 0 0;
 }

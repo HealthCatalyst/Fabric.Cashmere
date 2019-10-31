@@ -1,3 +1,18 @@
-<div class="wcf-logobox">
-    <img alt="WCF Logo" class="wcf-logo" src="https://www.wcf.com/wcf-ui/common/images/WCF-Logo.png">
+<div class="header">
+    <div class="header-brand">
+        <a [routerLink]="homeUri" class="brand">
+            <img alt="Brand Icon" src="{{ brandIcon }}"/>
+        </a>
+    </div>
+    <div class="header-username" [hcPop]="_userMenu">
+        <span class="hc-text-ellipsis">{{ username }}</span>
+        <hc-icon *ngIf="username" fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
+    </div>
 </div>
+<hc-pop #userMenu>
+    <ul class="list-options">
+        <li>
+            <span class="logout" (click)="_logout()">Logout</span>
+        </li>
+    </ul>
+</hc-pop>
