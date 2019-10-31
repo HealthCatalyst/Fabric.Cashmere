@@ -1,7 +1,12 @@
 <p>
-    The popover component can nicely be used as a <u [hcPop]="tooltip" trigger="hover">tooltip</u>.
+    The popover component can nicely be used as a <u [hcPop]="tooltip" trigger="hover">tooltip</u> and even works on icons like this: 
+    <hc-icon [hcPop]="tooltiptwo" trigger="hover" fontSet="fa" fontIcon="fa-snowflake-o" hcIconMd></hc-icon>.
 </p>
 
 <hc-pop #tooltip verticalAlign="above" [disableStyle]="true">
     <div class="hc-tooltip">I'm a tooltip</div>
+</hc-pop>
+
+<hc-pop #tooltiptwo verticalAlign="above" [disableStyle]="true">
+    <div class="hc-tooltip">Let it snow!</div>
 </hc-pop>
