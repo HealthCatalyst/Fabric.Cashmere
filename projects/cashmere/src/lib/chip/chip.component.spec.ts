@@ -6,12 +6,12 @@ import {By} from '@angular/platform-browser';
 
 @Component({
     template: `
-        <hc-chip [color]="colorValue" [action]="actionValue">Test Chip</hc-chip>
+        <hc-chip [color]="colorValue" [hasCloseButton]="closeValue">Test Chip</hc-chip>
     `
 })
 export class TestChipComponent {
     colorValue: string = 'red';
-    actionValue: boolean = false;
+    closeValue: boolean = false;
 }
 
 describe('ChipComponent', () => {
@@ -44,20 +44,17 @@ describe('ChipComponent', () => {
     });
 
     it('should not include a close button if action is false', () => {
-        let chipComponent = fixture.debugElement.query(By.css('div'));
         let closeSpans = fixture.debugElement.queryAll(By.css('span'));
-        expect(chipComponent.nativeElement.classList.contains('hc-chip-close')).toBe(false);
         expect(closeSpans.length).toBe(0);
     });
 
     it('should include a close button if action is true', () => {
-        component.actionValue = true;
+        component.closeValue = true;
         fixture.detectChanges();
 
-        let chipComponent = fixture.debugElement.query(By.css('div'));
-        let closeSpan = fixture.debugElement.query(By.css('span'));
-        expect(chipComponent.nativeElement.classList.contains('hc-chip-close')).toBe(true);
-        expect(closeSpan.nativeElement.classList.contains('hc-chip-close-icon')).toBe(true);
+        let closeSpan = fixture.debugElement.queryAll(By.css('span'));
+        expect(closeSpan[0].nativeElement.classList.contains('hc-chip-close')).toBe(true);
+        expect(closeSpan[1].nativeElement.classList.contains('hc-chip-close-icon')).toBe(true);
     });
 });
 

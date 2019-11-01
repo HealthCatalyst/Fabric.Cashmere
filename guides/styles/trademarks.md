@@ -14,6 +14,7 @@ Registered Marks (currently in use) – **Apply ®**:
 - HEALTHCATALYST
 - IGNITE CHANGE
 - INXX
+- LEADING WISELY
 - Tri-flame Design Mark *(see [Logo page](https://cashmere.healthcatalyst.net/styles/logo))*
 - MEDICITY *(still using, not rebranding the website)*
 - CAFE *(although this has been renamed "Touchstone" - see below)*
@@ -39,11 +40,13 @@ Unregistered Marks (currently in use, examples) – **Apply ™** symbol:
 - IGNITE OUTCOMES
 - IGNITE OUTCOMES IMPROVEMENT
 - LATE-BINDING
-- LEADING WISELY
 - MONITOR *(Patient Safety Monitor(™) Suite: xx Module)*
 - POPULATION BUILDER
-- RAPID RESPONSE ANALYTICS
+- RAPID RESPONSE ANALYTICS SOLUTION
 - TOUCHSTONE
+- POPULATION HEALTH FOUNDATIONS SOLUTION
+- DOS MART and DOS MARTS
+- THE HEALTH CATALYST AWARDS
 
 :::
 
