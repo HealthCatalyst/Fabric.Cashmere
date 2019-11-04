@@ -33,6 +33,7 @@ Unregistered Marks (currently in use, examples) – **Apply ™** symbol:
 - CLOSED-LOOP ANALYTICS
 - CORUS
 - DOS
+- DOS MART and DOS MARTS
 - EVENTALYTICS
 - HEALTHCATALYST.AI
 - HEALTHCARE ANALYTICS SUMMIT
@@ -42,11 +43,10 @@ Unregistered Marks (currently in use, examples) – **Apply ™** symbol:
 - LATE-BINDING
 - MONITOR *(Patient Safety Monitor(™) Suite: xx Module)*
 - POPULATION BUILDER
-- RAPID RESPONSE ANALYTICS SOLUTION
-- TOUCHSTONE
 - POPULATION HEALTH FOUNDATIONS SOLUTION
-- DOS MART and DOS MARTS
+- RAPID RESPONSE ANALYTICS SOLUTION
 - THE HEALTH CATALYST AWARDS
+- TOUCHSTONE
 
 :::
 
