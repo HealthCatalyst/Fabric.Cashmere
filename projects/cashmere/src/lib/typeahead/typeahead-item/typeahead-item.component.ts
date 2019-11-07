@@ -13,17 +13,10 @@ export class TypeaheadItemComponent {
     @Input()
     value: any;
 
-    @Input()
-    typedChars: string;
-
     @Output()
     _selected: EventEmitter<any> = new EventEmitter<any>();
 
     _itemSelected(item: any) {
         this._selected.emit(item);
-    }
-
-    itemHighlight(typedChars: string) {
-        this.typedChars = typedChars;
     }
 }
