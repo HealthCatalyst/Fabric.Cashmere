@@ -51,9 +51,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     @Input()
     placeholder = '';
 
-    @Input()
-    showHighlighting = true;
-
     /** Event emitted after each key stroke in the typeahead box (after minChars requirement has been met) */
     @Output()
     valueChange: EventEmitter<any> = new EventEmitter<any>();
@@ -139,11 +136,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
             this.listenForSelection();
             setTimeout(() => {
                 let currentVal = this._options.length > 1 ? this._value : '';
-                if (this.showHighlighting === true) {
-                    this._options.forEach(option => {
-                        option.itemHighlight(currentVal);
-                    });
-                }
                 this.setHighlighted(0, true);
             }
             );
@@ -285,7 +277,6 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this.setHighlighted(0, true);
         this._highlighted = 0;
     }
-
 
     private itemSelectedDefault(item) {
         this.markAsDirty();
