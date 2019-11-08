@@ -10,6 +10,7 @@ import {ComponentUsageComponent} from './component-viewer/component-usage/compon
 import {ComponentsComponent} from './components.component';
 import {ComponentsRouterModule} from './components-router.module';
 import {HighlightModule} from 'ngx-highlightjs';
+import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
 
 import xml from 'highlight.js/lib/languages/xml';
 import scss from 'highlight.js/lib/languages/scss';
@@ -32,6 +33,7 @@ export function hljsLanguages() {
             languages: hljsLanguages
         })
     ],
+    providers: [ApplicationInsightsService],
     declarations: [
         ComponentsComponent,
         ComponentViewerComponent,
