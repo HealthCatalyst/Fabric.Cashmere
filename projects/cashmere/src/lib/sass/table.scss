@@ -123,6 +123,10 @@ $row-selected-border-color: $white;
     background-color: $row-color-footer;
 }
 
+@mixin hc-bordered-table-footer-cell() {
+    border: $table-border;
+}
+
 @mixin hc-small-table-cell() {
     font-size: $table-condensed-font-size;
     padding: $cell-padding-condensed;

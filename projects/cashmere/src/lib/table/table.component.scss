@@ -98,6 +98,10 @@ hc-table {
     .hc-footer-row {
         @include hc-bordered-table-footer-row();
     }
+
+    tfoot td {
+        @include hc-bordered-table-footer-cell();
+    }
 }
 
 .hc-table-justify-left {
