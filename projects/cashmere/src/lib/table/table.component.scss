@@ -1,5 +1,153 @@
-@import '../sass/colors';
+@import '../sass/table.scss';
 
 hc-table {
-    display: block;
+    @include hc-table-element();
+}
+
+.hc-table {
+    @include hc-table();
+
+    td, th {
+        @include hc-table-cell();
+    }
+
+    th {
+        @include hc-table-header-cell();
+    }
+
+    tbody {
+        @include hc-table-body();
+    }
+
+    tbody tr {
+        @include hc-table-body-row();
+    }
+
+    td {
+        @include hc-table-body-cell();
+    }
+
+    tfoot {
+        @include hc-table-footer();
+    }
+
+    tfoot td {
+        @include hc-table-footer-cell();
+    }
+}
+
+.hc-table.hc-table-small {
+    td, th {
+        @include hc-small-table-cell();
+    }
+}
+
+.hc-table.hc-action-table {
+    tbody tr:not([disabled]) {
+        @include hc-action-table-row();
+    }
+}
+
+.hc-cell-resizer-left {
+    .hc-table td:first-of-type &, .hc-table th:first-of-type & {
+        @include hc-table-cell-resizer-left-first-cell();
+    }
+}
+
+.hc-cell-resizer-right {
+    .hc-table td:last-of-type &, .hc-table th:last-of-type & {
+        @include hc-table-cell-resizer-right-last-cell();
+    }
+}
+
+.hc-row-selected {
+    @include hc-table-row-selected();
+
+    td {
+        @include hc-table-row-selected-cell();
+    }
+
+    .hc-action-table tbody tr:not([disabled]) & {
+        @include hc-action-table-row-selected();
+    }
+
+    &.hc-action-row:not([disabled]) {
+        @include hc-action-table-action-row-selected();
+    }
+
+    .hc-no-hover-table tbody tr & {
+        @include hc-no-hover-table-row-selected();
+    }
+}
+
+.hc-action-row:not([disabled]) {
+    @include hc-action-table-action-row();
+}
+
+.hc-table-borders {
+    @include hc-bordered-table();
+
+    td, th {
+        @include hc-bordered-table-cell();
+    }
+
+    th {
+        @include hc-bordered-table-header-cell();
+    }
+
+    .hc-footer-row {
+        @include hc-bordered-table-footer-row();
+    }
+}
+
+.hc-table-justify-left {
+    @include hc-table-cell-justify-left();
+}
+
+.hc-table-justify-center {
+    @include hc-table-cell-justify-center();
+}
+
+.hc-table-justify-right {
+    @include hc-table-cell-justify-right();
+}
+
+.hc-sort-header-container {
+    .hc-table-justify-left & {
+        @include hc-table-sort-header-left();
+    }
+
+    .hc-table-justify-center & {
+        @include hc-table-sort-header-center();
+    }
+
+    .hc-table-justify-right & {
+        @include hc-table-sort-header-right();
+    }
+}
+
+th.hc-col-sortable, th.hc-col-sortable-left {
+    @include hc-table-header-sortable();
+}
+
+th.hc-col-sortable-left {
+    @include hc-table-header-sortable-left();
+}
+
+.hc-active-sort {
+    @include hc-table-header-active-sort();
+
+    &.hc-sort-asc {
+        @include hc-table-header-active-sort-asc();
+    }
+
+    &.hc-sort-desc:after {
+        @include hc-table-header-active-sort-desc();
+    }
+}
+
+.hc-no-hover-table {
+    tbody tr {
+        @include hc-no-hover-table-row();
+    }
 }
