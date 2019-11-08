@@ -13,7 +13,7 @@ import {
     ViewEncapsulation
 } from '@angular/core';
 import {forkJoin, Subject} from 'rxjs';
-import {HcPopoverAnchorDirective} from '../pop/popover-anchor.directive';
+import {HcPopoverAnchorDirective} from '../pop/directives/popover-anchor.directive';
 import {MoreItem} from './more-item';
 import {NavbarLinkComponent} from './navbar-link/navbar-link.component';
 import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu.component';

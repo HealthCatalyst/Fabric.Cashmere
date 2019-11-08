@@ -14,7 +14,7 @@ const docs: DocItem[] = [
         id: 'checkbox',
         name: 'Checkbox',
         category: 'forms',
-        examples: ['checkbox-standard', 'checkbox-disabled', 'checkbox-forms'],
+        examples: ['checkbox-standard', 'checkbox-indeterminate', 'checkbox-forms'],
         usageDoc: true
     },
     {id: 'accordion', name: 'Accordion', category: 'layout', examples: ['accordion-overview']},
@@ -82,7 +82,7 @@ const docs: DocItem[] = [
         id: 'pop',
         name: 'Popover',
         category: 'popups',
-        examples: ['popover-simple', 'popover-overview', 'popover-menu', 'popover-tooltip'],
+        examples: ['popover-simple', 'popover-menu', 'popover-tooltip', 'popover-right-click', 'popover-overview'  ],
         usageDoc: true
     },
     {

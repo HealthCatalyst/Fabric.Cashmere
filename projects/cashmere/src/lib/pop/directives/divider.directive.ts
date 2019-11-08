@@ -1,6 +1,6 @@
 import {Directive, HostBinding} from '@angular/core';
 
-/** Adds a class to the host applying simple divider styles. */
+/** Use `hcDivider` for a horizontal divider in a menu. */
 @Directive({
     selector: '[hcDivider]'
 })

@@ -4,7 +4,7 @@
     cursor: pointer;
     display: block;
     line-height: 1.5;
-    margin: 7px 0;
+    margin: 4px 0;
     padding-left: 35px;
     position: relative;
     -webkit-user-select: none;
@@ -42,7 +42,7 @@
 }
 
 @mixin hc-radio-overlay-hover() {
-    border-color: $primary-brand;    
+    border-color: $primary-brand;
 }
 
 @mixin hc-radio-overlay-checked() {

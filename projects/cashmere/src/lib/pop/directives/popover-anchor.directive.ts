@@ -12,11 +12,11 @@ import {
 import { Subject, merge } from 'rxjs';
 import { tap, takeUntil } from 'rxjs/operators';
 
-import { HcPopComponent } from './popover.component';
-import { getInvalidPopoverError, getInvalidTriggerError } from './popover.errors';
-import { HcPopoverAnchoringService } from './popover-anchoring.service';
-import { HcPopoverOpenOptions, HcPopoverTrigger, VALID_TRIGGER } from './types';
-import { PopoverNotification, PopoverNotificationService, NotificationAction } from './notification.service';
+import { HcPopComponent } from '../popover.component';
+import { getInvalidPopoverError, getInvalidTriggerError } from '../popover.errors';
+import { HcPopoverAnchoringService } from '../popover-anchoring.service';
+import { HcPopoverOpenOptions, HcPopoverTrigger, VALID_TRIGGER } from '../types';
+import { PopoverNotification, PopoverNotificationService, NotificationAction } from '../notification.service';
 
 @Directive({
   selector: '[hcPop]',
@@ -37,6 +37,7 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
   private _attachedPopover: HcPopComponent;
 
   /** Trigger event to toggle the popover. *Defaults to `"click"`.*
+   * Accepts `click`, `mousedown`, `hover`, `rightclick`, or `none`.
    * Note: if "hover" is selected, the backdrop for the popover will be disabled. */
   @Input()
   get trigger() { return this._trigger; }
@@ -46,6 +47,11 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
     this._dispatchConfigNotification(new PopoverNotification(NotificationAction.UPDATE_CONFIG));
   }
   private _trigger: HcPopoverTrigger = 'click';
+
+  /** Object or value that can be passed into the popover to customize its content */
+  @Input()
+  get context() { return this._anchoring._context; }
+  set context( val: any ) { this._anchoring._context = val; }
 
   /** Emits when the popover is opened. */
   @Output() popoverOpened = new EventEmitter<void>();
@@ -82,6 +88,8 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
   @HostListener('click', ['$event'])
   _showOrHideOnClick($event: MouseEvent): void {
       if (this.trigger !== 'click') { return; }
+      this._attachedPopover._offsetPos[0] = this._attachedPopover.horizontalAlign === 'mouse' ? $event.offsetX : 0;
+      this._attachedPopover._offsetPos[1] = this._attachedPopover.verticalAlign === 'mouse' ? $event.offsetY : 0;
       this.togglePopover();
   }
 
@@ -89,12 +97,28 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
   @HostListener('mousedown', ['$event'])
   _showOrHideOnMouseOver($event: MouseEvent): void {
       if (this.trigger !== 'mousedown') { return; }
+      this._attachedPopover._offsetPos[0] = this._attachedPopover.horizontalAlign === 'mouse' ? $event.offsetX : 0;
+      this._attachedPopover._offsetPos[1] = this._attachedPopover.verticalAlign === 'mouse' ? $event.offsetY : 0;
       this.togglePopover();
+  }
+
+  @HostListener('contextmenu', ['$event'])
+  _showOrHideRightClick($event: MouseEvent): boolean {
+    if ( this.trigger !== 'rightclick' ) {
+        return true;
+    } else {
+        this._attachedPopover._offsetPos[0] = this._attachedPopover.horizontalAlign === 'mouse' ? $event.offsetX : 0;
+        this._attachedPopover._offsetPos[1] = this._attachedPopover.verticalAlign === 'mouse' ? $event.offsetY : 0;
+        this.togglePopover();
+        return false;
+    }
   }
 
   @HostListener('mouseenter', ['$event'])
   _showOnHover($event: MouseEvent): void {
       if (this.trigger !== 'hover') { return; }
+      this._attachedPopover._offsetPos[0] = this._attachedPopover.horizontalAlign === 'mouse' ? $event.offsetX : 0;
+      this._attachedPopover._offsetPos[1] = this._attachedPopover.verticalAlign === 'mouse' ? $event.offsetY : 0;
       this.openPopover();
   }
 
