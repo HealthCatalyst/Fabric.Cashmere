@@ -79,7 +79,6 @@ export class TypeaheadHighlightingObjectExampleComponent implements OnInit {
     }
 
     formatDisplay(item) {
-        console.log(item)
         if (!item) {
           return '';
         }
