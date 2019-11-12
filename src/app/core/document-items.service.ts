@@ -177,7 +177,7 @@ const docs: DocItem[] = [
         id: 'typeahead',
         name: 'Typeahead',
         category: 'forms',
-        examples: ['typeahead-overview', 'typeahead-highlighting', 'typeahead-stacked']
+        examples: ['typeahead-overview', 'typeahead-stacked', 'typeahead-highlighting', 'typeahead-highlighting-object']
     },
     {
         id: 'environment-ribbon',

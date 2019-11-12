@@ -1,0 +1,16 @@
+<div class="example-content">
+    <form [formGroup]="form">
+        <hc-form-field [inline]="true">
+            <hc-label>States:</hc-label>
+            <hc-typeahead formControlName="item" (valueChange)="filterData($event)" (optionSelected)="optionSelected($event)">
+                <hc-typeahead-item *ngFor="let item of filteredData" [value]="item">
+                    <div>
+                        <p [innerHTML]="item.name | hcHighlight: typedChars"></p>
+                        <p [innerHTML]="item.year"></p>
+                        <p [innerHTML]="item.flower | hcHighlight: typedChars"></p>
+                    </div>
+                </hc-typeahead-item>
+            </hc-typeahead>
+        </hc-form-field>
+    </form>
+</div>
