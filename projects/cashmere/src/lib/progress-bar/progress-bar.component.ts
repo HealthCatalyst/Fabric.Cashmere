@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProgressItem} from './progress-item.interface';
 import {ProgressItemStatus} from './progress-item-status';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
     selector: 'hc-progress-bar',
@@ -10,7 +11,20 @@ import {ProgressItemStatus} from './progress-item-status';
 export class ProgressBarComponent implements OnInit {
     @Input() allowSkipAhead: boolean = true;
     @Input() height: string;
+    @Input() breakPoint: string = '768';
+
+    private _showMobile: boolean = false;
+    get showMobile() {
+        return this._showMobile;
+    }
+    @Input() set showMobile(bool: boolean) {
+        this._showMobile = bool;
+    }
+
     private _items: ProgressItem[] = [];
+    get items(): ProgressItem[] {
+        return this._items;
+    }
     @Input() set items(itemsList: ProgressItem[]) {
         if (itemsList && itemsList.length) {
             this._items = itemsList;
@@ -24,22 +38,28 @@ export class ProgressBarComponent implements OnInit {
         }
     }
 
-    get items(): ProgressItem[] {
-        return this._items;
-    }
-
     @Output() progressItemSelected = new EventEmitter<ProgressItem>();
     @Output() progressBarCompleted = new EventEmitter<boolean>();
     currentSelectedItem: ProgressItem;
     allItemsCompleted: boolean;
+    dropdownVisible: boolean = false;
 
     // add enum to a component variable so it can be referenced in the template
     ProgressItemStatus = ProgressItemStatus;
 
-    constructor() {
+    constructor(public breakpointObserver: BreakpointObserver) {
     }
 
     ngOnInit() {
+        this.breakpointObserver
+        .observe(['(max-width:' + this.breakPoint + 'px)'])
+        .subscribe((state: BreakpointState) => {
+            if (state.matches) {
+                this.showMobile = true;
+            } else {
+                this.showMobile = false;
+            }
+        });
     }
 
     /**
@@ -129,5 +149,30 @@ export class ProgressBarComponent implements OnInit {
 
     itemClicked(item: ProgressItem, index: number): void {
         this.selectProgressItem(item, true);
+        this.dropdownVisible = false;
+    }
+
+    previousItem(): void {
+        let itemIndex = this._items.indexOf(this.currentSelectedItem);
+        if ( itemIndex > 0) {
+            this.selectProgressItem(this._items[itemIndex - 1], true);
+        }
+        this.dropdownVisible = false;
+    }
+
+    nextItem(): void {
+        let itemIndex = this._items.indexOf(this.currentSelectedItem);
+        if ( itemIndex < this._items.length - 1) {
+            this.selectProgressItem(this._items[itemIndex + 1], true);
+        }
+        this.dropdownVisible = false;
+    }
+
+    toggleItemDropdown(): void {
+        if (this.dropdownVisible === false) {
+            this.dropdownVisible = true;
+        } else {
+            this.dropdownVisible = false;
+        }
     }
 }

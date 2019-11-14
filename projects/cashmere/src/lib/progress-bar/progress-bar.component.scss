@@ -7,6 +7,7 @@
     justify-content: flex-start;
     align-items: center;
     background-color: white;
+    margin-bottom: 1em;
 
     &--all-complete {
         background-color: $wcf-red;
@@ -49,12 +50,102 @@
             white-space: nowrap;
             //padding-left: 25px;
         }
+    }
+}
 
-        .item-tip {
-            svg {
-                //height: 75px;
-                // TODO? width: 65px;
-            }
+.mobile-progress-items {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+    button {
+        background-color: $wcf-red;
+        border: none;
+        outline: none;
+        margin: 0 5px;
+        cursor: pointer;
+        hc-icon {
+            color: white;
         }
+    }
+    .items-container, .items-dropdown {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .items-container {
+        position: relative;
+    }
+    .items-dropdown {
+        position: absolute;
+        border-bottom: 1px solid $gray-30;
+        border-left: 1px solid $gray-30;
+        border-right: 1px solid $gray-30;
+        box-shadow: 0px 1px 3px $gray-10;
+        z-index: 2;
+    }
+    .progress-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        color: $gray-50;
+        background-color: white;
+        cursor: pointer;
+        flex-grow: 1;
+        width: 100%;
+
+        &--active, &--before-selected {
+            color: $gray-50;   
+        }
+
+        &--active {
+            font-weight: 600;
+            background-color: $gray-05;
+        }
+
+        &:hover {
+            background-color: $gray-05;
+            font-weight: 600;
+        }
+    }
+    .item-current {
+        color: white;
+        background-color: $wcf-red;
+        font-weight: 600;
+        width: 100%;
+        position: relative;
+        cursor: pointer;
+        hc-icon {
+            position: absolute;
+            top: calc(50% - 11px);
+            right: 5px;
+            font-size: 22px;
+        }
+    }
+    .item-body {
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        flex-grow: 1;
+        .item-tip {
+            position: absolute;
+            left: 5px;
+        }
+    }
+
+    .item-title {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        white-space: nowrap;
+    }
+}
+
+@media all and (max-width: 1024px){
+    .progress-items {
+        display: none;
     }
 }
