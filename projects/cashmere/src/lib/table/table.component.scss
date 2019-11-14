@@ -45,6 +45,10 @@ hc-table {
 .hc-table.hc-action-table {
     tbody tr:not([disabled]) {
         @include hc-action-table-row();
+
+        &.hc-row-selected {
+            @include hc-table-row-selected();
+        }
     }
 }
 
@@ -60,7 +64,7 @@ hc-table {
     }
 }
 
-.hc-row-selected {
+.hc-row-selected, .hc-table tbody tr.hc-row-selected {
     @include hc-table-row-selected();
 
     td {
