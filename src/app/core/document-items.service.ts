@@ -14,6 +14,13 @@ const docs: DocItem[] = [
     {id: 'banner', name: 'Banner', category: 'popups', examples: ['banner-overview']},
     {id: 'breadcrumbs', name: 'Breadcrumbs', category: 'nav', usageDoc: true},
     {
+        id: 'busy-indicator',
+        name: 'Busy Indicator',
+        category: 'buttons',
+        examples: ['busy-indicator-overview'],
+        usageDoc: true
+    },
+    {
         id: 'button',
         name: 'Button',
         category: 'buttons',
@@ -53,6 +60,12 @@ const docs: DocItem[] = [
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
     },
     {
+        id: 'environment-ribbon',
+        name: 'Environment Ribbon',
+        category: 'buttons',
+        examples: ['environment-ribbon-overview']
+    },
+    {
         id: 'file-input',
         name: 'File Input',
         category: 'forms',
@@ -64,6 +77,12 @@ const docs: DocItem[] = [
         ]
     },
     {id: 'form-field', name: 'Form Field', category: 'forms', examples: ['form-field-overview']},
+    {
+        id: 'header',
+        name: 'Header',
+        category: 'nav',
+        examples: ['header-overview']
+    },
     {id: 'icon', name: 'Icon', category: 'buttons', examples: ['icon-overview']},
     {
         id: 'input',
@@ -162,35 +181,16 @@ const docs: DocItem[] = [
         usageDoc: true
     },
     {
-        id: 'xanthos-file-upload',
-        name: 'Xanthos File Upload',
-        category: 'forms',
-        examples: ['xanthos-file-upload-overview']
-    },
-    {
-        id: 'busy-indicator',
-        name: 'Busy Indicator',
-        category: 'buttons',
-        examples: ['busy-indicator-overview'],
-        usageDoc: true
-    },
-    {
         id: 'typeahead',
         name: 'Typeahead',
         category: 'forms',
         examples: ['typeahead-overview', 'typeahead-stacked', 'typeahead-highlighting', 'typeahead-highlighting-object']
     },
     {
-        id: 'environment-ribbon',
-        name: 'Environment Ribbon',
-        category: 'buttons',
-        examples: ['environment-ribbon-overview']
-    },
-    {
-        id: 'header',
-        name: 'Header',
-        category: 'nav',
-        examples: ['header-overview']
+        id: 'xanthos-file-upload',
+        name: 'Xanthos File Upload',
+        category: 'forms',
+        examples: ['xanthos-file-upload-overview']
     }
 ];
 
