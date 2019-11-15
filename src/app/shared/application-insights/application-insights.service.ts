@@ -6,25 +6,30 @@ import {environment} from 'src/environments/environment';
     providedIn: 'root'
 })
 export class ApplicationInsightsService {
-    private appInsights = new ApplicationInsights({
-        config: {
-            instrumentationKey: environment.instrumentationKey
-        }
-    });
+    private appInsights;
 
     constructor() {
-        this.appInsights.loadAppInsights();
-    }
+        // Fail gracefully if an application insights key is not provided
+        if ( 'instrumentationKey' in environment ) {
+            this.appInsights = new ApplicationInsights({
+                config: {
+                    instrumentationKey: environment['instrumentationKey']
+                }
+            });
 
-    setUserId(userId: string) {
-        this.appInsights.setAuthenticatedUserContext(userId);
-    }
-
-    clearUserId() {
-        this.appInsights.clearAuthenticatedUserContext();
+            this.appInsights.loadAppInsights();
+        }
     }
 
     logPageView(name?: string, uri?: string) {
-        this.appInsights.trackPageView({name, uri});
+        if ( 'instrumentationKey' in environment ) {
+            this.appInsights.trackPageView({name, uri});
+        }
+    }
+
+    logEvent(trigger: string, target: string) {
+        if ( 'instrumentationKey' in environment ) {
+            this.appInsights.trackEvent({name: "Example Click", properties: {"example": trigger, "target": target}});
+        }
     }
 }
