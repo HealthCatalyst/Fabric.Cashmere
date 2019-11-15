@@ -63,6 +63,10 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     @Output()
     emptyOptionSelected: EventEmitter<any> = new EventEmitter<any>();
 
+    /** Event emitted when the input box of the typeahead loses focus */
+    @Output()
+    blur: EventEmitter<any> = new EventEmitter<any>();
+
     @ContentChildren(TypeaheadItemComponent)
     _options: QueryList<TypeaheadItemComponent>;
 
@@ -135,9 +139,9 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this._options.changes.subscribe(() => {
             this.listenForSelection();
             setTimeout(() => {
-                let currentVal = this._options.length > 1 ? this._value : '';
-                this.setHighlighted(0, true);
-            }
+                    let currentVal = this._options.length > 1 ? this._value : '';
+                    this.setHighlighted(0, true);
+                }
             );
         });
     }
@@ -400,5 +404,10 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         if (oldState !== newState) {
             this._errorState = newState;
         }
+    }
+
+    blurHandler(event) {
+        this.markAsTouched();
+        this.blur.emit(event);
     }
 }
