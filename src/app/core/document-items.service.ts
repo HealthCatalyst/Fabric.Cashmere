@@ -100,7 +100,8 @@ const docs: DocItem[] = [
         id: 'progress-bar',
         name: 'Progress Bar',
         category: 'nav',
-        examples: ['progress-bar']
+        examples: ['progress-bar'],
+        usageDoc: true
     },
     {
         id: 'progress-indicators',

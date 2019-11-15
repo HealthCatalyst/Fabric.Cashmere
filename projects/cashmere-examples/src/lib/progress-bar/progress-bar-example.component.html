@@ -3,13 +3,23 @@
         <hc-progress-bar
             #progressBarComponent
             [allowSkipAhead]="allowSkipAhead"
+            [showMobile]="showMobile"
             [height]="progressBarHeight + 'px'"
+            [breakPoint]="breakPoint"
             [items]="progressItems"
             (progressItemSelected)="selectedProgressItem($event)"
             (progressBarCompleted)="progressBarCompleted = true"
         ></hc-progress-bar>
     </div>
     <div class="progress-bar-example-controls">
+        <div class="progress-bar-example-field">
+            <span class="progress-bar-example-field-label">Mobile Breakpoint:</span>
+            <span class="heavy">{{breakPoint}}px</span>
+        </div>
+        <div class="progress-bar-example-field allow-skip-field">
+            <hc-checkbox [(ngModel)]="showMobile"></hc-checkbox>
+            <span class="progress-bar-example-field-label">Show Mobile Layout</span>
+        </div>
         <div class="progress-bar-example-field">
             <span class="progress-bar-example-field-label">Current Selected Item:</span>
             <span class="heavy">{{currentSelectedItem?.title}}</span>
