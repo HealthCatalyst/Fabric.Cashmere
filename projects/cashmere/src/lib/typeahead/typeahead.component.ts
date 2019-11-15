@@ -194,9 +194,10 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
             // handle enter key
             $event.preventDefault();
             $event.stopPropagation();
-            let theSelection = this._options.toArray()[this._highlighted].value;
+
+            let theSelection = this._options.toArray()[this._highlighted];
             if (theSelection) {
-                this.itemSelectedDefault(theSelection);
+                this.itemSelectedDefault(theSelection.value);
             } else {
                 this.emptyOptionSelected.emit(this._inputRef.nativeElement.value);
             }
@@ -403,6 +404,15 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
 
         if (oldState !== newState) {
             this._errorState = newState;
+        }
+
+        /**
+         * propagate error to input box so that the
+         * red border will show up like other Cashmere
+         * components
+         */
+        if (this._ngControl.invalid) {
+            this._searchTerm.setErrors({errors: true});
         }
     }
 
