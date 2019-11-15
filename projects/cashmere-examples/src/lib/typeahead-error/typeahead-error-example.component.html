@@ -1,0 +1,13 @@
+<div class="example-content">
+    <form [formGroup]="form">
+        <hc-form-field [inline]="true">
+            <hc-label>States:</hc-label>
+            <hc-typeahead formControlName="item" (valueChange)="filterData($event)" (optionSelected)="optionSelected($event)">
+                <hc-typeahead-item *ngFor="let item of filteredData" [value]="item">
+                    {{item}}
+                </hc-typeahead-item>
+            </hc-typeahead>
+            <hc-error>A valid state is required</hc-error>
+        </hc-form-field>
+    </form>
+</div>
