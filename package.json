@@ -48,6 +48,7 @@
         "@angular/platform-browser-dynamic": "6.1.7",
         "@angular/platform-server": "6.1.7",
         "@angular/router": "6.1.7",
+        "@microsoft/applicationinsights-web": "^2.3.1",
         "@stackblitz/sdk": "^1.2.0",
         "change-case": "^3.0.2",
         "core-js": "^2.4.1",

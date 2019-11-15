@@ -1,3 +1,4 @@
 export const environment = {
-    production: true
+    production: true,
+    instrumentationKey: '7ce7e52a-addf-427b-91cf-094dd0ea1df0'
 };
