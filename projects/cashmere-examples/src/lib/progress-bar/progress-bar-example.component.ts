@@ -18,7 +18,9 @@ export class ProgressBarExampleComponent implements OnInit {
         {id: 'losses', title: 'Losses', status: ProgressItemStatus.INCOMPLETE},
     ];
     allowSkipAhead: false;
-    progressBarHeight: number = 55;
+    progressBarHeight: number = 35;
+    breakPoint: string = '1024';
+    showMobile: boolean;
 
     constructor() {
     }
@@ -34,5 +36,4 @@ export class ProgressBarExampleComponent implements OnInit {
     completeCurrent() {
         this.progressBarComponent.completeCurrent();
     }
-
 }

@@ -1,8 +1,9 @@
 <div class="typeahead-container">
     <hc-form-field [inline]="true">
-        <input #input hcInput [formControl]="_searchTerm" (keydown.tab)="_handleTabKey($event)" (keydown.enter)="_stopPropogation($event)" 
-                (keydown.arrowup)="_stopPropogation($event)" (keydown.arrowdown)="_stopPropogation($event)"
-               (keyup)="_filterData($event)" [placeholder]="placeholder" autocomplete="off" [title]="_value" (blur)="this.markAsTouched()"/>
+        <input #input hcInput [formControl]="_searchTerm" (keydown.tab)="_handleTabKey($event)" (keydown.enter)="_stopPropogation($event)"
+               (keydown.arrowup)="_stopPropogation($event)" (keydown.arrowdown)="_stopPropogation($event)"
+               (keyup)="_filterData($event)" [placeholder]="placeholder" autocomplete="off" [title]="_value" (blur)="blurHandler($event)"/>
+        <hc-error style="display: none;">parent is showing error message</hc-error>
     </hc-form-field>
 
     <hc-icon fontSet="fa" fontIcon="fa-search" class="search" hcIconSm></hc-icon>

@@ -63,6 +63,10 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
     @Output()
     emptyOptionSelected: EventEmitter<any> = new EventEmitter<any>();
 
+    /** Event emitted when the input box of the typeahead loses focus */
+    @Output()
+    blur: EventEmitter<any> = new EventEmitter<any>();
+
     @ContentChildren(TypeaheadItemComponent)
     _options: QueryList<TypeaheadItemComponent>;
 
@@ -135,9 +139,9 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         this._options.changes.subscribe(() => {
             this.listenForSelection();
             setTimeout(() => {
-                let currentVal = this._options.length > 1 ? this._value : '';
-                this.setHighlighted(0, true);
-            }
+                    let currentVal = this._options.length > 1 ? this._value : '';
+                    this.setHighlighted(0, true);
+                }
             );
         });
     }
@@ -190,9 +194,10 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
             // handle enter key
             $event.preventDefault();
             $event.stopPropagation();
-            let theSelection = this._options.toArray()[this._highlighted].value;
+
+            let theSelection = this._options.toArray()[this._highlighted];
             if (theSelection) {
-                this.itemSelectedDefault(theSelection);
+                this.itemSelectedDefault(theSelection.value);
             } else {
                 this.emptyOptionSelected.emit(this._inputRef.nativeElement.value);
             }
@@ -400,5 +405,19 @@ export class TypeaheadComponent extends HcFormControlComponent implements OnInit
         if (oldState !== newState) {
             this._errorState = newState;
         }
+
+        /**
+         * propagate error to input box so that the
+         * red border will show up like other Cashmere
+         * components
+         */
+        if (this._ngControl.invalid) {
+            this._searchTerm.setErrors({errors: true});
+        }
+    }
+
+    blurHandler(event) {
+        this.markAsTouched();
+        this.blur.emit(event);
     }
 }
