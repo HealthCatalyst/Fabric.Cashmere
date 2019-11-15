@@ -2,6 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ProgressBarComponent} from './progress-bar.component';
 import {ProgressItemStatus} from './progress-item-status';
+import {IconModule} from '../icon/icon.module';
 
 describe('ProgressBarComponent', () => {
     let component: ProgressBarComponent;
@@ -9,6 +10,7 @@ describe('ProgressBarComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
+            imports: [IconModule],
             declarations: [ProgressBarComponent]
         }).compileComponents();
     }));
