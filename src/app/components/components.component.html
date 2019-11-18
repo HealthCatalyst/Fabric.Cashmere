@@ -63,6 +63,14 @@
                         </ng-container>
                         <div class="hc-components-nav-spacer"></div>
                     </hc-accordion>
+                    <div class="hc-components-nav-divider"></div>
+                    <hc-accordion triggerAlign="right" [open]="thisCategory == 'pipes'">
+                        <hc-accordion-toolbar>Pipes</hc-accordion-toolbar>
+                        <ng-container *ngFor="let option of docItems">
+                            <div *ngIf="option.category == 'pipes'" class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': option.id == thisPage }" (click)="navUpdate(option.id)">{{ option.name }}</div>
+                        </ng-container>
+                        <div class="hc-components-nav-spacer"></div>
+                    </hc-accordion>
                 </div>
             </hc-tile>
         </div>
