@@ -58,10 +58,10 @@ If any trademark (®/™) used above appears multiple times on a page or in a do
 
 &nbsp;
 
-Only use the mark when the instance is being used as an adjective; not a noun. For example:
+Do not use trademarked terms as nouns—only use as an adjective. For example:
 
-- **Yes:** The HAS™ conference…
-- **No:** CORUS™ is more than some outdated cost system.
+- **Yes:** The HAS™ conference… or The CORUS™ Suite
+- **No:** HAS™ is an awesome conference. CORUS™ is more than some outdated cost system.
 
 &nbsp;
 
@@ -75,6 +75,6 @@ Further, use the mark as a proper adjective modifying a noun that identifies the
 Never alter a trademark. Do not make it possessive. Do not add prefixes, hyphens, or otherwise modify.
 
 - **Yes:** The reliability of Health Catalyst® services means that health systems can count on…
-- **No:** Health Catalyst’s service and reliability means that health systems can count on...
+- **No:** Health Catalyst’s service and reliability means that health systems can count on…
 
 :::
