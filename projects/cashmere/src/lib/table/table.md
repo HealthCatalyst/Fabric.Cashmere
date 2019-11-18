@@ -17,7 +17,7 @@ The simplest way to provide data to the table is by passing a data array to the 
 input. The table will take the array and render a row for each object in the data array.
 
 ```html
-<table hc-table [dataSource]="”myDataArray”">...</table>
+<table hc-table [dataSource]="myDataArray">...</table>
 ```
 
 Since the table optimizes for performance, it will not automatically check for changes to the data
