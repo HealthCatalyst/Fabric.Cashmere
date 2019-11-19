@@ -70,10 +70,9 @@
 }
 
 @mixin hc-checkbox-overlay-indeterminate() {
-    background-color: $primary-brand;
-    border-color: $primary-brand;
     &:after {
         opacity: 1;
+        border-color: $gray-300;
         transform: none;
         border-left: none;
     }
