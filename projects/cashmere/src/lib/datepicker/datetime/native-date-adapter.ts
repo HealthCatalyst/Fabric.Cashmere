@@ -242,7 +242,9 @@ export class NativeDateAdapter extends DateAdapter<Date> {
     }
 
     clone(date: Date): Date {
-        return this.createDate(this.getYear(date), this.getMonth(date), this.getDate(date));
+        let result = this.createDate(this.getYear(date), this.getMonth(date), this.getDate(date));
+        result.setHours(12);
+        return result;
     }
 
     createDate(year: number, month: number, date: number): Date {
@@ -261,6 +263,10 @@ export class NativeDateAdapter extends DateAdapter<Date> {
         if (result.getMonth() !== month) {
             throw Error(`Invalid date "${date}" for month with index "${month}".`);
         }
+
+        // Set hours to mid-day to provide a buffer for timezones. This prevents day changing when saving
+        // in one time zone and opening/editing in another.
+        result.setHours(12);
 
         return result;
     }
