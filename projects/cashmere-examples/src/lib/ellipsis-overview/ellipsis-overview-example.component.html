@@ -1,0 +1,17 @@
+<p>{{ value | ellipsis: length:mode }}</p>
+
+<hc-form-field>
+    <hc-label>Value</hc-label>
+    <textarea hcInput [(ngModel)]="value"></textarea>
+</hc-form-field>
+<hc-form-field>
+    <hc-label>Length</hc-label>
+    <input hcInput [(ngModel)]="length" type="number" />
+</hc-form-field>
+<hc-form-field>
+    <hc-label>Mode</hc-label>
+    <hc-select [(ngModel)]="mode">
+        <option>characters</option>
+        <option>words</option>
+    </hc-select>
+</hc-form-field>
