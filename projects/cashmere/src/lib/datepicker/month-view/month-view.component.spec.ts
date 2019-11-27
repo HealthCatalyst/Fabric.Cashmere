@@ -4,14 +4,14 @@ import {Component} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {HcNativeDateModule} from '../datetime/datetime.module';
-import {MAR, JAN, DEC, NOV, FEB} from '../utils/month-constants';
+import {DEC, FEB, JAN, MAR, NOV} from '../utils/month-constants';
 import {dispatchFakeEvent, dispatchKeyboardEvent} from '../utils/dispatch-events';
 import {CalendarBodyComponent} from '../calendar-body/calendar-body.component';
 import {MonthViewComponent} from './month-view.component';
 
 /* tslint:disable */
 describe('HcMonthView', () => {
-    let dir: {value: Direction};
+    let dir: { value: Direction };
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -236,7 +236,9 @@ describe('HcMonthView', () => {
                     dispatchKeyboardEvent(calendarBodyEl, 'keydown', ENTER);
                     fixture.detectChanges();
 
-                    expect(testComponent.selected).toEqual(new Date(2017, JAN, 4));
+                    const expectedDate = new Date(2017, JAN, 4);
+                    expectedDate.setHours(12);
+                    expect(testComponent.selected).toEqual(expectedDate);
                 });
 
                 it('should select active date on space', () => {
@@ -248,7 +250,9 @@ describe('HcMonthView', () => {
                     dispatchKeyboardEvent(calendarBodyEl, 'keydown', SPACE);
                     fixture.detectChanges();
 
-                    expect(testComponent.selected).toEqual(new Date(2017, JAN, 4));
+                    const expectedDate = new Date(2017, JAN, 4);
+                    expectedDate.setHours(12);
+                    expect(testComponent.selected).toEqual(expectedDate);
                 });
             });
         });
@@ -310,6 +314,7 @@ class StandardMonthView {
 })
 class MonthViewWithDateFilter {
     activeDate = new Date(2017, JAN, 1);
+
     dateFilter(date: Date) {
         return date.getDate() % 2 === 0;
     }
@@ -322,6 +327,7 @@ class MonthViewWithDateFilter {
 })
 class MonthViewWithDateClass {
     activeDate = new Date(2017, JAN, 1);
+
     dateClass(date: Date) {
         return date.getDate() % 2 === 0 ? 'even' : undefined;
     }

@@ -6,7 +6,7 @@ import {HcNativeDateModule} from '../datetime/datetime.module';
 import {DatepickerModule} from '../datepicker.module';
 import {HcDatepickerIntl} from '../datepicker-intl';
 import {CalendarComponent} from './calendar.component';
-import {JAN, FEB, DEC} from '../utils/month-constants';
+import {DEC, FEB, JAN} from '../utils/month-constants';
 import {yearsPerPage} from '../multi-year-view/multi-year-view.component';
 
 // tslint:disable:no-non-null-assertion
@@ -14,10 +14,10 @@ import {yearsPerPage} from '../multi-year-view/multi-year-view.component';
 @Component({
     template: `
         <hc-calendar
-            [startAt]="startDate"
-            [(selected)]="selected"
-            (yearSelected)="selectedYear = $event"
-            (monthSelected)="selectedMonth = $event"
+                [startAt]="startDate"
+                [(selected)]="selected"
+                (yearSelected)="selectedYear = $event"
+                (monthSelected)="selectedMonth = $event"
         ></hc-calendar>
     `
 })
@@ -150,15 +150,20 @@ describe('HcCalendarHeader', () => {
             (yearCells[0] as HTMLElement).click();
             fixture.detectChanges();
 
+            const expectedDateJan = new Date(2016, JAN, 31);
+            expectedDateJan.setHours(12);
+            const expectedDateDec = new Date(2016, DEC, 31);
+            expectedDateDec.setHours(12);
+
             expect(calendarInstance.currentView).toBe('year');
-            expect(calendarInstance.activeDate).toEqual(new Date(2016, JAN, 31));
+            expect(calendarInstance.activeDate).toEqual(expectedDateJan);
 
             const monthCells = calendarElement.querySelectorAll('.hc-calendar-body-cell');
             (monthCells[monthCells.length - 1] as HTMLElement).click();
             fixture.detectChanges();
 
             expect(calendarInstance.currentView).toBe('month');
-            expect(calendarInstance.activeDate).toEqual(new Date(2016, DEC, 31));
+            expect(calendarInstance.activeDate).toEqual(expectedDateDec);
             expect(testComponent.selected).toBeFalsy('no date should be selected yet');
         });
     });
