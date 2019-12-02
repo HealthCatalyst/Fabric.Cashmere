@@ -1,7 +1,7 @@
 import {Platform} from '@angular/cdk/platform';
 import {LOCALE_ID} from '@angular/core';
 import {async, inject, TestBed} from '@angular/core/testing';
-import {JAN, DEC, FEB, MAR} from '../utils/month-constants';
+import {DEC, FEB, JAN, MAR} from '../utils/month-constants';
 import {DateAdapter, HC_DATE_LOCALE} from './date-adapter';
 import {NativeDateAdapter} from './native-date-adapter';
 import {NativeDateModule} from './datetime.module';
@@ -301,7 +301,9 @@ describe('NativeDateAdapter', () => {
     });
 
     it('should create Date', () => {
-        expect(adapter.createDate(2017, JAN, 1)).toEqual(new Date(2017, JAN, 1));
+        const expectedDate = new Date(2017, JAN, 1);
+        expectedDate.setHours(12);
+        expect(adapter.createDate(2017, JAN, 1)).toEqual(expectedDate);
     });
 
     it('should not create Date with month over/under-flow', () => {
@@ -421,7 +423,10 @@ describe('NativeDateAdapter', () => {
 
     it('should clone', () => {
         const date = new Date(2017, JAN, 1);
-        expect(adapter.clone(date)).toEqual(date);
+
+        const expectedDate = new Date(2017, JAN, 1);
+        expectedDate.setHours(12);
+        expect(adapter.clone(date)).toEqual(expectedDate);
         expect(adapter.clone(date)).not.toBe(date);
     });
 

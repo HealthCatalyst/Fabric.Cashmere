@@ -11,9 +11,9 @@ import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/tes
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {Subject} from 'rxjs';
 import {DatepickerModule} from './datepicker.module';
-import {dispatchKeyboardEvent, dispatchMouseEvent, dispatchFakeEvent, dispatchEvent} from './utils/dispatch-events';
-import {JAN, DEC, JUL, JUN, SEP} from './utils/month-constants';
-import {HC_DATEPICKER_SCROLL_STRATEGY, DatepickerComponent} from './datepicker.component';
+import {dispatchEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent} from './utils/dispatch-events';
+import {DEC, JAN, JUL, JUN, SEP} from './utils/month-constants';
+import {DatepickerComponent, HC_DATEPICKER_SCROLL_STRATEGY} from './datepicker.component';
 import {createKeyboardEvent} from './utils/event-objects';
 import {DatepickerToggleComponent} from './datepicker-toggle/datepicker-toggle.component';
 import {HcNativeDateModule, NativeDateModule} from './datetime/datetime.module';
@@ -28,7 +28,7 @@ import {HcFormFieldComponent} from '../form-field/hc-form-field.component';
 /* tslint:disable */
 @Component({
     template: `
-        <input [hcDatepicker]="d" [value]="date" />
+        <input [hcDatepicker]="d" [value]="date"/>
         <hc-datepicker #d [touchUi]="touch" [disabled]="disabled" [opened]="opened"></hc-datepicker>
     `
 })
@@ -45,12 +45,13 @@ class StandardDatepicker {
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" />
-        <input [hcDatepicker]="d" />
+        <input [hcDatepicker]="d"/>
+        <input [hcDatepicker]="d"/>
         <hc-datepicker #d></hc-datepicker>
     `
 })
-class MultiInputDatepicker {}
+class MultiInputDatepicker {
+}
 
 @Component({
     template: `
@@ -64,7 +65,7 @@ class NoInputDatepicker {
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" [value]="date" />
+        <input [hcDatepicker]="d" [value]="date"/>
         <hc-datepicker #d [startAt]="startDate"></hc-datepicker>
     `
 })
@@ -77,7 +78,7 @@ class DatepickerWithStartAt {
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" [value]="date" />
+        <input [hcDatepicker]="d" [value]="date"/>
         <hc-datepicker #d startView="year" (monthSelected)="onYearSelection()"></hc-datepicker>
     `
 })
@@ -86,12 +87,13 @@ class DatepickerWithStartViewYear {
     @ViewChild('d')
     datepicker: DatepickerComponent;
 
-    onYearSelection() {}
+    onYearSelection() {
+    }
 }
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" [value]="date" />
+        <input [hcDatepicker]="d" [value]="date"/>
         <hc-datepicker #d startView="multi-year" (yearSelected)="onMultiYearSelection()"></hc-datepicker>
     `
 })
@@ -100,12 +102,13 @@ class DatepickerWithStartViewMultiYear {
     @ViewChild('d')
     datepicker: DatepickerComponent;
 
-    onMultiYearSelection() {}
+    onMultiYearSelection() {
+    }
 }
 
 @Component({
     template: `
-        <input [(ngModel)]="selected" [hcDatepicker]="d" />
+        <input [(ngModel)]="selected" [hcDatepicker]="d"/>
         <hc-datepicker #d></hc-datepicker>
     `
 })
@@ -119,7 +122,7 @@ class DatepickerWithNgModel {
 
 @Component({
     template: `
-        <input [formControl]="formControl" [hcDatepicker]="d" />
+        <input [formControl]="formControl" [hcDatepicker]="d"/>
         <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
         <hc-datepicker #d></hc-datepicker>
     `
@@ -136,7 +139,7 @@ class DatepickerWithFormControl {
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" />
+        <input [hcDatepicker]="d"/>
         <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
         <hc-datepicker #d [touchUi]="touchUI"></hc-datepicker>
     `
@@ -151,17 +154,20 @@ class DatepickerWithToggle {
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" />
-        <hc-datepicker-toggle [for]="d"><hc-icon class="custom-icon" hcDatepickerToggleIcon></hc-icon></hc-datepicker-toggle>
+        <input [hcDatepicker]="d"/>
+        <hc-datepicker-toggle [for]="d">
+            <hc-icon class="custom-icon" hcDatepickerToggleIcon></hc-icon>
+        </hc-datepicker-toggle>
         <hc-datepicker #d></hc-datepicker>
     `
 })
-class DatepickerWithCustomIcon {}
+class DatepickerWithCustomIcon {
+}
 
 @Component({
     template: `
         <hc-form-field>
-            <input hcInput [hcDatepicker]="d" />
+            <input hcInput [hcDatepicker]="d"/>
             <hc-datepicker #d></hc-datepicker>
         </hc-form-field>
     `
@@ -177,7 +183,7 @@ class FormFieldDatepicker {
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" [(ngModel)]="date" [min]="minDate" [max]="maxDate" />
+        <input [hcDatepicker]="d" [(ngModel)]="date" [min]="minDate" [max]="maxDate"/>
         <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
         <hc-datepicker #d></hc-datepicker>
     `
@@ -192,7 +198,7 @@ class DatepickerWithMinAndMaxValidation {
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" [(ngModel)]="date" [hcDatepickerFilter]="filter" />
+        <input [hcDatepicker]="d" [(ngModel)]="date" [hcDatepickerFilter]="filter"/>
         <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
         <hc-datepicker #d [touchUi]="true"></hc-datepicker>
     `
@@ -206,7 +212,7 @@ class DatepickerWithFilterAndValidation {
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" (change)="onChange()" (input)="onInput()" (dateChange)="onDateChange()" (dateInput)="onDateInput()" />
+        <input [hcDatepicker]="d" (change)="onChange()" (input)="onInput()" (dateChange)="onDateChange()" (dateInput)="onDateInput()"/>
         <hc-datepicker #d [touchUi]="true"></hc-datepicker>
     `
 })
@@ -214,18 +220,22 @@ class DatepickerWithChangeAndInputEvents {
     @ViewChild('d')
     datepicker: DatepickerComponent;
 
-    onChange() {}
+    onChange() {
+    }
 
-    onInput() {}
+    onInput() {
+    }
 
-    onDateChange() {}
+    onDateChange() {
+    }
 
-    onDateInput() {}
+    onDateInput() {
+    }
 }
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" [(ngModel)]="date" />
+        <input [hcDatepicker]="d" [(ngModel)]="date"/>
         <hc-datepicker #d></hc-datepicker>
     `
 })
@@ -239,7 +249,7 @@ class DatepickerWithi18n {
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" [(ngModel)]="value" [min]="min" [max]="max" />
+        <input [hcDatepicker]="d" [(ngModel)]="value" [min]="min" [max]="max"/>
         <hc-datepicker #d [startAt]="startAt"></hc-datepicker>
     `
 })
@@ -256,7 +266,7 @@ class DatepickerWithISOStrings {
 
 @Component({
     template: `
-        <input [(ngModel)]="selected" [hcDatepicker]="d" />
+        <input [(ngModel)]="selected" [hcDatepicker]="d"/>
         <hc-datepicker (opened)="openedSpy()" (closed)="closedSpy()" #d></hc-datepicker>
     `
 })
@@ -270,7 +280,7 @@ class DatepickerWithEvents {
 
 @Component({
     template: `
-        <input (focus)="d.open()" [hcDatepicker]="d" />
+        <input (focus)="d.open()" [hcDatepicker]="d"/>
         <hc-datepicker #d="hcDatepicker"></hc-datepicker>
     `
 })
@@ -281,7 +291,7 @@ class DatepickerOpeningOnFocus {
 
 @Component({
     template: `
-        <input [hcDatepicker]="ch" />
+        <input [hcDatepicker]="ch"/>
         <hc-datepicker #ch [calendarHeaderComponent]="customHeaderForDatePicker"></hc-datepicker>
     `
 })
@@ -297,11 +307,12 @@ class DatepickerWithCustomHeader {
         <hc-calendar-header></hc-calendar-header>
     `
 })
-class CustomHeaderForDatepicker {}
+class CustomHeaderForDatepicker {
+}
 
 @Component({
     template: `
-        <input [hcDatepicker]="assignedDatepicker" [value]="date" />
+        <input [hcDatepicker]="assignedDatepicker" [value]="date"/>
         <hc-datepicker #d [touchUi]="touch"></hc-datepicker>
     `
 })
@@ -316,12 +327,15 @@ class DelayedDatepicker {
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" />
-        <hc-datepicker-toggle tabIndex="7" [for]="d"><div class="custom-icon" hcDatepickerToggleIcon></div></hc-datepicker-toggle>
+        <input [hcDatepicker]="d"/>
+        <hc-datepicker-toggle tabIndex="7" [for]="d">
+            <div class="custom-icon" hcDatepickerToggleIcon></div>
+        </hc-datepicker-toggle>
         <hc-datepicker #d></hc-datepicker>
     `
 })
-class DatepickerWithTabindexOnToggle {}
+class DatepickerWithTabindexOnToggle {
+}
 
 describe('DatepickerComponent', () => {
     const SUPPORTS_INTL = typeof Intl !== 'undefined';
@@ -541,7 +555,10 @@ describe('DatepickerComponent', () => {
                 flush();
 
                 expect(document.querySelector('hc-dialog-container')).toBeNull();
-                expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, 2));
+
+                const expectedDate = new Date(2020, JAN, 2);
+                expectedDate.setHours(12);
+                expect(testComponent.datepickerInput.value).toEqual(expectedDate);
             }));
 
             it('setting selected via enter press should update input and close calendar', fakeAsync(() => {
@@ -565,7 +582,9 @@ describe('DatepickerComponent', () => {
                 flush();
 
                 expect(document.querySelector('hc-dialog-container')).toBeNull();
-                expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, 2));
+                const expectedDate = new Date(2020, JAN, 2);
+                expectedDate.setHours(12);
+                expect(testComponent.datepickerInput.value).toEqual(expectedDate);
             }));
 
             it(
@@ -579,7 +598,12 @@ describe('DatepickerComponent', () => {
                         fixture.detectChanges();
 
                         expect(document.querySelector('hc-datepicker-content')).not.toBeNull();
-                        expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, currentDay));
+
+                        const expectedCurDate = new Date(2020, JAN, currentDay);
+                        if (currentDay > 1) {
+                            expectedCurDate.setHours(12);
+                        }
+                        expect(testComponent.datepickerInput.value).toEqual(expectedCurDate);
 
                         const cells = document.querySelectorAll('.hc-calendar-body-cell');
                         dispatchMouseEvent(cells[1], 'click');
@@ -589,7 +613,10 @@ describe('DatepickerComponent', () => {
 
                     expect(selectedChangedSpy.calls.count()).toEqual(1);
                     expect(document.querySelector('hc-dialog-container')).toBeNull();
-                    expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, 2));
+
+                    const expectedDate = new Date(2020, JAN, 2);
+                    expectedDate.setHours(12);
+                    expect(testComponent.datepickerInput.value).toEqual(expectedDate);
                 })
             );
 
@@ -599,17 +626,20 @@ describe('DatepickerComponent', () => {
                 testComponent.datepicker.open();
                 fixture.detectChanges();
 
+                const expectedDate = new Date(2020, JAN, 1);
+
                 const calendarBodyEl = document.querySelector('.hc-calendar-body') as HTMLElement;
                 expect(calendarBodyEl).not.toBeNull();
-                expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, 1));
+                expect(testComponent.datepickerInput.value).toEqual(expectedDate);
 
                 dispatchKeyboardEvent(calendarBodyEl, 'keydown', ENTER);
                 fixture.detectChanges();
 
                 fixture.whenStable().then(() => {
+                    expectedDate.setHours(12);
                     expect(selectedChangedSpy.calls.count()).toEqual(0);
                     expect(document.querySelector('hc-dialog-container')).toBeNull();
-                    expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, 1));
+                    expect(testComponent.datepickerInput.value).toEqual(expectedDate);
                 });
             });
 

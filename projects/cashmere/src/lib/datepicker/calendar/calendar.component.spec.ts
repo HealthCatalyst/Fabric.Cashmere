@@ -5,8 +5,8 @@ import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {MockNgZone} from '../utils/mock-ng-zone';
 import {DatepickerModule} from '../datepicker.module';
-import {JAN, FEB, DEC, NOV, JUL} from '../utils/month-constants';
-import {dispatchFakeEvent, dispatchMouseEvent, dispatchKeyboardEvent} from '../utils/dispatch-events';
+import {DEC, FEB, JAN, JUL, NOV} from '../utils/month-constants';
+import {dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent} from '../utils/dispatch-events';
 import {HcNativeDateModule} from '../datetime/datetime.module';
 import {DateAdapter} from '../datetime/date-adapter';
 import {CalendarComponent} from './calendar.component';
@@ -16,10 +16,10 @@ import {HcDatepickerIntl} from '../datepicker-intl';
 @Component({
     template: `
         <hc-calendar
-            [startAt]="startDate"
-            [(selected)]="selected"
-            (yearSelected)="selectedYear = $event"
-            (monthSelected)="selectedMonth = $event"
+                [startAt]="startDate"
+                [(selected)]="selected"
+                (yearSelected)="selectedYear = $event"
+                (monthSelected)="selectedMonth = $event"
         ></hc-calendar>
     `
 })
@@ -148,7 +148,10 @@ describe('CalendarComponent', () => {
             fixture.detectChanges();
 
             expect(calendarInstance.currentView).toBe('month');
-            expect(testComponent.selected).toEqual(new Date(2017, JAN, 31));
+
+            const expectedDate = new Date(2017, JAN, 31);
+            expectedDate.setHours(12);
+            expect(testComponent.selected).toEqual(expectedDate);
         });
 
         it('should emit the selected month on cell clicked in year view', () => {
@@ -279,7 +282,10 @@ describe('CalendarComponent', () => {
                         fixture.detectChanges();
 
                         expect(calendarInstance.currentView).toBe('month');
-                        expect(calendarInstance.activeDate).toEqual(new Date(2017, FEB, 28));
+
+                        const expectedDate = new Date(2017, FEB, 28);
+                        expectedDate.setHours(12);
+                        expect(calendarInstance.activeDate).toEqual(expectedDate);
                         expect(testComponent.selected).toBeUndefined();
                     });
 
@@ -293,7 +299,10 @@ describe('CalendarComponent', () => {
                         fixture.detectChanges();
 
                         expect(calendarInstance.currentView).toBe('month');
-                        expect(calendarInstance.activeDate).toEqual(new Date(2017, FEB, 28));
+
+                        const expectedDate = new Date(2017, FEB, 28);
+                        expectedDate.setHours(12);
+                        expect(calendarInstance.activeDate).toEqual(expectedDate);
                         expect(testComponent.selected).toBeUndefined();
                     });
                 });
@@ -316,7 +325,10 @@ describe('CalendarComponent', () => {
                         fixture.detectChanges();
 
                         expect(calendarInstance.currentView).toBe('year');
-                        expect(calendarInstance.activeDate).toEqual(new Date(2018, JAN, 31));
+
+                        const expectedDate = new Date(2018, JAN, 31);
+                        expectedDate.setHours(12);
+                        expect(calendarInstance.activeDate).toEqual(expectedDate);
                         expect(testComponent.selected).toBeUndefined();
                     });
 
@@ -330,7 +342,10 @@ describe('CalendarComponent', () => {
                         fixture.detectChanges();
 
                         expect(calendarInstance.currentView).toBe('year');
-                        expect(calendarInstance.activeDate).toEqual(new Date(2018, JAN, 31));
+
+                        const expectedDate = new Date(2018, JAN, 31);
+                        expectedDate.setHours(12);
+                        expect(calendarInstance.activeDate).toEqual(expectedDate);
                         expect(testComponent.selected).toBeUndefined();
                     });
                 });
@@ -556,7 +571,9 @@ describe('CalendarComponent', () => {
             (cells[1] as HTMLElement).click();
             fixture.detectChanges();
 
-            expect(testComponent.selected).toEqual(new Date(2017, JAN, 2));
+            const expectedDate = new Date(2017, JAN, 2);
+            expectedDate.setHours(12);
+            expect(testComponent.selected).toEqual(expectedDate);
         });
 
         describe('a11y', () => {
