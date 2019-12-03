@@ -1,22 +1,28 @@
 <div class="demo-content">
     <h1>Typography Guidelines</h1>
-    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+    <p>Last updated {{lastModified | date:'longDate'}}</p>
 
     <hc-tile>
-        <h5>Fonts</h5>
+        <h2>Fonts</h2>
 
-        <h4>Roboto</h4>
-        <em>Our primary font for all things web.</em>
+        <h3>Montserrat</h3>
+        <p>Google's "Montserrat" is used for all headings (h1, h2, etc.) throughout our websites and apps. It's typically used at a medium weight (500 in this case) and pairs nicely with Roboto.</p>
+        <p>
+            <a href="https://fonts.google.com/specimen/Montserrat" target="_blank">https://fonts.google.com/specimen/Montserrat</a>
+        </p>
+
+        <h3>Roboto</h3>
+        <p>Our primary font for most things web. With the exception of headings, Roboto covers everything from blocks of paragraph text to input lables. We use a variety of weights and styles.</p>
         <p>
             <a href="https://fonts.google.com/specimen/Roboto" target="_blank">https://fonts.google.com/specimen/Roboto</a>
         </p>
 
-        <h4>Arial</h4>
-        <em>To be used in all official WCF email correspondance.</em>
+        <h3>Arial</h3>
+        <p>To be used in all official WCF email correspondance and a backup when the above fonts are unavailable.</p>
     </hc-tile>
 
     <hc-tile>
-            <h5>Sizes</h5>
+            <h2>Standard Sizes</h2>
             <table class="api-table">
                 <tr>
                     <td>
@@ -88,7 +94,7 @@
         </hc-tile>
     
         <hc-tile>
-            <h5>Weights</h5>
+            <h2>Standard Weights</h2>
             <table class="api-table">
                 <tr>
                     <td>
@@ -138,7 +144,7 @@
         </hc-tile>
 
         <hc-tile style="display: none;">
-        <h5>Elements</h5>
+        <h2>Elements</h2>
         <table class="api-table">
             <tr>
                 <td>
@@ -190,7 +196,7 @@
             </tr>
             <tr>
                 <td>
-                    <h3 class="no-margin">h3. Section Title</h3>
+                    <h2 class="no-margin">h3. Section Title</h2>
                 </td>
                 <td>
                     <code>&lt;h3&gt;&lt;/h3&gt;</code>
@@ -341,7 +347,7 @@
 
 
     <hc-tile>
-        <h5>Case</h5>
+        <h2>Case</h2>
         <table class="api-table">
             <tr>
                 <td>
@@ -380,7 +386,97 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Ellipsis</h5>
+        <h2>Standard Heading Tags</h2>
+        <table class="api-table">
+            <tr>
+                <td>
+                    <h1>h1 heading tag</h1>
+                </td>
+                <td>
+                    <code>.hc-font-xxl</code>
+                </td>
+                <td>
+                    <code>.wcf-blue</code>
+                </td>
+                <td>
+                    <code>.hc-text-titlecase</code>
+                </td>    
+            </tr>
+            <tr>
+                <td>
+                    <h2>h2 heading tag</h2>
+                </td>
+                <td>
+                    <code>.hc-font-xl</code>
+                </td>
+                <td>
+                    <code>.gray90</code>
+                </td>
+                <td>
+                    <code>.hc-text-uppercase</code>
+                </td>    
+            </tr>
+            <tr>
+                <td>
+                    <h3>h3 heading tag</h3>
+                </td>
+                <td>
+                    <code>.hc-font-xl</code>
+                </td>
+                <td>
+                    <code>.wcf-blue</code>
+                </td>
+                <td>
+                    <code>.hc-text-titlecase</code>
+                </td>    
+            </tr>
+            <tr>
+                <td>
+                    <h4>h4 heading tag</h4>
+                </td>
+                <td>
+                    <code>.hc-font-lg</code>
+                </td>
+                <td>
+                    <code>.gray90</code>
+                </td>
+                <td>
+                    <code>.hc-text-uppercase</code>
+                </td>    
+            </tr>
+            <tr>
+                <td>
+                    <h5>h5 heading tag</h5>
+                </td>
+                <td>
+                    <code>.hc-font-lg</code>
+                </td>
+                <td>
+                    <code>.wcf-blue</code>
+                </td>
+                <td>
+                    <code>.hc-text-titlecase</code>
+                </td>    
+            </tr>
+            <tr>
+                <td>
+                    <h6>h6 heading tag</h6>
+                </td>
+                <td>
+                    <code>.hc-font-md</code>
+                </td>
+                <td>
+                    <code>.gray90</code>
+                </td>
+                <td>
+                    <code>.hc-text-uppercase</code>
+                </td>    
+            </tr>
+        </table>
+    </hc-tile>
+
+    <hc-tile>
+        <h2>Ellipsis</h2>
         <p>For truncating a single line of text based on the width of it's containing div, use <code>.hc-text-ellipsis</code>,
             which is a helper class for the following commonly repeated css:
         </p>
@@ -394,9 +490,9 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Articles</h5>
+        <h2>Articles</h2>
         <p>The <code>&lt;article&gt;</code> tag surrounds copy in product documentation. This copy is often denser than what's ideal for application UIs. In limited instances, elements of product documentation require unique typography treatment.</p>
-        <h3>Article lists</h3>
+        <h2>Article lists</h2>
         <p>Formatting is provided for nested lists in <code>&lt;article&gt;</code> and <code>&lt;article&gt;&lt;table&gt;</code> blocks
         using either the <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> tags. Lists in tables are more compact than lists in paragraphs. For example, the <code>font-size</code> is <code>1rem</code> or <code>14px</code> and margins and padding are tighter.</p>
         <h4>ul. Unordered List</h4>
@@ -455,7 +551,7 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Sass Text Utilities</h5>
+        <h2>Sass Text Utilities</h2>
         <p> Save yourself the trouble of looking up or recalculating rem sizes using the
             <code>fontSize()</code> sass mixin.</p>
         <pre><code>@import &#39;../node_modules/cashmere/sass/cashmere&#39;;

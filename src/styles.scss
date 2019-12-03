@@ -34,6 +34,14 @@ body {
     .tab-bar-horizontal {
         margin-bottom: 25px;
     }
+    .hc-tile {
+        img {
+            width: 100%;
+            margin: 1rem 0;
+            border: 1px solid $gray-10;
+            box-shadow: $gray-10 0px 3px 6px;
+        }
+    }
 }
 
 .popoverContainer {
@@ -111,41 +119,6 @@ body {
         width: 100%;
         margin-left: 0;
     }
-}
-
-h1 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-h2 {
-    margin: 0;
-}
-
-h3 {
-    margin: 50px 0 0;
-}
-
-h4 {
-    margin: 36px 0 12px;
-}
-
-h5 {
-    @include fontSize(15px);
-    text-transform: uppercase;
-    color: $dark-blue;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-h6 {
-    @include fontSize(14px);
-    font-weight: 300;
-    margin: 3px 0 35px 0;
-}
-
-p {
-    margin: 8px 0 8px;
 }
 
 em {

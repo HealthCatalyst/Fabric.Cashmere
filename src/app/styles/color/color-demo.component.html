@@ -3,14 +3,14 @@
     <h6>Last updated {{lastModified | date:'longDate'}}</h6>
 
     <hc-tile>
-        <h5>Overview</h5>
+        <h2>Overview</h2>
         <p>Following are the suggested colors for use within your application. By adhering to the color guidelines, we can help our products
             feel like part of a cohesive family.</p>
         <p>It's recommended that you import the colors and leverage the sass variables.</p>
     </hc-tile>
 
     <hc-tile>
-        <h5>Primary Palette</h5>
+        <h2>Primary Palette</h2>
         <p>The primary colors used for branding, calls to action (buttons, links, etc), and other accents.</p>
         <div class="palette-row primary">
             <hc-swatch-demo-component hex="#ba160a" name="wcf-red" [isLarge]="true"></hc-swatch-demo-component>
@@ -20,12 +20,13 @@
             <hc-swatch-demo-component hex="#DB8F91" name="red-light"></hc-swatch-demo-component>
             <hc-swatch-demo-component hex="#590F12" name="red-dark"></hc-swatch-demo-component>
             <hc-swatch-demo-component hex="#A1B0BF" name="blue-light"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#1F3040" name="blue-dark"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#1A3151" name="blue-dark"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#0D1828" name="blue-darkest"></hc-swatch-demo-component>
         </div>
     </hc-tile>
 
     <hc-tile>
-        <h5>Neutral Palette</h5>
+        <h2>Neutral Palette</h2>
         <p>The colors used for most interface elements like backgrounds, text, etc.</p>
         <div class="palette-row">
             <hc-swatch-demo-component hex="#ffffff" name="white" [needsBorder]="true"></hc-swatch-demo-component>
@@ -45,7 +46,7 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Feedback Palette</h5>
+        <h2>Feedback Palette</h2>
         <p>The colors used to give feedback to users, be it positive, negative, or neutral.</p>
         <div class="palette-row">
             <hc-swatch-demo-component hex="#1ec834" name="success"></hc-swatch-demo-component>
@@ -62,20 +63,20 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Default Color Usage</h5>
+        <h2>Default Color Usage</h2>
         <p class="description">
             Some guidelines on common element and attribute colors.
         </p>
         <ul class="color-var-list">
-            <li><span class="mini-swatch" [style.backgroundColor]="'#878b8f'"></span><strong>Border Default: </strong> $gray-50
-            </li>
             <li><span class="mini-swatch" [style.backgroundColor]="'#d7d8da'"></span><strong>Disabled State: </strong> $gray-10
             </li>
             <li><span class="mini-swatch" [style.backgroundColor]="'#d7d8da'"></span><strong>Divider Line: </strong> $gray-10
             </li>
-            <li><span class="mini-swatch" [style.backgroundColor]="'#5e646a'"></span><strong>Icon Default: </strong> $gray-70
+            <li><span class="mini-swatch" [style.backgroundColor]="'#878b8f'"></span><strong>Border Default: </strong> $gray-50
             </li>
             <li><span class="mini-swatch" [style.backgroundColor]="'#878b8f'"></span><strong>Label Default: </strong> $gray-50
+            </li>
+            <li><span class="mini-swatch" [style.backgroundColor]="'#5e646a'"></span><strong>Icon Default: </strong> $gray-70
             </li>
             <li><span class="mini-swatch" [style.backgroundColor]="'#363e44'"></span><strong>Text Default: </strong> $gray-90
             </li>
@@ -83,7 +84,7 @@
     </hc-tile>
 
     <hc-tile style="display:none;">
-        <h5>Stratifying and Adding Colors</h5>
+        <h2>Stratifying and Adding Colors</h2>
         <p class="description">
             There may be times that a product will need to expand the color palette, or use a variation on
             exisiting colors. In these cases we recommend one of two approaches:

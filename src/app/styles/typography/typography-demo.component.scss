@@ -2,25 +2,11 @@
     margin: 15px 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-p {
-    &.no-margin {
-        margin: 0;
-    }
-}
-
 .demo-content ul {
     margin: 0;
 }
 .demo-content li {
     margin: 0;
-}
-
-.demo-content h3 {
-    margin: 30px 0 0;
 }
 
 .ellipsis-example-block {
@@ -51,8 +37,4 @@ p {
 .demo-content ul li:first-child,
 .demo-content ol li:first-child {
     margin-top: 6px;
-}
-
-.h4-subsequent {
-    margin-top: 0px;
 }

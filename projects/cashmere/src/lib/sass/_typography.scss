@@ -11,35 +11,44 @@ body {
     color: $text;
 }
 
-h1 {
-    @include fontSize(36px);
-    font-weight: 300;
-    line-height: 1.2;
-    color: $text;
+h1, h2, h3, h4, h5, h6 {
+    font-family: $default-font-headings;
+    font-weight: 500;
+    line-height: 1.25;
+    text-transform: capitalize;
+    margin: 2.2857rem 0 .5714rem 0;
+    color: $wcf-blue;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    &:first-child {
+        margin-top: 0;
+    }
 }
 
+h1 {
+    @include fontSize(36px);
+}
 h2 {
-    @include fontSize(22px);
-    font-weight: 600;
-    line-height: 1.5;
+    @include fontSize(24px);
     color: $text;
+    text-transform: uppercase;
 }
-
 h3 {
-    @include fontSize(18px);
-    font-weight: 600;
-    line-height: 1.5;
-    color: $text;
+    @include fontSize(24px);
 }
-
 h4 {
-    @include fontSize(14px);
-    font-weight: 600;
-    line-height: 1.5;
+    @include fontSize(20px);
     color: $text;
+    text-transform: uppercase;
+}
+h5 {
+    @include fontSize(20px);
+}
+h6 {
+    @include fontSize(16px);
+    color: $text;
+    text-transform: uppercase;
 }
 
 p {
@@ -47,6 +56,7 @@ p {
     font-weight: 400;
     line-height: 1.5;
     color: $text;
+    margin-bottom: 1.14rem;
 }
 
 // for inline code
@@ -93,13 +103,15 @@ pre {
 
 // hyperlinks
 a {
-    text-decoration: none;
-    color: $primary-brand;
+    text-decoration: underline;
+    color: $wcf-blue;
     &:hover {
-        color: lighten($primary-brand, 10%);
+        color: $primary-brand;
+        text-decoration: none;
     }
     &:active {
         color: darken($primary-brand, 10%);
+        text-decoration: none;
     }
 }
 
