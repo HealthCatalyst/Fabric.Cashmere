@@ -163,6 +163,8 @@ export class MonthViewComponent implements AfterContentInit {
             const selectedYear = this._dateAdapter.getYear(this.activeDate);
             const selectedMonth = this._dateAdapter.getMonth(this.activeDate);
             const selectedDate = this._dateAdapter.createDate(selectedYear, selectedMonth, date);
+            // Set hours for buffer to protect against date changing when different time zones
+            selectedDate.setHours(12);
 
             this.selectedChange.emit(selectedDate);
         }
@@ -245,6 +247,8 @@ export class MonthViewComponent implements AfterContentInit {
             this._dateAdapter.getMonth(this.activeDate),
             1
         );
+        // Set hours for buffer to protect against date changing when different time zones
+        firstOfMonth.setHours(12);
         this._firstWeekOffset =
             (DAYS_PER_WEEK + this._dateAdapter.getDayOfWeek(firstOfMonth) - this._dateAdapter.getFirstDayOfWeek()) % DAYS_PER_WEEK;
 
@@ -272,6 +276,8 @@ export class MonthViewComponent implements AfterContentInit {
                 this._dateAdapter.getMonth(this.activeDate),
                 i + 1
             );
+            // Set hours for buffer to protect against date changing when different time zones
+            date.setHours(12);
             const enabled = this._shouldEnableDate(date);
             const ariaLabel = this._dateAdapter.format(date, this._dateFormats.display.dateA11yLabel);
             const cellClasses = this.dateClass ? this.dateClass(date) : undefined;
