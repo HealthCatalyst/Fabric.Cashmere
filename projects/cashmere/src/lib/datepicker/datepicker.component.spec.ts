@@ -323,6 +323,29 @@ class DelayedDatepicker {
 })
 class DatepickerWithTabindexOnToggle {}
 
+@Component({
+    template: `
+        <input [hcDatepicker]="timepicker" />
+        <hc-datepicker #timepicker mode="time" [hourCycle]="cycleVal"></hc-datepicker>
+    `
+})
+class DatepickerWithTime {
+    @ViewChild('timepicker')
+    datepicker: DatepickerComponent;
+    cycleVal:number = 12;
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="datetimepicker" />
+        <hc-datepicker #datetimepicker mode="date-time"></hc-datepicker>
+    `
+})
+class DatepickerWithDateTime {
+    @ViewChild('datetimepicker')
+    datepicker: DatepickerComponent;
+}
+
 describe('DatepickerComponent', () => {
     const SUPPORTS_INTL = typeof Intl !== 'undefined';
 
@@ -1802,6 +1825,67 @@ describe('DatepickerComponent', () => {
             fixture.detectChanges();
 
             expect(document.querySelector('.custom-element')).toBeTruthy();
+        }));
+    });
+
+    describe('datepicker with time selection only', () => {
+        let fixture: ComponentFixture<DatepickerWithTime>;
+        let testComponent: DatepickerWithTime;
+
+        beforeEach(fakeAsync(() => {
+            fixture = createComponent(DatepickerWithTime, [HcNativeDateModule]);
+            fixture.detectChanges();
+            testComponent = fixture.componentInstance;
+        }));
+
+        it('should instantiate a datepicker with time selection', fakeAsync(() => {
+            expect(testComponent).toBeTruthy();
+        }));
+
+        it('should display only the time picker', fakeAsync(() => {
+            testComponent.datepicker.open();
+            fixture.detectChanges();
+            flush();
+            fixture.detectChanges();
+
+            expect(document.querySelector('.hc-calendar-time-picker')).toBeTruthy();
+            expect(document.querySelector('.hc-calendar-content')).toBeFalsy();
+        }));
+
+        it('should not display the AM/PM select with a 24 hour cycle', fakeAsync(() => {
+            testComponent.cycleVal = 24;
+            testComponent.datepicker.open();
+            fixture.detectChanges();
+            flush();
+            fixture.detectChanges();
+
+            let formFields = document.querySelectorAll('hc-form-field');
+            expect(formFields.length).toBe(2);
+        }));
+    });
+
+    describe('datepicker with date and time selection', () => {
+        let fixture: ComponentFixture<DatepickerWithDateTime>;
+        let testComponent: DatepickerWithDateTime;
+
+        beforeEach(fakeAsync(() => {
+            fixture = createComponent(DatepickerWithDateTime, [HcNativeDateModule]);
+            fixture.detectChanges();
+            testComponent = fixture.componentInstance;
+        }));
+
+        it('should instantiate a datepicker with date and time selection', fakeAsync(() => {
+            expect(testComponent).toBeTruthy();
+        }));
+
+        it('should display both the date and time picker', fakeAsync(() => {
+            testComponent.datepicker.open();
+            fixture.detectChanges();
+            flush();
+            fixture.detectChanges();
+
+            expect(document.querySelector('.hc-calendar-time-picker')).toBeTruthy();
+            expect(document.querySelector('.hc-calendar-content')).toBeTruthy();
         }));
     });
 });

@@ -25,7 +25,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 }
 
 .hc-calendar-header {
-    padding: $hc-calendar-padding $hc-calendar-padding 0 $hc-calendar-padding;
+    padding: 0 $hc-calendar-padding;
 }
 
 .hc-calendar-content {
@@ -35,7 +35,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 
 .hc-calendar-controls {
     display: flex;
-    margin: $hc-calendar-controls-vertical-padding $hc-calendar-controls-side-margin;
+    margin: 0 $hc-calendar-controls-side-margin $hc-calendar-controls-vertical-padding ;
 }
 
 .hc-calendar-spacer {
@@ -121,6 +121,10 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
     text-align: center;
 }
 
+.hc-calendar-today-margin {
+    margin-bottom: 20px;
+}
+
 .hc-calendar-table {
     border-spacing: 0;
     border-collapse: collapse;
@@ -151,4 +155,48 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 .hc-calendar-table-header th {
     @include fontSize(9px);
     color: $gray-500;
+}
+
+.hc-calendar-time-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.hc-calendar-time-picker hc-form-field {
+    margin: 0 3px;
+}
+
+.hc-calendar-time-picker input {
+    width: 20px;
+}
+
+.hc-calendar-time-controls {
+    display: flex;
+    flex-direction: column;
+}
+
+.hc-calendar-time-controls button {
+    /* important is needed here to override hc-button properties */
+    height: 16px !important;
+    width: 16px !important;
+    line-height: 16px !important;
+    padding: 0 !important;
+}
+
+.hc-calendar-controls-icon {
+    line-height: 1 !important;
+}
+
+.hc-calendar-time-picker hc-select {
+    width: 70px;
+}
+
+.hc-calendar-time-picker > .hc-icon {
+    color: $slate-gray-400;
+    margin-right: 10px;
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
 }

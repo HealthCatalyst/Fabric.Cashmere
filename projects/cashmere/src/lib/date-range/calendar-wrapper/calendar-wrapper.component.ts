@@ -44,6 +44,14 @@ export class CalendarWrapperComponent implements OnChanges {
     @Input()
     dateFormat: string;
 
+    /** Whether the pickers include the calendar, time selector, or both. Defaults to `date`. */
+    @Input()
+    mode: 'date' | 'time' | 'date-time' = 'date';
+
+    /** Whether the time picker should use a 12 or 24 hour clock. Defaults to 12. */
+    @Input()
+    hourCycle: number = 12;
+
     /** Prefix label on top of component. */
     @Input()
     prefixLabel: string;
@@ -83,11 +91,24 @@ export class CalendarWrapperComponent implements OnChanges {
     }
 
     _onInputChange(event: HcDatepickerInputEvent) {
-        if (event.value && ((this.minDate && event.value < this.minDate) || (this.maxDate && event.value > this.maxDate))) {
-            this.selectedDate = undefined;
-            this.selectedDateChange.emit(undefined);
+        if ( this.mode === 'time' ) {
+            let tempVal = (event.value) ? new Date(1900, 1, 1, event.value.getHours(), event.value.getMinutes()) : new Date(1900, 1, 1);
+            let minVal = (this.minDate) ? new Date(1900, 1, 1, this.minDate.getHours(), this.minDate.getMinutes()) : new Date(1900, 1, 1);
+            let maxVal = (this.maxDate) ? new Date(1900, 1, 1, this.maxDate.getHours(), this.maxDate.getMinutes()) : new Date(1900, 1, 2);
+
+            if ( tempVal < minVal || tempVal > maxVal ) {
+                this.selectedDate = undefined;
+                this.selectedDateChange.emit(undefined);
+            } else {
+                this.selectedDateChange.emit(event.value || undefined);
+            }
         } else {
-            this.selectedDateChange.emit(event.value || undefined);
+            if (event.value && ((this.minDate && event.value < this.minDate) || (this.maxDate && event.value > this.maxDate))) {
+                this.selectedDate = undefined;
+                this.selectedDateChange.emit(undefined);
+            } else {
+                this.selectedDateChange.emit(event.value || undefined);
+            }
         }
     }
 
