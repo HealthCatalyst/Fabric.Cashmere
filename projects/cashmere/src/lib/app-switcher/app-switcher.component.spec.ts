@@ -4,6 +4,8 @@ import {AppSwitcherComponent} from './app-switcher.component';
 import {PopModule} from '../pop/popover.module';
 import {PipesModule} from '../pipes/pipes.module';
 import {APP_SWITCHER_SERVICE, MockAppSwitcherService} from './app-switcher-interfaces';
+import { ProgressIndicatorsModule } from '../progress-indicators';
+import { WorkTrackerService } from '../picklist/services/work-tracker.service';
 
 
 describe('AppSwitcherComponent', () => {
@@ -12,13 +14,14 @@ describe('AppSwitcherComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [PopModule, PipesModule],
+            imports: [PopModule, PipesModule, ProgressIndicatorsModule],
             declarations: [AppSwitcherComponent],
             providers: [
                 {
                     provide: APP_SWITCHER_SERVICE,
                     useClass: MockAppSwitcherService
-                }
+                },
+                WorkTrackerService
             ]
         }).compileComponents();
     }));

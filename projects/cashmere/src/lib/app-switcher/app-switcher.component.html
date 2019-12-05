@@ -1,15 +1,34 @@
 <div class="popover-content">
     <h4>Applications</h4>
-    <pre *ngIf="!applications">loading applications...</pre>
-    <div class="apps">
-        <div class="app" *ngFor="let app of applications">
-            <a class="thumbnail" [title]="app.Description" [href]="app.ServiceUrl" target="_blank">
-                <img class="thumbnail-img" [height]="iconHeight" [src]="app.Icon" [ngStyle]="{'max-width': iconHeight + 'px'}">
-                <div class="title">{{app?.FriendlyName | ellipsis:18}}</div>
-            </a>
+
+    <ng-container *ngIf="applications?.length > 0">
+        <div class="apps">
+            <div class="app" *ngFor="let app of applications">
+                <a class="thumbnail" [title]="app.Description" [href]="app.ServiceUrl" target="_blank">
+                    <img class="thumbnail-img" [height]="iconHeight" [src]="app.Icon" [ngStyle]="{'max-width': iconHeight + 'px'}">
+                    <div class="title">{{app?.FriendlyName | ellipsis:18}}</div>
+                </a>
+            </div>
         </div>
+        <a class="all-apps-link" [href]="appSwitcherService.allApplicationsUri" target="_blank">View all my
+            applications</a>
+    </ng-container>
+
+    <!-- Loading -->
+    <div *ngIf="loading | async" class="hc-app-switcher-empty-state spinner-container">
+        <hc-progress-spinner diameter="60"></hc-progress-spinner>
     </div>
-    <a class="all-apps-link" [href]="appSwitcherService.allApplicationsUri" target="_blank">View all my
-        applications</a>
+
+    <!-- Load Failed -->
+    <div *ngIf="!(loading | async) && loadFailed" class="hc-app-switcher-empty-state">
+        <span class="warning-ico"></span>
+        <em>Failed to load applications.</em>
+        <a hc-button buttonStyle="link" (click)="loadApplications()">Retry now.</a>
+    </div>
+
+    <!-- No Apps Available -->
+    <div *ngIf="!(loading | async) && applications?.length === 0" class="hc-app-switcher-empty-state">
+        <span class="empty-ico"></span><em>No applications available.</em>
+    </div>
 </div>
 
