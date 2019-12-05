@@ -13,7 +13,7 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     public applications: IDiscoveryApplication[];
     public subscription: Subscription;
     public brandBg = 'brand';
-    private _iconHeight: Number = 100;
+    private _iconHeight: Number = 60;
 
     private ngUnsubscribe: any = new Subject();
 
