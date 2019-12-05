@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-import {WorkTrackerService} from './work-tracker.service';
+import {WorkTrackerService} from '../../shared/work-tracker.service';
 import {PicklistFilterService} from './picklist-filter.service';
 import {PicklistValuesetMovingService} from './picklist-valueset-moving.service';
 import {PicklistFilterLocalService} from './picklist-filter-local.service';

@@ -5,7 +5,7 @@ import {PopModule} from '../pop/popover.module';
 import {PipesModule} from '../pipes/pipes.module';
 import {APP_SWITCHER_SERVICE, MockAppSwitcherService} from './app-switcher-interfaces';
 import { ProgressIndicatorsModule } from '../progress-indicators';
-import { WorkTrackerService } from '../picklist/services/work-tracker.service';
+import { WorkTrackerService } from '../shared/work-tracker.service';
 
 
 describe('AppSwitcherComponent', () => {

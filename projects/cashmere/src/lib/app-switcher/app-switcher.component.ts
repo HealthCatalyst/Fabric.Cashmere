@@ -3,7 +3,7 @@ import {Component, Inject, OnDestroy, OnInit, Input} from '@angular/core';
 import {Subject, Subscription, Observable} from 'rxjs';
 
 import {IAppSwitcherService, IDiscoveryApplication, APP_SWITCHER_SERVICE} from './app-switcher-interfaces';
-import { WorkTrackerService } from '../picklist/services/work-tracker.service';
+import { WorkTrackerService } from '../shared/work-tracker.service';
 
 @Component({
     selector: 'hc-app-switcher',

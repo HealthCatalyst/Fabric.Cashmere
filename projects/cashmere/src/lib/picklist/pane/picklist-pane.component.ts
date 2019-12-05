@@ -9,7 +9,7 @@ import {PicklistFilterRemoteService} from '../services/picklist-filter-remote.se
 import {PicklistFilterLocalService} from '../services/picklist-filter-local.service';
 import {PicklistStateService} from '../services/picklist-state.service';
 import {PicklistValuesetMovingService} from '../services/picklist-valueset-moving.service';
-import {WorkTrackerService} from '../services/work-tracker.service';
+import {WorkTrackerService} from '../../shared/work-tracker.service';
 import {PicklistOptionsSource, PicklistSettings, PicklistValueType} from '../picklist.model';
 import {FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOption} from './picklist-pane.model';
 
