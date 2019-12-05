@@ -1,5 +1,13 @@
 <div class="popover-content">
-    <h4>Applications</h4>
+    <h4>Applications
+        <a hc-button
+            *ngIf="appSwitcherService.allApplicationsUri"
+            buttonStyle="link-inline"
+            class="all-apps-link"
+            [href]="appSwitcherService.allApplicationsUri"
+            target="_blank">View All
+        </a>
+    </h4>
 
     <ng-container *ngIf="applications?.length > 0">
         <div class="apps">
@@ -10,8 +18,6 @@
                 </a>
             </div>
         </div>
-        <a class="all-apps-link" [href]="appSwitcherService.allApplicationsUri" target="_blank">View all my
-            applications</a>
     </ng-container>
 
     <!-- Loading -->
