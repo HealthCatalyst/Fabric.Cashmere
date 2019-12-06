@@ -12,9 +12,9 @@
     <ng-container *ngIf="applications?.length > 0">
         <div class="apps">
             <div class="app" *ngFor="let app of applications">
-                <a class="thumbnail" [title]="app.Description" [href]="app.ServiceUrl" target="_blank">
-                    <img class="thumbnail-img" [height]="iconHeight" [src]="app.Icon" [ngStyle]="{'max-width': iconHeight + 'px'}">
-                    <div class="title">{{app?.FriendlyName | ellipsis:18}}</div>
+                <a class="thumbnail"  [title]="app.Description" [attr.href]="linkIfNotMe(app)" target="_blank">
+                    <img class="thumbnail-img" [ngClass]="{'highlight-current': appIsMe(app)}" [height]="iconHeight" [src]="app.Icon">
+                        <div class="title">{{app?.FriendlyName | ellipsis:18}}</div>
                 </a>
             </div>
         </div>

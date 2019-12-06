@@ -17,6 +17,8 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     public loading: Observable<boolean>;
     public loadFailed = false;
     private _iconHeight: Number = 60;
+    private _serviceName: String = '';
+    private _version: Number = 0;
 
     private ngUnsubscribe: any = new Subject();
 
@@ -30,7 +32,23 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
         this._iconHeight = heightVal;
     }
 
-    constructor(@Inject(APP_SWITCHER_SERVICE) public appSwitcherService: IAppSwitcherService, private workTracker: WorkTrackerService) {}
+     @Input()
+    get serviceName(): String {
+        return this._serviceName;
+    }
+
+    set serviceName(serviceNameVal: String) {
+        this._serviceName = serviceNameVal;
+    }
+    @Input()
+    get serviceVersion(): Number {
+        return this._version;
+    }
+
+    set serviceVersion(serviceVersionVal: Number) {
+        this._version = serviceVersionVal;
+    }
+   constructor(@Inject(APP_SWITCHER_SERVICE) public appSwitcherService: IAppSwitcherService, private workTracker: WorkTrackerService) {}
 
     ngOnInit() {
         this.loadApplications();
@@ -64,5 +82,14 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     private handleError(error: any) {
         console.error("Failed to load applications from the app switcher service.", error);
         this.loadFailed = true;
+    }
+
+    linkIfNotMe(app): string {
+        return this.appIsMe(app) ? null : app.ServiceUrl;
+    }
+
+    appIsMe(app: IDiscoveryApplication) {
+        return app.ServiceName === this.serviceName &&
+            app.Version === this.serviceVersion;
     }
 }

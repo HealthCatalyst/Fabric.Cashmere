@@ -37,6 +37,10 @@
 
                 & > .thumbnail-img {
                     width: auto;
+
+                    &.highlight-current {
+                        opacity:0.5;
+                    }
                 }
             }
 
