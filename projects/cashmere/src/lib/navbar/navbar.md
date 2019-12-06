@@ -60,6 +60,7 @@ You may not have all these items available. However, include what you have in th
 
 In addition to the help menu, all Heath Catalyst applications should also include the app switcher in their navbar to the left of the help menu. The app switcher allows users to easily switch between the Health Catalyst apps that they have access to. You may set the height of the icons that appear in the app switcher using the `iconHeight` parameter.  The height defaults to 60px, and the width will be set automatically
 (but constrained to a max-width equal to the `iconHeight` value).
+To disable switching for your own app you can pass in the service name and version number you have registered with the discovery service in the `serviceName` and `serviceVersion` parameters respectively. The icon will still be displayed but won't be clickable.
 
 ```html
 <hc-navbar>
@@ -71,7 +72,7 @@ In addition to the help menu, all Heath Catalyst applications should also includ
         <hc-app-switcher-links></hc-app-switcher-links>
     </hc-navbar-mobile-menu>
     ...
-    <hc-pop #appSwitcher><hc-app-switcher></hc-app-switcher></hc-pop>
+    <hc-pop #appSwitcher><hc-app-switcher serviceName="MyService" serviceVersion="1"></hc-app-switcher></hc-pop>
 </hc-navbar>
 ```
 
