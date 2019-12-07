@@ -1,6 +1,6 @@
-import { Component, Input, ContentChildren, QueryList, AfterContentInit, Output } from '@angular/core';
-import { EventEmitter, TemplateRef, ViewChild } from '@angular/core';
-import { HcTabTitleComponent } from './tab-title.component';
+import {Component, Input, ContentChildren, QueryList, AfterContentInit, Output} from '@angular/core';
+import {EventEmitter, TemplateRef, ViewChild} from '@angular/core';
+import {HcTabTitleComponent} from './tab-title.component';
 
 @Component({
     templateUrl: './tab.component.html',

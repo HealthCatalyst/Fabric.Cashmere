@@ -14,13 +14,12 @@ All Health Catalyst apps should include a help menu in their navbar. This guide 
 
 You may not have all these items available. However, include what you have in this order:
 
-- [fa-book] **Read the docs** (link to the [docs site](https://www.healthcatalyst.com/docs/) or your help docs repository on HCC)
-- [fa-lightbulb] **Request a feature** (link to your feature request page on Health Catalyst Community)
-- [fa-users] **Ask the community** (link to your Q&A page on Health Catalyst Community)
-- [fa-bullhorn] **Find out what's new** (link to your release notes on Health Catalyst Community)
-- [fa-comments] **Send feedback**  (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/components/typeform-survey/examples))
-- [fa-info-circle] **About** see the [associated style page](https://cashmere.healthcatalyst.net/styles/about) for guidelines)
-
+-   [fa-book] **Read the docs** (link to the [docs site](https://www.healthcatalyst.com/docs/) or your help docs repository on HCC)
+-   [fa-lightbulb] **Request a feature** (link to your feature request page on Health Catalyst Community)
+-   [fa-users] **Ask the community** (link to your Q&A page on Health Catalyst Community)
+-   [fa-bullhorn] **Find out what's new** (link to your release notes on Health Catalyst Community)
+-   [fa-comments] **Send feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/components/typeform-survey/examples))
+-   [fa-info-circle] **About** see the [associated style page](https://cashmere.healthcatalyst.net/styles/about) for guidelines)
 
 ```html
 <hc-pop #helpMenu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
@@ -58,7 +57,7 @@ You may not have all these items available. However, include what you have in th
 
 ##### App Switcher
 
-In addition to the help menu, all Heath Catalyst applications should also include the app switcher in their navbar to the left of the help menu. The app switcher allows users to easily switch between the Health Catalyst apps that they have access to. You may set the height of the icons that appear in the app switcher using the `iconHeight` parameter.  The height defaults to 60px, and the width will be set automatically
+In addition to the help menu, all Heath Catalyst applications should also include the app switcher in their navbar to the left of the help menu. The app switcher allows users to easily switch between the Health Catalyst apps that they have access to. You may set the height of the icons that appear in the app switcher using the `iconHeight` parameter. The height defaults to 60px, and the width will be set automatically
 (but constrained to a max-width equal to the `iconHeight` value).
 To disable switching for your own app you can pass in the service name and version number you have registered with the discovery service in the `serviceName` and `serviceVersion` parameters respectively. The icon will still be displayed but won't be clickable.
 

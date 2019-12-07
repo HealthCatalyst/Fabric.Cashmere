@@ -9,11 +9,11 @@ import {Component} from '@angular/core';
     styleUrls: ['popover-overview-example.component.scss']
 })
 export class PopoverOverviewExampleComponent {
-    public scrollStrat = "reposition";
-    public hAlign = "center";
-    public vAlign = "below";
-    public popText = "NIFTY!!";
-    public trig = "click";
+    public scrollStrat = 'reposition';
+    public hAlign = 'center';
+    public vAlign = 'below';
+    public popText = 'NIFTY!!';
+    public trig = 'click';
     public shouldAnimate = true;
     public clickAway = true;
     public showArrow = true;

@@ -3,7 +3,7 @@ import {Component, Inject, OnDestroy, OnInit, Input} from '@angular/core';
 import {Subject, Subscription, Observable} from 'rxjs';
 
 import {IAppSwitcherService, IDiscoveryApplication, APP_SWITCHER_SERVICE} from './app-switcher-interfaces';
-import { WorkTrackerService } from '../shared/work-tracker.service';
+import {WorkTrackerService} from '../shared/work-tracker.service';
 
 @Component({
     selector: 'hc-app-switcher',
@@ -32,7 +32,7 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
         this._iconHeight = heightVal;
     }
 
-     @Input()
+    @Input()
     get serviceName(): String {
         return this._serviceName;
     }
@@ -48,7 +48,7 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     set serviceVersion(serviceVersionVal: Number) {
         this._version = serviceVersionVal;
     }
-   constructor(@Inject(APP_SWITCHER_SERVICE) public appSwitcherService: IAppSwitcherService, private workTracker: WorkTrackerService) {}
+    constructor(@Inject(APP_SWITCHER_SERVICE) public appSwitcherService: IAppSwitcherService, private workTracker: WorkTrackerService) {}
 
     ngOnInit() {
         this.loadApplications();
@@ -68,19 +68,23 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     }
 
     private loadApplicationFromDiscoveryService() {
-        this.loading = this.workTracker.startObservable(() => this.appSwitcherService
-            .getApplications()
-            .pipe(takeUntil(this.ngUnsubscribe))
-            .subscribe((response: any) => {
-                this.applications = response.value;
-            }, (error: any) => {
-                this.handleError(error);
-            })
+        this.loading = this.workTracker.startObservable(() =>
+            this.appSwitcherService
+                .getApplications()
+                .pipe(takeUntil(this.ngUnsubscribe))
+                .subscribe(
+                    (response: any) => {
+                        this.applications = response.value;
+                    },
+                    (error: any) => {
+                        this.handleError(error);
+                    }
+                )
         );
     }
 
     private handleError(error: any) {
-        console.error("Failed to load applications from the app switcher service.", error);
+        console.error('Failed to load applications from the app switcher service.', error);
         this.loadFailed = true;
     }
 
@@ -89,7 +93,6 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     }
 
     appIsMe(app: IDiscoveryApplication) {
-        return app.ServiceName === this.serviceName &&
-            app.Version === this.serviceVersion;
+        return app.ServiceName === this.serviceName && app.Version === this.serviceVersion;
     }
 }

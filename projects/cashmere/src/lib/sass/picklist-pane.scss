@@ -41,7 +41,7 @@
 }
 
 @mixin hc-picklist-pane-controls-btn-link-active() {
-    box-shadow: none;  
+    box-shadow: none;
     color: darken($blue, 10%);
     outline: none;
     text-decoration: underline;

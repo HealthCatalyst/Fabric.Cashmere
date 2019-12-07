@@ -8,7 +8,7 @@
     @include hc-menu-drawer-item-container();
 
     .hc-drawer-toolbar-visible & {
-        @include hc-menu-drawer-item-container-visible();   
+        @include hc-menu-drawer-item-container-visible();
     }
 
     .hc-drawer-right & {

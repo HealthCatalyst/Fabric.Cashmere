@@ -188,14 +188,9 @@ export class PicklistPaneComponent {
     }
 
     private wireUpSearch() {
-        this.searchTermStream
-            .pipe(
-                debounceTime(300),
-                distinctUntilChanged()
-            )
-            .subscribe(t => {
-                this.filterService.runFilter(t);
-                this.selectNone();
-            });
+        this.searchTermStream.pipe(debounceTime(300), distinctUntilChanged()).subscribe(t => {
+            this.filterService.runFilter(t);
+            this.selectNone();
+        });
     }
 }

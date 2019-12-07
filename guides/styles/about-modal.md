@@ -64,12 +64,16 @@ The following code snippet leverages styles in the `about-modal.scss` stylesheet
         </div>
     </div>
     <div class="about-footer">
-        Copyright 2019 <a href="https://www.healthcatalyst.com/">Health Catalyst</a>. All rights reserved
-        <br>
-        <a href="https://www.healthcatalyst.com/terms-conditions/">Terms and Conditions</a>  |  <a href="https://www.healthcatalyst.com/privacy-policy/">Privacy Policy</a>
+        Copyright 2019
+        <a href="https://www.healthcatalyst.com/">Health Catalyst</a>
+        . All rights reserved
+        <br />
+        <a href="https://www.healthcatalyst.com/terms-conditions/">Terms and Conditions</a>
+        |
+        <a href="https://www.healthcatalyst.com/privacy-policy/">Privacy Policy</a>
     </div>
 </div>
-<hr>
+<hr />
 <div class="about-close-container"><button hc-button class="about-close">Close</button></div>
 ```
 

@@ -21,7 +21,10 @@ import {HcCalendarCellCssClasses, HcCalendarCell} from './calendar-body.componen
 })
 class StandardCalendarBody {
     label = 'Jan 2017';
-    rows = [[1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14]].map(row => {
+    rows = [
+        [1, 2, 3, 4, 5, 6, 7],
+        [8, 9, 10, 11, 12, 13, 14]
+    ].map(row => {
         return row.map(cell => createCell(cell, cell % 2 === 0 ? 'even' : undefined));
     });
     todayValue = 3;

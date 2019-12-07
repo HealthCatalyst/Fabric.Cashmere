@@ -142,7 +142,7 @@ $hc-header-font-size: 18px !default;
     opacity: 1;
 
     &:before {
-        content: " ";
+        content: ' ';
         display: block;
         height: 4px;
         width: inherit;
@@ -156,15 +156,27 @@ $hc-header-font-size: 18px !default;
     }
 }
 
-.hc-toast-alert .hc-toast-progress:before { background-color: darken($red, 10%);}
-.hc-toast-warning .hc-toast-progress:before { background-color: darken($orange, 10%);}
-.hc-toast-info .hc-toast-progress:before { background-color: darken($blue, 10%);}
-.hc-toast-success .hc-toast-progress:before { background-color: darken($green, 10%);}
-
-@keyframes ProgressShift {
-    0% { transform: translateX(-100%); }
-    50% { transform: translateX(0%); }
-    100% { transform: translateX(100%); }
+.hc-toast-alert .hc-toast-progress:before {
+    background-color: darken($red, 10%);
+}
+.hc-toast-warning .hc-toast-progress:before {
+    background-color: darken($orange, 10%);
+}
+.hc-toast-info .hc-toast-progress:before {
+    background-color: darken($blue, 10%);
+}
+.hc-toast-success .hc-toast-progress:before {
+    background-color: darken($green, 10%);
 }
 
-
+@keyframes ProgressShift {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}

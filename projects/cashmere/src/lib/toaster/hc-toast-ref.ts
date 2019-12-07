@@ -22,13 +22,13 @@ export class HcToastRef {
     }
 
     set progress(progVal: number) {
-        if ( progVal < 0 ) {
+        if (progVal < 0) {
             progVal = 0;
-        } else if ( progVal > 100 ) {
+        } else if (progVal > 100) {
             progVal = 100;
         }
         this.componentInstance._progressVal = progVal;
-        this.componentInstance._progressWidth = progVal + "%";
+        this.componentInstance._progressWidth = progVal + '%';
     }
 
     constructor(public _overlayRef: OverlayRef) {}

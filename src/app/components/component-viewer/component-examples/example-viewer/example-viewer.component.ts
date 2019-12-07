@@ -66,8 +66,8 @@ export class ExampleViewerComponent implements OnInit {
         return fileName;
     }
 
-    logClick( tab: string ) {
-        this.appInsights.logEvent( this._example, tab );
+    logClick(tab: string) {
+        this.appInsights.logEvent(this._example, tab);
     }
 
     async loadExample() {
@@ -99,7 +99,7 @@ export class ExampleViewerComponent implements OnInit {
         exampleFiles[containerPath] = exampleFiles[containerPath].replace(/hc-example/g, `hc-${this.example}-example`);
         const dependencies = JSON.parse(exampleFiles['package.json']).dependencies;
 
-        this.appInsights.logEvent( this._example, "StackBlitz");
+        this.appInsights.logEvent(this._example, 'StackBlitz');
 
         await stackblitz.openProject(
             {

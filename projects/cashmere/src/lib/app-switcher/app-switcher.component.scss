@@ -39,7 +39,7 @@
                     width: auto;
 
                     &.highlight-current {
-                        opacity:0.5;
+                        opacity: 0.5;
                     }
                 }
             }
@@ -67,7 +67,8 @@
         padding: 65px 0;
     }
 
-    .warning-ico, .empty-ico {
+    .warning-ico,
+    .empty-ico {
         width: 40px;
         height: 40px;
         opacity: 0.5;
