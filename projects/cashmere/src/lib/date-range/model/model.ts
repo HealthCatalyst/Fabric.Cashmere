@@ -20,6 +20,10 @@ export interface DateRangeOptions {
     presets?: Array<PresetItem>;
     /** Display format of date. See https://angular.io/api/common/DatePipe#pre-defined-format-options */
     format?: string;
+    /** Whether the date range pickers include the calendar, time selector, or both. Defaults to `date`. */
+    mode?: 'date' | 'time' | 'date-time';
+    /** If the time picker should use the 12 or 24 hour clock. Defaults to 12 */
+    hourCycle?: number;
     /** Exclude weekends in date picker selection */
     excludeWeekends?: boolean;
     /** Locale settings of dates */

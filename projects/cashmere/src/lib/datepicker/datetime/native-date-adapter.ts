@@ -193,6 +193,14 @@ export class NativeDateAdapter extends DateAdapter<Date> {
         return date.getDate();
     }
 
+    getHours(date: Date): number {
+        return date.getHours();
+    }
+
+    getMinutes(date: Date): number {
+        return date.getMinutes();
+    }
+
     getDayOfWeek(date: Date): number {
         return date.getDay();
     }
