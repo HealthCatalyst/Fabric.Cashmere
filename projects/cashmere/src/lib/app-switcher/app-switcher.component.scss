@@ -35,12 +35,12 @@
                 flex-direction: column;
                 align-items: center;
 
+                &.highlight-current {
+                    opacity: 0.5;
+                }
+
                 & > .thumbnail-img {
                     width: auto;
-
-                    &.highlight-current {
-                        opacity: 0.5;
-                    }
                 }
             }
 

@@ -5,15 +5,20 @@
             buttonStyle="link-inline"
             class="all-apps-link"
             [href]="appSwitcherService.allApplicationsUri"
-            target="_blank">View All
+            target="_blank">
+                View All
         </a>
     </h4>
 
     <ng-container *ngIf="applications?.length > 0">
         <div class="apps">
             <div class="app" *ngFor="let app of applications">
-                <a class="thumbnail"  [title]="app.Description" [attr.href]="linkIfNotMe(app)" target="_blank">
-                    <img class="thumbnail-img" [ngClass]="{'highlight-current': appIsMe(app)}" [height]="iconHeight" [src]="app.Icon" [ngStyle]="{'max-width': iconHeight + 'px'}">
+                <a class="thumbnail"
+                    [ngClass]="{'highlight-current': appIsMe(app)}"
+                    [title]="appIsMe(app) ? 'Current Application' : app.Description"
+                    [attr.href]="linkIfNotMe(app)"
+                    target="_blank">
+                        <img class="thumbnail-img" [height]="iconHeight" [src]="app.Icon" [ngStyle]="{'max-width': iconHeight + 'px'}">
                         <div class="title">{{app?.FriendlyName | ellipsis:18}}</div>
                 </a>
             </div>
