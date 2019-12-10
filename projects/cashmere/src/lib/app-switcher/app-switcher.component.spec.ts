@@ -43,7 +43,7 @@ describe('AppSwitcherComponent', () => {
             component.ngOnInit();
             tick();
             fixture.detectChanges();
-            const anchorElements = fixture.debugElement.queryAll(By.css('.thumbnail'));
+            const anchorElements = fixture.debugElement.queryAll(By.css('.hc-app-switcher-thumbnail'));
             expect(anchorElements[0].nativeElement.getAttribute('href')).toEqual(null);
             expect(component.applications.length).toEqual(2);
             expect(component.linkIfNotMe(component.applications[0])).toBeNull();
@@ -54,7 +54,7 @@ describe('AppSwitcherComponent', () => {
             component.ngOnInit();
             tick();
             fixture.detectChanges();
-            const anchorElements = fixture.debugElement.queryAll(By.css('.thumbnail'));
+            const anchorElements = fixture.debugElement.queryAll(By.css('.hc-app-switcher-thumbnail'));
             expect(anchorElements[1].nativeElement.getAttribute('href')).toEqual('http://anotherapp.com');
             expect(component.applications.length).toEqual(2);
             expect(component.linkIfNotMe(component.applications[1])).toEqual('http://anotherapp.com');

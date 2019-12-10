@@ -6,7 +6,7 @@
     width: 100%;
 }
 
-.popover-content {
+.hc-app-switcher {
     max-width: 410px;
     & > h4 {
         display: flex;
@@ -18,15 +18,15 @@
         border-bottom: 1px solid $gray-300;
     }
 
-    .all-apps-link {
+    .hc-all-apps-link {
         @include fontSize(13px);
     }
 
-    .apps {
+    .hc-app-switcher-apps {
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-start;
-        .app {
+        .hc-app-switcher-app {
             flex: 0 0 auto;
             & > a {
                 padding: 10px;
