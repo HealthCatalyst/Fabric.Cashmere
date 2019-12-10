@@ -1,9 +1,9 @@
-<div class="popover-content">
+<div class="hc-app-switcher">
     <h4>Applications
         <a hc-button
             *ngIf="appSwitcherService.allApplicationsUri"
             buttonStyle="link-inline"
-            class="all-apps-link"
+            class="hc-all-apps-link"
             [href]="appSwitcherService.allApplicationsUri"
             target="_blank">
                 View All
@@ -11,9 +11,9 @@
     </h4>
 
     <ng-container *ngIf="applications?.length > 0">
-        <div class="apps">
-            <div class="app" *ngFor="let app of applications">
-                <a class="thumbnail"
+        <div class="hc-app-switcher-apps">
+            <div class="hc-app-switcher-app" *ngFor="let app of applications">
+                <a class="hc-app-switcher-thumbnail"
                     [ngClass]="{'highlight-current': appIsMe(app)}"
                     [title]="appIsMe(app) ? 'Current Application' : app.Description"
                     [attr.href]="linkIfNotMe(app)"
