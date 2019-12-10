@@ -9,13 +9,13 @@ const supportedSizes = ['sm', 'md', 'lg'];
 
 export function validateStyleInput(style: string) {
     if (supportedStyles.indexOf(style) < 0) {
-        throw Error('Unsupported style input value: ' + style);
+        throw Error('Unsupported buttonStyle attribute value on ButtonComponent: ' + style);
     }
 }
 
 export function validateSizeInput(size: string) {
     if (supportedSizes.indexOf(size) < 0) {
-        throw Error('Unsupported size input value: ' + size);
+        throw Error('Unsupported size attribute value on ButtonComponent: ' + size);
     }
 }
 
