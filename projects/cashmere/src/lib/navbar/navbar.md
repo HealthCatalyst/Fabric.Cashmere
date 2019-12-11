@@ -25,26 +25,26 @@ You may not have all these items available. However, include what you have in th
 ```html
 <hc-pop #helpMenu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
     <div hcMenu>
-        <button hcMenuItem>
+        <a hcMenuItem href="http://example.com" target="_blank">
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
             <span hcMenuText>Read the docs</span>
-        </button>
-        <button hcMenuItem>
+        </a>
+        <a hcMenuItem href="http://example.com" target="_blank">
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-lightbulb-o"></hc-icon>
             <span hcMenuText>Request a feature</span>
-        </button>
-        <button hcMenuItem>
+        </a>
+        <a hcMenuItem href="http://example.com" target="_blank">
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-users"></hc-icon>
             <span hcMenuText>Ask the community</span>
-        </button>
-        <button hcMenuItem>
+        </a>
+        <a hcMenuItem href="http://example.com" target="_blank">
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bullhorn"></hc-icon>
             <span hcMenuText>Find out what's new</span>
-        </button>
-        <button hcMenuItem>
+        </a>
+        <a hcMenuItem href="http://example.com" target="_blank">
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-comments"></hc-icon>
             <span hcMenuText>Send feedback</span>
-        </button>
+        </a>
         <div hcMenuItem hcDivider></div>
         <button hcMenuItem>
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-info-circle"></hc-icon>
