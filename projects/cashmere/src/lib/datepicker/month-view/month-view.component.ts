@@ -162,7 +162,12 @@ export class MonthViewComponent implements AfterContentInit {
         if (this._selectedDate !== date) {
             const selectedYear = this._dateAdapter.getYear(this.activeDate);
             const selectedMonth = this._dateAdapter.getMonth(this.activeDate);
-            const selectedDate = this._dateAdapter.createDate(selectedYear, selectedMonth, date);
+            let selectedDate = this._dateAdapter.createDate(selectedYear, selectedMonth, date);
+
+            if ( this._selected ) {
+                selectedDate.setHours( this._selected.getHours() );
+                selectedDate.setMinutes( this._selected.getMinutes() );
+            }
 
             this.selectedChange.emit(selectedDate);
         }

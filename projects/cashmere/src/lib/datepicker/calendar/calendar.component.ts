@@ -26,6 +26,7 @@ import {yearsPerPage, MultiYearViewComponent} from '../multi-year-view/multi-yea
 import {HcCalendarCellCssClasses} from '../calendar-body/calendar-body.component';
 import {MonthViewComponent} from '../month-view/month-view.component';
 import {YearViewComponent} from '../year-view/year-view.component';
+import {FormControl} from '@angular/forms';
 
 // tslint:disable:no-use-before-declare
 /**
@@ -174,6 +175,9 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     /** A portal containing the header component type for this calendar. */
     _calendarHeaderPortal: Portal<any>;
 
+    /** Stores the current am/pm value */
+    _period: FormControl = new FormControl('am');
+
     private _intlChanges: Subscription;
 
     /**
@@ -197,6 +201,24 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     @Input()
     startView: CalendarViewComponent = 'month';
 
+    /** Whether the calendar should show calendar, time-picker, or both */
+    @Input()
+    mode: 'date' | 'time' | 'date-time' = 'date';
+
+    /** Whether the time picker should display a 12-hour or 24-clock. Accepts 12 or 24. Defaults to 12. */
+    @Input()
+    get hourCycle(): string | number {
+        return this._hourCycle;
+    }
+    set hourCycle(value: string | number) {
+        if ( +value === 12 || +value === 24 ) {
+            this._hourCycle = +value;
+        } else if ( value ) {
+            throw Error('Unsupported hourCycle value: ' + value + '. Accepted values are 12 or 24.');
+        }
+    }
+    _hourCycle: number = 12;
+
     /** The currently selected date. */
     @Input()
     get selected(): D | null {
@@ -204,6 +226,9 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
     set selected(value: D | null) {
         this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
+        if ( this._selected ) {
+            this._period.setValue( (this._selected.getHours() > 11) ? 'pm' : 'am' );
+        }
     }
     private _selected: D | null;
 
@@ -297,6 +322,72 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
      */
     stateChanges = new Subject<void>();
 
+    /** A string containing the value of minutes for the current date */
+    get minutes(): string | null {
+        if ( this.selected ) {
+            let minVal = this.selected.getMinutes();
+            return ( minVal < 10 ) ? "0" + minVal : minVal.toString();
+        } else {
+            return this.selected;
+        }
+    }
+    set minutes(value: string | null) {
+        if ( value && !isNaN(+value)) {
+            let tempDate = (this.selected) ? new Date(this.selected.getTime()) : new Date();
+            tempDate.setMinutes( +value );
+            this.selectedChange.emit(tempDate);
+            this._userSelected();
+        }
+    }
+
+    /** A string containing the hour for the current date */
+    get hours(): string | null {
+        if ( this.selected ) {
+            let hourVal = this.selected.getHours();
+            if ( this._hourCycle === 12 ) {
+                if ( hourVal > 11 ) {
+                    return (hourVal === 12) ? hourVal.toString() : (hourVal - 12).toString();
+                } else {
+                    return ( hourVal === 0 ) ? "12" : hourVal.toString();
+                }
+            } else {
+                return hourVal.toString();
+            }
+        } else {
+            return this.selected;
+        }
+    }
+    set hours(value: string | null) {
+        if ( value && !isNaN(+value)) {
+            let hourVal: number = +value;
+            if ( this._hourCycle === 12 ) {
+                if ( this._period.value === 'pm' && hourVal !== 12 ) {
+                    hourVal += 12;
+                } else if ( this._period.value === 'am' && hourVal === 12 ) {
+                    hourVal = 0;
+                }
+            }
+            let tempDate = (this.selected) ? new Date(this.selected.getTime()) : new Date();
+            tempDate.setHours( hourVal );
+            this.selectedChange.emit(tempDate);
+            this._userSelected();
+        }
+    }
+
+    _periodChange() {
+        if (this.selected) {
+            let tempDate = new Date(this.selected.getTime());
+            let curHours = tempDate.getHours();
+            if ( this._period.value === 'pm' ) {
+                tempDate.setHours( curHours + 12 );
+            } else {
+                tempDate.setHours( curHours - 12 );
+            }
+            this.selectedChange.emit(tempDate);
+            this._userSelected();
+        }
+    }
+
     constructor(
         private _intl: HcDatepickerIntl,
         @Optional() private _dateAdapter: DateAdapter<D>,
@@ -357,7 +448,9 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
 
     focusActiveCell() {
-        this._getCurrentViewComponent()._focusActiveCell();
+        if ( this.mode !== 'time' ) {
+            this._getCurrentViewComponent()._focusActiveCell();
+        }
     }
 
     /** Updates today's date after an update of the active date */
@@ -423,5 +516,59 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     /** Returns the component instance that corresponds to the current calendar view. */
     private _getCurrentViewComponent() {
         return this.monthView || this.yearView || this.multiYearView;
+    }
+
+    _hoursUp() {
+        if ( !this.hours ) {
+            this.hours = this._hourCycle > 12 ? "0" : "1";
+        } else {
+            let curHour = +this.hours;
+            curHour++;
+            const tempCycle = this._hourCycle > 12 ? 23 : 12;
+            if ( curHour > tempCycle ) {
+                curHour = tempCycle;
+            }
+            this.hours = curHour.toString();
+        }
+    }
+
+    _hoursDown() {
+        if ( !this.hours ) {
+            this.hours = this._hourCycle > 12 ? "23" : "12";
+        } else {
+            let curHour = +this.hours;
+            curHour--;
+            const tempCycle = this._hourCycle > 12 ? 0 : 1;
+            if ( curHour < tempCycle ) {
+                curHour = tempCycle;
+            }
+            this.hours = curHour.toString();
+        }
+    }
+
+    _minutesUp() {
+        if ( !this.minutes ) {
+            this.minutes = "00";
+        } else {
+            let curMin = +this.minutes;
+            curMin++;
+            if ( curMin > 59 ) {
+                curMin = 59;
+            }
+            this.minutes = curMin.toString();
+        }
+    }
+
+    _minutesDown() {
+        if ( !this.minutes ) {
+            this.minutes = "59";
+        } else {
+            let curMin = +this.minutes;
+            curMin--;
+            if ( curMin < 1 ) {
+                curMin = 1;
+            }
+            this.minutes = curMin.toString();
+        }
     }
 }

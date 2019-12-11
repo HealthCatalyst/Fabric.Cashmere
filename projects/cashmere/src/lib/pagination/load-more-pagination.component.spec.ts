@@ -43,7 +43,7 @@ describe('PaginationComponent', () => {
         });
         it('should throw an error', () => {
             const wrap = () => (component.buttonStyle = 'not-a-valid-style');
-            expect(wrap).toThrowError('Unsupported style input value: not-a-valid-style');
+            expect(wrap).toThrowError('Unsupported buttonStyle attribute value on ButtonComponent: not-a-valid-style');
         });
     });
 

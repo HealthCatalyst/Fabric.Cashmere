@@ -38,4 +38,11 @@ export class DatepickerContentComponent implements AfterViewInit {
     ngAfterViewInit() {
         this._calendar.focusActiveCell();
     }
+
+    /** Close the datepicker automatically on selection only if in date mode */
+    autoClose() {
+        if ( this.datepicker.mode === 'date' ) {
+            this.datepicker.close();
+        }
+    }
 }

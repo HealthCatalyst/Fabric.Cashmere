@@ -174,6 +174,10 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     @Output()
     readonly dateInput: EventEmitter<HcDatepickerInputEvent> = new EventEmitter<HcDatepickerInputEvent>();
 
+    /** Stores the mode & hourCycle for the inputs of the date range (which don't have a DatePickerComponent) */
+    @Input() _mode: string;
+    @Input() _hourCycle: number;
+
     /** Emits when the value changes (either due to user input or programmatic change). */
     _valueChange = new EventEmitter<D | null>();
 
@@ -346,7 +350,30 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
 
     /** Formats a value and sets it on the input element. */
     private _formatValue(value: D | null) {
-        this._elementRef.nativeElement.value = value ? this._dateAdapter.format(value, this._dateFormats.display.dateInput) : '';
+        let dateFormat: any = this._dateFormats.display.dateInput;
+        let tempMode: string = 'date';
+        let tempCycle: number = 12;
+
+        if ( this._datepicker ) {
+            tempMode = this._datepicker.mode;
+            tempCycle = +this._datepicker.hourCycle;
+        } else if ( this._mode ) {
+            tempMode = this._mode;
+            if ( this._hourCycle ) {
+                tempCycle = this._hourCycle;
+            }
+        }
+
+        if (tempMode === 'time') {
+            let tempFormat = this._dateFormats.display.timeInput;
+            tempFormat['hour12'] = tempCycle === 12;
+            dateFormat = tempFormat;
+        } else if (tempMode === 'date-time') {
+            let tempFormat = this._dateFormats.display.dateTimeInput;
+            tempFormat['hour12'] = tempCycle === 12;
+            dateFormat = tempFormat;
+        }
+        this._elementRef.nativeElement.value = value ? this._dateAdapter.format(value, dateFormat) : '';
     }
 
     /**

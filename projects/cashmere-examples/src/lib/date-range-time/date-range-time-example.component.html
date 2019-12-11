@@ -1,0 +1,16 @@
+<div class="demo-box">
+    <button
+        hc-button
+        hcDateRange
+        title="Time Range"
+        buttonStyle="link"
+        popperPlacement="bottom"
+        (selectedDateRangeChanged)="updateRange($event)"
+        [selectedDate]="range"
+        [options]="options"
+        #pickerOne
+    >
+        <span class="label">Time Range:</span> <span class="value"> {{ range.fromDate | date:'h:mm a' }} - {{ range.toDate | date:'h:mm a' }} </span>
+        <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="icon-right" hcIconSm></hc-icon>
+    </button>
+</div>

@@ -9,6 +9,8 @@ export class ConfigStoreService {
     private defaultOptions: DateRangeOptions = {
         presets: [],
         format: 'medium',
+        mode: 'date',
+        hourCycle: 12,
         excludeWeekends: false,
         locale: 'en-us',
         applyLabel: 'Apply',
