@@ -3,7 +3,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 @Component({
     selector: 'app-root',
     template: '<router-outlet></router-outlet>',
-    styleUrls: [ "../styles.scss"],
+    styleUrls: ['../styles.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {}

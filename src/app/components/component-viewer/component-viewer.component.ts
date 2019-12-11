@@ -22,12 +22,15 @@ export class ComponentViewerComponent implements OnInit {
             .subscribe(docItem => {
                 this.docItem = docItem;
 
-                let availableSections = ['API'];
+                let availableSections: string[] = [];
 
                 if (this.docItem) {
                     const examples = this.docItem.examples;
                     if (examples && examples.length > 0) {
-                        availableSections = ['Examples', 'API'];
+                        availableSections = ['Examples'];
+                    }
+                    if (!this.docItem.hideApi) {
+                        availableSections.push('API');
                     }
                     if (this.docItem.usageDoc) {
                         availableSections.push('Usage');

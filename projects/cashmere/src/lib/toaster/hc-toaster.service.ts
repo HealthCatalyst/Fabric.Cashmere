@@ -5,7 +5,7 @@ import {HcToastComponent} from './hc-toast.component';
 import {HcToastOptions} from './hc-toast-options';
 import {HcToastRef} from './hc-toast-ref';
 import {filter, take, takeUntil} from 'rxjs/operators';
-import { Subject, Observable } from 'rxjs';
+import {Subject, Observable} from 'rxjs';
 
 export type ComponentSetup<T> = Partial<T> | ((instance: T) => void);
 export type ToastContentType<T> = Type<T> | TemplateRef<any>;

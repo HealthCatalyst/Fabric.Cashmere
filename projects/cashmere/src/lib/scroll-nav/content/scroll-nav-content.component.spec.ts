@@ -59,31 +59,34 @@ describe('HcScrollNavContentComponent', () => {
         testApp.detectChanges();
     }));
 
-  it("should create a content component", () => {
-    expect(testApp.contentComponent).toBeTruthy();
-  });
-
-  it("should create a link component", () => {
-    expect(testApp.linksComponent).toBeTruthy();
-  });
-
-  it("should be correct number of scroll targets", () => {
-    expect(testApp.contentComponent._scrollTargets.length).toBe(3);
-  });
-
-  it("should be a particular class on each hcScrollTarget", () => {
-    expect(testApp.contentComponent._scrollTargets[0].classList.contains("hc-scroll-nav-target")).toBeTruthy();
-    expect(testApp.contentComponent._scrollTargets[1].classList.contains("hc-scroll-nav-target")).toBeTruthy();
-    expect(testApp.contentComponent._scrollTargets[2].classList.contains("hc-scroll-nav-target")).toBeTruthy();
-  });
-
-  it("should call _setActiveClassById in nav when scrolling", () => {
-    let setActiveClassSpy: jasmine.Spy = spyOn(testApp.contentComponent.nav, "_setActiveClassById");
-
-    testApp.contentComponent._cdkScrollableElement.elementScrolled().pipe(take(1)).subscribe(() => {
-      expect(setActiveClassSpy).toHaveBeenCalled();
+    it('should create a content component', () => {
+        expect(testApp.contentComponent).toBeTruthy();
     });
 
-    testApp.contentComponent._cdkScrollableElement.scrollTo({ "top": 2000 });
-  });
+    it('should create a link component', () => {
+        expect(testApp.linksComponent).toBeTruthy();
+    });
+
+    it('should be correct number of scroll targets', () => {
+        expect(testApp.contentComponent._scrollTargets.length).toBe(3);
+    });
+
+    it('should be a particular class on each hcScrollTarget', () => {
+        expect(testApp.contentComponent._scrollTargets[0].classList.contains('hc-scroll-nav-target')).toBeTruthy();
+        expect(testApp.contentComponent._scrollTargets[1].classList.contains('hc-scroll-nav-target')).toBeTruthy();
+        expect(testApp.contentComponent._scrollTargets[2].classList.contains('hc-scroll-nav-target')).toBeTruthy();
+    });
+
+    it('should call _setActiveClassById in nav when scrolling', () => {
+        let setActiveClassSpy: jasmine.Spy = spyOn(testApp.contentComponent.nav, '_setActiveClassById');
+
+        testApp.contentComponent._cdkScrollableElement
+            .elementScrolled()
+            .pipe(take(1))
+            .subscribe(() => {
+                expect(setActiveClassSpy).toHaveBeenCalled();
+            });
+
+        testApp.contentComponent._cdkScrollableElement.scrollTo({top: 2000});
+    });
 });

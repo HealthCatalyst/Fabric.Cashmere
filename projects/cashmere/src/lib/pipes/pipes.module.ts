@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 
-import {EllipsisPipe} from './ellipsis.pipe';
+import {EllipsisPipeModule} from './ellipsis/ellipsis-pipe.module';
 
 @NgModule({
-    declarations: [EllipsisPipe],
-    exports: [EllipsisPipe]
+    imports: [EllipsisPipeModule],
+    exports: [EllipsisPipeModule]
 })
 export class PipesModule {}

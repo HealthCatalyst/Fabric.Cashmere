@@ -1,9 +1,9 @@
-import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output } from '@angular/core';
-import { EventEmitter, TemplateRef } from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output} from '@angular/core';
+import {EventEmitter, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 export class TabChangeEvent {
     constructor(public index: number, public tab: TabComponent) {}
@@ -101,14 +101,12 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     private setTabDirection(): void {
-        setTimeout(() => this._tabs.forEach(t => t._direction = this.direction));
+        setTimeout(() => this._tabs.forEach(t => (t._direction = this.direction)));
     }
 
     private subscribeToTabClicks(): void {
         this._stopTabSubscriptionSubject.next();
-        this._tabs.forEach(t => t.tabClick
-            .pipe(takeUntil(this._stopTabSubscriptionSubject))
-            .subscribe(() => this._setActive(t)));
+        this._tabs.forEach(t => t.tabClick.pipe(takeUntil(this._stopTabSubscriptionSubject)).subscribe(() => this._setActive(t)));
     }
 
     /** Sets the currently selected tab by either its numerical index or `TabComponent` object  */

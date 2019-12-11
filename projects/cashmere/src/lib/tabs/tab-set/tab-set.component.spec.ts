@@ -2,8 +2,8 @@ import {TabComponent} from '../tab/tab.component';
 import {TabSetComponent, TabChangeEvent} from './tab-set.component';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
-import { Component } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import {Component} from '@angular/core';
+import {By} from '@angular/platform-browser';
 
 const expectedDirection: string = 'horizontal';
 
@@ -25,7 +25,6 @@ const expectedDirection: string = 'horizontal';
 export class TestTabSetComponent {}
 
 describe('TabSetComponent', () => {
-
     let component: TabSetComponent;
     let fixture: ComponentFixture<TestTabSetComponent>;
 
@@ -66,22 +65,25 @@ describe('TabSetComponent', () => {
 
         it('should throw for unsupported direction', () => {
             const invalidDirection = 'North';
-            expect(() => component.direction = invalidDirection)
-                .toThrow(new Error(`Unsupported tab direction value: ${invalidDirection}`));
+            expect(() => (component.direction = invalidDirection)).toThrow(
+                new Error(`Unsupported tab direction value: ${invalidDirection}`)
+            );
         });
     });
 
     describe('tabClick', () => {
         it('should set clicked tab to active and other tabs to inactive', () => {
-            component._tabs.forEach(t => t._active = true);
+            component._tabs.forEach(t => (t._active = true));
             component._tabs.last.tabClick.emit();
 
             expect(component._tabs.last._active).toBeTruthy();
-            component._tabs.toArray().slice(0, 2)
+            component._tabs
+                .toArray()
+                .slice(0, 2)
                 .forEach(t => expect(t._active).toBeFalsy());
         });
 
-        it('should set content to clicked tab\'s content', () => {
+        it("should set content to clicked tab's content", () => {
             component.tabContent = component._tabs.last.tabContent;
             component._tabs.first.tabClick.emit();
 

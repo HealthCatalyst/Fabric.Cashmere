@@ -21,7 +21,11 @@ import typescript from 'highlight.js/lib/languages/typescript';
  * NOTE: The name of each language must match the file name its imported from
  */
 export function hljsLanguages() {
-    return [{name: 'typescript', func: typescript}, {name: 'scss', func: scss}, {name: 'xml', func: xml}];
+    return [
+        {name: 'typescript', func: typescript},
+        {name: 'scss', func: scss},
+        {name: 'xml', func: xml}
+    ];
 }
 
 @NgModule({

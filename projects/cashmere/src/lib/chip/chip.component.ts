@@ -48,7 +48,7 @@ export class ChipComponent {
     }
 
     /** Called on a click of the X close button */
-    _closeClick( e: MouseEvent ) {
+    _closeClick(e: MouseEvent) {
         this.closeClick.emit(e);
     }
 

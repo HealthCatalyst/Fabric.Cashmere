@@ -3,10 +3,10 @@ import {Injectable} from '@angular/core';
 export interface DocItem {
     id: string;
     name: string;
-    // Category options are: 'forms', 'nav', 'layout', 'buttons', 'popups', 'table'
-    category: string;
+    category: 'forms' | 'nav' | 'layout' | 'buttons' | 'popups' | 'table' | 'pipes';
     examples?: string[];
     usageDoc?: boolean;
+    hideApi?: boolean;
 }
 
 const docs: DocItem[] = [
@@ -43,7 +43,7 @@ const docs: DocItem[] = [
         id: 'date-range',
         name: 'DateRange',
         category: 'forms',
-        examples: ['date-range'],
+        examples: ['date-range', 'date-range-time'],
         usageDoc: true
     },
     {
@@ -52,6 +52,7 @@ const docs: DocItem[] = [
         category: 'layout',
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
     },
+    {id: 'ellipsis-pipe', name: 'Ellipsis', category: 'pipes', usageDoc: true, hideApi: true, examples: ['ellipsis-overview']},
     {id: 'form-field', name: 'Form Field', category: 'forms', examples: ['form-field-overview']},
     {id: 'icon', name: 'Icon', category: 'buttons', examples: ['icon-overview']},
     {
@@ -82,7 +83,7 @@ const docs: DocItem[] = [
         id: 'pop',
         name: 'Popover',
         category: 'popups',
-        examples: ['popover-simple', 'popover-menu', 'popover-tooltip', 'popover-right-click', 'popover-overview'  ],
+        examples: ['popover-simple', 'popover-menu', 'popover-tooltip', 'popover-right-click', 'popover-overview'],
         usageDoc: true
     },
     {

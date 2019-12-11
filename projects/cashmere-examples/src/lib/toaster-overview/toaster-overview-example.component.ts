@@ -25,7 +25,7 @@ export class ToasterOverviewExampleComponent {
 
     showToast(content: TemplateRef<any>) {
         let showProgress = false;
-        if ( parseInt(this.toastProgress, 10) > 0 ) {
+        if (parseInt(this.toastProgress, 10) > 0) {
             showProgress = true;
         }
 
@@ -67,7 +67,7 @@ export class ToasterOverviewExampleComponent {
             toastOutput = this.toasterService.addToast(options);
         }
 
-        if ( this.toastProgress === '2' ) {
+        if (this.toastProgress === '2') {
             toastOutput.progress = this.progressValue;
         }
     }

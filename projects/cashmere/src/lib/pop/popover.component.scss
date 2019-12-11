@@ -12,130 +12,140 @@ $cdk-z-index-overlay: $zindex-cdk-overlay;
 @include cdk-overlay();
 
 .hc-pop-container {
+    &.hc-pop-before.hc-pop-above {
+        transform-origin: right bottom;
 
-  &.hc-pop-before.hc-pop-above {
-    transform-origin: right bottom;
-
-    [dir='rtl'] & {
-      transform-origin: left bottom;
+        [dir='rtl'] & {
+            transform-origin: left bottom;
+        }
     }
-  }
 
-  &.hc-pop-before.hc-pop-center {
-    transform-origin: right center;
+    &.hc-pop-before.hc-pop-center {
+        transform-origin: right center;
 
-    [dir='rtl'] & {
-      transform-origin: left center;
+        [dir='rtl'] & {
+            transform-origin: left center;
+        }
     }
-  }
 
-  &.hc-pop-before.hc-pop-below {
-    transform-origin: right top;
+    &.hc-pop-before.hc-pop-below {
+        transform-origin: right top;
 
-    [dir='rtl'] & {
-      transform-origin: left top;
+        [dir='rtl'] & {
+            transform-origin: left top;
+        }
     }
-  }
 
-  &.hc-pop-center.hc-pop-above {
-    transform-origin: center bottom;
-  }
-
-  &.hc-pop-center.hc-pop-below {
-    transform-origin: center top;
-  }
-
-  &.hc-pop-after.hc-pop-above {
-    transform-origin: left bottom;
-
-    [dir='rtl'] & {
-      transform-origin: right bottom;
+    &.hc-pop-center.hc-pop-above {
+        transform-origin: center bottom;
     }
-  }
 
-  &.hc-pop-after.hc-pop-center {
-    transform-origin: left center;
-
-    [dir='rtl'] & {
-      transform-origin: right center;
+    &.hc-pop-center.hc-pop-below {
+        transform-origin: center top;
     }
-  }
 
-  &.hc-pop-after.hc-pop-below {
-    transform-origin: left top;
+    &.hc-pop-after.hc-pop-above {
+        transform-origin: left bottom;
 
-    [dir='rtl'] & {
-      transform-origin: right top;
+        [dir='rtl'] & {
+            transform-origin: right bottom;
+        }
     }
-  }
 
-  &.hc-pop-container-basic {
-    background-color: #fff;
-    border: 1px solid $gray-300;
-    color: #333;
-    padding: 12px;
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-  }
+    &.hc-pop-after.hc-pop-center {
+        transform-origin: left center;
 
-  // Arrows
-  $popover-arrow-width: 10px;
+        [dir='rtl'] & {
+            transform-origin: right center;
+        }
+    }
 
-  &.hc-pop-show-arrow {
-    .hc-pop-arrow {
-        display: block;
-        width: $popover-arrow-width;
-        height: $popover-arrow-width;
-        transform: rotate(45deg);
-        border-style: solid;
-        border-width: 1px;
+    &.hc-pop-after.hc-pop-below {
+        transform-origin: left top;
+
+        [dir='rtl'] & {
+            transform-origin: right top;
+        }
+    }
+
+    &.hc-pop-container-basic {
         background-color: #fff;
-        position: absolute;
-      }
+        border: 1px solid $gray-300;
+        color: #333;
+        padding: 12px;
+        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+    }
 
-      &.hc-pop-arrow-y-above, &.hc-pop-arrow-y-below {
-        margin: $popover-arrow-width - 4px;
-        margin-left: 0;
-        margin-right: 0;
-        position: relative;
-      }
-    
-      &.hc-pop-arrow-x-before, &.hc-pop-arrow-x-after {
-        margin: $popover-arrow-width - 4px;
-        margin-top: 0;
-        margin-bottom: 0;
-        position: relative;
-      }
-  }
+    // Arrows
+    $popover-arrow-width: 10px;
 
-  &.hc-pop-arrow-x-center .hc-pop-arrow { left: calc(50% - #{$popover-arrow-width - 4px}); }
-  &.hc-pop-arrow-x-start .hc-pop-arrow { left: 5px; }
-  &.hc-pop-arrow-x-end .hc-pop-arrow { left: calc(100% - #{$popover-arrow-width * 2 - 5px}); }
+    &.hc-pop-show-arrow {
+        .hc-pop-arrow {
+            display: block;
+            width: $popover-arrow-width;
+            height: $popover-arrow-width;
+            transform: rotate(45deg);
+            border-style: solid;
+            border-width: 1px;
+            background-color: #fff;
+            position: absolute;
+        }
 
-  &.hc-pop-arrow-y-center .hc-pop-arrow { top: calc(50% - #{$popover-arrow-width - 4px}); }
-  &.hc-pop-arrow-y-start .hc-pop-arrow { top: 5px; }
-  &.hc-pop-arrow-y-end .hc-pop-arrow { top: calc(100% - #{$popover-arrow-width * 2 - 5px}); }
+        &.hc-pop-arrow-y-above,
+        &.hc-pop-arrow-y-below {
+            margin: $popover-arrow-width - 4px;
+            margin-left: 0;
+            margin-right: 0;
+            position: relative;
+        }
 
-  &.hc-pop-arrow-y-above .hc-pop-arrow {
-    border-color: transparent $gray-300 $gray-300 transparent;
-    bottom: -#{$popover-arrow-width - 4px};
-  }
+        &.hc-pop-arrow-x-before,
+        &.hc-pop-arrow-x-after {
+            margin: $popover-arrow-width - 4px;
+            margin-top: 0;
+            margin-bottom: 0;
+            position: relative;
+        }
+    }
 
-  &.hc-pop-arrow-y-below .hc-pop-arrow {
-    border-color: $gray-300 transparent transparent $gray-300;
-    top: -#{$popover-arrow-width - 4px};
-  }
+    &.hc-pop-arrow-x-center .hc-pop-arrow {
+        left: calc(50% - #{$popover-arrow-width - 4px});
+    }
+    &.hc-pop-arrow-x-start .hc-pop-arrow {
+        left: 5px;
+    }
+    &.hc-pop-arrow-x-end .hc-pop-arrow {
+        left: calc(100% - #{$popover-arrow-width * 2 - 5px});
+    }
 
-  &.hc-pop-arrow-x-before .hc-pop-arrow {
-    border-color: $gray-300 $gray-300 transparent transparent;
-    right: -#{$popover-arrow-width - 4px};
-  }
+    &.hc-pop-arrow-y-center .hc-pop-arrow {
+        top: calc(50% - #{$popover-arrow-width - 4px});
+    }
+    &.hc-pop-arrow-y-start .hc-pop-arrow {
+        top: 5px;
+    }
+    &.hc-pop-arrow-y-end .hc-pop-arrow {
+        top: calc(100% - #{$popover-arrow-width * 2 - 5px});
+    }
 
-  &.hc-pop-arrow-x-after .hc-pop-arrow {
-    border-color: transparent transparent $gray-300 $gray-300;
-    left: -#{$popover-arrow-width - 4px};
-  }
+    &.hc-pop-arrow-y-above .hc-pop-arrow {
+        border-color: transparent $gray-300 $gray-300 transparent;
+        bottom: -#{$popover-arrow-width - 4px};
+    }
+
+    &.hc-pop-arrow-y-below .hc-pop-arrow {
+        border-color: $gray-300 transparent transparent $gray-300;
+        top: -#{$popover-arrow-width - 4px};
+    }
+
+    &.hc-pop-arrow-x-before .hc-pop-arrow {
+        border-color: $gray-300 $gray-300 transparent transparent;
+        right: -#{$popover-arrow-width - 4px};
+    }
+
+    &.hc-pop-arrow-x-after .hc-pop-arrow {
+        border-color: transparent transparent $gray-300 $gray-300;
+        left: -#{$popover-arrow-width - 4px};
+    }
 }
-
-
-

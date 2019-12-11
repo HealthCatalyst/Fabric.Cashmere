@@ -73,7 +73,9 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterContentInit 
 
     @HostListener('window:resize')
     _navResize() {
-        if (this._navbarMore) { this._navbarMore.closePopover(); }
+        if (this._navbarMore) {
+            this._navbarMore.closePopover();
+        }
         this._moreList = [];
 
         // If links is zero the page is smaller than the first responsive breakpoint
@@ -200,6 +202,8 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterContentInit 
     }
 
     _moreClick() {
-        if (this._navbarMore) { this._navbarMore.closePopover(); }
+        if (this._navbarMore) {
+            this._navbarMore.closePopover();
+        }
     }
 }

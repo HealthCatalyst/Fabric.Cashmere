@@ -42,7 +42,10 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     @Output()
     change: EventEmitter<RadioButtonChangeEvent> = new EventEmitter<RadioButtonChangeEvent>();
     /** A list of all the radio buttons included in the group */
-    @ContentChildren(forwardRef(() => RadioButtonComponent), {descendants: true})
+    @ContentChildren(
+        forwardRef(() => RadioButtonComponent),
+        {descendants: true}
+    )
     radios: QueryList<RadioButtonComponent>;
     private _value: any = null;
     private _uniqueName = `hc-radio-group-${nextUniqueId++}`;

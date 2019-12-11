@@ -7,5 +7,4 @@ import {Component} from '@angular/core';
     selector: 'hc-popover-tooltip-example',
     templateUrl: 'popover-tooltip-example.component.html'
 })
-export class PopoverTooltipExampleComponent {
-}
+export class PopoverTooltipExampleComponent {}

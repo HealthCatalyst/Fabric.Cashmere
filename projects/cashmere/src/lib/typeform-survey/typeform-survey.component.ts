@@ -1,4 +1,4 @@
-import {Component, Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 export function throwErrorForMissingSurveyUri() {
     throw Error(`SurveyUri must be specified on element hc-typeform-survey`);
@@ -27,13 +27,23 @@ export class TypeformSurveyComponent {
     /**
      * TypeForm survey URI you want to use. Example: https://somecompany.typeform.com/to/surveyId?parameter=parametervalue
      */
-    @Input() public set surveyUri(uri: string) { this._surveyUri = uri; this.refreshFullUri(); }
-    public get surveyUri(): string { return this._surveyUri; }
+    @Input() public set surveyUri(uri: string) {
+        this._surveyUri = uri;
+        this.refreshFullUri();
+    }
+    public get surveyUri(): string {
+        return this._surveyUri;
+    }
     /**
      * App version which will be passed to the survey in a hidden field. Ensures you know what version the feedback is referencing.
      */
-    @Input() public set appVersion(version: string) { this._appVersion = version; this.refreshFullUri(); }
-    public get appVersion(): string { return this._appVersion; }
+    @Input() public set appVersion(version: string) {
+        this._appVersion = version;
+        this.refreshFullUri();
+    }
+    public get appVersion(): string {
+        return this._appVersion;
+    }
     public _fullUri: string;
     private _surveyUri: string;
     private _appVersion: string;

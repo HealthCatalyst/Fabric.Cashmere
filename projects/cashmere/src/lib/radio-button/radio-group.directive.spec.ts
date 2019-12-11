@@ -221,5 +221,3 @@ describe('RadioGroups with ngModel', () => {
         expect(component.isGood).toBe('two');
     });
 });
-
-

@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import {Component} from '@angular/core';
+import {By} from '@angular/platform-browser';
 
 import {HcScrollNavComponent} from './scroll-nav.component';
 import {HcScrollNavContentComponent} from '../content/scroll-nav-content.component';

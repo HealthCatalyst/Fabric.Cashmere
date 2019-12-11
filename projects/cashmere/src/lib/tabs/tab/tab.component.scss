@@ -6,7 +6,7 @@
 
 .hc-tab-vertical {
     @include hc-tab-vertical();
-    
+
     &.active {
         @include hc-tab-vertical-active();
     }
