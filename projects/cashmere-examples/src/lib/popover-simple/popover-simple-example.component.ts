@@ -7,5 +7,4 @@ import {Component} from '@angular/core';
     selector: 'hc-popover-simple-example',
     templateUrl: 'popover-simple-example.component.html'
 })
-export class PopoverSimpleExampleComponent {
-}
+export class PopoverSimpleExampleComponent {}

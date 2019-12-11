@@ -262,7 +262,10 @@ information about `HC_DATE_FORMATS`. <!-- TODO(mmalerba): Add a guide about this
 ```ts
 @NgModule({
     imports: [HcDatepickerModule],
-    providers: [{provide: DateAdapter, useClass: MyDateAdapter}, {provide: HC_DATE_FORMATS, useValue: MY_DATE_FORMATS}]
+    providers: [
+        {provide: DateAdapter, useClass: MyDateAdapter},
+        {provide: HC_DATE_FORMATS, useValue: MY_DATE_FORMATS}
+    ]
 })
 export class MyApp {}
 ```

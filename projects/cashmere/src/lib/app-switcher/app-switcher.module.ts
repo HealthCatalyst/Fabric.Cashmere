@@ -4,14 +4,16 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {AppSwitcherComponent} from './app-switcher.component';
 import {PopModule} from '../pop/popover.module';
+import {ProgressIndicatorsModule} from '../progress-indicators/progress-indicators.module';
 import {AppSwitcherService} from './app-switcher.service';
+import {WorkTrackerService} from '../shared/work-tracker.service';
 import {PipesModule} from '../pipes/pipes.module';
 import {IAppSwitcherConfig, APP_SWITCHER_CONFIG, APP_SWITCHER_SERVICE} from './app-switcher-interfaces';
 import {AppSwitcherLinksComponent} from './app-switcher-application-link/app-switcher-links.component';
 import {IconModule} from '../icon/icon.module';
 
 @NgModule({
-    imports: [CommonModule, PopModule, HttpClientModule, PipesModule, IconModule],
+    imports: [CommonModule, PopModule, HttpClientModule, PipesModule, IconModule, ProgressIndicatorsModule],
     declarations: [AppSwitcherComponent, AppSwitcherLinksComponent],
     exports: [AppSwitcherComponent, AppSwitcherLinksComponent],
     entryComponents: [AppSwitcherComponent],
@@ -19,7 +21,8 @@ import {IconModule} from '../icon/icon.module';
         {
             provide: APP_SWITCHER_SERVICE,
             useClass: AppSwitcherService
-        }
+        },
+        WorkTrackerService
     ]
 })
 export class AppSwitcherModule {

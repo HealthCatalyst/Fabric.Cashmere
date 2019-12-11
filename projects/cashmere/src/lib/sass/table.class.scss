@@ -3,7 +3,8 @@
 .hc-table {
     @include hc-table();
 
-    td, th {
+    td,
+    th {
         @include hc-table-cell();
     }
 
@@ -33,7 +34,8 @@
 }
 
 .hc-table.hc-table-small {
-    td, th {
+    td,
+    th {
         @include hc-small-table-cell();
     }
 }
@@ -49,18 +51,21 @@
 }
 
 .hc-cell-resizer-left {
-    .hc-table td:first-of-type &, .hc-table th:first-of-type & {
+    .hc-table td:first-of-type &,
+    .hc-table th:first-of-type & {
         @include hc-table-cell-resizer-left-first-cell();
     }
 }
 
 .hc-cell-resizer-right {
-    .hc-table td:last-of-type &, .hc-table th:last-of-type & {
+    .hc-table td:last-of-type &,
+    .hc-table th:last-of-type & {
         @include hc-table-cell-resizer-right-last-cell();
     }
 }
 
-.hc-row-selected, .hc-table tbody tr.hc-row-selected {
+.hc-row-selected,
+.hc-table tbody tr.hc-row-selected {
     @include hc-table-row-selected();
 
     td {
@@ -87,7 +92,8 @@
 .hc-table-borders {
     @include hc-bordered-table();
 
-    td, th {
+    td,
+    th {
         @include hc-bordered-table-cell();
     }
 
@@ -130,7 +136,8 @@
     }
 }
 
-th.hc-col-sortable, th.hc-col-sortable-left {
+th.hc-col-sortable,
+th.hc-col-sortable-left {
     @include hc-table-header-sortable();
 }
 

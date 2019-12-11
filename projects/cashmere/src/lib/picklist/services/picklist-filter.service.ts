@@ -3,7 +3,7 @@ import {Observable, Subscription} from 'rxjs';
 
 import {FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOption} from '../pane/picklist-pane.model';
 import {PicklistValueType} from '../picklist.model';
-import {WorkTrackerService} from './work-tracker.service';
+import {WorkTrackerService} from '../../shared/work-tracker.service';
 import {PicklistFilterRemoteService} from './picklist-filter-remote.service';
 import {PicklistFilterLocalService} from './picklist-filter-local.service';
 import {PicklistStateService} from './picklist-state.service';

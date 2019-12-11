@@ -3,26 +3,43 @@
 .hc-picklist {
     @include hc-picklist();
 
-    .pane-wrap { @include hc-picklist-pane-wrap(); }
+    .pane-wrap {
+        @include hc-picklist-pane-wrap();
+    }
 
-    .pane-header { @include hc-picklist-pane-header(); }
+    .pane-header {
+        @include hc-picklist-pane-header();
+    }
 
-    .pane-header h2 { @include hc-picklist-pane-header-h2(); }
+    .pane-header h2 {
+        @include hc-picklist-pane-header-h2();
+    }
 
-    .pane-tabs { @include hc-picklist-pane-tabs(); }
+    .pane-tabs {
+        @include hc-picklist-pane-tabs();
+    }
 
-    .pane-tabs a { @include hc-picklist-pane-tab-link(); }
+    .pane-tabs a {
+        @include hc-picklist-pane-tab-link();
+    }
 
-    hc-picklist-pane { @include hc-picklist-pane-outer(); }
+    hc-picklist-pane {
+        @include hc-picklist-pane-outer();
+    }
 
-    hc-picklist-pane.hide { @include hc-picklist-pane-outer-hide(); }
+    hc-picklist-pane.hide {
+        @include hc-picklist-pane-outer-hide();
+    }
 
-    .move-btns-wrap { @include hc-picklist-move-btns-wrap(); }
+    .move-btns-wrap {
+        @include hc-picklist-move-btns-wrap();
+    }
 
     .move-btns-wrap button {
         @include hc-picklist-move-btn();
 
-        &[disabled], &[disabled]:hover {
+        &[disabled],
+        &[disabled]:hover {
             @include hc-picklist-move-btn-disabled();
         }
     }

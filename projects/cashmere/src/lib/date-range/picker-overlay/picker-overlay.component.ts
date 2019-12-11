@@ -93,7 +93,7 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
                     radio.checked =
                         this._fromDate.toDateString() === radioRange.fromDate.toDateString() &&
                         this._toDate.toDateString() === radioRange.toDate.toDateString();
-                 }
+                }
             });
         }
     }

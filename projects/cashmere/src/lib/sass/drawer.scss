@@ -33,7 +33,7 @@ $drawer-container-padding: 10px 20px;
 
 @mixin hc-drawer-container() {
     @include drawer-stacking-context();
-    
+
     box-sizing: border-box;
     display: block;
     overflow: hidden;
@@ -41,14 +41,14 @@ $drawer-container-padding: 10px 20px;
 
 @mixin hc-drawer-content() {
     @include drawer-stacking-context();
-    
+
     display: block;
     height: 100%;
     left: 0;
     overflow: auto;
     padding: $drawer-container-padding;
     right: 0;
-    
+
     transition: {
         duration: $ease-out-duration;
         property: transform, margin-left, margin-right;

@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {parseBooleanAttribute} from '../../util';
 import {validateStyleInput, validateSizeInput, ButtonComponent} from '../button.component';
-import { HcPopComponent } from '../../pop/popover.component';
+import {HcPopComponent} from '../../pop/popover.component';
 
 /** SplitButton click event */
 export class SplitButtonClickEvent {

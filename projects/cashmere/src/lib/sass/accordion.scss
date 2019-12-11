@@ -56,7 +56,7 @@ $accordion-caret-img: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
 }
 
 @mixin hc-accordion-trigger-closed() {
-    transform: rotate(0deg);    
+    transform: rotate(0deg);
 }
 
 @mixin hc-accordion-collapse() {

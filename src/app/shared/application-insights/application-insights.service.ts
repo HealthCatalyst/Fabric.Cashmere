@@ -10,7 +10,7 @@ export class ApplicationInsightsService {
 
     constructor() {
         // Fail gracefully if an application insights key is not provided
-        if ( 'instrumentationKey' in environment ) {
+        if ('instrumentationKey' in environment) {
             this.appInsights = new ApplicationInsights({
                 config: {
                     instrumentationKey: environment['instrumentationKey']
@@ -22,14 +22,14 @@ export class ApplicationInsightsService {
     }
 
     logPageView(name?: string, uri?: string) {
-        if ( 'instrumentationKey' in environment ) {
+        if ('instrumentationKey' in environment) {
             this.appInsights.trackPageView({name, uri});
         }
     }
 
     logEvent(trigger: string, target: string) {
-        if ( 'instrumentationKey' in environment ) {
-            this.appInsights.trackEvent({name: "Example Click", properties: {"example": trigger, "target": target}});
+        if ('instrumentationKey' in environment) {
+            this.appInsights.trackEvent({name: 'Example Click', properties: {example: trigger, target: target}});
         }
     }
 }

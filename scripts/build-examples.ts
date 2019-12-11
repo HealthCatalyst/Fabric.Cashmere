@@ -67,15 +67,12 @@ function getStackBlitzProjectTemplateFiles() {
         path.join(projectTemplateRoot, 'src/app/cashmere.module.ts'),
         prettier.format(cashmereModule, {...prettierConfig, filepath: 'cashmere.module.ts'})
     );
-    return glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce(
-        (prev, curr) => {
-            const fullPath = path.join(projectTemplateRoot, curr);
-            const content = fs.readFileSync(fullPath).toString();
-            prev[curr] = content;
-            return prev;
-        },
-        {} as FileHash
-    );
+    return glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce((prev, curr) => {
+        const fullPath = path.join(projectTemplateRoot, curr);
+        const content = fs.readFileSync(fullPath).toString();
+        prev[curr] = content;
+        return prev;
+    }, {} as FileHash);
 }
 
 function getExampleNames() {
@@ -163,27 +160,24 @@ function generateStackBlitzFiles(exampleName: string) {
             .replace(moduleCommaPattern, '');
     }
 
-    const exampleFiles = exampleFileList.reduce(
-        (prev, curr) => {
-            // get formatted file contents
-            const fullPath = path.join(examplesRoot, exampleName, curr);
-            let content = fs.readFileSync(fullPath).toString();
-            prev[`src/app/${exampleName}/${curr}`] = prettier.format(content, {...prettierConfig, filepath: fullPath});
+    const exampleFiles = exampleFileList.reduce((prev, curr) => {
+        // get formatted file contents
+        const fullPath = path.join(examplesRoot, exampleName, curr);
+        let content = fs.readFileSync(fullPath).toString();
+        prev[`src/app/${exampleName}/${curr}`] = prettier.format(content, {...prettierConfig, filepath: fullPath});
 
-            // if the file references any assets, include those too
-            const assetPattern = /".\/assets\/([^"]+)"/g;
-            let match = assetPattern.exec(content);
-            while (match) {
-                const assetName = match[1];
-                const assetContent = fs.readFileSync(path.join(assetsRoot, assetName)).toString();
-                prev[`src/assets/${assetName}`] = assetContent;
-                match = assetPattern.exec(content);
-            }
+        // if the file references any assets, include those too
+        const assetPattern = /".\/assets\/([^"]+)"/g;
+        let match = assetPattern.exec(content);
+        while (match) {
+            const assetName = match[1];
+            const assetContent = fs.readFileSync(path.join(assetsRoot, assetName)).toString();
+            prev[`src/assets/${assetName}`] = assetContent;
+            match = assetPattern.exec(content);
+        }
 
-            return prev;
-        },
-        {} as FileHash
-    );
+        return prev;
+    }, {} as FileHash);
 
     const allFiles = Object.assign({}, projectTemplateFiles, exampleFiles, {
         'src/app/app.module.ts': prettier.format(appModuleContents, {...prettierConfig, filepath: 'app.module.ts'}),

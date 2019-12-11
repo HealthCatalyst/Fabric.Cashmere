@@ -1,9 +1,11 @@
 @import '../sass/drawer.scss';
 
-.hc-drawer, .hc-menu-drawer {
+.hc-drawer,
+.hc-menu-drawer {
     @include hc-drawer();
 
-    &.hc-drawer-opening:not(.drawer-side), &.hc-drawer-opened:not(.drawer-side) {
+    &.hc-drawer-opening:not(.drawer-side),
+    &.hc-drawer-opened:not(.drawer-side) {
         @include hc-drawer-open();
     }
 }
