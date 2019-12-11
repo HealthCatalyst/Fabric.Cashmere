@@ -26,7 +26,8 @@ $cdk-z-index-overlay: $zindex-cdk-overlay;
     margin: 5px -16px;
 }
 
-button.hc-menu-item {
+button.hc-menu-item,
+a.hc-menu-item {
     @include fontSize(14px);
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: $offblack;
@@ -44,6 +45,7 @@ button.hc-menu-item {
 
     &:hover:not([disabled]) {
         background-color: tint($blue, 70%);
+        color: $offblack;
         cursor: pointer;
     }
 
