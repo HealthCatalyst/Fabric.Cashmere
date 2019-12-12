@@ -34,7 +34,7 @@ describe('SubnavComponent', () => {
         fixture.detectChanges();
 
         let subnavComponent = fixture.debugElement.query(By.directive(SubnavComponent));
-        expect(subnavComponent.nativeElement.classList.contains('hc-fixed-top')).toBe(true);
+        expect(subnavComponent.nativeElement.classList.contains('hc-subnav-fixed-top')).toBe(true);
     });
 
     it('should add hc-subnav-right css class when hcSubnavRight directive is included', () => {
