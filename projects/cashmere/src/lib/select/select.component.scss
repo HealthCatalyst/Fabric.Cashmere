@@ -1,93 +1,25 @@
-@import '../sass/colors';
-@import '../sass/functions.scss';
-@import '../sass/mixins.scss';
+@import '../sass/select.scss';
 
 .hc-select {
-    display: inline-block;
-    width: 100%;
+    @include hc-select();
 }
 
 .hc-select-container {
-    position: relative;
-
-    //Firefox specific CSS to correct highlight on focus that does not cover the entire select box
-    select:-moz-focusring {
-        color: transparent;
-        text-shadow: 0 0 0 #000;
-    }
-
-    @-moz-document url-prefix() {
-        select:focus {
-            outline: $gray-500 dotted 1px;
-            outline-offset: -3px;
-        }
-    }
+    @include hc-select-container();
 }
 
 .hc-select-chevron {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 35px;
-    width: 35px;
-    line-height: 35px;
-    text-align: center;
-    pointer-events: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include hc-select-chevron();
 
-    &:after {
-        content: '';
-        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNi45NzgiIGhlaWdodD0iMTcuMzE5IiB2aWV3Qm94PSIwIDAgMjYuOTc4IDE3LjMxOSI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogIzAwYWVmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHBhdGggaWQ9IlBhdGhfNSIgZGF0YS1uYW1lPSJQYXRoIDUiIGNsYXNzPSJjbHMtMSIgZD0iTTI4LjE3NS0xMi4xODhhMS4wODEsMS4wODEsMCwwLDAsMC0xLjUyM0wyNS40LTE2LjQ3M2ExLjA2MSwxLjA2MSwwLDAsMC0xLjUwNywwTDE1LTcuNTg0bC04Ljg5LTguODlhMS4wNjEsMS4wNjEsMCwwLDAtMS41MDcsMEwxLjgyNS0xMy43MTFhMS4wODEsMS4wODEsMCwwLDAsMCwxLjUyM0wxNC4yNDcuMjE4YTEuMDYxLDEuMDYxLDAsMCwwLDEuNTA3LDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMS41MTEgMTYuNzg3KSIvPgo8L3N2Zz4K');
-        background-repeat: no-repeat;
-        background-size: contain;
-        width: 13px;
-        height: 8.5px;
-        pointer-events: none;
-        box-sizing: border-box;
-        margin-top: 2px;
+    .hc-select-disabled & {
+        @include hc-select-chevron-disabled();
     }
 }
 
 .hc-select-input {
-    // Font needs to be inherited, because by default <select> uses a system font
-    font: inherit;
-    color: $text;
-    background-color: $white;
-    @include fontSize(14px);
-    padding-left: 7px;
-    padding-right: 32px;
-    line-height: 1.3; // avoid clipping character descenders in some browsers
-    border: 1.5px solid $gray-300;
-    border-radius: 0;
-    height: 35px;
-    width: 100%;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    line-height: normal;
-    cursor: pointer;
+    @include hc-select-input();
 
-    &::-ms-expand {
-        display: none;
-    }
-
-    &[disabled] {
-        cursor: not-allowed;
-        border: 1.5px solid $gray-200;
-        background-color: $slate-gray-100;
-        color: tint($text, 60%);
-    }
-}
-
-.hc-select-disabled {
-    .hc-select-chevron {
-        opacity: 0.4;
-    }
-}
-
-.hc-form-field-invalid {
-    .hc-select-input {
-        border: 1.5px solid $error;
+    .hc-form-field-invalid & {
+        @include hc-select-input-invalid();
     }
 }
