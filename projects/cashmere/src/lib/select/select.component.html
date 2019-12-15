@@ -1,9 +1,10 @@
 <div class="hc-select-container">
     <span class="hc-select-chevron"></span>
     <select
+        #selectInput
         class="hc-select-input"
         [disabled]="disabled"
-        (change)="value = $event.target.value"
+        (change)="_change($event, selectInput.value)"
         [value]="value"
         (focus)="focus.next()"
         (blur)="blur.next()"
