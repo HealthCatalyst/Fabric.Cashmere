@@ -63,19 +63,16 @@ export class CalendarHeaderComponent {
 
     /** The label for the current calendar view. */
     get periodButtonText(): string {
-        if (this.calendar.currentView === 'year' || this.calendar.currentView === 'month') {
-            return this._dateAdapter.getYearName(this.calendar.activeDate);
-        }
-        const activeYear = this._dateAdapter.getYear(this.calendar.activeDate);
-        const firstYearInView = this._dateAdapter.getYearName(this._dateAdapter.createDate(activeYear - (activeYear % 24), 0, 1));
-        const lastYearInView = this._dateAdapter.getYearName(
-            this._dateAdapter.createDate(activeYear + yearsPerPage - 1 - (activeYear % 24), 0, 1)
-        );
-        return `${firstYearInView} \u2013 ${lastYearInView}`;
+        return this._dateAdapter.getYearName(this.calendar.activeDate);
     }
 
     get periodButtonLabel(): string {
         return this.calendar.currentView === 'month' ? this._intl.switchToMultiYearViewLabel : this._intl.switchToMonthViewLabel;
+    }
+
+    /** The label for the jump to today button */
+    get _todayButtonLabel(): string {
+        return this._intl.switchToTodayLabel;
     }
 
     /** The label for the currently displayed month */
@@ -122,6 +119,12 @@ export class CalendarHeaderComponent {
                 : this._dateAdapter.addCalendarYears(this.calendar.activeDate, this.calendar.currentView === 'year' ? 1 : yearsPerPage);
     }
 
+    /** Handles clicks on the jump to today button */
+
+    _todayClicked(): void {
+        this.calendar.activeDate = this._dateAdapter.today();
+    }
+
     /** Whether the previous period button is enabled. */
     previousEnabled(): boolean {
         if (!this.calendar.minDate) {
@@ -133,6 +136,13 @@ export class CalendarHeaderComponent {
     /** Whether the next period button is enabled. */
     nextEnabled(): boolean {
         return !this.calendar.maxDate || !this._isSameView(this.calendar.activeDate, this.calendar.maxDate);
+    }
+
+    _todayEnabled(): boolean {
+        return (
+            (!this.calendar.minDate || this._dateAdapter.compareDate(this.calendar.minDate, this._dateAdapter.today()) < 1) &&
+            (!this.calendar.maxDate || this._dateAdapter.compareDate(this.calendar.maxDate, this._dateAdapter.today()) > -1)
+        );
     }
 
     /** Whether the two dates represent the same view in the current view mode (month or year). */
@@ -458,24 +468,6 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         const view = this.currentView === 'month' ? this.monthView : this.currentView === 'year' ? this.yearView : this.multiYearView;
 
         view.ngAfterContentInit();
-    }
-
-    /** The label for the jump to today button */
-    get _todayButtonLabel(): string {
-        return this._intl.switchToTodayLabel;
-    }
-
-    /** Handles clicks on the Jump to current date button */
-
-    _todayClicked(): void {
-        this.activeDate = this._dateAdapter.today();
-    }
-
-    _todayEnabled(): boolean {
-        return (
-            (!this.minDate || this._dateAdapter.compareDate(this.minDate, this._dateAdapter.today()) < 1) &&
-            (!this.maxDate || this._dateAdapter.compareDate(this.maxDate, this._dateAdapter.today()) > -1)
-        );
     }
 
     /** Handles date selection in the month view. */

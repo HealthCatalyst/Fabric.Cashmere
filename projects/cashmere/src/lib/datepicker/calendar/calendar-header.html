@@ -4,25 +4,39 @@
             hc-button
             buttonStyle="link"
             type="button"
-            class="hc-calendar-previous-button"
-            [disabled]="!previousEnabled()"
-            (click)="previousClicked()"
-            [attr.aria-label]="prevButtonLabel"
-        ></button>
-        <span class="hc-calendar-today-button">
-            {{ monthButtonText }}
-        </span>
-        <button
-            hc-button
-            buttonStyle="link"
-            type="button"
-            class="hc-calendar-next-button"
-            [disabled]="!nextEnabled()"
-            (click)="nextClicked()"
-            [attr.aria-label]="nextButtonLabel"
-        ></button>
+            class="hc-calendar-today-button"
+            (click)="_todayClicked()"
+            [disabled]="!_todayEnabled()"
+            [attr.aria-label]="_todayButtonLabel"
+            [title]="_todayButtonLabel"
+        >Today
+        </button>
 
-        <div class="hc-calendar-spacer"></div>
+        <span>
+            <button
+                hc-button
+                buttonStyle="link"
+                type="button"
+                class="hc-calendar-previous-button"
+                [disabled]="!previousEnabled()"
+                (click)="previousClicked()"
+                [attr.aria-label]="prevButtonLabel"
+                [title]="prevButtonLabel"
+            ></button>
+            <span class="hc-calendar-month-label">
+                {{ monthButtonText }}
+            </span>
+            <button
+                hc-button
+                buttonStyle="link"
+                type="button"
+                class="hc-calendar-next-button"
+                [disabled]="!nextEnabled()"
+                (click)="nextClicked()"
+                [attr.aria-label]="nextButtonLabel"
+                [title]="nextButtonLabel"
+            ></button>
+        </span>
 
         <ng-content></ng-content>
 
@@ -33,6 +47,7 @@
             class="hc-calendar-period-button"
             (click)="currentPeriodClicked()"
             [attr.aria-label]="periodButtonLabel"
+            [title]="periodButtonLabel"
         >
             {{ periodButtonText }}
             <div class="hc-calendar-arrow" [class.hc-calendar-invert]="calendar.currentView != 'month'"></div>
