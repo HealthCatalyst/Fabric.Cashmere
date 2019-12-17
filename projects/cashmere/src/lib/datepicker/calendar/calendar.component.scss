@@ -35,16 +35,13 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 
 .hc-calendar-controls {
     display: flex;
+    justify-content: space-between;
     margin: 0 $hc-calendar-controls-side-margin $hc-calendar-controls-vertical-padding ;
 }
 
-.hc-calendar-spacer {
-    flex: 1 1 auto;
-}
-
-.hc-calendar-period-button.hc-md.hc-button.hc-link {
+.hc-calendar-period-button.hc-md.hc-button.hc-link, .hc-calendar-today-button.hc-md.hc-button.hc-link {
     min-width: 0;
-    padding: 13px 10px 10px 10px;
+    padding: 10px;
     min-width: inherit;
 }
 
@@ -75,6 +72,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
     height: 40px;
     width: 40px;
     padding: 0px;
+    top: -2px;
 
     &::after {
         top: 0;
@@ -103,11 +101,10 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
     transform: $hc-calendar-next-icon-transform;
 }
 
-.hc-calendar-today-button {
+.hc-calendar-month-label {
     font-weight: 600;
     color: $primary-brand;
     min-width: 35px;
-    padding: 3px 0 0 0;
     vertical-align: baseline;
     display: inline-flex;
     align-items: center;
@@ -115,14 +112,6 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
     height: 35px;
     font-size: calculateRem(15px);
     line-height: 15px;
-}
-
-.hc-calendar-today-container {
-    text-align: center;
-}
-
-.hc-calendar-today-margin {
-    margin-bottom: 20px;
 }
 
 .hc-calendar-table {
