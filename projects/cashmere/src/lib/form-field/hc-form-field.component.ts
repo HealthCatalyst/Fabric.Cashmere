@@ -85,6 +85,10 @@ export class HcFormFieldComponent implements AfterContentInit {
     }
 
     _shouldShowErrorMessages(): boolean {
-        return this._errorChildren && this._errorChildren.length > 0 && this._control._errorState;
+        return (
+            this._control._errorState &&
+            ((this._errorChildren && this._errorChildren.length > 0) ||
+                (!!this._control._errorMessage && this._control._errorMessage.length > 0))
+        );
     }
 }
