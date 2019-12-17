@@ -17,6 +17,10 @@ import {parseBooleanAttribute} from '../util';
 
 let uniqueId = 1;
 
+export class SelectChangeEvent {
+    constructor(public source: SelectComponent, public value: string) {}
+}
+
 /** Select one of many options from a dropdown */
 @Component({
     selector: 'hc-select',
@@ -86,6 +90,10 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     @Output()
     readonly blur: EventEmitter<void> = new EventEmitter<void>();
 
+    /** Event emitted whenever the state changes */
+    @Output()
+    change = new EventEmitter<SelectChangeEvent>();
+
     private _value: string = '';
 
     @HostBinding('class.hc-select')
@@ -129,6 +137,17 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
 
     writeValue(value: string) {
         this._value = value;
+    }
+
+    _change(event: Event, value: string) {
+        event.stopPropagation();
+        this.onChange(value);
+        this.value = value;
+        this._emitChangeEvent();
+    }
+
+    private _emitChangeEvent() {
+        this.change.emit(new SelectChangeEvent(this, this.value));
     }
 
     ngDoCheck(): void {
