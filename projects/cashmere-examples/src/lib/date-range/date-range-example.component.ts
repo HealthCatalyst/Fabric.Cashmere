@@ -3,14 +3,14 @@ import {DateRangeOptions, PresetItem, DateRange} from '@healthcatalyst/cashmere'
 
 @Component({
     selector: 'hc-date-range-example',
-    templateUrl: './date-range-example.component.html'
+    templateUrl: './date-range-example.component.html',
+    styleUrls: ['date-range-example.component.scss']
 })
 export class DateRangeExampleComponent implements OnInit {
     range: DateRange = {fromDate: new Date(), toDate: new Date()};
     options: DateRangeOptions;
     presets: Array<PresetItem> = [];
-    @ViewChild('pickerOne')
-    pickerOne;
+    presetSelection: string = 'None';
 
     ngOnInit() {
         const today = new Date();
@@ -31,6 +31,14 @@ export class DateRangeExampleComponent implements OnInit {
 
     updateRange(range: DateRange) {
         this.range = range;
+    }
+
+    updatePreset(index: number | DateRange) {
+        if (typeof index === 'number') {
+            this.presetSelection = this.presets[index].presetLabel;
+        } else {
+            this.presetSelection = 'None';
+        }
     }
 
     setupPresets() {

@@ -7,7 +7,7 @@ import {D} from '../../datepicker/datetime/date-formats';
 import {CalendarWrapperComponent} from '../calendar-wrapper/calendar-wrapper.component';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {RadioButtonComponent} from '../../radio-button/radio';
+import {RadioButtonComponent, RadioGroupDirective} from '../../radio-button/radio';
 
 // ** Date range wrapper component */
 @Component({
@@ -28,6 +28,9 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
 
     @ViewChildren(RadioButtonComponent)
     _presetRadios: QueryList<RadioButtonComponent>;
+
+    @ViewChildren(RadioGroupDirective)
+    _presetGroup: QueryList<RadioGroupDirective>;
 
     constructor(public configStoreService: ConfigStoreService, private overlayRef: OverlayRef, private cd: ChangeDetectorRef) {
         this.options$ = configStoreService.dateRangeOptions$;
@@ -101,6 +104,9 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
     _applyNewDates() {
         if (!!this._toDate && !!this._fromDate) {
             this.configStoreService.updateRange({fromDate: this._fromDate, toDate: this._toDate});
+            this.configStoreService.updatePreset(
+                this._presetGroup.first.selected ? +this._presetGroup.first.selected.id : {fromDate: this._fromDate, toDate: this._toDate}
+            );
         }
         this.overlayRef.dispose();
     }

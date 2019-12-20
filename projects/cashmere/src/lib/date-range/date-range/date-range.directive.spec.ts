@@ -18,11 +18,15 @@ class MockOverlayService {
 class TestComponent {
     options: DateRangeOptions;
     constructor() {
-        const today: Date = new Date();
-        const fromDate: Date = new Date(today.setDate(today.getDate() - 7));
-        const toDate: Date = new Date();
         this.options = {
-            presets: [],
+            presets: [{
+                presetLabel: 'Preset One',
+                range: {fromDate: new Date(1,1,1900), toDate: new Date(1,2,1900)}
+            },
+            {
+                presetLabel: 'Preset Two',
+                range: {fromDate: new Date(1,1,2000), toDate: new Date(1,2,2000)}
+            }],
             format: 'mediumDate',
             applyLabel: 'Submit'
         };
@@ -83,5 +87,13 @@ describe('DateRangeDirective', () => {
         const button = fixture.debugElement.nativeElement.querySelector('button');
         button.click();
         expect(overlay.open).toHaveBeenCalled();
+    });
+
+    it('should return the index of the selected preset', () => {
+        const resetRange = {fromDate: new Date(1,1,2000), toDate: new Date(1,2,2000)};
+        directive.selectedDate = resetRange;
+        directive.selectedPresetChanged.subscribe(index => {
+            expect(index).toEqual(1);
+        });
     });
 });

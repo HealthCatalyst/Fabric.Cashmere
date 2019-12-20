@@ -6,6 +6,7 @@
         buttonStyle="link"
         popperPlacement="bottom"
         (selectedDateRangeChanged)="updateRange($event)"
+        (selectedPresetChanged)="updatePreset($event)"
         [selectedDate]="range"
         [options]="options"
         #pickerOne
@@ -13,4 +14,8 @@
         <span class="label">Date Range:</span> <span class="value"> {{ range.fromDate | date:'MM/dd/yyyy' }} - {{ range.toDate | date:'MM/dd/yyyy' }} </span>
         <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="icon-right" hcIconSm></hc-icon>
     </button>
+
+    <div class="preset-selection">
+        Selected Preset: <strong>{{ presetSelection }}</strong>
+    </div>
 </div>

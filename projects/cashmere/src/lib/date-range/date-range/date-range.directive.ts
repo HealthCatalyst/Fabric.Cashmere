@@ -2,7 +2,7 @@ import {OnInit, Output, EventEmitter, Input, OnDestroy, ElementRef, Directive, H
 import {DatePipe} from '@angular/common';
 import {OverlayRef} from '@angular/cdk/overlay';
 import {CalendarOverlayService} from '../services/calendar-overlay.service';
-import {DateRange, DateRangeOptions} from '../model/model';
+import {DateRange, DateRangeOptions, PresetItem} from '../model/model';
 import {ConfigStoreService} from '../services/config-store.service';
 
 @Directive({
@@ -18,6 +18,10 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
     @Input()
     selectedDate: DateRange;
 
+    /** Emits either a numerical index for the selected preset, or a `DateRange` if the selected value is not a preset */
+    @Output()
+    readonly selectedPresetChanged: EventEmitter<number | DateRange> = new EventEmitter<number | DateRange>();
+
     /** Configuration to setup behavior of component. */
     @Input()
     options: DateRangeOptions;
@@ -31,6 +35,9 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
     ) {
         configStoreService.rangeUpdate$.subscribe((daterange: DateRange) => {
             this.selectedDateRangeChanged.emit(daterange);
+        });
+        configStoreService.presetUpdate$.subscribe((preset: number | DateRange) => {
+            this.selectedPresetChanged.emit(preset);
         });
     }
 

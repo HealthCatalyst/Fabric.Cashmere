@@ -26,6 +26,12 @@ export class ConfigStoreService {
     private rangeUpdateSubject: BehaviorSubject<DateRange> = new BehaviorSubject<DateRange>({fromDate: undefined, toDate: undefined});
     public rangeUpdate$: Observable<DateRange>;
 
+    private presetUpdateSubject: BehaviorSubject<number | DateRange> = new BehaviorSubject<number | DateRange>({
+        fromDate: undefined,
+        toDate: undefined
+    });
+    public presetUpdate$: Observable<number | DateRange>;
+
     public weekendFilter: (d: D) => boolean = () => true;
 
     constructor() {
@@ -49,6 +55,7 @@ export class ConfigStoreService {
         );
 
         this.rangeUpdate$ = this.rangeUpdateSubject.pipe();
+        this.presetUpdate$ = this.presetUpdateSubject.pipe();
     }
 
     updateDateRangeOptions(options: DateRangeOptions) {
@@ -57,5 +64,9 @@ export class ConfigStoreService {
 
     updateRange(dateRange: DateRange) {
         this.rangeUpdateSubject.next(dateRange);
+    }
+
+    updatePreset(value: number | DateRange) {
+        this.presetUpdateSubject.next(value);
     }
 }
