@@ -3,7 +3,7 @@ import {NO_ERRORS_SCHEMA, Component} from '@angular/core';
 import {CalendarOverlayService} from '../services/calendar-overlay.service';
 import {ConfigStoreService} from '../services/config-store.service';
 import {DateRangeDirective} from './date-range.directive';
-import {DateRangeOptions} from '../model/model';
+import {DateRangeOptions, DateRange} from '../model/model';
 import {By} from '@angular/platform-browser';
 
 class MockOverlayService {
@@ -12,25 +12,40 @@ class MockOverlayService {
 
 @Component({
     template: `
-        <button hcDateRange [options]="options">Click Me</button>
+        <button
+            hcDateRange
+            [selectedDate]="range"
+            (selectedDateRangeChanged)="updateRange($event)"
+            (selectedPresetChanged)="updatePreset($event)"
+            [options]="options"
+        >
+            Click Me
+        </button>
     `
 })
 class TestComponent {
     options: DateRangeOptions;
+    range: DateRange = {fromDate: new Date(), toDate: new Date()};
     constructor() {
         this.options = {
-            presets: [{
-                presetLabel: 'Preset One',
-                range: {fromDate: new Date(1,1,1900), toDate: new Date(1,2,1900)}
-            },
-            {
-                presetLabel: 'Preset Two',
-                range: {fromDate: new Date(1,1,2000), toDate: new Date(1,2,2000)}
-            }],
+            presets: [
+                {
+                    presetLabel: 'Preset One',
+                    range: {fromDate: new Date(1900, 1, 1), toDate: new Date(1900, 1, 2)}
+                },
+                {
+                    presetLabel: 'Preset Two',
+                    range: {fromDate: new Date(2000, 1, 1), toDate: new Date(2000, 1, 2)}
+                }
+            ],
             format: 'mediumDate',
             applyLabel: 'Submit'
         };
     }
+    updateRange(range: DateRange) {
+        this.range = range;
+    }
+    updatePreset(index: number|DateRange) {}
 }
 
 describe('DateRangeDirective', () => {
@@ -76,11 +91,12 @@ describe('DateRangeDirective', () => {
         const currMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
         const currMonthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0);
         const resetRange = {fromDate: currMonthStart, toDate: currMonthEnd};
-        directive.selectedDate = resetRange;
-        directive.selectedDateRangeChanged.subscribe(range => {
-            expect(range.fromDate).toEqual(resetRange.fromDate);
-            expect(range.toDate).toEqual(resetRange.toDate);
-        });
+
+        spyOn(component, 'updateRange');
+        component.range = resetRange;
+        fixture.detectChanges();
+
+        expect(component.updateRange).toHaveBeenCalledWith(resetRange);
     });
 
     it('should open modal when clicked', () => {
@@ -90,10 +106,13 @@ describe('DateRangeDirective', () => {
     });
 
     it('should return the index of the selected preset', () => {
-        const resetRange = {fromDate: new Date(1,1,2000), toDate: new Date(1,2,2000)};
+        const resetRange = {fromDate: new Date(2000, 1, 1), toDate: new Date(2000, 1, 2)};
         directive.selectedDate = resetRange;
-        directive.selectedPresetChanged.subscribe(index => {
-            expect(index).toEqual(1);
-        });
+
+        spyOn(component, 'updatePreset');
+        component.range = resetRange;
+        fixture.detectChanges();
+
+        expect(component.updatePreset).toHaveBeenCalledWith(1);
     });
 });

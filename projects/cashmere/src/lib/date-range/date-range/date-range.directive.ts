@@ -57,6 +57,21 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
         if (changes['selectedDate']) {
             const selectedDate: DateRange = changes['selectedDate'].currentValue;
             this.configStoreService.updateRange(selectedDate);
+
+            if (this.options.presets) {
+                let selectedPreset = -1;
+                for (let i = 0; i < this.options.presets.length; i++) {
+                    let tempRange = this.options.presets[i].range;
+                    if ( tempRange.fromDate && selectedDate.fromDate &&
+                        tempRange.fromDate.toDateString() === selectedDate.fromDate.toDateString() &&
+                        tempRange.toDate && selectedDate.toDate &&
+                        tempRange.toDate.toDateString() === selectedDate.toDate.toDateString()
+                    ) {
+                        selectedPreset = i;
+                    }
+                }
+                this.configStoreService.updatePreset(selectedPreset >= 0 ? selectedPreset : selectedDate);
+            }
         }
     }
 
