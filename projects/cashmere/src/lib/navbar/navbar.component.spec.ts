@@ -73,11 +73,15 @@ describe('NavbarComponent', () => {
                 const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
                 spyOnProperty(linkContainer.nativeElement, 'offsetWidth', 'get').and.returnValue(300);
 
+                const link = testHostFixture.debugElement.queryAll(By.css('.link'));
+                spyOnProperty(link[0].nativeElement, 'scrollWidth', 'get').and.returnValue(110);
+                spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(110);
+
                 testHostComponent.navbarComponent['_collectNavLinkWidths']();
                 testHostComponent.navbarComponent._navResize();
 
                 expect(linkContainer.nativeElement['offsetWidth']).toEqual(300);
-                expect(testHostComponent.navbarComponent['_linksTotalWidth']).toEqual(211);
+                expect(testHostComponent.navbarComponent['_linksTotalWidth']).toEqual(220);
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeFalsy();
             });
@@ -85,11 +89,15 @@ describe('NavbarComponent', () => {
                 const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
                 spyOnProperty(linkContainer.nativeElement, 'offsetWidth', 'get').and.returnValue(50);
 
+                const link = testHostFixture.debugElement.queryAll(By.css('.link'));
+                spyOnProperty(link[0].nativeElement, 'scrollWidth', 'get').and.returnValue(110);
+                spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(110);
+
                 testHostComponent.navbarComponent['_collectNavLinkWidths']();
                 testHostComponent.navbarComponent._navResize();
 
                 expect(linkContainer.nativeElement['offsetWidth']).toEqual(50);
-                expect(testHostComponent.navbarComponent['_linksTotalWidth']).toEqual(211);
+                expect(testHostComponent.navbarComponent['_linksTotalWidth']).toEqual(220);
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(2);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeTruthy();
             });
