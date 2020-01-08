@@ -104,9 +104,12 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
     _applyNewDates() {
         if (!!this._toDate && !!this._fromDate) {
             this.configStoreService.updateRange({fromDate: this._fromDate, toDate: this._toDate});
-            this.configStoreService.updatePreset(
-                this._presetGroup.first.selected ? +this._presetGroup.first.selected.id : {fromDate: this._fromDate, toDate: this._toDate}
-            );
+            if ( this._presetGroup.first.selected ) {
+                let presetStr = this._presetGroup.first.selected.id.substr(21);
+                this.configStoreService.updatePreset( +presetStr );
+            } else {
+                this.configStoreService.updatePreset({fromDate: this._fromDate, toDate: this._toDate});
+            }
         }
         this.overlayRef.dispose();
     }
