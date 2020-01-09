@@ -51,245 +51,55 @@ describe('NavbarComponent', () => {
             expect(testHostComponent.navbarComponent._navLinks['_results'][0]._getWidth()).toEqual(2400);
             expect(testHostComponent.navbarComponent._navLinks['_results'][1]._getWidth()).toEqual(3400);
             testHostComponent.navbarComponent['_collectNavLinkWidths']();
-            expect(testHostComponent.navbarComponent['_linksMax']).toEqual(5800);
+            expect(testHostComponent.navbarComponent['_linksTotalWidth']).toEqual(5800);
             expect(testHostComponent.navbarComponent['_linkWidths'].length).toEqual(2);
-            expect(testHostComponent.navbarComponent['_linkWidths'][0]).toEqual(3400);
-            expect(testHostComponent.navbarComponent['_linkWidths'][1]).toEqual(2400);
+            expect(testHostComponent.navbarComponent['_linkWidths'][0]).toEqual(2400);
+            expect(testHostComponent.navbarComponent['_linkWidths'][1]).toEqual(3400);
         });
     });
 
     describe('on calling all the lifecycle hooks', () => {
         it('should call _navResize', async(() => {
             spyOn(testHostComponent.navbarComponent, '_navResize');
-            testHostComponent.navbarComponent.ngOnInit();
-            testHostComponent.navbarComponent.appIconLoaded();
             testHostComponent.navbarComponent.ngAfterViewInit();
-            testHostComponent.navbarComponent.ngAfterContentInit();
             testHostFixture.whenStable().then(() => {
                 expect(testHostComponent.navbarComponent._navResize).toHaveBeenCalled();
             });
         }));
     });
     describe('on calling _navResize', () => {
-        it('should adjust the elements according to the navbar size', () => {
-            const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
-            spyOnProperty(linkContainer.nativeElement, 'clientWidth', 'get').and.returnValue(0);
-            testHostComponent.navbarComponent._navResize();
-            expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
-            expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
-        });
-    });
-    describe('on calling _navResize', () => {
-        // The cut off points are between regularWidth which in thiscase = switcher(55) +
-        // logowidth(200) +
-        // linkWidths (200 + 300) +
-        // icons (400) = 1155
-        // and condensedWidth = 1155 - 50 = 1105
         describe('and adjust the elements according to the navbar size', () => {
-            it('should have nothing in the moreList if the navbar > regularWidth', () => {
-                spyOn(testHostComponent.navbarComponent['ref'], 'detectChanges');
+            it('should have nothing in moreList if navbar links container > linksTotalWidth', () => {
                 const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
-                spyOnProperty(linkContainer.nativeElement, 'clientWidth', 'get').and.returnValue(100);
-                const icons = testHostFixture.debugElement.query(By.css('.hc-navbar-right-container'));
-                spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
-                const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
-                spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(85);
-                spyOn(testHostComponent.navbarComponent._navLinks['_results'][0], 'show');
-                spyOn(testHostComponent.navbarComponent._navLinks['_results'][1], 'show');
+                spyOnProperty(linkContainer.nativeElement, 'offsetWidth', 'get').and.returnValue(300);
 
-                const navbar = testHostFixture.debugElement.query(By.css('.hc-navbar'));
-                spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(2400);
+                const link = testHostFixture.debugElement.queryAll(By.css('.link'));
+                spyOnProperty(link[0].nativeElement, 'scrollWidth', 'get').and.returnValue(110);
+                spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(110);
 
+                testHostComponent.navbarComponent['_collectNavLinkWidths']();
                 testHostComponent.navbarComponent._navResize();
+
+                expect(linkContainer.nativeElement['offsetWidth']).toEqual(300);
+                expect(testHostComponent.navbarComponent['_linksTotalWidth']).toEqual(220);
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
-                expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeFalsy();
-                expect(testHostComponent.navbarComponent['_logoCondense']).toBeFalsy();
-                expect(testHostComponent.navbarComponent._navLinks['_results'][0].show).toHaveBeenCalled();
-                expect(testHostComponent.navbarComponent._navLinks['_results'][1].show).toHaveBeenCalled();
-                expect(testHostComponent.navbarComponent['ref'].detectChanges).toHaveBeenCalled();
             });
-            it('should have two items in the moreList if the navbar is 0', () => {
-                spyOn(testHostComponent.navbarComponent, '_navResize').and.callThrough();
+            it('should have two items in moreList if navbar links container is 50px', () => {
                 const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
-                spyOnProperty(linkContainer.nativeElement, 'clientWidth', 'get').and.returnValue(100);
-                const navbar = testHostFixture.debugElement.query(By.css('.hc-navbar'));
-                spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(0);
-                const icons = testHostFixture.debugElement.query(By.css('.hc-navbar-right-container'));
-                spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
-                const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
-                spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(85);
-                spyOn(testHostComponent.navbarComponent._navLinks['_results'][0], 'hide');
-                spyOn(testHostComponent.navbarComponent._navLinks['_results'][1], 'hide');
+                spyOnProperty(linkContainer.nativeElement, 'offsetWidth', 'get').and.returnValue(50);
 
+                const link = testHostFixture.debugElement.queryAll(By.css('.link'));
+                spyOnProperty(link[0].nativeElement, 'scrollWidth', 'get').and.returnValue(110);
+                spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(110);
+
+                testHostComponent.navbarComponent['_collectNavLinkWidths']();
                 testHostComponent.navbarComponent._navResize();
+
+                expect(linkContainer.nativeElement['offsetWidth']).toEqual(50);
+                expect(testHostComponent.navbarComponent['_linksTotalWidth']).toEqual(220);
                 expect(testHostComponent.navbarComponent._moreList.length).toEqual(2);
-                expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
                 expect(testHostComponent.navbarComponent['_collapse']).toBeTruthy();
-                expect(testHostComponent.navbarComponent['_logoCondense']).toBeTruthy();
-                expect(testHostComponent.navbarComponent._navLinks['_results'][0].hide).toHaveBeenCalled();
-                expect(testHostComponent.navbarComponent._navLinks['_results'][1].hide).toHaveBeenCalled();
-            });
-            it('should have a condensed logo if the width is between regular and condensed', () => {
-                const link = testHostFixture.debugElement.queryAll(By.css('.link'));
-                spyOnProperty(link[0].nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(300);
-                const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
-                spyOnProperty(linkContainer.nativeElement, 'clientWidth', 'get').and.returnValue(100);
-                const icons = testHostFixture.debugElement.query(By.css('.hc-navbar-right-container'));
-                spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
-                const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
-                spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-
-                const navbar = testHostFixture.debugElement.query(By.css('.hc-navbar'));
-                spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(1155);
-
-                testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
-                expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
-                expect(testHostComponent.navbarComponent['_collapse']).toBeFalsy();
-                expect(testHostComponent.navbarComponent['_logoCondense']).toBeFalsy();
-            });
-            it('should have a condensed logo if the width is between regular and condensed', () => {
-                const link = testHostFixture.debugElement.queryAll(By.css('.link'));
-                spyOnProperty(link[0].nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(300);
-                const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
-                spyOnProperty(linkContainer.nativeElement, 'clientWidth', 'get').and.returnValue(100);
-                const icons = testHostFixture.debugElement.query(By.css('.hc-navbar-right-container'));
-                spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
-                const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
-                spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-
-                const navbar = testHostFixture.debugElement.query(By.css('.hc-navbar'));
-                spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(1106);
-
-                testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
-                expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
-                expect(testHostComponent.navbarComponent['_collapse']).toBeFalsy();
-                expect(testHostComponent.navbarComponent['_logoCondense']).toBeFalsy();
-            });
-            it('should have a condensed logo if the width is between regular and condensed', () => {
-                const link = testHostFixture.debugElement.queryAll(By.css('.link'));
-                spyOnProperty(link[0].nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(300);
-                const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
-                spyOnProperty(linkContainer.nativeElement, 'clientWidth', 'get').and.returnValue(100);
-                const icons = testHostFixture.debugElement.query(By.css('.hc-navbar-right-container'));
-                spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
-                const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
-                spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-
-                const navbar = testHostFixture.debugElement.query(By.css('.hc-navbar'));
-                spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(1154);
-
-                testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
-                expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
-                expect(testHostComponent.navbarComponent['_collapse']).toBeFalsy();
-                expect(testHostComponent.navbarComponent['_logoCondense']).toBeFalsy();
-            });
-            // tslint:disable-next-line:max-line-length
-            it('should have a condensed logo if the width is less than condensed and takes the width of the more element into account', () => {
-                const link = testHostFixture.debugElement.queryAll(By.css('.link'));
-                spyOnProperty(link[0].nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(300);
-                const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
-                spyOnProperty(linkContainer.nativeElement, 'clientWidth', 'get').and.returnValue(100);
-                const icons = testHostFixture.debugElement.query(By.css('.hc-navbar-right-container'));
-                spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
-                const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
-                spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOn(testHostComponent.navbarComponent._navLinks['_results'][0], 'show');
-                spyOn(testHostComponent.navbarComponent._navLinks['_results'][1], 'show');
-
-                const navbar = testHostFixture.debugElement.query(By.css('.hc-navbar'));
-                spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(1105);
-
-                testHostComponent.navbarComponent._navResize();
-
-                expect(testHostComponent.navbarComponent._moreList.length).toEqual(0);
-                expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
-                expect(testHostComponent.navbarComponent['_collapse']).toBeFalsy();
-                expect(testHostComponent.navbarComponent['_logoCondense']).toBeFalsy();
-                expect(testHostComponent.navbarComponent._navLinks['_results'][0].show).toHaveBeenCalled();
-                expect(testHostComponent.navbarComponent._navLinks['_results'][1].show).toHaveBeenCalled();
-            });
-            // tslint:disable-next-line:max-line-length
-            it('should have a condensed logo if the width is less than condensed and takes the width of the more element into account', () => {
-                const link = testHostFixture.debugElement.queryAll(By.css('.link'));
-                spyOnProperty(link[0].nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(300);
-                const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
-                spyOnProperty(linkContainer.nativeElement, 'clientWidth', 'get').and.returnValue(100);
-                const icons = testHostFixture.debugElement.query(By.css('.hc-navbar-right-container'));
-                spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
-                const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
-                spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOn(testHostComponent.navbarComponent._navLinks['_results'][0], 'hide');
-                spyOn(testHostComponent.navbarComponent._navLinks['_results'][1], 'hide');
-
-                const navbar = testHostFixture.debugElement.query(By.css('.hc-navbar'));
-                spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(721);
-
-                testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._moreList.length).toEqual(2);
-                expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
-                expect(testHostComponent.navbarComponent['_collapse']).toBeTruthy();
-                expect(testHostComponent.navbarComponent['_logoCondense']).toBeTruthy();
-                expect(testHostComponent.navbarComponent._navLinks['_results'][0].hide).toHaveBeenCalled();
-                expect(testHostComponent.navbarComponent._navLinks['_results'][1].hide).toHaveBeenCalled();
-            });
-            // tslint:disable-next-line:max-line-length
-            it('should have a condensed logo if the width is less than condensed and takes the width of the more element into account', () => {
-                const link = testHostFixture.debugElement.queryAll(By.css('.link'));
-                spyOnProperty(link[0].nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(300);
-                const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
-                spyOnProperty(linkContainer.nativeElement, 'clientWidth', 'get').and.returnValue(100);
-                const icons = testHostFixture.debugElement.query(By.css('.hc-navbar-right-container'));
-                spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
-                const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
-                spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOn(testHostComponent.navbarComponent._navLinks['_results'][0], 'show');
-                spyOn(testHostComponent.navbarComponent._navLinks['_results'][1], 'hide');
-
-                const navbar = testHostFixture.debugElement.query(By.css('.hc-navbar'));
-                spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(922);
-
-                testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._moreList.length).toEqual(1);
-                expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
-                expect(testHostComponent.navbarComponent['_collapse']).toBeTruthy();
-                expect(testHostComponent.navbarComponent['_logoCondense']).toBeTruthy();
-                expect(testHostComponent.navbarComponent._navLinks['_results'][0].show).toHaveBeenCalled();
-                expect(testHostComponent.navbarComponent._navLinks['_results'][1].hide).toHaveBeenCalled();
-            });
-            // tslint:disable-next-line:max-line-length
-            it('should have a condensed logo if the width is less than condensed and takes the width of the more element into account', () => {
-                const link = testHostFixture.debugElement.queryAll(By.css('.link'));
-                spyOnProperty(link[0].nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(300);
-                const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
-                spyOnProperty(linkContainer.nativeElement, 'clientWidth', 'get').and.returnValue(100);
-                const icons = testHostFixture.debugElement.query(By.css('.hc-navbar-right-container'));
-                spyOnProperty(icons.nativeElement, 'scrollWidth', 'get').and.returnValue(400);
-                const logo = testHostFixture.debugElement.query(By.css('.navbar-app'));
-                spyOnProperty(logo.nativeElement, 'scrollWidth', 'get').and.returnValue(200);
-                spyOn(testHostComponent.navbarComponent._navLinks['_results'][0], 'show');
-                spyOn(testHostComponent.navbarComponent._navLinks['_results'][1], 'show');
-
-                const navbar = testHostFixture.debugElement.query(By.css('.hc-navbar'));
-                spyOnProperty(navbar.nativeElement, 'scrollWidth', 'get').and.returnValue(921);
-
-                testHostComponent.navbarComponent._navResize();
-                expect(testHostComponent.navbarComponent._moreList.length).toEqual(1);
-                expect(testHostComponent.navbarComponent['_logoWidth']).toEqual(85);
-                expect(testHostComponent.navbarComponent['_collapse']).toBeTruthy();
-                expect(testHostComponent.navbarComponent['_logoCondense']).toBeTruthy();
-                // expect(testHostComponent.navbarComponent._navLinks['_results'][0].show).toHaveBeenCalled();
-                // expect(testHostComponent.navbarComponent._navLinks['_results'][1].show).toHaveBeenCalled();
             });
         });
     });
