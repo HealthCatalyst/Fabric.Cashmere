@@ -9,7 +9,10 @@
     <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-question-circle-o" [hcPop]="options"></hc-icon>
     <span class="hc-navbar-vertical-separator"></span>
     <div class="hc-navbar-username" *ngIf="user" [hcPop]="user">
-        <span class="hc-text-ellipsis">{{username}}</span>
+        <span>
+            <span>{{username}}</span><br>
+            <span style="color:#c0c5cc">{{organization}}</span>
+        </span>
         <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
     </div>
 </hc-navbar>
