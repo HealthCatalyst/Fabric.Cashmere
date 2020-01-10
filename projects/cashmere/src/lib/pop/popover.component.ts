@@ -10,7 +10,10 @@ import {
     OnDestroy,
     OnInit,
     Optional,
-    Output
+    Output,
+    HostListener,
+    ContentChild
+
 } from '@angular/core';
 import {AnimationEvent} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
@@ -35,10 +38,17 @@ import {
     HcPopoverOpenOptions
 } from './types';
 import {OverlayRef} from '@angular/cdk/overlay';
+import {MenuDirective} from './directives/menu.directive';
 
 // See http://cubic-bezier.com/#.25,.8,.25,1 for reference.
 const DEFAULT_TRANSITION = '100ms linear';
 const EMPTY_TRANSITION = '0ms linear';
+
+export enum KEY_CODE {
+    DOWN_ARROW = 40,
+    UP_ARROW = 38,
+    TAB = 9
+}
 
 @Component({
     selector: 'hc-pop',
@@ -273,6 +283,25 @@ export class HcPopComponent implements OnInit, OnDestroy {
     /** Reference to a focus trap around the popover. */
     private _focusTrap: FocusTrap | undefined;
 
+    /** Reference to the hcMenu (if the popover contains one) */
+    @ContentChild(MenuDirective) _popMenu: MenuDirective;
+
+    @HostListener('window:keydown', ['$event'])
+    _keyEvent(event: KeyboardEvent) {
+        if ( this._open && this._popMenu ) {
+            if (event.keyCode === KEY_CODE.UP_ARROW) {
+                event.stopPropagation();
+                event.preventDefault();
+                this._popMenu.keyFocus(false);
+            }
+            if (event.keyCode === KEY_CODE.DOWN_ARROW || event.keyCode === KEY_CODE.TAB) {
+                event.stopPropagation();
+                event.preventDefault();
+                this._popMenu.keyFocus(true);
+            }
+        }
+    }
+
     constructor(
         public _elementRef: ElementRef,
         private _focusTrapFactory: FocusTrapFactory,
@@ -289,7 +318,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
         }
     }
 
-    popContainerClicked(): void {
+    _popContainerClicked(): void {
         if (this.autoCloseOnContentClick) {
             this.close();
         }
