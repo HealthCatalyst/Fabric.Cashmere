@@ -4,9 +4,9 @@
             <img src="{{brandIcon}}">
         </a>
     </div>
-    <div class="navbar-app" [ngClass]="{'logo-condense': _logoCondense}">
+    <div class="navbar-app">
         <a [routerLink]="homeUri" class="app" *ngIf="appIcon">
-            <img src="{{appIcon}}" (load)="appIconLoaded()">
+            <img src="{{appIcon}}">
         </a>
     </div>
     <div #navlinks class="hc-navbar-link-container">

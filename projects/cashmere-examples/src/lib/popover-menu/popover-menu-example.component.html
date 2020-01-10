@@ -3,23 +3,23 @@
 <hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
     <div hcMenu>
         <a hcMenuItem href="http://example.com">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-snowflake-o"></hc-icon>
-            <span hcMenuText>Snowflake</span>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-floppy-o "></hc-icon>
+            <span hcMenuText>Save document</span>
             <span hcMenuSubText>Ctrl + S</span>
         </a>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-plus"></hc-icon>
-            <span hcMenuText>Add a new one</span>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-arrow-circle-down"></hc-icon>
+            <span hcMenuText>Press an arrow key</span>
         </button>
         <div hcMenuItem hcDivider></div>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-camera-retro"></hc-icon>
-            <span hcMenuText>Hip Photo</span>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-keyboard-o"></hc-icon>
+            <span hcMenuText>Or the tab key</span>
             <span hcMenuSubText>Ctrl + P</span>
         </button>
         <button hcMenuItem disabled>
             <span hcMenuIcon></span>
-            <span hcMenuText>Menu item 3</span>
+            <span hcMenuText>Disabled Item</span>
             <span hcMenuSubText>I'm disabled</span>
         </button>
     </div>
@@ -28,4 +28,5 @@
 <p class="hc-font-sm">
     The directives <code>hcMenu</code>, <code>hcMenuItem</code>, <code>hcMenuIcon</code>,
     <code>hcMenuText</code>, and <code>hcMenuSubText</code> may be used to create menus using the popover component.
+    When a menu is open, the arrow or tab keys may be used to navigate.
 </p>

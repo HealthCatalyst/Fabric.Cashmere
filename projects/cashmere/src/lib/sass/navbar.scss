@@ -5,7 +5,7 @@
 $navbar-color: $charcoal-blue !default;
 $navbar-brand: $primary-brand !default;
 $navbar-height: 53px !default;
-$navbar-app-padding: 0 60px 0 25px !default;
+$navbar-app-padding: 0 50px 0 25px !default;
 $navbar-text: $white !default;
 $navbar-text-inactive: $gray-300 !default;
 $navbar-fixed-shadow: 0px 2px 6px $shadow;
@@ -58,10 +58,6 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     height: 100%;
     padding: $navbar-app-padding;
 
-    &.logo-condense {
-        padding-right: 25px;
-    }
-
     a {
         display: flex;
         align-items: center;
@@ -87,6 +83,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     padding: 0;
     padding-left: 0;
     overflow: hidden;
+    width: 100%;
     @include media-breakpoint-down(md) {
         display: none;
     }
@@ -98,6 +95,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     box-sizing: border-box;
     padding: 22px 30px 0 30px;
     text-align: center;
+    white-space: nowrap;
     color: $navbar-text-inactive;
     border-bottom: 5px solid transparent;
     transition: background-color 0.25s;

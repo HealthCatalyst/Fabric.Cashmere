@@ -43,7 +43,12 @@ a.hc-menu-item {
         opacity: 0.5;
     }
 
-    &:hover:not([disabled]) {
+    &:active,
+    &:hover {
+        color: $offblack;
+    }
+
+    &:focus:not([disabled]) {
         background-color: tint($blue, 70%);
         color: $offblack;
         cursor: pointer;
