@@ -41,7 +41,7 @@ $drawer-toolbar-height: 52px;
 }
 
 @mixin hc-drawer-item() {
-    color: #ffffff;
+    color: $white;
     display: flex;
     flex-direction: row;
     padding: 15px 0 15px 15px;

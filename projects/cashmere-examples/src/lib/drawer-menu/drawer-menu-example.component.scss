@@ -1,3 +1,5 @@
+@import "~@healthcatalyst/cashmere/scss/colors";
+
 .drawer-content {
     height: 200px; /* used to show menu scrolling effect*/
 }
@@ -7,7 +9,7 @@
 }
 
 .fa-plus {
-    color: #00aeff;
+    color: $blue;
     margin: 0 0 0 auto;
 }
 

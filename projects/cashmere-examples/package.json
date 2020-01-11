@@ -10,5 +10,10 @@
         "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
         "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
         "sugar": "^2.0.6"
+    },
+    "ngPackage": {
+        "lib": {
+            "styleIncludePaths": ["dist/cashmere"]
+        }
     }
 }
