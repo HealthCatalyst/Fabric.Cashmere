@@ -168,6 +168,10 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     white-space: nowrap;
 }
 
+@mixin hc-navbar-username-subtext {
+    color: $slate-gray-300;
+}
+
 @mixin hc-navbar-vertical-separator {
     display: flex;
     align-items: center;
