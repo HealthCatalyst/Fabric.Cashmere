@@ -117,7 +117,7 @@ $hc-calendar-weekday-table-font-size: 11px !default;
 }
 
 .hc-calendar-table-header-divider::after {
-    background: #e0e0e0;
+    background: $gray-200;
 }
 
 .hc-calendar-body-label {

@@ -1,3 +1,5 @@
+@import "~@healthcatalyst/cashmere/scss/colors";
+
 .progress-example {
     display: flex;
     margin-top: 20px;
@@ -17,7 +19,7 @@
 }
 
 .progress-component-container.dark-bg {
-    background-color: #384655;
+    background-color: $charcoal-blue;
 }
 
 label,

@@ -1,3 +1,5 @@
+@import "~@healthcatalyst/cashmere/scss/colors";
+
 .example-column {
     display: inline-block;
     vertical-align: top;
@@ -43,7 +45,7 @@
 
 .custom-toast {
     border-radius: 5px;
-    background-color: #ef4767;
+    background-color: $pink;
     color: white;
     padding: 0 20px;
     height: 180px;

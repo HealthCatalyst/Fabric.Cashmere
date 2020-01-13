@@ -1,7 +1,9 @@
+@import "~@healthcatalyst/cashmere/scss/colors";
+
 .preset-selection {
     padding: 10px;
-    border: 1px solid #c0c5cc;
-    background-color: #f0f3f6;
+    border: 1px solid $slate-gray-300;
+    background-color: $slate-gray-100;
     font-size: 14px;
     margin-left: 20px;
     max-width: 250px;

@@ -1,3 +1,5 @@
+@import 'scss/colors';
+
 .api-table li {
     margin: 15px 0;
 }
@@ -27,19 +29,19 @@ p {
     width: 175px;
     padding: 20px;
     resize: both;
-    border: 1px solid #c0c5cc;
+    border: 1px solid $slate-gray-300;
 }
 
 #logo {
-    background-color: #384655;
+    background-color: $charcoal-blue;
     width: 400px;
     margin-top: 15px;
     padding: 10px 40px;
 }
 
 .list-table {
-    border-top: 1px solid #c0c5cc;
-    border-bottom: 1px solid #c0c5cc;
+    border-top: 1px solid $slate-gray-300;
+    border-bottom: 1px solid $slate-gray-300;
     margin-top: 20px;
     margin-bottom: 20px;
 }
