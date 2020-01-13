@@ -10,7 +10,9 @@ export class PicklistFilterLocalService {
                 list.filteredOptions.push(item);
             }
         });
-        list.filteredOptions.sort(this.getSortFunc(list));
+        if (list.sort !== "none") {
+            list.filteredOptions.sort(this.getSortFunc(list));
+        }
     }
 
     public itemHasSearchTokens<T extends SelectListOption>(list: FilterableSelectList<T>, item: T, searchTokens: string[]): boolean {
@@ -21,6 +23,6 @@ export class PicklistFilterLocalService {
 
     private getSortFunc<T extends SelectListOption>(list: FilterableSelectList<T>): (a: any, b: any) => number {
         const sortField = list.codeIsSignificant ? 'code' : 'title';
-        return (a, b) => a.option[sortField].localeCompare(b.option[sortField]);
+        return (a, b) => a.option[sortField].localeCompare(b.option[sortField]) * (list.sort === "asc" ? -1 : 1);
     }
 }
