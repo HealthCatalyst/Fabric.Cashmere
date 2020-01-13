@@ -42,6 +42,8 @@ export interface IPicklistSettings {
     leftHeaderText?: string;
     /** Text for right header. *Defaults to "Selected".* */
     rightHeaderText?: string;
+    /** How to sort options in the pane. Options: `asc` | `desc` | `none`; *Defaults to `none`.* */
+    sort?: string;
     /** Pre-seed the modal with selected options. */
     selected?: IPicklistOptions;
     /** Available options in the picklist. Set with local values or callbacks to retrieve remote values. */
@@ -88,6 +90,7 @@ export class PicklistSettings implements IPicklistSettings {
     public showHeaderText = true;
     public leftHeaderText = 'Available';
     public rightHeaderText = 'Selected';
+    public sort = 'none';
     public selected = {values: new Array<IValueOption>(), valueSets: new Array<IValueSetOption>()}; // options selected in modal
     public options = new PicklistOptionsSource(); // options available for choosing
 }

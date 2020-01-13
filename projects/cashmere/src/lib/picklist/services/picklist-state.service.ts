@@ -26,7 +26,7 @@ export class PicklistStateService {
     public updateValueList(options: IValueOption[], searchTokens: string[] = []) {
         const listOptions = options.map(v => new ValueListOption(v, v.code));
         const companionList = this.pane.companion ? this.pane.companion.valueList : null;
-        this.valueList.codeIsSignificant = this.pane.codeIsSignificant;
+        this.valueList.sort = this.picklist.sort;
         this.updateList(listOptions, this.valueList, companionList, searchTokens);
     }
 
