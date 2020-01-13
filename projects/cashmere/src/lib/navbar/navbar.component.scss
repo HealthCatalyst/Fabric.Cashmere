@@ -35,6 +35,10 @@
         @include hc-navbar-username();
     }
 
+    .hc-navbar-username-subtext {
+        @include hc-navbar-username-subtext();
+    }
+
     .hc-navbar-vertical-separator {
         @include hc-navbar-vertical-separator();
     }
