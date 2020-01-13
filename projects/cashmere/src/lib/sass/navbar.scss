@@ -158,15 +158,18 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 
 @mixin hc-navbar-username {
     @include navbar-item();
-    padding: 20px 15px 0;
+    padding: 2px 15px 0;
     > hc-icon {
         font-size: 12pt;
+        padding-top: 2px;
     }
-    > span {
-        max-width: 130px;
-    }
-    max-width: 150px;
     display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+@mixin hc-navbar-username-subtext {
+    color: $slate-gray-300;
 }
 
 @mixin hc-navbar-vertical-separator {
