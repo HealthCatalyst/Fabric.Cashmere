@@ -34,7 +34,8 @@
         "semantic-release": "semantic-release",
         "prettier": "prettier --write \"**/*.{ts,js,scss,css,md,json}\"",
         "release-mode": "node scripts/release-mode",
-        "dev-mode": "node scripts/dev-mode"
+        "dev-mode": "node scripts/dev-mode",
+        "postinstall": "cd projects/cashmere-examples && npm install"
     },
     "dependencies": {
         "@angular/animations": "6.1.7",
