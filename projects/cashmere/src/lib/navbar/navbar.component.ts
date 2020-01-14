@@ -67,6 +67,8 @@ export class NavbarComponent implements AfterViewInit {
             this._navbarMore.closePopover();
         }
 
+        this._collectNavLinkWidths();
+
         this._moreList = [];
         this._collapse = false;
 
@@ -102,14 +104,18 @@ export class NavbarComponent implements AfterViewInit {
         if (this._linkWidths.length === 0 || this._linkWidths.every(linkWidth => linkWidth === 0)) {
             this._linkWidths = [];
             this._navLinks.forEach(t => {
+                const isHidden = t._hidden;
+                t.show();
                 this._linksTotalWidth += t._getWidth();
                 this._linkWidths.push(t._getWidth());
+                if ( isHidden ) {
+                    t.hide();
+                }
             });
         }
     }
     ngAfterViewInit() {
         setTimeout(() => {
-            this._collectNavLinkWidths();
             this._navResize();
         }, 100);
     }
