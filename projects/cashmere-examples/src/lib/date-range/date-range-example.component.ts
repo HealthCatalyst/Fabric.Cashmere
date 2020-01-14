@@ -8,6 +8,7 @@ import {DateRangeOptions, PresetItem, DateRange} from '@healthcatalyst/cashmere'
 })
 export class DateRangeExampleComponent implements OnInit {
     range: DateRange = {fromDate: new Date(), toDate: new Date()};
+    selected: number | DateRange = this.range;
     options: DateRangeOptions;
     presets: Array<PresetItem> = [];
     presetSelection: string = 'None';
@@ -36,8 +37,10 @@ export class DateRangeExampleComponent implements OnInit {
     updatePreset(index: number | DateRange) {
         if (typeof index === 'number') {
             this.presetSelection = this.presets[index].presetLabel;
+            this.selected = index;
         } else {
             this.presetSelection = 'None';
+            this.selected = this.range;
         }
     }
 
@@ -71,6 +74,10 @@ export class DateRangeExampleComponent implements OnInit {
             },
             {
                 presetLabel: 'This Month',
+                range: {fromDate: currMonthStart, toDate: currMonthEnd}
+            },
+            {
+                presetLabel: '1 Month to Date',
                 range: {fromDate: currMonthStart, toDate: currMonthEnd}
             },
             {
