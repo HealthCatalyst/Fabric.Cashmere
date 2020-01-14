@@ -25,7 +25,7 @@ class MockOverlayService {
 })
 class TestComponent {
     options: DateRangeOptions;
-    range: DateRange = {fromDate: new Date(), toDate: new Date()};
+    range: number | DateRange = {fromDate: new Date(), toDate: new Date()};
     constructor() {
         this.options = {
             presets: [
@@ -105,12 +105,9 @@ describe('DateRangeDirective', () => {
         expect(overlay.open).toHaveBeenCalled();
     });
 
-    it('should return the index of the selected preset', () => {
-        const resetRange = {fromDate: new Date(2000, 1, 1), toDate: new Date(2000, 1, 2)};
-        directive.selectedDate = resetRange;
-
+    it('should set the selected preset from an index', () => {
         spyOn(component, 'updatePreset');
-        component.range = resetRange;
+        component.range = 1;
         fixture.detectChanges();
 
         expect(component.updatePreset).toHaveBeenCalledWith(1);
