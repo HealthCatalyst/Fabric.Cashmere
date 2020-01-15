@@ -48,14 +48,13 @@ describe('RangeComponent', () => {
     });
 
     it("should select a preset radio if the current dates match that preset's range", () => {
-        let radioDebugElement = fixture.debugElement.query(By.directive(RadioButtonComponent));
-        expect(radioDebugElement.componentInstance.checked).toBe(false);
+        expect(component._selectedPreset).toBeFalsy();
 
         component._updateFromDate(new Date(2010, 1, 1));
         component._updateToDate(new Date(2010, 1, 2));
         fixture.detectChanges();
 
-        expect(radioDebugElement.componentInstance.checked).toBe(true);
+        expect(component._selectedPreset).toBe(0);
     });
 
     describe('fromMaxDate', () => {
