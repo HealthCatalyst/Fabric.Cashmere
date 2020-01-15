@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ComponentViewerComponent implements OnInit {
     docItem: DocItem | undefined;
-    sections: Set<string>;
+    sections: string[];
 
     constructor(private activatedRoute: ActivatedRoute, private docItems: DocumentItemsService) {}
 
@@ -26,16 +26,16 @@ export class ComponentViewerComponent implements OnInit {
 
                 if (this.docItem) {
                     const examples = this.docItem.examples;
+                    if (this.docItem.usageDoc) {
+                        availableSections.push('Usage');
+                    }
                     if (examples && examples.length > 0) {
-                        availableSections = ['Examples'];
+                        availableSections.push('Examples');
                     }
                     if (!this.docItem.hideApi) {
                         availableSections.push('API');
                     }
-                    if (this.docItem.usageDoc) {
-                        availableSections.push('Usage');
-                    }
-                    this.sections = new Set<string>(availableSections);
+                    this.sections = availableSections.slice();
                 }
             });
     }

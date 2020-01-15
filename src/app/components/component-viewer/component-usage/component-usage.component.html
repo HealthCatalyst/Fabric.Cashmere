@@ -1,3 +1,3 @@
-<hc-tile>
-    <hc-doc-viewer documentUrl="assets/docs/usage/{{componentViewer.docItem?.id}}.html"></hc-doc-viewer>
+<hc-tile *ngIf="componentViewer.docItem.usageDoc">
+    <hc-doc-viewer documentUrl="assets/docs/usage/{{ componentViewer.docItem?.id }}.html"></hc-doc-viewer>
 </hc-tile>
