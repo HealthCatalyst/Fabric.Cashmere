@@ -5,6 +5,7 @@ export interface DocItem {
     name: string;
     category: 'forms' | 'nav' | 'layout' | 'buttons' | 'popups' | 'table' | 'pipes';
     examples?: string[];
+    usageExamples?: string[];
     usageDoc?: boolean;
     hideApi?: boolean;
 }
@@ -25,6 +26,7 @@ const docs: DocItem[] = [
         name: 'Button',
         category: 'buttons',
         examples: ['button-type', 'button-split', 'button-size', 'button-anchor', 'button-link', 'button-icon'],
+        usageExamples: ['button'],
         usageDoc: true
     },
     {

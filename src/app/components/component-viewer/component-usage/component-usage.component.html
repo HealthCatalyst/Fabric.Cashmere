@@ -1,3 +1,13 @@
 <hc-tile *ngIf="componentViewer.docItem.usageDoc">
+    <div *ngIf="componentViewer.docItem.usageExamples">
+        <h3 class="examples-title">
+            <span>Quick Example</span>
+        </h3>
+        <hc-usage-example-viewer
+            *ngFor="let example of componentViewer.docItem.usageExamples"
+            [example]="example"
+        ></hc-usage-example-viewer>
+    </div>
+
     <hc-doc-viewer documentUrl="assets/docs/usage/{{ componentViewer.docItem?.id }}.html"></hc-doc-viewer>
 </hc-tile>

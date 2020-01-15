@@ -15,6 +15,7 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 import xml from 'highlight.js/lib/languages/xml';
 import scss from 'highlight.js/lib/languages/scss';
 import typescript from 'highlight.js/lib/languages/typescript';
+import {UsageExampleViewerComponent} from './component-viewer/component-examples/usage-example-viewer/usage-example-viewer.component';
 
 /**
  * Import every language you wish to highlight here
@@ -45,6 +46,7 @@ export function hljsLanguages() {
         DocumentViewerComponent,
         ComponentExamplesComponent,
         ExampleViewerComponent,
+        UsageExampleViewerComponent,
         ComponentUsageComponent
     ]
 })

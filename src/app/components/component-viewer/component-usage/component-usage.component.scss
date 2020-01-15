@@ -1,3 +1,26 @@
+@import 'scss/colors';
+
 hc-tile {
     margin-top: 20px;
+}
+
+.examples-title {
+    color: $dark-blue;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+}
+
+::ng-deep h5 {
+    margin-bottom: 5px;
+    margin-top: 30px;
+}
+
+::ng-deep pre {
+    padding: 2px;
+}
+
+::ng-deep code {
+    display: inline-block;
 }

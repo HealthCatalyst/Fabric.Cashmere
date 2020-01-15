@@ -1,16 +1,15 @@
 import {Component, Input, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {titleCase} from 'change-case';
-import stackblitz from '@stackblitz/sdk';
 import {EXAMPLE_COMPONENTS} from '@healthcatalyst/cashmere-examples';
 import {ApplicationInsightsService} from '../../../../shared/application-insights/application-insights.service';
 
 @Component({
-    selector: 'hc-example-viewer',
-    templateUrl: 'example-viewer.component.html',
-    styleUrls: ['example-viewer.component.scss']
+    selector: 'hc-usage-example-viewer',
+    templateUrl: 'usage-example-viewer.component.html',
+    styleUrls: ['usage-example-viewer.component.scss']
 })
-export class ExampleViewerComponent implements OnInit {
+export class UsageExampleViewerComponent implements OnInit {
     @ViewChild('exampleContainer', {read: ViewContainerRef})
     exampleContainer: ViewContainerRef;
 
@@ -92,27 +91,12 @@ export class ExampleViewerComponent implements OnInit {
             .sort((a, b) => b.name.localeCompare(a.name));
     }
 
-    async launchStackBlitz() {
-        const exampleFiles = this.allExampleFiles;
-        const containerPath = `src/app/example-container.component.ts`;
-        exampleFiles[containerPath] = exampleFiles[containerPath].replace(/hc-example/g, `hc-${this.example}-example`);
-        const dependencies = JSON.parse(exampleFiles['package.json']).dependencies;
+    getHtmlFile() {
+        if (!this.exampleFiles || !this.exampleFiles.length) {
+            return {};
+        }
 
-        this.appInsights.logEvent(this._example, 'StackBlitz');
-
-        await stackblitz.openProject(
-            {
-                files: exampleFiles,
-                template: 'angular-cli',
-                title: this.exampleTitle,
-                description: this.exampleTitle,
-                dependencies: dependencies
-            },
-            {
-                openFile: `src/app/${this.example}/${this.example}-example.component.html`,
-                hideDevTools: true
-            }
-        );
+        return this.exampleFiles.find(f => f.name.endsWith('.html'));
     }
 }
 

@@ -1,0 +1,19 @@
+@import 'scss/colors';
+@import 'scss/functions';
+@import 'scss/mixins.scss';
+@import '~highlight.js/styles/github.css';
+
+:host {
+    display: block;
+    margin-bottom: 40px;
+}
+
+pre {
+    overflow: hidden;
+    padding: 0;
+
+    code {
+        margin-bottom: -15px;
+        margin-top: -15px;
+    }
+}
