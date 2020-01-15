@@ -106,6 +106,8 @@ For a split button (a button with a caret and a dropdown menu), replace `<button
 
 ##### Methods
 
+First, get a reference to the element.
+
 ```html
 <button hc-button #buttonElement></button>
 
