@@ -77,7 +77,14 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
             this._skipRangeCheck = true;
             this._fromDate = this._presetValues[index].range.fromDate;
             this._toDate = this._presetValues[index].range.toDate;
+
             setTimeout(() => {
+                if ( this._fromDate ) {
+                    this.calendarWrappers.first.hcCalendar.activeDate = this._fromDate;
+                }
+                if ( this._toDate ) {
+                    this.calendarWrappers.last.hcCalendar.activeDate = this._toDate;
+                }
                 this._skipRangeCheck = false;
             });
         }

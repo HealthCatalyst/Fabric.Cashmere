@@ -77,7 +77,7 @@ export class DateRangeExampleComponent implements OnInit {
                 range: {fromDate: currMonthStart, toDate: currMonthEnd}
             },
             {
-                presetLabel: '1 Month to Date',
+                presetLabel: '1 Month to End',
                 range: {fromDate: currMonthStart, toDate: currMonthEnd}
             },
             {
