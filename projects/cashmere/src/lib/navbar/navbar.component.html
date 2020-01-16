@@ -1,7 +1,13 @@
 <nav #navbar class="hc-navbar" [ngClass]="{'fixed-top': fixedTop}">
     <div class="navbar-brand">
         <a [routerLink]="homeUri" class="brand">
-            <img src="{{brandIcon}}">
+            <img *ngIf="_brandIconType() == 'string'" src="{{brandIcon}}">
+            <hc-icon
+                *ngIf="_brandIconType() != 'string'"
+                [fontSet]="_brandIconSet()"
+                [fontIcon]="_brandIconGlyph()"
+                [ngStyle]="{height: _brandIconSize(), 'font-size': _brandIconSize()}">
+            </hc-icon>
         </a>
     </div>
     <div class="navbar-app">
