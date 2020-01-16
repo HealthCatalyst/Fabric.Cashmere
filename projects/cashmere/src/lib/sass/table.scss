@@ -132,6 +132,12 @@ $row-selected-border-color: $white;
     padding: $cell-padding-condensed;
 }
 
+@mixin hc-small-table-header-sortable() {
+    &:after {
+        bottom: 7px;
+    }
+}
+
 @mixin hc-action-table-row() {
     &:hover {
         background-color: $row-color-action-hover;
