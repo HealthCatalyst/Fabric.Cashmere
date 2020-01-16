@@ -37,6 +37,10 @@
     td,
     th {
         @include hc-small-table-cell();
+
+        &.hc-col-sortable, &.hc-col-sortable-left {
+            @include hc-small-table-header-sortable();
+        }
     }
 }
 
@@ -136,12 +140,12 @@
     }
 }
 
-th.hc-col-sortable,
-th.hc-col-sortable-left {
+.hc-table th.hc-col-sortable,
+.hc-table th.hc-col-sortable-left {
     @include hc-table-header-sortable();
 }
 
-th.hc-col-sortable-left {
+.hc-table th.hc-col-sortable-left {
     @include hc-table-header-sortable-left();
 }
 
