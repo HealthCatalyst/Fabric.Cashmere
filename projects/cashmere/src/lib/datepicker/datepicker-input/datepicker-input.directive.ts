@@ -329,7 +329,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
         if (date) {
             let inputString: string = this._elementRef.nativeElement.value;
             /** Skip this check if the input string contains any 3+ digit numerical values - assumed to be a year */
-            if (!inputString.match('[1-9][0-9][0-9]')) {
+            if (!inputString.match(/[1-9][0-9][0-9]/g)) {
                 let currentDate = new Date();
                 if (date.getFullYear() >= currentDate.getFullYear() + 30) {
                     date.setFullYear(date.getFullYear() - 100);
