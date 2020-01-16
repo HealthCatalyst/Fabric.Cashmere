@@ -323,6 +323,22 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
 
     _onInput(value: string) {
         let date = this._dateAdapter.parse(value, this._dateFormats.parse.dateInput);
+        /** Two-digit year input conversion method for IE
+         * Based on the current year, assume that the four-digit year date should be in
+         * either the next 30 years, or the preceding 70 years */
+        if (date) {
+            let inputString: string = this._elementRef.nativeElement.value;
+            /** Skip this check if the input string contains any 3+ digit numerical values - assumed to be a year */
+            if (!inputString.match(/[1-9][0-9][0-9]/g)) {
+                let currentDate = new Date();
+                if (date.getFullYear() >= currentDate.getFullYear() + 30) {
+                    date.setFullYear(date.getFullYear() - 100);
+                } else if (date.getFullYear() < currentDate.getFullYear() - 70) {
+                    date.setFullYear(date.getFullYear() + 100);
+                }
+            }
+        }
+
         this._lastValueValid = !date || this._dateAdapter.isValid(date);
         date = this._getValidDateOrNull(date);
 
