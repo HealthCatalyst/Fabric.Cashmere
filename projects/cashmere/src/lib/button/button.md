@@ -40,6 +40,8 @@ Use this instead of the `buttonStyle` attribute to designate this as a textless 
 </button>
 ```
 
+##### Split Button Attributes
+
 **[autoCloseMenuOnClick]**
 
 `autoCloseMenuOnClick: boolean = true`
