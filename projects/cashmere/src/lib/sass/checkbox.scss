@@ -54,7 +54,7 @@
 
 @mixin hc-checkbox-overlay-disabled() {
     background-color: $gray-200;
-    border: 2px solid $gray-300 !important;
+    border: 2px solid $gray-300;
 }
 
 @mixin hc-checkbox-overlay-hover() {
