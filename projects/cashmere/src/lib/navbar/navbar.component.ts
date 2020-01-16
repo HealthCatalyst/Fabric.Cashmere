@@ -17,6 +17,7 @@ import {NavbarLinkComponent} from './navbar-link/navbar-link.component';
 import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu.component';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {HcIcon} from '../icon/icon.component';
 
 /** The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. */
 @Component({
@@ -34,9 +35,9 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     @Input()
     appIcon: string = '';
 
-    /** Url to brand icon image file */
+    /** Either url to brand icon image file or HcIcon object for a font glyph */
     @Input()
-    brandIcon: string = '';
+    brandIcon: string | HcIcon = '';
 
     /** Router link triggered when home icon is clicked */
     @Input()
@@ -167,5 +168,32 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
         if (this._navbarMore) {
             this._navbarMore.closePopover();
         }
+    }
+
+    _brandIconType(): string {
+        return typeof this.brandIcon;
+    }
+
+    _brandIconSet(): string {
+        if ( this.brandIcon && typeof this.brandIcon !== 'string' ) {
+            return this.brandIcon.fontSet;
+        } else {
+            return '';
+        }
+    }
+
+    _brandIconGlyph(): string {
+        if ( this.brandIcon && typeof this.brandIcon !== 'string' ) {
+            return this.brandIcon.fontIcon;
+        } else {
+            return '';
+        }
+    }
+
+    _brandIconSize(): string {
+        if ( this.brandIcon && typeof this.brandIcon !== 'string' && this.brandIcon.fontSize ) {
+            return this.brandIcon.fontSize + "px";
+        }
+        return "37px";
     }
 }
