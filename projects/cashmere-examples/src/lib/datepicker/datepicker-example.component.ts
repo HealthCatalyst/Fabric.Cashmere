@@ -10,4 +10,6 @@ export class DatepickerExampleComponent {
     date2 = new Date();
     date3 = new Date("2010-01-01T20:15:00.00");
     hourCycle = false;
+
+    maxStr: string = this.date2.toISOString();
 }
