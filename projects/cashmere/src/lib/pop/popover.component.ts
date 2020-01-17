@@ -226,6 +226,16 @@ export class HcPopComponent implements OnInit, OnDestroy {
     }
     private _closeTransition = DEFAULT_TRANSITION;
 
+    /** A link to an associated parent menu that will be closed when this menu closes. */
+    @Input()
+    get parent(): HcPopComponent {
+        return this._parentMenu;
+    }
+    set parent(val: HcPopComponent) {
+        this._parentMenu = val;
+    }
+    private _parentMenu: HcPopComponent;
+
     /** Should the popover animate? *Defaults to `true`.* */
     @Input() shouldAnimate = true;
 
@@ -283,12 +293,15 @@ export class HcPopComponent implements OnInit, OnDestroy {
     /** Reference to a focus trap around the popover. */
     private _focusTrap: FocusTrap | undefined;
 
+    /** If this menu has children, keep track of whether any of them are open */
+    public _subMenuOpen: boolean = false;
+
     /** Reference to the hcMenu (if the popover contains one) */
     @ContentChild(MenuDirective) _popMenu: MenuDirective;
 
     @HostListener('window:keydown', ['$event'])
     _keyEvent(event: KeyboardEvent) {
-        if ( this._open && this._popMenu ) {
+        if ( this._open && this._popMenu && !this._subMenuOpen ) {
             if (event.keyCode === KEY_CODE.UP_ARROW) {
                 event.stopPropagation();
                 event.preventDefault();
@@ -330,14 +343,20 @@ export class HcPopComponent implements OnInit, OnDestroy {
         this._dispatchActionNotification(notification);
     }
 
-    /** Close this popover. */
+    /** Close this popover and its parent (if linked). */
     close(value?: any): void {
         const notification = new PopoverNotification(NotificationAction.CLOSE, value);
         this._dispatchActionNotification(notification);
+        if ( this.parent ) {
+            this.parent.close();
+        }
     }
 
     /** Toggle this popover open or closed. */
     toggle(): void {
+        if ( this.parent ) {
+            this.parent._subMenuOpen = !this.isOpen();
+        }
         const notification = new PopoverNotification(NotificationAction.TOGGLE);
         this._dispatchActionNotification(notification);
     }

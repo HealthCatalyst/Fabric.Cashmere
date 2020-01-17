@@ -310,6 +310,9 @@ export class HcPopoverAnchoringService implements OnDestroy {
     private _saveOpenedState(): void {
         if (!this._popoverOpen) {
             this._popover._open = this._popoverOpen = true;
+            if ( this._popover.parent ) {
+                this._popover.parent._subMenuOpen = true;
+            }
 
             this.popoverOpened.next();
             if (typeof this._context === 'undefined') {
@@ -324,7 +327,9 @@ export class HcPopoverAnchoringService implements OnDestroy {
     private _saveClosedState(value?: any): void {
         if (this._popoverOpen) {
             this._popover._open = this._popoverOpen = false;
-
+            if ( this._popover.parent ) {
+                this._popover.parent._subMenuOpen = false;
+            }
             this.popoverClosed.next(value);
             this._popover.closed.emit(value);
         }

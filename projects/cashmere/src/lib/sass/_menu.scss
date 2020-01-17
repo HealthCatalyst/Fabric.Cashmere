@@ -66,5 +66,10 @@ a.hc-menu-item {
         margin-left: 15px;
         color: $gray-300;
         text-align: right;
+
+        hc-icon {
+            margin-right: 0;
+            color: $offblack;
+        }
     }
 }
