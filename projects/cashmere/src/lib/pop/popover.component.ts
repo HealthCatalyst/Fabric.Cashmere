@@ -11,15 +11,14 @@ import {
     OnInit,
     Optional,
     Output,
-    HostListener,
-    ContentChild
+    ContentChildren,
+    QueryList
 
 } from '@angular/core';
 import {AnimationEvent} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
 import {FocusTrap, FocusTrapFactory} from '@angular/cdk/a11y';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
-
 import {transformPopover} from './popover.animations';
 import {NotificationAction, PopoverNotification, PopoverNotificationService} from './notification.service';
 import {
@@ -38,17 +37,12 @@ import {
     HcPopoverOpenOptions
 } from './types';
 import {OverlayRef} from '@angular/cdk/overlay';
-import {MenuDirective} from './directives/menu.directive';
+import {MenuItemDirective} from './directives/menu-item.directive';
+import {Subject} from 'rxjs';
 
 // See http://cubic-bezier.com/#.25,.8,.25,1 for reference.
 const DEFAULT_TRANSITION = '100ms linear';
 const EMPTY_TRANSITION = '0ms linear';
-
-export enum KEY_CODE {
-    DOWN_ARROW = 40,
-    UP_ARROW = 38,
-    TAB = 9
-}
 
 @Component({
     selector: 'hc-pop',
@@ -226,6 +220,24 @@ export class HcPopComponent implements OnInit, OnDestroy {
     }
     private _closeTransition = DEFAULT_TRANSITION;
 
+    /** A link to an associated parent menu that will be closed when this menu closes. */
+    @Input()
+    get parent(): HcPopComponent {
+        return this._parentMenu;
+    }
+    set parent(val: HcPopComponent) {
+        if ( this._parentMenu ) {
+            this._parentClose.unsubscribe();
+        }
+        this._parentMenu = val;
+        this._parentClose = this._parentMenu.closed.subscribe((value) => {
+            if ( this.isOpen() ) {
+                this.close();
+            }
+        });
+    }
+    private _parentMenu: HcPopComponent;
+
     /** Should the popover animate? *Defaults to `true`.* */
     @Input() shouldAnimate = true;
 
@@ -283,24 +295,17 @@ export class HcPopComponent implements OnInit, OnDestroy {
     /** Reference to a focus trap around the popover. */
     private _focusTrap: FocusTrap | undefined;
 
-    /** Reference to the hcMenu (if the popover contains one) */
-    @ContentChild(MenuDirective) _popMenu: MenuDirective;
+    /** If this menu has children, keep track of whether any of them are open */
+    public _subMenuOpen: boolean = false;
 
-    @HostListener('window:keydown', ['$event'])
-    _keyEvent(event: KeyboardEvent) {
-        if ( this._open && this._popMenu ) {
-            if (event.keyCode === KEY_CODE.UP_ARROW) {
-                event.stopPropagation();
-                event.preventDefault();
-                this._popMenu.keyFocus(false);
-            }
-            if (event.keyCode === KEY_CODE.DOWN_ARROW || event.keyCode === KEY_CODE.TAB) {
-                event.stopPropagation();
-                event.preventDefault();
-                this._popMenu.keyFocus(true);
-            }
-        }
-    }
+    /** Reference to subscription of parent popover close events */
+    private _parentClose: any = new Subject();
+
+    /** Block this popover from closing its parent on close */
+    _parentCloseBlock: boolean = false;
+
+    /** Reference to hcMenuItems (if the popover contains them) */
+    @ContentChildren(MenuItemDirective, {descendants: true}) _menuItems: QueryList<MenuItemDirective>;
 
     constructor(
         public _elementRef: ElementRef,
@@ -316,6 +321,9 @@ export class HcPopComponent implements OnInit, OnDestroy {
         if (this._notifications) {
             this._notifications.dispose();
         }
+        if (this._parentMenu) {
+            this._parentClose.unsubscribe();
+        }
     }
 
     _popContainerClicked(): void {
@@ -330,14 +338,20 @@ export class HcPopComponent implements OnInit, OnDestroy {
         this._dispatchActionNotification(notification);
     }
 
-    /** Close this popover. */
+    /** Close this popover and its parent (if linked). */
     close(value?: any): void {
         const notification = new PopoverNotification(NotificationAction.CLOSE, value);
         this._dispatchActionNotification(notification);
+        if (this.parent && !this._parentCloseBlock) {
+            this.parent.close();
+        }
     }
 
     /** Toggle this popover open or closed. */
     toggle(): void {
+        if ( this.parent ) {
+            this.parent._subMenuOpen = !this.isOpen();
+        }
         const notification = new PopoverNotification(NotificationAction.TOGGLE);
         this._dispatchActionNotification(notification);
     }
@@ -399,6 +413,34 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
         this._yAlignClass = this._classList['hc-pop-show-arrow'] ? `hc-pop-arrow-y-${yAlign}` : '';
         this._xAlignClass = this._classList['hc-pop-show-arrow'] ? `hc-pop-arrow-x-${xAlign}` : '';
+    }
+
+    /** Set the focus of an hcMenu based on a keyboard arrow press */
+    _keyFocus(downPress: boolean) {
+        let itemArray = this._menuItems.toArray();
+        if (!downPress) {
+            itemArray.reverse();
+        }
+        let selected = false;
+
+        // Determine if any item in the menu is currently focused, and select the next (or previous)
+        for (let i = 0; i < itemArray.length; i++) {
+            if (selected && !itemArray[i].ref.nativeElement.classList.contains('hc-divider') && !itemArray[i].ref.nativeElement.disabled) {
+                itemArray[i].focus();
+                return;
+            }
+            if (itemArray[i].ref.nativeElement === document.activeElement) {
+                selected = true;
+            }
+        }
+
+        // If no item is focused, selected the first (or last) item that isn't a divider or disabled
+        for (let i = 0; i < itemArray.length; i++) {
+            if (!itemArray[i].ref.nativeElement.classList.contains('hc-divider') && !itemArray[i].ref.nativeElement.disabled) {
+                itemArray[i].focus();
+                return;
+            }
+        }
     }
 
     /** Move the focus inside the focus trap and remember where to return later. */

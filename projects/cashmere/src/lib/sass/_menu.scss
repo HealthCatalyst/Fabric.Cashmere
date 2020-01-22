@@ -54,6 +54,19 @@ a.hc-menu-item {
         cursor: pointer;
     }
 
+    &.hc-menu-item-submenu {
+        padding-right: 40px;
+    }
+
+    &.hc-menu-item-submenu:after {
+        content: '';
+        background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiMzMzM7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5BcnRib2FyZCAxPC90aXRsZT48cGF0aCBpZD0iUGF0aF8xMjIyMSIgZGF0YS1uYW1lPSJQYXRoIDEyMjIxIiBjbGFzcz0iY2xzLTEiIGQ9Ik0xOS42NCwxNS4yOWExLDEsMCwwLDAtLjMyLS43NkwxMS44Miw3QTEuMDYsMS4wNiwwLDAsMCwxMCw3Ljc5djE1YTEuMDgsMS4wOCwwLDAsMCwxLjA3LDEuMDcsMS4wNSwxLjA1LDAsMCwwLC43NS0uMzJsNy41LTcuNUExLDEsMCwwLDAsMTkuNjQsMTUuMjlaIi8+PC9zdmc+');
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 10px;
+    }
+
     .hc-menu-icon {
         font-size: 16px;
         height: 16px;
@@ -66,5 +79,10 @@ a.hc-menu-item {
         margin-left: 15px;
         color: $gray-300;
         text-align: right;
+
+        hc-icon {
+            margin-right: 0;
+            color: $offblack;
+        }
     }
 }
