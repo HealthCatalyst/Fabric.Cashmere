@@ -26,11 +26,11 @@ export class ComponentViewerComponent implements OnInit {
 
                 if (this.docItem) {
                     const examples = this.docItem.examples;
-                    if (this.docItem.usageDoc) {
-                        availableSections.push('Usage');
-                    }
                     if (examples && examples.length > 0) {
                         availableSections.push('Examples');
+                    }
+                    if (this.docItem.usageDoc) {
+                        availableSections.push('Usage');
                     }
                     if (!this.docItem.hideApi) {
                         availableSections.push('API');
