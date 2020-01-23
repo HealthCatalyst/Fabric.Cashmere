@@ -23,3 +23,12 @@
         @include hc-select-input-invalid();
     }
 }
+
+/* IE won't render borders for our inputs correctly, so default to a thicker width */
+@media all and (-ms-high-contrast:none) {
+    .hc-select-input,
+    .hc-select-input-invalid,
+    .hc-select-input[disabled] {
+        @include hc-select-border-override();
+    }
+}
