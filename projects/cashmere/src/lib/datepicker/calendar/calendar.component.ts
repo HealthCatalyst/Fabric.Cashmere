@@ -139,9 +139,24 @@ export class CalendarHeaderComponent {
     }
 
     _todayEnabled(): boolean {
+        let minDate;
+        let maxDate;
+        let today = new Date( this._dateAdapter.today().toDateString() );
+
+        /** Normalize the compare dates to all be on the first day of the month because we are only concerned
+         * about whether today falls outside of the month than min or max is in */
+        today.setDate(1);
+        if ( this.calendar.minDate ) {
+            minDate = new Date( this.calendar.minDate.toDateString() );
+            minDate.setDate(1);
+        }
+        if ( this.calendar.maxDate ) {
+            maxDate = new Date( this.calendar.maxDate.toDateString() );
+            maxDate.setDate(1);
+        }
         return (
-            (!this.calendar.minDate || this._dateAdapter.compareDate(this.calendar.minDate, this._dateAdapter.today()) < 1) &&
-            (!this.calendar.maxDate || this._dateAdapter.compareDate(this.calendar.maxDate, this._dateAdapter.today()) > -1)
+            (!minDate || this._dateAdapter.compareDate(minDate, today) < 1) &&
+            (!maxDate || this._dateAdapter.compareDate(maxDate, today) > -1)
         );
     }
 

@@ -1,41 +1,42 @@
-import {Directive, HostBinding, ContentChildren, QueryList} from '@angular/core';
-import {MenuItemDirective} from './menu-item.directive';
+import {Directive, HostBinding, ContentChildren, QueryList, AfterContentInit, OnDestroy} from '@angular/core';
+import {HcPopoverAnchorDirective} from './popover-anchor.directive';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 /** The `hcMenu` directive provides a standard way of displaying a series of selectable elements in a popover. */
 @Directive({
     selector: '[hcMenu]'
 })
-export class MenuDirective {
+export class MenuDirective implements AfterContentInit, OnDestroy {
     @HostBinding('class.hc-menu-panel')
     _hostClass = true;
 
-    @ContentChildren(MenuItemDirective)
-    _menuItems: QueryList<MenuItemDirective>;
+    @ContentChildren(HcPopoverAnchorDirective)
+    _subMenus: QueryList<HcPopoverAnchorDirective>;
 
-    keyFocus(downPress: boolean) {
-        let itemArray = this._menuItems.toArray();
-        if (!downPress) {
-            itemArray.reverse();
-        }
-        let selected = false;
+    private unsubscribe$ = new Subject<void>();
 
-        // Determine if any item in the menu is currently focused, and select the next (or previous)
-        for (let i = 0; i < itemArray.length; i++) {
-            if (selected && !itemArray[i].ref.nativeElement.classList.contains('hc-divider') && !itemArray[i].ref.nativeElement.disabled) {
-                itemArray[i].focus();
-                return;
-            }
-            if (itemArray[i].ref.nativeElement === document.activeElement) {
-                selected = true;
-            }
-        }
+    ngAfterContentInit() {
+        this._subMenus.forEach((anchor: HcPopoverAnchorDirective) => {
+            anchor._hasSubmenu = true;
+            // Subscribe to submenu open events so we can close any other submenus currently open
+            anchor.popoverOpened.pipe(takeUntil(this.unsubscribe$)).subscribe(() => {
+                this._subMenus.forEach((sub: HcPopoverAnchorDirective) => {
+                    if ( sub !== anchor && sub.attachedPopover.isOpen() ) {
+                        sub.attachedPopover._parentCloseBlock = true;
+                        sub.closePopover();
+                        let closeSub: Subject<any> = sub.attachedPopover.afterClose.subscribe(() => {
+                            sub.attachedPopover._parentCloseBlock = false;
+                            closeSub.unsubscribe();
+                        });
+                    }
+                });
+            });
+        });
+    }
 
-        // If no item is focused, selected the first (or last) item that isn't a divider or disabled
-        for (let i = 0; i < itemArray.length; i++) {
-            if (!itemArray[i].ref.nativeElement.classList.contains('hc-divider') && !itemArray[i].ref.nativeElement.disabled) {
-                itemArray[i].focus();
-                return;
-            }
-        }
+    ngOnDestroy() {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 }

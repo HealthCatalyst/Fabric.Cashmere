@@ -1,4 +1,15 @@
-import {Directive, ElementRef, EventEmitter, Input, OnInit, OnDestroy, Output, ViewContainerRef, HostListener} from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnInit,
+    OnDestroy,
+    Output,
+    ViewContainerRef,
+    HostListener,
+    HostBinding
+} from '@angular/core';
 import {Subject, merge} from 'rxjs';
 import {tap, takeUntil} from 'rxjs/operators';
 
@@ -7,6 +18,14 @@ import {getInvalidPopoverError, getInvalidTriggerError} from '../popover.errors'
 import {HcPopoverAnchoringService} from '../popover-anchoring.service';
 import {HcPopoverOpenOptions, HcPopoverTrigger, VALID_TRIGGER} from '../types';
 import {PopoverNotification, PopoverNotificationService, NotificationAction} from '../notification.service';
+
+export enum KEY_CODE {
+    DOWN_ARROW = 40,
+    RIGHT_ARROW = 39,
+    UP_ARROW = 38,
+    LEFT_ARROW = 37,
+    TAB = 9
+}
 
 @Directive({
     selector: '[hcPop]',
@@ -52,6 +71,9 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
         this._anchoring._context = val;
     }
 
+    @HostBinding('class.hc-menu-item-submenu')
+    _hasSubmenu = false;
+
     /** Emits when the popover is opened. */
     @Output() popoverOpened = new EventEmitter<void>();
 
@@ -86,6 +108,11 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
 
     @HostListener('click', ['$event'])
     _showOrHideOnClick($event: MouseEvent): void {
+        if (this._hasSubmenu && event) {
+            // Prevent the popover component from auto closing on click if a submenu was selected
+            event.stopPropagation();
+            event.preventDefault();
+        }
         if (this.trigger !== 'click') {
             return;
         }
@@ -135,6 +162,31 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
             return;
         }
         this.closePopover();
+    }
+
+    /** Handle keyboard navigation of a hcMenu using the arrow or tab keys */
+    @HostListener('window:keydown', ['$event'])
+    _keyEvent(event: KeyboardEvent) {
+        if (this.attachedPopover.isOpen() && this.attachedPopover._menuItems.length > 0 && !this.attachedPopover._subMenuOpen) {
+            if (event.keyCode === KEY_CODE.UP_ARROW) {
+                event.stopPropagation();
+                event.preventDefault();
+                this.attachedPopover._keyFocus(false);
+            } else if (event.keyCode === KEY_CODE.DOWN_ARROW || event.keyCode === KEY_CODE.TAB) {
+                event.stopPropagation();
+                event.preventDefault();
+                this.attachedPopover._keyFocus(true);
+            } else if (this.attachedPopover.parent && this.attachedPopover.parent.isOpen() && event.keyCode === KEY_CODE.LEFT_ARROW) {
+                event.stopPropagation();
+                event.preventDefault();
+                this.closePopover();
+            }
+        }
+        if (this._hasSubmenu && this._elementRef.nativeElement === document.activeElement && event.keyCode === KEY_CODE.RIGHT_ARROW) {
+            event.stopPropagation();
+            event.preventDefault();
+            this.openPopover();
+        }
     }
 
     /** Gets whether the popover is presently open. */

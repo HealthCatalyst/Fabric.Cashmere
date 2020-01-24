@@ -2,25 +2,82 @@
 
 <hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
     <div hcMenu>
-        <a hcMenuItem href="http://example.com">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-floppy-o "></hc-icon>
+        <a hcMenuItem href="http://example.com" target="_blank">
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-floppy-o"></hc-icon>
             <span hcMenuText>Save document</span>
             <span hcMenuSubText>Ctrl + S</span>
         </a>
-        <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-arrow-circle-down"></hc-icon>
-            <span hcMenuText>Press an arrow key</span>
+        <button hcMenuItem [hcPop]="editmenu">
+            <span hcMenuIcon></span>
+            <span hcMenuText>Edit document</span>
+            <!-- hcMenuItems with a subMenu will automatically add a caret to the right -->
         </button>
-        <div hcMenuItem hcDivider></div>
-        <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-keyboard-o"></hc-icon>
-            <span hcMenuText>Or the tab key</span>
-            <span hcMenuSubText>Ctrl + P</span>
+        <button hcMenuItem [hcPop]="themeMenu">
+            <span hcMenuIcon></span>
+            <span hcMenuText>Page theme</span>
         </button>
         <button hcMenuItem disabled>
             <span hcMenuIcon></span>
             <span hcMenuText>Disabled Item</span>
             <span hcMenuSubText>I'm disabled</span>
+        </button>
+        <div hcMenuItem hcDivider></div>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-arrow-circle-down"></hc-icon>
+            <span hcMenuText>Press an arrow key</span>
+        </button>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-keyboard-o"></hc-icon>
+            <span hcMenuText>Or the tab key</span>
+            <span hcMenuSubText>Ctrl + P</span>
+        </button>
+
+    </div>
+</hc-pop>
+
+<hc-pop #editmenu [autoCloseOnContentClick]="true" [showArrow]="false" [parent]="menu" horizontalAlign="after" verticalAlign="start">
+    <div hcMenu>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-cut"></hc-icon>
+            <span hcMenuText>Cut</span>
+            <span hcMenuSubText>Ctrl + X</span>
+        </button>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-copy"></hc-icon>
+            <span hcMenuText>Copy</span>
+            <span hcMenuSubText>Ctrl + C</span>
+        </button>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-paste"></hc-icon>
+            <span hcMenuText>Paste</span>
+            <span hcMenuSubText>Ctrl + V</span>
+        </button>
+        <div hcMenuItem hcDivider></div>
+        <button hcMenuItem [hcPop]="searchMenu">
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-search"></hc-icon>
+            <span hcMenuText>Search</span>
+        </button>
+    </div>
+</hc-pop>
+
+<hc-pop #searchMenu [autoCloseOnContentClick]="true" [showArrow]="false" [parent]="editmenu" horizontalAlign="after" verticalAlign="start">
+    <div hcMenu>
+        <button hcMenuItem>
+            <span hcMenuText>Search this page</span>
+        </button>
+        <button hcMenuItem>
+            <span hcMenuText>Search all pages</span>
+        </button>
+    </div>
+</hc-pop>
+
+<hc-pop #themeMenu [autoCloseOnContentClick]="true" [showArrow]="false" [parent]="menu" horizontalAlign="after" verticalAlign="start">
+    <div hcMenu>
+        <button hcMenuItem>
+            <span hcMenuText>Light mode</span>
+        </button>
+        <button hcMenuItem>
+            <span hcMenuText>Dark mode</span>
         </button>
     </div>
 </hc-pop>

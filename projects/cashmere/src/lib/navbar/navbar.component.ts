@@ -8,12 +8,16 @@ import {
     Input,
     QueryList,
     ViewChild,
-    ViewEncapsulation
+    ViewEncapsulation,
+    OnDestroy
 } from '@angular/core';
 import {HcPopoverAnchorDirective} from '../pop/directives/popover-anchor.directive';
 import {MoreItem} from './more-item';
 import {NavbarLinkComponent} from './navbar-link/navbar-link.component';
 import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu.component';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+import {HcIcon} from '../icon/icon.component';
 
 /** The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. */
 @Component({
@@ -22,7 +26,7 @@ import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu
     styleUrls: ['./navbar.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class NavbarComponent implements AfterViewInit {
+export class NavbarComponent implements AfterViewInit, OnDestroy {
     /** Display name of current user */
     @Input()
     user: string = '';
@@ -31,9 +35,9 @@ export class NavbarComponent implements AfterViewInit {
     @Input()
     appIcon: string = '';
 
-    /** Url to brand icon image file */
+    /** Either url to brand icon image file or HcIcon object for a font glyph */
     @Input()
-    brandIcon: string = '';
+    brandIcon: string | HcIcon = '';
 
     /** Router link triggered when home icon is clicked */
     @Input()
@@ -54,6 +58,8 @@ export class NavbarComponent implements AfterViewInit {
 
     @ViewChild('moreLink')
     _navbarMore: HcPopoverAnchorDirective;
+
+    private unsubscribe$ = new Subject<void>();
 
     private _menuOpen: boolean = false;
     private _linkWidths: Array<number> = [];
@@ -96,22 +102,41 @@ export class NavbarComponent implements AfterViewInit {
         this.ref.detectChanges();
     }
 
-    constructor(private el: ElementRef, private ref: ChangeDetectorRef) {}
+    constructor(private ref: ChangeDetectorRef) {}
+
+    /** Forces a recalculation of the navbar links to determine how many should be rolling into a More menu.
+     * Call this if you've updated the contents of any navbar links. */
+    refreshNavLinks() {
+        this._collectNavLinkWidths();
+        this._navResize();
+    }
 
     private _collectNavLinkWidths() {
-        if (this._linkWidths.length === 0 || this._linkWidths.every(linkWidth => linkWidth === 0)) {
-            this._linkWidths = [];
-            this._navLinks.forEach(t => {
-                this._linksTotalWidth += t._getWidth();
-                this._linkWidths.push(t._getWidth());
-            });
-        }
+        this._linkWidths = [];
+        this._linksTotalWidth = 0;
+        this._navLinks.forEach(t => {
+            const isHidden = t._hidden;
+            t.show();
+            this._linksTotalWidth += t._getWidth();
+            this._linkWidths.push(t._getWidth());
+            if (isHidden) {
+                t.hide();
+            }
+        });
     }
+
     ngAfterViewInit() {
         setTimeout(() => {
-            this._collectNavLinkWidths();
-            this._navResize();
+            this.refreshNavLinks();
         }, 100);
+
+        // If links are added dynamically, recheck the navbar link sizing
+        this._navLinks.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => this.refreshNavLinks());
+    }
+
+    ngOnDestroy() {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 
     _toggleMobileMenu() {
@@ -143,5 +168,32 @@ export class NavbarComponent implements AfterViewInit {
         if (this._navbarMore) {
             this._navbarMore.closePopover();
         }
+    }
+
+    _brandIconType(): string {
+        return typeof this.brandIcon;
+    }
+
+    _brandIconSet(): string {
+        if ( this.brandIcon && typeof this.brandIcon !== 'string' ) {
+            return this.brandIcon.fontSet;
+        } else {
+            return '';
+        }
+    }
+
+    _brandIconGlyph(): string {
+        if ( this.brandIcon && typeof this.brandIcon !== 'string' ) {
+            return this.brandIcon.fontIcon;
+        } else {
+            return '';
+        }
+    }
+
+    _brandIconSize(): string {
+        if ( this.brandIcon && typeof this.brandIcon !== 'string' && this.brandIcon.fontSize ) {
+            return this.brandIcon.fontSize + "px";
+        }
+        return "37px";
     }
 }
