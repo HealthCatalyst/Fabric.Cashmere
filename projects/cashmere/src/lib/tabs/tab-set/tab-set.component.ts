@@ -4,6 +4,7 @@ import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {parseBooleanAttribute} from '../../util';
 
 export class TabChangeEvent {
     constructor(public index: number, public tab: TabComponent) {}
@@ -79,6 +80,19 @@ export class TabSetComponent implements AfterContentInit {
             invalidDefaultTab(tabValue);
         }
     }
+
+    /** Determines whether the tab set will create a router-outlet or ng-container for the tab content.
+     * If set to false, the app will need to add its own container.  Defaults to `true`. */
+    @Input()
+    get addContentContainer(): boolean {
+        return this._addContentContainer;
+    }
+
+    set addContentContainer(value) {
+       this._addContentContainer = parseBooleanAttribute(value);
+    }
+
+    _addContentContainer: boolean = true;
 
     constructor(private router: Router, private route: ActivatedRoute) {}
 
