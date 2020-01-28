@@ -54,4 +54,20 @@
 
 .hc-banner-stamp {
     @include hc-banner-stamp();
+
+    .hc-banner-success & {
+        @include hc-banner-success-stamp();
+    }
+
+    .hc-banner-warning & {
+        @include hc-banner-warning-stamp();
+    }
+
+    .hc-banner-alert & {
+        @include hc-banner-alert-stamp();
+    }
+
+    .hc-banner-info & {
+        @include hc-banner-info-stamp();
+    }
 }

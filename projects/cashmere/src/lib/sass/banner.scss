@@ -19,11 +19,11 @@
 @mixin hc-banner-success() {
     background-color: $green;
     color: $white;
+}
 
-    .hc-banner-stamp {
-        background-color: $white;
-        color: $green;
-    }
+@mixin hc-banner-success-stamp() {
+    background-color: $white;
+    color: $green;
 }
 
 @mixin hc-banner-success-dismiss() {
@@ -35,11 +35,11 @@
 @mixin hc-banner-warning() {
     background-color: $orange;
     color: $white;
+}
 
-    .hc-banner-stamp {
-        background-color: $white;
-        color: $orange;
-    }
+@mixin hc-banner-warning-stamp() {
+    background-color: $white;
+    color: $orange;
 }
 
 @mixin hc-banner-warning-dismiss() {
@@ -51,11 +51,11 @@
 @mixin hc-banner-alert() {
     background-color: $red;
     color: $white;
+}
 
-    .hc-banner-stamp {
-        background-color: $white;
-        color: $red;
-    }
+@mixin hc-banner-alert-stamp() {
+    background-color: $white;
+    color: $red;
 }
 
 @mixin hc-banner-alert-dismiss() {
@@ -70,11 +70,11 @@
     border-left: none;
     border-right: none;
     color: $offblack;
+}
 
-    .hc-banner-stamp {
-        background-color: darken($blue, 10%);
-        color: $white;
-    }
+@mixin hc-banner-info-stamp() {
+    background-color: darken($blue, 10%);
+    color: $white;
 }
 
 @mixin hc-banner-info-dismiss() {
