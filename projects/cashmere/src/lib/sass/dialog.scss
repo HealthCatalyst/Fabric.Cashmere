@@ -1,0 +1,64 @@
+$hc-dialog-padding: 24px !default;
+$hc-dialog-border-radius: 4px !default;
+$hc-dialog-max-height: 65vh !default;
+$hc-dialog-button-margin: 8px !default;
+
+@mixin hc-dialog-container() {
+    border-radius: $hc-dialog-border-radius;
+    box-sizing: border-box;
+    display: block;
+    outline: solid 1px;
+    overflow: auto;
+    padding: $hc-dialog-padding;
+
+    // The dialog container should completely fill its parent overlay element.
+    height: 100%;
+    width: 100%;
+
+    // Since the dialog won't stretch to fit the parent, if the height
+    // isn't set, we have to inherit the min and max values explicitly.
+    max-height: inherit;
+    min-height: inherit;
+}
+
+@mixin hc-dialog-content() {
+    display: block;
+    margin: 0 $hc-dialog-padding * -1;
+    max-height: $hc-dialog-max-height;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 $hc-dialog-padding;
+}
+
+@mixin hc-dialog-title() {
+    display: block;
+    margin: 0 0 20px;
+}
+
+@mixin hc-dialog-actions() {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 52px;
+    padding: 8px 0;
+
+    // Pull the actions down to avoid their padding stacking with the dialog's padding.
+    margin-bottom: -$hc-dialog-padding;
+}
+
+@mixin hc-dialog-actions-end() {
+    justify-content: flex-end;
+}
+
+@mixin hc-dialog-actions-center() {
+    justify-content: center;
+}
+
+@mixin hc-dialog-actions-margin-left() {
+    margin-left: $hc-dialog-button-margin;
+
+    [dir='rtl'] & {
+        margin-left: 0;
+        margin-right: $hc-dialog-button-margin;
+    }
+}
