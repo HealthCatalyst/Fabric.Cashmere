@@ -1,93 +1,63 @@
-@import '../sass/colors';
-@import '../sass/mixins.scss';
+@import '../sass/app-switcher.scss';
 
 :host {
-    height: 100%;
-    width: 100%;
+    @include hc-app-switcher-outer();
 }
 
 .hc-app-switcher {
-    max-width: 410px;
-    & > h4 {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin: 10px 0;
-        padding-bottom: 5px;
-        padding-left: 2px;
-        border-bottom: 1px solid $gray-300;
-    }
-
-    .hc-all-apps-link {
-        @include fontSize(13px);
-    }
-
-    .hc-app-switcher-apps {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: flex-start;
-        .hc-app-switcher-app {
-            flex: 0 0 auto;
-            & > a {
-                padding: 10px;
-                text-decoration: none;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                &.highlight-current {
-                    opacity: 0.5;
-                }
-
-                & > .thumbnail-img {
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                }
-            }
-
-            .title {
-                text-align: center;
-                color: $offblack;
-                padding-top: 8px;
-                font-weight: 600;
-                width: 100px;
-            }
-        }
-    }
+    @include hc-app-switcher();
 }
 
-.hc-app-switcher-empty-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 360px;
-    text-align: center;
-    padding: 20px;
+.hc-app-switcher-header {
+    @include hc-app-switcher-header();
+}
 
-    &.spinner-container {
-        padding: 65px 0;
-    }
+.hc-app-switcher-all-apps-link {
+    @include hc-app-switcher-all-apps-link();
+}
 
-    .warning-ico,
-    .empty-ico {
-        width: 40px;
-        height: 40px;
-        opacity: 0.5;
-        background-repeat: no-repeat;
-    }
+.hc-app-switcher-apps {
+    @include hc-app-switcher-apps();
+}
 
-    .warning-ico {
-        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA3OS41IDcwLjEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDc5LjUgNzAuMTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHRpdGxlPndhcm48L3RpdGxlPg0KPHBhdGggZD0iTTc4LjgsNjIuOEw0NCwyLjRjLTEuMy0yLjMtNC4zLTMuMS02LjctMS44Yy0wLjcsMC40LTEuNCwxLTEuOCwxLjhMMC43LDYyLjhjLTEuMywyLjMtMC41LDUuMywxLjgsNi43DQoJYzAuNywwLjQsMS42LDAuNywyLjQsMC43aDY5LjdjMi43LDAsNC45LTIuMiw0LjktNC45Qzc5LjUsNjQuNCw3OS4yLDYzLjUsNzguOCw2Mi44eiBNMzUuMiwyMC43aDkuMnYyNS43aC05LjJWMjAuN3ogTTM5LjcsNjAuOA0KCWMtMy4xLDAtNS42LTIuNS01LjYtNS42YzAtMy4xLDIuNS01LjYsNS42LTUuNmMzLjEsMCw1LjYsMi41LDUuNiw1LjZDNDUuNCw1OC4yLDQyLjgsNjAuOCwzOS43LDYwLjh6Ii8+DQo8L3N2Zz4NCg==');
-    }
+.hc-app-switcher-app {
+    @include hc-app-switcher-app();
+}
 
-    .empty-ico {
-        background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5Ni45OSA4NC4xNSI+PHRpdGxlPmVtcHR5PC90aXRsZT48cGF0aCBkPSJNODcuMTQsMTEuNjVhNS41NCw1LjU0LDAsMCwwLTUtMy41N0gxOGE1LjU0LDUuNTQsMCwwLDAtNSwzLjU3TDEuNTYsNTIuM1Y4OC42N2EzLjU3LDMuNTcsMCwwLDAsMy41NywzLjU3SDk1YTMuNTcsMy41NywwLDAsMCwzLjU3LTMuNTdWNTIuM1pNODUuNzIsNTMuNzJINjguNnMtMi4xNC4xOC0yLjE0LDMuNTdsMC0uMDhhMTYuMzgsMTYuMzgsMCwwLDEtMzIuNzQsMGwwLC4wOGMwLTMuMzktMi4xNC0zLjU2LTIuMTQtMy41NkgxNC40Yy01LjcxLDAtMy41Ny01LTMuNTctNWw4LjU2LTMxLjM4QTMuODEsMy44MSwwLDAsMSwyMywxNC41SDc3Ljg3YTMuNzcsMy43NywwLDAsMSwzLjU3LDIuNzlsNy44NSwzMS4zMlM5MS40Miw1My43Miw4NS43Miw1My43MloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjU2IC04LjA4KSIvPjwvc3ZnPg==');
-    }
+.hc-app-switcher-link {
+    @include hc-app-switcher-link();
+}
 
-    a {
-        cursor: pointer;
-        margin-top: 10px;
-        font-weight: 600;
-    }
+.hc-app-switcher-link-highlighted {
+    @include hc-app-switcher-link-highlighted();
+}
+
+.hc-app-switcher-app-title {
+    @include hc-app-switcher-app-title();
+}
+
+.hc-app-switcher-app-img {
+    @include hc-app-switcher-app-img();
+}
+
+.hc-app-switcher-empty {
+    @include hc-app-switcher-empty();
+}
+
+.hc-app-switcher-spinner-container {
+    @include hc-app-switcher-spinner-container();
+}
+
+.hc-app-switcher-warning-icon {
+    @include hc-app-switcher-icon();
+    @include hc-app-switcher-warning-icon();
+}
+
+.hc-app-switcher-empty-icon {
+    @include hc-app-switcher-icon();
+    @include hc-app-switcher-empty-icon();
+}
+
+.hc-app-switcher-retry {
+    @include hc-app-switcher-retry();
 }
