@@ -86,8 +86,31 @@ $row-selected-border-color: $white;
     border-bottom: none;
 }
 
+@mixin hc-table-cell-resizer() {
+    cursor: col-resize;
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 10px;
+
+    &.disabled {
+        cursor: default;
+    }
+}
+
+@mixin hc-table-cell-resizer-left() {
+    left: 0;
+    margin-left: -1px;
+}
+
 @mixin hc-table-cell-resizer-left-first-cell() {
     display: none;
+}
+
+@mixin hc-table-cell-resizer-right() {
+    margin-right: -1px;
+    right: 0;
 }
 
 @mixin hc-table-cell-resizer-right-last-cell() {
