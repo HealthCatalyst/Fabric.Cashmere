@@ -73,7 +73,16 @@ export class DatepickerComponent implements OnDestroy {
      * Whether the datepicker includes the calendar, time selector, or both. Defaults to `date`.
      */
     @Input()
-    mode: 'date' | 'time' | 'date-time' = 'date';
+    get mode(): 'date' | 'time' | 'date-time' {
+        return this._mode;
+    }
+    set mode( value: 'date' | 'time' | 'date-time' ) {
+        this._mode = value;
+        if ( this._selected ) {
+            this._selectedChanged.next(this._selected);
+        }
+    }
+    private _mode: 'date' | 'time' | 'date-time' = 'date';
 
     /**
      * Whether the time picker uses a 12 or 24 hour clock. Defaults to 12.

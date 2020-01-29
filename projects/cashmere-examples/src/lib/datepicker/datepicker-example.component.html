@@ -20,13 +20,16 @@
         <hc-checkbox [(ngModel)]="hourCycle">Use 24-hour clock</hc-checkbox>
     </div>
 
-    <div class="example-date-input">
-        <hc-form-field>
-            <hc-label>Date & Time:</hc-label>
-            <input hcInput [hcDatepicker]="picker3" [(ngModel)]="date3" placeholder="Select date & time..." />
-            <hc-datepicker-toggle hcSuffix [for]="picker3"></hc-datepicker-toggle>
-            <hc-datepicker mode="date-time" #picker3 ></hc-datepicker>
-            <hc-error>Please enter a valid date & time</hc-error>
-        </hc-form-field>
-    </div>
+    <!-- An example of using a datepicker within a FormGroup -->
+    <form [formGroup]="form">
+        <div class="example-date-input">
+            <hc-form-field>
+                <hc-label>Date & Time:</hc-label>
+                <input hcInput [hcDatepicker]="picker3" formControlName="dateForm" placeholder="Select date & time..." />
+                <hc-datepicker-toggle hcSuffix [for]="picker3"></hc-datepicker-toggle>
+                <hc-datepicker mode="date-time" #picker3 ></hc-datepicker>
+                <hc-error>Please enter a valid date & time</hc-error>
+            </hc-form-field>
+        </div>
+    </form>
 </div>
