@@ -4,7 +4,7 @@ import {CalendarComponent} from '../calendar/calendar.component';
 import {DatepickerComponent} from '../datepicker.component';
 
 /**
- * Component used as the content for the datepicker dialog and popup. We use this instead of using
+ * Component used as the content for the datepicker popup. We use this instead of using
  * hcCalendar directly as the content so we can control the initial focus. This also gives us a
  * place to put additional features of the popup that are not part of the calendar itself in the
  * future. (e.g. confirmation buttons).
@@ -16,8 +16,7 @@ import {DatepickerComponent} from '../datepicker.component';
     // tslint:disable-next-line:use-host-property-decorator
     host: {
         class: 'hc-datepicker-content',
-        '[@transformPanel]': '"enter"',
-        '[class.hc-datepicker-content-touch]': 'datepicker.touchUi'
+        '[@transformPanel]': '"enter"'
     },
     animations: [HcDatepickerAnimations.transformPanel, HcDatepickerAnimations.fadeInCalendar],
     exportAs: 'hcDatepickerContent',
