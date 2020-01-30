@@ -38,7 +38,8 @@
     th {
         @include hc-small-table-cell();
 
-        &.hc-col-sortable, &.hc-col-sortable-left {
+        &.hc-col-sortable,
+        &.hc-col-sortable-left {
             @include hc-small-table-header-sortable();
         }
     }
@@ -54,7 +55,14 @@
     }
 }
 
+.hc-cell-resizer-left,
+.hc-cell-resizer-right {
+    @include hc-table-cell-resizer();
+}
+
 .hc-cell-resizer-left {
+    @include hc-table-cell-resizer-left();
+
     .hc-table td:first-of-type &,
     .hc-table th:first-of-type & {
         @include hc-table-cell-resizer-left-first-cell();
@@ -62,6 +70,8 @@
 }
 
 .hc-cell-resizer-right {
+    @include hc-table-cell-resizer-right();
+
     .hc-table td:last-of-type &,
     .hc-table th:last-of-type & {
         @include hc-table-cell-resizer-right-last-cell();
