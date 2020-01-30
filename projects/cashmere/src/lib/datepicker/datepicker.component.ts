@@ -82,10 +82,10 @@ export class DatepickerComponent implements OnDestroy {
     get hourCycle(): string | number {
         return this._hourCycle;
     }
-    set hourCycle( value: string | number ) {
-        if ( +value !== this._hourCycle) {
+    set hourCycle(value: string | number) {
+        if (+value !== this._hourCycle) {
             this._hourCycle = +value;
-            if ( this._selected ) {
+            if (this._selected) {
                 this._selectedChanged.next(this._selected);
             }
         }

@@ -36,7 +36,7 @@ const docs: DocItem[] = [
         id: 'datepicker',
         name: 'Datepicker',
         category: 'forms',
-        examples: ['datepicker', 'datepicker-sugar', 'datepicker-selected-value'],
+        examples: ['datepicker', 'datepicker-sugar', 'datepicker-selected-value', 'datepicker-touchui'],
         usageDoc: true
     },
     {
