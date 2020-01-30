@@ -41,7 +41,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class PaginationStandardExampleComponent implements AfterViewInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-    dataSource: HcTableDataSource<PeriodicElement>;
+    dataSource = new HcTableDataSource(ELEMENT_DATA);
     pageNumber = 1;
     pageOpts = [5, 10, 20];
     get length(): number {
@@ -52,7 +52,6 @@ export class PaginationStandardExampleComponent implements AfterViewInit {
     paginator: PaginationComponent;
 
     ngAfterViewInit(): void {
-        this.dataSource = new HcTableDataSource(ELEMENT_DATA);
         this.dataSource.paginator = this.paginator;
     }
 }
