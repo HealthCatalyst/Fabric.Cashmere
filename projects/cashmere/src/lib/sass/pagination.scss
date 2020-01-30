@@ -28,6 +28,10 @@
     margin: 0 7px;
 }
 
+@mixin hc-page-detail-entries() {
+    white-space: nowrap;
+}
+
 @mixin hc-range-label() {
     flex: 0 0 auto;
     margin-right: 10px;

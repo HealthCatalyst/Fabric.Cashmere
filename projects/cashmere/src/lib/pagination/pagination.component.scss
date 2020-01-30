@@ -16,6 +16,10 @@
     @include hc-page-detail-select();
 }
 
+.hc-page-detail-entries {
+    @include hc-page-detail-entries();
+}
+
 .hc-range-label {
     @include hc-range-label();
 }
