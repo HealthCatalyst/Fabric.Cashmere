@@ -11,7 +11,6 @@ import {parseBooleanAttribute} from '../util';
 })
 export class HcBannerComponent {
     private _type: string = 'info';
-    private _fixedTop: boolean = false;
     private _clickDismiss: boolean = false;
 
     /** If the banner can be dismissed, emits when the banner is clicked to close */
