@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DialogModule} from '../dialog/dialog-module';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {A11yModule} from '@angular/cdk/a11y';
 import {PortalModule} from '@angular/cdk/portal';
@@ -31,7 +30,6 @@ import {FormFieldModule} from '../form-field/hc-form-field.module';
         InputModule,
         FormFieldModule,
         SelectModule,
-        DialogModule,
         OverlayModule,
         A11yModule,
         PortalModule

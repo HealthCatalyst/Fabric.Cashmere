@@ -13,7 +13,7 @@ export class CellResizeEvent {
 @Component({
     selector: 'hc-cell-resizer',
     template: '<div class="hc-cell-resizer-left"></div><div class="hc-cell-resizer-right"></div>',
-    styleUrls: ['./cell-resizer.component.scss'],
+    styleUrls: [],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HcCellResizer implements OnInit, OnDestroy {

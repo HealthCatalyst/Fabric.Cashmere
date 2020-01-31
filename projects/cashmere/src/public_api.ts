@@ -11,7 +11,6 @@ export * from './lib/checkbox/index';
 export * from './lib/chip/index';
 export * from './lib/datepicker/index';
 export * from './lib/date-range/index';
-export * from './lib/dialog/index';
 export * from './lib/drawer/index';
 export * from './lib/form-field/index';
 export * from './lib/icon/index';
