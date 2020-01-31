@@ -6,7 +6,6 @@ $header-footer-height: 55px;
 $modal-border: 1px solid $gray-200;
 
 .hc-modal-header {
-    padding: $modal-padding;
     min-height: $header-footer-height;
     border-bottom: $modal-border;
     font-size: calculateRem(18px);
@@ -18,10 +17,14 @@ $modal-border: 1px solid $gray-200;
 }
 
 .hc-modal-body {
-    padding: $modal-padding;
     overflow: auto;
 }
 
+.hc-modal-padding {
+    padding: $modal-padding;
+}
+
+.hc-modal-padding
 .hc-modal-close-button {
     background-color: transparent;
     font-weight: bold;
@@ -44,7 +47,6 @@ $modal-border: 1px solid $gray-200;
 }
 
 .hc-modal-footer {
-    padding: $modal-padding;
     min-height: $header-footer-height;
     display: flex;
     justify-content: flex-end;
