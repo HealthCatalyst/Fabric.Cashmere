@@ -1,4 +1,5 @@
-import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
+import {Component, HostBinding, ViewEncapsulation, Input} from '@angular/core';
+import {parseBooleanAttribute} from '../../util';
 
 /**
  * Represents a row within a `<hc-list>`. Multiple `[hcListLine]` can be used
@@ -14,4 +15,16 @@ import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
 export class ListItemComponent {
     @HostBinding('class.hc-list-item')
     _hostClass = true;
+
+    @HostBinding('class.hc-list-height')
+    _hasPadding = true;
+
+    /** If true, remove the default height on the list item. Defaults to false  */
+    @Input()
+    get tight(): boolean {
+        return !this._hasPadding;
+    }
+    set tight(value) {
+        this._hasPadding = !parseBooleanAttribute(value);
+    }
 }

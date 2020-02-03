@@ -42,6 +42,16 @@ export class HcBannerComponent {
         this._clickDismiss = parseBooleanAttribute(dismissVal);
     }
 
+    /** If true, remove the default 10px padding. Defaults to false  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
+    }
+    private _tight: boolean = false;
+
     _bannerClick(event: MouseEvent) {
         if (this._clickDismiss) {
             this.bannerClose.emit(event);

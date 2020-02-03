@@ -10,6 +10,10 @@
     &.active {
         @include hc-tab-vertical-active();
     }
+
+    &.hc-tab-padding {
+        @include hc-tab-vertical-padding();
+    }
 }
 
 .hc-tab-horizontal {
@@ -17,5 +21,9 @@
 
     &.active {
         @include hc-tab-horizontal-active();
+    }
+
+    &.hc-tab-padding {
+        @include hc-tab-horizontal-padding();
     }
 }

@@ -3,7 +3,6 @@
 @mixin hc-tile {
     width: 100%;
     box-sizing: border-box;
-    padding: 30px 35px;
     background-color: $white;
     border-radius: 5px;
     display: block;
@@ -11,6 +10,14 @@
     margin-bottom: 30px;
 }
 
+@mixin hc-tile-padding {
+    padding: 30px 35px;
+}
+
 .hc-tile {
-    @include hc-tile;
+    @include hc-tile();
+}
+
+.hc-tile-padding {
+    @include hc-tile-padding();
 }

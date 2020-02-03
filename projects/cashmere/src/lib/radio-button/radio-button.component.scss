@@ -39,3 +39,7 @@
         @include hc-radio-input-disabled();
     }
 }
+
+.hc-radio-padding {
+    @include hc-radio-padding();
+}

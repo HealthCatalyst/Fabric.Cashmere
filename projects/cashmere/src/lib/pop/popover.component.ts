@@ -39,6 +39,7 @@ import {
 import {OverlayRef} from '@angular/cdk/overlay';
 import {MenuItemDirective} from './directives/menu-item.directive';
 import {Subject} from 'rxjs';
+import {parseBooleanAttribute} from '../util';
 
 // See http://cubic-bezier.com/#.25,.8,.25,1 for reference.
 const DEFAULT_TRANSITION = '100ms linear';
@@ -57,6 +58,16 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Whether or not to show a connection arrow when possible. *Defaults to `true`.* */
     @Input() showArrow = true;
+
+    /** If true, remove the default padding of 12px. *Defaults to `false`.*  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
+    }
+    private _tight = false;
 
     /** Alignment of the popover on the horizontal axis. Can be `before`, `start`, `center`, `end`, `after`, or `mouse`.
      * *Defaults to `center`.* */

@@ -28,6 +28,10 @@
     @include hc-checkbox-label();
 }
 
+.hc-checkbox-padding {
+    @include hc-checkbox-padding();
+}
+
 .hc-checkbox-overlay {
     @include hc-checkbox-overlay();
 

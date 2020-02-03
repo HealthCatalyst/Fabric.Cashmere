@@ -22,7 +22,7 @@ export class MarkdownDirective implements OnChanges {
         const md = new markdownIt({html: true});
 
         // plugin to markdown-it to interpret :::
-        md.use(container_plugin, 'hc-tile', {
+        md.use(container_plugin, 'hc-tile hc-tile-padding', {
             validate: function(params) {
                 // markdown-it-container allows multiple ::: containers
                 // This function allows you to validate this is the one you want

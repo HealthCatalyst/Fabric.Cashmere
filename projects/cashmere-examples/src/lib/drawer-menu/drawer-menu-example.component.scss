@@ -1,24 +1,19 @@
 @import "~@healthcatalyst/cashmere/scss/colors";
 
 .drawer-content {
-    height: 200px; /* used to show menu scrolling effect*/
+    height: 200px; /* used to show menu scrolling effect */
 }
 
-.drawer-label {
-    margin: 0 50px 0 0;
-}
+/* positions a plus button to the right edge of a drawer item */
+.hc-drawer-item {
+    .drawer-label {
+        margin: 0 50px 0 0;
+    }
 
-.fa-plus {
-    color: $blue;
-    margin: 0 0 0 auto;
-}
-
-.hc-drawer-right .drawer-label {
-    margin: 0 0 0 50px;
-}
-
-.hc-drawer-right .fa-plus {
-    margin: 0 auto 0 0;
+    .fa-plus {
+        color: $blue;
+        margin: 0 0 0 auto;
+    }
 }
 
 .icon-left {

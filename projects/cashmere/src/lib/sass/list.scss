@@ -6,6 +6,9 @@
     color: rgba(0, 0, 0, 0.87);
     display: block;
     font-size: 16px;
+}
+
+@mixin hc-list-height() {
     height: 56px;
 }
 

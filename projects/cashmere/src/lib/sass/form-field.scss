@@ -24,8 +24,11 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 @mixin hc-form-field-wrapper() {
     position: relative;
     border-top: $infix-margin-top solid transparent;
-    padding-bottom: $wrapper-padding-bottom;
     flex-direction: inherit;
+}
+
+@mixin hc-form-field-padding() {
+    padding-bottom: $wrapper-padding-bottom;
 }
 
 @mixin hc-form-field-wrapper-inline() {

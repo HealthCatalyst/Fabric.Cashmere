@@ -9,9 +9,12 @@
     display: inline-block;
     height: 32px;
     line-height: 32px;
-    margin: 5px;
     padding: 0 15px;
     white-space: nowrap;
+}
+
+@mixin hc-chip-margin() {
+    margin: 5px;
 }
 
 @mixin hc-chip-close() {

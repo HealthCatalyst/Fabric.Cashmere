@@ -17,7 +17,8 @@ import {
     QueryList,
     DoCheck,
     Self,
-    ElementRef
+    ElementRef,
+    ViewEncapsulation
 } from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
@@ -258,6 +259,7 @@ export class RadioButtonChangeEvent {
     selector: 'hc-radio-button',
     templateUrl: './radio-button.component.html',
     styleUrls: ['./radio-button.component.scss'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RadioButtonComponent implements OnInit {
@@ -297,6 +299,18 @@ export class RadioButtonComponent implements OnInit {
     @HostBinding('attr.id')
     get _getHostId(): string {
         return this.id;
+    }
+
+    @HostBinding('class.hc-radio-padding')
+    _hasPadding = true;
+
+    /** If true, remove the default vertical padding. Defaults to false  */
+    @Input()
+    get tight(): boolean {
+        return !this._hasPadding;
+    }
+    set tight(value) {
+        this._hasPadding = !parseBooleanAttribute(value);
     }
 
     /** Boolean value of whether the radio button is required */

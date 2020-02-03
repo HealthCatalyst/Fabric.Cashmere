@@ -19,6 +19,7 @@ export function validateColorInput(inputStr: string) {
 export class ChipComponent {
     private _hasCloseButton: boolean = false;
     private _color: string = 'neutral';
+    private _tight: boolean = false;
 
     /** Emitted when the 'X' close button is clicked. `(click)` may be used for clicks on the entire chip */
     @Output()
@@ -33,6 +34,15 @@ export class ChipComponent {
     set color(colorType: string) {
         validateColorInput(colorType);
         this._color = colorType;
+    }
+
+    /** If true, remove the default 5px margin. Defaults to false  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
     }
 
     constructor() {}

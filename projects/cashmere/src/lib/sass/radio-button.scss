@@ -4,13 +4,17 @@
     cursor: pointer;
     display: block;
     line-height: 1.5;
-    margin: 4px 0;
+    margin: 1px 0;
     padding-left: 35px;
     position: relative;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+@mixin hc-radio-padding() {
+    padding: 3px 0;
 }
 
 @mixin hc-radio-container-disabled() {

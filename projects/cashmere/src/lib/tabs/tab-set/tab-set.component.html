@@ -1,5 +1,5 @@
 <div class="hc-{{direction}}-tab-container">
-    <div class="hc-tab-bar-{{direction}}">
+    <div class="hc-tab-bar-{{direction}}" [class.hc-tab-bar-padding]="!tight && direction=='vertical'">
         <ng-content select="hc-tab"></ng-content>
         <ng-content></ng-content>
     </div>

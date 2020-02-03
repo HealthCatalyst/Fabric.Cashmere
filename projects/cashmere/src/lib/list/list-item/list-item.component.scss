@@ -4,6 +4,10 @@
     @include hc-list-item();
 }
 
+.hc-list-height {
+    @include hc-list-height();
+}
+
 .hc-list-content {
     @include hc-list-content();
 }

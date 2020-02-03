@@ -3,6 +3,7 @@
       #focusTrapElement
       class="{{_yAlignClass}} {{_xAlignClass}}"
       [class.hc-pop-container-basic]="!disableStyle"
+      [class.hc-pop-container-padding]="!tight"
       [ngClass]="_classList"
       (click)="_popContainerClicked()"
       [@transformPopover]="_getAnimation()"

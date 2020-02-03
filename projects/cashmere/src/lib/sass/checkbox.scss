@@ -25,7 +25,12 @@
 }
 
 @mixin hc-checkbox-label() {
-    padding: 4px 0 4px 12px;
+    padding-left: 12px;
+}
+
+@mixin hc-checkbox-padding() {
+    padding-top: 4px;
+    padding-bottom: 4px;
     line-height: 1.5;
 }
 

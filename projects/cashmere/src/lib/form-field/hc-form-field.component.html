@@ -1,4 +1,9 @@
-<div [class.hc-form-field-wrapper-inline]="inline" [class.hc-form-field-wrapper]="!inline" [class.hc-form-field-no-label]="!hasLabel">
+<div
+    [class.hc-form-field-wrapper-inline]="inline"
+    [class.hc-form-field-wrapper]="!inline"
+    [class.hc-form-field-no-label]="!hasLabel"
+    [class.hc-form-field-padding]="!tight"
+>
     <span *ngIf="hasLabel" [ngClass]="inline ? 'hc-form-field-label-wrapper-inline' : 'hc-form-field-label-wrapper'">
         <label [ngClass]="inline ? 'hc-form-field-label-inline' : 'hc-form-field-label'" [attr.for]="_control._componentId">
             <ng-content select="hc-label"></ng-content>

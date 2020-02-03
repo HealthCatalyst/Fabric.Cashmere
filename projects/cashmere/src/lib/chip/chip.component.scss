@@ -4,6 +4,10 @@
     @include hc-chip();
 }
 
+.hc-chip-margin {
+    @include hc-chip-margin();
+}
+
 .hc-chip-close {
     @include hc-chip-close();
 }

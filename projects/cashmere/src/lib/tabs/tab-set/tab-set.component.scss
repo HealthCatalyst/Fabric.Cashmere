@@ -18,6 +18,10 @@
 
 .hc-tab-bar-vertical {
     @include hc-tab-set-bar-vertical();
+
+    &.hc-tab-bar-padding {
+        @include hc-tab-bar-padding();
+    }
 }
 
 .hc-tab-content-vertical {

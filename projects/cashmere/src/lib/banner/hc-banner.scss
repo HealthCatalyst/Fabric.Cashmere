@@ -4,6 +4,10 @@
     @include hc-banner();
 }
 
+.hc-banner-padding {
+    @include hc-banner-padding();
+}
+
 .hc-banner-dismiss {
     @include hc-banner-dismiss();
 

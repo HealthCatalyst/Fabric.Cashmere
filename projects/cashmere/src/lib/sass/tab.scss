@@ -10,7 +10,6 @@
     background-color: $white;
     color: $offblack;
     display: block;
-    padding: 20px;
     text-decoration: none;
 
     &:hover {
@@ -26,13 +25,16 @@
     padding-left: 12px;
 }
 
+@mixin hc-tab-vertical-padding() {
+    padding: 20px;
+}
+
 @mixin hc-tab-horizontal() {
     background-color: inherit;
     color: $offblack;
     display: block;
     font-size: 14px;
     min-width: 100px;
-    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
 
@@ -45,6 +47,10 @@
     border-bottom: $blue 4px solid;
     color: $offblack;
     font-weight: bold;
+}
+
+@mixin hc-tab-horizontal-padding() {
+    padding: 10px 20px;
 }
 
 // tab-set
@@ -77,8 +83,11 @@
 
 @mixin hc-tab-set-bar-vertical() {
     background-color: $white;
-    padding: 15px 0;
     width: 20%;
+}
+
+@mixin hc-tab-bar-padding() {
+    padding: 15px 0;
 }
 
 @mixin hc-tab-set-content-vertical() {

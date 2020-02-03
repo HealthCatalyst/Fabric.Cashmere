@@ -8,6 +8,10 @@
     @include hc-form-field-wrapper();
 }
 
+.hc-form-field-padding {
+    @include hc-form-field-padding();
+}
+
 .hc-form-field-wrapper-inline {
     @include hc-form-field-wrapper-inline();
 }

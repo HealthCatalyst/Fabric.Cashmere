@@ -6,9 +6,12 @@
     align-items: center;
     display: flex;
     justify-content: flex-start;
-    padding: 10px;
     width: 100%;
     z-index: $zindex-subnav;
+}
+
+@mixin hc-banner-padding() {
+    padding: 10px;
 }
 
 @mixin hc-banner-dismiss() {

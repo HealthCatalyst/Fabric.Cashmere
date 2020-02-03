@@ -60,6 +60,16 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         this._componentId = idVal ? idVal : this._uniqueId;
     }
 
+    /** If true, remove the default vertical padding. Defaults to false  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
+    }
+    private _tight: boolean = false;
+
     /** Sets unique name used in a form */
     @Input()
     name: string | null = null;

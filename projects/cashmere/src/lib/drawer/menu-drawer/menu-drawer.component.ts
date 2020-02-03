@@ -13,6 +13,7 @@ import {
 import {Drawer} from '../drawer.component';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {DrawerToolbar} from './drawer-header.directive';
+import {parseBooleanAttribute} from '../../util';
 
 const drawerThemes = ['dark-theme'];
 
@@ -75,6 +76,18 @@ export class MenuDrawer extends Drawer implements AfterContentInit {
 
     @HostBinding('class.hc-menu-drawer')
     _hostClass = true;
+
+    @HostBinding('class.hc-menu-drawer-padding')
+    _hasPadding = true;
+
+    /** If true, remove the default padding on the menu drawer. Defaults to false  */
+    @Input()
+    get tight(): boolean {
+        return !this._hasPadding;
+    }
+    set tight(value) {
+        this._hasPadding = !parseBooleanAttribute(value);
+    }
 
     constructor(elementRef: ElementRef, private renderer: Renderer2) {
         super(elementRef);

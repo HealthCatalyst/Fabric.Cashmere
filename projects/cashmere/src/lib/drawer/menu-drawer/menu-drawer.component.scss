@@ -11,7 +11,11 @@
         @include hc-menu-drawer-item-container-visible();
     }
 
-    .hc-drawer-right & {
+    .hc-menu-drawer-padding & {
+        @include hc-menu-drawer-item-container-padding();
+    }
+
+    .hc-menu-drawer-padding.hc-drawer-right & {
         @include hc-menu-drawer-item-container-right();
     }
 }
@@ -22,12 +26,20 @@
 
 .hc-drawer-toolbar {
     @include hc-drawer-toolbar();
+
+    .hc-menu-drawer-padding & {
+        @include hc-drawer-toolbar-padding();
+    }
 }
 
 .hc-drawer-item {
     @include hc-drawer-item();
 
-    .hc-drawer-right & {
+    .hc-menu-drawer-padding & {
+        @include hc-drawer-item-padding();
+    }
+
+    .hc-menu-drawer-padding.hc-drawer-right & {
         @include hc-drawer-item-right();
     }
 }

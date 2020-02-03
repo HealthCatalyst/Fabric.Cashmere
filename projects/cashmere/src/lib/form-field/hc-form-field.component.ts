@@ -72,6 +72,16 @@ export class HcFormFieldComponent implements AfterContentInit {
         this._inline = parseBooleanAttribute(isInline);
     }
 
+    /** If true, remove the default padding-bottom. Defaults to false  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
+    }
+    private _tight: boolean = false;
+
     constructor(private _elementRef: ElementRef<HTMLInputElement>) {}
 
     ngAfterContentInit(): void {
