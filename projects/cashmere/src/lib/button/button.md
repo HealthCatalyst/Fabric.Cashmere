@@ -1,4 +1,8 @@
-##### Attributes
+## Key Attributes
+
+Below is a list of the primary attributes that you'll be likely to use when working with a `hc-button`. For a complete list of attributes, refer to the [API Section](/components/button/api).
+
+<br>
 
 **[buttonStyle]**
 
@@ -10,6 +14,8 @@ Sets the color and style of the button.
 <button hc-button buttonStyle="primary">button</button>
 ```
 
+<br>
+
 **[size]**
 
 `size: 'sm' | 'md' | 'lg' = 'md'`
@@ -19,6 +25,8 @@ Sets the size of the button.
 ```html
 <button hc-button size="md">button</button>
 ```
+
+<br>
 
 **[disabled]**
 
@@ -30,6 +38,8 @@ Puts the button in a disabled state.
 <button [disabled]="true">button</button>
 ```
 
+<br>
+
 **[hc-icon-button]**
 
 Use this instead of the `buttonStyle` attribute to designate this as a textless icon button.
@@ -40,7 +50,9 @@ Use this instead of the `buttonStyle` attribute to designate this as a textless 
 </button>
 ```
 
-##### Split Button Attributes
+<br><br>
+
+## Split Button Attributes
 
 **[autoCloseMenuOnClick]**
 
@@ -55,6 +67,8 @@ True if clicking anywhere in the dropdown menu should automatically close it.
 </hc-split-button>
 ```
 
+<br>
+
 **[menuPosition]**
 
 `menuPosition: 'start' | 'end' | 'center' = 'end'`
@@ -68,11 +82,15 @@ Positions the dropdown menu horizontally, relative to the left and right edges o
 </hc-split-button>
 ```
 
+<br>
+
 **[...]**
 
 The common HTML button attributes `name`, `title`, `type`, and `value` can be used on an `<hc-split-button>` in the normal way.
 
-##### Events
+<br><br>
+
+## Events
 
 **(click)**
 
@@ -82,7 +100,9 @@ Buttons are generally used with a click event handler.
 <button hc-button (click)="handleClick()"></button>
 ```
 
-##### Related Components
+<br><br>
+
+## Related Components
 
 **HcIcon**
 
@@ -95,6 +115,8 @@ You can use a Cashmere icon in any button. It's recommended that you style it wi
 </button>
 ```
 
+<br>
+
 **HcSplitButton**
 
 For a split button (a button with a caret and a dropdown menu), replace `<button>` with `<hc-split-button>`. Put menu options inside the `<hc-split-button>`, tagged with the `hcButtonItem` attribute.
@@ -106,7 +128,9 @@ For a split button (a button with a caret and a dropdown menu), replace `<button
 </hc-split-button>
 ```
 
-##### Methods
+<br><br>
+
+## Methods
 
 First, get a reference to the element.
 
@@ -126,6 +150,8 @@ export class ExampleComponent {
 }
 ```
 
+<br>
+
 **focus()**
 
 Gives focus to the button.
@@ -135,6 +161,8 @@ this.buttonRef.focus();
 this.splitButtonRef.focus();
 ```
 
+<br>
+
 **openMenu()**
 
 Opens the dropdown menu.
@@ -142,6 +170,8 @@ Opens the dropdown menu.
 ```typescript
 this.splitButtonRef.openMenu();
 ```
+
+<br>
 
 **closeMenu()**
 

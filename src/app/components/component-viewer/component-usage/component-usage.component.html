@@ -1,8 +1,8 @@
 <hc-tile *ngIf="componentViewer.docItem.usageDoc">
     <div *ngIf="componentViewer.docItem.usageExamples">
-        <h3 class="examples-title">
+        <h2>
             <span>Quick Example</span>
-        </h3>
+        </h2>
         <hc-usage-example-viewer
             *ngFor="let example of componentViewer.docItem.usageExamples"
             [example]="example"
