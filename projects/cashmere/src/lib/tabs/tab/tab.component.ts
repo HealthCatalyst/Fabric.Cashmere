@@ -28,6 +28,7 @@ export class TabComponent implements AfterContentInit {
 
     _direction: string;
     _active: boolean = false;
+    _tight: boolean = false;
     _htmlTitle: HcTabTitleComponent;
 
     @ContentChildren(HcTabTitleComponent)

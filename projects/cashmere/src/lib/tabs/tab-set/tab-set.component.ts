@@ -94,6 +94,16 @@ export class TabSetComponent implements AfterContentInit {
 
     _addContentContainer: boolean = true;
 
+    /** If true, condense the default padding on all included tabs. *Defaults to `false`.*  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
+    }
+    private _tight = false;
+
     constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngAfterContentInit(): void {
@@ -115,7 +125,10 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     private setTabDirection(): void {
-        setTimeout(() => this._tabs.forEach(t => (t._direction = this.direction)));
+        setTimeout(() => this._tabs.forEach(t => {
+            t._direction = this.direction;
+            t._tight = this.tight;
+        }));
     }
 
     private subscribeToTabClicks(): void {
