@@ -11,15 +11,15 @@ export class ModalFooterComponent {
     @HostBinding('class.hc-modal-footer')
     _modalFooterClass = true;
 
-    @HostBinding('class.hc-modal-padding')
-    _modalPaddingClass = true;
+    @HostBinding('class.hc-modal-tight')
+    _modalTightClass = false;
 
      /** If true, removes the default padding of 15px 25px from this element. Defaults to `false` */
      @Input()
      get tight(): boolean {
-         return !this._modalPaddingClass;
+         return this._modalTightClass;
      }
      set tight(value) {
-        this._modalPaddingClass = !parseBooleanAttribute(value);
+        this._modalTightClass = parseBooleanAttribute(value);
     }
 }
