@@ -50,6 +50,8 @@ export class HcTable<T> extends CdkTable<T> {
     _hostHcTableClass = true;
     @HostBinding('class.hc-table-borders')
     _hostHcBordersClass = true;
+    @HostBinding('class.hc-table-small')
+    _hostHcTableSmall = false;
 
     /** Sets whether the table should have a 2px border around each cell (defaults to true) */
     @Input()
@@ -59,5 +61,14 @@ export class HcTable<T> extends CdkTable<T> {
 
     set borders(hasBorders) {
         this._hostHcBordersClass = parseBooleanAttribute(hasBorders);
+    }
+
+    /** If true, table has less padding and a smaller font size (defaults to false)  */
+    @Input()
+    get tight(): boolean {
+        return this._hostHcTableSmall;
+    }
+    set tight(value) {
+        this._hostHcTableSmall = parseBooleanAttribute(value);
     }
 }
