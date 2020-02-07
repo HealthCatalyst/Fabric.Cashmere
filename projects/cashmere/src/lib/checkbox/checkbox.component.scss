@@ -26,10 +26,18 @@
 
 .hc-checkbox-label {
     @include hc-checkbox-label();
+
+    .hc-checkbox-tight & {
+        @include hc-checkbox-label-tight();
+    }
 }
 
 .hc-checkbox-overlay {
     @include hc-checkbox-overlay();
+
+    .hc-checkbox-tight & {
+        @include hc-checkbox-overlay-tight();
+    }
 
     .hc-checkbox-content:hover & {
         @include hc-checkbox-overlay-hover();
@@ -37,6 +45,10 @@
 
     .hc-checkbox-indeterminate & {
         @include hc-checkbox-overlay-indeterminate();
+    }
+
+    .hc-checkbox-indeterminate .hc-checkbox-tight & {
+        @include hc-checkbox-overlay-indeterminate-tight();
     }
 
     input[type='checkbox']:checked + & {

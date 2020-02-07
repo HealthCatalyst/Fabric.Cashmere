@@ -53,7 +53,7 @@ const docs: DocItem[] = [
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
     },
     {id: 'ellipsis-pipe', name: 'Ellipsis', category: 'pipes', usageDoc: true, hideApi: true, examples: ['ellipsis-overview']},
-    {id: 'form-field', name: 'Form Field', category: 'forms', examples: ['form-field-overview']},
+    {id: 'form-field', name: 'Form Field', category: 'forms', examples: ['form-field-overview', 'form-field-tight']},
     {id: 'icon', name: 'Icon', category: 'buttons', examples: ['icon-overview']},
     {
         id: 'input',

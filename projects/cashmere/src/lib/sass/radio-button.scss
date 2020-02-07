@@ -1,4 +1,5 @@
 @import './colors';
+@import './functions';
 
 @mixin hc-radio-container() {
     cursor: pointer;
@@ -16,6 +17,16 @@
 @mixin hc-radio-container-disabled() {
     color: $gray-300;
     cursor: not-allowed;
+}
+
+@mixin hc-radio-container-inline() {
+    padding-left: 32px;
+    margin-right: 25px;
+}
+
+@mixin hc-radio-container-tight() {
+    margin: 1px 15px 1px 0;
+    padding-left: 25px;
 }
 
 @mixin hc-radio-overlay() {
@@ -38,6 +49,17 @@
         position: absolute;
         top: 5px;
         width: 8px;
+    }
+}
+
+@mixin hc-radio-overlay-tight() {
+    height: 18px;
+    width: 18px;
+    top: 1px;
+
+    &:after {
+        left: 3px;
+        top: 3px;
     }
 }
 
@@ -77,4 +99,8 @@
 
 @mixin hc-radio-input-disabled() {
     cursor: not-allowed;
+}
+
+@mixin hc-radio-content-tight() {
+    font-size: calculateRem(13px);
 }

@@ -30,9 +30,12 @@ export function getControlMissing(): Error {
 })
 export class HcFormFieldComponent implements AfterContentInit {
     private _inline: boolean = false;
+    private _tight: boolean = false;
 
     @ContentChild(HcFormControlComponent)
     _control: HcFormControlComponent;
+    @ContentChildren(HcFormControlComponent)
+    _controls: QueryList<HcFormControlComponent>;
     @ContentChildren(HcErrorComponent)
     _errorChildren: QueryList<HcErrorComponent>;
     @ContentChildren(HcPrefixDirective)
@@ -72,11 +75,29 @@ export class HcFormFieldComponent implements AfterContentInit {
         this._inline = parseBooleanAttribute(isInline);
     }
 
+    /** If true, condense the default padding on all included elements and reduce the font size. *Defaults to `false`.*  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
+        if (this._controls) {
+            this._controls.forEach(control => {
+                control.tight = this._tight;
+            });
+        }
+    }
+
     constructor(private _elementRef: ElementRef<HTMLInputElement>) {}
 
     ngAfterContentInit(): void {
         if (!this._control) {
             throw getControlMissing();
+        } else {
+            this._controls.forEach(control => {
+                control.tight = this._tight;
+            });
         }
     }
 

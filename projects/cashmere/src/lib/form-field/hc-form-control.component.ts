@@ -19,4 +19,7 @@ export abstract class HcFormControlComponent {
 
     /** Whether the control is required */
     _isRequired: boolean = false;
+
+    /** Whether the control should apply tight styling */
+    tight: boolean = false;
 }
