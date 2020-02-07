@@ -63,6 +63,10 @@
 
     .hc-icon {
         @include hc-form-field-prefix-suffix-icon();
+
+        .hc-form-field-wrapper-tight & {
+            @include hc-form-field-prefix-suffix-tight();
+        }
     }
 
     .hc-form-field-disabled & {

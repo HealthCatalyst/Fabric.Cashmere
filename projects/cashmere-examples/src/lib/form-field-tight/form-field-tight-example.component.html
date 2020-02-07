@@ -1,16 +1,16 @@
 <p>For forms that need to fit in smaller spaces, the <code>tight</code> parameter may be set to true on
-either the form or individual <code>hc-form-field</code> elements.</p>
+either the <code>hc-form</code> or individual <code>hc-form-field</code> elements.</p>
 <br>
-<form>
+<form hc-form tight="true">
     <div class="form-sample">
-        <hc-form-field tight="true">
+        <hc-form-field>
             <hc-label>Job Name:</hc-label>
             <input hcInput required [formControl]="inputControl">
             <hc-error>A job name is required</hc-error>
         </hc-form-field>
     </div>
 
-    <hc-form-field inline="true" tight="true" class="form-padding">
+    <hc-form-field inline="true">
         <hc-label>Data Source:</hc-label>
         <hc-radio-group [formControl]="radioControl" inline="true">
             <hc-radio-button value="SM">Source Mart</hc-radio-button>
@@ -21,7 +21,7 @@ either the form or individual <code>hc-form-field</code> elements.</p>
     </hc-form-field>
 
     <div class="form-sample">
-        <hc-form-field tight="true">
+        <hc-form-field inline="true">
             <hc-label>Run Frequency:</hc-label>
             <hc-select placeholder="Select frequency:" [formControl]="selectControl">
                 <option value="daily">Daily</option>
@@ -33,7 +33,7 @@ either the form or individual <code>hc-form-field</code> elements.</p>
     </div>
 
     <div class="form-sample flex-column">
-        <hc-form-field tight="true">
+        <hc-form-field>
             <hc-label>Requested Notifications:</hc-label>
             <hc-checkbox [formControl]="checkControl">On failure</hc-checkbox>
             <hc-checkbox [formControl]="checkControl">On sucess</hc-checkbox>

@@ -119,6 +119,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     line-height: $line-height;
 }
 
+@mixin hc-form-field-prefix-suffix-tight() {
+    line-height: 1.3;
+}
+
 @mixin hc-form-field-prefix {
     padding-left: 7px;
 }
@@ -162,6 +166,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
 @mixin hc-form-field-label-wrapper-tight-inline() {
     padding-top: 0;
+    line-height: 1.9;
 }
 
 @mixin hc-form-field-label-wrapper-icon() {
