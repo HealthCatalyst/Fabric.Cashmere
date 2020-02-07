@@ -4,9 +4,9 @@ import {HcFormFieldComponent} from './hc-form-field.component';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 
-/** Directive that allows settings to be applied to all included HcFormFields */
+/** `hcForm` directive that allows settings to be applied to all included HcFormFields */
 @Directive({
-    selector: '[hc-form]'
+    selector: '[hcForm]'
 })
 export class HcFormDirective implements AfterContentInit, OnDestroy {
     private _tight: boolean = false;
