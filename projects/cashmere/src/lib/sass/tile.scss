@@ -11,6 +11,15 @@
     margin-bottom: 30px;
 }
 
+@mixin hc-tile-tight {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
 .hc-tile {
-    @include hc-tile;
+    @include hc-tile();
+}
+
+.hc-tile-tight {
+    @include hc-tile-tight();
 }
