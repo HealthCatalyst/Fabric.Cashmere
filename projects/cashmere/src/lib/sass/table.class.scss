@@ -159,14 +159,14 @@
     @include hc-table-header-sortable-left();
 }
 
-.hc-active-sort {
+.hc-table th.hc-active-sort {
     @include hc-table-header-active-sort();
 
     &.hc-sort-asc {
         @include hc-table-header-active-sort-asc();
     }
 
-    &.hc-sort-desc:after {
+    &.hc-sort-desc {
         @include hc-table-header-active-sort-desc();
     }
 }
