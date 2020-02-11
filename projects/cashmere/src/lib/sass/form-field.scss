@@ -5,9 +5,11 @@ $line-height: 1.5;
 $label-font-scale: 1;
 $error-font-scale: 0.75;
 $infix-margin-top: 1.143em * $line-height * $label-font-scale;
+$infix-margin-top-tight: 1.143em * $line-height * 0.93;
 $prefix-suffix-icon-font-size: 125%;
 
 $infix-padding: 0.393em;
+$infix-padding-tight: $infix-padding / 2;
 $error-margin-top: 0.4em / $error-font-scale;
 $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
@@ -26,6 +28,14 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     border-top: $infix-margin-top solid transparent;
     padding-bottom: $wrapper-padding-bottom;
     flex-direction: inherit;
+}
+
+@mixin hc-form-field-wrapper-tight() {
+    padding-bottom: 10px;
+}
+
+@mixin hc-form-field-wrapper-tight-border() {
+    border-top: $infix-margin-top-tight solid transparent;
 }
 
 @mixin hc-form-field-wrapper-inline() {
@@ -89,6 +99,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     align-items: center;
 }
 
+@mixin hc-form-field-non-input-inline-tight() {
+    min-height: auto;
+}
+
 @mixin hc-form-field-prefix-suffix() {
     white-space: nowrap;
     flex: none;
@@ -103,6 +117,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     color: $gray-400;
     font-size: $prefix-suffix-icon-font-size;
     line-height: $line-height;
+}
+
+@mixin hc-form-field-prefix-suffix-tight() {
+    line-height: 1.3;
 }
 
 @mixin hc-form-field-prefix {
@@ -120,6 +138,11 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     padding: $infix-padding 10px;
 }
 
+@mixin hc-form-field-infix-tight() {
+    padding: $infix-padding-tight 7px;
+    font-size: calculateRem(13px);
+}
+
 @mixin hc-form-field-label-wrapper() {
     position: absolute;
     left: 0;
@@ -132,8 +155,18 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     padding-top: $infix-margin-top;
 }
 
+@mixin hc-form-field-label-wrapper-tight() {
+    top: -$infix-margin-top-tight;
+    padding-top: $infix-margin-top-tight;
+}
+
 @mixin hc-form-field-label-wrapper-inline() {
     padding: 7px 15px 0 0;
+}
+
+@mixin hc-form-field-label-wrapper-tight-inline() {
+    padding-top: 0;
+    line-height: 1.9;
 }
 
 @mixin hc-form-field-label-wrapper-icon() {
@@ -177,6 +210,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+@mixin hc-form-field-label-tight() {
+    font-size: calculateRem(13px);
 }
 
 @mixin hc-form-field-error-wrapper() {

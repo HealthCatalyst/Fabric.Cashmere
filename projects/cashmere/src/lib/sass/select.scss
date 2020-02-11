@@ -50,6 +50,10 @@
     }
 }
 
+@mixin hc-select-chevron-tight() {
+    height: 28px;
+}
+
 @mixin hc-select-input() {
     @include fontSize(14px);
 
@@ -81,6 +85,11 @@
         color: tint($text, 60%);
         cursor: not-allowed;
     }
+}
+
+@mixin hc-select-input-tight() {
+    @include fontSize(13px);
+    height: 28px;
 }
 
 @mixin hc-select-chevron-disabled() {

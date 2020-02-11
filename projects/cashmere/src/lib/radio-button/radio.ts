@@ -51,6 +51,7 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     private _uniqueName = `hc-radio-group-${nextUniqueId++}`;
     private _name = this._uniqueName;
     private _inline = false;
+    private _tight: boolean = false;
     private _initialized = false; // if value of radio group has been set to initial value
     private _selected: RadioButtonComponent | null = null; // the currently selected radio
     private _form: NgForm | FormGroupDirective | null;
@@ -141,6 +142,18 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         this._inline = parseBooleanAttribute(value);
         this._verticalClass = !this._inline;
         this._horizontalClass = this._inline;
+    }
+
+    /** If true, condense the default margin and reduce the font size on all contained radios. *Defaults to `false`.*  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
+        if (this._initialized) {
+            setTimeout(() => this._markRadiosForCheck());
+        }
     }
 
     constructor(
@@ -275,6 +288,7 @@ export class RadioButtonComponent implements OnInit {
     private _value: any = null;
     private _required: boolean = false;
     private _disabled: boolean = false;
+    private _tight: boolean = false;
     private readonly radioGroup: RadioGroupDirective | null;
 
     /** Value of radio buttons */
@@ -336,6 +350,28 @@ export class RadioButtonComponent implements OnInit {
             }
             this.cdRef.markForCheck();
         }
+    }
+
+    get _inlineGroup(): boolean {
+        if (this.radioGroup !== null) {
+            return this.radioGroup.inline;
+        } else {
+            return false;
+        }
+    }
+
+    /** If true, condense the default margin, reduce the font size, and decrease the circle size.
+     * Inherits value from parent radio group if part of one. *Defaults to `false`.*  */
+    @Input()
+    get tight(): boolean {
+        if (this.radioGroup !== null) {
+            return this.radioGroup.tight;
+        } else {
+            return this._tight;
+        }
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
     }
 
     get _inputId() {

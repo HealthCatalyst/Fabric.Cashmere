@@ -6,6 +6,24 @@
     &.disabled {
         @include hc-radio-container-disabled();
     }
+
+    &.hc-radio-inline {
+        @include hc-radio-container-inline();
+    }
+
+    &.hc-radio-tight {
+        @include hc-radio-container-tight();
+    }
+}
+
+.hc-radio-tight {
+    .hc-radio-overlay {
+        @include hc-radio-overlay-tight();
+    }
+
+    .hc-radio-content {
+        @include hc-radio-content-tight();
+    }
 }
 
 .hc-radio-overlay {

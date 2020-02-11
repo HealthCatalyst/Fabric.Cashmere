@@ -7,7 +7,8 @@ import {
     QueryList,
     ViewEncapsulation,
     Input,
-    ElementRef
+    ElementRef,
+    OnDestroy
 } from '@angular/core';
 import {HcFormControlComponent} from './hc-form-control.component';
 import {HcErrorComponent} from './hc-error.component';
@@ -16,6 +17,8 @@ import {HcSuffixDirective} from './hc-suffix.directive';
 import {HcLabelComponent} from './hc-label.component';
 import {parseBooleanAttribute} from '../util';
 import {InputDirective} from '../input/input.directive';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 export function getControlMissing(): Error {
     return new Error(`HcFormField must contain a component that extends HcFormControl`);
@@ -28,11 +31,15 @@ export function getControlMissing(): Error {
     styleUrls: ['./hc-form-field.component.scss', '../input/input.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class HcFormFieldComponent implements AfterContentInit {
+export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
     private _inline: boolean = false;
+    private _tight: boolean = false;
+    private unsubscribe$ = new Subject<void>();
 
     @ContentChild(HcFormControlComponent)
     _control: HcFormControlComponent;
+    @ContentChildren(HcFormControlComponent)
+    _controls: QueryList<HcFormControlComponent>;
     @ContentChildren(HcErrorComponent)
     _errorChildren: QueryList<HcErrorComponent>;
     @ContentChildren(HcPrefixDirective)
@@ -72,11 +79,38 @@ export class HcFormFieldComponent implements AfterContentInit {
         this._inline = parseBooleanAttribute(isInline);
     }
 
+    /** If true, condense the default padding on all included elements and reduce the font size. *Defaults to `false`.*  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
+        this._updateTightControls();
+    }
+
     constructor(private _elementRef: ElementRef<HTMLInputElement>) {}
 
     ngAfterContentInit(): void {
         if (!this._control) {
             throw getControlMissing();
+        } else {
+            this._updateTightControls();
+            // Pass the current tight setting to controls that are added dynamically to the FormField
+            this._controls.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => this._updateTightControls());
+        }
+    }
+
+    ngOnDestroy() {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
+    }
+
+    _updateTightControls() {
+        if (this._controls) {
+            this._controls.forEach(control => {
+                control.tight = this._tight;
+            });
         }
     }
 

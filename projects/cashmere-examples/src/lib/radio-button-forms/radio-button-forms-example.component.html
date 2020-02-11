@@ -1,5 +1,5 @@
-<hc-form-field inline="true">
-    <hc-label>Select your favorite:</hc-label>
+<hc-form-field inline="true" tight="true">
+    <hc-label>Radio buttons with tight styling:</hc-label>
     <hc-radio-group [(ngModel)]="favoriteShow" inline="true">
         <hc-radio-button *ngFor="let show of shows" [value]="show">{{show}}</hc-radio-button>
     </hc-radio-group>
