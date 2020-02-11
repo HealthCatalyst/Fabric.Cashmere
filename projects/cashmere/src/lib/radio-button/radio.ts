@@ -151,7 +151,9 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     }
     set tight(value) {
         this._tight = parseBooleanAttribute(value);
-        this._markRadiosForCheck();
+        if (this._initialized) {
+            setTimeout(() => this._markRadiosForCheck());
+        }
     }
 
     constructor(

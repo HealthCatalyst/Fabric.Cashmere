@@ -101,6 +101,7 @@ export class TabSetComponent implements AfterContentInit {
     }
     set tight(value) {
         this._tight = parseBooleanAttribute(value);
+        this.setTabDirection();
     }
     private _tight = false;
 
