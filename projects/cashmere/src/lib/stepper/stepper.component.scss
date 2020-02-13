@@ -1,0 +1,102 @@
+@import '../sass/colors';
+@import '../sass/functions';
+@import '../sass/stepper.scss';
+
+.hc-stepper-green {
+    .hc-stepper-arrow {
+        @include arrow-theme($green, lighten(tint($green, 13%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
+    }
+    .hc-stepper-isolated {
+        @include isolated-theme($green, $slate-gray-200, $white, $text, $isolated-disk-size);
+    }
+}
+
+.hc-stepper-blue {
+    .hc-stepper-arrow {
+        @include arrow-theme($blue, lighten(tint($blue, 20%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
+    }
+    .hc-stepper-isolated {
+        @include isolated-theme($blue, $slate-gray-200, $white, $text, $isolated-disk-size);
+    }
+}
+
+.hc-stepper-purple {
+    .hc-stepper-arrow {
+        @include arrow-theme($purple, lighten(tint($purple, 13%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
+    }
+    .hc-stepper-isolated {
+        @include isolated-theme($purple, $slate-gray-200, $white, $text, $isolated-disk-size);
+    }
+}
+
+.hc-stepper-orange {
+    .hc-stepper-arrow {
+        @include arrow-theme($orange, lighten(tint($orange, 13%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
+    }
+    .hc-stepper-isolated {
+        @include isolated-theme($orange, $slate-gray-200, $white, $text, $isolated-disk-size);
+    }
+}
+
+.hc-stepper-red {
+    .hc-stepper-arrow {
+        @include arrow-theme($red, lighten(tint($red, 20%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
+    }
+    .hc-stepper-isolated {
+        @include isolated-theme($red, $slate-gray-200, $white, $text, $isolated-disk-size);
+    }
+}
+
+.hc-stepper-clickable {
+    @include hc-stepper-clickable();
+}
+
+.hc-stepper-disabled {
+    @include hc-stepper-disabled();
+}
+
+.hc-stepper-track {
+    @include hc-stepper-track();
+}
+
+.hc-step {
+    @include hc-step();
+}
+
+.hc-stepper-arrow {
+    .hc-step {
+        @include hc-stepper-arrow-step();
+    }
+
+    .hc-step-disk {
+        @include hc-stepper-arrow-step-disk();
+    }
+
+    .hc-step-label-count {
+        @include hc-stepper-arrow-label-count();
+    }
+
+    hc-icon {
+        @include hc-stepper-arrow-icon();
+    }
+}
+
+.hc-stepper-isolated {
+    .hc-step {
+        @include hc-stepper-isolated-step();
+    }
+
+    .hc-step-disk {
+        @include hc-stepper-isolated-step-disk();
+    }
+
+    .hc-step-label,
+    .hc-step-label-count {
+        @include hc-stepper-isolated-label();
+    }
+
+    hc-icon {
+        @include hc-stepper-isolated-icon();
+    }
+}
+
