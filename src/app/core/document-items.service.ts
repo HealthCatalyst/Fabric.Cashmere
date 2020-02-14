@@ -114,6 +114,7 @@ const docs: DocItem[] = [
         usageDoc: true
     },
     {id: 'sort', name: 'Sort', category: 'table', usageDoc: true},
+    {id: 'stepper', name: 'Stepper', category: 'layout', examples: ['stepper-overview']},
     {id: 'subnav', name: 'Subnav', category: 'nav', examples: ['subnav-overview']},
     {
         id: 'table',
