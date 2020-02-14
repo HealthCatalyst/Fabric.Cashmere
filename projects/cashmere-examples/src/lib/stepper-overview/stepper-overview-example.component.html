@@ -2,19 +2,14 @@
     <hc-form-field>
         <hc-label>Stepper Type:</hc-label>
         <hc-select [(ngModel)]="currentType">
-            <option value="arrow">arrow</option>
-            <option value="isolated">isolated</option>
+            <option *ngFor="let type of typeOptions" [value]="type">{{type}}</option>
         </hc-select>
     </hc-form-field>
 
     <hc-form-field>
         <hc-label>Stepper Color:</hc-label>
         <hc-select [(ngModel)]="currentColor">
-            <option value="green">green</option>
-            <option value="blue">blue</option>
-            <option value="purple">purple</option>
-            <option value="orange">orange</option>
-            <option value="red">red</option>
+            <option *ngFor="let color of colorOptions" [value]="color">{{color}}</option>
         </hc-select>
     </hc-form-field>
 

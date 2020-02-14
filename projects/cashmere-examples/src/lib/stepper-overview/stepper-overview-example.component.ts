@@ -12,7 +12,9 @@ import {StepInterface} from '@healthcatalyst/cashmere';
 export class StepperOverviewExampleComponent implements OnInit {
     progressSteps: StepInterface[];
     currentColor: string = 'green';
+    colorOptions: string[] = ['green', 'blue', 'purple', 'orange', 'red'];
     currentType: string = 'arrow';
+    typeOptions: string[] = ['arrow', 'isolated'];
     showSteps: boolean  = true;
     currentStep: number = 2;
 
