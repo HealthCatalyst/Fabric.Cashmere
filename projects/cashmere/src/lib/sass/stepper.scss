@@ -1,11 +1,12 @@
 $track-space: 4rem;
 $isolated-disk-size: 2rem;
+$track-height: 0.5rem;
 
-@mixin disk-border($border-color) {
+@mixin hc-disk-border($border-color) {
     box-shadow: 0px 0px 0px 3px $border-color;
 }
 
-@mixin step-arrow($top-bottom, $right) {
+@mixin hc-step-arrow($top-bottom, $right) {
     @if $right {
         border-right: $track-space * 0.05 solid $right;
     }
@@ -20,114 +21,27 @@ $isolated-disk-size: 2rem;
     z-index: 2;
 }
 
-@mixin arrow-theme($active, $complete, $track-bg, $border, $disk-bg, $text) {
-    .hc-stepper-track {
-        background-color: $track-bg;
-    }
+@mixin hc-stepper-bg-color($color) {
+    background-color: $color;
+}
 
-    .hc-step {
-        border-top-color: $track-bg;
+@mixin hc-stepper-content-color($color) {
+    color: $color;
+}
 
-        &.hc-step-active {
-            background-color: $active;
+@mixin hc-stepper-border-top($color) {
+    border-top-color: $color;
+}
 
-            &:not(.hc-step-last) {
-                .hc-step-arrow {
-                    @include step-arrow($track-bg, null);
-                }
-            }
-
-            .hc-step-disk {
-                @include disk-border($active);
-            }
-
-            .hc-step-icon {
-                color: $active;
-            }
-        }
-
-        &.hc-step-complete {
-            background-color: $complete;
-
-            .hc-step-label {
-                color: $text;
-            }
-
-            .hc-step-disk {
-                @include disk-border($complete);
-            }
-
-            .hc-step-icon {
-                color: $complete;
-            }
-        }
-
-        &.hc-step-completed {
-            background-color: $complete;
-
-            .hc-step-arrow {
-                @include step-arrow($active, null);
-            }
-
-            .hc-step-disk {
-                @include disk-border($complete);
-            }
-
-            .hc-step-label {
-                color: $text;
-            }
-
-            .hc-step-icon {
-                color: $complete;
-            }
-        }
-
-        &.hc-step-incomplete {
-            .hc-step-label {
-                color: unset;
-            }
-
-            .hc-step-icon {
-                color: $border;
-            }
-        }
-
-        &:not(.hc-step-active):not(.hc-step-last):not(.hc-step-completed) {
-            .hc-step-arrow {
-                @include step-arrow($track-bg, null);
-            }
-
-            &:after {
-                content: '';
-                @include step-arrow($border, $border);
-                z-index: 1;
-            }
-
-            &.hc-step-complete {
-                .hc-step-arrow {
-                    @include step-arrow($complete, null);
-                }
-
-                &:after {
-                    @include step-arrow($active, $active);
-                    content: '';
-                    z-index: 1;
-                }
-            }
-        }
-    }
-
-    .hc-step-disk {
-        @include disk-border($border);
-        background: $disk-bg;
-    }
-
-    .hc-step-label {
-        color: $text;
+@mixin hc-stepper-arrow-after($top-bottom, $right) {
+    &:after {
+        @include hc-step-arrow($top-bottom, $right);
+        content: '';
+        z-index: 1;
     }
 }
 
-@mixin isolated-track($track-color, $track-height, $disk-size) {
+@mixin hc-isolated-track($track-color, $track-height, $disk-size) {
     background: $track-color;
     content: '';
     display: block;
@@ -140,94 +54,44 @@ $isolated-disk-size: 2rem;
     z-index: 1;
 }
 
-@mixin isolated-theme($active, $track-bg, $disk-bg, $text, $disk-size) {
-    $track-height: 0.5rem;
+@mixin hc-stepper-font-bold() {
+    font-weight: 600;
+}
 
-    .hc-step {
-        &:before {
-            @include isolated-track($track-bg, $track-height, $disk-size);
-        }
-
-        &.hc-step-complete,
-        &.hc-step-completed {
-            .hc-step-disk {
-                @include disk-border($active);
-            }
-
-            &:before {
-                background: $active;
-            }
-
-            .hc-step-icon {
-                color: $active;
-            }
-        }
-
-        &.hc-step-active {
-            .hc-step-disk {
-                @include disk-border($active);
-            }
-
-            .hc-step-label,
-            .hc-step-label-count {
-                font-weight: 600;
-            }
-
-            .hc-step-icon {
-                color: $active;
-            }
-
-            &:before {
-                background: $active;
-                right: 50%;
-            }
-
-            &:after {
-                @include isolated-track($track-bg, $track-height, $disk-size);
-                left: 50%;
-            }
-        }
-
-        &.hc-step-incomplete {
-            .hc-step-icon {
-                color: $track-bg;
-            }
-        }
-
-        &.hc-step-first {
-            &:before {
-                left: 50%;
-            }
-        }
-
-        &.hc-step-last {
-            &:before {
-                right: 50%;
-            }
-            &:after {
-                display: none;
-            }
-        }
+@mixin hc-stepper-isolated-active($color, $bg) {
+    &:before {
+        background: $color;
+        right: 50%;
     }
 
-    .hc-step-label,
-    .hc-step-label-count {
-        color: $text;
-    }
-
-    .hc-step-label-count {
-        &:after {
-            content: '.';
-        }
-    }
-
-    .hc-step-disk {
-        @include disk-border($track-bg);
-        background: $disk-bg;
+    &:after {
+        @include hc-isolated-track($bg, $track-height, $isolated-disk-size);
+        left: 50%;
     }
 }
 
- @mixin hc-stepper-clickable() {
+@mixin hc-stepper-isolated-complete($color) {
+    &:before {
+        background: $color;
+    }
+}
+
+@mixin hc-stepper-isolated-first() {
+    &:before {
+        left: 50%;
+    }
+}
+
+@mixin hc-stepper-isolated-last() {
+    &:before {
+        right: 50%;
+    }
+    &:after {
+        display: none;
+    }
+}
+
+@mixin hc-stepper-clickable() {
     cursor: pointer;
     outline: none;
 }
@@ -249,6 +113,7 @@ $isolated-disk-size: 2rem;
 @mixin hc-stepper-arrow-step() {
     line-height: $track-space;
     padding-left: $track-space * 0.9;
+    white-space: nowrap;
 }
 
 @mixin hc-stepper-arrow-step-disk {
@@ -275,9 +140,13 @@ $isolated-disk-size: 2rem;
     width: 100%;
 }
 
-@mixin hc-stepper-isolated-step() {
+@mixin hc-stepper-isolated-step($color) {
     padding-top: $isolated-disk-size;
     text-align: center;
+
+    &:before {
+        @include hc-isolated-track($color, $track-height, $isolated-disk-size);
+    }
 }
 
 @mixin hc-stepper-isolated-step-disk() {
@@ -295,11 +164,17 @@ $isolated-disk-size: 2rem;
     z-index: 2;
 }
 
-@mixin hc-stepper-isolated-label() {
-    color: $text;
+@mixin hc-stepper-isolated-label($color) {
+    color: $color;
     display: inline-block;
     line-height: $isolated-disk-size;
     padding: 0 0.15rem;
+}
+
+@mixin hc-stepper-isolated-label-after() {
+    &:after {
+        content: '.';
+    }
 }
 
 @mixin hc-stepper-isolated-icon() {
@@ -308,4 +183,3 @@ $isolated-disk-size: 2rem;
     line-height: $track-space * 0.48;
     width: 100%;
 }
-

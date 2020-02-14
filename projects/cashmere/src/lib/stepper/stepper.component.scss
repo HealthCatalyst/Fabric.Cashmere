@@ -2,58 +2,126 @@
 @import '../sass/functions';
 @import '../sass/stepper.scss';
 
-.hc-stepper-arrow {
-    .hc-stepper-green & {
-        @include arrow-theme($green, lighten(tint($green, 13%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
-    }
-    .hc-stepper-blue & {
-        @include arrow-theme($blue, lighten(tint($blue, 20%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
-    }
-    .hc-stepper-purple & {
-        @include arrow-theme($purple, lighten(tint($purple, 13%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
-    }
-    .hc-stepper-orange & {
-        @include arrow-theme($orange, lighten(tint($orange, 13%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
-    }
-    .hc-stepper-red & {
-        @include arrow-theme($red, lighten(tint($red, 20%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
-    }
-}
-.hc-stepper-isolated {
-    .hc-stepper-green & {
-        @include isolated-theme($green, $slate-gray-200, $white, $text, $isolated-disk-size);
-    }
-    .hc-stepper-blue & {
-        @include isolated-theme($blue, $slate-gray-200, $white, $text, $isolated-disk-size);
-    }
-    .hc-stepper-purple & {
-        @include isolated-theme($purple, $slate-gray-200, $white, $text, $isolated-disk-size);
-    }
-    .hc-stepper-orange & {
-        @include isolated-theme($orange, $slate-gray-200, $white, $text, $isolated-disk-size);
-    }
-    .hc-stepper-red & {
-        @include isolated-theme($red, $slate-gray-200, $white, $text, $isolated-disk-size);
-    }
-}
+$green-complete: lighten(tint($green, 13%), 3%);
+$blue-complete: lighten(tint($blue, 20%), 3%);
+$purple-complete: lighten(tint($purple, 13%), 3%);
+$orange-complete: lighten(tint($orange, 13%), 3%);
+$red-complete: lighten(tint($red, 20%), 3%);
+
+$track-bg: $slate-gray-100;
+$track-bg-iso: $slate-gray-200;
+$border: $slate-gray-200;
+$disk-bg: $white;
 
 .hc-step {
     @include hc-step();
 
     .hc-stepper-arrow & {
         @include hc-stepper-arrow-step();
+        @include hc-stepper-border-top($track-bg);
     }
     .hc-stepper-isolated & {
-        @include hc-stepper-isolated-step();
+        @include hc-stepper-isolated-step($track-bg-iso);
+    }
+}
+
+.hc-step:not(.hc-step-active):not(.hc-step-last):not(.hc-step-completed) {
+    .hc-stepper-arrow & {
+        @include hc-stepper-arrow-after($border, $border);
     }
 }
 
 .hc-step-disk {
     .hc-stepper-arrow & {
         @include hc-stepper-arrow-step-disk();
+        @include hc-disk-border($border);
+        @include hc-stepper-bg-color($disk-bg);
     }
     .hc-stepper-isolated & {
         @include hc-stepper-isolated-step-disk();
+        @include hc-disk-border($track-bg);
+        @include hc-stepper-bg-color($disk-bg);
+    }
+    .hc-stepper-green .hc-step-active &,
+    .hc-stepper-green .hc-step-complete &,
+    .hc-stepper-green .hc-step-completed & {
+        @include hc-disk-border($green);
+    }
+    .hc-stepper-blue .hc-step-active &,
+    .hc-stepper-blue .hc-step-complete &,
+    .hc-stepper-blue .hc-step-completed & {
+        @include hc-disk-border($blue);
+    }
+    .hc-stepper-purple .hc-step-active &,
+    .hc-stepper-purple .hc-step-complete &,
+    .hc-stepper-purple .hc-step-completed & {
+        @include hc-disk-border($purple);
+    }
+    .hc-stepper-orange .hc-step-active &,
+    .hc-stepper-orange .hc-step-complete &,
+    .hc-stepper-orange .hc-step-completed & {
+        @include hc-disk-border($orange);
+    }
+    .hc-stepper-red .hc-step-active &,
+    .hc-stepper-red .hc-step-complete &,
+    .hc-stepper-red .hc-step-completed & {
+        @include hc-disk-border($red);
+    }
+    .hc-stepper-green .hc-stepper-arrow .hc-step-complete &,
+    .hc-stepper-green .hc-stepper-arrow .hc-step-completed & {
+        @include hc-disk-border($green-complete);
+    }
+    .hc-stepper-blue .hc-stepper-arrow .hc-step-complete &,
+    .hc-stepper-blue .hc-stepper-arrow .hc-step-completed & {
+        @include hc-disk-border($blue-complete);
+    }
+    .hc-stepper-purple .hc-stepper-arrow .hc-step-complete &,
+    .hc-stepper-purple .hc-stepper-arrow .hc-step-completed & {
+        @include hc-disk-border($purple-complete);
+    }
+    .hc-stepper-orange .hc-stepper-arrow .hc-step-complete &,
+    .hc-stepper-orange .hc-stepper-arrow .hc-step-completed & {
+        @include hc-disk-border($orange-complete);
+    }
+    .hc-stepper-red .hc-stepper-arrow .hc-step-complete &,
+    .hc-stepper-red .hc-stepper-arrow .hc-step-completed & {
+        @include hc-disk-border($red-complete);
+    }
+}
+
+.hc-step-arrow {
+    .hc-stepper-arrow .hc-step:not(.hc-step-last) & {
+        @include hc-step-arrow($track-bg, null);
+    }
+    .hc-stepper-green .hc-stepper-arrow .hc-step-completed & {
+        @include hc-step-arrow($green, null);
+    }
+    .hc-stepper-blue .hc-stepper-arrow .hc-step-completed & {
+        @include hc-step-arrow($blue, null);
+    }
+    .hc-stepper-purple .hc-stepper-arrow .hc-step-completed & {
+        @include hc-step-arrow($purple, null);
+    }
+    .hc-stepper-orange .hc-stepper-arrow .hc-step-completed & {
+        @include hc-step-arrow($orange, null);
+    }
+    .hc-stepper-red .hc-stepper-arrow .hc-step-completed & {
+        @include hc-step-arrow($red, null);
+    }
+    .hc-stepper-green .hc-stepper-arrow .hc-step-complete:not(.hc-step-last) & {
+        @include hc-step-arrow($green-complete, null);
+    }
+    .hc-stepper-blue .hc-stepper-arrow .hc-step-complete:not(.hc-step-last) & {
+        @include hc-step-arrow($blue-complete, null);
+    }
+    .hc-stepper-purple .hc-stepper-arrow .hc-step-complete:not(.hc-step-last) & {
+        @include hc-step-arrow($purple-complete, null);
+    }
+    .hc-stepper-orange .hc-stepper-arrow .hc-step-complete:not(.hc-step-last) & {
+        @include hc-step-arrow($orange-complete, null);
+    }
+    .hc-stepper-red .hc-stepper-arrow .hc-step-complete:not(.hc-step-last) & {
+        @include hc-step-arrow($red-complete, null);
     }
 }
 
@@ -62,13 +130,26 @@
         @include hc-stepper-arrow-label-count();
     }
     .hc-stepper-isolated & {
-        @include hc-stepper-isolated-label();
+        @include hc-stepper-isolated-label($text);
+        @include hc-stepper-isolated-label-after();
+    }
+    .hc-stepper-isolated .hc-step-active & {
+        @include hc-stepper-font-bold();
     }
 }
 
 .hc-step-label {
+    .hc-stepper-arrow & {
+        @include hc-stepper-content-color($white);
+    }
+    .hc-stepper-arrow .hc-step-incomplete & {
+        @include hc-stepper-content-color(unset);
+    }
     .hc-stepper-isolated & {
-        @include hc-stepper-isolated-label();
+        @include hc-stepper-isolated-label($text);
+    }
+    .hc-stepper-isolated .hc-step-active & {
+        @include hc-stepper-font-bold();
     }
 }
 
@@ -78,6 +159,54 @@
     }
     .hc-stepper-isolated & {
         @include hc-stepper-isolated-icon();
+    }
+    .hc-step-incomplete & {
+        @include hc-stepper-content-color($track-bg-iso);
+    }
+    .hc-stepper-green .hc-step-active &,
+    .hc-stepper-green .hc-step-complete &,
+    .hc-stepper-green .hc-step-completed & {
+        @include hc-stepper-content-color($green);
+    }
+    .hc-stepper-blue .hc-step-active &,
+    .hc-stepper-blue .hc-step-complete &,
+    .hc-stepper-blue .hc-step-completed & {
+        @include hc-stepper-content-color($blue);
+    }
+    .hc-stepper-purple .hc-step-active &,
+    .hc-stepper-purple .hc-step-complete &,
+    .hc-stepper-purple .hc-step-completed & {
+        @include hc-stepper-content-color($purple);
+    }
+    .hc-stepper-orange .hc-step-active &,
+    .hc-stepper-orange .hc-step-complete &,
+    .hc-stepper-orange .hc-step-completed & {
+        @include hc-stepper-content-color($orange);
+    }
+    .hc-stepper-red .hc-step-active &,
+    .hc-stepper-red .hc-step-complete &,
+    .hc-stepper-red .hc-step-completed & {
+        @include hc-stepper-content-color($red);
+    }
+    .hc-stepper-green .hc-stepper-arrow .hc-step-complete &,
+    .hc-stepper-green .hc-stepper-arrow .hc-step-completed & {
+        @include hc-stepper-content-color($green-complete);
+    }
+    .hc-stepper-blue .hc-stepper-arrow .hc-step-complete &,
+    .hc-stepper-blue .hc-stepper-arrow .hc-step-completed & {
+        @include hc-stepper-content-color($blue-complete);
+    }
+    .hc-stepper-purple .hc-stepper-arrow .hc-step-complete &,
+    .hc-stepper-purple .hc-stepper-arrow .hc-step-completed & {
+        @include hc-stepper-content-color($purple-complete);
+    }
+    .hc-stepper-orange .hc-stepper-arrow .hc-step-complete &,
+    .hc-stepper-orange .hc-stepper-arrow .hc-step-completed & {
+        @include hc-stepper-content-color($orange-complete);
+    }
+    .hc-stepper-red .hc-stepper-arrow .hc-step-complete &,
+    .hc-stepper-red .hc-stepper-arrow .hc-step-completed & {
+        @include hc-stepper-content-color($red-complete);
     }
 }
 
@@ -91,5 +220,105 @@
 
 .hc-stepper-track {
     @include hc-stepper-track();
+
+    .hc-stepper-arrow & {
+        @include hc-stepper-bg-color($track-bg);
+    }
 }
 
+.hc-step-first {
+    .hc-stepper-isolated & {
+        @include hc-stepper-isolated-first();
+    }
+}
+
+.hc-step-last {
+    .hc-stepper-isolated & {
+        @include hc-stepper-isolated-last();
+    }
+}
+
+.hc-step-active {
+    .hc-stepper-green .hc-stepper-arrow & {
+        @include hc-stepper-bg-color($green);
+    }
+    .hc-stepper-blue .hc-stepper-arrow & {
+        @include hc-stepper-bg-color($blue);
+    }
+    .hc-stepper-purple .hc-stepper-arrow & {
+        @include hc-stepper-bg-color($purple);
+    }
+    .hc-stepper-orange .hc-stepper-arrow & {
+        @include hc-stepper-bg-color($orange);
+    }
+    .hc-stepper-red .hc-stepper-arrow & {
+        @include hc-stepper-bg-color($red);
+    }
+    .hc-stepper-green .hc-stepper-isolated & {
+        @include hc-stepper-isolated-active($green, $track-bg-iso);
+    }
+    .hc-stepper-blue .hc-stepper-isolated & {
+        @include hc-stepper-isolated-active($blue, $track-bg-iso);
+    }
+    .hc-stepper-purple .hc-stepper-isolated & {
+        @include hc-stepper-isolated-active($purple, $track-bg-iso);
+    }
+    .hc-stepper-orange .hc-stepper-isolated & {
+        @include hc-stepper-isolated-active($orange, $track-bg-iso);
+    }
+    .hc-stepper-red .hc-stepper-isolated & {
+        @include hc-stepper-isolated-active($red, $track-bg-iso);
+    }
+}
+
+.hc-step-complete,
+.hc-step-completed {
+    .hc-stepper-green .hc-stepper-arrow & {
+        @include hc-stepper-bg-color($green-complete);
+    }
+    .hc-stepper-blue .hc-stepper-arrow & {
+        @include hc-stepper-bg-color($blue-complete);
+    }
+    .hc-stepper-purple .hc-stepper-arrow & {
+        @include hc-stepper-bg-color($purple-complete);
+    }
+    .hc-stepper-orange .hc-stepper-arrow & {
+        @include hc-stepper-bg-color($orange-complete);
+    }
+    .hc-stepper-red .hc-stepper-arrow & {
+        @include hc-stepper-bg-color($red-complete);
+    }
+    .hc-stepper-green .hc-stepper-isolated & {
+        @include hc-stepper-isolated-complete($green);
+    }
+    .hc-stepper-blue .hc-stepper-isolated & {
+        @include hc-stepper-isolated-complete($blue);
+    }
+    .hc-stepper-purple .hc-stepper-isolated & {
+        @include hc-stepper-isolated-complete($purple);
+    }
+    .hc-stepper-orange .hc-stepper-isolated & {
+        @include hc-stepper-isolated-complete($orange);
+    }
+    .hc-stepper-red .hc-stepper-isolated & {
+        @include hc-stepper-isolated-complete($red);
+    }
+}
+
+.hc-step-complete:not(.hc-step-last):not(.hc-step-completed) {
+    .hc-stepper-green .hc-stepper-arrow & {
+        @include hc-stepper-arrow-after($green, $green);
+    }
+    .hc-stepper-blue .hc-stepper-arrow & {
+        @include hc-stepper-arrow-after($blue, $blue);
+    }
+    .hc-stepper-purple .hc-stepper-arrow & {
+        @include hc-stepper-arrow-after($purple, $purple);
+    }
+    .hc-stepper-orange .hc-stepper-arrow & {
+        @include hc-stepper-arrow-after($orange, $orange);
+    }
+    .hc-stepper-red .hc-stepper-arrow & {
+        @include hc-stepper-arrow-after($red, $red);
+    }
+}
