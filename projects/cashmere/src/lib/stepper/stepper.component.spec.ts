@@ -80,7 +80,7 @@ describe('StepperComponent', () => {
         fixture.detectChanges();
 
         let steps = fixture.debugElement.queryAll(By.css('.hc-step'));
-        expect(steps[0].nativeElement.classList.contains('hc-step-active')).toBe(true);
+        expect(steps[0].nativeElement.classList.contains('hc-step-isolated-active')).toBe(true);
     });
 
     it('should disable steps if their disabled parameter is set to true', () => {
