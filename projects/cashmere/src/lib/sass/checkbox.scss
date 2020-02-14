@@ -39,10 +39,6 @@
     margin-bottom: -3px;
 }
 
-@mixin hc-checkbox-align-center() {
-    align-items: center;
-}
-
 @mixin hc-checkbox-content-disabled() {
     color: $gray-300;
     cursor: not-allowed;
