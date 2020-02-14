@@ -2,48 +2,82 @@
 @import '../sass/functions';
 @import '../sass/stepper.scss';
 
-.hc-stepper-green {
-    .hc-stepper-arrow {
+.hc-stepper-arrow {
+    .hc-stepper-green & {
         @include arrow-theme($green, lighten(tint($green, 13%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
     }
-    .hc-stepper-isolated {
-        @include isolated-theme($green, $slate-gray-200, $white, $text, $isolated-disk-size);
-    }
-}
-
-.hc-stepper-blue {
-    .hc-stepper-arrow {
+    .hc-stepper-blue & {
         @include arrow-theme($blue, lighten(tint($blue, 20%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
     }
-    .hc-stepper-isolated {
-        @include isolated-theme($blue, $slate-gray-200, $white, $text, $isolated-disk-size);
-    }
-}
-
-.hc-stepper-purple {
-    .hc-stepper-arrow {
+    .hc-stepper-purple & {
         @include arrow-theme($purple, lighten(tint($purple, 13%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
     }
-    .hc-stepper-isolated {
-        @include isolated-theme($purple, $slate-gray-200, $white, $text, $isolated-disk-size);
-    }
-}
-
-.hc-stepper-orange {
-    .hc-stepper-arrow {
+    .hc-stepper-orange & {
         @include arrow-theme($orange, lighten(tint($orange, 13%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
     }
-    .hc-stepper-isolated {
+    .hc-stepper-red & {
+        @include arrow-theme($red, lighten(tint($red, 20%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
+    }
+}
+.hc-stepper-isolated {
+    .hc-stepper-green & {
+        @include isolated-theme($green, $slate-gray-200, $white, $text, $isolated-disk-size);
+    }
+    .hc-stepper-blue & {
+        @include isolated-theme($blue, $slate-gray-200, $white, $text, $isolated-disk-size);
+    }
+    .hc-stepper-purple & {
+        @include isolated-theme($purple, $slate-gray-200, $white, $text, $isolated-disk-size);
+    }
+    .hc-stepper-orange & {
         @include isolated-theme($orange, $slate-gray-200, $white, $text, $isolated-disk-size);
+    }
+    .hc-stepper-red & {
+        @include isolated-theme($red, $slate-gray-200, $white, $text, $isolated-disk-size);
     }
 }
 
-.hc-stepper-red {
-    .hc-stepper-arrow {
-        @include arrow-theme($red, lighten(tint($red, 20%), 3%), $slate-gray-100, $slate-gray-200, $white, $white);
+.hc-step {
+    @include hc-step();
+
+    .hc-stepper-arrow & {
+        @include hc-stepper-arrow-step();
     }
-    .hc-stepper-isolated {
-        @include isolated-theme($red, $slate-gray-200, $white, $text, $isolated-disk-size);
+    .hc-stepper-isolated & {
+        @include hc-stepper-isolated-step();
+    }
+}
+
+.hc-step-disk {
+    .hc-stepper-arrow & {
+        @include hc-stepper-arrow-step-disk();
+    }
+    .hc-stepper-isolated & {
+        @include hc-stepper-isolated-step-disk();
+    }
+}
+
+.hc-step-label-count {
+    .hc-stepper-arrow & {
+        @include hc-stepper-arrow-label-count();
+    }
+    .hc-stepper-isolated & {
+        @include hc-stepper-isolated-label();
+    }
+}
+
+.hc-step-label {
+    .hc-stepper-isolated & {
+        @include hc-stepper-isolated-label();
+    }
+}
+
+.hc-step-icon {
+    .hc-stepper-arrow & {
+        @include hc-stepper-arrow-icon();
+    }
+    .hc-stepper-isolated & {
+        @include hc-stepper-isolated-icon();
     }
 }
 
@@ -57,46 +91,5 @@
 
 .hc-stepper-track {
     @include hc-stepper-track();
-}
-
-.hc-step {
-    @include hc-step();
-}
-
-.hc-stepper-arrow {
-    .hc-step {
-        @include hc-stepper-arrow-step();
-    }
-
-    .hc-step-disk {
-        @include hc-stepper-arrow-step-disk();
-    }
-
-    .hc-step-label-count {
-        @include hc-stepper-arrow-label-count();
-    }
-
-    hc-icon {
-        @include hc-stepper-arrow-icon();
-    }
-}
-
-.hc-stepper-isolated {
-    .hc-step {
-        @include hc-stepper-isolated-step();
-    }
-
-    .hc-step-disk {
-        @include hc-stepper-isolated-step-disk();
-    }
-
-    .hc-step-label,
-    .hc-step-label-count {
-        @include hc-stepper-isolated-label();
-    }
-
-    hc-icon {
-        @include hc-stepper-isolated-icon();
-    }
 }
 

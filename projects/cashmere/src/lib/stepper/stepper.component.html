@@ -19,7 +19,7 @@
         >
             <span class="hc-step-disk">
                 <ng-container *ngIf="step.iconSet && step.icon; else elseBlock">
-                    <hc-icon [fontSet]="step.iconSet" [fontIcon]="step.icon"></hc-icon>
+                    <hc-icon [fontSet]="step.iconSet" [fontIcon]="step.icon" class="hc-step-icon"></hc-icon>
                 </ng-container>
                 <ng-template #elseBlock>{{ i + 1 }}</ng-template>
             </span>

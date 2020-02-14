@@ -77,17 +77,17 @@ export class StepperComponent implements AfterContentInit {
         return this._activeIndex;
     }
     set activeIndex(value: number) {
-        if (this.steps) {
-            if (value >= 0 && value < this.steps.length) {
-                if (this._routerEnabled) {
-                    this.router.navigate([this.steps[value].routerLink]);
-                } else {
-                    this._activeIndex = value;
-                    this.activeIndexChange.emit(this._activeIndex);
-                }
-            } else {
-                throw Error('The hc-stepper activeIndex value of ' + value + ' is out of bounds');
-            }
+        if (!this.steps) {
+            return;
+        }
+        if (value < 0 || value >= this.steps.length) {
+            throw Error('The hc-stepper activeIndex value of ' + value + ' is out of bounds');
+        }
+        if (this._routerEnabled) {
+            this.router.navigate([this.steps[value].routerLink]);
+        } else {
+            this._activeIndex = value;
+            this.activeIndexChange.emit(this._activeIndex);
         }
     }
     private _activeIndex: number = 0;
