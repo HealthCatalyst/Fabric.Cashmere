@@ -24,12 +24,32 @@
     }
 }
 
+.hc-checkbox-align-center {
+    @include hc-checkbox-align-center();
+}
+
+.hc-checkbox-align-top {
+    @include hc-checkbox-align-top();
+}
+
+.hc-checkbox-align-bottom {
+    @include hc-checkbox-align-bottom();
+}
+
 .hc-checkbox-label {
     @include hc-checkbox-label();
 
     .hc-checkbox-tight & {
         @include hc-checkbox-label-tight();
     }
+}
+
+.hc-checkbox-align-label-top {
+    @include hc-checkbox-align-label-top();
+}
+
+.hc-checkbox-align-label-bottom {
+    @include hc-checkbox-align-label-bottom();
 }
 
 .hc-checkbox-overlay {

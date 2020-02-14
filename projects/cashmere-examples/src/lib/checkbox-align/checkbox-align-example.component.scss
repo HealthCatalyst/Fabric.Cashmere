@@ -1,0 +1,9 @@
+.checkbox-example-container {
+    display: flex;
+    align-items: center;
+
+    hc-checkbox {
+        flex: 1;
+        margin-right: 15px;
+    }
+}

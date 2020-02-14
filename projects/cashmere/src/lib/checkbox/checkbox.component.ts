@@ -70,6 +70,10 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         this._tight = parseBooleanAttribute(value);
     }
 
+    /** Sets the position of the checkbox relative to its associated label. *Defaults to `center`.*  */
+    @Input()
+    align: 'center' | 'top' | 'bottom' = 'center';
+
     /** Sets unique name used in a form */
     @Input()
     name: string | null = null;

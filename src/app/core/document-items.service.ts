@@ -14,7 +14,7 @@ const docs: DocItem[] = [
         id: 'checkbox',
         name: 'Checkbox',
         category: 'forms',
-        examples: ['checkbox-standard', 'checkbox-indeterminate', 'checkbox-forms'],
+        examples: ['checkbox-standard', 'checkbox-indeterminate', 'checkbox-align', 'checkbox-forms'],
         usageDoc: true
     },
     {id: 'accordion', name: 'Accordion', category: 'layout', examples: ['accordion-overview']},

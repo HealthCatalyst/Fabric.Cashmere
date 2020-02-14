@@ -8,12 +8,39 @@
 
 @mixin hc-checkbox-content() {
     display: inline-flex;
-    align-items: center;
     cursor: pointer;
+}
+
+@mixin hc-checkbox-align-center() {
+    align-items: center;
+}
+
+@mixin hc-checkbox-align-top() {
+    align-items: flex-start;
+}
+
+@mixin hc-checkbox-align-bottom() {
+    align-items: flex-end;
 }
 
 @mixin hc-checkbox-content-label() {
     cursor: pointer;
+}
+
+@mixin hc-checkbox-align-label-top() {
+    /* important included to override the padding of the tight class if applied */
+    padding-top: 0 !important;
+    margin-top: -3px;
+}
+
+@mixin hc-checkbox-align-label-bottom() {
+    /* important included to override the padding of the tight class if applied */
+    padding-bottom: 0 !important;
+    margin-bottom: -3px;
+}
+
+@mixin hc-checkbox-align-center() {
+    align-items: center;
 }
 
 @mixin hc-checkbox-content-disabled() {
@@ -39,6 +66,7 @@
     position: relative;
     width: 22px;
     height: 22px;
+    min-width: 22px;
     background-color: $white;
     border: 2px solid $gray-300;
     border-radius: 3px;
@@ -58,6 +86,7 @@
 @mixin hc-checkbox-overlay-tight() {
     width: 18px;
     height: 18px;
+    min-width: 18px;
 
     &:after {
         top: 0.5px;
