@@ -8,4 +8,6 @@ import {Component} from '@angular/core';
     templateUrl: 'tabs-vertical-example.component.html',
     styleUrls: ['tabs-vertical-example.component.scss']
 })
-export class TabsVerticalExampleComponent {}
+export class TabsVerticalExampleComponent {
+    _tight: boolean = false;
+}

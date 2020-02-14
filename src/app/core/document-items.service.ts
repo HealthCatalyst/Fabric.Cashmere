@@ -14,7 +14,7 @@ const docs: DocItem[] = [
         id: 'checkbox',
         name: 'Checkbox',
         category: 'forms',
-        examples: ['checkbox-standard', 'checkbox-indeterminate', 'checkbox-forms'],
+        examples: ['checkbox-standard', 'checkbox-indeterminate', 'checkbox-align', 'checkbox-forms'],
         usageDoc: true
     },
     {id: 'accordion', name: 'Accordion', category: 'layout', examples: ['accordion-overview']},
@@ -53,7 +53,7 @@ const docs: DocItem[] = [
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
     },
     {id: 'ellipsis-pipe', name: 'Ellipsis', category: 'pipes', usageDoc: true, hideApi: true, examples: ['ellipsis-overview']},
-    {id: 'form-field', name: 'Form Field', category: 'forms', examples: ['form-field-overview']},
+    {id: 'form-field', name: 'Form Field', category: 'forms', examples: ['form-field-overview', 'form-field-tight']},
     {id: 'icon', name: 'Icon', category: 'buttons', examples: ['icon-overview']},
     {
         id: 'input',
@@ -114,6 +114,7 @@ const docs: DocItem[] = [
         usageDoc: true
     },
     {id: 'sort', name: 'Sort', category: 'table', usageDoc: true},
+    {id: 'stepper', name: 'Stepper', category: 'layout', examples: ['stepper-overview']},
     {id: 'subnav', name: 'Subnav', category: 'nav', examples: ['subnav-overview']},
     {
         id: 'table',

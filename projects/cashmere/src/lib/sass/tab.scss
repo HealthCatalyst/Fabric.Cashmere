@@ -26,6 +26,10 @@
     padding-left: 12px;
 }
 
+@mixin hc-tab-vertical-tight() {
+    padding: 10px 20px;
+}
+
 @mixin hc-tab-horizontal() {
     background-color: inherit;
     color: $offblack;
@@ -45,6 +49,10 @@
     border-bottom: $blue 4px solid;
     color: $offblack;
     font-weight: bold;
+}
+
+@mixin hc-tab-horizontal-tight() {
+    padding: 10px;
 }
 
 // tab-set

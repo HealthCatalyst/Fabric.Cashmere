@@ -1,4 +1,7 @@
-<label class="hc-radio-container" [class.disabled]="disabled">
+<label class="hc-radio-container"
+    [class.disabled]="disabled"
+    [class.hc-radio-inline]="_inlineGroup"
+    [class.hc-radio-tight]="tight" >
     <input class="hc-radio-input"
            [class.disabled]="disabled"
            type="radio"
