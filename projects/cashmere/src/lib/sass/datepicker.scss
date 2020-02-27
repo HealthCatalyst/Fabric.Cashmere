@@ -3,6 +3,8 @@
 @import '../sass/functions';
 @import '../sass/mixins';
 
+/* DatePicker */
+
 @mixin hc-datepicker-content() {
     background-color: $white;
     border-radius: 4px;
@@ -12,9 +14,12 @@
     height: 100%;
     width: 310px;
 }
+
 @mixin hc-datepicker-toggle-active() {
     color: $primary-brand;
 }
+
+/* Calendar */
 
 $hc-datepicker-calendar-padding: 15px;
 $hc-datepicker-non-touch-calendar-cell-size: 40px;
@@ -34,8 +39,192 @@ $hc-datepicker-touch-min-height: 312px;
 $hc-datepicker-touch-max-width: 750px;
 $hc-datepicker-touch-max-height: 788px;
 
+$hc-calendar-padding: 8px !default;
+$hc-calendar-header-divider-width: 2px !default;
+$hc-calendar-controls-vertical-padding: 5%;
+// We use the same padding as the month / year label, but subtract 16px since there is padding
+// between the edge of the button and the text. This ensures that the button text lines up with
+// the month / year label text.
+$hc-calendar-controls-side-margin: calc(33% / 7 - 16px);
+
+$hc-calendar-arrow-size: 5px !default;
+$hc-calendar-arrow-disabled-opacity: 0.5 !default;
+
+// Values chosen to approximate https://material.io/icons/#ic_navigate_before and
+// https://material.io/icons/#ic_navigate_next as closely as possible.
+$hc-calendar-prev-next-icon-border-width: 2px;
+$hc-calendar-prev-next-icon-margin: 15.5px;
+$hc-calendar-prev-icon-transform: translateX(2px) rotate(-45deg);
+$hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
+
 @mixin hc-calendar() {
+    display: block;
     height: 100%;
     padding: 10px 0 20px 0;
     width: $hc-datepicker-non-touch-calendar-width;
+}
+
+@mixin hc-calendar-header() {
+    padding: 0 $hc-calendar-padding;
+}
+
+@mixin hc-calendar-content() {
+    outline: none;
+    padding: 0 $hc-calendar-padding $hc-calendar-padding $hc-calendar-padding;
+}
+
+@mixin hc-calendar-controls() {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 $hc-calendar-controls-side-margin $hc-calendar-controls-vertical-padding;
+}
+
+@mixin hc-calendar-control-button() {
+    min-width: inherit;
+    padding: 10px;
+}
+
+@mixin hc-calendar-dropdown-caret() {
+    border-left: $hc-calendar-arrow-size solid transparent;
+    border-right: $hc-calendar-arrow-size solid transparent;
+    border-top-style: solid;
+    border-top-width: $hc-calendar-arrow-size;
+    display: inline-block;
+    height: 0;
+    margin: 0 0 0 $hc-calendar-arrow-size;
+    vertical-align: middle;
+    width: 0;
+
+    [dir='rtl'] & {
+        margin: 0 $hc-calendar-arrow-size 0 0;
+    }
+}
+
+@mixin hc-calendar-dropdown-caret-invert() {
+    transform: rotate(180deg);
+}
+
+@mixin hc-calendar-control-arrow() {
+    height: 40px;
+    min-width: inherit;
+    padding: 0px;
+    position: relative;
+    top: -2px;
+    width: 40px;
+
+    &::after {
+        border: 0 solid currentColor;
+        border-top-width: $hc-calendar-prev-next-icon-border-width;
+        bottom: 0;
+        content: '';
+        left: 0;
+        margin: $hc-calendar-prev-next-icon-margin;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    [dir='rtl'] & {
+        transform: rotate(180deg);
+    }
+}
+
+@mixin hc-calendar-previous-button() {
+    &::after {
+        border-left-width: $hc-calendar-prev-next-icon-border-width !important;
+        transform: $hc-calendar-prev-icon-transform;
+    }
+}
+
+@mixin hc-calendar-next-button() {
+    &::after {
+        border-right-width: $hc-calendar-prev-next-icon-border-width !important;
+        transform: $hc-calendar-next-icon-transform;
+    }
+}
+
+@mixin hc-calendar-month-label() {
+    align-items: center;
+    color: $primary-brand;
+    display: inline-flex;
+    font-size: calculateRem(15px);
+    font-weight: 600;
+    height: 35px;
+    justify-content: center;
+    line-height: 15px;
+    min-width: 35px;
+    vertical-align: baseline;
+}
+
+@mixin hc-calendar-table() {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+@mixin hc-calendar-table-header-cell() {
+    @include fontSize(9px);
+    color: $gray-500;
+    padding: 0 0 $hc-calendar-padding 0;
+    text-align: center;
+}
+
+@mixin hc-calendar-table-header-divider() {
+    height: $hc-calendar-header-divider-width;
+    position: relative;
+
+    // We use an absolutely positioned pseudo-element as the divider line for the table header so we
+    // can extend it all the way to the edge of the calendar.
+    &::after {
+        content: '';
+        height: $hc-calendar-header-divider-width;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+@mixin hc-calendar-time-picker() {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+@mixin hc-calendar-time-picker-field() {
+    margin: 0 3px;
+}
+
+@mixin hc-calendar-time-picker-input() {
+    width: 25px;
+}
+
+@mixin hc-calendar-time-controls() {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin hc-calendar-time-controls-button() {
+    /* important is needed here to override hc-button properties */
+    height: 16px !important;
+    line-height: 16px !important;
+    padding: 0 !important;
+    width: 16px !important;
+}
+
+@mixin hc-calendar-controls-icon() {
+    line-height: 1 !important;
+}
+
+@mixin hc-calendar-time-picker-select() {
+    width: 70px;
+}
+
+@mixin hc-calendar-time-picker-icon() {
+    color: $slate-gray-400;
+    font-size: 25px;
+    height: 25px;
+    margin-right: 10px;
+    width: 25px;
 }

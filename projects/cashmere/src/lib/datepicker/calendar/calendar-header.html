@@ -4,12 +4,13 @@
             hc-button
             buttonStyle="link"
             type="button"
-            class="hc-calendar-today-button"
+            class="hc-calendar-today-button hc-calendar-control-button"
             (click)="_todayClicked()"
             [disabled]="!_todayEnabled()"
             [attr.aria-label]="_todayButtonLabel"
             [title]="_todayButtonLabel"
-        >Today
+        >
+            Today
         </button>
 
         <span>
@@ -17,7 +18,7 @@
                 hc-button
                 buttonStyle="link"
                 type="button"
-                class="hc-calendar-previous-button"
+                class="hc-calendar-previous-button hc-calendar-control-button"
                 [disabled]="!previousEnabled()"
                 (click)="previousClicked()"
                 [attr.aria-label]="prevButtonLabel"
@@ -30,7 +31,7 @@
                 hc-button
                 buttonStyle="link"
                 type="button"
-                class="hc-calendar-next-button"
+                class="hc-calendar-next-button hc-calendar-control-button"
                 [disabled]="!nextEnabled()"
                 (click)="nextClicked()"
                 [attr.aria-label]="nextButtonLabel"
@@ -44,14 +45,13 @@
             hc-button
             buttonStyle="link"
             type="button"
-            class="hc-calendar-period-button"
+            class="hc-calendar-period-button hc-calendar-control-button"
             (click)="currentPeriodClicked()"
             [attr.aria-label]="periodButtonLabel"
             [title]="periodButtonLabel"
         >
             {{ periodButtonText }}
-            <div class="hc-calendar-arrow" [class.hc-calendar-invert]="calendar.currentView != 'month'"></div>
+            <div class="hc-calendar-dropdown-caret" [class.hc-calendar-dropdown-caret-invert]="calendar.currentView != 'month'"></div>
         </button>
-
     </div>
 </div>
