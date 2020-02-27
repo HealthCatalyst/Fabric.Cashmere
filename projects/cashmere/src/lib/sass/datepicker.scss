@@ -228,3 +228,28 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
     margin-right: 10px;
     width: 25px;
 }
+
+/* Datepicker Toggle */
+
+@mixin hc-calendar-toggle() {
+    background: 0 0;
+    border: none;
+    box-sizing: border-box;
+    color: inherit;
+    cursor: pointer;
+    display: inline-block;
+    height: 32px;
+    line-height: 1.5;
+    margin: 0;
+    outline: 0;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    vertical-align: baseline;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+    width: 32px;
+}
