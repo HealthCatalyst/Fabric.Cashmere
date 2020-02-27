@@ -1,0 +1,59 @@
+@import '../sass/colors';
+@import '../sass/typography';
+@import '../sass/functions';
+@import '../sass/mixins';
+
+@mixin hc-datepicker-content() {
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+    color: $text;
+    display: block;
+    height: 100%;
+    width: 310px;
+}
+
+@mixin hc-datepicker-content-touch() {
+    display: block;
+    // TODO: hack to offset the padding of the dialog. Can be removed when we switch away
+    // from using dialog.
+    margin: -24px;
+    // make sure the dialog scrolls rather than being cropped on ludicrously small screens
+    max-height: 80vh;
+    overflow: auto;
+}
+
+@mixin hc-datepicker-toggle-active() {
+    color: $primary-brand;
+}
+
+$hc-datepicker-calendar-padding: 15px;
+$hc-datepicker-non-touch-calendar-cell-size: 40px;
+$hc-datepicker-non-touch-calendar-width: $hc-datepicker-non-touch-calendar-cell-size * 7 + $hc-datepicker-calendar-padding * 2;
+
+// Ideally the calendar would have a constant aspect ratio, no matter its size, and we would base
+// these measurements off the aspect ratio. Unfortunately, the aspect ratio does change a little as
+// the calendar grows, since some of the elements have pixel-based sizes. These numbers have been
+// chosen to minimize extra whitespace at larger sizes, while still ensuring we won't need
+// scrollbars at smaller sizes.
+$hc-datepicker-touch-landscape-width: 64vh;
+$hc-datepicker-touch-landscape-height: 80vh;
+$hc-datepicker-touch-portrait-width: 80vw;
+$hc-datepicker-touch-portrait-height: 100vw;
+$hc-datepicker-touch-min-width: 250px;
+$hc-datepicker-touch-min-height: 312px;
+$hc-datepicker-touch-max-width: 750px;
+$hc-datepicker-touch-max-height: 788px;
+
+@mixin hc-calendar() {
+    height: 100%;
+    padding: 10px 0 20px 0;
+    width: $hc-datepicker-non-touch-calendar-width;
+}
+
+@mixin hc-calendar-touch() {
+    max-height: $hc-datepicker-touch-max-height;
+    max-width: $hc-datepicker-touch-max-width;
+    min-height: $hc-datepicker-touch-min-height;
+    min-width: $hc-datepicker-touch-min-width;
+}
