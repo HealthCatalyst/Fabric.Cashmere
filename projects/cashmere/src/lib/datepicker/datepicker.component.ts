@@ -21,11 +21,9 @@ import {Subject, Subscription, merge} from 'rxjs';
 import {ScrollStrategy, Overlay, ComponentType, OverlayRef, OverlayConfig, PositionStrategy} from '@angular/cdk/overlay';
 import {coerceBooleanProperty} from './utils/boolean-property';
 import {HcCalendarCellCssClasses} from './calendar-body/calendar-body.component';
-import {HcDialogRef} from '../dialog/dialog-ref';
 import {DatepickerContentComponent} from './datepicker-content/datepicker-content.component';
 import {ComponentPortal} from '@angular/cdk/portal';
 import {DatepickerInputDirective} from './datepicker-input/datepicker-input.directive';
-import {DialogService} from '../dialog/dialog.service';
 import {Directionality} from '@angular/cdk/bidi';
 import {DOCUMENT} from '@angular/common';
 import {take, filter} from 'rxjs/operators';
@@ -57,7 +55,7 @@ export class HcDatepickerContentBase {
     constructor(public _elementRef: ElementRef) {}
 }
 
-/** Component responsible for managing the datepicker popup/dialog. */
+/** Component responsible for managing the datepicker popup */
 @Component({
     selector: 'hc-datepicker',
     template: '',
@@ -122,9 +120,9 @@ export class DatepickerComponent implements OnDestroy {
     startView: 'month' | 'year' | 'multi-year' = 'month';
 
     /**
-     * Whether the calendar UI is in touch mode. In touch mode the calendar opens in a dialog rather
-     * than a popup and elements have more padding to allow for bigger touch targets.
-     */
+     * @deprecated
+     * @description The datepicker now only uses `hcPop` to display
+     * */
     @Input()
     get touchUi(): boolean {
         return this._touchUi;
@@ -218,9 +216,6 @@ export class DatepickerComponent implements OnDestroy {
     /** A reference to the overlay when the calendar is opened as a popup. */
     _popupRef: OverlayRef;
 
-    /** A reference to the dialog when the calendar is opened as a dialog. */
-    private _dialogRef: HcDialogRef<DatepickerContentComponent> | null;
-
     /** A portal containing the calendar for this datepicker. */
     private _calendarPortal: ComponentPortal<DatepickerContentComponent>;
 
@@ -243,7 +238,6 @@ export class DatepickerComponent implements OnDestroy {
     readonly _selectedChanged = new Subject<D>();
 
     constructor(
-        private _dialog: DialogService,
         private _overlay: Overlay,
         private _ngZone: NgZone,
         private _viewContainerRef: ViewContainerRef,
@@ -315,7 +309,7 @@ export class DatepickerComponent implements OnDestroy {
             this._focusedElementBeforeOpen = this._document.activeElement;
         }
 
-        this.touchUi ? this._openAsDialog() : this._openAsPopup();
+        this._openAsPopup();
         this._opened = true;
         this.openedStream.emit();
     }
@@ -327,10 +321,6 @@ export class DatepickerComponent implements OnDestroy {
         }
         if (this._popupRef && this._popupRef.hasAttached()) {
             this._popupRef.detach();
-        }
-        if (this._dialogRef) {
-            this._dialogRef.close();
-            this._dialogRef = null;
         }
         if (this._calendarPortal && this._calendarPortal.isAttached) {
             this._calendarPortal.detach();
@@ -357,26 +347,6 @@ export class DatepickerComponent implements OnDestroy {
         } else {
             completeClose();
         }
-    }
-
-    /** Open the calendar as a dialog. */
-    private _openAsDialog(): void {
-        // Usually this would be handled by `open` which ensures that we can only have one overlay
-        // open at a time, however since we reset the variables in async handlers some overlays
-        // may slip through if the user opens and closes multiple times in quick succession (e.g.
-        // by holding down the enter key).
-        if (this._dialogRef) {
-            this._dialogRef.close();
-        }
-
-        this._dialogRef = this._dialog.open<DatepickerContentComponent>(DatepickerContentComponent, {
-            direction: this._dir ? this._dir.value : 'ltr',
-            viewContainerRef: this._viewContainerRef,
-            panelClass: 'hc-datepicker-dialog'
-        });
-
-        this._dialogRef.afterClosed().subscribe(() => this.close());
-        this._dialogRef.componentInstance.datepicker = this;
     }
 
     /** Open the calendar as a popup. */

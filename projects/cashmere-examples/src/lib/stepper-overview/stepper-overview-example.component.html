@@ -1,0 +1,32 @@
+<div class="stepper-options">
+    <hc-form-field>
+        <hc-label>Stepper Type:</hc-label>
+        <hc-select [(ngModel)]="currentType">
+            <option *ngFor="let type of typeOptions" [value]="type">{{type}}</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Stepper Color:</hc-label>
+        <hc-select [(ngModel)]="currentColor">
+            <option *ngFor="let color of colorOptions" [value]="color">{{color}}</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Step Count (Isolated type only):</hc-label>
+        <hc-checkbox [(ngModel)]="showSteps">Show Step Count</hc-checkbox>
+    </hc-form-field>
+</div>
+
+<hc-stepper
+    [color]="currentColor"
+    [type]="currentType"
+    [showStepCount]="showSteps"
+    [steps]="progressSteps"
+    useRouterOutlet="false"
+    [(activeIndex)]="currentStep"
+    #stepperElement>
+</hc-stepper>
+
+<p>Current Step Index: <strong>{{currentStep}}</strong></p>

@@ -32,6 +32,7 @@ export class SelectChangeEvent {
 export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
     private _uniqueInputId = `hc-select-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
+    private _tight: boolean = false;
 
     _componentId = this._uniqueInputId;
 
@@ -83,6 +84,15 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
             this._value = val;
             this.onChange(val);
         }
+    }
+
+    /** If true, condense the default margin and reduce the font size. *Defaults to `false`.*  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
     }
 
     @Output()

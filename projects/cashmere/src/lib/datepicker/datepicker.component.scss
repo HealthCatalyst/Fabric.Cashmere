@@ -4,26 +4,6 @@
     @include hc-datepicker-content();
 }
 
-.hc-datepicker-content-touch {
-    @include hc-datepicker-content-touch();
-}
-
 .hc-calendar {
     @include hc-calendar();
-
-    .hc-datepicker-content-touch & {
-        @include hc-calendar-touch();
-    }
-
-    @media all and (orientation: landscape) {
-        .hc-datepicker-content-touch & {
-            @include hc-calendar-touch-landscape();
-        }
-    }
-
-    @media all and (orientation: portrait) {
-        .hc-datepicker-content-touch & {
-            @include hc-calendar-touch-portrait();
-        }
-    }
 }

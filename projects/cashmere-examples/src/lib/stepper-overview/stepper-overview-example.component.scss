@@ -1,0 +1,10 @@
+.stepper-options {
+    display: flex;
+    margin-bottom: 20px;
+
+    hc-form-field {
+        flex: 1;
+        max-width: 250px;
+        margin-right: 25px;
+    }
+}

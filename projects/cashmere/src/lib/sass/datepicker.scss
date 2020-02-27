@@ -12,17 +12,6 @@
     height: 100%;
     width: 310px;
 }
-
-@mixin hc-datepicker-content-touch() {
-    display: block;
-    // TODO: hack to offset the padding of the dialog. Can be removed when we switch away
-    // from using dialog.
-    margin: -24px;
-    // make sure the dialog scrolls rather than being cropped on ludicrously small screens
-    max-height: 80vh;
-    overflow: auto;
-}
-
 @mixin hc-datepicker-toggle-active() {
     color: $primary-brand;
 }
@@ -49,11 +38,4 @@ $hc-datepicker-touch-max-height: 788px;
     height: 100%;
     padding: 10px 0 20px 0;
     width: $hc-datepicker-non-touch-calendar-width;
-}
-
-@mixin hc-calendar-touch() {
-    max-height: $hc-datepicker-touch-max-height;
-    max-width: $hc-datepicker-touch-max-width;
-    min-height: $hc-datepicker-touch-min-height;
-    min-width: $hc-datepicker-touch-min-width;
 }

@@ -14,6 +14,10 @@
     .hc-select-disabled & {
         @include hc-select-chevron-disabled();
     }
+
+    .hc-select-tight & {
+        @include hc-select-chevron-tight();
+    }
 }
 
 .hc-select-input {
@@ -21,6 +25,10 @@
 
     .hc-form-field-invalid & {
         @include hc-select-input-invalid();
+    }
+
+    .hc-select-tight & {
+        @include hc-select-input-tight();
     }
 }
 

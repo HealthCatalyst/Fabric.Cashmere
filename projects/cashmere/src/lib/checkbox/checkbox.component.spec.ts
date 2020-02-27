@@ -164,6 +164,11 @@ describe('CheckboxComponent', () => {
 
             expect(inputElement.value).toBe('basic_checkbox');
         });
+
+        it('should align the checkbox label based on the align parameter', () => {
+            let alignClass = fixture.debugElement.queryAll(By.css('.hc-checkbox-align-top'));
+            expect(alignClass.length).toBe(1);
+        });
     });
 
     describe('with form control', () => {
@@ -244,6 +249,7 @@ describe('CheckboxComponent', () => {
                 [checked]="isChecked"
                 [indeterminate]="isIndeterminate"
                 [disabled]="isDisabled"
+                [align]="alignVal"
                 [value]="checkboxValue"
                 (click)="onCheckboxClick($event)"
                 (change)="onCheckboxChange($event)"
@@ -262,6 +268,7 @@ export class SingleCheckboxComponent {
     parentElementKeyedUp: boolean = false;
     checkboxId: string | null = 'simple-check';
     checkboxValue: string = 'single_checkbox';
+    alignVal: string = "top";
 
     onCheckboxClick: (event?: Event) => void = () => {};
     onCheckboxChange: (event?: CheckboxChangeEvent) => void = () => {};

@@ -167,13 +167,6 @@ their disabled state from the `<input>`, but this can be overridden by setting t
 property on the datepicker or toggle elements. This can be useful if you want to disable text input
 but allow selection via the calendar or vice-versa.
 
-### Touch UI mode
-
-The datepicker normally opens as a popup under the input. However this is not ideal for touch
-devices that don't have as much screen real estate and need bigger click targets. For this reason
-`<hc-datepicker>` has a `touchUi` property that can be set to `true` in order to enable a more
-touch friendly UI where the calendar opens in a large dialog.
-
 ### Manually opening and closing the calendar
 
 The calendar popup can be programmatically controlled using the `open` and `close` methods on the

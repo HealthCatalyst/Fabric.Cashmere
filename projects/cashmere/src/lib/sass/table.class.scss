@@ -99,7 +99,7 @@
     }
 }
 
-.hc-action-row:not([disabled]) {
+.hc-table tbody tr.hc-action-row:not([disabled]) {
     @include hc-action-table-action-row();
 }
 
@@ -159,14 +159,14 @@
     @include hc-table-header-sortable-left();
 }
 
-.hc-active-sort {
+.hc-table th.hc-active-sort {
     @include hc-table-header-active-sort();
 
     &.hc-sort-asc {
         @include hc-table-header-active-sort-asc();
     }
 
-    &.hc-sort-desc:after {
+    &.hc-sort-desc {
         @include hc-table-header-active-sort-desc();
     }
 }
@@ -174,5 +174,9 @@
 .hc-no-hover-table {
     tbody tr {
         @include hc-no-hover-table-row();
+
+        &.hc-row-selected {
+            @include hc-no-hover-table-row-selected();
+        }
     }
 }

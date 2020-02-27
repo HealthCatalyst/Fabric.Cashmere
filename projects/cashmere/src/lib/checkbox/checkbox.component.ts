@@ -39,6 +39,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     private _form: NgForm | FormGroupDirective | null;
     private _checked: boolean = false;
     private _tabIndex: number;
+    private _tight: boolean = false;
 
     _componentId = this._uniqueId;
 
@@ -59,6 +60,19 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     set id(idVal: string) {
         this._componentId = idVal ? idVal : this._uniqueId;
     }
+
+    /** If true, condense the default margin and reduce the font size. *Defaults to `false`.*  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
+    }
+
+    /** Sets the position of the checkbox relative to its associated label. *Defaults to `center`.*  */
+    @Input()
+    align: 'center' | 'top' | 'bottom' = 'center';
 
     /** Sets unique name used in a form */
     @Input()
