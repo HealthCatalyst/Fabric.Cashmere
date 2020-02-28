@@ -4,6 +4,16 @@
     @include hc-chip();
 }
 
+.hc-chip-content-neutral {
+    @include hc-chip-content();
+}
+
+.hc-chip-content-red,
+.hc-chip-content-yellow,
+.hc-chip-content-green {
+    @include hc-chip-content-color();
+}
+
 .hc-chip-close {
     @include hc-chip-close();
 }
