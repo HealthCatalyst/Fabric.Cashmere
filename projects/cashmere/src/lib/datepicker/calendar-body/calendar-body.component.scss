@@ -16,24 +16,20 @@
     @include hc-calendar-body-disabled();
 }
 
-.hc-calendar-body-cell {
-    &:not(.hc-calendar-body-disabled):hover {
-        @include hc-calendar-body-active();
-    }
-}
-
-.hc-calendar-body-active {
-    .cdk-keyboard-focused &,
-    .cdk-program-focused & {
-        @include hc-calendar-body-active();
-    }
-}
-
 .hc-calendar-body-cell-content {
     @include hc-calendar-body-cell-content();
 
     .hc-calendar-body-disabled &:not(.hc-calendar-body-selected):not(.hc-calendar-body-today) {
         @include hc-calendar-body-disabled();
+    }
+
+    .hc-calendar-body-available:hover & {
+        @include hc-calendar-body-active();
+    }
+
+    .cdk-keyboard-focused .hc-calendar-body-active &:not(.hc-calendar-body-selected),
+    .cdk-program-focused .hc-calendar-body-active &:not(.hc-calendar-body-selected) {
+        @include hc-calendar-body-active();
     }
 }
 
