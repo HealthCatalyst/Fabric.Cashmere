@@ -39,4 +39,12 @@ export class TabComponent implements AfterContentInit {
             this._htmlTitle = this._tabTitle.first;
         }
     }
+
+    tabClickHandler(event: MouseEvent) {
+        //Prevent a tab anchor click from also calling the router on the host element
+        event.preventDefault();
+        event.stopPropagation();
+
+        this.tabClick.emit();
+    }
 }
