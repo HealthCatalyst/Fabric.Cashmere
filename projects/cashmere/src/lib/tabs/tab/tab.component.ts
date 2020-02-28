@@ -41,7 +41,7 @@ export class TabComponent implements AfterContentInit {
     }
 
     tabClickHandler(event: MouseEvent) {
-        //Prevent a tab anchor click from also calling the router on the host element
+        // Prevent a tab anchor click from also calling the router on the host element
         event.preventDefault();
         event.stopPropagation();
 
