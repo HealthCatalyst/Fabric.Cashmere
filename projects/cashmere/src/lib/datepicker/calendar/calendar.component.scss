@@ -48,6 +48,10 @@
     @include hc-calendar-table();
 }
 
+.hc-calendar-table-header {
+    @include hc-calendar-table-header();
+}
+
 .hc-calendar-table-header th {
     @include hc-calendar-table-header-cell();
 }

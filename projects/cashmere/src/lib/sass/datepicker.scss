@@ -3,7 +3,7 @@
 @import '../sass/functions';
 @import '../sass/mixins';
 
-/* DatePicker */
+/* Datepicker */
 
 @mixin hc-datepicker-content() {
     background-color: $white;
@@ -25,20 +25,6 @@ $hc-datepicker-calendar-padding: 15px;
 $hc-datepicker-non-touch-calendar-cell-size: 40px;
 $hc-datepicker-non-touch-calendar-width: $hc-datepicker-non-touch-calendar-cell-size * 7 + $hc-datepicker-calendar-padding * 2;
 
-// Ideally the calendar would have a constant aspect ratio, no matter its size, and we would base
-// these measurements off the aspect ratio. Unfortunately, the aspect ratio does change a little as
-// the calendar grows, since some of the elements have pixel-based sizes. These numbers have been
-// chosen to minimize extra whitespace at larger sizes, while still ensuring we won't need
-// scrollbars at smaller sizes.
-$hc-datepicker-touch-landscape-width: 64vh;
-$hc-datepicker-touch-landscape-height: 80vh;
-$hc-datepicker-touch-portrait-width: 80vw;
-$hc-datepicker-touch-portrait-height: 100vw;
-$hc-datepicker-touch-min-width: 250px;
-$hc-datepicker-touch-min-height: 312px;
-$hc-datepicker-touch-max-width: 750px;
-$hc-datepicker-touch-max-height: 788px;
-
 $hc-calendar-padding: 8px !default;
 $hc-calendar-header-divider-width: 2px !default;
 $hc-calendar-controls-vertical-padding: 5%;
@@ -48,7 +34,6 @@ $hc-calendar-controls-vertical-padding: 5%;
 $hc-calendar-controls-side-margin: calc(33% / 7 - 16px);
 
 $hc-calendar-arrow-size: 5px !default;
-$hc-calendar-arrow-disabled-opacity: 0.5 !default;
 
 // Values chosen to approximate https://material.io/icons/#ic_navigate_before and
 // https://material.io/icons/#ic_navigate_next as closely as possible.
@@ -80,6 +65,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 }
 
 @mixin hc-calendar-control-button() {
+    font-size: $default-font-size;
     min-width: inherit;
     padding: 10px;
 }
@@ -105,6 +91,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 }
 
 @mixin hc-calendar-control-arrow() {
+    color: $primary-brand;
     height: 40px;
     min-width: inherit;
     padding: 0px;
@@ -162,6 +149,10 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
     width: 100%;
 }
 
+@mixin hc-calendar-table-header() {
+    color: $primary-brand;
+}
+
 @mixin hc-calendar-table-header-cell() {
     @include fontSize(9px);
     color: $gray-500;
@@ -176,6 +167,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
     // We use an absolutely positioned pseudo-element as the divider line for the table header so we
     // can extend it all the way to the edge of the calendar.
     &::after {
+        background: $gray-200;
         content: '';
         height: $hc-calendar-header-divider-width;
         left: 0;
@@ -235,7 +227,7 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
     background: 0 0;
     border: none;
     box-sizing: border-box;
-    color: inherit;
+    color: $primary-brand;
     cursor: pointer;
     display: inline-block;
     height: 32px;
@@ -252,4 +244,107 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
     -webkit-tap-highlight-color: transparent;
     white-space: nowrap;
     width: 32px;
+}
+
+/* Calendar Body */
+
+$hc-calendar-body-label-padding-start: 5% !default;
+// We don't want the label to jump around when we switch between month and year views, so we use
+// the same amount of padding regardless of the number of columns. We align the header label with
+// the one third mark of the first cell, this was chosen somewhat arbitrarily to make it look
+// roughly like the mock. Half way is too far since the cell text is center aligned.
+$hc-calendar-body-label-side-padding: 33% / 7 !default;
+$hc-calendar-body-cell-min-size: 32px !default;
+$hc-calendar-body-cell-content-margin: 5% !default;
+$hc-calendar-body-cell-content-border-width: 1px !default;
+
+$hc-calendar-body-min-size: 7 * $hc-calendar-body-cell-min-size !default;
+$hc-calendar-body-cell-content-size: 100% - $hc-calendar-body-cell-content-margin * 2 !default;
+$hc-calendar-body-disabled-color: $slate-gray-300 !default;
+$hc-datepicker-selected-today-box-shadow-width: 1px;
+
+@mixin hc-calendar-body() {
+    font-size: $default-font-size;
+    min-width: $hc-calendar-body-min-size;
+}
+
+@mixin hc-calendar-body-label() {
+    color: $primary-brand;
+    font-size: $default-font-size;
+    height: 0;
+    line-height: 0;
+    padding-left: $hc-calendar-body-label-side-padding;
+    padding-right: $hc-calendar-body-label-side-padding;
+    text-align: left;
+
+    [dir='rtl'] & {
+        text-align: right;
+    }
+}
+
+@mixin hc-calendar-body-cell() {
+    cursor: pointer;
+    height: 0;
+    line-height: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+}
+
+@mixin hc-calendar-body-disabled() {
+    cursor: default;
+}
+
+@mixin hc-calendar-body-cell-content() {
+    align-items: center;
+    border-color: transparent;
+    // Choosing a value clearly larger than the height ensures we get the correct capsule shape.
+    border-radius: 999px;
+    border-style: solid;
+    border-width: $hc-calendar-body-cell-content-border-width;
+    box-sizing: border-box;
+    color: $text;
+    display: flex;
+    height: $hc-calendar-body-cell-content-size;
+    justify-content: center;
+    left: $hc-calendar-body-cell-content-margin;
+    // Prevents text being off-center on Android.
+    line-height: 1;
+    position: absolute;
+    top: $hc-calendar-body-cell-content-margin;
+    width: $hc-calendar-body-cell-content-size;
+}
+
+@mixin hc-calendar-body-selected() {
+    background-color: darken($primary-brand, 10%);
+    color: $white;
+    font-weight: 700;
+}
+
+@mixin hc-calendar-body-selected-disabled() {
+    background-color: $hc-calendar-body-disabled-color;
+}
+
+@mixin hc-calendar-body-selected-today() {
+    box-shadow: inset 0 0 0 $hc-datepicker-selected-today-box-shadow-width $hc-calendar-body-disabled-color;
+}
+
+@mixin hc-calendar-body-disabled() {
+    color: $hc-calendar-body-disabled-color;
+}
+
+@mixin hc-calendar-body-active() {
+    border: 2px solid darken($primary-brand, 10%);
+}
+
+@mixin hc-calendar-body-today() {
+    background-color: $hc-calendar-body-disabled-color;
+    // Note: though it's not text, the border is a hint about the fact that this is today's date,
+    // so we use the hint color.
+    border-color: transparent;
+}
+
+@mixin hc-calendar-body-today-disabled() {
+    background-color: $hc-calendar-body-disabled-color;
+    border-color: transparent;
 }
