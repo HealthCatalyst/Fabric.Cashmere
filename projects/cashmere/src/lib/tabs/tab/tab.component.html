@@ -3,7 +3,7 @@
         [class.hc-tab-tight]="_tight"
         [routerLink]="routerLink"
         routerLinkActive="active"
-        (click)="tabClick.emit()">
+        (click)="tabClickHandler($event)">
         <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
         {{tabTitle}}
     </a>
@@ -12,7 +12,7 @@
     <a class="hc-tab-{{_direction}} hc-text-ellipsis"
         [class.hc-tab-tight]="_tight"
         [class.active]="_active"
-        (click)="tabClick.emit()">
+        (click)="tabClickHandler($event)">
         <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
         {{tabTitle}}
     </a>
