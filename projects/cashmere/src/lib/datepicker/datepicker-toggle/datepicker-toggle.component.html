@@ -1,13 +1,14 @@
 <button
     hc-icon-button
     #button
-    class="calendar-button"
+    class="hc-calendar-toggle"
     type="button"
     aria-haspopup="true"
     [attr.aria-label]="_intl.openCalendarLabel"
     [attr.tabindex]="disabled ? -1 : tabIndex"
     [disabled]="disabled"
-    (click)="_open($event)">
+    (click)="_open($event)"
+>
     <ng-content select="[hcDatepickerToggleIcon]"></ng-content>
-    <hc-icon hcSuffix fontSet="fa" [fontIcon]="datepicker.mode==='time'?'fa-clock-o':'fa-calendar'" *ngIf="!_customIcon"></hc-icon>
+    <hc-icon hcSuffix fontSet="fa" [fontIcon]="datepicker.mode === 'time' ? 'fa-clock-o' : 'fa-calendar'" *ngIf="!_customIcon"></hc-icon>
 </button>
