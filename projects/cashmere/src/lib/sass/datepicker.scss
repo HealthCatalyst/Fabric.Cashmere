@@ -1,0 +1,350 @@
+@import '../sass/colors';
+@import '../sass/typography';
+@import '../sass/functions';
+@import '../sass/mixins';
+
+/* Datepicker */
+
+@mixin hc-datepicker-content() {
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+    color: $text;
+    display: block;
+    height: 100%;
+    width: 310px;
+}
+
+@mixin hc-datepicker-toggle-active() {
+    color: $primary-brand;
+}
+
+/* Calendar */
+
+$hc-datepicker-calendar-padding: 15px;
+$hc-datepicker-non-touch-calendar-cell-size: 40px;
+$hc-datepicker-non-touch-calendar-width: $hc-datepicker-non-touch-calendar-cell-size * 7 + $hc-datepicker-calendar-padding * 2;
+
+$hc-calendar-padding: 8px !default;
+$hc-calendar-header-divider-width: 2px !default;
+$hc-calendar-controls-vertical-padding: 5%;
+// We use the same padding as the month / year label, but subtract 16px since there is padding
+// between the edge of the button and the text. This ensures that the button text lines up with
+// the month / year label text.
+$hc-calendar-controls-side-margin: calc(33% / 7 - 16px);
+
+$hc-calendar-arrow-size: 5px !default;
+
+// Values chosen to approximate https://material.io/icons/#ic_navigate_before and
+// https://material.io/icons/#ic_navigate_next as closely as possible.
+$hc-calendar-prev-next-icon-border-width: 2px;
+$hc-calendar-prev-next-icon-margin: 15.5px;
+$hc-calendar-prev-icon-transform: translateX(2px) rotate(-45deg);
+$hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
+
+@mixin hc-calendar() {
+    display: block;
+    height: 100%;
+    padding: 10px 0 20px 0;
+    width: $hc-datepicker-non-touch-calendar-width;
+}
+
+@mixin hc-calendar-header() {
+    padding: 0 $hc-calendar-padding;
+}
+
+@mixin hc-calendar-content() {
+    outline: none;
+    padding: 0 $hc-calendar-padding $hc-calendar-padding $hc-calendar-padding;
+}
+
+@mixin hc-calendar-controls() {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 $hc-calendar-controls-side-margin $hc-calendar-controls-vertical-padding;
+}
+
+@mixin hc-calendar-control-button() {
+    font-size: $default-font-size;
+    min-width: inherit;
+    padding: 10px;
+}
+
+@mixin hc-calendar-dropdown-caret() {
+    border-left: $hc-calendar-arrow-size solid transparent;
+    border-right: $hc-calendar-arrow-size solid transparent;
+    border-top-style: solid;
+    border-top-width: $hc-calendar-arrow-size;
+    display: inline-block;
+    height: 0;
+    margin: 0 0 0 $hc-calendar-arrow-size;
+    vertical-align: middle;
+    width: 0;
+
+    [dir='rtl'] & {
+        margin: 0 $hc-calendar-arrow-size 0 0;
+    }
+}
+
+@mixin hc-calendar-dropdown-caret-invert() {
+    transform: rotate(180deg);
+}
+
+@mixin hc-calendar-control-arrow() {
+    color: $primary-brand;
+    height: 40px;
+    min-width: inherit;
+    padding: 0px;
+    position: relative;
+    top: -2px;
+    width: 40px;
+
+    &::after {
+        border: 0 solid currentColor;
+        border-top-width: $hc-calendar-prev-next-icon-border-width;
+        bottom: 0;
+        content: '';
+        left: 0;
+        margin: $hc-calendar-prev-next-icon-margin;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    [dir='rtl'] & {
+        transform: rotate(180deg);
+    }
+}
+
+@mixin hc-calendar-previous-button() {
+    &::after {
+        border-left-width: $hc-calendar-prev-next-icon-border-width !important;
+        transform: $hc-calendar-prev-icon-transform;
+    }
+}
+
+@mixin hc-calendar-next-button() {
+    &::after {
+        border-right-width: $hc-calendar-prev-next-icon-border-width !important;
+        transform: $hc-calendar-next-icon-transform;
+    }
+}
+
+@mixin hc-calendar-month-label() {
+    align-items: center;
+    color: $primary-brand;
+    display: inline-flex;
+    font-size: calculateRem(15px);
+    font-weight: 600;
+    height: 35px;
+    justify-content: center;
+    line-height: 15px;
+    min-width: 35px;
+    vertical-align: baseline;
+}
+
+@mixin hc-calendar-table() {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+@mixin hc-calendar-table-header() {
+    color: $primary-brand;
+}
+
+@mixin hc-calendar-table-header-cell() {
+    @include fontSize(9px);
+    color: $gray-500;
+    padding: 0 0 $hc-calendar-padding 0;
+    text-align: center;
+}
+
+@mixin hc-calendar-table-header-divider() {
+    height: $hc-calendar-header-divider-width;
+    position: relative;
+
+    // We use an absolutely positioned pseudo-element as the divider line for the table header so we
+    // can extend it all the way to the edge of the calendar.
+    &::after {
+        background: $gray-200;
+        content: '';
+        height: $hc-calendar-header-divider-width;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+@mixin hc-calendar-time-picker() {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+@mixin hc-calendar-time-picker-field() {
+    margin: 0 3px;
+}
+
+@mixin hc-calendar-time-picker-input() {
+    width: 25px;
+}
+
+@mixin hc-calendar-time-controls() {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin hc-calendar-time-controls-button() {
+    /* important is needed here to override hc-button properties */
+    height: 16px !important;
+    line-height: 16px !important;
+    padding: 0 !important;
+    width: 16px !important;
+}
+
+@mixin hc-calendar-controls-icon() {
+    line-height: 1 !important;
+}
+
+@mixin hc-calendar-time-picker-select() {
+    width: 70px;
+}
+
+@mixin hc-calendar-time-picker-icon() {
+    color: $slate-gray-400;
+    font-size: 25px;
+    height: 25px;
+    margin-right: 10px;
+    width: 25px;
+}
+
+/* Datepicker Toggle */
+
+@mixin hc-calendar-toggle() {
+    background: 0 0;
+    border: none;
+    box-sizing: border-box;
+    color: $primary-brand;
+    cursor: pointer;
+    display: inline-block;
+    height: 32px;
+    line-height: 1.5;
+    margin: 0;
+    outline: 0;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    vertical-align: baseline;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+    width: 32px;
+}
+
+/* Calendar Body */
+
+$hc-calendar-body-label-padding-start: 5% !default;
+// We don't want the label to jump around when we switch between month and year views, so we use
+// the same amount of padding regardless of the number of columns. We align the header label with
+// the one third mark of the first cell, this was chosen somewhat arbitrarily to make it look
+// roughly like the mock. Half way is too far since the cell text is center aligned.
+$hc-calendar-body-label-side-padding: 33% / 7 !default;
+$hc-calendar-body-cell-min-size: 32px !default;
+$hc-calendar-body-cell-content-margin: 5% !default;
+$hc-calendar-body-cell-content-border-width: 1px !default;
+
+$hc-calendar-body-min-size: 7 * $hc-calendar-body-cell-min-size !default;
+$hc-calendar-body-cell-content-size: 100% - $hc-calendar-body-cell-content-margin * 2 !default;
+$hc-calendar-body-disabled-color: $slate-gray-300 !default;
+$hc-datepicker-selected-today-box-shadow-width: 1px;
+
+@mixin hc-calendar-body() {
+    font-size: $default-font-size;
+    min-width: $hc-calendar-body-min-size;
+}
+
+@mixin hc-calendar-body-label() {
+    color: $primary-brand;
+    font-size: $default-font-size;
+    height: 0;
+    line-height: 0;
+    padding-left: $hc-calendar-body-label-side-padding;
+    padding-right: $hc-calendar-body-label-side-padding;
+    text-align: left;
+
+    [dir='rtl'] & {
+        text-align: right;
+    }
+}
+
+@mixin hc-calendar-body-cell() {
+    cursor: pointer;
+    height: 0;
+    line-height: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+}
+
+@mixin hc-calendar-body-disabled() {
+    cursor: default;
+}
+
+@mixin hc-calendar-body-cell-content() {
+    align-items: center;
+    border-color: transparent;
+    // Choosing a value clearly larger than the height ensures we get the correct capsule shape.
+    border-radius: 999px;
+    border-style: solid;
+    border-width: $hc-calendar-body-cell-content-border-width;
+    box-sizing: border-box;
+    color: $text;
+    display: flex;
+    height: $hc-calendar-body-cell-content-size;
+    justify-content: center;
+    left: $hc-calendar-body-cell-content-margin;
+    // Prevents text being off-center on Android.
+    line-height: 1;
+    position: absolute;
+    top: $hc-calendar-body-cell-content-margin;
+    width: $hc-calendar-body-cell-content-size;
+}
+
+@mixin hc-calendar-body-selected() {
+    background-color: darken($primary-brand, 10%);
+    color: $white;
+    font-weight: 700;
+}
+
+@mixin hc-calendar-body-selected-disabled() {
+    background-color: $hc-calendar-body-disabled-color;
+}
+
+@mixin hc-calendar-body-selected-today() {
+    box-shadow: inset 0 0 0 $hc-datepicker-selected-today-box-shadow-width $hc-calendar-body-disabled-color;
+}
+
+@mixin hc-calendar-body-disabled() {
+    color: $hc-calendar-body-disabled-color;
+}
+
+@mixin hc-calendar-body-active() {
+    border: 2px solid darken($primary-brand, 10%);
+}
+
+@mixin hc-calendar-body-today() {
+    background-color: $hc-calendar-body-disabled-color;
+    // Note: though it's not text, the border is a hint about the fact that this is today's date,
+    // so we use the hint color.
+    border-color: transparent;
+}
+
+@mixin hc-calendar-body-today-disabled() {
+    background-color: $hc-calendar-body-disabled-color;
+    border-color: transparent;
+}

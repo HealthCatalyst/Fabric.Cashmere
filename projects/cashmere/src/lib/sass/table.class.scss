@@ -99,7 +99,7 @@
     }
 }
 
-.hc-action-row:not([disabled]) {
+.hc-table tbody tr.hc-action-row:not([disabled]) {
     @include hc-action-table-action-row();
 }
 
@@ -174,5 +174,9 @@
 .hc-no-hover-table {
     tbody tr {
         @include hc-no-hover-table-row();
+
+        &.hc-row-selected {
+            @include hc-no-hover-table-row-selected();
+        }
     }
 }

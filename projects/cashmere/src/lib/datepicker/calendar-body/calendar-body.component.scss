@@ -1,154 +1,56 @@
-@import '../../sass/colors';
-@import '../../sass/typography';
-
-$hc-calendar-body-label-padding-start: 5% !default;
-// We don't want the label to jump around when we switch between month and year views, so we use
-// the same amount of padding regardless of the number of columns. We align the header label with
-// the one third mark of the first cell, this was chosen somewhat arbitrarily to make it look
-// roughly like the mock. Half way is too far since the cell text is center aligned.
-$hc-calendar-body-label-side-padding: 33% / 7 !default;
-$hc-calendar-body-cell-min-size: 32px !default;
-$hc-calendar-body-cell-content-margin: 5% !default;
-$hc-calendar-body-cell-content-border-width: 1px !default;
-
-$hc-calendar-body-min-size: 7 * $hc-calendar-body-cell-min-size !default;
-$hc-calendar-body-cell-content-size: 100% - $hc-calendar-body-cell-content-margin * 2 !default;
-$hc-calendar-body-disabled-color: $slate-gray-300 !default;
+@import '../../sass/datepicker.scss';
 
 .hc-calendar-body {
-    min-width: $hc-calendar-body-min-size;
+    @include hc-calendar-body();
 }
 
 .hc-calendar-body-label {
-    height: 0;
-    line-height: 0;
-    text-align: left;
-    padding-left: $hc-calendar-body-label-side-padding;
-    padding-right: $hc-calendar-body-label-side-padding;
+    @include hc-calendar-body-label();
 }
 
 .hc-calendar-body-cell {
-    position: relative;
-    height: 0;
-    line-height: 0;
-    text-align: center;
-    outline: none;
-    cursor: pointer;
+    @include hc-calendar-body-cell();
 }
 
 .hc-calendar-body-disabled {
-    cursor: default;
+    @include hc-calendar-body-disabled();
 }
 
 .hc-calendar-body-cell-content {
-    position: absolute;
-    top: $hc-calendar-body-cell-content-margin;
-    left: $hc-calendar-body-cell-content-margin;
+    @include hc-calendar-body-cell-content();
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-sizing: border-box;
-    width: $hc-calendar-body-cell-content-size;
-    height: $hc-calendar-body-cell-content-size;
-
-    // Prevents text being off-center on Android.
-    line-height: 1;
-
-    border-width: $hc-calendar-body-cell-content-border-width;
-    border-style: solid;
-
-    // Choosing a value clearly larger than the height ensures we get the correct capsule shape.
-    border-radius: 999px;
-}
-
-[dir='rtl'] {
-    .hc-calendar-body-label {
-        text-align: right;
+    .hc-calendar-body-disabled &:not(.hc-calendar-body-selected):not(.hc-calendar-body-today) {
+        @include hc-calendar-body-disabled();
     }
-}
 
-$hc-datepicker-selected-today-box-shadow-width: 1px;
-$hc-datepicker-selected-fade-amount: 0.6;
-$hc-datepicker-today-fade-amount: 0.2;
-$hc-calendar-body-font-size: 13px !default;
-$hc-calendar-weekday-table-font-size: 11px !default;
+    .hc-calendar-body-available:hover & {
+        @include hc-calendar-body-active();
+    }
 
-.hc-calendar-body {
-    font-size: $default-font-size;
-}
-
-.hc-calendar-body-label,
-.hc-calendar-period-button {
-    font: {
-        size: $default-font-size;
+    .cdk-keyboard-focused .hc-calendar-body-active &:not(.hc-calendar-body-selected),
+    .cdk-program-focused .hc-calendar-body-active &:not(.hc-calendar-body-selected) {
+        @include hc-calendar-body-active();
     }
 }
 
 .hc-calendar-body-selected {
-    background-color: darken($primary-brand, 10%);
-    color: $white;
-    font-weight: 700;
-}
+    @include hc-calendar-body-selected();
 
-.hc-calendar-body-disabled > .hc-calendar-body-selected {
-    background-color: $hc-calendar-body-disabled-color;
-}
+    .hc-calendar-body-disabled & {
+        @include hc-calendar-body-selected-disabled();
+    }
 
-.hc-calendar-body-today.hc-calendar-body-selected {
-    box-shadow: inset 0 0 0 $hc-datepicker-selected-today-box-shadow-width $hc-calendar-body-disabled-color;
-}
-
-.hc-calendar-arrow {
-    border-top-color: $primary-brand;
-}
-
-// The prev/next buttons need a bit more specificity to
-// avoid being overwritten by the .hc-icon-button.
-.hc-datepicker-toggle,
-.hc-datepicker-content .hc-calendar-next-button,
-.hc-datepicker-content .hc-calendar-previous-button {
-    color: $primary-brand;
-}
-
-.hc-calendar-table-header {
-    color: $primary-brand;
-}
-
-.hc-calendar-table-header-divider::after {
-    background: $gray-200;
-}
-
-.hc-calendar-body-label {
-    color: $primary-brand;
-}
-
-.hc-calendar-body-cell-content:not(.hc-calendar-body-selected) {
-    color: $text;
-    border-color: transparent;
-}
-
-.hc-calendar-body-disabled > .hc-calendar-body-cell-content:not(.hc-calendar-body-selected):not(.hc-calendar-body-today) {
-    color: $hc-calendar-body-disabled-color;
-}
-
-.hc-calendar-body-cell:not(.hc-calendar-body-disabled):hover,
-.cdk-keyboard-focused .hc-calendar-body-active,
-.cdk-program-focused .hc-calendar-body-active {
-    & > .hc-calendar-body-cell-content:not(.hc-calendar-body-selected) {
-        border: 2px solid darken($primary-brand, 10%);
+    &.hc-calendar-body-today {
+        @include hc-calendar-body-selected-today();
     }
 }
 
-.hc-calendar-body-today:not(.hc-calendar-body-selected) {
-    // Note: though it's not text, the border is a hint about the fact that this is today's date,
-    // so we use the hint color.
-    border-color: transparent;
-    background-color: $hc-calendar-body-disabled-color;
-}
+.hc-calendar-body-today {
+    &:not(.hc-calendar-body-selected) {
+        @include hc-calendar-body-today();
+    }
 
-.hc-calendar-body-disabled > .hc-calendar-body-today:not(.hc-calendar-body-selected) {
-    border-color: transparent;
-    background-color: $hc-calendar-body-disabled-color;
+    .hc-calendar-body-disabled &:not(.hc-calendar-body-selected) {
+        @include hc-calendar-body-today-disabled();
+    }
 }
