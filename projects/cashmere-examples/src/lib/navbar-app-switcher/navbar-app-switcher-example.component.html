@@ -36,7 +36,7 @@
 </hc-navbar>
 
 <hc-pop #appSwitcher [showArrow]="false" horizontalAlign="end">
-    <hc-app-switcher></hc-app-switcher>
+    <hc-app-switcher [serviceName]="currentAppName" [serviceVersion]="currentAppVersion"></hc-app-switcher>
 </hc-pop>
 
 <hc-pop #options [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
