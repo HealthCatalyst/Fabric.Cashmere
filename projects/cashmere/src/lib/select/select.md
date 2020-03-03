@@ -1,3 +1,11 @@
+##### Select Text Formatting
+
+Capitalize first word only, except in cases where the selection is an actual program name or proper name (e.g. Patient non-adherence or challenges in care management; Duplicate patient; Algorithm incorrect; Comprehensive HIV AIDS Management Program (CHAMP), Grace Program, LSU Diabetes, Salt Lake City, etc.)
+
+&nbsp;
+
+##### Form Fields
+
 The hc-select component may be nested within a hc-form-field component. hc-form-field acts as a coordinator between multiple components including label and error elements.
 
 Note that for IE11 compatibility, a value must be specified for each `<option>` in `<hc-select>`. Otherwise the select box will not display the selected option.
