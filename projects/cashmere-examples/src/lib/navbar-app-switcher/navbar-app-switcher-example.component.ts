@@ -14,5 +14,5 @@ export class NavbarAppSwitcherExampleComponent {
 
     // These values should match what was registered with the discovery service. We're using Atlas as an example here.
     currentAppName = 'Atlas4';
-    currentAppVersion = '0';
+    currentAppVersion = '1';
 }
