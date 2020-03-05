@@ -1,3 +1,13 @@
+##### Input Text Formatting
+
+For input labels please use the following formatting:
+
+Capitalize first word only, except in cases where the selection is an actual program name or proper name (e.g. Patient non-adherence or challenges in care management; Duplicate patient; Algorithm incorrect; Comprehensive HIV AIDS Management Program (CHAMP), Grace Program, LSU Diabetes, Salt Lake City, etc.).
+
+&nbsp;
+
+##### Form Fields
+
 To use the input element you must include [hcInput] on an input element and nest the input element within a hc-form-field component. hc-form-field acts as a coordinator between multiple components and is essential to be able to use all of the features of hcInput
 
 To add a label use an hc-label within a hc-form-field. If the input is required add the required attribute and an asterisk will be shown next to the label.

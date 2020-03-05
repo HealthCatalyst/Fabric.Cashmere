@@ -24,6 +24,7 @@ const docs: DocItem[] = [
         id: 'button',
         name: 'Button',
         category: 'buttons',
+        usageDoc: true,
         examples: ['button-type', 'button-split', 'button-size', 'button-anchor', 'button-link', 'button-icon']
     },
     {
@@ -53,7 +54,7 @@ const docs: DocItem[] = [
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
     },
     {id: 'ellipsis-pipe', name: 'Ellipsis', category: 'pipes', usageDoc: true, hideApi: true, examples: ['ellipsis-overview']},
-    {id: 'form-field', name: 'Form Field', category: 'forms', examples: ['form-field-overview', 'form-field-tight']},
+    {id: 'form-field', name: 'Form Field', category: 'forms', usageDoc: true, examples: ['form-field-overview', 'form-field-tight']},
     {id: 'icon', name: 'Icon', category: 'buttons', examples: ['icon-overview']},
     {
         id: 'input',
