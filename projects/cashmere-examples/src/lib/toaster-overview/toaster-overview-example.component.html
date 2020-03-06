@@ -7,17 +7,17 @@
 
 <div class="example-column">
     <hc-form-field class="example-field">
-        <hc-label>Header Text:</hc-label>
+        <hc-label>Header text:</hc-label>
         <input hcInput [(ngModel)]="toastHeader" />
     </hc-form-field>
 
     <hc-form-field class="example-field">
-        <hc-label>Body Text:</hc-label>
+        <hc-label>Body text:</hc-label>
         <input hcInput [(ngModel)]="toastBody" />
     </hc-form-field>
 
     <hc-form-field class="example-field">
-        <hc-label>Toast Type:</hc-label>
+        <hc-label>Toast type:</hc-label>
         <hc-select [(ngModel)]="toastType">
             <option value="success">Success</option>
             <option value="info">Info</option>
@@ -31,7 +31,7 @@
 </div>
 <div class="example-column">
     <hc-form-field class="example-field">
-        <hc-label>Toast Position:</hc-label>
+        <hc-label>Toast position:</hc-label>
         <hc-select [(ngModel)]="toastPosition">
             <option value="top-right">Top right</option> <option value="top-center">Top center</option>
             <option value="top-left">Top left</option> <option value="top-full-width">Top full-width</option>
@@ -47,18 +47,18 @@
     </hc-form-field>
 
     <hc-form-field class="example-field-half">
-        <hc-label>Toast Width:</hc-label>
+        <hc-label>Toast width:</hc-label>
         <input hcInput type="number" [(ngModel)]="toastWidth" />
     </hc-form-field>
 
     <hc-form-field class="example-field">
-        <hc-label>Event Handling:</hc-label>
+        <hc-label>Event handling:</hc-label>
         <hc-checkbox [(ngModel)]="toastClick">Allow clicks to dismiss toast</hc-checkbox>
     </hc-form-field>
 </div>
 <div class="progress-row">
     <hc-form-field>
-        <hc-label>Progress Bar:</hc-label>
+        <hc-label>Progress bar:</hc-label>
         <hc-radio-group [(ngModel)]="toastProgress" inline="true">
             <hc-radio-button value="0">Off</hc-radio-button>
             <hc-radio-button value="1">Indeterminate</hc-radio-button>

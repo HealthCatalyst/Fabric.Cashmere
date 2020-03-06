@@ -11,6 +11,6 @@ export class CheckboxFormsExampleComponent {
     isChecked: boolean;
 
     getCheckboxText() {
-        return `${this.isChecked ? 'Disable' : 'Enable'} Button`;
+        return `${this.isChecked ? 'Disable' : 'Enable'} button`;
     }
 }

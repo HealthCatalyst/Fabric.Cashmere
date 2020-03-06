@@ -1,3 +1,9 @@
+##### Button Text Formatting
+
+The text inside a button should be formatted in title case. In title case, all major words are capitalized, while minor words are lowercased (e.g. Lord of the Flies).
+
+&nbsp;
+
 ##### Split Buttons
 
 **hc-split-button**
