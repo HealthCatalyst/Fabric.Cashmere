@@ -65,23 +65,23 @@ export class DateRangeExampleComponent implements OnInit {
                 range: {fromDate: yesterday, toDate: today}
             },
             {
-                presetLabel: 'Last 7 Days',
+                presetLabel: 'Last 7 days',
                 range: {fromDate: minus7, toDate: today}
             },
             {
-                presetLabel: 'Last 30 Days',
+                presetLabel: 'Last 30 days',
                 range: {fromDate: minus30, toDate: today}
             },
             {
-                presetLabel: 'This Month',
+                presetLabel: 'This month',
                 range: {fromDate: currMonthStart, toDate: currMonthEnd}
             },
             {
-                presetLabel: '1 Month to End',
+                presetLabel: '1 month to end',
                 range: {fromDate: currMonthStart, toDate: currMonthEnd}
             },
             {
-                presetLabel: 'Last Month',
+                presetLabel: 'Last month',
                 range: {fromDate: lastMonthStart, toDate: lastMonthEnd}
             }
         ];
