@@ -111,11 +111,11 @@ The following example uses angular and cashmere and is the preffered method. It 
         <div class="logo"><img src="../assets/HealthCatalyst_Horizontal.svg" alt="Health Catalyst Logo" /></div>
         <div>
             <hc-form-field>
-                <hc-label>Email</hc-label>
+                <hc-label>Email:</hc-label>
                 <input hcInput required />
             </hc-form-field>
             <hc-form-field>
-                <hc-label>Password</hc-label>
+                <hc-label>Password:</hc-label>
                 <input type="password" hcInput required />
             </hc-form-field>
             <a href="#" class="forgot-password" hidden="hidden">Forgot Password</a>
