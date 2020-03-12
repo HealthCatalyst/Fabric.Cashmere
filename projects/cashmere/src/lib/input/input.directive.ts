@@ -108,7 +108,7 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
 
     @HostBinding('disabled')
     get _hostDisabled(): boolean {
-        return this._isDisabled;
+        return this.disabled;
     }
 
     @HostBinding('required')
