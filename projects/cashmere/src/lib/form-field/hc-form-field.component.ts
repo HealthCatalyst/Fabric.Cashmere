@@ -56,7 +56,11 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
 
     @HostBinding('class.hc-form-field-disabled')
     get _disabledClass() {
-        return this._control._isDisabled;
+        if (this._inputChildren.length > 0) {
+            return this._inputChildren.first.disabled;
+        } else {
+            return this._control._isDisabled;
+        }
     }
 
     /** Read-only boolean value of whether the form field has an associated label element */
