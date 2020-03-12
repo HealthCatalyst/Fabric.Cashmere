@@ -15,8 +15,8 @@ export class ConfigStoreService {
         locale: 'en-us',
         applyLabel: 'Apply',
         cancelLabel: 'Cancel',
-        startDatePrefix: 'Start date',
-        endDatePrefix: 'End date',
+        startDatePrefix: 'Start date:',
+        endDatePrefix: 'End date:',
         invalidDateLabel: 'Please enter valid date'
     };
 
