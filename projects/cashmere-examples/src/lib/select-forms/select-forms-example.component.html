@@ -1,15 +1,15 @@
 <form>
     <hc-select [formControl]="selectControl">
-        <option value="corn">Corn on the cob</option>
-        <option value="chicken">Deep fried chicken</option>
-        <option value="taters">Mashed taters</option>
+        <option *ngFor="let location of locations" [ngValue]="location">{{location.dbaName}}</option>
     </hc-select>
 </form>
 
-<button hc-button class="demo-button" (click)="setTaters()">
-    Yummy Taters
+<button hc-button class="demo-button" (click)="setInsurance()">
+    Select Insurance Department
 </button>
 
 <button hc-button class="demo-button" (click)="toggleActive()">
     Enable/Disable Select
 </button>
+
+<p class="example-results">Form control value: <code>{{selectControl.value | json}}</code></p>
