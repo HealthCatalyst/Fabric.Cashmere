@@ -6,6 +6,12 @@ Capitalize first word only, except in cases where the selection is an actual pro
 
 &nbsp;
 
+##### Select Labels
+
+Use a colon at the end of select box labels (e.g. Email address:). A colon implies a direct connection between the label text and a particular control or set of controls. The only situation where a colon should not be used is when the label and control work together to form a single sentence.
+
+&nbsp;
+
 ##### Form Fields
 
 The hc-select component may be nested within a hc-form-field component. hc-form-field acts as a coordinator between multiple components including label and error elements.

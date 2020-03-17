@@ -1,4 +1,4 @@
-The datepicker allows users to enter a date either through text input, or by choosing a date from
+The datepicker allows users to enter a date, time, or both either through text input, or by choosing a date from
 the calendar. It is made up of several components and directives that work together.
 
 ### Connecting a datepicker to an input
@@ -20,7 +20,7 @@ An optional datepicker toggle button is available. A toggle can be added to the 
 ```
 
 This works exactly the same with an input that is part of an `<hc-form-field>` and the toggle
-can easily be used as a prefix or suffix on the material input:
+can easily be used as a prefix or suffix on the `hcInput`:
 
 ```html
 <hc-form-field>
@@ -37,11 +37,18 @@ by using the `hcDatepickerToggleIcon` directive:
 <hc-form-field>
   <input hcInput [hcDatepicker]="picker" placeholder="Choose a date">
   <hc-datepicker-toggle hcSuffix [for]="picker">
-    <hc-icon fontSet="fa" fontIcon="fa-snowflake-o">
+    <hc-icon hcDatepickerToggleIcon fontSet="fa" fontIcon="fa-snowflake-o">
   </hc-datepicker-toggle>
   <hc-datepicker #picker></hc-datepicker>
 </hc-form-field>
 ```
+
+### Setting the datepicker mode
+
+The datepicker may be used to select a calendar date, a time, or both. This is set via the `mode`
+parameter on the `hc-datepicker` element. The three available options are  `date`, `time`, or `date-time`.
+If using either `time` or `date-time` modes, you may also set the `hourCycle` property to 12 or 24 depending
+on whether you would like a clock with AM/PM.
 
 ### Setting the calendar starting view
 
@@ -96,23 +103,14 @@ after choosing a year in `multi-view` mode (by pressing the `ESC` key, for examp
 year, emitted by `yearSelected` output, will not cause any change in the value of the date in the
 associated `<input>`.
 
-The following example uses `yearSelected` and `monthSelected` outputs to emulate a month and year
-picker (if you're not familiar with the usage of `MomentDateAdapter` and `HC_DATE_FORMATS`
-you can [read more about them](/components/datepicker/usage#choosing-date-implementation) below in
-this document to fully understand the example).
-
 ### Setting the selected date
 
 The type of values that the datepicker expects depends on the type of `DateAdapter` provided in your
 application. The `NativeDateAdapter`, for example, works directly with plain JavaScript `Date`
-objects. When using the `MomentDateAdapter`, however, the values will all be Moment.js instances.
-This use of the adapter pattern allows the datepicker component to work with any arbitrary date
-representation with a custom `DateAdapter`.
-See [Choosing a date implementation](/components/datepicker/usage#choosing-date-implementation)
-for more information.
+objects.
 
 Depending on the `DateAdapter` being used, the datepicker may automatically deserialize certain date
-formats for you as well. For example, both the `NativeDateAdapter` and `MomentDateAdapter` allow
+formats for you as well. For example, the `NativeDateAdapter` allows
 [ISO 8601](https://tools.ietf.org/html/rfc3339) strings to be passed to the datepicker and
 automatically converted to the proper object type. This can be convenient when binding data directly
 from your backend to the datepicker. However, the datepicker will not accept date strings formatted
@@ -205,19 +203,13 @@ The easiest way to ensure this is just to import one of the pre-made modules:
 
 | Module               | Date type | Supported locales | Dependencies | Import from         |
 | -------------------- | --------- | ----------------- | ------------ | ------------------- |
-| `HcNativeDateModule` | `Date`    | en-US             | None         | `@angular/material` |
-
-_Please note: `HcNativeDateModule` is based off of the functionality available in JavaScript's
-native `Date` object, and is thus not suitable for many locales. One of the biggest shortcomings of
-the native `Date` object is the inability to set the parse format. We highly recommend using the
-`MomentDateAdapter` or a custom `DateAdapter` that works with the formatting/parsing library of your
-choice._
+| `HcNativeDateModule` | `Date`    | en-US             | None         | `@healthcatalyst/cashmere` |
 
 These modules include providers for `DateAdapter` and `HC_DATE_FORMATS`
 
 ```ts
 @NgModule({
-    imports: [HcDatepickerModule, HcNativeDateModule]
+    imports: [DatepickerModule, HcNativeDateModule]
 })
 export class MyApp {}
 ```
@@ -234,15 +226,22 @@ export class MyComponent {
 }
 ```
 
-By default the `MomentDateAdapter` will creates dates in your time zone specific locale. You can change the default behaviour to parse dates as UTC by providing the `HC_MOMENT_DATE_ADAPTER_OPTIONS` and setting it to `useUtc: true`.
+_Please note: `HcNativeDateModule` is based off of the functionality available in JavaScript's
+native `Date` object, and is thus not suitable for many locales. One of the biggest shortcomings of
+the native `Date` object is the inability to set the parse format.
+
+<a href="https://sugarjs.com/dates/#/Parsing">SugarJS</a> is a JavaScript library used by many Health
+Catalyst applications to handle parsing user input into Date objects.  It handles a wide variety of
+input formats and supports multiple languages.  To use SugarJS with the Cashmere DatePicker,
+you need to declare a Sugar Date Adapter as demonstrated in the example below.  See the **Datepicker Sugar**
+example on the examples tab for more information.
 
 ```ts
-@NgModule({
-  imports: [HcDatepickerModule, HcMomentDateModule],
-  providers: [
-    { provide: HC_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
-  ]
-})
+export class SugarDateAdapter extends NativeDateAdapter {
+    parse(value: any): Date | null {
+        return createDate(value);
+    }
+}
 ```
 
 It is also possible to create your own `DateAdapter` that works with any date format your app
@@ -250,11 +249,11 @@ requires. This is accomplished by subclassing `DateAdapter` and providing your s
 `DateAdapter` implementation. You will also want to make sure that the `HC_DATE_FORMATS` provided
 in your app are formats that can be understood by your date implementation. See
 [Customizing the parse and display formats](/components/datepicker/usage#customizing-parse) for more
-information about `HC_DATE_FORMATS`. <!-- TODO(mmalerba): Add a guide about this -->
+information about `HC_DATE_FORMATS`.
 
 ```ts
 @NgModule({
-    imports: [HcDatepickerModule],
+    imports: [DatepickerModule],
     providers: [
         {provide: DateAdapter, useClass: MyDateAdapter},
         {provide: HC_DATE_FORMATS, useValue: MY_DATE_FORMATS}
@@ -271,14 +270,14 @@ The `HC_DATE_FORMATS` object is just a collection of formats that the datepicker
 and displaying dates. These formats are passed through to the `DateAdapter` so you will want to make
 sure that the format objects you're using are compatible with the `DateAdapter` used in your app.
 
-If you want use one of the `DateAdapters` that ships with Angular Hcerial, but use your own
-`HC_DATE_FORMATS`, you can import the `NativeDateModule` or `MomentDateModule`. These modules are
-identical to the "Hc"-prefixed versions (`HcNativeDateModule` and `HcMomentDateModule`) except
+If you want use one of the `DateAdapters` that ships with Cashmere, but use your own
+`HC_DATE_FORMATS`, you can import the `NativeDateModule`. This module is
+identical to the "Hc"-prefixed version (`HcNativeDateModule`) except
 they do not include the default formats. For example:
 
 ```ts
 @NgModule({
-    imports: [HcDatepickerModule, NativeDateModule],
+    imports: [DatepickerModule, NativeDateModule],
     providers: [{provide: HC_DATE_FORMATS, useValue: MY_NATIVE_DATE_FORMATS}]
 })
 export class MyApp {}
@@ -304,7 +303,7 @@ application root module.
 
 ```ts
 @NgModule({
-    imports: [HcDatepickerModule, HcNativeDateModule],
+    imports: [DatepickerModule, HcNativeDateModule],
     providers: [{provide: HcDatepickerIntl, useClass: MyIntl}]
 })
 export class MyApp {}
@@ -389,7 +388,7 @@ In multi-year view:
 #### Error: HcDatepicker: No provider found for DateAdapter/HC_DATE_FORMATS
 
 This error is thrown if you have not provided all of the injectables the datepicker needs to work.
-The easiest way to resolve this is to import the `HcNativeDateModule` or `HcMomentDateModule` in
+The easiest way to resolve this is to import the `HcNativeDateModule` in
 your application's root module. See
 [Choosing a date implementation](/components/datepicker/usage#choosing-date-implementation) for
 more information.

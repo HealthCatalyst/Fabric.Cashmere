@@ -6,6 +6,12 @@ Capitalize first word only, except in cases where the selection is an actual pro
 
 &nbsp;
 
+##### Input Labels
+
+Use a colon at the end of input labels (e.g. Email address:). A colon implies a direct connection between the label text and a particular control or set of controls. The only situation where a colon should not be used is when the label and control work together to form a single sentence.
+
+&nbsp;
+
 ##### Form Fields
 
 To use the input element you must include [hcInput] on an input element and nest the input element within a hc-form-field component. hc-form-field acts as a coordinator between multiple components and is essential to be able to use all of the features of hcInput
@@ -14,7 +20,7 @@ To add a label use an hc-label within a hc-form-field. If the input is required 
 
 ```html
 <hc-form-field>
-    <hc-label>Validate an email address</hc-label>
+    <hc-label>Validate an email address:</hc-label>
     <input hcInput [formControl]="formDemo" required />
     <hc-error>Email address is required</hc-error>
 </hc-form-field>
