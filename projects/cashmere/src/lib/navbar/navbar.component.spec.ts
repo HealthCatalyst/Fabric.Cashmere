@@ -20,7 +20,7 @@ import {NavbarModule} from './navbar.module';
     `
 })
 class TestAppComponent {
-    @ViewChild(NavbarComponent, /* TODO: add static flag */ {})
+    @ViewChild(NavbarComponent, {static: false})
     public navbarComponent: NavbarComponent;
 }
 

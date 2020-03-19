@@ -231,7 +231,7 @@ class StandardMultiYearView {
     selected = new Date(2020, JAN, 1);
     selectedYear: Date;
 
-    @ViewChild(MultiYearViewComponent, /* TODO: add static flag */ {})
+    @ViewChild(MultiYearViewComponent, {static: false})
     multiYearView: MultiYearViewComponent;
 }
 
