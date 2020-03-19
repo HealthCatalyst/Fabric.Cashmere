@@ -82,7 +82,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     @Output()
     change = new EventEmitter<CheckboxChangeEvent>();
 
-    @ViewChild('checkboxInput')
+    @ViewChild('checkboxInput', {static: false})
     _checkboxInput: ElementRef;
 
     @HostBinding('attr.id')

@@ -1,6 +1,6 @@
 import {Directive, HostBinding, ContentChildren, QueryList, AfterContentInit, OnDestroy} from '@angular/core';
 import {HcPopoverAnchorDirective} from './popover-anchor.directive';
-import {Subject} from 'rxjs';
+import {Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 /** The `hcMenu` directive provides a standard way of displaying a series of selectable elements in a popover. */
@@ -22,10 +22,10 @@ export class MenuDirective implements AfterContentInit, OnDestroy {
             // Subscribe to submenu open events so we can close any other submenus currently open
             anchor.popoverOpened.pipe(takeUntil(this.unsubscribe$)).subscribe(() => {
                 this._subMenus.forEach((sub: HcPopoverAnchorDirective) => {
-                    if ( sub !== anchor && sub.attachedPopover.isOpen() ) {
+                    if (sub !== anchor && sub.attachedPopover.isOpen()) {
                         sub.attachedPopover._parentCloseBlock = true;
                         sub.closePopover();
-                        let closeSub: Subject<any> = sub.attachedPopover.afterClose.subscribe(() => {
+                        let closeSub: Subscription = sub.attachedPopover.afterClose.subscribe(() => {
                             sub.attachedPopover._parentCloseBlock = false;
                             closeSub.unsubscribe();
                         });

@@ -13,7 +13,6 @@ import {
     Output,
     ContentChildren,
     QueryList
-
 } from '@angular/core';
 import {AnimationEvent} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
@@ -226,12 +225,12 @@ export class HcPopComponent implements OnInit, OnDestroy {
         return this._parentMenu;
     }
     set parent(val: HcPopComponent) {
-        if ( this._parentMenu ) {
+        if (this._parentMenu) {
             this._parentClose.unsubscribe();
         }
         this._parentMenu = val;
-        this._parentClose = this._parentMenu.closed.subscribe((value) => {
-            if ( this.isOpen() ) {
+        this._parentClose = this._parentMenu.closed.subscribe(value => {
+            if (this.isOpen()) {
                 this.close();
             }
         });
@@ -266,7 +265,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     @Output() overlayKeydown = new EventEmitter<KeyboardEvent>();
 
     /** Reference to template so it can be placed within a portal. */
-    @ViewChild(TemplateRef) _templateRef: TemplateRef<any>;
+    @ViewChild(TemplateRef, {static: false}) _templateRef: TemplateRef<any>;
 
     /** Stores the click coordinates for mouse-based positioning */
     _offsetPos: number[] = [0, 0];
@@ -286,7 +285,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     _notifications: PopoverNotificationService;
 
     /** Reference to the element to build a focus trap around. */
-    @ViewChild('focusTrapElement')
+    @ViewChild('focusTrapElement', {static: false})
     private _focusTrapElement: ElementRef;
 
     /** Reference to the element that was focused before opening. */
@@ -349,7 +348,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Toggle this popover open or closed. */
     toggle(): void {
-        if ( this.parent ) {
+        if (this.parent) {
             this.parent._subMenuOpen = !this.isOpen();
         }
         const notification = new PopoverNotification(NotificationAction.TOGGLE);
@@ -408,7 +407,8 @@ export class HcPopComponent implements OnInit, OnDestroy {
     _setAlignmentClassesForArrow(xAlign = this.horizontalAlign, yAlign = this.verticalAlign) {
         this._classList['hc-pop-show-arrow'] =
             (this.showArrow &&
-                (xAlign === 'start' || xAlign === 'center' || xAlign === 'end') && (yAlign === 'above' || yAlign === 'below')) ||
+                (xAlign === 'start' || xAlign === 'center' || xAlign === 'end') &&
+                (yAlign === 'above' || yAlign === 'below')) ||
             ((yAlign === 'start' || yAlign === 'center' || yAlign === 'end') && (xAlign === 'before' || xAlign === 'after'));
 
         this._yAlignClass = this._classList['hc-pop-show-arrow'] ? `hc-pop-arrow-y-${yAlign}` : '';

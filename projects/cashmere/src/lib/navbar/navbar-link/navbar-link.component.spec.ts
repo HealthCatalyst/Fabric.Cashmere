@@ -12,7 +12,7 @@ import {By} from '@angular/platform-browser';
     `
 })
 class TestHostComponent {
-    @ViewChild(NavbarLinkComponent)
+    @ViewChild(NavbarLinkComponent, /* TODO: add static flag */ {})
     public navbarLinkComponent: NavbarLinkComponent;
 }
 describe('NavbarLinkComponent', () => {

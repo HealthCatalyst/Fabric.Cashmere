@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild, ElementRef, OnInit, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
+import {Component, Input, ViewChild, ElementRef, OnInit, ViewContainerRef, ComponentFactoryResolver, AfterViewInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {titleCase} from 'change-case';
 import stackblitz from '@stackblitz/sdk';
@@ -11,8 +11,8 @@ import {expand} from 'rxjs/operators';
     templateUrl: 'example-viewer.component.html',
     styleUrls: ['example-viewer.component.scss']
 })
-export class ExampleViewerComponent implements OnInit {
-    @ViewChild('exampleContainer', {read: ViewContainerRef})
+export class ExampleViewerComponent implements AfterViewInit {
+    @ViewChild('exampleContainer', {read: ViewContainerRef, static: false})
     exampleContainer: ViewContainerRef;
 
     isInitialized = false;
@@ -40,7 +40,7 @@ export class ExampleViewerComponent implements OnInit {
         return titleCase(this._example);
     }
 
-    async ngOnInit() {
+    async ngAfterViewInit() {
         if (this.example) {
             await this.loadExample();
             this.isInitialized = true;

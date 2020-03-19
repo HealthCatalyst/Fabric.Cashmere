@@ -65,11 +65,11 @@ export class DatepickerToggleComponent implements AfterContentInit, OnChanges, O
     private _disabled: boolean;
 
     /** Custom icon set by the consumer. */
-    @ContentChild(DatepickerToggleIconDirective)
+    @ContentChild(DatepickerToggleIconDirective, {static: false})
     _customIcon: DatepickerToggleIconDirective;
 
     /** Underlying button element. */
-    @ViewChild('button')
+    @ViewChild('button', {static: false})
     _button: ButtonComponent;
 
     constructor(

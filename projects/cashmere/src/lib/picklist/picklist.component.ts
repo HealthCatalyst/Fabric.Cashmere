@@ -87,9 +87,9 @@ export class PicklistComponent implements ControlValueAccessor {
         return this.picklistSettings.sort;
     }
 
-    @ViewChild('availableList')
+    @ViewChild('availableList', {static: false})
     public _available: PicklistPaneComponent | undefined;
-    @ViewChild('confirmedList')
+    @ViewChild('confirmedList', {static: false})
     public _confirmed: PicklistPaneComponent | undefined;
     /** Fired when a change is made to the picklist selection. */
     @Output()

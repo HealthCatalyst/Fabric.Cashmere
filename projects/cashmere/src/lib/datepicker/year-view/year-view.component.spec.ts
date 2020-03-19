@@ -303,7 +303,7 @@ class StandardYearView {
     selected = new Date(2017, MAR, 10);
     selectedMonth: Date;
 
-    @ViewChild(YearViewComponent)
+    @ViewChild(YearViewComponent, /* TODO: add static flag */ {})
     yearView: YearViewComponent;
 }
 

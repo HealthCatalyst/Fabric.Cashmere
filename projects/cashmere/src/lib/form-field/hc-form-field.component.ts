@@ -36,7 +36,7 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
     private _tight: boolean = false;
     private unsubscribe$ = new Subject<void>();
 
-    @ContentChild(HcFormControlComponent)
+    @ContentChild(HcFormControlComponent, {static: false})
     _control: HcFormControlComponent;
     @ContentChildren(HcFormControlComponent)
     _controls: QueryList<HcFormControlComponent>;

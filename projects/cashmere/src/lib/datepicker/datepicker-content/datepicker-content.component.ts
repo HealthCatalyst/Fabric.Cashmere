@@ -25,7 +25,7 @@ import {DatepickerComponent} from '../datepicker.component';
 })
 export class DatepickerContentComponent implements AfterViewInit {
     /** Reference to the internal calendar component. */
-    @ViewChild(CalendarComponent)
+    @ViewChild(CalendarComponent, {static: false})
     _calendar: CalendarComponent;
 
     /** Reference to the datepicker that created the overlay. */
@@ -40,7 +40,7 @@ export class DatepickerContentComponent implements AfterViewInit {
 
     /** Close the datepicker automatically on selection only if in date mode */
     autoClose() {
-        if ( this.datepicker.mode === 'date' ) {
+        if (this.datepicker.mode === 'date') {
             this.datepicker.close();
         }
     }
