@@ -1,4 +1,4 @@
-/* tslint:disable:component-class-suffix use-host-property-decorator */
+/* tslint:disable:component-class-suffix no-host-metadata-property */
 
 /**
  * @license

@@ -1,7 +1,4 @@
-/* tslint:disable:no-use-before-declare */
-
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
-
 import {CheckboxChangeEvent, CheckboxComponent} from './checkbox.component';
 import {FormControl, FormsModule, NgModel, ReactiveFormsModule} from '@angular/forms';
 import {Component, DebugElement} from '@angular/core';

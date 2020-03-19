@@ -19,9 +19,8 @@ import {DateAdapter} from '../datetime/date-adapter';
 import {HcFormControlComponent} from '../../form-field/hc-form-control.component';
 import {HcFormFieldComponent} from '../../form-field/hc-form-field.component';
 
-// tslint:disable:use-host-property-decorator
+// tslint:disable:no-host-metadata-property
 // tslint:disable:member-ordering
-// tslint:disable:no-use-before-declare
 
 /** @docs-private */
 export const HC_DATEPICKER_VALUE_ACCESSOR: any = {
@@ -370,12 +369,12 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
         let tempMode: string = 'date';
         let tempCycle: number = 12;
 
-        if ( this._datepicker ) {
+        if (this._datepicker) {
             tempMode = this._datepicker.mode;
             tempCycle = +this._datepicker.hourCycle;
-        } else if ( this._mode ) {
+        } else if (this._mode) {
             tempMode = this._mode;
-            if ( this._hourCycle ) {
+            if (this._hourCycle) {
                 tempCycle = this._hourCycle;
             }
         }

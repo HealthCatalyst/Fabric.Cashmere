@@ -28,7 +28,6 @@ import {MonthViewComponent} from '../month-view/month-view.component';
 import {YearViewComponent} from '../year-view/year-view.component';
 import {FormControl} from '@angular/forms';
 
-// tslint:disable:no-use-before-declare
 /**
  * Possible views for the calendar.
  * @docs-private
@@ -184,7 +183,7 @@ export class CalendarHeaderComponent {
     selector: 'hc-calendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['calendar.component.scss'],
-    // tslint:disable-next-line:use-host-property-decorator
+    // tslint:disable-next-line:no-host-metadata-property
     host: {
         class: 'hc-calendar'
     },

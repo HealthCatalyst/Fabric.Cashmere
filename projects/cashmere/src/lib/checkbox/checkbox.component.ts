@@ -1,5 +1,3 @@
-/* tslint:disable:no-use-before-declare */
-
 import {
     Attribute,
     Component,
