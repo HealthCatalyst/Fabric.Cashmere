@@ -34,3 +34,14 @@
         font-weight: 500;
     }
 }
+
+@mixin hc-scroll-nav-content-container() {
+    max-height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+@mixin hc-scroll-nav-smooth() {
+    scroll-behavior: smooth;
+}
