@@ -76,16 +76,16 @@ export class StepperComponent implements AfterContentInit {
 
     /** Get or set the currently selected zero-based index of the stepper */
     @Input()
-    get activeIndex(): number {
+    get activeIndex(): number | undefined {
         return this._activeIndex;
     }
-    set activeIndex(value: number) {
+    set activeIndex(value: number | undefined) {
         if (!this.steps) {
             return;
         }
-        // if (value !== undefined && (value < 0 || value >= this.steps.length)) {
-        //     throw Error('The hc-stepper activeIndex value of ' + value + ' is out of bounds');
-        // }
+        if (value !== undefined && (value < 0 || value >= this.steps.length)) {
+            throw Error('The hc-stepper activeIndex value of ' + value + ' is out of bounds');
+        }
         if (this._routerEnabled && value) {
             this.router.navigate([this.steps[value].routerLink]);
         } else {
@@ -93,7 +93,7 @@ export class StepperComponent implements AfterContentInit {
             this.activeIndexChange.emit(this._activeIndex);
         }
     }
-    private _activeIndex = -1;
+    private _activeIndex: number | undefined = undefined;
 
     /** Emits the current zero-based index for the active step whenever it changes */
     @Output()
@@ -115,8 +115,8 @@ export class StepperComponent implements AfterContentInit {
         this._findCurrentStep(this.router.url);
     }
 
-    _stepClick(index: number) {
-        if (!this._routerEnabled && this.steps[index].disabled !== true) {
+    _stepClick(index: number | undefined) {
+        if (!this._routerEnabled && index !== undefined && this.steps[index].disabled !== true) {
             this._activeIndex = index;
             this.activeIndexChange.emit(this._activeIndex);
         }
@@ -133,10 +133,8 @@ export class StepperComponent implements AfterContentInit {
     }
 
     private _findCurrentStep(currentRoute: string) {
-        if (this._activeIndex === -1) {
-            const foundActiveRoute = this.steps.findIndex(step => currentRoute === step.routerLink);
-            this._activeIndex = foundActiveRoute > -1 ? foundActiveRoute : -1;
-            this.activeIndexChange.emit(this._activeIndex);
-        }
+        const foundActiveRouteIndex = this.steps.findIndex(step => currentRoute === step.routerLink);
+        this._activeIndex = foundActiveRouteIndex > -1 ? foundActiveRouteIndex : undefined;
+        this.activeIndexChange.emit(this._activeIndex);
     }
 }
