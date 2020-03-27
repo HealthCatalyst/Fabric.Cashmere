@@ -86,7 +86,7 @@ export class StepperComponent implements AfterContentInit {
         if (value !== undefined && (value < 0 || value >= this.steps.length)) {
             throw Error('The hc-stepper activeIndex value of ' + value + ' is out of bounds');
         }
-        if (this._routerEnabled && value) {
+        if (this._routerEnabled && value !== undefined) {
             this.router.navigate([this.steps[value].routerLink]);
         } else {
             this._activeIndex = value;
