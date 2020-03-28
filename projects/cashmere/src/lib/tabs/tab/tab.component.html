@@ -1,20 +1,27 @@
 <ng-container *ngIf="_direction">
-    <a *ngIf="routerLink; else tabWithoutRouting" class="hc-tab-{{_direction}} hc-text-ellipsis"
+    <a
+        *ngIf="routerLink; else tabWithoutRouting"
+        class="hc-tab-{{ _direction }} hc-text-ellipsis"
         [class.hc-tab-tight]="_tight"
         [routerLink]="routerLink"
         routerLinkActive="active"
-        (click)="tabClickHandler($event)">
+        [queryParams]="queryParams"
+        [routerLinkActiveOptions]="exactRouteMatch ? {exact: true} : {}"
+        (click)="tabClickHandler($event)"
+    >
         <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
-        {{tabTitle}}
+        {{ tabTitle }}
     </a>
 </ng-container>
 <ng-template #tabWithoutRouting>
-    <a class="hc-tab-{{_direction}} hc-text-ellipsis"
+    <a
+        class="hc-tab-{{ _direction }} hc-text-ellipsis"
         [class.hc-tab-tight]="_tight"
         [class.active]="_active"
-        (click)="tabClickHandler($event)">
+        (click)="tabClickHandler($event)"
+    >
         <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
-        {{tabTitle}}
+        {{ tabTitle }}
     </a>
 </ng-template>
 <ng-template #tabContent>
