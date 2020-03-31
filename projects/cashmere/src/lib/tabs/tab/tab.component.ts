@@ -1,6 +1,7 @@
 import {Component, Input, ContentChildren, QueryList, AfterContentInit, Output} from '@angular/core';
 import {EventEmitter, TemplateRef, ViewChild} from '@angular/core';
 import {HcTabTitleComponent} from './tab-title.component';
+import {Params} from '@angular/router';
 
 @Component({
     templateUrl: './tab.component.html',
@@ -17,7 +18,15 @@ export class TabComponent implements AfterContentInit {
     @Input()
     routerLink: any[] | string;
 
-    /** Emits when this tab is selected; use instead of `(click)` for click binding  */
+    /** Add queryParams to the routerLink */
+    @Input()
+    queryParams: Params;
+
+    /** If set to true, [routerLinkActiveOptions]="{exact: true}" is added */
+    @Input()
+    exactRouteMatch: boolean;
+
+    /** Emits when this tab is selected; use instead of `(click)` for click binding    */
     @Output()
     tabClick: EventEmitter<Event> = new EventEmitter();
 
