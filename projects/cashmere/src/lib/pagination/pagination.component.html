@@ -28,7 +28,7 @@
             class="hc-page-button hc-page-inner-button expanded-page-button"
             *ngFor="let page of _visiblePages"
             [disabled]="!page"
-            [class.currentpage]="page === pageNumber"
+            [class.hc-page-button-current]="page === pageNumber"
             (click)="_goToPage(page)"
         >
             <span *ngIf="!!page">{{ page }}</span>
@@ -38,10 +38,10 @@
         <button
             hc-button
             color="secondary"
-            class="hc-page-button hc-inner-button collapsed-page-button"
+            class="hc-page-button hc-page-inner-button collapsed-page-button"
             *ngFor="let page of _collapsedVisiblePages"
             [disabled]="!page"
-            [class.currentpage]="page === pageNumber"
+            [class.hc-page-button-current]="page === pageNumber"
             (click)="_goToPage(page)"
         >
             <span *ngIf="!!page">{{ page }}</span>
