@@ -112,7 +112,9 @@ export class StepperComponent implements AfterContentInit {
 
     ngAfterContentInit() {
         this._checkForRouterUse();
-        this._findCurrentStep(this.router.url);
+        if ( this._routerEnabled ) {
+            this._findCurrentStep(this.router.url);
+        }
     }
 
     _stepClick(index: number | undefined) {
