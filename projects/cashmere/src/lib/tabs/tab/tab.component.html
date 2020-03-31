@@ -3,6 +3,7 @@
         *ngIf="routerLink; else tabWithoutRouting"
         class="hc-tab-{{ _direction }} hc-text-ellipsis"
         [class.hc-tab-tight]="_tight"
+        [class.active]="_active"
         [routerLink]="routerLink"
         routerLinkActive="active"
         [queryParams]="queryParams"
