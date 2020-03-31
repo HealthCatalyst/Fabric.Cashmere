@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
-import {StepperComponent, StepInterface, StepColor, StepType} from '@healthcatalyst/cashmere';
+import {Component, OnInit} from '@angular/core';
+import {StepInterface} from '@healthcatalyst/cashmere';
 
 /**
  * @title Stepper overview
@@ -9,13 +9,14 @@ import {StepperComponent, StepInterface, StepColor, StepType} from '@healthcatal
     templateUrl: 'stepper-overview-example.component.html',
     styleUrls: ['stepper-overview-example.component.scss']
 })
-export class StepperOverviewExampleComponent implements OnInit, AfterViewInit {
+export class StepperOverviewExampleComponent implements OnInit {
     progressSteps: StepInterface[];
-    colorOptions: StepColor[] = ['green', 'blue', 'purple', 'orange', 'red'];
-    typeOptions: StepType[] = ['arrow', 'isolated'];
+    currentColor: string = 'green';
+    colorOptions: string[] = ['green', 'blue', 'purple', 'orange', 'red'];
+    currentType: string = 'arrow';
+    typeOptions: string[] = ['arrow', 'isolated'];
     showSteps: boolean  = true;
-
-    @ViewChild('stepperElement') stepperElement: StepperComponent;
+    currentStep: number = 2;
 
     ngOnInit() {
         // To use with a router, add a `routerLink` to each step
@@ -27,12 +28,5 @@ export class StepperOverviewExampleComponent implements OnInit, AfterViewInit {
             {label: 'Fall', iconSet: 'fa', icon: 'fa-lock', disabled: true},
             {label: 'Year Round', iconSet: 'fa', icon: 'fa-lock', disabled: true}
         ];
-    }
-
-    ngAfterViewInit() {
-        this.stepperElement.activeIndex = 2;
-        this.stepperElement.type = 'arrow';
-        this.stepperElement.color = 'green';
-        this.stepperElement.showStepCount = true;
     }
 }
