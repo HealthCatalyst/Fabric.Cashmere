@@ -21,6 +21,9 @@ export interface StepInterface {
     disabled?: boolean;
 }
 
+export type StepColor = 'green' | 'blue' | 'purple' | 'orange' | 'red' | 'none';
+export type StepType = 'arrow' | 'isolated';
+
 /** Convey progress through numbered steps, providing a wizard-like workflow.  */
 @Component({
     selector: 'hc-stepper',
@@ -37,18 +40,18 @@ export class StepperComponent implements AfterContentInit {
 
     /** Sets the layout of the progress stepper. *Defaults to `arrow`.*  */
     @Input()
-    public type: 'arrow' | 'isolated' = 'arrow';
+    public type: StepType = 'arrow';
 
     /** Sets the highlight color of the progress stepper. *Defaults to `green`.*  */
     @Input()
-    get color(): 'green' | 'blue' | 'purple' | 'orange' | 'red' | 'none' {
+    get color(): StepColor {
         return this._color;
     }
-    set color(value: 'green' | 'blue' | 'purple' | 'orange' | 'red' | 'none') {
+    set color(value: StepColor) {
         this._color = value;
         this._hostClass = 'hc-stepper-' + this._color;
     }
-    private _color: 'green' | 'blue' | 'purple' | 'orange' | 'red' | 'none' = 'green';
+    private _color: StepColor = 'green';
 
     /** Determines whether numerals should be displayed on each step indicator for the isolated type.
      * *Defaults to `false`.*  */
@@ -59,7 +62,7 @@ export class StepperComponent implements AfterContentInit {
     set showStepCount(value) {
         this._showStepCount = parseBooleanAttribute(value);
     }
-    private _showStepCount: boolean = false;
+    private _showStepCount = false;
 
     /** If true, include a router outlet with the component. *Defaults to `true`.*  */
     @Input()
@@ -69,28 +72,28 @@ export class StepperComponent implements AfterContentInit {
     set useRouterOutlet(value) {
         this._useRouterOutlet = parseBooleanAttribute(value);
     }
-    private _useRouterOutlet: boolean = true;
+    private _useRouterOutlet = true;
 
     /** Get or set the currently selected zero-based index of the stepper */
     @Input()
-    get activeIndex(): number {
+    get activeIndex(): number | undefined {
         return this._activeIndex;
     }
-    set activeIndex(value: number) {
+    set activeIndex(value: number | undefined) {
         if (!this.steps) {
             return;
         }
-        if (value < 0 || value >= this.steps.length) {
+        if (value !== undefined && (value < 0 || value >= this.steps.length)) {
             throw Error('The hc-stepper activeIndex value of ' + value + ' is out of bounds');
         }
-        if (this._routerEnabled) {
+        if (this._routerEnabled && value !== undefined) {
             this.router.navigate([this.steps[value].routerLink]);
         } else {
             this._activeIndex = value;
             this.activeIndexChange.emit(this._activeIndex);
         }
     }
-    private _activeIndex: number = 0;
+    private _activeIndex: number | undefined = undefined;
 
     /** Emits the current zero-based index for the active step whenever it changes */
     @Output()
@@ -98,21 +101,24 @@ export class StepperComponent implements AfterContentInit {
 
     @HostBinding('class') _hostClass = 'hc-stepper-' + this.color;
 
-    constructor(private router: Router) {}
-
-    ngAfterContentInit() {
-        this._checkForRouterUse();
+    constructor(private router: Router) {
         this.router.events.forEach(event => {
             if (event instanceof NavigationEnd) {
                 const url = event && event.url ? event.url : '';
                 this._findCurrentStep(url);
-                this.activeIndexChange.emit(this._activeIndex);
             }
         });
     }
 
-    _stepClick(index) {
-        if (!this._routerEnabled && this.steps[index].disabled !== true) {
+    ngAfterContentInit() {
+        this._checkForRouterUse();
+        if ( this._routerEnabled ) {
+            this._findCurrentStep(this.router.url);
+        }
+    }
+
+    _stepClick(index: number | undefined) {
+        if (!this._routerEnabled && index !== undefined && this.steps[index].disabled !== true) {
             this._activeIndex = index;
             this.activeIndexChange.emit(this._activeIndex);
         }
@@ -129,7 +135,8 @@ export class StepperComponent implements AfterContentInit {
     }
 
     private _findCurrentStep(currentRoute: string) {
-        const foundActiveRoute = this.steps.findIndex(step => currentRoute === step.routerLink);
-        this._activeIndex = foundActiveRoute > -1 ? foundActiveRoute : 0;
+        const foundActiveRouteIndex = this.steps.findIndex(step => currentRoute === step.routerLink);
+        this._activeIndex = foundActiveRouteIndex > -1 ? foundActiveRouteIndex : undefined;
+        this.activeIndexChange.emit(this._activeIndex);
     }
 }
