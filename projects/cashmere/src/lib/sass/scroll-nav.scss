@@ -1,5 +1,5 @@
-@import '../../sass/colors';
-@import '../../sass/mixins';
+@import './colors';
+@import './mixins';
 
 @mixin hc-scroll-nav-links-container() {
     margin-right: 30px;
