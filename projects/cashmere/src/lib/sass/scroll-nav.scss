@@ -1,0 +1,47 @@
+@import './colors';
+@import './mixins';
+
+@mixin hc-scroll-nav-links-container() {
+    margin-right: 30px;
+}
+
+@mixin hc-scroll-nav-links-ul() {
+    list-style: none;
+}
+
+@mixin hc-scroll-nav-links() {
+    @include fontSize(14px);
+    background-color: transparent;
+    color: $offblack;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 10px 15px;
+
+    &:hover {
+        background-color: transparentize($slate-gray-200, 0.75);
+    }
+
+    &:active {
+        background-color: transparentize($slate-gray-200, 0.5);
+    }
+}
+
+@mixin hc-scroll-nav-link-active() {
+    &,
+    &:hover {
+        background-color: $blue;
+        color: $white;
+        font-weight: 500;
+    }
+}
+
+@mixin hc-scroll-nav-content-container() {
+    max-height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+@mixin hc-scroll-nav-smooth() {
+    scroll-behavior: smooth;
+}

@@ -8,7 +8,8 @@ import {
     Output,
     ViewContainerRef,
     HostListener,
-    HostBinding
+    HostBinding,
+    AfterContentInit
 } from '@angular/core';
 import {Subject, merge} from 'rxjs';
 import {tap, takeUntil} from 'rxjs/operators';
@@ -18,21 +19,14 @@ import {getInvalidPopoverError, getInvalidTriggerError} from '../popover.errors'
 import {HcPopoverAnchoringService} from '../popover-anchoring.service';
 import {HcPopoverOpenOptions, HcPopoverTrigger, VALID_TRIGGER} from '../types';
 import {PopoverNotification, PopoverNotificationService, NotificationAction} from '../notification.service';
-
-export enum KEY_CODE {
-    DOWN_ARROW = 40,
-    RIGHT_ARROW = 39,
-    UP_ARROW = 38,
-    LEFT_ARROW = 37,
-    TAB = 9
-}
+import {HcPopoverAccessibilityService, HcPopKeyboardNotifier, KEY_CODE} from '../popover-accessibility.service';
 
 @Directive({
     selector: '[hcPop]',
     exportAs: 'hcPopAnchor',
     providers: [HcPopoverAnchoringService]
 })
-export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
+export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDestroy {
     /** Reference to the popover instance. */
     @Input('hcPop')
     get attachedPopover() {
@@ -89,7 +83,8 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
     constructor(
         public _elementRef: ElementRef,
         private _viewContainerRef: ViewContainerRef,
-        public _anchoring: HcPopoverAnchoringService
+        public _anchoring: HcPopoverAnchoringService,
+        private _accessibility: HcPopoverAccessibilityService
     ) {}
 
     ngOnInit() {
@@ -99,6 +94,10 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
         merge(opened$, closed$)
             .pipe(takeUntil(this._onDestroy))
             .subscribe();
+    }
+
+    ngAfterContentInit() {
+        this._setupKeyboardEvents();
     }
 
     ngOnDestroy() {
@@ -165,8 +164,7 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
     }
 
     /** Handle keyboard navigation of a hcMenu using the arrow or tab keys */
-    @HostListener('window:keydown', ['$event'])
-    _keyEvent(event: KeyboardEvent) {
+    _keyEvent(event: KeyboardEvent): void {
         if (this.attachedPopover.isOpen() && this.attachedPopover._menuItems.length > 0 && !this.attachedPopover._subMenuOpen) {
             if (event.keyCode === KEY_CODE.UP_ARROW) {
                 event.stopPropagation();
@@ -238,5 +236,17 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
         if (this._notifications) {
             this._notifications.dispatch(notification);
         }
+    }
+
+    private _setupKeyboardEvents() {
+        const notifier: HcPopKeyboardNotifier = {
+            isOpen: false,
+            nativeElement: this._elementRef.nativeElement,
+            hasSubmenu: () => this._hasSubmenu,
+            onKeyDown: event => this._keyEvent(event)
+        };
+        this.popoverClosed.asObservable().subscribe(() => (notifier.isOpen = false));
+        this.popoverOpened.asObservable().subscribe(() => (notifier.isOpen = true));
+        this._accessibility.registerNotifier(notifier);
     }
 }
