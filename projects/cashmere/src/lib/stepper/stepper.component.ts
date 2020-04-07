@@ -1,5 +1,5 @@
 import {Component, Input, AfterContentInit, HostBinding, ViewEncapsulation, Output, EventEmitter} from '@angular/core';
-import {Router, NavigationEnd} from '@angular/router';
+import {Router, NavigationEnd, Params, UrlSerializer} from '@angular/router';
 import {parseBooleanAttribute} from '../util';
 
 export function throwErrorForMissingRouterLink(stepsWithoutRouterLink: StepInterface[]) {
@@ -19,6 +19,8 @@ export interface StepInterface {
     icon?: string;
     /** If true, the step will not be clickable */
     disabled?: boolean;
+    /** Apply query params to the routerLink */
+    queryParams?: Params;
 }
 
 export type StepColor = 'green' | 'blue' | 'purple' | 'orange' | 'red' | 'none';
@@ -101,19 +103,18 @@ export class StepperComponent implements AfterContentInit {
 
     @HostBinding('class') _hostClass = 'hc-stepper-' + this.color;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private urlSerializer: UrlSerializer) {
         this.router.events.forEach(event => {
             if (event instanceof NavigationEnd) {
-                const url = event && event.url ? event.url : '';
-                this._findCurrentStep(url);
+                this._findCurrentStep();
             }
         });
     }
 
     ngAfterContentInit() {
         this._checkForRouterUse();
-        if ( this._routerEnabled ) {
-            this._findCurrentStep(this.router.url);
+        if (this._routerEnabled) {
+            this._findCurrentStep();
         }
     }
 
@@ -134,8 +135,12 @@ export class StepperComponent implements AfterContentInit {
         }
     }
 
-    private _findCurrentStep(currentRoute: string) {
-        const foundActiveRouteIndex = this.steps.findIndex(step => currentRoute === step.routerLink);
+    private _findCurrentStep() {
+        const foundActiveRouteIndex = this.steps.findIndex(step => {
+            const urlTree = this.router.createUrlTree([step.routerLink], {queryParams: step.queryParams});
+            const stepURL = this.urlSerializer.serialize(urlTree);
+            return this.router.isActive(stepURL, true);
+        });
         this._activeIndex = foundActiveRouteIndex > -1 ? foundActiveRouteIndex : undefined;
         this.activeIndexChange.emit(this._activeIndex);
     }
