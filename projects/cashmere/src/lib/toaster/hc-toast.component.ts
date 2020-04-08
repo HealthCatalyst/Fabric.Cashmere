@@ -1,4 +1,4 @@
-import {Component, EventEmitter, ElementRef, ViewContainerRef, ComponentRef, ChangeDetectorRef} from '@angular/core';
+import {Component, EventEmitter, ElementRef, ViewContainerRef, ComponentRef, ChangeDetectorRef, ViewEncapsulation} from '@angular/core';
 import {trigger, state, style, transition, animate, AnimationEvent} from '@angular/animations';
 import {Portal, CdkPortalOutletAttachedRef} from '@angular/cdk/portal';
 import {BehaviorSubject} from 'rxjs';
@@ -9,6 +9,7 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
     selector: 'hc-toaster',
     templateUrl: './hc-toast.component.html',
     styleUrls: ['./hc-toast.component.scss'],
+    host: {class: 'hc-toaster'},
     animations: [
         trigger('fade', [
             state('void', style({transform: 'scale(0.9)', opacity: 0})),
@@ -16,7 +17,8 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
             state('leave', style({transform: 'none', opacity: 0})),
             transition('* => *', animate(ANIMATION_TIMINGS))
         ])
-    ]
+    ],
+    encapsulation: ViewEncapsulation.None
 })
 export class HcToastComponent {
     _styleType: string = 'success';

@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output, ViewEncapsulation} from '@angular/core';
 import {EventEmitter, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -34,7 +34,8 @@ export function invalidDefaultTab(tabVal: string | number) {
 @Component({
     selector: `hc-tab-set`,
     templateUrl: './tab-set.component.html',
-    styleUrls: ['./tab-set.component.scss']
+    styleUrls: ['./tab-set.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class TabSetComponent implements AfterContentInit {
     _routerEnabled: boolean = false;

@@ -1,6 +1,6 @@
 @import '../sass/app-switcher.scss';
 
-:host {
+.hc-app-switcher-container {
     @include hc-app-switcher-outer();
 }
 
