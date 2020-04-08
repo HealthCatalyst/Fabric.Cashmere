@@ -106,7 +106,7 @@ export class StepperComponent implements AfterContentInit {
     constructor(private router: Router, private urlSerializer: UrlSerializer) {
         this.router.events.forEach(event => {
             if (event instanceof NavigationEnd) {
-                this._findCurrentStep();
+                this.findCurrentStep();
             }
         });
     }
@@ -114,7 +114,7 @@ export class StepperComponent implements AfterContentInit {
     ngAfterContentInit() {
         this._checkForRouterUse();
         if (this._routerEnabled) {
-            this._findCurrentStep();
+            this.findCurrentStep();
         }
     }
 
@@ -135,7 +135,8 @@ export class StepperComponent implements AfterContentInit {
         }
     }
 
-    private _findCurrentStep() {
+    /** Can be used to activate the current step following @Input() steps routerLink or queryParams updates  */
+    findCurrentStep() {
         const foundActiveRouteIndex = this.steps.findIndex(step => {
             const urlTree = this.router.createUrlTree([step.routerLink], {queryParams: step.queryParams});
             const stepURL = this.urlSerializer.serialize(urlTree);
