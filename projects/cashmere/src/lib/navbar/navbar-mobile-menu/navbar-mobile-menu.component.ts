@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 /** Navigation dropdown for small screen sizes */
 @Component({
     selector: 'hc-navbar-mobile-menu',
     templateUrl: './navbar-mobile-menu.component.html',
-    styleUrls: ['./navbar-mobile-menu.component.scss']
+    styleUrls: ['./navbar-mobile-menu.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class NavbarMobileMenuComponent {
     public _yPos: string = '-100';

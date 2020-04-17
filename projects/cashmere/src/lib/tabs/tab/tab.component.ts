@@ -1,4 +1,4 @@
-import {Component, Input, ContentChildren, QueryList, AfterContentInit, Output} from '@angular/core';
+import {Component, Input, ContentChildren, QueryList, AfterContentInit, Output, ViewEncapsulation} from '@angular/core';
 import {EventEmitter, TemplateRef, ViewChild} from '@angular/core';
 import {HcTabTitleComponent} from './tab-title.component';
 import {Params} from '@angular/router';
@@ -6,7 +6,9 @@ import {Params} from '@angular/router';
 @Component({
     templateUrl: './tab.component.html',
     selector: `hc-tab`,
-    styleUrls: ['./tab.component.scss']
+    styleUrls: ['./tab.component.scss'],
+    host: {class: 'hc-tab'},
+    encapsulation: ViewEncapsulation.None
 })
 export class TabComponent implements AfterContentInit {
     /** Plain text title of the tab; for HTML support include a `hc-tab-title` element */

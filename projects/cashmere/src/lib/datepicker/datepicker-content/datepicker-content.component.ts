@@ -13,7 +13,6 @@ import {DatepickerComponent} from '../datepicker.component';
 @Component({
     selector: 'hc-datepicker-content',
     templateUrl: './datepicker-content.component.html',
-    // tslint:disable-next-line:use-host-property-decorator
     host: {
         class: 'hc-datepicker-content',
         '[@transformPanel]': '"enter"'
@@ -40,7 +39,7 @@ export class DatepickerContentComponent implements AfterViewInit {
 
     /** Close the datepicker automatically on selection only if in date mode */
     autoClose() {
-        if ( this.datepicker.mode === 'date' ) {
+        if (this.datepicker.mode === 'date') {
             this.datepicker.close();
         }
     }
