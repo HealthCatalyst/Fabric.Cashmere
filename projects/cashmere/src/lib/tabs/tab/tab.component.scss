@@ -1,6 +1,6 @@
 @import '../../sass/tab.scss';
 
-:host {
+.hc-tab {
     @include hc-tab();
 }
 

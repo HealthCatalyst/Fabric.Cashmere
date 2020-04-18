@@ -2,9 +2,7 @@
 
 .hc-navbar-mobile-menu-dropdown {
     @include hc-navbar-mobile-menu-dropdown();
-}
 
-:host::ng-deep {
     hr {
         @include hc-navbar-mobile-hr();
     }

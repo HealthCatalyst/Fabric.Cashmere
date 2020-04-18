@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
 import {BasePaginationComponent} from './base-pagination';
 
@@ -9,7 +9,8 @@ import {BasePaginationComponent} from './base-pagination';
 @Component({
     selector: 'hc-pagination',
     templateUrl: './pagination.component.html',
-    styleUrls: ['./pagination.component.scss']
+    styleUrls: ['./pagination.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class PaginationComponent extends BasePaginationComponent implements OnInit {
     /** The set of provided page size options to display to the user. *Defaults to [10, 20, 50].* */
