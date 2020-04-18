@@ -72,6 +72,7 @@ const docs: DocItem[] = [
         examples: ['navbar-overview', 'navbar-app-switcher'],
         usageDoc: true
     },
+    { id: 'multiselect', name: 'Multiselect & Typeahead', category: 'forms', hideApi: true, usageDoc: true, examples: ['multiselect-overview'] },
     {
         id: 'pagination',
         name: 'Pagination',
