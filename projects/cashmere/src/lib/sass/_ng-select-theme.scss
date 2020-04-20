@@ -124,6 +124,10 @@ $ng-select-value-font-size: 14px !default;
                         &:hover {
                             opacity: 0.6;
                         }
+
+                        &.right {
+                            left: 7px;
+                        }
                     }
                 }
                 .ng-input {
