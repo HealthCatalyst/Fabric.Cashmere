@@ -1,0 +1,22 @@
+<p>
+    For multiselects, typeaheads, and other selectbox needs, we recommend using a 3rd-party component,
+    <code>ng-select</code>. We've created a Cashmere theme for the component to give it the proper look
+    and feel. See usage tab for setup instructions.
+</p>
+
+<ng-select [items]="cities"
+    [addTag]="true"
+    [multiple]="true"
+    dropdownPosition="bottom"
+    addTagText="Add city"
+    placeholder="Search for cities..."
+    [(ngModel)]="selectedCities">
+</ng-select>
+<p>Selected: <code>{{selectedCities | json}}</code></p>
+
+<strong>API & other documentation:</strong>
+<ul>
+    <li><a href="https://ng-select.github.io/ng-select" target="_blank">Examples</a></li>
+    <li><a href="https://github.com/ng-select/ng-select#api" target="_blank">API</a></li>
+    <li><a href="https://github.com/ng-select/ng-select" target="_blank">Github</a></li>
+</ul>

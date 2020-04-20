@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 
 const supportedColors = ['light', 'dark'];
 
@@ -10,7 +10,8 @@ export function validateColorInput(inputStr: string) {
 
 @Component({
     selector: 'hc-progress-dots',
-    templateUrl: 'progress-dots.component.html'
+    templateUrl: 'progress-dots.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 export class ProgressDotsComponent {
     private _color = 'dark';

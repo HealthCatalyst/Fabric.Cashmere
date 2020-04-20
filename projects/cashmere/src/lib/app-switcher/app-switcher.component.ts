@@ -1,5 +1,5 @@
 import {takeUntil} from 'rxjs/operators';
-import {Component, Inject, OnDestroy, OnInit, Input} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit, Input, ViewEncapsulation} from '@angular/core';
 import {Subject, Subscription, Observable} from 'rxjs';
 
 import {IAppSwitcherService, IDiscoveryApplication, APP_SWITCHER_SERVICE} from './app-switcher-interfaces';
@@ -8,7 +8,9 @@ import {WorkTrackerService} from '../shared/work-tracker.service';
 @Component({
     selector: 'hc-app-switcher',
     templateUrl: './app-switcher.component.html',
-    styleUrls: ['./app-switcher.component.scss']
+    styleUrls: ['./app-switcher.component.scss'],
+    host: {class: 'hc-app-switcher-container'},
+    encapsulation: ViewEncapsulation.None
 })
 export class AppSwitcherComponent implements OnInit, OnDestroy {
     public applications: IDiscoveryApplication[];

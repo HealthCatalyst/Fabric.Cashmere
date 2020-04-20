@@ -1,6 +1,6 @@
 @import '../sass/modal.scss';
 
-:host {
+.hc-modal-window {
     @include hc-modal-outer();
 }
 

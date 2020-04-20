@@ -29,7 +29,6 @@ export class DatepickerToggleIconDirective {}
     selector: 'hc-datepicker-toggle',
     templateUrl: './datepicker-toggle.component.html',
     styleUrls: ['./datepicker-toggle.component.scss'],
-    // tslint:disable-next-line:use-host-property-decorator
     host: {
         class: 'hc-datepicker-toggle',
         // Always set the tabindex to -1 so that it doesn't overlap with any custom tabindex the

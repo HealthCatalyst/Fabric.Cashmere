@@ -1,11 +1,12 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, HostBinding, Input, ViewEncapsulation} from '@angular/core';
 
 /** Secondary navigation bar appearing below the primary navbar  */
 @Component({
     selector: 'hc-subnav',
     template: `
         <ng-content></ng-content>
-    `
+    `,
+    encapsulation: ViewEncapsulation.None
 })
 export class SubnavComponent {
     @HostBinding('class.hc-subnav')

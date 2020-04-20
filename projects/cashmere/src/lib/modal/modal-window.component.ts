@@ -1,6 +1,6 @@
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ModalSize} from './modal-options';
-import {Component, ElementRef, HostBinding, HostListener, Input} from '@angular/core';
+import {Component, ElementRef, HostBinding, HostListener, Input, ViewEncapsulation} from '@angular/core';
 import {ActiveModal} from './active-modal';
 
 @Component({
@@ -8,6 +8,8 @@ import {ActiveModal} from './active-modal';
     template: `
         <div [class]="'hc-modal hc-modal-' + _size"><ng-content></ng-content></div>
     `,
+    encapsulation: ViewEncapsulation.None,
+    host: {class: 'hc-modal-window'},
     styleUrls: ['./modal-window.component.scss'],
     animations: [
         trigger('fadeInOut', [

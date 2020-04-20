@@ -7,6 +7,7 @@
             [routerLink]="step.routerLink"
             [routerLinkActiveOptions]="{exact: true}"
             routerLinkActive="active"
+            [queryParams]="step.queryParams"
             [ngClass]="{
                 'hc-step-arrow-active': type === 'arrow' && i === activeIndex,
                 'hc-step-arrow-incomplete': type === 'arrow' && (activeIndex === undefined || i > activeIndex),
