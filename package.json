@@ -106,6 +106,7 @@
         "lint-staged": "^7.1.2",
         "ng-packagr": "^4.7.1",
         "node-sass": "^4.12.0",
+        "node-sass-tilde-importer": "^1.0.2",
         "path": "^0.12.7",
         "prettier": "^1.16.2",
         "progress": "^2.0.3",
