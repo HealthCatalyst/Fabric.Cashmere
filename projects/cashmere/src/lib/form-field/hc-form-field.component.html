@@ -11,7 +11,7 @@
     </span>
     <div class="hc-form-field-content-wrapper">
 
-        <ng-content></ng-content>
+        <ng-content select="hc-label-ext"></ng-content>
 
         <div
             *ngIf="hasInput"
@@ -37,9 +37,7 @@
             [class.hc-form-field-non-input-inline-tight]="inline && tight"
             [class.hc-form-field-invalid]="_shouldShowErrorMessages()"
         >
-            <ng-content select="hc-select"></ng-content>
-            <ng-content select="hc-checkbox"></ng-content>
-            <ng-content select="hc-radio-group"></ng-content>
+            <ng-content></ng-content>
         </div>
         <div class="hc-form-field-error-wrapper" *ngIf="_shouldShowErrorMessages()">
             <hc-error *ngIf="_control._errorMessage && _control._errorMessage.length">{{ _control._errorMessage }}</hc-error>
