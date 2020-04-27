@@ -1,0 +1,29 @@
+@import './modal';
+
+.hc-modal-header {
+    @include hc-modal-header();
+}
+
+.hc-modal-body {
+    @include hc-modal-body();
+}
+
+.hc-modal-close-button {
+    @include hc-modal-close-button();
+}
+
+.hc-modal-footer {
+    @include hc-modal-footer();
+}
+
+.hc-modal-content {
+    @include hc-modal-content();
+}
+
+.hc-modal-open {
+    @include hc-modal-open();
+}
+
+.hc-modal-center-component {
+    @include hc-modal-center-component();
+}
