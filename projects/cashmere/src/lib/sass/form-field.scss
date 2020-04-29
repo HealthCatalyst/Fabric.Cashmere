@@ -25,17 +25,12 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
 @mixin hc-form-field-wrapper() {
     position: relative;
-    border-top: $infix-margin-top solid transparent;
     padding-bottom: $wrapper-padding-bottom;
     flex-direction: inherit;
 }
 
 @mixin hc-form-field-wrapper-tight() {
     padding-bottom: 10px;
-}
-
-@mixin hc-form-field-wrapper-tight-border() {
-    border-top: $infix-margin-top-tight solid transparent;
 }
 
 @mixin hc-form-field-wrapper-inline() {
@@ -144,23 +139,13 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 }
 
 @mixin hc-form-field-label-wrapper() {
-    position: absolute;
-    left: 0;
     box-sizing: content-box;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
     pointer-events: none; // We shouldn't catch mouse events (let them through).
-    top: -$infix-margin-top;
-    padding-top: $infix-margin-top;
-}
-
-@mixin hc-form-field-label-wrapper-tight() {
-    top: -$infix-margin-top-tight;
-    padding-top: $infix-margin-top-tight;
 }
 
 @mixin hc-form-field-label-wrapper-inline() {
+    flex: 1 0 auto;
     padding: 7px 15px 0 0;
 }
 
@@ -176,28 +161,14 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     vertical-align: baseline;
 }
 
-@mixin hc-form-field-no-label() {
-    border-top: none;
-}
-
 @mixin hc-form-field-label() {
-    position: absolute;
-    left: 0;
-
+    display: block;
+    width: 100%;
+    margin-bottom: 3px;
     font: inherit;
     font-size: calculateRem(14px);
     color: $text;
     pointer-events: none; // We shouldn't catch mouse events (let them through).
-
-    width: 100%;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-
-    top: $infix-margin-top + $infix-padding;
-    transform: translateY(-$infix-margin-top - $infix-padding) scale($label-font-scale);
-    display: block;
-    transform-origin: 0 0;
 }
 
 @mixin hc-form-field-label-extension() {
@@ -207,15 +178,11 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 }
 
 @mixin hc-form-field-label-inline() {
+    width: 100%;
     font: inherit;
     font-size: calculateRem(14px);
-    color: $gray-500;
+    color: $text;
     pointer-events: none; // We shouldn't catch mouse events (let them through).
-
-    width: 100%;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
 }
 
 @mixin hc-form-field-label-tight() {

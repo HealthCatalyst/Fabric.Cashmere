@@ -19,13 +19,14 @@
 
     <div class="form-sample">
         <hc-form-field>
-            <hc-label>Run frequency:</hc-label>
-            <hc-select placeholder="Select frequency:" [formControl]="selectControl">
-                <option value="daily">Daily</option>
-                <option value="weekly">Weekly</option>
-                <option value="monthly">Monthly</option>
+            <hc-label>How long has it been since your last ER or Urgent Care visit at one of our facilities?</hc-label>
+            <hc-select placeholder="Select answer" [formControl]="selectControl">
+                <option value="daily">Within the last week</option>
+                <option value="weekly">Within the last month</option>
+                <option value="monthly">Within the last 6 months</option>
+                <option value="monthly">More than 6 months ago</option>
             </hc-select>
-            <hc-error>Please select the run frequency for this item</hc-error>
+            <hc-error>Please answer the screening question</hc-error>
         </hc-form-field>
     </div>
 
