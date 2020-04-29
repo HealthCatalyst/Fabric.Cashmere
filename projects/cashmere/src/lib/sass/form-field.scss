@@ -150,7 +150,6 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    pointer-events: none; // We shouldn't catch mouse events (let them through).
     top: -$infix-margin-top;
     padding-top: $infix-margin-top;
 }
@@ -187,7 +186,6 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     font: inherit;
     font-size: calculateRem(14px);
     color: $text;
-    pointer-events: none; // We shouldn't catch mouse events (let them through).
 
     width: 100%;
     white-space: nowrap;
@@ -210,7 +208,6 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     font: inherit;
     font-size: calculateRem(14px);
     color: $gray-500;
-    pointer-events: none; // We shouldn't catch mouse events (let them through).
 
     width: 100%;
     white-space: nowrap;
