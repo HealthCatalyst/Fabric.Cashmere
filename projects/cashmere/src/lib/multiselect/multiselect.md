@@ -6,8 +6,15 @@
 npm install --save @ng-select/ng-select
 ```
 
-_**NOTE:** Make sure to install the ng-select version compatible with the angular version in your app.
-Details in the ([ng-select documentation]("https://github.com/ng-select/ng-select"))._
+**Version Compatibility**
+Make sure to install the ng-select version compatible with the angular version in your app.
+
+| Angular| ng-select|
+| ------|:------:| 
+| >=9.0.0 <10.0.0 | v4.x |
+| >=8.0.0 <9.0.0  | v3.x |
+| >=6.0.0 <8.0.0  | v2.x |
+| v5.x.x  | v1.x |
 
 
 ### Step 2: Import NgSelectModule and FormsModule.

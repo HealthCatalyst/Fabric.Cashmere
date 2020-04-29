@@ -12,7 +12,7 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
     host: {class: 'hc-toaster'},
     animations: [
         trigger('fade', [
-            state('void', style({transform: 'scale(0.9)', opacity: 0})),
+            state('void', style({transform: 'none', opacity: 0})),
             state('enter', style({transform: 'none', opacity: 1})),
             state('leave', style({transform: 'none', opacity: 0})),
             transition('* => *', animate(ANIMATION_TIMINGS))

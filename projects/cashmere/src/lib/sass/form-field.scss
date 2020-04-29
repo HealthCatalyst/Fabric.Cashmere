@@ -186,7 +186,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
     font: inherit;
     font-size: calculateRem(14px);
-    color: $gray-500;
+    color: $text;
     pointer-events: none; // We shouldn't catch mouse events (let them through).
 
     width: 100%;
@@ -198,6 +198,12 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     transform: translateY(-$infix-margin-top - $infix-padding) scale($label-font-scale);
     display: block;
     transform-origin: 0 0;
+}
+
+@mixin hc-form-field-label-extension() {
+    color: $gray-500;
+    font-size: calculateRem(12px);
+    margin-bottom: 10px;
 }
 
 @mixin hc-form-field-label-inline() {

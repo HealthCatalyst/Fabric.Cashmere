@@ -1,0 +1,28 @@
+<form>
+    <div class="example-field">
+        <hc-form-field>
+            <hc-label>Primary form field label:</hc-label>
+            <hc-label-ext>
+                Additional descriptive or help content may be included with a label extension.
+            </hc-label-ext>
+            <input hcInput required>
+            <hc-error>An example of an error</hc-error>
+        </hc-form-field>
+    </div>
+
+    <div class="example-field">
+        <hc-form-field>
+            <hc-label>Additional label extension uses:</hc-label>
+            <hc-label-ext>
+                <span>Label extensions may include supporting content like images</span>
+                <img src="./assets/FabricCashmere.svg" alt="Fabric.Cashmere Title"/>
+            </hc-label-ext>
+            <hc-select placeholder="Select a version:" required>
+                <option value="daily">Latest</option>
+                <option value="weekly">Development</option>
+                <option value="monthly">Production</option>
+            </hc-select>
+            <hc-error>Another example error</hc-error>
+        </hc-form-field>
+    </div>
+</form>

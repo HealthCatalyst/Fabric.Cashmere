@@ -118,6 +118,10 @@
     @include hc-form-field-label();
 }
 
+.hc-form-field-label-extension {
+    @include hc-form-field-label-extension();
+}
+
 .hc-form-field-label-inline {
     @include hc-form-field-label-inline();
 }
