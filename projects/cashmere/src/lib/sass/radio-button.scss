@@ -97,6 +97,15 @@
     position: absolute;
 }
 
+@mixin hc-radio-input-focus {
+    outline: 2px solid lighten($azure, 30);
+    outline-offset: -1px;
+}
+
+@mixin hc-radio-input-active {
+    outline: none;
+}
+
 @mixin hc-radio-input-disabled() {
     cursor: not-allowed;
 }
