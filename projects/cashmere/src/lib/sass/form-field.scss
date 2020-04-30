@@ -141,7 +141,6 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 @mixin hc-form-field-label-wrapper() {
     box-sizing: content-box;
     width: 100%;
-    pointer-events: none; // We shouldn't catch mouse events (let them through).
 }
 
 @mixin hc-form-field-label-wrapper-inline() {
@@ -168,7 +167,6 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     font: inherit;
     font-size: calculateRem(14px);
     color: $text;
-    pointer-events: none; // We shouldn't catch mouse events (let them through).
 }
 
 @mixin hc-form-field-label-extension() {
@@ -182,7 +180,6 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     font: inherit;
     font-size: calculateRem(14px);
     color: $text;
-    pointer-events: none; // We shouldn't catch mouse events (let them through).
 }
 
 @mixin hc-form-field-label-tight() {
