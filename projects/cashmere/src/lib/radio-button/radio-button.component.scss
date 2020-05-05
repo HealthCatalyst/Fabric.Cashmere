@@ -56,4 +56,12 @@
     &.disabled {
         @include hc-radio-input-disabled();
     }
+
+    &:focus + .hc-radio-overlay {
+        @include hc-radio-input-focus();
+    }
+
+    &:active + .hc-radio-overlay {
+        @include hc-radio-input-active();
+    }
 }

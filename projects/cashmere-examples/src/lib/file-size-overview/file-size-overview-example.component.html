@@ -1,0 +1,10 @@
+<p>{{ bytes | fileSize: precision }}</p>
+
+<hc-form-field>
+    <hc-label>Number of bytes</hc-label>
+    <input hcInput type="number" [(ngModel)]="bytes" />
+</hc-form-field>
+<hc-form-field>
+    <hc-label>Precision</hc-label>
+    <input hcInput type="number" [(ngModel)]="precision" />
+</hc-form-field>
