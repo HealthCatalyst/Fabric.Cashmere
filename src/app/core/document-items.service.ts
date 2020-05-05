@@ -70,6 +70,7 @@ const docs: DocItem[] = [
         usageDoc: true,
         examples: ['input-required', 'input-suffix', 'input-prefix', 'input-text-area']
     },
+    {id: 'null-or-empty-string-pipe', name: 'IfNullOrEmpty', category: 'pipes', usageDoc: true, hideApi: true, examples: ['null-or-empty-string-overview']},
     {id: 'list', name: 'List', category: 'layout', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', category: 'popups', examples: ['modal-overview']},
     {
