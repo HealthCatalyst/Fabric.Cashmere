@@ -27,10 +27,10 @@ export class CalendarWrapperComponent implements OnChanges {
     @HostBinding('class.hc-calendar-wrapper')
     _hostClass = true;
 
-    @ViewChild(CalendarComponent, {static: false})
+    @ViewChild(CalendarComponent, {static: true})
     hcCalendar: CalendarComponent;
 
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective, {static: true})
     datePickerInput: DatepickerInputDirective;
 
     /** Emits when selected date has changed. */

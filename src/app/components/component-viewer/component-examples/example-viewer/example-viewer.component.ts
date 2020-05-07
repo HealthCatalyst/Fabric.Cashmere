@@ -11,8 +11,8 @@ import {expand} from 'rxjs/operators';
     templateUrl: 'example-viewer.component.html',
     styleUrls: ['example-viewer.component.scss']
 })
-export class ExampleViewerComponent implements AfterViewInit {
-    @ViewChild('exampleContainer', {read: ViewContainerRef, static: false})
+export class ExampleViewerComponent implements OnInit {
+    @ViewChild('exampleContainer', {read: ViewContainerRef, static: true})
     exampleContainer: ViewContainerRef;
 
     isInitialized = false;
@@ -40,7 +40,7 @@ export class ExampleViewerComponent implements AfterViewInit {
         return titleCase(this._example);
     }
 
-    async ngAfterViewInit() {
+    async ngOnInit() {
         if (this.example) {
             await this.loadExample();
             this.isInitialized = true;
