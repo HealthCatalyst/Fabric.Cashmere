@@ -6,10 +6,6 @@
 
 .hc-form-field-wrapper {
     @include hc-form-field-wrapper();
-
-    &.hc-form-field-wrapper-tight {
-        @include hc-form-field-wrapper-tight-border();
-    }
 }
 
 .hc-form-field-wrapper-inline {
@@ -118,16 +114,16 @@
     @include hc-form-field-label();
 }
 
+.hc-form-field-label-extension {
+    @include hc-form-field-label-extension();
+}
+
 .hc-form-field-label-inline {
     @include hc-form-field-label-inline();
 }
 
 .hc-form-field-label-tight {
     @include hc-form-field-label-tight();
-}
-
-.hc-form-field-no-label {
-    @include hc-form-field-no-label();
 }
 
 .hc-form-field-error-wrapper {

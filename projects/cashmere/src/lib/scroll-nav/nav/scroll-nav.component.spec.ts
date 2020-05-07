@@ -79,14 +79,14 @@ describe('HcScrollNavComponent', () => {
     it("should set first link element to 'active'", () => {
         let firstListElement = testApp.linksComponent._links[0];
 
-        expect(firstListElement.classList.contains('hc-scroll-nav-active')).toBeTruthy();
+        expect(firstListElement.classList.contains('hc-scroll-nav-link-active')).toBeTruthy();
     });
 
     it("_setActiveClassById should set passed in element to 'active'", () => {
         testApp.linksComponent._setActiveClassById('a2');
 
-        expect(testApp.linksComponent._links[0].classList.contains('hc-scroll-nav-active')).toBeFalsy();
-        expect(testApp.linksComponent._links[1].classList.contains('hc-scroll-nav-active')).toBeTruthy();
-        expect(testApp.linksComponent._links[2].classList.contains('hc-scroll-nav-active')).toBeFalsy();
+        expect(testApp.linksComponent._links[0].classList.contains('hc-scroll-nav-link-active')).toBeFalsy();
+        expect(testApp.linksComponent._links[1].classList.contains('hc-scroll-nav-link-active')).toBeTruthy();
+        expect(testApp.linksComponent._links[2].classList.contains('hc-scroll-nav-link-active')).toBeFalsy();
     });
 });

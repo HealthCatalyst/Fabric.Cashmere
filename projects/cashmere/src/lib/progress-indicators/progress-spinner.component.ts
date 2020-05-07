@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 
 const supportedColors = ['blue', 'green', 'purple', 'orange', 'red', 'gray', 'white'];
 
@@ -10,7 +10,8 @@ export function validateColorInput(inputStr: string) {
 
 @Component({
     selector: 'hc-progress-spinner',
-    templateUrl: 'progress-spinner.component.html'
+    templateUrl: 'progress-spinner.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 export class ProgressSpinnerComponent {
     private _color = 'blue';

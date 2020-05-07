@@ -10,6 +10,9 @@
         </label>
     </span>
     <div class="hc-form-field-content-wrapper">
+
+        <ng-content select="hc-label-ext"></ng-content>
+
         <div
             *ngIf="hasInput"
             [class.hc-form-field-flex]="!inline"

@@ -238,12 +238,6 @@ $disk-bg: $white;
     }
 }
 
-.hc-step-last {
-    .hc-stepper-isolated & {
-        @include hc-stepper-isolated-last();
-    }
-}
-
 .hc-step-arrow-active {
     .hc-stepper-green & {
         @include hc-stepper-bg-color($green);
@@ -277,6 +271,12 @@ $disk-bg: $white;
     }
     .hc-stepper-red & {
         @include hc-stepper-isolated-active($red, $track-bg-iso);
+    }
+}
+
+.hc-step-last {
+    .hc-stepper-isolated & {
+        @include hc-stepper-isolated-last();
     }
 }
 

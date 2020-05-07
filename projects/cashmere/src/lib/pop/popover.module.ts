@@ -13,6 +13,7 @@ import {MenuIconDirective} from './directives/menu-icon.directive';
 import {MenuTextDirective} from './directives/menu-text.directive';
 import {MenuSubTextDirective} from './directives/menu-sub-text.directive';
 import {DividerDirective} from './directives/divider.directive';
+import {HcPopoverAccessibilityService} from './popover-accessibility.service';
 
 @NgModule({
     imports: [CommonModule, OverlayModule, A11yModule, BidiModule],
@@ -36,6 +37,7 @@ import {DividerDirective} from './directives/divider.directive';
         MenuTextDirective,
         MenuSubTextDirective,
         DividerDirective
-    ]
+    ],
+    providers: [HcPopoverAccessibilityService]
 })
 export class PopModule {}

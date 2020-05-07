@@ -13,7 +13,7 @@ export class HcScrollNavComponent implements AfterViewInit {
     public get _links(): Array<HTMLElement> {
         return this.linkList.toArray().map(e => e._el.nativeElement);
     }
-    private readonly ACTIVE_CLASS = 'hc-scroll-nav-active';
+    private readonly ACTIVE_CLASS = 'hc-scroll-nav-link-active';
 
     constructor(public _elementRef: ElementRef) {}
 

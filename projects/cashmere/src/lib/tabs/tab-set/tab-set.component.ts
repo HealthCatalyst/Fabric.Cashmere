@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output, ViewEncapsulation} from '@angular/core';
 import {EventEmitter, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -34,7 +34,8 @@ export function invalidDefaultTab(tabVal: string | number) {
 @Component({
     selector: `hc-tab-set`,
     templateUrl: './tab-set.component.html',
-    styleUrls: ['./tab-set.component.scss']
+    styleUrls: ['./tab-set.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class TabSetComponent implements AfterContentInit {
     _routerEnabled: boolean = false;
@@ -89,7 +90,7 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     set addContentContainer(value) {
-       this._addContentContainer = parseBooleanAttribute(value);
+        this._addContentContainer = parseBooleanAttribute(value);
     }
 
     _addContentContainer: boolean = true;
@@ -126,10 +127,12 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     private setTabDirection(): void {
-        setTimeout(() => this._tabs.forEach(t => {
-            t._direction = this.direction;
-            t._tight = this.tight;
-        }));
+        setTimeout(() =>
+            this._tabs.forEach(t => {
+                t._direction = this.direction;
+                t._tight = this.tight;
+            })
+        );
     }
 
     private subscribeToTabClicks(): void {
@@ -139,35 +142,21 @@ export class TabSetComponent implements AfterContentInit {
 
     /** Sets the currently selected tab by either its numerical index or `TabComponent` object  */
     selectTab(tab: number | TabComponent) {
-        if (typeof tab === 'number') {
-            let i: number = 0;
-
-            this._tabs.forEach(t => {
-                if (i === tab) {
-                    this._setActive(t);
-                }
-                i++;
-            });
-        } else {
-            this._setActive(tab);
-        }
+        const activeTab = typeof tab === 'number' ? this._tabs.toArray()[tab] : tab;
+        this._setActive(activeTab);
     }
 
     _setActive(tab: TabComponent) {
-        let selectedTab: number = 0;
-        let index: number = 0;
-
-        this._tabs.forEach(t => {
-            if (t === tab) {
-                selectedTab = index;
-            }
+        let activeIndex = 0;
+        this._tabs.toArray().forEach((t, index) => {
             t._active = false;
-            index++;
+            if (t === tab) {
+                activeIndex = index;
+            }
         });
-
         tab._active = true;
         this.tabContent = tab.tabContent;
-        this.selectedTabChange.emit(new TabChangeEvent(selectedTab, tab));
+        this.selectedTabChange.emit(new TabChangeEvent(activeIndex, tab));
     }
 
     private defaultToFirstTab() {

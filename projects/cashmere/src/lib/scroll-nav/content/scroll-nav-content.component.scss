@@ -1,10 +1,9 @@
-.hc-scroll-nav-content-container {
-    overflow: scroll;
-    overflow-x: hidden;
-    max-height: 100%;
-    width: 100%;
+@import '../../sass/scroll-nav.scss';
 
-    &.hc-scroll-nav-smooth {
-        scroll-behavior: smooth;
-    }
+.hc-scroll-nav-content-container {
+    @include hc-scroll-nav-content-container();
+}
+
+.hc-scroll-nav-smooth {
+    @include hc-scroll-nav-smooth();
 }
