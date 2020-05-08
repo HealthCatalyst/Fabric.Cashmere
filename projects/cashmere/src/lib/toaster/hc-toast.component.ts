@@ -9,6 +9,7 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
     selector: 'hc-toaster',
     templateUrl: './hc-toast.component.html',
     styleUrls: ['./hc-toast.component.scss'],
+    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-toaster'},
     animations: [
         trigger('fade', [

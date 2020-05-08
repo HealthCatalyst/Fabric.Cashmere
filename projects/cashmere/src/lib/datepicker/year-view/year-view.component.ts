@@ -94,7 +94,7 @@ export class YearViewComponent implements AfterContentInit {
     readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
 
     /** The body of calendar table */
-    @ViewChild(CalendarBodyComponent)
+    @ViewChild(CalendarBodyComponent, {static: false})
     _hcCalendarBody: CalendarBodyComponent;
 
     /** Grid of calendar cells representing the months of the year. */

@@ -46,7 +46,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     @ContentChildren(HcOptionDirective)
     _options: QueryList<HcOptionDirective>;
 
-    @ViewChild('selectInput')
+    @ViewChild('selectInput', {static: false})
     _nativeSelect: ElementRef;
 
     /** Optional string of text to appear before selection is made */
@@ -187,9 +187,9 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         // If ngValue is being used, pull that value from the directive to allow objects well as strings
         if (this._options.length !== 0) {
             const optionArray = this._options.toArray();
-            const index = this.placeholder ?
-                this._nativeSelect.nativeElement.selectedIndex - 1 :
-                this._nativeSelect.nativeElement.selectedIndex;
+            const index = this.placeholder
+                ? this._nativeSelect.nativeElement.selectedIndex - 1
+                : this._nativeSelect.nativeElement.selectedIndex;
             this._valueData = optionArray[index].ngValue;
         }
 

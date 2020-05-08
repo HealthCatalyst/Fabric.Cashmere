@@ -9,6 +9,7 @@ import {WorkTrackerService} from '../shared/work-tracker.service';
     selector: 'hc-app-switcher',
     templateUrl: './app-switcher.component.html',
     styleUrls: ['./app-switcher.component.scss'],
+    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-app-switcher-container'},
     encapsulation: ViewEncapsulation.None
 })

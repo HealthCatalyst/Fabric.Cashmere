@@ -1,5 +1,5 @@
 /* tslint:disable:component-selector */
-/* tslint:disable:use-host-property-decorator */
+/* tslint:disable:no-host-metadata-property */
 
 import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';

@@ -54,7 +54,7 @@ export function validateMenuDrawerTheme(menuTheme) {
 export class MenuDrawer extends Drawer implements AfterContentInit {
     private _previousTheme: string | null = null;
 
-    @ContentChild(DrawerToolbar)
+    @ContentChild(DrawerToolbar, {static: false})
     toolbar: DrawerToolbar;
 
     /** Sets menu style of the drawer. Choose from: `'dark-theme'` */

@@ -2,14 +2,14 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {PlatformModule} from '@angular/cdk/platform';
 import {CommonModule} from '@angular/common';
-import createDate from 'sugar/date/internal/createDate';
 import {NativeDateAdapter, DateAdapter} from '@healthcatalyst/cashmere';
 import {DatepickerSugarExampleComponent} from './datepicker-sugar-example.component';
 import {CashmereModule} from '../cashmere.module';
+import * as sugar from 'sugar';
 
 export class SugarDateAdapter extends NativeDateAdapter {
     parse(value: any): Date | null {
-        return createDate(value);
+        return sugar.Date.create(value);
     }
 }
 
