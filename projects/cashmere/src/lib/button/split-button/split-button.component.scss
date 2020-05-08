@@ -6,9 +6,14 @@
 .hc-split-button {
     @include hc-split-button();
 
+    .hc-split-button-wrap {
+        @include hc-split-button-wrap();
+    }
+
     .hc-split-button-main {
         @include hc-split-button-main();
     }
+
     .hc-split-button-toggle {
         @include hc-split-button-toggle();
     }
