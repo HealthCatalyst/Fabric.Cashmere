@@ -9,6 +9,7 @@ import {ActiveModal} from './active-modal';
         <div [class]="'hc-modal hc-modal-' + _size"><ng-content></ng-content></div>
     `,
     encapsulation: ViewEncapsulation.None,
+    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-modal-window'},
     styleUrls: ['./modal-window.component.scss'],
     animations: [

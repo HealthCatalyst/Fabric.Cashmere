@@ -7,6 +7,7 @@ import {Params} from '@angular/router';
     templateUrl: './tab.component.html',
     selector: `hc-tab`,
     styleUrls: ['./tab.component.scss'],
+    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-tab'},
     encapsulation: ViewEncapsulation.None
 })
