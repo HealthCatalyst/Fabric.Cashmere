@@ -1,4 +1,4 @@
-/* tslint:disable:directive-selector no-use-before-declare */
+/* tslint:disable:directive-selector */
 
 import {Directive, forwardRef, HostBinding, Provider} from '@angular/core';
 import {CheckboxRequiredValidator, NG_VALIDATORS} from '@angular/forms';

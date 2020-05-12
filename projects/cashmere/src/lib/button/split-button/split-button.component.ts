@@ -32,10 +32,10 @@ export class SplitButtonComponent {
     private _style: string = 'primary';
     private _size: string = 'md';
 
-    @ViewChild('splitBtnToggle')
+    @ViewChild('splitBtnToggle', {static: false})
     _splitBtnToggle: ButtonComponent;
 
-    @ViewChild('splitMenu')
+    @ViewChild('splitMenu', {static: false})
     _splitMenu: HcPopComponent;
 
     /** Primary button's click event */

@@ -7,6 +7,7 @@ import {Params} from '@angular/router';
     templateUrl: './tab.component.html',
     selector: `hc-tab`,
     styleUrls: ['./tab.component.scss'],
+    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-tab'},
     encapsulation: ViewEncapsulation.None
 })
@@ -34,7 +35,7 @@ export class TabComponent implements AfterContentInit {
 
     /** The template to be used when this tab is selected. Defaults to the content of this tab component.
      * Not used when the tab set uses routing. */
-    @ViewChild('tabContent')
+    @ViewChild('tabContent', {static: false})
     tabContent: TemplateRef<any>;
 
     _direction: string;

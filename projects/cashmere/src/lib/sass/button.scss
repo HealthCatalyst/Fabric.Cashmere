@@ -215,6 +215,10 @@ $btn-icon-sz: 18px;
     display: inline-flex;
 }
 
+@mixin hc-split-button-wrap() {
+    display: inline-flex;
+}
+
 @mixin hc-split-button-main() {
     margin-right: 0;
     border-bottom-right-radius: 0;

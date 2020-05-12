@@ -28,7 +28,6 @@ import {MonthViewComponent} from '../month-view/month-view.component';
 import {YearViewComponent} from '../year-view/year-view.component';
 import {FormControl} from '@angular/forms';
 
-// tslint:disable:no-use-before-declare
 /**
  * Possible views for the calendar.
  * @docs-private
@@ -184,6 +183,7 @@ export class CalendarHeaderComponent {
     selector: 'hc-calendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['calendar.component.scss'],
+    // tslint:disable-next-line:no-host-metadata-property
     host: {
         class: 'hc-calendar'
     },
@@ -307,15 +307,15 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     readonly _userSelection: EventEmitter<void> = new EventEmitter<void>();
 
     /** Reference to the current month view component. */
-    @ViewChild(MonthViewComponent)
+    @ViewChild(MonthViewComponent, {static: false})
     monthView: MonthViewComponent;
 
     /** Reference to the current year view component. */
-    @ViewChild(YearViewComponent)
+    @ViewChild(YearViewComponent, {static: false})
     yearView: YearViewComponent;
 
     /** Reference to the current multi-year view component. */
-    @ViewChild(MultiYearViewComponent)
+    @ViewChild(MultiYearViewComponent, {static: false})
     multiYearView: MultiYearViewComponent;
 
     /**

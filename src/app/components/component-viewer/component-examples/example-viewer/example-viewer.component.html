@@ -8,7 +8,12 @@
     </div>
     <hc-tab-set direction="horizontal">
         <hc-tab tabTitle="Example" (tabClick)="logClick('Example')"><div class="example-container" #exampleContainer></div></hc-tab>
-        <hc-tab *ngFor="let file of exampleFiles" [tabTitle]="getTabTitle(file.name)" class="example-code-tab" (tabClick)="logClick(getTabTitle(file.name))">
+        <hc-tab
+            *ngFor="let file of exampleFiles"
+            [tabTitle]="getTabTitle(file.name)"
+            class="example-code-tab"
+            (tabClick)="logClick(getTabTitle(file.name))"
+        >
             <h4>{{ example }}-{{ file.name }}</h4>
             <pre> <code [highlight]="file.contents" ></code> </pre>
         </hc-tab>

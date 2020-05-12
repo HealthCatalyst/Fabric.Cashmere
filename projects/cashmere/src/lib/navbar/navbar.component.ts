@@ -53,10 +53,10 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     @ContentChildren(NavbarLinkComponent)
     _navLinks: QueryList<NavbarLinkComponent>;
 
-    @ViewChild('navbar') navbarContent: ElementRef;
-    @ViewChild('navlinks') navContent: ElementRef;
+    @ViewChild('navbar', {static: false}) navbarContent: ElementRef;
+    @ViewChild('navlinks', {static: false}) navContent: ElementRef;
 
-    @ViewChild('moreLink')
+    @ViewChild('moreLink', {static: false})
     _navbarMore: HcPopoverAnchorDirective;
 
     private unsubscribe$ = new Subject<void>();
@@ -175,7 +175,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     }
 
     _brandIconSet(): string {
-        if ( this.brandIcon && typeof this.brandIcon !== 'string' ) {
+        if (this.brandIcon && typeof this.brandIcon !== 'string') {
             return this.brandIcon.fontSet;
         } else {
             return '';
@@ -183,7 +183,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     }
 
     _brandIconGlyph(): string {
-        if ( this.brandIcon && typeof this.brandIcon !== 'string' ) {
+        if (this.brandIcon && typeof this.brandIcon !== 'string') {
             return this.brandIcon.fontIcon;
         } else {
             return '';
@@ -191,9 +191,9 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     }
 
     _brandIconSize(): string {
-        if ( this.brandIcon && typeof this.brandIcon !== 'string' && this.brandIcon.fontSize ) {
-            return this.brandIcon.fontSize + "px";
+        if (this.brandIcon && typeof this.brandIcon !== 'string' && this.brandIcon.fontSize) {
+            return this.brandIcon.fontSize + 'px';
         }
-        return "37px";
+        return '37px';
     }
 }

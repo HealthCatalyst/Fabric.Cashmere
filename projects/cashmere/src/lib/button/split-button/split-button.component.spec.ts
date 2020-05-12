@@ -1,4 +1,4 @@
-/* tslint:disable:no-use-before-declare component-class-suffix */
+/* tslint:disable:component-class-suffix */
 
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
