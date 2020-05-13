@@ -42,6 +42,12 @@ export class GuidesService {
             document: require('raw-loader!../../../guides/supported-browsers.md')
         },
         {
+            title: 'Supported Angular Versions',
+            route: 'supported-angular-versions',
+            category: 'using',
+            document: require('raw-loader!../../../guides/supported-angular-versions.md')
+        },
+        {
             title: 'Customizing Components',
             route: 'using-customizing-components',
             category: 'dev',
