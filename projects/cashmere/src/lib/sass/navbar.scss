@@ -1,6 +1,6 @@
-@import 'colors';
-@import 'variables';
-@import 'mixins';
+@import './colors';
+@import './variables';
+@import './mixins';
 
 $navbar-color: $charcoal-blue !default;
 $navbar-brand: $primary-brand !default;
