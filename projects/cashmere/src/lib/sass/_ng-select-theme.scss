@@ -3,8 +3,8 @@
 
 @import './colors';
 @import './mixins';
-@import './select.scss';
-@import './chip.scss';
+@import './select';
+@import './chip';
 
 $ng-select-primary-text: $offblack !default;
 $ng-select-disabled-text: $gray-200 !default;
