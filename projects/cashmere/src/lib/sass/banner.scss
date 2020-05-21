@@ -1,6 +1,6 @@
 @import './colors';
-@import './functions.scss';
-@import './mixins.scss';
+@import './functions';
+@import './mixins';
 
 @mixin hc-banner() {
     align-items: center;

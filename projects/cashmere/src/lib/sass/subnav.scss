@@ -1,5 +1,5 @@
-@import 'colors';
-@import 'variables';
+@import './colors';
+@import './variables';
 
 @mixin hc-subnav() {
     align-items: center;

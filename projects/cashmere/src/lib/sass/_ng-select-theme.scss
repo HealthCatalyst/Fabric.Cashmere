@@ -3,8 +3,9 @@
 
 @import './colors';
 @import './mixins';
-@import './select.scss';
-@import './chip.scss';
+@import './select';
+@import './chip';
+@import './variables';
 
 $ng-select-primary-text: $offblack !default;
 $ng-select-disabled-text: $gray-200 !default;
@@ -180,11 +181,12 @@ $ng-select-value-font-size: 14px !default;
     }
 }
 
-.ng-dropdown-panel {
+ng-dropdown-panel.ng-dropdown-panel {
     background-color: $ng-select-bg;
     border: 1px solid $ng-select-border;
     box-shadow: 0 1px 0 $shadow;
     left: 0;
+    z-index: $z-index-ng-select-dropdown;
     &.ng-select-bottom {
         top: 100%;
         border-bottom-right-radius: 4px;
