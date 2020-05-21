@@ -39,3 +39,12 @@ By importing the Cashmere styles in your app's global style sheet, you'll automa
 ```
 @import "~@healthcatalyst/cashmere/scss/cashmere";
 ```
+
+&nbsp;
+
+##### Things to Look Out For
+
+**Don't miss the `[appendTo]` property.** This property is helpful for cases where you need to use `ng-select` inside of a scrollable container,
+like a modal window. It allows you to choose where the dropdown will be inserted into the DOM. By default, its added as a child of the component, but to
+avoid odd scrolling issues, setting `appendTo="body"` can be useful. This will make sure the dropdown appears on top of everything else. For more detail,
+visit the ng-select docs: [https://ng-select.github.io/ng-select#/append-to-element](https://ng-select.github.io/ng-select#/append-to-element)
