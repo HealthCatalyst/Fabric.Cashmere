@@ -16,6 +16,7 @@ export class SugarDateAdapter extends NativeDateAdapter {
 @NgModule({
     imports: [PlatformModule, CommonModule, CashmereModule, FormsModule],
     declarations: [DatepickerSugarExampleComponent],
+    exports: [DatepickerSugarExampleComponent],
     providers: [{provide: DateAdapter, useClass: SugarDateAdapter}],
     entryComponents: [DatepickerSugarExampleComponent]
 })
