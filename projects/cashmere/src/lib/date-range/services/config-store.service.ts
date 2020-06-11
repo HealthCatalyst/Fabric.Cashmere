@@ -34,6 +34,12 @@ export class ConfigStoreService {
 
     public weekendFilter: (d: D) => boolean = () => true;
 
+    private readonly emptyWeekendFilter = () => true;
+    private readonly excludeWeekendFilter = (d: Date): boolean => {
+        const day = d.getDay();
+        return day !== 0 && day !== 6;
+    };
+
     constructor() {
         this.dateRangeOptions$ = this.dateRangeOptionsSubject.pipe(
             map((options: DateRangeOptions) => {
@@ -44,12 +50,9 @@ export class ConfigStoreService {
             }),
             tap((options: DateRangeOptions) => {
                 if (!!options.excludeWeekends) {
-                    this.weekendFilter = (d: Date): boolean => {
-                        const day = d.getDay();
-                        return day !== 0 && day !== 6;
-                    };
+                    this.weekendFilter = this.excludeWeekendFilter;
                 } else {
-                    this.weekendFilter = () => true;
+                    this.weekendFilter = this.emptyWeekendFilter;
                 }
             })
         );
