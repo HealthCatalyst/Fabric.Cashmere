@@ -85,3 +85,9 @@
         @include hc-checkbox-invalid();
     }
 }
+
+.hc-checkbox-stub {
+    .hc-checkbox-label, .hc-checkbox-overlay {
+        @include hc-checkbox-stubbed();
+    }
+}

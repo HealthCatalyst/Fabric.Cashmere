@@ -135,3 +135,7 @@
 @mixin hc-checkbox-invalid() {
     border-color: $error !important;
 }
+
+@mixin hc-checkbox-stubbed() {
+    pointer-events: none;
+}
