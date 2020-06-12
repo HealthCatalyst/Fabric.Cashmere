@@ -11,4 +11,10 @@ import {Component} from '@angular/core';
 export class MultiselectOverviewExampleComponent {
     cities = ["Philadelphia", "Atlanta", "Salt Lake City", "Chicago", "Orlando"];
     selectedCities = [];
+    selectedCareTeamRoles = [];
+    careTeamRoles = [
+      {name: "group 1"},
+      {name: "group 2"},
+      {name: "group 3"},
+    ];
 }

@@ -1,4 +1,4 @@
-<div class="hc-checkbox-container">
+<div class="hc-checkbox-container" [class.hc-checkbox-stub]="isStub">
     <div class="hc-checkbox-content" [class.hc-checkbox-tight]="tight" [ngClass]="'hc-checkbox-align-'+align">
         <input #checkboxInput
                type="checkbox"
