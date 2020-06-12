@@ -1,0 +1,31 @@
+<ng-select class="checkbox-dropdown"
+        [items]="transportOptions"
+        [multiple]="true"
+        groupBy="type"
+        [closeOnSelect]="false"
+        [searchable]="true"
+        [searchFn]="customSearchFn"
+        bindLabel="name"
+        placeholder="Select to add"
+        [(ngModel)]="selected">
+        
+        <!-- Group header template -->
+        <ng-template ng-optgroup-tmp let-item="item">
+            <div class="group-row">{{item.type}}</div>
+        </ng-template>
+        
+        <!-- Dropdown option template -->
+        <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+            <div class="opt-row" title="Travel by {{item.type}}: {{item.name}}">
+                <span class="icon-wrapper {{item.color}}"> <hc-icon fontSet="fa" fontIcon="fa-{{item.icon}}" hcIconSm></hc-icon></span>{{item.name}}
+            </div>
+        </ng-template>
+        
+        <!-- Selected option template -->
+        <ng-template ng-label-tmp let-item="item" let-clear="clear">
+            <span class="ng-value-icon left" (click)="clear(item)" aria-hidden="true">×</span>
+            <span class="ng-value-label"><hc-icon fontSet="fa" fontIcon="fa-{{item.icon}}" hcIconSm></hc-icon>{{item.name}}</span>
+        </ng-template>
+</ng-select>
+
+<p>Selected: <code>{{selected | json}}</code></p>
