@@ -18,6 +18,7 @@ You may not have all these items available. However, include what you have in th
 -   [fa-lightbulb] **Request a feature** (link to your feature request page on Health Catalyst Community)
 -   [fa-users] **Ask the community** (link to your Q&A page on Health Catalyst Community)
 -   [fa-bullhorn] **Find out what's new** (link to your release notes on Health Catalyst Community)
+-   [fa-exclamation-circle] **Report an issue** (link to open a new ticket on the Support Portal)
 -   [fa-comments] **Send feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/components/typeform-survey/examples))
 -   [fa-info-circle] **About** see the [associated style page](https://cashmere.healthcatalyst.net/styles/about) for guidelines)
 
@@ -39,6 +40,10 @@ You may not have all these items available. However, include what you have in th
         <a hcMenuItem href="http://example.com" target="_blank">
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bullhorn"></hc-icon>
             <span hcMenuText>Find out what's new</span>
+        </a>
+        <a hcMenuItem href="http://example.com" target="_blank">
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-exclamation-circle"></hc-icon>
+            <span hcMenuText>Report an issue</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-comments"></hc-icon>

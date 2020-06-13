@@ -7,7 +7,6 @@ import {ModalOptions, ModalService} from '@healthcatalyst/cashmere';
     styleUrls: ['./chart-demo.component.scss']
 })
 export class ChartDemoComponent implements OnInit {
-    lastModified: Date = new Date(document.lastModified);
     loading: boolean = true;
     modalHeader: string = 'Chart Information';
     chartData: Array<any>;
