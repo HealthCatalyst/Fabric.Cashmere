@@ -5,6 +5,4 @@ import {Component} from '@angular/core';
     templateUrl: './brand-color-demo.component.html',
     styleUrls: ['../color/color-demo.component.scss']
 })
-export class BrandColorDemoComponent {
-    lastModified: Date = new Date(document.lastModified);
-}
+export class BrandColorDemoComponent {}

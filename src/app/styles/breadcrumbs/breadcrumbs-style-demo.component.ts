@@ -7,7 +7,5 @@ import {Component, OnInit} from '@angular/core';
     `
 })
 export class BreadcrumbsStyleDemoComponent {
-    lastModified: Date = new Date(document.lastModified);
-
     public document: string = require('raw-loader!../../../../guides/styles/breadcrumbs.md');
 }

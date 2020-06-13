@@ -1,6 +1,6 @@
 # Error Pages
 
-###### Last updated March 12, 2018
+###### Last updated Jan 9, 2019
 
 :::
 
