@@ -32,6 +32,46 @@ We would love for you to contribute to Cashmere and be part of the community mak
 1.  You may need to run `npm run build` before you start, especially if it's your first time running Cashmere.
 2.  Run `npm start`. This will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the Cashmere library.
 
+### Code Documentation
+
+The API documentation for Cashmere is auto-generated directly from the TypeScript source using [Dgeni](https://github.com/angular/dgeni) (based on [JSDoc](https://jsdoc.app/)). Be sure that all components and modules are exported in the `index.ts` file of that component's directory. That will ensure that the documentation generator parses all included code. The following are best-practices to ensure the docs are generated correctly:
+
+#### Comment Formatting
+
+Comments should be begin with `/**` followed by a space and end with a space, then `*/`. If a comment spans multiple lines, each new line should begin with `*` and a space.
+
+```
+/** The navbar is a wrapper that positions branding, navigation, and
+ * other elements in a concise header. */
+@Component({
+    ...
+})
+```
+
+#### What Comments to Include
+
+-   Add a comment above any `@Component` definitions that describe the function of the component
+-   Add a comment above an `@Input` definitions describing the purpose and usage of the input as well as its default value
+-   Add a comment above any public functions describing the function and any parameters
+
+```
+/** Fixes the position of navbar to the top of the page. *Default is false.* */
+@Input()
+fixedTop: boolean = false;
+```
+
+#### Excluding Items from Docs
+
+Any component variables or functions that are meant only to be used internally and should not be included in the documentation should begin with an underscore in their name.
+
+```
+_menuOpen: boolean = false;
+```
+
+### Usage Documentation
+
+In addition to the auto-generated API docs, a component may include an option "Usage" section that describes additional information on configuring or working with the component. The usage page is written in markdown format and is included in the same directory as the component source. It should have the same name as the source file (e.g. `select.md` if the source is named `select.component.ts`). In the `DocItem` array in `document-items.service.ts`, the component should have its `usageDoc` flag set to `true`.
+
 ### Pull Requests
 
 Before you submit your pull request (PR), consider the following guidelines:
