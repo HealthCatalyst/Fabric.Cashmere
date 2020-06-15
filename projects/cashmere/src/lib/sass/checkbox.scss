@@ -49,13 +49,16 @@
 }
 
 @mixin hc-checkbox-label() {
-    padding: 4px 0 4px 12px;
+    padding: 4px 0 4px 34px;
     line-height: 1.5;
+    position: relative;
+    left: -22px;
 }
 
 @mixin hc-checkbox-label-tight() {
-    padding: 2px 0 2px 8px;
+    padding: 2px 0 2px 26px;
     font-size: calculateRem(13px);
+    left: -18px;
 }
 
 @mixin hc-checkbox-overlay() {
