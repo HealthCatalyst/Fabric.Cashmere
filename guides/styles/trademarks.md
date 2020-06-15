@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated May 5, 2019
+###### Last updated Dec 6, 2019
 
 :::
 

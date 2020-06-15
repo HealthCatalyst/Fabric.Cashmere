@@ -1,6 +1,6 @@
 # App "About" Modal
 
-###### Last updated June 28, 2019
+###### Last updated Dec 10, 2019
 
 :::
 
