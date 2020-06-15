@@ -34,7 +34,7 @@ We would love for you to contribute to Cashmere and be part of the community mak
 
 ### Code Documentation
 
-The API documentation for Cashmere is auto-generated directly from the TypeScript source using [Dgeni](https://github.com/angular/dgeni) (based on [JSDoc](https://jsdoc.app/)). Be sure that all components and modules are exported in the `index.ts` file of that component's directory. That will ensure that the documentation generator parses all included code. The following are best-practices to ensure the docs are generated correctly:
+The API documentation for Cashmere is auto-generated directly from the TypeScript source using [Dgeni](https://github.com/angular/dgeni) (based on [JSDoc](https://jsdoc.app/)). Be sure that all public components and modules are exported in the `index.ts` file of that component's directory. That will ensure that the documentation generator parses all included code. The following are best-practices to ensure the docs are generated correctly:
 
 #### Comment Formatting
 
@@ -70,7 +70,7 @@ _menuOpen: boolean = false;
 
 ### Usage Documentation
 
-In addition to the auto-generated API docs, a component may include an option "Usage" section that describes additional information on configuring or working with the component. The usage page is written in markdown format and is included in the same directory as the component source. It should have the same name as the source file (e.g. `select.md` if the source is named `select.component.ts`). In the `DocItem` array in `document-items.service.ts`, the component should have its `usageDoc` flag set to `true`.
+In addition to the auto-generated API docs, a component may include an optional "Usage" section that describes additional information on configuring or working with the component. The usage page is written in markdown format and is included in the same directory as the component source. It should have the same name as the source file (e.g. `select.md` if the source is named `select.component.ts`). In the `DocItem` array in `document-items.service.ts`, the component should have its `usageDoc` flag set to `true`.
 
 ### Pull Requests
 
