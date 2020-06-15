@@ -72,7 +72,7 @@ If you'd like to show the launch screen after the initial load is complete, perh
             <!-- Begin Cashmere Launch Screen Code -->
             <style type="text/css">
                 body { font-family: Arial, Helvetica, sans-serif; }
-                #preBootstrap { position: fixed; top: 0px; height: 100%; width: 100%; background-color: #2E3946; z-index: 999999; }
+                #preBootstrap { position: fixed; top: 0px; left: 0px; height: 100%; width: 100%; background-color: #2E3946; z-index: 999999; }
                 #triflame { position: absolute; height: 50px; width: 50px; top: calc(50% - 25px); left: calc(50% - 25px); }
                 #logoContainer { position: absolute; top: calc(50% - 100px); left: 0; width: 100%; }
                 #logo { width: 180px; height: 30px; } .shape { fill: #fff;}
