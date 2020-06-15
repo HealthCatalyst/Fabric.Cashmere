@@ -1,5 +1,7 @@
 # Application Launch Screen
 
+###### Last updated June 15, 2020
+
 :::
 
 ##### Overview
