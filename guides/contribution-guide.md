@@ -38,7 +38,7 @@ The API documentation for Cashmere is auto-generated directly from the TypeScrip
 
 #### Comment Formatting
 
-Comments should be begin with `/**` followed by a space and end with a space, then `*/`. If a comment spans multiple lines, each new line should begin with `*` and a space.
+Comments should be begin with `/**` followed by a space and end with a space, then `*/`. If a comment spans multiple lines, each new line should begin with a space, `*`, and another space.
 
 ```
 /** The navbar is a wrapper that positions branding, navigation, and
@@ -51,7 +51,7 @@ Comments should be begin with `/**` followed by a space and end with a space, th
 #### What Comments to Include
 
 -   Add a comment above any `@Component` definitions that describe the function of the component
--   Add a comment above an `@Input` definitions describing the purpose and usage of the input as well as its default value
+-   Add a comment above `@Input` definitions describing the purpose and usage of the input as well as their default value
 -   Add a comment above any public functions describing the function and any parameters
 
 ```
