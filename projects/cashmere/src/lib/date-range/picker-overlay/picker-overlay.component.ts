@@ -19,7 +19,7 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
     options$: Observable<DateRangeOptions>;
     set _fromDate(fd: D | undefined) { this.__fromDate = fd; this.cd.markForCheck(); }
     set _toDate(td: D | undefined) { this.__toDate = td; this.cd.markForCheck(); }
-    set _selectedPreset(s: number | null ){ this.__selectedPreset = s; this.cd.markForCheck(); }
+    set _selectedPreset(s: number | null ) { this.__selectedPreset = s; this.cd.markForCheck(); }
     set _rangeIsInvalid(isInvalid: boolean) { this.__rangeIsInvalid = isInvalid; this.cd.markForCheck(); }
     get _fromDate(): D | undefined { return this.__fromDate; }
     get _toDate(): D | undefined { return this.__toDate; }
