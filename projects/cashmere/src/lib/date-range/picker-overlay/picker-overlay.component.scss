@@ -35,3 +35,8 @@
 .presets {
     @include hc-date-range-presets();
 }
+
+
+.hc-date-range-warning-icon {
+    @include hc-date-range-warning-icon();
+}
