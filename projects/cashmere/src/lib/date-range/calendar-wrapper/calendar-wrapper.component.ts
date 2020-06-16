@@ -56,6 +56,7 @@ export class CalendarWrapperComponent implements OnChanges {
     @Input()
     prefixLabel: string;
 
+    /** Flag to filter out weekends. */
     @Input()
     excludeWeekends: boolean;
 
@@ -63,12 +64,13 @@ export class CalendarWrapperComponent implements OnChanges {
     @Input()
     minDate: D | undefined;
 
-    @Input()
-    invalidDateLabel: string;
-
-    /** Flag to filter out weekends. */
+    /** The maximum selectable date. */
     @Input()
     maxDate: D | undefined;
+
+    /** Message displayed when a date is invalid. */
+    @Input()
+    invalidDateLabel: string;
 
     weekendFilter = () => true;
 
