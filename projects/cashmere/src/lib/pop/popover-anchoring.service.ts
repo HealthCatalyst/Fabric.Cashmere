@@ -137,9 +137,9 @@ export class HcPopoverAnchoringService implements OnDestroy {
     }
 
     /** Closes the popover. */
-    closePopover(value?: any): void {
+    closePopover(value?: any, neighborSubMenusAreOpen: boolean = false): void {
         if (this._popover._componentOverlay) {
-            this._saveClosedState(value);
+            this._saveClosedState(value, neighborSubMenusAreOpen);
             this._popover._componentOverlay.detach();
             this._popover._restoreFocusAndDestroyTrap();
         }
@@ -326,11 +326,11 @@ export class HcPopoverAnchoringService implements OnDestroy {
     }
 
     /** Save the closed state of the popover and emit. */
-    private _saveClosedState(value?: any): void {
+    private _saveClosedState(value?: any, neighborSubMenusAreOpen: boolean = false): void {
         if (this._popoverOpen) {
             this._popover._open = this._popoverOpen = false;
             if ( this._popover.parent ) {
-                this._popover.parent._subMenuOpen = false;
+                this._popover.parent._subMenuOpen = neighborSubMenusAreOpen;
             }
             this.popoverClosed.next(value);
             this._popover.closed.emit(value);

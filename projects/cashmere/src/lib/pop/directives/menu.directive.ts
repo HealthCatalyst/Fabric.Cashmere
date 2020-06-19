@@ -25,7 +25,7 @@ export class MenuDirective implements AfterContentInit, OnDestroy {
                     if (sub !== anchor && sub.attachedPopover.isOpen()) {
                         sub.attachedPopover._parentCloseBlock = true;
                         sub.attachedPopover._restoreFocusOverride = false;
-                        sub.closePopover();
+                        sub.closePopover({}, true);
                         sub.attachedPopover._restoreFocusOverride = true;
                         let closeSub: Subscription = sub.attachedPopover.afterClose.subscribe(() => {
                             sub.attachedPopover._parentCloseBlock = false;
