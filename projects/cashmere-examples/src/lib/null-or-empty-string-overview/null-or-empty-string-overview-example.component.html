@@ -1,19 +1,12 @@
 
-<p><strong>For the following snippet of markup:</strong> <code ngNonBindable>{{ myStringValue | ifNullOrEmpty: 'alternate value' }}</code></p>
-<br>
-<p><code>' '</code> => <code>'{{' ' | ifNullOrEmpty: 'alternate value'}}'</code></p>
-<p><code>'\n'</code> => <code>'{{'\n' | ifNullOrEmpty: 'alternate value'}}'</code></p>
-<p><code>null</code> => <code>'{{null | ifNullOrEmpty: 'alternate value'}}'</code></p>
-<p><code>undefined</code> => <code>'{{undefined | ifNullOrEmpty: 'alternate value'}}'</code></p>
-<p><code>'hello world'</code> => <code>'{{'hello world' | ifNullOrEmpty: 'alternate value'}}'</code></p>
+<h6>Output:</h6>
+<div class="pipe-output">{{ value | ifNullOrEmpty: 'alternate value' }}</div>
 
-<br>
 <hr>
+
+<h6>Inputs:</h6>
+
 <hc-form-field>
-    <hc-label>Try your own input:</hc-label>
-    <textarea hcInput [(ngModel)]='value'></textarea>
-</hc-form-field>
-<hc-form-field>
-    <hc-label>Output:</hc-label>
-    <textarea hcInput disabled>{{value | ifNullOrEmpty: 'alternate value'}}</textarea>
+    <hc-label>Value:</hc-label>
+    <input hcInput [(ngModel)]="value">
 </hc-form-field>

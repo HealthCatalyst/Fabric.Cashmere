@@ -37,5 +37,13 @@ export class CashmereModule {}
 ```
 
 #### Edge cases
+Given the following snippet of markup:
+`{{ myStringValue | ifNullOrEmpty: 'alternate value' }}`
 
-If the NullOrEmptyStringPipe is given a value other than a `string`, it will return the value unchanged.
+This would be the result from various inputs:
+<p><code>' '</code> => <code>'{{' ' | ifNullOrEmpty: 'alternate value'}}'</code></p>
+<p><code>'\n'</code> => <code>'{{'\n' | ifNullOrEmpty: 'alternate value'}}'</code></p>
+<p><code>null</code> => <code>'{{null | ifNullOrEmpty: 'alternate value'}}'</code></p>
+<p><code>undefined</code> => <code>'{{undefined | ifNullOrEmpty: 'alternate value'}}'</code></p>
+<p><code>'hello world'</code> => <code>'{{'hello world' | ifNullOrEmpty: 'alternate value'}}'</code></p>
+<p><code>1234</code> => <code>'{{1234 | ifNullOrEmpty: 'alternate value'}}'</code></p>
