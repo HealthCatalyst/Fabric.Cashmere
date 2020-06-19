@@ -443,26 +443,8 @@ export class HcPopComponent implements OnInit, OnDestroy {
         }
     }
 
-    /** Move the focus inside the focus trap and remember where to return later. */
-    private _trapFocus(): void {
-        this._savePreviouslyFocusedElement();
-
-        // There won't be a focus trap element if the close animation starts before open finishes
-        if (!this._focusTrapElement) {
-            return;
-        }
-
-        if (!this._focusTrap && this._focusTrapElement) {
-            this._focusTrap = this._focusTrapFactory.create(this._focusTrapElement.nativeElement);
-        }
-
-        if (this.autoFocus && this._focusTrap) {
-            this._focusTrap.focusInitialElementWhenReady();
-        }
-    }
-
     /** Restore focus to the element focused before the popover opened. Also destroy trap. */
-    private _restoreFocusAndDestroyTrap(): void {
+    _restoreFocusAndDestroyTrap(): void {
         const toFocus = this._previouslyFocusedElement;
 
         // Must check active element is focusable for IE sake
@@ -479,9 +461,25 @@ export class HcPopComponent implements OnInit, OnDestroy {
     }
 
     /** Save a reference to the element focused before the popover was opened. */
-    private _savePreviouslyFocusedElement(): void {
+    _savePreviouslyFocusedElement(): void {
         if (this._document) {
             this._previouslyFocusedElement = this._document.activeElement as HTMLElement;
+        }
+    }
+
+    /** Move the focus inside the focus trap and remember where to return later. */
+    private _trapFocus(): void {
+        // There won't be a focus trap element if the close animation starts before open finishes
+        if (!this._focusTrapElement) {
+            return;
+        }
+
+        if (!this._focusTrap && this._focusTrapElement) {
+            this._focusTrap = this._focusTrapFactory.create(this._focusTrapElement.nativeElement);
+        }
+
+        if (this.autoFocus && this._focusTrap) {
+            this._focusTrap.focusInitialElementWhenReady();
         }
     }
 
