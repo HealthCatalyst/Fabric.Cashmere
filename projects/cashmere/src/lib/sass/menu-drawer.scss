@@ -1,4 +1,5 @@
 @import './colors';
+@import './functions';
 
 $drawer-toolbar-height: 52px;
 
@@ -11,15 +12,10 @@ $drawer-toolbar-height: 52px;
     background-color: $charcoal-blue;
     height: 100%;
     overflow-y: auto;
-    padding-right: 28px;
 }
 
 @mixin hc-menu-drawer-item-container-visible() {
     height: calc(100% - #{$drawer-toolbar-height});
-}
-
-@mixin hc-menu-drawer-item-container-right() {
-    padding: 0 0 0 28px;
 }
 
 @mixin hc-menu-drawer-toolbar-container() {
@@ -37,22 +33,34 @@ $drawer-toolbar-height: 52px;
     height: $drawer-toolbar-height;
     max-height: $drawer-toolbar-height;
     overflow: hidden;
-    padding: 15px 28px;
+    padding: 15px 28px 15px 15px;
 }
 
 @mixin hc-drawer-item() {
     color: $white;
     display: flex;
     flex-direction: row;
-    padding: 15px 0 15px 15px;
+    align-items: center;
+    padding: 15px 28px 15px 15px;
+    cursor: pointer;
     width: 100%;
 
-    &:not(:first-child) {
-        border-bottom: 1px solid #6b737b;
-        border-top: 1px solid #6b737b;
+    &:last-child hr {
+        display: none;
+    }
+
+    &:hover {
+        background-color: shade($charcoal-blue, 10%);
     }
 }
 
-@mixin hc-drawer-item-right() {
-    padding: 15px 15px 15px 0;
+@mixin hc-drawer-divider() {
+    border: none;
+    background-color: #6b737b;
+    height: 1px;
+    margin: 0 28px 0 0;
+}
+
+@mixin hc-drawer-divider-right() {
+    margin: 0 0 0 15px;
 }
