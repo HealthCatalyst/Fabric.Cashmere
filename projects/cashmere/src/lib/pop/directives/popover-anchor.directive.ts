@@ -166,11 +166,11 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     /** Handle keyboard navigation of a hcMenu using the arrow or tab keys */
     _keyEvent(event: KeyboardEvent): void {
         if (this.attachedPopover.isOpen() && this.attachedPopover._menuItems.length > 0 && !this.attachedPopover._subMenuOpen) {
-            if (event.keyCode === KEY_CODE.UP_ARROW) {
+            if (event.keyCode === KEY_CODE.UP_ARROW || (event.keyCode === KEY_CODE.TAB && event.shiftKey)) {
                 event.stopPropagation();
                 event.preventDefault();
                 this.attachedPopover._keyFocus(false);
-            } else if (event.keyCode === KEY_CODE.DOWN_ARROW || event.keyCode === KEY_CODE.TAB) {
+            } else if (event.keyCode === KEY_CODE.DOWN_ARROW || (event.keyCode === KEY_CODE.TAB && !event.shiftKey)) {
                 event.stopPropagation();
                 event.preventDefault();
                 this.attachedPopover._keyFocus(true);
@@ -184,6 +184,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
             event.stopPropagation();
             event.preventDefault();
             this.openPopover();
+            this.attachedPopover._keyFocus(true);
         }
     }
 
@@ -203,8 +204,8 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     }
 
     /** Closes the popover. */
-    closePopover(value?: any): void {
-        this._anchoring.closePopover(value);
+    closePopover(value?: any, neighborSubMenusAreOpen: boolean = false): void {
+        this._anchoring.closePopover(value, neighborSubMenusAreOpen);
     }
 
     /** Realign the popover to the anchor. */
