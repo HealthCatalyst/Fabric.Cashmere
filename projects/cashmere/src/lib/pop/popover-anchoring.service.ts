@@ -132,6 +132,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
             this._subscribeToEscape();
             this._subscribeToDetachments();
             this._saveOpenedState();
+            this._popover._savePreviouslyFocusedElement();
         }
     }
 
@@ -140,6 +141,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
         if (this._popover._componentOverlay) {
             this._saveClosedState(value);
             this._popover._componentOverlay.detach();
+            this._popover._restoreFocusAndDestroyTrap();
         }
     }
 
