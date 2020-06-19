@@ -182,6 +182,11 @@ ol {
     margin-right: 10px !important;
 }
 
+.pipe-output {
+    font-weight: 600px;
+    font-size: 22px;
+}
+
 table {
     width: 100%;
     @include fontSize(13px);
