@@ -67,6 +67,10 @@
         @include hc-checkbox-overlay-indeterminate();
     }
 
+    .hc-checkbox-indeterminate:hover & {
+        @include hc-checkbox-indeterminate-hover();
+    }
+
     .hc-checkbox-indeterminate .hc-checkbox-tight & {
         @include hc-checkbox-overlay-indeterminate-tight();
     }

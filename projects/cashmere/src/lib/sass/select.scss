@@ -60,9 +60,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     background-color: $white;
-    border: 1px solid $gray-300;
-    /* box-shadow used to add 0.5px to the border */
-    box-shadow: inset 0.5px 0.5px 0px $gray-300, inset -0.5px -0.5px 0 $gray-300;
+    border: 1px solid $slate-gray-300;
     border-radius: 0;
     color: $text;
     cursor: pointer;
@@ -80,8 +78,7 @@
 
     &[disabled] {
         background-color: $slate-gray-100;
-        border: 1px solid $gray-200;
-        box-shadow: inset 0.5px 0.5px 0px $gray-200, inset -0.5px -0.5px 0 $gray-200;
+        border: 1px solid $slate-gray-300;
         color: tint($text, 60%);
         cursor: not-allowed;
     }
@@ -98,10 +95,4 @@
 
 @mixin hc-select-input-invalid() {
     border: 1px solid $error;
-    box-shadow: inset 0.5px 0.5px 0px $error, inset -0.5px -0.5px 0 $error;
-}
-
-@mixin hc-select-border-override() {
-    border-width: 2px;
-    box-shadow: none;
 }

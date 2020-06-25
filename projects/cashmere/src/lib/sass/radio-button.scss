@@ -31,7 +31,7 @@
 
 @mixin hc-radio-overlay() {
     background-color: $white;
-    border: 2px solid $gray-300;
+    border: 1px solid $slate-gray-300;
     border-radius: 50%;
     height: 22px;
     left: 0;
@@ -64,12 +64,12 @@
 }
 
 @mixin hc-radio-overlay-hover() {
-    border-color: $primary-brand;
+    border: 2px solid $primary-brand;
 }
 
 @mixin hc-radio-overlay-checked() {
     background-color: $primary-brand;
-    border-color: $primary-brand;
+    border: 2px solid $primary-brand;
 
     &:after {
         display: block;
@@ -88,7 +88,7 @@
 
 @mixin hc-radio-overlay-checked-disabled() {
     background-color: $gray-200;
-    border-color: $gray-300;
+    border: 1px solid $gray-300;
 }
 
 @mixin hc-radio-input() {

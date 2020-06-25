@@ -137,13 +137,3 @@
 .hc-required-marker {
     @include hc-required-marker();
 }
-
-/* IE won't render borders for our inputs correctly, so default to a thicker width */
-@media all and (-ms-high-contrast:none) {
-    .hc-form-field-flex,
-    .hc-form-field-flex-inline,
-    .hc-form-field-disabled-flex,
-    .hc-form-field-input-invalid {
-        @include hc-form-field-border-override();
-    }
-}
