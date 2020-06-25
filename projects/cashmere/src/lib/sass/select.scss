@@ -78,7 +78,7 @@
 
     &[disabled] {
         background-color: $slate-gray-100;
-        border: 1px solid $slate-gray-300;
+        border: 1px solid $gray-200;
         color: tint($text, 60%);
         cursor: not-allowed;
     }
