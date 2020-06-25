@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated Dec 6, 2019
+###### Last updated Jun 25, 2020
 
 :::
 
@@ -8,17 +8,19 @@
 
 Registered Marks (currently in use) – **Apply ®**:
 
+-   CAFÉ (not in use)
+-   [[FLAME]](https://cashmere.healthcatalyst.net/styles/logo) Design Mark
 -   HEALTH CATALYST _(only when followed by a product or services description; when you are just referring to the company/entity, do not use ®)_
 -   HAS
 -   HEALTHCARE QUALITY CATALYST _(not in use)_
 -   HEALTHCATALYST
--   IGNITE CHANGE
--   INXX
+-   IGNITE CHANGE (minimal use)
+-	KNOWLEDGE EDGE (not in use)
+-	KNOWLEDGEEDGE (not in use)
 -   LEADING WISELY
--   Tri-flame Design Mark _(see [Logo page](https://cashmere.healthcatalyst.net/styles/logo))_
+-   MBL – **Abandon**
 -   MEDICITY _(still using, not rebranding the website)_
--   CAFE _(although this has been renamed "Touchstone" - see below)_
--   MBL _(no longer in use)_
+-	TOUCHSTONE
 
 :::
 
@@ -27,26 +29,26 @@ Registered Marks (currently in use) – **Apply ®**:
 ##### Unregistered Marks
 
 Unregistered Marks (currently in use, examples) – **Apply ™** symbol:
+_The ™ symbol can be applied to any unregistered trademark_
 
--   AUGI _(that's an "i")_
 -   CATALYST.AI
 -   CLOSED-LOOP ANALYTICS
 -   CORUS
+-   DATA SCIENCE MATURITY MODEL
 -   DOS
--   DOS MART and DOS MARTS
--   EVENTALYTICS
+-   DOS MART and DOS MARTS – **Use with ™ symbol, don’t register**
+-   HEALTHCARE.AI
 -   HEALTHCATALYST.AI
 -   HEALTHCARE ANALYTICS SUMMIT
 -   HEALTH CATALYST UNIVERSITY
--   IGNITE OUTCOMES
--   IGNITE OUTCOMES IMPROVEMENT
+-   IGNITE OUTCOMES – **Abandon application**
+-   IGNITE OUTCOMES IMPROVEMENT – **Monitor use to determine if we want to apply for registration**
 -   LATE-BINDING
--   MONITOR _(Patient Safety Monitor(™) Suite: xx Module)_
--   POPULATION BUILDER
--   POPULATION HEALTH FOUNDATIONS SOLUTION
+-   PATIENT SAFETY MONITOR
+-   POPULATION BUILDER – **Apply to register**
+-   POPULATION HEALTH FOUNDATIONS SOLUTION – **Consider clearance search for registration – DO**
 -   RAPID RESPONSE ANALYTICS SOLUTION
--   THE HEALTH CATALYST AWARDS
--   TOUCHSTONE
+-   THE CATALYST AWARDS
 
 :::
 
@@ -60,8 +62,8 @@ If any trademark (®/™) used above appears multiple times on a page or in a do
 
 Do not use trademarked terms as nouns—only use as an adjective. For example:
 
--   **Yes:** The HAS™ conference… or The CORUS™ Suite
--   **No:** HAS™ is an awesome conference. CORUS™ is more than some outdated cost system.
+-   **Yes:** The HAS® conference… or The CORUS™ Suite
+-   **No:** HAS® is an awesome conference. CORUS™ is more than some outdated cost system.
 
 &nbsp;
 
@@ -76,5 +78,13 @@ Never alter a trademark. Do not make it possessive. Do not add prefixes, hyphens
 
 -   **Yes:** The reliability of Health Catalyst® services means that health systems can count on…
 -   **No:** Health Catalyst’s service and reliability means that health systems can count on…
+
+&nbsp;
+
+For the registered marks, use the ® (R in the circle) superscript symbol on the mark, which indicates that it is federally registered.
+
+For the unregistered marks, use the TM superscript symbol, which helps to establish rights in the marks and can be used whether or not they are registered (no approval needed).
+
+Use the superscript symbols on logos, whenever they appear.
 
 :::
