@@ -49,6 +49,11 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     @Input()
     indeterminate: boolean;
 
+    /** If true, the checkbox is for display purposes (not user interaction). As such its checked/unchecked state
+     * can only be controlled programatically. Useful for embedding in an ng-select typeahead */
+    @Input()
+    isStub = false;
+
     /** Unique id for the checkbox element. If none is supplied, one will be auto-generated. */
     @Input()
     get id(): string {

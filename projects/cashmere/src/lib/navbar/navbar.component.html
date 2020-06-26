@@ -25,7 +25,7 @@
     <div #rightcontainer class="hc-navbar-right-container">
         <ng-content></ng-content>
     </div>
-    <div class="hc-navbar-mobile-menu" (click)="_toggleMobileMenu()">
+    <div class="hc-navbar-mobile-menu" *ngIf="_mobileMenu.first" (click)="_toggleMobileMenu()">
         <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
     </div>
 </nav>

@@ -55,6 +55,7 @@ const docs: DocItem[] = [
     },
     {id: 'ellipsis-pipe', name: 'Ellipsis', category: 'pipes', usageDoc: true, hideApi: true, examples: ['ellipsis-overview']},
     {id: 'file-size-pipe', name: 'File Size', category: 'pipes', usageDoc: true, hideApi: true, examples: ['file-size-overview']},
+    {id: 'number-abbreviator-pipe', name: 'Number Abbreviator', category: 'pipes', usageDoc: true, hideApi: true, examples: ['number-abbreviator-overview']},
     {
         id: 'form-field',
         name: 'Form Field',
@@ -80,7 +81,14 @@ const docs: DocItem[] = [
         examples: ['navbar-overview', 'navbar-app-switcher'],
         usageDoc: true
     },
-    { id: 'multiselect', name: 'Multiselect & Typeahead', category: 'forms', hideApi: true, usageDoc: true, examples: ['multiselect-overview'] },
+    {
+        id: 'multiselect',
+        name: 'Multiselect & Typeahead',
+        category: 'forms',
+        hideApi: true,
+        usageDoc: true,
+        examples: ['multiselect-overview', 'multiselect-custom-templates', 'multiselect-embed-checkbox']
+    },
     {
         id: 'pagination',
         name: 'Pagination',

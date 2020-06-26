@@ -140,14 +140,12 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     }
 
     _toggleMobileMenu() {
-        if (this._mobileMenu.first) {
-            if (this._menuOpen) {
-                this._mobileMenu.first.hide();
-                this._menuOpen = false;
-            } else {
-                this._mobileMenu.first.show();
-                this._menuOpen = true;
-            }
+        if (this._menuOpen) {
+            this._mobileMenu.first.hide();
+            this._menuOpen = false;
+        } else {
+            this._mobileMenu.first.show();
+            this._menuOpen = true;
         }
     }
 

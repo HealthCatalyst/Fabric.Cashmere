@@ -35,6 +35,11 @@
     </hc-navbar-mobile-menu>
 </hc-navbar>
 
+<br>
+
+<p><em><strong>Note:</strong> the code for this example demonstrates how to setup a mobile menu in the navbar, however
+    its display has been disabled here to prevent it from colliding with the Cashmere site navigation.</em></p>
+
 <hc-pop #appSwitcher [showArrow]="false" horizontalAlign="end">
     <hc-app-switcher [serviceName]="currentAppName" [serviceVersion]="currentAppVersion"></hc-app-switcher>
 </hc-pop>
@@ -56,6 +61,10 @@
         <a hcMenuItem href="http://example.com" target="_blank">
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bullhorn"></hc-icon>
             <span hcMenuText>Find out what's new</span>
+        </a>
+        <a hcMenuItem href="http://example.com" target="_blank">
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bug"></hc-icon>
+            <span hcMenuText>Report an issue</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-comments"></hc-icon>
