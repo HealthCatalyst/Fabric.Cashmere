@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PlatformModule} from '@angular/cdk/platform';
 import {CommonModule} from '@angular/common';
 import {NativeDateAdapter, DateAdapter} from '@healthcatalyst/cashmere';
@@ -14,7 +14,7 @@ export class SugarDateAdapter extends NativeDateAdapter {
 }
 
 @NgModule({
-    imports: [PlatformModule, CommonModule, CashmereModule, FormsModule],
+    imports: [PlatformModule, CommonModule, CashmereModule, FormsModule, ReactiveFormsModule],
     declarations: [DatepickerSugarExampleComponent],
     exports: [DatepickerSugarExampleComponent],
     providers: [{provide: DateAdapter, useClass: SugarDateAdapter}],
