@@ -22,13 +22,4 @@ export class BannerOverviewExampleComponent {
     showBanner() {
         this.bannerHide = false;
     }
-
-    // get bannerType(): string {
-    //     return this._bannerType.value;
-    // }
-
-    // set bannerType(typeVal: string) {
-    //     // this._bannerType.value = typeVal;
-    //     this.bannerHide = false;
-    // }
 }
