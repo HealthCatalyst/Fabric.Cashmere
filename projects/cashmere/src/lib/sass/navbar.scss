@@ -110,8 +110,8 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         color: $navbar-text;
         background-color: darken($navbar-color, 5%);
     }
-    &.active:not(.inactive),
-    &:active {
+    &:active:not(.inactive),
+    &.active {
         color: $navbar-text;
         font-weight: 600;
         border-bottom: 5px solid $navbar-brand;
