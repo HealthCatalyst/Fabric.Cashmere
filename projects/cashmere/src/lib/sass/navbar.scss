@@ -5,7 +5,8 @@
 $navbar-color: $charcoal-blue !default;
 $navbar-brand: $primary-brand !default;
 $navbar-height: 53px !default;
-$navbar-app-padding: 0 50px 0 25px !default;
+$navbar-app-padding-left: 25px !default;
+$navbar-app-padding-right: 50px !default;
 $navbar-text: $white !default;
 $navbar-text-inactive: $gray-300 !default;
 $navbar-fixed-shadow: 0px 2px 6px $shadow;
@@ -29,8 +30,6 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 
 @mixin navbar-brand {
     background-color: $navbar-brand;
-    min-width: 55px;
-    width: 55px;
     flex-basis: auto;
     height: 100%;
     display: flex;
@@ -51,6 +50,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         align-items: center;
         height: 100%;
         cursor: default;
+        min-width: 55px;
     }
 
     @include media-breakpoint-down(sm) {
@@ -60,12 +60,13 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 
 @mixin navbar-app {
     height: 100%;
-    padding: $navbar-app-padding;
+    padding-left: $navbar-app-padding-left;
 
     a {
         display: flex;
         align-items: center;
         justify-content: center;
+        padding-right: $navbar-app-padding-right;
         height: 100%;
 
         img {
@@ -109,8 +110,8 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         color: $navbar-text;
         background-color: darken($navbar-color, 5%);
     }
-    &.active:not(.inactive),
-    &:active {
+    &:active:not(.inactive),
+    &.active {
         color: $navbar-text;
         font-weight: 600;
         border-bottom: 5px solid $navbar-brand;
