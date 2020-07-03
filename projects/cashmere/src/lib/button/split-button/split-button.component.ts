@@ -13,6 +13,8 @@ import {parseBooleanAttribute} from '../../util';
 import {validateStyleInput, validateSizeInput, ButtonComponent} from '../button.component';
 import {HcPopComponent} from '../../pop/popover.component';
 
+const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
+
 /** SplitButton click event */
 export class SplitButtonClickEvent {
     constructor(public source: SplitButtonComponent) {}
@@ -89,7 +91,9 @@ export class SplitButtonComponent {
         this.buttonStyle = btnStyle;
     }
 
-    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'` */
+    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' |
+     * 'neutral' | 'secondary' | 'minimal'`. If needed, colors from
+     * the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc) */
     @Input()
     get buttonStyle(): string {
         return this._style;
@@ -97,6 +101,9 @@ export class SplitButtonComponent {
 
     set buttonStyle(btnStyle: string) {
         validateStyleInput(btnStyle);
+        if ( supportedStyles.indexOf(btnStyle) < 0 ) {
+            btnStyle = "button-" + btnStyle;
+        }
         this._style = btnStyle;
     }
 
