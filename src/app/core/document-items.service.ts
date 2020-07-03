@@ -25,7 +25,7 @@ const docs: DocItem[] = [
         name: 'Button',
         category: 'buttons',
         usageDoc: true,
-        examples: ['button-type', 'button-split', 'button-size', 'button-anchor', 'button-link', 'button-icon']
+        examples: ['button-type', 'button-split', 'button-size', 'button-anchor', 'button-link', 'button-icon', 'button-colors']
     },
     {
         id: 'chip',
