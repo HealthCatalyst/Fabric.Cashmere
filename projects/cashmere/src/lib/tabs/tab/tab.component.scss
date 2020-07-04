@@ -2,6 +2,11 @@
 
 .hc-tab {
     @include hc-tab();
+
+    // tabs have an anchor element embedded, but we want the user to focus on the parent tab rather than the achor
+    a:focus {
+        @include hc-tab-embedded-anchor-focus();
+    }
 }
 
 .hc-tab-vertical {

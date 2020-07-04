@@ -93,6 +93,10 @@ $modal-border: 1px solid $gray-200;
     padding: $modal-padding;
 }
 
+@mixin hc-modal-button-footer() {
+    margin-left: 10px;
+}
+
 @mixin hc-modal-content() {
     background-color: $white;
     border-radius: 6px;

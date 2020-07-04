@@ -26,6 +26,11 @@
     }
 }
 
+@mixin hc-scroll-nav-link-focus {
+    outline: none;
+    box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
+}
+
 @mixin hc-scroll-nav-link-active() {
     &,
     &:hover {
