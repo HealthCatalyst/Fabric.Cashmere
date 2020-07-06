@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 /**
  * @title Multiselect overview
@@ -9,12 +10,11 @@ import {Component} from '@angular/core';
     styleUrls: ['multiselect-overview-example.component.scss']
 })
 export class MultiselectOverviewExampleComponent {
-    cities = ["Philadelphia", "Atlanta", "Salt Lake City", "Chicago", "Orlando"];
-    selectedCities = [];
+    cities = ['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando'];
+    readonly selectedCitiesControl = new FormControl([]);
+    multiselectGroup = new FormGroup({
+        selectedCitiesControl: this.selectedCitiesControl
+    });
     selectedCareTeamRoles = [];
-    careTeamRoles = [
-      {name: "group 1"},
-      {name: "group 2"},
-      {name: "group 3"},
-    ];
+    careTeamRoles = [{name: 'group 1'}, {name: 'group 2'}, {name: 'group 3'}];
 }
