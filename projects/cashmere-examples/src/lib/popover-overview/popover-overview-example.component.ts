@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
 
 /**
  * @title Popover Overview
@@ -9,14 +10,14 @@ import {Component} from '@angular/core';
     styleUrls: ['popover-overview-example.component.scss']
 })
 export class PopoverOverviewExampleComponent {
-    public scrollStrat = 'reposition';
-    public hAlign = 'center';
-    public vAlign = 'below';
-    public popText = 'NIFTY!!';
-    public trig = 'click';
-    public shouldAnimate = true;
-    public clickAway = true;
-    public showArrow = true;
-    public forceAlignment = false;
-    public lockAlignment = false;
+    readonly hAlignControl = new FormControl('center');
+    readonly vAlignControl = new FormControl('below');
+    readonly scrollStratControl = new FormControl('reposition');
+    readonly trigControl = new FormControl('click');
+    readonly popTextControl = new FormControl('NIFTY');
+    readonly shouldAnimateControl = new FormControl(true);
+    readonly clickAwayControl = new FormControl(true);
+    readonly showArrowControl = new FormControl(true);
+    readonly forceAlignmentControl = new FormControl(false);
+    readonly lockAlignmentControl = new FormControl(false);
 }
