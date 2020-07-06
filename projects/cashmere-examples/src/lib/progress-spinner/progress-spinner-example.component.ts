@@ -10,12 +10,6 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['progress-spinner-example.component.scss']
 })
 export class ProgressSpinnerExampleComponent {
-    // spinnerIsDeterminate = false;
-    // spinnerProgress = 25;
-    // spinnerColor = 'blue';
-    // spinnerDiameter = 50;
-    // spinnerHasChannel = true;
-    // spinnerCentered = true;
     readonly spinnerIsDeterminate = new FormControl(false);
     readonly spinnerProgress = new FormControl(25);
     readonly spinnerColor = new FormControl('blue');
