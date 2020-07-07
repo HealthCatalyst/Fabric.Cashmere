@@ -18,8 +18,7 @@
 
     @-moz-document url-prefix() {
         select:focus {
-            outline: $gray-500 dotted 1px;
-            outline-offset: -3px;
+            outline: 0
         }
     }
 }

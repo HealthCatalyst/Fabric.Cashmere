@@ -67,6 +67,11 @@ $btn-icon-sz: 18px;
         background-image: none;
         outline: none;
     }
+
+    // Remove Firefox's active state dotted outline b/c we have our own highlight
+    &::-moz-focus-inner {
+        border:0;
+    }
 }
 
 @mixin hc-button-sm() {
@@ -211,7 +216,7 @@ $btn-icon-sz: 18px;
     height: 35px;
     width: 35px;
     line-height: 35px;
-    border-radius: 50%;
+    border-radius: 5px;
     outline: none;
     border: none;
     margin: 0;
@@ -227,6 +232,11 @@ $btn-icon-sz: 18px;
     &:focus {
         outline: none;
         box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
+    }
+
+    // Remove Firefox's active state dotted outline b/c we have our own highlight
+    &::-moz-focus-inner {
+        border:0;
     }
 }
 
