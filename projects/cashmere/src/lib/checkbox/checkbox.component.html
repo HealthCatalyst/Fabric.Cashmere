@@ -5,7 +5,6 @@
                [id]="_inputId"
                [attr.value]="value"
                [attr.name]="name"
-               [tabIndex]="tabIndex"
                [indeterminate]="indeterminate"
                [disabled]="disabled"
                [required]="required"
@@ -13,7 +12,7 @@
                (change)="_stopChangeEvent($event)"
                (click)="_clickEvent($event)"
                (blur)="_onBlur()"/>
-        <label class="hc-checkbox-overlay" [attr.for]="_inputId"></label>
+        <label class="hc-checkbox-overlay" [attr.for]="_inputId" [tabIndex]="tabIndex" (keydown.space)="_clickEvent($event); $event.preventDefault();"></label>
         <label class="hc-checkbox-label" [ngClass]="'hc-checkbox-align-label-'+align" [attr.for]="_inputId">
             <ng-content></ng-content>
         </label>

@@ -13,6 +13,10 @@ $btn-icon-sz: 18px;
     color: $white;
     background-color: $color;
 
+    &:focus {
+        background-color: shade($color, $darken-pct * 2);
+        box-shadow: 0 0 0 3px transparentize($color, 0.6);
+    }
     &:hover {
         background-color: shade($color, $darken-pct);
         color: $white;
@@ -21,6 +25,7 @@ $btn-icon-sz: 18px;
         background-color: shade($color, $darken-pct * 2);
         color: $white;
     }
+
     &[disabled],
     &[disabled]:hover,
     &[disabled]:focus,
@@ -53,13 +58,19 @@ $btn-icon-sz: 18px;
     }
 
     &:focus {
-        outline: 5px auto -webkit-focus-ring-color;
-        outline-offset: -2px;
+        outline: none;
+        border-bottom: none;
+        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
     }
 
     &:active {
         background-image: none;
         outline: none;
+    }
+
+    // Remove Firefox's active state dotted outline b/c we have our own highlight
+    &::-moz-focus-inner {
+        border:0;
     }
 }
 
@@ -109,6 +120,9 @@ $btn-icon-sz: 18px;
 
     &:hover {
         color: $offblack;
+    }
+    &:focus {
+        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
     }
     &[disabled]:hover {
         color: $gray-600;
@@ -186,6 +200,12 @@ $btn-icon-sz: 18px;
     vertical-align: inherit;
     font-family: inherit;
     border: none;
+
+    &:focus {
+        outline: none;
+        border-radius: 0;
+        box-shadow: 0px 2px 0 0px $primary-brand;
+    }
 }
 
 // Icon button
@@ -196,7 +216,7 @@ $btn-icon-sz: 18px;
     height: 35px;
     width: 35px;
     line-height: 35px;
-    border-radius: 50%;
+    border-radius: 5px;
     outline: none;
     border: none;
     margin: 0;
@@ -205,8 +225,19 @@ $btn-icon-sz: 18px;
     text-decoration: none;
     cursor: pointer;
     white-space: nowrap;
-    text-align: center;
-    vertical-align: baseline;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
+    }
+
+    // Remove Firefox's active state dotted outline b/c we have our own highlight
+    &::-moz-focus-inner {
+        border:0;
+    }
 }
 
 // Split button
