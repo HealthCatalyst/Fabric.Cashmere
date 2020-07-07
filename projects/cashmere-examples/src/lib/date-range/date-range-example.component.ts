@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {DateRangeOptions, PresetItem, DateRange} from '@healthcatalyst/cashmere';
+import {FormControl} from '@angular/forms';
 
 @Component({
     selector: 'hc-date-range-example',
@@ -10,6 +11,7 @@ export class DateRangeExampleComponent implements OnInit {
     range: DateRange = {fromDate: new Date(), toDate: new Date()};
     selected: number | DateRange = this.range;
     options: DateRangeOptions;
+    optionsControl = new FormControl(false);
     presets: Array<PresetItem> = [];
     presetSelection: string = 'None';
 
@@ -28,6 +30,10 @@ export class DateRangeExampleComponent implements OnInit {
             fromMinMax: {fromDate: fromMin, toDate: fromMax},
             toMinMax: {fromDate: toMin, toDate: toMax}
         };
+
+        this.optionsControl.valueChanges.subscribe(value => {
+            this.options.excludeWeekends = value;
+        });
     }
 
     updateRange(range: DateRange) {

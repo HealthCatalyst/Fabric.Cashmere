@@ -1,5 +1,5 @@
 <h6>Output:</h6>
-<div class="pipe-output">{{ bytes | fileSize: precision }}</div>
+<div class="pipe-output">{{ bytes.value | fileSize: precision.value }}</div>
 
 <hr>
 
@@ -7,9 +7,9 @@
 
 <hc-form-field>
     <hc-label>Number of bytes</hc-label>
-    <input hcInput type="number" [(ngModel)]="bytes" />
+    <input hcInput type="number" [formControl]="bytes" />
 </hc-form-field>
 <hc-form-field>
     <hc-label>Precision</hc-label>
-    <input hcInput type="number" [(ngModel)]="precision" />
+    <input hcInput type="number" [formControl]="precision" />
 </hc-form-field>
