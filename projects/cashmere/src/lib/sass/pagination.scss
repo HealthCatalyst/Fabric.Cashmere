@@ -124,22 +124,6 @@
     width: 11px;
 }
 
-@mixin hc-page-button-expanded() {
-    display: block;
-
-    @include media-breakpoint-down(md) {
-        display: none;
-    }
-}
-
-@mixin hc-page-button-collapsed() {
-    display: none;
-
-    @include media-breakpoint-down(md) {
-        display: block;
-    }
-}
-
 @mixin hc-page-load-more-button() {
     display: block;
     margin: 20px auto;

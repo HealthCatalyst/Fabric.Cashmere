@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
 
 /**
  * @title Inline Radio Buttons using Form Controls
@@ -8,10 +9,10 @@ import {Component} from '@angular/core';
     templateUrl: 'radio-button-forms-example.component.html'
 })
 export class RadioButtonFormsExampleComponent {
-    favoriteShow: string | null = 'Silicon Valley';
     shows = ['Silicon Valley', 'Game of Thrones', 'Better Call Saul'];
+    readonly favoriteShowControl = new FormControl('Silicon Valley');
 
     reset(): void {
-        this.favoriteShow = null;
+        this.favoriteShowControl.setValue(null);
     }
 }

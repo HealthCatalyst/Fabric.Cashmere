@@ -1,5 +1,6 @@
 <ng-container *ngIf="_direction">
     <a
+        tabIndex="-1"
         *ngIf="routerLink; else tabWithoutRouting"
         class="hc-tab-{{ _direction }} hc-text-ellipsis"
         [class.hc-tab-tight]="_tight"
@@ -16,6 +17,7 @@
 </ng-container>
 <ng-template #tabWithoutRouting>
     <a
+        tabIndex="-1"
         class="hc-tab-{{ _direction }} hc-text-ellipsis"
         [class.hc-tab-tight]="_tight"
         [class.active]="_active"

@@ -4,6 +4,15 @@
 
 @mixin hc-tab() {
     min-width: 0;
+
+    &:focus {
+        outline: none;
+
+        a {
+            outline: 2px solid transparentize($primary-brand, 0.6);
+            outline-offset: -2px;
+        }
+    }
 }
 
 @mixin hc-tab-vertical() {
@@ -16,6 +25,11 @@
     &:hover {
         cursor: pointer;
     }
+}
+
+@mixin hc-tab-embedded-anchor-focus() {
+    box-shadow: none;
+    outline: none;
 }
 
 @mixin hc-tab-vertical-active() {

@@ -1,12 +1,11 @@
-
 <h6>Output:</h6>
-<div class="pipe-output">{{ value | ifNullOrEmpty: 'alternate value' }}</div>
+<div class="pipe-output">{{ valueControl.value | ifNullOrEmpty: 'alternate value' }}</div>
 
-<hr>
+<hr />
 
 <h6>Inputs:</h6>
 
 <hc-form-field>
     <hc-label>Value:</hc-label>
-    <input hcInput [(ngModel)]="value">
+    <input hcInput [formControl]="valueControl" />
 </hc-form-field>

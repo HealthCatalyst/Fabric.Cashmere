@@ -1,18 +1,18 @@
 <h6>Output:</h6>
-<div class="pipe-output">{{ number | abbreviateNumber: decimalPoints: threshold }}</div>
+<div class="pipe-output">{{ number.value | abbreviateNumber: decimalPoints.value:threshold.value }}</div>
 
-<hr>
+<hr />
 
 <h6>Inputs:</h6>
 <hc-form-field>
     <hc-label>Number</hc-label>
-    <input hcInput type="number" [(ngModel)]="number" />
+    <input hcInput type="number" [formControl]="number" />
 </hc-form-field>
 <hc-form-field>
     <hc-label>Decimal Points</hc-label>
-    <input hcInput type="number" [(ngModel)]="decimalPoints" />
+    <input hcInput type="number" [formControl]="decimalPoints" />
 </hc-form-field>
 <hc-form-field>
     <hc-label>Threshold</hc-label>
-    <input hcInput type="number" [(ngModel)]="threshold" />
+    <input hcInput type="number" [formControl]="threshold" />
 </hc-form-field>

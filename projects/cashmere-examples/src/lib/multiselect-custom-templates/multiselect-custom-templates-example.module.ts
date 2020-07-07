@@ -3,10 +3,10 @@ import {MultiselectCustomTemplatesExampleComponent} from './multiselect-custom-t
 import {CashmereModule} from '../cashmere.module';
 import {CommonModule} from '@angular/common';
 import {NgSelectModule} from '@ng-select/ng-select';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
-    imports: [CommonModule, CashmereModule, FormsModule, NgSelectModule],
+    imports: [CommonModule, CashmereModule, FormsModule, NgSelectModule, ReactiveFormsModule],
     declarations: [MultiselectCustomTemplatesExampleComponent],
     exports: [MultiselectCustomTemplatesExampleComponent],
     entryComponents: [MultiselectCustomTemplatesExampleComponent]
