@@ -56,6 +56,18 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     background: $white;
 }
 
+@mixin hc-form-field-flex-hover() {
+    border: 1px solid $primary-brand;
+    background-color: tint($blue, 95%);
+}
+
+@mixin hc-form-field-flex-focus() {
+    border: 1px solid $primary-brand;
+    background-color: $white;
+    box-shadow: 0 0 3px $primary-brand;
+    outline: none;
+}
+
 @mixin hc-form-field-flex-inline() {
     display: inline-flex;
     align-items: center;
@@ -74,6 +86,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
 @mixin hc-form-field-input-invalid() {
     border: 1px solid $error;
+}
+
+@mixin hc-form-field-input-invalid-focus() {
+    box-shadow: 0 0 3px $error;
 }
 
 @mixin hc-form-field-non-input() {

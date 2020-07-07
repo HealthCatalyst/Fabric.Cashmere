@@ -67,10 +67,6 @@
         @include hc-checkbox-overlay-indeterminate();
     }
 
-    .hc-checkbox-indeterminate:hover & {
-        @include hc-checkbox-indeterminate-hover();
-    }
-
     .hc-checkbox-indeterminate .hc-checkbox-tight & {
         @include hc-checkbox-overlay-indeterminate-tight();
     }
@@ -82,13 +78,27 @@
     .hc-checkbox-disabled input[type=checkbox] + & {
         @include hc-checkbox-overlay-disabled();
     }
+
+    &:focus {
+        @include hc-checkbox-overlay-focus();
+    }
 }
 
 .hc-form-field-invalid {
     .hc-checkbox-overlay {
         @include hc-checkbox-invalid();
+
+        &:focus {
+            @include hc-checkbox-overlay-focus-invalid();
+        }
+    }
+
+    input[type='checkbox']:checked + .hc-checkbox-overlay {
+        @include hc-checkbox-overlay-checked-invalid();
     }
 }
+
+
 
 .hc-checkbox-stub {
     .hc-checkbox-label, .hc-checkbox-overlay {

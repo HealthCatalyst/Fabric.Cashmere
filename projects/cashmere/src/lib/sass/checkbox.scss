@@ -2,7 +2,6 @@
 @import './functions';
 
 @mixin hc-checkbox-container() {
-    overflow: hidden;
     display: flex;
 }
 
@@ -106,14 +105,17 @@
 }
 
 @mixin hc-checkbox-overlay-hover() {
-    border: 2px solid $primary-brand;
+    border: 1px solid $primary-brand;
+    background-color: tint($blue, 95%);
 }
 
-@mixin hc-checkbox-indeterminate-hover() {
-    &:after {
-        top: 3px;
-        left: 3px;
-    }
+@mixin hc-checkbox-overlay-focus() {
+    outline: none;
+    box-shadow: 0 0 5px $primary-brand;
+}
+
+@mixin hc-checkbox-overlay-focus-invalid() {
+    box-shadow: 0 0 5px $error;
 }
 
 @mixin hc-checkbox-overlay-checked() {
@@ -149,6 +151,10 @@
 
 @mixin hc-checkbox-invalid() {
     border-color: $error !important;
+}
+
+@mixin hc-checkbox-overlay-checked-invalid() {
+    background-color: $error;
 }
 
 @mixin hc-checkbox-stubbed() {

@@ -1,4 +1,4 @@
-import {Component, Input, ContentChildren, QueryList, AfterContentInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, Input, ContentChildren, QueryList, AfterContentInit, Output, ViewEncapsulation, HostBinding, HostListener} from '@angular/core';
 import {EventEmitter, TemplateRef, ViewChild} from '@angular/core';
 import {HcTabTitleComponent} from './tab-title.component';
 import {Params} from '@angular/router';
@@ -33,6 +33,9 @@ export class TabComponent implements AfterContentInit {
     @Output()
     tabClick: EventEmitter<Event> = new EventEmitter();
 
+    @HostBinding('attr.tabindex')
+    _hostIndex = 0;
+
     /** The template to be used when this tab is selected. Defaults to the content of this tab component.
      * Not used when the tab set uses routing. */
     @ViewChild('tabContent', {static: false})
@@ -52,7 +55,11 @@ export class TabComponent implements AfterContentInit {
         }
     }
 
-    tabClickHandler(event: MouseEvent) {
+    @HostListener('keydown.enter', ['$event']) _onEnter($event) {
+        this.tabClickHandler($event);
+    }
+
+    tabClickHandler(event: Event) {
         // Prevent a tab anchor click from also calling the router on the host element
         event.preventDefault();
         event.stopPropagation();

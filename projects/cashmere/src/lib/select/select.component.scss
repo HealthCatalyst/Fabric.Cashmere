@@ -23,8 +23,20 @@
 .hc-select-input {
     @include hc-select-input();
 
+    &:hover {
+        @include hc-select-input-hover();
+    }
+
+    &:focus {
+        @include hc-select-input-focus();
+    }
+
     .hc-form-field-invalid & {
         @include hc-select-input-invalid();
+
+        &:focus {
+            @include hc-select-input-invalid-focus();
+        }
     }
 
     .hc-select-tight & {

@@ -84,6 +84,18 @@
     }
 }
 
+@mixin hc-select-input-hover() {
+    border: 1px solid $primary-brand;
+    background-color: tint($primary-brand, 95%);
+}
+
+@mixin hc-select-input-focus() {
+    border: 1px solid $primary-brand;
+    background-color: $white;
+    box-shadow: 0 0 3px $primary-brand;
+    outline: none;
+}
+
 @mixin hc-select-input-tight() {
     @include fontSize(13px);
     height: 28px;
@@ -95,4 +107,8 @@
 
 @mixin hc-select-input-invalid() {
     border: 1px solid $error;
+}
+
+@mixin hc-select-input-invalid-focus() {
+    box-shadow: 0 0 3px $error;
 }
