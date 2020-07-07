@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated Jun 25, 2020
+###### Last updated Jul 1, 2020
 
 :::
 
@@ -34,7 +34,7 @@ _The ™ symbol can be applied to any unregistered trademark_
 -   CATALYST.AI
 -   CLOSED-LOOP ANALYTICS
 -   CORUS
--   DATA SCIENCE MATURITY MODEL
+-   DATA SCIENCE ADOPTION MODEL
 -   DOS
 -   DOS MART and DOS MARTS – **Use with ™ symbol, don’t register**
 -   HEALTHCARE.AI

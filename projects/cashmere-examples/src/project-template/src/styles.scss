@@ -15,6 +15,10 @@ $hc-icons-font-path: 'node_modules/@healthcatalyst/cashmere/hcicons';
     margin-right: 10px !important;
 }
 
+hc-example-viewer .hc-tab-content-horizontal {
+    padding: 3px;
+}
+
 .pipe-output {
     font-weight: 600px;
     font-size: 22px;

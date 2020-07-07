@@ -12,6 +12,7 @@ export class PaginationSimpleExampleComponent {
     pageNumberControl = new FormControl(8);
     pageSizeControl = new FormControl(100);
     totalItemsControl = new FormControl(1000);
+    widthControl = new FormControl('lg');
 
     get pageNumber() {
         return this.pageNumberControl.value;

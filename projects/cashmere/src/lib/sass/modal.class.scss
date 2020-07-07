@@ -14,6 +14,10 @@
 
 .hc-modal-footer {
     @include hc-modal-footer();
+
+    .hc-button {
+        @include hc-modal-button-footer();
+    }
 }
 
 .hc-modal-content {

@@ -10,6 +10,10 @@
 
 .hc-scroll-nav-link {
     @include hc-scroll-nav-links();
+
+    &:focus {
+        @include hc-scroll-nav-link-focus();
+    }
 }
 
 .hc-scroll-nav-link-active {

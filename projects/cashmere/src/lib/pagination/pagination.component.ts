@@ -29,6 +29,11 @@ export class PaginationComponent extends BasePaginationComponent implements OnIn
     /** Displayed set of page size options. Will be sorted and include current page size. */
     _displayedPageSizeOptions: number[] = [];
 
+    /** Sets the controller to a specific width type - `lg`, `md`, or `sm`. Typically adjusted in a window
+     * resize listener for responsive layouts. *Defaults to lg.* */
+    @Input()
+    displayWidth: 'lg' | 'md' | 'sm' = 'lg';
+
     /** Whether to hide the page size selection UI from the user. *Defaults to false.* */
     @Input()
     get hidePageSize(): boolean {
