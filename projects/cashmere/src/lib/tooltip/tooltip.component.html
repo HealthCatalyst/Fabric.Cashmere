@@ -1,0 +1,10 @@
+<span
+    [hcPop]="tooltip"
+    trigger="hover"
+    [ngClass]="{'hc-tooltip-underline': underline}">
+    <ng-content></ng-content>
+</span>
+
+<hc-pop #tooltip verticalAlign="above" [disableStyle]="true">
+    <div class="hc-tooltip">{{title}}</div>
+</hc-pop>

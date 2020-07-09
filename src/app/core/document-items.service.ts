@@ -101,7 +101,7 @@ const docs: DocItem[] = [
         id: 'pop',
         name: 'Popover',
         category: 'popups',
-        examples: ['popover-simple', 'popover-menu', 'popover-tooltip', 'popover-right-click', 'popover-overview'],
+        examples: ['popover-simple', 'popover-menu', 'popover-right-click', 'popover-overview'],
         usageDoc: true
     },
     {
@@ -149,6 +149,7 @@ const docs: DocItem[] = [
     },
     {id: 'tile', name: 'Tile', category: 'layout', examples: ['tile-overview']},
     {id: 'toaster', name: 'Toaster Messages', category: 'popups', examples: ['toaster-overview']},
+    {id: 'tooltip', name: 'Tooltip', category: 'popups', examples: ['tooltip-overview']},
     {
         id: 'typeform-survey',
         name: 'Typeform Survey',
