@@ -50,8 +50,7 @@
 @mixin hc-checkbox-label() {
     padding: 4px 0 4px 34px;
     line-height: 1.5;
-    position: relative;
-    left: -22px;
+    margin-left: -22px;
 }
 
 @mixin hc-checkbox-label-tight() {
