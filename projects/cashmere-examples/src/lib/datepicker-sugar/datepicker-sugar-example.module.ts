@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PlatformModule} from '@angular/cdk/platform';
 import {CommonModule} from '@angular/common';
@@ -7,6 +7,7 @@ import {DatepickerSugarExampleComponent} from './datepicker-sugar-example.compon
 import {CashmereModule} from '../cashmere.module';
 import * as sugar from 'sugar';
 
+@Injectable()
 export class SugarDateAdapter extends NativeDateAdapter {
     parse(value: any): Date | null {
         return sugar.Date.create(value);

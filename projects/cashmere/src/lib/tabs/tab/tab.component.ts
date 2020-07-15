@@ -38,7 +38,7 @@ export class TabComponent implements AfterContentInit {
 
     /** The template to be used when this tab is selected. Defaults to the content of this tab component.
      * Not used when the tab set uses routing. */
-    @ViewChild('tabContent', {static: false})
+    @ViewChild('tabContent')
     tabContent: TemplateRef<any>;
 
     _direction: string;

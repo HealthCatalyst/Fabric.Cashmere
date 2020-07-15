@@ -20,7 +20,7 @@ import {NavbarModule} from './navbar.module';
     `
 })
 class TestAppComponent {
-    @ViewChild(NavbarComponent, {static: false})
+    @ViewChild(NavbarComponent)
     public navbarComponent: NavbarComponent;
 }
 

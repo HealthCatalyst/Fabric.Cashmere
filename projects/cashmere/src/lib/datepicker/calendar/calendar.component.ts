@@ -307,15 +307,15 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     readonly _userSelection: EventEmitter<void> = new EventEmitter<void>();
 
     /** Reference to the current month view component. */
-    @ViewChild(MonthViewComponent, {static: false})
+    @ViewChild(MonthViewComponent)
     monthView: MonthViewComponent;
 
     /** Reference to the current year view component. */
-    @ViewChild(YearViewComponent, {static: false})
+    @ViewChild(YearViewComponent)
     yearView: YearViewComponent;
 
     /** Reference to the current multi-year view component. */
-    @ViewChild(MultiYearViewComponent, {static: false})
+    @ViewChild(MultiYearViewComponent)
     multiYearView: MultiYearViewComponent;
 
     /**

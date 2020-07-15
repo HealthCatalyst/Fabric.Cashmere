@@ -53,10 +53,10 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     @ContentChildren(NavbarLinkComponent)
     _navLinks: QueryList<NavbarLinkComponent>;
 
-    @ViewChild('navbar', {static: false}) navbarContent: ElementRef;
-    @ViewChild('navlinks', {static: false}) navContent: ElementRef;
+    @ViewChild('navbar') navbarContent: ElementRef;
+    @ViewChild('navlinks') navContent: ElementRef;
 
-    @ViewChild('moreLink', {static: false})
+    @ViewChild('moreLink')
     _navbarMore: HcPopoverAnchorDirective;
 
     private unsubscribe$ = new Subject<void>();

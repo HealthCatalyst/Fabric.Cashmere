@@ -46,7 +46,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     @ContentChildren(HcOptionDirective)
     _options: QueryList<HcOptionDirective>;
 
-    @ViewChild('selectInput', {static: false})
+    @ViewChild('selectInput')
     _nativeSelect: ElementRef;
 
     /** Optional string of text to appear before selection is made */

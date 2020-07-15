@@ -57,7 +57,7 @@ export class TypeformSurveyComponent {
         if (!document.getElementById(this._id)) {
             this.getScripts();
         } else {
-            (<TypeformWindow>window).typeformEmbed.makePopup(this._fullUri, {
+            (<TypeformWindow>(<unknown>window)).typeformEmbed.makePopup(this._fullUri, {
                 mode: 'drawer_right',
                 autoOpen: true,
                 opacity: 100,
