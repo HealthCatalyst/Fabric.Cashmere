@@ -7,12 +7,12 @@
     "jsnext": "./esm2015/cashmere-examples.js",
     "typings": "./cashmere-examples.d.ts",
     "peerDependencies": {
-        "@angular/common": "^8.0.0",
-        "@angular/core": "^8.0.0",
-        "@ng-select/ng-select": "^3.0.0",
+        "@angular/common": "^9.0.0",
+        "@angular/core": "^9.0.0",
+        "@ng-select/ng-select": "^4.0.0",
         "sugar": "^2.0.6"
     },
     "devDependencies": {
-        "@healthcatalyst/cashmere": "^6.5.0"
+        "@healthcatalyst/cashmere": "^6.9.0"
     }
 }
