@@ -46,7 +46,7 @@ export class TypeformSurveyComponent {
         return this._appVersion;
     }
     public _fullUri: string;
-    private _surveyUri: string;
+    private _surveyUri: string = "";
     private _appVersion: string;
     private _id: string = 'typef_orm_share';
 
