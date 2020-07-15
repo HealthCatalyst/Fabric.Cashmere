@@ -5,6 +5,7 @@ import {A11yModule} from '@angular/cdk/a11y';
 import {BidiModule} from '@angular/cdk/bidi';
 
 import {HcPopComponent} from './popover.component';
+import {HcTooltipComponent} from './tooltip/tooltip.component';
 import {HcPopoverAnchorDirective} from './directives/popover-anchor.directive';
 
 import {MenuItemDirective} from './directives/menu-item.directive';
@@ -19,6 +20,7 @@ import {HcPopoverAccessibilityService} from './popover-accessibility.service';
     imports: [CommonModule, OverlayModule, A11yModule, BidiModule],
     declarations: [
         HcPopComponent,
+        HcTooltipComponent,
         HcPopoverAnchorDirective,
         MenuDirective,
         MenuItemDirective,
@@ -38,6 +40,7 @@ import {HcPopoverAccessibilityService} from './popover-accessibility.service';
         MenuSubTextDirective,
         DividerDirective
     ],
+    entryComponents: [HcTooltipComponent],
     providers: [HcPopoverAccessibilityService]
 })
 export class PopModule {}

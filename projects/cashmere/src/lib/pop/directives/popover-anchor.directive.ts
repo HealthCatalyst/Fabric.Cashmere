@@ -9,7 +9,8 @@ import {
     ViewContainerRef,
     HostListener,
     HostBinding,
-    AfterContentInit
+    AfterContentInit,
+    ComponentFactoryResolver
 } from '@angular/core';
 import {Subject, merge} from 'rxjs';
 import {tap, takeUntil} from 'rxjs/operators';
@@ -20,9 +21,10 @@ import {HcPopoverAnchoringService} from '../popover-anchoring.service';
 import {HcPopoverOpenOptions, HcPopoverTrigger, VALID_TRIGGER} from '../types';
 import {PopoverNotification, PopoverNotificationService, NotificationAction} from '../notification.service';
 import {HcPopoverAccessibilityService, HcPopKeyboardNotifier, KEY_CODE} from '../popover-accessibility.service';
+import {HcTooltipComponent} from '../tooltip/tooltip.component';
 
 @Directive({
-    selector: '[hcPop]',
+    selector: '[hcPop],[hcTooltip]',
     exportAs: 'hcPopAnchor',
     providers: [HcPopoverAnchoringService]
 })
@@ -40,6 +42,24 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     }
     private _attachedPopover: HcPopComponent;
 
+    /** Reference to the tooltip instance. */
+    @Input('hcTooltip')
+    get tooltipText() {
+        return this._tooltipText;
+    }
+    set tooltipText(value: string) {
+        this._tooltipText = value;
+        const factory = this._componentFactoryResolver.resolveComponentFactory(HcTooltipComponent);
+        const popover = this._viewContainerRef.createComponent(factory).instance;
+        popover.tooltipContent = value;
+        popover.disableStyle = true;
+        popover.verticalAlign = 'above';
+        this.attachedPopover = popover;
+        this.trigger = 'hover';
+        this.popoverDelay = 500;
+    }
+    private _tooltipText: string;
+
     /** Trigger event to toggle the popover. *Defaults to `"click"`.*
      * Accepts `click`, `mousedown`, `hover`, `rightclick`, or `none`.
      * Note: if "hover" is selected, the backdrop for the popover will be disabled. */
@@ -55,6 +75,23 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         this._dispatchConfigNotification(new PopoverNotification(NotificationAction.UPDATE_CONFIG));
     }
     private _trigger: HcPopoverTrigger = 'click';
+
+    /** Number that can be passed into the popover to change hover delay. Also used for tooltip.
+     * Delay is measured in milliseconds.
+     */
+    @Input()
+    get popoverDelay() {
+        return this._popoverDelay;
+    }
+
+    set popoverDelay(val: number) {
+        this._popoverDelay = Number(val);
+    }
+
+    private _popoverDelay: number = 0;
+
+    /** Timer that delays togglePopover on hover. */
+    private hoverInterval: number;
 
     /** Object or value that can be passed into the popover to customize its content */
     @Input()
@@ -84,7 +121,8 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         public _elementRef: ElementRef,
         private _viewContainerRef: ViewContainerRef,
         public _anchoring: HcPopoverAnchoringService,
-        private _accessibility: HcPopoverAccessibilityService
+        private _accessibility: HcPopoverAccessibilityService,
+        private _componentFactoryResolver: ComponentFactoryResolver
     ) {}
 
     ngOnInit() {
@@ -148,9 +186,12 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         if (this.trigger !== 'hover') {
             return;
         }
+
         this._attachedPopover._offsetPos[0] = this._attachedPopover.horizontalAlign === 'mouse' ? $event.offsetX : 0;
         this._attachedPopover._offsetPos[1] = this._attachedPopover.verticalAlign === 'mouse' ? $event.offsetY : 0;
-        this.openPopover();
+        this.hoverInterval = window.setTimeout(() => {
+            this.togglePopover();
+        }, this.popoverDelay);
     }
 
     @HostListener('touchend', ['$event'])
@@ -160,6 +201,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         if (this.trigger !== 'hover') {
             return;
         }
+        clearTimeout(this.hoverInterval);
         this.closePopover();
     }
 

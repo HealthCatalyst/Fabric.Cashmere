@@ -1,0 +1,15 @@
+<ng-template #_templateRef>
+    <div
+        class="hc-pop-container , hc-tooltip-container"
+        class="{{ _yAlignClass }} {{ _xAlignClass }}"
+        [class.hc-pop-container-basic]="!disableStyle"
+        [ngClass]="_classList"
+        [@transformPopover]="_getAnimation()"
+        (@transformPopover.done)="_onAnimationDone($event)"
+    >
+        <span class="hc-tooltip">
+            {{ tooltipContent }}
+        </span>
+        <div *ngIf="showArrow" class="hc-pop-arrow hc-pop-arrow-y-above hc-pop-arrow-x-center"></div>
+    </div>
+</ng-template>

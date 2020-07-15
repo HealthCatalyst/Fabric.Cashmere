@@ -15,6 +15,7 @@ export class PopoverOverviewExampleComponent {
     readonly scrollStratControl = new FormControl('reposition');
     readonly trigControl = new FormControl('click');
     readonly popTextControl = new FormControl('NIFTY');
+    readonly hoverDelayControl = new FormControl(500);
     readonly shouldAnimateControl = new FormControl(true);
     readonly clickAwayControl = new FormControl(true);
     readonly showArrowControl = new FormControl(true);
