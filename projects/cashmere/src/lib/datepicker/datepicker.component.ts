@@ -214,7 +214,7 @@ export class DatepickerComponent implements OnDestroy {
     }
 
     /** A reference to the overlay when the calendar is opened as a popup. */
-    _popupRef: OverlayRef;
+    _popupRef: OverlayRef | null;
 
     /** A portal containing the calendar for this datepicker. */
     private _calendarPortal: ComponentPortal<DatepickerContentComponent>;
@@ -321,6 +321,8 @@ export class DatepickerComponent implements OnDestroy {
         }
         if (this._popupRef && this._popupRef.hasAttached()) {
             this._popupRef.detach();
+            this._popupRef.dispose();
+            this._popupRef = null;
         }
         if (this._calendarPortal && this._calendarPortal.isAttached) {
             this._calendarPortal.detach();
@@ -359,7 +361,7 @@ export class DatepickerComponent implements OnDestroy {
             this._createPopup();
         }
 
-        if (!this._popupRef.hasAttached()) {
+        if (this._popupRef && !this._popupRef.hasAttached()) {
             this._popupComponentRef = this._popupRef.attach(this._calendarPortal);
             this._popupComponentRef.instance.datepicker = this;
 
@@ -368,7 +370,7 @@ export class DatepickerComponent implements OnDestroy {
                 .asObservable()
                 .pipe(take(1))
                 .subscribe(() => {
-                    this._popupRef.updatePosition();
+                    this._popupRef?.updatePosition();
                 });
         }
     }
