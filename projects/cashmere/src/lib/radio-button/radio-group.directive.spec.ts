@@ -62,11 +62,9 @@ describe('RadioGroupComponent', () => {
     });
 
     it('should set a unique id for the radio group if no name or id is set', () => {
-        component.groupId = null;
-        component.groupName = null;
-        fixture.detectChanges();
-
         const directiveInstance = el.injector.get(RadioGroupDirective);
+        directiveInstance.name = "";
+        directiveInstance.id = "";
         expect(directiveInstance.id).toMatch(/hc-radio-group-\d+/);
     });
 
