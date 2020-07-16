@@ -73,6 +73,8 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
         return !!this._inputChildren.length;
     }
 
+    public _hasFocusedInput = false;
+
     /** Whether the form elements should be stacked (default), or inline */
     @Input()
     get inline(): boolean {
@@ -102,6 +104,13 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
             this._updateTightControls();
             // Pass the current tight setting to controls that are added dynamically to the FormField
             this._controls.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => this._updateTightControls());
+        }
+
+        // wire up focus listener for hcInputs
+        if (this.hasInput) {
+            this._inputChildren.first.focusChanged.pipe(takeUntil(this.unsubscribe$)).subscribe(focused => {
+                this._hasFocusedInput = focused;
+            });
         }
     }
 

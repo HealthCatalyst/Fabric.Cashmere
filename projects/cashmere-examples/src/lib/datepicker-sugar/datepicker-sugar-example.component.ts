@@ -7,7 +7,7 @@ import {FormControl} from '@angular/forms';
     styleUrls: ['./datepicker-sugar-example.component.scss']
 })
 export class DatepickerSugarExampleComponent implements OnInit {
-    readonly dateControl = new FormControl(new Date(2010, 1, 1));
+    readonly dateControl = new FormControl(new Date(2020, 1, 1));
 
     constructor() {}
 

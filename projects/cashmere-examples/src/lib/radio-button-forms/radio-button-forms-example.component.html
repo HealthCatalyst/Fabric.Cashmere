@@ -1,11 +1,11 @@
 <hc-form-field inline="true" tight="true">
     <hc-label>Radio buttons with tight styling:</hc-label>
-    <hc-radio-group [(ngModel)]="favoriteShow" inline="true">
-        <hc-radio-button *ngFor="let show of shows" [value]="show">{{show}}</hc-radio-button>
+    <hc-radio-group [formControl]="favoriteShowControl" inline="true">
+        <hc-radio-button *ngFor="let show of shows" [value]="show">{{ show }}</hc-radio-button>
     </hc-radio-group>
 </hc-form-field>
 
-<p>Current selection: {{favoriteShow ? favoriteShow : 'none'}}</p>
+<p>Current selection: {{ favoriteShowControl.value ? favoriteShowControl.value : 'none' }}</p>
 <button hc-button title="Primary-Alt Button" buttonStyle="primary-alt" (click)="reset()">
     Clear Selection
 </button>

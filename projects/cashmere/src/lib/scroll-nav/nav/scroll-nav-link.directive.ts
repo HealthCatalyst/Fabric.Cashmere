@@ -10,7 +10,14 @@ export class ScrollNavLinkDirective {
     @HostBinding('class.hc-scroll-nav-link')
     _hostClass = true;
 
+    @HostBinding('attr.tabindex')
+    _hostIndex = 0;
+
     constructor(public _el: ElementRef) {}
+
+    @HostListener('keydown.enter') _onEnter() {
+        this.navigateToSection(this.hcScrollLink);
+    }
 
     @HostListener('click') _onClick() {
         this.navigateToSection(this.hcScrollLink);

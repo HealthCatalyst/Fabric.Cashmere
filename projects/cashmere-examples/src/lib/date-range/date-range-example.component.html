@@ -11,12 +11,16 @@
         [options]="options"
         #pickerOne
     >
-        <span class="label">Date range:</span> <span class="value"> {{ range.fromDate | date:'MM/dd/yyyy' }} - {{ range.toDate | date:'MM/dd/yyyy' }} </span>
+        <span class="label">Date range:</span>
+        <span class="value">{{ range.fromDate | date: 'MM/dd/yyyy' }} - {{ range.toDate | date: 'MM/dd/yyyy' }}</span>
         <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="icon-right" hcIconSm></hc-icon>
     </button>
 
     <div class="demo-extras">
-        <hc-checkbox [(ngModel)]="options.excludeWeekends">Don't allow weekend dates</hc-checkbox>
-        <div>Selected preset: <strong>{{ presetSelection }}</strong></div>
+        <hc-checkbox [formControl]="optionsControl">Don't allow weekend dates</hc-checkbox>
+        <div>
+            Selected preset:
+            <strong>{{ presetSelection }}</strong>
+        </div>
     </div>
 </div>

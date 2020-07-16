@@ -1,18 +1,24 @@
 <p>
     For multiselects, typeaheads, and other selectbox needs, we recommend using a 3rd-party component,
-    <code>ng-select</code>. We've created a Cashmere theme for the component to give it the proper look
-    and feel. See usage tab for setup instructions.
+    <code>ng-select</code>
+    . We've created a Cashmere theme for the component to give it the proper look and feel. See usage tab for setup instructions.
 </p>
 
-<ng-select [items]="cities"
-    [addTag]="true"
-    [multiple]="true"
-    dropdownPosition="bottom"
-    addTagText="Add city"
-    placeholder="Search for cities..."
-    [(ngModel)]="selectedCities">
-</ng-select>
-<p>Selected: <code>{{selectedCities | json}}</code></p>
+<div [formGroup]="multiselectGroup">
+    <ng-select
+        [items]="cities"
+        [addTag]="true"
+        [multiple]="true"
+        dropdownPosition="bottom"
+        addTagText="Add city"
+        placeholder="Search for cities..."
+        [formControl]="selectedCitiesControl"
+    ></ng-select>
+    <p>
+        Selected:
+        <code>{{ selectedCitiesControl.value | json }}</code>
+    </p>
+</div>
 
 <strong>API & other documentation:</strong>
 <ul>

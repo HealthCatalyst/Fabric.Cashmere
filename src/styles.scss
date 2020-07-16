@@ -66,6 +66,7 @@ body {
     .hc-accordion-toolbar {
         color: $dark-blue;
         font-weight: 600;
+        padding: 0 10px;
     }
 }
 
@@ -177,16 +178,6 @@ ol {
     margin: 20px 0;
 }
 
-.demo-button {
-    margin-top: 10px !important;
-    margin-right: 10px !important;
-}
-
-.pipe-output {
-    font-weight: 600px;
-    font-size: 22px;
-}
-
 table {
     width: 100%;
     @include fontSize(13px);
@@ -253,4 +244,19 @@ table {
 
 .overflow-visible > .hc-horizontal-tab-container > .hc-tab-content-horizontal {
     overflow: visible !important;
+}
+
+// global demo styles
+.demo-button {
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+}
+
+hc-example-viewer .hc-tab-content-horizontal {
+    padding: 3px;
+}
+
+.pipe-output {
+    font-weight: 600px;
+    font-size: 22px;
 }
