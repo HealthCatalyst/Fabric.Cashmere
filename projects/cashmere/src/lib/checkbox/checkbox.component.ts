@@ -34,7 +34,7 @@ export class CheckboxChangeEvent {
     exportAs: 'hcCheckboxGroup',
     template: `
         <hc-checkbox *ngIf="!_disableParent" [checked]="_groupState" [indeterminate]="_isIndeterminate" (change)="toggleCheckAll()">{{_parentLabel}}</hc-checkbox>
-        <div [class.hc-children-group]="!_disableParent">
+        <div [class.hc-checkbox-children-group]="!_disableParent">
             <ng-content></ng-content>
         </div>
         `,
