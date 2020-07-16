@@ -42,7 +42,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     }
     private _attachedPopover: HcPopComponent;
 
-    /** Reference to the tooltip instance. */
+    /** A string of text to display as a tooltip above an element */
     @Input('hcTooltip')
     get tooltipText() {
         return this._tooltipText;
