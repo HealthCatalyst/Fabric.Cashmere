@@ -56,7 +56,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         popover.verticalAlign = 'above';
         this.attachedPopover = popover;
         this.trigger = 'hover';
-        this.popoverDelay = 500;
+        this.popoverDelay = 300;
     }
     private _tooltipText: string;
 

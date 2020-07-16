@@ -4,6 +4,11 @@
 .hc-tooltip-container {
     top: -10px;
 
+    .hc-tooltip {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
     .hc-pop-arrow {
         bottom: -14px;
     }
