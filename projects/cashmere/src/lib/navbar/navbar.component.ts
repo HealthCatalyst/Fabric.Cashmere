@@ -18,7 +18,6 @@ import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {HcIcon} from '../icon/icon.component';
-
 /** The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. */
 @Component({
     selector: 'hc-navbar',

@@ -1,14 +1,12 @@
 <a
     *ngIf="!_hidden"
     title="{{ dropdownTitle }}"
-    [routerLink]="uri"
     routerLinkActive="active"
-    class="navbar-link"
+    class="hc-navbar-more-links"
     [ngClass]="{active: this.active === true, inactive: this.active === false}"
-    [routerLinkActiveOptions]="{exact: exact}"
     [hcPop]="menu"
 >
-    {{ dropdownTitle }}
+    {{ dropdownTitle }} <hc-icon fontSet="fa" fontIcon="fa-chevron-down" hcIconSm></hc-icon>
 </a>
 
 <hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
