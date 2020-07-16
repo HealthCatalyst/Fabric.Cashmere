@@ -1,20 +1,37 @@
-<hc-navbar appIcon="https://cashmere.healthcatalyst.net/assets/CashmereAppLogo.svg" brandIcon="https://cashmere.healthcatalyst.net/assets/TriFlame.svg" [homeUri]="undefined" [fixedTop]="false">
+<hc-navbar
+    appIcon="https://cashmere.healthcatalyst.net/assets/CashmereAppLogo.svg"
+    brandIcon="https://cashmere.healthcatalyst.net/assets/TriFlame.svg"
+    [homeUri]="undefined"
+    [fixedTop]="false"
+>
     <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
-    <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
-    <hc-navbar-link [active]="false" uri="undefined" linkText="Pediatric"></hc-navbar-link>
-    <hc-navbar-link [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
-    <hc-navbar-link [active]="false" uri="undefined" linkText="Rehabilition"></hc-navbar-link>
-    <hc-navbar-link [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
+    <hc-navbar-dropdown dropdownTitle="test">
+        <div hcMenu>
+            <a hcMenuItem href="http://youtube.com" target="_blank">
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
+                <span hcMenuText>Read the docs</span>
+            </a>
+            <a hcMenuItem href="http://example.com" target="_blank">
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
+                <span hcMenuText>test menu</span>
+            </a>
+            <a hcMenuItem href="http://example.com" target="_blank">
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
+                <span hcMenuText>Bye</span>
+            </a>
+        </div>
+    </hc-navbar-dropdown>
     <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-question-circle-o" [hcPop]="options"></hc-icon>
-    <span class="hc-navbar-vertical-separator"></span>
+    <!-- <span class="hc-navbar-vertical-separator"></span>
     <div class="hc-navbar-username" *ngIf="user" [hcPop]="user">
         <span>
-            <span>{{username}}</span><br>
-            <span class="hc-navbar-username-subtext">{{organization}}</span>
+            <span>{{ username }}</span>
+            <br />
+            <span class="hc-navbar-username-subtext">{{ organization }}</span>
         </span>
         <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
-    </div>
+    </div> -->
 </hc-navbar>
 
 <hc-pop #options [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
