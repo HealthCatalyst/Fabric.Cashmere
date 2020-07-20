@@ -55,7 +55,14 @@ const docs: DocItem[] = [
     },
     {id: 'ellipsis-pipe', name: 'Ellipsis', category: 'pipes', usageDoc: true, hideApi: true, examples: ['ellipsis-overview']},
     {id: 'file-size-pipe', name: 'File Size', category: 'pipes', usageDoc: true, hideApi: true, examples: ['file-size-overview']},
-    {id: 'number-abbreviator-pipe', name: 'Number Abbreviator', category: 'pipes', usageDoc: true, hideApi: true, examples: ['number-abbreviator-overview']},
+    {
+        id: 'number-abbreviator-pipe',
+        name: 'Number Abbreviator',
+        category: 'pipes',
+        usageDoc: true,
+        hideApi: true,
+        examples: ['number-abbreviator-overview']
+    },
     {
         id: 'form-field',
         name: 'Form Field',
@@ -71,7 +78,14 @@ const docs: DocItem[] = [
         usageDoc: true,
         examples: ['input-required', 'input-suffix', 'input-prefix', 'input-text-area']
     },
-    {id: 'null-or-empty-string-pipe', name: 'IfNullOrEmpty', category: 'pipes', usageDoc: true, hideApi: true, examples: ['null-or-empty-string-overview']},
+    {
+        id: 'null-or-empty-string-pipe',
+        name: 'IfNullOrEmpty',
+        category: 'pipes',
+        usageDoc: true,
+        hideApi: true,
+        examples: ['null-or-empty-string-overview']
+    },
     {id: 'list', name: 'List', category: 'layout', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', category: 'popups', examples: ['modal-overview']},
     {
@@ -101,7 +115,7 @@ const docs: DocItem[] = [
         id: 'pop',
         name: 'Popover',
         category: 'popups',
-        examples: ['popover-simple', 'popover-menu', 'popover-tooltip', 'popover-right-click', 'popover-overview'],
+        examples: ['popover-simple', 'popover-menu', 'tooltip-overview', 'popover-right-click', 'popover-overview'],
         usageDoc: true
     },
     {

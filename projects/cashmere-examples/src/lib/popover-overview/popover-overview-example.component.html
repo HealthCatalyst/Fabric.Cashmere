@@ -1,4 +1,4 @@
-<button hc-button buttonStyle="primary-alt" [hcPop]="pop" [trigger]="trigControl.value">
+<button hc-button buttonStyle="primary-alt" [hcPop]="pop" [trigger]="trigControl.value" [popoverDelay]="hoverDelayControl.value">
     Trigger
 </button>
 
@@ -68,6 +68,11 @@
     <hc-form-field>
         <hc-label>Popover text:</hc-label>
         <input hcInput [formControl]="popTextControl" />
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Popover Hover delay:</hc-label>
+        <input hcInput [formControl]="hoverDelayControl" />
     </hc-form-field>
 
     <hc-checkbox id="animate" [formControl]="shouldAnimateControl">Animate popover</hc-checkbox>
