@@ -7,10 +7,6 @@
     <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
-    <hc-navbar-link [active]="false" uri="undefined" linkText="Pediatric"></hc-navbar-link>
-    <hc-navbar-link [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
-    <hc-navbar-link [active]="false" uri="undefined" linkText="Rehabilitation"></hc-navbar-link>
-    <hc-navbar-link [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
     <hc-navbar-dropdown dropdownTitle="test">
         <div hcMenu>
             <a hcMenuItem href="http://youtube.com" target="_blank">
@@ -27,6 +23,10 @@
             </a>
         </div>
     </hc-navbar-dropdown>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Pediatric"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Rehabilitation"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
     <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-question-circle-o" [hcPop]="options"></hc-icon>
     <span class="hc-navbar-vertical-separator"></span>
     <div class="hc-navbar-username" *ngIf="user" [hcPop]="user">

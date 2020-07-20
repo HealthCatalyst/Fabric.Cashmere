@@ -9,7 +9,9 @@ import {
     QueryList,
     ViewChild,
     ViewEncapsulation,
-    OnDestroy
+    OnDestroy,
+    ViewChildren,
+    ContentChild
 } from '@angular/core';
 import { HcPopoverAnchorDirective } from '../pop/directives/popover-anchor.directive';
 import { MoreItem } from './more-item';
@@ -57,6 +59,9 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     @ContentChildren(NavbarLinkComponent)
     _navLinks: QueryList<NavbarLinkComponent>;
 
+    @ContentChildren(NavbarDropdownComponent)
+    _navDropdowns: QueryList<NavbarDropdownComponent>;
+
     @ViewChild('navbar', { static: false }) navbarContent: ElementRef;
     @ViewChild('navlinks', { static: false }) navContent: ElementRef;
 
@@ -101,6 +106,18 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
                 t.hide();
                 this._collapse = true;
                 this._moreList.push({ name: t.linkText, uri: t.uri });
+            }
+        });
+        this._navDropdowns.forEach((t, i) => {
+            curLinks += this._linkWidths[i];
+
+            let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
+            if (curLinks + moreWidth < linksContainerWidth) {
+                t.show();
+            } else {
+                t.hide();
+                this._collapse = true;
+                this._moreList.push({ name: t.dropdownTitle, uri: '' });
             }
         });
 
