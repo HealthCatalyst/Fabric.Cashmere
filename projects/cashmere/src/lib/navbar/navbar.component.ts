@@ -11,13 +11,15 @@ import {
     ViewEncapsulation,
     OnDestroy
 } from '@angular/core';
-import {HcPopoverAnchorDirective} from '../pop/directives/popover-anchor.directive';
-import {MoreItem} from './more-item';
-import {NavbarLinkComponent} from './navbar-link/navbar-link.component';
-import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu.component';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
-import {HcIcon} from '../icon/icon.component';
+import { HcPopoverAnchorDirective } from '../pop/directives/popover-anchor.directive';
+import { MoreItem } from './more-item';
+import { NavbarDropdownComponent } from './navbar-dropdown/navbar-dropdown.component';
+import { NavbarLinkComponent } from './navbar-link/navbar-link.component';
+import { NavbarMobileMenuComponent } from './navbar-mobile-menu/navbar-mobile-menu.component';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { HcIcon } from '../icon/icon.component';
+import { DropdownItem } from './dropdown-item';
 /** The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. */
 @Component({
     selector: 'hc-navbar',
@@ -49,13 +51,16 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     @ContentChildren(NavbarMobileMenuComponent)
     _mobileMenu: QueryList<NavbarMobileMenuComponent>;
 
+    @ContentChildren(NavbarDropdownComponent)
+    _dropdowns: QueryList<NavbarDropdownComponent>;
+
     @ContentChildren(NavbarLinkComponent)
     _navLinks: QueryList<NavbarLinkComponent>;
 
-    @ViewChild('navbar', {static: false}) navbarContent: ElementRef;
-    @ViewChild('navlinks', {static: false}) navContent: ElementRef;
+    @ViewChild('navbar', { static: false }) navbarContent: ElementRef;
+    @ViewChild('navlinks', { static: false }) navContent: ElementRef;
 
-    @ViewChild('moreLink', {static: false})
+    @ViewChild('moreLink', { static: false })
     _navbarMore: HcPopoverAnchorDirective;
 
     private unsubscribe$ = new Subject<void>();
@@ -65,6 +70,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     private _linksTotalWidth: number = 0;
     public _collapse: boolean = false;
     public _moreList: Array<MoreItem> = [];
+    public _dropdownItems: Array<DropdownItem> = [];
 
     @HostListener('window:resize')
     _navResize() {
@@ -94,14 +100,23 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
             } else {
                 t.hide();
                 this._collapse = true;
-                this._moreList.push({name: t.linkText, uri: t.uri});
+                this._moreList.push({ name: t.linkText, uri: t.uri });
             }
+        });
+
+        this._dropdowns.forEach((t, i) => {
+            t.hide();
+            console.log(t._menuItems);
+            t._menuItems.forEach((item) => {
+                this._dropdownItems.push({ content: item.ref.nativeElement.text, uri: item.ref.nativeElement.href });
+            });
+            this._moreList.push({ name: t.dropdownTitle, uri: '' });
         });
 
         this.ref.detectChanges();
     }
 
-    constructor(private ref: ChangeDetectorRef) {}
+    constructor(private ref: ChangeDetectorRef) { }
 
     /** Forces a recalculation of the navbar links to determine how many should be rolling into a More menu.
      * Call this if you've updated the contents of any navbar links. */

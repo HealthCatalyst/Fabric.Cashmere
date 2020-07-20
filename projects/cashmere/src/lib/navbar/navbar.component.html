@@ -1,24 +1,25 @@
 <nav #navbar class="hc-navbar" [ngClass]="{'fixed-top': fixedTop}">
     <div class="navbar-brand">
         <a [routerLink]="homeUri" class="brand">
-            <img *ngIf="_brandIconType() == 'string'" src="{{brandIcon}}">
+            <img *ngIf="_brandIconType() == 'string'" src="{{ brandIcon }}" />
             <hc-icon
                 *ngIf="_brandIconType() != 'string'"
                 [fontSet]="_brandIconSet()"
                 [fontIcon]="_brandIconGlyph()"
-                [ngStyle]="{height: _brandIconSize(), 'font-size': _brandIconSize()}">
-            </hc-icon>
+                [ngStyle]="{height: _brandIconSize(), 'font-size': _brandIconSize()}"
+            ></hc-icon>
         </a>
     </div>
     <div class="navbar-app">
         <a [routerLink]="homeUri" class="app" *ngIf="appIcon">
-            <img src="{{appIcon}}">
+            <img src="{{ appIcon }}" />
         </a>
     </div>
     <div #navlinks class="hc-navbar-link-container">
         <ng-content select="hc-navbar-link, hc-navbar-dropdown"></ng-content>
         <div class="hc-navbar-more-links" title="More" *ngIf="_collapse" [hcPop]="navbarMore" #moreLink="hcPopAnchor">
-            More<hc-icon fontSet="fa" fontIcon="fa-chevron-down" hcIconSm></hc-icon>
+            More
+            <hc-icon fontSet="fa" fontIcon="fa-chevron-down" hcIconSm></hc-icon>
         </div>
     </div>
 
@@ -33,13 +34,28 @@
     <ng-content select="hc-navbar-mobile-menu"></ng-content>
 </div>
 
-<hc-pop #navbarMore [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
+<hc-pop #navbarMore [autoCloseOnContentClick]="false" [showArrow]="false" horizontalAlign="end">
     <div hcMenu>
         <ng-container *ngFor="let item of _moreList; let i = index">
-            <button hcMenuItem routerLinkActive="active" [routerLink]="item.uri" (click)="_moreClick()">
-                <span hcMenuText>{{item.name}}</span>
-            </button>
-            <div *ngIf="i != _moreList.length - 1" hcMenuItem hcDivider></div>
+            <div *ngIf="item.uri != ''; then linkBlock; else menuBlock"></div>
+            <ng-template #linkBlock>
+                <button hcMenuItem routerLinkActive="active" [routerLink]="item.uri" (click)="_moreClick()">
+                    <span hcMenuText>{{ item.name }}</span>
+                </button>
+                <div *ngIf="i != _moreList.length - 1" hcMenuItem hcDivider></div>
+            </ng-template>
+            <ng-template #menuBlock>
+                <button hcMenuItem [hcPop]="menu">
+                    <span hcMenuText>Testing</span>
+                </button>
+                <hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
+                    <div hcMenu *ngFor="let item of _dropdownItems; let i = index">
+                        <a hcMenuItem [routerLink]="item.uri" target="_blank">
+                            <span hcMenuText>{{ item.content }}</span>
+                        </a>
+                    </div>
+                </hc-pop>
+            </ng-template>
         </ng-container>
     </div>
 </hc-pop>

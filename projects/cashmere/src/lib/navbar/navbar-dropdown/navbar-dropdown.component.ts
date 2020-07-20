@@ -1,5 +1,7 @@
-import { ChangeDetectorRef, Component, ElementRef, HostBinding, Input, ViewEncapsulation } from '@angular/core';
-
+import { ChangeDetectorRef, Component, ElementRef, HostBinding, Input, ViewEncapsulation, ContentChildren, QueryList } from '@angular/core';
+import { NavbarLinkComponent } from '../navbar-link/navbar-link.component';
+import { MenuDirective } from '../../pop/directives/menu.directive';
+import { MenuItemDirective } from '../../pop/directives/menu-item.directive';
 /** Primary navigation links */
 @Component({
     selector: 'hc-navbar-dropdown',
@@ -8,10 +10,10 @@ import { ChangeDetectorRef, Component, ElementRef, HostBinding, Input, ViewEncap
     encapsulation: ViewEncapsulation.None
 })
 export class NavbarDropdownComponent {
+    constructor(private el: ElementRef, private ref: ChangeDetectorRef) { }
     // TODO:
     // do we need the active?
     // do we need our own styling?
-
 
     /** (optional) forces active state *Default is `null`.* */
     @Input()
@@ -21,15 +23,16 @@ export class NavbarDropdownComponent {
     @Input()
     dropdownTitle: string;
 
+    @Input()
     // /** Sets the RouterLinkActive options to match the url exactly to set active state. *Default is false.*
     //  * See https://angular.io/api/router/RouterLinkActive#description
     //  */
     // @Input()
     // exact: boolean = false;
-
     _hidden: boolean = false;
 
-    constructor(private el: ElementRef, private ref: ChangeDetectorRef) { }
+    @ContentChildren(MenuItemDirective, { descendants: true }) _menuItems: QueryList<MenuItemDirective>;
+    _navLinks: QueryList<MenuDirective>;
 
     /** Disable visibility of component from view */
     hide() {
