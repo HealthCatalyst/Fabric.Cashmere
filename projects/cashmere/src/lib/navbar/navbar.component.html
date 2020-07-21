@@ -48,11 +48,13 @@
                 <button hcMenuItem [hcPop]="menu">
                     <span hcMenuText>{{ item.name }}</span>
                 </button>
-                <hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
-                    <div hcMenu *ngFor="let item of item.items; let i = index">
-                        <a hcMenuItem href="{{ item.uri }}" target="_blank">
-                            <span hcMenuText>{{ item.content }}</span>
+                <div *ngIf="i != _moreList.length - 1" hcMenuItem hcDivider></div>
+                <hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="after" verticalAlign="start">
+                    <div hcMenu *ngFor="let subitem of item.items; let i = index">
+                        <a hcMenuItem href="{{ subitem.uri }}" target="_blank">
+                            <span hcMenuText>{{ subitem.content }}</span>
                         </a>
+                        <div *ngIf="i != item.items.length - 1" hcMenuItem hcDivider></div>
                     </div>
                 </hc-pop>
             </ng-template>
