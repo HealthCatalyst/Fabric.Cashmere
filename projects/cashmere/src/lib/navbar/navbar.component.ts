@@ -15,13 +15,14 @@ import {
 } from '@angular/core';
 import { HcPopoverAnchorDirective } from '../pop/directives/popover-anchor.directive';
 import { MoreItem } from './more-item';
+import { DropdownItem } from './dropdown-item';
+import { MoreItemDropdown } from './more-item-dropdown';
 import { NavbarDropdownComponent } from './navbar-dropdown/navbar-dropdown.component';
 import { NavbarLinkComponent } from './navbar-link/navbar-link.component';
 import { NavbarMobileMenuComponent } from './navbar-mobile-menu/navbar-mobile-menu.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HcIcon } from '../icon/icon.component';
-import { DropdownItem } from './dropdown-item';
 /** The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. */
 @Component({
     selector: 'hc-navbar',
@@ -59,14 +60,14 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     @ContentChildren(NavbarLinkComponent)
     _navLinks: QueryList<NavbarLinkComponent>;
 
-    @ContentChildren(NavbarDropdownComponent)
-    _navDropdowns: QueryList<NavbarDropdownComponent>;
-
     @ViewChild('navbar', { static: false }) navbarContent: ElementRef;
     @ViewChild('navlinks', { static: false }) navContent: ElementRef;
 
     @ViewChild('moreLink', { static: false })
     _navbarMore: HcPopoverAnchorDirective;
+
+    @ContentChildren('links')
+    _navItems: QueryList<any>;
 
     private unsubscribe$ = new Subject<void>();
 
@@ -74,8 +75,8 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     private _linkWidths: Array<number> = [];
     private _linksTotalWidth: number = 0;
     public _collapse: boolean = false;
-    public _moreList: Array<MoreItem> = [];
-    public _dropdownItems: Array<DropdownItem> = [];
+    public _moreList: Array<any> = [];
+    // public _dropdownItems: Array<DropdownItem> = [];
 
     @HostListener('window:resize')
     _navResize() {
@@ -96,7 +97,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
 
         // Step through the links until we hit the end of the container, then collapse the
         // remaining into a more menu
-        this._navLinks.forEach((t, i) => {
+        this._navItems.forEach((t, i) => {
             curLinks += this._linkWidths[i];
 
             let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
@@ -105,29 +106,19 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
             } else {
                 t.hide();
                 this._collapse = true;
-                this._moreList.push({ name: t.linkText, uri: t.uri });
-            }
-        });
-        this._navDropdowns.forEach((t, i) => {
-            curLinks += this._linkWidths[i];
+                if (t._menuItems) {
+                    console.log("running")
+                    let dropdownItems: Array<DropdownItem> = [];
+                    t._menuItems.forEach((item) => {
+                        console.log("running 2");
+                        dropdownItems.push({ content: item.ref.nativeElement.text, uri: item.ref.nativeElement.href });
+                    });
 
-            let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
-            if (curLinks + moreWidth < linksContainerWidth) {
-                t.show();
-            } else {
-                t.hide();
-                this._collapse = true;
-                this._moreList.push({ name: t.dropdownTitle, uri: '' });
+                    this._moreList.push({ name: t.dropdownTitle, items: dropdownItems });
+                } else {
+                    this._moreList.push({ name: t.linkText, uri: t.uri });
+                }
             }
-        });
-
-        this._dropdowns.forEach((t, i) => {
-            t.hide();
-            console.log(t._menuItems);
-            t._menuItems.forEach((item) => {
-                this._dropdownItems.push({ content: item.ref.nativeElement.text, uri: item.ref.nativeElement.href });
-            });
-            this._moreList.push({ name: t.dropdownTitle, uri: '' });
         });
 
         this.ref.detectChanges();

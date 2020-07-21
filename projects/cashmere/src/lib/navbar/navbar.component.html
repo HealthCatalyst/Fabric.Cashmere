@@ -37,7 +37,7 @@
 <hc-pop #navbarMore [autoCloseOnContentClick]="false" [showArrow]="false" horizontalAlign="end">
     <div hcMenu>
         <ng-container *ngFor="let item of _moreList; let i = index">
-            <div *ngIf="item.uri != ''; then linkBlock; else menuBlock"></div>
+            <div *ngIf="item.uri != undefined; then linkBlock; else menuBlock"></div>
             <ng-template #linkBlock>
                 <button hcMenuItem routerLinkActive="active" [routerLink]="item.uri" (click)="_moreClick()">
                     <span hcMenuText>{{ item.name }}</span>
@@ -46,11 +46,11 @@
             </ng-template>
             <ng-template #menuBlock>
                 <button hcMenuItem [hcPop]="menu">
-                    <span hcMenuText>Testing</span>
+                    <span hcMenuText>{{ item.name }}</span>
                 </button>
                 <hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
-                    <div hcMenu *ngFor="let item of _dropdownItems; let i = index">
-                        <a hcMenuItem [routerLink]="item.uri" target="_blank">
+                    <div hcMenu *ngFor="let item of item.items; let i = index">
+                        <a hcMenuItem href="{{ item.uri }}" target="_blank">
                             <span hcMenuText>{{ item.content }}</span>
                         </a>
                     </div>
