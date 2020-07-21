@@ -66,9 +66,6 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     @ViewChild('moreLink', { static: false })
     _navbarMore: HcPopoverAnchorDirective;
 
-    @ContentChildren('links')
-    _navItems: QueryList<any>;
-
     private unsubscribe$ = new Subject<void>();
 
     private _menuOpen: boolean = false;
@@ -131,10 +128,13 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
                 t.hide();
                 this._collapse = true;
                 if (t._menuItems) {
+                    let dropdownItems: Array<DropdownItem> = [];
                     t._menuItems.forEach((item) => {
-                        this._dropdownItems.push({ content: item.ref.nativeElement.text, uri: item.ref.nativeElement.href });
+                        console.log("running 2");
+                        dropdownItems.push({ content: item.ref.nativeElement.text, uri: item.ref.nativeElement.href });
                     });
-                    this._moreList.push({ name: t.dropdownTitle, uri: '' });
+
+                    this._moreList.push({ name: t.dropdownTitle, items: dropdownItems });
                 } else {
                     this._moreList.push({ name: t.linkText, uri: t.uri });
                 }
