@@ -15,13 +15,14 @@ import {
 } from '@angular/core';
 import { HcPopoverAnchorDirective } from '../pop/directives/popover-anchor.directive';
 import { MoreItem } from './more-item';
+import { DropdownItem } from './dropdown-item';
+import { MoreItemDropdown } from './more-item-dropdown';
 import { NavbarDropdownComponent } from './navbar-dropdown/navbar-dropdown.component';
 import { NavbarLinkComponent } from './navbar-link/navbar-link.component';
 import { NavbarMobileMenuComponent } from './navbar-mobile-menu/navbar-mobile-menu.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { HcIcon } from '../icon/icon.component';
-import { DropdownItem } from './dropdown-item';
 /** The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. */
 @Component({
     selector: 'hc-navbar',
@@ -65,14 +66,17 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     @ViewChild('moreLink', { static: false })
     _navbarMore: HcPopoverAnchorDirective;
 
+    @ContentChildren('links')
+    _navItems: QueryList<any>;
+
     private unsubscribe$ = new Subject<void>();
 
     private _menuOpen: boolean = false;
     private _linkWidths: Array<number> = [];
     private _linksTotalWidth: number = 0;
     public _collapse: boolean = false;
-    public _moreList: Array<MoreItem> = [];
-    public _dropdownItems: Array<DropdownItem> = [];
+    public _moreList: Array<any> = [];
+    // public _dropdownItems: Array<DropdownItem> = [];
 
     @HostListener('window:resize')
     _navResize() {

@@ -7,7 +7,9 @@
     <hc-navbar-link #links [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
     <hc-navbar-link #links [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
     <hc-navbar-link #links [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
-    <hc-navbar-dropdown #links dropdownTitle="test">
+    <hc-navbar-link #links [active]="false" uri="undefined" linkText="Pediatric"></hc-navbar-link>
+    <hc-navbar-link #links [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
+    <hc-navbar-dropdown dropdownTitle="test" #links>
         <div hcMenu>
             <a hcMenuItem href="http://youtube.com" target="_blank">
                 <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
@@ -20,6 +22,22 @@
             <a hcMenuItem href="http://example.com" target="_blank">
                 <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
                 <span hcMenuText>Bye</span>
+            </a>
+        </div>
+    </hc-navbar-dropdown>
+    <hc-navbar-dropdown dropdownTitle="test 2" #links>
+        <div hcMenu>
+            <a hcMenuItem href="http://youtube.com" target="_blank">
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
+                <span hcMenuText>Go home</span>
+            </a>
+            <a hcMenuItem href="http://example.com" target="_blank">
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
+                <span hcMenuText>About us</span>
+            </a>
+            <a hcMenuItem href="http://example.com" target="_blank">
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
+                <span hcMenuText>Read more</span>
             </a>
         </div>
     </hc-navbar-dropdown>
