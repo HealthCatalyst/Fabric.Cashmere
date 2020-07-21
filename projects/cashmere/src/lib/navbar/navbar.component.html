@@ -50,7 +50,7 @@
                 </button>
                 <hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
                     <div hcMenu *ngFor="let item of _dropdownItems; let i = index">
-                        <a hcMenuItem [routerLink]="item.uri" target="_blank">
+                        <a hcMenuItem href="{{ item.uri }}"  target="_blank">
                             <span hcMenuText>{{ item.content }}</span>
                         </a>
                     </div>

@@ -53,14 +53,11 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     @ContentChildren(NavbarMobileMenuComponent)
     _mobileMenu: QueryList<NavbarMobileMenuComponent>;
 
-    @ContentChildren(NavbarDropdownComponent)
-    _dropdowns: QueryList<NavbarDropdownComponent>;
-
     @ContentChildren(NavbarLinkComponent)
     _navLinks: QueryList<NavbarLinkComponent>;
 
-    @ContentChildren(NavbarDropdownComponent)
-    _navDropdowns: QueryList<NavbarDropdownComponent>;
+    @ContentChildren('links')
+    _navItems: QueryList<any>;
 
     @ViewChild('navbar', { static: false }) navbarContent: ElementRef;
     @ViewChild('navlinks', { static: false }) navContent: ElementRef;
@@ -91,44 +88,18 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
             return;
         }
 
-        let linksContainerWidth: number = this.navContent.nativeElement.offsetWidth;
-        let curLinks: number = 0;
+        // TODO:
+        // Make this use the same QueryList
 
         // Step through the links until we hit the end of the container, then collapse the
         // remaining into a more menu
-        this._navLinks.forEach((t, i) => {
-            curLinks += this._linkWidths[i];
+        // Currently if the user code does not have an id it will not see drop downs
 
-            let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
-            if (curLinks + moreWidth < linksContainerWidth) {
-                t.show();
-            } else {
-                t.hide();
-                this._collapse = true;
-                this._moreList.push({ name: t.linkText, uri: t.uri });
-            }
-        });
-        this._navDropdowns.forEach((t, i) => {
-            curLinks += this._linkWidths[i];
-
-            let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
-            if (curLinks + moreWidth < linksContainerWidth) {
-                t.show();
-            } else {
-                t.hide();
-                this._collapse = true;
-                this._moreList.push({ name: t.dropdownTitle, uri: '' });
-            }
-        });
-
-        this._dropdowns.forEach((t, i) => {
-            t.hide();
-            console.log(t._menuItems);
-            t._menuItems.forEach((item) => {
-                this._dropdownItems.push({ content: item.ref.nativeElement.text, uri: item.ref.nativeElement.href });
-            });
-            this._moreList.push({ name: t.dropdownTitle, uri: '' });
-        });
+        if (this._navItems.length === 0) {
+            this.onlyLinks();
+        } else {
+            this.allItems();
+        }
 
         this.ref.detectChanges();
     }
@@ -141,6 +112,50 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
         this._collectNavLinkWidths();
         this._navResize();
     }
+
+    private allItems() {
+        let linksContainerWidth: number = this.navContent.nativeElement.offsetWidth;
+        let curLinks: number = 0;
+
+        this._navItems.forEach((t, i) => {
+            curLinks += this._linkWidths[i];
+
+            let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
+            if (curLinks + moreWidth < linksContainerWidth) {
+                t.show();
+            } else {
+                t.hide();
+                this._collapse = true;
+                if (t._menuItems) {
+                    t._menuItems.forEach((item) => {
+                        this._dropdownItems.push({ content: item.ref.nativeElement.text, uri: item.ref.nativeElement.href });
+                    });
+                    this._moreList.push({ name: t.dropdownTitle, uri: '' });
+                } else {
+                    this._moreList.push({ name: t.linkText, uri: t.uri });
+                }
+            }
+        });
+    }
+
+    private onlyLinks() {
+        let linksContainerWidth: number = this.navContent.nativeElement.offsetWidth;
+        let curLinks: number = 0;
+
+        this._navLinks.forEach((t, i) => {
+            curLinks += this._linkWidths[i];
+
+            let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
+            if (curLinks + moreWidth < linksContainerWidth) {
+                t.show();
+            } else {
+                t.hide();
+                this._collapse = true;
+                this._moreList.push({ name: t.linkText, uri: t.uri });
+            }
+        });
+    }
+
 
     private _collectNavLinkWidths() {
         this._linkWidths = [];
