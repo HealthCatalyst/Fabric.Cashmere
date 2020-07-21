@@ -66,9 +66,6 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     @ViewChild('moreLink', { static: false })
     _navbarMore: HcPopoverAnchorDirective;
 
-    @ContentChildren('links')
-    _navItems: QueryList<any>;
-
     private unsubscribe$ = new Subject<void>();
 
     private _menuOpen: boolean = false;
@@ -92,18 +89,13 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
             return;
         }
 
-        // TODO:
-        // Make this use the same QueryList
+        if (this._navItems.length !== 0) {
+            this._navLinks = this._navItems;
+        }
 
         // Step through the links until we hit the end of the container, then collapse the
         // remaining into a more menu
-        // Currently if the user code does not have an id it will not see drop downs
-
-        if (this._navItems.length === 0) {
-            this.onlyLinks();
-        } else {
-            this.allItems();
-        }
+        this.allItems();
 
         this.ref.detectChanges();
     }
@@ -121,7 +113,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
         let linksContainerWidth: number = this.navContent.nativeElement.offsetWidth;
         let curLinks: number = 0;
 
-        this._navItems.forEach((t, i) => {
+        this._navLinks.forEach((t: any, i) => {
             curLinks += this._linkWidths[i];
 
             let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
@@ -131,35 +123,17 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
                 t.hide();
                 this._collapse = true;
                 if (t._menuItems) {
+                    let dropdownItems: Array<DropdownItem> = [];
                     t._menuItems.forEach((item) => {
-                        this._dropdownItems.push({ content: item.ref.nativeElement.text, uri: item.ref.nativeElement.href });
+                        dropdownItems.push({ content: item.ref.nativeElement.text, uri: item.ref.nativeElement.href });
                     });
-                    this._moreList.push({ name: t.dropdownTitle, uri: '' });
+                    this._moreList.push({ name: t.dropdownTitle, items: dropdownItems });
                 } else {
                     this._moreList.push({ name: t.linkText, uri: t.uri });
                 }
             }
         });
     }
-
-    private onlyLinks() {
-        let linksContainerWidth: number = this.navContent.nativeElement.offsetWidth;
-        let curLinks: number = 0;
-
-        this._navLinks.forEach((t, i) => {
-            curLinks += this._linkWidths[i];
-
-            let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
-            if (curLinks + moreWidth < linksContainerWidth) {
-                t.show();
-            } else {
-                t.hide();
-                this._collapse = true;
-                this._moreList.push({ name: t.linkText, uri: t.uri });
-            }
-        });
-    }
-
 
     private _collectNavLinkWidths() {
         this._linkWidths = [];

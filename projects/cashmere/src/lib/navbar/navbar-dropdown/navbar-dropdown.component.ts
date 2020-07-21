@@ -10,11 +10,6 @@ import { MenuItemDirective } from '../../pop/directives/menu-item.directive';
     encapsulation: ViewEncapsulation.None
 })
 export class NavbarDropdownComponent {
-    constructor(private el: ElementRef, private ref: ChangeDetectorRef) { }
-    // TODO:
-    // do we need the active?
-    // do we need our own styling?
-
     /** (optional) forces active state *Default is `null`.* */
     @Input()
     active?: boolean = false;
@@ -33,6 +28,8 @@ export class NavbarDropdownComponent {
 
     @ContentChildren(MenuItemDirective, { descendants: true }) _menuItems: QueryList<MenuItemDirective>;
     _navLinks: QueryList<MenuDirective>;
+
+    constructor(private el: ElementRef, private ref: ChangeDetectorRef) { }
 
     /** Disable visibility of component from view */
     hide() {
