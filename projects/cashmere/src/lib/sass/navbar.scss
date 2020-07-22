@@ -104,6 +104,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     color: $navbar-text-inactive;
     border-bottom: 5px solid transparent;
     transition: background-color 0.25s;
+    outline: none;
     &:hover:not(.active),
     &.inactive:hover {
         outline: none;

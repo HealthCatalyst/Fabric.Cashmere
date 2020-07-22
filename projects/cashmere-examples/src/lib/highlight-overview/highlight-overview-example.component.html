@@ -1,7 +1,0 @@
-<div>
-    <hc-form-field>
-        <hc-label>Highlight text</hc-label>
-        <input hcInput [formControl]="highlightControl" />
-    </hc-form-field>
-</div>
-<p [innerHTML]="text | highlight: highlightControl.value"></p>
