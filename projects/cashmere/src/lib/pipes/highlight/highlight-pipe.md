@@ -34,7 +34,7 @@ import {PipesModule} from '@healthcatalyst/cashmere';
 export class CashmereModule {}
 ```
 
-#### Using the Highlight Pipe in character mode
+#### Case Sensitivity
 
 Pipe a `string` value to the Highlight pipe representing query. If the query is found in the text, the value is then highlighted disregarding case sensitivity.
 
@@ -47,4 +47,8 @@ Pipe a `string` value to the Highlight pipe representing query. If the query is 
 
 #### Edge cases
 
-If the Highlight Pipe is given a value other than a string, it returns the original text not highlighted.
+When the text value for the Highlight Pipe contains HTML, it should highlight matches on the escaped HTML
+
+When the text value for the highlight Pipe is `undefined`, it should return the empty string
+
+When both search term and text value are `undefined`, it should return the empty string
