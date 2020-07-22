@@ -1,141 +1,97 @@
-@import '~@angular/cdk/_overlay';
-@import '../sass/colors';
-@import '../sass/variables';
+@import '../sass/popover.scss';
 
-$popover-arrow-width: 8px;
-
-// override index for implementation inside a modal: https://github.com/HealthCatalyst/Fabric.Cashmere/issues/867
-$cdk-z-index-overlay-container: $zindex-cdk-overlay;
-$cdk-z-index-overlay: $zindex-cdk-overlay;
-
-// Include overlay styles
-@include cdk-overlay();
-
-.hc-pop-container {
-
-  &.hc-pop-before.hc-pop-above {
-    transform-origin: right bottom;
-
-    [dir='rtl'] & {
-      transform-origin: left bottom;
-    }
-  }
-
-  &.hc-pop-before.hc-pop-center {
-    transform-origin: right center;
-
-    [dir='rtl'] & {
-      transform-origin: left center;
-    }
-  }
-
-  &.hc-pop-before.hc-pop-below {
-    transform-origin: right top;
-
-    [dir='rtl'] & {
-      transform-origin: left top;
-    }
-  }
-
-  &.hc-pop-center.hc-pop-above {
-    transform-origin: center bottom;
-  }
-
-  &.hc-pop-center.hc-pop-below {
-    transform-origin: center top;
-  }
-
-  &.hc-pop-after.hc-pop-above {
-    transform-origin: left bottom;
-
-    [dir='rtl'] & {
-      transform-origin: right bottom;
-    }
-  }
-
-  &.hc-pop-after.hc-pop-center {
-    transform-origin: left center;
-
-    [dir='rtl'] & {
-      transform-origin: right center;
-    }
-  }
-
-  &.hc-pop-after.hc-pop-below {
-    transform-origin: left top;
-
-    [dir='rtl'] & {
-      transform-origin: right top;
-    }
-  }
-
-  &.hc-pop-container-basic {
-    background-color: #fff;
-    border: 1px solid $gray-300;
-    color: #333;
-    padding: 12px;
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-  }
-
-  // Arrows
-  $popover-arrow-width: 10px;
-
-  &.hc-pop-show-arrow {
-    .hc-pop-arrow {
-        display: block;
-        width: $popover-arrow-width;
-        height: $popover-arrow-width;
-        transform: rotate(45deg);
-        border-style: solid;
-        border-width: 1px;
-        background-color: #fff;
-        position: absolute;
-      }
-
-      &.hc-pop-arrow-y-above, &.hc-pop-arrow-y-below {
-        margin: $popover-arrow-width - 4px;
-        margin-left: 0;
-        margin-right: 0;
-        position: relative;
-      }
-    
-      &.hc-pop-arrow-x-before, &.hc-pop-arrow-x-after {
-        margin: $popover-arrow-width - 4px;
-        margin-top: 0;
-        margin-bottom: 0;
-        position: relative;
-      }
-  }
-
-  &.hc-pop-arrow-x-center .hc-pop-arrow { left: calc(50% - #{$popover-arrow-width - 4px}); }
-  &.hc-pop-arrow-x-start .hc-pop-arrow { left: 5px; }
-  &.hc-pop-arrow-x-end .hc-pop-arrow { left: calc(100% - #{$popover-arrow-width * 2 - 5px}); }
-
-  &.hc-pop-arrow-y-center .hc-pop-arrow { top: calc(50% - #{$popover-arrow-width - 4px}); }
-  &.hc-pop-arrow-y-start .hc-pop-arrow { top: 5px; }
-  &.hc-pop-arrow-y-end .hc-pop-arrow { top: calc(100% - #{$popover-arrow-width * 2 - 5px}); }
-
-  &.hc-pop-arrow-y-above .hc-pop-arrow {
-    border-color: transparent $gray-300 $gray-300 transparent;
-    bottom: -#{$popover-arrow-width - 4px};
-  }
-
-  &.hc-pop-arrow-y-below .hc-pop-arrow {
-    border-color: $gray-300 transparent transparent $gray-300;
-    top: -#{$popover-arrow-width - 4px};
-  }
-
-  &.hc-pop-arrow-x-before .hc-pop-arrow {
-    border-color: $gray-300 $gray-300 transparent transparent;
-    right: -#{$popover-arrow-width - 4px};
-  }
-
-  &.hc-pop-arrow-x-after .hc-pop-arrow {
-    border-color: transparent transparent $gray-300 $gray-300;
-    left: -#{$popover-arrow-width - 4px};
-  }
+.hc-pop-before.hc-pop-above {
+    @include hc-pop-before-above();
 }
 
+.hc-pop-before.hc-pop-center {
+    @include hc-pop-before-center();
+}
 
+.hc-pop-before.hc-pop-below {
+    @include hc-pop-before-below();
+}
 
+.hc-pop-center.hc-pop-above {
+    @include hc-pop-center-above();
+}
+
+.hc-pop-center.hc-pop-below {
+    @include hc-pop-center-below();
+}
+
+.hc-pop-after.hc-pop-above {
+    @include hc-pop-after-above();
+}
+
+.hc-pop-after.hc-pop-center {
+    @include hc-pop-after-center();
+}
+
+.hc-pop-after.hc-pop-below {
+    @include hc-pop-after-below();
+}
+
+.hc-pop-container-basic {
+    @include hc-pop-container-basic();
+}
+
+.hc-pop-arrow {
+    .hc-pop-show-arrow & {
+        @include hc-pop-arrow();
+    }
+
+    .hc-pop-arrow-x-start & {
+        @include hc-pop-arrow-x-start();
+    }
+
+    .hc-pop-arrow-x-center & {
+        @include hc-pop-arrow-x-center();
+    }
+
+    .hc-pop-arrow-x-end & {
+        @include hc-pop-arrow-x-end();
+    }
+
+    .hc-pop-arrow-y-start & {
+        @include hc-pop-arrow-y-start();
+    }
+
+    .hc-pop-arrow-y-center & {
+        @include hc-pop-arrow-y-center();
+    }
+
+    .hc-pop-arrow-y-end & {
+        @include hc-pop-arrow-y-end();
+    }
+
+    .hc-pop-arrow-y-above & {
+        @include hc-pop-arrow-y-above();
+    }
+
+    .hc-pop-arrow-y-below & {
+        @include hc-pop-arrow-y-below();
+    }
+
+    .hc-pop-arrow-x-before & {
+        @include hc-pop-arrow-x-before();
+    }
+
+    .hc-pop-arrow-x-after & {
+        @include hc-pop-arrow-x-after();
+    }
+}
+
+.hc-pop-arrow-y-above,
+.hc-pop-arrow-y-below {
+    &.hc-pop-show-arrow {
+        @include hc-pop-arrow-vert();
+    }
+}
+
+.hc-pop-arrow-x-before,
+.hc-pop-arrow-x-after {
+    &.hc-pop-show-arrow {
+        @include hc-pop-arrow-horiz();
+    }
+}

@@ -1,4 +1,4 @@
-<hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" [homeUri]="undefined" [fixedTop]="false">
+<hc-navbar appIcon="https://cashmere.healthcatalyst.net/assets/CashmereAppLogo.svg" [brandIcon]="navIcon" [homeUri]="undefined" [fixedTop]="false">
     <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
@@ -35,20 +35,54 @@
     </hc-navbar-mobile-menu>
 </hc-navbar>
 
-<hc-pop #appSwitcher><hc-app-switcher iconHeight="100"></hc-app-switcher></hc-pop>
+<br>
 
-<hc-pop #options>
-    <ul class="list-options">
-        <li><a href="" target="_blank">Help Topics</a></li>
-        <li><a href="" target="_blank">Release Notes</a></li>
-        <li><a href="" target="_blank">About</a></li>
-        <li><a href="https://community.healthcatalyst.com/" target="_blank">Health Catalyst Community</a></li>
-        <li><a href="" target="_blank">Send us your feedback</a></li>
-    </ul>
+<p><em><strong>Note:</strong> the code for this example demonstrates how to setup a mobile menu in the navbar, however
+    its display has been disabled here to prevent it from colliding with the Cashmere site navigation.</em></p>
+
+<hc-pop #appSwitcher [showArrow]="false" horizontalAlign="end">
+    <hc-app-switcher [serviceName]="currentAppName" [serviceVersion]="currentAppVersion"></hc-app-switcher>
 </hc-pop>
 
-<hc-pop #user>
-    <ul class="list-options">
-        <li><a href="" target="_blank">Logout</a></li>
-    </ul>
+<hc-pop #options [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
+    <div hcMenu>
+        <a hcMenuItem href="http://example.com" target="_blank">
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
+            <span hcMenuText>Read the docs</span>
+        </a>
+        <a hcMenuItem href="http://example.com" target="_blank">
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-lightbulb-o"></hc-icon>
+            <span hcMenuText>Request a feature</span>
+        </a>
+        <a hcMenuItem href="http://example.com" target="_blank">
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-users"></hc-icon>
+            <span hcMenuText>Ask the community</span>
+        </a>
+        <a hcMenuItem href="http://example.com" target="_blank">
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bullhorn"></hc-icon>
+            <span hcMenuText>Find out what's new</span>
+        </a>
+        <a hcMenuItem href="http://example.com" target="_blank">
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bug"></hc-icon>
+            <span hcMenuText>Report an issue</span>
+        </a>
+        <a hcMenuItem href="http://example.com" target="_blank">
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-comments"></hc-icon>
+            <span hcMenuText>Send feedback</span>
+        </a>
+        <div hcMenuItem hcDivider></div>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-info-circle"></hc-icon>
+            <span hcMenuText>About</span>
+        </button>
+    </div>
+</hc-pop>
+
+<hc-pop #user [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
+    <div hcMenu>
+        <button hcMenuItem>
+            <hc-icon hcMenuIcon fontSet="hc-icons" fontIcon="hci-sign-out"></hc-icon>
+            <span hcMenuText>Log out of this App</span>
+        </button>
+    </div>
 </hc-pop>

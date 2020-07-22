@@ -1,6 +1,6 @@
-@import 'colors';
-@import 'mixins';
-@import 'variables';
+@import './colors';
+@import './mixins';
+@import './variables';
 
 .hc-login-container {
     // font
@@ -36,7 +36,7 @@
         box-shadow: 0 0 13px rgba($black, 0.25);
         border-radius: 5px;
         margin-bottom: 50px;
-        background: #f1f3f6;
+        background: $slate-gray-100;
     }
 
     fieldset {

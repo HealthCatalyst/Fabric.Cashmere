@@ -1,4 +1,8 @@
-<div class="hc-chip hc-chip-{{color}}" [ngClass]="{'hc-chip-close': action}">
-    <ng-content></ng-content>
-    <span *ngIf="action" class="hc-chip-close-icon"></span>
+<div class="hc-chip hc-chip-{{color}}">
+    <span class="hc-chip-content-{{color}}">
+        <ng-content></ng-content>
+    </span>
+    <span *ngIf="hasCloseButton" class="hc-chip-close" (click)="_closeClick($event)">
+        <span class="hc-chip-close-icon"></span>
+    </span>
 </div>

@@ -1,4 +1,4 @@
-/* tslint:disable:no-use-before-declare component-class-suffix */
+/* tslint:disable:component-class-suffix */
 
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
@@ -6,7 +6,7 @@ import {SplitButtonComponent} from './split-button.component';
 import {ButtonModule} from '../button.module';
 import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ButtonItemDirective} from './directives/button-item.directive';
+import {MenuItemDirective} from '../../pop/directives/menu-item.directive';
 
 describe('SplitButtonComponent', () => {
     let fixture: ComponentFixture<any>;
@@ -39,7 +39,7 @@ describe('SplitButtonComponent', () => {
             triggerButton.click();
             fixture.detectChanges();
 
-            let buttonItems = fixture.debugElement.queryAll(By.directive(ButtonItemDirective));
+            let buttonItems = fixture.debugElement.queryAll(By.directive(MenuItemDirective));
             buttonItems[0].nativeElement.click();
             fixture.detectChanges();
 

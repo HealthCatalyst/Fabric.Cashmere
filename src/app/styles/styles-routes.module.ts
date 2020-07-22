@@ -15,6 +15,7 @@ import {ProductsDemoComponent} from './products/products-demo.component';
 import {TrademarksDemoComponent} from './trademarks/trademarks-demo.component';
 import {NgModule} from '@angular/core';
 import {BreadcrumbsStyleDemoComponent} from './breadcrumbs/breadcrumbs-style-demo.component';
+import { ApplicationLaunchScreenGuideComponent } from './application-launch-screen/application-launch-screen.component';
 
 const routes: Routes = [
     {
@@ -65,6 +66,11 @@ const routes: Routes = [
                 path: 'error',
                 component: ErrorPagesComponent,
                 data: {title: 'Error Pages'}
+            },
+            {
+                path: 'launch-screen',
+                component: ApplicationLaunchScreenGuideComponent,
+                data: {title: 'Launch Screen'}
             },
             {
                 path: 'login',

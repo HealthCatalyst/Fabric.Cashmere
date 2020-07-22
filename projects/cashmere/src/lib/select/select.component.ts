@@ -9,13 +9,22 @@ import {
     DoCheck,
     Self,
     Output,
-    EventEmitter
+    EventEmitter,
+    ContentChildren,
+    QueryList,
+    ViewChild,
+    AfterContentInit
 } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
+import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
+import {HcOptionDirective} from './hc-option.directive';
 
 let uniqueId = 1;
+
+export class SelectChangeEvent {
+    constructor(public source: SelectComponent, public value: any) {}
+}
 
 /** Select one of many options from a dropdown */
 @Component({
@@ -25,11 +34,20 @@ let uniqueId = 1;
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SelectComponent)}]
 })
-export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
+export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, AfterContentInit, DoCheck {
     private _uniqueInputId = `hc-select-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
+    private _tight: boolean = false;
+    private _value: any = '';
+    private _valueData: any;
 
     _componentId = this._uniqueInputId;
+
+    @ContentChildren(HcOptionDirective)
+    _options: QueryList<HcOptionDirective>;
+
+    @ViewChild('selectInput', {static: false})
+    _nativeSelect: ElementRef;
 
     /** Optional string of text to appear before selection is made */
     @Input()
@@ -74,11 +92,20 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         return this._value;
     }
 
-    set value(val: string) {
+    set value(val: any) {
         if (val !== this._value) {
             this._value = val;
             this.onChange(val);
         }
+    }
+
+    /** If true, condense the default margin and reduce the font size. *Defaults to `false`.*  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
     }
 
     @Output()
@@ -86,7 +113,9 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     @Output()
     readonly blur: EventEmitter<void> = new EventEmitter<void>();
 
-    private _value: string = '';
+    /** Event emitted whenever the state changes */
+    @Output()
+    change = new EventEmitter<SelectChangeEvent>();
 
     @HostBinding('class.hc-select')
     _hostClass = true;
@@ -100,7 +129,6 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     }
 
     constructor(
-        private _elementRef: ElementRef,
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
         @Optional()
@@ -112,6 +140,14 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         this._form = _parentForm || _parentFormGroup;
         if (this._ngControl != null) {
             this._ngControl.valueAccessor = this;
+        }
+    }
+
+    ngAfterContentInit() {
+        if (this._valueData) {
+            setTimeout(() => {
+                this.writeValue(this._valueData);
+            });
         }
     }
 
@@ -127,8 +163,40 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         this.onTouched = fn;
     }
 
-    writeValue(value: string) {
+    writeValue(value: any) {
+        this._valueData = value;
+        let targetVal = value;
+        // If ngValue is being used, set the currently selected value based on that data
+        if (this._options && this._options.length !== 0) {
+            let selectedIndex: number = 0;
+            this._options.forEach((option, index) => {
+                if (option.ngValue === value) {
+                    selectedIndex = index;
+                }
+            });
+            if (this.placeholder) {
+                selectedIndex += 1;
+            }
+            targetVal = this._nativeSelect.nativeElement.options[selectedIndex].value;
+        }
+        this._value = targetVal;
+    }
+
+    _change(event: Event, value: any) {
+        this._valueData = value;
+        // If ngValue is being used, pull that value from the directive to allow objects well as strings
+        if (this._options.length !== 0) {
+            const optionArray = this._options.toArray();
+            const index = this.placeholder
+                ? this._nativeSelect.nativeElement.selectedIndex - 1
+                : this._nativeSelect.nativeElement.selectedIndex;
+            this._valueData = optionArray[index].ngValue;
+        }
+
+        event.stopPropagation();
         this._value = value;
+        this.onChange(this._valueData);
+        this.change.emit(new SelectChangeEvent(this, this._valueData));
     }
 
     ngDoCheck(): void {

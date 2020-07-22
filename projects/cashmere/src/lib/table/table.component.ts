@@ -1,4 +1,4 @@
-/* tslint:disable:component-class-suffix use-host-property-decorator */
+/* tslint:disable:component-class-suffix no-host-metadata-property */
 
 /**
  * @license
@@ -23,6 +23,7 @@ import {
 } from '@angular/core';
 import {Directionality} from '@angular/cdk/bidi';
 import {parseBooleanAttribute} from '../util';
+import {Platform} from '@angular/cdk/platform';
 
 @Component({
     selector: 'hc-table, table[hc-table]',
@@ -40,16 +41,19 @@ export class HcTable<T> extends CdkTable<T> {
         protected _differs: IterableDiffers,
         protected _changeDetectorRef: ChangeDetectorRef,
         protected _elementRef: ElementRef,
+        _platform: Platform,
         @Attribute('role') role: string,
         @Optional() protected readonly _dir: Directionality
     ) {
-        super(_differs, _changeDetectorRef, _elementRef, role, _dir);
+        super(_differs, _changeDetectorRef, _elementRef, role, _dir, document, _platform);
     }
 
     @HostBinding('class.hc-table')
     _hostHcTableClass = true;
     @HostBinding('class.hc-table-borders')
     _hostHcBordersClass = true;
+    @HostBinding('class.hc-table-small')
+    _hostHcTableSmall = false;
 
     /** Sets whether the table should have a 2px border around each cell (defaults to true) */
     @Input()
@@ -59,5 +63,14 @@ export class HcTable<T> extends CdkTable<T> {
 
     set borders(hasBorders) {
         this._hostHcBordersClass = parseBooleanAttribute(hasBorders);
+    }
+
+    /** If true, table has less padding and a smaller font size (defaults to false)  */
+    @Input()
+    get tight(): boolean {
+        return this._hostHcTableSmall;
+    }
+    set tight(value) {
+        this._hostHcTableSmall = parseBooleanAttribute(value);
     }
 }

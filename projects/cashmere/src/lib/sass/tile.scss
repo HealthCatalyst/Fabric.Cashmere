@@ -1,0 +1,25 @@
+@import './colors';
+
+@mixin hc-tile {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 35px;
+    background-color: $white;
+    border-radius: 5px;
+    display: block;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+@mixin hc-tile-tight {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.hc-tile {
+    @include hc-tile();
+}
+
+.hc-tile-tight {
+    @include hc-tile-tight();
+}

@@ -1,0 +1,19 @@
+@import "~@healthcatalyst/cashmere/scss/colors";
+
+.demo-extras {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 0 20px;
+
+    hc-checkbox, div {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        padding: 5px 20px;
+        border: 1px solid $gray-300;
+        background-color: $slate-gray-100;
+        border-radius: 4px;
+        height: 40px;
+    }
+}
+

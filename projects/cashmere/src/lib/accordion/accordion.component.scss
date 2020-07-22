@@ -15,7 +15,8 @@
 .hc-accordion-trigger {
     @include hc-accordion-trigger();
 
-    .hc-accordion-closed &::after, .hc-accordion-closing &::after {
+    .hc-accordion-closed &::after,
+    .hc-accordion-closing &::after {
         @include hc-accordion-trigger-closed();
     }
 

@@ -16,14 +16,14 @@
     "jsnext": "./esm2015/cashmere.js",
     "typings": "./cashmere.d.ts",
     "peerDependencies": {
-        "@angular/cdk": "^7.0.3",
-        "@angular/common": "^6.0.0",
-        "@angular/core": "^6.0.0",
-        "@angular/forms": "^6.0.0",
+        "@angular/cdk": ">= 8.2.0",
+        "@angular/common": ">= 8.2.0",
+        "@angular/core": ">= 8.2.0",
+        "@angular/forms": ">= 8.2.0",
         "core-js": ">= 2.4.0 < 3",
         "font-awesome": "~4.7.0",
         "npm-font-open-sans": "^1.1.0",
-        "rxjs": "^6.0.0",
-        "zone.js": "~0.8.20"
+        "rxjs": ">= 6.5.0",
+        "zone.js": ">= 0.9.1"
     }
 }

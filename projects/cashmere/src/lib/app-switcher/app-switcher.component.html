@@ -1,15 +1,57 @@
-<div class="popover-content">
-    <h4>Applications</h4>
-    <pre *ngIf="!applications">loading applications...</pre>
-    <div class="apps">
-        <div class="app" *ngFor="let app of applications">
-            <a class="thumbnail" [title]="app.Description" [href]="app.ServiceUrl" target="_blank">
-                <img class="thumbnail-img" [height]="iconHeight" [src]="app.Icon">
-                <div class="title">{{app?.FriendlyName | ellipsis:18}}</div>
-            </a>
-        </div>
-    </div>
-    <a class="all-apps-link" [href]="appSwitcherService.allApplicationsUri" target="_blank">View all my
-        applications</a>
-</div>
+<div class="hc-app-switcher">
+    <h4 class="hc-app-switcher-header">
+        Applications
+        <a
+            hc-button
+            *ngIf="appSwitcherService.allApplicationsUri"
+            buttonStyle="link-inline"
+            class="hc-app-switcher-all-apps-link"
+            [href]="appSwitcherService.allApplicationsUri"
+            target="_blank"
+        >
+            View All
+        </a>
+    </h4>
 
+    <ng-container *ngIf="applications?.length > 0">
+        <div class="hc-app-switcher-apps">
+            <div class="hc-app-switcher-app" *ngFor="let app of applications">
+                <a
+                    class="hc-app-switcher-link"
+                    [ngClass]="{'hc-app-switcher-link-highlighted': appIsMe(app)}"
+                    [title]="appIsMe(app) ? 'Current Application' : app.Description"
+                    [attr.href]="linkIfNotMe(app)"
+                    target="_blank"
+                >
+                    <div
+                        class="hc-app-switcher-app-img"
+                        [ngStyle]="{
+                            width: iconHeight + 'px',
+                            height: iconHeight + 'px',
+                            'background-image': 'url(' + app.Icon + ')'
+                        }"
+                    ></div>
+                    <div class="hc-app-switcher-app-title">{{ app?.FriendlyName | ellipsis: 18 }}</div>
+                </a>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- Loading -->
+    <div *ngIf="loading | async" class="hc-app-switcher-empty hc-app-switcher-spinner-container">
+        <hc-progress-spinner diameter="60"></hc-progress-spinner>
+    </div>
+
+    <!-- Load Failed -->
+    <div *ngIf="!(loading | async) && loadFailed" class="hc-app-switcher-empty">
+        <span class="hc-app-switcher-warning-icon"></span>
+        <em>Failed to load applications.</em>
+        <a class="hc-app-switcher-retry" hc-button buttonStyle="link" (click)="loadApplications()">Retry now.</a>
+    </div>
+
+    <!-- No Apps Available -->
+    <div *ngIf="!(loading | async) && applications?.length === 0" class="hc-app-switcher-empty">
+        <span class="hc-app-switcher-empty-icon"></span>
+        <em>No applications available.</em>
+    </div>
+</div>

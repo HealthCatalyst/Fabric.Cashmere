@@ -24,28 +24,88 @@
     }
 }
 
+.hc-checkbox-children-group {
+    @include hc-checkbox-children-group();
+}
+
+.hc-checkbox-align-center {
+    @include hc-checkbox-align-center();
+}
+
+.hc-checkbox-align-top {
+    @include hc-checkbox-align-top();
+}
+
+.hc-checkbox-align-bottom {
+    @include hc-checkbox-align-bottom();
+}
+
 .hc-checkbox-label {
     @include hc-checkbox-label();
+
+    .hc-checkbox-tight & {
+        @include hc-checkbox-label-tight();
+    }
+}
+
+.hc-checkbox-align-label-top {
+    @include hc-checkbox-align-label-top();
+}
+
+.hc-checkbox-align-label-bottom {
+    @include hc-checkbox-align-label-bottom();
 }
 
 .hc-checkbox-overlay {
     @include hc-checkbox-overlay();
 
+    .hc-checkbox-tight & {
+        @include hc-checkbox-overlay-tight();
+    }
+
     .hc-checkbox-content:hover & {
         @include hc-checkbox-overlay-hover();
     }
 
-    .hc-checkbox-disabled & {
-        @include hc-checkbox-overlay-disabled();
+    .hc-checkbox-indeterminate & {
+        @include hc-checkbox-overlay-indeterminate();
+    }
+
+    .hc-checkbox-indeterminate .hc-checkbox-tight & {
+        @include hc-checkbox-overlay-indeterminate-tight();
     }
 
     input[type='checkbox']:checked + & {
         @include hc-checkbox-overlay-checked();
+    }
+
+    .hc-checkbox-disabled input[type=checkbox] + & {
+        @include hc-checkbox-overlay-disabled();
+    }
+
+    &:focus {
+        @include hc-checkbox-overlay-focus();
     }
 }
 
 .hc-form-field-invalid {
     .hc-checkbox-overlay {
         @include hc-checkbox-invalid();
+
+        &:focus {
+            @include hc-checkbox-overlay-focus-invalid();
+        }
+    }
+
+    input[type='checkbox']:checked + .hc-checkbox-overlay {
+        @include hc-checkbox-overlay-checked-invalid();
+    }
+}
+
+
+
+.hc-checkbox-stub {
+    .hc-checkbox-label, .hc-checkbox-overlay {
+        @include hc-checkbox-stubbed();
     }
 }

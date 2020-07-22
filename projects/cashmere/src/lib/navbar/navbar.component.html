@@ -1,12 +1,18 @@
 <nav #navbar class="hc-navbar" [ngClass]="{'fixed-top': fixedTop}">
     <div class="navbar-brand">
         <a [routerLink]="homeUri" class="brand">
-            <img src="{{brandIcon}}">
+            <img *ngIf="_brandIconType() == 'string'" src="{{brandIcon}}">
+            <hc-icon
+                *ngIf="_brandIconType() != 'string'"
+                [fontSet]="_brandIconSet()"
+                [fontIcon]="_brandIconGlyph()"
+                [ngStyle]="{height: _brandIconSize(), 'font-size': _brandIconSize()}">
+            </hc-icon>
         </a>
     </div>
-    <div class="navbar-app" [ngClass]="{'logo-condense': _logoCondense}">
+    <div class="navbar-app">
         <a [routerLink]="homeUri" class="app" *ngIf="appIcon">
-            <img src="{{appIcon}}" (load)="appIconLoaded()">
+            <img src="{{appIcon}}">
         </a>
     </div>
     <div #navlinks class="hc-navbar-link-container">
@@ -19,7 +25,7 @@
     <div #rightcontainer class="hc-navbar-right-container">
         <ng-content></ng-content>
     </div>
-    <div class="hc-navbar-mobile-menu" (click)="_toggleMobileMenu()">
+    <div class="hc-navbar-mobile-menu" *ngIf="_mobileMenu.first" (click)="_toggleMobileMenu()">
         <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
     </div>
 </nav>
@@ -27,8 +33,13 @@
     <ng-content select="hc-navbar-mobile-menu"></ng-content>
 </div>
 
-<hc-pop #navbarMore class="more-popover">
-    <ul class="list-options">
-        <li *ngFor="let item of _moreList"><a routerLinkActive="active" [routerLink]="item.uri" (click)="_moreClick()">{{item.name}}</a></li>
-    </ul>
+<hc-pop #navbarMore [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
+    <div hcMenu>
+        <ng-container *ngFor="let item of _moreList; let i = index">
+            <button hcMenuItem routerLinkActive="active" [routerLink]="item.uri" (click)="_moreClick()">
+                <span hcMenuText>{{item.name}}</span>
+            </button>
+            <div *ngIf="i != _moreList.length - 1" hcMenuItem hcDivider></div>
+        </ng-container>
+    </div>
 </hc-pop>

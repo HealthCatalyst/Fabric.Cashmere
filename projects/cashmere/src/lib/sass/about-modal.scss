@@ -1,11 +1,12 @@
 @import './colors';
-@import 'variables';
-@import 'mixins';
+@import './variables';
+@import './mixins';
 
 .about-modal-content {
     padding: 15px 0;
     color: $gray-500;
     text-align: center;
+    overflow-y: auto;
 }
 
 .about-header {
@@ -87,6 +88,13 @@
     color: $text;
     @include fontSize(16px);
     line-height: 24px;
+}
+
+.about-divider {
+    border: none;
+    height: 1px;
+    background-color:#e0e0e0;
+    margin: 0;
 }
 
 .about-close-container {

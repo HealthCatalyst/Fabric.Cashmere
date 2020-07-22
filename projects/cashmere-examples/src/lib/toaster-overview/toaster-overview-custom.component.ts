@@ -25,7 +25,7 @@ import {Component} from '@angular/core';
             }
             .custom-toast-body {
                 font-size: 12px;
-                width: 319px
+                width: 319px;
             }
         `
     ]

@@ -9,4 +9,5 @@ import {Component} from '@angular/core';
 })
 export class NavbarOverviewExampleComponent {
     username = 'Christine K.';
+    organization = 'Millrock Hospital';
 }

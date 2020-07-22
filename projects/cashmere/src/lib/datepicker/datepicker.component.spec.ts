@@ -29,17 +29,16 @@ import {HcFormFieldComponent} from '../form-field/hc-form-field.component';
 @Component({
     template: `
         <input [hcDatepicker]="d" [value]="date" />
-        <hc-datepicker #d [touchUi]="touch" [disabled]="disabled" [opened]="opened"></hc-datepicker>
+        <hc-datepicker #d [disabled]="disabled" [opened]="opened"></hc-datepicker>
     `
 })
 class StandardDatepicker {
     opened = false;
-    touch = false;
     disabled = false;
     date: Date | null = new Date(2020, JAN, 1);
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
+    @ViewChild(DatepickerInputDirective, {static: false})
     datepickerInput: DatepickerInputDirective;
 }
 
@@ -58,7 +57,7 @@ class MultiInputDatepicker {}
     `
 })
 class NoInputDatepicker {
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
 }
 
@@ -71,7 +70,7 @@ class NoInputDatepicker {
 class DatepickerWithStartAt {
     date = new Date(2020, JAN, 1);
     startDate = new Date(2010, JAN, 1);
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
 }
 
@@ -83,7 +82,7 @@ class DatepickerWithStartAt {
 })
 class DatepickerWithStartViewYear {
     date = new Date(2020, JAN, 1);
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
 
     onYearSelection() {}
@@ -97,7 +96,7 @@ class DatepickerWithStartViewYear {
 })
 class DatepickerWithStartViewMultiYear {
     date = new Date(2020, JAN, 1);
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
 
     onMultiYearSelection() {}
@@ -111,9 +110,9 @@ class DatepickerWithStartViewMultiYear {
 })
 class DatepickerWithNgModel {
     selected: Date | null = null;
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
+    @ViewChild(DatepickerInputDirective, {static: false})
     datepickerInput: DatepickerInputDirective;
 }
 
@@ -126,11 +125,11 @@ class DatepickerWithNgModel {
 })
 class DatepickerWithFormControl {
     formControl = new FormControl();
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
+    @ViewChild(DatepickerInputDirective, {static: false})
     datepickerInput: DatepickerInputDirective;
-    @ViewChild(DatepickerToggleComponent)
+    @ViewChild(DatepickerToggleComponent, {static: false})
     datepickerToggle: DatepickerToggleComponent;
 }
 
@@ -138,15 +137,14 @@ class DatepickerWithFormControl {
     template: `
         <input [hcDatepicker]="d" />
         <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
-        <hc-datepicker #d [touchUi]="touchUI"></hc-datepicker>
+        <hc-datepicker #d></hc-datepicker>
     `
 })
 class DatepickerWithToggle {
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
+    @ViewChild(DatepickerInputDirective, {static: false})
     input: DatepickerInputDirective;
-    touchUI = true;
 }
 
 @Component({
@@ -167,11 +165,11 @@ class DatepickerWithCustomIcon {}
     `
 })
 class FormFieldDatepicker {
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
+    @ViewChild(DatepickerInputDirective, {static: false})
     datepickerInput: DatepickerInputDirective;
-    @ViewChild(HcFormFieldComponent)
+    @ViewChild(HcFormFieldComponent, {static: false})
     formField: HcFormFieldComponent;
 }
 
@@ -183,7 +181,7 @@ class FormFieldDatepicker {
     `
 })
 class DatepickerWithMinAndMaxValidation {
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
     date: Date | null;
     minDate = new Date(2010, JAN, 1);
@@ -194,11 +192,11 @@ class DatepickerWithMinAndMaxValidation {
     template: `
         <input [hcDatepicker]="d" [(ngModel)]="date" [hcDatepickerFilter]="filter" />
         <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
-        <hc-datepicker #d [touchUi]="true"></hc-datepicker>
+        <hc-datepicker #d></hc-datepicker>
     `
 })
 class DatepickerWithFilterAndValidation {
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
     date: Date;
     filter = (date: Date) => date.getDate() !== 1;
@@ -207,11 +205,11 @@ class DatepickerWithFilterAndValidation {
 @Component({
     template: `
         <input [hcDatepicker]="d" (change)="onChange()" (input)="onInput()" (dateChange)="onDateChange()" (dateInput)="onDateInput()" />
-        <hc-datepicker #d [touchUi]="true"></hc-datepicker>
+        <hc-datepicker #d></hc-datepicker>
     `
 })
 class DatepickerWithChangeAndInputEvents {
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
 
     onChange() {}
@@ -231,9 +229,9 @@ class DatepickerWithChangeAndInputEvents {
 })
 class DatepickerWithi18n {
     date: Date | null = new Date(2010, JAN, 1);
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
+    @ViewChild(DatepickerInputDirective, {static: false})
     datepickerInput: DatepickerInputDirective;
 }
 
@@ -248,9 +246,9 @@ class DatepickerWithISOStrings {
     min = new Date(2017, JAN, 1).toISOString();
     max = new Date(2017, DEC, 31).toISOString();
     startAt = new Date(2017, JUL, 1).toISOString();
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
+    @ViewChild(DatepickerInputDirective, {static: false})
     datepickerInput: DatepickerInputDirective;
 }
 
@@ -264,7 +262,7 @@ class DatepickerWithEvents {
     selected: Date | null = null;
     openedSpy = jasmine.createSpy('opened spy');
     closedSpy = jasmine.createSpy('closed spy');
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
 }
 
@@ -275,7 +273,7 @@ class DatepickerWithEvents {
     `
 })
 class DatepickerOpeningOnFocus {
-    @ViewChild(DatepickerComponent)
+    @ViewChild(DatepickerComponent, {static: false})
     datepicker: DatepickerComponent;
 }
 
@@ -286,7 +284,7 @@ class DatepickerOpeningOnFocus {
     `
 })
 class DatepickerWithCustomHeader {
-    @ViewChild('ch')
+    @ViewChild('ch', {static: false})
     datepicker: DatepickerComponent;
     customHeaderForDatePicker = CustomHeaderForDatepicker;
 }
@@ -302,13 +300,13 @@ class CustomHeaderForDatepicker {}
 @Component({
     template: `
         <input [hcDatepicker]="assignedDatepicker" [value]="date" />
-        <hc-datepicker #d [touchUi]="touch"></hc-datepicker>
+        <hc-datepicker #d></hc-datepicker>
     `
 })
 class DelayedDatepicker {
-    @ViewChild('d')
+    @ViewChild('d', {static: false})
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective)
+    @ViewChild(DatepickerInputDirective, {static: false})
     datepickerInput: DatepickerInputDirective;
     date: Date | null;
     assignedDatepicker: DatepickerComponent;
@@ -322,6 +320,29 @@ class DelayedDatepicker {
     `
 })
 class DatepickerWithTabindexOnToggle {}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="timepicker" />
+        <hc-datepicker #timepicker mode="time" [hourCycle]="cycleVal"></hc-datepicker>
+    `
+})
+class DatepickerWithTime {
+    @ViewChild('timepicker', {static: false})
+    datepicker: DatepickerComponent;
+    cycleVal: number = 12;
+}
+
+@Component({
+    template: `
+        <input [hcDatepicker]="datetimepicker" />
+        <hc-datepicker #datetimepicker mode="date-time"></hc-datepicker>
+    `
+})
+class DatepickerWithDateTime {
+    @ViewChild('datetimepicker', {static: false})
+    datepicker: DatepickerComponent;
+}
 
 describe('DatepickerComponent', () => {
     const SUPPORTS_INTL = typeof Intl !== 'undefined';
@@ -385,49 +406,6 @@ describe('DatepickerComponent', () => {
                 }
             });
 
-            it('open non-touch should open popup', () => {
-                expect(document.querySelector('.cdk-overlay-pane.hc-datepicker-popup')).toBeNull();
-
-                testComponent.datepicker.open();
-                fixture.detectChanges();
-
-                expect(document.querySelector('.cdk-overlay-pane.hc-datepicker-popup')).not.toBeNull();
-            });
-
-            it('touch should open dialog', () => {
-                testComponent.touch = true;
-                fixture.detectChanges();
-
-                expect(document.querySelector('.hc-datepicker-dialog hc-dialog-container')).toBeNull();
-
-                testComponent.datepicker.open();
-                fixture.detectChanges();
-
-                expect(document.querySelector('.hc-datepicker-dialog hc-dialog-container')).not.toBeNull();
-            });
-
-            it('should not be able to open more than one dialog', fakeAsync(() => {
-                testComponent.touch = true;
-                fixture.detectChanges();
-
-                expect(document.querySelectorAll('.hc-datepicker-dialog').length).toBe(0);
-
-                testComponent.datepicker.open();
-                fixture.detectChanges();
-                tick(500);
-                fixture.detectChanges();
-
-                dispatchKeyboardEvent(document.querySelector('.hc-calendar-body')!, 'keydown', ENTER);
-                fixture.detectChanges();
-                tick(100);
-
-                testComponent.datepicker.open();
-                tick(500);
-                fixture.detectChanges();
-
-                expect(document.querySelectorAll('.hc-datepicker-dialog').length).toBe(1);
-            }));
-
             it('should open datepicker if opened input is set to true', fakeAsync(() => {
                 testComponent.opened = true;
                 fixture.detectChanges();
@@ -447,13 +425,11 @@ describe('DatepickerComponent', () => {
                 fixture.detectChanges();
 
                 expect(document.querySelector('.cdk-overlay-pane')).toBeNull();
-                expect(document.querySelector('hc-dialog-container')).toBeNull();
 
                 testComponent.datepicker.open();
                 fixture.detectChanges();
 
                 expect(document.querySelector('.cdk-overlay-pane')).toBeNull();
-                expect(document.querySelector('hc-dialog-container')).toBeNull();
             });
 
             it('disabled datepicker input should open the calendar if datepicker is enabled', () => {
@@ -508,31 +484,14 @@ describe('DatepickerComponent', () => {
                 expect(popup.getAttribute('role')).toBe('dialog');
             }));
 
-            it('close should close dialog', fakeAsync(() => {
-                testComponent.touch = true;
-                fixture.detectChanges();
-
-                testComponent.datepicker.open();
-                fixture.detectChanges();
-
-                expect(document.querySelector('hc-dialog-container')).not.toBeNull();
-
-                testComponent.datepicker.close();
-                fixture.detectChanges();
-                flush();
-
-                expect(document.querySelector('hc-dialog-container')).toBeNull();
-            }));
-
             it('setting selected via click should update input and close calendar', fakeAsync(() => {
-                testComponent.touch = true;
                 fixture.detectChanges();
 
                 testComponent.datepicker.open();
                 fixture.detectChanges();
                 flush();
 
-                expect(document.querySelector('hc-dialog-container')).not.toBeNull();
+                expect(document.querySelector('.cdk-overlay-pane')).not.toBeNull();
                 expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, 1));
 
                 const cells = document.querySelectorAll('.hc-calendar-body-cell');
@@ -540,19 +499,18 @@ describe('DatepickerComponent', () => {
                 fixture.detectChanges();
                 flush();
 
-                expect(document.querySelector('hc-dialog-container')).toBeNull();
+                expect(document.querySelector('.cdk-overlay-pane')).toBeNull();
                 expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, 2));
             }));
 
             it('setting selected via enter press should update input and close calendar', fakeAsync(() => {
-                testComponent.touch = true;
                 fixture.detectChanges();
 
                 testComponent.datepicker.open();
                 fixture.detectChanges();
                 flush();
 
-                expect(document.querySelector('hc-dialog-container')).not.toBeNull();
+                expect(document.querySelector('.cdk-overlay-pane')).not.toBeNull();
                 expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, 1));
 
                 const calendarBodyEl = document.querySelector('.hc-calendar-body') as HTMLElement;
@@ -564,7 +522,7 @@ describe('DatepickerComponent', () => {
                 fixture.detectChanges();
                 flush();
 
-                expect(document.querySelector('hc-dialog-container')).toBeNull();
+                expect(document.querySelector('.cdk-overlay-pane')).toBeNull();
                 expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, 2));
             }));
 
@@ -588,7 +546,7 @@ describe('DatepickerComponent', () => {
                     }
 
                     expect(selectedChangedSpy.calls.count()).toEqual(1);
-                    expect(document.querySelector('hc-dialog-container')).toBeNull();
+                    expect(document.querySelector('.cdk-overlay-pane')).toBeNull();
                     expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, 2));
                 })
             );
@@ -608,7 +566,7 @@ describe('DatepickerComponent', () => {
 
                 fixture.whenStable().then(() => {
                     expect(selectedChangedSpy.calls.count()).toEqual(0);
-                    expect(document.querySelector('hc-dialog-container')).toBeNull();
+                    expect(document.querySelector('.cdk-overlay-pane')).toBeNull();
                     expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, 1));
                 });
             });
@@ -641,7 +599,6 @@ describe('DatepickerComponent', () => {
 
             // test purposely skipped. hc input doesn't support aria-owns, yet...
             xit('input should aria-owns calendar after opened in touch mode', () => {
-                testComponent.touch = true;
                 fixture.detectChanges();
 
                 const inputEl = fixture.debugElement.query(By.css('input')).nativeElement;
@@ -1082,17 +1039,17 @@ describe('DatepickerComponent', () => {
                 expect(inputEl.value).toBe('1/1/2001');
             });
 
-            it('should not reformat invalid dates on blur', () => {
+            it('should not reformat invalid dates on blur if there is an empty string in the input', () => {
                 const inputEl = fixture.debugElement.query(By.css('input')).nativeElement;
 
-                inputEl.value = 'very-valid-date';
+                inputEl.value = '';
                 dispatchFakeEvent(inputEl, 'input');
                 fixture.detectChanges();
 
                 dispatchFakeEvent(inputEl, 'blur');
                 fixture.detectChanges();
 
-                expect(inputEl.value).toBe('very-valid-date');
+                expect(inputEl.value).toBe('');
             });
 
             it('should mark input touched on calendar selection', fakeAsync(() => {
@@ -1195,13 +1152,13 @@ describe('DatepickerComponent', () => {
             });
 
             it('should open calendar when toggle clicked', () => {
-                expect(document.querySelector('hc-dialog-container')).toBeNull();
+                expect(document.querySelector('.cdk-overlay-pane')).toBeNull();
 
                 const toggle = fixture.debugElement.query(By.css('button'));
                 dispatchMouseEvent(toggle.nativeElement, 'click');
                 fixture.detectChanges();
 
-                expect(document.querySelector('hc-dialog-container')).not.toBeNull();
+                expect(document.querySelector('.cdk-overlay-pane')).not.toBeNull();
             });
 
             it('should not open calendar when toggle clicked if datepicker is disabled', () => {
@@ -1210,12 +1167,12 @@ describe('DatepickerComponent', () => {
                 const toggle = fixture.debugElement.query(By.css('button')).nativeElement;
 
                 expect(toggle.hasAttribute('disabled')).toBe(true);
-                expect(document.querySelector('hc-dialog-container')).toBeNull();
+                expect(document.querySelector('.cdk-overlay-pane')).toBeNull();
 
                 dispatchMouseEvent(toggle, 'click');
                 fixture.detectChanges();
 
-                expect(document.querySelector('hc-dialog-container')).toBeNull();
+                expect(document.querySelector('.cdk-overlay-pane')).toBeNull();
             });
 
             it('should not open calendar when toggle clicked if input is disabled', () => {
@@ -1226,12 +1183,12 @@ describe('DatepickerComponent', () => {
                 const toggle = fixture.debugElement.query(By.css('button')).nativeElement;
 
                 expect(toggle.hasAttribute('disabled')).toBe(true);
-                expect(document.querySelector('hc-dialog-container')).toBeNull();
+                expect(document.querySelector('.cdk-overlay-pane')).toBeNull();
 
                 dispatchMouseEvent(toggle, 'click');
                 fixture.detectChanges();
 
-                expect(document.querySelector('hc-dialog-container')).toBeNull();
+                expect(document.querySelector('.cdk-overlay-pane')).toBeNull();
             });
 
             it('should set the `button` type on the trigger to prevent form submissions', () => {
@@ -1242,7 +1199,6 @@ describe('DatepickerComponent', () => {
             it('should restore focus to the toggle after the calendar is closed', () => {
                 const toggle = fixture.debugElement.query(By.css('button')).nativeElement;
 
-                fixture.componentInstance.touchUI = false;
                 fixture.detectChanges();
 
                 toggle.focus();
@@ -1449,7 +1405,7 @@ describe('DatepickerComponent', () => {
                 testComponent.datepicker.open();
                 fixture.detectChanges();
 
-                expect(document.querySelector('hc-dialog-container')).not.toBeNull();
+                expect(document.querySelector('.cdk-overlay-pane')).not.toBeNull();
 
                 const cells = document.querySelectorAll('.hc-calendar-body-cell');
                 expect(cells[0].classList).toContain('hc-calendar-body-disabled');
@@ -1520,7 +1476,7 @@ describe('DatepickerComponent', () => {
                 testComponent.datepicker.open();
                 fixture.detectChanges();
 
-                expect(document.querySelector('hc-dialog-container')).not.toBeNull();
+                expect(document.querySelector('.cdk-overlay-pane')).not.toBeNull();
 
                 const cells = document.querySelectorAll('.hc-calendar-body-cell');
                 dispatchMouseEvent(cells[0], 'click');
@@ -1705,28 +1661,6 @@ describe('DatepickerComponent', () => {
 
                 expect(overlay.getAttribute('dir')).toBe('rtl');
             }));
-
-            it('should pass along the directionality to the dialog in touch mode', () => {
-                const fixture = createComponent(
-                    StandardDatepicker,
-                    [HcNativeDateModule],
-                    [
-                        {
-                            provide: Directionality,
-                            useValue: {value: 'rtl'}
-                        }
-                    ]
-                );
-
-                fixture.componentInstance.touch = true;
-                fixture.detectChanges();
-                fixture.componentInstance.datepicker.open();
-                fixture.detectChanges();
-
-                const overlay = document.querySelector('.cdk-global-overlay-wrapper')!;
-
-                expect(overlay.getAttribute('dir')).toBe('rtl');
-            });
         });
     });
 
@@ -1802,6 +1736,67 @@ describe('DatepickerComponent', () => {
             fixture.detectChanges();
 
             expect(document.querySelector('.custom-element')).toBeTruthy();
+        }));
+    });
+
+    describe('datepicker with time selection only', () => {
+        let fixture: ComponentFixture<DatepickerWithTime>;
+        let testComponent: DatepickerWithTime;
+
+        beforeEach(fakeAsync(() => {
+            fixture = createComponent(DatepickerWithTime, [HcNativeDateModule]);
+            fixture.detectChanges();
+            testComponent = fixture.componentInstance;
+        }));
+
+        it('should instantiate a datepicker with time selection', fakeAsync(() => {
+            expect(testComponent).toBeTruthy();
+        }));
+
+        it('should display only the time picker', fakeAsync(() => {
+            testComponent.datepicker.open();
+            fixture.detectChanges();
+            flush();
+            fixture.detectChanges();
+
+            expect(document.querySelector('.hc-calendar-time-picker')).toBeTruthy();
+            expect(document.querySelector('.hc-calendar-content')).toBeFalsy();
+        }));
+
+        it('should not display the AM/PM select with a 24 hour cycle', fakeAsync(() => {
+            testComponent.cycleVal = 24;
+            testComponent.datepicker.open();
+            fixture.detectChanges();
+            flush();
+            fixture.detectChanges();
+
+            let formFields = document.querySelectorAll('hc-form-field');
+            expect(formFields.length).toBe(2);
+        }));
+    });
+
+    describe('datepicker with date and time selection', () => {
+        let fixture: ComponentFixture<DatepickerWithDateTime>;
+        let testComponent: DatepickerWithDateTime;
+
+        beforeEach(fakeAsync(() => {
+            fixture = createComponent(DatepickerWithDateTime, [HcNativeDateModule]);
+            fixture.detectChanges();
+            testComponent = fixture.componentInstance;
+        }));
+
+        it('should instantiate a datepicker with date and time selection', fakeAsync(() => {
+            expect(testComponent).toBeTruthy();
+        }));
+
+        it('should display both the date and time picker', fakeAsync(() => {
+            testComponent.datepicker.open();
+            fixture.detectChanges();
+            flush();
+            fixture.detectChanges();
+
+            expect(document.querySelector('.hc-calendar-time-picker')).toBeTruthy();
+            expect(document.querySelector('.hc-calendar-content')).toBeTruthy();
         }));
     });
 });

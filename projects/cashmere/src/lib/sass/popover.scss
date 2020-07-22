@@ -1,0 +1,149 @@
+@import '~@angular/cdk/_overlay';
+@import './colors';
+@import './variables';
+
+$popover-arrow-width: 8px;
+
+// override index for implementation inside a modal: https://github.com/HealthCatalyst/Fabric.Cashmere/issues/867
+$cdk-z-index-overlay-container: $zindex-cdk-overlay;
+$cdk-z-index-overlay: $zindex-cdk-overlay;
+
+// Include overlay styles
+@include cdk-overlay();
+
+@mixin hc-pop-before-above() {
+    transform-origin: right bottom;
+
+    [dir='rtl'] & {
+        transform-origin: left bottom;
+    }
+}
+
+@mixin hc-pop-before-center() {
+    transform-origin: right center;
+
+    [dir='rtl'] & {
+        transform-origin: left center;
+    }
+}
+
+@mixin hc-pop-before-below() {
+    transform-origin: right top;
+
+    [dir='rtl'] & {
+        transform-origin: left top;
+    }
+}
+
+@mixin hc-pop-center-above() {
+    transform-origin: center bottom;
+}
+
+@mixin hc-pop-center-below() {
+    transform-origin: center top;
+}
+
+@mixin hc-pop-after-above() {
+    transform-origin: left bottom;
+
+    [dir='rtl'] & {
+        transform-origin: right bottom;
+    }
+}
+
+@mixin hc-pop-after-center() {
+    transform-origin: left center;
+
+    [dir='rtl'] & {
+        transform-origin: right center;
+    }
+}
+
+@mixin hc-pop-after-below() {
+    transform-origin: left top;
+
+    [dir='rtl'] & {
+        transform-origin: right top;
+    }
+}
+
+@mixin hc-pop-container-basic() {
+    background-color: $white;
+    border: 1px solid $gray-300;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+    color: $offblack;
+    padding: 12px;
+}
+
+// Arrows
+$popover-arrow-width: 10px;
+
+@mixin hc-pop-arrow() {
+    background-color: $white;
+    border-style: solid;
+    border-width: 1px;
+    display: block;
+    height: $popover-arrow-width;
+    position: absolute;
+    transform: rotate(45deg);
+    width: $popover-arrow-width;
+}
+
+@mixin hc-pop-arrow-vert() {
+    margin: $popover-arrow-width - 4px;
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
+}
+
+@mixin hc-pop-arrow-horiz() {
+    margin: $popover-arrow-width - 4px;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+}
+
+@mixin hc-pop-arrow-x-start() {
+    left: 5px;
+}
+
+@mixin hc-pop-arrow-x-center() {
+    left: calc(50% - #{$popover-arrow-width - 4px});
+}
+
+@mixin hc-pop-arrow-x-end() {
+    left: calc(100% - #{$popover-arrow-width * 2 - 5px});
+}
+
+@mixin hc-pop-arrow-y-start() {
+    top: 5px;
+}
+
+@mixin hc-pop-arrow-y-center() {
+    top: calc(50% - #{$popover-arrow-width - 4px});
+}
+
+@mixin hc-pop-arrow-y-end() {
+    top: calc(100% - #{$popover-arrow-width * 2 - 5px});
+}
+
+@mixin hc-pop-arrow-y-above() {
+    border-color: transparent $gray-300 $gray-300 transparent;
+    bottom: -#{$popover-arrow-width - 4px};
+}
+
+@mixin hc-pop-arrow-y-below() {
+    border-color: $gray-300 transparent transparent $gray-300;
+    top: -#{$popover-arrow-width - 4px};
+}
+
+@mixin hc-pop-arrow-x-before() {
+    border-color: $gray-300 $gray-300 transparent transparent;
+    right: -#{$popover-arrow-width - 4px};
+}
+
+@mixin hc-pop-arrow-x-after() {
+    border-color: transparent transparent $gray-300 $gray-300;
+    left: -#{$popover-arrow-width - 4px};
+}

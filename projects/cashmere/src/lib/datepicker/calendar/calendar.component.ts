@@ -26,8 +26,8 @@ import {yearsPerPage, MultiYearViewComponent} from '../multi-year-view/multi-yea
 import {HcCalendarCellCssClasses} from '../calendar-body/calendar-body.component';
 import {MonthViewComponent} from '../month-view/month-view.component';
 import {YearViewComponent} from '../year-view/year-view.component';
+import {FormControl} from '@angular/forms';
 
-// tslint:disable:no-use-before-declare
 /**
  * Possible views for the calendar.
  * @docs-private
@@ -55,24 +55,28 @@ export class CalendarHeaderComponent {
         this.calendar.stateChanges.subscribe(() => changeDetectorRef.markForCheck());
     }
 
+    /** The label for the currently visible month */
+    get monthButtonText(): string {
+        return this._dateAdapter.getMonthNames('short')[this._dateAdapter.getMonth(this.calendar.activeDate)];
+    }
+
     /** The label for the current calendar view. */
     get periodButtonText(): string {
-        if (this.calendar.currentView === 'month') {
-            return this._dateAdapter.format(this.calendar.activeDate, this._dateFormats.display.monthYearLabel).toLocaleUpperCase();
-        }
-        if (this.calendar.currentView === 'year') {
-            return this._dateAdapter.getYearName(this.calendar.activeDate);
-        }
-        const activeYear = this._dateAdapter.getYear(this.calendar.activeDate);
-        const firstYearInView = this._dateAdapter.getYearName(this._dateAdapter.createDate(activeYear - (activeYear % 24), 0, 1));
-        const lastYearInView = this._dateAdapter.getYearName(
-            this._dateAdapter.createDate(activeYear + yearsPerPage - 1 - (activeYear % 24), 0, 1)
-        );
-        return `${firstYearInView} \u2013 ${lastYearInView}`;
+        return this._dateAdapter.getYearName(this.calendar.activeDate);
     }
 
     get periodButtonLabel(): string {
         return this.calendar.currentView === 'month' ? this._intl.switchToMultiYearViewLabel : this._intl.switchToMonthViewLabel;
+    }
+
+    /** The label for the jump to today button */
+    get _todayButtonLabel(): string {
+        return this._intl.switchToTodayLabel;
+    }
+
+    /** The label for the currently displayed month */
+    get monthButtonLabel(): string {
+        return this._intl.currentMonthLabel;
     }
 
     /** The label for the the previous button. */
@@ -114,17 +118,10 @@ export class CalendarHeaderComponent {
                 : this._dateAdapter.addCalendarYears(this.calendar.activeDate, this.calendar.currentView === 'year' ? 1 : yearsPerPage);
     }
 
-    todayClicked(): void {
-        this.calendar.currentView = 'month';
-        this.calendar._dateSelected(this._dateAdapter.today());
-        this.calendar._userSelection.emit();
-    }
+    /** Handles clicks on the jump to today button */
 
-    todayEnabled(): boolean {
-        return (
-            (!this.calendar.minDate || this._dateAdapter.compareDate(this._dateAdapter.today(), this.calendar.minDate) < 0) &&
-            (!this.calendar.maxDate || this._dateAdapter.compareDate(this._dateAdapter.today(), this.calendar.maxDate) > 0)
-        );
+    _todayClicked(): void {
+        this.calendar.activeDate = this._dateAdapter.today();
     }
 
     /** Whether the previous period button is enabled. */
@@ -138,6 +135,28 @@ export class CalendarHeaderComponent {
     /** Whether the next period button is enabled. */
     nextEnabled(): boolean {
         return !this.calendar.maxDate || !this._isSameView(this.calendar.activeDate, this.calendar.maxDate);
+    }
+
+    _todayEnabled(): boolean {
+        let minDate;
+        let maxDate;
+        let today = new Date(this._dateAdapter.today().toDateString());
+
+        /** Normalize the compare dates to all be on the first day of the month because we are only concerned
+         * about whether today falls outside of the month than min or max is in */
+        today.setDate(1);
+        if (this.calendar.minDate) {
+            minDate = new Date(this.calendar.minDate.toDateString());
+            minDate.setDate(1);
+        }
+        if (this.calendar.maxDate) {
+            maxDate = new Date(this.calendar.maxDate.toDateString());
+            maxDate.setDate(1);
+        }
+        return (
+            (!minDate || this._dateAdapter.compareDate(minDate, today) < 1) &&
+            (!maxDate || this._dateAdapter.compareDate(maxDate, today) > -1)
+        );
     }
 
     /** Whether the two dates represent the same view in the current view mode (month or year). */
@@ -164,7 +183,7 @@ export class CalendarHeaderComponent {
     selector: 'hc-calendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['calendar.component.scss'],
-    // tslint:disable-next-line:use-host-property-decorator
+    // tslint:disable-next-line:no-host-metadata-property
     host: {
         class: 'hc-calendar'
     },
@@ -179,6 +198,9 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
 
     /** A portal containing the header component type for this calendar. */
     _calendarHeaderPortal: Portal<any>;
+
+    /** Stores the current am/pm value */
+    _period: FormControl = new FormControl('am');
 
     private _intlChanges: Subscription;
 
@@ -203,6 +225,24 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     @Input()
     startView: CalendarViewComponent = 'month';
 
+    /** Whether the calendar should show calendar, time-picker, or both */
+    @Input()
+    mode: 'date' | 'time' | 'date-time' = 'date';
+
+    /** Whether the time picker should display a 12-hour or 24-clock. Accepts 12 or 24. Defaults to 12. */
+    @Input()
+    get hourCycle(): string | number {
+        return this._hourCycle;
+    }
+    set hourCycle(value: string | number) {
+        if (+value === 12 || +value === 24) {
+            this._hourCycle = +value;
+        } else if (value) {
+            throw Error('Unsupported hourCycle value: ' + value + '. Accepted values are 12 or 24.');
+        }
+    }
+    _hourCycle: number = 12;
+
     /** The currently selected date. */
     @Input()
     get selected(): D | null {
@@ -210,6 +250,9 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
     set selected(value: D | null) {
         this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
+        if (this._selected) {
+            this._period.setValue(this._selected.getHours() > 11 ? 'pm' : 'am');
+        }
     }
     private _selected: D | null;
 
@@ -264,15 +307,15 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     readonly _userSelection: EventEmitter<void> = new EventEmitter<void>();
 
     /** Reference to the current month view component. */
-    @ViewChild(MonthViewComponent)
+    @ViewChild(MonthViewComponent, {static: false})
     monthView: MonthViewComponent;
 
     /** Reference to the current year view component. */
-    @ViewChild(YearViewComponent)
+    @ViewChild(YearViewComponent, {static: false})
     yearView: YearViewComponent;
 
     /** Reference to the current multi-year view component. */
-    @ViewChild(MultiYearViewComponent)
+    @ViewChild(MultiYearViewComponent, {static: false})
     multiYearView: MultiYearViewComponent;
 
     /**
@@ -303,8 +346,74 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
      */
     stateChanges = new Subject<void>();
 
+    /** A string containing the value of minutes for the current date */
+    get minutes(): string | null {
+        if (this.selected) {
+            let minVal = this.selected.getMinutes();
+            return minVal < 10 ? '0' + minVal : minVal.toString();
+        } else {
+            return this.selected;
+        }
+    }
+    set minutes(value: string | null) {
+        if (value && !isNaN(+value)) {
+            let tempDate = this.selected ? new Date(this.selected.getTime()) : new Date();
+            tempDate.setMinutes(+value);
+            this.selectedChange.emit(tempDate);
+            this._userSelected();
+        }
+    }
+
+    /** A string containing the hour for the current date */
+    get hours(): string | null {
+        if (this.selected) {
+            let hourVal = this.selected.getHours();
+            if (this._hourCycle === 12) {
+                if (hourVal > 11) {
+                    return hourVal === 12 ? hourVal.toString() : (hourVal - 12).toString();
+                } else {
+                    return hourVal === 0 ? '12' : hourVal.toString();
+                }
+            } else {
+                return hourVal.toString();
+            }
+        } else {
+            return this.selected;
+        }
+    }
+    set hours(value: string | null) {
+        if (value && !isNaN(+value)) {
+            let hourVal: number = +value;
+            if (this._hourCycle === 12) {
+                if (this._period.value === 'pm' && hourVal !== 12) {
+                    hourVal += 12;
+                } else if (this._period.value === 'am' && hourVal === 12) {
+                    hourVal = 0;
+                }
+            }
+            let tempDate = this.selected ? new Date(this.selected.getTime()) : new Date();
+            tempDate.setHours(hourVal);
+            this.selectedChange.emit(tempDate);
+            this._userSelected();
+        }
+    }
+
+    _periodChange() {
+        if (this.selected) {
+            let tempDate = new Date(this.selected.getTime());
+            let curHours = tempDate.getHours();
+            if (this._period.value === 'pm') {
+                tempDate.setHours(curHours + 12);
+            } else {
+                tempDate.setHours(curHours - 12);
+            }
+            this.selectedChange.emit(tempDate);
+            this._userSelected();
+        }
+    }
+
     constructor(
-        _intl: HcDatepickerIntl,
+        private _intl: HcDatepickerIntl,
         @Optional() private _dateAdapter: DateAdapter<D>,
         @Optional()
         @Inject(HC_DATE_FORMATS)
@@ -363,7 +472,9 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
 
     focusActiveCell() {
-        this._getCurrentViewComponent()._focusActiveCell();
+        if (this.mode !== 'time') {
+            this._getCurrentViewComponent()._focusActiveCell();
+        }
     }
 
     /** Updates today's date after an update of the active date */
@@ -411,5 +522,59 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     /** Returns the component instance that corresponds to the current calendar view. */
     private _getCurrentViewComponent() {
         return this.monthView || this.yearView || this.multiYearView;
+    }
+
+    _hoursUp() {
+        if (!this.hours) {
+            this.hours = this._hourCycle > 12 ? '0' : '1';
+        } else {
+            let curHour = +this.hours;
+            curHour++;
+            const tempCycle = this._hourCycle > 12 ? 23 : 12;
+            if (curHour > tempCycle) {
+                curHour = tempCycle;
+            }
+            this.hours = curHour.toString();
+        }
+    }
+
+    _hoursDown() {
+        if (!this.hours) {
+            this.hours = this._hourCycle > 12 ? '23' : '12';
+        } else {
+            let curHour = +this.hours;
+            curHour--;
+            const tempCycle = this._hourCycle > 12 ? 0 : 1;
+            if (curHour < tempCycle) {
+                curHour = tempCycle;
+            }
+            this.hours = curHour.toString();
+        }
+    }
+
+    _minutesUp() {
+        if (!this.minutes) {
+            this.minutes = '00';
+        } else {
+            let curMin = +this.minutes;
+            curMin++;
+            if (curMin > 59) {
+                curMin = 59;
+            }
+            this.minutes = curMin.toString();
+        }
+    }
+
+    _minutesDown() {
+        if (!this.minutes) {
+            this.minutes = '59';
+        } else {
+            let curMin = +this.minutes;
+            curMin--;
+            if (curMin < 1) {
+                curMin = 1;
+            }
+            this.minutes = curMin.toString();
+        }
     }
 }

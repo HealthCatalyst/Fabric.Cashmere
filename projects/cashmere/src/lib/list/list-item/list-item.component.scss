@@ -12,7 +12,8 @@
     @include hc-list-text();
 }
 
-.hc-list-icon, .hc-list-avatar {
+.hc-list-icon,
+.hc-list-avatar {
     @include hc-list-icon();
 }
 

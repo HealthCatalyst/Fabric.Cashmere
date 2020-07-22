@@ -1,9 +1,10 @@
 ##### Basic Usage
+
 Wrap any component you want to display in a popover with an `<hc-pop>` component.
 
 ```html
 <hc-pop>
-  <app-contact-overview [contact]="myContact"></app-contact-overview>
+    <app-contact-overview [contact]="myContact"></app-contact-overview>
 </hc-pop>
 ```
 
@@ -11,11 +12,11 @@ Next, hook the popover to an anchor element.
 
 ```html
 <button [hcPop]="contactPopover">
-  See Contact Details
+    See Contact Details
 </button>
 
 <hc-pop #contactPopover>
-  <app-contact-overview [contact]="myContact"></app-contact-overview>
+    <app-contact-overview [contact]="myContact"></app-contact-overview>
 </hc-pop>
 ```
 
@@ -34,7 +35,7 @@ to `false`.
 
 ```html
 <hc-pop [autoFocus]="false">
-  <!-- ... -->
+    <!-- ... -->
 </hc-pop>
 ```
 
@@ -43,7 +44,7 @@ opening the popover. To disable this, you can set the `restoreFocus` property to
 
 ```html
 <hc-pop [restoreFocus]="false">
-  <!-- ... -->
+    <!-- ... -->
 </hc-pop>
 ```
 
@@ -55,7 +56,7 @@ restored.
 
 ```html
 <button [hcPop]="myPopover" (click)="myPopover.open({ restoreFocus: false })">
-  Open
+    Open
 </button>
 ```
 
@@ -101,15 +102,14 @@ export class AppModule { }
 ```
 
 #### Modifying Animations
+
 By default, the opening and closing animations of a popover are quick with a simple easing curve.
 You can modify these animation curves using `openTransition` and `closeTransition`. Or, you can disable animation
 altogther by setting `shouldAnimate` to false.
 
 ```html
 <!-- open slowly but close quickly -->
-<hc-pop #mySlowPopover
-    openTransition="1000ms ease-out"
-    closeTransition="100ms ease-in">
-  <!-- ... -->
+<hc-pop #mySlowPopover openTransition="1000ms ease-out" closeTransition="100ms ease-in">
+    <!-- ... -->
 </hc-pop>
 ```

@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, HostListener, Input, ViewChild, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import * as d3 from 'd3';
 
 @Component({
@@ -9,8 +9,8 @@ import * as d3 from 'd3';
     styleUrls: ['./barchart.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class BarchartComponent implements OnInit {
-    @ViewChild('chart')
+export class BarchartComponent implements AfterViewInit {
+    @ViewChild('chart', {static: false})
     private chartContainer: ElementRef;
     @Input()
     private data: Array<any>;
@@ -35,7 +35,7 @@ export class BarchartComponent implements OnInit {
 
     constructor() {}
 
-    ngOnInit() {
+    ngAfterViewInit() {
         this.createChart();
         if (this.data) {
             this.updateChart();

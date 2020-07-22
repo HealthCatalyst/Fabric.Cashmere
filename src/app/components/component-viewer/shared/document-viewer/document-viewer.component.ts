@@ -1,4 +1,4 @@
-/* tslint:disable:use-host-property-decorator */
+/* tslint:disable:no-host-metadata-property */
 
 import {Component, ElementRef, Input, ViewEncapsulation} from '@angular/core';
 import {HttpClient} from '@angular/common/http';

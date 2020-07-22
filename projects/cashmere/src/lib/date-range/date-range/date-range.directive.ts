@@ -14,9 +14,13 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
     @Output()
     readonly selectedDateRangeChanged: EventEmitter<DateRange> = new EventEmitter<DateRange>();
 
-    /** Selected date range. */
+    /** Sets the selected date range. Accepts either a `DateRange` or a numerical index for preset. */
     @Input()
-    selectedDate: DateRange;
+    selectedDate: number | DateRange;
+
+    /** Emits either a numerical index for the selected preset, or a `DateRange` if the selected value is not a preset */
+    @Output()
+    readonly selectedPresetChanged: EventEmitter<number | DateRange> = new EventEmitter<number | DateRange>();
 
     /** Configuration to setup behavior of component. */
     @Input()
@@ -31,6 +35,9 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
     ) {
         configStoreService.rangeUpdate$.subscribe((daterange: DateRange) => {
             this.selectedDateRangeChanged.emit(daterange);
+        });
+        configStoreService.presetUpdate$.subscribe((preset: number | DateRange) => {
+            this.selectedPresetChanged.emit(preset);
         });
     }
 
@@ -48,8 +55,13 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
             this.configStoreService.updateDateRangeOptions(options);
         }
         if (changes['selectedDate']) {
-            const selectedDate: DateRange = changes['selectedDate'].currentValue;
-            this.configStoreService.updateRange(selectedDate);
+            const selectedDate: number | DateRange = changes['selectedDate'].currentValue;
+
+            if ( typeof selectedDate === 'number' ) {
+                this.configStoreService.updatePreset(selectedDate);
+            } else {
+                this.configStoreService.updateRange(selectedDate);
+            }
         }
     }
 

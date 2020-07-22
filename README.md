@@ -6,7 +6,7 @@ An Angular component library that makes any task feel luxurious.
 
 ## Quick Links
 
--   [CHANGELOG](https://github.com/HealthCatalyst/Fabric.Cashmere/blob/master/CHANGELOG.md)
+-   [Releases](https://github.com/HealthCatalyst/Fabric.Cashmere/releases)
 -   [Components](http://cashmere.healthcatalyst.net/components)
 -   [Styles](http://cashmere.healthcatalyst.net/styles)
 -   [Getting Started](http://cashmere.healthcatalyst.net/guides/getting-started)
@@ -17,13 +17,13 @@ An Angular component library that makes any task feel luxurious.
 
 ## Installing to an Existing Project
 
-- Run `npm i --save @healthcatalyst/cashmere`
+-   Run `npm i --save @healthcatalyst/cashmere`
 
 ## Running the Demo Application
 
-- Clone the repository `git clone https://github.com/HealthCatalyst/Fabric.Cashmere.git`
-- Run `cd Fabric.Cashmere && npm install && npm start`
-- View the demo application at `http://localhost:4200`
+-   Clone the repository `git clone https://github.com/HealthCatalyst/Fabric.Cashmere.git`
+-   Run `cd Fabric.Cashmere && npm install && npm start`
+-   View the demo application at `http://localhost:4200`
 
 ## Sponsors
 

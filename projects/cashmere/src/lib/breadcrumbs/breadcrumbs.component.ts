@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, Input} from '@angular/core';
+import {Component, OnDestroy, OnInit, Input, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Event, NavigationEnd, Params, PRIMARY_OUTLET, Router} from '@angular/router';
 
 /**
@@ -20,7 +20,8 @@ export type QueryParamsHandling = 'merge' | 'preserve' | '';
 /** A navigational aid that allows users to keep track of their location within the current application  */
 @Component({
     selector: 'hc-breadcrumbs',
-    templateUrl: './breadcrumbs.component.html'
+    templateUrl: './breadcrumbs.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 export class BreadcrumbsComponent implements OnInit, OnDestroy {
     public _breadcrumbs: IBreadcrumb[] = [];

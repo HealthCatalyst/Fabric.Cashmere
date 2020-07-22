@@ -35,6 +35,10 @@
         @include hc-navbar-username();
     }
 
+    .hc-navbar-username-subtext {
+        @include hc-navbar-username-subtext();
+    }
+
     .hc-navbar-vertical-separator {
         @include hc-navbar-vertical-separator();
     }
@@ -45,12 +49,5 @@
 
     .hc-navbar-mobile-menu {
         @include hc-navbar-mobile-menu();
-    }
-}
-
-.more-popover a {
-    &.active {
-        color: $text;
-        cursor: default;
     }
 }

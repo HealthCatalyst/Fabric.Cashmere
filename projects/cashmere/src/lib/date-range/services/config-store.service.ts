@@ -9,12 +9,14 @@ export class ConfigStoreService {
     private defaultOptions: DateRangeOptions = {
         presets: [],
         format: 'medium',
+        mode: 'date',
+        hourCycle: 12,
         excludeWeekends: false,
         locale: 'en-us',
         applyLabel: 'Apply',
         cancelLabel: 'Cancel',
-        startDatePrefix: 'Start Date',
-        endDatePrefix: 'End Date',
+        startDatePrefix: 'Start date:',
+        endDatePrefix: 'End date:',
         invalidDateLabel: 'Please enter valid date'
     };
 
@@ -24,7 +26,19 @@ export class ConfigStoreService {
     private rangeUpdateSubject: BehaviorSubject<DateRange> = new BehaviorSubject<DateRange>({fromDate: undefined, toDate: undefined});
     public rangeUpdate$: Observable<DateRange>;
 
+    private presetUpdateSubject: BehaviorSubject<number | DateRange> = new BehaviorSubject<number | DateRange>({
+        fromDate: undefined,
+        toDate: undefined
+    });
+    public presetUpdate$: Observable<number | DateRange>;
+
     public weekendFilter: (d: D) => boolean = () => true;
+
+    private readonly emptyWeekendFilter = () => true;
+    private readonly excludeWeekendFilter = (d: Date): boolean => {
+        const day = d.getDay();
+        return day !== 0 && day !== 6;
+    };
 
     constructor() {
         this.dateRangeOptions$ = this.dateRangeOptionsSubject.pipe(
@@ -36,17 +50,15 @@ export class ConfigStoreService {
             }),
             tap((options: DateRangeOptions) => {
                 if (!!options.excludeWeekends) {
-                    this.weekendFilter = (d: Date): boolean => {
-                        const day = d.getDay();
-                        return day !== 0 && day !== 6;
-                    };
+                    this.weekendFilter = this.excludeWeekendFilter;
                 } else {
-                    this.weekendFilter = () => true;
+                    this.weekendFilter = this.emptyWeekendFilter;
                 }
             })
         );
 
         this.rangeUpdate$ = this.rangeUpdateSubject.pipe();
+        this.presetUpdate$ = this.presetUpdateSubject.pipe();
     }
 
     updateDateRangeOptions(options: DateRangeOptions) {
@@ -55,5 +67,9 @@ export class ConfigStoreService {
 
     updateRange(dateRange: DateRange) {
         this.rangeUpdateSubject.next(dateRange);
+    }
+
+    updatePreset(value: number | DateRange) {
+        this.presetUpdateSubject.next(value);
     }
 }

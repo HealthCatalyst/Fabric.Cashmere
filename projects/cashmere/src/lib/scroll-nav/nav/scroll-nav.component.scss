@@ -1,33 +1,21 @@
-@import '../../sass/colors';
-@import '../../sass/mixins';
+@import '../../sass/scroll-nav.scss';
 
 .hc-scroll-nav-links-container {
-    margin-right: 30px;
+    @include hc-scroll-nav-links-container();
+}
 
-    .hc-scroll-nav-link {
-        padding: 10px 15px;
-        color: $offblack;
-        font-weight: 500;
-        @include fontSize(14px);
-        background-color: transparent;
-        cursor: pointer;
+.hc-scroll-nav-links-container ul {
+    @include hc-scroll-nav-links-ul();
+}
 
-        &:hover {
-            background-color: transparentize($slate-gray-200, 0.75);
-        }
+.hc-scroll-nav-link {
+    @include hc-scroll-nav-links();
 
-        &:active {
-            background-color: transparentize($slate-gray-200, 0.5);
-        }
-
-        &.hc-scroll-nav-active {
-            background-color: $blue;
-            color: $white;
-            font-weight: 500;
-        }
+    &:focus {
+        @include hc-scroll-nav-link-focus();
     }
+}
 
-    ul {
-        list-style: none;
-    }
+.hc-scroll-nav-link-active {
+    @include hc-scroll-nav-link-active();
 }

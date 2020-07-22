@@ -3,10 +3,10 @@ import {Injectable} from '@angular/core';
 export interface DocItem {
     id: string;
     name: string;
-    // Category options are: 'forms', 'nav', 'layout', 'buttons', 'popups', 'table'
-    category: string;
+    category: 'forms' | 'nav' | 'layout' | 'buttons' | 'popups' | 'table' | 'pipes';
     examples?: string[];
     usageDoc?: boolean;
+    hideApi?: boolean;
 }
 
 const docs: DocItem[] = [
@@ -14,7 +14,7 @@ const docs: DocItem[] = [
         id: 'checkbox',
         name: 'Checkbox',
         category: 'forms',
-        examples: ['checkbox-standard', 'checkbox-disabled', 'checkbox-forms'],
+        examples: ['checkbox-standard', 'checkbox-indeterminate', 'checkbox-align', 'checkbox-forms'],
         usageDoc: true
     },
     {id: 'accordion', name: 'Accordion', category: 'layout', examples: ['accordion-overview']},
@@ -24,7 +24,8 @@ const docs: DocItem[] = [
         id: 'button',
         name: 'Button',
         category: 'buttons',
-        examples: ['button-type', 'button-split', 'button-size', 'button-anchor', 'button-link', 'button-icon']
+        usageDoc: true,
+        examples: ['button-type', 'button-split', 'button-size', 'button-anchor', 'button-link', 'button-icon', 'button-colors']
     },
     {
         id: 'chip',
@@ -43,7 +44,7 @@ const docs: DocItem[] = [
         id: 'date-range',
         name: 'DateRange',
         category: 'forms',
-        examples: ['date-range'],
+        examples: ['date-range', 'date-range-time'],
         usageDoc: true
     },
     {
@@ -52,14 +53,38 @@ const docs: DocItem[] = [
         category: 'layout',
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
     },
-    {id: 'form-field', name: 'Form Field', category: 'forms', examples: ['form-field-overview']},
+    {id: 'ellipsis-pipe', name: 'Ellipsis', category: 'pipes', usageDoc: true, hideApi: true, examples: ['ellipsis-overview']},
+    {id: 'file-size-pipe', name: 'File Size', category: 'pipes', usageDoc: true, hideApi: true, examples: ['file-size-overview']},
+    {
+        id: 'number-abbreviator-pipe',
+        name: 'Number Abbreviator',
+        category: 'pipes',
+        usageDoc: true,
+        hideApi: true,
+        examples: ['number-abbreviator-overview']
+    },
+    {
+        id: 'form-field',
+        name: 'Form Field',
+        category: 'forms',
+        usageDoc: true,
+        examples: ['form-field-overview', 'form-field-tight', 'form-field-labels']
+    },
     {id: 'icon', name: 'Icon', category: 'buttons', examples: ['icon-overview']},
     {
         id: 'input',
         name: 'Input',
         category: 'forms',
         usageDoc: true,
-        examples: ['input-required', 'input-suffix', 'input-prefix']
+        examples: ['input-required', 'input-suffix', 'input-prefix', 'input-text-area']
+    },
+    {
+        id: 'null-or-empty-string-pipe',
+        name: 'IfNullOrEmpty',
+        category: 'pipes',
+        usageDoc: true,
+        hideApi: true,
+        examples: ['null-or-empty-string-overview']
     },
     {id: 'list', name: 'List', category: 'layout', examples: ['list-overview']},
     {id: 'modal', name: 'Modal', category: 'popups', examples: ['modal-overview']},
@@ -69,6 +94,14 @@ const docs: DocItem[] = [
         category: 'nav',
         examples: ['navbar-overview', 'navbar-app-switcher'],
         usageDoc: true
+    },
+    {
+        id: 'multiselect',
+        name: 'Multiselect & Typeahead',
+        category: 'forms',
+        hideApi: true,
+        usageDoc: true,
+        examples: ['multiselect-overview', 'multiselect-custom-templates', 'multiselect-embed-checkbox']
     },
     {
         id: 'pagination',
@@ -82,7 +115,7 @@ const docs: DocItem[] = [
         id: 'pop',
         name: 'Popover',
         category: 'popups',
-        examples: ['popover-simple', 'popover-overview', 'popover-menu', 'popover-tooltip'],
+        examples: ['popover-simple', 'popover-menu', 'tooltip-overview', 'popover-right-click', 'popover-overview'],
         usageDoc: true
     },
     {
@@ -113,6 +146,7 @@ const docs: DocItem[] = [
         usageDoc: true
     },
     {id: 'sort', name: 'Sort', category: 'table', usageDoc: true},
+    {id: 'stepper', name: 'Stepper', category: 'layout', examples: ['stepper-overview']},
     {id: 'subnav', name: 'Subnav', category: 'nav', examples: ['subnav-overview']},
     {
         id: 'table',

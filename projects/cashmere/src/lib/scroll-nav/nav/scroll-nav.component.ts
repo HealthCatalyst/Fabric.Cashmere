@@ -1,5 +1,5 @@
 import {Component, ElementRef, ViewEncapsulation, AfterViewInit, QueryList, ContentChildren} from '@angular/core';
-import { ScrollNavLinkDirective } from './scroll-nav-link.directive';
+import {ScrollNavLinkDirective} from './scroll-nav-link.directive';
 
 /** Container for scroll navigation links. */
 @Component({
@@ -10,8 +10,10 @@ import { ScrollNavLinkDirective } from './scroll-nav-link.directive';
 })
 export class HcScrollNavComponent implements AfterViewInit {
     @ContentChildren(ScrollNavLinkDirective) private linkList: QueryList<ScrollNavLinkDirective>;
-    public get _links(): Array<HTMLElement> { return this.linkList.toArray().map(e => e._el.nativeElement); }
-    private readonly ACTIVE_CLASS = 'hc-scroll-nav-active';
+    public get _links(): Array<HTMLElement> {
+        return this.linkList.toArray().map(e => e._el.nativeElement);
+    }
+    private readonly ACTIVE_CLASS = 'hc-scroll-nav-link-active';
 
     constructor(public _elementRef: ElementRef) {}
 

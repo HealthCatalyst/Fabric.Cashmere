@@ -1,43 +1,42 @@
+@import '../../sass/date-range.scss';
+
 .hc-date-range-calendar-container {
-    display: flex;
-    justify-content: space-around;
-    min-width: 650px;
+    @include hc-date-range-calendar-container();
 }
 
 .hc-date-range-calendar-item {
-    min-width: 210px;
-    padding: 1em;
-    font-size: 14px;
-    font-weight: 400;
+    @include hc-date-range-calendar-item();
 }
 
 .hc-date-range-calendar-wrapper {
-    width: 338px;
+    @include hc-date-range-calendar-wrapper();
 }
 
 .hc-date-range-menu {
-    height: 100%;
+    @include hc-date-range-menu();
 }
+
 .hc-date-range-controls {
-    display: flex;
-    justify-content: space-around;
-    margin: 10% auto;
-    & > .hc-button.hc-md {
-        min-width: 100px;
-    }
+    @include hc-date-range-controls();
+}
+
+.hc-date-range-control {
+    @include hc-date-range-control();
 }
 
 .hc-date-range-overlay {
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
-    background: white;
-    border-radius: 2px;
+    @include hc-date-range-overlay();
 }
 
 .hc-date-range-overlay-backdrop {
-    background-color: rgba(0, 0, 0, 0.2);
-    opacity: 0.2;
+    @include hc-date-range-overlay-backdrop();
 }
 
 .presets {
-    padding-left: 21px;
+    @include hc-date-range-presets();
+}
+
+
+.hc-date-range-warning-icon {
+    @include hc-date-range-warning-icon();
 }

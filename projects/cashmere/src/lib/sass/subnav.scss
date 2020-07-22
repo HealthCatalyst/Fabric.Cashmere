@@ -1,0 +1,29 @@
+@import './colors';
+@import './variables';
+
+@mixin hc-subnav() {
+    align-items: center;
+    background-color: $slate-gray-200;
+    border-bottom: 1px solid $slate-gray-300;
+    box-sizing: border-box;
+    display: flex;
+    height: 52px;
+    min-height: 52px;
+    padding: 8px 20px;
+    width: 100%;
+    z-index: $zindex-subnav;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+@mixin hc-subnav-fixed-top() {
+    position: fixed;
+    top: 53px;
+}
+
+@mixin hc-subnav-right() {
+    margin-left: auto;
+    margin-right: 0;
+}

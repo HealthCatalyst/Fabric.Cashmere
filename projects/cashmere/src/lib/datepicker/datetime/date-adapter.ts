@@ -60,6 +60,9 @@ export abstract class DateAdapter<D> {
      */
     abstract getDate(date: D): number;
 
+    abstract getHours(date: D): number;
+    abstract getMinutes(date: D): number;
+
     /**
      * Gets the day of the week component of the given date.
      * @param date The date to extract the day of the week from.
@@ -244,7 +247,9 @@ export abstract class DateAdapter<D> {
         return (
             this.getYear(first) - this.getYear(second) ||
             this.getMonth(first) - this.getMonth(second) ||
-            this.getDate(first) - this.getDate(second)
+            this.getDate(first) - this.getDate(second) ||
+            this.getHours(first) - this.getHours(second) ||
+            this.getMinutes(first) - this.getMinutes(second)
         );
     }
 

@@ -1,5 +1,5 @@
 @import './colors';
-@import './functions.scss';
+@import './functions';
 @import './mixins';
 
 $btn-icon-sz: 18px;
@@ -13,6 +13,10 @@ $btn-icon-sz: 18px;
     color: $white;
     background-color: $color;
 
+    &:focus {
+        background-color: shade($color, $darken-pct * 2);
+        box-shadow: 0 0 0 3px transparentize($color, 0.6);
+    }
     &:hover {
         background-color: shade($color, $darken-pct);
         color: $white;
@@ -21,6 +25,7 @@ $btn-icon-sz: 18px;
         background-color: shade($color, $darken-pct * 2);
         color: $white;
     }
+
     &[disabled],
     &[disabled]:hover,
     &[disabled]:focus,
@@ -53,13 +58,19 @@ $btn-icon-sz: 18px;
     }
 
     &:focus {
-        outline: 5px auto -webkit-focus-ring-color;
-        outline-offset: -2px;
+        outline: none;
+        border-bottom: none;
+        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
     }
 
     &:active {
         background-image: none;
         outline: none;
+    }
+
+    // Remove Firefox's active state dotted outline b/c we have our own highlight
+    &::-moz-focus-inner {
+        border:0;
     }
 }
 
@@ -109,6 +120,9 @@ $btn-icon-sz: 18px;
 
     &:hover {
         color: $offblack;
+    }
+    &:focus {
+        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
     }
     &[disabled]:hover {
         color: $gray-600;
@@ -186,6 +200,12 @@ $btn-icon-sz: 18px;
     vertical-align: inherit;
     font-family: inherit;
     border: none;
+
+    &:focus {
+        outline: none;
+        border-radius: 0;
+        box-shadow: 0px 2px 0 0px $primary-brand;
+    }
 }
 
 // Icon button
@@ -196,7 +216,7 @@ $btn-icon-sz: 18px;
     height: 35px;
     width: 35px;
     line-height: 35px;
-    border-radius: 50%;
+    border-radius: 5px;
     outline: none;
     border: none;
     margin: 0;
@@ -205,13 +225,28 @@ $btn-icon-sz: 18px;
     text-decoration: none;
     cursor: pointer;
     white-space: nowrap;
-    text-align: center;
-    vertical-align: baseline;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
+    }
+
+    // Remove Firefox's active state dotted outline b/c we have our own highlight
+    &::-moz-focus-inner {
+        border:0;
+    }
 }
 
 // Split button
 
 @mixin hc-split-button() {
+    display: inline-flex;
+}
+
+@mixin hc-split-button-wrap() {
     display: inline-flex;
 }
 
@@ -246,7 +281,7 @@ $btn-icon-sz: 18px;
     min-width: auto;
     padding: 8px 12px;
     margin-left: 0;
-    border-left: 1px solid rgba(0, 0, 0, 0.12);
+    border-left: 0;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
 
@@ -260,6 +295,10 @@ $btn-icon-sz: 18px;
         background-size: contain;
         background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSI4Ljk4NyIgdmlld0JveD0iMCAwIDE0IDguOTg3Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjMzMzOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cGF0aCBpZD0iUGF0aF81IiBkYXRhLW5hbWU9IlBhdGggNSIgY2xhc3M9ImNscy0xIiBkPSJNMTUuMzQ4LTE0LjRhLjU2MS41NjEsMCwwLDAsMC0uNzkxbC0xLjQ0Mi0xLjQzM2EuNTUxLjU1MSwwLDAsMC0uNzgyLDBMOC41MTEtMTIuMDExLDMuOS0xNi42MjRhLjU1MS41NTEsMCwwLDAtLjc4MiwwTDEuNjc0LTE1LjE5MWEuNTYxLjU2MSwwLDAsMCwwLC43OTFMOC4xMi03Ljk2M2EuNTUxLjU1MSwwLDAsMCwuNzgyLDBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMS41MTEgMTYuNzg3KSIvPgo8L3N2Zz4K');
     }
+}
+
+@mixin hc-button-minimal-toggle() {
+    border-left: 2px solid rgba(0, 0, 0, 0.12) !important;
 }
 
 @mixin hc-button-sm-toggle() {
@@ -279,11 +318,18 @@ $btn-icon-sz: 18px;
     }
 }
 
-//Filters button
+// Filters button
+
 @mixin hc-filters-icon() {
     width: 19px;
     height: 19px;
     display: block;
     margin-right: 7px;
     background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjU0NjEgNDcuMjUgMTkuMjgxIDIwIj4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjMDBhZWZmOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8ZyBpZD0iRmlsdGVyc19CdXR0b24iIGRhdGEtbmFtZT0iRmlsdGVycyBCdXR0b24iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU0NjEgNjcuMjUpIHJvdGF0ZSgtOTApIj4KICAgIDxwYXRoIGlkPSJQYXRoXzMwNCIgZGF0YS1uYW1lPSJQYXRoIDMwNCIgY2xhc3M9ImNscy0xIiBkPSJNOS45MzksMi45OTNWLjcxOUEuNzE5LjcxOSwwLDAsMCw4LjUuNzE5djIuMzZtMCw0Ljg5MnYxMC41OWgwYS43MTkuNzE5LDAsMSwwLDEuNDM5LDBWNy45NDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC02LjA1NCkiLz4KICAgIDxwYXRoIGlkPSJQYXRoXzMwNSIgZGF0YS1uYW1lPSJQYXRoIDMwNSIgY2xhc3M9ImNscy0xIiBkPSJNNi40NzUsMTEuMDIzYTMuMjM3LDMuMjM3LDAsMCwwLTYuNDc1LDAsMy4yMzcsMy4yMzcsMCwwLDAsNi40NzUsMFptLTUuMDM2LDBhMS43ODQsMS43ODQsMCwxLDEsMS43ODQsMS43ODRBMS43OTMsMS43OTMsMCwwLDEsMS40MzksMTEuMDIzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNS41NTUpIi8+CiAgICA8cGF0aCBpZD0iUGF0aF8zMDYiIGRhdGEtbmFtZT0iUGF0aCAzMDYiIGNsYXNzPSJjbHMtMSIgZD0iTTU2LjkzOSwyLjk5M1YuNzE5YS43MTkuNzE5LDAsMCwwLTEuNDM5LDB2Mi4zNm0wLDQuODkydjEwLjU5aDBhLjcxOS43MTksMCwxLDAsMS40MzksMFY3Ljk0MiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM5LjUyOSkiLz4KICAgIDxwYXRoIGlkPSJQYXRoXzMwNyIgZGF0YS1uYW1lPSJQYXRoIDMwNyIgY2xhc3M9ImNscy0xIiBkPSJNNTMuNDc1LDExLjAyM2EzLjIzNywzLjIzNywwLDEsMC0zLjI1MiwzLjIyM0EzLjIxOCwzLjIxOCwwLDAsMCw1My40NzUsMTEuMDIzWm0tNS4wMzYsMGExLjc4NCwxLjc4NCwwLDEsMSwxLjc4NCwxLjc4NEExLjc5MywxLjc5MywwLDAsMSw0OC40MzksMTEuMDIzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMzLjQ3NSAtNS41NTUpIi8+CiAgICA8cGF0aCBpZD0iUGF0aF8zMDgiIGRhdGEtbmFtZT0iUGF0aCAzMDgiIGNsYXNzPSJjbHMtMSIgZD0iTTMyLjUsMTYuMjg4djIuMjczYS43MTkuNzE5LDAsMCwwLDEuNDM5LDBWMTYuMm0wLTQuODkyVi43MTloMGEuNzE5LjcxOSwwLDAsMC0xLjQzOSwwVjExLjMzOCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIzLjE0NykiLz4KICAgIDxwYXRoIGlkPSJQYXRoXzMwOSIgZGF0YS1uYW1lPSJQYXRoIDMwOSIgY2xhc3M9ImNscy0xIiBkPSJNMjMuNSw0MC4wMjNBMy4yMzcsMy4yMzcsMCwxLDAsMjYuNzUyLDM2LjgsMy4yMTgsMy4yMTgsMCwwLDAsMjMuNSw0MC4wMjNabTUuMDM2LDBhMS43ODQsMS43ODQsMCwxLDEtMS43ODQtMS43ODRBMS43OTMsMS43OTMsMCwwLDEsMjguNTM2LDQwLjAyM1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNi43MzcgLTI2LjIxKSIvPgogIDwvZz4KPC9zdmc+Cg==');
+}
+
+// Additional color options when more than the standards are needed
+
+@mixin hc-button-custom( $color ) {
+    @include hc-color-button( $color );
 }

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
 
 /**
  * @title Picklist simple
@@ -8,5 +9,5 @@ import {Component} from '@angular/core';
     templateUrl: 'picklist-simple-example.component.html'
 })
 export class PicklistSimpleExampleComponent {
-    public mySimpleModel: string[];
+    readonly simpleModelControl = new FormControl([]);
 }

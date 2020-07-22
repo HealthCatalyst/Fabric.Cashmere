@@ -1,5 +1,15 @@
 import {Attribute, Component, ElementRef, HostBinding, Input, OnChanges, SimpleChanges, ViewEncapsulation} from '@angular/core';
 
+/** Object used to pass values that will be used in an IconComponent */
+export interface HcIcon {
+    /** Font set icon is a part of */
+    fontSet: string;
+    /** Name of icon within a font set */
+    fontIcon: string;
+    /** Optional height in pixels of the icon; defaults to 37 */
+    fontSize?: number;
+}
+
 /** Makes using a font icon easier. */
 @Component({
     selector: 'hc-icon',

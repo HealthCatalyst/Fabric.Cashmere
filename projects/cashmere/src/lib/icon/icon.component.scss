@@ -1,14 +1,17 @@
 @import '../sass/icon.scss';
 
-[icon-sm], .hc-icon-sm {
+[icon-sm],
+.hc-icon-sm {
     @include hc-icon-height(14px);
 }
 
-[icon-md], .hc-icon-md {
+[icon-md],
+.hc-icon-md {
     @include hc-icon-height($default-icon-size);
 }
 
-[icon-lg], .hc-icon-lg {
+[icon-lg],
+.hc-icon-lg {
     @include hc-icon-height(36px);
 }
 

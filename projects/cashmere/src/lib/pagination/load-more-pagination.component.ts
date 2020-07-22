@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {validateStyleInput} from '../button/button.component';
 import {BasePaginationComponent} from './base-pagination';
 
@@ -8,7 +8,8 @@ import {BasePaginationComponent} from './base-pagination';
 @Component({
     selector: 'hc-load-more-pagination',
     templateUrl: './load-more-pagination.component.html',
-    styleUrls: ['./load-more-pagination.component.scss']
+    styleUrls: ['./load-more-pagination.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class LoadMorePaginationComponent extends BasePaginationComponent implements OnInit {
     /**

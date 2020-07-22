@@ -19,9 +19,8 @@ import {DateAdapter} from '../datetime/date-adapter';
 import {HcFormControlComponent} from '../../form-field/hc-form-control.component';
 import {HcFormFieldComponent} from '../../form-field/hc-form-field.component';
 
-// tslint:disable:use-host-property-decorator
+// tslint:disable:no-host-metadata-property
 // tslint:disable:member-ordering
-// tslint:disable:no-use-before-declare
 
 /** @docs-private */
 export const HC_DATEPICKER_VALUE_ACCESSOR: any = {
@@ -174,6 +173,10 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     @Output()
     readonly dateInput: EventEmitter<HcDatepickerInputEvent> = new EventEmitter<HcDatepickerInputEvent>();
 
+    /** Stores the mode & hourCycle for the inputs of the date range (which don't have a DatePickerComponent) */
+    @Input() _mode: string;
+    @Input() _hourCycle: number;
+
     /** Emits when the value changes (either due to user input or programmatic change). */
     _valueChange = new EventEmitter<D | null>();
 
@@ -319,6 +322,22 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
 
     _onInput(value: string) {
         let date = this._dateAdapter.parse(value, this._dateFormats.parse.dateInput);
+        /** Two-digit year input conversion method for IE
+         * Based on the current year, assume that the four-digit year date should be in
+         * either the next 30 years, or the preceding 70 years */
+        if (date) {
+            let inputString: string = this._elementRef.nativeElement.value;
+            /** Skip this check if the input string contains any 3+ digit numerical values - assumed to be a year */
+            if (!inputString.match(/[1-9][0-9][0-9]/g)) {
+                let currentDate = new Date();
+                if (date.getFullYear() >= currentDate.getFullYear() + 30) {
+                    date.setFullYear(date.getFullYear() - 100);
+                } else if (date.getFullYear() < currentDate.getFullYear() - 70) {
+                    date.setFullYear(date.getFullYear() + 100);
+                }
+            }
+        }
+
         this._lastValueValid = !date || this._dateAdapter.isValid(date);
         date = this._getValidDateOrNull(date);
 
@@ -337,7 +356,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     /** Handles blur events on the input. */
     _onBlur() {
         // Reformat the input only if we have a valid value.
-        if (this.value) {
+        if (this.value || this._elementRef.nativeElement.value) {
             this._formatValue(this.value);
         }
 
@@ -346,7 +365,30 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
 
     /** Formats a value and sets it on the input element. */
     private _formatValue(value: D | null) {
-        this._elementRef.nativeElement.value = value ? this._dateAdapter.format(value, this._dateFormats.display.dateInput) : '';
+        let dateFormat: any = this._dateFormats.display.dateInput;
+        let tempMode: string = 'date';
+        let tempCycle: number = 12;
+
+        if (this._datepicker) {
+            tempMode = this._datepicker.mode;
+            tempCycle = +this._datepicker.hourCycle;
+        } else if (this._mode) {
+            tempMode = this._mode;
+            if (this._hourCycle) {
+                tempCycle = this._hourCycle;
+            }
+        }
+
+        if (tempMode === 'time') {
+            let tempFormat = this._dateFormats.display.timeInput;
+            tempFormat['hour12'] = tempCycle === 12;
+            dateFormat = tempFormat;
+        } else if (tempMode === 'date-time') {
+            let tempFormat = this._dateFormats.display.dateTimeInput;
+            tempFormat['hour12'] = tempCycle === 12;
+            dateFormat = tempFormat;
+        }
+        this._elementRef.nativeElement.value = value ? this._dateAdapter.format(value, dateFormat) : '';
     }
 
     /**

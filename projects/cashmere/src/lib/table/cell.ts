@@ -1,4 +1,4 @@
-/* tslint:disable:directive-class-suffix directive-selector use-host-property-decorator no-input-rename*/
+/* tslint:disable:directive-class-suffix directive-selector no-host-metadata-property no-input-rename*/
 
 /**
  * @license

@@ -28,6 +28,10 @@
     margin: 0 7px;
 }
 
+@mixin hc-page-detail-entries() {
+    white-space: nowrap;
+}
+
 @mixin hc-range-label() {
     flex: 0 0 auto;
     margin-right: 10px;
@@ -118,22 +122,6 @@
     margin-bottom: 1px;
     opacity: 0.4;
     width: 11px;
-}
-
-@mixin hc-page-button-expanded() {
-    display: block;
-
-    @include media-breakpoint-down(md) {
-        display: none;
-    }
-}
-
-@mixin hc-page-button-collapsed() {
-    display: none;
-
-    @include media-breakpoint-down(md) {
-        display: block;
-    }
 }
 
 @mixin hc-page-load-more-button() {

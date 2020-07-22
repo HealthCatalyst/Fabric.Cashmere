@@ -38,7 +38,6 @@
     }
     &.hci-binding:before {
         content: '\e90c';
-        color: #555;
     }
     &.hci-sql-binding:before {
         content: '\e9b1';
@@ -85,6 +84,7 @@
     &.hci-data-mart:before {
         content: '\e936';
     }
+    &.hci-new-DM:before,
     &.hci-new-SM:before {
         content: '\e97c';
     }
@@ -352,6 +352,12 @@
     &.hci-ungroup:before {
         content: '\e9c0';
     }
+    &.hci-run:before {
+        content: '\e90d';
+    }
+    &.hci-run-options:before {
+        content: '\e912';
+    }
     &.hci-ambulance:before {
         content: '\e902';
     }
@@ -381,7 +387,6 @@
     }
     &.hci-task:before {
         content: '\e9bb';
-        color: #555;
     }
     &.hci-assign-task:before {
         content: '\e90a';
@@ -449,11 +454,14 @@
     &.hci-doctor:before {
         content: '\e93e';
     }
+    &.hci-new-patient:before {
+        content: '\e915';
+    }
     &.hci-pill:before {
         content: '\e985';
     }
     &.hci-cancel-pill:before {
-        content: "\e90b";
+        content: '\e90b';
     }
     &.hci-plant:before {
         content: '\e986';
