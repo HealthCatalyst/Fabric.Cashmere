@@ -221,21 +221,23 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** A link to an associated parent menu that will be closed when this menu closes. */
     @Input()
-    get parent(): HcPopComponent {
+    get parent(): HcPopComponent | null {
         return this._parentMenu;
     }
-    set parent(val: HcPopComponent) {
+    set parent(val: HcPopComponent | null) {
         if (this._parentMenu) {
             this._parentClose.unsubscribe();
         }
         this._parentMenu = val;
-        this._parentClose = this._parentMenu.closed.subscribe(value => {
-            if (this.isOpen()) {
-                this.close();
-            }
-        });
+        if ( this._parentMenu ) {
+            this._parentClose = this._parentMenu.closed.subscribe(value => {
+                if (this.isOpen()) {
+                    this.close();
+                }
+            });
+        }
     }
-    private _parentMenu: HcPopComponent;
+    private _parentMenu: HcPopComponent | null;
 
     /** Should the popover animate? *Defaults to `true`.* */
     @Input() shouldAnimate = true;
