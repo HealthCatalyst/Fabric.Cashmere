@@ -9,18 +9,17 @@ import {
     QueryList,
     ViewChild,
     ViewEncapsulation,
-    OnDestroy,
-    TemplateRef
+    OnDestroy
 } from '@angular/core';
 import {HcPopoverAnchorDirective} from '../pop/directives/popover-anchor.directive';
-import { HcPopComponent } from '../pop/popover.component';
+import {HcPopComponent} from '../pop/popover.component';
 import {MoreItem} from './more-item';
 import {NavbarLinkComponent} from './navbar-link/navbar-link.component';
 import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu.component';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {HcIcon} from '../icon/icon.component';
-import { NavbarDropdownComponent } from './navbar-dropdown/navbar-dropdown.component';
+import {NavbarDropdownComponent} from './navbar-dropdown/navbar-dropdown.component';
 
 /** The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. */
 @Component({
