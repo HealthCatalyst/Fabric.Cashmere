@@ -4,47 +4,33 @@
     [homeUri]="undefined"
     [fixedTop]="false"
 >
-    <hc-navbar-link #links [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
-    <hc-navbar-link #links [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
-    <hc-navbar-link #links [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
-    <hc-navbar-link #links [active]="false" uri="undefined" linkText="Pediatric"></hc-navbar-link>
-    <hc-navbar-link #links [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
-    <hc-navbar-dropdown dropdownTitle="test" #links>
+    <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
+    <hc-navbar-dropdown linkText="Menu">
         <div hcMenu>
-            <a hcMenuItem href="http://youtube.com" target="_blank">
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
-                <span hcMenuText>Read the docs</span>
-            </a>
-            <a hcMenuItem href="http://example.com" target="_blank">
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
-                <span hcMenuText>test menu</span>
-            </a>
-            <a hcMenuItem href="http://example.com" target="_blank">
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
-                <span hcMenuText>Bye</span>
-            </a>
+            <button hcMenuItem>
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-cut"></hc-icon>
+                <span hcMenuText>Menu Item One</span>
+            </button>
+            <button hcMenuItem>
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-copy"></hc-icon>
+                <span hcMenuText>Menu Item Two</span>
+            </button>
+            <button hcMenuItem>
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-paste"></hc-icon>
+                <span hcMenuText>Menu Item Three</span>
+            </button>
         </div>
     </hc-navbar-dropdown>
-    <hc-navbar-dropdown dropdownTitle="test 2" #links>
+    <hc-navbar-dropdown linkText="Second Menu">
         <div hcMenu>
-            <a hcMenuItem href="http://youtube.com" target="_blank">
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
-                <span hcMenuText>Go home</span>
-            </a>
-            <a hcMenuItem href="http://example.com" target="_blank">
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
-                <span hcMenuText>About us</span>
-            </a>
-            <a hcMenuItem href="http://example.com" target="_blank">
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
-                <span hcMenuText>Read more</span>
-            </a>
+            <button hcMenuItem>
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-cut"></hc-icon>
+                <span hcMenuText>Menu Item One</span>
+            </button>
         </div>
     </hc-navbar-dropdown>
-    <hc-navbar-link #links [active]="false" uri="undefined" linkText="Pediatric"></hc-navbar-link>
-    <hc-navbar-link #links [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
-    <hc-navbar-link #links [active]="false" uri="undefined" linkText="Rehabilitation"></hc-navbar-link>
-    <hc-navbar-link #links [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
+    <hc-navbar-link uri="undefined" linkText="Third"></hc-navbar-link>
+    <hc-navbar-link uri="undefined" linkText="Fourth"></hc-navbar-link>
     <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-question-circle-o" [hcPop]="options"></hc-icon>
     <span class="hc-navbar-vertical-separator"></span>
     <div class="hc-navbar-username" *ngIf="user" [hcPop]="user">

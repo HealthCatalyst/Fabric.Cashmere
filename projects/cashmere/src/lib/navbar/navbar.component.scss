@@ -23,6 +23,10 @@
         @include navbar-link();
     }
 
+    .navbar-dropdown {
+        @include hc-navbar-more-links();
+    }
+
     .hc-navbar-right-container {
         @include hc-navbar-right-container();
     }

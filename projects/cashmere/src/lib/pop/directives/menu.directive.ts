@@ -1,4 +1,4 @@
-import {Directive, HostBinding, ContentChildren, QueryList, AfterContentInit, OnDestroy} from '@angular/core';
+import {Directive, HostBinding, ContentChildren, QueryList, OnDestroy, AfterViewChecked} from '@angular/core';
 import {HcPopoverAnchorDirective} from './popover-anchor.directive';
 import {Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -7,7 +7,7 @@ import {takeUntil} from 'rxjs/operators';
 @Directive({
     selector: '[hcMenu]'
 })
-export class MenuDirective implements AfterContentInit, OnDestroy {
+export class MenuDirective implements AfterViewChecked, OnDestroy {
     @HostBinding('class.hc-menu-panel')
     _hostClass = true;
 
@@ -16,7 +16,7 @@ export class MenuDirective implements AfterContentInit, OnDestroy {
 
     private unsubscribe$ = new Subject<void>();
 
-    ngAfterContentInit() {
+    ngAfterViewChecked() {
         this._subMenus.forEach((anchor: HcPopoverAnchorDirective) => {
             anchor._hasSubmenu = true;
             // Subscribe to submenu open events so we can close any other submenus currently open
