@@ -5,32 +5,36 @@
     [fixedTop]="false"
 >
     <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
-    <hc-navbar-dropdown linkText="Menu">
+    <hc-navbar-dropdown linkText="Reports">
         <div hcMenu>
             <button hcMenuItem>
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-cut"></hc-icon>
-                <span hcMenuText>Menu Item One</span>
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bank"></hc-icon>
+                <span hcMenuText>Finance</span>
             </button>
             <button hcMenuItem>
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-copy"></hc-icon>
-                <span hcMenuText>Menu Item Two</span>
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-balance-scale"></hc-icon>
+                <span hcMenuText>Legal</span>
             </button>
             <button hcMenuItem>
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-paste"></hc-icon>
-                <span hcMenuText>Menu Item Three</span>
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-hospital-o"></hc-icon>
+                <span hcMenuText>Clinical</span>
             </button>
         </div>
     </hc-navbar-dropdown>
-    <hc-navbar-dropdown linkText="Second Menu">
+    <hc-navbar-dropdown linkText="Repository">
         <div hcMenu>
             <button hcMenuItem>
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-cut"></hc-icon>
-                <span hcMenuText>Menu Item One</span>
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-upload"></hc-icon>
+                <span hcMenuText>Upload File</span>
+            </button>
+            <button hcMenuItem>
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-download"></hc-icon>
+                <span hcMenuText>Download File</span>
             </button>
         </div>
     </hc-navbar-dropdown>
-    <hc-navbar-link uri="undefined" linkText="Third"></hc-navbar-link>
-    <hc-navbar-link uri="undefined" linkText="Fourth"></hc-navbar-link>
+    <hc-navbar-link uri="undefined" linkText="Platform"></hc-navbar-link>
+    <hc-navbar-link uri="undefined" linkText="Applications"></hc-navbar-link>
     <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-question-circle-o" [hcPop]="options"></hc-icon>
     <span class="hc-navbar-vertical-separator"></span>
     <div class="hc-navbar-username" *ngIf="user" [hcPop]="user">
