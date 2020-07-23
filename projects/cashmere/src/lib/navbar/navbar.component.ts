@@ -98,6 +98,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
             let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
             if (curLinks + moreWidth < linksContainerWidth) {
                 t.show();
+                // Reset the parent and positioning of any dropdown popovers that aren't in the More menu
                 const tempDrop = t as NavbarDropdownComponent;
                 if ( tempDrop._menuPop ) {
                     tempDrop._menuPop.horizontalAlign = 'start';
@@ -108,6 +109,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
                 t.hide();
                 this._collapse = true;
                 const tempDrop = t as NavbarDropdownComponent;
+                // Translate any navbar dropdown menus into secondary menus in the More dropdown
                 if ( tempDrop._menuPop ) {
                     tempDrop._menuPop.horizontalAlign = 'after';
                     tempDrop._menuPop.verticalAlign = 'start';
