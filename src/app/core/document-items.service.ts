@@ -54,6 +54,7 @@ const docs: DocItem[] = [
         examples: ['drawer-basic', 'drawer-overlay', 'drawer-side', 'drawer-menu']
     },
     {id: 'ellipsis-pipe', name: 'Ellipsis', category: 'pipes', usageDoc: true, hideApi: true, examples: ['ellipsis-overview']},
+    {id: 'highlight-pipe', name: 'Highlight', category: 'pipes', usageDoc: true, hideApi: true, examples: ['highlight-overview']},
     {id: 'file-size-pipe', name: 'File Size', category: 'pipes', usageDoc: true, hideApi: true, examples: ['file-size-overview']},
     {
         id: 'number-abbreviator-pipe',
