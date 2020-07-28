@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef} from '@angular/core';
+import { Component, ViewEncapsulation, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 
 /** Navigation dropdown for small screen sizes */
 @Component({
@@ -10,7 +10,7 @@ import { Component, ViewEncapsulation, ElementRef, ViewChild, AfterViewInit, Cha
 export class NavbarMobileMenuComponent implements AfterViewInit {
     @ViewChild('navbarMobile', { static: false }) mobileMenu: ElementRef;
     /** Base value, should be enough to not show */
-    public _yPos: number = -1000;
+    public _yPos: number;
 
     /** Sets the actual position of the mobile menu to the hight of its self */
     ngAfterViewInit() {
