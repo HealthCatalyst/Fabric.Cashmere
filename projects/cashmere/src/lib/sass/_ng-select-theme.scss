@@ -185,6 +185,10 @@ $ng-select-value-font-size: 14px !default;
             pointer-events: auto;
         }
     }
+
+    .ng-select-container .ng-arrow-wrapper {
+        height: 33px;
+    }
 }
 
 ng-dropdown-panel.ng-dropdown-panel {
