@@ -61,7 +61,7 @@ describe('DateRangeDirective', () => {
             declarations: [TestComponent, DateRangeDirective],
             schemas: [NO_ERRORS_SCHEMA]
         })
-            .overrideComponent(DateRangeDirective, {
+            .overrideDirective(DateRangeDirective, {
                 set: {
                     providers: [{provide: CalendarOverlayService, useValue: overlay}, ConfigStoreService]
                 }

@@ -46,7 +46,7 @@ export class TypeformSurveyComponent {
         return this._appVersion;
     }
     public _fullUri: string;
-    private _surveyUri: string;
+    private _surveyUri: string = "";
     private _appVersion: string;
     private _id: string = 'typef_orm_share';
 
@@ -57,7 +57,7 @@ export class TypeformSurveyComponent {
         if (!document.getElementById(this._id)) {
             this.getScripts();
         } else {
-            (<TypeformWindow>window).typeformEmbed.makePopup(this._fullUri, {
+            ((window as unknown) as TypeformWindow).typeformEmbed.makePopup(this._fullUri, {
                 mode: 'drawer_right',
                 autoOpen: true,
                 opacity: 100,
