@@ -24,6 +24,10 @@
     }
 }
 
+.hc-checkbox-children-group {
+    @include hc-checkbox-children-group();
+}
+
 .hc-checkbox-align-center {
     @include hc-checkbox-align-center();
 }
