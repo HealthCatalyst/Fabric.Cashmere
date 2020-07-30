@@ -1,15 +1,19 @@
 import {Injectable} from '@angular/core';
 
+export type DocItemCategory = 'forms' | 'nav' | 'layout' | 'buttons' | 'popups' | 'table' | 'pipes';
+
 export interface DocItem {
     id: string;
     name: string;
-    category: 'forms' | 'nav' | 'layout' | 'buttons' | 'popups' | 'table' | 'pipes';
+    category: DocItemCategory;
     examples?: string[];
     usageDoc?: boolean;
     hideApi?: boolean;
 }
 
-const docs: DocItem[] = [
+export type DocItemType = 'components' | 'bits';
+
+const componentDocs: DocItem[] = [
     {
         id: 'checkbox',
         name: 'Checkbox',
@@ -173,13 +177,25 @@ const docs: DocItem[] = [
     }
 ];
 
+const bitDocs: DocItem[] = [
+    {id: 'change-case-pipe', name: 'Change Case', category: 'pipes', usageDoc: true, hideApi: true, examples: ['change-case-pipe-overview']}
+];
+
 @Injectable()
 export class DocumentItemsService {
-    getDocItems(): DocItem[] {
-        return docs;
+    getDocItems(type: DocItemType): DocItem[] {
+        switch (type) {
+            case 'components':
+                return componentDocs;
+            case 'bits':
+                return bitDocs;
+            default:
+                throw new Error(`Unrecognized doc type: ${type}`);
+        }
     }
 
-    getItemById(id: string): DocItem | undefined {
-        return docs.find(doc => doc.id === id);
+    getDocItemById(id: string, type: DocItemType): DocItem | undefined {
+        const items = this.getDocItems(type);
+        return items.find(doc => doc.id === id);
     }
 }
