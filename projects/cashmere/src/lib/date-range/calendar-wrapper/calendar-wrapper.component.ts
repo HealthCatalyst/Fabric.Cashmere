@@ -8,7 +8,8 @@ import {
     EventEmitter,
     OnChanges,
     SimpleChanges,
-    HostBinding
+    HostBinding,
+    ChangeDetectorRef
 } from '@angular/core';
 import {ConfigStoreService} from '../services/config-store.service';
 import {CalendarComponent} from '../../datepicker/calendar/calendar.component';
@@ -74,7 +75,7 @@ export class CalendarWrapperComponent implements OnChanges {
 
     weekendFilter = () => true;
 
-    constructor(public configStore: ConfigStoreService) {}
+    constructor(public configStore: ConfigStoreService, private ref: ChangeDetectorRef) {}
 
     ngOnChanges(changes: SimpleChanges) {
         // Necessary to force view refresh
@@ -117,5 +118,6 @@ export class CalendarWrapperComponent implements OnChanges {
     /** Focus inner input */
     focusInput() {
         this.datePickerInput.focus();
+        this.ref.detectChanges();
     }
 }
