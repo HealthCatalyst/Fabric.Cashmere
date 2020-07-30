@@ -22,7 +22,7 @@
     "build:lib": "ng build cashmere --prod",
     "postbuild:lib": "node scripts/postbuild.js",
     "prebuild:bit": "cd projects/cashmere-bits && npx --package bit-bin bit config set analytics_reporting false && npx --package bit-bin bit config set error_reporting false",
-    "build:bit": "cd projects/cashmere-bits && npx --package bit-bin bit build",
+    "build:bit": "cd projects/cashmere-bits && npx --package bit-bin bit import && npx --package bit-bin bit build",
     "build:user": "ng build user-guide",
     "prebuild:examples": "ts-node scripts/build-examples.ts",
     "build:examples": "ng build cashmere-examples --prod",
