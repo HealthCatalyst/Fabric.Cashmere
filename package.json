@@ -21,10 +21,11 @@
     "lint:prettier": "prettier --debug-check \"**/*.{ts,js,scss,css,md,json}\"",
     "build:lib": "ng build cashmere --prod",
     "postbuild:lib": "node scripts/postbuild.js",
+    "build:bit": "cd projects/cashmere-bits && npx --package bit-bin bit build",
     "build:user": "ng build user-guide",
     "prebuild:examples": "ts-node scripts/build-examples.ts",
     "build:examples": "ng build cashmere-examples --prod",
-    "build": "npm run release-mode && npm run build:lib && npm run build:examples && npm run build:user",
+    "build": "npm run release-mode && npm run build:lib && npm run build:bit && npm run build:examples && npm run build:user",
     "postbuild": "npm run copy-assets",
     "precopy-assets": "npm run docs",
     "copy-assets": "node scripts/guide-copy-assets.js",
@@ -35,7 +36,9 @@
     "prettier": "prettier --write \"**/*.{ts,js,scss,css,md,json}\"",
     "release-mode": "node scripts/release-mode",
     "dev-mode": "node scripts/dev-mode",
-    "postinstall": "cd projects/cashmere-examples && npm install"
+    "postinstall": "npm run install:examples && npm run install:bits",
+    "install:examples": "cd projects/cashmere-examples && npm install",
+    "install:bits": "cd projects/cashmere-bits && npm install"
   },
   "dependencies": {
     "@angular/animations": "8.2.14",
