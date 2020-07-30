@@ -15,7 +15,7 @@ import {ProductsDemoComponent} from './products/products-demo.component';
 import {TrademarksDemoComponent} from './trademarks/trademarks-demo.component';
 import {NgModule} from '@angular/core';
 import {BreadcrumbsStyleDemoComponent} from './breadcrumbs/breadcrumbs-style-demo.component';
-import { ApplicationLaunchScreenGuideComponent } from './application-launch-screen/application-launch-screen.component';
+import {ApplicationLaunchScreenGuideComponent} from './application-launch-screen/application-launch-screen.component';
 
 const routes: Routes = [
     {
@@ -106,7 +106,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
 export class StylesRoutesModule {}

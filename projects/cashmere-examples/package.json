@@ -10,9 +10,11 @@
         "@angular/common": "^8.0.0",
         "@angular/core": "^8.0.0",
         "@ng-select/ng-select": "^3.0.0",
-        "sugar": "^2.0.6"
+        "sugar": "^2.0.6",
+        "change-case": "^4.1.1"
     },
     "devDependencies": {
-        "@healthcatalyst/cashmere": "^6.5.0"
+        "@healthcatalyst/cashmere": "^6.5.0",
+        "@bit/healthcatalyst.cashmere.change-case-pipe": "*"
     }
 }

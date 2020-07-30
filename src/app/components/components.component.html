@@ -1,12 +1,12 @@
 <div class="hc-components-container">
     <hc-subnav class="responsive-subnav" fixedTop="true">
         <div class="subnav-container">
-            <span class="subnav-label">Components: </span>
+            <span class="subnav-label">Components:</span>
             <span class="subnav-select">
-                <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
-                    <option *ngFor="let option of docItems" [value]="option.id" [selected]="option.id === thisPage">{{
-                        option.name
-                    }}</option>
+                <hc-select (change)="navUpdate($event.value)">
+                    <option *ngFor="let option of allDocItems" [value]="option.id" [selected]="option.id === activeItem?.id">
+                        {{ option.name }}
+                    </option>
                 </hc-select>
             </span>
         </div>
@@ -16,68 +16,30 @@
         <div class="hc-components-nav-container">
             <hc-tile>
                 <div class="hc-components-nav-list">
-                    <hc-accordion triggerAlign="right" [open]="thisCategory == 'forms'">
-                        <hc-accordion-toolbar>Form Controls</hc-accordion-toolbar>
-                        <ng-container *ngFor="let option of docItems">
-                            <div *ngIf="option.category == 'forms'" class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': option.id == thisPage }" (click)="navUpdate(option.id)">{{ option.name }}</div>
+                    <ng-container *ngFor="let category of categorizedDocItems">
+                        <ng-container *ngIf="category.items?.length">
+                            <hc-accordion triggerAlign="right" [open]="activeCategory == category.category">
+                                <hc-accordion-toolbar>{{ category.displayName }}</hc-accordion-toolbar>
+                                <ng-container *ngFor="let option of category.items">
+                                    <div
+                                        class="hc-components-nav-link"
+                                        [ngClass]="{'hc-components-nav-link-active': option.id == activeItem?.id}"
+                                        (click)="navUpdate(option.id)"
+                                    >
+                                        {{ option.name }}
+                                    </div>
+                                </ng-container>
+                                <div class="hc-components-nav-spacer"></div>
+                            </hc-accordion>
                         </ng-container>
-                        <div class="hc-components-nav-spacer"></div>
-                    </hc-accordion>
-                    <div class="hc-components-nav-divider"></div>
-                    <hc-accordion triggerAlign="right" [open]="thisCategory == 'nav'">
-                        <hc-accordion-toolbar>Navigation</hc-accordion-toolbar>
-                        <ng-container *ngFor="let option of docItems">
-                            <div *ngIf="option.category == 'nav'" class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': option.id == thisPage }" (click)="navUpdate(option.id)">{{ option.name }}</div>
-                        </ng-container>
-                        <div class="hc-components-nav-spacer"></div>
-                    </hc-accordion>
-                    <div class="hc-components-nav-divider"></div>
-                    <hc-accordion triggerAlign="right" [open]="thisCategory == 'layout'">
-                        <hc-accordion-toolbar>Layout</hc-accordion-toolbar>
-                        <ng-container *ngFor="let option of docItems">
-                            <div *ngIf="option.category == 'layout'" class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': option.id == thisPage }" (click)="navUpdate(option.id)">{{ option.name }}</div>
-                        </ng-container>
-                        <div class="hc-components-nav-spacer"></div>
-                    </hc-accordion>
-                    <div class="hc-components-nav-divider"></div>
-                    <hc-accordion triggerAlign="right" [open]="thisCategory == 'buttons'">
-                        <hc-accordion-toolbar>Buttons & Indicators</hc-accordion-toolbar>
-                        <ng-container *ngFor="let option of docItems">
-                            <div *ngIf="option.category == 'buttons'" class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': option.id == thisPage }" (click)="navUpdate(option.id)">{{ option.name }}</div>
-                        </ng-container>
-                        <div class="hc-components-nav-spacer"></div>
-                    </hc-accordion>
-                    <div class="hc-components-nav-divider"></div>
-                    <hc-accordion triggerAlign="right" [open]="thisCategory == 'popups'">
-                        <hc-accordion-toolbar>Popups & Notifications</hc-accordion-toolbar>
-                        <ng-container *ngFor="let option of docItems">
-                            <div *ngIf="option.category == 'popups'" class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': option.id == thisPage }" (click)="navUpdate(option.id)">{{ option.name }}</div>
-                        </ng-container>
-                        <div class="hc-components-nav-spacer"></div>
-                    </hc-accordion>
-                    <div class="hc-components-nav-divider"></div>
-                    <hc-accordion triggerAlign="right" [open]="thisCategory == 'table'">
-                        <hc-accordion-toolbar>Data Table</hc-accordion-toolbar>
-                        <ng-container *ngFor="let option of docItems">
-                            <div *ngIf="option.category == 'table'" class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': option.id == thisPage }" (click)="navUpdate(option.id)">{{ option.name }}</div>
-                        </ng-container>
-                        <div class="hc-components-nav-spacer"></div>
-                    </hc-accordion>
-                    <div class="hc-components-nav-divider"></div>
-                    <hc-accordion triggerAlign="right" [open]="thisCategory == 'pipes'">
-                        <hc-accordion-toolbar>Pipes</hc-accordion-toolbar>
-                        <ng-container *ngFor="let option of docItems">
-                            <div *ngIf="option.category == 'pipes'" class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': option.id == thisPage }" (click)="navUpdate(option.id)">{{ option.name }}</div>
-                        </ng-container>
-                        <div class="hc-components-nav-spacer"></div>
-                    </hc-accordion>
+                    </ng-container>
                 </div>
             </hc-tile>
         </div>
     </div>
     <div class="hc-components-right-column">
-        <hc-tab-set class="full-height">
-            <hc-tab *ngFor="let docItem of docItems" [tabTitle]="docItem.name" [routerLink]="docItem.id"></hc-tab>
-        </hc-tab-set>
+        <div class="full-height">
+            <hc-component-viewer [docItem]="activeItem"></hc-component-viewer>
+        </div>
     </div>
 </div>
