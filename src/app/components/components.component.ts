@@ -66,7 +66,6 @@ export class ComponentsComponent implements OnInit, OnDestroy {
     }
 
     loadDocs(url: string) {
-        console.log('loading docs', this.id, this.docType, url);
         if (!this.docType) {
             return;
         }
@@ -85,7 +84,6 @@ export class ComponentsComponent implements OnInit, OnDestroy {
 
     // Handle nav changes via the sidebar or mobile dropdown
     navUpdate(id: string) {
-        console.log('new selection', id);
         this.router.navigate([`/${this.docType}/` + id]);
         window.scrollTo(0, 0);
     }
