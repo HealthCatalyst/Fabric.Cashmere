@@ -1,8 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'hc-root',
     styleUrls: ['./app.component.scss'],
     templateUrl: './app.component.html'
 })
-export class AppComponent {}
+export class AppComponent {
+
+}
+
+

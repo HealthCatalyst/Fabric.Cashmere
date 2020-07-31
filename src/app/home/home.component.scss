@@ -1,5 +1,5 @@
-@import 'scss/colors';
-@import 'scss/mixins';
+@import "scss/colors";
+@import "scss/mixins";
 
 header {
     max-width: 720px;
@@ -49,6 +49,19 @@ p {
     padding-right: 40px;
     flex-direction: column;
     justify-content: center;
+
+    .hc-form-field {
+        .searchIcon {
+            padding-left: 25px;
+        }
+
+        .searchBar {
+            padding-left: 25px;
+            width: 566px;
+            font-size: 18px;
+            height: 50px;
+        }
+    }
 }
 
 .headerRight img {
