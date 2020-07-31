@@ -101,6 +101,10 @@
         top: 2px;
         left: 2px;
     }
+
+    &:focus {
+        box-shadow: none;
+    }
 }
 
 @mixin hc-checkbox-overlay-hover() {
