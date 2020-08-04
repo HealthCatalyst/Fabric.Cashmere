@@ -4,6 +4,7 @@
     "authors": "Health Catalyst",
     "version": "1.0.0",
     "scripts": {
+        "bit": "bit",
         "test": "jest"
     },
     "peerDependencies": {

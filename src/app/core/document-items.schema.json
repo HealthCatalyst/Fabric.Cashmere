@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Cashmere Document Items",
+    "additionalProperties": {
+        "type": "object",
+        "required": ["name", "category", "examples"],
+        "properties": {
+            "name": {
+                "$id": "#root/name",
+                "title": "Name",
+                "type": "string",
+                "default": "",
+                "examples": ["Button"],
+                "pattern": "^.*$"
+            },
+            "category": {
+                "$id": "#root/category",
+                "title": "Category",
+                "type": "string",
+                "default": "",
+                "examples": ["buttons"],
+                "pattern": "forms|nav|layout|buttons|popups|table|pipes"
+            },
+            "examples": {
+                "$id": "#root/examples",
+                "title": "Examples",
+                "type": "array",
+                "default": [],
+                "items": {
+                    "$id": "#root/examples/items",
+                    "title": "Items",
+                    "type": "string",
+                    "default": "",
+                    "examples": ["button-anchor"],
+                    "pattern": "^.*$"
+                }
+            },
+            "usageDoc": {
+                "$id": "#root/usageDoc",
+                "title": "Usage Doc?",
+                "type": "boolean",
+                "examples": [true],
+                "default": false
+            },
+            "hideApi": {
+                "$id": "#root/hideApi",
+                "title": "Hide API?",
+                "type": "boolean",
+                "examples": [true],
+                "default": false
+            }
+        }
+    }
+}

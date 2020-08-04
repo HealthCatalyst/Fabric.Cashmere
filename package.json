@@ -12,6 +12,7 @@
   },
   "scripts": {
     "ng": "ng",
+    "bit": "bit",
     "start": "npm run dev-mode && ng serve -o",
     "docs": "ts-node scripts/docs.ts && node scripts/generate-usage-docs.js",
     "test": "ng test cashmere",
@@ -21,8 +22,8 @@
     "lint:prettier": "prettier --debug-check \"**/*.{ts,js,scss,css,md,json}\"",
     "build:lib": "ng build cashmere --prod",
     "postbuild:lib": "node scripts/postbuild.js",
-    "prebuild:bit": "cd projects/cashmere-bits && npx --package bit-bin bit config set analytics_reporting false && npx --package bit-bin bit config set error_reporting false",
-    "build:bit": "cd projects/cashmere-bits && npx --package bit-bin bit import && npx --package bit-bin bit build",
+    "prebuild:bit": "cd projects/cashmere-bits && npm run bit -- config set analytics_reporting false && npm run bit -- config set error_reporting false",
+    "build:bit": "cd projects/cashmere-bits && npm run bit -- import && npm run bit -- build",
     "build:user": "ng build user-guide",
     "prebuild:examples": "ts-node scripts/build-examples.ts",
     "build:examples": "ng build cashmere-examples --prod",
@@ -39,7 +40,8 @@
     "dev-mode": "node scripts/dev-mode",
     "postinstall": "npm run install:examples && npm run install:bits",
     "install:examples": "cd projects/cashmere-examples && npm install",
-    "install:bits": "cd projects/cashmere-bits && npm install"
+    "install:bits": "cd projects/cashmere-bits && npm install",
+    "new:example": "ts-node scripts/new-example.ts"
   },
   "dependencies": {
     "@angular/animations": "8.2.14",
@@ -82,10 +84,13 @@
     "@types/d3": "^5.0.0",
     "@types/fs-extra": "^5.0.4",
     "@types/glob": "^5.0.35",
+    "@types/inquirer": "^7.3.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "9.6.2",
     "@types/prettier": "^1.15.2",
+    "@types/yargs": "^15.0.5",
+    "bit-bin": "^14.8.8",
     "chalk": "^2.3.0",
     "codelyzer": "^5.0.1",
     "commitizen": "^4.1.2",
@@ -98,6 +103,7 @@
     "glob": "^7.1.2",
     "highlight.js": "^9.18.1",
     "husky": "^0.14.3",
+    "inquirer": "^7.3.3",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^5.1.0",
@@ -123,7 +129,8 @@
     "tslint-config-prettier": "^1.13.0",
     "typescript": "~3.5.0",
     "typescript-formatter": "^7.0.1",
-    "uglify-js": "3.3.18"
+    "uglify-js": "3.3.18",
+    "yargs": "^15.4.1"
   },
   "config": {
     "commitizen": {
