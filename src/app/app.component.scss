@@ -2,3 +2,100 @@
     padding: 9px 15px;
     color: white;
 }
+
+.hc-navbar-search-button {
+    padding: 9px 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.navbar-search-button {
+    cursor: pointer;
+}
+
+.navbar-button {
+    padding: 15px 30px 0 30px;
+    color: white;
+    cursor: pointer;
+    height: 100%;
+
+    &:hover {
+        outline: none;
+        color: #fff;
+        background-color: #2e3946;
+    }
+}
+
+.hc-search-menu {
+    padding: 0px;
+    margin: -13px;
+
+    .hc-navbar-search-wrapper {
+        margin-bottom: -10px;
+
+        .searchBar {
+            width: 600px;
+            height: 40px;
+            font-size: 16px;
+        }
+    }
+
+    .hc-navbar-search-results {
+        display: flex;
+        flex-direction: column;
+        .hc-navbar-search-results-items {
+            flex: 1;
+            height: 68px;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding-bottom: 15px;
+            -webkit-box-flex: 1;
+            -webkit-transition: all 0.3s;
+
+            &:hover {
+                background-color: #e8e8e8;
+            }
+        }
+    }
+}
+
+.results-icon {
+    font-size: 30px;
+    height: auto;
+    padding: 0px;
+    padding-top: 9px;
+    width: 25px;
+    color: #a8aaac;
+}
+
+.result-title {
+    font-size: 19px;
+    margin-top: 19px;
+    color: #0f6e9c;
+}
+
+.result-description {
+    font-size: 10px;
+    color: #a8aaac;
+}
+
+.result-sub-text {
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.hc-navbar-search-show-all {
+    font-size: 19px;
+    padding-top: 19px;
+    padding-bottom: 24px;
+    color: #0f6e9c;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: #e8e8e8;
+        color: #3abfff;
+    }
+}

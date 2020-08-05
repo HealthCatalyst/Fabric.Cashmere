@@ -3,9 +3,31 @@
     <hc-navbar-link uri="/styles" linkText="Styles"></hc-navbar-link>
     <hc-navbar-link uri="/components" linkText="Components"></hc-navbar-link>
     <hc-navbar-link uri="/guides" linkText="Guides"></hc-navbar-link>
-    <a class="hc-navbar-github-button" title="View on GitHub" href="https://github.com/HealthCatalyst/Fabric.Cashmere"
-        target="blank">
-        <hc-icon fontSet="fa" fontIcon="fa-github" hcIconLg></hc-icon>
+    <div [hcPop]="search" class="hc-navbar-search-button navbar-button">
+        <hc-icon fontSet="fa" fontIcon="fa-search" class="navbar-search-button"></hc-icon>
+    </div>
+    <hc-pop #search [autoCloseOnContentClick]="false" [showArrow]="false" horizontalAlign="end" verticalAlign="below"
+        class="hc-navbar-search-popover">
+        <div hcMenu class="hc-search-menu">
+            <hc-form-field inline="true" tight="true" class="hc-navbar-search-wrapper">
+                <hc-icon hcPrefix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
+                <input hcInput [formControl]="navSearchBar" autocomplete="off" placeholder="Search the Cashmere docs"
+                    class="searchBar" id='hc-nav-search-input' />
+            </hc-form-field>
+            <hc-list class="hc-navbar-search-results">
+                <hc-list-item *ngFor="let item of searchResults" class="hc-navbar-search-results-items">
+                    <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="results-icon"></hc-icon>
+                    <h1 hcListLine class="result-title">{{item.title}}</h1>
+                    <span hcListLine class="result-description">{{item.description}}</span>
+                    <p hcListLine class="result-sub-text">{{item.subContent}}</p>
+                </hc-list-item>
+            </hc-list>
+            <a (click)="showAll()" class="hc-navbar-search-show-all">Show all search results</a>
+        </div>
+    </hc-pop>
+    <a class="hc-navbar-github-button  navbar-button" title="View on GitHub"
+        href="https://github.com/HealthCatalyst/Fabric.Cashmere" target="blank">
+        <hc-icon fontSet="fa" fontIcon="fa-github" hcIconMd></hc-icon>
     </a>
     <hc-navbar-mobile-menu appSwitcher="false">
         <hc-list>
