@@ -1,0 +1,39 @@
+<hc-drawer-container>
+    <hc-menu-drawer align="left" menuTheme="dark-theme" #leftDrawer>
+        <hc-drawer-item>
+            <button hc-button title="Reset Filter" buttonStyle="link">Reset Filter</button>
+            <button hc-button title="Select All" buttonStyle="link">Select All</button>
+        </hc-drawer-item>
+        <hc-drawer-item>
+            <hc-accordion [triggerAlign]="'right'" #accordion>
+                <hc-accordion-toolbar>Category</hc-accordion-toolbar>
+                <hc-checkbox>Styles</hc-checkbox>
+                <hc-checkbox>Components</hc-checkbox>
+                <hc-checkbox>Guides</hc-checkbox>
+            </hc-accordion>
+        </hc-drawer-item>
+        <hc-drawer-item>
+            <hc-accordion [triggerAlign]="'right'" #accordion>
+                <hc-accordion-toolbar>Type</hc-accordion-toolbar>
+                <hc-checkbox>Examples</hc-checkbox>
+                <hc-checkbox>API Docs</hc-checkbox>
+                <hc-checkbox>Usage</hc-checkbox>
+            </hc-accordion>
+        </hc-drawer-item>
+    </hc-menu-drawer>
+
+    <div class="drawer-content">
+        <button hc-button title="Filters" buttonStyle="primary-alt" (click)="leftDrawer.toggle()">
+            <hc-icon fontSet="hc-icons" fontIcon="hci-filters" class="icon-left"></hc-icon>
+            <span *ngIf="leftDrawer.opened">Hide Filters</span>
+            <span *ngIf="!leftDrawer.opened">Show Filters</span>
+        </button>
+    </div>
+
+    <hc-form-field inline="true" tight="true">
+        <input hcInput [formControl]="searchBar" placeholder="Search the Cashmere docs" class="searchBar" />
+        <hc-icon hcSuffix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
+    </hc-form-field>
+
+
+</hc-drawer-container>

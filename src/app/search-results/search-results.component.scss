@@ -1,0 +1,25 @@
+hc-drawer-container {
+    height: calc(100vh - 53px);
+    padding: 0px !important;
+
+    hc-menu-drawer {
+        width: 346px;
+    }
+
+    .drawer-content {
+        padding: 0px;
+        width: 346px;
+    }
+
+    .hc-form-field {
+        width: 750px;
+        height: 52px;
+
+        .searchBar {
+            padding-left: 25px;
+            width: 720px;
+            font-size: 18px;
+            height: 50px;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import {
     AccordionModule,
     AppSwitcherModule,
@@ -70,4 +70,4 @@ import {
         TypeformSurveyModule
     ]
 })
-export class CashmereModule {}
+export class CashmereModule { }

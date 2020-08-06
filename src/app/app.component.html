@@ -22,7 +22,9 @@
                     <p hcListLine class="result-sub-text">{{item.subContent}}</p>
                 </hc-list-item>
             </hc-list>
-            <a (click)="showAll()" class="hc-navbar-search-show-all">Show all search results</a>
+            <!-- <a (click)="showAll()" class="hc-navbar-search-show-all">Show all search results</a> -->
+            <hc-navbar-link uri="/results" class="hc-navbar-search-show-all" linkText="Show all search results">
+            </hc-navbar-link>
         </div>
     </hc-pop>
     <a class="hc-navbar-github-button  navbar-button" title="View on GitHub"
