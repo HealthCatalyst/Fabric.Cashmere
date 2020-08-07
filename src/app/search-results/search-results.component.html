@@ -35,5 +35,29 @@
         <hc-icon hcSuffix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
     </hc-form-field>
 
+    <section class="hc-search-results">
+        <div *ngFor="let item of SearchResultsData" class="hc-search-results-items">
+            <div class="titleSection">
+                <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="hc-results-icon"></hc-icon>
+                <p hcListLine class="hc-result-title">{{item.title}}</p>
+            </div>
+            <div class="tags">
+                <div class="tagsLink">
+                    <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="hc-results-icon"></hc-icon>
+                    <a href="{link}">{{item.sourceLink1}}</a>
+                </div>
+                <div class="tagsLink">
+                    <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="hc-results-icon"></hc-icon>
+                    <a href="{link2}">{{item.sourceLink2}}</a>
+                </div>
+            </div>
+            <p hcListLine class="hc-result-sub-text hc-results-text">{{item.subContent}}</p>
+            <span hcListLine class="hc-result-description hc-results-text">{{item.description}}</span>
+        </div>
+    </section>
 
+    <div class="hc-search-results-pagination">
+        <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="5" [hidePageSize]="false">
+        </hc-pagination>
+    </div>
 </hc-drawer-container>

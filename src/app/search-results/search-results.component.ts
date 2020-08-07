@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { PaginationComponent, HcTableDataSource } from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-search-results',
@@ -7,20 +8,20 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['./search-results.component.scss']
 })
 
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent implements AfterViewInit {
     searchBar = new FormControl("");
-    @Input()
-    result;
-    @Input()
-    highlight: string;
-    pageNumberControl = new FormControl(8);
-    pageSizeControl = new FormControl(100);
-    totalItemsControl = new FormControl(1000);
-    widthControl = new FormControl('lg');
+    SearchResultsData = [
+        { title: "Navbar Component", sourceLink1: "CustomerBASE", sourceLink2: "AdventureWorksLocal", description: "Created 10 months ago • Jared Ammerman • Platform", subContent: "In order to edit the descriptions within ATLAS does a user have to be an Admin and" },
+        { title: "Navbar Documentation", sourceLink1: "CustomerBASE", sourceLink2: "AdventureWorksLocal", description: "Created 10 months ago • Jared Ammerman • Platform", subContent: "When searching Atlas it would be nice to have the results tabularized.  For example: " },
+        { title: "Subnavbar Component", sourceLink1: "CustomerBASE", sourceLink2: "AdventureWorksLocal", description: "Created 10 months ago • Jared Ammerman • Platform", subContent: "I have a couple of questions as it relates to the Comment tab within Atlas.   1) Are th" },
+        { title: "Subnavbar Documentation", sourceLink1: "CustomerBASE", sourceLink2: "AdventureWorksLocal", description: "Created 10 months ago • Jared Ammerman • Platform", subContent: "K.C. Bell demos the latest progress on Atlas’s EDW Visualization feature and explain" },
+        { title: "Navbar Component", sourceLink1: "CustomerBASE", sourceLink2: "AdventureWorksLocal", description: "Created 10 months ago • Jared Ammerman • Platform", subContent: "In order to edit the descriptions within ATLAS does a user have to be an Admin and" },
+    ];
+    pageNumber = 1;
+    length = this.SearchResultsData.length;
+    @ViewChild(PaginationComponent, { static: false })
+    paginator: PaginationComponent;
 
-    constructor() {
-
+    ngAfterViewInit(): void {
     }
-
-    ngOnInit() { }
 }

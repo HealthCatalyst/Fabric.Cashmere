@@ -1,6 +1,7 @@
 hc-drawer-container {
     height: calc(100vh - 53px);
     padding: 0px !important;
+    background-color: #f0f3f6;
 
     hc-menu-drawer {
         width: 346px;
@@ -11,6 +12,9 @@ hc-drawer-container {
         width: 346px;
     }
 
+    .hc-drawer-content {
+        width: 900px;
+    }
     .hc-form-field {
         width: 750px;
         height: 52px;
@@ -18,8 +22,65 @@ hc-drawer-container {
         .searchBar {
             padding-left: 25px;
             width: 720px;
-            font-size: 18px;
-            height: 50px;
+            font-size: 17px;
+            height: 35px;
         }
     }
+}
+
+.hc-search-results {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 20px 30px;
+    padding-bottom: 10px;
+    width: 900px;
+
+    .hc-search-results-items {
+        height: auto;
+        margin-bottom: 15px;
+
+        .hc-list-icon {
+            font-size: 12px;
+            height: 20px;
+            padding: 0px;
+            width: 24px;
+        }
+        .titleSection {
+            display: flex;
+
+            .hc-result-title {
+                color: #33beff;
+                cursor: pointer;
+                margin: 0px;
+                font-size: 12px;
+            }
+        }
+        .tags {
+            display: flex;
+            padding-left: 15px;
+            a {
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+
+        .hc-result-sub-text {
+            font-size: 10px;
+            background-color: #f0f3f6;
+        }
+
+        .hc-result-description {
+            font-size: 12px;
+        }
+
+        .hc-results-text {
+            margin: 0px;
+            margin-left: 40px;
+        }
+    }
+}
+
+.hc-search-results-pagination {
+    width: 900px;
 }
