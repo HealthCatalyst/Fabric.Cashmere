@@ -7,7 +7,6 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements AfterViewInit {
-    @ViewChild('search', { static: false }) userInput: ElementRef;
     searchBar = new FormControl("");
 
     searchResults;
@@ -18,19 +17,14 @@ export class HomeComponent implements AfterViewInit {
         { id: 'date search', name: 'dateSearchComponent' }
     ];
 
-    constructor() { }
-
     ngAfterViewInit() {
-        this.userInput.nativeElement.addEventListener('keyup', (event) => {
-            if (event.key.length === 1) {
-                this.searchResults = this.getItems();
-                console.log(this.searchResults);
-            }
+        this.searchBar.valueChanges.subscribe((val) => {
+            this.searchResults = this.getItems(val);
         });
     }
 
-    getItems = () => {
-        const userInput = this.userInput.nativeElement.value.trim().toLowerCase();
+    getItems = (value) => {
+        const userInput = value.trim().toLowerCase();
         return this.searchTest.filter(m => m.id.includes(userInput));
     }
 }
