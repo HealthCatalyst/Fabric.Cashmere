@@ -35,5 +35,14 @@
         <hc-icon hcSuffix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
     </hc-form-field>
 
+    <hc-list class="hc-navbar-search-results">
+        <hc-list-item *ngFor="let item of searchDisplay" class="hc-navbar-search-results-items">
+            <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="results-icon"></hc-icon>
+            <h1 hcListLine class="result-title">{{item.title}}</h1>
+            <span hcListLine class="result-description">{{item.description}}</span>
+            <p hcListLine class="result-sub-text">{{item.subContent}}</p>
+        </hc-list-item>
+    </hc-list>
 
+    <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="10" [hidePageSize]="false"></hc-pagination>
 </hc-drawer-container>

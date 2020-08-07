@@ -1,7 +1,5 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-// import { switchMap } from 'rxjs/operators';
-// tslint:disable-next-line: use-pipe-transform-interface
 @Component({
     selector: 'hc-root',
     styleUrls: ['./app.component.scss'],
