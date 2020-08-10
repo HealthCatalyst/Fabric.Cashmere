@@ -1,11 +1,11 @@
-const md = require('markdown-it')({html: true});
+const mark = require('marked');
 const glob = require('glob');
 const path = require('path');
 const fs = require('fs');
 
 const outputDir = 'dist/docs/usage';
 
-glob('projects/@(cashmere|cashmere-bits)/src/lib/**/*.md', function(er, files) {
+glob('projects/cashmere/src/lib/**/*.md', function(er, files) {
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir);
     }
@@ -20,7 +20,7 @@ glob('projects/@(cashmere|cashmere-bits)/src/lib/**/*.md', function(er, files) {
         })
         .forEach(mapping => {
             const fileContent = fs.readFileSync(mapping.path, 'utf8');
-            const result = md.render(fileContent);
+            const result = mark(fileContent);
 
             const distFD = fs.openSync(path.join(outputDir, mapping.outFile) + '.html', 'w');
             fs.writeSync(distFD, result);
