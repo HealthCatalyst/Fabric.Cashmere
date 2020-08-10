@@ -1,3 +1,14 @@
+.checkboxContiner {
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        margin-top: 3px;
+        margin-bottom: 10px;
+        color: #ffffff;
+    }
+}
+
 hc-drawer-container {
     height: calc(100vh - 53px);
     padding: 0px !important;
@@ -45,6 +56,7 @@ hc-drawer-container {
             height: 20px;
             padding: 0px;
             width: 24px;
+            color: #a8aaac;
         }
         .titleSection {
             display: flex;
@@ -52,6 +64,7 @@ hc-drawer-container {
             .hc-result-title {
                 color: #33beff;
                 cursor: pointer;
+                text-decoration: underline;
                 margin: 0px;
                 font-size: 12px;
             }
@@ -62,6 +75,7 @@ hc-drawer-container {
             a {
                 font-size: 12px;
                 font-weight: bold;
+                text-decoration: underline;
             }
         }
 
