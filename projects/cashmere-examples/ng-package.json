@@ -5,7 +5,8 @@
     "lib": {
         "entryFile": "src/public_api.ts",
         "umdModuleIds": {
-            "@healthcatalyst/cashmere": "@healthcatalyst/cashmere"
+            "@healthcatalyst/cashmere": "@healthcatalyst/cashmere",
+            "@bit/healthcatalyst.cashmere.change-case-pipe": "@bit/healthcatalyst.cashmere.change-case-pipe"
         }
     }
 }

@@ -13,4 +13,13 @@
     .hc-radio-overlay {
         border-color: $error !important;
     }
+
+    .hc-radio-input:checked ~ .hc-radio-overlay {
+        border-color: $error !important;
+        background-color: $error !important;
+    }
+
+    .hc-radio-input:focus ~ .hc-radio-overlay {
+        box-shadow: 0 0 5px $error !important;
+    }
 }

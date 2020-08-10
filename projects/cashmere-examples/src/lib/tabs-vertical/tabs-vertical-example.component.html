@@ -1,5 +1,5 @@
 <div class="tab-demo">
-    <hc-tab-set defaultTab="1" [tight]="_tight">
+    <hc-tab-set defaultTab="1" [tight]="_tight.value">
         <hc-tab tabTitle="Nested Tabs">
             <hc-tab-set direction="horizontal">
                 <hc-tab tabTitle="Tab 1">
@@ -44,4 +44,4 @@
     </hc-tab-set>
 </div>
 
-<hc-checkbox [(ngModel)]="_tight">Apply tight styling to tabs</hc-checkbox>
+<hc-checkbox [formControl]="_tight">Apply tight styling to tabs</hc-checkbox>

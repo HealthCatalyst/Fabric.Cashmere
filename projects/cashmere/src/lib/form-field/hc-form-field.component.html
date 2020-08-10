@@ -18,6 +18,7 @@
             [class.hc-form-field-flex]="!inline"
             [class.hc-form-field-flex-inline]="inline"
             [class.hc-form-field-invalid]="_shouldShowErrorMessages()"
+            [class.hc-form-field-flex-focused]="_hasFocusedInput"
         >
             <div class="hc-form-field-prefix" *ngIf="_prefixChildren.length">
                 <ng-content select="[hcPrefix]"></ng-content>

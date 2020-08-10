@@ -23,6 +23,14 @@
 .hc-form-field-flex {
     @include hc-form-field-flex();
 
+    &:hover {
+        @include hc-form-field-flex-hover();
+    }
+
+    &.hc-form-field-flex-focused {
+        @include hc-form-field-flex-focus();
+    }
+
     .hc-form-field-disabled & {
         @include hc-form-field-disabled-flex();
     }
@@ -30,6 +38,14 @@
 
 .hc-form-field-flex-inline {
     @include hc-form-field-flex-inline();
+
+    &:hover {
+        @include hc-form-field-flex-hover();
+    }
+
+    &.hc-form-field-flex-focused {
+        @include hc-form-field-flex-focus();
+    }
 
     .hc-form-field-disabled & {
         @include hc-form-field-disabled-flex();
@@ -39,6 +55,10 @@
 .hc-form-field-invalid.hc-form-field-flex,
 .hc-form-field-invalid.hc-form-field-flex-inline {
     @include hc-form-field-input-invalid();
+
+    &.hc-form-field-flex-focused {
+        @include hc-form-field-input-invalid-focus();
+    }
 }
 
 .hc-form-field-non-input {
@@ -136,14 +156,4 @@
 
 .hc-required-marker {
     @include hc-required-marker();
-}
-
-/* IE won't render borders for our inputs correctly, so default to a thicker width */
-@media all and (-ms-high-contrast:none) {
-    .hc-form-field-flex,
-    .hc-form-field-flex-inline,
-    .hc-form-field-disabled-flex,
-    .hc-form-field-input-invalid {
-        @include hc-form-field-border-override();
-    }
 }

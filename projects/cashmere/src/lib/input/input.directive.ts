@@ -1,4 +1,4 @@
-import {Directive, DoCheck, ElementRef, HostBinding, HostListener, Input, Optional, Self, forwardRef} from '@angular/core';
+import {Directive, DoCheck, ElementRef, HostBinding, HostListener, Input, Optional, Self, forwardRef, Output, EventEmitter} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
@@ -93,6 +93,8 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         this._isRequired = parseBooleanAttribute(requiredInput);
     }
 
+    @Output() focusChanged = new EventEmitter<boolean>();
+
     @HostBinding('class.hc-input')
     _hostHcInputClass = true;
 
@@ -171,7 +173,7 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
     private _changeFocus(focused: boolean) {
         if (this._focused !== focused && !this.readonly) {
             this._focused = focused;
-            // TODO: trigger state change
+            this.focusChanged.emit(focused);
         }
     }
 

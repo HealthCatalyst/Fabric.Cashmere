@@ -9,12 +9,14 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "strictNullChecks": true,
+        "resolveJsonModule": true,
         "target": "es5",
         "typeRoots": ["node_modules/@types"],
         "lib": ["es2017", "dom"],
         "paths": {
             "@healthcatalyst/cashmere": ["dist/cashmere"],
-            "@healthcatalyst/cashmere-examples": ["dist/cashmere-examples"]
+            "@healthcatalyst/cashmere-examples": ["dist/cashmere-examples"],
+            "@bit/healthcatalyst.cashmere.change-case-pipe": ["projects/cashmere-bits/dist"]
         }
     }
 }

@@ -1,0 +1,15 @@
+<a
+    *ngIf="!_hidden"
+    title="{{linkText}}"
+    routerLinkActive="active"
+    class="navbar-dropdown"
+    [ngClass]="{active: this.active === true, inactive: this.active === false}"
+    [hcPop]="menuPop"
+>
+    {{linkText}}
+    <hc-icon fontSet="fa" fontIcon="fa-chevron-down" hcIconSm></hc-icon>
+</a>
+
+<hc-pop #menuPop [autoCloseOnContentClick]="true" [showArrow]="false">
+    <ng-content></ng-content>
+</hc-pop>

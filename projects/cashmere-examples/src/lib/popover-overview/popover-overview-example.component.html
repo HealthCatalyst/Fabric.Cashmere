@@ -1,26 +1,28 @@
-<button hc-button buttonStyle="primary-alt" [hcPop]="pop" [trigger]="trig">
+<button hc-button buttonStyle="primary-alt" [hcPop]="pop" [trigger]="trigControl.value" [popoverDelay]="hoverDelayControl.value">
     Trigger
 </button>
 
-<hc-pop #pop
-    [verticalAlign]="vAlign"
-    [horizontalAlign]="hAlign"
-    [scrollStrategy]="scrollStrat"
-    [hasBackdrop]="clickAway"
-    [interactiveClose]="clickAway"
-    [showArrow]="showArrow"
-    [shouldAnimate]="shouldAnimate"
-    [lockAlignment]="lockAlignment"
-    [forceAlignment]="forceAlignment">
-        {{popText}}
+<hc-pop
+    #pop
+    [verticalAlign]="vAlignControl.value"
+    [horizontalAlign]="hAlignControl.value"
+    [scrollStrategy]="scrollStratControl.value"
+    [hasBackdrop]="clickAwayControl.value"
+    [interactiveClose]="clickAwayControl.value"
+    [showArrow]="showArrowControl.value"
+    [shouldAnimate]="shouldAnimateControl.value"
+    [lockAlignment]="forceAlignmentControl.value"
+    [forceAlignment]="forceAlignmentControl.value"
+>
+    {{ popTextControl.value }}
 </hc-pop>
 
-<hr>
+<hr />
 
 <div class="property-form-row">
     <hc-form-field>
         <hc-label>Vertical alignment:</hc-label>
-        <hc-select placeholder="Select yAlign setting:" [(ngModel)]="vAlign">
+        <hc-select placeholder="Select yAlign setting:" [formControl]="vAlignControl">
             <option value="above">Above</option>
             <option value="start">Start</option>
             <option value="center">Center</option>
@@ -32,7 +34,7 @@
 
     <hc-form-field>
         <hc-label>Horizontal alignment:</hc-label>
-        <hc-select placeholder="Select xAlign setting:" [(ngModel)]="hAlign">
+        <hc-select placeholder="Select xAlign setting:" [formControl]="hAlignControl">
             <option value="before">Before</option>
             <option value="start">Start</option>
             <option value="center">Center</option>
@@ -44,7 +46,7 @@
 
     <hc-form-field>
         <hc-label>Scroll strategy:</hc-label>
-        <hc-select placeholder="Select scroll strategy:" [(ngModel)]="scrollStrat">
+        <hc-select placeholder="Select scroll strategy:" [formControl]="scrollStratControl">
             <option value="noop">Noop</option>
             <option value="block">Block scrolling</option>
             <option value="reposition">Reposition popover</option>
@@ -54,7 +56,7 @@
 
     <hc-form-field>
         <hc-label>Trigger:</hc-label>
-        <hc-select placeholder="Select trigger:" [(ngModel)]="trig">
+        <hc-select placeholder="Select trigger:" [formControl]="trigControl">
             <option value="click">Click</option>
             <option value="mousedown">Mousedown</option>
             <option value="hover">Hover</option>
@@ -65,12 +67,25 @@
 
     <hc-form-field>
         <hc-label>Popover text:</hc-label>
-        <input hcInput [(ngModel)]="popText"/>
+        <input hcInput [formControl]="popTextControl" />
     </hc-form-field>
 
-    <hc-checkbox id="animate" [(ngModel)]="shouldAnimate">Animate popover</hc-checkbox>
-    <hc-checkbox id="clickAway" [(ngModel)]="clickAway">Click away or ESC to close</hc-checkbox>
-    <hc-checkbox id="showArrow" [(ngModel)]="showArrow">Show arrow</hc-checkbox>
-    <hc-checkbox id="forceAlign" [(ngModel)]="forceAlignment" title="Specified alignment will be enforced no matter the position in the viewport">Force alignment</hc-checkbox>
-    <hc-checkbox id="lockAlign" [(ngModel)]="lockAlignment" title="Alignment will not update after overlay is initially displayed">Lock alignment</hc-checkbox>
+    <hc-form-field>
+        <hc-label>Popover Hover delay:</hc-label>
+        <input hcInput [formControl]="hoverDelayControl" />
+    </hc-form-field>
+
+    <hc-checkbox id="animate" [formControl]="shouldAnimateControl">Animate popover</hc-checkbox>
+    <hc-checkbox id="clickAway" [formControl]="clickAwayControl">Click away or ESC to close</hc-checkbox>
+    <hc-checkbox id="showArrow" [formControl]="showArrowControl">Show arrow</hc-checkbox>
+    <hc-checkbox
+        id="forceAlign"
+        [formControl]="forceAlignmentControl"
+        title="Specified alignment will be enforced no matter the position in the viewport"
+    >
+        Force alignment
+    </hc-checkbox>
+    <hc-checkbox id="lockAlign" [formControl]="lockAlignmentControl" title="Alignment will not update after overlay is initially displayed">
+        Lock alignment
+    </hc-checkbox>
 </div>

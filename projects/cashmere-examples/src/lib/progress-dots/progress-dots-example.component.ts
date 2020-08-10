@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 /**
  * @title Progress dots
@@ -9,7 +10,7 @@ import {Component} from '@angular/core';
     styleUrls: ['progress-dots-example.component.scss']
 })
 export class ProgressDotsExampleComponent {
-    dotsColor = 'dark';
-    dotsMini = false;
-    dotsCentered = true;
+    readonly dotsColor = new FormControl('light');
+    readonly dotsMini = new FormControl(false);
+    readonly dotsCentered = new FormControl(true);
 }
