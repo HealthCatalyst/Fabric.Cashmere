@@ -2,6 +2,7 @@
 
 .cdk-overlay-container {
     z-index: $zindex-cdk-overlay; // override index for implementation inside a modal: https://github.com/HealthCatalyst/Fabric.Cashmere/issues/867
+    line-height: 14px; // https://github.com/HealthCatalyst/Fabric.Cashmere/issues/1365
 }
 
 .overlay-pointer-events {
