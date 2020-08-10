@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated Jul 1, 2020
+###### Last updated Aug 10, 2020
 
 :::
 
@@ -31,8 +31,10 @@ Registered Marks (currently in use) – **Apply ®**:
 Unregistered Marks (currently in use, examples) – **Apply ™** symbol:
 _The ™ symbol can be applied to any unregistered trademark_
 
+-   ABLE HEALTH™
 -   CATALYST.AI
 -   CLOSED-LOOP ANALYTICS
+-   COMMUNITY ORCHESTRATE
 -   CORUS
 -   DATA SCIENCE ADOPTION MODEL
 -   DOS
@@ -41,11 +43,13 @@ _The ™ symbol can be applied to any unregistered trademark_
 -   HEALTHCATALYST.AI
 -   HEALTHCARE ANALYTICS SUMMIT
 -   HEALTH CATALYST UNIVERSITY
+-   HEALTHFINCH™ BY HEALTH CATALYST
 -   IGNITE OUTCOMES – **Abandon application**
 -   IGNITE OUTCOMES IMPROVEMENT – **Monitor use to determine if we want to apply for registration**
 -   LATE-BINDING
 -   PATIENT SAFETY MONITOR
 -   POPULATION BUILDER – **Apply to register**
+-   POPULATION CARE FLOW
 -   POPULATION HEALTH FOUNDATIONS SOLUTION – **Consider clearance search for registration – DO**
 -   RAPID RESPONSE ANALYTICS SOLUTION
 -   THE CATALYST AWARDS
