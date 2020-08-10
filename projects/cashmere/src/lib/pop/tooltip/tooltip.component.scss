@@ -3,6 +3,7 @@
 
 .hc-tooltip-container {
     top: -10px;
+    line-height: 14px; // https://github.com/HealthCatalyst/Fabric.Cashmere/issues/1365
 
     .hc-tooltip {
         margin-right: 0px;
