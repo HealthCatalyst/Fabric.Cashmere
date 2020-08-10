@@ -1,6 +1,5 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-// tslint:disable-next-line: use-pipe-transform-interface
 @Component({
     selector: 'hc-root',
     styleUrls: ['./app.component.scss'],
@@ -8,29 +7,34 @@ import { FormControl } from '@angular/forms';
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('hc-nav-search-input', { static: false }) userInput: ElementRef;
+    navSearchBar = new FormControl('');
+
+    searchResults;
+    searchTest = [
+        { id: 'button', title: 'Button Component', description: 'bleh', subContent: 'sub bleh' },
+        { id: 'date picker', title: 'datepicker Component', description: 'bleh', subContent: 'sub bleh' },
+        { id: 'date range', title: 'dateRange Component', description: 'bleh', subContent: 'sub bleh' },
+        { id: 'date search', title: 'dateSearch Component', description: 'bleh', subContent: 'sub bleh' },
+        { id: 'date test', title: 'dateTest Component', description: 'bleh', subContent: 'sub bleh' },
+        { id: 'date test2', title: 'dateTest1 Component', description: 'bleh', subContent: 'sub bleh' },
+        { id: 'date test3', title: 'dateTest2 Component', description: 'bleh', subContent: 'sub bleh' },
+    ];
 
     ngAfterViewInit() {
-        this.userInput.nativeElement.addEventListener('keyup', (event) => {
-            if (event.key.length === 1) {
-                this.getItems(event);
+        this.navSearchBar.valueChanges.subscribe((val) => {
+            if (val !== '') {
+                let tempResults = this.getItems(val);
+                this.searchResults = tempResults.slice(0, 4);
+            } else {
+                this.searchResults = [];
             }
         });
     }
 
-    getItems = (event) => {
-        console.log(event);
+    getItems = (value) => {
+        const userInput = value.trim().toLowerCase();
+        return this.searchTest.filter(m => m.id.includes(userInput));
     }
-    // tslint:disable-next-line: member-ordering
-    searchResults = [
-        { title: "Navbar Component", sourceLink1: "CustomerBASE", sourceLink2: "AdventureWorksLocal", description: "Created 10 months ago • Jared Ammerman • Platform", subContent: "In order to edit the descriptions within ATLAS does a user have to be an Admin and" },
-        { title: "Navbar Documentation", sourceLink1: "CustomerBASE", sourceLink2: "AdventureWorksLocal", description: "Created 10 months ago • Jared Ammerman • Platform", subContent: "When searching Atlas it would be nice to have the results tabularized.  For example: " },
-        { title: "Subnavbar Component", sourceLink1: "CustomerBASE", sourceLink2: "AdventureWorksLocal", description: "Created 10 months ago • Jared Ammerman • Platform", subContent: "I have a couple of questions as it relates to the Comment tab within Atlas.   1) Are th" },
-        { title: "Subnavbar Documentation", sourceLink1: "CustomerBASE", sourceLink2: "AdventureWorksLocal", description: "Created 10 months ago • Jared Ammerman • Platform", subContent: "K.C. Bell demos the latest progress on Atlas’s EDW Visualization feature and explain" },
-    ];
-
-    // tslint:disable-next-line: member-ordering
-    navSearchBar = new FormControl('');
 
     public showAll = () => {
         console.log("showing all");
