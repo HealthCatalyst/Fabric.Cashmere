@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const outputDir = 'dist/docs/usage';
 
-glob('projects/cashmere/src/lib/**/*.md', function(er, files) {
+glob('projects/@(cashmere|cashmere-bits)/src/lib/**/*.md', function(er, files) {
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir);
     }
