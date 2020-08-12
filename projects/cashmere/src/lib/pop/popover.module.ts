@@ -31,6 +31,7 @@ import {HcPopoverAccessibilityService} from './popover-accessibility.service';
     ],
     exports: [
         HcPopComponent,
+        HcTooltipComponent,
         HcPopoverAnchorDirective,
         BidiModule,
         MenuDirective,
