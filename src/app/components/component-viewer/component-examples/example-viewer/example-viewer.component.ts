@@ -7,7 +7,6 @@ import { ApplicationInsightsService } from '../../../../shared/application-insig
 import { expand } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { TabSetComponent } from 'projects/cashmere/src/lib/tabs';
-import { TabComponent } from 'dist/cashmere/lib/tabs';
 
 @Component({
     selector: 'hc-example-viewer',
@@ -24,14 +23,20 @@ export class ExampleViewerComponent implements OnInit {
     private allExampleFiles: FileHash = {};
     private appInsights;
     private selected;
+    private fragment: string;
     exampleFiles: Array<{ name: string; contents: string }> = [];
 
     constructor(
         private httpClient: HttpClient,
         private componentFactoryResolver: ComponentFactoryResolver,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
     ) {
         this.appInsights = new ApplicationInsightsService();
+        this.activatedRoute.fragment.subscribe(fragment => {
+            if (fragment) {
+                this.fragment = fragment;
+            }
+        });
         this.activatedRoute.queryParams.subscribe(params => {
             if (params['selected']) {
                 this.selected = params['selected'];
@@ -59,11 +64,12 @@ export class ExampleViewerComponent implements OnInit {
             await this.loadExample();
             this.isInitialized = true;
             setTimeout(() => {
-                // http://localhost:4200/components/checkbox/examples?selected=SCSS#checkbox-standard
-                // console.log(url.split('#').pop());
-                if (this.selected && this._example === 'checkbox-align') {
+                // http://localhost:4200/components/checkbox/examples?selected=SCSS#checkbox-forms
+                if (this.selected && this._example === this.fragment) {
                     const found = this._tabSet._tabs.toArray().find(t => t.tabTitle === this.selected);
                     this._tabSet.selectTab(found ? found : 0);
+                    const el = document.getElementById(this.fragment);
+                    el ? el.scrollIntoView() : console.log('not found');
                 }
             }, 1000);
         }
