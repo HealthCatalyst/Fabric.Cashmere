@@ -1,10 +1,13 @@
-import {Component, Input, ViewChild, ElementRef, OnInit, ViewContainerRef, ComponentFactoryResolver, AfterViewInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {titleCase} from 'change-case';
+import { Component, Input, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver, AfterViewInit, AfterViewChecked, AfterContentInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { titleCase } from 'change-case';
 import stackblitz from '@stackblitz/sdk';
-import {EXAMPLE_COMPONENTS} from '@healthcatalyst/cashmere-examples';
-import {ApplicationInsightsService} from '../../../../shared/application-insights/application-insights.service';
-import {expand} from 'rxjs/operators';
+import { EXAMPLE_COMPONENTS } from '@healthcatalyst/cashmere-examples';
+import { ApplicationInsightsService } from '../../../../shared/application-insights/application-insights.service';
+import { expand } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { TabSetComponent } from 'projects/cashmere/src/lib/tabs';
+import { TabComponent } from 'dist/cashmere/lib/tabs';
 
 @Component({
     selector: 'hc-example-viewer',
@@ -12,17 +15,28 @@ import {expand} from 'rxjs/operators';
     styleUrls: ['example-viewer.component.scss']
 })
 export class ExampleViewerComponent implements OnInit {
-    @ViewChild('exampleContainer', {read: ViewContainerRef, static: true})
+    @ViewChild('exampleContainer', { read: ViewContainerRef, static: true })
     exampleContainer: ViewContainerRef;
+    @ViewChild('tabSet', { static: false }) _tabSet: TabSetComponent;
 
     isInitialized = false;
     private _example: string;
     private allExampleFiles: FileHash = {};
     private appInsights;
-    exampleFiles: Array<{name: string; contents: string}> = [];
+    private selected;
+    exampleFiles: Array<{ name: string; contents: string }> = [];
 
-    constructor(private httpClient: HttpClient, private componentFactoryResolver: ComponentFactoryResolver) {
+    constructor(
+        private httpClient: HttpClient,
+        private componentFactoryResolver: ComponentFactoryResolver,
+        private activatedRoute: ActivatedRoute
+    ) {
         this.appInsights = new ApplicationInsightsService();
+        this.activatedRoute.queryParams.subscribe(params => {
+            if (params['selected']) {
+                this.selected = params['selected'];
+            }
+        });
     }
 
     @Input()
@@ -44,6 +58,14 @@ export class ExampleViewerComponent implements OnInit {
         if (this.example) {
             await this.loadExample();
             this.isInitialized = true;
+            setTimeout(() => {
+                // http://localhost:4200/components/checkbox/examples?selected=SCSS#checkbox-standard
+                // console.log(url.split('#').pop());
+                if (this.selected && this._example === 'checkbox-align') {
+                    const found = this._tabSet._tabs.toArray().find(t => t.tabTitle === this.selected);
+                    this._tabSet.selectTab(found ? found : 0);
+                }
+            }, 1000);
         }
     }
 
