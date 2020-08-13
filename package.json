@@ -15,6 +15,7 @@
     "bit": "bit",
     "start": "npm run dev-mode && ng serve -o",
     "docs": "ts-node scripts/docs.ts && node scripts/generate-usage-docs.js",
+    "search-prep": "ts-node scripts/search-prep.ts",
     "test": "ng test cashmere",
     "test:unit": "ng test cashmere --watch=false --code-coverage --no-progress",
     "lint": "npm run lint:tslint && npm run lint:prettier",
@@ -65,6 +66,7 @@
     "markdown-it-container": "^2.0.0",
     "ngx-highlightjs": "^3.0.3",
     "npm-font-open-sans": "^1.1.0",
+    "remove-markdown": "^0.3.0",
     "rxjs": "6.5.4",
     "sugar": "^2.0.6",
     "zone.js": "~0.9.1"
