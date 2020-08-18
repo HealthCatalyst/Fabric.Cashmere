@@ -5,9 +5,10 @@ const fs = require('fs');
 const removeMd = require('remove-markdown');
 const changeCase = require('change-case');
 
-const outputDir = 'dist/user-guide/assets/docs/search/search.json';
+const outputDir = 'dist/user-guide/assets/docs/search/';
 const tempArray: object[] = [];
-const titleRegex = /(?<=# )(.*)\s/g;
+const sectionRegex = /^#{5} /m;
+const titleRegex = /(?<=\s##### )(.*)\s/g;
 let object = {
     id: "",
     title: "",
@@ -16,7 +17,7 @@ let object = {
     link: ""
 };
 
-glob('projects/@(cashmere|cashmere-bits)/src/lib/input/input.md', function (er, files) {
+glob('{guides/**/*.md,projects/@(cashmere|cashmere-bits)/src/lib/**/*.md}', function (er, files) {
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir);
     }
@@ -44,16 +45,33 @@ glob('projects/@(cashmere|cashmere-bits)/src/lib/input/input.md', function (er, 
                     }
                 });
             }
-            const sections = fileContent.split("\n#");
+            const sections = fileContent.split(sectionRegex);
             sections.forEach((element, index) => {
-                object.id = changeCase.snakeCase(found[index]);
-                object.title = found[index];
-                object.content = removeMd(element);
-                object.link = mapping.path;
-                object.category = mapping.basename;
-                tempArray.push(object);
+                const sectionTitle = found[index - 1] ? found[index - 1] : changeCase.noCase(mapping.path);
+                const sectionObj = new Object({
+                    id: changeCase.snakeCase(sectionTitle),
+                    title: sectionTitle,
+                    content: removeMd(element),
+                    link: `${getCategory(mapping.path)}/${mapping.basename}`,
+                    category: getCategory(mapping.path)
+                });
+                if (sectionObj["content"] !== "") {
+                    tempArray.push(sectionObj);
+                }
             });
-            console.log(tempArray);
         });
-    fs.writeFile(outputDir, 'JSON.stringify(tempArray)');
+    const distFD = fs.openSync(path.join(outputDir) + 'search.json', 'w');
+    fs.writeSync(distFD, JSON.stringify(tempArray));
 });
+
+function getCategory(fileName: string) {
+    const urlSplit = fileName.split('/');
+    if (urlSplit.length === 2) {
+        return 'guides';
+    } else {
+        if (urlSplit[1] === 'styles') {
+            return 'styles';
+        }
+        return urlSplit[1] === 'cashmere' ? 'components' : 'bits';
+    }
+}
