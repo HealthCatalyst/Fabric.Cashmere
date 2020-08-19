@@ -7,5 +7,5 @@ import {Component} from '@angular/core';
     `
 })
 export class ApplicationLaunchScreenGuideComponent {
-    public document: string = require('raw-loader!../../../../guides/styles/application-launch-screen.md');
+    public document: string = require('raw-loader!../../../../guides/styles/launch-screen.md');
 }

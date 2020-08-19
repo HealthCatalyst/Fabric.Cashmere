@@ -7,5 +7,5 @@ import {Component} from '@angular/core';
     `
 })
 export class ErrorPagesComponent {
-    public document: string = require('raw-loader!../../../../guides/styles/error-pages.md');
+    public document: string = require('raw-loader!../../../../guides/styles/error.md');
 }

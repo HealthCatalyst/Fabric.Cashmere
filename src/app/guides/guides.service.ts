@@ -51,7 +51,7 @@ export class GuidesService {
             title: 'Customizing Components',
             route: 'using-customizing-components',
             category: 'dev',
-            document: require('raw-loader!../../../guides/using-and-customizing-components.md')
+            document: require('raw-loader!../../../guides/using-customizing-components.md')
         },
         {
             title: 'Working with Examples',

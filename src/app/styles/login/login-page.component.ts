@@ -7,5 +7,5 @@ import {Component} from '@angular/core';
     `
 })
 export class LoginPageComponent {
-    public document: string = require('raw-loader!../../../../guides/styles/login-page.md');
+    public document: string = require('raw-loader!../../../../guides/styles/login.md');
 }

@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
     styleUrls: ['./about-modal.component.scss']
 })
 export class AboutModalComponent {
-    public document: string = require('raw-loader!../../../../guides/styles/about-modal.md');
+    public document: string = require('raw-loader!../../../../guides/styles/about.md');
 }
