@@ -5,7 +5,7 @@ const fs = require('fs');
 const removeMd = require('remove-markdown');
 const changeCase = require('change-case');
 
-const outputDir = 'dist/user-guide/assets/docs/search';
+const outputDir = 'dist/user-guide/assets/docs/search/';
 const tempArray: object[] = [];
 const sectionRegex = /^#{5} /m;
 const titleRegex = /(?<=\s##### )(.*)\s/g;
@@ -18,11 +18,11 @@ let object = {
 };
 
 // glob for .md files
-glob('{guides/**/*.md,projects/@(cashmere|cashmere-bits)/src/lib/**/*.md}', function (er, files) {
+glob('{guides/**/*.md,projects/@(cashmere|cashmere-bits)/src/lib/**/*.md}', async function (er, files) {
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir);
     }
-    files
+    await files
         .map(file => {
             const basename = path.basename(file, path.extname(file));
             return {
@@ -61,8 +61,7 @@ glob('{guides/**/*.md,projects/@(cashmere|cashmere-bits)/src/lib/**/*.md}', func
                 }
             });
         });
-    const distFD = fs.openSync(path.join(outputDir) + 'search.json', 'w');
-    fs.writeSync(distFD, JSON.stringify(tempArray));
+    await loadHtml();
 });
 
 function mdGetContent(element) {
@@ -100,47 +99,51 @@ function mdGetCategory(fileName: string) {
     }
 }
 
-// glob('projects/cashmere-examples/src/lib/**/*.html', function (er, files) {
-//     if (!fs.existsSync(outputDir)) {
-//         fs.mkdirSync(outputDir);
-//     }
-//     files
-//         .map(file => {
-//             const basename = path.basename(file, path.extname(file));
-//             return {
-//                 path: file,
-//                 basename: basename,
-//                 outFile: basename
-//             };
-//         })
-//         .forEach(mapping => {
-//             const fileContent = fs.readFileSync(mapping.path, 'utf8');
-//             let title = mapping.basename.split('.')[0];
-//             const sectionObj = new Object({
-//                 id: changeCase.snakeCase(title),
-//                 title: changeCase.sentenceCase(title),
-//                 content: exampleGetContent(fileContent),
-//                 link: htmlGetLink(mapping),
-//                 category: 'component'
-//             });
-//             tempArray.push(sectionObj);
-//         });
-//     const distFD = fs.openSync(path.join(outputDir) + 'search.json', 'a');
-//     fs.writeSync(distFD, JSON.stringify(tempArray));
-// });
+async function loadHtml() {
+    glob('projects/cashmere-examples/src/lib/**/*.{html,ts}', async function (er, files) {
+        await files
+            .map(file => {
+                const basename = path.basename(file, path.extname(file));
+                return {
+                    path: file,
+                    basename: basename,
+                    outFile: basename
+                };
+            })
+            .forEach(mapping => {
+                const fileContent = fs.readFileSync(mapping.path, 'utf8');
+                let title = mapping.basename.split('.')[0];
+                const sectionObj = new Object({
+                    id: changeCase.snakeCase(title),
+                    title: changeCase.sentenceCase(title),
+                    content: exampleGetContent(fileContent),
+                    link: htmlGetLink(mapping),
+                    category: 'components'
+                });
+                tempArray.push(sectionObj);
+            });
+        const distFD = fs.openSync(path.join(outputDir) + 'search.json', 'w');
+        fs.writeSync(distFD, JSON.stringify(tempArray));
+    });
+}
 
-// function exampleGetContent(fileContent) {
-//     let content = fileContent.replace(/<div>/gi, '');
-//     content = content.replace(/<\/div>/gi, '');
-//     content = content.replace(/\s+/g, " ");
-//     content = content.trim();
-//     return content;
-// }
+loadHtml();
 
-// function htmlGetLink(mapping) {
-//     let link = '';
-//     // file category / file name
-//     link = `component/${mapping.basename.split('-')[0]}`;
-//     link += '/examples';
-//     return link;
-// }
+function exampleGetContent(fileContent) {
+    // Remove <div> and </div>
+    let content = fileContent.replace(/<div>/gi, '');
+    content = content.replace(/<\/div>/gi, '');
+    // Remove excess white space
+    content = content.replace(/\s+/g, " ");
+    // Trim to clean up text
+    content = content.trim();
+    return content;
+}
+
+function htmlGetLink(mapping) {
+    let link = '';
+    // file category / file name
+    link = `components/${mapping.basename.split('-')[0]}`;
+    link += '/examples';
+    return link;
+}
