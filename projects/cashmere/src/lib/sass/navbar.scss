@@ -1,6 +1,6 @@
-@import './colors';
-@import './variables';
-@import './mixins';
+@import "./colors";
+@import "./variables";
+@import "./mixins";
 
 $navbar-color: $charcoal-blue !default;
 $navbar-brand: $primary-brand !default;
@@ -104,6 +104,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     color: $navbar-text-inactive;
     border-bottom: 5px solid transparent;
     transition: background-color 0.25s;
+    outline: none;
     &:hover:not(.active),
     &.inactive:hover {
         outline: none;
@@ -182,7 +183,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     display: flex;
     align-items: center;
     &::after {
-        content: '|';
+        content: "|";
         font-size: 18px;
         color: $navbar-text;
     }
@@ -204,6 +205,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         margin-left: 5px;
         vertical-align: top;
         margin-top: 1px;
+        margin-right: -10px;
         font-size: 13px !important;
     }
 
@@ -212,6 +214,11 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         outline: none;
         color: $navbar-text;
         background-color: darken($navbar-color, 5%);
+    }
+    &.active:not(.inactive) {
+        color: $navbar-text;
+        font-weight: 600;
+        border-bottom: 5px solid $navbar-brand;
     }
 
     // This piece of code allows to use the bold styling from the style guide, while
@@ -256,7 +263,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 
 @mixin hc-navbar-mobile-menu-dropdown() {
     background-color: $slate-blue;
-    display: none;
+    visibility: hidden;
     margin-top: 53px;
     padding-top: 15px;
     position: fixed;
@@ -266,6 +273,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 
     @include media-breakpoint-down(md) {
         display: inline;
+        visibility: visible;
     }
 }
 
@@ -284,6 +292,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     color: $slate-gray-200;
     cursor: pointer;
     display: block;
+    visibility: inherit;
     padding-left: 2%;
     transition: background-color 0.25s ease;
 

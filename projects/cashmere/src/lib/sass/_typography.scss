@@ -168,6 +168,12 @@ em,
     font-style: italic;
 }
 
+// Highlight
+.hc-text-highlight {
+    color: $text;
+    background-color: $yellow;
+}
+
 // Articles
 // Article paragraph lists
 article ul {

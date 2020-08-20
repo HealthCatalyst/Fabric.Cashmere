@@ -1,4 +1,3 @@
-
 export {NullOrEmptyStringPipe} from './null-or-empty-string/null-or-empty-string.pipe';
 export {NullOrEmptyStringPipeModule} from './null-or-empty-string/null-or-empty-string-pipe.module';
 export {EllipsisPipe} from './ellipsis/ellipsis.pipe';
@@ -7,4 +6,6 @@ export {FileSizePipe} from './file-size/file-size.pipe';
 export {FileSizePipeModule} from './file-size/file-size-pipe.module';
 export {NumberAbbreviatorPipe} from './number-abbreviator/number-abbreviator.pipe';
 export {NumberAbbreviatorPipeModule} from './number-abbreviator/number-abbreviator-pipe.module';
+export {HighlightPipe} from './highlight/highlight.pipe';
+export {HighlightPipeModule} from './highlight/highlight-pipe.module';
 export {PipesModule} from './pipes.module';

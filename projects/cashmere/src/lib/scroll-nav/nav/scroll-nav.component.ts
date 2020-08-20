@@ -9,7 +9,7 @@ import {ScrollNavLinkDirective} from './scroll-nav-link.directive';
     templateUrl: 'scroll-nav.component.html'
 })
 export class HcScrollNavComponent implements AfterViewInit {
-    @ContentChildren(ScrollNavLinkDirective) private linkList: QueryList<ScrollNavLinkDirective>;
+    @ContentChildren(ScrollNavLinkDirective, { descendants: true }) private linkList: QueryList<ScrollNavLinkDirective>;
     public get _links(): Array<HTMLElement> {
         return this.linkList.toArray().map(e => e._el.nativeElement);
     }

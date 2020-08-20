@@ -17,6 +17,14 @@ export class MenuDirective implements AfterContentInit, OnDestroy {
     private unsubscribe$ = new Subject<void>();
 
     ngAfterContentInit() {
+        this.updateSubMenus();
+
+        // Update submenus if they are added dynamically or after check
+        this._subMenus.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => this.updateSubMenus());
+    }
+
+    /** Rechecks the content for instances of `HcPopComponent` and inits them as submenus */
+    updateSubMenus() {
         this._subMenus.forEach((anchor: HcPopoverAnchorDirective) => {
             anchor._hasSubmenu = true;
             // Subscribe to submenu open events so we can close any other submenus currently open

@@ -1,0 +1,212 @@
+{
+    "$schema": "./document-items.schema.json",
+    "accordion": {
+        "name": "Accordion",
+        "category": "layout",
+        "examples": ["accordion-overview"]
+    },
+    "banner": {
+        "name": "Banner",
+        "category": "popups",
+        "examples": ["banner-overview"]
+    },
+    "breadcrumbs": {
+        "name": "Breadcrumbs",
+        "category": "nav",
+        "examples": [],
+        "usageDoc": true
+    },
+    "button": {
+        "name": "Button",
+        "category": "buttons",
+        "examples": ["button-anchor", "button-colors", "button-icon", "button-link", "button-size", "button-split", "button-type"],
+        "usageDoc": true
+    },
+    "checkbox": {
+        "name": "Checkbox",
+        "category": "forms",
+        "examples": ["checkbox-align", "checkbox-forms", "checkbox-indeterminate", "checkbox-standard"],
+        "usageDoc": true
+    },
+    "chip": {
+        "name": "Chip",
+        "category": "buttons",
+        "examples": ["chip-action", "chip-basic", "chip-row", "chip-singlerow"]
+    },
+    "date-range": {
+        "name": "DateRange",
+        "category": "forms",
+        "examples": ["date-range", "date-range-time"],
+        "usageDoc": true
+    },
+    "datepicker": {
+        "name": "Datepicker",
+        "category": "forms",
+        "examples": ["datepicker", "datepicker-selected-value", "datepicker-sugar"],
+        "usageDoc": true
+    },
+    "drawer": {
+        "name": "Drawer",
+        "category": "layout",
+        "examples": ["drawer-basic", "drawer-menu", "drawer-overlay", "drawer-side"]
+    },
+    "ellipsis-pipe": {
+        "name": "Ellipsis",
+        "category": "pipes",
+        "examples": ["ellipsis-overview"],
+        "hideApi": true,
+        "usageDoc": true
+    },
+    "file-size-pipe": {
+        "name": "File Size",
+        "category": "pipes",
+        "examples": ["file-size-overview"],
+        "hideApi": true,
+        "usageDoc": true
+    },
+    "form-field": {
+        "name": "Form Field",
+        "category": "forms",
+        "examples": ["form-field-labels", "form-field-overview", "form-field-tight"],
+        "usageDoc": true
+    },
+    "highlight-pipe": {
+        "name": "Highlight",
+        "category": "pipes",
+        "examples": ["highlight-overview"],
+        "hideApi": true,
+        "usageDoc": true
+    },
+    "icon": {
+        "name": "Icon",
+        "category": "buttons",
+        "examples": ["icon-overview"]
+    },
+    "input": {
+        "name": "Input",
+        "category": "forms",
+        "examples": ["input-prefix", "input-required", "input-suffix", "input-text-area"],
+        "usageDoc": true
+    },
+    "list": {
+        "name": "List",
+        "category": "layout",
+        "examples": ["list-overview"]
+    },
+    "modal": {
+        "name": "Modal",
+        "category": "popups",
+        "examples": ["modal-overview"]
+    },
+    "multiselect": {
+        "name": "Multiselect & Typeahead",
+        "category": "forms",
+        "examples": ["multiselect-custom-templates", "multiselect-embed-checkbox", "multiselect-overview"],
+        "hideApi": true,
+        "usageDoc": true
+    },
+    "navbar": {
+        "name": "Navbar",
+        "category": "nav",
+        "examples": ["navbar-app-switcher", "navbar-overview"],
+        "usageDoc": true
+    },
+    "null-or-empty-string-pipe": {
+        "name": "IfNullOrEmpty",
+        "category": "pipes",
+        "examples": ["null-or-empty-string-overview"],
+        "hideApi": true,
+        "usageDoc": true
+    },
+    "number-abbreviator-pipe": {
+        "name": "Number Abbreviator",
+        "category": "pipes",
+        "examples": ["number-abbreviator-overview"],
+        "hideApi": true,
+        "usageDoc": true
+    },
+    "pagination": {
+        "name": "Pagination",
+        "category": "nav",
+        "examples": ["pagination-load-more", "pagination-simple", "pagination-standard"],
+        "usageDoc": true
+    },
+    "picklist": {
+        "name": "Picklist",
+        "category": "layout",
+        "examples": ["picklist-simple", "picklist-valueset"],
+        "usageDoc": true
+    },
+    "pop": {
+        "name": "Popover",
+        "category": "popups",
+        "examples": ["popover-menu", "popover-overview", "popover-right-click", "popover-simple", "tooltip-overview"],
+        "usageDoc": true
+    },
+    "progress-indicators": {
+        "name": "Progress Indicators",
+        "category": "buttons",
+        "examples": ["progress-dots", "progress-spinner"],
+        "usageDoc": true
+    },
+    "radio-button": {
+        "name": "Radio Button",
+        "category": "forms",
+        "examples": ["radio-button-disabled", "radio-button-forms", "radio-button-standard"],
+        "usageDoc": true
+    },
+    "scroll-nav": {
+        "name": "ScrollNav",
+        "category": "nav",
+        "examples": ["scroll-nav"]
+    },
+    "select": {
+        "name": "Select",
+        "category": "forms",
+        "examples": ["select-disabled", "select-forms", "select-standard", "select-validation"],
+        "usageDoc": true
+    },
+    "sort": {
+        "name": "Sort",
+        "category": "table",
+        "examples": [],
+        "usageDoc": true
+    },
+    "stepper": {
+        "name": "Stepper",
+        "category": "layout",
+        "examples": ["stepper-overview"]
+    },
+    "subnav": {
+        "name": "Subnav",
+        "category": "nav",
+        "examples": ["subnav-overview"]
+    },
+    "table": {
+        "name": "Table",
+        "category": "table",
+        "examples": ["resizable-columns", "table-filter", "table-sort"],
+        "usageDoc": true
+    },
+    "tabs": {
+        "name": "Tabs",
+        "category": "layout",
+        "examples": ["tabs-horizontal", "tabs-vertical"]
+    },
+    "tile": {
+        "name": "Tile",
+        "category": "layout",
+        "examples": ["tile-overview"]
+    },
+    "toaster": {
+        "name": "Toaster Messages",
+        "category": "popups",
+        "examples": ["toaster-overview"]
+    },
+    "typeform-survey": {
+        "name": "Typeform Survey",
+        "category": "popups",
+        "examples": ["typeform-survey-overview"],
+        "usageDoc": true
+    }
+}

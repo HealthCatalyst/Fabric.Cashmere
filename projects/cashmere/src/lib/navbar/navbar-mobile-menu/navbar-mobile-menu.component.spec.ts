@@ -28,14 +28,7 @@ describe('NavbarMobileMenuComponent', () => {
     describe('show', () => {
         it('should change the y position', () => {
             component.show();
-            expect(component._yPos).toBe('0');
-        });
-    });
-
-    describe('hide', () => {
-        it('should change the y position', () => {
-            component.hide();
-            expect(component._yPos).toBe('-100');
+            expect(component._yPos).toBe(0);
         });
     });
 });

@@ -1,10 +1,8 @@
-<hc-checkbox [checked]="isChecked()" [indeterminate]="isIndeterminate()" (change)="parentClick()">
-    Parent checkbox (indeterminate)
-</hc-checkbox>
-
-<form [formGroup]="checkboxGroup" class="checkbox-group">
-    <div *ngFor="let control of getChecks()">
-        <hc-checkbox [formControl]="control">Child checkbox</hc-checkbox>
-    </div>
+<form>
+    <hc-checkbox-group parentLabel="Parent Checkbox">
+        <hc-checkbox>Child checkbox</hc-checkbox>
+        <hc-checkbox [checked]='true'>Child checkbox</hc-checkbox>
+        <hc-checkbox>Child checkbox</hc-checkbox>
+        <hc-checkbox [checked]='true'>Child checkbox</hc-checkbox>
+    </hc-checkbox-group>
 </form>
-

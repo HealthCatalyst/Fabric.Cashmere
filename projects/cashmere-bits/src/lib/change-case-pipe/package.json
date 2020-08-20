@@ -1,0 +1,9 @@
+{
+  "es2015": "fesm2015/bit-healthcatalyst.cashmere.change-case-pipe.js",
+  "esm5": "esm5/bit-healthcatalyst.cashmere.change-case-pipe.js",
+  "esm2015": "esm2015/bit-healthcatalyst.cashmere.change-case-pipe.js",
+  "fesm5": "fesm5/bit-healthcatalyst.cashmere.change-case-pipe.js",
+  "fesm2015": "fesm2015/bit-healthcatalyst.cashmere.change-case-pipe.js",
+  "module": "fesm5/bit-healthcatalyst.cashmere.change-case-pipe.js",
+  "typings": "bit-healthcatalyst.cashmere.change-case-pipe.d.ts"
+}
