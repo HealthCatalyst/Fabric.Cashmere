@@ -158,6 +158,14 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         this.togglePopover();
     }
 
+    @HostListener('keydown', ['$event'])
+    _showOrHideOnEnter(event: KeyboardEvent): void {
+        if (this.trigger !== 'click' || event.keyCode !== KEY_CODE.ENTER) {
+            return;
+        }
+        this.togglePopover();
+    }
+
     @HostListener('touchstart', ['$event'])
     @HostListener('mousedown', ['$event'])
     _showOrHideOnMouseOver($event: MouseEvent): void {

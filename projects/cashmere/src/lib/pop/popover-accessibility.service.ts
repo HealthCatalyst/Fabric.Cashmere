@@ -4,7 +4,8 @@ export enum KEY_CODE {
     RIGHT_ARROW = 39,
     UP_ARROW = 38,
     LEFT_ARROW = 37,
-    TAB = 9
+    TAB = 9,
+    ENTER = 13
 }
 
 export interface HcPopKeyboardNotifier {
