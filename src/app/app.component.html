@@ -19,7 +19,7 @@
                 <hc-list-item *ngFor="let item of searchResults" class="hc-navbar-search-results-items" routerLink="{{item.link}}">
                     <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="results-icon"></hc-icon>
                     <h1 hcListLine class="result-title">{{item.title}}</h1>
-                    <p hcListLine class="result-sub-text">{{item.category}}</p>
+                    <p hcListLine class="result-sub-text">{{item.type}}</p>
                 </hc-list-item>
             </hc-list>
             <!-- <a (click)="showAll()" class="hc-navbar-search-show-all">Show all search results</a> -->

@@ -2,6 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import MiniSearch from 'minisearch';
 const json = require('../../dist/user-guide/assets/docs/search/search.json');
+const basicjson = require('../../dist/user-guide/assets/docs/search/basic-search.json');
 
 @Component({
     selector: 'hc-root',
@@ -13,11 +14,11 @@ export class AppComponent implements AfterViewInit {
     navSearchBar = new FormControl('');
 
     searchResults;
-    searchTest = json;
+    searchTest = basicjson;
 
     miniSearch = new MiniSearch({
         fields: ['title', 'type'], // fields to index for full-text search
-        storeFields: ['id', 'link', 'category', 'title'], // fields to return with search results
+        storeFields: ['id', 'title', 'link', 'category', 'name', 'type'], // fields to return with search results
         searchOptions: {
             prefix: true,
             boost: { type: 20 }

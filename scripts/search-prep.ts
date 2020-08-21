@@ -1,9 +1,8 @@
-const mark = require('marked');
-const glob = require('glob');
-const path = require('path');
-const fs = require('fs');
-const removeMd = require('remove-markdown');
-const changeCase = require('change-case');
+import * as fs from 'fs';
+import * as path from 'path';
+import * as glob from 'glob';
+import * as removeMd from 'remove-markdown';
+import * as changeCase from 'change-case';
 
 const outputDir = 'dist/user-guide/assets/docs/search/';
 const tempArray: object[] = [];
@@ -15,6 +14,7 @@ let object = {
     content: "",
     category: "",
     link: "",
+    name: "",
     type: ""
 };
 
@@ -56,7 +56,8 @@ glob('{guides/**/*.md,projects/@(cashmere|cashmere-bits)/src/lib/**/*.md}', asyn
                     content: mdGetContent(element),
                     link: mdGetLink(mapping),
                     category: mdGetCategory(mapping.path),
-                    type: mapping.basename
+                    name: mapping.basename,
+                    type: 'Guides'
                 });
                 if (sectionObj["content"] !== "") {
                     tempArray.push(sectionObj);
@@ -121,7 +122,8 @@ async function loadHtml() {
                     content: exampleGetContent(fileContent),
                     link: htmlGetLink(mapping),
                     category: 'components',
-                    type: mapping.basename.split('-')[0]
+                    name: mapping.basename.split('-')[0],
+                    type: getFileEnding(mapping.path)
                 });
                 tempArray.push(sectionObj);
             });
@@ -129,8 +131,6 @@ async function loadHtml() {
         fs.writeSync(distFD, JSON.stringify(tempArray));
     });
 }
-
-loadHtml();
 
 function exampleGetContent(fileContent) {
     // Remove <div> and </div>
@@ -149,4 +149,9 @@ function htmlGetLink(mapping) {
     link = `components/${mapping.basename.split('-')[0]}`;
     link += '/examples';
     return link;
+}
+
+function getFileEnding(path) {
+    let type = path.split('.');
+    return type[2];
 }
