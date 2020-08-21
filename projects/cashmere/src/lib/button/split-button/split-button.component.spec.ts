@@ -53,7 +53,7 @@ describe('SplitButtonComponent', () => {
     template: `
         <hc-split-button (click)="primaryButtonClick()">
             Button Text
-            <div hcButtonItem (click)="menuItemClick()">Menu Item</div>
+            <div hcMenuItem (click)="menuItemClick()">Menu Item</div>
         </hc-split-button>
     `
 })
