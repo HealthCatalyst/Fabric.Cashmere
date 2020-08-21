@@ -1,5 +1,8 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import MiniSearch from 'minisearch';
+const json = require('../../dist/user-guide/assets/docs/search/search.json');
+
 @Component({
     selector: 'hc-root',
     styleUrls: ['./app.component.scss'],
@@ -10,21 +13,25 @@ export class AppComponent implements AfterViewInit {
     navSearchBar = new FormControl('');
 
     searchResults;
-    searchTest = [
-        { id: 'button', title: 'Button Component', description: 'bleh', subContent: 'sub bleh' },
-        { id: 'date picker', title: 'datepicker Component', description: 'bleh', subContent: 'sub bleh' },
-        { id: 'date range', title: 'dateRange Component', description: 'bleh', subContent: 'sub bleh' },
-        { id: 'date search', title: 'dateSearch Component', description: 'bleh', subContent: 'sub bleh' },
-        { id: 'date test', title: 'dateTest Component', description: 'bleh', subContent: 'sub bleh' },
-        { id: 'date test2', title: 'dateTest1 Component', description: 'bleh', subContent: 'sub bleh' },
-        { id: 'date test3', title: 'dateTest2 Component', description: 'bleh', subContent: 'sub bleh' },
-    ];
+    searchTest = json;
+
+    miniSearch = new MiniSearch({
+        fields: ['title', 'type'], // fields to index for full-text search
+        storeFields: ['id', 'link', 'category', 'title'], // fields to return with search results
+        searchOptions: {
+            prefix: true,
+            boost: { type: 20 }
+        }
+    });
 
     ngAfterViewInit() {
+        this.miniSearch.addAll(this.searchTest);
+
         this.navSearchBar.valueChanges.subscribe((val) => {
             if (val !== '') {
                 let tempResults = this.getItems(val);
                 this.searchResults = tempResults.slice(0, 4);
+                console.log(this.searchResults);
             } else {
                 this.searchResults = [];
             }
@@ -32,8 +39,8 @@ export class AppComponent implements AfterViewInit {
     }
 
     getItems = (value) => {
-        const userInput = value.trim().toLowerCase();
-        return this.searchTest.filter(m => m.id.includes(userInput));
+        let results = this.miniSearch.search(value);
+        return results;
     }
 
     public showAll = () => {

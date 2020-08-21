@@ -16,11 +16,10 @@
                     class="searchBar" id='hc-nav-search-input' />
             </hc-form-field>
             <hc-list class="hc-navbar-search-results">
-                <hc-list-item *ngFor="let item of searchResults" class="hc-navbar-search-results-items">
+                <hc-list-item *ngFor="let item of searchResults" class="hc-navbar-search-results-items" routerLink="{{item.link}}">
                     <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="results-icon"></hc-icon>
                     <h1 hcListLine class="result-title">{{item.title}}</h1>
-                    <span hcListLine class="result-description">{{item.description}}</span>
-                    <p hcListLine class="result-sub-text">{{item.subContent}}</p>
+                    <p hcListLine class="result-sub-text">{{item.category}}</p>
                 </hc-list-item>
             </hc-list>
             <!-- <a (click)="showAll()" class="hc-navbar-search-show-all">Show all search results</a> -->

@@ -1,5 +1,7 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import MiniSearch from 'minisearch';
+const json = require('../../../dist/user-guide/assets/docs/search/search.json');
 
 @Component({
     selector: 'hc-home',
@@ -10,21 +12,30 @@ export class HomeComponent implements AfterViewInit {
     searchBar = new FormControl("");
 
     searchResults;
-    searchTest = [
-        { id: 'button', name: 'ButtonComponent' },
-        { id: 'date picker', name: 'datepickerComponent' },
-        { id: 'date range', name: 'dateRangeComponent' },
-        { id: 'date search', name: 'dateSearchComponent' }
-    ];
+    searchTest = json;
+
+    miniSearch = new MiniSearch({
+        fields: ['title', 'type'], // fields to index for full-text search
+        storeFields: ['id', 'link', 'category'], // fields to return with search results
+        searchOptions: {
+            prefix: true,
+            boost: { type: 20 }
+        }
+    });
 
     ngAfterViewInit() {
+        this.miniSearch.addAll(this.searchTest);
+
         this.searchBar.valueChanges.subscribe((val) => {
-            this.searchResults = this.getItems(val);
+            if (val.length > 2) {
+                this.searchResults = this.getItems(val);
+            }
         });
     }
 
     getItems = (value) => {
-        const userInput = value.trim().toLowerCase();
-        return this.searchTest.filter(m => m.id.includes(userInput));
+        let results = this.miniSearch.search(value);
+        console.log(results);
+        return results.slice(0, 3);
     }
 }

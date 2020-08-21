@@ -14,7 +14,8 @@ let object = {
     title: "",
     content: "",
     category: "",
-    link: ""
+    link: "",
+    type: ""
 };
 
 // glob for .md files
@@ -54,7 +55,8 @@ glob('{guides/**/*.md,projects/@(cashmere|cashmere-bits)/src/lib/**/*.md}', asyn
                     title: sectionTitle,
                     content: mdGetContent(element),
                     link: mdGetLink(mapping),
-                    category: mdGetCategory(mapping.path)
+                    category: mdGetCategory(mapping.path),
+                    type: mapping.basename
                 });
                 if (sectionObj["content"] !== "") {
                     tempArray.push(sectionObj);
@@ -118,7 +120,8 @@ async function loadHtml() {
                     title: changeCase.sentenceCase(title),
                     content: exampleGetContent(fileContent),
                     link: htmlGetLink(mapping),
-                    category: 'components'
+                    category: 'components',
+                    type: mapping.basename.split('-')[0]
                 });
                 tempArray.push(sectionObj);
             });
