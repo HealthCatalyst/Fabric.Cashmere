@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PaginationComponent, HcTableDataSource } from '@healthcatalyst/cashmere';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'hc-search-results',
@@ -8,8 +9,9 @@ import { PaginationComponent, HcTableDataSource } from '@healthcatalyst/cashmere
     styleUrls: ['./search-results.component.scss']
 })
 
-export class SearchResultsComponent {
+export class SearchResultsComponent implements OnInit {
     searchBar = new FormControl("");
+    search = '';
     SearchResults = [
         { title: "Navbar Component", sourceLink1: "CustomerBASE", sourceLink2: "AdventureWorksLocal", description: "Created 10 months ago • Jared Ammerman • Platform", subContent: "In order to edit the descriptions within ATLAS does a user have to be an Admin and" },
         { title: "Navbar Documentation", sourceLink1: "CustomerBASE", sourceLink2: "AdventureWorksLocal", description: "Created 10 months ago • Jared Ammerman • Platform", subContent: "When searching Atlas it would be nice to have the results tabularized.  For example: " },
@@ -41,6 +43,7 @@ export class SearchResultsComponent {
     ];
     searchDisplay = this.searchResultsData.slice(0, 10);
 
+    constructor(private route: ActivatedRoute) { }
     length = this.searchResultsData.length;
 
     // Functions to get the current page
@@ -52,5 +55,11 @@ export class SearchResultsComponent {
         this.pageNumberControl.setValue(value);
         let tempStartIndex = 10 * (value - 1);
         this.searchDisplay = this.searchResultsData.slice(tempStartIndex, tempStartIndex + 10);
+    }
+
+    ngOnInit() {
+        this.route.queryParams.subscribe(params => {
+            this.search = params['search'];
+        });
     }
 }
