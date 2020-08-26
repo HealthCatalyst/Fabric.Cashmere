@@ -125,7 +125,7 @@ async function loadHtml() {
                 });
                 tempArray.push(sectionObj);
             });
-        const distFD = fs.openSync(path.join(outputDir) + 'search.json', 'w');
+        const distFD = fs.openSync(path.join(outputDir) + 'search.json', 'w+');
         fs.writeSync(distFD, JSON.stringify(tempArray));
     });
 }

@@ -5,12 +5,13 @@
             <button hc-button title="Select All" buttonStyle="link">Select All</button>
         </hc-drawer-item>
         <hc-drawer-item>
-            <div class="checkboxContiner">
+            <form class="checkboxContiner" [formGroup]="categories">
                 <h3>Category</h3>
-                <hc-checkbox>Styles</hc-checkbox>
-                <hc-checkbox>Components</hc-checkbox>
-                <hc-checkbox>Guides</hc-checkbox>
-            </div>
+                <hc-checkbox formControlName="styles">Styles</hc-checkbox>
+                <hc-checkbox formControlName="components">Components</hc-checkbox>
+                <hc-checkbox formControlName="guides">Guides</hc-checkbox>
+                <hc-checkbox formControlName="bits">Bits</hc-checkbox>
+            </form>
         </hc-drawer-item>
         <hc-drawer-item>
             <div class="checkboxContiner">
@@ -28,23 +29,19 @@
     </hc-form-field>
 
     <section class="hc-search-results">
-        <div *ngFor="let item of SearchResults" class="hc-search-results-items">
+        <div *ngFor="let item of searchDisplay" class="hc-search-results-items">
             <div class="titleSection">
                 <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="hc-results-icon"></hc-icon>
-                <p hcListLine class="hc-result-title">{{item.title}}</p>
+                <a hcListLine class="hc-result-title" routerLink="/{{item.link}}">{{item.title}}</a>
             </div>
-            <div class="tags">
+            <!-- <div class="tags">
                 <div class="tagsLink">
                     <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="hc-results-icon"></hc-icon>
-                    <a href="{link}">{{item.sourceLink1}}</a>
+                    <a>Category: {{item.category}}</a>
                 </div>
-                <div class="tagsLink">
-                    <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="hc-results-icon"></hc-icon>
-                    <a href="{link2}">{{item.sourceLink2}}</a>
-                </div>
-            </div>
-            <p hcListLine class="hc-result-sub-text hc-results-text">{{item.subContent}}</p>
-            <span hcListLine class="hc-result-description hc-results-text">{{item.description}}</span>
+            </div> -->
+            <p hcListLine class="hc-result-sub-text hc-results-text">Source: {{item.link}}</p>
+            <span hcListLine class="hc-result-description hc-results-text">{{item.category}}</span>
         </div>
     </section>
 
