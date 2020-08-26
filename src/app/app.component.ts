@@ -1,8 +1,8 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import MiniSearch from 'minisearch';
-const json = require('../../dist/user-guide/assets/docs/search/search.json');
-const basicjson = require('../../dist/user-guide/assets/docs/search/basic-search.json');
+import json = require('../../dist/user-guide/assets/docs/search/search.json');
+import basicJson = require('../../dist/user-guide/assets/docs/search/basic-search.json');
 
 @Component({
     selector: 'hc-root',
@@ -11,10 +11,11 @@ const basicjson = require('../../dist/user-guide/assets/docs/search/basic-search
 })
 
 export class AppComponent implements AfterViewInit {
+    // @ViewChild('search', {static: true}) search: ;
     navSearchBar = new FormControl('');
 
     searchResults;
-    searchTest = basicjson;
+    searchTest = basicJson;
 
     miniSearch = new MiniSearch({
         fields: ['title', 'type'], // fields to index for full-text search
@@ -32,14 +33,14 @@ export class AppComponent implements AfterViewInit {
             if (val !== '') {
                 let tempResults = this.getItems(val);
                 this.searchResults = tempResults.slice(0, 4);
-                console.log(this.searchResults);
             } else {
                 this.searchResults = [];
             }
         });
+        this.search
     }
 
-    getItems = (value) => {
+    getItems = (value: string) => {
         let results = this.miniSearch.search(value);
         return results;
     }
