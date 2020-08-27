@@ -7,7 +7,7 @@
         <p class="headerCopy">Health Catalyst's living style guide for Angular</p>
         <hc-form-field inline="true" tight="true">
             <hc-icon hcPrefix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
-            <input hcInput [formControl]="searchBar" placeholder="Search the Cashmere docs" class="searchBar" />
+            <input #search hcInput [formControl]="searchBar" (keyup.enter)="onEnter(search.value)" placeholder="Search the Cashmere docs" class="searchBar" />
         </hc-form-field>
     </span>
 </header>
