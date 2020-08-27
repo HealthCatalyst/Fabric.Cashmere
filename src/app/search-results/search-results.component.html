@@ -14,11 +14,12 @@
             </form>
         </hc-drawer-item>
         <hc-drawer-item>
-            <div class="checkboxContiner">
+            <div class="checkboxContiner" [formGroup]="types">
                 <h3>Type</h3>
-                <hc-checkbox>Examples</hc-checkbox>
-                <hc-checkbox>API Docs</hc-checkbox>
-                <hc-checkbox>Usage</hc-checkbox>
+                <hc-checkbox formControlName='html'>HTML</hc-checkbox>
+                <hc-checkbox formControlName='Guides'>Guides</hc-checkbox>
+                <hc-checkbox formControlName='ts'>TypeScript</hc-checkbox>
+                <hc-checkbox formControlName='module'>Module</hc-checkbox>
             </div>
         </hc-drawer-item>
     </hc-menu-drawer>
@@ -41,6 +42,7 @@
                 </div>
             </div> -->
             <p hcListLine class="hc-result-sub-text hc-results-text">Source: {{item.link}}</p>
+            <p hcListLine class="hc-result-sub-text hc-results-text">Type: {{item.type}}</p>
             <span hcListLine class="hc-result-description hc-results-text">{{item.category}}</span>
         </div>
     </section>

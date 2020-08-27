@@ -15,7 +15,7 @@
     "bit": "bit",
     "start": "npm run dev-mode && ng serve -o",
     "docs": "ts-node scripts/docs.ts && node scripts/generate-usage-docs.js",
-    "search-prep": "ts-node scripts/search-prep.ts",
+    "search-prep": "ts-node scripts/search-prep.ts && ts-node scripts/basic-search-prep.ts",
     "test": "ng test cashmere",
     "test:unit": "ng test cashmere --watch=false --code-coverage --no-progress",
     "lint": "npm run lint:tslint && npm run lint:prettier",

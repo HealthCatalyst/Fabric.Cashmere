@@ -1,72 +1,122 @@
-const mark = require('marked');
-const glob = require('glob');
-const path = require('path');
-const fs = require('fs');
-const removeMd = require('remove-markdown');
-const changeCase = require('change-case');
+import * as fs from 'fs';
+import * as path from 'path';
+import * as glob from 'glob';
+import * as removeMd from 'remove-markdown';
+import * as changeCase from 'change-case';
 
 const outputDir = 'dist/user-guide/assets/docs/search/';
-const tempArray: object[] = [];
+const searchArray: object[] = [];
+// Looks for '##### '
 const sectionRegex = /^#{5} /m;
+// Looks for new line '##### ' with positive look ahead
+// With this we get the text after the 5 #'s, which is the title of the section
 const titleRegex = /(?<=\s##### )(.*)\s/g;
+// Base Object that we use for output
 let object = {
     id: "",
     title: "",
     content: "",
     category: "",
     link: "",
+    displayName: "",
     type: ""
 };
 
-// glob for .md files
-glob('{guides/**/*.md,projects/@(cashmere|cashmere-bits)/src/lib/**/*.md}', async function (er, files) {
+function readGuideFiles() {
+    glob('{guides/**/*.md,projects/@(cashmere|cashmere-bits)/src/lib/**/*.md}', function (er, files) {
+        files
+            .map(file => {
+                const basename = path.basename(file, path.extname(file));
+                return {
+                    path: file,
+                    basename: basename,
+                    outFile: basename
+                };
+            })
+            .forEach(mapping => {
+                const fileContent = fs.readFileSync(mapping.path, 'utf8');
+                // Go through each file and find titles
+                let matches: RegExpExecArray | null;
+                let found: string[] = [];
+                while ((matches = titleRegex.exec(fileContent)) !== null) {
+                    // This is necessary to avoid infinite loops with zero-width matches
+                    if (matches.index === titleRegex.lastIndex) {
+                        titleRegex.lastIndex++;
+                    }
+                    matches.forEach((match: string, groupIndex: number) => {
+                        if (groupIndex === 1) {
+                            found.push(match);
+                        }
+                    });
+                }
+
+                // Split up the file content by title
+                const sections = fileContent.split(sectionRegex);
+                sections.forEach((element, index) => {
+                    // Set the sectionTitle to the first index of the found array if null set to default path
+                    const sectionTitle = found[index - 1] ? found[index - 1] : changeCase.noCase(mapping.path);
+                    const sectionObj = object = ({
+                        // Set id to the sectionTitle in snake case
+                        id: changeCase.snakeCase(sectionTitle),
+                        title: sectionTitle,
+                        // Remove all the markdown from the file content and set it so we can search through it
+                        content: mdGetContent(element),
+                        link: mdGetLink(mapping),
+                        category: mdGetCategory(mapping.path),
+                        // Set displayName to basename for display purposes
+                        displayName: mapping.basename,
+                        type: 'Guides',
+                    });
+                    // if the content is empty don't push it
+                    if (sectionObj["content"] !== "") {
+                        searchArray.push(sectionObj);
+                    }
+                });
+            });
+        readExampleFiles();
+    });
+}
+
+function readExampleFiles() {
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir);
     }
-    await files
-        .map(file => {
-            const basename = path.basename(file, path.extname(file));
-            return {
-                path: file,
-                basename: basename,
-                outFile: basename
-            };
-        })
-        .forEach(mapping => {
-            const fileContent = fs.readFileSync(mapping.path, 'utf8');
-            let m;
-            let found: string[] = [];
-            while ((m = titleRegex.exec(fileContent)) !== null) {
-                // This is necessary to avoid infinite loops with zero-width matches
-                if (m.index === titleRegex.lastIndex) {
-                    titleRegex.lastIndex++;
-                }
-                m.forEach((match, groupIndex) => {
-                    if (groupIndex === 1) {
-                        found.push(match);
-                    }
+    glob('projects/cashmere-examples/src/lib/**/*.{html,ts}', function (er, files) {
+        files
+            .map(file => {
+                const basename = path.basename(file, path.extname(file));
+                return {
+                    path: file,
+                    basename: basename,
+                    outFile: basename
+                };
+            })
+            .forEach(mapping => {
+                const fileContent = fs.readFileSync(mapping.path, 'utf8');
+                // Uses the basename to get the title and displayName
+                // example basename: 'tabs-horizontal-example.component'
+                let title = mapping.basename.split('.')[0];
+                let name = mapping.basename.split('-')[0];
+                const sectionObj = object = ({
+                    id: changeCase.snakeCase(title),
+                    // Set the title to the title with propare capitalization
+                    title: changeCase.sentenceCase(title),
+                    content: exampleGetContent(fileContent),
+                    link: htmlGetLink(mapping),
+                    category: 'components',
+                    displayName: name,
+                    type: getFileEnding(mapping.path)
                 });
-            }
-            const sections = fileContent.split(sectionRegex);
-            sections.forEach((element, index) => {
-                const sectionTitle = found[index - 1] ? found[index - 1] : changeCase.noCase(mapping.path);
-                const sectionObj = new Object({
-                    id: changeCase.snakeCase(sectionTitle),
-                    title: sectionTitle,
-                    content: mdGetContent(element),
-                    link: mdGetLink(mapping),
-                    category: mdGetCategory(mapping.path),
-                    type: mapping.basename
-                });
-                if (sectionObj["content"] !== "") {
-                    tempArray.push(sectionObj);
-                }
+                searchArray.push(sectionObj);
             });
-        });
-    await loadHtml();
-});
+        // Open the search.json file and write the object Array
+        const distFD = fs.openSync(path.join(outputDir) + 'search.json', 'w');
+        fs.writeSync(distFD, JSON.stringify(searchArray));
+    });
+}
 
-function mdGetContent(element) {
+
+function mdGetContent(element: string) {
     // Remove all markdown symbols
     let content = removeMd(element);
     // replace all extra spaces with a single space
@@ -76,7 +126,7 @@ function mdGetContent(element) {
     return content;
 }
 
-function mdGetLink(mapping) {
+function mdGetLink(mapping: { path: any; basename: any; outFile?: string; }) {
     let link = '';
     // file category / file name
     link = `${mdGetCategory(mapping.path)}/${mapping.basename}`;
@@ -101,38 +151,8 @@ function mdGetCategory(fileName: string) {
     }
 }
 
-async function loadHtml() {
-    glob('projects/cashmere-examples/src/lib/**/*.{html,ts}', async function (er, files) {
-        await files
-            .map(file => {
-                const basename = path.basename(file, path.extname(file));
-                return {
-                    path: file,
-                    basename: basename,
-                    outFile: basename
-                };
-            })
-            .forEach(mapping => {
-                const fileContent = fs.readFileSync(mapping.path, 'utf8');
-                let title = mapping.basename.split('.')[0];
-                const sectionObj = new Object({
-                    id: changeCase.snakeCase(title),
-                    title: changeCase.sentenceCase(title),
-                    content: exampleGetContent(fileContent),
-                    link: htmlGetLink(mapping),
-                    category: 'components',
-                    type: mapping.basename.split('-')[0]
-                });
-                tempArray.push(sectionObj);
-            });
-        const distFD = fs.openSync(path.join(outputDir) + 'search.json', 'w+');
-        fs.writeSync(distFD, JSON.stringify(tempArray));
-    });
-}
 
-loadHtml();
-
-function exampleGetContent(fileContent) {
+function exampleGetContent(fileContent: string) {
     // Remove <div> and </div>
     let content = fileContent.replace(/<div>/gi, '');
     content = content.replace(/<\/div>/gi, '');
@@ -143,10 +163,17 @@ function exampleGetContent(fileContent) {
     return content;
 }
 
-function htmlGetLink(mapping) {
+function htmlGetLink(mapping: { path?: string; basename: any; outFile?: string; }) {
     let link = '';
     // file category / file name
     link = `components/${mapping.basename.split('-')[0]}`;
     link += '/examples';
     return link;
 }
+
+function getFileEnding(path: string) {
+    let type = path.split('.');
+    return type[2];
+}
+
+readGuideFiles();

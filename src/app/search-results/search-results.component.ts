@@ -21,12 +21,19 @@ export class SearchResultsComponent implements AfterViewInit {
         bits: new FormControl(true)
     });
 
+    types = new FormGroup({
+        html: new FormControl(true),
+        Guides: new FormControl(true),
+        ts: new FormControl(true),
+        module: new FormControl(true)
+    });
+
     // Functions to get the current page
     pageNumberControl = new FormControl(1);
 
     miniSearch = new MiniSearch({
         fields: ['title', 'type'],
-        storeFields: ['title', 'content', 'link', 'category'],
+        storeFields: ['title', 'content', 'link', 'category', 'type'],
         searchOptions: {
             prefix: true,
             boost: { type: 20 }
@@ -35,23 +42,28 @@ export class SearchResultsComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         let filterValues: string[] = ["styles", "components", "guides", "bits"];
+        let typeFilterValues: string[] = ["html", "Guides", "ts", "module"];
 
         this.categories.valueChanges.subscribe(categoryValues => {
             filterValues = [];
-            console.log(categoryValues);
             for (const prop in categoryValues) {
                 if (categoryValues[prop]) {
                     filterValues.push(prop);
                 }
             }
-            this.displayResults(filterValues);
-            console.log(filterValues);
+            this.displayResults(filterValues, typeFilterValues);
         });
 
-        this.displayResults(filterValues);
-    }
+        this.types.valueChanges.subscribe(typeValues => {
+            typeFilterValues = [];
+            for (const prop in typeValues) {
+                if (typeValues[prop]) {
+                    typeFilterValues.push(prop);
+                }
+            }
+            this.displayResults(filterValues, typeFilterValues);
+        });
 
-    displayResults(filterValues) {
         this.miniSearch.addAll(searchJson);
 
         this.searchBar.valueChanges.subscribe((val) => {
@@ -76,6 +88,37 @@ export class SearchResultsComponent implements AfterViewInit {
                 this.searchResultsData = [];
             }
         });
+    }
+
+    displayResults(filterValues, typeFilterValues) {
+        if (this.searchBar.value !== '') {
+            let res = this.miniSearch.search(this.searchBar.value, {
+                filter: (result) => {
+                    let isMatching = false;
+
+                    filterValues.forEach(element => {
+                        if (result.category === element) {
+                            isMatching = true;
+                        }
+                    });
+
+                    typeFilterValues.forEach(element => {
+                        if (result.type === element) {
+                            isMatching = true;
+                        }
+                    });
+
+                    return isMatching;
+                }
+            });
+            console.log(res);
+            this.length = res.length;
+            this.searchResultsData = res;
+            console.log(this.searchResultsData);
+            this.searchDisplay = this.searchResultsData.slice(0, 5);
+        } else {
+            this.searchResultsData = [];
+        }
     }
 
 
