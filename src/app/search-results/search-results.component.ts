@@ -11,7 +11,7 @@ import MiniSearch from 'minisearch';
     styleUrls: ['./search-results.component.scss']
 })
 
-export class SearchResultsComponent implements AfterViewInit {
+export class SearchResultsComponent implements AfterViewInit, OnInit {
 
     constructor(private route: ActivatedRoute) { }
 
@@ -46,6 +46,55 @@ export class SearchResultsComponent implements AfterViewInit {
     });
 
     ngAfterViewInit() {
+        this.route.queryParams.subscribe(params => {
+            console.log(this.searchBar.setValue(params['search']));
+        });
+
+    }
+
+    displayResults(filterValues, typeFilterValues) {
+        if (this.searchBar.value !== '') {
+            let res = this.miniSearch.search(this.searchBar.value, {
+                filter: (result) => {
+                    let isMatching = false;
+
+                    filterValues.forEach(element => {
+                        if (result.category === element) {
+                            isMatching = true;
+                        }
+                    });
+
+                    typeFilterValues.forEach(element => {
+                        if (result.type === element) {
+                            isMatching = true;
+                        }
+                    });
+
+                    return isMatching;
+                }
+            });
+            console.log(res);
+            this.length = res.length;
+            this.searchResultsData = res;
+            console.log(this.searchResultsData);
+            this.searchDisplay = this.searchResultsData.slice(0, 5);
+        } else {
+            this.searchResultsData = [];
+        }
+    }
+
+
+    get pageNumber() {
+        return this.pageNumberControl.value;
+    }
+
+    set pageNumber(value: number) {
+        this.pageNumberControl.setValue(value);
+        let tempStartIndex = 5 * (value - 1);
+        this.searchDisplay = this.searchResultsData.slice(tempStartIndex, tempStartIndex + 5);
+    }
+
+    ngOnInit() {
         let filterValues: string[] = ["styles", "components", "guides", "bits"];
         let typeFilterValues: string[] = ["html", "Guides", "ts", "module"];
 
@@ -92,55 +141,6 @@ export class SearchResultsComponent implements AfterViewInit {
             } else {
                 this.searchResultsData = [];
             }
-        });
-    }
-
-    displayResults(filterValues, typeFilterValues) {
-        if (this.searchBar.value !== '') {
-            let res = this.miniSearch.search(this.searchBar.value, {
-                filter: (result) => {
-                    let isMatching = false;
-
-                    filterValues.forEach(element => {
-                        if (result.category === element) {
-                            isMatching = true;
-                        }
-                    });
-
-                    typeFilterValues.forEach(element => {
-                        if (result.type === element) {
-                            isMatching = true;
-                        }
-                    });
-
-                    return isMatching;
-                }
-            });
-            console.log(res);
-            this.length = res.length;
-            this.searchResultsData = res;
-            console.log(this.searchResultsData);
-            this.searchDisplay = this.searchResultsData.slice(0, 5);
-        } else {
-            this.searchResultsData = [];
-        }
-    }
-
-
-    get pageNumber() {
-        return this.pageNumberControl.value;
-    }
-
-    set pageNumber(value: number) {
-        this.pageNumberControl.setValue(value);
-        let tempStartIndex = 5 * (value - 1);
-        this.searchDisplay = this.searchResultsData.slice(tempStartIndex, tempStartIndex + 5);
-    }
-
-    ngOnInit() {
-        this.route.queryParams.subscribe(params => {
-            // this.search = params['search'];
-            console.log(params['search']);
         });
     }
 }
