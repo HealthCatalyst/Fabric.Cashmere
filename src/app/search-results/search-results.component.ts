@@ -1,7 +1,9 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as searchJson from '../../../dist/user-guide/assets/docs/search/search.json';
-import MiniSearch from "minisearch";
+import { PaginationComponent, HcTableDataSource } from '@healthcatalyst/cashmere';
+import { ActivatedRoute } from '@angular/router';
+import MiniSearch from 'minisearch';
 
 @Component({
     selector: 'hc-search-results',
@@ -10,6 +12,9 @@ import MiniSearch from "minisearch";
 })
 
 export class SearchResultsComponent implements AfterViewInit {
+
+    constructor(private route: ActivatedRoute) { }
+
     searchBar: FormControl = new FormControl("");
     searchResultsData;
     searchDisplay;
@@ -70,13 +75,13 @@ export class SearchResultsComponent implements AfterViewInit {
             if (val !== '') {
                 let res = this.miniSearch.search(val, {
                     filter: (result) => {
-                        let res = false;
+                        let ismatching = false;
                         filterValues.forEach(element => {
                             if (result.category === element) {
-                                res = true;
+                                ismatching = true;
                             }
                         });
-                        return res;
+                        return ismatching;
                     }
                 });
                 console.log(res);
@@ -130,5 +135,12 @@ export class SearchResultsComponent implements AfterViewInit {
         this.pageNumberControl.setValue(value);
         let tempStartIndex = 5 * (value - 1);
         this.searchDisplay = this.searchResultsData.slice(tempStartIndex, tempStartIndex + 5);
+    }
+
+    ngOnInit() {
+        this.route.queryParams.subscribe(params => {
+            // this.search = params['search'];
+            console.log(params['search']);
+        });
     }
 }

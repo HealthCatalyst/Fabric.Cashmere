@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import MiniSearch from 'minisearch';
 import json = require('../../dist/user-guide/assets/docs/search/search.json');
 import basicJson = require('../../dist/user-guide/assets/docs/search/basic-search.json');
+import { HcPopComponent } from 'projects/cashmere/src/lib/pop/popover.component';
 
 @Component({
     selector: 'hc-root',
@@ -11,11 +12,15 @@ import basicJson = require('../../dist/user-guide/assets/docs/search/basic-searc
 })
 
 export class AppComponent implements AfterViewInit {
-    // @ViewChild('search', {static: true}) search: ;
+    @ViewChild('search', { static: false }) search: HcPopComponent;
+    @ViewChild('searchInput', { static: false }) input: any;
+
     navSearchBar = new FormControl('');
 
     searchResults;
     searchTest = basicJson;
+    showAll = false;
+    searchValue = '';
 
     miniSearch = new MiniSearch({
         fields: ['title', 'type'], // fields to index for full-text search
@@ -28,13 +33,18 @@ export class AppComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         this.miniSearch.addAll(this.searchTest);
-
         this.navSearchBar.valueChanges.subscribe((val) => {
             if (val !== '') {
                 let tempResults = this.getItems(val);
                 this.searchResults = tempResults.slice(0, 4);
             } else {
                 this.searchResults = [];
+            }
+            if (val.length !== 0) {
+                this.showAll = true;
+                this.searchValue = val;
+            } else {
+                this.showAll = false;
             }
         });
         // this.search
@@ -45,10 +55,9 @@ export class AppComponent implements AfterViewInit {
         return results;
     }
 
-    public showAll = () => {
-        console.log("showing all");
-    };
-
+    setInputFocus() {
+        this.input.nativeElement.focus();
+    }
 }
 
 
