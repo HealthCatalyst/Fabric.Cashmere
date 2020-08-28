@@ -107,7 +107,9 @@ function readExampleFiles() {
                     displayName: name,
                     type: getFileEnding(mapping.path)
                 });
-                searchArray.push(sectionObj);
+                if (sectionObj["id"] !== 'cashmere') {
+                    searchArray.push(sectionObj);
+                }
             });
         // Open the search.json file and write the object Array
         const distFD = fs.openSync(path.join(outputDir) + 'search.json', 'w');
