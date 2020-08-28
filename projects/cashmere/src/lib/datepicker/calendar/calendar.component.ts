@@ -530,10 +530,11 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         } else {
             let curHour = +this.hours;
             curHour++;
-            const tempCycle = this._hourCycle > 12 ? 23 : 12;
+            const tempCycle = this._hourCycle > 12 ? 24 : 12;
             if (curHour > tempCycle) {
-                curHour = tempCycle;
+                curHour = this._hourCycle > 12 ? 0 : 1;
             }
+            this._changeMeridiem(curHour, 12);
             this.hours = curHour.toString();
         }
     }
@@ -546,9 +547,16 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
             curHour--;
             const tempCycle = this._hourCycle > 12 ? 0 : 1;
             if (curHour < tempCycle) {
-                curHour = tempCycle;
+                curHour = this._hourCycle > 12 ? 23 : 12;
             }
+            this._changeMeridiem(curHour, 11);
             this.hours = curHour.toString();
+        }
+    }
+
+    _changeMeridiem(curHour, hourChange) {
+        if (curHour === hourChange) {
+            this._period.setValue(this._period.value > 'am' ? 'am' : 'pm');
         }
     }
 

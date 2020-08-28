@@ -1,6 +1,7 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {ProgressDotsComponent} from './progress-dots.component';
+import { ProgressDotsComponent, ProgressDotsColor } from './progress-dots.component';
+import { By } from '@angular/platform-browser';
 
 describe('ProgressDotsComponent', () => {
     let component: ProgressDotsComponent;
@@ -20,5 +21,20 @@ describe('ProgressDotsComponent', () => {
 
     it('should create', () => {
         expect(component).toBeTruthy();
+    });
+
+    describe('Color', () => {
+        it('should change color to light', () => {
+            component.color = 'light';
+            expect(component.color).toBe('light');
+        });
+
+        it('should throw an error on bad color', () => {
+            expect(() => {
+                component.color = 'beige' as string as ProgressDotsColor;
+                fixture.detectChanges();
+            }
+            ).toThrow(new Error('Unsupported progress dots color value: beige'));
+        });
     });
 });

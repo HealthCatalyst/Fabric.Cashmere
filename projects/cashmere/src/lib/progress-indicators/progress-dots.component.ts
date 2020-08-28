@@ -1,8 +1,10 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
-const supportedColors = ['light', 'dark'];
+export type ProgressDotsColor = 'light' | 'dark';
 
-export function validateColorInput(inputStr: string) {
+const supportedColors: ProgressDotsColor[] = ['light', 'dark'];
+
+export function validateColorInput(inputStr: ProgressDotsColor) {
     if (supportedColors.indexOf(inputStr) < 0) {
         throw Error('Unsupported progress dots color value: ' + inputStr);
     }
@@ -14,15 +16,15 @@ export function validateColorInput(inputStr: string) {
     encapsulation: ViewEncapsulation.None
 })
 export class ProgressDotsComponent {
-    private _color = 'dark';
+    private _color: ProgressDotsColor = 'dark';
 
     /** Use `light` on darker backgrounds and `dark` for lighter backgrounds. */
     @Input()
-    get color(): string {
+    get color(): ProgressDotsColor {
         return this._color;
     }
 
-    set color(colorVal: string) {
+    set color(colorVal: ProgressDotsColor) {
         validateColorInput(colorVal);
         this._color = colorVal;
     }

@@ -1,8 +1,8 @@
-import {Component, OnDestroy} from '@angular/core';
-import {DocItem, DocumentItemsService} from '../core/document-items.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {DocItem, DocumentItemsService, DocItemType, DocItemCategory} from '../core/document-items.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {takeUntil, tap, filter, map} from 'rxjs/operators';
+import {Subject, merge} from 'rxjs';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
 
 @Component({
@@ -10,43 +10,81 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
     templateUrl: './components.component.html',
     styleUrls: ['./components.component.scss']
 })
-export class ComponentsComponent implements OnDestroy {
-    docItems: DocItem[];
-    thisPage = '';
-    thisCategory = '';
-    selectOptions: Array<string> = [];
-    private unsubscribe = new Subject<void>();
-    private appInsights;
+export class ComponentsComponent implements OnInit, OnDestroy {
+    readonly categorizedDocItems: Array<{category: DocItemCategory | 'misc'; displayName: string; items?: DocItem[]}> = [
+        {category: 'forms', displayName: 'Forms'},
+        {category: 'nav', displayName: 'Navigation'},
+        {category: 'layout', displayName: 'Layout'},
+        {category: 'buttons', displayName: 'Buttons & Indicators'},
+        {category: 'popups', displayName: 'Popups & Notifications'},
+        {category: 'table', displayName: 'Data Table'},
+        {category: 'pipes', displayName: 'Pipes'},
+        {category: 'misc', displayName: 'Miscellaneous'}
+    ];
 
-    constructor(docItemService: DocumentItemsService, activatedRoute: ActivatedRoute, private router: Router) {
-        this.appInsights = new ApplicationInsightsService();
-        this.docItems = docItemService.getDocItems();
-
-        // Listen for vertical tab bar navigation and update the select component
-        router.events.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
-            if (event instanceof NavigationEnd) {
-                if (activatedRoute.firstChild) {
-                    this.thisPage = activatedRoute.firstChild.snapshot.params['id'];
-                    this.docItems.forEach(element => {
-                        if (this.thisPage === element.id) {
-                            this.appInsights.logPageView(element.name, event.urlAfterRedirects);
-                            this.thisCategory = element.category;
-                        }
-                    });
+    private _docItems: DocItem[];
+    get allDocItems(): DocItem[] {
+        return this._docItems;
+    }
+    set allDocItems(value: DocItem[]) {
+        this._docItems = value;
+        this.categorizedDocItems.forEach(c => (c.items = []));
+        if (value) {
+            value.forEach(item => {
+                let category = this.categorizedDocItems.find(c => c.category === item.category);
+                if (!category) {
+                    category = this.categorizedDocItems.find(c => c.category === 'misc');
                 }
-            }
-        });
+                category!.items!.push(item);
+            });
+        }
     }
 
-    // Handle changes to the select component and navigate
-    selectUpdate(event: any) {
-        this.router.navigate(['/components/' + event]);
-        window.scrollTo(0, 0);
+    id = '';
+    activeItem: DocItem | undefined;
+    activeCategory = '';
+    selectOptions: Array<string> = [];
+    docType: DocItemType;
+    private unsubscribe = new Subject<void>();
+    private appInsights: ApplicationInsightsService;
+    private url: string;
+
+    constructor(private docItemService: DocumentItemsService, private activatedRoute: ActivatedRoute, private router: Router) {
+        this.appInsights = new ApplicationInsightsService();
     }
 
-    // Handle nav changes via the sidebar
-    navUpdate(id: any) {
-        this.router.navigate(['/components/' + id]);
+    ngOnInit() {
+        const docType$ = this.activatedRoute.data.pipe(tap(data => (this.docType = data.docType)));
+        const id$ = this.activatedRoute.paramMap.pipe(
+            map(paramMap => paramMap.get('id') as string),
+            tap(id => (this.id = id))
+        );
+
+        merge(docType$, id$)
+            .pipe(takeUntil(this.unsubscribe))
+            .subscribe(() => this.loadDocs(this.url));
+    }
+
+    loadDocs(url: string) {
+        if (!this.docType) {
+            return;
+        }
+
+        this.allDocItems = this.docItemService.getDocItems(this.docType);
+        if (!this.id && this.categorizedDocItems[0] && this.categorizedDocItems[0].items && this.categorizedDocItems[0].items.length) {
+            this.navUpdate(this.categorizedDocItems[0].items[0].id);
+            return;
+        }
+        this.activeItem = this.allDocItems.find(i => i.id === this.id);
+        if (this.activeItem) {
+            this.appInsights.logPageView(this.activeItem.name, url);
+            this.activeCategory = this.activeItem.category;
+        }
+    }
+
+    // Handle nav changes via the sidebar or mobile dropdown
+    navUpdate(id: string) {
+        this.router.navigate([`/${this.docType}/` + id]);
         window.scrollTo(0, 0);
     }
 
