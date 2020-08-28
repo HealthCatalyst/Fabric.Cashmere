@@ -13,6 +13,6 @@ export class HomeComponent {
     constructor(private router: Router) { }
 
     onEnter() {
-        this.router.navigate(['/results', { search: this.searchBar.value }]);
+        this.router.navigate(['/results'], { queryParams: { search: this.searchBar.value } });
     }
 }
