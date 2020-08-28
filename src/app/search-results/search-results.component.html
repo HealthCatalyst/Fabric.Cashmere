@@ -19,7 +19,6 @@
                 <hc-checkbox formControlName='html'>HTML</hc-checkbox>
                 <hc-checkbox formControlName='Guides'>Guides</hc-checkbox>
                 <hc-checkbox formControlName='ts'>TypeScript</hc-checkbox>
-                <hc-checkbox formControlName='module'>Module</hc-checkbox>
             </div>
         </hc-drawer-item>
     </hc-menu-drawer>
@@ -32,7 +31,14 @@
     <section class="hc-search-results">
         <div *ngFor="let item of searchDisplay" class="hc-search-results-items">
             <div class="titleSection">
-                <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="hc-results-icon"></hc-icon>
+                <hc-icon *ngIf="item.category == 'components'" fontSet="fa" fontIcon="fa-puzzle-piece" hcListIcon
+                    class="hc-results-icon"></hc-icon>
+                <hc-icon *ngIf="item.category == 'styles'" fontSet="fa" fontIcon="fa-paint-brush" hcListIcon
+                    class="hc-results-icon"></hc-icon>
+                <hc-icon *ngIf="item.category == 'guides'" fontSet="fa" fontIcon="fa-book" hcListIcon
+                    class="hc-results-icon"></hc-icon>
+                <hc-icon *ngIf="item.category == 'bits'" fontSet="fa" fontIcon="fa-suitcase" hcListIcon
+                    class="hc-results-icon"></hc-icon>
                 <a hcListLine class="hc-result-title" routerLink="/{{item.link}}">{{item.title}}</a>
             </div>
             <!-- <div class="tags">

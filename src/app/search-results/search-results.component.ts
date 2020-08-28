@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as searchJson from '../../../dist/user-guide/assets/docs/search/search.json';
 import { PaginationComponent, HcTableDataSource } from '@healthcatalyst/cashmere';
@@ -13,7 +13,7 @@ import MiniSearch from 'minisearch';
 
 export class SearchResultsComponent implements AfterViewInit, OnInit {
 
-    constructor(private route: ActivatedRoute) { }
+    constructor(private route: ActivatedRoute, private ref: ChangeDetectorRef) { }
 
     searchBar: FormControl = new FormControl("");
     searchResultsData;
@@ -29,8 +29,7 @@ export class SearchResultsComponent implements AfterViewInit, OnInit {
     types = new FormGroup({
         html: new FormControl(true),
         Guides: new FormControl(true),
-        ts: new FormControl(true),
-        module: new FormControl(true)
+        ts: new FormControl(true)
     });
 
     // Functions to get the current page
@@ -46,8 +45,62 @@ export class SearchResultsComponent implements AfterViewInit, OnInit {
     });
 
     ngAfterViewInit() {
+        let filterValues: string[] = ["styles", "components", "guides", "bits"];
+        let typeFilterValues: string[] = ["html", "Guides", "ts"];
+
+        this.categories.valueChanges.subscribe(categoryValues => {
+            filterValues = [];
+            for (const prop in categoryValues) {
+                if (categoryValues[prop]) {
+                    filterValues.push(prop);
+                }
+            }
+            this.displayResults(filterValues, typeFilterValues);
+        });
+
+        this.types.valueChanges.subscribe(typeValues => {
+            typeFilterValues = [];
+            for (const prop in typeValues) {
+                if (typeValues[prop]) {
+                    typeFilterValues.push(prop);
+                }
+            }
+            this.displayResults(filterValues, typeFilterValues);
+        });
+
+        this.miniSearch.addAll(searchJson);
+
+
+        this.searchBar.valueChanges.subscribe((val) => {
+            if (val !== '') {
+                let res = this.miniSearch.search(val, {
+                    filter: (result) => {
+                        let isMatching = false;
+                        filterValues.forEach(element => {
+                            if (result.category === element) {
+                                isMatching = true;
+                            }
+                        });
+
+                        typeFilterValues.forEach(element => {
+                            if (result.type === element) {
+                                isMatching = true;
+                            }
+                        });
+                        return isMatching;
+                    }
+                });
+                this.length = res.length;
+                this.searchResultsData = res;
+                this.searchDisplay = this.searchResultsData.slice(0, 5);
+                this.ref.detectChanges();
+            } else {
+                this.searchResultsData = [];
+            }
+        });
+
         this.route.queryParams.subscribe(params => {
-            console.log(this.searchBar.setValue(params['search']));
+            this.searchBar.setValue(params['search']);
         });
 
     }
@@ -73,11 +126,10 @@ export class SearchResultsComponent implements AfterViewInit, OnInit {
                     return isMatching;
                 }
             });
-            console.log(res);
             this.length = res.length;
             this.searchResultsData = res;
-            console.log(this.searchResultsData);
             this.searchDisplay = this.searchResultsData.slice(0, 5);
+            this.ref.detectChanges();
         } else {
             this.searchResultsData = [];
         }
@@ -92,55 +144,10 @@ export class SearchResultsComponent implements AfterViewInit, OnInit {
         this.pageNumberControl.setValue(value);
         let tempStartIndex = 5 * (value - 1);
         this.searchDisplay = this.searchResultsData.slice(tempStartIndex, tempStartIndex + 5);
+        this.ref.detectChanges();
     }
 
     ngOnInit() {
-        let filterValues: string[] = ["styles", "components", "guides", "bits"];
-        let typeFilterValues: string[] = ["html", "Guides", "ts", "module"];
 
-        this.categories.valueChanges.subscribe(categoryValues => {
-            filterValues = [];
-            for (const prop in categoryValues) {
-                if (categoryValues[prop]) {
-                    filterValues.push(prop);
-                }
-            }
-            this.displayResults(filterValues, typeFilterValues);
-        });
-
-        this.types.valueChanges.subscribe(typeValues => {
-            typeFilterValues = [];
-            for (const prop in typeValues) {
-                if (typeValues[prop]) {
-                    typeFilterValues.push(prop);
-                }
-            }
-            this.displayResults(filterValues, typeFilterValues);
-        });
-
-        this.miniSearch.addAll(searchJson);
-
-        this.searchBar.valueChanges.subscribe((val) => {
-            if (val !== '') {
-                let res = this.miniSearch.search(val, {
-                    filter: (result) => {
-                        let ismatching = false;
-                        filterValues.forEach(element => {
-                            if (result.category === element) {
-                                ismatching = true;
-                            }
-                        });
-                        return ismatching;
-                    }
-                });
-                console.log(res);
-                this.length = res.length;
-                this.searchResultsData = res;
-                console.log(this.searchResultsData);
-                this.searchDisplay = this.searchResultsData.slice(0, 5);
-            } else {
-                this.searchResultsData = [];
-            }
-        });
     }
 }
