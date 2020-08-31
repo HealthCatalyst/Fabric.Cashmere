@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as glob from 'glob';
 import * as changeCase from 'change-case';
 
-const outputDir = 'dist/user-guide/assets/docs/search/';
+const outputDir = 'dist/search/';
 const basicSearchArray: object[] = [];
 let object = {
     id: "",

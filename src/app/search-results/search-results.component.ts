@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import * as searchJson from '../../../dist/user-guide/assets/docs/search/search.json';
+import * as searchJson from '../../../dist/search/search.json';
 import { PaginationComponent, HcTableDataSource } from '@healthcatalyst/cashmere';
 import { ActivatedRoute } from '@angular/router';
 import MiniSearch from 'minisearch';

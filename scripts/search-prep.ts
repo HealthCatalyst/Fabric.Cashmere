@@ -1,10 +1,10 @@
-import * as fs from 'fs';
+import * as fs from 'file-system';
 import * as path from 'path';
 import * as glob from 'glob';
 import * as removeMd from 'remove-markdown';
 import * as changeCase from 'change-case';
 
-const outputDir = 'dist/user-guide/assets/docs/search/';
+const outputDir = 'dist/search/';
 const searchArray: object[] = [];
 // Looks for '##### '
 const sectionRegex = /^#{5} /m;
@@ -23,6 +23,9 @@ let object = {
 };
 
 function readGuideFiles() {
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
     glob('{guides/**/*.md,projects/@(cashmere|cashmere-bits)/src/lib/**/*.md}', function (er, files) {
         files
             .map(file => {
@@ -78,9 +81,6 @@ function readGuideFiles() {
 }
 
 function readExampleFiles() {
-    if (!fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir);
-    }
     glob('projects/cashmere-examples/src/lib/**/*.{html,ts}', function (er, files) {
         files
             .map(file => {
@@ -102,7 +102,7 @@ function readExampleFiles() {
                     // Set the title to the title with propare capitalization
                     title: changeCase.sentenceCase(title),
                     content: exampleGetContent(fileContent),
-                    link: htmlGetLink(mapping),
+                    link: htmlGetLink(mapping, changeCase.paramCase(title)),
                     category: 'components',
                     displayName: name,
                     type: getFileEnding(mapping.path)
@@ -165,11 +165,12 @@ function exampleGetContent(fileContent: string) {
     return content;
 }
 
-function htmlGetLink(mapping: { path?: string; basename: any; outFile?: string; }) {
+function htmlGetLink(mapping: { path?: string; basename: any; outFile?: string; }, title) {
     let link = '';
     // file category / file name
     link = `components/${mapping.basename.split('-')[0]}`;
     link += '/examples';
+    link += `#${title.replace('-example', '')}`;
     return link;
 }
 
