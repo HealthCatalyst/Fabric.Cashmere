@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import * as searchJson from '../../../dist/user-guide/assets/docs/search/search.json';
+import * as searchJson from '../../../dist/search/search.json';
+import { PaginationComponent, HcTableDataSource } from '@healthcatalyst/cashmere';
 import { ActivatedRoute } from '@angular/router';
 import MiniSearch from 'minisearch';
 
@@ -40,7 +41,7 @@ export class SearchResultsComponent implements AfterViewInit {
         // These are the felids that minisearch is checking against
         fields: ['title', 'type'],
         // These are the felids that minisearch will return in an object
-        storeFields: ['title', 'content', 'link', 'category', 'type'],
+        storeFields: ['title', 'content', 'link', 'category', 'type', 'section'],
         searchOptions: {
             prefix: true,
             boost: { type: 20 }
@@ -118,6 +119,7 @@ export class SearchResultsComponent implements AfterViewInit {
                 this.searchResultsData = res;
                 // Slices the results and returns the first five to be displayed
                 this.searchDisplay = this.searchResultsData.slice(0, 5);
+                console.log(this.searchDisplay);
                 this.ref.detectChanges();
             } else {
                 // If the search value is empty, then searchResultsData is set to an empty array

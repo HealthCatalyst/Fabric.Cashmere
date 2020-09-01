@@ -1,8 +1,8 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import MiniSearch from 'minisearch';
-import json = require('../../dist/user-guide/assets/docs/search/search.json');
-import basicJson = require('../../dist/user-guide/assets/docs/search/basic-search.json');
+import json = require('../../dist/search/search.json');
+import basicJson = require('../../dist/search/basic-search.json');
 import { HcPopComponent } from 'projects/cashmere/src/lib/pop/popover.component';
 
 @Component({

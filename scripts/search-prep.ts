@@ -1,10 +1,10 @@
-import * as fs from 'fs';
+import * as fs from 'file-system';
 import * as path from 'path';
 import * as glob from 'glob';
 import * as removeMd from 'remove-markdown';
 import * as changeCase from 'change-case';
 
-const outputDir = 'dist/user-guide/assets/docs/search/';
+const outputDir = 'dist/search/';
 const searchArray: object[] = [];
 // Looks for '##### '
 const sectionRegex = /^#{5} /m;
@@ -19,10 +19,14 @@ let object = {
     category: "",
     link: "",
     displayName: "",
-    type: ""
+    type: "",
+    section: ""
 };
 
 function readGuideFiles() {
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
     glob('{guides/**/*.md,projects/@(cashmere|cashmere-bits)/src/lib/**/*.md}', function (er, files) {
         files
             .map(file => {
@@ -66,6 +70,7 @@ function readGuideFiles() {
                         // Set displayName to basename for display purposes
                         displayName: mapping.basename,
                         type: 'Guides',
+                        section: changeCase.paramCase(sectionTitle.replace('-example', ''))
                     });
                     // if the content is empty don't push it
                     if (sectionObj["content"] !== "") {
@@ -78,9 +83,6 @@ function readGuideFiles() {
 }
 
 function readExampleFiles() {
-    if (!fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir);
-    }
     glob('projects/cashmere-examples/src/lib/**/*.{html,ts}', function (er, files) {
         files
             .map(file => {
@@ -105,7 +107,8 @@ function readExampleFiles() {
                     link: htmlGetLink(mapping),
                     category: 'components',
                     displayName: name,
-                    type: getFileEnding(mapping.path)
+                    type: getFileEnding(mapping.path).toUpperCase(),
+                    section: changeCase.paramCase(title.replace('-example', ''))
                 });
                 if (sectionObj["id"] !== 'cashmere') {
                     searchArray.push(sectionObj);
