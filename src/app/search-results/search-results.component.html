@@ -7,9 +7,9 @@
         <hc-drawer-item>
             <form class="checkboxContiner" [formGroup]="categories">
                 <h3>Category</h3>
-                <hc-checkbox formControlName="styles">Styles</hc-checkbox>
                 <hc-checkbox formControlName="components">Components</hc-checkbox>
                 <hc-checkbox formControlName="guides">Guides</hc-checkbox>
+                <hc-checkbox formControlName="styles">Styles</hc-checkbox>
                 <hc-checkbox formControlName="bits">Bits</hc-checkbox>
             </form>
         </hc-drawer-item>
@@ -24,7 +24,7 @@
     </hc-menu-drawer>
 
     <hc-form-field inline="true" tight="true">
-        <input hcInput [formControl]="searchBar" placeholder="Search the Cashmere docs" class="searchBar" />
+        <input hcInput [formControl]="searchBarContent" placeholder="Search the Cashmere docs" class="searchBar" />
         <hc-icon hcSuffix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
     </hc-form-field>
 
@@ -41,12 +41,6 @@
                     class="hc-results-icon"></hc-icon>
                 <a hcListLine class="hc-result-title" routerLink="/{{item.link}}">{{item.title}}</a>
             </div>
-            <!-- <div class="tags">
-                <div class="tagsLink">
-                    <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="hc-results-icon"></hc-icon>
-                    <a>Category: {{item.category}}</a>
-                </div>
-            </div> -->
             <p hcListLine class="hc-result-sub-text hc-results-text">Source: {{item.link}}</p>
             <p hcListLine class="hc-result-sub-text hc-results-text">Type: {{item.type}}</p>
             <span hcListLine class="hc-result-description hc-results-text">{{item.category}}</span>
@@ -54,7 +48,7 @@
     </section>
 
     <div class="hc-search-results-pagination">
-        <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="5" [hidePageSize]="false">
+        <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="5" [hidePageSize]="true">
         </hc-pagination>
     </div>
 </hc-drawer-container>
