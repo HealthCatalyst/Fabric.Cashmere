@@ -12,17 +12,19 @@
         <div hcMenu class="hc-search-menu">
             <hc-form-field inline="true" tight="true" class="hc-navbar-search-wrapper">
                 <hc-icon hcPrefix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
-                <input #searchInput hcInput [formControl]="navSearchBar" autocomplete="off" placeholder="Search the Cashmere docs"
-                    class="searchBar" id='hc-nav-search-input' />
+                <input #searchInput hcInput [formControl]="navSearchBar" autocomplete="off"
+                    placeholder="Search the Cashmere docs" class="searchBar" id='hc-nav-search-input' />
             </hc-form-field>
             <hc-list class="hc-navbar-search-results">
-                <hc-list-item *ngFor="let item of searchResults" class="hc-navbar-search-results-items" routerLink="{{item.link}}" (click)="search.toggle()">
+                <hc-list-item *ngFor="let item of searchResults" class="hc-navbar-search-results-items"
+                    routerLink="{{item.link}}" (click)="search.toggle()">
                     <hc-icon fontSet="fa" fontIcon="fa-file" hcListIcon class="results-icon"></hc-icon>
                     <h1 hcListLine class="result-title">{{item.title}}</h1>
                     <p hcListLine class="result-sub-text">{{item.category}}</p>
                 </hc-list-item>
             </hc-list>
-            <hc-navbar-link *ngIf="showAll" routerLink="/results" [queryParams]="{search: searchValue}" (click)="search.toggle()" class="hc-navbar-search-show-all" linkText="Show all search results">
+            <hc-navbar-link *ngIf="showAll" routerLink="/results" [queryParams]="{search: searchValue}"
+                (click)="search.toggle()" class="hc-navbar-search-show-all" linkText="Show all search results">
             </hc-navbar-link>
         </div>
     </hc-pop>
@@ -41,8 +43,14 @@
             <hc-list-item routerLink="/components" routerLinkActive="active-link">
                 <span hcListLine>Components</span>
             </hc-list-item>
+            <hc-list-item routerLink="/bits" routerLinkActive="active-link">
+                <span hcListLine>Bits</span>
+            </hc-list-item>
             <hc-list-item routerLink="/guides/getting-started" routerLinkActive="active-link">
                 <span hcListLine>Guides</span>
+            </hc-list-item>
+            <hc-list-item routerLink="/results" routerLinkActive="active-link">
+                <span hcListLine>Search</span>
             </hc-list-item>
         </hc-list>
         <hr />
