@@ -1,10 +1,9 @@
-import { Component, Input, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver, AfterViewInit, AfterViewChecked, AfterContentInit } from '@angular/core';
+import { Component, Input, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { titleCase } from 'change-case';
 import stackblitz from '@stackblitz/sdk';
 import { EXAMPLE_COMPONENTS } from '@healthcatalyst/cashmere-examples';
 import { ApplicationInsightsService } from '../../../../shared/application-insights/application-insights.service';
-import { expand } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { TabSetComponent } from 'projects/cashmere/src/lib/tabs';
 
@@ -22,8 +21,8 @@ export class ExampleViewerComponent implements OnInit {
     private _example: string;
     private allExampleFiles: FileHash = {};
     private appInsights;
-    private selected;
-    private fragment: string;
+    private selected: string;
+    private section: string;
     exampleFiles: Array<{ name: string; contents: string }> = [];
 
     constructor(
@@ -32,14 +31,12 @@ export class ExampleViewerComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
     ) {
         this.appInsights = new ApplicationInsightsService();
-        this.activatedRoute.fragment.subscribe(fragment => {
-            if (fragment) {
-                this.fragment = fragment;
-            }
-        });
         this.activatedRoute.queryParams.subscribe(params => {
             if (params['selected']) {
                 this.selected = params['selected'];
+            }
+            if (params['section']) {
+                this.section = params['section'];
             }
         });
     }
@@ -63,15 +60,18 @@ export class ExampleViewerComponent implements OnInit {
         if (this.example) {
             await this.loadExample();
             this.isInitialized = true;
+
             setTimeout(() => {
-                // http://localhost:4200/components/checkbox/examples?selected=SCSS#checkbox-forms
-                if (this.selected && this._example === this.fragment) {
+                if (this.selected && this._example === this.section) {
                     const found = this._tabSet._tabs.toArray().find(t => t.tabTitle === this.selected);
                     this._tabSet.selectTab(found ? found : 0);
-                    const el = document.getElementById(this.fragment);
+                    const el = document.getElementById(this.section);
+                    el ? el.scrollIntoView() : console.log('not found');
+                } else if (this._example === this.section) {
+                    const el = document.getElementById(this.section);
                     el ? el.scrollIntoView() : console.log('not found');
                 }
-            }, 1000);
+            }, 200);
         }
     }
 

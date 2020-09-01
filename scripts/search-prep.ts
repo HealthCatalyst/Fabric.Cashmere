@@ -19,7 +19,8 @@ let object = {
     category: "",
     link: "",
     displayName: "",
-    type: ""
+    type: "",
+    section: ""
 };
 
 function readGuideFiles() {
@@ -69,6 +70,7 @@ function readGuideFiles() {
                         // Set displayName to basename for display purposes
                         displayName: mapping.basename,
                         type: 'Guides',
+                        section: changeCase.paramCase(sectionTitle.replace('-example', ''))
                     });
                     // if the content is empty don't push it
                     if (sectionObj["content"] !== "") {
@@ -102,10 +104,11 @@ function readExampleFiles() {
                     // Set the title to the title with propare capitalization
                     title: changeCase.sentenceCase(title),
                     content: exampleGetContent(fileContent),
-                    link: htmlGetLink(mapping, changeCase.paramCase(title)),
+                    link: htmlGetLink(mapping),
                     category: 'components',
                     displayName: name,
-                    type: getFileEnding(mapping.path)
+                    type: getFileEnding(mapping.path).toUpperCase(),
+                    section: changeCase.paramCase(title.replace('-example', ''))
                 });
                 if (sectionObj["id"] !== 'cashmere') {
                     searchArray.push(sectionObj);
@@ -165,12 +168,11 @@ function exampleGetContent(fileContent: string) {
     return content;
 }
 
-function htmlGetLink(mapping: { path?: string; basename: any; outFile?: string; }, title) {
+function htmlGetLink(mapping: { path?: string; basename: any; outFile?: string; }) {
     let link = '';
     // file category / file name
     link = `components/${mapping.basename.split('-')[0]}`;
     link += '/examples';
-    link += `#${title.replace('-example', '')}`;
     return link;
 }
 

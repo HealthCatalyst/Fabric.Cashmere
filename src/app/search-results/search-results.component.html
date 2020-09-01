@@ -39,7 +39,7 @@
                     class="hc-results-icon"></hc-icon>
                 <hc-icon *ngIf="item.category == 'bits'" fontSet="fa" fontIcon="fa-suitcase" hcListIcon
                     class="hc-results-icon"></hc-icon>
-                <a hcListLine class="hc-result-title" routerLink="/{{item.link}}">{{item.title}}</a>
+                <a hcListLine class="hc-result-title" [routerLink]="['/' + item.link]" [queryParams]="{section: item.section, selected: item.type}">{{item.title}}</a>
             </div>
             <p hcListLine class="hc-result-sub-text hc-results-text">Source: {{item.link}}</p>
             <p hcListLine class="hc-result-sub-text hc-results-text">Type: {{item.type}}</p>
