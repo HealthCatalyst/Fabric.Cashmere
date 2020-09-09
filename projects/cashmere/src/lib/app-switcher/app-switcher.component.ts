@@ -77,6 +77,7 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
                 .pipe(takeUntil(this.ngUnsubscribe))
                 .subscribe(
                     (response: any) => {
+                        this.loadFailed = false;
                         this.applications = response.value;
                     },
                     (error: any) => {

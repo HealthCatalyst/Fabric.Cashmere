@@ -61,4 +61,12 @@ describe('AppSwitcherComponent', () => {
             expect(component.linkIfNotMe(component.applications[1])).toEqual('http://anotherapp.com');
         }));
     });
+
+    describe('load applications', () => {
+        it('should set loadFail back to false after successful application load', () => {
+            component.loadFailed = true;
+            component.loadApplications();
+            expect(component.loadFailed).toBe(false);
+        });
+    });
 });
