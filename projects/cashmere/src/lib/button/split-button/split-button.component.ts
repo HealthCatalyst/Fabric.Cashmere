@@ -7,11 +7,14 @@ import {
     Input,
     Output,
     ViewEncapsulation,
-    ViewChild
+    ViewChild,
+    ContentChildren,
+    QueryList
 } from '@angular/core';
 import {parseBooleanAttribute} from '../../util';
 import {validateStyleInput, validateSizeInput, ButtonComponent} from '../button.component';
 import {HcPopComponent} from '../../pop/popover.component';
+import {MenuItemDirective} from '../../pop/directives/menu-item.directive';
 
 const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
 
@@ -39,6 +42,8 @@ export class SplitButtonComponent {
 
     @ViewChild('splitMenu', {static: false})
     _splitMenu: HcPopComponent;
+
+    @ContentChildren(MenuItemDirective, {descendants: true}) _menuItems: QueryList<MenuItemDirective>;
 
     /** Primary button's click event */
     @Output()
@@ -159,6 +164,9 @@ export class SplitButtonComponent {
 
     /** Manually open the menu */
     openMenu() {
+        // pass menuItems on to the HcPop instance so that keyboard accessibility works
+        if (this._splitMenu) { this._splitMenu._menuItems = this._menuItems; }
+
         this._splitMenu.open();
     }
 }
