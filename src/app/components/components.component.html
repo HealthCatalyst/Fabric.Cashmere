@@ -16,7 +16,7 @@
         <div class="hc-components-nav-container">
             <hc-tile>
                 <div class="hc-components-nav-list">
-                    <ng-container *ngFor="let category of categorizedDocItems">
+                    <ng-container *ngFor="let category of categorizedDocItems; let catNum = index">
                         <ng-container *ngIf="category.items?.length">
                             <hc-accordion triggerAlign="right" [open]="activeCategory == category.category">
                                 <hc-accordion-toolbar>{{ category.displayName }}</hc-accordion-toolbar>
@@ -31,6 +31,7 @@
                                 </ng-container>
                                 <div class="hc-components-nav-spacer"></div>
                             </hc-accordion>
+                            <div *ngIf="catNum < categorizedDocItems.length - 2" class="hc-components-nav-divider"></div>
                         </ng-container>
                     </ng-container>
                 </div>
