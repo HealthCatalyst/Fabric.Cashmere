@@ -1,6 +1,6 @@
 <nav #navbar class="hc-navbar" [ngClass]="{'fixed-top': fixedTop}">
     <div class="navbar-brand">
-        <a [routerLink]="homeUri" class="brand">
+        <a [routerLink]="homeUri" class="brand" tabIndex="-1">
             <img *ngIf="_brandIconType() == 'string'" src="{{ brandIcon }}" />
             <hc-icon
                 *ngIf="_brandIconType() != 'string'"
@@ -17,7 +17,7 @@
     </div>
     <div #navlinks class="hc-navbar-link-container">
         <ng-content select="hc-navbar-link, hc-navbar-dropdown"></ng-content>
-        <div class="hc-navbar-more-links" title="More" *ngIf="_collapse" [hcPop]="navbarMore" #moreLink="hcPopAnchor">
+        <div class="hc-navbar-more-links" tabindex="0" title="More" *ngIf="_collapse" [hcPop]="navbarMore" #moreLink="hcPopAnchor">
             More
             <hc-icon fontSet="fa" fontIcon="fa-chevron-down" hcIconSm></hc-icon>
         </div>
