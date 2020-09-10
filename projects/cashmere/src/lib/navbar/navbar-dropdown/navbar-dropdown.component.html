@@ -5,6 +5,7 @@
     class="navbar-dropdown"
     [ngClass]="{active: this.active === true, inactive: this.active === false}"
     [hcPop]="menuPop"
+    tabindex="0"
 >
     {{linkText}}
     <hc-icon fontSet="fa" fontIcon="fa-chevron-down" hcIconSm></hc-icon>

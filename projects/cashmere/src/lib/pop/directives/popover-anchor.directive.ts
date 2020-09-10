@@ -12,16 +12,16 @@ import {
     AfterContentInit,
     ComponentFactoryResolver
 } from '@angular/core';
-import {Subject, merge} from 'rxjs';
-import {tap, takeUntil} from 'rxjs/operators';
+import { Subject, merge } from 'rxjs';
+import { tap, takeUntil } from 'rxjs/operators';
 
-import {HcPopComponent} from '../popover.component';
-import {getInvalidPopoverError, getInvalidTriggerError} from '../popover.errors';
-import {HcPopoverAnchoringService} from '../popover-anchoring.service';
-import {HcPopoverOpenOptions, HcPopoverTrigger, VALID_TRIGGER} from '../types';
-import {PopoverNotification, PopoverNotificationService, NotificationAction} from '../notification.service';
-import {HcPopoverAccessibilityService, HcPopKeyboardNotifier, KEY_CODE} from '../popover-accessibility.service';
-import {HcTooltipComponent} from '../tooltip/tooltip.component';
+import { HcPopComponent } from '../popover.component';
+import { getInvalidPopoverError, getInvalidTriggerError } from '../popover.errors';
+import { HcPopoverAnchoringService } from '../popover-anchoring.service';
+import { HcPopoverOpenOptions, HcPopoverTrigger, VALID_TRIGGER } from '../types';
+import { PopoverNotification, PopoverNotificationService, NotificationAction } from '../notification.service';
+import { HcPopoverAccessibilityService, HcPopKeyboardNotifier, KEY_CODE } from '../popover-accessibility.service';
+import { HcTooltipComponent } from '../tooltip/tooltip.component';
 
 @Directive({
     selector: '[hcPop],[hcTooltip]',
@@ -54,6 +54,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         popover.tooltipContent = value;
         popover.disableStyle = true;
         popover.verticalAlign = 'above';
+        popover.scrollStrategy = "close";
         this.attachedPopover = popover;
         this.trigger = 'hover';
         this.popoverDelay = 300;
@@ -123,7 +124,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         public _anchoring: HcPopoverAnchoringService,
         private _accessibility: HcPopoverAccessibilityService,
         private _componentFactoryResolver: ComponentFactoryResolver
-    ) {}
+    ) { }
 
     ngOnInit() {
         // Re-emit open and close events
@@ -139,6 +140,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     }
 
     ngOnDestroy() {
+        clearTimeout(this.hoverInterval);
         this._onDestroy.next();
         this._onDestroy.complete();
     }
@@ -155,6 +157,14 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         }
         this._attachedPopover._offsetPos[0] = this._attachedPopover.horizontalAlign === 'mouse' ? $event.offsetX : 0;
         this._attachedPopover._offsetPos[1] = this._attachedPopover.verticalAlign === 'mouse' ? $event.offsetY : 0;
+        this.togglePopover();
+    }
+
+    @HostListener('keydown', ['$event'])
+    _showOrHideOnEnter(event: KeyboardEvent): void {
+        if (this.trigger !== 'click' || event.keyCode !== KEY_CODE.ENTER) {
+            return;
+        }
         this.togglePopover();
     }
 
@@ -201,7 +211,6 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         if (this.trigger !== 'hover') {
             return;
         }
-        clearTimeout(this.hoverInterval);
         this.closePopover();
     }
 
@@ -247,6 +256,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
 
     /** Closes the popover. */
     closePopover(value?: any, neighborSubMenusAreOpen: boolean = false): void {
+        clearTimeout(this.hoverInterval);
         this._anchoring.closePopover(value, neighborSubMenusAreOpen);
     }
 
