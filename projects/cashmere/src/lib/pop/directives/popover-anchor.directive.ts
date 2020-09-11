@@ -160,9 +160,18 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         this.togglePopover();
     }
 
+    /** So popover anchors can be accessible via keyboard. */
     @HostListener('keydown', ['$event'])
     _showOrHideOnEnter(event: KeyboardEvent): void {
-        if (this.trigger !== 'click' || event.keyCode !== KEY_CODE.ENTER) {
+        // buttons already trigger a click when you press enter, so executing this event handler would be redundant
+        const targetElement = event.target as Element;
+        const triggerFromButton = targetElement && targetElement.tagName === "BUTTON";
+        // not triggering popover on keypress unless the key pressed was enter or spacebar
+        const keyPressedShouldTrigger = event.keyCode === KEY_CODE.ENTER || event.keyCode === KEY_CODE.SPACEBAR;
+        // not triggering popover on keypress unless the trigger is 'click'
+        const anchorHasClickTrigger = this.trigger === 'click';
+
+        if (triggerFromButton || !keyPressedShouldTrigger || !anchorHasClickTrigger ) {
             return;
         }
         this.togglePopover();
