@@ -29,6 +29,7 @@
     <div class="hc-navbar-mobile-menu" *ngIf="_mobileMenu.first" (click)="_toggleMobileMenu()">
         <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
     </div>
+    <ng-content select="hc-navbar-brand"></ng-content>
 </nav>
 <div (click)="_menuClick($event)">
     <ng-content select="hc-navbar-mobile-menu"></ng-content>
