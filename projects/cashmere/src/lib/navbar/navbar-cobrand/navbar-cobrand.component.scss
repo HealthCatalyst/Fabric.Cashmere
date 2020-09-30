@@ -1,0 +1,9 @@
+@import '../../sass/navbar.scss';
+
+.hc-navbar-cobrand-light {
+    @include hc-navbar-cobrand('light');
+}
+
+.hc-navbar-cobrand-dark {
+    @include hc-navbar-cobrand('dark');
+}
