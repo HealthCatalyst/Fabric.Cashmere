@@ -107,23 +107,21 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
      * *Defaults to `center`.* */
     @Input()
     get horizontalAlign() {
-        return this._horizontalAlign;
+        return this._attachedPopover.horizontalAlign
     }
-    set horizontalAlign(val: string) {
-        this._horizontalAlign = val;
+    set horizontalAlign(val: HcPopoverHorizontalAlign) {
+        this.attachedPopover.horizontalAlign = val;
     }
-    private _horizontalAlign: string = '';
 
     /** Alignment of the popover on the vertical axis. Can be `above`, `start`, `center`, `end`, `below`, or `mouse`.
      * *Defaults to `"below"`.* */
     @Input()
     get verticalAlign() {
-        return this._verticalAlign;
+        return this._attachedPopover.verticalAlign;
     }
-    set verticalAlign(val: string) {
-        this._verticalAlign = val;
+    set verticalAlign(val: HcPopoverVerticalAlign) {
+        this.attachedPopover.verticalAlign = val;
     }
-    private _verticalAlign: string = '';
 
     @HostBinding('class.hc-menu-item-submenu')
     _hasSubmenu = false;
@@ -149,14 +147,6 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     ) { }
 
     ngOnInit() {
-        // set horizontalAlign and verticalAlign properties with the new value if there is one
-        if (this._horizontalAlign) {
-            this.attachedPopover.horizontalAlign = <HcPopoverHorizontalAlign>this._horizontalAlign;
-        }
-        if (this._verticalAlign) {
-            this.attachedPopover.verticalAlign = <HcPopoverVerticalAlign>this._verticalAlign;
-        }
-
         // Re-emit open and close events
         const opened$ = this._anchoring.popoverOpened.pipe(tap(() => this.popoverOpened.emit()));
         const closed$ = this._anchoring.popoverClosed.pipe(tap(value => this.popoverClosed.emit(value)));
