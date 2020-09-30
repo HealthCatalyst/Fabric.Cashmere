@@ -1,5 +1,11 @@
 <hc-navbar appIcon="https://cashmere.healthcatalyst.net/assets/CashmereAppLogo.svg" [brandIcon]="navIcon" [homeUri]="undefined" [fixedTop]="false">
-    <hc-navbar-link [active]="true" uri="undefined" linkText="Dashboard"></hc-navbar-link>
+    <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Pediatric"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Rehabilition"></hc-navbar-link>
+    <hc-navbar-link [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
     <hc-icon class="hc-navbar-icon" tabindex="0" fontSet="fa" fontIcon="fa-th" [hcPop]="appSwitcher"></hc-icon>
     <hc-icon class="hc-navbar-icon" tabindex="0" fontSet="fa" fontIcon="fa-question-circle-o" [hcPop]="options"></hc-icon>
     <span class="hc-navbar-vertical-separator"></span>
@@ -7,7 +13,6 @@
         <span class="hc-text-ellipsis">{{ username }}</span>
         <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
     </div>
-    <hc-navbar-brand [color]="brandingVal" [src]="brandImg"></hc-navbar-brand>
     <!-- Inline style is added for example only to prevent its mobile menu from colliding with Cashmere site navigation -->
     <!-- Do NOT include style="display: none;" in your hc-navbar-mobile-menu tag -->
     <hc-navbar-mobile-menu style="display: none;">
@@ -31,16 +36,6 @@
 </hc-navbar>
 
 <br>
-
-<div class="navbar-app-switcher-select">
-    <hc-form-field inline>
-        <hc-label>Navbar co-branding style:</hc-label>
-        <hc-select (change)="brandChange($event)" value="light">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-        </hc-select>
-    </hc-form-field>
-</div>
 
 <p><em><strong>Note:</strong> the code for this example demonstrates how to setup a mobile menu in the navbar, however
     its display has been disabled here to prevent it from colliding with the Cashmere site navigation.</em></p>
