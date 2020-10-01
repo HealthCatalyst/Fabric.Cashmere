@@ -107,7 +107,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
      * *Defaults to `center`.* */
     @Input()
     get horizontalAlign() {
-        return this._attachedPopover.horizontalAlign
+        return this._attachedPopover.horizontalAlign;
     }
     set horizontalAlign(val: HcPopoverHorizontalAlign) {
         this.attachedPopover.horizontalAlign = val;
