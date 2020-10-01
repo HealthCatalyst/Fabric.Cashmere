@@ -1,7 +1,7 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, AfterViewInit, ChangeDetectorRef, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as searchJson from '../../../dist/search/search.json';
-import { PaginationComponent, HcTableDataSource } from '@healthcatalyst/cashmere';
+import { PageEvent } from '@healthcatalyst/cashmere';
 import { ActivatedRoute } from '@angular/router';
 import MiniSearch from 'minisearch';
 
@@ -15,6 +15,12 @@ export class SearchResultsComponent implements AfterViewInit {
 
     constructor(private route: ActivatedRoute, private ref: ChangeDetectorRef) { }
 
+    @ViewChild('pagContainer', {static: false})
+    pagContainer: ElementRef;
+
+    pageOpts = [5, 10, 20];
+    pagWidth = 'md';
+    pagSize = 5;
     searchBarContent: FormControl = new FormControl("");
     searchResultsData;
     searchDisplay;
@@ -33,13 +39,17 @@ export class SearchResultsComponent implements AfterViewInit {
         ts: new FormControl(false)
     });
 
-    // Functions to get the current page
-    pageNumberControl = new FormControl(1);
+    searchIcons = {
+        'components': { icon: 'fa-file-code-o' },
+        'guides': { icon: 'fa-file-text-o' },
+        'styles': { icon: 'fa-file-image-o' },
+        'bits': { icon: 'fa-puzzle-piece' }
+    };
 
     // MiniSearch variable initialization
     miniSearch = new MiniSearch({
         // These are the felids that minisearch is checking against
-        fields: ['title', 'type'],
+        fields: ['title', 'content'],
         // These are the felids that minisearch will return in an object
         storeFields: ['title', 'content', 'link', 'category', 'type', 'section'],
         searchOptions: {
@@ -47,6 +57,11 @@ export class SearchResultsComponent implements AfterViewInit {
             boost: { type: 20 }
         }
     });
+
+    @HostListener('window:resize')
+    _pagResize() {
+        this.pagWidth = (this.pagContainer.nativeElement.offsetWidth < 522) ? 'sm' : 'md';
+    }
 
     ngAfterViewInit() {
         // String lists that take the values from the categories and types FormGroups
@@ -118,8 +133,7 @@ export class SearchResultsComponent implements AfterViewInit {
                 // Sets searchResultsData to the results found
                 this.searchResultsData = res;
                 // Slices the results and returns the first five to be displayed
-                this.searchDisplay = this.searchResultsData.slice(0, 5);
-                console.log(this.searchDisplay);
+                this.searchDisplay = this.searchResultsData.slice(0, this.pagSize);
                 this.ref.detectChanges();
             } else {
                 // If the search value is empty, then searchResultsData is set to an empty array
@@ -133,6 +147,7 @@ export class SearchResultsComponent implements AfterViewInit {
             this.searchBarContent.setValue(params['search']);
         });
 
+        this._pagResize();
     }
 
     /**Filters the results from miniSearch based on the filter values */
@@ -174,16 +189,10 @@ export class SearchResultsComponent implements AfterViewInit {
         }
     }
 
-    // Gets the current page number that the user is on
-    get pageNumber() {
-        return this.pageNumberControl.value;
-    }
-
-    // Sets the page number that the user is on
-    set pageNumber(value: number) {
-        this.pageNumberControl.setValue(value);
-        let tempStartIndex = 5 * (value - 1);
-        this.searchDisplay = this.searchResultsData.slice(tempStartIndex, tempStartIndex + 5);
+    resultPaging( setting: PageEvent ) {
+        this.pagSize = setting.pageSize;
+        let tempStartIndex = setting.pageSize * (setting.pageNumber - 1);
+        this.searchDisplay = this.searchResultsData.slice(tempStartIndex, tempStartIndex + setting.pageSize);
         this.ref.detectChanges();
     }
 }

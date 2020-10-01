@@ -1,40 +1,18 @@
-.hc-navbar-github-button {
-    padding: 9px 15px;
-    color: white;
-}
+@import "scss/colors";
 
-.hc-navbar-search-button {
-    padding: 9px 15px;
-    color: white;
-    cursor: pointer;
-}
-
-.navbar-search-button {
-    cursor: pointer;
-}
-
-.navbar-button {
-    padding: 15px 30px 0 30px;
-    color: white;
-    cursor: pointer;
-    height: 100%;
-
-    &:hover {
-        outline: none;
-        color: #fff;
-        background-color: #2e3946;
-    }
+.hc-navbar-external-link {
+    width: 53px;
 }
 
 .hc-search-menu {
-    padding: 0px;
+    padding: 0;
     margin: -13px;
 
     .hc-navbar-search-wrapper {
         margin-bottom: -10px;
 
         .searchBar {
-            width: 600px;
+            width: 350px;
             height: 40px;
             font-size: 16px;
         }
@@ -43,17 +21,18 @@
     .hc-navbar-search-results {
         display: flex;
         flex-direction: column;
+        margin-top: 10px;
+
+        hc-list-item:first-of-type {
+            margin-top: 10px;
+        }
+
         .hc-navbar-search-results-items {
-            flex: 1;
-            height: 68px;
             cursor: pointer;
-            transition: all 0.3s;
-            padding-bottom: 15px;
-            -webkit-box-flex: 1;
-            -webkit-transition: all 0.3s;
+            padding: 0 10px;
 
             &:hover {
-                background-color: #e8e8e8;
+                background-color: $gray-100;
             }
         }
     }
@@ -61,41 +40,41 @@
 
 .results-icon {
     font-size: 30px;
+    padding: 0;
     height: auto;
-    padding: 0px;
-    padding-top: 9px;
     width: 25px;
-    color: #a8aaac;
+    color: $slate-gray-300;
 }
 
 .result-title {
-    font-size: 19px;
-    margin-top: 19px;
-    color: #0f6e9c;
+    font-size: 16px;
+    color: $dark-blue;
+    max-width: 335px;
+    padding-bottom: 2px;
 }
 
 .result-description {
     font-size: 10px;
-    color: #a8aaac;
+    color: $slate-gray-300;
 }
 
 .result-sub-text {
     font-size: 13px;
     margin-top: 2px;
+    text-transform: capitalize;
 }
 
 .hc-navbar-search-show-all {
-    font-size: 19px;
+    font-size: 15px;
     padding-top: 19px;
     padding-bottom: 24px;
-    color: #0f6e9c;
+    color: $blue;
     width: 100%;
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s;
+    border-radius: 0 0 5px 5px;
 
     &:hover {
-        background-color: #e8e8e8;
-        color: #3abfff;
+        background-color: $gray-100;
     }
 }

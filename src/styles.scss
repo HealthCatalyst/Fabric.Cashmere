@@ -266,3 +266,32 @@ hc-example-viewer .hc-tab-content-horizontal {
     font-weight: 600px;
     font-size: 22px;
 }
+
+// global search input field
+.hc-search-menu {
+    .hc-form-field-flex {
+        border-color: transparent;
+        padding: 0 15px;
+        border-radius: 0 0 4px 4px;
+    }
+
+    .hc-form-field-wrapper {
+        padding-bottom: 0;
+    }
+}
+
+.hc-navbar-right-container {
+    margin-right: 15px;
+}
+
+.hc-search-results-items > .hc-list-content {
+    padding: 0;
+}
+
+.hc-search-drawer-item > .hc-drawer-item {
+    cursor: inherit;
+
+    &:hover {
+        background-color: $charcoal-blue;
+    }
+}

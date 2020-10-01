@@ -1,54 +1,47 @@
-<hc-drawer-container>
-    <hc-menu-drawer opened=true align="left" menuTheme="dark-theme" #leftDrawer>
-        <hc-drawer-item>
-            <button hc-button title="Reset Filter" buttonStyle="link">Reset Filter</button>
-            <button hc-button title="Select All" buttonStyle="link">Select All</button>
-        </hc-drawer-item>
-        <hc-drawer-item>
+<hc-drawer-container class="hc-search-results">
+    <hc-menu-drawer opened="true" mode="over" align="left" menuTheme="dark-theme" class="hc-search-drawer" #leftDrawer>
+        <div hcDrawerToolbar class="hc-search-results-toolbar">Reset Filters</div>
+        <hc-drawer-item class="hc-search-drawer-item">
             <form class="checkboxContiner" [formGroup]="categories">
-                <h3>Category</h3>
+                <h4>Category</h4>
                 <hc-checkbox formControlName="components">Components</hc-checkbox>
                 <hc-checkbox formControlName="guides">Guides</hc-checkbox>
                 <hc-checkbox formControlName="styles">Styles</hc-checkbox>
                 <hc-checkbox formControlName="bits">Bits</hc-checkbox>
             </form>
         </hc-drawer-item>
-        <hc-drawer-item>
+        <hc-drawer-item class="hc-search-drawer-item">
             <div class="checkboxContiner" [formGroup]="types">
-                <h3>Type</h3>
+                <h4>Type</h4>
+                <hc-checkbox formControlName='Guides'>Example</hc-checkbox>
                 <hc-checkbox formControlName='html'>HTML</hc-checkbox>
-                <hc-checkbox formControlName='Guides'>Guides</hc-checkbox>
                 <hc-checkbox formControlName='ts'>TypeScript</hc-checkbox>
             </div>
         </hc-drawer-item>
     </hc-menu-drawer>
 
-    <hc-form-field inline="true" tight="true">
-        <input hcInput [formControl]="searchBarContent" placeholder="Search the Cashmere docs" class="searchBar" />
-        <hc-icon hcSuffix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
-    </hc-form-field>
-
-    <section class="hc-search-results">
-        <div *ngFor="let item of searchDisplay" class="hc-search-results-items">
-            <div class="titleSection">
-                <hc-icon *ngIf="item.category == 'components'" fontSet="fa" fontIcon="fa-puzzle-piece" hcListIcon
-                    class="hc-results-icon"></hc-icon>
-                <hc-icon *ngIf="item.category == 'styles'" fontSet="fa" fontIcon="fa-paint-brush" hcListIcon
-                    class="hc-results-icon"></hc-icon>
-                <hc-icon *ngIf="item.category == 'guides'" fontSet="fa" fontIcon="fa-book" hcListIcon
-                    class="hc-results-icon"></hc-icon>
-                <hc-icon *ngIf="item.category == 'bits'" fontSet="fa" fontIcon="fa-suitcase" hcListIcon
-                    class="hc-results-icon"></hc-icon>
-                <a hcListLine class="hc-result-title" [routerLink]="['/' + item.link]" [queryParams]="{section: item.section, selected: item.type}">{{item.title}}</a>
-            </div>
-            <p hcListLine class="hc-result-sub-text hc-results-text">Source: {{item.link}}</p>
-            <p hcListLine class="hc-result-sub-text hc-results-text">Type: {{item.type}}</p>
-            <span hcListLine class="hc-result-description hc-results-text">{{item.category}}</span>
+    <div class="hc-search-results-content">
+        <div class="hc-search-results-input">
+            <hc-form-field tight="true">
+                <hc-icon hcPrefix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
+                <input hcInput [formControl]="searchBarContent" placeholder="Search the Cashmere docs" class="searchBar" />
+            </hc-form-field>
         </div>
-    </section>
 
-    <div class="hc-search-results-pagination">
-        <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="5" [hidePageSize]="true">
-        </hc-pagination>
+        <hc-list class="hc-search-results-list">
+            <hc-list-item *ngFor="let item of searchDisplay" class="hc-search-results-items">
+                <hc-icon fontSet="fa" [fontIcon]="searchIcons[item.category].icon" hcListIcon class="hc-results-icon"></hc-icon>
+                <a hcListLine class="hc-result-title" [routerLink]="['/' + item.link]">{{item.title}}</a>
+                <div hcListLine class="hc-result-sub-text">
+                    <strong>Category:</strong><span> {{item.category}}</span><br>
+                    <strong>Type:</strong><span> {{item.type}}</span><br>
+                    <strong>Location:</strong> {{item.link}}
+                </div>
+            </hc-list-item>
+        </hc-list>
+
+        <div #pagContainer class="hc-search-results-pagination">
+            <hc-pagination [displayWidth]="pagWidth" [length]="length" pageSize="5" [pageSizeOptions]="pageOpts" (page)="resultPaging($event)"></hc-pagination>
+        </div>
     </div>
 </hc-drawer-container>

@@ -2,7 +2,6 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import MiniSearch from 'minisearch';
 import json = require('../../dist/search/search.json');
-import basicJson = require('../../dist/search/basic-search.json');
 import { HcPopComponent } from 'projects/cashmere/src/lib/pop/popover.component';
 
 @Component({
@@ -18,13 +17,19 @@ export class AppComponent implements AfterViewInit {
     navSearchBar = new FormControl('');
 
     searchResults;
-    searchTest = basicJson;
+    searchTest = json;
     showAll = false;
     searchValue = '';
+    searchIcons = {
+        'components': { icon: 'fa-file-code-o' },
+        'guides': { icon: 'fa-file-text-o' },
+        'styles': { icon: 'fa-file-image-o' },
+        'bits': { icon: 'fa-puzzle-piece' }
+    };
 
     miniSearch = new MiniSearch({
-        fields: ['title', 'type'], // fields to index for full-text search
-        storeFields: ['id', 'title', 'link', 'category', 'name', 'type'], // fields to return with search results
+        fields: ['title', 'content'], // fields to index for full-text search
+        storeFields: ['id', 'title', 'link', 'category', 'name', 'type', 'content'], // fields to return with search results
         searchOptions: {
             prefix: true,
             boost: { type: 20 }

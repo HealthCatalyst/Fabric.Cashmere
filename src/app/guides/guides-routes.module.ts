@@ -11,7 +11,8 @@ const routes: Routes = [
             {
                 path: ':id',
                 component: GuideComponent
-            }
+            },
+            {path: '**', redirectTo: 'getting-started'}
         ]
     }
 ];

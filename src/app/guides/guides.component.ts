@@ -1,9 +1,10 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {GuidesService} from './guides.service';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
+import { TabChangeEvent } from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-guides',
@@ -17,13 +18,13 @@ export class GuidesComponent implements OnDestroy {
     private unsubscribe = new Subject<void>();
     private appInsights;
 
-    constructor(public guidesService: GuidesService, private activatedRoute: ActivatedRoute, private router: Router) {
+    constructor(public guidesService: GuidesService, private router: Router) {
         this.appInsights = new ApplicationInsightsService();
         // Listen for vertical tab bar navigation and update the select component
         this.router.events.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
             if (event instanceof NavigationEnd) {
                 for (let entry of this.guidesService.guides) {
-                    if (event.url === `/guides/${entry.route}`) {
+                    if (event.urlAfterRedirects === `/guides/${entry.route}`) {
                         this.thisPage = entry.title;
                         this.appInsights.logPageView(this.thisPage, event.urlAfterRedirects);
                         break;

@@ -7,10 +7,10 @@ import * as changeCase from 'change-case';
 const outputDir = 'dist/search/';
 const searchArray: object[] = [];
 // Looks for '##### '
-const sectionRegex = /^#{5} /m;
+const guideSectionRegex = /^#{5} /m;
 // Looks for new line '##### ' with positive look ahead
 // With this we get the text after the 5 #'s, which is the title of the section
-const titleRegex = /(?<=\s##### )(.*)\s/g;
+const guideTitleRegex = /(?<=\s##### )(.*)\s/g;
 // Base Object that we use for output
 let object = {
     id: "",
@@ -23,11 +23,12 @@ let object = {
     section: ""
 };
 
+// Index the content from the Guides section of the site
 function readGuideFiles() {
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir, { recursive: true });
     }
-    glob('{guides/**/*.md,projects/@(cashmere|cashmere-bits)/src/lib/**/*.md}', function (er, files) {
+    glob('guides/*.md', function (er, files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -42,10 +43,10 @@ function readGuideFiles() {
                 // Go through each file and find titles
                 let matches: RegExpExecArray | null;
                 let found: string[] = [];
-                while ((matches = titleRegex.exec(fileContent)) !== null) {
+                while ((matches = guideTitleRegex.exec(fileContent)) !== null) {
                     // This is necessary to avoid infinite loops with zero-width matches
-                    if (matches.index === titleRegex.lastIndex) {
-                        titleRegex.lastIndex++;
+                    if (matches.index === guideTitleRegex.lastIndex) {
+                        guideTitleRegex.lastIndex++;
                     }
                     matches.forEach((match: string, groupIndex: number) => {
                         if (groupIndex === 1) {
@@ -55,10 +56,17 @@ function readGuideFiles() {
                 }
 
                 // Split up the file content by title
-                const sections = fileContent.split(sectionRegex);
+                const sections = fileContent.split(guideSectionRegex);
                 sections.forEach((element, index) => {
-                    // Set the sectionTitle to the first index of the found array if null set to default path
-                    const sectionTitle = found[index - 1] ? found[index - 1] : changeCase.noCase(mapping.path);
+                    let sectionTitle: string;
+                    if ( index > 0 ) {
+                        // Set the sectionTitle to the first index of the found array if null set to default path
+                        sectionTitle = found[index - 1] ? found[index - 1] : changeCase.noCase(mapping.path);
+                    } else {
+                        // The part element of a guide is its title which needs to be parsed differently
+                        const endOfLine = element.indexOf( '\n' );
+                        sectionTitle = element.substr( 2, endOfLine - 2);
+                    }
                     const sectionObj = object = ({
                         // Set id to the sectionTitle in snake case
                         id: changeCase.snakeCase(sectionTitle),
@@ -78,7 +86,9 @@ function readGuideFiles() {
                     }
                 });
             });
-        readExampleFiles();
+            // Open the search.json file and write the object Array
+            const distFD = fs.openSync(path.join(outputDir) + 'search.json', 'w');
+            fs.writeSync(distFD, JSON.stringify(searchArray));
     });
 }
 
@@ -127,7 +137,7 @@ function mdGetContent(element: string) {
     // replace all extra spaces with a single space
     content = content.replace(/\s+/g, " ");
     // Remove all ':::' that is found in the Markdown, then trim it.
-    content = content.replace(/(:::)+/g).trim();
+    content = content.replace(/(:::)+/g, '').trim();
     return content;
 }
 
