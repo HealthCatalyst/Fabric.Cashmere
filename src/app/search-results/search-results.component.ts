@@ -1,9 +1,8 @@
 import { Component, AfterViewInit, ChangeDetectorRef, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import * as searchJson from '../../../dist/search/search.json';
+import { SearchService } from '../shared/search.service';
 import { PageEvent } from '@healthcatalyst/cashmere';
 import { ActivatedRoute } from '@angular/router';
-import MiniSearch from 'minisearch';
 
 @Component({
     selector: 'hc-search-results',
@@ -13,7 +12,7 @@ import MiniSearch from 'minisearch';
 
 export class SearchResultsComponent implements AfterViewInit {
 
-    constructor(private route: ActivatedRoute, private ref: ChangeDetectorRef) { }
+    constructor(private route: ActivatedRoute, private ref: ChangeDetectorRef, private searchService: SearchService) { }
 
     @ViewChild('pagContainer', {static: false})
     pagContainer: ElementRef;
@@ -47,19 +46,6 @@ export class SearchResultsComponent implements AfterViewInit {
         'styles': { icon: 'fa-file-image-o' },
         'bits': { icon: 'fa-puzzle-piece' }
     };
-
-    // MiniSearch variable initialization
-    miniSearch = new MiniSearch({
-        // These are the felids that minisearch is checking against
-        fields: ['title', 'content'],
-        // These are the felids that minisearch will return in an object
-        storeFields: ['title', 'link', 'category', 'type'],
-        searchOptions: {
-            prefix: true,
-            boost: { type: 20 },
-            combineWith: 'AND'
-        }
-    });
 
     @HostListener('window:resize')
     _pagResize() {
@@ -100,14 +86,11 @@ export class SearchResultsComponent implements AfterViewInit {
             this.displayResults(filterValues, typeFilterValues);
         });
 
-        // Adds the searchJson data into miniSearch
-        this.miniSearch.addAll(searchJson);
-
         // Listens for changes inside the search bar and returns the value when there are changes
         this.searchBarContent.valueChanges.subscribe((val) => {
             // Checks to make sure the search value is not empty or undefined
             if (val !== '' && val !== undefined) {
-                let res = this.miniSearch.search(val, {
+                let res = this.searchService.miniSearch.search(val, {
                     // Checks every result that matches the search value
                     filter: (result) => {
                         let isCategory = false;
@@ -159,7 +142,7 @@ export class SearchResultsComponent implements AfterViewInit {
     displayResults(filterValues, typeFilterValues) {
         //  Checks if the searchBarContent value is empty or not
         if (this.searchBarContent.value !== '') {
-            let res = this.miniSearch.search(this.searchBarContent.value, {
+            let res = this.searchService.miniSearch.search(this.searchBarContent.value, {
                 // Checks every result that matches the search value
                 filter: (result) => {
                     let isCategory = false;

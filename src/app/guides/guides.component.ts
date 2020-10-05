@@ -4,7 +4,6 @@ import {NavigationEnd, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
-import { TabChangeEvent } from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-guides',

@@ -1,8 +1,7 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import MiniSearch from 'minisearch';
-import json = require('../../dist/search/search.json');
-import { HcPopComponent } from 'projects/cashmere/src/lib/pop/popover.component';
+import { SearchService } from './shared/search.service';
+import { HcPopComponent } from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-root',
@@ -17,7 +16,6 @@ export class AppComponent implements AfterViewInit {
     navSearchBar = new FormControl('');
 
     searchResults;
-    searchTest = json;
     showAll = false;
     searchValue = '';
     searchIcons = {
@@ -27,18 +25,9 @@ export class AppComponent implements AfterViewInit {
         'bits': { icon: 'fa-puzzle-piece' }
     };
 
-    miniSearch = new MiniSearch({
-        fields: ['title', 'content'], // fields to index for full-text search
-        storeFields: ['title', 'link', 'category'], // fields to return with search results
-        searchOptions: {
-            prefix: true,
-            boost: { type: 20 },
-            combineWith: 'AND'
-        }
-    });
+    constructor( private searchService: SearchService ) { }
 
     ngAfterViewInit() {
-        this.miniSearch.addAll(this.searchTest);
         this.navSearchBar.valueChanges.subscribe((val) => {
             if (val !== '') {
                 let tempResults = this.getItems(val);
@@ -57,7 +46,7 @@ export class AppComponent implements AfterViewInit {
     }
 
     getItems = (value: string) => {
-        let results = this.miniSearch.search(value);
+        let results = this.searchService.miniSearch.search(value);
         return results;
     }
 

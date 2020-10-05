@@ -3,9 +3,8 @@ import * as path from 'path';
 import * as glob from 'glob';
 import * as removeMd from 'remove-markdown';
 import * as changeCase from 'change-case';
-import { forEachChild } from 'typescript';
 
-const outputDir = 'dist/search/';
+const outputDir = 'src/assets/docs/search/';
 const searchArray: object[] = [];
 // Looks for '##### '
 const guideSectionRegex = /^#{5} /m;
