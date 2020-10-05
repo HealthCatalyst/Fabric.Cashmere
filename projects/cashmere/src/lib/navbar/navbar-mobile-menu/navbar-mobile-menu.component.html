@@ -1,3 +1,3 @@
-<div #navbarMobile class="hc-navbar-mobile-menu-dropdown" [style.top.px]="_yPos">
+<div #navbarMobile class="hc-navbar-mobile-menu-dropdown" [style.top.px]="_yPos" [ngClass]="{scrollable: _yPos === 0}">
     <ng-content></ng-content>
 </div>

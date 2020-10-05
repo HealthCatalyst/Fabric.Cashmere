@@ -3,6 +3,11 @@
 .hc-navbar-mobile-menu-dropdown {
     @include hc-navbar-mobile-menu-dropdown();
 
+    &.scrollable {
+        bottom: 0px;
+        overflow-y: scroll;
+    }
+
     hr {
         @include hc-navbar-mobile-hr();
     }
