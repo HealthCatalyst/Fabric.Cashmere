@@ -21,6 +21,7 @@ export class SearchResultsComponent implements AfterViewInit {
     pageOpts = [5, 10, 20];
     pagWidth = 'md';
     pagSize = 5;
+    pagNum = 1;
     searchBarContent: FormControl = new FormControl("");
     searchResultsData;
     searchDisplay;
@@ -34,9 +35,10 @@ export class SearchResultsComponent implements AfterViewInit {
     });
 
     types = new FormGroup({
-        html: new FormControl(false),
-        Guides: new FormControl(false),
-        ts: new FormControl(false)
+        doc: new FormControl(true),
+        example: new FormControl(true),
+        api: new FormControl(true),
+        usage: new FormControl(true)
     });
 
     searchIcons = {
@@ -51,10 +53,11 @@ export class SearchResultsComponent implements AfterViewInit {
         // These are the felids that minisearch is checking against
         fields: ['title', 'content'],
         // These are the felids that minisearch will return in an object
-        storeFields: ['title', 'content', 'link', 'category', 'type', 'section'],
+        storeFields: ['title', 'link', 'category', 'type'],
         searchOptions: {
             prefix: true,
-            boost: { type: 20 }
+            boost: { type: 20 },
+            combineWith: 'AND'
         }
     });
 
@@ -66,7 +69,7 @@ export class SearchResultsComponent implements AfterViewInit {
     ngAfterViewInit() {
         // String lists that take the values from the categories and types FormGroups
         let filterValues: string[] = ["styles", "components", "guides", "bits"];
-        let typeFilterValues: string[] = [];
+        let typeFilterValues: string[] = ["doc", "example", "api", "usage"];
 
         // Listens for changes in the categories FormGroup
         this.categories.valueChanges.subscribe(categoryValues => {
@@ -107,12 +110,13 @@ export class SearchResultsComponent implements AfterViewInit {
                 let res = this.miniSearch.search(val, {
                     // Checks every result that matches the search value
                     filter: (result) => {
-                        let isMatching = false;
+                        let isCategory = false;
+                        let isType = false;
                         // Goes through each result and checks if the results category
                         //  matches any of the categories inside of filterValues
                         filterValues.forEach(element => {
                             if (result.category === element) {
-                                isMatching = true;
+                                isCategory = true;
                             }
                         });
 
@@ -120,11 +124,11 @@ export class SearchResultsComponent implements AfterViewInit {
                         //  matches any of the categories inside of typeFilterValues
                         typeFilterValues.forEach(element => {
                             if (result.type === element) {
-                                isMatching = true;
+                                isType = true;
                             }
                         });
 
-                        return isMatching;
+                        return isCategory && isType;
                     }
                 });
 
@@ -134,6 +138,7 @@ export class SearchResultsComponent implements AfterViewInit {
                 this.searchResultsData = res;
                 // Slices the results and returns the first five to be displayed
                 this.searchDisplay = this.searchResultsData.slice(0, this.pagSize);
+                this.pagNum = 1;
                 this.ref.detectChanges();
             } else {
                 // If the search value is empty, then searchResultsData is set to an empty array
@@ -157,23 +162,24 @@ export class SearchResultsComponent implements AfterViewInit {
             let res = this.miniSearch.search(this.searchBarContent.value, {
                 // Checks every result that matches the search value
                 filter: (result) => {
-                    let isMatching = false;
+                    let isCategory = false;
+                    let isType = false;
                     // Goes through each result and checks if the results category
                     //  matches any of the categories inside of filterValues
                     filterValues.forEach(element => {
                         if (result.category === element) {
-                            isMatching = true;
+                            isCategory = true;
                         }
                     });
                     // Goes through each result and checks if the results category
                     //  matches any of the categories inside of typeFilterValues
                     typeFilterValues.forEach(element => {
                         if (result.type === element) {
-                            isMatching = true;
+                            isType = true;
                         }
                     });
 
-                    return isMatching;
+                    return isCategory && isType;
                 }
             });
             // Sets the length of results found
@@ -182,6 +188,7 @@ export class SearchResultsComponent implements AfterViewInit {
             this.searchResultsData = res;
             // Slices the results and returns the first five to be displayed
             this.searchDisplay = this.searchResultsData.slice(0, 5);
+            this.pagNum = 1;
             this.ref.detectChanges();
         } else {
             //  Gets the search parameter value from the url
@@ -191,8 +198,14 @@ export class SearchResultsComponent implements AfterViewInit {
 
     resultPaging( setting: PageEvent ) {
         this.pagSize = setting.pageSize;
+        this.pagNum = setting.pageNumber;
         let tempStartIndex = setting.pageSize * (setting.pageNumber - 1);
         this.searchDisplay = this.searchResultsData.slice(tempStartIndex, tempStartIndex + setting.pageSize);
         this.ref.detectChanges();
+    }
+
+    resetFilters() {
+        this.categories.setValue({ components: true, guides: true, styles: true, bits: true });
+        this.types.setValue({ doc: true, example: true, api: true, usage: true });
     }
 }

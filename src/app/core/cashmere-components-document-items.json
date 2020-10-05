@@ -19,7 +19,7 @@
     "button": {
         "name": "Button",
         "category": "buttons",
-        "examples": ["button-anchor", "button-colors", "button-icon", "button-link", "button-size", "button-split", "button-type"],
+        "examples": ["button-type", "button-anchor", "button-colors", "button-icon", "button-link", "button-size", "button-split"],
         "usageDoc": true
     },
     "checkbox": {

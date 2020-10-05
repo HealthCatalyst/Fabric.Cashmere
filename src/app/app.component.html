@@ -52,7 +52,7 @@
                 routerLink="{{item.link}}" (click)="search.toggle()">
                 <hc-icon fontSet="fa" [fontIcon]="searchIcons[item.category].icon" hcListIcon class="results-icon"></hc-icon>
                 <div hcListLine class="result-title hc-text-ellipsis">{{item.title}}</div>
-                <div hcListLine class="result-sub-text">{{item.category}}</div>
+                <div hcListLine class="result-sub-text">{{item.link}}</div>
             </hc-list-item>
         </hc-list>
         <div *ngIf="showAll" routerLink="/results" [queryParams]="{search: searchValue}" (click)="search.toggle()" class="hc-navbar-search-show-all">

@@ -33,7 +33,7 @@ public myremotePicklistSettings: IPicklistSettings = {
 };
 ```
 
-#### Things to Look Out For
+##### Things to Look Out For
 
 -   For the best experience when using the getValue() callback function, it's important to match the picklist's method of searching and sorting. This helps us to avoid unnecessary round trips to the server while maintaining a consistent user experience.
 -   When searching, the default is to execute the search on the titles of each value, unless codeIsSignificant is set to true, in which case the codes of values will be searched as well. (Value sets will not be searched by code.) If multiple tokens exist in a search string (i.e, "three search terms"), the code will split up the tokens and only return those values or value sets that contain all three tokens. Review picklist-filter-local.service.spec.ts on github for further details on search.

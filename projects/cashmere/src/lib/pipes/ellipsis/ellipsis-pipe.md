@@ -1,6 +1,8 @@
+##### Overview
+
 The Ellipsis pipe is used to truncate long text to a specified number of characters or words.
 
-#### API
+##### API
 
 ```ts
 transform(value: string, length: number, mode?: 'characters' | 'words'): string
@@ -12,7 +14,7 @@ transform(value: string, length: number, mode?: 'characters' | 'words'): string
 
 `mode`: which mode to use to determine the maximum length (defaults to `'characters'`)
 
-#### Importing the Ellipsis Pipe
+##### Importing the Ellipsis Pipe
 
 To use the `EllipsisPipe`, import the `EllipsisPipeModule` into your app's `CashmereModule` (which in turn is imported into your app):
 
@@ -38,7 +40,7 @@ import {PipesModule} from '@healthcatalyst/cashmere';
 export class CashmereModule {}
 ```
 
-#### Using the Ellipsis Pipe in character mode
+##### Using the Ellipsis Pipe in character mode
 
 In character mode, when the length of the string exceeds the specified number of characters, it is truncated at that number of characters then the ellipsis character (`…`) is appended. If the string is shorter or the same length as the specified length, the original value is returned.
 
@@ -49,7 +51,7 @@ In character mode, when the length of the string exceeds the specified number of
 <!-- will output 'A long string' -->
 ```
 
-#### Using the Ellipsis Pipe in word mode
+##### Using the Ellipsis Pipe in word mode
 
 In word mode, when the number of words in the string exceeds the specified number of words, it is truncated at that number of words then the ellipsis character (`…`) is appended. If the string contains fewer or the same number of words as the specified length, the original value is returned.
 
@@ -60,6 +62,6 @@ In word mode, when the number of words in the string exceeds the specified numbe
 <!-- will output 'A  \r\n  long string' -->
 ```
 
-#### Edge cases
+##### Edge cases
 
 If the Ellipsis Pipe is given a value other than a `string` or a length other than a valid `number`, it returns the provided value unchanged.

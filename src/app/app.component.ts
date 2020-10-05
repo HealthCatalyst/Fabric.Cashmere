@@ -29,10 +29,11 @@ export class AppComponent implements AfterViewInit {
 
     miniSearch = new MiniSearch({
         fields: ['title', 'content'], // fields to index for full-text search
-        storeFields: ['id', 'title', 'link', 'category', 'name', 'type', 'content'], // fields to return with search results
+        storeFields: ['title', 'link', 'category'], // fields to return with search results
         searchOptions: {
             prefix: true,
-            boost: { type: 20 }
+            boost: { type: 20 },
+            combineWith: 'AND'
         }
     });
 

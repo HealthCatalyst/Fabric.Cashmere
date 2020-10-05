@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DocItem, DocumentItemsService, DocItemType, DocItemCategory} from '../core/document-items.service';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {takeUntil, tap, filter, map} from 'rxjs/operators';
+import {ActivatedRoute, Router} from '@angular/router';
+import {takeUntil, tap, map} from 'rxjs/operators';
 import {Subject, merge} from 'rxjs';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
 
@@ -47,7 +47,6 @@ export class ComponentsComponent implements OnInit, OnDestroy {
     docType: DocItemType;
     private unsubscribe = new Subject<void>();
     private appInsights: ApplicationInsightsService;
-    private url: string;
 
     constructor(private docItemService: DocumentItemsService, private activatedRoute: ActivatedRoute, private router: Router) {
         this.appInsights = new ApplicationInsightsService();
@@ -62,22 +61,27 @@ export class ComponentsComponent implements OnInit, OnDestroy {
 
         merge(docType$, id$)
             .pipe(takeUntil(this.unsubscribe))
-            .subscribe(() => this.loadDocs(this.url));
+            .subscribe(() => this.loadDocs());
     }
 
-    loadDocs(url: string) {
+    loadDocs() {
         if (!this.docType) {
             return;
         }
 
         this.allDocItems = this.docItemService.getDocItems(this.docType);
-        if (!this.id && this.categorizedDocItems[0] && this.categorizedDocItems[0].items && this.categorizedDocItems[0].items.length) {
-            this.navUpdate(this.categorizedDocItems[0].items[0].id);
-            return;
+        if (!this.id) {
+            for ( let i = 0; i < this.categorizedDocItems.length; i++ ) {
+                const tempVal = this.categorizedDocItems[i].items;
+                if ( tempVal && tempVal.length ) {
+                    this.navUpdate(tempVal[0].id);
+                    return;
+                }
+            }
         }
         this.activeItem = this.allDocItems.find(i => i.id === this.id);
         if (this.activeItem) {
-            this.appInsights.logPageView(this.activeItem.name, url);
+            this.appInsights.logPageView(this.activeItem.name, `/${this.docType}/` + this.id);
             this.activeCategory = this.activeItem.category;
         }
     }

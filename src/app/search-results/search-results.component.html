@@ -1,6 +1,6 @@
 <hc-drawer-container class="hc-search-results">
     <hc-menu-drawer opened="true" mode="over" align="left" menuTheme="dark-theme" class="hc-search-drawer" #leftDrawer>
-        <div hcDrawerToolbar class="hc-search-results-toolbar">Reset Filters</div>
+        <div hcDrawerToolbar class="hc-search-results-toolbar" (click)="resetFilters()">Reset Filters</div>
         <hc-drawer-item class="hc-search-drawer-item">
             <form class="checkboxContiner" [formGroup]="categories">
                 <h4>Category</h4>
@@ -13,9 +13,10 @@
         <hc-drawer-item class="hc-search-drawer-item">
             <div class="checkboxContiner" [formGroup]="types">
                 <h4>Type</h4>
-                <hc-checkbox formControlName='Guides'>Example</hc-checkbox>
-                <hc-checkbox formControlName='html'>HTML</hc-checkbox>
-                <hc-checkbox formControlName='ts'>TypeScript</hc-checkbox>
+                <hc-checkbox formControlName='doc'>Docs</hc-checkbox>
+                <hc-checkbox formControlName='example'>Examples</hc-checkbox>
+                <hc-checkbox formControlName='api'>API</hc-checkbox>
+                <hc-checkbox formControlName='usage'>Usage</hc-checkbox>
             </div>
         </hc-drawer-item>
     </hc-menu-drawer>
@@ -41,7 +42,7 @@
         </hc-list>
 
         <div #pagContainer class="hc-search-results-pagination">
-            <hc-pagination [displayWidth]="pagWidth" [length]="length" pageSize="5" [pageSizeOptions]="pageOpts" (page)="resultPaging($event)"></hc-pagination>
+            <hc-pagination [displayWidth]="pagWidth" [pageNumber]="pagNum" [length]="length" pageSize="5" [pageSizeOptions]="pageOpts" (page)="resultPaging($event)"></hc-pagination>
         </div>
     </div>
 </hc-drawer-container>
