@@ -11,7 +11,9 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 })
 export class StylesComponent implements OnDestroy {
     thisPage = '';
+    queryTab = 0;
     selectOptions: Array<string> = [];
+    styleTabs: any[] = [];
     private unsubscribe = new Subject<void>();
     private appInsights;
 
@@ -29,26 +31,45 @@ export class StylesComponent implements OnDestroy {
 
         // Populate the responsive select component with the router information
         let root = this.activatedRoute.routeConfig;
-        if (root && root.children) {
-            for (let entry of root.children) {
+        if ( root && root.children ) {
+            for (let entry of root.children ) {
                 if (entry.data && entry.data.title) {
-                    this.selectOptions.push(entry.data.title);
+                    this.styleTabs.push({title: entry.data.title, path: entry.path});
                 }
             }
         }
+
+        if (this.styleTabs.length) {
+            for (let entry of this.styleTabs) {
+                this.selectOptions.push(entry.title);
+            }
+        }
         this.selectOptions.sort();
+
+         //  Gets the search parameter value from the url
+         this.activatedRoute.queryParams.subscribe(() => {
+            let currentPath = this.router.url;
+            currentPath = currentPath.replace( '/styles/', '' );
+            const pathArray = currentPath.split( '?' );
+
+            if (this.styleTabs.length) {
+                for ( let i = 0; i < this.styleTabs.length; i++ ) {
+                    if (pathArray[0] === this.styleTabs[i].path) {
+                        this.queryTab = i;
+                        break;
+                    }
+                }
+            }
+        });
     }
 
     // Handle changes to the select component and navigate
     selectUpdate(event: any) {
-        let root = this.activatedRoute.routeConfig;
-        if (root && root.children) {
-            for (let entry of root.children) {
-                if (entry.data && event === entry.data.title) {
-                    this.router.navigate(['/styles/' + entry.path]);
-                    window.scrollTo(0, 0);
-                    break;
-                }
+        if (this.styleTabs.length) {
+            for (let entry of this.styleTabs) {
+                this.router.navigate(['/styles/' + entry.path]);
+                window.scrollTo(0, 0);
+                break;
             }
         }
     }

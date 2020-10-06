@@ -132,7 +132,16 @@ export class SearchResultsComponent implements AfterViewInit {
         //  Gets the search parameter value from the url
         this.route.queryParams.subscribe(params => {
             //  Sets the value of the searchBarContent to the search parameter value
-            this.searchBarContent.setValue(params['search']);
+            if ( this.searchService.loaded.value ) {
+                this.searchBarContent.setValue(params['search']);
+            } else {
+                const searchSub = this.searchService.isLoaded.subscribe( value => {
+                    if ( value ) {
+                        this.searchBarContent.setValue(params['search']);
+                        searchSub.unsubscribe();
+                    }
+                });
+            }
         });
 
         this._pagResize();

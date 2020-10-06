@@ -22,7 +22,7 @@
             <hc-list-item routerLink="/bits" routerLinkActive="active-link">
                 <span hcListLine>Bits</span>
             </hc-list-item>
-            <hc-list-item routerLink="/guides/getting-started" routerLinkActive="active-link">
+            <hc-list-item routerLink="/guides" routerLinkActive="active-link">
                 <span hcListLine>Guides</span>
             </hc-list-item>
             <hc-list-item routerLink="/results" routerLinkActive="active-link">
@@ -49,10 +49,10 @@
         </hc-form-field>
         <hc-list class="hc-navbar-search-results">
             <hc-list-item *ngFor="let item of searchResults" class="hc-navbar-search-results-items"
-                routerLink="{{item.link}}" (click)="search.toggle()">
-                <hc-icon fontSet="fa" [fontIcon]="searchIcons[item.category].icon" hcListIcon class="results-icon"></hc-icon>
-                <div hcListLine class="result-title hc-text-ellipsis">{{item.title}}</div>
-                <div hcListLine class="result-sub-text">{{item.link}}</div>
+                [routerLink]="'/' + item.link" [queryParams]="{section: item.section, selected: item.displayName}" (click)="search.toggle()">
+                    <hc-icon fontSet="fa" [fontIcon]="searchIcons[item.category].icon" hcListIcon class="results-icon"></hc-icon>
+                    <div hcListLine class="result-title hc-text-ellipsis">{{item.title}}</div>
+                    <div hcListLine class="result-sub-text">{{item.link}}</div>
             </hc-list-item>
         </hc-list>
         <div *ngIf="showAll" routerLink="/results" [queryParams]="{search: searchValue}" (click)="search.toggle()" class="hc-navbar-search-show-all">

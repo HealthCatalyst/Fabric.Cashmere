@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable, Subscription, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import MiniSearch from 'minisearch';
 
@@ -9,12 +9,17 @@ import MiniSearch from 'minisearch';
     providedIn: 'root'
 })
 export class SearchService {
+    loaded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    get isLoaded(): Observable<boolean> {
+        return this.loaded.asObservable();
+    }
+
     // MiniSearch variable initialization
     miniSearch = new MiniSearch({
         // These are the felids that minisearch is checking against
         fields: ['title', 'content'],
         // These are the felids that minisearch will return in an object
-        storeFields: ['title', 'link', 'category', 'type'],
+        storeFields: ['title', 'link', 'category', 'type', 'displayName', 'section'],
         searchOptions: {
             prefix: true,
             boost: { type: 20 },
@@ -25,6 +30,7 @@ export class SearchService {
     constructor(private http: HttpClient) {
         const loadSub: Subscription = this.loadSearchIndex().subscribe(data => {
             this.miniSearch.addAll(data);
+            this.loaded.next( true );
             loadSub.unsubscribe();
         });
     }

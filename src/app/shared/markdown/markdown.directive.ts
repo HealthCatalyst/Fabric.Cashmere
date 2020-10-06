@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import * as markdownIt from 'markdown-it';
 import * as container_plugin from 'markdown-it-container';
 import {highlightBlock} from 'highlight.js';
@@ -15,6 +15,9 @@ export class MarkdownDirective implements OnChanges {
     highlight: boolean = true;
     @Input()
     lineNumbers: boolean = true;
+
+    @Output()
+    loaded: EventEmitter<boolean> = new EventEmitter();
 
     constructor(private el: ElementRef) {}
 
@@ -42,6 +45,17 @@ export class MarkdownDirective implements OnChanges {
                 }
             }
         }
+
+        // Add ids for headers to allow for direct linking
+        const headerTags: Array<HTMLElement> = this.el.nativeElement.getElementsByTagName('h5');
+        for (const header of headerTags) {
+            let idVal = header.innerText.toLowerCase();
+            idVal = idVal.replace( / /g, '-' );
+            idVal = idVal.replace( /\?/g, '' );
+            header.id = idVal;
+        }
+
+        this.loaded.emit( true );
     }
 
     private removeLines(pre: HTMLPreElement): void {

@@ -70,7 +70,7 @@ function readGuideFiles() {
                     const sectionObj = object = ({
                         // Set id to the sectionTitle in snake case
                         id: changeCase.snakeCase(sectionTitle),
-                        title: sectionTitle,
+                        title: changeCase.titleCase( sectionTitle ) + ' - ' + changeCase.titleCase( mapping.basename ),
                         // Remove all the markdown from the file content and set it so we can search through it
                         content: mdGetContent(element),
                         link: 'guides/' + mapping.basename,
@@ -135,7 +135,7 @@ function readStyleFiles() {
                     const sectionObj = object = ({
                         // Set id to the sectionTitle in snake case
                         id: changeCase.snakeCase(sectionTitle),
-                        title: sectionTitle,
+                        title: changeCase.titleCase(sectionTitle) + ' - ' + changeCase.titleCase(mapping.basename),
                         // Remove all the markdown from the file content and set it so we can search through it
                         content: mdGetContent(element),
                         link: 'styles/' + mapping.basename,
@@ -154,7 +154,7 @@ function readStyleFiles() {
     });
 
     // Then parse the style components
-    glob('src/app/styles/**/*.html', function (er, files) {
+    glob('src/app/styles/*/*.html', function (er, files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -166,22 +166,32 @@ function readStyleFiles() {
             })
             .forEach(mapping => {
                 const fileContent = fs.readFileSync(mapping.path, 'utf8');
-                let title = mapping.basename.split('.')[0];
-                title = title.replace( /-/g, ' ' );
                 const pathArray = mapping.path.split('/');
                 const parentName = pathArray[ pathArray.length - 2 ];
-                const sectionObj = object = ({
-                    id: mapping.basename.split('.')[0],
-                    // Set the title to the title with propare capitalization
-                    title: changeCase.titleCase(parentName.replace(/-/g, ' ')),
-                    content: exampleGetContent(fileContent),
-                    link: 'styles/' + parentName,
-                    category: 'styles',
-                    displayName: title,
-                    type: 'doc',
-                    section: changeCase.paramCase(title)
+                let title = mapping.basename.split('.')[0];
+                title = title.replace( /-/g, ' ' );
+
+                // Split up the file content by header-link anchors
+                const sections = fileContent.split('<h5 id="');
+                sections.forEach((element, index) => {
+                    if ( index > 0 ) {
+                        const quoteIndex = element.indexOf('"');
+                        title = element.substr(0, quoteIndex);
+                    }
+
+                    const sectionObj = object = ({
+                        id: mapping.basename.split('.')[0],
+                        // Set the title to the title with propare capitalization
+                        title: changeCase.titleCase(title) + ' - ' + changeCase.titleCase(parentName.replace(/-/g, ' ')),
+                        content: exampleGetContent(fileContent),
+                        link: 'styles/' + parentName,
+                        category: 'styles',
+                        displayName: title,
+                        type: 'doc',
+                        section: changeCase.paramCase(title)
+                    });
+                    searchArray.push(sectionObj);
                 });
-                searchArray.push(sectionObj);
             });
 
             readComponentUsage();
@@ -230,7 +240,7 @@ function readComponentUsage() {
                     const sectionObj = object = ({
                         // Set id to the sectionTitle in snake case
                         id: changeCase.snakeCase(sectionTitle),
-                        title: sectionTitle,
+                        title: sectionTitle + ' - ' + changeCase.titleCase(parentName),
                         // Remove all the markdown from the file content and set it so we can search through it
                         content: mdGetContent(element),
                         link: typeStr + '/' + parentName + '/usage',
@@ -265,22 +275,33 @@ function readComponentAPI() {
             })
             .forEach(mapping => {
                 const fileContent = fs.readFileSync(mapping.path, 'utf8');
-                let title = mapping.basename.split('.')[0];
-                const parentName = title.substr(9);
-                title = title.replace( 'cashmere-', '' );
-                title = title.replace( /-/g, ' ' );
-                const sectionObj = object = ({
-                    id: mapping.basename.split('.')[0],
-                    // Set the title to the title with propare capitalization
-                    title: changeCase.titleCase(parentName.replace(/-/g, ' ')),
-                    content: apiGetContent(fileContent),
-                    link: 'components/' + parentName + '/api',
-                    category: 'components',
-                    displayName: title,
-                    type: 'api',
-                    section: changeCase.paramCase(title)
+
+                // Split up the file content by header-link anchors
+                const sections = fileContent.split('<span header-link="');
+                sections.forEach((element, index) => {
+                    let title = mapping.basename.split('.')[0];
+                    const parentName = title.substr(9);
+
+                    if ( index > 0 ) {
+                        const quoteIndex = element.indexOf('"');
+                        title = element.substr(0, quoteIndex);
+                    } else {
+                        title = title.replace( 'cashmere-', '' );
+                        title = title.replace( /-/g, ' ' );
+                    }
+                    const sectionObj = object = ({
+                        id: mapping.basename.split('.')[0],
+                        // Set the title to the title with propare capitalization
+                        title: changeCase.titleCase(title) + ' - ' + changeCase.titleCase(parentName.replace(/-/g, ' ')),
+                        content: apiGetContent(element),
+                        link: 'components/' + parentName + '/api',
+                        category: 'components',
+                        displayName: title,
+                        type: 'api',
+                        section: title
+                    });
+                    searchArray.push(sectionObj);
                 });
-                searchArray.push(sectionObj);
             });
 
             readComponentExamples();
@@ -295,7 +316,7 @@ function readComponentExamples() {
     const bitItemsFile = 'src/app/core/cashmere-bits-document-items.json';
     const bitExamples = JSON.parse(fs.readFileSync(bitItemsFile).toString());
 
-    glob('projects/cashmere-examples/src/lib/*/*.{ts,html}', function (er, files) {
+    glob('projects/cashmere-examples/src/lib/*/*.{ts,html,scss}', function (er, files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -341,6 +362,13 @@ function readComponentExamples() {
                     }
                 }
 
+                const fileExArray = mapping.path.split('.');
+                let selectedStr = changeCase.upperCase( fileExArray[ fileExArray.length - 1 ] );
+                if ( mapping.basename.includes( '.module') ) {
+                    selectedStr = 'Module';
+                }
+
+                const sectionStr = changeCase.paramCase(title.replace( '-example', ''));
                 const sectionObj = object = ({
                     id: mapping.basename.split('.')[0],
                     // Set the title to the title with propare capitalization
@@ -348,9 +376,9 @@ function readComponentExamples() {
                     content: exampleGetContent(fileContent),
                     link: typeStr + '/' + parentItem + '/examples',
                     category: typeStr,
-                    displayName: title.replace( /-/g, ' ' ),
+                    displayName: selectedStr,
                     type: 'example',
-                    section: changeCase.paramCase(title)
+                    section: sectionStr
                 });
                 searchArray.push(sectionObj);
             });

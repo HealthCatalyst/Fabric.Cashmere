@@ -32,7 +32,11 @@
         <hc-list class="hc-search-results-list">
             <hc-list-item *ngFor="let item of searchDisplay" class="hc-search-results-items">
                 <hc-icon fontSet="fa" [fontIcon]="searchIcons[item.category].icon" hcListIcon class="hc-results-icon"></hc-icon>
-                <a hcListLine class="hc-result-title" [routerLink]="['/' + item.link]">{{item.title}}</a>
+                <a hcListLine class="hc-result-title"
+                    [routerLink]="'/' + item.link"
+                    [queryParams]="{section: item.section, selected: item.displayName}">
+                        {{item.title}}
+                </a>
                 <div hcListLine class="hc-result-sub-text">
                     <strong>Category:</strong><span> {{item.category}}</span><br>
                     <strong>Type:</strong><span> {{item.type}}</span><br>

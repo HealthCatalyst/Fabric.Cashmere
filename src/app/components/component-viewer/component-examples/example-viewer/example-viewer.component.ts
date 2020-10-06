@@ -28,7 +28,7 @@ export class ExampleViewerComponent implements OnInit {
     constructor(
         private httpClient: HttpClient,
         private componentFactoryResolver: ComponentFactoryResolver,
-        private activatedRoute: ActivatedRoute,
+        private activatedRoute: ActivatedRoute
     ) {
         this.appInsights = new ApplicationInsightsService();
         this.activatedRoute.queryParams.subscribe(params => {
@@ -66,10 +66,14 @@ export class ExampleViewerComponent implements OnInit {
                     const found = this._tabSet._tabs.toArray().find(t => t.tabTitle === this.selected);
                     this._tabSet.selectTab(found ? found : 0);
                     const el = document.getElementById(this.section);
-                    el ? el.scrollIntoView() : console.log('not found');
+                    if ( el ) {
+                        el.scrollIntoView();
+                    }
                 } else if (this._example === this.section) {
                     const el = document.getElementById(this.section);
-                    el ? el.scrollIntoView() : console.log('not found');
+                    if ( el ) {
+                        el.scrollIntoView();
+                    }
                 }
             }, 200);
         }

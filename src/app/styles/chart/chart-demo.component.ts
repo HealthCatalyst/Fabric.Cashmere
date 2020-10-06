@@ -1,19 +1,21 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {ModalOptions, ModalService} from '@healthcatalyst/cashmere';
+import { AfterViewInit, Component, OnInit, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalOptions, ModalService } from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-chart-demo',
     templateUrl: './chart-demo.component.html',
     styleUrls: ['./chart-demo.component.scss']
 })
-export class ChartDemoComponent implements OnInit {
+export class ChartDemoComponent implements OnInit, AfterViewInit {
     loading: boolean = true;
     modalHeader: string = 'Chart Information';
     chartData: Array<any>;
     lineData: Array<any>;
     private hospitals = ['Millrock Physician Group', 'Memorial Physician Group', 'St. Johns Physician Group', 'University Physician Group'];
+    private section: string | null;
 
-    constructor(private modalService: ModalService) {}
+    constructor(private modalService: ModalService, private router: Router) {}
 
     ngOnInit() {
         // give everything a chance to get loaded before starting the animation to reduce choppiness
@@ -21,6 +23,21 @@ export class ChartDemoComponent implements OnInit {
             this.generateData();
             this.loading = false;
         }, 2000);
+    }
+
+    ngAfterViewInit() {
+        this.section = this.extractUrlValue( 'section', this.router.url );
+        if ( this.section ) {
+            const el = document.getElementById(this.section);
+            if ( el ) {
+                el.scrollIntoView();
+            }
+        }
+    }
+
+    extractUrlValue(key, url) {
+        const match = url.match('[?&]' + key + '=([^&]+)');
+        return match ? match[1] : null;
     }
 
     generateData() {

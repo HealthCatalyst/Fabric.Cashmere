@@ -57,5 +57,5 @@
         </table>
     </hc-tile>
 
-    <div [hcMarkdown]="document"></div>
+    <div [hcMarkdown]="document" (loaded)="guideLoaded()"></div>
 </div>

@@ -1,6 +1,6 @@
 import {Component, OnDestroy} from '@angular/core';
 import {GuidesService} from './guides.service';
-import {NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
@@ -12,12 +12,13 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 })
 export class GuidesComponent implements OnDestroy {
     thisPage = '';
+    queryTab = 0;
     selectOptions: Array<string> = [];
 
     private unsubscribe = new Subject<void>();
     private appInsights;
 
-    constructor(public guidesService: GuidesService, private router: Router) {
+    constructor(public guidesService: GuidesService, private router: Router, private route: ActivatedRoute) {
         this.appInsights = new ApplicationInsightsService();
         // Listen for vertical tab bar navigation and update the select component
         this.router.events.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
@@ -36,6 +37,20 @@ export class GuidesComponent implements OnDestroy {
         for (let entry of this.guidesService.guides) {
             this.selectOptions.push(entry.title);
         }
+
+        //  Gets the search parameter value from the url
+        this.route.queryParams.subscribe(() => {
+            let currentPath = this.router.url;
+            currentPath = currentPath.replace( '/guides/', '' );
+            const pathArray = currentPath.split( '?' );
+
+            for ( let i = 0; i < this.guidesService.guides.length; i++ ) {
+                if ( pathArray[0] === this.guidesService.guides[i].route ) {
+                    this.queryTab = i;
+                    break;
+                }
+            }
+        });
     }
 
     // Handle changes to the select component and navigate
