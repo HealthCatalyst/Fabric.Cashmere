@@ -72,10 +72,15 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     public _collapse: boolean = false;
     public _moreList: Array<MoreItem> = [];
 
+    /** Forces a recalculation of the navbar links to determine how many should be rolling into a More menu.
+     * Call this if you've updated the contents of any navbar links. */
     @HostListener('window:resize')
-    _navResize() {
+    refreshNavLinks() {
         if (this._navbarMore) {
             this._navbarMore.closePopover();
+        }
+        if ( this._linksTotalWidth === 0 ) {
+            this._collectNavLinkWidths();
         }
 
         this._moreList = [];
@@ -124,13 +129,6 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     }
 
     constructor(private ref: ChangeDetectorRef) {}
-
-    /** Forces a recalculation of the navbar links to determine how many should be rolling into a More menu.
-     * Call this if you've updated the contents of any navbar links. */
-    refreshNavLinks() {
-        this._collectNavLinkWidths();
-        this._navResize();
-    }
 
     private _collectNavLinkWidths() {
         this._linkWidths = [];
