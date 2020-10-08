@@ -59,15 +59,15 @@ describe('NavbarComponent', () => {
     });
 
     describe('on calling all the lifecycle hooks', () => {
-        it('should call _navResize', async(() => {
-            spyOn(testHostComponent.navbarComponent, '_navResize');
+        it('should call refreshNavLinks', async(() => {
+            spyOn(testHostComponent.navbarComponent, 'refreshNavLinks');
             testHostComponent.navbarComponent.ngAfterViewInit();
             testHostFixture.whenStable().then(() => {
-                expect(testHostComponent.navbarComponent._navResize).toHaveBeenCalled();
+                expect(testHostComponent.navbarComponent.refreshNavLinks).toHaveBeenCalled();
             });
         }));
     });
-    describe('on calling _navResize', () => {
+    describe('on calling refreshNavLinks', () => {
         describe('and adjust the elements according to the navbar size', () => {
             it('should have nothing in moreList if navbar links container > linksTotalWidth', () => {
                 const linkContainer = testHostFixture.debugElement.query(By.css('.hc-navbar-link-container'));
@@ -78,7 +78,7 @@ describe('NavbarComponent', () => {
                 spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(110);
 
                 testHostComponent.navbarComponent['_collectNavLinkWidths']();
-                testHostComponent.navbarComponent._navResize();
+                testHostComponent.navbarComponent.refreshNavLinks();
 
                 expect(linkContainer.nativeElement['offsetWidth']).toEqual(300);
                 expect(testHostComponent.navbarComponent['_linksTotalWidth']).toEqual(220);
@@ -94,7 +94,7 @@ describe('NavbarComponent', () => {
                 spyOnProperty(link[1].nativeElement, 'scrollWidth', 'get').and.returnValue(110);
 
                 testHostComponent.navbarComponent['_collectNavLinkWidths']();
-                testHostComponent.navbarComponent._navResize();
+                testHostComponent.navbarComponent.refreshNavLinks();
 
                 expect(linkContainer.nativeElement['offsetWidth']).toEqual(50);
                 expect(testHostComponent.navbarComponent['_linksTotalWidth']).toEqual(220);
