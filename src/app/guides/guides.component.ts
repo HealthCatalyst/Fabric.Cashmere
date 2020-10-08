@@ -1,5 +1,5 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {GuidesService} from './guides.service';
+import {Component, OnDestroy} from '@angular/core';
+import {GuidesService, IGuide} from './guides.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
@@ -12,7 +12,7 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 })
 export class GuidesComponent implements OnDestroy {
     thisPage = '';
-    selectOptions: Array<string> = [];
+    selectOptions: Array<IGuide> = [];
 
     private unsubscribe = new Subject<void>();
     private appInsights;
@@ -34,7 +34,7 @@ export class GuidesComponent implements OnDestroy {
 
         // Populate the responsive select component with the router information
         for (let entry of this.guidesService.guides) {
-            this.selectOptions.push(entry.title);
+            this.selectOptions.push(entry);
         }
     }
 
