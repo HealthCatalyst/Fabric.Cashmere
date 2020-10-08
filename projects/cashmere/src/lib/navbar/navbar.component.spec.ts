@@ -5,6 +5,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {ListModule} from '../list/list.module';
 import {NavbarComponent} from './navbar.component';
 import {NavbarModule} from './navbar.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @Component({
     template: `
@@ -30,7 +31,7 @@ describe('NavbarComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [RouterTestingModule, NavbarModule, ListModule],
+            imports: [RouterTestingModule, NavbarModule, ListModule, BrowserAnimationsModule],
             declarations: [TestAppComponent]
         }).compileComponents();
     }));
