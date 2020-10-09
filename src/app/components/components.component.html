@@ -3,10 +3,16 @@
         <div class="subnav-container">
             <span class="subnav-label">Components:</span>
             <span class="subnav-select">
-                <hc-select (change)="navUpdate($event.value)">
-                    <option *ngFor="let option of allDocItems" [value]="option.id" [selected]="option.id === activeItem?.id">
-                        {{ option.name }}
-                    </option>
+                <hc-select (change)="navUpdate($event.value)" [value]="activeItem?.id">
+                    <ng-container *ngFor="let category of categorizedDocItems">
+                        <ng-container *ngIf="category.items?.length">
+                            <optgroup [label]="category.displayName">
+                                <option *ngFor="let option of category.items" [value]="option.id">
+                                    {{ option.name }}
+                                </option>
+                            </optgroup>
+                        </ng-container>
+                    </ng-container>
                 </hc-select>
             </span>
         </div>

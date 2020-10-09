@@ -4,7 +4,16 @@
             <span class="subnav-label">Guides: </span>
             <span class="subnav-select">
                 <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
-                    <option *ngFor="let option of selectOptions" [value]="option" [selected]="option === thisPage">{{option}}</option>
+                    <optgroup label="Using Cashmere">
+                        <ng-container *ngFor="let option of selectOptions">
+                            <option *ngIf="option.category == 'using'" [value]="option.title" [selected]="option.title === thisPage">{{option.title}}</option>
+                        </ng-container>
+                    </optgroup>
+                    <optgroup label="Development">
+                        <ng-container *ngFor="let option of selectOptions">
+                            <option *ngIf="option.category == 'dev'" [value]="option.title" [selected]="option.title === thisPage">{{option.title}}</option>
+                        </ng-container>
+                    </optgroup>
                 </hc-select>
             </span>
         </div>
@@ -33,8 +42,10 @@
             </hc-tile>
         </div>
     </div>
-    <hc-tab-set class="full-height">
-        <hc-tab *ngFor="let guide of guidesService.guides" [tabTitle]="guide.title" [routerLink]="['/guides/', guide.route]">
-        </hc-tab>
-    </hc-tab-set>
+    <div class="hc-components-right-column">
+        <hc-tab-set class="full-height">
+            <hc-tab *ngFor="let guide of guidesService.guides" [tabTitle]="guide.title" [routerLink]="['/guides/', guide.route]">
+            </hc-tab>
+        </hc-tab-set>
+    </div>
 </div>

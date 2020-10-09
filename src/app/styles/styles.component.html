@@ -4,7 +4,21 @@
             <span class="subnav-label">Styles: </span>
             <span class="subnav-select">
                 <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
-                    <option *ngFor="let option of selectOptions" [value]="option" [selected]="option === thisPage">{{ option }}</option>
+                    <optgroup label="Foundations">
+                        <ng-container *ngFor="let option of selectOptions">
+                            <option *ngIf="option.category == 'foundations'" [value]="option.title" [selected]="option.title === thisPage">{{option.title}}</option>
+                        </ng-container>
+                    </optgroup>
+                    <optgroup label="Branding">
+                        <ng-container *ngFor="let option of selectOptions">
+                            <option *ngIf="option.category == 'branding'" [value]="option.title" [selected]="option.title === thisPage">{{option.title}}</option>
+                        </ng-container>
+                    </optgroup>
+                    <optgroup label="User Interface">
+                        <ng-container *ngFor="let option of selectOptions">
+                            <option *ngIf="option.category == 'ui'" [value]="option.title" [selected]="option.title === thisPage">{{option.title}}</option>
+                        </ng-container>
+                    </optgroup>
                 </hc-select>
             </span>
         </div>
