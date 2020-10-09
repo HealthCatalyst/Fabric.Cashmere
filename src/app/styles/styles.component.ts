@@ -12,7 +12,6 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 export class StylesComponent implements OnDestroy {
     thisPage = '';
     queryTab = 0;
-    styleTabs: any[] = [];
     selectOptions: Array<Data> = [];
     private unsubscribe = new Subject<void>();
     private appInsights;
@@ -34,27 +33,20 @@ export class StylesComponent implements OnDestroy {
         if ( root && root.children ) {
             for (let entry of root.children ) {
                 if (entry.data && entry.data.title) {
-                    this.selectOptions.push(entry.data);
+                    this.selectOptions.push(entry);
                 }
             }
         }
 
-        if (this.styleTabs.length) {
-            for (let entry of this.styleTabs) {
-                this.selectOptions.push(entry.title);
-            }
-        }
-        this.selectOptions.sort();
-
-         //  Gets the search parameter value from the url
-         this.activatedRoute.queryParams.subscribe(() => {
+        //  Gets the search parameter value from the url
+        this.activatedRoute.queryParams.subscribe(() => {
             let currentPath = this.router.url;
             currentPath = currentPath.replace( '/styles/', '' );
             const pathArray = currentPath.split( '?' );
 
-            if (this.styleTabs.length) {
-                for ( let i = 0; i < this.styleTabs.length; i++ ) {
-                    if (pathArray[0] === this.styleTabs[i].path) {
+            if (this.selectOptions.length) {
+                for ( let i = 0; i < this.selectOptions.length; i++ ) {
+                    if (pathArray[0] === this.selectOptions[i].path) {
                         this.queryTab = i;
                         break;
                     }
@@ -65,11 +57,13 @@ export class StylesComponent implements OnDestroy {
 
     // Handle changes to the select component and navigate
     selectUpdate(event: any) {
-        if (this.styleTabs.length) {
-            for (let entry of this.styleTabs) {
-                this.router.navigate(['/styles/' + entry.path]);
-                window.scrollTo(0, 0);
-                break;
+        if (this.selectOptions.length) {
+            for (let entry of this.selectOptions) {
+                if (entry.data && event === entry.data.title) {
+                    this.router.navigate(['/styles/' + entry.path]);
+                    window.scrollTo(0, 0);
+                    break;
+                }
             }
         }
     }

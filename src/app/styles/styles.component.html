@@ -6,17 +6,17 @@
                 <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
                     <optgroup label="Foundations">
                         <ng-container *ngFor="let option of selectOptions">
-                            <option *ngIf="option.category == 'foundations'" [value]="option.title" [selected]="option.title === thisPage">{{option.title}}</option>
+                            <option *ngIf="option.data.category == 'foundations'" [value]="option.data.title" [selected]="option.data.title === thisPage">{{option.data.title}}</option>
                         </ng-container>
                     </optgroup>
                     <optgroup label="Branding">
                         <ng-container *ngFor="let option of selectOptions">
-                            <option *ngIf="option.category == 'branding'" [value]="option.title" [selected]="option.title === thisPage">{{option.title}}</option>
+                            <option *ngIf="option.data.category == 'branding'" [value]="option.data.title" [selected]="option.data.title === thisPage">{{option.data.title}}</option>
                         </ng-container>
                     </optgroup>
                     <optgroup label="User Interface">
                         <ng-container *ngFor="let option of selectOptions">
-                            <option *ngIf="option.category == 'ui'" [value]="option.title" [selected]="option.title === thisPage">{{option.title}}</option>
+                            <option *ngIf="option.data.category == 'ui'" [value]="option.data.title" [selected]="option.data.title === thisPage">{{option.data.title}}</option>
                         </ng-container>
                     </optgroup>
                 </hc-select>
@@ -63,7 +63,7 @@
     </div>
     <div class="hc-components-right-column">
         <hc-tab-set class="full-height" [defaultTab]="queryTab">
-            <hc-tab *ngFor="let tab of styleTabs" [tabTitle]="tab.title" [routerLink]="'/styles/' + tab.path">{{tab.title}}</hc-tab>
+            <hc-tab *ngFor="let tab of selectOptions" [tabTitle]="tab.data.title" [routerLink]="'/styles/' + tab.path">{{tab.data.title}}</hc-tab>
         </hc-tab-set>
     </div>
 </div>
