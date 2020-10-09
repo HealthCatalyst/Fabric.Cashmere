@@ -10,20 +10,24 @@ import {
     Self,
     Output,
     EventEmitter,
-    ContentChildren,
-    QueryList,
     ViewChild,
-    AfterContentInit
+    Renderer2
 } from '@angular/core';
 import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
-import {HcOptionDirective} from './hc-option.directive';
 
 let uniqueId = 1;
 
 export class SelectChangeEvent {
     constructor(public source: SelectComponent, public value: any) {}
+}
+
+/** Builds a value string to help with matching objects */
+export function _buildValueString(id: string|null, value: any): string {
+    if (id == null) { return `${value}`; }
+    if (value && typeof value === 'object') { value = 'Object'; }
+    return `${id}: ${value}`.slice(0, 50);
 }
 
 /** Select one of many options from a dropdown */
@@ -34,17 +38,14 @@ export class SelectChangeEvent {
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SelectComponent)}]
 })
-export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, AfterContentInit, DoCheck {
+export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
     private _uniqueInputId = `hc-select-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
     private _tight: boolean = false;
     private _value: any = '';
-    private _valueData: any;
-
-    _componentId = this._uniqueInputId;
-
-    @ContentChildren(HcOptionDirective)
-    _options: QueryList<HcOptionDirective>;
+    _optionIdCounter: number = 0; // tracks ids for select options
+    _optionMap: Map<string, any> = new Map<string, any>();
+    _componentId = this._uniqueInputId; // contains id for the hc-select component
 
     @ViewChild('selectInput', {static: false})
     _nativeSelect: ElementRef;
@@ -128,7 +129,20 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         return this._isDisabled;
     }
 
+    /** A function to compare the option values with the selected values. The first argument is a value from an option.
+     * The second is a value from the selection(model). A boolean should be returned. */
+    @Input()
+    set compareWith(fn: (o1: any, o2: any) => boolean) {
+      if (typeof fn !== 'function') {
+        throw new Error(`compareWith must be a function, but received ${JSON.stringify(fn)}`);
+      }
+      this._compareWith = fn;
+    }
+
+    private _compareWith: (o1: any, o2: any) => boolean = Object.is;
+
     constructor(
+        private _renderer: Renderer2,
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
         @Optional()
@@ -140,14 +154,6 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         this._form = _parentForm || _parentFormGroup;
         if (this._ngControl != null) {
             this._ngControl.valueAccessor = this;
-        }
-    }
-
-    ngAfterContentInit() {
-        if (this._valueData) {
-            setTimeout(() => {
-                this.writeValue(this._valueData);
-            });
         }
     }
 
@@ -164,39 +170,22 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     }
 
     writeValue(value: any) {
-        this._valueData = value;
-        let targetVal = value;
-        // If ngValue is being used, set the currently selected value based on that data
-        if (this._options && this._options.length !== 0) {
-            let selectedIndex: number = 0;
-            this._options.forEach((option, index) => {
-                if (option.ngValue === value) {
-                    selectedIndex = index;
-                }
-            });
-            if (this.placeholder) {
-                selectedIndex += 1;
-            }
-            targetVal = this._nativeSelect.nativeElement.options[selectedIndex].value;
+        this._value = value;
+        const id: string|null = this._getOptionId(value);
+        if (!this._nativeSelect) { return; }
+        if (id == null) {
+            const selectedIndex = this.placeholder ? 0 : -1;
+            this._renderer.setProperty(this._nativeSelect.nativeElement, 'selectedIndex', -1);
         }
-        this._value = targetVal;
+        const valueString = _buildValueString(id, value);
+        this._renderer.setProperty(this._nativeSelect.nativeElement, 'value', valueString);
     }
 
     _change(event: Event, value: any) {
-        this._valueData = value;
-        // If ngValue is being used, pull that value from the directive to allow objects well as strings
-        if (this._options.length !== 0) {
-            const optionArray = this._options.toArray();
-            const index = this.placeholder
-                ? this._nativeSelect.nativeElement.selectedIndex - 1
-                : this._nativeSelect.nativeElement.selectedIndex;
-            this._valueData = optionArray[index].ngValue;
-        }
-
         event.stopPropagation();
-        this._value = value;
-        this.onChange(this._valueData);
-        this.change.emit(new SelectChangeEvent(this, this._valueData));
+        this._value = this._getOptionValue(value);
+        this.onChange(this._value);
+        this.change.emit(new SelectChangeEvent(this, this._value));
     }
 
     ngDoCheck(): void {
@@ -204,6 +193,28 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         if (this._ngControl) {
             this._updateErrorState();
         }
+    }
+
+    _registerOption(): string {
+        return (this._optionIdCounter++).toString();
+    }
+
+    _getOptionId(value: any): string|null {
+        for (const id of Array.from(this._optionMap.keys())) {
+            if (this._compareWith(this._optionMap.get(id), value)) {
+                return id;
+            }
+        }
+        return null;
+    }
+
+    _getOptionValue(valueString: string): any {
+        const id: string = this._extractId(valueString);
+        return this._optionMap.has(id) ? this._optionMap.get(id) : valueString;
+    }
+
+    _extractId(valueString: string): string {
+        return valueString.split(':')[0];
     }
 
     private _updateErrorState() {

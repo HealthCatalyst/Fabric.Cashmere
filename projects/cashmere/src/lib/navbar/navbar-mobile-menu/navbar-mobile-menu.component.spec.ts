@@ -26,9 +26,10 @@ describe('NavbarMobileMenuComponent', () => {
     });
 
     describe('show', () => {
-        it('should change the y position', () => {
+        it('should change the animation state', () => {
+            expect(component._openState).toBe('closed');
             component.show();
-            expect(component._yPos).toBe(0);
+            expect(component._openState).toBe('open');
         });
     });
 });

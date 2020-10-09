@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, Data, NavigationEnd, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
@@ -12,8 +12,8 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 export class StylesComponent implements OnDestroy {
     thisPage = '';
     queryTab = 0;
-    selectOptions: Array<string> = [];
     styleTabs: any[] = [];
+    selectOptions: Array<Data> = [];
     private unsubscribe = new Subject<void>();
     private appInsights;
 
@@ -34,7 +34,7 @@ export class StylesComponent implements OnDestroy {
         if ( root && root.children ) {
             for (let entry of root.children ) {
                 if (entry.data && entry.data.title) {
-                    this.styleTabs.push({title: entry.data.title, path: entry.path});
+                    this.selectOptions.push(entry.data);
                 }
             }
         }

@@ -1,31 +1,36 @@
-import { Component, ViewEncapsulation, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 /** Navigation dropdown for small screen sizes */
 @Component({
     selector: 'hc-navbar-mobile-menu',
     templateUrl: './navbar-mobile-menu.component.html',
     styleUrls: ['./navbar-mobile-menu.component.scss'],
+    animations: [
+        trigger('openClose', [
+            state('open', style({
+                top: '0'
+            })),
+            state('closed', style({
+                top: '-100vh'
+            })),
+            transition('open <=> closed', [
+                animate('0.7s ease')
+            ])
+        ])
+    ],
     encapsulation: ViewEncapsulation.None
 })
-export class NavbarMobileMenuComponent implements AfterViewInit {
-    @ViewChild('navbarMobile', { static: false }) mobileMenu: ElementRef;
-    /** Base value, should be enough to not show */
-    public _yPos: number;
+export class NavbarMobileMenuComponent {
+    _openState = 'closed';
 
-    /** Sets the actual position of the mobile menu to the hight of its self */
-    ngAfterViewInit() {
-        this.hide();
-        this.ref.detectChanges();
-    }
-    constructor(private ref: ChangeDetectorRef) { }
-
-    /** Show the component from view */
+    /** Slide the mobile menu down from under the navbar */
     show(): void {
-        this._yPos = 0;
+        this._openState = 'open';
     }
 
-    /** Hide the component from view */
+    /** Slide the mobile menu back up under the navbar */
     hide(): void {
-        this._yPos = -this.mobileMenu.nativeElement.offsetHeight;
+        this._openState = 'closed';
     }
 }

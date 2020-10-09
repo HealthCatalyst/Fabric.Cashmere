@@ -177,7 +177,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     margin-bottom: 3px;
     font: inherit;
     font-size: calculateRem(14px);
-    color: $text;
+    color: inherit;
 }
 
 @mixin hc-form-field-label-extension() {
@@ -190,7 +190,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     width: 100%;
     font: inherit;
     font-size: calculateRem(14px);
-    color: $text;
+    color: inherit;
 }
 
 @mixin hc-form-field-label-tight() {

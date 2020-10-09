@@ -163,7 +163,7 @@
     "select": {
         "name": "Select",
         "category": "forms",
-        "examples": ["select-disabled", "select-forms", "select-standard", "select-validation"],
+        "examples": ["select-standard", "select-forms", "select-disabled", "select-validation", "select-compare-with"],
         "usageDoc": true
     },
     "sort": {
