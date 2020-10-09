@@ -6,7 +6,7 @@
     <hc-form-field>
         <hc-label>Input Text</hc-label>
         <hc-select [formControl]="caseControl">
-            <option *ngFor="let option of availableCases" [ngValue]="option">{{ option | changeCase: 'titleCase' }}</option>
+            <option *ngFor="let option of availableCases" [ngValue]="option">{{ option | changeCase: 'sentenceCase' }}</option>
         </hc-select>
     </hc-form-field>
     <pre *ngIf="caseControl.value; let case">{{ textControl.value | changeCase: case }}</pre>
