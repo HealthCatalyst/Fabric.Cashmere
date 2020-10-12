@@ -71,8 +71,9 @@ export class ComponentsComponent implements OnInit, OnDestroy {
         }
 
         this.allDocItems = this.docItemService.getDocItems(this.docType);
-        if (!this.id && this.categorizedDocItems[0] && this.categorizedDocItems[0].items && this.categorizedDocItems[0].items.length) {
-            this.navUpdate(this.categorizedDocItems[0].items[0].id);
+        const categoriesWithItems = this.categorizedDocItems.filter(c => c.items && c.items.length);
+        if (!this.id && categoriesWithItems[0]) {
+            this.navUpdate(categoriesWithItems[0].items![0].id);
             return;
         }
         this.activeItem = this.allDocItems.find(i => i.id === this.id);
