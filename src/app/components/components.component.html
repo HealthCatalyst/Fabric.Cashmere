@@ -20,21 +20,17 @@
 
     <div class="hc-components-left-column">
         <div class="hc-components-nav-container">
-            <div class="banner-wrapper" *ngIf="docType === 'bits'">
-                <hc-banner [type]="'info'">
-                    <div></div>
-                    <div>
-                        <h4 class="banner-title">
-                            <hc-icon [fontSet]="'hc-icons'" [fontIcon]="'hci-help'" icon-sm></hc-icon>
-                            What's a Bit?
-                        </h4>
-                        <p>
+            <div class="hc-components-chip-wrapper" *ngIf="docType === 'bits'">
+                <hc-chip color="blue" tight="true" width="100%">
+                    <div class="hc-components-chip-content">
+                        <hc-icon fontSet="hc-icons" fontIcon="hci-help" hcIconSm></hc-icon>
+                        What's a Bit?
+                        <p class="hc-components-chip-link">
                             Learn about Cashmere Bits
-                            <a [routerLink]="'/guides/using-cashmere-bits'">here</a>
-                            .
+                            <a [routerLink]="'/guides/using-cashmere-bits'">in this guide</a>.
                         </p>
                     </div>
-                </hc-banner>
+                </hc-chip>
             </div>
             <hc-tile>
                 <div class="hc-components-nav-list">

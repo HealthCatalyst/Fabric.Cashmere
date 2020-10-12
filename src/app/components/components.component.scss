@@ -70,16 +70,21 @@
     }
 }
 
-.banner-wrapper {
+.hc-components-chip-wrapper {
     margin-bottom: 10px;
-    border-left: 1px solid desaturate(lighten($blue, 30%), 50%);
-    border-right: 1px solid desaturate(lighten($blue, 30%), 50%);
+}
 
-    p {
-        font-size: small;
+.hc-components-chip-content {
+    padding: 5px 25px;
+
+    hc-icon {
+        margin-right: 2px;
     }
 }
 
-h4.banner-title {
-    margin: 0 0 10px 0;
+.hc-components-chip-link {
+    font-size: 13px;
+    line-height: 13px;
+    margin-top: 7px;
+    margin-bottom: 0;
 }

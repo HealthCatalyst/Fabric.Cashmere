@@ -1,6 +1,10 @@
 # Using Cashmere Bits
 
-## What's a Cashmere Bit?
+###### Last updated October 12, 2020
+
+:::
+
+##### What's a Cashmere Bit?
 
 The Cashmere project aims to deliver lightweight and bulletproof components for your applications.
 As part of that commitment, components that require additional third-party dependencies are not
@@ -11,7 +15,11 @@ Cashmere Bits come in.
 Cashmere Bits are independently packaged and installed Cashmere-family components, hosted by
 [bit.dev](https://bit.dev/healthcatalyst/cashmere). Bits are installed and managed through NPM.
 
-## Setting up Cashmere Bit support in your project
+:::
+
+:::
+
+##### Setting up Cashmere Bit support in your project
 
 Because Cashmere Bits are published on `bit.dev`, you need to tell NPM how to find that repository.
 In the root of your project (as a sibling to your `package.json` file), create (or add to) an `.npmrc`
@@ -28,3 +36,4 @@ would run the following command:
 ```bash
 npm i @bit/healthcatalyst.cashmere.change-case-pipe
 ```
+:::
