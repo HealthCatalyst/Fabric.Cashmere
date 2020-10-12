@@ -5,7 +5,7 @@
 The Cashmere project aims to deliver lightweight and bulletproof components for your applications.
 As part of that commitment, components that require additional third-party dependencies are not
 included in the main Cashmere NPM package. Leveraging industry-standard third-party packages, though,
-helps keep our maintenance workload lighter and prevent us from reinventing the wheel. That's where
+helps keep our maintenance workload lighter and prevents us from reinventing the wheel. That's where
 Cashmere Bits come in.
 
 Cashmere Bits are independently packaged and installed Cashmere-family components, hosted by
