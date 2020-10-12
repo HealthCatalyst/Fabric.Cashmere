@@ -3,7 +3,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {BannerType, HcBannerComponent} from './hc-banner.component';
 import * as util from '../util';
 
-fdescribe('HcBannerComponent', () => {
+describe('HcBannerComponent', () => {
     let component: HcBannerComponent;
 
     beforeEach(() => (component = new HcBannerComponent()));
