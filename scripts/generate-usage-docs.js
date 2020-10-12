@@ -1,4 +1,4 @@
-const mark = require('marked');
+const md = require('markdown-it')({html: true});
 const glob = require('glob');
 const path = require('path');
 const fs = require('fs');
@@ -20,7 +20,7 @@ glob('projects/@(cashmere|cashmere-bits)/src/lib/**/*.md', function(er, files) {
         })
         .forEach(mapping => {
             const fileContent = fs.readFileSync(mapping.path, 'utf8');
-            const result = mark(fileContent);
+            const result = md.render(fileContent);
 
             const distFD = fs.openSync(path.join(outputDir, mapping.outFile) + '.html', 'w');
             fs.writeSync(distFD, result);

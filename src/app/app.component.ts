@@ -31,7 +31,7 @@ export class AppComponent implements AfterViewInit {
         this.navSearchBar.valueChanges.subscribe((val) => {
             if (val !== '') {
                 let tempResults = this.getItems(val);
-                this.searchResults = tempResults.slice(0, 4);
+                this.searchResults = tempResults.slice(0, 5);
             } else {
                 this.searchResults = [];
             }
@@ -42,7 +42,6 @@ export class AppComponent implements AfterViewInit {
                 this.showAll = false;
             }
         });
-        // this.search
     }
 
     getItems = (value: string) => {

@@ -35,13 +35,13 @@ export class ComponentViewerComponent {
             }
             if (!this.docItem.hideApi) {
                 availableSections.push('API');
-                if ( urlArray[ urlArray.length - 1 ].substr(0, 3) === 'api' ) {
+                if ( urlArray[ urlArray.length - 1 ].startsWith('api') ) {
                     this.startSection = availableSections.length - 1;
                 }
             }
             if (this.docItem.usageDoc) {
                 availableSections.push('Usage');
-                if ( urlArray[ urlArray.length - 1 ].substr(0, 5) === 'usage' ) {
+                if ( urlArray[ urlArray.length - 1 ].startsWith('usage') ) {
                     this.startSection = availableSections.length - 1;
                 }
             }
