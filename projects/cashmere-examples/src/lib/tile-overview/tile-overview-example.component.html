@@ -1,9 +1,20 @@
 <hc-tile>
-    <h5>Example Tile</h5>
-    <p>This paragraph is contained within a <code>hc-tile</code> component.</p>
+    <div hcTileHeader [type]="headerType">Example Tile Header</div>
+
+    <div class="tile-example-select">
+        <hc-form-field inline="true">
+            <hc-label>Header Type:</hc-label>
+            <hc-select (change)="typeChange($event)">
+                <option value="blue">Uppercase Blue</option>
+                <option value="title">Titlecase Text</option>
+            </hc-select>
+        </hc-form-field>
+    </div>
+
+    <p>This paragraph is contained within a <code>hc-tile</code> component. The header uses the <code>hcTileHeader</code> directive.</p>
 </hc-tile>
 
 <hc-tile tight="true">
-    <h5>Tight Tile</h5>
+    <h5 hcTileHeader>Tight Tile</h5>
     <p>This is a tile with <code>tight</code> styling. It has less padding.</p>
 </hc-tile>
