@@ -1,32 +1,16 @@
-import { OnInit, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {SectionService} from 'src/app/shared/section.service';
+import {BaseStylesComponent} from '../base-styles.component';
 
 @Component({
     selector: 'hc-about-modal',
     templateUrl: `./about-modal.component.html`,
     styleUrls: ['./about-modal.component.scss']
 })
-export class AboutModalComponent implements OnInit {
+export class AboutModalComponent extends BaseStylesComponent {
     public document: string = require('raw-loader!../../../../guides/styles/about.md');
-    private section: string | null;
 
-    constructor(private router: Router) {}
-
-    ngOnInit() {
-        this.section = this.extractUrlValue( 'section', this.router.url );
-    }
-
-    guideLoaded() {
-        if ( this.section ) {
-            const el = document.getElementById(this.section);
-            if ( el ) {
-                el.scrollIntoView();
-            }
-        }
-    }
-
-    extractUrlValue(key, url) {
-        const match = url.match('[?&]' + key + '=([^&]+)');
-        return match ? match[1] : null;
+    constructor(sectionService: SectionService) {
+        super(sectionService);
     }
 }

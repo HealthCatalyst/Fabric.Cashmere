@@ -1,33 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {SectionService} from 'src/app/shared/section.service';
+import {BaseStylesComponent} from '../base-styles.component';
 
 @Component({
     selector: 'hc-breadcrumbs-style-demo',
     template: `
-        <div class="demo-content"><div [hcMarkdown]="document" (loaded)="guideLoaded()"></div></div>
+        <div class="demo-content"><div [hcMarkdown]="document" (loaded)="loaded()"></div></div>
     `
 })
-export class BreadcrumbsStyleDemoComponent implements OnInit {
+export class BreadcrumbsStyleDemoComponent extends BaseStylesComponent {
     public document: string = require('raw-loader!../../../../guides/styles/breadcrumbs.md');
-    private section: string | null;
 
-    constructor(private router: Router) {}
-
-    ngOnInit() {
-        this.section = this.extractUrlValue( 'section', this.router.url );
-    }
-
-    guideLoaded() {
-        if ( this.section ) {
-            const el = document.getElementById(this.section);
-            if ( el ) {
-                el.scrollIntoView();
-            }
-        }
-    }
-
-    extractUrlValue(key, url) {
-        const match = url.match('[?&]' + key + '=([^&]+)');
-        return match ? match[1] : null;
+    constructor(sectionService: SectionService) {
+        super(sectionService);
     }
 }

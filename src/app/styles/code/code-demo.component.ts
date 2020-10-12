@@ -1,32 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {SectionService} from 'src/app/shared/section.service';
+import {BaseStylesComponent} from '../base-styles.component';
 
 @Component({
     selector: 'hc-code',
     templateUrl: './code-demo.component.html',
     styleUrls: ['./code-demo.component.scss']
 })
-export class CodeDemoComponent implements OnInit {
+export class CodeDemoComponent extends BaseStylesComponent {
     public document: string = require('raw-loader!../../../../guides/styles/code.md');
     private section: string | null;
 
-    constructor(private router: Router) {}
-
-    ngOnInit() {
-        this.section = this.extractUrlValue( 'section', this.router.url );
-    }
-
-    guideLoaded() {
-        if ( this.section ) {
-            const el = document.getElementById(this.section);
-            if ( el ) {
-                el.scrollIntoView();
-            }
-        }
-    }
-
-    extractUrlValue(key, url) {
-        const match = url.match('[?&]' + key + '=([^&]+)');
-        return match ? match[1] : null;
+    constructor(sectionService: SectionService) {
+        super(sectionService);
     }
 }
