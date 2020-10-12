@@ -29,4 +29,8 @@ export class GuideComponent implements OnInit {
             }
         });
     }
+
+    loaded() {
+        this.sectionService.scrollToSection();
+    }
 }
