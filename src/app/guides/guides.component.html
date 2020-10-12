@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="hc-components-right-column">
-        <hc-tab-set class="full-height">
+        <hc-tab-set class="full-height" [defaultTab]="queryTab">
             <hc-tab *ngFor="let guide of guidesService.guides" [tabTitle]="guide.title" [routerLink]="['/guides/', guide.route]">
             </hc-tab>
         </hc-tab-set>
