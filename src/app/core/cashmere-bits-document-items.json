@@ -6,6 +6,7 @@
         "category": "pipes",
         "examples": ["change-case-pipe-overview"],
         "usageDoc": true,
-        "hideApi": true
+        "hideApi": true,
+        "npmPackage": "@bit/healthcatalyst.cashmere.change-case-pipe"
     }
 }
