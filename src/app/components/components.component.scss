@@ -69,3 +69,17 @@
         width: 100%;
     }
 }
+
+.banner-wrapper {
+    margin-bottom: 10px;
+    border-left: 1px solid desaturate(lighten($blue, 30%), 50%);
+    border-right: 1px solid desaturate(lighten($blue, 30%), 50%);
+
+    p {
+        font-size: small;
+    }
+}
+
+h4.banner-title {
+    margin: 0 0 10px 0;
+}

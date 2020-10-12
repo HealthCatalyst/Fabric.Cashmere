@@ -11,6 +11,7 @@ export interface DocItem {
     examples: string[];
     usageDoc?: boolean;
     hideApi?: boolean;
+    npmPackage?: string;
 }
 
 export type DocItemType = 'components' | 'bits';

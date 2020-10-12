@@ -20,6 +20,22 @@
 
     <div class="hc-components-left-column">
         <div class="hc-components-nav-container">
+            <div class="banner-wrapper" *ngIf="docType === 'bits'">
+                <hc-banner [type]="'info'">
+                    <div></div>
+                    <div>
+                        <h4 class="banner-title">
+                            <hc-icon [fontSet]="'hc-icons'" [fontIcon]="'hci-help'" icon-sm></hc-icon>
+                            What's a Bit?
+                        </h4>
+                        <p>
+                            Learn about Cashmere Bits
+                            <a [routerLink]="'/guides/using-cashmere-bits'">here</a>
+                            .
+                        </p>
+                    </div>
+                </hc-banner>
+            </div>
             <hc-tile>
                 <div class="hc-components-nav-list">
                     <ng-container *ngFor="let category of categorizedDocItems; let catNum = index">
