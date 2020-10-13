@@ -1,6 +1,7 @@
 import {Directive, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import * as markdownIt from 'markdown-it';
 import * as container_plugin from 'markdown-it-container';
+import * as mdnh from 'markdown-it-named-headers';
 import {highlightBlock} from 'highlight.js';
 
 @Directive({
@@ -24,6 +25,9 @@ export class MarkdownDirective implements OnChanges {
     ngOnChanges(_: SimpleChanges): void {
         const md = new markdownIt({html: true});
 
+        // plugin to add id values to header tags
+        md.use(mdnh);
+
         // plugin to markdown-it to interpret :::
         md.use(container_plugin, 'hc-tile', {
             validate: function(params) {
@@ -44,15 +48,6 @@ export class MarkdownDirective implements OnChanges {
                     this.addLines(pre);
                 }
             }
-        }
-
-        // Add ids for headers to allow for direct linking
-        const headerTags: Array<HTMLElement> = this.el.nativeElement.getElementsByTagName('h5');
-        for (const header of headerTags) {
-            let idVal = header.innerText.toLowerCase();
-            idVal = idVal.replace( / /g, '-' );
-            idVal = idVal.replace( /\?/g, '' );
-            header.id = idVal;
         }
 
         this.loaded.emit( true );

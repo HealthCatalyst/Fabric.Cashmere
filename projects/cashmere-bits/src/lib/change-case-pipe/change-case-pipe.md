@@ -5,6 +5,8 @@ The `changeCase` pipe is used to transform the letter casing of the input string
 This pipe is a thin wrapper for the `change-case` NPM package:
 <https://www.npmjs.com/package/change-case>
 
+&nbsp;
+
 ##### API
 
 ```ts
@@ -14,6 +16,8 @@ transform(value: string, caseFunction: string): string
 `value`: the `string` value to transform
 
 `caseFunction`: which function (from the `change-case` package) to call to transform the text
+
+&nbsp;
 
 ##### Installing the Pipe
 
@@ -32,6 +36,8 @@ Note that you will need to configure the `@bit` scope in your project's `.npmrc`
 @bit:registry=https://node.bit.dev
 ```
 
+&nbsp;
+
 ##### Importing the Change Case Pipe
 
 To use the `ChangeCasePipe`, import the `ChangeCasePipeModule` into your app's `CashmereModule` (which in turn is imported into your app):
@@ -45,6 +51,8 @@ import {ChangeCasePipeModule} from '@bit/healthcatalyst.cashmere.change-case-pip
 })
 export class CashmereModule {}
 ```
+
+&nbsp;
 
 ##### Usage
 
