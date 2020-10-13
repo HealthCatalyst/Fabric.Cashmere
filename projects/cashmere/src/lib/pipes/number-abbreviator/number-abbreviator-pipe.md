@@ -1,3 +1,5 @@
+##### Overview
+
 The Number Abbreviator pipe is used to format numbers in a shortened form using common character abbreviation formats,
 like so `
 - Quadrillions: Q
@@ -6,7 +8,7 @@ like so `
 - Millions: M
 - Thousands: K
 
-#### API
+##### API
 
 ```ts
 transform(value: number, decimalPoints: number = 2, threshold: number = 1000000): string
@@ -17,7 +19,7 @@ transform(value: number, decimalPoints: number = 2, threshold: number = 1000000)
 
 `threshold`: represents the number at which we should start abbreviating; if the threshold is 1 million, numbers less than 1 million will NOT be abbreviated (but will be formatted with commas & decimal points)
 
-#### Importing the Number Abbreviator Pipe
+##### Importing the Number Abbreviator Pipe
 
 To use the `NumberAbbreviatorPipe`, import the `NumberAbbreviatorPipeModule` into your app's `CashmereModule` (which in turn is imported into your app):
 
@@ -43,7 +45,7 @@ import {PipesModule} from '@healthcatalyst/cashmere';
 export class CashmereModule {}
 ```
 
-#### Using the Number Abbreviator pipe
+##### Using the Number Abbreviator pipe
 
 Pass a `number` value to the Number Abbreviator pipe to have it translated. Numbers into the quarillions are supported.
 Regardless of size, numbers will be formatted with needed commas or decimal points. You can optionally specify the number of decimal places to round the value to, or the threshold at which numbers should be abbreviated.

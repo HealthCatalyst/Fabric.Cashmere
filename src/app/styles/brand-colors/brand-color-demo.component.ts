@@ -3,11 +3,11 @@ import {SectionService} from 'src/app/shared/section.service';
 import {BaseStylesComponent} from '../base-styles.component';
 
 @Component({
-    selector: 'hc-typography',
-    templateUrl: './typography-demo.component.html',
-    styleUrls: ['./typography-demo.component.scss']
+    selector: 'hc-brand-color-demo',
+    templateUrl: './brand-color-demo.component.html',
+    styleUrls: ['../color/color-demo.component.scss']
 })
-export class TypographyDemoComponent extends BaseStylesComponent {
+export class BrandColorDemoComponent extends BaseStylesComponent {
     constructor(sectionService: SectionService) {
         super(sectionService);
     }

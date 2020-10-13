@@ -1,7 +1,9 @@
+##### Overview
+
 The datepicker allows users to enter a date, time, or both either through text input, or by choosing a date from
 the calendar. It is made up of several components and directives that work together.
 
-### Connecting a datepicker to an input
+##### Connecting a datepicker to an input
 
 A datepicker is composed of a text input and a calendar pop-up, connected via the `hcDatepicker`
 property on the text input.
@@ -43,14 +45,14 @@ by using the `hcDatepickerToggleIcon` directive:
 </hc-form-field>
 ```
 
-### Setting the datepicker mode
+##### Setting the datepicker mode
 
 The datepicker may be used to select a calendar date, a time, or both. This is set via the `mode`
 parameter on the `hc-datepicker` element. The three available options are  `date`, `time`, or `date-time`.
 If using either `time` or `date-time` modes, you may also set the `hourCycle` property to 12 or 24 depending
 on whether you would like a clock with AM/PM.
 
-### Setting the calendar starting view
+##### Setting the calendar starting view
 
 The `startView` property of `<hc-datepicker>` can be used to set the view that will show up when
 the calendar first opens. It can be set to `month`, `year`, or `multi-year`; by default it will open
@@ -84,7 +86,7 @@ export class DatepickerStartViewExample {
 }
 ```
 
-#### Watching the views for changes on selected years and months
+##### Watching the views for changes on selected years and months
 
 When a year or a month is selected in `multi-year` and `year` views respectively, the `yearSelected`
 and `monthSelected` outputs emit a normalized date representing the chosen year or month. By
@@ -103,7 +105,7 @@ after choosing a year in `multi-view` mode (by pressing the `ESC` key, for examp
 year, emitted by `yearSelected` output, will not cause any change in the value of the date in the
 associated `<input>`.
 
-### Setting the selected date
+##### Setting the selected date
 
 The type of values that the datepicker expects depends on the type of `DateAdapter` provided in your
 application. The `NativeDateAdapter`, for example, works directly with plain JavaScript `Date`
@@ -120,7 +122,7 @@ the locale of the browser running the code.
 As with other types of `<input>`, the datepicker works with `@angular/forms` directives such as
 `formGroup`, `formControl`, `ngModel`, etc.
 
-### Date validation
+##### Date validation
 
 Date validation will only occur if the `input` element is bound via `ngModel` or `formControl`. The validator will check to see if the value entered is a valid date. Beyond that, there are three properties that add additional date validation to the datepicker input. The first two are the
 `min` and `max` properties. In addition to enforcing validation on the input, these properties will
@@ -157,7 +159,7 @@ The `(dateInput)` event will fire whenever the value changes due to the user typ
 date from the calendar. The `(dateChange)` event will fire whenever the user finishes typing input
 (on `<input>` blur), or when the user chooses a date from the calendar.
 
-### Disabling parts of the datepicker
+##### Disabling parts of the datepicker
 
 As with any standard `<input>`, it is possible to disable the datepicker input by adding the
 `disabled` property. By default, the `<hc-datepicker>` and `<hc-datepicker-toggle>` will inherit
@@ -165,12 +167,12 @@ their disabled state from the `<input>`, but this can be overridden by setting t
 property on the datepicker or toggle elements. This can be useful if you want to disable text input
 but allow selection via the calendar or vice-versa.
 
-### Manually opening and closing the calendar
+##### Manually opening and closing the calendar
 
 The calendar popup can be programmatically controlled using the `open` and `close` methods on the
 `<hc-datepicker>`. It also has an `opened` property that reflects the status of the popup.
 
-### Internationalization
+##### Internationalization
 
 Internationalization of the datepicker is configured via four aspects:
 
@@ -179,7 +181,7 @@ Internationalization of the datepicker is configured via four aspects:
 3.  The display and parse formats used by the datepicker.
 4.  The message strings used in the datepicker's UI.
 
-#### Setting the locale code
+##### Setting the locale code
 
 By default, the `HC_DATE_LOCALE` injection token will use the existing `LOCALE_ID` locale code
 from `@angular/core`. If you want to override it, you can provide a new value for the
@@ -194,7 +196,7 @@ export class MyApp {}
 
 <a name="choosing-date-implementation"></a>It's also possible to set the locale at runtime using the `setLocale` method of the `DateAdapter`.
 
-#### Choosing a date implementation and date format settings
+##### Choosing a date implementation and date format settings
 
 The datepicker was built to be date implementation agnostic. This means that it can be made to work
 with a variety of different date implementations. However it also means that developers need to make
@@ -264,7 +266,7 @@ export class MyApp {}
 
 <a name="customizing-parse" style="height:25px; display: block;"></a>
 
-#### Customizing the parse and display formats
+##### Customizing the parse and display formats
 
 The `HC_DATE_FORMATS` object is just a collection of formats that the datepicker uses when parsing
 and displaying dates. These formats are passed through to the `DateAdapter` so you will want to make
@@ -283,7 +285,7 @@ they do not include the default formats. For example:
 export class MyApp {}
 ```
 
-#### Customizing the calendar header
+##### Customizing the calendar header
 
 The header section of the calendar (the part containing the view switcher and previous and next
 buttons) can be replaced with a custom component if desired. This is accomplished using the
@@ -295,7 +297,7 @@ In order to interact with the calendar in your custom header component, you can 
 subscribe to the `stateChanges` observable of the calendar and mark your header component for change
 detection.
 
-#### Localizing labels and messages
+##### Localizing labels and messages
 
 The various text strings used by the datepicker are provided through `HcDatepickerIntl`.
 Localization of these messages can be done by providing a subclass with translated values in your
@@ -309,14 +311,14 @@ application root module.
 export class MyApp {}
 ```
 
-#### Highlighting specific dates
+##### Highlighting specific dates
 
 If you want to apply one or more CSS classes to some dates in the calendar (e.g. to highlight a
 holiday), you can do so with the `dateClass` input. It accepts a function which will be called
 with each of the dates in the calendar and will apply any classes that are returned. The return
 value can be anything that is accepted by `ngClass`.
 
-### Accessibility
+##### Accessibility
 
 The `HcDatepickerInput` and `HcDatepickerToggle` directives add the `aria-haspopup` attribute to
 the native input and toggle button elements respectively, and they trigger a calendar dialog with
@@ -326,7 +328,7 @@ the native input and toggle button elements respectively, and they trigger a cal
 should have a placeholder or be given a meaningful label via `aria-label`, `aria-labelledby` or
 `HcDatepickerIntl`.
 
-#### Keyboard shortcuts
+##### Keyboard shortcuts
 
 The datepicker supports the following keyboard shortcuts:
 
@@ -383,7 +385,7 @@ In multi-year view:
 | `ALT` + `PAGE_DOWN` | Go forward 240 years                      |
 | `ENTER`             | Select current year                       |
 
-### Troubleshooting
+##### Troubleshooting
 
 #### Error: HcDatepicker: No provider found for DateAdapter/HC_DATE_FORMATS
 

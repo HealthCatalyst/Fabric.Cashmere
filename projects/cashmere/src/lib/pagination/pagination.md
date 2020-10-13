@@ -1,3 +1,5 @@
+##### Overview
+
 The pagination controls enable the user to navigate across paged content. Although commonly used with tables and data grids, this control may be used any place where paged data is used.
 
 ##### Responsiveness for Standard Pagination Control

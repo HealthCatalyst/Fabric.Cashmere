@@ -1,6 +1,8 @@
+##### Overview
+
 The NullOrEmptyStringPipe pipe is used to quickly check a string variable for a value, and supply an alternate if it is empty. For this pipe, empty means either an empty string, a whitespace only string, `null`, or `undefined`.
 
-#### API
+##### API
 
 ```ts
 transform(value: string, altText: string): string
@@ -10,7 +12,7 @@ transform(value: string, altText: string): string
 
 `altText`: the alternate value to return if the string is empty
 
-#### Importing the NullOrEmptyStringPipe Pipe
+##### Importing the NullOrEmptyStringPipe Pipe
 
 To use the `NullOrEmptyStringPipe`, import the `NullOrEmptyStringPipeModule` into your app's `CashmereModule` (which in turn is imported into your app):
 
@@ -36,7 +38,7 @@ import {PipesModule} from '@healthcatalyst/cashmere';
 export class CashmereModule {}
 ```
 
-#### Edge cases
+##### Edge cases
 Given the following snippet of markup:
 `{{ myStringValue | ifNullOrEmpty: 'alternate value' }}`
 

@@ -4,7 +4,7 @@
 
 :::
 
-##### What's a Cashmere Bit?
+##### What is a Cashmere Bit?
 
 The Cashmere project aims to deliver lightweight and bulletproof components for your applications.
 As part of that commitment, components that require additional third-party dependencies are not

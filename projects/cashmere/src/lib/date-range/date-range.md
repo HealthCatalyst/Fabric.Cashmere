@@ -1,6 +1,4 @@
-Date range picker with configurable Date presets.
-
-## Setup
+##### Setup
 
 The `options` takes a `DateRangeOptions` object as a parameter to configure the date range component. This is typically setup for each component:
 

@@ -6,17 +6,17 @@
                 <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
                     <optgroup label="Foundations">
                         <ng-container *ngFor="let option of selectOptions">
-                            <option *ngIf="option.category == 'foundations'" [value]="option.title" [selected]="option.title === thisPage">{{option.title}}</option>
+                            <option *ngIf="option.data.category == 'foundations'" [value]="option.data.title" [selected]="option.data.title === thisPage">{{option.data.title}}</option>
                         </ng-container>
                     </optgroup>
                     <optgroup label="Branding">
                         <ng-container *ngFor="let option of selectOptions">
-                            <option *ngIf="option.category == 'branding'" [value]="option.title" [selected]="option.title === thisPage">{{option.title}}</option>
+                            <option *ngIf="option.data.category == 'branding'" [value]="option.data.title" [selected]="option.data.title === thisPage">{{option.data.title}}</option>
                         </ng-container>
                     </optgroup>
                     <optgroup label="User Interface">
                         <ng-container *ngFor="let option of selectOptions">
-                            <option *ngIf="option.category == 'ui'" [value]="option.title" [selected]="option.title === thisPage">{{option.title}}</option>
+                            <option *ngIf="option.data.category == 'ui'" [value]="option.data.title" [selected]="option.data.title === thisPage">{{option.data.title}}</option>
                         </ng-container>
                     </optgroup>
                 </hc-select>
@@ -62,22 +62,8 @@
         </div>
     </div>
     <div class="hc-components-right-column">
-        <hc-tab-set class="full-height">
-            <hc-tab tabTitle="About Modal" routerLink="/styles/about"> About Modal </hc-tab>
-            <hc-tab tabTitle="Breadcrumbs" routerLink="/styles/breadcrumbs"> Breadcrumbs </hc-tab>
-            <hc-tab tabTitle="Charts" routerLink="/styles/chart"> Charts </hc-tab>
-            <hc-tab tabTitle="Code" routerLink="/styles/code"> Code </hc-tab>
-            <hc-tab tabTitle="UI Colors" routerLink="/styles/color"> UI Colors </hc-tab>
-            <hc-tab tabTitle="Brand Colors" routerLink="/styles/brand-colors"> Brand Colors </hc-tab>
-            <hc-tab tabTitle="Icons" routerLink="/styles/icons"> Icons </hc-tab>
-            <hc-tab tabTitle="Logo" routerLink="/styles/logo"> Logo </hc-tab>
-            <hc-tab tabTitle="Product Icons" routerLink="/styles/products"> Product Icons </hc-tab>
-            <hc-tab tabTitle="Trademarks" routerLink="/styles/trademarks"> Trademarks </hc-tab>
-            <hc-tab tabTitle="Error Pages" routerLink="/styles/error"> Error Pages </hc-tab>
-            <hc-tab tabTitle="Login Page" routerLink="/styles/launch-screen"> Launch Screen </hc-tab>
-            <hc-tab tabTitle="Login Page" routerLink="/styles/login"> Login Page </hc-tab>
-            <hc-tab tabTitle="Tables" routerLink="/styles/table"> Tables </hc-tab>
-            <hc-tab tabTitle="Typography" routerLink="/styles/typography"> Typography </hc-tab>
+        <hc-tab-set class="full-height" [defaultTab]="queryTab">
+            <hc-tab *ngFor="let tab of selectOptions" [tabTitle]="tab.data.title" [routerLink]="'/styles/' + tab.path">{{tab.data.title}}</hc-tab>
         </hc-tab-set>
     </div>
 </div>

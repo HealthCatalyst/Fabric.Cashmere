@@ -1,0 +1,116 @@
+@import "scss/colors";
+@import "scss/mixins";
+
+.checkboxContiner {
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+        margin-top: 3px;
+        margin-bottom: 10px;
+        color: $white;
+    }
+}
+
+.hc-search-results-toolbar {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.hc-search-results {
+    height: calc(100vh - 53px);
+    padding: 0px !important;
+    background-color: $slate-gray-100;
+}
+
+.hc-search-results-input {
+    max-width: 750px;
+    height: 52px;
+
+    .searchIcon {
+        margin-left: 25px;
+    }
+
+    .searchBar {
+        padding-left: 25px;
+        width: 720px;
+        font-size: 17px;
+        height: 35px;
+    }
+}
+
+.hc-search-drawer {
+    min-width: 250px;
+
+    @include media-breakpoint-down(sm) {
+        display: none;
+    }
+}
+
+.hc-search-results-content {
+    padding-left: 255px;
+    overflow: hidden;
+
+    @include media-breakpoint-down(sm) {
+        padding-left: 0;
+    }
+}
+
+.hc-search-results-list {
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    border: 1px solid $slate-gray-300;
+    padding: 20px 30px;
+    padding-bottom: 10px;
+    max-width: 900px;
+
+    .hc-search-results-items {
+        height: auto;
+        margin-bottom: 15px;
+
+        .hc-list-icon {
+            font-size: 30px;
+            padding: 0px;
+            color: $slate-gray-300;
+            margin-right: 15px;
+        }
+        .titleSection {
+            display: flex;
+
+            .hc-result-title {
+                color: $blue;
+                cursor: pointer;
+                margin: 0px;
+                font-size: 12px;
+                font-weight: 600;
+            }
+        }
+        .tags {
+            display: flex;
+            padding-left: 15px;
+            a {
+                font-size: 12px;
+                font-weight: bold;
+                text-decoration: underline;
+            }
+        }
+
+        .hc-result-sub-text {
+            font-size: 10px;
+            background-color: $slate-gray-100;
+            padding: 5px 10px;
+            line-height: 1.3;
+            margin: 7px 0;
+
+            span {
+                text-transform: capitalize;
+            }
+        }
+    }
+}
+
+.hc-search-results-pagination {
+    max-width: 900px;
+    margin-bottom: 20px;
+}
