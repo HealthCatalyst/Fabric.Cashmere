@@ -202,11 +202,5 @@
         "name": "Toaster Messages",
         "category": "popups",
         "examples": ["toaster-overview"]
-    },
-    "typeform-survey": {
-        "name": "Typeform Survey",
-        "category": "popups",
-        "examples": ["typeform-survey-overview"],
-        "usageDoc": true
     }
 }

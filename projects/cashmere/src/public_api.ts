@@ -33,4 +33,3 @@ export * from './lib/table/index';
 export * from './lib/tabs/index';
 export * from './lib/tile/index';
 export * from './lib/toaster/index';
-export * from './lib/typeform-survey/index';

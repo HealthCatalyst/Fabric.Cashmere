@@ -30,8 +30,7 @@ import {
     TabsModule,
     TableModule,
     TileModule,
-    ToasterModule,
-    TypeformSurveyModule
+    ToasterModule
 } from '@healthcatalyst/cashmere';
 import {ChangeCasePipeModule} from '@bit/healthcatalyst.cashmere.change-case-pipe';
 
@@ -68,7 +67,6 @@ import {ChangeCasePipeModule} from '@bit/healthcatalyst.cashmere.change-case-pip
         TabsModule,
         TileModule,
         ToasterModule,
-        TypeformSurveyModule,
         ChangeCasePipeModule
     ]
 })
