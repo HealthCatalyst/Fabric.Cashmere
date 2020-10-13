@@ -196,7 +196,8 @@
     "tile": {
         "name": "Tile",
         "category": "layout",
-        "examples": ["tile-overview"]
+        "examples": ["tile-overview"],
+        "usageDoc": true
     },
     "toaster": {
         "name": "Toaster Messages",

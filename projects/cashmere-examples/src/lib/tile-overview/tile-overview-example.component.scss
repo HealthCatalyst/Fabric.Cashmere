@@ -1,3 +1,9 @@
+@import "~@healthcatalyst/cashmere/scss/colors";
+
 .tile-example-select {
     max-width: 350px;
+}
+
+.tile-example-center {
+    color: $dark-blue;
 }

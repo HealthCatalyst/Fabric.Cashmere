@@ -1,5 +1,12 @@
 <hc-tile>
-    <div hcTileHeader [type]="headerType">Example Tile Header</div>
+    <div hcTileHeader [type]="headerType">
+        <ng-container *ngIf="headerType !== 'center'">Example Tile Header</ng-container>
+        <div *ngIf="headerType === 'center'" class="tile-example-center">
+            <hc-icon fontSet="hc-icons" fontIcon="hci-medical" hcIconLg></hc-icon>
+            <div>Example Tile Header</div>
+            <p>Example tile subheader description text</p>
+        </div>
+    </div>
 
     <div class="tile-example-select">
         <hc-form-field inline="true">
@@ -7,6 +14,7 @@
             <hc-select (change)="typeChange($event)">
                 <option value="blue">Uppercase Blue</option>
                 <option value="title">Titlecase Text</option>
+                <option value="center">Icon Centered</option>
             </hc-select>
         </hc-form-field>
     </div>

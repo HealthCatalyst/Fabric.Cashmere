@@ -1,6 +1,6 @@
 import {Directive, HostBinding, Input} from '@angular/core';
 
-const supportedTypes = ['blue', 'title'];
+const supportedTypes = ['blue', 'title', 'center'];
 
 export function validateTypeInput(inputStr: string) {
     if (supportedTypes.indexOf(inputStr) < 0) {
@@ -8,7 +8,7 @@ export function validateTypeInput(inputStr: string) {
     }
 }
 
-/** Applies one of the Cashmere standard tile header stylings to a div */
+/** Applies one of the Cashmere standard tile header stylings to an element */
 @Directive({
     selector: '[hcTileHeader]'
 })
@@ -21,7 +21,10 @@ export class TileHeaderDirective {
     @HostBinding('class.hc-tile-header-title')
     _headerTitle: boolean = false;
 
-    /** Sets the styling of the header, choices include `blue`, and `title`; defaults to `blue` */
+    @HostBinding('class.hc-tile-header-center')
+    _headerCenter: boolean = false;
+
+    /** Sets the styling of the header, choices include `blue`, `center`, and `title`; defaults to `blue` */
     @Input()
     get type(): string {
         return this._type;
@@ -33,5 +36,6 @@ export class TileHeaderDirective {
 
         this._headerBlue = typeStr === 'blue';
         this._headerTitle = typeStr === 'title';
+        this._headerCenter = typeStr === 'center';
     }
 }

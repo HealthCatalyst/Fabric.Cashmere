@@ -32,6 +32,21 @@
     margin: 0 0 20px 0;
 }
 
+@mixin hc-tile-header-center {
+    @include fontSize(18px);
+    color: inherit;
+    font-weight: 600;
+    text-align: center;
+
+    hc-icon {
+        margin-bottom: 10px;
+    }
+
+    p {
+        @include fontSize(14px);
+    }
+}
+
 .hc-tile {
     @include hc-tile();
 }
@@ -46,4 +61,8 @@
 
 .hc-tile-header-title {
     @include hc-tile-header-title();
+}
+
+.hc-tile-header-center {
+    @include hc-tile-header-center();
 }
