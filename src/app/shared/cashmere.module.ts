@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import {
     AccordionModule,
     AppSwitcherModule,
@@ -72,4 +72,4 @@ import {ChangeCasePipeModule} from '@bit/healthcatalyst.cashmere.change-case-pip
         ChangeCasePipeModule
     ]
 })
-export class CashmereModule {}
+export class CashmereModule { }

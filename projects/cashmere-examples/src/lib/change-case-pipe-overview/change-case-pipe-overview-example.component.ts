@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import * as changeCase from 'change-case';
 import {FormControl} from '@angular/forms';
+import * as changeCase from 'change-case';
 
 @Component({
     selector: 'hc-change-case-pipe-overview-example',

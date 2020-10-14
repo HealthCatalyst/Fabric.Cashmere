@@ -1,19 +1,23 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {ModalOptions, ModalService} from '@healthcatalyst/cashmere';
+import {SectionService} from '../../shared/section.service';
+import {BaseStylesComponent} from '../base-styles.component';
 
 @Component({
     selector: 'hc-chart-demo',
     templateUrl: './chart-demo.component.html',
     styleUrls: ['./chart-demo.component.scss']
 })
-export class ChartDemoComponent implements OnInit {
+export class ChartDemoComponent extends BaseStylesComponent implements OnInit {
     loading: boolean = true;
     modalHeader: string = 'Chart Information';
     chartData: Array<any>;
     lineData: Array<any>;
     private hospitals = ['Millrock Physician Group', 'Memorial Physician Group', 'St. Johns Physician Group', 'University Physician Group'];
 
-    constructor(private modalService: ModalService) {}
+    constructor(private modalService: ModalService, sectionService: SectionService) {
+        super(sectionService);
+    }
 
     ngOnInit() {
         // give everything a chance to get loaded before starting the animation to reduce choppiness

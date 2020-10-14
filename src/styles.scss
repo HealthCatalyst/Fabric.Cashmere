@@ -1,13 +1,13 @@
-$fa-font-path: '../node_modules/font-awesome/fonts';
-@import '../node_modules/font-awesome/scss/font-awesome';
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import "../node_modules/font-awesome/scss/font-awesome";
 
-$FontPathOpenSans: '../node_modules/npm-font-open-sans/fonts';
-@import '../node_modules/npm-font-open-sans/open-sans';
+$FontPathOpenSans: "../node_modules/npm-font-open-sans/fonts";
+@import "../node_modules/npm-font-open-sans/open-sans";
 
-$hc-icons-font-path: '../dist/cashmere/hcicons';
-@import 'hcicons/hcicons';
+$hc-icons-font-path: "../dist/cashmere/hcicons";
+@import "hcicons/hcicons";
 
-@import 'scss/cashmere';
+@import "scss/cashmere";
 
 html,
 body {
@@ -37,6 +37,14 @@ body {
 
     .tab-bar-horizontal {
         margin-bottom: 25px;
+    }
+}
+
+.npm-package-code {
+    margin-bottom: 15px;
+
+    code {
+        background-color: transparent;
     }
 }
 
@@ -70,6 +78,12 @@ body {
     }
 }
 
+.hc-components-container {
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 0px;
+}
+
 .responsive-subnav {
     margin-bottom: 0 !important;
     display: none !important;
@@ -100,7 +114,7 @@ body {
     .responsive-subnav {
         display: flex !important;
     }
-    .full-height > .hc-vertical-tab-container > .hc-tab-content-vertical {
+    .hc-components-right-column {
         margin-top: 52px;
     }
     hc-tile {
@@ -238,7 +252,7 @@ table {
         margin-right: 5px;
         color: rgba($gray-600, 0.5);
         @include fontSize(14px);
-        font-family: Consolas, Menlo, 'Ubuntu Mono', monospace;
+        font-family: Consolas, Menlo, "Ubuntu Mono", monospace;
     }
 }
 
@@ -259,4 +273,33 @@ hc-example-viewer .hc-tab-content-horizontal {
 .pipe-output {
     font-weight: 600px;
     font-size: 22px;
+}
+
+// global search input field
+.hc-search-menu {
+    .hc-form-field-flex {
+        border-color: transparent;
+        padding: 0 15px;
+        border-radius: 0 0 4px 4px;
+    }
+
+    .hc-form-field-wrapper {
+        padding-bottom: 0;
+    }
+}
+
+.hc-navbar-right-container {
+    margin-right: 15px;
+}
+
+.hc-search-results-items > .hc-list-content {
+    padding: 0;
+}
+
+.hc-search-drawer-item > .hc-drawer-item {
+    cursor: inherit;
+
+    &:hover {
+        background-color: $charcoal-blue;
+    }
 }

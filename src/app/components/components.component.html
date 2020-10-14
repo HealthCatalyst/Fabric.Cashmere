@@ -3,10 +3,16 @@
         <div class="subnav-container">
             <span class="subnav-label">Components:</span>
             <span class="subnav-select">
-                <hc-select (change)="navUpdate($event.value)">
-                    <option *ngFor="let option of allDocItems" [value]="option.id" [selected]="option.id === activeItem?.id">
-                        {{ option.name }}
-                    </option>
+                <hc-select (change)="navUpdate($event.value)" [value]="activeItem?.id">
+                    <ng-container *ngFor="let category of categorizedDocItems">
+                        <ng-container *ngIf="category.items?.length">
+                            <optgroup [label]="category.displayName">
+                                <option *ngFor="let option of category.items" [value]="option.id">
+                                    {{ option.name }}
+                                </option>
+                            </optgroup>
+                        </ng-container>
+                    </ng-container>
                 </hc-select>
             </span>
         </div>
@@ -14,6 +20,18 @@
 
     <div class="hc-components-left-column">
         <div class="hc-components-nav-container">
+            <div class="hc-components-chip-wrapper" *ngIf="docType === 'bits'">
+                <hc-chip color="blue" tight="true" width="100%">
+                    <div class="hc-components-chip-content">
+                        <hc-icon fontSet="hc-icons" fontIcon="hci-help" hcIconSm></hc-icon>
+                        What's a Bit?
+                        <p class="hc-components-chip-link">
+                            Learn about Cashmere Bits
+                            <a [routerLink]="'/guides/using-cashmere-bits'">in this guide</a>.
+                        </p>
+                    </div>
+                </hc-chip>
+            </div>
             <hc-tile>
                 <div class="hc-components-nav-list">
                     <ng-container *ngFor="let category of categorizedDocItems; let catNum = index">

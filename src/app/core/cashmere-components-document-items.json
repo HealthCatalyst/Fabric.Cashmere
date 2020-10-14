@@ -19,7 +19,7 @@
     "button": {
         "name": "Button",
         "category": "buttons",
-        "examples": ["button-anchor", "button-colors", "button-icon", "button-link", "button-size", "button-split", "button-type"],
+        "examples": ["button-type", "button-anchor", "button-colors", "button-icon", "button-link", "button-size", "button-split"],
         "usageDoc": true
     },
     "checkbox": {
@@ -108,7 +108,7 @@
     "navbar": {
         "name": "Navbar",
         "category": "nav",
-        "examples": ["navbar-app-switcher", "navbar-overview"],
+        "examples": ["navbar-overview", "navbar-app-switcher", "navbar-cobrand"],
         "usageDoc": true
     },
     "null-or-empty-string-pipe": {
@@ -163,7 +163,7 @@
     "select": {
         "name": "Select",
         "category": "forms",
-        "examples": ["select-disabled", "select-forms", "select-standard", "select-validation"],
+        "examples": ["select-standard", "select-forms", "select-disabled", "select-validation", "select-compare-with"],
         "usageDoc": true
     },
     "sort": {
@@ -196,7 +196,8 @@
     "tile": {
         "name": "Tile",
         "category": "layout",
-        "examples": ["tile-overview"]
+        "examples": ["tile-overview"],
+        "usageDoc": true
     },
     "toaster": {
         "name": "Toaster Messages",

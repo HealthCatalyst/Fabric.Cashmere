@@ -1,8 +1,8 @@
-@import 'scss/colors';
-@import 'scss/mixins';
+@import "scss/colors";
+@import "scss/mixins";
 
 header {
-    max-width: 720px;
+    max-width: 820px;
     margin: 50px auto 60px auto;
     display: flex;
 }
@@ -30,7 +30,7 @@ p {
 .headerLeft {
     display: flex;
     padding-left: 40px;
-    padding-right: 80px;
+    padding-right: 60px;
 }
 
 .headerLeft img {
@@ -46,14 +46,28 @@ p {
 
 .headerRight {
     display: flex;
+    width: 100%;
     padding-right: 40px;
     flex-direction: column;
     justify-content: center;
+
+    .hc-form-field {
+        .searchIcon {
+            padding-left: 15px;
+        }
+
+        .searchBar {
+            padding-left: 25px;
+            font-size: 18px;
+            height: 40px;
+        }
+    }
 }
 
 .headerRight img {
     height: 55px;
     width: 372px;
+    margin-top: 10px;
 }
 
 @include media-breakpoint-down(md) {
@@ -74,8 +88,17 @@ p {
 
     .headerRight {
         align-items: center;
-        padding: 0;
-        margin: 20px;
+        padding: 20px;
+
+        .hc-form-field {
+            .searchIcon {
+                padding-left: 8px;
+            }
+
+            .searchBar {
+                padding-left: 10px;
+            }
+        }
     }
 
     .headerRight img {

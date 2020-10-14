@@ -23,7 +23,7 @@
 .hc-select-input {
     @include hc-select-input();
 
-    &:hover {
+    &:not([disabled]):hover {
         @include hc-select-input-hover();
     }
 

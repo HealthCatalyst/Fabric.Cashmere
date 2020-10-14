@@ -1,6 +1,8 @@
+##### Overview
+
 The Highlight pipe is used to identify any text from the user's query.
 
-#### API
+##### API
 
 ```ts
 transform(value: string): string
@@ -8,7 +10,7 @@ transform(value: string): string
 
 `value`: the `string` value to query
 
-#### Importing the Highlight Pipe
+##### Importing the Highlight Pipe
 
 To use the `HighlightPipe`, import the `HighlightPipeModule` into your app's `CashmereModule` (which in turn is imported into your app):
 
@@ -34,7 +36,7 @@ import {PipesModule} from '@healthcatalyst/cashmere';
 export class CashmereModule {}
 ```
 
-#### Case Sensitivity
+##### Case Sensitivity
 
 Pipe a `string` value to the Highlight pipe representing query. If the query is found in the text, the value is then highlighted disregarding case sensitivity.
 
@@ -45,7 +47,7 @@ Pipe a `string` value to the Highlight pipe representing query. If the query is 
 <!-- will highlight At…at…  -->
 ```
 
-#### Edge cases
+##### Edge cases
 
 *   When the Highlight Pipe search term is multiple words, it should wrap each adjacent word in the match with its own highlight span.
 *   When the Highlight Pipe search term is multiple words and if those multiple words are not adjacent in the text, should wrap each matching word from the search in its own highlight span.

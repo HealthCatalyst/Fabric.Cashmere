@@ -1,6 +1,7 @@
-import {Directive, ElementRef, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import * as markdownIt from 'markdown-it';
 import * as container_plugin from 'markdown-it-container';
+import * as mdnh from 'markdown-it-named-headers';
 import {highlightBlock} from 'highlight.js';
 
 @Directive({
@@ -16,10 +17,16 @@ export class MarkdownDirective implements OnChanges {
     @Input()
     lineNumbers: boolean = true;
 
+    @Output()
+    loaded: EventEmitter<boolean> = new EventEmitter();
+
     constructor(private el: ElementRef) {}
 
     ngOnChanges(_: SimpleChanges): void {
         const md = new markdownIt({html: true});
+
+        // plugin to add id values to header tags
+        md.use(mdnh);
 
         // plugin to markdown-it to interpret :::
         md.use(container_plugin, 'hc-tile', {
@@ -42,6 +49,8 @@ export class MarkdownDirective implements OnChanges {
                 }
             }
         }
+
+        this.loaded.emit( true );
     }
 
     private removeLines(pre: HTMLPreElement): void {

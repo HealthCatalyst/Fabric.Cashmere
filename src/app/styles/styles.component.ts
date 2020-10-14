@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, Data, NavigationEnd, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
@@ -11,7 +11,8 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 })
 export class StylesComponent implements OnDestroy {
     thisPage = '';
-    selectOptions: Array<string> = [];
+    queryTab = 0;
+    selectOptions: Array<Data> = [];
     private unsubscribe = new Subject<void>();
     private appInsights;
 
@@ -29,21 +30,35 @@ export class StylesComponent implements OnDestroy {
 
         // Populate the responsive select component with the router information
         let root = this.activatedRoute.routeConfig;
-        if (root && root.children) {
-            for (let entry of root.children) {
+        if ( root && root.children ) {
+            for (let entry of root.children ) {
                 if (entry.data && entry.data.title) {
-                    this.selectOptions.push(entry.data.title);
+                    this.selectOptions.push(entry);
                 }
             }
         }
-        this.selectOptions.sort();
+
+        //  Gets the search parameter value from the url
+        this.activatedRoute.queryParams.subscribe(() => {
+            let currentPath = this.router.url;
+            currentPath = currentPath.replace( '/styles/', '' );
+            const pathArray = currentPath.split( '?' );
+
+            if (this.selectOptions.length) {
+                for ( let i = 0; i < this.selectOptions.length; i++ ) {
+                    if (pathArray[0] === this.selectOptions[i].path) {
+                        this.queryTab = i;
+                        break;
+                    }
+                }
+            }
+        });
     }
 
     // Handle changes to the select component and navigate
     selectUpdate(event: any) {
-        let root = this.activatedRoute.routeConfig;
-        if (root && root.children) {
-            for (let entry of root.children) {
+        if (this.selectOptions.length) {
+            for (let entry of this.selectOptions) {
                 if (entry.data && event === entry.data.title) {
                     this.router.navigate(['/styles/' + entry.path]);
                     window.scrollTo(0, 0);

@@ -1,12 +1,12 @@
 <hc-tile>
     <div class="header">
-        <h3 [id]="exampleTitle | changeCase: 'paramCase'" class="docs-api-h3">{{ exampleTitle }}</h3>
+        <h3 [id]="exampleTitle | changeCase: 'paramCase'" hcTileHeader>{{ exampleTitle }}</h3>
         <button hc-button buttonStyle="minimal" size="md" (click)="launchStackBlitz()">
             <hc-icon fontSet="fa" fontIcon="fa-edit" class="icon-left"></hc-icon>
             Edit on StackBlitz
         </button>
     </div>
-    <hc-tab-set direction="horizontal">
+    <hc-tab-set direction="horizontal" #tabSet>
         <hc-tab tabTitle="Example" (tabClick)="logClick('Example')"><div class="example-container" #exampleContainer></div></hc-tab>
         <hc-tab
             *ngFor="let file of exampleFiles"
