@@ -109,6 +109,7 @@ $ng-select-value-font-size: 14px !default;
                 .ng-value {
                     @include hc-chip();
                     @include hc-chip-neutral();
+                    @include hc-chip-padding();
                     margin: 3px;
                     position: relative;
                     &.ng-value-disabled {
