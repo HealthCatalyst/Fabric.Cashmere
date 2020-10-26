@@ -11,7 +11,7 @@ import { MenuItemDirective } from '../../pop/directives/menu-item.directive';
     providers: [{provide: NavbarLinkComponent, useExisting: forwardRef(() => NavbarDropdownComponent)}],
 })
 export class NavbarDropdownComponent extends NavbarLinkComponent implements AfterViewInit {
-    @ViewChild('menuPop', {static: false})
+    @ViewChild('menuPop')
     _menuPop: HcPopComponent;
 
     /** Reference to hcMenuItems (if the content contains them) */

@@ -21,7 +21,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     `
 })
 class TestAppComponent {
-    @ViewChild(NavbarComponent, {static: false})
+    @ViewChild(NavbarComponent)
     public navbarComponent: NavbarComponent;
 }
 

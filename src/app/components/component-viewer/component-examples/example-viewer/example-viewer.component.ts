@@ -15,7 +15,7 @@ import { TabSetComponent } from 'projects/cashmere/src/lib/tabs';
 export class ExampleViewerComponent implements OnInit {
     @ViewChild('exampleContainer', { read: ViewContainerRef, static: true })
     exampleContainer: ViewContainerRef;
-    @ViewChild('tabSet', { static: false }) _tabSet: TabSetComponent;
+    @ViewChild('tabSet') _tabSet: TabSetComponent;
 
     isInitialized = false;
     private _example: string;

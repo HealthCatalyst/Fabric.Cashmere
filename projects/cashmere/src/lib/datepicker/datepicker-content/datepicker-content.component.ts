@@ -25,7 +25,7 @@ import {DatepickerComponent} from '../datepicker.component';
 })
 export class DatepickerContentComponent implements AfterViewInit {
     /** Reference to the internal calendar component. */
-    @ViewChild(CalendarComponent, {static: false})
+    @ViewChild(CalendarComponent)
     _calendar: CalendarComponent;
 
     /** Reference to the datepicker that created the overlay. */

@@ -70,7 +70,7 @@ const openStateAnimation = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
 export class MenuDrawer extends Drawer implements AfterContentInit {
     private _previousTheme: string | null = null;
 
-    @ContentChild(DrawerToolbar, {static: false})
+    @ContentChild(DrawerToolbar)
     toolbar: DrawerToolbar;
 
     /** Sets menu style of the drawer. Choose from: `'dark-theme'` */

@@ -267,7 +267,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     @Output() overlayKeydown = new EventEmitter<KeyboardEvent>();
 
     /** Reference to template so it can be placed within a portal. */
-    @ViewChild(TemplateRef, {static: false}) _templateRef: TemplateRef<any>;
+    @ViewChild(TemplateRef) _templateRef: TemplateRef<any>;
 
     /** Stores the click coordinates for mouse-based positioning */
     _offsetPos: number[] = [0, 0];
@@ -287,7 +287,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     _notifications: PopoverNotificationService;
 
     /** Reference to the element to build a focus trap around. */
-    @ViewChild('focusTrapElement', {static: false})
+    @ViewChild('focusTrapElement')
     private _focusTrapElement: ElementRef;
 
     /** Reference to the element that was focused before opening. */

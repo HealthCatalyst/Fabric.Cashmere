@@ -1,4 +1,4 @@
-import {execSync} from 'child_process';
+const {execSync} = require('child_process');
 
 const stagedFiles = execSync('git diff --name-only --cached')
     .toString()

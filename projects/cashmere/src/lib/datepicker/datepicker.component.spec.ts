@@ -36,9 +36,9 @@ class StandardDatepicker {
     opened = false;
     disabled = false;
     date: Date | null = new Date(2020, JAN, 1);
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
 }
 
@@ -57,7 +57,7 @@ class MultiInputDatepicker {}
     `
 })
 class NoInputDatepicker {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
 }
 
@@ -70,7 +70,7 @@ class NoInputDatepicker {
 class DatepickerWithStartAt {
     date = new Date(2020, JAN, 1);
     startDate = new Date(2010, JAN, 1);
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
 }
 
@@ -82,7 +82,7 @@ class DatepickerWithStartAt {
 })
 class DatepickerWithStartViewYear {
     date = new Date(2020, JAN, 1);
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
 
     onYearSelection() {}
@@ -96,7 +96,7 @@ class DatepickerWithStartViewYear {
 })
 class DatepickerWithStartViewMultiYear {
     date = new Date(2020, JAN, 1);
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
 
     onMultiYearSelection() {}
@@ -110,9 +110,9 @@ class DatepickerWithStartViewMultiYear {
 })
 class DatepickerWithNgModel {
     selected: Date | null = null;
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
 }
 
@@ -125,11 +125,11 @@ class DatepickerWithNgModel {
 })
 class DatepickerWithFormControl {
     formControl = new FormControl();
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
-    @ViewChild(DatepickerToggleComponent, {static: false})
+    @ViewChild(DatepickerToggleComponent)
     datepickerToggle: DatepickerToggleComponent;
 }
 
@@ -141,9 +141,9 @@ class DatepickerWithFormControl {
     `
 })
 class DatepickerWithToggle {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     input: DatepickerInputDirective;
 }
 
@@ -165,11 +165,11 @@ class DatepickerWithCustomIcon {}
     `
 })
 class FormFieldDatepicker {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
-    @ViewChild(HcFormFieldComponent, {static: false})
+    @ViewChild(HcFormFieldComponent)
     formField: HcFormFieldComponent;
 }
 
@@ -181,7 +181,7 @@ class FormFieldDatepicker {
     `
 })
 class DatepickerWithMinAndMaxValidation {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
     date: Date | null;
     minDate = new Date(2010, JAN, 1);
@@ -196,7 +196,7 @@ class DatepickerWithMinAndMaxValidation {
     `
 })
 class DatepickerWithFilterAndValidation {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
     date: Date;
     filter = (date: Date) => date.getDate() !== 1;
@@ -209,7 +209,7 @@ class DatepickerWithFilterAndValidation {
     `
 })
 class DatepickerWithChangeAndInputEvents {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
 
     onChange() {}
@@ -229,9 +229,9 @@ class DatepickerWithChangeAndInputEvents {
 })
 class DatepickerWithi18n {
     date: Date | null = new Date(2010, JAN, 1);
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
 }
 
@@ -246,9 +246,9 @@ class DatepickerWithISOStrings {
     min = new Date(2017, JAN, 1).toISOString();
     max = new Date(2017, DEC, 31).toISOString();
     startAt = new Date(2017, JUL, 1).toISOString();
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
 }
 
@@ -262,7 +262,7 @@ class DatepickerWithEvents {
     selected: Date | null = null;
     openedSpy = jasmine.createSpy('opened spy');
     closedSpy = jasmine.createSpy('closed spy');
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
 }
 
@@ -273,7 +273,7 @@ class DatepickerWithEvents {
     `
 })
 class DatepickerOpeningOnFocus {
-    @ViewChild(DatepickerComponent, {static: false})
+    @ViewChild(DatepickerComponent)
     datepicker: DatepickerComponent;
 }
 
@@ -284,7 +284,7 @@ class DatepickerOpeningOnFocus {
     `
 })
 class DatepickerWithCustomHeader {
-    @ViewChild('ch', {static: false})
+    @ViewChild('ch')
     datepicker: DatepickerComponent;
     customHeaderForDatePicker = CustomHeaderForDatepicker;
 }
@@ -304,9 +304,9 @@ class CustomHeaderForDatepicker {}
     `
 })
 class DelayedDatepicker {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
     date: Date | null;
     assignedDatepicker: DatepickerComponent;
@@ -328,7 +328,7 @@ class DatepickerWithTabindexOnToggle {}
     `
 })
 class DatepickerWithTime {
-    @ViewChild('timepicker', {static: false})
+    @ViewChild('timepicker')
     datepicker: DatepickerComponent;
     cycleVal: number = 12;
 }
@@ -340,7 +340,7 @@ class DatepickerWithTime {
     `
 })
 class DatepickerWithDateTime {
-    @ViewChild('datetimepicker', {static: false})
+    @ViewChild('datetimepicker')
     datepicker: DatepickerComponent;
 }
 

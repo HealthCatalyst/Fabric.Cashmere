@@ -2,8 +2,9 @@ import {OverlayRef} from '@angular/cdk/overlay';
 import {HcToastComponent} from './hc-toast.component';
 import {Subject} from 'rxjs';
 import {filter, take} from 'rxjs/operators';
-import {Input} from '@angular/core';
+import { Input, Directive } from '@angular/core';
 
+@Directive()
 export class HcToastRef {
     private _beforeClose = new Subject<void>();
     private _afterClosed = new Subject<void>();

@@ -101,7 +101,7 @@ export class MonthViewComponent implements AfterContentInit {
     readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
 
     /** The body of calendar table */
-    @ViewChild(CalendarBodyComponent, {static: false})
+    @ViewChild(CalendarBodyComponent)
     _hcCalendarBody: CalendarBodyComponent;
 
     /** The label for this month (e.g. "January 2017"). */

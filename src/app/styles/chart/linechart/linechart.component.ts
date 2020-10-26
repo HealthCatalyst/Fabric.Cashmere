@@ -10,7 +10,7 @@ import * as d3 from 'd3';
     encapsulation: ViewEncapsulation.None
 })
 export class LinechartComponent implements AfterViewInit {
-    @ViewChild('chart', {static: false})
+    @ViewChild('chart')
     private chartContainer: ElementRef;
     @Input()
     private data: Array<any>;
