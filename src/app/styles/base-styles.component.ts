@@ -8,7 +8,7 @@ export class BaseStylesComponent implements AfterViewInit {
         this.loaded();
     }
 
-    protected loaded() {
+    loaded() {
         this.sectionService.scrollToSection();
     }
 }
