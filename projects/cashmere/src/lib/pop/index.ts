@@ -7,3 +7,4 @@ export {MenuIconDirective} from './directives/menu-icon.directive';
 export {MenuTextDirective} from './directives/menu-text.directive';
 export {MenuSubTextDirective} from './directives/menu-sub-text.directive';
 export {DividerDirective} from './directives/divider.directive';
+export {HcTooltipComponent} from './tooltip/tooltip.component';
