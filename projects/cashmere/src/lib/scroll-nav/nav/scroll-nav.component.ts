@@ -36,5 +36,6 @@ export class HcScrollNavComponent implements AfterViewInit {
             e.classList.remove(this.ACTIVE_CLASS);
         });
         element.classList.add(this.ACTIVE_CLASS);
+        element.focus();
     }
 }
