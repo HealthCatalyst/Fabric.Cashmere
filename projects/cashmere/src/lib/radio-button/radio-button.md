@@ -1,4 +1,4 @@
-##### Radio Text Formatting
+##### Button Toggle Text Formatting
 
 For both the label on radio buttons and their contents, please use the following formatting:
 
@@ -6,9 +6,13 @@ Capitalize first word only, except in cases where the selection is an actual pro
 
 &nbsp;
 
-##### Radio Group Labels
+##### Button Toggle Group Labels
 
 Use a colon at the end of radio group labels (e.g. Email address:). A colon implies a direct connection between the label text and a particular control or set of controls. The only situation where a colon should not be used is when the label and control work together to form a single sentence.
+
+&nbsp;
+
+#### Button Toggle Icons
 
 &nbsp;
 
@@ -19,10 +23,10 @@ RadioButtonComponents are contained in a RadioGroupDirective which may be nested
 ```html
 <hc-form-field>
     <hc-label>Select your favorite:</hc-label>
-    <hc-radio-group>
-        <hc-radio-button value="one">Button One</hc-radio-button>
-        <hc-radio-button value="two">Button One</hc-radio-button>
-    </hc-radio-group>
+    <hc-button-toggle-group>
+        <hc-button-toggle value="one">Button One</hc-button-toggle>
+        <hc-button-toggle value="two">Button One</hc-button-toggle>
+    </hc-button-toggle-group>
     <hc-error>The radio button selection is not valid</hc-error>
 </hc-form-field>
 ```
