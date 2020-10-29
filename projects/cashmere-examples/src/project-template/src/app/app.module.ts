@@ -7,7 +7,6 @@ import {AppComponent} from './app.component';
 import {ExampleContainerComponent} from './example-container.component';
 import {CashmereModule} from './cashmere.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgSelectModule} from '@ng-select/ng-select';
 /* example-module-import */
 /* example-component-import */
 
@@ -27,9 +26,6 @@ import {NgSelectModule} from '@ng-select/ng-select';
         /* example-module-name */
     ],
     providers: [],
-    entryComponents: [
-        /* example-component-name */
-    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

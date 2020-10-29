@@ -27,7 +27,7 @@ describe('RangeComponent', () => {
     }));
 
     beforeEach(() => {
-        configStoreService = TestBed.get(ConfigStoreService);
+        configStoreService = TestBed.inject(ConfigStoreService);
         configStoreService.updateDateRangeOptions({
             presets: [
                 {

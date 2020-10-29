@@ -60,7 +60,6 @@ import {FormFieldModule} from '../form-field/hc-form-field.module';
         MultiYearViewComponent,
         CalendarHeaderComponent
     ],
-    providers: [HcDatepickerIntl, HC_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER],
-    entryComponents: [DatepickerContentComponent, CalendarHeaderComponent]
+    providers: [HcDatepickerIntl, HC_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER]
 })
 export class DatepickerModule {}

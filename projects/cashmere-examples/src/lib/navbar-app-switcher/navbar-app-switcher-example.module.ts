@@ -8,7 +8,6 @@ import {CustomAppSwitcherService} from './custom-app-switcher.service';
 @NgModule({
     imports: [CommonModule, CashmereModule],
     declarations: [NavbarAppSwitcherExampleComponent],
-    entryComponents: [NavbarAppSwitcherExampleComponent],
     exports: [NavbarAppSwitcherExampleComponent],
     providers: [{provide: APP_SWITCHER_SERVICE, useClass: CustomAppSwitcherService}]
 })

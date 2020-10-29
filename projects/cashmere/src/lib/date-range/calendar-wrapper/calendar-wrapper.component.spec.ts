@@ -28,7 +28,7 @@ describe('CalendarWrapperComponent', () => {
     }));
 
     beforeEach(() => {
-        configStoreService = TestBed.get(ConfigStoreService);
+        configStoreService = TestBed.inject(ConfigStoreService);
         configStoreService.updateDateRangeOptions(newOptions);
         fixture = TestBed.createComponent(CalendarWrapperComponent);
         component = fixture.componentInstance;

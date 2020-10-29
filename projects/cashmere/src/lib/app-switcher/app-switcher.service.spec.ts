@@ -14,7 +14,7 @@ describe('AppSwitcherService', () => {
             });
         }));
 
-        beforeEach(() => (service = TestBed.get(AppSwitcherService)));
+        beforeEach(() => (service = TestBed.inject(AppSwitcherService)));
 
         it('should have the correct allApplicationsUri', () => {
             expect(service.allApplicationsUri).toBe('foo://bar/baz/apps');
@@ -44,7 +44,7 @@ describe('AppSwitcherService', () => {
             });
         }));
 
-        beforeEach(() => (service = TestBed.get(AppSwitcherService)));
+        beforeEach(() => (service = TestBed.inject(AppSwitcherService)));
 
         it('should have the correct allApplicationsUri', () => {
             expect(service.allApplicationsUri).toBe('foo://bar/baz/apps');
@@ -74,7 +74,7 @@ describe('AppSwitcherService', () => {
             });
         }));
 
-        beforeEach(() => (service = TestBed.get(AppSwitcherService)));
+        beforeEach(() => (service = TestBed.inject(AppSwitcherService)));
 
         it('should have the correct allApplicationsUri', () => {
             expect(service.allApplicationsUri).toBe('foo://bar/baz/apps');
@@ -104,7 +104,7 @@ describe('AppSwitcherService', () => {
             });
         }));
 
-        beforeEach(() => (service = TestBed.get(AppSwitcherService)));
+        beforeEach(() => (service = TestBed.inject(AppSwitcherService)));
 
         it('should have the correct allApplicationsUri', () => {
             expect(service.allApplicationsUri).toBe('foo://bar/baz/apps');
@@ -132,7 +132,7 @@ describe('AppSwitcherService', () => {
             });
         }));
         it('should throw an error', () => {
-            expect(() => TestBed.get(AppSwitcherService)).toThrowError();
+            expect(() => TestBed.inject(AppSwitcherService)).toThrowError();
         });
     });
 
@@ -144,7 +144,7 @@ describe('AppSwitcherService', () => {
             });
         }));
         it('should throw an error', () => {
-            expect(() => TestBed.get(AppSwitcherService)).toThrowError();
+            expect(() => TestBed.inject(AppSwitcherService)).toThrowError();
         });
     });
 });
