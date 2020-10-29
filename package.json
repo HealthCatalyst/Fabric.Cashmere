@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@angular/animations": "9.1.12",
-    "@angular/cdk": "^9.2.4",
+    "@angular/cdk": "^10.2.6",
     "@angular/common": "9.1.12",
     "@angular/compiler": "9.1.12",
     "@angular/core": "9.1.12",
@@ -57,7 +57,7 @@
     "@angular/platform-server": "9.1.12",
     "@angular/router": "9.1.12",
     "@microsoft/applicationinsights-web": "^2.3.1",
-    "@ng-select/ng-select": "^3.7.3",
+    "@ng-select/ng-select": "^5.0.8",
     "@stackblitz/sdk": "^1.2.0",
     "change-case": "^3.0.2",
     "core-js": "^2.4.1",
