@@ -9,6 +9,12 @@
         "examples": ["button-type", "button-anchor", "button-colors", "button-icon", "button-link", "button-size", "button-split"],
         "usageDoc": true
     },
+    "button-toggle": {
+        "name": "Button Toggle",
+        "category": "buttons",
+        "examples": ["button-toggle"],
+        "usageDoc": true
+    },
     "checkbox": {
         "name": "Checkbox",
         "category": "forms",
@@ -108,13 +114,5 @@
     "tabs": {"name": "Tabs", "category": "layout", "examples": ["tabs-horizontal", "tabs-vertical"]},
     "tile": {"name": "Tile", "category": "layout", "examples": ["tile-overview"], "usageDoc": true},
     "toaster": {"name": "Toaster Messages", "category": "popups", "examples": ["toaster-overview"]},
-    "typeform-survey": {"name": "Typeform Survey", "category": "popups", "examples": ["typeform-survey-overview"], "usageDoc": true},
-    "button-toggle": {
-        "category": "buttons",
-        "name": "Button Toggle",
-        "examples": ["button-toggle"],
-        "id": "button-toggle",
-        "usageDoc": true,
-        "hideApi": false
-    }
+    "typeform-survey": {"name": "Typeform Survey", "category": "popups", "examples": ["typeform-survey-overview"], "usageDoc": true}
 }

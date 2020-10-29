@@ -1,21 +1,2 @@
-<label class="hc-button-toggle-group"
-    [class.disabled]="disabled"
-
-     >
-    <input class="hc-button-toggle"
-           [class.disabled]="disabled"
-           type="button-toggle"
-           [id]="_inputId"
-           [attr.value]="value"
-           [attr.name]="name"
-           [attr.title]="title"
-           [disabled]="disabled"
-           [required]="required"
-           [selected]="selected"
-           (change)="_onInputChange($event)"
-           (click)="_onInputClick($event)"/>
-    <span class="hc-button-toggle-overlay" [class.disabled]="disabled"></span>
-    <div class="hc-button-toggle-content">
-        <ng-content></ng-content>
-    </div>
-</label>
+<h3 class="hc-button-toggle">Child content:</h3>
+<ng-content></ng-content>

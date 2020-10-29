@@ -1,14 +1,11 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-
-
-import {PopModule} from '../pop/popover.module';
-import { ButtonToggleGroupDirective } from '.';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonToggleGroupComponent } from './button-toggle-group.component';
 import { ButtonToggleComponent } from './button-toggle.component';
 
 @NgModule({
-    imports: [CommonModule, PopModule],
-    declarations:  [ButtonToggleComponent],
-    exports: [ButtonToggleComponent, ButtonToggleGroupDirective, PopModule]
+    imports: [CommonModule],
+    declarations:  [ButtonToggleComponent, ButtonToggleGroupComponent],
+    exports: [ButtonToggleComponent, ButtonToggleGroupComponent]
 })
 export class ButtonToggleModule {}
