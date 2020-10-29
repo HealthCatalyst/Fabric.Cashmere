@@ -56,7 +56,7 @@
     "@angular/platform-browser-dynamic": "9.1.12",
     "@angular/platform-server": "9.1.12",
     "@angular/router": "9.1.12",
-    "@microsoft/applicationinsights-web": "^2.3.1",
+    "@microsoft/applicationinsights-web": "^2.5.9",
     "@ng-select/ng-select": "^5.0.8",
     "@stackblitz/sdk": "^1.2.0",
     "change-case": "^3.0.2",
