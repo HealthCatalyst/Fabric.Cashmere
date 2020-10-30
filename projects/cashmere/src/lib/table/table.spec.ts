@@ -26,7 +26,7 @@
 //
 //
 // describe('MatTable', () => {
-//   beforeEach(async(() => {
+//   beforeEach(waitForAsync(() => {
 //     TestBed.configureTestingModule({
 //       imports: [MatTableModule, MatPaginatorModule, SortModule, NoopAnimationsModule],
 //       declarations: [

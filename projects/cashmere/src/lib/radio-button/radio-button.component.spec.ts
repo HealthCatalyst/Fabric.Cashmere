@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RadioButtonComponent, RadioButtonChangeEvent} from './radio';
 import {RadioButtonModule} from './radio-button.module';
 import {Component, DebugElement} from '@angular/core';
@@ -37,7 +37,7 @@ export class SingleRadioComponent {
 describe('RadioButtonComponent', () => {
     let fixture: ComponentFixture<any>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [RadioButtonModule],
             declarations: [SingleRadioComponent]

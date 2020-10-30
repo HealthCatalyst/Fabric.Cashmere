@@ -1,4 +1,5 @@
-import {AfterContentInit, Component, ContentChildren, Input, QueryList, Output, ViewEncapsulation} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, Input, Output, ViewEncapsulation} from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {EventEmitter, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';

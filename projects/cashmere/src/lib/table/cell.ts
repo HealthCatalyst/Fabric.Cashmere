@@ -51,10 +51,16 @@ export class HcFooterCellDef extends CdkFooterCellDef {}
 })
 export class HcColumnDef extends CdkColumnDef {
     private _justify: string = 'left';
+    private _colName: string;
 
     /** Unique name for this column. */
     @Input('hcColumnDef')
-    name: string;
+    get name(): string {
+        return this._colName;
+    }
+    set name( value: string ) {
+        this._colName = value;
+    }
 
     /** Sets the text alignment for this column: `left` (default), `center` or `right` */
     @Input()
@@ -76,7 +82,12 @@ export class HcColumnDef extends CdkColumnDef {
 
     /** Whether this column should be sticky positioned on the end of the row */
     @Input()
-    stickyEnd: boolean;
+    get stickyEnd(): boolean {
+        return this._stickyEnd;
+    }
+    set stickyEnd( value: boolean ) {
+        this._stickyEnd = value;
+    }
 }
 
 /** Header cell template container that adds the right classes and role. */

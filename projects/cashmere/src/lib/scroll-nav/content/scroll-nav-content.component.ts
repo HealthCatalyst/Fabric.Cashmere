@@ -7,11 +7,11 @@ import {
     OnDestroy,
     EventEmitter,
     Output,
-    QueryList,
     ContentChildren,
     HostListener,
     AfterViewChecked
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {Subject} from 'rxjs';
 import {HcScrollNavComponent} from '../nav/scroll-nav.component';

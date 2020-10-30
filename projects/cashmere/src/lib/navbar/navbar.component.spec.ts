@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {ListModule} from '../list/list.module';
@@ -29,7 +29,7 @@ describe('NavbarComponent', () => {
     let testHostComponent: TestAppComponent;
     let testHostFixture: ComponentFixture<TestAppComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [RouterTestingModule, NavbarModule, ListModule, BrowserAnimationsModule],
             declarations: [TestAppComponent]
@@ -60,7 +60,7 @@ describe('NavbarComponent', () => {
     });
 
     describe('on calling all the lifecycle hooks', () => {
-        it('should call refreshNavLinks', async(() => {
+        it('should call refreshNavLinks', waitForAsync(() => {
             spyOn(testHostComponent.navbarComponent, 'refreshNavLinks');
             testHostComponent.navbarComponent.ngAfterViewInit();
             testHostFixture.whenStable().then(() => {

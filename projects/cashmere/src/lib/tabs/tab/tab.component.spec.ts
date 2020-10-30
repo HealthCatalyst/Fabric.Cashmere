@@ -1,12 +1,12 @@
 import {TabComponent} from './tab.component';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 
 describe('TabComponent', () => {
     let component: TabComponent;
     let fixture: ComponentFixture<TabComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [RouterTestingModule],
             declarations: [TabComponent]

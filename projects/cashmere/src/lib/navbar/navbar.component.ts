@@ -6,11 +6,11 @@ import {
     ElementRef,
     HostListener,
     Input,
-    QueryList,
     ViewChild,
     ViewEncapsulation,
     OnDestroy
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {HcPopoverAnchorDirective} from '../pop/directives/popover-anchor.directive';
 import {HcPopComponent} from '../pop/popover.component';
 import {MoreItem} from './more-item';

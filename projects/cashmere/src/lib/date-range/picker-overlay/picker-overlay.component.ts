@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChildren, QueryList, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChildren, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {DateRangeOptions, PresetItem} from '../model/model';
 import {OverlayRef} from '@angular/cdk/overlay';
 import {ConfigStoreService} from '../services/config-store.service';

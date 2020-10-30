@@ -1,11 +1,9 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ConfigStoreService} from '../services/config-store.service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {OverlayRef} from '@angular/cdk/overlay';
 import {PickerOverlayComponent} from './picker-overlay.component';
-import {tap} from 'rxjs/operators';
-import {By} from '@angular/platform-browser';
 import {RadioButtonComponent} from '../../radio-button/radio';
 
 class MockOverlayRef {
@@ -17,7 +15,7 @@ describe('RangeComponent', () => {
     let fixture: ComponentFixture<PickerOverlayComponent>;
     let configStoreService: ConfigStoreService;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [PickerOverlayComponent, RadioButtonComponent],
             imports: [BrowserAnimationsModule],
@@ -58,7 +56,7 @@ describe('RangeComponent', () => {
     });
 
     describe('_validateRange', () => {
-        it('will not mark range invalid if one or both dates are missing', async(() => {
+        it('will not mark range invalid if one or both dates are missing', waitForAsync(() => {
             component._updateFromDate(new Date(2010, 1, 1));
             component._updateToDate(undefined);
             component._validateRange();
@@ -75,21 +73,21 @@ describe('RangeComponent', () => {
             expect(component._rangeIsInvalid).toBeFalsy();
         }));
 
-        it('will not mark range invalid if fromDate is before toDate', async(() => {
+        it('will not mark range invalid if fromDate is before toDate', waitForAsync(() => {
             component._updateFromDate(new Date(2010, 1, 1));
             component._updateToDate(new Date(2010, 1, 2));
             component._validateRange();
             expect(component._rangeIsInvalid).toBeFalsy();
         }));
 
-        it('will not mark range invalid if fromDate is equal to toDate', async(() => {
+        it('will not mark range invalid if fromDate is equal to toDate', waitForAsync(() => {
             component._updateFromDate(new Date(2010, 1, 1));
             component._updateToDate(new Date(2010, 1, 1));
             component._validateRange();
             expect(component._rangeIsInvalid).toBeFalsy();
         }));
 
-        it('will mark range invalid if fromDate is after toDate', async(() => {
+        it('will mark range invalid if fromDate is after toDate', waitForAsync(() => {
             component._updateFromDate(new Date(2010, 1, 2));
             component._updateToDate(new Date(2010, 1, 1));
             component._validateRange();

@@ -41,7 +41,6 @@ export function _buildValueString(id: string|null, value: any): string {
 export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
     private _uniqueInputId = `hc-select-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
-    private _tight: boolean = false;
     private _value: any = '';
     _optionIdCounter: number = 0; // tracks ids for select options
     _optionMap: Map<string, any> = new Map<string, any>();

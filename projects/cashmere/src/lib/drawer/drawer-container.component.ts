@@ -8,10 +8,10 @@ import {
     HostBinding,
     NgZone,
     OnDestroy,
-    QueryList,
     Renderer2,
     ViewEncapsulation
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {Drawer, DrawerPromiseResult} from './drawer.component';
 import {debounceTime, filter, startWith, takeUntil} from 'rxjs/operators';
 import {AnimationEvent} from '@angular/animations';

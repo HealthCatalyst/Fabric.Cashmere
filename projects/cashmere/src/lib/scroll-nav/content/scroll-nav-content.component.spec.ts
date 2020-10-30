@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
@@ -50,7 +50,7 @@ class TestAppReference {
 let testApp: TestAppReference;
 
 describe('HcScrollNavContentComponent', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [ScrollNavModule],
             declarations: [TestAppComponent]

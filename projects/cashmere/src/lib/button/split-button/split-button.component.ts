@@ -8,9 +8,9 @@ import {
     Output,
     ViewEncapsulation,
     ViewChild,
-    ContentChildren,
-    QueryList
+    ContentChildren
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {parseBooleanAttribute} from '../../util';
 import {validateStyleInput, validateSizeInput, ButtonComponent} from '../button.component';
 import {HcPopComponent} from '../../pop/popover.component';

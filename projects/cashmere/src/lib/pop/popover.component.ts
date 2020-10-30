@@ -12,8 +12,8 @@ import {
     Optional,
     Output,
     ContentChildren,
-    QueryList
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {AnimationEvent} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
 import {FocusTrap, FocusTrapFactory} from '@angular/cdk/a11y';

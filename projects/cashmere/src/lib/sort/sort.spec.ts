@@ -42,7 +42,7 @@
 //
 //   let component: SimpleMatSortApp;
 //
-//   beforeEach(async(() => {
+//   beforeEach(waitForAsync(() => {
 //     TestBed.configureTestingModule({
 //       imports: [SortModule, MatTableModule, CdkTableModule, NoopAnimationsModule],
 //       declarations: [

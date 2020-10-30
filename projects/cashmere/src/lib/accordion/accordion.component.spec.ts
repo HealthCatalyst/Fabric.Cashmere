@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {AccordionComponent} from './accordion.component';
 import {AccordionToolbarComponent} from './accordion-toolbar.component';
 import {AccordionModule} from './accordion.module';
@@ -39,7 +39,7 @@ describe('AccordionComponent', () => {
     let component: TestAccordionComponent;
     let fixture: ComponentFixture<TestAccordionComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestAccordionComponent],
             imports: [AccordionModule, NoopAnimationsModule]

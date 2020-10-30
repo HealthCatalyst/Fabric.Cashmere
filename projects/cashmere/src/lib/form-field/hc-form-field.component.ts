@@ -4,12 +4,12 @@ import {
     ContentChild,
     ContentChildren,
     HostBinding,
-    QueryList,
     ViewEncapsulation,
     Input,
     ElementRef,
     OnDestroy
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {HcFormControlComponent} from './hc-form-control.component';
 import {HcErrorComponent} from './hc-error.component';
 import {HcPrefixDirective} from './hc-prefix.directive';
@@ -122,7 +122,7 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
     _updateTightControls() {
         if (this._controls) {
             this._controls.forEach(control => {
-                control.tight = this._tight;
+                control._tight = this._tight;
             });
         }
     }

@@ -9,8 +9,7 @@ import {FormControl} from '@angular/forms';
     templateUrl: 'picklist-valueset-example.component.html'
 })
 export class PicklistValuesetExampleComponent {
-    public myModel: {values: null; valueset: null};
-    readonly modelControl = new FormControl(this.myModel);
+    readonly modelControl = new FormControl({values: null, valueset: null});
 
     public config = {
         codeIsSignificant: true,

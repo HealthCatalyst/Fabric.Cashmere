@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TileModule } from './tile.module';
 import { TileHeaderDirective } from './tile-header.directive';
@@ -20,7 +20,7 @@ describe('TileHeaderDirective', () => {
     let fixture: ComponentFixture<TestComponent>;
     let directive: TileHeaderDirective;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestComponent],
             imports: [TileModule]

@@ -12,11 +12,11 @@ import {
     OnInit,
     Optional,
     Output,
-    QueryList,
     DoCheck,
     Self,
     ElementRef
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
@@ -49,7 +49,6 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     private _uniqueName = `hc-radio-group-${nextUniqueId++}`;
     private _name = this._uniqueName;
     private _inline = false;
-    private _tight: boolean = false;
     private _initialized = false; // if value of radio group has been set to initial value
     private _selected: RadioButtonComponent | null = null; // the currently selected radio
     private _form: NgForm | FormGroupDirective | null;

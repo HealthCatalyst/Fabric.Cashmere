@@ -14,12 +14,15 @@
     "module": "./esm5/cashmere.js",
     "es2015": "./esm2015/cashmere.js",
     "jsnext": "./esm2015/cashmere.js",
+    "dependencies": {
+      "tslib": "^2.0.0"
+    },
     "typings": "./cashmere.d.ts",
     "peerDependencies": {
-        "@angular/cdk": ">= 9.2.0",
-        "@angular/common": ">= 9.1.0",
-        "@angular/core": ">= 9.1.0",
-        "@angular/forms": ">= 9.1.0",
+        "@angular/cdk": ">= 10.2.6",
+        "@angular/common": ">= 10.2.1",
+        "@angular/core": ">= 10.2.1",
+        "@angular/forms": ">= 10.2.1",
         "core-js": ">= 2.4.0 < 3",
         "font-awesome": "~4.7.0",
         "npm-font-open-sans": "^1.1.0",

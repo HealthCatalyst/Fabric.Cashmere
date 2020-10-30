@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation, ViewChild, forwardRef, ContentChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild, forwardRef, ContentChildren, AfterViewInit } from '@angular/core';
+import type { QueryList } from '@angular/core';
 import { NavbarLinkComponent } from '../navbar-link/navbar-link.component';
 import { HcPopComponent } from '../../pop/popover.component';
 import { MenuItemDirective } from '../../pop/directives/menu-item.directive';

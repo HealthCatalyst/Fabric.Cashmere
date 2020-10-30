@@ -1,4 +1,4 @@
-import {TestBed, inject, async} from '@angular/core/testing';
+import {TestBed, inject, waitForAsync} from '@angular/core/testing';
 
 import {ConfigStoreService} from './config-store.service';
 
@@ -13,7 +13,7 @@ describe('ConfigStoreService', () => {
         expect(service).toBeTruthy();
     }));
 
-    it('should setup default options', async(
+    it('should setup default options', waitForAsync(
         inject([ConfigStoreService], (service: ConfigStoreService) => {
             service.updateDateRangeOptions({
                 presets: [],

@@ -1,7 +1,7 @@
 import {Direction, Directionality} from '@angular/cdk/bidi';
 import {DOWN_ARROW, END, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW} from '@angular/cdk/keycodes';
 import {Component, ViewChild} from '@angular/core';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {HcNativeDateModule} from '../datetime/datetime.module';
 import {MAR, JUL, JUN, JAN, DEC, NOV, FEB, SEP, AUG, MAY, OCT} from '../utils/month-constants';
@@ -13,7 +13,7 @@ import {YearViewComponent} from './year-view.component';
 describe('HcYearView', () => {
     let dir: {value: Direction};
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [HcNativeDateModule],
             declarations: [
