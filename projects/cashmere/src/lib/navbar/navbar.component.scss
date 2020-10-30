@@ -31,6 +31,10 @@
         @include hc-navbar-icon();
     }
 
+    .hc-navbar-icon-home-uri {
+        @include hc-navbar-icon-home-uri();
+    }
+
     .hc-navbar-username {
         @include hc-navbar-username();
     }

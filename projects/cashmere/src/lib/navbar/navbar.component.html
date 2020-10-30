@@ -6,7 +6,8 @@
                 *ngIf="_brandIconType() != 'string'"
                 [fontSet]="_brandIconSet()"
                 [fontIcon]="_brandIconGlyph()"
-                [ngStyle]="{height: _brandIconSize(), 'font-size': _brandIconSize()}">
+                [ngStyle]="{height: _brandIconSize(), 'font-size': _brandIconSize()}"
+                [ngClass]="{ 'hc-navbar-icon-home-uri': homeUri !== '' }">
             </hc-icon>
         </a>
     </div>

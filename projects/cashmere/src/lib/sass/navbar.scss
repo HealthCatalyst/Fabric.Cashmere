@@ -160,6 +160,10 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     padding: 18px 0;
 }
 
+@mixin hc-navbar-icon-home-uri {
+    cursor: pointer;
+}
+
 @mixin hc-navbar-username {
     @include navbar-item();
     padding: 2px 15px 0;
