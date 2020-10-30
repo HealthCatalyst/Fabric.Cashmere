@@ -14,7 +14,7 @@
  *    `white-on-black` or `black-on-white`.
  */
 
-@import '../sass/table';
+@import './table';
 
 @mixin hc-sort-header() {
     cursor: pointer;
@@ -25,8 +25,8 @@
 }
 
 @mixin hc-sort-header-container() {
-     align-items: center;
-     display: flex;
+    align-items: center;
+    display: flex;
 }
 
 @mixin hc-sort-header-container-disabled() {

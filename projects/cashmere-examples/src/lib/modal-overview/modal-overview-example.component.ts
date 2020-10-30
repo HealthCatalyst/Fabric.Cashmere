@@ -1,5 +1,3 @@
-/* tslint:disable:no-use-before-declare */
-
 import {HcModal, ModalOptions, ModalService} from '@healthcatalyst/cashmere';
 import {Component, TemplateRef} from '@angular/core';
 import {ModalOverviewExampleModalComponent} from './modal-overview-example-modal.component';

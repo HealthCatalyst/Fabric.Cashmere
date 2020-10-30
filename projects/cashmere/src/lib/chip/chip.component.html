@@ -1,5 +1,7 @@
-<div class="hc-chip hc-chip-{{color}}">
-    <ng-content></ng-content>
+<div class="hc-chip hc-chip-{{color}}" [class.hc-chip-padding]="!tight" [style.width]="width">
+    <span class="hc-chip-content-{{color}}">
+        <ng-content></ng-content>
+    </span>
     <span *ngIf="hasCloseButton" class="hc-chip-close" (click)="_closeClick($event)">
         <span class="hc-chip-close-icon"></span>
     </span>

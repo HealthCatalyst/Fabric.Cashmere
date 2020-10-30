@@ -21,32 +21,36 @@
             <span class="hc-page-button-chevron hc-page-button-chevron-left"></span>
             <span>PREV</span>
         </button>
-        <!-- page navigation buttons to appear normally -->
-        <button
-            hc-button
-            color="secondary"
-            class="hc-page-button hc-page-inner-button expanded-page-button"
-            *ngFor="let page of _visiblePages"
-            [disabled]="!page"
-            [class.currentpage]="page === pageNumber"
-            (click)="_goToPage(page)"
-        >
-            <span *ngIf="!!page">{{ page }}</span>
-            <span *ngIf="!page" class="hc-page-button-ellipsis"></span>
-        </button>
-        <!-- page navigation buttons to appear when space is limited -->
-        <button
-            hc-button
-            color="secondary"
-            class="hc-page-button hc-inner-button collapsed-page-button"
-            *ngFor="let page of _collapsedVisiblePages"
-            [disabled]="!page"
-            [class.currentpage]="page === pageNumber"
-            (click)="_goToPage(page)"
-        >
-            <span *ngIf="!!page">{{ page }}</span>
-            <span *ngIf="!page" class="hc-page-button-ellipsis"></span>
-        </button>
+        <!-- large width page navigation buttons -->
+        <ng-container *ngIf="displayWidth === 'lg'">
+            <button
+                hc-button
+                color="secondary"
+                class="hc-page-button hc-page-inner-button"
+                *ngFor="let page of _visiblePages"
+                [disabled]="!page"
+                [class.hc-page-button-current]="page === pageNumber"
+                (click)="_goToPage(page)"
+            >
+                <span *ngIf="!!page">{{ page }}</span>
+                <span *ngIf="!page" class="hc-page-button-ellipsis"></span>
+            </button>
+        </ng-container>
+        <!-- medium width page navigation buttons -->
+        <ng-container *ngIf="displayWidth === 'md'">
+            <button
+                hc-button
+                color="secondary"
+                class="hc-page-button hc-page-inner-button"
+                *ngFor="let page of _collapsedVisiblePages"
+                [disabled]="!page"
+                [class.hc-page-button-current]="page === pageNumber"
+                (click)="_goToPage(page)"
+            >
+                <span *ngIf="!!page">{{ page }}</span>
+                <span *ngIf="!page" class="hc-page-button-ellipsis"></span>
+            </button>
+        </ng-container>
         <button
             hc-button
             color="secondary"

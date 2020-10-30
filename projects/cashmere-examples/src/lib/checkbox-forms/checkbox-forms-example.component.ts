@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 /**
  * @title Forms Support
@@ -8,9 +9,9 @@ import {Component} from '@angular/core';
     templateUrl: 'checkbox-forms-example.component.html'
 })
 export class CheckboxFormsExampleComponent {
-    isChecked: boolean;
+    readonly isCheckedControl = new FormControl(false);
 
     getCheckboxText() {
-        return `${this.isChecked ? 'Disable' : 'Enable'} Button`;
+        return `${this.isCheckedControl.value ? 'Disable' : 'Enable'} button`;
     }
 }

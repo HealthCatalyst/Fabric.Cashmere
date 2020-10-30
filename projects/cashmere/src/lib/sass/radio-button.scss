@@ -1,4 +1,5 @@
 @import './colors';
+@import './functions';
 
 @mixin hc-radio-container() {
     cursor: pointer;
@@ -18,9 +19,19 @@
     cursor: not-allowed;
 }
 
+@mixin hc-radio-container-inline() {
+    padding-left: 32px;
+    margin-right: 25px;
+}
+
+@mixin hc-radio-container-tight() {
+    margin: 1px 15px 1px 0;
+    padding-left: 25px;
+}
+
 @mixin hc-radio-overlay() {
     background-color: $white;
-    border: 2px solid $gray-300;
+    border: 1px solid $slate-gray-300;
     border-radius: 50%;
     height: 22px;
     left: 0;
@@ -41,13 +52,25 @@
     }
 }
 
+@mixin hc-radio-overlay-tight() {
+    height: 18px;
+    width: 18px;
+    top: 1px;
+
+    &:after {
+        left: 3px;
+        top: 3px;
+    }
+}
+
 @mixin hc-radio-overlay-hover() {
-    border-color: $primary-brand;
+    border: 1px solid $primary-brand;
+    background-color: tint($blue, 95%);
 }
 
 @mixin hc-radio-overlay-checked() {
     background-color: $primary-brand;
-    border-color: $primary-brand;
+    border: 2px solid $primary-brand;
 
     &:after {
         display: block;
@@ -66,7 +89,7 @@
 
 @mixin hc-radio-overlay-checked-disabled() {
     background-color: $gray-200;
-    border-color: $gray-300;
+    border: 1px solid $gray-300;
 }
 
 @mixin hc-radio-input() {
@@ -75,6 +98,19 @@
     position: absolute;
 }
 
+@mixin hc-radio-input-focus {
+    outline: none;
+    box-shadow: 0 0 5px $primary-brand;
+}
+
+@mixin hc-radio-input-active {
+    outline: none;
+}
+
 @mixin hc-radio-input-disabled() {
     cursor: not-allowed;
+}
+
+@mixin hc-radio-content-tight() {
+    font-size: calculateRem(13px);
 }

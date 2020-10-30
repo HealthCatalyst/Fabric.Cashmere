@@ -1,4 +1,4 @@
-<hc-navbar appIcon="./assets/CashmereAppLogo.svg" [brandIcon]="navIcon" [homeUri]="undefined" [fixedTop]="false">
+<hc-navbar appIcon="https://cashmere.healthcatalyst.net/assets/CashmereAppLogo.svg" [brandIcon]="navIcon" [homeUri]="undefined" [fixedTop]="false">
     <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
@@ -6,10 +6,10 @@
     <hc-navbar-link [active]="false" uri="undefined" linkText="Cardiovascular"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Rehabilition"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Intensive Care"></hc-navbar-link>
-    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-th" [hcPop]="appSwitcher"></hc-icon>
-    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-question-circle-o" [hcPop]="options"></hc-icon>
+    <hc-icon class="hc-navbar-icon" tabindex="0" fontSet="fa" fontIcon="fa-th" [hcPop]="appSwitcher"></hc-icon>
+    <hc-icon class="hc-navbar-icon" tabindex="0" fontSet="fa" fontIcon="fa-question-circle-o" [hcPop]="options"></hc-icon>
     <span class="hc-navbar-vertical-separator"></span>
-    <div class="hc-navbar-username" *ngIf="user" [hcPop]="user">
+    <div class="hc-navbar-username" *ngIf="user" [hcPop]="user" tabindex="0">
         <span class="hc-text-ellipsis">{{ username }}</span>
         <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
     </div>
@@ -35,8 +35,13 @@
     </hc-navbar-mobile-menu>
 </hc-navbar>
 
-<hc-pop #appSwitcher [showArrow]="false" horizontalAlign="end">
-    <hc-app-switcher></hc-app-switcher>
+<br>
+
+<p><em><strong>Note:</strong> the code for this example demonstrates how to setup a mobile menu in the navbar, however
+    its display has been disabled here to prevent it from colliding with the Cashmere site navigation.</em></p>
+
+<hc-pop #appSwitcher [showArrow]="false" horizontalAlign="end" [autoFocus]="true">
+    <hc-app-switcher [serviceName]="currentAppName" [serviceVersion]="currentAppVersion"></hc-app-switcher>
 </hc-pop>
 
 <hc-pop #options [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
@@ -56,6 +61,10 @@
         <a hcMenuItem href="http://example.com" target="_blank">
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bullhorn"></hc-icon>
             <span hcMenuText>Find out what's new</span>
+        </a>
+        <a hcMenuItem href="http://example.com" target="_blank">
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bug"></hc-icon>
+            <span hcMenuText>Report an issue</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
             <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-comments"></hc-icon>

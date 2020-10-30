@@ -3,40 +3,40 @@
     <div class="col-1">
         <hc-form-field>
             <hc-label>Color:</hc-label>
-            <hc-select [(ngModel)]="spinnerColor">
-                <option value="blue" [selected]="spinnerColor === 'blue'">blue</option>
-                <option value="green" [selected]="spinnerColor === 'green'">green</option>
-                <option value="purple" [selected]="spinnerColor === 'purple'">purple</option>
-                <option value="orange" [selected]="spinnerColor === 'orange'">orange</option>
-                <option value="red" [selected]="spinnerColor === 'red'">red</option>
-                <option value="gray" [selected]="spinnerColor === 'gray'">gray</option>
-                <option value="white" [selected]="spinnerColor === 'white'">white</option>
+            <hc-select [formControl]="spinnerColor">
+                <option value="blue" [selected]="spinnerColor.value === 'blue'">Blue</option>
+                <option value="green" [selected]="spinnerColor.value === 'green'">Green</option>
+                <option value="purple" [selected]="spinnerColor.value === 'purple'">Purple</option>
+                <option value="orange" [selected]="spinnerColor.value === 'orange'">Orange</option>
+                <option value="red" [selected]="spinnerColor.value === 'red'">Red</option>
+                <option value="gray" [selected]="spinnerColor.value === 'gray'">Gray</option>
+                <option value="white" [selected]="spinnerColor.value === 'white'">White</option>
             </hc-select>
         </hc-form-field>
         <hc-form-field>
             <hc-label>Diameter:</hc-label>
-            <input hcInput type="number" min="20" max="250" class="form-control" id="diameter" [(ngModel)]="spinnerDiameter" name="diameter">
+            <input hcInput type="number" min="20" max="250" class="form-control" id="diameter" [formControl]="spinnerDiameter" name="diameter">
         </hc-form-field>
-        <hc-checkbox id="checkbox-bg" [(ngModel)]="spinnerHasChannel" [checked]="spinnerHasChannel">BG Channel</hc-checkbox>
-        <hc-checkbox id="checkbox-center" [(ngModel)]="spinnerCentered" [checked]="spinnerCentered">Centered</hc-checkbox>
+        <hc-checkbox id="checkbox-bg" [formControl]="spinnerHasChannel" [checked]="spinnerHasChannel">BG channel</hc-checkbox>
+        <hc-checkbox id="checkbox-center" [formControl]="spinnerCentered" [checked]="spinnerCentered">Centered</hc-checkbox>
         <hr>
-        <hc-checkbox id="checkbox-determinate" [(ngModel)]="spinnerIsDeterminate">Determinate</hc-checkbox>
+        <hc-checkbox id="checkbox-determinate" [formControl]="spinnerIsDeterminate">Determinate</hc-checkbox>
         <hc-form-field inline>
             <hc-label>Progress (0-100%):</hc-label>
-            <input hcInput type="number" min="0" max="100" class="form-control" id="name" [(ngModel)]="spinnerProgress" [disabled]="!spinnerIsDeterminate" name="name">
+            <input hcInput type="number" min="0" max="100" class="form-control" id="name" [formControl]="spinnerProgress" [disabled]="!spinnerIsDeterminate" name="name">
         </hc-form-field>
     </div>
 
     <!-- Spinner -->
     <div class="col-2">
-        <div class="progress-component-container" [ngClass]="{'dark-bg': spinnerColor === 'white'}">
+        <div class="progress-component-container" [ngClass]="{'dark-bg': spinnerColor.value === 'white'}">
             <hc-progress-spinner
-                [diameter]="spinnerDiameter"
-                [color]="spinnerColor"
-                [hasChannel]="spinnerHasChannel"
-                [isCentered]="spinnerCentered"
-                [isDeterminate]="spinnerIsDeterminate"
-                [progress]="spinnerProgress"></hc-progress-spinner>
+                [diameter]="spinnerDiameter.value"
+                [color]="spinnerColor.value"
+                [hasChannel]="spinnerHasChannel.value"
+                [isCentered]="spinnerCentered.value"
+                [isDeterminate]="spinnerIsDeterminate.value"
+                [progress]="spinnerProgress.value"></hc-progress-spinner>
         </div>
     </div>
 </div>

@@ -1,0 +1,9 @@
+<ng-select class="checkbox-dropdown" [items]="careTeamRoles" [multiple]="true" [closeOnSelect]="false"
+    [searchable]="true" bindLabel="name" placeholder="Select to add" [formControl]="selectedCareTeamRoles">
+    <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+        <hc-checkbox [checked]="item$.selected" [isStub]="true">
+            {{ item.name }}</hc-checkbox>
+    </ng-template>
+</ng-select>
+
+<p>Selected: <code>{{selectedCareTeamRoles.value | json}}</code></p>

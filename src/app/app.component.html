@@ -2,9 +2,11 @@
     <hc-navbar-link uri="/home" linkText="Home"></hc-navbar-link>
     <hc-navbar-link uri="/styles" linkText="Styles"></hc-navbar-link>
     <hc-navbar-link uri="/components" linkText="Components"></hc-navbar-link>
+    <hc-navbar-link uri="/bits" linkText="Bits"></hc-navbar-link>
     <hc-navbar-link uri="/guides" linkText="Guides"></hc-navbar-link>
-    <a class="hc-navbar-github-button" title="View on GitHub" href="https://github.com/HealthCatalyst/Fabric.Cashmere" target="blank">
-        <hc-icon fontSet="fa" fontIcon="fa-github" hcIconLg></hc-icon>
+    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-search" [hcPop]="search" (click)="setInputFocus()"></hc-icon>
+    <a class="hc-navbar-icon" title="View on GitHub" href="https://github.com/HealthCatalyst/Fabric.Cashmere" target="blank">
+        <hc-icon class="hc-navbar-external-link" fontSet="fa" fontIcon="fa-github"></hc-icon>
     </a>
     <hc-navbar-mobile-menu appSwitcher="false">
         <hc-list>
@@ -17,8 +19,14 @@
             <hc-list-item routerLink="/components" routerLinkActive="active-link">
                 <span hcListLine>Components</span>
             </hc-list-item>
-            <hc-list-item routerLink="/guides/getting-started" routerLinkActive="active-link">
+            <hc-list-item routerLink="/bits" routerLinkActive="active-link">
+                <span hcListLine>Bits</span>
+            </hc-list-item>
+            <hc-list-item routerLink="/guides" routerLinkActive="active-link">
                 <span hcListLine>Guides</span>
+            </hc-list-item>
+            <hc-list-item routerLink="/results" routerLinkActive="active-link">
+                <span hcListLine>Search</span>
             </hc-list-item>
         </hc-list>
         <hr />
@@ -31,4 +39,25 @@
         </hc-list>
     </hc-navbar-mobile-menu>
 </hc-navbar>
+<hc-pop #search [autoCloseOnContentClick]="false" [showArrow]="false" horizontalAlign="end" verticalAlign="below"
+    class="hc-navbar-search-popover">
+    <div hcMenu class="hc-search-menu">
+        <hc-form-field class="hc-navbar-search-wrapper">
+            <hc-icon hcPrefix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
+            <input #searchInput hcInput [formControl]="navSearchBar" autocomplete="off"
+                placeholder="Search the Cashmere docs" class="searchBar" id='hc-nav-search-input' />
+        </hc-form-field>
+        <hc-list class="hc-navbar-search-results">
+            <hc-list-item *ngFor="let item of searchResults" class="hc-navbar-search-results-items"
+                [routerLink]="'/' + item.link" [queryParams]="{section: item.section, selected: item.displayName}" (click)="search.toggle()">
+                    <hc-icon fontSet="fa" [fontIcon]="searchIcons[item.category].icon" hcListIcon class="results-icon"></hc-icon>
+                    <div hcListLine class="result-title hc-text-ellipsis">{{item.title}}</div>
+                    <div hcListLine class="result-sub-text">{{item.link}}</div>
+            </hc-list-item>
+        </hc-list>
+        <div *ngIf="showAll" routerLink="/results" [queryParams]="{search: searchValue}" (click)="search.toggle()" class="hc-navbar-search-show-all">
+            Show all search results
+        </div>
+    </div>
+</hc-pop>
 <router-outlet></router-outlet>

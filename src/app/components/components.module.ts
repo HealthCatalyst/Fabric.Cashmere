@@ -9,35 +9,30 @@ import {ExampleModule} from '@healthcatalyst/cashmere-examples';
 import {ComponentUsageComponent} from './component-viewer/component-usage/component-usage.component';
 import {ComponentsComponent} from './components.component';
 import {ComponentsRouterModule} from './components-router.module';
-import {HighlightModule} from 'ngx-highlightjs';
+import {HighlightModule, HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
-
-import xml from 'highlight.js/lib/languages/xml';
-import scss from 'highlight.js/lib/languages/scss';
-import typescript from 'highlight.js/lib/languages/typescript';
 
 /**
  * Import every language you wish to highlight here
  * NOTE: The name of each language must match the file name its imported from
  */
-export function hljsLanguages() {
+export function getHljsLanguages() {
     return [
-        {name: 'typescript', func: typescript},
-        {name: 'scss', func: scss},
-        {name: 'xml', func: xml}
+        {name: 'typescript', func: () => import('highlight.js/lib/languages/typescript')},
+        {name: 'scss', func: () => import('highlight.js/lib/languages/scss')},
+        {name: 'xml', func: () => import('highlight.js/lib/languages/xml')}
     ];
 }
 
 @NgModule({
-    imports: [
-        SharedModule,
-        ExampleModule,
-        ComponentsRouterModule,
-        HighlightModule.forRoot({
-            languages: hljsLanguages
-        })
+    imports: [SharedModule, ExampleModule, ComponentsRouterModule, HighlightModule],
+    providers: [
+        ApplicationInsightsService,
+        {
+            provide: HIGHLIGHT_OPTIONS,
+            useValue: {languages: getHljsLanguages, lineNumbers: true}
+        }
     ],
-    providers: [ApplicationInsightsService],
     declarations: [
         ComponentsComponent,
         ComponentViewerComponent,

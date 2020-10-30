@@ -1,0 +1,16 @@
+@import '../../sass/_tooltip.scss';
+@import '../../sass/popover.scss';
+
+.hc-tooltip-container {
+    top: -10px;
+    line-height: 14px; // https://github.com/HealthCatalyst/Fabric.Cashmere/issues/1365
+
+    .hc-tooltip {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .hc-pop-arrow {
+        bottom: -14px;
+    }
+}

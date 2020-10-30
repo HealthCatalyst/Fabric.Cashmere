@@ -101,7 +101,7 @@ export class MonthViewComponent implements AfterContentInit {
     readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
 
     /** The body of calendar table */
-    @ViewChild(CalendarBodyComponent)
+    @ViewChild(CalendarBodyComponent, {static: false})
     _hcCalendarBody: CalendarBodyComponent;
 
     /** The label for this month (e.g. "January 2017"). */
@@ -164,9 +164,9 @@ export class MonthViewComponent implements AfterContentInit {
             const selectedMonth = this._dateAdapter.getMonth(this.activeDate);
             let selectedDate = this._dateAdapter.createDate(selectedYear, selectedMonth, date);
 
-            if ( this._selected ) {
-                selectedDate.setHours( this._selected.getHours() );
-                selectedDate.setMinutes( this._selected.getMinutes() );
+            if (this._selected) {
+                selectedDate.setHours(this._selected.getHours());
+                selectedDate.setMinutes(this._selected.getMinutes());
             }
 
             this.selectedChange.emit(selectedDate);

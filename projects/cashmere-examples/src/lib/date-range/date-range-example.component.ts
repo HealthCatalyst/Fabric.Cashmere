@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {DateRangeOptions, PresetItem, DateRange} from '@healthcatalyst/cashmere';
+import {FormControl} from '@angular/forms';
 
 @Component({
     selector: 'hc-date-range-example',
@@ -10,6 +11,7 @@ export class DateRangeExampleComponent implements OnInit {
     range: DateRange = {fromDate: new Date(), toDate: new Date()};
     selected: number | DateRange = this.range;
     options: DateRangeOptions;
+    optionsControl = new FormControl(false);
     presets: Array<PresetItem> = [];
     presetSelection: string = 'None';
 
@@ -28,6 +30,10 @@ export class DateRangeExampleComponent implements OnInit {
             fromMinMax: {fromDate: fromMin, toDate: fromMax},
             toMinMax: {fromDate: toMin, toDate: toMax}
         };
+
+        this.optionsControl.valueChanges.subscribe(value => {
+            this.options.excludeWeekends = value;
+        });
     }
 
     updateRange(range: DateRange) {
@@ -65,23 +71,23 @@ export class DateRangeExampleComponent implements OnInit {
                 range: {fromDate: yesterday, toDate: today}
             },
             {
-                presetLabel: 'Last 7 Days',
+                presetLabel: 'Last 7 days',
                 range: {fromDate: minus7, toDate: today}
             },
             {
-                presetLabel: 'Last 30 Days',
+                presetLabel: 'Last 30 days',
                 range: {fromDate: minus30, toDate: today}
             },
             {
-                presetLabel: 'This Month',
+                presetLabel: 'This month',
                 range: {fromDate: currMonthStart, toDate: currMonthEnd}
             },
             {
-                presetLabel: '1 Month to End',
+                presetLabel: '1 month to end',
                 range: {fromDate: currMonthStart, toDate: currMonthEnd}
             },
             {
-                presetLabel: 'Last Month',
+                presetLabel: 'Last month',
                 range: {fromDate: lastMonthStart, toDate: lastMonthEnd}
             }
         ];

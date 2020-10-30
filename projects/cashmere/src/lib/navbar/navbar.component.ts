@@ -12,12 +12,14 @@ import {
     OnDestroy
 } from '@angular/core';
 import {HcPopoverAnchorDirective} from '../pop/directives/popover-anchor.directive';
+import {HcPopComponent} from '../pop/popover.component';
 import {MoreItem} from './more-item';
 import {NavbarLinkComponent} from './navbar-link/navbar-link.component';
 import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu.component';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {HcIcon} from '../icon/icon.component';
+import {NavbarDropdownComponent} from './navbar-dropdown/navbar-dropdown.component';
 
 /** The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. */
 @Component({
@@ -51,13 +53,16 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     _mobileMenu: QueryList<NavbarMobileMenuComponent>;
 
     @ContentChildren(NavbarLinkComponent)
-    _navLinks: QueryList<NavbarLinkComponent>;
+    _navLinks: QueryList<NavbarLinkComponent | NavbarDropdownComponent>;
 
-    @ViewChild('navbar') navbarContent: ElementRef;
-    @ViewChild('navlinks') navContent: ElementRef;
+    @ViewChild('navbar', {static: false}) navbarContent: ElementRef;
+    @ViewChild('navlinks', {static: false}) navContent: ElementRef;
 
-    @ViewChild('moreLink')
+    @ViewChild('moreLink', {static: false})
     _navbarMore: HcPopoverAnchorDirective;
+
+    @ViewChild('navbarMore', {static: false})
+    _morePop: HcPopComponent;
 
     private unsubscribe$ = new Subject<void>();
 
@@ -67,10 +72,15 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     public _collapse: boolean = false;
     public _moreList: Array<MoreItem> = [];
 
+    /** Forces a recalculation of the navbar links to determine how many should be rolling into a More menu.
+     * Call this if you've updated the contents of any navbar links. */
     @HostListener('window:resize')
-    _navResize() {
+    refreshNavLinks() {
         if (this._navbarMore) {
             this._navbarMore.closePopover();
+        }
+        if ( this._linksTotalWidth === 0 ) {
+            this._collectNavLinkWidths();
         }
 
         this._moreList = [];
@@ -92,10 +102,26 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
             let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
             if (curLinks + moreWidth < linksContainerWidth) {
                 t.show();
+                // Reset the parent and positioning of any dropdown popovers that aren't in the More menu
+                const tempDrop = t as NavbarDropdownComponent;
+                if ( tempDrop._menuPop ) {
+                    tempDrop._menuPop.horizontalAlign = 'start';
+                    tempDrop._menuPop.verticalAlign = 'below';
+                    tempDrop._menuPop.parent = null;
+                }
             } else {
                 t.hide();
                 this._collapse = true;
-                this._moreList.push({name: t.linkText, uri: t.uri});
+                const tempDrop = t as NavbarDropdownComponent;
+                // Translate any navbar dropdown menus into secondary menus in the More dropdown
+                if ( tempDrop._menuPop ) {
+                    tempDrop._menuPop.horizontalAlign = 'after';
+                    tempDrop._menuPop.verticalAlign = 'start';
+                    tempDrop._menuPop.parent = this._morePop;
+                    this._moreList.push({name: t.linkText, uri: t.uri, dropdown: tempDrop._menuPop});
+                } else {
+                    this._moreList.push({name: t.linkText, uri: t.uri});
+                }
             }
         });
 
@@ -103,13 +129,6 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     }
 
     constructor(private ref: ChangeDetectorRef) {}
-
-    /** Forces a recalculation of the navbar links to determine how many should be rolling into a More menu.
-     * Call this if you've updated the contents of any navbar links. */
-    refreshNavLinks() {
-        this._collectNavLinkWidths();
-        this._navResize();
-    }
 
     private _collectNavLinkWidths() {
         this._linkWidths = [];
@@ -140,14 +159,12 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     }
 
     _toggleMobileMenu() {
-        if (this._mobileMenu.first) {
-            if (this._menuOpen) {
-                this._mobileMenu.first.hide();
-                this._menuOpen = false;
-            } else {
-                this._mobileMenu.first.show();
-                this._menuOpen = true;
-            }
+        if (this._menuOpen) {
+            this._mobileMenu.first.hide();
+            this._menuOpen = false;
+        } else {
+            this._mobileMenu.first.show();
+            this._menuOpen = true;
         }
     }
 
@@ -175,7 +192,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     }
 
     _brandIconSet(): string {
-        if ( this.brandIcon && typeof this.brandIcon !== 'string' ) {
+        if (this.brandIcon && typeof this.brandIcon !== 'string') {
             return this.brandIcon.fontSet;
         } else {
             return '';
@@ -183,7 +200,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     }
 
     _brandIconGlyph(): string {
-        if ( this.brandIcon && typeof this.brandIcon !== 'string' ) {
+        if (this.brandIcon && typeof this.brandIcon !== 'string') {
             return this.brandIcon.fontIcon;
         } else {
             return '';
@@ -191,9 +208,9 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     }
 
     _brandIconSize(): string {
-        if ( this.brandIcon && typeof this.brandIcon !== 'string' && this.brandIcon.fontSize ) {
-            return this.brandIcon.fontSize + "px";
+        if (this.brandIcon && typeof this.brandIcon !== 'string' && this.brandIcon.fontSize) {
+            return this.brandIcon.fontSize + 'px';
         }
-        return "37px";
+        return '37px';
     }
 }

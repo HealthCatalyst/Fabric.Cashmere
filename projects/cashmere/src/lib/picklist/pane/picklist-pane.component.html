@@ -22,7 +22,7 @@
     <div class="list-container" #listContainer>
         <!-- Valuesets -->
         <div *ngIf="valueSetList.isActive && (valueSetList.loadingOptions | async)" class="loading-list"><hc-progress-dots></hc-progress-dots></div>
-        <table *ngIf="shouldShowList(valueSetList) && !(valueSetList.loadingOptions | async)" class="hc-table hc-table-small hc-no-hover-table valueset-table">
+        <table *ngIf="shouldShowList(valueSetList) && !(valueSetList.loadingOptions | async)" class="hc-table hc-table-small valueset-table">
             <tbody>
                 <!-- Header, shown when both values and valuesets are sitting in list at same time -->
                 <tr *ngIf="shouldShowList(valueSetList) && shouldShowList(valueList)"><th colspan="2">Value Sets</th></tr>
@@ -70,7 +70,7 @@
 
         <!-- Values -->
         <div *ngIf="valueList.isActive && (valueList.loadingOptions | async)" class="loading-list"><hc-progress-dots></hc-progress-dots></div>
-        <table *ngIf="shouldShowList(valueList) && !(valueList.loadingOptions | async)" class="hc-table hc-table-small hc-no-hover-table" [ngClass]="{'no-code-column': !codeIsSignificant}">
+        <table *ngIf="shouldShowList(valueList) && !(valueList.loadingOptions | async)" class="hc-table hc-table-small" [ngClass]="{'no-code-column': !codeIsSignificant}">
             <tbody>
                 <!-- Header, shown when both values and valuesets are sitting in list at same time -->
                 <tr *ngIf="shouldShowList(valueSetList) && shouldShowList(valueList)"><th colspan="2">Individual Values</th></tr>

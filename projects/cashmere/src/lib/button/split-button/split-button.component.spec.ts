@@ -1,4 +1,4 @@
-/* tslint:disable:no-use-before-declare component-class-suffix */
+/* tslint:disable:component-class-suffix */
 
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
@@ -53,7 +53,7 @@ describe('SplitButtonComponent', () => {
     template: `
         <hc-split-button (click)="primaryButtonClick()">
             Button Text
-            <div hcButtonItem (click)="menuItemClick()">Menu Item</div>
+            <div hcMenuItem (click)="menuItemClick()">Menu Item</div>
         </hc-split-button>
     `
 })

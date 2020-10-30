@@ -1,6 +1,6 @@
-/* tslint:disable:use-host-property-decorator */
+/* tslint:disable:no-host-metadata-property */
 
-import {Component, ElementRef, Input, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -18,6 +18,9 @@ export class DocumentViewerComponent {
         this.fetchDocument(docUrl);
     }
 
+    @Output()
+    loaded: EventEmitter<boolean> = new EventEmitter();
+
     constructor(private http: HttpClient, private element: ElementRef) {}
 
     private fetchDocument(docUrl: string) {
@@ -26,5 +29,6 @@ export class DocumentViewerComponent {
 
     private updateDocument(docHtml: string): void {
         this.element.nativeElement.innerHTML = docHtml;
+        this.loaded.emit( true );
     }
 }

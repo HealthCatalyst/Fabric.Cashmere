@@ -7,11 +7,16 @@ import {
     Input,
     Output,
     ViewEncapsulation,
-    ViewChild
+    ViewChild,
+    ContentChildren,
+    QueryList
 } from '@angular/core';
 import {parseBooleanAttribute} from '../../util';
 import {validateStyleInput, validateSizeInput, ButtonComponent} from '../button.component';
 import {HcPopComponent} from '../../pop/popover.component';
+import {MenuItemDirective} from '../../pop/directives/menu-item.directive';
+
+const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
 
 /** SplitButton click event */
 export class SplitButtonClickEvent {
@@ -32,11 +37,13 @@ export class SplitButtonComponent {
     private _style: string = 'primary';
     private _size: string = 'md';
 
-    @ViewChild('splitBtnToggle')
+    @ViewChild('splitBtnToggle', {static: false})
     _splitBtnToggle: ButtonComponent;
 
-    @ViewChild('splitMenu')
+    @ViewChild('splitMenu', {static: false})
     _splitMenu: HcPopComponent;
+
+    @ContentChildren(MenuItemDirective, {descendants: true}) _menuItems: QueryList<MenuItemDirective>;
 
     /** Primary button's click event */
     @Output()
@@ -89,7 +96,9 @@ export class SplitButtonComponent {
         this.buttonStyle = btnStyle;
     }
 
-    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'` */
+    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' |
+     * 'neutral' | 'secondary' | 'minimal'`. If needed, colors from
+     * the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc) */
     @Input()
     get buttonStyle(): string {
         return this._style;
@@ -97,6 +106,9 @@ export class SplitButtonComponent {
 
     set buttonStyle(btnStyle: string) {
         validateStyleInput(btnStyle);
+        if ( supportedStyles.indexOf(btnStyle) < 0 ) {
+            btnStyle = "button-" + btnStyle;
+        }
         this._style = btnStyle;
     }
 
@@ -152,6 +164,9 @@ export class SplitButtonComponent {
 
     /** Manually open the menu */
     openMenu() {
+        // pass menuItems on to the HcPop instance so that keyboard accessibility works
+        if (this._splitMenu) { this._splitMenu._menuItems = this._menuItems; }
+
         this._splitMenu.open();
     }
 }

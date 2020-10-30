@@ -29,7 +29,7 @@ export class DatepickerToggleIconDirective {}
     selector: 'hc-datepicker-toggle',
     templateUrl: './datepicker-toggle.component.html',
     styleUrls: ['./datepicker-toggle.component.scss'],
-    // tslint:disable-next-line:use-host-property-decorator
+    // tslint:disable-next-line:no-host-metadata-property
     host: {
         class: 'hc-datepicker-toggle',
         // Always set the tabindex to -1 so that it doesn't overlap with any custom tabindex the
@@ -65,11 +65,11 @@ export class DatepickerToggleComponent implements AfterContentInit, OnChanges, O
     private _disabled: boolean;
 
     /** Custom icon set by the consumer. */
-    @ContentChild(DatepickerToggleIconDirective)
+    @ContentChild(DatepickerToggleIconDirective, {static: false})
     _customIcon: DatepickerToggleIconDirective;
 
     /** Underlying button element. */
-    @ViewChild('button')
+    @ViewChild('button', {static: false})
     _button: ButtonComponent;
 
     constructor(

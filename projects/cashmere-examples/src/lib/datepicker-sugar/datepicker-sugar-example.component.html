@@ -1,9 +1,15 @@
+<p class="example-date-description">
+    <a href="https://sugarjs.com/dates/#/Parsing">SugarJS</a>
+    is a JavaScript library used by many Health Catalyst applications to handle parsing user input into
+    <code>Date</code>
+    objects. It handles a wide variety of input formats and supports multiple languages. To use SugarJS with the Cashmere DatePicker, you
+    need to declare a Sugar Date Adapter. See this example's Module code for more information.
+</p>
 <div class="example-date-input">
     <hc-form-field>
         <hc-label>Date:</hc-label>
-        <input hcInput [hcDatepicker]="picker1" [(ngModel)]="date1" placeholder="Custom date parsing..." class="cursor-pointer" />
-        <hc-datepicker-toggle hcSuffix [for]="picker1">
-        </hc-datepicker-toggle>
+        <input hcInput [hcDatepicker]="picker1" [formControl]="dateControl" placeholder="Custom date parsing..." class="cursor-pointer" />
+        <hc-datepicker-toggle hcSuffix [for]="picker1"></hc-datepicker-toggle>
         <hc-datepicker #picker1></hc-datepicker>
     </hc-form-field>
 </div>

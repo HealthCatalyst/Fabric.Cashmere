@@ -8,7 +8,8 @@ import {
     EventEmitter,
     OnChanges,
     SimpleChanges,
-    HostBinding
+    HostBinding,
+    ChangeDetectorRef
 } from '@angular/core';
 import {ConfigStoreService} from '../services/config-store.service';
 import {CalendarComponent} from '../../datepicker/calendar/calendar.component';
@@ -27,10 +28,10 @@ export class CalendarWrapperComponent implements OnChanges {
     @HostBinding('class.hc-calendar-wrapper')
     _hostClass = true;
 
-    @ViewChild(CalendarComponent)
+    @ViewChild(CalendarComponent, {static: true})
     hcCalendar: CalendarComponent;
 
-    @ViewChild(DatepickerInputDirective)
+    @ViewChild(DatepickerInputDirective, {static: true})
     datePickerInput: DatepickerInputDirective;
 
     /** Emits when selected date has changed. */
@@ -56,6 +57,7 @@ export class CalendarWrapperComponent implements OnChanges {
     @Input()
     prefixLabel: string;
 
+    /** Flag to filter out weekends. */
     @Input()
     excludeWeekends: boolean;
 
@@ -63,16 +65,17 @@ export class CalendarWrapperComponent implements OnChanges {
     @Input()
     minDate: D | undefined;
 
-    @Input()
-    invalidDateLabel: string;
-
-    /** Flag to filter out weekends. */
+    /** The maximum selectable date. */
     @Input()
     maxDate: D | undefined;
 
+    /** Message displayed when a date is invalid. */
+    @Input()
+    invalidDateLabel: string;
+
     weekendFilter = () => true;
 
-    constructor(public configStore: ConfigStoreService) {}
+    constructor(public configStore: ConfigStoreService, private ref: ChangeDetectorRef) {}
 
     ngOnChanges(changes: SimpleChanges) {
         // Necessary to force view refresh
@@ -91,12 +94,12 @@ export class CalendarWrapperComponent implements OnChanges {
     }
 
     _onInputChange(event: HcDatepickerInputEvent) {
-        if ( this.mode === 'time' ) {
-            let tempVal = (event.value) ? new Date(1900, 1, 1, event.value.getHours(), event.value.getMinutes()) : new Date(1900, 1, 1);
-            let minVal = (this.minDate) ? new Date(1900, 1, 1, this.minDate.getHours(), this.minDate.getMinutes()) : new Date(1900, 1, 1);
-            let maxVal = (this.maxDate) ? new Date(1900, 1, 1, this.maxDate.getHours(), this.maxDate.getMinutes()) : new Date(1900, 1, 2);
+        if (this.mode === 'time') {
+            let tempVal = event.value ? new Date(1900, 1, 1, event.value.getHours(), event.value.getMinutes()) : new Date(1900, 1, 1);
+            let minVal = this.minDate ? new Date(1900, 1, 1, this.minDate.getHours(), this.minDate.getMinutes()) : new Date(1900, 1, 1);
+            let maxVal = this.maxDate ? new Date(1900, 1, 1, this.maxDate.getHours(), this.maxDate.getMinutes()) : new Date(1900, 1, 2);
 
-            if ( tempVal < minVal || tempVal > maxVal ) {
+            if (tempVal < minVal || tempVal > maxVal) {
                 this.selectedDate = undefined;
                 this.selectedDateChange.emit(undefined);
             } else {
@@ -115,5 +118,6 @@ export class CalendarWrapperComponent implements OnChanges {
     /** Focus inner input */
     focusInput() {
         this.datePickerInput.focus();
+        this.ref.detectChanges();
     }
 }

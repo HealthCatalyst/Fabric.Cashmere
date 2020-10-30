@@ -11,13 +11,14 @@ const routes: Routes = [
             {
                 path: ':id',
                 component: GuideComponent
-            }
+            },
+            {path: '**', redirectTo: 'getting-started'}
         ]
     }
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
 export class GuidesRoutesModule {}

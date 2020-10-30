@@ -1,4 +1,6 @@
 @import './colors';
+@import './functions';
+@import './mixins';
 
 @mixin hc-tile {
     width: 100%;
@@ -11,6 +13,56 @@
     margin-bottom: 30px;
 }
 
+@mixin hc-tile-tight {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+@mixin hc-tile-header-blue {
+    @include fontSize(15px);
+    text-transform: uppercase;
+    color: $dark-blue;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+}
+
+@mixin hc-tile-header-title {
+    @include fontSize(18px);
+    font-weight: 600;
+    margin: 0 0 20px 0;
+}
+
+@mixin hc-tile-header-center {
+    @include fontSize(18px);
+    color: inherit;
+    font-weight: 600;
+    text-align: center;
+
+    hc-icon {
+        margin-bottom: 10px;
+    }
+
+    p {
+        @include fontSize(14px);
+    }
+}
+
 .hc-tile {
-    @include hc-tile;
+    @include hc-tile();
+}
+
+.hc-tile-tight {
+    @include hc-tile-tight();
+}
+
+.hc-tile-header-blue {
+    @include hc-tile-header-blue();
+}
+
+.hc-tile-header-title {
+    @include hc-tile-header-title();
+}
+
+.hc-tile-header-center {
+    @include hc-tile-header-center();
 }

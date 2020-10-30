@@ -8,3 +8,18 @@ $hc-icons-font-path: 'node_modules/@healthcatalyst/cashmere/hcicons';
 @import '~@healthcatalyst/cashmere/hcicons/hcicons';
 
 @import '~@healthcatalyst/cashmere/scss/cashmere';
+
+// global styles for stackblitz examples
+.demo-button {
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+}
+
+hc-example-viewer .hc-tab-content-horizontal {
+    padding: 3px;
+}
+
+.pipe-output {
+    font-weight: 600px;
+    font-size: 22px;
+}

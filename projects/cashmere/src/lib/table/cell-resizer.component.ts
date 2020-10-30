@@ -1,6 +1,17 @@
 /* Based on an example posted by Paolo Caleffi at: https://github.com/angular/material2/issues/8312 */
 
-import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    HostBinding,
+    HostListener,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    ViewEncapsulation
+} from '@angular/core';
 import {BindObservable} from './bind-observable/bind-observable';
 import {untilDestroyed} from '../util';
 import {fromEvent, Observable, Subscription} from 'rxjs';
@@ -14,7 +25,8 @@ export class CellResizeEvent {
     selector: 'hc-cell-resizer',
     template: '<div class="hc-cell-resizer-left"></div><div class="hc-cell-resizer-right"></div>',
     styleUrls: [],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None
 })
 export class HcCellResizer implements OnInit, OnDestroy {
     /**

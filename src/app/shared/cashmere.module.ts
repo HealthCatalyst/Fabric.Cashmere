@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import {
     AccordionModule,
     AppSwitcherModule,
@@ -25,6 +25,7 @@ import {
     ScrollNavModule,
     SelectModule,
     SortModule,
+    StepperModule,
     SubnavModule,
     TabsModule,
     TableModule,
@@ -32,6 +33,7 @@ import {
     ToasterModule,
     TypeformSurveyModule
 } from '@healthcatalyst/cashmere';
+import {ChangeCasePipeModule} from '@bit/healthcatalyst.cashmere.change-case-pipe';
 
 @NgModule({
     exports: [
@@ -60,12 +62,14 @@ import {
         ScrollNavModule,
         SelectModule,
         SortModule,
+        StepperModule,
         SubnavModule,
         TableModule,
         TabsModule,
         TileModule,
         ToasterModule,
-        TypeformSurveyModule
+        TypeformSurveyModule,
+        ChangeCasePipeModule
     ]
 })
-export class CashmereModule {}
+export class CashmereModule { }

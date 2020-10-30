@@ -1,4 +1,79 @@
-.hc-navbar-github-button {
-    padding: 9px 15px;
-    color: white;
+@import "scss/colors";
+
+.hc-navbar-external-link {
+    width: 53px;
+}
+
+.hc-search-menu {
+    padding: 0;
+    margin: -13px;
+
+    .hc-navbar-search-wrapper {
+        margin-bottom: -10px;
+
+        .searchBar {
+            width: 350px;
+            height: 40px;
+            font-size: 16px;
+        }
+    }
+
+    .hc-navbar-search-results {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+
+        hc-list-item:first-of-type {
+            margin-top: 10px;
+        }
+
+        .hc-navbar-search-results-items {
+            cursor: pointer;
+            padding: 0 10px;
+
+            &:hover {
+                background-color: $gray-100;
+            }
+        }
+    }
+}
+
+.results-icon {
+    font-size: 30px;
+    padding: 0;
+    height: auto;
+    width: 25px;
+    color: $slate-gray-300;
+}
+
+.result-title {
+    font-size: 16px;
+    color: $dark-blue;
+    max-width: 335px;
+    padding-bottom: 2px;
+}
+
+.result-description {
+    font-size: 10px;
+    color: $slate-gray-300;
+}
+
+.result-sub-text {
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.hc-navbar-search-show-all {
+    font-size: 15px;
+    padding-top: 19px;
+    padding-bottom: 24px;
+    color: $blue;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0 0 5px 5px;
+
+    &:hover {
+        background-color: $gray-100;
+    }
 }

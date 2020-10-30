@@ -12,7 +12,7 @@ import {FormControl} from '@angular/forms';
 export class SelectValidationExampleComponent {
     private validCheck = false;
 
-    selectControl = new FormControl('active');
+    selectControl = new FormControl('qlik');
 
     toggleValidate() {
         this.validCheck = !this.validCheck;

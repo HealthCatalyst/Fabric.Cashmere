@@ -1,0 +1,185 @@
+$track-space: 4rem;
+$isolated-disk-size: 2rem;
+$track-height: 0.5rem;
+
+@mixin hc-disk-border($border-color) {
+    box-shadow: 0px 0px 0px 3px $border-color;
+}
+
+@mixin hc-step-arrow($top-bottom, $right) {
+    @if $right {
+        border-right: $track-space * 0.05 solid $right;
+    }
+    border-left: $track-space / 4 solid transparent;
+    border-top: $track-space / 2 solid $top-bottom;
+    border-bottom: $track-space / 2 solid $top-bottom;
+    display: block;
+    height: 0px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+}
+
+@mixin hc-stepper-bg-color($color) {
+    background-color: $color;
+}
+
+@mixin hc-stepper-content-color($color) {
+    color: $color;
+}
+
+@mixin hc-stepper-border-top($color) {
+    border-top-color: $color;
+}
+
+@mixin hc-stepper-arrow-after($top-bottom, $right) {
+    &:after {
+        @include hc-step-arrow($top-bottom, $right);
+        content: '';
+        z-index: 1;
+    }
+}
+
+@mixin hc-isolated-track($track-color, $track-height, $disk-size) {
+    background: $track-color;
+    content: '';
+    display: block;
+    height: $track-height;
+    left: 0px;
+    margin-top: -($track-height / 2);
+    position: absolute;
+    right: 0px;
+    top: $disk-size / 2;
+    z-index: 1;
+}
+
+@mixin hc-stepper-font-bold() {
+    font-weight: 600;
+}
+
+@mixin hc-stepper-isolated-active($color, $bg) {
+    &:before {
+        background: $color;
+        right: 50%;
+    }
+
+    &:after {
+        @include hc-isolated-track($bg, $track-height, $isolated-disk-size);
+        left: 50%;
+    }
+}
+
+@mixin hc-stepper-isolated-complete($color) {
+    &:before {
+        background: $color;
+    }
+}
+
+@mixin hc-stepper-isolated-first() {
+    &:before {
+        left: 50%;
+    }
+}
+
+@mixin hc-stepper-isolated-last() {
+    &:before {
+        right: 50%;
+    }
+    &:after {
+        display: none;
+    }
+}
+
+@mixin hc-stepper-clickable() {
+    cursor: pointer;
+    outline: none;
+}
+
+@mixin hc-stepper-disabled() {
+    pointer-events: none;
+}
+
+@mixin hc-stepper-track() {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin hc-step() {
+    flex: 1;
+    position: relative;
+}
+
+@mixin hc-stepper-arrow-step() {
+    line-height: $track-space;
+    padding-left: $track-space * 0.9;
+    white-space: nowrap;
+}
+
+@mixin hc-stepper-arrow-step-disk {
+    border-radius: 50%;
+    display: block;
+    font-size: 0.9rem;
+    height: $track-space * 0.4;
+    left: $track-space * 0.3;
+    line-height: $track-space * 0.4;
+    position: absolute;
+    text-align: center;
+    top: $track-space * 0.3;
+    width: $track-space * 0.4;
+}
+
+@mixin hc-stepper-arrow-label-count {
+    display: none;
+}
+
+@mixin hc-stepper-arrow-icon {
+    font-size: $track-space * 0.25;
+    height: 100%;
+    line-height: $track-space * 0.4;
+    width: 100%;
+}
+
+@mixin hc-stepper-isolated-step($color) {
+    padding-top: $isolated-disk-size;
+    text-align: center;
+
+    &:before {
+        @include hc-isolated-track($color, $track-height, $isolated-disk-size);
+    }
+}
+
+@mixin hc-stepper-isolated-step-disk() {
+    border-radius: 50%;
+    display: block;
+    font-size: 1rem;
+    height: $isolated-disk-size;
+    left: 50%;
+    line-height: $isolated-disk-size;
+    margin-left: -($isolated-disk-size / 2);
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    width: $isolated-disk-size;
+    z-index: 2;
+}
+
+@mixin hc-stepper-isolated-label($color) {
+    color: $color;
+    display: inline-block;
+    line-height: $isolated-disk-size;
+    padding: 0 0.15rem;
+}
+
+@mixin hc-stepper-isolated-label-after() {
+    &:after {
+        content: '.';
+    }
+}
+
+@mixin hc-stepper-isolated-icon() {
+    font-size: $track-space * 0.35;
+    height: 100%;
+    line-height: $track-space * 0.48;
+    width: 100%;
+}

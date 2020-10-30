@@ -45,7 +45,7 @@ describe('ChipComponent', () => {
 
     it('should not include a close button if action is false', () => {
         let closeSpans = fixture.debugElement.queryAll(By.css('span'));
-        expect(closeSpans.length).toBe(0);
+        expect(closeSpans.length).toBe(1);
     });
 
     it('should include a close button if action is true', () => {
@@ -53,8 +53,8 @@ describe('ChipComponent', () => {
         fixture.detectChanges();
 
         let closeSpan = fixture.debugElement.queryAll(By.css('span'));
-        expect(closeSpan[0].nativeElement.classList.contains('hc-chip-close')).toBe(true);
-        expect(closeSpan[1].nativeElement.classList.contains('hc-chip-close-icon')).toBe(true);
+        expect(closeSpan[1].nativeElement.classList.contains('hc-chip-close')).toBe(true);
+        expect(closeSpan[2].nativeElement.classList.contains('hc-chip-close-icon')).toBe(true);
     });
 });
 

@@ -1,5 +1,5 @@
 @import './colors';
-@import './mixins.scss';
+@import './mixins';
 
 @mixin hc-app-switcher-outer() {
     height: 100%;
@@ -7,7 +7,7 @@
 }
 
 @mixin hc-app-switcher() {
-    max-width: 410px;
+    max-width: 360px;
 }
 
 @mixin hc-app-switcher-header() {

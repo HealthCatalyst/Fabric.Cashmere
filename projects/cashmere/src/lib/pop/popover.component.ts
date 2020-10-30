@@ -13,7 +13,6 @@ import {
     Output,
     ContentChildren,
     QueryList
-
 } from '@angular/core';
 import {AnimationEvent} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
@@ -222,21 +221,23 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** A link to an associated parent menu that will be closed when this menu closes. */
     @Input()
-    get parent(): HcPopComponent {
+    get parent(): HcPopComponent | null {
         return this._parentMenu;
     }
-    set parent(val: HcPopComponent) {
-        if ( this._parentMenu ) {
+    set parent(val: HcPopComponent | null) {
+        if (this._parentMenu) {
             this._parentClose.unsubscribe();
         }
         this._parentMenu = val;
-        this._parentClose = this._parentMenu.closed.subscribe((value) => {
-            if ( this.isOpen() ) {
-                this.close();
-            }
-        });
+        if ( this._parentMenu ) {
+            this._parentClose = this._parentMenu.closed.subscribe(value => {
+                if (this.isOpen()) {
+                    this.close();
+                }
+            });
+        }
     }
-    private _parentMenu: HcPopComponent;
+    private _parentMenu: HcPopComponent | null;
 
     /** Should the popover animate? *Defaults to `true`.* */
     @Input() shouldAnimate = true;
@@ -266,7 +267,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     @Output() overlayKeydown = new EventEmitter<KeyboardEvent>();
 
     /** Reference to template so it can be placed within a portal. */
-    @ViewChild(TemplateRef) _templateRef: TemplateRef<any>;
+    @ViewChild(TemplateRef, {static: false}) _templateRef: TemplateRef<any>;
 
     /** Stores the click coordinates for mouse-based positioning */
     _offsetPos: number[] = [0, 0];
@@ -286,7 +287,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     _notifications: PopoverNotificationService;
 
     /** Reference to the element to build a focus trap around. */
-    @ViewChild('focusTrapElement')
+    @ViewChild('focusTrapElement', {static: false})
     private _focusTrapElement: ElementRef;
 
     /** Reference to the element that was focused before opening. */
@@ -349,7 +350,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Toggle this popover open or closed. */
     toggle(): void {
-        if ( this.parent ) {
+        if (this.parent) {
             this.parent._subMenuOpen = !this.isOpen();
         }
         const notification = new PopoverNotification(NotificationAction.TOGGLE);
@@ -408,7 +409,8 @@ export class HcPopComponent implements OnInit, OnDestroy {
     _setAlignmentClassesForArrow(xAlign = this.horizontalAlign, yAlign = this.verticalAlign) {
         this._classList['hc-pop-show-arrow'] =
             (this.showArrow &&
-                (xAlign === 'start' || xAlign === 'center' || xAlign === 'end') && (yAlign === 'above' || yAlign === 'below')) ||
+                (xAlign === 'start' || xAlign === 'center' || xAlign === 'end') &&
+                (yAlign === 'above' || yAlign === 'below')) ||
             ((yAlign === 'start' || yAlign === 'center' || yAlign === 'end') && (xAlign === 'before' || xAlign === 'after'));
 
         this._yAlignClass = this._classList['hc-pop-show-arrow'] ? `hc-pop-arrow-y-${yAlign}` : '';
@@ -443,26 +445,8 @@ export class HcPopComponent implements OnInit, OnDestroy {
         }
     }
 
-    /** Move the focus inside the focus trap and remember where to return later. */
-    private _trapFocus(): void {
-        this._savePreviouslyFocusedElement();
-
-        // There won't be a focus trap element if the close animation starts before open finishes
-        if (!this._focusTrapElement) {
-            return;
-        }
-
-        if (!this._focusTrap && this._focusTrapElement) {
-            this._focusTrap = this._focusTrapFactory.create(this._focusTrapElement.nativeElement);
-        }
-
-        if (this.autoFocus && this._focusTrap) {
-            this._focusTrap.focusInitialElementWhenReady();
-        }
-    }
-
     /** Restore focus to the element focused before the popover opened. Also destroy trap. */
-    private _restoreFocusAndDestroyTrap(): void {
+    _restoreFocusAndDestroyTrap(): void {
         const toFocus = this._previouslyFocusedElement;
 
         // Must check active element is focusable for IE sake
@@ -479,9 +463,25 @@ export class HcPopComponent implements OnInit, OnDestroy {
     }
 
     /** Save a reference to the element focused before the popover was opened. */
-    private _savePreviouslyFocusedElement(): void {
+    _savePreviouslyFocusedElement(): void {
         if (this._document) {
             this._previouslyFocusedElement = this._document.activeElement as HTMLElement;
+        }
+    }
+
+    /** Move the focus inside the focus trap and remember where to return later. */
+    private _trapFocus(): void {
+        // There won't be a focus trap element if the close animation starts before open finishes
+        if (!this._focusTrapElement) {
+            return;
+        }
+
+        if (!this._focusTrap && this._focusTrapElement) {
+            this._focusTrap = this._focusTrapFactory.create(this._focusTrapElement.nativeElement);
+        }
+
+        if (this.autoFocus && this._focusTrap) {
+            this._focusTrap.focusInitialElementWhenReady();
         }
     }
 

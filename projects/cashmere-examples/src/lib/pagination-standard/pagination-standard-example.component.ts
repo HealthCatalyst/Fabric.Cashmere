@@ -48,7 +48,7 @@ export class PaginationStandardExampleComponent implements AfterViewInit {
         return ELEMENT_DATA.length;
     }
 
-    @ViewChild(PaginationComponent)
+    @ViewChild(PaginationComponent, {static: false})
     paginator: PaginationComponent;
 
     ngAfterViewInit(): void {
