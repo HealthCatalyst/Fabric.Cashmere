@@ -26,7 +26,8 @@ export class ModalService {
     allowMultiple: boolean = false;
 
     // start at 2000 (reserved range for modals, see _variables.scss)
-    private _zIndexCounter = 2000;
+    private _zIndexBase = 2000;
+    private _zIndexCounter = this._zIndexBase;
     private _renderer: Renderer2;
     private _modalsOpen: number = 0;
 
@@ -81,6 +82,11 @@ export class ModalService {
         this._renderer.addClass(container, 'hc-modal-open');
         modal._removeOpenClass = () => this._renderer.removeClass(container, 'hc-modal-open');
 
+        // if multiple modals are allowed, make sure the newest is always on top
+        if ( this.allowMultiple ) {
+            this._zIndexCounter = this._zIndexBase + (this._modalsOpen * 2);
+        }
+
         // Create, attach, and append overlay to container
         let overlay = this._componentFactory.resolveComponentFactory(ModalOverlayComponent).create(modalInjector);
         this._renderer.setStyle(overlay.location.nativeElement, 'z-index', this._zIndexCounter);
@@ -130,7 +136,6 @@ export class ModalService {
             modal._modalClose.unsubscribe();
         });
 
-        this._zIndexCounter += 2;
         return modal;
     }
 }
