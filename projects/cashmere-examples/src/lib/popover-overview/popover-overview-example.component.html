@@ -13,6 +13,7 @@
     [shouldAnimate]="shouldAnimateControl.value"
     [lockAlignment]="forceAlignmentControl.value"
     [forceAlignment]="forceAlignmentControl.value"
+    [maxWidth]="maxWidthControl.value"
 >
     {{ popTextControl.value }}
 </hc-pop>
@@ -71,12 +72,17 @@
     </hc-form-field>
 
     <hc-form-field>
-        <hc-label>Popover Hover delay:</hc-label>
+        <hc-label>Popover hover delay:</hc-label>
         <input hcInput [formControl]="hoverDelayControl" />
     </hc-form-field>
 
+    <hc-form-field>
+        <hc-label>Max width (ex: 300px):</hc-label>
+        <input hcInput [formControl]="maxWidthControl" />
+    </hc-form-field>
+
     <hc-checkbox id="animate" [formControl]="shouldAnimateControl">Animate popover</hc-checkbox>
-    <hc-checkbox id="clickAway" [formControl]="clickAwayControl">Click away or ESC to close</hc-checkbox>
+    <hc-checkbox id="clickAway" align="top" [formControl]="clickAwayControl">Click away or ESC to close</hc-checkbox>
     <hc-checkbox id="showArrow" [formControl]="showArrowControl">Show arrow</hc-checkbox>
     <hc-checkbox
         id="forceAlign"

@@ -418,7 +418,6 @@ export class HcPopoverAnchoringService implements OnDestroy {
         const strategy = this._overlay
             .position()
             .flexibleConnectedTo(anchor)
-            .withFlexibleDimensions(false)
             .withPush(false)
             .withViewportMargin(0)
             .withLockedPosition(lockAlignment);
