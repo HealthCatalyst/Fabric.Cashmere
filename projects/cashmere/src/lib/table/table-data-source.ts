@@ -12,9 +12,8 @@ import {BehaviorSubject, combineLatest, merge, Observable, of as observableOf, S
 // import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {HcSort, Sort} from '../sort/index';
 import {map} from 'rxjs/operators';
-import {PaginationComponent, LoadMorePaginationComponent, PageEvent} from '../pagination/index';
+import {LoadMorePaginationComponent, PageEvent} from '../pagination/index';
 import {BasePaginationComponent} from '../pagination/base-pagination';
-import {isString} from 'util';
 
 /**
  * Corresponds to `Number.MAX_SAFE_INTEGER`. Moved out into a variable here due to
@@ -135,7 +134,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
         }
 
         // lowercase strings
-        if (isString(value)) {
+        if (typeof value === 'string') {
             return value.toLocaleLowerCase();
         }
 

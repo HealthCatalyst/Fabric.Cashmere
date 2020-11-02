@@ -15,8 +15,7 @@
         "lib": ["es2017", "dom"],
         "paths": {
             "@healthcatalyst/cashmere": ["dist/cashmere"],
-            "@healthcatalyst/cashmere-examples": ["dist/cashmere-examples"],
-            "@bit/healthcatalyst.cashmere.change-case-pipe": ["projects/cashmere-bits/dist"]
+            "@healthcatalyst/cashmere-examples": ["dist/cashmere-examples"]
         }
     }
 }
