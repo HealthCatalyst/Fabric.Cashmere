@@ -1,4 +1,9 @@
-<hc-button-toggle-group>
-    <hc-button-toggle>One</hc-button-toggle>
-    <hc-button-toggle>Two</hc-button-toggle>
+<hc-button-toggle-group  (onSelectedChanged)='selectedChanged()'>
+    <hc-button-toggle value='one'>One</hc-button-toggle>
+    <hc-button-toggle value='two' [selected]='true'>Two</hc-button-toggle>
+    <hc-button-toggle value='three'><hc-icon fontSet='hc-icons' fontIcon='hci-sort-ascend'></hc-icon></hc-button-toggle>
 </hc-button-toggle-group>
+
+<div>
+    Selected Button Value: {{x}}
+</div>

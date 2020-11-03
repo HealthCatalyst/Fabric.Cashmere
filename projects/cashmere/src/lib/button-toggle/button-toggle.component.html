@@ -1,2 +1,3 @@
-<h3 class="hc-button-toggle">Child content:</h3>
-<ng-content></ng-content>
+<div class="hc-button-toggle" [ngClass]="{'selected': selected}" (click)='selectButton()'>
+    <div class='center' ><ng-content></ng-content></div>
+</div>

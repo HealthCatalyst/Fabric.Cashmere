@@ -1,0 +1,58 @@
+@import '../sass/button-toggle.scss';
+@import '../sass/colors';
+
+.hc-button-toggle-group {
+    display: inline-flex;
+    flex-direction: row;
+    border: 1px solid #ddd;
+    border-radius: 5px !important;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.hc-button-toggle {
+    @include hc-button-toggle();
+    border: 1px solid #333;
+    text-align: center;
+    padding: 12px;
+    min-height: 35px;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    height: 100%;
+    cursor: pointer;
+}
+
+.selected {
+  background-position: center;
+  transition: background 0.8s;
+  
+}
+.hc-button-toggle:hover {
+  background: #ddd radial-gradient(circle, transparent 1%, #ddd 1%) center/15000%;
+}
+.hc-button-toggle:active {
+  background-color: #ccc;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+@keyframes hoverBackground {
+    from {background-color: inherit; }
+    to { background-color: #eee;}
+}
+
+@keyframes fillBackground {
+    from {background-color: inherit; }
+    to { background-color: #bbb;}
+    to{ background-color: #cdcdcd;}
+}
+
+.center{
+    display: block;
+    margin: auto;
+}
+
+.selected {
+    background-color: #ccc;
+}
+
