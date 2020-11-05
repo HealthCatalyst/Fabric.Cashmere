@@ -17,5 +17,8 @@
             "@healthcatalyst/cashmere": ["dist/cashmere"],
             "@healthcatalyst/cashmere-examples": ["dist/cashmere-examples"]
         }
+    },
+    "angularCompilerOptions": {
+        "enableIvy": false
     }
 }

@@ -40,11 +40,11 @@
     "prettier": "prettier --write \"**/*.{ts,js,scss,css,md,json}\"",
     "release-mode": "node scripts/release-mode",
     "dev-mode": "node scripts/dev-mode",
-    "postinstall": "npm run install:examples && npm run install:bits",
-    "install:examples": "cd projects/cashmere-examples && npm install && node ../../scripts/postinstall-hack",
-    "install:bits": "cd projects/cashmere-bits && npm install",
+    "postinstall": "npm run install:bits && npm run install:examples && ngcc && node scripts/postinstall-hack",
+    "install:examples": "cd projects/cashmere-examples && npm ci && ngcc && node ../../scripts/postinstall-hack",
+    "install:bits": "cd projects/cashmere-bits && npm ci && ngcc",
     "new:example": "ts-node scripts/new-example.ts",
-    "clean": "rimraf dist && rimraf projects/cashmere-bits/dist"
+    "clean": "npx rimraf dist && npx rimraf projects/cashmere-bits/dist"
   },
   "dependencies": {
     "@angular/animations": "10.2.1",

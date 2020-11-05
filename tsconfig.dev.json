@@ -18,5 +18,8 @@
             "@healthcatalyst/cashmere-examples": ["projects/cashmere-examples/src"],
             "@bit/healthcatalyst.cashmere.change-case-pipe": ["projects/cashmere-bits/src/lib/change-case-pipe"]
         }
+    },
+    "angularCompilerOptions": {
+        "enableIvy": false
     }
 }

@@ -226,6 +226,9 @@ ${(exampleModules as ExampleInfo[])
     ],
     declarations: [
         ${exampleComponents.map(x => x.name).join(',\r\n        ')}
+    ],
+    entryComponents: [
+        ${exampleComponents.map(x => x.name).join(',\r\n        ')}
     ]
 })
 export class ExampleModule {}
