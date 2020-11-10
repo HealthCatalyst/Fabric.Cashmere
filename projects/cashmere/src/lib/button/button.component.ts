@@ -38,10 +38,7 @@ export class ButtonComponent {
     private _style: string;
     private _size: string;
 
-    /**
-     * @deprecated
-     * @description Use `buttonStyle` instead
-     * */
+    /** **DEPRECATED** Use `buttonStyle` instead */
     @Input()
     get color(): string {
         return this.buttonStyle;

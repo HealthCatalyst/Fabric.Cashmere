@@ -1,5 +1,5 @@
 {
-    "name": "cashmere-examples",
+    "name": "@healthcatalyst/cashmere-examples",
     "version": "0.0.1",
     "main": "./bundles/cashmere-examples.umd.js",
     "module": "./esm5/cashmere-examples.js",

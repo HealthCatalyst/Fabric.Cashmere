@@ -92,7 +92,7 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
         this.loadFailed = true;
     }
 
-    linkIfNotMe(app): string {
+    linkIfNotMe(app: any): string {
         return this.appIsMe(app) ? null : app.ServiceUrl;
     }
 

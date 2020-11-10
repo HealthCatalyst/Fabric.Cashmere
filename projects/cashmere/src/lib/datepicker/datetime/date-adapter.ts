@@ -21,10 +21,8 @@ export function HC_DATE_LOCALE_FACTORY(): string {
 }
 
 /**
- * No longer needed since HC_DATE_LOCALE has been changed to a scoped injectable.
+ * **DEPRECATED** No longer needed since HC_DATE_LOCALE has been changed to a scoped injectable.
  * If you are importing and providing this in your code you can simply remove it.
- * @deprecated
- * @breaking-change 8.0.0
  */
 export const HC_DATE_LOCALE_PROVIDER = {provide: HC_DATE_LOCALE, useExisting: LOCALE_ID};
 

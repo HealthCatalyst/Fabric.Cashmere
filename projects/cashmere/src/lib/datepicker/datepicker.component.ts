@@ -119,10 +119,7 @@ export class DatepickerComponent implements OnDestroy {
     @Input()
     startView: 'month' | 'year' | 'multi-year' = 'month';
 
-    /**
-     * @deprecated
-     * @description The datepicker now only uses `hcPop` to display
-     * */
+    /** **DEPRECATED** The datepicker now only uses `hcPop` to display */
     @Input()
     get touchUi(): boolean {
         return this._touchUi;

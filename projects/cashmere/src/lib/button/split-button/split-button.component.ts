@@ -83,10 +83,7 @@ export class SplitButtonComponent {
         this._tabIndex = value == null ? 0 : value;
     }
 
-    /**
-     * @deprecated
-     * @description Use `buttonStyle` instead
-     * */
+    /** **DEPRECATED** Use `buttonStyle` instead */
     @Input()
     get color(): string {
         return this.buttonStyle;

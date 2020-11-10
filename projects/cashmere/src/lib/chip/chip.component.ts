@@ -67,10 +67,7 @@ export class ChipComponent {
         this.closeClick.emit(e);
     }
 
-    /**
-     * @deprecated
-     * @description Use `hasCloseButton` instead
-     * */
+    /** **DEPRECATED** Use `hasCloseButton` instead */
     @Input()
     get action(): boolean {
         return this._hasCloseButton;
