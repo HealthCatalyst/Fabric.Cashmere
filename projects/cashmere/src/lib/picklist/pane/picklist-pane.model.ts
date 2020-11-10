@@ -11,6 +11,7 @@ export class FilterableSelectList<T extends SelectListOption> {
     public loadingOptions: Observable<boolean> = from([]);
     public appendingOptions: Observable<boolean> = from([]);
     public codeIsSignificant: boolean = false;
+    public sort: string;
     constructor(public options = new Map<string, T>()) {}
 }
 

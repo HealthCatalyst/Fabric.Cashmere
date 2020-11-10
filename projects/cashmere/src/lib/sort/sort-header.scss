@@ -1,91 +1,45 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
-/**
- * Applies styles for users in high contrast mode. Note that this only applies
- * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`
- * attribute, however Chrome handles high contrast differently.
- * @param target Which kind of high contrast setting to target. Defaults to `active`, can be
- *    `white-on-black` or `black-on-white`.
- */
-
-@import '../sass/tables';
+@import '../sass/sort.scss';
 
 .hc-sort-header {
-    cursor: pointer;
-
-    &:hover {
-        background-color: $row-color-action-hover !important;
-    }
+    @include hc-sort-header();
 }
 
 .hc-sort-header-container {
-    display: flex;
-    align-items: center;
+    @include hc-sort-header-container();
 
     .hc-sort-header-disabled & {
-        cursor: default;
+        @include hc-sort-header-container-disabled();
     }
 }
 
 .hc-sort-header-position-before {
-    flex-direction: row-reverse;
+    @include hc-sort-header-before();
 
-    .hc-sort-header-asc,
-    .hc-sort-header-desc,
-    .hc-sort-header-off {
-        margin-left: 0;
-        margin-right: 15px;
+    .hc-sort-header-icon {
+        @include hc-sort-header-before-icon();
     }
 }
 
 .hc-sort-header-button {
-    border: none;
-    background: 0 0;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    cursor: inherit;
-    outline: 0;
-    font: inherit;
-    color: currentColor;
+    @include hc-sort-header-button();
 }
 
 .hc-sort-header-sorted {
-    color: $thead-active-font-color;
+    @include hc-sort-header-sorted();
+}
+
+.hc-sort-header-icon {
+    @include hc-sort-header-icon();
 }
 
 .hc-sort-header-asc {
-    height: 13px;
-    width: 13px;
-    display: block;
-    margin-left: 15px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzYwLjc4IDE3OTIiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojMDBhODU5O308L3N0eWxlPjwvZGVmcz48dGl0bGU+QXJ0Ym9hcmQgMTwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNzA0Ljc4LDE0NDBxMCwxMi0xMCwyNGwtMzE5LDMxOWEzMy4zNiwzMy4zNiwwLDAsMS0yMyw5cS0xMiwwLTIzLTlsLTMyMC0zMjBxLTE1LTE2LTctMzUsOC0yMCwzMC0yMGgxOTJWMzJxMC0xNCw5LTIzdDIzLTloMTkycTE0LDAsMjMsOXQ5LDIzVjE0MDhoMTkycTE0LDAsMjMsOVQ3MDQuNzgsMTQ0MFptMTA1NiwxMjh2MTkycTAsMTQtOSwyM3QtMjMsOWgtODMycS0xNCwwLTIzLTl0LTktMjNWMTU2OHEwLTE0LDktMjN0MjMtOWg4MzJxMTQsMCwyMyw5VDE3NjAuNzgsMTU2OFptLTE5Mi01MTJ2MTkycTAsMTQtOSwyM3QtMjMsOWgtNjQwcS0xNCwwLTIzLTl0LTktMjNWMTA1NnEwLTE0LDktMjN0MjMtOWg2NDBxMTQsMCwyMyw5VDE1NjguNzgsMTA1NlptLTE5Mi01MTJWNzM2cTAsMTQtOSwyM3QtMjMsOWgtNDQ4cS0xNCwwLTIzLTl0LTktMjNWNTQ0cTAtMTQsOS0yM3QyMy05aDQ0OHExNCwwLDIzLDlUMTM3Ni43OCw1NDRabS0xOTItNTEyVjIyNHEwLDE0LTksMjN0LTIzLDloLTI1NnEtMTQsMC0yMy05dC05LTIzVjMycTAtMTQsOS0yM3QyMy05aDI1NnExNCwwLDIzLDlUMTE4NC43OCwzMloiLz48L3N2Zz4=');
+    @include hc-sort-header-asc();
 }
 
 .hc-sort-header-desc {
-    height: 13px;
-    width: 13px;
-    display: block;
-    margin-left: 15px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzYwLjc4IDE3OTIiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojMDBhODU5O308L3N0eWxlPjwvZGVmcz48dGl0bGU+QXJ0Ym9hcmQgMTwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTE4NC43OCwxNTY4djE5MnEwLDE0LTksMjN0LTIzLDloLTI1NnEtMTQsMC0yMy05dC05LTIzVjE1NjhxMC0xNCw5LTIzdDIzLTloMjU2cTE0LDAsMjMsOVQxMTg0Ljc4LDE1NjhabS00ODAtMTI4cTAsMTItMTAsMjRsLTMxOSwzMTlhMzMuMzYsMzMuMzYsMCwwLDEtMjMsOXEtMTIsMC0yMy05bC0zMjAtMzIwcS0xNS0xNi03LTM1LDgtMjAsMzAtMjBoMTkyVjMycTAtMTQsOS0yM3QyMy05aDE5MnExNCwwLDIzLDl0OSwyM1YxNDA4aDE5MnExNCwwLDIzLDlUNzA0Ljc4LDE0NDBabTY3Mi0zODR2MTkycTAsMTQtOSwyM3QtMjMsOWgtNDQ4cS0xNCwwLTIzLTl0LTktMjNWMTA1NnEwLTE0LDktMjN0MjMtOWg0NDhxMTQsMCwyMyw5VDEzNzYuNzgsMTA1NlptMTkyLTUxMlY3MzZxMCwxNC05LDIzdC0yMyw5aC02NDBxLTE0LDAtMjMtOXQtOS0yM1Y1NDRxMC0xNCw5LTIzdDIzLTloNjQwcTE0LDAsMjMsOVQxNTY4Ljc4LDU0NFptMTkyLTUxMlYyMjRxMCwxNC05LDIzdC0yMyw5aC04MzJxLTE0LDAtMjMtOXQtOS0yM1YzMnEwLTE0LDktMjN0MjMtOWg4MzJxMTQsMCwyMyw5VDE3NjAuNzgsMzJaIi8+PC9zdmc+');
+    @include hc-sort-header-desc();
 }
 
 .hc-sort-header-off {
-    height: 13px;
-    width: 13px;
-    display: block;
-    margin-left: 15px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzYwLjc4IDE3OTIiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojYTNhNWE3O308L3N0eWxlPjwvZGVmcz48dGl0bGU+QXJ0Ym9hcmQgMTwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNTgyLDEzNDIuODlIODA1Ljc5cTMxLjM0LDAsMzcuMzEsMTYuNDJ0LTE0LjkxLDM3LjNMNDg1LDE3NjkuNjNRNDY0LjA3LDE3OTIsNDMyLjc3LDE3OTJ0LTUyLjIxLTIyLjM3bC0zNDMuMjEtMzczcS0yMC45MS0yMC44OC0xNC45MS0zNy4zdDM3LjMtMTYuNDJIMjgzLjU2VjBINTgyWm03OTguMjYtMTMxOSwzNDMuMiwzNzEuNTVxMjAuODUsMjAuOTEsMTQuOTIsMzYuNTV0LTM3LjMxLDE1LjY2SDE0NzcuMjRWMTc5MC41MkgxMTc4LjgyVjQ0Ny42M0g5NTVxLTMxLjMyLDAtMzcuMy0xNS42NnQxNC45MS0zNi41NWwzNDMuMi0zNzEuNTVRMTI5Ni42NiwxLjUsMTMyOCwxLjQ4VDEzODAuMjQsMjMuODdaIi8+PC9zdmc+');
+    @include hc-sort-header-off();
 }

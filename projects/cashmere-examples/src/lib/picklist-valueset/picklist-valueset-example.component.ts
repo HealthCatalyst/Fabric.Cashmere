@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
 
 /**
  * @title Picklist valueset
@@ -9,6 +10,7 @@ import {Component} from '@angular/core';
 })
 export class PicklistValuesetExampleComponent {
     public myModel: {values: null; valueset: null};
+    readonly modelControl = new FormControl(this.myModel);
 
     public config = {
         codeIsSignificant: true,

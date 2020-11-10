@@ -1,0 +1,32 @@
+<ng-container *ngIf="_direction">
+    <a
+        tabIndex="-1"
+        *ngIf="routerLink; else tabWithoutRouting"
+        class="hc-tab-{{ _direction }} hc-text-ellipsis"
+        [class.hc-tab-tight]="_tight"
+        [class.active]="_active"
+        [routerLink]="routerLink"
+        routerLinkActive="active"
+        [queryParams]="queryParams"
+        [routerLinkActiveOptions]="exactRouteMatch ? {exact: true} : {}"
+        (click)="tabClickHandler($event)"
+    >
+        <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
+        {{ tabTitle }}
+    </a>
+</ng-container>
+<ng-template #tabWithoutRouting>
+    <a
+        tabIndex="-1"
+        class="hc-tab-{{ _direction }} hc-text-ellipsis"
+        [class.hc-tab-tight]="_tight"
+        [class.active]="_active"
+        (click)="tabClickHandler($event)"
+    >
+        <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
+        {{ tabTitle }}
+    </a>
+</ng-template>
+<ng-template #tabContent>
+    <ng-content></ng-content>
+</ng-template>

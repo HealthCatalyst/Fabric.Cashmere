@@ -9,11 +9,15 @@
             (dateChange)="_onInputChange($event)"
             [min]="minDate"
             [max]="maxDate"
+            [_mode]="mode"
+            [_hourCycle]="hourCycle"
         />
         <hc-error [innerText]="invalidDateLabel"></hc-error>
     </hc-form-field>
 </div>
 <hc-calendar
+    [mode]="mode"
+    [hourCycle]="hourCycle"
     [startAt]="selectedDate"
     [selected]="selectedDate"
     [minDate]="minDate"

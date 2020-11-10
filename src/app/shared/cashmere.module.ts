@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import {
     AccordionModule,
     AppSwitcherModule,
@@ -9,7 +9,6 @@ import {
     ChipModule,
     DatepickerModule,
     DateRangeModule,
-    DialogModule,
     DrawerModule,
     FormFieldModule,
     IconModule,
@@ -19,11 +18,14 @@ import {
     NavbarModule,
     PaginationModule,
     PicklistModule,
-    PopoverModule,
+    PipesModule,
+    PopModule,
     ProgressIndicatorsModule,
     RadioButtonModule,
+    ScrollNavModule,
     SelectModule,
     SortModule,
+    StepperModule,
     SubnavModule,
     TabsModule,
     TableModule,
@@ -31,6 +33,7 @@ import {
     ToasterModule,
     TypeformSurveyModule
 } from '@healthcatalyst/cashmere';
+import {ChangeCasePipeModule} from '@bit/healthcatalyst.cashmere.change-case-pipe';
 
 @NgModule({
     exports: [
@@ -43,7 +46,6 @@ import {
         ChipModule,
         DatepickerModule,
         DateRangeModule,
-        DialogModule,
         DrawerModule,
         FormFieldModule,
         IconModule,
@@ -53,17 +55,21 @@ import {
         NavbarModule,
         PaginationModule,
         PicklistModule,
-        PopoverModule,
+        PipesModule,
+        PopModule,
         ProgressIndicatorsModule,
         RadioButtonModule,
+        ScrollNavModule,
         SelectModule,
         SortModule,
+        StepperModule,
         SubnavModule,
         TableModule,
         TabsModule,
         TileModule,
         ToasterModule,
-        TypeformSurveyModule
+        TypeformSurveyModule,
+        ChangeCasePipeModule
     ]
 })
-export class CashmereModule {}
+export class CashmereModule { }

@@ -23,8 +23,7 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "src/tsconfig.app.json",
                         "assets": ["src/favicon.ico", "src/assets"],
-                        "styles": ["src/styles.scss"],
-                        "scripts": ["node_modules/popper.js/dist/umd/popper.js"]
+                        "styles": ["src/styles.scss"]
                     },
                     "configurations": {
                         "production": {

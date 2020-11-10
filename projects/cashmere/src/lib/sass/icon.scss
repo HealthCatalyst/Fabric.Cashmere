@@ -1,0 +1,17 @@
+$default-icon-size: 20px;
+
+@mixin hc-icon-height($height) {
+    font-size: $height !important;
+    height: $height !important;
+    width: $height !important;
+}
+
+@mixin hc-icon() {
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    font-size: $default-icon-size;
+    height: $default-icon-size;
+    text-align: center;
+    width: $default-icon-size;
+}

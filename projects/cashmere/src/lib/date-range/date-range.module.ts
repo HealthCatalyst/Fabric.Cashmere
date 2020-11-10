@@ -11,10 +11,12 @@ import {FormFieldModule} from '../form-field/hc-form-field.module';
 import {InputModule} from '../input/input.module';
 import {ButtonModule} from '../button/button.module';
 import {RadioButtonModule} from '../radio-button/radio-button.module';
+import {ChipModule} from '../chip/chip.module';
 
 @NgModule({
     imports: [
         CommonModule,
+        ChipModule,
         FormFieldModule,
         DatepickerModule,
         HcNativeDateModule,

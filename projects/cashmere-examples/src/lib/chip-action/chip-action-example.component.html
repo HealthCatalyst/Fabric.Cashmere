@@ -1,2 +1,2 @@
-<hc-chip action="true" (click)="hideChip($event);">Action One</hc-chip>
-<hc-chip color="red" action="true" (click)="hideChip($event);">Color Action</hc-chip>
+<hc-chip *ngIf="chips[0]" (click)="chips[0] = false" hasCloseButton="true" class="chip-pointer">Click Anywhere to Close</hc-chip>
+<hc-chip *ngIf="chips[1]" (closeClick)="chips[1] = false" hasCloseButton="true" color="red">Click the Close Button</hc-chip>

@@ -1,0 +1,34 @@
+@import '../../sass/tab.scss';
+
+.hc-tab {
+    @include hc-tab();
+
+    // tabs have an anchor element embedded, but we want the user to focus on the parent tab rather than the achor
+    a:focus {
+        @include hc-tab-embedded-anchor-focus();
+    }
+}
+
+.hc-tab-vertical {
+    @include hc-tab-vertical();
+
+    &.active {
+        @include hc-tab-vertical-active();
+    }
+
+    &.hc-tab-tight {
+        @include hc-tab-vertical-tight();
+    }
+}
+
+.hc-tab-horizontal {
+    @include hc-tab-horizontal();
+
+    &.active {
+        @include hc-tab-horizontal-active();
+    }
+
+    &.hc-tab-tight {
+        @include hc-tab-horizontal-tight();
+    }
+}

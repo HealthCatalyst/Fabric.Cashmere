@@ -1,5 +1,4 @@
 import {
-    AfterContentInit,
     AfterViewInit,
     ChangeDetectorRef,
     Component,
@@ -7,16 +6,20 @@ import {
     ElementRef,
     HostListener,
     Input,
-    OnInit,
     QueryList,
     ViewChild,
-    ViewEncapsulation
+    ViewEncapsulation,
+    OnDestroy
 } from '@angular/core';
-import {forkJoin, Subject} from 'rxjs';
-import {PopoverContentComponent} from '../popover/popoverContent.component';
+import {HcPopoverAnchorDirective} from '../pop/directives/popover-anchor.directive';
+import {HcPopComponent} from '../pop/popover.component';
 import {MoreItem} from './more-item';
 import {NavbarLinkComponent} from './navbar-link/navbar-link.component';
 import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu.component';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+import {HcIcon} from '../icon/icon.component';
+import {NavbarDropdownComponent} from './navbar-dropdown/navbar-dropdown.component';
 
 /** The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. */
 @Component({
@@ -25,7 +28,7 @@ import {NavbarMobileMenuComponent} from './navbar-mobile-menu/navbar-mobile-menu
     styleUrls: ['./navbar.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class NavbarComponent implements OnInit, AfterViewInit, AfterContentInit {
+export class NavbarComponent implements AfterViewInit, OnDestroy {
     /** Display name of current user */
     @Input()
     user: string = '';
@@ -34,9 +37,9 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterContentInit 
     @Input()
     appIcon: string = '';
 
-    /** Url to brand icon image file */
+    /** Either url to brand icon image file or HcIcon object for a font glyph */
     @Input()
-    brandIcon: string = '';
+    brandIcon: string | HcIcon = '';
 
     /** Router link triggered when home icon is clicked */
     @Input()
@@ -50,139 +53,118 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterContentInit 
     _mobileMenu: QueryList<NavbarMobileMenuComponent>;
 
     @ContentChildren(NavbarLinkComponent)
-    _navLinks: QueryList<NavbarLinkComponent>;
+    _navLinks: QueryList<NavbarLinkComponent | NavbarDropdownComponent>;
 
-    @ViewChild('navbar') navbarContent: ElementRef;
-    @ViewChild('rightcontainer') rightContent: ElementRef;
-    @ViewChild('navlinks') navContent: ElementRef;
+    @ViewChild('navbar', {static: false}) navbarContent: ElementRef;
+    @ViewChild('navlinks', {static: false}) navContent: ElementRef;
 
-    @ViewChild(PopoverContentComponent)
-    _navbarMore: PopoverContentComponent;
+    @ViewChild('moreLink', {static: false})
+    _navbarMore: HcPopoverAnchorDirective;
 
-    private _logoReady: Subject<boolean> = new Subject();
-    private _navLinksReady: Subject<boolean> = new Subject();
-    private _rightLinksReady: Subject<boolean> = new Subject();
+    @ViewChild('navbarMore', {static: false})
+    _morePop: HcPopComponent;
+
+    private unsubscribe$ = new Subject<void>();
+
     private _menuOpen: boolean = false;
     private _linkWidths: Array<number> = [];
-    private _rightWidth: number = 0;
-    private _linksMax: number = 0;
-    private _logoWidth: number = 0;
+    private _linksTotalWidth: number = 0;
     public _collapse: boolean = false;
-    public _logoCondense: boolean = false;
     public _moreList: Array<MoreItem> = [];
 
+    /** Forces a recalculation of the navbar links to determine how many should be rolling into a More menu.
+     * Call this if you've updated the contents of any navbar links. */
     @HostListener('window:resize')
-    _navResize() {
-        this._navbarMore._hide();
+    refreshNavLinks() {
+        if (this._navbarMore) {
+            this._navbarMore.closePopover();
+        }
+        if ( this._linksTotalWidth === 0 ) {
+            this._collectNavLinkWidths();
+        }
+
         this._moreList = [];
+        this._collapse = false;
 
         // If links is zero the page is smaller than the first responsive breakpoint
         if (this.navbarContent.nativeElement.clientWidth <= 0) {
             return;
         }
 
-        // Figure out all the relevant element widths
-        this._collectNavLinkWidths();
-        this._setRightContainerWidth();
+        let linksContainerWidth: number = this.navContent.nativeElement.offsetWidth;
+        let curLinks: number = 0;
 
-        const navbarWidth: number = this.navbarContent.nativeElement.scrollWidth;
-        const icons: number = this._rightWidth;
-        const more: number = 116;
-        const switcher: number = 55;
-        let links: number = this._linksMax;
-        const logoWidth = this._logoWidth;
-        const condensedLogoWidth = logoWidth - 50;
-        const regularWidth = switcher + logoWidth + links + icons;
-        const condensedWidth = switcher + condensedLogoWidth + links + more + icons;
+        // Step through the links until we hit the end of the container, then collapse the
+        // remaining into a more menu
+        this._navLinks.forEach((t, i) => {
+            curLinks += this._linkWidths[i];
 
-        if (navbarWidth <= regularWidth) {
-            this._logoCondense = true;
-            let tempArray = this._navLinks.toArray();
-            tempArray.reverse();
-
-            if (navbarWidth <= condensedWidth) {
-                this._collapse = true;
-                tempArray[0].hide();
-                links -= this._linkWidths[0];
-                this._moreList.push({name: tempArray[0].linkText, uri: tempArray[0].uri} as MoreItem);
-
-                for (let i = 1; i < tempArray.length; i++) {
-                    if (navbarWidth <= switcher + condensedLogoWidth + links + icons + more) {
-                        tempArray[i].hide();
-                        links -= this._linkWidths[i];
-                        this._moreList.push({name: tempArray[i].linkText, uri: tempArray[i].uri});
-                    } else {
-                        tempArray[i].show();
-                    }
+            let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
+            if (curLinks + moreWidth < linksContainerWidth) {
+                t.show();
+                // Reset the parent and positioning of any dropdown popovers that aren't in the More menu
+                const tempDrop = t as NavbarDropdownComponent;
+                if ( tempDrop._menuPop ) {
+                    tempDrop._menuPop.horizontalAlign = 'start';
+                    tempDrop._menuPop.verticalAlign = 'below';
+                    tempDrop._menuPop.parent = null;
                 }
-
-                this._moreList.reverse();
             } else {
-                this._collapse = false;
-                this._navLinks.forEach(t => t.show());
+                t.hide();
+                this._collapse = true;
+                const tempDrop = t as NavbarDropdownComponent;
+                // Translate any navbar dropdown menus into secondary menus in the More dropdown
+                if ( tempDrop._menuPop ) {
+                    tempDrop._menuPop.horizontalAlign = 'after';
+                    tempDrop._menuPop.verticalAlign = 'start';
+                    tempDrop._menuPop.parent = this._morePop;
+                    this._moreList.push({name: t.linkText, uri: t.uri, dropdown: tempDrop._menuPop});
+                } else {
+                    this._moreList.push({name: t.linkText, uri: t.uri});
+                }
             }
-        } else {
-            this._collapse = false;
-            this._logoCondense = false;
-            this._navLinks.forEach(t => t.show());
-        }
+        });
+
         this.ref.detectChanges();
     }
 
-    constructor(private el: ElementRef, private ref: ChangeDetectorRef) {}
-
-    private _setRightContainerWidth() {
-        if (this._rightWidth === 0) {
-            this._rightWidth = this.rightContent.nativeElement.scrollWidth;
-        }
-    }
+    constructor(private ref: ChangeDetectorRef) {}
 
     private _collectNavLinkWidths() {
-        if (this._linkWidths.length === 0 || this._linkWidths.every(linkWidth => linkWidth === 0)) {
-            this._linkWidths = [];
-            this._navLinks.forEach(t => {
-                this._linksMax += t._getWidth();
-                this._linkWidths.push(t._getWidth());
-            });
-            this._linkWidths.reverse();
-        }
+        this._linkWidths = [];
+        this._linksTotalWidth = 0;
+        this._navLinks.forEach(t => {
+            const isHidden = t._hidden;
+            t.show();
+            this._linksTotalWidth += t._getWidth();
+            this._linkWidths.push(t._getWidth());
+            if (isHidden) {
+                t.hide();
+            }
+        });
     }
 
-    ngOnInit() {
-        forkJoin([this._logoReady, this._navLinksReady, this._rightLinksReady]).subscribe(() => {
-            this._navResize();
-        });
-        if (!this.appIcon) {
-            this.appIconLoaded();
-        }
-    }
-    appIconLoaded() {
-        this._logoWidth = this.el.nativeElement.querySelector('.navbar-app').scrollWidth;
-        this._logoReady.next(true);
-        this._logoReady.complete();
-    }
-    ngAfterContentInit() {
-        setTimeout(() => {
-            this._navLinksReady.next(true);
-            this._navLinksReady.complete();
-        }, 100);
-    }
     ngAfterViewInit() {
         setTimeout(() => {
-            this._setRightContainerWidth();
-            this._rightLinksReady.next(true);
-            this._rightLinksReady.complete();
+            this.refreshNavLinks();
         }, 100);
+
+        // If links are added dynamically, recheck the navbar link sizing
+        this._navLinks.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => this.refreshNavLinks());
     }
+
+    ngOnDestroy() {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
+    }
+
     _toggleMobileMenu() {
-        if (this._mobileMenu.first) {
-            if (this._menuOpen) {
-                this._mobileMenu.first.hide();
-                this._menuOpen = false;
-            } else {
-                this._mobileMenu.first.show();
-                this._menuOpen = true;
-            }
+        if (this._menuOpen) {
+            this._mobileMenu.first.hide();
+            this._menuOpen = false;
+        } else {
+            this._mobileMenu.first.show();
+            this._menuOpen = true;
         }
     }
 
@@ -200,6 +182,35 @@ export class NavbarComponent implements OnInit, AfterViewInit, AfterContentInit 
     }
 
     _moreClick() {
-        this._navbarMore._hide();
+        if (this._navbarMore) {
+            this._navbarMore.closePopover();
+        }
+    }
+
+    _brandIconType(): string {
+        return typeof this.brandIcon;
+    }
+
+    _brandIconSet(): string {
+        if (this.brandIcon && typeof this.brandIcon !== 'string') {
+            return this.brandIcon.fontSet;
+        } else {
+            return '';
+        }
+    }
+
+    _brandIconGlyph(): string {
+        if (this.brandIcon && typeof this.brandIcon !== 'string') {
+            return this.brandIcon.fontIcon;
+        } else {
+            return '';
+        }
+    }
+
+    _brandIconSize(): string {
+        if (this.brandIcon && typeof this.brandIcon !== 'string' && this.brandIcon.fontSize) {
+            return this.brandIcon.fontSize + 'px';
+        }
+        return '37px';
     }
 }

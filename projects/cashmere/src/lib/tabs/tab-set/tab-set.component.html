@@ -1,0 +1,10 @@
+<div class="hc-{{direction}}-tab-container">
+    <div class="hc-tab-bar-{{direction}}">
+        <ng-content select="hc-tab"></ng-content>
+        <ng-content></ng-content>
+    </div>
+    <div *ngIf="_addContentContainer" class="hc-tab-content-{{direction}}">
+        <router-outlet *ngIf="_routerEnabled"></router-outlet>
+        <ng-container *ngIf="!_routerEnabled" [ngTemplateOutlet]="tabContent"></ng-container>
+    </div>
+</div>

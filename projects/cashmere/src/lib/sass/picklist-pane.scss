@@ -1,0 +1,194 @@
+@import './colors';
+
+@mixin hc-picklist-pane-inner() {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+@mixin hc-picklist-pane-form-field() {
+    border: none;
+    padding-bottom: 0;
+}
+
+@mixin hc-picklist-pane-controls() {
+    display: flex;
+    flex: 0 0 auto;
+    flex-flow: column;
+    font-size: 12px;
+}
+
+@mixin hc-picklist-pane-controls-second-row() {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0 2px;
+}
+
+@mixin hc-picklist-pane-controls-btn() {
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 10px;
+}
+
+@mixin hc-picklist-pane-controls-btn-link() {
+    background: transparent;
+    border: none;
+    color: $blue;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0;
+    text-align: left;
+}
+
+@mixin hc-picklist-pane-controls-btn-link-active() {
+    box-shadow: none;
+    color: darken($blue, 10%);
+    outline: none;
+    text-decoration: underline;
+}
+
+@mixin hc-picklist-pane-controls-btn-link-hover() {
+    color: darken($blue, 5%);
+    text-decoration: underline;
+}
+
+@mixin hc-picklist-pane-controls-btn-link-disabled() {
+    color: $slate-gray-300;
+    cursor: default;
+    opacity: 1;
+    text-decoration: none;
+}
+
+@mixin hc-picklist-pane-loading-list() {
+    border: 1px solid $slate-gray-200;
+    height: 100%;
+}
+
+@mixin hc-picklist-pane-list-container() {
+    background-color: $white;
+    border: 1px solid $slate-gray-200;
+    flex: 1 1 300px;
+    overflow-y: scroll;
+    position: relative;
+}
+
+@mixin hc-picklist-pane-table() {
+    th {
+        background-color: darken($slate-gray-100, 5%);
+        border-bottom: 1px solid darken($slate-gray-100, 10%);
+        border-top: 1px solid darken($slate-gray-100, 10%);
+        font-size: 12px;
+        font-style: italic;
+        font-weight: 400;
+    }
+
+    tbody {
+        border: 0;
+    }
+}
+
+@mixin hc-picklist-pane-value-option-row() {
+    cursor: default;
+    font-weight: normal;
+    line-height: 1.1;
+    user-select: none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+@mixin hc-picklist-pane-select-all-matches-row() {
+    background-color: lighten($yellow-orange, 30%);
+    border-color: lighten($yellow-orange, 50%);
+    color: darken($yellow-orange, 30%);
+    text-align: center;
+}
+
+@mixin hc-picklist-pane-load-more-row() {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 36px;
+    padding: 11px;
+    text-align: center;
+}
+
+@mixin hc-picklist-pane-load-more-link() {
+    cursor: pointer;
+}
+
+@mixin hc-picklist-pane-col-code() {
+    width: 20%;
+    word-break: normal;
+}
+
+@mixin hc-picklist-pane-valueset-table() {
+    display: block;
+    width: 100%;
+}
+
+@mixin hc-picklist-pane-empty-table-msg() {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+}
+
+@mixin hc-picklist-pane-valueset-value-toggle() {
+    color: $blue;
+    cursor: pointer;
+    transform: color 0.2s;
+
+    &:hover {
+        color: darken($blue, 20%);
+    }
+}
+
+@mixin hc-picklist-pane-values-caret() {
+    &:before {
+        display: inline-block;
+        font-size: 13px;
+        position: relative;
+        top: -1px;
+        transition: transform 0.2s;
+    }
+}
+
+@mixin hc-picklist-pane-values-caret-showing-values() {
+    &:before {
+        transform: rotate(90deg);
+    }
+}
+
+@mixin hc-picklist-pane-values-caret-selected() {
+    color: $white;
+}
+
+@mixin hc-picklist-pane-vs-folder() {
+    left: -3px;
+    position: relative;
+}
+
+@mixin hc-picklist-pane-vs-folder-selected() {
+    color: $white;
+}
+
+@mixin hc-picklist-pane-loading-subvals() {
+    height: 40px;
+}
+
+@mixin hc-picklist-pane-valueset-sublist-table() {
+    border: 1px solid darken($slate-gray-100, 8%);
+    border-collapse: separate;
+    border-radius: 3px;
+    font-size: 13px;
+    margin: 10px 0 20px 0;
+    overflow: hidden;
+}
+
+@mixin hc-picklist-pane-valueset-code() {
+    margin-right: 5px;
+}

@@ -1,27 +1,34 @@
-<button
-    hc-button
-    class="hc-split-button-main"
-    [attr.type]="type"
-    [buttonStyle]="buttonStyle"
-    [size]="size"
-    [attr.title]="title"
-    [attr.name]="name"
-    [attr.value]="value"
-    [tabIndex]="tabIndex"
-    [disabled]="disabled"
-    (click)="_mainBtnClick($event)"
->
-    <ng-content></ng-content>
-</button>
-<button
-    #splitBtnToggle
-    hc-button
-    class="hc-split-button-toggle"
-    type="button"
-    [buttonStyle]="buttonStyle"
-    [size]="size"
-    (click)="_stopClick($event); openMenu()"
-    [disabled]="disabled"
-></button>
+<span class="hc-split-button-wrap" [hcPop]="splitMenu" trigger="none">
+    <button
+        hc-button
+        class="hc-split-button-main"
+        [attr.type]="type"
+        [buttonStyle]="buttonStyle"
+        [size]="size"
+        [attr.title]="title"
+        [attr.name]="name"
+        [attr.value]="value"
+        [tabIndex]="tabIndex"
+        [disabled]="disabled"
+        (click)="_mainBtnClick($event)"
+    >
+        <ng-content></ng-content>
+    </button>
+    <button
+        #splitBtnToggle
+        hc-button
+        class="hc-split-button-toggle"
+        type="button"
+        [buttonStyle]="buttonStyle"
+        [size]="size"
+        (click)="_stopClick($event); openMenu()"
+        [disabled]="disabled"
+        trigger="none"
+    ></button>
+</span>
 
-<ng-template cdkPortal #menuPortal="cdkPortal"> <ng-content select="[hcButtonItem]"></ng-content> </ng-template>
+<hc-pop #splitMenu [xAlign]="menuPosition" [autoCloseOnContentClick]="autoCloseMenuOnClick" [showArrow]="false">
+    <div hcMenu>
+        <ng-content select="[hcButtonItem], [hcMenuItem]"></ng-content>
+    </div>
+</hc-pop>

@@ -1,38 +1,88 @@
-
 <ng-template [cdkPortalOutlet]="_calendarHeaderPortal"></ng-template>
 
-<div class="hc-calendar-content" [ngSwitch]="currentView" cdkMonitorSubtreeFocus tabindex="-1">
-  <hc-month-view
-      *ngSwitchCase="'month'"
-      [(activeDate)]="activeDate"
-      [selected]="selected"
-      [dateFilter]="dateFilter"
-      [maxDate]="maxDate"
-      [minDate]="minDate"
-      [dateClass]="dateClass"
-      (selectedChange)="_dateSelected($event)"
-      (_userSelection)="_userSelected()">
-  </hc-month-view>
+<ng-container *ngIf="mode !== 'time'">
+    <div class="hc-calendar-content" [ngSwitch]="currentView" cdkMonitorSubtreeFocus tabindex="-1">
+        <hc-month-view
+            *ngSwitchCase="'month'"
+            [(activeDate)]="activeDate"
+            [selected]="selected"
+            [dateFilter]="dateFilter"
+            [maxDate]="maxDate"
+            [minDate]="minDate"
+            [dateClass]="dateClass"
+            (selectedChange)="_dateSelected($event)"
+            (_userSelection)="_userSelected()"
+        ></hc-month-view>
 
-  <hc-year-view
-      *ngSwitchCase="'year'"
-      [(activeDate)]="activeDate"
-      [selected]="selected"
-      [dateFilter]="dateFilter"
-      [maxDate]="maxDate"
-      [minDate]="minDate"
-      (monthSelected)="_monthSelectedInYearView($event)"
-      (selectedChange)="_goToDateInView($event, 'month')">
-  </hc-year-view>
+        <hc-year-view
+            *ngSwitchCase="'year'"
+            [(activeDate)]="activeDate"
+            [selected]="selected"
+            [dateFilter]="dateFilter"
+            [maxDate]="maxDate"
+            [minDate]="minDate"
+            (monthSelected)="_monthSelectedInYearView($event)"
+            (selectedChange)="_goToDateInView($event, 'month')"
+        ></hc-year-view>
 
-  <hc-multi-year-view
-      *ngSwitchCase="'multi-year'"
-      [(activeDate)]="activeDate"
-      [selected]="selected"
-      [dateFilter]="dateFilter"
-      [maxDate]="maxDate"
-      [minDate]="minDate"
-      (yearSelected)="_yearSelectedInMultiYearView($event)"
-      (selectedChange)="_goToDateInView($event, 'year')">
-  </hc-multi-year-view>
+        <hc-multi-year-view
+            *ngSwitchCase="'multi-year'"
+            [(activeDate)]="activeDate"
+            [selected]="selected"
+            [dateFilter]="dateFilter"
+            [maxDate]="maxDate"
+            [minDate]="minDate"
+            (yearSelected)="_yearSelectedInMultiYearView($event)"
+            (selectedChange)="_goToDateInView($event, 'year')"
+        ></hc-multi-year-view>
+    </div>
+</ng-container>
+
+<div *ngIf="mode !== 'date'" class="hc-calendar-time-picker">
+    <hc-icon class="hc-calendar-time-picker-icon" fontSet="fa" fontIcon="fa-clock-o"></hc-icon>
+
+    <hc-form-field inline="true" class="hc-calendar-time-picker-field">
+        <input
+            hcInput
+            class="hc-calendar-time-picker-input"
+            placeholder="hh"
+            [(ngModel)]="hours"
+            (keydown.arrowup)="_hoursUp()"
+            (keydown.arrowdown)="_hoursDown()"
+        />
+        <span hcSuffix class="hc-calendar-time-controls">
+            <button hc-button buttonStyle="minimal" size="sm" (click)="_hoursUp()" class="hc-calendar-time-controls-button">
+                <hc-icon fontSet="fa" fontIcon="fa-caret-up" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
+            </button>
+            <button hc-button buttonStyle="minimal" size="sm" (click)="_hoursDown()" class="hc-calendar-time-controls-button">
+                <hc-icon fontSet="fa" fontIcon="fa-caret-down" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
+            </button>
+        </span>
+    </hc-form-field>
+
+    <hc-form-field inline="true" class="hc-calendar-time-picker-field">
+        <input
+            hcInput
+            class="hc-calendar-time-picker-input"
+            placeholder="mm"
+            [(ngModel)]="minutes"
+            (keydown.arrowup)="_minutesUp()"
+            (keydown.arrowdown)="_minutesDown()"
+        />
+        <span hcSuffix class="hc-calendar-time-controls">
+            <button hc-button buttonStyle="minimal" size="sm" (click)="_minutesUp()" class="hc-calendar-time-controls-button">
+                <hc-icon fontSet="fa" fontIcon="fa-caret-up" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
+            </button>
+            <button hc-button buttonStyle="minimal" size="sm" (click)="_minutesDown()" class="hc-calendar-time-controls-button">
+                <hc-icon fontSet="fa" fontIcon="fa-caret-down" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
+            </button>
+        </span>
+    </hc-form-field>
+
+    <hc-form-field inline="true" *ngIf="_hourCycle === 12" class="hc-calendar-time-picker-field">
+        <hc-select class="hc-calendar-time-picker-select" [formControl]="_period" (change)="_periodChange()">
+            <option value="am">AM</option>
+            <option value="pm">PM</option>
+        </hc-select>
+    </hc-form-field>
 </div>

@@ -1,0 +1,90 @@
+@import '~@angular/cdk/_overlay.scss';
+@import './variables';
+
+// override index for implementation inside a modal: https://github.com/HealthCatalyst/Fabric.Cashmere/issues/867
+$cdk-z-index-overlay-container: $zindex-cdk-overlay;
+$cdk-z-index-overlay: $zindex-cdk-overlay;
+
+@include cdk-overlay();
+
+.hc-menu-panel {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 16px;
+    margin: -12px;
+    background-color: $white;
+    border-radius: 4px;
+
+    .hc-divider {
+        width: auto;
+        margin: 5px 0;
+    }
+}
+
+.hc-divider.hc-menu-item {
+    margin: 5px -16px;
+}
+
+button.hc-menu-item,
+a.hc-menu-item {
+    @include fontSize(14px);
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: $offblack;
+    padding: 6px 16px;
+    margin: 0 -16px;
+    border: 0;
+    background: 0 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+
+    &[disabled] {
+        opacity: 0.5;
+    }
+
+    &:active,
+    &:hover {
+        color: $offblack;
+    }
+
+    &:focus:not([disabled]) {
+        background-color: tint($blue, 70%);
+        color: $offblack;
+        cursor: pointer;
+        box-shadow: none;
+        outline: none;
+    }
+
+    &.hc-menu-item-submenu {
+        padding-right: 40px;
+    }
+
+    &.hc-menu-item-submenu:after {
+        content: '';
+        background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAzMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiMzMzM7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT5BcnRib2FyZCAxPC90aXRsZT48cGF0aCBpZD0iUGF0aF8xMjIyMSIgZGF0YS1uYW1lPSJQYXRoIDEyMjIxIiBjbGFzcz0iY2xzLTEiIGQ9Ik0xOS42NCwxNS4yOWExLDEsMCwwLDAtLjMyLS43NkwxMS44Miw3QTEuMDYsMS4wNiwwLDAsMCwxMCw3Ljc5djE1YTEuMDgsMS4wOCwwLDAsMCwxLjA3LDEuMDcsMS4wNSwxLjA1LDAsMCwwLC43NS0uMzJsNy41LTcuNUExLDEsMCwwLDAsMTkuNjQsMTUuMjlaIi8+PC9zdmc+');
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 10px;
+    }
+
+    .hc-menu-icon {
+        font-size: 16px;
+        height: 16px;
+        width: 16px;
+        margin-right: 14px;
+    }
+
+    .hc-menu-sub-text {
+        flex: 1 0 auto;
+        margin-left: 15px;
+        color: $gray-300;
+        text-align: right;
+
+        hc-icon {
+            margin-right: 0;
+            color: $offblack;
+        }
+    }
+}

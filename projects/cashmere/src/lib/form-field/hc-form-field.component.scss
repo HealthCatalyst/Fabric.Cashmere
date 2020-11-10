@@ -12,12 +12,24 @@
     @include hc-form-field-wrapper-inline();
 }
 
+.hc-form-field-wrapper-tight {
+    @include hc-form-field-wrapper-tight();
+}
+
 .hc-form-field-content-wrapper {
     @include hc-form-field-content-wrapper();
 }
 
 .hc-form-field-flex {
     @include hc-form-field-flex();
+
+    &:hover {
+        @include hc-form-field-flex-hover();
+    }
+
+    &.hc-form-field-flex-focused {
+        @include hc-form-field-flex-focus();
+    }
 
     .hc-form-field-disabled & {
         @include hc-form-field-disabled-flex();
@@ -27,6 +39,14 @@
 .hc-form-field-flex-inline {
     @include hc-form-field-flex-inline();
 
+    &:hover {
+        @include hc-form-field-flex-hover();
+    }
+
+    &.hc-form-field-flex-focused {
+        @include hc-form-field-flex-focus();
+    }
+
     .hc-form-field-disabled & {
         @include hc-form-field-disabled-flex();
     }
@@ -35,6 +55,10 @@
 .hc-form-field-invalid.hc-form-field-flex,
 .hc-form-field-invalid.hc-form-field-flex-inline {
     @include hc-form-field-input-invalid();
+
+    &.hc-form-field-flex-focused {
+        @include hc-form-field-input-invalid-focus();
+    }
 }
 
 .hc-form-field-non-input {
@@ -45,17 +69,29 @@
     @include hc-form-field-non-input-inline();
 }
 
+.hc-form-field-non-input-inline-tight {
+    @include hc-form-field-non-input-inline-tight();
+}
+
 .hc-form-field-prefix,
 .hc-form-field-suffix {
     @include hc-form-field-prefix-suffix();
 
     .hc-icon {
         @include hc-form-field-prefix-suffix-icon();
+
+        .hc-form-field-wrapper-tight & {
+            @include hc-form-field-prefix-suffix-tight();
+        }
     }
 
     .hc-form-field-disabled & {
         @include hc-form-field-prefix-suffix-disabled();
     }
+}
+
+.hc-form-field-suffix {
+    @include hc-form-field-suffix();
 }
 
 .hc-form-field-prefix {
@@ -66,11 +102,19 @@
     @include hc-form-field-infix();
 }
 
+.hc-form-field-infix-tight {
+    @include hc-form-field-infix-tight();
+}
+
 .hc-form-field-label-wrapper {
     @include hc-form-field-label-wrapper();
 
     .hc-icon {
         @include hc-form-field-label-wrapper-icon();
+    }
+
+    &.hc-form-field-label-wrapper-tight {
+        @include hc-form-field-label-tight();
     }
 }
 
@@ -80,14 +124,26 @@
     .hc-icon {
         @include hc-form-field-label-wrapper-icon();
     }
+
+    &.hc-form-field-label-wrapper-tight {
+        @include hc-form-field-label-wrapper-tight-inline();
+    }
 }
 
 .hc-form-field-label {
     @include hc-form-field-label();
 }
 
+.hc-form-field-label-extension {
+    @include hc-form-field-label-extension();
+}
+
 .hc-form-field-label-inline {
     @include hc-form-field-label-inline();
+}
+
+.hc-form-field-label-tight {
+    @include hc-form-field-label-tight();
 }
 
 .hc-form-field-error-wrapper {

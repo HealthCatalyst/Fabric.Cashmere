@@ -1,0 +1,109 @@
+@import './colors';
+
+// tab
+
+@mixin hc-tab() {
+    min-width: 0;
+
+    &:focus {
+        outline: none;
+
+        a {
+            outline: 2px solid transparentize($primary-brand, 0.6);
+            outline-offset: -2px;
+        }
+    }
+}
+
+@mixin hc-tab-vertical() {
+    background-color: $white;
+    color: $offblack;
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@mixin hc-tab-embedded-anchor-focus() {
+    box-shadow: none;
+    outline: none;
+}
+
+@mixin hc-tab-vertical-active() {
+    background-color: $slate-gray-100;
+    border-left: $blue 8px solid;
+    color: $blue;
+    font-weight: 600;
+    padding-left: 12px;
+}
+
+@mixin hc-tab-vertical-tight() {
+    padding: 10px 20px;
+}
+
+@mixin hc-tab-horizontal() {
+    background-color: inherit;
+    color: $offblack;
+    display: block;
+    font-size: 14px;
+    min-width: 100px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@mixin hc-tab-horizontal-active() {
+    border-bottom: $blue 4px solid;
+    color: $offblack;
+    font-weight: bold;
+}
+
+@mixin hc-tab-horizontal-tight() {
+    padding: 10px;
+}
+
+// tab-set
+
+@mixin hc-tab-set-container-horizontal() {
+    height: auto;
+    width: 100%;
+}
+
+@mixin hc-tab-set-bar-horizontal() {
+    align-items: baseline;
+    background-color: inherit;
+    border-bottom: 1px solid $slate-gray-300;
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin hc-tab-set-content-horizontal() {
+    background-color: inherit;
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+}
+
+@mixin hc-tab-set-container-vertical() {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+@mixin hc-tab-set-bar-vertical() {
+    background-color: $white;
+    padding: 15px 0;
+    width: 20%;
+}
+
+@mixin hc-tab-set-content-vertical() {
+    background-color: $slate-gray-100;
+    width: 80%;
+}

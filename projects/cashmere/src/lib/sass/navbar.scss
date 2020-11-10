@@ -1,11 +1,12 @@
-@import 'colors';
-@import 'variables';
-@import 'mixins';
+@import "./colors";
+@import "./variables";
+@import "./mixins";
 
 $navbar-color: $charcoal-blue !default;
 $navbar-brand: $primary-brand !default;
 $navbar-height: 53px !default;
-$navbar-app-padding: 0 60px 0 25px !default;
+$navbar-app-padding-left: 25px !default;
+$navbar-app-padding-right: 50px !default;
 $navbar-text: $white !default;
 $navbar-text-inactive: $gray-300 !default;
 $navbar-fixed-shadow: 0px 2px 6px $shadow;
@@ -29,10 +30,9 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 
 @mixin navbar-brand {
     background-color: $navbar-brand;
-    min-width: 55px;
-    width: 55px;
     flex-basis: auto;
     height: 100%;
+    width: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,12 +41,17 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
             height: 37px;
             width: 100%;
         }
+        & > hc-icon {
+            width: 100%;
+            color: $white;
+        }
         transition: background-color 0.25s ease;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
         cursor: default;
+        min-width: 55px;
     }
 
     @include media-breakpoint-down(sm) {
@@ -56,22 +61,23 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 
 @mixin navbar-app {
     height: 100%;
-    padding: $navbar-app-padding;
-
-    &.logo-condense {
-        padding-right: 25px;
-    }
 
     a {
         display: flex;
         align-items: center;
         justify-content: center;
+        padding-left: $navbar-app-padding-left;
+        padding-right: $navbar-app-padding-right;
         height: 100%;
 
         img {
             height: 30px;
             width: auto;
             padding-top: 2px;
+        }
+
+        &:focus {
+            outline-offset: -8px;
         }
     }
 
@@ -87,6 +93,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     padding: 0;
     padding-left: 0;
     overflow: hidden;
+    width: 100%;
     @include media-breakpoint-down(md) {
         display: none;
     }
@@ -98,17 +105,24 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     box-sizing: border-box;
     padding: 22px 30px 0 30px;
     text-align: center;
+    white-space: nowrap;
     color: $navbar-text-inactive;
     border-bottom: 5px solid transparent;
     transition: background-color 0.25s;
+    outline: none;
     &:hover:not(.active),
     &.inactive:hover {
         outline: none;
         color: $navbar-text;
         background-color: darken($navbar-color, 5%);
     }
-    &.active:not(.inactive),
-    &:active {
+    &:focus {
+        outline: none;
+        color: $navbar-text;
+        background-color: darken($navbar-color, 8%);
+    }
+    &:active:not(.inactive),
+    &.active:not(.inactive) {
         color: $navbar-text;
         font-weight: 600;
         border-bottom: 5px solid $navbar-brand;
@@ -131,6 +145,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 
 @mixin hc-navbar-right-container {
     display: flex;
+    flex: 0 0 auto;
     align-items: center;
     position: relative;
     margin-left: auto;
@@ -150,6 +165,10 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         color: $navbar-text;
         background-color: darken($navbar-color, 5%);
     }
+    &:focus {
+        outline: none;
+        background-color: darken($navbar-color, 8%);
+    }
 }
 
 @mixin hc-navbar-icon {
@@ -158,24 +177,31 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     padding: 18px 0;
 }
 
+@mixin hc-navbar-icon-home-uri {
+    cursor: pointer;
+}
+
 @mixin hc-navbar-username {
     @include navbar-item();
-    padding: 20px 15px 0;
+    padding: 2px 15px 0;
     > hc-icon {
         font-size: 12pt;
+        padding-top: 2px;
     }
-    > span {
-        max-width: 130px;
-    }
-    max-width: 150px;
     display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+@mixin hc-navbar-username-subtext {
+    color: $slate-gray-300;
 }
 
 @mixin hc-navbar-vertical-separator {
     display: flex;
     align-items: center;
     &::after {
-        content: '|';
+        content: "|";
         font-size: 18px;
         color: $navbar-text;
     }
@@ -197,6 +223,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         margin-left: 5px;
         vertical-align: top;
         margin-top: 1px;
+        margin-right: -10px;
         font-size: 13px !important;
     }
 
@@ -205,6 +232,16 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         outline: none;
         color: $navbar-text;
         background-color: darken($navbar-color, 5%);
+    }
+    &:focus {
+        outline: none;
+        color: $navbar-text;
+        background-color: darken($navbar-color, 8%);
+    }
+    &.active:not(.inactive) {
+        color: $navbar-text;
+        font-weight: 600;
+        border-bottom: 5px solid $navbar-brand;
     }
 
     // This piece of code allows to use the bold styling from the style guide, while
@@ -242,5 +279,74 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 
     @include media-breakpoint-down(md) {
         display: flex;
+    }
+}
+
+/* Mobile menu */
+
+@mixin hc-navbar-mobile-menu-dropdown() {
+    background-color: $slate-blue;
+    visibility: hidden;
+    margin-top: 53px;
+    padding-top: 15px;
+    position: fixed;
+    overflow-y: scroll;
+    height: calc(100vh - 53px);
+    width: 100%;
+    z-index: $zindex-navbar-menu;
+
+    @include media-breakpoint-down(md) {
+        display: inline;
+        visibility: visible;
+    }
+}
+
+@mixin hc-navbar-mobile-hr() {
+    background-color: lighten($slate-blue, 20%);
+    border: 0;
+    height: 1px;
+    margin: 0 0 0 5% !important;
+}
+
+@mixin hc-navbar-mobile-a() {
+    text-decoration: none;
+}
+
+@mixin hc-navbar-mobile-list-item() {
+    color: $slate-gray-200;
+    cursor: pointer;
+    display: block;
+    visibility: inherit;
+    padding-left: 2%;
+    transition: background-color 0.25s ease;
+
+    &:hover {
+        background-color: darken($slate-blue, 5%);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+@mixin hc-navbar-mobile-active-link() {
+    background-color: darken($slate-blue, 5%);
+    border-left: 8px solid $primary-brand;
+    color: $white;
+    font-weight: bold;
+}
+
+@mixin hc-navbar-mobile-active-link-content() {
+    padding-left: 4px;
+}
+
+@mixin hc-navbar-cobrand( $color ) {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    @if $color == 'light' {
+        background-color: $white;
+    } @else {
+        border-left: 1px solid darken($navbar-color, 10%);
     }
 }

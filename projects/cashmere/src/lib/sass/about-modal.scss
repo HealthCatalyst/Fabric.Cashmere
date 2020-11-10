@@ -1,38 +1,54 @@
 @import './colors';
-@import 'variables';
-@import 'mixins';
+@import './variables';
+@import './mixins';
 
 .about-modal-content {
-    padding: 30px 0px;
+    padding: 15px 0;
     color: $gray-500;
     text-align: center;
+    overflow-y: auto;
 }
 
 .about-header {
-    text-align: left;
-    line-height: 14px;
-    @include fontSize(11px);
-    display: inline-flex;
-    flex-direction: row;
-    justify-items: center;
-    padding: 10px 0 25px 0;
+    width: 100%;
+    padding-bottom: 20px;
 }
 
-.about-triflame {
-    width: 40px;
-    height: 65px;
-    margin-right: 20px;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Mi43NCA2OS4yIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzAwNmQ5YTt9LmNscy0ye2ZpbGw6IzAwYWVmZjt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPkFydGJvYXJkIDE8L3RpdGxlPjxnIGlkPSJHcm91cF80MTMiIGRhdGEtbmFtZT0iR3JvdXAgNDEzIj48ZyBpZD0iR3JvdXBfNDA2IiBkYXRhLW5hbWU9Ikdyb3VwIDQwNiI+PHBhdGggaWQ9IlBhdGhfMSIgZGF0YS1uYW1lPSJQYXRoIDEiIGNsYXNzPSJjbHMtMSIgZD0iTTIxLjU3LDY5LjJBMTguODcsMTguODcsMCwwLDEsMTIsNTcuOWEyMi44MiwyMi44MiwwLDAsMS0xLjQtOC4yYzAtMTcuNCwxNC41LTI2LjgsMTIuOS00NC41YTYuNzEsNi43MSwwLDAsMC0uNi0yLjhBNy4yMiw3LjIyLDAsMCwwLDIxLjQ3LDBhMTkuMjYsMTkuMjYsMCwwLDEsNS43LDQuNSwyNC4zNywyNC4zNywwLDAsMSw0LDYuOCwyMy45MSwyMy45MSwwLDAsMSwxLjQsOC40YzAsMTUtMTMuNywyNi4xLTEzLjcsNDIuMmExNC4xLDE0LjEsMCwwLDAsLjcsNC4xLDE1LjUsMTUuNSwwLDAsMCwyLDMuMiIvPjxwYXRoIGlkPSJQYXRoXzIiIGRhdGEtbmFtZT0iUGF0aCAyIiBjbGFzcz0iY2xzLTIiIGQ9Ik0zNC42Nyw2OC4yYTExLjUzLDExLjUzLDAsMCwxLTMuOC0zLjEsMTMuMzEsMTMuMzEsMCwwLDEtMi41LTQuNSwxNy4yNCwxNy4yNCwwLDAsMS0xLTUuNWMwLTExLjYsMTAuNi0xOC4zLDkuMS0zMy4zYTIyLjc0LDIyLjc0LDAsMCwxLDQuOCw3LjcsMjAuNTMsMjAuNTMsMCwwLDEsMSw1LjVjMCwxMC4xLTkuMiwxNy40LTkuMiwyOC4yYTguNjMsOC42MywwLDAsMCwuNCwyLjgsNCw0LDAsMCwwLDEuMiwyLjIiLz48cGF0aCBpZD0iUGF0aF8zIiBkYXRhLW5hbWU9IlBhdGggMyIgY2xhc3M9ImNscy0yIiBkPSJNNy43Nyw0OC41QTExLjUzLDExLjUzLDAsMCwxLDQsNDUuNGExMy4zMSwxMy4zMSwwLDAsMS0yLjUtNC41LDE0Ljg3LDE0Ljg3LDAsMCwxLTEtNS41YzAtMTEuNiwxMC44LTE4LjMsOS4xLTMzLjNhMjIuNzQsMjIuNzQsMCwwLDEsNC44LDcuNywyMC41MywyMC41MywwLDAsMSwxLDUuNWMwLDEwLjEtOS4xLDE3LjQtOS4xLDI4LjJhOC42Myw4LjYzLDAsMCwwLC40LDIuOCw0LjE5LDQuMTksMCwwLDAsMS4xLDIuMiIvPjwvZz48L2c+PC9zdmc+');
+.about-logo {
+    height: 50px;
+    width: 279px;
+    margin-bottom: 15px;
 }
-.about-app-title {
-    height: 40px;
-    width: 342px;
+
+.about-app {
+    width: 100%;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $dark-blue;
+}
+
+.about-icon img {
+    width: 75px;
+    height: 75px;
+    margin-right: 17px;
+}
+
+.about-name {
+    text-align: left;
+}
+
+.about-name img {
+    height: 24px;
+    width: 157px;
+    margin-left: -2px;
 }
 
 .about-version {
-    @include fontSize(18px);
-    margin-top: 8px;
-    color: $text;
+    @include fontSize(14px);
+    color: $white;
+    font-weight: 300;
 }
 
 .about-footer {
@@ -72,6 +88,13 @@
     color: $text;
     @include fontSize(16px);
     line-height: 24px;
+}
+
+.about-divider {
+    border: none;
+    height: 1px;
+    background-color:#e0e0e0;
+    margin: 0;
 }
 
 .about-close-container {

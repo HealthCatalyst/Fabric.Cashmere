@@ -17,6 +17,8 @@ export type HcDateFormats = {
     };
     display: {
         dateInput: any;
+        timeInput: any;
+        dateTimeInput: any;
         monthYearLabel: any;
         dateA11yLabel: any;
         monthYearA11yLabel: any;

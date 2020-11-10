@@ -9,13 +9,27 @@ import {
     DoCheck,
     Self,
     Output,
-    EventEmitter
+    EventEmitter,
+    ViewChild,
+    Renderer2,
+    AfterViewInit
 } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
+import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
 
 let uniqueId = 1;
+
+export class SelectChangeEvent {
+    constructor(public source: SelectComponent, public value: any) {}
+}
+
+/** Builds a value string to help with matching objects */
+export function _buildValueString(id: string|null, value: any): string {
+    if (id == null) { return `${value}`; }
+    if (value && typeof value === 'object') { value = 'Object'; }
+    return `${id}: ${value}`.slice(0, 50);
+}
 
 /** Select one of many options from a dropdown */
 @Component({
@@ -25,11 +39,17 @@ let uniqueId = 1;
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SelectComponent)}]
 })
-export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
+export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck, AfterViewInit {
     private _uniqueInputId = `hc-select-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
+    private _tight: boolean = false;
+    private _value: any = '';
+    _optionIdCounter: number = 0; // tracks ids for select options
+    _optionMap: Map<string, any> = new Map<string, any>();
+    _componentId = this._uniqueInputId; // contains id for the hc-select component
 
-    _componentId = this._uniqueInputId;
+    @ViewChild('selectInput', {static: false})
+    _nativeSelect: ElementRef;
 
     /** Optional string of text to appear before selection is made */
     @Input()
@@ -74,11 +94,20 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         return this._value;
     }
 
-    set value(val: string) {
+    set value(val: any) {
         if (val !== this._value) {
             this._value = val;
             this.onChange(val);
         }
+    }
+
+    /** If true, condense the default margin and reduce the font size. *Defaults to `false`.*  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value) {
+        this._tight = parseBooleanAttribute(value);
     }
 
     @Output()
@@ -86,7 +115,9 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     @Output()
     readonly blur: EventEmitter<void> = new EventEmitter<void>();
 
-    private _value: string = '';
+    /** Event emitted whenever the state changes */
+    @Output()
+    change = new EventEmitter<SelectChangeEvent>();
 
     @HostBinding('class.hc-select')
     _hostClass = true;
@@ -99,8 +130,20 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         return this._isDisabled;
     }
 
+    /** A function to compare the option values with the selected values. The first argument is a value from an option.
+     * The second is a value from the selection(model). A boolean should be returned. */
+    @Input()
+    set compareWith(fn: (o1: any, o2: any) => boolean) {
+      if (typeof fn !== 'function') {
+        throw new Error(`compareWith must be a function, but received ${JSON.stringify(fn)}`);
+      }
+      this._compareWith = fn;
+    }
+
+    private _compareWith: (o1: any, o2: any) => boolean = Object.is;
+
     constructor(
-        private _elementRef: ElementRef,
+        private _renderer: Renderer2,
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
         @Optional()
@@ -119,6 +162,10 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
 
     private onTouched: (val: any) => void = () => {};
 
+    ngAfterViewInit() {
+        this._applyValueToNativeControl();
+    }
+
     registerOnChange(fn: any) {
         this.onChange = fn;
     }
@@ -127,8 +174,27 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         this.onTouched = fn;
     }
 
-    writeValue(value: string) {
+    writeValue(value: any) {
         this._value = value;
+        this._applyValueToNativeControl();
+    }
+
+    _applyValueToNativeControl() {
+        const id: string|null = this._getOptionId(this._value);
+        if (!this._nativeSelect) { return; }
+        if (id == null) {
+            const selectedIndex = this.placeholder ? 0 : -1;
+            this._renderer.setProperty(this._nativeSelect.nativeElement, 'selectedIndex', -1);
+        }
+        const valueString = _buildValueString(id, this._value);
+        this._renderer.setProperty(this._nativeSelect.nativeElement, 'value', valueString);
+    }
+
+    _change(event: Event, value: any) {
+        event.stopPropagation();
+        this._value = this._getOptionValue(value);
+        this.onChange(this._value);
+        this.change.emit(new SelectChangeEvent(this, this._value));
     }
 
     ngDoCheck(): void {
@@ -136,6 +202,28 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         if (this._ngControl) {
             this._updateErrorState();
         }
+    }
+
+    _registerOption(): string {
+        return (this._optionIdCounter++).toString();
+    }
+
+    _getOptionId(value: any): string|null {
+        for (const id of Array.from(this._optionMap.keys())) {
+            if (this._compareWith(this._optionMap.get(id), value)) {
+                return id;
+            }
+        }
+        return null;
+    }
+
+    _getOptionValue(valueString: string): any {
+        const id: string = this._extractId(valueString);
+        return this._optionMap.has(id) ? this._optionMap.get(id) : valueString;
+    }
+
+    _extractId(valueString: string): string {
+        return valueString.split(':')[0];
     }
 
     private _updateErrorState() {

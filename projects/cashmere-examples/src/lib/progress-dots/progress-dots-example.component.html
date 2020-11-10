@@ -3,22 +3,22 @@
     <div class="col-1">
         <hc-form-field>
             <hc-label>Color:</hc-label>
-            <hc-select [(ngModel)]="dotsColor">
-                <option value="dark" [selected]="dotsColor === 'dark'">dark</option>
-                <option value="light" [selected]="dotsColor === 'light'">light</option>
+            <hc-select [formControl]="dotsColor">
+                <option value="dark" [selected]="dotsColor.value === 'dark'">Dark</option>
+                <option value="light" [selected]="dotsColor.value === 'light'">Light</option>
             </hc-select>
         </hc-form-field>
-        <hc-checkbox id="checkbox-dots-size" [(ngModel)]="dotsMini" [checked]="dotsMini">Miniature</hc-checkbox>
-        <hc-checkbox id="checkbox-dots-center" [(ngModel)]="dotsCentered" [checked]="dotsCentered">Centered</hc-checkbox>
+        <hc-checkbox id="checkbox-dots-size" [formControl]="dotsMini" [checked]="dotsMini.value">Miniature</hc-checkbox>
+        <hc-checkbox id="checkbox-dots-center" [formControl]="dotsCentered" [checked]="dotsCentered.value">Centered</hc-checkbox>
     </div>
 
     <!-- Spinner -->
     <div class="col-2">
-        <div class="progress-component-container" [ngClass]="{'dark-bg': dotsColor === 'light'}">
+        <div class="progress-component-container" [ngClass]="{'dark-bg': dotsColor.value === 'light'}">
             <hc-progress-dots
-                [color]="dotsColor"
-                [isMini]="dotsMini"
-                [isCentered]="dotsCentered"></hc-progress-dots>
+                [color]="dotsColor.value"
+                [isMini]="dotsMini.value"
+                [isCentered]="dotsCentered.value"></hc-progress-dots>
         </div>
     </div>
 </div>

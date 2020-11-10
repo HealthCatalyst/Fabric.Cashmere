@@ -1,0 +1,97 @@
+@import '../sass/popover.scss';
+
+.hc-pop-before.hc-pop-above {
+    @include hc-pop-before-above();
+}
+
+.hc-pop-before.hc-pop-center {
+    @include hc-pop-before-center();
+}
+
+.hc-pop-before.hc-pop-below {
+    @include hc-pop-before-below();
+}
+
+.hc-pop-center.hc-pop-above {
+    @include hc-pop-center-above();
+}
+
+.hc-pop-center.hc-pop-below {
+    @include hc-pop-center-below();
+}
+
+.hc-pop-after.hc-pop-above {
+    @include hc-pop-after-above();
+}
+
+.hc-pop-after.hc-pop-center {
+    @include hc-pop-after-center();
+}
+
+.hc-pop-after.hc-pop-below {
+    @include hc-pop-after-below();
+}
+
+.hc-pop-container-basic {
+    @include hc-pop-container-basic();
+}
+
+.hc-pop-arrow {
+    .hc-pop-show-arrow & {
+        @include hc-pop-arrow();
+    }
+
+    .hc-pop-arrow-x-start & {
+        @include hc-pop-arrow-x-start();
+    }
+
+    .hc-pop-arrow-x-center & {
+        @include hc-pop-arrow-x-center();
+    }
+
+    .hc-pop-arrow-x-end & {
+        @include hc-pop-arrow-x-end();
+    }
+
+    .hc-pop-arrow-y-start & {
+        @include hc-pop-arrow-y-start();
+    }
+
+    .hc-pop-arrow-y-center & {
+        @include hc-pop-arrow-y-center();
+    }
+
+    .hc-pop-arrow-y-end & {
+        @include hc-pop-arrow-y-end();
+    }
+
+    .hc-pop-arrow-y-above & {
+        @include hc-pop-arrow-y-above();
+    }
+
+    .hc-pop-arrow-y-below & {
+        @include hc-pop-arrow-y-below();
+    }
+
+    .hc-pop-arrow-x-before & {
+        @include hc-pop-arrow-x-before();
+    }
+
+    .hc-pop-arrow-x-after & {
+        @include hc-pop-arrow-x-after();
+    }
+}
+
+.hc-pop-arrow-y-above,
+.hc-pop-arrow-y-below {
+    &.hc-pop-show-arrow {
+        @include hc-pop-arrow-vert();
+    }
+}
+
+.hc-pop-arrow-x-before,
+.hc-pop-arrow-x-after {
+    &.hc-pop-show-arrow {
+        @include hc-pop-arrow-horiz();
+    }
+}

@@ -11,10 +11,10 @@
 
 <div class="demo-content">
     <h1>Charts and Data Visualization</h1>
-    <h6>Last updated {{lastModified | date:'longDate'}}</h6>
+    <h6>Last updated Apr 8, 2019</h6>
 
     <hc-tile>
-        <h5>Overview</h5>
+        <h5 id="overview">Overview</h5>
         <p>Entire bookshelves could be filled with all that has been written about best practices for data visualization.
             The styles presented here don't seek to rewrite any of those books, but instead are primarily aimed at maximizing
             readability and consistency in our charts.  But if you are looking for an excellent, no-nonsense guide for improving
@@ -23,7 +23,7 @@
 
     <hc-tile>
         <div class="header-row">
-            <button hc-button title="Patient Readmissions" buttonStyle="link" class="chart-header" [hcPopover]="options" popperPlacement="bottom">
+            <button hc-button title="Patient Readmissions" buttonStyle="link" class="chart-header" [hcPop]="options" popperPlacement="bottom">
                 <h2>Patient Readmissions</h2>
                 <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="header-icon-right"></hc-icon>
             </button>
@@ -32,14 +32,14 @@
                 <hc-icon fontSet="fa" fontIcon="fa-info-circle" (click)="chartInfo(content, 'Chart Information')"></hc-icon>
             </span>
         </div>
-        <hc-popover-content #options>
+        <hc-pop #options>
             <ul class="list-options">
                 <li>Patient Readmissions</li>
                 <li><button>Inpatient Mortality Rate</button></li>
                 <li><button>Average Length of Stay</button></li>
                 <li><button>Time to Service</button></li>
             </ul>
-        </hc-popover-content>
+        </hc-pop>
         <div *ngIf="loading" class="bar-loader">
             <hc-progress-spinner diameter="50" color="green"></hc-progress-spinner>
         </div>
@@ -54,7 +54,7 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Chart Layout</h5>
+        <h5 id="chart-layout">Chart Layout</h5>
         <p>A strong line should be used for the primary axis. The secondary axis should not have a line, but include lighter dotted
             grid lines for each tick.  <code>$chart-font-family</code> and <code>$chart-font-size</code> are used for ticks on each axis.
             The primary axis labels may be truncated using ellipses or rotated for longer names.  The dotted grid lines should be set
@@ -74,7 +74,7 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Data Colors</h5>
+        <h5 id="data-colors">Data Colors</h5>
         <p>To determine what colors should be used together in charts, you should determine what the data is trying to convey. If
             it’s a normal reporting chart for general use, blues and cool colors should be used to keep consistency. If the data in
             a normal report chart needs separation, use a mix of <a routerLink="/styles/color" routerLinkActive="active">HC colors</a>. Grays should be used for either showing a benchmark
@@ -102,7 +102,7 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Line Charts</h5>
+        <h5 id="line-charts">Line Charts</h5>
         <p>Line plots should have a thickeness of 2px. All data points should be indicated with a 6px radius circle.  The circle
             should have the same color as the plot and a 2px white stroke. Tooltips should be included on the circles so that
             users can hover for more detailed information.
@@ -110,7 +110,7 @@
     </hc-tile>
 
     <hc-tile>
-        <h5>Tooltips</h5>
+        <h5 id="tooltips">Tooltips</h5>
         <p>All charts should include the ability for a user to hover over a data point and view more information. The <code>charts-tooltip</code>
             css class is included for tooltip formatting. Tooltips should include the data set name as a header, the domain name as a label,
             and then the value in bold text.  The border of the tooltip and the header name should be set to the same color as the data element

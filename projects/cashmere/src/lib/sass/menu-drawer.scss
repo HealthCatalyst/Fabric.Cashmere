@@ -1,0 +1,66 @@
+@import './colors';
+@import './functions';
+
+$drawer-toolbar-height: 52px;
+
+@mixin hc-menu-drawer() {
+    display: block;
+    overflow: hidden;
+}
+
+@mixin hc-menu-drawer-item-container() {
+    background-color: $charcoal-blue;
+    height: 100%;
+    overflow-y: auto;
+}
+
+@mixin hc-menu-drawer-item-container-visible() {
+    height: calc(100% - #{$drawer-toolbar-height});
+}
+
+@mixin hc-menu-drawer-toolbar-container() {
+    background-color: darken($charcoal-blue, 5%);
+    color: $blue;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+}
+
+@mixin hc-drawer-toolbar() {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: $drawer-toolbar-height;
+    max-height: $drawer-toolbar-height;
+    overflow: hidden;
+    padding: 15px 28px 15px 15px;
+}
+
+@mixin hc-drawer-item() {
+    color: $white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px 28px 15px 15px;
+    cursor: pointer;
+    width: 100%;
+
+    &:last-child hr {
+        display: none;
+    }
+
+    &:hover {
+        background-color: shade($charcoal-blue, 10%);
+    }
+}
+
+@mixin hc-drawer-divider() {
+    border: none;
+    background-color: #6b737b;
+    height: 1px;
+    margin: 0 28px 0 0;
+}
+
+@mixin hc-drawer-divider-right() {
+    margin: 0 0 0 15px;
+}

@@ -1,24 +1,24 @@
 # Getting Started
 
-###### Last updated August 2, 2018
+###### Last updated September 21, 2019
 
 :::
 
 ##### Setting up the project
 
-#### Step 1. Install the npm module.
+### Step 1. Install the npm module.
 
 ```BASH
 npm i --save @healthcatalyst/cashmere
 ```
 
-#### Install peer dependencies on [Popper.js](https://popper.js.org/), [@angular/cdk](https://material.angular.io/cdk), [Font Awesome](https://fontawesome.com), and [Open Sans](https://fonts.google.com/specimen/Open+Sans) (optional).
+#### Install peer dependencies [@angular/cdk](https://material.angular.io/cdk), [Font Awesome](https://fontawesome.com) (optional), and [Open Sans](https://fonts.google.com/specimen/Open+Sans) (optional).
 
 ```BASH
-npm install --save popper.js @angular/cdk font-awesome npm-font-open-sans
+npm install --save @angular/cdk font-awesome npm-font-open-sans
 ```
 
-#### Step 2. Create a module to hold Cashmere components.
+### Step 2. Create a module to hold Cashmere components.
 
 Create a module that will hold the Cashmere components that your app will need. Place all the components in the exports field of the NgModule annotation.
 
@@ -45,33 +45,12 @@ export class SharedModule {}
 
 Anywhere you import the Shared module, all of the Cashmere components will be made available to you.
 
-#### Step 3. Add the styles.
+### Step 3. Add the styles.
 
 Import baseline scss file into your app's global style sheet `(src/styles.scss)`
 
 ```
 @import "~@healthcatalyst/cashmere/scss/cashmere";
-```
-
-#### Step 4. Add references to dependencies.
-
-Add a reference to Popper.js to scripts option within `angular.json`.
-
-```json
-"projects": {
-    "<ProjectName>": {
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "scripts": [
-                "../node_modules/popper.js/dist/umd/popper.js"
-            ]
-          }
-        }
-      }
-    }
-  }
 ```
 
 Add a reference to Font Awesome ([official instructions](https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/include-font-awesome.md)) and Open Sans by adding it via the styles option inside your project's build target options in `angular.json`

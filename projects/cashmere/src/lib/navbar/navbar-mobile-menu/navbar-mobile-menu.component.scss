@@ -1,59 +1,25 @@
-@import '../../sass/colors';
-@import '../../sass/mixins';
+@import '../../sass/navbar.scss';
 
-.menu-dropdown {
-    width: 100%;
-    background-color: $slate-blue;
-    margin-top: 53px;
-    position: fixed;
-    z-index: $zindex-navbar-menu;
-    padding-top: 15px;
-    display: none;
-    transition: top 0.7s ease;
-}
+.hc-navbar-mobile-menu-dropdown {
+    @include hc-navbar-mobile-menu-dropdown();
 
-@include media-breakpoint-down(md) {
-    .menu-dropdown {
-        display: inline;
-    }
-}
-
-:host::ng-deep hr {
-    border: 0;
-    height: 1px;
-    background-color: lighten($slate-blue, 20%);
-    margin: 0 0 0 5% !important;
-}
-
-:host::ng-deep hc-list {
-    a {
-        text-decoration: none;
+    hr {
+        @include hc-navbar-mobile-hr();
     }
 
-    .hc-list-item {
-        color: $slate-gray-200;
-        display: block;
-        padding-left: 2%;
-        cursor: pointer;
-        transition: background-color 0.25s ease;
-
-        &:hover {
-            background-color: darken($slate-blue, 5%);
-        }
-
-        &:focus {
-            outline: none;
-        }
+    hc-list a {
+        @include hc-navbar-mobile-a();
     }
 
-    .active-link {
-        background-color: darken($slate-blue, 5%);
-        color: $white;
-        font-weight: bold;
-        border-left: 8px solid $primary-brand;
+    hc-list .hc-list-item {
+        @include hc-navbar-mobile-list-item();
+    }
 
-        &.hc-list-item .hc-list-content {
-            padding-left: 4px;
-        }
+    hc-list .active-link {
+        @include hc-navbar-mobile-active-link();
+    }
+
+    hc-list .hc-list-item.active-link .hc-list-content {
+        @include hc-navbar-mobile-active-link-content();
     }
 }

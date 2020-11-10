@@ -1,9 +1,27 @@
-import {Component} from '@angular/core';
-import {ComponentViewerComponent} from '../component-viewer.component';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ComponentViewerComponent } from '../component-viewer.component';
 
 @Component({
     templateUrl: 'component-api.component.html'
 })
 export class ComponentApiComponent {
-    constructor(public componentViewer: ComponentViewerComponent) {}
+    private section: string;
+
+    constructor(public componentViewer: ComponentViewerComponent, private activatedRoute: ActivatedRoute) {
+        this.activatedRoute.queryParams.subscribe(params => {
+            if (params['section']) {
+                this.section = params['section'];
+            }
+        });
+    }
+
+    docLoaded() {
+        if ( this.section ) {
+            const el = document.getElementById(this.section);
+            if ( el ) {
+                el.scrollIntoView();
+            }
+        }
+    }
 }

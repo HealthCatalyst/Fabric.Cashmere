@@ -1,0 +1,42 @@
+<div [ngClass]="'hc-stepper-' + type">
+    <div class="hc-stepper-track">
+        <ng-content select=".before-steps-content"></ng-content>
+        <div
+            class="hc-step"
+            *ngFor="let step of steps; index as i; last as isLast; first as isFirst"
+            [routerLink]="step.routerLink"
+            [routerLinkActiveOptions]="{exact: true}"
+            routerLinkActive="active"
+            [queryParams]="step.queryParams"
+            [ngClass]="{
+                'hc-step-arrow-active': type === 'arrow' && i === activeIndex,
+                'hc-step-arrow-incomplete': type === 'arrow' && (activeIndex === undefined || i > activeIndex),
+                'hc-step-arrow-complete': type === 'arrow' && (activeIndex !== undefined && i < activeIndex - 1),
+                'hc-step-arrow-completed': type === 'arrow' && (activeIndex !== undefined && i === activeIndex - 1),
+                'hc-step-isolated-active': type === 'isolated' && i === activeIndex,
+                'hc-step-isolated-incomplete': type === 'isolated' && (activeIndex === undefined || i > activeIndex),
+                'hc-step-isolated-complete': type === 'isolated' && (activeIndex !== undefined && i < activeIndex - 1),
+                'hc-step-isolated-completed': type === 'isolated' && (activeIndex !== undefined && i === activeIndex - 1),
+                'hc-step-last': isLast,
+                'hc-step-first': isFirst,
+                'hc-stepper-clickable': step.disabled !== undefined ? !step.disabled : true,
+                'hc-stepper-disabled': step.disabled !== undefined ? step.disabled : false
+            }"
+            (click)="_stepClick(i)"
+        >
+            <span class="hc-step-disk">
+                <ng-container *ngIf="step.iconSet && step.icon; else elseBlock">
+                    <hc-icon [fontSet]="step.iconSet" [fontIcon]="step.icon" class="hc-step-icon"></hc-icon>
+                </ng-container>
+                <ng-template #elseBlock>{{ i + 1 }}</ng-template>
+            </span>
+            <span class="hc-step-label-count" *ngIf="showStepCount">{{ i + 1 }}</span>
+            <span class="hc-step-label">{{ step.label }}</span>
+            <span class="hc-step-arrow"></span>
+        </div>
+        <ng-content select=".after-steps-content"></ng-content>
+    </div>
+    <div *ngIf="useRouterOutlet" class="hc-step-content">
+        <router-outlet *ngIf="_routerEnabled"></router-outlet>
+    </div>
+</div>

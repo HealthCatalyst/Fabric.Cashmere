@@ -1,9 +1,10 @@
-import {ChangeDetectorRef, Component, ElementRef, HostBinding, Input} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, HostBinding, Input, ViewEncapsulation} from '@angular/core';
 
 /** Primary navigation links */
 @Component({
     selector: 'hc-navbar-link',
-    templateUrl: './navbar-link.component.html'
+    templateUrl: './navbar-link.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 export class NavbarLinkComponent {
     /** (optional) forces active state *Default is `null`.* */

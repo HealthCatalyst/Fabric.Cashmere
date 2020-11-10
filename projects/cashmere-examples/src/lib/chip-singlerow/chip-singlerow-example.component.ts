@@ -9,7 +9,14 @@ import {Component} from '@angular/core';
     styleUrls: ['chip-singlerow-example.component.scss']
 })
 export class ChipSinglerowExampleComponent {
-    hideChip(event: any) {
-        event.target.style.display = 'none';
+    chipset: string[] = ['Payer (11)', 'Clinical Program (103)', 'Care Process (4)', 'Discharge Status (37)', 'Gender (1)', 'ER Visit (3)'];
+
+    closeChip(chip: string) {
+        for (let i = 0; i < this.chipset.length; i++) {
+            if (chip === this.chipset[i]) {
+                this.chipset.splice(i, 1);
+                break;
+            }
+        }
     }
 }

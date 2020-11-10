@@ -1,0 +1,137 @@
+@import './colors';
+@import './functions';
+@import './mixins';
+
+@mixin hc-chip() {
+    @include fontSize(14px);
+    border-radius: 6px;
+    display: inline-flex;
+}
+
+@mixin hc-chip-padding() {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 5px;
+}
+
+@mixin hc-chip-content() {
+    display: flex;
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+@mixin hc-chip-content-color() {
+    display: flex;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+@mixin hc-chip-close() {
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    margin-right: -12px;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+@mixin hc-chip-neutral() {
+    background-color: tint($text, 87%);
+    color: $text;
+}
+
+@mixin hc-chip-red() {
+    background-color: tint($ruby-red, 85%);
+    border: 2px solid tint($ruby-red, 75%);
+    color: $ruby-red;
+}
+
+@mixin hc-chip-yellow() {
+    background-color: tint($yellow-orange, 80%);
+    border: 2px solid tint($yellow-orange, 50%);
+    color: shade($yellow-orange, 25%);
+}
+
+@mixin hc-chip-green() {
+    background-color: tint($light-green, 60%);
+    border: 2px solid tint($light-green, 30%);
+    color: $green;
+}
+
+@mixin hc-chip-blue() {
+    background-color: desaturate(lighten($blue, 40%), 50%);
+    border: 2px solid desaturate(lighten($blue, 30%), 50%);
+    color: $dark-blue;
+}
+
+@mixin hc-chip-close-icon() {
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 10px;
+    opacity: 0.4;
+    width: 10px;
+}
+
+@mixin hc-chip-close-icon-neutral() {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOS44ODgiIGhlaWdodD0iMTkuODg4IiB2aWV3Qm94PSIwIDAgMTkuODg4IDE5Ljg4OCI+CiAgPHBhdGggaWQ9IlBhdGhfMSIgZGF0YS1uYW1lPSJQYXRoIDEiIGQ9Ik0yMS43My0zLjU4M2ExLjYyMywxLjYyMywwLDAsMC0uNDY5LTEuMTM4TDE2LjMzOS05LjY0M2w0LjkyMi00LjkyMkExLjYyMywxLjYyMywwLDAsMCwyMS43My0xNS43YTEuNjIzLDEuNjIzLDAsMCwwLS40NjktMS4xMzhsLTIuMjc3LTIuMjc3YTEuNjIzLDEuNjIzLDAsMCwwLTEuMTM4LS40NjksMS42MjMsMS42MjMsMCwwLDAtMS4xMzguNDY5TDExLjc4Ni0xNC4yLDYuODY0LTE5LjExOGExLjYyMywxLjYyMywwLDAsMC0xLjEzOC0uNDY5LDEuNjIzLDEuNjIzLDAsMCwwLTEuMTM4LjQ2OUwyLjMxLTE2Ljg0MkExLjYyMywxLjYyMywwLDAsMCwxLjg0Mi0xNS43YTEuNjIzLDEuNjIzLDAsMCwwLC40NjksMS4xMzhMNy4yMzItOS42NDMsMi4zMS00LjcyMWExLjYyMywxLjYyMywwLDAsMC0uNDY5LDEuMTM4QTEuNjIzLDEuNjIzLDAsMCwwLDIuMzEtMi40NDRMNC41ODctLjE2N0ExLjYyMywxLjYyMywwLDAsMCw1LjcyNS4zLDEuNjIzLDEuNjIzLDAsMCwwLDYuODY0LS4xNjdsNC45MjItNC45MjJMMTYuNzA4LS4xNjdBMS42MjMsMS42MjMsMCwwLDAsMTcuODQ2LjNhMS42MjMsMS42MjMsMCwwLDAsMS4xMzgtLjQ2OWwyLjI3Ny0yLjI3N0ExLjYyMywxLjYyMywwLDAsMCwyMS43My0zLjU4M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjg0MiAxOS41ODcpIiBmaWxsPSIjMzMzIi8+Cjwvc3ZnPgo=');
+}
+
+@mixin hc-chip-close-icon-red() {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOS44ODgiIGhlaWdodD0iMTkuODg4IiB2aWV3Qm94PSIwIDAgMTkuODg4IDE5Ljg4OCI+CiAgPHBhdGggaWQ9IlBhdGhfMiIgZGF0YS1uYW1lPSJQYXRoIDIiIGQ9Ik0yMS43My0zLjU4M2ExLjYyMywxLjYyMywwLDAsMC0uNDY5LTEuMTM4TDE2LjMzOS05LjY0M2w0LjkyMi00LjkyMkExLjYyMywxLjYyMywwLDAsMCwyMS43My0xNS43YTEuNjIzLDEuNjIzLDAsMCwwLS40NjktMS4xMzhsLTIuMjc3LTIuMjc3YTEuNjIzLDEuNjIzLDAsMCwwLTEuMTM4LS40NjksMS42MjMsMS42MjMsMCwwLDAtMS4xMzguNDY5TDExLjc4Ni0xNC4yLDYuODY0LTE5LjExOGExLjYyMywxLjYyMywwLDAsMC0xLjEzOC0uNDY5LDEuNjIzLDEuNjIzLDAsMCwwLTEuMTM4LjQ2OUwyLjMxLTE2Ljg0MkExLjYyMywxLjYyMywwLDAsMCwxLjg0Mi0xNS43YTEuNjIzLDEuNjIzLDAsMCwwLC40NjksMS4xMzhMNy4yMzItOS42NDMsMi4zMS00LjcyMWExLjYyMywxLjYyMywwLDAsMC0uNDY5LDEuMTM4QTEuNjIzLDEuNjIzLDAsMCwwLDIuMzEtMi40NDRMNC41ODctLjE2N0ExLjYyMywxLjYyMywwLDAsMCw1LjcyNS4zLDEuNjIzLDEuNjIzLDAsMCwwLDYuODY0LS4xNjdsNC45MjItNC45MjJMMTYuNzA4LS4xNjdBMS42MjMsMS42MjMsMCwwLDAsMTcuODQ2LjNhMS42MjMsMS42MjMsMCwwLDAsMS4xMzgtLjQ2OWwyLjI3Ny0yLjI3N0ExLjYyMywxLjYyMywwLDAsMCwyMS43My0zLjU4M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjg0MiAxOS41ODcpIiBmaWxsPSIjOTUxYzFlIi8+Cjwvc3ZnPgo=');
+}
+
+@mixin hc-chip-close-icon-yellow() {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOS44ODgiIGhlaWdodD0iMTkuODg4IiB2aWV3Qm94PSIwIDAgMTkuODg4IDE5Ljg4OCI+CiAgPHBhdGggaWQ9IlBhdGhfMyIgZGF0YS1uYW1lPSJQYXRoIDMiIGQ9Ik0yMS43My0zLjU4M2ExLjYyMywxLjYyMywwLDAsMC0uNDY5LTEuMTM4TDE2LjMzOS05LjY0M2w0LjkyMi00LjkyMkExLjYyMywxLjYyMywwLDAsMCwyMS43My0xNS43YTEuNjIzLDEuNjIzLDAsMCwwLS40NjktMS4xMzhsLTIuMjc3LTIuMjc3YTEuNjIzLDEuNjIzLDAsMCwwLTEuMTM4LS40NjksMS42MjMsMS42MjMsMCwwLDAtMS4xMzguNDY5TDExLjc4Ni0xNC4yLDYuODY0LTE5LjExOGExLjYyMywxLjYyMywwLDAsMC0xLjEzOC0uNDY5LDEuNjIzLDEuNjIzLDAsMCwwLTEuMTM4LjQ2OUwyLjMxLTE2Ljg0MkExLjYyMywxLjYyMywwLDAsMCwxLjg0Mi0xNS43YTEuNjIzLDEuNjIzLDAsMCwwLC40NjksMS4xMzhMNy4yMzItOS42NDMsMi4zMS00LjcyMWExLjYyMywxLjYyMywwLDAsMC0uNDY5LDEuMTM4QTEuNjIzLDEuNjIzLDAsMCwwLDIuMzEtMi40NDRMNC41ODctLjE2N0ExLjYyMywxLjYyMywwLDAsMCw1LjcyNS4zLDEuNjIzLDEuNjIzLDAsMCwwLDYuODY0LS4xNjdsNC45MjItNC45MjJMMTYuNzA4LS4xNjdBMS42MjMsMS42MjMsMCwwLDAsMTcuODQ2LjNhMS42MjMsMS42MjMsMCwwLDAsMS4xMzgtLjQ2OWwyLjI3Ny0yLjI3N0ExLjYyMywxLjYyMywwLDAsMCwyMS43My0zLjU4M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjg0MiAxOS41ODcpIiBmaWxsPSIjYWQ5MzM1Ii8+Cjwvc3ZnPgo=');
+}
+
+@mixin hc-chip-close-icon-green() {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOS44ODgiIGhlaWdodD0iMTkuODg4IiB2aWV3Qm94PSIwIDAgMTkuODg4IDE5Ljg4OCI+CiAgPHBhdGggaWQ9IlBhdGhfNCIgZGF0YS1uYW1lPSJQYXRoIDQiIGQ9Ik0yMS43My0zLjU4M2ExLjYyMywxLjYyMywwLDAsMC0uNDY5LTEuMTM4TDE2LjMzOS05LjY0M2w0LjkyMi00LjkyMkExLjYyMywxLjYyMywwLDAsMCwyMS43My0xNS43YTEuNjIzLDEuNjIzLDAsMCwwLS40NjktMS4xMzhsLTIuMjc3LTIuMjc3YTEuNjIzLDEuNjIzLDAsMCwwLTEuMTM4LS40NjksMS42MjMsMS42MjMsMCwwLDAtMS4xMzguNDY5TDExLjc4Ni0xNC4yLDYuODY0LTE5LjExOGExLjYyMywxLjYyMywwLDAsMC0xLjEzOC0uNDY5LDEuNjIzLDEuNjIzLDAsMCwwLTEuMTM4LjQ2OUwyLjMxLTE2Ljg0MkExLjYyMywxLjYyMywwLDAsMCwxLjg0Mi0xNS43YTEuNjIzLDEuNjIzLDAsMCwwLC40NjksMS4xMzhMNy4yMzItOS42NDMsMi4zMS00LjcyMWExLjYyMywxLjYyMywwLDAsMC0uNDY5LDEuMTM4QTEuNjIzLDEuNjIzLDAsMCwwLDIuMzEtMi40NDRMNC41ODctLjE2N0ExLjYyMywxLjYyMywwLDAsMCw1LjcyNS4zLDEuNjIzLDEuNjIzLDAsMCwwLDYuODY0LS4xNjdsNC45MjItNC45MjJMMTYuNzA4LS4xNjdBMS42MjMsMS42MjMsMCwwLDAsMTcuODQ2LjNhMS42MjMsMS42MjMsMCwwLDAsMS4xMzgtLjQ2OWwyLjI3Ny0yLjI3N0ExLjYyMywxLjYyMywwLDAsMCwyMS43My0zLjU4M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjg0MiAxOS41ODcpIiBmaWxsPSIjMDBhODU5Ii8+Cjwvc3ZnPgo=');
+}
+
+@mixin hc-chip-close-icon-blue() {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgMTkuOSAxOS45IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxOS45IDE5Ljk7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDojMDA2RDlBO30KPC9zdHlsZT4KPHBhdGggaWQ9IlBhdGhfNCIgY2xhc3M9InN0MCIgZD0iTTE5LjksMTZjMC0wLjQtMC4yLTAuOC0wLjUtMS4xbC00LjktNC45TDE5LjQsNWMwLjMtMC4zLDAuNS0wLjcsMC41LTEuMWMwLTAuNC0wLjItMC44LTAuNS0xLjEKCWwtMi4zLTIuM0MxNi44LDAuMiwxNi40LDAsMTYsMGMtMC40LDAtMC44LDAuMi0xLjEsMC41TDkuOSw1LjRMNSwwLjVDNC43LDAuMiw0LjMsMCwzLjksMEMzLjUsMCwzLDAuMiwyLjcsMC41TDAuNSwyLjcKCUMwLjIsMywwLDMuNSwwLDMuOUMwLDQuMywwLjIsNC43LDAuNSw1bDQuOSw0LjlsLTQuOSw0LjlDMC4yLDE1LjIsMCwxNS42LDAsMTZjMCwwLjQsMC4yLDAuOCwwLjUsMS4xbDIuMywyLjMKCWMwLjMsMC4zLDAuNywwLjUsMS4xLDAuNWMwLjQsMCwwLjgtMC4yLDEuMS0wLjVsNC45LTQuOWw0LjksNC45YzAuMywwLjMsMC43LDAuNSwxLjEsMC41YzAuNCwwLDAuOC0wLjIsMS4xLTAuNWwyLjMtMi4zCglDMTkuNywxNi44LDE5LjksMTYuNCwxOS45LDE2eiIvPgo8L3N2Zz4=');
+}
+
+@mixin hc-chip-row-contents() {
+    display: inline-block;
+}
+
+@mixin hc-chip-single-row() {
+    height: 42px;
+    overflow: hidden;
+}
+
+@mixin hc-chip-single-row-before() {
+    content: '';
+    float: left;
+    height: 50px;
+    width: 5px;
+}
+
+@mixin hc-chip-single-row-first-child() {
+    float: right;
+    margin-left: -5px;
+    width: 100%;
+}
+
+@mixin hc-chip-single-row-after() {
+    content: '…more';
+
+    box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+
+    float: right;
+    left: 100%;
+    margin-left: -3.5em;
+    padding-right: 5px;
+    position: relative;
+    text-align: right;
+    top: -35px;
+    width: 3.5em;
+}
+
+@mixin hc-chip-row-buffer() {
+    margin-right: 3.5em;
+}

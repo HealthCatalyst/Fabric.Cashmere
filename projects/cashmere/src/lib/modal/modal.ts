@@ -1,8 +1,7 @@
 import {ModalOverlayComponent} from './modal-overlay.component';
-import {ComponentRef} from '@angular/core';
+import {ComponentRef, EventEmitter} from '@angular/core';
 import {ModalWindowComponent} from './modal-window.component';
 import {Subject, Observable} from 'rxjs';
-import {skipWhile} from 'rxjs/operators';
 
 export class HcModal<T> {
     /** Allows direct access to the component used to create the modal. Null when TemplateRef is used */
@@ -16,12 +15,14 @@ export class HcModal<T> {
 
     /** Subscribe to result in order to get access to modal result values passed in ActiveModal.close() */
     get result(): Observable<any> {
-        return this._result.asObservable().pipe(skipWhile(result => !result));
+        return this._result.asObservable();
     }
 
     private _result: Subject<any> = new Subject<any>();
 
     _removeOpenClass: (() => void) | null;
+
+    _modalClose = new EventEmitter();
 
     /** Data that was passed in through ModalOptions */
     data?: any;
@@ -65,6 +66,8 @@ export class HcModal<T> {
         if (this._removeOpenClass) {
             this._removeOpenClass();
         }
+
+        this._modalClose.emit();
 
         this.window = null;
         this.overlay = null;

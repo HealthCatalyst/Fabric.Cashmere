@@ -6,6 +6,7 @@ import {pascalCase} from 'change-case';
 import * as ProgressBar from 'progress';
 import chalk from 'chalk';
 import * as prettier from 'prettier';
+import * as rimraf from 'rimraf';
 
 interface FileHash {
     [path: string]: string;
@@ -23,6 +24,8 @@ interface ExampleModuleInfo extends ExampleInfo {
 
 // paths we'll need later
 const examplesProjectRoot = path.join(__dirname, '../projects/cashmere-examples');
+const bitProjectRoot = path.join(__dirname, '../projects/cashmere-bits');
+const bitComponentRoot = path.join(bitProjectRoot, './src/lib/');
 const examplesRoot = path.join(examplesProjectRoot, 'src/lib');
 const projectTemplateRoot = path.join(examplesProjectRoot, 'src/project-template');
 const assetsRoot = path.join(__dirname, '../src/assets/');
@@ -42,6 +45,8 @@ cleanOutputDirectory();
 const projectTemplateFiles = getStackBlitzProjectTemplateFiles();
 const appModuleTemplate = projectTemplateFiles['src/app/app.module.ts'];
 const progress = new ProgressBar('[:bar] :percent :example', {total: exampleList.length + 4});
+progress.tick({example: 'analyzing Bit dependencies'});
+analyzeBitDependencies();
 for (let example of exampleList) {
     progress.tick({example});
     generateStackBlitzFiles(example);
@@ -58,7 +63,7 @@ progress.tick({example: ''}); // clear the progress bar
 function cleanOutputDirectory() {
     fse.ensureDirSync(outputRoot);
     glob.sync('**/*', {cwd: outputRoot}).forEach(f => {
-        fs.unlinkSync(path.join(outputRoot, f));
+        rimraf.sync(path.join(outputRoot, f));
     });
 }
 
@@ -67,15 +72,22 @@ function getStackBlitzProjectTemplateFiles() {
         path.join(projectTemplateRoot, 'src/app/cashmere.module.ts'),
         prettier.format(cashmereModule, {...prettierConfig, filepath: 'cashmere.module.ts'})
     );
-    return glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce(
-        (prev, curr) => {
-            const fullPath = path.join(projectTemplateRoot, curr);
-            const content = fs.readFileSync(fullPath).toString();
-            prev[curr] = content;
-            return prev;
-        },
-        {} as FileHash
-    );
+    const exampleFiles: FileHash = {};
+    // add all Bits to the StackBlitz since we can't install them in the StackBlitz
+    glob.sync('**/*', {dot: true, nodir: true, cwd: bitComponentRoot}).reduce((prev, curr) => {
+        const fullPath = path.join(bitComponentRoot, curr);
+        const content = fs.readFileSync(fullPath).toString();
+        prev[`src/bit/${curr}`] = content;
+        return prev;
+    }, exampleFiles);
+    // add all project template files to the StackBlitz
+    glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce((prev, curr) => {
+        const fullPath = path.join(projectTemplateRoot, curr);
+        const content = fs.readFileSync(fullPath).toString();
+        prev[curr] = content;
+        return prev;
+    }, exampleFiles);
+    return exampleFiles;
 }
 
 function getExampleNames() {
@@ -88,6 +100,11 @@ function getExampleNames() {
 
 function generateStackBlitzFiles(exampleName: string) {
     const exampleDir = path.join(examplesRoot, exampleName);
+    const exampleDirFiles = fs.readdirSync(exampleDir);
+    if (!exampleDirFiles.length) {
+        rimraf.sync(exampleDir);
+        return;
+    }
     const exampleBaseName = pascalCase(exampleName);
     const exampleFileList = glob.sync('**/*', {nodir: true, dot: true, cwd: exampleDir});
 
@@ -163,31 +180,32 @@ function generateStackBlitzFiles(exampleName: string) {
             .replace(moduleCommaPattern, '');
     }
 
-    const exampleFiles = exampleFileList.reduce(
-        (prev, curr) => {
-            // get formatted file contents
-            const fullPath = path.join(examplesRoot, exampleName, curr);
-            let content = fs.readFileSync(fullPath).toString();
-            prev[`src/app/${exampleName}/${curr}`] = prettier.format(content, {...prettierConfig, filepath: fullPath});
+    const exampleFiles = exampleFileList.reduce((prev, curr) => {
+        // get formatted file contents
+        const fullPath = path.join(examplesRoot, exampleName, curr);
+        let content = fs.readFileSync(fullPath).toString();
+        prev[`src/app/${exampleName}/${curr}`] = prettier.format(content, {...prettierConfig, filepath: fullPath});
 
-            // if the file references any assets, include those too
-            const assetPattern = /".\/assets\/([^"]+)"/g;
-            let match = assetPattern.exec(content);
-            while (match) {
-                const assetName = match[1];
-                const assetContent = fs.readFileSync(path.join(assetsRoot, assetName)).toString();
-                prev[`src/assets/${assetName}`] = assetContent;
-                match = assetPattern.exec(content);
-            }
+        // if the file references any assets, include those too
+        const assetPattern = /".\/assets\/([^"]+)"/g;
+        let match = assetPattern.exec(content);
+        while (match) {
+            const assetName = match[1];
+            const assetContent = fs.readFileSync(path.join(assetsRoot, assetName)).toString();
+            prev[`src/assets/${assetName}`] = assetContent;
+            match = assetPattern.exec(content);
+        }
 
-            return prev;
-        },
-        {} as FileHash
-    );
+        return prev;
+    }, {} as FileHash);
 
     const allFiles = Object.assign({}, projectTemplateFiles, exampleFiles, {
         'src/app/app.module.ts': prettier.format(appModuleContents, {...prettierConfig, filepath: 'app.module.ts'}),
-        'src/app/cashmere.module.ts': prettier.format(cashmereModule, {...prettierConfig, filepath: 'cashmere.module.ts'})
+        // Bit doesn't work in StackBlitz, so have the CashmereModule reference relative path instead
+        'src/app/cashmere.module.ts': prettier.format(cashmereModule.replace(/@bit\/healthcatalyst\.cashmere\.([^']+)/g, '../bit/$1/'), {
+            ...prettierConfig,
+            filepath: 'cashmere.module.ts'
+        })
     });
     fs.writeFileSync(
         path.join(outputRoot, `${exampleName}.json`),
@@ -237,6 +255,18 @@ function generateCashmereModule() {
             filepath: 'cashmere.module.ts'
         })
     );
+}
+
+function analyzeBitDependencies() {
+    const bitPackageJson = JSON.parse(fs.readFileSync(path.join(bitProjectRoot, './package.json')).toString());
+    let examplePackageJson = JSON.parse(projectTemplateFiles['package.json']);
+    const exampleDependencies = Object.keys(examplePackageJson.dependencies);
+    Object.keys(bitPackageJson.peerDependencies)
+        .filter(d => !exampleDependencies.includes(d))
+        .forEach(d => {
+            examplePackageJson.dependencies[d] = bitPackageJson.peerDependencies[d];
+        });
+    projectTemplateFiles['package.json'] = prettier.format(JSON.stringify(examplePackageJson), {filepath: 'package.json'});
 }
 
 function generateExampleToComponentMappingsFile() {

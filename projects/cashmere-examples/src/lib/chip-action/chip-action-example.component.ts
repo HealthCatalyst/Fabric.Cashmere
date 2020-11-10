@@ -5,10 +5,9 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'hc-chip-action-example',
-    templateUrl: 'chip-action-example.component.html'
+    templateUrl: 'chip-action-example.component.html',
+    styleUrls: ['chip-action-example.component.scss']
 })
 export class ChipActionExampleComponent {
-    hideChip(event: any) {
-        event.target.style.display = 'none';
-    }
+    chips: boolean[] = [true, true];
 }
