@@ -27,6 +27,7 @@ import {ChipModule} from '../chip/chip.module';
         FormsModule
     ],
     declarations: [DateRangeDirective, CalendarWrapperComponent, PickerOverlayComponent],
+    entryComponents: [PickerOverlayComponent],
     exports: [DateRangeDirective]
 })
 export class DateRangeModule {}

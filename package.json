@@ -68,7 +68,7 @@
     "markdown-it": "^8.4.1",
     "markdown-it-container": "^2.0.0",
     "minisearch": "^2.5.1",
-    "ngx-highlightjs": "^3.0.3",
+    "ngx-highlightjs": "^4.1.2",
     "npm-font-open-sans": "^1.1.0",
     "remove-markdown": "^0.3.0",
     "rxjs": "6.5.4",

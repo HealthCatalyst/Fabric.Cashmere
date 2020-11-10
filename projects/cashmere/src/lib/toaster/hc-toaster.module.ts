@@ -9,6 +9,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     imports: [CommonModule, PortalModule, OverlayModule],
     exports: [HcToastComponent],
     declarations: [HcToastComponent],
-    providers: [HcToasterService]
+    providers: [HcToasterService],
+    entryComponents: [HcToastComponent]
 })
 export class ToasterModule {}

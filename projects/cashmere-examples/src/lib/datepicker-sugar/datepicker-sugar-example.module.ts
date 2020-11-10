@@ -18,6 +18,7 @@ export class SugarDateAdapter extends NativeDateAdapter {
     imports: [PlatformModule, CommonModule, CashmereModule, FormsModule, ReactiveFormsModule],
     declarations: [DatepickerSugarExampleComponent],
     exports: [DatepickerSugarExampleComponent],
-    providers: [{provide: DateAdapter, useClass: SugarDateAdapter}]
+    providers: [{provide: DateAdapter, useClass: SugarDateAdapter}],
+    entryComponents: [DatepickerSugarExampleComponent]
 })
 export class DatepickerSugarExampleModule {}

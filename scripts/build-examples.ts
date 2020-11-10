@@ -136,8 +136,16 @@ function generateStackBlitzFiles(exampleName: string) {
 
     // if a module file exists, check it and use it (instead of the component) in the generated example module
     if (fs.existsSync(path.join(exampleDir, `${exampleName}-example.module.ts`))) {
-        // check to make sure the main component is in the NgModule
+        // check to make sure the main component is in the NgModule.entryComponents
         const moduleFile = fs.readFileSync(path.join(exampleDir, `${exampleName}-example.module.ts`)).toString();
+        const entryComponentsMatch = /entryComponents\: (\[[^\]]*\])/m.exec(moduleFile);
+        if (!entryComponentsMatch) {
+            throw error(`Example module for ${exampleName} is missing an 'entryComponents' entry.`);
+        }
+
+        if (!entryComponentsMatch[1].includes(componentName)) {
+            throw error(`Example module for ${exampleName} must declare ${componentName} as an entry component.`);
+        }
 
         const moduleName: string = `${exampleBaseName}ExampleModule`;
         if (!moduleFile.includes(`export class ${moduleName}`)) {

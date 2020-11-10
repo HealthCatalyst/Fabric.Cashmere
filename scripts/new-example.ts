@@ -182,7 +182,8 @@ import {${componentName}} from './${args.name}-example.component';
 @NgModule({
 imports: [CommonModule, CashmereModule],
 declarations: [${componentName}],
-exports: [${componentName}]
+exports: [${componentName}],
+entryComponents: [${componentName}]
 })
 export class ${pascalCase(args.name)}ExampleModule {
 }

@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 @NgModule({
     imports: [CommonModule, CashmereModule, FormsModule, NgSelectModule, ReactiveFormsModule],
     declarations: [MultiselectCustomTemplatesExampleComponent],
-    exports: [MultiselectCustomTemplatesExampleComponent]
+    exports: [MultiselectCustomTemplatesExampleComponent],
+    entryComponents: [MultiselectCustomTemplatesExampleComponent]
 })
 export class MultiselectCustomTemplatesExampleModule {}

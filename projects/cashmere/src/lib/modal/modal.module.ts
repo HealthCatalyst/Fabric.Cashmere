@@ -18,6 +18,7 @@ import {ModalComponent} from './modal.component';
         ModalFooterComponent,
         ModalComponent
     ],
+    entryComponents: [ModalOverlayComponent, ModalWindowComponent],
     exports: [ModalHeaderComponent, ModalBodyComponent, ModalFooterComponent, ModalComponent],
     providers: [ModalService]
 })

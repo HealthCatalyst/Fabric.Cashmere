@@ -39,7 +39,9 @@ export class ModalService {
         this._renderer = _rendererFactory.createRenderer(null, null);
     }
 
-    /** Opens a new modal either from a Component or a TemplateRef with the options specified in ModalOptions */
+    /** Opens a new modal either from a Component or a TemplateRef with the options specified in ModalOptions
+     * In order to use a component, it must be specified in your module's EntryComponents.
+     */
     open<T>(modalContent: ModalContentType, modalOptions?: ModalOptions): HcModal<T> {
         if (!this.allowMultiple && this._modalsOpen !== 0) {
             throw new Error(`Multiple modals may not be opened at the same time

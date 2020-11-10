@@ -41,6 +41,7 @@ import {HcPopoverAccessibilityService} from './popover-accessibility.service';
         MenuSubTextDirective,
         DividerDirective
     ],
+    entryComponents: [HcTooltipComponent],
     providers: [HcPopoverAccessibilityService]
 })
 export class PopModule {}
