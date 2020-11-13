@@ -23,6 +23,8 @@ Registered Marks (currently in use) – **Apply ®**:
 -   MEDICITY _(still using, not rebranding the website)_
 -	TOUCHSTONE
 -   VITALWARE
+-   VITALCDM
+-   VITALKNOWLEDGE
 
 :::
 
@@ -55,6 +57,16 @@ _The ™ symbol can be applied to any unregistered trademark_
 -   POPULATION HEALTH FOUNDATIONS SOLUTION – **Consider clearance search for registration – DO**
 -   RAPID RESPONSE ANALYTICS SOLUTION
 -   THE CATALYST AWARDS
+-   VITALINTEGRITY
+-   VITALANALYSIS
+-   VITALASSESSMENT
+-   HOSPITAL PRICE INDEX
+-   VITALVIEW
+-   VITALWORKFLOW
+-   VITALAUDITOR
+-   VITALCODER
+-   VITALALERTS
+-   VITAL365
 
 :::
 
