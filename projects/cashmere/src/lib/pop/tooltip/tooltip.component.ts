@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation, ViewChild, TemplateRef} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {HcPopComponent} from '../popover.component';
 import {transformPopover} from '../popover.animations';
 

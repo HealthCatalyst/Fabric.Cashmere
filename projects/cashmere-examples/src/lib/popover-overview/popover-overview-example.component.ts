@@ -21,4 +21,5 @@ export class PopoverOverviewExampleComponent {
     readonly showArrowControl = new FormControl(true);
     readonly forceAlignmentControl = new FormControl(false);
     readonly lockAlignmentControl = new FormControl(false);
+    readonly maxWidthControl = new FormControl('none');
 }

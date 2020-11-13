@@ -137,6 +137,16 @@ export class HcPopComponent implements OnInit, OnDestroy {
     }
     private _lockAlignment = false;
 
+    /** Constrains the content of a container to a standard css string value; *Defaults to `none`.* */
+    @Input()
+    get maxWidth() {
+        return this._maxWidth;
+    }
+    set maxWidth(val: string) {
+        this._maxWidth = val;
+    }
+    private _maxWidth = 'none';
+
     /** Whether the first focusable element should be focused on open. *Defaults to `false`.* */
     @Input()
     get autoFocus() {
