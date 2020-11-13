@@ -1,23 +1,18 @@
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
-import {DrawerPromiseResult, Drawer} from './drawer.component';
-import * as util from '../util';
-import {ElementRef, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {Drawer} from './drawer.component';
+import {ElementRef} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {async} from '@angular/core/testing';
 
 describe('DrawerComponent', () => {
     let component: Drawer;
     let fixture: ComponentFixture<Drawer>;
-    // should e1 be a constant ?
-    let e1: ElementRef = new ElementRef({focus() {}});
-    // beforeEach(() => (component = new Drawer(e1)));
-    // describe('angular initialization', () => {
+    let el: ElementRef = new ElementRef({focus() {}});
+
     beforeEach(async done => {
         await TestBed.configureTestingModule({
             declarations: [Drawer],
             imports: [NoopAnimationsModule],
-            providers: [{provide: ElementRef, useValue: e1}]
+            providers: [{provide: ElementRef, useValue: el}]
         }).compileComponents();
         fixture = TestBed.createComponent(Drawer);
         component = fixture.componentInstance;
@@ -28,7 +23,6 @@ describe('DrawerComponent', () => {
     it('should create the component without error', () => {
         expect(component).toBeTruthy();
     });
-    // });
 
     describe('.mode', () => {
         describe('by default', () => {
@@ -72,117 +66,57 @@ describe('DrawerComponent', () => {
         });
     });
 
-    // Test Case we were working on in the meeting
-    describe('.openStart', () => {
-        describe('when the drawer starts to open', () => {
-            let spy: jasmine.Spy;
-            beforeEach(() => {
-                spy = jasmine.createSpy('openStart');
-                component.openStart.subscribe(spy);
-                component.toggleOpen();
-            });
+    it('should dispatch an event when a drawer is opened', async () => {
+        const spy = jasmine.createSpy('openedChange called');
+        component.openedChange.subscribe(spy);
 
-            it('should emit', () => {
-                expect(spy).toHaveBeenCalled();
-            });
-            it('opened is false', () => {
-                expect(component.opened).toBe(false);
-            });
-        });
+        component.toggleOpen();
+        fixture.detectChanges();
+
+        await fixture.whenStable();
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(component.opened).toBe(true);
     });
 
-    // a different try for the function we were working on
-    // still failing
-    describe('.openStart', () => {
-        describe('when the drawer is toggled', () => {
-            let spy: jasmine.Spy;
+    it('should emit openStart when a drawer is opened', async () => {
+        const spy = jasmine.createSpy('openStart called');
+        component.openStart.subscribe(spy);
 
-            beforeEach(fakeAsync(() => {
-                spy = jasmine.createSpy('openStart');
-                component.openStart.subscribe(spy);
-                //component.toggleOpen();
-                let event: Partial<AnimationEvent> = {fromState: 'void', toState: 'open'};
-                component._onAnimationStart((event as any) as AnimationEvent);
-                tick();
-            }));
-            it('should not emit', () => expect(spy).toHaveBeenCalled());
-        });
-    });
-    // function if emitted or not are working properly
-    describe('.openStart', () => {
-        describe('when the drawer is already open', () => {
-            let spy: jasmine.Spy;
+        component.toggleOpen();
+        fixture.detectChanges();
 
-            beforeEach(fakeAsync(() => {
-                spy = jasmine.createSpy('openStart');
-                component.openStart.subscribe(spy);
-                let event: Partial<AnimationEvent> = {fromState: 'open', toState: 'open'};
-                component._onAnimationStart((event as any) as AnimationEvent);
-                tick();
-            }));
-            it('should not emit', () => expect(spy).not.toHaveBeenCalled());
-        });
+        await fixture.whenStable();
+        expect(spy).toHaveBeenCalled();
     });
 
-    describe('.closeStart', () => {
-        describe('when the drawer starts to close', () => {
-            let spy: jasmine.Spy;
+    it('should dispatch an event when a drawer is closed', async () => {
+        const spy = jasmine.createSpy('openedChange called');
+        component.openedChange.subscribe(spy);
 
-            beforeEach(fakeAsync(() => {
-                spy = jasmine.createSpy('closeStart');
-                component.closeStart.subscribe(spy);
-                let event: Partial<AnimationEvent> = {fromState: 'open', toState: 'void'};
-                component._onAnimationStart((event as any) as AnimationEvent);
-                tick();
-            }));
-            it('should emit', () => expect(spy).toHaveBeenCalled());
-        });
+        component.toggleOpen();
+        fixture.detectChanges();
+
+        await fixture.whenStable();
+        component.toggleClose();
+        fixture.detectChanges();
+
+        await fixture.whenStable();
+        expect(spy).toHaveBeenCalledTimes(2);
+        expect(component.opened).toBe(false);
     });
 
-    describe('.closeStart', () => {
-        describe('when the drawer is already closed', () => {
-            let spy: jasmine.Spy;
+    it('should emit closeStart when a drawer is closed', async () => {
+        const spy = jasmine.createSpy('closeStart called');
+        component.closeStart.subscribe(spy);
 
-            beforeEach(fakeAsync(() => {
-                spy = jasmine.createSpy('closeStart');
-                component.closeStart.subscribe(spy);
-                let event: Partial<AnimationEvent> = {fromState: 'void', toState: 'void'};
-                component._onAnimationStart((event as any) as AnimationEvent);
-                tick();
-            }));
-            it('should not emit', () => expect(spy).not.toHaveBeenCalled());
-        });
-    });
+        component.toggleOpen();
+        fixture.detectChanges();
 
-    describe('._openChange', () => {
-        describe('when the drawer has opened', () => {
-            let spy: jasmine.Spy;
-            let spyIsOpened: jasmine.Spy;
-            let spyIsClosed: jasmine.Spy;
-            beforeEach(fakeAsync(() => {
-                spy = jasmine.createSpy('_openChange');
-                component._openChange.subscribe(spy);
-                let event: Partial<AnimationEvent> = {fromState: 'void', toState: 'open'};
-                component._onAnimationEnd((event as any) as AnimationEvent);
-                spyIsOpened = spyOnProperty(component, '_isOpened', 'get').and.callThrough();
-                spyIsClosed = spyOnProperty(component, '_isClosed', 'get').and.callThrough();
-                tick();
-            }));
+        await fixture.whenStable();
+        component.toggleClose();
+        fixture.detectChanges();
 
-            it('should emit', async(() => {
-                expect(spy).toHaveBeenCalled();
-            }));
-            // Should be true
-            it('_isOpened is false', async(() => {
-                fixture.whenRenderingDone().then(() => {
-                    expect(component._isOpened).toBe(false);
-                });
-            }));
-            // Should be false
-            it('_isClosed is true', async(() => {
-                fixture.whenRenderingDone();
-                expect(component._isClosed).toBe(true);
-            }));
-        });
+        await fixture.whenStable();
+        expect(spy).toHaveBeenCalled();
     });
 });
