@@ -1,7 +1,6 @@
 @import 'scss/colors';
 @import 'scss/functions';
 @import 'scss/mixins';
-@import '~highlight.js/styles/github.css';
 
 .hc-tile:first-child {
     margin-top: 20px;
@@ -22,16 +21,6 @@
     h3 {
         flex: 1;
         margin-top: 0;
-    }
-}
-
-pre {
-    padding: 0;
-    overflow: hidden;
-
-    code {
-        margin-top: -15px;
-        margin-bottom: -15px;
     }
 }
 
