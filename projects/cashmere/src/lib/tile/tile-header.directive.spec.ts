@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TileModule } from './tile.module';
-import { TileHeaderDirective } from './tile-header.directive';
+import { TileHeaderDirective, TileHeaderType } from './tile-header.directive';
 
 @Component({
     template: `
@@ -46,8 +46,8 @@ describe('TileHeaderDirective', () => {
         expect(directive._headerBlue).toBeFalsy();
     });
 
-    it('when setting an invalid value', () => {
-        const setInvalid = () => component.headerType = 'someInvalidValue';
+    describe('when setting an invalid value', () => {
+        const setInvalid = () => (directive.type = ('someInvalidValue' as string) as TileHeaderType);
         it('should throw an error', () => expect(setInvalid).toThrowError());
     });
 });

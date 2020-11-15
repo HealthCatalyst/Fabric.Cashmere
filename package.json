@@ -41,14 +41,14 @@
     "release-mode": "node scripts/release-mode",
     "dev-mode": "node scripts/dev-mode",
     "postinstall": "npm run install:bits && npm run install:examples && ngcc && node scripts/postinstall-hack",
-    "install:examples": "cd projects/cashmere-examples && npm ci && ngcc && node ../../scripts/postinstall-hack",
-    "install:bits": "cd projects/cashmere-bits && npm ci && ngcc",
+    "install:examples": "cd projects/cashmere-examples && npm ci && node ../../scripts/postinstall-hack",
+    "install:bits": "cd projects/cashmere-bits && npm ci",
     "new:example": "ts-node scripts/new-example.ts",
     "clean": "npx rimraf dist && npx rimraf projects/cashmere-bits/dist"
   },
   "dependencies": {
     "@angular/animations": "10.2.1",
-    "@angular/cdk": "^10.2.6",
+    "@angular/cdk": "^9.2.4",
     "@angular/common": "10.2.1",
     "@angular/compiler": "10.2.1",
     "@angular/core": "10.2.1",
