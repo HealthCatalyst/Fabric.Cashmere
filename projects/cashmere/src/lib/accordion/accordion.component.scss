@@ -12,6 +12,10 @@
     @include hc-accordion-toolbar-wrapper-pointer();
 }
 
+.hc-accordian-hide-button {
+    @include hc-accordion-hide-button();
+}
+
 .hc-accordion-trigger {
     @include hc-accordion-trigger();
 

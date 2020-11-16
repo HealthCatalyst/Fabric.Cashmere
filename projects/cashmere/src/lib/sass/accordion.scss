@@ -20,6 +20,12 @@ $accordion-caret-img: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
     cursor: pointer;
 }
 
+@mixin hc-accordion-hide-button {
+    visibility: hidden;
+    width: 0 !important;
+    margin: 2px 0 !important;
+}
+
 @mixin hc-accordion-trigger {
     background: transparent;
     border: none;

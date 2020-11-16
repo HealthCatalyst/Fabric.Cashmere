@@ -94,6 +94,16 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     /** Timer that delays togglePopover on hover. */
     private hoverInterval: number;
 
+    /** Constrains the content of a popover to a standard css string value; *Defaults to `none`.* */
+    @Input()
+    get maxWidth() {
+        return this._attachedPopover.maxWidth;
+    }
+
+    set maxWidth(val: string) {
+        this._attachedPopover.maxWidth = val;
+    }
+
     /** Object or value that can be passed into the popover to customize its content */
     @Input()
     get context() {

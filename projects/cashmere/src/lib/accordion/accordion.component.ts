@@ -44,6 +44,7 @@ export class AccordionComponent implements AfterContentInit {
     private _toolbarTrigger = true;
     private _triggerAlign = 'left';
     private __isOpen = false;
+    private _disabled = false;
 
     /** Side the accordion trigger is attached to: `left` or `right` */
     @Input()
@@ -86,6 +87,16 @@ export class AccordionComponent implements AfterContentInit {
         this.toggle(parseBooleanAttribute(opened));
     }
 
+    /** Whether the accordion button is disabled. */
+    @Input()
+    get disabled(): boolean {
+        return this._disabled;
+    }
+
+    set disabled(isDisabled) {
+        this._disabled = parseBooleanAttribute(isDisabled);
+    }
+
     /** Allows for two-way binding of the `open` property */
     @Output() openChange = new EventEmitter<boolean>();
 
@@ -113,7 +124,11 @@ export class AccordionComponent implements AfterContentInit {
     }
 
     get _pointer(): string {
-        return this.toolbarTrigger === true ? 'hc-toolbar-pointer' : '';
+        return this.toolbarTrigger === true && this.disabled === false ? 'hc-toolbar-pointer' : '';
+    }
+
+    get _hideButton(): string {
+        return this.disabled === true ? 'hc-accordian-hide-button' : '';
     }
 
     get _openState(): 'void' | 'open-instant' | 'open' {
@@ -170,7 +185,7 @@ export class AccordionComponent implements AfterContentInit {
     }
 
     _triggerClick(event: Event, toolbarClick: boolean): void {
-        if ((toolbarClick && this.toolbarTrigger) || !toolbarClick) {
+        if ((toolbarClick && this.toolbarTrigger && !this.disabled) || !toolbarClick) {
             event.stopPropagation();
             this.toggle();
         }
