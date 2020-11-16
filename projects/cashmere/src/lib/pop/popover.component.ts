@@ -16,7 +16,7 @@ import {
 import type {QueryList} from '@angular/core';
 import {AnimationEvent} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
-import {FocusTrap, FocusTrapFactory} from '@angular/cdk/a11y';
+import {FocusTrap, ConfigurableFocusTrapFactory} from '@angular/cdk/a11y';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {transformPopover} from './popover.animations';
 import {NotificationAction, PopoverNotification, PopoverNotificationService} from './notification.service';
@@ -310,7 +310,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     constructor(
         public _elementRef: ElementRef,
-        private _focusTrapFactory: FocusTrapFactory,
+        private _focusTrapFactory: ConfigurableFocusTrapFactory,
         @Optional() @Inject(DOCUMENT) private _document: any
     ) {}
 

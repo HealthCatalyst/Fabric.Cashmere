@@ -14,7 +14,6 @@ import {
 import {HcCalendarCellCssClasses, CalendarBodyComponent, HcCalendarCell} from '../calendar-body/calendar-body.component';
 import {Directionality} from '@angular/cdk/bidi';
 import {createMissingDateImplError} from '../datetime/datepicker-errors';
-import {LEFT_ARROW, RIGHT_ARROW, UP_ARROW, DOWN_ARROW, HOME, END, PAGE_UP, PAGE_DOWN, ENTER, SPACE} from '@angular/cdk/keycodes';
 import {D, HC_DATE_FORMATS, HcDateFormats} from '../datetime/date-formats';
 import {DateAdapter} from '../datetime/date-adapter';
 
@@ -184,40 +183,40 @@ export class MonthViewComponent implements AfterContentInit {
         const oldActiveDate = this._activeDate;
         const isRtl = this._isRtl();
 
-        switch (event.keyCode) {
-            case LEFT_ARROW:
+        switch (event.key) {
+            case 'ArrowLeft':
                 this.activeDate = this._dateAdapter.addCalendarDays(this._activeDate, isRtl ? 1 : -1);
                 break;
-            case RIGHT_ARROW:
+            case 'ArrowRight':
                 this.activeDate = this._dateAdapter.addCalendarDays(this._activeDate, isRtl ? -1 : 1);
                 break;
-            case UP_ARROW:
+            case 'ArrowUp':
                 this.activeDate = this._dateAdapter.addCalendarDays(this._activeDate, -7);
                 break;
-            case DOWN_ARROW:
+            case 'ArrowDown':
                 this.activeDate = this._dateAdapter.addCalendarDays(this._activeDate, 7);
                 break;
-            case HOME:
+            case 'Home':
                 this.activeDate = this._dateAdapter.addCalendarDays(this._activeDate, 1 - this._dateAdapter.getDate(this._activeDate));
                 break;
-            case END:
+            case 'End':
                 this.activeDate = this._dateAdapter.addCalendarDays(
                     this._activeDate,
                     this._dateAdapter.getNumDaysInMonth(this._activeDate) - this._dateAdapter.getDate(this._activeDate)
                 );
                 break;
-            case PAGE_UP:
+            case 'PageUp':
                 this.activeDate = event.altKey
                     ? this._dateAdapter.addCalendarYears(this._activeDate, -1)
                     : this._dateAdapter.addCalendarMonths(this._activeDate, -1);
                 break;
-            case PAGE_DOWN:
+            case 'PageDown':
                 this.activeDate = event.altKey
                     ? this._dateAdapter.addCalendarYears(this._activeDate, 1)
                     : this._dateAdapter.addCalendarMonths(this._activeDate, 1);
                 break;
-            case ENTER:
-            case SPACE:
+            case 'Enter':
+            case ' ':
                 if (!this.dateFilter || this.dateFilter(this._activeDate)) {
                     this._dateSelected(this._dateAdapter.getDate(this._activeDate));
                     this._userSelection.emit();

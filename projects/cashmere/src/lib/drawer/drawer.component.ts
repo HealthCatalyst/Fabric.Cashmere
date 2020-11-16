@@ -224,7 +224,7 @@ export class Drawer implements AfterContentInit {
 
     @HostListener('keydown', ['$event'])
     _onKeyDown(event: KeyboardEvent) {
-        if (event.keyCode === 27) {
+        if (event.key === 'Escape') {
             this.toggleClose();
             event.stopPropagation();
         }

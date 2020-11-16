@@ -108,7 +108,7 @@ export class ExampleViewerComponent implements OnInit {
         }
 
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(EXAMPLE_COMPONENTS[this.example]);
-        this.exampleContainer.createComponent(componentFactory, 0, this.exampleContainer.parentInjector);
+        this.exampleContainer.createComponent(componentFactory, 0, this.exampleContainer.injector);
 
         await this.loadExampleFiles();
     }

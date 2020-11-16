@@ -10,7 +10,6 @@ import {
     VerticalConnectionPos
 } from '@angular/cdk/overlay';
 import {Directionality, Direction} from '@angular/cdk/bidi';
-import {ESCAPE} from '@angular/cdk/keycodes';
 import {TemplatePortal} from '@angular/cdk/portal';
 import {Subscription, Subject} from 'rxjs';
 import {takeUntil, take, filter, tap} from 'rxjs/operators';
@@ -289,7 +288,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
             .keydownEvents()
             .pipe(
                 tap(event => this._popover.overlayKeydown.emit(event)),
-                filter(event => event.keyCode === ESCAPE),
+                filter(event => event.key === 'Escape'),
                 filter(() => this._popover.interactiveClose),
                 takeUntil(this.popoverClosed),
                 takeUntil(this._onDestroy)
