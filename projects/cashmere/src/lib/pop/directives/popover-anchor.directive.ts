@@ -56,6 +56,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         popover.disableStyle = true;
         popover.verticalAlign = 'above';
         popover.scrollStrategy = 'close';
+        popover.restoreFocus = false;
         this.attachedPopover = popover;
         this.trigger = 'hover';
         this.popoverDelay = 300;
