@@ -22,7 +22,7 @@ import { HcPopoverHorizontalAlign, HcPopoverOpenOptions, HcPopoverTrigger, HcPop
 import { PopoverNotification, PopoverNotificationService, NotificationAction } from '../notification.service';
 import { HcPopoverAccessibilityService, HcPopKeyboardNotifier, KEY_CODE } from '../popover-accessibility.service';
 import { HcTooltipComponent } from '../tooltip/tooltip.component';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { parseBooleanAttribute } from '../../util';
 
 @Directive({
     selector: '[hcPop],[hcTooltip]',
@@ -111,7 +111,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         return this._attachedPopover.restoreFocus && this._attachedPopover._restoreFocusOverride;
     }
     set restoreFocus(val: boolean) {
-        this._attachedPopover.restoreFocus = coerceBooleanProperty(val);
+        this._attachedPopover.restoreFocus = parseBooleanAttribute(val);
     }
 
     /** Object or value that can be passed into the popover to customize its content */
