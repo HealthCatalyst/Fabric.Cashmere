@@ -86,14 +86,14 @@ function readGuideFiles() {
                     }
                 });
             });
-            readStyleFiles();
+            readFoundationsFiles();
     });
 }
 
-// Index the styles content which is a combination of markdown and components
-function readStyleFiles() {
+// Index the foundations content which is a combination of markdown and components
+function readFoundationsFiles() {
     // Start by parsing the style markdown files
-    glob('guides/styles/*.md', function (er, files) {
+    glob('guides/foundations/*.md', function (er, files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -138,8 +138,8 @@ function readStyleFiles() {
                         title: changeCase.titleCase(sectionTitle) + ' - ' + changeCase.titleCase(mapping.basename),
                         // Remove all the markdown from the file content and set it so we can search through it
                         content: mdGetContent(element),
-                        link: 'styles/' + mapping.basename,
-                        category: 'styles',
+                        link: 'foundations/' + mapping.basename,
+                        category: 'foundations',
                         // Set displayName to basename for display purposes
                         displayName: mapping.basename,
                         type: 'doc',
@@ -153,8 +153,8 @@ function readStyleFiles() {
             });
     });
 
-    // Then parse the style components
-    glob('src/app/styles/*/*.html', function (er, files) {
+    // Then parse the foundations components
+    glob('src/app/foundations/*/*.html', function (er, files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -184,8 +184,8 @@ function readStyleFiles() {
                         // Set the title to the title with propare capitalization
                         title: changeCase.titleCase(title) + ' - ' + changeCase.titleCase(parentName.replace(/-/g, ' ')),
                         content: exampleGetContent(fileContent),
-                        link: 'styles/' + parentName,
-                        category: 'styles',
+                        link: 'foundations/' + parentName,
+                        category: 'foundations',
                         displayName: title,
                         type: 'doc',
                         section: changeCase.paramCase(title)

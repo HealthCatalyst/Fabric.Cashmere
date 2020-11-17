@@ -20,8 +20,8 @@ export class AppComponent implements AfterViewInit {
     searchValue = '';
     searchIcons = {
         'components': { icon: 'fa-file-code-o' },
-        'guides': { icon: 'fa-file-text-o' },
-        'styles': { icon: 'fa-file-image-o' },
+        'guides': { icon: 'fa-graduation-cap' },
+        'foundations': { icon: 'fa-file-image-o' },
         'bits': { icon: 'fa-puzzle-piece' }
     };
 

@@ -1,0 +1,78 @@
+<div class="hc-components-container">
+    <hc-subnav class="responsive-subnav" fixedTop="true">
+        <div class="subnav-container">
+            <span class="subnav-label">Styles: </span>
+            <span class="subnav-select">
+                <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
+                    <optgroup label="Colors">
+                        <ng-container *ngFor="let option of selectOptions">
+                            <option *ngIf="option.data.category == 'colors'" [value]="option.data.title" [selected]="option.data.title === thisPage">{{option.data.title}}</option>
+                        </ng-container>
+                    </optgroup>
+                    <optgroup label="Typography">
+                        <ng-container *ngFor="let option of selectOptions">
+                            <option *ngIf="option.data.category == 'typography'" [value]="option.data.title" [selected]="option.data.title === thisPage">{{option.data.title}}</option>
+                        </ng-container>
+                    </optgroup>
+                    <optgroup label="Branding">
+                        <ng-container *ngFor="let option of selectOptions">
+                            <option *ngIf="option.data.category == 'branding'" [value]="option.data.title" [selected]="option.data.title === thisPage">{{option.data.title}}</option>
+                        </ng-container>
+                    </optgroup>
+                    <optgroup label="User Interface">
+                        <ng-container *ngFor="let option of selectOptions">
+                            <option *ngIf="option.data.category == 'ui'" [value]="option.data.title" [selected]="option.data.title === thisPage">{{option.data.title}}</option>
+                        </ng-container>
+                    </optgroup>
+                </hc-select>
+            </span>
+        </div>
+    </hc-subnav>
+    <div class="hc-components-left-column">
+        <div class="hc-components-nav-container">
+            <hc-tile>
+                <div class="hc-components-nav-list">
+                    <hc-accordion triggerAlign="right" open='true'>
+                        <hc-accordion-toolbar>Color</hc-accordion-toolbar>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'UI Colors' == thisPage }" (click)="navUpdate('color')">UI Colors</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Brand Colors' == thisPage }" (click)="navUpdate('brand-colors')">Brand Colors</div>
+                        <div class="hc-components-nav-spacer"></div>
+                    </hc-accordion>
+                    <div class="hc-components-nav-divider"></div>
+                    <hc-accordion triggerAlign="right" open='true'>
+                        <hc-accordion-toolbar>Typography</hc-accordion-toolbar>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Typography' == thisPage }" (click)="navUpdate('typography')">Type</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Icons' == thisPage }" (click)="navUpdate('icons')">Icons</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Source Code' == thisPage }" (click)="navUpdate('code')">Source Code</div>
+                        <div class="hc-components-nav-spacer"></div>
+                    </hc-accordion>
+                    <div class="hc-components-nav-divider"></div>
+                    <hc-accordion triggerAlign="right" open='true'>
+                        <hc-accordion-toolbar>Branding</hc-accordion-toolbar>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Logo' == thisPage }" (click)="navUpdate('logo')">Logo</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Product Icons' == thisPage }" (click)="navUpdate('products')">Product Icons</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Trademarks' == thisPage }" (click)="navUpdate('trademarks')">Trademarks</div>
+                        <div class="hc-components-nav-spacer"></div>
+                    </hc-accordion>
+                    <div class="hc-components-nav-divider"></div>
+                    <hc-accordion triggerAlign="right" open='true'>
+                        <hc-accordion-toolbar>User Interface</hc-accordion-toolbar>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'About Modal' == thisPage }" (click)="navUpdate('about')">About Modal</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Breadcrumbs' == thisPage }" (click)="navUpdate('breadcrumbs')">Breadcrumbs</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Charts' == thisPage }" (click)="navUpdate('chart')">Charts</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Error Pages' == thisPage }" (click)="navUpdate('error')">Error Pages</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Launch Screen' == thisPage }" (click)="navUpdate('launch-screen')">Launch Screen</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Login Page' == thisPage }" (click)="navUpdate('login')">Login Page</div>
+                        <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': 'Tables' == thisPage }" (click)="navUpdate('table')">Tables</div>
+                        <div class="hc-components-nav-spacer"></div>
+                    </hc-accordion>
+                </div>
+            </hc-tile>
+        </div>
+    </div>
+    <div class="hc-components-right-column">
+        <hc-tab-set class="full-height" [defaultTab]="queryTab">
+            <hc-tab *ngFor="let tab of selectOptions" [tabTitle]="tab.data.title" [routerLink]="'/foundations/' + tab.path">{{tab.data.title}}</hc-tab>
+        </hc-tab-set>
+    </div>
+</div>

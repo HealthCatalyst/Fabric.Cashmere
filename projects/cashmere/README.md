@@ -8,7 +8,8 @@ An Angular component library that makes any task feel luxurious.
 
 -   [CHANGELOG](https://github.com/HealthCatalyst/Fabric.Cashmere/blob/master/CHANGELOG.md)
 -   [Components](http://cashmere.healthcatalyst.net/components)
--   [Styles](http://cashmere.healthcatalyst.net/styles)
+-   [Foundations](http://cashmere.healthcatalyst.net/foundations)
+-   [Content](http://cashmere.healthcatalyst.net/content)
 -   [Getting Started](http://cashmere.healthcatalyst.net/guides/getting-started)
 -   [Guidelines for Contribution](http://cashmere.healthcatalyst.net/guides/contribution-guide)
 -   [Submit an Issue](http://cashmere.healthcatalyst.net/guides/submit-an-issue)
