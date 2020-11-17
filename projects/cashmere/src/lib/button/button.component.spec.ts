@@ -139,7 +139,8 @@ describe('ButtonComponent', () => {
             expect(testApp.aDebugElement.nativeElement.getAttribute('tabindex')).toBe('-1');
         });
 
-        it('should not redirect if disabled', () => {
+        // TEST HAS NO EXPECTATIONS
+        xit('should not redirect if disabled', () => {
             const testApp = new TestAppReference();
             testApp.setIsDisabled(true);
             testApp.detectChanges();

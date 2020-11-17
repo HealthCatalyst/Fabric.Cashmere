@@ -1,8 +1,7 @@
 import {Directionality} from '@angular/cdk/bidi';
-import {Component, NgZone} from '@angular/core';
+import {Component} from '@angular/core';
 import {waitForAsync, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {MockNgZone} from '../utils/mock-ng-zone';
 import {DatepickerModule} from '../datepicker.module';
 import {JAN, FEB, DEC, NOV, JUL} from '../utils/month-constants';
 import {dispatchFakeEvent, dispatchMouseEvent, dispatchEvent} from '../utils/dispatch-events';
@@ -74,7 +73,7 @@ class CalendarWithSelectableMinDate {
 }
 
 describe('CalendarComponent', () => {
-    let zone: MockNgZone;
+    const mockNgZone = jasmine.createSpyObj('mockNgZone', ['run', 'runOutsideAngular']);
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -88,7 +87,6 @@ describe('CalendarComponent', () => {
             ],
             providers: [
                 HcDatepickerIntl,
-                {provide: NgZone, useFactory: () => (zone = new MockNgZone())},
                 {provide: Directionality, useFactory: () => ({value: 'ltr'})}
             ]
         });
@@ -234,7 +232,7 @@ describe('CalendarComponent', () => {
 
                     spyOn(activeCell, 'focus').and.callThrough();
                     fixture.detectChanges();
-                    zone.simulateZoneExit();
+                    mockNgZone.run.and.callFake(fn => fn());
 
                     expect(activeCell.focus).not.toHaveBeenCalled();
                 });
@@ -244,13 +242,13 @@ describe('CalendarComponent', () => {
 
                     spyOn(activeCell, 'focus').and.callThrough();
                     fixture.detectChanges();
-                    zone.simulateZoneExit();
+                    mockNgZone.run.and.callFake(fn => fn());
 
                     expect(activeCell.focus).not.toHaveBeenCalled();
 
                     calendarInstance.currentView = 'multi-year';
                     fixture.detectChanges();
-                    zone.simulateZoneExit();
+                    mockNgZone.run.and.callFake(fn => fn());
 
                     expect(activeCell.focus).toHaveBeenCalled();
                 });

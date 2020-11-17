@@ -1,7 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {BannerType, HcBannerComponent} from './hc-banner.component';
-import * as cashmereUtil from '../util';
 
 describe('HcBannerComponent', () => {
     let component: HcBannerComponent;
@@ -46,11 +45,10 @@ describe('HcBannerComponent', () => {
         });
         describe('when a value is set', () => {
             beforeEach(() => {
-                spyOn(cashmereUtil, 'parseBooleanAttribute');
                 component.clickDismiss = ('true' as any) as boolean;
             });
             it('the value is sanitized using parseBooleanAttribute', () => {
-                expect(cashmereUtil.parseBooleanAttribute).toHaveBeenCalled();
+                expect(component.clickDismiss).toBe(true);
             });
         });
     });
