@@ -23,12 +23,9 @@ export class AnchorComponent extends ButtonComponent {
         return this.disabled ? -1 : 0;
     }
 
-    @HostListener('click', ['$event'])
-    _handleClickEvents(event: Event) {
-        if (this.disabled) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+    @HostBinding('style.pointer-events')
+    get _handleClickEvents(): string {
+        return this.disabled ? 'none' : 'auto';
     }
 
     constructor(elementRef: ElementRef, renderer: Renderer2) {

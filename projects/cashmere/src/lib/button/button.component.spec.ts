@@ -129,45 +129,4 @@ describe('ButtonComponent', () => {
             expect(testApp.testAppComponent.clickCount).toEqual(0);
         });
     });
-
-    describe('a[hc-button]', () => {
-        it('should remove tabindex when disabled', () => {
-            const testApp = new TestAppReference();
-            testApp.setIsDisabled(true);
-            testApp.detectChanges();
-
-            expect(testApp.aDebugElement.nativeElement.getAttribute('tabindex')).toBe('-1');
-        });
-
-        // TEST HAS NO EXPECTATIONS
-        xit('should not redirect if disabled', () => {
-            const testApp = new TestAppReference();
-            testApp.setIsDisabled(true);
-            testApp.detectChanges();
-
-            testApp.aDebugElement.nativeElement.click();
-        });
-
-        it('should add aria-disabled when disabled', () => {
-            const testApp = new TestAppReference();
-            testApp.detectChanges();
-            expect(testApp.aDebugElement.nativeElement.getAttribute('aria-disabled')).toBe('false');
-
-            testApp.setIsDisabled(true);
-            testApp.detectChanges();
-            expect(testApp.aDebugElement.nativeElement.getAttribute('aria-disabled')).toBe('true');
-        });
-
-        it('should not add aria-disabled when disabled is false', () => {
-            const testApp = new TestAppReference();
-            testApp.detectChanges();
-            expect(testApp.aDebugElement.nativeElement.getAttribute('aria-disabled')).toBe('false');
-            expect(testApp.aDebugElement.nativeElement.getAttribute('disabled')).toBeNull();
-
-            testApp.setIsDisabled(false);
-            testApp.detectChanges();
-            expect(testApp.aDebugElement.nativeElement.getAttribute('aria-disabled')).toBe('false');
-            expect(testApp.aDebugElement.nativeElement.getAttribute('disabled')).toBeNull();
-        });
-    });
 });
