@@ -22,6 +22,7 @@ import { HcPopoverHorizontalAlign, HcPopoverOpenOptions, HcPopoverTrigger, HcPop
 import { PopoverNotification, PopoverNotificationService, NotificationAction } from '../notification.service';
 import { HcPopoverAccessibilityService, HcPopKeyboardNotifier, KEY_CODE } from '../popover-accessibility.service';
 import { HcTooltipComponent } from '../tooltip/tooltip.component';
+import { parseBooleanAttribute } from '../../util';
 
 @Directive({
     selector: '[hcPop],[hcTooltip]',
@@ -55,6 +56,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         popover.disableStyle = true;
         popover.verticalAlign = 'above';
         popover.scrollStrategy = 'close';
+        popover.restoreFocus = false;
         this.attachedPopover = popover;
         this.trigger = 'hover';
         this.popoverDelay = 300;
@@ -102,6 +104,15 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
 
     set maxWidth(val: string) {
         this._attachedPopover.maxWidth = val;
+    }
+
+    /** Whether the popover should return focus to the previously focused element after closing.* */
+    @Input()
+    get restoreFocus(): boolean {
+        return this._attachedPopover.restoreFocus && this._attachedPopover._restoreFocusOverride;
+    }
+    set restoreFocus(val: boolean) {
+        this._attachedPopover.restoreFocus = parseBooleanAttribute(val);
     }
 
     /** Object or value that can be passed into the popover to customize its content */
