@@ -11,9 +11,10 @@ export class HighlightDirective implements AfterViewInit {
     constructor(private el: ElementRef) {}
 
     ngAfterViewInit() {
-        highlightBlock(this.el.nativeElement);
+        const highlightElement: HTMLPreElement = this.el.nativeElement ? this.el.nativeElement : this.el;
+        highlightBlock(highlightElement);
         if (this.lineNumbers) {
-            this.addLines(this.el.nativeElement);
+            this.addLines(highlightElement);
         }
     }
 
