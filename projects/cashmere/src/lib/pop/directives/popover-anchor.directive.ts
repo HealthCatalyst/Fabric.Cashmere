@@ -106,9 +106,9 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         this._attachedPopover.maxWidth = val;
     }
 
-    /** Whether the popover should return focus to the previously focused element after closing. *Defaults to `true`.* */
+    /** Whether the popover should return focus to the previously focused element after closing.* */
     @Input()
-    get restoreFocus() {
+    get restoreFocus(): boolean {
         return this._attachedPopover.restoreFocus && this._attachedPopover._restoreFocusOverride;
     }
     set restoreFocus(val: boolean) {
