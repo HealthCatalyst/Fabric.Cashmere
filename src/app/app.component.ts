@@ -22,7 +22,8 @@ export class AppComponent implements AfterViewInit {
         'components': { icon: 'fa-file-code-o' },
         'guides': { icon: 'fa-graduation-cap' },
         'foundations': { icon: 'fa-file-image-o' },
-        'bits': { icon: 'fa-puzzle-piece' }
+        'bits': { icon: 'fa-puzzle-piece' },
+        'content': { icon: 'fa-file-text-o' }
     };
 
     constructor( private searchService: SearchService ) { }

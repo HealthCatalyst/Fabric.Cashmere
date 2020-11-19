@@ -30,7 +30,8 @@ export class SearchResultsComponent implements AfterViewInit {
         components: new FormControl(true),
         guides: new FormControl(true),
         foundations: new FormControl(true),
-        bits: new FormControl(true)
+        bits: new FormControl(true),
+        content: new FormControl(true)
     });
 
     types = new FormGroup({
@@ -44,7 +45,8 @@ export class SearchResultsComponent implements AfterViewInit {
         'components': { icon: 'fa-file-code-o' },
         'guides': { icon: 'fa-graduation-cap' },
         'foundations': { icon: 'fa-file-image-o' },
-        'bits': { icon: 'fa-puzzle-piece' }
+        'bits': { icon: 'fa-puzzle-piece' },
+        'content': { icon: 'fa-file-text-o' }
     };
 
     @HostListener('window:resize')
@@ -54,7 +56,7 @@ export class SearchResultsComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         // String lists that take the values from the categories and types FormGroups
-        let filterValues: string[] = ["foundations", "components", "guides", "bits"];
+        let filterValues: string[] = ["foundations", "components", "guides", "bits", "content"];
         let typeFilterValues: string[] = ["doc", "example", "api", "usage"];
 
         // Listens for changes in the categories FormGroup
