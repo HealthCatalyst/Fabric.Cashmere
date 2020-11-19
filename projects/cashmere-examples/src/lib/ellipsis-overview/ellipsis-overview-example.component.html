@@ -1,17 +1,22 @@
-<p>{{ value | ellipsis: length:mode }}</p>
+<h6>Output:</h6>
+<div class="pipe-output">{{ value.value | ellipsis: length.value:modeControl.value }}</div>
+
+<hr>
+
+<h6>Inputs:</h6>
 
 <hc-form-field>
-    <hc-label>Value</hc-label>
-    <textarea hcInput [(ngModel)]="value"></textarea>
+    <hc-label>Value:</hc-label>
+    <textarea hcInput [formControl]="value"></textarea>
 </hc-form-field>
 <hc-form-field>
-    <hc-label>Length</hc-label>
-    <input hcInput [(ngModel)]="length" type="number" />
+    <hc-label>Length:</hc-label>
+    <input hcInput [formControl]="length" type="number" />
 </hc-form-field>
 <hc-form-field>
-    <hc-label>Mode</hc-label>
-    <hc-select [(ngModel)]="mode">
-        <option>characters</option>
-        <option>words</option>
+    <hc-label>Mode:</hc-label>
+    <hc-select [formControl]="modeControl">
+        <option value="characters">Characters</option>
+        <option value="words">Words</option>
     </hc-select>
 </hc-form-field>

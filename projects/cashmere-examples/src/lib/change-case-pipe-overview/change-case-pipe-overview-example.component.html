@@ -1,0 +1,16 @@
+<div>
+    <hc-form-field>
+        <hc-label>Input Text:</hc-label>
+        <input hcInput [formControl]="textControl" />
+    </hc-form-field>
+    <hc-form-field>
+        <hc-label>Case Transform:</hc-label>
+        <hc-select [formControl]="caseControl">
+            <option *ngFor="let option of availableCases" [selected]="option === caseControl.value" [ngValue]="option">
+                {{ option | changeCase: 'sentenceCase' }}
+            </option>
+        </hc-select>
+    </hc-form-field>
+    <span>Result:</span>
+    <pre *ngIf="caseControl.value">{{ textControl.value | changeCase: caseControl.value }}</pre>
+</div>

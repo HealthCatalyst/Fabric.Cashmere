@@ -1,13 +1,19 @@
 <form>
     <div class="select-sample">
-        <hc-form-field>
-            <hc-label>Project Status:</hc-label>
+        <hc-form-field tight="true">
+            <hc-label>Select with tight styling:</hc-label>
             <hc-select [formControl]="selectControl" required>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-                <option value="progress">In progress</option>
+                <optgroup label="Business Intelligence Tools">
+                    <option value="qlik" selected>QlikView</option>
+                    <option value="tableau">Tableau</option>
+                    <option value="powerbi">PowerBI</option>
+                </optgroup>
+                <optgroup label="Web Frameworks">
+                    <option value="angular">Angular</option>
+                    <option value="react">React</option>
+                </optgroup>
             </hc-select>
-            <hc-error>Projects must be started before a status can be set</hc-error>
+            <hc-error>A development environment must be selected</hc-error>
         </hc-form-field>
     </div>
     <button hc-button title="Toggle component validation" buttonStyle="primary" (click)="toggleValidate()">

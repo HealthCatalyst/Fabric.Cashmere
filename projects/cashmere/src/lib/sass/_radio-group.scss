@@ -7,15 +7,19 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-
-    .hc-radio-container {
-        padding-left: 32px !important;
-        margin-right: 25px !important;
-    }
 }
 
 .hc-form-field-invalid {
     .hc-radio-overlay {
         border-color: $error !important;
+    }
+
+    .hc-radio-input:checked ~ .hc-radio-overlay {
+        border-color: $error !important;
+        background-color: $error !important;
+    }
+
+    .hc-radio-input:focus ~ .hc-radio-overlay {
+        box-shadow: 0 0 5px $error !important;
     }
 }

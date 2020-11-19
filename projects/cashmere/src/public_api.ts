@@ -27,6 +27,7 @@ export * from './lib/radio-button/index';
 export * from './lib/scroll-nav/index';
 export * from './lib/select/index';
 export * from './lib/sort/index';
+export * from './lib/stepper/index';
 export * from './lib/subnav/index';
 export * from './lib/table/index';
 export * from './lib/tabs/index';

@@ -18,13 +18,11 @@ $drawer-container-padding: 10px 20px;
     overflow-y: auto;
     position: absolute;
     top: 0;
-    transform: translate3d(-100%, 0, 0);
     z-index: 3;
 }
 
 @mixin hc-drawer-right() {
     right: 0;
-    transform: translate3d(100%, 0, 0);
 }
 
 @mixin hc-drawer-open() {

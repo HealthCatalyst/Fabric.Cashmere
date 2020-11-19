@@ -1,4 +1,4 @@
-@import "~@healthcatalyst/cashmere/scss/colors";
+@import '~@healthcatalyst/cashmere/scss/colors';
 
 .example-column {
     display: inline-block;
@@ -35,7 +35,7 @@
 
 .progress-row {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     width: 100%;
 }
 

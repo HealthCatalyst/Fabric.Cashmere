@@ -8,31 +8,28 @@ import {
     Output,
     ViewContainerRef,
     HostListener,
-    HostBinding
+    HostBinding,
+    AfterContentInit,
+    ComponentFactoryResolver
 } from '@angular/core';
-import {Subject, merge} from 'rxjs';
-import {tap, takeUntil} from 'rxjs/operators';
+import { Subject, merge } from 'rxjs';
+import { tap, takeUntil } from 'rxjs/operators';
 
-import {HcPopComponent} from '../popover.component';
-import {getInvalidPopoverError, getInvalidTriggerError} from '../popover.errors';
-import {HcPopoverAnchoringService} from '../popover-anchoring.service';
-import {HcPopoverOpenOptions, HcPopoverTrigger, VALID_TRIGGER} from '../types';
-import {PopoverNotification, PopoverNotificationService, NotificationAction} from '../notification.service';
-
-export enum KEY_CODE {
-    DOWN_ARROW = 40,
-    RIGHT_ARROW = 39,
-    UP_ARROW = 38,
-    LEFT_ARROW = 37,
-    TAB = 9
-}
+import { HcPopComponent } from '../popover.component';
+import { getInvalidPopoverError, getInvalidTriggerError } from '../popover.errors';
+import { HcPopoverAnchoringService } from '../popover-anchoring.service';
+import { HcPopoverHorizontalAlign, HcPopoverOpenOptions, HcPopoverTrigger, HcPopoverVerticalAlign, VALID_TRIGGER } from '../types';
+import { PopoverNotification, PopoverNotificationService, NotificationAction } from '../notification.service';
+import { HcPopoverAccessibilityService, HcPopKeyboardNotifier, KEY_CODE } from '../popover-accessibility.service';
+import { HcTooltipComponent } from '../tooltip/tooltip.component';
+import { parseBooleanAttribute } from '../../util';
 
 @Directive({
-    selector: '[hcPop]',
+    selector: '[hcPop],[hcTooltip]',
     exportAs: 'hcPopAnchor',
     providers: [HcPopoverAnchoringService]
 })
-export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
+export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDestroy {
     /** Reference to the popover instance. */
     @Input('hcPop')
     get attachedPopover() {
@@ -45,6 +42,26 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
         this._anchoring.anchor(this.attachedPopover, this._viewContainerRef, this);
     }
     private _attachedPopover: HcPopComponent;
+
+    /** A string of text to display as a tooltip above an element */
+    @Input('hcTooltip')
+    get tooltipText() {
+        return this._tooltipText;
+    }
+    set tooltipText(value: string) {
+        this._tooltipText = value;
+        const factory = this._componentFactoryResolver.resolveComponentFactory(HcTooltipComponent);
+        const popover = this._viewContainerRef.createComponent(factory).instance;
+        popover.tooltipContent = value;
+        popover.disableStyle = true;
+        popover.verticalAlign = 'above';
+        popover.scrollStrategy = 'close';
+        popover.restoreFocus = false;
+        this.attachedPopover = popover;
+        this.trigger = 'hover';
+        this.popoverDelay = 300;
+    }
+    private _tooltipText: string;
 
     /** Trigger event to toggle the popover. *Defaults to `"click"`.*
      * Accepts `click`, `mousedown`, `hover`, `rightclick`, or `none`.
@@ -62,6 +79,42 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
     }
     private _trigger: HcPopoverTrigger = 'click';
 
+    /** Number that can be passed into the popover to change hover delay. Also used for tooltip.
+     * Delay is measured in milliseconds.
+     */
+    @Input()
+    get popoverDelay() {
+        return this._popoverDelay;
+    }
+
+    set popoverDelay(val: number) {
+        this._popoverDelay = Number(val);
+    }
+
+    private _popoverDelay: number = 0;
+
+    /** Timer that delays togglePopover on hover. */
+    private hoverInterval: number;
+
+    /** Constrains the content of a popover to a standard css string value; *Defaults to `none`.* */
+    @Input()
+    get maxWidth() {
+        return this._attachedPopover.maxWidth;
+    }
+
+    set maxWidth(val: string) {
+        this._attachedPopover.maxWidth = val;
+    }
+
+    /** Whether the popover should return focus to the previously focused element after closing.* */
+    @Input()
+    get restoreFocus(): boolean {
+        return this._attachedPopover.restoreFocus && this._attachedPopover._restoreFocusOverride;
+    }
+    set restoreFocus(val: boolean) {
+        this._attachedPopover.restoreFocus = parseBooleanAttribute(val);
+    }
+
     /** Object or value that can be passed into the popover to customize its content */
     @Input()
     get context() {
@@ -69,6 +122,26 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
     }
     set context(val: any) {
         this._anchoring._context = val;
+    }
+
+    /** Alignment of the popover on the horizontal axis. Can be `before`, `start`, `center`, `end`, `after`, or `mouse`.
+     * *Defaults to `center`.* */
+    @Input()
+    get horizontalAlign() {
+        return this._attachedPopover.horizontalAlign;
+    }
+    set horizontalAlign(val: HcPopoverHorizontalAlign) {
+        this.attachedPopover.horizontalAlign = val;
+    }
+
+    /** Alignment of the popover on the vertical axis. Can be `above`, `start`, `center`, `end`, `below`, or `mouse`.
+     * *Defaults to `"below"`.* */
+    @Input()
+    get verticalAlign() {
+        return this._attachedPopover.verticalAlign;
+    }
+    set verticalAlign(val: HcPopoverVerticalAlign) {
+        this.attachedPopover.verticalAlign = val;
     }
 
     @HostBinding('class.hc-menu-item-submenu')
@@ -89,8 +162,10 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
     constructor(
         public _elementRef: ElementRef,
         private _viewContainerRef: ViewContainerRef,
-        public _anchoring: HcPopoverAnchoringService
-    ) {}
+        public _anchoring: HcPopoverAnchoringService,
+        private _accessibility: HcPopoverAccessibilityService,
+        private _componentFactoryResolver: ComponentFactoryResolver
+    ) { }
 
     ngOnInit() {
         // Re-emit open and close events
@@ -101,7 +176,12 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
             .subscribe();
     }
 
+    ngAfterContentInit() {
+        this._setupKeyboardEvents();
+    }
+
     ngOnDestroy() {
+        clearTimeout(this.hoverInterval);
         this._onDestroy.next();
         this._onDestroy.complete();
     }
@@ -118,6 +198,23 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
         }
         this._attachedPopover._offsetPos[0] = this._attachedPopover.horizontalAlign === 'mouse' ? $event.offsetX : 0;
         this._attachedPopover._offsetPos[1] = this._attachedPopover.verticalAlign === 'mouse' ? $event.offsetY : 0;
+        this.togglePopover();
+    }
+
+    /** So popover anchors can be accessible via keyboard. */
+    @HostListener('keydown', ['$event'])
+    _showOrHideOnEnter(event: KeyboardEvent): void {
+        // buttons already trigger a click when you press enter, so executing this event handler would be redundant
+        const targetElement = event.target as Element;
+        const triggerFromButton = targetElement && targetElement.tagName === "BUTTON";
+        // not triggering popover on keypress unless the key pressed was enter or spacebar
+        const keyPressedShouldTrigger = event.keyCode === KEY_CODE.ENTER || event.keyCode === KEY_CODE.SPACEBAR;
+        // not triggering popover on keypress unless the trigger is 'click'
+        const anchorHasClickTrigger = this.trigger === 'click';
+
+        if (triggerFromButton || !keyPressedShouldTrigger || !anchorHasClickTrigger ) {
+            return;
+        }
         this.togglePopover();
     }
 
@@ -149,9 +246,12 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
         if (this.trigger !== 'hover') {
             return;
         }
+
         this._attachedPopover._offsetPos[0] = this._attachedPopover.horizontalAlign === 'mouse' ? $event.offsetX : 0;
         this._attachedPopover._offsetPos[1] = this._attachedPopover.verticalAlign === 'mouse' ? $event.offsetY : 0;
-        this.openPopover();
+        this.hoverInterval = window.setTimeout(() => {
+            this.togglePopover();
+        }, this.popoverDelay);
     }
 
     @HostListener('touchend', ['$event'])
@@ -165,14 +265,13 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
     }
 
     /** Handle keyboard navigation of a hcMenu using the arrow or tab keys */
-    @HostListener('window:keydown', ['$event'])
-    _keyEvent(event: KeyboardEvent) {
+    _keyEvent(event: KeyboardEvent): void {
         if (this.attachedPopover.isOpen() && this.attachedPopover._menuItems.length > 0 && !this.attachedPopover._subMenuOpen) {
-            if (event.keyCode === KEY_CODE.UP_ARROW) {
+            if (event.keyCode === KEY_CODE.UP_ARROW || (event.keyCode === KEY_CODE.TAB && event.shiftKey)) {
                 event.stopPropagation();
                 event.preventDefault();
                 this.attachedPopover._keyFocus(false);
-            } else if (event.keyCode === KEY_CODE.DOWN_ARROW || event.keyCode === KEY_CODE.TAB) {
+            } else if (event.keyCode === KEY_CODE.DOWN_ARROW || (event.keyCode === KEY_CODE.TAB && !event.shiftKey)) {
                 event.stopPropagation();
                 event.preventDefault();
                 this.attachedPopover._keyFocus(true);
@@ -186,6 +285,7 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
             event.stopPropagation();
             event.preventDefault();
             this.openPopover();
+            this.attachedPopover._keyFocus(true);
         }
     }
 
@@ -205,8 +305,9 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
     }
 
     /** Closes the popover. */
-    closePopover(value?: any): void {
-        this._anchoring.closePopover(value);
+    closePopover(value?: any, neighborSubMenusAreOpen: boolean = false): void {
+        clearTimeout(this.hoverInterval);
+        this._anchoring.closePopover(value, neighborSubMenusAreOpen);
     }
 
     /** Realign the popover to the anchor. */
@@ -238,5 +339,17 @@ export class HcPopoverAnchorDirective implements OnInit, OnDestroy {
         if (this._notifications) {
             this._notifications.dispatch(notification);
         }
+    }
+
+    private _setupKeyboardEvents() {
+        const notifier: HcPopKeyboardNotifier = {
+            isOpen: false,
+            nativeElement: this._elementRef.nativeElement,
+            hasSubmenu: () => this._hasSubmenu,
+            onKeyDown: event => this._keyEvent(event)
+        };
+        this.popoverClosed.asObservable().subscribe(() => (notifier.isOpen = false));
+        this.popoverOpened.asObservable().subscribe(() => (notifier.isOpen = true));
+        this._accessibility.registerNotifier(notifier);
     }
 }

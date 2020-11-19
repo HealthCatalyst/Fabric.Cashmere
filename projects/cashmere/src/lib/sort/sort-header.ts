@@ -1,4 +1,4 @@
-/* tslint:disable:component-selector use-host-property-decorator no-input-rename component-class-suffix */
+/* tslint:disable:component-selector no-host-metadata-property no-input-rename component-class-suffix */
 
 /**
  * @license

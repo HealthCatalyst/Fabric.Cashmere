@@ -8,4 +8,7 @@ import {Component} from '@angular/core';
     templateUrl: 'drawer-basic-example.component.html',
     styleUrls: ['drawer-basic-example.component.scss']
 })
-export class DrawerBasicExampleComponent {}
+export class DrawerBasicExampleComponent {
+    leftState = false;
+    rightState = false;
+}

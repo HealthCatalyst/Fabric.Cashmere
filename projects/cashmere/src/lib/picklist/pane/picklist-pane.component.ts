@@ -34,9 +34,9 @@ export class PicklistPaneComponent {
     public emptyMsg: string = 'No options';
     @Output()
     public moveSelectedItems = new EventEmitter<PicklistPaneComponent>();
-    @ViewChild('listContainer')
+    @ViewChild('listContainer', {static: false})
     public listContainerEl: ElementRef | undefined;
-    @ViewChild('search')
+    @ViewChild('search', {static: false})
     public searchInputEl: ElementRef | undefined;
     public companion: PicklistPaneComponent | null = null;
     public shouldExcludeCompanion = false;
@@ -134,11 +134,11 @@ export class PicklistPaneComponent {
 
     public preventIEHighlightBug() {
         // for IE: https://stackoverflow.com/questions/1527751/disable-text-selection-while-pressing-shift
-        document.onselectstart = function() {
+        (document as any).onselectstart = function() {
             return false;
         };
         setTimeout(function() {
-            document.onselectstart = () => null;
+            (document as any).onselectstart = () => null;
         }, 0);
     }
 

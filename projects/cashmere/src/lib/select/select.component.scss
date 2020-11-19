@@ -14,21 +14,32 @@
     .hc-select-disabled & {
         @include hc-select-chevron-disabled();
     }
+
+    .hc-select-tight & {
+        @include hc-select-chevron-tight();
+    }
 }
 
 .hc-select-input {
     @include hc-select-input();
 
+    &:not([disabled]):hover {
+        @include hc-select-input-hover();
+    }
+
+    &:focus {
+        @include hc-select-input-focus();
+    }
+
     .hc-form-field-invalid & {
         @include hc-select-input-invalid();
-    }
-}
 
-/* IE won't render borders for our inputs correctly, so default to a thicker width */
-@media all and (-ms-high-contrast:none) {
-    .hc-select-input,
-    .hc-select-input-invalid,
-    .hc-select-input[disabled] {
-        @include hc-select-border-override();
+        &:focus {
+            @include hc-select-input-invalid-focus();
+        }
+    }
+
+    .hc-select-tight & {
+        @include hc-select-input-tight();
     }
 }

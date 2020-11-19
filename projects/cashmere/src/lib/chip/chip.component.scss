@@ -4,6 +4,21 @@
     @include hc-chip();
 }
 
+.hc-chip-padding {
+    @include hc-chip-padding();
+}
+
+.hc-chip-content-neutral {
+    @include hc-chip-content();
+}
+
+.hc-chip-content-red,
+.hc-chip-content-yellow,
+.hc-chip-content-green,
+.hc-chip-content-blue {
+    @include hc-chip-content-color();
+}
+
 .hc-chip-close {
     @include hc-chip-close();
 }
@@ -24,6 +39,10 @@
     @include hc-chip-green();
 }
 
+.hc-chip-blue {
+    @include hc-chip-blue();
+}
+
 .hc-chip-close-icon {
     @include hc-chip-close-icon();
 
@@ -41,6 +60,10 @@
 
     .hc-chip-green & {
         @include hc-chip-close-icon-green();
+    }
+
+    .hc-chip-blue & {
+        @include hc-chip-close-icon-blue();
     }
 }
 

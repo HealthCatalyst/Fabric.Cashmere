@@ -28,7 +28,6 @@ import {MonthViewComponent} from '../month-view/month-view.component';
 import {YearViewComponent} from '../year-view/year-view.component';
 import {FormControl} from '@angular/forms';
 
-// tslint:disable:no-use-before-declare
 /**
  * Possible views for the calendar.
  * @docs-private
@@ -141,17 +140,17 @@ export class CalendarHeaderComponent {
     _todayEnabled(): boolean {
         let minDate;
         let maxDate;
-        let today = new Date( this._dateAdapter.today().toDateString() );
+        let today = new Date(this._dateAdapter.today().toDateString());
 
         /** Normalize the compare dates to all be on the first day of the month because we are only concerned
          * about whether today falls outside of the month than min or max is in */
         today.setDate(1);
-        if ( this.calendar.minDate ) {
-            minDate = new Date( this.calendar.minDate.toDateString() );
+        if (this.calendar.minDate) {
+            minDate = new Date(this.calendar.minDate.toDateString());
             minDate.setDate(1);
         }
-        if ( this.calendar.maxDate ) {
-            maxDate = new Date( this.calendar.maxDate.toDateString() );
+        if (this.calendar.maxDate) {
+            maxDate = new Date(this.calendar.maxDate.toDateString());
             maxDate.setDate(1);
         }
         return (
@@ -184,7 +183,7 @@ export class CalendarHeaderComponent {
     selector: 'hc-calendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['calendar.component.scss'],
-    // tslint:disable-next-line:use-host-property-decorator
+    // tslint:disable-next-line:no-host-metadata-property
     host: {
         class: 'hc-calendar'
     },
@@ -236,9 +235,9 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         return this._hourCycle;
     }
     set hourCycle(value: string | number) {
-        if ( +value === 12 || +value === 24 ) {
+        if (+value === 12 || +value === 24) {
             this._hourCycle = +value;
-        } else if ( value ) {
+        } else if (value) {
             throw Error('Unsupported hourCycle value: ' + value + '. Accepted values are 12 or 24.');
         }
     }
@@ -251,8 +250,8 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
     set selected(value: D | null) {
         this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
-        if ( this._selected ) {
-            this._period.setValue( (this._selected.getHours() > 11) ? 'pm' : 'am' );
+        if (this._selected) {
+            this._period.setValue(this._selected.getHours() > 11 ? 'pm' : 'am');
         }
     }
     private _selected: D | null;
@@ -308,15 +307,15 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     readonly _userSelection: EventEmitter<void> = new EventEmitter<void>();
 
     /** Reference to the current month view component. */
-    @ViewChild(MonthViewComponent)
+    @ViewChild(MonthViewComponent, {static: false})
     monthView: MonthViewComponent;
 
     /** Reference to the current year view component. */
-    @ViewChild(YearViewComponent)
+    @ViewChild(YearViewComponent, {static: false})
     yearView: YearViewComponent;
 
     /** Reference to the current multi-year view component. */
-    @ViewChild(MultiYearViewComponent)
+    @ViewChild(MultiYearViewComponent, {static: false})
     multiYearView: MultiYearViewComponent;
 
     /**
@@ -349,17 +348,17 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
 
     /** A string containing the value of minutes for the current date */
     get minutes(): string | null {
-        if ( this.selected ) {
+        if (this.selected) {
             let minVal = this.selected.getMinutes();
-            return ( minVal < 10 ) ? "0" + minVal : minVal.toString();
+            return minVal < 10 ? '0' + minVal : minVal.toString();
         } else {
             return this.selected;
         }
     }
     set minutes(value: string | null) {
-        if ( value && !isNaN(+value)) {
-            let tempDate = (this.selected) ? new Date(this.selected.getTime()) : new Date();
-            tempDate.setMinutes( +value );
+        if (value && !isNaN(+value)) {
+            let tempDate = this.selected ? new Date(this.selected.getTime()) : new Date();
+            tempDate.setMinutes(+value);
             this.selectedChange.emit(tempDate);
             this._userSelected();
         }
@@ -367,13 +366,13 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
 
     /** A string containing the hour for the current date */
     get hours(): string | null {
-        if ( this.selected ) {
+        if (this.selected) {
             let hourVal = this.selected.getHours();
-            if ( this._hourCycle === 12 ) {
-                if ( hourVal > 11 ) {
-                    return (hourVal === 12) ? hourVal.toString() : (hourVal - 12).toString();
+            if (this._hourCycle === 12) {
+                if (hourVal > 11) {
+                    return hourVal === 12 ? hourVal.toString() : (hourVal - 12).toString();
                 } else {
-                    return ( hourVal === 0 ) ? "12" : hourVal.toString();
+                    return hourVal === 0 ? '12' : hourVal.toString();
                 }
             } else {
                 return hourVal.toString();
@@ -383,17 +382,17 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         }
     }
     set hours(value: string | null) {
-        if ( value && !isNaN(+value)) {
+        if (value && !isNaN(+value)) {
             let hourVal: number = +value;
-            if ( this._hourCycle === 12 ) {
-                if ( this._period.value === 'pm' && hourVal !== 12 ) {
+            if (this._hourCycle === 12) {
+                if (this._period.value === 'pm' && hourVal !== 12) {
                     hourVal += 12;
-                } else if ( this._period.value === 'am' && hourVal === 12 ) {
+                } else if (this._period.value === 'am' && hourVal === 12) {
                     hourVal = 0;
                 }
             }
-            let tempDate = (this.selected) ? new Date(this.selected.getTime()) : new Date();
-            tempDate.setHours( hourVal );
+            let tempDate = this.selected ? new Date(this.selected.getTime()) : new Date();
+            tempDate.setHours(hourVal);
             this.selectedChange.emit(tempDate);
             this._userSelected();
         }
@@ -403,10 +402,10 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         if (this.selected) {
             let tempDate = new Date(this.selected.getTime());
             let curHours = tempDate.getHours();
-            if ( this._period.value === 'pm' ) {
-                tempDate.setHours( curHours + 12 );
+            if (this._period.value === 'pm') {
+                tempDate.setHours(curHours + 12);
             } else {
-                tempDate.setHours( curHours - 12 );
+                tempDate.setHours(curHours - 12);
             }
             this.selectedChange.emit(tempDate);
             this._userSelected();
@@ -473,7 +472,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
 
     focusActiveCell() {
-        if ( this.mode !== 'time' ) {
+        if (this.mode !== 'time') {
             this._getCurrentViewComponent()._focusActiveCell();
         }
     }
@@ -526,40 +525,48 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
 
     _hoursUp() {
-        if ( !this.hours ) {
-            this.hours = this._hourCycle > 12 ? "0" : "1";
+        if (!this.hours) {
+            this.hours = this._hourCycle > 12 ? '0' : '1';
         } else {
             let curHour = +this.hours;
             curHour++;
-            const tempCycle = this._hourCycle > 12 ? 23 : 12;
-            if ( curHour > tempCycle ) {
-                curHour = tempCycle;
+            const tempCycle = this._hourCycle > 12 ? 24 : 12;
+            if (curHour > tempCycle) {
+                curHour = this._hourCycle > 12 ? 0 : 1;
             }
+            this._changeMeridiem(curHour, 12);
             this.hours = curHour.toString();
         }
     }
 
     _hoursDown() {
-        if ( !this.hours ) {
-            this.hours = this._hourCycle > 12 ? "23" : "12";
+        if (!this.hours) {
+            this.hours = this._hourCycle > 12 ? '23' : '12';
         } else {
             let curHour = +this.hours;
             curHour--;
             const tempCycle = this._hourCycle > 12 ? 0 : 1;
-            if ( curHour < tempCycle ) {
-                curHour = tempCycle;
+            if (curHour < tempCycle) {
+                curHour = this._hourCycle > 12 ? 23 : 12;
             }
+            this._changeMeridiem(curHour, 11);
             this.hours = curHour.toString();
         }
     }
 
+    _changeMeridiem(curHour, hourChange) {
+        if (curHour === hourChange) {
+            this._period.setValue(this._period.value > 'am' ? 'am' : 'pm');
+        }
+    }
+
     _minutesUp() {
-        if ( !this.minutes ) {
-            this.minutes = "00";
+        if (!this.minutes) {
+            this.minutes = '00';
         } else {
             let curMin = +this.minutes;
             curMin++;
-            if ( curMin > 59 ) {
+            if (curMin > 59) {
                 curMin = 59;
             }
             this.minutes = curMin.toString();
@@ -567,12 +574,12 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
 
     _minutesDown() {
-        if ( !this.minutes ) {
-            this.minutes = "59";
+        if (!this.minutes) {
+            this.minutes = '59';
         } else {
             let curMin = +this.minutes;
             curMin--;
-            if ( curMin < 1 ) {
+            if (curMin < 1) {
                 curMin = 1;
             }
             this.minutes = curMin.toString();

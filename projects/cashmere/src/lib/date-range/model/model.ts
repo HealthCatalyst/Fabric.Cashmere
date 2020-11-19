@@ -36,9 +36,9 @@ export interface DateRangeOptions {
     applyLabel?: string;
     /** Text label of cancel button Default 'Cancel' */
     cancelLabel?: string;
-    /** Text label above start date. Default 'Start Date' */
+    /** Text label above start date. Default 'Start date' */
     startDatePrefix?: string;
-    /** Text label above end date. Default 'End Date' */
+    /** Text label above end date. Default 'End date' */
     endDatePrefix?: string;
     /** Text label of invalid date. Default 'Please enter valid date' */
     invalidDateLabel?: string;

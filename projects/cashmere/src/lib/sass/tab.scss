@@ -4,6 +4,15 @@
 
 @mixin hc-tab() {
     min-width: 0;
+
+    &:focus {
+        outline: none;
+
+        a {
+            outline: 2px solid transparentize($primary-brand, 0.6);
+            outline-offset: -2px;
+        }
+    }
 }
 
 @mixin hc-tab-vertical() {
@@ -18,12 +27,21 @@
     }
 }
 
+@mixin hc-tab-embedded-anchor-focus() {
+    box-shadow: none;
+    outline: none;
+}
+
 @mixin hc-tab-vertical-active() {
     background-color: $slate-gray-100;
     border-left: $blue 8px solid;
     color: $blue;
     font-weight: 600;
     padding-left: 12px;
+}
+
+@mixin hc-tab-vertical-tight() {
+    padding: 10px 20px;
 }
 
 @mixin hc-tab-horizontal() {
@@ -45,6 +63,10 @@
     border-bottom: $blue 4px solid;
     color: $offblack;
     font-weight: bold;
+}
+
+@mixin hc-tab-horizontal-tight() {
+    padding: 10px;
 }
 
 // tab-set

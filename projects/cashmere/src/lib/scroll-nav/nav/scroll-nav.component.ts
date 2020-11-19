@@ -9,11 +9,11 @@ import {ScrollNavLinkDirective} from './scroll-nav-link.directive';
     templateUrl: 'scroll-nav.component.html'
 })
 export class HcScrollNavComponent implements AfterViewInit {
-    @ContentChildren(ScrollNavLinkDirective) private linkList: QueryList<ScrollNavLinkDirective>;
+    @ContentChildren(ScrollNavLinkDirective, { descendants: true }) private linkList: QueryList<ScrollNavLinkDirective>;
     public get _links(): Array<HTMLElement> {
         return this.linkList.toArray().map(e => e._el.nativeElement);
     }
-    private readonly ACTIVE_CLASS = 'hc-scroll-nav-active';
+    private readonly ACTIVE_CLASS = 'hc-scroll-nav-link-active';
 
     constructor(public _elementRef: ElementRef) {}
 
@@ -32,8 +32,13 @@ export class HcScrollNavComponent implements AfterViewInit {
     }
 
     private setActiveClass(element: HTMLElement): void {
+        const focusedEl = document.activeElement;
         this._links.forEach(e => {
             e.classList.remove(this.ACTIVE_CLASS);
+            // If a nav item on the scroll list currently has focus, remove it so a highlight border doesn't persist on scroll
+            if ( focusedEl === e ) {
+                e.blur();
+            }
         });
         element.classList.add(this.ACTIVE_CLASS);
     }

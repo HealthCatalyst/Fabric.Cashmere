@@ -1,0 +1,9 @@
+<form [formGroup]="pizzaToppingForm">
+    <hc-form-field>
+        <hc-select formControlName="selectedTopping" [compareWith]="pizzaToppingsComparer">
+            <option *ngFor="let topping of toppings" [ngValue]="topping">{{topping.name}} - {{topping.price}}</option>
+        </hc-select>
+    </hc-form-field>
+</form>
+
+<p class="example-results">Form control value: <code>{{ pizzaToppingForm.get("selectedTopping")?.value | json }}</code></p>

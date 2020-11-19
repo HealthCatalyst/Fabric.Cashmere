@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 /**
  * @title Vertical and Horizontal Tabs
@@ -8,4 +9,6 @@ import {Component} from '@angular/core';
     templateUrl: 'tabs-vertical-example.component.html',
     styleUrls: ['tabs-vertical-example.component.scss']
 })
-export class TabsVerticalExampleComponent {}
+export class TabsVerticalExampleComponent {
+    readonly _tight = new FormControl(false);
+}

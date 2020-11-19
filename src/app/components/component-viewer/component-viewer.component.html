@@ -1,6 +1,9 @@
 <div class="demo-content">
-    <h1>{{docItem?.name}}</h1>
-    <hc-tab-set direction="horizontal" class="overflow-visible">
+    <h1>{{ docItem?.name }}</h1>
+    <div class="npm-package-code">
+        <code *ngIf="docItem?.npmPackage">{{ docItem!.npmPackage }}</code>
+    </div>
+    <hc-tab-set direction="horizontal" class="overflow-visible" [defaultTab]="startSection" *ngIf="docItem">
         <hc-tab *ngFor="let section of sections" [tabTitle]="section" [routerLink]="section.toLowerCase()"></hc-tab>
     </hc-tab-set>
 </div>

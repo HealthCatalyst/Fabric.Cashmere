@@ -28,42 +28,38 @@
     @include hc-page-btns-container();
 }
 
-.hc-page-button {
-    @include hc-page-button();
+// more specifity necessary to override default styles from hc-button
+.hc-pagination-container .hc-page-btns-container {
 
-    &.currentpage {
-        @include hc-page-button-currentpage();
+    .hc-page-button {
+        @include hc-page-button();
+
+        &.hc-page-button-current {
+            @include hc-page-button-currentpage();
+        }
     }
-}
 
-.hc-page-left-button {
-    @include hc-page-left-button();
-}
+    .hc-page-left-button {
+        @include hc-page-left-button();
+    }
 
-.hc-page-right-button {
-    @include hc-page-right-button();
-}
+    .hc-page-right-button {
+        @include hc-page-right-button();
+    }
 
-.hc-page-inner-button {
-    @include hc-page-inner-button();
-}
+    .hc-page-inner-button {
+        @include hc-page-inner-button();
+    }
 
-.hc-page-button-chevron {
-    @include hc-page-button-chevron();
-}
+    .hc-page-button-chevron {
+        @include hc-page-button-chevron();
+    }
 
-.hc-page-button-chevron-left {
-    @include hc-page-button-chevron-left();
-}
+    .hc-page-button-chevron-left {
+        @include hc-page-button-chevron-left();
+    }
 
-.hc-page-button-ellipsis {
-    @include hc-page-button-ellipsis();
-}
-
-.expanded-page-button {
-    @include hc-page-button-expanded();
-}
-
-.collapsed-page-button {
-    @include hc-page-button-collapsed();
+    .hc-page-button-ellipsis {
+        @include hc-page-button-ellipsis();
+    }
 }

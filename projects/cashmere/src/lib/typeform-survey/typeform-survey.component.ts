@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 
 export function throwErrorForMissingSurveyUri() {
     throw Error(`SurveyUri must be specified on element hc-typeform-survey`);
@@ -21,7 +21,8 @@ export class TypeformWindow extends Window {
             rel="noopener"
         ></a>
     `,
-    styles: []
+    styles: [],
+    encapsulation: ViewEncapsulation.None
 })
 export class TypeformSurveyComponent {
     /**
@@ -45,7 +46,7 @@ export class TypeformSurveyComponent {
         return this._appVersion;
     }
     public _fullUri: string;
-    private _surveyUri: string;
+    private _surveyUri: string = "";
     private _appVersion: string;
     private _id: string = 'typef_orm_share';
 
@@ -56,7 +57,7 @@ export class TypeformSurveyComponent {
         if (!document.getElementById(this._id)) {
             this.getScripts();
         } else {
-            (<TypeformWindow>window).typeformEmbed.makePopup(this._fullUri, {
+            ((window as unknown) as TypeformWindow).typeformEmbed.makePopup(this._fullUri, {
                 mode: 'drawer_right',
                 autoOpen: true,
                 opacity: 100,

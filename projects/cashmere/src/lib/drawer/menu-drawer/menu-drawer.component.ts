@@ -22,6 +22,8 @@ export function validateMenuDrawerTheme(menuTheme) {
     }
 }
 
+const openStateAnimation = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
+
 /** Menu drawer that provides default themes */
 @Component({
     selector: 'hc-menu-drawer',
@@ -31,7 +33,7 @@ export function validateMenuDrawerTheme(menuTheme) {
     animations: [
         trigger('openState', [
             state(
-                'open, open-instant',
+                'open-left, open-right, open-instant',
                 style({
                     transform: 'translate3d(0, 0, 0)',
                     visibility: 'visible'
@@ -45,7 +47,21 @@ export function validateMenuDrawerTheme(menuTheme) {
                 })
             ),
             transition('void => open-instant', animate('0ms')),
-            transition('void <=> open, open-instant => void', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)'))
+            transition('open-instant => void', animate(openStateAnimation)),
+            transition('void => open-left', [
+                animate('0ms', style({ transform: 'translate3d(-100%, 0, 0)' })),
+                animate(openStateAnimation)
+            ]),
+            transition('open-left => void', [
+                animate(openStateAnimation, style({ transform: 'translate3d(-100%, 0, 0)' }))
+            ]),
+            transition('void => open-right', [
+                animate('0ms', style({ transform: 'translate3d(100%, 0, 0)'})),
+                animate(openStateAnimation)
+            ]),
+            transition('open-right => void', [
+                animate(openStateAnimation, style({ transform: 'translate3d(100%, 0, 0)' }))
+            ])
         ])
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -54,7 +70,7 @@ export function validateMenuDrawerTheme(menuTheme) {
 export class MenuDrawer extends Drawer implements AfterContentInit {
     private _previousTheme: string | null = null;
 
-    @ContentChild(DrawerToolbar)
+    @ContentChild(DrawerToolbar, {static: false})
     toolbar: DrawerToolbar;
 
     /** Sets menu style of the drawer. Choose from: `'dark-theme'` */

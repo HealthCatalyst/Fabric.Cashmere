@@ -36,6 +36,8 @@ export function validateAlignInput(inputStr: string) {
     }
 }
 
+const openStateAnimation = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
+
 /** Drawer that can be opened or closed on the drawer container */
 @Component({
     selector: 'hc-drawer',
@@ -45,9 +47,8 @@ export function validateAlignInput(inputStr: string) {
     animations: [
         trigger('openState', [
             state(
-                'open, open-instant',
+                'open-left, open-right, open-instant',
                 style({
-                    transform: 'translate3d(0, 0, 0)',
                     visibility: 'visible'
                 })
             ),
@@ -59,13 +60,26 @@ export function validateAlignInput(inputStr: string) {
                 })
             ),
             transition('void => open-instant', animate('0ms')),
-            transition('void <=> open, open-instant => void', animate('400ms cubic-bezier(0.25, 0.8, 0.25, 1)'))
+            transition('open-instant => void', animate(openStateAnimation)),
+            transition('void => open-left', [
+                animate('0ms', style({ transform: 'translate3d(-100%, 0, 0)' })),
+                animate(openStateAnimation)
+            ]),
+            transition('open-left => void', [
+                animate(openStateAnimation, style({ transform: 'translate3d(-100%, 0, 0)' }))
+            ]),
+            transition('void => open-right', [
+                animate('0ms', style({ transform: 'translate3d(100%, 0, 0)'})),
+                animate(openStateAnimation)
+            ]),
+            transition('open-right => void', [
+                animate(openStateAnimation, style({ transform: 'translate3d(100%, 0, 0)' }))
+            ])
         ])
     ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Drawer implements AfterContentInit {
-    readonly _openChange = new EventEmitter<boolean>();
     private _mode: string = 'push';
     private _align: string = 'left';
 
@@ -95,7 +109,7 @@ export class Drawer implements AfterContentInit {
     @Output()
     get openStart(): Observable<void> {
         return this._animationStarted.pipe(
-            filter(event => event.fromState === 'void' && event.toState === 'open'),
+            filter(event => event.fromState === 'void' && event.toState.startsWith('open-') ),
             map(() => {})
         );
     }
@@ -104,28 +118,13 @@ export class Drawer implements AfterContentInit {
     @Output()
     get closeStart(): Observable<void> {
         return this._animationStarted.pipe(
-            filter(event => event.fromState === 'open' && event.toState === 'void'),
+            filter(event => event.fromState.startsWith('open-') && event.toState === 'void'),
             map(() => {})
         );
     }
 
-    /** Event emitted when drawer has opened */
-    @Output('opened')
-    get _openStream() {
-        return this._openChange.pipe(
-            filter(value => value),
-            map(() => {})
-        );
-    }
-
-    /** Event emitted when drawer has closed */
-    @Output('closed')
-    get _closeStream() {
-        return this._openChange.pipe(
-            filter(value => !value),
-            map(() => {})
-        );
-    }
+    /* Allows for two-way binding of the `opened` property */
+    @Output() openedChange = new EventEmitter<boolean>();
 
     /** Tabindex of the element */
     @HostBinding()
@@ -147,7 +146,9 @@ export class Drawer implements AfterContentInit {
     }
 
     set opened(opened) {
-        this.toggle(parseBooleanAttribute(opened));
+        if ( opened !== this._drawerOpened ) {
+            this.toggle(parseBooleanAttribute(opened));
+        }
     }
 
     get _width(): number {
@@ -180,9 +181,13 @@ export class Drawer implements AfterContentInit {
     }
 
     @HostBinding('@openState')
-    get _openState(): 'void' | 'open-instant' | 'open' {
+    get _openState(): 'void' | 'open-instant' | 'open-left' | 'open-right' {
         if (this._drawerOpened) {
-            return this._animationDisabled ? 'open-instant' : 'open';
+            if (this._animationDisabled) {
+                return 'open-instant';
+            }
+
+            return this._align === 'right' ? 'open-right' : 'open-left';
         }
         return 'void';
     }
@@ -194,7 +199,7 @@ export class Drawer implements AfterContentInit {
 
     @HostListener('@openState.done', ['$event'])
     _onAnimationEnd(event: AnimationEvent) {
-        this._openChange.next(this.opened);
+        this.openedChange.next(this.opened);
 
         if (this._animationPromise) {
             this._resolveAnimationPromise();

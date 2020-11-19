@@ -1,13 +1,14 @@
-import {Component, HostBinding, HostListener, Input} from '@angular/core';
+import {Component, HostBinding, HostListener, Input, ViewEncapsulation} from '@angular/core';
 import {ActiveModal} from './active-modal';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
     selector: 'hc-modal-overlay',
     template: '',
+    encapsulation: ViewEncapsulation.None,
     styles: [
         `
-            :host {
+            .hc-modal-overlay {
                 background-color: #000;
                 position: fixed;
                 top: 0;
@@ -19,6 +20,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
             }
         `
     ],
+    // tslint:disable-next-line: no-host-metadata-property
+    host: {class: 'hc-modal-overlay'},
     animations: [
         trigger('fadeInOut', [
             state('in', style({opacity: 0.5})),

@@ -39,44 +39,48 @@
 </ng-container>
 
 <div *ngIf="mode !== 'date'" class="hc-calendar-time-picker">
-    <hc-icon fontSet="fa" fontIcon="fa-clock-o"></hc-icon>
+    <hc-icon class="hc-calendar-time-picker-icon" fontSet="fa" fontIcon="fa-clock-o"></hc-icon>
 
-    <hc-form-field inline="true">
-        <input hcInput
+    <hc-form-field inline="true" class="hc-calendar-time-picker-field">
+        <input
+            hcInput
+            class="hc-calendar-time-picker-input"
             placeholder="hh"
             [(ngModel)]="hours"
             (keydown.arrowup)="_hoursUp()"
             (keydown.arrowdown)="_hoursDown()"
         />
         <span hcSuffix class="hc-calendar-time-controls">
-            <button hc-button buttonStyle="minimal" size="sm" (click)="_hoursUp()">
+            <button hc-button buttonStyle="minimal" size="sm" (click)="_hoursUp()" class="hc-calendar-time-controls-button">
                 <hc-icon fontSet="fa" fontIcon="fa-caret-up" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
             </button>
-            <button hc-button buttonStyle="minimal" size="sm" (click)="_hoursDown()">
+            <button hc-button buttonStyle="minimal" size="sm" (click)="_hoursDown()" class="hc-calendar-time-controls-button">
                 <hc-icon fontSet="fa" fontIcon="fa-caret-down" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
             </button>
         </span>
     </hc-form-field>
 
-    <hc-form-field inline="true">
-        <input hcInput
+    <hc-form-field inline="true" class="hc-calendar-time-picker-field">
+        <input
+            hcInput
+            class="hc-calendar-time-picker-input"
             placeholder="mm"
             [(ngModel)]="minutes"
             (keydown.arrowup)="_minutesUp()"
             (keydown.arrowdown)="_minutesDown()"
         />
         <span hcSuffix class="hc-calendar-time-controls">
-            <button hc-button buttonStyle="minimal" size="sm" (click)="_minutesUp()">
+            <button hc-button buttonStyle="minimal" size="sm" (click)="_minutesUp()" class="hc-calendar-time-controls-button">
                 <hc-icon fontSet="fa" fontIcon="fa-caret-up" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
             </button>
-            <button hc-button buttonStyle="minimal" size="sm" (click)="_minutesDown()">
+            <button hc-button buttonStyle="minimal" size="sm" (click)="_minutesDown()" class="hc-calendar-time-controls-button">
                 <hc-icon fontSet="fa" fontIcon="fa-caret-down" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
             </button>
         </span>
     </hc-form-field>
 
-    <hc-form-field inline="true" *ngIf="_hourCycle === 12">
-        <hc-select [formControl]="_period" (change)="_periodChange()">
+    <hc-form-field inline="true" *ngIf="_hourCycle === 12" class="hc-calendar-time-picker-field">
+        <hc-select class="hc-calendar-time-picker-select" [formControl]="_period" (change)="_periodChange()">
             <option value="am">AM</option>
             <option value="pm">PM</option>
         </hc-select>

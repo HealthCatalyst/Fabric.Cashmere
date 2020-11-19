@@ -1,14 +1,15 @@
 /* tslint:disable:component-selector */
-/* tslint:disable:use-host-property-decorator */
+/* tslint:disable:no-host-metadata-property */
 
 import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 
 const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
+const supportedColors = ['blue', 'green', 'purple', 'red', 'orange', 'ruby-red', 'deep-red', 'red-orange', 'magenta', 'pink', 'light-pink', 'azure', 'teal', 'dark-green', 'brown', 'purple-gray', 'yellow', 'yellow-orange', 'tan'];
 const supportedSizes = ['sm', 'md', 'lg'];
 
 export function validateStyleInput(style: string) {
-    if (supportedStyles.indexOf(style) < 0) {
+    if (supportedStyles.indexOf(style) < 0 && supportedColors.indexOf(style) < 0) {
         throw Error('Unsupported buttonStyle attribute value on ButtonComponent: ' + style);
     }
 }
@@ -51,7 +52,8 @@ export class ButtonComponent {
     }
 
     /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' |
-     * 'neutral' | 'secondary' | 'minimal' | link' | 'link-inline'` */
+     * 'neutral' | 'secondary' | 'minimal' | link' | 'link-inline'`. If needed, colors from
+     * the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc) */
     @Input()
     get buttonStyle(): string {
         return this._style;
@@ -59,6 +61,9 @@ export class ButtonComponent {
 
     set buttonStyle(btnStyle: string) {
         validateStyleInput(btnStyle);
+        if ( supportedStyles.indexOf(btnStyle) < 0 ) {
+            btnStyle = "button-" + btnStyle;
+        }
         this.setHostClass(this._style, btnStyle);
         this._style = btnStyle;
     }

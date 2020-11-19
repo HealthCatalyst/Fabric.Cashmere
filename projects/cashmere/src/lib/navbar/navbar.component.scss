@@ -23,12 +23,20 @@
         @include navbar-link();
     }
 
+    .navbar-dropdown {
+        @include hc-navbar-more-links();
+    }
+
     .hc-navbar-right-container {
         @include hc-navbar-right-container();
     }
 
     .hc-navbar-icon {
         @include hc-navbar-icon();
+    }
+
+    .hc-navbar-icon-home-uri {
+        @include hc-navbar-icon-home-uri();
     }
 
     .hc-navbar-username {

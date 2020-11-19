@@ -1,4 +1,4 @@
-@import '~@angular/cdk/overlay';
+@import '~@angular/cdk/_overlay.scss';
 @import './variables';
 
 // override index for implementation inside a modal: https://github.com/HealthCatalyst/Fabric.Cashmere/issues/867
@@ -52,6 +52,8 @@ a.hc-menu-item {
         background-color: tint($blue, 70%);
         color: $offblack;
         cursor: pointer;
+        box-shadow: none;
+        outline: none;
     }
 
     &.hc-menu-item-submenu {

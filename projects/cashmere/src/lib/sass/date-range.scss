@@ -17,6 +17,7 @@
 
 @mixin hc-date-range-menu() {
     height: 100%;
+    width: 250px;
 }
 
 @mixin hc-date-range-controls() {
@@ -26,7 +27,7 @@
 }
 
 @mixin hc-date-range-control() {
-    min-width: 100px !important;
+    min-width: 120px !important;
 }
 
 @mixin hc-date-range-overlay() {
@@ -42,6 +43,15 @@
 
 @mixin hc-date-range-presets() {
     padding-left: 21px;
+}
+
+@mixin hc-date-range-warning-icon() {
+    flex: 1 0 auto;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA3OS41IDcwLjEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDc5LjUgNzAuMTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4NCgkuc3Qwe2ZpbGw6Izk1MUMxRTt9DQo8L3N0eWxlPg0KPHRpdGxlPndhcm48L3RpdGxlPg0KPHBhdGggY2xhc3M9InN0MCIgZD0iTTc4LjgsNjIuOEw0NCwyLjRjLTEuMy0yLjMtNC4zLTMuMS02LjctMS44Yy0wLjcsMC40LTEuNCwxLTEuOCwxLjhMMC43LDYyLjhjLTEuMywyLjMtMC41LDUuMywxLjgsNi43DQoJYzAuNywwLjQsMS42LDAuNywyLjQsMC43aDY5LjdjMi43LDAsNC45LTIuMiw0LjktNC45Qzc5LjUsNjQuNCw3OS4yLDYzLjUsNzguOCw2Mi44eiBNMzUuMiwyMC43aDkuMnYyNS43aC05LjJWMjAuN3ogTTM5LjcsNjAuOA0KCWMtMy4xLDAtNS42LTIuNS01LjYtNS42czIuNS01LjYsNS42LTUuNnM1LjYsMi41LDUuNiw1LjZDNDUuNCw1OC4yLDQyLjgsNjAuOCwzOS43LDYwLjh6Ii8+DQo8L3N2Zz4NCg==');
 }
 
 @mixin hc-calendar-wrapper-form-field-wrapper() {

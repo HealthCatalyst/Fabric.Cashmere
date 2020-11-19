@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import {take} from 'rxjs/operators';
 
-// tslint:disable:use-host-property-decorator
+// tslint:disable:no-host-metadata-property
 // tslint:disable:component-selector
 
 /**

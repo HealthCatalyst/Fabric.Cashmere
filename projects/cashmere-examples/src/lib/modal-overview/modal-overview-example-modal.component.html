@@ -1,5 +1,9 @@
 <hc-modal>
     <hc-modal-header>Modal Header Title</hc-modal-header>
+    <hc-banner type="warning">
+        <span hcBannerStamp>WARNING</span>
+        You are about to export data which may include Protected Health Information (PHI)
+    </hc-banner>
     <hc-modal-body>Data: {{ activeModal.data }}</hc-modal-body>
     <hc-modal-footer>
         <button hc-button buttonStyle="link" (click)="cancel()">Cancel</button>
