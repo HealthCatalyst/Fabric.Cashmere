@@ -42,9 +42,9 @@ export class SearchResultsComponent implements AfterViewInit {
     });
 
     searchIcons = {
-        'components': { icon: 'fa-file-code-o' },
+        'components': { icon: 'fa-code' },
         'guides': { icon: 'fa-graduation-cap' },
-        'foundations': { icon: 'fa-file-image-o' },
+        'foundations': { icon: 'fa-cogs' },
         'bits': { icon: 'fa-puzzle-piece' },
         'content': { icon: 'fa-file-text-o' }
     };

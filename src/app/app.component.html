@@ -1,9 +1,27 @@
 <hc-navbar appIcon="./assets/CashmereAppLogo.svg" brandIcon="./assets/TriFlame.svg" homeUri="/home" fixedTop="true">
     <hc-navbar-link uri="/foundations" linkText="Foundations"></hc-navbar-link>
-    <hc-navbar-link uri="/components" linkText="Components"></hc-navbar-link>
-    <hc-navbar-link uri="/bits" linkText="Bits"></hc-navbar-link>
     <hc-navbar-link uri="/content" linkText="Content"></hc-navbar-link>
-    <hc-navbar-link uri="/guides" linkText="Guides"></hc-navbar-link>
+    <hc-navbar-dropdown [active]="webActive" linkText="Web Apps">
+        <div hcMenu>
+            <a hcMenuItem routerLink="web/components">
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-code"></hc-icon>
+                <span hcMenuText>Components</span>
+            </a>
+            <a hcMenuItem routerLink="web/bits">
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-puzzle-piece"></hc-icon>
+                <span hcMenuText>Cashmere Bits</span>
+            </a>
+            <a hcMenuItem routerLink="web/styles">
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-image"></hc-icon>
+                <span hcMenuText>Additional Styles</span>
+            </a>
+            <a hcMenuItem routerLink="web/guides">
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-graduation-cap"></hc-icon>
+                <span hcMenuText>Developer Guides</span>
+            </a>
+        </div>
+    </hc-navbar-dropdown>
+    <hc-navbar-link uri="/analytics" linkText="Analytics"></hc-navbar-link>
     <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-search" [hcPop]="search" (click)="setInputFocus()"></hc-icon>
     <a class="hc-navbar-icon" title="View on GitHub" href="https://github.com/HealthCatalyst/Fabric.Cashmere" target="blank">
         <hc-icon class="hc-navbar-external-link" fontSet="fa" fontIcon="fa-github"></hc-icon>
@@ -16,24 +34,33 @@
             <hc-list-item routerLink="/foundations" routerLinkActive="active-link">
                 <span hcListLine>Foundations</span>
             </hc-list-item>
-            <hc-list-item routerLink="/components" routerLinkActive="active-link">
-                <span hcListLine>Components</span>
-            </hc-list-item>
-            <hc-list-item routerLink="/bits" routerLinkActive="active-link">
-                <span hcListLine>Bits</span>
-            </hc-list-item>
             <hc-list-item routerLink="/content" routerLinkActive="active-link">
                 <span hcListLine>Content</span>
             </hc-list-item>
-            <hc-list-item routerLink="/guides" routerLinkActive="active-link">
-                <span hcListLine>Guides</span>
-            </hc-list-item>
-            <hc-list-item routerLink="/results" routerLinkActive="active-link">
-                <span hcListLine>Search</span>
+            <hc-list-item routerLink="/analytics" routerLinkActive="active-link">
+                <span hcListLine>Analytics</span>
             </hc-list-item>
         </hc-list>
         <hr />
         <hc-list>
+            <hc-list-item routerLink="/web/components" routerLinkActive="active-link">
+                <span hcListLine>Components</span>
+            </hc-list-item>
+            <hc-list-item routerLink="/web/bits" routerLinkActive="active-link">
+                <span hcListLine>Cashmere Bits</span>
+            </hc-list-item>
+            <hc-list-item routerLink="/web/styles" routerLinkActive="active-link">
+                <span hcListLine>Additional Styles</span>
+            </hc-list-item>
+            <hc-list-item routerLink="/web/guides" routerLinkActive="active-link">
+                <span hcListLine>Developer Guides</span>
+            </hc-list-item>
+        </hc-list>
+        <hr />
+        <hc-list>
+            <hc-list-item routerLink="/results" routerLinkActive="active-link">
+                <span hcListLine>Search</span>
+            </hc-list-item>
             <a href="https://github.com/HealthCatalyst/Fabric.Cashmere">
                 <hc-list-item>
                     <span hcListLine>View on GitHub</span>

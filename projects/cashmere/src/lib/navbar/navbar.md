@@ -19,7 +19,7 @@ You may not have all these items available. However, include what you have in th
 -   [fa-users] **Ask the community** (link to your Q&A page on Health Catalyst Community)
 -   [fa-bullhorn] **Find out what's new** (link to your release notes on Health Catalyst Community)
 -   [fa-bug] **Report an issue** (link to open a new ticket on the Support Portal)
--   [fa-comments] **Send feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/components/typeform-survey/examples))
+-   [fa-comments] **Send feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/web/components/typeform-survey/examples))
 -   [fa-info-circle] **About** see the [associated style page](https://cashmere.healthcatalyst.net/foundations/about) for guidelines)
 
 ```html

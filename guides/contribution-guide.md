@@ -6,7 +6,7 @@
 
 ##### All May Contribute
 
-We would love for you to contribute to Cashmere and be part of the community making this project better! To get started, follow the [Getting Started guide](http://cashmere.healthcatalyst.net/guides/getting-started).
+We would love for you to contribute to Cashmere and be part of the community making this project better! To get started, follow the [Getting Started guide](http://cashmere.healthcatalyst.net/web/guides/getting-started).
 
 :::
 

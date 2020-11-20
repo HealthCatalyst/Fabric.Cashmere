@@ -73,7 +73,7 @@ function readGuideFiles() {
                         title: changeCase.titleCase( sectionTitle ) + ' - ' + changeCase.titleCase( mapping.basename ),
                         // Remove all the markdown from the file content and set it so we can search through it
                         content: mdGetContent(element),
-                        link: 'guides/' + mapping.basename,
+                        link: 'web/guides/' + mapping.basename,
                         category: 'guides',
                         // Set displayName to basename for display purposes
                         displayName: mapping.basename,
@@ -351,7 +351,7 @@ function readComponentUsage() {
                         title: sectionTitle + ' - ' + changeCase.titleCase(parentName),
                         // Remove all the markdown from the file content and set it so we can search through it
                         content: mdGetContent(element),
-                        link: typeStr + '/' + parentName + '/usage',
+                        link: 'web/' + typeStr + '/' + parentName + '/usage',
                         category: typeStr,
                         // Set displayName to basename for display purposes
                         displayName: mapping.basename,
@@ -402,7 +402,7 @@ function readComponentAPI() {
                         // Set the title to the title with propare capitalization
                         title: changeCase.titleCase(title) + ' - ' + changeCase.titleCase(parentName.replace(/-/g, ' ')),
                         content: apiGetContent(element),
-                        link: 'components/' + parentName + '/api',
+                        link: 'web/components/' + parentName + '/api',
                         category: 'components',
                         displayName: title,
                         type: 'api',
@@ -482,7 +482,7 @@ function readComponentExamples() {
                     // Set the title to the title with propare capitalization
                     title: changeCase.titleCase(title.replace( /-/g, ' ' )),
                     content: exampleGetContent(fileContent),
-                    link: typeStr + '/' + parentItem + '/examples',
+                    link: 'web/' + typeStr + '/' + parentItem + '/examples',
                     category: typeStr,
                     displayName: selectedStr,
                     type: 'example',

@@ -77,14 +77,14 @@ export class ComponentsComponent implements OnInit, OnDestroy {
         }
         this.activeItem = this.allDocItems.find(i => i.id === this.id);
         if (this.activeItem) {
-            this.appInsights.logPageView(this.activeItem.name, `/${this.docType}/` + this.id);
+            this.appInsights.logPageView(this.activeItem.name, `/web/${this.docType}/` + this.id);
             this.activeCategory = this.activeItem.category;
         }
     }
 
     // Handle nav changes via the sidebar or mobile dropdown
     navUpdate(id: string) {
-        this.router.navigate([`/${this.docType}/` + id]);
+        this.router.navigate([`/web/${this.docType}/` + id]);
         window.scrollTo(0, 0);
     }
 

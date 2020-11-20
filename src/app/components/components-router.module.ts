@@ -11,12 +11,12 @@ const bitsDocType: DocItemType = 'bits';
 
 const routes: Route[] = [
     {
-        path: componentsDocType,
+        path: 'web/' + componentsDocType,
         component: ComponentsComponent,
         data: {docType: componentsDocType}
     },
     {
-        path: `${componentsDocType}/:id`,
+        path: `web/${componentsDocType}/:id`,
         component: ComponentsComponent,
         data: {docType: componentsDocType},
         children: [
@@ -27,12 +27,12 @@ const routes: Route[] = [
         ]
     },
     {
-        path: bitsDocType,
+        path: 'web/' + bitsDocType,
         component: ComponentsComponent,
         data: {docType: bitsDocType}
     },
     {
-        path: `${bitsDocType}/:id`,
+        path: `web/${bitsDocType}/:id`,
         component: ComponentsComponent,
         data: {docType: bitsDocType},
         children: [

@@ -6,7 +6,7 @@
 
 ##### Overview
 
-An "About" modal should be included with every application as place to store important statistical information. It is typically triggered from an item in the [help menu](https://cashmere.healthcatalyst.net/components/navbar/usage). This is often used in troubleshooting when a user needs to identify specifics about their app instance. At a minimum, the About modal should contain:
+An "About" modal should be included with every application as place to store important statistical information. It is typically triggered from an item in the [help menu](https://cashmere.healthcatalyst.net/web/components/navbar/usage). This is often used in troubleshooting when a user needs to identify specifics about their app instance. At a minimum, the About modal should contain:
 
 -   **App Name** - using the same SVG as is being used in the navbar
 -   **App Icon** - SVGs may be downloaded from the [product icons page](https://cashmere.healthcatalyst.net/content/products); may be omitted if an icon does not exist for the app
@@ -22,7 +22,7 @@ Beyond these items, other app specific information may include "web server", "da
 
 ##### Example
 
-The following code snippet leverages styles in the `about-modal.scss` stylesheet and can be used as a starting point which you can build on to create an About modal specific to your app. Note that the content below should be displayed in a [hc-modal](https://cashmere.healthcatalyst.net/components/modal/).
+The following code snippet leverages styles in the `about-modal.scss` stylesheet and can be used as a starting point which you can build on to create an About modal specific to your app. Note that the content below should be displayed in a [hc-modal](https://cashmere.healthcatalyst.net/web/components/modal/).
 
 ```html
 <hc-modal>
