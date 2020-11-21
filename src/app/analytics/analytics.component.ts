@@ -5,11 +5,11 @@ import {Subject} from 'rxjs';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
 
 @Component({
-    selector: 'hc-demo-content',
-    templateUrl: './content.component.html',
+    selector: 'hc-demo-analytics',
+    templateUrl: './analytics.component.html',
     styleUrls: ['../shared/base-demo.component.scss']
 })
-export class ContentComponent implements OnDestroy {
+export class AnalyticsComponent implements OnDestroy {
     thisPage = '';
     queryTab = 0;
     selectOptions: Array<Data> = [];
@@ -45,7 +45,7 @@ export class ContentComponent implements OnDestroy {
         //  Gets the search parameter value from the url
         this.activatedRoute.queryParams.subscribe(() => {
             let currentPath = this.router.url;
-            currentPath = currentPath.replace( '/content/', '' );
+            currentPath = currentPath.replace( '/analytics/', '' );
             const pathArray = currentPath.split( '?' );
 
             if (this.selectOptions.length) {
@@ -64,7 +64,7 @@ export class ContentComponent implements OnDestroy {
         if (this.selectOptions.length) {
             for (let entry of this.selectOptions) {
                 if (entry.data && event === entry.data.title) {
-                    this.router.navigate(['/content/' + entry.path]);
+                    this.router.navigate(['/analytics/' + entry.path]);
                     window.scrollTo(0, 0);
                     break;
                 }
@@ -74,7 +74,7 @@ export class ContentComponent implements OnDestroy {
 
     // Handle nav changes via the sidebar
     navUpdate(page: any) {
-        this.router.navigate(['/content/' + page]);
+        this.router.navigate(['/analytics/' + page]);
         window.scrollTo(0, 0);
     }
 

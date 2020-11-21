@@ -1,7 +1,7 @@
 <div class="hc-components-container">
     <hc-subnav class="responsive-subnav" fixedTop="true">
         <div class="subnav-container">
-            <span class="subnav-label">Foundations: </span>
+            <span class="subnav-label">Additional Styles: </span>
             <span class="subnav-select">
                 <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
                     <optgroup *ngFor="let cat of categories" [label]="cat">
@@ -33,7 +33,7 @@
     </div>
     <div class="hc-components-right-column">
         <hc-tab-set class="full-height" [defaultTab]="queryTab">
-            <hc-tab *ngFor="let tab of selectOptions" [tabTitle]="tab.data.title" [routerLink]="'/foundations/' + tab.path">{{tab.data.title}}</hc-tab>
+            <hc-tab *ngFor="let tab of selectOptions" [tabTitle]="tab.data.title" [routerLink]="'/web/styles/' + tab.path">{{tab.data.title}}</hc-tab>
         </hc-tab-set>
     </div>
 </div>

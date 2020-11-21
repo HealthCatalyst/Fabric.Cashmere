@@ -7,12 +7,13 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 @Component({
     selector: 'hc-demo-foundations',
     templateUrl: './foundations.component.html',
-    styleUrls: ['../components/components.component.scss']
+    styleUrls: ['../shared/base-demo.component.scss']
 })
 export class FoundationsComponent implements OnDestroy {
     thisPage = '';
     queryTab = 0;
     selectOptions: Array<Data> = [];
+    categories: Array<string> = [];
     private unsubscribe = new Subject<void>();
     private appInsights;
 
@@ -34,6 +35,9 @@ export class FoundationsComponent implements OnDestroy {
             for (let entry of root.children ) {
                 if (entry.data && entry.data.title) {
                     this.selectOptions.push(entry);
+                    if ( entry.data.category && !this.categories.includes( entry.data.category )) {
+                        this.categories.push( entry.data.category );
+                    }
                 }
             }
         }

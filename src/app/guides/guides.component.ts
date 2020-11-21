@@ -8,7 +8,7 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 @Component({
     selector: 'hc-guides',
     templateUrl: './guides.component.html',
-    styleUrls: ['../components/components.component.scss']
+    styleUrls: ['../shared/base-demo.component.scss']
 })
 export class GuidesComponent implements OnDestroy {
     thisPage = '';

@@ -21,7 +21,7 @@
                         <hc-accordion triggerAlign="right" open='true'>
                             <hc-accordion-toolbar>{{cat}}</hc-accordion-toolbar>
                             <ng-container *ngFor="let option of selectOptions">
-                                <div class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': option.data.title == thisPage }" (click)="navUpdate(option.path)">{{option.data.title}}</div>
+                                <div *ngIf="option.data.category == cat" class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': option.data.title == thisPage }" (click)="navUpdate(option.path)">{{option.data.title}}</div>
                             </ng-container>
                             <div class="hc-components-nav-spacer"></div>
                         </hc-accordion>

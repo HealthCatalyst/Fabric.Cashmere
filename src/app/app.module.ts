@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FoundationsModule } from './foundations/foundations.module';
 import { ContentModule } from './content/content.module';
+import { StylesModule } from './styles/styles.module';
+import { AnalyticsModule } from './analytics/analytics.module';
 import { GuidesModule } from './guides/guides.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,6 +21,8 @@ import { SearchResultsModule } from './search-results/search-results.module';
         CoreModule,
         SharedModule,
         ComponentsModule,
+        StylesModule,
+        AnalyticsModule,
         FoundationsModule,
         ContentModule,
         GuidesModule,

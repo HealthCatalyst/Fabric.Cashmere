@@ -2,7 +2,7 @@ import { AfterViewInit, Directive } from '@angular/core';
 import { SectionService } from '../shared/section.service';
 
 @Directive()
-export class BaseContentComponent implements AfterViewInit {
+export class BaseDemoComponent implements AfterViewInit {
     constructor(protected sectionService: SectionService) {}
 
     ngAfterViewInit() {

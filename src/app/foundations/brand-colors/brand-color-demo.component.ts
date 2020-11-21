@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {SectionService} from 'src/app/shared/section.service';
-import {BaseFoundationsComponent} from '../base-foundations.component';
+import {BaseDemoComponent} from '../../shared/base-demo.component';
 
 @Component({
     selector: 'hc-brand-color-demo',
     templateUrl: './brand-color-demo.component.html',
     styleUrls: ['../color/color-demo.component.scss']
 })
-export class BrandColorDemoComponent extends BaseFoundationsComponent {
+export class BrandColorDemoComponent extends BaseDemoComponent {
     constructor(sectionService: SectionService) {
         super(sectionService);
     }

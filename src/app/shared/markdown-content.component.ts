@@ -1,15 +1,15 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {SectionService} from 'src/app/shared/section.service';
-import {BaseContentComponent} from './base-content.component';
+import {BaseDemoComponent} from '../shared/base-demo.component';
 
 @Component({
-    selector: 'hc-trademarks-demo',
+    selector: 'hc-markdown-demo',
     template: `
         <div class="demo-content"><div [hcMarkdown]="markdownContent" (loaded)="loaded()"></div></div>
     `
 })
-export class MarkdownContentComponent extends BaseContentComponent {
+export class MarkdownContentComponent extends BaseDemoComponent {
     markdownContent: string = '';
 
     constructor(sectionService: SectionService, private activatedRoute: ActivatedRoute) {

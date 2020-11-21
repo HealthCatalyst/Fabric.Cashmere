@@ -1,14 +1,14 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {ModalOptions, ModalService} from '@healthcatalyst/cashmere';
 import {SectionService} from '../../shared/section.service';
-import {BaseFoundationsComponent} from '../base-foundations.component';
+import {BaseDemoComponent} from '../../shared/base-demo.component';
 
 @Component({
     selector: 'hc-chart-demo',
     templateUrl: './chart-demo.component.html',
     styleUrls: ['./chart-demo.component.scss']
 })
-export class ChartDemoComponent extends BaseFoundationsComponent implements OnInit {
+export class ChartDemoComponent extends BaseDemoComponent implements OnInit {
     loading: boolean = true;
     modalHeader: string = 'Chart Information';
     chartData: Array<any>;

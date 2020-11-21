@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {SectionService} from 'src/app/shared/section.service';
-import {BaseContentComponent} from '../base-content.component';
+import {BaseDemoComponent} from '../../shared/base-demo.component';
 
 @Component({
     selector: 'hc-logo',
     templateUrl: './logo-demo.component.html',
     styleUrls: ['./logo-demo.component.scss']
 })
-export class LogoDemoComponent extends BaseContentComponent {
+export class LogoDemoComponent extends BaseDemoComponent {
     constructor(sectionService: SectionService) {
         super(sectionService);
     }
