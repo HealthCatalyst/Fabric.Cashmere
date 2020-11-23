@@ -20,12 +20,6 @@ export function HC_DATE_LOCALE_FACTORY(): string {
     return inject(LOCALE_ID);
 }
 
-/**
- * **DEPRECATED** No longer needed since HC_DATE_LOCALE has been changed to a scoped injectable.
- * If you are importing and providing this in your code you can simply remove it.
- */
-export const HC_DATE_LOCALE_PROVIDER = {provide: HC_DATE_LOCALE, useExisting: LOCALE_ID};
-
 /** Adapts type `D` to be usable as a date by cdk-based components that work with dates. */
 export abstract class DateAdapter<D> {
     /** The locale to use for all dates. */

@@ -38,16 +38,6 @@ export class ButtonComponent {
     private _style: string;
     private _size: string;
 
-    /** **DEPRECATED** Use `buttonStyle` instead */
-    @Input()
-    get color(): string {
-        return this.buttonStyle;
-    }
-
-    set color(btnStyle: string) {
-        this.buttonStyle = btnStyle;
-    }
-
     /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' |
      * 'neutral' | 'secondary' | 'minimal' | link' | 'link-inline'`. If needed, colors from
      * the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc) */
