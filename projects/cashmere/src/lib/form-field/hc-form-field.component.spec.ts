@@ -74,12 +74,7 @@ describe('HcFormFieldComponent', () => {
             expect(labelElement.textContent).toMatch(/^hola$/);
         });
 
-        // it('support type attribute', () => {});
     });
-
-    /* describe('', () => {
-        it('should not set type on textarea', () => {});
-    }); */
 
     describe('validation', () => {
         it('should throw error if hcInput is not present', fakeAsync(() => {
@@ -115,12 +110,6 @@ describe('HcFormFieldComponent', () => {
 
             expect(nativeElement.querySelectorAll('hc-error').length).toBe(1, 'Expected errors to be shown after being touched');
         });
-
-        // it('should show errors when form is submitted', () => {});
-
-        // it('should show errors when formGroup is submitted', () => {});
-
-        // it('should hide errors once the formControl is valid', () => {});
     });
 });
 
