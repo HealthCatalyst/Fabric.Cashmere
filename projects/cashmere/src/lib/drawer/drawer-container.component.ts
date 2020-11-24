@@ -8,10 +8,10 @@ import {
     HostBinding,
     NgZone,
     OnDestroy,
-    QueryList,
     Renderer2,
     ViewEncapsulation
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {Drawer, DrawerPromiseResult} from './drawer.component';
 import {debounceTime, filter, startWith, takeUntil} from 'rxjs/operators';
 import {AnimationEvent} from '@angular/animations';
@@ -78,7 +78,7 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
                     .subscribe(() => {
                         this._calculateContentMargins();
                     });
-                drawer._openChange.pipe(takeUntil(this._drawers.changes)).subscribe(isOpen => {
+                drawer.openedChange.pipe(takeUntil(this._drawers.changes)).subscribe(isOpen => {
                     if (isOpen) {
                         this._setContainerClass(true);
                     } else {
@@ -136,7 +136,7 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
         }
     }
 
-    private _validateDrawers(): void {
+    _validateDrawers(): void {
         for (let drawer of this._drawers.toArray()) {
             if (drawer.align === 'right') {
                 if (this._rightDrawer != null) {

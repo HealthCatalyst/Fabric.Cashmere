@@ -1,3 +1,5 @@
+import { parseBooleanAttribute } from '../util';
+
 /** Wrapper component that textual form controls extend to work with hc-form-field */
 export abstract class HcFormControlComponent {
     /** Whether the control should be displaying an associated error */
@@ -21,5 +23,5 @@ export abstract class HcFormControlComponent {
     _isRequired: boolean = false;
 
     /** Whether the control should apply tight styling */
-    tight: boolean = false;
+    _tight: boolean = false;
 }

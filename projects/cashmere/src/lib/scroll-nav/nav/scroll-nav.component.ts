@@ -1,4 +1,5 @@
-import {Component, ElementRef, ViewEncapsulation, AfterViewInit, QueryList, ContentChildren} from '@angular/core';
+import {Component, ElementRef, ViewEncapsulation, AfterViewInit, ContentChildren} from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {ScrollNavLinkDirective} from './scroll-nav-link.directive';
 
 /** Container for scroll navigation links. */

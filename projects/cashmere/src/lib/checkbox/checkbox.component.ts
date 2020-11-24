@@ -13,9 +13,9 @@ import {
     Optional,
     DoCheck,
     ContentChildren,
-    QueryList,
     ViewEncapsulation,
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import { ControlValueAccessor, NgForm, FormGroupDirective, NgControl } from '@angular/forms';
 import { HcFormControlComponent } from '../form-field/hc-form-control.component';
 import { parseBooleanAttribute } from '../util';
@@ -135,7 +135,6 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     private _form: NgForm | FormGroupDirective | null;
     private _checked: boolean = false;
     private _tabIndex: number;
-    private _tight: boolean = false;
     private _parent: boolean = false;
     private readonly checkboxGroup: CheckboxGroup | null;
     _componentId = this._uniqueId;

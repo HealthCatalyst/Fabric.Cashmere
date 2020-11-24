@@ -1,6 +1,6 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {FormsModule, NgModel} from '@angular/forms';
-import {Component, DebugElement, QueryList, ViewChildren} from '@angular/core';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {FormsModule} from '@angular/forms';
+import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {RadioButtonChangeEvent, RadioGroupDirective} from './radio';
 import {RadioButtonModule} from './radio-button.module';
@@ -30,7 +30,7 @@ describe('RadioGroupComponent', () => {
     let component: TestRadioGroupComponent;
     let fixture: ComponentFixture<TestRadioGroupComponent>;
     let el: DebugElement;
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestRadioGroupComponent],
             imports: [FormsModule, RadioButtonModule]
@@ -194,7 +194,7 @@ describe('RadioGroups with ngModel', () => {
     let fixture: ComponentFixture<RadioWithNgModelComponent>;
     let el: DebugElement;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [RadioWithNgModelComponent],
             imports: [RadioButtonModule, FormsModule]

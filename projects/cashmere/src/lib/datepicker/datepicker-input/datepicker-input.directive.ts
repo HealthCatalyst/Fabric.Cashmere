@@ -13,7 +13,6 @@ import {createMissingDateImplError} from '../datetime/datepicker-errors';
 import {DatepickerComponent} from '../datepicker.component';
 import {coerceBooleanProperty} from '../utils/boolean-property';
 import {Subscription} from 'rxjs';
-import {DOWN_ARROW} from '@angular/cdk/keycodes';
 import {D, HC_DATE_FORMATS, HcDateFormats} from '../datetime/date-formats';
 import {DateAdapter} from '../datetime/date-adapter';
 import {HcFormControlComponent} from '../../form-field/hc-form-control.component';
@@ -312,7 +311,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     }
 
     _onKeydown(event: KeyboardEvent) {
-        const isAltDownArrow = event.altKey && event.keyCode === DOWN_ARROW;
+        const isAltDownArrow = event.altKey && event.key === 'ArrowDown';
 
         if (this._datepicker && isAltDownArrow && !this._elementRef.nativeElement.readOnly) {
             this._datepicker.open();

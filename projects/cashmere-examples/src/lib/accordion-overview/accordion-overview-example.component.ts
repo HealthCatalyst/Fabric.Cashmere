@@ -13,6 +13,8 @@ export class AccordionOverviewExampleComponent {
     hideToolbar = false;
     triggerToolbar = true;
     triggerButton = 'Toolbar Trigger: On';
+    disableToolbar = false;
+    disableButton = 'Disable Toolbar';
 
     toggleAlign(): void {
         this.alignment = this.alignment === 'left' ? 'right' : 'left';
@@ -28,6 +30,15 @@ export class AccordionOverviewExampleComponent {
             this.triggerButton = 'Toolbar Trigger: On';
         } else {
             this.triggerButton = 'Toolbar Trigger: Off';
+        }
+    }
+
+    toggleToolbarDisable(): void {
+        this.disableToolbar = !this.disableToolbar;
+        if (this.disableToolbar) {
+            this.disableButton = 'Enable Toolbar';
+        } else {
+            this.disableButton = 'Disable Toolbar';
         }
     }
 }

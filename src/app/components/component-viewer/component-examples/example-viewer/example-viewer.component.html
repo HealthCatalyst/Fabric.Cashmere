@@ -15,7 +15,7 @@
             (tabClick)="logClick(getTabTitle(file.name))"
         >
             <h4>{{ example }}-{{ file.name }}</h4>
-            <pre> <code [highlight]="file.contents" ></code> </pre>
+            <pre hcHighlight><code>{{file.contents}}</code></pre>
         </hc-tab>
     </hc-tab-set>
 </hc-tile>

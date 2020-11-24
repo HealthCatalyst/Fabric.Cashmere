@@ -1,12 +1,10 @@
 import {Directionality} from '@angular/cdk/bidi';
-import {ENTER, RIGHT_ARROW, SPACE} from '@angular/cdk/keycodes';
-import {Component, NgZone} from '@angular/core';
-import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import {Component} from '@angular/core';
+import {waitForAsync, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {MockNgZone} from '../utils/mock-ng-zone';
 import {DatepickerModule} from '../datepicker.module';
 import {JAN, FEB, DEC, NOV, JUL} from '../utils/month-constants';
-import {dispatchFakeEvent, dispatchMouseEvent, dispatchKeyboardEvent} from '../utils/dispatch-events';
+import {dispatchFakeEvent, dispatchMouseEvent, dispatchEvent} from '../utils/dispatch-events';
 import {HcNativeDateModule} from '../datetime/datetime.module';
 import {DateAdapter} from '../datetime/date-adapter';
 import {CalendarComponent} from './calendar.component';
@@ -75,9 +73,9 @@ class CalendarWithSelectableMinDate {
 }
 
 describe('CalendarComponent', () => {
-    let zone: MockNgZone;
+    const mockNgZone = jasmine.createSpyObj('mockNgZone', ['run', 'runOutsideAngular']);
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [HcNativeDateModule, DatepickerModule],
             declarations: [
@@ -89,7 +87,6 @@ describe('CalendarComponent', () => {
             ],
             providers: [
                 HcDatepickerIntl,
-                {provide: NgZone, useFactory: () => (zone = new MockNgZone())},
                 {provide: Directionality, useFactory: () => ({value: 'ltr'})}
             ]
         });
@@ -235,7 +232,7 @@ describe('CalendarComponent', () => {
 
                     spyOn(activeCell, 'focus').and.callThrough();
                     fixture.detectChanges();
-                    zone.simulateZoneExit();
+                    mockNgZone.run.and.callFake(fn => fn());
 
                     expect(activeCell.focus).not.toHaveBeenCalled();
                 });
@@ -245,13 +242,13 @@ describe('CalendarComponent', () => {
 
                     spyOn(activeCell, 'focus').and.callThrough();
                     fixture.detectChanges();
-                    zone.simulateZoneExit();
+                    mockNgZone.run.and.callFake(fn => fn());
 
                     expect(activeCell.focus).not.toHaveBeenCalled();
 
                     calendarInstance.currentView = 'multi-year';
                     fixture.detectChanges();
-                    zone.simulateZoneExit();
+                    mockNgZone.run.and.callFake(fn => fn());
 
                     expect(activeCell.focus).toHaveBeenCalled();
                 });
@@ -272,10 +269,12 @@ describe('CalendarComponent', () => {
                     it('should return to month view on enter', () => {
                         const tableBodyEl = calendarBodyEl.querySelector('.hc-calendar-body') as HTMLElement;
 
-                        dispatchKeyboardEvent(tableBodyEl, 'keydown', RIGHT_ARROW);
+                        let keyEvent = new KeyboardEvent('keydown', { key: 'ArrowRight' });
+                        dispatchEvent(tableBodyEl, keyEvent);
                         fixture.detectChanges();
 
-                        dispatchKeyboardEvent(tableBodyEl, 'keydown', ENTER);
+                        keyEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+                        dispatchEvent(tableBodyEl, keyEvent);
                         fixture.detectChanges();
 
                         expect(calendarInstance.currentView).toBe('month');
@@ -286,10 +285,12 @@ describe('CalendarComponent', () => {
                     it('should return to month view on space', () => {
                         const tableBodyEl = calendarBodyEl.querySelector('.hc-calendar-body') as HTMLElement;
 
-                        dispatchKeyboardEvent(tableBodyEl, 'keydown', RIGHT_ARROW);
+                        let keyEvent = new KeyboardEvent('keydown', { key: 'ArrowRight' });
+                        dispatchEvent(tableBodyEl, keyEvent);
                         fixture.detectChanges();
 
-                        dispatchKeyboardEvent(tableBodyEl, 'keydown', SPACE);
+                        keyEvent = new KeyboardEvent('keydown', { key: ' ' });
+                        dispatchEvent(tableBodyEl, keyEvent);
                         fixture.detectChanges();
 
                         expect(calendarInstance.currentView).toBe('month');
@@ -309,10 +310,12 @@ describe('CalendarComponent', () => {
                     it('should go to year view on enter', () => {
                         const tableBodyEl = calendarBodyEl.querySelector('.hc-calendar-body') as HTMLElement;
 
-                        dispatchKeyboardEvent(tableBodyEl, 'keydown', RIGHT_ARROW);
+                        let keyEvent = new KeyboardEvent('keydown', { key: 'ArrowRight' });
+                        dispatchEvent(tableBodyEl, keyEvent);
                         fixture.detectChanges();
 
-                        dispatchKeyboardEvent(tableBodyEl, 'keydown', ENTER);
+                        keyEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+                        dispatchEvent(tableBodyEl, keyEvent);
                         fixture.detectChanges();
 
                         expect(calendarInstance.currentView).toBe('year');
@@ -323,10 +326,12 @@ describe('CalendarComponent', () => {
                     it('should go to year view on space', () => {
                         const tableBodyEl = calendarBodyEl.querySelector('.hc-calendar-body') as HTMLElement;
 
-                        dispatchKeyboardEvent(tableBodyEl, 'keydown', RIGHT_ARROW);
+                        let keyEvent = new KeyboardEvent('keydown', { key: 'ArrowRight' });
+                        dispatchEvent(tableBodyEl, keyEvent);
                         fixture.detectChanges();
 
-                        dispatchKeyboardEvent(tableBodyEl, 'keydown', SPACE);
+                        keyEvent = new KeyboardEvent('keydown', { key: ' ' });
+                        dispatchEvent(tableBodyEl, keyEvent);
                         fixture.detectChanges();
 
                         expect(calendarInstance.currentView).toBe('year');
@@ -574,7 +579,8 @@ describe('CalendarComponent', () => {
                 expect(calendarInstance.currentView).toBe('month');
                 expect(calendarInstance.activeDate).toEqual(new Date(2017, JAN, 1));
 
-                dispatchKeyboardEvent(tableBodyEl, 'keydown', ENTER);
+                const keyEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+                dispatchEvent(tableBodyEl, keyEvent);
                 fixture.detectChanges();
 
                 expect(testComponent.selected).toBeUndefined();
@@ -594,7 +600,8 @@ describe('CalendarComponent', () => {
                 expect(calendarInstance.currentView).toBe('year');
 
                 tableBodyEl = calendarElement.querySelector('.hc-calendar-body') as HTMLElement;
-                dispatchKeyboardEvent(tableBodyEl, 'keydown', ENTER);
+                const keyEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+                dispatchEvent(tableBodyEl, keyEvent);
                 fixture.detectChanges();
 
                 expect(calendarInstance.currentView).toBe('month');

@@ -1,5 +1,4 @@
 import {Directionality} from '@angular/cdk/bidi';
-import {DOWN_ARROW, ENTER, ESCAPE, RIGHT_ARROW, UP_ARROW} from '@angular/cdk/keycodes';
 import {Overlay, OverlayContainer} from '@angular/cdk/overlay';
 import {ScrollDispatcher} from '@angular/cdk/scrolling';
 
@@ -11,10 +10,9 @@ import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/tes
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {Subject} from 'rxjs';
 import {DatepickerModule} from './datepicker.module';
-import {dispatchKeyboardEvent, dispatchMouseEvent, dispatchFakeEvent, dispatchEvent} from './utils/dispatch-events';
+import {dispatchMouseEvent, dispatchFakeEvent, dispatchEvent} from './utils/dispatch-events';
 import {JAN, DEC, JUL, JUN, SEP} from './utils/month-constants';
 import {HC_DATEPICKER_SCROLL_STRATEGY, DatepickerComponent} from './datepicker.component';
-import {createKeyboardEvent} from './utils/event-objects';
 import {DatepickerToggleComponent} from './datepicker-toggle/datepicker-toggle.component';
 import {HcNativeDateModule, NativeDateModule} from './datetime/datetime.module';
 import {HC_DATE_LOCALE} from './datetime/date-adapter';
@@ -36,9 +34,9 @@ class StandardDatepicker {
     opened = false;
     disabled = false;
     date: Date | null = new Date(2020, JAN, 1);
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
 }
 
@@ -57,7 +55,7 @@ class MultiInputDatepicker {}
     `
 })
 class NoInputDatepicker {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
 }
 
@@ -70,7 +68,7 @@ class NoInputDatepicker {
 class DatepickerWithStartAt {
     date = new Date(2020, JAN, 1);
     startDate = new Date(2010, JAN, 1);
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
 }
 
@@ -82,7 +80,7 @@ class DatepickerWithStartAt {
 })
 class DatepickerWithStartViewYear {
     date = new Date(2020, JAN, 1);
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
 
     onYearSelection() {}
@@ -96,7 +94,7 @@ class DatepickerWithStartViewYear {
 })
 class DatepickerWithStartViewMultiYear {
     date = new Date(2020, JAN, 1);
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
 
     onMultiYearSelection() {}
@@ -110,9 +108,9 @@ class DatepickerWithStartViewMultiYear {
 })
 class DatepickerWithNgModel {
     selected: Date | null = null;
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
 }
 
@@ -125,11 +123,11 @@ class DatepickerWithNgModel {
 })
 class DatepickerWithFormControl {
     formControl = new FormControl();
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
-    @ViewChild(DatepickerToggleComponent, {static: false})
+    @ViewChild(DatepickerToggleComponent)
     datepickerToggle: DatepickerToggleComponent;
 }
 
@@ -141,9 +139,9 @@ class DatepickerWithFormControl {
     `
 })
 class DatepickerWithToggle {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     input: DatepickerInputDirective;
 }
 
@@ -165,11 +163,11 @@ class DatepickerWithCustomIcon {}
     `
 })
 class FormFieldDatepicker {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
-    @ViewChild(HcFormFieldComponent, {static: false})
+    @ViewChild(HcFormFieldComponent)
     formField: HcFormFieldComponent;
 }
 
@@ -181,7 +179,7 @@ class FormFieldDatepicker {
     `
 })
 class DatepickerWithMinAndMaxValidation {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
     date: Date | null;
     minDate = new Date(2010, JAN, 1);
@@ -196,7 +194,7 @@ class DatepickerWithMinAndMaxValidation {
     `
 })
 class DatepickerWithFilterAndValidation {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
     date: Date;
     filter = (date: Date) => date.getDate() !== 1;
@@ -209,7 +207,7 @@ class DatepickerWithFilterAndValidation {
     `
 })
 class DatepickerWithChangeAndInputEvents {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
 
     onChange() {}
@@ -229,9 +227,9 @@ class DatepickerWithChangeAndInputEvents {
 })
 class DatepickerWithi18n {
     date: Date | null = new Date(2010, JAN, 1);
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
 }
 
@@ -246,9 +244,9 @@ class DatepickerWithISOStrings {
     min = new Date(2017, JAN, 1).toISOString();
     max = new Date(2017, DEC, 31).toISOString();
     startAt = new Date(2017, JUL, 1).toISOString();
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
 }
 
@@ -262,7 +260,7 @@ class DatepickerWithEvents {
     selected: Date | null = null;
     openedSpy = jasmine.createSpy('opened spy');
     closedSpy = jasmine.createSpy('closed spy');
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
 }
 
@@ -273,7 +271,7 @@ class DatepickerWithEvents {
     `
 })
 class DatepickerOpeningOnFocus {
-    @ViewChild(DatepickerComponent, {static: false})
+    @ViewChild(DatepickerComponent)
     datepicker: DatepickerComponent;
 }
 
@@ -284,7 +282,7 @@ class DatepickerOpeningOnFocus {
     `
 })
 class DatepickerWithCustomHeader {
-    @ViewChild('ch', {static: false})
+    @ViewChild('ch')
     datepicker: DatepickerComponent;
     customHeaderForDatePicker = CustomHeaderForDatepicker;
 }
@@ -304,9 +302,9 @@ class CustomHeaderForDatepicker {}
     `
 })
 class DelayedDatepicker {
-    @ViewChild('d', {static: false})
+    @ViewChild('d')
     datepicker: DatepickerComponent;
-    @ViewChild(DatepickerInputDirective, {static: false})
+    @ViewChild(DatepickerInputDirective)
     datepickerInput: DatepickerInputDirective;
     date: Date | null;
     assignedDatepicker: DatepickerComponent;
@@ -328,7 +326,7 @@ class DatepickerWithTabindexOnToggle {}
     `
 })
 class DatepickerWithTime {
-    @ViewChild('timepicker', {static: false})
+    @ViewChild('timepicker')
     datepicker: DatepickerComponent;
     cycleVal: number = 12;
 }
@@ -340,7 +338,7 @@ class DatepickerWithTime {
     `
 })
 class DatepickerWithDateTime {
-    @ViewChild('datetimepicker', {static: false})
+    @ViewChild('datetimepicker')
     datepicker: DatepickerComponent;
 }
 
@@ -467,7 +465,9 @@ describe('DatepickerComponent', () => {
 
                 expect(testComponent.datepicker.opened).toBe(true, 'Expected datepicker to be open.');
 
-                dispatchKeyboardEvent(document.body, 'keydown', ESCAPE);
+                const keyEvent = new KeyboardEvent('keydown', { key: 'Escape' });
+                dispatchEvent(document.body, keyEvent);
+
                 fixture.detectChanges();
                 flush();
 
@@ -515,10 +515,12 @@ describe('DatepickerComponent', () => {
 
                 const calendarBodyEl = document.querySelector('.hc-calendar-body') as HTMLElement;
 
-                dispatchKeyboardEvent(calendarBodyEl, 'keydown', RIGHT_ARROW);
+                const keyEvent = new KeyboardEvent('keydown', { key: 'ArrowRight' });
+                dispatchEvent(calendarBodyEl, keyEvent);
                 fixture.detectChanges();
                 flush();
-                dispatchKeyboardEvent(calendarBodyEl, 'keydown', ENTER);
+                const keyEventEnter = new KeyboardEvent('keydown', { key: 'Enter' });
+                dispatchEvent(calendarBodyEl, keyEventEnter);
                 fixture.detectChanges();
                 flush();
 
@@ -561,7 +563,8 @@ describe('DatepickerComponent', () => {
                 expect(calendarBodyEl).not.toBeNull();
                 expect(testComponent.datepickerInput.value).toEqual(new Date(2020, JAN, 1));
 
-                dispatchKeyboardEvent(calendarBodyEl, 'keydown', ENTER);
+                const keyEventEnter = new KeyboardEvent('keydown', { key: 'Enter' });
+                dispatchEvent(calendarBodyEl, keyEventEnter);
                 fixture.detectChanges();
 
                 fixture.whenStable().then(() => {
@@ -687,17 +690,16 @@ describe('DatepickerComponent', () => {
                 })
             ));
 
-            it('should close the datpeicker using ALT + UP_ARROW', fakeAsync(() => {
+            it('should close the datepicker using ALT + UP_ARROW', fakeAsync(() => {
                 testComponent.datepicker.open();
                 fixture.detectChanges();
                 flush();
 
                 expect(testComponent.datepicker.opened).toBe(true);
 
-                const event = createKeyboardEvent('keydown', UP_ARROW);
-                Object.defineProperty(event, 'altKey', {get: () => true});
+                const keyEvent = new KeyboardEvent('keydown', { key: 'ArrowUp', altKey: true });
 
-                dispatchEvent(document.body, event);
+                dispatchEvent(document.body, keyEvent);
                 fixture.detectChanges();
                 flush();
 
@@ -707,15 +709,13 @@ describe('DatepickerComponent', () => {
             it('should open the datepicker using ALT + DOWN_ARROW', fakeAsync(() => {
                 expect(testComponent.datepicker.opened).toBe(false);
 
-                const event = createKeyboardEvent('keydown', DOWN_ARROW);
-                Object.defineProperty(event, 'altKey', {get: () => true});
+                const keyEvent = new KeyboardEvent('keydown', { key: 'ArrowDown', altKey: true });
 
-                dispatchEvent(fixture.nativeElement.querySelector('input'), event);
+                dispatchEvent(fixture.nativeElement.querySelector('input'), keyEvent);
                 fixture.detectChanges();
                 flush();
 
                 expect(testComponent.datepicker.opened).toBe(true);
-                expect(event.defaultPrevented).toBe(true);
             }));
 
             it('should not open for ALT + DOWN_ARROW on readonly input', fakeAsync(() => {
@@ -725,15 +725,14 @@ describe('DatepickerComponent', () => {
 
                 input.setAttribute('readonly', 'true');
 
-                const event = createKeyboardEvent('keydown', DOWN_ARROW);
-                Object.defineProperty(event, 'altKey', {get: () => true});
+                const keyEvent = new KeyboardEvent('keydown', { key: 'ArrowDown', altKey: true });
 
-                dispatchEvent(input, event);
+                dispatchEvent(input, keyEvent);
                 fixture.detectChanges();
                 flush();
 
                 expect(testComponent.datepicker.opened).toBe(false);
-                expect(event.defaultPrevented).toBe(false);
+                expect(keyEvent.defaultPrevented).toBe(false);
             }));
         });
 
@@ -750,9 +749,8 @@ describe('DatepickerComponent', () => {
                 fixture.detectChanges();
 
                 expect(() => {
-                    const event = createKeyboardEvent('keydown', DOWN_ARROW);
-                    Object.defineProperty(event, 'altKey', {get: () => true});
-                    dispatchEvent(fixture.nativeElement.querySelector('input'), event);
+                    const keyEvent = new KeyboardEvent('keydown', { key: 'ArrowDown', altKey: true });
+                    dispatchEvent(fixture.nativeElement.querySelector('input'), keyEvent);
                     fixture.detectChanges();
                     flush();
                 }).not.toThrow();

@@ -14,7 +14,7 @@ export class SearchResultsComponent implements AfterViewInit {
 
     constructor(private route: ActivatedRoute, private ref: ChangeDetectorRef, private searchService: SearchService) { }
 
-    @ViewChild('pagContainer', {static: false})
+    @ViewChild('pagContainer')
     pagContainer: ElementRef;
 
     pageOpts = [5, 10, 20];

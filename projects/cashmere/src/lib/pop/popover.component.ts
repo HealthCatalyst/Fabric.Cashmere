@@ -12,11 +12,11 @@ import {
     Optional,
     Output,
     ContentChildren,
-    QueryList
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {AnimationEvent} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
-import {FocusTrap, FocusTrapFactory} from '@angular/cdk/a11y';
+import {FocusTrap, ConfigurableFocusTrapFactory} from '@angular/cdk/a11y';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {transformPopover} from './popover.animations';
 import {NotificationAction, PopoverNotification, PopoverNotificationService} from './notification.service';
@@ -277,7 +277,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     @Output() overlayKeydown = new EventEmitter<KeyboardEvent>();
 
     /** Reference to template so it can be placed within a portal. */
-    @ViewChild(TemplateRef, {static: false}) _templateRef: TemplateRef<any>;
+    @ViewChild(TemplateRef) _templateRef: TemplateRef<any>;
 
     /** Stores the click coordinates for mouse-based positioning */
     _offsetPos: number[] = [0, 0];
@@ -297,7 +297,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     _notifications: PopoverNotificationService;
 
     /** Reference to the element to build a focus trap around. */
-    @ViewChild('focusTrapElement', {static: false})
+    @ViewChild('focusTrapElement')
     private _focusTrapElement: ElementRef;
 
     /** Reference to the element that was focused before opening. */
@@ -320,7 +320,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     constructor(
         public _elementRef: ElementRef,
-        private _focusTrapFactory: FocusTrapFactory,
+        private _focusTrapFactory: ConfigurableFocusTrapFactory,
         @Optional() @Inject(DOCUMENT) private _document: any
     ) {}
 

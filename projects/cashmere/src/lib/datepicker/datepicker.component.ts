@@ -27,7 +27,6 @@ import {DatepickerInputDirective} from './datepicker-input/datepicker-input.dire
 import {Directionality} from '@angular/cdk/bidi';
 import {DOCUMENT} from '@angular/common';
 import {take, filter} from 'rxjs/operators';
-import {ESCAPE, UP_ARROW} from '@angular/cdk/keycodes';
 
 // tslint:disable:no-output-rename
 
@@ -118,19 +117,6 @@ export class DatepickerComponent implements OnDestroy {
     /** The view that the calendar should start in. */
     @Input()
     startView: 'month' | 'year' | 'multi-year' = 'month';
-
-    /**
-     * @deprecated
-     * @description The datepicker now only uses `hcPop` to display
-     * */
-    @Input()
-    get touchUi(): boolean {
-        return this._touchUi;
-    }
-    set touchUi(value: boolean) {
-        this._touchUi = coerceBooleanProperty(value);
-    }
-    private _touchUi = false;
 
     /** Whether the datepicker pop-up should be disabled. */
     @Input()
@@ -395,7 +381,7 @@ export class DatepickerComponent implements OnDestroy {
             this._popupRef.keydownEvents().pipe(
                 filter(event => {
                     // Closing on alt + up is only valid when there's an input associated with the datepicker.
-                    return event.keyCode === ESCAPE || (this._datepickerInput && event.altKey && event.keyCode === UP_ARROW);
+                    return event.key === 'Escape' || (this._datepickerInput && event.altKey && event.key === 'ArrowUp');
                 })
             )
         ).subscribe(() => this.close());

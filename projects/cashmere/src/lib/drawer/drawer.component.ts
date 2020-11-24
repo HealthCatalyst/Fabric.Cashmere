@@ -80,7 +80,6 @@ const openStateAnimation = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Drawer implements AfterContentInit {
-    readonly _openChange = new EventEmitter<boolean>();
     private _mode: string = 'push';
     private _align: string = 'left';
 
@@ -110,7 +109,7 @@ export class Drawer implements AfterContentInit {
     @Output()
     get openStart(): Observable<void> {
         return this._animationStarted.pipe(
-            filter(event => event.fromState === 'void' && event.toState === 'open'),
+            filter(event => event.fromState === 'void' && event.toState.startsWith('open-') ),
             map(() => {})
         );
     }
@@ -119,28 +118,13 @@ export class Drawer implements AfterContentInit {
     @Output()
     get closeStart(): Observable<void> {
         return this._animationStarted.pipe(
-            filter(event => event.fromState === 'open' && event.toState === 'void'),
+            filter(event => event.fromState.startsWith('open-') && event.toState === 'void'),
             map(() => {})
         );
     }
 
-    /** Event emitted when drawer has opened */
-    @Output('opened')
-    get _openStream() {
-        return this._openChange.pipe(
-            filter(value => value),
-            map(() => {})
-        );
-    }
-
-    /** Event emitted when drawer has closed */
-    @Output('closed')
-    get _closeStream() {
-        return this._openChange.pipe(
-            filter(value => !value),
-            map(() => {})
-        );
-    }
+    /* Allows for two-way binding of the `opened` property */
+    @Output() openedChange = new EventEmitter<boolean>();
 
     /** Tabindex of the element */
     @HostBinding()
@@ -162,7 +146,9 @@ export class Drawer implements AfterContentInit {
     }
 
     set opened(opened) {
-        this.toggle(parseBooleanAttribute(opened));
+        if ( opened !== this._drawerOpened ) {
+            this.toggle(parseBooleanAttribute(opened));
+        }
     }
 
     get _width(): number {
@@ -213,7 +199,7 @@ export class Drawer implements AfterContentInit {
 
     @HostListener('@openState.done', ['$event'])
     _onAnimationEnd(event: AnimationEvent) {
-        this._openChange.next(this.opened);
+        this.openedChange.next(this.opened);
 
         if (this._animationPromise) {
             this._resolveAnimationPromise();
@@ -224,7 +210,7 @@ export class Drawer implements AfterContentInit {
 
     @HostListener('keydown', ['$event'])
     _onKeyDown(event: KeyboardEvent) {
-        if (event.keyCode === 27) {
+        if (event.key === 'Escape') {
             this.toggleClose();
             event.stopPropagation();
         }

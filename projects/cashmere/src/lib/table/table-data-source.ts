@@ -12,9 +12,8 @@ import {BehaviorSubject, combineLatest, merge, Observable, of as observableOf, S
 // import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {HcSort, Sort} from '../sort/index';
 import {map} from 'rxjs/operators';
-import {PaginationComponent, LoadMorePaginationComponent, PageEvent} from '../pagination/index';
+import {LoadMorePaginationComponent, PageEvent} from '../pagination/index';
 import {BasePaginationComponent} from '../pagination/base-pagination';
-import {isString} from 'util';
 
 /**
  * Corresponds to `Number.MAX_SAFE_INTEGER`. Moved out into a variable here due to
@@ -135,7 +134,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
         }
 
         // lowercase strings
-        if (isString(value)) {
+        if (typeof value === 'string') {
             return value.toLocaleLowerCase();
         }
 
@@ -244,11 +243,14 @@ export class HcTableDataSource<T> extends DataSource<T> {
 
         const dataStream = this._data;
         // Watch for base data or filter changes to provide a filtered set of data.
-        const filteredData = combineLatest(dataStream, this._filter).pipe(map(([data]) => this._filterData(data)));
+        const filteredData = combineLatest([dataStream, this._filter])
+            .pipe(map(([data]) => this._filterData(data)));
         // Watch for filtered data or sort changes to provide an ordered set of data.
-        const orderedData = combineLatest(filteredData, sortChange).pipe(map(([data]) => this._orderData(data)));
+        const orderedData = combineLatest([filteredData, sortChange])
+            .pipe(map(([data]) => this._orderData(data)));
         // Watch for ordered data or page changes to provide a paged set of data.
-        const paginatedData = combineLatest(orderedData, pageChange).pipe(map(([data]) => this._pageData(data)));
+        const paginatedData = combineLatest([orderedData, pageChange])
+            .pipe(map(([data]) => this._pageData(data)));
         // Watched for paged data changes and send the result to the table to render.
         this._renderChangesSubscription.unsubscribe();
         this._renderChangesSubscription = paginatedData.subscribe(data => this._renderData.next(data));

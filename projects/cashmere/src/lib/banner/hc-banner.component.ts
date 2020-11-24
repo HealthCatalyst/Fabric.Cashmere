@@ -1,5 +1,5 @@
 import {Component, Input, ViewEncapsulation, EventEmitter, Output} from '@angular/core';
-import * as util from '../util';
+import {parseBooleanAttribute} from '../util';
 
 export type BannerType = 'success' | 'info' | 'warning' | 'alert';
 const bannerTypes: BannerType[] = ['success', 'info', 'warning', 'alert'];
@@ -42,7 +42,7 @@ export class HcBannerComponent {
     }
 
     set clickDismiss(dismissVal: boolean) {
-        this._clickDismiss = util.parseBooleanAttribute(dismissVal);
+        this._clickDismiss = parseBooleanAttribute(dismissVal);
     }
 
     _bannerClick(event: MouseEvent) {

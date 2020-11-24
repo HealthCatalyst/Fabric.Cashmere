@@ -66,17 +66,4 @@ export class ChipComponent {
     _closeClick(e: MouseEvent) {
         this.closeClick.emit(e);
     }
-
-    /**
-     * @deprecated
-     * @description Use `hasCloseButton` instead
-     * */
-    @Input()
-    get action(): boolean {
-        return this._hasCloseButton;
-    }
-
-    set action(isAction) {
-        this._hasCloseButton = parseBooleanAttribute(isAction);
-    }
 }
