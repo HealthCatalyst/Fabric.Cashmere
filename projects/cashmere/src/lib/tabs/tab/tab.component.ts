@@ -1,4 +1,5 @@
-import {Component, Input, ContentChildren, QueryList, AfterContentInit, Output, ViewEncapsulation, HostBinding, HostListener} from '@angular/core';
+import {Component, Input, ContentChildren, AfterContentInit, Output, ViewEncapsulation, HostBinding, HostListener} from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {EventEmitter, TemplateRef, ViewChild} from '@angular/core';
 import {HcTabTitleComponent} from './tab-title.component';
 import {Params} from '@angular/router';
@@ -38,7 +39,7 @@ export class TabComponent implements AfterContentInit {
 
     /** The template to be used when this tab is selected. Defaults to the content of this tab component.
      * Not used when the tab set uses routing. */
-    @ViewChild('tabContent', {static: false})
+    @ViewChild('tabContent')
     tabContent: TemplateRef<any>;
 
     _direction: string;

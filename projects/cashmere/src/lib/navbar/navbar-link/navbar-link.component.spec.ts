@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NavbarLinkComponent} from './navbar-link.component';
 import {RouterModule} from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
@@ -12,14 +12,14 @@ import {By} from '@angular/platform-browser';
     `
 })
 class TestHostComponent {
-    @ViewChild(NavbarLinkComponent, {static: false})
+    @ViewChild(NavbarLinkComponent)
     public navbarLinkComponent: NavbarLinkComponent;
 }
 describe('NavbarLinkComponent', () => {
     let testHostComponent: TestHostComponent;
     let testHostFixture: ComponentFixture<TestHostComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [RouterModule.forRoot([{path: '', component: NavbarLinkComponent}])],
             declarations: [NavbarLinkComponent, TestHostComponent],

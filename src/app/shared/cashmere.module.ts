@@ -33,7 +33,7 @@ import {
     ToasterModule,
     TypeformSurveyModule
 } from '@healthcatalyst/cashmere';
-import {ChangeCasePipeModule} from '@bit/healthcatalyst.cashmere.change-case-pipe';
+import {ChangeCasePipeModule} from '@bit/healthcatalyst.cashmere.change-case-pipe/dist';
 
 @NgModule({
     exports: [

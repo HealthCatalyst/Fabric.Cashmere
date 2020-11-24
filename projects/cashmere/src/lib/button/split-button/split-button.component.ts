@@ -8,9 +8,9 @@ import {
     Output,
     ViewEncapsulation,
     ViewChild,
-    ContentChildren,
-    QueryList
+    ContentChildren
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {parseBooleanAttribute} from '../../util';
 import {validateStyleInput, validateSizeInput, ButtonComponent} from '../button.component';
 import {HcPopComponent} from '../../pop/popover.component';
@@ -37,10 +37,10 @@ export class SplitButtonComponent {
     private _style: string = 'primary';
     private _size: string = 'md';
 
-    @ViewChild('splitBtnToggle', {static: false})
+    @ViewChild('splitBtnToggle')
     _splitBtnToggle: ButtonComponent;
 
-    @ViewChild('splitMenu', {static: false})
+    @ViewChild('splitMenu')
     _splitMenu: HcPopComponent;
 
     @ContentChildren(MenuItemDirective, {descendants: true}) _menuItems: QueryList<MenuItemDirective>;
@@ -81,19 +81,6 @@ export class SplitButtonComponent {
 
     set tabIndex(value: number) {
         this._tabIndex = value == null ? 0 : value;
-    }
-
-    /**
-     * @deprecated
-     * @description Use `buttonStyle` instead
-     * */
-    @Input()
-    get color(): string {
-        return this.buttonStyle;
-    }
-
-    set color(btnStyle: string) {
-        this.buttonStyle = btnStyle;
     }
 
     /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' |

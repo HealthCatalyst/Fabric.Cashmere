@@ -26,7 +26,7 @@ import {IconModule} from '../icon/icon.module';
     ]
 })
 export class AppSwitcherModule {
-    static forRoot(config: IAppSwitcherConfig): ModuleWithProviders {
+    static forRoot(config: IAppSwitcherConfig): ModuleWithProviders<AppSwitcherModule> {
         return {
             ngModule: AppSwitcherModule,
             providers: [

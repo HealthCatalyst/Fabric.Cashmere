@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SubnavModule} from './subnav.module';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -18,7 +18,7 @@ describe('SubnavComponent', () => {
     let component: SubNavRightComponent;
     let fixture: ComponentFixture<SubNavRightComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [SubNavRightComponent],
             imports: [SubnavModule]

@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync, tick, waitForAsync} from '@angular/core/testing';
 
 import {AppSwitcherComponent} from './app-switcher.component';
 import {PopModule} from '../pop/popover.module';
@@ -12,7 +12,7 @@ describe('AppSwitcherComponent', () => {
     let component: AppSwitcherComponent;
     let fixture: ComponentFixture<AppSwitcherComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [PopModule, PipesModule, ProgressIndicatorsModule],
             declarations: [AppSwitcherComponent],

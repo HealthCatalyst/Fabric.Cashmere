@@ -1,6 +1,6 @@
 import {Platform} from '@angular/cdk/platform';
 import {LOCALE_ID} from '@angular/core';
-import {async, inject, TestBed} from '@angular/core/testing';
+import {waitForAsync, inject, TestBed} from '@angular/core/testing';
 import {JAN, DEC, FEB, MAR} from '../utils/month-constants';
 import {DateAdapter, HC_DATE_LOCALE} from './date-adapter';
 import {NativeDateAdapter} from './native-date-adapter';
@@ -11,18 +11,20 @@ const SUPPORTS_INTL = typeof Intl !== 'undefined';
 // tslint:disable:no-non-null-assertion
 // tslint:disable:component-class-suffix
 describe('NativeDateAdapter', () => {
-    const platform = new Platform();
+    let platform: Platform;
     let adapter: NativeDateAdapter;
     let assertValidDate: (d: Date | null, valid: boolean) => void;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [NativeDateModule]
         }).compileComponents();
     }));
 
-    beforeEach(inject([DateAdapter], (dateAdapter: NativeDateAdapter) => {
+    beforeEach(inject([DateAdapter, Platform],
+        (dateAdapter: NativeDateAdapter, _platform: Platform) => {
         adapter = dateAdapter;
+        platform = _platform;
 
         assertValidDate = (d: Date | null, valid: boolean) => {
             expect(adapter.isDateInstance(d)).not.toBeNull(`Expected ${d} to be a date instance`);
@@ -503,7 +505,7 @@ describe('NativeDateAdapter', () => {
 describe('NativeDateAdapter with HC_DATE_LOCALE override', () => {
     let adapter: NativeDateAdapter;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [NativeDateModule],
             providers: [{provide: HC_DATE_LOCALE, useValue: 'da-DK'}]
@@ -526,7 +528,7 @@ describe('NativeDateAdapter with HC_DATE_LOCALE override', () => {
 describe('NativeDateAdapter with LOCALE_ID override', () => {
     let adapter: NativeDateAdapter;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [NativeDateModule],
             providers: [{provide: LOCALE_ID, useValue: 'da-DK'}]

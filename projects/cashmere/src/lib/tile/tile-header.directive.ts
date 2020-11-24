@@ -1,19 +1,14 @@
 import {Directive, HostBinding, Input} from '@angular/core';
 
-const supportedTypes = ['blue', 'title', 'center'];
-
-export function validateTypeInput(inputStr: string) {
-    if (supportedTypes.indexOf(inputStr) < 0) {
-        throw Error('Unsupported tile header type: ' + inputStr);
-    }
-}
+export type TileHeaderType = 'blue' | 'title' | 'center';
+const tileHeaderTypes: TileHeaderType[] = ['blue', 'title', 'center'];
 
 /** Applies one of the Cashmere standard tile header stylings to an element */
 @Directive({
     selector: '[hcTileHeader]'
 })
 export class TileHeaderDirective {
-    private _type: string = 'blue';
+    private _type: TileHeaderType = 'blue';
 
     @HostBinding('class.hc-tile-header-blue')
     _headerBlue: boolean = true;
@@ -26,12 +21,14 @@ export class TileHeaderDirective {
 
     /** Sets the styling of the header, choices include `blue`, `center`, and `title`; defaults to `blue` */
     @Input()
-    get type(): string {
+    get type(): TileHeaderType {
         return this._type;
     }
 
-    set type(typeStr) {
-        validateTypeInput(typeStr);
+    set type(typeStr: TileHeaderType) {
+        if (!tileHeaderTypes.includes(typeStr)) {
+            throw new Error('Unsupported tile header type: ' + typeStr);
+        }
         this._type = typeStr;
 
         this._headerBlue = typeStr === 'blue';

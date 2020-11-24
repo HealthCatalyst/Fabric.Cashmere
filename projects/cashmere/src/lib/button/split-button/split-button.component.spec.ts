@@ -1,6 +1,6 @@
 /* tslint:disable:component-class-suffix */
 
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {SplitButtonComponent} from './split-button.component';
 import {ButtonModule} from '../button.module';
@@ -12,7 +12,7 @@ describe('SplitButtonComponent', () => {
     let fixture: ComponentFixture<any>;
     let splitButtonDebugElement: DebugElement;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [ButtonModule],
             declarations: [TestComponent]
