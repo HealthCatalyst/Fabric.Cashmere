@@ -38,12 +38,6 @@ p {
     width: 175px;
 }
 
-.headerCopy {
-    font-weight: 300;
-    margin-top: 0;
-    margin-bottom: 25px;
-}
-
 .headerRight {
     display: flex;
     width: 100%;
@@ -65,9 +59,9 @@ p {
 }
 
 .headerRight img {
-    height: 55px;
-    width: 372px;
-    margin-top: 10px;
+    height: 115px;
+    width: 350px;
+    margin: 7px 0 15px;
 }
 
 @include media-breakpoint-down(md) {
@@ -102,10 +96,6 @@ p {
     }
 
     .headerRight img {
-        width: 100%;
-    }
-
-    .headerCopy {
         width: 100%;
     }
 
