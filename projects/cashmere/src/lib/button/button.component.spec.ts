@@ -5,8 +5,8 @@ import {ButtonModule} from './button.module';
 
 @Component({
     template: `
-        <button hc-button [color]="buttonStyle" [disabled]="isDisabled" (click)="buttonClick()">Button</button>
-        <a hc-button [color]="buttonStyle" [disabled]="isDisabled" href="https://www.healthcatalyst.com">Link</a>
+        <button hc-button [buttonStyle]="buttonStyle" [disabled]="isDisabled" (click)="buttonClick()">Button</button>
+        <a hc-button [buttonStyle]="buttonStyle" [disabled]="isDisabled" href="https://www.healthcatalyst.com">Link</a>
     `
 })
 class TestAppComponent {
