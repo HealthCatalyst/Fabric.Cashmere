@@ -1,4 +1,5 @@
 {
+    "branches": ["master"],
     "pkgRoot": "dist/cashmere",
     "tarballDir": "dist",
     "assets": "healthcatalyst-cashmere-*.tgz",
