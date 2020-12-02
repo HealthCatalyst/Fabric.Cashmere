@@ -12,7 +12,7 @@
 
 # Jeanene Prato
 
-#### Nurse, Pharmacist, Social Worker, Medical Assistant, Non-Clinical Support Staff, Community Health Worker
+### Nurse, Pharmacist, Social Worker, Medical Assistant, Non-Clinical Support Staff, Community Health Worker
 
 45+ year old nurse with deep clinical knowledge and ability to form personalized plans of care. Experience with episodic EMR, little understanding of data warehousing, analytics, claims, EMPI. Alternate between working in an office to meeting patients outside of the care management office.
 
@@ -24,7 +24,7 @@
 
 ---
 
-### Goals
+## Goals
 
 -   Improve quality of patient care (improve outcomes)
 -   Decrease patient costs (optimize utilization)
@@ -40,7 +40,7 @@
 
 ---
 
-### Needs
+## Needs
 
 -   "Project management" applications that support daily decision making to help them allocate their time where it is most beneficial
 -   Tools that assist in the creation of the most effective care plans for their patients

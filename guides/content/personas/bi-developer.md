@@ -12,7 +12,7 @@
 
 # Steve Thatcher
 
-#### Business Intelligence Developer
+### Business Intelligence Developer
 
 Steve analyzes, designs, develops, deploys, supports, and maintains reporting and analytical or business intelligence applications for the various financial, operational, and clinical stakeholders serviced by the Enterprise Data Warehouse (EDW). He consults and supports in the development, analysis, design, and management of a variety of complex data sources to support process improvement and waste reduction initiatives (i.e., he is highly tech savvy).
 
@@ -24,7 +24,7 @@ Steve analyzes, designs, develops, deploys, supports, and maintains reporting an
 
 ---
 
-### Goals
+## Goals
 
 -   Integrate multiple populations into the application(s) to provide users with multiple views
 -   Determine the optimal solution to solve the stated problem (consulting, reports, analytic accelerator, etc.)
@@ -35,7 +35,7 @@ Steve analyzes, designs, develops, deploys, supports, and maintains reporting an
 
 ---
 
-### Needs
+## Needs
 
 -   Clear lines of communication with workgroup team members
 -   Software and technology (SSMS, SamD, SMD, Excel, Qlik, Tableau, etc.)

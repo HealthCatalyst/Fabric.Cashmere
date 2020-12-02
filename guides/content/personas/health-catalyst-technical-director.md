@@ -12,7 +12,7 @@
 
 # Kiri Hwan
 
-#### Technical Director
+### Technical Director
 
 Kiri develops and executes strategies of implementing proprietary data warehousing solutions and manages expectations with dynamic timelines. As the first person to work with the client on a project (and often the last, since she's troubleshooting ongoing issues), Kiri has technical skills, interpersonal skills, and healthcare domain knowledge. She has the ability to handle complex challenges with a sensible approach in an ambiguous environment. Kiri has a deep understanding of the data in the data warehouses and how to make use of the data; concepts of many various data storage systems (e.g., Oracle, Mumps, TSql); the Catalyst platform; networking; SQL server—essentially, she needs to adapt to whatever system her client is using.
 
@@ -24,7 +24,7 @@ Kiri develops and executes strategies of implementing proprietary data warehousi
 
 ---
 
-### Goals
+## Goals
 
 -   Lead and manage the technical work (e.g., software and application installation, SQL development, ETL, and database design and architecture)
 -   Proactively identify roadblocks interfering with project deliverables and provide viable solutions to keep project on track
@@ -37,7 +37,7 @@ Kiri develops and executes strategies of implementing proprietary data warehousi
 
 ---
 
-### Needs
+## Needs
 
 -   Multiple database and analytics tools (e.g., IIS, TSQL, PLSQL, SSIS, SSMS; Health Catalyst tools, e.g., SAMD, SMD, Atlas, etc.)
 -   Multiple project management tools (e.g., JIRA, Health Catalyst Community, etc.)

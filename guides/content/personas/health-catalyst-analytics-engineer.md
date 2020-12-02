@@ -12,7 +12,7 @@
 
 # Ian Huang
 
-#### Analytic Services Organization
+### Analytic Services Organization
 
 Ian combines deep, analytics skills and a sound understanding of the processes and data that support the business of healthcare to inform a fundamental transformation of healthcare delivery. His primary accountability is to ensure that there is always a queue of measurable opportunities to act on that will drive down cost, improve quality, and improve patient experience.
 
@@ -26,7 +26,7 @@ Ian combines deep, analytics skills and a sound understanding of the processes a
 
 ---
 
-### Goals
+## Goals
 
 -   Determine project requirements through project analysis and consultation with project stakeholders and sponsors (based on decisions made to date)
 -   Determine the optimal solution to solve the stated problem (consulting, reports, analytic accelerator, etc.)
@@ -44,7 +44,7 @@ Ian combines deep, analytics skills and a sound understanding of the processes a
 
 ---
 
-### Needs
+## Needs
 
 -   Clear lines of communication with sales, Engagement Leads, clients, and other stakeholders who have worked to define the client need
 -   Build SAMs for use in customer's analytics applications

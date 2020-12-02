@@ -12,7 +12,7 @@
 
 # Diana Bremerton
 
-#### Patient
+### Patient
 
 Older individual with increasing medical needs, limited medical knowledge and increasing high healthcare utilization.  Not currently a good candidate for active care management, but would like to play a more active role in managing their own care.  Smartphone experience is basic to very limited.
 
@@ -24,7 +24,7 @@ Older individual with increasing medical needs, limited medical knowledge and in
 
 ---
 
-### Goals
+## Goals
 
 -   Maximize health and quality of life
 -   Manage their own health
@@ -32,7 +32,7 @@ Older individual with increasing medical needs, limited medical knowledge and in
 
 ---
 
-### Needs
+## Needs
 
 -   Ability to easily contact their providers and schedule appointments
 -   Information that they can easily access to answer questions and learn more about their conditions

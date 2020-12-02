@@ -12,7 +12,7 @@
 
 # Aaron Parano
 
-#### Cost Analyst, Cost Accountant, Analytics Engineer
+### Cost Analyst, Cost Accountant, Analytics Engineer
 
 Aaron performs validations to resolve configuration and data quality discrepancies. Based on requests from clinical programs and financial leaders, he also adjusts cost models, cost categories, and cost center settings and maintains standard allocations, values, and quality for the organization. He reports to the [Cost Management Director](/content/personas/cost-management-director). He is analytically and technically savvy.
 
@@ -24,7 +24,7 @@ Aaron performs validations to resolve configuration and data quality discrepanci
 
 ---
 
-### Goals
+## Goals
 
 -   Perform costing against the general ledger (go through activities, scrub data, etc.)
 -   Link system spending to patient activity
@@ -34,7 +34,7 @@ Aaron performs validations to resolve configuration and data quality discrepanci
 
 ---
 
-### Needs
+## Needs
 
 -   Access to accurate and detailed cost accounting
 -   Ability to adjust expenses and allocations as needed, especially during monthly costing period

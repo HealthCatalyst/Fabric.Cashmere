@@ -12,7 +12,7 @@
 
 # Colin Sessler
 
-#### Researcher
+### Researcher
 
 Colin's primary go is to find insights into the healthcare system's populations so that teams can measure and intervene with that population. Unlike quality improvement, researchers have to abide by study protocol guidelines. He spends a fair amount of time reviewing and following these guidelines. Although researchers vary greatly in how level of comfort with technology, Colin tends to be less comfortable with computers (which is true of many researchers).
 
@@ -24,7 +24,7 @@ Colin's primary go is to find insights into the healthcare system's populations 
 
 ---
 
-### Goals
+## Goals
 
 -   Minimize exposure to patient information until institutional review board (IRB) approval
 -   Look for insights to identify a cohort (during the pre-IRB exploratory phase)
@@ -38,7 +38,7 @@ Colin's primary go is to find insights into the healthcare system's populations 
 
 ---
 
-### Needs
+## Needs
 
 -   Understand and adhere to research protocols and regulatory laws (e.g., ability to export populations without PHI)
 -   Access data and analytics (benchmarks, variation, trends) to identify care gaps, over- or under-utilization, areas of under-performance, etc.

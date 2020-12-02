@@ -12,7 +12,7 @@
 
 # Alena Demostra
 
-#### Care Management Admin
+### Care Management Admin
 
 Former clinician who has transitioned from patient care to a managerial role. Multi-tasker; extremely organized and pragmatic. Advanced user of episodic EMR, little understanding of data warehousing, analytics, and software configuration or troubleshooting.
 
@@ -24,7 +24,7 @@ Former clinician who has transitioned from patient care to a managerial role. Mu
 
 ---
 
-### Goals
+## Goals
 
 -   Balance their team's workload (distribution of the patient panels / types of patients / conditions / complexity / resources)
 -   Finding efficiencies to speed up their workflow (pressure from above and below / stretched very thin)
@@ -41,7 +41,7 @@ Former clinician who has transitioned from patient care to a managerial role. Mu
 
 ---
 
-### Needs
+## Needs
 
 -   Reassign patients if a care team lead leaves the organization.
 -   Conveniently shift work between team members to accommodate unexpected and expected staff absences.

@@ -12,7 +12,7 @@
 
 # Edwin Henschen
 
-#### Enterprise Data Warehouse Manager
+### Enterprise Data Warehouse Manager
 
 Data architect at a healthcare organization. Highly skilled in SQL, very knowledgeable about ETL processes and philosophies, and have lots of practical experience in data warehousing. EDW work is mostly in development.
 
@@ -24,7 +24,7 @@ Data architect at a healthcare organization. Highly skilled in SQL, very knowled
 
 ---
 
-### Goals
+## Goals
 
 -   Load new tables to move data from a source system to the EDW
 -   Decide which tables go in which batches
@@ -34,7 +34,7 @@ Data architect at a healthcare organization. Highly skilled in SQL, very knowled
 
 ---
 
-### Needs
+## Needs
 
 -   On initial setup, go back and forth between the mapping source and error reports to resolve issues (may take a day or more)
 -   Create a limited number of batches

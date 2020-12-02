@@ -12,7 +12,7 @@
 
 # Soren Matson
 
-#### Platform - Data Acquisition Team
+### Platform - Data Acquisition Team
 
 Health Catalyst team member preparing client source marts to deploy in the Health Catalyst EDW and working with customers to develop ETL solutions. Has a highly technical skillset and a sophisticated understanding of data architecture and software development.  Familiar with SQL and SSMS. Doesn't have a background in healthcare.
 
@@ -24,14 +24,14 @@ Health Catalyst team member preparing client source marts to deploy in the Healt
 
 ---
 
-### Goals
+## Goals
 
 -   Develop custom ETL solutions
 -   Quickly hand off my finished work to the downstream team waiting on me
 
 ---
 
-### Needs
+## Needs
 
 -   Ability to rename source system entities (tables, views, or files) and columns, create new source marts, map tables and columns, and deploy tables
 -   Modify metadata connections with overridable and injectable extensibility points directly in SSMS

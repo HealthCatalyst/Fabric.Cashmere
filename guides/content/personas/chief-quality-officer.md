@@ -31,7 +31,7 @@ Oversees overall Patient Safety and Quality efforts with the hospital.  Reviewer
 
 ---
 
-### Goals
+## Goals
 
 -   Improve efficiency of harm detection
 -   Identify opportunities for patient safety improvement
@@ -40,7 +40,7 @@ Oversees overall Patient Safety and Quality efforts with the hospital.  Reviewer
 
 ---
 
-### Needs & Responsibilities
+## Needs & Responsibilities
 
 -   Responsible for tracking of various safety and quality metrics hospital-wide
 -   Responsible for ensuring data is reported for federally-required safety events

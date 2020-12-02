@@ -12,7 +12,7 @@
 
 # Nigel Fiske
 
-#### Care Management Director
+### Care Management Director
 
 Former clinician with several years of administrative experience; now responsible for operations of their care management programs. Multi-tasker; extremely organized and pragmatic. Advanced user of episodic EMR, some experience with analytics, little understanding of data warehousing, and software configuration or troubleshooting.
 
@@ -24,7 +24,7 @@ Former clinician with several years of administrative experience; now responsibl
 
 ---
 
-### Goals
+## Goals
 
 -   Report to [Chief Population Health Officer](/content/personas/chief-population-health-officer) on program status (metrics related to program effectiveness and outcomes)
 -   Ensure the productivity and performance of their care coordinators
@@ -40,7 +40,7 @@ Former clinician with several years of administrative experience; now responsibl
 
 ---
 
-### Needs
+## Needs
 
 -   Add and configure new users
 -   Deactivate / reactivate users

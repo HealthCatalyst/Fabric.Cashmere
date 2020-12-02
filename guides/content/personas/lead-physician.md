@@ -12,7 +12,7 @@
 
 # Margaret Haugen
 
-#### Medical Doctor
+### Medical Doctor
 
 Dr. Haugen frequently monitors data on quality, safety, appropriateness, and overutilization of care for her facility and/or department. When there is a worsening outcome, she activates her team to do a root-cause analysis and design an intervention. She also works to ensure that best-practice guidelines are followed and educates team members on new processes, including winning buy-in from fellow physicians. A physician with high credibility among her peers and direct, ongoing patient care experience, she also has acquired QI and process improvement skills and experience.
 
@@ -24,7 +24,7 @@ Dr. Haugen frequently monitors data on quality, safety, appropriateness, and ove
 
 ---
 
-### Goals
+## Goals
 
 -   Improve performance (process & outcomes) in her domain area, including best practices, safety, and overutilization or appropriateness of care
 -   Work with physicians to define and adjust processes/workflows to ensure appropriate use and adherence to guidelines, such as clinical practice guidelines and Choosing Wisely recommendation
@@ -35,7 +35,7 @@ Dr. Haugen frequently monitors data on quality, safety, appropriateness, and ove
 
 ---
 
-### Needs
+## Needs
 
 -   Access to summarized data (visually appealing charts)
 -   Visibility into what has changed and what is important in the domain area data set

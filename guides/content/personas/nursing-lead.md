@@ -12,7 +12,7 @@
 
 # Danelle Barsky
 
-#### Registered Nurse
+### Registered Nurse
 
 Very often monitors process data for her facility and/or department. When there is a process “miss” or adverse outcome, she performs a detail review. She also works to ensure that best practices are followed and educates team members on new processes. She needs the ability so see how a change in process impacts metrics.
 
@@ -24,7 +24,7 @@ Very often monitors process data for her facility and/or department. When there 
 
 ---
 
-### Goals
+## Goals
 
 -   Ensure that processes for delivering high-quality care (and appropriate transitions) are followed within her department
 -   Follow up on cases where process is not followed or adverse outcome is reported
@@ -34,7 +34,7 @@ Very often monitors process data for her facility and/or department. When there 
 
 ---
 
-### Needs
+## Needs
 
 -   Visibility into what has changed / what is important in the domain area data set—especially relating to process
 -   Ability to filter data by facility / department

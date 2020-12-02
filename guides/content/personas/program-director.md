@@ -12,7 +12,7 @@
 
 # Robert Coleman
 
-#### Program Manager or Director / Domain Coordinator
+### Program Manager or Director / Domain Coordinator
 
 The program manager or director is accountable for performance and outcomes improvement in his domain area. This person is data savvy, especially with Excel; previously used to lots of manual data aggregation and delayed data (several months behind); frustrated with his ability to identify priorities or make interventions or due to data lag or lack of context; spends the bulk of his time on data curation rather than interventions.
 
@@ -24,7 +24,7 @@ The program manager or director is accountable for performance and outcomes impr
 
 ---
 
-### Goals
+## Goals
 
 -   Improve performance (process & outcomes) in his domain area in the most meaningful way for the organization (i.e., improvements yield most vital benefits)
 -   Take action / follow-up on cases where an identified process is not followed or an adverse outcome or trend is reported
@@ -36,7 +36,7 @@ The program manager or director is accountable for performance and outcomes impr
 
 ---
 
-### Needs
+## Needs
 
 -   Quickly identify care gaps, over- or under-utilization, areas of under-performance, etc and be able to infer priorities for improvement work
 -   Drill into specific cases to find enough details to investigate—or link to where he can find that information

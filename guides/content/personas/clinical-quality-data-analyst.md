@@ -12,7 +12,7 @@
 
 # Kevin Keebler
 
-#### Clinical/Quality Data Analyst
+### Clinical/Quality Data Analyst
 
 The Clinical/Quality Data Analyst has experience and expertise with domain data and analytics tools. He is a consumer and creator of business intelligence reports that enable outcomes improvement. His workflow may begin with questions or requests from upper management or work teams—but self-driven hypotheses or data-scanning may also initiate analysis.
 
@@ -24,7 +24,7 @@ The Clinical/Quality Data Analyst has experience and expertise with domain data 
 
 ---
 
-### Goals
+## Goals
 
 -   Find opportunities to improve care and outcomes (clinical, financial, operational) within his area of interest
 -   Maintain focus on areas/outcomes of interest
@@ -33,7 +33,7 @@ The Clinical/Quality Data Analyst has experience and expertise with domain data 
 
 ---
 
-### Needs
+## Needs
 
 -   Access data and analytics (benchmarks, variation, trends)  to identify care gaps, over- or under-utilization, areas of under-performance, etc.
 -   Drill into specific cases to find enough details to investigate further, or link to where they can find that information

@@ -200,7 +200,7 @@ function readFoundationsFiles() {
 
 // Index the content section which is a combination of markdown and components
 function readContentFiles() {
-    // Start by parsing the style markdown files
+    // Start by parsing the main content markdown files
     glob('guides/content/*.md', function (er, files) {
         files
             .map(file => {
@@ -258,6 +258,49 @@ function readContentFiles() {
                         searchArray.push(sectionObj);
                     }
                 });
+            });
+    });
+
+    // Then parse the user persona markdown files
+    glob('guides/content/personas/*.md', function (er, files) {
+        files
+            .map(file => {
+                const basename = path.basename(file, path.extname(file));
+                return {
+                    path: file,
+                    basename: basename,
+                    outFile: basename
+                };
+            })
+            .forEach(mapping => {
+                const fileContent = fs.readFileSync(mapping.path, 'utf8');
+                // Go through each file and find titles
+                let matches: RegExpExecArray | null;
+                let found: string[] = [];
+                while ((matches = guideTitleRegex.exec(fileContent)) !== null) {
+                    // This is necessary to avoid infinite loops with zero-width matches
+                    if (matches.index === guideTitleRegex.lastIndex) {
+                        guideTitleRegex.lastIndex++;
+                    }
+                    matches.forEach((match: string, groupIndex: number) => {
+                        if (groupIndex === 1) {
+                            found.push(match);
+                        }
+                    });
+                }
+
+                const sectionObj = object = ({
+                    id: changeCase.snakeCase(mapping.basename),
+                    title: changeCase.titleCase(mapping.basename),
+                    content: mdGetContent(fileContent),
+                    link: 'content/personas/' + mapping.basename,
+                    category: 'content',
+                    displayName: mapping.basename,
+                    type: 'persona',
+                    section: changeCase.paramCase(mapping.basename)
+                });
+
+                searchArray.push(sectionObj);
             });
     });
 

@@ -12,7 +12,7 @@
 
 # Aldo Diana
 
-#### Care Management Patient
+### Care Management Patient
 
 Individual with complex medical needs, limited medical knowledge and often high healthcare utilization.  Approx 1/3 or more are over 65 years old and of those 42% have smartphones.  Smartphone experience is basic to very limited.
 
@@ -24,7 +24,7 @@ Individual with complex medical needs, limited medical knowledge and often high 
 
 ---
 
-### Goals
+## Goals
 
 -   Maximize health and quality of life
 -   Manage their own health
@@ -33,7 +33,7 @@ Individual with complex medical needs, limited medical knowledge and often high 
 
 ---
 
-### Needs
+## Needs
 
 -   Help in monitoring and tracking their data to share with their health providers
 -   Tools to check multiple times every day to help remember and follow their care plan

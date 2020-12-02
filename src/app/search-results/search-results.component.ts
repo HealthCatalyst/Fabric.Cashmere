@@ -38,7 +38,8 @@ export class SearchResultsComponent implements AfterViewInit {
         doc: new FormControl(true),
         example: new FormControl(true),
         api: new FormControl(true),
-        usage: new FormControl(true)
+        usage: new FormControl(true),
+        persona: new FormControl(true)
     });
 
     searchIcons = {
@@ -57,7 +58,7 @@ export class SearchResultsComponent implements AfterViewInit {
     ngAfterViewInit() {
         // String lists that take the values from the categories and types FormGroups
         let filterValues: string[] = ["foundations", "components", "guides", "bits", "content"];
-        let typeFilterValues: string[] = ["doc", "example", "api", "usage"];
+        let typeFilterValues: string[] = ["doc", "example", "api", "usage", "persona"];
 
         // Listens for changes in the categories FormGroup
         this.categories.valueChanges.subscribe(categoryValues => {

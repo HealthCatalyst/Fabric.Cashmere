@@ -12,7 +12,7 @@
 
 # Corine Bartow
 
-#### C-Suite Executive
+### C-Suite Executive
 
 This busy leader has historically relied on manual data capture for reporting (spreadsheets, etc.). However, she is comfortable with technology and data analysis—she’s used many different applications and analyzed domain-specific literature throughout her career. She has deep management and operations expertise. She is a primarily consumer of data, not a creator.
 
@@ -24,7 +24,7 @@ This busy leader has historically relied on manual data capture for reporting (s
 
 ---
 
-### Goals
+## Goals
 
 - Demonstrate that the domain area program is viable (through ROI). This may include:
     - Looking for opportunities to improve margin by identifying and targeting inappropriate utilization
@@ -42,7 +42,7 @@ This busy leader has historically relied on manual data capture for reporting (s
 
 ---
 
-### Needs
+## Needs
 
 -   Measure program or organizational performance—process and outcome measures, variation between staff (for reporting to leadership, identifying training needs, etc.)—and quickly identify meaningful changes
 -   Insight into drivers of outcomes (positive or negative) and the ability to communicate clearly and credibly with others in the organization about the opportunity to improve performance (single source of truth)

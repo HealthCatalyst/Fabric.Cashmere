@@ -33,7 +33,7 @@ Expert Clinical Reviewer and patient safety engagement lead.  Workflow is genera
 
 ---
 
-### Goals
+## Goals
 
 -   Improve efficiency of harm detection
 -   Conduct daily surveillance of patient charts for potential safety events (adverse events)
@@ -43,7 +43,7 @@ Expert Clinical Reviewer and patient safety engagement lead.  Workflow is genera
 
 ---
 
-### Needs & Responsibilities
+## Needs & Responsibilities
 
 -   Automated real-time alerts for chart review
 -   Access to training materials and live training session(s) for chart review methodology

@@ -12,7 +12,7 @@
 
 # Dee Rajan
 
-#### Population Health Administrator
+### Population Health Administrator
 
 Dee is a clinician with some business strategy and financial acumen; he's a strategic thinker committed to the vision of Population Health Management. He has average technical skills and is proficient with Microsoft Office.
 
@@ -24,7 +24,7 @@ Dee is a clinician with some business strategy and financial acumen; he's a stra
 
 ---
 
-### Goals
+## Goals
 
 -   Be an evangelist for population health at his hospital system
 -   Make value-based care viable (profitable) at his hospital system
@@ -35,7 +35,7 @@ Dee is a clinician with some business strategy and financial acumen; he's a stra
 
 ---
 
-### Needs
+## Needs
 
 -   Identify how and why value-based care is succeeding (or not) overall
 -   Quickly identify where the system is under-performing and which areas/groups/facilities are contributing to the underperformance; share this finding with the group/facility where the problem surfaces

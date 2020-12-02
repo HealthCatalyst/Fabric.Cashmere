@@ -12,7 +12,7 @@
 
 # Liz Booker
 
-#### Full Stack Software Engineer
+### Full Stack Software Engineer
 
 Developing modern web apps built with current frameworks and consuming data through APIs using Microservices.  Working on both Frontend and Backend pieces.
 
@@ -24,13 +24,13 @@ Developing modern web apps built with current frameworks and consuming data thro
 
 ---
 
-### Goals
+## Goals
 
 -   Utilize tools and technologies from other Health Catalyst products via their APIs
 
 ---
 
-### Needs
+## Needs
 
 -   Build integrations between IDEA apps and mobile apps
 -   Write on top of the IDEA API on data that is automatically integrated with the EDW

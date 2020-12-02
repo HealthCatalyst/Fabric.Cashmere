@@ -12,7 +12,7 @@
 
 # Vincent Christensen
 
-#### Data Steward
+### Data Steward
 
 Data stewardship is owned by content experts and supported by Information Technology. The data steward takes the lead in the identification of operational and business intelligence data requirements; ensures the quality of data names, business definitions, and business values; may be responsible for ensuring compliance with regulatory requirements and conformance with internal data policies and data access standards; and ensures appropriate security controls, analyzes and improves data quality, and identifies and resolves data-related issues.
 
@@ -24,7 +24,7 @@ Data stewardship is owned by content experts and supported by Information Techno
 
 ---
 
-### Goals
+## Goals
 
 -   Understanding of user personas/what access various users need (e.g., if users need access to different regions, patient data, application tabs, etc.)
 -   Perform regular audits of user access and terminate access of individuals or groups who no longer need access to perform their work (e.g., role change, attrition, etc.)
@@ -34,7 +34,7 @@ Data stewardship is owned by content experts and supported by Information Techno
 
 ---
 
-### Needs
+## Needs
 
 -   User access transparency surfaced within the application (ideally), including HR data (role changes, attrition, new hires, etc.) and usage statistics
 -   Apply security profiles based on user categories or user personas

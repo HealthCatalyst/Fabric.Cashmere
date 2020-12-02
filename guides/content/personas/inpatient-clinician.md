@@ -12,7 +12,7 @@
 
 # Val Robertson
 
-#### Registered Nurse, LPN, MD, DO, PA, NP
+### Registered Nurse, LPN, MD, DO, PA, NP
 
 Primarily cares for patients by monitoring them, administering medications, consulting with health care providers, updating patient records and educating patients and their patients’ families on disease and post-hospital treatment. Works in a variety of healthcare settings, including hospitals, rehabilitation centers, doctors’ offices, outpatient facilities and nursing homes.
 
@@ -24,7 +24,7 @@ Primarily cares for patients by monitoring them, administering medications, cons
 
 ---
 
-### Needs & Responsibilities
+## Needs & Responsibilities
 
 -   Responsible for patient care
 -   Need to assess twice in a shift the patient's risk-level

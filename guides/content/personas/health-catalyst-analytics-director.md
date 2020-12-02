@@ -12,7 +12,7 @@
 
 # Victoria Gress
 
-#### Analytic Services Organization
+### Analytic Services Organization
 
 Victoria works with one to two clients to fill a measurable queue of opportunities for her clients that will drive down cost, improve quality, and improve patient experience—and ensure that each improvement effort is supported with actionable analytics. She ensures high quality across all deliverables and provides oversight, focus, and mentoring for all [Health Catalyst Analytics Engineers](/content/personas/health-catalyst-analytics-engineer) working on deliverables for that client. In addition, she has all the skills of an Analytic Engineer (deep analytics, a sound understanding of the processes and data that support the business of healthcare to inform a fundamental transformation of healthcare delivery, opportunity analysis, etc.)—and she performs these functions as needed to support her clients.
 
@@ -24,7 +24,7 @@ Victoria works with one to two clients to fill a measurable queue of opportuniti
 
 ---
 
-### Goals
+## Goals
 
 -   Mentor a team of [Health Catalyst Analytics Engineers](/content/personas/health-catalyst-analytics-engineer) and monitor their progress as they complete their goals
 -   Determine project requirements through project analysis and consultation with project stakeholders and sponsors (based on decisions made to date); determine how to use resources to meet schedules and goals (including taking on some tasks herself)
@@ -35,7 +35,7 @@ Victoria works with one to two clients to fill a measurable queue of opportuniti
 
 ---
 
-### Needs
+## Needs
 
 -   Leadership development
 -   Project tracking tool(s)

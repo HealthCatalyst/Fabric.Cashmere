@@ -12,7 +12,7 @@
 
 # Erica Garcia
 
-#### Data Engineer
+### Data Engineer
 
 Junior data architect at a healthcare organization. Supporting EDW operations. Has experience with SSIS. EDW work is mostly in production.
 
@@ -24,7 +24,7 @@ Junior data architect at a healthcare organization. Supporting EDW operations. H
 
 ---
 
-### Goals
+## Goals
 
 -   Do first-level troubleshooting when failure notifications are sent
 -   Address failures in the context of which tables are most important, which applications need to be up in what timeframe, what tables are dependent on others
@@ -35,7 +35,7 @@ Junior data architect at a healthcare organization. Supporting EDW operations. H
 
 ---
 
-### Needs
+## Needs
 
 -   Use EDW Console to manage production of the EDW every morning
 -   Identify the ID of failed batches

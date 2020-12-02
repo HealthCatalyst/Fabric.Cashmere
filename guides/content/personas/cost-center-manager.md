@@ -12,7 +12,7 @@
 
 # Paige LeCroy
 
-#### Accountant, Cost Manager, Service-Line Manager/Program Director, Lead Physician, Nursing Lead
+### Accountant, Cost Manager, Service-Line Manager/Program Director, Lead Physician, Nursing Lead
 
 Paige has financial accountability for her department and reports to her manager on the operations and financial stability of her department. She has deep subject-matter expertise for her area and works with the [Cost Analyst/Accountant](/content/personas/cost-management-director) to integrate that expertise into the healthcare system's cost accounting. She has deep analytical savvy, but she isn't technically savvy.
 
@@ -24,7 +24,7 @@ Paige has financial accountability for her department and reports to her manager
 
 ---
 
-### Goals
+## Goals
 
 -   Improve performance (process & outcomes) in her domain area in the most meaningful way for the organization (i.e., improvements yield most vital benefits)
 -   Lead her department's operations and maintain its financial stability
@@ -33,7 +33,7 @@ Paige has financial accountability for her department and reports to her manager
 
 ---
 
-### Needs
+## Needs
 
 -   Access to accurate and detailed cost accounting
 -   Ability to quickly identify over- or under-utilization, care gaps, areas of under-performance, etc., and to infer priorities for improvement work

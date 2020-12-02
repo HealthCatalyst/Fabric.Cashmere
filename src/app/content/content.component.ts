@@ -1,5 +1,5 @@
-import {Component, OnDestroy} from '@angular/core';
-import {ActivatedRoute, Data, NavigationEnd, Router} from '@angular/router';
+import {Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
+import {ActivatedRoute, Data, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
@@ -17,6 +17,8 @@ export class ContentComponent implements OnDestroy {
     private unsubscribe = new Subject<void>();
     private appInsights;
 
+    @ViewChild('contentContainer') contentContainer: ElementRef;
+
     constructor(private activatedRoute: ActivatedRoute, private router: Router) {
         this.appInsights = new ApplicationInsightsService();
         // Listen for vertical tab bar navigation and update the select component
@@ -26,6 +28,10 @@ export class ContentComponent implements OnDestroy {
                     this.thisPage = activatedRoute.firstChild.snapshot.data['title'];
                     this.appInsights.logPageView(this.thisPage, event.urlAfterRedirects);
                 }
+            }
+            // Reset the scroll position of the vertical tab content container at the beginning of navigation
+            if (event instanceof NavigationStart && this.contentContainer) {
+                this.contentContainer.nativeElement.scrollTo(0, 0);
             }
         });
 
@@ -65,7 +71,6 @@ export class ContentComponent implements OnDestroy {
             for (let entry of this.selectOptions) {
                 if (entry.data && event === entry.data.title) {
                     this.router.navigate(['/content/' + entry.path]);
-                    window.scrollTo(0, 0);
                     break;
                 }
             }
@@ -75,7 +80,6 @@ export class ContentComponent implements OnDestroy {
     // Handle nav changes via the sidebar
     navUpdate(page: any) {
         this.router.navigate(['/content/' + page]);
-        window.scrollTo(0, 0);
     }
 
     ngOnDestroy(): void {

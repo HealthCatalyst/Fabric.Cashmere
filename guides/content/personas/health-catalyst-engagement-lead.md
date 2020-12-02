@@ -12,7 +12,7 @@
 
 # Nathan Chen
 
-#### Senior Director of Client Engagement
+### Senior Director of Client Engagement
 
 The EL has primary accountability for the success of our client engagements. Success is defined in several ways; client satisfaction with our products and services, the number of outcomes improvements the client achieves, increased longevity of the client’s partnership with Health Catalyst, and profitability for Health Catalyst. This position is responsible for helping clients become self-sufficient in transformational change while continuing to support, augment, and share new knowledge as it comes available. This position serves as a visible leader of our strong commitment to continuous improvement; the Health Catalyst operating principles, cultural attributes, and mission; and the assurance that these attributes are upheld by all client-facing resources contributing to the client engagement.
 
@@ -24,7 +24,7 @@ The EL has primary accountability for the success of our client engagements. Suc
 
 ---
 
-### Goals
+## Goals
 
 -   Partnering with clients to support technical and outcomes improvement activities
 -   Presence of partnership with IL and Health Catalyst Technical Director
@@ -39,7 +39,7 @@ The EL has primary accountability for the success of our client engagements. Suc
 
 ---
 
-### Needs
+## Needs
 
 -   Help in monitoring and tracking their data to share with their health providers
 -   Tools to check multiple times every day to help remember and follow their care plan
