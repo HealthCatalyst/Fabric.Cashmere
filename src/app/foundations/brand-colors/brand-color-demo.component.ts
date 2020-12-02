@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {SectionService} from 'src/app/shared/section.service';
+import {SectionService} from '../../shared/section.service';
 import {BaseDemoComponent} from '../../shared/base-demo.component';
 
 @Component({

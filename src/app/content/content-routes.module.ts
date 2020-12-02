@@ -1,7 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ContentComponent} from './content.component';
+import {PersonaOrgComponent} from './personas/persona-org/persona-org.component';
+import {PersonaListComponent} from './personas/persona-list/persona-list.component';
 import {MarkdownContentComponent} from '../shared/markdown-content.component';
+import {PersonaViewerComponent} from './personas/persona-viewer/persona-viewer.component';
 
 const routes: Routes = [
     {
@@ -18,8 +21,30 @@ const routes: Routes = [
                 }
             },
             {
+                path: 'org-chart',
+                component: PersonaOrgComponent,
+                data: {
+                    title: 'Organization Chart',
+                    category: 'User Personas'
+                }
+            },
+            {
+                path: 'personas',
+                component: PersonaListComponent,
+                data: {
+                    title: 'Persona List',
+                    category: 'User Personas'
+                },
+                children: [
+                    {
+                        path: ':id',
+                        component: PersonaViewerComponent
+                    }
+                ]
+            },
+            {
                 path: '**',
-                redirectTo: 'logo'
+                redirectTo: 'trademarks'
             }
         ]
     }

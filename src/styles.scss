@@ -130,6 +130,16 @@ body {
         width: 100%;
         margin-left: 0;
     }
+    .persona-header {
+        flex-wrap: wrap;
+        div {
+            width: 100%;
+            margin-left: 0 !important;
+        }
+        img {
+            margin: 0 auto 15px auto;
+        }
+    }
 }
 
 h1 {
@@ -301,5 +311,37 @@ hc-example-viewer .hc-tab-content-horizontal {
 
     &:hover {
         background-color: $charcoal-blue;
+    }
+}
+
+.persona-header {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 175px;
+        height: 175px;
+    }
+
+    div {
+        margin-left: 35px;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    h4 {
+        margin: 0;
+    }
+}
+
+.persona-viewer-container {
+    h3 {
+        margin-top: 0 !important;
+    }
+
+    ul {
+        margin: 0;
     }
 }
