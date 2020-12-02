@@ -1,6 +1,6 @@
 <div class="drawer-container">
     <hc-drawer-container>
-        <hc-menu-drawer align="left" menuTheme="dark-theme" #leftDrawer>
+        <hc-menu-drawer align="left" menuTheme="dark-theme" [ignoreEscapeKey]="true" #leftDrawer>
             <div hcDrawerToolbar>Filter Sets</div>
             <hc-drawer-item>
                 <div class="drawer-label">
@@ -64,6 +64,10 @@
                 <span *ngIf="leftDrawer.opened">Hide Filters</span>
                 <span *ngIf="!leftDrawer.opened">Show Filters</span>
             </button>
+            <hc-checkbox
+                [checked]="leftDrawer.ignoreEscapeKey"
+                (change)="leftDrawer.ignoreEscapeKey = !leftDrawer.ignoreEscapeKey"
+            >Ignore escape key</hc-checkbox>
         </div>
     </hc-drawer-container>
 </div>
