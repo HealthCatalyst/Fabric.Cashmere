@@ -51,15 +51,14 @@ export class HcFooterCellDef extends CdkFooterCellDef {}
 })
 export class HcColumnDef extends CdkColumnDef {
     private _justify: string = 'left';
-    private _colName: string;
 
     /** Unique name for this column. */
     @Input('hcColumnDef')
-    get name(): string {
-        return this._colName;
+    get colName(): string {
+        return this.name;
     }
-    set name( value: string ) {
-        this._colName = value;
+    set colName( value: string ) {
+        this.name = value;
     }
 
     /** Sets the text alignment for this column: `left` (default), `center` or `right` */

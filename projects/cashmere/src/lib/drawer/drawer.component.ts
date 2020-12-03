@@ -83,6 +83,9 @@ export class Drawer implements AfterContentInit {
     private _mode: string = 'push';
     private _align: string = 'left';
 
+    /** Defaults to false. Set to true to disable the closure of drawer by pressing the escape key. */
+    @Input() ignoreEscapeKey: boolean = false;
+
     /** Mode of the drawer: `over`, `push` or `side` */
     @Input()
     get mode(): string {
@@ -210,7 +213,7 @@ export class Drawer implements AfterContentInit {
 
     @HostListener('keydown', ['$event'])
     _onKeyDown(event: KeyboardEvent) {
-        if (event.key === 'Escape') {
+        if (event.key === 'Escape' && !this.ignoreEscapeKey) {
             this.toggleClose();
             event.stopPropagation();
         }
