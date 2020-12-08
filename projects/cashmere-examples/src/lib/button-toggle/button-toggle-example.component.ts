@@ -10,37 +10,11 @@ import { ButtonToggleComponent } from 'projects/cashmere/src/lib/button-toggle/b
 })
 export class ButtonToggleExampleComponent {
     public selectedButtonToggle: ButtonToggleComponent;
+    public selectedValue: any;
 
 
     @ViewChild(ButtonToggleGroupComponent, {read: false, static: true})
     buttonToggleGroupComponent: ButtonToggleGroupComponent;
-
-
-    // ngAfterContentInit(): void {
-    //     if (this.buttonToggleGroup && this.buttonToggleGroup.buttonToggles) {
-    //         this.buttonToggleGroup.buttonToggles.forEach((bt: ButtonToggleComponent) => {
-    //             if (bt.selected) {
-    //                 this.selectedButtonToggle = bt;
-    //             }
-    //         })
-    //     }
-    // }
-
-
-
-    // public getSelectedButtonToggleValue(): string {
-    //     if(this.selectedButtonToggle && this.selectedButtonToggle.value){
-    //         return this.selectedButtonToggle.value;
-    //     } else { return '';}
-    // }
-
-    x: any;
-
-    constructor(btg: ButtonToggleGroupComponent) {
-        this.x = this.buttonToggleGroupComponent.selectedButtonToggle();
-    }
-
-
 
 
 }

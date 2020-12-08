@@ -1,5 +1,5 @@
-@import '../sass/button-toggle.scss';
-@import '../sass/colors';
+@import "../sass/button-toggle.scss";
+@import "../sass/colors";
 
 .hc-button-toggle-group {
     display: inline-flex;
@@ -22,32 +22,52 @@
     cursor: pointer;
 }
 
+.hcToggleButton {
+    padding: 7px;
+    height: 35px;
+    font-size: 1.07143rem;
+    line-height: 15px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    color: #a1a1a1;
+}
+
 .selected {
-  background-position: center;
-  transition: background 0.8s;
-  
+    background-position: center;
+    transition: background 0.8s;
 }
 .hc-button-toggle:hover {
-  background: #ddd radial-gradient(circle, transparent 1%, #ddd 1%) center/15000%;
+    background: #ddd radial-gradient(circle, transparent 1%, #ddd 1%) center/15000%;
 }
 .hc-button-toggle:active {
-  background-color: #ccc;
-  background-size: 100%;
-  transition: background 0s;
+    background-color: #ccc;
+    background-size: 100%;
+    transition: background 0s;
 }
 
 @keyframes hoverBackground {
-    from {background-color: inherit; }
-    to { background-color: #eee;}
+    from {
+        background-color: inherit;
+    }
+    to {
+        background-color: #eee;
+    }
 }
 
 @keyframes fillBackground {
-    from {background-color: inherit; }
-    to { background-color: #bbb;}
-    to{ background-color: #cdcdcd;}
+    from {
+        background-color: inherit;
+    }
+    to {
+        background-color: #bbb;
+    }
+    to {
+        background-color: #cdcdcd;
+    }
 }
 
-.center{
+.center {
     display: block;
     margin: auto;
 }
@@ -55,4 +75,3 @@
 .selected {
     background-color: #ccc;
 }
-
