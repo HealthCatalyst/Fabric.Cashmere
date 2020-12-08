@@ -10,8 +10,8 @@ import { HcPopComponent } from '@healthcatalyst/cashmere';
 })
 
 export class AppComponent implements AfterViewInit {
-    @ViewChild('search', { static: false }) search: HcPopComponent;
-    @ViewChild('searchInput', { static: false }) input: any;
+    @ViewChild('search') search: HcPopComponent;
+    @ViewChild('searchInput') input: any;
 
     navSearchBar = new FormControl('');
 

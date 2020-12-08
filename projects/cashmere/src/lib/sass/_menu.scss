@@ -8,6 +8,7 @@ $cdk-z-index-overlay: $zindex-cdk-overlay;
 @include cdk-overlay();
 
 .hc-menu-panel {
+    position: relative;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     display: flex;
     flex-direction: column;

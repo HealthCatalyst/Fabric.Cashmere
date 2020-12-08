@@ -1,4 +1,5 @@
-import {Directive, HostBinding, ContentChildren, QueryList, AfterContentInit, OnDestroy} from '@angular/core';
+import {Directive, HostBinding, ContentChildren, AfterContentInit, OnDestroy} from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {HcPopoverAnchorDirective} from './popover-anchor.directive';
 import {Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';

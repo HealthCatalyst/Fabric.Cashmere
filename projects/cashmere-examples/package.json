@@ -1,20 +1,23 @@
 {
-    "name": "cashmere-examples",
+    "name": "@healthcatalyst/cashmere-examples",
     "version": "0.0.1",
     "main": "./bundles/cashmere-examples.umd.js",
     "module": "./esm5/cashmere-examples.js",
     "es2015": "./esm2015/cashmere-examples.js",
     "jsnext": "./esm2015/cashmere-examples.js",
     "typings": "./cashmere-examples.d.ts",
+    "dependencies": {
+        "tslib": "^2.0.0"
+    },
     "peerDependencies": {
-        "@angular/common": "^8.0.0",
-        "@angular/core": "^8.0.0",
-        "@ng-select/ng-select": "^3.0.0",
+        "@angular/common": "^10.2.1",
+        "@angular/core": "^10.2.1",
+        "@ng-select/ng-select": "^5.0.8",
         "sugar": "^2.0.6",
         "change-case": "^4.1.1"
     },
     "devDependencies": {
-        "@healthcatalyst/cashmere": "*",
-        "@bit/healthcatalyst.cashmere.change-case-pipe": "*"
+        "@bit/healthcatalyst.cashmere.change-case-pipe": "0.0.5",
+        "@healthcatalyst/cashmere": "*"
     }
 }

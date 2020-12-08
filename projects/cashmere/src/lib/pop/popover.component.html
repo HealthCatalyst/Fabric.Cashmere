@@ -4,6 +4,7 @@
       class="{{_yAlignClass}} {{_xAlignClass}}"
       [class.hc-pop-container-basic]="!disableStyle"
       [ngClass]="_classList"
+      [style.max-width]="maxWidth"
       (click)="_popContainerClicked()"
       [@transformPopover]="_getAnimation()"
       (@transformPopover.done)="_onAnimationDone($event)">

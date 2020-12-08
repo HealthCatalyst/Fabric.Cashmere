@@ -1,9 +1,9 @@
 <div class="drawer-container">
     <hc-drawer-container>
-        <hc-drawer align="left" #leftDrawer>
+        <hc-drawer align="left" [(opened)]="leftState" #leftDrawer>
             Left drawer content
         </hc-drawer>
-        <hc-drawer align="right" #rightDrawer>
+        <hc-drawer align="right" [(opened)]="rightState" #rightDrawer>
             Right drawer content
         </hc-drawer>
 
@@ -14,4 +14,6 @@
             Toggle Right Drawer
         </button>
     </hc-drawer-container>
+    <p>Left Drawer State: <strong>{{leftState?"Opened":"Closed"}}</strong></p>
+    <p>Right Drawer State: <strong>{{rightState?"Opened":"Closed"}}</strong></p>
 </div>

@@ -2,7 +2,6 @@
 @import '../../sass/popover.scss';
 
 .hc-tooltip-container {
-    top: -10px;
     line-height: 14px; // https://github.com/HealthCatalyst/Fabric.Cashmere/issues/1365
 
     .hc-tooltip {
@@ -11,6 +10,6 @@
     }
 
     .hc-pop-arrow {
-        bottom: -14px;
+        bottom: -6px;
     }
 }

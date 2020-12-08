@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TileModule } from './tile.module';
-import { TileHeaderDirective } from './tile-header.directive';
+import { TileHeaderDirective, TileHeaderType } from './tile-header.directive';
 
 @Component({
     template: `
@@ -20,7 +20,7 @@ describe('TileHeaderDirective', () => {
     let fixture: ComponentFixture<TestComponent>;
     let directive: TileHeaderDirective;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestComponent],
             imports: [TileModule]
@@ -46,8 +46,8 @@ describe('TileHeaderDirective', () => {
         expect(directive._headerBlue).toBeFalsy();
     });
 
-    it('when setting an invalid value', () => {
-        const setInvalid = () => component.headerType = 'someInvalidValue';
+    describe('when setting an invalid value', () => {
+        const setInvalid = () => (directive.type = ('someInvalidValue' as string) as TileHeaderType);
         it('should throw an error', () => expect(setInvalid).toThrowError());
     });
 });

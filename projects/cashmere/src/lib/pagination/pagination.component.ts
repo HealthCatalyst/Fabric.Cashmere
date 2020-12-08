@@ -4,7 +4,6 @@ import {BasePaginationComponent} from './base-pagination';
 
 /** The pagination control enables the user to navigate across paged content.
  * Although commonly used with tables and data grids, this control may be used any place where paged data is used.
- * @inheritdoc
  * */
 @Component({
     selector: 'hc-pagination',

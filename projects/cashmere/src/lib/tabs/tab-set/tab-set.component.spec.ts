@@ -1,6 +1,6 @@
 import {TabComponent} from '../tab/tab.component';
 import {TabSetComponent, TabChangeEvent} from './tab-set.component';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -28,7 +28,7 @@ describe('TabSetComponent', () => {
     let component: TabSetComponent;
     let fixture: ComponentFixture<TestTabSetComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [RouterTestingModule],
             declarations: [TabSetComponent, TabComponent, TestTabSetComponent]

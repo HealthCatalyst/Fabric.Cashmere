@@ -13,7 +13,6 @@ import {createMissingDateImplError} from '../datetime/datepicker-errors';
 import {DatepickerComponent} from '../datepicker.component';
 import {coerceBooleanProperty} from '../utils/boolean-property';
 import {Subscription} from 'rxjs';
-import {DOWN_ARROW} from '@angular/cdk/keycodes';
 import {D, HC_DATE_FORMATS, HcDateFormats} from '../datetime/date-formats';
 import {DateAdapter} from '../datetime/date-adapter';
 import {HcFormControlComponent} from '../../form-field/hc-form-control.component';
@@ -113,6 +112,9 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
         this._value = value;
         this._formatValue(value);
 
+        if ( value ) {
+            this._timeDate = value;
+        }
         if (!this._dateAdapter.sameDate(oldDate, value)) {
             this._valueChange.emit(value);
         }
@@ -192,6 +194,9 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     private _datepickerSubscription = Subscription.EMPTY;
 
     private _localeSubscription = Subscription.EMPTY;
+
+    // Stores a placeholder date value to be used for parsing when in time-only mode
+    private _timeDate: Date = new Date();
 
     /** The form control validator for whether the input parses. */
     private _parseValidator: ValidatorFn = (): ValidationErrors | null => {
@@ -312,7 +317,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     }
 
     _onKeydown(event: KeyboardEvent) {
-        const isAltDownArrow = event.altKey && event.keyCode === DOWN_ARROW;
+        const isAltDownArrow = event.altKey && event.key === 'ArrowDown';
 
         if (this._datepicker && isAltDownArrow && !this._elementRef.nativeElement.readOnly) {
             this._datepicker.open();
@@ -321,7 +326,14 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     }
 
     _onInput(value: string) {
+        // Add stored date value to a time-only input for javascript date object parsing
+        let pickerMode = this._datepicker ? this._datepicker.mode : this._mode;
+        if ( pickerMode === 'time' ) {
+            value = this._timeDate.getDate()  + '/' + (this._timeDate.getMonth() + 1) + '/' + this._timeDate.getFullYear() + ' ' + value;
+        }
+
         let date = this._dateAdapter.parse(value, this._dateFormats.parse.dateInput);
+
         /** Two-digit year input conversion method for IE
          * Based on the current year, assume that the four-digit year date should be in
          * either the next 30 years, or the preceding 70 years */

@@ -7,11 +7,11 @@ import {
     OnDestroy,
     EventEmitter,
     Output,
-    QueryList,
     ContentChildren,
     HostListener,
     AfterViewChecked
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {Subject} from 'rxjs';
 import {HcScrollNavComponent} from '../nav/scroll-nav.component';
@@ -40,7 +40,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     @Input() public shouldAnimateScroll = true;
     /** Fires when a new section is scrolled into view. Broadcasts the id of that section. */
     @Output() public newSectionInView: EventEmitter<string> = new EventEmitter<string>();
-    @ViewChild('scrollContainer', {read: CdkScrollable, static: false}) public _cdkScrollableElement: CdkScrollable;
+    @ViewChild('scrollContainer', { read: CdkScrollable }) public _cdkScrollableElement: CdkScrollable;
     @ContentChildren(ScrollNavTargetDirective) private targets: QueryList<ScrollNavTargetDirective>;
     /** Id of the current section scrolled into view. */
     public sectionInView: string;

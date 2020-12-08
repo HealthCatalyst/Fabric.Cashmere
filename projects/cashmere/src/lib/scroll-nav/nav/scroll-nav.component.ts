@@ -1,4 +1,5 @@
-import {Component, ElementRef, ViewEncapsulation, AfterViewInit, QueryList, ContentChildren} from '@angular/core';
+import {Component, ElementRef, ViewEncapsulation, AfterViewInit, ContentChildren} from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {ScrollNavLinkDirective} from './scroll-nav-link.directive';
 
 /** Container for scroll navigation links. */
@@ -32,8 +33,13 @@ export class HcScrollNavComponent implements AfterViewInit {
     }
 
     private setActiveClass(element: HTMLElement): void {
+        const focusedEl = document.activeElement;
         this._links.forEach(e => {
             e.classList.remove(this.ACTIVE_CLASS);
+            // If a nav item on the scroll list currently has focus, remove it so a highlight border doesn't persist on scroll
+            if ( focusedEl === e ) {
+                e.blur();
+            }
         });
         element.classList.add(this.ACTIVE_CLASS);
     }

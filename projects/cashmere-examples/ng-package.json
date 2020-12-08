@@ -6,7 +6,10 @@
         "entryFile": "src/public_api.ts",
         "umdModuleIds": {
             "@healthcatalyst/cashmere": "@healthcatalyst/cashmere",
-            "@bit/healthcatalyst.cashmere.change-case-pipe": "@bit/healthcatalyst.cashmere.change-case-pipe"
+            "@bit/healthcatalyst.cashmere.change-case-pipe/dist": "@bit/healthcatalyst.cashmere.change-case-pipe",
+            "sugar": "sugar",
+            "@ng-select/ng-select": "@ng-select/ng-select",
+            "change-case": "change-case"
         }
     }
 }

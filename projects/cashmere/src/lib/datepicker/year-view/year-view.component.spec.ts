@@ -1,11 +1,10 @@
 import {Direction, Directionality} from '@angular/cdk/bidi';
-import {DOWN_ARROW, END, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW} from '@angular/cdk/keycodes';
 import {Component, ViewChild} from '@angular/core';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {HcNativeDateModule} from '../datetime/datetime.module';
 import {MAR, JUL, JUN, JAN, DEC, NOV, FEB, SEP, AUG, MAY, OCT} from '../utils/month-constants';
-import {dispatchFakeEvent, dispatchKeyboardEvent} from '../utils/dispatch-events';
+import {dispatchFakeEvent, dispatchEvent} from '../utils/dispatch-events';
 import {CalendarBodyComponent} from '../calendar-body/calendar-body.component';
 import {YearViewComponent} from './year-view.component';
 
@@ -13,7 +12,7 @@ import {YearViewComponent} from './year-view.component';
 describe('HcYearView', () => {
     let dir: {value: Direction};
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [HcNativeDateModule],
             declarations: [
@@ -113,12 +112,14 @@ describe('HcYearView', () => {
                 });
 
                 it('should decrement month on left arrow press', () => {
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', LEFT_ARROW);
+                    let keyEvent = new KeyboardEvent('keydown', { key: 'ArrowLeft' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2016, DEC, 5));
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', LEFT_ARROW);
+                    keyEvent = new KeyboardEvent('keydown', { key: 'ArrowLeft' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2016, NOV, 5));
@@ -127,24 +128,28 @@ describe('HcYearView', () => {
                 it('should increment month on left arrow press in rtl', () => {
                     dir.value = 'rtl';
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', LEFT_ARROW);
+                    let keyEvent = new KeyboardEvent('keydown', { key: 'ArrowLeft' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, FEB, 5));
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', LEFT_ARROW);
+                    keyEvent = new KeyboardEvent('keydown', { key: 'ArrowLeft' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, MAR, 5));
                 });
 
                 it('should increment month on right arrow press', () => {
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', RIGHT_ARROW);
+                    let keyEvent = new KeyboardEvent('keydown', { key: 'ArrowRight' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, FEB, 5));
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', RIGHT_ARROW);
+                    keyEvent = new KeyboardEvent('keydown', { key: 'ArrowRight' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, MAR, 5));
@@ -153,19 +158,22 @@ describe('HcYearView', () => {
                 it('should decrement month on right arrow press in rtl', () => {
                     dir.value = 'rtl';
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', RIGHT_ARROW);
+                    let keyEvent = new KeyboardEvent('keydown', { key: 'ArrowRight' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2016, DEC, 5));
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', RIGHT_ARROW);
+                    keyEvent = new KeyboardEvent('keydown', { key: 'ArrowRight' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2016, NOV, 5));
                 });
 
                 it('should go up a row on up arrow press', () => {
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', UP_ARROW);
+                    let keyEvent = new KeyboardEvent('keydown', { key: 'ArrowUp' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2016, SEP, 5));
@@ -173,7 +181,8 @@ describe('HcYearView', () => {
                     calendarInstance.date = new Date(2017, JUL, 1);
                     fixture.detectChanges();
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', UP_ARROW);
+                    keyEvent = new KeyboardEvent('keydown', { key: 'ArrowUp' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, MAR, 1));
@@ -181,14 +190,16 @@ describe('HcYearView', () => {
                     calendarInstance.date = new Date(2017, DEC, 10);
                     fixture.detectChanges();
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', UP_ARROW);
+                    keyEvent = new KeyboardEvent('keydown', { key: 'ArrowUp' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, AUG, 10));
                 });
 
                 it('should go down a row on down arrow press', () => {
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', DOWN_ARROW);
+                    let keyEvent = new KeyboardEvent('keydown', { key: 'ArrowDown' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, MAY, 5));
@@ -196,7 +207,8 @@ describe('HcYearView', () => {
                     calendarInstance.date = new Date(2017, JUN, 1);
                     fixture.detectChanges();
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', DOWN_ARROW);
+                    keyEvent = new KeyboardEvent('keydown', { key: 'ArrowDown' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, OCT, 1));
@@ -204,7 +216,8 @@ describe('HcYearView', () => {
                     calendarInstance.date = new Date(2017, SEP, 30);
                     fixture.detectChanges();
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', DOWN_ARROW);
+                    keyEvent = new KeyboardEvent('keydown', { key: 'ArrowDown' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2018, JAN, 30));
@@ -214,12 +227,14 @@ describe('HcYearView', () => {
                     calendarInstance.date = new Date(2017, SEP, 30);
                     fixture.detectChanges();
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', HOME);
+                    let keyEvent = new KeyboardEvent('keydown', { key: 'Home' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, JAN, 30));
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', HOME);
+                    keyEvent = new KeyboardEvent('keydown', { key: 'Home' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, JAN, 30));
@@ -229,12 +244,14 @@ describe('HcYearView', () => {
                     calendarInstance.date = new Date(2017, OCT, 31);
                     fixture.detectChanges();
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', END);
+                    let keyEvent = new KeyboardEvent('keydown', { key: 'End' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, DEC, 31));
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', END);
+                    keyEvent = new KeyboardEvent('keydown', { key: 'End' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, DEC, 31));
@@ -244,12 +261,14 @@ describe('HcYearView', () => {
                     calendarInstance.date = new Date(2016, FEB, 29);
                     fixture.detectChanges();
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', PAGE_UP);
+                    let keyEvent = new KeyboardEvent('keydown', { key: 'PageUp' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2015, FEB, 28));
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', PAGE_UP);
+                    keyEvent = new KeyboardEvent('keydown', { key: 'PageUp' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2014, FEB, 28));
@@ -259,12 +278,14 @@ describe('HcYearView', () => {
                     calendarInstance.date = new Date(2016, FEB, 29);
                     fixture.detectChanges();
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', PAGE_DOWN);
+                    let keyEvent = new KeyboardEvent('keydown', { key: 'PageDown' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2017, FEB, 28));
 
-                    dispatchKeyboardEvent(calendarBodyEl, 'keydown', PAGE_DOWN);
+                    keyEvent = new KeyboardEvent('keydown', { key: 'PageDown' });
+                    dispatchEvent(calendarBodyEl, keyEvent);
                     fixture.detectChanges();
 
                     expect(calendarInstance.date).toEqual(new Date(2018, FEB, 28));
@@ -303,7 +324,7 @@ class StandardYearView {
     selected = new Date(2017, MAR, 10);
     selectedMonth: Date;
 
-    @ViewChild(YearViewComponent, {static: false})
+    @ViewChild(YearViewComponent)
     yearView: YearViewComponent;
 }
 
