@@ -50,7 +50,7 @@ export class TabSetComponent implements AfterContentInit {
      */
     tabContent: TemplateRef<any>;
 
-    @ContentChildren(TabComponent)
+    @ContentChildren(TabComponent, {descendants: true})
     _tabs: QueryList<TabComponent>;
 
     /** Emits when the selected tab is changed */
