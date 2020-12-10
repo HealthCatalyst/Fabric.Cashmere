@@ -10,8 +10,8 @@
 <br /><br />
 <div>
     <hc-button-toggle-group buttonStyle='secondary' (selectionChangedEvent)='buttonStyleSelectionChangedEvent($event)'>
-        <hc-button-toggle value='primary' [selected]='true'>Primary</hc-button-toggle>
-        <hc-button-toggle value='secondary'>Secondary</hc-button-toggle>
+        <hc-button-toggle value='primary'>Primary</hc-button-toggle>
+        <hc-button-toggle value='secondary' [selected]='true'>Secondary</hc-button-toggle>
         <hc-button-toggle value='primary-alt'>Primary Alt</hc-button-toggle>
         <hc-button-toggle value='destructive'>Destructive</hc-button-toggle>
         <hc-button-toggle value='neutral'>Neutral</hc-button-toggle>
@@ -19,5 +19,5 @@
 </div>
 <br /><br />
 <div>
-    Selected Button Value: {{selectedButtonToggle ? selectedButtonToggle.value : 'none'}}
+    Selected Button Value: {{selectedButtonToggleValue ? selectedButtonToggleValue : 'none'}}
 </div>

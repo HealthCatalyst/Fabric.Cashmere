@@ -25,24 +25,32 @@
     }
 }
 
+
+
 .hc-button-toggle {
-    @include hc-button-toggle();
 
     &.hc-primary {
-        @include hc-button-primary();
+        @include hc-button-toggle($primary-action);
+
     }
     &.hc-primary-alt {
-        @include hc-button-primary-alt();
+        @include hc-button-toggle($primary-alt-action);
+        // @include hc-button-primary-alt();
     }
     &.hc-destructive {
-        @include hc-button-destructive();
+        @include hc-button-toggle($destructive-action);
+      //  @include hc-button-destructive();
     }
     &.hc-neutral {
-        @include hc-button-neutral();
+        @include hc-button-toggle($neutral-action);
+       // @include hc-button-neutral();
     }
     &.hc-secondary {
-        @include hc-button-secondary();
-        @include hc-button-toggle-secondary( false );
+        @include hc-button-toggle($gray-100);
+        border: 1px solid $gray-200;
+        color: $gray-500;
+     //   @include hc-button-secondary();
+      //  @include hc-button-toggle-secondary( false );
     }
 
     &.hc-sm {
@@ -113,179 +121,3 @@
         @include hc-button-custom( $tan );
     }
 }
-
-
-// hc-button-toggle-group div:first-of-type hc-button-toggle:first-of-type .hc-button-toggle {
-//     border-radius: 5px 0 0 5px;
-//     border-right: none;
-// }
-
-// hc-button-toggle-group div:first-of-type hc-button-toggle:last-of-type .hc-button-toggle {
-//     border-radius: 0 5px 5px 0;
-//     border-left: none;
-// }
-
-
-// .hc-primary div:first-of-type hc-button-toggle:first-of-type .hc-button-toggle {
-//     border-radius: 5px 0 0 5px;
-//     border-right: 1px solid scale-color($primary-action, $lightness: 10%);
-// }
-
-// .hc-primary div:first-of-type hc-button-toggle:last-of-type .hc-button-toggle {
-//     border-radius: 0 5px 5px 0;
-//     border-left: 1px solid scale-color($primary-action, $lightness: 10%);
-// }
-
-// .hc-neutral div:first-of-type hc-button-toggle:first-of-type .hc-button-toggle {
-//     border-radius: 5px 0 0 5px;
-//     border-right: 1px solid scale-color($neutral-action, $lightness: 10%);
-// }
-
-// .hc-neutral div:first-of-type hc-button-toggle:last-of-type .hc-button-toggle {
-//     border-radius: 0 5px 5px 0;
-//     border-left: 1px solid scale-color($neutral-action, $lightness: 10%);
-// }
-
-// .hc-primary-alt div:first-of-type hc-button-toggle:first-of-type .hc-button-toggle {
-//     border-radius: 5px 0 0 5px;
-//     border-right: 1px solid scale-color($primary-alt-action, $lightness: 10%);
-// }
-
-// .hc-primary-alt div:first-of-type hc-button-toggle:last-of-type .hc-button-toggle {
-//     border-radius: 0 5px 5px 0;
-//     border-left: 1px solid scale-color($primary-alt-action, $lightness: 10%);
-// }
-
-// .hc-destructive div:first-of-type hc-button-toggle:first-of-type .hc-button-toggle {
-//     border-radius: 5px 0 0 5px;
-//     border-right: 1px solid scale-color($destructive-action, $lightness: 10%);
-// }
-
-// .hc-destructive div:first-of-type hc-button-toggle:last-of-type .hc-button-toggle {
-//     border-radius: 0 5px 5px 0;
-//     border-left: 1px solid scale-color($destructive-action, $lightness: 10%);
-// }
-
-
-// .hc-button-toggle-sm {
-//     padding: 5px;
-// }
-
-.hc-button-toggle {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    text-align: center;
-    padding: 10px;
-    min-height: 35px;
-    height: 100%;
-    cursor: pointer;
-    font-size: 1.07143rem;
-    padding: 0 10px;
-    line-height: 15px;
-    background-position: center;
-    color: $white;
-    background-size: 100%;
-}
-
-// .hc-button-toggle:active{
-
-// }
-
-// .hc-secondary hc-button-toggle .selected {
-//     box-shadow: inset 0 0 4px 0 $gray-500;
-//     color: $white;
-//     background-color: $gray-400;
-// }
-
-// .hc-secondary .hc-button-toggle {
-//     border: 1px solid $gray-300;
-//     color: $gray-500;
-// }
-
-// .hc-secondary .hc-button-toggle:hover {
-//      background: $gray-200 radial-gradient(circle, transparent 1%, $gray-200 1%) center/15000%;
-//  }
-
-// .hc-primary hc-button-toggle .selected {
-//     box-shadow: inset 0 0 4px 0 scale-color($primary-action, $lightness: -60%);
-//     background-color: scale-color($primary-action, $lightness: -30%);
-// }
-
-// .hc-primary .hc-button-toggle:active {
-//     background-color: scale-color($primary-action, $lightness: -25%);
-// }
-
-// .hc-primary .hc-button-toggle {
-//     border: 1px solid $primary-action;
-//     background-color: $primary-action;
-// }
-
-// .hc-primary .hc-button-toggle:hover {
-//      background: scale-color($primary-action, $lightness: 10%) radial-gradient(circle, transparent 1%, scale-color($primary-action, $lightness: 10%) 1%) center/15000%;
-//  }
-
-
-// .hc-primary-alt hc-button-toggle .selected {
-//     box-shadow: inset 0 0 4px 0 scale-color($primary-alt-action, $lightness: -60%);
-//     background-color: scale-color($primary-alt-action, $lightness: -30%);
-// }
-
-// .hc-primary-alt .hc-button-toggle:active {
-//     background-color: scale-color($primary-alt-action, $lightness: -25%);
-// }
-
-// .hc-primary-alt .hc-button-toggle {
-//     border: 1px solid $primary-alt-action;
-//     background-color: $primary-alt-action;
-// }
-
-// .hc-primary-alt .hc-button-toggle:hover {
-//      background: scale-color($primary-alt-action, $lightness: 10%) radial-gradient(circle, transparent 1%, scale-color($primary-alt-action, $lightness: 10%) 1%) center/15000%;
-//  }
-
-//  .hc-destructive hc-button-toggle .selected {
-//     box-shadow: inset 0 0 4px 0 scale-color($destructive-action, $lightness: -60%);
-//     background-color: scale-color($destructive-action, $lightness: -30%);
-// }
-
-// .hc-destructive .hc-button-toggle:active {
-//     background-color: scale-color($destructive-action, $lightness: -25%);
-// }
-
-// .hc-destructive .hc-button-toggle {
-//     border: 1px solid $destructive-action;
-//     background-color: $destructive-action;
-// }
-
-// .hc-destructive .hc-button-toggle:hover {
-//      background: scale-color($destructive-action, $lightness: 10%) radial-gradient(circle, transparent 1%, scale-color($destructive-action, $lightness: 10%) 1%) center/15000%;
-//  }
-
-//  .hc-neutral hc-button-toggle .selected {
-//     box-shadow: inset 0 0 4px 0 scale-color($neutral-action, $lightness: -60%);
-//     background-color: scale-color($neutral-action, $lightness: -30%);
-// }
-
-// .hc-neutral .hc-button-toggle:active {
-//     background-color: scale-color($neutral-action, $lightness: -25%);
-// }
-
-// .hc-neutral .hc-button-toggle {
-//     border: 1px solid $neutral-action;
-//     background-color: $neutral-action;
-// }
-
-// .hc-neutral .hc-button-toggle:hover {
-//      background: scale-color($neutral-action, $lightness: 10%) radial-gradient(circle, transparent 1%, scale-color($neutral-action, $lightness: 10%) 1%) center/15000%;
-//  }
-
-// .hc-button-toggle:active {
-//     background-color: #ccc;
-// }
-
-// .center {
-//     display: block;
-//     margin: auto;
-// }
-

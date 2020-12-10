@@ -1,7 +1,93 @@
-@import './colors';
-@import './functions';
-@import './mixins';
+@import "./colors";
+@import "./functions";
+@import "./mixins";
 
 @mixin hc-button-toggle() {
     display: flex;
+}
+
+@mixin hc-button-toggle-first() {
+    border-radius: 5px 0 0 5px;
+}
+
+@mixin hc-button-toggle-last() {
+    border-radius: 0 5px 5px 0;
+}
+
+@mixin hc-button-toggle-secondary($param) {
+}
+
+@mixin hc-button-secondary() {
+}
+
+@mixin hc-button-toggle($color) {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    min-height: 35px;
+    height: 100%;
+    cursor: pointer;
+    font-size: 1.07143rem;
+    min-width: auto !important;
+    padding: 0 10px !important;
+    line-height: 15px;
+    background-position: center;
+    color: $white;
+    background-color: $color;
+    background-size: 100%;
+
+    &[disabled] {
+        cursor: not-allowed;
+    }
+
+    &:focus {
+        outline: none;
+        border-bottom: none;
+        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
+    }
+
+    &:active {
+        background-image: none;
+        outline: none;
+    }
+
+    &:hover {
+        background-color: shade($color, 20%);
+    }
+
+    &.selected {
+        background-color: red;
+        font-weight: bold;
+        border: 1px solid red;
+    }
+
+    // Remove Firefox's active state dotted outline b/c we have our own highlight
+    &::-moz-focus-inner {
+        border: 0;
+    }
+}
+
+@mixin hc-button-sm() {
+    padding: 3px 12px;
+    height: 26px;
+    min-width: auto;
+    @include fontSize(14px);
+    line-height: 14px;
+}
+
+@mixin hc-button-md() {
+    padding: 0 20px;
+    height: 35px;
+    min-width: 150px;
+    @include fontSize(15px);
+    line-height: 15px;
+}
+
+@mixin hc-button-lg() {
+    padding: 0 30px;
+    height: 40px;
+    min-width: 200px;
+    @include fontSize(17px);
+    line-height: 17px;
 }
