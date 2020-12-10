@@ -1,9 +1,30 @@
-import {AfterViewInit, Component, ContentChildren, EventEmitter, forwardRef, OnDestroy, Output, QueryList, ViewEncapsulation} from '@angular/core';
+import { ElementRef, Input, QueryList, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, EventEmitter, forwardRef, OnDestroy, Output, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { parseBooleanAttribute } from '../util';
+import { ButtonToggleChangeEvent } from './button-toggle-change-event';
 import { ButtonToggleComponent } from './button-toggle.component';
 
 
+
+
+
+export function validateStyleInput(style: string) {
+    if (supportedStyles.indexOf(style) < 0 && supportedColors.indexOf(style) < 0) {
+        throw Error('Unsupported buttonStyle attribute value on ButtonComponent: ' + style);
+    }
+}
+
+export function validateSizeInput(size: string) {
+    if (supportedSizes.indexOf(size) < 0) {
+        throw Error('Unsupported size attribute value on ButtonComponent: ' + size);
+    }
+}
+
+const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
+const supportedColors = ['blue', 'green', 'purple', 'red', 'orange', 'ruby-red', 'deep-red', 'red-orange', 'magenta', 'pink', 'light-pink', 'azure', 'teal', 'dark-green', 'brown', 'purple-gray', 'yellow', 'yellow-orange', 'tan'];
+const supportedSizes = ['sm', 'md', 'lg'];
 
 /** Notification banners are used for general information about the state of the application or upcoming events. For instant
  * feedback responding to user actions, use a toaster message.*/
@@ -13,9 +34,9 @@ import { ButtonToggleComponent } from './button-toggle.component';
     styleUrls: ['./button-toggle-group.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ButtonToggleGroupComponent implements AfterViewInit, OnDestroy  {
+export class ButtonToggleGroupComponent implements AfterViewInit, OnDestroy {
 
-    @Output() selectionChangedEvent: EventEmitter<ButtonToggleComponent> = new EventEmitter<ButtonToggleComponent>();
+    @Output() selectionChangedEvent: EventEmitter<ButtonToggleChangeEvent> = new EventEmitter<ButtonToggleChangeEvent>();
 
     public nextUniqueId: number = 0;
     /** A list of all the radio buttons included in the group */
@@ -24,92 +45,145 @@ export class ButtonToggleGroupComponent implements AfterViewInit, OnDestroy  {
         { descendants: true }
     )
     private _buttonToggles: QueryList<ButtonToggleComponent>;
+    public get buttonToggles(): ButtonToggleComponent[] {
+        if (this._buttonToggles && this._buttonToggles.length > 0) {
+            return this._buttonToggles.toArray();
+        } else { return []; }
+    }
 
-    private _value: any = null;
-    private _uniqueName = `hc-radio-group-${this.nextUniqueId++}`;
-    private _name = this._uniqueName;
     private _inline = false;
     private _tight: boolean = false;
-    private _initialized = false; // if value of radio group has been set to initial value
-    private _selected: ButtonToggleComponent | null = null;
-    private ButtonToggleChangeEvent: any[];
-    private selectedButtonToggle: ButtonToggleComponent;
+    public selectedButtonToggle: ButtonToggleComponent | null = null;
     private unsubscribe$ = new Subject<void>();
 
 
-    public ngAfterViewInit(): void {
-        // Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-        // Add 'implements AfterViewInit' to the class.
-        console.log(this._buttonToggles);
-        this._buttonToggles.forEach((item: ButtonToggleComponent) => {
-            if (item.selected) { this.selectedButtonToggle = item; }
-        });
 
-            // If links are added dynamically, recheck the navbar link sizing
-        //     this._buttonToggles.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => this.refreshNavLinks());
-        // });
+    private _disabled = false;
+    private _style: string;
+    private _size: string;
 
+    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' |
+     * 'neutral' | 'secondary' | 'minimal' | link' | 'link-inline'`. If needed, colors from
+     * the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc) */
+    @Input()
+    get buttonStyle(): string {
+        return this._style;
+    }
+
+    set buttonStyle(btnStyle: string) {
+        validateStyleInput(btnStyle);
+        if (supportedStyles.indexOf(btnStyle) < 0) {
+            btnStyle = "button-" + btnStyle;
+        }
+        this.setHostClass(this._style, btnStyle);
+        this._style = btnStyle;
+        if (this.buttonToggles && this.buttonToggles.length > 0) {
+            this.watchButtonToggles();
+        }
+    }
+
+    /** Sets size of button. Choose from: `'sm' | 'md' | 'lg' |`. *Defaults to `md`.* */
+    @Input()
+    get size(): string {
+        return this._size;
+    }
+
+    set size(size: string) {
+        validateSizeInput(size);
+        this.setHostClass(this._size, size);
+        this._size = size;
+    }
+
+    /** Whether the control is disabled. */
+    @Input()
+    get disabled(): boolean {
+        return this._disabled;
+    }
+
+    set disabled(isDisabled) {
+        this._disabled = parseBooleanAttribute(isDisabled);
+    }
+
+    constructor(public elementRef: ElementRef, private renderer: Renderer2) {
+        this.buttonStyle = 'primary';
+        this.size = 'md';
+    }
+
+
+    /** Used to give focus to the button */
+    focus(): void {
+        this.elementRef.nativeElement.focus();
+    }
+
+    private setHostClass(previous: string, current) {
+        if (previous !== current) {
+            if (previous) {
+                this.renderer.removeClass(this.elementRef.nativeElement, this._hcClassify(previous));
+            }
+            this.renderer.addClass(this.elementRef.nativeElement, this._hcClassify(current));
+        }
+    }
+
+    private _hcClassify(style: string): string {
+        return `hc-${style}`;
     }
 
 
 
 
-    ngOnDestroy() {
+    public ngAfterViewInit(): void {
+        setTimeout(() => {
+            this.watchButtonToggles();
+        }, 100);
+
+        // If buttons are added dynamically, recheck the items
+        this._buttonToggles.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => this.watchButtonToggles());
+    }
+
+    public initializeSelectedButton(): void {
+        this.buttonToggles.forEach((item: ButtonToggleComponent) => {
+            if (this.selectedButtonToggle === null) {
+                if (item.selected) {
+                    this.selectedButtonToggle = item;
+                    this.selectionChangedEvent.emit(new ButtonToggleChangeEvent(item, item.value));
+                }
+            } else {
+                if (this.selectedButtonToggle !== item) {
+                    item.selected = false;
+                }
+            }
+        });
+    }
+
+    public watchButtonToggles(): void {
+        if (this.selectedButtonToggle === null) {
+            this.initializeSelectedButton();
+        }
+
+        this._buttonToggles.forEach((item: ButtonToggleComponent) => {
+            item.buttonSelected.subscribe((bt: ButtonToggleChangeEvent) => {
+                if (this.selectedButtonToggle !== item) {
+                    item.selected = true;
+                    this.selectedButtonToggle = item;
+                    this.clearSelections();
+                    this.selectionChangedEvent.emit(bt);
+                }
+            });
+        });
+    }
+
+    public clearSelections(): void {
+        this._buttonToggles.forEach((item: ButtonToggleComponent) => {
+            if (this.selectedButtonToggle !== item) {
+                item.selected = false;
+            }
+        });
+    }
+
+    public ngOnDestroy(): void {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
     }
-
-
-    onSelectedChanged(selectedId: number) {
-        this._buttonToggles.forEach((bt: ButtonToggleComponent) => {
-            if (bt.uniqueId === selectedId) {
-                this._selected = bt;
-                bt.selected = true;
-                this.selectionChangedEvent.emit(bt);
-            } else { bt.selected = false; }
-        });
-    }
-
-    //     public get selectedButtonToggle(): any {
-    //         this.buttonToggles.forEach((bt: ButtonToggleComponent) => {
-    //             if (bt.selected) { return bt; }
-    //         });
-    //         return null;
-    // }
-
-
-    //     ngAfterContentInit(): void {
-    //         this.buttonToggles.forEach((bt: ButtonToggleComponent) => {
-    //             bt.uniqueId = this.nextUniqueId++;
-    //         });
-    //     }
-    // }
-
-
-    // @Component({
-    //     selector: 'hc-button-toggle',
-    //     templateUrl: './button-toggle.component.html',
-    //     styleUrls: ['./button-toggle.component.scss'],
-    //     encapsulation: ViewEncapsulation.None
-    // })
-    // export class ButtonToggleComponent {
-    //     @Input() selected: boolean;
-    //     @Input() uniqueId: number;
-    //     @Input() value: string;
-
-    //     buttonToggleGroup: ButtonToggleGroupComponent;
-
-
-    //     constructor(group: ButtonToggleGroupComponent) {
-    //         this.buttonToggleGroup = group;
-    //     };
-
-    //     public selectButton() {
-    //         this.buttonToggleGroup.onSelectedChanged(this.uniqueId);
-    //     }
-    // }
-
-
 
 }
 

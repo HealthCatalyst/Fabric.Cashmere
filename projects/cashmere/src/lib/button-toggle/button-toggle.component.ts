@@ -70,8 +70,8 @@ export class ButtonToggleComponent {
 
     @Output() buttonSelected: EventEmitter<ButtonToggleChangeEvent> = new EventEmitter<ButtonToggleChangeEvent>();
 
-    public click(): void {
-        this.selected = !this.selected;
+
+    public selectButtonToggle(): void {
         this.buttonSelected.emit(new ButtonToggleChangeEvent(this, this.value));
     }
 
@@ -109,17 +109,7 @@ export class ButtonToggleComponent {
         // }
     }
 
-    // constructor(group: ButtonToggleGroupComponent, public elementRef: ElementRef, private renderer: Renderer2) {
-    //     this.buttonStyle = 'primary';
-    //     this.size = 'md';
-    //     this.buttonToggleGroup = group;
 
-    //     for (const attr of this.buttonAttributes) {
-    //         if (elementRef.nativeElement.hasAttribute(attr)) {
-    //             renderer.addClass(elementRef.nativeElement, attr);
-    //         }
-    //     }
-    // }
 
     focus(): void {
         this.elementRef.nativeElement.focus();

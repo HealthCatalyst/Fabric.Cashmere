@@ -1,9 +1,23 @@
-<hc-button-toggle-group  (onSelectedChanged)='selectedChanged()'>
-    <hc-button-toggle value='one'>One</hc-button-toggle>
-    <hc-button-toggle value='two' [selected]='true'>Two</hc-button-toggle>
-    <hc-button-toggle value='three'><hc-icon fontSet='hc-icons' fontIcon='hci-sort-ascend'></hc-icon></hc-button-toggle>
-</hc-button-toggle-group>
-
 <div>
-    Selected Button Value: {{selectedValue}}
+    <hc-button-toggle-group buttonStyle='{{buttonStyle}}' (selectionChangedEvent)='selectionChangedEvent($event)'>
+        <hc-button-toggle value='One'>One</hc-button-toggle>
+        <hc-button-toggle value='Two' [selected]='true'>Two</hc-button-toggle>
+        <hc-button-toggle value='Icon'>
+            <hc-icon fontSet='hc-icons' fontIcon='hci-sort-ascend'></hc-icon>
+        </hc-button-toggle>
+    </hc-button-toggle-group>
+</div>
+<br /><br />
+<div>
+    <hc-button-toggle-group buttonStyle='secondary' (selectionChangedEvent)='buttonStyleSelectionChangedEvent($event)'>
+        <hc-button-toggle value='primary' [selected]='true'>Primary</hc-button-toggle>
+        <hc-button-toggle value='secondary'>Secondary</hc-button-toggle>
+        <hc-button-toggle value='primary-alt'>Primary Alt</hc-button-toggle>
+        <hc-button-toggle value='destructive'>Destructive</hc-button-toggle>
+        <hc-button-toggle value='neutral'>Neutral</hc-button-toggle>
+    </hc-button-toggle-group>
+</div>
+<br /><br />
+<div>
+    Selected Button Value: {{selectedButtonToggle ? selectedButtonToggle.value : 'none'}}
 </div>
