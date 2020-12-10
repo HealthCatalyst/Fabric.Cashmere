@@ -1,0 +1,106 @@
+<div class="hc-picklist2" [style.height]="height">
+
+    <div class="hc-picklist-pane-container">
+        <div *ngIf="hasHeader" class="hc-picklist-pane-header">
+            <ng-template #defaultLeftHeaderTemplate>
+                <h2 class="hc-picklist-pane-header-default">Available</h2>
+            </ng-template>
+            <ng-template [ngTemplateOutlet]="paneHeaderLeftTemplate || defaultLeftHeaderTemplate"></ng-template>
+        </div>
+
+        <hc-pick-pane #available
+            [_isLeftPane]="true"
+            [bindLabel]="bindLabel"
+            [bindValue]="bindValue"
+            [addCustomItem]="addCustomItem"
+            [addCustomItemText]="addCustomItemText"
+            [groupBy]="groupBy"
+            [groupValue]="groupValue"
+            [canSelectGroup]="canSelectGroup"
+            [canCloseGroup]="canCloseGroup"
+            [closeGroupsByDefault]="closeGroupsByDefault"
+            [orphanItemsGroupName]="orphanItemsGroupName"
+            [virtualScroll]="virtualScroll"
+            [bufferAmount]="bufferAmount"
+            [trackByFn]="trackByFn"
+            [sortFn]="sortFn"
+            [readonly]="readonly || disabled"
+            [hasSearch]="hasSearch"
+            [searchPlaceholder]="searchPlaceholder"
+            [searchFn]="searchFn"
+            [searchWhileComposing]="searchWhileComposing"
+            [externalSearchTermMinLength]="externalSearchTermMinLength"
+            [externalSearchSubject]="externalSearchSubject"
+            [externalTotalOptionCount]="externalTotalOptionCount"
+            [notFoundText]="notFoundText"
+            [loading]="leftPaneLoading"
+            [hasToolbar]="hasToolbar"
+            [hasFooter]="hasFooter"
+            [items]="items"
+            [compareWith]="compareWith"
+            [optionTemplate]="optionTemplate"
+            [optgroupTemplate]="optgroupTemplate"
+            [toolbarTemplate]="toolbarTemplate"
+            [footerTemplate]="footerTemplate"
+            [customItemTemplate]="customItemTemplate"
+            (triggerMove)="moveLeftToRight()">
+        </hc-pick-pane>
+    </div>
+
+    <div class="hc-picklist-move-btns">
+        <button hc-button buttonStyle="primary-alt" type="button" name="addBtn" class="hc-picklist-right-arrow-btn"
+            [title]="maxSelectedItems && hasMaxItemsSelected ? 'Cannot select more than ' + maxSelectedItems.toLocaleString() + ' items.' : ''"
+            (click)="moveLeftToRight()"
+            [disabled]="disabled || availablePane.selectedItems.length === 0 || hasMaxItemsSelected">
+                <span class="icon icon-arrow-right"> -> </span>
+        </button>
+        <button hc-button buttonStyle="primary-alt" type="button" name="removeBtn" class="hc-picklist-left-arrow-btn"
+                (click)="moveRightToLeft()"
+                [disabled]="disabled || selectedPane.selectedItems.length === 0">
+            <span class="icon icon-arrow-left"> <- </span>
+        </button>
+    </div>
+
+    <div class="hc-picklist-pane-container hc-picklist-pane-right">
+        <div *ngIf="hasHeader" class="hc-picklist-pane-header">
+            <ng-template #defaultRightHeaderTemplate>
+                <h2 class="hc-picklist-pane-header-default">Selected
+                    <span *ngIf="maxSelectedItems" class="hc-picklist-max-limit-msg">*Select up to {{maxSelectedItems}} options</span>
+                </h2>
+            </ng-template>
+            <ng-template [ngTemplateOutlet]="paneHeaderRightTemplate || defaultRightHeaderTemplate"></ng-template>
+        </div>
+        <hc-pick-pane #selected
+            [bindLabel]="bindLabel"
+            [bindValue]="bindValue"
+            [addCustomItem]="addCustomItem"
+            [addCustomItemText]="addCustomItemText"
+            [groupBy]="groupBy"
+            [groupValue]="groupValue"
+            [canSelectGroup]="canSelectGroup"
+            [canCloseGroup]="canCloseGroup"
+            [closeGroupsByDefault]="closeGroupsByDefault"
+            [orphanItemsGroupName]="orphanItemsGroupName"
+            [virtualScroll]="virtualScroll"
+            [bufferAmount]="bufferAmount"
+            [trackByFn]="trackByFn"
+            [sortFn]="sortFn"
+            [readonly]="readonly || disabled"
+            [hasSearch]="hasSearch"
+            [searchPlaceholder]="searchPlaceholder"
+            [searchFn]="searchFn"
+            [searchWhileComposing]="searchWhileComposing"
+            [notFoundText]="notFoundText"
+            [loading]="rightPaneLoading"
+            [hasToolbar]="hasToolbar"
+            [hasFooter]="hasFooter"
+            [compareWith]="compareWith"
+            [optionTemplate]="optionTemplate"
+            [optgroupTemplate]="optgroupTemplate"
+            [toolbarTemplate]="toolbarTemplate"
+            [footerTemplate]="footerTemplate"
+            [customItemTemplate]="customItemTemplate"
+            (triggerMove)="moveRightToLeft()">
+        </hc-pick-pane>
+    </div>
+</div>

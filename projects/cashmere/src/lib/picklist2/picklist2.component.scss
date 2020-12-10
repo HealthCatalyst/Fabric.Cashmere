@@ -1,0 +1,281 @@
+@mixin rtl {
+    @at-root [dir="rtl"] #{&} {
+        @content
+    }
+}
+
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+$hc-pick-highlight: #007bff !default;
+$hc-pick-primary-text: #333 !default;
+$hc-pick-border: #ccc !default;
+$hc-pick-border-radius: 4px !default;
+$hc-pick-bg: #fff !default;
+$hc-pick-selected: $hc-pick-highlight !default;
+$hc-pick-hover: tint(#00aeff, 75) !default;
+$hc-pick-height: 36px !default;
+
+.hc-picklist2 {
+    height: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: stretch;
+
+    .hc-picklist-pane-container {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .hc-picklist-pane-header {
+        flex: 0 0 auto;
+    }
+
+    .hc-picklist-pane-header-default {
+        font-size: 16px;
+        font-weight: bold;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .hc-picklist-max-limit-msg {
+        font-size: 12px;
+        font-weight: 400;
+        font-style: italic;
+    }
+
+    .hc-pick-pane, .hc-pick-pane-list {
+        flex: 1 1 400px;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    .hc-picklist-pane-tools {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        flex: 0 0 auto;
+        font-size: 12px;
+    
+        // todo remove these button styles later as needed
+        .button-link-inline {
+            outline: none;
+            border: none;
+            font-size: 12px;
+            color: #00aeff;
+            padding: 0;
+            margin: 0 0 0 10px;
+            background-color: transparent;
+    
+            &[disabled] {
+                color: #ccc;
+            }
+    
+            &:focus {
+                outline: auto;
+            }
+        }
+    }
+    
+    .hc-picklist-move-btns {
+        padding-top: 100px;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+    
+        // prevents a slight jiggle when animating carets on the valueset options
+        transform-style: preserve-3d;
+        transform: translate3d(0,0,0);
+    
+        button {
+            min-width: 0;
+            width: 35px;
+            padding: 0;
+            height: 60px;
+            margin-top: 12px;
+            color: white;
+            background-color: #6e53a3;
+            border-radius: 4px;
+    
+            &[disabled], &[disabled]:hover {
+                background-color: #ccc;
+                border-color: #ccc;
+            }
+        }
+    }
+}
+
+.hc-pick-pane {
+    position: relative;
+    .hc-pick-search-outer {
+        position: relative;
+        width: 100%;
+        flex: 0 0 auto;
+        cursor: default;
+        outline: none;
+        overflow: hidden;
+    }
+
+    .hc-pick-pane-search-no-toolbar {
+        margin-bottom: 10px;
+    }
+    
+    .hc-pick-search-input {
+        width: 100%;
+        padding: 0 10px;
+        color: $hc-pick-primary-text;
+        background-color: $hc-pick-bg;
+        border-radius: $hc-pick-border-radius;
+        border: 1px solid $hc-pick-border;
+        min-height: $hc-pick-height;
+    }
+}
+
+.hc-pick-pane-list {
+    background-color: $hc-pick-bg;
+    border: 1px solid #c0c5cc;
+    box-sizing: border-box;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+
+    &.hc-pane-will-accept-drop {
+        border-color: #00aeff;
+        box-shadow: 0 0 3px #00aeff;
+    }
+
+    &.pane-is-active {
+        .hc-pick-option-marked { outline: lighten(#00aeff, 15) 1px dotted; outline-offset: -2px; }
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    @include rtl {
+        direction: rtl;
+        text-align: right;
+    }
+
+    .hc-pick-pane-list-scroll-host {
+        overflow: hidden;
+        overflow-y: auto;
+        position: relative;
+        display: block;
+        -webkit-overflow-scrolling: touch;
+    }
+    .hc-pick-pane-list-scrollable-content {
+        width: 100%;
+        min-height: 100%;
+    }
+    .hc-pick-pane-list-scrollable-content-virtual {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .hc-pick-pane-list-total-padding {
+        width: 1px;
+        opacity: 0;
+    }
+}
+
+.hc-pick-pane-list-items {
+    flex: 1 1 auto;
+    display: block;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.hc-pick-pane-list-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2px;
+    flex: 0 0 auto;
+    font-size: 12px;
+}
+
+.hc-pick-option, .hc-pick-optgroup {
+    padding: 8px 10px;
+    color: $hc-pick-primary-text;
+    box-sizing: border-box;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+    &.hc-pick-option-selected, &.hc-pick-option-selected.hc-pick-option-marked {
+        background-color: $hc-pick-selected;
+        color: #fff;
+    }
+    &:not(.hc-pick-option-disabled):hover {
+        background-color: $hc-pick-hover;
+        color: $hc-pick-primary-text;
+    }
+    &.hc-pick-option-selected:hover {
+        background-color: lighten($hc-pick-selected, 5);
+        color: #fff;
+    }
+    &.hc-pick-option-disabled {
+        cursor: default;
+    }
+
+    &.hc-pick-custom-option.hc-pick-option-marked {
+        background-color: $hc-pick-hover;
+        color: $hc-pick-primary-text;
+    }
+
+    &.hc-pick-option-hide {
+        display: none;
+    }
+}
+
+.hc-pick-optgroup {
+    background-color: #e0e3e6;
+    user-select: none;
+    font-weight: 500;
+}
+
+.hc-pick-option {
+    background-color: $hc-pick-bg;
+
+    &.hc-pick-option-disabled {
+        color: lighten($hc-pick-primary-text, 60);
+    }
+    &.hc-pick-option-child {
+        padding-left: 22px;
+        @include rtl {
+            padding-right: 22px;
+            padding-left: 0;
+        }
+    }
+
+    .hc-pick-custom-item-label {
+        font-size: 80%;
+        font-weight: 400;
+        padding-right: 5px;
+        @include rtl {
+            padding-left: 5px;
+            padding-right: 0;
+        }
+    }
+}
+
+.hc-pick-empty-msg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    color: #c0c5c0;
+}

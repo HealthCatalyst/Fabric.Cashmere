@@ -1,0 +1,11 @@
+<hc-picklist2
+    [items]="cars"
+    bindLabel="name"
+    bindValue="id"
+    [(ngModel)]="selectedCars">
+</hc-picklist2>
+
+<p>
+    Selected:
+    <code>{{ selectedCars | json }}</code>
+</p>

@@ -131,12 +131,8 @@
         "examples": ["pagination-load-more", "pagination-simple", "pagination-standard"],
         "usageDoc": true
     },
-    "picklist": {
-        "name": "Picklist",
-        "category": "layout",
-        "examples": ["picklist-simple", "picklist-valueset"],
-        "usageDoc": true
-    },
+    "picklist": {"name": "Picklist [Deprecated]", "category": "layout", "examples": ["picklist-simple", "picklist-valueset"], "usageDoc": true},
+    "picklist2": {"name": "Picklist2", "category": "layout", "examples": ["picklist2-simple"]},
     "pop": {
         "name": "Popover",
         "category": "popups",
