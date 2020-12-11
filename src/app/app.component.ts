@@ -28,7 +28,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         'guides': { icon: 'fa-graduation-cap' },
         'foundations': { icon: 'fa-cogs' },
         'bits': { icon: 'fa-puzzle-piece' },
-        'content': { icon: 'fa-file-text-o' }
+        'content': { icon: 'fa-file-text-o' },
+        'analytics': { icon: 'fa-bar-chart' }
     };
 
     constructor( private router: Router, private searchService: SearchService ) {

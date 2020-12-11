@@ -11,6 +11,7 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 })
 export class AnalyticsComponent implements OnDestroy {
     thisPage = '';
+    activeCategory = '';
     queryTab = 0;
     selectOptions: Array<Data> = [];
     categories: Array<string> = [];
@@ -23,8 +24,9 @@ export class AnalyticsComponent implements OnDestroy {
         this.router.events.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
             if (event instanceof NavigationEnd) {
                 if (activatedRoute.firstChild) {
-                    this.thisPage = activatedRoute.firstChild.snapshot.data['title'];
+                    this.thisPage = activatedRoute.firstChild.snapshot.data['category'] + ' - ' + activatedRoute.firstChild.snapshot.data['title'];
                     this.appInsights.logPageView(this.thisPage, event.urlAfterRedirects);
+                    this.activeCategory = activatedRoute.firstChild.snapshot.data['category'];
                 }
             }
         });
