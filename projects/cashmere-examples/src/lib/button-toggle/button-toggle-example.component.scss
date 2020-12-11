@@ -1,0 +1,23 @@
+.examples{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+    color: #999;
+}
+
+.examples:first-of-type div:first-of-type{
+    margin-bottom: 20px;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+hr{
+    margin-bottom: 10px;
+    padding: 0;
+    margin-top: 5px;
+}
+

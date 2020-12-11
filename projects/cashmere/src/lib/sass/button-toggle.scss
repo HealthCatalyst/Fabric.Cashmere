@@ -8,16 +8,19 @@
 
 @mixin hc-button-toggle-first() {
     border-radius: 5px 0 0 5px;
+    border-right: none;
 }
 
 @mixin hc-button-toggle-last() {
     border-radius: 0 5px 5px 0;
+    border-left: none;
 }
 
 @mixin hc-button-toggle-secondary($param) {
 }
 
 @mixin hc-button-secondary() {
+
 }
 
 @mixin hc-button-toggle($color) {
@@ -25,17 +28,11 @@
     align-items: center;
     align-content: center;
     text-align: center;
-    min-height: 35px;
     height: 100%;
     cursor: pointer;
-    font-size: 1.07143rem;
-    min-width: auto !important;
-    padding: 0 10px !important;
-    line-height: 15px;
     background-position: center;
     color: $white;
     background-color: $color;
-    background-size: 100%;
 
     &[disabled] {
         cursor: not-allowed;
@@ -53,13 +50,12 @@
     }
 
     &:hover {
-        background-color: shade($color, 20%);
+        background-color: tint($color, 15%);
     }
 
-    &.selected {
-        background-color: red;
-        font-weight: bold;
-        border: 1px solid red;
+    &.hc-toggle-checked {
+        background-color: shade($color, 20%);
+        box-shadow: inset 0 0 4px shade($color, 40%);
     }
 
     // Remove Firefox's active state dotted outline b/c we have our own highlight
@@ -68,26 +64,24 @@
     }
 }
 
-@mixin hc-button-sm() {
-    padding: 3px 12px;
+@mixin hc-button-toggle-sm() {
+    padding: 0 7px;
     height: 26px;
     min-width: auto;
     @include fontSize(14px);
     line-height: 14px;
 }
 
-@mixin hc-button-md() {
-    padding: 0 20px;
+@mixin hc-button-toggle-md() {
+    padding: 0 10px;
     height: 35px;
-    min-width: 150px;
     @include fontSize(15px);
     line-height: 15px;
 }
 
-@mixin hc-button-lg() {
-    padding: 0 30px;
+@mixin hc-button-toggle-lg() {
+    padding: 0 15px;
     height: 40px;
-    min-width: 200px;
     @include fontSize(17px);
     line-height: 17px;
 }

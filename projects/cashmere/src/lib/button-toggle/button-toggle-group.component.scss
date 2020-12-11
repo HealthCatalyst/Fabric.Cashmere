@@ -1,7 +1,6 @@
-@import '../sass/button-toggle.scss';
-@import '../sass/button.scss';
-@import '../sass/colors';
-
+@import "../sass/button-toggle.scss";
+@import "../sass/button.scss";
+@import "../sass/colors";
 
 .hc-button-toggle-group {
     display: inline-flex;
@@ -9,7 +8,6 @@
     align-items: stretch;
     align-content: stretch;
 }
-
 
 .hc-button-toggle-group {
     hc-button-toggle:first-of-type {
@@ -20,104 +18,100 @@
         @include hc-button-toggle-last();
 
         &.hc-secondary {
-            @include hc-button-toggle-secondary( true );
+            @include hc-button-toggle-secondary(true);
         }
     }
 }
 
-
-
 .hc-button-toggle {
-
     &.hc-primary {
         @include hc-button-toggle($primary-action);
-
     }
     &.hc-primary-alt {
         @include hc-button-toggle($primary-alt-action);
-        // @include hc-button-primary-alt();
     }
     &.hc-destructive {
         @include hc-button-toggle($destructive-action);
-      //  @include hc-button-destructive();
     }
     &.hc-neutral {
         @include hc-button-toggle($neutral-action);
-       // @include hc-button-neutral();
     }
     &.hc-secondary {
         @include hc-button-toggle($gray-100);
-        border: 1px solid $gray-200;
+        border: 1px solid $gray-300;
+        border-right: none;
         color: $gray-500;
-     //   @include hc-button-secondary();
-      //  @include hc-button-toggle-secondary( false );
+        &:last-of-type {
+            border-right: 1px solid $gray-300;
+            border-left: 1px solid $gray-300;
+        }
     }
 
     &.hc-sm {
-        @include hc-button-sm();
+        @include hc-button-toggle-sm();
     }
     &.hc-md {
-        @include hc-button-md();
+        @include hc-button-toggle-md();
     }
     &.hc-lg {
-        @include hc-button-lg();
+        @include hc-button-toggle-lg();
     }
 
     &.hc-button-blue {
-        @include hc-button-custom( $blue );
+        @include hc-button-toggle($blue);
     }
     &.hc-button-green {
-        @include hc-button-custom( $green );
+        @include hc-button-toggle($green);
     }
     &.hc-button-purple {
-        @include hc-button-custom( $purple );
+        @include hc-button-toggle($purple);
     }
     &.hc-button-red {
-        @include hc-button-custom( $red );
+        @include hc-button-toggle($red);
     }
     &.hc-button-orange {
-        @include hc-button-custom( $orange );
+        @include hc-button-toggle($orange);
     }
     &.hc-button-ruby-red {
-        @include hc-button-custom( $ruby-red );
+        @include hc-button-toggle($ruby-red);
     }
     &.hc-button-deep-red {
-        @include hc-button-custom( $deep-red );
+        @include hc-button-toggle($deep-red);
     }
     &.hc-button-red-orange {
-        @include hc-button-custom( $red-orange );
+        @include hc-button-toggle($red-orange);
     }
     &.hc-button-magenta {
-        @include hc-button-custom( $magenta );
+        @include hc-button-toggle($magenta);
     }
     &.hc-button-pink {
-        @include hc-button-custom( $pink );
+        @include hc-button-toggle($pink);
     }
     &.hc-button-light-pink {
-        @include hc-button-custom( $light-pink );
+        @include hc-button-toggle($light-pink);
     }
     &.hc-button-azure {
-        @include hc-button-custom( $azure );
+        @include hc-button-toggle($azure);
     }
     &.hc-button-teal {
-        @include hc-button-custom( $teal );
+        @include hc-button-toggle($teal);
     }
     &.hc-button-dark-green {
-        @include hc-button-custom( $dark-green );
+        @include hc-button-toggle($dark-green);
     }
     &.hc-button-brown {
-        @include hc-button-custom( $brown );
+        @include hc-button-toggle($brown);
     }
     &.hc-button-purple-gray {
-        @include hc-button-custom( $purple-gray );
+        @include hc-button-toggle($purple-gray);
     }
     &.hc-button-yellow {
-        @include hc-button-custom( $yellow );
+        @include hc-button-toggle($yellow);
     }
     &.hc-button-yellow-orange {
-        @include hc-button-custom( $yellow-orange );
+        @include hc-button-toggle($yellow-orange);
     }
     &.hc-button-tan {
-        @include hc-button-custom( $tan );
+        @include hc-button-toggle($tan);
     }
 }

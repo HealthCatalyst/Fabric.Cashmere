@@ -1,23 +1,58 @@
-<div>
-    <hc-button-toggle-group buttonStyle='{{buttonStyle}}' (selectionChangedEvent)='selectionChangedEvent($event)'>
-        <hc-button-toggle value='One'>One</hc-button-toggle>
-        <hc-button-toggle value='Two' [selected]='true'>Two</hc-button-toggle>
-        <hc-button-toggle value='Icon'>
-            <hc-icon fontSet='hc-icons' fontIcon='hci-sort-ascend'></hc-icon>
-        </hc-button-toggle>
-    </hc-button-toggle-group>
-</div>
-<br /><br />
-<div>
-    <hc-button-toggle-group buttonStyle='secondary' (selectionChangedEvent)='buttonStyleSelectionChangedEvent($event)'>
-        <hc-button-toggle value='primary'>Primary</hc-button-toggle>
-        <hc-button-toggle value='secondary' [selected]='true'>Secondary</hc-button-toggle>
-        <hc-button-toggle value='primary-alt'>Primary Alt</hc-button-toggle>
-        <hc-button-toggle value='destructive'>Destructive</hc-button-toggle>
-        <hc-button-toggle value='neutral'>Neutral</hc-button-toggle>
-    </hc-button-toggle-group>
-</div>
-<br /><br />
-<div>
-    Selected Button Value: {{selectedButtonToggleValue ? selectedButtonToggleValue : 'none'}}
+<div class='wrapper'>
+    <div class='examples'>
+        <div>
+            <hc-button-toggle-group buttonStyle='{{buttonStyle}}' size='{{size}}' valueRequired='true'
+                (selectionChangedEvent)='selectionChangedEvent($event)'>
+                <hc-button-toggle value='One'>One</hc-button-toggle>
+                <hc-button-toggle value='Two' [selected]='true'>Two</hc-button-toggle>
+                <hc-button-toggle value='Icon'>
+                    <hc-icon fontSet='hc-icons' fontIcon='hci-sort-ascend'></hc-icon>
+                </hc-button-toggle>
+            </hc-button-toggle-group>
+            <br />
+            <br />
+            <div>
+                Single Selected Value: <em>{{selectedButtonToggleValue}}</em>
+            </div>
+        </div>
+        <div>
+            <hc-button-toggle-group buttonStyle='{{buttonStyle}}' multiple='true' size='{{size}}'
+                (selectionChangedEvent)='multiSelectionChangedEvent($event)'>
+                <hc-button-toggle value='One' [selected]='true'>One</hc-button-toggle>
+                <hc-button-toggle value='Two' [selected]='true'>Two</hc-button-toggle>
+                <hc-button-toggle value='Icon'>
+                    <hc-icon fontSet='hc-icons' fontIcon='hci-sort-ascend'></hc-icon>
+                </hc-button-toggle>
+            </hc-button-toggle-group>
+            <br />
+            <br />
+            <div>
+                Multiple Selected Values: <span *ngFor="let val of multiSelectedButtonToggleValues"><em>{{val}} </em></span>
+            </div>
+        </div>
+    </div>
+    <div class='examples'>
+        Common Styles
+        <hr />
+        <div>
+            <hc-button-toggle-group buttonStyle='secondary'
+                (selectionChangedEvent)='buttonStyleSelectionChangedEvent($event)'>
+                <hc-button-toggle value='primary'[selected]='true'>Primary</hc-button-toggle>
+                <hc-button-toggle value='secondary'>Secondary</hc-button-toggle>
+                <hc-button-toggle value='primary-alt'>Primary Alt</hc-button-toggle>
+                <hc-button-toggle value='destructive'>Destructive</hc-button-toggle>
+                <hc-button-toggle value='neutral'>Neutral</hc-button-toggle>
+            </hc-button-toggle-group>
+        </div>
+        <br />
+        <br />
+        <div>
+            <hc-button-toggle-group buttonStyle='neutral'
+                (selectionChangedEvent)='sizeSelectionChangedEvent($event)'>
+                <hc-button-toggle value='sm'>Small</hc-button-toggle>
+                <hc-button-toggle value='md' [selected]='true'>Medium</hc-button-toggle>
+                <hc-button-toggle value='lg'>Large</hc-button-toggle>
+            </hc-button-toggle-group>
+        </div>
+    </div>
 </div>
