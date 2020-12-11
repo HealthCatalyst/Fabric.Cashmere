@@ -23,7 +23,7 @@ export function validateSizeInput(size: string) {
     }
 }
 
-/** `hc-button-toggle-group` components are on/off toggles with the appearance of a `hc-button`.
+/** `hc-button-toggle-group` components are on/off toggles with the appearance of an `hc-button`.
  * These toggle groups may be configured to behave as single-select (like radio buttons), or multi-select (like checkboxes). */
 @Component({
     selector: 'hc-button-toggle-group',
@@ -44,7 +44,7 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
     @ContentChildren(ButtonToggleComponent)
     _buttons: QueryList<ButtonToggleComponent>;
 
-    /** Event fired whenever a change is made to any button toggle in the group */
+    /** Event fired whenever a change is made to any button toggle in the group. */
     @Output() selectionChangedEvent: EventEmitter<ButtonToggleChangeEvent> = new EventEmitter<ButtonToggleChangeEvent>();
 
     /** Sets style of toggle. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary'`.
@@ -83,7 +83,7 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
         this._multiple = parseBooleanAttribute(val);
     }
 
-    /** Whether at least one button must remain selected */
+    /** Whether at least one button must remain selected. */
     @Input()
     get valueRequired(): boolean {
         return this._valueRequired;

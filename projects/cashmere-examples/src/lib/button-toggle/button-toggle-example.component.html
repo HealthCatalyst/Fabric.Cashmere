@@ -9,9 +9,8 @@
                     <hc-icon fontSet='hc-icons' fontIcon='hci-sort-ascend'></hc-icon>
                 </hc-button-toggle>
             </hc-button-toggle-group>
-            <br />
-            <br />
-            <div>
+
+            <div class='text'>
                 Single Selected Value: <em>{{selectedButtonToggleValue}}</em>
             </div>
         </div>
@@ -24,9 +23,7 @@
                     <hc-icon fontSet='hc-icons' fontIcon='hci-sort-ascend'></hc-icon>
                 </hc-button-toggle>
             </hc-button-toggle-group>
-            <br />
-            <br />
-            <div>
+            <div class='text'>
                 Multiple Selected Values: <span *ngFor="let val of multiSelectedButtonToggleValues"><em>{{val}} </em></span>
             </div>
         </div>
@@ -34,7 +31,7 @@
     <div class='examples'>
         Common Styles
         <hr />
-        <div>
+        <div class='styles'>
             <hc-button-toggle-group buttonStyle='secondary'
                 (selectionChangedEvent)='buttonStyleSelectionChangedEvent($event)'>
                 <hc-button-toggle value='primary'[selected]='true'>Primary</hc-button-toggle>
@@ -44,9 +41,7 @@
                 <hc-button-toggle value='neutral'>Neutral</hc-button-toggle>
             </hc-button-toggle-group>
         </div>
-        <br />
-        <br />
-        <div>
+        <div class='sizes'>
             <hc-button-toggle-group buttonStyle='neutral'
                 (selectionChangedEvent)='sizeSelectionChangedEvent($event)'>
                 <hc-button-toggle value='sm'>Small</hc-button-toggle>

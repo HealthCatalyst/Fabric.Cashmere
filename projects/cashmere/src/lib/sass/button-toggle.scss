@@ -2,6 +2,13 @@
 @import "./functions";
 @import "./mixins";
 
+@mixin hc-button-toggle-group() {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: stretch;
+}
+
 @mixin hc-button-toggle() {
     display: flex;
 }
@@ -16,11 +23,15 @@
     border-left: none;
 }
 
-@mixin hc-button-toggle-secondary($param) {
-}
 
-@mixin hc-button-secondary() {
-
+@mixin hc-button-toggle-secondary() {
+     border: 1px solid $gray-300;
+        border-right: none;
+        color: $gray-500;
+        &:last-of-type {
+            border-right: 1px solid $gray-300;
+            border-left: 1px solid $gray-300;
+        }
 }
 
 @mixin hc-button-toggle($color) {
@@ -50,7 +61,7 @@
     }
 
     &:hover {
-        background-color: tint($color, 15%);
+        background-color: shade($color, 10%);
     }
 
     &.hc-toggle-checked {

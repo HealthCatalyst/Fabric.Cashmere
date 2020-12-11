@@ -2,8 +2,7 @@ import { Component, EventEmitter, HostBinding, HostListener, Input, Output, View
 import { parseBooleanAttribute } from '../util';
 
 
-/** Notification banners are used for general information about the state of the application or upcoming events. For instant
- * feedback responding to user actions, use a toaster message.*/
+/** Button Toggle components are the individually selectable buttons used within the Button Toggle Group component. */
 
 @Component({
     selector: 'hc-button-toggle',
@@ -18,7 +17,7 @@ export class ButtonToggleComponent {
 
     @HostBinding('class') _hostClass = 'hc-button-toggle';
 
-    /** Event emitted when this specific toggle is changed */
+    /** Event emitted when this specific toggle is changed. */
     @Output()
     _toggleClick: EventEmitter<ButtonToggleComponent> = new EventEmitter();
 
