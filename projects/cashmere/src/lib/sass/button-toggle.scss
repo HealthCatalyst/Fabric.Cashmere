@@ -45,23 +45,26 @@
     color: $white;
     background-color: $color;
 
-    &[disabled] {
+    &.hc-toggle-disabled {
         cursor: not-allowed;
+        opacity: 0.35;
     }
 
-    &:focus {
-        outline: none;
-        border-bottom: none;
-        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
-    }
+    &:not(.hc-toggle-disabled) {
+        &:focus {
+            outline: none;
+            border-bottom: none;
+            box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
+        }
 
-    &:active {
-        background-image: none;
-        outline: none;
-    }
+        &:active {
+            background-image: none;
+            outline: none;
+        }
 
-    &:hover {
-        background-color: shade($color, 10%);
+        &:hover {
+            background-color: shade($color, 10%);
+        }
     }
 
     &.hc-toggle-checked {

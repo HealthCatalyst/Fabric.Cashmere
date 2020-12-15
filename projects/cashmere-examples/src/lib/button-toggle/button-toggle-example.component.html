@@ -11,7 +11,7 @@
             </hc-button-toggle-group>
 
             <div class='text'>
-                Single Selected Value: <em>{{selectedButtonToggleValue}}</em>
+                Single selected value: <em>{{selectedButtonToggleValue}}</em>
             </div>
         </div>
         <div>
@@ -24,7 +24,17 @@
                 </hc-button-toggle>
             </hc-button-toggle-group>
             <div class='text'>
-                Multiple Selected Values: <span *ngFor="let val of multiSelectedButtonToggleValues"><em>{{val}} </em></span>
+                Multiple selected values: <span *ngFor="let val of multiSelectedButtonToggleValues"><em>{{val}} </em></span>
+            </div>
+        </div>
+        <div>
+            <hc-button-toggle-group [buttonStyle]="buttonStyle" [size]="size" disabled="true">
+                <hc-button-toggle value='One' [selected]='true'>One</hc-button-toggle>
+                <hc-button-toggle value='Two'>Two</hc-button-toggle>
+                <hc-button-toggle value='Three'>Three</hc-button-toggle>
+            </hc-button-toggle-group>
+            <div class='text'>
+                Disabled button group
             </div>
         </div>
     </div>

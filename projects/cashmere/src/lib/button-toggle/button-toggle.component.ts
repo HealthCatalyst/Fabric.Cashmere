@@ -6,13 +6,14 @@ import { parseBooleanAttribute } from '../util';
 
 @Component({
     selector: 'hc-button-toggle',
-    templateUrl: './button-toggle.component.html',
+    template: '<ng-content></ng-content>',
     styleUrls: ['./button-toggle.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 
 export class ButtonToggleComponent {
     _disabled = false;
+    _parentDisabled = false;
     _selected = false;
 
     @HostBinding('class') _hostClass = 'hc-button-toggle';
@@ -35,17 +36,25 @@ export class ButtonToggleComponent {
         this._toggleClick.emit(this);
     }
 
-    /** Whether the toggle is disabled. */
+    /** Whether the individual toggle is disabled */
     @Input()
     get disabled(): boolean {
         return this._disabled;
     }
     set disabled(isDisabled) {
         this._disabled = parseBooleanAttribute(isDisabled);
+        if ( this._disabled && !this._hostClass.includes( 'hc-toggle-disabled' )) {
+            this._hostClass += ' hc-toggle-disabled';
+        }
+        if ( !this._disabled && this._hostClass.includes( 'hc-toggle-disabled' )) {
+            this._hostClass.replace( ' hc-toggle-disabled', '' );
+        }
     }
 
     @HostListener('click')
     _onClick() {
-        this.selected = !this.selected;
+        if ( !this.disabled && !this._parentDisabled ) {
+            this.selected = !this.selected;
+        }
     }
 }

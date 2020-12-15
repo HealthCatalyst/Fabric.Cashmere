@@ -1,4 +1,4 @@
-.examples{
+.examples {
     padding-top: 10px;
     display: flex;
     flex-direction: column;
@@ -6,26 +6,26 @@
     color: #999;
 }
 
-.examples:first-of-type div:first-of-type{
-    margin-bottom: 20px;
+.examples div {
+    margin-bottom: 15px;
 }
 
-.wrapper{
+.wrapper {
     display: flex;
     flex-direction: row;
 }
 
-hr{
+hr {
     margin-bottom: 10px;
     padding: 0;
     margin-top: 5px;
 }
 
-.text{
+.text {
     margin-top: 15px;
 }
 
-.styles{
+.styles {
     margin-bottom: 20px;
 }
 

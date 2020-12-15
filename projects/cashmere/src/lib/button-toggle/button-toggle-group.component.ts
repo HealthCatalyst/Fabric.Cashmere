@@ -12,7 +12,7 @@ import { validateStyleInput, validateSizeInput, supportedStyles } from '../butto
  * These toggle groups may be configured to behave as single-select (like radio buttons), or multi-select (like checkboxes). */
 @Component({
     selector: 'hc-button-toggle-group',
-    templateUrl: './button-toggle-group.component.html',
+    template: '<ng-content></ng-content>',
     styleUrls: ['./button-toggle.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
@@ -33,7 +33,7 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
     @Output() selectionChangedEvent: EventEmitter<ButtonToggleChangeEvent> = new EventEmitter<ButtonToggleChangeEvent>();
 
     /** Sets style of toggle. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary'`.
-    * If needed, colors from the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc) */
+    * If needed, colors from the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc). *Defaults to `secondary`.* */
     @Input()
     get buttonStyle(): string {
         return this._style;
@@ -77,7 +77,7 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
         this._valueRequired = parseBooleanAttribute(required);
     }
 
-    /** Whether the control is disabled. */
+    /** Whether the entire toggle group is disabled. */
     @Input()
     get disabled(): boolean {
         return this._disabled;
@@ -85,6 +85,10 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
 
     set disabled(isDisabled) {
         this._disabled = parseBooleanAttribute(isDisabled);
+        if (this._buttons) {
+            this._buttons.forEach((button: ButtonToggleComponent) => button._parentDisabled = this._disabled);
+        }
+        this._updateButtonStyle();
     }
 
 
@@ -92,7 +96,9 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
         if (this._buttons) {
             this._buttons.forEach((button: ButtonToggleComponent) => {
                 const checkedClass = button.selected ? 'hc-toggle-checked' : '';
-                button._hostClass = 'hc-button-toggle hc-' + this._style + ' ' + 'hc-' + this._size + ' ' + checkedClass;
+                const disabledClass = button.disabled || this.disabled ? 'hc-toggle-disabled' : '';
+                const classStr = 'hc-button-toggle hc-' + this._style + ' ' + 'hc-' + this._size + ' ' + checkedClass + ' ' + disabledClass;
+                button._hostClass = classStr.trim();
             });
         }
     }
@@ -126,6 +132,7 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
 
         if (this._buttons) {
             this._buttons.forEach((button: ButtonToggleComponent) => {
+                button._parentDisabled = this.disabled;
                 button._toggleClick.pipe(takeUntil(this.unsubscribe$)).subscribe(
                     (target: ButtonToggleComponent) => {
                         this._updateValue(target);
