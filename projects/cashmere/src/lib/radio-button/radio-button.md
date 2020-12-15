@@ -12,10 +12,6 @@ Use a colon at the end of radio group labels (e.g. Email address:). A colon impl
 
 &nbsp;
 
-#### Radion Button Icons
-
-&nbsp;
-
 ##### Form Fields
 
 RadioButtonComponents are contained in a RadioGroupDirective which may be nested within a hc-form-field component. hc-form-field acts as a coordinator between multiple components including label and error elements.
@@ -23,10 +19,10 @@ RadioButtonComponents are contained in a RadioGroupDirective which may be nested
 ```html
 <hc-form-field>
     <hc-label>Select your favorite:</hc-label>
-    <hc-button-toggle-group>
-        <hc-button-toggle value="one">Button One</hc-button-toggle>
-        <hc-button-toggle value="two">Button One</hc-button-toggle>
-    </hc-button-toggle-group>
+    <hc-radio-group>
+        <hc-radio-button value="one">Button One</hc-radio-button>
+        <hc-radio-button value="two">Button One</hc-radio-button>
+    </hc-radio-group>
     <hc-error>The radio button selection is not valid</hc-error>
 </hc-form-field>
 ```
