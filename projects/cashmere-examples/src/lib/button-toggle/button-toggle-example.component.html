@@ -1,7 +1,7 @@
 <div class='wrapper'>
     <div class='examples'>
         <div>
-            <hc-button-toggle-group buttonStyle='{{buttonStyle}}' size='{{size}}' valueRequired='true'
+            <hc-button-toggle-group [buttonStyle]="buttonStyle" [size]="size" valueRequired='true'
                 (selectionChangedEvent)='selectionChangedEvent($event)'>
                 <hc-button-toggle value='One'>One</hc-button-toggle>
                 <hc-button-toggle value='Two' [selected]='true'>Two</hc-button-toggle>
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div>
-            <hc-button-toggle-group buttonStyle='{{buttonStyle}}' multiple='true' size='{{size}}'
+            <hc-button-toggle-group [buttonStyle]="buttonStyle" multiple='true' [size]="size"
                 (selectionChangedEvent)='multiSelectionChangedEvent($event)'>
                 <hc-button-toggle value='One' [selected]='true'>One</hc-button-toggle>
                 <hc-button-toggle value='Two' [selected]='true'>Two</hc-button-toggle>

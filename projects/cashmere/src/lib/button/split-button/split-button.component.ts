@@ -92,7 +92,7 @@ export class SplitButtonComponent {
     }
 
     set buttonStyle(btnStyle: string) {
-        validateStyleInput(btnStyle);
+        validateStyleInput(btnStyle, 'SplitButtonComponent');
         if ( supportedStyles.indexOf(btnStyle) < 0 ) {
             btnStyle = "button-" + btnStyle;
         }
@@ -106,7 +106,7 @@ export class SplitButtonComponent {
     }
 
     set size(size: string) {
-        validateSizeInput(size);
+        validateSizeInput(size, 'SplitButtonComponent');
         this._size = size;
     }
 

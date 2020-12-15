@@ -6,22 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { ButtonToggleChangeEvent } from './button-toggle-change-event';
 import { parseBooleanAttribute } from '../util';
 import { ButtonToggleComponent } from './button-toggle.component';
-
-const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary'];
-const supportedColors = ['blue', 'green', 'purple', 'red', 'orange', 'ruby-red', 'deep-red', 'red-orange', 'magenta', 'pink', 'light-pink', 'azure', 'teal', 'dark-green', 'brown', 'purple-gray', 'yellow', 'yellow-orange', 'tan'];
-const supportedSizes = ['sm', 'md', 'lg'];
-
-export function validateStyleInput(style: string) {
-    if (supportedStyles.indexOf(style) < 0 && supportedColors.indexOf(style) < 0) {
-        throw Error('Unsupported buttonStyle attribute value on ButtonToggleGroupComponent: ' + style);
-    }
-}
-
-export function validateSizeInput(size: string) {
-    if (supportedSizes.indexOf(size) < 0) {
-        throw Error('Unsupported size attribute value on ButtonToggleGroupComponent: ' + size);
-    }
-}
+import { validateStyleInput, validateSizeInput, supportedStyles } from '../button/button.component';
 
 /** `hc-button-toggle-group` components are on/off toggles with the appearance of an `hc-button`.
  * These toggle groups may be configured to behave as single-select (like radio buttons), or multi-select (like checkboxes). */
@@ -54,7 +39,7 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
         return this._style;
     }
     set buttonStyle(val: string) {
-        validateStyleInput(val);
+        validateStyleInput(val, 'ButtonToggleGroupComponent');
         if (supportedStyles.indexOf(val) < 0) {
             val = "button-" + val;
         }
@@ -69,7 +54,7 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
     }
 
     set size(size: string) {
-        validateSizeInput(size);
+        validateSizeInput(size, 'ButtonToggleGroupComponent');
         this._size = size;
         this._updateButtonStyle();
     }
