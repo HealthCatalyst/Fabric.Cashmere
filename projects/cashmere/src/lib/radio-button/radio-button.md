@@ -1,4 +1,4 @@
-##### Radio Text Formatting
+##### Radio Button Text Formatting
 
 For both the label on radio buttons and their contents, please use the following formatting:
 
@@ -6,7 +6,7 @@ Capitalize first word only, except in cases where the selection is an actual pro
 
 &nbsp;
 
-##### Radio Group Labels
+##### Radio Button Group Labels
 
 Use a colon at the end of radio group labels (e.g. Email address:). A colon implies a direct connection between the label text and a particular control or set of controls. The only situation where a colon should not be used is when the label and control work together to form a single sentence.
 

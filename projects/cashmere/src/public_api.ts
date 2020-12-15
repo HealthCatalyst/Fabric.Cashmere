@@ -7,6 +7,7 @@ export * from './lib/app-switcher/index';
 export * from './lib/banner/index';
 export * from './lib/breadcrumbs/index';
 export * from './lib/button/index';
+export * from './lib/button-toggle/index';
 export * from './lib/checkbox/index';
 export * from './lib/chip/index';
 export * from './lib/datepicker/index';
