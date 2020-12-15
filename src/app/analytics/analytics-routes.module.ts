@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AnalyticsComponent} from './analytics.component';
+import {AnalyticsTemplateComponent} from './template/analytics-template.component';
 import {MarkdownContentComponent} from '../shared/markdown-content.component';
 
 const routes: Routes = [
@@ -10,11 +11,10 @@ const routes: Routes = [
         children: [
             {
                 path: 'qlik-template',
-                component: MarkdownContentComponent,
+                component: AnalyticsTemplateComponent,
                 data: {
                     title: 'Template',
-                    category: 'Qlik',
-                    document: require('raw-loader!../../../guides/analytics/qlik/template.md')
+                    category: 'Qlik'
                 }
             },
             {
@@ -100,11 +100,10 @@ const routes: Routes = [
             },
             {
                 path: 'tableau-template',
-                component: MarkdownContentComponent,
+                component: AnalyticsTemplateComponent,
                 data: {
                     title: 'Template',
-                    category: 'Tableau',
-                    document: require('raw-loader!../../../guides/analytics/tableau/template.md')
+                    category: 'Tableau'
                 }
             },
             {
@@ -181,11 +180,10 @@ const routes: Routes = [
             },
             {
                 path: 'powerbi-template',
-                component: MarkdownContentComponent,
+                component: AnalyticsTemplateComponent,
                 data: {
                     title: 'Template',
-                    category: 'Power BI',
-                    document: require('raw-loader!../../../guides/analytics/powerbi/template.md')
+                    category: 'Power BI'
                 }
             },
             {

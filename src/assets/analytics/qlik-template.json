@@ -1,0 +1,12 @@
+[
+    {
+        "version": "1.0.0",
+        "releasedate": "December 14, 2020",
+        "requirements": "QlikView 12.30.20100 or greater",
+        "download": "http://google.com",
+        "demo": "http://google.com",
+        "notes": [
+            "Initial release of Cashmere template"
+        ]
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "version": "1.0.0",
+        "releasedate": "December 14, 2020",
+        "requirements": "Tableau 2019.1 or greater",
+        "download": "http://google.com",
+        "demo": "http://google.com",
+        "notes": [
+            "Initial release of Cashmere template"
+        ]
+    }
+]
