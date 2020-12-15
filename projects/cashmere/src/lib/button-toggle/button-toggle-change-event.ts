@@ -1,4 +1,4 @@
-import { ButtonToggleComponent } from "./button-toggle.component";
+import {ButtonToggleComponent} from './button-toggle.component';
 
 export class ButtonToggleChangeEvent {
     /**
@@ -6,11 +6,9 @@ export class ButtonToggleChangeEvent {
      * @param buttonToggles the collection of button toggles in the group
      * @param selectedValues the values of all 'selected' button toggles
      */
-    constructor(public source: ButtonToggleComponent | null, public buttonToggles: ButtonToggleComponent[] | null, public selectedValues: string[] | null) { }
+    constructor(
+        public source: ButtonToggleComponent | null,
+        public buttonToggles: ButtonToggleComponent[] | null,
+        public selectedValues: string[] | null
+    ) {}
 }
-
-
-
-
-
-

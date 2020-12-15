@@ -7,7 +7,7 @@ import { parseBooleanAttribute } from '../util';
 @Component({
     selector: 'hc-button-toggle',
     templateUrl: './button-toggle.component.html',
-    styleUrls: ['./button-toggle-group.component.scss'],
+    styleUrls: ['./button-toggle.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 

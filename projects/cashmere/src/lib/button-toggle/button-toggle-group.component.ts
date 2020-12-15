@@ -1,6 +1,6 @@
 
 import { AfterContentInit, Component, ContentChildren, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewEncapsulation } from '@angular/core';
-import { QueryList } from '@angular/core';
+import type { QueryList } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ButtonToggleChangeEvent } from './button-toggle-change-event';
@@ -28,7 +28,7 @@ export function validateSizeInput(size: string) {
 @Component({
     selector: 'hc-button-toggle-group',
     templateUrl: './button-toggle-group.component.html',
-    styleUrls: ['./button-toggle-group.component.scss'],
+    styleUrls: ['./button-toggle.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
@@ -89,7 +89,7 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
         return this._valueRequired;
     }
     set valueRequired(required) {
-        this._valueRequired = parseBooleanAttribute(required)
+        this._valueRequired = parseBooleanAttribute(required);
     }
 
     /** Whether the control is disabled. */
@@ -124,7 +124,7 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
             });
         } else {
             this._buttons.forEach((button: ButtonToggleComponent) => {
-                if (this.valueRequired && this._buttons.filter((btn: ButtonToggleComponent) => { return btn.selected; }).length === 0) {
+                if (this.valueRequired && this._buttons.filter((btn: ButtonToggleComponent) => btn.selected ).length === 0) {
                     if (button === targetButton) { button._selected = true; }
                 }
             });
