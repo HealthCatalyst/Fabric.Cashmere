@@ -1,4 +1,3 @@
-
 import { AfterContentInit, Component, ContentChildren, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewEncapsulation } from '@angular/core';
 import type { QueryList } from '@angular/core';
 import { Subject } from 'rxjs';
@@ -33,7 +32,8 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
     @Output() selectionChangedEvent: EventEmitter<ButtonToggleChangeEvent> = new EventEmitter<ButtonToggleChangeEvent>();
 
     /** Sets style of toggle. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary'`.
-    * If needed, colors from the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc). *Defaults to `secondary`.* */
+    * If needed, colors from the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc).
+    * *Defaults to `secondary`.* */
     @Input()
     get buttonStyle(): string {
         return this._style;

@@ -188,7 +188,10 @@ describe('ButtonToggleGroup', () => {
                     component.toggleOne.selected = true;
                     fixture.detectChanges();
 
-                    const toggleEvent: ButtonToggleChangeEvent = new ButtonToggleChangeEvent( component.toggleOne, [component.toggleOne, component.toggleTwo], ['one'])
+                    const toggleEvent: ButtonToggleChangeEvent = new ButtonToggleChangeEvent(
+                        component.toggleOne,
+                        [component.toggleOne, component.toggleTwo],
+                        ['one']);
                     expect(component.changedEvent).toHaveBeenCalledWith(toggleEvent);
                 });
             });
