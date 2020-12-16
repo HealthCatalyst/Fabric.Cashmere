@@ -7,6 +7,7 @@
 ##### Overview
 
 What this style guide will and won't provide guidance on regarding chart design
+This section is meant to provide general guidelines for basic chart visualization decisions. It is up to the developer to work closely with all core stakeholders to determine if there are design variations that would better convey the visualization's intentions. 
 
 :::
 
@@ -31,6 +32,9 @@ Colors and line styling for chart grids
 ##### Data Colors
 
 The default color palette to be used on charts
+Bar-only and line-only charts
+Combination charts
+Clustered bar charts
 
 :::
 
