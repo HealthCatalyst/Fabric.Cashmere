@@ -66,9 +66,9 @@ const routes: Routes = [
                 path: 'qlik-metrics',
                 component: MarkdownContentComponent,
                 data: {
-                    title: 'Process Metrics',
+                    title: 'KPI Metrics',
                     category: 'Qlik',
-                    document: require('raw-loader!../../../guides/analytics/qlik/process-metrics.md')
+                    document: require('raw-loader!../../../guides/analytics/qlik/kpi-metrics.md')
                 }
             },
             {
@@ -155,9 +155,9 @@ const routes: Routes = [
                 path: 'tableau-metrics',
                 component: MarkdownContentComponent,
                 data: {
-                    title: 'Process Metrics',
+                    title: 'KPI Metrics',
                     category: 'Tableau',
-                    document: require('raw-loader!../../../guides/analytics/tableau/process-metrics.md')
+                    document: require('raw-loader!../../../guides/analytics/tableau/kpi-metrics.md')
                 }
             },
             {

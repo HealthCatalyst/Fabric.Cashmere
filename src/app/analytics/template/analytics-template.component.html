@@ -20,12 +20,12 @@
                 <hc-icon fontSet="fa" fontIcon="fa-file-zip-o"></hc-icon>
                 Download {{platform}} Template
             </a>
-            <div class="template-version-notes">
-                <h4>Release Notes:</h4>
+            <article class="template-version-notes">
+                <h4>Release notes:</h4>
                 <ul>
                     <li *ngFor="let line of versionList[0].notes">{{line}}</li>
                 </ul>
-            </div>
+            </article>
         </hc-tile>
 
         <hc-tile *ngIf="versionList.length > 1">
@@ -43,12 +43,12 @@
                         <strong>Release date:</strong> {{version.releasedate}}<br>
                         <strong>Requirements:</strong> {{version.requirements}}<br>
                     </div>
-                    <div class="template-version-notes">
-                        <h4>Release Notes:</h4>
+                    <article class="template-version-notes">
+                        <h4>Release notes:</h4>
                         <ul>
                             <li *ngFor="let line of version.notes">{{line}}</li>
                         </ul>
-                    </div>
+                    </article>
                     <hr *ngIf="i < versionList.length - 1">
                 </div>
             </ng-container>
