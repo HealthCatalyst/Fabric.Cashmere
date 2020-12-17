@@ -16,6 +16,11 @@ import {
 } from './pick-templates.directive';
 import { DefaultSelectionModelFactory } from './pane/selection-model';
 import { PickPaneListComponent } from './pane/pick-pane-list.component';
+import {ButtonModule} from '../button/button.module';
+import {InputModule} from '../input/input.module';
+import {FormFieldModule} from '../form-field/hc-form-field.module';
+import {ProgressIndicatorsModule} from '../progress-indicators/progress-indicators.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -33,7 +38,12 @@ import { PickPaneListComponent } from './pane/pick-pane-list.component';
         PickItemLabelDirective
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        FormsModule,
+        ButtonModule,
+        InputModule,
+        FormFieldModule,
+        ProgressIndicatorsModule
     ],
     exports: [
         PickPaneComponent,

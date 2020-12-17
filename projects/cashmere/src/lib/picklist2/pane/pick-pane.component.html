@@ -1,15 +1,17 @@
 <div [hidden]="!hasSearch" class="hc-pick-search-outer" [class.hc-pick-pane-search-no-toolbar]="!hasToolbar">
-    <input #searchInput
-        class="hc-pick-search-input"
-        [disabled]="disabled"
-        [value]="searchTerm ? searchTerm : ''"
-        (input)="filter(searchInput.value)"
-        (compositionstart)="_onCompositionStart()"
-        (compositionend)="_onCompositionEnd(searchInput.value)"
-        (change)="$event.stopPropagation()"
-        (keydown)="onSearchKeydown($event)"
-        [placeholder]="searchPlaceholder"
-        role="combobox">
+    <hc-form-field>
+        <input #searchInput
+            hcInput
+            [value]="searchTerm ? searchTerm : ''"
+            (input)="filter(searchInput.value)"
+            (compositionstart)="_onCompositionStart()"
+            (compositionend)="_onCompositionEnd(searchInput.value)"
+            (change)="$event.stopPropagation()"
+            (keydown)="onSearchKeydown($event)"
+            [placeholder]="searchPlaceholder"/>
+        <span *ngIf="searchTerm?.length > 0" hcSuffix class="hc-pick-input-search-suffix hc-pick-input-search-clear" (click)="clearSearch()" title="Clear search"></span>
+        <span hcSuffix class="hc-pick-input-search-suffix hc-pick-input-search"></span>
+    </hc-form-field>
 </div>
 
 <div *ngIf="hasToolbar" class="hc-picklist-pane-tools">
@@ -23,10 +25,10 @@
             </ng-container>
         </div>
         <div class="hc-picklist-pane-quick-links">
-            <button type="button" hc-button buttonStyle="link-inline" class="hc-font-xsm button-link-inline" (click)="selectAll()" [disabled]="itemsList.filteredItems.length === 0">
+            <button hc-button buttonStyle="link-inline" class="hc-font-xsm hc-pick-button-link-inline" (click)="selectAll()" [disabled]="itemsList.filteredItems.length === 0">
                 Select All
             </button>
-            <button type="button" hc-button buttonStyle="link-inline" class="hc-font-xsm button-link-inline" (click)="deselectAll()" [disabled]="!this.hasSelectedItems">
+            <button hc-button buttonStyle="link-inline" class="hc-font-xsm hc-pick-button-link-inline" (click)="deselectAll()" [disabled]="!hasSelectedItems">
                 Select None
             </button>
         </div>
@@ -52,8 +54,7 @@
     (focus)="_paneHasFocus = true"
     (blur)="_paneHasFocus = false"
     (drop)="dragService.drop($event)" (dragover)="dragService.allowDrop($event)" (dragleave)="dragService.dragLeave()"
-    tabIndex="0"
-    [id]="paneId">
+    tabIndex="0">
 
     <ng-container *ngIf="!loading">
         <div class="hc-pick-option" [attr.role]="item.isParent ? 'group' : 'option'"
@@ -80,7 +81,6 @@
                     <span *ngIf="canCloseGroup" class="hc-pick-group-icon" [class.hc-pick-group-icon-open]="!item.isClosed" 
                         (dblclick)="$event.stopPropagation()"
                         (click)="item.toggleOpenState($event)">
-                        F
                     </span>
                     <span class="hc-pick-option-label" [hcPickItemLabel]="item.label" [escape]="escapeHTML"></span>
                 </div>
@@ -109,7 +109,7 @@
     </ng-container>
 
     <ng-container *ngIf="loading">
-        <div class="hc-pick-option hc-pick-option-disabled">Loading...</div>
+        <hc-progress-dots></hc-progress-dots>
     </ng-container>
 </hc-pick-pane-list>
 

@@ -4,7 +4,9 @@ import { PickPaneComponent } from './pick-pane.component';
 import { PickOption } from '../pick.types';
 
 @Injectable()
-/** Contains logic for dragging and dropping items between picklist panes. */
+/** Contains logic for dragging and dropping items between picklist panes.
+ * @docs-private
+ */
 export class PickPaneDragService {
     private pane: PickPaneComponent;
 

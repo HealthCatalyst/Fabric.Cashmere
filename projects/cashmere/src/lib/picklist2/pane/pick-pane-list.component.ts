@@ -35,7 +35,9 @@ const SCROLL_SCHEDULER = typeof requestAnimationFrame !== 'undefined' ? animatio
         </div>
     `
 })
-/** Component that contains that displays options list and manages virtual scroll as needed. */
+/** Component that contains that displays options list and manages virtual scroll as needed.
+ * @docs-private
+*/
 export class PickPaneListComponent implements OnInit, OnChanges, OnDestroy {
     @Input() items: PickOption[] = [];
     @Input() markedItem: PickOption;

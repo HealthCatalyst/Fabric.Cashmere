@@ -3,6 +3,7 @@ import { PickPaneComponent } from './pane/pick-pane.component';
 import { isDefined } from './value-utils';
 
 @Injectable()
+/** @docs-private */
 export class Picklist2Service {
     availablePane: PickPaneComponent;
     selectedPane: PickPaneComponent;

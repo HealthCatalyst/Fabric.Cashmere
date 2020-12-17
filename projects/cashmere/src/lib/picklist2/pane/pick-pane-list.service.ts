@@ -13,7 +13,9 @@ export interface PanelDimensions {
 }
 
 @Injectable()
-/** Performs calculations for virtual scrolling. */
+/** Performs calculations for virtual scrolling.
+ * @docs-private
+*/
 export class PickPaneListService {
 
     private _dimensions: PanelDimensions = {

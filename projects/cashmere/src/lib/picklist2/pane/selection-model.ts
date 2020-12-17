@@ -6,6 +6,7 @@ export function DefaultSelectionModelFactory() {
     return new DefaultSelectionModel();
 }
 
+/** @docs-private */
 export interface PickSelectionModel {
     value: PickOption[];
     select(item: PickOption);
@@ -14,6 +15,7 @@ export interface PickSelectionModel {
     selectAll(items: Array<PickOption>, canSelectGroup: boolean);
 }
 
+/** @docs-private */
 export class DefaultSelectionModel implements PickSelectionModel {
     private _selected: PickOption[] = [];
 

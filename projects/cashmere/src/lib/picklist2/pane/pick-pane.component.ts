@@ -38,7 +38,9 @@ import { SortFn, GroupValueFn, CompareWithFn, AddCustomItemFn, SELECTION_MODEL_F
         '[class.hc-pick-pane]': 'useDefaultClass'
     }
 })
-/** A single pane containing the searchbar, toolbar, items list, and footer. */
+/** A single pane containing the searchbar, toolbar, items list, and footer.
+ * @docs-private
+*/
 export class PickPaneComponent implements AfterViewInit, OnChanges {
     @Input() _isLeftPane = false;
     @Input() bindLabel: string;
@@ -94,6 +96,7 @@ export class PickPaneComponent implements AfterViewInit, OnChanges {
     @ViewChild(forwardRef(() => PickPaneListComponent)) dropdownPanel: PickPaneListComponent;
     @ViewChild('searchInput', { static: true }) searchInput: ElementRef<HTMLInputElement>;
 
+    /** Object that manages the state of the list. */
     itemsList: ItemsList;
     /** items displayed in the viewport. important for virtual scrolling */
     viewPortItems: PickOption[] = [];
@@ -423,7 +426,7 @@ export class PickPaneComponent implements AfterViewInit, OnChanges {
     }
 
     /** Clear out search term if any and refresh the list */
-    private _clearSearch() {
+    clearSearch() {
         if (!this.searchTerm) { return; }
         this._changeSearch("");
         this.itemsList.resetFilteredItems();

@@ -1,6 +1,7 @@
 import { InjectionToken } from '@angular/core';
 import { SelectionModelFactory } from './pane/selection-model';
 
+/** @docs-private */
 export class PickOption {
     [name: string]: any;
     /** zero-based position in the list */

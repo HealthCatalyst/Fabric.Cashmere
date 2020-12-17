@@ -1,0 +1,79 @@
+<p>The appearance of the picklist is highly customizable using the template directives for the header, footer, toolbar, option and group rows, and more.</p>
+<br>
+<hc-picklist2
+    [items]="transportOptions"
+    bindLabel="name"
+    bindValue="name"
+    [formControl]="selected"
+    [sortFn]="sortFn"
+    [searchFn]="customSearchFn"
+    [groupBy]="groupByFn"
+    [canSelectGroup]="false"
+    [canCloseGroup]="true"
+    orphanItemsGroupName="Other Travel Methods"
+    [closeGroupsByDefault]="false"
+    [addCustomItem]="true">
+     <!-- Group row template -->
+     <ng-template hc-pick-optgroup-tmp let-item="hcOption">
+        <div class="hc-pick-optgroup-inner group-row">
+            <span>{{ item.value.name }}</span>
+            <span> ({{item.children.length}})</span>
+            <span class="fa transport-group-icon" [class.fa-chevron-down]="!item.isClosed" [class.fa-chevron-up]="item.isClosed" 
+                (dblclick)="$event.stopPropagation()" (click)="item.toggleOpenState($event)">
+            </span>
+        </div>
+    </ng-template>
+
+    <!-- Option row template -->
+    <ng-template hc-pick-option-tmp let-item="item" let-search="searchTerm">
+        <div class="opt-row" title="Travel by {{ item.type }}: {{ item.name }}">
+            <span class="icon-wrapper {{ item.color }}"><hc-icon fontSet="fa" fontIcon="fa-{{ item.icon }}" hcIconSm></hc-icon></span>
+            {{ item.name }}
+        </div>
+    </ng-template>
+
+    <!-- Left pane header template -->
+    <ng-template hc-pane-header-left-tmp>
+        <div class="custom-header">
+            <div class="header-text"><span class="fa fa-suitcase"></span>Available Transportation</div>
+        </div>
+    </ng-template>
+
+    <!-- Right pane header template -->
+    <ng-template hc-pane-header-right-tmp>
+        <div class="custom-header">
+            <div class="header-text"><span class="fa fa-suitcase"></span>Selected Transportation</div>
+        </div>
+    </ng-template>
+    
+    <!-- Pane toolbar template -->
+    <ng-template hc-pane-toolbar-tmp let-itemsList="itemsList" let-searchTerm="searchTerm">
+        <div class="custom-toolbar">
+            <span>Showing {{itemsList.itemsTotalCountStr}}</span>
+            <span>Searching for: "{{searchTerm}}"</span>
+        </div>
+    </ng-template>
+
+    <!-- Pane footer template -->
+    <ng-template hc-pane-footer-tmp let-itemsList="itemsList" let-searchTerm="searchTerm">
+        <div class="custom-footer">
+            <span>This is a custom pane footer.</span>
+            <span>Selected {{itemsList.selectedItems.length?.toLocaleString() || 0}}</span>
+        </div>
+    </ng-template>
+
+    <!-- Custom item template - For items added by user via search. -->
+    <ng-template hc-pick-custom-item-tmp let-search="searchTerm">
+        <div class="opt-row custom-item">
+            <span class="fa fa-{{search}}"></span>
+            <div>Add new option: "{{search}}"</div>
+            <span class="template-callout">This is a custom item template.</span>
+        </div>
+    </ng-template>
+</hc-picklist2>
+
+<br>
+<p>
+    Selected:
+    <code>{{ selected.value | json }}</code>
+</p>

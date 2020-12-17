@@ -1,0 +1,67 @@
+<hc-picklist2
+    autofocus
+    [formControl]="selectedDoctors"
+    [items]="doctors"
+    bindLabel="name"
+    bindValue="id"
+    [hasSearch]="hasSearch"
+    [readonly]="readOnly"
+    [leftPaneLoading]="leftPaneLoading"
+    [rightPaneLoading]="rightPaneLoading"
+    [maxSelectedItems]="usingMaxSelected ? maxSelectedItems : false"
+    [hasHeader]="hasHeader"
+    [hasToolbar]="hasToolbar"
+    [hasFooter]="hasFooter"
+    [addCustomItem]="addCustomItem"
+    [addCustomItemText]="addCustomItemText"
+    [groupBy]="isGrouped ? 'department' : false"
+    [canSelectGroup]="true"
+    [closeGroupsByDefault]="false"
+    [canCloseGroup]="canCloseGroup"
+    [height]="height"
+    [searchPlaceholder]="searchPlaceholder"
+    [notFoundText]="notFoundText">
+</hc-picklist2>
+
+<hr>
+<div class="property-form-group checkbox-only-group">
+    <hc-checkbox id="readOnly" [(ngModel)]="readOnly">Read only</hc-checkbox>
+    <hc-checkbox id="leftPaneLoading" [(ngModel)]="leftPaneLoading">Left pane loading</hc-checkbox>
+    <hc-checkbox id="rightPaneLoading" [(ngModel)]="rightPaneLoading">Right pane loading</hc-checkbox>
+    <hc-checkbox id="hasSearch" [(ngModel)]="hasSearch">Has search</hc-checkbox>
+    <hc-checkbox id="hasHeader" [(ngModel)]="hasHeader">Has header</hc-checkbox>
+    <hc-checkbox id="hasFooter" [(ngModel)]="hasFooter">Has footer</hc-checkbox>
+    <hc-checkbox id="hasToolbar" [(ngModel)]="hasToolbar">Has toolbar</hc-checkbox>
+    <hc-checkbox id="isGrouped" [(ngModel)]="isGrouped">Group items</hc-checkbox>
+    <hc-checkbox id="canCloseGroup" [(ngModel)]="canCloseGroup">Can collapse groups</hc-checkbox>
+</div>
+<div class="property-form-group">
+    <hc-form-field title="Add custom items through searchbar.">
+        <hc-label>Custom item text:</hc-label>
+        <input hcInput [(ngModel)]="addCustomItemText" />
+    </hc-form-field>
+    <hc-checkbox id="addCustomItem" [(ngModel)]="addCustomItem">Allow custom items</hc-checkbox>
+</div>
+<div class="property-form-group">
+    <hc-form-field title="Limits number allowed in left pane.">
+        <hc-label>Max selected items:</hc-label>
+        <input hcInput [(ngModel)]="maxSelectedItems" type="number" />
+    </hc-form-field>
+    <hc-checkbox id="usingMaxSelected" [(ngModel)]="usingMaxSelected">Enforce max selected</hc-checkbox>
+</div>
+<div class="property-form-group">
+    <hc-form-field>
+        <hc-label>Search placeholder:</hc-label>
+        <input hcInput [(ngModel)]="searchPlaceholder" />
+    </hc-form-field>
+    <hc-form-field>
+        <hc-label>"Not Found" text:</hc-label>
+        <input hcInput [(ngModel)]="notFoundText" />
+    </hc-form-field>
+    <hc-form-field>
+        <hc-label>Height (provide unit):</hc-label>
+        <input hcInput [(ngModel)]="height" />
+    </hc-form-field>
+</div>
+
+

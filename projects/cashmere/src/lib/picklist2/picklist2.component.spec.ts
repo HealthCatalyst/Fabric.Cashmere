@@ -76,7 +76,7 @@ describe('Picklist2Component', () => {
                     </ng-template>
                 </hc-picklist2>`);
     
-            fixture.componentInstance.picklist.availablePane.searchTerm = 'custom-item';
+            fixture.componentInstance.picklist._availablePane._searchTerm = 'custom-item';
             fixture.componentInstance.picklist._detectChanges();
             fixture.detectChanges();
     
@@ -95,7 +95,7 @@ describe('Picklist2Component', () => {
                     </ng-template>
                 </hc-picklist2>`);
     
-            fixture.componentInstance.picklist.availablePane.searchTerm = 'custom-item';
+            fixture.componentInstance.picklist._availablePane._searchTerm = 'custom-item';
             fixture.componentInstance.picklist._detectChanges();
             fixture.detectChanges();
     
@@ -113,7 +113,7 @@ describe('Picklist2Component', () => {
                 `<hc-picklist2 [items]="cities" [(ngModel)]="selectedCities" [maxSelectedItems]="2">
                 </hc-picklist2>`);
             const arrowIcon = fixture.debugElement.query(By.css('.hc-picklist-right-arrow-btn'));
-            const availablePane = fixture.componentInstance.picklist.availablePane;
+            const availablePane = fixture.componentInstance.picklist._availablePane;
             tickAndDetectChanges(fixture);
             
             availablePane.select(availablePane.itemsList.items[1]);
@@ -141,7 +141,7 @@ describe('Picklist2Component', () => {
     
             tickAndDetectChanges(fixture);
     
-            const items = fixture.componentInstance.picklist.availablePane.itemsList.items;
+            const items = fixture.componentInstance.picklist._availablePane.itemsList.items;
             expect(items.length).toBe(3);
             expect(items[1]).toEqual(jasmine.objectContaining({
                 label: 'Yes', value: true, disabled: false
@@ -161,10 +161,10 @@ describe('Picklist2Component', () => {
     
             tickAndDetectChanges(fixture);
             const picklist = fixture.componentInstance.picklist;
-            expect(picklist.availablePane.itemsList.items[1].disabled).toBeFalsy();
+            expect(picklist._availablePane.itemsList.items[1].disabled).toBeFalsy();
             fixture.componentInstance.disabled = true;
             tickAndDetectChanges(fixture);
-            expect(picklist.availablePane.itemsList.items[1].disabled).toBeTruthy();
+            expect(picklist._availablePane.itemsList.items[1].disabled).toBeTruthy();
         }));
     
         it('should be able to update hc-pick-option label', fakeAsync(() => {
@@ -177,7 +177,7 @@ describe('Picklist2Component', () => {
     
             fixture.componentInstance.label = 'Indeed';
             tickAndDetectChanges(fixture);
-            const items = fixture.componentInstance.picklist.availablePane.itemsList.items;
+            const items = fixture.componentInstance.picklist._availablePane.itemsList.items;
             expect(items[1].label).toBe('Indeed');
         }));
     });
@@ -198,7 +198,7 @@ describe('Picklist2Component', () => {
             expect(fixture.componentInstance.selectedCities[1].name).toBe('Kaunas');
 
             // empty out selection
-            picklist.selectedPane.selectAll();
+            picklist._selectedPane.selectAll();
             picklist.moveRightToLeft();
             expect(fixture.componentInstance.selectedCities.length).toBe(0);
         }));
@@ -211,12 +211,12 @@ describe('Picklist2Component', () => {
 
             fixture.componentInstance.selectedCities = [fixture.componentInstance.cities[0]];
             tickAndDetectChanges(fixture);
-            expect(picklist.selectedPane.itemsList.items.length).toBe(2);
-            expect(picklist.selectedPane.itemsList.items[1].label).toBe('Vilnius');
+            expect(picklist._selectedPane.itemsList.items.length).toBe(2);
+            expect(picklist._selectedPane.itemsList.items[1].label).toBe('Vilnius');
 
             fixture.componentInstance.selectedCities = [];
             tickAndDetectChanges(fixture);
-            expect(picklist.selectedPane.itemsList.items).toEqual([]);
+            expect(picklist._selectedPane.itemsList.items).toEqual([]);
         }));
 
         it('should update internal model after it was toggled with *ngIf', fakeAsync(() => {
@@ -227,7 +227,7 @@ describe('Picklist2Component', () => {
             // select first city
             fixture.componentInstance.selectedCities = [fixture.componentInstance.cities[0]];
             tickAndDetectChanges(fixture);
-            expect(fixture.componentInstance.picklist.selectedPane.itemsList.items.length).toBe(2);
+            expect(fixture.componentInstance.picklist._selectedPane.itemsList.items.length).toBe(2);
 
             // toggle to hide/show
             fixture.componentInstance.toggleVisible();
@@ -237,7 +237,7 @@ describe('Picklist2Component', () => {
 
             fixture.componentInstance.selectedCities = [];
             tickAndDetectChanges(fixture);
-            expect(fixture.componentInstance.picklist.selectedPane.itemsList.items.length).toBe(0);
+            expect(fixture.componentInstance.picklist._selectedPane.itemsList.items.length).toBe(0);
         }));
 
         describe('when ngModel set with a value that is not an exisiting option', () => {
@@ -260,13 +260,13 @@ describe('Picklist2Component', () => {
                 fixture.componentInstance.selectedCities = [{ id: 7, name: 'Pailgis' }];
                 tickAndDetectChanges(fixture);
                 picklist = fixture.componentInstance.picklist;
-                expect(picklist.selectedPane.itemsList.items[1].label).toBe('Pailgis');
-                expect(picklist.availablePane.itemsList.items.length).toBe(0);
+                expect(picklist._selectedPane.itemsList.items[1].label).toBe('Pailgis');
+                expect(picklist._availablePane.itemsList.items.length).toBe(0);
     
                 // even if pailgis added as an option later, should be removed from available list because its already selected
                 fixture.componentInstance.cities = [{ id: 7, name: 'Pailgis' }];
                 tickAndDetectChanges(fixture);
-                expect(picklist.availablePane.itemsList.items.length).toBe(0);
+                expect(picklist._availablePane.itemsList.items.length).toBe(0);
             }));
     
             it('should bind whole object as value when bindValue prop is specified with empty string in template', fakeAsync(() => {
@@ -279,8 +279,8 @@ describe('Picklist2Component', () => {
                 fixture.componentInstance.selectedCities = [{ id: 7, name: 'Pailgis' }];
                 tickAndDetectChanges(fixture);
                 picklist = fixture.componentInstance.picklist;
-                expect(picklist.selectedPane.itemsList.items[1].label).toBe('Pailgis');
-                expect(picklist.availablePane.itemsList.items.length).toBe(0);
+                expect(picklist._selectedPane.itemsList.items[1].label).toBe('Pailgis');
+                expect(picklist._availablePane.itemsList.items.length).toBe(0);
             }));
 
             it('when externalSearchSubject is used', fakeAsync(() => {
@@ -293,9 +293,9 @@ describe('Picklist2Component', () => {
                 fixture.componentInstance.cities = [];
                 fixture.componentInstance.selectedCities = [{ id: 1, name: 'Vilnius' }, { id: 2, name: 'Kaunas' }];
                 tickAndDetectChanges(fixture);
-                expect(picklist.selectedPane.itemsList.items.length).toBe(3);
-                expect(picklist.selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({ label: 'Vilnius', value: { id: 1, name: 'Vilnius' } }));
-                expect(picklist.selectedPane.itemsList.items[2]).toEqual(jasmine.objectContaining({ label: 'Kaunas', value: { id: 2, name: 'Kaunas' } }));
+                expect(picklist._selectedPane.itemsList.items.length).toBe(3);
+                expect(picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({ label: 'Vilnius', value: { id: 1, name: 'Vilnius' } }));
+                expect(picklist._selectedPane.itemsList.items[2]).toEqual(jasmine.objectContaining({ label: 'Kaunas', value: { id: 2, name: 'Kaunas' } }));
     
                 fixture.componentInstance.cities = [
                     { id: 1, name: 'Vilnius' },
@@ -303,8 +303,8 @@ describe('Picklist2Component', () => {
                     { id: 3, name: 'Pabrade' },
                 ];
                 tickAndDetectChanges(fixture);
-                expect(picklist.selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({ label: 'Vilnius', value: { id: 1, name: 'Vilnius' } }));
-                expect(picklist.selectedPane.itemsList.items[2]).toEqual(jasmine.objectContaining({ label: 'Kaunas', value: { id: 2, name: 'Kaunas' } }));
+                expect(picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({ label: 'Vilnius', value: { id: 1, name: 'Vilnius' } }));
+                expect(picklist._selectedPane.itemsList.items[2]).toEqual(jasmine.objectContaining({ label: 'Kaunas', value: { id: 2, name: 'Kaunas' } }));
             }));
 
             it('should set items correctly if there is no bindLabel', fakeAsync(() => {
@@ -316,7 +316,7 @@ describe('Picklist2Component', () => {
                 tickAndDetectChanges(fixture);
                 fixture.componentInstance.cities = [{ id: 1, name: 'Vilnius' }, { id: 2, name: 'Kaunas' }];
                 tickAndDetectChanges(fixture);
-                expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
+                expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
                     value: { id: 7, name: 'Pailgis' }
                 }));
             }));
@@ -330,7 +330,7 @@ describe('Picklist2Component', () => {
                 fixture.componentInstance.selectedCities = [<any>'Kaunas'];
                 tickAndDetectChanges(fixture);
     
-                expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
+                expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
                     value: 'Kaunas', label: 'Kaunas' }));
             }));
         });
@@ -350,7 +350,7 @@ describe('Picklist2Component', () => {
             expect(fixture.componentInstance.selectedCities.length).toBe(2);
 
             // empty out selection, refresh available items
-            picklist.selectedPane.selectAll();
+            picklist._selectedPane.selectAll();
             picklist.moveRightToLeft();
             tickAndDetectChanges(fixture);
             fixture.componentInstance.cities = [...fixture.componentInstance.cities];
@@ -391,7 +391,7 @@ describe('Picklist2Component', () => {
 
             fixture.componentInstance.selectedCities = [];
             tickAndDetectChanges(fixture);
-            expect(fixture.componentInstance.picklist.selectedPane.items).toEqual([]);
+            expect(fixture.componentInstance.picklist._selectedPane._paneItems).toEqual([]);
         }));
 
         it('should clear previous selected value even if it is disabled', fakeAsync(() => {
@@ -406,7 +406,7 @@ describe('Picklist2Component', () => {
 
             fixture.componentInstance.selectedCities = [fixture.componentInstance.cities[1]];
             tickAndDetectChanges(fixture);
-            expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1].label).toBe(fixture.componentInstance.cities[1].name);
+            expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1].label).toBe(fixture.componentInstance.cities[1].name);
         }));
 
         it('should clear previous select value when setting new model', fakeAsync(() => {
@@ -417,15 +417,15 @@ describe('Picklist2Component', () => {
             fixture.componentInstance.selectedCities = [fixture.componentInstance.cities[0]];
             tickAndDetectChanges(fixture);
             picklist = fixture.componentInstance.picklist;
-            expect(picklist.selectedPane.itemsList.items.length).toBe(2); // default group + 1 items
+            expect(picklist._selectedPane.itemsList.items.length).toBe(2); // default group + 1 items
 
             fixture.componentInstance.selectedCities = [fixture.componentInstance.cities[1]];
             tickAndDetectChanges(fixture);
-            expect(picklist.selectedPane.itemsList.items.length).toBe(2); // default group + 1 items
+            expect(picklist._selectedPane.itemsList.items.length).toBe(2); // default group + 1 items
 
             fixture.componentInstance.selectedCities = [];
             tickAndDetectChanges(fixture);
-            expect(picklist.selectedPane.items.length).toBe(0);
+            expect(picklist._selectedPane._paneItems.length).toBe(0);
         }));
 
         it('should bind to custom object properties', fakeAsync(() => {
@@ -443,7 +443,7 @@ describe('Picklist2Component', () => {
             // from model to component
             fixture.componentInstance.selectedCityIds = [2];
             tickAndDetectChanges(fixture);
-            expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
+            expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
                 value: fixture.componentInstance.cities[1]
             }));
         }));
@@ -458,7 +458,7 @@ describe('Picklist2Component', () => {
             // from component to model
             selectOptions(picklist, [2]);
             fixture.detectChanges();
-            expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
+            expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
                 label: 'USA',
                 value: fixture.componentInstance.countries[1]
             }));
@@ -466,7 +466,7 @@ describe('Picklist2Component', () => {
             // from model to component
             fixture.componentInstance.selectedCountries = [fixture.componentInstance.countries[0]];
             tickAndDetectChanges(fixture);
-            expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
+            expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
                 label: 'Lithuania',
                 value: fixture.componentInstance.countries[0]
             }));
@@ -487,7 +487,7 @@ describe('Picklist2Component', () => {
             // from model to component
             fixture.componentInstance.selectedCountries = [fixture.componentInstance.countries[2].description.id];
             tickAndDetectChanges(fixture);
-            expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
+            expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
                 label: 'Australia',
                 value: fixture.componentInstance.countries[2]
             }));
@@ -510,7 +510,7 @@ describe('Picklist2Component', () => {
             // from model to component
             fixture.componentInstance.selectedCities = [<any>'Kaunas'];
             tickAndDetectChanges(fixture);
-            expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1])
+            expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1])
                 .toEqual(jasmine.objectContaining({ label: 'Kaunas', value: 'Kaunas' }));
         }));
 
@@ -528,7 +528,7 @@ describe('Picklist2Component', () => {
             // from model to component
             fixture.componentInstance.selectedCities = [fixture.componentInstance.cities[1]];
             tickAndDetectChanges(fixture);
-            expect(picklist.selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
+            expect(picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
                 value: fixture.componentInstance.cities[1]
             }));
         }));
@@ -543,7 +543,7 @@ describe('Picklist2Component', () => {
 
                 picklist = fixture.componentInstance.picklist;
                 tickAndDetectChanges(fixture);
-                expect(picklist.availablePane.itemsList.items.length).toEqual(4); // 3 given cities plus default group
+                expect(picklist._availablePane.itemsList.items.length).toEqual(4); // 3 given cities plus default group
             }));
 
             it('should be possible to clear out items set from hc-pick-options', fakeAsync(() => {
@@ -555,10 +555,10 @@ describe('Picklist2Component', () => {
 
                 picklist = fixture.componentInstance.picklist;
                 tickAndDetectChanges(fixture);
-                expect(picklist.availablePane.itemsList.items.length).toEqual(4);
+                expect(picklist._availablePane.itemsList.items.length).toEqual(4);
                 fixture.componentInstance.cities = [];
                 tickAndDetectChanges(fixture);
-                expect(picklist.availablePane.itemsList.items.length).toEqual(0);
+                expect(picklist._availablePane.itemsList.items.length).toEqual(0);
             }));
 
             it('should bind value', fakeAsync(() => {
@@ -579,7 +579,7 @@ describe('Picklist2Component', () => {
                 // from model to component
                 fixture.componentInstance.selectedCityIds = [2];
                 tickAndDetectChanges(fixture);
-                expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
+                expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
                     value: 2, label: 'B' }));
             }));
 
@@ -595,7 +595,7 @@ describe('Picklist2Component', () => {
                 fixture.componentInstance.selectedCities = [selected];
                 tickAndDetectChanges(fixture);
 
-                expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
+                expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
                     value: selected, label: '' }));
             }));
         });
@@ -610,7 +610,7 @@ describe('Picklist2Component', () => {
                 fixture.componentInstance.selectedCityIds = [2];
                 tickAndDetectChanges(fixture);
                 const result = jasmine.objectContaining({ value: { id: 2, name: 'Kaunas' }});
-                expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1]).toEqual(result);
+                expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(result);
             }));
 
             it('should select by bindValue ', fakeAsync(() => {
@@ -624,7 +624,7 @@ describe('Picklist2Component', () => {
                 tickAndDetectChanges(fixture);
 
                 const result = jasmine.objectContaining({ value: { id: 0, name: 'Vilnius' }});
-                expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1]).toEqual(result);
+                expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(result);
             }));
 
             it('should select by bindLabel when binding to object', fakeAsync(() => {
@@ -636,7 +636,7 @@ describe('Picklist2Component', () => {
                 fixture.componentInstance.selectedCities = [{ id: 2, name: 'Kaunas' }];
                 tickAndDetectChanges(fixture);
                 const result = jasmine.objectContaining({ value: { id: 2, name: 'Kaunas' }});
-                expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1]).toEqual(result);
+                expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(result);
             }));
 
             it('should select by object reference', fakeAsync(() => {
@@ -648,7 +648,7 @@ describe('Picklist2Component', () => {
                 fixture.componentInstance.selectedCities = [fixture.componentInstance.cities[1]];
                 tickAndDetectChanges(fixture);
                 const result = jasmine.objectContaining({ value: { id: 2, name: 'Kaunas' }});
-                expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1]).toEqual(result);
+                expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(result);
             }));
 
             it('should select by compareWith function when bindValue is not used', fakeAsync(() => {
@@ -665,7 +665,7 @@ describe('Picklist2Component', () => {
                 fixture.componentInstance.selectedCities = [{ name: 'Vilnius', district: 'Ozo parkas' } as any];
 
                 tickAndDetectChanges(fixture);
-                expect(fixture.componentInstance.picklist.selectedPane.itemsList.items[1].value).toEqual(city);
+                expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1].value).toEqual(city);
             }));
 
             it('should select by compareWith function when bindValue is used', fakeAsync(() => {
@@ -679,7 +679,7 @@ describe('Picklist2Component', () => {
                 cmp.selectedCityIds = [cmp.cities[1].id.toString()];
                 cmp.compareWith = (city, model: string) => city.id === +model;
                 tickAndDetectChanges(fixture);
-                expect(cmp.picklist.selectedPane.itemsList.items[1].value).toEqual(cmp.cities[1]);
+                expect(cmp.picklist._selectedPane.itemsList.items[1].value).toEqual(cmp.cities[1]);
             }));
         });
     });
@@ -764,7 +764,7 @@ function tickAndDetectChanges(fixture: ComponentFixture<any>) {
 
 function selectOptions(picklist: Picklist2Component, indicesToSelect: number[]) {
     indicesToSelect.forEach(i => {
-        picklist.availablePane.select(picklist.availablePane.itemsList.items[i]);
+        picklist._availablePane.select(picklist._availablePane.itemsList.items[i]);
     });
     picklist.moveLeftToRight();
 }

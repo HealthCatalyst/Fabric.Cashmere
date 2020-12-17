@@ -132,7 +132,7 @@
         "usageDoc": true
     },
     "picklist": {"name": "Picklist [Deprecated]", "category": "layout", "examples": ["picklist-simple", "picklist-valueset"], "usageDoc": true},
-    "picklist2": {"name": "Picklist2", "category": "layout", "examples": ["picklist2-simple"]},
+    "picklist2": {"name": "Picklist2", "category": "layout", "examples": ["picklist2-simple", "picklist2-templates", "picklist2-overview", "picklist2-remote-data", "picklist2-hc-pick-option"]},
     "pop": {
         "name": "Popover",
         "category": "popups",

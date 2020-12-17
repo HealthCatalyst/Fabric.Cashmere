@@ -5,7 +5,7 @@
             <ng-template #defaultLeftHeaderTemplate>
                 <h2 class="hc-picklist-pane-header-default">Available</h2>
             </ng-template>
-            <ng-template [ngTemplateOutlet]="paneHeaderLeftTemplate || defaultLeftHeaderTemplate"></ng-template>
+            <ng-template [ngTemplateOutlet]="_paneHeaderLeftTemplate || defaultLeftHeaderTemplate"></ng-template>
         </div>
 
         <hc-pick-pane #available
@@ -38,26 +38,26 @@
             [hasFooter]="hasFooter"
             [items]="items"
             [compareWith]="compareWith"
-            [optionTemplate]="optionTemplate"
-            [optgroupTemplate]="optgroupTemplate"
-            [toolbarTemplate]="toolbarTemplate"
-            [footerTemplate]="footerTemplate"
-            [customItemTemplate]="customItemTemplate"
+            [optionTemplate]="_optionTemplate"
+            [optgroupTemplate]="_optgroupTemplate"
+            [toolbarTemplate]="_toolbarTemplate"
+            [footerTemplate]="_footerTemplate"
+            [customItemTemplate]="_customItemTemplate"
             (triggerMove)="moveLeftToRight()">
         </hc-pick-pane>
     </div>
 
     <div class="hc-picklist-move-btns">
-        <button hc-button buttonStyle="primary-alt" type="button" name="addBtn" class="hc-picklist-right-arrow-btn"
+        <button hc-button buttonStyle="primary-alt" class="hc-picklist-move-btn"
             [title]="maxSelectedItems && hasMaxItemsSelected ? 'Cannot select more than ' + maxSelectedItems.toLocaleString() + ' items.' : ''"
             (click)="moveLeftToRight()"
-            [disabled]="disabled || availablePane.selectedItems.length === 0 || hasMaxItemsSelected">
-                <span class="icon icon-arrow-right"> -> </span>
+            [disabled]="disabled || _availablePane.selectedItems.length === 0 || hasMaxItemsSelected">
+                <span class="hc-picklist-right-arrow hc-picklist-arrow"></span>
         </button>
-        <button hc-button buttonStyle="primary-alt" type="button" name="removeBtn" class="hc-picklist-left-arrow-btn"
+        <button hc-button buttonStyle="primary-alt" class="hc-picklist-move-btn"
                 (click)="moveRightToLeft()"
-                [disabled]="disabled || selectedPane.selectedItems.length === 0">
-            <span class="icon icon-arrow-left"> <- </span>
+                [disabled]="disabled || _selectedPane.selectedItems.length === 0">
+            <span class="hc-picklist-left-arrow hc-picklist-arrow"></span>
         </button>
     </div>
 
@@ -65,10 +65,12 @@
         <div *ngIf="hasHeader" class="hc-picklist-pane-header">
             <ng-template #defaultRightHeaderTemplate>
                 <h2 class="hc-picklist-pane-header-default">Selected
-                    <span *ngIf="maxSelectedItems" class="hc-picklist-max-limit-msg">*Select up to {{maxSelectedItems}} options</span>
+                    <span *ngIf="maxSelectedItems" class="hc-picklist-max-limit-msg" [class.hc-picklist-max-limit-exceeded]="hasExceededMaxItemsSelected">
+                        *Select up to {{maxSelectedItems}} options.<ng-container *ngIf="hasExceededMaxItemsSelected"> Limit exceeded.</ng-container>
+                    </span>
                 </h2>
             </ng-template>
-            <ng-template [ngTemplateOutlet]="paneHeaderRightTemplate || defaultRightHeaderTemplate"></ng-template>
+            <ng-template [ngTemplateOutlet]="_paneHeaderRightTemplate || defaultRightHeaderTemplate"></ng-template>
         </div>
         <hc-pick-pane #selected
             [bindLabel]="bindLabel"
@@ -95,11 +97,11 @@
             [hasToolbar]="hasToolbar"
             [hasFooter]="hasFooter"
             [compareWith]="compareWith"
-            [optionTemplate]="optionTemplate"
-            [optgroupTemplate]="optgroupTemplate"
-            [toolbarTemplate]="toolbarTemplate"
-            [footerTemplate]="footerTemplate"
-            [customItemTemplate]="customItemTemplate"
+            [optionTemplate]="_optionTemplate"
+            [optgroupTemplate]="_optgroupTemplate"
+            [toolbarTemplate]="_toolbarTemplate"
+            [footerTemplate]="_footerTemplate"
+            [customItemTemplate]="_customItemTemplate"
             (triggerMove)="moveRightToLeft()">
         </hc-pick-pane>
     </div>
