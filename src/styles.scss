@@ -314,6 +314,11 @@ hc-example-viewer .hc-tab-content-horizontal {
     }
 }
 
+hc-markdown-demo img {
+    max-width: 100%;
+    height: auto;
+}
+
 .persona-header {
     display: flex;
     align-items: center;

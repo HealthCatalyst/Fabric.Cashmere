@@ -16,16 +16,18 @@
 .template-version-notes {
     h4 {
         margin-top: 20px;
-        margin-bottom: 0;
+        margin-bottom: -5px;
     }
 
     ul {
-        margin-top: 5px;
+        margin-top: 0;
+        font-size: 14px;
     }
 }
 
 .template-download-btn {
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 
     hc-icon {
         margin-right: 10px;
