@@ -26,7 +26,7 @@ describe('PickPaneListService', () => {
                 end: 9,
                 topPadding: 0,
                 scrollHeight: 2500
-            })
+            });
         });
 
         it('should calculate items when scrolled', () => {
@@ -41,7 +41,7 @@ describe('PickPaneListService', () => {
                 end: 59,
                 topPadding: 1150,
                 scrollHeight: 2500
-            })
+            });
         });
     });
 

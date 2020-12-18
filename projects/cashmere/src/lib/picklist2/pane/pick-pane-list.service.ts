@@ -54,7 +54,7 @@ export class PickPaneListService {
             scrollHeight,
             start,
             end
-        }
+        };
     }
 
     setDimensions(itemHeight: number, panelHeight: number) {

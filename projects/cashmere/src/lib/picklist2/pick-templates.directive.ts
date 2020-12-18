@@ -17,43 +17,43 @@ export class PickItemLabelDirective implements OnChanges {
 }
 
 /** @docs-private */
-@Directive({ selector: '[hc-pane-header-left-tmp]' })
+@Directive({ selector: '[hcPaneHeaderLeftTmp]' })
 export class PickPaneHeaderLeftTemplateDirective {
     constructor(public template: TemplateRef<any>) { }
 }
 
 /** @docs-private */
-@Directive({ selector: '[hc-pane-header-right-tmp]' })
+@Directive({ selector: '[hcPaneHeaderRightTmp]' })
 export class PickPaneHeaderRightTemplateDirective {
     constructor(public template: TemplateRef<any>) { }
 }
 
 /** @docs-private */
-@Directive({ selector: '[hc-pick-option-tmp]' })
+@Directive({ selector: '[hcPickOptionTmp]' })
 export class PickOptionTemplateDirective {
     constructor(public template: TemplateRef<any>) { }
 }
 
 /** @docs-private */
-@Directive({ selector: '[hc-pick-optgroup-tmp]' })
+@Directive({ selector: '[hcPickOptgroupTmp]' })
 export class PickOptgroupTemplateDirective {
     constructor(public template: TemplateRef<any>) { }
 }
 
 /** @docs-private */
-@Directive({ selector: '[hc-pane-toolbar-tmp]' })
+@Directive({ selector: '[hcPaneToolbarTmp]' })
 export class PickPaneToolbarTemplateDirective {
     constructor(public template: TemplateRef<any>) { }
 }
 
 /** @docs-private */
-@Directive({ selector: '[hc-pane-footer-tmp]' })
+@Directive({ selector: '[hcPaneFooterTmp]' })
 export class PickPaneFooterTemplateDirective {
     constructor(public template: TemplateRef<any>) { }
 }
 
 /** @docs-private */
-@Directive({ selector: '[hc-pick-custom-item-tmp]' })
+@Directive({ selector: '[hcPickCustomItemTmp]' })
 export class PickCustomItemTemplateDirective {
     constructor(public template: TemplateRef<any>) { }
 }

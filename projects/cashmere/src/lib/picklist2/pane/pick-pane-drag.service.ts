@@ -31,7 +31,7 @@ export class PickPaneDragService {
     public drop(event: DragEvent) {
         if (this.pane._willAcceptDrop) {
             event.preventDefault();
-            this.pane._companionPane.triggerMoveEvent.emit();
+            this.pane._companionPane.triggerMove.emit();
         }
 
         this.dragLeave();

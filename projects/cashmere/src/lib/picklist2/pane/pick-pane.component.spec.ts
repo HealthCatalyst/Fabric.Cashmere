@@ -50,7 +50,7 @@ describe('PickPaneComponent', () => {
 
             expect(pickPane.dropdownPanel.items.length).toBe(4); // 3 given items, plus default group item
             let options = fixture.debugElement.nativeElement.querySelectorAll('.hc-pick-option');
-            expect(options.length).toBe(3); 
+            expect(options.length).toBe(3);
             expect(options[0].innerText).toBe('Vilnius');
             expect(options[1].innerText).toBe('Kaunas');
             expect(options[2].innerText).toBe('Pabrade');
@@ -99,30 +99,6 @@ describe('PickPaneComponent', () => {
             const firstChild = <HTMLScriptElement>panelItems?.firstChild;
 
             expect(firstChild.offsetHeight).not.toBe(0);
-        }));
-
-        it('should set and render items in dropdown panel with virtual scroll', fakeAsync(() => {
-            const fixture = createTestingModule(
-                HcPickPaneTestCmp,
-                `<hc-pick-pane [items]="cities" bindLabel="name" [virtualScroll]="true">
-                </hc-pick-pane>`);
-
-            tickAndDetectChanges(fixture);
-            fixture.detectChanges();
-
-            expect(fixture.componentInstance.pickPane.dropdownPanel.items.length).toBe(4);
-            let options = fixture.debugElement.nativeElement.querySelectorAll('.hc-pick-option');
-            expect(options.length).toBe(3);
-            expect(options[0].innerText).toBe('Vilnius');
-            expect(options[1].innerText).toBe('Kaunas');
-            expect(options[2].innerText).toBe('Pabrade');
-
-            fixture.componentInstance.cities = Array.from(Array(30).keys()).map((_, i) => ({ id: i, name: String.fromCharCode(97 + i) }));
-            tickAndDetectChanges(fixture);
-            fixture.detectChanges();
-            options = fixture.debugElement.nativeElement.querySelectorAll('.hc-pick-option');
-            expect(options.length).toBe(9);
-            expect(options[0].innerText).toBe('a');
         }));
 
 
@@ -179,7 +155,7 @@ describe('PickPaneComponent', () => {
                 const searchBox = fixture.debugElement.query(By.css('.hc-pick-search-input'));
                 const listPanel = fixture.debugElement.query(By.css('.hc-pick-pane-list'));
                 searchBox.nativeElement.focus();
-                
+
                 expect(searchBox.nativeElement === document.activeElement).toBeTruthy();
                 expect(listPanel.nativeElement === document.activeElement).toBeFalsy();
                 triggerKeyDownEvent(searchBox, KeyCode.Enter);
@@ -241,7 +217,7 @@ describe('PickPaneComponent', () => {
             }));
 
             it('should mark first value on arrow down when current marked item is last', fakeAsync(() => {
-                pickPane.itemsList.markItem(pickPane.itemsList.filteredItems[pickPane.itemsList.filteredItems.length - 1])
+                pickPane.itemsList.markItem(pickPane.itemsList.filteredItems[pickPane.itemsList.filteredItems.length - 1]);
                 expect(pickPane.itemsList.markedIndex).toEqual(3);
                 triggerKeyDownEvent(listPanel, KeyCode.ArrowDown);
                 expect(pickPane.itemsList.markedIndex).toEqual(1);
@@ -258,7 +234,7 @@ describe('PickPaneComponent', () => {
             }));
 
             it('should mark previous value on arrow up', fakeAsync(() => {
-                pickPane.itemsList.markItem(pickPane.itemsList.filteredItems[pickPane.itemsList.filteredItems.length - 1])
+                pickPane.itemsList.markItem(pickPane.itemsList.filteredItems[pickPane.itemsList.filteredItems.length - 1]);
                 expect(pickPane.itemsList.markedIndex).toEqual(3);
                 triggerKeyDownEvent(listPanel, KeyCode.ArrowUp);
                 expect(pickPane.itemsList.markedIndex).toEqual(2);
@@ -303,7 +279,7 @@ describe('PickPaneComponent', () => {
 
         describe('enter', () => {
             it('should trigger move event', fakeAsync(() => {
-                const emitSpy = spyOn(pickPane.triggerMoveEvent, 'emit');
+                const emitSpy = spyOn(pickPane.triggerMove, 'emit');
                 triggerKeyDownEvent(listPanel, KeyCode.Enter);
                 expect(emitSpy).toHaveBeenCalled();
             }));
@@ -488,7 +464,7 @@ describe('PickPaneComponent', () => {
                     </hc-pick-pane>`
                     );
                 pickPane = fixture.componentInstance.pickPane;
-                companionPickPane = fixture.componentInstance.companionPickPane
+                companionPickPane = fixture.componentInstance.companionPickPane;
             });
 
             it('should be false when there is no search term', () => {
@@ -515,7 +491,7 @@ describe('PickPaneComponent', () => {
             });
 
             it('should be false when term exists among items of companionPane', () => {
-                companionPickPane.itemsList.addNewOption('Vilnius in Companion Pane')
+                companionPickPane.itemsList.addNewOption('Vilnius in Companion Pane');
                 spyOnProperty(pickPane, '_companionPane').and.returnValue(companionPickPane); // faking "companion pane"
                 pickPane.searchTerm = 'Vilnius in Companion Pane';
                 expect(pickPane.showAddCustomOption).toBeFalsy();
@@ -546,7 +522,7 @@ describe('PickPaneComponent', () => {
                 HcPickPaneTestCmp, `<hc-pick-pane [items]="cities" bindLabel="name" [searchFn]="searchFn"></hc-pick-pane>`);
             const pickPane = fixture.componentInstance.pickPane;
 
-            fixture.componentInstance.searchFn = (term: string, item: any) => { return item.name.indexOf(term) > -1 || item.id === 2; };
+            fixture.componentInstance.searchFn = (term: string, item: any) => item.name.indexOf(term) > -1 || item.id === 2;
             tickAndDetectChanges(fixture);
             pickPane.filter('Vilnius');
             tick(200);
@@ -598,7 +574,7 @@ describe('PickPaneComponent', () => {
             const fixture = createTestingModule(
                 HcPickPaneGroupingTestCmp, `<hc-pick-pane [items]="accounts" groupBy="country" bindLabel="name"></hc-pick-pane>`);
             const pickPane = fixture.componentInstance.pickPane;
-            
+
             tickAndDetectChanges(fixture);
             pickPane.filter('adam');
             tickAndDetectChanges(fixture);
@@ -649,7 +625,7 @@ describe('PickPaneComponent', () => {
             });
 
             it('should not show selected city among options if it does not match search term', fakeAsync(() => {
-                pickPane.itemsList.select(pickPane.itemsList.items[1])
+                pickPane.itemsList.select(pickPane.itemsList.items[1]);
                 tickAndDetectChanges(fixture);
 
                 fixture.componentInstance.filter.subscribe();
@@ -665,7 +641,7 @@ describe('PickPaneComponent', () => {
                 const next = spyOn(fixture.componentInstance.filter, 'next');
                 pickPane.filter('vilnius');
                 tickAndDetectChanges(fixture);
-                expect(next).toHaveBeenCalledWith('vilnius')
+                expect(next).toHaveBeenCalledWith('vilnius');
             }));
 
             it('should push term to custom observable', fakeAsync(() => {
@@ -673,7 +649,7 @@ describe('PickPaneComponent', () => {
                 const next = spyOn(fixture.componentInstance.filter, 'next');
                 pickPane.filter('');
                 tickAndDetectChanges(fixture);
-                expect(next).toHaveBeenCalledWith('')
+                expect(next).toHaveBeenCalledWith('');
             }));
 
             it('should not push term to custom observable if length is less than externalSearchTermMinLength', fakeAsync(() => {
@@ -683,7 +659,7 @@ describe('PickPaneComponent', () => {
                 const next = spyOn(fixture.componentInstance.filter, 'next');
                 pickPane.filter('v');
                 tickAndDetectChanges(fixture);
-                expect(next).not.toHaveBeenCalledWith('v')
+                expect(next).not.toHaveBeenCalledWith('v');
             }));
         });
     });
@@ -912,7 +888,7 @@ class HcPickPaneTestCmp {
     ];
 
     customItemFunc(term: string) {
-        return { id: term, name: term, custom: true }
+        return { id: term, name: term, custom: true };
     }
 
     customItemFuncPromise(term: string) {
@@ -922,7 +898,7 @@ class HcPickPaneTestCmp {
     }
 
     compareWith(a, b) {
-        return a.name === b.name && a.district === b.district
+        return a.name === b.name && a.district === b.district;
     }
 
     toggleVisible() {
@@ -937,8 +913,6 @@ class HcPickPaneGroupingTestCmp {
     @ViewChild(PickPaneComponent, { static: true }) pickPane: PickPaneComponent;
     selectedAccountName = 'Adam';
     selectedAccount = null;
-    groupByFn = (item) => item.child.name;
-    groupValueFn = (key, _) => ({ group: key });
     accounts = [
         { name: 'Adam', email: 'adam@email.com', age: 12, country: 'United States', child: { name: 'c1' } },
         { name: 'Samantha', email: 'samantha@email.com', age: 30, country: 'United States', child: { name: 'c1' } },
@@ -983,7 +957,10 @@ class HcPickPaneGroupingTestCmp {
                 { name: 'Nicolás', email: 'nicole@email.com', age: 43 }
             ]
         }
-    ]
+    ];
+
+    groupByFn = (item) => item.child.name;
+    groupValueFn = (key, _) => ({ group: key });
 }
 
 function triggerKeyDownEvent(

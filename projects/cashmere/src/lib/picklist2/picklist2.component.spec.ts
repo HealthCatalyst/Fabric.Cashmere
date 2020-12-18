@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component, Type, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,95 +10,95 @@ import { Picklist2Component } from './picklist2.component';
 describe('Picklist2Component', () => {
 
     describe('custom templates', () => {
-        it('should display custom option template', async(() => {
+        it('should display custom option template', waitForAsync(() => {
             const fixture = createTestingModule(
                 HcPicklist2TestCmp,
                 `<hc-picklist2 [items]="cities" [(ngModel)]="selectedCities">
-                    <ng-template hc-pick-option-tmp let-item="item">
+                    <ng-template hcPickOptionTmp let-item="item">
                         <div class="custom-option">{{item.name}}</div>
                     </ng-template>
                 </hc-picklist2>`);
-    
+
             fixture.detectChanges();
-    
+
             fixture.whenStable().then(() => {
                 const el = fixture.debugElement.query(By.css('.custom-option')).nativeElement;
                 expect(el).not.toBeNull();
             });
         }));
 
-        it('should display custom header templates', async(() => {
+        it('should display custom header templates', waitForAsync(() => {
             const fixture = createTestingModule(
                 HcPicklist2TestCmp,
                 `<hc-picklist2 [items]="cities" [(ngModel)]="selectedCities">
-                    <ng-template hc-pane-header-left-tmp><span class="header-left">left header</span></ng-template>
-                    <ng-template hc-pane-header-right-tmp><span class="header-right">right header</span></ng-template>
+                    <ng-template hcPaneHeaderLeftTmp><span class="header-left">left header</span></ng-template>
+                    <ng-template hcPaneHeaderRightTmp><span class="header-right">right header</span></ng-template>
                 </hc-picklist2>`);
             fixture.detectChanges();
-    
+
             fixture.whenStable().then(() => {
                 const toolbar = fixture.debugElement.query(By.css('.header-left')).nativeElement;
                 expect(toolbar.innerHTML).toBe('left header');
-    
+
                 const footer = fixture.debugElement.query(By.css('.header-right')).nativeElement;
                 expect(footer.innerHTML).toBe('right header');
             });
         }));
 
-        it('should display custom footer and toolbar template', async(() => {
+        it('should display custom footer and toolbar template', waitForAsync(() => {
             const fixture = createTestingModule(
                 HcPicklist2TestCmp,
                 `<hc-picklist2 [items]="cities" [(ngModel)]="selectedCities">
-                    <ng-template hc-pane-toolbar-tmp>
+                    <ng-template hcPaneToolbarTmp>
                         <span class="toolbar-label">toolbar</span>
                     </ng-template>
-                    <ng-template hc-pane-footer-tmp>
+                    <ng-template hcPaneFooterTmp>
                         <span class="footer-label">footer</span>
                     </ng-template>
                 </hc-picklist2>`);
             fixture.detectChanges();
-    
+
             fixture.whenStable().then(() => {
                 const toolbar = fixture.debugElement.query(By.css('.toolbar-label')).nativeElement;
                 expect(toolbar.innerHTML).toBe('toolbar');
-    
+
                 const footer = fixture.debugElement.query(By.css('.footer-label')).nativeElement;
                 expect(footer.innerHTML).toBe('footer');
             });
         }));
 
-        it('should display custom item template', async(() => {
+        it('should display custom item template', waitForAsync(() => {
             const fixture = createTestingModule(
                 HcPicklist2TestCmp,
                 `<hc-picklist2 [items]="cities" [(ngModel)]="selectedCities" [addCustomItem]="true">
-                    <ng-template hc-pick-custom-item-tmp let-search="searchTerm">
+                    <ng-template hcPickCustomItemTmp let-search="searchTerm">
                         <span class="custom-item-template">{{searchTerm}}</span>
                     </ng-template>
                 </hc-picklist2>`);
-    
-            fixture.componentInstance.picklist._availablePane._searchTerm = 'custom-item';
+
+            fixture.componentInstance.picklist._availablePane.searchTerm = 'custom-item';
             fixture.componentInstance.picklist._detectChanges();
             fixture.detectChanges();
-    
+
             fixture.whenStable().then(() => {
                 const template = fixture.debugElement.query(By.css('.custom-item-template')).nativeElement;
                 expect(template).toBeDefined();
             });
         }));
 
-        it('should display custom pane headers', async(() => {
+        it('should display custom pane headers', waitForAsync(() => {
             const fixture = createTestingModule(
                 HcPicklist2TestCmp,
                 `<hc-picklist2 [items]="cities" [(ngModel)]="selectedCities" [addCustomItem]="true">
-                    <ng-template hc-pick-custom-item-tmp let-search="searchTerm">
+                    <ng-template hcPickCustomItemTmp let-search="searchTerm">
                         <span class="custom-item-template">{{searchTerm}}</span>
                     </ng-template>
                 </hc-picklist2>`);
-    
-            fixture.componentInstance.picklist._availablePane._searchTerm = 'custom-item';
+
+            fixture.componentInstance.picklist._availablePane.searchTerm = 'custom-item';
             fixture.componentInstance.picklist._detectChanges();
             fixture.detectChanges();
-    
+
             fixture.whenStable().then(() => {
                 const template = fixture.debugElement.query(By.css('.custom-item-template')).nativeElement;
                 expect(template).toBeDefined();
@@ -115,7 +115,7 @@ describe('Picklist2Component', () => {
             const arrowIcon = fixture.debugElement.query(By.css('.hc-picklist-right-arrow-btn'));
             const availablePane = fixture.componentInstance.picklist._availablePane;
             tickAndDetectChanges(fixture);
-            
+
             availablePane.select(availablePane.itemsList.items[1]);
             availablePane.select(availablePane.itemsList.items[2]);
             tickAndDetectChanges(fixture);
@@ -125,7 +125,7 @@ describe('Picklist2Component', () => {
 
             availablePane.select(availablePane.itemsList.items[1]);
             tickAndDetectChanges(fixture);
-            
+
             expect(arrowIcon.nativeElement.disabled).toBeTruthy();
         }));
     });
@@ -138,9 +138,9 @@ describe('Picklist2Component', () => {
                     <hc-pick-option [value]="true">Yes</hc-pick-option>
                     <hc-pick-option [value]="false">No</hc-pick-option>
                 </hc-picklist2>`);
-    
+
             tickAndDetectChanges(fixture);
-    
+
             const items = fixture.componentInstance.picklist._availablePane.itemsList.items;
             expect(items.length).toBe(3);
             expect(items[1]).toEqual(jasmine.objectContaining({
@@ -158,7 +158,7 @@ describe('Picklist2Component', () => {
                     <hc-pick-option [disabled]="disabled" [value]="true">Yes</hc-pick-option>
                     <hc-pick-option [value]="false">No</hc-pick-option>
                 </hc-picklist2>`);
-    
+
             tickAndDetectChanges(fixture);
             const picklist = fixture.componentInstance.picklist;
             expect(picklist._availablePane.itemsList.items[1].disabled).toBeFalsy();
@@ -166,7 +166,7 @@ describe('Picklist2Component', () => {
             tickAndDetectChanges(fixture);
             expect(picklist._availablePane.itemsList.items[1].disabled).toBeTruthy();
         }));
-    
+
         it('should be able to update hc-pick-option label', fakeAsync(() => {
             const fixture = createTestingModule(
                 HcPicklist2TestCmp,
@@ -174,7 +174,7 @@ describe('Picklist2Component', () => {
                     <hc-pick-option [disabled]="disabled" [value]="true">{{label}}</hc-pick-option>
                     <hc-pick-option [value]="false">No</hc-pick-option>
                 </hc-picklist2>`);
-    
+
             fixture.componentInstance.label = 'Indeed';
             tickAndDetectChanges(fixture);
             const items = fixture.componentInstance.picklist._availablePane.itemsList.items;
@@ -190,7 +190,7 @@ describe('Picklist2Component', () => {
                 HcPicklist2TestCmp,
                 `<hc-picklist2 [items]="cities" bindLabel="name" [(ngModel)]="selectedCities"></hc-picklist2>`);
             picklist = fixture.componentInstance.picklist;
-            
+
             // select two cities
             selectOptions(picklist, [1, 2]);
             expect(fixture.componentInstance.selectedCities.length).toBe(2);
@@ -245,16 +245,16 @@ describe('Picklist2Component', () => {
                 const fixture = createTestingModule(
                     HcPicklist2TestCmp,
                     `<hc-picklist2 [items]="cities" bindLabel="name" bindValue="id" [(ngModel)]="selectedCityIds"></hc-picklist2>`);
-    
+
                 fixture.componentInstance.cities = [];
                 expect(() => { fixture.componentInstance.selectedCityIds = [7]; tickAndDetectChanges(fixture); }).toThrow();
             }));
-    
+
             it(`should set items correctly when bindValue is not used`, fakeAsync(() => {
                 const fixture = createTestingModule(
                     HcPicklist2TestCmp,
                     `<hc-picklist2 [items]="cities" bindLabel="name" [(ngModel)]="selectedCities"></hc-picklist2>`);
-    
+
                 // clear out available options, set 'Pailgis' as selected
                 fixture.componentInstance.cities = [];
                 fixture.componentInstance.selectedCities = [{ id: 7, name: 'Pailgis' }];
@@ -262,13 +262,13 @@ describe('Picklist2Component', () => {
                 picklist = fixture.componentInstance.picklist;
                 expect(picklist._selectedPane.itemsList.items[1].label).toBe('Pailgis');
                 expect(picklist._availablePane.itemsList.items.length).toBe(0);
-    
+
                 // even if pailgis added as an option later, should be removed from available list because its already selected
                 fixture.componentInstance.cities = [{ id: 7, name: 'Pailgis' }];
                 tickAndDetectChanges(fixture);
                 expect(picklist._availablePane.itemsList.items.length).toBe(0);
             }));
-    
+
             it('should bind whole object as value when bindValue prop is specified with empty string in template', fakeAsync(() => {
                 const fixture = createTestingModule(
                     HcPicklist2TestCmp,
@@ -288,7 +288,7 @@ describe('Picklist2Component', () => {
                     HcPicklist2TestCmp,
                     `<hc-picklist2 [items]="cities" bindLabel="name" [externalSearchSubject]="filter" [(ngModel)]="selectedCities">
                     </hc-picklist2>`);
-    
+
                 picklist = fixture.componentInstance.picklist;
                 fixture.componentInstance.cities = [];
                 fixture.componentInstance.selectedCities = [{ id: 1, name: 'Vilnius' }, { id: 2, name: 'Kaunas' }];
@@ -296,7 +296,7 @@ describe('Picklist2Component', () => {
                 expect(picklist._selectedPane.itemsList.items.length).toBe(3);
                 expect(picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({ label: 'Vilnius', value: { id: 1, name: 'Vilnius' } }));
                 expect(picklist._selectedPane.itemsList.items[2]).toEqual(jasmine.objectContaining({ label: 'Kaunas', value: { id: 2, name: 'Kaunas' } }));
-    
+
                 fixture.componentInstance.cities = [
                     { id: 1, name: 'Vilnius' },
                     { id: 2, name: 'Kaunas' },
@@ -310,7 +310,7 @@ describe('Picklist2Component', () => {
             it('should set items correctly if there is no bindLabel', fakeAsync(() => {
                 const fixture = createTestingModule(
                     HcPicklist2TestCmp, `<hc-picklist2 [items]="cities" [(ngModel)]="selectedCities"></hc-picklist2>`);
-    
+
                 fixture.componentInstance.cities = [];
                 fixture.componentInstance.selectedCities = [{ id: 7, name: 'Pailgis' }];
                 tickAndDetectChanges(fixture);
@@ -324,12 +324,12 @@ describe('Picklist2Component', () => {
             it('should handle a simple primitive value', fakeAsync(() => {
                 const fixture = createTestingModule(
                     HcPicklist2TestCmp, `<hc-picklist2 [items]="citiesNames" [(ngModel)]="selectedCities"></hc-picklist2>`);
-    
+
                 fixture.componentInstance.cities = [];
                 tickAndDetectChanges(fixture);
                 fixture.componentInstance.selectedCities = [<any>'Kaunas'];
                 tickAndDetectChanges(fixture);
-    
+
                 expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1]).toEqual(jasmine.objectContaining({
                     value: 'Kaunas', label: 'Kaunas' }));
             }));
@@ -391,7 +391,7 @@ describe('Picklist2Component', () => {
 
             fixture.componentInstance.selectedCities = [];
             tickAndDetectChanges(fixture);
-            expect(fixture.componentInstance.picklist._selectedPane._paneItems).toEqual([]);
+            expect(fixture.componentInstance.picklist._selectedPane.items).toEqual([]);
         }));
 
         it('should clear previous selected value even if it is disabled', fakeAsync(() => {
@@ -406,7 +406,8 @@ describe('Picklist2Component', () => {
 
             fixture.componentInstance.selectedCities = [fixture.componentInstance.cities[1]];
             tickAndDetectChanges(fixture);
-            expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1].label).toBe(fixture.componentInstance.cities[1].name);
+            expect(fixture.componentInstance.picklist._selectedPane.itemsList.items[1].label)
+                .toBe(fixture.componentInstance.cities[1].name);
         }));
 
         it('should clear previous select value when setting new model', fakeAsync(() => {
@@ -425,7 +426,7 @@ describe('Picklist2Component', () => {
 
             fixture.componentInstance.selectedCities = [];
             tickAndDetectChanges(fixture);
-            expect(picklist._selectedPane._paneItems.length).toBe(0);
+            expect(picklist._selectedPane.items.length).toBe(0);
         }));
 
         it('should bind to custom object properties', fakeAsync(() => {
@@ -570,7 +571,7 @@ describe('Picklist2Component', () => {
                 </hc-picklist2>`);
 
                 picklist = fixture.componentInstance.picklist;
-                
+
                 // from component to model
                 selectOptions(picklist, [1]);
                 tickAndDetectChanges(fixture);
@@ -739,7 +740,7 @@ class HcPicklist2TestCmp {
     ];
 
     customItemFunc(term: string) {
-        return { id: term, name: term, custom: true }
+        return { id: term, name: term, custom: true };
     }
 
     customItemFuncPromise(term: string) {
@@ -749,7 +750,7 @@ class HcPicklist2TestCmp {
     }
 
     compareWith(a, b) {
-        return a.name === b.name && a.district === b.district
+        return a.name === b.name && a.district === b.district;
     }
 
     toggleVisible() {

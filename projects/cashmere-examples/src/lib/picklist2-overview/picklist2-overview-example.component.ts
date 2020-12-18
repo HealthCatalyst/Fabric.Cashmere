@@ -33,20 +33,20 @@ export class Picklist2OverviewExampleComponent {
     isGrouped = true;
     canCloseGroup = true;
     usingMaxSelected = false;
-    maxSelectedItems = 3
-    height= "300px";
+    maxSelectedItems = 3;
+    height = "300px";
     searchPlaceholder = "Search for doctors...";
     notFoundText = "Nothing to see here";
     addCustomItemText = "Add new doctor?";
 
     _customItemId = 12;
     customItemFn(term: string) {
-        return { id: this._customItemId++, name: term, department: "Resident" }
+        return { id: this._customItemId++, name: term, department: "Resident" };
     }
 
     toggleDisabled() {
         const doc: any = this.doctors[1];
         doc.disabled = !doc.disabled;
-        this.doctors = [...this.doctors]
+        this.doctors = [...this.doctors];
     }
 }

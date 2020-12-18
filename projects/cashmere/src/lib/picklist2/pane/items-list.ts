@@ -12,10 +12,10 @@ export class ItemsList {
 
     get itemsShownCountStr(): string { return this._itemsShownCountStr; }
     private _itemsShownCountStr = '';
-    
+
     get itemsTotalCountStr(): string { return this._itemsTotalCountStr; }
     private _itemsTotalCountStr = '';
-    
+
     get itemsTotalCount(): number { return this._itemsTotalCount; }
     private _itemsTotalCount = 0;
 
@@ -94,12 +94,12 @@ export class ItemsList {
     findOption(value: any): PickOption | undefined {
         let findBy: (item: PickOption) => boolean;
         if (this._pickPane.compareWith) {
-            findBy = item => this._pickPane.compareWith(item.value, value)
+            findBy = item => this._pickPane.compareWith(item.value, value);
         } else if (this._pickPane.bindValue) {
-            findBy = item => !item.children && this.resolveNested(item.value, this._pickPane.bindValue) === value
+            findBy = item => !item.children && this.resolveNested(item.value, this._pickPane.bindValue) === value;
         } else {
             findBy = item => item.value === value ||
-                !item.children && !!item.label && item.label === this.resolveNested(value, this._pickPane.bindLabel)
+                !item.children && !!item.label && item.label === this.resolveNested(value, this._pickPane.bindLabel);
         }
         return this._items.filter(i => !i.isParent).find(item => findBy(item));
     }
@@ -169,10 +169,6 @@ export class ItemsList {
         });
     }
 
-    _addNewCustomOptionToTop(newOption: PickOption) {
-        this._filteredItems = [newOption, ...this._filteredItems];
-    }
-
     private _deleteItem(item: PickOption, list: Array<PickOption>) {
         const findIndexFunc = (i: PickOption) => i.index === item.index;
         let indexToRemove = list.findIndex(findIndexFunc);
@@ -217,7 +213,7 @@ export class ItemsList {
     }
 
     /** Find an item in the list by its label */
-    findByLabel(term: string): PickOption | undefined{
+    findByLabel(term: string): PickOption | undefined {
         term = term.toLocaleLowerCase();
         return this.filteredItems.find(item => {
             const label = item.label?.toLocaleLowerCase();
@@ -243,8 +239,17 @@ export class ItemsList {
             if (matchedItems.length > 0) {
                 this._filteredItems.push(...[pg, ...matchedItems]);
             }
-        })
+        });
         this.updateCounts();
+    }
+
+    resetFilteredItemsForCustomOptionAdded(isRemoteFilter: boolean, searchTerm: string) {
+        if (isRemoteFilter) {
+            this._filteredItems = [...this._items];
+            this.updateCounts();
+        } else {
+            this.filter(searchTerm);
+        }
     }
 
     /** Unfilter the list */
@@ -320,7 +325,7 @@ export class ItemsList {
     /** If picklist is not configured with a search function, use this one. */
     private _defaultSearchFn(searchTerm: string, opt: PickOption): boolean {
         const label = opt.label?.toLocaleLowerCase() || "";
-        return label.indexOf(searchTerm) > -1
+        return label.indexOf(searchTerm) > -1;
     }
 
     /** Get index of an item a given number of steps above or below the current focus item */
@@ -351,7 +356,7 @@ export class ItemsList {
     private _groupBy(items: Array<PickOption>, groupBy: string | Function | undefined): ChildrenByGroupKeyMap {
         const groups: ChildrenByGroupKeyMap = new Map<string | PickOption, Array<PickOption>>();
         if (items.length === 0) { return groups; }
-        
+
         // if not asked to group, everything goes into a hidden default group
         if (!groupBy) { groups.set(this.DEFAULT_GROUP_KEY, items); return groups; }
 
@@ -403,7 +408,7 @@ export class ItemsList {
             });
             parent.children = children;
             parent.value = groupValue(key, children?.map(x => x.value) || []);
-            parentOptions.push(parent)
+            parentOptions.push(parent);
         }
         return parentOptions;
     }
@@ -429,13 +434,13 @@ export class ItemsList {
     }
 
     private sortAndIndex(groups: Array<PickOption>): Array<PickOption> {
-        const flattenedSortedItems = new Array<PickOption>()
+        const flattenedSortedItems = new Array<PickOption>();
         this._sortOptions(groups);
 
         groups.forEach(group => {
             let i = flattenedSortedItems.length;
             group.index = i++;
-            flattenedSortedItems.push(group)
+            flattenedSortedItems.push(group);
             group.children?.forEach(childItem => {
                 childItem.index = i++;
                 flattenedSortedItems.push(childItem);

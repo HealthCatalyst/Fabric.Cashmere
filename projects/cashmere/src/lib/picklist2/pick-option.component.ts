@@ -20,7 +20,7 @@ export class PickOptionComponent implements OnChanges, AfterViewChecked, OnDestr
     /** Value for this option. */
     @Input() value: any;
     /** If true, the option cannot be selected. */
-    @Input() set disabled(value: boolean) { this._disabled = this._isDisabled(value) }
+    @Input() set disabled(value: boolean) { this._disabled = this._isDisabled(value); }
     get disabled() { return this._disabled; }
 
     readonly _stateChange$ = new Subject<{ value: any, disabled: boolean, label?: string }>();

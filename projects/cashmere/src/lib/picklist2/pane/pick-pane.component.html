@@ -1,6 +1,7 @@
 <div [hidden]="!hasSearch" class="hc-pick-search-outer" [class.hc-pick-pane-search-no-toolbar]="!hasToolbar">
     <hc-form-field>
         <input #searchInput
+            class="hc-pick-search-input"
             hcInput
             [value]="searchTerm ? searchTerm : ''"
             (input)="filter(searchInput.value)"
@@ -24,7 +25,7 @@
                 Loading...
             </ng-container>
         </div>
-        <div class="hc-picklist-pane-quick-links">
+        <div class="hc-picklist-pane-quick-links" *ngIf="!disabled">
             <button hc-button buttonStyle="link-inline" class="hc-font-xsm hc-pick-button-link-inline" (click)="selectAll()" [disabled]="itemsList.filteredItems.length === 0">
                 Select All
             </button>

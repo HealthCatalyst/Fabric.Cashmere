@@ -61,7 +61,6 @@ describe('ItemsList', () => {
             expect(list.selectedItems.length).toBe(2);
         });
 
-        
         it('should not select disabled items when selecting group', () => {
             cmp.groupBy = 'groupKey';
             list.setItems([
@@ -80,7 +79,7 @@ describe('ItemsList', () => {
                 { label: 'K1', val: 'V1', groupKey: 'G1' },
                 { label: 'K2', val: 'V2', groupKey: 'G1' }
             ]);
-            list.select(list.items[1]) // K1
+            list.select(list.items[1]); // K1
             list.select(list.items[2]); // K2
 
             expect(list.selectedItems.length).toBe(2); // only children included in selectedItems array
@@ -325,7 +324,7 @@ describe('ItemsList', () => {
         it('uses a given compareWith function to find a match', () => {
             cmp.compareWith = (a, b) => {
                 return a === b.value;
-            }
+            };
             const result = list.findOption(list.items[3]);
             expect(result?.value).toBe(list.items[3].value);
         });
@@ -351,7 +350,7 @@ describe('ItemsList', () => {
         });
         it('throws error if given an option without a parent', () => {
             const optionNoParent = new PickOption({ name: 'no parent', parent: undefined});
-            expect(() => { list.addOption(optionNoParent) })
+            expect(() => { list.addOption(optionNoParent); })
                 .toThrow(new Error(`Trying to add an option that does not have a parent: ${optionNoParent}`));
         });
         it('adds option whose parent already exisits in the list', () => {
@@ -384,7 +383,7 @@ describe('ItemsList', () => {
         });
         it('throws error if given an option without a parent', () => {
             const optionNoParent = new PickOption({ name: 'no parent', parent: undefined});
-            expect(() => { list.removeOption(optionNoParent) })
+            expect(() => { list.removeOption(optionNoParent); })
                 .toThrow(new Error(`Trying to remove an option that does not have a parent: ${optionNoParent}`));
         });
         it('removes a given option from items list', () => {
@@ -397,7 +396,7 @@ describe('ItemsList', () => {
             list.clearList();
             list.setItems([new PickOption({name: 'only option'})]);
             const onlyOption = list.items[1];
-            
+
             expect(list.items.length).toBe(2); // the only option and its parent
             list.removeOption(onlyOption);
             expect(list.items.length).toBe(0);
@@ -442,7 +441,7 @@ describe('ItemsList', () => {
             expect(list.selectedItems.length).toBe(3);
             list.selectedItems.forEach(i => {
                 expect(i.selected).toBeTruthy();
-            })
+            });
         });
 
         it('marks all items as selected, including groups, if canSelectGroup is true', () => {
@@ -452,7 +451,7 @@ describe('ItemsList', () => {
             expect(list.selectedItems.length).toBe(3); // only child items actually get placed in selectedItems array
             list.items.forEach(i => {
                 expect(i.selected).toBeTruthy();
-            })
+            });
         });
 
         it('selects all items in the list except disabled items', () => {
@@ -463,7 +462,7 @@ describe('ItemsList', () => {
             expect(list.items[1].selected).toBeFalsy();
         });
     });
-    
+
     describe('resolveNested', () => {
         beforeEach(() => {
             cmp = ngSelectFactory();
@@ -522,6 +521,10 @@ describe('ItemsList', () => {
 
     function ngSelectFactory(): PickPaneComponent {
         return new PickPaneComponent(
-            () => new DefaultSelectionModel(), {} as any, new Picklist2Service, (null as unknown) as ChangeDetectorRef, new PickPaneDragService());
+            () => new DefaultSelectionModel(),
+            {} as any,
+            new Picklist2Service,
+            (null as unknown) as ChangeDetectorRef,
+            new PickPaneDragService());
     }
 });

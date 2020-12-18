@@ -65,7 +65,7 @@ export class DefaultSelectionModel implements PickSelectionModel {
                 continue;
             }
             child.selected = selected;
-        };
+        }
     }
 
     private _removeChildren(parent: PickOption) {
@@ -76,6 +76,6 @@ export class DefaultSelectionModel implements PickSelectionModel {
     }
 
     private _removeParent(parent: PickOption) {
-        this._selected = this._selected.filter(x => x !== parent)
+        this._selected = this._selected.filter(x => x !== parent);
     }
 }

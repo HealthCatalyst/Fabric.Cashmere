@@ -22,7 +22,7 @@ export class PickOption {
     parent?: PickOption;
 
     // for HcOption groups only
-    /** identifier for the group. typically a string, but can be an HcOption if items provided to the 
+    /** identifier for the group. typically a string, but can be an HcOption if items provided to the
      * component were grouped before being passed in */
     groupKey?: string | PickOption;
     /** collection of nested HcOptions */
