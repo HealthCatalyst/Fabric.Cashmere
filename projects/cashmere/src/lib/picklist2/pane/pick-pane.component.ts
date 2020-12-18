@@ -27,6 +27,7 @@ import { Picklist2Service } from '../picklist2.service';
 import { PickPaneDragService } from './pick-pane-drag.service';
 import { SortFn, GroupValueFn, CompareWithFn, AddCustomItemFn, SELECTION_MODEL_FACTORY } from '../pick.types';
 
+/** @docs-private */
 @Component({
     selector: 'hc-pick-pane',
     templateUrl: './pick-pane.component.html',
@@ -39,7 +40,6 @@ import { SortFn, GroupValueFn, CompareWithFn, AddCustomItemFn, SELECTION_MODEL_F
     }
 })
 /** A single pane containing the searchbar, toolbar, items list, and footer.
- * @docs-private
 */
 export class PickPaneComponent implements AfterViewInit, OnChanges {
     @Input() _isLeftPane = false;
@@ -266,6 +266,8 @@ export class PickPaneComponent implements AfterViewInit, OnChanges {
             const start = Math.min(lastMarkedIndex, indexOfItemClicked);
             const end = Math.max(lastMarkedIndex, indexOfItemClicked);
             for (let i = start; i <= end; i++) {
+                // don't shift + click select a group, as it will select all its children, and that's not likely what is wanted
+                if (this.itemsList.filteredItems[i].isParent) { continue; }
                 this.select(this.itemsList.filteredItems[i]);
             }
         } else {
@@ -337,7 +339,7 @@ export class PickPaneComponent implements AfterViewInit, OnChanges {
     /** Convert the given custom item into an HcOption, add it to the list, and then highlight it */
     _selectNewCustomOption(customItem: any) {
         const newOption = this.itemsList.addNewOption(customItem);
-        this.filter();
+        this.itemsList._addNewCustomOptionToTop(newOption);
         this.itemsList.markItem(newOption)
         this._selectAndScrollToItem(newOption);
     }
@@ -388,6 +390,7 @@ export class PickPaneComponent implements AfterViewInit, OnChanges {
         if (this._isComposing && !this.searchWhileComposing) { return; }
 
         this.searchTerm = term;
+        if (this._isUsingSearchSubject && !term) { this.itemsList.resetFilteredItems(); }
         if (this._isUsingSearchSubject && (this._validTerm || this.externalSearchTermMinLength === 0)) {
             this.externalSearchSubject.next(term);
             this.itemsList.updateCounts();

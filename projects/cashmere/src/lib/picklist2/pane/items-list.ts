@@ -169,6 +169,10 @@ export class ItemsList {
         });
     }
 
+    _addNewCustomOptionToTop(newOption: PickOption) {
+        this._filteredItems = [newOption, ...this._filteredItems];
+    }
+
     private _deleteItem(item: PickOption, list: Array<PickOption>) {
         const findIndexFunc = (i: PickOption) => i.index === item.index;
         let indexToRemove = list.findIndex(findIndexFunc);
@@ -246,7 +250,7 @@ export class ItemsList {
     /** Unfilter the list */
     resetFilteredItems() {
         if (this._filteredItems.length === this._items.length) { this.updateCounts(); return; }
-        this._filteredItems = this._items;
+        this._filteredItems = [...this._items];
         this.updateCounts();
     }
 

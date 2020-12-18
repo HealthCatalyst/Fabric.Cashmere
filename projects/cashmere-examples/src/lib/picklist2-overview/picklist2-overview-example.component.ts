@@ -29,7 +29,7 @@ export class Picklist2OverviewExampleComponent {
     hasToolbar = true;
     hasHeader = true;
     hasFooter = true;
-    addCustomItem = true;
+    canAddCustomItem = true;
     isGrouped = true;
     canCloseGroup = true;
     usingMaxSelected = false;
@@ -38,6 +38,11 @@ export class Picklist2OverviewExampleComponent {
     searchPlaceholder = "Search for doctors...";
     notFoundText = "Nothing to see here";
     addCustomItemText = "Add new doctor?";
+
+    _customItemId = 12;
+    customItemFn(term: string) {
+        return { id: this._customItemId++, name: term, department: "Resident" }
+    }
 
     toggleDisabled() {
         const doc: any = this.doctors[1];

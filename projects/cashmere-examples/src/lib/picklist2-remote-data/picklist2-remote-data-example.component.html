@@ -3,13 +3,15 @@
 
 <hc-picklist2 [items]="people$ | async"
            bindLabel="name"
-           [addCustomItem]="true"
+           [addCustomItem]="addCustomItemFn"
            [trackByFn]="trackByFn"
            [leftPaneLoading]="peopleLoading"
            searchPlaceholder="Search by name"
            [externalSearchSubject]="peopleInput$"
-           [externalTotalOptionCount]="dataService.mockPeople.length"
-           [(ngModel)]="selectedPersons">
+           [externalTotalOptionCount]="remoteCount"
+           [virtualScroll]="true"
+           [(ngModel)]="selectedPersons"
+           (change)="updateExternalCount()">
 </hc-picklist2>
 
 <br>

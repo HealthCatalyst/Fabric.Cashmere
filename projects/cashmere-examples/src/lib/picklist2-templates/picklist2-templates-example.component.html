@@ -1,4 +1,4 @@
-<p>The appearance of the picklist is highly customizable using the template directives for the header, footer, toolbar, option and group rows, and more.</p>
+<p>The appearance of the picklist is highly customizable using the template directives for the group rows, option rows, header, footer, toolbar, etc.</p>
 <br>
 <hc-picklist2
     [items]="transportOptions"
@@ -27,7 +27,7 @@
     <!-- Option row template -->
     <ng-template hc-pick-option-tmp let-item="item" let-search="searchTerm">
         <div class="opt-row" title="Travel by {{ item.type }}: {{ item.name }}">
-            <span class="icon-wrapper {{ item.color }}"><hc-icon fontSet="fa" fontIcon="fa-{{ item.icon }}" hcIconSm></hc-icon></span>
+            <span class="icon-wrapper {{ item.color || 'slate-gray' }}"><hc-icon fontSet="fa" fontIcon="fa-{{ item.icon || item.name }}" hcIconSm></hc-icon></span>
             {{ item.name }}
         </div>
     </ng-template>

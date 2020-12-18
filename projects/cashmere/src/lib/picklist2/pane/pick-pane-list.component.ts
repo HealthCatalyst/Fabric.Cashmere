@@ -240,7 +240,7 @@ export class PickPaneListComponent implements OnInit, OnChanges, OnDestroy {
             return Promise.resolve(this._panelService.dimensions);
         }
 
-        const [first] = this.items;
+        const [first] = this.items.filter(i => !i.isParent);
         this.update.emit([first]);
 
         return Promise.resolve().then(() => {

@@ -14,6 +14,7 @@ export class Picklist2RemoteDataExampleComponent implements OnInit {
     peopleLoading = true;
     peopleInput$ = new Subject<string>();
     selectedPersons: Person[] = <any>this.dataService.mockPeople.slice(0,2);
+    remoteCount = this.dataService.mockPeople.length - this.selectedPersons.length
 
     constructor(public dataService: Picklist2RemoteDataService) {}
 
@@ -25,6 +26,23 @@ export class Picklist2RemoteDataExampleComponent implements OnInit {
         return item.id;
     }
 
+    // using .bind() to maintain a scope that allows me access to the dataService in a callback function
+    addCustomItemFn = this.addCustomItem.bind(this);
+
+    addCustomItem(term: string): Person {
+        const customItem = {
+            id: `1234-${term}`,
+            age: Math.floor(Math.random() * 40) + 18,
+            name: term
+        };
+        this.dataService.mockPeople.push(customItem);
+        return customItem;
+    }
+
+    updateExternalCount() {
+        this.remoteCount = this.dataService.mockPeople.length - this.selectedPersons.length;
+    }
+
     private loadPeople() {
         this.people$ = concat(
             of([]), // default items
@@ -33,7 +51,7 @@ export class Picklist2RemoteDataExampleComponent implements OnInit {
                 tap(() => this.peopleLoading = true),
                 switchMap(term => this.dataService.getPeople(term, this.selectedPersons).pipe(
                     catchError(() => of([])), // empty list on error
-                    tap(() => { this.peopleLoading = false; })
+                    tap(() => { this.peopleLoading = false; }),
                 ))
             )
         );

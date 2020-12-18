@@ -12,7 +12,7 @@
     [hasHeader]="hasHeader"
     [hasToolbar]="hasToolbar"
     [hasFooter]="hasFooter"
-    [addCustomItem]="addCustomItem"
+    [addCustomItem]="canAddCustomItem ? customItemFn : false"
     [addCustomItemText]="addCustomItemText"
     [groupBy]="isGrouped ? 'department' : false"
     [canSelectGroup]="true"
@@ -21,9 +21,11 @@
     [height]="height"
     [searchPlaceholder]="searchPlaceholder"
     [notFoundText]="notFoundText">
+        <ng-template hc-pick-option-tmp let-item="item" let-search="searchTerm">Dr. {{ item.name }}</ng-template>
 </hc-picklist2>
 
 <hr>
+<h3>Component Options:</h3>
 <div class="property-form-group checkbox-only-group">
     <hc-checkbox id="readOnly" [(ngModel)]="readOnly">Read only</hc-checkbox>
     <hc-checkbox id="leftPaneLoading" [(ngModel)]="leftPaneLoading">Left pane loading</hc-checkbox>
@@ -40,7 +42,7 @@
         <hc-label>Custom item text:</hc-label>
         <input hcInput [(ngModel)]="addCustomItemText" />
     </hc-form-field>
-    <hc-checkbox id="addCustomItem" [(ngModel)]="addCustomItem">Allow custom items</hc-checkbox>
+    <hc-checkbox id="canAddCustomItem" [(ngModel)]="canAddCustomItem">Allow custom items</hc-checkbox>
 </div>
 <div class="property-form-group">
     <hc-form-field title="Limits number allowed in left pane.">

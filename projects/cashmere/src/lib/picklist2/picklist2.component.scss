@@ -129,14 +129,9 @@
     &.hc-pick-option-selected:hover {
         @include hc-pick-option-selected-hover();
     }
-    &.hc-pick-option-disabled {
-        @include hc-pick-option-disabled();
-    }
-
     &.hc-pick-custom-option.hc-pick-option-marked {
        @include hc-pick-custom-option-marked();
     }
-
     &.hc-pick-option-hide {
         @include hc-pick-option-hide();
     }

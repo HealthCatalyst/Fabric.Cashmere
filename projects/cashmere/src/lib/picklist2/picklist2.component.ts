@@ -37,6 +37,7 @@ import { PickPaneComponent } from './pane/pick-pane.component';
 import { Picklist2Service } from './picklist2.service';
 import { SortFn, GroupValueFn, CompareWithFn, AddCustomItemFn, SearchFn } from './pick.types';
 
+/** Control for selecting multiple items from a very large set of options. `<hc-picklist2>` */
 @Component({
     selector: 'hc-picklist2',
     templateUrl: './picklist2.component.html',
@@ -49,22 +50,23 @@ import { SortFn, GroupValueFn, CompareWithFn, AddCustomItemFn, SearchFn } from '
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-/** Control helpful for selecting multiple items from a very large set of options */
 export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValueAccessor {
     /** If options are objects, this matches the object property to use for display in the list.
-     * Can used nested properties. Example: `myObject.property.nestedProperty`. *Defaults to `'label'`.* */
+     * Can use nested properties. Example: `'property.nestedProperty'`. *Defaults to `'label'`.* */
     @Input() bindLabel: string;
     /** If options are objects, this matches the object property to use for the selected model.
-     * Can used nested properties. `myObject.property.nestedProperty`. *By default, binds to whole object.* */
+     * Can use nested properties. Example: `'property.nestedProperty'`. *By default, binds to whole object.* */
     @Input() bindValue: string;
-    /** When addCustomItem is true, this changes the default message on the option to add a new item. *Defaults to `"Add custom option."`* */
+    /** When addCustomItem is true, this changes the default message for adding a new item. *Defaults to `"Add custom option."`* */
     @Input() addCustomItemText = 'Add custom option.';
     /** True if user should be able to add custom items. The button to add an option will appear when a search term is not exactly matched.
-     * Can optionally provide a function that will generate a value for the custom option based on the given search term. *Defaults to false.* */
+     * Can optionally provide a function that will generate a value for the custom option based on the given search term. *Defaults to false.*
+     * If a function is provided, must follow this signature: `((term: string) => any | Promise<any>)`. The function is passed the search term
+     * string and returns a value that should match the type of options in the picklist. */
     @Input() addCustomItem: boolean | AddCustomItemFn = false;
     /** Group items by property or function expression. *Grouping is off by default.* */
     @Input() groupBy: string | Function;
-    /** Function expression to provide group value. Same as described in ng-select component. https://ng-select.github.io/ng-select#/grouping */
+    /** Function expression to provide group value: `(key: string | object, children: any[]) => string | object`. Same as described in ng-select component. https://ng-select.github.io/ng-select#/grouping */
     @Input() groupValue: GroupValueFn;
     /** True if group should be clickable. Clicking the group will select all its children. *Defaults to false.* */
     @Input() canSelectGroup = false;
@@ -72,16 +74,17 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
     @Input() canCloseGroup = false;
     /** True if groups should be closed to begin with. Must have `canCloseGroup` set to true to use. *Defaults to true.* */
     @Input() closeGroupsByDefault = true;
-    /** All items that are not able to be grouped will put together in an orphan group.
+    /** Items that cannot be grouped are placed in an orphan group.
      * This property sets a name for that group. *Defaults to `"Other Items"`* */
     @Input() orphanItemsGroupName = 'Other Items';
     /** True to enable virtual scroll for better performance when rendering a lot of data. *Defaults to false.* */
     @Input() virtualScroll = false;
     /** When using virtual scroll, determines how many extra items on top and bottom should be rendered outside the viewport. *Defaults to 4.* */
     @Input() bufferAmount = 4;
-    /** Provide custom trackBy function for better DOM reusage by angular's *ngFor over the items list. */
+    /** Provide custom trackBy function for better DOM reusage by Angular's *ngFor in the items list. */
     @Input() trackByFn = null;
-    /** Function used to sort the groups and items in the list. */
+    /** Function used to sort the groups and items in the list: `(a: PickOption, b: PickOption) => number`. If the function result is negative,
+     * a is sorted before b. If it's positive, b is sorted before a. If the result is 0, no changes are done with the sort order of the two values. */
     @Input() sortFn: SortFn;
     /** If true, items can be viewed but not highlighted or moved from pane to pane. Same as adding `disabled` attribute. *Defaults to false.* */
     @Input() readonly = false;
@@ -89,11 +92,11 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
     @Input() hasSearch = true;
     /** Placeholder for the search input. *Defaults to 'Search'.* */
     @Input() searchPlaceholder = 'Search';
-    /** A custom search function. *Default function does a simple scan for entire given term within the options label.* */
+    /** A custom search function: `(term: string, item: any) => boolean`. *Default function does a simple scan for entire given term within the options label.* */
     @Input() searchFn: SearchFn;
     /** True if items should be filtered while user is still typing. *Defaults to true.* */
     @Input() searchWhileComposing = true;
-    /** Number of character required for search to be fired. Only applies when using `externalSearchSubject`. *Defaults to 0.* */
+    /** Number of characters required for search to be fired. Only applies when using `externalSearchSubject`. *Defaults to 0.* */
     @Input() externalSearchTermMinLength = 0;
     /** A subject through which an updated search term will be sent. Use for advanced searching functionality, like searching over http. */
     @Input() externalSearchSubject: Subject<string>;
@@ -102,7 +105,7 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
     @Input() externalTotalOptionCount: number;
     /** Message shown in each pane when empty. *Defaults to 'No options to show.'* */
     @Input() notFoundText = 'No options to show.';
-    /** True when pane left pane should show as loading Often used in conjunction with external search. *Defaults to false.* */
+    /** True when pane left pane should show as loading. *Defaults to false.* */
     @Input() leftPaneLoading = false;
     /** True when right left pane should show as loading. *Defaults to false.* */
     @Input() rightPaneLoading = false;
@@ -113,20 +116,21 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
     /** True if each pane should have a footer section. *Defaults to true.* */
     @Input() hasFooter = true;
     /** Set a limit to the number of selected items.
-     * Note, this will not prevent more than limit from being added to the model outside the component. *No limit by default.* */
+     * Note: This will not prevent more than limit from being added to the model outside the component. *No limit by default.* */
     @Input() maxSelectedItems: number;
     /** Total height of the picklist control in pixels, percentage, rem, etc. *Defaults to '400px'.* */
     @Input() height = '400px';
 
     /** An array of options for the picklist. Options can be of any type, and the array can be an observable stream. Can alternatively use
-     * `<hc-pick-option>` components too pass in options. */
+     * `<hc-pick-option>` components to pass in options. */
     @Input() get items() { return this._items };
     set items(value: any[]) {
         this._itemsAreUsed = true;
         this._items = value;
     }
-    /** A function to compare the option values with the selected values. The first argument is a value from an option.
-     * The second is a value from the selection(model). A boolean should be returned.
+    /** A function to compare the option values with the selected values. `(a: any, b: any) => boolean;`
+     * The first argument is a value from an option. The second is a value from the selection (model).
+     * A boolean should be returned.
      * Same as used by https://angular.io/api/forms/SelectControlValueAccessor */
     @Input() get compareWith() { return this._compareWith; }
     set compareWith(fn: CompareWithFn) {
@@ -136,11 +140,11 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
         this._compareWith = fn;
     }
 
-    /** Fires when model is updated. */
+    /** Fires when model is updated. Sends an array of the currently selected values. */
     @Output('change') changeEvent = new EventEmitter<Array<string|Object|undefined>>();
-    /** Fires when options are added. */
+    /** Fires when options are added. Sends an array of the values being added. */
     @Output('add') addEvent = new EventEmitter<Array<string|Object|undefined>>();
-    /** Fires when options are removed. */
+    /** Fires when options are removed. Sends an array of the values being removed. */
     @Output('remove') removeEvent = new EventEmitter<Array<string|Object|undefined>>();
 
     // custom templates
@@ -221,8 +225,8 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
         return Number.isFinite(this.maxSelectedItems) && this._selectedPane.itemsList.itemsTotalCount >= this.maxSelectedItems;
     }
 
-    /** Getter. Returns true if the number of selected items exceeds the maximum number. Could be true if the model is
-     * manipulated or set outside of the component. */
+    /** Getter. Returns true if the number of selected items exceeds the maximum number. UI won't normally allow this, but the model can
+     * be manipulated or set outside of the component to cause this. */
     get hasExceededMaxItemsSelected(): boolean {
         return Number.isFinite(this.maxSelectedItems) && this._selectedPane.itemsList.itemsTotalCount > this.maxSelectedItems;
     }
@@ -295,7 +299,7 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
 
         const handleOptionChange = () => {
             const changedOrDestroyed = merge(this._ngOptions.changes, this._destroy$);
-            merge(...this._ngOptions.map(option => option.stateChange$))
+            merge(...this._ngOptions.map(option => option._stateChange$))
                 .pipe(takeUntil(changedOrDestroyed))
                 .subscribe(option => {
                     const item = this._availablePane.itemsList.findOption(option.value);
@@ -344,6 +348,7 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
 
     /** Rerun filters and grouping logic in each pane, than force UI refresh. */
     private refreshPanes() {
+        console.log("refresh panes");
         this._availablePane.filter();
         this._selectedPane.filter();
         this._detectChanges();
