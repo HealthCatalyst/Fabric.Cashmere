@@ -9,10 +9,11 @@
 ![Navbar Example](./assets/analytics/tableau/navbarexample.png "Navbar Example")
 
 The navbar is one of the most distinguishing elements of a Cashmere application.
-It is a hallmark of the Health Catalyst brand on all the platforms Health Catalyst delivers content.
-For the reason, the styling of the navbar should not be altered from the template.
+It is a hallmark of the Health Catalyst app brand on all platforms.
+For this reason, the styling of the navbar should not be altered from the template.
 
-The Navbar is the a Horizontal Container with a fixed 50px height containing the following hierarchy:
+The Navbar is a Horizontal Container with a fixed 50px height.
+Below is the hierarchy for the container (a floating item called "Selected Highlight" is also part of the navbar):
 
 ![Navbar Hierarchy](./assets/analytics/tableau/navbarhierarchy.png "Navbar Hierarchy")
 
@@ -64,9 +65,9 @@ The background color and border on the button should be set to `None`.
 
 The button for the currently selected page should have its font set to `Tableau Bold` and color set to **white** (the second swatch in the top row of the Font color picker).
 Additionally, there is a floating item at the top of the root hierarchy called `Selected Highlight` that should be positioned under the selected item.
-The y position of that item should always be set to 52, but the x position should match the x position of the selected button item.
+The y position of that item should always be set to 46, but the x position should match the x position of the selected button item.
 The width of the selected highlight item should also match the selected button item.
-Adjust the left & right Outer Padding of Selected Highlight to center the blue underline under the bold text.
+Adjust the left & right Outer Padding of Selected Highlight to account for padding and center the blue underline under the bold text.
 
 ![Selected Link](./assets/analytics/tableau/selected.png "Selected link")
 

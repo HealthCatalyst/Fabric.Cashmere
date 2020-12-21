@@ -9,6 +9,8 @@
 The Health Catalyst Tableau template adheres to the overall [Cashmere Foundations](/foundations) as much as possible, while preserving any established usage patterns unique to Tableau.
 Whenever beginning a new app, be sure to download the [most current version](/analytics/tableau-template) of the template that your environment supports.
 
+![Tableau Template](./assets/analytics/tableau/templatescreenshot.png "Tableau Template")
+
 Updates to the template are version controlled, and notes are provided to explain what changed between updates.
 Versions follow the [semantic versioning](https://semver.org/) system which utilizes three numbers (MAJOR.MINOR.PATCH) indicating the following:
 
@@ -94,16 +96,64 @@ Details about use of the sidebar can be found in the [filters section](/analytic
 
 ### Content Area
 
-The background color for the content area is **slate-gray-100**: `#f0f3f6`.
+The background color for the content area is either **slate-gray-100** `#f0f3f6` or **white** `#ffffff` depending on the page.
+The Inner Padding for the content area on dashboards should be at least `20, 20, 20, 10`.
+Note that the content area on the [About Page](/analytics/tableau-about) applies padding to the contained items instead.
+
+:::
+
+:::
+
+##### Tiles
 
 As with Cashmere web applications, content is typically contained within [tiles](/web/components/tile).
 Unfortunately Tableau does not support rounded edges or drop-shadows, so tiles within Tableau apps will look slightly different than their Cashmere counterparts.
-Layout specifics for the most common tiles can be found in the [KPI Metrics section](/analytics/tableau-metrics), [Charts section](/analytics/tableau-charts), and [Tables section](/analytics/tableau-tables).
+Layout specifics for the most common tiles can be found in the [KPI Metrics section](/analytics/tableau-metrics), [Charts section](/analytics/tableau-charts), and [Tables section](/analytics/tableau-tables). Refer to the template or these sections for working examples.
 
 In general, a Tableau tile is a vertical container with a **white** `#ffffff` background, and a solid **slate-gray-300** `#c0c5cc` border.
-Every tab should include a title, an info button, and a drill-down button (optional).
+Tiles should have at least 10px of padding between each other (5px on either side).
+
+<div style="text-align:center"><br>
+
+![Tableau Tiles](./assets/analytics/tableau/tiles.png "Tableau Tiles")
+
+</div>
+
+### Tile Header
+
+Every tab should include a header horizontal container with a title, an info button, and a drill-down button (optional).
+The header container should have a height of 35px, with an outer padding of `10, 5, 10, 0`.
+The header text should be `Tableau Bold`, **offblack** `#333333`, with a font size of 10px.
+
+For the info tooltip, we leverage a worksheet with a shape.
+The shape used is included in the folder called "HealthCatalystShapes" in the template zip file.
+Copy the HealthCatalystShapes folder to Documents/My Tableau Repository/Shapes folder.
+
+Duplicate one of the existing tooltip worksheets from the template to ensure consistent sizing of the button.
+From the worksheet, click the Tooltip button in the *Marks* panel.
+There you can edit the information you'd like to appear in the tooltip.
+Back on the dashboard, drag the duplicated tooltip sheet to the header horizontal container.
+Hide the title of the sheet, remove all outer padding, and set the fixed width to 30px.
+Finally, set the inner padding to `0, 3, 0, 0` to adjust the vertical position.
+
+![Header Tooltip](./assets/analytics/tableau/tooltipsheet.png "Header Tooltip")
+
+Use of the drill-down function will be specific to your application.
+In general, it should allow the user to explore raw data used to calculate the metric or data visualization.
+They may mean using a navigation button, or a worksheet as with the info button.
+For a worksheet, follow the same steps above but swap the shape to the query button within HealthCatalystShapes.
+For a navigation button, remove all outer padding, set the fixed width to 30px, and then set the inner padding to 5px on all sides.
+
+### Divider
+
 A 1px horizontal line divides the header from the content of the tile.
-Below is an example of a Tableau tile.
-Refer to the template or the sections linked above for working examples.
+Add a blank item to the tile vertical container.
+Set its outer padding to `10, 0, 10, 5`, and then set its fixed height to 6px.
+Finally set the background color to **slate-gray-300** `#c0c5cc`.
+
+### Content
+
+The remaining area of the tile can be used for any type of content.
+Refer to the other sections of this style guide for details about specific types of tiles such as KPI Metrics, charts, and tables.
 
 :::

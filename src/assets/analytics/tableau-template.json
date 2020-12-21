@@ -7,7 +7,8 @@
         "demo": "http://google.com",
         "notes": [
             "Initial release of Cashmere template",
-            "Zip file includes Tableau workbook and all associated image assets"
+            "Zip file includes Tableau workbook and all associated image assets",
+            "For tooltips, copy the HealthCatalystShapes folder to Documents/My Tableau Repository/Shapes folder"
         ]
     }
 ]

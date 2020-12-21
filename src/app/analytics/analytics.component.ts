@@ -65,7 +65,7 @@ export class AnalyticsComponent implements OnDestroy {
     selectUpdate(event: any) {
         if (this.selectOptions.length) {
             for (let entry of this.selectOptions) {
-                if (entry.data && event === entry.data.title) {
+                if (entry.data && event === entry.data.category + ' - ' + entry.data.title) {
                     this.router.navigate(['/analytics/' + entry.path]);
                     window.scrollTo(0, 0);
                     break;

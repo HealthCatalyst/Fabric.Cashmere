@@ -8,8 +8,8 @@ export interface Version {
     version: string;
     releasedate: string;
     download: string;
-    requirements: string,
-    demo: string,
+    requirements: string;
+    demo: string;
     notes: string[];
 }
 

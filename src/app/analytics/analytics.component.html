@@ -6,7 +6,7 @@
                 <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
                     <optgroup *ngFor="let cat of categories" [label]="cat">
                         <ng-container *ngFor="let option of selectOptions">
-                            <option *ngIf="option.data.category == cat" [value]="option.data.title" [selected]="option.data.category + ' - ' + option.data.title === thisPage">{{option.data.title}}</option>
+                            <option *ngIf="option.data.category == cat" [value]="option.data.category + ' - ' + option.data.title" [selected]="option.data.category + ' - ' + option.data.title === thisPage">{{option.data.title}}</option>
                         </ng-container>
                     </optgroup>
                 </hc-select>
