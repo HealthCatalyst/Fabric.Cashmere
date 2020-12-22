@@ -83,3 +83,21 @@ There should also be a 10px height spacer after the header.
 ![Filter Header](./assets/analytics/tableau/filtersection.png "Filter Header")
 
 :::
+
+:::
+
+##### Advanced Filters
+
+![Advanced Filters](./assets/analytics/tableau/advancedfilters.png "Advanced Filters")
+
+The sidebar filters should be the primary mechanic for filtering that most users leverage.
+However, there may be power users of your accelerator who require the ability to define more precise or detailed cohorts.
+For those users, you may want to include an "Advanced Filters" page that includes a wider array of filter options.
+
+From a UX perspective, the risk with a page like this is that a user will define filters and then forget they turned them on.
+That's why we want to limit this page primarily to power users.
+You can link to it via an icon in the navbar (use the *AdvancedFilters.svg* image included with the template), which keeps it somewhat hidden for typical users.
+
+On the Advanced Filters page, arrange the available filters into tiles as defined in the [Foundations section](/analytics/tableau-foundations).
+
+:::

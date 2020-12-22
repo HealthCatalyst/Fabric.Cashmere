@@ -84,6 +84,7 @@ A spacer on the right side is also included to add padding before the co-brandin
 
 The question-mark icon is an Image Button with its Inner Padding set to 14 on all sides.
 Additional menu icon links may be added to the left of the question-mark icon - for example, links to a search page, app switcher, etc.
+One commonly used icon is for an Advanced Filters page (see the [Filters Section](/analytics/tableau-filters) for more information).
 Guidelines for icon selection can be found in [Cashmere Foundations](/foundations/icons).
 They should have the same styling with a width and height set to 50px.
 Add 50px to the fixed width of the Menu Icons container for any icons added.
