@@ -6,7 +6,8 @@
 
 ##### Overview
 
-Define what a process metric is and how it is used
+A Key Performance Indicator (KPI) is a common visual that provides users a snapshot of a single metric, such as the current year's mortality rate. 
+
 
 :::
 

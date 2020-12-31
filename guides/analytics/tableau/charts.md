@@ -19,7 +19,7 @@ Entire bookshelves could be filled with all that has been written about best pra
 Charts follow all the general standards for tiles as defined in the [Foundations section](/analytics/tableau-foundations).
 Refer to that **Tile Header** and **Divider** sections of that page for specific parameters to apply to the top of the chart tile.
 
-If a subheader or additional controls are needed for chart, they should be the next item under the header divider.
+If a subheader or additional controls are needed for a chart, they should be the next item under the header divider.
 The content of the chart appears in the area below.
 The Outer Padding for the chart should be at least 10px on the right and left so it aligns with the edges of the header.
 The exact size of a tile for a chart will be determined by the other content that has to fit on the page and what is required for readability of the data.
@@ -52,7 +52,7 @@ To determine what colors should be used together in charts, you should determine
 
 The specific content of tooltips of the chart will be dictated by the data being displayed.
 But in general, they should contain a label and a value.
-All text in the tooltip should be 10px, **offblack** `333333`.
+All text in the tooltip should be 10px, **offblack** `#333333`.
 The label should `Tableau Book` and the data value should be `Tableau Bold`.
 
 ![Chart Tooltips](./assets/analytics/tableau/charttooltip.png "Chart Tooltips")

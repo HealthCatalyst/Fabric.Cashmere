@@ -6,7 +6,7 @@
 
 ##### Overview
 
-Tables important tools for displaying large amount of raw data referenced in visualizations.
+Tables are important tools for displaying large amount of raw data referenced in visualizations.
 Tables in the template follow the basic styling of [Cashmere HTML tables](/web/styles/table), with a few alterations to follow Tableau standards.
 
 ![Table Example](./assets/analytics/tableau/tableoverview.png "Table Example")
@@ -41,9 +41,9 @@ This creates a minimal banding effect without being too distracting for the smal
 
 ##### Hover States
 
-The specific content of tooltips of the chart will be dictated by the data being displayed.
+The specific content of tooltips of the table will be dictated by the data being displayed.
 But in general, they should contain a label and a value.
-All text in the tooltip should be 10px, **offblack** `333333`.
+All text in the tooltip should be 10px, **offblack** `#333333`.
 The label should `Tableau Book` and the data value should be `Tableau Bold`.
 
 :::

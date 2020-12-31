@@ -53,7 +53,7 @@ Each info item in the Sidebar is separated by a 25px blank spacer.
 ##### Content Area
 
 The Content Area in the Body horizonal container has a **white** `#ffffff` background for the About Page.
-The first item in Content Area vertical container is the full Health Catalyst horizontal logo, with top inner padding set to 30px.
+The first item in the Content Area vertical container is the full Health Catalyst horizontal logo, with top inner padding set to 30px.
 
 The second item in the content area is a banner with the name of the accelerator.
 You'll need to right-click on the AppName.svg image and Edit Image.

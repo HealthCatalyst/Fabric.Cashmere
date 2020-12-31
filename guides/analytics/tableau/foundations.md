@@ -75,7 +75,7 @@ Refer to the [navbar section](/analytics/tableau-navbar) section for more inform
 
 The standard size for a Health Catalyst Tableau application is **1280 x 900** pixels.
 Within that space, the layout is divided into three primary areas: Navbar, Sidebar, and Content Area.
-Note that if content needs to be further subdivided within the content area, [Tabs](/analytics/tableau-tabs) may included in that space.
+Note that if content needs to be further subdivided within the content area, [Tabs](/analytics/tableau-tabs) may be included in that space.
 
 <div style="text-align:center"><br>
 
@@ -85,12 +85,12 @@ Note that if content needs to be further subdivided within the content area, [Ta
 
 ### Navbar
 
-The navbar is horizontal container with a fixed 50px height.
+The navbar is a horizontal container with a fixed 50px height.
 Detailed information on the navbar and how to configure it is included in the [navbar section](/analytics/tableau-navbar).
 
 ### Sidebar
 
-The sidebar is vertical container with a fixed 200px width.
+The sidebar is a vertical container with a fixed 250px width.
 It typically contains filters, but can also be used as an information panel.
 Details about use of the sidebar can be found in the [filters section](/analytics/tableau-filters) and [about section](/analytics/tableau-about).
 
@@ -121,7 +121,7 @@ Tiles should have at least 10px of padding between each other (5px on either sid
 
 ### Tile Header
 
-Every tab should include a header horizontal container with a title, an info button, and a drill-down button (optional).
+Every tile should include a header horizontal container with a title, an info button, and a drill-down button (optional).
 The header container should have a height of 35px, with an outer padding of `10, 5, 10, 0`.
 The header text should be `Tableau Bold`, **offblack** `#333333`, with a font size of 10px.
 
