@@ -4,19 +4,19 @@
 import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 
-const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
+export const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
 const supportedColors = ['blue', 'green', 'purple', 'red', 'orange', 'ruby-red', 'deep-red', 'red-orange', 'magenta', 'pink', 'light-pink', 'azure', 'teal', 'dark-green', 'brown', 'purple-gray', 'yellow', 'yellow-orange', 'tan'];
 const supportedSizes = ['sm', 'md', 'lg'];
 
-export function validateStyleInput(style: string) {
+export function validateStyleInput(style: string, component: string) {
     if (supportedStyles.indexOf(style) < 0 && supportedColors.indexOf(style) < 0) {
-        throw Error('Unsupported buttonStyle attribute value on ButtonComponent: ' + style);
+        throw Error('Unsupported buttonStyle attribute value on ' + component + ': ' + style);
     }
 }
 
-export function validateSizeInput(size: string) {
+export function validateSizeInput(size: string, component: string) {
     if (supportedSizes.indexOf(size) < 0) {
-        throw Error('Unsupported size attribute value on ButtonComponent: ' + size);
+        throw Error('Unsupported size attribute value on ' + component + ': ' + size);
     }
 }
 
@@ -47,7 +47,7 @@ export class ButtonComponent {
     }
 
     set buttonStyle(btnStyle: string) {
-        validateStyleInput(btnStyle);
+        validateStyleInput(btnStyle, 'ButtonComponent');
         if ( supportedStyles.indexOf(btnStyle) < 0 ) {
             btnStyle = "button-" + btnStyle;
         }
@@ -62,7 +62,7 @@ export class ButtonComponent {
     }
 
     set size(size: string) {
-        validateSizeInput(size);
+        validateSizeInput(size, 'ButtonComponent');
         this.setHostClass(this._size, size);
         this._size = size;
     }

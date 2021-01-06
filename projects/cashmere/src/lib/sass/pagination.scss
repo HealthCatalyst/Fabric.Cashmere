@@ -52,11 +52,16 @@
     min-width: 40px;
 
     &:hover {
-        color: darken($primary-brand, 10%);
+        background-color: $white;
+        &:not([disabled]) {
+            color: darken($primary-brand, 10%);
+        }
     }
 
     &:focus {
+        background-color: $white;
         outline: none;
+        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
     }
 }
 
