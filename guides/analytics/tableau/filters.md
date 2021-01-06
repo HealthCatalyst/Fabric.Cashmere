@@ -9,7 +9,7 @@
 Filters are a foundational element of any analytics accelerator.
 They allow users to more deeply investigate the cause of trends or finds areas for improvement.
 But filters can be a double-edged sword, because they can also add significant complexity to both the UI and UX of an accelerator.
-As a result, care must be taken in what filters are given prominance and how they are displayed.
+As a result, care must be taken in what filters are given prominence and how they are displayed.
 
 Another important consideration with filters is ensuring that user has a clear understanding of what filters are currently active.
 The sidebar is always visible, so filters being used can be easily seen.

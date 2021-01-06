@@ -59,7 +59,7 @@ Icons should come from Health Catalyst's [icon set](https://cashmere.healthcatal
 Power BI doesn't always render color values exactly the same as a web browser would.
 But for consistency we still use all the same colors from the [Cashmere Foundations](/foundations/color) for colors in Power BI.
 Specific color usage information can be found throughout the style guide, within the template's object visuals, and in the underlying JSON theme code packaged with the template.
-For information related to the use of color in data visualizations, refer to the [charts section](/analytics/tableau-charts).
+For information related to the use of color in data visualizations, refer to the [charts section](/analytics/powerbi-charts).
 
 :::
 
@@ -112,6 +112,10 @@ The background color for the content area is either **slate-gray-100** `#f0f3f6`
 
 Objects in the content area should be placed about 30px from the outer edges.
 
+### Filters
+
+Information about the dynamic filters pane is included in the [filters section](/analytics/powerbi-filters).
+
 :::
 
 :::
@@ -135,7 +139,7 @@ Tiles should be evenly aligned horizontally and/or vertically
 
 <div style="text-align:center"><br>
 
-![correct alignment](/assets/analytics/powerbi/pbi-alignment.PNG "Correct Alignment")
+![correct alignment](/assets/analytics/powerbi/pbi-alignment.png "Correct Alignment")
 
 </div>
 
@@ -161,14 +165,14 @@ Every tile should include a `left-aligned` title. The title text should be `Sego
 ### Tile Visual Header
 
 Every tile should always include the info and filter icons within the visual header.
---insert color specs
+Icon color should be `#989898`.
 
 Some header elements, such as drill-down icons, are object-specific and more details can be found in the [KPI Metrics section](/analytics/powerbi-metrics), [Charts section](/analytics/powerbi-charts), and [Tables section](/analytics/powerbi-tables). Refer to the template or these sections for working examples.
 
 ### Divider
 
 A 1px horizontal line divides the header from the content of the visual object. Leave about 2px of space on the left and right.
-Set its fixed height to 16px and set the line color to **slate-gray-300** `#c0c5cc`.
+Set its fixed height to 16px and set the line color to **slate-gray-300** `#c0c5cc`. Turn off all visual header icons.
 
 <div style="text-align:center"><br>
 
@@ -179,6 +183,6 @@ Set its fixed height to 16px and set the line color to **slate-gray-300** `#c0c5
 ### Content
 
 The remaining area of the tile can be used for any type of content.
-Refer to the other sections of this style guide for details about specific types of tiles such as KPI Metrics, charts, and tables.
+Refer to the other sections of this style guide for details about specific types of tiles such as [KPI metrics](/analytics/powerbi-metrics), [charts](/analytics/powerbi-charts), and [tables](/analytics/powerbi-tables).
 
 :::
