@@ -255,7 +255,7 @@ export class PickPaneComponent implements AfterViewInit, OnChanges {
     onItemClick($event: MouseEvent, item: PickOption) {
         if (!item) { return; }
         const lastMarkedIndex = this.itemsList.markedIndex;
-        if (!$event.ctrlKey) { this.itemsList.clearSelected(true); }
+        if (!$event.ctrlKey) { this.itemsList.clearSelected(); }
         if (!$event.shiftKey) { this.itemsList.markItem(item); }
 
         if ($event.shiftKey) {
@@ -280,7 +280,7 @@ export class PickPaneComponent implements AfterViewInit, OnChanges {
 
     /** Selects items as needed, and moves options to the companion pane */
     onItemDoubledClicked($event: MouseEvent, item: PickOption) {
-        if (!$event.shiftKey) { this.itemsList.clearSelected(true); }
+        if (!$event.shiftKey) { this.itemsList.clearSelected(); }
         this.select(item);
         this.triggerMove.emit();
     }

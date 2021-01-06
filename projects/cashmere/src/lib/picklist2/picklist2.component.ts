@@ -32,7 +32,7 @@ import {
     PickPaneHeaderLeftTemplateDirective
 } from './pick-templates.directive';
 import { isDefined, isFunction, isObject } from './value-utils';
-import { PickOptionComponent } from './pick-option.component';
+import { PickOptionComponent, PickOptionStateChange } from './pick-option.component';
 import { PickPaneComponent } from './pane/pick-pane.component';
 import { Picklist2Service } from './picklist2.service';
 import { SortFn, GroupValueFn, CompareWithFn, AddCustomItemFn, SearchFn } from './pick.types';
@@ -260,7 +260,7 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
         }
         const optionsToMove = maxLimitEnforced ? source.selectedItems.slice(0, source.selectedItems.length - overLimitBy)
             : source.selectedItems;
-        optionsToMove.slice().forEach(i => {
+        optionsToMove.filter(i => !i.disabled).slice().forEach(i => {
             source.itemsList.removeOption(i);
             destination.itemsList.addOption(i);
         });
@@ -310,7 +310,7 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
             const changedOrDestroyed = merge(this._ngOptions.changes, this._destroy$);
             merge(...this._ngOptions.map(option => option._stateChange$))
                 .pipe(takeUntil(changedOrDestroyed))
-                .subscribe(option => {
+                .subscribe((option: PickOptionStateChange) => {
                     const item = this._availablePane.itemsList.findOption(option.value);
                     if (item) {
                         item.disabled = option.disabled;

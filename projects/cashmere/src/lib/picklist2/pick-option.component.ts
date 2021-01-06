@@ -9,6 +9,7 @@ import {
     SimpleChanges
 } from '@angular/core';
 import { Subject } from 'rxjs';
+export type PickOptionStateChange = { value: any, disabled: boolean, label?: string };
 
 /** Component used to add options to a picklist in declarative way. `<hc-pick-option>` */
 @Component({
@@ -23,7 +24,7 @@ export class PickOptionComponent implements OnChanges, AfterViewChecked, OnDestr
     @Input() set disabled(value: boolean) { this._disabled = this._isDisabled(value); }
     get disabled() { return this._disabled; }
 
-    readonly _stateChange$ = new Subject<{ value: any, disabled: boolean, label?: string }>();
+    readonly _stateChange$ = new Subject<PickOptionStateChange>();
 
     private _disabled = false;
     private _previousLabel: string;

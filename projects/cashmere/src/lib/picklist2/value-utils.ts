@@ -1,17 +1,8 @@
-const unescapedHTMLExp = /[&<>"']/g;
-const hasUnescapedHTMLExp = RegExp(unescapedHTMLExp.source);
-const htmlEscapes = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    '\'': '&#39;'
-};
+const helperEl = document.createElement('p'); // Throw-away element, or keep to reuse, but not in DOM
 
 export function escapeHTML(string: string) {
-    return (string && hasUnescapedHTMLExp.test(string)) ?
-        string.replace(unescapedHTMLExp, chr => htmlEscapes[chr]) :
-        string;
+    helperEl.innerText = string; // Setting inner text causes escaping
+    return helperEl.innerHTML;
 }
 
 export function isDefined(value: any) {
