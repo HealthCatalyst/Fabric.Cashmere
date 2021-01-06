@@ -9,7 +9,7 @@ import {
     SimpleChanges
 } from '@angular/core';
 import { Subject } from 'rxjs';
-export type PickOptionStateChange = { value: any, disabled: boolean, label?: string };
+export interface PickOptionStateChange { value: any; disabled: boolean; label?: string; }
 
 /** Component used to add options to a picklist in declarative way. `<hc-pick-option>` */
 @Component({
