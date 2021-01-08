@@ -45,7 +45,6 @@ export class PickOption {
 
 export type IPickOption = Partial<PickOption>;
 
-// todo - use cashmere keycodes
 export enum KeyCode {
     Tab = 9,
     Enter = 13,
