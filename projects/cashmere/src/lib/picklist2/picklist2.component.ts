@@ -173,6 +173,9 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
     /** Getter. Returns true if readonly property is true, or if disabled attribute is present on the control. */
     @HostBinding('class.hc-picklist2-disabled') get disabled() { return this.readonly || this._disabled; }
 
+    /** whether or not we should escape HTML in default option templates. will be set to false if
+     * using <hc-pick-option> instead of passing in an items array */
+    _escapeHTML = true;
     _el: HTMLElement;
     private _items = new Array<any>();
     private _itemsAreUsed: boolean;
@@ -193,7 +196,7 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
 
     ngAfterViewInit() {
         this.picklistService.reset(this._availablePane, this._selectedPane);
-        if (!this._itemsAreUsed) { this._setItemsFromHcPickOptions(); }
+        if (!this._itemsAreUsed) { this._setItemsFromHcPickOptions(); this._escapeHTML = false; }
         if (isDefined(this.autoFocus)) { this._availablePane.focus(); }
         this._detectChanges();
     }

@@ -2,7 +2,10 @@
 <br>
 
 <hc-picklist2 [(ngModel)]="selected">
-    <hc-pick-option *ngFor="let veggie of veggies" [value]="veggie.id" [disabled]="veggie.disabled">{{veggie.name}}</hc-pick-option>
+    <hc-pick-option *ngFor="let veggie of veggies" [value]="veggie.id" [disabled]="veggie.disabled">
+        <hc-icon fontSet="fa" fontIcon="fa-cutlery" hcIconSm></hc-icon>&nbsp;
+        {{veggie.name}}
+    </hc-pick-option>
     <hc-pick-option [value]="21">Raddish</hc-pick-option>
 </hc-picklist2>
 <br>
