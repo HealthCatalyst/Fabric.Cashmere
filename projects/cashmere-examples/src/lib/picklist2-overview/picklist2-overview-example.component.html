@@ -20,7 +20,9 @@
     [canCloseGroup]="canCloseGroup"
     [height]="height"
     [searchPlaceholder]="searchPlaceholder"
-    [notFoundText]="notFoundText">
+    [notFoundText]="notFoundText"
+    [leftHeaderText]="leftHeaderText"
+    [rightHeaderText]="rightHeaderText">
         <ng-template hcPickOptionTmp let-item="item" let-search="searchTerm">Dr. {{ item.name }}</ng-template>
 </hc-picklist2>
 
@@ -63,6 +65,14 @@
     <hc-form-field>
         <hc-label>Height (provide unit):</hc-label>
         <input hcInput [(ngModel)]="height" />
+    </hc-form-field>
+    <hc-form-field>
+        <hc-label>Left header text:</hc-label>
+        <input hcInput [(ngModel)]="leftHeaderText" />
+    </hc-form-field>
+    <hc-form-field>
+        <hc-label>Right header text:</hc-label>
+        <input hcInput [(ngModel)]="rightHeaderText" />
     </hc-form-field>
 </div>
 

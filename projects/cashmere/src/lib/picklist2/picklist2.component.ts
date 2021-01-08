@@ -31,7 +31,7 @@ import {
     PickPaneHeaderRightTemplateDirective,
     PickPaneHeaderLeftTemplateDirective
 } from './pick-templates.directive';
-import { isDefined, isFunction, isObject } from './value-utils';
+import { isDefined, isFunction, isObject } from '../util';
 import { PickOptionComponent, PickOptionStateChange } from './pick-option.component';
 import { PickPaneComponent } from './pane/pick-pane.component';
 import { Picklist2Service } from './picklist2.service';
@@ -64,14 +64,16 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
      * *Defaults to false.* If a function is provided, must follow this signature: `((term: string) => any | Promise<any>)`. The
      * function is passed the search term string and returns a value that should match the type of options in the picklist. */
     @Input() addCustomItem: boolean | AddCustomItemFn = false;
-    /** Group items by property or function expression. *Grouping is off by default.* */
+    /** Group items by property or function expression. If a function is provided, must follow this signature: `((item: any) => any)`. The
+     * function is passed an option and returns a value to represent the identifier for the group that option should belong to.
+     * *Grouping is off by default.* */
     @Input() groupBy: string | Function;
     /** Function expression to provide group value: `(key: string | object, children: any[]) => string | object`. Same as
      * described in ng-select component. https://ng-select.github.io/ng-select#/grouping */
     @Input() groupValue: GroupValueFn;
     /** True if group should be clickable. Clicking the group will select all its children. *Defaults to false.* */
     @Input() canSelectGroup = false;
-    /** True if group can be closed to hide its children options. *Defaults to false.* */
+    /** True if group can be closed to hide its child options. *Defaults to false.* */
     @Input() canCloseGroup = false;
     /** True if groups should be closed to begin with. Must have `canCloseGroup` set to true to use. *Defaults to true.* */
     @Input() closeGroupsByDefault = true;
@@ -87,7 +89,7 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
     @Input() trackByFn = null;
     /** Function used to sort the groups and items in the list: `(a: PickOption, b: PickOption) => number`. If the function
      * result is negative, a is sorted before b. If it's positive, b is sorted before a. If the result is 0, no changes are
-     * done with the sort order of the two values. */
+     * done with the sort order of the two values. *By default, options are not sorted.* */
     @Input() sortFn: SortFn;
     /** If true, items can be viewed but not highlighted or moved from pane to pane. Same as adding `disabled` attribute.
      * *Defaults to false.* */
@@ -113,9 +115,13 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
     @Input() externalTotalOptionCount: number;
     /** Message shown in each pane when empty. *Defaults to 'No options to show.'* */
     @Input() notFoundText = 'No options to show.';
-    /** True when pane left pane should show as loading. *Defaults to false.* */
+    /** Text for left pane header. Ignored if `hcPaneHeaderLeftTmp` is used. *Defaults to 'Available'.* */
+    @Input() leftHeaderText = 'Available';
+    /** Text for right pane header. Ignored if `hcPaneHeaderRightTmp` is used. *Defaults to 'Selected'.* */
+    @Input() rightHeaderText = 'Selected';
+    /** True when left pane should show as loading. *Defaults to false.* */
     @Input() leftPaneLoading = false;
-    /** True when right left pane should show as loading. *Defaults to false.* */
+    /** True when right pane should show as loading. *Defaults to false.* */
     @Input() rightPaneLoading = false;
     /** True if each pane should have a header. *Defaults to true.* */
     @Input() hasHeader = true;
@@ -127,7 +133,7 @@ export class Picklist2Component implements OnDestroy, AfterViewInit, ControlValu
      * Note: This will not prevent more than limit from being added to the model outside the component.
      * *No limit by default.* */
     @Input() maxSelectedItems: number;
-    /** Total height of the picklist control in pixels, percentage, rem, etc. *Defaults to '400px'.* */
+    /** Total height of the picklist control. Should be passed as a string, including the unit (pixels, percentage, rem, etc). *Defaults to '400px'.* */
     @Input() height = '400px';
 
     /** An array of options for the picklist. Options can be of any type, and the array can be an observable stream.

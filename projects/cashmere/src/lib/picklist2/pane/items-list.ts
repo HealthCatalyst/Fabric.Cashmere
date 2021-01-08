@@ -1,7 +1,16 @@
 import { PickPaneComponent } from './pick-pane.component';
 import { PickOption } from '../pick.types';
 import { PickSelectionModel } from './selection-model';
-import { isDefined, isFunction, isObject, newId } from '../value-utils';
+import { isDefined, isFunction, isObject } from '../../util';
+
+export function newId() {
+    // First character is an 'a', it's good practice for unique id to begin with a letter
+    return 'axxxxxxxxxxx'.replace(/[x]/g, function (_) {
+        // tslint:disable-next-line:no-bitwise
+        const val = Math.random() * 16 | 0;
+        return val.toString(16);
+    });
+}
 
 /** Keys may be a unique string or an HcOption itself. HcOption will be used as a key when the developer provides pregrouped options. */
 type ChildrenByGroupKeyMap = Map<string | PickOption, Array<PickOption>>;

@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnChanges, SimpleChanges, TemplateRef } from '@angular/core';
-import { escapeHTML } from './value-utils';
+import { escapeHTML } from '../util';
 
 /** @docs-private */
 @Directive({ selector: '[hcPickItemLabel]' })

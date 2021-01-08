@@ -17,7 +17,7 @@ import { animationFrameScheduler, asapScheduler, fromEvent, Subject } from 'rxjs
 import { auditTime, takeUntil } from 'rxjs/operators';
 import { PickPaneListService, PanelDimensions } from './pick-pane-list.service';
 import { PickOption } from '../pick.types';
-import { isDefined } from '../value-utils';
+import { isDefined } from '../../util';
 
 const SCROLL_SCHEDULER = typeof requestAnimationFrame !== 'undefined' ? animationFrameScheduler : asapScheduler;
 

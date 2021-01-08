@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PickPaneComponent } from './pane/pick-pane.component';
-import { isDefined } from './value-utils';
+import { isDefined } from '../util';
 
 @Injectable()
 /** @docs-private */

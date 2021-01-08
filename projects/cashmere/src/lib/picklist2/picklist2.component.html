@@ -3,7 +3,7 @@
     <div class="hc-picklist-pane-container">
         <div *ngIf="hasHeader" class="hc-picklist-pane-header">
             <ng-template #defaultLeftHeaderTemplate>
-                <h2 class="hc-picklist-pane-header-default">Available</h2>
+                <h2 class="hc-picklist-pane-header-default">{{leftHeaderText}}</h2>
             </ng-template>
             <ng-template [ngTemplateOutlet]="_paneHeaderLeftTemplate || defaultLeftHeaderTemplate"></ng-template>
         </div>
@@ -65,7 +65,7 @@
     <div class="hc-picklist-pane-container hc-picklist-pane-right">
         <div *ngIf="hasHeader" class="hc-picklist-pane-header">
             <ng-template #defaultRightHeaderTemplate>
-                <h2 class="hc-picklist-pane-header-default">Selected
+                <h2 class="hc-picklist-pane-header-default">{{rightHeaderText}}
                     <span *ngIf="maxSelectedItems" class="hc-picklist-max-limit-msg" [class.hc-picklist-max-limit-exceeded]="hasExceededMaxItemsSelected">
                         *Select up to {{maxSelectedItems}} options.<ng-container *ngIf="hasExceededMaxItemsSelected"> Limit exceeded.</ng-container>
                     </span>

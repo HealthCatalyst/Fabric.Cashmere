@@ -17,8 +17,8 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { isDefined, isFunction, isPromise, isObject, newId } from '../value-utils';
-import { ItemsList } from './items-list';
+import { isDefined, isFunction, isPromise, isObject } from '../../util';
+import { ItemsList, newId } from './items-list';
 import { PickOption, KeyCode, SearchFn } from '../pick.types';
 import { PickPaneListComponent } from './pick-pane-list.component';
 import { SelectionModelFactory } from './selection-model';

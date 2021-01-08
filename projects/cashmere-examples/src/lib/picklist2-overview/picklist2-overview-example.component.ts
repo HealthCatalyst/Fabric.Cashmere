@@ -38,6 +38,8 @@ export class Picklist2OverviewExampleComponent {
     searchPlaceholder = "Search for doctors...";
     notFoundText = "Nothing to see here";
     addCustomItemText = "Add new doctor?";
+    leftHeaderText = "Available Doctors";
+    rightHeaderText = "Selected Doctors";
 
     _customItemId = 12;
     customItemFn(term: string) {
