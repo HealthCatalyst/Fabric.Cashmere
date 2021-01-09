@@ -81,8 +81,7 @@
         "examples": ["pagination-load-more", "pagination-simple", "pagination-standard"],
         "usageDoc": true
     },
-    "picklist": {"name": "Picklist [Deprecated]", "category": "layout", "examples": ["picklist-simple", "picklist-valueset"], "usageDoc": true},
-    "picklist2": {"name": "Picklist2", "category": "layout", "examples": ["picklist2-simple", "picklist2-templates", "picklist2-overview", "picklist2-remote-data", "picklist2-hc-pick-option"]},
+    "picklist": {"name": "Picklist", "category": "forms", "examples": ["picklist-simple", "picklist-templates", "picklist-overview", "picklist-remote-data", "picklist-hc-pick-option"], "usageDoc": true},
     "pop": {
         "name": "Popover",
         "category": "popups",
