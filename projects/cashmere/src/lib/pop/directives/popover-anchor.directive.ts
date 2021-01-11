@@ -20,7 +20,7 @@ import { getInvalidPopoverError, getInvalidTriggerError } from '../popover.error
 import { HcPopoverAnchoringService } from '../popover-anchoring.service';
 import { HcPopoverHorizontalAlign, HcPopoverOpenOptions, HcPopoverTrigger, HcPopoverVerticalAlign, VALID_TRIGGER } from '../types';
 import { PopoverNotification, PopoverNotificationService, NotificationAction } from '../notification.service';
-import { HcPopoverAccessibilityService, HcPopKeyboardNotifier, KEY_CODE } from '../popover-accessibility.service';
+import { HcPopoverAccessibilityService, HcPopKeyboardNotifier } from '../popover-accessibility.service';
 import { HcTooltipComponent } from '../tooltip/tooltip.component';
 import { parseBooleanAttribute } from '../../util';
 
@@ -103,7 +103,9 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     }
 
     set maxWidth(val: string) {
-        this._attachedPopover.maxWidth = val;
+        if ( this.attachedPopover ) {
+            this._attachedPopover.maxWidth = val;
+        }
     }
 
     /** Whether the popover should return focus to the previously focused element after closing.* */
@@ -112,7 +114,9 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         return this._attachedPopover.restoreFocus && this._attachedPopover._restoreFocusOverride;
     }
     set restoreFocus(val: boolean) {
-        this._attachedPopover.restoreFocus = parseBooleanAttribute(val);
+        if ( this.attachedPopover ) {
+            this._attachedPopover.restoreFocus = parseBooleanAttribute(val);
+        }
     }
 
     /** Object or value that can be passed into the popover to customize its content */
@@ -131,7 +135,9 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         return this._attachedPopover.horizontalAlign;
     }
     set horizontalAlign(val: HcPopoverHorizontalAlign) {
-        this.attachedPopover.horizontalAlign = val;
+        if ( this.attachedPopover ) {
+            this.attachedPopover.horizontalAlign = val;
+        }
     }
 
     /** Alignment of the popover on the vertical axis. Can be `above`, `start`, `center`, `end`, `below`, or `mouse`.
@@ -141,7 +147,9 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         return this._attachedPopover.verticalAlign;
     }
     set verticalAlign(val: HcPopoverVerticalAlign) {
-        this.attachedPopover.verticalAlign = val;
+        if ( this.attachedPopover ) {
+            this.attachedPopover.verticalAlign = val;
+        }
     }
 
     @HostBinding('class.hc-menu-item-submenu')
@@ -187,7 +195,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     }
 
     @HostListener('click', ['$event'])
-    _showOrHideOnClick($event: MouseEvent): void {
+    _showOrHideOnClick(event: MouseEvent): void {
         if (this._hasSubmenu && event) {
             // Prevent the popover component from auto closing on click if a submenu was selected
             event.stopPropagation();
@@ -196,8 +204,8 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         if (this.trigger !== 'click') {
             return;
         }
-        this._attachedPopover._offsetPos[0] = this._attachedPopover.horizontalAlign === 'mouse' ? $event.offsetX : 0;
-        this._attachedPopover._offsetPos[1] = this._attachedPopover.verticalAlign === 'mouse' ? $event.offsetY : 0;
+        this._attachedPopover._offsetPos[0] = this._attachedPopover.horizontalAlign === 'mouse' ? event.offsetX : 0;
+        this._attachedPopover._offsetPos[1] = this._attachedPopover.verticalAlign === 'mouse' ? event.offsetY : 0;
         this.togglePopover();
     }
 
@@ -208,7 +216,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         const targetElement = event.target as Element;
         const triggerFromButton = targetElement && targetElement.tagName === "BUTTON";
         // not triggering popover on keypress unless the key pressed was enter or spacebar
-        const keyPressedShouldTrigger = event.keyCode === KEY_CODE.ENTER || event.keyCode === KEY_CODE.SPACEBAR;
+        const keyPressedShouldTrigger = event.key === 'Enter' || event.key === ' ';
         // not triggering popover on keypress unless the trigger is 'click'
         const anchorHasClickTrigger = this.trigger === 'click';
 
@@ -267,21 +275,21 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     /** Handle keyboard navigation of a hcMenu using the arrow or tab keys */
     _keyEvent(event: KeyboardEvent): void {
         if (this.attachedPopover.isOpen() && this.attachedPopover._menuItems.length > 0 && !this.attachedPopover._subMenuOpen) {
-            if (event.keyCode === KEY_CODE.UP_ARROW || (event.keyCode === KEY_CODE.TAB && event.shiftKey)) {
+            if (event.key === 'ArrowUp' || (event.key === 'Tab' && event.shiftKey)) {
                 event.stopPropagation();
                 event.preventDefault();
                 this.attachedPopover._keyFocus(false);
-            } else if (event.keyCode === KEY_CODE.DOWN_ARROW || (event.keyCode === KEY_CODE.TAB && !event.shiftKey)) {
+            } else if (event.key === 'ArrowDown' || (event.key === 'Tab' && !event.shiftKey)) {
                 event.stopPropagation();
                 event.preventDefault();
                 this.attachedPopover._keyFocus(true);
-            } else if (this.attachedPopover.parent && this.attachedPopover.parent.isOpen() && event.keyCode === KEY_CODE.LEFT_ARROW) {
+            } else if (this.attachedPopover.parent && this.attachedPopover.parent.isOpen() && event.key === 'ArrowLeft') {
                 event.stopPropagation();
                 event.preventDefault();
                 this.closePopover();
             }
         }
-        if (this._hasSubmenu && this._elementRef.nativeElement === document.activeElement && event.keyCode === KEY_CODE.RIGHT_ARROW) {
+        if (this._hasSubmenu && this._elementRef.nativeElement === document.activeElement && event.key === 'ArrowRight') {
             event.stopPropagation();
             event.preventDefault();
             this.openPopover();

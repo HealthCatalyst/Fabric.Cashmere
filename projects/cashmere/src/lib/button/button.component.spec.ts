@@ -1,12 +1,12 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {ButtonModule} from './button.module';
 
 @Component({
     template: `
-        <button hc-button [color]="buttonStyle" [disabled]="isDisabled" (click)="buttonClick()">Button</button>
-        <a hc-button [color]="buttonStyle" [disabled]="isDisabled" href="https://www.healthcatalyst.com">Link</a>
+        <button hc-button [buttonStyle]="buttonStyle" [disabled]="isDisabled" (click)="buttonClick()">Button</button>
+        <a hc-button [buttonStyle]="buttonStyle" [disabled]="isDisabled" href="https://www.healthcatalyst.com">Link</a>
     `
 })
 class TestAppComponent {
@@ -46,7 +46,7 @@ class TestAppReference {
 }
 
 describe('ButtonComponent', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [ButtonModule],
             declarations: [TestAppComponent]
@@ -127,46 +127,6 @@ describe('ButtonComponent', () => {
 
             testApp.buttonDebugElement.nativeElement.click();
             expect(testApp.testAppComponent.clickCount).toEqual(0);
-        });
-    });
-
-    describe('a[hc-button]', () => {
-        it('should remove tabindex when disabled', () => {
-            const testApp = new TestAppReference();
-            testApp.setIsDisabled(true);
-            testApp.detectChanges();
-
-            expect(testApp.aDebugElement.nativeElement.getAttribute('tabindex')).toBe('-1');
-        });
-
-        it('should not redirect if disabled', () => {
-            const testApp = new TestAppReference();
-            testApp.setIsDisabled(true);
-            testApp.detectChanges();
-
-            testApp.aDebugElement.nativeElement.click();
-        });
-
-        it('should add aria-disabled when disabled', () => {
-            const testApp = new TestAppReference();
-            testApp.detectChanges();
-            expect(testApp.aDebugElement.nativeElement.getAttribute('aria-disabled')).toBe('false');
-
-            testApp.setIsDisabled(true);
-            testApp.detectChanges();
-            expect(testApp.aDebugElement.nativeElement.getAttribute('aria-disabled')).toBe('true');
-        });
-
-        it('should not add aria-disabled when disabled is false', () => {
-            const testApp = new TestAppReference();
-            testApp.detectChanges();
-            expect(testApp.aDebugElement.nativeElement.getAttribute('aria-disabled')).toBe('false');
-            expect(testApp.aDebugElement.nativeElement.getAttribute('disabled')).toBeNull();
-
-            testApp.setIsDisabled(false);
-            testApp.detectChanges();
-            expect(testApp.aDebugElement.nativeElement.getAttribute('aria-disabled')).toBe('false');
-            expect(testApp.aDebugElement.nativeElement.getAttribute('disabled')).toBeNull();
         });
     });
 });

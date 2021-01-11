@@ -1,4 +1,5 @@
-import {Directive, Input, ContentChildren, QueryList, AfterContentInit, OnDestroy} from '@angular/core';
+import {Directive, Input, ContentChildren, AfterContentInit, OnDestroy} from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 import {HcFormFieldComponent} from './hc-form-field.component';
 import {takeUntil} from 'rxjs/operators';

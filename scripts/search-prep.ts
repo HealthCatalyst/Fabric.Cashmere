@@ -183,7 +183,7 @@ function readStyleFiles() {
                         id: mapping.basename.split('.')[0],
                         // Set the title to the title with propare capitalization
                         title: changeCase.titleCase(title) + ' - ' + changeCase.titleCase(parentName.replace(/-/g, ' ')),
-                        content: exampleGetContent(fileContent),
+                        content: exampleGetContent(element),
                         link: 'styles/' + parentName,
                         category: 'styles',
                         displayName: title,

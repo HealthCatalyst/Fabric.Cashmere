@@ -2,9 +2,7 @@ import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {validateStyleInput} from '../button/button.component';
 import {BasePaginationComponent} from './base-pagination';
 
-/** A simple "load more" pagination button.
- * @inheritdoc
- * */
+/** A simple "load more" pagination button. */
 @Component({
     selector: 'hc-load-more-pagination',
     templateUrl: './load-more-pagination.component.html',
@@ -27,7 +25,7 @@ export class LoadMorePaginationComponent extends BasePaginationComponent impleme
     }
 
     set buttonStyle(btnStyle: string) {
-        validateStyleInput(btnStyle);
+        validateStyleInput(btnStyle, 'LoadMorePaginationComponent');
         this._style = btnStyle;
     }
     private _style: string = 'secondary';

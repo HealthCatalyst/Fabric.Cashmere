@@ -11,3 +11,4 @@ export {
     IPageSettings,
     IPagedCollection
 } from './picklist.model';
+export {PicklistPaneComponent} from './pane/picklist-pane.component';

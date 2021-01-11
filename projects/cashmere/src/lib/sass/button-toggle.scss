@@ -1,0 +1,101 @@
+@import "./colors";
+@import "./functions";
+@import "./mixins";
+
+@mixin hc-button-toggle-group() {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+@mixin hc-button-toggle() {
+    display: flex;
+}
+
+@mixin hc-button-toggle-first() {
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+}
+
+@mixin hc-button-toggle-last() {
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+}
+
+
+@mixin hc-button-toggle-secondary() {
+     border: 1px solid $gray-300;
+        border-right: none;
+        color: $gray-500;
+        &:last-of-type {
+            border-right: 1px solid $gray-300;
+            border-left: 1px solid $gray-300;
+        }
+}
+
+@mixin hc-button-toggle($color) {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    height: 100%;
+    cursor: pointer;
+    background-position: center;
+    color: $white;
+    background-color: $color;
+
+    &.hc-toggle-disabled {
+        cursor: not-allowed;
+        opacity: 0.35;
+    }
+
+    &:not(.hc-toggle-disabled) {
+        &:focus {
+            outline: none;
+            border-bottom: none;
+            box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
+        }
+
+        &:active {
+            background-image: none;
+            outline: none;
+        }
+
+        &:hover {
+            background-color: shade($color, 10%);
+        }
+    }
+
+    &.hc-toggle-checked {
+        background-color: shade($color, 20%);
+        box-shadow: inset 0 0 4px shade($color, 40%);
+    }
+
+    // Remove Firefox's active state dotted outline b/c we have our own highlight
+    &::-moz-focus-inner {
+        border: 0;
+    }
+}
+
+@mixin hc-button-toggle-sm() {
+    padding: 0 7px;
+    height: 26px;
+    min-width: auto;
+    @include fontSize(14px);
+    line-height: 14px;
+}
+
+@mixin hc-button-toggle-md() {
+    padding: 0 10px;
+    height: 35px;
+    @include fontSize(15px);
+    line-height: 15px;
+}
+
+@mixin hc-button-toggle-lg() {
+    padding: 0 15px;
+    height: 40px;
+    @include fontSize(17px);
+    line-height: 17px;
+}

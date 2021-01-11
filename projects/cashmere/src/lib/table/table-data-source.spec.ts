@@ -37,12 +37,12 @@ describe('HcTableDataSource', () => {
     let dataSource: HcTableDataSource<PeriodicElement>;
     beforeEach(() => {
         pager = new PaginationComponent();
+        dataSource = new HcTableDataSource([]);
     });
 
     describe('when paged', () => {
         describe('appropriately sets the page after new data is added', () => {
             it('page should be 1', () => {
-                dataSource = new HcTableDataSource([]);
                 dataSource.paginator = pager;
                 dataSource.data = ELEMENT_DATA;
                 expect(dataSource.paginator.pageNumber).toBe(1);

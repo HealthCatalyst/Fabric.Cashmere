@@ -8,7 +8,7 @@ export {
     HcDatepickerInputEvent
 } from './datepicker-input/datepicker-input.directive';
 export {DatepickerToggleComponent, DatepickerToggleIconDirective} from './datepicker-toggle/datepicker-toggle.component';
-export {HC_DATE_LOCALE, HC_DATE_LOCALE_FACTORY, HC_DATE_LOCALE_PROVIDER, DateAdapter} from './datetime/date-adapter';
+export {HC_DATE_LOCALE, HC_DATE_LOCALE_FACTORY, DateAdapter} from './datetime/date-adapter';
 export {D, HcDateFormats, HC_DATE_FORMATS} from './datetime/date-formats';
 export {NativeDateModule, HcNativeDateModule} from './datetime/datetime.module';
 export {NativeDateAdapter} from './datetime/native-date-adapter';

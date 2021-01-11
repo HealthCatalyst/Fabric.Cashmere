@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {Drawer} from './drawer.component';
 import {DrawerContainer} from './drawer-container.component';
 import {DrawerModule} from './drawer.module';
@@ -40,7 +40,7 @@ describe('DrawerContainer', () => {
     let component: TestDrawerContainer;
     let fixture: ComponentFixture<TestDrawerContainer>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestDrawerContainer, InvalidDrawerContainer],
             imports: [DrawerModule, NoopAnimationsModule]

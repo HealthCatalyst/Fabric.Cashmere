@@ -6,11 +6,11 @@ import {
     ElementRef,
     HostListener,
     Input,
-    QueryList,
     ViewChild,
     ViewEncapsulation,
     OnDestroy
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {HcPopoverAnchorDirective} from '../pop/directives/popover-anchor.directive';
 import {HcPopComponent} from '../pop/popover.component';
 import {MoreItem} from './more-item';
@@ -55,13 +55,13 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     @ContentChildren(NavbarLinkComponent)
     _navLinks: QueryList<NavbarLinkComponent | NavbarDropdownComponent>;
 
-    @ViewChild('navbar', {static: false}) navbarContent: ElementRef;
-    @ViewChild('navlinks', {static: false}) navContent: ElementRef;
+    @ViewChild('navbar') navbarContent: ElementRef;
+    @ViewChild('navlinks') navContent: ElementRef;
 
-    @ViewChild('moreLink', {static: false})
+    @ViewChild('moreLink')
     _navbarMore: HcPopoverAnchorDirective;
 
-    @ViewChild('navbarMore', {static: false})
+    @ViewChild('navbarMore')
     _morePop: HcPopComponent;
 
     private unsubscribe$ = new Subject<void>();

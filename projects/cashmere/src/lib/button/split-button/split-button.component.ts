@@ -8,9 +8,9 @@ import {
     Output,
     ViewEncapsulation,
     ViewChild,
-    ContentChildren,
-    QueryList
+    ContentChildren
 } from '@angular/core';
+import type {QueryList} from '@angular/core';
 import {parseBooleanAttribute} from '../../util';
 import {validateStyleInput, validateSizeInput, ButtonComponent} from '../button.component';
 import {HcPopComponent} from '../../pop/popover.component';
@@ -37,10 +37,10 @@ export class SplitButtonComponent {
     private _style: string = 'primary';
     private _size: string = 'md';
 
-    @ViewChild('splitBtnToggle', {static: false})
+    @ViewChild('splitBtnToggle')
     _splitBtnToggle: ButtonComponent;
 
-    @ViewChild('splitMenu', {static: false})
+    @ViewChild('splitMenu')
     _splitMenu: HcPopComponent;
 
     @ContentChildren(MenuItemDirective, {descendants: true}) _menuItems: QueryList<MenuItemDirective>;
@@ -83,19 +83,6 @@ export class SplitButtonComponent {
         this._tabIndex = value == null ? 0 : value;
     }
 
-    /**
-     * @deprecated
-     * @description Use `buttonStyle` instead
-     * */
-    @Input()
-    get color(): string {
-        return this.buttonStyle;
-    }
-
-    set color(btnStyle: string) {
-        this.buttonStyle = btnStyle;
-    }
-
     /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' |
      * 'neutral' | 'secondary' | 'minimal'`. If needed, colors from
      * the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc) */
@@ -105,7 +92,7 @@ export class SplitButtonComponent {
     }
 
     set buttonStyle(btnStyle: string) {
-        validateStyleInput(btnStyle);
+        validateStyleInput(btnStyle, 'SplitButtonComponent');
         if ( supportedStyles.indexOf(btnStyle) < 0 ) {
             btnStyle = "button-" + btnStyle;
         }
@@ -119,7 +106,7 @@ export class SplitButtonComponent {
     }
 
     set size(size: string) {
-        validateSizeInput(size);
+        validateSizeInput(size, 'SplitButtonComponent');
         this._size = size;
     }
 
