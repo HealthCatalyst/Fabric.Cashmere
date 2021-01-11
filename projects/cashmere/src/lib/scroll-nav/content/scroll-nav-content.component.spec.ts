@@ -134,7 +134,7 @@ describe('HcScrollNavContentComponent', () => {
             testApp.contentComponent.sectionStyle = '';
             testApp.contentComponent.sectionHoverStyle = '';
             testApp.contentComponent.cssRules = '';
-        })
+        });
 
         describe('should throw an error if a style is invalid', () => {
             it("when style doesn't have ':'", () => {
@@ -142,7 +142,7 @@ describe('HcScrollNavContentComponent', () => {
 
                 let error;
                 try {
-                    testApp.contentComponent.ngOnInit()
+                    testApp.contentComponent.ngOnInit();
                 } catch (e) {
                     error = e;
                 }
@@ -156,7 +156,7 @@ describe('HcScrollNavContentComponent', () => {
 
                 let error;
                 try {
-                    testApp.contentComponent.ngOnInit()
+                    testApp.contentComponent.ngOnInit();
                 } catch (e) {
                     error = e;
                 }
@@ -170,7 +170,7 @@ describe('HcScrollNavContentComponent', () => {
 
                 let error;
                 try {
-                    testApp.contentComponent.ngOnInit()
+                    testApp.contentComponent.ngOnInit();
                 } catch (e) {
                     error = e;
                 }
@@ -196,7 +196,7 @@ describe('HcScrollNavContentComponent', () => {
 
             let error;
             try {
-                testApp.contentComponent.ngAfterViewInit()
+                testApp.contentComponent.ngAfterViewInit();
             } catch (e) {
                 error = e;
             }
@@ -211,7 +211,7 @@ describe('HcScrollNavContentComponent', () => {
 
                 let error;
                 try {
-                    testApp.contentComponent.ngAfterViewInit()
+                    testApp.contentComponent.ngAfterViewInit();
                 } catch (e) {
                     error = e;
                 }
@@ -225,7 +225,7 @@ describe('HcScrollNavContentComponent', () => {
 
                 let error;
                 try {
-                    testApp.contentComponent.ngAfterViewInit()
+                    testApp.contentComponent.ngAfterViewInit();
                 } catch (e) {
                     error = e;
                 }
@@ -239,7 +239,7 @@ describe('HcScrollNavContentComponent', () => {
 
                 let error;
                 try {
-                    testApp.contentComponent.ngAfterViewInit()
+                    testApp.contentComponent.ngAfterViewInit();
                 } catch (e) {
                     error = e;
                 }
@@ -250,7 +250,7 @@ describe('HcScrollNavContentComponent', () => {
         });
     });
 
-    it('css styleSheet should have correct order of styles', () => {            
+    it('css styleSheet should have correct order of styles', () => {
         testApp.contentComponent._scrollTargets[0].setAttribute('sectionStyle', 'color: pink;');
         testApp.contentComponent.sectionStyle = 'color: red;';
         testApp.contentComponent._scrollTargets[0].setAttribute('sectionHoverStyle', 'color: blue;');

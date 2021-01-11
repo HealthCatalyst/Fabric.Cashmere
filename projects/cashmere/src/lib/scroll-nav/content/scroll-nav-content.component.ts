@@ -172,7 +172,7 @@ export class HcScrollNavContentComponent implements OnInit, AfterViewInit, After
     private setCssRulesForLink(linkTargetId: string | undefined | null, ruleToSet, isHover: boolean = false): void {
         linkTargetId = linkTargetId ? linkTargetId : '';
         let cssDecorator = `[hcscrolllink='${linkTargetId}']`;
-        
+
         if (ruleToSet) {
             if (isHover) {
                 cssDecorator += ':hover';
@@ -185,7 +185,7 @@ export class HcScrollNavContentComponent implements OnInit, AfterViewInit, After
     private setCssRules(rule: string): void {
         let styleSheet = document.styleSheets[document.styleSheets.length - 1];
         const rules = (styleSheet as CSSStyleSheet).cssRules;
-    
+
         for (let i = 0; i < rules.length; i++) {
             if (rules[i] instanceof CSSStyleRule) {
                 let cssText = (rules[i] as CSSStyleRule).cssText;
@@ -219,7 +219,7 @@ export class HcScrollNavContentComponent implements OnInit, AfterViewInit, After
                 let errorString = `All styles in '${styleName}: ${style}' need both ':'s and ';'s.`;
 
                 if (sectionName) {
-                    errorString += ` Located in ${sectionName}.`
+                    errorString += ` Located in ${sectionName}.`;
                 }
 
                 throw Error(errorString);

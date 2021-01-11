@@ -134,7 +134,7 @@ describe('HcScrollNavComponent', () => {
         expect(testApp.linksComponent._links[a3].classList.contains('hc-scroll-nav-link')).toBeTruthy();
         expect(testApp.linksComponent._links[b3].classList.contains('hc-scroll-nav-link')).toBeTruthy();
     });
-    
+
     describe('_setActiveSectionById', () => {
         it("should throw an error if it can't find link with appropriate id", () => {
             let error;
@@ -144,7 +144,9 @@ describe('HcScrollNavComponent', () => {
                 error = e;
             }
 
-            expect(error).toEqual(new Error('Failed to mark active section. Could not find the element with the data target for id: test.'));
+            expect(error).toEqual(
+                new Error('Failed to mark active section. Could not find the element with the data target for id: test.')
+            );
         });
 
         it('should activate passed in link and inactivate all others', () => {
@@ -212,47 +214,47 @@ describe('HcScrollNavComponent', () => {
                 testApp.linksComponent.parentActiveHoverStyle = '';
                 testApp.linksComponent.parentInactiveStyle = '';
                 testApp.linksComponent.parentInactiveHoverStyle = '';
-            })
-    
+            });
+
             describe('should throw an error if a style is invalid', () => {
                 it("when style doesn't have ':'", () => {
                     testApp.linksComponent.activeStyle = 'color pink;';
-    
+
                     let error;
                     try {
-                        testApp.linksComponent.ngOnInit()
+                        testApp.linksComponent.ngOnInit();
                     } catch (e) {
                         error = e;
                     }
-    
+
                     const expectedError = new Error(`All styles in 'activeStyle: ${testApp.linksComponent.activeStyle}' need both ':'s and ';'s. Located in hc-scroll-nav.`);
                     expect(error).toEqual(expectedError);
                 });
-    
+
                 it("when style doesn't have ';'", () => {
                     testApp.linksComponent.activeStyle = 'color: pink';
-    
+
                     let error;
                     try {
-                        testApp.linksComponent.ngOnInit()
+                        testApp.linksComponent.ngOnInit();
                     } catch (e) {
                         error = e;
                     }
-    
+
                     const expectedError = new Error(`All styles in 'activeStyle: ${testApp.linksComponent.activeStyle}' need both ':'s and ';'s. Located in hc-scroll-nav.`);
                     expect(error).toEqual(expectedError);
                 });
-    
+
                 it("when style doesn't have equal number of ':' and ';'", () => {
                     testApp.linksComponent.activeStyle = 'color: pink; color: blue';
-    
+
                     let error;
                     try {
-                        testApp.linksComponent.ngOnInit()
+                        testApp.linksComponent.ngOnInit();
                     } catch (e) {
                         error = e;
                     }
-    
+
                     const expectedError = new Error(`All styles in 'activeStyle: ${testApp.linksComponent.activeStyle}' need both ':'s and ';'s. Located in hc-scroll-nav.`);
                     expect(error).toEqual(expectedError);
                 });
@@ -321,11 +323,11 @@ describe('HcScrollNavComponent', () => {
                 testApp.linksComponent._links[a1].setAttribute('baseStyle', 'color: pink;');
 
                 testApp.linksComponent.ngAfterViewInit();
-        
+
                 let styleSheet = document.styleSheets[document.styleSheets.length - 1];
                 let rules = (styleSheet as CSSStyleSheet).cssRules;
                 let ruleList: CSSRule[] = [];
-        
+
                 for (let i = 0; i < rules.length; i++) {
                     if (rules[i] instanceof CSSStyleRule) {
                         let cssText = (rules[i] as CSSStyleRule).cssText;
@@ -334,7 +336,7 @@ describe('HcScrollNavComponent', () => {
                         }
                     }
                 }
-        
+
                 expect(ruleList[0].cssText).toEqual('[hcscrolllink="a1"] { color: pink; }');
             });
 
@@ -342,11 +344,11 @@ describe('HcScrollNavComponent', () => {
                 testApp.linksComponent._links[a1].setAttribute('baseHoverStyle', 'color: blue;');
 
                 testApp.linksComponent.ngAfterViewInit();
-        
+
                 let styleSheet = document.styleSheets[document.styleSheets.length - 1];
                 let rules = (styleSheet as CSSStyleSheet).cssRules;
                 let ruleList: CSSRule[] = [];
-        
+
                 for (let i = 0; i < rules.length; i++) {
                     if (rules[i] instanceof CSSStyleRule) {
                         let cssText = (rules[i] as CSSStyleRule).cssText;
@@ -355,7 +357,7 @@ describe('HcScrollNavComponent', () => {
                         }
                     }
                 }
-        
+
                 expect(ruleList[0].cssText).toEqual('[hcscrolllink="a1"]:hover { color: blue; }');
             });
         });
@@ -419,7 +421,7 @@ describe('HcScrollNavComponent', () => {
                     cssText === `[hcscrolllink="a1"].${INACTIVE_CLASS}:hover { color: cornflowerblue; }` ||
                     cssText === `[hcscrolllink="a1"].${ACTIVE_CLASS}:hover { color: deepskyblue; }` ||
                     cssText === `[hcscrolllink="a1"].${ACTIVE_CLASS}:hover { color: blue; }` ||
-                    cssText === `[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS} { color: palevioletred; }` || 
+                    cssText === `[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS} { color: palevioletred; }` ||
                     cssText === `[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS} { color: mediumvioletred; }` ||
                     cssText === `[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS} { color: mediumorchid; }` ||
                     cssText === `[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS} { color: magenta; }` ||
@@ -457,7 +459,7 @@ describe('HcScrollNavComponent', () => {
         expect(ruleList[20].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_CLASS}:hover { color: cornflowerblue; }`);
         expect(ruleList[21].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_CLASS}:hover { color: deepskyblue; }`);
         expect(ruleList[22].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_CLASS}:hover { color: blue; }`);
-        expect(ruleList[23].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS} { color: palevioletred; }`); 
+        expect(ruleList[23].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS} { color: palevioletred; }`);
         expect(ruleList[24].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS} { color: mediumvioletred; }`);
         expect(ruleList[25].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS} { color: mediumorchid; }`);
         expect(ruleList[26].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS} { color: magenta; }`);
