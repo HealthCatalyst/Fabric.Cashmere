@@ -1,5 +1,5 @@
 import {from, Observable} from 'rxjs';
-import {IValueOption, IValueSetOption} from '../picklist.model';
+import {IValueOption, IValueSetOption} from '../picklist-old.model';
 
 export class FilterableSelectList<T extends SelectListOption> {
     public selectedOptions = new Map<string, T>();

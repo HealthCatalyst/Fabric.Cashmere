@@ -81,7 +81,7 @@
         "examples": ["pagination-load-more", "pagination-simple", "pagination-standard"],
         "usageDoc": true
     },
-    "picklist": {"name": "Picklist", "category": "layout", "examples": ["picklist-simple", "picklist-valueset"], "usageDoc": true},
+    "picklist": {"name": "Picklist", "category": "forms", "examples": ["picklist-simple", "picklist-templates", "picklist-overview", "picklist-remote-data", "picklist-hc-pick-option"], "usageDoc": true},
     "pop": {
         "name": "Popover",
         "category": "popups",

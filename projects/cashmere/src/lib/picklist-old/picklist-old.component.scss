@@ -1,0 +1,50 @@
+@import '../sass/picklist-old.scss';
+
+.hc-picklist-old {
+    @include hc-picklist();
+
+    .pane-wrap {
+        @include hc-picklist-pane-wrap();
+    }
+
+    .pane-header {
+        @include hc-picklist-pane-header();
+    }
+
+    .pane-header h2 {
+        @include hc-picklist-pane-header-h2();
+    }
+
+    .pane-tabs {
+        @include hc-picklist-pane-tabs();
+    }
+
+    .pane-tabs a {
+        @include hc-picklist-pane-tab-link();
+    }
+
+    hc-picklist-pane {
+        @include hc-picklist-pane-outer();
+    }
+
+    hc-picklist-pane.hide {
+        @include hc-picklist-pane-outer-hide();
+    }
+
+    .move-btns-wrap {
+        @include hc-picklist-move-btns-wrap();
+    }
+
+    .move-btns-wrap button {
+        @include hc-picklist-move-btn();
+
+        &[disabled],
+        &[disabled]:hover {
+            @include hc-picklist-move-btn-disabled();
+        }
+    }
+
+    .move-btns-wrap .hc-icon {
+        @include hc-picklist-move-btn-icon();
+    }
+}
