@@ -97,8 +97,9 @@ Detailed information on the navbar and how to configure it is included in the [n
 
 ### Static Bar
 
-The static bar is horizontal text object with a fixed 30px height.
+The static bar is horizontal text object with a fixed `30px height and 1280px width`.
 It is used as an information panel to display dashboard-wide metrics, such as refresh timestamps or "stickied" metrics, such as population counts.
+Position the object at `x:0, y:50`, set the background color to **slate-gray-400** `#708090`, toggle the visual header to `off`.
 
 <div style="text-align:center"><br>
 
@@ -165,14 +166,14 @@ Every tile should include a `left-aligned` title. The title text should be `Sego
 ### Tile Visual Header
 
 Every tile should always include the info and filter icons within the visual header.
-Icon color should be `#989898`.
+Icon color should be **slate-gray-400**`#708090`.
 
 Some header elements, such as drill-down icons, are object-specific and more details can be found in the [KPI Metrics section](/analytics/powerbi-metrics), [Charts section](/analytics/powerbi-charts), and [Tables section](/analytics/powerbi-tables). Refer to the template or these sections for working examples.
 
 ### Divider
 
-A 1px horizontal line divides the header from the content of the visual object. Leave about 2px of space on the left and right.
-Set its fixed height to 16px and set the line color to **slate-gray-300** `#c0c5cc`. Turn off all visual header icons.
+A horizontal line with a weight of `1pt` divides the header from the content of the visual object. Leave about 2px of space on the left and right.
+Set its fixed height to `12px` and set the line color to **slate-gray-300** `#c0c5cc`. Turn off all visual header icons.
 
 <div style="text-align:center"><br>
 
