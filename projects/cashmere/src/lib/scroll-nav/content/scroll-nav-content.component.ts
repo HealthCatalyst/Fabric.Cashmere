@@ -6,6 +6,7 @@ import {
     ViewChild,
     OnDestroy,
     EventEmitter,
+    OnInit,
     Output,
     ContentChildren,
     HostListener,
@@ -25,34 +26,45 @@ import {ScrollNavTargetDirective} from './scroll-nav-target.directive';
     styleUrls: ['scroll-nav-content.component.scss'],
     templateUrl: 'scroll-nav-content.component.html'
 })
-export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
-    private readonly DEFAULT_BUFFER = 40;
+export class HcScrollNavContentComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
+    private readonly DEFAULT_BUFFER = 0;
     /** Reference to the scroll nav component. */
     @Input() public nav: HcScrollNavComponent;
     /** If true, will force the height of the final scroll target area to be the height of the scrollable container.
      * This is helpful if you want the last target in the content area to be able to scroll to the top. You can alternatively
      * target the last item with css. *Defaults to true.* */
     @Input() public makeLastTargetFullHeight = true;
-    /** Number in pixels, used to give a little leeway in the shifting of the active nav when scrolling. *Defaults to 40.*
-     * Example: Left at default, if showing just the bottom 40 pixels of the section before, count the next section as active. */
+    /** Number in pixels, used to give a little leeway in the shifting of the active nav when scrolling. *Defaults to 0.*
+     * Example: If set to 40, if showing just the bottom 40 pixels of the section before, count the next section as active. */
     @Input() public bufferSpace = this.DEFAULT_BUFFER;
     /** If true, applies smooth scrolling via css. *Defaults to true.* */
     @Input() public shouldAnimateScroll = true;
     /** Fires when a new section is scrolled into view. Broadcasts the id of that section. */
     @Output() public newSectionInView: EventEmitter<string> = new EventEmitter<string>();
-    @ViewChild('scrollContainer', { read: CdkScrollable }) public _cdkScrollableElement: CdkScrollable;
-    @ContentChildren(ScrollNavTargetDirective) private targets: QueryList<ScrollNavTargetDirective>;
+    @ViewChild('scrollContainer', {read: CdkScrollable, static: false}) public _cdkScrollableElement: CdkScrollable;
+    @ContentChildren(ScrollNavTargetDirective, { descendants: true }) private targets: QueryList<ScrollNavTargetDirective>;
+    /** Style that applies to entire section through the 'style' attribute.* */
+    @Input() public sectionStyle = '';
+    /** Hover style that applies to entire section through css.* */
+    @Input() public sectionHoverStyle = '';
+    /** Adds a css rule to stylesheet.* */
+    @Input() public cssRules = '';
     /** Id of the current section scrolled into view. */
     public sectionInView: string;
     public get _scrollTargets(): Array<HTMLElement> {
-        return this.targets.toArray().map(t => t._el.nativeElement);
+        return this.targets.toArray().map(e => e._el.nativeElement);
     }
+
     private unsubscribe$ = new Subject<void>();
     private minHeightForLastTargetSet = false;
 
     public ngOnDestroy(): void {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
+    }
+
+    public ngOnInit(): void  {
+        this.setGeneralStyles();
     }
 
     public ngAfterViewInit(): void {
@@ -64,6 +76,14 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
                     this.checkActiveSection();
                 });
         }
+
+        this._scrollTargets.forEach((target) => {
+            if (!target.id) {
+                throw Error('hcScrollTarget element needs an id.');
+            }
+
+            this.setTargetStyles(target);
+        });
     }
 
     public ngAfterViewChecked(): void {
@@ -78,7 +98,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
         }
     }
 
-    /** Scroll to top and reset the "automatic full height for the last item" setting. */
+    /** Scroll to top and reset the 'automatic full height for the last item' setting. */
     public refresh() {
         this.scrollToTop();
         this.minHeightForLastTargetSet = false;
@@ -93,8 +113,8 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     public checkActiveSection() {
         let offset: number = this._cdkScrollableElement.measureScrollOffset('top') + this._scrollTargets[0].offsetTop;
 
-        this._scrollTargets.forEach((t, index) => {
-            const el = t;
+        this._scrollTargets.forEach((target, index) => {
+            const el = target;
             let initialOffset = 0;
             let nextOffset = 0;
 
@@ -111,9 +131,25 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
                 (initialOffset && !nextOffset && offset >= initialOffset) ||
                 (!initialOffset && nextOffset && offset < nextOffset)
             ) {
-                this.setActiveClass(el.getAttribute('id') || '');
+                this.setActiveSection(el.getAttribute('id') || '');
             }
         });
+    }
+
+    private getTargets(targets: HTMLElement[]): HTMLElement[] {
+        let rtnTargets: HTMLElement[] = [];
+
+        targets.forEach((target) => {
+            if (target.hasAttribute('hcScrollTarget')) {
+                rtnTargets.push(target);
+            }
+
+            if (target.children.length > 0) {
+                rtnTargets = rtnTargets.concat(this.getTargets(<Array<HTMLElement>>Array.from(target.children)));
+            }
+        });
+
+        return rtnTargets;
     }
 
     private insureMinHeightForLastTarget() {
@@ -125,11 +161,114 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
         }
     }
 
-    private setActiveClass(scrollTarget: string): void {
+    private setActiveSection(scrollTarget: string): void {
         if (this.sectionInView !== scrollTarget) {
             this.sectionInView = scrollTarget;
-            this.nav._setActiveClassById(scrollTarget);
+            this.nav._setActiveSectionById(scrollTarget);
             this.newSectionInView.next(scrollTarget);
+        }
+    }
+
+    private setCssRulesForLink(linkTargetId: string | undefined | null, ruleToSet, isHover: boolean = false): void {
+        linkTargetId = linkTargetId ? linkTargetId : '';
+        let cssDecorator = `[hcscrolllink='${linkTargetId}']`;
+        
+        if (ruleToSet) {
+            if (isHover) {
+                cssDecorator += ':hover';
+            }
+
+            this.setCssRules(`${cssDecorator} { ${ruleToSet} }`);
+        }
+    }
+
+    private setCssRules(rule: string): void {
+        let styleSheet = document.styleSheets[document.styleSheets.length - 1];
+        const rules = (styleSheet as CSSStyleSheet).cssRules;
+    
+        for (let i = 0; i < rules.length; i++) {
+            if (rules[i] instanceof CSSStyleRule) {
+                let cssText = (rules[i] as CSSStyleRule).cssText;
+                if (cssText === rule) {
+                    (styleSheet as CSSStyleSheet).removeRule(i);
+                }
+            }
+        }
+
+        if (rule) {
+            (styleSheet as CSSStyleSheet).insertRule(rule, (styleSheet as CSSStyleSheet).cssRules.length);
+        }
+    }
+
+    private verifyStyle(style: string, styleName: string, sectionName: string = ''): void {
+        let throwError = false;
+
+        if (style) {
+            if (style.includes(':') && style.includes(';')) {
+                const colonLength = style.split(':').length;
+                const commaLength = style.split(';').length;
+
+                if (colonLength !== commaLength) {
+                    throwError = true;
+                }
+            } else {
+                throwError = true;
+            }
+
+            if (throwError) {
+                let errorString = `All styles in '${styleName}: ${style}' need both ':'s and ';'s.`;
+
+                if (sectionName) {
+                    errorString += ` Located in ${sectionName}.`
+                }
+
+                throw Error(errorString);
+            }
+        }
+    }
+
+    private setGeneralStyles() {
+        this.verifyStyle(this.sectionStyle, 'sectionStyle', 'hc-scroll-nav-content');
+        this.verifyStyle(this.sectionHoverStyle, 'sectionHoverStyle', 'hc-scroll-nav-content');
+
+        if (this.sectionStyle) {
+            this.setCssRules(`hc-scroll-nav-content { ${this.sectionStyle} }`);
+        }
+        if (this.sectionHoverStyle) {
+            this.setCssRules(`hc-scroll-nav-content:hover { ${this.sectionHoverStyle} }`);
+        }
+        if (this.cssRules) {
+            this.setCssRules(this.cssRules);
+        }
+    }
+
+    private setTargetStyles(target: HTMLElement) {
+        this.setTargetGeneralStyles(target);
+
+        // set inline styles to override general styles
+        this.setTargetStyle(target, 'sectionStyle', false);
+        this.setTargetStyle(target, 'sectionHoverStyle', true);
+
+        let cssRules = target.getAttribute('cssRules');
+        if (cssRules) {
+            this.setCssRules(cssRules);
+        }
+    }
+
+    private setTargetGeneralStyles(target: HTMLElement) {
+        if (this.sectionStyle) {
+            this.setCssRulesForLink(`#${target.id}`, this.sectionStyle, false);
+        }
+        if (this.sectionHoverStyle) {
+            this.setCssRulesForLink(`#${target.id}`, this.sectionHoverStyle, true);
+        }
+    }
+
+    private setTargetStyle(target: HTMLElement, styleName: string, isHover: boolean) {
+        let style = target.getAttribute(styleName);
+        if (style) {
+            this.verifyStyle(style, styleName, target.id.toString());
+            this.setCssRulesForLink(`#${target.id}`, style, isHover);
         }
     }
 }

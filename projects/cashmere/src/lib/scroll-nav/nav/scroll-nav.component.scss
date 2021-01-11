@@ -19,3 +19,15 @@
 .hc-scroll-nav-link-active {
     @include hc-scroll-nav-link-active();
 }
+
+.hc-scroll-nav-active-parent-section-link {
+    @include hc-scroll-nav-active-parent-section-link();
+}
+
+.hc-scroll-nav-parent-section-link {
+    @include hc-scroll-nav-parent-section-link();
+}
+
+.hc-scroll-nav-parent-section-link-content {
+    @include hc-scroll-nav-parent-section-link-content();
+}

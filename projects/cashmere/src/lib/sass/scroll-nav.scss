@@ -40,6 +40,39 @@
     }
 }
 
+@mixin hc-scroll-nav-active-parent-section-link() {
+    &,
+    &:hover {
+        font-weight: bold;
+    }
+}
+
+@mixin hc-scroll-nav-parent-section-link() {
+    ul {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    .hc-scroll-nav-subsection-link {
+        padding: 10px 0 10px 15px;
+    }
+
+    &,
+    &.hc-scroll-nav-subsection-link {
+        padding: 10px 0 0px 15px;
+    }
+}
+
+@mixin hc-scroll-nav-parent-section-link-content() {
+    &.hc-scroll-nav-subsection-link {
+        padding-top: 20px;
+
+        ul:first-child {
+            padding-top: 10px;
+        }
+    }
+}
+
 @mixin hc-scroll-nav-content-container() {
     max-height: 100%;
     overflow: scroll;
