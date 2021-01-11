@@ -2,7 +2,7 @@ import {Observable} from 'rxjs';
 
 /**
  * @type
- * @ignore
+ * @docs-private
  */
 export type PicklistValueType = 'values' | 'valuesets' | 'both';
 
@@ -66,7 +66,7 @@ export interface IPicklistOptionsSource {
 }
 
 /**
- * @ignore
+ * @docs-private
  */
 export class PicklistOptionsSource implements IPicklistOptionsSource {
     public values = new Array<IValueOption>();
@@ -82,7 +82,7 @@ export class PicklistOptionsSource implements IPicklistOptionsSource {
 }
 
 /**
- * @ignore
+ * @docs-private
  */
 export class PicklistSettings implements IPicklistSettings {
     public codeIsSignificant = false;

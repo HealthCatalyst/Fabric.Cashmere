@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 
 import {FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOption} from '../pane/picklist-pane.model';
-import {PicklistValueType} from '../picklist.model';
+import {PicklistValueType} from '../picklist-old.model';
 import {WorkTrackerService} from '../../shared/work-tracker.service';
 import {PicklistFilterRemoteService} from './picklist-filter-remote.service';
 import {PicklistFilterLocalService} from './picklist-filter-local.service';

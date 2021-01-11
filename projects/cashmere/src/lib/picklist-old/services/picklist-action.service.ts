@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {FilterableSelectList, isSubList, SelectListOption, ValueListOption, ValueSetListOption} from '../pane/picklist-pane.model';
-import {PicklistService} from './picklist.service';
+import {PicklistOldService} from './picklist-old.service';
 
 @Injectable()
 export class PicklistActionService {
@@ -10,7 +10,7 @@ export class PicklistActionService {
     public get valueSetList(): FilterableSelectList<ValueSetListOption> {
         return this.listService.valueSetList;
     }
-    public constructor(private listService: PicklistService) {}
+    public constructor(private listService: PicklistOldService) {}
 
     public onItemClicked<T extends SelectListOption>(event: MouseEvent, index: number, list: FilterableSelectList<T>, item: T) {
         if (event.shiftKey && list.lastClickedOption && !(item.code === list.lastClickedOption.code)) {

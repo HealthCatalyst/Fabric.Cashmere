@@ -3,48 +3,175 @@
 .hc-picklist {
     @include hc-picklist();
 
-    .pane-wrap {
-        @include hc-picklist-pane-wrap();
+    .hc-picklist-pane-container {
+        @include hc-picklist-pane-container();
     }
-
-    .pane-header {
+    
+    .hc-picklist-pane-header {
         @include hc-picklist-pane-header();
     }
 
-    .pane-header h2 {
-        @include hc-picklist-pane-header-h2();
+    .hc-picklist-pane-header-default {
+        @include hc-picklist-pane-header-default();
     }
 
-    .pane-tabs {
-        @include hc-picklist-pane-tabs();
+    .hc-picklist-max-limit-msg {
+        @include hc-picklist-max-limit-msg();
     }
 
-    .pane-tabs a {
-        @include hc-picklist-pane-tab-link();
+    .hc-picklist-max-limit-exceeded {
+        @include hc-picklist-max-limit-exceeded();
     }
 
-    hc-picklist-pane {
-        @include hc-picklist-pane-outer();
+    .hc-pick-pane, .hc-pick-pane-list {
+        @include hc-pick-pane-container();
     }
 
-    hc-picklist-pane.hide {
-        @include hc-picklist-pane-outer-hide();
+    .hc-picklist-pane-tools {
+        @include hc-picklist-pane-tools();
     }
 
-    .move-btns-wrap {
-        @include hc-picklist-move-btns-wrap();
+    .hc-pick-button-link-inline {
+        @include hc-pick-button-link-inline();
     }
 
-    .move-btns-wrap button {
+    .hc-picklist-move-btns {
+        @include hc-picklist-move-btns();
+    }
+
+    .hc-picklist-move-btn {
         @include hc-picklist-move-btn();
-
-        &[disabled],
-        &[disabled]:hover {
-            @include hc-picklist-move-btn-disabled();
-        }
     }
 
-    .move-btns-wrap .hc-icon {
-        @include hc-picklist-move-btn-icon();
+    .hc-picklist-arrow {
+        @include hc-picklist-arrow();
     }
+
+    .hc-picklist-left-arrow {
+        @include hc-picklist-left-arrow();
+    }
+
+    .hc-picklist-right-arrow {
+        @include hc-picklist-right-arrow();
+    }
+}
+
+.hc-pick-pane {
+    @include hc-pick-pane();
+    
+    .hc-pick-search-outer {
+        @include hc-pick-search-outer();
+    }
+
+    .hc-pick-input-search-suffix {
+        @include hc-pick-input-search-suffix();
+    }
+
+    .hc-pick-input-search {
+        @include hc-pick-input-search();
+    }
+
+    .hc-pick-input-search-clear {
+        @include hc-pick-input-search-clear();
+    }
+
+    .hc-form-field-suffix {
+        @include hc-form-field-suffix();
+    }
+
+    .hc-pick-pane-search-no-toolbar {
+        @include hc-pick-pane-search-no-toolbar();
+    }
+}
+
+.hc-pick-pane-list {
+    @include hc-pick-pane-list();
+
+    &.hc-pane-will-accept-drop {
+        @include hc-pane-will-accept-drop();
+    }
+
+    &.pane-is-active .hc-pick-option-marked {
+        @include hc-pane-is-active-option-marked();
+    }
+
+    .hc-pick-pane-list-scroll-host {
+        @include hc-pick-pane-list-scroll-host();
+    }
+    .hc-pick-pane-list-scrollable-content {
+        @include hc-pick-pane-list-scrollable-content();
+    }
+    .hc-pick-pane-list-scrollable-content-virtual {
+        @include hc-pick-pane-list-scrollable-content-virtual();
+    }
+    .hc-pick-pane-list-total-padding {
+        @include hc-pick-pane-list-total-padding();
+    }
+}
+
+.hc-pick-pane-list-items {
+    @include hc-pick-pane-list-items();
+}
+
+.hc-pick-pane-list-footer {
+    @include hc-pick-pane-list-footer();
+}
+
+.hc-pick-option, .hc-pick-optgroup {
+    @include hc-pick-option-row();
+
+    &.hc-pick-option-selected, &.hc-pick-option-selected.hc-pick-option-marked {
+        @include hc-pick-option-selected();
+    }
+    &:not(.hc-pick-option-disabled):hover {
+        @include hc-pick-option-hover();
+    }
+    &.hc-pick-option-selected:hover {
+        @include hc-pick-option-selected-hover();
+    }
+    &.hc-pick-custom-option.hc-pick-option-marked {
+       @include hc-pick-custom-option-marked();
+    }
+    &.hc-pick-option-hide {
+        @include hc-pick-option-hide();
+    }
+}
+
+.hc-pick-group-icon {
+    @include hc-pick-group-icon();
+
+    &.hc-pick-group-icon-open {
+        @include hc-pick-group-icon-open();
+    }
+}
+
+.hc-pick-option-selected .hc-pick-group-icon {
+    @include hc-pick-group-icon-selected();
+
+    &.hc-pick-group-icon-open {
+        @include hc-pick-group-icon-selected-open();
+    }
+}
+
+.hc-pick-optgroup {
+    @include hc-pick-optgroup()
+}
+
+.hc-pick-option {
+    @include hc-pick-option();
+
+    &.hc-pick-option-disabled {
+        @include hc-pick-option-disabled();
+    }
+    &.hc-pick-option-child {
+        @include hc-pick-option-child();
+    }
+
+    .hc-pick-custom-item-label {
+        @include hc-pick-custom-item-label();
+    }
+}
+
+.hc-pick-empty-msg {
+    @include hc-pick-empty-msg();
 }

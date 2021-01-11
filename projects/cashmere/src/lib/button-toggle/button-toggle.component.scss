@@ -1,0 +1,104 @@
+@import "../sass/button-toggle.scss";
+@import "../sass/button.scss";
+@import "../sass/colors";
+
+.hc-button-toggle-group {
+    @include hc-button-toggle-group();
+}
+
+.hc-button-toggle-group {
+    hc-button-toggle:first-of-type {
+        @include hc-button-toggle-first();
+    }
+
+    hc-button-toggle:last-of-type {
+        @include hc-button-toggle-last();
+    }
+}
+
+.hc-button-toggle {
+    &.hc-primary {
+        @include hc-button-toggle($primary-action);
+    }
+    &.hc-primary-alt {
+        @include hc-button-toggle($primary-alt-action);
+    }
+    &.hc-destructive {
+        @include hc-button-toggle($destructive-action);
+    }
+    &.hc-neutral {
+        @include hc-button-toggle($neutral-action);
+    }
+    &.hc-secondary {
+        @include hc-button-toggle($gray-100);
+        @include hc-button-toggle-secondary();
+    }
+
+    &.hc-sm {
+        @include hc-button-toggle-sm();
+    }
+    &.hc-md {
+        @include hc-button-toggle-md();
+    }
+    &.hc-lg {
+        @include hc-button-toggle-lg();
+    }
+
+    &.hc-button-blue {
+        @include hc-button-toggle($blue);
+    }
+    &.hc-button-green {
+        @include hc-button-toggle($green);
+    }
+    &.hc-button-purple {
+        @include hc-button-toggle($purple);
+    }
+    &.hc-button-red {
+        @include hc-button-toggle($red);
+    }
+    &.hc-button-orange {
+        @include hc-button-toggle($orange);
+    }
+    &.hc-button-ruby-red {
+        @include hc-button-toggle($ruby-red);
+    }
+    &.hc-button-deep-red {
+        @include hc-button-toggle($deep-red);
+    }
+    &.hc-button-red-orange {
+        @include hc-button-toggle($red-orange);
+    }
+    &.hc-button-magenta {
+        @include hc-button-toggle($magenta);
+    }
+    &.hc-button-pink {
+        @include hc-button-toggle($pink);
+    }
+    &.hc-button-light-pink {
+        @include hc-button-toggle($light-pink);
+    }
+    &.hc-button-azure {
+        @include hc-button-toggle($azure);
+    }
+    &.hc-button-teal {
+        @include hc-button-toggle($teal);
+    }
+    &.hc-button-dark-green {
+        @include hc-button-toggle($dark-green);
+    }
+    &.hc-button-brown {
+        @include hc-button-toggle($brown);
+    }
+    &.hc-button-purple-gray {
+        @include hc-button-toggle($purple-gray);
+    }
+    &.hc-button-yellow {
+        @include hc-button-toggle($yellow);
+    }
+    &.hc-button-yellow-orange {
+        @include hc-button-toggle($yellow-orange);
+    }
+    &.hc-button-tan {
+        @include hc-button-toggle($tan);
+    }
+}
