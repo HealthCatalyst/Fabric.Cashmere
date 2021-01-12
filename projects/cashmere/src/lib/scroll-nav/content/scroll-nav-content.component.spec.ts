@@ -134,166 +134,17 @@ describe('HcScrollNavContentComponent', () => {
         testApp.contentComponent._cdkScrollableElement.scrollTo({top: 200});
     }));
 
-    describe('ngOnInit', () => {
-        afterEach(() => {
-            testApp.contentComponent.sectionStyle = '';
-            testApp.contentComponent.sectionHoverStyle = '';
-            testApp.contentComponent.cssRules = '';
-        });
+    it("ngAfterViewInit should throw error if target doesn't have a id", () => {
+        testApp.contentComponent._scrollTargets[0].id = '';
 
-        describe('should throw an error if a style is invalid', () => {
-            it("when style doesn't have ':'", () => {
-                testApp.contentComponent.sectionStyle = 'color pink;';
-
-                let error;
-                try {
-                    testApp.contentComponent.ngOnInit();
-                } catch (e) {
-                    error = e;
-                }
-
-                const expectedError = new Error(`All styles in 'sectionStyle: ${testApp.contentComponent.sectionStyle}' need both ':'s and ';'s. Located in hc-scroll-nav-content.`);
-                expect(error).toEqual(expectedError);
-            });
-
-            it("when style doesn't have ';'", () => {
-                testApp.contentComponent.sectionStyle = 'color: pink';
-
-                let error;
-                try {
-                    testApp.contentComponent.ngOnInit();
-                } catch (e) {
-                    error = e;
-                }
-
-                const expectedError = new Error(`All styles in 'sectionStyle: ${testApp.contentComponent.sectionStyle}' need both ':'s and ';'s. Located in hc-scroll-nav-content.`);
-                expect(error).toEqual(expectedError);
-            });
-
-            it("when style doesn't have equal number of ':' and ';'", () => {
-                testApp.contentComponent.sectionStyle = 'color: pink; color: blue';
-
-                let error;
-                try {
-                    testApp.contentComponent.ngOnInit();
-                } catch (e) {
-                    error = e;
-                }
-
-                const expectedError = new Error(`All styles in 'sectionStyle: ${testApp.contentComponent.sectionStyle}' need both ':'s and ';'s. Located in hc-scroll-nav-content.`);
-                expect(error).toEqual(expectedError);
-            });
-        });
-    });
-
-    describe('ngAfterViewInit', () => {
-        beforeEach(() => {
-            testApp.contentComponent._scrollTargets[0].setAttribute('sectionStyle', '');
-            testApp.contentComponent.sectionStyle = '';
-            testApp.contentComponent._scrollTargets[0].setAttribute('sectionHoverStyle', '');
-            testApp.contentComponent.sectionHoverStyle = '';
-            testApp.contentComponent._scrollTargets[0].setAttribute('cssRules', '');
-            testApp.contentComponent.cssRules = '';
-        });
-
-        it("should throw error if target doesn't have a id", () => {
-            testApp.contentComponent._scrollTargets[0].id = '';
-
-            let error;
-            try {
-                testApp.contentComponent.ngAfterViewInit();
-            } catch (e) {
-                error = e;
-            }
-
-            const expectedError = new Error('hcScrollTarget element needs an id.');
-            expect(error).toEqual(expectedError);
-        });
-
-        describe('should throw an error if a style is invalid', () => {
-            it("when style doesn't have ':'", () => {
-                testApp.contentComponent._scrollTargets[0].setAttribute('sectionStyle', 'color pink;');
-
-                let error;
-                try {
-                    testApp.contentComponent.ngAfterViewInit();
-                } catch (e) {
-                    error = e;
-                }
-
-                const expectedError = new Error(`All styles in 'sectionStyle: ${testApp.contentComponent._scrollTargets[0].getAttribute('sectionStyle')}' need both ':'s and ';'s. Located in a1.`);
-                expect(error).toEqual(expectedError);
-            });
-
-            it("when style doesn't have ';'", () => {
-                testApp.contentComponent._scrollTargets[0].setAttribute('sectionStyle', 'color: pink');
-
-                let error;
-                try {
-                    testApp.contentComponent.ngAfterViewInit();
-                } catch (e) {
-                    error = e;
-                }
-
-                const expectedError = new Error(`All styles in 'sectionStyle: ${testApp.contentComponent._scrollTargets[0].getAttribute('sectionStyle')}' need both ':'s and ';'s. Located in a1.`);
-                expect(error).toEqual(expectedError);
-            });
-
-            it("when style doesn't have equal number of ':' and ';'", () => {
-                testApp.contentComponent._scrollTargets[0].setAttribute('sectionStyle', 'color: pink; color: blue');
-
-                let error;
-                try {
-                    testApp.contentComponent.ngAfterViewInit();
-                } catch (e) {
-                    error = e;
-                }
-
-                const expectedError = new Error(`All styles in 'sectionStyle: ${testApp.contentComponent._scrollTargets[0].getAttribute('sectionStyle')}' need both ':'s and ';'s. Located in a1.`);
-                expect(error).toEqual(expectedError);
-            });
-        });
-    });
-
-    it('css styleSheet should have correct order of styles', () => {
-        testApp.contentComponent._scrollTargets[0].setAttribute('sectionStyle', 'color: pink;');
-        testApp.contentComponent.sectionStyle = 'color: red;';
-        testApp.contentComponent._scrollTargets[0].setAttribute('sectionHoverStyle', 'color: blue;');
-        testApp.contentComponent.sectionHoverStyle = 'color: orange;';
-        testApp.contentComponent._scrollTargets[0].setAttribute('cssRules', 'section { color: green; }');
-        testApp.contentComponent.cssRules = 'section { color: yellow; }';
-        testApp.detectChanges();
-
-        testApp.contentComponent.ngOnInit();
-        testApp.contentComponent.ngAfterViewInit();
-
-        let styleSheet = document.styleSheets[document.styleSheets.length - 1];
-        let rules = (styleSheet as CSSStyleSheet).cssRules;
-        let ruleList: CSSRule[] = [];
-
-        for (let i = 0; i < rules.length; i++) {
-            if (rules[i] instanceof CSSStyleRule) {
-                let cssText = (rules[i] as CSSStyleRule).cssText;
-                if (cssText === 'hc-scroll-nav-content { color: red; }' ||
-                    cssText === 'hc-scroll-nav-content:hover { color: orange; }' ||
-                    cssText === 'section { color: yellow; }' ||
-                    cssText === '[hcscrolllink="#a1"] { color: red; }' ||
-                    cssText === '[hcscrolllink="#a1"]:hover { color: orange; }' ||
-                    cssText === '[hcscrolllink="#a1"] { color: pink; }' ||
-                    cssText === '[hcscrolllink="#a1"]:hover { color: blue; }' ||
-                    cssText === 'section { color: green; }') {
-                        ruleList.push(rules[i]);
-                }
-            }
+        let error;
+        try {
+            testApp.contentComponent.ngAfterViewInit();
+        } catch (e) {
+            error = e;
         }
 
-        expect(ruleList[0].cssText).toEqual('hc-scroll-nav-content { color: red; }');
-        expect(ruleList[1].cssText).toEqual('hc-scroll-nav-content:hover { color: orange; }');
-        expect(ruleList[2].cssText).toEqual('section { color: yellow; }');
-        expect(ruleList[3].cssText).toEqual('[hcscrolllink="#a1"] { color: red; }');
-        expect(ruleList[4].cssText).toEqual('[hcscrolllink="#a1"]:hover { color: orange; }');
-        expect(ruleList[5].cssText).toEqual('[hcscrolllink="#a1"] { color: pink; }');
-        expect(ruleList[6].cssText).toEqual('[hcscrolllink="#a1"]:hover { color: blue; }');
-        expect(ruleList[7].cssText).toEqual('section { color: green; }');
+        const expectedError = new Error('hcScrollTarget element needs an id.');
+        expect(error).toEqual(expectedError);
     });
 });

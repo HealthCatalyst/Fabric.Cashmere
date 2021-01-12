@@ -3,6 +3,8 @@
 
 @mixin hc-scroll-nav-links-container() {
     margin-right: 30px;
+    overflow-y: auto;
+    height: 100%;
 }
 
 @mixin hc-scroll-nav-links-ul() {
