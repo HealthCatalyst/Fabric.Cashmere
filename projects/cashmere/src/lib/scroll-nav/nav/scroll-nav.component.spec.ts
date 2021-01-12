@@ -374,6 +374,8 @@ describe('HcScrollNavComponent', () => {
         testApp.linksComponent._links[a1].setAttribute('parentActiveHoverStyle', 'color: darkslateblue;');
         testApp.linksComponent._links[a1].setAttribute('parentInactiveStyle', 'color: mediumvioletred;');
         testApp.linksComponent._links[a1].setAttribute('parentInactiveHoverStyle', 'color: dodgerblue;');
+        testApp.linksComponent._links[a1].setAttribute('parentBaseStyle', 'color: darkred;');
+        testApp.linksComponent._links[a1].setAttribute('parentBaseHoverStyle', 'color: lightcyan;');
         testApp.linksComponent._links[a1].setAttribute('cssRules', '[hcScrollLink] { color: green; }');
 
         testApp.linksComponent.activeStyle = 'color: deeppink;';
@@ -386,6 +388,8 @@ describe('HcScrollNavComponent', () => {
         testApp.linksComponent.parentActiveHoverStyle = 'color: midnightblue;';
         testApp.linksComponent.parentInactiveStyle = 'color: palevioletred;';
         testApp.linksComponent.parentInactiveHoverStyle = 'color: navy;';
+        testApp.linksComponent.parentBaseStyle = 'color: crimson;';
+        testApp.linksComponent.parentBaseHoverStyle = 'color: darkcyan;';
         testApp.linksComponent.cssRules = '[hcScrollLink] { color: limegreen; }';
 
         testApp.linksComponent.ngOnInit();
@@ -398,12 +402,14 @@ describe('HcScrollNavComponent', () => {
         for (let i = 0; i < rules.length; i++) {
             if (rules[i] instanceof CSSStyleRule) {
                 let cssText = (rules[i] as CSSStyleRule).cssText;
-                if (cssText === `[hcscrolllink].${ACTIVE_CLASS} { color: deeppink; }` ||
+                if (cssText === '[hcscrolllink] { color: lightcoral; }' ||
+                    cssText === '[hcscrolllink]:hover { color: lightskyblue; }' ||
+                    cssText === `[hcscrolllink].${ACTIVE_CLASS} { color: deeppink; }` ||
                     cssText === `[hcscrolllink].${ACTIVE_CLASS}:hover { color: deepskyblue; }` ||
                     cssText === `[hcscrolllink].${INACTIVE_CLASS} { color: fuchsia; }` ||
                     cssText === `[hcscrolllink].${INACTIVE_CLASS}:hover { color: lightblue; }` ||
-                    cssText === '[hcscrolllink] { color: lightcoral; }' ||
-                    cssText === '[hcscrolllink]:hover { color: lightskyblue; }' ||
+                    cssText === `[hcscrolllink].${PARENT_SECTION_CLASS} { color: crimson; }` ||
+                    cssText === `[hcscrolllink].${PARENT_SECTION_CLASS}:hover { color: darkcyan; }` ||
                     cssText === `[hcscrolllink].${ACTIVE_PARENT_SECTION_CLASS} { color: mediumorchid; }` ||
                     cssText === `[hcscrolllink].${ACTIVE_PARENT_SECTION_CLASS}:hover { color: midnightblue; }` ||
                     cssText === `[hcscrolllink].${INACTIVE_PARENT_SECTION_CLASS} { color: palevioletred; }` ||
@@ -421,10 +427,14 @@ describe('HcScrollNavComponent', () => {
                     cssText === `[hcscrolllink="a1"].${INACTIVE_CLASS}:hover { color: cornflowerblue; }` ||
                     cssText === `[hcscrolllink="a1"].${ACTIVE_CLASS}:hover { color: deepskyblue; }` ||
                     cssText === `[hcscrolllink="a1"].${ACTIVE_CLASS}:hover { color: blue; }` ||
+                    cssText === `[hcscrolllink="a1"].${PARENT_SECTION_CLASS} { color: crimson; }` ||
+                    cssText === `[hcscrolllink="a1"].${PARENT_SECTION_CLASS} { color: darkred; }` ||
                     cssText === `[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS} { color: palevioletred; }` ||
                     cssText === `[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS} { color: mediumvioletred; }` ||
                     cssText === `[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS} { color: mediumorchid; }` ||
                     cssText === `[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS} { color: magenta; }` ||
+                    cssText === `[hcscrolllink="a1"].${PARENT_SECTION_CLASS}:hover { color: darkcyan; }` ||
+                    cssText === `[hcscrolllink="a1"].${PARENT_SECTION_CLASS}:hover { color: lightcyan; }` ||
                     cssText === `[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS}:hover { color: navy; }` ||
                     cssText === `[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS}:hover { color: dodgerblue; }` ||
                     cssText === `[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS}:hover { color: midnightblue; }` ||
@@ -436,37 +446,43 @@ describe('HcScrollNavComponent', () => {
             }
         }
 
-        expect(ruleList[0].cssText).toEqual(`[hcscrolllink].${ACTIVE_CLASS} { color: deeppink; }`);
-        expect(ruleList[1].cssText).toEqual(`[hcscrolllink].${ACTIVE_CLASS}:hover { color: deepskyblue; }`);
-        expect(ruleList[2].cssText).toEqual(`[hcscrolllink].${INACTIVE_CLASS} { color: fuchsia; }`);
-        expect(ruleList[3].cssText).toEqual(`[hcscrolllink].${INACTIVE_CLASS}:hover { color: lightblue; }`);
-        expect(ruleList[4].cssText).toEqual('[hcscrolllink] { color: lightcoral; }');
-        expect(ruleList[5].cssText).toEqual('[hcscrolllink]:hover { color: lightskyblue; }');
-        expect(ruleList[6].cssText).toEqual(`[hcscrolllink].${ACTIVE_PARENT_SECTION_CLASS} { color: mediumorchid; }`);
-        expect(ruleList[7].cssText).toEqual(`[hcscrolllink].${ACTIVE_PARENT_SECTION_CLASS}:hover { color: midnightblue; }`);
-        expect(ruleList[8].cssText).toEqual(`[hcscrolllink].${INACTIVE_PARENT_SECTION_CLASS} { color: palevioletred; }`);
-        expect(ruleList[9].cssText).toEqual(`[hcscrolllink].${INACTIVE_PARENT_SECTION_CLASS}:hover { color: navy; }`);
-        expect(ruleList[10].cssText).toEqual('[hcscrolllink] { color: limegreen; }');
-        expect(ruleList[11].cssText).toEqual('[hcscrolllink="a1"] { color: lightcoral; }');
-        expect(ruleList[12].cssText).toEqual('[hcscrolllink="a1"] { color: lightpink; }');
-        expect(ruleList[13].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_CLASS} { color: fuchsia; }`);
-        expect(ruleList[14].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_CLASS} { color: hotpink; }`);
-        expect(ruleList[15].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_CLASS} { color: deeppink; }`);
-        expect(ruleList[16].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_CLASS} { color: pink; }`);
-        expect(ruleList[17].cssText).toEqual('[hcscrolllink="a1"]:hover { color: lightskyblue; }');
-        expect(ruleList[18].cssText).toEqual('[hcscrolllink="a1"]:hover { color: darkblue; }');
-        expect(ruleList[19].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_CLASS}:hover { color: lightblue; }`);
-        expect(ruleList[20].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_CLASS}:hover { color: cornflowerblue; }`);
-        expect(ruleList[21].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_CLASS}:hover { color: deepskyblue; }`);
-        expect(ruleList[22].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_CLASS}:hover { color: blue; }`);
-        expect(ruleList[23].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS} { color: palevioletred; }`);
-        expect(ruleList[24].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS} { color: mediumvioletred; }`);
-        expect(ruleList[25].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS} { color: mediumorchid; }`);
-        expect(ruleList[26].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS} { color: magenta; }`);
-        expect(ruleList[27].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS}:hover { color: navy; }`);
-        expect(ruleList[28].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS}:hover { color: dodgerblue; }`);
-        expect(ruleList[29].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS}:hover { color: midnightblue; }`);
-        expect(ruleList[30].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS}:hover { color: darkslateblue; }`);
-        expect(ruleList[31].cssText).toEqual('[hcscrolllink] { color: green; }');
+        expect(ruleList[0].cssText).toEqual('[hcscrolllink] { color: lightcoral; }');
+        expect(ruleList[1].cssText).toEqual('[hcscrolllink]:hover { color: lightskyblue; }');
+        expect(ruleList[2].cssText).toEqual(`[hcscrolllink].${ACTIVE_CLASS} { color: deeppink; }`);
+        expect(ruleList[3].cssText).toEqual(`[hcscrolllink].${ACTIVE_CLASS}:hover { color: deepskyblue; }`);
+        expect(ruleList[4].cssText).toEqual(`[hcscrolllink].${INACTIVE_CLASS} { color: fuchsia; }`);
+        expect(ruleList[5].cssText).toEqual(`[hcscrolllink].${INACTIVE_CLASS}:hover { color: lightblue; }`);
+        expect(ruleList[6].cssText).toEqual(`[hcscrolllink].${PARENT_SECTION_CLASS} { color: crimson; }`);
+        expect(ruleList[7].cssText).toEqual(`[hcscrolllink].${PARENT_SECTION_CLASS}:hover { color: darkcyan; }`);
+        expect(ruleList[8].cssText).toEqual(`[hcscrolllink].${ACTIVE_PARENT_SECTION_CLASS} { color: mediumorchid; }`);
+        expect(ruleList[9].cssText).toEqual(`[hcscrolllink].${ACTIVE_PARENT_SECTION_CLASS}:hover { color: midnightblue; }`);
+        expect(ruleList[10].cssText).toEqual(`[hcscrolllink].${INACTIVE_PARENT_SECTION_CLASS} { color: palevioletred; }`);
+        expect(ruleList[11].cssText).toEqual(`[hcscrolllink].${INACTIVE_PARENT_SECTION_CLASS}:hover { color: navy; }`);
+        expect(ruleList[12].cssText).toEqual('[hcscrolllink] { color: limegreen; }');
+        expect(ruleList[13].cssText).toEqual('[hcscrolllink="a1"] { color: lightcoral; }');
+        expect(ruleList[14].cssText).toEqual('[hcscrolllink="a1"] { color: lightpink; }');
+        expect(ruleList[15].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_CLASS} { color: fuchsia; }`);
+        expect(ruleList[16].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_CLASS} { color: hotpink; }`);
+        expect(ruleList[17].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_CLASS} { color: deeppink; }`);
+        expect(ruleList[18].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_CLASS} { color: pink; }`);
+        expect(ruleList[19].cssText).toEqual('[hcscrolllink="a1"]:hover { color: lightskyblue; }');
+        expect(ruleList[20].cssText).toEqual('[hcscrolllink="a1"]:hover { color: darkblue; }');
+        expect(ruleList[21].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_CLASS}:hover { color: lightblue; }`);
+        expect(ruleList[22].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_CLASS}:hover { color: cornflowerblue; }`);
+        expect(ruleList[23].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_CLASS}:hover { color: deepskyblue; }`);
+        expect(ruleList[24].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_CLASS}:hover { color: blue; }`);
+        expect(ruleList[25].cssText).toEqual(`[hcscrolllink="a1"].${PARENT_SECTION_CLASS} { color: crimson; }`);
+        expect(ruleList[26].cssText).toEqual(`[hcscrolllink="a1"].${PARENT_SECTION_CLASS} { color: darkred; }`);
+        expect(ruleList[27].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS} { color: palevioletred; }`);
+        expect(ruleList[28].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS} { color: mediumvioletred; }`);
+        expect(ruleList[29].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS} { color: mediumorchid; }`);
+        expect(ruleList[30].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS} { color: magenta; }`);
+        expect(ruleList[31].cssText).toEqual(`[hcscrolllink="a1"].${PARENT_SECTION_CLASS}:hover { color: darkcyan; }`);
+        expect(ruleList[32].cssText).toEqual(`[hcscrolllink="a1"].${PARENT_SECTION_CLASS}:hover { color: lightcyan; }`);
+        expect(ruleList[33].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS}:hover { color: navy; }`);
+        expect(ruleList[34].cssText).toEqual(`[hcscrolllink="a1"].${INACTIVE_PARENT_SECTION_CLASS}:hover { color: dodgerblue; }`);
+        expect(ruleList[35].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS}:hover { color: midnightblue; }`);
+        expect(ruleList[36].cssText).toEqual(`[hcscrolllink="a1"].${ACTIVE_PARENT_SECTION_CLASS}:hover { color: darkslateblue; }`);
+        expect(ruleList[37].cssText).toEqual('[hcscrolllink] { color: green; }');
     });
 });

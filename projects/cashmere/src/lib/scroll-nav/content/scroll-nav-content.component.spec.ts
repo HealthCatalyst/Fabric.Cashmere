@@ -114,20 +114,25 @@ describe('HcScrollNavContentComponent', () => {
         expect(testApp.contentComponent._scrollTargets[0].classList.contains('hc-scroll-nav-target')).toBeTruthy();
         expect(testApp.contentComponent._scrollTargets[1].classList.contains('hc-scroll-nav-target')).toBeTruthy();
         expect(testApp.contentComponent._scrollTargets[2].classList.contains('hc-scroll-nav-target')).toBeTruthy();
+        expect(testApp.contentComponent._scrollTargets[3].classList.contains('hc-scroll-nav-target')).toBeTruthy();
+        expect(testApp.contentComponent._scrollTargets[4].classList.contains('hc-scroll-nav-target')).toBeTruthy();
+        expect(testApp.contentComponent._scrollTargets[5].classList.contains('hc-scroll-nav-target')).toBeTruthy();
+        expect(testApp.contentComponent._scrollTargets[6].classList.contains('hc-scroll-nav-target')).toBeTruthy();
+        expect(testApp.contentComponent._scrollTargets[7].classList.contains('hc-scroll-nav-target')).toBeTruthy();
     });
 
-    it('should call _setActiveSectionById in nav when scrolling', () => {
+    it('should call _setActiveSectionById in nav when scrolling', waitForAsync(() => {
         let setActiveSectionSpy: jasmine.Spy = spyOn(testApp.contentComponent.nav, '_setActiveSectionById');
 
         testApp.contentComponent._cdkScrollableElement
             .elementScrolled()
             .pipe(take(1))
             .subscribe(() => {
-                expect(setActiveSectionSpy).toHaveBeenCalled();
+                expect(setActiveSectionSpy).toHaveBeenCalledWith();
             });
 
-        testApp.contentComponent._cdkScrollableElement.scrollTo({top: 2000});
-    });
+        testApp.contentComponent._cdkScrollableElement.scrollTo({top: 200});
+    }));
 
     describe('ngOnInit', () => {
         afterEach(() => {

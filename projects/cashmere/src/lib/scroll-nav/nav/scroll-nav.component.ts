@@ -29,6 +29,10 @@ export class HcScrollNavComponent implements OnInit, AfterViewInit {
     @Input() public parentInactiveStyle = '';
     /** Hover style that applies to all inactive parent links links through css* */
     @Input() public parentInactiveHoverStyle = '';
+    /** Style that applies to all parent links through css* */
+    @Input() public parentBaseStyle = '';
+    /** Hover style that applies to all parent links through css* */
+    @Input() public parentBaseHoverStyle = '';
     /** Adds a css rule to stylesheet* */
     @Input() public cssRules = '';
 
@@ -180,7 +184,16 @@ export class HcScrollNavComponent implements OnInit, AfterViewInit {
             const parentActiveStyle = isHover ? element.getAttribute('parentActiveHoverStyle') : element.getAttribute('parentActiveStyle');
             const generalParentInactiveStyle = isHover ? this.parentInactiveHoverStyle : this.parentInactiveStyle;
             const parentInactiveStyle = isHover ? element.getAttribute('parentInactiveHoverStyle') : element.getAttribute('parentInactiveStyle');
+            const generalParentBaseStyle = isHover ? this.parentBaseHoverStyle : this.parentBaseStyle;
+            const parentBaseStyle = isHover ? element.getAttribute('parentBaseHoverStyle') : element.getAttribute('parentBaseStyle');
             const linkTargetId = element.getAttribute('hcScrollLink');
+
+            if (generalParentBaseStyle) {
+                this.setCssRulesForLink(linkTargetId, generalParentBaseStyle, isHover, `.${this.PARENT_SECTION_CLASS}`);
+            }
+            if (parentBaseStyle) {
+                this.setCssRulesForLink(linkTargetId, parentBaseStyle, isHover, `.${this.PARENT_SECTION_CLASS}`);
+            }
 
             if (generalParentInactiveStyle) {
                 this.setCssRulesForLink(linkTargetId, generalParentInactiveStyle, isHover, `.${this.INACTIVE_PARENT_SECTION_CLASS}`);
@@ -198,21 +211,6 @@ export class HcScrollNavComponent implements OnInit, AfterViewInit {
         }
     }
 
-    private setBaseStyle(element: HTMLElement, isHover: boolean): void {
-        const linkTargetId = element.getAttribute('hcScrollLink');
-        const sectionBaseStyle = isHover ? element.getAttribute('baseHoverStyle') : element.getAttribute('baseStyle');
-
-        if (sectionBaseStyle) {
-            let cssDecorator = `[hcscrolllink='${linkTargetId}']`;
-
-            if (isHover) {
-                cssDecorator += ':hover';
-            }
-
-            this.setCssRules(`${cssDecorator} { ${sectionBaseStyle} }`);
-        }
-    }
-
     private handleLinkStyle(element: HTMLElement, isHover: boolean): void {
         const generalActiveStyle = isHover ? this.activeHoverStyle : this.activeStyle;
         const linkActiveStyle = isHover ? element.getAttribute('activeHoverStyle') : element.getAttribute('activeStyle');
@@ -221,8 +219,6 @@ export class HcScrollNavComponent implements OnInit, AfterViewInit {
         const generalBaseStyle = isHover ? this.baseHoverStyle : this.baseStyle;
         const linkBaseStyle = isHover ? element.getAttribute('baseHoverStyle') : element.getAttribute('baseStyle');
         const linkTargetId = element.getAttribute('hcScrollLink');
-
-        this.setBaseStyle(element, isHover);
 
         if (generalBaseStyle) {
             this.setCssRulesForLink(linkTargetId, generalBaseStyle, isHover);
@@ -265,12 +261,14 @@ export class HcScrollNavComponent implements OnInit, AfterViewInit {
     }
 
     private setCssForLinkParameters(): void  {
+        this.setCssRulesForAllLinks(this.baseStyle, false);
+        this.setCssRulesForAllLinks(this.baseHoverStyle, true);
         this.setCssRulesForAllLinks(this.activeStyle, false, `.${this.ACTIVE_CLASS}`);
         this.setCssRulesForAllLinks(this.activeHoverStyle, true, `.${this.ACTIVE_CLASS}`);
         this.setCssRulesForAllLinks(this.inactiveStyle, false, `.${this.INACTIVE_CLASS}`);
         this.setCssRulesForAllLinks(this.inactiveHoverStyle, true, `.${this.INACTIVE_CLASS}`);
-        this.setCssRulesForAllLinks(this.baseStyle, false);
-        this.setCssRulesForAllLinks(this.baseHoverStyle, true);
+        this.setCssRulesForAllLinks(this.parentBaseStyle, false, `.${this.PARENT_SECTION_CLASS}`);
+        this.setCssRulesForAllLinks(this.parentBaseHoverStyle, true, `.${this.PARENT_SECTION_CLASS}`);
         this.setCssRulesForAllLinks(this.parentActiveStyle, false, `.${this.ACTIVE_PARENT_SECTION_CLASS}`);
         this.setCssRulesForAllLinks(this.parentActiveHoverStyle, true, `.${this.ACTIVE_PARENT_SECTION_CLASS}`);
         this.setCssRulesForAllLinks(this.parentInactiveStyle, false, `.${this.INACTIVE_PARENT_SECTION_CLASS}`);
@@ -321,6 +319,8 @@ export class HcScrollNavComponent implements OnInit, AfterViewInit {
         this.verifyStyle(this.parentActiveHoverStyle, 'parentActiveHoverStyle', 'hc-scroll-nav');
         this.verifyStyle(this.parentInactiveStyle, 'parentInactiveStyle', 'hc-scroll-nav');
         this.verifyStyle(this.parentInactiveHoverStyle, 'parentInactiveHoverStyle', 'hc-scroll-nav');
+        this.verifyStyle(this.parentBaseStyle, 'parentBaseStyle', 'hc-scroll-nav');
+        this.verifyStyle(this.parentBaseHoverStyle, 'parentBaseHoverStyle', 'hc-scroll-nav');
     }
 
     private verifyLinkStyles(link: HTMLElement) {
@@ -334,6 +334,8 @@ export class HcScrollNavComponent implements OnInit, AfterViewInit {
         this.verifyLinkStyle(link, 'parentActiveHoverStyle');
         this.verifyLinkStyle(link, 'parentInactiveStyle');
         this.verifyLinkStyle(link, 'parentInactiveHoverStyle');
+        this.verifyLinkStyle(link, 'parentBaseStyle');
+        this.verifyLinkStyle(link, 'parentBaseHoverStyle');
     }
 
     private verifyLinkStyle(link: HTMLElement, styleName: string) {
