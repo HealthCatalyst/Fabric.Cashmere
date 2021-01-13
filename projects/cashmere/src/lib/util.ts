@@ -2,7 +2,7 @@ import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 export function parseBooleanAttribute(value: boolean | string): boolean {
-    if(value === null || value === undefined){
+    if (value === null || value === undefined) {
         return false;
     }
     if (typeof value === 'boolean') {
