@@ -4,6 +4,7 @@ import {ContentComponent} from './content.component';
 import {LogoDemoComponent} from './logo/logo-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
 import {MarkdownContentComponent} from './markdown-content.component';
+import {UsageComponent} from './usage/usage.component';
 
 const routes: Routes = [
     {
@@ -28,6 +29,11 @@ const routes: Routes = [
                     category: 'Branding',
                     document: require('raw-loader!../../../guides/content/trademarks.md')
                 }
+            },
+            {
+                path: 'usage',
+                component: UsageComponent,
+                data: {title: 'Usage', category: 'Branding'}
             },
             {
                 path: '**',
