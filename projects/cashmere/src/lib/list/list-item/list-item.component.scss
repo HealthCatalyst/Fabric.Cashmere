@@ -1,49 +1,26 @@
-// TODO: Go over styling with Andrew Frueh
+@import '../../sass/list.scss';
 
 .hc-list-item {
-    display: block;
-    height: 56px;
-    color: rgba(0, 0, 0, 0.87);
-    font-size: 16px;
+    @include hc-list-item();
 }
 
 .hc-list-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: inherit;
-    padding: 0 12px;
+    @include hc-list-content();
 }
 
 .hc-list-text {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding-left: 16px;
+    @include hc-list-text();
 }
 
 .hc-list-icon,
 .hc-list-avatar {
-    font-size: 24px;
-    width: 24px;
-    height: 24px;
-    padding: 4px;
+    @include hc-list-icon();
 }
 
 .hc-list-avatar {
-    border-radius: 50%;
+    @include hc-list-avatar();
 }
 
-.hc-list {
-    .hc-list-line {
-        display: block;
-        padding: 0;
-        margin: 0;
-        font-weight: 400;
-        font-size: inherit;
-
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.hc-list-line {
+    @include hc-list-line();
 }

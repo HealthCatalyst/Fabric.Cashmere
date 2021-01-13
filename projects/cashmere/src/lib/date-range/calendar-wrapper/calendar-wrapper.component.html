@@ -1,0 +1,28 @@
+<div class="form-container">
+    <hc-form-field class="hc-calendar-wrapper-form-field">
+        <hc-label [innerText]="prefixLabel"></hc-label>
+        <input
+            hcInput
+            hcDatepicker
+            [(ngModel)]="selectedDate"
+            required
+            (dateChange)="_onInputChange($event)"
+            [min]="minDate"
+            [max]="maxDate"
+            [_mode]="mode"
+            [_hourCycle]="hourCycle"
+        />
+        <hc-error [innerText]="invalidDateLabel"></hc-error>
+    </hc-form-field>
+</div>
+<hc-calendar
+    [mode]="mode"
+    [hourCycle]="hourCycle"
+    [startAt]="selectedDate"
+    [selected]="selectedDate"
+    [minDate]="minDate"
+    [maxDate]="maxDate"
+    (selectedChange)="_onCalendarChange($event)"
+    [dateFilter]="configStore.weekendFilter"
+>
+</hc-calendar>

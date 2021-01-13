@@ -9,4 +9,7 @@
     <ng-content></ng-content>
   </button>
 
-  <div [ngClass]="{'hc-sort-header-asc': _getArrowDirectionState() === 'active-asc', 'hc-sort-header-desc': _getArrowDirectionState() === 'active-desc', 'hc-sort-header-off': !_isSorted() }"></div>
+  <div class="hc-sort-header-icon" [ngClass]="{'hc-sort-header-asc': _getArrowDirectionState() === 'active-asc', 'hc-sort-header-desc': _getArrowDirectionState() === 'active-desc', 'hc-sort-header-off': !_isSorted() }"></div>
+</div>
+
+<ng-content select="hc-cell-resizer"></ng-content>

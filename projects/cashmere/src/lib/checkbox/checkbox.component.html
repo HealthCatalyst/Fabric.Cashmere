@@ -1,11 +1,10 @@
-<div class="hc-checkbox-container">
-    <div class="hc-checkbox-content">
+<div class="hc-checkbox-container" [class.hc-checkbox-stub]="isStub">
+    <div class="hc-checkbox-content" [class.hc-checkbox-tight]="tight" [ngClass]="'hc-checkbox-align-'+align">
         <input #checkboxInput
                type="checkbox"
                [id]="_inputId"
                [attr.value]="value"
                [attr.name]="name"
-               [tabIndex]="tabIndex"
                [indeterminate]="indeterminate"
                [disabled]="disabled"
                [required]="required"
@@ -13,8 +12,8 @@
                (change)="_stopChangeEvent($event)"
                (click)="_clickEvent($event)"
                (blur)="_onBlur()"/>
-        <label class="hc-checkbox-overlay" [attr.for]="_inputId"></label>
-        <label class="hc-checkbox-label" [attr.for]="_inputId">
+        <label class="hc-checkbox-overlay" [attr.for]="_inputId" [tabIndex]="tabIndex" (keydown.space)="_clickEvent($event); $event.preventDefault();"></label>
+        <label class="hc-checkbox-label" [ngClass]="'hc-checkbox-align-label-'+align" [attr.for]="_inputId">
             <ng-content></ng-content>
         </label>
     </div>

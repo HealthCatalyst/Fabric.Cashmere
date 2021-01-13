@@ -1,26 +1,6 @@
-import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
-import {Initailizable} from '../shared/initializable';
-
-const DEFAULT_PAGE_SIZE = 20;
-
-/**
- * Change event object that is emitted when the user selects a
- * different page size or navigates to another page.
- */
-export class PageEvent {
-    /** The current page index */
-    pageNumber: number;
-
-    /** Index of the page that was selected previously */
-    previousPageNumber?: number;
-
-    /** The current page size */
-    pageSize: number;
-
-    /** The current total number of items being paged */
-    length: number;
-}
+import {BasePaginationComponent} from './base-pagination';
 
 /** The pagination control enables the user to navigate across paged content.
  * Although commonly used with tables and data grids, this control may be used any place where paged data is used.
@@ -28,45 +8,11 @@ export class PageEvent {
 @Component({
     selector: 'hc-pagination',
     templateUrl: './pagination.component.html',
-    styleUrls: ['./pagination.component.scss']
+    styleUrls: ['./pagination.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
-export class PaginationComponent extends Initailizable implements OnInit {
-    /**
-     * The total number of items to be paged through
-     */
-    @Input()
-    get length(): number {
-        return this._length;
-    }
-    set length(value: number) {
-        this._length = coerceNumberProperty(value);
-    }
-    private _length: number = 0;
-
-    /** The currently displayed page. *Defaulted to 1.* */
-    @Input()
-    get pageNumber(): number {
-        return this._pageNumber;
-    }
-    set pageNumber(value: number) {
-        const prevPageNumber = this._pageNumber;
-        this._pageNumber = this._sanitizePageNumber(value);
-        this._emitPageEvent(prevPageNumber);
-    }
-    private _pageNumber: number = 1;
-
-    /** Number of items to display on a page. *By default set to 20.* */
-    @Input()
-    get pageSize(): number {
-        return this._pageSize;
-    }
-    set pageSize(value: number) {
-        this._pageSize = coerceNumberProperty(value);
-        this._updateDisplayedPageSizeOptions();
-    }
-    private _pageSize: number = 20;
-
-    /** The set of provided page size options to display to the user. */
+export class PaginationComponent extends BasePaginationComponent implements OnInit {
+    /** The set of provided page size options to display to the user. *Defaults to [10, 20, 50].* */
     @Input()
     get pageSizeOptions(): number[] {
         return this._pageSizeOptions;
@@ -77,8 +23,15 @@ export class PaginationComponent extends Initailizable implements OnInit {
     }
     private _pageSizeOptions: number[] = [10, 20, 50];
 
+    isFocused: boolean = false;
+
     /** Displayed set of page size options. Will be sorted and include current page size. */
     _displayedPageSizeOptions: number[] = [];
+
+    /** Sets the controller to a specific width type - `lg`, `md`, or `sm`. Typically adjusted in a window
+     * resize listener for responsive layouts. *Defaults to lg.* */
+    @Input()
+    displayWidth: 'lg' | 'md' | 'sm' = 'lg';
 
     /** Whether to hide the page size selection UI from the user. *Defaults to false.* */
     @Input()
@@ -90,28 +43,9 @@ export class PaginationComponent extends Initailizable implements OnInit {
     }
     private _hidePageSize = false;
 
-    /** Event emitted when the paginator changes the page size or page index. */
-    @Output()
-    readonly page: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
-
     ngOnInit() {
         this._updateDisplayedPageSizeOptions();
-        this._markInitialized();
-    }
-
-    /**
-     * The computed total number of pages
-     */
-    get totalPages(): number {
-        return Math.ceil(this._length / this._pageSize);
-    }
-
-    get _isFirstPage() {
-        return this._pageNumber === 1;
-    }
-
-    get _isLastPage() {
-        return !!(this.totalPages && this._pageNumber === this.totalPages);
+        super.ngOnInit();
     }
 
     get _visiblePages(): Array<number | null> {
@@ -141,7 +75,7 @@ export class PaginationComponent extends Initailizable implements OnInit {
          * Otherwise, display 1, 2, ..., p-1, p, p+1, ..., n-1, n
          */
         const n = this.totalPages;
-        const p = this._pageNumber || 1;
+        const p = this.pageNumber || 1;
 
         if (p < 6) {
             return [1, 2, 3, 4, 5, 6, null, n - 1, n];
@@ -179,7 +113,7 @@ export class PaginationComponent extends Initailizable implements OnInit {
          * Otherwise, display 1, ..., p, ..., n
          */
         const n = this.totalPages;
-        const p = this._pageNumber || 1;
+        const p = this.pageNumber || 1;
 
         if (p < 4) {
             return [1, 2, 3, null, n];
@@ -190,11 +124,15 @@ export class PaginationComponent extends Initailizable implements OnInit {
         }
     }
 
+    _pageSizeUpdated() {
+        this._updateDisplayedPageSizeOptions();
+    }
+
     _previousPage() {
         if (this._isFirstPage) {
             return;
         }
-        this._goToPage((this._pageNumber || 1) - 1);
+        this._goToPage((this.pageNumber || 1) - 1);
     }
 
     _goToPage(pageNum: number) {
@@ -205,7 +143,7 @@ export class PaginationComponent extends Initailizable implements OnInit {
         if (this._isLastPage) {
             return;
         }
-        this._goToPage((this._pageNumber || 1) + 1);
+        this._goToPage((this.pageNumber || 1) + 1);
     }
 
     /**
@@ -231,7 +169,7 @@ export class PaginationComponent extends Initailizable implements OnInit {
     private _updateDisplayedPageSizeOptions() {
         // If no page size is provided, use the first page size option or the default page size.
         if (!this.pageSize) {
-            this._pageSize = this.pageSizeOptions.length !== 0 ? this.pageSizeOptions[0] : DEFAULT_PAGE_SIZE;
+            this.pageSize = this.pageSizeOptions.length !== 0 ? this.pageSizeOptions[0] : BasePaginationComponent._DEFAULT_PAGE_SIZE;
         }
 
         this._displayedPageSizeOptions = this.pageSizeOptions.slice();
@@ -241,19 +179,5 @@ export class PaginationComponent extends Initailizable implements OnInit {
 
         // Sort the numbers using a number-specific sort function.
         this._displayedPageSizeOptions.sort((a, b) => a - b);
-    }
-
-    private _sanitizePageNumber(pageNumber: any): number {
-        const number = Math.max(coerceNumberProperty(pageNumber), 1);
-        return number > this.totalPages ? this.totalPages : number;
-    }
-
-    private _emitPageEvent(previousPageNumber: number) {
-        this.page.emit({
-            previousPageNumber,
-            pageNumber: this.pageNumber,
-            pageSize: this.pageSize,
-            length: this.length
-        });
     }
 }

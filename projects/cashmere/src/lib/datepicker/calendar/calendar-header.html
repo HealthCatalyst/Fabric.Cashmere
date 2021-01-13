@@ -1,0 +1,57 @@
+<div *ngIf="calendar.mode!=='time'" class="hc-calendar-header">
+    <div class="hc-calendar-controls">
+        <button
+            hc-button
+            buttonStyle="link"
+            type="button"
+            class="hc-calendar-today-button hc-calendar-control-button"
+            (click)="_todayClicked()"
+            [disabled]="!_todayEnabled()"
+            [attr.aria-label]="_todayButtonLabel"
+            [title]="_todayButtonLabel"
+        >
+            Today
+        </button>
+
+        <span>
+            <button
+                hc-button
+                buttonStyle="link"
+                type="button"
+                class="hc-calendar-previous-button hc-calendar-control-button"
+                [disabled]="!previousEnabled()"
+                (click)="previousClicked()"
+                [attr.aria-label]="prevButtonLabel"
+                [title]="prevButtonLabel"
+            ></button>
+            <span class="hc-calendar-month-label">
+                {{ monthButtonText }}
+            </span>
+            <button
+                hc-button
+                buttonStyle="link"
+                type="button"
+                class="hc-calendar-next-button hc-calendar-control-button"
+                [disabled]="!nextEnabled()"
+                (click)="nextClicked()"
+                [attr.aria-label]="nextButtonLabel"
+                [title]="nextButtonLabel"
+            ></button>
+        </span>
+
+        <ng-content></ng-content>
+
+        <button
+            hc-button
+            buttonStyle="link"
+            type="button"
+            class="hc-calendar-period-button hc-calendar-control-button"
+            (click)="currentPeriodClicked()"
+            [attr.aria-label]="periodButtonLabel"
+            [title]="periodButtonLabel"
+        >
+            {{ periodButtonText }}
+            <div class="hc-calendar-dropdown-caret" [class.hc-calendar-dropdown-caret-invert]="calendar.currentView != 'month'"></div>
+        </button>
+    </div>
+</div>

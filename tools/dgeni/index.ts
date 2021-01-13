@@ -1,25 +1,25 @@
 /*
-* The MIT License
-*
-* Copyright (c) 2018 Google LLC.
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
+ * The MIT License
+ *
+ * Copyright (c) 2018 Google LLC.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 import {Package} from 'dgeni';
@@ -34,7 +34,7 @@ import {TsParser} from 'dgeni-packages/typescript/services/TsParser';
 import {sync as globSync} from 'glob';
 import * as path from 'path';
 
-// Dgeni packages that the Material docs package depends on.
+// Dgeni packages that the Cashmere docs package depends on.
 const jsdocPackage = require('dgeni-packages/jsdoc');
 const nunjucksPackage = require('dgeni-packages/nunjucks');
 const typescriptPackage = require('dgeni-packages/typescript');
@@ -45,11 +45,11 @@ const sourceDir = path.resolve(projectRootDir, 'projects/cashmere/src');
 const outputDir = path.resolve(projectRootDir, 'dist/docs/api');
 const templateDir = path.resolve(__dirname, './templates');
 
-/** List of Material packages that need to be documented. */
-const materialPackages = globSync(path.join(sourceDir, 'lib', '*/')).map(packagePath => path.basename(packagePath));
+/** List of Cashmere packages that need to be documented. */
+const cashmerePackages = globSync(path.join(sourceDir, 'lib', '*/')).map(packagePath => path.basename(packagePath));
 
 /**
- * Dgeni package for the Angular Material docs. This just defines the package, but doesn't
+ * Dgeni package for the Cashmere API docs. This just defines the package, but doesn't
  * generate the docs yet.
  *
  * Dgeni packages are very similar to AngularJS modules. Those can contain:
@@ -61,7 +61,7 @@ const materialPackages = globSync(path.join(sourceDir, 'lib', '*/')).map(package
  * Similar to AngularJS, there is also a `config` lifecycle hook, that can be used to
  * configure specific processors, services before the procession begins.
  */
-export const apiDocsPackage = new Package('material2-api-docs', [jsdocPackage, nunjucksPackage, typescriptPackage]);
+export const apiDocsPackage = new Package('cashmere-api-docs', [jsdocPackage, nunjucksPackage, typescriptPackage]);
 
 // Processor that filters out duplicate exports that should not be shown in the docs.
 apiDocsPackage.processor(new FilterDuplicateExports());
@@ -116,7 +116,7 @@ apiDocsPackage.config((readTypeScriptModules: ReadTypeScriptModules, tsParser: T
 
     const typescriptPathMap: any = {};
 
-    materialPackages.forEach(packageName => {
+    cashmerePackages.forEach(packageName => {
         typescriptPathMap[`@healthcatalyst/cashmere`] = [`./lib/${packageName}/index.ts`];
     });
 
@@ -127,7 +127,7 @@ apiDocsPackage.config((readTypeScriptModules: ReadTypeScriptModules, tsParser: T
 
     // Entry points for docs generation. All publicly exported symbols found through these
     // files will have docs generated.
-    readTypeScriptModules.sourceFiles = [...materialPackages.map(packageName => `./lib/${packageName}/index.ts`)];
+    readTypeScriptModules.sourceFiles = [...cashmerePackages.map(packageName => `./lib/${packageName}/index.ts`)];
 });
 
 // Configure processor for finding nunjucks templates.

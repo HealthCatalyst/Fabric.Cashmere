@@ -1,0 +1,58 @@
+@import '~@healthcatalyst/cashmere/scss/colors';
+
+.example-column {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 50px;
+    width: 33%;
+}
+
+@media only screen and (max-width: 576px) {
+    .example-column {
+        margin-right: 0;
+        width: 100%;
+    }
+}
+
+.example-field {
+    width: 100%;
+    display: block;
+}
+
+.example-field-half {
+    width: 45%;
+    display: inline-block;
+}
+
+.right-margin {
+    margin-right: 10%;
+}
+
+.button-row {
+    display: block;
+    width: 100%;
+}
+
+.progress-row {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.progress-input {
+    width: 130px;
+}
+
+.custom-toast {
+    border-radius: 5px;
+    background-color: $pink;
+    color: white;
+    padding: 0 20px;
+    height: 180px;
+    font-style: italic;
+    text-align: center;
+}
+
+.spinner-container {
+    height: 78%;
+}

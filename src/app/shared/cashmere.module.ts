@@ -1,11 +1,15 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import {
     AccordionModule,
     AppSwitcherModule,
     BreadcrumbsModule,
+    BannerModule,
     ButtonModule,
+    ButtonToggleModule,
     CheckboxModule,
     ChipModule,
+    DatepickerModule,
+    DateRangeModule,
     DrawerModule,
     FormFieldModule,
     IconModule,
@@ -15,26 +19,35 @@ import {
     NavbarModule,
     PaginationModule,
     PicklistModule,
-    PopoverModule,
+    PipesModule,
+    PopModule,
     ProgressIndicatorsModule,
     RadioButtonModule,
+    ScrollNavModule,
     SelectModule,
+    SortModule,
+    StepperModule,
     SubnavModule,
     TabsModule,
+    TableModule,
     TileModule,
+    ToasterModule,
     TypeformSurveyModule
 } from '@healthcatalyst/cashmere';
-import {AppSwitcherServiceModule} from './app-switcher-service.module';
+import {ChangeCasePipeModule} from '@bit/healthcatalyst.cashmere.change-case-pipe';
 
 @NgModule({
     exports: [
         AccordionModule,
         AppSwitcherModule,
-        AppSwitcherServiceModule,
         BreadcrumbsModule,
+        BannerModule,
         ButtonModule,
+        ButtonToggleModule,
         CheckboxModule,
         ChipModule,
+        DatepickerModule,
+        DateRangeModule,
         DrawerModule,
         FormFieldModule,
         IconModule,
@@ -44,14 +57,21 @@ import {AppSwitcherServiceModule} from './app-switcher-service.module';
         NavbarModule,
         PaginationModule,
         PicklistModule,
-        PopoverModule,
+        PipesModule,
+        PopModule,
         ProgressIndicatorsModule,
         RadioButtonModule,
+        ScrollNavModule,
         SelectModule,
+        SortModule,
+        StepperModule,
         SubnavModule,
+        TableModule,
         TabsModule,
         TileModule,
-        TypeformSurveyModule
+        ToasterModule,
+        TypeformSurveyModule,
+        ChangeCasePipeModule
     ]
 })
-export class CashmereModule {}
+export class CashmereModule { }

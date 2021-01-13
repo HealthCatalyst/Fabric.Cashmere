@@ -37,6 +37,31 @@ export class MockAppSwitcherService implements IAppSwitcherService {
     allApplicationsUri: string;
 
     getApplications(): Observable<IDiscoveryRequest> {
-        return of({value: []});
+        return of({
+            value: [
+                {
+                    ServiceName: 'MyApp',
+                    FriendlyName: 'My App',
+                    Description: 'The currently showing app',
+                    BuildNumber: '123',
+                    Version: 1,
+                    DiscoveryServiceId: 1,
+                    ServiceUrl: 'http://myapp.com',
+                    DiscoveryType: 'Application',
+                    Icon: ''
+                },
+                {
+                    ServiceName: 'AnotherApp',
+                    FriendlyName: 'Another App',
+                    Description: 'App we could switch to',
+                    BuildNumber: '123',
+                    Version: 1,
+                    DiscoveryServiceId: 2,
+                    ServiceUrl: 'http://anotherapp.com',
+                    DiscoveryType: 'Application',
+                    Icon: ''
+                }
+            ]
+        });
     }
 }

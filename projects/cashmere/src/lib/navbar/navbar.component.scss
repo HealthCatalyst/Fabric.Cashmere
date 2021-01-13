@@ -23,6 +23,10 @@
         @include navbar-link();
     }
 
+    .navbar-dropdown {
+        @include hc-navbar-more-links();
+    }
+
     .hc-navbar-right-container {
         @include hc-navbar-right-container();
     }
@@ -31,8 +35,16 @@
         @include hc-navbar-icon();
     }
 
+    .hc-navbar-icon-home-uri {
+        @include hc-navbar-icon-home-uri();
+    }
+
     .hc-navbar-username {
         @include hc-navbar-username();
+    }
+
+    .hc-navbar-username-subtext {
+        @include hc-navbar-username-subtext();
     }
 
     .hc-navbar-vertical-separator {
@@ -45,12 +57,5 @@
 
     .hc-navbar-mobile-menu {
         @include hc-navbar-mobile-menu();
-    }
-}
-
-.more-popover a {
-    &.active {
-        color: $text;
-        cursor: default;
     }
 }

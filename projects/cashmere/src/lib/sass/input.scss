@@ -3,7 +3,7 @@
 
 @mixin hc-input() {
     font: inherit;
-    background: inherit;
+    background: transparent;
     color: currentColor;
 
     border: none;
@@ -11,10 +11,7 @@
     padding: 0;
     margin: 0;
     width: 100%;
-
     max-width: 100%;
-
-    vertical-align: bottom;
     text-align: inherit;
 
     &[disabled] {

@@ -1,0 +1,73 @@
+<div class="drawer-container">
+    <hc-drawer-container>
+        <hc-menu-drawer align="left" menuTheme="dark-theme" [ignoreEscapeKey]="true" #leftDrawer>
+            <div hcDrawerToolbar>Filter Sets</div>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Clinical Program
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Care Process Family
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Care Process
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Sub-Care Process
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    MS-DRG
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Discharge Status
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    ER Visit
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Payer
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+            <hc-drawer-item>
+                <div class="drawer-label">
+                    Age
+                </div>
+                <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
+            </hc-drawer-item>
+        </hc-menu-drawer>
+
+        <div class="drawer-content">
+            <button hc-button title="Filters" buttonStyle="primary-alt" (click)="leftDrawer.toggle()">
+                <hc-icon fontSet="hc-icons" fontIcon="hci-filters" class="icon-left"></hc-icon>
+                <span *ngIf="leftDrawer.opened">Hide Filters</span>
+                <span *ngIf="!leftDrawer.opened">Show Filters</span>
+            </button>
+            <hc-checkbox
+                [checked]="leftDrawer.ignoreEscapeKey"
+                (change)="leftDrawer.ignoreEscapeKey = !leftDrawer.ignoreEscapeKey"
+            >Ignore escape key</hc-checkbox>
+        </div>
+    </hc-drawer-container>
+</div>

@@ -1,0 +1,21 @@
+@import '../../sass/scroll-nav.scss';
+
+.hc-scroll-nav-links-container {
+    @include hc-scroll-nav-links-container();
+}
+
+.hc-scroll-nav-links-container ul {
+    @include hc-scroll-nav-links-ul();
+}
+
+.hc-scroll-nav-link {
+    @include hc-scroll-nav-links();
+
+    &:focus {
+        @include hc-scroll-nav-link-focus();
+    }
+}
+
+.hc-scroll-nav-link-active {
+    @include hc-scroll-nav-link-active();
+}

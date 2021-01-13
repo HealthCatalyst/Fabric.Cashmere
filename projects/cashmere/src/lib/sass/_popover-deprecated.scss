@@ -1,0 +1,29 @@
+/* DEPRECATED - for Cashmere styled menus, use the collection of hcMenu directives on hcPop */
+.hc-pop-container ul.list-options {
+    padding-left: 0;
+    margin: 0;
+
+    & > li:not(:last-child) {
+        border-bottom: 1px solid $slate-gray-200;
+    }
+    & > li {
+        display: block;
+        padding: 10px 0;
+        min-width: 150px;
+        list-style: none;
+    }
+    & > li > a,
+    & > li button {
+        text-decoration: none;
+        background-color: $white;
+        color: $primary-brand;
+        font-family: $default-font-family;
+        padding: 0;
+        min-width: 150px;
+        text-align: left;
+        justify-content: left;
+        border: none;
+        cursor: pointer;
+        font-size: inherit;
+    }
+}

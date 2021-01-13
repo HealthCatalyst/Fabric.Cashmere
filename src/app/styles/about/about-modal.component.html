@@ -1,15 +1,20 @@
 <div class="demo-content">
-    <div [hcMarkdown]="document"></div>
+    <div [hcMarkdown]="document" (loaded)="loaded()"></div>
 </div>
 
 <div class="error-tile">
     <div class="about-modal-content">
         <div class="about-header">
-            <div class="about-triflame"></div>
-            <div>
-                <img src="./assets/Cashmere_About.svg" class="about-app-title" alt="" />
-                <div class="about-version">
-                    Version 5.0.0.0
+            <img src="./assets/HealthCatalyst_Horizontal.svg" class="about-logo" alt="" />
+            <div class="about-app">
+                <div class="about-icon">
+                    <img src="./assets/CashmereIcon.svg" alt="" />
+                </div>
+                <div class="about-name">
+                    <img src="./assets/CashmereAppLogo.svg" alt="" />
+                    <div class="about-version">
+                        Version 5.3.0.0
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,12 +42,12 @@
             </div>
         </div>
         <div class="about-footer">
-            Copyright 2018 <a href="https://www.healthcatalyst.com/">Health Catalyst</a>. All rights reserved
+            Copyright 2019 <a href="https://www.healthcatalyst.com/">Health Catalyst</a>. All rights reserved
             <br>
             <a href="https://www.healthcatalyst.com/terms-conditions/">Terms and Conditions</a>  |  <a href="https://www.healthcatalyst.com/privacy-policy/">Privacy Policy</a>
         </div>
     </div>
-    <hr>
+    <hr class="about-divider">
     <div class="about-close-container">
         <button hc-button class="about-close">Close</button>
     </div>

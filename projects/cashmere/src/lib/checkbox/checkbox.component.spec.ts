@@ -1,7 +1,4 @@
-/* tslint:disable:no-use-before-declare */
-
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
-
 import {CheckboxChangeEvent, CheckboxComponent} from './checkbox.component';
 import {FormControl, FormsModule, NgModel, ReactiveFormsModule} from '@angular/forms';
 import {Component, DebugElement} from '@angular/core';
@@ -164,6 +161,11 @@ describe('CheckboxComponent', () => {
 
             expect(inputElement.value).toBe('basic_checkbox');
         });
+
+        it('should align the checkbox label based on the align parameter', () => {
+            let alignClass = fixture.debugElement.queryAll(By.css('.hc-checkbox-align-top'));
+            expect(alignClass.length).toBe(1);
+        });
     });
 
     describe('with form control', () => {
@@ -244,12 +246,15 @@ describe('CheckboxComponent', () => {
                 [checked]="isChecked"
                 [indeterminate]="isIndeterminate"
                 [disabled]="isDisabled"
+                [align]="alignVal"
                 [value]="checkboxValue"
                 (click)="onCheckboxClick($event)"
-                (change)="onCheckboxChange($event)">
+                (change)="onCheckboxChange($event)"
+            >
                 Simple checkbox
             </hc-checkbox>
-        </div>`
+        </div>
+    `
 })
 export class SingleCheckboxComponent {
     isChecked: boolean = false;
@@ -260,6 +265,7 @@ export class SingleCheckboxComponent {
     parentElementKeyedUp: boolean = false;
     checkboxId: string | null = 'simple-check';
     checkboxValue: string = 'single_checkbox';
+    alignVal: string = "top";
 
     onCheckboxClick: (event?: Event) => void = () => {};
     onCheckboxChange: (event?: CheckboxChangeEvent) => void = () => {};
@@ -267,14 +273,17 @@ export class SingleCheckboxComponent {
 
 @Component({
     template: `
-        <hc-checkbox [formControl]="formControl"></hc-checkbox>`
+        <hc-checkbox [formControl]="formControl"></hc-checkbox>
+    `
 })
 class CheckboxWithFormControlComponent {
     formControl = new FormControl();
 }
 
 @Component({
-    template: `<hc-checkbox [required]="isRequired" [(ngModel)]="isGood">Be good</hc-checkbox>`
+    template: `
+        <hc-checkbox [required]="isRequired" [(ngModel)]="isGood">Be good</hc-checkbox>
+    `
 })
 class CheckboxWithNgModelComponent {
     isGood: boolean = false;

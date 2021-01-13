@@ -1,49 +1,63 @@
-@import '../sass/colors';
+@import '../sass/app-switcher.scss';
 
-:host {
-    height: 100%;
-    width: 100%;
+.hc-app-switcher-container {
+    @include hc-app-switcher-outer();
 }
 
-.popover-content {
-    max-width: 410px;
-    & > h4 {
-        margin: 10px 0;
-        padding-bottom: 5px;
-        border-bottom: 1px solid $gray-300;
-    }
+.hc-app-switcher {
+    @include hc-app-switcher();
+}
 
-    .all-apps-link {
-        margin: 10px 0;
-        display: block;
-        text-align: right;
-        text-decoration: none;
-        color: $primary-brand;
-    }
+.hc-app-switcher-header {
+    @include hc-app-switcher-header();
+}
 
-    .apps {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: flex-start;
-        .app {
-            flex: 0 0 33%;
-            & > a {
-                padding: 10px;
-                text-decoration: none;
+.hc-app-switcher-all-apps-link {
+    @include hc-app-switcher-all-apps-link();
+}
 
-                & > .thumbnail-img {
-                    width: 100px;
-                    height: 100px;
-                }
-            }
+.hc-app-switcher-apps {
+    @include hc-app-switcher-apps();
+}
 
-            .title {
-                text-align: center;
-                color: $offblack;
-                padding-top: 8px;
-                font-weight: 600;
-                width: 100px;
-            }
-        }
-    }
+.hc-app-switcher-app {
+    @include hc-app-switcher-app();
+}
+
+.hc-app-switcher-link {
+    @include hc-app-switcher-link();
+}
+
+.hc-app-switcher-link-highlighted {
+    @include hc-app-switcher-link-highlighted();
+}
+
+.hc-app-switcher-app-title {
+    @include hc-app-switcher-app-title();
+}
+
+.hc-app-switcher-app-img {
+    @include hc-app-switcher-app-img();
+}
+
+.hc-app-switcher-empty {
+    @include hc-app-switcher-empty();
+}
+
+.hc-app-switcher-spinner-container {
+    @include hc-app-switcher-spinner-container();
+}
+
+.hc-app-switcher-warning-icon {
+    @include hc-app-switcher-icon();
+    @include hc-app-switcher-warning-icon();
+}
+
+.hc-app-switcher-empty-icon {
+    @include hc-app-switcher-icon();
+    @include hc-app-switcher-empty-icon();
+}
+
+.hc-app-switcher-retry {
+    @include hc-app-switcher-retry();
 }

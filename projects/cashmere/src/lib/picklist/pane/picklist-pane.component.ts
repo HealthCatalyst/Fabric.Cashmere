@@ -9,7 +9,7 @@ import {PicklistFilterRemoteService} from '../services/picklist-filter-remote.se
 import {PicklistFilterLocalService} from '../services/picklist-filter-local.service';
 import {PicklistStateService} from '../services/picklist-state.service';
 import {PicklistValuesetMovingService} from '../services/picklist-valueset-moving.service';
-import {WorkTrackerService} from '../services/work-tracker.service';
+import {WorkTrackerService} from '../../shared/work-tracker.service';
 import {PicklistOptionsSource, PicklistSettings, PicklistValueType} from '../picklist.model';
 import {FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOption} from './picklist-pane.model';
 
@@ -134,11 +134,11 @@ export class PicklistPaneComponent {
 
     public preventIEHighlightBug() {
         // for IE: https://stackoverflow.com/questions/1527751/disable-text-selection-while-pressing-shift
-        document.onselectstart = function() {
+        (document as any).onselectstart = function() {
             return false;
         };
         setTimeout(function() {
-            document.onselectstart = () => null;
+            (document as any).onselectstart = () => null;
         }, 0);
     }
 
@@ -188,14 +188,9 @@ export class PicklistPaneComponent {
     }
 
     private wireUpSearch() {
-        this.searchTermStream
-            .pipe(
-                debounceTime(300),
-                distinctUntilChanged()
-            )
-            .subscribe(t => {
-                this.filterService.runFilter(t);
-                this.selectNone();
-            });
+        this.searchTermStream.pipe(debounceTime(300), distinctUntilChanged()).subscribe(t => {
+            this.filterService.runFilter(t);
+            this.selectNone();
+        });
     }
 }

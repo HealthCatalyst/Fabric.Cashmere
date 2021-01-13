@@ -1,122 +1,65 @@
-@import '../sass/mixins';
-@import '../sass/colors';
+@import '../sass/pagination.scss';
 
 .hc-pagination-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    @include hc-pagination-container();
 }
 
 .hc-page-detail-container {
-    display: flex;
-    flex: 0 0 auto;
-    align-items: center;
-    padding: 5px 0;
-    margin-right: 10px;
+    @include hc-page-detail-container();
+}
 
-    label {
-        flex: 0 0 auto;
-        color: $gray-500;
-    }
+.hc-page-detail-label {
+    @include hc-page-detail-label();
+}
 
-    hc-select {
-        flex: 1 0 65px;
-        margin: 0 7px;
-    }
+.hc-page-detail-select {
+    @include hc-page-detail-select();
+}
+
+.hc-page-detail-entries {
+    @include hc-page-detail-entries();
 }
 
 .hc-range-label {
-    flex: 0 0 auto;
-    margin-right: 10px;
-    padding: 12px 0;
+    @include hc-range-label();
 }
 
 .hc-page-btns-container {
-    display: inline-flex;
-    padding: 5px 0;
+    @include hc-page-btns-container();
+}
 
-    button {
-        border: solid 2px $gray-200;
-        background-color: $white;
-        color: $primary-brand;
-        font-weight: bold;
-
-        hc-icon {
-            font-size: 13px !important;
-            height: 12px !important;
-            width: 13px !important;
-        }
-
-        &:hover {
-            color: darken($primary-brand, 10%);
-        }
-
-        &.currentPage {
-            background-color: $primary-brand;
-            color: $white;
-        }
-
-        &:focus {
-            outline: none;
-        }
-    }
-
-    .hc-left-button {
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-        padding: 0 15px;
-    }
-
-    .hc-right-button {
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-        border-left-width: 0;
-        padding: 0 15px;
-    }
-
-    .hc-inner-button {
-        padding: 0 5px;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-        border-left-width: 0;
-    }
-
-    .hc-inner-button[disabled] {
-        opacity: 1;
-        border-top-color: transparentize($gray-300, 0.65);
-        border-bottom-color: transparentize($gray-300, 0.65);
-        color: transparentize($primary-brand, 0.65);
-        &:hover {
-            background-color: $white;
-        }
-    }
+// more specifity necessary to override default styles from hc-button
+.hc-pagination-container .hc-page-btns-container {
 
     .hc-page-button {
-        min-width: 40px;
-        margin-right: 0;
-    }
+        @include hc-page-button();
 
-    button.hc-inner-button hc-icon {
-        margin-top: 7px;
-    }
-
-    .expanded-page-button {
-        display: block;
-    }
-    .collapsed-page-button {
-        display: none;
-    }
-
-    @include media-breakpoint-down(md) {
-        .expanded-page-button {
-            display: none;
+        &.hc-page-button-current {
+            @include hc-page-button-currentpage();
         }
-        .collapsed-page-button {
-            display: block;
-        }
+    }
+
+    .hc-page-left-button {
+        @include hc-page-left-button();
+    }
+
+    .hc-page-right-button {
+        @include hc-page-right-button();
+    }
+
+    .hc-page-inner-button {
+        @include hc-page-inner-button();
+    }
+
+    .hc-page-button-chevron {
+        @include hc-page-button-chevron();
+    }
+
+    .hc-page-button-chevron-left {
+        @include hc-page-button-chevron-left();
+    }
+
+    .hc-page-button-ellipsis {
+        @include hc-page-button-ellipsis();
     }
 }

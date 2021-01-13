@@ -19,9 +19,17 @@ export type ModalContentType = Type<{}> | TemplateRef<any>;
 
 @Injectable()
 export class ModalService {
+    /** Defaults to false. Restricts multiple modals from being opened on top of each other
+     * (an error will be thrown if attempted). It's generally considered bad practice to open multiple
+     * models at once, so only change this with good reason.
+     */
+    allowMultiple: boolean = false;
+
     // start at 2000 (reserved range for modals, see _variables.scss)
-    private _zIndexCounter = 2000;
+    private _zIndexBase = 2000;
+    private _zIndexCounter = this._zIndexBase;
     private _renderer: Renderer2;
+    private _modalsOpen: number = 0;
 
     constructor(
         private _componentFactory: ComponentFactoryResolver,
@@ -36,6 +44,11 @@ export class ModalService {
      * In order to use a component, it must be specified in your module's EntryComponents.
      */
     open<T>(modalContent: ModalContentType, modalOptions?: ModalOptions): HcModal<T> {
+        if (!this.allowMultiple && this._modalsOpen !== 0) {
+            throw new Error(`Multiple modals may not be opened at the same time
+                when the allowMultiple property on ModalService is set to false.`);
+        }
+
         let container = document.querySelector('body') as HTMLElement;
 
         const defaultOptions = {
@@ -68,6 +81,11 @@ export class ModalService {
         // disable scrolling when overlay is present
         this._renderer.addClass(container, 'hc-modal-open');
         modal._removeOpenClass = () => this._renderer.removeClass(container, 'hc-modal-open');
+
+        // if multiple modals are allowed, make sure the newest is always on top
+        if ( this.allowMultiple ) {
+            this._zIndexCounter = this._zIndexBase + (this._modalsOpen * 2);
+        }
 
         // Create, attach, and append overlay to container
         let overlay = this._componentFactory.resolveComponentFactory(ModalOverlayComponent).create(modalInjector);
@@ -112,7 +130,12 @@ export class ModalService {
 
         activeModalRef.dismiss = () => modal.dismiss();
 
-        this._zIndexCounter += 2;
+        this._modalsOpen++;
+        modal._modalClose.subscribe(() => {
+            this._modalsOpen--;
+            modal._modalClose.unsubscribe();
+        });
+
         return modal;
     }
 }

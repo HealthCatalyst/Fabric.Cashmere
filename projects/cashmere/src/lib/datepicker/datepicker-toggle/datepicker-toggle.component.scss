@@ -1,0 +1,5 @@
+@import '../../sass/datepicker.scss';
+
+.hc-calendar-toggle {
+    @include hc-calendar-toggle();
+}

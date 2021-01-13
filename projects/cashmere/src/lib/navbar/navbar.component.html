@@ -1,34 +1,55 @@
-<nav class="hc-navbar" [ngClass]="{'fixed-top': fixedTop}">
+<nav #navbar class="hc-navbar" [ngClass]="{'fixed-top': fixedTop}">
     <div class="navbar-brand">
-        <a [routerLink]="homeUri" class="brand">
-            <img src="{{brandIcon}}">
+        <a [routerLink]="homeUri" class="brand" tabIndex="-1">
+            <img *ngIf="_brandIconType() == 'string'" src="{{ brandIcon }}" />
+            <hc-icon
+                *ngIf="_brandIconType() != 'string'"
+                [fontSet]="_brandIconSet()"
+                [fontIcon]="_brandIconGlyph()"
+                [ngStyle]="{height: _brandIconSize(), 'font-size': _brandIconSize()}"
+                [ngClass]="{ 'hc-navbar-icon-home-uri': homeUri !== '' }">
+            </hc-icon>
         </a>
     </div>
-    <div class="navbar-app" [ngClass]="{'logo-condense': _logoCondense}">
+    <div class="navbar-app">
         <a [routerLink]="homeUri" class="app" *ngIf="appIcon">
-            <img src="{{appIcon}}">
+            <img src="{{ appIcon }}" />
         </a>
     </div>
-    <div class="hc-navbar-link-container">
-        <ng-content select="hc-navbar-link"></ng-content>
-        <div class="hc-navbar-more-links" title="More" *ngIf="_collapse" [hcPopover]="navbarMore" popperPlacement="bottom">
-            More<hc-icon fontSet="fa" fontIcon="fa-chevron-down" hcIconSm></hc-icon>
+    <div #navlinks class="hc-navbar-link-container">
+        <ng-content select="hc-navbar-link, hc-navbar-dropdown"></ng-content>
+        <div class="hc-navbar-more-links" tabindex="0" title="More" *ngIf="_collapse" [hcPop]="navbarMore" #moreLink="hcPopAnchor">
+            More
+            <hc-icon fontSet="fa" fontIcon="fa-chevron-down" hcIconSm></hc-icon>
         </div>
     </div>
 
-    <div class="hc-navbar-right-container">
+    <div #rightcontainer class="hc-navbar-right-container">
         <ng-content></ng-content>
     </div>
-    <div class="hc-navbar-mobile-menu" (click)="_toggleMobileMenu()">
+    <div class="hc-navbar-mobile-menu" *ngIf="_mobileMenu.first" (click)="_toggleMobileMenu()">
         <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
     </div>
+    <ng-content select="hc-navbar-cobrand"></ng-content>
 </nav>
 <div (click)="_menuClick($event)">
     <ng-content select="hc-navbar-mobile-menu"></ng-content>
 </div>
 
-<hc-popover-content #navbarMore class="more-popover">
-    <ul class="list-options">
-        <li *ngFor="let item of _moreList"><a routerLinkActive="active" [routerLink]="item.uri" (click)="_moreClick()">{{item.name}}</a></li>
-    </ul>
-</hc-popover-content>
+<hc-pop #navbarMore [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
+    <div hcMenu>
+        <ng-container *ngFor="let item of _moreList; let i = index">
+            <ng-container *ngIf="!item.dropdown">
+                <a hcMenuItem routerLinkActive="active" [routerLink]="item.uri" (click)="_moreClick()">
+                    <span hcMenuText>{{item.name}}</span>
+                </a>
+            </ng-container>
+            <ng-container *ngIf="item.dropdown">
+                <button hcMenuItem [hcPop]="item.dropdown">
+                    <span hcMenuText>{{item.name}}</span>
+                </button>
+            </ng-container>
+            <div *ngIf="i != _moreList.length - 1" hcMenuItem hcDivider></div>
+        </ng-container>
+    </div>
+</hc-pop>

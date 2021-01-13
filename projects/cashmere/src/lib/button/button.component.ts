@@ -1,14 +1,22 @@
 /* tslint:disable:component-selector */
-/* tslint:disable:use-host-property-decorator */
+/* tslint:disable:no-host-metadata-property */
 
 import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 
-const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'link', 'link-inline'];
+export const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
+const supportedColors = ['blue', 'green', 'purple', 'red', 'orange', 'ruby-red', 'deep-red', 'red-orange', 'magenta', 'pink', 'light-pink', 'azure', 'teal', 'dark-green', 'brown', 'purple-gray', 'yellow', 'yellow-orange', 'tan'];
+const supportedSizes = ['sm', 'md', 'lg'];
 
-export function validateStyleInput(style: string) {
-    if (supportedStyles.indexOf(style) < 0) {
-        throw Error('Unsupported style input value: ' + style);
+export function validateStyleInput(style: string, component: string) {
+    if (supportedStyles.indexOf(style) < 0 && supportedColors.indexOf(style) < 0) {
+        throw Error('Unsupported buttonStyle attribute value on ' + component + ': ' + style);
+    }
+}
+
+export function validateSizeInput(size: string, component: string) {
+    if (supportedSizes.indexOf(size) < 0) {
+        throw Error('Unsupported size attribute value on ' + component + ': ' + size);
     }
 }
 
@@ -28,32 +36,35 @@ const buttonAttributes = ['hc-icon-button', 'hc-button'];
 export class ButtonComponent {
     private _disabled = false;
     private _style: string;
-    private previousStyle: string;
+    private _size: string;
 
-    /**
-     * @deprecated
-     * @description Use `buttonStyle` instead
-     * */
-    @Input()
-    get color(): string {
-        return this.buttonStyle;
-    }
-
-    set color(btnStyle: string) {
-        this.buttonStyle = btnStyle;
-    }
-
-    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'` */
+    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' |
+     * 'neutral' | 'secondary' | 'minimal' | link' | 'link-inline'`. If needed, colors from
+     * the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc) */
     @Input()
     get buttonStyle(): string {
         return this._style;
     }
 
     set buttonStyle(btnStyle: string) {
-        validateStyleInput(btnStyle);
-        this.setHostStyle(btnStyle);
-        this.previousStyle = this._style;
+        validateStyleInput(btnStyle, 'ButtonComponent');
+        if ( supportedStyles.indexOf(btnStyle) < 0 ) {
+            btnStyle = "button-" + btnStyle;
+        }
+        this.setHostClass(this._style, btnStyle);
         this._style = btnStyle;
+    }
+
+    /** Sets size of button. Choose from: `'sm' | 'md' | 'lg' |`. *Defaults to `md`.* */
+    @Input()
+    get size(): string {
+        return this._size;
+    }
+
+    set size(size: string) {
+        validateSizeInput(size, 'ButtonComponent');
+        this.setHostClass(this._size, size);
+        this._size = size;
     }
 
     /** Whether the control is disabled. */
@@ -68,7 +79,7 @@ export class ButtonComponent {
 
     constructor(public elementRef: ElementRef, private renderer: Renderer2) {
         this.buttonStyle = 'primary';
-        this.previousStyle = this.buttonStyle;
+        this.size = 'md';
 
         for (const attr of buttonAttributes) {
             if (elementRef.nativeElement.hasAttribute(attr)) {
@@ -82,16 +93,16 @@ export class ButtonComponent {
         this.elementRef.nativeElement.focus();
     }
 
-    private setHostStyle(style: string) {
-        if (this.previousStyle !== style) {
-            if (this.previousStyle) {
-                this.renderer.removeClass(this.elementRef.nativeElement, this._styleClass(this.previousStyle));
+    private setHostClass(previous: string, current) {
+        if (previous !== current) {
+            if (previous) {
+                this.renderer.removeClass(this.elementRef.nativeElement, this._hcClassify(previous));
             }
-            this.renderer.addClass(this.elementRef.nativeElement, this._styleClass(style));
+            this.renderer.addClass(this.elementRef.nativeElement, this._hcClassify(current));
         }
     }
 
-    private _styleClass(style: string): string {
+    private _hcClassify(style: string): string {
         return `hc-${style}`;
     }
 }

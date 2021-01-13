@@ -1,3 +1,29 @@
-.tab-content {
-    padding: 10px 20px;
+@import 'scss/colors';
+@import 'scss/functions';
+@import 'scss/mixins';
+
+.hc-tile:first-child {
+    margin-top: 20px;
+}
+
+.example-container {
+    padding-top: 20px;
+}
+
+.icon-left {
+    margin-right: 5px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+
+    h3 {
+        flex: 1;
+        margin-top: 0;
+    }
+}
+
+.example-code-tab h4 {
+    margin-top: 10px;
 }

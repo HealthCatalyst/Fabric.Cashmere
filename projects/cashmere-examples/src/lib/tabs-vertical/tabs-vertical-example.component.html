@@ -1,0 +1,47 @@
+<div class="tab-demo">
+    <hc-tab-set defaultTab="1" [tight]="_tight.value">
+        <hc-tab tabTitle="Nested Tabs">
+            <hc-tab-set direction="horizontal">
+                <hc-tab tabTitle="Tab 1">
+                    <div class="tab-content">
+                        Horizontal Tab content 1
+                    </div>
+                </hc-tab>
+                <hc-tab tabTitle="Tab 2">
+                    <div class="tab-content">
+                        Horizontal Tab content 2
+                    </div>
+                </hc-tab>
+                <hc-tab tabTitle="Tab 3">
+                    <div class="tab-content">
+                        Horizontal Tab content 3
+                    </div>
+                </hc-tab>
+                <div class="tab-bar-content">
+                    <div>
+                        <hc-icon fontSet="fa" fontIcon="fa-info"></hc-icon>
+                        <span>You can place additional content after the tabs</span>
+                    </div>
+                </div>
+            </hc-tab-set>
+        </hc-tab>
+        <hc-tab tabTitle="Tooltip Tab" [hcPop]="tabTooltip" trigger="hover">
+            <div class="tab-content">
+                This tab shows a Cashmere popover tooltip when you hover over it.
+            </div>
+        </hc-tab>
+        <hc-pop #tabTooltip verticalAlign="center" horizontalAlign="after">
+            You found the tooltip!
+        </hc-pop>
+        <hc-tab>
+            <hc-tab-title>
+                <i class="fa fa-file-code-o"></i> HTML <span style="font-style: italic;">Title</span>
+            </hc-tab-title>
+            <div class="tab-content">
+                Vertical Tab content 3
+            </div>
+        </hc-tab>
+    </hc-tab-set>
+</div>
+
+<hc-checkbox [formControl]="_tight">Apply tight styling to tabs</hc-checkbox>

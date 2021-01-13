@@ -1,0 +1,52 @@
+<hc-drawer-container class="hc-search-results">
+    <hc-menu-drawer opened="true" mode="over" align="left" menuTheme="dark-theme" class="hc-search-drawer" #leftDrawer>
+        <div hcDrawerToolbar class="hc-search-results-toolbar" (click)="resetFilters()">Reset Filters</div>
+        <hc-drawer-item class="hc-search-drawer-item">
+            <form class="checkboxContiner" [formGroup]="categories">
+                <h4>Category</h4>
+                <hc-checkbox formControlName="components">Components</hc-checkbox>
+                <hc-checkbox formControlName="guides">Guides</hc-checkbox>
+                <hc-checkbox formControlName="styles">Styles</hc-checkbox>
+                <hc-checkbox formControlName="bits">Bits</hc-checkbox>
+            </form>
+        </hc-drawer-item>
+        <hc-drawer-item class="hc-search-drawer-item">
+            <div class="checkboxContiner" [formGroup]="types">
+                <h4>Type</h4>
+                <hc-checkbox formControlName='doc'>Docs</hc-checkbox>
+                <hc-checkbox formControlName='example'>Examples</hc-checkbox>
+                <hc-checkbox formControlName='api'>API</hc-checkbox>
+                <hc-checkbox formControlName='usage'>Usage</hc-checkbox>
+            </div>
+        </hc-drawer-item>
+    </hc-menu-drawer>
+
+    <div class="hc-search-results-content">
+        <div class="hc-search-results-input">
+            <hc-form-field tight="true">
+                <hc-icon hcPrefix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
+                <input hcInput [formControl]="searchBarContent" placeholder="Search the Cashmere docs" class="searchBar" />
+            </hc-form-field>
+        </div>
+
+        <hc-list class="hc-search-results-list">
+            <hc-list-item *ngFor="let item of searchDisplay" class="hc-search-results-items">
+                <hc-icon fontSet="fa" [fontIcon]="searchIcons[item.category].icon" hcListIcon class="hc-results-icon"></hc-icon>
+                <a hcListLine class="hc-result-title"
+                    [routerLink]="'/' + item.link"
+                    [queryParams]="{section: item.section, selected: item.displayName}">
+                        {{item.title}}
+                </a>
+                <div hcListLine class="hc-result-sub-text">
+                    <strong>Category:</strong><span> {{item.category}}</span><br>
+                    <strong>Type:</strong><span> {{item.type}}</span><br>
+                    <strong>Location:</strong> {{item.link}}
+                </div>
+            </hc-list-item>
+        </hc-list>
+
+        <div #pagContainer class="hc-search-results-pagination">
+            <hc-pagination [displayWidth]="pagWidth" [pageNumber]="pagNum" [length]="length" pageSize="5" [pageSizeOptions]="pageOpts" (page)="resultPaging($event)"></hc-pagination>
+        </div>
+    </div>
+</hc-drawer-container>

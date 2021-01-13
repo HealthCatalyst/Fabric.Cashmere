@@ -1,0 +1,33 @@
+{
+    "name": "cashmere-bits",
+    "description": "a collection of individually-installed Cashmere-family components",
+    "authors": "Health Catalyst",
+    "version": "1.0.0",
+    "scripts": {
+        "bit": "bit",
+        "test": "jest"
+    },
+    "peerDependencies": {
+        "@angular/common": "^10.2.1",
+        "@angular/core": "^10.2.1",
+        "@ng-select/ng-select": "^5.0.8",
+        "change-case": "^4.1.1",
+        "sugar": "^2.0.6"
+    },
+    "private": true,
+    "devDependencies": {
+        "@types/jest": "^26.0.7",
+        "bit-bin": "^14.8.8",
+        "jest": "^26.1.0",
+        "ts-jest": "^26.1.4",
+        "typescript": "^3.9.7"
+    },
+    "bit": {
+        "env": {
+            "compiler": "bit.envs/compilers/angular@9.0.21",
+            "tester": "bit.envs/testers/jest@22.4.3"
+        },
+        "componentsDefaultDirectory": "src/lib/{name}",
+        "packageManager": "npm"
+    }
+}

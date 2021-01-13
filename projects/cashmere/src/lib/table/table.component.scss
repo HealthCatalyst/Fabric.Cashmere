@@ -1,5 +1,6 @@
-@import '../sass/colors';
+@import '../sass/table';
+@import '../sass/table.class';
 
 hc-table {
-    display: block;
+    @include hc-table-element();
 }

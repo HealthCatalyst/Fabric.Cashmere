@@ -1,0 +1,97 @@
+<button hc-button buttonStyle="primary-alt" [hcPop]="pop" [trigger]="trigControl.value" [popoverDelay]="hoverDelayControl.value">
+    Trigger
+</button>
+
+<hc-pop
+    #pop
+    [verticalAlign]="vAlignControl.value"
+    [horizontalAlign]="hAlignControl.value"
+    [scrollStrategy]="scrollStratControl.value"
+    [hasBackdrop]="clickAwayControl.value"
+    [interactiveClose]="clickAwayControl.value"
+    [showArrow]="showArrowControl.value"
+    [shouldAnimate]="shouldAnimateControl.value"
+    [lockAlignment]="forceAlignmentControl.value"
+    [forceAlignment]="forceAlignmentControl.value"
+    [maxWidth]="maxWidthControl.value"
+>
+    {{ popTextControl.value }}
+</hc-pop>
+
+<hr />
+
+<div class="property-form-row">
+    <hc-form-field>
+        <hc-label>Vertical alignment:</hc-label>
+        <hc-select placeholder="Select yAlign setting:" [formControl]="vAlignControl">
+            <option value="above">Above</option>
+            <option value="start">Start</option>
+            <option value="center">Center</option>
+            <option value="end">End</option>
+            <option value="below">Below</option>
+            <option value="mouse">Mouse position</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Horizontal alignment:</hc-label>
+        <hc-select placeholder="Select xAlign setting:" [formControl]="hAlignControl">
+            <option value="before">Before</option>
+            <option value="start">Start</option>
+            <option value="center">Center</option>
+            <option value="end">End</option>
+            <option value="after">After</option>
+            <option value="mouse">Mouse position</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Scroll strategy:</hc-label>
+        <hc-select placeholder="Select scroll strategy:" [formControl]="scrollStratControl">
+            <option value="noop">Noop</option>
+            <option value="block">Block scrolling</option>
+            <option value="reposition">Reposition popover</option>
+            <option value="close">Close popover</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Trigger:</hc-label>
+        <hc-select placeholder="Select trigger:" [formControl]="trigControl">
+            <option value="click">Click</option>
+            <option value="mousedown">Mousedown</option>
+            <option value="hover">Hover</option>
+            <option value="rightclick">Right-click</option>
+            <option value="none">None</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Popover text:</hc-label>
+        <input hcInput [formControl]="popTextControl" />
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Popover hover delay:</hc-label>
+        <input hcInput [formControl]="hoverDelayControl" />
+    </hc-form-field>
+
+    <hc-form-field>
+        <hc-label>Max width (ex: 300px):</hc-label>
+        <input hcInput [formControl]="maxWidthControl" />
+    </hc-form-field>
+
+    <hc-checkbox id="animate" [formControl]="shouldAnimateControl">Animate popover</hc-checkbox>
+    <hc-checkbox id="clickAway" align="top" [formControl]="clickAwayControl">Click away or ESC to close</hc-checkbox>
+    <hc-checkbox id="showArrow" [formControl]="showArrowControl">Show arrow</hc-checkbox>
+    <hc-checkbox
+        id="forceAlign"
+        [formControl]="forceAlignmentControl"
+        title="Specified alignment will be enforced no matter the position in the viewport"
+    >
+        Force alignment
+    </hc-checkbox>
+    <hc-checkbox id="lockAlign" [formControl]="lockAlignmentControl" title="Alignment will not update after overlay is initially displayed">
+        Lock alignment
+    </hc-checkbox>
+</div>

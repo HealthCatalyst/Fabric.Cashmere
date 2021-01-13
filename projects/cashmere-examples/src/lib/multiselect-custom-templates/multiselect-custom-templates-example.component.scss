@@ -1,0 +1,44 @@
+@import "~@healthcatalyst/cashmere/scss/colors";
+@import "~@healthcatalyst/cashmere/scss/mixins";
+
+p {
+    font-size: 14px;
+    margin-bottom: 230px;
+}
+
+.group-row {
+    background-color: $slate-gray-100;
+    color: $offblack;
+    @include fontSize(12px);
+    margin: -8px -10px;
+    padding: 5px 20px;
+    text-transform: capitalize;
+}
+
+.ng-value-label hc-icon {
+    margin-right: 3px;
+}
+
+.opt-row {
+    display: flex;
+    align-items: center;
+    color: $offblack;
+}
+
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    margin-right: 7px;
+    color: $white;
+
+    &.blue { background-color: $blue; }
+    &.green { background-color: $green; }
+    &.teal { background-color: $teal; }
+    &.purple { background-color: $purple; }
+    &.orange { background-color: $orange; }
+    &.dark-blue { background-color: $dark-blue; }
+}

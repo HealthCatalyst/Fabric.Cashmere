@@ -1,4 +1,4 @@
-/* tslint:disable:no-use-before-declare component-class-suffix */
+/* tslint:disable:component-class-suffix */
 
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 
@@ -74,11 +74,6 @@ describe('HcFormFieldComponent', () => {
             expect(labelElement.textContent).toMatch(/^hola$/);
         });
 
-        it('support type attribute', () => {});
-    });
-
-    describe('', () => {
-        it('should not set type on textarea', () => {});
     });
 
     describe('validation', () => {
@@ -115,24 +110,16 @@ describe('HcFormFieldComponent', () => {
 
             expect(nativeElement.querySelectorAll('hc-error').length).toBe(1, 'Expected errors to be shown after being touched');
         });
-
-        it('should show errors when form is submitted', () => {});
-
-        it('should show errors when formGroup is submitted', () => {});
-
-        it('should hide errors once the formControl is valid', () => {});
     });
 });
 
 @Component({
     template: `
         <hc-form-field>
-            <hc-label>{{inputLabel}}</hc-label>
-            <input hcInput
-                   [id]="inputId"
-                   [disabled]="isDisabled"
-                   [required]="isRequired">
-        </hc-form-field>`
+            <hc-label>{{ inputLabel }}</hc-label>
+            <input hcInput [id]="inputId" [disabled]="isDisabled" [required]="isRequired" />
+        </hc-form-field>
+    `
 })
 class SimpleInput {
     inputId: string | null = 'test-id';
@@ -144,17 +131,21 @@ class SimpleInput {
 @Component({
     template: `
         <hc-form-field>
-            <input>
-        </hc-form-field>`
+            <hc-label>Simple:</hc-label>
+            <input />
+        </hc-form-field>
+    `
 })
 class InputMissingHcInput {}
 
 @Component({
     template: `
         <hc-form-field>
-            <input hcInput [formControl]="formControl">
+            <hc-label>Form Control Label:</hc-label>
+            <input hcInput [formControl]="formControl" />
             <hc-error>Input is required</hc-error>
-        </hc-form-field>`
+        </hc-form-field>
+    `
 })
 class InputWithFormControl {
     formControl = new FormControl('', Validators.required);

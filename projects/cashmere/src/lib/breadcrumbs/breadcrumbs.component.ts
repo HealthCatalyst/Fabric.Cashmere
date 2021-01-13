@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, Input, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Event, NavigationEnd, Params, PRIMARY_OUTLET, Router} from '@angular/router';
 
 /**
@@ -11,10 +11,17 @@ export interface IBreadcrumb {
     url: string;
 }
 
+/*
+  This type is from @angular/router, but the import location varies by Angular version
+  Including here to allow Cashmere to work regardless of Angular version
+*/
+export type QueryParamsHandling = 'merge' | 'preserve' | '';
+
 /** A navigational aid that allows users to keep track of their location within the current application  */
 @Component({
     selector: 'hc-breadcrumbs',
-    templateUrl: './breadcrumbs.component.html'
+    templateUrl: './breadcrumbs.component.html',
+    encapsulation: ViewEncapsulation.None
 })
 export class BreadcrumbsComponent implements OnInit, OnDestroy {
     public _breadcrumbs: IBreadcrumb[] = [];
@@ -22,6 +29,17 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     _backURL: string = '';
     _backShow: string = 'none';
     _locationLabel: string = '';
+    _queryParamsHandling: QueryParamsHandling = '';
+
+    /** Sets the handling of the query parameters for the breadcrumb. Choose from: `'preserve' | 'merge' | '' (default)` */
+    @Input()
+    get queryParamsHandling(): QueryParamsHandling {
+        return this._queryParamsHandling;
+    }
+
+    set queryParamsHandling(queryParamsHandling: QueryParamsHandling) {
+        this._queryParamsHandling = queryParamsHandling;
+    }
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
 

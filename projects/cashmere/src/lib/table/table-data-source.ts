@@ -12,13 +12,22 @@ import {BehaviorSubject, combineLatest, merge, Observable, of as observableOf, S
 // import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {HcSort, Sort} from '../sort/index';
 import {map} from 'rxjs/operators';
-import {PaginationComponent, PageEvent} from '../pagination/index';
+import {LoadMorePaginationComponent, PageEvent} from '../pagination/index';
+import {BasePaginationComponent} from '../pagination/base-pagination';
 
 /**
  * Corresponds to `Number.MAX_SAFE_INTEGER`. Moved out into a variable here due to
  * flaky browser support and the value not being defined in Closure's typings.
  */
 const MAX_SAFE_INTEGER = 9007199254740991;
+
+/**
+ * Use to see what kind of pager we have
+ */
+export function _isLoadMorePaginator(pager: BasePaginationComponent): pager is LoadMorePaginationComponent {
+    const loadMorePager = <LoadMorePaginationComponent>pager;
+    return loadMorePager && loadMorePager.buttonText !== undefined;
+}
 
 /**
  * Data source that accepts a client-side data array and includes native support of filtering,
@@ -94,37 +103,53 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * e.g. `[pageLength]=100` or `[pageIndex]=1`, then be sure that the paginator's view has been
      * initialized before assigning it to this data source.
      */
-    get paginator(): PaginationComponent | null {
+    get paginator(): BasePaginationComponent | null {
         return this._paginator;
     }
-    set paginator(paginator: PaginationComponent | null) {
+    set paginator(paginator: BasePaginationComponent | null) {
         this._paginator = paginator;
         this._updateChangeSubscription();
     }
-    private _paginator: PaginationComponent | null;
+    private _paginator: BasePaginationComponent | null;
 
     /**
      * Data accessor function that is used for accessing data properties for sorting through
      * the default sortData function.
      * This default function assumes that the sort header IDs (which defaults to the column name)
      * matches the data's properties (e.g. column Xyz represents data['Xyz']).
+     * Converts strings to lowercase characters
      * May be set to a custom function for different behavior.
      * @param data Data object that is being accessed.
      * @param sortHeaderId The name of the column that represents the data.
      */
-    sortingDataAccessor: ((data: T, sortHeaderId: string) => string | number) = (data: T, sortHeaderId: string): string | number => {
+    sortingDataAccessor: (data: T, sortHeaderId: string) => string | number = (data: T, sortHeaderId: string): string | number => {
         const value: any = data[sortHeaderId];
 
         if (_isNumberValue(value)) {
             const numberValue = Number(value);
 
             // Numbers beyond `MAX_SAFE_INTEGER` can't be compared reliably so we
-            // leave them as strings. For more info: https://goo.gl/y5vbSg
-            return numberValue < MAX_SAFE_INTEGER ? numberValue : value;
+            // return them as strings. For more info: https://goo.gl/y5vbSg
+            return numberValue < MAX_SAFE_INTEGER ? numberValue : `${value}`;
         }
 
+        // lowercase strings
+        if (typeof value === 'string') {
+            return value.toLocaleLowerCase();
+        }
+
+        // convert null/undefined to an empty string so they sort first
+        if (value === null || value === undefined) {
+            return '';
+        }
+
+        // leave dates or other values as is
         return value;
     };
+
+    // sortingDataAccessor: ((data: T, sortHeaderId: string) => string) = (data: T, sortHeaderId: string): string => {
+    //     return `${data[sortHeaderId]}`.toLocaleLowerCase();
+    // };
 
     /**
      * Gets a sorted copy of the data array based on the state of the HcSort. Called
@@ -135,7 +160,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * @param data The array of data that should be sorted.
      * @param sort The connected HcSort that holds the current sort state.
      */
-    sortData: ((data: T[], sort: HcSort) => T[]) = (data: T[], sort: HcSort): T[] => {
+    sortData: (data: T[], sort: HcSort) => T[] = (data: T[], sort: HcSort): T[] => {
         const active = sort.active;
         const direction = sort.direction;
         if (!active || direction === '') {
@@ -178,7 +203,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * @param filter Filter string that has been set on the data source.
      * @returns Whether the filter matches against the data
      */
-    filterPredicate: ((data: T, filter: string) => boolean) = (data: T, filter: string): boolean => {
+    filterPredicate: (data: T, filter: string) => boolean = (data: T, filter: string): boolean => {
         // Transform the data into a lowercase string of all property values.
         const accumulator = (currentTerm, key) => currentTerm + data[key];
         const dataStr = Object.keys(data)
@@ -218,11 +243,14 @@ export class HcTableDataSource<T> extends DataSource<T> {
 
         const dataStream = this._data;
         // Watch for base data or filter changes to provide a filtered set of data.
-        const filteredData = combineLatest(dataStream, this._filter).pipe(map(([data]) => this._filterData(data)));
+        const filteredData = combineLatest([dataStream, this._filter])
+            .pipe(map(([data]) => this._filterData(data)));
         // Watch for filtered data or sort changes to provide an ordered set of data.
-        const orderedData = combineLatest(filteredData, sortChange).pipe(map(([data]) => this._orderData(data)));
+        const orderedData = combineLatest([filteredData, sortChange])
+            .pipe(map(([data]) => this._orderData(data)));
         // Watch for ordered data or page changes to provide a paged set of data.
-        const paginatedData = combineLatest(orderedData, pageChange).pipe(map(([data]) => this._pageData(data)));
+        const paginatedData = combineLatest([orderedData, pageChange])
+            .pipe(map(([data]) => this._pageData(data)));
         // Watched for paged data changes and send the result to the table to render.
         this._renderChangesSubscription.unsubscribe();
         this._renderChangesSubscription = paginatedData.subscribe(data => this._renderData.next(data));
@@ -265,11 +293,13 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * index and length. If there is no paginator provided, returns the data array as provided.
      */
     _pageData(data: T[]): T[] {
-        if (!this.paginator) {
+        const pager = this.paginator;
+        if (!pager) {
             return data;
         }
-        const startIndex = (this.paginator.pageNumber - 1) * this.paginator.pageSize;
-        return data.slice().splice(startIndex, this.paginator.pageSize);
+        const startIndex = _isLoadMorePaginator(pager) ? 0 : (pager.pageNumber - 1) * pager.pageSize;
+        const numElsToGrab = _isLoadMorePaginator(pager) ? pager.pageNumber * pager.pageSize : pager.pageSize;
+        return data.slice().splice(startIndex, numElsToGrab);
     }
 
     /**
@@ -287,7 +317,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
 
             // If the page index is set beyond the page, reduce it to the last page.
             if (this.paginator.pageNumber > 0) {
-                const lastPageIndex = Math.ceil(this.paginator.length / this.paginator.pageSize) - 1 || 0;
+                const lastPageIndex = Math.ceil(this.paginator.length / this.paginator.pageSize) || 1;
                 this.paginator.pageNumber = Math.min(this.paginator.pageNumber, lastPageIndex);
             }
         });

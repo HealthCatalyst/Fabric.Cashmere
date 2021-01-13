@@ -1,16 +1,20 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, HostBinding, Input, ViewEncapsulation} from '@angular/core';
 
 /** Secondary navigation bar appearing below the primary navbar  */
 @Component({
     selector: 'hc-subnav',
-    template: `<ng-content></ng-content>`
+    template: `
+        <ng-content></ng-content>
+    `,
+    encapsulation: ViewEncapsulation.None
 })
 export class SubnavComponent {
-    @HostBinding('class.subnav')
+    @HostBinding('class.hc-subnav')
     _hostClass: boolean = true;
 
-    /** If true, statically positions the subnav below the navbar (stays pinned on scroll) */
-    @HostBinding('class.fixed-top')
+    /** **DEPRECATED** Not compatible with notification banners, so you should set
+     * the fixed position of the subnav and other header content within your app instead */
+    @HostBinding('class.hc-subnav-fixed-top')
     @Input()
     public fixedTop: boolean = false;
 

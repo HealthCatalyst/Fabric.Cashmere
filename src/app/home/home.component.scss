@@ -1,9 +1,10 @@
-@import 'scss/colors';
-@import 'scss/mixins';
+@import "scss/colors";
+@import "scss/mixins";
 
 header {
-    max-width: 720px;
+    max-width: 820px;
     margin: 50px auto 60px auto;
+    display: flex;
 }
 
 button {
@@ -27,15 +28,14 @@ p {
 }
 
 .headerLeft {
-    display: inline-block;
+    display: flex;
     padding-left: 40px;
-    padding-right: 80px;
-    vertical-align: middle;
+    padding-right: 60px;
 }
 
 .headerLeft img {
     height: 190px;
-    width: auto;
+    width: 175px;
 }
 
 .headerCopy {
@@ -45,14 +45,29 @@ p {
 }
 
 .headerRight {
-    display: inline-block;
+    display: flex;
+    width: 100%;
     padding-right: 40px;
-    vertical-align: middle;
+    flex-direction: column;
+    justify-content: center;
+
+    .hc-form-field {
+        .searchIcon {
+            padding-left: 15px;
+        }
+
+        .searchBar {
+            padding-left: 25px;
+            font-size: 18px;
+            height: 40px;
+        }
+    }
 }
 
 .headerRight img {
     height: 55px;
-    width: auto;
+    width: 372px;
+    margin-top: 10px;
 }
 
 @include media-breakpoint-down(md) {
@@ -64,7 +79,6 @@ p {
 
     .headerLeft {
         padding: 0;
-        display: flex;
     }
 
     .headerLeft img {
@@ -73,14 +87,28 @@ p {
     }
 
     .headerRight {
-        text-align: center;
-        padding: 0;
-        margin: 20px;
+        align-items: center;
+        padding: 20px;
+
+        .hc-form-field {
+            .searchIcon {
+                padding-left: 8px;
+            }
+
+            .searchBar {
+                padding-left: 10px;
+            }
+        }
     }
 
     .headerRight img {
-        height: unset;
+        width: 100%;
     }
+
+    .headerCopy {
+        width: 100%;
+    }
+
     h2 {
         margin: 10px 0 15px 0;
     }
@@ -94,6 +122,7 @@ main {
     border-top-style: solid;
     align-content: center;
     padding-top: 60px;
+    display: block;
 }
 
 section {
@@ -139,7 +168,6 @@ section button {
 }
 .sectionTwoImg {
     width: 100%;
-    max-width: 280px;
 }
 .sectionTwoImg img {
     max-width: 293px;
@@ -155,7 +183,6 @@ section button {
 }
 .sectionThreeImg {
     width: 100%;
-    max-width: 300px;
 }
 .sectionThreeImg img {
     max-width: 261px;
@@ -185,9 +212,9 @@ section button {
     }
 
     .sectionCenter {
-        max-height: unset;
+        max-height: none;
         padding-bottom: 20px;
-        display: unset;
+        display: inline;
     }
 
     .sectionOneImg img,

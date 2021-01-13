@@ -1,14 +1,51 @@
-<hc-subnav class="responsive-subnav" fixedTop="true">
-    <div class="subnav-container">
-        <span class="subnav-label">Guides: </span>
-        <span class="subnav-select">
-            <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
-                <option *ngFor="let option of selectOptions" [value]="option" [selected]="option === thisPage">{{option}}</option>
-            </hc-select>
-        </span>
+<div class="hc-components-container">
+    <hc-subnav class="responsive-subnav" fixedTop="true">
+        <div class="subnav-container">
+            <span class="subnav-label">Guides: </span>
+            <span class="subnav-select">
+                <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
+                    <optgroup label="Using Cashmere">
+                        <ng-container *ngFor="let guide of guidesService.guides">
+                            <option *ngIf="guide.category == 'using'" [value]="guide.title" [selected]="guide.title === thisPage">{{guide.title}}</option>
+                        </ng-container>
+                    </optgroup>
+                    <optgroup label="Development">
+                        <ng-container *ngFor="let guide of guidesService.guides">
+                            <option *ngIf="guide.category == 'dev'" [value]="guide.title" [selected]="guide.title === thisPage">{{guide.title}}</option>
+                        </ng-container>
+                    </optgroup>
+                </hc-select>
+            </span>
+        </div>
+    </hc-subnav>
+
+    <div class="hc-components-left-column">
+        <div class="hc-components-nav-container">
+            <hc-tile>
+                <div class="hc-components-nav-list">
+                    <hc-accordion triggerAlign="right" open='true'>
+                        <hc-accordion-toolbar>Using Cashmere</hc-accordion-toolbar>
+                        <ng-container *ngFor="let guide of guidesService.guides">
+                            <div *ngIf="guide.category == 'using'" class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': guide.title == thisPage }" (click)="navUpdate(guide.route)">{{ guide.title }}</div>
+                        </ng-container>
+                        <div class="hc-components-nav-spacer"></div>
+                    </hc-accordion>
+                    <div class="hc-components-nav-divider"></div>
+                    <hc-accordion triggerAlign="right" open='true'>
+                        <hc-accordion-toolbar>Development</hc-accordion-toolbar>
+                        <ng-container *ngFor="let guide of guidesService.guides">
+                            <div *ngIf="guide.category == 'dev'" class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': guide.title == thisPage }" (click)="navUpdate(guide.route)">{{ guide.title }}</div>
+                        </ng-container>
+                        <div class="hc-components-nav-spacer"></div>
+                    </hc-accordion>
+                </div>
+            </hc-tile>
+        </div>
     </div>
-</hc-subnav>
-<hc-tab-set class="full-height">
-    <hc-tab *ngFor="let guide of guidesService.guides" [tabTitle]="guide.title" [routerLink]="['/guides/', guide.route]">
-    </hc-tab>
-</hc-tab-set>
+    <div class="hc-components-right-column">
+        <hc-tab-set class="full-height" [defaultTab]="queryTab">
+            <hc-tab *ngFor="let guide of guidesService.guides" [tabTitle]="guide.title" [routerLink]="['/guides/', guide.route]">
+            </hc-tab>
+        </hc-tab-set>
+    </div>
+</div>

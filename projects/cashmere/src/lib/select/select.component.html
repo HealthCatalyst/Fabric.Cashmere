@@ -1,11 +1,15 @@
-<div class="hc-select-container">
+<div class="hc-select-container" [class.hc-select-tight]="tight">
     <span class="hc-select-chevron"></span>
-    <select class="hc-select-input"
-            [disabled]="disabled"
-            (change)="value = $event.target.value"
-            [value]="value"
-            [required]="required">
-        <option *ngIf="placeholder" value="" selected disabled hidden>{{placeholder}}</option>
-        <ng-content select="option"></ng-content>
+    <select
+        #selectInput
+        class="hc-select-input"
+        [disabled]="disabled"
+        (change)="_change($event, selectInput.value)"
+        (focus)="focus.next()"
+        (blur)="blur.next()"
+        [required]="required"
+    >
+        <option *ngIf="placeholder" value="" selected disabled hidden>{{ placeholder }}</option>
+        <ng-content></ng-content>
     </select>
 </div>

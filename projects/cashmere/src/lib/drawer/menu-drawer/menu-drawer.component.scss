@@ -1,63 +1,33 @@
-@import '../../sass/colors';
-
-$drawer-toolbar-height: 52px;
+@import '../../sass/menu-drawer.scss';
 
 .hc-menu-drawer {
-    display: block;
-    overflow: hidden;
+    @include hc-menu-drawer();
+}
 
-    &.hc-drawer-toolbar-visible {
-        .hc-menu-drawer-item-container {
-            height: calc(100% - #{$drawer-toolbar-height});
-        }
+.hc-menu-drawer-item-container {
+    @include hc-menu-drawer-item-container();
+
+    .hc-drawer-toolbar-visible & {
+        @include hc-menu-drawer-item-container-visible();
     }
 }
 
 .hc-menu-drawer-toolbar-container {
-    display: flex;
-    flex-direction: column;
-    font-size: 18px;
-    color: $blue;
-    background-color: #555d63;
+    @include hc-menu-drawer-toolbar-container();
 }
 
 .hc-drawer-toolbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    padding: 15px 28px;
-    max-height: $drawer-toolbar-height;
-    height: $drawer-toolbar-height;
-    overflow: hidden;
-}
-
-.hc-menu-drawer-item-container {
-    background-color: #5e676f;
-    height: 100%;
-    overflow-y: auto;
-    padding-right: 28px;
+    @include hc-drawer-toolbar();
 }
 
 .hc-drawer-item {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding: 15px 0 15px 15px;
-    color: #ffffff;
-
-    &:not(:first-child) {
-        border-top: 1px solid #6b737b;
-        border-bottom: 1px solid #6b737b;
-    }
+    @include hc-drawer-item();
 }
 
-.hc-drawer-right {
-    .hc-menu-drawer-item-container {
-        padding: 0 0 0 28px;
-    }
+.hc-drawer-divider {
+    @include hc-drawer-divider();
 
-    .hc-drawer-item {
-        padding: 15px 15px 15px 0;
+    .hc-drawer-right & {
+        @include hc-drawer-divider-right();
     }
 }

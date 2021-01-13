@@ -1,78 +1,67 @@
-@import '../sass/colors';
+@import '../sass/radio-button.scss';
 
 .hc-radio-container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin: 7px 0;
-    line-height: 1.5;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-    &:hover input ~ .hc-radio-overlay {
-        border-color: $primary-brand;
-    }
-
-    input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-
-        &:checked ~ .hc-radio-overlay {
-            background-color: $primary-brand;
-            border-color: $primary-brand;
-
-            &:after {
-                display: block;
-            }
-        }
-    }
-
-    .hc-radio-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 22px;
-        width: 22px;
-        border: 2px solid $gray-300;
-        background-color: $white;
-        border-radius: 50%;
-    }
-
-    .hc-radio-overlay:after {
-        top: 5px;
-        left: 5px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: $white;
-        content: '';
-        position: absolute;
-        display: none;
-    }
+    @include hc-radio-container();
 
     &.disabled {
-        cursor: not-allowed;
-        color: $gray-300;
+        @include hc-radio-container-disabled();
+    }
 
-        &:hover input ~ .hc-radio-overlay {
-            border-color: $gray-300;
-        }
+    &.hc-radio-inline {
+        @include hc-radio-container-inline();
+    }
 
-        input:checked ~ .hc-radio-overlay {
-            background-color: $gray-200;
-            border-color: $gray-300;
-        }
+    &.hc-radio-tight {
+        @include hc-radio-container-tight();
+    }
+}
 
-        .hc-radio-overlay {
-            background-color: $gray-200;
-        }
+.hc-radio-tight {
+    .hc-radio-overlay {
+        @include hc-radio-overlay-tight();
+    }
 
-        .hc-radio-overlay:after {
-            background: $gray-200;
+    .hc-radio-content {
+        @include hc-radio-content-tight();
+    }
+}
+
+.hc-radio-overlay {
+    @include hc-radio-overlay();
+
+    &.disabled {
+        @include hc-radio-overlay-disabled();
+    }
+
+    .hc-radio-container:hover & {
+        @include hc-radio-overlay-hover();
+
+        &.disabled {
+            @include hc-radio-overlay-disabled();
         }
+    }
+
+    .hc-radio-input:checked ~ & {
+        @include hc-radio-overlay-checked();
+    }
+
+    .hc-radio-input:checked ~ &.disabled {
+        @include hc-radio-overlay-checked-disabled();
+    }
+}
+
+.hc-radio-input {
+    @include hc-radio-input();
+
+    &.disabled {
+        @include hc-radio-input-disabled();
+    }
+
+    &:focus + .hc-radio-overlay {
+        @include hc-radio-input-focus();
+    }
+
+    &:active + .hc-radio-overlay {
+        @include hc-radio-input-active();
     }
 }

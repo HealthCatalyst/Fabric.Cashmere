@@ -1,0 +1,56 @@
+@import '../../sass/datepicker.scss';
+
+.hc-calendar-body {
+    @include hc-calendar-body();
+}
+
+.hc-calendar-body-label {
+    @include hc-calendar-body-label();
+}
+
+.hc-calendar-body-cell {
+    @include hc-calendar-body-cell();
+}
+
+.hc-calendar-body-disabled {
+    @include hc-calendar-body-disabled();
+}
+
+.hc-calendar-body-cell-content {
+    @include hc-calendar-body-cell-content();
+
+    .hc-calendar-body-disabled &:not(.hc-calendar-body-selected):not(.hc-calendar-body-today) {
+        @include hc-calendar-body-disabled();
+    }
+
+    .hc-calendar-body-available:hover & {
+        @include hc-calendar-body-active();
+    }
+
+    .cdk-keyboard-focused .hc-calendar-body-active &:not(.hc-calendar-body-selected),
+    .cdk-program-focused .hc-calendar-body-active &:not(.hc-calendar-body-selected) {
+        @include hc-calendar-body-active();
+    }
+}
+
+.hc-calendar-body-selected {
+    @include hc-calendar-body-selected();
+
+    .hc-calendar-body-disabled & {
+        @include hc-calendar-body-selected-disabled();
+    }
+
+    &.hc-calendar-body-today {
+        @include hc-calendar-body-selected-today();
+    }
+}
+
+.hc-calendar-body-today {
+    &:not(.hc-calendar-body-selected) {
+        @include hc-calendar-body-today();
+    }
+
+    .hc-calendar-body-disabled &:not(.hc-calendar-body-selected) {
+        @include hc-calendar-body-today-disabled();
+    }
+}

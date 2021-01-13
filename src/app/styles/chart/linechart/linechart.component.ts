@@ -1,13 +1,15 @@
-import {Component, ElementRef, HostListener, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, HostListener, Input, ViewChild, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import * as d3 from 'd3';
 
 @Component({
     selector: 'hc-demo-linechart',
-    template: `<div class="d3-line-chart" #chart></div>`,
+    template: `
+        <div class="d3-line-chart" #chart></div>
+    `,
     styleUrls: ['./linechart.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class LinechartComponent implements OnInit {
+export class LinechartComponent implements AfterViewInit {
     @ViewChild('chart')
     private chartContainer: ElementRef;
     @Input()
@@ -32,7 +34,7 @@ export class LinechartComponent implements OnInit {
         this.updateChart();
     }
 
-    ngOnInit() {
+    ngAfterViewInit() {
         this.createChart();
         if (this.data) {
             this.updateChart();
@@ -41,7 +43,6 @@ export class LinechartComponent implements OnInit {
 
     createChart() {
         let element = this.chartContainer.nativeElement;
-        let self = this;
         this.width = element.offsetWidth - this.margin.left - this.margin.right;
         this.height = element.offsetHeight - this.margin.top - this.margin.bottom;
         this.svg = d3

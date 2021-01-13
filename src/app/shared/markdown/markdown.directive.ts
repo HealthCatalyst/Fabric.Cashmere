@@ -1,7 +1,8 @@
-import {Directive, ElementRef, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import * as markdownIt from 'markdown-it';
 import * as container_plugin from 'markdown-it-container';
-import {highlightBlock} from 'highlight.js';
+import * as mdnh from 'markdown-it-named-headers';
+import {HighlightDirective} from '../highlight/highlight.directive';
 
 @Directive({
     selector: '[hcMarkdown]'
@@ -16,10 +17,16 @@ export class MarkdownDirective implements OnChanges {
     @Input()
     lineNumbers: boolean = true;
 
+    @Output()
+    loaded: EventEmitter<boolean> = new EventEmitter();
+
     constructor(private el: ElementRef) {}
 
-    ngOnChanges(changes: SimpleChanges): void {
+    ngOnChanges(_: SimpleChanges): void {
         const md = new markdownIt({html: true});
+
+        // plugin to add id values to header tags
+        md.use(mdnh);
 
         // plugin to markdown-it to interpret :::
         md.use(container_plugin, 'hc-tile', {
@@ -30,36 +37,16 @@ export class MarkdownDirective implements OnChanges {
                 return true;
             }
         });
-
         this.el.nativeElement.innerHTML = md.render(this.hcMarkdown, {sanitize: this.sanitize});
         if (this.highlight) {
-            const preTags: Array<HTMLPreElement> = this.el.nativeElement.getElementsByTagName('pre');
+            const preTags: Array<ElementRef> = this.el.nativeElement.getElementsByTagName('pre');
             for (const pre of preTags) {
-                pre.classList.add(pre.getElementsByTagName('code')[0].className.split('-')[1]);
-                this.removeLines(pre);
-                highlightBlock(pre);
-                if (this.lineNumbers) {
-                    this.addLines(pre);
-                }
+                const syntaxHighlight = new HighlightDirective( pre );
+                syntaxHighlight.lineNumbers = this.lineNumbers;
+                syntaxHighlight.ngAfterViewInit();
             }
         }
-    }
 
-    private removeLines(pre: HTMLPreElement): void {
-        const span = pre.querySelector('span.line-number');
-        if (span) {
-            pre.removeChild(span);
-        }
-    }
-
-    private addLines(pre: HTMLPreElement): void {
-        pre.innerHTML = `<span class="line-number"></span>${pre.innerHTML}<span class="cl"></span>`;
-        const num = pre.innerHTML.split(/\n/).length;
-        if (num > 2) {
-            for (let j = 1; j < num; j++) {
-                const lineNum = pre.getElementsByTagName('span')[0];
-                lineNum.innerHTML += `<span>${j}</span>`;
-            }
-        }
+        this.loaded.emit( true );
     }
 }

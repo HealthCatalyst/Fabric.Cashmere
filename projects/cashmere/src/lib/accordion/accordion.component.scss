@@ -1,91 +1,46 @@
-$accordion-border: 1px solid #dddddd;
-$accordion-background-color: #f0f0f0;
-$accordion-toolbar-padding: 0 10px;
+@import '../sass/accordion.scss';
 
 .hc-accordion {
-    display: block;
-    background: transparent;
-    color: currentColor;
-    box-sizing: border-box;
-
-    .hc-toolbar-wrapper {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-
-        &.hc-align-right {
-            .hc-accordion-trigger {
-                order: 1;
-                margin-left: auto;
-            }
-            .hc-accordion-toolbar {
-                order: 0;
-            }
-        }
-
-        &.hc-toolbar-pointer {
-            cursor: pointer;
-        }
-    }
-
-    .hc-accordion-trigger {
-        position: relative;
-        cursor: pointer;
-
-        &::after {
-            display: block;
-            transform: translate(-50%, 2px) rotate(46deg);
-            border-top: 2px solid;
-            border-left: 2px solid;
-            left: 50%;
-            content: '';
-            width: 8px;
-            height: 8px;
-            position: relative;
-        }
-    }
-
-    .hc-accordion-collapse {
-        display: block;
-        overflow: hidden;
-    }
-
-    &.hc-accordion-closed,
-    &.hc-accordion-closing {
-        .hc-accordion-trigger::after {
-            transform: translate(-50%, -2px) rotate(-134deg);
-        }
-    }
+    @include hc-accordion();
 }
 
-.hc-accordion-toolbar {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    white-space: nowrap;
-    box-sizing: border-box;
-    align-items: center;
-    width: 100%;
-    padding: $accordion-toolbar-padding;
+.hc-accordion-toolbar-wrapper {
+    @include hc-accordion-toolbar-wrapper();
 }
 
-.hc-accordion-content {
-    padding: 12px;
-    outline: 0;
+.hc-accordion-toolbar-wrapper.hc-toolbar-pointer {
+    @include hc-accordion-toolbar-wrapper-pointer();
+}
+
+.hc-accordian-hide-button {
+    @include hc-accordion-hide-button();
 }
 
 .hc-accordion-trigger {
-    height: 50px;
-    width: 50px;
+    @include hc-accordion-trigger();
 
-    outline: none;
-    background: transparent;
-    border: none;
-    padding: 0;
-
-    color: deepskyblue;
-
-    &::after {
-        transition: transform 500ms cubic-bezier(0.25, 0.8, 0.25, 1);
+    .hc-accordion-closed &::after,
+    .hc-accordion-closing &::after {
+        @include hc-accordion-trigger-closed();
     }
+
+    .hc-accordion-toolbar-wrapper.hc-align-right & {
+        @include hc-accordion-trigger-right();
+    }
+}
+
+.hc-accordion-collapse {
+    @include hc-accordion-collapse();
+}
+
+.hc-accordion-toolbar {
+    @include hc-accordion-toolbar();
+
+    .hc-accordion-toolbar-wrapper.hc-align-right & {
+        @include hc-accordion-toolbar-right();
+    }
+}
+
+.hc-accordion-content {
+    @include hc-accordion-content();
 }

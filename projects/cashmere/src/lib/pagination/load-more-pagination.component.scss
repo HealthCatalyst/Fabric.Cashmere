@@ -1,0 +1,5 @@
+@import '../sass/pagination.scss';
+
+.hc-page-load-more-button {
+    @include hc-page-load-more-button();
+}

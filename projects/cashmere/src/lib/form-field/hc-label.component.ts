@@ -6,7 +6,4 @@ import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
     template: '<ng-content></ng-content>',
     encapsulation: ViewEncapsulation.None
 })
-export class HcLabelComponent {
-    @HostBinding('class.hc-label')
-    _hostHcLabelClass = true;
-}
+export class HcLabelComponent {}

@@ -11,13 +11,17 @@ $grid-breakpoints: (
 ) !default;
 
 /* set standard relative layering for components */
-$zindex-dropdown: 1000 !default;
-$zindex-sticky: 1020 !default;
-$zindex-fixed: 1030 !default;
-$zindex-subnav: 1050 !default;
-$zindex-navbar-menu: 1060 !default;
-$zindex-navbar: 1070 !default;
+$zindex-dropdown: 900 !default;
+$zindex-sticky: 920 !default;
+$zindex-fixed: 930 !default;
+
+$zindex-subnav: 950 !default;
+$zindex-navbar-menu: 960 !default;
+$zindex-navbar: 970 !default;
 // z-index for modals is set in code as an incrementing
 // amount, starting at 2000, see modal.service.ts
 $zindex-popover: 1900 !default;
 $zindex-tooltip: 1910 !default;
+// z-index for cdk overlays is 1000
+$zindex-cdk-overlay: 2100 !default;
+$z-index-ng-select-dropdown: 3000 !default;

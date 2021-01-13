@@ -3,6 +3,13 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {PicklistPaneComponent} from './pane/picklist-pane.component';
 import {IPicklistOptions, IPicklistSettings, IValueOption, PicklistOptionsSource, PicklistSettings} from './picklist.model';
 
+const supportedSortModes = ['asc', 'desc', 'none'];
+export function validateSortInput(inputStr: string) {
+    if (supportedSortModes.indexOf(inputStr) < 0) {
+        throw Error('Unsupported sort input value: ' + inputStr);
+    }
+}
+
 @Component({
     selector: 'hc-picklist',
     templateUrl: 'picklist.component.html',
@@ -68,9 +75,21 @@ export class PicklistComponent implements ControlValueAccessor {
         return this.picklistSettings.rightHeaderText;
     }
 
-    @ViewChild('availableList')
+    /**
+     * How to sort options in the pane. Options: `asc` | `desc` | `none`; *Defaults to `none`.*
+     */
+    @Input()
+    public set sort(sort: string) {
+        validateSortInput(sort);
+        this.update({sort: sort});
+    }
+    public get sort(): string {
+        return this.picklistSettings.sort;
+    }
+
+    @ViewChild('availableList', {static: true})
     public _available: PicklistPaneComponent | undefined;
-    @ViewChild('confirmedList')
+    @ViewChild('confirmedList', {static: true})
     public _confirmed: PicklistPaneComponent | undefined;
     /** Fired when a change is made to the picklist selection. */
     @Output()

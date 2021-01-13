@@ -1,0 +1,46 @@
+@import 'scss/colors';
+
+.icon-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.icon-example {
+    display: flex;
+    width: 170px;
+    height: 120px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    hc-icon {
+        height: 30px;
+        margin-bottom: 10px;
+        color: $offblack;
+    }
+
+    span {
+        font-weight: 600;
+        color: $gray-600;
+
+        &.alt-text {
+            font-weight: 400;
+            color: $gray-400;
+            font-size: 12px;
+            padding-top: 7px;
+            text-align: center;
+        }
+
+        &.unicode {
+            font-weight: 400;
+            color: $gray-400;
+            font-size: 12px;
+        }
+    }
+}
+
+.icon-left {
+    margin-right: 10px;
+}

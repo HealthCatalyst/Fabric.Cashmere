@@ -1,4 +1,5 @@
 @import '../sass/button.scss';
+@import '../sass/colors';
 
 .hc-button {
     @include hc-button();
@@ -18,12 +19,84 @@
     &.hc-secondary {
         @include hc-button-secondary();
     }
+    &.hc-minimal {
+        @include hc-button-minimal();
+    }
+    &.hc-sm {
+        @include hc-button-sm();
+    }
+
+    &.hc-md {
+        @include hc-button-md();
+    }
+
+    &.hc-lg {
+        @include hc-button-lg();
+    }
     &.hc-link,
     &.hc-link-inline {
         @include hc-button-link();
     }
     &.hc-link-inline {
         @include hc-button-link-inline();
+    }
+
+    &.hc-button-blue {
+        @include hc-button-custom( $blue );
+    }
+    &.hc-button-green {
+        @include hc-button-custom( $green );
+    }
+    &.hc-button-purple {
+        @include hc-button-custom( $purple );
+    }
+    &.hc-button-red {
+        @include hc-button-custom( $red );
+    }
+    &.hc-button-orange {
+        @include hc-button-custom( $orange );
+    }
+    &.hc-button-ruby-red {
+        @include hc-button-custom( $ruby-red );
+    }
+    &.hc-button-deep-red {
+        @include hc-button-custom( $deep-red );
+    }
+    &.hc-button-red-orange {
+        @include hc-button-custom( $red-orange );
+    }
+    &.hc-button-magenta {
+        @include hc-button-custom( $magenta );
+    }
+    &.hc-button-pink {
+        @include hc-button-custom( $pink );
+    }
+    &.hc-button-light-pink {
+        @include hc-button-custom( $light-pink );
+    }
+    &.hc-button-azure {
+        @include hc-button-custom( $azure );
+    }
+    &.hc-button-teal {
+        @include hc-button-custom( $teal );
+    }
+    &.hc-button-dark-green {
+        @include hc-button-custom( $dark-green );
+    }
+    &.hc-button-brown {
+        @include hc-button-custom( $brown );
+    }
+    &.hc-button-purple-gray {
+        @include hc-button-custom( $purple-gray );
+    }
+    &.hc-button-yellow {
+        @include hc-button-custom( $yellow );
+    }
+    &.hc-button-yellow-orange {
+        @include hc-button-custom( $yellow-orange );
+    }
+    &.hc-button-tan {
+        @include hc-button-custom( $tan );
     }
 }
 
@@ -38,7 +111,22 @@
         @include hc-split-button-main();
     }
     .hc-split-button-toggle {
-        @include hc-split-button-toggle();
+        &:not(.hc-secondary):not(.hc-minimal) {
+            @include hc-split-button-toggle();
+        }
+        &.hc-secondary {
+            @include hc-button-secondary-toggle();
+        }
+        &.hc-minimal {
+            @include hc-button-secondary-toggle();
+            @include hc-button-minimal-toggle();
+        }
+        &.hc-sm {
+            @include hc-button-sm-toggle();
+        }
+        &.hc-lg {
+            @include hc-button-lg-toggle();
+        }
     }
 }
 

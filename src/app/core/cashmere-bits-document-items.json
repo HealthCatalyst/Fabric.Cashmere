@@ -1,0 +1,12 @@
+{
+    "$schema": "./document-items.schema.json",
+
+    "change-case-pipe": {
+        "name": "Change Case",
+        "category": "pipes",
+        "examples": ["change-case-pipe-overview"],
+        "usageDoc": true,
+        "hideApi": true,
+        "npmPackage": "@bit/healthcatalyst.cashmere.change-case-pipe"
+    }
+}

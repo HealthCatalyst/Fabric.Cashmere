@@ -1,3 +1,5 @@
+##### Overview
+
 The `hc-table` provides a Cashmere styled data-table that can be used to display rows of
 data.
 
@@ -17,9 +19,7 @@ The simplest way to provide data to the table is by passing a data array to the 
 input. The table will take the array and render a row for each object in the data array.
 
 ```html
-<table hc-table [dataSource]=”myDataArray”>
-  ...
-</table>
+<table hc-table [dataSource]="myDataArray">...</table>
 ```
 
 Since the table optimizes for performance, it will not automatically check for changes to the data
@@ -42,8 +42,8 @@ Here's a simple column definition with the name `'userName'`. The header cell co
 
 ```html
 <ng-container hcColumnDef="userName">
-  <th hc-header-cell *hcHeaderCellDef> Name </th>
-  <td hc-cell *hcCellDef="let user"> {{user.name}} </td>
+    <th hc-header-cell *hcHeaderCellDef>Name</th>
+    <td hc-cell *hcCellDef="let user">{{user.name}}</td>
 </ng-container>
 ```
 
@@ -74,19 +74,19 @@ that was defined in your template.
 This means that by changing your column list provided to the rows, you can easily re-order and
 include/exclude columns dynamically.
 
-### Advanced data sources
+##### Advanced data sources
 
 The simplest way to provide data to your table is by passing a data array. More complex use-cases
 may benefit from a more flexible approach involving an Observable stream or by encapsulating your
 data source logic into a `DataSource` class.
 
-#### Observable stream of data arrays
+##### Observable stream of data arrays
 
 An alternative approach to providing data to the table is by passing an Observable stream that emits
 the data array to be rendered each time it is changed. The table will listen to this stream and
 automatically trigger an update to the rows each time a new data array is emitted.
 
-#### DataSource
+##### DataSource
 
 For most real-world applications, providing the table a DataSource instance will be the best way to
 manage data. The DataSource is meant to serve a place to encapsulate any sorting, filtering, and data retrieval logic specific to the application.
@@ -96,23 +96,26 @@ A DataSource is simply a base class that has two functions: `connect` and `disco
 should be rendered. The table will call `disconnect` when the table is destroyed, which may be the
 right time to clean up any subscriptions that may have been registered during the connect process.
 
-### Features
+##### Features
 
 The `HcTable` is focused on a single responsibility: efficiently render rows of data in a
 performant and accessible way.
 
 You'll notice that the table itself doesn't come out of the box with a lot of features, but expects
-that the table will be included in a composition of components that fills out its features.
+that the table will be included in a composition of components that fills out its features. For example,
+you can add sorting to the table by using HcSort and mutating the data provided to the table according to
+their outputs.
 
-For example, you can add sorting to the table by using HcSort and
-mutating the data provided to the table according to their outputs.
+The text alignment of a column may be set using the `justify` property on the `ng-container` of a column.
+It defaults to a value of `left`, but my be set to `right` or `center`. Columns containing numerical data
+should typically be right aligned.
 
 To simplify the use case of having a table that can sort, and filter an array of data,
 the Cashmere library comes with a `HcTableDataSource` that has already implemented
 the logic of determining what rows should be rendered according to the current table state. To add
 these feature to the table, check out their respective sections below.
 
-#### Sorting
+##### Sorting
 
 To add sorting behavior to the table, add the `hcSort` directive to the table and add
 `hc-sort-header` to each column header cell that should trigger sorting.
@@ -120,14 +123,16 @@ To add sorting behavior to the table, add the `hcSort` directive to the table an
 ```html
 <!-- Name Column -->
 <ng-container hcColumnDef="position">
-  <th hc-header-cell *hcHeaderCellDef hc-sort-header> Name </th>
-  <td hc-cell *hcCellDef="let element"> {{element.position}} </td>
+    <th hc-header-cell *hcHeaderCellDef hc-sort-header>Name</th>
+    <td hc-cell *hcCellDef="let element">{{element.position}}</td>
 </ng-container>
 ```
 
 If you are using the `HcTableDataSource` for your table's data source, provide the `HcSort`
 directive to the data source and it will automatically listen for sorting changes and change the
 order of data rendered by the table.
+
+The default sort order of values is case insensitive as follows: "[Null]123ABC".
 
 By default, the `HcTableDataSource` sorts with the assumption that the sorted column's name
 matches the data property name that the column displays. For example, the following column
@@ -142,9 +147,43 @@ data, listen to the sort's `(hcSortChange)` event and re-order your data accordi
 If you are providing a data array directly to the table, don't forget to call `renderRows()` on the
 table, since it will not automatically check the array for changes.
 
+The position of the sorting indicator can be set using the `arrowPosition` property. If set to `before`
+it will place the indicator to the left of the header text.
+
 The `HcSort` is one provided solution to sorting your table's data, but it is not the only option.
 
-#### Filtering
+##### Column Resizing
+
+To add column resizing to a table, add `hc-cell-resizer` to the cells where you could like the functionality included. This can be on any of the header, body, or footer cells, and maybe be used in conjunction with the sorting functionality above. Those that contain it will change the cursor to the column resize state when the borders are hovered over, and can be dragged to resize.
+
+```html
+<ng-container hcColumnDef="position">
+    <th hc-header-cell *hcHeaderCellDef [style.width]="columnObjects[1].width + 'px'">
+        <span>{{columnObjects[1].title}}</span>
+        <hc-cell-resizer
+            [width]="columnObjects[1].width"
+            (resized)="columnResized(1, $event)"
+            (resizing)="isResizing = $event"
+        ></hc-cell-resizer>
+    </th>
+    <td hc-cell *hcCellDef="let element" [style.width]="columnObjects[1].width + 'px'">
+        <span>{{element.position}}</span>
+        <hc-cell-resizer
+            [width]="columnObjects[1].width"
+            (resized)="columnResized(1, $event)"
+            (resizing)="isResizing = $event"
+        ></hc-cell-resizer>
+    </td>
+</ng-container>
+```
+
+The example above will allow the user to resize the column from either the header or body cells. The resizer adds the drag targets, handles the dragging functionality, and stores a width value - but it leaves the actually resizing of the cell to the app. So in the example above, note the addition of `[style.width]` to the cell tag, which is bound to an array of column widths the app stores.
+
+The resizer will emit a `CellResizeEvent` via the `resized` property. This will contain the new width and whether the cell was scaled left or right. This is useful in determining how to scale neighboring cells to match. If minimum and maximum widths are needed for cells, the app is responsible to enforce them when setting cell widths. A `resizing` event is also available that will set a boolean value to true while the cell is being dragged.
+
+The dragging values that are returned are based on pixels moved. For pixel perfect dragging, make sure and add `table-layout: fixed` to your table css. This will allow the table to overflow its container. Otherwise, the table will scale its cells proportionally to the container width - so the column dragging may be faster or slower than your mouse depending on how much the table has been scaled.
+
+##### Filtering
 
 Cashmere does not provide a specific component to be used for filtering the `HcTable`
 since there is no single common approach to adding a filter UI to table data.
@@ -152,7 +191,7 @@ since there is no single common approach to adding a filter UI to table data.
 A general strategy is to add an input where users can type in a filter string and listen to this
 input to change what data is offered from the data source to the table.
 
-If you are using the `HcTableDataSource`, simply provide the filter string to the  
+If you are using the `HcTableDataSource`, simply provide the filter string to the
 `HcTableDataSource`. The data source will reduce each row data to a serialized form and will filter
 out the row if it does not contain the filter string. By default, the row data reducing function
 will concatenate all the object values and convert them to lowercase.
@@ -164,13 +203,18 @@ it is contained in the reduced string, and the row would be displayed in the tab
 To override the default filtering behavior, a custom `filterPredicate` function can be set which
 takes a data object and filter string and returns true if the data object is considered a match.
 
-#### Selection
+##### Pagination
+
+There are cashmere pagination components available for usage. To learn about how to implement those, visit the
+[pagination component examples](/components/pagination/examples).
+
+##### Selection
 
 Right now there is no formal support for adding a selection UI to the table, but Cashmere
 does offer the right components and pieces to set this up. The following steps are one solution but
 it is not the only way to incorporate row selection in your table.
 
-##### 1. Add a selection model
+#### 1. Add a selection model
 
 Get started by setting up a `SelectionModel` from `@angular/cdk/collections` that will maintain the
 selection state.
@@ -181,7 +225,7 @@ const allowMultiSelect = true;
 this.selection = new SelectionModel() < MyDataType > (allowMultiSelect, initialSelection);
 ```
 
-##### 2. Define a selection column
+#### 2. Define a selection column
 
 Add a column definition for displaying the row checkboxes, including a master toggle checkbox for
 the header. The column name should be added to the list of displayed columns provided to the
@@ -189,22 +233,24 @@ header and data row.
 
 ```html
 <ng-container hcColumnDef="select">
-  <th hc-header-cell *hcHeaderCellDef>
-    <hc-checkbox (change)="$event ? masterToggle() : null"
-                  [checked]="selection.hasValue() && isAllSelected()"
-                  [indeterminate]="selection.hasValue() && !isAllSelected()">
-    </hc-checkbox>
-  </th>
-  <td hc-cell *hcCellDef="let row">
-    <hc-checkbox (click)="$event.stopPropagation()"
-                  (change)="$event ? selection.toggle(row) : null"
-                  [checked]="selection.isSelected(row)">
-    </hc-checkbox>
-  </td>
+    <th hc-header-cell *hcHeaderCellDef>
+        <hc-checkbox
+            (change)="$event ? masterToggle() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()"
+        ></hc-checkbox>
+    </th>
+    <td hc-cell *hcCellDef="let row">
+        <hc-checkbox
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)"
+        ></hc-checkbox>
+    </td>
 </ng-container>
 ```
 
-##### 3. Add event handling logic
+#### 3. Add event handling logic
 
 Implement the behavior in your component's logic to handle the header's master toggle and checking
 if all rows are selected.
@@ -225,7 +271,7 @@ masterToggle() {
 }
 ```
 
-#### Footer row
+#### 4. Footer row
 
 A footer row can be added to the table by adding a footer row definition to the table and adding
 footer cell templates to column definitions. The footer row will be rendered after the rendered
@@ -245,7 +291,7 @@ data rows.
 <tr hc-footer-row *hcFooterRowDef="columnsToDisplay"></tr
 ```
 
-##### 4. Include overflow styling
+#### 5. Include overflow styling
 
 Finally, adjust the styling for the select column so that its overflow is not hidden. This allows
 the ripple effect to extend beyond the cell.
@@ -256,7 +302,7 @@ the ripple effect to extend beyond the cell.
 }
 ```
 
-#### Sticky Rows and Columns
+##### Sticky Rows and Columns
 
 By using `position: sticky` styling, the table's rows and columns can be fixed so that they do not
 leave the viewport even when scrolled. The table provides inputs that will autohcically apply the
@@ -285,7 +331,7 @@ container has a complex box shadow and has sibling elements, the stuck cells wil
 There is currently an [open issue with Edge](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/17514118/)
 to resolve this.
 
-### Accessibility
+##### Accessibility
 
 Tables without text or labels should be given a meaningful label via `aria-label` or
 `aria-labelledby`. The `aria-readonly` defaults to `true` if it's not set.
@@ -295,7 +341,7 @@ Table's default role is `grid`, and it can be changed to `treegrid` through `rol
 `hc-table` does not manage any focus/keyboard interaction on its own. Users can add desired
 focus/keyboard interactions in their application.
 
-### Tables with `display: flex`
+##### Tables with `display: flex`
 
 The `HcTable` does not require that you use a native HTML table. Instead, you can use an
 alternative approach that uses `display: flex` for the table's styles.
@@ -306,27 +352,27 @@ selectors. For example, `<table hc-table>` becomes `<hc-table>`; `<tr hc-row`> b
 
 ```html
 <hc-table [dataSource]="dataSource">
-  <!-- User name Definition -->
-  <ng-container cdkColumnDef="username">
-    <hc-header-cell *cdkHeaderCellDef> User name </hc-header-cell>
-    <hc-cell *cdkCellDef="let row"> {{row.username}} </hc-cell>
-  </ng-container>
+    <!-- User name Definition -->
+    <ng-container cdkColumnDef="username">
+        <hc-header-cell *cdkHeaderCellDef>User name</hc-header-cell>
+        <hc-cell *cdkCellDef="let row">{{row.username}}</hc-cell>
+    </ng-container>
 
-  <!-- Age Definition -->
-  <ng-container cdkColumnDef="age">
-    <hc-header-cell *cdkHeaderCellDef> Age </hc-header-cell>
-    <hc-cell *cdkCellDef="let row"> {{row.age}} </hc-cell>
-  </ng-container>
+    <!-- Age Definition -->
+    <ng-container cdkColumnDef="age">
+        <hc-header-cell *cdkHeaderCellDef>Age</hc-header-cell>
+        <hc-cell *cdkCellDef="let row">{{row.age}}</hc-cell>
+    </ng-container>
 
-  <!-- Title Definition -->
-  <ng-container cdkColumnDef="title">
-    <hc-header-cell *cdkHeaderCellDef> Title </hc-header-cell>
-    <hc-cell *cdkCellDef="let row"> {{row.title}} </hc-cell>
-  </ng-container>
+    <!-- Title Definition -->
+    <ng-container cdkColumnDef="title">
+        <hc-header-cell *cdkHeaderCellDef>Title</hc-header-cell>
+        <hc-cell *cdkCellDef="let row">{{row.title}}</hc-cell>
+    </ng-container>
 
-  <!-- Header and Row Declarations -->
-  <hc-header-row *cdkHeaderRowDef="['username', 'age', 'title']"></hc-header-row>
-  <hc-row *cdkRowDef="let row; columns: ['username', 'age', 'title']"></hc-row>
+    <!-- Header and Row Declarations -->
+    <hc-header-row *cdkHeaderRowDef="['username', 'age', 'title']"></hc-header-row>
+    <hc-row *cdkRowDef="let row; columns: ['username', 'age', 'title']"></hc-row>
 </hc-table>
 ```
 

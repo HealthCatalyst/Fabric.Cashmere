@@ -1,0 +1,25 @@
+@import '../../sass/tab.scss';
+
+.hc-horizontal-tab-container {
+    @include hc-tab-set-container-horizontal();
+}
+
+.hc-tab-bar-horizontal {
+    @include hc-tab-set-bar-horizontal();
+}
+
+.hc-tab-content-horizontal {
+    @include hc-tab-set-content-horizontal();
+}
+
+.hc-vertical-tab-container {
+    @include hc-tab-set-container-vertical();
+}
+
+.hc-tab-bar-vertical {
+    @include hc-tab-set-bar-vertical();
+}
+
+.hc-tab-content-vertical {
+    @include hc-tab-set-content-vertical();
+}

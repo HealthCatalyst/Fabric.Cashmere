@@ -7,13 +7,16 @@ import {
     Input,
     Output,
     ViewEncapsulation,
-    ViewChild
+    ViewChild,
+    ContentChildren
 } from '@angular/core';
-import {Overlay, OverlayConfig, OverlayRef, ConnectionPositionPair} from '@angular/cdk/overlay';
-import {TemplatePortal} from '@angular/cdk/portal';
-
+import type {QueryList} from '@angular/core';
 import {parseBooleanAttribute} from '../../util';
-import {validateStyleInput, ButtonComponent} from '../button.component';
+import {validateStyleInput, validateSizeInput, ButtonComponent} from '../button.component';
+import {HcPopComponent} from '../../pop/popover.component';
+import {MenuItemDirective} from '../../pop/directives/menu-item.directive';
+
+const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
 
 /** SplitButton click event */
 export class SplitButtonClickEvent {
@@ -25,7 +28,6 @@ export class SplitButtonClickEvent {
     selector: 'hc-split-button',
     templateUrl: './split-button.component.html',
     styleUrls: ['../button.component.scss', './split-button.component.scss'],
-    providers: [Overlay],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
@@ -33,13 +35,15 @@ export class SplitButtonComponent {
     private _tabIndex: number;
     private _disabled: boolean = false;
     private _style: string = 'primary';
-    private _menuClickedCallback = this._menuClicked.bind(this);
+    private _size: string = 'md';
 
-    private _menuPortalHost: OverlayRef;
-    @ViewChild('menuPortal')
-    _menuPortal: TemplatePortal<any>;
     @ViewChild('splitBtnToggle')
     _splitBtnToggle: ButtonComponent;
+
+    @ViewChild('splitMenu')
+    _splitMenu: HcPopComponent;
+
+    @ContentChildren(MenuItemDirective, {descendants: true}) _menuItems: QueryList<MenuItemDirective>;
 
     /** Primary button's click event */
     @Output()
@@ -79,28 +83,31 @@ export class SplitButtonComponent {
         this._tabIndex = value == null ? 0 : value;
     }
 
-    /**
-     * @deprecated
-     * @description Use `buttonStyle` instead
-     * */
-    @Input()
-    get color(): string {
-        return this.buttonStyle;
-    }
-
-    set color(btnStyle: string) {
-        this.buttonStyle = btnStyle;
-    }
-
-    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' | 'neutral' | 'secondary' | 'link' | 'link-inline'` */
+    /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' |
+     * 'neutral' | 'secondary' | 'minimal'`. If needed, colors from
+     * the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc) */
     @Input()
     get buttonStyle(): string {
         return this._style;
     }
 
     set buttonStyle(btnStyle: string) {
-        validateStyleInput(btnStyle);
+        validateStyleInput(btnStyle, 'SplitButtonComponent');
+        if ( supportedStyles.indexOf(btnStyle) < 0 ) {
+            btnStyle = "button-" + btnStyle;
+        }
         this._style = btnStyle;
+    }
+
+    /** Sets size of button. Choose from: `'sm' | 'md' | 'lg'` */
+    @Input()
+    get size(): string {
+        return this._size;
+    }
+
+    set size(size: string) {
+        validateSizeInput(size, 'SplitButtonComponent');
+        this._size = size;
     }
 
     /** Whether the control is disabled. */
@@ -118,7 +125,7 @@ export class SplitButtonComponent {
         return true;
     }
 
-    constructor(private elementRef: ElementRef, private overlay: Overlay) {}
+    constructor(private elementRef: ElementRef) {}
 
     _stopClick($event: MouseEvent) {
         $event.stopPropagation();
@@ -139,57 +146,14 @@ export class SplitButtonComponent {
 
     /** Manually close the menu */
     closeMenu() {
-        this._menuPortalHost.hostElement.removeEventListener('click', this._menuClickedCallback);
-        this._menuPortalHost.dispose();
+        this._splitMenu.close();
     }
 
     /** Manually open the menu */
     openMenu() {
-        this._menuPortalHost = this.overlay.create(this._getOverlayConfig());
-        this._menuPortalHost.attach(this._menuPortal);
+        // pass menuItems on to the HcPop instance so that keyboard accessibility works
+        if (this._splitMenu) { this._splitMenu._menuItems = this._menuItems; }
 
-        // close if clicking the backdrop, pressing escape, and optionally if clicking anywhere on the menu itself
-        this._menuPortalHost.backdropClick().subscribe(_ => this.closeMenu());
-        this._menuPortalHost.hostElement.addEventListener('click', this._menuClickedCallback);
-        this._menuPortalHost.keydownEvents().subscribe(e => {
-            if (e.key === 'Escape') {
-                this.closeMenu();
-            }
-        });
-    }
-
-    private _getOverlayConfig(): OverlayConfig {
-        const position = this._getPositionForMenu();
-        const positionStrategy = this.overlay
-            .position()
-            .flexibleConnectedTo(this._splitBtnToggle.elementRef)
-            .withFlexibleDimensions(true)
-            .withPush(true)
-            .withViewportMargin(10)
-            .withPositions([
-                new ConnectionPositionPair({originX: position, originY: 'bottom'}, {overlayX: position, overlayY: 'top'}),
-                new ConnectionPositionPair({originX: position, originY: 'top'}, {overlayX: position, overlayY: 'bottom'})
-            ]);
-
-        const overlayConfig = new OverlayConfig({
-            hasBackdrop: true,
-            backdropClass: 'hc-menu-backdrop',
-            panelClass: 'hc-menu-panel',
-            scrollStrategy: this.overlay.scrollStrategies.block(),
-            positionStrategy: positionStrategy
-        });
-
-        return overlayConfig;
-    }
-
-    private _menuClicked() {
-        if (this.autoCloseMenuOnClick) {
-            this.closeMenu();
-        }
-    }
-
-    private _getPositionForMenu() {
-        const pos = this.menuPosition;
-        return pos !== 'center' && pos !== 'start' && pos !== 'end' ? 'end' : pos;
+        this._splitMenu.open();
     }
 }

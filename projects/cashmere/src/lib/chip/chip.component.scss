@@ -1,95 +1,92 @@
-@import '../sass/colors';
-@import '../sass/functions.scss';
-@import '../sass/mixins.scss';
+@import '../sass/chip.scss';
 
-.chip {
-    border-radius: 6px;
-    height: 32px;
-    line-height: 32px;
-    @include fontSize(14px);
-    display: inline-block;
-    padding: 0 15px;
-    margin: 5px;
-    white-space: nowrap;
+.hc-chip {
+    @include hc-chip();
 }
 
-.neutral {
-    color: $text;
-    background-color: tint($text, 87%);
+.hc-chip-padding {
+    @include hc-chip-padding();
 }
 
-.red {
-    color: $ruby-red;
-    background-color: tint($ruby-red, 85%);
-    border: 2px solid tint($ruby-red, 75%);
-    line-height: 28px !important;
+.hc-chip-content-neutral {
+    @include hc-chip-content();
 }
 
-.yellow {
-    color: shade($yellow-orange, 25%);
-    background-color: tint($yellow-orange, 80%);
-    border: 2px solid tint($yellow-orange, 50%);
-    line-height: 28px !important;
+.hc-chip-content-red,
+.hc-chip-content-yellow,
+.hc-chip-content-green,
+.hc-chip-content-blue {
+    @include hc-chip-content-color();
 }
 
-.green {
-    color: $green;
-    background-color: tint($light-green, 60%);
-    border: 2px solid tint($light-green, 30%);
-    line-height: 28px !important;
+.hc-chip-close {
+    @include hc-chip-close();
 }
 
-.close {
-    cursor: pointer;
+.hc-chip-neutral {
+    @include hc-chip-neutral();
 }
 
-.close:after {
-    content: '\f00d';
-    font-family: FontAwesome;
-    @include fontSize(15px);
-    padding-left: 12px;
-    opacity: 0.4;
+.hc-chip-red {
+    @include hc-chip-red();
 }
 
-.chip-row-contents {
-    display: inline-block;
+.hc-chip-yellow {
+    @include hc-chip-yellow();
 }
 
-.single-row {
-    height: 42px;
-    overflow: hidden;
+.hc-chip-green {
+    @include hc-chip-green();
 }
 
-.single-row:before {
-    content: '';
-    float: left;
-    width: 5px;
-    height: 50px;
+.hc-chip-blue {
+    @include hc-chip-blue();
 }
 
-.single-row > *:first-child {
-    float: right;
-    width: 100%;
-    margin-left: -5px;
+.hc-chip-close-icon {
+    @include hc-chip-close-icon();
+
+    .hc-chip-neutral & {
+        @include hc-chip-close-icon-neutral();
+    }
+
+    .hc-chip-red & {
+        @include hc-chip-close-icon-red();
+    }
+
+    .hc-chip-yellow & {
+        @include hc-chip-close-icon-yellow();
+    }
+
+    .hc-chip-green & {
+        @include hc-chip-close-icon-green();
+    }
+
+    .hc-chip-blue & {
+        @include hc-chip-close-icon-blue();
+    }
 }
 
-.single-row:after {
-    content: '…more';
-
-    box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-
-    float: right;
-    position: relative;
-    top: -35px;
-    left: 100%;
-    width: 3.5em;
-    margin-left: -3.5em;
-    padding-right: 5px;
-    text-align: right;
+.hc-chip-row-contents {
+    @include hc-chip-row-contents();
 }
 
-.row-buffer {
-    margin-right: 3.5em;
+.hc-chip-single-row {
+    @include hc-chip-single-row();
+
+    &::before {
+        @include hc-chip-single-row-before();
+    }
+
+    & > *:first-child {
+        @include hc-chip-single-row-first-child();
+    }
+
+    &::after {
+        @include hc-chip-single-row-after();
+    }
+}
+
+.hc-chip-row-buffer {
+    @include hc-chip-row-buffer();
 }

@@ -1,0 +1,7 @@
+<div class="chip-row-wrapper">
+    <hc-chip-row>
+        <hc-chip *ngFor="let chip of chipset" hasCloseButton="true" (closeClick)="closeChip(chip)">
+            {{ chip }}
+        </hc-chip>
+    </hc-chip-row>
+</div>

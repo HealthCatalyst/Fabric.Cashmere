@@ -1,13 +1,13 @@
 @import 'scss/colors';
 @import 'scss/functions';
-@import 'scss/mixins.scss';
+@import 'scss/mixins';
 
 .hc-doc-viewer {
     display: block;
-}
 
-.hc-tile:first-of-type {
-    margin-top: 20px;
+    .hc-tile:first-of-type {
+        margin-top: 20px;
+    }
 }
 
 .docs-api-h3 {
