@@ -3,6 +3,9 @@ import {takeUntil} from 'rxjs/operators';
 
 /** Parse a given input into a boolean. */
 export function parseBooleanAttribute(value: boolean | string): boolean {
+    if (value === null || value === undefined) {
+        return false;
+    }
     if (typeof value === 'boolean') {
         return value;
     }
@@ -51,7 +54,7 @@ export const untilDestroyed = (componentInstance, destroyMethodName = 'ngOnDestr
     if (!componentInstance['__takeUntilDestroy']) {
         componentInstance['__takeUntilDestroy'] = new Subject();
 
-        componentInstance[destroyMethodName] = function() {
+        componentInstance[destroyMethodName] = function () {
             isFunction(originalDestroy) && originalDestroy.apply(this, arguments);
             componentInstance['__takeUntilDestroy'].next(true);
             componentInstance['__takeUntilDestroy'].complete();
