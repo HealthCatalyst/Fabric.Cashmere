@@ -1,32 +1,57 @@
-<div class="container">
+<div class='container'>
     <hc-scroll-nav #ScrollNav>
         <ul>
-            <li hcScrollLink="a1">Care Management Team</li>
-            <li hcScrollLink="a2">Providers</li>
-            <li hcScrollLink="a3">Active Medications</li>
-            <li hcScrollLink="a4">Medical History</li>
-            <li hcScrollLink="a5">Contacts</li>
+            <li hcScrollLink='a1'>
+                Care Management Team
+                <ul>
+                    <li hcScrollLink='b1'>
+                        Care Managers
+                        <ul>
+                            <li hcScrollLink='c1'>Donald Duck</li>
+                            <li hcScrollLink='c2'>Goofy</li>
+                        </ul>
+                    </li>
+                    <li hcScrollLink='b2'>Nutritionists</li>
+                </ul>
+            </li>
+            <li hcScrollLink='a2'>Providers</li>
+            <li hcScrollLink='a3'>Active Medications</li>
+            <li hcScrollLink='a4'>Medical History</li>
+            <li hcScrollLink='a5'>Contacts</li>
         </ul>
     </hc-scroll-nav>
 
-    <hc-scroll-nav-content [nav]="ScrollNav" [makeLastTargetFullHeight]="true">
-        <section id="a1" hcScrollTarget>
+    <hc-scroll-nav-content [nav]='ScrollNav' [makeLastTargetFullHeight]='true'>
+        <section id='a1' hcScrollTarget>
             <h1>Care Management Team</h1>
-            <p>{{medicalIpsum}}</p>
+            <section id='b1' hcScrollTarget>
+                Care Managers
+                <section id='c1' hcScrollTarget>
+                    <p>Donald Duck</p>
+                    <p>{{medicalIpsum}}</p>
+                </section>
+                <section id='c2' hcScrollTarget>
+                    <p>Goofy</p>
+                    <p>{{medicalIpsum}}</p>
+                </section>
+            </section>
+            <section id='b2' hcScrollTarget>
+                <p>{{medicalIpsum}}</p>
+            </section>
         </section>
-        <section id="a2" hcScrollTarget>
+        <section id='a2' hcScrollTarget>
             <h1>Providers</h1>
             <p>{{medicalIpsum}}</p>
         </section>
-        <section id="a3" hcScrollTarget>
+        <section id='a3' hcScrollTarget>
             <h1>Active Medications</h1>
             <p>{{medicalIpsum}}</p>
         </section>
-        <section id="a4" hcScrollTarget>
+        <section id='a4' hcScrollTarget>
             <h1>Medical History</h1>
             <p>{{medicalIpsum}}</p>
         </section>
-        <section id="a5" hcScrollTarget>
+        <section id='a5' hcScrollTarget>
             <h1>Contacts</h1>
             <p>{{medicalIpsum}}</p>
         </section>
