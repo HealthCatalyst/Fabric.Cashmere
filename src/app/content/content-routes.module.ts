@@ -5,12 +5,18 @@ import {PersonaOrgComponent} from './personas/persona-org/persona-org.component'
 import {PersonaListComponent} from './personas/persona-list/persona-list.component';
 import {MarkdownContentComponent} from '../shared/markdown-content.component';
 import {PersonaViewerComponent} from './personas/persona-viewer/persona-viewer.component';
+import {UsageComponent} from './usage/usage.component';
 
 const routes: Routes = [
     {
         path: 'content',
         component: ContentComponent,
         children: [
+            {
+                path: 'usage',
+                component: UsageComponent,
+                data: {title: 'Usage', category: 'Branding'}
+            },
             {
                 path: 'trademarks',
                 component: MarkdownContentComponent,
@@ -44,7 +50,7 @@ const routes: Routes = [
             },
             {
                 path: '**',
-                redirectTo: 'trademarks'
+                redirectTo: 'usage'
             }
         ]
     }
