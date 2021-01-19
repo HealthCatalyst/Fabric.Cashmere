@@ -20,6 +20,10 @@
     @include hc-scroll-nav-link-active();
 }
 
+.hc-scroll-nav-link-active:after {
+    @include hc-scroll-nav-link-active-bg();
+}
+
 .hc-scroll-nav-active-parent-section-link {
     @include hc-scroll-nav-active-parent-section-link();
 }

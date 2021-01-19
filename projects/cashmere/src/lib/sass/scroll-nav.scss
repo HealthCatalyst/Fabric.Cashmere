@@ -36,10 +36,23 @@
 @mixin hc-scroll-nav-link-active() {
     &,
     &:hover {
-        background-color: $blue;
         color: $white;
         font-weight: 500;
+        position: relative;
+        z-index: 1;
     }
+}
+
+@mixin hc-scroll-nav-link-active-bg {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 41px;
+    width: 100%;
+    background-color: $blue;
+    z-index: -1;
 }
 
 @mixin hc-scroll-nav-active-parent-section-link() {
@@ -54,7 +67,7 @@
         margin-top: 0;
         margin-bottom: 0;
     }
-    
+
     .hc-scroll-nav-subsection-link {
         padding: 10px 0 10px 15px;
     }
@@ -67,7 +80,7 @@
 
 @mixin hc-scroll-nav-parent-section-link-content() {
     &.hc-scroll-nav-subsection-link {
-        padding-top: 20px;
+        margin-top: 10px;
 
         ul:first-child {
             padding-top: 10px;
