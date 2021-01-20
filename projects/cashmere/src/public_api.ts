@@ -21,6 +21,7 @@ export * from './lib/modal/index';
 export * from './lib/navbar/index';
 export * from './lib/pagination/index';
 export * from './lib/pipes/index';
+export * from './lib/picklist-old/index';
 export * from './lib/picklist/index';
 export * from './lib/pop/index';
 export * from './lib/progress-indicators/index';

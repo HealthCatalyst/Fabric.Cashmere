@@ -1,0 +1,126 @@
+<div [hidden]="!hasSearch" class="hc-pick-search-outer" [class.hc-pick-pane-search-no-toolbar]="!hasToolbar">
+    <hc-form-field>
+        <input #searchInput
+            class="hc-pick-search-input"
+            hcInput
+            [value]="searchTerm ? searchTerm : ''"
+            (input)="filter(searchInput.value)"
+            (compositionstart)="_onCompositionStart()"
+            (compositionend)="_onCompositionEnd(searchInput.value)"
+            (change)="$event.stopPropagation()"
+            (keydown)="onSearchKeydown($event)"
+            [placeholder]="searchPlaceholder"/>
+        <span *ngIf="searchTerm?.length > 0" hcSuffix class="hc-pick-input-search-suffix hc-pick-input-search-clear" (click)="clearSearch()" title="Clear search"></span>
+        <span hcSuffix class="hc-pick-input-search-suffix hc-pick-input-search"></span>
+    </hc-form-field>
+</div>
+
+<div *ngIf="hasToolbar" class="hc-picklist-pane-tools">
+    <ng-template #defaultToolbarTemplate>
+        <div class="hc-picklist-pane-counts">
+            <ng-container *ngIf="!loading">
+                Showing {{itemsList.itemsShownCountStr}} of {{externalOptionCountStr || itemsList.itemsTotalCountStr}}
+            </ng-container>
+            <ng-container *ngIf="loading">
+                Loading...
+            </ng-container>
+        </div>
+        <div class="hc-picklist-pane-quick-links" *ngIf="!disabled">
+            <button hc-button buttonStyle="link-inline" class="hc-font-xsm hc-pick-button-link-inline" (click)="selectAll()" [disabled]="itemsList.filteredItems.length === 0">
+                Select All
+            </button>
+            <button hc-button buttonStyle="link-inline" class="hc-font-xsm hc-pick-button-link-inline" (click)="deselectAll()" [disabled]="!hasSelectedItems">
+                Select None
+            </button>
+        </div>
+    </ng-template>
+
+    <ng-template
+        [ngTemplateOutlet]="toolbarTemplate || defaultToolbarTemplate"
+        [ngTemplateOutletContext]="{ itemsList: itemsList, searchTerm: searchTerm}">
+    </ng-template>
+</div>
+
+<hc-pick-pane-list class="hc-pick-pane-list"
+    [ngClass]="{'hc-pane-will-accept-drop': _willAcceptDrop, 'pane-is-active': _paneHasFocus}"
+    [virtualScroll]="virtualScroll"
+    [bufferAmount]="bufferAmount"
+    [filterValue]="searchTerm"
+    [items]="itemsList.filteredItems"
+    [markedItem]="itemsList.markedItem"
+    (update)="viewPortItems = $event"
+    (scroll)="scroll.emit($event)"
+    (scrollToEnd)="scrollToEnd.emit($event)"
+    (keydown)="onPanelKeydown($event)"
+    (focus)="_paneHasFocus = true"
+    (blur)="_paneHasFocus = false"
+    (drop)="dragService.drop($event)" (dragover)="dragService.allowDrop($event)" (dragleave)="dragService.dragLeave()"
+    tabIndex="0">
+
+    <ng-container *ngIf="!loading">
+        <div class="hc-pick-option" [attr.role]="item.isParent ? 'group' : 'option'"
+            *ngFor="let item of viewPortItems; trackBy: trackByOption; let first = first;"
+            (click)="onItemClick($event, item)"
+            (dblclick)="onItemDoubledClicked($event, item)"
+            draggable="true" (dragstart)="dragService.drag($event, itemsList, item)" (dragend)="dragService.dragEnd()"
+            [class.hc-pick-option-disabled]="item.disabled"
+            [class.hc-pick-option-selected]="item.selected"
+            [class.hc-pick-optgroup]="item.isParent"
+            [class.hc-pick-option]="item.isChild"
+            [class.hc-pick-option-child]="item.isChild"
+            [class.hc-pick-option-marked]="item === itemsList.markedItem"
+            [class.hc-pick-option-hide]="item.parent?.isClosed || (item.isParent && !groupBy)"
+            [attr.aria-selected]="item.selected"
+            [attr.id]="item?.htmlId">
+
+            <ng-template #defaultOptionTemplate>
+                <span class="hc-pick-option-label" [class.hc-pick-parent-closed]="item.parent?.isClosed" [hcPickItemLabel]="item.label" [escape]="escapeHTML"></span>
+            </ng-template>
+
+            <ng-template #defaultOptGroupTemplate>
+                <div class="hc-pick-optgroup-inner">
+                    <span *ngIf="canCloseGroup" class="hc-pick-group-icon" [class.hc-pick-group-icon-open]="!item.isClosed" 
+                        (dblclick)="$event.stopPropagation()"
+                        (click)="item.toggleOpenState($event)">
+                    </span>
+                    <span class="hc-pick-option-label" [hcPickItemLabel]="item.label" [escape]="escapeHTML"></span>
+                </div>
+            </ng-template>
+
+            <ng-template
+                [ngTemplateOutlet]="item.isParent ? (optgroupTemplate || defaultOptGroupTemplate) : (optionTemplate || defaultOptionTemplate)"
+                [ngTemplateOutletContext]="{ item: item.value, hcOption: item, index: item.index, searchTerm: searchTerm }">
+            </ng-template>
+        </div>
+
+        <div *ngIf="showAddCustomOption" class="hc-pick-option hc-pick-custom-option" [class.hc-pick-option-marked]="!itemsList.markedItem" role="option" (click)="addAndSelectCustomOption()">
+            <ng-template #defaultCustomItemTemplate>
+                <span><span class="hc-pick-custom-item-label">{{addCustomItemText}}</span>"{{searchTerm}}"</span>
+            </ng-template>
+
+            <ng-template
+                [ngTemplateOutlet]="customItemTemplate || defaultCustomItemTemplate"
+                [ngTemplateOutletContext]="{ searchTerm: searchTerm }">
+            </ng-template>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!loading && showNoItemsFound">
+        <div class="hc-pick-empty-msg"><span>{{notFoundText}}</span></div>
+    </ng-container>
+
+    <ng-container *ngIf="loading">
+        <hc-progress-dots></hc-progress-dots>
+    </ng-container>
+</hc-pick-pane-list>
+
+<div *ngIf="hasFooter" class="hc-pick-pane-list-footer">
+    <ng-template #defaultFooterTemplate>
+        <span>{{itemsList.selectedItems.length?.toLocaleString() || 0}} selected</span>
+    </ng-template>
+    
+    <ng-template
+        [ngTemplateOutlet]="footerTemplate || defaultFooterTemplate"
+        [ngTemplateOutletContext]="{ itemsList: itemsList, searchTerm: searchTerm }">
+    </ng-template>
+</div>

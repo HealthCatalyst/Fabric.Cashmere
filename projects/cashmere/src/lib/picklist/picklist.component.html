@@ -1,44 +1,110 @@
-<div class="hc-picklist">
-    <div class="pane-wrap">
-        <div class="pane-header">
-            <h2 *ngIf="settings.showHeaderText">{{settings.leftHeaderText}}</h2>
-            <div *ngIf="settings.useValuesets" class="pane-tabs hc-tab-bar-horizontal">
-                <a title="Search for Value Sets"
-                        (click)="setActiveValueType('valueSets')"
-                        class="hc-tab-horizontal"
-                        [ngClass]="{'active': _available?.valueSetList.isActive}">Value Sets</a>
-                <a title="Search for Values"
-                    (click)="setActiveValueType('values')"
-                    class="hc-tab-horizontal"
-                    [ngClass]="{'active': _available?.valueList.isActive}">Values</a>
-            </div>
+<div class="hc-picklist" [style.height]="height">
+
+    <div class="hc-picklist-pane-container">
+        <div *ngIf="hasHeader" class="hc-picklist-pane-header">
+            <ng-template #defaultLeftHeaderTemplate>
+                <h2 class="hc-picklist-pane-header-default">{{leftHeaderText}}</h2>
+            </ng-template>
+            <ng-template [ngTemplateOutlet]="_paneHeaderLeftTemplate || defaultLeftHeaderTemplate"></ng-template>
         </div>
-        <hc-picklist-pane #availableList
-            emptyMsg="No options available."
-            (moveSelectedItems)="moveSelectedItems($event);">
-        </hc-picklist-pane>
+
+        <hc-pick-pane #available
+            [_isLeftPane]="true"
+            [bindLabel]="bindLabel"
+            [bindValue]="bindValue"
+            [addCustomItem]="addCustomItem"
+            [addCustomItemText]="addCustomItemText"
+            [groupBy]="groupBy"
+            [groupValue]="groupValue"
+            [canSelectGroup]="canSelectGroup"
+            [canCloseGroup]="canCloseGroup"
+            [closeGroupsByDefault]="closeGroupsByDefault"
+            [orphanItemsGroupName]="orphanItemsGroupName"
+            [virtualScroll]="virtualScroll"
+            [bufferAmount]="bufferAmount"
+            [trackByFn]="trackByFn"
+            [sortFn]="sortFn"
+            [readonly]="readonly || disabled"
+            [hasSearch]="hasSearch"
+            [searchPlaceholder]="searchPlaceholder"
+            [searchFn]="searchFn"
+            [searchWhileComposing]="searchWhileComposing"
+            [externalSearchTermMinLength]="externalSearchTermMinLength"
+            [externalSearchSubject]="externalSearchSubject"
+            [externalTotalOptionCount]="externalTotalOptionCount"
+            [notFoundText]="notFoundText"
+            [loading]="leftPaneLoading"
+            [hasToolbar]="hasToolbar"
+            [hasFooter]="hasFooter"
+            [items]="items"
+            [compareWith]="compareWith"
+            [optionTemplate]="_optionTemplate"
+            [optgroupTemplate]="_optgroupTemplate"
+            [toolbarTemplate]="_toolbarTemplate"
+            [footerTemplate]="_footerTemplate"
+            [customItemTemplate]="_customItemTemplate"
+            [escapeHTML]="_escapeHTML"
+            (triggerMove)="moveLeftToRight()">
+        </hc-pick-pane>
     </div>
 
-    <div class="move-btns-wrap">
-        <button hc-button color="primary-alt" type="button" name="addBtn"
-                (click)="moveSelectedItems(availableList);"
-                [disabled]="_leftToRightMoveBtnIsDisabled">
-            <hc-icon hcIconSm fontSet="fa" fontIcon="fa-arrow-right"></hc-icon>
+    <div class="hc-picklist-move-btns">
+        <button hc-button buttonStyle="primary-alt" class="hc-picklist-move-btn hc-picklist-right-arrow-btn"
+            [title]="maxSelectedItems && hasMaxItemsSelected ? 'Cannot select more than ' + maxSelectedItems.toLocaleString() + ' items.' : ''"
+            (click)="moveLeftToRight()"
+            [disabled]="disabled || _availablePane.selectedItems.length === 0 || hasMaxItemsSelected">
+                <span class="hc-picklist-right-arrow hc-picklist-arrow"></span>
         </button>
-        <button hc-button color="primary-alt" type="button" name="removeBtn"
-                (click)="moveSelectedItems(confirmedList);"
-                [disabled]="!_confirmed?.isAnySelected()">
-            <hc-icon hcIconSm fontSet="fa" fontIcon="fa-arrow-left"></hc-icon>
+        <button hc-button buttonStyle="primary-alt" class="hc-picklist-move-btn"
+                (click)="moveRightToLeft()"
+                [disabled]="disabled || _selectedPane.selectedItems.length === 0">
+            <span class="hc-picklist-left-arrow hc-picklist-arrow"></span>
         </button>
     </div>
 
-    <div class="pane-wrap">
-        <div class="pane-header">
-            <h2 *ngIf="settings.showHeaderText">{{settings.rightHeaderText}}</h2>
+    <div class="hc-picklist-pane-container hc-picklist-pane-right">
+        <div *ngIf="hasHeader" class="hc-picklist-pane-header">
+            <ng-template #defaultRightHeaderTemplate>
+                <h2 class="hc-picklist-pane-header-default">{{rightHeaderText}}
+                    <span *ngIf="maxSelectedItems" class="hc-picklist-max-limit-msg" [class.hc-picklist-max-limit-exceeded]="hasExceededMaxItemsSelected">
+                        *Select up to {{maxSelectedItems}} options.<ng-container *ngIf="hasExceededMaxItemsSelected"> Limit exceeded.</ng-container>
+                    </span>
+                </h2>
+            </ng-template>
+            <ng-template [ngTemplateOutlet]="_paneHeaderRightTemplate || defaultRightHeaderTemplate"></ng-template>
         </div>
-        <hc-picklist-pane #confirmedList
-            emptyMsg="No options selected."
-            (moveSelectedItems)="moveSelectedItems($event);">
-        </hc-picklist-pane>
+        <hc-pick-pane #selected
+            [bindLabel]="bindLabel"
+            [bindValue]="bindValue"
+            [addCustomItem]="addCustomItem"
+            [addCustomItemText]="addCustomItemText"
+            [groupBy]="groupBy"
+            [groupValue]="groupValue"
+            [canSelectGroup]="canSelectGroup"
+            [canCloseGroup]="canCloseGroup"
+            [closeGroupsByDefault]="closeGroupsByDefault"
+            [orphanItemsGroupName]="orphanItemsGroupName"
+            [virtualScroll]="virtualScroll"
+            [bufferAmount]="bufferAmount"
+            [trackByFn]="trackByFn"
+            [sortFn]="sortFn"
+            [readonly]="readonly || disabled"
+            [hasSearch]="hasSearch"
+            [searchPlaceholder]="searchPlaceholder"
+            [searchFn]="searchFn"
+            [searchWhileComposing]="searchWhileComposing"
+            [notFoundText]="notFoundText"
+            [loading]="rightPaneLoading"
+            [hasToolbar]="hasToolbar"
+            [hasFooter]="hasFooter"
+            [compareWith]="compareWith"
+            [optionTemplate]="_optionTemplate"
+            [optgroupTemplate]="_optgroupTemplate"
+            [toolbarTemplate]="_toolbarTemplate"
+            [footerTemplate]="_footerTemplate"
+            [customItemTemplate]="_customItemTemplate"
+            [escapeHTML]="_escapeHTML"
+            (triggerMove)="moveRightToLeft()">
+        </hc-pick-pane>
     </div>
 </div>

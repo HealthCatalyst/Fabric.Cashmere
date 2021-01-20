@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-import {IValueOption, IValueSetOption, PicklistOptionsSource, PicklistSettings} from '../picklist.model';
+import {IValueOption, IValueSetOption, PicklistOptionsSource, PicklistSettings} from '../picklist-old.model';
 import {FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOption} from '../pane/picklist-pane.model';
 import {PicklistPaneComponent} from '../pane/picklist-pane.component';
 import {PicklistFilterLocalService} from './picklist-filter-local.service';

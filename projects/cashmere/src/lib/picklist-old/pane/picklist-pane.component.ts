@@ -2,7 +2,7 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {Component, ElementRef, EventEmitter, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Subject} from 'rxjs';
 
-import {PicklistService} from '../services/picklist.service';
+import {PicklistOldService} from '../services/picklist-old.service';
 import {PicklistActionService} from '../services/picklist-action.service';
 import {PicklistFilterService} from '../services/picklist-filter.service';
 import {PicklistFilterRemoteService} from '../services/picklist-filter-remote.service';
@@ -10,7 +10,7 @@ import {PicklistFilterLocalService} from '../services/picklist-filter-local.serv
 import {PicklistStateService} from '../services/picklist-state.service';
 import {PicklistValuesetMovingService} from '../services/picklist-valueset-moving.service';
 import {WorkTrackerService} from '../../shared/work-tracker.service';
-import {PicklistOptionsSource, PicklistSettings, PicklistValueType} from '../picklist.model';
+import {PicklistOptionsSource, PicklistSettings, PicklistValueType} from '../picklist-old.model';
 import {FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOption} from './picklist-pane.model';
 
 @Component({
@@ -18,7 +18,7 @@ import {FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOpt
     templateUrl: 'picklist-pane.component.html',
     styleUrls: ['picklist-pane.component.scss'],
     providers: [
-        PicklistService,
+        PicklistOldService,
         PicklistStateService,
         PicklistValuesetMovingService,
         PicklistActionService,
@@ -47,7 +47,7 @@ export class PicklistPaneComponent {
     public selectAllLimit = 2000;
 
     constructor(
-        public listService: PicklistService,
+        public listService: PicklistOldService,
         public actionService: PicklistActionService,
         public filterService: PicklistFilterService
     ) {}

@@ -1,1 +1,11 @@
-<hc-picklist [formControl]="simpleModelControl" [simpleOptions]="['North', 'East', 'South', 'West']"></hc-picklist>
+<hc-picklist
+    [items]="cars"
+    bindLabel="name"
+    bindValue="id"
+    [(ngModel)]="selectedCars">
+</hc-picklist>
+<br>
+<p>
+    Selected:
+    <code>{{ selectedCars | json }}</code>
+</p>

@@ -1,0 +1,21 @@
+<p>For cases with very large numbers of available options, you connect the picklist to a remote data source and take advantage of virtual scrolling.</p>
+<br>
+
+<hc-picklist [items]="people$ | async"
+           bindLabel="name"
+           [addCustomItem]="addCustomItemFn"
+           [trackByFn]="trackByFn"
+           [leftPaneLoading]="peopleLoading"
+           searchPlaceholder="Search by name"
+           [externalSearchSubject]="peopleInput$"
+           [externalTotalOptionCount]="remoteCount"
+           [virtualScroll]="true"
+           [(ngModel)]="selectedPersons"
+           (change)="onChange()">
+</hc-picklist>
+
+<br>
+<p>
+    Selected:
+    <code>{{selectedPersons | json}}</code>
+</p>
