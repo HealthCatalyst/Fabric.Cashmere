@@ -109,7 +109,7 @@
     "dgeni-packages": "^0.28.3",
     "fs-extra": "^6.0.1",
     "glob": "^7.1.2",
-    "highlight.js": "^9.18.1",
+    "highlight.js": "^10.4.1",
     "husky": "^0.14.3",
     "inquirer": "^7.3.3",
     "jasmine-core": "~3.5.0",
