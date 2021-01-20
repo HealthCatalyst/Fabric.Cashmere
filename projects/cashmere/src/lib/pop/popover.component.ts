@@ -16,7 +16,7 @@ import {
 import type {QueryList} from '@angular/core';
 import {AnimationEvent} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
-import {FocusTrap, ConfigurableFocusTrapFactory} from '@angular/cdk/a11y';
+import {FocusTrap, ConfigurableFocusTrapFactory, ConfigurableFocusTrap} from '@angular/cdk/a11y';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {transformPopover} from './popover.animations';
 import {NotificationAction, PopoverNotification, PopoverNotificationService} from './notification.service';
@@ -304,7 +304,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     private _previouslyFocusedElement: HTMLElement | null;
 
     /** Reference to a focus trap around the popover. */
-    private _focusTrap: FocusTrap | undefined;
+    private _focusTrap: ConfigurableFocusTrap | undefined;
 
     /** If this menu has children, keep track of whether any of them are open */
     public _subMenuOpen: boolean = false;

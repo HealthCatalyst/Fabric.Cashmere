@@ -6,14 +6,14 @@ import {PicklistValuesetMovingService} from './picklist-valueset-moving.service'
 import {PicklistFilterLocalService} from './picklist-filter-local.service';
 import {PicklistStateService} from './picklist-state.service';
 import {PicklistPaneComponent} from '../pane/picklist-pane.component';
-import {PicklistOptionsSource, PicklistSettings} from '../picklist.model';
+import {PicklistOptionsSource, PicklistSettings} from '../picklist-old.model';
 import {FilterableSelectList, PicklistValueOptions, ValueListOption, ValueSetListOption} from '../pane/picklist-pane.model';
 
 /**
  * Handles loading + moving items to/from list
  */
 @Injectable()
-export class PicklistService {
+export class PicklistOldService {
     public get pane(): PicklistPaneComponent {
         return this.stateService.pane;
     }

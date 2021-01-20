@@ -13,7 +13,7 @@ import {
     IValueSetOption,
     PicklistRemoteQueryOptions,
     PicklistValueType
-} from '../picklist.model';
+} from '../picklist-old.model';
 
 @Injectable()
 export class PicklistFilterRemoteService {
