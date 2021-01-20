@@ -1,46 +1,47 @@
 <div class="tab-demo">
-    <hc-tab-set direction="horizontal" (selectedTabChange)="selectionChanged($event)">
+    <hc-tab-set direction="horizontal">
         <hc-tab tabTitle="Term List">
-            <div class="tab-content">
-                <div class="row">
-                    <div class="col" style="display: inline-flex; padding-top:50px">
-                        <hc-form-field style="padding-right:20px;">
-                            <input hcInput (keyup)="applyFilter(searchControl.value, 'searchControl')" [formControl]="searchControl" placeholder="Search" />
-                        </hc-form-field>
-                        <ng-select style="padding-right:20px; min-width:200px; align-items: right;" [items]="categories" [addTag]="false" [multiple]="false" [formControl]="selectedCategoriesControl" (change)="applyFilter(selectedCategoriesControl.value, 'selectedCategoriesControl')"
-                            dropdownPosition="bottom" placeholder="Filter by category..."></ng-select>
-                    </div>
-
-
-                    <table hc-table [dataSource]="dataSource" style="border: none;">
-                        <!-- Term Column -->
-                        <ng-container hcColumnDef="term">
-                            <th hc-header-cell *hcHeaderCellDef>Term</th>
-                            <td hc-cell *hcCellDef="let usageItem">{{ usageItem.TermName }}</td>
-                        </ng-container>
-
-                        <!-- Usage Column -->
-                        <ng-container hcColumnDef="usage">
-                            <th hc-header-cell style="border-right-style: none;" *hcHeaderCellDef>Definition or Usage Guideline</th>
-                            <td hc-cell style="border-right-style: none;" *hcCellDef="let usageItem">{{ usageItem.TermUsage }}</td>
-                        </ng-container>
-
-                        <!-- Edit Buttons -->
-                        <ng-container hcColumnDef="edit">
-                            <th hc-header-cell *hcHeaderCellDef style="border-left-style: none;"></th>
-                            <td hc-cell *hcCellDef style="border-left-style: none;">
-                                <button *ngIf=false hc-icon-button><hc-icon fontSet="hc-icons" fontIcon="hci-scratch-pad" hcIconMd disabled = true></hc-icon></button>
-                            </td>
-                        </ng-container>
-
-
-                        <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
-                        <tr hc-row *hcRowDef="let row; columns: displayedColumns"></tr>
-                    </table>
-                    <div class="row" style="padding-top: 10px; font-size: 12px;">The asterisk (*) denotes that the abbreviation is acceptable on first use.</div>
-
-                    <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="10" [hidePageSize]="false" [pageSizeOptions]="pageOpts"></hc-pagination>
+            <div>
+                <div class="usage-table-filters">
+                    <hc-form-field class="usage-table-filters-input" inline>
+                        <hc-label>Filter:</hc-label>
+                        <input hcInput (keyup)="applyFilter()" [formControl]="searchControl" placeholder="Search" />
+                    </hc-form-field>
+                    <hc-form-field class="usage-table-filters-filter" inline>
+                        <hc-label>Category:</hc-label>
+                        <hc-select [formControl]="selectedCategoriesControl" (change)="applyFilter()">
+                            <option *ngFor="let cat of categories" [ngValue]="cat">{{ cat }}</option>
+                        </hc-select>
+                    </hc-form-field>
                 </div>
+
+                <table hc-table [dataSource]="dataSource" style="border: none;">
+                    <!-- Term Column -->
+                    <ng-container hcColumnDef="term">
+                        <th hc-header-cell *hcHeaderCellDef>Term</th>
+                        <td hc-cell *hcCellDef="let usageItem">{{ usageItem.TermName }}</td>
+                    </ng-container>
+
+                    <!-- Usage Column -->
+                    <ng-container hcColumnDef="usage">
+                        <th hc-header-cell style="border-right-style: none;" *hcHeaderCellDef>Definition or Usage Guideline</th>
+                        <td hc-cell style="border-right-style: none;" *hcCellDef="let usageItem">{{ usageItem.TermUsage }}</td>
+                    </ng-container>
+
+                    <!-- Edit Buttons -->
+                    <ng-container hcColumnDef="edit">
+                        <th hc-header-cell *hcHeaderCellDef style="border-left-style: none;"></th>
+                        <td hc-cell *hcCellDef style="border-left-style: none;">
+                            <button *ngIf=false hc-icon-button><hc-icon fontSet="hc-icons" fontIcon="hci-scratch-pad" hcIconMd disabled = true></hc-icon></button>
+                        </td>
+                    </ng-container>
+
+                    <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
+                    <tr hc-row *hcRowDef="let row; columns: displayedColumns"></tr>
+                </table>
+                <div style="padding-top: 10px; font-size: 12px;">The asterisk (*) denotes that the abbreviation is acceptable on first use.</div>
+
+                <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="10" [hidePageSize]="false" [pageSizeOptions]="pageOpts"></hc-pagination>
             </div>
         </hc-tab>
         <hc-tab>

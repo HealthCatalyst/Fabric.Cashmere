@@ -1,13 +1,11 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { PaginationComponent, HcTableDataSource, TabChangeEvent } from '@healthcatalyst/cashmere';
-import { SectionService } from 'src/app/shared/section.service';
-import { BaseDemoComponent } from '../../../shared/base-demo.component';
-import { UsageService } from '../usage.service';
-import { IUsage } from '../usage';
-import { IListFilter } from '../listfilter';
-// import { ConsoleReporter } from 'jasmine';
+import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {PaginationComponent, HcTableDataSource, TabChangeEvent} from '@healthcatalyst/cashmere';
+import {SectionService} from 'src/app/shared/section.service';
+import {BaseDemoComponent} from '../../../shared/base-demo.component';
+import {UsageService} from '../usage.service';
+import {IUsage} from '../usage';
 
 @Component({
     selector: 'hc-usage-list',
@@ -17,79 +15,46 @@ import { IListFilter } from '../listfilter';
 export class UsageListComponent extends BaseDemoComponent implements OnInit, AfterViewInit {
     filteredUsageList: IUsage[];
     usageList: IUsage[] = [];
-    filterArray: IListFilter[] = [];
-    categories = ['Health Catalyst', 'Industry', 'Technical'];
-    mySearch: string;
-    myCategory: string;
-    readonly selectedCategoriesControl = new FormControl([]);
-    readonly selectedTypesControl = new FormControl([]);
-    readonly searchControl = new FormControl([]);
+    categories = ['All', 'Health Catalyst', 'Industry', 'Technical'];
+    selectedCategoriesControl = new FormControl('All');
+    searchControl = new FormControl();
 
     editListForm: FormGroup;
     formSubmitted = false;
     scriptURL = 'https://script.google.com/macros/s/AKfycbwWZCf0aBg1e5BFD9G-hVTb-zbSTXT1KGFSwoyRLwMhu7FZF2g/exec';
     editForm = document.forms['editListForm'];
 
-    types = ['Abbreviation']; //<!--'glossary', 'usage', 'trademarks'--->
-
-    newList: string[]=[];
-    newMap = new Map([]);
-    resultList;
-
+    //'glossary', 'usage', 'trademarks'
+    types = ['Abbreviation'];
 
     displayedColumns: string[] = ['term', 'usage', 'edit'];
-    dataSource;
+    dataSource: HcTableDataSource<IUsage>;
     pageNumber = 1;
     pageOpts = [5, 10, 20];
 
-    selectedIndex: number = 0;
-
-    selectionChanged(event: TabChangeEvent) {
-        this.selectedIndex = event.index;
+    constructor(
+        sectionService: SectionService,
+        private usageService: UsageService,
+        private fb: FormBuilder,
+        private httpClient: HttpClient
+    ) {
+        super(sectionService);
     }
-
-    addTask(event: Event) {
-        window.alert('The "Add Task tab was clicked.');
-    }
-
-    constructor(sectionService: SectionService, private usageService: UsageService, private fb: FormBuilder, private httpClient: HttpClient ) {
-        super(sectionService);}
 
     get length(): number {
         return this.usageList.length;
     }
 
     @ViewChild(PaginationComponent)
-      paginator: PaginationComponent;
+    paginator: PaginationComponent;
 
-    applyFilter(myFilter: string, myControl: string) {
-
-            myFilter = myFilter.trim().toLowerCase();
-            // console.log(myFilter);
-
-            if (myControl === "searchControl") {
-                this.mySearch = myFilter;
-                this.myCategory = this.selectedCategoriesControl.value;
-            }
-            else {
-                this.myCategory = myFilter;
-                this.mySearch = this.searchControl.value.trim().toLowerCase();
-            }
-
-            this.filterArray = [
-                {
-                    filterKey: this.mySearch,
-                    filterColumn: "TermName"
-                },
-                {
-                    filterKey: this.myCategory,
-                    filterColumn: "TermCategory"
-                }
-            ]
-
-            // use myFilter for search filter or filterArray for multiple filters
-            this.dataSource.filter = myFilter;
-
+    applyFilter() {
+        const filterStr = this.searchControl.value;
+        if ( filterStr ) {
+            this.dataSource.filter = filterStr.trim().toLowerCase();
+        } else {
+            this.dataSource.filter = ' ';
+        }
     }
 
     ngOnInit(): void {
@@ -97,34 +62,26 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         this.filteredUsageList = this.usageList;
         this.dataSource = new HcTableDataSource(this.filteredUsageList);
 
-        // filterPredicate for one filter (search filter)
-        this.dataSource.filterPredicate = (data: IUsage, filter: any) => {
-            let filterColumn = data.TermName.toLocaleLowerCase();
-            return filterColumn.indexOf(filter) !== -1;
-        }
-
-        // filterPredicate for multiple filters ... but not working
-        // this.dataSource.filterPredicate = (data: IUsage, filter: any) => {
-
-        //     filter.forEach((element, index, array): boolean => {
-
-        //             // console.log(element.filterColumn);
-        //         return data[element.filterColumn].indexOf(element.filterKey) !== -1;
-
-        //     })
-        // }
+        this.dataSource.filterPredicate = (data: IUsage, filter: string) => this.usageFilter(data, filter);
 
         this.editListForm = this.fb.group({
-
             addTerm: ['', Validators.required],
             addDef: ['', Validators.required],
             yourEmail: ['', [Validators.required, Validators.email]],
             yourName: ['', [Validators.required, Validators.minLength(3)]]
-
-         });
+        });
     }
     ngAfterViewInit(): void {
         this.dataSource.paginator = this.paginator;
+    }
+
+    usageFilter(data: IUsage, filter: string) {
+        const catMatch =
+            data.TermCategories.includes(this.selectedCategoriesControl.value) || this.selectedCategoriesControl.value === 'All';
+        const termMatch = data.TermName.toLowerCase().includes(filter) || filter === ' ';
+        const defMatch = data.TermUsage.toLowerCase().includes(filter) || filter === ' ';
+
+        return catMatch && (termMatch || defMatch);
     }
 
     save() {
@@ -133,7 +90,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     }
 
     // Needs work ... how to reset validators so they're not all red when the form resets?
-    onCancel () {
+    onCancel() {
         this.editListForm.reset();
         this.editListForm.markAsPristine();
         this.editListForm.markAsUntouched();
@@ -153,17 +110,14 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         formData.append('yourName', this.editListForm.controls.yourName.value);
         formData.append('yourEmail', this.editListForm.controls.yourEmail.value);
 
-
         const formObject = this.editListForm.getRawValue();
         const serializedForm = JSON.stringify(formObject);
-        console.log(serializedForm);
 
         this.httpClient.post<any>(this.scriptURL, formData).subscribe(
-            (res) => console.log(res),
-            (err) => console.log(err)
+            res => console.log(res),
+            err => console.log(err)
         );
 
         this.editListForm.reset();
-
     }
 }

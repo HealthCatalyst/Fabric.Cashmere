@@ -15,7 +15,7 @@ const routes: Routes = [
             {
                 path: 'usage',
                 component: UsageComponent,
-                data: {title: 'Usage', category: 'Branding'}
+                data: {title: 'Usage', category: 'Brand'}
             },
             {
                 path: 'trademarks',

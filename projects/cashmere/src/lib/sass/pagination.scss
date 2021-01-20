@@ -53,6 +53,9 @@
 
     &:hover {
         background-color: $white;
+        &[disabled] {
+            color: $blue;
+        }
         &:not([disabled]) {
             color: darken($primary-brand, 10%);
         }
@@ -98,7 +101,7 @@
         opacity: 1;
 
         &:hover {
-            background-color: $white;
+            opacity: 1;
         }
     }
 }
