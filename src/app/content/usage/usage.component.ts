@@ -7,7 +7,7 @@ import {BaseDemoComponent} from '../../shared/base-demo.component';
     templateUrl: './usage.component.html',
     styleUrls: ['./usage.component.scss']
 })
-export class UsageComponent extends BaseDemoComponent{
+export class UsageComponent extends BaseDemoComponent {
     constructor(sectionService: SectionService) {
         super(sectionService);
     }

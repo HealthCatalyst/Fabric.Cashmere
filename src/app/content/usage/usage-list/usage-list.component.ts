@@ -24,9 +24,6 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     scriptURL = 'https://script.google.com/macros/s/AKfycbwWZCf0aBg1e5BFD9G-hVTb-zbSTXT1KGFSwoyRLwMhu7FZF2g/exec';
     editForm = document.forms['editListForm'];
 
-    //'glossary', 'usage', 'trademarks'
-    types = ['Abbreviation'];
-
     displayedColumns: string[] = ['term', 'usage', 'edit'];
     dataSource: HcTableDataSource<IUsage>;
     pageNumber = 1;
@@ -84,17 +81,8 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         return catMatch && (termMatch || defMatch);
     }
 
-    save() {
-        // console.log(this.editListForm);
-        // console.log('Saved: ' + JSON.stringify(this.editListForm.value));
-    }
-
-    // Needs work ... how to reset validators so they're not all red when the form resets?
     onCancel() {
         this.editListForm.reset();
-        this.editListForm.markAsPristine();
-        this.editListForm.markAsUntouched();
-        this.editListForm.updateValueAndValidity();
     }
 
     onSubmit() {
