@@ -17,6 +17,9 @@ It's a better user experience to open directly to the Summary page of the accele
 
 </div>
 
+Although the template has values hard-coded into the About Page, it's a best practice to pull as much of the content from an external source like an IDEA database.
+That way the app doesn't have to be republished for this information to change.
+
 In general, the about page should include the following (but you may adjust based on the specific needs of your accelerator):
 
 - **Technical Details** - server, database, metadata, last updates, etc
