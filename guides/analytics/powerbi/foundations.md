@@ -1,6 +1,6 @@
 # PowerBI Foundations
 
-###### Last updated December 30, 2020
+###### Last updated January 13, 2021
 
 :::
 
@@ -103,7 +103,7 @@ Position the object at `x:0, y:50`, set the background color to **slate-gray-400
 
 <div style="text-align:center"><br>
 
-![Static Bar](./assets/analytics/powerbi/pbi-static-bar.png "Subnav")
+![Static Bar](./assets/analytics/powerbi/pbi-subnav.png "Subnav")
 
 </div>
 

@@ -1,12 +1,12 @@
 # PowerBI Navbar
 
-###### Last updated December 30, 2020
+###### Last updated January 13, 2021
 
 :::
 
 ##### Overview
 
-![Navbar Example](./assets/analytics/tableau/navbarexample.png "Navbar Example")
+![Navbar Example](./assets/analytics/powerbi/pbi-navbar.png "Navbar Example")
 
 The navbar is one of the most distinguishing elements of a Cashmere application.
 It is a hallmark of the Health Catalyst app brand on all platforms.
@@ -32,15 +32,9 @@ App Name is the second fixed width horizontal object in the navbar, also contain
 The image is the name of your application in the Flexo font (so the font isn't needed).
 To obtain a PNG for your application, contact the UX team via the `#design` Slack channel.
 
-Edit the `AppName.png` Image Object and swap the image file with the one for your application.
+Edit the `AppName.png` image object and swap the image file with the one for your application.
 
 The App Name should be positioned to the right of the tri-flame logo at `x:55, y:0` and centered vertically within the Navbar. 
-
-<div style="text-align:center"><br>
-
-![header](/assets/analytics/powerbi/pbi-header.png "Navbar Header")
-
-</div>
 
 **Important:** you will need to adjust the width of your app name image.
 You want the width to be just wide enough to contain the image without shrinking it.

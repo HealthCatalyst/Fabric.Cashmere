@@ -1,6 +1,6 @@
 # Qlik Filters
 
-###### Last updated December 11, 2020
+###### Last updated January 13, 2021
 
 :::
 

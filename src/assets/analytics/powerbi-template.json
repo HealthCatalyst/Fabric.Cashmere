@@ -1,10 +1,10 @@
 [
     {
-        "version": "1.0.0",
-        "releasedate": "December 14, 2020",
+        "version": "1.1.0",
+        "releasedate": "January 21, 2021",
         "requirements": "Power BI 2.87.261.0 or greater",
         "download": "http://google.com",
-        "demo": "http://google.com",
+        "demo": "https://app.powerbi.com/groups/198d37a8-4bad-4783-b6d2-4996c5422132/reports/de2c04ad-f2d8-4471-ab08-8fdc26a8c3d0/ReportSectionf33fad71c0b55b12b3a9",
         "notes": [
             "Initial release of Cashmere template"
         ]
