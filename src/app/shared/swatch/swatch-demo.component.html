@@ -1,7 +1,10 @@
 <div class="swatch-container">
-    <div class="swatch" [ngClass]="{'large': isLarge, 'add-border': needsBorder}" [style.backgroundColor]="hex"></div>
+    <div *ngIf="gradient.length === 0" class="swatch" [ngClass]="{'large': isLarge, 'add-border': needsBorder}" [style.backgroundColor]="hex"></div>
+    <div *ngIf="gradient.length !== 0" class="swatch" [ngClass]="{'large': isLarge, 'add-border': needsBorder}" [style.background-image]="'linear-gradient(to right, ' + gradient[0] + ' , ' + gradient[1] + ')'"></div>
     <div *ngIf="name" [ngClass]="{'name': rgb || cmyk}">{{name}}</div>
     <div class="hex">{{hex}}</div>
-    <div *ngIf="rgb" class="hex" >{{rgb}}</div>
-    <div *ngIf="cmyk" class="hex" >{{cmyk}}</div>
+    <div *ngIf="rgb" class="hex" >RGB {{rgb}}</div>
+    <div *ngIf="cmyk" class="hex" >CMYK {{cmyk}}</div>
+    <div *ngIf="lab" class="hex" >LAB {{lab}}</div>
+    <div *ngIf="pantone" class="hex" >Pantone {{pantone}}</div>
 </div>
