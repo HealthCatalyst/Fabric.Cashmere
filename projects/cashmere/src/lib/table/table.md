@@ -206,7 +206,7 @@ takes a data object and filter string and returns true if the data object is con
 ##### Pagination
 
 There are cashmere pagination components available for usage. To learn about how to implement those, visit the
-[pagination component examples](/components/pagination/examples).
+[pagination component examples](/web/components/pagination/examples).
 
 ##### Selection
 

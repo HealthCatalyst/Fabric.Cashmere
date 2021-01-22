@@ -1,0 +1,57 @@
+<div class="demo-content">
+    <h1>{{platform}} Template</h1>
+    <div *ngIf="versionList.length === 0" class="template-loader">
+        <hc-progress-spinner diameter="50" color="blue"></hc-progress-spinner>
+    </div>
+    <ng-container *ngIf="versionList.length > 0">
+        <h6>Last updated {{versionList[0].releasedate}}</h6>
+
+        <hc-tile>
+            <h5 id="latest-version">Current Version</h5>
+            <h3 class="template-version-header">
+                Version: {{versionList[0].version}}
+                <span>(<a [href]="versionList[0].demo" target="_blank">Live Demo</a>)</span>
+            </h3>
+            <div class="template-version-details">
+                <strong>Release date:</strong> {{versionList[0].releasedate}}<br>
+                <strong>Requirements:</strong> {{versionList[0].requirements}}<br>
+            </div>
+            <a hc-button buttonStyle="primary-alt" size="lg" class="template-download-btn" download [href]="versionList[0].download" title="Download lastest template">
+                <hc-icon fontSet="fa" fontIcon="fa-file-zip-o"></hc-icon>
+                Download {{platform}} Template
+            </a>
+            <article class="template-version-notes">
+                <h4>Release notes:</h4>
+                <ul>
+                    <li *ngFor="let line of versionList[0].notes">{{line}}</li>
+                </ul>
+            </article>
+        </hc-tile>
+
+        <hc-tile *ngIf="versionList.length > 1">
+            <h5 id="previous-versions">Previous Versions</h5>
+            <p>
+                <em>The following versions are no longer supported and are supplied only for history and compatibility. Please download the latest version above.</em>
+            </p>
+            <hr>
+            <ng-container *ngFor="let version of versionList; let i=index">
+                <div *ngIf="i > 0">
+                    <h3 class="template-version-header">
+                        <a [href]="version.download">Version: {{version.version}}</a>
+                    </h3>
+                    <div class="template-version-details">
+                        <strong>Release date:</strong> {{version.releasedate}}<br>
+                        <strong>Requirements:</strong> {{version.requirements}}<br>
+                    </div>
+                    <article class="template-version-notes">
+                        <h4>Release notes:</h4>
+                        <ul>
+                            <li *ngFor="let line of version.notes">{{line}}</li>
+                        </ul>
+                    </article>
+                    <hr *ngIf="i < versionList.length - 1">
+                </div>
+            </ng-container>
+        </hc-tile>
+    </ng-container>
+</div>
