@@ -13,7 +13,7 @@ It's a better user experience to open directly to a Summary page of the accelera
 
 <div style="text-align:center"><br>
 
-![About Page](./assets/analytics/tableau/aboutoverview.png "About Page")
+![About Page](./assets/analytics/qlik/qlik-about.png "About Page")
 
 </div>
 

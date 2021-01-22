@@ -12,7 +12,7 @@ The navbar is one of the most distinguishing elements of a Cashmere application.
 It is a hallmark of the Health Catalyst app brand on all platforms.
 For this reason, the styling of the navbar should not be altered from the template.
 
-The Navbar is a **charcoal-blue** `#384655` horizontal text object with a fixed `50px` height, set at `x:0, y:0`.
+The Navbar is a **charcoal-blue** `#384655 RGB(56,70,85)` horizontal text object with a fixed `50px` height, set at `x:0, y:0`.
 
 :::
 
@@ -20,7 +20,7 @@ The Navbar is a **charcoal-blue** `#384655` horizontal text object with a fixed 
 
 ##### Brand
 
-Brand is a `50px x 50px` fixed width image of the [Health Catalyst tri-flame](/foundations/logo) with a background color set to **blue** `#00aeff` and positioned at `x:0, y:0`.
+Brand is a `50px x 50px` fixed width image of the [Health Catalyst tri-flame](/foundations/logo) with a background color set to **blue** `#00aeff RGB(0,174,255)` and positioned at `x:0, y:0`.
 
 :::
 
@@ -57,7 +57,6 @@ The button for the currently selected page should have its font set to `Arial Bo
 Additionally, there is a floating line item called `Selected Highlight` that should be positioned under the selected item.
 The y position of that item should always be set to the bottom of the selected item, but the x position should match the x position of the selected item.
 The width of the selected highlight item should also match the selected text object item.
-Center the blue underline under the bold text.
 
 ![Selected Link](./assets/analytics/qlik/qlik-selected.png "Selected link")
 
@@ -69,7 +68,7 @@ All other text objects within the links section should have their font set to `A
 
 ##### Menu Icons
 
-Menu Icons is fixed width horizontal text object that typically only contains the question-mark icon linking to the [About Page](/analytics/tableau-about).
+Menu Icons is fixed width horizontal text object that typically only contains the question-mark icon linking to the [About Page](/analytics/qlik-about).
 There is about 15px of padding before the co-branding space.
 
 Additional menu icon links may be added to the left of the question-mark icon - for example, links to a search page, app switcher, etc.
@@ -84,7 +83,7 @@ Contact the UX team via the `#design` Slack channel for icon images if they aren
 
 ##### Co-branding
 
-Co-Branding is the final fixed width horizontal container set to 200px wide with a **white** `#ffffff` background.
+Co-Branding is the final fixed width horizontal container set to 200px wide with a **white** `#ffffff RGB(255,255,255)` background.
 This space allows applications to include the logo of your customer.
 Ideally you'll want the horizontal version of a customer's logo with a white or transparent background.
 To configure this section, you should only have to Edit the Image and swap the file.

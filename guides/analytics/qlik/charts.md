@@ -47,7 +47,7 @@ To determine what colors should be used together in charts, you should determine
 
 <div style="text-align:center"><br>
 
-![data colors](/assets/analytics/qlik/qlik-chart.png "Power BI Chart")
+![data colors](/assets/analytics/qlik/qlik-chart.png "Qlik Chart")
 
 </div>
 
@@ -61,12 +61,11 @@ Charts that are dense, complex, and/or require specialized knowledge or experien
 
 The specific content of tooltips of the chart will be dictated by the data being displayed.
 But in general, they should contain a label and a value.
-All text in the tooltip should be 10px, **white** `#ffffff RGB(255,255,255)`, `Arial`.
-The background should be **charcoal-blue** `#384655 RGB(56,70,85)`.
 
 <div style="text-align:center"><br>
 
-![Chart Tooltips](./assets/analytics/powerbi/pbi-tooltip.png "Chart Tooltips")
+![tooltip](/assets/analytics/qlik/qlik-tooltip.png "Qlik Tooltip")
+
 </div>
 
 :::

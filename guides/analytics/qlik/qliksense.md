@@ -32,7 +32,21 @@ General HTML page layout considerations
 
 ##### Stylesheets
 
-The recommended method for applying Health Catalyst's Cashmere web style in Qlik Sense apps is to import the style theme. Typically, the theme will already be pre-loaded. To check, open up a Qlik Sense application. Navigate to the upper left-hand side of the top navigation bar and click the three dots that pop up next to the application's name. Then open up the app settings (gear icon) and access the **App Theme** dropdown list within the **Appearance** section. There should be an option to choose Health Catalyst's theme.
+The recommended method for applying Health Catalyst's Cashmere web style in Qlik Sense apps is to import the style theme. Typically, the theme will already be pre-loaded. To check, open up a Qlik Sense application. Navigate to the upper left-hand side of the top navigation bar and click the three dots that pop up next to the application's name. 
+
+<div style="text-align:center"><br>
+
+![Qlik Sense settings](./assets/analytics/qlik/qlik-settings-access.png "Access settings")
+
+</div>
+
+Then open up the app settings (gear icon) and access the **App Theme** dropdown list within the **Appearance** section. There should be an option to choose Health Catalyst's theme.
+
+<div style="text-align:center"><br>
+
+![Qlik Sense settings](./assets/analytics/qlik/qlik-settings.png "QS settings")
+
+</div>
 
 If necessary, color variables may also be set up in the load script.
 
@@ -46,6 +60,6 @@ To create Health Catalyst's navbar, navigate to a Qlik Sense application's app s
 
 Import the tri-flame.png image from the ASO repository, set the background color to **blue** `#00aeff RGB(0,174,255)`, and left-align the image.
 
-Set the title font color to `white #ffffff`.
+Set the title font color to **white** `#ffffff RGB(255,255,255)`.
 
 :::

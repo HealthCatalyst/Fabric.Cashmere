@@ -1,6 +1,6 @@
 # Qlik Tabs
 
-###### Last updated December 11, 2020
+###### Last updated January 21, 2021
 
 :::
 
@@ -20,16 +20,16 @@ In order to recreate the styling of the Cashmere web component in Qlik, each tex
 
 ##### Formatting
 The background color and border on each text object should be set to `None`.
-The object for the currently selected tab should have its font set to `Arial Bold 11pt` and the font color set to **offblack**. 
+The object for the currently selected tab should have its font set to `Arial Bold 11pt` and the font color set to **offblack** `#333333 RGB(51,51,51)`. 
 For unselected tabs, the font should be `Arial 11pt`.
 
 ### Floating Items
 
 The positioning of the floating items (Tab Selected, and Tab Set Underline) must be set manually.
 The Tab Set Underline width should extend from the left edge of the first tab to the right edge of the page.
-It should always be 1px height, **slate-gray-300** `#c0c5cc`, with a transparent background.
+It should always be 1px height, **slate-gray-300** `#c0c5cc RGB(192,197,204)`, with a transparent background.
 The y position of Tab Set Underline should be equal to the bottom of a tab.
 
 The width of the Tab Selected highlight should match the width of the selected tab.
-The height should always be 4px with a background color for **blue** `#00aeff`.
+The height should always be 4px with a background color for **blue** `#00aeff RGB(0,174,255)`.
 :::
