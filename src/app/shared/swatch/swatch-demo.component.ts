@@ -7,15 +7,21 @@ import {Component, Input} from '@angular/core';
 })
 export class SwatchDemoComponent {
     @Input()
-    public name: String;
+    public name: string;
     @Input()
-    public hex: String;
+    public hex: string;
     @Input()
     public isLarge = false;
     @Input()
     public needsBorder = false;
     @Input()
-    public rgb: String;
+    public rgb: string;
     @Input()
-    public cmyk: String;
+    public cmyk: string;
+    @Input()
+    public lab: string;
+    @Input()
+    public pantone: string;
+    @Input()
+    public gradient: string[] = [];
 }

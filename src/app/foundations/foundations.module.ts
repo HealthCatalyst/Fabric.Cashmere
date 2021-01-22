@@ -9,6 +9,7 @@ import {FoundationsComponent} from './foundations.component';
 import {BrandColorDemoComponent} from './brand-colors/brand-color-demo.component';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
 import {LogoDemoComponent} from './logo/logo-demo.component';
+import {FontsDemoComponent} from './fonts/fonts-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
 
 @NgModule({
@@ -22,7 +23,8 @@ import {ProductsDemoComponent} from './products/products-demo.component';
         CodeDemoComponent,
         BrandColorDemoComponent,
         LogoDemoComponent,
-        ProductsDemoComponent
+        ProductsDemoComponent,
+        FontsDemoComponent
     ]
 })
 export class FoundationsModule {}
