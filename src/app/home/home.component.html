@@ -3,8 +3,7 @@
         <img src="./assets/CashmereLogo.svg" alt="Fabric.Cashmere Logo" />
     </span>
     <span class="headerRight">
-        <img src="./assets/FabricCashmere.svg" alt="Fabric.Cashmere Title" />
-        <p class="headerCopy">Health Catalyst's living style guide for Angular</p>
+        <img src="./assets/Cashmere.svg" alt="Cashmere Title" />
         <hc-form-field tight="true">
             <hc-icon hcPrefix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
             <input
@@ -20,13 +19,14 @@
 </header>
 <main>
     <section>
-        <span class="sectionOneImg"><img src="./assets/CashmereHome_UX.png" alt="Cashmere UX Illustration" /></span>
+        <span class="sectionImg"><img src="./assets/home/HealthcareDesign.png" alt="Healthcare Design Illustration" /></span>
         <span class="sectionOneTextWrapper sectionCenter">
             <div class="sectionOneText">
-                <h2>Consistent User Experience</h2>
+                <h2>Design for Healthcare Improvement</h2>
                 <p>
-                    Our users expect that our applications will look and feel consistent with one another. By leveraging Cashmere components
-                    you’re ensuring the best possible UX for our users.
+                    Cashmere is Health Catalyst’s comprehensive <strong>design system</strong>.
+                    As we deliver digital content across a wide range of platforms and modalities, we strive to deliver a meaningful, consistent, and delightful experience.
+                    Cashmere provides the building blocks that team members can use to assemble world-class tools and technology while retaining a Health Catalyst identity.
                 </p>
             </div>
         </span>
@@ -34,30 +34,53 @@
     <section class="sectionTwo">
         <span class="sectionCenter">
             <div class="sectionTwoText">
-                <h2>Maximum Efficiency</h2>
+                <h2>For Developers</h2>
                 <p>
-                    Developers are always being crunched for time, and Cashmere is here to help. Keep the focus of sprints on the
-                    functionality that makes your app unique rather than rebuilding components that you can easily pull from our library.
+                    The <a routerLink="/foundations">foundations</a> of the Cashmere Design System are universal brand guidelines that all our digital content should follow.
+                    But Cashmere isn’t only a design system, it’s also an open-source <a routerLink="/web/components">Angular component library</a>.
+                    Everything under the <strong>Web Apps</strong> tab is meant for you.
+                    Take a look at our <a routerLink="/web/guides">developer guides</a> to get started incorporating Cashmere into your project.
+                    Although Angular is our preferred framework, you can <a href="/web/guides/using-customizing-components">leverage Cashmere’s stylesheets</a> in any web app - even the most basic HTML site.
+                    <br><br>
+                    And get involved! All developers are welcome to contribute code or improvement ideas to the library via our <a href="https://github.com/HealthCatalyst/Fabric.Cashmere">GitHub project</a>.
                 </p>
             </div>
         </span>
-        <span class="sectionCenter sectionTwoImg">
-            <img src="./assets/CashmereHome_Efficiency.png" alt="Cashmere Efficiency Illustration" />
+        <span class="sectionCenter sectionImg">
+            <img src="./assets/home/Developers.png" alt="Developers Illustration" />
         </span>
     </section>
     <section>
-        <span class="sectionThreeImg"><img src="./assets/CashmereHome_Grassroots.png" alt="Cashmere Grassroots Illustration" /></span>
+        <span class="sectionImg"><img src="./assets/home/Analysts.png" alt="Analysts Illustration" /></span>
         <span class="sectionThreeTextWrapper sectionCenter">
             <div class="sectionThreeText">
-                <h2>Grassroots Spirit</h2>
+                <h2>For Analysts</h2>
                 <p>
-                    Cashmere is a crowd-sourced library and represents the best efforts of our entire dev team. Use these components with
-                    confidence knowing they have been fully vetted. And if you see opportunities for improvement,
-                    <a href="https://github.com/HealthCatalyst/Fabric.Cashmere">get involved and contribute</a>
-                    !
+                    Health Catalyst analytics accelerators are tailored, customizable tools built on business intelligence platforms like Qlik, Tableau, and PowerBI.
+                    These accelerators require the same UI/UX considerations as web applications and should carry all the same hallmarks of the Health Catalyst brand.
+                    However, each platform has its own unique design considerations and implementations of the Cashmere foundations.
+                    <br><br>
+                    Head to the <strong><a routerLink="/analytics">Analytics</a></strong> tab&mdash;and look for the section specific to platform you’re developing in.
+                    To begin, download the most current version of the template for the platform you're using.
+                    Then refer to the additional guidelines for that platform for additional information around type, color, layout, etc.
                 </p>
             </div>
         </span>
     </section>
-    <section><button hc-button title="Learn more about Cashmere" color="primary" routerLink="/guides">Get Started</button></section>
+    <section class="sectionTwo">
+        <span class="sectionCenter">
+            <div class="sectionTwoText">
+                <h2>For Content Creators</h2>
+                <p>
+                    Health Catalyst content creators are an incredible group that includes technical writers, marketing professionals, instructional designers, and many more.
+                    All Health Catalyst media should follow <a routerLink="/foundations">Cashmere Foundations</a>&mdash;this includes elements like color, type, and iconography.
+                    Additionally, you’ll find a collection of styles and standards specific to content creation in the <strong><a routerLink="/content">Content</a></strong> tab.
+                    We employ consistent voice, tone, and style to design content for meaningful healthcare improvement.
+                </p>
+            </div>
+        </span>
+        <span class="sectionCenter sectionImg">
+            <img src="./assets/home/ContentCreators.png" alt="Content Creators Illustration" />
+        </span>
+    </section>
 </main>

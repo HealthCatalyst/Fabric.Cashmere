@@ -12,11 +12,11 @@ Add `.subnav` class to the root element with an `<ol>` element with `.breadcrumb
 <div class="subnav">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="/styles/breadcrumbs#">First</a>
+            <a href="/foundations/breadcrumbs#">First</a>
             <i class="fa fa-chevron-right breadcrumb-arrow"></i>
         </li>
         <li class="breadcrumb-item">
-            <a href="/styles/breadcrumbs#">Second</a>
+            <a href="/foundations/breadcrumbs#">Second</a>
             <i class="fa fa-chevron-right breadcrumb-arrow"></i>
         </li>
         <li class="breadcrumb-item">
@@ -38,11 +38,11 @@ Add `.subnav` class to the root element with an `<ol>` element with `.breadcrumb
 <div class="subnav">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="/styles/breadcrumbs#">First</a>
+            <a href="/foundations/breadcrumbs#">First</a>
             <i class="fa fa-chevron-right breadcrumb-arrow"></i>
         </li>
         <li class="breadcrumb-item">
-            <a href="/styles/breadcrumbs#">Second</a>
+            <a href="/foundations/breadcrumbs#">Second</a>
             <i class="fa fa-chevron-right breadcrumb-arrow"></i>
         </li>
         <li class="breadcrumb-item">
