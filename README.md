@@ -7,13 +7,14 @@ An Angular component library that makes any task feel luxurious.
 ## Quick Links
 
 -   [Releases](https://github.com/HealthCatalyst/Fabric.Cashmere/releases)
--   [Components](http://cashmere.healthcatalyst.net/components)
--   [Styles](http://cashmere.healthcatalyst.net/styles)
--   [Getting Started](http://cashmere.healthcatalyst.net/guides/getting-started)
--   [Guidelines for Contribution](http://cashmere.healthcatalyst.net/guides/contribution-guide)
--   [Packaging Library](http://cashmere.healthcatalyst.net/guides/packaging-library)
--   [Submit an Issue](http://cashmere.healthcatalyst.net/guides/submit-an-issue)
--   [Supported Browsers](http://cashmere.healthcatalyst.net/guides/supported-browsers)
+-   [Components](http://cashmere.healthcatalyst.net/web/components)
+-   [Foundations](http://cashmere.healthcatalyst.net/foundations)
+-   [Content](http://cashmere.healthcatalyst.net/content)
+-   [Getting Started](http://cashmere.healthcatalyst.net/web/guides/getting-started)
+-   [Guidelines for Contribution](http://cashmere.healthcatalyst.net/web/guides/contribution-guide)
+-   [Packaging Library](http://cashmere.healthcatalyst.net/web/guides/packaging-library)
+-   [Submit an Issue](http://cashmere.healthcatalyst.net/web/guides/submit-an-issue)
+-   [Supported Browsers](http://cashmere.healthcatalyst.net/web/guides/supported-browsers)
 
 ## Installing to an Existing Project
 

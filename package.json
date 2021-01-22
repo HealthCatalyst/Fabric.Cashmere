@@ -62,7 +62,6 @@
     "@stackblitz/sdk": "^1.2.0",
     "change-case": "^3.0.2",
     "core-js": "^2.4.1",
-    "d3": "^4.13.0",
     "file-system": "^2.2.2",
     "font-awesome": "^4.7.0",
     "markdown-it": "^8.4.1",

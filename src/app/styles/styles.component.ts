@@ -7,12 +7,13 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 @Component({
     selector: 'hc-demo-styles',
     templateUrl: './styles.component.html',
-    styleUrls: ['../components/components.component.scss']
+    styleUrls: ['../shared/base-demo.component.scss']
 })
 export class StylesComponent implements OnDestroy {
     thisPage = '';
     queryTab = 0;
     selectOptions: Array<Data> = [];
+    categories: Array<string> = [];
     private unsubscribe = new Subject<void>();
     private appInsights;
 
@@ -34,6 +35,9 @@ export class StylesComponent implements OnDestroy {
             for (let entry of root.children ) {
                 if (entry.data && entry.data.title) {
                     this.selectOptions.push(entry);
+                    if ( entry.data.category && !this.categories.includes( entry.data.category )) {
+                        this.categories.push( entry.data.category );
+                    }
                 }
             }
         }
@@ -41,7 +45,7 @@ export class StylesComponent implements OnDestroy {
         //  Gets the search parameter value from the url
         this.activatedRoute.queryParams.subscribe(() => {
             let currentPath = this.router.url;
-            currentPath = currentPath.replace( '/styles/', '' );
+            currentPath = currentPath.replace( '/web/styles/', '' );
             const pathArray = currentPath.split( '?' );
 
             if (this.selectOptions.length) {
@@ -60,7 +64,7 @@ export class StylesComponent implements OnDestroy {
         if (this.selectOptions.length) {
             for (let entry of this.selectOptions) {
                 if (entry.data && event === entry.data.title) {
-                    this.router.navigate(['/styles/' + entry.path]);
+                    this.router.navigate(['/web/styles/' + entry.path]);
                     window.scrollTo(0, 0);
                     break;
                 }
@@ -70,7 +74,7 @@ export class StylesComponent implements OnDestroy {
 
     // Handle nav changes via the sidebar
     navUpdate(page: any) {
-        this.router.navigate(['/styles/' + page]);
+        this.router.navigate(['/web/styles/' + page]);
         window.scrollTo(0, 0);
     }
 

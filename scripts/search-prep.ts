@@ -73,7 +73,7 @@ function readGuideFiles() {
                         title: changeCase.titleCase( sectionTitle ) + ' - ' + changeCase.titleCase( mapping.basename ),
                         // Remove all the markdown from the file content and set it so we can search through it
                         content: mdGetContent(element),
-                        link: 'guides/' + mapping.basename,
+                        link: 'web/guides/' + mapping.basename,
                         category: 'guides',
                         // Set displayName to basename for display purposes
                         displayName: mapping.basename,
@@ -86,14 +86,14 @@ function readGuideFiles() {
                     }
                 });
             });
-            readStyleFiles();
+            readFoundationsFiles();
     });
 }
 
-// Index the styles content which is a combination of markdown and components
-function readStyleFiles() {
+// Index the foundations content which is a combination of markdown and components
+function readFoundationsFiles() {
     // Start by parsing the style markdown files
-    glob('guides/styles/*.md', function (er, files) {
+    glob('guides/foundations/*.md', function (er, files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -138,8 +138,8 @@ function readStyleFiles() {
                         title: changeCase.titleCase(sectionTitle) + ' - ' + changeCase.titleCase(mapping.basename),
                         // Remove all the markdown from the file content and set it so we can search through it
                         content: mdGetContent(element),
-                        link: 'styles/' + mapping.basename,
-                        category: 'styles',
+                        link: 'foundations/' + mapping.basename,
+                        category: 'foundations',
                         // Set displayName to basename for display purposes
                         displayName: mapping.basename,
                         type: 'doc',
@@ -153,8 +153,8 @@ function readStyleFiles() {
             });
     });
 
-    // Then parse the style components
-    glob('src/app/styles/*/*.html', function (er, files) {
+    // Then parse the foundations components
+    glob('src/app/foundations/*/*.html', function (er, files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -184,8 +184,267 @@ function readStyleFiles() {
                         // Set the title to the title with propare capitalization
                         title: changeCase.titleCase(title) + ' - ' + changeCase.titleCase(parentName.replace(/-/g, ' ')),
                         content: exampleGetContent(element),
-                        link: 'styles/' + parentName,
-                        category: 'styles',
+                        link: 'foundations/' + parentName,
+                        category: 'foundations',
+                        displayName: title,
+                        type: 'doc',
+                        section: changeCase.paramCase(title)
+                    });
+                    searchArray.push(sectionObj);
+                });
+            });
+
+            readContentFiles();
+    });
+}
+
+// Index the content section which is a combination of markdown and components
+function readContentFiles() {
+    // Start by parsing the main content markdown files
+    glob('guides/content/*.md', function (er, files) {
+        files
+            .map(file => {
+                const basename = path.basename(file, path.extname(file));
+                return {
+                    path: file,
+                    basename: basename,
+                    outFile: basename
+                };
+            })
+            .forEach(mapping => {
+                const fileContent = fs.readFileSync(mapping.path, 'utf8');
+                // Go through each file and find titles
+                let matches: RegExpExecArray | null;
+                let found: string[] = [];
+                while ((matches = guideTitleRegex.exec(fileContent)) !== null) {
+                    // This is necessary to avoid infinite loops with zero-width matches
+                    if (matches.index === guideTitleRegex.lastIndex) {
+                        guideTitleRegex.lastIndex++;
+                    }
+                    matches.forEach((match: string, groupIndex: number) => {
+                        if (groupIndex === 1) {
+                            found.push(match);
+                        }
+                    });
+                }
+
+                // Split up the file content by title
+                const sections = fileContent.split(guideSectionRegex);
+                sections.forEach((element, index) => {
+                    let sectionTitle: string;
+                    if ( index > 0 ) {
+                        // Set the sectionTitle to the first index of the found array if null set to default path
+                        sectionTitle = found[index - 1] ? found[index - 1] : changeCase.noCase(mapping.path);
+                    } else {
+                        // The part element of a guide is its title which needs to be parsed differently
+                        const endOfLine = element.indexOf( '\n' );
+                        sectionTitle = element.substr( 2, endOfLine - 2);
+                    }
+                    const sectionObj = object = ({
+                        // Set id to the sectionTitle in snake case
+                        id: changeCase.snakeCase(sectionTitle),
+                        title: changeCase.titleCase(sectionTitle) + ' - ' + changeCase.titleCase(mapping.basename),
+                        // Remove all the markdown from the file content and set it so we can search through it
+                        content: mdGetContent(element),
+                        link: 'content/' + mapping.basename,
+                        category: 'content',
+                        // Set displayName to basename for display purposes
+                        displayName: mapping.basename,
+                        type: 'doc',
+                        section: changeCase.paramCase(sectionTitle)
+                    });
+                    // if the content is empty don't push it
+                    if (sectionObj["content"] !== "") {
+                        searchArray.push(sectionObj);
+                    }
+                });
+            });
+    });
+
+    // Then parse the user persona markdown files
+    glob('guides/content/personas/*.md', function (er, files) {
+        files
+            .map(file => {
+                const basename = path.basename(file, path.extname(file));
+                return {
+                    path: file,
+                    basename: basename,
+                    outFile: basename
+                };
+            })
+            .forEach(mapping => {
+                const fileContent = fs.readFileSync(mapping.path, 'utf8');
+                // Go through each file and find titles
+                let matches: RegExpExecArray | null;
+                let found: string[] = [];
+                while ((matches = guideTitleRegex.exec(fileContent)) !== null) {
+                    // This is necessary to avoid infinite loops with zero-width matches
+                    if (matches.index === guideTitleRegex.lastIndex) {
+                        guideTitleRegex.lastIndex++;
+                    }
+                    matches.forEach((match: string, groupIndex: number) => {
+                        if (groupIndex === 1) {
+                            found.push(match);
+                        }
+                    });
+                }
+
+                const sectionObj = object = ({
+                    id: changeCase.snakeCase(mapping.basename),
+                    title: changeCase.titleCase(mapping.basename),
+                    content: mdGetContent(fileContent),
+                    link: 'content/personas/' + mapping.basename,
+                    category: 'content',
+                    displayName: mapping.basename,
+                    type: 'persona',
+                    section: changeCase.paramCase(mapping.basename)
+                });
+
+                searchArray.push(sectionObj);
+            });
+    });
+
+    // Then parse the content components
+    glob('src/app/content/*/*.html', function (er, files) {
+        files
+            .map(file => {
+                const basename = path.basename(file, path.extname(file));
+                return {
+                    path: file,
+                    basename: basename,
+                    outFile: basename
+                };
+            })
+            .forEach(mapping => {
+                const fileContent = fs.readFileSync(mapping.path, 'utf8');
+                const pathArray = mapping.path.split('/');
+                const parentName = pathArray[ pathArray.length - 2 ];
+                let title = mapping.basename.split('.')[0];
+                title = title.replace( /-/g, ' ' );
+
+                // Split up the file content by header-link anchors
+                const sections = fileContent.split('<h5 id="');
+                sections.forEach((element, index) => {
+                    if ( index > 0 ) {
+                        const quoteIndex = element.indexOf('"');
+                        title = element.substr(0, quoteIndex);
+                    }
+
+                    const sectionObj = object = ({
+                        id: mapping.basename.split('.')[0],
+                        // Set the title to the title with propare capitalization
+                        title: changeCase.titleCase(title) + ' - ' + changeCase.titleCase(parentName.replace(/-/g, ' ')),
+                        content: exampleGetContent(element),
+                        link: 'content/' + parentName,
+                        category: 'content',
+                        displayName: title,
+                        type: 'doc',
+                        section: changeCase.paramCase(title)
+                    });
+                    searchArray.push(sectionObj);
+                });
+            });
+
+            readAnalyticsFiles();
+    });
+}
+
+// Index the analytics section which is a combination of markdown and components
+function readAnalyticsFiles() {
+    // Start by parsing the main content markdown files
+    glob('guides/analytics/*/*.md', function (er, files) {
+        files
+            .map(file => {
+                const basename = path.basename(file, path.extname(file));
+                return {
+                    path: file,
+                    basename: basename,
+                    outFile: basename
+                };
+            })
+            .forEach(mapping => {
+                const fileContent = fs.readFileSync(mapping.path, 'utf8');
+                // Go through each file and find titles
+                let matches: RegExpExecArray | null;
+                let found: string[] = [];
+                while ((matches = guideTitleRegex.exec(fileContent)) !== null) {
+                    // This is necessary to avoid infinite loops with zero-width matches
+                    if (matches.index === guideTitleRegex.lastIndex) {
+                        guideTitleRegex.lastIndex++;
+                    }
+                    matches.forEach((match: string, groupIndex: number) => {
+                        if (groupIndex === 1) {
+                            found.push(match);
+                        }
+                    });
+                }
+
+                // Split up the file content by title
+                const sections = fileContent.split(guideSectionRegex);
+                sections.forEach((element, index) => {
+                    let sectionTitle: string;
+                    if ( index > 0 ) {
+                        // Set the sectionTitle to the first index of the found array if null set to default path
+                        sectionTitle = found[index - 1] ? found[index - 1] : changeCase.noCase(mapping.path);
+                    } else {
+                        // The part element of a guide is its title which needs to be parsed differently
+                        const endOfLine = element.indexOf( '\n' );
+                        sectionTitle = element.substr( 2, endOfLine - 2);
+                    }
+                    const sectionObj = object = ({
+                        // Set id to the sectionTitle in snake case
+                        id: changeCase.snakeCase(sectionTitle),
+                        title: changeCase.titleCase(sectionTitle) + ' - ' + changeCase.titleCase(mapping.basename),
+                        // Remove all the markdown from the file content and set it so we can search through it
+                        content: mdGetContent(element),
+                        link: 'analytics/' + mapping.basename,
+                        category: 'analytics',
+                        // Set displayName to basename for display purposes
+                        displayName: mapping.basename,
+                        type: 'doc',
+                        section: changeCase.paramCase(sectionTitle)
+                    });
+                    // if the content is empty don't push it
+                    if (sectionObj["content"] !== "") {
+                        searchArray.push(sectionObj);
+                    }
+                });
+            });
+    });
+
+    // Then parse the analytics components
+    glob('src/app/analytics/*/*.html', function (er, files) {
+        files
+            .map(file => {
+                const basename = path.basename(file, path.extname(file));
+                return {
+                    path: file,
+                    basename: basename,
+                    outFile: basename
+                };
+            })
+            .forEach(mapping => {
+                const fileContent = fs.readFileSync(mapping.path, 'utf8');
+                const pathArray = mapping.path.split('/');
+                const parentName = pathArray[ pathArray.length - 2 ];
+                let title = mapping.basename.split('.')[0];
+                title = title.replace( /-/g, ' ' );
+
+                // Split up the file content by header-link anchors
+                const sections = fileContent.split('<h5 id="');
+                sections.forEach((element, index) => {
+                    if ( index > 0 ) {
+                        const quoteIndex = element.indexOf('"');
+                        title = element.substr(0, quoteIndex);
+                    }
+
+                    const sectionObj = object = ({
+                        id: mapping.basename.split('.')[0],
+                        // Set the title to the title with propare capitalization
+                        title: changeCase.titleCase(title) + ' - ' + changeCase.titleCase(parentName.replace(/-/g, ' ')),
+                        content: exampleGetContent(element),
+                        link: 'analytics/' + parentName,
+                        category: 'analytics',
                         displayName: title,
                         type: 'doc',
                         section: changeCase.paramCase(title)
@@ -243,7 +502,7 @@ function readComponentUsage() {
                         title: sectionTitle + ' - ' + changeCase.titleCase(parentName),
                         // Remove all the markdown from the file content and set it so we can search through it
                         content: mdGetContent(element),
-                        link: typeStr + '/' + parentName + '/usage',
+                        link: 'web/' + typeStr + '/' + parentName + '/usage',
                         category: typeStr,
                         // Set displayName to basename for display purposes
                         displayName: mapping.basename,
@@ -294,7 +553,7 @@ function readComponentAPI() {
                         // Set the title to the title with propare capitalization
                         title: changeCase.titleCase(title) + ' - ' + changeCase.titleCase(parentName.replace(/-/g, ' ')),
                         content: apiGetContent(element),
-                        link: 'components/' + parentName + '/api',
+                        link: 'web/components/' + parentName + '/api',
                         category: 'components',
                         displayName: title,
                         type: 'api',
@@ -374,7 +633,7 @@ function readComponentExamples() {
                     // Set the title to the title with propare capitalization
                     title: changeCase.titleCase(title.replace( /-/g, ' ' )),
                     content: exampleGetContent(fileContent),
-                    link: typeStr + '/' + parentItem + '/examples',
+                    link: 'web/' + typeStr + '/' + parentItem + '/examples',
                     category: typeStr,
                     displayName: selectedStr,
                     type: 'example',

@@ -13,7 +13,7 @@
     <div class="hc-page-btns-container">
         <button
             hc-button
-            color="secondary"
+            buttonStyle="secondary"
             class="hc-page-button hc-page-left-button"
             (click)="_previousPage()"
             [disabled]="!totalPages || _isFirstPage"
@@ -25,7 +25,7 @@
         <ng-container *ngIf="displayWidth === 'lg'">
             <button
                 hc-button
-                color="secondary"
+                buttonStyle="secondary"
                 class="hc-page-button hc-page-inner-button"
                 *ngFor="let page of _visiblePages"
                 [disabled]="!page"
@@ -40,7 +40,7 @@
         <ng-container *ngIf="displayWidth === 'md'">
             <button
                 hc-button
-                color="secondary"
+                buttonStyle="secondary"
                 class="hc-page-button hc-page-inner-button"
                 *ngFor="let page of _collapsedVisiblePages"
                 [disabled]="!page"
@@ -53,7 +53,7 @@
         </ng-container>
         <button
             hc-button
-            color="secondary"
+            buttonStyle="secondary"
             class="hc-page-button hc-page-right-button"
             (click)="_nextPage()"
             [disabled]="!totalPages || _isLastPage"

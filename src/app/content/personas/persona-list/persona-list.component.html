@@ -1,0 +1,37 @@
+<div *ngIf="!viewerMode" class="demo-content">
+    <h1>Persona List</h1>
+    <h6>Last updated Nov 30, 2020</h6>
+
+    <hc-tile>
+        <h5 id="overview">Overview</h5>
+
+        <p>
+            The list below represents a comprehensive collection of personas that interact with Health Catalyst.
+            Each persona includes a description of the hypothetical person, as well as their goals and needs.
+            The persona list is grouped into external and internal personas.
+            For another way to visualize this collection of personas, visit the <a routerLink="/content/org-chart">persona organization chart</a> page.
+        </p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="external-personas">External Personas</h5>
+
+        <ul class="persona-list">
+            <ng-container *ngFor="let persona of personaList">
+                <li *ngIf="persona.type === 'external'"><a [routerLink]="'/content/personas/' + persona.route">{{persona.title}}</a></li>
+            </ng-container>
+        </ul>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="internal-personas">Internal Personas</h5>
+
+        <ul class="persona-list">
+            <ng-container *ngFor="let persona of personaList">
+                <li *ngIf="persona.type === 'internal'"><a [routerLink]="'/content/personas/' + persona.route">{{persona.title}}</a></li>
+            </ng-container>
+        </ul>
+    </hc-tile>
+</div>
+
+<router-outlet></router-outlet>

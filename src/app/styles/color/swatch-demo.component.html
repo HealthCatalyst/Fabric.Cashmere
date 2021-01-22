@@ -1,7 +1,0 @@
-<div class="swatch-container">
-    <div class="swatch" [ngClass]="{'large': isLarge, 'add-border': needsBorder}" [style.backgroundColor]="hex"></div>
-    <div *ngIf="name" [ngClass]="{'name': rgb || cmyk}">{{name}}</div>
-    <div class="hex">{{hex}}</div>
-    <div *ngIf="rgb" class="hex" >{{rgb}}</div>
-    <div *ngIf="cmyk" class="hex" >{{cmyk}}</div>
-</div>
