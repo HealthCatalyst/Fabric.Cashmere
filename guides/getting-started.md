@@ -18,7 +18,7 @@ npm install --save @healthcatalyst/cashmere
 npm install --save @angular/cdk@9.2.4
 ```
 
-### C) *(Optional)* Install other dependencies as desired.
+### C) *(Optional)* Install additional dependencies as needed.
 - [Font Awesome](https://fontawesome.com) - Recommended icon set. *(For healthcare-specific iconography, see step 3.)*
 - [Open Sans](https://fonts.google.com/specimen/Open+Sans) - Recommended font.
 - [Ng-select](https://github.com/ng-select/ng-select) - Needed only if using the multiselect/typeahead component.
@@ -34,7 +34,7 @@ npm install --save font-awesome npm-font-open-sans @ng-select/ng-select
 ## Step 2: Create a Cashmere module.
 
 ### A) Create a module to hold the Cashmere components your app needs. 
-This will makes for a more organized code base and will help avoid duplicate references throughout your app. Place all the components in the exports field of the `@NgModule` annotation.
+This will make for a more organized code base and will help avoid duplicate references throughout your app. Place all the components in the exports field of the `@NgModule` annotation.
 
 ```typescript
 import {NgModule} from '@angular/core';
