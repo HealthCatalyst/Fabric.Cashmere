@@ -1,0 +1,13 @@
+<div class="demo-content">
+    <button hc-button
+        title="Back to List"
+        buttonStyle="link"
+        class="persona-back-button"
+        [routerLink]="orgChart ? '/content/org-chart' : '/content/personas'"
+        [queryParams]="orgChart ? {section: 'organization-chart'} : {}"
+    >
+        <hc-icon hcIconSm fontSet="fa" fontIcon="fa-chevron-left" class="icon-left"></hc-icon>
+        {{ orgChart ? "Back to Org Chart" : "Back to Persona List" }}
+    </button>
+</div>
+<div class="demo-content persona-viewer-container" [hcMarkdown]="document"></div>

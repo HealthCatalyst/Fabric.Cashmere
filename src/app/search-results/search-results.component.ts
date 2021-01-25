@@ -29,22 +29,27 @@ export class SearchResultsComponent implements AfterViewInit {
     categories = new FormGroup({
         components: new FormControl(true),
         guides: new FormControl(true),
-        styles: new FormControl(true),
-        bits: new FormControl(true)
+        foundations: new FormControl(true),
+        bits: new FormControl(true),
+        content: new FormControl(true),
+        analytics: new FormControl(true)
     });
 
     types = new FormGroup({
         doc: new FormControl(true),
         example: new FormControl(true),
         api: new FormControl(true),
-        usage: new FormControl(true)
+        usage: new FormControl(true),
+        persona: new FormControl(true)
     });
 
     searchIcons = {
-        'components': { icon: 'fa-file-code-o' },
-        'guides': { icon: 'fa-file-text-o' },
-        'styles': { icon: 'fa-file-image-o' },
-        'bits': { icon: 'fa-puzzle-piece' }
+        'components': { icon: 'fa-code' },
+        'guides': { icon: 'fa-graduation-cap' },
+        'foundations': { icon: 'fa-cogs' },
+        'bits': { icon: 'fa-puzzle-piece' },
+        'content': { icon: 'fa-file-text-o' },
+        'analytics': { icon: 'fa-bar-chart' }
     };
 
     @HostListener('window:resize')
@@ -54,8 +59,8 @@ export class SearchResultsComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         // String lists that take the values from the categories and types FormGroups
-        let filterValues: string[] = ["styles", "components", "guides", "bits"];
-        let typeFilterValues: string[] = ["doc", "example", "api", "usage"];
+        let filterValues: string[] = ["foundations", "components", "guides", "bits", "content", "analytics"];
+        let typeFilterValues: string[] = ["doc", "example", "api", "usage", "persona"];
 
         // Listens for changes in the categories FormGroup
         this.categories.valueChanges.subscribe(categoryValues => {
@@ -197,7 +202,7 @@ export class SearchResultsComponent implements AfterViewInit {
     }
 
     resetFilters() {
-        this.categories.setValue({ components: true, guides: true, styles: true, bits: true });
+        this.categories.setValue({ components: true, guides: true, foundations: true, bits: true });
         this.types.setValue({ doc: true, example: true, api: true, usage: true });
     }
 }

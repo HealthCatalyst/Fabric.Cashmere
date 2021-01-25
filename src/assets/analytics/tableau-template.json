@@ -1,0 +1,16 @@
+[
+    {
+        "version": "1.0.0",
+        "releasedate": "January 21, 2020",
+        "requirements": "Tableau 2020.1 or greater",
+        "download": "https://dev.azure.com/healthcatalyst/Analytic%20Solutions/_git/ASO?path=%2F_references%2FHC-Tableau-Template%2F1.0.0&version=GBmaster",
+        "demo": "https://hcs-tableau.hqcatalyst.local/#/views/HCAT_Template_Reference_v1_0_0/Summary",
+        "notes": [
+            "Initial release of Cashmere template",
+            "Navbar leverages text buttons, which are not available in versions of Tableau before 2020.",
+            "Template includes HCAT_Template_Reference and HCAT_Template_Wireframe. Reference is a demo dashboard highlighting the styles in these docs. Wireframe is a stripped down version you can use to start your own projects.",
+            "Template also includes all associated image assets - make sure they're in the same directory as your project",
+            "For tooltips, copy the HealthCatalystShapes folder to Documents/My Tableau Repository/Shapes folder"
+        ]
+    }
+]

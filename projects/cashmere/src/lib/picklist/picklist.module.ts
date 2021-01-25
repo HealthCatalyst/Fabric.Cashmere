@@ -1,31 +1,66 @@
-import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {CommonModule} from '@angular/common';
-import {PicklistPaneComponent} from './pane/picklist-pane.component';
-import {PicklistComponent} from './picklist.component';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { PicklistComponent } from './picklist.component';
+import { PickOptionComponent } from './pick-option.component';
+import { PickPaneComponent } from './pane/pick-pane.component';
+import { SELECTION_MODEL_FACTORY } from './pick.types';
+import {
+    PickPaneFooterTemplateDirective,
+    PickPaneToolbarTemplateDirective,
+    PickOptgroupTemplateDirective,
+    PickOptionTemplateDirective,
+    PickPaneHeaderLeftTemplateDirective,
+    PickPaneHeaderRightTemplateDirective,
+    PickCustomItemTemplateDirective,
+    PickItemLabelDirective
+} from './pick-templates.directive';
+import { DefaultSelectionModelFactory } from './pane/selection-model';
+import { PickPaneListComponent } from './pane/pick-pane-list.component';
 import {ButtonModule} from '../button/button.module';
-import {IconModule} from '../icon/icon.module';
 import {InputModule} from '../input/input.module';
 import {FormFieldModule} from '../form-field/hc-form-field.module';
 import {ProgressIndicatorsModule} from '../progress-indicators/progress-indicators.module';
-
-export {PicklistPaneComponent} from './pane/picklist-pane.component';
-export {PicklistComponent} from './picklist.component';
-export {
-    IPicklistSettings,
-    IValueOption,
-    IValueSetOption,
-    IPicklistOptions,
-    IPicklistOptionsSource,
-    PicklistRemoteQueryOptions,
-    IPicklistRemoteQueryResponse,
-    IPageSettings,
-    IPagedCollection
-} from './picklist.model';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, ButtonModule, IconModule, InputModule, FormFieldModule, ProgressIndicatorsModule],
-    declarations: [PicklistPaneComponent, PicklistComponent],
-    exports: [PicklistPaneComponent, PicklistComponent]
+    declarations: [
+        PickPaneComponent,
+        PicklistComponent,
+        PickOptionComponent,
+        PickOptgroupTemplateDirective,
+        PickOptionTemplateDirective,
+        PickPaneHeaderLeftTemplateDirective,
+        PickPaneHeaderRightTemplateDirective,
+        PickPaneToolbarTemplateDirective,
+        PickPaneFooterTemplateDirective,
+        PickCustomItemTemplateDirective,
+        PickPaneListComponent,
+        PickItemLabelDirective
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ButtonModule,
+        InputModule,
+        FormFieldModule,
+        ProgressIndicatorsModule
+    ],
+    exports: [
+        PickPaneComponent,
+        PicklistComponent,
+        PickOptionComponent,
+        PickOptgroupTemplateDirective,
+        PickOptionTemplateDirective,
+        PickPaneHeaderLeftTemplateDirective,
+        PickPaneHeaderRightTemplateDirective,
+        PickPaneToolbarTemplateDirective,
+        PickPaneFooterTemplateDirective,
+        PickCustomItemTemplateDirective,
+        PickPaneListComponent,
+        PickItemLabelDirective
+    ],
+    providers: [
+        { provide: SELECTION_MODEL_FACTORY, useValue: DefaultSelectionModelFactory }
+    ]
 })
 export class PicklistModule {}

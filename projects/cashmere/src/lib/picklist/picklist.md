@@ -1,43 +1,80 @@
-##### Loading Values over HTTP
+##### Custom Templates
+The appearance of the picklist is highly customizable using template directives:
 
-The picklist can be given callback functions to retrieve values and valuesets from a server. This is needed in cases where there are too many items (1,000+) to hold in memory on the browser.
+&nbsp;
 
--   `getOptions: (params: PicklistRemoteQueryOptions) => Observable<IPicklistRemoteQueryResponse>;`
--   `getValuesForValueset: (code: string) => Observable<IValueOption[]>;`
+| Template Directive      | Description                                                                                                        |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `hcPaneHeaderLeftTmp`   | Header above the left picklist pane. *Default is "Available".*                                                     |
+| `hcPaneHeaderRightTmp`  | Header above the right picklist pane. *Default is "Selected".*                                                     |
+| `hcPickOptionTmp`       | An individual option row.                                                                                          |
+| `hcPickOptgroupTmp`     | A header row for grouped options.                                                                                  |
+| `hcPaneToolbarTmp`      | The space just above an option list. *Default contains count of options and Select All/Select None buttons.*       |
+| `hcPaneFooterTmp`       | The space just below an option list. *Default contains count highlighted options.*                                 |
+| `hcPickCustomItemTmp`   | When configuraed to allow for custom options, this template appears when search term doesn't have an exact match.  |
 
-#### HTML
+At a bare minimum, you simply need to use the appropriate attribute directive on an ng-template element within the `<hc-picklist>` element.
+```HTML
+<hc-picklist [items]="myItems">
+    <ng-template hcPaneFooterTmp><!-- Custom footer content here. --></ng-template>
+</hc-picklist>
+```
+
+Within those `<ng-template>` tags, you can nest additional elements, components, and directives. You can apply your own CSS classes and custom styling.
+
+Some template directives also expose variables via the `let` template syntax. For example, in the directive for option templates (`hcPickOptionTmp`), you can access values like the option's value and index.
+```HTML
+<hc-picklist [items]="myItems">
+    <ng-template hcPickOptionTmp let-item="item" let-search="searchTerm" let-index="index">
+        <strong>{{index}}</strong><span class="my-custom-class">{{ item.name }}</span>
+    </ng-template>
+</hc-picklist>
+```
+
+You can see more extensive implementations under the **Picklist Templates** example.
+
+&nbsp;
+
+##### Migrating from Old Picklist
+In Cashmere version 9.x and earlier, there was a previous iteration of `<hc-picklist>` with a different API. That original component has been
+deprecated. If needed, you can still use the old component, but it is now referenced as `<hc-picklist-old>`. We highly encourage migrating to the newer version of picklist as soon as possible.
+
+For the simpleset of use cases, migration is very simple:
 
 ```HTML
-<hc-picklist [(ngModel)]="myRemoteModel" [settings]="myRemotePicklistSettings"></hc-picklist>
+<!-- In the typescript file: simpleModelControl = new FormControl([]); -->
+
+<!-- Old picklist -->
+<hc-picklist [formControl]="simpleModelControl" [simpleOptions]="['North', 'East', 'South', 'West']"></hc-picklist>
+
+<!-- New Picklist -->
+<hc-picklist [formControl]="simpleModelControl" [items]="['North', 'East', 'South', 'West']"></hc-picklist>
+
 ```
 
-#### Typescript
+For most cases, a bit more work is required. The previous picklist had a `[config]` input that accepted an object of type `IPicklistSettings`. Following is a table of `IPicklistSettings` properties and either an equivalent property or a note on how to migrate.
 
-```TypeScript
-import { IPicklistSettings } from '@healthcatalyst/cashmere';
 
-// ...
+| Old Picklist                    | New Picklist                                                                                                       |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `config.codeIsSignificant`      | Not available. Simply include the code or id in your template. (Use `hcPickOptionTmp` or `<hc-pick-option>`.)      |
+| `config.leftHeaderText`         | Use `[leftHeaderText]` input. Can also use `hcPaneHeaderLeftTmp` directive to customized header further.           |
+| `config.rightHeaderText`        | Use `[rightHeaderText]` input. Can also use `hcPaneHeaderRightTmp` directive to customized header further.         |
+| `config.options`                | Use `[items]` input for prefetched options. Options in the array can now take any shape, object or primitive.      |
+| `config.selected`               | Not available. Use `[(ngModel)]` or `[formControl]`.                                                               |
+| `config.showHeaderText`         | Use `[hasHeader]` input.                                                                                           |
+| `config.sort`                   | Not available. Use `[sortFn]` input and provide a custom sort function logic instead of asc/desc strings.          |
+| `config.useValuesets`           | Not available. Use `[groupBy]`, possibly along with related group input `[canSelectGroup]`, `[groupValue]`, etc.   |
 
-public myremotePicklistSettings: IPicklistSettings = {
-    codeIsSignificant: true,
-    useValuesets: true,
-    options: {
-        useValuesets: true,
-        options: {
-            isPaged: true,
-            pageSize: 25,
-            getValuesForValueset: (code) => this.fakeService.getValuesForValueset(code),
-            getOptions: (params) => this.fakeService.getOptions(params)
-        }
-    }
-};
-```
+If you were previously retrieving options over HTTP with `IPicklistOptionsSource`, you should reference the **Picklist Remote Data** example. As always, don't hesitate to reach out to the Cashmere steering committee on Slack.
 
-##### Things to Look Out For
+&nbsp;
 
--   For the best experience when using the getValue() callback function, it's important to match the picklist's method of searching and sorting. This helps us to avoid unnecessary round trips to the server while maintaining a consistent user experience.
--   When searching, the default is to execute the search on the titles of each value, unless codeIsSignificant is set to true, in which case the codes of values will be searched as well. (Value sets will not be searched by code.) If multiple tokens exist in a search string (i.e, "three search terms"), the code will split up the tokens and only return those values or value sets that contain all three tokens. Review picklist-filter-local.service.spec.ts on github for further details on search.
--   When sorting, the javascript function localCompare() is used. Read more about it on MDN. By default, the picklist will sort by title, unless codeIsSignificant is set to true, in which case values will be sorted by code. (Value sets will still be sorted by title.)
--   When returning values or valuesets from the server, it's important not to return values that are already selected. Otherwise, the counts of total available items or items per page can get out of sync. When implementing getValues(), you'll have access to information about the current state of the picklist, including which values are already selected. See "Interfaces for Loading Values over HTTP" for more details.
--   The picklist has a "select all" button. When values are being loaded via callback, this button will fire off a request asking for all available values (matching the current search term, if there is one) to be returned, up to a limit of 2,000. If the number of total values on the server is above that, then 2,00 will be loaded and the user will be notified that they hit the limit. If "select all" is clicked with the value set tab active, only the current valuesets in the pane will be selected.
--   To see a simplified example of implementing loading values over HTTP, visit the github repo and review the FakeRemoteOptionsService in picklist-demo-data.ts.
+##### Inspired by Ng-Select
+
+This component was heavily inspired by the open source ng-select component. Their API's are very similar, so you can find many applicable explanations
+and examples in their robust docs site:
+-   [Examples](https://ng-select.github.io/ng-select)
+-   [API](https://github.com/ng-select/ng-select#api)
+-   [Github](https://github.com/ng-select/ng-select)
+

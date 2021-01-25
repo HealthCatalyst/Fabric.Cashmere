@@ -133,7 +133,7 @@ from advancing the calendar past the `month` or `year` (depending on current vie
 The second way to add date validation is using the `hcDatepickerFilter` property of the datepicker
 input. This property accepts a function of `<D> => boolean` (where `<D>` is the date type used by
 the datepicker, see
-[Choosing a date implementation](/components/datepicker/usage#choosing-date-implementation).
+[Choosing a date implementation](/web/components/datepicker/usage#choosing-date-implementation).
 A result of `true` indicates that the date is valid and a result of `false` indicates that it is
 not. Again this will also disable the dates on the calendar that are invalid. However, one important
 difference between using `hcDatepickerFilter` vs using `min` or `max` is that filtering out all
@@ -250,7 +250,7 @@ It is also possible to create your own `DateAdapter` that works with any date fo
 requires. This is accomplished by subclassing `DateAdapter` and providing your subclass as the
 `DateAdapter` implementation. You will also want to make sure that the `HC_DATE_FORMATS` provided
 in your app are formats that can be understood by your date implementation. See
-[Customizing the parse and display formats](/components/datepicker/usage#customizing-parse) for more
+[Customizing the parse and display formats](/web/components/datepicker/usage#customizing-parse) for more
 information about `HC_DATE_FORMATS`.
 
 ```ts
@@ -392,7 +392,7 @@ In multi-year view:
 This error is thrown if you have not provided all of the injectables the datepicker needs to work.
 The easiest way to resolve this is to import the `HcNativeDateModule` in
 your application's root module. See
-[Choosing a date implementation](/components/datepicker/usage#choosing-date-implementation) for
+[Choosing a date implementation](/web/components/datepicker/usage#choosing-date-implementation) for
 more information.
 
 #### Error: A HcDatepicker can only be associated with a single input

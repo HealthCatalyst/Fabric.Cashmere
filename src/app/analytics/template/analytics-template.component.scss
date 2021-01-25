@@ -1,0 +1,39 @@
+.template-loader {
+    width: 100%;
+    height: 400px;
+}
+
+.template-version-header {
+    margin-top: 20px;
+    font-size: 24px;
+
+    span {
+        font-weight: 400;
+        font-size: 20px;
+    }
+}
+
+.template-version-notes {
+    h4 {
+        margin-top: 20px;
+        margin-bottom: -5px;
+    }
+
+    ul {
+        margin-top: 0;
+        font-size: 14px;
+    }
+}
+
+.template-download-btn {
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+    hc-icon {
+        margin-right: 10px;
+    }
+}
+
+.template-version-details {
+    line-height: 1.5;
+}

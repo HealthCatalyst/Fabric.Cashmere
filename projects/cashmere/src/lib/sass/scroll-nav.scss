@@ -3,6 +3,8 @@
 
 @mixin hc-scroll-nav-links-container() {
     margin-right: 30px;
+    overflow-y: auto;
+    height: 100%;
 }
 
 @mixin hc-scroll-nav-links-ul() {
@@ -34,9 +36,56 @@
 @mixin hc-scroll-nav-link-active() {
     &,
     &:hover {
-        background-color: $blue;
         color: $white;
         font-weight: 500;
+        position: relative;
+        z-index: 1;
+    }
+}
+
+@mixin hc-scroll-nav-link-active-bg {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 41px;
+    width: 100%;
+    background-color: $blue;
+    z-index: -1;
+}
+
+@mixin hc-scroll-nav-active-parent-section-link() {
+    &,
+    &:hover {
+        font-weight: bold;
+        border-left: 5px solid #00aeff;
+    }
+}
+
+@mixin hc-scroll-nav-parent-section-link() {
+    ul {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .hc-scroll-nav-subsection-link {
+        padding: 10px 0 10px 15px;
+    }
+
+    &,
+    &.hc-scroll-nav-subsection-link {
+        padding: 10px 0 0px 15px;
+    }
+}
+
+@mixin hc-scroll-nav-parent-section-link-content() {
+    &.hc-scroll-nav-subsection-link {
+        margin-top: 10px;
+
+        ul:first-child {
+            padding-top: 10px;
+        }
     }
 }
 
