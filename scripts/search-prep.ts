@@ -383,6 +383,8 @@ function readAnalyticsFiles() {
                 const sections = fileContent.split(guideSectionRegex);
                 sections.forEach((element, index) => {
                     let sectionTitle: string;
+                    const pathArray = mapping.path.split('/');
+                    let parentName = pathArray[ pathArray.length - 2 ];
                     if ( index > 0 ) {
                         // Set the sectionTitle to the first index of the found array if null set to default path
                         sectionTitle = found[index - 1] ? found[index - 1] : changeCase.noCase(mapping.path);
@@ -397,7 +399,7 @@ function readAnalyticsFiles() {
                         title: changeCase.titleCase(sectionTitle) + ' - ' + changeCase.titleCase(mapping.basename),
                         // Remove all the markdown from the file content and set it so we can search through it
                         content: mdGetContent(element),
-                        link: 'analytics/' + mapping.basename,
+                        link: 'analytics/' + parentName + '-' + mapping.basename,
                         category: 'analytics',
                         // Set displayName to basename for display purposes
                         displayName: mapping.basename,
