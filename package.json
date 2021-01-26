@@ -87,7 +87,6 @@
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
-    "@types/d3": "^5.0.0",
     "@types/fs-extra": "^5.0.4",
     "@types/glob": "^5.0.35",
     "@types/inquirer": "^7.3.0",
