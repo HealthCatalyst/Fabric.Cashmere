@@ -33,13 +33,15 @@ export class HcScrollNavComponent implements AfterViewInit {
             this.setClassesForSubsection(link);
         });
 
-        if (this._links && this._links[0]) {
-            let linkId = this._links[0].getAttribute('hcScrollLink');
-            if (!linkId) {
-                throw new Error(`Failed to mark active section. Could not find the element with the data target for id: ${linkId}.`);
+        if (this.linkList?.length > 0) {
+            const firstScrollLink = this.linkList.first?.hcScrollLink;
+            if (!firstScrollLink) {
+                throw new Error(
+                    `Failed to mark active section. Could not find the element with the data target for id: ${firstScrollLink}.`
+                );
             }
 
-            this._setActiveSectionById(linkId);
+            this._setActiveSectionById(firstScrollLink);
         }
     }
 
