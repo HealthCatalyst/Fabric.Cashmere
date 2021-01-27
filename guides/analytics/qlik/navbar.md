@@ -58,7 +58,7 @@ Additionally, there is a floating line item called `Selected Highlight` that sho
 The y position of that item should always be set to the bottom of the selected item, but the x position should match the x position of the selected item.
 The width of the selected highlight item should also match the selected text object item.
 
-![Selected Link](./assets/analytics/qlik/qlik-selected.png "Selected link")
+![Selected Link](./assets/analytics/qlik/qlik-selected.PNG "Selected link")
 
 All other text objects within the links section should have their font set to `Arial 10 pt`.
 
