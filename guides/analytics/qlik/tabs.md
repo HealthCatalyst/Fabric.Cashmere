@@ -12,11 +12,14 @@ Each tab is a text object that creates a conditionally-shown variable when selec
 
 <div style="text-align:center"><br>
 
-![Qlik Tabs](./assets/analytics/qlik/qlik-selected.png "Qlik Tabs")
+![Qlik Tabs](./assets/analytics/qlik/qlik-tabs.PNG "Qlik Tabs")
 
 </div><br>
 
 In order to recreate the styling of the Cashmere web component in Qlik, each text object is on the same y-position and adjusted until their vertical sides touch. Generally speaking, each object is about 100px wide and 35px tall. Text is centered horizontally.
+
+:::
+:::
 
 ##### Formatting
 The background color and border on each text object should be set to `None`.

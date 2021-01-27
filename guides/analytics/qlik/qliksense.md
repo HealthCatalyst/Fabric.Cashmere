@@ -16,15 +16,7 @@ For a more in-depth review comparing major BI tools, including QlikView and Qlik
 
 ##### Template
 
-Download links to the default qlik sense template(s)
-
-:::
-
-:::
-
-##### Layout
-
-General HTML page layout considerations
+Developers can access examples of Qlik Sense accelerators on Health Catalyst's [internal site](https://salesdemo-sense.hqcatalyst.local)
 
 :::
 
@@ -36,7 +28,7 @@ The recommended method for applying Health Catalyst's Cashmere web style in Qlik
 
 <div style="text-align:center"><br>
 
-![Qlik Sense settings](./assets/analytics/qlik/qlik-settings-access.png "Access settings")
+![Qlik Sense settings](./assets/analytics/qlik/qs-settings-access.png "Access settings")
 
 </div>
 
@@ -44,7 +36,7 @@ Then open up the app settings (gear icon) and access the **App Theme** dropdown 
 
 <div style="text-align:center"><br>
 
-![Qlik Sense settings](./assets/analytics/qlik/qlik-settings.png "QS settings")
+![Qlik Sense settings](./assets/analytics/qlik/qs-settings.png "QS settings")
 
 </div>
 
