@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated Nov 18, 2020
+###### Last updated Jan 27, 2021
 
 :::
 
@@ -8,23 +8,18 @@
 
 Registered Marks (currently in use) – **Apply ®**:
 
--   CAFÉ (not in use)
 -   [[FLAME]](https://cashmere.healthcatalyst.net/styles/logo) Design Mark
--   HEALTH CATALYST _(only when followed by a product or services description; when you are just referring to the company/entity, do not use ®)_
+-   Health Catalyst _(only when followed by a product or services description; when you are just referring to the company/entity, do not use ®)_
 -   HAS
--   HEALTHCARE QUALITY CATALYST _(not in use)_
--   HEALTHCATALYST
--   HEALTHFINCH
--   IGNITE CHANGE (minimal use)
--	KNOWLEDGE EDGE (not in use)
--	KNOWLEDGEEDGE (not in use)
--   LEADING WISELY
--   MBL – **Abandon**
--   MEDICITY _(still using, not rebranding the website)_
--	TOUCHSTONE
--   VITALWARE
--   VITALCDM
--   VITALKNOWLEDGE
+-   HealthCatalyst
+-   Healthfinch
+-   Ignite Change 
+-   Leading Wisely
+-   Medicity 
+-	Touchstone
+-   Vitalware
+-   VitalCDM
+-   VitalKnowledge
 
 :::
 
@@ -35,38 +30,55 @@ Registered Marks (currently in use) – **Apply ®**:
 Unregistered Marks (currently in use, examples) – **Apply ™** symbol:
 _The ™ symbol can be applied to any unregistered trademark_
 
--   ABLE HEALTH™
--   CATALYST.AI
--   CHARLIE (use ™ with both text and image)
--   CLOSED-LOOP ANALYTICS
--   COMMUNITY ORCHESTRATE
+-   Able Health
+-   Catalyst.AI
+-   Charlie (use ™ with both text and image)
+-   Closed-Loop Analytics
+-   Community Orchestrate
 -   CORUS
--   DATA SCIENCE ADOPTION MODEL
+-   Data Science Adoption Model
 -   DOS
--   DOS MART and DOS MARTS – **Use with ™ symbol, don’t register**
--   HEALTHCARE.AI
--   HEALTHCATALYST.AI
--   HEALTHCARE ANALYTICS SUMMIT
--   HEALTH CATALYST UNIVERSITY
--   IGNITE OUTCOMES – **Abandon application**
--   IGNITE OUTCOMES IMPROVEMENT – **Monitor use to determine if we want to apply for registration**
--   LATE-BINDING
--   PATIENT SAFETY MONITOR
--   POPULATION BUILDER – **Apply to register**
--   POPULATION CARE FLOW
--   POPULATION HEALTH FOUNDATIONS SOLUTION – **Consider clearance search for registration – DO**
--   RAPID RESPONSE ANALYTICS SOLUTION
--   THE CATALYST AWARDS
--   VITALINTEGRITY
--   VITALANALYSIS
--   VITALASSESSMENT
--   HOSPITAL PRICE INDEX
--   VITALVIEW
--   VITALWORKFLOW
--   VITALAUDITOR
--   VITALCODER
--   VITALALERTS
--   VITAL365
+-   DOS Mart and DOS Marts 
+-   Healthcare.AI
+-   HealthCatalyst.AI
+-   Healthcare Analytics Summit
+-   Health Catalyst University
+-   Ignite Outcomes Improvement 
+-   Late-Binding
+-   Patient Safety Monitor
+-   Population Builder 
+-   Population Care Flow
+-   Population Health Foundations Solution 
+-   Rapid Response Analytics Solution
+-   The Catalyst Awards 
+-   VitalIntegrity
+-   VitalAnalysis
+-   VitalAssessment
+-   Hospital Price Index
+-   VitalView
+-   VitalWorkflow
+-   VitalAuditor
+-   VitalCoder
+-   VitalAlerts
+-   Vital365
+
+:::
+
+:::
+
+##### Registered and Unregistered Marks No Longer in Use
+
+**Registered Marks No Longer in Use:**
+
+-   Café  
+-   Healthcare Quality Catalyst 
+-   Knowledge Edge (not in use)
+-   KnowledgeEdge (not in use)
+-   MBL – **Abandon**
+
+**Unregistered Marks No Longer in Use:**
+
+-   Ignite Outcomes – **Abandon application**
 
 :::
 
