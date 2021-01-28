@@ -20,20 +20,20 @@ npm install --save @angular/cdk@9.2.4
 
 ### C) *(Optional)* Install additional dependencies as needed.
 - [Font Awesome](https://fontawesome.com) - Recommended icon set. *(For healthcare-specific iconography, see step 3.)*
-- [Open Sans](https://fonts.google.com/specimen/Open+Sans) - Recommended font.
+- [Noto Sans](https://fonts.google.com/specimen/Noto+Sans) - Recommended font.
 - [Ng-select](https://github.com/ng-select/ng-select) - Needed only if using the multiselect/typeahead component.
 
-  
+
 
 ```BASH
-npm install --save font-awesome npm-font-open-sans @ng-select/ng-select
+npm install --save font-awesome notosans-fontface @ng-select/ng-select
 ```
 :::
 
 :::
 ## Step 2: Create a Cashmere module.
 
-### A) Create a module to hold the Cashmere components your app needs. 
+### A) Create a module to hold the Cashmere components your app needs.
 This will make for a more organized code base and will help avoid duplicate references throughout your app. Place all the components in the exports field of the `@NgModule` annotation.
 
 ```typescript
@@ -69,7 +69,7 @@ The root Cashmere stylesheet need to be imported in your app's global style shee
 @import "~@healthcatalyst/cashmere/scss/cashmere";
 ```
 
-### B) *(Optional)* Add Font Awesome & Open Sans.
+### B) *(Optional)* Add Font Awesome & Noto Sans.
 In `angular.json`, place references for each font in your project's build target options in the styles array.
 
 ```json
@@ -81,7 +81,7 @@ In `angular.json`, place references for each font in your project's build target
           "options": {
             "styles": [
                 "../node_modules/font-awesome/css/font-awesome.css",
-                "../node_modules/npm-font-open-sans/open-sans.css",
+                "../node_modules/notosans-fontface/css/notosans-fontface-allweight.css",
                 "src/styles.scss"
             ]
           }

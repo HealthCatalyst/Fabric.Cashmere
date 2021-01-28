@@ -24,7 +24,7 @@
     "rxjs": "^6.5.4",
     "zone.js": "~0.9.1",
     "@healthcatalyst/cashmere": "*",
-    "npm-font-open-sans": "1.1.0",
+    "notosans-fontface": "^1.2.2",
     "@angular/cdk": "^9.2.4",
     "font-awesome": "4.7.0",
     "sugar": "^2.0.6"
