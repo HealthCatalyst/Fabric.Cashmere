@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/HealthCatalyst/Fabric.Cashmere/badge.svg?branch=master)](https://coveralls.io/github/HealthCatalyst/Fabric.Cashmere?branch=master)
 ![Cashmere Banner](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/CashmereBanner.png)
 
-An Angular component library that makes any task feel luxurious.
+Cashmere is Health Catalyst’s comprehensive design system. The Cashmere Angular UI library includes components and styles for Health Catalyst branded web applications.
 
 ## Quick Links
 
