@@ -1,5 +1,6 @@
 @import './colors';
 @import './functions';
+@import './variables';
 
 $line-height: 1.5;
 $label-font-scale: 1;
@@ -17,7 +18,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     position: relative;
     text-align: left;
     font-size: inherit;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: $default-font-family;
     font-weight: 400;
     line-height: $line-height;
     flex-direction: inherit;
