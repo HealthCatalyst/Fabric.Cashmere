@@ -50,6 +50,7 @@ export class CashmereModule {}
 
 ```typescript
 @NgModule({
+    imports: [CashmereModule],
     exports: [CommonModule, CashmereModule]
 })
 export class SharedModule {}
@@ -80,9 +81,9 @@ In `angular.json`, place references for each font in your project's build target
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "styles": [
-                "../node_modules/font-awesome/css/font-awesome.css",
-                "../node_modules/notosans-fontface/css/notosans-fontface-allweight.css",
-                "src/styles.scss"
+                "./node_modules/font-awesome/css/font-awesome.css",
+                "./node_modules/notosans-fontface/css/notosans-fontface-allweight.css",
+                "src/styles.scss" // your app's global stylesheet
             ]
           }
         }
