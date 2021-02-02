@@ -92,14 +92,10 @@ In `angular.json`, place references for each font in your project's build target
 ```
 
 ### C) *(Optional)* Add Health Catalyst icons (`hcicons`).
-If your app needs access to Health Catalyst & healthcare-specific icons, perform the following:
+If your app needs access to the [Health Catalyst icon font](/foundations/icons), add the following to your app's global style sheet (`src/styles.scss`):
 
-1. Download `hcicons` [here](
-https://cashmere.healthcatalyst.net/foundations/icons) and decompress the .zip file.
-2. Move the included `hcicons` folder into your app's /assets directory
-3. Import the `hcicons` stylesheet in your app's global style sheet (`src/styles.scss`):
 ```scss
-@import "assets/hcicons/style.scss";
+@import "~@healthcatalyst/cashmere/hcicons/hcicons";
 ```
 
 :::
