@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_27" data-name="Ellipse 27" cx="100" cy="100" r="100"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.183" y1="0.206" x2="0.512" y2="0.583" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00455f"/>
+      <stop offset="0.37" stop-color="#006d93" stop-opacity="0.631"/>
+      <stop offset="0.801" stop-color="#0099d2" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#00aeef" stop-opacity="0.4"/>
+    </linearGradient>
+    <clipPath id="clip-path-2">
+      <path id="Path_12342" data-name="Path 12342" d="M14.67-1.211a15.7,15.7,0,1,1-15.7,15.7A15.7,15.7,0,0,1,14.67-1.211Z" transform="matrix(0.921, -0.391, 0.391, 0.921, 0, 14.911)" fill="#fff"/>
+    </clipPath>
+    <clipPath id="clip-HealthFinch">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="HealthFinch" clip-path="url(#clip-HealthFinch)">
+    <circle id="Ellipse_24" data-name="Ellipse 24" cx="100" cy="100" r="100" fill="#00aeff"/>
+    <g id="Group_47" data-name="Group 47" clip-path="url(#clip-path)">
+      <path id="Path_56" data-name="Path 56" d="M293.069,161.333,188.211,72.5l-52.871,72.568L82,177.532l100.6,70.659C181.334,252.607,293.259,161.459,293.069,161.333Z" transform="translate(-38.303 -16.951)" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="Medicine_Bottle" data-name="Medicine Bottle" transform="translate(46 26)">
+      <path id="Path_12344" data-name="Path 12344" d="M1.3,0H46.8a1.5,1.5,0,0,1,1.3,1.644v14.8a1.5,1.5,0,0,1-1.3,1.644H1.3A1.5,1.5,0,0,1,0,16.443V1.644A1.5,1.5,0,0,1,1.3,0Z" transform="translate(49)" fill="#fff"/>
+      <path id="Path_12343" data-name="Path 12343" d="M-13.932,0h9.1C-4.2,0-3.691.736-3.691,1.644v14.8c0,.908-.509,1.644-1.138,1.644H-32.317s10.178-.345,14.774-4.866S-13.932,0-13.932,0Z" transform="translate(100.788)" fill="#e6e6e6"/>
+      <path id="Path_12345" data-name="Path 12345" d="M18.918,3.408V0H53.767V3.408C61.561,3.408,73,10.537,73,18.328V94H0S0,38.8,0,17.147C0,9.441,11.724,3.408,18.918,3.408Z" transform="translate(37 18)" fill="#f7a290"/>
+      <path id="Path_12346" data-name="Path 12346" d="M73,18.328V94H0C62.309,65.858,73,10.537,73,18.328Z" transform="translate(37 18)" fill="#f5876e"/>
+      <path id="Rectangle_363" data-name="Rectangle 363" d="M0,0H38a2,2,0,0,1,2,2V38a2,2,0,0,1-2,2H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" transform="translate(110 88) rotate(180)" fill="#fff"/>
+      <path id="Path_12347" data-name="Path 12347" d="M0,0H36C25.667,6.806,8.4,33.183,6.22,40H0Z" transform="translate(110 88) rotate(180)" fill="#e6e6e6"/>
+      <g id="Group_964" data-name="Group 964" transform="translate(110 74.5) rotate(180)">
+        <line id="Line_1" data-name="Line 1" x2="21.5" fill="none" stroke="#c2c1c0" stroke-width="3"/>
+        <line id="Line_2" data-name="Line 2" x2="27.5" transform="translate(0 6)" fill="none" stroke="#c2c1c0" stroke-width="3"/>
+        <line id="Line_3" data-name="Line 3" x2="27.5" transform="translate(0 12)" fill="none" stroke="#c2c1c0" stroke-width="3"/>
+        <line id="Line_4" data-name="Line 4" x2="27.5" transform="translate(0 18)" fill="none" stroke="#c2c1c0" stroke-width="3"/>
+      </g>
+      <rect id="Rectangle_364" data-name="Rectangle 364" width="60" height="61" transform="translate(0 51)" fill="#00628a" opacity="0.3"/>
+    </g>
+    <g id="Pill_Bottle" data-name="Pill Bottle" transform="translate(36 59)">
+      <rect id="Rectangle_359" data-name="Rectangle 359" width="74" height="22" rx="2" fill="#fff"/>
+      <path id="Rectangle_361" data-name="Rectangle 361" d="M0,0H60a0,0,0,0,1,0,0V78a2,2,0,0,1-2,2H2a2,2,0,0,1-2-2V0A0,0,0,0,1,0,0Z" transform="translate(7 21)" fill="#ff9d27"/>
+      <path id="Path_12336" data-name="Path 12336" d="M45.078,60.409C60.078,40.909,60,0,60,0V78a2,2,0,0,1-2,2H2a2,2,0,0,1-2-2S30.078,79.909,45.078,60.409Z" transform="translate(7 21)" fill="#e58b22"/>
+      <rect id="Rectangle_360" data-name="Rectangle 360" width="74" height="22" rx="5" fill="#fff"/>
+      <path id="Path_12337" data-name="Path 12337" d="M0,0H16a2,2,0,0,1,2,2V20a2,2,0,0,1-2,2H-32.317s17.89-.419,25.969-5.919S0,0,0,0Z" transform="translate(56)" fill="#e6e6e6"/>
+      <path id="Rectangle_362" data-name="Rectangle 362" d="M0,0H38a2,2,0,0,1,2,2V38a2,2,0,0,1-2,2H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" transform="translate(7 37)" fill="#fff"/>
+      <g id="Group_963" data-name="Group 963" transform="translate(7 45.5)">
+        <line id="Line_1-2" data-name="Line 1" x2="28" fill="none" stroke="#c2c1c0" stroke-width="3"/>
+        <line id="Line_2-2" data-name="Line 2" x2="28" transform="translate(0 6)" fill="none" stroke="#c2c1c0" stroke-width="3"/>
+        <line id="Line_3-2" data-name="Line 3" x2="28" transform="translate(0 12)" fill="none" stroke="#c2c1c0" stroke-width="3"/>
+        <line id="Line_4-2" data-name="Line 4" x2="21.5" transform="translate(0 18)" fill="none" stroke="#c2c1c0" stroke-width="3"/>
+      </g>
+    </g>
+    <g id="Pill" transform="matrix(0.921, -0.391, 0.391, 0.921, 128.772, 128.907)">
+      <path id="Path_12341" data-name="Path 12341" d="M14.67-1.211a15.7,15.7,0,1,1-15.7,15.7A15.7,15.7,0,0,1,14.67-1.211Z" transform="translate(0 0)" fill="#fff"/>
+      <path id="Path_12340" data-name="Path 12340" d="M31.5,0A15.748,15.748,0,0,1,15.748,15.748,15.748,15.748,0,0,1,0,0Z" transform="translate(-1.031 14.444)" fill="#d3d5d6"/>
+      <path id="Path_12348" data-name="Path 12348" d="M12.155-1A13.01,13.01,0,1,1-.855,12.007,13.01,13.01,0,0,1,12.155-1Z" transform="translate(2.515 2.484)" fill="#e6e6e6"/>
+      <path id="Path_12338" data-name="Path 12338" d="M2.493-.216,28.619-.237l2.719,2.323L28.619,4.295,2.493,4.316-.159,2.142Z" transform="translate(-0.872 12.302)" fill="#c2c1c0"/>
+      <path id="Path_12339" data-name="Path 12339" d="M31.5-.057,28.778,2.153,2.652,2.174,0,0Z" transform="translate(-1.031 14.444)" fill="#fff"/>
+    </g>
+    <g id="Mask_Group_25" data-name="Mask Group 25" transform="translate(128.772 113.996)" clip-path="url(#clip-path-2)">
+      <path id="Path_12349" data-name="Path 12349" d="M17.943.549a17.5,17.5,0,1,1-17.5,17.5A17.5,17.5,0,0,1,17.943.549Z" transform="translate(-13.881 10.397) rotate(7)" fill="#00628a" opacity="0.25"/>
+    </g>
+    <g id="Pill-2" data-name="Pill" transform="translate(110.891 122.393) rotate(7)">
+      <path id="Path_12350" data-name="Path 12350" d="M17.943.549a17.5,17.5,0,1,1-17.5,17.5A17.5,17.5,0,0,1,17.943.549Z" transform="translate(0 0)" fill="#fff"/>
+      <path id="Path_12340-2" data-name="Path 12340" d="M35.135,1.059a17.552,17.552,0,0,1-35.1,0Z" transform="translate(0.412 16.938)" fill="#d3d5d6"/>
+      <path id="Path_12351" data-name="Path 12351" d="M14.867.455a14.5,14.5,0,1,1-14.5,14.5A14.5,14.5,0,0,1,14.867.455Z" transform="translate(3.076 3.094)" fill="#e6e6e6"/>
+      <path id="Path_12338-2" data-name="Path 12338" d="M3.043.993,32.162.969l3.031,2.589L32.162,6.02,3.043,6.044.088,3.621Z" transform="translate(0.355 14.376)" fill="#c2c1c0"/>
+      <path id="Path_12339-2" data-name="Path 12339" d="M35.132,1.058,32.1,3.521,2.983,3.545.027,1.122Z" transform="translate(0.416 16.875)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
