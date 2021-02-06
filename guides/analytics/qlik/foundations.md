@@ -9,7 +9,7 @@
 The Health Catalyst Qlik template adheres to the overall [Cashmere Foundations](/foundations) as much as possible, while preserving any established usage patterns unique to Qlik.
 Whenever beginning a new app, be sure to download the [most current version](/analytics/qlik-template) of the template that your environment supports.
 
-![Qlik Template](./assets/analytics/powerbi/pbi-template.png "Qlik Template")
+![Qlik Template](./assets/analytics/qlik/qlik-template.PNG "Qlik Template")
 
 Updates to the template are version controlled, and notes are provided to explain what changed between updates.
 Versions follow the [semantic versioning](https://semver.org/) system which utilizes three numbers (MAJOR.MINOR.PATCH) indicating the following:
@@ -82,12 +82,6 @@ Refer to the [navbar section](/analytics/qlik-navbar) section for more informati
 
 The standard page size for a Health Catalyst Qlik application is **1280x900px**.
 
-<div style="text-align:center"><br>
-
-![Page Size](./assets/analytics/powerbi/pbi-page-size.png "Page Size")
-
-</div>
-
 Within that space, the layout is divided into three primary areas: Navbar, Sidebar, and Content Area.
 Note that if content needs to be further subdivided within the content area, [Tabs](/analytics/qlik-tabs) may be included in that space.
 
@@ -126,7 +120,7 @@ Layout specifics for the most common visual objects can be found in the [KPI Met
 
 <div style="text-align:center"><br>
 
-![Power BI Tiles](./assets/analytics/powerbi/pbi-tile.png "Power BI Tiles")
+![Tiles](./assets/analytics/qlik/qlik-tile.PNG "Tiles")
 
 </div>
 
@@ -147,7 +141,7 @@ Tiles should not be distributed unevenly
 
 </div>
 
-Utilize Qlik's alignment capabilities by selecting each object and choosing the appropriate distribution option within the *Align/Distribute* menu under the *Layout* toolbar 
+Utilize Qlik's alignment capabilities by selecting each object and choosing the appropriate distribution option within the *Align/Distribute* menu under the *Layout* toolbar. 
 
 <div style="text-align:center"><br>
 

@@ -123,6 +123,14 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
         });
     }
 
+    public setActiveSection(scrollTarget: string): void {
+        if (this.sectionInView !== scrollTarget) {
+            this.sectionInView = scrollTarget;
+            this.nav._setActiveSectionById(scrollTarget);
+            this.newSectionInView.next(scrollTarget);
+        }
+    }
+
     private getTargets(targets: HTMLElement[]): HTMLElement[] {
         let rtnTargets: HTMLElement[] = [];
 
@@ -145,14 +153,6 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
             const targetEl = this._scrollTargets[this._scrollTargets.length - 1];
             targetEl.style.minHeight = `${containerHeight + 50}px`;
             this.minHeightForLastTargetSet = true;
-        }
-    }
-
-    private setActiveSection(scrollTarget: string): void {
-        if (this.sectionInView !== scrollTarget) {
-            this.sectionInView = scrollTarget;
-            this.nav._setActiveSectionById(scrollTarget);
-            this.newSectionInView.next(scrollTarget);
         }
     }
 }
