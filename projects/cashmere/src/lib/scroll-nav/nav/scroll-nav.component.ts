@@ -58,7 +58,7 @@ export class HcScrollNavComponent implements AfterViewInit {
             let scrollLinkDirectiveArray: ScrollNavLinkDirective[] = [];
             dynamicLinkList.forEach((dynamicLink) => {
                 const scrollNavLinkDirective: ScrollNavLinkDirective = new ScrollNavLinkDirective(<ElementRef>{}, this.renderer);
-                scrollNavLinkDirective.setDirectiveToNode(dynamicLink);
+                scrollNavLinkDirective._setDirectiveToNode(dynamicLink);
                 scrollLinkDirectiveArray.push(scrollNavLinkDirective);
             });
             this.linkList.reset(scrollLinkDirectiveArray);

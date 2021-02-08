@@ -10,6 +10,7 @@ export class ScrollNavLinkDirective {
     @HostBinding('class.hc-scroll-nav-link')
     _hostClass = true;
 
+    /** The `nativeElement` of the corresponding `hcScrollTarget` that you would like to link to. */
     public nativeElement: any;
 
     private readonly CLICKED_SUBSECTION_CLASS = 'hc-scroll-nav-clicked-subsection';
@@ -21,7 +22,7 @@ export class ScrollNavLinkDirective {
         }
     }
 
-    public setDirectiveToNode(node: Node): void {
+    public _setDirectiveToNode(node: Node): void {
         this.nativeElement = node;
         this.hcScrollLink = (node as HTMLElement).getAttribute('hcScrollLink');
         this.renderer.addClass(node, 'hc-scroll-nav-link');

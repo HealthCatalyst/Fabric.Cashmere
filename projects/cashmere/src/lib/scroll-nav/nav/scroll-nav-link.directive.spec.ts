@@ -105,7 +105,7 @@ describe("ScrollNavLinkDirective", (): void => {
             let node: Node = scrollNavLinkDynamicComponent.nativeElement.querySelector(`[hcscrolllink]`);
 
             directive = new ScrollNavLinkDirective(<ElementRef>{}, scrollNavLinkDynamicComponent.componentInstance.renderer);
-            directive.setDirectiveToNode(node);
+            directive._setDirectiveToNode(node);
 
             scrollNavLinkDynamicComponent.detectChanges();
         });
