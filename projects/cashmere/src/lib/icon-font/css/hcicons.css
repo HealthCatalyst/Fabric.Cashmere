@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'hcicons';
-    src: url('./hcicons.eot');
-    src: url('./hcicons.eot') format('embedded-opentype'), url('./hcicons.woff2') format('woff2'),
-        url('./hcicons.woff') format('woff'), url('./hcicons.ttf') format('truetype'),
-        url('./hcicons.svg') format('svg');
+    src: url('../hcicons.eot');
+    src: url('../hcicons.eot') format('embedded-opentype'), url('../hcicons.woff2') format('woff2'),
+        url('../hcicons.woff') format('woff'), url('../hcicons.ttf') format('truetype'),
+        url('../hcicons.svg') format('svg');
     font-weight: normal;
     font-style: normal;
 }
