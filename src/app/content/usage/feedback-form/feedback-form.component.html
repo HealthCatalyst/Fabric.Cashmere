@@ -1,0 +1,54 @@
+<div>
+    <form [formGroup]="feedbackForm" style="padding-top:50px">
+        <div class="feedback-container" *ngIf='!thankYouMsg'>
+            <div class="feedback-top-left">
+                <div class="form-group">
+                    <input name="url" type="hidden" id="herenow" formControlName="currentUrl">
+                    <input name="helpful?" type="hidden" id="helpful" formControlName="helpfulRating">
+                </div>
+                <div>Was this article helpful?</div>
+            </div>
+            <div class="feedback-top-right">
+                <button class="feedback-button" title="Yes" [disabled]="notHelpful" id="feedback-yes" (click)="checkHelpful(); onSubmit();"><i class="fa fa-check" aria-hidden="true"></i>YES</button>
+
+                <button type="button" class="feedback-button" title="No" id="feedback-no" (click)="checkNoHelp();"><i class="fa fa-times" aria-hidden="true"></i>NO</button>
+            </div>
+
+
+            <div id="feedback-survey" *ngIf="notHelpful">
+                <div class="feedback-suggestions">
+                    <hc-form-field>
+                        <hc-label>How can we make this more helpful? (required):</hc-label>
+                        <textarea hcInput rows="4" cols="50" id="suggestions" placeholder="Please enter your suggestion (required)" name="suggest" formControlName="yourSuggestions" required></textarea>
+                        <hc-error>
+                            Please tell us how this information could be more helpful to you.
+                        </hc-error>
+                    </hc-form-field>
+                </div>
+                <div class="feedback-email" name="email">
+                    <hc-form-field>
+                        <hc-label>Where can we email you to follow up? (optional, but helps us):</hc-label>
+                        <input hcInput type="email" placeholder="Where can we email you if we need more information?" id="email" name="email" formControlName="yourEmail" size="40">
+                        <hc-error>
+                            The email address entered is not valid.
+                        </hc-error>
+                    </hc-form-field>
+                </div>
+
+
+                <button hc-button class="submit-feedback" title="Submit" buttonStyle="primary" [disabled]="!feedbackForm.valid" (click)="onSubmit();">Submit</button>
+
+                <button hc-button class="feedback-button " title="Cancel " buttonStyle="minimal" (click)="onCancel();">Cancel</button>
+            </div>
+        </div>
+        <div id="feedback-response" class="feedback-container-new" *ngIf='thankYouMsg'>
+            <p>Thank you! We have received your feedback. Still need help? Contact us in the #cashmere Slack channel. </p>
+        </div>
+
+    </form>
+</div>
+
+<!-- <br>Dirty: {{ feedbackForm.dirty }}
+<br>Touched: {{ feedbackForm.touched }}
+<br>Valid: {{ feedbackForm.valid }}
+<br>Value: {{ feedbackForm.value | json }} -->

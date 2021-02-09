@@ -6,3 +6,13 @@ export interface IUsage {
     TermCategories: string;
     TermDateAdded: string;
 }
+
+export const usageAttributesMapping = {
+    TermID: 'TermID',
+    TermName: 'TermName',
+    TermUsage: 'TermUsage',
+    TermType: 'TermType',
+    TermCategories: 'TermCategories',
+    TermDateAdded: 'TermDateAdded'
+
+}
