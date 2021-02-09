@@ -78,7 +78,7 @@ describe("ScrollNavLinkDirective", (): void => {
                 .injector.get(ScrollNavLinkDirective);
         });
 
-        it("should use the default elementRef", (): void => {
+        it("should use the default nativeElement", (): void => {
             expect(directive.nativeElement).toBeTruthy();
             expect(directive.nativeElement.getAttribute("hcScrollLink")).toMatch("a1");
         });
@@ -110,7 +110,7 @@ describe("ScrollNavLinkDirective", (): void => {
             scrollNavLinkDynamicComponent.detectChanges();
         });
 
-        it("should have set the elementRef", (): void => {
+        it("should have set the nativeElement", (): void => {
             expect(directive.nativeElement).toBeTruthy();
             expect(directive.nativeElement.getAttribute("hcScrollLink")).toMatch("a2");
         });

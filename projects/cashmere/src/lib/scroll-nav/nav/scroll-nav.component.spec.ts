@@ -248,22 +248,80 @@ describe('HcScrollNavComponent', () => {
             expect(linkListNotifyOnChangesSpy).toHaveBeenCalled();
         });
 
-        it('should create directive list if links length is not equal to length of hcScrollLink attributes', () => {
-            let scrollLinkElement: HTMLElement = testApp.fixture.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}]`);
-            let linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset');
-            let linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges');
+        it('should add directives from linkList if hcScrollLink list has more links than linkList', () => {
+            let scrollLinkElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_LINK_ATTRIBUTE}]`);
+            let scrollLinkHTMLElements: HTMLElement[] = [];
+            scrollLinkElements.forEach((element: HTMLElement) => {
+                scrollLinkHTMLElements.push(element);
+            });
 
-            spyOn(testApp.linksComponent._elementRef.nativeElement, "querySelectorAll").and.returnValue([scrollLinkElement]);
+            let newElement: HTMLElement = scrollLinkHTMLElements[0];
+            newElement.setAttribute(SCROLL_LINK_ATTRIBUTE, "z1");
+            scrollLinkHTMLElements.push(newElement);
+
+            let linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset').and.callThrough();
+            let linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges').and.callThrough();
+
+            spyOn(testApp.linksComponent._elementRef.nativeElement, 'querySelectorAll').and.returnValue(scrollLinkHTMLElements);
 
             testApp.linksComponent.refreshScrollNavLinks();
 
+            expect(testApp.linksComponent._links.length).toEqual(9);
             expect(linkListResetSpy).toHaveBeenCalled();
             expect(linkListNotifyOnChangesSpy).toHaveBeenCalled();
         });
 
+        it('should remove directives from linkList if hcScrollLink list has fewer links than linkList', () => {
+            let scrollLinkElement: Node = testApp.fixture.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}]`);
+            (scrollLinkElement as HTMLElement).setAttribute(SCROLL_LINK_ATTRIBUTE, "z1");
+
+            let linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset').and.callThrough();
+            let linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges').and.callThrough();
+
+            spyOn(testApp.linksComponent._elementRef.nativeElement, 'querySelectorAll').and.returnValue([scrollLinkElement]);
+
+            testApp.linksComponent.refreshScrollNavLinks();
+
+            expect(testApp.linksComponent._links.length).toEqual(1);
+            expect(linkListResetSpy).toHaveBeenCalled();
+            expect(linkListNotifyOnChangesSpy).toHaveBeenCalled();
+        });
+
+        it('should update directives from linkList if hcScrollLink list has different hcScrollLinks', () => {
+            let scrollLinkElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_LINK_ATTRIBUTE}]`);
+            (scrollLinkElements.item(0) as HTMLElement).setAttribute(SCROLL_LINK_ATTRIBUTE, "z1");
+
+            let linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset').and.callThrough();
+            let linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges').and.callThrough();
+
+            spyOn(testApp.linksComponent._elementRef.nativeElement, 'querySelectorAll').and.returnValue(scrollLinkElements);
+
+            testApp.linksComponent.refreshScrollNavLinks();
+
+            expect(testApp.linksComponent._links.length).toEqual(8);
+            expect(testApp.linksComponent['linkList'].toArray()[testApp.linksComponent['linkList'].length - 1].hcScrollLink).toEqual("z1");
+            expect(linkListResetSpy).toHaveBeenCalled();
+            expect(linkListNotifyOnChangesSpy).toHaveBeenCalled();
+        });
+
+        it('should not update directives from linkList if hcScrollLink list has the same hcScrollLinks', () => {
+            let scrollLinkElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_LINK_ATTRIBUTE}]`);
+
+            let linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset').and.callThrough();
+            let linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges').and.callThrough();
+
+            spyOn(testApp.linksComponent._elementRef.nativeElement, 'querySelectorAll').and.returnValue(scrollLinkElements);
+
+            testApp.linksComponent.refreshScrollNavLinks();
+
+            expect(testApp.linksComponent._links.length).toEqual(8);
+            expect(linkListResetSpy).not.toHaveBeenCalled();
+            expect(linkListNotifyOnChangesSpy).not.toHaveBeenCalled();
+        });
+
         describe('initial classes', () => {
             it('should add parent section class when children section(s) exist', () => {
-                testApp.linksComponent.ngAfterViewInit();
+                testApp.linksComponent.refreshScrollNavLinks();
 
                 expect(testApp.linksComponent._links[a1].className.indexOf(PARENT_SECTION_CLASS)).toBeGreaterThan(-1);
                 expect(testApp.linksComponent._links[b1].className.indexOf(PARENT_SECTION_CLASS)).toBeGreaterThan(-1);
@@ -271,7 +329,7 @@ describe('HcScrollNavComponent', () => {
             });
 
             it("should not add parent section class when children sections don't exist", () => {
-                testApp.linksComponent.ngAfterViewInit();
+                testApp.linksComponent.refreshScrollNavLinks();
 
                 expect(testApp.linksComponent._links[c1].className.indexOf(PARENT_SECTION_CLASS)).toEqual(-1);
                 expect(testApp.linksComponent._links[c2].className.indexOf(PARENT_SECTION_CLASS)).toEqual(-1);
@@ -280,19 +338,19 @@ describe('HcScrollNavComponent', () => {
             });
 
             it('should add active parent section class when link is a parent and has an active subsection', () => {
-                testApp.linksComponent.ngAfterViewInit();
+                testApp.linksComponent.refreshScrollNavLinks();
 
                 expect(testApp.linksComponent._links[a1].className.indexOf(ACTIVE_PARENT_SECTION_CLASS)).toBeGreaterThan(-1);
             });
 
             it('should not add active parent section class when link is a parent but is not active', () => {
-                testApp.linksComponent.ngAfterViewInit();
+                testApp.linksComponent.refreshScrollNavLinks();
 
                 expect(testApp.linksComponent._links[a3].className.indexOf(INACTIVE_PARENT_SECTION_CLASS)).toBeGreaterThan(-1);
             });
 
             it('should set subsection class when link has a parent section', () => {
-                testApp.linksComponent.ngAfterViewInit();
+                testApp.linksComponent.refreshScrollNavLinks();
 
                 expect(testApp.linksComponent._links[b1].className.indexOf(SUBSECTION_CLASS)).toBeGreaterThan(-1);
                 expect(testApp.linksComponent._links[c1].className.indexOf(SUBSECTION_CLASS)).toBeGreaterThan(-1);
@@ -302,7 +360,7 @@ describe('HcScrollNavComponent', () => {
             });
 
             it('should not set subsection class when link does not have a parent section', () => {
-                testApp.linksComponent.ngAfterViewInit();
+                testApp.linksComponent.refreshScrollNavLinks();
 
                 expect(testApp.linksComponent._links[a1].className.indexOf(SUBSECTION_CLASS)).toEqual(-1);
                 expect(testApp.linksComponent._links[a2].className.indexOf(SUBSECTION_CLASS)).toEqual(-1);
@@ -311,7 +369,7 @@ describe('HcScrollNavComponent', () => {
         });
 
         it('first link should get the active class', () => {
-            testApp.linksComponent.ngAfterViewInit();
+            testApp.linksComponent.refreshScrollNavLinks();
 
             expect(testApp.linksComponent._links[a1].className.indexOf(ACTIVE_CLASS)).toBeGreaterThan(-1);
         });

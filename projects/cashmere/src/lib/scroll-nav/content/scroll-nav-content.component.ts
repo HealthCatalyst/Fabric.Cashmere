@@ -9,13 +9,16 @@ import {
     Output,
     ContentChildren,
     HostListener,
-    AfterViewChecked
+    AfterViewChecked,
+    ElementRef,
+    Renderer2
 } from '@angular/core';
 import type {QueryList} from '@angular/core';
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {Subject} from 'rxjs';
 import {HcScrollNavComponent} from '../nav/scroll-nav.component';
 import {takeUntil} from 'rxjs/operators';
+import {differenceBy} from 'lodash';
 import {ScrollNavTargetDirective} from './scroll-nav-target.directive';
 
 /** Contains scrollable content that is navigable via `hc-scroll-nav` links. */
@@ -45,11 +48,15 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     /** Id of the current section scrolled into view. */
     public sectionInView: string;
     public get _scrollTargets(): Array<HTMLElement> {
-        return this.targets.toArray().map(e => e._el.nativeElement);
+        return this.targets.toArray().map(e => e.nativeElement);
     }
 
     private unsubscribe$ = new Subject<void>();
     private minHeightForLastTargetSet = false;
+
+    private readonly SCROLL_TARGET_ATTRIBUTE = 'hcScrollTarget';
+
+    constructor(private _elementRef: ElementRef, private renderer: Renderer2) {}
 
     public ngOnDestroy(): void {
         this.unsubscribe$.next();
@@ -57,6 +64,57 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     }
 
     public ngAfterViewInit(): void {
+        setTimeout(() => {
+            this.refreshScrollNavTargets();
+        }, 100);
+
+        // If targets are added dynamically, refresh the scrollNav
+        this.targets.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => {
+            this.refreshScrollNavTargets();
+        });
+    }
+
+    public ngAfterViewChecked(): void {
+        if (this.makeLastTargetFullHeight && !this.minHeightForLastTargetSet) {
+            this.insureMinHeightForLastTarget();
+        }
+    }
+
+    @HostListener('window:resize') _onWindowResize() {
+        if (this.makeLastTargetFullHeight) {
+            this.minHeightForLastTargetSet = false;
+        }
+    }
+
+    /** Refresh the scroll nav targets when dynamic changes have been made. updateScrollTargetArray parameter is optional */
+    public refreshScrollNavTargets(updateScrollTargetArray: ScrollNavTargetDirective[] = []): void {
+        if (updateScrollTargetArray.length > 0) {
+            this.targets.reset(updateScrollTargetArray);
+            this.targets.notifyOnChanges();
+
+            return;
+        }
+
+        let scrollTargetNodeList: NodeList = this._elementRef.nativeElement.querySelectorAll(`[${this.SCROLL_TARGET_ATTRIBUTE}]`);
+
+        // create array to make the difference calculation off of
+        let scrollTargetList: CombinedTargetList[] = [];
+        scrollTargetNodeList.forEach((dynamicTarget: HTMLElement) => {
+            scrollTargetList.push({ id: dynamicTarget.id, targetElement: dynamicTarget });
+        });
+
+        if (differenceBy(scrollTargetList, this._scrollTargets, 'id').length > 0) {
+            let scrollLinkDirectiveArray: ScrollNavTargetDirective[] = [];
+            scrollTargetList.forEach((dynamicTarget) => {
+                const scrollNavLinkDirective: ScrollNavTargetDirective = new ScrollNavTargetDirective(<ElementRef>{}, this.renderer);
+                scrollNavLinkDirective._setDirectiveToNode(dynamicTarget.targetElement);
+                scrollLinkDirectiveArray.push(scrollNavLinkDirective);
+            });
+
+            this.targets.reset(scrollLinkDirectiveArray);
+            this.targets.notifyOnChanges();
+        }
+
         if (this._cdkScrollableElement) {
             this._cdkScrollableElement
                 .elementScrolled()
@@ -71,18 +129,6 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
                 throw Error('hcScrollTarget element needs an id.');
             }
         });
-    }
-
-    public ngAfterViewChecked(): void {
-        if (this.makeLastTargetFullHeight && !this.minHeightForLastTargetSet) {
-            this.insureMinHeightForLastTarget();
-        }
-    }
-
-    @HostListener('window:resize') _onWindowResize() {
-        if (this.makeLastTargetFullHeight) {
-            this.minHeightForLastTargetSet = false;
-        }
     }
 
     /** Scroll to top and reset the 'automatic full height for the last item' setting. */
@@ -123,6 +169,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
         });
     }
 
+    /** Sets the active section to passed in scrollTarget */
     public setActiveSection(scrollTarget: string): void {
         if (this.sectionInView !== scrollTarget) {
             this.sectionInView = scrollTarget;
@@ -155,4 +202,9 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
             this.minHeightForLastTargetSet = true;
         }
     }
+}
+
+export interface CombinedTargetList {
+    id: string;
+    targetElement: HTMLElement;
 }
