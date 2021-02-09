@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewEncapsulation, AfterViewInit, QueryList, ContentChildren, Renderer2 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { some, sortBy, find, flow, map, differenceBy } from 'lodash';
 import { ScrollNavLinkDirective } from './scroll-nav-link.directive';
 
 /** Container for scroll navigation links. */
@@ -41,9 +42,9 @@ export class HcScrollNavComponent implements AfterViewInit {
         this.linkList.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => {
             this.refreshScrollNavLinks();
         });
-
     }
 
+    /** Refresh the scroll nav links when dynamic changes have been made. updateScrollLinkArray parameter is optional */
     public refreshScrollNavLinks(updateScrollLinkArray: ScrollNavLinkDirective[] = []): void {
         if (updateScrollLinkArray.length > 0) {
             this.linkList.reset(updateScrollLinkArray);
@@ -52,16 +53,43 @@ export class HcScrollNavComponent implements AfterViewInit {
             return;
         }
 
-        let dynamicLinkList: NodeList = this._elementRef.nativeElement.querySelectorAll(`[${this.SCROLL_LINK_ATTRIBUTE}]`);
+        let scrollLinkNodeList: NodeList = this._elementRef.nativeElement.querySelectorAll(`[${this.SCROLL_LINK_ATTRIBUTE}]`);
 
-        if (this._links.length !== dynamicLinkList.length) {
-            let scrollLinkDirectiveArray: ScrollNavLinkDirective[] = [];
-            dynamicLinkList.forEach((dynamicLink) => {
-                const scrollNavLinkDirective: ScrollNavLinkDirective = new ScrollNavLinkDirective(<ElementRef>{}, this.renderer);
-                scrollNavLinkDirective._setDirectiveToNode(dynamicLink);
-                scrollLinkDirectiveArray.push(scrollNavLinkDirective);
-            });
-            this.linkList.reset(scrollLinkDirectiveArray);
+        // create array to make the difference calculation off of
+        let scrollLinkList: CombinedLinkList[] = [];
+        scrollLinkNodeList.forEach((dynamicLink: HTMLElement) => {
+            let scrollLinkAttributeValue: string | null = dynamicLink.getAttribute(this.SCROLL_LINK_ATTRIBUTE);
+            if (scrollLinkAttributeValue) {
+                scrollLinkList.push({ hcScrollLink: scrollLinkAttributeValue, linkElement: dynamicLink });
+            }
+        });
+
+        if (differenceBy(scrollLinkList, this.linkList.toArray(), 'hcScrollLink').length > 0) {
+            let newLinkList: ScrollNavLinkDirective[] = flow(
+                (dynamicLinkList: CombinedLinkList[]): ScrollNavLinkDirective[] =>
+                    map(dynamicLinkList, (dynamicLink: CombinedLinkList) => {
+                        let rtnLink: ScrollNavLinkDirective = <ScrollNavLinkDirective>{};
+
+                        if (some(this.linkList.toArray(), ['hcScrollLink', dynamicLink.hcScrollLink])) {
+                            let queryDirective: ScrollNavLinkDirective | undefined =
+                                find(this.linkList.toArray(), ["hcScrollLink", dynamicLink.hcScrollLink]);
+                            if (queryDirective) {
+                                rtnLink = queryDirective;
+                            }
+                        } else {
+                            const scrollNavLinkDirective: ScrollNavLinkDirective =
+                                new ScrollNavLinkDirective(<ElementRef>{}, this.renderer);
+                            scrollNavLinkDirective._setDirectiveToNode(dynamicLink.linkElement);
+                            rtnLink = scrollNavLinkDirective;
+                        }
+
+                        return rtnLink;
+                    }),
+                (directiveList: ScrollNavLinkDirective[]): ScrollNavLinkDirective[] =>
+                    sortBy(directiveList, ['hcScrollLink'])
+            )(scrollLinkList);
+
+            this.linkList.reset(newLinkList);
             this.linkList.notifyOnChanges();
 
             return;
@@ -164,4 +192,9 @@ export class HcScrollNavComponent implements AfterViewInit {
             }
         }
     }
+}
+
+export interface CombinedLinkList {
+    hcScrollLink: string;
+    linkElement: HTMLElement;
 }
