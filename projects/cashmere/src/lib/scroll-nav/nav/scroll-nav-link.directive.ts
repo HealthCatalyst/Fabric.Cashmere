@@ -1,4 +1,4 @@
-import {Directive, HostBinding, ElementRef, Input, HostListener} from '@angular/core';
+import {Directive, HostBinding, ElementRef, Input, HostListener, Renderer2} from '@angular/core';
 
 /** Marks the host element as a link within an `hc-scroll-nav`. */
 @Directive({
@@ -6,24 +6,50 @@ import {Directive, HostBinding, ElementRef, Input, HostListener} from '@angular/
 })
 export class ScrollNavLinkDirective {
     /** The `id` of the corresponding `hcScrollTarget` that you would like to link to. */
-    @Input() public hcScrollLink: string;
+    @Input() public hcScrollLink: string | null;
     @HostBinding('class.hc-scroll-nav-link')
     _hostClass = true;
 
-    @HostBinding('attr.tabindex')
-    _hostIndex = 0;
+    /** The `nativeElement` of the corresponding `hcScrollTarget` that you would like to link to. */
+    public nativeElement: any;
 
     private readonly CLICKED_SUBSECTION_CLASS = 'hc-scroll-nav-clicked-subsection';
     private readonly SECTION_TAG_NAME = 'SECTION';
 
-    constructor(public _el: ElementRef) {}
+    constructor(element: ElementRef, private renderer: Renderer2) {
+        if (element) {
+            this.nativeElement = element.nativeElement;
+        }
+    }
+
+    public _setDirectiveToNode(node: Node): void {
+        this.nativeElement = node;
+        this.hcScrollLink = (node as HTMLElement).getAttribute('hcScrollLink');
+        this.renderer.addClass(node, 'hc-scroll-nav-link');
+
+        this.renderer.listen(node, "click", () => {
+            if (this.hcScrollLink) {
+                this.navigateToSection(this.hcScrollLink);
+            }
+        });
+
+        this.renderer.listen(node, "keydown.enter", () => {
+            if (this.hcScrollLink) {
+                this.navigateToSection(this.hcScrollLink);
+            }
+        });
+    }
 
     @HostListener('keydown.enter') _onEnter() {
-        this.navigateToSection(this.hcScrollLink);
+        if (this.hcScrollLink) {
+            this.navigateToSection(this.hcScrollLink);
+        }
     }
 
     @HostListener('click') _onClick() {
-        this.navigateToSection(this.hcScrollLink);
+        if (this.hcScrollLink) {
+            this.navigateToSection(this.hcScrollLink);
+        }
     }
 
     private navigateToSection(id: string) {

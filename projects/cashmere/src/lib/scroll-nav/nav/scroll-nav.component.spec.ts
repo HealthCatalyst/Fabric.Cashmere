@@ -1,10 +1,12 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component} from '@angular/core';
-import {By} from '@angular/platform-browser';
+import { waitForAsync, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
-import {HcScrollNavComponent} from './scroll-nav.component';
-import {HcScrollNavContentComponent} from '../content/scroll-nav-content.component';
-import {ScrollNavModule} from '../scroll-nav.module';
+import { HcScrollNavComponent } from './scroll-nav.component';
+import { HcScrollNavContentComponent } from '../content/scroll-nav-content.component';
+
+import { ScrollNavLinkDirective } from './scroll-nav-link.directive';
+import { ScrollNavModule } from '../scroll-nav.module';
 
 @Component({
     template: `
@@ -85,6 +87,7 @@ class TestAppReference {
 }
 
 let testApp: TestAppReference;
+let renderer: any;
 
 const a1 = 0;
 const b1 = 1;
@@ -95,6 +98,7 @@ const a2 = 5;
 const a3 = 6;
 const b3 = 7;
 
+const SCROLL_LINK_ATTRIBUTE = 'hcScrollLink';
 const ACTIVE_CLASS = 'hc-scroll-nav-link-active';
 const INACTIVE_CLASS = 'hc-scroll-nav-link-inactive';
 const PARENT_SECTION_CLASS = 'hc-scroll-nav-parent-section-link';
@@ -102,13 +106,24 @@ const ACTIVE_PARENT_SECTION_CLASS = 'hc-scroll-nav-active-parent-section-link';
 const INACTIVE_PARENT_SECTION_CLASS = 'hc-scroll-nav-inactive-parent-section-link';
 const SUBSECTION_CLASS = 'hc-scroll-nav-subsection-link';
 
+export class MockElementRef extends ElementRef {
+    constructor() { super(undefined); }
+}
+
+export class MockNode extends Node {
+    constructor() { super(); }
+}
+
 describe('HcScrollNavComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
+            declarations: [TestAppComponent],
             imports: [ScrollNavModule],
-            declarations: [TestAppComponent]
+            providers: [Renderer2]
         }).compileComponents();
         testApp = new TestAppReference();
+        renderer = TestBed.inject(Renderer2);
+
         testApp.detectChanges();
     }));
 
@@ -202,6 +217,50 @@ describe('HcScrollNavComponent', () => {
     });
 
     describe('ngAfterViewInit', () => {
+        it('should call refreshScrollNavLinks', fakeAsync(() => {
+            let refreshScrollNavLinksSpy: jasmine.Spy = spyOn(testApp.linksComponent, "refreshScrollNavLinks");
+
+            testApp.linksComponent.ngAfterViewInit();
+            tick(110);
+
+            expect(refreshScrollNavLinksSpy).toHaveBeenCalled();
+        }));
+
+        it('should call refreshScrollNavLinks if linkList changes', () => {
+            let refreshScrollNavLinksSpy: jasmine.Spy = spyOn(testApp.linksComponent, "refreshScrollNavLinks");
+
+            testApp.linksComponent.ngAfterViewInit();
+            testApp.linksComponent['linkList'].notifyOnChanges();
+
+            expect(refreshScrollNavLinksSpy).toHaveBeenCalled();
+        });
+    });
+
+    describe('refreshScrollNavLinks', () => {
+        it('should reset linkList if list of ScrollNavLinkDirectives are passed in', () => {
+            let scrollNavLinkDirectives: ScrollNavLinkDirective[] = [new ScrollNavLinkDirective(testApp.fixture.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}]`), renderer)];
+            let linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset');
+            let linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges');
+
+            testApp.linksComponent.refreshScrollNavLinks(scrollNavLinkDirectives);
+
+            expect(linkListResetSpy).toHaveBeenCalledWith(scrollNavLinkDirectives);
+            expect(linkListNotifyOnChangesSpy).toHaveBeenCalled();
+        });
+
+        it('should create directive list if links length is not equal to length of hcScrollLink attributes', () => {
+            let scrollLinkElement: HTMLElement = testApp.fixture.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}]`);
+            let linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset');
+            let linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges');
+
+            spyOn(testApp.linksComponent._elementRef.nativeElement, "querySelectorAll").and.returnValue([scrollLinkElement]);
+
+            testApp.linksComponent.refreshScrollNavLinks();
+
+            expect(linkListResetSpy).toHaveBeenCalled();
+            expect(linkListNotifyOnChangesSpy).toHaveBeenCalled();
+        });
+
         describe('initial classes', () => {
             it('should add parent section class when children section(s) exist', () => {
                 testApp.linksComponent.ngAfterViewInit();
