@@ -92,6 +92,7 @@
     "@types/inquirer": "^7.3.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.2",
+    "@types/lodash": "^4.14.168",
     "@types/node": "^12.11.1",
     "@types/prettier": "^1.15.2",
     "@types/rimraf": "^3.0.0",
