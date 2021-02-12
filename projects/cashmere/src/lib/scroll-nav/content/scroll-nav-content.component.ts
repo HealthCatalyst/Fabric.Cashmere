@@ -36,6 +36,8 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
      * This is helpful if you want the last target in the content area to be able to scroll to the top. You can alternatively
      * target the last item with css. *Defaults to true.* */
     @Input() public makeLastTargetFullHeight = true;
+    /** Adjust the min height of the last target */
+    @Input() public lastTargetMinHeightAdjustment: number = 0;
     /** Number in pixels, used to give a little leeway in the shifting of the active nav when scrolling. *Defaults to 0.*
      * Example: If set to 40, if showing just the bottom 40 pixels of the section before, count the next section as active. */
     @Input() public bufferSpace = this.DEFAULT_BUFFER;
@@ -53,6 +55,8 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
 
     private unsubscribe$ = new Subject<void>();
     private minHeightForLastTargetSet = false;
+    private systemScrollToElementId: string | undefined;
+    private lastElementScrolledTo: HTMLElement;
 
     private readonly SCROLL_TARGET_ATTRIBUTE = 'hcScrollTarget';
 
@@ -72,6 +76,14 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
         this.targets.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => {
             this.refreshScrollNavTargets();
         });
+
+        document.onclick = (event: MouseEvent) => {
+            let element: HTMLElement = (event.target as HTMLElement);
+            let scrollLinkAttribute: string | null = element.getAttribute("hcscrolllink");
+            if (scrollLinkAttribute) {
+                this.systemScrollToElementId = scrollLinkAttribute;
+            }
+        };
     }
 
     public ngAfterViewChecked(): void {
@@ -120,6 +132,15 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
                 .elementScrolled()
                 .pipe(takeUntil(this.unsubscribe$))
                 .subscribe(() => {
+                    if (this.systemScrollToElementId) {
+                        this.nav.isScrolling = true;
+
+                        setTimeout(() => {
+                            this.nav.isScrolling = false;
+                            this.setActiveSection(this.lastElementScrolledTo.id);
+                        }, 1000);
+                    }
+
                     this.checkActiveSection();
                 });
         }
@@ -129,6 +150,8 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
                 throw Error('hcScrollTarget element needs an id.');
             }
         });
+
+        this.insureMinHeightForLastTarget();
     }
 
     /** Scroll to top and reset the 'automatic full height for the last item' setting. */
@@ -164,7 +187,9 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
                 (initialOffset && !nextOffset && offset >= initialOffset) ||
                 (!initialOffset && nextOffset && offset < nextOffset)
             ) {
+                this.lastElementScrolledTo = el;
                 this.setActiveSection(el.getAttribute('id') || '');
+
             }
         });
     }
@@ -195,11 +220,17 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     }
 
     private insureMinHeightForLastTarget() {
-        const containerHeight = this._cdkScrollableElement.getElementRef().nativeElement.offsetHeight;
-        if (containerHeight && this._scrollTargets.length > 0) {
-            const targetEl = this._scrollTargets[this._scrollTargets.length - 1];
-            targetEl.style.minHeight = `${containerHeight + 50}px`;
-            this.minHeightForLastTargetSet = true;
+        if (this.makeLastTargetFullHeight) {
+            const containerHeight: number = this._cdkScrollableElement.getElementRef().nativeElement.offsetHeight;
+            if (containerHeight && this._scrollTargets.length > 0) {
+                this._scrollTargets.forEach((target) => {
+                    target.style.minHeight = 'unset';
+                });
+
+                const targetEl = this._scrollTargets[this._scrollTargets.length - 1];
+                targetEl.style.minHeight = `${containerHeight + this.lastTargetMinHeightAdjustment}px`;
+                this.minHeightForLastTargetSet = true;
+            }
         }
     }
 }

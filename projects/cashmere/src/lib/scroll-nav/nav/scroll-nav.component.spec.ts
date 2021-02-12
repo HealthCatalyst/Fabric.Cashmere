@@ -105,6 +105,7 @@ const PARENT_SECTION_CLASS = 'hc-scroll-nav-parent-section-link';
 const ACTIVE_PARENT_SECTION_CLASS = 'hc-scroll-nav-active-parent-section-link';
 const INACTIVE_PARENT_SECTION_CLASS = 'hc-scroll-nav-inactive-parent-section-link';
 const SUBSECTION_CLASS = 'hc-scroll-nav-subsection-link';
+const LINKS_CONTAINER_CLASS = 'hc-scroll-nav-links-container';
 
 export class MockElementRef extends ElementRef {
     constructor() { super(undefined); }
@@ -214,6 +215,92 @@ describe('HcScrollNavComponent', () => {
             expect(testApp.linksComponent._links[b1].className.indexOf(ACTIVE_PARENT_SECTION_CLASS)).toEqual(-1);
             expect(testApp.linksComponent._links[b1].className.indexOf(INACTIVE_PARENT_SECTION_CLASS)).toBeGreaterThan(-1);
         });
+
+        describe("scrollToElement", () => {
+            it('should call measureScrollOffset if scrollNavWithContent is true', () => {
+                let measureScrollOffsetSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "measureScrollOffset");
+                testApp.linksComponent.scrollNavWithContent = true;
+                testApp.detectChanges();
+
+                testApp.linksComponent._setActiveSectionById('a2');
+
+                expect(measureScrollOffsetSpy).toHaveBeenCalledWith('top');
+            });
+
+            it('should not call measureScrollOffset if scrollNavWithContent is false', () => {
+                let measureScrollOffsetSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "measureScrollOffset");
+                testApp.linksComponent.scrollNavWithContent = false;
+
+                testApp.linksComponent._setActiveSectionById('a2');
+
+                expect(measureScrollOffsetSpy).not.toHaveBeenCalled();
+            });
+
+            it('should call scrollTo if element is under scroll view area and isScrolling is false', () => {
+                let scrollToSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "scrollTo");
+                testApp.linksComponent.scrollNavWithContent = true;
+                testApp.linksComponent.isScrolling = false;
+                testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
+                testApp.detectChanges();
+
+                testApp.linksComponent._setActiveSectionById('b3');
+
+                expect(scrollToSpy).toHaveBeenCalled();
+            });
+
+            it('should not call scrollTo if element is under scroll view area but isScrolling is true', () => {
+                let scrollToSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "scrollTo");
+                testApp.linksComponent.scrollNavWithContent = true;
+                testApp.linksComponent.isScrolling = true;
+                testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
+                testApp.detectChanges();
+
+                testApp.linksComponent._setActiveSectionById('b3');
+
+                expect(scrollToSpy).not.toHaveBeenCalled();
+            });
+
+            it('should call scrollIntoView if element is above scroll view area and isScrolling is false', () => {
+                let scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
+                testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
+                testApp.detectChanges();
+
+                spyOn(testApp.linksComponent._cdkScrollableElement, "measureScrollOffset").and.returnValue(126);
+                testApp.linksComponent.isScrolling = false;
+                testApp.linksComponent.scrollNavWithContent = true;
+
+                testApp.linksComponent._setActiveSectionById('a1');
+
+                expect(scrollIntoViewSpy).toHaveBeenCalled();
+            });
+
+            it('should not call scrollIntoView if element is above scroll view area and isScrolling is true', () => {
+                let scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
+                testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
+                testApp.detectChanges();
+
+                spyOn(testApp.linksComponent._cdkScrollableElement, "measureScrollOffset").and.returnValue(126);
+                testApp.linksComponent.isScrolling = true;
+                testApp.linksComponent.scrollNavWithContent = true;
+
+                testApp.linksComponent._setActiveSectionById('a1');
+
+                expect(scrollIntoViewSpy).not.toHaveBeenCalled();
+            });
+
+            it('should not scroll if element is in the scroll view area', () => {
+                let scrollToSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "scrollTo");
+                let scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
+
+                testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
+                testApp.linksComponent.scrollNavWithContent = true;
+
+                testApp.linksComponent._setActiveSectionById('a1');
+
+                expect(scrollToSpy).not.toHaveBeenCalled();
+                expect(scrollIntoViewSpy).not.toHaveBeenCalled();
+            });
+        });
     });
 
     describe('ngAfterViewInit', () => {
@@ -223,7 +310,7 @@ describe('HcScrollNavComponent', () => {
             testApp.linksComponent.ngAfterViewInit();
             tick(110);
 
-            expect(refreshScrollNavLinksSpy).toHaveBeenCalled();
+            expect(refreshScrollNavLinksSpy).toHaveBeenCalledWith([], true);
         }));
 
         it('should call refreshScrollNavLinks if linkList changes', () => {
@@ -232,7 +319,7 @@ describe('HcScrollNavComponent', () => {
             testApp.linksComponent.ngAfterViewInit();
             testApp.linksComponent['linkList'].notifyOnChanges();
 
-            expect(refreshScrollNavLinksSpy).toHaveBeenCalled();
+            expect(refreshScrollNavLinksSpy).toHaveBeenCalledWith();
         });
     });
 
@@ -299,7 +386,7 @@ describe('HcScrollNavComponent', () => {
             testApp.linksComponent.refreshScrollNavLinks();
 
             expect(testApp.linksComponent._links.length).toEqual(8);
-            expect(testApp.linksComponent['linkList'].toArray()[testApp.linksComponent['linkList'].length - 1].hcScrollLink).toEqual("z1");
+            expect(testApp.linksComponent['linkList'].toArray()[0].hcScrollLink).toEqual("z1");
             expect(linkListResetSpy).toHaveBeenCalled();
             expect(linkListNotifyOnChangesSpy).toHaveBeenCalled();
         });
@@ -368,10 +455,27 @@ describe('HcScrollNavComponent', () => {
             });
         });
 
-        it('first link should get the active class', () => {
-            testApp.linksComponent.refreshScrollNavLinks();
+        describe("first link", () => {
+            let setActiveSectionSpy: jasmine.Spy;
 
-            expect(testApp.linksComponent._links[a1].className.indexOf(ACTIVE_CLASS)).toBeGreaterThan(-1);
+            beforeEach(() => {
+                testApp.linksComponent._setActiveSectionById("a2");
+                testApp.detectChanges();
+
+                setActiveSectionSpy = spyOn(testApp.linksComponent, "_setActiveSectionById");
+            });
+
+            it('when isInit is true it should call _setActiveSectionById', () => {
+                testApp.linksComponent.refreshScrollNavLinks([], true);
+
+                expect(setActiveSectionSpy).toHaveBeenCalled();
+            });
+
+            it('when isInit is false it should not call _setActiveSectionById', () => {
+                testApp.linksComponent.refreshScrollNavLinks([], false);
+
+                expect(setActiveSectionSpy).not.toHaveBeenCalled();
+            });
         });
     });
 });

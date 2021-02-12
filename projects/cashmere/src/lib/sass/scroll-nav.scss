@@ -1,9 +1,15 @@
 @import './colors';
 @import './mixins';
 
+@mixin hc-scroll-nav() {
+    position: relative;
+}
+
 @mixin hc-scroll-nav-links-container() {
     margin-right: 30px;
     overflow-y: auto;
+    position: relative;
+    scroll-behavior: smooth;
     height: 100%;
 }
 
