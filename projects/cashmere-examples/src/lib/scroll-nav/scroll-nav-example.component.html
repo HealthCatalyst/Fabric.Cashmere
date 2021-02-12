@@ -1,59 +1,115 @@
 <div class='container'>
-    <hc-scroll-nav #ScrollNav>
-        <ul>
-            <li hcScrollLink='a1'>
-                Care Management Team
-                <ul>
-                    <li hcScrollLink='b1'>
-                        Care Managers
-                        <ul>
-                            <li hcScrollLink='c1'>Donald Duck</li>
-                            <li hcScrollLink='c2'>Goofy</li>
-                        </ul>
-                    </li>
-                    <li hcScrollLink='b2'>Nutritionists</li>
-                </ul>
-            </li>
-            <li hcScrollLink='a2'>Providers</li>
-            <li hcScrollLink='a3'>Active Medications</li>
-            <li hcScrollLink='a4'>Medical History</li>
-            <li hcScrollLink='a5'>Contacts</li>
-        </ul>
-    </hc-scroll-nav>
+    <div class="scroll-nav-container">
+        <hc-scroll-nav #ScrollNav [scrollNavWithContent]="hasScrollNavWithContent">
+            <ul>
+                <li hcScrollLink='a1'>
+                    Care Management Team
+                    <ul>
+                        <li hcScrollLink='b1'>
+                            Care Managers
+                            <ul>
+                                <li hcScrollLink='c1'>Donald Duck</li>
+                                <li hcScrollLink='c2'>Goofy</li>
+                            </ul>
+                        </li>
+                        <li hcScrollLink='b2'>Nutritionists</li>
+                    </ul>
+                </li>
+                <li hcScrollLink='a2'>Providers</li>
+                <li hcScrollLink='a3'>Active Medications</li>
+                <li hcScrollLink='a4'>Medical History</li>
+                <li hcScrollLink='a5'>Contacts</li>
+                <li hcScrollLink='a6'>
+                    Care Management Team
+                    <ul>
+                        <li hcScrollLink='b3'>
+                            Care Managers
+                            <ul>
+                                <li hcScrollLink='c3'>Donald Duck</li>
+                                <li hcScrollLink='c4'>Goofy</li>
+                            </ul>
+                        </li>
+                        <li hcScrollLink='b4'>Nutritionists</li>
+                    </ul>
+                </li>
+                <li hcScrollLink='a7'>Providers</li>
+                <li hcScrollLink='a8'>Active Medications</li>
+                <li hcScrollLink='a9'>Medical History</li>
+                <li hcScrollLink='a10'>Contacts</li>
+            </ul>
+        </hc-scroll-nav>
 
-    <hc-scroll-nav-content [nav]='ScrollNav' [makeLastTargetFullHeight]='true'>
-        <section id='a1' hcScrollTarget>
-            <h1>Care Management Team</h1>
-            <section id='b1' hcScrollTarget>
-                Care Managers
-                <section id='c1' hcScrollTarget>
-                    <p>Donald Duck</p>
-                    <p>{{medicalIpsum}}</p>
+        <hc-scroll-nav-content [nav]='ScrollNav' [makeLastTargetFullHeight]='true' #NavContent>
+            <section id='a1' hcScrollTarget>
+                <h1>Care Management Team</h1>
+                <section id='b1' hcScrollTarget>
+                    Care Managers
+                    <section id='c1' hcScrollTarget>
+                        <p>Donald Duck</p>
+                        <p>{{medicalIpsum}}</p>
+                    </section>
+                    <section id='c2' hcScrollTarget>
+                        <p>Goofy</p>
+                        <p>{{medicalIpsum}}</p>
+                    </section>
                 </section>
-                <section id='c2' hcScrollTarget>
-                    <p>Goofy</p>
+                <section id='b2' hcScrollTarget>
                     <p>{{medicalIpsum}}</p>
                 </section>
             </section>
-            <section id='b2' hcScrollTarget>
+            <section id='a2' hcScrollTarget>
+                <h1>Providers</h1>
                 <p>{{medicalIpsum}}</p>
             </section>
-        </section>
-        <section id='a2' hcScrollTarget>
-            <h1>Providers</h1>
-            <p>{{medicalIpsum}}</p>
-        </section>
-        <section id='a3' hcScrollTarget>
-            <h1>Active Medications</h1>
-            <p>{{medicalIpsum}}</p>
-        </section>
-        <section id='a4' hcScrollTarget>
-            <h1>Medical History</h1>
-            <p>{{medicalIpsum}}</p>
-        </section>
-        <section id='a5' hcScrollTarget>
-            <h1>Contacts</h1>
-            <p>{{medicalIpsum}}</p>
-        </section>
-    </hc-scroll-nav-content>
+            <section id='a3' hcScrollTarget>
+                <h1>Active Medications</h1>
+                <p>{{medicalIpsum}}</p>
+            </section>
+            <section id='a4' hcScrollTarget>
+                <h1>Medical History</h1>
+                <p>{{medicalIpsum}}</p>
+            </section>
+            <section id='a5' hcScrollTarget>
+                <h1>Contacts</h1>
+                <p>{{medicalIpsum}}</p>
+            </section>
+            <section id='a6' hcScrollTarget>
+                <h1>Care Management Team</h1>
+                <section id='b3' hcScrollTarget>
+                    Care Managers
+                    <section id='c3' hcScrollTarget>
+                        <p>Donald Duck</p>
+                        <p>{{medicalIpsum}}</p>
+                    </section>
+                    <section id='c4' hcScrollTarget>
+                        <p>Goofy</p>
+                        <p>{{medicalIpsum}}</p>
+                    </section>
+                </section>
+                <section id='b4' hcScrollTarget>
+                    <p>{{medicalIpsum}}</p>
+                </section>
+            </section>
+            <section id='a7' hcScrollTarget>
+                <h1>Providers</h1>
+                <p>{{medicalIpsum}}</p>
+            </section>
+            <section id='a8' hcScrollTarget>
+                <h1>Active Medications</h1>
+                <p>{{medicalIpsum}}</p>
+            </section>
+            <section id='a9' hcScrollTarget>
+                <h1>Medical History</h1>
+                <p>{{medicalIpsum}}</p>
+            </section>
+            <section id='a10' hcScrollTarget>
+                <h1>Contacts</h1>
+                <p>{{medicalIpsum}}</p>
+            </section>
+        </hc-scroll-nav-content>
+    </div>
+
+    <div class="hc-font-bold">
+        <hc-checkbox [(ngModel)]="hasScrollNavWithContent">Enable scrolling on nav link area as content scrolls</hc-checkbox>
+    </div>
 </div>
