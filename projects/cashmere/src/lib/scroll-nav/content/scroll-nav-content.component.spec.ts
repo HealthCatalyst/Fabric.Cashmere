@@ -263,5 +263,20 @@ describe('HcScrollNavContentComponent', () => {
             const expectedError = new Error('hcScrollTarget element needs an id.');
             expect(error).toEqual(expectedError);
         });
+
+        it('should set minHeight on last target', () => {
+            testApp.contentComponent._scrollTargets.forEach((target) => {
+                target.style.minHeight = 'unset';
+            });
+
+            // set min height on second to last target
+            testApp.contentComponent._scrollTargets[testApp.contentComponent._scrollTargets.length - 2].style.minHeight = '200px';
+
+            testApp.detectChanges();
+            testApp.contentComponent.refreshScrollNavTargets();
+
+            expect(testApp.contentComponent._scrollTargets[testApp.contentComponent._scrollTargets.length - 2].style.minHeight).toEqual('unset');
+            expect(testApp.contentComponent._scrollTargets[testApp.contentComponent._scrollTargets.length - 1].style.minHeight).not.toEqual('unset');
+        });
     });
 });
