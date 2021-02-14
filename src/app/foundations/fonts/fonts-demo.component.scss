@@ -1,0 +1,22 @@
+h1,
+h2,
+h3,
+h4,
+p {
+    &.no-margin {
+        margin: 0;
+    }
+}
+
+.icon-left {
+    margin-right: 10px;
+}
+
+.glyph-chart {
+    width: 700px;
+    margin: 10px 0;
+}
+
+.font-download-button {
+    margin-bottom: 50px;
+}

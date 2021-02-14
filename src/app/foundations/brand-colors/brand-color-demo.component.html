@@ -1,66 +1,45 @@
 <div class="demo-content">
     <h1>Health Catalyst Brand Colors</h1>
-    <h6>Last updated Jul 9, 2019</h6>
+    <h6>Last updated January 21, 2021</h6>
 
     <hc-tile>
         <h5 id="overview">Overview</h5>
-        <p>The colors included on this page represent our brand in the general sense.
+
+        <p>The colors included on this page represent our brand.
         For colors to be used in software applications, please refer to <a routerLink="/foundations/color" routerLinkActive="active">UI Colors</a>.
         That color set shares the same foundations but is specifically tailored towards values that improve
         usability for buttons, links and other user interface elements.</p>
     </hc-tile>
 
     <hc-tile>
-        <h5 id="brand-palette">Brand Palette</h5>
-        <p>These are the foundational colors of the brand.</p>
+        <h5 id="brand-palette">Primary Colors</h5>
+        <p>These are the foundational colors of the brand. Primary colors must be prominent in all materials.</p>
         <div class="palette-row primary">
-            <hc-swatch-demo-component hex="#00aeff" name="Primary Blue" rgb="0, 174, 255" cmyk="100, 32, 0, 0" [isLarge]="true"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#006d9a" name="Secondary Blue" rgb="0, 109, 154" cmyk="60, 18, 0, 40" [isLarge]="true"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#6d6e70" name="HC Gray" rgb="109, 110, 112" cmyk="3, 2, 0, 56" [isLarge]="true"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#f8961d" name="HC Orange" rgb="248, 150, 29" cmyk="0, 38, 86, 3" [isLarge]="true"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#333333" name="HC Text" rgb="51, 51, 51" cmyk="0, 0, 0, 80" [isLarge]="true"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#00aeff" name="HC Light Blue" rgb="0, 174, 255" cmyk="86, 4, 0, 0" lab="62, -33, -46" pantone="639 C" [isLarge]="true"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#006d9a" name="HC Dark Blue" rgb="0, 109, 154" cmyk="98, 29, 12, 17" lab="41, -26, -37" pantone="7705 C" [isLarge]="true"></hc-swatch-demo-component>
+            <hc-swatch-demo-component name="HC Blue Gradient" [gradient]="['#00aeff','#006d9a']" [isLarge]="true"></hc-swatch-demo-component>
         </div>
     </hc-tile>
 
     <hc-tile>
-        <h5 id="corporate-website-palette">Corporate Website Palette</h5>
-        <p>These colors are used within <a target="_blank" href="http://healthcatalyst.com">healthcatalyst.com</a>. They are intended to represent the various content types used on the website, specifically within the Knowledge Center.</p>
+        <h5 id="corporate-website-palette">Secondary Colors</h5>
+        <p>
+            Secondary colors can be applied in different formats to represent categories, break up content, or to add visual interest.
+            Secondary colors may only be used when paired with a primary color or gradient. No more than one secondary color should be used in the same placement.
+        </p>
+        <p>
+            <strong>HC Charcoal</strong> provides a nice contrast to the brighter secondary color and can be used more frequently as a background color or anchoring element. <strong>HC Purple</strong> and <strong>HC Magenta</strong> should be used more sparingly.
+        </p>
+        <br>
         <div class="palette-row">
-            <hc-swatch-demo-component hex="#ffffff" name="White" rgb="255, 255, 255" cmyk="0, 0, 0, 0" [needsBorder]="true"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#dc775b" name="Awards Red" rgb="220, 119, 91" cmyk="0, 46, 59, 14"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#4ebe7e" name="Video Green" rgb="78, 190, 126" cmyk="59, 0, 34, 25"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#74d0d6" name="FAQ Blue" rgb="116, 208, 214" cmyk="46, 3, 0, 16"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#637a91" name="Presentation Blue" rgb="99, 122, 145" cmyk="32, 16, 0, 43"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#e2963b" name="Demo Orange" rgb="226, 150, 59" cmyk="0, 34, 74, 11"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#302e2e" name="HC Charcoal" rgb="48, 46, 46" cmyk="71, 65, 64, 70" lab="17, 1, 0" pantone="Black C" [isLarge]="true"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#87c3cf" name="HC Ocean" rgb="135, 195, 207" cmyk="59, 0, 18, 0" lab="74, -27, -16" pantone="3105 C" [isLarge]="true"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#f36c21" name="HC Orange" rgb="243, 108, 33" cmyk="0, 72, 100, 0" lab="62, 50, 62" pantone="165 C" [isLarge]="true"></hc-swatch-demo-component>
         </div>
         <div class="palette-row">
-            <hc-swatch-demo-component hex="#4b62af" name="eBook Purple" rgb="75, 98, 175" cmyk="57, 44, 0, 31"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#74d6ae" name="Insights Green" rgb="116, 214, 174" cmyk="46, 0, 19, 16"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#4b8faf" name="Success Blue" rgb="75, 143, 175" cmyk="57, 18, 0, 31"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#d67474" name="Exec Reports Red" rgb="214, 116, 116" cmyk="0, 46, 53, 16"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#74b6d6" name="Webinar Blue" rgb="116, 182, 214" cmyk="46, 15, 0, 16"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="" name=""></hc-swatch-demo-component>
-        </div>
-    </hc-tile>
-
-    <hc-tile>
-        <h5 id="presentation-palette">Presentation Palette</h5>
-        <p>This color set may be used within company presentation decks.</p>
-        <div class="palette-row">
-            <hc-swatch-demo-component hex="#ffffff" name="White" rgb="255, 255, 255" cmyk="0, 0, 0, 0" [needsBorder]="true"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#00aeff" name="Primary Blue" rgb="0, 174, 255" cmyk="100, 32, 0, 0"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#006d9a" name="Secondary Blue" rgb="0, 109, 154" cmyk="60, 18, 0, 40"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#333333" name="HC Text" rgb="51, 51, 51" cmyk="0, 0, 0, 80"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#6d6e70" name="HC Gray" rgb="109, 110, 112" cmyk="3, 2, 0, 56"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#f8961d" name="HC Orange" rgb="248, 150, 29" cmyk="0, 38, 86, 3"></hc-swatch-demo-component>
-        </div>
-        <div class="palette-row">
-            <hc-swatch-demo-component hex="#d67474" name="Exec Report Red" rgb="214, 116, 116" cmyk="0, 46, 53, 16"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#4ebe7e" name="Video Green" rgb="78, 190, 126" cmyk="59, 0, 34, 25"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#79629e" name="HC Purple" rgb="121, 98, 158" cmyk="23, 38, 0, 38"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="#cd4b90" name="HC Magenta" rgb="205, 75, 144" cmyk="0, 63, 30, 20"></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="" name=""></hc-swatch-demo-component>
-            <hc-swatch-demo-component hex="" name=""></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#38a188" name="HC Green" rgb="56, 161, 136" cmyk="91, 0, 58, 0" lab="58, -58, -0" pantone="3275 C" [isLarge]="true"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#4d4a93" name="HC Purple" rgb="77, 74, 147" cmyk="82, 79, 0, 0" lab="34, 18, -43" pantone="2725 C" [isLarge]="true"></hc-swatch-demo-component>
+            <hc-swatch-demo-component hex="#b24584" name="HC Magenta" rgb="178, 69, 132" cmyk="17, 85, 9, 0" lab="51, 58, -7" pantone="807 C" [isLarge]="true"></hc-swatch-demo-component>
         </div>
     </hc-tile>
 

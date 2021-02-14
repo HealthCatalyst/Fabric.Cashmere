@@ -1,5 +1,9 @@
 @import '../../sass/scroll-nav.scss';
 
+hc-scroll-nav {
+    @include hc-scroll-nav();
+}
+
 .hc-scroll-nav-links-container {
     @include hc-scroll-nav-links-container();
 }

@@ -1,35 +1,67 @@
-# Key Performance Indicator Metrics
+# Qlik Key Performance Indicators
 
-###### Last updated December 11, 2020
+###### Last updated January 26, 2021
 
 :::
 
 ##### Overview
 
-Define what a process metric is and how it is used
+Key Performance Indicators (KPIs) are defined as "critical (key) indicators of progress toward an intended result".
+On our accelerators, these KPIs should provide an entry point into the information on a page.
+They allow users to make an immediate judgement about the state of the information being tracked, and provide guidance for areas of further investigation.
+
+KPIs are so ubiquitous that they have become a established convention for data-savvy users.
+An [eye-tracking study conducted by Tableau](https://www.tableau.com/about/blog/2017/6/eye-tracking-study-5-key-learnings-data-designers-everywhere-72395) in 2017 revealed that big numbers are one of first elements of a dashboard that viewers are drawn to.
+It's important for us to take advantage of this convention as a way to guide users through the information we are presenting.
+Since Qlik users are accustomed to both traditional tiles and multi-select functionality within dynamic tiles, both types are discussed within this section. 
+
+![KPI Tile](./assets/analytics/qlik/qlik-tile.PNG "KPI Tile")
 
 :::
 
 :::
 
-##### Layout
+##### Static Tile
 
-Information on the visual settings for the tile, header, and content
+KPI tiles follow all the general standards for tiles as defined in the [Foundations section](/analytics/tableau-foundations).
+Refer to that **Tile Header** and **Divider** sections of that page for specific parameters to apply to the top of the KPI.
+
+### Layout
+
+The content of the KPI should be centered in tile.
+The main KPI value should be `Arial`, 24px, **offblack** `#333333`.
+KPI metrics often leverage a second line to indicate trend or sources.
+The second line should be `Arial`, 10px, **offblack** `#333333`.
+
+Arrows or text indicating positive trends should be set to **green** `#00a859`.
+For negative trends, use **red** `#f13c45`.
+But never rely solely on color to indicate a positive or negative trend, either text or iconography should also indicate the trend.
+
+### Tooltip
+Every KPI metric should include an info tooltip in its header.
+Refer to the [Foundations section](/analytics/qlik-foundations) for information on how to configure it.
+The info tooltip should provide a description of specifically what the metric is meant to indicate, and how it is calculated (equations can be useful).
 
 :::
 
 :::
 
-##### Tooltip
+##### Multi-select Tile
 
-Information about the required tooltip that all metrics shoudl include
+Multi-select tiles follow all the general standards for tiles as defined in the [Foundations section](/analytics/tableau-foundations).
+Refer to that **Tile Header** and **Divider** sections of that page for specific parameters to apply to the top of the visualization.
 
-:::
+<div style="text-align:center"><br>
 
-:::
+![Multi-select](./assets/analytics/qlik/qlik-multi-select-tile.PNG "Multi-select layout")
 
-##### Drill-down
+</div>
 
-Optional drill-down functionality - how and when to use it
+### Layout
+
+Multi-select tile functionality should be as clear as possible to users. In the example below, the sub-header: "(select to display below)" makes it clear that each measure selection will dynamically update the following charts on the page. The checkboxes help users understand that more than one measure can be simultaneously displayed on the charts. 
+
+The checkboxes and measure labels are within a listbox object that is 1 cell high. The labels are `Arial Bold, 10pt`.
+The measure values are within individual transparent textboxes that are `left-aligned` with the appropriate checkbox. The values are formatted as `Arial, 24 pt, 0pt margin, left-aligned`.
 
 :::

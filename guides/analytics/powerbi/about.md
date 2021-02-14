@@ -1,6 +1,6 @@
 # PowerBI About Page
 
-###### Last updated December 30, 2020
+###### Last updated January 13, 2021
 
 :::
 
@@ -13,7 +13,7 @@ It's a better user experience to open directly to a Summary page of the accelera
 
 <div style="text-align:center"><br>
 
-![About Page](./assets/analytics/tableau/aboutoverview.png "About Page")
+![About Page](./assets/analytics/powerbi/pbi-aboutoverview.png "About Page")
 
 </div>
 

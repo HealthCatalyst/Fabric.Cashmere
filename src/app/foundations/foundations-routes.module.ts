@@ -8,6 +8,7 @@ import {CodeDemoComponent} from './code/code-demo.component';
 import {BrandColorDemoComponent} from './brand-colors/brand-color-demo.component';
 import {LogoDemoComponent} from './logo/logo-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
+import {FontsDemoComponent} from './fonts/fonts-demo.component';
 
 const routes: Routes = [
     {
@@ -15,14 +16,19 @@ const routes: Routes = [
         component: FoundationsComponent,
         children: [
             {
+                path: 'brand-colors',
+                component: BrandColorDemoComponent,
+                data: {title: 'Brand Colors', category: 'Colors'}
+            },
+            {
                 path: 'color',
                 component: ColorDemoComponent,
                 data: {title: 'UI Colors', category: 'Colors'}
             },
             {
-                path: 'brand-colors',
-                component: BrandColorDemoComponent,
-                data: {title: 'Brand Colors', category: 'Colors'}
+                path: 'fonts',
+                component: FontsDemoComponent,
+                data: {title: 'Fonts', category: 'Typography'}
             },
             {
                 path: 'typography',
@@ -51,7 +57,7 @@ const routes: Routes = [
             },
             {
                 path: '**',
-                redirectTo: 'color'
+                redirectTo: 'brand-colors'
             }
         ]
     }

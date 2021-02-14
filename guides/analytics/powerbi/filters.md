@@ -1,6 +1,6 @@
 # PowerBI Filters
 
-###### Last updated December 30, 2020
+###### Last updated January 13, 2021
 
 :::
 
@@ -40,7 +40,7 @@ The sliding filter pane should always be accessible to users, so that all filter
 Power BI allows developers to format the Filters pane and cards. The same colors from [Cashmere Foundations](/foundations/color) are used. 
 
 ### Filter Pane
-The Filters pane is set to `250px` wide and the background color should be **slate-gray-400** `#708090`. The Filters pane text and icon color should be **white** `#ffffff`. Titles are set to `Segoe (Bold)` `10px` and headers are set to `Segoe (Bold)` `9px`. The borders within the Filters pane are set to **slate-gray-300** `#c0c5cc`. 
+The Filters pane is set to `250px` wide and the background color should be **slate-gray-400** `#708090`. The Filters pane text and icon color should be **white** `#ffffff`. Titles are set to `Segoe UI` `12px` and headers are set to `Segoe UI` `10px`. The borders within the Filters pane are set to **slate-gray-300** `#c0c5cc`. 
 
 The search text size is set to `10px` and the input box color is set to **charcoal-blue** `#384655`.
 

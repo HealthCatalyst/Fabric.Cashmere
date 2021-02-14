@@ -1,26 +1,40 @@
 # Getting Started
 
-###### Last updated September 21, 2019
+###### Last updated January 22, 2021
 
 :::
+## Step 1: Install npm dependencies.
 
-##### Setting up the project
-
-### Step 1. Install the npm module.
-
-```BASH
-npm i --save @healthcatalyst/cashmere
-```
-
-#### Install peer dependencies [@angular/cdk](https://material.angular.io/cdk), [Font Awesome](https://fontawesome.com) (optional), and [Open Sans](https://fonts.google.com/specimen/Open+Sans) (optional).
+### A) Install Cashmere.
 
 ```BASH
-npm install --save @angular/cdk font-awesome npm-font-open-sans
+npm install --save @healthcatalyst/cashmere
 ```
 
-### Step 2. Create a module to hold Cashmere components.
+### B) Install [@angular/cdk](https://material.angular.io/cdk), a required peer dependency.
+*Note: Version 9.2.4 of the CDK, rather than the latest, is required for compatibility with Cashmere.*
 
-Create a module that will hold the Cashmere components that your app will need. Place all the components in the exports field of the NgModule annotation.
+```BASH
+npm install --save @angular/cdk@9.2.4
+```
+
+### C) *(Optional)* Install additional dependencies as needed.
+- [Font Awesome](https://fontawesome.com) - Recommended icon set. *(For healthcare-specific iconography, see step 3.)*
+- [Noto Sans](https://fonts.google.com/specimen/Noto+Sans) - Recommended font.
+- [Ng-select](https://github.com/ng-select/ng-select) - Needed only if using the multiselect/typeahead component.
+
+
+
+```BASH
+npm install --save font-awesome notosans-fontface @ng-select/ng-select
+```
+:::
+
+:::
+## Step 2: Create a Cashmere module.
+
+### A) Create a module to hold the Cashmere components your app needs.
+This will make for a more organized code base and will help avoid duplicate references throughout your app. Place all the components in the exports field of the `@NgModule` annotation.
 
 ```typescript
 import {NgModule} from '@angular/core';
@@ -32,28 +46,32 @@ import {BreadcrumbsModule, ButtonModule, CheckboxModule, IconModule} from '@heal
 export class CashmereModule {}
 ```
 
-_By creating a module that holds all of Cashmere's components you will keep things more organized and you won't have references throughout your code base for the same components._
-
-Now what you can do is import the Cashmere module into your SharedModule.
+### B) Import the Cashmere module into your SharedModule.
 
 ```typescript
 @NgModule({
+    imports: [CashmereModule],
     exports: [CommonModule, CashmereModule]
 })
 export class SharedModule {}
 ```
 
-Anywhere you import the Shared module, all of the Cashmere components will be made available to you.
+Anywhere you import the Shared module, Cashmere components will also be available.
+:::
 
-### Step 3. Add the styles.
 
-Import baseline scss file into your app's global style sheet `(src/styles.scss)`
+:::
+## Step 3: Add the styles.
 
-```
+### A) Import baseline Cashmere styles.
+The root Cashmere stylesheet need to be imported in your app's global style sheet (`src/styles.scss`).
+
+```scss
 @import "~@healthcatalyst/cashmere/scss/cashmere";
 ```
 
-Add a reference to Font Awesome ([official instructions](https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/include-font-awesome.md)) and Open Sans by adding it via the styles option inside your project's build target options in `angular.json`
+### B) *(Optional)* Add Font Awesome & Noto Sans.
+In `angular.json`, place references for each font in your project's build target options in the styles array.
 
 ```json
 "projects": {
@@ -63,15 +81,22 @@ Add a reference to Font Awesome ([official instructions](https://github.com/angu
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "styles": [
-                "../node_modules/font-awesome/css/font-awesome.css",
-                "../node_modules/npm-font-open-sans/open-sans.css",
-                "src/styles.scss"
+                "./node_modules/font-awesome/css/font-awesome.css",
+                "./node_modules/notosans-fontface/css/notosans-fontface-allweight.css",
+                "src/styles.scss" // your app's global stylesheet
             ]
           }
         }
       }
     }
   }
+```
+
+### C) *(Optional)* Add Health Catalyst icons (`hcicons`).
+If your app needs access to the [Health Catalyst icon font](/foundations/icons), add the following to your app's global style sheet (`src/styles.scss`):
+
+```scss
+@import "~@healthcatalyst/cashmere/hcicons/hcicons";
 ```
 
 :::

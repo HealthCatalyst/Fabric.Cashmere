@@ -1,6 +1,6 @@
 # PowerBI Tabs
 
-###### Last updated December 30, 2020
+###### Last updated January 13, 2021
 
 :::
 
@@ -8,15 +8,13 @@
 
 Tabs provide secondary navigation within the main sections on your navbar.
 The tabs in the Power BI template are based on the styling of the [Cashmere Tabs web component](/web/components/tabs/examples).
-Each tab is a button that links to a dashboard with a different tab highlighted.
+Each tab is a button that contains a bookmark link to another sheet.
 
 <div style="text-align:center"><br>
 
 ![Power BI Tabs](./assets/analytics/powerbi/pbi-tabs.png "Power BI Tabs")
 
 </div><br>
-
-In order to recreate the styling of the Cashmere web component in Power BI, we leverage buttons and line objects that contain bookmarks to varying dashboards.
 
 :::
 

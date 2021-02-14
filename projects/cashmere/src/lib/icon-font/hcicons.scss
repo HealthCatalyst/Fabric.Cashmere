@@ -1,3 +1,5 @@
+$hc-icons-font-path: "." !default;
+
 @font-face {
     font-family: 'hcicons';
     src: url('#{$hc-icons-font-path}/hcicons.eot');
@@ -183,6 +185,9 @@
     }
     &.hci-ETL:before {
         content: '\e948';
+    }
+    &.hci-data-quality:before {
+        content: '\e917';
     }
     &.hci-data-flow:before {
         content: '\e935';

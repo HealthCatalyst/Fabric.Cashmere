@@ -1,6 +1,7 @@
 @import './colors';
 @import './functions';
 @import './mixins';
+@import './variables';
 
 $btn-icon-sz: 18px;
 
@@ -51,7 +52,7 @@ $btn-icon-sz: 18px;
     background-image: none;
     border: none;
     border-radius: 5px;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: $default-font-family;
 
     &[disabled] {
         cursor: not-allowed;

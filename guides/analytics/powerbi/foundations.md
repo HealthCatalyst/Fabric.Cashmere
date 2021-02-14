@@ -1,6 +1,6 @@
 # PowerBI Foundations
 
-###### Last updated December 30, 2020
+###### Last updated January 13, 2021
 
 :::
 
@@ -33,7 +33,7 @@ Use of the Flexo font in the Health Catalyst brand is generally limited to logos
 ### Primary Font
 
 Health Catalyst's primary font is Open Sans - a clean, readable, sans-serif typeface.
-Although Power BI doesn't easily allow us to use Open Sans, it does come packaged with a very similar typeface called *Segoe* which includes several weight variations. Because Power BI doesn't consistently provide access to formatting options such as bolding, 
+Although Power BI doesn't easily allow us to use Open Sans, it does come packaged with a very similar typeface called *Segoe* which includes several weight variations. Because Power BI doesn't consistently provide access to formatting options such as bolding,
 in Health Catalyst Power BI applications, we leverage **Segoe UI**, **Segoe (Bold)**, and **Segoe UI Light**.
 Information about specific font sizes and weights can be found throughout this style guide, and examples of correct usage can be found in the template.
 
@@ -81,12 +81,12 @@ Refer to the [navbar section](/analytics/powerbi-navbar) section for more inform
 ##### Layout
 
 The standard aspect ratio for a Health Catalyst Power BI application is **16:9**.
-Within that space, the layout is divided into four primary areas: Navbar, Static Bar, Content Area, and Filters.
+Within that space, the layout is divided into four primary areas: Navbar, Subnav, Content Area, and Filters.
 Note that if content needs to be further subdivided within the content area, [Tabs](/analytics/powerbi-tabs) may be included in that space.
 
 <div style="text-align:center"><br>
 
-![Layout Elements](./assets/analytics/tableau/layoutelements.png "Layout Elements")
+![Layout Elements](./assets/analytics/powerbi/pbi-layoutelements.png "Layout Elements")
 
 </div>
 
@@ -95,15 +95,15 @@ Note that if content needs to be further subdivided within the content area, [Ta
 The navbar is a horizontal text object with a fixed 50px height.
 Detailed information on the navbar and how to configure it is included in the [navbar section](/analytics/powerbi-navbar).
 
-### Static Bar
+### Subnav
 
-The static bar is horizontal text object with a fixed `30px height and 1280px width`.
+The subnav is horizontal text object with a fixed `30px height and 1280px width`.
 It is used as an information panel to display dashboard-wide metrics, such as refresh timestamps or "stickied" metrics, such as population counts.
 Position the object at `x:0, y:50`, set the background color to **slate-gray-400** `#708090`, toggle the visual header to `off`.
 
 <div style="text-align:center"><br>
 
-![Static Bar](./assets/analytics/powerbi/pbi-static-bar.png "Static Bar")
+![Static Bar](./assets/analytics/powerbi/pbi-subnav.png "Subnav")
 
 </div>
 
@@ -125,7 +125,7 @@ Information about the dynamic filters pane is included in the [filters section](
 
 Visualization objects such as charts, graphs, tables, and KPIs should be styled like the Cashmere [tile component](/web/components/tile) and will be referred to as tiles within this section.
 
-In general, a Power BI tile has a **white** `#ffffff` background and a solid **white** `#ffffff` border with a 5px wide radius. Each tile should also have an outside-positioned **slate-gray-200** `#e0e0e0` shadow that is sized at 2px with a blur factor of 5px. Tiles should have at least 10px of padding between each other (5px on either side).
+In general, a Power BI tile has a **white** `#ffffff` background and a solid **white** `#ffffff` border with a 5px wide radius. Each tile should also have an outside-positioned **black** `#000000` shadow that is sized at 1px with a blur factor of 3px, angle of 90º, distance of 1px and transparency of 85%. Tiles should have at least 10px of padding between each other (5px on either side).
 
 Layout specifics for the most common visual objects can be found in the [KPI Metrics section](/analytics/powerbi-metrics), [Charts section](/analytics/powerbi-charts), and [Tables section](/analytics/powerbi-tables). Refer to the template or these sections for working examples.
 
@@ -136,7 +136,7 @@ Layout specifics for the most common visual objects can be found in the [KPI Met
 </div>
 
 ### Alignment
-Tiles should be evenly aligned horizontally and/or vertically 
+Tiles should be evenly aligned horizontally and/or vertically
 
 <div style="text-align:center"><br>
 
@@ -144,7 +144,7 @@ Tiles should be evenly aligned horizontally and/or vertically
 
 </div>
 
-Tiles should not be distributed unevenly 
+Tiles should not be distributed unevenly
 
 <div style="text-align:center"><br>
 
@@ -152,7 +152,7 @@ Tiles should not be distributed unevenly
 
 </div>
 
-Utilize Power BI's alignment capabilities by selecting each object and choosing the appropriate distribution option within the *Align* section under the *Format* toolbar 
+Utilize Power BI's alignment capabilities by selecting each object and choosing the appropriate distribution option within the *Align* section under the *Format* toolbar
 
 <div style="text-align:center"><br>
 

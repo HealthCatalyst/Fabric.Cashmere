@@ -1,6 +1,7 @@
 @import 'scss/colors';
 @import 'scss/functions';
 @import 'scss/mixins';
+@import 'scss/variables';
 
 .hc-doc-viewer {
     display: block;
@@ -106,7 +107,7 @@
     padding-left: 25px;
     padding-top: 0 !important;
     color: $text !important;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-family: $default-font-family !important;
 }
 
 .docs-api-method-parameter-name {
