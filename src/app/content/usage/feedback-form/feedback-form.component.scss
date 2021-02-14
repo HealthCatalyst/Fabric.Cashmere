@@ -1,60 +1,14 @@
-.icon-left {
-    margin-right: 10px;
+.feedback-form {
+    padding-bottom: 40px;
 }
-
-.icon-tile {
-    padding-bottom: 15px;
-}
-
-.icon-row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.product-icon {
-    display: flex;
-    flex-wrap: wrap;
-    flex: 1 1 auto;
-    width: 14%;
-    margin-right: 2%;
-    justify-content: center;
-}
-
-.product-icon img {
-    width: 80px;
-    height: 80px;
-}
-
-.product-icon p {
-    font-size: 14px;
-    text-align: center;
-    min-height: 45px;
-    width: 100%;
-}
-
-@media (max-width: 992px) {
-    .product-icon {
-        width: 25%;
-    }
-}
-
-@media (max-width: 576px) {
-    .product-icon {
-        width: 45%;
-    }
-}
-
-
-/* Page Feedback Input Styles */
 
 .feedback-container,
 .feedback-container-new {
-    border: 1px solid #E1E3E3;
-    padding: 20px;
+    padding: 10px 20px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: 80px auto;
+    margin: 0 auto;
     max-width: 600px;
 }
 
@@ -63,7 +17,7 @@
     color: #333;
 }
 
-.feedback-top-left>.form-group {
+.feedback-top-left > .form-group {
     margin-bottom: 0;
 }
 
@@ -72,30 +26,8 @@
 }
 
 .feedback-button {
-    border: 1.5px solid #ccc;
-    color: #6D6E70;
-    background-color: #f1f1f1;
-    height: 36px;
-    line-height: 31px;
-    font-size: 14px;
-    font-weight: 700;
-    margin-left: 5px;
-    border-radius: 5px;
-    width: 80px;
-}
-
-.feedback-button:not(:disabled):hover {
-    color: #333;
-    background-color: #e5e5e5;
-}
-
-.feedback-button:disabled:hover {
-    cursor: not-allowed;
-    color: #6D6E70;
-}
-
-.feedback-selected:disabled:hover {
-    color: white !important;
+    min-width: 80px !important;
+    margin-left: 10px;
 }
 
 .feedback-button i {
@@ -106,112 +38,11 @@
 #feedback-response {
     color: #6D6E70;
     font-size: 16px;
-    // display: none;
-}
-
-.feedback-selected {
-    border: 1px solid #6D6E70;
-    background-color: #6D6E70;
-    color: white;
 }
 
 #feedback-survey {
-    // display: none;
     width: 100%;
     margin-top: 10px;
-}
-
-.feedback-radio {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-weight: 400;
-    font-size: 14px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.feedback-radio input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-// .feedback-radio-hide {
-//     display: none;
-// }
-// .radiobtn {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     height: 22px;
-//     width: 22px;
-//     background-color: #fff;
-//     border: 2px solid #ccc;
-//     border-radius: 50%;
-// }
-// .feedback-radio:hover input~.radiobtn {
-//     border: 2px solid #00aeff;
-// }
-// .feedback-radio input:checked~.radiobtn {
-//     background-color: #00aeff;
-//     border: 2px solid #00aeff;
-// }
-// .radiobtn:after {
-//     content: "";
-//     position: absolute;
-//     display: none;
-// }
-// .feedback-radio input:checked~.radiobtn:after {
-//     display: block;
-// }
-// .feedback-radio .radiobtn:after {
-//     top: 5px;
-//     left: 5px;
-//     width: 8px;
-//     height: 8px;
-//     border-radius: 50%;
-//     background: white;
-// }
-// .feedback-suggestions label,
-// .feedback-email label {
-//     font-weight: 400;
-//     font-size: 14px;
-//     margin-top: 10px;
-// }
-// .feedback-suggestions textarea {
-//     border: 1px solid #E1E3E3;
-//     resize: vertical;
-//     margin-bottom: 10px;
-//     width: 100%;
-// }
-// .feedback-email input {
-//     border: 1px solid #E1E3E3;
-//     resize: vertical;
-//     margin-bottom: 40px;
-//     width: 100%;
-// }
-.submit-feedback {
-    background-color: #00a859;
-    color: #fff;
-    font-weight: 400;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    height: 35px;
-    min-width: 150px;
-}
-
-.submit-feedback:hover {
-    background-color: #009750;
-    color: #fff;
 }
 
 @media only screen and (max-width: 800px) {
@@ -225,9 +56,5 @@
     }
     .feedback-top-right {
         margin: 10px 0;
-    }
-    .submit-feedback {
-        display: block;
-        margin: 0 auto;
     }
 }

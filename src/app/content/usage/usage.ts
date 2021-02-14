@@ -14,5 +14,4 @@ export const usageAttributesMapping = {
     TermType: 'TermType',
     TermCategories: 'TermCategories',
     TermDateAdded: 'TermDateAdded'
-
-}
+};

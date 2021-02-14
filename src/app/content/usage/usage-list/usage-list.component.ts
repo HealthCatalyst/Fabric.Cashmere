@@ -1,14 +1,12 @@
 import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective} from '@angular/forms';
+import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {GoogleSheetsDbService} from 'ng-google-sheets-db';
-import {PaginationComponent, HcTableDataSource, TabChangeEvent} from '@healthcatalyst/cashmere';
+import {PaginationComponent, HcTableDataSource} from '@healthcatalyst/cashmere';
 import {SectionService} from 'src/app/shared/section.service';
 import {BaseDemoComponent} from '../../../shared/base-demo.component';
 import {IUsage, usageAttributesMapping} from '../usage';
-import { subscribeOn, tap } from 'rxjs/operators';
-import { invalid } from '@angular/compiler/src/render3/view/util';
 
 @Component({
     selector: 'hc-usage-list',
@@ -23,13 +21,12 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     searchControl = new FormControl();
     termList$: Observable<IUsage[]>;
     terms: IUsage[];
- 
+
     editListForm: FormGroup;
     formSubmitted = false;
     scriptURL = 'https://script.google.com/macros/s/AKfycbwWZCf0aBg1e5BFD9G-hVTb-zbSTXT1KGFSwoyRLwMhu7FZF2g/exec';
     editForm = document.forms['editListForm'];
-    
-   
+
     displayedColumns: string[] = ['term', 'usage', 'edit'];
     dataSource: HcTableDataSource<IUsage>;
     pageNumber = 1;
@@ -53,7 +50,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
 
     applyFilter() {
         const filterStr = this.searchControl.value;
-        if ( filterStr ) {
+        if (filterStr) {
             this.dataSource.filter = filterStr.trim().toLowerCase();
         } else {
             this.dataSource.filter = ' ';
@@ -61,25 +58,21 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     }
 
     ngOnInit(): void {
-
         this.termList$ = this.googleSheetsDbService.get<IUsage>('18lD03x12tYE_DTqiXPX9oqR3sqRdMXEE_jhIGvTF_xk', 1, usageAttributesMapping);
         this.termList$.subscribe(data => {
             this.usageList = data;
-            this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName > b.TermName) ? 1 : -1);
+            this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName > b.TermName ? 1 : -1));
             this.dataSource = new HcTableDataSource(this.filteredUsageList);
-            this.dataSource.filterPredicate = (data: IUsage, filter: string) => this.usageFilter(data, filter);
+            this.dataSource.filterPredicate = (filterData: IUsage, filter: string) => this.usageFilter(filterData, filter);
             this.dataSource.paginator = this.paginator;
-        })
+        });
 
         this.editListForm = this.fb.group({
             addTerm: ['', Validators.required],
             addDef: ['', Validators.required],
             yourEmail: ['', [Validators.required, Validators.email]],
-            yourName: ['', [Validators.required, Validators.minLength(3)]],
+            yourName: ['', [Validators.required, Validators.minLength(3)]]
         });
-    }
-    ngAfterViewInit(): void {
-        // this.dataSource.paginator = this.paginator;
     }
 
     usageFilter(data: IUsage, filter: string) {
@@ -93,15 +86,9 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
 
     onCancel() {
         this.editListForm.reset();
-        Object.keys(this.editListForm.controls).forEach(key => {this.editListForm.get(key)?.setErrors(null);
-                
+        Object.keys(this.editListForm.controls).forEach(key => {
+            this.editListForm.get(key)?.setErrors(null);
         });
-        
-       
-                
-
-        // this.editListForm.controls.addTerm.updateValueAndValidity();
-        
     }
 
     onSubmit() {
@@ -126,11 +113,8 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         );
 
         this.editListForm.reset();
-        Object.keys(this.editListForm.controls).forEach(key => {this.editListForm.get(key)?.setErrors(null);
+        Object.keys(this.editListForm.controls).forEach(key => {
+            this.editListForm.get(key)?.setErrors(null);
         });
-
-
-        
-       
     }
 }

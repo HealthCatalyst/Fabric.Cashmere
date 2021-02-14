@@ -86,8 +86,8 @@
                             <hc-error>Please enter your email.</hc-error>
                         </hc-form-field>
                     </div>
-                    <button hc-button title="Submit Form" style="margin-right:30px;" buttonStyle="primary" type="submit" [title]="editListForm.valid ? 'Submit your entry' : 'Disabled until the form data is valid'" [disabled]="!editListForm.valid" (click)="onSubmit()">Submit</button>
-                    <button hc-button title="Reset Form" buttonStyle="secondary" formControlName="resetButton" type="" (click)="onCancel()">Reset Form</button>
+                    <button hc-button title="Submit Form" class="usage-submit-btn" type="submit" [title]="editListForm.valid ? 'Submit your entry' : 'Disabled until the form data is valid'" [disabled]="!editListForm.valid" (click)="onSubmit()">Submit</button>
+                    <button hc-button title="Reset Form" buttonStyle="secondary" (click)="onCancel()">Reset Form</button>
                 </form>
             </div>
 
