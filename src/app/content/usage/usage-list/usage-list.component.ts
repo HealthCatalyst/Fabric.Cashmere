@@ -1,14 +1,12 @@
 import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective, ControlContainer} from '@angular/forms';
+import {FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {GoogleSheetsDbService} from 'ng-google-sheets-db';
-import {PaginationComponent, HcTableDataSource, TabChangeEvent, TabComponent, TabSetComponent} from '@healthcatalyst/cashmere';
+import {PaginationComponent, HcTableDataSource, TabComponent, TabSetComponent} from '@healthcatalyst/cashmere';
 import {SectionService} from 'src/app/shared/section.service';
 import {BaseDemoComponent} from '../../../shared/base-demo.component';
 import {IUsage, usageAttributesMapping} from '../usage';
-// import { TabSetComponent } from 'dist/cashmere/public_api';
-
 
 @Component({
     selector: 'hc-usage-list',
@@ -23,7 +21,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     searchControl = new FormControl();
     termList$: Observable<IUsage[]>;
     terms: IUsage[];
- 
+
     editListForm: FormGroup;
     formSubmitted = false;
     scriptURL = 'https://script.google.com/macros/s/AKfycbwWZCf0aBg1e5BFD9G-hVTb-zbSTXT1KGFSwoyRLwMhu7FZF2g/exec';
@@ -32,7 +30,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     @ViewChild('tabSetElement') tabSetRef: TabSetComponent;
     @ViewChild('formTab') formTabRef: TabComponent;
     @ViewChild('formDirective') formDirective: FormGroupDirective;
-   
+
     displayedColumns: string[] = ['term', 'usage', 'edit'];
     dataSource: HcTableDataSource<IUsage>;
     pageNumber = 1;
@@ -54,11 +52,9 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     @ViewChild(PaginationComponent)
     paginator: PaginationComponent;
 
-    
-
     applyFilter() {
         const filterStr = this.searchControl.value;
-        if ( filterStr ) {
+        if (filterStr) {
             this.dataSource.filter = filterStr.trim().toLowerCase();
         } else {
             this.dataSource.filter = ' ';
@@ -66,15 +62,14 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     }
 
     ngOnInit(): void {
-
         this.termList$ = this.googleSheetsDbService.get<IUsage>('18lD03x12tYE_DTqiXPX9oqR3sqRdMXEE_jhIGvTF_xk', 1, usageAttributesMapping);
         this.termList$.subscribe(data => {
             this.usageList = data;
-            this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName > b.TermName) ? 1 : -1);
+            this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName > b.TermName ? 1 : -1));
             this.dataSource = new HcTableDataSource(this.filteredUsageList);
-            this.dataSource.filterPredicate = (data: IUsage, filter: string) => this.usageFilter(data, filter);
+            this.dataSource.filterPredicate = (filterData: IUsage, filter: string) => this.usageFilter(filterData, filter);
             this.dataSource.paginator = this.paginator;
-        })
+        });
 
         this.editListForm = this.fb.group({
             addTerm: ['', Validators.required],
@@ -82,17 +77,8 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
             comment: '',
             yourEmail: ['', [Validators.required, Validators.email]],
             yourName: ['', [Validators.required, Validators.minLength(3)]],
-            addNew: 'true',
+            addNew: 'true'
         });
-    }
-    ngAfterViewInit(): void {
-        // this.dataSource.paginator = this.paginator;
-        // this.tabSetRef.defaultTab = 1;
-        this.tabSetRef.selectTab(0);
-        this.tabSetRef.selectTab(this.formTabRef);
-        this.formTabRef.tabClick;
-        console.log("tabSetRef " + this.tabSetRef._tabs.length);
-
     }
 
     usageFilter(data: IUsage, filter: string) {
@@ -109,18 +95,14 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         this.formDirective.resetForm();
         this.formSubmitted = false;
         this.showErrors = false;
-        // Object.keys(this.editListForm.controls).forEach(key => {this.editListForm.get(key)?.setErrors(null);
-        // });
-        
     }
 
     onSubmit() {
-        
         if (this.editListForm.invalid) {
             this.showErrors = true;
             return;
         }
-        
+
         this.formSubmitted = true;
         const formData = new FormData();
         formData.append('addTerm', this.editListForm.controls.addTerm.value);
@@ -130,9 +112,6 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         formData.append('comment', this.editListForm.controls.comment.value);
         formData.append('addNew', this.editListForm.controls.addNew.value);
 
-        const formObject = this.editListForm.getRawValue();
-        const serializedForm = JSON.stringify(formObject);
-
         this.httpClient.post<any>(this.scriptURL, formData).subscribe(
             res => console.log(res),
             err => console.log(err)
@@ -140,9 +119,6 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
 
         this.editListForm.reset();
         this.formDirective.resetForm();
-        // Object.keys(this.editListForm.controls).forEach(key => {this.editListForm.get(key)?.setErrors(null);
-        // });
-       
     }
 
     getFormFillData(termItem: IUsage): void {
@@ -152,6 +128,5 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
             addDef: termItem.TermUsage,
             addNew: 'false'
         });
-        // alert(termItem.TermID + " " + termItem.TermName);
     }
 }
