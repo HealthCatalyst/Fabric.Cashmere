@@ -4,12 +4,13 @@
 
 .feedback-container,
 .feedback-container-new {
-    padding: 10px 20px;
+    padding: 5px 0;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     margin: 0 auto;
     max-width: 600px;
+    justify-content: center;
 }
 
 .feedback-top-left {
@@ -22,7 +23,7 @@
 }
 
 .feedback-top-right {
-    margin-left: auto;
+    margin-left: 25px;
 }
 
 .feedback-button {
@@ -42,19 +43,5 @@
 
 #feedback-survey {
     width: 100%;
-    margin-top: 10px;
-}
-
-@media only screen and (max-width: 800px) {
-    .feedback-container,
-    .feedback-container-new {
-        justify-content: center;
-    }
-    .feedback-top-left {
-        text-align: center;
-        width: 100%;
-    }
-    .feedback-top-right {
-        margin: 10px 0;
-    }
+    margin-top: 20px;
 }
