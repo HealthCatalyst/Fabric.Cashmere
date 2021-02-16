@@ -15,7 +15,8 @@
                     </hc-form-field>
                 </div>
 
-                <table hc-table [dataSource]="dataSource" style="border: none;">
+
+                <table hc-table *ngIf="termList$ | async; else emptyList" [dataSource]="dataSource" style="border: none;">
                     <!-- Term Column -->
                     <ng-container hcColumnDef="term">
                         <th hc-header-cell *hcHeaderCellDef>Term</th>
@@ -39,11 +40,19 @@
                     <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
                     <tr hc-row *hcRowDef="let row; columns: displayedColumns"></tr>
                 </table>
+
+                <ng-template #emptyList>
+                    <div class="loading-message">
+                        Loading ...
+                    </div>
+                </ng-template>
                 <div style="padding-top: 10px; font-size: 12px;">The asterisk (*) denotes that the abbreviation is acceptable on first use.</div>
 
                 <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="10" [hidePageSize]="false" [pageSizeOptions]="pageOpts"></hc-pagination>
             </div>
         </hc-tab>
+
+        <!-- New Tab -->
         <hc-tab>
             <hc-tab-title>
                 <span style="color: #00aeff; font-weight: 600">
@@ -51,6 +60,8 @@
                     Add or Change
                 </span>
             </hc-tab-title>
+
+            <!-- Form to add or change term -->
             <div>
                 <form [formGroup]="editListForm" style="padding-top:50px">
                     <div class="form-container">
@@ -75,8 +86,8 @@
                             <hc-error>Please enter your email.</hc-error>
                         </hc-form-field>
                     </div>
-                    <button hc-button title="Submit Form" style="margin-right:30px;" buttonStyle="primary" type="submit" [title]="editListForm.valid ? 'Submit your entry' : 'Disabled until the form data is valid'" [disabled]="!editListForm.valid" (click)="onSubmit()">Submit</button>
-                    <button hc-button title="Reset Form" buttonStyle="secondary" type="" (click)="onCancel()">Reset Form</button>
+                    <button hc-button title="Submit Form" class="usage-submit-btn" type="submit" [title]="editListForm.valid ? 'Submit your entry' : 'Disabled until the form data is valid'" [disabled]="!editListForm.valid" (click)="onSubmit()">Submit</button>
+                    <button hc-button title="Reset Form" buttonStyle="secondary" (click)="onCancel()">Reset Form</button>
                 </form>
             </div>
 

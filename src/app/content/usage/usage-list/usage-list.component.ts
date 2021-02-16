@@ -1,11 +1,12 @@
 import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {PaginationComponent, HcTableDataSource, TabChangeEvent} from '@healthcatalyst/cashmere';
+import {Observable} from 'rxjs';
+import {GoogleSheetsDbService} from 'ng-google-sheets-db';
+import {PaginationComponent, HcTableDataSource} from '@healthcatalyst/cashmere';
 import {SectionService} from 'src/app/shared/section.service';
 import {BaseDemoComponent} from '../../../shared/base-demo.component';
-import {UsageService} from '../usage.service';
-import {IUsage} from '../usage';
+import {IUsage, usageAttributesMapping} from '../usage';
 
 @Component({
     selector: 'hc-usage-list',
@@ -18,6 +19,8 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     categories = ['All', 'Health Catalyst', 'Industry', 'Technical'];
     selectedCategoriesControl = new FormControl('All');
     searchControl = new FormControl();
+    termList$: Observable<IUsage[]>;
+    terms: IUsage[];
 
     editListForm: FormGroup;
     formSubmitted = false;
@@ -27,13 +30,13 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     displayedColumns: string[] = ['term', 'usage', 'edit'];
     dataSource: HcTableDataSource<IUsage>;
     pageNumber = 1;
-    pageOpts = [5, 10, 20];
+    pageOpts = [10, 20, 30];
 
     constructor(
         sectionService: SectionService,
-        private usageService: UsageService,
         private fb: FormBuilder,
-        private httpClient: HttpClient
+        private httpClient: HttpClient,
+        private googleSheetsDbService: GoogleSheetsDbService
     ) {
         super(sectionService);
     }
@@ -47,7 +50,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
 
     applyFilter() {
         const filterStr = this.searchControl.value;
-        if ( filterStr ) {
+        if (filterStr) {
             this.dataSource.filter = filterStr.trim().toLowerCase();
         } else {
             this.dataSource.filter = ' ';
@@ -55,11 +58,14 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     }
 
     ngOnInit(): void {
-        this.usageList = this.usageService.getUsageList();
-        this.filteredUsageList = this.usageList;
-        this.dataSource = new HcTableDataSource(this.filteredUsageList);
-
-        this.dataSource.filterPredicate = (data: IUsage, filter: string) => this.usageFilter(data, filter);
+        this.termList$ = this.googleSheetsDbService.get<IUsage>('18lD03x12tYE_DTqiXPX9oqR3sqRdMXEE_jhIGvTF_xk', 1, usageAttributesMapping);
+        this.termList$.subscribe(data => {
+            this.usageList = data;
+            this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName > b.TermName ? 1 : -1));
+            this.dataSource = new HcTableDataSource(this.filteredUsageList);
+            this.dataSource.filterPredicate = (filterData: IUsage, filter: string) => this.usageFilter(filterData, filter);
+            this.dataSource.paginator = this.paginator;
+        });
 
         this.editListForm = this.fb.group({
             addTerm: ['', Validators.required],
@@ -67,9 +73,6 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
             yourEmail: ['', [Validators.required, Validators.email]],
             yourName: ['', [Validators.required, Validators.minLength(3)]]
         });
-    }
-    ngAfterViewInit(): void {
-        this.dataSource.paginator = this.paginator;
     }
 
     usageFilter(data: IUsage, filter: string) {
@@ -83,6 +86,9 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
 
     onCancel() {
         this.editListForm.reset();
+        Object.keys(this.editListForm.controls).forEach(key => {
+            this.editListForm.get(key)?.setErrors(null);
+        });
     }
 
     onSubmit() {
@@ -107,5 +113,8 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         );
 
         this.editListForm.reset();
+        Object.keys(this.editListForm.controls).forEach(key => {
+            this.editListForm.get(key)?.setErrors(null);
+        });
     }
 }

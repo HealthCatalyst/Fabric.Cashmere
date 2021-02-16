@@ -33,7 +33,7 @@ Use of the Flexo font in the Health Catalyst brand is generally limited to logos
 ### Primary Font
 
 Health Catalyst's primary font is Open Sans - a clean, readable, sans-serif typeface.
-Although Qlik doesn't easily allow us to use Open Sans, it does come packaged with a very similar typeface called *Arial* which includes several weight variations. Because Power BI doesn't consistently provide access to formatting options such as bolding, 
+Although Qlik doesn't easily allow us to use Open Sans, it does come packaged with a very similar typeface called *Arial* which includes several weight variations. Because Power BI doesn't consistently provide access to formatting options such as bolding,
 in Health Catalyst Power BI applications, we leverage **Arial**, **Arial Bold**, and **Segoe UI Light**.
 Information about specific font sizes and weights can be found throughout this style guide, and examples of correct usage can be found in the template.
 
@@ -125,27 +125,27 @@ Layout specifics for the most common visual objects can be found in the [KPI Met
 </div>
 
 ### Alignment
-Tiles should be evenly aligned horizontally and/or vertically 
+Tiles should be evenly aligned horizontally and/or vertically
 
 <div style="text-align:center"><br>
 
-![correct alignment](/assets/analytics/powerbi/pbi-alignment.png "Correct Alignment")
+![correct alignment](/assets/analytics/powerbi/pbi-align.png "Correct Alignment")
 
 </div>
 
-Tiles should not be distributed unevenly 
+Tiles should not be distributed unevenly
 
 <div style="text-align:center"><br>
 
-![incorrect alignment](/assets/analytics/powerbi/pbi-alignment-wrong.PNG "Incorrect Alignment")
+![incorrect alignment](/assets/analytics/powerbi/pbi-align-wrong.png "Incorrect Alignment")
 
 </div>
 
-Utilize Qlik's alignment capabilities by selecting each object and choosing the appropriate distribution option within the *Align/Distribute* menu under the *Layout* toolbar. 
+Utilize Qlik's alignment capabilities by selecting each object and choosing the appropriate distribution option within the *Align/Distribute* menu under the *Layout* toolbar.
 
 <div style="text-align:center"><br>
 
-![alignment toolbar](/assets/analytics/qlik/qlik-alignment-how.PNG "How To Align")
+![alignment toolbar](/assets/analytics/qlik/qlik-alignment-how.png "How To Align")
 
 </div>
 
@@ -162,7 +162,7 @@ Some header elements, such as drill-down icons, are object-specific and more det
 ### Divider
 
 A horizontal line with a weight of `1pt` divides the header from the content of the visual object. Leave about 2px of space on the left and right.
-Set its fixed height to `10px` and set the line color to **slate-gray-300** `#c0c5cc RGB(192,197,204)`. 
+Set its fixed height to `10px` and set the line color to **slate-gray-300** `#c0c5cc RGB(192,197,204)`.
 
 <div style="text-align:center"><br>
 

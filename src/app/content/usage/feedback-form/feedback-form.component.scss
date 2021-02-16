@@ -1,0 +1,47 @@
+.feedback-form {
+    padding-bottom: 40px;
+}
+
+.feedback-container,
+.feedback-container-new {
+    padding: 5px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 600px;
+    justify-content: center;
+}
+
+.feedback-top-left {
+    font-size: 16px;
+    color: #333;
+}
+
+.feedback-top-left > .form-group {
+    margin-bottom: 0;
+}
+
+.feedback-top-right {
+    margin-left: 25px;
+}
+
+.feedback-button {
+    min-width: 80px !important;
+    margin-left: 10px;
+}
+
+.feedback-button i {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+#feedback-response {
+    color: #6D6E70;
+    font-size: 16px;
+}
+
+#feedback-survey {
+    width: 100%;
+    margin-top: 20px;
+}

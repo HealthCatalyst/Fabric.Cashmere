@@ -1,4 +1,5 @@
-.icon-left {
+.icon-left,
+.usage-submit-btn {
     margin-right: 10px;
 }
 
@@ -22,7 +23,7 @@
 
 .usage-table-filters-filter {
     padding-right: 20px;
-    min-width:200px;
+    min-width: 200px;
     align-items: right;
 }
 
@@ -57,4 +58,13 @@
     .product-icon {
         width: 45%;
     }
+}
+
+.loading-message {
+    padding: 5px 10px 20px 10px;
+    font-weight: 500;
+    font-size: 1.7em;
+    font-style: italic;
+    color: darkslategray;
+    text-align: center;
 }

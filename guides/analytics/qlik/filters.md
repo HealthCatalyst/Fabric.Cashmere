@@ -34,7 +34,7 @@ This gives users a clear indication of the sample size being used to determine t
 For example, if they've filtered the sample size down too small, the values in the dashboard will no longer be useful.
 As many counts may be included as needed, one on top of the other.
 
-![Filter Counts](./assets/analytics/qlik/qlik-filter-counts.PNG "Filter Counts")
+![Filter Counts](./assets/analytics/qlik/qlik-filter-counts.png "Filter Counts")
 
 These counts should be the first item on the sidebar, and should displayed with the data label left-justified and the value on the right.
 The label should be `Arial`, 10pt, **white** `#ffffff RGB(255,255,255)`.
@@ -46,7 +46,7 @@ Retain a `6pt` margin within each object.
 Controls should include a label (title) set to `Arial`, 11pt, **white** `#ffffff RGB(255,255,255)`.
 Sub-controls should be set to `Arial`, 10pt.
 
-![Filter Control](./assets/analytics/qlik/qlik-filter-control.PNG "Filter Control")
+![Filter Control](./assets/analytics/qlik/qlik-filter-control.png "Filter Control")
 
 ### Footer
 
@@ -57,7 +57,7 @@ In general, the footer should be set to a fixed height of 55px with an Outer Pad
 The label for the footer should be `Arial`, 9pt, **white** `#ffffff RGB(255,255,255)`.
 The value for the footer should be `Arial Bold`, 11pt, **white** `#ffffff RGB(255,255,255)`.
 
-![Filter Footer](./assets/analytics/qlik/qlik-filter-footer.PNG "Filter Footer")
+![Filter Footer](./assets/analytics/qlik/qlik-filter-footer.png "Filter Footer")
 
 :::
 

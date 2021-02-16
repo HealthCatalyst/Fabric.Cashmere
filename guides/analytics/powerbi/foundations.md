@@ -140,7 +140,7 @@ Tiles should be evenly aligned horizontally and/or vertically
 
 <div style="text-align:center"><br>
 
-![correct alignment](/assets/analytics/powerbi/pbi-alignment.png "Correct Alignment")
+![correct alignment](/assets/analytics/powerbi/pbi-align.png "Correct Alignment")
 
 </div>
 
@@ -148,7 +148,7 @@ Tiles should not be distributed unevenly
 
 <div style="text-align:center"><br>
 
-![incorrect alignment](/assets/analytics/powerbi/pbi-alignment-wrong.PNG "Incorrect Alignment")
+![incorrect alignment](/assets/analytics/powerbi/pbi-align-wrong.png "Incorrect Alignment")
 
 </div>
 
@@ -156,7 +156,7 @@ Utilize Power BI's alignment capabilities by selecting each object and choosing 
 
 <div style="text-align:center"><br>
 
-![alignment toolbar](/assets/analytics/powerbi/pbi-alignment-how.PNG "How To Align")
+![alignment toolbar](/assets/analytics/powerbi/pbi-align-how.png "How To Align")
 
 </div>
 
