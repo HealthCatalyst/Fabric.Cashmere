@@ -125,7 +125,21 @@ Information about the dynamic filters pane is included in the [filters section](
 
 Visualization objects such as charts, graphs, tables, and KPIs should be styled like the Cashmere [tile component](/web/components/tile) and will be referred to as tiles within this section.
 
-In general, a Power BI tile has a **white** `#ffffff` background and a solid **white** `#ffffff` border with a 5px wide radius. Each tile should also have an outside-positioned **black** `#000000` shadow that is sized at 1px with a blur factor of 3px, angle of 90º, distance of 1px and transparency of 85%. Tiles should have at least 10px of padding between each other (5px on either side).
+In general, a Power BI tile has a **white** `#ffffff` background and a solid **white** `#ffffff` border with a 5px wide radius. Tiles should have at least 10px of padding between each other (5px on either side).
+
+<article>
+
+Each tile should also have shadow with the following values:
+- **Color**: black `#000000`
+- **Shadow position**: Outside
+- **Preset**: Custom
+- **Size**: 1px
+- **Blur**: 3px
+- **Angle**: 90º
+- **Distance**: 1px
+- **Transparency**: 85%
+
+</article>
 
 Layout specifics for the most common visual objects can be found in the [KPI Metrics section](/analytics/powerbi-metrics), [Charts section](/analytics/powerbi-charts), and [Tables section](/analytics/powerbi-tables). Refer to the template or these sections for working examples.
 
@@ -161,7 +175,7 @@ Utilize Power BI's alignment capabilities by selecting each object and choosing 
 </div>
 
 ### Tile Title
-Every tile should include a `left-aligned` title. The title text should be `Segoe (Bold)`, **offblack** `#333333`, with a font size of 10px.
+Every tile should include a `left-aligned` title. The title text should be `Segoe UI`, **offblack** `#333333`, with a font size of 10px.
 
 ### Tile Visual Header
 
