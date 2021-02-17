@@ -52,13 +52,13 @@ Each text object is about 100px wide and 35px tall. Adjust the text objects so t
 
 The background color and border on the button should be set to `None`.
 
-The button for the currently selected page should have its font set to `Arial Bold 11pt` and color set to **offblack**. 
+The button for the currently selected page should have its font set to `Arial Bold 11pt` and color set to **offblack**.
 
 Additionally, there is a floating line item called `Selected Highlight` that should be positioned under the selected item.
 The y position of that item should always be set to the bottom of the selected item, but the x position should match the x position of the selected item.
 The width of the selected highlight item should also match the selected text object item.
 
-![Selected Link](./assets/analytics/qlik/qlik-selected.PNG "Selected link")
+![Selected Link](./assets/analytics/qlik/qlik-selected.png "Selected link")
 
 All other text objects within the links section should have their font set to `Arial 10 pt`.
 

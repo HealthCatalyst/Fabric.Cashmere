@@ -23,7 +23,7 @@ In order to recreate the styling of the Cashmere web component in Qlik, each tex
 
 ##### Formatting
 The background color and border on each text object should be set to `None`.
-The object for the currently selected tab should have its font set to `Arial Bold 11pt` and the font color set to **offblack** `#333333 RGB(51,51,51)`. 
+The object for the currently selected tab should have its font set to `Arial Bold 11pt` and the font color set to **offblack** `#333333 RGB(51,51,51)`.
 For unselected tabs, the font should be `Arial 11pt`.
 
 ### Floating Items
