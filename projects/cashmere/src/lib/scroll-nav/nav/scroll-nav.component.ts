@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewEncapsulation, AfterViewInit, QueryList, ContentChildren, Renderer2, ViewChild, Input } from '@angular/core';
+import { Component, ElementRef, ViewEncapsulation, AfterViewInit, QueryList, ContentChildren, Renderer2, ViewChild, Input, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { some, find, map, differenceBy } from 'lodash';
@@ -12,7 +12,7 @@ import { CdkScrollable } from '@angular/cdk/overlay';
     styleUrls: ['scroll-nav.component.scss'],
     templateUrl: 'scroll-nav.component.html'
 })
-export class HcScrollNavComponent implements AfterViewInit {
+export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
     /** Set to true to enable scrolling the nav link pane as the content pane scrolls */
     @Input() public scrollNavWithContent: boolean = false;
     /** Set to true to enable the component to change for dynamic content changes that might not be picked up by Angular */
@@ -28,6 +28,7 @@ export class HcScrollNavComponent implements AfterViewInit {
     private previousElementPosition: number = 0;
     private previousList: ScrollNavLinkDirective[] = [];
     private tryRefresh: boolean = false;
+    private dynamicInterval: any;
 
     private readonly SCROLL_LINK_ATTRIBUTE = 'hcScrollLink';
     private readonly ACTIVE_CLASS = 'hc-scroll-nav-link-active';
@@ -43,6 +44,12 @@ export class HcScrollNavComponent implements AfterViewInit {
 
     constructor(public _elementRef: ElementRef, private renderer: Renderer2) {}
 
+    public ngOnDestroy(): void  {
+        if (this.dynamicInterval) {
+            clearInterval(this.dynamicInterval);
+        }
+    }
+
     public ngAfterViewInit(): void {
         setTimeout(() => {
             this.initializeLinks(true);
@@ -51,7 +58,7 @@ export class HcScrollNavComponent implements AfterViewInit {
 
         if (this.hasDynamicContent) {
             this.refreshScrollNavLinks();
-            setInterval(() => {
+            this.dynamicInterval = setInterval(() => {
                 this.refreshScrollNavLinks();
             }, 300);
         }

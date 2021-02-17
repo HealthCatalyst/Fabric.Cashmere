@@ -60,6 +60,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     private systemScrollToElementId: string | undefined;
     private lastElementScrolledTo: HTMLElement;
     private systemScrollCount: number = 0;
+    private dynamicInterval: any;
 
     private readonly SCROLL_TARGET_ATTRIBUTE = 'hcScrollTarget';
 
@@ -68,6 +69,10 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     public ngOnDestroy(): void {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
+
+        if (this.dynamicInterval) {
+            clearInterval(this.dynamicInterval);
+        }
     }
 
     public ngAfterViewInit(): void {
@@ -77,7 +82,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
 
         if (this.hasDynamicContent) {
             this.refreshScrollNavTargets();
-            setInterval(() => {
+            this.dynamicInterval = setInterval(() => {
                 this.refreshScrollNavTargets();
             }, 300);
         }
