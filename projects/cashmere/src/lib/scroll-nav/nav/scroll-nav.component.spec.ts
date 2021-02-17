@@ -261,13 +261,13 @@ describe('HcScrollNavComponent', () => {
             });
 
             it('should call scrollIntoView if element is above scroll view area and isScrolling is false', () => {
+                testApp.linksComponent.isScrolling = false;
+                testApp.linksComponent.scrollNavWithContent = true;
+                testApp.linksComponent._setActiveSectionById('a2');
+
                 let scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
                 testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
                 testApp.detectChanges();
-
-                spyOn(testApp.linksComponent._cdkScrollableElement, "measureScrollOffset").and.returnValue(126);
-                testApp.linksComponent.isScrolling = false;
-                testApp.linksComponent.scrollNavWithContent = true;
 
                 testApp.linksComponent._setActiveSectionById('a1');
 
@@ -304,22 +304,22 @@ describe('HcScrollNavComponent', () => {
     });
 
     describe('ngAfterViewInit', () => {
-        it('should call refreshScrollNavLinks', fakeAsync(() => {
-            let refreshScrollNavLinksSpy: jasmine.Spy = spyOn(testApp.linksComponent, "refreshScrollNavLinks");
+        it('init should call _setActiveSectionById', fakeAsync(() => {
+            let setActiveSectionByIdSpy: jasmine.Spy = spyOn(testApp.linksComponent, '_setActiveSectionById');
 
             testApp.linksComponent.ngAfterViewInit();
             tick(110);
 
-            expect(refreshScrollNavLinksSpy).toHaveBeenCalledWith([], true);
+            expect(setActiveSectionByIdSpy).toHaveBeenCalledWith(testApp.linksComponent["linkList"].toArray()[0].hcScrollLink);
         }));
 
-        it('should call refreshScrollNavLinks if linkList changes', () => {
+        it("should call refreshScrollNavLinks if hasDynamicContent is true", () => {
             let refreshScrollNavLinksSpy: jasmine.Spy = spyOn(testApp.linksComponent, "refreshScrollNavLinks");
+            testApp.linksComponent.hasDynamicContent = true;
 
             testApp.linksComponent.ngAfterViewInit();
-            testApp.linksComponent['linkList'].notifyOnChanges();
 
-            expect(refreshScrollNavLinksSpy).toHaveBeenCalledWith();
+            expect(refreshScrollNavLinksSpy).toHaveBeenCalled();
         });
     });
 
@@ -452,29 +452,6 @@ describe('HcScrollNavComponent', () => {
                 expect(testApp.linksComponent._links[a1].className.indexOf(SUBSECTION_CLASS)).toEqual(-1);
                 expect(testApp.linksComponent._links[a2].className.indexOf(SUBSECTION_CLASS)).toEqual(-1);
                 expect(testApp.linksComponent._links[a3].className.indexOf(SUBSECTION_CLASS)).toEqual(-1);
-            });
-        });
-
-        describe("first link", () => {
-            let setActiveSectionSpy: jasmine.Spy;
-
-            beforeEach(() => {
-                testApp.linksComponent._setActiveSectionById("a2");
-                testApp.detectChanges();
-
-                setActiveSectionSpy = spyOn(testApp.linksComponent, "_setActiveSectionById");
-            });
-
-            it('when isInit is true it should call _setActiveSectionById', () => {
-                testApp.linksComponent.refreshScrollNavLinks([], true);
-
-                expect(setActiveSectionSpy).toHaveBeenCalled();
-            });
-
-            it('when isInit is false it should not call _setActiveSectionById', () => {
-                testApp.linksComponent.refreshScrollNavLinks([], false);
-
-                expect(setActiveSectionSpy).not.toHaveBeenCalled();
             });
         });
     });
