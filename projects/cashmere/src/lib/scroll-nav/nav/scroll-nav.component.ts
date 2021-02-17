@@ -53,12 +53,11 @@ export class HcScrollNavComponent implements AfterViewInit {
             this.refreshScrollNavLinks();
             setInterval(() => {
                 this.refreshScrollNavLinks();
-            }, 500);
+            }, 300);
         }
 
         // If links are added dynamically, refresh the scrollNav
         this.linkList.changes.pipe(takeUntil(this.unsubscribe$)).subscribe((newLinkList: QueryList<ScrollNavLinkDirective>) => {
-            console.log("hit");
             if (this.previousList.length === 0) {
                 this.previousList = newLinkList.toArray();
                 this.initializeLinks(true);

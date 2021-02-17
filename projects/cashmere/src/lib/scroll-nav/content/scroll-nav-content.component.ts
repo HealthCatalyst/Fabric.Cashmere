@@ -59,6 +59,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     private minHeightForLastTargetSet = false;
     private systemScrollToElementId: string | undefined;
     private lastElementScrolledTo: HTMLElement;
+    private systemScrollCount: number = 0;
 
     private readonly SCROLL_TARGET_ATTRIBUTE = 'hcScrollTarget';
 
@@ -78,7 +79,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
             this.refreshScrollNavTargets();
             setInterval(() => {
                 this.refreshScrollNavTargets();
-            }, 500);
+            }, 300);
         }
 
         // If targets are added dynamically, refresh the scrollNav
@@ -87,8 +88,8 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
         });
 
         document.onclick = (event: MouseEvent) => {
-            let element: HTMLElement = (event.target as HTMLElement);
-            let scrollLinkAttribute: string | null = element.getAttribute("hcscrolllink");
+            let element: HTMLElement | null = (event.target as HTMLElement).closest('li[hcscrolllink]');
+            let scrollLinkAttribute: string | null | undefined = element?.getAttribute('hcscrolllink');
             if (scrollLinkAttribute) {
                 this.systemScrollToElementId = scrollLinkAttribute;
             }
@@ -196,11 +197,17 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
                 .subscribe(() => {
                     if (this.systemScrollToElementId) {
                         this.nav.isScrolling = true;
+                        this.systemScrollCount++;
 
                         setTimeout(() => {
-                            this.nav.isScrolling = false;
-                            this.systemScrollToElementId = undefined;
-                            this.setActiveSection(this.lastElementScrolledTo.id);
+                            if (this.systemScrollCount > 1) {
+                                this.systemScrollCount--;
+                            } else {
+                                this.nav.isScrolling = false;
+                                this.systemScrollToElementId = undefined;
+                                this.setActiveSection(this.lastElementScrolledTo.id);
+                                this.systemScrollCount = 0;
+                            }
                         }, 1500);
                     }
 
