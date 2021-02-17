@@ -14,7 +14,8 @@
         "@angular/core": "^10.2.1",
         "@ng-select/ng-select": "^5.0.8",
         "sugar": "^2.0.6",
-        "change-case": "^4.1.1"
+        "change-case": "^4.1.1",
+        "lodash": "^4.17.20"
     },
     "devDependencies": {
         "@bit/healthcatalyst.cashmere.change-case-pipe": "0.0.5",
