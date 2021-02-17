@@ -4,6 +4,7 @@ import { InputModule } from '../input';
 import { IconModule } from '../icon';
 import { ButtonModule } from '../button';
 import { SelectModule } from '../select';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('PaginationComponent', () => {
     let fixture: ComponentFixture<PaginationComponent>;
@@ -11,7 +12,7 @@ describe('PaginationComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [InputModule, IconModule, ButtonModule, SelectModule],
+            imports: [InputModule, IconModule, ButtonModule, SelectModule, ReactiveFormsModule],
             declarations: [PaginationComponent]
         }).compileComponents();
         fixture = TestBed.createComponent(PaginationComponent);
