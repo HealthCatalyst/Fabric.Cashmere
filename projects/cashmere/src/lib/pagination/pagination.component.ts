@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
 import {BasePaginationComponent} from './base-pagination';
+import {FormControl} from '@angular/forms';
 
 /** The pagination control enables the user to navigate across paged content.
  * Although commonly used with tables and data grids, this control may be used any place where paged data is used.
@@ -24,6 +25,7 @@ export class PaginationComponent extends BasePaginationComponent implements OnIn
     private _pageSizeOptions: number[] = [10, 20, 50];
 
     isFocused: boolean = false;
+    _pageSizeControl = new FormControl( this.pageSize );
 
     /** Displayed set of page size options. Will be sorted and include current page size. */
     _displayedPageSizeOptions: number[] = [];
@@ -126,6 +128,7 @@ export class PaginationComponent extends BasePaginationComponent implements OnIn
 
     _pageSizeUpdated() {
         this._updateDisplayedPageSizeOptions();
+        this._pageSizeControl.setValue( this.pageSize );
     }
 
     _previousPage() {
