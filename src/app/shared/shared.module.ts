@@ -5,11 +5,12 @@ import {MarkdownContentComponent} from '../shared/markdown-content.component';
 import {SwatchDemoComponent} from './swatch/swatch-demo.component';
 import {HighlightDirective} from './highlight/highlight.directive';
 import {CashmereModule} from './cashmere.module';
+import {FeedbackFormComponent} from '../shared/feedback-form/feedback-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
-    imports: [CommonModule],
-    declarations: [MarkdownDirective, HighlightDirective, MarkdownContentComponent, SwatchDemoComponent],
-    exports: [MarkdownDirective, HighlightDirective, SwatchDemoComponent, CommonModule, CashmereModule, FormsModule, ReactiveFormsModule]
+    imports: [CommonModule, CashmereModule, ReactiveFormsModule],
+    declarations: [MarkdownDirective, HighlightDirective, MarkdownContentComponent, SwatchDemoComponent, FeedbackFormComponent],
+    exports: [MarkdownDirective, HighlightDirective, SwatchDemoComponent, FeedbackFormComponent, CommonModule, CashmereModule, FormsModule, ReactiveFormsModule]
 })
 export class SharedModule {}
