@@ -6,7 +6,7 @@ import {BaseDemoComponent} from '../shared/base-demo.component';
 @Component({
     selector: 'hc-markdown-demo',
     template: `
-        <div class="demo-content"><div [hcMarkdown]="markdownContent" (loaded)="loaded()"></div></div>
+        <div class="demo-content"><div [hcMarkdown]="markdownContent" (loaded)="loaded()"></div><hc-feedback-form></hc-feedback-form></div>
     `
 })
 export class MarkdownContentComponent extends BaseDemoComponent {

@@ -6,4 +6,5 @@
     <hc-tab-set direction="horizontal" class="overflow-visible" [defaultTab]="startSection" *ngIf="docItem">
         <hc-tab *ngFor="let section of sections" [tabTitle]="section" [routerLink]="section.toLowerCase()"></hc-tab>
     </hc-tab-set>
+    <hc-feedback-form></hc-feedback-form>
 </div>

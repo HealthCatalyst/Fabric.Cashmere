@@ -27,7 +27,8 @@
     "notosans-fontface": "^1.2.2",
     "@angular/cdk": "^9.2.4",
     "font-awesome": "4.7.0",
-    "sugar": "^2.0.6"
+    "sugar": "^2.0.6",
+    "lodash": "^4.17.20"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.25",
