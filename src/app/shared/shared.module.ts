@@ -11,6 +11,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 @NgModule({
     imports: [CommonModule, CashmereModule, ReactiveFormsModule],
     declarations: [MarkdownDirective, HighlightDirective, MarkdownContentComponent, SwatchDemoComponent, FeedbackFormComponent],
-    exports: [MarkdownDirective, HighlightDirective, SwatchDemoComponent, FeedbackFormComponent, CommonModule, CashmereModule, FormsModule, ReactiveFormsModule]
+    exports: [
+        MarkdownDirective,
+        HighlightDirective,
+        SwatchDemoComponent,
+        FeedbackFormComponent,
+        CommonModule,
+        CashmereModule,
+        FormsModule,
+        ReactiveFormsModule
+    ]
 })
 export class SharedModule {}
