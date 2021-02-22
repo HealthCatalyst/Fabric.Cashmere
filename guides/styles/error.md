@@ -75,3 +75,4 @@ For errors that need to display a string of text rather than an error code, the 
     <hr>
     <div style="display: flex"><div class="error-button">Go to Homepage</div></div>
 </div>
+<div style="margin-bottom: 45px"></div>

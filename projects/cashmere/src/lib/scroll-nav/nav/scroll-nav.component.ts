@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewEncapsulation, AfterViewInit, QueryList, ContentChildren, Renderer2, ViewChild, Input } from '@angular/core';
+import { Component, ElementRef, ViewEncapsulation, AfterViewInit, QueryList, ContentChildren, Renderer2, ViewChild, Input, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { some, find, map, differenceBy } from 'lodash';
@@ -12,9 +12,11 @@ import { CdkScrollable } from '@angular/cdk/overlay';
     styleUrls: ['scroll-nav.component.scss'],
     templateUrl: 'scroll-nav.component.html'
 })
-export class HcScrollNavComponent implements AfterViewInit {
+export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
     /** Set to true to enable scrolling the nav link pane as the content pane scrolls */
     @Input() public scrollNavWithContent: boolean = false;
+    /** Set to true to enable the component to change for dynamic content changes that might not be picked up by Angular */
+    @Input() public hasDynamicContent: boolean = false;
     @ViewChild('scrollContainer', {read: CdkScrollable, static: false}) public _cdkScrollableElement: CdkScrollable;
     @ContentChildren(ScrollNavLinkDirective, { descendants: true }) private linkList: QueryList<ScrollNavLinkDirective>;
     public get _links(): Array<HTMLElement> {
@@ -23,6 +25,10 @@ export class HcScrollNavComponent implements AfterViewInit {
 
     public isScrolling: boolean = false;
     private unsubscribe$ = new Subject<void>();
+    private previousElementPosition: number = 0;
+    private previousList: ScrollNavLinkDirective[] = [];
+    private tryRefresh: boolean = false;
+    private dynamicInterval: any;
 
     private readonly SCROLL_LINK_ATTRIBUTE = 'hcScrollLink';
     private readonly ACTIVE_CLASS = 'hc-scroll-nav-link-active';
@@ -38,19 +44,41 @@ export class HcScrollNavComponent implements AfterViewInit {
 
     constructor(public _elementRef: ElementRef, private renderer: Renderer2) {}
 
+    public ngOnDestroy(): void  {
+        if (this.dynamicInterval) {
+            clearInterval(this.dynamicInterval);
+        }
+    }
+
     public ngAfterViewInit(): void {
         setTimeout(() => {
-            this.refreshScrollNavLinks([], true);
+            this.initializeLinks(true);
+            this.previousList = this.linkList.toArray();
         }, 100);
 
-        // If links are added dynamically, refresh the scrollNav
-        this.linkList.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => {
+        if (this.hasDynamicContent) {
             this.refreshScrollNavLinks();
+            this.dynamicInterval = setInterval(() => {
+                this.refreshScrollNavLinks();
+            }, 300);
+        }
+
+        // If links are added dynamically, refresh the scrollNav
+        this.linkList.changes.pipe(takeUntil(this.unsubscribe$)).subscribe((newLinkList: QueryList<ScrollNavLinkDirective>) => {
+            if (this.previousList.length === 0) {
+                this.previousList = newLinkList.toArray();
+                this.initializeLinks(true);
+            } else if (newLinkList.length === 0 && this.previousList.length > 0) {
+                this.refreshScrollNavLinks(this.previousList);
+            } else {
+                this.previousList = newLinkList.toArray();
+                this.initializeLinks();
+            }
         });
     }
 
     /** Refresh the scroll nav links when dynamic changes have been made. updateScrollLinkArray parameter is optional */
-    public refreshScrollNavLinks(updateScrollLinkArray: ScrollNavLinkDirective[] = [], isInit: boolean = false): void {
+    public refreshScrollNavLinks(updateScrollLinkArray: ScrollNavLinkDirective[] = []): void {
         if (updateScrollLinkArray.length > 0) {
             this.linkList.reset(updateScrollLinkArray);
             this.linkList.notifyOnChanges();
@@ -69,7 +97,10 @@ export class HcScrollNavComponent implements AfterViewInit {
             }
         });
 
-        if (differenceBy(scrollLinkList, this.linkList.toArray(), 'hcScrollLink').length > 0) {
+        if (
+            this.linkList.length !== scrollLinkList.length ||
+            differenceBy(scrollLinkList, this.linkList.toArray(), 'hcScrollLink').length > 0
+        ) {
             let newLinkList: ScrollNavLinkDirective[] =
                 map(scrollLinkList, (dynamicLink: CombinedLinkList) => {
                     let rtnLink: ScrollNavLinkDirective = <ScrollNavLinkDirective>{};
@@ -96,7 +127,25 @@ export class HcScrollNavComponent implements AfterViewInit {
 
             return;
         }
+    }
 
+    public _setActiveSectionById(id: string): void {
+        const link = this.linkList.find(e => e.hcScrollLink === id);
+        if (!link) {
+            if (!this.tryRefresh) {
+                this.tryRefresh = true;
+                this.refreshScrollNavLinks();
+                this._setActiveSectionById(id);
+            } else {
+                this.tryRefresh = false;
+                throw new Error(`Failed to mark active section. Could not find the element with the data target for id: ${id}.`);
+            }
+        } else {
+            this.setActiveSection(link.nativeElement);
+        }
+    }
+
+    private initializeLinks(isInit: boolean = false): void {
         this._links.forEach((link) => {
             this.setClassesForSubsection(link);
         });
@@ -113,14 +162,6 @@ export class HcScrollNavComponent implements AfterViewInit {
                 this._setActiveSectionById(firstScrollLink);
             }
         }
-    }
-
-    public _setActiveSectionById(id: string): void {
-        const link = this.linkList.find(e => e.hcScrollLink === id);
-        if (!link) {
-            throw new Error(`Failed to mark active section. Could not find the element with the data target for id: ${id}.`);
-        }
-        this.setActiveSection(link.nativeElement);
     }
 
     private setActiveSection(element: HTMLElement): void {
@@ -149,21 +190,31 @@ export class HcScrollNavComponent implements AfterViewInit {
     }
 
     private scrollToElement(element: HTMLElement): void {
+        let currentElementPosition: number = 0;
+        this._links.forEach((link, index) => {
+            if (link.getAttribute(this.SCROLL_LINK_ATTRIBUTE) === element.getAttribute(this.SCROLL_LINK_ATTRIBUTE)) {
+                currentElementPosition = index;
+            }
+        });
+
         let container: HTMLElement = this._elementRef.nativeElement.querySelector(`.${this.LINKS_CONTAINER_CLASS}`);
         let offsetTop: number = element.offsetTop;
         let elementClientHeight: number = element.clientHeight;
         let scrollHeight: number = container.scrollHeight;
         let scrollTop: number = this._cdkScrollableElement.measureScrollOffset("top");
         let clientHeight: number = container.clientHeight;
-        let scrollBottom: number = scrollHeight - clientHeight;
 
         if (!this.isScrolling) {
-            if (offsetTop > clientHeight && scrollTop <= offsetTop) {
-                this._cdkScrollableElement.scrollTo({ bottom: scrollHeight - offsetTop - elementClientHeight });
-            } else if (offsetTop < scrollBottom && scrollTop >= offsetTop) {
+            if (this.previousElementPosition < currentElementPosition) { // scroll down
+                if (offsetTop > clientHeight && scrollTop <= offsetTop) {
+                    this._cdkScrollableElement.scrollTo({ bottom: scrollHeight - offsetTop - elementClientHeight });
+                }
+            } else if (this.previousElementPosition > currentElementPosition) { // scroll up
                 element.scrollIntoView();
             }
         }
+
+        this.previousElementPosition = currentElementPosition;
     }
 
     private handleActiveParentSections(element: HTMLElement, isActive: boolean): void {

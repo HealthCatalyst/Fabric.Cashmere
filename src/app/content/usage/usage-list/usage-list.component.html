@@ -1,99 +1,96 @@
-<div class="tab-demo">
-    <hc-tab-set direction="horizontal">
-        <hc-tab tabTitle="Term List">
-            <div>
-                <div class="usage-table-filters">
-                    <hc-form-field class="usage-table-filters-input" inline>
-                        <hc-label>Filter:</hc-label>
-                        <input hcInput (keyup)="applyFilter()" [formControl]="searchControl" placeholder="Search" />
+<hc-tab-set direction="horizontal" #tabSetElement>
+    <hc-tab tabTitle="Term List" tabindex="2">
+        <div>
+            <div class="usage-table-filters">
+                <hc-form-field class="usage-table-filters-input" inline>
+                    <hc-label>Filter:</hc-label>
+                    <input hcInput (keyup)="applyFilter()" [formControl]="searchControl" placeholder="Search" />
+                </hc-form-field>
+                <hc-form-field class="usage-table-filters-filter" inline>
+                    <hc-label>Category:</hc-label>
+                    <hc-select [formControl]="selectedCategoriesControl" (change)="applyFilter()">
+                        <option *ngFor="let cat of categories" [ngValue]="cat">{{ cat }}</option>
+                    </hc-select>
+                </hc-form-field>
+            </div>
+
+            <table hc-table *ngIf="termList$ | async; else emptyList" [dataSource]="dataSource" style="border: none;">
+                <!-- Term Column -->
+                <ng-container hcColumnDef="term">
+                    <th hc-header-cell *hcHeaderCellDef>Term</th>
+                    <td hc-cell *hcCellDef="let usageItem">{{ usageItem.TermName }}</td>
+                </ng-container>
+
+                <!-- Usage Column -->
+                <ng-container hcColumnDef="usage">
+                    <th hc-header-cell style="border-right-style: none;" *hcHeaderCellDef>Definition or Usage Guideline</th>
+                    <td hc-cell style="border-right-style: none;" *hcCellDef="let usageItem">{{ usageItem.TermUsage }}</td>
+                </ng-container>
+
+                <!-- Edit Buttons -->
+                <ng-container hcColumnDef="edit">
+                    <th hc-header-cell *hcHeaderCellDef style="border-left-style: none;"></th>
+                    <td hc-cell *hcCellDef="let usageItem" style="border-left-style: none;">
+                        <button *ngIf=true hc-icon-button (click)="getFormFillData(usageItem)"><hc-icon fontSet="hc-icons" fontIcon="hci-scratch-pad" hcIconMd disabled = true></hc-icon></button>
+                    </td>
+                </ng-container>
+
+                <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
+                <tr hc-row *hcRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+
+            <ng-template #emptyList>
+                <div class="loading-message">
+                    <hc-progress-spinner color="purple" diameter="75"></hc-progress-spinner>
+                </div>
+            </ng-template>
+            <div style="padding-top: 10px; font-size: 12px;">The asterisk (*) denotes that the abbreviation is acceptable on first use.</div>
+
+            <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="10" [hidePageSize]="false" [pageSizeOptions]="pageOpts"></hc-pagination>
+        </div>
+    </hc-tab>
+
+    <!-- New Tab -->
+    <hc-tab #formTab tabindex="1">
+        <hc-tab-title>
+            <span style="color: #00aeff; font-weight: 600">
+                <i class="fa fa-plus"></i>
+                Add or Change
+            </span>
+        </hc-tab-title>
+
+        <!-- Form to add or change term -->
+        <div>
+            <form [formGroup]="editListForm" #formDirective="ngForm" style="padding-top:50px">
+                <div class="form-container">
+                    <hc-form-field>
+                        <hc-label for="addTermId">Term to Add/Change</hc-label>
+                        <input hcInput id="addTermId" placeholder="What term would you like to add/change? (required)" name="addTermId" formControlName="addTerm" />
+                        <hc-error *ngIf="showErrors">Please enter a term to add or change.</hc-error>
                     </hc-form-field>
-                    <hc-form-field class="usage-table-filters-filter" inline>
-                        <hc-label>Category:</hc-label>
-                        <hc-select [formControl]="selectedCategoriesControl" (change)="applyFilter()">
-                            <option *ngFor="let cat of categories" [ngValue]="cat">{{ cat }}</option>
-                        </hc-select>
+                    <hc-form-field>
+                        <hc-label>Definition/Usage Rule</hc-label>
+                        <textarea hcInput id="addDefId" rows="4" cols="50" placeholder="What is the definition/usage rule for this term? (required)" name="addDefId" formControlName="addDef"></textarea>
+                        <hc-error *ngIf="showErrors">Please enter a definition or usage rule.</hc-error>
+                    </hc-form-field>
+                    <hc-form-field>
+                        <hc-label>Comment (optional)</hc-label>
+                        <textarea hcInput id="CommentId" rows="4" cols="50" placeholder="Why are you suggesting this change? (optional)" name="addCommentId" formControlName="comment"></textarea>
+                    </hc-form-field>
+                    <hc-form-field>
+                        <hc-label>Contributor Name</hc-label>
+                        <input hcInput id="yourNameId" placeholder="What is your name? (required)" name="yourName" formControlName="yourName" />
+                        <hc-error *ngIf="showErrors">Please enter your name.</hc-error>
+                    </hc-form-field>
+                    <hc-form-field>
+                        <hc-label>Contributor Email</hc-label>
+                        <input hcInput id="yourEmailId" placeholder="At what email can we reach you? (required)" name="yourEmail" formControlName="yourEmail" />
+                        <hc-error *ngIf="showErrors">Please enter your email.</hc-error>
                     </hc-form-field>
                 </div>
-
-
-                <table hc-table *ngIf="termList$ | async; else emptyList" [dataSource]="dataSource" style="border: none;">
-                    <!-- Term Column -->
-                    <ng-container hcColumnDef="term">
-                        <th hc-header-cell *hcHeaderCellDef>Term</th>
-                        <td hc-cell *hcCellDef="let usageItem">{{ usageItem.TermName }}</td>
-                    </ng-container>
-
-                    <!-- Usage Column -->
-                    <ng-container hcColumnDef="usage">
-                        <th hc-header-cell style="border-right-style: none;" *hcHeaderCellDef>Definition or Usage Guideline</th>
-                        <td hc-cell style="border-right-style: none;" *hcCellDef="let usageItem">{{ usageItem.TermUsage }}</td>
-                    </ng-container>
-
-                    <!-- Edit Buttons -->
-                    <ng-container hcColumnDef="edit">
-                        <th hc-header-cell *hcHeaderCellDef style="border-left-style: none;"></th>
-                        <td hc-cell *hcCellDef style="border-left-style: none;">
-                            <button *ngIf=false hc-icon-button><hc-icon fontSet="hc-icons" fontIcon="hci-scratch-pad" hcIconMd disabled = true></hc-icon></button>
-                        </td>
-                    </ng-container>
-
-                    <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
-                    <tr hc-row *hcRowDef="let row; columns: displayedColumns"></tr>
-                </table>
-
-                <ng-template #emptyList>
-                    <div class="loading-message">
-                        Loading ...
-                    </div>
-                </ng-template>
-                <div style="padding-top: 10px; font-size: 12px;">The asterisk (*) denotes that the abbreviation is acceptable on first use.</div>
-
-                <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="10" [hidePageSize]="false" [pageSizeOptions]="pageOpts"></hc-pagination>
-            </div>
-        </hc-tab>
-
-        <!-- New Tab -->
-        <hc-tab>
-            <hc-tab-title>
-                <span style="color: #00aeff; font-weight: 600">
-                    <i class="fa fa-plus"></i>
-                    Add or Change
-                </span>
-            </hc-tab-title>
-
-            <!-- Form to add or change term -->
-            <div>
-                <form [formGroup]="editListForm" style="padding-top:50px">
-                    <div class="form-container">
-                        <hc-form-field>
-                            <hc-label for="addTermId">Term to Add/Change</hc-label>
-                            <input hcInput id="addTermId" placeholder="What term would you like to add/change? (required)" name="addTermId" formControlName="addTerm" />
-                            <hc-error>Please enter a term to add or change.</hc-error>
-                        </hc-form-field>
-                        <hc-form-field>
-                            <hc-label>Definition/Usage Rule</hc-label>
-                            <textarea hcInput id="addDefId" rows="4" cols="50" placeholder="What is the definition/usage rule for this term? (required)" name="addDefId" formControlName="addDef"></textarea>
-                            <hc-error>Please enter a definition or usage rule.</hc-error>
-                        </hc-form-field>
-                        <hc-form-field>
-                            <hc-label>Contributor Name</hc-label>
-                            <input hcInput id="yourNameId" placeholder="What is your name? (required)" name="yourName" formControlName="yourName" />
-                            <hc-error>Please enter your name.</hc-error>
-                        </hc-form-field>
-                        <hc-form-field>
-                            <hc-label>Contributor Email</hc-label>
-                            <input hcInput id="yourEmailId" placeholder="At what email can we reach you? (required)" name="yourEmail" formControlName="yourEmail" />
-                            <hc-error>Please enter your email.</hc-error>
-                        </hc-form-field>
-                    </div>
-                    <button hc-button title="Submit Form" class="usage-submit-btn" type="submit" [title]="editListForm.valid ? 'Submit your entry' : 'Disabled until the form data is valid'" [disabled]="!editListForm.valid" (click)="onSubmit()">Submit</button>
-                    <button hc-button title="Reset Form" buttonStyle="secondary" (click)="onCancel()">Reset Form</button>
-                </form>
-            </div>
-
-            <!-- <br>Dirty: {{ editListForm.dirty }}
-            <br>Touched: {{ editListForm.touched }}
-            <br>Valid: {{ editListForm.valid }}
-            <br>Value: {{ editListForm.value | json }} -->
-
-        </hc-tab>
+                <button hc-button title="Submit Form" class="usage-submit-btn" type="submit" (click)="onSubmit()">Submit</button>
+                <button hc-button title="Reset Form" buttonStyle="secondary" (click)="onCancel()">Reset Form</button>
+            </form>
+        </div>
+    </hc-tab>
+</hc-tab-set>

@@ -141,20 +141,46 @@ describe('HcScrollNavContentComponent', () => {
     }));
 
     describe('ngAfterViewInit', () => {
-        it('should call refreshScrollNavTargets', fakeAsync(() => {
+        describe('init', () => {
+            it("should throw error if target doesn't have a id", fakeAsync(() => {
+                spyOnProperty(testApp.contentComponent._scrollTargets[0], 'id').and.returnValue('');
+
+                let error;
+                try {
+                    testApp.contentComponent.ngAfterViewInit();
+                    tick(110);
+                } catch (e) {
+                    error = e;
+                }
+
+                const expectedError = new Error('hcScrollTarget element needs an id.');
+                expect(error).toEqual(expectedError);
+            }));
+
+            it('should set minHeight on last target if targets change', fakeAsync(() => {
+                testApp.contentComponent._scrollTargets.forEach((target) => {
+                    target.style.minHeight = 'unset';
+                });
+
+                // set min height on second to last target
+                testApp.contentComponent._scrollTargets[testApp.contentComponent._scrollTargets.length - 2].style.minHeight = '200px';
+
+                testApp.detectChanges();
+                testApp.contentComponent.ngAfterViewInit();
+                tick(110);
+
+                expect(testApp.contentComponent._scrollTargets[testApp.contentComponent._scrollTargets.length - 2].style.minHeight).toEqual('unset');
+                expect(
+                    testApp.contentComponent._scrollTargets[testApp.contentComponent._scrollTargets.length - 1].style.minHeight
+                ).not.toEqual('unset');
+            }));
+        });
+
+        it("should call refreshScrollNavTargets if hasDynamicContent is true", () => {
             let refreshScrollNavTargetsSpy: jasmine.Spy = spyOn(testApp.contentComponent, "refreshScrollNavTargets");
+            testApp.contentComponent.hasDynamicContent = true;
 
             testApp.contentComponent.ngAfterViewInit();
-            tick(110);
-
-            expect(refreshScrollNavTargetsSpy).toHaveBeenCalled();
-        }));
-
-        it('should call refreshScrollNavTargets if targets changes', () => {
-            let refreshScrollNavTargetsSpy: jasmine.Spy = spyOn(testApp.contentComponent, "refreshScrollNavTargets");
-
-            testApp.contentComponent.ngAfterViewInit();
-            testApp.contentComponent['targets'].notifyOnChanges();
 
             expect(refreshScrollNavTargetsSpy).toHaveBeenCalled();
         });
@@ -248,35 +274,6 @@ describe('HcScrollNavContentComponent', () => {
             expect(testApp.contentComponent._scrollTargets.length).toEqual(8);
             expect(targetsResetSpy).not.toHaveBeenCalled();
             expect(targetsNotifyOnChangesSpy).not.toHaveBeenCalled();
-        });
-
-        it("should throw error if target doesn't have a id", () => {
-            testApp.contentComponent._scrollTargets[0].id = '';
-
-            let error;
-            try {
-                testApp.contentComponent.refreshScrollNavTargets();
-            } catch (e) {
-                error = e;
-            }
-
-            const expectedError = new Error('hcScrollTarget element needs an id.');
-            expect(error).toEqual(expectedError);
-        });
-
-        it('should set minHeight on last target', () => {
-            testApp.contentComponent._scrollTargets.forEach((target) => {
-                target.style.minHeight = 'unset';
-            });
-
-            // set min height on second to last target
-            testApp.contentComponent._scrollTargets[testApp.contentComponent._scrollTargets.length - 2].style.minHeight = '200px';
-
-            testApp.detectChanges();
-            testApp.contentComponent.refreshScrollNavTargets();
-
-            expect(testApp.contentComponent._scrollTargets[testApp.contentComponent._scrollTargets.length - 2].style.minHeight).toEqual('unset');
-            expect(testApp.contentComponent._scrollTargets[testApp.contentComponent._scrollTargets.length - 1].style.minHeight).not.toEqual('unset');
         });
     });
 });

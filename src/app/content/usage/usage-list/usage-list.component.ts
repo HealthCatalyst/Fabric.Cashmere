@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {GoogleSheetsDbService} from 'ng-google-sheets-db';
-import {PaginationComponent, HcTableDataSource} from '@healthcatalyst/cashmere';
+import {PaginationComponent, HcTableDataSource, TabComponent, TabSetComponent} from '@healthcatalyst/cashmere';
 import {SectionService} from 'src/app/shared/section.service';
 import {BaseDemoComponent} from '../../../shared/base-demo.component';
 import {IUsage, usageAttributesMapping} from '../usage';
@@ -26,6 +26,10 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     formSubmitted = false;
     scriptURL = 'https://script.google.com/macros/s/AKfycbwWZCf0aBg1e5BFD9G-hVTb-zbSTXT1KGFSwoyRLwMhu7FZF2g/exec';
     editForm = document.forms['editListForm'];
+    showErrors: boolean = false;
+    @ViewChild('tabSetElement') tabSetRef: TabSetComponent;
+    @ViewChild('formTab') formTabRef: TabComponent;
+    @ViewChild('formDirective') formDirective: FormGroupDirective;
 
     displayedColumns: string[] = ['term', 'usage', 'edit'];
     dataSource: HcTableDataSource<IUsage>;
@@ -70,8 +74,10 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         this.editListForm = this.fb.group({
             addTerm: ['', Validators.required],
             addDef: ['', Validators.required],
+            comment: '',
             yourEmail: ['', [Validators.required, Validators.email]],
-            yourName: ['', [Validators.required, Validators.minLength(3)]]
+            yourName: ['', [Validators.required, Validators.minLength(3)]],
+            addNew: 'true'
         });
     }
 
@@ -86,26 +92,25 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
 
     onCancel() {
         this.editListForm.reset();
-        Object.keys(this.editListForm.controls).forEach(key => {
-            this.editListForm.get(key)?.setErrors(null);
-        });
+        this.formDirective.resetForm();
+        this.formSubmitted = false;
+        this.showErrors = false;
     }
 
     onSubmit() {
-        this.formSubmitted = true;
-
         if (this.editListForm.invalid) {
+            this.showErrors = true;
             return;
         }
 
+        this.formSubmitted = true;
         const formData = new FormData();
         formData.append('addTerm', this.editListForm.controls.addTerm.value);
         formData.append('addDef', this.editListForm.controls.addDef.value);
         formData.append('yourName', this.editListForm.controls.yourName.value);
         formData.append('yourEmail', this.editListForm.controls.yourEmail.value);
-
-        const formObject = this.editListForm.getRawValue();
-        const serializedForm = JSON.stringify(formObject);
+        formData.append('comment', this.editListForm.controls.comment.value);
+        formData.append('addNew', this.editListForm.controls.addNew.value);
 
         this.httpClient.post<any>(this.scriptURL, formData).subscribe(
             res => console.log(res),
@@ -113,8 +118,15 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         );
 
         this.editListForm.reset();
-        Object.keys(this.editListForm.controls).forEach(key => {
-            this.editListForm.get(key)?.setErrors(null);
+        this.formDirective.resetForm();
+    }
+
+    getFormFillData(termItem: IUsage): void {
+        this.tabSetRef._setActive(this.formTabRef);
+        this.editListForm.patchValue({
+            addTerm: termItem.TermName,
+            addDef: termItem.TermUsage,
+            addNew: 'false'
         });
     }
 }

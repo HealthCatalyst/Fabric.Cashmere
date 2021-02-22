@@ -1,17 +1,13 @@
-<form class="feedback-form" [formGroup]="feedbackForm">
-    <div class="feedback-container" *ngIf="!thankYouMsg">
-        <div class="feedback-top-left">
-            <div class="form-group">
-                <input name="url" type="hidden" id="herenow" formControlName="currentUrl">
-                <input name="helpful?" type="hidden" id="helpful" formControlName="helpfulRating">
-            </div>
-            <div>Was this article helpful?</div>
-        </div>
-        <div class="feedback-top-right">
-            <button hc-button buttonStyle="secondary" class="feedback-button" title="Yes" id="feedback-yes" (click)="checkHelpful(); onSubmit();" [disabled]="notHelpful"><i class="fa fa-check" aria-hidden="true"></i>YES</button>
-            <button hc-button buttonStyle="secondary" class="feedback-button" title="No" id="feedback-no" (click)="checkNoHelp()"><i class="fa fa-times" aria-hidden="true"></i>NO</button>
-        </div>
+<div class="feedback-container" *ngIf="!thankYouMsg">
+    <div class="feedback-top-left">
+        Was this page helpful?
+    </div>
+    <div class="feedback-top-right">
+        <button hc-button buttonStyle="secondary" class="feedback-button" title="Yes" id="feedback-yes" (click)="checkHelpful(); onSubmit();"><i class="fa fa-check" aria-hidden="true"></i>YES</button>
+        <button hc-button buttonStyle="secondary" class="feedback-button" title="No" id="feedback-no" (click)="checkNoHelp()"><i class="fa fa-times" aria-hidden="true"></i>NO</button>
+    </div>
 
+    <form class="feedback-form" [formGroup]="feedbackForm">
         <div id="feedback-survey" *ngIf="notHelpful">
             <div class="feedback-suggestions">
                 <hc-form-field>
@@ -35,13 +31,8 @@
             <button hc-button title="Submit" buttonStyle="primary" [disabled]="!feedbackForm.valid" (click)="onSubmit();">Submit</button>
             <button hc-button class="feedback-button" title="Cancel " buttonStyle="secondary" (click)="onCancel();">Cancel</button>
         </div>
-    </div>
-    <div id="feedback-response" class="feedback-container-new" *ngIf="thankYouMsg">
-        <p>Thank you! We have received your feedback. Still need help? Contact us in Health Catalyst's <a href="https://slack.com/app_redirect?channel=C75LHAV9S" target="_blank">#cashmere</a> Slack channel. </p>
-    </div>
-</form>
-
-<!-- <br>Dirty: {{ feedbackForm.dirty }}
-<br>Touched: {{ feedbackForm.touched }}
-<br>Valid: {{ feedbackForm.valid }}
-<br>Value: {{ feedbackForm.value | json }} -->
+    </form>
+</div>
+<div id="feedback-response" class="feedback-container-new" *ngIf="thankYouMsg">
+    <p>Thank you! We have received your feedback. Still need help? Contact us in Health Catalyst's <a href="https://slack.com/app_redirect?channel=C75LHAV9S" target="_blank">#cashmere</a> Slack channel. </p>
+</div>
