@@ -229,7 +229,7 @@ A horizontal line divides the header from the content of the visual object. Leav
 
 <div style="text-align:center"><br>
 
-![divider](/assets/analytics/powerbi/pbi-divider.png "Power BI Divider")
+![divider](/assets/analytics/powerbi/pbi-chart-colors.png "Power BI Divider")
 
 </div>
 

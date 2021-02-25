@@ -46,7 +46,7 @@ Gride lines are set to the following values:
 
 </article>
 
-![Grid Lines](./assets/analytics/powerbi/pbi-subheader.png "Grid Lines")
+![Grid Lines](./assets/analytics/powerbi/pbi-grid-lines.png "Grid Lines")
 
 :::
 
@@ -107,7 +107,7 @@ All text in the tooltip should be formatted as follows:
 - **Font color**: white `#ffffff`
 - **Font size**: 10pt
 - **Background**: charcoal-blue `#384655`
-- **Icon color**: offblack `#333333`
+- **Icon color**: slate-gray-400 `#708090`
 
 </article>
 
