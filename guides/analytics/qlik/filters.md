@@ -1,6 +1,6 @@
 # Qlik Filters
 
-###### Last updated January 13, 2021
+###### Last updated February 24, 2021
 
 :::
 
@@ -24,7 +24,14 @@ The sidebar is always visible, so filters being used can be easily seen.
 ##### Sidebar
 
 For consistency, filters should be displayed on the sidebar of the accelerator layout.
-A filter sidebar should have a background color of **slate-gray-400** `#708090 RGB(112,128,144)` and a fixed width of 250px.
+<article>
+
+Format a filter sidebar accordingly:
+- **Type**: Text object
+- **Background**: slate-gray-400 `#708090 RGB(112,128,144)`
+- **Width**: 250px
+</article>
+
 There should be 10px of vertical space at the top of the sidebar before the first filter or metric.
 
 ### Counts
@@ -36,26 +43,54 @@ As many counts may be included as needed, one on top of the other.
 
 ![Filter Counts](./assets/analytics/qlik/qlik-filter-counts.png "Filter Counts")
 
-These counts should be the first item on the sidebar, and should displayed with the data label left-justified and the value on the right.
-The label should be `Arial`, 10pt, **white** `#ffffff RGB(255,255,255)`.
-The value for the count should be `Arial Bold`, 17pt, **white** `#ffffff RGB(255,255,255)`.
-Retain a `6pt` margin within each object.
+These counts should be the first item on the sidebar, and are formatted with the following values: 
+
+
+<article>
+
+Counts labels:
+- **Alignment**: left-justified
+- **Font**: Arial
+- **Font Size**: 10pt
+- **Font color**: white `#ffffff RGB(255,255,255)`
+- **Text margin**: 6pt
+
+Counts values:
+- **Alignment**: right-justified
+- **Font**: Arial(Bold)
+- **Font size**: 17pt
+- **Font color**: white `#ffffff RGB(255,255,255)`
+- **Text margin**: 6pt
+
+</article>
 
 ### Controls
 
-Controls should include a label (title) set to `Arial`, 11pt, **white** `#ffffff RGB(255,255,255)`.
-Sub-controls should be set to `Arial`, 10pt.
+Controls (or filters), are usually grouped together and should be formatted with the following values:
 
 ![Filter Control](./assets/analytics/qlik/qlik-filter-control.png "Filter Control")
+<article>
+
+- **Font color**: white `#ffffff RGB(255,255,255)`
+- **Font (label)**: Arial, 11pt
+- **Font (sub-control)**: Arial, 10pt
+</article>
 
 ### Footer
 
 As with counts, most accelerators benefit from including a footer indicating the last refresh of the data.
 This gives users confidence that the values in the dashboard are current and valid.
 
-In general, the footer should be set to a fixed height of 55px with an Outer Padding of `4, 4, 4, 4`.
-The label for the footer should be `Arial`, 9pt, **white** `#ffffff RGB(255,255,255)`.
-The value for the footer should be `Arial Bold`, 11pt, **white** `#ffffff RGB(255,255,255)`.
+In general, the footer should be set to:
+
+<article>
+
+- **Font color**: white `#ffffff RGB(255,255,255)`
+- **Font (label)**: Arial, 9pt
+- **Font (sub-control)**: Arial, 11pt
+- **Padding**: 4px
+- **Height**: 55px
+</article>
 
 ![Filter Footer](./assets/analytics/qlik/qlik-filter-footer.png "Filter Footer")
 

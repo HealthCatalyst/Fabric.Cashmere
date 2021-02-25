@@ -1,6 +1,6 @@
 # Tableau Key Performance Indicators
 
-###### Last updated December 21, 2020
+###### Last updated February 24, 2021
 
 :::
 
@@ -26,12 +26,26 @@ KPI Metrics follow all the general standards for tiles as defined in the [Founda
 Refer to that **Tile Header** and **Divider** sections of that page for specific parameters to apply to the top of the KPI.
 
 The content of the KPI should be centered in tile.
-The main KPI value should be `Tableau Light`, 24px, **offblack** `#333333`.
-KPI metrics often leverage a second line to indicate trend or sources.
-The second line should be `Tableau Book`, 10px, **offblack** `#333333`.
 
-Arrows or text indicating positive trends should be set to **green** `#00a859`.
-For negative trends, use **red** `#f13c45`.
+<article>
+
+The main KPI value should be formatted as:
+- **Font**: Tableau Light
+- **Font size**: 24pt
+- **Font color**: offblack `#333333`
+KPI metrics often leverage a second line to indicate trend or sources. A secondary metric should be formatted as:
+- **Font**: Tableau Book
+- **Font size**: 10pt
+- **Font color**: offblack `#333333`
+
+Arrows or text colors indicating positive trends should be set to 
+- **Color**: green `#00a859`
+
+For negative trends, use 
+- **Color**: red `#f13c45`
+
+</article>
+
 But never rely solely on color to indicate a positive or negative trend, either text or iconography should also indicate the trend.
 
 :::

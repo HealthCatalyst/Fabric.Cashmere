@@ -1,6 +1,6 @@
 # PowerBI Charts
 
-###### Last updated January 13, 2021
+###### Last updated February 24, 2021
 
 :::
 
@@ -31,9 +31,20 @@ The exact size of a tile for a chart will be determined by the other content tha
 
 ##### Grid Styles
 
-For charts that include axis lines, they should be 1px, **offblack** `#333333`.
-Axis text/labels should be `Segoe UI`, 9px, **offblack** `#333333`.
-Grid lines should be set to 1px, dotted, **gray-300** `#cccccc`.
+<article>
+
+Axis lines in charts are set to the following values:
+- **Weight**: 1px
+- **Color**: offblack `#333333`
+- **Label font**: Segoe UI, 9pt
+- **Label font color**: offblack `#333333`
+
+Gride lines are set to the following values:
+- **Weight**: 1px
+- **Style**: Dotted
+- **Color**: gray-300 `#cccccc`
+
+</article>
 
 ![Grid Lines](./assets/analytics/powerbi/pbi-subheader.png "Grid Lines")
 
@@ -61,8 +72,16 @@ Charts that are dense, complex, and/or require specialized knowledge or experien
 
 The specific content of tooltips of the chart will be dictated by the data being displayed.
 But in general, they should contain a label and a value.
-All text in the tooltip should be 10px, **white** `#ffffff`, `Segoe UI`.
-The background should be **charcoal-blue** `#384655`.
+
+<article>
+
+All text in the tooltip should be formatted accordingly:
+- **Font**: Segoe UI
+- **Font color**: white `#ffffff`
+- **Font size**: 10pt
+- **Background**: charcoal-blue `#384655`
+
+</article>
 
 <div style="text-align:center"><br>
 
@@ -80,8 +99,17 @@ Charts should include tooltips that enable and enhance self-service analytics an
 ### Info Tooltip
 
 Every chart should include an info tooltip in its header. 
-All text in the tooltip should be 10px, **white** `#ffffff`, `Segoe UI`.
-The background should be **charcoal-blue** `#384655`. The icon's color should be **offblack** `#333333`.
+
+<article>
+
+All text in the tooltip should be formatted as follows:
+- **Font**: Segoe UI
+- **Font color**: white `#ffffff`
+- **Font size**: 10pt
+- **Background**: charcoal-blue `#384655`
+- **Icon color**: offblack `#333333`
+
+</article>
 
 Refer to the [Foundations section](/analytics/powerbi-foundations) for information on how to configure it.
 The info tooltip should provide a longer description of what is being visualized on the chart, how it should read, and any considerations when evaluating it.
