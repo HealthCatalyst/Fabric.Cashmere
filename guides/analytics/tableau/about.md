@@ -1,6 +1,6 @@
 # Tableau About Page
 
-###### Last updated December 17, 2020
+###### Last updated February 24, 2021
 
 :::
 
@@ -38,15 +38,25 @@ In general, the about page should include the following (but you may adjust base
 ##### Sidebar
 
 Within the Body horizontal container, the Sidebar vertical container is used on the About page for app details.
-The Sidebar should have a fixed width of 250px and a background color of **slate-gray-100** `#f0f3f6`.
-Inner Padding is set to 12px on the left and right of the Sidebar container.
+
+<article>
+
+The Sidebar should be formatted with the following values:
+- **Width**: 250px
+- **Background**: slate-gray-100 `#f0f3f6`
+- **Padding (inner)**: 12px on the left and right of the Sidebar container
 
 The first two items in the sidebar should be the name of the accelerator and the current version number.
 You should be able to simply edit the text in the template.
 
 The remaining items in the sidebar are unique to your application.
 Examples are included in the template, but they may be edited or removed as needed.
-The label is `Tableau Bold` with a font size of 11px and the content on the line below is `Tableau Regular` with a font size of 10px.
+
+- **Font (label)**: Tableau Bold, 11pt
+- **Font (content)**: Tableau Regular, 10pt
+
+</article>
+
 Each info item in the Sidebar is separated by a 25px blank spacer.
 
 :::
@@ -70,8 +80,19 @@ The styling and setup of the tabs follow the guidelines for described in the [Ta
 The first tab should almost always be "About this App", where an overview of the app and usage guidelines are provided.
 
 For the remaining tabs, you may choose what is most appropriate for your application.
-The text within each tab should be set to a font of `Tableau Book`, a font-color of **offblack** `#333333`, and a font size of 10px.
-Headers within the text should be set to `Tableau Bold`, font size 12px, and font color of **dark-blue** `#006d9a`.
+
+<article>
+
+The text within each tab should be set as follows:
+
+- **Font**: Tableau Book, 10pt
+- **Color**: offblack `#333333`
+
+Headers within the text should be set as follows:
+- **Font**: Tableau Bold, 12pt
+- **Color**: dark-blue `#006d9a`
+
+</article>
 
 ### Pagination
 
@@ -85,11 +106,25 @@ The pagination horizontal container includes Page Buttons centered with a blank 
 
 </div>
 
-Each button should have a 1px solid border with a color set to **slate-gray-300** `#c0c5cc`.
+<article>
+
+Each button should be formatted as:
+
+- **Border**: 1px
+- **Border color**: slate-gray-300 `#c0c5cc`
+- **Font**: Tableau Bold, 11pt
+
+Selected buttons are formatted as:
+- **Background**: blue `#00aeff`
+- **Font color**: white `#ffffff`
+
+Un-selected buttons are formatted as:
+- **Background**: white `#ffffff`
+- **Font color**: Tableau doesn't let us select a custom color, so we have to use the closest blue to our palette. Select the blue swatch in the first row, seventh column of the color picker.
+
+
 The text in each button should be `PAGE X` with page in uppercase letters.
-The should be `Tableau Bold` with a font size of 11px.
-The selected page's button should have a background color of **blue** `#00aeff` and font color of **white** `#ffffff`.
-For the other page's font color, Tableau doesn't let us select a custom color, so we have to use the closest blue to our palette.
-Select the blue swatch in the first row, seventh column of the color picker.
+
+</article>
 
 :::

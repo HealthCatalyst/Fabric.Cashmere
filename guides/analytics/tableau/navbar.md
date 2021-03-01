@@ -1,6 +1,6 @@
 # Tableau Navbar
 
-###### Last updated December 16, 2020
+###### Last updated February 24, 2021
 
 :::
 
@@ -23,9 +23,17 @@ Below is the hierarchy for the container (a floating item called "Selected Highl
 
 ##### Brand
 
-Brand is a 50 x 50px fixed width horizontal container with a background color set to **blue** `#00aeff`.
-Within the container is a SVG of the Health Catalyst tri-flame.
-The outer padding of the svg should be set to 8px on all sides.
+<article>
+
+Brand is a fixed width horizontal container.
+- **Background**: blue `#00aeff`
+- **Height**: 50px
+- **Width**: 50px
+
+Within the container is an SVG of the Health Catalyst tri-flame.
+- **Padding (outer)**: 8px
+
+</article>
 
 :::
 
@@ -63,7 +71,13 @@ The Outer Padding on any navbar link should be set to `4, 5, 4, 3`.
 These values are important so the bottom of the navbar text aligns with the bottom of the app name.
 The background color and border on the button should be set to `None`.
 
-The button for the currently selected page should have its font set to `Tableau Bold` and color set to **white** (the second swatch in the top row of the Font color picker).
+<article>
+
+The button for the currently selected page should be formatted as:
+
+- **Font (selected)**: Tableau Bold
+- **Color**: white (the second swatch in the top row of the Font color picker)
+
 Additionally, there is a floating item at the top of the root hierarchy called `Selected Highlight` that should be positioned under the selected item.
 The y position of that item should always be set to 46, but the x position should match the x position of the selected button item.
 The width of the selected highlight item should also match the selected button item.
@@ -71,7 +85,12 @@ Adjust the left & right Outer Padding of Selected Highlight to account for paddi
 
 ![Selected Link](./assets/analytics/tableau/selected.png "Selected link")
 
-All other buttons should have their font set to `Tableau Regular` and color set to **gray-200** (the second swatch in the fourth row of the Font color picker).
+All other buttons should be formatted as: 
+
+- **Font**: Tableau Regular
+- **Color**: gray-200 (the second swatch in the fourth row of the Font color picker)
+
+</article>
 
 :::
 
@@ -96,7 +115,12 @@ Contact the UX team via the `#design` Slack channel for icon svgs.
 
 ##### Co-branding
 
-Co-Branding is the final fixed width horizontal container set to 200px wide with a **white** `#ffffff` background.
+<article>
+Co-Branding is the final fixed width horizontal container set to:
+- **Width**: 200px
+- **Background**: white `#ffffff`
+</article>
+
 This space allows applications to include the logo of your customer.
 Ideally you'll want the horizontal version of a customer's logo with a white or transparent background.
 To configure this section, you should only have to Edit the Image and swap the file.

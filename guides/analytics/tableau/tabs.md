@@ -1,6 +1,6 @@
 # Tableau Tabs
 
-###### Last updated December 17, 2020
+###### Last updated February 24, 2021
 
 :::
 
@@ -36,11 +36,22 @@ For the selected tab it should be `Tableau Bold`.
 
 The positioning of the floating items (Tab Selected, and Tab Set Underline) must be set manually.
 The Tab Set Underline width should extend from the left edge of the first tab to the right edge of the Spacer in the Tab Set container.
-It should always be 1px height with a background color of **slate-gray-300** `#c0c5cc`.
+
+<article>
+
+The Tab Set Underline is formatted as follows:
+- **Height**: 1px
+- **Background**: slate-gray-300 `#c0c5cc`
+
 The y position of Tab Set Underline should be equal to the bottom of a tab, minus the padding.
 For example, if the tabs have a y value of 215, and a height of 50, with a padding of 5 on all sides, the underline's y position will be 260 (215 + 50 - 5 = 260).
 
-The width of the Tab Selected highlight should match the width of the selected tab.
-The height should always be 4px with a background color for **blue** `#00aeff`.
+The width of the Tab Selected highlight should match the width of the selected tab and is formatted as follows:
+- **Height**: 4px
+- **Background**: blue `#00aeff`
+
 For the y position, subtract 2 from the y position of the Tab Set Underline calculated above.
+
+</article>
+
 :::

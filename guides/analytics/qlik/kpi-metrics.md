@@ -1,6 +1,6 @@
 # Qlik Key Performance Indicators
 
-###### Last updated January 26, 2021
+###### Last updated February 24, 2021
 
 :::
 
@@ -27,11 +27,16 @@ KPI tiles follow all the general standards for tiles as defined in the [Foundati
 Refer to that **Tile Header** and **Divider** sections of that page for specific parameters to apply to the top of the KPI.
 
 ### Layout
+Format the content within the tile as follows:
 
-The content of the KPI should be centered in tile.
-The main KPI value should be `Arial`, 24px, **offblack** `#333333`.
+<article>
+
+- **Text alignnment**: Centered horizontally
+- **Font color**: offblack `#333333 RGB(51,51,51)`
+- **Font (primary value)**: Arial, 24pt
+
 KPI metrics often leverage a second line to indicate trend or sources.
-The second line should be `Arial`, 10px, **offblack** `#333333`.
+- **Font (secondary value)**: Arial, 10pt
 
 Arrows or text indicating positive trends should be set to **green** `#00a859`.
 For negative trends, use **red** `#f13c45`.
@@ -61,7 +66,15 @@ Refer to that **Tile Header** and **Divider** sections of that page for specific
 
 Multi-select tile functionality should be as clear as possible to users. In the example below, the sub-header: "(select to display below)" makes it clear that each measure selection will dynamically update the following charts on the page. The checkboxes help users understand that more than one measure can be simultaneously displayed on the charts. 
 
-The checkboxes and measure labels are within a listbox object that is 1 cell high. The labels are `Arial Bold, 10pt`.
-The measure values are within individual transparent textboxes that are `left-aligned` with the appropriate checkbox. The values are formatted as `Arial, 24 pt, 0pt margin, left-aligned`.
+<article>
+
+The checkboxes and measure labels are within a listbox object that is 1 cell high. 
+- **Font (label)**: Arial (Bold), 10pt
+
+The measure values are within individual transparent textboxes that are formatted as:
+
+- **Alignment**: Left-aligned to checkbox 
+- **Font**: Arial, 24pt
+- **Text margin**: 0pt
 
 :::

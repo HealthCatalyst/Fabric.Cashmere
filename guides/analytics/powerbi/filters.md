@@ -1,6 +1,6 @@
 # PowerBI Filters
 
-###### Last updated January 13, 2021
+###### Last updated February 24, 2021
 
 :::
 
@@ -40,9 +40,20 @@ The sliding filter pane should always be accessible to users, so that all filter
 Power BI allows developers to format the Filters pane and cards. The same colors from [Cashmere Foundations](/foundations/color) are used. 
 
 ### Filter Pane
-The Filters pane is set to `250px` wide and the background color should be **slate-gray-400** `#708090`. The Filters pane text and icon color should be **white** `#ffffff`. Titles are set to `Segoe UI` `12px` and headers are set to `Segoe UI` `10px`. The borders within the Filters pane are set to **slate-gray-300** `#c0c5cc`. 
 
-The search text size is set to `10px` and the input box color is set to **charcoal-blue** `#384655`.
+<article>
+
+The Filters pane is set to the following values:
+- **Width**: 250px
+- **Background**: slate-gray-400 `#708090`
+- **Font color**: white `#ffffff`
+- **Font (title)**: Segoue UI, 12pt
+- **Font (headers)**: Segoe UI, 10pt
+- **Font (search)**: 10pt
+- **Border**: slate-gray-300 `#c0c5cc`
+- **Input box background**: charcoal-blue `#384655`
+
+</article>
 
 <div style="text-align:center">
 
@@ -51,10 +62,30 @@ The search text size is set to `10px` and the input box color is set to **charco
 </div>
 
 ### Filter Cards: Available
-Filter cards that are available to users are set to a **charcoal-blue** `#384655` background color, a **white** `#ffffff`  input box color, a **slate-gray-300** `#c0c5cc` border, and `Segoe UI 9px`, **white** `#ffffff` font. 
+
+<article>
+
+Filter cards that are available to users are formatted as follows:
+- **Background**: charcoal-blue `#384655` 
+- **Input box background**: white `#ffffff`
+- **Border**: slate-gray-300 `#c0c5cc`
+- **Font**: Segoe UI, 9pt
+- **Font color**: white `#ffffff`
+
+</article>
 
 ### Filter Cards: Applied
-Filters actively being used within the dashboard, page, or an object, are displayed in filter cards set to a **gray-200** `#e0e0e0` background color, a **white** `#ffffff`  input box color, a **slate-gray-300** `#c0c5cc` border, and `Segoe UI` 9px, **offblack** `#333333` font. 
+
+<article>
+
+Filters actively being used within the dashboard, page, or an object, are formatted in filter cards as follows:
+- **Background**: gray-200 `#e0e0e0`
+- **Input box background**: white `#ffffff`
+- **Border**: slate-gray-300 `#c0c5cc`
+- **Font**: Segoe UI, 9pt
+- **Font color**: offblack `#333333`
+
+</article>
 
 ##### Filter Scope
 
@@ -65,8 +96,15 @@ These are grouped together in a section titled **Filters on all pages**.
 Other filters may only apply to the specific page the user is viewing, and will not carry over to other pages.
 These are grouped together in a section titled **Filters on this page**.
 
-The section titles are set to `Segoe (Bold)`, `10px`, **white** `#ffffff`.
-They have a background color of **charcoal blue** `#384655`.
+<article>
+
+The section titles are formatted as:
+- **Font**: Segoe (Bold)
+- **Font size**: 10pt
+- **Font color**: white `#ffffff`
+- **Background**: charcoal-blue `#384655` 
+
+</article>
 
 Some filters may only apply to the specific visual the user is viewing. These are grouped in a section within the filters pane titled **Filters on this visual**. You may also consider placing a slicer object next to the visual. 
 

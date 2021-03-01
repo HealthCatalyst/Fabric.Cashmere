@@ -1,6 +1,6 @@
 # Qlik Navbar
 
-###### Last updated January 21, 2021
+###### Last updated February 24, 2021
 
 :::
 
@@ -12,7 +12,14 @@ The navbar is one of the most distinguishing elements of a Cashmere application.
 It is a hallmark of the Health Catalyst app brand on all platforms.
 For this reason, the styling of the navbar should not be altered from the template.
 
-The Navbar is a **charcoal-blue** `#384655 RGB(56,70,85)` horizontal text object with a fixed `50px` height, set at `x:0, y:0`.
+<article>
+
+The Navbar is formatted accordingly:
+- **Background**: charcoal-blue `#384655 RGB(56,70,85)` 
+- **Type**: horizontal text object 
+- **Height**: `50px`
+- **Position**: x:0, y:0
+</article>
 
 :::
 
@@ -20,7 +27,15 @@ The Navbar is a **charcoal-blue** `#384655 RGB(56,70,85)` horizontal text object
 
 ##### Brand
 
-Brand is a `50px x 50px` fixed width image of the [Health Catalyst tri-flame](/foundations/logo) with a background color set to **blue** `#00aeff RGB(0,174,255)` and positioned at `x:0, y:0`.
+<article>
+
+Brand is an image of the [Health Catalyst tri-flame](/foundations/logo) formatted as follows:
+- **Background**: blue `#00aeff RGB(0,174,255)` 
+- **Type**: image
+- **Height**: 50px
+- **Width**: 50px
+- **Position**: x:0, y:0
+</article>
 
 :::
 
@@ -28,13 +43,21 @@ Brand is a `50px x 50px` fixed width image of the [Health Catalyst tri-flame](/f
 
 ##### App Name
 
-App Name is the second fixed width horizontal text object in the navbar, also containing one PNG image.
+App Name is the second fixed-width image object in the navbar, also containing one PNG image, fomatted with the following values:
+<article>
+
+- **Type**: image
+- **Height**: 50px
+- **Position**: To the right of the logo (~65px) and centered vertically within the Navbar
+- **Image stretch**: Keep Aspect
+- **Text margin**: 2pt
+
+</article>
+
 The image is the name of your application in the Flexo font (so the font isn't needed).
 To obtain a PNG for your application, contact the UX team via the `#design` Slack channel.
 
 Edit the `AppName.png` image object and swap the image file with the one for your application.
-
-The App Name should be positioned to the right of the tri-flame logo at about `x:65` and centered vertically within the Navbar. Set the **image stretch** to `Keep Aspect` and adjust the **text margin** to `2pt`.
 
 **Important:** you will need to adjust the width of your app name image.
 You want the width to be just wide enough to contain the image without shrinking it.
@@ -47,12 +70,22 @@ Then continue to edit the width and reduce the size of the container until it's 
 
 ##### Links
 
-Links is a flexible series of horizontal text objects that contain page navigation actions to the different sections of your application.
-Each text object is about 100px wide and 35px tall. Adjust the text objects so that their vertical sides touch and check that any text is centered horizontally.
+Links is a flexible series of horizontal text objects that contain page navigation actions to the different sections of your application. Utilizing actions turns the text objects into button objects. These buttons have the following values:
 
-The background color and border on the button should be set to `None`.
+<article>
 
-The button for the currently selected page should have its font set to `Arial Bold 11pt` and color set to **offblack**.
+- **Background**: None
+- **Border**: None
+- **Type**: text object with actions
+- **Height**: 35px
+- **Weidth**: 100px
+- **Font alignment**: horizontally centered
+- **Position**: To the right of the logo, with vertical sides touching, and centered vertically within the Navbar
+- **Image stretch**: Keep Aspect
+- **Font color**: white `#ffffff RGB(255,255,255)`
+- **Text margin**: 2pt
+
+</article>
 
 Additionally, there is a floating line item called `Selected Highlight` that should be positioned under the selected item.
 The y position of that item should always be set to the bottom of the selected item, but the x position should match the x position of the selected item.
@@ -60,7 +93,13 @@ The width of the selected highlight item should also match the selected text obj
 
 ![Selected Link](./assets/analytics/qlik/qlik-selected.png "Selected link")
 
-All other text objects within the links section should have their font set to `Arial 10 pt`.
+<article>
+
+Text indicating a selection has been made is formatted differently than the rest of the text within Links
+- **Font (selected)**: Arial (Bold), 10pt
+- **Font (unselected)**: Arial, 10pt
+
+</article>
 
 :::
 

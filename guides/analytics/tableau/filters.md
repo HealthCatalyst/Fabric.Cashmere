@@ -1,6 +1,6 @@
 # Tableau Filters
 
-###### Last updated December 21, 2020
+###### Last updated February 24, 2021
 
 :::
 
@@ -24,8 +24,15 @@ The sidebar is always visible, so filters being used can be easily seen.
 ##### Sidebar
 
 For consistency, filters should be displayed on the sidebar of the accelerator layout.
-A filter sidebar should have a background color of **slate-gray-400** `#708090` and a fixed width of 250px.
+
+<article>
+
+A filter sidebar should be formatted as following:
+- **Background**: slate-gray-400 `#708090` 
+- **Width**: 250px 
 There should be 10px of vertical space at the top of the sidebar before the first filter or metric.
+
+</article>
 
 ### Counts
 
@@ -37,16 +44,36 @@ As many counts may be included as needed, one on top of the other.
 ![Filter Counts](./assets/analytics/tableau/filtercounts.png "Filter Counts")
 
 These counts should be the first item on the sidebar, and should displayed as a horizontal container with the label on the left and the value on the right.
-The label should be `Tableau Regular`, 10px, **white** `#ffffff`.
-It should have an Outer Padding of `6, 4, 0, 4`.
 
-The value for the count should be `Tableau Bold`, 17px, **white** `#ffffff`.
-The value should be right justified, with an Outer Padding of `0, 0, 6, 0`.
+<article>
+
+Counts labels are formatted as: 
+- **Font**: Tableau Regular, 10pt
+- **Font color**: white `#ffffff`
+- **Padding (outer)**: `6, 4, 0, 4`
+
+Counts values are formatted as:
+- **Font**: Tableau Bold, 17pt
+- **Font color**: white `#ffffff`
+- **Padding (outer)**: `0, 0, 6, 0`
+- **Alignment**: right-justified
+
+</article>
 
 ### Controls
 
-Controls should include a label (title) set to `Tableau Regular`, 10px, **white** `#ffffff`.
-All controls, regardless of type should have a fixed height of 52px, with Outer Padding set to `8, 2, 8, 2`.
+<article>
+
+Control labels are formatted as follows:
+- **Label**: Tableau Regular, 10pt
+- **Font color**: white `#ffffff`
+
+
+All controls, regardless of type should have the following values:
+- **Height**: 52px
+- **Padding (outer)**: `8, 2, 8, 2`
+
+</article>
 
 ![Filter Control](./assets/analytics/tableau/filtercontrol.png "Filter Control")
 
@@ -55,9 +82,16 @@ All controls, regardless of type should have a fixed height of 52px, with Outer 
 As with counts, most accelerators benefit from including a footer indicating the last refresh of the data.
 This gives users confidence that the values in the dashboard are current and valid.
 
-In general, the footer should be set to a fixed height of 55px with an Outer Padding of `4, 4, 4, 4`.
-The label for the footer should be `Tableau Regular`, 9px, **white** `#ffffff`.
-The value for the footer should be `Tableau Bold`, 11px, **white** `#ffffff`.
+<article>
+
+In general, the footer should be set to 
+- **Font color**: white `#ffffff`
+- **Font (label)**: Tableau Regular, 9pt
+- **Font (value)**: Tableau Bold, 11pt
+- **Height**: 55px
+- **Padding (outer)**: `4, 4, 4, 4`
+
+</article>
 
 ![Filter Footer](./assets/analytics/tableau/filterfooter.png "Filter Footer")
 
@@ -75,9 +109,19 @@ Other filters may only apply to the specific section the user is viewing, and wi
 These are referred to as **Page Filters**.
 
 To distinguish between these filter types, we use section headers on the sidebar.
-Section headers are text items set to `Tableau Bold`, 10px, **white**.
-They have a fixed height of 26px, and a background color of **charcoal blue** `#384655`.
-The Inner Padding should be set to `6, 5, 0, 6`.
+
+<article>
+
+Section headers are text items set to the following values: 
+- **Font**: Tableau Bold
+- **Font size**: 10pt
+- **Font color**: white `#ffffff`
+- **Height**: 26px
+- **Background**: charcoal-blue `#384655`
+- **Padding (inner)**: `6, 5, 0, 6`
+
+</article>
+
 There should also be a 10px height spacer after the header.
 
 ![Filter Header](./assets/analytics/tableau/filtersection.png "Filter Header")

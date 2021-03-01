@@ -1,6 +1,6 @@
 # Qlik Tables
 
-###### Last updated January 21, 2021
+###### Last updated February 24, 2021
 
 :::
 
@@ -26,14 +26,33 @@ The table should leverage the remaining content area of the tile.
 
 ### Table Header Row
 
-The content in the header row of a table should be **dark-blue** `#006d9a RGB(0,109,154)`, `Arial (Bold)`, 9px. The easiest way to format a table's header is to be in **design grid** mode. Then, you should be able to right-click on a header cell and choose **custom format cell**.
+<article>
+
+The content in the header row of a table should be:
+- **Font**: Arial(Bold), 9pt
+- **Font color**: dark-blue `#006d9a RGB(0,109,154)`
+</article>
+
+Note: The easiest way to format a table's header is to be in **design grid** mode. Then, you should be able to right-click on a header cell and choose **custom format cell**.
 
 ### Table Cells
 
-The contents of table cells should be `Arial`, **offblack** `#333333 RGB(51,51,51)`, 9px.
-The Shading - Row Banding on table rows should be set to a background color of `#f9fafb RGB(249,250,251)` for both Panes and Headers.
-The Border - Default on Cells and Headers should be set to 1px, solid, **gray-100** `#f1f1f1 RGB(241,241,241)`.
-This creates a minimal banding effect without being too distracting for the small font size we use on Qlik tables.
+<article>
+
+The contents of table cells should be formatted as:
+- **Font**: `Arial`, 9pt
+- **Font color**: off-black `#333333 RGB(51,51,51)`
+
+To create a minimal banding effect without being too distracting for the small font size we use on Qlik tables, format cells and headers accordingly:
+
+Row banding on table rows
+- **Background**: `#f9fafb RGB(249,250,251)`
+
+Cell and header borders
+- **Weight**: 1px
+- **Style**: Solid
+- **Color**: gray-100 `#f1f1f1 RGB(241,241,241)`
+</article>
 
 :::
 
