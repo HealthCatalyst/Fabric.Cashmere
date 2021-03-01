@@ -1,6 +1,6 @@
 # PowerBI Foundations
 
-###### Last updated January 13, 2021
+###### Last updated February 24, 2021
 
 :::
 
@@ -97,9 +97,19 @@ Detailed information on the navbar and how to configure it is included in the [n
 
 ### Subnav
 
-The subnav is horizontal text object with a fixed `30px height and 1280px width`.
-It is used as an information panel to display dashboard-wide metrics, such as refresh timestamps or "stickied" metrics, such as population counts.
-Position the object at `x:0, y:50`, set the background color to **slate-gray-400** `#708090`, toggle the visual header to `off`.
+The subnav is used as an information panel to display dashboard-wide metrics, such as refresh timestamps or "stickied" metrics, such as population counts.
+
+<article>
+
+Format the subnav with the following parameters:
+- **Type**: Text object
+- **Height**: 30px
+- **Width**: 1280px
+- **Position**: `x:0, y:50`
+- **Background**: slate-gray-400 `#708090`
+- **Visual header toggle**: Off
+ 
+ </article>
 
 <div style="text-align:center"><br>
 
@@ -109,7 +119,13 @@ Position the object at `x:0, y:50`, set the background color to **slate-gray-400
 
 ### Content Area
 
-The background color for the content area is either **slate-gray-100** `#f0f3f6` or **white** `#ffffff` depending on the page.
+<article>
+
+Options for a background color for the content area are:
+- **Background option**: slate-gray-100 `#f0f3f6`
+- **Background option**: white `#ffffff`
+
+</article>
 
 Objects in the content area should be placed about 30px from the outer edges.
 
@@ -125,9 +141,15 @@ Information about the dynamic filters pane is included in the [filters section](
 
 Visualization objects such as charts, graphs, tables, and KPIs should be styled like the Cashmere [tile component](/web/components/tile) and will be referred to as tiles within this section.
 
-In general, a Power BI tile has a **white** `#ffffff` background and a solid **white** `#ffffff` border with a 5px wide radius. Tiles should have at least 10px of padding between each other (5px on either side).
-
 <article>
+
+In general, a Power BI tile is formatted accordingly:
+
+- **Background**: white `#ffffff`
+- **Border**: white `#ffffff`
+- **Border radius**: 5px
+- **Padding**: At least 10px of padding between each tile (5px on either side)
+
 
 Each tile should also have shadow with the following values:
 - **Color**: black `#000000`
@@ -175,7 +197,16 @@ Utilize Power BI's alignment capabilities by selecting each object and choosing 
 </div>
 
 ### Tile Title
-Every tile should include a `left-aligned` title. The title text should be `Segoe UI`, **offblack** `#333333`, with a font size of 10px.
+
+<article>
+
+Every tile should include title with the following formatting:
+- **Alignment**: left-aligned
+- **Font**: Segoe UI
+- **Font color**: offblack `#333333`
+- **Font size**: 10pt
+
+</article>
 
 ### Tile Visual Header
 
@@ -186,12 +217,19 @@ Some header elements, such as drill-down icons, are object-specific and more det
 
 ### Divider
 
-A horizontal line with a weight of `1pt` divides the header from the content of the visual object. Leave about 2px of space on the left and right.
-Set its fixed height to `12px` and set the line color to **slate-gray-300** `#c0c5cc`. Turn off all visual header icons.
+<article>
+
+A horizontal line divides the header from the content of the visual object. Leave about 2px of space on the left and right and format accordingly:
+- **Weight**: 1pt
+- **Height**: 12px
+- **Color**: slate-gray-300 `#c0c5cc`
+- **Visual header toggle**: Off
+
+</article>
 
 <div style="text-align:center"><br>
 
-![divider](/assets/analytics/powerbi/pbi-divider.png "Power BI Divider")
+![divider](/assets/analytics/powerbi/pbi-chart-colors.png "Power BI Divider")
 
 </div>
 

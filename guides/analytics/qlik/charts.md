@@ -1,6 +1,6 @@
 # Qlik Charts
 
-###### Last updated January 13, 2021
+###### Last updated February 24, 2021
 
 :::
 
@@ -31,9 +31,22 @@ The exact size of a tile for a chart will be determined by the other content tha
 
 ##### Grid Styles
 
-For charts that include axis lines, they should be 1px, **offblack** `#333333 RGB(51,51,51)`.
-Axis text/labels should be `Arial`, 9px, **offblack** `#333333 RGB(51,51,51)`.
-Grid lines should be set to 1px, dotted, **gray-300** `#cccccc RGB(204,204,204)`.
+<article>
+
+Axis lines within charts should be formatted as:
+- **Weight**: 1px
+- **Color**: off-black `#333333 RGB(51,51,51)`
+
+Axis labels should be formatted as:
+- **Font**: Arial, 9pt
+- **Font color**: off-black `#333333 RGB(51,51,51)`
+
+Grid lines should be formatted as:
+- **Weight**: 1px
+- **Color**: gray-300 `#cccccc RGB(204,204,204)`
+- **Style**: Dotted
+
+</article>
 
 ![Grid Lines](./assets/analytics/qlik/qlik-gridlines.png "Grid Lines")
 

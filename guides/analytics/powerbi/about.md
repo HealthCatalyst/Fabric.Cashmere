@@ -1,6 +1,6 @@
 # PowerBI About Page
 
-###### Last updated January 13, 2021
+###### Last updated February 24, 2021
 
 :::
 
@@ -33,16 +33,31 @@ In general, the about page should include the following (but you may adjust base
 
 ##### Sidebar
 
-The Sidebar vertical text box is used on the About page for app details.
-The Sidebar should have a fixed width of `250px` and a background color of **slate-gray-100** `#f0f3f6`.
-All items within the sidebar have about `12px` of padding on the left and right sides.
+The Sidebar vertical text box is used on the About page for app details and should be formatted as follows:
+
+- **Type**: Text object
+- **Width**: 250px
+- **Background**: slate-gray-100 `#f0f3f6`
+- **Padding**: 12px on left and right sides
+
 
 The first two items in the sidebar should be the name of the accelerator and the current version number.
 You should be able to simply edit the text in the template.
 
 The remaining items in the sidebar are unique to your application. Card visuals are used to display items that rely upon data fields (such as a last refresh date). 
 Examples are included in the template, but they may be edited or removed as needed.
-The label is `Segoe (Bold)` with a font size of `11px` and the content on the line below is `Segoe UI` with a font size of `10px`.
+
+<article>
+
+Info item formatting:
+- **Font (label)**: Segoe (Bold)
+- **Font size (label)**: 11pt
+
+- **Font (value)**: Segoe UI
+- **Font size (value)**: 10pt
+
+</article>
+
 Each info item in the sidebar is separated by `25px` of blank space.
 
 :::
@@ -52,10 +67,23 @@ Each info item in the sidebar is separated by `25px` of blank space.
 ##### Content Area
 
 The Content Area has a **white** `#ffffff` background for the About Page.
-The first item in the Content Area is the full Health Catalyst horizontal logo, located at about `x:514, y:87` and sized at `w:463, h:146`. Scaling should be set to `normal` and the aspect lock should be set to `on`.
 
-The second item in the content area is a banner with the name of the accelerator.
---edit with right sizing and directions You'll need to swap the image file to the same image png file that you are using for the navbar.
+<article>
+
+The first item in the Content Area is the full Health Catalyst horizontal logo: 
+- **Type**: Image
+- **Position**: `x:514, y:87`
+- **Width**: 463px
+- **Height**: 146px
+- **Scaling**: Normal
+- **Aspect lock**: On
+
+The second item in the content area is a banner with the name of the accelerator, positioned with the following values
+- **Position**: `x:450, y:145`
+- **Width**: 600px
+- **Height**: 30px
+
+</article>
 
 ### Tabs
 
@@ -64,8 +92,20 @@ The styling and setup of the tabs follow the guidelines for described in the [Ta
 The first tab should almost always be "About this App", where an overview of the app and usage guidelines are provided.
 
 For the remaining tabs, you may choose what is most appropriate for your application.
-The text within each tab should be set to a font of `Segoe UI`, a font-color of **offblack** `#333333`, and a font size of `10px`.
-Headers within the text should be set to `Segoe (Bold)`, font size `12px`, and font color of **dark-blue** `#006d9a`.
+
+<article>
+
+The text within each tab should be set to: 
+- **Font**: Segoe UI
+- **Font color**: offblack `#333333`
+- **Font size**: 10pt
+
+Headers within the text should be set to 
+- **Font**: Segoe (Bold)
+- **Font color**: dark-blue `#006d9a`
+- **Font size**: 12pt
+
+</article>
 
 ### Pagination
 
@@ -79,10 +119,27 @@ The pagination controller is comprised of Page Buttons horizontally aligned with
 
 </div>
 
-Each button should have a `1px` solid border with a color set to **slate-gray-300** `#c0c5cc`.
+<article>
+
+Each button should have a border with the following values:
+- **Weight**: 1px
+- **Style**: Solid
+- **Color**: slate-gray-300 `#c0c5cc`
+
 The text in each button should be `PAGE X` with page in uppercase letters.
-The should be `Sego (Bold)` with a font size of `11px`.
-The selected page's button should have a background color of **blue** `#00aeff` and font color of **white** `#ffffff`.
-De-selected page buttons should have a background color of **white** `#ffffff` and a font color of **dark-blue** `#006d9a`.
+
+Button font should be set to:
+- **Font**: Segoe (Bold)
+- **Size**: 11pt
+The selected page's button is formatted as:
+
+- **Background**: blue `#00aeff`
+- **Font color**: white `#ffffff`
+
+De-selected page buttons are formatted as:
+- **Background**: white `#ffffff`
+- **Font color**: dark-blue `#006d9a`
+ 
+</article>
 
 :::

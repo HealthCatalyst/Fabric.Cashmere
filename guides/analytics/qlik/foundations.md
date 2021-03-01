@@ -1,6 +1,6 @@
 # QlikView Foundations
 
-###### Last updated January 13, 2021
+###### Last updated February 24, 2021
 
 :::
 
@@ -93,18 +93,25 @@ Note that if content needs to be further subdivided within the content area, [Ta
 
 ### Navbar
 
-The navbar is a horizontal container with a fixed 50px height.
+The navbar is a horizontal container with a fixed `50px` height.
 Detailed information on the navbar and how to configure it is included in the [navbar section](/analytics/qlik-navbar).
 
 ### Sidebar
 
-The sidebar is a vertical container with a fixed 250px width.
+The sidebar is a vertical container with a fixed `250px` width.
 It typically contains filters, but can also be used as an information panel.
 Details about use of the sidebar can be found in the [filters section](/analytics/qlik-filters) and [about section](/analytics/qlik-about).
 
 ### Content Area
 
-The background color for the content area is either **slate-gray-100** `#f0f3f6 RGB(240,243,246)` or **white** `#ffffff RGB(255,255,255)` depending on the page.
+<article>
+
+The background color for the content area can be one of the following values:
+- **Background**: slate-gray-100 `#f0f3f6 RGB(240,243,246)`
+- **Background**: white `#ffffff RGB(255,255,255)`
+
+</article>
+
 
 :::
 
@@ -114,7 +121,22 @@ The background color for the content area is either **slate-gray-100** `#f0f3f6 
 
 Visualization objects such as charts, graphs, tables, and KPIs should be styled like the Cashmere [tile component](/web/components/tile) and will be referred to as tiles within this section.
 
-In general, a Qlik tile has a **white** `#ffffff RGB(255,255,255)` background and a solid **white** `#ffffff RGB(255,255,255)` border with a 5px wide radius. Each tile should also have a `#000000` shadow set to **soft-intensity** with a transparency of about 85%. Tiles should have at least 10px of padding between each other (5px on either side).
+<article>
+
+In general, a Qlik tile should be formatted accordingly: 
+- **Background**: white `#ffffff RGB(255,255,255)`
+- **Border**: white `#ffffff RGB(255,255,255)`
+- **Radius**: 5px
+
+Each tile should also have shadow with the following values:
+
+- **Color**: black `#000000 RGB(0,0,0)`
+- **Intensity**: soft
+- **Transparency**: 85%
+
+Tiles should have at least 10px of padding between each other (5px on either side).
+
+</article>
 
 Layout specifics for the most common visual objects can be found in the [KPI Metrics section](/analytics/qlik-metrics), [Charts section](/analytics/qlik-charts), and [Tables section](/analytics/qlik-tables). Refer to the template or these sections for working examples.
 
@@ -150,19 +172,34 @@ Utilize Qlik's alignment capabilities by selecting each object and choosing the 
 </div>
 
 ### Tile Title
-Every tile should include a `left-aligned` title. The title text should be `Arial Bold`, **offblack** `#333333 RGB(51,51,51)`, with a font size of 10px.
+
+<article>
+
+Tile tiles should be formatted accordingly:
+- **Alignment**: left
+- **Font**: Arial Bold, 10pt
+- **Color**: offblack `#333333 RGB(51,51,51)`
+
+</article>
 
 ### Tile Visual Header
 
-Every tile should always include the info and filter icons within the visual header.
+Every tile should always include info and filter icons within the visual header.
 Icon color should be **slate-gray-400**`#708090 RGB(112,128,144)`.
 
 Some header elements, such as drill-down icons, are object-specific and more details can be found in the [KPI Metrics section](/analytics/qlik-metrics), [Charts section](/analytics/qlik-charts), and [Tables section](/analytics/qlik-tables). Refer to the template or these sections for working examples.
 
 ### Divider
 
-A horizontal line with a weight of `1pt` divides the header from the content of the visual object. Leave about 2px of space on the left and right.
-Set its fixed height to `10px` and set the line color to **slate-gray-300** `#c0c5cc RGB(192,197,204)`.
+<article>
+
+A horizontal line divides the header from the rest of the content in the object and is formatted with the following values:
+- **Weight**: 1px
+- **Padding**: 2px on left and right sides
+- **Height**: 10px
+- **Color**: slate-gray-300 `#c0c5cc RGB(192,197,204)`
+
+</article>
 
 <div style="text-align:center"><br>
 

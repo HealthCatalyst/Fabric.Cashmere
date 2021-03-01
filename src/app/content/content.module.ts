@@ -6,7 +6,6 @@ import {GoogleSheetsDbService} from 'ng-google-sheets-db';
 import {ContentComponent} from './content.component';
 import {UsageComponent} from './usage/usage.component';
 import {UsageListComponent} from './usage/usage-list/usage-list.component';
-import {FeedbackFormComponent} from './usage/feedback-form/feedback-form.component';
 import {PersonaModule} from './personas/persona.module';
 
 @NgModule({
@@ -15,8 +14,7 @@ import {PersonaModule} from './personas/persona.module';
     declarations: [
         ContentComponent,
         UsageComponent,
-        UsageListComponent,
-        FeedbackFormComponent
+        UsageListComponent
     ]
 })
 export class ContentModule {}

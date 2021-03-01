@@ -1,6 +1,6 @@
 # Tableau Charts
 
-###### Last updated December 21, 2020
+###### Last updated February 24, 2021
 
 :::
 
@@ -21,7 +21,7 @@ Refer to that **Tile Header** and **Divider** sections of that page for specific
 
 If a subheader or additional controls are needed for a chart, they should be the next item under the header divider.
 The content of the chart appears in the area below.
-The Outer Padding for the chart should be at least 10px on the right and left so it aligns with the edges of the header.
+The Outer Padding for the chart should be at least `10px` on the right and left so it aligns with the edges of the header.
 The exact size of a tile for a chart will be determined by the other content that has to fit on the page and what is required for readability of the data.
 
 :::
@@ -30,9 +30,23 @@ The exact size of a tile for a chart will be determined by the other content tha
 
 ##### Grid Styles
 
-For charts that include axis lines, they should be 1px, **offblack** `#333333`.
-Axis text/labels should be `Tableau Book`, 9px, **offblack** `#333333`.
-Grid lines should be set to 1px, dotted, **gray-300** `cccccc`.
+<article>
+
+Axis lines within charts should be formatted as:
+- **Weight**: 1px
+- **Color**: offblack `#333333`
+
+Axis text/labels should be formatted as: 
+- **Font**: Tableau Book
+- **Font size**: 9pt
+- **Color**: offblack `#333333`
+
+Grid lines should be set to:
+- **Weight**: 1px
+- **Style**: Dotted
+- **Color**: gray-300 `cccccc`
+
+</article>
 
 ![Grid Lines](./assets/analytics/tableau/gridlines.png "Grid Lines")
 
@@ -52,8 +66,17 @@ To determine what colors should be used together in charts, you should determine
 
 The specific content of tooltips of the chart will be dictated by the data being displayed.
 But in general, they should contain a label and a value.
-All text in the tooltip should be 10px, **offblack** `#333333`.
-The label should `Tableau Book` and the data value should be `Tableau Bold`.
+
+<article>
+
+All text in the tooltip should be set to:
+
+- **Font**: 10pt
+- **Color**: offblack `#333333`
+- **Label font**: Tableau Book
+- **Value font**: Tableau Bold
+
+</article>
 
 ![Chart Tooltips](./assets/analytics/tableau/charttooltip.png "Chart Tooltips")
 

@@ -1,6 +1,6 @@
 # Tableau Tables
 
-###### Last updated December 21, 2020
+###### Last updated February 24, 2021
 
 :::
 
@@ -26,13 +26,37 @@ The Outer Padding for the tile should be at least 10px on the right and left so 
 
 ### Table Header Row
 
-The content in the header row of a table should be **dark-blue** `#006d9a`, `Tableau Bold`, 9px.
+<article>
+
+The content in the header row of a table should be set to: 
+- **Color**: dark-blue `#006d9a`
+- **Font**: Tableau Bold
+- **Font size**: 9pt
+
+</article>
 
 ### Table Cells
 
-The contents of table cells should be `Tableau Regular`, **offblack** `#333333`, 9px.
-The Shading - Row Banding on table rows should be set to a background color of `#f9fafb` for both Panes and Headers.
-The Border - Default on Cells and Headers should be set to 1px, solid, `#f1f1f1`.
+<article>
+
+The contents of table cells should be set to: 
+- **Color**: offblack `#333333`
+- **Font**: Tableau Regular
+- **Font size**: 9pt
+
+
+The Shading - Row Banding on table rows for both Panes and Headers is formatted as:
+
+- **Background**: `#f9fafb`
+
+The Border - Default formatting on Cells and Headers should be set to:
+
+- **Color**: `#f1f1f1`
+- **Style**: Solid
+- **Weight**: 1px
+
+</article>
+
 This creates a minimal banding effect without being too distracting for the small font size we use on Tableau tables.
 
 :::
@@ -43,8 +67,16 @@ This creates a minimal banding effect without being too distracting for the smal
 
 The specific content of tooltips of the table will be dictated by the data being displayed.
 But in general, they should contain a label and a value.
-All text in the tooltip should be 10px, **offblack** `#333333`.
-The label should `Tableau Book` and the data value should be `Tableau Bold`.
+
+<article>
+
+All text in the tooltip should be set to:
+- **Font**: 10pt
+- **Color**: offblack `#333333`
+- **Label font**: Tableau Book
+- **Data font**: Tableau Bold
+
+</article>
 
 :::
 

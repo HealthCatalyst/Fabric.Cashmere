@@ -235,9 +235,9 @@ const routes: Routes = [
                 path: 'powerbi-metrics',
                 component: MarkdownContentComponent,
                 data: {
-                    title: 'Process Metrics',
+                    title: 'KPI Metrics',
                     category: 'Power BI',
-                    document: require('raw-loader!../../../guides/analytics/powerbi/process-metrics.md')
+                    document: require('raw-loader!../../../guides/analytics/powerbi/kpi-metrics.md')
                 }
             },
             {
