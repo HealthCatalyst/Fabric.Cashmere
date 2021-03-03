@@ -22,7 +22,7 @@ export class FeedbackFormComponent implements OnInit, OnDestroy {
             if (event instanceof NavigationEnd) {
                 this.notHelpful = false;
                 this.thankYouMsg = false;
-                if ( this.feedbackForm ) {
+                if (this.feedbackForm) {
                     this.feedbackForm.reset();
                 }
             }
@@ -62,7 +62,10 @@ export class FeedbackFormComponent implements OnInit, OnDestroy {
         formData.append('currentUrl', this.router.url);
         formData.append('helpfulRating', this.feedbackForm.controls.helpfulRating.value);
         formData.append('yourEmail', this.feedbackForm.controls.yourEmail.value ? this.feedbackForm.controls.yourEmail.value : '');
-        formData.append('yourSuggestions', this.feedbackForm.controls.yourSuggestions.value ? this.feedbackForm.controls.yourSuggestions.value : '');
+        formData.append(
+            'yourSuggestions',
+            this.feedbackForm.controls.yourSuggestions.value ? this.feedbackForm.controls.yourSuggestions.value : ''
+        );
 
         this.httpClient.post<any>(this.scriptURL, formData).subscribe(
             res => console.log(res),
