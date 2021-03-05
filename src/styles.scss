@@ -1,10 +1,10 @@
-$fa-font-path: "../node_modules/font-awesome/fonts";
-@import "../node_modules/font-awesome/scss/font-awesome";
+$fa-font-path: "/node_modules/font-awesome/fonts";
+@import "/node_modules/font-awesome/scss/font-awesome";
 
-$notosans-fontface-path: "../node_modules/notosans-fontface/fonts";
-@import "../node_modules/notosans-fontface/scss/notosans-fontface-allweight";
+$notosans-fontface-path: "/node_modules/notosans-fontface/fonts";
+@import "/node_modules/notosans-fontface/scss/notosans-fontface-allweight";
 
-$hc-icons-font-path: "../dist/cashmere/hcicons";
+$hc-icons-font-path: "/dist/cashmere/hcicons";
 @import "hcicons/hcicons";
 
 @import "scss/cashmere";
