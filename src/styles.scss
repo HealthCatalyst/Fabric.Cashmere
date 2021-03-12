@@ -1,13 +1,10 @@
-$fa-font-path: "/node_modules/font-awesome/fonts";
-@import "/node_modules/font-awesome/scss/font-awesome";
+@import '/node_modules/font-awesome/scss/font-awesome';
 
-$notosans-fontface-path: "/node_modules/notosans-fontface/fonts";
-@import "/node_modules/notosans-fontface/scss/notosans-fontface-allweight";
+@import '/node_modules/notosans-fontface/scss/notosans-fontface-allweight';
 
-$hc-icons-font-path: "/dist/cashmere/hcicons";
-@import "hcicons/hcicons";
+@import 'hcicons/hcicons';
 
-@import "scss/cashmere";
+@import 'scss/cashmere';
 
 html,
 body {
@@ -262,7 +259,7 @@ table {
         margin-right: 5px;
         color: rgba($gray-600, 0.5);
         @include fontSize(14px);
-        font-family: Consolas, Menlo, "Ubuntu Mono", monospace;
+        font-family: Consolas, Menlo, 'Ubuntu Mono', monospace;
     }
 }
 
