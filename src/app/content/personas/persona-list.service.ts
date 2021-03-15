@@ -59,12 +59,6 @@ export class PersonaService {
             document: require('raw-loader!../../../../guides/content/personas/cdm-workflow-user.md')
         },
         {
-            title: 'CDI Specialist/HIM Coder',
-            route: 'cdi-specialist-him-coder',
-            type: 'external',
-            document: require('raw-loader!../../../../guides/content/personas/cdi-specialist-him-coder.md')
-        },
-        {
             title: 'Chief Population Health Officer',
             route: 'chief-population-health-officer',
             type: 'external',
@@ -255,12 +249,6 @@ export class PersonaService {
             route: 'system-administrator',
             type: 'external',
             document: require('raw-loader!../../../../guides/content/personas/system-administrator.md')
-        },
-        {
-            title: 'Utilization Reviewer',
-            route: 'utilization-reviewer',
-            type: 'external',
-            document: require('raw-loader!../../../../guides/content/personas/utilization-reviewer.md')
         },
         {
             title: 'Vitalware Director of Revenue Integrity',
