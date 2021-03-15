@@ -1,15 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
   <defs>
     <clipPath id="clip-path">
-      <circle id="Ellipse_5" data-name="Ellipse 5" cx="100" cy="100" r="100"/>
-    </clipPath>
-    <linearGradient id="linear-gradient" x1="0.843" y1="0.226" x2="0.959" y2="1.374" gradientUnits="objectBoundingBox">
-      <stop offset="0" stop-color="#00455f"/>
-      <stop offset="0.171" stop-color="#006d93" stop-opacity="0.631"/>
-      <stop offset="0.486" stop-color="#0099d2" stop-opacity="0.2"/>
-      <stop offset="1" stop-color="#00aeef" stop-opacity="0"/>
-    </linearGradient>
-    <clipPath id="clip-path-2">
       <circle id="Ellipse_163" data-name="Ellipse 163" cx="100" cy="100" r="100" transform="translate(72.355 266.588)"/>
     </clipPath>
     <clipPath id="clip-Vitalware">
@@ -19,10 +10,7 @@
   <g id="Vitalware" clip-path="url(#clip-Vitalware)">
     <g id="Group_973" data-name="Group 973" transform="translate(-72.355 -266.588)">
       <path id="Path_12352" data-name="Path 12352" d="M172.3,266.588a100,100,0,1,1-100,100,100,100,0,0,1,100-100" fill="#00aeff"/>
-      <g id="Shadow" transform="translate(72.355 266.588)" clip-path="url(#clip-path)">
-        <path id="Path_3" data-name="Path 3" d="M307.359,229.126l-46.994-80.274-21.448,4.56-14.768-23.653-24.488,45.964-25.3-40.817L151.2,175.722,126.822,134.9,104.607,181.85,84.881,161.93H61.255L194.806,303.684C193.608,307.722,305.088,231.208,307.359,229.126Z" transform="translate(-61.748 -55.051)" opacity="0.8" fill="url(#linear-gradient)"/>
-      </g>
-      <g id="Line" clip-path="url(#clip-path-2)">
+      <g id="Line" clip-path="url(#clip-path)">
         <path id="Path_12357" data-name="Path 12357" d="M272.355,366.553q0-3.809-.281-7.547H251.723l-10.045-27.632H226.44l-16.566,48.168-16.565-48.167v-.019H178.283v.076l-.169-.058-16.768,48.759-16.77-48.758v-.019H129.553v.076l-.171-.058-16.77,48.763-7.428-20.3-32.9-.015c-.148,2.226-.23,4.47-.23,6.733q0,3.784.279,7.5H95.274l9.907,27.261.159.437h14.872l16.768-48.759,16.768,48.754,15.2.005,16.767-48.759,16.531,48.068.221.641h14.663l17.093-49.233,7.415,20.4.135.371h30.358C272.274,371.027,272.355,368.8,272.355,366.553Z" fill="#fff"/>
       </g>
     </g>
