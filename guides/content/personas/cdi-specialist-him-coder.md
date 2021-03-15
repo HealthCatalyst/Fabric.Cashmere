@@ -1,6 +1,6 @@
 # CDI Specialist/HIM Coder
 
-###### Last updated Nov 30, 2020
+###### Last updated Mar 12, 2021
 
 :::
 

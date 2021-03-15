@@ -1,6 +1,6 @@
 # Revenue Integrity Analyst
 
-###### Last updated Nov 30, 2020
+###### Last updated Mar 12, 2021
 
 :::
 

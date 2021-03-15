@@ -119,10 +119,10 @@ export class PersonaService {
             document: require('raw-loader!../../../../guides/content/personas/data-steward.md')
         },
         {
-            title: 'Developer',
-            route: 'developer',
-            type: 'external',
-            document: require('raw-loader!../../../../guides/content/personas/developer.md')
+            title: 'Health Catalyst Developer',
+            route: 'health-catalyst-developer',
+            type: 'internal',
+            document: require('raw-loader!../../../../guides/content/personas/health-catalyst-developer.md')
         },
         {
             title: 'EDW Manager',
@@ -131,10 +131,10 @@ export class PersonaService {
             document: require('raw-loader!../../../../guides/content/personas/edw-manager.md')
         },
         {
-            title: 'Executive',
-            route: 'executive',
+            title: 'VP, Revenue Cycle',
+            route: 'vp-revenue-cycle',
             type: 'external',
-            document: require('raw-loader!../../../../guides/content/personas/executive.md')
+            document: require('raw-loader!../../../../guides/content/personas/vp-revenue-cycle.md')
         },
         {
             title: 'Health Catalyst Analytics Director',
@@ -197,10 +197,10 @@ export class PersonaService {
             document: require('raw-loader!../../../../guides/content/personas/lead-physician.md')
         },
         {
-            title: 'Manager',
-            route: 'manager',
+            title: 'Director, Revenue Cycle',
+            route: 'director-revenue-cycle',
             type: 'external',
-            document: require('raw-loader!../../../../guides/content/personas/manager.md')
+            document: require('raw-loader!../../../../guides/content/personas/director-revenue-cycle.md')
         },
         {
             title: 'Network Administrator',
@@ -269,10 +269,10 @@ export class PersonaService {
             document: require('raw-loader!../../../../guides/content/personas/vitalware-director-of-revenue-integrity.md')
         },
         {
-            title: 'Vitalware User',
-            route: 'vitalware-user',
+            title: 'Health Catalyst Vitalware User',
+            route: 'health-catalyst-vitalware-user',
             type: 'internal',
-            document: require('raw-loader!../../../../guides/content/personas/vitalware-user.md')
+            document: require('raw-loader!../../../../guides/content/personas/health-catalyst-vitalware-user.md')
         }
     ];
 }
