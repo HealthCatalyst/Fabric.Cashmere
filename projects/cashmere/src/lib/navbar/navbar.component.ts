@@ -79,7 +79,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
         if (this._navbarMore) {
             this._navbarMore.closePopover();
         }
-        if ( this._linksTotalWidth === 0 ) {
+        if ( this._linksTotalWidth === 0 || this._linkWidths.length !== this._navLinks.length ) {
             this._collectNavLinkWidths();
         }
 
