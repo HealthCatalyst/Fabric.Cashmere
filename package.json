@@ -44,7 +44,8 @@
     "install:examples": "cd projects/cashmere-examples && npm ci && node ../../scripts/postinstall-hack",
     "install:bits": "cd projects/cashmere-bits && npm ci",
     "new:example": "ts-node scripts/new-example.ts",
-    "clean": "npx rimraf dist && npx rimraf projects/cashmere-bits/dist"
+    "clean": "npx rimraf dist && npx rimraf projects/cashmere-bits/dist",
+    "start-bs": "npm run dev-mode && ng serve -o --disable-host-check"
   },
   "dependencies": {
     "@angular/animations": "10.2.1",

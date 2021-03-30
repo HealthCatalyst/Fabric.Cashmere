@@ -31,6 +31,7 @@ We would love for you to contribute to Cashmere and be part of the community mak
 
 1.  You may need to run `npm run build` before you start, especially if it's your first time running Cashmere.
 2.  Run `npm start`. This will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the Cashmere library.
+3.  To run locally in BrowserStack, run `npm run start-bs` and start up your local testing in BrowserStack. Enter bs-local.com:4200 as your url.
 
 ### Code Documentation
 
