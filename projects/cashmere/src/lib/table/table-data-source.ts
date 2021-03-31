@@ -205,7 +205,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      */
     filterPredicate: (data: T, filter: string) => boolean = (data: T, filter: string): boolean => {
         // Transform the data into a lowercase string of all property values.
-        const accumulator = (currentTerm, key) => currentTerm + data[key];
+        const accumulator = (currentTerm, key) => `${currentTerm} ${data[key]}`;
         const dataStr = Object.keys(data)
             .reduce(accumulator, '')
             .toLowerCase();
