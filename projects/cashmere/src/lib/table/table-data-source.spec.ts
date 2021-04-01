@@ -141,5 +141,35 @@ describe('HcTableDataSource', () => {
                 ].toString()
             );
         });
+
+        fit('filters through the table by its id', () => {
+            var filter = "1";
+            const result = dataSource.filterPredicate(ELEMENT_DATA[0], filter);
+            expect(result).toBe(true);
+        })
+
+        fit('filters through the table by its name', () => {
+            var filter = "Hydrogen";
+            const result = dataSource.filterPredicate(ELEMENT_DATA[0], filter);
+            expect(result).toBe(true);
+        })
+
+        fit('filters through the table by its weight', () => {
+            var filter = "12.0107";
+            const result = dataSource.filterPredicate(ELEMENT_DATA[5], filter);
+            expect(result).toBe(true);
+        })
+
+        fit('filters through the table by its id and name', () => {
+            var filter = "3 Lithium";
+            const result = dataSource.filterPredicate(ELEMENT_DATA[2], filter);
+            expect(result).toBe(true);
+        })
+
+        fit('filters through the table by its name and weight', () => {
+            var filter = "Carbon 12.0107";
+            const result = dataSource.filterPredicate(ELEMENT_DATA[5], filter);
+            expect(result).toBe(true);
+        })
     });
 });
