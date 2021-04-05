@@ -27,6 +27,15 @@ const routes: Routes = [
                 }
             },
             {
+                path: 'references',
+                component: MarkdownContentComponent,
+                data: {
+                    title: 'References',
+                    category: 'Brand',
+                    document: require('raw-loader!../../../guides/content/references.md')
+                }
+            },
+            {
                 path: 'org-chart',
                 component: PersonaOrgComponent,
                 data: {
