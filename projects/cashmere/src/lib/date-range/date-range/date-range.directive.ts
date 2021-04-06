@@ -67,6 +67,6 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
 
     @HostListener('click')
     _onClick() {
-        this._overlayRef = this.calendarOverlayService.open(this._elementRef, this.options.center!);
+        this._overlayRef = this.calendarOverlayService.open(this._elementRef);
     }
 }

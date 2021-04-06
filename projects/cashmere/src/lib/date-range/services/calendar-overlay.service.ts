@@ -1,6 +1,5 @@
 import {Injectable, ElementRef, Injector} from '@angular/core';
 import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
-import {ConfigStoreService} from '../services/config-store.service';
 import {ComponentPortal, PortalInjector} from '@angular/cdk/portal';
 import {PickerOverlayComponent} from '../picker-overlay/picker-overlay.component';
 
@@ -10,9 +9,9 @@ export class CalendarOverlayService {
 
     constructor(private overlay: Overlay, private injector: Injector) {}
 
-    open(hostElemRef: ElementRef, center: boolean): OverlayRef {
+    open(hostElemRef: ElementRef): OverlayRef {
         this.hostElemRef = hostElemRef;
-        const overlayRef = this._createOverlay(center);
+        const overlayRef = this._createOverlay();
         const portalInjector = this._createInjector(overlayRef);
         const calendarPortal = new ComponentPortal(PickerOverlayComponent, null, portalInjector);
         overlayRef.attach(calendarPortal);
@@ -22,22 +21,13 @@ export class CalendarOverlayService {
         return overlayRef;
     }
 
-    private _createOverlay(center): OverlayRef {
-        const overlayConfig = this._getOverlayConfig(center);
+    private _createOverlay(): OverlayRef {
+        const overlayConfig = this._getOverlayConfig();
         return this.overlay.create(overlayConfig);
     }
 
-    private _getOverlayConfig(center): OverlayConfig {
-        let positionStrategy;
-
-        if(center){
-            positionStrategy = this.overlay
-            .position()
-            .global()
-            .centerHorizontally()
-            .centerVertically();
-        } else {
-            positionStrategy = this.overlay
+    private _getOverlayConfig(): OverlayConfig {
+        const positionStrategy = this.overlay
             .position()
             .flexibleConnectedTo(this.hostElemRef)
             .withFlexibleDimensions(false)
@@ -70,7 +60,6 @@ export class CalendarOverlayService {
                     overlayY: 'bottom'
                 }
             ]);
-        }
 
         const overlayConfig = new OverlayConfig({
             hasBackdrop: true,
