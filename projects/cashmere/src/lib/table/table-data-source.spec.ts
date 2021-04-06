@@ -146,31 +146,31 @@ describe('HcTableDataSource', () => {
     describe('filterPredicate()', () => {
         it('filters through the table by its id', () => {
             let filter = "1";
-            const result = dataSource.filterPredicate({...ELEMENT_DATA[0]}, filter);
+            const result = dataSource.filterPredicate({id: 1, name: 'Hydrogen', weight: 1.0079, discoveryDate: new Date('January 2 1900')}, filter);
             expect(result).toBe(true);
         });
 
         it('filters through the table by its name', () => {
             let filter = "Hydrogen";
-            const result = dataSource.filterPredicate({...ELEMENT_DATA[0]}, filter);
+            const result = dataSource.filterPredicate({id: 1, name: 'Hydrogen', weight: 1.0079, discoveryDate: new Date('January 2 1900')}, filter);
             expect(result).toBe(true);
         });
 
         it('filters through the table by its weight', () => {
             let filter = "12.0107";
-            const result = dataSource.filterPredicate({...ELEMENT_DATA[5]}, filter);
+            const result = dataSource.filterPredicate({id: 6, name: 'Carbon', weight: 12.0107, discoveryDate: new Date('January 1 1945')}, filter);
             expect(result).toBe(true);
         });
 
         it('filters through the table by its id and name', () => {
             let filter = "3 Lithium";
-            const result = dataSource.filterPredicate({...ELEMENT_DATA[2]}, filter);
+            const result = dataSource.filterPredicate({id: 3, name: 'Lithium', weight: 6.941, discoveryDate: new Date('January 1 1800')}, filter);
             expect(result).toBe(true);
         });
 
         it('filters through the table by its name and weight', () => {
             let filter = "Carbon 12.0107";
-            const result = dataSource.filterPredicate({...ELEMENT_DATA[5]}, filter);
+            const result = dataSource.filterPredicate({id: 6, name: 'Carbon', weight: 12.0107, discoveryDate: new Date('January 1 1945')}, filter);
             expect(result).toBe(true);
         });
     });
