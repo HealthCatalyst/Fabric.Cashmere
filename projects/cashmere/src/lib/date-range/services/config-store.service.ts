@@ -17,8 +17,7 @@ export class ConfigStoreService {
         cancelLabel: 'Cancel',
         startDatePrefix: 'Start date:',
         endDatePrefix: 'End date:',
-        invalidDateLabel: 'Please enter valid date',
-        center: false
+        invalidDateLabel: 'Please enter valid date'
     };
 
     private dateRangeOptionsSubject: BehaviorSubject<DateRangeOptions> = new BehaviorSubject<DateRangeOptions>(this.defaultOptions);

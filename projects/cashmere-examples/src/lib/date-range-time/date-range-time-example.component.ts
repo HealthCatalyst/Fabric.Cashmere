@@ -16,8 +16,7 @@ export class DateRangeTimeExampleComponent implements OnInit {
             startDatePrefix: "Start Time",
             endDatePrefix: "End Time",
             invalidDateLabel: 'Start time must precede end time',
-            applyLabel: 'Apply',
-            center: true
+            applyLabel: 'Apply'
         };
     }
 
