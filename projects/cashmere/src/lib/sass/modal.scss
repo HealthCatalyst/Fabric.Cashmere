@@ -87,11 +87,7 @@ $modal-border: 1px solid $gray-200;
     font-weight: 600;
     min-height: $header-footer-height;
     padding: $modal-padding;
-    justify-content: center;
-
-    @include media-breakpoint-up(md) {
-        justify-content: flex-start;
-    }
+    justify-content: flex-start;
 }
 
 @mixin hc-modal-body() {
