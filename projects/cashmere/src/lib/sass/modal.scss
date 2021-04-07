@@ -56,6 +56,7 @@ $modal-border: 1px solid $gray-200;
     justify-content: space-between;
     min-height: $header-footer-height;
     padding: $modal-padding;
+    justify-content: flex-start;
 }
 
 @mixin hc-modal-body() {
