@@ -9,7 +9,6 @@
 import {_isNumberValue} from '@angular/cdk/coercion';
 import {DataSource} from '@angular/cdk/table';
 import {BehaviorSubject, combineLatest, merge, Observable, of as observableOf, Subscription} from 'rxjs';
-// import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {HcSort, Sort} from '../sort/index';
 import {map} from 'rxjs/operators';
 import {LoadMorePaginationComponent, PageEvent} from '../pagination/index';
@@ -31,7 +30,7 @@ export function _isLoadMorePaginator(pager: BasePaginationComponent): pager is L
 
 /**
  * Data source that accepts a client-side data array and includes native support of filtering,
- * sorting (using HcSort), and pagination (using MatPaginator).
+ * sorting (using HcSort), and pagination (using BasePaginationComponent).
  *
  * Allows for sort customization by overriding sortingDataAccessor, which defines how data
  * properties are accessed. Also allows for filter customization by overriding filterTermAccessor,
@@ -205,7 +204,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      */
     filterPredicate: (data: T, filter: string) => boolean = (data: T, filter: string): boolean => {
         // Transform the data into a lowercase string of all property values.
-        const accumulator = (currentTerm, key) => currentTerm + data[key];
+        const accumulator = (currentTerm, key) => `${currentTerm} ${data[key]}`;
         const dataStr = Object.keys(data)
             .reduce(accumulator, '')
             .toLowerCase();
@@ -228,7 +227,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * the provided base data and send it to the table for rendering.
      */
     _updateChangeSubscription() {
-        // Sorting and/or pagination should be watched if HcSort and/or MatPaginator are provided.
+        // Sorting and/or pagination should be watched if HcSort and/or BasePaginationComponent are provided.
         // The events should emit whenever the component emits a change or initializes, or if no
         // component is provided, a stream with just a null event should be provided.
         // The `sortChange` and `pageChange` acts as a signal to the combineLatests below so that the
@@ -289,7 +288,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
     }
 
     /**
-     * Returns a paged splice of the provided data array according to the provided MatPaginator's page
+     * Returns a paged splice of the provided data array according to the provided BasePaginationComponent's page
      * index and length. If there is no paginator provided, returns the data array as provided.
      */
     _pageData(data: T[]): T[] {
