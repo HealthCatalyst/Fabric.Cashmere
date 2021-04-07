@@ -9,9 +9,9 @@ export class CalendarOverlayService {
 
     constructor(private overlay: Overlay, private injector: Injector) {}
 
-    open(hostElemRef: ElementRef): OverlayRef {
+    open(hostElemRef: ElementRef, center: boolean): OverlayRef {
         this.hostElemRef = hostElemRef;
-        const overlayRef = this._createOverlay();
+        const overlayRef = this._createOverlay(center);
         const portalInjector = this._createInjector(overlayRef);
         const calendarPortal = new ComponentPortal(PickerOverlayComponent, null, portalInjector);
         overlayRef.attach(calendarPortal);
@@ -21,13 +21,22 @@ export class CalendarOverlayService {
         return overlayRef;
     }
 
-    private _createOverlay(): OverlayRef {
-        const overlayConfig = this._getOverlayConfig();
+    private _createOverlay(center): OverlayRef {
+        const overlayConfig = this._getOverlayConfig(center);
         return this.overlay.create(overlayConfig);
     }
 
-    private _getOverlayConfig(): OverlayConfig {
-        const positionStrategy = this.overlay
+    private _getOverlayConfig(center): OverlayConfig {
+        let positionStrategy;
+
+        if (center) {
+            positionStrategy = this.overlay
+            .position()
+            .global()
+            .centerHorizontally()
+            .centerVertically();
+        } else {
+            positionStrategy = this.overlay
             .position()
             .flexibleConnectedTo(this.hostElemRef)
             .withFlexibleDimensions(false)
@@ -60,6 +69,7 @@ export class CalendarOverlayService {
                     overlayY: 'bottom'
                 }
             ]);
+        }
 
         const overlayConfig = new OverlayConfig({
             hasBackdrop: true,
