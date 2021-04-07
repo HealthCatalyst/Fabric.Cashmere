@@ -9,7 +9,7 @@ import {HighlightDirective} from '../highlight/highlight.directive';
 })
 export class MarkdownDirective implements OnChanges {
     @Input()
-    hcMarkdown: string;
+    hcMarkdown: Object;
     @Input()
     sanitize: boolean;
     @Input()
@@ -37,7 +37,7 @@ export class MarkdownDirective implements OnChanges {
                 return true;
             }
         });
-        this.el.nativeElement.innerHTML = md.render(this.hcMarkdown, {sanitize: this.sanitize});
+        this.el.nativeElement.innerHTML = md.render(this.hcMarkdown['default'], {sanitize: this.sanitize});
         if (this.highlight) {
             const preTags: Array<ElementRef> = this.el.nativeElement.getElementsByTagName('pre');
             for (const pre of preTags) {
