@@ -225,6 +225,29 @@ table {
         }
     }
 
+    //Work with this
+
+    @media only screen and (max-width: 600px) {
+        .docs-api-properties-table, 
+        .docs-api-properties-row,
+        .docs-api-properties-th,
+        .docs-api-properties-name-cell, 
+        .docs-api-property-description{
+            padding-top: 0;
+            padding-bottom: 5px;
+            display: block;
+        }
+        
+        tbody > tr:not(:last-child) > {
+            .docs-api-properties-th:nth-child(odd),
+            .docs-api-properties-name-cell {
+                padding-top: 5px;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+        }
+    }
+
     tbody > tr:not(:last-child) > {
         td,
         th {
