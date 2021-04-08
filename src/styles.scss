@@ -225,9 +225,7 @@ table {
         }
     }
 
-    //Work with this
-
-    @media only screen and (max-width: 600px) {
+    @include media-breakpoint-down(sm) {
         .docs-api-properties-table, 
         .docs-api-properties-row,
         .docs-api-properties-th,
