@@ -20,8 +20,6 @@ Individual with complex medical needs, limited medical knowledge and often high 
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -42,7 +40,5 @@ Individual with complex medical needs, limited medical knowledge and often high 
 -   Reminders of their upcoming appointments, include when, where, and how to prepare
 -   Information that they can easily access to answer questions and learn more about their conditions
 -   Care that addresses their specific social, financial, and mental health barriers
-
-</article>
 
 :::

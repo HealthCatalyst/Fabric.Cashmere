@@ -20,8 +20,6 @@ Junior data architect at a healthcare organization. Supporting EDW operations. H
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -40,7 +38,5 @@ Junior data architect at a healthcare organization. Supporting EDW operations. H
 -   Use EDW Console to manage production of the EDW every morning
 -   Identify the ID of failed batches
 -   Identify whether a problem involves one table or many
-
-</article>
 
 :::

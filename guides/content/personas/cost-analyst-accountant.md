@@ -20,8 +20,6 @@ Aaron performs validations to resolve configuration and data quality discrepanci
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -39,7 +37,5 @@ Aaron performs validations to resolve configuration and data quality discrepanci
 -   Access to accurate and detailed cost accounting
 -   Ability to adjust expenses and allocations as needed, especially during monthly costing period
 -   Knowledge of the data available in the source marts and how the data relates
-
-</article>
 
 :::

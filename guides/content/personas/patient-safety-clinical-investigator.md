@@ -29,8 +29,6 @@ Expert Clinical Reviewer and patient safety engagement lead.  Workflow is genera
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -54,7 +52,5 @@ Expert Clinical Reviewer and patient safety engagement lead.  Workflow is genera
 -   Provide real-time feedback to the Unit leadership and Risk Management on high-harm events
 -   Facilitate and drive improvement efforts based on patient safety findings
 -   Cost and utilization analytics
-
-</article>
 
 :::

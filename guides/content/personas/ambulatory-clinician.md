@@ -24,8 +24,6 @@
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -43,7 +41,5 @@
 -   Access to review patient analytics in their EMR workflow
 -   Easy way to know if the patient has an ambulatory care team and review patient's care plan
 -   Ability to view / communicate with the patient's care team
-
-</article>
 
 :::

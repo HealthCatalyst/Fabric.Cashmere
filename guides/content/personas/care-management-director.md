@@ -20,8 +20,6 @@ Former clinician with several years of administrative experience; now responsibl
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -51,7 +49,5 @@ Former clinician with several years of administrative experience; now responsibl
 -   Configure possible reasons to decline or discharge a patient
 -   Visibility into staff performance metrics
 -   Review / compare outcomes for patients in care management
-
-</article>
 
 :::

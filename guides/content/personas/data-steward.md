@@ -20,8 +20,6 @@ Data stewardship is owned by content experts and supported by Information Techno
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -41,7 +39,5 @@ Data stewardship is owned by content experts and supported by Information Techno
 -   Enter, receive, and respond to support tickets (preferably through the app)
 -   Admin tab(s) with data integrity measures highlighting potential problems and with validation tracking
 -   View and edit metric, cohort, terminology, etc., definitions within the app
-
-</article>
 
 :::

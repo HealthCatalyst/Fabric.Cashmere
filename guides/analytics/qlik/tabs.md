@@ -21,10 +21,8 @@ Each tab is a text object that utilizes actions to create a conditionally-shown 
 
 ##### Formatting
 
-In order to recreate the styling of the Cashmere web component in Qlik, each text object is on the same y-position and adjusted until their vertical sides touch. 
+In order to recreate the styling of the Cashmere web component in Qlik, each text object is on the same y-position and adjusted until their vertical sides touch.
 Each object follows these general guidelines:
-
-<article>
 
 Object:
 - **Height**: 35px
@@ -38,29 +36,19 @@ Object label:
 - **Font (unselected)**: Arial, 11pt
 - **Font color**: off-black `#333333 RGB(51,51,51)`
 
-</article>
-
 ### Selection Items
 
 The y position of the Tab Set Underline should be equal to the bottom of the tabs. The width should extend from the left edge of the first tab to the right edge of the page.
 Format the Tab Set Underline as follows:
 
-<article>
-
 - **Background**: Transparent
 - **Weight**: 1px
 - **Color**: slate-gray-300 `#c0c5cc RGB(192,197,204)`
 
-</article>
-
 The positioning of the Tab Selected Highlight must be set manually and must utilize conditional show-hide functionality to disappear when a tab is de-selected. The width of the Tab Selected highlight should match the width of the selected tab.
 It should be formatted as:
 
-<article>
-
 - **Background**: blue `#00aeff RGB(0,174,255)`
 - **Height**: 4px
-
-</article>
 
 :::

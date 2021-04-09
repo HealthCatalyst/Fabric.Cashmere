@@ -96,12 +96,9 @@ Details about use of the sidebar can be found in the [filters section](/analytic
 
 ### Content Area
 
-<article>
-
 The background color for the content area can be one of the following values:
 - **Background**: slate-gray-100 `#f0f3f6`
-- **Background**: white `#ffffff` 
-</article>
+- **Background**: white `#ffffff`
 
 The Inner Padding for the content area on dashboards should be at least `20, 20, 20, 10`.
 Note that the content area on the [About Page](/analytics/tableau-about) applies padding to the contained items instead.
@@ -116,13 +113,10 @@ As with Cashmere web applications, content is typically contained within [tiles]
 Unfortunately Tableau does not support rounded edges or drop-shadows, so tiles within Tableau apps will look slightly different than their Cashmere counterparts.
 Layout specifics for the most common tiles can be found in the [KPI Metrics section](/analytics/tableau-metrics), [Charts section](/analytics/tableau-charts), and [Tables section](/analytics/tableau-tables). Refer to the template or these sections for working examples.
 
-<article>
-
 In general, a Tableau tile is a vertical container formatted with the following values:
-- **Background**: white `#ffffff` 
+- **Background**: white `#ffffff`
 - **Border style**: solid
 - **Border**: slate-gray-300 `#c0c5cc`
-</article>
 
 Tiles should have at least 10px of padding between each other (5px on either side).
 
@@ -135,18 +129,15 @@ Tiles should have at least 10px of padding between each other (5px on either sid
 ### Tile Header
 
 Every tile should include a header horizontal container with a title, an info button, and a drill-down button (optional).
-<article>
 
-The header container is formatted as follows: 
+The header container is formatted as follows:
 - **Height**: 35px
 - **Padding (outer)**: `10, 5, 10, 0`
 
-The header text should be 
-- **Font**: Tableau Bold, 
+The header text should be
+- **Font**: Tableau Bold,
 - **Color**: offblack `#333333`
 - **Size**: 10pt
-
-</article>
 
 For the info tooltip, we leverage a worksheet with a shape.
 The shape used is included in the folder called "HealthCatalystShapes" in the template zip file.
@@ -169,8 +160,6 @@ For a navigation button, remove all outer padding, set the fixed width to 30px, 
 
 ### Divider
 
-<article>
-
 A horizontal line divides the header from the content of the tile and is formatted as follows:
 - **Weight**: 1px
 
@@ -178,8 +167,6 @@ Add a blank item to the tile vertical container and format it with the following
 - **Padding (outer)**: `10, 0, 10, 5`
 - **Height**: 6px
 - **Background**: slate-gray-300 `#c0c5cc`
-
-</article>
 
 ### Content
 

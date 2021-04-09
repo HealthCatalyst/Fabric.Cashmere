@@ -20,8 +20,6 @@ The EL has primary accountability for the success of our client engagements. Suc
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -48,7 +46,5 @@ The EL has primary accountability for the success of our client engagements. Suc
 -   Reminders of their upcoming appointments, include when, where, and how to prepare
 -   Information that they can easily access to answer questions and learn more about their conditions
 -   Care that addresses their specific social, financial, and mental health barriers
-
-</article>
 
 :::

@@ -20,8 +20,6 @@ Very often monitors process data for her facility and/or department. When there 
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -46,5 +44,4 @@ Very often monitors process data for her facility and/or department. When there 
 -   Timely summary of process misses to enable immediate investigation
 -   List of prioritized patients along with prior and suggested interventions
 
-</article>
 :::

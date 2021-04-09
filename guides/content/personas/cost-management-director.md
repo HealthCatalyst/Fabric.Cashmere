@@ -20,8 +20,6 @@ Hugh leads cost management efforts in the healthcare system. He works with the s
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -39,7 +37,5 @@ Hugh leads cost management efforts in the healthcare system. He works with the s
 -   Access to accurate and detailed cost accounting
 -   Knowledge and access to internal clinical and financial SMEs
 -   Strategic guidance from organizational executive champion
-
-</article>
 
 :::

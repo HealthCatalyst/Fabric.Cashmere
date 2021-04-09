@@ -20,8 +20,6 @@ Dee is a clinician with some business strategy and financial acumen; he's a stra
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -42,7 +40,5 @@ Dee is a clinician with some business strategy and financial acumen; he's a stra
 -   Surface and prioritize specific opportunities to improve value-based care performance (heavy-use at fiscal year end to decide what to prioritize for next year)
 -   Generate monthly / quarterly holistic performance reports
 -   Expose areas of interest / concern that had not previously been surfaced
-
-</article>
 
 :::

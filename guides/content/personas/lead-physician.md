@@ -20,8 +20,6 @@ Dr. Haugen frequently monitors data on quality, safety, appropriateness, and ove
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -48,7 +46,5 @@ Dr. Haugen frequently monitors data on quality, safety, appropriateness, and ove
 -   Ability to facilitate discussions among the multidisciplinary work group, supported by the appropriate data
 -   Investigate / validate potential opportunities for improvement delegated by a [Healthcare Executive](/content/personas/healthcare-executive).
 -   Ability to create reports that convey where and by whom processes and interventions are not being followed
-
-</article>
 
 :::

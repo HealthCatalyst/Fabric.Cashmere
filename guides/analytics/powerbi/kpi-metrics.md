@@ -26,8 +26,6 @@ It's important for us to take advantage of this convention as a way to guide use
 KPI Metrics follow all the general standards for tiles as defined in the [Foundations section](/analytics/powerbi-foundations).
 Refer to that **Tile Header** and **Divider** sections of that page for specific parameters to apply to the top of the KPI.
 
-<article>
-
 The main KPI value is formatted as:
 - **Font**: Segoe UI Light
 - **Font size**: 24px
@@ -39,8 +37,6 @@ The second line formatting values are:
 - **Font**: Segoe UI
 - **Font size**: 10px
 - **Font color**: offblack `#333333`
-
-</article>
 
 Arrows or text indicating positive trends should be set to **green** `#00a859`.
 For negative trends, use **red** `#f13c45`.

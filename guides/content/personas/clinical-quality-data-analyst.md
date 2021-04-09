@@ -20,8 +20,6 @@ The Clinical/Quality Data Analyst has experience and expertise with domain data 
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -45,7 +43,5 @@ The Clinical/Quality Data Analyst has experience and expertise with domain data 
     -   Capture the date of intervention start—and then track different metrics from that point (e.g., antibiotic compliance, mortality, etc.)
     -   Answer: Have we decreased variation and made significant difference in a specific metric, outcome, or process aim from target?
     -   Attribute the impact to the intervention
-
-</article>
 
 :::
