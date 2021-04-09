@@ -37,8 +37,6 @@ For the selected tab it should be `Tableau Bold`.
 The positioning of the floating items (Tab Selected, and Tab Set Underline) must be set manually.
 The Tab Set Underline width should extend from the left edge of the first tab to the right edge of the Spacer in the Tab Set container.
 
-<article>
-
 The Tab Set Underline is formatted as follows:
 - **Height**: 1px
 - **Background**: slate-gray-300 `#c0c5cc`
@@ -51,7 +49,5 @@ The width of the Tab Selected highlight should match the width of the selected t
 - **Background**: blue `#00aeff`
 
 For the y position, subtract 2 from the y position of the Tab Set Underline calculated above.
-
-</article>
 
 :::

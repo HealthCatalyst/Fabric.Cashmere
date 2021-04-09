@@ -20,8 +20,6 @@ Primarily cares for patients by monitoring them, administering medications, cons
 
 </div>
 
-<article>
-
 ---
 
 ## Needs & Responsibilities
@@ -32,7 +30,5 @@ Primarily cares for patients by monitoring them, administering medications, cons
 -   Access to data that is refreshed e.g. every 6 hours ( e.g. timed for change of shift, sign out, and/or rounds)
 -   Have some way to report back that they have reviewed the risk for the patient
 -   Have some way to document intervention(s) for a new high-risk or increasing risk for the patient they are assigned to
-
-</article>
 
 :::

@@ -20,8 +20,6 @@ Victoria works with one to two clients to fill a measurable queue of opportuniti
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -45,7 +43,5 @@ Victoria works with one to two clients to fill a measurable queue of opportuniti
 -   Proven and standard programming languages, tools, techniques, and technologies
 -   Tools to build, edit, and export populations, measures, terminology, etc., in collaboration with project stakeholders and sponsors
 -   Information and SMEs in multiple domains, e.g., financial, clinical, and operational
-
-</article>
 
 :::

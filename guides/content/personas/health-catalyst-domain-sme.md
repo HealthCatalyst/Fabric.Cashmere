@@ -20,8 +20,6 @@ Sean has a deep understanding of healthcare and especially of his domain area (c
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -43,7 +41,5 @@ Sean has a deep understanding of healthcare and especially of his domain area (c
 -   Process facilitations tools
 -   Outcome improvement tools
 -   Presentation tools
-
-</article>
 
 :::

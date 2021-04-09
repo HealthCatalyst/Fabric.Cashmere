@@ -26,32 +26,24 @@ The table should leverage the remaining content area of the tile.
 
 ### Table Header Row
 
-<article>
-
 The content in the header row of a table is formatted as:
 - **Font**: Segoe (Bold)
 - **Font color**: dark-blue `#006d9a`
 - **Font size**: 9pt
 
-</article>
-
 ### Table Cells
 
-<article>
-
-The contents of table cells should be 
+The contents of table cells should be
 - **Font**: Segoe UI
 - **Font color**: offblack `#333333`
 - **Font size**: 9pt
 
 The Shading - Row Banding on table rows should be set to a background color of `#f9fafb` for both Panes and Headers.
 
-The Border - Default formatting values on Cells and Headers should be set to 
+The Border - Default formatting values on Cells and Headers should be set to
 - **Weight**: 1px
 - **Style**: Solid
 - **Color**: `#f1f1f1`
-
-</article>
 
 This creates a minimal banding effect without being too distracting for the small font size we use on Power BI tables.
 
@@ -64,9 +56,7 @@ This creates a minimal banding effect without being too distracting for the smal
 The specific content of tooltips of the table will be dictated by the data being displayed.
 But in general, they should contain a label and a value.
 
-<article>
-
-All text in the tooltip should be 
+All text in the tooltip should be
 - **Font**: Segoe UI
 - **Font color**: white `#ffffff`
 - **Font size**: 10pt

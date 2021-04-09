@@ -20,8 +20,6 @@ Kiri develops and executes strategies of implementing proprietary data warehousi
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -46,7 +44,5 @@ Kiri develops and executes strategies of implementing proprietary data warehousi
 -   Presentation and documentation tools
 -   Audit and usage dashboards (e.g., QlikView and other visualization tools)
 -   Tool for fixing coding errors (e.g., a text editor)
-
-</article>
 
 :::

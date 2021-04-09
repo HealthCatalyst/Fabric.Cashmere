@@ -12,14 +12,11 @@ The navbar is one of the most distinguishing elements of a Cashmere application.
 It is a hallmark of the Health Catalyst app brand on all platforms.
 For this reason, the styling of the navbar should not be altered from the template.
 
-<article>
-
 The Navbar is formatted accordingly:
-- **Background**: charcoal-blue `#384655 RGB(56,70,85)` 
-- **Type**: horizontal text object 
+- **Background**: charcoal-blue `#384655 RGB(56,70,85)`
+- **Type**: horizontal text object
 - **Height**: `50px`
 - **Position**: x:0, y:0
-</article>
 
 :::
 
@@ -27,15 +24,12 @@ The Navbar is formatted accordingly:
 
 ##### Brand
 
-<article>
-
 Brand is an image of the [Health Catalyst tri-flame](/foundations/logo) formatted as follows:
-- **Background**: blue `#00aeff RGB(0,174,255)` 
+- **Background**: blue `#00aeff RGB(0,174,255)`
 - **Type**: image
 - **Height**: 50px
 - **Width**: 50px
 - **Position**: x:0, y:0
-</article>
 
 :::
 
@@ -44,15 +38,12 @@ Brand is an image of the [Health Catalyst tri-flame](/foundations/logo) formatte
 ##### App Name
 
 App Name is the second fixed-width image object in the navbar, also containing one PNG image, fomatted with the following values:
-<article>
 
 - **Type**: image
 - **Height**: 50px
 - **Position**: To the right of the logo (~65px) and centered vertically within the Navbar
 - **Image stretch**: Keep Aspect
 - **Text margin**: 2pt
-
-</article>
 
 The image is the name of your application in the Flexo font (so the font isn't needed).
 To obtain a PNG for your application, contact the UX team via the `#design` Slack channel.
@@ -72,8 +63,6 @@ Then continue to edit the width and reduce the size of the container until it's 
 
 Links is a flexible series of horizontal text objects that contain page navigation actions to the different sections of your application. Utilizing actions turns the text objects into button objects. These buttons have the following values:
 
-<article>
-
 - **Background**: None
 - **Border**: None
 - **Type**: text object with actions
@@ -85,21 +74,15 @@ Links is a flexible series of horizontal text objects that contain page navigati
 - **Font color**: white `#ffffff RGB(255,255,255)`
 - **Text margin**: 2pt
 
-</article>
-
 Additionally, there is a floating line item called `Selected Highlight` that should be positioned under the selected item.
 The y position of that item should always be set to the bottom of the selected item, but the x position should match the x position of the selected item.
 The width of the selected highlight item should also match the selected text object item.
 
 ![Selected Link](./assets/analytics/qlik/qlik-selected.png "Selected link")
 
-<article>
-
 Text indicating a selection has been made is formatted differently than the rest of the text within Links
 - **Font (selected)**: Arial (Bold), 10pt
 - **Font (unselected)**: Arial, 10pt
-
-</article>
 
 :::
 

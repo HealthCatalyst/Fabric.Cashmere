@@ -26,20 +26,14 @@ The Outer Padding for the tile should be at least 10px on the right and left so 
 
 ### Table Header Row
 
-<article>
-
-The content in the header row of a table should be set to: 
+The content in the header row of a table should be set to:
 - **Color**: dark-blue `#006d9a`
 - **Font**: Tableau Bold
 - **Font size**: 9pt
 
-</article>
-
 ### Table Cells
 
-<article>
-
-The contents of table cells should be set to: 
+The contents of table cells should be set to:
 - **Color**: offblack `#333333`
 - **Font**: Tableau Regular
 - **Font size**: 9pt
@@ -55,8 +49,6 @@ The Border - Default formatting on Cells and Headers should be set to:
 - **Style**: Solid
 - **Weight**: 1px
 
-</article>
-
 This creates a minimal banding effect without being too distracting for the small font size we use on Tableau tables.
 
 :::
@@ -68,15 +60,11 @@ This creates a minimal banding effect without being too distracting for the smal
 The specific content of tooltips of the table will be dictated by the data being displayed.
 But in general, they should contain a label and a value.
 
-<article>
-
 All text in the tooltip should be set to:
 - **Font**: 10pt
 - **Color**: offblack `#333333`
 - **Label font**: Tableau Book
 - **Data font**: Tableau Bold
-
-</article>
 
 :::
 

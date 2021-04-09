@@ -47,6 +47,12 @@ export class MarkdownDirective implements OnChanges {
             }
         }
 
+        // Add an article tag to all lists in markdown to include Cashmere list styling
+        const listTags: Array<HTMLElement> = this.el.nativeElement.querySelectorAll('ul,ol');
+        for (const list of listTags) {
+            list.outerHTML = '<article>' + list.outerHTML + '</article>';
+        }
+
         this.loaded.emit( true );
     }
 }

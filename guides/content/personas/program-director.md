@@ -20,8 +20,6 @@ The program manager or director is accountable for performance and outcomes impr
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -45,7 +43,5 @@ The program manager or director is accountable for performance and outcomes impr
 -   Use multiple methods to export data for effective communication (Excel, visualizations)
 -   Share targeted feedback with frontline providers or nurses who may not be checking the app regularly (via EMR, email, or another mechanism)
     -   This includes sharing information only applicable to a specific provider (not all providers)
-
-</article>
 
 :::

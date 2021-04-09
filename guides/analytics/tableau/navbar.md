@@ -23,8 +23,6 @@ Below is the hierarchy for the container (a floating item called "Selected Highl
 
 ##### Brand
 
-<article>
-
 Brand is a fixed width horizontal container.
 - **Background**: blue `#00aeff`
 - **Height**: 50px
@@ -32,8 +30,6 @@ Brand is a fixed width horizontal container.
 
 Within the container is an SVG of the Health Catalyst tri-flame.
 - **Padding (outer)**: 8px
-
-</article>
 
 :::
 
@@ -71,8 +67,6 @@ The Outer Padding on any navbar link should be set to `4, 5, 4, 3`.
 These values are important so the bottom of the navbar text aligns with the bottom of the app name.
 The background color and border on the button should be set to `None`.
 
-<article>
-
 The button for the currently selected page should be formatted as:
 
 - **Font (selected)**: Tableau Bold
@@ -85,12 +79,10 @@ Adjust the left & right Outer Padding of Selected Highlight to account for paddi
 
 ![Selected Link](./assets/analytics/tableau/selected.png "Selected link")
 
-All other buttons should be formatted as: 
+All other buttons should be formatted as:
 
 - **Font**: Tableau Regular
 - **Color**: gray-200 (the second swatch in the fourth row of the Font color picker)
-
-</article>
 
 :::
 
@@ -115,11 +107,9 @@ Contact the UX team via the `#design` Slack channel for icon svgs.
 
 ##### Co-branding
 
-<article>
 Co-Branding is the final fixed width horizontal container set to:
 - **Width**: 200px
 - **Background**: white `#ffffff`
-</article>
 
 This space allows applications to include the logo of your customer.
 Ideally you'll want the horizontal version of a customer's logo with a white or transparent background.
