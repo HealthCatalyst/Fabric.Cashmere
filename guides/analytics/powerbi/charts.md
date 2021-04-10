@@ -31,8 +31,6 @@ The exact size of a tile for a chart will be determined by the other content tha
 
 ##### Grid Styles
 
-<article>
-
 Axis lines in charts are set to the following values:
 - **Weight**: 1px
 - **Color**: offblack `#333333`
@@ -43,8 +41,6 @@ Gride lines are set to the following values:
 - **Weight**: 1px
 - **Style**: Dotted
 - **Color**: gray-300 `#cccccc`
-
-</article>
 
 ![Grid Lines](./assets/analytics/powerbi/pbi-grid-lines.png "Grid Lines")
 
@@ -62,7 +58,7 @@ To determine what colors should be used together in charts, you should determine
 
 </div>
 
-Charts that are dense, complex, and/or require specialized knowledge or experience to comprehend are well-suited for review by both Health Catalyst's data science team and design teams to ensure that visual elements such as color saturation, line thickness, shapes, label placements, etc., are crafted to best support the data story. 
+Charts that are dense, complex, and/or require specialized knowledge or experience to comprehend are well-suited for review by both Health Catalyst's data science team and design teams to ensure that visual elements such as color saturation, line thickness, shapes, label placements, etc., are crafted to best support the data story.
 
 :::
 
@@ -73,15 +69,11 @@ Charts that are dense, complex, and/or require specialized knowledge or experien
 The specific content of tooltips of the chart will be dictated by the data being displayed.
 But in general, they should contain a label and a value.
 
-<article>
-
 All text in the tooltip should be formatted accordingly:
 - **Font**: Segoe UI
 - **Font color**: white `#ffffff`
 - **Font size**: 10pt
 - **Background**: charcoal-blue `#384655`
-
-</article>
 
 <div style="text-align:center"><br>
 
@@ -94,13 +86,11 @@ All text in the tooltip should be formatted accordingly:
 
 ##### Visual Header Tooltips
 
-Charts should include tooltips that enable and enhance self-service analytics and data exploration. 
+Charts should include tooltips that enable and enhance self-service analytics and data exploration.
 
 ### Info Tooltip
 
-Every chart should include an info tooltip in its header. 
-
-<article>
+Every chart should include an info tooltip in its header.
 
 All text in the tooltip should be formatted as follows:
 - **Font**: Segoe UI
@@ -108,8 +98,6 @@ All text in the tooltip should be formatted as follows:
 - **Font size**: 10pt
 - **Background**: charcoal-blue `#384655`
 - **Icon color**: slate-gray-400 `#708090`
-
-</article>
 
 Refer to the [Foundations section](/analytics/powerbi-foundations) for information on how to configure it.
 The info tooltip should provide a longer description of what is being visualized on the chart, how it should read, and any considerations when evaluating it.
@@ -122,7 +110,7 @@ If additional controls are included above the chart, the info tooltip can also p
 
 ### Drill/Expand Tooltips
 
-Every chart should include at least one header hover that encourages users to explore the data within the visualization. Some hovers allow for data drilling (e.g., clicking into a single month) while others enable data expansion (e.g., viewing 12 months of data for a given year). Use your best judgement to carefully choose the most effective header icons for a chart, while weighing the potentially overwhelming effect that providing too many options brings. 
+Every chart should include at least one header hover that encourages users to explore the data within the visualization. Some hovers allow for data drilling (e.g., clicking into a single month) while others enable data expansion (e.g., viewing 12 months of data for a given year). Use your best judgement to carefully choose the most effective header icons for a chart, while weighing the potentially overwhelming effect that providing too many options brings.
 
 <div style="text-align:center"><br>
 

@@ -24,22 +24,16 @@ Each tab is a button that contains a bookmark link to another sheet.
 
 The tab set buttons should be layered on top of a blank text object that extends the entire width of the tab content.
 
-<article>
-
 Formatting of button text is as follows:
 - **Font (selected tab)**: Segoe (Bold)
 - **Font(unselected)**: Segoe UI
 - **Font size**: 11pt
 - **Font color**: offblack `#333333`
 
-</article>
-
 ### Floating Objects
 
 The positioning of the floating line objects (Tab Selected, and Tab Set Underline) must be set manually.
 The Tab Set Underline width should extend from the left edge of the first tab to the right edge of the Spacer in the Tab Set container.
-
-<article>
 
 It's formatted as
 - **Height**: 1px
@@ -51,7 +45,5 @@ The width of the Tab Selected highlight should match the width of the selected t
 - **Height**: 4px
 - **Background**: blue `#00aeff`
 For the y position, subtract 2 from the y position of the Tab Set Underline calculated above.
-
-</article>
 
 :::

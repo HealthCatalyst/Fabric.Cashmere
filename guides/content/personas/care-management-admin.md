@@ -20,8 +20,6 @@ Former clinician who has transitioned from patient care to a managerial role. Mu
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -53,7 +51,5 @@ Former clinician who has transitioned from patient care to a managerial role. Mu
 -   Conveniently audit the patient list to find those who care management needs have not been addressed
 -   Select from current data and export for external tools
 -   Easily trigger a refresh if application data from EDW is not current
-
-</article>
 
 :::

@@ -20,8 +20,6 @@ Health Catalyst team member preparing client source marts to deploy in the Healt
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -42,7 +40,5 @@ Health Catalyst team member preparing client source marts to deploy in the Healt
 -   Troubleshoot ETL failure by checking EDWAdmin tables
 -   Jump to SSIS or create manual workarounds if a feature is missing (and seems unlikely to be added in the near future), has an architecture that is table based rather than column based, is unpredictable, or is less efficient than an external alternative (e.g., C4 queries, bulk renaming, Gap Analyzer)
 -   Directly copy software code for use with multiple tools/applications
-
-</article>
 
 :::

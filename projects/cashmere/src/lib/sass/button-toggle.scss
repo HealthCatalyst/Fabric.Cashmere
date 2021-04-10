@@ -68,8 +68,9 @@
     }
 
     &.hc-toggle-checked {
-        background-color: shade($color, 20%);
-        box-shadow: inset 0 0 4px shade($color, 40%);
+        color: $white;
+        background-color: shade($color, 60%);
+        box-shadow: inset 0 0 4px shade($color, 50%);
     }
 
     // Remove Firefox's active state dotted outline b/c we have our own highlight

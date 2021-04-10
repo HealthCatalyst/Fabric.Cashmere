@@ -18,8 +18,6 @@
 
 </div>
 
-<article>
-
 ---
 
 ## Role
@@ -43,9 +41,5 @@
 
 -   If I don't send out accurate bills, there will be a delay in the payment received and our organization will endure financial strains due to these delays.
 -   If every bill is not accurately coded correctly, I will face collection and have to rebill claims, causing many delays in receiving payment and in some cases causing our organization not to receive any payment on a claim, creating a major financial strain on the entire hospital.
-
-
-
-</article>
 
 :::

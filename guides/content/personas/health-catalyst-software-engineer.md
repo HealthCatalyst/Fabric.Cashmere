@@ -20,8 +20,6 @@ Developing modern web apps built with current frameworks and consuming data thro
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -35,7 +33,5 @@ Developing modern web apps built with current frameworks and consuming data thro
 -   Build integrations between IDEA apps and mobile apps
 -   Write on top of the IDEA API on data that is automatically integrated with the EDW
 -   Understand what's possible with the IDEA API
-
-</article>
 
 :::

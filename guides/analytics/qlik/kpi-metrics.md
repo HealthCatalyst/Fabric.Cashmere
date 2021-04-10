@@ -13,7 +13,7 @@ They allow users to make an immediate judgement about the state of the informati
 KPIs are so ubiquitous that they have become a established convention for data-savvy users.
 An [eye-tracking study conducted by Tableau](https://www.tableau.com/about/blog/2017/6/eye-tracking-study-5-key-learnings-data-designers-everywhere-72395) in 2017 revealed that big numbers are one of first elements of a dashboard that viewers are drawn to.
 It's important for us to take advantage of this convention as a way to guide users through the information we are presenting.
-Since Qlik users are accustomed to both traditional tiles and multi-select functionality within dynamic tiles, both types are discussed within this section. 
+Since Qlik users are accustomed to both traditional tiles and multi-select functionality within dynamic tiles, both types are discussed within this section.
 
 ![KPI Tile](./assets/analytics/qlik/qlik-tile.PNG "KPI Tile")
 
@@ -28,8 +28,6 @@ Refer to that **Tile Header** and **Divider** sections of that page for specific
 
 ### Layout
 Format the content within the tile as follows:
-
-<article>
 
 - **Text alignnment**: Centered horizontally
 - **Font color**: offblack `#333333 RGB(51,51,51)`
@@ -64,16 +62,14 @@ Refer to that **Tile Header** and **Divider** sections of that page for specific
 
 ### Layout
 
-Multi-select tile functionality should be as clear as possible to users. In the example below, the sub-header: "(select to display below)" makes it clear that each measure selection will dynamically update the following charts on the page. The checkboxes help users understand that more than one measure can be simultaneously displayed on the charts. 
+Multi-select tile functionality should be as clear as possible to users. In the example below, the sub-header: "(select to display below)" makes it clear that each measure selection will dynamically update the following charts on the page. The checkboxes help users understand that more than one measure can be simultaneously displayed on the charts.
 
-<article>
-
-The checkboxes and measure labels are within a listbox object that is 1 cell high. 
+The checkboxes and measure labels are within a listbox object that is 1 cell high.
 - **Font (label)**: Arial (Bold), 10pt
 
 The measure values are within individual transparent textboxes that are formatted as:
 
-- **Alignment**: Left-aligned to checkbox 
+- **Alignment**: Left-aligned to checkbox
 - **Font**: Arial, 24pt
 - **Text margin**: 0pt
 

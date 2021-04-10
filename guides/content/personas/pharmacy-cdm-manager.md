@@ -18,8 +18,6 @@
 
 </div>
 
-<article>
-
 ---
 
 ## Role
@@ -42,7 +40,5 @@
 -   I don't have visibility into the details of Willow, especially around billing so visibility into the formulary helps.
 -   I am responsible for managing Pharmacy, but I am not a pharmacist so some of the complicated terminology is confusing and I don't fully understand drug dosage on a pharmacist level.
 -   I am responsible for multiple parts of the CDM, so efficiency is important. I don't have time to really spend researching and need reports that are easily consumable.
-
-</article>
 
 :::

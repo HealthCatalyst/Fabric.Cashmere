@@ -24,13 +24,11 @@ The sidebar is always visible, so filters being used can be easily seen.
 ##### Sidebar
 
 For consistency, filters should be displayed on the sidebar of the accelerator layout.
-<article>
 
 Format a filter sidebar accordingly:
 - **Type**: Text object
 - **Background**: slate-gray-400 `#708090 RGB(112,128,144)`
 - **Width**: 250px
-</article>
 
 There should be 10px of vertical space at the top of the sidebar before the first filter or metric.
 
@@ -43,10 +41,7 @@ As many counts may be included as needed, one on top of the other.
 
 ![Filter Counts](./assets/analytics/qlik/qlik-filter-counts.png "Filter Counts")
 
-These counts should be the first item on the sidebar, and are formatted with the following values: 
-
-
-<article>
+These counts should be the first item on the sidebar, and are formatted with the following values:
 
 Counts labels:
 - **Alignment**: left-justified
@@ -62,19 +57,15 @@ Counts values:
 - **Font color**: white `#ffffff RGB(255,255,255)`
 - **Text margin**: 6pt
 
-</article>
-
 ### Controls
 
 Controls (or filters), are usually grouped together and should be formatted with the following values:
 
 ![Filter Control](./assets/analytics/qlik/qlik-filter-control.png "Filter Control")
-<article>
 
 - **Font color**: white `#ffffff RGB(255,255,255)`
 - **Font (label)**: Arial, 11pt
 - **Font (sub-control)**: Arial, 10pt
-</article>
 
 ### Footer
 
@@ -83,14 +74,11 @@ This gives users confidence that the values in the dashboard are current and val
 
 In general, the footer should be set to:
 
-<article>
-
 - **Font color**: white `#ffffff RGB(255,255,255)`
 - **Font (label)**: Arial, 9pt
 - **Font (sub-control)**: Arial, 11pt
 - **Padding**: 4px
 - **Height**: 55px
-</article>
 
 ![Filter Footer](./assets/analytics/qlik/qlik-filter-footer.png "Filter Footer")
 

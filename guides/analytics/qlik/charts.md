@@ -31,8 +31,6 @@ The exact size of a tile for a chart will be determined by the other content tha
 
 ##### Grid Styles
 
-<article>
-
 Axis lines within charts should be formatted as:
 - **Weight**: 1px
 - **Color**: off-black `#333333 RGB(51,51,51)`
@@ -45,8 +43,6 @@ Grid lines should be formatted as:
 - **Weight**: 1px
 - **Color**: gray-300 `#cccccc RGB(204,204,204)`
 - **Style**: Dotted
-
-</article>
 
 ![Grid Lines](./assets/analytics/qlik/qlik-gridlines.png "Grid Lines")
 
@@ -64,7 +60,7 @@ To determine what colors should be used together in charts, you should determine
 
 </div>
 
-Charts that are dense, complex, and/or require specialized knowledge or experience to comprehend are well-suited for review by both Health Catalyst's data science team and design teams to ensure that visual elements such as color saturation, line thickness, shapes, label placements, etc., are crafted to best support the data story. 
+Charts that are dense, complex, and/or require specialized knowledge or experience to comprehend are well-suited for review by both Health Catalyst's data science team and design teams to ensure that visual elements such as color saturation, line thickness, shapes, label placements, etc., are crafted to best support the data story.
 
 :::
 
@@ -87,7 +83,7 @@ But in general, they should contain a label and a value.
 
 ##### Visual Header Tooltips
 
-Charts should include tooltips that enable and enhance self-service analytics and data exploration. 
+Charts should include tooltips that enable and enhance self-service analytics and data exploration.
 
 ### Info Tooltip
 
@@ -104,6 +100,6 @@ If additional controls are included above the chart, the info tooltip can also p
 
 ### Data Tooltips
 
-Every chart should include the **Send to Excel** icon to enable power users who may want to explore the raw data. Some other special icons provide users with features such as the ability to easily copy the visualization as an image, to clear any filters, etc. Use your best judgement to carefully choose the most effective header icons for a chart, while weighing the potentially overwhelming effect that providing too many options brings. 
+Every chart should include the **Send to Excel** icon to enable power users who may want to explore the raw data. Some other special icons provide users with features such as the ability to easily copy the visualization as an image, to clear any filters, etc. Use your best judgement to carefully choose the most effective header icons for a chart, while weighing the potentially overwhelming effect that providing too many options brings.
 
 :::

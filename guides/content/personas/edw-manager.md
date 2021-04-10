@@ -20,8 +20,6 @@ Data architect at a healthcare organization. Highly skilled in SQL, very knowled
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -43,7 +41,5 @@ Data architect at a healthcare organization. Highly skilled in SQL, very knowled
 -   Control the order in which tables in a batch run, taking into consideration disk space, bandwidth, table size, etc.
 -   Have everything loaded each day by 7 or 8 a.m. - real-time data is better and the pressure for this is getting stronger
 -   Customize jobs (will use SQL Agent jobs as an alternative if EDW Console doesn't allow it)
-
-</article>
 
 :::

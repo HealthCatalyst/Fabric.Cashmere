@@ -25,7 +25,7 @@ body {
 
     ul {
         margin: 12px 0;
-        list-style: disc inside;
+        list-style: disc;
     }
 
     :not(article) > ol {
@@ -219,6 +219,27 @@ table {
             line-height: 1.3;
             padding: 1em 3em 1em 0;
             vertical-align: middle;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        .docs-api-properties-table, 
+        .docs-api-properties-row,
+        .docs-api-properties-th,
+        .docs-api-properties-name-cell, 
+        .docs-api-property-description{
+            padding-top: 0;
+            padding-bottom: 5px;
+            display: block;
+        }
+        
+        tbody > tr:not(:last-child) > {
+            .docs-api-properties-th:nth-child(odd),
+            .docs-api-properties-name-cell {
+                padding-top: 5px;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
         }
     }
 

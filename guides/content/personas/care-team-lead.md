@@ -20,8 +20,6 @@
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -52,7 +50,5 @@
 -   Messaging capability to communicate with members of the care team, including those outside of the health care system
 -   Generate patient summary reports that can be sent to clinicians providing an overview of past care and current care plan
 -   Confirm their productivity / ensure they are meeting productivity targets set by their manager
-
-</article>
 
 :::

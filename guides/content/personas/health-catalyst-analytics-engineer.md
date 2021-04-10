@@ -22,8 +22,6 @@ Ian combines deep, analytics skills and a sound understanding of the processes a
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -60,7 +58,5 @@ Ian combines deep, analytics skills and a sound understanding of the processes a
 -   Create a web forms for users to enter data without having to build a custom web apps
 -   Access to software APIs to extend/streamline existing workflows
 -   Create a schedule for when a SAM will be updated from the EDW
-
-</article>
 
 :::

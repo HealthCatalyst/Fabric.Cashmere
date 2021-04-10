@@ -27,8 +27,6 @@ Oversees overall Patient Safety and Quality efforts with the hospital.  Reviewer
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -51,7 +49,5 @@ Oversees overall Patient Safety and Quality efforts with the hospital.  Reviewer
 -   Ensures that Unit leaders are provided their Harm/Adverse Event data and tracks improvement initiatives
 -   Responsible for engaging unit leaders if safety risks aren't being met
 -   Works closely with his Risk Management counterpart
-
-</article>
 
 :::

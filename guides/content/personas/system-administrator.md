@@ -20,8 +20,6 @@ System Administrator is responsible for installing new software releases, system
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -36,7 +34,5 @@ System Administrator is responsible for installing new software releases, system
 ## Needs
 
 -   A centralized tool to grant or remove access for users and/or groups to software applications used by the hospital system
-
-</article>
 
 :::

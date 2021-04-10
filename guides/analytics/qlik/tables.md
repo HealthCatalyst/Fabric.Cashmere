@@ -26,18 +26,13 @@ The table should leverage the remaining content area of the tile.
 
 ### Table Header Row
 
-<article>
-
 The content in the header row of a table should be:
 - **Font**: Arial(Bold), 9pt
 - **Font color**: dark-blue `#006d9a RGB(0,109,154)`
-</article>
 
 Note: The easiest way to format a table's header is to be in **design grid** mode. Then, you should be able to right-click on a header cell and choose **custom format cell**.
 
 ### Table Cells
-
-<article>
 
 The contents of table cells should be formatted as:
 - **Font**: `Arial`, 9pt
@@ -52,7 +47,6 @@ Cell and header borders
 - **Weight**: 1px
 - **Style**: Solid
 - **Color**: gray-100 `#f1f1f1 RGB(241,241,241)`
-</article>
 
 :::
 

@@ -104,14 +104,9 @@ Details about use of the sidebar can be found in the [filters section](/analytic
 
 ### Content Area
 
-<article>
-
 The background color for the content area can be one of the following values:
 - **Background**: slate-gray-100 `#f0f3f6 RGB(240,243,246)`
 - **Background**: white `#ffffff RGB(255,255,255)`
-
-</article>
-
 
 :::
 
@@ -121,9 +116,7 @@ The background color for the content area can be one of the following values:
 
 Visualization objects such as charts, graphs, tables, and KPIs should be styled like the Cashmere [tile component](/web/components/tile) and will be referred to as tiles within this section.
 
-<article>
-
-In general, a Qlik tile should be formatted accordingly: 
+In general, a Qlik tile should be formatted accordingly:
 - **Background**: white `#ffffff RGB(255,255,255)`
 - **Border**: white `#ffffff RGB(255,255,255)`
 - **Radius**: 5px
@@ -135,8 +128,6 @@ Each tile should also have shadow with the following values:
 - **Transparency**: 85%
 
 Tiles should have at least 10px of padding between each other (5px on either side).
-
-</article>
 
 Layout specifics for the most common visual objects can be found in the [KPI Metrics section](/analytics/qlik-metrics), [Charts section](/analytics/qlik-charts), and [Tables section](/analytics/qlik-tables). Refer to the template or these sections for working examples.
 
@@ -173,14 +164,10 @@ Utilize Qlik's alignment capabilities by selecting each object and choosing the 
 
 ### Tile Title
 
-<article>
-
 Tile tiles should be formatted accordingly:
 - **Alignment**: left
 - **Font**: Arial Bold, 10pt
 - **Color**: offblack `#333333 RGB(51,51,51)`
-
-</article>
 
 ### Tile Visual Header
 
@@ -191,15 +178,11 @@ Some header elements, such as drill-down icons, are object-specific and more det
 
 ### Divider
 
-<article>
-
 A horizontal line divides the header from the rest of the content in the object and is formatted with the following values:
 - **Weight**: 1px
 - **Padding**: 2px on left and right sides
 - **Height**: 10px
 - **Color**: slate-gray-300 `#c0c5cc RGB(192,197,204)`
-
-</article>
 
 <div style="text-align:center"><br>
 
