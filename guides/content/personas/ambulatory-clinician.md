@@ -46,6 +46,6 @@
 -   Tools that integrate with the EMR workflow and do not create additional work
 -   Access to review patient analytics in the EMR workflow
 -   Easy way to know if the patient has an ambulatory care team and to review the patient's care plan
--   Ability to view / communicate with the patient's care team
+-   Ability to view/communicate with the patient's care team
 
 :::

@@ -36,10 +36,10 @@ When she gets to her office, Katarina reviews the patient schedule to see who is
 
 ## Needs
 
--   Visibility into what has changed / what is important in the domain area data set—especially relating to process.
--   Ability to filter data by facility / department.
--   Automated measurement.
--   Access to data that helps identify and communicate process gaps / blocks
+-   Visibility into what has changed/what is important in the domain area data set—especially relating to process
+-   Ability to filter data by facility/department
+-   Automated measurement
+-   Access to data that helps identify and communicate process gaps/blocks
 -   Timely summary of process misses to enable immediate investigation
 -   List of prioritized patients along with prior and suggested interventions
 

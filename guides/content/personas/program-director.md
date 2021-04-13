@@ -12,7 +12,7 @@
 
 # Robert Coleman
 
-### Program Manager or Director / Domain Coordinator
+### Program Manager or Director/Domain Coordinator/Regulatory Compliance Director
 
 *"I need to identify priorities to drive clinical improvement, but I don’t trust the data, and it’s too hard to dig up what I need—even with the help of an analyst."*
 
@@ -30,12 +30,12 @@ Robert is accountable for performance and outcomes improvement in his domain are
 
 -   Improve performance (process & outcomes) in his domain area in the most meaningful way for the organization (i.e., improvements that yield the most vital benefits)
 -   Help physicians understand the importance of documentation in the EHR and the impact on quality
--   Take action / follow-up on cases where an identified process is not followed or an adverse outcome or trend is reported
--   Initiate educational intervention in departments / facilities where adverse events, trends, or comparative performance are reported
--   Prevent disease/condition, safety risks, or inappropriate utilization through interventions on a broader level (process redesign / triage processes / EMR alerts)
+-   Take action/follow-up on cases where an identified process is not followed or an adverse outcome or trend is reported
+-   Initiate educational intervention in departments/facilities where adverse events, trends, or comparative performance are reported
+-   Prevent disease/condition, safety risks, or inappropriate utilization through interventions on a broader level (process redesign/triage processes/EMR alerts)
 -   Report to executive leadership on the state of improvement efforts such as harm prevention, utilization management, or quality improvement (high-level reports); make the case for the importance of improvement in this area
 -   Report to the physician advisory group on improvement efforts such as harm prevention, utilization management, or quality improvement (detailed reports); make the case for the importance of improvement in this area
--   Participate in multidisciplinary partnership / workgroup across the institution to address improvement efforts in a targeted area
+-   Participate in multidisciplinary partnership/workgroup across the institution to address improvement efforts in a targeted area
 
 ---
 
