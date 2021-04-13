@@ -48,6 +48,12 @@ export class GuidesService {
             document: require('raw-loader!../../../guides/supported-angular-versions.md')
         },
         {
+            title: 'Creating New Components',
+            route: 'creating-new-components',
+            category: 'dev',
+            document: require('raw-loader!../../../guides/creating-new-components.md')
+        },
+        {
             title: 'Customizing Components',
             route: 'using-customizing-components',
             category: 'dev',
