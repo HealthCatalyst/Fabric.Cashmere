@@ -145,8 +145,11 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     align-items: center;
     position: relative;
     margin-left: auto;
+
     @include media-breakpoint-down(sm) {
-        overflow: hidden;
+        div:nth-child(n+1){
+            display: none;
+        }
     }
 }
 
@@ -258,6 +261,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 @mixin hc-navbar-mobile-menu {
     background-color: $slate-blue;
     color: $slate-gray-200;
+    min-width: 55px;
     width: 55px;
     flex-basis: auto;
     height: 100%;
