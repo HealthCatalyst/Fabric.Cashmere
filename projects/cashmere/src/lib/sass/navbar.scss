@@ -349,4 +349,8 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     } @else {
         border-left: 1px solid darken($navbar-color, 10%);
     }
+
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
 }
