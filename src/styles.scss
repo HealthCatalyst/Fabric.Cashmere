@@ -299,10 +299,6 @@ table {
 
 hc-example-viewer .hc-tab-content-horizontal {
     padding: 3px;
-
-    @include media-breakpoint-down(sm) {
-        overflow: hidden;
-    }
 }
 
 .pipe-output {
