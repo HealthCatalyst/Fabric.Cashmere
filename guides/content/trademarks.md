@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated Jan 27, 2021
+###### Last updated April 15, 2021
 
 :::
 
@@ -9,6 +9,7 @@
 Registered Marks (currently in use) – **Apply ®**:
 
 -   [[FLAME]](https://cashmere.healthcatalyst.net/styles/logo) Design Mark
+-   CORUS
 -   Health Catalyst _(only when followed by a product or services description; when you are just referring to the company/entity, do not use ®)_
 -   HAS
 -   HealthCatalyst
@@ -35,7 +36,6 @@ _The ™ symbol can be applied to any unregistered trademark_
 -   Charlie (use ™ with both text and image)
 -   Closed-Loop Analytics
 -   Community Orchestrate
--   CORUS
 -   Data Science Adoption Model
 -   DOS
 -   DOS Mart and DOS Marts 
