@@ -1,5 +1,5 @@
 <a *ngIf="!_hidden" title="{{linkText}}" [routerLink]="uri" routerLinkActive="active" class="navbar-link"
     [ngClass]="{ 'active': this.active === true, 'inactive': this.active === false }"
-    [routerLinkActiveOptions]="{exact: exact}">
+    [routerLinkActiveOptions]="{exact: this.active}">
     {{linkText}}<ng-content></ng-content>
 </a>

@@ -55,7 +55,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         min-width: 55px;
     }
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
         display: none;
     }
 }
@@ -80,10 +80,6 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         &:focus {
             outline-offset: -8px;
         }
-    }
-
-    @include media-breakpoint-down(sm) {
-        padding: 0 0 0 5%;
     }
 }
 
@@ -150,8 +146,11 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     align-items: center;
     position: relative;
     margin-left: auto;
-    @include media-breakpoint-down(md) {
-        display: none;
+
+    @include media-breakpoint-down(sm) {
+        div:nth-child(n+1){
+            display: none;
+        }
     }
 }
 
@@ -263,12 +262,13 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
 @mixin hc-navbar-mobile-menu {
     background-color: $slate-blue;
     color: $slate-gray-200;
+    min-width: 55px;
     width: 55px;
     flex-basis: auto;
     height: 100%;
     justify-content: center;
     align-items: center;
-    margin-left: auto;
+    margin-left: 0;
     cursor: pointer;
     display: none;
 
@@ -349,5 +349,9 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         background-color: $white;
     } @else {
         border-left: 1px solid darken($navbar-color, 10%);
+    }
+
+    @include media-breakpoint-down(md) {
+        display: none;
     }
 }

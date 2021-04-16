@@ -116,7 +116,6 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
                 left += this._leftDrawer._width;
             } else if (this._leftDrawer.mode === 'push') {
                 left += this._leftDrawer._width;
-                right -= this._leftDrawer._width;
             }
         }
 
@@ -125,7 +124,6 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
                 right += this._rightDrawer._width;
             } else if (this._rightDrawer.mode === 'push') {
                 right += this._rightDrawer._width;
-                left -= this._rightDrawer._width;
             }
         }
 
