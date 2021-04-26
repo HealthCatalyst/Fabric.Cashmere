@@ -4,6 +4,10 @@
     @include hc-modal-header();
 }
 
+.hc-modal-drag {
+    @include hc-modal-drag();
+}
+
 .hc-modal-body {
     @include hc-modal-body();
 }

@@ -19,7 +19,8 @@ export class ModalOverviewExampleComponent {
             data: 'I got this data from the class that opened me',
             ignoreEscapeKey: true,
             ignoreOverlayClick: true,
-            size: 'lg'
+            size: 'lg',
+            isDraggable: true
         };
         let subModal: HcModal<ModalOverviewExampleModalComponent> = this.modalService.open(ModalOverviewExampleModalComponent, options);
         subModal.result.subscribe(res => (this.result = res));

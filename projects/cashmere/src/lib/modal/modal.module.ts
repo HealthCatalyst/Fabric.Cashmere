@@ -7,19 +7,22 @@ import {CommonModule} from '@angular/common';
 import {ModalHeaderComponent} from './modal-header.component';
 import {ModalBodyComponent} from './modal-body.component';
 import {ModalComponent} from './modal.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {ModalDragComponent} from './modal-drag.component';
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule, DragDropModule],
     declarations: [
         ModalOverlayComponent,
         ModalWindowComponent,
         ModalHeaderComponent,
         ModalBodyComponent,
         ModalFooterComponent,
-        ModalComponent
+        ModalComponent,
+        ModalDragComponent
     ],
     entryComponents: [ModalOverlayComponent, ModalWindowComponent],
-    exports: [ModalHeaderComponent, ModalBodyComponent, ModalFooterComponent, ModalComponent],
+    exports: [ModalHeaderComponent, ModalBodyComponent, ModalFooterComponent, ModalComponent, ModalDragComponent],
     providers: [ModalService]
 })
 export class ModalModule {}

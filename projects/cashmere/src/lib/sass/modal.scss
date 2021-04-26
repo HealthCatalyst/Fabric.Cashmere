@@ -4,6 +4,7 @@
 
 $modal-padding: 15px 25px;
 $header-footer-height: 55px;
+$stacked-footer-height: 101px;
 $modal-border: 1px solid $gray-200;
 
 @mixin hc-modal-outer() {
@@ -20,22 +21,58 @@ $modal-border: 1px solid $gray-200;
 @mixin hc-modal() {
     display: flex;
     flex-direction: column;
-    height: calc(100% - 50px);
     justify-content: center;
-    max-height: calc(100% - 50px);
-    min-height: 135px;
+    max-height: 100%;
+    height: 100%;
+
+    @include media-breakpoint-up(md) {
+        height: calc(100% - 50px);
+        max-height: calc(100% - 50px);
+    }
 }
 
 @mixin hc-modal-auto() {
-    width: auto;
+    width: 100%;
+    justify-content: flex-end;
+
+    @include media-breakpoint-up(md) {
+        width: auto;
+        justify-content: center;
+    }
 }
 
 @mixin hc-modal-sm() {
     width: 300px;
+    height: auto;
+    border-radius: 6px;
+
+    & .hc-modal-footer {
+        justify-content: flex-end;
+        flex-direction: row;
+        position: relative;
+    }
+    & .hc-modal-header {
+        justify-content: flex-start;
+    }
+    & .hc-modal-content {
+        border-radius: 6px;
+    }
+    & .hc-modal-body {
+        margin-bottom: 0;
+    }
+    & .hc-modal-drag {
+        & .hc-drag-handle {
+            position: relative;
+        }
+    }
 }
 
 @mixin hc-modal-md() {
-    width: 500px;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+        width: 500px;
+    }
 }
 
 @mixin hc-modal-lg() {
@@ -46,6 +83,18 @@ $modal-border: 1px solid $gray-200;
     width: 992px;
 }
 
+@mixin hc-modal-drag() {
+    .hc-drag-handle {
+        position: relative;
+        left: calc(100% - 30px);
+        top: calc(30px);
+        color: #ccc;
+        cursor: move;
+        width: 24px;
+        height: 24px;
+    }
+}
+
 @mixin hc-modal-header() {
     align-items: center;
     border-bottom: $modal-border;
@@ -53,14 +102,20 @@ $modal-border: 1px solid $gray-200;
     display: flex;
     font-size: calculateRem(18px);
     font-weight: 600;
-    justify-content: space-between;
     min-height: $header-footer-height;
     padding: $modal-padding;
+    justify-content: flex-start;
 }
 
 @mixin hc-modal-body() {
     overflow: auto;
     padding: $modal-padding;
+    margin-bottom: $stacked-footer-height;
+
+    @include media-breakpoint-up(md) {
+        justify-content: space-between;
+        margin-bottom: 0;
+    }
 }
 
 @mixin hc-modal-close-button() {
@@ -86,24 +141,45 @@ $modal-border: 1px solid $gray-200;
 
 @mixin hc-modal-footer() {
     align-items: center;
-    border-top: $modal-border;
+    bottom: 0;
     display: flex;
-    justify-content: flex-end;
+    width: 100%;
+    border-top: $modal-border;
     min-height: $header-footer-height;
     padding: $modal-padding;
+    position: fixed;
+    flex-direction: column-reverse;
+
+    @include media-breakpoint-up(md) {
+        justify-content: flex-end;
+        flex-direction: row;
+        position: relative;
+    }
 }
 
 @mixin hc-modal-button-footer() {
-    margin-left: 10px;
+    margin-left: 0;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+        margin-left: 10px;
+        width: auto;
+    }
 }
 
 @mixin hc-modal-content() {
     background-color: $white;
-    border-radius: 6px;
+    height: calc(100% - 50px);
+    border-radius: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-height: 100%;
+
+    @include media-breakpoint-up(md) {
+        border-radius: 6px;
+        height: auto;
+    }
 }
 
 @mixin hc-modal-open() {
@@ -114,5 +190,9 @@ $modal-border: 1px solid $gray-200;
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: center;
+    justify-content: flex-end;
+
+    @include media-breakpoint-up(md) {
+        justify-content: center;
+    }
 }

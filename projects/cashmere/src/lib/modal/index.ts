@@ -9,3 +9,4 @@ export {ModalHeaderComponent} from './modal-header.component';
 export {ModalOptions, ModalSize} from './modal-options';
 export {ModalOverlayComponent} from './modal-overlay.component';
 export {ModalWindowComponent} from './modal-window.component';
+export {ModalDragComponent} from './modal-drag.component';
