@@ -139,14 +139,6 @@ export class ModalService {
             modal._modalClose.unsubscribe();
         });
 
-        // if(!activeModalRef.isDraggable) {
-        //     console.log(activeModalRef.isDraggable);
-        //     let modal = document.getElementsByTagName("hc-modal-window")[0];
-        //     let draggableNode = document.createElement("hc-modal-drag");
-
-        //     this._renderer.removeChild(modal, draggableNode);
-        // }
-        
         return modal;
     }
 }

@@ -16,7 +16,8 @@ export class ModalOverviewExampleComponent {
 
     open() {
         let options: ModalOptions = {
-            data: 'I got this data from the class that opened me',
+            data:
+                'This is a size lg modal with isDraggable set to true. It places a drag handle in the top right corner which you can use to reposition the modal.',
             ignoreEscapeKey: true,
             ignoreOverlayClick: true,
             size: 'lg',

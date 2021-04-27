@@ -8,6 +8,10 @@
     @include hc-modal-drag();
 }
 
+.hc-modal-drag-handle {
+    @include hc-modal-drag-handle();
+}
+
 .hc-modal-body {
     @include hc-modal-body();
 }

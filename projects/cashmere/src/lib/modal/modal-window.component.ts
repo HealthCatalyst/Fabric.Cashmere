@@ -6,7 +6,11 @@ import {ActiveModal} from './active-modal';
 @Component({
     selector: 'hc-modal-window',
     template: `
-        <hc-modal-drag [disableDrag]="_isDraggable"><div [class]="'hc-modal hc-modal-' + _size"><ng-content></ng-content></div>
+        <hc-modal-drag [disableDrag]="_isDraggable">
+            <div [class]="'hc-modal hc-modal-' + _size">
+                <ng-content></ng-content>
+            </div>
+        </hc-modal-drag>
     `,
     encapsulation: ViewEncapsulation.None,
     // tslint:disable-next-line: no-host-metadata-property
