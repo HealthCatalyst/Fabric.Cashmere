@@ -6,7 +6,7 @@ import {ActiveModal} from './active-modal';
 @Component({
     selector: 'hc-modal-window',
     template: `
-        <div [class]="'hc-modal hc-modal-' + _size"><ng-content></ng-content></div>
+        <hc-modal-drag [disableDrag]="_isDraggable"><div [class]="'hc-modal hc-modal-' + _size"><ng-content></ng-content></div>
     `,
     encapsulation: ViewEncapsulation.None,
     // tslint:disable-next-line: no-host-metadata-property
@@ -29,6 +29,8 @@ export class ModalWindowComponent {
     _ignoreOverlayClick = false;
     @Input()
     _size: ModalSize = 'auto';
+    @Input()
+    _isDraggable;
 
     constructor(private activeModal: ActiveModal, private el: ElementRef) {}
 

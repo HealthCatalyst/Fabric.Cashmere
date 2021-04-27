@@ -7,6 +7,8 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ModalOverlayComponent} from './modal-overlay.component';
 import {BrowserModule, By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { ModalDragComponent } from './modal-drag.component';
 
 describe('hc-modal', () => {
     let windowComponent: ModalWindowComponent;
@@ -18,8 +20,8 @@ describe('hc-modal', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [CommonModule, BrowserAnimationsModule, BrowserModule],
-            declarations: [ModalWindowComponent, ModalOverlayComponent],
+            imports: [CommonModule, BrowserAnimationsModule, BrowserModule, DragDropModule],
+            declarations: [ModalWindowComponent, ModalOverlayComponent, ModalDragComponent],
             providers: [ActiveModal, ModalService]
         }).compileComponents();
     });

@@ -74,4 +74,6 @@ export class HcModal<T> {
         this.componentRef = null;
         this._removeOpenClass = null;
     }
+
+    isDraggable?: boolean;
 }

@@ -60,6 +60,11 @@ $modal-border: 1px solid $gray-200;
     & .hc-modal-body {
         margin-bottom: 0;
     }
+    & .hc-modal-drag {
+        & .hc-drag-handle {
+            position: relative;
+        }
+    }
 }
 
 @mixin hc-modal-md() {
@@ -76,6 +81,18 @@ $modal-border: 1px solid $gray-200;
 
 @mixin hc-modal-xl() {
     width: 992px;
+}
+
+@mixin hc-modal-drag() {
+    .hc-drag-handle {
+        position: relative;
+        left: calc(100% - 30px);
+        top: calc(30px);
+        color: #ccc;
+        cursor: move;
+        width: 24px;
+        height: 24px;
+    }
 }
 
 @mixin hc-modal-header() {
