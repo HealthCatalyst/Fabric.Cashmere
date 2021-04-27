@@ -33,20 +33,17 @@ In general, the about page should include the following (but you may adjust base
 
 ##### Sidebar
 
-<article>
-
 The Sidebar vertical text box is used on the About page for app details and is formatted accordingly:
 - **Background**: slate-gray-100 `#f0f3f6 RGB(240,243,246)`
 - **Width**: 250px
 - **Padding**: 12px interior padding on left and right sides, 25px vertical padding between items
 - **Font(labels)**: Arial Bold, 11pt
 - **Font(content)**: Arial 10pt
-</article>
 
 The first two items in the sidebar should be the name of the accelerator and the current version number.
 You should be able to simply edit the text in the template.
 
-The remaining items in the sidebar are unique to your application. Card visuals are used to display items that rely upon data fields (such as a last refresh date). 
+The remaining items in the sidebar are unique to your application. Card visuals are used to display items that rely upon data fields (such as a last refresh date).
 Examples are included in the template, but they may be edited or removed as needed.
 
 
@@ -57,7 +54,6 @@ Examples are included in the template, but they may be edited or removed as need
 ##### Content Area
 
 The Content Area has a **white** `#ffffff RGB(255,255,255)` background for the About Page.
-<article>
 
 The first item in the Content Area is the full Health Catalyst horizontal logo:
 - **Location**: x:514, y:87
@@ -65,7 +61,6 @@ The first item in the Content Area is the full Health Catalyst horizontal logo:
 - **Width**: 463px
 - **Scale**: Normal
 - **Image stretch**: Aspect lock on
-</article>
 
 The second item in the content area is a banner with the name of the accelerator. You'll need to repoint the image file to the correct image png file that you are using for the navbar.
 
@@ -76,20 +71,19 @@ The styling and setup of the tabs follow the guidelines described in the [Tabs s
 The first tab should almost always be "About this App", where an overview of the app and usage guidelines are provided.
 
 For the remaining tabs, you may choose what is most appropriate for your application.
-<article>
+
 Format tab labels accordingly:
 
 - **Font**: Arial
 - **Font size**: 10pt
 - **Color**: off-black `#333333 RGB(51,51,51)`
 
-Headers for the text in the content area should be set to: 
+Headers for the text in the content area should be set to:
 
 - **Font**: Arial (Bold)
 - **Font size**: 12pt
 - **Color**: dark-blue `#006d9a RGB(0,109,154)`
 
-</article>
 ### Pagination
 
 If there is more text than fits onto a single page within a tab, you may incorporate pagination into your tab.
@@ -101,7 +95,6 @@ The pagination controller is comprised of Page Buttons horizontally aligned with
 ![Pagination Controller](./assets/analytics/tableau/pagination.png "Pagination Controller")
 
 </div>
-<article>
 
 Each button requires:
 - **Border**: 1px

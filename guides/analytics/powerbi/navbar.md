@@ -12,8 +12,6 @@ The navbar is one of the most distinguishing elements of a Cashmere application.
 It is a hallmark of the Health Catalyst app brand on all platforms.
 For this reason, the styling of the navbar should not be altered from the template.
 
-<article>
-
 The Navbar is a horizontal text object with the following formatting:
 - **Type**: Text object
 - **Background**: charcoal-blue `#384655`
@@ -21,15 +19,11 @@ The Navbar is a horizontal text object with the following formatting:
 - **Position**: `x:0, y:0`
 - **Visual header toggle**: Off
 
-</article>
-
 :::
 
 :::
 
 ##### Brand
-
-<article>
 
 Brand is an image of the [Health Catalyst tri-flame](/foundations/logo) and formatted as follows:
 - **Type**: Image object
@@ -38,8 +32,6 @@ Brand is an image of the [Health Catalyst tri-flame](/foundations/logo) and form
 - **Background**: blue `#00aeff`
 - **Position**: `x:0, y:0`
 - **Visual header toggle**: Off
-
-</article>
 
 :::
 
@@ -53,7 +45,7 @@ To obtain a PNG for your application, contact the UX team via the `#design` Slac
 
 Edit the `AppName.png` image object and swap the image file with the one for your application.
 
-The App Name should be positioned to the right of the tri-flame logo at `x:55, y:0` and centered vertically within the Navbar. 
+The App Name should be positioned to the right of the tri-flame logo at `x:55, y:0` and centered vertically within the Navbar.
 
 **Important:** you will need to adjust the width of your app name image.
 You want the width to be just wide enough to contain the image without shrinking it.
@@ -72,8 +64,6 @@ Provide around `25px` of padding between the app name and the first button.
 
 Depending on the number of sections in your application, create additional, identically-sized Navigation Objects (buttons) with about `8px` of padding between them. The **y-position** for the button objects may need to be adjusted so the bottom of the button's text aligns with the bottom of the app name.
 
-<article>
-
 The button for the currently selected page is formatted as follows:
 - **Type**: Button
 - **Height**: 50px
@@ -90,8 +80,6 @@ Additionally, there is a floating line shape that is positioned under the select
 - **Weight**: 4px
 - **Position**: `y:50` and the **x position** must match the **x position** of the selected button item
 - **Width**: Must match the selected button item's width
- 
- </article>
 
 ![Selected Link](./assets/analytics/powerbi/pbi-selected-link.png "Selected link")
 
@@ -119,8 +107,6 @@ Contact the UX team via the `#design` Slack channel for icon png files.
 
 ##### Co-branding
 
-<article>
-
 Co-Branding is the final fixed width horizontal object formatted as follows:
 - **Type**: Image
 - **Width**: 200px
@@ -128,12 +114,10 @@ Co-Branding is the final fixed width horizontal object formatted as follows:
 
 This space allows applications to include the logo of your customer.
 Ideally you'll want the horizontal version of a customer's logo with a **white or transparent** background.
-To configure this section, you need to delete the current image object and insert the new one with the following parameters: 
+To configure this section, you need to delete the current image object and insert the new one with the following parameters:
 
 - **Position**: `x: ~1050, y:0`
 - **Height**: 50px
-
-</article>
 
 Note that this is an optional section.
 If your application does not require co-branding, click on the Co-Branding image and "Remove" or delete the object.

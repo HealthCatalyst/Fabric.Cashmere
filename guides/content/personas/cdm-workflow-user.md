@@ -18,8 +18,6 @@
 
 </div>
 
-<article>
-
 ---
 
 ## Role
@@ -43,8 +41,5 @@
 -   If I can't find regulatory content in one place, it takes me a long time to track it down.
 -   If I can't find my workflow tasks quickly, I might not work on the most important things.
 -   When I enter incorrect information that breaks specific rules and don't catch them right away, then costs begin to add up quickly.
-
-
-</article>
 
 :::

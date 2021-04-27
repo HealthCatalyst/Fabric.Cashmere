@@ -37,11 +37,9 @@ The sliding filter pane should always be accessible to users, so that all filter
 
 ##### Color
 
-Power BI allows developers to format the Filters pane and cards. The same colors from [Cashmere Foundations](/foundations/color) are used. 
+Power BI allows developers to format the Filters pane and cards. The same colors from [Cashmere Foundations](/foundations/color) are used.
 
 ### Filter Pane
-
-<article>
 
 The Filters pane is set to the following values:
 - **Width**: 250px
@@ -53,8 +51,6 @@ The Filters pane is set to the following values:
 - **Border**: slate-gray-300 `#c0c5cc`
 - **Input box background**: charcoal-blue `#384655`
 
-</article>
-
 <div style="text-align:center">
 
 ![Filter Pane](./assets/analytics/powerbi/pbi-filter-pane.png "Filter Pane")
@@ -63,20 +59,14 @@ The Filters pane is set to the following values:
 
 ### Filter Cards: Available
 
-<article>
-
 Filter cards that are available to users are formatted as follows:
-- **Background**: charcoal-blue `#384655` 
+- **Background**: charcoal-blue `#384655`
 - **Input box background**: white `#ffffff`
 - **Border**: slate-gray-300 `#c0c5cc`
 - **Font**: Segoe UI, 9pt
 - **Font color**: white `#ffffff`
 
-</article>
-
 ### Filter Cards: Applied
-
-<article>
 
 Filters actively being used within the dashboard, page, or an object, are formatted in filter cards as follows:
 - **Background**: gray-200 `#e0e0e0`
@@ -84,8 +74,6 @@ Filters actively being used within the dashboard, page, or an object, are format
 - **Border**: slate-gray-300 `#c0c5cc`
 - **Font**: Segoe UI, 9pt
 - **Font color**: offblack `#333333`
-
-</article>
 
 ##### Filter Scope
 
@@ -96,17 +84,13 @@ These are grouped together in a section titled **Filters on all pages**.
 Other filters may only apply to the specific page the user is viewing, and will not carry over to other pages.
 These are grouped together in a section titled **Filters on this page**.
 
-<article>
-
 The section titles are formatted as:
 - **Font**: Segoe (Bold)
 - **Font size**: 10pt
 - **Font color**: white `#ffffff`
-- **Background**: charcoal-blue `#384655` 
+- **Background**: charcoal-blue `#384655`
 
-</article>
-
-Some filters may only apply to the specific visual the user is viewing. These are grouped in a section within the filters pane titled **Filters on this visual**. You may also consider placing a slicer object next to the visual. 
+Some filters may only apply to the specific visual the user is viewing. These are grouped in a section within the filters pane titled **Filters on this visual**. You may also consider placing a slicer object next to the visual.
 
 :::
 

@@ -30,13 +30,11 @@ The exact size of a tile for a chart will be determined by the other content tha
 
 ##### Grid Styles
 
-<article>
-
 Axis lines within charts should be formatted as:
 - **Weight**: 1px
 - **Color**: offblack `#333333`
 
-Axis text/labels should be formatted as: 
+Axis text/labels should be formatted as:
 - **Font**: Tableau Book
 - **Font size**: 9pt
 - **Color**: offblack `#333333`
@@ -45,8 +43,6 @@ Grid lines should be set to:
 - **Weight**: 1px
 - **Style**: Dotted
 - **Color**: gray-300 `cccccc`
-
-</article>
 
 ![Grid Lines](./assets/analytics/tableau/gridlines.png "Grid Lines")
 
@@ -67,16 +63,12 @@ To determine what colors should be used together in charts, you should determine
 The specific content of tooltips of the chart will be dictated by the data being displayed.
 But in general, they should contain a label and a value.
 
-<article>
-
 All text in the tooltip should be set to:
 
 - **Font**: 10pt
 - **Color**: offblack `#333333`
 - **Label font**: Tableau Book
 - **Value font**: Tableau Bold
-
-</article>
 
 ![Chart Tooltips](./assets/analytics/tableau/charttooltip.png "Chart Tooltips")
 

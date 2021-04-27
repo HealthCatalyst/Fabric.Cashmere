@@ -59,15 +59,6 @@ describe('NavbarComponent', () => {
         });
     });
 
-    describe('on calling all the lifecycle hooks', () => {
-        it('should call refreshNavLinks', waitForAsync(() => {
-            spyOn(testHostComponent.navbarComponent, 'refreshNavLinks');
-            testHostComponent.navbarComponent.ngAfterViewInit();
-            testHostFixture.whenStable().then(() => {
-                expect(testHostComponent.navbarComponent.refreshNavLinks).toHaveBeenCalled();
-            });
-        }));
-    });
     describe('on calling refreshNavLinks', () => {
         describe('and adjust the elements according to the navbar size', () => {
             it('should have nothing in moreList if navbar links container > linksTotalWidth', () => {

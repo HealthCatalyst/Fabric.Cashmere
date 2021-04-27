@@ -20,8 +20,6 @@ Older individual with increasing medical needs, limited medical knowledge and in
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -36,7 +34,5 @@ Older individual with increasing medical needs, limited medical knowledge and in
 
 -   Ability to easily contact their providers and schedule appointments
 -   Information that they can easily access to answer questions and learn more about their conditions
-
-</article>
 
 :::

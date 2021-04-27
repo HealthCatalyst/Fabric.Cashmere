@@ -20,8 +20,6 @@ Paige has financial accountability for her department and reports to her manager
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -37,7 +35,5 @@ Paige has financial accountability for her department and reports to her manager
 
 -   Access to accurate and detailed cost accounting
 -   Ability to quickly identify over- or under-utilization, care gaps, areas of under-performance, etc., and to infer priorities for improvement work
-
-</article>
 
 :::

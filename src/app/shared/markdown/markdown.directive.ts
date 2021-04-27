@@ -9,7 +9,7 @@ import {HighlightDirective} from '../highlight/highlight.directive';
 })
 export class MarkdownDirective implements OnChanges {
     @Input()
-    hcMarkdown: string;
+    hcMarkdown: Object;
     @Input()
     sanitize: boolean;
     @Input()
@@ -37,7 +37,7 @@ export class MarkdownDirective implements OnChanges {
                 return true;
             }
         });
-        this.el.nativeElement.innerHTML = md.render(this.hcMarkdown, {sanitize: this.sanitize});
+        this.el.nativeElement.innerHTML = md.render(this.hcMarkdown['default'], {sanitize: this.sanitize});
         if (this.highlight) {
             const preTags: Array<ElementRef> = this.el.nativeElement.getElementsByTagName('pre');
             for (const pre of preTags) {
@@ -45,6 +45,12 @@ export class MarkdownDirective implements OnChanges {
                 syntaxHighlight.lineNumbers = this.lineNumbers;
                 syntaxHighlight.ngAfterViewInit();
             }
+        }
+
+        // Add an article tag to all lists in markdown to include Cashmere list styling
+        const listTags: Array<HTMLElement> = this.el.nativeElement.querySelectorAll('ul,ol');
+        for (const list of listTags) {
+            list.outerHTML = '<article>' + list.outerHTML + '</article>';
         }
 
         this.loaded.emit( true );

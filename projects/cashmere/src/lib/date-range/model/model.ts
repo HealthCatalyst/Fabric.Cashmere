@@ -42,4 +42,6 @@ export interface DateRangeOptions {
     endDatePrefix?: string;
     /** Text label of invalid date. Default 'Please enter valid date' */
     invalidDateLabel?: string;
+    /** Centers the DateRange component to the screen instead of the target. Default 'false' */
+    center?: boolean;
 }

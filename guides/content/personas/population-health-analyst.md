@@ -20,8 +20,6 @@ She has experience and expertise with analytics tools and data from one or more 
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -44,7 +42,5 @@ She has experience and expertise with analytics tools and data from one or more 
     -   Capture the date of intervention start—and then track different metrics from that point
     -   Answer: Have we decreased variation and made significant difference in a specific metric, outcome, or process aim from target?
     -   Attribute the impact to the intervention
-
-</article>
 
 :::

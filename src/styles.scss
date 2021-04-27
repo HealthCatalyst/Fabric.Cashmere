@@ -1,13 +1,10 @@
-$fa-font-path: "../node_modules/font-awesome/fonts";
-@import "../node_modules/font-awesome/scss/font-awesome";
+@import '/node_modules/font-awesome/scss/font-awesome';
 
-$notosans-fontface-path: "../node_modules/notosans-fontface/fonts";
-@import "../node_modules/notosans-fontface/scss/notosans-fontface-allweight";
+@import '/node_modules/notosans-fontface/scss/notosans-fontface-allweight';
 
-$hc-icons-font-path: "../dist/cashmere/hcicons";
-@import "hcicons/hcicons";
+@import 'hcicons/hcicons';
 
-@import "scss/cashmere";
+@import 'scss/cashmere';
 
 html,
 body {
@@ -28,7 +25,7 @@ body {
 
     ul {
         margin: 12px 0;
-        list-style: disc inside;
+        list-style: disc;
     }
 
     :not(article) > ol {
@@ -225,6 +222,27 @@ table {
         }
     }
 
+    @include media-breakpoint-down(sm) {
+        .docs-api-properties-table, 
+        .docs-api-properties-row,
+        .docs-api-properties-th,
+        .docs-api-properties-name-cell, 
+        .docs-api-property-description{
+            padding-top: 0;
+            padding-bottom: 5px;
+            display: block;
+        }
+        
+        tbody > tr:not(:last-child) > {
+            .docs-api-properties-th:nth-child(odd),
+            .docs-api-properties-name-cell {
+                padding-top: 5px;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+        }
+    }
+
     tbody > tr:not(:last-child) > {
         td,
         th {
@@ -262,7 +280,7 @@ table {
         margin-right: 5px;
         color: rgba($gray-600, 0.5);
         @include fontSize(14px);
-        font-family: Consolas, Menlo, "Ubuntu Mono", monospace;
+        font-family: Consolas, Menlo, 'Ubuntu Mono', monospace;
     }
 }
 

@@ -39,8 +39,6 @@ In general, the about page should include the following (but you may adjust base
 
 Within the Body horizontal container, the Sidebar vertical container is used on the About page for app details.
 
-<article>
-
 The Sidebar should be formatted with the following values:
 - **Width**: 250px
 - **Background**: slate-gray-100 `#f0f3f6`
@@ -54,8 +52,6 @@ Examples are included in the template, but they may be edited or removed as need
 
 - **Font (label)**: Tableau Bold, 11pt
 - **Font (content)**: Tableau Regular, 10pt
-
-</article>
 
 Each info item in the Sidebar is separated by a 25px blank spacer.
 
@@ -81,8 +77,6 @@ The first tab should almost always be "About this App", where an overview of the
 
 For the remaining tabs, you may choose what is most appropriate for your application.
 
-<article>
-
 The text within each tab should be set as follows:
 
 - **Font**: Tableau Book, 10pt
@@ -91,8 +85,6 @@ The text within each tab should be set as follows:
 Headers within the text should be set as follows:
 - **Font**: Tableau Bold, 12pt
 - **Color**: dark-blue `#006d9a`
-
-</article>
 
 ### Pagination
 
@@ -105,8 +97,6 @@ The pagination horizontal container includes Page Buttons centered with a blank 
 ![Pagination Controller](./assets/analytics/tableau/pagination.png "Pagination Controller")
 
 </div>
-
-<article>
 
 Each button should be formatted as:
 
@@ -124,7 +114,5 @@ Un-selected buttons are formatted as:
 
 
 The text in each button should be `PAGE X` with page in uppercase letters.
-
-</article>
 
 :::

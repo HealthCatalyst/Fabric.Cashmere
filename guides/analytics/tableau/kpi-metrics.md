@@ -27,8 +27,6 @@ Refer to that **Tile Header** and **Divider** sections of that page for specific
 
 The content of the KPI should be centered in tile.
 
-<article>
-
 The main KPI value should be formatted as:
 - **Font**: Tableau Light
 - **Font size**: 24pt
@@ -38,13 +36,11 @@ KPI metrics often leverage a second line to indicate trend or sources. A seconda
 - **Font size**: 10pt
 - **Font color**: offblack `#333333`
 
-Arrows or text colors indicating positive trends should be set to 
+Arrows or text colors indicating positive trends should be set to
 - **Color**: green `#00a859`
 
-For negative trends, use 
+For negative trends, use
 - **Color**: red `#f13c45`
-
-</article>
 
 But never rely solely on color to indicate a positive or negative trend, either text or iconography should also indicate the trend.
 

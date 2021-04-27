@@ -1,4 +1,7 @@
 <nav #navbar class="hc-navbar" [ngClass]="{'fixed-top': fixedTop}">
+    <div class="hc-navbar-mobile-menu" *ngIf="_mobileMenu.first" (click)="_toggleMobileMenu()">
+        <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
+    </div>
     <div class="navbar-brand">
         <a [routerLink]="homeUri" class="brand" tabIndex="-1">
             <img *ngIf="_brandIconType() == 'string'" src="{{ brandIcon }}" />
@@ -26,9 +29,6 @@
 
     <div #rightcontainer class="hc-navbar-right-container">
         <ng-content></ng-content>
-    </div>
-    <div class="hc-navbar-mobile-menu" *ngIf="_mobileMenu.first" (click)="_toggleMobileMenu()">
-        <hc-icon fontSet="fa" [fontIcon]="_mobileMenuIcon" hcIconMd></hc-icon>
     </div>
     <ng-content select="hc-navbar-cobrand"></ng-content>
 </nav>

@@ -23,6 +23,12 @@ export class PersonaService {
             document: require('raw-loader!../../../../guides/content/personas/ambulatory-clinician.md')
         },
         {
+            title: 'Ambulatory Nurse',
+            route: 'ambulatory-nurse',
+            type: 'external',
+            document: require('raw-loader!../../../../guides/content/personas/ambulatory-nurse.md')
+        },
+        {
             title: 'BI Developer',
             route: 'bi-developer',
             type: 'external',
@@ -177,6 +183,18 @@ export class PersonaService {
             route: 'healthcare-executive',
             type: 'external',
             document: require('raw-loader!../../../../guides/content/personas/healthcare-executive.md')
+        },
+        {
+            title: 'Hospitalist',
+            route: 'hospitalist',
+            type: 'external',
+            document: require('raw-loader!../../../../guides/content/personas/hospitalist.md')
+        },
+        {
+            title: 'Hospital Nurse',
+            route: 'hospital-nurse',
+            type: 'external',
+            document: require('raw-loader!../../../../guides/content/personas/hospital-nurse.md')
         },
         {
             title: 'Inpatient Clinician',

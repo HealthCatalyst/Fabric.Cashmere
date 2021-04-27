@@ -20,8 +20,6 @@ Steve analyzes, designs, develops, deploys, supports, and maintains reporting an
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -42,7 +40,5 @@ Steve analyzes, designs, develops, deploys, supports, and maintains reporting an
 -   Proven and standard programming languages, tools, techniques, and technologies
 -   Tools to build, edit, and export populations, measures, terminology, etc., in collaboration with project stakeholders and sponsors
 -   Information and SMEs in multiple domains, e.g., financial, clinical, and operational
-
-</article>
 
 :::

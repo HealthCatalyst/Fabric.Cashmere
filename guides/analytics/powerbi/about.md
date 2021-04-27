@@ -44,10 +44,8 @@ The Sidebar vertical text box is used on the About page for app details and shou
 The first two items in the sidebar should be the name of the accelerator and the current version number.
 You should be able to simply edit the text in the template.
 
-The remaining items in the sidebar are unique to your application. Card visuals are used to display items that rely upon data fields (such as a last refresh date). 
+The remaining items in the sidebar are unique to your application. Card visuals are used to display items that rely upon data fields (such as a last refresh date).
 Examples are included in the template, but they may be edited or removed as needed.
-
-<article>
 
 Info item formatting:
 - **Font (label)**: Segoe (Bold)
@@ -55,8 +53,6 @@ Info item formatting:
 
 - **Font (value)**: Segoe UI
 - **Font size (value)**: 10pt
-
-</article>
 
 Each info item in the sidebar is separated by `25px` of blank space.
 
@@ -68,9 +64,7 @@ Each info item in the sidebar is separated by `25px` of blank space.
 
 The Content Area has a **white** `#ffffff` background for the About Page.
 
-<article>
-
-The first item in the Content Area is the full Health Catalyst horizontal logo: 
+The first item in the Content Area is the full Health Catalyst horizontal logo:
 - **Type**: Image
 - **Position**: `x:514, y:87`
 - **Width**: 463px
@@ -83,8 +77,6 @@ The second item in the content area is a banner with the name of the accelerator
 - **Width**: 600px
 - **Height**: 30px
 
-</article>
-
 ### Tabs
 
 The next item in the content area is a horizontal slicer object.
@@ -93,19 +85,15 @@ The first tab should almost always be "About this App", where an overview of the
 
 For the remaining tabs, you may choose what is most appropriate for your application.
 
-<article>
-
-The text within each tab should be set to: 
+The text within each tab should be set to:
 - **Font**: Segoe UI
 - **Font color**: offblack `#333333`
 - **Font size**: 10pt
 
-Headers within the text should be set to 
+Headers within the text should be set to
 - **Font**: Segoe (Bold)
 - **Font color**: dark-blue `#006d9a`
 - **Font size**: 12pt
-
-</article>
 
 ### Pagination
 
@@ -118,8 +106,6 @@ The pagination controller is comprised of Page Buttons horizontally aligned with
 ![Pagination Controller](./assets/analytics/tableau/pagination.png "Pagination Controller")
 
 </div>
-
-<article>
 
 Each button should have a border with the following values:
 - **Weight**: 1px
@@ -139,7 +125,5 @@ The selected page's button is formatted as:
 De-selected page buttons are formatted as:
 - **Background**: white `#ffffff`
 - **Font color**: dark-blue `#006d9a`
- 
-</article>
 
 :::

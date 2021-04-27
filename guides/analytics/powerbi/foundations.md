@@ -99,8 +99,6 @@ Detailed information on the navbar and how to configure it is included in the [n
 
 The subnav is used as an information panel to display dashboard-wide metrics, such as refresh timestamps or "stickied" metrics, such as population counts.
 
-<article>
-
 Format the subnav with the following parameters:
 - **Type**: Text object
 - **Height**: 30px
@@ -108,8 +106,6 @@ Format the subnav with the following parameters:
 - **Position**: `x:0, y:50`
 - **Background**: slate-gray-400 `#708090`
 - **Visual header toggle**: Off
- 
- </article>
 
 <div style="text-align:center"><br>
 
@@ -119,13 +115,9 @@ Format the subnav with the following parameters:
 
 ### Content Area
 
-<article>
-
 Options for a background color for the content area are:
 - **Background option**: slate-gray-100 `#f0f3f6`
 - **Background option**: white `#ffffff`
-
-</article>
 
 Objects in the content area should be placed about 30px from the outer edges.
 
@@ -140,8 +132,6 @@ Information about the dynamic filters pane is included in the [filters section](
 ##### Tiles
 
 Visualization objects such as charts, graphs, tables, and KPIs should be styled like the Cashmere [tile component](/web/components/tile) and will be referred to as tiles within this section.
-
-<article>
 
 In general, a Power BI tile is formatted accordingly:
 
@@ -160,8 +150,6 @@ Each tile should also have shadow with the following values:
 - **Angle**: 90º
 - **Distance**: 1px
 - **Transparency**: 85%
-
-</article>
 
 Layout specifics for the most common visual objects can be found in the [KPI Metrics section](/analytics/powerbi-metrics), [Charts section](/analytics/powerbi-charts), and [Tables section](/analytics/powerbi-tables). Refer to the template or these sections for working examples.
 
@@ -198,15 +186,11 @@ Utilize Power BI's alignment capabilities by selecting each object and choosing 
 
 ### Tile Title
 
-<article>
-
 Every tile should include title with the following formatting:
 - **Alignment**: left-aligned
 - **Font**: Segoe UI
 - **Font color**: offblack `#333333`
 - **Font size**: 10pt
-
-</article>
 
 ### Tile Visual Header
 
@@ -217,15 +201,11 @@ Some header elements, such as drill-down icons, are object-specific and more det
 
 ### Divider
 
-<article>
-
 A horizontal line divides the header from the content of the visual object. Leave about 2px of space on the left and right and format accordingly:
 - **Weight**: 1pt
 - **Height**: 12px
 - **Color**: slate-gray-300 `#c0c5cc`
 - **Visual header toggle**: Off
-
-</article>
 
 <div style="text-align:center"><br>
 

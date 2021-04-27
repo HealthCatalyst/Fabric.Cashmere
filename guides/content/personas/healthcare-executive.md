@@ -20,8 +20,6 @@ This busy leader has historically relied on manual data capture for reporting (s
 
 </div>
 
-<article>
-
 ---
 
 ## Goals
@@ -50,7 +48,5 @@ This busy leader has historically relied on manual data capture for reporting (s
 -   Analyze the domain area population for problems and opportunities for improvement (for example, to reduce costs, improve care, reduce utilization, etc.)
 -   Track costs trends over time and identify the root cause of changes in cost trends
 -   Review specific patients to identify gaps in care related to domain area
-
-</article>
 
 :::

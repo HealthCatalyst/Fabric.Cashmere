@@ -1,5 +1,4 @@
 import {
-    AfterViewInit,
     ChangeDetectorRef,
     Component,
     ContentChildren,
@@ -28,7 +27,7 @@ import {NavbarDropdownComponent} from './navbar-dropdown/navbar-dropdown.compone
     styleUrls: ['./navbar.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class NavbarComponent implements AfterViewInit, OnDestroy {
+export class NavbarComponent implements OnDestroy {
     /** Display name of current user */
     @Input()
     user: string = '';
@@ -71,6 +70,15 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     private _linksTotalWidth: number = 0;
     public _collapse: boolean = false;
     public _moreList: Array<MoreItem> = [];
+
+    /** Runs the initial calculation of navlink widths after the page has fully rendered */
+    @HostListener('window:load')
+    _setupNavLinks() {
+        this.refreshNavLinks();
+
+        // If links are added dynamically, recheck the navbar link sizing
+        this._navLinks.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => this.refreshNavLinks());
+    }
 
     /** Forces a recalculation of the navbar links to determine how many should be rolling into a More menu.
      * Call this if you've updated the contents of any navbar links. */
@@ -142,15 +150,6 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
                 t.hide();
             }
         });
-    }
-
-    ngAfterViewInit() {
-        setTimeout(() => {
-            this.refreshNavLinks();
-        }, 100);
-
-        // If links are added dynamically, recheck the navbar link sizing
-        this._navLinks.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => this.refreshNavLinks());
     }
 
     ngOnDestroy() {
