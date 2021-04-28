@@ -22,12 +22,12 @@ $modal-border: 1px solid $gray-200;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-height: 100%;
-    height: 100%;
+    position: relative;
 
-    @include media-breakpoint-up(md) {
-        height: calc(100% - 50px);
-        max-height: calc(100% - 50px);
+    // Modal becomes full-screen at smaller breakpoints for better UX on mobile devices
+    @include media-breakpoint-down(md) {
+        max-height: 100%;
+        height: 100%;
     }
 }
 
@@ -78,10 +78,6 @@ $modal-border: 1px solid $gray-200;
     width: 992px;
 }
 
-@mixin hc-modal-drag() {
-    position: relative;
-}
-
 @mixin hc-modal-drag-handle() {
     position: absolute;
     right: 0;
@@ -93,6 +89,11 @@ $modal-border: 1px solid $gray-200;
     cursor: move;
     width: 74px;
     height: 54px;
+
+    // Drag handle is hidden when the modal switches to full-screen on smaller breakpoints
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
 }
 
 @mixin hc-modal-header() {

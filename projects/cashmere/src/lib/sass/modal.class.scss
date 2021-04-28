@@ -4,10 +4,6 @@
     @include hc-modal-header();
 }
 
-.hc-modal-drag {
-    @include hc-modal-drag();
-}
-
 .hc-modal-drag-handle {
     @include hc-modal-drag-handle();
 }

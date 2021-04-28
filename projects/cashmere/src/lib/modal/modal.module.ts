@@ -8,7 +8,6 @@ import {ModalHeaderComponent} from './modal-header.component';
 import {ModalBodyComponent} from './modal-body.component';
 import {ModalComponent} from './modal.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {ModalDragComponent} from './modal-drag.component';
 
 @NgModule({
     imports: [CommonModule, DragDropModule],
@@ -18,11 +17,10 @@ import {ModalDragComponent} from './modal-drag.component';
         ModalHeaderComponent,
         ModalBodyComponent,
         ModalFooterComponent,
-        ModalComponent,
-        ModalDragComponent
+        ModalComponent
     ],
     entryComponents: [ModalOverlayComponent, ModalWindowComponent],
-    exports: [ModalHeaderComponent, ModalBodyComponent, ModalFooterComponent, ModalComponent, ModalDragComponent],
+    exports: [ModalHeaderComponent, ModalBodyComponent, ModalFooterComponent, ModalComponent],
     providers: [ModalService]
 })
 export class ModalModule {}
