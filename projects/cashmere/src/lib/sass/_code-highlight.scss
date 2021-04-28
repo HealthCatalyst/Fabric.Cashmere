@@ -1,10 +1,14 @@
+@import './colors';
+@import './variables';
+@import './mixins';
+
 /** Adapted from https://github.com/atom-material/atom-material-syntax-light */
 .hljs {
     display: block;
     overflow-x: auto;
-    padding: 1em;
-    background: #fafafa;
-    color: #37474f;
+    padding: 0;
+    background: $block-text-background;
+    color: $slate-gray-500;
     -webkit-font-smoothing: antialiased;
     text-size-adjust: 100%;
     font: 300 100%/1 Roboto Mono, monospace;
@@ -13,11 +17,11 @@
 
 .hljs > *::selection,
 .hljs-section {
-    background-color: #d6edea;
+    background-color: $white;
 }
 
 .hljs-comment {
-    color: #b0bec5;
+    color: darken($slate-gray-300, 5%);
     font-style: italic;
 }
 
@@ -25,25 +29,25 @@
 .hljs-selector-tag,
 .hljs-regexp,
 .hljs-meta {
-    color: #9c27b0;
+    color: $magenta
 }
 
 .hljs-string,
 .hljs-subst {
-    color: #0d904f;
+    color: $green;
 }
 
 .hljs-number,
 .hljs-variable,
 .hljs-template-variable {
-    color: #80cbc4;
+    color: $teal;
 }
 
 .hljs-name,
 .hljs-keyword,
 .hljs-type,
 .hljs-attribute {
-    color: #3b78e7;
+    color: shade($blue, 20%);
 }
 
 .hljs-title,
@@ -53,28 +57,28 @@
 .hljs-built_in,
 .hljs-builtin-name,
 .hljs-link {
-    color: #6182b8;
+    color: $dark-blue;
 }
 
 .hljs-params {
-    color: #d81b60;
+    color: $deep-red;
 }
 
 .hljs-addition {
-    color: #3b78e7;
+    color: $azure;
     display: inline-block;
     width: 100%;
 }
 
 .hljs-deletion {
-    color: #e53935;
+    color: $red-orange;
     display: inline-block;
     width: 100%;
 }
 
 .hljs-selector-id,
 .hljs-selector-class {
-    color: #8796b0;
+    color: $slate-gray-400;
 }
 
 .hljs-emphasis {

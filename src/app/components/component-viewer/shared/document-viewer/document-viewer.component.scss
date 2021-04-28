@@ -33,6 +33,10 @@
     margin: 30px 0 5px 0;
 }
 
+p.docs-api-module-import code {
+    color: $dark-blue;
+}
+
 .docs-api-class-extends-clauses {
     @include fontSize(20px);
     font-weight: 300;
@@ -61,9 +65,7 @@
 
     code {
         @include fontSize(13px);
-        background-color: unset;
         border-radius: unset;
-        padding: unset;
         font-weight: unset;
         line-height: unset;
     }
@@ -92,11 +94,9 @@
     }
 
     code {
-        @include fontSize(13px);
-        color: $text;
-        background-color: unset;
+        @include fontSize(14px);
+        color: $dark-blue;
         border-radius: unset;
-        padding: unset;
         font-weight: unset;
         line-height: unset;
     }
@@ -116,13 +116,14 @@
     margin-top: 0;
 }
 
-.docs-api-method-parameter-type,
-.docs-api-method-returns-type {
+code.docs-api-method-parameter-type,
+code.docs-api-method-returns-type {
     font-size: 0.85714286rem !important;
+    color: $slate-gray-500;
 }
 
-.docs-api-method-returns-type {
-    padding-left: 25px !important;
+code.docs-api-method-returns-type {
+    margin-left: 25px !important;
 }
 
 .docs-api-method-name-cell {
