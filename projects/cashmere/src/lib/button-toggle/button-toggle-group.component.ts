@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewEncapsulation } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, Component, ContentChildren, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewEncapsulation } from '@angular/core';
 import type { QueryList } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -6,6 +6,9 @@ import { ButtonToggleChangeEvent } from './button-toggle-change-event';
 import { parseBooleanAttribute } from '../util';
 import { ButtonToggleComponent } from './button-toggle.component';
 import { validateStyleInput, validateSizeInput, supportedStyles } from '../button/button.component';
+import { ControlValueAccessor } from '@angular/forms';
+import { HcFormControlComponent } from '../form-field/hc-form-control.component';
+
 
 /** `hc-button-toggle-group` components are on/off toggles with the appearance of an `hc-button`.
  * These toggle groups may be configured to behave as single-select (like radio buttons), or multi-select (like checkboxes). */
@@ -15,13 +18,15 @@ import { validateStyleInput, validateSizeInput, supportedStyles } from '../butto
     styleUrls: ['./button-toggle.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
+export class ButtonToggleGroupComponent extends HcFormControlComponent implements AfterContentInit, OnDestroy, ControlValueAccessor {
     private _disabled = false;
     private _style: string = 'secondary';
     private _size: string = 'md';
     private _valueRequired: boolean = false;
     private _multiple: boolean = false;
     private unsubscribe$ = new Subject<void>();
+    //The value used for the ControlValueAccessor
+    private _toggle: boolean = false;
 
     @HostBinding('class.hc-button-toggle-group') _hostClass = true;
 
@@ -91,6 +96,40 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
         this._updateButtonStyle();
     }
 
+    // Required functions for the Control Value Accessor
+    private _onChangeFn: (value: any) => void = () => {};
+
+    private _onTouchFn: () => any = () => {};
+    
+    @Input()
+    get toggle(): boolean {
+        return this._toggle;
+    }
+
+    set value(newValue){
+        if( newValue !== undefined && this._toggle !== newValue){
+            this._toggle = newValue
+            this._onChangeFn(newValue)
+        }
+    }
+
+    writeValue(value: any): void {
+        this._toggle = value;
+    }
+
+    registerOnChange(fn: (value: any) => void): void {
+        this._onChangeFn = fn;
+    }
+
+    registerOnTouched(fn: () => any): void {
+        this._onTouchFn = fn;
+    }
+
+    _touch() {
+        if (this._onTouchFn) {
+            this._onTouchFn();
+        }
+    }
 
     _updateButtonStyle() {
         if (this._buttons) {
@@ -108,15 +147,18 @@ export class ButtonToggleGroupComponent implements AfterContentInit, OnDestroy {
             this._buttons.forEach((button: ButtonToggleComponent) => {
                 if (button !== targetButton) {
                     button._selected = false;
+                    // Needs to be looked over - as it should update the current value of toggle
+                    this._onChangeFn(button._selected);
                 }
                 if (this.valueRequired && button === targetButton) {
                     button._selected = true;
+                    this._onChangeFn(button._selected);
                 }
             });
         } else {
             this._buttons.forEach((button: ButtonToggleComponent) => {
                 if (this.valueRequired && this._buttons.filter((btn: ButtonToggleComponent) => btn.selected ).length === 0) {
-                    if (button === targetButton) { button._selected = true; }
+                    if (button === targetButton) { button._selected = true; this._onChangeFn(button._selected); }
                 }
             });
         }

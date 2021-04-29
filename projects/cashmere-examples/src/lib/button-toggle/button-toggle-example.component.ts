@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonToggleChangeEvent, ButtonToggleComponent } from '@healthcatalyst/cashmere';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'hc-button-toggle-example',
@@ -28,5 +29,8 @@ export class ButtonToggleExampleComponent {
     public multiSelectionChangedEvent(event: ButtonToggleChangeEvent): void {
         this.multiSelectedButtonToggleValues = event.selectedValues ? event.selectedValues : [];
     }
+
+    // isGridView used for FormControl testing
+    readonly isGridView = new FormControl(true);
 }
 
