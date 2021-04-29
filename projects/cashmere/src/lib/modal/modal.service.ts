@@ -56,7 +56,8 @@ export class ModalService {
             data: {},
             ignoreEscapeKey: false,
             size: 'auto',
-            ignoreOverlayClick: false
+            ignoreOverlayClick: false,
+            isDraggable: false
         };
         const options = {...defaultOptions, ...modalOptions};
         if (options.container) {
@@ -72,6 +73,7 @@ export class ModalService {
         let activeModalRef = new ActiveModal();
         modal.data = options.data;
         activeModalRef.data = options.data;
+        modal.isDraggable = options.isDraggable;
 
         const modalInjector = Injector.create({
             providers: [{provide: ActiveModal, useValue: activeModalRef}],
@@ -119,6 +121,7 @@ export class ModalService {
         this._renderer.setStyle(window.location.nativeElement, 'z-index', this._zIndexCounter + 1);
         window.instance._size = options.size as ModalSize;
         window.instance._ignoreOverlayClick = options.ignoreOverlayClick;
+        window.instance._isDraggable = options.isDraggable;
 
         this._applicationRef.attachView(window.hostView);
         container.appendChild(window.location.nativeElement);

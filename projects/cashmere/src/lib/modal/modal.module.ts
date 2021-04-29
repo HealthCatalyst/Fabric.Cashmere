@@ -7,9 +7,10 @@ import {CommonModule} from '@angular/common';
 import {ModalHeaderComponent} from './modal-header.component';
 import {ModalBodyComponent} from './modal-body.component';
 import {ModalComponent} from './modal.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule, DragDropModule],
     declarations: [
         ModalOverlayComponent,
         ModalWindowComponent,

@@ -56,6 +56,8 @@ const openStateAnimation = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
                 'void',
                 style({
                     'box-shadow': 'none',
+                    // overflow override included to prevent Safari from still showing the scrollbar when the drawer is closed
+                    'overflow-y': 'hidden',
                     visibility: 'hidden'
                 })
             ),

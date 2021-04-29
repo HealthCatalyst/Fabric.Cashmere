@@ -276,9 +276,8 @@ table {
     > span {
         display: block;
         padding: 0 0.5em 0 1em;
-        border-right: 1px solid;
         margin-right: 5px;
-        color: rgba($gray-600, 0.5);
+        color: $gray-300;
         @include fontSize(14px);
         font-family: Consolas, Menlo, 'Ubuntu Mono', monospace;
     }

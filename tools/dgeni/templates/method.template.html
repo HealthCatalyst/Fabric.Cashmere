@@ -26,7 +26,7 @@
   <thead>
     <tr class="docs-api-method-name-row">
       <th colspan="2" class="docs-api-method-name-cell">
-        {%- if method.isDeprecated -%}
+        <code>{%- if method.isDeprecated -%}</code>
           <div class="docs-api-deprecated-marker" {$ macros.deprecationTitle(method) $}>
             Deprecated
           </div>

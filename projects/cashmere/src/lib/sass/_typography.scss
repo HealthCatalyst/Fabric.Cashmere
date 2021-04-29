@@ -2,8 +2,6 @@
 @import './variables';
 @import './mixins';
 
-$code-padding: 10px;
-
 html,
 body {
     font-family: $default-font-family;
@@ -51,7 +49,7 @@ p {
 
 // for inline code
 code {
-    color: $magenta;
+    color: $slate-gray-500;
     font-family: Consolas, Menlo, 'Ubuntu Mono', monospace;
     background-color: $block-text-background;
     border-radius: 3px;
@@ -63,8 +61,8 @@ code {
 
 // for code blocks
 pre {
-    border: 1px solid $gray-400;
-    padding: 20px;
+    border: 1px solid $slate-gray-200;
+    padding: 0;
     margin: 16px auto;
     border-radius: 5px;
     display: block;
@@ -74,7 +72,7 @@ pre {
     > span {
         @include fontSize(14px);
         line-height: 1.4;
-        padding: $code-padding 0;
+        padding: 15px 0;
         background-color: $block-text-background;
     }
 
@@ -82,12 +80,12 @@ pre {
         overflow-x: auto;
         display: block;
         @include fontSize(14px);
-        padding: $code-padding;
+        padding: 15px;
         line-height: 1.4;
         background-color: $block-text-background;
         color: $text;
         border: unset;
-        border-radius: unset;
+        border-radius: 5px;
     }
 }
 

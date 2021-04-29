@@ -1,3 +1,6 @@
-.api-table li {
-    margin: 15px 0;
+.api-table {
+    td, th { padding-right: 30px; }
+    li {
+        margin: 15px 0;
+    }
 }

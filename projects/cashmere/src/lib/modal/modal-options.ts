@@ -12,4 +12,6 @@ export interface ModalOptions {
     ignoreOverlayClick?: boolean;
     /** Defaults to false. Set to true to disable the closure of a modal by pressing the escape key. */
     ignoreEscapeKey?: boolean;
+    /** Defaults to false. When set to true, a drag handle is added to the top-right corner which can be used to reposition the modal. */
+    isDraggable?: boolean;
 }
