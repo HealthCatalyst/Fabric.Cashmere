@@ -12,7 +12,7 @@
     "button-toggle": {
         "name": "Button Toggle",
         "category": "buttons",
-        "examples": ["button-toggle"],
+        "examples": ["button-toggle", "button-toggle-styles"],
         "usageDoc": true
     },
     "checkbox": {
