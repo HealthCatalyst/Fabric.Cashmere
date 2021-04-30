@@ -1,4 +1,14 @@
-import { AfterContentInit, Component, ContentChildren, EventEmitter, forwardRef, HostBinding, Input, OnDestroy, Output, ViewEncapsulation } from '@angular/core';
+import {
+    AfterContentInit,
+    Component,
+    ContentChildren,
+    EventEmitter,
+    forwardRef,
+    HostBinding,
+    Input,
+    OnDestroy,
+    Output,
+    ViewEncapsulation } from '@angular/core';
 import type { QueryList } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -31,6 +41,8 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
     private _multiple: boolean = false;
     private unsubscribe$ = new Subject<void>();
     private _value: any;
+    private _onChangeFn: (value: any) => void = () => {};
+    private _onTouchFn: () => any = () => {};
 
     @HostBinding('class.hc-button-toggle-group') _hostClass = true;
 
@@ -54,6 +66,18 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         }
         this._style = val;
         this._updateButtonStyle();
+    }
+
+    @Input()
+    get value(): any {
+        return this._value;
+    }
+
+    set value(newValue: any) {
+        if ( newValue !== undefined && this._value !== newValue) {
+            this._value = newValue;
+            this._onChangeFn(newValue);
+        }
     }
 
     /** Sets size of toggle. Choose from: `'sm' | 'md' | 'lg' |`. *Defaults to `md`.* */
@@ -100,26 +124,24 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         this._updateButtonStyle();
     }
 
-    // Required functions for the Control Value Accessor
-    private _onChangeFn: (value: any) => void = () => {};
-
-    private _onTouchFn: () => any = () => {};
-
-    @Input()
-    get val(): any {
-        return this._value;
+    ngAfterContentInit() {
+        this._connectToButtonChildren();
+        setTimeout(() => {
+            this._setInitalModelAsNeeded();
+            this._updateButtonStateFromModel();
+            this._emitEventForInitiallySelected();
+            this._updateButtonStyle();
+        });
     }
 
-    set val(newValue: any){
-        if( newValue !== undefined && this._value !== newValue){
-            this._value = newValue
-            this._onChangeFn(newValue)
-        }
+    ngOnDestroy() {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 
     writeValue(value: any): void {
         this._value = value;
-        this._updateButtonStateFromValue();
+        this._updateButtonStateFromModel();
     }
 
     registerOnChange(fn: (value: any) => void): void {
@@ -151,13 +173,18 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         }
     }
 
-    _updateButtonStateFromValue() {
+    _updateButtonStateFromModel() {
         this._buttons?.forEach((button: ButtonToggleComponent) => {
-            button._selected = button.value === this._value;
+            if (this.multiple) {
+                button._selected = this._value?.some(v => v === button.value);
+            } else {
+                button._selected = button.value === this._value;
+            }
         });
 
         if (!this.multiple && this._buttons?.filter(b => b._selected).length > 1) {
-            throw new Error(`Multiple buttons in group have same value (${this._value}). This is not allowed if "multiple" property isn't set to true.`)
+            throw new Error(`Multiple buttons in group have same value (${this._value}).
+                This is not allowed if "multiple" property isn't set to true.`);
         }
         this._updateButtonStyle();
     }
@@ -167,53 +194,48 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
             this._buttons.forEach((button: ButtonToggleComponent) => {
                 if (button !== targetButton) {
                     button._selected = false;
-                    // Needs to be looked over - as it should update the current value of toggle
-                    this._onChangeFn(button._selected);
                 }
                 if (this.valueRequired && button === targetButton) {
                     button._selected = true;
-                    this._onChangeFn(button._selected);
                 }
             });
         } else {
             this._buttons.forEach((button: ButtonToggleComponent) => {
                 if (this.valueRequired && this._buttons.filter((btn: ButtonToggleComponent) => btn.selected ).length === 0) {
-                    if (button === targetButton) { button._selected = true; this._onChangeFn(button._selected); }
+                    if (button === targetButton) { button._selected = true; }
                 }
             });
         }
 
         // if multiple = true, _value is an array, if not, _value should be a single value.
         const selectedValues = this._buttons.filter((btn: ButtonToggleComponent) => btn.selected).map(val => val.value);
-        this.val = this.multiple ? selectedValues : selectedValues[0];
+        this.value = this.multiple ? selectedValues : selectedValues[0];
+        this._onChangeFn(this.value);
 
         this._updateButtonStyle();
     }
 
-    ngAfterContentInit() {
-        setTimeout(() => {
-            this._updateButtonStateFromValue();
-            this._updateInitiallySelected();
-            this._updateButtonStyle();
-        });
+    /** The component allows you to set [selected] on individual buttons, so we need to honor that in the model. */
+    private _setInitalModelAsNeeded() {
+        this._value = this._value || (this.multiple ? [] : this.value);
+        this._buttons.forEach((button: ButtonToggleComponent) => {
+            if (button.selected) {
+                if (this.multiple && !this.value.includes(button.value)) {
+                    this.value.push(button.value);
+                }
 
-        if (this._buttons) {
-            this._buttons.forEach((button: ButtonToggleComponent) => {
-                button._parentDisabled = this.disabled;
-                button._toggleClick.pipe(takeUntil(this.unsubscribe$)).subscribe(
-                    (target: ButtonToggleComponent) => {
-                        this._updateValueOnClick(target);
-                        this.selectionChangedEvent.emit(new ButtonToggleChangeEvent(
-                            target,
-                            this._buttons.toArray()
-                            , this._buttons.filter((btn: ButtonToggleComponent) => btn.selected).map(val => val.value)
-                        ));
-                    });
-            });
-        }
+                if(!this.multiple) {
+                    this.value = button.value;
+                }
+            } else {
+                if (this.multiple && this.value.includes(button.value)) {
+                    this.value.splice(this.value.indexOf(button.value, 1));
+                }
+            }
+        });
     }
 
-    _updateInitiallySelected() {
+    private _emitEventForInitiallySelected() {
         if (this._buttons.some((button: ButtonToggleComponent) => {
             return button.selected;
         })) {
@@ -225,8 +247,24 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         }
     }
 
-    ngOnDestroy() {
-        this.unsubscribe$.next();
-        this.unsubscribe$.complete();
+    private _connectToButtonChildren() {
+        if (this._buttons) {
+            this._buttons.forEach((button: ButtonToggleComponent) => {
+                button._parentDisabled = this.disabled;
+                this._subscribeToButtonClick(button);
+            });
+        }
+    }
+
+    private _subscribeToButtonClick(button: ButtonToggleComponent) {
+        button._toggleClick.pipe(takeUntil(this.unsubscribe$)).subscribe(
+            (target: ButtonToggleComponent) => {
+                this._updateValueOnClick(target);
+                this.selectionChangedEvent.emit(new ButtonToggleChangeEvent(
+                    target,
+                    this._buttons.toArray()
+                    , this._buttons.filter((btn: ButtonToggleComponent) => btn.selected).map(val => val.value)
+                ));
+            });
     }
 }
