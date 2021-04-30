@@ -41,8 +41,6 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
     private _multiple: boolean = false;
     private unsubscribe$ = new Subject<void>();
     private _value: any;
-    private _onChangeFn: (value: any) => void = () => {};
-    private _onTouchFn: () => any = () => {};
 
     @HostBinding('class.hc-button-toggle-group') _hostClass = true;
 
@@ -123,6 +121,9 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         }
         this._updateButtonStyle();
     }
+
+    private _onChangeFn: (value: any) => void = () => {};
+    private _onTouchFn: () => any = () => {};
 
     ngAfterContentInit() {
         this._connectToButtonChildren();
@@ -224,7 +225,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
                     this.value.push(button.value);
                 }
 
-                if(!this.multiple) {
+                if (!this.multiple) {
                     this.value = button.value;
                 }
             } else {
