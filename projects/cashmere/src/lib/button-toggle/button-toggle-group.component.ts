@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, Component, ContentChildren, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, EventEmitter, forwardRef, HostBinding, Input, OnDestroy, Output, ViewEncapsulation } from '@angular/core';
 import type { QueryList } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -6,7 +6,7 @@ import { ButtonToggleChangeEvent } from './button-toggle-change-event';
 import { parseBooleanAttribute } from '../util';
 import { ButtonToggleComponent } from './button-toggle.component';
 import { validateStyleInput, validateSizeInput, supportedStyles } from '../button/button.component';
-import { ControlValueAccessor } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { HcFormControlComponent } from '../form-field/hc-form-control.component';
 
 
@@ -16,6 +16,11 @@ import { HcFormControlComponent } from '../form-field/hc-form-control.component'
     selector: 'hc-button-toggle-group',
     template: '<ng-content></ng-content>',
     styleUrls: ['./button-toggle.component.scss'],
+    providers: [{
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => ButtonToggleGroupComponent),
+        multi: true
+    }],
     encapsulation: ViewEncapsulation.None
 })
 export class ButtonToggleGroupComponent extends HcFormControlComponent implements AfterContentInit, OnDestroy, ControlValueAccessor {
@@ -25,8 +30,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
     private _valueRequired: boolean = false;
     private _multiple: boolean = false;
     private unsubscribe$ = new Subject<void>();
-    //The value used for the ControlValueAccessor
-    private _toggle: boolean = false;
+    private _value: any;
 
     @HostBinding('class.hc-button-toggle-group') _hostClass = true;
 
@@ -100,21 +104,22 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
     private _onChangeFn: (value: any) => void = () => {};
 
     private _onTouchFn: () => any = () => {};
-    
+
     @Input()
-    get toggle(): boolean {
-        return this._toggle;
+    get val(): any {
+        return this._value;
     }
 
-    set value(newValue){
-        if( newValue !== undefined && this._toggle !== newValue){
-            this._toggle = newValue
+    set val(newValue: any){
+        if( newValue !== undefined && this._value !== newValue){
+            this._value = newValue
             this._onChangeFn(newValue)
         }
     }
 
     writeValue(value: any): void {
-        this._toggle = value;
+        this._value = value;
+        this._updateButtonStateFromValue();
     }
 
     registerOnChange(fn: (value: any) => void): void {
@@ -123,6 +128,10 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
 
     registerOnTouched(fn: () => any): void {
         this._onTouchFn = fn;
+    }
+
+    setDisabledState(state: boolean): void {
+        this.disabled = state;
     }
 
     _touch() {
@@ -142,7 +151,18 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         }
     }
 
-    _updateValue(targetButton: ButtonToggleComponent) {
+    _updateButtonStateFromValue() {
+        this._buttons?.forEach((button: ButtonToggleComponent) => {
+            button._selected = button.value === this._value;
+        });
+
+        if (!this.multiple && this._buttons?.filter(b => b._selected).length > 1) {
+            throw new Error(`Multiple buttons in group have same value (${this._value}). This is not allowed if "multiple" property isn't set to true.`)
+        }
+        this._updateButtonStyle();
+    }
+
+    _updateValueOnClick(targetButton: ButtonToggleComponent) {
         if (!this.multiple) {
             this._buttons.forEach((button: ButtonToggleComponent) => {
                 if (button !== targetButton) {
@@ -163,11 +183,16 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
             });
         }
 
+        // if multiple = true, _value is an array, if not, _value should be a single value.
+        const selectedValues = this._buttons.filter((btn: ButtonToggleComponent) => btn.selected).map(val => val.value);
+        this.val = this.multiple ? selectedValues : selectedValues[0];
+
         this._updateButtonStyle();
     }
 
     ngAfterContentInit() {
         setTimeout(() => {
+            this._updateButtonStateFromValue();
             this._updateInitiallySelected();
             this._updateButtonStyle();
         });
@@ -177,7 +202,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
                 button._parentDisabled = this.disabled;
                 button._toggleClick.pipe(takeUntil(this.unsubscribe$)).subscribe(
                     (target: ButtonToggleComponent) => {
-                        this._updateValue(target);
+                        this._updateValueOnClick(target);
                         this.selectionChangedEvent.emit(new ButtonToggleChangeEvent(
                             target,
                             this._buttons.toArray()
