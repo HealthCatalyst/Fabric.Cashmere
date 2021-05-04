@@ -1,5 +1,5 @@
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {dispatchMouseEvent, dispatchFakeEvent, dispatchEvent} from './utils/dispatch-events';
+import {dispatchMouseEvent, dispatchFakeEvent, dispatchEvent} from '../utils/dispatch-events'
 import {CommonModule} from '@angular/common';
 import {ModalService} from './modal.service';
 import {ActiveModal} from './active-modal';
@@ -64,7 +64,7 @@ describe('hc-modal', () => {
         expect(windowComponent._isDraggable).toBeTruthy();
     });
 
-    it('should the overlay click be desable', () => {
+    it('should the overlay click be disable', () => {
         windowComponent._ignoreOverlayClick = true;
         windowFixture.detectChanges();
         expect(windowComponent._ignoreOverlayClick).toBeTruthy();

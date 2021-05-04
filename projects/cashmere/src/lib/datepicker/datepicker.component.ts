@@ -19,7 +19,7 @@ import {DateAdapter} from './datetime/date-adapter';
 import {createMissingDateImplError} from './datetime/datepicker-errors';
 import {Subject, Subscription, merge} from 'rxjs';
 import {ScrollStrategy, Overlay, ComponentType, OverlayRef, OverlayConfig, PositionStrategy} from '@angular/cdk/overlay';
-import {coerceBooleanProperty} from './utils/boolean-property';
+import {coerceBooleanProperty} from '../utils/boolean-property';
 import {HcCalendarCellCssClasses} from './calendar-body/calendar-body.component';
 import {DatepickerContentComponent} from './datepicker-content/datepicker-content.component';
 import {ComponentPortal} from '@angular/cdk/portal';

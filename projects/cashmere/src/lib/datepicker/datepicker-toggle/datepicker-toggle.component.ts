@@ -14,7 +14,7 @@ import {
     SimpleChanges
 } from '@angular/core';
 import {merge, Subscription, of as observableOf} from 'rxjs';
-import {coerceBooleanProperty} from '../utils/boolean-property';
+import {coerceBooleanProperty} from '../../utils/boolean-property';
 import {HcDatepickerIntl} from '../datepicker-intl';
 import {DatepickerComponent} from '../datepicker.component';
 import {ButtonComponent} from '../../button/button.component';

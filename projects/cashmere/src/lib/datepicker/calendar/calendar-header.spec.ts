@@ -6,7 +6,7 @@ import {HcNativeDateModule} from '../datetime/datetime.module';
 import {DatepickerModule} from '../datepicker.module';
 import {HcDatepickerIntl} from '../datepicker-intl';
 import {CalendarComponent} from './calendar.component';
-import {JAN, FEB, DEC} from '../utils/month-constants';
+import {JAN, FEB, DEC} from '../../utils/month-constants';
 import {yearsPerPage} from '../multi-year-view/multi-year-view.component';
 
 // tslint:disable:no-non-null-assertion
