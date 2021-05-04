@@ -1,5 +1,5 @@
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {dispatchMouseEvent, dispatchFakeEvent, dispatchEvent} from '../utils/dispatch-events'
+import {dispatchMouseEvent, dispatchFakeEvent, dispatchEvent} from '../utils/dispatch-events';
 import {CommonModule} from '@angular/common';
 import {ModalService} from './modal.service';
 import {ActiveModal} from './active-modal';
