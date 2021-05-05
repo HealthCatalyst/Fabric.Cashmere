@@ -25,7 +25,7 @@ describe('hc-modal-header', () => {
         headerFixture.detectChanges();
     });
 
-    it('should create an footer component', () => {
+    it('should create a header component', () => {
         expect(headerComponent).toBeTruthy();
     });
 });
