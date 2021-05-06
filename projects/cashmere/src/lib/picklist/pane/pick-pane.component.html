@@ -26,10 +26,10 @@
             </ng-container>
         </div>
         <div class="hc-picklist-pane-quick-links" *ngIf="!disabled">
-            <button hc-button buttonStyle="link-inline" class="hc-font-xsm hc-pick-button-link-inline" (click)="selectAll()" [disabled]="itemsList.filteredItems.length === 0">
+            <button type="button" hc-button buttonStyle="link-inline" class="hc-font-xsm hc-pick-button-link-inline" (click)="selectAll()" [disabled]="itemsList.filteredItems.length === 0">
                 Select All
             </button>
-            <button hc-button buttonStyle="link-inline" class="hc-font-xsm hc-pick-button-link-inline" (click)="deselectAll()" [disabled]="!hasSelectedItems">
+            <button type="button" hc-button buttonStyle="link-inline" class="hc-font-xsm hc-pick-button-link-inline" (click)="deselectAll()" [disabled]="!hasSelectedItems">
                 Select None
             </button>
         </div>
