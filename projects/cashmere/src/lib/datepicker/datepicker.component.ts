@@ -19,7 +19,7 @@ import {DateAdapter} from './datetime/date-adapter';
 import {createMissingDateImplError} from './datetime/datepicker-errors';
 import {Subject, Subscription, merge} from 'rxjs';
 import {ScrollStrategy, Overlay, ComponentType, OverlayRef, OverlayConfig, PositionStrategy} from '@angular/cdk/overlay';
-import {coerceBooleanProperty} from './utils/boolean-property';
+import {parseBooleanAttribute} from '../util';
 import {HcCalendarCellCssClasses} from './calendar-body/calendar-body.component';
 import {DatepickerContentComponent} from './datepicker-content/datepicker-content.component';
 import {ComponentPortal} from '@angular/cdk/portal';
@@ -124,7 +124,7 @@ export class DatepickerComponent implements OnDestroy {
         return this._disabled === undefined && this._datepickerInput ? this._datepickerInput.disabled : !!this._disabled;
     }
     set disabled(value: boolean) {
-        const newValue = coerceBooleanProperty(value);
+        const newValue = parseBooleanAttribute(value);
 
         if (newValue !== this._disabled) {
             this._disabled = newValue;

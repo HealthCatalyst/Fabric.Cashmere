@@ -3,8 +3,8 @@ import {Component} from '@angular/core';
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {HcNativeDateModule} from '../datetime/datetime.module';
-import {MAR, JAN, DEC, NOV, FEB} from '../utils/month-constants';
-import {dispatchFakeEvent, dispatchEvent} from '../utils/dispatch-events';
+import {MAR, JAN, DEC, NOV, FEB} from '../../utils/month-constants';
+import {dispatchFakeEvent, dispatchEvent} from '../../utils/dispatch-events';
 import {CalendarBodyComponent} from '../calendar-body/calendar-body.component';
 import {MonthViewComponent} from './month-view.component';
 

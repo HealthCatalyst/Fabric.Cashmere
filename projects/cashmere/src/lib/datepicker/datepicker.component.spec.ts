@@ -10,8 +10,8 @@ import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/tes
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {Subject} from 'rxjs';
 import {DatepickerModule} from './datepicker.module';
-import {dispatchMouseEvent, dispatchFakeEvent, dispatchEvent} from './utils/dispatch-events';
-import {JAN, DEC, JUL, JUN, SEP} from './utils/month-constants';
+import {dispatchMouseEvent, dispatchFakeEvent, dispatchEvent} from '../utils/dispatch-events';
+import {JAN, DEC, JUL, JUN, SEP} from '../utils/month-constants';
 import {HC_DATEPICKER_SCROLL_STRATEGY, DatepickerComponent} from './datepicker.component';
 import {DatepickerToggleComponent} from './datepicker-toggle/datepicker-toggle.component';
 import {HcNativeDateModule, NativeDateModule} from './datetime/datetime.module';

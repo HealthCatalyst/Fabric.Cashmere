@@ -11,7 +11,7 @@ import {
 } from '@angular/forms';
 import {createMissingDateImplError} from '../datetime/datepicker-errors';
 import {DatepickerComponent} from '../datepicker.component';
-import {coerceBooleanProperty} from '../utils/boolean-property';
+import {parseBooleanAttribute} from '../../util';
 import {Subscription} from 'rxjs';
 import {D, HC_DATE_FORMATS, HcDateFormats} from '../datetime/date-formats';
 import {DateAdapter} from '../datetime/date-adapter';
@@ -149,7 +149,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
         return !!this._disabled;
     }
     set disabled(value: boolean) {
-        const newValue = coerceBooleanProperty(value);
+        const newValue = parseBooleanAttribute(value);
         const element = this._elementRef.nativeElement;
 
         if (this._disabled !== newValue) {

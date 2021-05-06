@@ -14,7 +14,7 @@ import {
     SimpleChanges
 } from '@angular/core';
 import {merge, Subscription, of as observableOf} from 'rxjs';
-import {coerceBooleanProperty} from '../utils/boolean-property';
+import {parseBooleanAttribute} from '../../util';
 import {HcDatepickerIntl} from '../datepicker-intl';
 import {DatepickerComponent} from '../datepicker.component';
 import {ButtonComponent} from '../../button/button.component';
@@ -60,7 +60,7 @@ export class DatepickerToggleComponent implements AfterContentInit, OnChanges, O
         return this._disabled === undefined ? this.datepicker.disabled : !!this._disabled;
     }
     set disabled(value: boolean) {
-        this._disabled = coerceBooleanProperty(value);
+        this._disabled = parseBooleanAttribute(value);
     }
     private _disabled: boolean;
 
