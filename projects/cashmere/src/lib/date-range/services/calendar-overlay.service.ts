@@ -9,7 +9,7 @@ export class CalendarOverlayService {
 
     constructor(private overlay: Overlay, private injector: Injector) {}
 
-    open(hostElemRef: ElementRef, center: boolean): OverlayRef {
+    open(hostElemRef: ElementRef, center?: boolean): OverlayRef {
         this.hostElemRef = hostElemRef;
         const overlayRef = this._createOverlay(center);
         const portalInjector = this._createInjector(overlayRef);
