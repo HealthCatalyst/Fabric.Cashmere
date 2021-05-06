@@ -36,7 +36,7 @@ export function validateAlignInput(inputStr: string) {
     }
 }
 
-const openStateAnimation = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
+const openStateAnimation = '0.6s ease';
 
 /** Drawer that can be opened or closed on the drawer container */
 @Component({

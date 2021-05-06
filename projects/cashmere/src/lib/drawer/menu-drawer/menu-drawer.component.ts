@@ -22,7 +22,7 @@ export function validateMenuDrawerTheme(menuTheme) {
     }
 }
 
-const openStateAnimation = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
+const openStateAnimation = '0.6s ease';
 
 /** Menu drawer that provides default themes */
 @Component({
