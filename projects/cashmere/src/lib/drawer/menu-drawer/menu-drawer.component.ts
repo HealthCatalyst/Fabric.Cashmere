@@ -22,7 +22,8 @@ export function validateMenuDrawerTheme(menuTheme) {
     }
 }
 
-const openStateAnimation = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
+const openStateAnimation = '0.75s ease';
+const closeStateAnimation = '0.7s .05s ease';
 
 /** Menu drawer that provides default themes */
 @Component({
@@ -50,14 +51,14 @@ const openStateAnimation = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
             transition('open-instant => void', animate(openStateAnimation)),
             transition('void => open-left', [
                 animate('0ms', style({ transform: 'translate3d(-100%, 0, 0)' })),
-                animate(openStateAnimation)
+                animate(closeStateAnimation)
             ]),
             transition('open-left => void', [
                 animate(openStateAnimation, style({ transform: 'translate3d(-100%, 0, 0)' }))
             ]),
             transition('void => open-right', [
                 animate('0ms', style({ transform: 'translate3d(100%, 0, 0)'})),
-                animate(openStateAnimation)
+                animate(closeStateAnimation)
             ]),
             transition('open-right => void', [
                 animate(openStateAnimation, style({ transform: 'translate3d(100%, 0, 0)' }))
