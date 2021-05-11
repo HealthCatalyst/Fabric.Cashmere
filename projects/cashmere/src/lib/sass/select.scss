@@ -81,6 +81,11 @@
         color: tint($text, 60%);
         cursor: not-allowed;
     }
+
+    //Change input font size for mobile users
+    @include media-breakpoint-down(md) {
+        font-size: 16px;
+    }
 }
 
 @mixin hc-select-input-hover() {
@@ -98,6 +103,11 @@
 @mixin hc-select-input-tight() {
     @include fontSize(13px);
     height: 28px;
+
+    //Change input font size for mobile users
+    @include media-breakpoint-down(md) {
+        font-size: 16px;
+    }
 }
 
 @mixin hc-select-chevron-disabled() {
