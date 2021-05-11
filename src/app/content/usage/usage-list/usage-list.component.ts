@@ -26,7 +26,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     formSubmitted = false;
     scriptURL = 'https://script.google.com/macros/s/AKfycbwWZCf0aBg1e5BFD9G-hVTb-zbSTXT1KGFSwoyRLwMhu7FZF2g/exec';
     editForm = document.forms['editListForm'];
-    showErrors: boolean = false;
+    showErrors = false;
     @ViewChild('tabSetElement') tabSetRef: TabSetComponent;
     @ViewChild('formTab') formTabRef: TabComponent;
     @ViewChild('formDirective') formDirective: FormGroupDirective;

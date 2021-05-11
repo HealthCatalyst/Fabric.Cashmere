@@ -10,7 +10,7 @@ import {Subject} from 'rxjs';
     selector: '[hcForm]'
 })
 export class HcFormDirective implements AfterContentInit, OnDestroy {
-    private _tight: boolean = false;
+    private _tight = false;
     private unsubscribe$ = new Subject<void>();
 
     @ContentChildren(HcFormFieldComponent)

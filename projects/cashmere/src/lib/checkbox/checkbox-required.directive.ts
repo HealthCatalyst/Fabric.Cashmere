@@ -1,5 +1,3 @@
-/* tslint:disable:directive-selector */
-
 import {Directive, forwardRef, HostBinding, Input, Provider} from '@angular/core';
 import {AbstractControl, NG_VALIDATORS, RequiredValidator, ValidationErrors, Validator, Validators} from '@angular/forms';
 
@@ -11,6 +9,7 @@ export const HC_CHECKBOX_REQUIRED_VALIDATOR: Provider = {
 
 /** @docs-private */
 @Directive({
+    // eslint-disable-next-line @angular-eslint/directive-selector
     selector: `hc-checkbox[required][formControlName],hc-checkbox[required][formControl],hc-checkbox[required][ngModel]`,
     providers: [HC_CHECKBOX_REQUIRED_VALIDATOR]
 })

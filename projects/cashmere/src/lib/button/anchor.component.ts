@@ -1,4 +1,3 @@
-/* tslint:disable:component-selector */
 // https://github.com/mgechev/codelyzer/issues/178#issuecomment-265154480
 
 import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, HostListener, Renderer2, ViewEncapsulation} from '@angular/core';

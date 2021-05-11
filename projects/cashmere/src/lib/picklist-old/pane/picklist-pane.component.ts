@@ -31,7 +31,7 @@ import {FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOpt
 })
 export class PicklistPaneComponent {
     @Input()
-    public emptyMsg: string = 'No options';
+    public emptyMsg = 'No options';
     @Output()
     public moveSelectedItems = new EventEmitter<PicklistPaneComponent>();
     @ViewChild('listContainer')
@@ -41,7 +41,7 @@ export class PicklistPaneComponent {
     public companion: PicklistPaneComponent | null = null;
     public shouldExcludeCompanion = false;
     public codeIsSignificant = false;
-    public searchTerm: string = '';
+    public searchTerm = '';
     public searchTermStream = new Subject<string>();
     public selectAllWasLastClicked = false;
     public selectAllLimit = 2000;

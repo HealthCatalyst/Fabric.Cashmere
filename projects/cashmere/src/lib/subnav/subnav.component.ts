@@ -10,13 +10,13 @@ import {Component, HostBinding, Input, ViewEncapsulation} from '@angular/core';
 })
 export class SubnavComponent {
     @HostBinding('class.hc-subnav')
-    _hostClass: boolean = true;
+    _hostClass = true;
 
     /** **DEPRECATED** Not compatible with notification banners, so you should set
      * the fixed position of the subnav and other header content within your app instead */
     @HostBinding('class.hc-subnav-fixed-top')
     @Input()
-    public fixedTop: boolean = false;
+    public fixedTop = false;
 
     constructor() {}
 }

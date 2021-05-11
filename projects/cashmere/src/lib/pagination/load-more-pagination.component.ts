@@ -28,7 +28,7 @@ export class LoadMorePaginationComponent extends BasePaginationComponent impleme
         validateStyleInput(btnStyle, 'LoadMorePaginationComponent');
         this._style = btnStyle;
     }
-    private _style: string = 'secondary';
+    private _style = 'secondary';
 
     _loadNextPage() {
         if (this._isLastPage) {

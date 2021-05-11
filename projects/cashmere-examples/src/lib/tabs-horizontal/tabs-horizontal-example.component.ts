@@ -10,7 +10,7 @@ import {TabChangeEvent} from '@healthcatalyst/cashmere';
     styleUrls: ['tabs-horizontal-example.component.scss']
 })
 export class TabsHorizontalExampleComponent {
-    selectedIndex: number = 0;
+    selectedIndex = 0;
 
     selectionChanged(event: TabChangeEvent) {
         this.selectedIndex = event.index;

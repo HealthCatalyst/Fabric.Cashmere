@@ -24,7 +24,7 @@ export class PaginationComponent extends BasePaginationComponent implements OnIn
     }
     private _pageSizeOptions: number[] = [10, 20, 50];
 
-    isFocused: boolean = false;
+    isFocused = false;
     _pageSizeControl = new FormControl( this.pageSize );
 
     /** Displayed set of page size options. Will be sorted and include current page size. */

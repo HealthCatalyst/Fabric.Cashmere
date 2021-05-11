@@ -146,7 +146,7 @@ export class HcToasterService {
 
     /** Closes currently visible toasts */
     closeAllToasts() {
-        let len = this._toasts.length;
+        const len = this._toasts.length;
         for (let index = 0; index < len; index++) {
             const element = this._toasts[index];
             if (element) {
@@ -179,7 +179,7 @@ export class HcToasterService {
 
     private _getOverlayConfig(config: HcToastOptions): OverlayConfig {
         let overlayConfig;
-        let positionStrategy = this._getPositionStrategy(String(config.position), this._toasts.length);
+        const positionStrategy = this._getPositionStrategy(String(config.position), this._toasts.length);
 
         if (config.position === 'top-full-width' || config.position === 'bottom-full-width') {
             overlayConfig = new OverlayConfig({positionStrategy, width: '96%', panelClass: 'overlay-pointer-events'});
@@ -192,7 +192,7 @@ export class HcToasterService {
 
     private _getPositionStrategy(position: string, index: number): PositionStrategy {
         let positionStrategy: PositionStrategy;
-        let toastIndex: number = this._getLastToast(position, index);
+        const toastIndex: number = this._getLastToast(position, index);
 
         switch (position) {
             case 'top-right':
@@ -379,7 +379,7 @@ export class HcToasterService {
 
     // Returns one toast back from the index provided in the position provided
     private _getLastToast(toastPos: string, startIndex: number): number {
-        let toastIndex: number = -1;
+        let toastIndex = -1;
 
         for (let index = startIndex - 1; index >= 0; index--) {
             if (this._toasts[index]._toastPosition === toastPos) {

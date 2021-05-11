@@ -5,7 +5,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
-const expectedDirection: string = 'horizontal';
+const expectedDirection = 'horizontal';
 
 @Component({
     template: `
@@ -91,7 +91,7 @@ describe('TabSetComponent', () => {
         });
 
         it('should trigger selectedTabChange event', (done: () => void) => {
-            const expectedIndex: number = 0;
+            const expectedIndex = 0;
             const expectedTab: TabComponent = component._tabs.first;
             component.selectedTabChange.subscribe((e: TabChangeEvent) => {
                 expect(e.index).toEqual(expectedIndex);

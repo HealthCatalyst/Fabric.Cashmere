@@ -41,8 +41,6 @@ function createCell(value: number, cellClasses?: HcCalendarCellCssClasses) {
     return new HcCalendarCell(value, `${value}`, `${value}-label`, true, cellClasses);
 }
 
-// tslint:disable:no-non-null-assertion
-// tslint:disable:component-class-suffix
 describe('CalendarBodyComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({

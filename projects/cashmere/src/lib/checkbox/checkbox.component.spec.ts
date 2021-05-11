@@ -163,7 +163,7 @@ describe('CheckboxComponent', () => {
         });
 
         it('should align the checkbox label based on the align parameter', () => {
-            let alignClass = fixture.debugElement.queryAll(By.css('.hc-checkbox-align-top'));
+            const alignClass = fixture.debugElement.queryAll(By.css('.hc-checkbox-align-top'));
             expect(alignClass.length).toBe(1);
         });
     });
@@ -210,16 +210,16 @@ describe('CheckboxComponent', () => {
             fixture = TestBed.createComponent(CheckboxWithNgModelComponent);
             fixture.detectChanges();
 
-            let checkboxDebugElement = fixture.debugElement.query(By.directive(CheckboxComponent));
-            let checkboxNativeElement = checkboxDebugElement.nativeElement;
+            const checkboxDebugElement = fixture.debugElement.query(By.directive(CheckboxComponent));
+            const checkboxNativeElement = checkboxDebugElement.nativeElement;
             testComponent = fixture.debugElement.componentInstance;
             checkboxInstance = checkboxDebugElement.componentInstance;
             inputElement = <HTMLInputElement>checkboxNativeElement.querySelector('input');
         });
 
         it('should validate with RequiredTrue validator', () => {
-            let checkboxElement = fixture.debugElement.query(By.directive(CheckboxComponent));
-            let ngModel = checkboxElement.injector.get<NgModel>(NgModel);
+            const checkboxElement = fixture.debugElement.query(By.directive(CheckboxComponent));
+            const ngModel = checkboxElement.injector.get<NgModel>(NgModel);
 
             testComponent.isRequired = true;
             inputElement.click();
@@ -257,15 +257,15 @@ describe('CheckboxComponent', () => {
     `
 })
 export class SingleCheckboxComponent {
-    isChecked: boolean = false;
-    isRequired: boolean = false;
-    isIndeterminate: boolean = false;
-    isDisabled: boolean = false;
-    parentElementClicked: boolean = false;
-    parentElementKeyedUp: boolean = false;
+    isChecked = false;
+    isRequired = false;
+    isIndeterminate = false;
+    isDisabled = false;
+    parentElementClicked = false;
+    parentElementKeyedUp = false;
     checkboxId: string | null = 'simple-check';
-    checkboxValue: string = 'single_checkbox';
-    alignVal: string = "top";
+    checkboxValue = 'single_checkbox';
+    alignVal = "top";
 
     onCheckboxClick: (event?: Event) => void = () => {};
     onCheckboxChange: (event?: CheckboxChangeEvent) => void = () => {};
@@ -286,6 +286,6 @@ class CheckboxWithFormControlComponent {
     `
 })
 class CheckboxWithNgModelComponent {
-    isGood: boolean = false;
-    isRequired: boolean = true;
+    isGood = false;
+    isRequired = true;
 }

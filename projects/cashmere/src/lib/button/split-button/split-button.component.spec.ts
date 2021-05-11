@@ -1,5 +1,3 @@
-/* tslint:disable:component-class-suffix */
-
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {SplitButtonComponent} from './split-button.component';
@@ -39,7 +37,7 @@ describe('SplitButtonComponent', () => {
             triggerButton.click();
             fixture.detectChanges();
 
-            let buttonItems = fixture.debugElement.queryAll(By.directive(MenuItemDirective));
+            const buttonItems = fixture.debugElement.queryAll(By.directive(MenuItemDirective));
             buttonItems[0].nativeElement.click();
             fixture.detectChanges();
 

@@ -22,7 +22,7 @@ export class GuidesComponent implements OnDestroy {
         // Listen for vertical tab bar navigation and update the select component
         this.router.events.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
             if (event instanceof NavigationEnd) {
-                for (let entry of this.guidesService.guides) {
+                for (const entry of this.guidesService.guides) {
                     if (event.urlAfterRedirects === `/web/guides/${entry.route}`) {
                         this.thisPage = entry.title;
                         this.appInsights.logPageView(this.thisPage, event.urlAfterRedirects);
@@ -49,7 +49,7 @@ export class GuidesComponent implements OnDestroy {
 
     // Handle changes to the select component and navigate
     selectUpdate(event: any) {
-        for (let entry of this.guidesService.guides) {
+        for (const entry of this.guidesService.guides) {
             if (event === entry.title) {
                 this.router.navigate(['/web/guides/' + entry.route]);
                 window.scrollTo(0, 0);

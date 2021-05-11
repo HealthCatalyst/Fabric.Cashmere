@@ -29,7 +29,6 @@ export class DatepickerToggleIconDirective {}
     selector: 'hc-datepicker-toggle',
     templateUrl: './datepicker-toggle.component.html',
     styleUrls: ['./datepicker-toggle.component.scss'],
-    // tslint:disable-next-line:no-host-metadata-property
     host: {
         class: 'hc-datepicker-toggle',
         // Always set the tabindex to -1 so that it doesn't overlap with any custom tabindex the
@@ -46,7 +45,6 @@ export class DatepickerToggleComponent implements AfterContentInit, OnChanges, O
     private _stateChanges = Subscription.EMPTY;
 
     /** Datepicker instance that the button will toggle. */
-    // tslint:disable-next-line:no-input-rename
     @Input('for')
     datepicker: DatepickerComponent;
 

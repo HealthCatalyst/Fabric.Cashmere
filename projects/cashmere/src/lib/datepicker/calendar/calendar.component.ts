@@ -140,7 +140,7 @@ export class CalendarHeaderComponent {
     _todayEnabled(): boolean {
         let minDate;
         let maxDate;
-        let today = new Date(this._dateAdapter.today().toDateString());
+        const today = new Date(this._dateAdapter.today().toDateString());
 
         /** Normalize the compare dates to all be on the first day of the month because we are only concerned
          * about whether today falls outside of the month than min or max is in */
@@ -183,7 +183,6 @@ export class CalendarHeaderComponent {
     selector: 'hc-calendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['calendar.component.scss'],
-    // tslint:disable-next-line:no-host-metadata-property
     host: {
         class: 'hc-calendar'
     },
@@ -241,7 +240,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
             throw Error('Unsupported hourCycle value: ' + value + '. Accepted values are 12 or 24.');
         }
     }
-    _hourCycle: number = 12;
+    _hourCycle = 12;
 
     /** The currently selected date. */
     @Input()
@@ -349,7 +348,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     /** A string containing the value of minutes for the current date */
     get minutes(): string | null {
         if (this.selected) {
-            let minVal = this.selected.getMinutes();
+            const minVal = this.selected.getMinutes();
             return minVal < 10 ? '0' + minVal : minVal.toString();
         } else {
             return this.selected;
@@ -357,7 +356,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
     set minutes(value: string | null) {
         if (value && !isNaN(+value)) {
-            let tempDate = this.selected ? new Date(this.selected.getTime()) : new Date();
+            const tempDate = this.selected ? new Date(this.selected.getTime()) : new Date();
             tempDate.setMinutes(+value);
             this.selectedChange.emit(tempDate);
             this._userSelected();
@@ -367,7 +366,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     /** A string containing the hour for the current date */
     get hours(): string | null {
         if (this.selected) {
-            let hourVal = this.selected.getHours();
+            const hourVal = this.selected.getHours();
             if (this._hourCycle === 12) {
                 if (hourVal > 11) {
                     return hourVal === 12 ? hourVal.toString() : (hourVal - 12).toString();
@@ -391,7 +390,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
                     hourVal = 0;
                 }
             }
-            let tempDate = this.selected ? new Date(this.selected.getTime()) : new Date();
+            const tempDate = this.selected ? new Date(this.selected.getTime()) : new Date();
             tempDate.setHours(hourVal);
             this.selectedChange.emit(tempDate);
             this._userSelected();
@@ -400,8 +399,8 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
 
     _periodChange() {
         if (this.selected) {
-            let tempDate = new Date(this.selected.getTime());
-            let curHours = tempDate.getHours();
+            const tempDate = new Date(this.selected.getTime());
+            const curHours = tempDate.getHours();
             if (this._period.value === 'pm') {
                 tempDate.setHours(curHours + 12);
             } else {

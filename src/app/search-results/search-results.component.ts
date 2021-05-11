@@ -95,7 +95,7 @@ export class SearchResultsComponent implements AfterViewInit {
         this.searchBarContent.valueChanges.subscribe((val) => {
             // Checks to make sure the search value is not empty or undefined
             if (val !== '' && val !== undefined) {
-                let res = this.searchService.miniSearch.search(val, {
+                const res = this.searchService.miniSearch.search(val, {
                     // Checks every result that matches the search value
                     filter: (result) => {
                         let isCategory = false;
@@ -156,7 +156,7 @@ export class SearchResultsComponent implements AfterViewInit {
     displayResults(filterValues, typeFilterValues) {
         //  Checks if the searchBarContent value is empty or not
         if (this.searchBarContent.value !== '') {
-            let res = this.searchService.miniSearch.search(this.searchBarContent.value, {
+            const res = this.searchService.miniSearch.search(this.searchBarContent.value, {
                 // Checks every result that matches the search value
                 filter: (result) => {
                     let isCategory = false;
@@ -196,7 +196,7 @@ export class SearchResultsComponent implements AfterViewInit {
     resultPaging( setting: PageEvent ) {
         this.pagSize = setting.pageSize;
         this.pagNum = setting.pageNumber;
-        let tempStartIndex = setting.pageSize * (setting.pageNumber - 1);
+        const tempStartIndex = setting.pageSize * (setting.pageNumber - 1);
         this.searchDisplay = this.searchResultsData.slice(tempStartIndex, tempStartIndex + setting.pageSize);
         this.ref.detectChanges();
     }

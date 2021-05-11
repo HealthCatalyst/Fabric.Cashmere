@@ -23,7 +23,6 @@ import {InputModule} from '../input/input.module';
 import {IconModule} from '../icon/icon.module';
 import {HcFormFieldComponent} from '../form-field/hc-form-field.component';
 
-/* tslint:disable */
 @Component({
     template: `
         <input [hcDatepicker]="d" [value]="date" />
@@ -328,7 +327,7 @@ class DatepickerWithTabindexOnToggle {}
 class DatepickerWithTime {
     @ViewChild('timepicker')
     datepicker: DatepickerComponent;
-    cycleVal: number = 12;
+    cycleVal = 12;
 }
 
 @Component({
@@ -1768,7 +1767,7 @@ describe('DatepickerComponent', () => {
             flush();
             fixture.detectChanges();
 
-            let formFields = document.querySelectorAll('hc-form-field');
+            const formFields = document.querySelectorAll('hc-form-field');
             expect(formFields.length).toBe(2);
         }));
     });

@@ -203,7 +203,7 @@ describe('BindObservable', () => {
     it('supports property initializer', async () => {
         class TestClass {
             @BindObservable()
-            public myProp: string = 'myValue';
+            public myProp = 'myValue';
             public myProp$!: Observable<string>;
         }
 
@@ -215,7 +215,7 @@ describe('BindObservable', () => {
     it('replays only latest value', async () => {
         class TestClass {
             @BindObservable()
-            public myProp: string = 'myValue';
+            public myProp = 'myValue';
             public myProp$!: Observable<string>;
         }
 
@@ -229,7 +229,7 @@ describe('BindObservable', () => {
     it('property value still gettable (simple property)', async () => {
         class TestClass {
             @BindObservable()
-            public myProp: string = 'myValue';
+            public myProp = 'myValue';
             public myProp$!: Observable<string>;
         }
 
@@ -264,7 +264,7 @@ describe('BindObservable', () => {
         class TestClass {
             @WrappingDecorator()
             @BindObservable()
-            public myProp: string = 'myValue';
+            public myProp = 'myValue';
             public myProp$!: Observable<string>;
         }
 
@@ -277,7 +277,7 @@ describe('BindObservable', () => {
         class TestClass {
             @BindObservable()
             @WrappingDecorator()
-            public myProp: string = 'myValue';
+            public myProp = 'myValue';
             public myProp$!: Observable<string>;
         }
 

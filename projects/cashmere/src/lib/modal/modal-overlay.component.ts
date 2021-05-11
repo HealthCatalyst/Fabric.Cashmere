@@ -20,7 +20,6 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
             }
         `
     ],
-    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-modal-overlay'},
     animations: [
         trigger('fadeInOut', [

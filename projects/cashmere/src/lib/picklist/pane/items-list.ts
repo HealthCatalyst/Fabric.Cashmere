@@ -3,10 +3,9 @@ import { PickOption } from '../pick.types';
 import { PickSelectionModel } from './selection-model';
 import { isDefined, isFunction, isObject } from '../../util';
 
-export function newId() {
+export function newId(): string {
     // First character is an 'a', it's good practice for unique id to begin with a letter
     return 'axxxxxxxxxxx'.replace(/[x]/g, function (_) {
-        // tslint:disable-next-line:no-bitwise
         const val = Math.random() * 16 | 0;
         return val.toString(16);
     });
@@ -51,7 +50,7 @@ export class ItemsList {
     get lastSelectedItem(): PickOption | null {
         let i = this.selectedItems.length - 1;
         for (; i >= 0; i--) {
-            let item = this.selectedItems[i];
+            const item = this.selectedItems[i];
             if (!item.disabled) {
                 return item;
             }
@@ -180,7 +179,7 @@ export class ItemsList {
 
     private _deleteItem(item: PickOption, list: Array<PickOption>) {
         const findIndexFunc = (i: PickOption) => i.index === item.index;
-        let indexToRemove = list.findIndex(findIndexFunc);
+        const indexToRemove = list.findIndex(findIndexFunc);
         if (indexToRemove === -1) { console.error(`Couldn't find the item to remove: ${item}`); return; }
         list.splice(indexToRemove, 1);
     }
@@ -312,7 +311,7 @@ export class ItemsList {
         if (!key || key.indexOf('.') === -1) {
             return option[key];
         } else {
-            let keys: string[] = key.split('.');
+            const keys: string[] = key.split('.');
             let value = option;
             for (let i = 0, len = keys.length; i < len; ++i) {
                 if (value == null) {
@@ -381,13 +380,13 @@ export class ItemsList {
         // Generate groups by given key or grouper function
         const isFnKey = isFunction(this._pickPane.groupBy);
         const keyFn = (item: PickOption) => {
-            let key = isFnKey ? (<Function>groupBy)(item.value) : item.value?.[<string>groupBy];
+            const key = isFnKey ? (<Function>groupBy)(item.value) : item.value?.[<string>groupBy];
             return isDefined(key) ? key : this.DEFAULT_GROUP_KEY;
         };
 
         // Group items by key.
         for (const item of items) {
-            let key = keyFn(item);
+            const key = keyFn(item);
             const group = groups.get(key);
             if (group) {
                 group.push(item);
@@ -422,7 +421,7 @@ export class ItemsList {
         return parentOptions;
     }
 
-    private createOptionGroup(key: string | PickOption, isObjectKey: boolean = false): PickOption {
+    private createOptionGroup(key: string | PickOption, isObjectKey = false): PickOption {
         return new PickOption({
             groupKey: key,
             label: isObjectKey ? '' : this.getStringForKey(key),

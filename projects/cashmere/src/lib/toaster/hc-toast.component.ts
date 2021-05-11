@@ -9,7 +9,6 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
     selector: 'hc-toaster',
     templateUrl: './hc-toast.component.html',
     styleUrls: ['./hc-toast.component.scss'],
-    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-toaster'},
     animations: [
         trigger('fade', [
@@ -22,19 +21,19 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
     encapsulation: ViewEncapsulation.None
 })
 export class HcToastComponent {
-    _styleType: string = 'success';
-    _toastIcon: string = 'fa-check-circle';
+    _styleType = 'success';
+    _toastIcon = 'fa-check-circle';
     _headerText: string;
     _bodyText: string;
     _animationState: 'void' | 'enter' | 'leave' = 'enter';
     _animationStateChanged = new EventEmitter<AnimationEvent>();
     _closeClick = new EventEmitter<MouseEvent>();
-    _canDismiss: boolean = false;
+    _canDismiss = false;
     _toastPortal: Portal<any>;
-    _width: number = 300;
-    _hasProgressBar: boolean = false;
+    _width = 300;
+    _hasProgressBar = false;
     _progressVal: number;
-    _progressWidth: string = '100%';
+    _progressWidth = '100%';
     readonly _componentInstance = new BehaviorSubject<any>(null);
 
     get _widthStr() {

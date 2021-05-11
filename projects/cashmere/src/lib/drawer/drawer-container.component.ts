@@ -135,7 +135,7 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
     }
 
     _validateDrawers(): void {
-        for (let drawer of this._drawers.toArray()) {
+        for (const drawer of this._drawers.toArray()) {
             if (drawer.align === 'right') {
                 if (this._rightDrawer != null) {
                     throwDrawerContainerError('right');

@@ -78,8 +78,8 @@ export class PicklistActionService {
 
     private shiftClick<T extends SelectListOption>(index: number, list: FilterableSelectList<T>, item: T, lastClickedItem: T) {
         const lastIndex = list.filteredOptions.indexOf(lastClickedItem);
-        let largeIndex = Math.max(index, lastIndex);
-        let smallIndex = Math.min(index, lastIndex);
+        const largeIndex = Math.max(index, lastIndex);
+        const smallIndex = Math.min(index, lastIndex);
 
         const formerLastClicked = list.lastClickedOption;
         this.selectNone();

@@ -23,9 +23,9 @@ export class NavbarLinkComponent {
      * See https://angular.io/api/router/RouterLinkActive#description
      */
     @Input()
-    exact: boolean = false;
+    exact = false;
 
-    _hidden: boolean = false;
+    _hidden = false;
 
     constructor(private el: ElementRef, private ref: ChangeDetectorRef) {}
 

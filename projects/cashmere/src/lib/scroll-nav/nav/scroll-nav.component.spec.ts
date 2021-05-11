@@ -218,7 +218,7 @@ describe('HcScrollNavComponent', () => {
 
         describe("scrollToElement", () => {
             it('should call measureScrollOffset if scrollNavWithContent is true', () => {
-                let measureScrollOffsetSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "measureScrollOffset");
+                const measureScrollOffsetSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "measureScrollOffset");
                 testApp.linksComponent.scrollNavWithContent = true;
                 testApp.detectChanges();
 
@@ -228,7 +228,7 @@ describe('HcScrollNavComponent', () => {
             });
 
             it('should not call measureScrollOffset if scrollNavWithContent is false', () => {
-                let measureScrollOffsetSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "measureScrollOffset");
+                const measureScrollOffsetSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "measureScrollOffset");
                 testApp.linksComponent.scrollNavWithContent = false;
 
                 testApp.linksComponent._setActiveSectionById('a2');
@@ -237,7 +237,7 @@ describe('HcScrollNavComponent', () => {
             });
 
             it('should call scrollTo if element is under scroll view area and isScrolling is false', () => {
-                let scrollToSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "scrollTo");
+                const scrollToSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "scrollTo");
                 testApp.linksComponent.scrollNavWithContent = true;
                 testApp.linksComponent.isScrolling = false;
                 testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
@@ -249,7 +249,7 @@ describe('HcScrollNavComponent', () => {
             });
 
             it('should not call scrollTo if element is under scroll view area but isScrolling is true', () => {
-                let scrollToSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "scrollTo");
+                const scrollToSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "scrollTo");
                 testApp.linksComponent.scrollNavWithContent = true;
                 testApp.linksComponent.isScrolling = true;
                 testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
@@ -265,7 +265,7 @@ describe('HcScrollNavComponent', () => {
                 testApp.linksComponent.scrollNavWithContent = true;
                 testApp.linksComponent._setActiveSectionById('a2');
 
-                let scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
+                const scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
                 testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
                 testApp.detectChanges();
 
@@ -275,7 +275,7 @@ describe('HcScrollNavComponent', () => {
             });
 
             it('should not call scrollIntoView if element is above scroll view area and isScrolling is true', () => {
-                let scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
+                const scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
                 testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
                 testApp.detectChanges();
 
@@ -289,8 +289,8 @@ describe('HcScrollNavComponent', () => {
             });
 
             it('should not scroll if element is in the scroll view area', () => {
-                let scrollToSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "scrollTo");
-                let scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
+                const scrollToSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "scrollTo");
+                const scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
 
                 testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
                 testApp.linksComponent.scrollNavWithContent = true;
@@ -305,7 +305,7 @@ describe('HcScrollNavComponent', () => {
 
     describe('ngAfterViewInit', () => {
         it('init should call _setActiveSectionById', fakeAsync(() => {
-            let setActiveSectionByIdSpy: jasmine.Spy = spyOn(testApp.linksComponent, '_setActiveSectionById');
+            const setActiveSectionByIdSpy: jasmine.Spy = spyOn(testApp.linksComponent, '_setActiveSectionById');
 
             testApp.linksComponent.ngAfterViewInit();
             tick(110);
@@ -314,7 +314,7 @@ describe('HcScrollNavComponent', () => {
         }));
 
         it("should call refreshScrollNavLinks if hasDynamicContent is true", () => {
-            let refreshScrollNavLinksSpy: jasmine.Spy = spyOn(testApp.linksComponent, "refreshScrollNavLinks");
+            const refreshScrollNavLinksSpy: jasmine.Spy = spyOn(testApp.linksComponent, "refreshScrollNavLinks");
             testApp.linksComponent.hasDynamicContent = true;
 
             testApp.linksComponent.ngAfterViewInit();
@@ -325,9 +325,9 @@ describe('HcScrollNavComponent', () => {
 
     describe('refreshScrollNavLinks', () => {
         it('should reset linkList if list of ScrollNavLinkDirectives are passed in', () => {
-            let scrollNavLinkDirectives: ScrollNavLinkDirective[] = [new ScrollNavLinkDirective(testApp.fixture.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}]`), renderer)];
-            let linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset');
-            let linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges');
+            const scrollNavLinkDirectives: ScrollNavLinkDirective[] = [new ScrollNavLinkDirective(testApp.fixture.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}]`), renderer)];
+            const linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset');
+            const linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges');
 
             testApp.linksComponent.refreshScrollNavLinks(scrollNavLinkDirectives);
 
@@ -336,18 +336,18 @@ describe('HcScrollNavComponent', () => {
         });
 
         it('should add directives from linkList if hcScrollLink list has more links than linkList', () => {
-            let scrollLinkElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_LINK_ATTRIBUTE}]`);
-            let scrollLinkHTMLElements: HTMLElement[] = [];
+            const scrollLinkElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_LINK_ATTRIBUTE}]`);
+            const scrollLinkHTMLElements: HTMLElement[] = [];
             scrollLinkElements.forEach((element: HTMLElement) => {
                 scrollLinkHTMLElements.push(element);
             });
 
-            let newElement: HTMLElement = scrollLinkHTMLElements[0];
+            const newElement: HTMLElement = scrollLinkHTMLElements[0];
             newElement.setAttribute(SCROLL_LINK_ATTRIBUTE, "z1");
             scrollLinkHTMLElements.push(newElement);
 
-            let linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset').and.callThrough();
-            let linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges').and.callThrough();
+            const linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset').and.callThrough();
+            const linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges').and.callThrough();
 
             spyOn(testApp.linksComponent._elementRef.nativeElement, 'querySelectorAll').and.returnValue(scrollLinkHTMLElements);
 
@@ -359,11 +359,11 @@ describe('HcScrollNavComponent', () => {
         });
 
         it('should remove directives from linkList if hcScrollLink list has fewer links than linkList', () => {
-            let scrollLinkElement: Node = testApp.fixture.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}]`);
+            const scrollLinkElement: Node = testApp.fixture.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}]`);
             (scrollLinkElement as HTMLElement).setAttribute(SCROLL_LINK_ATTRIBUTE, "z1");
 
-            let linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset').and.callThrough();
-            let linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges').and.callThrough();
+            const linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset').and.callThrough();
+            const linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges').and.callThrough();
 
             spyOn(testApp.linksComponent._elementRef.nativeElement, 'querySelectorAll').and.returnValue([scrollLinkElement]);
 
@@ -375,11 +375,11 @@ describe('HcScrollNavComponent', () => {
         });
 
         it('should update directives from linkList if hcScrollLink list has different hcScrollLinks', () => {
-            let scrollLinkElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_LINK_ATTRIBUTE}]`);
+            const scrollLinkElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_LINK_ATTRIBUTE}]`);
             (scrollLinkElements.item(0) as HTMLElement).setAttribute(SCROLL_LINK_ATTRIBUTE, "z1");
 
-            let linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset').and.callThrough();
-            let linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges').and.callThrough();
+            const linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset').and.callThrough();
+            const linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges').and.callThrough();
 
             spyOn(testApp.linksComponent._elementRef.nativeElement, 'querySelectorAll').and.returnValue(scrollLinkElements);
 
@@ -392,10 +392,10 @@ describe('HcScrollNavComponent', () => {
         });
 
         it('should not update directives from linkList if hcScrollLink list has the same hcScrollLinks', () => {
-            let scrollLinkElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_LINK_ATTRIBUTE}]`);
+            const scrollLinkElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_LINK_ATTRIBUTE}]`);
 
-            let linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset').and.callThrough();
-            let linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges').and.callThrough();
+            const linkListResetSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'reset').and.callThrough();
+            const linkListNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.linksComponent['linkList'], 'notifyOnChanges').and.callThrough();
 
             spyOn(testApp.linksComponent._elementRef.nativeElement, 'querySelectorAll').and.returnValue(scrollLinkElements);
 

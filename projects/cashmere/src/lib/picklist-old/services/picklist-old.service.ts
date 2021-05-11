@@ -77,8 +77,8 @@ export class PicklistOldService {
         this.pane.selectNone();
     }
 
-    public moveOutSelectedOptions(shouldBreakValuesets: boolean = false): PicklistValueOptions {
-        let optionsToMove = new PicklistValueOptions();
+    public moveOutSelectedOptions(shouldBreakValuesets = false): PicklistValueOptions {
+        const optionsToMove = new PicklistValueOptions();
         this.valueList.selectedOptions.forEach(o => {
             optionsToMove.values.set(o.code, o);
             this.valueList.options.delete(o.code);

@@ -15,7 +15,7 @@ import {parseBooleanAttribute} from '../../util';
     encapsulation: ViewEncapsulation.None
 })
 export class ChipRowComponent {
-    private _wrap: boolean = true;
+    private _wrap = true;
 
     constructor() {}
 

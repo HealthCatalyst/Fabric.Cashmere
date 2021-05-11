@@ -30,11 +30,11 @@ import {NavbarDropdownComponent} from './navbar-dropdown/navbar-dropdown.compone
 export class NavbarComponent implements OnDestroy {
     /** Display name of current user */
     @Input()
-    user: string = '';
+    user = '';
 
     /** Url to application logo image file */
     @Input()
-    appIcon: string = '';
+    appIcon = '';
 
     /** Either url to brand icon image file or HcIcon object for a font glyph */
     @Input()
@@ -46,7 +46,7 @@ export class NavbarComponent implements OnDestroy {
 
     /** Fixes the position of navbar to the top of the page. *Default is false.* */
     @Input()
-    fixedTop: boolean = false;
+    fixedTop = false;
 
     @ContentChildren(NavbarMobileMenuComponent)
     _mobileMenu: QueryList<NavbarMobileMenuComponent>;
@@ -65,10 +65,10 @@ export class NavbarComponent implements OnDestroy {
 
     private unsubscribe$ = new Subject<void>();
 
-    private _menuOpen: boolean = false;
+    private _menuOpen = false;
     private _linkWidths: Array<number> = [];
-    private _linksTotalWidth: number = 0;
-    public _collapse: boolean = false;
+    private _linksTotalWidth = 0;
+    public _collapse = false;
     public _moreList: Array<MoreItem> = [];
 
     /** Runs the initial calculation of navlink widths after the page has fully rendered */
@@ -99,15 +99,15 @@ export class NavbarComponent implements OnDestroy {
             return;
         }
 
-        let linksContainerWidth: number = this.navContent.nativeElement.offsetWidth;
-        let curLinks: number = 0;
+        const linksContainerWidth: number = this.navContent.nativeElement.offsetWidth;
+        let curLinks = 0;
 
         // Step through the links until we hit the end of the container, then collapse the
         // remaining into a more menu
         this._navLinks.forEach((t, i) => {
             curLinks += this._linkWidths[i];
 
-            let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
+            const moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
             if (curLinks + moreWidth < linksContainerWidth) {
                 t.show();
                 // Reset the parent and positioning of any dropdown popovers that aren't in the More menu
@@ -168,7 +168,7 @@ export class NavbarComponent implements OnDestroy {
     }
 
     _menuClick(event: any) {
-        let clickTarget: string = event.target.outerHTML;
+        const clickTarget: string = event.target.outerHTML;
 
         // Verify that the click in the mobile menu came from a navigation item
         if (clickTarget.indexOf('hclistline') >= 0 && clickTarget.indexOf('menu-dropdown') === -1) {

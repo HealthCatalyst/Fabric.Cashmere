@@ -16,7 +16,7 @@ import {SectionService} from 'src/app/shared/section.service';
     ]
 })
 export class GuideComponent implements OnInit {
-    public document: string = '';
+    public document = '';
 
     constructor(private activatedRoute: ActivatedRoute, public guidesService: GuidesService, private sectionService: SectionService) {}
 

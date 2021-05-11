@@ -1,5 +1,3 @@
-/* tslint:disable:component-class-suffix no-host-metadata-property */
-
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.

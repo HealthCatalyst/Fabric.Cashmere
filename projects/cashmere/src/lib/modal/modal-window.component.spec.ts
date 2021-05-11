@@ -45,7 +45,7 @@ describe('hc-modal-window', () => {
     describe('should change size', () => {
 
         it('when window is small', () => {
-            let div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
+            const div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
             expect(div.properties['className']).toContain('hc-modal-auto');
             windowComponent._size = 'sm';
             windowFixture.detectChanges();
@@ -53,7 +53,7 @@ describe('hc-modal-window', () => {
         });
 
         it('when window is medium', () => {
-            let div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
+            const div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
             expect(div.properties['className']).toContain('hc-modal-auto');
             windowComponent._size = 'md';
             windowFixture.detectChanges();
@@ -61,7 +61,7 @@ describe('hc-modal-window', () => {
         });
 
         it('when window is large', () => {
-            let div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
+            const div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
             expect(div.properties['className']).toContain('hc-modal-auto');
             windowComponent._size = 'lg';
             windowFixture.detectChanges();
@@ -69,7 +69,7 @@ describe('hc-modal-window', () => {
         });
 
         it('when window is x-large', () => {
-            let div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
+            const div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
             expect(div.properties['className']).toContain('hc-modal-auto');
             windowComponent._size = 'lg';
             windowFixture.detectChanges();

@@ -8,7 +8,6 @@ import {dispatchFakeEvent, dispatchEvent} from '../../utils/dispatch-events';
 import {CalendarBodyComponent} from '../calendar-body/calendar-body.component';
 import {MonthViewComponent} from './month-view.component';
 
-/* tslint:disable */
 describe('HcMonthView', () => {
     let dir: {value: Direction};
 

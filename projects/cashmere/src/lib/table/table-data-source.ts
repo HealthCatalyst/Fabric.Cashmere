@@ -167,8 +167,8 @@ export class HcTableDataSource<T> extends DataSource<T> {
         }
 
         return data.sort((a, b) => {
-            let valueA = this.sortingDataAccessor(a, active);
-            let valueB = this.sortingDataAccessor(b, active);
+            const valueA = this.sortingDataAccessor(a, active);
+            const valueB = this.sortingDataAccessor(b, active);
 
             // If both valueA and valueB exist (truthy), then compare the two. Otherwise, check if
             // one value exists while the other doesn't. In this case, existing value should come first.

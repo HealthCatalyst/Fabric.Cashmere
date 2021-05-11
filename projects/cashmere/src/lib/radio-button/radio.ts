@@ -25,16 +25,15 @@ let nextUniqueId = 0;
 
 /** Groups single radio buttons together into a set for which only one can be selected */
 @Directive({
-    // tslint:disable:directive-selector
     selector: 'hc-radio-group',
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => RadioGroupDirective), multi: true}],
     exportAs: 'hcRadioGroup'
 })
 export class RadioGroupDirective extends HcFormControlComponent implements ControlValueAccessor, AfterContentInit, DoCheck {
     @HostBinding('class.hc-radio-group-vertical')
-    _verticalClass: boolean = true;
+    _verticalClass = true;
     @HostBinding('class.hc-radio-group-horizontal')
-    _horizontalClass: boolean = false;
+    _horizontalClass = false;
 
     /** Event emitted when the value of a radio button changes inside the group. */
     @Output()
@@ -205,7 +204,7 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     }
 
     private _updateSelectedRadio() {
-        let isAlreadySelected = this._selected !== null && this._selected.value === this._value;
+        const isAlreadySelected = this._selected !== null && this._selected.value === this._value;
         if (this.radios && !isAlreadySelected) {
             this._selected = null;
             this.radios.forEach(radio => {
@@ -281,11 +280,11 @@ export class RadioButtonComponent implements OnInit {
     /** Event emitted when the value of the radio button changes */
     @Output()
     change = new EventEmitter<RadioButtonChangeEvent>();
-    private _checked: boolean = false;
+    private _checked = false;
     private _value: any = null;
-    private _required: boolean = false;
-    private _disabled: boolean = false;
-    private _tight: boolean = false;
+    private _required = false;
+    private _disabled = false;
+    private _tight = false;
     private readonly radioGroup: RadioGroupDirective | null;
 
     /** Value of radio buttons */
@@ -337,7 +336,7 @@ export class RadioButtonComponent implements OnInit {
     }
 
     set checked(value: boolean) {
-        let newCheckedState = parseBooleanAttribute(value);
+        const newCheckedState = parseBooleanAttribute(value);
         if (this._checked !== newCheckedState) {
             this._checked = newCheckedState;
             if (newCheckedState && this.radioGroup && this.radioGroup.value !== this.value) {

@@ -8,7 +8,6 @@ import {JAN} from '../../utils/month-constants';
 import {dispatchFakeEvent, dispatchEvent} from '../../utils/dispatch-events';
 import {CalendarBodyComponent} from '../calendar-body/calendar-body.component';
 
-/* tslint:disable */
 describe('HcMultiYearView', () => {
     let dir: {value: Direction};
 

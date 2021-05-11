@@ -38,7 +38,7 @@ describe('Initializable', () => {
     describe('when _markInitialized is called and it is not already initialized and there are subscribers', () => {
         it('should set initalized to true and pendingSubscribers to null', () => {
             spyOn(testInitializable, '_notifySubscriber');
-            let subscriber1 = new Subscriber();
+            const subscriber1 = new Subscriber();
             testInitializable._pendingSubscribers!.push(subscriber1);
             testInitializable._markInitialized();
             expect(testInitializable._isInitialized).toBe(true);
@@ -56,7 +56,7 @@ describe('Initializable', () => {
         it('should call _notifySubscriber', () => {
             spyOn(testInitializable, '_notifySubscriber');
             testInitializable._isInitialized = true;
-            let subscription = testInitializable.initialized.subscribe();
+            const subscription = testInitializable.initialized.subscribe();
             expect(testInitializable._isInitialized).toBe(true);
             expect(testInitializable._notifySubscriber).toHaveBeenCalledWith(subscription);
         });

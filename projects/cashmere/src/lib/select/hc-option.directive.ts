@@ -1,5 +1,3 @@
-/* tslint:disable:directive-selector */
-
 import {Directive, Input, ElementRef, Optional, Host, Renderer2, OnDestroy} from '@angular/core';
 import {SelectComponent, _buildValueString} from './select.component';
 

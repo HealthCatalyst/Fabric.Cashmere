@@ -6,7 +6,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 describe('DrawerComponent', () => {
     let component: Drawer;
     let fixture: ComponentFixture<Drawer>;
-    let el: ElementRef = new ElementRef({focus() {}});
+    const el: ElementRef = new ElementRef({focus() {}});
 
     beforeEach(async done => {
         await TestBed.configureTestingModule({

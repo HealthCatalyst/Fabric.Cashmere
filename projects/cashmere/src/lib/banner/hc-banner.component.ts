@@ -14,7 +14,7 @@ const bannerTypes: BannerType[] = ['success', 'info', 'warning', 'alert'];
 })
 export class HcBannerComponent {
     private _type: BannerType = 'info';
-    private _clickDismiss: boolean = false;
+    private _clickDismiss = false;
 
     /** If the banner can be dismissed, emits when the banner is clicked to close */
     @Output()

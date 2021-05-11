@@ -23,13 +23,13 @@ export class ModalService {
      * (an error will be thrown if attempted). It's generally considered bad practice to open multiple
      * models at once, so only change this with good reason.
      */
-    allowMultiple: boolean = false;
+    allowMultiple = false;
 
     // start at 2000 (reserved range for modals, see _variables.scss)
     private _zIndexBase = 2000;
     private _zIndexCounter = this._zIndexBase;
     private _renderer: Renderer2;
-    private _modalsOpen: number = 0;
+    private _modalsOpen = 0;
 
     constructor(
         private _componentFactory: ComponentFactoryResolver,
@@ -69,8 +69,8 @@ export class ModalService {
         }
 
         // TODO: HcModal and ActiveModal essentially are the same object with HcModal having refs. Might as well merge them to simplify
-        let modal = new HcModal<T>();
-        let activeModalRef = new ActiveModal();
+        const modal = new HcModal<T>();
+        const activeModalRef = new ActiveModal();
         modal.data = options.data;
         activeModalRef.data = options.data;
         modal.isDraggable = options.isDraggable;
@@ -90,7 +90,7 @@ export class ModalService {
         }
 
         // Create, attach, and append overlay to container
-        let overlay = this._componentFactory.resolveComponentFactory(ModalOverlayComponent).create(modalInjector);
+        const overlay = this._componentFactory.resolveComponentFactory(ModalOverlayComponent).create(modalInjector);
         this._renderer.setStyle(overlay.location.nativeElement, 'z-index', this._zIndexCounter);
         overlay.instance._ignoreEscapeKey = options.ignoreEscapeKey;
 
@@ -117,7 +117,7 @@ export class ModalService {
 
         // Create, attach, and append Window to container
         // Apply options
-        let window = this._componentFactory.resolveComponentFactory(ModalWindowComponent).create(modalInjector, projectableNodes);
+        const window = this._componentFactory.resolveComponentFactory(ModalWindowComponent).create(modalInjector, projectableNodes);
         this._renderer.setStyle(window.location.nativeElement, 'z-index', this._zIndexCounter + 1);
         window.instance._size = options.size as ModalSize;
         window.instance._ignoreOverlayClick = options.ignoreOverlayClick;

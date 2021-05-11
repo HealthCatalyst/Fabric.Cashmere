@@ -307,13 +307,13 @@ export class HcPopComponent implements OnInit, OnDestroy {
     private _focusTrap: ConfigurableFocusTrap | undefined;
 
     /** If this menu has children, keep track of whether any of them are open */
-    public _subMenuOpen: boolean = false;
+    public _subMenuOpen = false;
 
     /** Reference to subscription of parent popover close events */
     private _parentClose: any = new Subject();
 
     /** Block this popover from closing its parent on close */
-    _parentCloseBlock: boolean = false;
+    _parentCloseBlock = false;
 
     /** Reference to hcMenuItems (if the popover contains them) */
     @ContentChildren(MenuItemDirective, {descendants: true}) _menuItems: QueryList<MenuItemDirective>;
@@ -429,7 +429,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Set the focus of an hcMenu based on a keyboard arrow press */
     _keyFocus(downPress: boolean) {
-        let itemArray = this._menuItems.toArray();
+        const itemArray = this._menuItems.toArray();
         if (!downPress) {
             itemArray.reverse();
         }

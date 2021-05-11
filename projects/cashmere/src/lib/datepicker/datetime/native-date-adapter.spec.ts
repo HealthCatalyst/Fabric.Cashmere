@@ -8,8 +8,6 @@ import {NativeDateModule} from './datetime.module';
 
 const SUPPORTS_INTL = typeof Intl !== 'undefined';
 
-// tslint:disable:no-non-null-assertion
-// tslint:disable:component-class-suffix
 describe('NativeDateAdapter', () => {
     let platform: Platform;
     let adapter: NativeDateAdapter;

@@ -18,7 +18,7 @@ describe('EllipsisPipe.transform', () => {
 
         it('should return the input string when length is greater than the input length', () => {
             // arrange
-            const testString: string = 'A long string';
+            const testString = 'A long string';
 
             // act
             const result: any = pipe.transform(testString, 100);
@@ -39,7 +39,7 @@ describe('EllipsisPipe.transform', () => {
 
         it('should return the input string when length is greater than the number of words in the input', () => {
             // arrange
-            const testString: string = 'A long string';
+            const testString = 'A long string';
 
             // act
             const result: any = pipe.transform(testString, 5, 'words');

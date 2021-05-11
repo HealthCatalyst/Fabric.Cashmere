@@ -85,7 +85,7 @@ describe('PickPaneComponent', () => {
             fixture.detectChanges();
 
             expect(fixture.componentInstance.pickPane.dropdownPanel.items.length).toBe(4);
-            let options = fixture.debugElement.nativeElement.querySelectorAll('.hc-pick-option');
+            const options = fixture.debugElement.nativeElement.querySelectorAll('.hc-pick-option');
             expect(options.length).toBe(3);
             expect(options[0].innerText).toBe('Vilnius');
             expect(options[1].innerText).toBe('Kaunas');
@@ -321,7 +321,7 @@ describe('PickPaneComponent', () => {
 
     describe('Custom Options', () => {
         it('should select default custom item', fakeAsync(() => {
-            let fixture = createTestingModule(
+            const fixture = createTestingModule(
                 HcPickPaneTestCmp,
                 `<hc-pick-pane [items]="cities" bindLabel="name" [addCustomItem]="true">
                 </hc-pick-pane>`);
@@ -339,7 +339,7 @@ describe('PickPaneComponent', () => {
         }));
 
         it('should add custom item as string', fakeAsync(() => {
-            let fixture = createTestingModule(
+            const fixture = createTestingModule(
                 HcPickPaneTestCmp,
                 `<hc-pick-pane [items]="citiesNames" [addCustomItem]="true">
                 </hc-pick-pane>`);
@@ -356,7 +356,7 @@ describe('PickPaneComponent', () => {
         }));
 
         it('should add custom item as string when there are no items', fakeAsync(() => {
-            let fixture = createTestingModule(
+            const fixture = createTestingModule(
                 HcPickPaneTestCmp,
                 `<hc-pick-pane [items]="[]" [addCustomItem]="true">
                 </hc-pick-pane>`);
@@ -373,7 +373,7 @@ describe('PickPaneComponent', () => {
         }));
 
         it('should add custom item as string when down arrow pressed', fakeAsync(() => {
-            let fixture = createTestingModule(
+            const fixture = createTestingModule(
                 HcPickPaneTestCmp,
                 `<hc-pick-pane [items]="citiesNames" [addCustomItem]="true">
                 </hc-pick-pane>`);
@@ -390,7 +390,7 @@ describe('PickPaneComponent', () => {
         }));
 
         it('can select custom item even if there are filtered items that matches search term', fakeAsync(() => {
-            let fixture = createTestingModule(
+            const fixture = createTestingModule(
                 HcPickPaneTestCmp,
                 `<hc-pick-pane [items]="cities" bindLabel="name" [addCustomItem]="true">
                 </hc-pick-pane>`);
@@ -409,7 +409,7 @@ describe('PickPaneComponent', () => {
         }));
 
         it('should select custom item using given fuction', fakeAsync(() => {
-            let fixture = createTestingModule(
+            const fixture = createTestingModule(
                 HcPickPaneTestCmp,
                 `<hc-pick-pane [items]="cities" bindLabel="name" [addCustomItem]="customItemFunc">
                 </hc-pick-pane>`);
@@ -427,7 +427,7 @@ describe('PickPaneComponent', () => {
         }));
 
         it('should select custom item with given promise-based function', fakeAsync(() => {
-            let fixture = createTestingModule(
+            const fixture = createTestingModule(
                 HcPickPaneTestCmp,
                 `<hc-pick-pane [items]="cities" bindLabel="name" [addCustomItem]="customItemFuncPromise">
                 </hc-pick-pane>`);
@@ -964,7 +964,7 @@ class HcPickPaneGroupingTestCmp {
 }
 
 function triggerKeyDownEvent(
-    element: DebugElement, which: number, key = '', pressedShiftKey: boolean = false, pressedCtrlKey: boolean = false
+    element: DebugElement, which: number, key = '', pressedShiftKey = false, pressedCtrlKey = false
 ): void {
     element.triggerEventHandler('keydown', {
         which: which,

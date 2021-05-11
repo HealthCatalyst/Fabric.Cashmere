@@ -83,7 +83,7 @@ describe('DrawerContainer', () => {
     });
 
     it('should throw an error if multiple drawers are assigned to the same side', () => {
-        let invalidFixture = TestBed.createComponent(InvalidDrawerContainer);
+        const invalidFixture = TestBed.createComponent(InvalidDrawerContainer);
         invalidFixture.detectChanges();
 
         invalidFixture.componentInstance.drawers.push("two");

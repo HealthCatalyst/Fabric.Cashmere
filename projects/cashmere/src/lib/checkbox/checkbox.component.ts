@@ -44,10 +44,10 @@ export class CheckboxGroup extends HcFormControlComponent {
     private _checkboxes: QueryList<CheckboxComponent>;
     private _checkboxesArray: CheckboxComponent[];
 
-    _groupState: boolean = false;
-    _parentLabel: string = "Parent Checkbox";
-    _disableParent: boolean = false;
-    _isIndeterminate: boolean = true;
+    _groupState = false;
+    _parentLabel = "Parent Checkbox";
+    _disableParent = false;
+    _isIndeterminate = true;
 
     /** gets all children and subscribes to their events */
     @ContentChildren(
@@ -133,9 +133,9 @@ export class CheckboxGroup extends HcFormControlComponent {
 export class CheckboxComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
     private _uniqueId = `hc-checkbox-${nextCheckboxId++}`;
     private _form: NgForm | FormGroupDirective | null;
-    private _checked: boolean = false;
+    private _checked = false;
     private _tabIndex: number;
-    private _parent: boolean = false;
+    private _parent = false;
     private readonly checkboxGroup: CheckboxGroup | null;
     _componentId = this._uniqueId;
 

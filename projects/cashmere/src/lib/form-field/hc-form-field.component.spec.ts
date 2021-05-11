@@ -1,5 +1,3 @@
-/* tslint:disable:component-class-suffix */
-
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 
 import {getControlMissing, HcFormFieldComponent} from './hc-form-field.component';
@@ -123,8 +121,8 @@ describe('HcFormFieldComponent', () => {
 })
 class SimpleInput {
     inputId: string | null = 'test-id';
-    isDisabled: boolean = false;
-    isRequired: boolean = true;
+    isDisabled = false;
+    isRequired = true;
     inputLabel: string | null = 'hola';
 }
 

@@ -165,7 +165,7 @@ export class NativeDateAdapter extends DateAdapter<Date> {
      * it here for sometime, just for precaution, in case we decide to revert some of these changes
      * though.
      */
-    useUtcForDisplay: boolean = true;
+    useUtcForDisplay = true;
 
     constructor(
         @Optional()

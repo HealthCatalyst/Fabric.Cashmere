@@ -1,5 +1,3 @@
-/* tslint:disable:component-selector no-host-metadata-property no-input-rename component-class-suffix */
-
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -85,7 +83,7 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
      * Flag set to true when the indicator should be displayed while the sort is not active. Used to
      * provide an affordance that the header is sortable by showing on focus and hover.
      */
-    _showIndicatorHint: boolean = false;
+    _showIndicatorHint = false;
 
     /**
      * The view transition state of the arrow (translation/ opacity) - indicates its `from` and `to`
@@ -141,7 +139,7 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
     @HostBinding('class.hc-sort-header')
     _hostClass = true;
 
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     constructor(
         public _intl: HcSortHeaderIntl,

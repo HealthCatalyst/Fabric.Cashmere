@@ -35,10 +35,10 @@ import { HcFormControlComponent } from '../form-field/hc-form-control.component'
 })
 export class ButtonToggleGroupComponent extends HcFormControlComponent implements AfterContentInit, OnDestroy, ControlValueAccessor {
     private _disabled = false;
-    private _style: string = 'secondary';
-    private _size: string = 'md';
-    private _valueRequired: boolean = false;
-    private _multiple: boolean = false;
+    private _style = 'secondary';
+    private _size = 'md';
+    private _valueRequired = false;
+    private _multiple = false;
     private unsubscribe$ = new Subject<void>();
     private _value: any;
 

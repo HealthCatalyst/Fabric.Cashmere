@@ -10,7 +10,7 @@ import {PersonaFile, PersonaService} from '../persona-list.service';
     styleUrls: ['./persona-viewer.component.scss']
 })
 export class PersonaViewerComponent implements OnInit, OnDestroy {
-    public document: string = '';
+    public document = '';
     public orgChart = false;
     private unsubscribe = new Subject<void>();
 

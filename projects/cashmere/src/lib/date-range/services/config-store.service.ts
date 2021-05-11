@@ -50,7 +50,7 @@ export class ConfigStoreService {
                 };
             }),
             tap((options: DateRangeOptions) => {
-                if (!!options.excludeWeekends) {
+                if (options.excludeWeekends) {
                     this.weekendFilter = this.excludeWeekendFilter;
                 } else {
                     this.weekendFilter = this.emptyWeekendFilter;

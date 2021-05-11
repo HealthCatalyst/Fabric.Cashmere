@@ -33,9 +33,9 @@ export class SplitButtonClickEvent {
 })
 export class SplitButtonComponent {
     private _tabIndex: number;
-    private _disabled: boolean = false;
-    private _style: string = 'primary';
-    private _size: string = 'md';
+    private _disabled = false;
+    private _style = 'primary';
+    private _size = 'md';
 
     @ViewChild('splitBtnToggle')
     _splitBtnToggle: ButtonComponent;
@@ -55,7 +55,7 @@ export class SplitButtonComponent {
 
     /** Positioning for the menu. Possible values: 'start', 'end', 'center' */
     @Input()
-    menuPosition: string = 'end';
+    menuPosition = 'end';
 
     /** True if clicking anywhere in the menu should automatically close it. */
     @Input()

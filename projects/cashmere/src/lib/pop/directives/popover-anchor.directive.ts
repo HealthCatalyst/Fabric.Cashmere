@@ -91,7 +91,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         this._popoverDelay = Number(val);
     }
 
-    private _popoverDelay: number = 0;
+    private _popoverDelay = 0;
 
     /** Timer that delays togglePopover on hover. */
     private hoverInterval: number;
@@ -313,7 +313,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     }
 
     /** Closes the popover. */
-    closePopover(value?: any, neighborSubMenusAreOpen: boolean = false): void {
+    closePopover(value?: any, neighborSubMenusAreOpen = false): void {
         clearTimeout(this.hoverInterval);
         this._anchoring.closePopover(value, neighborSubMenusAreOpen);
     }

@@ -83,11 +83,11 @@ const closeStateAnimation = '0.7s .05s ease';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Drawer implements AfterContentInit {
-    private _mode: string = 'push';
-    private _align: string = 'left';
+    private _mode = 'push';
+    private _align = 'left';
 
     /** Defaults to false. Set to true to disable the closure of drawer by pressing the escape key. */
-    @Input() ignoreEscapeKey: boolean = false;
+    @Input() ignoreEscapeKey = false;
 
     /** Mode of the drawer: `over`, `push` or `side` */
     @Input()
@@ -244,7 +244,7 @@ export class Drawer implements AfterContentInit {
     }
 
     /** Toggles the drawer */
-    toggle(isOpen: boolean = !this.opened): Promise<DrawerPromiseResult> {
+    toggle(isOpen = !this.opened): Promise<DrawerPromiseResult> {
         if (!this._animationPromise) {
             this._drawerOpened = isOpen;
 

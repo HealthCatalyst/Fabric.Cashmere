@@ -46,9 +46,9 @@ export class TypeformSurveyComponent {
         return this._appVersion;
     }
     public _fullUri: string;
-    private _surveyUri: string = "";
+    private _surveyUri = "";
     private _appVersion: string;
-    private _id: string = 'typef_orm_share';
+    private _id = 'typef_orm_share';
 
     /**
      * Opens the survey specified in the surveyUri
@@ -68,7 +68,7 @@ export class TypeformSurveyComponent {
     }
 
     private refreshFullUri() {
-        let varChar: string = this.surveyUri.includes('?') ? '&' : '?';
+        const varChar: string = this.surveyUri.includes('?') ? '&' : '?';
         this._fullUri = this.appVersion ? this.surveyUri + varChar + 'app_version=' + this.appVersion : this.surveyUri;
     }
 

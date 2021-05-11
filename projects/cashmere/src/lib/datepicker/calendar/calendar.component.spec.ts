@@ -10,7 +10,6 @@ import {DateAdapter} from '../datetime/date-adapter';
 import {CalendarComponent} from './calendar.component';
 import {HcDatepickerIntl} from '../datepicker-intl';
 
-/* tslint:disable */
 @Component({
     template: `
         <hc-calendar

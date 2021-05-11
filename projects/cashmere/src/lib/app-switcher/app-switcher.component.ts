@@ -9,7 +9,6 @@ import {WorkTrackerService} from '../shared/work-tracker.service';
     selector: 'hc-app-switcher',
     templateUrl: './app-switcher.component.html',
     styleUrls: ['./app-switcher.component.scss'],
-    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-app-switcher-container'},
     encapsulation: ViewEncapsulation.None
 })
@@ -19,9 +18,9 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     public brandBg = 'brand';
     public loading: Observable<boolean>;
     public loadFailed = false;
-    private _iconHeight: number = 60;
-    private _serviceName: string = '';
-    private _version: string = '';
+    private _iconHeight = 60;
+    private _serviceName = '';
+    private _version = '';
 
     private ngUnsubscribe: any = new Subject();
 

@@ -10,7 +10,7 @@ export class FilterableSelectList<T extends SelectListOption> {
     public additionalRemoteOptions = 0;
     public loadingOptions: Observable<boolean> = from([]);
     public appendingOptions: Observable<boolean> = from([]);
-    public codeIsSignificant: boolean = false;
+    public codeIsSignificant = false;
     public sort: string;
     constructor(public options = new Map<string, T>()) {}
 }

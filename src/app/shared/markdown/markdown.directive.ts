@@ -13,9 +13,9 @@ export class MarkdownDirective implements OnChanges {
     @Input()
     sanitize: boolean;
     @Input()
-    highlight: boolean = true;
+    highlight = true;
     @Input()
-    lineNumbers: boolean = true;
+    lineNumbers = true;
 
     @Output()
     loaded: EventEmitter<boolean> = new EventEmitter();

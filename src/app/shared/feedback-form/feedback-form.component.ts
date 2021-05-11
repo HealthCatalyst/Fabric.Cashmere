@@ -13,8 +13,8 @@ import {Subject} from 'rxjs';
 export class FeedbackFormComponent implements OnInit, OnDestroy {
     feedbackForm: FormGroup;
     scriptURL = 'https://script.google.com/macros/s/AKfycby91RSaTB9bknujdz0nj021jGaeyVeg1jPQHikIptuhRKeAQwfdvrqIEQ/exec';
-    notHelpful: boolean = false;
-    thankYouMsg: boolean = false;
+    notHelpful = false;
+    thankYouMsg = false;
     private unsubscribe = new Subject<void>();
 
     constructor(private httpClient: HttpClient, private router: Router) {

@@ -49,7 +49,7 @@ export class HcCellResizer implements OnInit, OnDestroy {
     }
     private _width!: number;
 
-    private _directionModifier: number = 1;
+    private _directionModifier = 1;
 
     private _mouseX: number;
 

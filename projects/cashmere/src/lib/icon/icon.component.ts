@@ -18,11 +18,11 @@ export interface HcIcon {
     encapsulation: ViewEncapsulation.None
 })
 export class IconComponent implements OnChanges {
-    private _fontIcon: string = '';
-    private _fontSet: string = '';
+    private _fontIcon = '';
+    private _fontSet = '';
 
-    private _previousFontIcon: string = '';
-    private _previousFontSet: string = '';
+    private _previousFontIcon = '';
+    private _previousFontSet = '';
 
     @HostBinding('class.hc-icon')
     _hostClass = true;

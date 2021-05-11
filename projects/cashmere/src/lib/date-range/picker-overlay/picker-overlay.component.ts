@@ -27,12 +27,12 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
     get _selectedPreset(): number | null { return this.__selectedPreset; }
     get _rangeIsInvalid(): boolean { return this.__rangeIsInvalid; }
     _presetValues: PresetItem[] | undefined;
-    _skipRangeCheck: boolean = false;
+    _skipRangeCheck = false;
 
     __fromDate: D | undefined;
     __toDate: D | undefined;
     __selectedPreset: number | null;
-    __rangeIsInvalid: boolean = false; // if true, the fromDate is after the toDate and save will not be allowed
+    __rangeIsInvalid = false; // if true, the fromDate is after the toDate and save will not be allowed
 
     @ViewChildren(CalendarWrapperComponent)
     calendarWrappers: QueryList<CalendarWrapperComponent>;
@@ -115,7 +115,7 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
         this._selectedPreset = null;
         if (this._presetValues) {
             for (let i = 0; i < this._presetValues.length; i++) {
-                let radioRange: DateRange = this._presetValues[i].range;
+                const radioRange: DateRange = this._presetValues[i].range;
                 if (this._fromDate && radioRange.fromDate && this._toDate && radioRange.toDate) {
                     if ( this._fromDate.toDateString() === radioRange.fromDate.toDateString() &&
                         this._toDate.toDateString() === radioRange.toDate.toDateString() ) {

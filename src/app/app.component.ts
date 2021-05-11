@@ -43,7 +43,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     ngAfterViewInit() {
         this.navSearchBar.valueChanges.subscribe((val) => {
             if (val !== '') {
-                let tempResults = this.getItems(val);
+                const tempResults = this.getItems(val);
                 this.searchResults = tempResults.slice(0, 5);
             } else {
                 this.searchResults = [];
@@ -58,7 +58,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     }
 
     getItems = (value: string) => {
-        let results = this.searchService.miniSearch.search(value);
+        const results = this.searchService.miniSearch.search(value);
         return results;
     }
 

@@ -8,14 +8,13 @@ import {Params} from '@angular/router';
     templateUrl: './tab.component.html',
     selector: `hc-tab`,
     styleUrls: ['./tab.component.scss'],
-    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-tab'},
     encapsulation: ViewEncapsulation.None
 })
 export class TabComponent implements AfterContentInit {
     /** Plain text title of the tab; for HTML support include a `hc-tab-title` element */
     @Input()
-    tabTitle: string = '';
+    tabTitle = '';
     /** Router path that the tab routes to. If one tab uses the routerLink in a tab set, all must use the router link.
      * Can be specified as '/path/2' or ['path', '2']
      */
@@ -43,8 +42,8 @@ export class TabComponent implements AfterContentInit {
     tabContent: TemplateRef<any>;
 
     _direction: string;
-    _active: boolean = false;
-    _tight: boolean = false;
+    _active = false;
+    _tight = false;
     _htmlTitle: HcTabTitleComponent;
 
     @ContentChildren(HcTabTitleComponent)

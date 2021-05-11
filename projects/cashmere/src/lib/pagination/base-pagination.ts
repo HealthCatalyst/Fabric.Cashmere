@@ -11,7 +11,7 @@ import {PageEvent} from './page-event';
 })
 export class BasePaginationComponent extends Initializable implements OnInit {
     public static _DEFAULT_PAGE_SIZE = 20;
-    private _inputCheckTimeoutSet: boolean = false;
+    private _inputCheckTimeoutSet = false;
 
     /**
      * The total number of items to be paged through
@@ -24,10 +24,10 @@ export class BasePaginationComponent extends Initializable implements OnInit {
         this._length = coerceNumberProperty(value);
         this.ensureInputCheckTimeoutSet();
     }
-    private _length: number = 0;
+    private _length = 0;
 
     private _prevPageNumber?: number;
-    private _pageNumber: number = 1;
+    private _pageNumber = 1;
     /** The currently displayed page. *Defaults to 1.* */
     get pageNumber(): number {
         return this._pageNumber;

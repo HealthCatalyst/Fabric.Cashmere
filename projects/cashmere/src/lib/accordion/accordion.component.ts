@@ -202,7 +202,7 @@ export class AccordionComponent implements AfterContentInit {
     }
 
     /** Toggle this accordion. */
-    toggle(isOpen: boolean = !this.open): void {
+    toggle(isOpen = !this.open): void {
         if (!this._currentlyAnimating) {
             this.__isOpen = isOpen;
             this.openChange.emit(isOpen);

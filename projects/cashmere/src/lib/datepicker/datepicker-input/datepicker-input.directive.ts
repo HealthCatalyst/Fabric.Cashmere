@@ -18,18 +18,15 @@ import {DateAdapter} from '../datetime/date-adapter';
 import {HcFormControlComponent} from '../../form-field/hc-form-control.component';
 import {HcFormFieldComponent} from '../../form-field/hc-form-field.component';
 
-// tslint:disable:no-host-metadata-property
-// tslint:disable:member-ordering
-
 /** @docs-private */
-export const HC_DATEPICKER_VALUE_ACCESSOR: any = {
+export const HC_DATEPICKER_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => DatepickerInputDirective),
     multi: true
 };
 
 /** @docs-private */
-export const HC_DATEPICKER_VALIDATORS: any = {
+export const HC_DATEPICKER_VALIDATORS = {
     provide: NG_VALIDATORS,
     useExisting: forwardRef(() => DatepickerInputDirective),
     multi: true
@@ -327,7 +324,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
 
     _onInput(value: string) {
         // Add stored date value to a time-only input for javascript date object parsing
-        let pickerMode = this._datepicker ? this._datepicker.mode : this._mode;
+        const pickerMode = this._datepicker ? this._datepicker.mode : this._mode;
         if ( pickerMode === 'time' ) {
             value = this._timeDate.getDate()  + '/' + (this._timeDate.getMonth() + 1) + '/' + this._timeDate.getFullYear() + ' ' + value;
         }
@@ -338,10 +335,10 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
          * Based on the current year, assume that the four-digit year date should be in
          * either the next 30 years, or the preceding 70 years */
         if (date) {
-            let inputString: string = this._elementRef.nativeElement.value;
+            const inputString: string = this._elementRef.nativeElement.value;
             /** Skip this check if the input string contains any 3+ digit numerical values - assumed to be a year */
             if (!inputString.match(/[1-9][0-9][0-9]/g)) {
-                let currentDate = new Date();
+                const currentDate = new Date();
                 if (date.getFullYear() >= currentDate.getFullYear() + 30) {
                     date.setFullYear(date.getFullYear() - 100);
                 } else if (date.getFullYear() < currentDate.getFullYear() - 70) {
@@ -378,8 +375,8 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     /** Formats a value and sets it on the input element. */
     private _formatValue(value: D | null) {
         let dateFormat: any = this._dateFormats.display.dateInput;
-        let tempMode: string = 'date';
-        let tempCycle: number = 12;
+        let tempMode = 'date';
+        let tempCycle = 12;
 
         if (this._datepicker) {
             tempMode = this._datepicker.mode;
@@ -392,11 +389,11 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
         }
 
         if (tempMode === 'time') {
-            let tempFormat = this._dateFormats.display.timeInput;
+            const tempFormat = this._dateFormats.display.timeInput;
             tempFormat['hour12'] = tempCycle === 12;
             dateFormat = tempFormat;
         } else if (tempMode === 'date-time') {
-            let tempFormat = this._dateFormats.display.dateTimeInput;
+            const tempFormat = this._dateFormats.display.dateTimeInput;
             tempFormat['hour12'] = tempCycle === 12;
             dateFormat = tempFormat;
         }

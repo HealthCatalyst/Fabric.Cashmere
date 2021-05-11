@@ -14,20 +14,20 @@ import { CdkScrollable } from '@angular/cdk/overlay';
 })
 export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
     /** Set to true to enable scrolling the nav link pane as the content pane scrolls */
-    @Input() public scrollNavWithContent: boolean = false;
+    @Input() public scrollNavWithContent = false;
     /** Set to true to enable the component to change for dynamic content changes that might not be picked up by Angular */
-    @Input() public hasDynamicContent: boolean = false;
+    @Input() public hasDynamicContent = false;
     @ViewChild('scrollContainer', {read: CdkScrollable, static: false}) public _cdkScrollableElement: CdkScrollable;
     @ContentChildren(ScrollNavLinkDirective, { descendants: true }) private linkList: QueryList<ScrollNavLinkDirective>;
     public get _links(): Array<HTMLElement> {
         return this.linkList.toArray().map(e => e.nativeElement);
     }
 
-    public isScrolling: boolean = false;
+    public isScrolling = false;
     private unsubscribe$ = new Subject<void>();
-    private previousElementPosition: number = 0;
+    private previousElementPosition = 0;
     private previousList: ScrollNavLinkDirective[] = [];
-    private tryRefresh: boolean = false;
+    private tryRefresh = false;
     private dynamicInterval: any;
 
     private readonly SCROLL_LINK_ATTRIBUTE = 'hcScrollLink';
@@ -86,12 +86,12 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
             return;
         }
 
-        let scrollLinkNodeList: NodeList = this._elementRef.nativeElement.querySelectorAll(`[${this.SCROLL_LINK_ATTRIBUTE}]`);
+        const scrollLinkNodeList: NodeList = this._elementRef.nativeElement.querySelectorAll(`[${this.SCROLL_LINK_ATTRIBUTE}]`);
 
         // create array to make the difference calculation off of
-        let scrollLinkList: CombinedLinkList[] = [];
+        const scrollLinkList: CombinedLinkList[] = [];
         scrollLinkNodeList.forEach((dynamicLink: HTMLElement) => {
-            let scrollLinkAttributeValue: string | null = dynamicLink.getAttribute(this.SCROLL_LINK_ATTRIBUTE);
+            const scrollLinkAttributeValue: string | null = dynamicLink.getAttribute(this.SCROLL_LINK_ATTRIBUTE);
             if (scrollLinkAttributeValue) {
                 scrollLinkList.push({ hcScrollLink: scrollLinkAttributeValue, linkElement: dynamicLink });
             }
@@ -101,12 +101,12 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
             this.linkList.length !== scrollLinkList.length ||
             differenceBy(scrollLinkList, this.linkList.toArray(), 'hcScrollLink').length > 0
         ) {
-            let newLinkList: ScrollNavLinkDirective[] =
+            const newLinkList: ScrollNavLinkDirective[] =
                 map(scrollLinkList, (dynamicLink: CombinedLinkList) => {
                     let rtnLink: ScrollNavLinkDirective = <ScrollNavLinkDirective>{};
 
                     if (some(this.linkList.toArray(), ['hcScrollLink', dynamicLink.hcScrollLink])) {
-                        let queryDirective: ScrollNavLinkDirective | undefined =
+                        const queryDirective: ScrollNavLinkDirective | undefined =
                             find(this.linkList.toArray(), ["hcScrollLink", dynamicLink.hcScrollLink]);
                         if (queryDirective) {
                             rtnLink = queryDirective;
@@ -145,7 +145,7 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
         }
     }
 
-    private initializeLinks(isInit: boolean = false): void {
+    private initializeLinks(isInit = false): void {
         this._links.forEach((link) => {
             this.setClassesForSubsection(link);
         });
@@ -190,19 +190,19 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
     }
 
     private scrollToElement(element: HTMLElement): void {
-        let currentElementPosition: number = 0;
+        let currentElementPosition = 0;
         this._links.forEach((link, index) => {
             if (link.getAttribute(this.SCROLL_LINK_ATTRIBUTE) === element.getAttribute(this.SCROLL_LINK_ATTRIBUTE)) {
                 currentElementPosition = index;
             }
         });
 
-        let container: HTMLElement = this._elementRef.nativeElement.querySelector(`.${this.LINKS_CONTAINER_CLASS}`);
-        let offsetTop: number = element.offsetTop;
-        let elementClientHeight: number = element.clientHeight;
-        let scrollHeight: number = container.scrollHeight;
-        let scrollTop: number = this._cdkScrollableElement.measureScrollOffset("top");
-        let clientHeight: number = container.clientHeight;
+        const container: HTMLElement = this._elementRef.nativeElement.querySelector(`.${this.LINKS_CONTAINER_CLASS}`);
+        const offsetTop: number = element.offsetTop;
+        const elementClientHeight: number = element.clientHeight;
+        const scrollHeight: number = container.scrollHeight;
+        const scrollTop: number = this._cdkScrollableElement.measureScrollOffset("top");
+        const clientHeight: number = container.clientHeight;
 
         if (!this.isScrolling) {
             if (this.previousElementPosition < currentElementPosition) { // scroll down
@@ -243,7 +243,7 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
     }
 
     private setClassesForSubsection(element: HTMLElement): void {
-        let parentElement = element.parentElement ? element.parentElement.parentElement : undefined;
+        const parentElement = element.parentElement ? element.parentElement.parentElement : undefined;
 
         if (parentElement && parentElement.tagName === this.LIST_TAG_NAME && parentElement.hasAttribute(this.SCROLL_LINK_ATTRIBUTE)) {
             element.classList.add(this.SUBSECTION_CLASS);

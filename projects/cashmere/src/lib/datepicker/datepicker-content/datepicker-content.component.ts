@@ -13,7 +13,6 @@ import {DatepickerComponent} from '../datepicker.component';
 @Component({
     selector: 'hc-datepicker-content',
     templateUrl: './datepicker-content.component.html',
-    // tslint:disable-next-line:no-host-metadata-property
     host: {
         class: 'hc-datepicker-content',
         '[@transformPanel]': '"enter"'

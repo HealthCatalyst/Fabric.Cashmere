@@ -13,9 +13,6 @@ import {
 } from '@angular/core';
 import {take} from 'rxjs/operators';
 
-// tslint:disable:no-host-metadata-property
-// tslint:disable:component-selector
-
 /**
  * Extra CSS classes that can be associated with a calendar cell.
  */

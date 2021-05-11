@@ -39,8 +39,8 @@ export function invalidDefaultTab(tabVal: string | number) {
     encapsulation: ViewEncapsulation.None
 })
 export class TabSetComponent implements AfterContentInit {
-    _routerEnabled: boolean = false;
-    private _direction: string = 'vertical';
+    _routerEnabled = false;
+    private _direction = 'vertical';
     private _defaultTab: string | number = 0;
     private _stopTabSubscriptionSubject: Subject<any> = new Subject();
 
@@ -94,7 +94,7 @@ export class TabSetComponent implements AfterContentInit {
         this._addContentContainer = parseBooleanAttribute(value);
     }
 
-    _addContentContainer: boolean = true;
+    _addContentContainer = true;
 
     /** If true, condense the default padding on all included tabs. *Defaults to `false`.*  */
     @Input()
@@ -197,7 +197,7 @@ export class TabSetComponent implements AfterContentInit {
             .map(tab => tab.routerLink)
             .map(routerLink => this.mapRouterLinkToString(routerLink))
             .find(routerLink => {
-                let currentRoute = this.router.url;
+                const currentRoute = this.router.url;
                 return currentRoute === routerLink || currentRoute.indexOf(`${routerLink}/`) > -1;
             });
 

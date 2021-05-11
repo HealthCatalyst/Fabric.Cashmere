@@ -28,8 +28,6 @@ import {Directionality} from '@angular/cdk/bidi';
 import {DOCUMENT} from '@angular/common';
 import {take, filter} from 'rxjs/operators';
 
-// tslint:disable:no-output-rename
-
 /** Used to generate a unique ID for each datepicker instance. */
 let datepickerUid = 0;
 
@@ -96,7 +94,7 @@ export class DatepickerComponent implements OnDestroy {
             }
         }
     }
-    private _hourCycle: number = 12;
+    private _hourCycle = 12;
 
     /** An input indicating the type of the custom header component for the calendar, if set. */
     @Input()
@@ -174,7 +172,7 @@ export class DatepickerComponent implements OnDestroy {
     private _opened = false;
 
     /** The id for the datepicker calendar. */
-    id: string = `hc-datepicker-${datepickerUid++}`;
+    id = `hc-datepicker-${datepickerUid++}`;
 
     /** The currently selected date. */
     get _selected(): D | null {

@@ -6,7 +6,7 @@ import {highlightBlock} from 'highlight.js';
 })
 export class HighlightDirective implements AfterViewInit {
     @Input()
-    lineNumbers: boolean = true;
+    lineNumbers = true;
 
     constructor(private el: ElementRef) {}
 

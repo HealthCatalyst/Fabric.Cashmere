@@ -32,8 +32,8 @@ export function getControlMissing(): Error {
     encapsulation: ViewEncapsulation.None
 })
 export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
-    private _inline: boolean = false;
-    private _tight: boolean = false;
+    private _inline = false;
+    private _tight = false;
     private unsubscribe$ = new Subject<void>();
 
     @ContentChild(HcFormControlComponent)

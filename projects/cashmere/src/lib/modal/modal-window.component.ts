@@ -17,7 +17,6 @@ import {ActiveModal} from './active-modal';
         </div>
     `,
     encapsulation: ViewEncapsulation.None,
-    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-modal-window'},
     styleUrls: ['./modal-window.component.scss'],
     animations: [
@@ -50,10 +49,10 @@ export class ModalWindowComponent {
     @HostListener('mousedown', ['$event'])
     _overlayClick(event: any) {
         let modalContentNotPresent = true;
-        let path = this._eventPath(event);
-        let modalWindowTargetIncluded = path.findIndex(p => p === this.el.nativeElement) > -1;
-        let classList: (DOMTokenList | undefined)[] = path.map(p => p.classList);
-        for (let cl of classList) {
+        const path = this._eventPath(event);
+        const modalWindowTargetIncluded = path.findIndex(p => p === this.el.nativeElement) > -1;
+        const classList: (DOMTokenList | undefined)[] = path.map(p => p.classList);
+        for (const cl of classList) {
             if (cl) {
                 if (cl.contains('hc-modal-content')) {
                     modalContentNotPresent = false;
@@ -75,7 +74,7 @@ export class ModalWindowComponent {
 
     // Serves as a polyfill for Event.composedPath() or Event.Path
     _eventPath(evt: any) {
-        let path = (evt.composedPath && evt.composedPath()) || evt.path,
+        const path = (evt.composedPath && evt.composedPath()) || evt.path,
             target = evt.target;
 
         if (path != null) {
@@ -89,7 +88,7 @@ export class ModalWindowComponent {
 
         function _getParents(node, memo?) {
             memo = memo || [];
-            let parentNode = node.parentNode;
+            const parentNode = node.parentNode;
 
             if (!parentNode) {
                 return memo;

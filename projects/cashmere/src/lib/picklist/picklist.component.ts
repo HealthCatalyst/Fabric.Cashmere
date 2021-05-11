@@ -266,7 +266,7 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     }
 
     /** Move selected (highlighted) options from one pane to the other */
-    _move(source: PickPaneComponent, destination: PickPaneComponent, isAdding: boolean = false) {
+    _move(source: PickPaneComponent, destination: PickPaneComponent, isAdding = false) {
         let maxLimitEnforced = false;
         let overLimitBy = 0;
         if (isAdding && this.maxSelectedItems) {
@@ -350,10 +350,10 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
         if (!this._isValidWriteValue(ngModel)) { return; }
 
         const select = (val: any) => {
-            let alreadySelected = this._selectedPane.itemsList.findOption(val);
+            const alreadySelected = this._selectedPane.itemsList.findOption(val);
             if (alreadySelected) { return; }
 
-            let availableItem = this._availablePane.itemsList.findOption(val);
+            const availableItem = this._availablePane.itemsList.findOption(val);
             if (availableItem) {
                 this._availablePane.itemsList.removeOption(availableItem);
                 this._selectedPane.itemsList.addOption(availableItem);
@@ -402,7 +402,7 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
         const model = new Array<any>();
         const selectedItems = this._selectedPane.itemsList.items.filter(i => !i.children);
         selectedItems.forEach(i => {
-            let value = this.bindValue ? this._selectedPane.itemsList.resolveNested(i.value, this.bindValue) : i.value;
+            const value = this.bindValue ? this._selectedPane.itemsList.resolveNested(i.value, this.bindValue) : i.value;
             model.push(value);
         });
 

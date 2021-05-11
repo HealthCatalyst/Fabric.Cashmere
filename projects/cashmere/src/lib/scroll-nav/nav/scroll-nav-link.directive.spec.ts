@@ -88,9 +88,9 @@ describe("ScrollNavLinkDirective", (): void => {
         });
 
         it("click should call scrollIntoView", (): void => {
-            let contentElement: HTMLElement = scrollNavLinkComponent.debugElement.query(By.css("#a1")).nativeElement;
+            const contentElement: HTMLElement = scrollNavLinkComponent.debugElement.query(By.css("#a1")).nativeElement;
             spyOn(document, "getElementById").and.returnValue(contentElement);
-            let scrollIntoViewSpy: jasmine.Spy = spyOn(contentElement, "scrollIntoView");
+            const scrollIntoViewSpy: jasmine.Spy = spyOn(contentElement, "scrollIntoView");
 
             directive.nativeElement.click();
 
@@ -102,7 +102,7 @@ describe("ScrollNavLinkDirective", (): void => {
         let directive: ScrollNavLinkDirective;
 
         beforeEach(() => {
-            let node: Node = scrollNavLinkDynamicComponent.nativeElement.querySelector(`[hcscrolllink]`);
+            const node: Node = scrollNavLinkDynamicComponent.nativeElement.querySelector(`[hcscrolllink]`);
 
             directive = new ScrollNavLinkDirective(<ElementRef>{}, scrollNavLinkDynamicComponent.componentInstance.renderer);
             directive._setDirectiveToNode(node);
@@ -120,7 +120,7 @@ describe("ScrollNavLinkDirective", (): void => {
         });
 
         it("click should call scrollIntoView", (): void => {
-            let scrollIntoViewSpy: jasmine.Spy = spyOn(scrollNavLinkDynamicComponent.nativeElement.querySelector(`#${directive.hcScrollLink}`), "scrollIntoView");
+            const scrollIntoViewSpy: jasmine.Spy = spyOn(scrollNavLinkDynamicComponent.nativeElement.querySelector(`#${directive.hcScrollLink}`), "scrollIntoView");
 
             directive.nativeElement.click();
 

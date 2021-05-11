@@ -16,7 +16,7 @@ export class PicklistValuesetMovingService {
 
     public constructor(private filterService: PicklistFilterService, private stateService: PicklistStateService) {}
 
-    public moveOutValuesets(optionsToMove: PicklistValueOptions, pane: PicklistPaneComponent, shouldBreakValuesets: boolean = false) {
+    public moveOutValuesets(optionsToMove: PicklistValueOptions, pane: PicklistPaneComponent, shouldBreakValuesets = false) {
         this.valueSetList.selectedOptions.forEach(v => {
             v.showValues = false;
             optionsToMove.valueSets.set(v.code, v);
@@ -60,8 +60,7 @@ export class PicklistValuesetMovingService {
             return;
         }
         valuesMap.forEach(o => {
-            // tslint:disable-next-line:no-non-null-assertion
-            sourcePane.companion!.valueList.options.set(o.code, new ValueListOption(o.option, o.code));
+            sourcePane.companion?.valueList.options.set(o.code, new ValueListOption(o.option, o.code));
         });
     }
 

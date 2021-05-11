@@ -17,8 +17,8 @@ export function validateColorInput(inputStr: string) {
     encapsulation: ViewEncapsulation.None
 })
 export class ChipComponent {
-    private _hasCloseButton: boolean = false;
-    private _color: string = 'neutral';
+    private _hasCloseButton = false;
+    private _color = 'neutral';
     _tight = false;
 
     /** Emitted when the 'X' close button is clicked. `(click)` may be used for clicks on the entire chip */
@@ -60,7 +60,7 @@ export class ChipComponent {
 
     /** Allows you to customize the width of a chip (ie. `100%`, `250px`); defaults to `auto` */
     @Input()
-    width: string = 'auto';
+    width = 'auto';
 
     /** Called on a click of the X close button */
     _closeClick(e: MouseEvent) {

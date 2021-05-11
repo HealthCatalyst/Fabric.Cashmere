@@ -1,5 +1,3 @@
-/* tslint:disable:no-output-rename no-input-rename directive-class-suffix */
-
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -92,7 +90,7 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
     set disabled(value: any) {
         this._disabled = coerceBooleanProperty(value);
     }
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     /** Event emitted when the user changes either the active sort or sort direction. */
     @Output('hcSortChange')
@@ -141,7 +139,7 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
 
         // Get the sort direction cycle with the potential sortable overrides.
         const disableClear = sortable.disableClear != null ? sortable.disableClear : this.disableClear;
-        let sortDirectionCycle = getSortDirectionCycle(sortable.start || this.start, disableClear);
+        const sortDirectionCycle = getSortDirectionCycle(sortable.start || this.start, disableClear);
 
         // Get and return the next direction in the cycle
         let nextDirectionIndex = sortDirectionCycle.indexOf(this.direction) + 1;
@@ -166,7 +164,7 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
 
 /** Returns the sort direction cycle to use given the provided parameters of order and clear. */
 function getSortDirectionCycle(start: 'asc' | 'desc', disableClear: boolean): SortDirection[] {
-    let sortOrder: SortDirection[] = ['asc', 'desc'];
+    const sortOrder: SortDirection[] = ['asc', 'desc'];
     if (start === 'desc') {
         sortOrder.reverse();
     }

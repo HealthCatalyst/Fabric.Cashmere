@@ -13,7 +13,7 @@ export class DateRangeExampleComponent implements OnInit {
     options: DateRangeOptions;
     optionsControl = new FormControl(false);
     presets: Array<PresetItem> = [];
-    presetSelection: string = 'None';
+    presetSelection = 'None';
 
     ngOnInit() {
         const today = new Date();

@@ -18,11 +18,11 @@ import {By} from '@angular/platform-browser';
     `
 })
 export class TestStepperComponent {
-    colorVal: string = 'red';
-    typeVal: string = 'isolated';
-    countVal: boolean = true;
-    routerVal: boolean = false;
-    currentStep: number = 1;
+    colorVal = 'red';
+    typeVal = 'isolated';
+    countVal = true;
+    routerVal = false;
+    currentStep = 1;
 
     stepsVal: StepInterface[] = [
         {label: 'One', iconSet: 'fa', icon: 'fa-check'},
@@ -49,7 +49,7 @@ describe('StepperComponent', () => {
     });
 
     it('should set the stepper color based on the color parameter', () => {
-        let comp = fixture.debugElement.query(By.css('hc-stepper'));
+        const comp = fixture.debugElement.query(By.css('hc-stepper'));
         expect(comp.nativeElement.classList.contains('hc-stepper-red')).toBe(true);
     });
 
@@ -61,17 +61,17 @@ describe('StepperComponent', () => {
     });
 
     it('should set the stepper type based on the type parameter', () => {
-        let comp = fixture.debugElement.query(By.css('div'));
+        const comp = fixture.debugElement.query(By.css('div'));
         expect(comp.nativeElement.classList.contains('hc-stepper-isolated')).toBe(true);
     });
 
     it('should show numbers on the steps if showStepCount is set to true', () => {
-        let stepSpans = fixture.debugElement.queryAll(By.css('span'));
+        const stepSpans = fixture.debugElement.queryAll(By.css('span'));
         expect(stepSpans.length).toBe(12);
     });
 
     it('should omit the router-outlet if useRouterOutlet is set to false', () => {
-        let outlets = fixture.debugElement.queryAll(By.css('router-outlet'));
+        const outlets = fixture.debugElement.queryAll(By.css('router-outlet'));
         expect(outlets.length).toBe(0);
     });
 
@@ -79,12 +79,12 @@ describe('StepperComponent', () => {
         component.currentStep = 0;
         fixture.detectChanges();
 
-        let steps = fixture.debugElement.queryAll(By.css('.hc-step'));
+        const steps = fixture.debugElement.queryAll(By.css('.hc-step'));
         expect(steps[0].nativeElement.classList.contains('hc-step-isolated-active')).toBe(true);
     });
 
     it('should disable steps if their disabled parameter is set to true', () => {
-        let steps = fixture.debugElement.queryAll(By.css('.hc-step'));
+        const steps = fixture.debugElement.queryAll(By.css('.hc-step'));
         expect(steps[2].nativeElement.classList.contains('hc-stepper-disabled')).toBe(true);
     });
 });

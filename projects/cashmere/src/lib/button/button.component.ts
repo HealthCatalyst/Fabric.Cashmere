@@ -1,6 +1,3 @@
-/* tslint:disable:component-selector */
-/* tslint:disable:no-host-metadata-property */
-
 import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 
@@ -24,6 +21,7 @@ const buttonAttributes = ['hc-icon-button', 'hc-button'];
 
 /** Cashmere styled button */
 @Component({
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: 'button[hc-button], button[hc-icon-button]',
     template: '<ng-content></ng-content>',
     styleUrls: ['./button.component.scss'],
