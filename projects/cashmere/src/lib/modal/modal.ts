@@ -16,6 +16,9 @@ export class HcModal<T> {
     /** Adds a drag handle to the top right of the modal and allows the modal to be repositioned */
     isDraggable?: boolean;
 
+    /** Adds a resize handle to the bottom right-hand of the modal and allows the modal to be resized */
+    isResizable?: boolean;
+
     /** Subscribe to result in order to get access to modal result values passed in ActiveModal.close() */
     get result(): Observable<any> {
         return this._result.asObservable();
