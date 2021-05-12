@@ -16,7 +16,7 @@ import {
 import type {QueryList} from '@angular/core';
 import {AnimationEvent} from '@angular/animations';
 import {DOCUMENT} from '@angular/common';
-import {FocusTrap, ConfigurableFocusTrapFactory, ConfigurableFocusTrap} from '@angular/cdk/a11y';
+import {ConfigurableFocusTrapFactory, ConfigurableFocusTrap} from '@angular/cdk/a11y';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {transformPopover} from './popover.animations';
 import {NotificationAction, PopoverNotification, PopoverNotificationService} from './notification.service';
@@ -60,7 +60,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     /** Alignment of the popover on the horizontal axis. Can be `before`, `start`, `center`, `end`, `after`, or `mouse`.
      * *Defaults to `center`.* */
     @Input()
-    get horizontalAlign() {
+    get horizontalAlign(): HcPopoverHorizontalAlign {
         return this._horizontalAlign;
     }
     set horizontalAlign(val: HcPopoverHorizontalAlign) {
@@ -74,7 +74,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Alignment of the popover on the x axis. Alias for `horizontalAlign`. *Defaults to `"center"`.* */
     @Input()
-    get xAlign() {
+    get xAlign(): HcPopoverHorizontalAlign {
         return this.horizontalAlign;
     }
     set xAlign(val: HcPopoverHorizontalAlign) {
@@ -84,7 +84,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     /** Alignment of the popover on the vertical axis. Can be `above`, `start`, `center`, `end`, `below`, or `mouse`.
      * *Defaults to `"below"`.* */
     @Input()
-    get verticalAlign() {
+    get verticalAlign(): HcPopoverVerticalAlign {
         return this._verticalAlign;
     }
     set verticalAlign(val: HcPopoverVerticalAlign) {
@@ -98,7 +98,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Alignment of the popover on the y axis. Alias for `verticalAlign`. *Defaults to `"below"`.* */
     @Input()
-    get yAlign() {
+    get yAlign(): HcPopoverVerticalAlign {
         return this.verticalAlign;
     }
     set yAlign(val: HcPopoverVerticalAlign) {
@@ -107,7 +107,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Whether the popover always opens with the specified alignment. *Defaults to `false`.* */
     @Input()
-    get forceAlignment() {
+    get forceAlignment(): boolean {
         return this._forceAlignment;
     }
     set forceAlignment(val: boolean) {
@@ -125,7 +125,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
      * *Defaults to `false`.*
      */
     @Input()
-    get lockAlignment() {
+    get lockAlignment(): boolean {
         return this._lockAlignment;
     }
     set lockAlignment(val: boolean) {
@@ -139,7 +139,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Constrains the content of a container to a standard css string value; *Defaults to `none`.* */
     @Input()
-    get maxWidth() {
+    get maxWidth(): string {
         return this._maxWidth;
     }
     set maxWidth(val: string) {
@@ -149,7 +149,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Whether the first focusable element should be focused on open. *Defaults to `false`.* */
     @Input()
-    get autoFocus() {
+    get autoFocus(): boolean {
         return this._autoFocus && this._autoFocusOverride;
     }
     set autoFocus(val: boolean) {
@@ -160,7 +160,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Whether the popover should return focus to the previously focused element after closing. *Defaults to `true`.* */
     @Input()
-    get restoreFocus() {
+    get restoreFocus(): boolean {
         return this._restoreFocus && this._restoreFocusOverride;
     }
     set restoreFocus(val: boolean) {
@@ -171,7 +171,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** How the popover should handle scrolling. *Defaults to `"reposition"`.* */
     @Input()
-    get scrollStrategy() {
+    get scrollStrategy(): HcPopoverScrollStrategy {
         return this._scrollStrategy;
     }
     set scrollStrategy(val: HcPopoverScrollStrategy) {
@@ -185,7 +185,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Whether the popover should have a backdrop (includes closing on click). *Defaults to `true`.* */
     @Input()
-    get hasBackdrop() {
+    get hasBackdrop(): boolean {
         return this._hasBackdrop;
     }
     set hasBackdrop(val: boolean) {
@@ -196,7 +196,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Whether the popover should close when the user clicks the backdrop or presses ESC. *Defaults to `true`.* */
     @Input()
-    get interactiveClose() {
+    get interactiveClose(): boolean {
         return this._interactiveClose;
     }
     set interactiveClose(val: boolean) {
@@ -207,7 +207,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Custom transition to use while opening. *Defaults to `'200ms cubic-bezier(0.25, 0.8, 0.25, 1)'`.* */
     @Input()
-    get openTransition() {
+    get openTransition(): string {
         return this._openTransition;
     }
     set openTransition(val: string) {
@@ -219,7 +219,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
 
     /** Custom transition to use while closing. *Defaults to `'200ms cubic-bezier(0.25, 0.8, 0.25, 1)'`.* */
     @Input()
-    get closeTransition() {
+    get closeTransition(): string {
         return this._closeTransition;
     }
     set closeTransition(val: string) {
@@ -240,7 +240,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
         }
         this._parentMenu = val;
         if ( this._parentMenu ) {
-            this._parentClose = this._parentMenu.closed.subscribe(value => {
+            this._parentClose = this._parentMenu.closed.subscribe(function() {
                 if (this.isOpen()) {
                     this.close();
                 }
@@ -324,11 +324,11 @@ export class HcPopComponent implements OnInit, OnDestroy {
         @Optional() @Inject(DOCUMENT) private _document: any
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._setAlignmentClasses();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if (this._notifications) {
             this._notifications.dispose();
         }
@@ -390,7 +390,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     }
 
     /** Callback for when the popover is finished animating in or out. */
-    _onAnimationDone(event: AnimationEvent) {
+    _onAnimationDone(event: AnimationEvent): void {
         if (event.toState === 'visible') {
             this._trapFocus();
             this.afterOpen.emit();
@@ -401,12 +401,12 @@ export class HcPopComponent implements OnInit, OnDestroy {
     }
 
     /** Apply alignment classes based on alignment inputs. */
-    _setAlignmentClasses(horizAlign = this.horizontalAlign, vertAlign = this.verticalAlign) {
+    _setAlignmentClasses(horizAlign = this.horizontalAlign, vertAlign = this.verticalAlign): void {
         this._setAlignmentClassesForAnimation(horizAlign, vertAlign);
         this._setAlignmentClassesForArrow();
     }
 
-    _setAlignmentClassesForAnimation(horizAlign = this.horizontalAlign, vertAlign = this.verticalAlign) {
+    _setAlignmentClassesForAnimation(horizAlign = this.horizontalAlign, vertAlign = this.verticalAlign): void {
         this._classList['hc-pop-before'] = horizAlign === 'before' || horizAlign === 'end';
         this._classList['hc-pop-after'] = horizAlign === 'after' || horizAlign === 'start';
 
@@ -416,7 +416,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
         this._classList['hc-pop-center'] = horizAlign === 'center' || vertAlign === 'center';
     }
 
-    _setAlignmentClassesForArrow(xAlign = this.horizontalAlign, yAlign = this.verticalAlign) {
+    _setAlignmentClassesForArrow(xAlign = this.horizontalAlign, yAlign = this.verticalAlign): void {
         this._classList['hc-pop-show-arrow'] =
             (this.showArrow &&
                 (xAlign === 'start' || xAlign === 'center' || xAlign === 'end') &&
@@ -428,7 +428,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     }
 
     /** Set the focus of an hcMenu based on a keyboard arrow press */
-    _keyFocus(downPress: boolean) {
+    _keyFocus(downPress: boolean): void {
         const itemArray = this._menuItems.toArray();
         if (!downPress) {
             itemArray.reverse();

@@ -9,7 +9,7 @@ import {
     SimpleChanges
 } from '@angular/core';
 import { Subject } from 'rxjs';
-export interface PickOptionStateChange { value: any; disabled: boolean; label?: string; }
+export interface PickOptionStateChange { value: boolean; disabled: boolean; label?: string; }
 
 /** Component used to add options to a picklist in declarative way. `<hc-pick-option>` */
 @Component({
@@ -19,10 +19,10 @@ export interface PickOptionStateChange { value: any; disabled: boolean; label?: 
 })
 export class PickOptionComponent implements OnChanges, AfterViewChecked, OnDestroy {
     /** Value for this option. */
-    @Input() value: any;
+    @Input() value: boolean;
     /** If true, the option cannot be selected. */
     @Input() set disabled(value: boolean) { this._disabled = this._isDisabled(value); }
-    get disabled() { return this._disabled; }
+    get disabled(): boolean { return this._disabled; }
 
     readonly _stateChange$ = new Subject<PickOptionStateChange>();
 
@@ -36,7 +36,7 @@ export class PickOptionComponent implements OnChanges, AfterViewChecked, OnDestr
     /** Getter. Returns the text used as the label for this option. */
     get label(): string { return (this.elementRef.nativeElement.textContent || '').trim(); }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         if (changes.disabled) {
             this._stateChange$.next({
                 value: this.value,
@@ -45,7 +45,7 @@ export class PickOptionComponent implements OnChanges, AfterViewChecked, OnDestr
         }
     }
 
-    ngAfterViewChecked() {
+    ngAfterViewChecked(): void {
         if (this.label !== this._previousLabel) {
             this._previousLabel = this.label;
             this._stateChange$.next({
@@ -56,7 +56,7 @@ export class PickOptionComponent implements OnChanges, AfterViewChecked, OnDestr
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._stateChange$.complete();
     }
 

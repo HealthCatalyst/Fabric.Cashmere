@@ -101,7 +101,7 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         return this._isDisabled;
     }
 
-    set disabled(value) {
+    set disabled(value: boolean) {
         this._isDisabled = parseBooleanAttribute(value);
         this._markRadiosForCheck();
     }
@@ -112,7 +112,7 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         return this._isRequired;
     }
 
-    set required(value) {
+    set required(value: boolean) {
         this._isRequired = parseBooleanAttribute(value);
         this._markRadiosForCheck();
     }
@@ -134,7 +134,7 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         return this._inline;
     }
 
-    set inline(value) {
+    set inline(value: boolean) {
         this._inline = parseBooleanAttribute(value);
         this._verticalClass = !this._inline;
         this._horizontalClass = this._inline;
@@ -145,7 +145,7 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     get tight(): boolean {
         return this._tight;
     }
-    set tight(value) {
+    set tight(value : boolean) {
         this._tight = parseBooleanAttribute(value);
         if (this._initialized) {
             setTimeout(() => this._markRadiosForCheck());
@@ -168,24 +168,24 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         }
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._initialized = true;
     }
 
-    writeValue(value: any) {
+    writeValue(value: any): void {
         this.value = value;
         this._cdRef.markForCheck();
     }
 
-    registerOnChange(fn: any) {
+    registerOnChange(fn: any): void {
         this._onChangeFn = fn;
     }
 
-    registerOnTouched(fn: any) {
+    registerOnTouched(fn: any): void {
         this._onTouchFn = fn;
     }
 
-    _touch() {
+    _touch(): void {
         if (this._onTouchFn) {
             this._onTouchFn();
         }
@@ -315,7 +315,7 @@ export class RadioButtonComponent implements OnInit {
         return this._required || (this.radioGroup != null && this.radioGroup.required);
     }
 
-    set required(required) {
+    set required(required : boolean) {
         this._required = parseBooleanAttribute(required);
     }
 
@@ -325,7 +325,7 @@ export class RadioButtonComponent implements OnInit {
         return this._disabled || (this.radioGroup != null && this.radioGroup.disabled);
     }
 
-    set disabled(isDisabled) {
+    set disabled(isDisabled: boolean) {
         this._disabled = parseBooleanAttribute(isDisabled);
     }
 
@@ -366,11 +366,11 @@ export class RadioButtonComponent implements OnInit {
             return this._tight;
         }
     }
-    set tight(value) {
+    set tight(value: boolean) {
         this._tight = parseBooleanAttribute(value);
     }
 
-    get _inputId() {
+    get _inputId(): string {
         return `${this.id || this._uniqueId}-input`;
     }
 
@@ -378,18 +378,18 @@ export class RadioButtonComponent implements OnInit {
         this.radioGroup = radioGroup;
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (this.radioGroup !== null) {
             this.checked = this.radioGroup.value === this._value;
             this.name = this.radioGroup.name;
         }
     }
 
-    _onInputClick(event: Event) {
+    _onInputClick(event: Event): void {
         event.stopPropagation();
     }
 
-    _onInputChange(event: Event) {
+    _onInputChange(event: Event): void {
         event.stopPropagation();
         const valueChanged = this.radioGroup && this.value !== this.radioGroup.value;
         this._emitChangeEvent();
@@ -409,7 +409,7 @@ export class RadioButtonComponent implements OnInit {
         this.change.emit(new RadioButtonChangeEvent(this, this.value));
     }
 
-    _markForCheck() {
+    _markForCheck(): void {
         this.cdRef.markForCheck();
     }
 }

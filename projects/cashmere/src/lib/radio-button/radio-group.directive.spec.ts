@@ -143,7 +143,6 @@ describe('RadioGroupComponent', () => {
         const inputElement = <HTMLInputElement>directiveInstance.radios.last._elementRef.nativeElement.querySelector('input');
         inputElement.click();
 
-        const newValue = directiveInstance.selected;
         fixture.detectChanges();
 
         expect(directiveInstance.selected).not.toBeNull();

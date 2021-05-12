@@ -32,7 +32,7 @@ export class PopoverNotificationService {
     private store = new Subject<PopoverNotification>();
 
     /** Dispatch a notification to all subscribers. */
-    dispatch(notification: PopoverNotification) {
+    dispatch(notification: PopoverNotification): void {
         this.store.next(notification);
     }
 

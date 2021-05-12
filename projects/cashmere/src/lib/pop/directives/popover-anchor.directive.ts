@@ -32,7 +32,7 @@ import { parseBooleanAttribute } from '../../util';
 export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDestroy {
     /** Reference to the popover instance. */
     @Input('hcPop')
-    get attachedPopover() {
+    get attachedPopover(): HcPopComponent {
         return this._attachedPopover;
     }
     set attachedPopover(value: HcPopComponent) {
@@ -45,7 +45,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
 
     /** A string of text to display as a tooltip above an element */
     @Input('hcTooltip')
-    get tooltipText() {
+    get tooltipText(): string {
         return this._tooltipText;
     }
     set tooltipText(value: string) {
@@ -67,7 +67,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
      * Accepts `click`, `mousedown`, `hover`, `rightclick`, or `none`.
      * Note: if "hover" is selected, the backdrop for the popover will be disabled. */
     @Input()
-    get trigger() {
+    get trigger(): HcPopoverTrigger {
         return this._trigger;
     }
     set trigger(val: HcPopoverTrigger) {
@@ -83,7 +83,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
      * Delay is measured in milliseconds.
      */
     @Input()
-    get popoverDelay() {
+    get popoverDelay(): number {
         return this._popoverDelay;
     }
 
@@ -98,7 +98,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
 
     /** Constrains the content of a popover to a standard css string value; *Defaults to `none`.* */
     @Input()
-    get maxWidth() {
+    get maxWidth(): string {
         return this._attachedPopover.maxWidth;
     }
 
@@ -131,7 +131,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     /** Alignment of the popover on the horizontal axis. Can be `before`, `start`, `center`, `end`, `after`, or `mouse`.
      * *Defaults to `center`.* */
     @Input()
-    get horizontalAlign() {
+    get horizontalAlign(): HcPopoverHorizontalAlign {
         return this._attachedPopover.horizontalAlign;
     }
     set horizontalAlign(val: HcPopoverHorizontalAlign) {
@@ -143,7 +143,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     /** Alignment of the popover on the vertical axis. Can be `above`, `start`, `center`, `end`, `below`, or `mouse`.
      * *Defaults to `"below"`.* */
     @Input()
-    get verticalAlign() {
+    get verticalAlign(): HcPopoverVerticalAlign {
         return this._attachedPopover.verticalAlign;
     }
     set verticalAlign(val: HcPopoverVerticalAlign) {
@@ -175,7 +175,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         private _componentFactoryResolver: ComponentFactoryResolver
     ) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         // Re-emit open and close events
         const opened$ = this._anchoring.popoverOpened.pipe(tap(() => this.popoverOpened.emit()));
         const closed$ = this._anchoring.popoverClosed.pipe(tap(value => this.popoverClosed.emit(value)));
@@ -184,11 +184,11 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
             .subscribe();
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._setupKeyboardEvents();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         clearTimeout(this.hoverInterval);
         this._onDestroy.next();
         this._onDestroy.complete();
@@ -265,7 +265,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     @HostListener('touchend', ['$event'])
     @HostListener('touchcancel', ['$event'])
     @HostListener('mouseleave', ['$event'])
-    _hideOnLeave($event: MouseEvent): void {
+    _hideOnLeave(): void {
         if (this.trigger !== 'hover') {
             return;
         }

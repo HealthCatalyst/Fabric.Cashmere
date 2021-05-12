@@ -9,7 +9,7 @@ export class PickItemLabelDirective implements OnChanges {
 
     constructor(private element: ElementRef<HTMLElement>) { }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(): void {
         this.element.nativeElement.innerHTML = this.escape ?
             escapeHTML(this.hcPickItemLabel) :
             this.hcPickItemLabel;
