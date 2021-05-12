@@ -6,6 +6,8 @@ import {PersonaListComponent} from './personas/persona-list/persona-list.compone
 import {MarkdownContentComponent} from '../shared/markdown-content.component';
 import {PersonaViewerComponent} from './personas/persona-viewer/persona-viewer.component';
 import {UsageComponent} from './usage/usage.component';
+import { ProductPersonasViewerComponent } from './personas/product-personas-viewer/product-personas-viewer.component';
+import { ProductCentricIndexComponent } from './personas/product-centric-index/product-centric-index.component';
 
 const routes: Routes = [
     {
@@ -57,6 +59,21 @@ const routes: Routes = [
                     }
                 ]
             },
+            {
+                path: 'products',
+                component: ProductCentricIndexComponent,
+                data: {
+                    title: 'Personas by Product',
+                    category: 'User Personas'
+                },
+                children: [
+                    {
+                        path: ':id',
+                        component: ProductPersonasViewerComponent
+                    }
+                ]
+            },
+
             {
                 path: '**',
                 redirectTo: 'usage'

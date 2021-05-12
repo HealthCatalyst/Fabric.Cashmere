@@ -1,0 +1,26 @@
+<div *ngIf="!viewerMode" class="demo-content">
+    <h1>Personas by Product</h1>
+    <h6>Last updated May 12, 2021</h6>
+
+    <hc-tile>
+        <h5 id="overview">Overview</h5>
+
+        <p>
+            This index organizes the Health Catalyst user personas by associated products. Click a product name to go to a listing of that product’s associated personas for buyer, primary user, and secondary user. Alternatively, you can view an <a routerLink="/content/personas">alphabetical list</a>            of user personas or an <a routerLink="/content/org-chart">organization chart</a> of personas by job role.
+        </p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="external-personas">Products and Solutions</h5>
+
+        <ul class="persona-list">
+            <ng-container *ngFor="let product of productLists">
+                <li *ngIf="product.type === 'npi-app'"><a [routerLink]="'/content/products/' + product.route">{{product.title}}</a></li>
+            </ng-container>
+        </ul>
+    </hc-tile>
+
+    <hc-feedback-form></hc-feedback-form>
+</div>
+
+<router-outlet></router-outlet>
