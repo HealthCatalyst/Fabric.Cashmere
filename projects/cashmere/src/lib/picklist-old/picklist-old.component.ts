@@ -4,7 +4,7 @@ import {PicklistPaneComponent} from './pane/picklist-pane.component';
 import {IPicklistOptions, IPicklistSettings, IValueOption, PicklistOptionsSource, PicklistSettings} from './picklist-old.model';
 
 const supportedSortModes = ['asc', 'desc', 'none'];
-export function validateSortInput(inputStr: string) {
+export function validateSortInput(inputStr: string): void {
     if (supportedSortModes.indexOf(inputStr) < 0) {
         throw Error('Unsupported sort input value: ' + inputStr);
     }

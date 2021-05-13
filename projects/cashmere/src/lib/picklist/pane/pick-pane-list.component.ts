@@ -44,7 +44,7 @@ export class PickPaneListComponent implements OnInit, OnChanges, OnDestroy {
     @Input() bufferAmount: number;
     @Input() virtualScroll = false;
     @Input() filterValue: string;
-    @Output() update = new EventEmitter<any[]>();
+    @Output() update = new EventEmitter<PickOption[]>();
     @Output() scroll = new EventEmitter<{ start: number; end: number }>();
     @Output() scrollToEnd = new EventEmitter<void>();
     @ViewChild('content', { read: ElementRef, static: true }) contentElementRef: ElementRef;

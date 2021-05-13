@@ -52,7 +52,7 @@ export class PicklistPaneComponent {
         public filterService: PicklistFilterService
     ) {}
 
-    public reset(source: PicklistOptionsSource, settings: PicklistSettings, companion: PicklistPaneComponent, excludeCompanion = false) {
+    public reset(source: PicklistOptionsSource, settings: PicklistSettings, companion: PicklistPaneComponent, excludeCompanion = false): void {
         this.companion = companion;
         this.shouldExcludeCompanion = excludeCompanion;
         this.codeIsSignificant = settings.codeIsSignificant;
@@ -109,30 +109,30 @@ export class PicklistPaneComponent {
         return topLevelListHasSelection || subListHasSelection;
     }
 
-    public focusSearch() {
+    public focusSearch(): void {
         if (this.searchInputEl) {
             this.searchInputEl.nativeElement.focus();
         }
     }
 
-    public scrollToTop() {
+    public scrollToTop(): void {
         if (this.listContainerEl) {
             this.listContainerEl.nativeElement.scrollTop = 0;
         }
     }
 
-    public onSearchKeyup() {
+    public onSearchKeyup(): void {
         this.selectNone();
         this.searchTermStream.next(this.searchTerm);
     }
 
-    public onItemClicked<T extends SelectListOption>(event: MouseEvent, index: number, list: FilterableSelectList<T>, item: T) {
+    public onItemClicked<T extends SelectListOption>(event: MouseEvent, index: number, list: FilterableSelectList<T>, item: T): void {
         this.selectAllWasLastClicked = false;
         event.stopPropagation();
         this.actionService.onItemClicked(event, index, list, item);
     }
 
-    public preventIEHighlightBug() {
+    public preventIEHighlightBug(): void {
         // for IE: https://stackoverflow.com/questions/1527751/disable-text-selection-while-pressing-shift
         (document as any).onselectstart = function() {
             return false;
@@ -142,25 +142,25 @@ export class PicklistPaneComponent {
         }, 0);
     }
 
-    public onValuesetCaretClicked(event: MouseEvent, valueset: ValueSetListOption) {
+    public onValuesetCaretClicked(event: MouseEvent, valueset: ValueSetListOption): void {
         this.selectAllWasLastClicked = false;
         event.stopPropagation();
         this.actionService.onValuesetCaretClicked(event, valueset);
     }
 
-    public triggerLoadMore(type: PicklistValueType) {
+    public triggerLoadMore(type: PicklistValueType): void {
         this.selectAllWasLastClicked = false;
         this.filterService.loadMore(type);
     }
 
-    public onItemDoubleClicked<T extends SelectListOption>(event: MouseEvent, list: FilterableSelectList<T>, item: T) {
+    public onItemDoubleClicked<T extends SelectListOption>(event: MouseEvent, list: FilterableSelectList<T>, item: T): void {
         this.selectAllWasLastClicked = false;
         event.stopPropagation();
         this.actionService.onItemDoubleClicked(event, list, item);
         this.moveSelectedItems.emit(this);
     }
 
-    public selectAll() {
+    public selectAll(): void {
         this.selectAllWasLastClicked = true;
         const shouldLoadMoreBeforeSelectAll = this.valueList.additionalRemoteOptions && this.valueList.options.size < this.selectAllLimit;
         if (this.pagingValueList() && shouldLoadMoreBeforeSelectAll) {
@@ -172,7 +172,7 @@ export class PicklistPaneComponent {
         }
     }
 
-    public selectNone() {
+    public selectNone(): void {
         this.selectAllWasLastClicked = false;
         this.actionService.selectNone();
     }

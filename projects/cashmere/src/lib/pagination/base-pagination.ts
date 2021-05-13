@@ -62,7 +62,7 @@ export class BasePaginationComponent extends Initializable implements OnInit {
     @Output()
     readonly pageSizeChange: EventEmitter<number> = new EventEmitter<number>();
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._markInitialized();
     }
 
@@ -116,11 +116,11 @@ export class BasePaginationComponent extends Initializable implements OnInit {
         return Math.ceil(this._length / this._pageSize);
     }
 
-    get _isFirstPage() {
+    get _isFirstPage(): boolean {
         return this._pageNumber === 1;
     }
 
-    get _isLastPage() {
+    get _isLastPage(): boolean {
         return !!(this.totalPages && this._pageNumber === this.totalPages);
     }
 
@@ -132,7 +132,7 @@ export class BasePaginationComponent extends Initializable implements OnInit {
      * switching so that the page size is 5 will set the third page as the current page so
      * that the 11th item will still be displayed.
      */
-    _changePageSize(pageSize: number) {
+    _changePageSize(pageSize: number): void {
         // Current page needs to be updated to reflect the new page size. Navigate to the page
         // containing the previous page's first item.
         const startIndex = (this.pageNumber - 1) * this.pageSize;
@@ -140,7 +140,7 @@ export class BasePaginationComponent extends Initializable implements OnInit {
         this.pageNumber = Math.ceil(startIndex / pageSize) + 1;
     }
 
-    _pageSizeUpdated() {}
+    _pageSizeUpdated(): void {}
 
     private _sanitizePageNumber(pageNumber: number): number {
         const positivePageNumber = Math.max(pageNumber, 1);

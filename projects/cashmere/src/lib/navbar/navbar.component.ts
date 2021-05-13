@@ -73,7 +73,7 @@ export class NavbarComponent implements OnDestroy {
 
     /** Runs the initial calculation of navlink widths after the page has fully rendered */
     @HostListener('window:load')
-    _setupNavLinks() {
+    _setupNavLinks(): void {
         this.refreshNavLinks();
 
         // If links are added dynamically, recheck the navbar link sizing
@@ -83,7 +83,7 @@ export class NavbarComponent implements OnDestroy {
     /** Forces a recalculation of the navbar links to determine how many should be rolling into a More menu.
      * Call this if you've updated the contents of any navbar links. */
     @HostListener('window:resize')
-    refreshNavLinks() {
+    refreshNavLinks(): void {
         if (this._navbarMore) {
             this._navbarMore.closePopover();
         }
@@ -152,12 +152,12 @@ export class NavbarComponent implements OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
     }
 
-    _toggleMobileMenu() {
+    _toggleMobileMenu(): void {
         if (this._menuOpen) {
             this._mobileMenu.first.hide();
             this._menuOpen = false;
@@ -167,7 +167,7 @@ export class NavbarComponent implements OnDestroy {
         }
     }
 
-    _menuClick(event: any) {
+    _menuClick(event): void {
         const clickTarget: string = event.target.outerHTML;
 
         // Verify that the click in the mobile menu came from a navigation item
@@ -180,7 +180,7 @@ export class NavbarComponent implements OnDestroy {
         return this._menuOpen ? 'fa-times' : 'fa-bars';
     }
 
-    _moreClick() {
+    _moreClick(): void {
         if (this._navbarMore) {
             this._navbarMore.closePopover();
         }

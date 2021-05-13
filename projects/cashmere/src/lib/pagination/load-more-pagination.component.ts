@@ -30,7 +30,7 @@ export class LoadMorePaginationComponent extends BasePaginationComponent impleme
     }
     private _style = 'secondary';
 
-    _loadNextPage() {
+    _loadNextPage(): void {
         if (this._isLastPage) {
             return;
         }
