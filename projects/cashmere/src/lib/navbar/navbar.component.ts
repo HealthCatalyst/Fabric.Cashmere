@@ -42,7 +42,7 @@ export class NavbarComponent implements OnDestroy {
 
     /** Router link triggered when home icon is clicked */
     @Input()
-    homeUri: any[] | string = '';
+    homeUri: unknown[] | string = '';
 
     /** Fixes the position of navbar to the top of the page. *Default is false.* */
     @Input()

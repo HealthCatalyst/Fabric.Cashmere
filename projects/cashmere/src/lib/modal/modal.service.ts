@@ -15,7 +15,7 @@ import {
 import {ModalOptions, ModalSize} from './modal-options';
 import {ActiveModal} from './active-modal';
 
-export type ModalContentType = Type<{}> | TemplateRef<any>;
+export type ModalContentType = Type<unknown> | TemplateRef<unknown>;
 
 @Injectable()
 export class ModalService {
@@ -127,7 +127,7 @@ export class ModalService {
         container.appendChild(window.location.nativeElement);
         modal.window = window;
 
-        activeModalRef.close = (result: any) => {
+        activeModalRef.close = (result: unknown) => {
             modal.close(result);
         };
 

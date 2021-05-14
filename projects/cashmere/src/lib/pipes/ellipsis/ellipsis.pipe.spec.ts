@@ -10,7 +10,7 @@ describe('EllipsisPipe.transform', () => {
     describe('in character mode', () => {
         it('should truncate a string longer than the length', () => {
             // act
-            const result: any = pipe.transform('A long string', 4);
+            const result: unknown = pipe.transform('A long string', 4);
 
             // assert
             expect(result).toBe('A lo…');
@@ -21,7 +21,7 @@ describe('EllipsisPipe.transform', () => {
             const testString = 'A long string';
 
             // act
-            const result: any = pipe.transform(testString, 100);
+            const result: unknown = pipe.transform(testString, 100);
 
             // assert
             expect(result).toBe(testString);
@@ -31,7 +31,7 @@ describe('EllipsisPipe.transform', () => {
     describe('in word mode', () => {
         it('should truncate a string longer than the specified number of words', () => {
             // act
-            const result: any = pipe.transform('A long string', 2, 'words');
+            const result: unknown = pipe.transform('A long string', 2, 'words');
 
             // assert
             expect(result).toBe('A long…');
@@ -42,7 +42,7 @@ describe('EllipsisPipe.transform', () => {
             const testString = 'A long string';
 
             // act
-            const result: any = pipe.transform(testString, 5, 'words');
+            const result: unknown = pipe.transform(testString, 5, 'words');
 
             // assert
             expect(result).toBe(testString);
@@ -50,7 +50,7 @@ describe('EllipsisPipe.transform', () => {
 
         it('should respect all whitespace from the original value when truncating', () => {
             // act
-            const result: any = pipe.transform('A  \r\n   long string', 2, 'words');
+            const result: unknown = pipe.transform('A  \r\n   long string', 2, 'words');
 
             // assert
             expect(result).toBe('A  \r\n   long…');
@@ -58,11 +58,11 @@ describe('EllipsisPipe.transform', () => {
     });
 
     describe('when the input value is not a string', () => {
-        const nonStringValues: any[] = [null, undefined, 12, false, {}, []];
+        const nonStringValues: any = [null, undefined, 12, false, {}, []];
         nonStringValues.forEach(value => {
             describe(`(${value})`, () => {
                 it('should return the input', () => {
-                    const result: any = pipe.transform(value, 10);
+                    const result: unknown = pipe.transform(value, 10);
                     expect(result).toBe(value);
                 });
             });
@@ -75,7 +75,7 @@ describe('EllipsisPipe.transform', () => {
             describe(`(${length})`, () => {
                 it('should return the input value', () => {
                     const value = 'lorem ipsum';
-                    const result: any = pipe.transform(value, length);
+                    const result: unknown = pipe.transform(value, length);
                     expect(result).toBe(value);
                 });
             });

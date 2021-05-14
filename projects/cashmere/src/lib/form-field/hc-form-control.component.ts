@@ -1,4 +1,3 @@
-import { parseBooleanAttribute } from '../util';
 
 /** Wrapper component that textual form controls extend to work with hc-form-field */
 export abstract class HcFormControlComponent {
@@ -10,7 +9,7 @@ export abstract class HcFormControlComponent {
 
     /** An object that represents the Angular validation errors that are present on the form */
     _errors: {
-        [key: string]: any;
+        [key: string]: unknown;
     } = {};
 
     /** Whether the control is disabled */

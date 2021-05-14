@@ -1,6 +1,5 @@
 import {
     Component,
-    OnInit,
     ViewEncapsulation,
     ChangeDetectionStrategy,
     AfterContentInit,
@@ -129,12 +128,12 @@ export class YearViewComponent implements AfterContentInit {
         this._activeDate = this._dateAdapter.today();
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._init();
     }
 
     /** Handles when a new month is selected. */
-    _monthSelected(month: number) {
+    _monthSelected(month: number): void {
         const normalizedDate = this._dateAdapter.createDate(this._dateAdapter.getYear(this.activeDate), month, 1);
 
         this.monthSelected.emit(normalizedDate);
@@ -203,7 +202,7 @@ export class YearViewComponent implements AfterContentInit {
     }
 
     /** Initializes this year view. */
-    _init() {
+    _init(): void {
         this._selectedMonth = this._getMonthInCurrentYear(this.selected);
         this._todayMonth = this._getMonthInCurrentYear(this._dateAdapter.today());
         this._yearLabel = this._dateAdapter.getYearName(this.activeDate);
@@ -219,7 +218,7 @@ export class YearViewComponent implements AfterContentInit {
     }
 
     /** Focuses the active cell after the microtask queue is empty. */
-    _focusActiveCell() {
+    _focusActiveCell(): void {
         this._hcCalendarBody._focusActiveCell();
     }
 

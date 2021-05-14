@@ -140,7 +140,9 @@ export class BasePaginationComponent extends Initializable implements OnInit {
         this.pageNumber = Math.ceil(startIndex / pageSize) + 1;
     }
 
-    _pageSizeUpdated(): void {}
+    _pageSizeUpdated(): void {
+        // do nothing.
+    }
 
     private _sanitizePageNumber(pageNumber: number): number {
         const positivePageNumber = Math.max(pageNumber, 1);
