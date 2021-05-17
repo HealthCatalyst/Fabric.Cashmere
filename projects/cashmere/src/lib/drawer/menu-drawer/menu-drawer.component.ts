@@ -16,7 +16,7 @@ import {DrawerToolbar} from './drawer-header.directive';
 
 const drawerThemes = ['dark-theme'];
 
-export function validateMenuDrawerTheme(menuTheme) {
+export function validateMenuDrawerTheme(menuTheme: string): void {
     if (!drawerThemes.some(theme => theme === menuTheme)) {
         throw new Error('Unsupported menuTheme: ' + menuTheme);
     }
@@ -98,7 +98,7 @@ export class MenuDrawer extends Drawer implements AfterContentInit {
         this.menuTheme = 'dark-theme';
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         super.ngAfterContentInit();
 
         if (this.toolbar != null) {

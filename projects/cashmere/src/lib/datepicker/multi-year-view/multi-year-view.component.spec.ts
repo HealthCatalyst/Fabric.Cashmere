@@ -43,7 +43,7 @@ describe('HcMultiYearView', () => {
         });
 
         it('has correct number of years', () => {
-            const cellEls = multiYearViewNativeElement.querySelectorAll('.hc-calendar-body-cell')!;
+            const cellEls = multiYearViewNativeElement.querySelectorAll('.hc-calendar-body-cell');
             expect(cellEls.length).toBe(yearsPerPage);
         });
 

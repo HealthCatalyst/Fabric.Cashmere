@@ -45,7 +45,7 @@ export class PaginationComponent extends BasePaginationComponent implements OnIn
     }
     private _hidePageSize = false;
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._updateDisplayedPageSizeOptions();
         super.ngOnInit();
     }
@@ -126,23 +126,24 @@ export class PaginationComponent extends BasePaginationComponent implements OnIn
         }
     }
 
-    _pageSizeUpdated() {
+    _pageSizeUpdated(): void {
         this._updateDisplayedPageSizeOptions();
         this._pageSizeControl.setValue( this.pageSize );
     }
 
-    _previousPage() {
+    _previousPage(): void {
         if (this._isFirstPage) {
             return;
         }
         this._goToPage((this.pageNumber || 1) - 1);
     }
 
-    _goToPage(pageNum: number) {
+    _goToPage(pageNum: number): number {
         this.pageNumber = pageNum;
+        return this.pageNumber;
     }
 
-    _nextPage() {
+    _nextPage(): void {
         if (this._isLastPage) {
             return;
         }
@@ -157,7 +158,7 @@ export class PaginationComponent extends BasePaginationComponent implements OnIn
      * switching so that the page size is 5 will set the third page as the current page so
      * that the 11th item will still be displayed.
      */
-    _changePageSize(pageSize: number) {
+    _changePageSize(pageSize: number): void {
         // Current page needs to be updated to reflect the new page size. Navigate to the page
         // containing the previous page's first item.
         const startIndex = (this.pageNumber - 1) * this.pageSize + 1;

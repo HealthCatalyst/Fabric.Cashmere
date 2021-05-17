@@ -6,7 +6,9 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 describe('DrawerComponent', () => {
     let component: Drawer;
     let fixture: ComponentFixture<Drawer>;
-    const el: ElementRef = new ElementRef({focus() {}});
+    const el: ElementRef = new ElementRef({focus() {
+        // do nothing.
+    }});
 
     beforeEach(async done => {
         await TestBed.configureTestingModule({
@@ -61,7 +63,7 @@ describe('DrawerComponent', () => {
             it('should be the set value', () => expect(component.opened).toBe(true));
         });
         describe('when setting to invalid value', () => {
-            const setInvalid = () => (component.opened = ('someInvalidValue' as any) as boolean);
+            const setInvalid = () => (component.opened = ('someInvalidValue' as unknown) as boolean);
             it('should throw an error', () => expect(setInvalid).toThrowError());
         });
     });

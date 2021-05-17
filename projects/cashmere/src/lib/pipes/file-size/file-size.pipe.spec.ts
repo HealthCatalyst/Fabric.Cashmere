@@ -74,6 +74,7 @@ describe('FileSizePipe.transform', () => {
 
     describe('when provided an invalid precision value', () => {
         const invalidPrecisionValues: any[] = [null, undefined, 'test', false, -12, Math.PI, [], {}];
+        // string[] | null[] | undefined[] | boolean[] | number[] | {} | []
         invalidPrecisionValues.forEach(precision => {
             describe(`(${precision})`, () => {
                 it(`should use a precision of 2`, () => {

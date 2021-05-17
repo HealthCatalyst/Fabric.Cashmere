@@ -43,7 +43,7 @@ describe('HcYearView', () => {
         });
 
         it('has 12 months', () => {
-            const cellEls = yearViewNativeElement.querySelectorAll('.hc-calendar-body-cell')!;
+            const cellEls = yearViewNativeElement.querySelectorAll('.hc-calendar-body-cell');
             expect(cellEls.length).toBe(12);
         });
 

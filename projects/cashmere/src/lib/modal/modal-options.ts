@@ -4,7 +4,7 @@ export interface ModalOptions {
      * Options are: `auto`, `sm`, `md`, `lg`, and `xl`.*/
     size?: ModalSize;
     /** Optional. Specify data that will be available on the active modal context. */
-    data?: any;
+    data?: unknown;
     /** Optional. Specify a different HTML element to append the modal overlay and modal window.
      * If not specified the modal elements will be added to the body. */
     container?: HTMLElement;

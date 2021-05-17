@@ -47,7 +47,7 @@ export class ModalWindowComponent {
     }
 
     @HostListener('mousedown', ['$event'])
-    _overlayClick(event: any) {
+    _overlayClick(event: unknown): void {
         let modalContentNotPresent = true;
         const path = this._eventPath(event);
         const modalWindowTargetIncluded = path.findIndex(p => p === this.el.nativeElement) > -1;
@@ -73,7 +73,7 @@ export class ModalWindowComponent {
     }
 
     // Serves as a polyfill for Event.composedPath() or Event.Path
-    _eventPath(evt: any) {
+    _eventPath(evt: any): typeof globalThis[] {
         const path = (evt.composedPath && evt.composedPath()) || evt.path,
             target = evt.target;
 

@@ -121,10 +121,10 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
 
     /** Object or value that can be passed into the popover to customize its content */
     @Input()
-    get context() {
+    get context(): unknown {
         return this._anchoring._context;
     }
-    set context(val: any) {
+    set context(val: unknown) {
         this._anchoring._context = val;
     }
 
@@ -159,7 +159,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     @Output() popoverOpened = new EventEmitter<void>();
 
     /** Emits when the popover is closed. */
-    @Output() popoverClosed = new EventEmitter<any>();
+    @Output() popoverClosed = new EventEmitter<unknown>();
 
     /** Instance of notification service. Will be undefined until attached to a popover. */
     _notifications: PopoverNotificationService;
@@ -313,7 +313,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     }
 
     /** Closes the popover. */
-    closePopover(value?: any, neighborSubMenusAreOpen = false): void {
+    closePopover(value?: unknown, neighborSubMenusAreOpen = false): void {
         clearTimeout(this.hoverInterval);
         this._anchoring.closePopover(value, neighborSubMenusAreOpen);
     }

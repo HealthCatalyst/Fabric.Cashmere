@@ -40,12 +40,12 @@ export class ModalOverlayComponent {
     constructor(private activeModal: ActiveModal) {}
 
     @HostBinding('@fadeInOut')
-    _fadeInOut() {
+    _fadeInOut(): string | unknown {
         return state;
     }
 
     @HostListener('document:keyup.escape', ['$event'])
-    _escapeKey(event: any) {
+    _escapeKey(): void {
         if (!this._ignoreEscapeKey) {
             this.activeModal.dismiss();
         }

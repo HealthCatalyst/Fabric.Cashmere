@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges, SimpleChanges, TemplateRef } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, TemplateRef } from '@angular/core';
 import { escapeHTML } from '../util';
 
 /** @docs-private */

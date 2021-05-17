@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, ElementRef, HostBinding, Input, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, Input, ViewEncapsulation} from '@angular/core';
 
 /** Primary navigation links */
 @Component({
@@ -30,18 +30,18 @@ export class NavbarLinkComponent {
     constructor(private el: ElementRef, private ref: ChangeDetectorRef) {}
 
     /** Disable visibility of component from view */
-    hide() {
+    hide(): void {
         this._hidden = true;
         this.ref.detectChanges();
     }
 
     /** Enable visibility of component from view */
-    show() {
+    show(): void {
         this._hidden = false;
         this.ref.detectChanges();
     }
 
-    _getWidth() {
+    _getWidth(): number {
         return this.el.nativeElement.scrollWidth;
     }
 }

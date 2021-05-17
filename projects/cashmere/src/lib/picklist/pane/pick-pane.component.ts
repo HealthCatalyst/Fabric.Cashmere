@@ -68,7 +68,7 @@ export class PickPaneComponent implements OnChanges {
     @Input() escapeHTML = true;
     @Input() get items() { return this._items; }
     set items(value: any[]) { this._items = value; }
-    @Input() get compareWith() { return this._compareWith; }
+    @Input() get compareWith(): CompareWithFn { return this._compareWith; }
     set compareWith(fn: CompareWithFn) {
         if (isDefined(fn) && !isFunction(fn)) { throw Error('`compareWith` must be a function.'); }
         this._compareWith = fn;
@@ -109,7 +109,7 @@ export class PickPaneComponent implements OnChanges {
     /** true if the item list has focus.
      * using this property and adding a css class works more smoothly than relying on :focus psuedo selector */
     _paneHasFocus = false;
-    public get disabled() { return this.readonly || this._disabled; }
+    public get disabled(): boolean { return this.readonly || this._disabled; }
     public get externalOptionCountStr(): string | null {
         return Number.isFinite(this.externalTotalOptionCount) ? this.externalTotalOptionCount.toLocaleString() : null; }
     public get _companionPane(): PickPaneComponent {
@@ -137,10 +137,10 @@ export class PickPaneComponent implements OnChanges {
     }
 
     get selectedItems(): PickOption[] { return this.itemsList.selectedItems; }
-    get selectedValues() { return this.selectedItems.map(x => x.value); }
-    get hasSelectedItems() { return this.selectedItems.length > 0; }
+    get selectedValues(): string | object | undefined { return this.selectedItems.map(x => x.value); }
+    get hasSelectedItems(): boolean { return this.selectedItems.length > 0; }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         if (changes.items) {
             this._setItems(changes.items.currentValue || []);
             this.picklistService.mapIncomingOptionsToSelected(this.bindValue);
@@ -150,7 +150,7 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Called when a key is pressed in the search input box */
-    onSearchKeydown($event: KeyboardEvent) {
+    onSearchKeydown($event: KeyboardEvent): void {
         if ($event.which === KeyCode.ArrowDown || $event.which === KeyCode.Enter) {
             $event.preventDefault();
             if (this.addCustomOptionIsMarked) {
@@ -162,7 +162,7 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Called when a key is pressed while the list has focus */
-    onPanelKeydown($event: KeyboardEvent) {
+    onPanelKeydown($event: KeyboardEvent): void {
         switch ($event.which) {
             case KeyCode.ArrowDown:
                 this._handlePanelArrowKeyPress($event, true);
@@ -185,7 +185,7 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Place focus on the list pane */
-    panelFocus() {
+    panelFocus(): void {
         this.dropdownPanel._panel.focus();
         if (!this.hasSelectedItems) {
             this._jumpFocusToFirstItem();
@@ -193,7 +193,7 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Remove focus from the list pane */
-    panelBlur() {
+    panelBlur(): void {
         this.dropdownPanel._panel.blur();
     }
 
@@ -227,13 +227,13 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Remove highlight from all items in the list */
-    deselectAll() {
+    deselectAll(): void {
         this.itemsList.resetListSelectionState();
         this._cd.detectChanges();
     }
 
     /** Highlight all items in the list */
-    selectAll() {
+    selectAll(): void {
         this.itemsList.selectAll();
         this._cd.detectChanges();
     }
@@ -243,7 +243,7 @@ export class PickPaneComponent implements OnChanges {
      * Ctrl + click adds to current selection
      * Regular click clears current selection and selects anew
      */
-    onItemClick($event: MouseEvent, item: PickOption) {
+    onItemClick($event: MouseEvent, item: PickOption): void {
         if (!item) { return; }
         const lastMarkedIndex = this.itemsList.markedIndex;
         if (!$event.ctrlKey) { this.itemsList.clearSelected(); }
@@ -270,26 +270,26 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Selects items as needed, and moves options to the companion pane */
-    onItemDoubledClicked($event: MouseEvent, item: PickOption) {
+    onItemDoubledClicked($event: MouseEvent, item: PickOption): void {
         if (!$event.shiftKey) { this.itemsList.clearSelected(); }
         this.select(item);
         this.triggerMove.emit();
     }
 
     /** If not already selected, selects a given item if that option or the entire pane are not disabled */
-    select(item: PickOption) {
+    select(item: PickOption): void {
         if (!item || item.disabled || this.disabled || item.selected) { return; }
         this.itemsList.select(item);
     }
 
     /** If not already unselected, unselects a given item if that option or the entire pane are not disabled */
-    unselect(item: PickOption) {
+    unselect(item: PickOption): void {
         if (!item || item.disabled || this.disabled || !item.selected) { return; }
         this.itemsList.unselect(item);
     }
 
     /** Place focus in the searchbar, or the list if searchbar is not available */
-    focus() {
+    focus(): void {
         if (this.hasSearch) {
             this.searchInput.nativeElement.focus();
         } else {
@@ -298,13 +298,13 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Remove focus from searchbar and list */
-    blur() {
+    blur(): void {
         this.searchInput.nativeElement.blur();
         this.panelBlur();
     }
 
     /** Create as custom item from a search term that didn't match available options from either pane */
-    addAndSelectCustomOption() {
+    addAndSelectCustomOption(): void {
         let customItem: any;
         const hasAddCustomItemFunc = isFunction(this.addCustomItem);
         if (hasAddCustomItemFunc) {
@@ -325,7 +325,7 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Convert the given custom item into an HcOption, add it to the list, and then highlight it */
-    _selectNewCustomOption(customItem: any) {
+    _selectNewCustomOption(customItem: any): void {
         const newOption = this.itemsList.addNewOption(customItem);
         this.itemsList.resetFilteredItemsForCustomOptionAdded(this._isUsingSearchSubject, this.searchTerm);
         this.itemsList.markItem(newOption);
@@ -333,13 +333,13 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Used in the ngFor of the list to maximize DOM reusage */
-    trackByOption = (_: number, item: PickOption) => {
+    trackByOption = (_: number, item: PickOption): PickOption => {
         if (this.trackByFn) { return this.trackByFn(item.value); }
         return item;
     };
 
     /** If true, the "add custom" option should be displayed */
-    get showAddCustomOption() {
+    get showAddCustomOption(): boolean | AddCustomItemFn | undefined {
         if (!this._validTerm) { return false; }
         const term = this.searchTerm.toLowerCase().trim();
         return this.addCustomItem &&
@@ -349,12 +349,12 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** If true, the "add custom" option currently has focus */
-    get addCustomOptionIsMarked() {
+    get addCustomOptionIsMarked(): boolean | undefined {
         return this.showAddCustomOption && !this.itemsList.markedItem;
     }
 
     /** If true, the empty pane message should be displayed */
-    get showNoItemsFound() {
+    get showNoItemsFound(): boolean | string {
         const empty = this.itemsList.filteredItems.length === 0;
         return ((empty && !this._isUsingSearchSubject && !this.loading) ||
             (empty && this._isUsingSearchSubject && this._validTerm && !this.loading)) &&
@@ -362,19 +362,19 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Called when user begins typing in the searchbox */
-    _onCompositionStart() {
+    _onCompositionStart(): void {
         this._isComposing = true;
     }
 
     /** Called when user finsihes typing in the searchbox */
-    _onCompositionEnd(term: string) {
+    _onCompositionEnd(term: string): void {
         this._isComposing = false;
         if (this.searchWhileComposing) { return; }
         this.filter(term);
     }
 
     /** Search the items in the list */
-    filter(term: string = this.searchTerm) {
+    filter(term: string = this.searchTerm): void {
         if (this._isComposing && !this.searchWhileComposing) { return; }
 
         if (this._isUsingSearchSubject && !term || this.searchTerm === term) { this.itemsList.resetFilteredItems(); }
@@ -392,19 +392,19 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Force change detection to refresh the UI */
-    detectChanges() {
+    detectChanges(): void {
         if (!(<any>this._cd).destroyed) {
             this._cd.detectChanges();
         }
     }
 
     /** Refreshes the dimensions of the virtual scroll container and the items displayed within */
-    refreshScrollArea() {
+    refreshScrollArea(): void {
         this.dropdownPanel.refreshListLayout(true);
     }
 
     /** Creates HcOptions according to the configured options, sets them on this list, and selects the first option. */
-    _setItems(items: any[]) {
+    _setItems(items: any[]): void {
         const firstItem = items[0];
         this.bindLabel = this.bindLabel || this._defaultLabel;
         this._primitive = isDefined(firstItem) ? !isObject(firstItem) : this._primitive || this.bindLabel === this._defaultLabel;
@@ -417,7 +417,7 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Clear out search term if any and refresh the list */
-    clearSearch() {
+    clearSearch(): void {
         if (!this.searchTerm) { return; }
         this._changeSearch("");
         this.itemsList.resetFilteredItems();
