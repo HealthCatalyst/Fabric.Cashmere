@@ -27,3 +27,7 @@
 .hc-modal-xl {
     @include hc-modal-xl();
 }
+
+.hc-modal-resizable {
+    @include hc-modal-resizable();
+} 

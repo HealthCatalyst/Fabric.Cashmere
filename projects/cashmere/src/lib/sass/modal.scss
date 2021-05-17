@@ -110,6 +110,7 @@ $modal-border: 1px solid $gray-200;
 
 @mixin hc-modal-body() {
     overflow: auto;
+    height: inherit;
     padding: $modal-padding;
     margin-bottom: $stacked-footer-height;
 
@@ -179,7 +180,7 @@ $modal-border: 1px solid $gray-200;
 
     @include media-breakpoint-up(md) {
         border-radius: 6px;
-        height: auto;
+        // height: auto;
     }
 }
 
@@ -197,3 +198,10 @@ $modal-border: 1px solid $gray-200;
         justify-content: center;
     }
 }
+
+@mixin hc-modal-resizable {
+    resize: both;
+    overflow: hidden;
+    width: inherit;
+    height: inherit;
+} 

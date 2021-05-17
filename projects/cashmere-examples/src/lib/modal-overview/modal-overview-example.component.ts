@@ -29,7 +29,9 @@ export class ModalOverviewExampleComponent {
 
     openTemplate(content: TemplateRef<any>) {
         let options: ModalOptions = {
-            data: 'I got this data from the class that opened me (Template version)'
+            data: 'I got this data from the class that opened me (Template version)',
+            ignoreOverlayClick: true,
+            isResizable: true
         };
         this.modalService.open(content, options);
     }
