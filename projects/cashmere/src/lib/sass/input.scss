@@ -1,4 +1,5 @@
 @import './colors';
+@import './mixins';
 @import './form-field';
 
 @mixin hc-input() {
@@ -37,6 +38,11 @@
 
     &::-ms-input-placeholder {
         color: $slate-gray-300;
+    }
+
+    //Change input font size for mobile users
+    @include media-breakpoint-down(md) {
+        font-size: 16px;
     }
 }
 
