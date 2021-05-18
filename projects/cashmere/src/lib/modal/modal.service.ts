@@ -125,7 +125,7 @@ export class ModalService {
         window.instance._ignoreOverlayClick = options.ignoreOverlayClick;
         window.instance._isDraggable = options.isDraggable;
 
-        //Gives the child hc-modal component a new class of 'hc-modal-resizable' when the isResizable property is set to true
+        // Gives the child hc-modal component a new class of 'hc-modal-resizable' when the isResizable property is set to true
         if (modal.isResizable) {
             let hcmodal = (window.location.nativeElement as HTMLElement).getElementsByTagName('hc-modal');
             hcmodal[0].setAttribute('class', 'hc-modal-resizable');
