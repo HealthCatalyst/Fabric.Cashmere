@@ -8,6 +8,10 @@
     @include hc-modal();
 }
 
+.fullScreen-disable {
+    @include fullScreen-disable();
+}
+
 .hc-modal-auto {
     @include hc-modal-auto();
 }

@@ -57,7 +57,8 @@ export class ModalService {
             ignoreEscapeKey: false,
             size: 'auto',
             ignoreOverlayClick: false,
-            isDraggable: false
+            isDraggable: false,
+            disableFullScreen: false
         };
         const options = {...defaultOptions, ...modalOptions};
         if (options.container) {
@@ -122,6 +123,13 @@ export class ModalService {
         window.instance._size = options.size as ModalSize;
         window.instance._ignoreOverlayClick = options.ignoreOverlayClick;
         window.instance._isDraggable = options.isDraggable;
+        window.instance._disableFullScreen = options.disableFullScreen;
+
+        // Disable the ability for the modal-footer to display in fullscreen on mobile
+        if(options.disableFullScreen) {
+            let hcmodalfooter = (window.location.nativeElement as HTMLElement).getElementsByTagName('hc-modal-footer')[0];
+            hcmodalfooter.setAttribute('class', 'footer-fs-disable');
+        }
 
         this._applicationRef.attachView(window.hostView);
         container.appendChild(window.location.nativeElement);

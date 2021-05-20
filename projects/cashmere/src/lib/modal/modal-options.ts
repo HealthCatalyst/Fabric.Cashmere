@@ -14,4 +14,6 @@ export interface ModalOptions {
     ignoreEscapeKey?: boolean;
     /** Defaults to false. When set to true, a drag handle is added to the top-right corner which can be used to reposition the modal. */
     isDraggable?: boolean;
+    /** Defaults to false. When set to true, the modal will no longer display in full-screen for mobile devices. */
+    disableFullScreen?: boolean;
 }

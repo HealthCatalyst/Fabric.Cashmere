@@ -24,6 +24,10 @@
     }
 }
 
+.footer-fs-disable {
+    @include footer-fs-disable();
+}
+
 .hc-modal-content {
     @include hc-modal-content();
 }
