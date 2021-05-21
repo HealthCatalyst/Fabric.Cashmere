@@ -8,10 +8,6 @@
     @include hc-modal();
 }
 
-.fullScreen-disable {
-    @include fullScreen-disable();
-}
-
 .hc-modal-auto {
     @include hc-modal-auto();
 }
@@ -30,4 +26,11 @@
 
 .hc-modal-xl {
     @include hc-modal-xl();
+}
+
+.hc-modal-responsive {
+    // All the modal sizes but 'sm' will be responsive to mobile 
+    &:not(.hc-modal-sm) {
+        @include hc-modal-responsive();
+    }
 }

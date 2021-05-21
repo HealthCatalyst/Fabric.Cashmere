@@ -23,30 +23,58 @@ $modal-border: 1px solid $gray-200;
     flex-direction: column;
     justify-content: center;
     position: relative;
+}
 
-    // Modal becomes full-screen at smaller breakpoints for better UX on mobile devices
-    // Add to class via javascript
+@mixin hc-modal-responsive() {
     @include media-breakpoint-down(md) {
         max-height: 100%;
         height: 100%;
     }
-}
 
-@mixin fullScreen-disable() {
-    @include media-breakpoint-down(md) {
-        max-height: auto;
-        height: auto;
+    &.hc-modal-auto {
+        @include media-breakpoint-down(md) {
+            width: 100%;
+            justify-content: flex-end;
+        }
+    }
+
+    .hc-modal-body {        
+        @include media-breakpoint-down(md) {
+            margin-bottom: $stacked-footer-height;
+        }
+    }
+
+    .hc-modal-footer {
+        @include media-breakpoint-down(md) {
+            position: fixed;
+            flex-direction: column-reverse;
+        }
+        
+        .hc-button {
+            @include media-breakpoint-down(md) {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+    }
+    
+    .hc-modal-content {
+        @include media-breakpoint-down(md) {
+            height: calc(100% - 50px);
+            border-radius: 0;
+        }
+    }
+
+    .hc-modal-center-component {       
+        @include media-breakpoint-down(md) {
+            justify-content: flex-end;
+        }
     }
 }
 
 @mixin hc-modal-auto() {
     width: auto;
     justify-content: center;
-
-    @include media-breakpoint-down(md) {
-        width: 100%;
-        justify-content: flex-end;
-    }
 }
 
 @mixin hc-modal-sm() {
@@ -72,10 +100,6 @@ $modal-border: 1px solid $gray-200;
 
 @mixin hc-modal-md() {
     width: 500px;
-
-    @include media-breakpoint-down(md) {
-        width: 100%;
-    }
 }
 
 @mixin hc-modal-lg() {
@@ -121,10 +145,6 @@ $modal-border: 1px solid $gray-200;
     padding: $modal-padding;
     justify-content: space-between;
     margin-bottom: 0;
-
-    @include media-breakpoint-down(md) {
-        margin-bottom: $stacked-footer-height;
-    }
 }
 
 @mixin hc-modal-close-button() {
@@ -159,29 +179,11 @@ $modal-border: 1px solid $gray-200;
     justify-content: flex-end;
     flex-direction: row;
     position: relative;
-
-    @include media-breakpoint-down(md) {
-        position: fixed;
-        flex-direction: column-reverse;
-    }
-}
-
-@mixin footer-fs-disable() {
-    // Add to class via javascript
-    @include media-breakpoint-down(md) {
-        position: relative;
-        flex-direction: row;
-    }
 }
 
 @mixin hc-modal-button-footer() {
     margin-left: 10px;
     width: auto;
-
-    @include media-breakpoint-down(md) {
-        margin-left: 0;
-        width: 100%;
-    }
 }
 
 @mixin hc-modal-content() {
@@ -192,11 +194,6 @@ $modal-border: 1px solid $gray-200;
     max-height: 100%;
     border-radius: 6px;
     height: auto;
-
-    @include media-breakpoint-down(md) {
-        height: calc(100% - 50px);
-        border-radius: 0;
-    }
 }
 
 @mixin hc-modal-open() {
@@ -209,7 +206,4 @@ $modal-border: 1px solid $gray-200;
     height: 100%;
     justify-content: center;
 
-    @include media-breakpoint-down(md) {
-        justify-content: flex-end;
-    }
 }
