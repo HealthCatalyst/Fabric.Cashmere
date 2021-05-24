@@ -34,7 +34,7 @@ export class PersonaViewerComponent implements OnInit, OnDestroy {
                 this.backText = 'Back to Org Chart';
             } else {
                 this.referrer = '/content/products/' + parsed.queryParamMap.get('referrer');
-                this.backText = 'Back to Product Persona Summary'
+                this.backText = 'Back to Product Persona Summary';
             }
         }
     }
