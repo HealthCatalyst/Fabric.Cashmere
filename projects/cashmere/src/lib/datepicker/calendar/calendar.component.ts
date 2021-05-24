@@ -567,7 +567,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
             let curMin = +this.minutes;
             curMin++;
             if (curMin > 59) {
-                curMin = 1;
+                curMin = 0;
             }
             this.minutes = curMin.toString();
         }
