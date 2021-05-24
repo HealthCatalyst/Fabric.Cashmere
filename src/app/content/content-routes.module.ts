@@ -73,7 +73,6 @@ const routes: Routes = [
                     }
                 ]
             },
-
             {
                 path: '**',
                 redirectTo: 'usage'

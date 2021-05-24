@@ -17,7 +17,7 @@ import {ProductCentricIndexService} from './product-centric-index-service';
         PersonaListComponent,
         PersonaViewerComponent,
         ProductCentricIndexComponent,
-        ProductPersonasViewerComponent,
+        ProductPersonasViewerComponent
     ]
 })
 export class PersonaModule {}
