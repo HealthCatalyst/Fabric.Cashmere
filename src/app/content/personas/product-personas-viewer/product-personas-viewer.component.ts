@@ -14,12 +14,18 @@ export class ProductPersonasViewerComponent implements OnInit, OnDestroy {
     public orgChart = false;
     private unsubscribe = new Subject<void>();
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router, public productCentricIndexService: ProductCentricIndexService) {}
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private router: Router,
+        public productCentricIndexService: ProductCentricIndexService
+    ) {}
 
     ngOnInit() {
         this.activatedRoute.paramMap.pipe(takeUntil(this.unsubscribe)).subscribe(queryParams => {
             const route = queryParams.get('id');
-            const selectedProduct: ProductFile | undefined = this.productCentricIndexService.productPersonasLists.find(productPersonasList => productPersonasList.route === route);
+            const selectedProduct: ProductFile | undefined = this.productCentricIndexService.productPersonasLists.find(
+                productPersonasList => productPersonasList.route === route
+            );
             if (selectedProduct) {
                 this.document = selectedProduct.document;
             }
@@ -27,7 +33,7 @@ export class ProductPersonasViewerComponent implements OnInit, OnDestroy {
 
         const url = this.router.url;
         const parsed = this.router.parseUrl(url);
-        if ( parsed.queryParamMap.get('referrer') ) {
+        if (parsed.queryParamMap.get('referrer')) {
             this.orgChart = true;
         }
     }

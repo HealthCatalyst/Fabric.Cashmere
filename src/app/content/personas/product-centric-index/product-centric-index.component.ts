@@ -21,7 +21,7 @@ export class ProductCentricIndexComponent extends BaseDemoComponent implements O
         private activatedRoute: ActivatedRoute,
         private router: Router,
         sectionService: SectionService,
-        public productCentricIndexService : ProductCentricIndexService
+        public productCentricIndexService: ProductCentricIndexService
     ) {
         super(sectionService);
         this.productLists = productCentricIndexService.productPersonasLists;
