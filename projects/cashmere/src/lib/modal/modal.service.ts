@@ -57,7 +57,8 @@ export class ModalService {
             ignoreEscapeKey: false,
             size: 'auto',
             ignoreOverlayClick: false,
-            isDraggable: false
+            isDraggable: false,
+            disableFullScreen: false
         };
         const options = {...defaultOptions, ...modalOptions};
         if (options.container) {
@@ -122,6 +123,7 @@ export class ModalService {
         window.instance._size = options.size as ModalSize;
         window.instance._ignoreOverlayClick = options.ignoreOverlayClick;
         window.instance._isDraggable = options.isDraggable;
+        window.instance._disableFullScreen = options.disableFullScreen;
 
         this._applicationRef.attachView(window.hostView);
         container.appendChild(window.location.nativeElement);
