@@ -58,7 +58,8 @@ export class ModalService {
             size: 'auto',
             ignoreOverlayClick: false,
             isDraggable: false,
-            isResizable: false
+            isResizable: false,
+            disableFullScreen: false
         };
         const options = {...defaultOptions, ...modalOptions};
         if (options.container) {
@@ -124,6 +125,7 @@ export class ModalService {
         window.instance._size = options.size as ModalSize;
         window.instance._ignoreOverlayClick = options.ignoreOverlayClick;
         window.instance._isDraggable = options.isDraggable;
+        window.instance._disableFullScreen = options.disableFullScreen;
 
         // Gives the child hc-modal component a new class of 'hc-modal-resizable' when the isResizable property is set to true
         if (modal.isResizable) {

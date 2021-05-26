@@ -17,4 +17,6 @@ export interface ModalOptions {
     /** Defaults to false. When set to true, a resize handle is added to the bottom-right corner which can be used to resize the modal. */
     /** Browser support - https://caniuse.com/mdn-css_selectors_-webkit-resizer */
     isResizable?: boolean;
+    /** Defaults to false. When set to true, the modal will no longer display in full-screen for mobile devices. */
+    disableFullScreen?: boolean;
 }

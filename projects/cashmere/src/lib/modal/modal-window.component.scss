@@ -31,3 +31,10 @@
 .hc-modal-resizable {
     @include hc-modal-resizable();
 } 
+
+.hc-modal-responsive {
+    // All the modal sizes but 'sm' will be responsive to mobile 
+    &:not(.hc-modal-sm) {
+        @include hc-modal-responsive();
+    }
+}
