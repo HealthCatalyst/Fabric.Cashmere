@@ -143,6 +143,7 @@ $modal-border: 1px solid $gray-200;
 @mixin hc-modal-body() {
     overflow: auto;
     height: inherit;
+    min-height: 120px;
     padding: $modal-padding;
     justify-content: space-between;
     margin-bottom: 0;
@@ -212,6 +213,6 @@ $modal-border: 1px solid $gray-200;
 @mixin hc-modal-resizable {
     resize: both;
     overflow: hidden;
-    width: inherit;
-    height: inherit;
+    min-height: 300px;
+    min-width: 300px;
 } 

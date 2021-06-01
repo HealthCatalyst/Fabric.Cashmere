@@ -21,7 +21,8 @@ export class ModalOverviewExampleComponent {
             ignoreEscapeKey: true,
             ignoreOverlayClick: true,
             size: 'lg',
-            isDraggable: true
+            isDraggable: true,
+            isResizable: true
         };
         let subModal: HcModal<ModalOverviewExampleModalComponent> = this.modalService.open(ModalOverviewExampleModalComponent, options);
         subModal.result.subscribe(res => (this.result = res));

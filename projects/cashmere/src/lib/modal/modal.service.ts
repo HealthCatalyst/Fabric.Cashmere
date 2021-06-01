@@ -130,7 +130,26 @@ export class ModalService {
         // Gives the child hc-modal component a new class of 'hc-modal-resizable' when the isResizable property is set to true
         if (modal.isResizable) {
             let hcmodal = (window.location.nativeElement as HTMLElement).getElementsByTagName('hc-modal');
-            hcmodal[0].setAttribute('class', 'hc-modal-resizable');
+
+            switch (options.size) {
+                case 'sm':
+                    hcmodal[0].setAttribute('class', 'hc-modal-resizable hc-modal-sm');
+                    break;
+                case 'md':
+                    hcmodal[0].setAttribute('class', 'hc-modal-resizable hc-modal-md');
+                    break;
+                case 'lg':
+                    hcmodal[0].setAttribute('class', 'hc-modal-resizable hc-modal-lg');
+                    break;
+                case 'xl':
+                    hcmodal[0].setAttribute('class', 'hc-modal-resizable hc-modal-xl');
+                    break;
+                case 'auto':
+                    hcmodal[0].setAttribute('class', 'hc-modal-resizable');
+                    break;
+                default:
+                    break;
+            }
         }
 
         this._applicationRef.attachView(window.hostView);
