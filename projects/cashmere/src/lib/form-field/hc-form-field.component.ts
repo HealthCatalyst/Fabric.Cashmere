@@ -24,6 +24,14 @@ export function getControlMissing(): Error {
     return new Error(`HcFormField must contain a component that extends HcFormControl`);
 }
 
+export const supportedSizes = ['normal', 'tight', 'mobile'];
+
+export function validateInputSize(inputSize: string, component: string): void {
+    if (supportedSizes.indexOf(inputSize) < 0) {
+        throw Error('Unsupported fieldStyle attribute value on ' + component + ': ' + inputSize);
+    }
+}
+
 /** Container for form fields that applies Cashmere styling and behavior */
 @Component({
     selector: 'hc-form-field',
@@ -35,6 +43,7 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
     private _inline: boolean = false;
     private _tight: boolean = false;
     private unsubscribe$ = new Subject<void>();
+    private _inputSize: string;
 
     @ContentChild(HcFormControlComponent)
     _control: HcFormControlComponent;
@@ -85,6 +94,20 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
         this._inline = parseBooleanAttribute(isInline);
     }
 
+    /** All inputs font-size will be 14px by default and 16px for mobile view */
+    @Input()
+    get fieldStyle(): string {
+        return this._inputSize;
+    }
+
+    set fieldStyle(fieldStyleSize: string) {
+        validateInputSize(fieldStyleSize, 'HcFormFieldComponent');
+        if ( supportedSizes.indexOf(fieldStyleSize) < 0 ) {
+            fieldStyleSize = "form-field-fieldStyle-" + fieldStyleSize;
+        }
+        this._inputSize = fieldStyleSize;
+    }
+
     /** If true, condense the default padding on all included elements and reduce the font size. *Defaults to `false`.*  */
     @Input()
     get tight(): boolean {
@@ -95,7 +118,9 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
         this._updateTightControls();
     }
 
-    constructor(private _elementRef: ElementRef<HTMLInputElement>) {}
+    constructor(private _elementRef: ElementRef<HTMLInputElement>) {
+        this.fieldStyle = 'normal';
+    }
 
     ngAfterContentInit(): void {
         if (!this._control) {

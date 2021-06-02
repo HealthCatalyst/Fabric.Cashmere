@@ -1,6 +1,7 @@
 @import './colors';
 @import './functions';
 @import './variables';
+@import './mixins';
 
 $line-height: 1.5;
 $label-font-scale: 1;
@@ -38,6 +39,16 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     display: inline-flex;
     width: 100%;
     padding-bottom: inherit;
+}
+
+@mixin hc-form-field-fieldStyle-normal() {
+    font-size: 14px;
+}
+
+@mixin hc-form-field-fieldStyle-mobile() {
+    @include media-breakpoint-down(md) {
+        font-size: 16px;
+    }
 }
 
 @mixin hc-form-field-content-wrapper() {

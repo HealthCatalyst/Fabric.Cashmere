@@ -1,9 +1,9 @@
-<hc-form-field> <hc-label>Total number of items:</hc-label> <input hcInput type="number" [formControl]="totalItemsControl" [value]="totalItemsControl.value"/> </hc-form-field>
-<hc-form-field> <hc-label>Page number:</hc-label> <input hcInput type="number" [formControl]="pageNumberControl" [value]="pageNumberControl.value"/> </hc-form-field>
-<hc-form-field> <hc-label>Page size:</hc-label> <input hcInput type="number" [formControl]="pageSizeControl" [value]="pageSizeControl.value"/> </hc-form-field>
+<hc-form-field> <hc-label>Total number of items:</hc-label> <input hcInput fieldStyle="normal" type="number" [formControl]="totalItemsControl" [value]="totalItemsControl.value"/> </hc-form-field>
+<hc-form-field> <hc-label>Page number:</hc-label> <input hcInput fieldStyle="normal" type="number" [formControl]="pageNumberControl" [value]="pageNumberControl.value"/> </hc-form-field>
+<hc-form-field> <hc-label>Page size:</hc-label> <input hcInput fieldStyle="normal" type="number" [formControl]="pageSizeControl" [value]="pageSizeControl.value"/> </hc-form-field>
 <hc-form-field>
     <hc-label>Display width:</hc-label>
-    <hc-select [formControl]="widthControl">
+    <hc-select selectStyle="normal" [formControl]="widthControl">
         <option value="lg">Large</option>
         <option value="md">Medium</option>
         <option value="sm">Small</option>

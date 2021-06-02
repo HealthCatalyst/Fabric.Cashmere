@@ -7,15 +7,15 @@
 
 <hc-form-field>
     <hc-label>Value:</hc-label>
-    <textarea hcInput [formControl]="value"></textarea>
+    <textarea hcInput fieldStyle="normal" fieldStyle="normal" [formControl]="value"></textarea>
 </hc-form-field>
 <hc-form-field>
     <hc-label>Length:</hc-label>
-    <input hcInput [formControl]="length" type="number" />
+    <input hcInput fieldStyle="normal" [formControl]="length" type="number" />
 </hc-form-field>
 <hc-form-field>
     <hc-label>Mode:</hc-label>
-    <hc-select [formControl]="modeControl">
+    <hc-select selectStyle="normal" [formControl]="modeControl">
         <option value="characters">Characters</option>
         <option value="words">Words</option>
     </hc-select>

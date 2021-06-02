@@ -53,7 +53,7 @@
     height: 28px;
 }
 
-@mixin hc-select-input() {
+@mixin hc-select-input() { //
     @include fontSize(14px);
 
     -webkit-appearance: none;
@@ -95,7 +95,7 @@
     outline: none;
 }
 
-@mixin hc-select-input-tight() {
+@mixin hc-select-input-tight() {//
     @include fontSize(13px);
     height: 28px;
 }
@@ -111,3 +111,14 @@
 @mixin hc-select-input-invalid-focus() {
     box-shadow: 0 0 3px $error;
 }
+
+@mixin hc-select-selectStyle-normal {
+    font-size: 14px;
+}
+
+@mixin hc-select-selectStyle-mobile {
+    @include media-breakpoint-down(md) {
+        font-size: 16px;
+    }
+}
+

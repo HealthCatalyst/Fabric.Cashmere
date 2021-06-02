@@ -2,7 +2,7 @@
     <hc-form-field>
         <input #searchInput
             class="hc-pick-search-input"
-            hcInput
+            hcInput fieldStyle="normal"
             [value]="searchTerm ? searchTerm : ''"
             (input)="filter(searchInput.value)"
             (compositionstart)="_onCompositionStart()"
@@ -79,7 +79,7 @@
 
             <ng-template #defaultOptGroupTemplate>
                 <div class="hc-pick-optgroup-inner">
-                    <span *ngIf="canCloseGroup" class="hc-pick-group-icon" [class.hc-pick-group-icon-open]="!item.isClosed" 
+                    <span *ngIf="canCloseGroup" class="hc-pick-group-icon" [class.hc-pick-group-icon-open]="!item.isClosed"
                         (dblclick)="$event.stopPropagation()"
                         (click)="item.toggleOpenState($event)">
                     </span>
@@ -118,7 +118,7 @@
     <ng-template #defaultFooterTemplate>
         <span>{{itemsList.selectedItems.length?.toLocaleString() || 0}} selected</span>
     </ng-template>
-    
+
     <ng-template
         [ngTemplateOutlet]="footerTemplate || defaultFooterTemplate"
         [ngTemplateOutletContext]="{ itemsList: itemsList, searchTerm: searchTerm }">

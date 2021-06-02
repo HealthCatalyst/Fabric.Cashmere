@@ -8,17 +8,17 @@
 <div class="example-column">
     <hc-form-field class="example-field">
         <hc-label>Header text:</hc-label>
-        <input hcInput [formControl]="toastHeader" />
+        <input hcInput fieldStyle="normal" [formControl]="toastHeader" />
     </hc-form-field>
 
     <hc-form-field class="example-field">
         <hc-label>Body text:</hc-label>
-        <input hcInput [formControl]="toastBody" />
+        <input hcInput fieldStyle="normal" [formControl]="toastBody" />
     </hc-form-field>
 
     <hc-form-field class="example-field">
         <hc-label>Toast type:</hc-label>
-        <hc-select [formControl]="toastType">
+        <hc-select selectStyle="normal" [formControl]="toastType">
             <option value="success">Success</option>
             <option value="info">Info</option>
             <option value="warning">Warning</option>
@@ -32,7 +32,7 @@
 <div class="example-column">
     <hc-form-field class="example-field">
         <hc-label>Toast position:</hc-label>
-        <hc-select [formControl]="toastPosition">
+        <hc-select selectStyle="normal" [formControl]="toastPosition">
             <option value="top-right">Top right</option> <option value="top-center">Top center</option>
             <option value="top-left">Top left</option> <option value="top-full-width">Top full-width</option>
             <option value="bottom-right">Bottom right</option> <option value="bottom-center">Bottom center</option>
@@ -43,12 +43,12 @@
 
     <hc-form-field class="example-field-half right-margin">
         <hc-label>Timeout:</hc-label>
-        <input hcInput type="number" [formControl]="toastTimeout" />
+        <input hcInput fieldStyle="normal" type="number" [formControl]="toastTimeout" />
     </hc-form-field>
 
     <hc-form-field class="example-field-half">
         <hc-label>Toast width:</hc-label>
-        <input hcInput type="number" [formControl]="toastWidth" />
+        <input hcInput fieldStyle="normal" type="number" [formControl]="toastWidth" />
     </hc-form-field>
 
     <hc-form-field class="example-field">
@@ -66,7 +66,7 @@
         </hc-radio-group>
     </hc-form-field>
     <hc-form-field class="progress-input">
-        <input hcInput type="number" [formControl]="progressValue" [disabled]="toastProgress.value!='2'" />
+        <input hcInput fieldStyle="normal" type="number" [formControl]="progressValue" [disabled]="toastProgress.value!='2'" />
     </hc-form-field>
 </div>
 <div class="button-row">

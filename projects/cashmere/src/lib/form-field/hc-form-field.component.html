@@ -2,7 +2,7 @@
     [class.hc-form-field-wrapper-inline]="inline"
     [class.hc-form-field-wrapper]="!inline"
     [class.hc-form-field-no-label]="!hasLabel"
-    [class.hc-form-field-wrapper-tight]="tight" >
+    [class.hc-form-field-wrapper-tight]="tight">
     <span *ngIf="hasLabel" [ngClass]="inline ? 'hc-form-field-label-wrapper-inline' : 'hc-form-field-label-wrapper'" [class.hc-form-field-label-wrapper-tight]="tight">
         <label [ngClass]="inline ? 'hc-form-field-label-inline' : 'hc-form-field-label'" [class.hc-form-field-label-tight]="tight" [attr.for]="_control._componentId">
             <ng-content select="hc-label"></ng-content>
@@ -19,7 +19,8 @@
             [class.hc-form-field-flex-inline]="inline"
             [class.hc-form-field-invalid]="_shouldShowErrorMessages()"
             [class.hc-form-field-flex-focused]="_hasFocusedInput"
-        >
+            >
+
             <div class="hc-form-field-prefix" *ngIf="_prefixChildren.length">
                 <ng-content select="[hcPrefix]"></ng-content>
             </div>

@@ -3,7 +3,7 @@
     <div class="col-1">
         <hc-form-field>
             <hc-label>Color:</hc-label>
-            <hc-select [formControl]="spinnerColor">
+            <hc-select selectStyle="normal" [formControl]="spinnerColor">
                 <option value="blue" [selected]="spinnerColor.value === 'blue'">Blue</option>
                 <option value="green" [selected]="spinnerColor.value === 'green'">Green</option>
                 <option value="purple" [selected]="spinnerColor.value === 'purple'">Purple</option>
@@ -15,7 +15,7 @@
         </hc-form-field>
         <hc-form-field>
             <hc-label>Diameter:</hc-label>
-            <input hcInput type="number" min="20" max="250" class="form-control" id="diameter" [formControl]="spinnerDiameter" name="diameter">
+            <input hcInput fieldStyle="normal" type="number" min="20" max="250" class="form-control" id="diameter" [formControl]="spinnerDiameter" name="diameter">
         </hc-form-field>
         <hc-checkbox id="checkbox-bg" [formControl]="spinnerHasChannel" [checked]="spinnerHasChannel">BG channel</hc-checkbox>
         <hc-checkbox id="checkbox-center" [formControl]="spinnerCentered" [checked]="spinnerCentered">Centered</hc-checkbox>
@@ -23,7 +23,7 @@
         <hc-checkbox id="checkbox-determinate" [formControl]="spinnerIsDeterminate">Determinate</hc-checkbox>
         <hc-form-field inline>
             <hc-label>Progress (0-100%):</hc-label>
-            <input hcInput type="number" min="0" max="100" class="form-control" id="name" [formControl]="spinnerProgress" [disabled]="!spinnerIsDeterminate" name="name">
+            <input hcInput fieldStyle="normal" type="number" min="0" max="100" class="form-control" id="name" [formControl]="spinnerProgress" [disabled]="!spinnerIsDeterminate" name="name">
         </hc-form-field>
     </div>
 

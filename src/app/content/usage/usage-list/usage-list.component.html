@@ -4,11 +4,11 @@
             <div class="usage-table-filters">
                 <hc-form-field class="usage-table-filters-input" inline>
                     <hc-label>Filter:</hc-label>
-                    <input hcInput (keyup)="applyFilter()" [formControl]="searchControl" placeholder="Search" />
+                    <input hcInput fieldStyle="normal" (keyup)="applyFilter()" [formControl]="searchControl" placeholder="Search" />
                 </hc-form-field>
                 <hc-form-field class="usage-table-filters-filter" inline>
                     <hc-label>Category:</hc-label>
-                    <hc-select [formControl]="selectedCategoriesControl" (change)="applyFilter()">
+                    <hc-select selectStyle="normal" [formControl]="selectedCategoriesControl" (change)="applyFilter()">
                         <option *ngFor="let cat of categories" [ngValue]="cat">{{ cat }}</option>
                     </hc-select>
                 </hc-form-field>
@@ -65,26 +65,26 @@
                 <div class="form-container">
                     <hc-form-field>
                         <hc-label for="addTermId">Term to Add/Change</hc-label>
-                        <input hcInput id="addTermId" placeholder="What term would you like to add/change? (required)" name="addTermId" formControlName="addTerm" />
+                        <input hcInput fieldStyle="normal" id="addTermId" placeholder="What term would you like to add/change? (required)" name="addTermId" formControlName="addTerm" />
                         <hc-error *ngIf="showErrors">Please enter a term to add or change.</hc-error>
                     </hc-form-field>
                     <hc-form-field>
                         <hc-label>Definition/Usage Rule</hc-label>
-                        <textarea hcInput id="addDefId" rows="4" cols="50" placeholder="What is the definition/usage rule for this term? (required)" name="addDefId" formControlName="addDef"></textarea>
+                        <textarea hcInput fieldStyle="normal" id="addDefId" rows="4" cols="50" placeholder="What is the definition/usage rule for this term? (required)" name="addDefId" formControlName="addDef"></textarea>
                         <hc-error *ngIf="showErrors">Please enter a definition or usage rule.</hc-error>
                     </hc-form-field>
                     <hc-form-field>
                         <hc-label>Comment (optional)</hc-label>
-                        <textarea hcInput id="CommentId" rows="4" cols="50" placeholder="Why are you suggesting this change? (optional)" name="addCommentId" formControlName="comment"></textarea>
+                        <textarea hcInput fieldStyle="normal" id="CommentId" rows="4" cols="50" placeholder="Why are you suggesting this change? (optional)" name="addCommentId" formControlName="comment"></textarea>
                     </hc-form-field>
                     <hc-form-field>
                         <hc-label>Contributor Name</hc-label>
-                        <input hcInput id="yourNameId" placeholder="What is your name? (required)" name="yourName" formControlName="yourName" />
+                        <input hcInput fieldStyle="normal" id="yourNameId" placeholder="What is your name? (required)" name="yourName" formControlName="yourName" />
                         <hc-error *ngIf="showErrors">Please enter your name.</hc-error>
                     </hc-form-field>
                     <hc-form-field>
                         <hc-label>Contributor Email</hc-label>
-                        <input hcInput id="yourEmailId" placeholder="At what email can we reach you? (required)" name="yourEmail" formControlName="yourEmail" />
+                        <input hcInput fieldStyle="normal" id="yourEmailId" placeholder="At what email can we reach you? (required)" name="yourEmail" formControlName="yourEmail" />
                         <hc-error *ngIf="showErrors">Please enter your email.</hc-error>
                     </hc-form-field>
                 </div>

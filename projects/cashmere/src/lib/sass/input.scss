@@ -38,6 +38,10 @@
     &::-ms-input-placeholder {
         color: $slate-gray-300;
     }
+
+    @include hc-form-field-fieldStyle-normal();
+
+    @include hc-form-field-fieldStyle-mobile();
 }
 
 @mixin hc-textarea() {

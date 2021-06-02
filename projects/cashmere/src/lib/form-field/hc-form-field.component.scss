@@ -2,6 +2,10 @@
 
 .hc-form-field {
     @include hc-form-field();
+
+    @include hc-form-field-fieldStyle-normal();
+
+    @include hc-form-field-fieldStyle-mobile();
 }
 
 .hc-form-field-wrapper {

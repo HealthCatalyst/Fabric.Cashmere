@@ -2,7 +2,7 @@
     <div class="example-date-input">
         <hc-form-field>
             <hc-label>Date:</hc-label>
-            <input hcInput [hcDatepicker]="picker1" [max]="maxStr" [formControl]="dateControl1" placeholder="Select date..." />
+            <input hcInput fieldStyle="normal" [hcDatepicker]="picker1" [max]="maxStr" [formControl]="dateControl1" placeholder="Select date..." />
             <hc-datepicker-toggle hcSuffix [for]="picker1"></hc-datepicker-toggle>
             <hc-datepicker #picker1></hc-datepicker>
             <hc-error>Please enter a valid date</hc-error>
@@ -12,7 +12,7 @@
     <div class="example-date-input">
         <hc-form-field>
             <hc-label>Time:</hc-label>
-            <input hcInput [hcDatepicker]="picker2" [formControl]="dateControl2" placeholder="Select time..." />
+            <input hcInput fieldStyle="normal" [hcDatepicker]="picker2" [formControl]="dateControl2" placeholder="Select time..." />
             <hc-datepicker-toggle hcSuffix [for]="picker2"></hc-datepicker-toggle>
             <hc-datepicker mode="time" [hourCycle]="hourCycle ? 24 : 12" #picker2></hc-datepicker>
             <hc-error>Please enter a valid time</hc-error>
@@ -25,7 +25,7 @@
         <div class="example-date-input">
             <hc-form-field>
                 <hc-label>Date & Time:</hc-label>
-                <input hcInput [hcDatepicker]="picker3" formControlName="dateForm" placeholder="Select date & time..." />
+                <input hcInput fieldStyle="normal" [hcDatepicker]="picker3" formControlName="dateForm" placeholder="Select date & time..." />
                 <hc-datepicker-toggle hcSuffix [for]="picker3"></hc-datepicker-toggle>
                 <hc-datepicker mode="date-time" #picker3></hc-datepicker>
                 <hc-error>Please enter a valid date & time</hc-error>

@@ -2,6 +2,10 @@
 
 .hc-select {
     @include hc-select();
+
+    @include hc-select-selectStyle-normal();
+
+    @include hc-select-selectStyle-mobile();
 }
 
 .hc-select-container {

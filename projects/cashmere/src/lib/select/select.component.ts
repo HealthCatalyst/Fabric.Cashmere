@@ -31,6 +31,14 @@ export function _buildValueString(id: string|null, value: any): string {
     return `${id}: ${value}`.slice(0, 50);
 }
 
+export const supportedSizes = ['normal', 'tight', 'mobile'];
+
+export function validateInputSize(inputSize: string, component: string): void {
+    if (supportedSizes.indexOf(inputSize) < 0) {
+        throw Error('Unsupported fieldStyle attribute value on ' + component + ': ' + inputSize);
+    }
+}
+
 /** Select one of many options from a dropdown */
 @Component({
     selector: 'hc-select',
@@ -46,6 +54,8 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     _optionIdCounter: number = 0; // tracks ids for select options
     _optionMap: Map<string, any> = new Map<string, any>();
     _componentId = this._uniqueInputId; // contains id for the hc-select component
+    private _inputSize: string;
+
 
     @ViewChild('selectInput')
     _nativeSelect: ElementRef;
@@ -109,6 +119,20 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         this._tight = parseBooleanAttribute(value);
     }
 
+    /** All selectors font-size will be 14px by default and 16px for mobile view */
+    @Input()
+    get selectStyle(): string {
+        return this._inputSize;
+    }
+
+    set selectStyle(selectStyleSize: string) {
+        validateInputSize(selectStyleSize, 'SelectComponent');
+        if ( supportedSizes.indexOf(selectStyleSize) < 0 ) {
+            selectStyleSize = "select-selectStyle-" + selectStyleSize;
+        }
+        this._inputSize = selectStyleSize;
+    }
+
     @Output()
     readonly focus: EventEmitter<void> = new EventEmitter<void>();
     @Output()
@@ -155,6 +179,8 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         if (this._ngControl != null) {
             this._ngControl.valueAccessor = this;
         }
+
+        this.selectStyle = 'normal';
     }
 
     private onChange: (val: any) => void = () => {};

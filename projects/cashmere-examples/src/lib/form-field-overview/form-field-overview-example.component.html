@@ -2,7 +2,7 @@
     <div class="form-sample">
         <hc-form-field>
             <hc-label>Job name:</hc-label>
-            <input hcInput required [formControl]="inputControl">
+            <input hcInput fieldStyle="normal" required [formControl]="inputControl">
             <hc-error>A job name is required</hc-error>
         </hc-form-field>
     </div>
@@ -20,7 +20,7 @@
     <div class="form-sample">
         <hc-form-field>
             <hc-label>How long has it been since your last ER or Urgent Care visit at one of our facilities?</hc-label>
-            <hc-select placeholder="Select answer" [formControl]="selectControl">
+            <hc-select selectStyle="normal" placeholder="Select answer" [formControl]="selectControl">
                 <option value="daily">Within the last week</option>
                 <option value="weekly">Within the last month</option>
                 <option value="monthly">Within the last 6 months</option>

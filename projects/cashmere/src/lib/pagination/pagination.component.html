@@ -1,7 +1,7 @@
 <div class="hc-pagination-container">
     <div *ngIf="!hidePageSize" class="hc-font-sm hc-page-detail-container">
         <label class="hc-page-detail-label">Showing:</label>
-        <hc-select class="hc-page-detail-select" [formControl]="_pageSizeControl" (change)="_changePageSize($event.value)" (focus)="isFocused = true" (blur)="isFocused = false">
+        <hc-select selectStyle="normal" class="hc-page-detail-select" [formControl]="_pageSizeControl" (change)="_changePageSize($event.value)" (focus)="isFocused = true" (blur)="isFocused = false">
             <option *ngFor="let pageSizeOption of _displayedPageSizeOptions" [value]="pageSizeOption">
                 {{ isFocused ? pageSizeOption : pageSize === pageSizeOption && pageSizeOption > length ? 'all' : pageSizeOption }}
             </option>
