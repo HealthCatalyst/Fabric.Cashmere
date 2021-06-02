@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import {ModalOptions, ModalSize} from './modal-options';
 import {ActiveModal} from './active-modal';
+import { option } from 'yargs';
 
 export type ModalContentType = Type<{}> | TemplateRef<any>;
 
@@ -128,29 +129,9 @@ export class ModalService {
         window.instance._disableFullScreen = options.disableFullScreen;
 
         // Gives the child hc-modal component a new class of 'hc-modal-resizable' when the isResizable property is set to true
-        if (modal.isResizable) {
-            let hcmodal = (window.location.nativeElement as HTMLElement).getElementsByTagName('hc-modal');
-
-            switch (options.size) {
-                case 'sm':
-                    hcmodal[0].setAttribute('class', 'hc-modal-resizable hc-modal-sm');
-                    break;
-                case 'md':
-                    hcmodal[0].setAttribute('class', 'hc-modal-resizable hc-modal-md');
-                    break;
-                case 'lg':
-                    hcmodal[0].setAttribute('class', 'hc-modal-resizable hc-modal-lg');
-                    break;
-                case 'xl':
-                    hcmodal[0].setAttribute('class', 'hc-modal-resizable hc-modal-xl');
-                    break;
-                case 'auto':
-                    hcmodal[0].setAttribute('class', 'hc-modal-resizable');
-                    break;
-                default:
-                    break;
-            }
-        }
+        let hcmodal = (window.location.nativeElement as HTMLElement).getElementsByTagName('hc-modal');
+        
+        hcmodal[0].setAttribute('class', options.isResizable ? `hc-modal-resizable hc-modal-${options.size}` : `hc-modal-${options.size}`);
 
         this._applicationRef.attachView(window.hostView);
         container.appendChild(window.location.nativeElement);
