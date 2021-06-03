@@ -18,7 +18,7 @@ export class HcModal<T> {
 
     /** Adds a resize handle to the bottom right-hand of the modal and allows the modal to be resized */
     isResizable?: boolean;
-    
+
     /** The modal will disable the full-screen feature on mobile devices when set to true */
     disableFullScreen?: boolean;
 
