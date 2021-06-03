@@ -43,7 +43,7 @@
 
     <hc-form-field inline="true" class="hc-calendar-time-picker-field">
         <input
-            hcInput fieldStyle="normal"
+            hcInput
             class="hc-calendar-time-picker-input"
             placeholder="hh"
             [(ngModel)]="hours"
@@ -62,7 +62,7 @@
 
     <hc-form-field inline="true" class="hc-calendar-time-picker-field">
         <input
-            hcInput fieldStyle="normal"
+            hcInput
             class="hc-calendar-time-picker-input"
             placeholder="mm"
             [(ngModel)]="minutes"
@@ -80,7 +80,7 @@
     </hc-form-field>
 
     <hc-form-field inline="true" *ngIf="_hourCycle === 12" class="hc-calendar-time-picker-field">
-        <hc-select selectStyle="normal" class="hc-calendar-time-picker-select" [formControl]="_period" (change)="_periodChange()">
+        <hc-select  class="hc-calendar-time-picker-select" [formControl]="_period" (change)="_periodChange()">
             <option value="am">AM</option>
             <option value="pm">PM</option>
         </hc-select>

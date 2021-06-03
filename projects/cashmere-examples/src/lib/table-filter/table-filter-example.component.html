@@ -1,6 +1,6 @@
 <hc-form-field>
     <hc-label>Filter:</hc-label>
-    <input hcInput fieldStyle="normal" (keyup)="applyFilter($event.target.value)">
+    <input hcInput  (keyup)="applyFilter($event.target.value)">
 </hc-form-field>
 
 <table hc-table [dataSource]="dataSource" borders="false">

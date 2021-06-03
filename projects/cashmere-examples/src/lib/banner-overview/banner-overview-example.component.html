@@ -21,7 +21,7 @@
 <div class="example-content">
     <hc-form-field>
         <hc-label>Notification banner type:</hc-label>
-        <hc-select selectStyle="normal" [formControl]="_bannerType" (change)="showBanner()">
+        <hc-select [formControl]="_bannerType" (change)="showBanner()">
             <option value="info">Info</option>
             <option value="success">Success</option>
             <option value="warning">Warning</option>

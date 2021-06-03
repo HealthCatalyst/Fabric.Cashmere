@@ -1,6 +1,6 @@
 <form [formGroup]="pizzaToppingForm">
     <hc-form-field>
-        <hc-select selectStyle="normal" formControlName="selectedTopping" [compareWith]="pizzaToppingsComparer">
+        <hc-select  formControlName="selectedTopping" [compareWith]="pizzaToppingsComparer">
             <option *ngFor="let topping of toppings" [ngValue]="topping">{{topping.name}} - {{topping.price}}</option>
         </hc-select>
     </hc-form-field>

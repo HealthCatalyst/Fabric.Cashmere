@@ -3,7 +3,7 @@
     <div class="col-1">
         <hc-form-field>
             <hc-label>Color:</hc-label>
-            <hc-select selectStyle="normal" [formControl]="dotsColor">
+            <hc-select  [formControl]="dotsColor">
                 <option value="dark" [selected]="dotsColor.value === 'dark'">Dark</option>
                 <option value="light" [selected]="dotsColor.value === 'light'">Light</option>
             </hc-select>

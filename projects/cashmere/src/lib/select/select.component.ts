@@ -121,16 +121,17 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
 
     /** All selectors font-size will be 14px by default and 16px for mobile view */
     @Input()
-    get selectStyle(): string {
+    get fieldStyle(): string {
         return this._inputSize;
     }
 
-    set selectStyle(selectStyleSize: string) {
-        validateInputSize(selectStyleSize, 'SelectComponent');
-        if ( supportedSizes.indexOf(selectStyleSize) < 0 ) {
-            selectStyleSize = "select-selectStyle-" + selectStyleSize;
+    set fieldStyle(fieldStyleSize: string) {
+        validateInputSize(fieldStyleSize, 'SelectComponent');
+        if ( supportedSizes.indexOf(fieldStyleSize) < 0 ) {
+            fieldStyleSize = "select-fieldStyle-" + fieldStyleSize;
         }
-        this._inputSize = selectStyleSize;
+        this.setHostClass(this._inputSize, fieldStyleSize);
+        this._inputSize = fieldStyleSize;
     }
 
     @Output()
@@ -166,6 +167,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     private _compareWith: (o1: any, o2: any) => boolean = Object.is;
 
     constructor(
+        public elementRef: ElementRef,
         private _renderer: Renderer2,
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
@@ -180,12 +182,25 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
             this._ngControl.valueAccessor = this;
         }
 
-        this.selectStyle = 'normal';
+        this.fieldStyle = 'normal';
     }
 
     private onChange: (val: any) => void = () => {};
 
     private onTouched: (val: any) => void = () => {};
+
+    private setHostClass(previous: string, current) {
+        if (previous !== current) {
+            if (previous) {
+                this._renderer.removeClass(this.elementRef.nativeElement, this._hcClassify(previous));
+            }
+            this._renderer.addClass(this.elementRef.nativeElement, this._hcClassify(current));
+        }
+    }
+
+    private _hcClassify(style: string): string {
+        return `hc-fieldStyle-${style}`;
+    }
 
     ngAfterViewInit() {
         this._applyValueToNativeControl();

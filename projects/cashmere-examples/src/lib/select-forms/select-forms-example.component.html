@@ -1,5 +1,5 @@
 <form>
-    <hc-select selectStyle="normal" [formControl]="selectControl">
+    <hc-select  [formControl]="selectControl">
         <option *ngFor="let location of locations" [ngValue]="location">{{location.dbaName}}</option>
     </hc-select>
 </form>

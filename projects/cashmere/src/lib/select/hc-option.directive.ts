@@ -39,16 +39,16 @@ export class HcOptionDirective implements OnDestroy {
 
     /** All selectors font-size will be 14px by default and 16px for mobile view */
     @Input()
-    get selectStyle(): string {
+    get fieldStyle(): string {
         return this._inputSize;
     }
 
-    set selectStyle(selectStyleSize: string) {
-        validateInputSize(selectStyleSize, 'HcOptionDirective');
-        if ( supportedSizes.indexOf(selectStyleSize) < 0 ) {
-            selectStyleSize = "select-selectStyle-" + selectStyleSize;
+    set fieldStyle(fieldStyleSize: string) {
+        validateInputSize(fieldStyleSize, 'HcOptionDirective');
+        if ( supportedSizes.indexOf(fieldStyleSize) < 0 ) {
+            fieldStyleSize = "select-selectStyle-" + fieldStyleSize;
         }
-        this._inputSize = selectStyleSize;
+        this._inputSize = fieldStyleSize;
     }
 
     _setElementValue(value: string): void {

@@ -1,8 +1,8 @@
 <div class="hc-select-container" [class.hc-select-tight]="tight">
     <span class="hc-select-chevron"></span>
-    <select selectStyle="normal"
+    <select
         #selectInput
-        class="hc-select-input"
+        class="hc-select-input {{fieldStyle}}"
         [disabled]="disabled"
         (change)="_change($event, selectInput.value)"
         (focus)="focus.next()"

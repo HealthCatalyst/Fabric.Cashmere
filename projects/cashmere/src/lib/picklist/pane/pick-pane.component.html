@@ -2,7 +2,7 @@
     <hc-form-field>
         <input #searchInput
             class="hc-pick-search-input"
-            hcInput fieldStyle="normal"
+            hcInput
             [value]="searchTerm ? searchTerm : ''"
             (input)="filter(searchInput.value)"
             (compositionstart)="_onCompositionStart()"

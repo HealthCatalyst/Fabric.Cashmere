@@ -46,9 +46,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 }
 
 @mixin hc-form-field-fieldStyle-mobile() {
-    @include media-breakpoint-down(md) {
-        font-size: 16px;
-    }
+    font-size: 16px;
 }
 
 @mixin hc-form-field-content-wrapper() {

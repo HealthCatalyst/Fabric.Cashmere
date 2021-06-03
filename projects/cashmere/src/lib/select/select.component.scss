@@ -3,9 +3,13 @@
 .hc-select {
     @include hc-select();
 
-    @include hc-select-selectStyle-normal();
+    &.hc-fieldStyle-normal {
+        @include hc-select-fieldStyle-normal();
+    }
 
-    @include hc-select-selectStyle-mobile();
+    &.hc-fieldStyle-mobile {
+        @include hc-select-fieldStyle-mobile();
+    }
 }
 
 .hc-select-container {
