@@ -63,8 +63,11 @@
     background-repeat: no-repeat;
     display: block;
     height: 13px;
-    margin-left: 15px;
     width: 13px;
+    min-width: 20px !important;
+    margin-left: 5px !important;
+    align-self: flex-end;
+    margin-bottom: 4px;
 }
 
 @mixin hc-sort-header-asc() {
