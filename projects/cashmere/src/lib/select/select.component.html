@@ -2,7 +2,7 @@
     <span class="hc-select-chevron"></span>
     <select
         #selectInput
-        class="hc-select-input {{fieldStyle}}"
+        class="hc-select-input hc-select-fieldStyle-{{fieldStyle}}"
         [disabled]="disabled"
         (change)="_change($event, selectInput.value)"
         (focus)="focus.next()"
