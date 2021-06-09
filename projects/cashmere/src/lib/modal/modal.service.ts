@@ -14,7 +14,6 @@ import {
 } from '@angular/core';
 import {ModalOptions, ModalSize} from './modal-options';
 import {ActiveModal} from './active-modal';
-import { option } from 'yargs';
 
 export type ModalContentType = Type<{}> | TemplateRef<any>;
 
