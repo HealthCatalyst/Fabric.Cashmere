@@ -29,6 +29,7 @@ $modal-border: 1px solid $gray-200;
     @include media-breakpoint-down(md) {
         max-height: 100%;
         height: 100%;
+        justify-content: flex-end;
     }
 
     &.hc-modal-auto {
@@ -38,7 +39,7 @@ $modal-border: 1px solid $gray-200;
         }
     }
 
-    .hc-modal-body {        
+    .hc-modal-body {
         @include media-breakpoint-down(md) {
             margin-bottom: $stacked-footer-height;
         }
@@ -49,7 +50,7 @@ $modal-border: 1px solid $gray-200;
             position: fixed;
             flex-direction: column-reverse;
         }
-        
+
         .hc-button {
             @include media-breakpoint-down(md) {
                 margin-left: 0;
@@ -57,15 +58,17 @@ $modal-border: 1px solid $gray-200;
             }
         }
     }
-    
+
     .hc-modal-content {
         @include media-breakpoint-down(md) {
-            height: calc(100% - 50px);
+            // !important is necessary here to override inline height/width values set by resize
+            height: calc(100% - 53px) !important;
+            width: auto !important;
             border-radius: 0;
         }
     }
 
-    .hc-modal-center-component {       
+    .hc-modal-center-component {
         @include media-breakpoint-down(md) {
             justify-content: flex-end;
         }
@@ -142,6 +145,8 @@ $modal-border: 1px solid $gray-200;
 
 @mixin hc-modal-body() {
     overflow: auto;
+    height: inherit;
+    min-height: 120px;
     padding: $modal-padding;
     justify-content: space-between;
     margin-bottom: 0;
@@ -206,4 +211,11 @@ $modal-border: 1px solid $gray-200;
     height: 100%;
     justify-content: center;
 
+}
+
+@mixin hc-modal-resizable {
+    resize: both;
+    overflow: hidden;
+    min-height: 300px;
+    min-width: 300px;
 }
