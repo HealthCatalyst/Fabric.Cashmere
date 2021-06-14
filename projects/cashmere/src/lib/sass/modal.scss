@@ -216,6 +216,6 @@ $modal-border: 1px solid $gray-200;
 @mixin hc-modal-resizable {
     resize: both;
     overflow: hidden;
-    min-height: 300px;
+    min-height: 230px;
     min-width: 300px;
 }
