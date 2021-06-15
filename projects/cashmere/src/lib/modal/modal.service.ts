@@ -12,7 +12,7 @@ import {
     TemplateRef,
     Type
 } from '@angular/core';
-import {ModalOptions, ModalSize} from './modal-options';
+import {ModalOptions} from './modal-options';
 import {ActiveModal} from './active-modal';
 
 export type ModalContentType = Type<{}> | TemplateRef<any>;
@@ -75,8 +75,6 @@ export class ModalService {
         let activeModalRef = new ActiveModal();
         modal.data = options.data;
         activeModalRef.data = options.data;
-        modal.isDraggable = options.isDraggable;
-        modal.isResizable = options.isResizable;
 
         const modalInjector = Injector.create({
             providers: [{provide: ActiveModal, useValue: activeModalRef}],

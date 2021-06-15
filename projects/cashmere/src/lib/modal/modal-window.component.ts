@@ -1,5 +1,4 @@
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {ModalSize} from './modal-options';
 import {Component, ElementRef, HostBinding, HostListener, Input, ViewEncapsulation} from '@angular/core';
 import {ActiveModal} from './active-modal';
 
