@@ -12,7 +12,7 @@ import {
     TemplateRef,
     Type
 } from '@angular/core';
-import {ModalOptions, ModalSize} from './modal-options';
+import {ModalOptions} from './modal-options';
 import {ActiveModal} from './active-modal';
 
 export type ModalContentType = Type<{}> | TemplateRef<any>;
@@ -58,6 +58,7 @@ export class ModalService {
             size: 'auto',
             ignoreOverlayClick: false,
             isDraggable: false,
+            isResizable: false,
             disableFullScreen: false
         };
         const options = {...defaultOptions, ...modalOptions};
@@ -74,7 +75,6 @@ export class ModalService {
         let activeModalRef = new ActiveModal();
         modal.data = options.data;
         activeModalRef.data = options.data;
-        modal.isDraggable = options.isDraggable;
 
         const modalInjector = Injector.create({
             providers: [{provide: ActiveModal, useValue: activeModalRef}],
@@ -120,10 +120,13 @@ export class ModalService {
         // Apply options
         let window = this._componentFactory.resolveComponentFactory(ModalWindowComponent).create(modalInjector, projectableNodes);
         this._renderer.setStyle(window.location.nativeElement, 'z-index', this._zIndexCounter + 1);
-        window.instance._size = options.size as ModalSize;
         window.instance._ignoreOverlayClick = options.ignoreOverlayClick;
         window.instance._isDraggable = options.isDraggable;
         window.instance._disableFullScreen = options.disableFullScreen;
+
+        // Gives the child hc-modal component a new class of 'hc-modal-resizable' when the isResizable property is set to true
+        let hcmodal = (window.location.nativeElement as HTMLElement).getElementsByTagName('hc-modal');
+        hcmodal[0].setAttribute('class', options.isResizable ? `hc-modal-resizable hc-modal-${options.size}` : `hc-modal-${options.size}`);
 
         this._applicationRef.attachView(window.hostView);
         container.appendChild(window.location.nativeElement);
