@@ -36,8 +36,6 @@ export class ModalWindowComponent {
     @Input()
     _ignoreOverlayClick = false;
     @Input()
-    _size: ModalSize = 'auto';
-    @Input()
     _isDraggable = false;
     @Input()
     _disableFullScreen = false;

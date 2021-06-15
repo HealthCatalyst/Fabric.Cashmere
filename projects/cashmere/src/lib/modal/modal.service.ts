@@ -122,7 +122,6 @@ export class ModalService {
         // Apply options
         let window = this._componentFactory.resolveComponentFactory(ModalWindowComponent).create(modalInjector, projectableNodes);
         this._renderer.setStyle(window.location.nativeElement, 'z-index', this._zIndexCounter + 1);
-        window.instance._size = options.size as ModalSize;
         window.instance._ignoreOverlayClick = options.ignoreOverlayClick;
         window.instance._isDraggable = options.isDraggable;
         window.instance._disableFullScreen = options.disableFullScreen;
