@@ -32,15 +32,15 @@ export class ModalComponent implements AfterContentInit {
         let minHeight = 0;
 
         if ( this._modalHeader ) {
-            minHeight+=55;
+            minHeight += 55;
             this._modalMinHeight = minHeight + 'px';
         }
         if ( this._modalBody ) {
-            minHeight+=120;
+            minHeight += 120;
             this._modalMinHeight = minHeight + 'px';
         }
         if ( this._modalFooter ) {
-            minHeight+=55;
+            minHeight += 55;
             this._modalMinHeight = minHeight + 'px';
         }
     }
