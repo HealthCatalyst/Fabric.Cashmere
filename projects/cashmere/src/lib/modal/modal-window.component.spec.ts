@@ -42,42 +42,6 @@ describe('hc-modal-window', () => {
         expect(windowComponent._ignoreOverlayClick).toBeTruthy();
     });
 
-    describe('should change size', () => {
-
-        it('when window is small', () => {
-            let div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
-            expect(div.properties['className']).toContain('hc-modal-auto');
-            windowComponent._size = 'sm';
-            windowFixture.detectChanges();
-            expect(div.properties['className']).toContain('hc-modal-sm');
-        });
-
-        it('when window is medium', () => {
-            let div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
-            expect(div.properties['className']).toContain('hc-modal-auto');
-            windowComponent._size = 'md';
-            windowFixture.detectChanges();
-            expect(div.properties['className']).toContain('hc-modal-md');
-        });
-
-        it('when window is large', () => {
-            let div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
-            expect(div.properties['className']).toContain('hc-modal-auto');
-            windowComponent._size = 'lg';
-            windowFixture.detectChanges();
-            expect(div.properties['className']).toContain('hc-modal-lg');
-        });
-
-        it('when window is x-large', () => {
-            let div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
-            expect(div.properties['className']).toContain('hc-modal-auto');
-            windowComponent._size = 'lg';
-            windowFixture.detectChanges();
-            expect(div.properties['className']).toContain('hc-modal-lg');
-        });
-
-    });
-
     describe('on calling _ignoreOverlayClick', () => {
         // Check the default state of the property
         it('should ensure that _ignoreOverlayClick is set to false by default', () => {
