@@ -19,7 +19,7 @@
     },
     "typings": "./cashmere.d.ts",
     "peerDependencies": {
-        "@angular/cdk": "^9.2.4",
+        "@angular/cdk": "^11.2.12",
         "@angular/common": ">= 10.2.1",
         "@angular/core": ">= 10.2.1",
         "@angular/forms": ">= 10.2.1",
