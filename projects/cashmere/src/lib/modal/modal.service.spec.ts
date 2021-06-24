@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { HcModal } from './modal';
 import { ModalOptions } from './modal-options';
+import { ModalModule } from './modal.module';
 import { ModalService } from './modal.service';
 
 @Component({
     template: `
         <hc-modal>
             <hc-modal-header>Modal Header Title</hc-modal-header>
-            <hc-banner type="warning">
-                <span hcBannerStamp>WARNING</span>
-                You are about to export data which may include Protected Health Information (PHI)
-            </hc-banner>
             <hc-modal-body>Data: {{ activeModal.data }}</hc-modal-body>
             <hc-modal-footer>
                 <button hc-button buttonStyle="link" (click)="cancel()">Cancel</button>
@@ -31,9 +29,12 @@ describe('ModalService', () => {
 
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                imports: [],
-                providers: [ModalService, HcModal]
-            });
+                imports: [ModalModule],
+                declarations: [ModalOverviewExampleModalComponent],
+                providers: [ModalService, HcModal],
+            })
+            .overrideModule(BrowserDynamicTestingModule, { set: { entryComponents: [ModalOverviewExampleModalComponent] } })
+            .compileComponents();
         }));
 
         beforeEach(() => (service = TestBed.inject(ModalService)));
