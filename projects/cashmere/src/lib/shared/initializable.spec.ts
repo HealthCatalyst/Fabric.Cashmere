@@ -58,7 +58,7 @@ describe('Initializable', () => {
             testInitializable._isInitialized = true;
             let subscription = testInitializable.initialized.subscribe();
             expect(testInitializable._isInitialized).toBe(true);
-            expect(testInitializable._notifySubscriber).toHaveBeenCalledWith(subscription);
+            expect(testInitializable._notifySubscriber).toHaveBeenCalledTimes(1);
         });
     });
 });

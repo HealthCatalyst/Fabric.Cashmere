@@ -21,7 +21,7 @@ describe('NavbarLinkComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [RouterModule.forRoot([{path: '', component: NavbarLinkComponent}])],
+            imports: [RouterModule.forRoot([{ path: '', component: NavbarLinkComponent }], { relativeLinkResolution: 'legacy' })],
             declarations: [NavbarLinkComponent, TestHostComponent],
             providers: [{provide: APP_BASE_HREF, useValue: '/'}]
         }).compileComponents();

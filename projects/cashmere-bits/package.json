@@ -8,9 +8,9 @@
         "test": "jest"
     },
     "peerDependencies": {
-        "@angular/common": "^10.2.1",
-        "@angular/core": "^10.2.1",
-        "@ng-select/ng-select": "^5.0.8",
+        "@angular/common": "^11.2.14",
+        "@angular/core": "^11.2.14",
+        "@ng-select/ng-select": "^6.1.0",
         "change-case": "^4.1.1",
         "sugar": "^2.0.6"
     },
