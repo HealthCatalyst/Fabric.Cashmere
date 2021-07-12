@@ -3,8 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ModalService} from './modal.service';
 import {ActiveModal} from './active-modal';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {BrowserModule, By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ModalWindowComponent} from './modal-window.component';
 
@@ -40,42 +39,6 @@ describe('hc-modal-window', () => {
         windowComponent._ignoreOverlayClick = true;
         windowFixture.detectChanges();
         expect(windowComponent._ignoreOverlayClick).toBeTruthy();
-    });
-
-    describe('should change size', () => {
-
-        it('when window is small', () => {
-            const div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
-            expect(div.properties['className']).toContain('hc-modal-auto');
-            windowComponent._size = 'sm';
-            windowFixture.detectChanges();
-            expect(div.properties['className']).toContain('hc-modal-sm');
-        });
-
-        it('when window is medium', () => {
-            const div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
-            expect(div.properties['className']).toContain('hc-modal-auto');
-            windowComponent._size = 'md';
-            windowFixture.detectChanges();
-            expect(div.properties['className']).toContain('hc-modal-md');
-        });
-
-        it('when window is large', () => {
-            const div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
-            expect(div.properties['className']).toContain('hc-modal-auto');
-            windowComponent._size = 'lg';
-            windowFixture.detectChanges();
-            expect(div.properties['className']).toContain('hc-modal-lg');
-        });
-
-        it('when window is x-large', () => {
-            const div: DebugElement = windowFixture.debugElement.query(By.css('.hc-modal'));
-            expect(div.properties['className']).toContain('hc-modal-auto');
-            windowComponent._size = 'lg';
-            windowFixture.detectChanges();
-            expect(div.properties['className']).toContain('hc-modal-lg');
-        });
-
     });
 
     describe('on calling _ignoreOverlayClick', () => {

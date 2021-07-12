@@ -13,9 +13,6 @@ export class HcModal<T> {
     /** Allows direct access to window component which holds the component/template */
     window: ComponentRef<ModalWindowComponent> | null;
 
-    /** Adds a drag handle to the top right of the modal and allows the modal to be repositioned */
-    isDraggable?: boolean;
-
     /** Subscribe to result in order to get access to modal result values passed in ActiveModal.close() */
     get result(): Observable<unknown> {
         return this._result.asObservable();
