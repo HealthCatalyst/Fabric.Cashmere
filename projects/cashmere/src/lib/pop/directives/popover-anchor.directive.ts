@@ -262,9 +262,9 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         }, this.popoverDelay);
     }
 
-    @HostListener('touchend', ['$event'])
-    @HostListener('touchcancel', ['$event'])
-    @HostListener('mouseleave', ['$event'])
+    @HostListener('touchend')
+    @HostListener('touchcancel')
+    @HostListener('mouseleave')
     _hideOnLeave(): void {
         if (this.trigger !== 'hover') {
             return;

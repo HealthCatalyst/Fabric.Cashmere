@@ -44,7 +44,7 @@ export class ModalOverlayComponent {
         return state;
     }
 
-    @HostListener('document:keyup.escape', ['$event'])
+    @HostListener('document:keyup.escape')
     _escapeKey(): void {
         if (!this._ignoreEscapeKey) {
             this.activeModal.dismiss();

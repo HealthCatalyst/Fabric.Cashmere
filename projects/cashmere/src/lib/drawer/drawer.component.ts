@@ -209,7 +209,7 @@ export class Drawer implements AfterContentInit {
         this._animationStarted.emit(event);
     }
 
-    @HostListener('@openState.done', ['$event'])
+    @HostListener('@openState.done')
     _onAnimationEnd(): void {
         this.openedChange.next(this.opened);
 
