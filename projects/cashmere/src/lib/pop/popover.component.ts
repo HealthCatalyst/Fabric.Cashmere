@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     Component,
@@ -322,7 +323,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     constructor(
         public _elementRef: ElementRef,
         private _focusTrapFactory: ConfigurableFocusTrapFactory,
-        @Optional() @Inject(DOCUMENT) private _document: Document
+        @Optional() @Inject(DOCUMENT) private _document: any
     ) {}
 
     ngOnInit(): void {
