@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 
 import {getControlMissing, HcFormFieldComponent} from './hc-form-field.component';

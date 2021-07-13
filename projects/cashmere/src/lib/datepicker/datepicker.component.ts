@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     Component,
     ViewEncapsulation,
@@ -98,7 +100,7 @@ export class DatepickerComponent implements OnDestroy {
 
     /** An input indicating the type of the custom header component for the calendar, if set. */
     @Input()
-    calendarHeaderComponent: ComponentType<any>;
+    calendarHeaderComponent: ComponentType<unknown>;
 
     /** The date to open the calendar to initially. */
     @Input()
@@ -230,7 +232,7 @@ export class DatepickerComponent implements OnDestroy {
         @Optional() private _dir: Directionality,
         @Optional()
         @Inject(DOCUMENT)
-        private _document: any
+        private _document: Document
     ) {
         if (!this._dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
@@ -239,7 +241,7 @@ export class DatepickerComponent implements OnDestroy {
         this._scrollStrategy = scrollStrategy;
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.close();
         this._inputSubscription.unsubscribe();
         this._disabledChange.complete();
@@ -290,7 +292,7 @@ export class DatepickerComponent implements OnDestroy {
             throw Error('Attempted to open an hcDatepicker with no associated input.');
         }
         if (this._document) {
-            this._focusedElementBeforeOpen = this._document.activeElement;
+            this._focusedElementBeforeOpen = this._document.activeElement as HTMLElement;
         }
 
         this._openAsPopup();

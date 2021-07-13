@@ -18,7 +18,7 @@
     "search-prep": "ts-node scripts/search-prep.ts",
     "test": "ng test cashmere",
     "test:unit": "ng test cashmere --watch=false --code-coverage --no-progress",
-    "lint": "npm run lint:prettier",
+    "lint": "npm run lint:prettier && npm run lint:eslint",
     "lint:eslint": "eslint -c .eslintrc.js \"**/*.ts\"",
     "lint:prettier": "prettier --debug-check \"**/*.{ts,js,scss,css,md,json}\"",
     "build:lib": "ng build cashmere --prod",

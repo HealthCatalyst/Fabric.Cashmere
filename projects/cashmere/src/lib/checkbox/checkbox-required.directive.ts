@@ -1,5 +1,5 @@
-import {Directive, forwardRef, HostBinding, Input, Provider} from '@angular/core';
-import {AbstractControl, NG_VALIDATORS, RequiredValidator, ValidationErrors, Validator, Validators} from '@angular/forms';
+import {Directive, forwardRef, Input, Provider} from '@angular/core';
+import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, Validators} from '@angular/forms';
 
 export const HC_CHECKBOX_REQUIRED_VALIDATOR: Provider = {
     provide: NG_VALIDATORS,

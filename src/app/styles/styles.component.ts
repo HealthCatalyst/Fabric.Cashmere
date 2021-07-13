@@ -60,7 +60,7 @@ export class StylesComponent implements OnDestroy {
     }
 
     // Handle changes to the select component and navigate
-    selectUpdate(event: any) {
+    selectUpdate(event: unknown): void {
         if (this.selectOptions.length) {
             for (const entry of this.selectOptions) {
                 if (entry.data && event === entry.data.title) {
@@ -73,7 +73,7 @@ export class StylesComponent implements OnDestroy {
     }
 
     // Handle nav changes via the sidebar
-    navUpdate(page: any) {
+    navUpdate(page: unknown): void {
         this.router.navigate(['/web/styles/' + page]);
         window.scrollTo(0, 0);
     }

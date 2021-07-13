@@ -60,7 +60,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     private systemScrollToElementId: string | undefined;
     private lastElementScrolledTo: HTMLElement;
     private systemScrollCount = 0;
-    private dynamicInterval: any;
+    private dynamicInterval;
 
     private readonly SCROLL_TARGET_ATTRIBUTE = 'hcScrollTarget';
 
@@ -107,7 +107,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
         }
     }
 
-    @HostListener('window:resize') _onWindowResize() {
+    @HostListener('window:resize') _onWindowResize(): void {
         if (this.makeLastTargetFullHeight) {
             this.minHeightForLastTargetSet = false;
         }
@@ -144,18 +144,18 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     }
 
     /** Scroll to top and reset the 'automatic full height for the last item' setting. */
-    public refresh() {
+    public refresh(): void {
         this.scrollToTop();
         this.minHeightForLastTargetSet = false;
     }
 
     /** Helper function to scroll to the top of the content area. */
-    public scrollToTop() {
+    public scrollToTop(): void {
         this._cdkScrollableElement.scrollTo({top: 0});
     }
 
     /** Will update the navigation state. */
-    public checkActiveSection() {
+    public checkActiveSection(): void {
         if (this._scrollTargets.length > 0) {
             const offset: number = this._cdkScrollableElement.measureScrollOffset('top') + this._scrollTargets[0].offsetTop;
 
@@ -165,11 +165,11 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
                 let nextOffset = 0;
 
                 if (index > 0) {
-                    initialOffset = el.offsetTop - this.bufferSpace;
+                    initialOffset = (el as HTMLElement).offsetTop - this.bufferSpace;
                 }
                 if (index + 1 < this._scrollTargets.length) {
                     const nextEl = this._scrollTargets[index + 1];
-                    nextOffset = nextEl.offsetTop;
+                    nextOffset = (nextEl as HTMLElement).offsetTop;
                 }
 
                 if (
@@ -177,8 +177,8 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
                     (initialOffset && !nextOffset && offset >= initialOffset) ||
                     (!initialOffset && nextOffset && offset < nextOffset)
                 ) {
-                    this.lastElementScrolledTo = el;
-                    this.setActiveSection(el.getAttribute('id') || '');
+                    this.lastElementScrolledTo = el as HTMLElement;
+                    this.setActiveSection((el as HTMLElement).getAttribute('id') || '');
 
                 }
             });

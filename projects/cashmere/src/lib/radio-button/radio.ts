@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @angular-eslint/directive-selector */
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -53,9 +56,6 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     private _form: NgForm | FormGroupDirective | null;
 
     _componentId = this._name;
-
-    _onChangeFn: (value: any) => void = () => {};
-    _onTouchFn: () => any = () => {};
 
     /** Name of radio group. Auto-generated name will be used if no name is set */
     @Input()
@@ -177,17 +177,18 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         this._cdRef.markForCheck();
     }
 
-    registerOnChange(fn: any): void {
-        this._onChangeFn = fn;
+    public onChange: (value: unknown) => void = () => undefined;
+    public onTouch: () => unknown = () => undefined;
+    public registerOnChange(fn: (value: unknown) => void): void {
+        this.onChange = fn;
     }
-
-    registerOnTouched(fn: any): void {
-        this._onTouchFn = fn;
+    public registerOnTouched(fn: () => unknown): void {
+        this.onTouch = fn;
     }
 
     _touch(): void {
-        if (this._onTouchFn) {
-            this._onTouchFn();
+        if (this.onTouch) {
+            this.onTouch();
         }
     }
 
@@ -394,7 +395,7 @@ export class RadioButtonComponent implements OnInit {
         const valueChanged = this.radioGroup && this.value !== this.radioGroup.value;
         this._emitChangeEvent();
         if (this.radioGroup !== null) {
-            this.radioGroup._onChangeFn(this.value);
+            this.radioGroup.onChange(this.value);
             this.radioGroup._touch();
             if (valueChanged) {
                 this.radioGroup._emitChangeEvent();

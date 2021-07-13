@@ -44,7 +44,7 @@ export class PicklistOldService {
         private stateService: PicklistStateService
     ) {}
 
-    public reset(settings: PicklistSettings, optionsSource: PicklistOptionsSource, pane: PicklistPaneComponent) {
+    public reset(settings: PicklistSettings, optionsSource: PicklistOptionsSource, pane: PicklistPaneComponent): void {
         this.stateService.reset(settings, optionsSource, pane);
         this.filterService.reset();
 
@@ -60,7 +60,7 @@ export class PicklistOldService {
         }
     }
 
-    public addOptions(listOptions: PicklistValueOptions) {
+    public addOptions(listOptions: PicklistValueOptions): void {
         if (!this.optionsSource.optionsAreLocal()) {
             this.filterService.preFilterOptionsForRemoteMode(listOptions.values, this.valueList);
             this.filterService.preFilterOptionsForRemoteMode(listOptions.valueSets, this.valueSetList);
@@ -92,7 +92,7 @@ export class PicklistOldService {
         return optionsToMove;
     }
 
-    public loadValuesForValueset(valueset: ValueSetListOption) {
+    public loadValuesForValueset(valueset: ValueSetListOption): void {
         valueset.loadingValues = true;
         if (!this.optionsSource.getValuesForValueset) {
             return;

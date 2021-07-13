@@ -23,7 +23,7 @@ class TestRadioGroupComponent {
     groupValue = 'radio_one';
     isDisabled = false;
 
-    onGroupChange: (event?: RadioButtonChangeEvent) => void = () => {};
+    onGroupChange: (event?: RadioButtonChangeEvent) => void = () => null;
 }
 
 describe('RadioGroupComponent', () => {

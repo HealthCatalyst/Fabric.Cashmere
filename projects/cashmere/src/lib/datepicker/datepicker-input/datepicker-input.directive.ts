@@ -182,11 +182,17 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     /** Emits when the disabled state has changed */
     _disabledChange = new EventEmitter<boolean>();
 
-    _onTouched = () => {};
+    _onTouched = (): void => {
+        // do nothing
+    };
 
-    private _cvaOnChange: (value: any) => void = () => {};
+    private _cvaOnChange: (value: unknown) => void = () => {
+        // do nothing
+    };
 
-    private _validatorOnChange = () => {};
+    private _validatorOnChange = () => {
+        // do nothing
+    };
 
     private _datepickerSubscription = Subscription.EMPTY;
 
@@ -250,11 +256,12 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
 
         // Update the displayed date when the locale changes.
         this._localeSubscription = _dateAdapter.localeChanges.subscribe(() => {
+            // eslint-disable-next-line no-self-assign
             this.value = this.value;
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._datepickerSubscription.unsubscribe();
         this._localeSubscription.unsubscribe();
         this._valueChange.complete();
@@ -290,7 +297,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     }
 
     // Implemented as part of ControlValueAccessor.
-    registerOnChange(fn: (value: any) => void): void {
+    registerOnChange(fn: (value: unknown) => void): void {
         this._cvaOnChange = fn;
     }
 
@@ -305,7 +312,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     }
 
     // Set the date programmatically
-    setDate(selected: D) {
+    setDate(selected: D): void {
         this.value = selected;
         this._cvaOnChange(selected);
         this._onTouched();
@@ -313,7 +320,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
         this.dateChange.emit(new HcDatepickerInputEvent(this, this._elementRef.nativeElement));
     }
 
-    _onKeydown(event: KeyboardEvent) {
+    _onKeydown(event: KeyboardEvent): void {
         const isAltDownArrow = event.altKey && event.key === 'ArrowDown';
 
         if (this._datepicker && isAltDownArrow && !this._elementRef.nativeElement.readOnly) {
@@ -322,7 +329,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
         }
     }
 
-    _onInput(value: string) {
+    _onInput(value: string): void {
         // Add stored date value to a time-only input for javascript date object parsing
         const pickerMode = this._datepicker ? this._datepicker.mode : this._mode;
         if ( pickerMode === 'time' ) {
@@ -358,12 +365,12 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
         }
     }
 
-    _onChange() {
+    _onChange(): void {
         this.dateChange.emit(new HcDatepickerInputEvent(this, this._elementRef.nativeElement));
     }
 
     /** Handles blur events on the input. */
-    _onBlur() {
+    _onBlur(): void {
         // Reformat the input only if we have a valid value.
         if (this.value || this._elementRef.nativeElement.value) {
             this._formatValue(this.value);
@@ -374,7 +381,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
 
     /** Formats a value and sets it on the input element. */
     private _formatValue(value: D | null) {
-        let dateFormat: any = this._dateFormats.display.dateInput;
+        let dateFormat = this._dateFormats.display.dateInput;
         let tempMode = 'date';
         let tempCycle = 12;
 
@@ -404,6 +411,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
      * @param obj The object to check.
      * @returns The given object if it is both a date instance and valid, otherwise null.
      */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private _getValidDateOrNull(obj: any): D | null {
         return this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj) ? obj : null;
     }

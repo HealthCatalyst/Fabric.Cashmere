@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Component, ElementRef, HostBinding, HostListener, Input, ViewEncapsulation} from '@angular/core';
 import {ActiveModal} from './active-modal';
@@ -41,7 +43,7 @@ export class ModalWindowComponent {
     constructor(private activeModal: ActiveModal, private el: ElementRef) {}
 
     @HostBinding('@fadeInOut')
-    _fadeInOut() {
+    _fadeInOut(): unknown {
         return state;
     }
 

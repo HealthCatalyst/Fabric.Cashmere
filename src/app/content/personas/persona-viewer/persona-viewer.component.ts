@@ -17,7 +17,7 @@ export class PersonaViewerComponent implements OnInit, OnDestroy {
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router, public personaService: PersonaService) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.activatedRoute.paramMap.pipe(takeUntil(this.unsubscribe)).subscribe(queryParams => {
             const route = queryParams.get('id');
             const selectedPersona: PersonaFile | undefined = this.personaService.personas.find(persona => persona.route === route);

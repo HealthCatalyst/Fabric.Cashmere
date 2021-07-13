@@ -55,7 +55,7 @@ describe('TabSetComponent', () => {
             expect(component.direction).toBe(expectedDirection);
         });
 
-        it('should be set for all children from parent input after second change detection cycle', (done: any) => {
+        it('should be set for all children from parent input after second change detection cycle', (done) => {
             setTimeout(() => {
                 fixture.detectChanges();
                 component._tabs.forEach(t => expect(t._direction).toBe(expectedDirection));

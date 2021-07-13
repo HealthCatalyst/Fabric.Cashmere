@@ -134,10 +134,12 @@ export class PicklistPaneComponent {
 
     public preventIEHighlightBug(): void {
         // for IE: https://stackoverflow.com/questions/1527751/disable-text-selection-while-pressing-shift
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (document as any).onselectstart = function() {
             return false;
         };
         setTimeout(function() {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (document as any).onselectstart = () => null;
         }, 0);
     }

@@ -6,7 +6,8 @@ export class ActiveModal<T = unknown, U = unknown> {
      * ActiveModal must be injected in order to get access to the close method.
      * To dismiss a modal that was created from a TemplateRef, use the dismiss method
      * on HcModal */
-    public close(result?: U): void {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public close(_result?: U): void {
         // do nothing.
     }
     /** Dismisses the modal with no result.

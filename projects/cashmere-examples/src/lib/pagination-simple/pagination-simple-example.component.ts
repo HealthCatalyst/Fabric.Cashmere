@@ -14,14 +14,14 @@ export class PaginationSimpleExampleComponent {
     totalItemsControl = new FormControl(1000);
     widthControl = new FormControl('lg');
 
-    get pageNumber() {
+    get pageNumber(): number {
         return this.pageNumberControl.value;
     }
     set pageNumber(value: number) {
         this.pageNumberControl.setValue(value);
     }
 
-    get pageSize() {
+    get pageSize(): number {
         return this.pageSizeControl.value;
     }
     set pageSize(value: number) {

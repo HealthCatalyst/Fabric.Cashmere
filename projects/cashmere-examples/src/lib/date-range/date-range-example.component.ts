@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DateRangeOptions, PresetItem, DateRange} from '@healthcatalyst/cashmere';
 import {FormControl} from '@angular/forms';
 
@@ -15,7 +15,7 @@ export class DateRangeExampleComponent implements OnInit {
     presets: Array<PresetItem> = [];
     presetSelection = 'None';
 
-    ngOnInit() {
+    ngOnInit(): void {
         const today = new Date();
         const fromMin = new Date(today.getFullYear(), today.getMonth() - 2, 1);
         const fromMax = new Date(today.getFullYear(), today.getMonth() + 1, 1);
@@ -36,11 +36,11 @@ export class DateRangeExampleComponent implements OnInit {
         });
     }
 
-    updateRange(range: DateRange) {
+    updateRange(range: DateRange): void {
         this.range = range;
     }
 
-    updatePreset(index: number | DateRange) {
+    updatePreset(index: number | DateRange): void {
         if (typeof index === 'number') {
             this.presetSelection = this.presets[index].presetLabel;
             this.selected = index;
@@ -50,7 +50,7 @@ export class DateRangeExampleComponent implements OnInit {
         }
     }
 
-    setupPresets() {
+    setupPresets(): void {
         const backDate = numOfDays => {
             const now = new Date();
             return new Date(now.setDate(now.getDate() - numOfDays));

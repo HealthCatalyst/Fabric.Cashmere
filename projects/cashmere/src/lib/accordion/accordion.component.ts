@@ -4,7 +4,7 @@ import {parseBooleanAttribute} from '../util';
 
 const supportedAligns = ['left', 'right'];
 
-export function validateAlignInput(inputStr: string) {
+export function validateAlignInput(inputStr: string): void {
     if (supportedAligns.indexOf(inputStr) < 0) {
         throw Error('Unsupported accordion alignment value: ' + inputStr);
     }
@@ -63,7 +63,7 @@ export class AccordionComponent implements AfterContentInit {
         return this._toolbarTrigger;
     }
 
-    set toolbarTrigger(doTrigger) {
+    set toolbarTrigger(doTrigger: boolean) {
         this._toolbarTrigger = parseBooleanAttribute(doTrigger);
     }
 
@@ -73,7 +73,7 @@ export class AccordionComponent implements AfterContentInit {
         return this._hideToolbar;
     }
 
-    set hideToolbar(hide) {
+    set hideToolbar(hide: boolean) {
         this._hideToolbar = parseBooleanAttribute(hide);
     }
 
@@ -83,7 +83,7 @@ export class AccordionComponent implements AfterContentInit {
         return this.__isOpen;
     }
 
-    set open(opened) {
+    set open(opened: boolean) {
         this.toggle(parseBooleanAttribute(opened));
     }
 
@@ -93,7 +93,7 @@ export class AccordionComponent implements AfterContentInit {
         return this._disabled;
     }
 
-    set disabled(isDisabled) {
+    set disabled(isDisabled: boolean) {
         this._disabled = parseBooleanAttribute(isDisabled);
     }
 

@@ -12,7 +12,7 @@ export class HomeComponent {
 
     constructor(private router: Router) { }
 
-    onEnter() {
+    onEnter(): void {
         this.router.navigate(['/results'], { queryParams: { search: this.searchBar.value } });
     }
 }

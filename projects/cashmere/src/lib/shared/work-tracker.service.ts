@@ -3,7 +3,7 @@ import {Observable, ReplaySubject, Subscription} from 'rxjs';
 
 @Injectable()
 export class WorkTrackerService {
-    public start(task: () => Promise<any>): Observable<boolean> {
+    public start(task: () => Promise<unknown>): Observable<boolean> {
         const working = new ReplaySubject<boolean>();
         working.next(true);
         task()

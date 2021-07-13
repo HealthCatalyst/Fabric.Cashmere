@@ -73,11 +73,11 @@ export class CalendarWrapperComponent implements OnChanges {
     @Input()
     invalidDateLabel: string;
 
-    weekendFilter = () => true;
+    weekendFilter = (): boolean => true;
 
     constructor(public configStore: ConfigStoreService, private ref: ChangeDetectorRef) {}
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         // Necessary to force view refresh
         if (changes.selectedDate) {
             const date: D = changes.selectedDate.currentValue;
@@ -89,11 +89,11 @@ export class CalendarWrapperComponent implements OnChanges {
         }
     }
 
-    _onCalendarChange(date: D) {
+    _onCalendarChange(date: D): void {
         this.selectedDateChange.emit(date);
     }
 
-    _onInputChange(event: HcDatepickerInputEvent) {
+    _onInputChange(event: HcDatepickerInputEvent): void {
         if (this.mode === 'time') {
             const tempVal = event.value ? new Date(1900, 1, 1, event.value.getHours(), event.value.getMinutes()) : new Date(1900, 1, 1);
             const minVal = this.minDate ? new Date(1900, 1, 1, this.minDate.getHours(), this.minDate.getMinutes()) : new Date(1900, 1, 1);
@@ -116,7 +116,7 @@ export class CalendarWrapperComponent implements OnChanges {
     }
 
     /** Focus inner input */
-    focusInput() {
+    focusInput(): void {
         this.datePickerInput.focus();
         this.ref.detectChanges();
     }

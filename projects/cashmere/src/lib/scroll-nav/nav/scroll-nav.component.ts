@@ -28,7 +28,7 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
     private previousElementPosition = 0;
     private previousList: ScrollNavLinkDirective[] = [];
     private tryRefresh = false;
-    private dynamicInterval: any;
+    private dynamicInterval;
 
     private readonly SCROLL_LINK_ATTRIBUTE = 'hcScrollLink';
     private readonly ACTIVE_CLASS = 'hc-scroll-nav-link-active';

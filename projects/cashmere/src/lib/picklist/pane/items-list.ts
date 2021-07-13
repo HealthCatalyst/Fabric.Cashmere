@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PickPaneComponent } from './pick-pane.component';
-import { PickOption } from '../pick.types';
+import { GroupByFn, PickOption } from '../pick.types';
 import { PickSelectionModel } from './selection-model';
 import { isDefined, isFunction, isObject } from '../../util';
 
 export function newId(): string {
     // First character is an 'a', it's good practice for unique id to begin with a letter
-    return 'axxxxxxxxxxx'.replace(/[x]/g, function (_) {
+    return 'axxxxxxxxxxx'.replace(/[x]/g, function () {
         const val = Math.random() * 16 | 0;
         return val.toString(16);
     });
@@ -59,14 +60,14 @@ export class ItemsList {
     }
 
     /** Remove all options from the list */
-    clearList() {
+    clearList(): void {
         this._items = [];
         this._filteredItems = [];
         this._optionGroups = [];
     }
 
     /** Converts an array of raw values into HcOptions and set them on the list */
-    setItems(items: any[]) {
+    setItems(items: any[]): void {
         const hcOptionItems = items.map((item, index) => this._createHcOption(item, index));
         this._optionGroups = this._groupItems(hcOptionItems, this._pickPane.groupBy);
         this._items = this.sortAndIndex(this._optionGroups);
@@ -75,12 +76,12 @@ export class ItemsList {
     }
 
     /** Reset the indexes on each HcOption */
-    reIndex() {
+    reIndex(): void {
         this._items.forEach((o, index) => o.index = index);
     }
 
     /** Highlight a given option in the list */
-    select(item: PickOption) {
+    select(item: PickOption): void {
         if (item.selected) { return; }
         if (item.children) {
             const availableChildren = item.children.filter(i => this._filteredItems.some(fi => fi.htmlId === i.htmlId && !i.disabled));
@@ -91,7 +92,7 @@ export class ItemsList {
     }
 
     /** Remove highlight from a given option in the list */
-    unselect(item: PickOption) {
+    unselect(item: PickOption): void {
         if (!item.selected) { return; }
         this._selectionModel.unselect(item);
     }
@@ -99,6 +100,7 @@ export class ItemsList {
     /**
      * Find the option in this list for a given value
      */
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     findOption(value: any): PickOption | undefined {
         let findBy: (item: PickOption) => boolean;
         if (this._pickPane.compareWith) {
@@ -113,7 +115,7 @@ export class ItemsList {
     }
 
     /** Adds an existing HcOption to the list. */
-    addOption(option: PickOption) {
+    addOption(option: PickOption): void {
         if (option.isParent) { throw new Error(`Trying to add an option that has children: ${option}`); }
         if (!option.parent) { throw new Error(`Trying to add an option that does not have a parent: ${option}`); }
         const parentKey = option.parent.groupKey;
@@ -140,7 +142,7 @@ export class ItemsList {
     }
 
     /** Removes an existing HcOption from the list */
-    removeOption(option: PickOption) {
+    removeOption(option: PickOption): void {
         if (!option.parent) { throw new Error(`Trying to remove an option that does not have a parent: ${option}`); }
         this._deleteItem(option, this._items);
 
@@ -155,7 +157,7 @@ export class ItemsList {
     }
 
     /** Create a new HcOption and add it to the list from a given raw value. Also returns the newly created option */
-    addNewOption(item: any): PickOption {
+    addNewOption(item: unknown): PickOption {
         const newOption = this._createHcOption(item);
         this._groupItems([newOption], this._pickPane.groupBy);
         this.addOption(newOption);
@@ -163,6 +165,7 @@ export class ItemsList {
     }
 
     /** Maps the given raw value into an HcOption. */
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     _createHcOption(item: any, index?: number): PickOption {
         // $hcOptionLabel and $hcOptionValue will be used in the case of <hc-pick-option> components
         const label = isDefined(item.$hcOptionLabel) ? item.$hcOptionLabel : this.resolveNested(item, this._pickPane.bindLabel);
@@ -185,7 +188,7 @@ export class ItemsList {
     }
 
     /** Create item groups. If we're not grouping, everything just gets placed in one default group. */
-    private _groupItems(items: Array<PickOption>, groupBy: string | Function | undefined): Array<PickOption> {
+    private _groupItems(items: Array<PickOption>, groupBy: string | GroupByFn | undefined): Array<PickOption> {
         const childOptsGroupedByKey = this._groupBy(items, groupBy);
         return this._createParentHcOptions(childOptsGroupedByKey);
     }
@@ -207,7 +210,7 @@ export class ItemsList {
      * Removed highlight from all items in the list.
      * @param keepDisabled if true, don't deselect any options that are currently disabled
     */
-    clearSelected(keepDisabled = false) {
+    clearSelected(keepDisabled = false): void {
         this._selectionModel.clear(keepDisabled);
         this._items.forEach(item => {
             item.selected = keepDisabled && item.selected && item.disabled;
@@ -216,7 +219,7 @@ export class ItemsList {
     }
 
     /** Highlight all the items in the list */
-    selectAll() {
+    selectAll(): void {
         this._selectionModel.selectAll(this._filteredItems, this._pickPane.canSelectGroup);
     }
 
@@ -251,7 +254,7 @@ export class ItemsList {
         this.updateCounts();
     }
 
-    resetFilteredItemsForCustomOptionAdded(isRemoteFilter: boolean, searchTerm: string) {
+    resetFilteredItemsForCustomOptionAdded(isRemoteFilter: boolean, searchTerm: string): void {
         if (isRemoteFilter) {
             this._filteredItems = [...this._items];
             this.updateCounts();
@@ -261,35 +264,35 @@ export class ItemsList {
     }
 
     /** Unfilter the list */
-    resetFilteredItems() {
+    resetFilteredItems(): void {
         if (this._filteredItems.length === this._items.length) { this.updateCounts(); return; }
         this._filteredItems = [...this._items];
         this.updateCounts();
     }
 
     /** Wipe out selection state and marked state, then mark the first selectable option */
-    resetListSelectionState() {
+    resetListSelectionState(): void {
         this.clearSelected();
         this.markFirst();
     }
 
     /** Remove focus from any of the options */
-    unmark() {
+    unmark(): void {
         this._markedIndex = -1;
     }
 
     /** Move focus up or down in the list */
-    markNextItem(stepIsDown: boolean) {
+    markNextItem(stepIsDown: boolean): void {
         this._stepToItem(stepIsDown ? 1 : -1);
     }
 
     /** Focus the given item in the list */
-    markItem(item: PickOption) {
+    markItem(item: PickOption): void {
         this._markedIndex = this._filteredItems.indexOf(item);
     }
 
     /** Focus on the last selected item, or the first item in the list */
-    markSelectedOrDefault() {
+    markSelectedOrDefault(): void {
         if (this._filteredItems.length === 0) { return; }
         const lastMarkedIndex = this._getLastMarkedIndex();
         if (lastMarkedIndex > -1) {
@@ -300,12 +303,13 @@ export class ItemsList {
     }
 
     /** Unmarks what ever is currently marked and then marks the first selectable item */
-    markFirst() {
+    markFirst(): void {
         this.unmark();
         this.markNextItem(true);
     }
 
     /** Obtain a nested value from a given object. It could be a direct property, or a nested property */
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     resolveNested(option: any, key: string): any {
         if (!isObject(option)) { return option; }
         if (!key || key.indexOf('.') === -1) {
@@ -324,7 +328,7 @@ export class ItemsList {
     }
 
     /** Update the 'Showing x of y' counts */
-    updateCounts() {
+    updateCounts(): void {
         this._itemsShownCountStr = this.filteredItems.filter(i => !i.isParent).length.toLocaleString();
         this._itemsTotalCount = this.items.filter(i => !i.isParent).length;
         this._itemsTotalCountStr = this._itemsTotalCount.toLocaleString();
@@ -361,7 +365,7 @@ export class ItemsList {
     }
 
     /** Group the items in the list as configured */
-    private _groupBy(items: Array<PickOption>, groupBy: string | Function | undefined): ChildrenByGroupKeyMap {
+    private _groupBy(items: Array<PickOption>, groupBy: string | GroupByFn | undefined): ChildrenByGroupKeyMap {
         const groups: ChildrenByGroupKeyMap = new Map<string | PickOption, Array<PickOption>>();
         if (items.length === 0) { return groups; }
 
@@ -369,9 +373,9 @@ export class ItemsList {
         if (!groupBy) { groups.set(this.DEFAULT_GROUP_KEY, items); return groups; }
 
         // Check if items are already grouped by given key.
-        if (Array.isArray(items[0].value?.[<string>groupBy])) {
+        if (Array.isArray((items[0].value as Record<string, any>)?.[<string>groupBy])) {
             for (const item of items) {
-                const children = (item.value?.[<string>groupBy] || []).map((x, index) => this._createHcOption(x, index));
+                const children = ((item.value as Record<string, any>)?.[<string>groupBy] || []).map((x: unknown, index: number | undefined) => this._createHcOption(x, index));
                 groups.set(item, children);
             }
             return groups;
@@ -380,7 +384,7 @@ export class ItemsList {
         // Generate groups by given key or grouper function
         const isFnKey = isFunction(this._pickPane.groupBy);
         const keyFn = (item: PickOption) => {
-            const key = isFnKey ? (<Function>groupBy)(item.value) : item.value?.[<string>groupBy];
+            const key = isFnKey ? (<GroupByFn>groupBy)(item.value) : (item.value as Record<string, any>)?.[<string>groupBy];
             return isDefined(key) ? key : this.DEFAULT_GROUP_KEY;
         };
 

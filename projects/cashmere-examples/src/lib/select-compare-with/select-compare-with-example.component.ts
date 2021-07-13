@@ -27,7 +27,7 @@ export class SelectCompareWithExampleComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder) { }
 
-    public ngOnInit() {
+    public ngOnInit(): void {
         this.pizzaToppingForm = this.formBuilder.group({
             "selectedTopping": {id: 5, name: 'Chicken', price: '$0.99'}
         });

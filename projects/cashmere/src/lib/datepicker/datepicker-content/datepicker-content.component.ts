@@ -33,12 +33,12 @@ export class DatepickerContentComponent implements AfterViewInit {
     /** Whether the datepicker is above or below the input. */
     _isAbove: boolean;
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._calendar.focusActiveCell();
     }
 
     /** Close the datepicker automatically on selection only if in date mode */
-    autoClose() {
+    autoClose(): void {
         if (this.datepicker.mode === 'date') {
             this.datepicker.close();
         }

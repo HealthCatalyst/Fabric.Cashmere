@@ -22,12 +22,12 @@ export class HcSortHeaderIntl {
     readonly changes: Subject<void> = new Subject<void>();
 
     /** ARIA label for the sorting button. */
-    sortButtonLabel = (id: string) => {
+    sortButtonLabel = (id: string): string => {
         return `Change sorting for ${id}`;
     };
 }
 /** @docs-private */
-export function HC_SORT_HEADER_INTL_PROVIDER_FACTORY(parentIntl: HcSortHeaderIntl) {
+export function HC_SORT_HEADER_INTL_PROVIDER_FACTORY(parentIntl: HcSortHeaderIntl): HcSortHeaderIntl {
     return parentIntl || new HcSortHeaderIntl();
 }
 

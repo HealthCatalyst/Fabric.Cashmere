@@ -5,13 +5,13 @@ export const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutra
 const supportedColors = ['blue', 'green', 'purple', 'red', 'orange', 'ruby-red', 'deep-red', 'red-orange', 'magenta', 'pink', 'light-pink', 'azure', 'teal', 'dark-green', 'brown', 'purple-gray', 'yellow', 'yellow-orange', 'tan'];
 const supportedSizes = ['sm', 'md', 'lg'];
 
-export function validateStyleInput(style: string, component: string) {
+export function validateStyleInput(style: string, component: string): void {
     if (supportedStyles.indexOf(style) < 0 && supportedColors.indexOf(style) < 0) {
         throw Error('Unsupported buttonStyle attribute value on ' + component + ': ' + style);
     }
 }
 
-export function validateSizeInput(size: string, component: string) {
+export function validateSizeInput(size: string, component: string): void {
     if (supportedSizes.indexOf(size) < 0) {
         throw Error('Unsupported size attribute value on ' + component + ': ' + size);
     }
@@ -71,7 +71,7 @@ export class ButtonComponent {
         return this._disabled;
     }
 
-    set disabled(isDisabled) {
+    set disabled(isDisabled: boolean) {
         this._disabled = parseBooleanAttribute(isDisabled);
     }
 

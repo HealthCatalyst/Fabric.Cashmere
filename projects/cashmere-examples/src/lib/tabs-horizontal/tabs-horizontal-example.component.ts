@@ -12,11 +12,11 @@ import {TabChangeEvent} from '@healthcatalyst/cashmere';
 export class TabsHorizontalExampleComponent {
     selectedIndex = 0;
 
-    selectionChanged(event: TabChangeEvent) {
+    selectionChanged(event: TabChangeEvent): void {
         this.selectedIndex = event.index;
     }
 
-    addTask(event: Event) {
+    addTask(): void {
         window.alert('The "Add Task" tab was clicked.');
     }
 }

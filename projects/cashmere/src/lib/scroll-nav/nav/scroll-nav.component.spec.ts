@@ -87,7 +87,7 @@ class TestAppReference {
 }
 
 let testApp: TestAppReference;
-let renderer: any;
+let renderer;
 
 const a1 = 0;
 const b1 = 1;

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {
     Component,
     forwardRef,
@@ -157,20 +159,17 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         }
     }
 
-    private onChange: (val: any) => void = () => {};
-
-    private onTouched: (val: any) => void = () => {};
-
     ngAfterViewInit() {
         this._applyValueToNativeControl();
     }
 
-    registerOnChange(fn: any) {
+    public onChange: (value: unknown) => void = () => undefined;
+    public onTouch: () => unknown = () => undefined;
+    public registerOnChange(fn: (value: unknown) => void): void {
         this.onChange = fn;
     }
-
-    registerOnTouched(fn: any) {
-        this.onTouched = fn;
+    public registerOnTouched(fn: () => unknown): void {
+        this.onTouch = fn;
     }
 
     writeValue(value: any) {
@@ -183,7 +182,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         if (!this._nativeSelect) { return; }
         if (id == null) {
             const selectedIndex = this.placeholder ? 0 : -1;
-            this._renderer.setProperty(this._nativeSelect.nativeElement, 'selectedIndex', -1);
+            this._renderer.setProperty(this._nativeSelect.nativeElement, 'selectedIndex', selectedIndex);
         }
         const valueString = _buildValueString(id, this._value);
         this._renderer.setProperty(this._nativeSelect.nativeElement, 'value', valueString);

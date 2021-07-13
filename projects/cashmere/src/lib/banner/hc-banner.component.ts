@@ -45,7 +45,7 @@ export class HcBannerComponent {
         this._clickDismiss = parseBooleanAttribute(dismissVal);
     }
 
-    _bannerClick(event: MouseEvent) {
+    _bannerClick(event: MouseEvent): void {
         if (this._clickDismiss) {
             this.bannerClose.emit(event);
         }

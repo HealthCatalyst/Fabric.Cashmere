@@ -52,7 +52,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     @ViewChild(PaginationComponent)
     paginator: PaginationComponent;
 
-    applyFilter() {
+    applyFilter(): void {
         const filterStr = this.searchControl.value;
         if (filterStr) {
             this.dataSource.filter = filterStr.trim().toLowerCase();
@@ -81,7 +81,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         });
     }
 
-    usageFilter(data: IUsage, filter: string) {
+    usageFilter(data: IUsage, filter: string): boolean {
         const catMatch =
             data.TermCategories.includes(this.selectedCategoriesControl.value) || this.selectedCategoriesControl.value === 'All';
         const termMatch = data.TermName.toLowerCase().includes(filter) || filter === ' ';
@@ -90,14 +90,14 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         return catMatch && (termMatch || defMatch);
     }
 
-    onCancel() {
+    onCancel(): void {
         this.editListForm.reset();
         this.formDirective.resetForm();
         this.formSubmitted = false;
         this.showErrors = false;
     }
 
-    onSubmit() {
+    onSubmit(): void {
         if (this.editListForm.invalid) {
             this.showErrors = true;
             return;
@@ -112,7 +112,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         formData.append('comment', this.editListForm.controls.comment.value);
         formData.append('addNew', this.editListForm.controls.addNew.value);
 
-        this.httpClient.post<any>(this.scriptURL, formData).subscribe(
+        this.httpClient.post(this.scriptURL, formData).subscribe(
             res => console.log(res),
             err => console.log(err)
         );

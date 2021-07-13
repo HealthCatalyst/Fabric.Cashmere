@@ -44,13 +44,13 @@ describe('HcMonthView', () => {
         });
 
         it('has 31 days', () => {
-            const cellEls = monthViewNativeElement.querySelectorAll('.hc-calendar-body-cell')!;
+            const cellEls = monthViewNativeElement.querySelectorAll('.hc-calendar-body-cell');
             expect(cellEls.length).toBe(31);
         });
 
         it('shows selected date if in same month', () => {
-            const selectedEl = monthViewNativeElement.querySelector('.hc-calendar-body-selected')!;
-            expect(selectedEl.innerHTML.trim()).toBe('10');
+            const selectedEl = monthViewNativeElement.querySelector('.hc-calendar-body-selected');
+            expect(selectedEl?.innerHTML.trim()).toBe('10');
         });
 
         it('does not show selected date if in different month', () => {
@@ -66,8 +66,8 @@ describe('HcMonthView', () => {
             (cellEls[cellEls.length - 1] as HTMLElement).click();
             fixture.detectChanges();
 
-            const selectedEl = monthViewNativeElement.querySelector('.hc-calendar-body-selected')!;
-            expect(selectedEl.innerHTML.trim()).toBe('31');
+            const selectedEl = monthViewNativeElement.querySelector('.hc-calendar-body-selected');
+            expect(selectedEl?.innerHTML.trim()).toBe('31');
         });
 
         it('should mark active date', () => {

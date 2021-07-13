@@ -26,7 +26,7 @@ describe('NativeDateAdapter', () => {
 
         assertValidDate = (d: Date | null, valid: boolean) => {
             expect(adapter.isDateInstance(d)).not.toBeNull(`Expected ${d} to be a date instance`);
-            expect(adapter.isValid(d!)).toBe(
+            expect(adapter.isValid(d as Date)).toBe(
                 valid,
                 `Expected ${d} to be ${valid ? 'valid' : 'invalid'},` + ` but was ${valid ? 'invalid' : 'valid'}`
             );
@@ -332,7 +332,7 @@ describe('NativeDateAdapter', () => {
 
     it('should parse number', () => {
         const timestamp = new Date().getTime();
-        expect(adapter.parse(timestamp)).toEqual(new Date(timestamp));
+        expect(adapter.parse(timestamp as unknown)).toEqual(new Date(timestamp));
     });
 
     it('should parse Date', () => {

@@ -35,7 +35,7 @@ import { isDefined, isFunction, isObject } from '../util';
 import { PickOptionComponent, PickOptionStateChange } from './pick-option.component';
 import { PickPaneComponent } from './pane/pick-pane.component';
 import { PicklistService } from './picklist.service';
-import { SortFn, GroupValueFn, CompareWithFn, AddCustomItemFn, SearchFn } from './pick.types';
+import { SortFn, GroupValueFn, CompareWithFn, AddCustomItemFn, SearchFn, GroupByFn } from './pick.types';
 
 /** Control for selecting multiple items from a very large set of options. `<hc-picklist>` */
 @Component({
@@ -67,7 +67,7 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     /** Group items by property or function expression. If a function is provided, must follow this signature: `((item: any) => any)`. The
      * function is passed an option and returns a value to represent the identifier for the group that option should belong to.
      * *Grouping is off by default.* */
-    @Input() groupBy: string | Function;
+    @Input() groupBy: string | GroupByFn;
     /** Function expression to provide group value: `(key: string | object, children: any[]) => string | object`. Same as
      * described in ng-select component. https://ng-select.github.io/ng-select#/grouping */
     @Input() groupValue: GroupValueFn;
@@ -139,8 +139,8 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
 
     /** An array of options for the picklist. Options can be of any type, and the array can be an observable stream.
      * Can alternatively use `<hc-pick-option>` components to pass in options. */
-    @Input() get items() { return this._items; }
-    set items(value: any[]) {
+    @Input() get items(): unknown[] { return this._items; }
+    set items(value: unknown[]) {
         this._itemsAreUsed = true;
         this._items = value;
     }
@@ -148,7 +148,7 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
      * The first argument is a value from an option. The second is a value from the selection (model).
      * A boolean should be returned.
      * Same as used by https://angular.io/api/forms/SelectControlValueAccessor */
-    @Input() get compareWith() { return this._compareWith; }
+    @Input() get compareWith(): CompareWithFn { return this._compareWith; }
     set compareWith(fn: CompareWithFn) {
         if (!isFunction(fn)) {
             throw Error('`compareWith` must be a function.');
@@ -157,20 +157,20 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     }
 
     /** Fires when model is updated. Sends an array of the currently selected values. */
-    @Output() change = new EventEmitter<Array<string|Object|undefined>>();
+    @Output() change = new EventEmitter<Array<string|Record<string, unknown>|undefined>>();
     /** Fires when options are added. Sends an array of the values being added. */
-    @Output() add = new EventEmitter<Array<string|Object|undefined>>();
+    @Output() add = new EventEmitter<Array<string|Record<string, unknown>|undefined>>();
     /** Fires when options are removed. Sends an array of the values being removed. */
-    @Output() remove = new EventEmitter<Array<string|Object|undefined>>();
+    @Output() remove = new EventEmitter<Array<string|Record<string, unknown>|undefined>>();
 
     // custom templates
-    @ContentChild(PickOptionTemplateDirective, { read: TemplateRef }) _optionTemplate: TemplateRef<any>;
-    @ContentChild(PickOptgroupTemplateDirective, { read: TemplateRef }) _optgroupTemplate: TemplateRef<any>;
-    @ContentChild(PickPaneToolbarTemplateDirective, { read: TemplateRef }) _toolbarTemplate: TemplateRef<any>;
-    @ContentChild(PickPaneFooterTemplateDirective, { read: TemplateRef }) _footerTemplate: TemplateRef<any>;
-    @ContentChild(PickCustomItemTemplateDirective, { read: TemplateRef }) _customItemTemplate: TemplateRef<any>;
-    @ContentChild(PickPaneHeaderRightTemplateDirective, { read: TemplateRef }) _paneHeaderRightTemplate: TemplateRef<any>;
-    @ContentChild(PickPaneHeaderLeftTemplateDirective, { read: TemplateRef }) _paneHeaderLeftTemplate: TemplateRef<any>;
+    @ContentChild(PickOptionTemplateDirective, { read: TemplateRef }) _optionTemplate: TemplateRef<unknown>;
+    @ContentChild(PickOptgroupTemplateDirective, { read: TemplateRef }) _optgroupTemplate: TemplateRef<unknown>;
+    @ContentChild(PickPaneToolbarTemplateDirective, { read: TemplateRef }) _toolbarTemplate: TemplateRef<unknown>;
+    @ContentChild(PickPaneFooterTemplateDirective, { read: TemplateRef }) _footerTemplate: TemplateRef<unknown>;
+    @ContentChild(PickCustomItemTemplateDirective, { read: TemplateRef }) _customItemTemplate: TemplateRef<unknown>;
+    @ContentChild(PickPaneHeaderRightTemplateDirective, { read: TemplateRef }) _paneHeaderRightTemplate: TemplateRef<unknown>;
+    @ContentChild(PickPaneHeaderLeftTemplateDirective, { read: TemplateRef }) _paneHeaderLeftTemplate: TemplateRef<unknown>;
 
     /** A template-based/declarative way to pass options available in the picklist. */
     @ContentChildren(PickOptionComponent, { descendants: true }) _ngOptions: QueryList<PickOptionComponent>;
@@ -178,52 +178,52 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     @ViewChild('available', { static: true }) _availablePane: PickPaneComponent;
     @ViewChild('selected', { static: true }) _selectedPane: PickPaneComponent;
     /** Getter. Returns true if readonly property is true, or if disabled attribute is present on the control. */
-    @HostBinding('class.hc-picklist-disabled') get disabled() { return this.readonly || this._disabled; }
+    @HostBinding('class.hc-picklist-disabled') get disabled(): boolean { return this.readonly || this._disabled; }
 
     /** whether or not we should escape HTML in default option templates. will be set to false if
      * using <hc-pick-option> instead of passing in an items array */
     _escapeHTML = true;
     _el: HTMLElement;
-    private _items = new Array<any>();
+    private _items = new Array<unknown>();
     private _itemsAreUsed: boolean;
     private _defaultLabel = 'label';
     private _disabled: boolean;
     private readonly _destroy$ = new Subject<void>();
     private _compareWith: CompareWithFn;
-    private _onChange = (_: any) => { };
-    private _onTouched = () => { };
+    private _onChange = (_: unknown) => _;
+    private _onTouched = () => null;
 
     constructor(
         _elementRef: ElementRef<HTMLElement>,
         private picklistService: PicklistService,
         private _cd: ChangeDetectorRef,
-        @Attribute('autofocus') private autoFocus: any) {
+        @Attribute('autofocus') private autoFocus: unknown) {
             this._el = _elementRef.nativeElement;
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.picklistService.reset(this._availablePane, this._selectedPane);
         if (!this._itemsAreUsed) { this._setItemsFromHcPickOptions(); this._escapeHTML = false; }
         if (isDefined(this.autoFocus)) { this._availablePane.focus(); }
         this._detectChanges();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroy$.next();
         this._destroy$.complete();
     }
 
-    writeValue(value: any | any[]): void {
+    writeValue(value: unknown | unknown[]): void {
         this._selectedPane.itemsList.clearList();
         this._handleWriteValue(value);
         this._cd.markForCheck();
     }
 
-    registerOnChange(fn: any): void {
+    registerOnChange(fn: () => null): void {
         this._onChange = fn;
     }
 
-    registerOnTouched(fn: any): void {
+    registerOnTouched(fn: () => null): void {
         this._onTouched = fn;
     }
 
@@ -256,17 +256,17 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     }
 
     /** Move highlighted items from the left pane over to the right pane. */
-    moveLeftToRight() {
+    moveLeftToRight(): void {
         this._move(this._availablePane, this._selectedPane, true);
     }
 
     /** Move highlighted items from the right pane over to the left pane. */
-    moveRightToLeft() {
+    moveRightToLeft(): void {
         this._move(this._selectedPane, this._availablePane);
     }
 
     /** Move selected (highlighted) options from one pane to the other */
-    _move(source: PickPaneComponent, destination: PickPaneComponent, isAdding = false) {
+    _move(source: PickPaneComponent, destination: PickPaneComponent, isAdding = false): void {
         let maxLimitEnforced = false;
         let overLimitBy = 0;
         if (isAdding && this.maxSelectedItems) {
@@ -293,13 +293,14 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     /** Refreshes the dimensions of the virtual scroll container and the items displayed within. Helpful when using virtual scrolling and
      * the window changes such that the picklist was resized.
      */
-    public refreshScrollArea() {
+    public refreshScrollArea(): void {
         this._availablePane.refreshScrollArea();
         this._selectedPane.refreshScrollArea();
     }
 
     /** Manually trigger change detection to update the UI. */
-    _detectChanges() {
+    _detectChanges(): void {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         if (!(<any>this._cd).destroyed) {
             this._cd.detectChanges();
         }
@@ -346,10 +347,10 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     }
 
     /** Apply value passed in from ngModel as the current selection in the component */
-    private _handleWriteValue(ngModel: any[]) {
+    private _handleWriteValue(ngModel: unknown[] | unknown) {
         if (!this._isValidWriteValue(ngModel)) { return; }
 
-        const select = (val: any) => {
+        const select = (val: unknown) => {
             const alreadySelected = this._selectedPane.itemsList.findOption(val);
             if (alreadySelected) { return; }
 
@@ -366,7 +367,7 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
             }
         };
 
-        ngModel.forEach(item => select(item));
+        (ngModel as [])?.forEach(item => select(item));
         this.refreshPanes();
     }
 
@@ -377,7 +378,7 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
         this._detectChanges();
     }
 
-    private _isValidWriteValue(value: any): boolean {
+    private _isValidWriteValue(value: unknown): boolean {
         if (!isDefined(value) || value === '') {
             return false;
         }
@@ -389,7 +390,7 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
         return value.every(item => this.validateBinding(item));
     }
 
-    private validateBinding = (item: any): boolean => {
+    private validateBinding = (item: unknown): boolean => {
         if (!isDefined(this.compareWith) && isObject(item) && this.bindValue) {
             const msg = `Setting object(${JSON.stringify(item)}) as your model with bindValue is not allowed unless [compareWith] is used.`;
             console.warn(msg);
@@ -399,7 +400,7 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     };
 
     private _updateNgModel() {
-        const model = new Array<any>();
+        const model = new Array<unknown>();
         const selectedItems = this._selectedPane.itemsList.items.filter(i => !i.children);
         selectedItems.forEach(i => {
             const value = this.bindValue ? this._selectedPane.itemsList.resolveNested(i.value, this.bindValue) : i.value;

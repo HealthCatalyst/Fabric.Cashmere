@@ -15,7 +15,7 @@ export class FormFieldOverviewExampleComponent {
     radioControl = new FormControl('SM');
     checkControl = new FormControl('');
 
-    invalidForm() {
+    invalidForm(): void {
         this.inputControl.setErrors({incorrect: true});
         this.selectControl.setErrors({incorrect: true});
         this.checkControl.setErrors({incorrect: true});

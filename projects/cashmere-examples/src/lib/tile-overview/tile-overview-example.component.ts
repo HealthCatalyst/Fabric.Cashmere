@@ -12,7 +12,7 @@ import { SelectChangeEvent } from '@healthcatalyst/cashmere';
 export class TileOverviewExampleComponent {
     headerType = 'blue';
 
-    typeChange( selectVal: SelectChangeEvent ) {
+    typeChange( selectVal: SelectChangeEvent): void {
         this.headerType = selectVal.value;
     }
 }

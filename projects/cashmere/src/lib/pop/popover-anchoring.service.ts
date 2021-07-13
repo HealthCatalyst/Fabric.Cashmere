@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {ElementRef, Injectable, NgZone, OnDestroy, Optional, ViewContainerRef} from '@angular/core';
 import {
     ConnectionPositionPair,
@@ -136,7 +137,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
     }
 
     /** Closes the popover. */
-    closePopover(value?: any, neighborSubMenusAreOpen = false): void {
+    closePopover(value?: unknown, neighborSubMenusAreOpen = false): void {
         if (this._popover._componentOverlay) {
             this._saveClosedState(value, neighborSubMenusAreOpen);
             this._popover._componentOverlay.detach();

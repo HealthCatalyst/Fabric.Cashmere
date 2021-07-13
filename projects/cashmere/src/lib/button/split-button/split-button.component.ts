@@ -116,7 +116,7 @@ export class SplitButtonComponent {
         return this._disabled;
     }
 
-    set disabled(isDisabled) {
+    set disabled(isDisabled: boolean) {
         this._disabled = parseBooleanAttribute(isDisabled);
     }
 
@@ -127,7 +127,7 @@ export class SplitButtonComponent {
 
     constructor(private elementRef: ElementRef) {}
 
-    _stopClick($event: MouseEvent) {
+    _stopClick($event: MouseEvent): void {
         $event.stopPropagation();
     }
 
@@ -145,12 +145,12 @@ export class SplitButtonComponent {
     }
 
     /** Manually close the menu */
-    closeMenu() {
+    closeMenu(): void {
         this._splitMenu.close();
     }
 
     /** Manually open the menu */
-    openMenu() {
+    openMenu(): void {
         // pass menuItems on to the HcPop instance so that keyboard accessibility works
         if (this._splitMenu) { this._splitMenu._menuItems = this._menuItems; }
 

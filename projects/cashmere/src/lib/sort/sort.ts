@@ -84,10 +84,10 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
     private _disableClear: boolean;
 
     @Input('hcSortDisabled')
-    get disabled() {
+    get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: any) {
+    set disabled(value: boolean) {
         this._disabled = coerceBooleanProperty(value);
     }
     private _disabled = false;
@@ -149,15 +149,15 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
         return sortDirectionCycle[nextDirectionIndex];
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._markInitialized();
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this._stateChanges.next();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._stateChanges.complete();
     }
 }

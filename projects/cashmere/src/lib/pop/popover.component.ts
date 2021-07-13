@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     Component,
     ElementRef,
@@ -321,7 +322,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     constructor(
         public _elementRef: ElementRef,
         private _focusTrapFactory: ConfigurableFocusTrapFactory,
-        @Optional() @Inject(DOCUMENT) private _document: any
+        @Optional() @Inject(DOCUMENT) private _document: Document
     ) {}
 
     ngOnInit(): void {
@@ -350,7 +351,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
     }
 
     /** Close this popover and its parent (if linked). */
-    close(value?: any): void {
+    close(value?: unknown): void {
         const notification = new PopoverNotification(NotificationAction.CLOSE, value);
         this._dispatchActionNotification(notification);
         if (this.parent && !this._parentCloseBlock) {

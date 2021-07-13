@@ -45,7 +45,10 @@ class TestComponent {
     updateRange(range: DateRange) {
         this.range = range;
     }
-    updatePreset(index: number|DateRange) {}
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    updatePreset(index: number|DateRange) {
+        // do nothing
+    }
 }
 
 describe('DateRangeDirective', () => {

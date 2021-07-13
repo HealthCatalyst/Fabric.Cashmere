@@ -62,7 +62,7 @@ export class AnalyticsComponent implements OnDestroy {
     }
 
     // Handle changes to the select component and navigate
-    selectUpdate(event: any) {
+    selectUpdate(event: string): void {
         if (this.selectOptions.length) {
             for (const entry of this.selectOptions) {
                 if (entry.data && event === entry.data.category + ' - ' + entry.data.title) {
@@ -75,7 +75,7 @@ export class AnalyticsComponent implements OnDestroy {
     }
 
     // Handle nav changes via the sidebar
-    navUpdate(page: any) {
+    navUpdate(page: string): void {
         this.router.navigate(['/analytics/' + page]);
         window.scrollTo(0, 0);
     }

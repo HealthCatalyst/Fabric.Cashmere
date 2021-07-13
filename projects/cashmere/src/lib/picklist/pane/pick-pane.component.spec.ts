@@ -31,7 +31,7 @@ describe('PickPaneComponent', () => {
                 HcPickPaneTestCmp,
                 `<hc-pick-pane [items]="cities" bindLabel="name"> </hc-pick-pane>`);
 
-            fixture.componentInstance.cities = [{ label: 'Vilnius city', name: 'Vilnius' }];
+            fixture.componentInstance.cities = [{ id: 1, name: 'Vilnius' }];
             tickAndDetectChanges(fixture);
             pickPane = fixture.componentInstance.pickPane;
 
@@ -335,7 +335,7 @@ describe('PickPaneComponent', () => {
             pickPane.itemsList.unmark();
             triggerKeyDownEvent(searchBox, KeyCode.Enter);
             expect(pickPane.itemsList.selectedItems[0].label).toBe('new custom item');
-            expect((pickPane.itemsList.selectedItems[0].value as any).name).toBe('new custom item');
+            expect((pickPane.itemsList.selectedItems[0].value as Record<string, unknown>).name).toBe('new custom item');
         }));
 
         it('should add custom item as string', fakeAsync(() => {
@@ -352,7 +352,7 @@ describe('PickPaneComponent', () => {
             spyOnProperty(pickPane, '_companionPane').and.returnValue(pickPane); // faking "companion pane"
             pickPane.itemsList.unmark();
             triggerKeyDownEvent(searchBox, KeyCode.Enter);
-            expect(pickPane.itemsList.selectedItems[0].value).toBe(<any>'Copenhagen');
+            expect(pickPane.itemsList.selectedItems[0].value).toBe('Copenhagen');
         }));
 
         it('should add custom item as string when there are no items', fakeAsync(() => {
@@ -369,7 +369,7 @@ describe('PickPaneComponent', () => {
                 spyOnProperty(pickPane, '_companionPane').and.returnValue(pickPane); // faking "companion pane"
                 pickPane.itemsList.unmark();
                 triggerKeyDownEvent(searchBox, KeyCode.Enter);
-                expect(pickPane.itemsList.selectedItems[0].value).toBe(<any>'Copenhagen');
+                expect(pickPane.itemsList.selectedItems[0].value).toBe('Copenhagen');
         }));
 
         it('should add custom item as string when down arrow pressed', fakeAsync(() => {
@@ -386,7 +386,7 @@ describe('PickPaneComponent', () => {
                 spyOnProperty(pickPane, '_companionPane').and.returnValue(pickPane); // faking "companion pane"
                 pickPane.itemsList.unmark();
                 triggerKeyDownEvent(searchBox, KeyCode.ArrowDown);
-                expect(pickPane.itemsList.selectedItems[0].value).toBe(<any>'Copenhagen');
+                expect(pickPane.itemsList.selectedItems[0].value).toBe('Copenhagen');
         }));
 
         it('can select custom item even if there are filtered items that matches search term', fakeAsync(() => {
@@ -405,7 +405,7 @@ describe('PickPaneComponent', () => {
             const listPanel = fixture.debugElement.query(By.css('.hc-pick-pane-list'));
             triggerKeyDownEvent(listPanel, KeyCode.ArrowDown);
             triggerKeyDownEvent(listPanel, KeyCode.Enter);
-            expect((pickPane.itemsList.selectedItems[0].value as any).name).toBe('Vil');
+            expect((pickPane.itemsList.selectedItems[0].value as Record<string, unknown>).name).toBe('Vil');
         }));
 
         it('should select custom item using given fuction', fakeAsync(() => {
@@ -522,6 +522,7 @@ describe('PickPaneComponent', () => {
                 HcPickPaneTestCmp, `<hc-pick-pane [items]="cities" bindLabel="name" [searchFn]="searchFn"></hc-pick-pane>`);
             const pickPane = fixture.componentInstance.pickPane;
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             fixture.componentInstance.searchFn = (term: string, item: any) => item.name.indexOf(term) > -1 || item.id === 2;
             tickAndDetectChanges(fixture);
             pickPane.filter('Vilnius');
@@ -864,7 +865,7 @@ class HcPickPaneTestCmp {
     visible = true;
     externalSearchTermMinLength = 0;
     filter = new Subject<string>();
-    searchFn: (term: string, item: any) => boolean;
+    searchFn: (term: string, item: unknown) => boolean;
     selectOnTab = true;
     hideSelected = false;
 
@@ -873,14 +874,14 @@ class HcPickPaneTestCmp {
     selectedCityIds: number[];
     selectedCity: { id: number; name: string };
     selectedCities: { id: number; name: string }[];
-    cities: any[] = [
-        { id: 1, name: 'Vilnius' },
-        { id: 2, name: 'Kaunas' },
-        { id: 3, name: 'Pabrade' },
+    cities: Array<{ id: number, name: string, disabled?: boolean }> = [
+        { id: 1, name: 'Vilnius', disabled: false },
+        { id: 2, name: 'Kaunas', disabled: false },
+        { id: 3, name: 'Pabrade', disabled: false },
     ];
     citiesNames = this.cities.map(x => x.name);
 
-    selectedCountry: any;
+    selectedCountry: { id: number, description: { name: string, id: string } };
     countries = [
         { id: 1, description: { name: 'Lithuania', id: 'a' } },
         { id: 2, description: { name: 'USA', id: 'b' } },
@@ -971,11 +972,11 @@ function triggerKeyDownEvent(
         key: key,
         shiftKey: pressedShiftKey,
         ctrlKey: pressedCtrlKey,
-        preventDefault: () => { },
+        preventDefault: () => null,
     });
 }
 
-function tickAndDetectChanges(fixture: ComponentFixture<any>) {
+function tickAndDetectChanges(fixture: ComponentFixture<unknown>) {
     fixture.detectChanges();
     tick();
 }

@@ -79,17 +79,17 @@ export class DatepickerToggleComponent implements AfterContentInit, OnChanges, O
         this.tabIndex = parsedTabIndex || parsedTabIndex === 0 ? parsedTabIndex : null;
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         if (changes.datepicker) {
             this._watchStateChanges();
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._stateChanges.unsubscribe();
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._watchStateChanges();
     }
 

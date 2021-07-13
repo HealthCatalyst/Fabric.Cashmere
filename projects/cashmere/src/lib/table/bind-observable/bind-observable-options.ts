@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* Copyright 2017 PSanetra <code@psanetra.de>
 
 Open Source typescript decorator which binds class properties to observable companion properties.
@@ -29,6 +30,7 @@ export interface BindObservableOpts {
     emitRawSetterValue?: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function isBindObservableOpts(pet: any): pet is BindObservableOpts {
     return pet && typeof pet === 'object';
 }

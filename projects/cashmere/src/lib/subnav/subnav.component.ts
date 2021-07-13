@@ -17,6 +17,4 @@ export class SubnavComponent {
     @HostBinding('class.hc-subnav-fixed-top')
     @Input()
     public fixedTop = false;
-
-    constructor() {}
 }

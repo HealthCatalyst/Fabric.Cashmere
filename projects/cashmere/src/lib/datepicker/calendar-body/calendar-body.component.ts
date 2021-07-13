@@ -1,6 +1,6 @@
+/* eslint-disable @angular-eslint/component-selector */
 import {
     Component,
-    OnInit,
     ViewEncapsulation,
     ChangeDetectionStrategy,
     OnChanges,
@@ -16,7 +16,7 @@ import {take} from 'rxjs/operators';
 /**
  * Extra CSS classes that can be associated with a calendar cell.
  */
-export type HcCalendarCellCssClasses = string | string[] | Set<string> | {[key: string]: any};
+export type HcCalendarCellCssClasses = string | string[] | Set<string> | {[key: string]: unknown};
 
 /**
  * An internal class that represents the data corresponding to a single calendar cell.
@@ -106,7 +106,7 @@ export class CalendarBodyComponent implements OnChanges {
         }
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         const columnChanges = changes.numCols;
         const {rows, numCols} = this;
 
@@ -135,7 +135,7 @@ export class CalendarBodyComponent implements OnChanges {
     }
 
     /** Focuses the active cell after the microtask queue is empty. */
-    _focusActiveCell() {
+    _focusActiveCell(): void {
         this._ngZone.runOutsideAngular(() => {
             this._ngZone.onStable
                 .asObservable()

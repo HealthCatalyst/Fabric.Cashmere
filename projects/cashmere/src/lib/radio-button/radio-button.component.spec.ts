@@ -30,12 +30,12 @@ export class SingleRadioComponent {
     radioId: string | null = 'simple-radio';
     radioValue = 'single_radio';
 
-    onRadioClick: (event?: Event) => void = () => {};
-    onRadioChange: (event?: RadioButtonChangeEvent) => void = () => {};
+    onRadioClick: (event?: Event) => void = () => null;
+    onRadioChange: (event?: RadioButtonChangeEvent) => void = () => null;
 }
 
 describe('RadioButtonComponent', () => {
-    let fixture: ComponentFixture<any>;
+    let fixture: ComponentFixture<unknown>;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({

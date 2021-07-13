@@ -125,7 +125,7 @@ export class ModalService {
         window.instance._disableFullScreen = options.disableFullScreen;
 
         // Gives the child hc-modal component a new class of 'hc-modal-resizable' when the isResizable property is set to true
-        let hcmodal = (window.location.nativeElement as HTMLElement).getElementsByTagName('hc-modal');
+        const hcmodal = (window.location.nativeElement as HTMLElement).getElementsByTagName('hc-modal');
         hcmodal[0].setAttribute('class', options.isResizable ? `hc-modal-resizable hc-modal-${options.size}` : `hc-modal-${options.size}`);
 
         this._applicationRef.attachView(window.hostView);

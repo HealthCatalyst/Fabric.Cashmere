@@ -19,7 +19,7 @@ import { Subject } from 'rxjs';
 
 import { isDefined, isFunction, isPromise, isObject } from '../../util';
 import { ItemsList, newId } from './items-list';
-import { PickOption, KeyCode, SearchFn } from '../pick.types';
+import { PickOption, KeyCode, SearchFn, GroupByFn, TrackByFn } from '../pick.types';
 import { PickPaneListComponent } from './pick-pane-list.component';
 import { SelectionModelFactory } from './selection-model';
 import { PickPaneListService } from './pick-pane-list.service';
@@ -43,7 +43,7 @@ export class PickPaneComponent implements OnChanges {
     @Input() bindValue: string;
     @Input() addCustomItem: boolean | AddCustomItemFn | undefined = false;
     @Input() addCustomItemText: string;
-    @Input() groupBy: string | Function | undefined;
+    @Input() groupBy: string | GroupByFn | undefined;
     @Input() groupValue: GroupValueFn | undefined;
     @Input() canSelectGroup = false;
     @Input() canCloseGroup = false;
@@ -51,7 +51,7 @@ export class PickPaneComponent implements OnChanges {
     @Input() orphanItemsGroupName: string;
     @Input() virtualScroll: boolean;
     @Input() bufferAmount = 4;
-    @Input() trackByFn: Function;
+    @Input() trackByFn: TrackByFn;
     @Input() sortFn: SortFn | undefined;
     @Input() readonly = false;
     @Input() hasSearch = true;
@@ -66,8 +66,8 @@ export class PickPaneComponent implements OnChanges {
     @Input() hasToolbar = true;
     @Input() hasFooter = true;
     @Input() escapeHTML = true;
-    @Input() get items() { return this._items; }
-    set items(value: any[]) { this._items = value; }
+    @Input() get items(): unknown[] { return this._items; }
+    set items(value: unknown[]) { this._items = value; }
     @Input() get compareWith(): CompareWithFn { return this._compareWith; }
     set compareWith(fn: CompareWithFn) {
         if (isDefined(fn) && !isFunction(fn)) { throw Error('`compareWith` must be a function.'); }
@@ -75,16 +75,16 @@ export class PickPaneComponent implements OnChanges {
     }
 
     // custom templates
-    @Input() optionTemplate: TemplateRef<any>;
-    @Input() optgroupTemplate: TemplateRef<any>;
-    @Input() toolbarTemplate: TemplateRef<any>;
-    @Input() footerTemplate: TemplateRef<any>;
-    @Input() customItemTemplate: TemplateRef<any>;
+    @Input() optionTemplate: TemplateRef<unknown>;
+    @Input() optgroupTemplate: TemplateRef<unknown>;
+    @Input() toolbarTemplate: TemplateRef<unknown>;
+    @Input() footerTemplate: TemplateRef<unknown>;
+    @Input() customItemTemplate: TemplateRef<unknown>;
 
     /** Fires when option are being moved via an enter keypress. */
     @Output() triggerMove = new EventEmitter();
     /** Fires when search is triggered on the pane. */
-    @Output() search = new EventEmitter<{ term: string, items: any[] }>();
+    @Output() search = new EventEmitter<{ term: string, items: unknown[] }>();
     /** Fires when pane is scrolled. */
     @Output() scroll = new EventEmitter<{ start: number; end: number }>();
     /** Fires when pane has been scrolled to the bottom. */
@@ -117,7 +117,7 @@ export class PickPaneComponent implements OnChanges {
 
     @HostBinding('class.hc-pick-pane') useDefaultClass = true;
 
-    private _items = new Array<any>();
+    private _items = new Array<unknown>();
     private _disabled: boolean;
     private _defaultLabel = 'label';
     private _primitive;
@@ -137,7 +137,7 @@ export class PickPaneComponent implements OnChanges {
     }
 
     get selectedItems(): PickOption[] { return this.itemsList.selectedItems; }
-    get selectedValues(): string | object | undefined { return this.selectedItems.map(x => x.value); }
+    get selectedValues(): unknown { return this.selectedItems.map(x => x.value); }
     get hasSelectedItems(): boolean { return this.selectedItems.length > 0; }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -305,7 +305,7 @@ export class PickPaneComponent implements OnChanges {
 
     /** Create as custom item from a search term that didn't match available options from either pane */
     addAndSelectCustomOption(): void {
-        let customItem: any;
+        let customItem: unknown;
         const hasAddCustomItemFunc = isFunction(this.addCustomItem);
         if (hasAddCustomItemFunc) {
             customItem = (<AddCustomItemFn>this.addCustomItem)(this.searchTerm);
@@ -318,14 +318,14 @@ export class PickPaneComponent implements OnChanges {
         }
 
         if (isPromise(customItem)) {
-            customItem.then(i => this._selectNewCustomOption(i)).catch(() => { });
+            (customItem as Promise<unknown>).then(i => this._selectNewCustomOption(i)).catch((e) => { console.error(e); });
         } else if (customItem) {
             this._selectNewCustomOption(customItem);
         }
     }
 
     /** Convert the given custom item into an HcOption, add it to the list, and then highlight it */
-    _selectNewCustomOption(customItem: any): void {
+    _selectNewCustomOption(customItem: unknown): void {
         const newOption = this.itemsList.addNewOption(customItem);
         this.itemsList.resetFilteredItemsForCustomOptionAdded(this._isUsingSearchSubject, this.searchTerm);
         this.itemsList.markItem(newOption);
@@ -334,7 +334,7 @@ export class PickPaneComponent implements OnChanges {
 
     /** Used in the ngFor of the list to maximize DOM reusage */
     trackByOption = (_: number, item: PickOption): PickOption => {
-        if (this.trackByFn) { return this.trackByFn(item.value); }
+        if (this.trackByFn) { return this.trackByFn<PickOption>(_, item.value as PickOption); }
         return item;
     };
 
@@ -393,7 +393,7 @@ export class PickPaneComponent implements OnChanges {
 
     /** Force change detection to refresh the UI */
     detectChanges(): void {
-        if (!(<any>this._cd).destroyed) {
+        if (!(this._cd)['destroyed']) {
             this._cd.detectChanges();
         }
     }
@@ -404,7 +404,7 @@ export class PickPaneComponent implements OnChanges {
     }
 
     /** Creates HcOptions according to the configured options, sets them on this list, and selects the first option. */
-    _setItems(items: any[]): void {
+    _setItems(items: unknown[]): void {
         const firstItem = items[0];
         this.bindLabel = this.bindLabel || this._defaultLabel;
         this._primitive = isDefined(firstItem) ? !isObject(firstItem) : this._primitive || this.bindLabel === this._defaultLabel;

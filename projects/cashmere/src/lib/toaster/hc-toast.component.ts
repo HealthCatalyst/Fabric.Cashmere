@@ -29,36 +29,37 @@ export class HcToastComponent {
     _animationStateChanged = new EventEmitter<AnimationEvent>();
     _closeClick = new EventEmitter<MouseEvent>();
     _canDismiss = false;
-    _toastPortal: Portal<any>;
+    _toastPortal: Portal<unknown>;
     _width = 300;
     _hasProgressBar = false;
     _progressVal: number;
     _progressWidth = '100%';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     readonly _componentInstance = new BehaviorSubject<any>(null);
 
-    get _widthStr() {
+    get _widthStr(): string {
         return this._width ? `${this._width}px` : 'auto';
     }
 
     constructor(public _el: ElementRef, public _viewContainerRef: ViewContainerRef, public _changeRef: ChangeDetectorRef) {}
 
-    _onAnimationStart(event: AnimationEvent) {
+    _onAnimationStart(event: AnimationEvent): void {
         this._animationStateChanged.emit(event);
     }
 
-    _onAnimationDone(event: AnimationEvent) {
+    _onAnimationDone(event: AnimationEvent): void {
         this._animationStateChanged.emit(event);
     }
 
-    _startExitAnimation() {
+    _startExitAnimation(): void {
         this._animationState = 'leave';
     }
 
-    _dismissClick(event: MouseEvent) {
+    _dismissClick(event: MouseEvent): void {
         this._closeClick.emit(event);
     }
 
-    _customComponentAttached(ref: CdkPortalOutletAttachedRef) {
+    _customComponentAttached(ref: CdkPortalOutletAttachedRef): void {
         if (ref instanceof ComponentRef) {
             this._componentInstance.next(ref.instance);
         }

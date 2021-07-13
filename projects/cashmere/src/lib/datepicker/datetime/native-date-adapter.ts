@@ -277,16 +277,16 @@ export class NativeDateAdapter extends DateAdapter<Date> {
         return new Date();
     }
 
-    parse(value: any): Date | null {
+    parse(value: unknown): Date | null {
         // We have no way using the native JS Date to set the parse format or locale, so we ignore these
         // parameters.
         if (typeof value === 'number') {
             return new Date(value);
         }
-        return value ? new Date(Date.parse(value)) : null;
+        return value ? new Date(Date.parse(value as string)) : null;
     }
 
-    format(date: Date, displayFormat: Object): string {
+    format(date: Date, displayFormat: Record<string, unknown>): string {
         if (!this.isValid(date)) {
             throw Error('NativeDateAdapter: Cannot format invalid date.');
         }
@@ -338,7 +338,7 @@ export class NativeDateAdapter extends DateAdapter<Date> {
      * (https://www.ietf.org/rfc/rfc3339.txt) into valid Dates and empty string into null. Returns an
      * invalid date for all other values.
      */
-    deserialize(value: any): Date | null {
+    deserialize(value: unknown): Date | null {
         if (typeof value === 'string') {
             if (!value) {
                 return null;
@@ -355,11 +355,11 @@ export class NativeDateAdapter extends DateAdapter<Date> {
         return super.deserialize(value);
     }
 
-    isDateInstance(obj: any) {
+    isDateInstance(obj: unknown): boolean {
         return obj instanceof Date;
     }
 
-    isValid(date: Date) {
+    isValid(date: Date): boolean {
         return !isNaN(date.getTime());
     }
 

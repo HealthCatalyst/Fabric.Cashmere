@@ -48,8 +48,8 @@ describe('HcYearView', () => {
         });
 
         it('shows selected month if in same year', () => {
-            const selectedEl = yearViewNativeElement.querySelector('.hc-calendar-body-selected')!;
-            expect(selectedEl.innerHTML.trim()).toBe('MAR');
+            const selectedEl = yearViewNativeElement.querySelector('.hc-calendar-body-selected');
+            expect(selectedEl?.innerHTML.trim()).toBe('MAR');
         });
 
         it('does not show selected month if in different year', () => {
@@ -65,8 +65,8 @@ describe('HcYearView', () => {
             (cellEls[cellEls.length - 1] as HTMLElement).click();
             fixture.detectChanges();
 
-            const selectedEl = yearViewNativeElement.querySelector('.hc-calendar-body-selected')!;
-            expect(selectedEl.innerHTML.trim()).toBe('DEC');
+            const selectedEl = yearViewNativeElement.querySelector('.hc-calendar-body-selected');
+            expect(selectedEl?.innerHTML.trim()).toBe('DEC');
         });
 
         it('should emit the selected month on cell clicked', () => {

@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/directive-selector */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.

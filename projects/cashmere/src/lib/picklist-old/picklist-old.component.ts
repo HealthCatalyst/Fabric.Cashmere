@@ -121,17 +121,13 @@ export class PicklistOldComponent implements ControlValueAccessor {
             return this.picklistSettings.selected;
         }
     }
-    public onChange: any = () => {
-        // do nothing.
-    };
-    public onTouched: any = () => {
-        // do nothing.
-    };
-    public registerOnChange(fn: unknown): void {
+    public onChange: (value: unknown) => void = () => undefined;
+    public onTouch: () => unknown = () => undefined;
+    public registerOnChange(fn: (value: unknown) => void): void {
         this.onChange = fn;
     }
-    public registerOnTouched(fn: unknown): void {
-        this.onTouched = fn;
+    public registerOnTouched(fn: () => unknown): void {
+        this.onTouch = fn;
     }
     public writeValue(value: IPicklistOptions | string[]): void {
         if (value) {
@@ -152,7 +148,7 @@ export class PicklistOldComponent implements ControlValueAccessor {
      */
     public reset(settings: IPicklistSettings = new PicklistSettings()): void {
         this.picklistSettings = Object.assign(new PicklistSettings(), settings);
-        this.resetPanes(this.picklistSettings);
+        this.resetPanes();
         this.setActiveValueType(this.picklistSettings.useValuesets ? 'valueSets' : 'values');
         this.applyChangeToModel();
     }
@@ -197,7 +193,7 @@ export class PicklistOldComponent implements ControlValueAccessor {
         this.update({options: {values: valueOptions || []}});
     }
 
-    private resetPanes(settings: IPicklistSettings) {
+    private resetPanes() {
         if (!(this._available && this._confirmed)) {
             console.warn('Picklist panes not available yet.');
             return;
@@ -226,7 +222,7 @@ export class PicklistOldComponent implements ControlValueAccessor {
 
         this.changed.emit();
         this.onChange(this.value);
-        this.onTouched();
+        this.onTouch();
     }
 
     private convertStringsToValueOptions(vals: Array<string> | null): IValueOption[] | null {

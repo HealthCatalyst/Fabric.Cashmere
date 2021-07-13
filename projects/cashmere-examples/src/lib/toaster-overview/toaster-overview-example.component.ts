@@ -25,7 +25,7 @@ export class ToasterOverviewExampleComponent {
 
     constructor(private toasterService: HcToasterService) {}
 
-    showToast(content: TemplateRef<any>) {
+    showToast(content: TemplateRef<unknown>): void {
         let showProgress = false;
         if (parseInt(this.toastProgress.value, 10) > 0) {
             showProgress = true;
@@ -74,11 +74,11 @@ export class ToasterOverviewExampleComponent {
         }
     }
 
-    closeLastToast() {
+    closeLastToast(): void {
         this.toasterService.closeLastToast();
     }
 
-    closeAllToasts() {
+    closeAllToasts(): void {
         this.toasterService.closeAllToasts();
     }
 }

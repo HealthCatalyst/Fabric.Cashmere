@@ -12,7 +12,7 @@ export class PicklistActionService {
     }
     public constructor(private listService: PicklistOldService) {}
 
-    public onItemClicked<T extends SelectListOption>(event: MouseEvent, index: number, list: FilterableSelectList<T>, item: T) {
+    public onItemClicked<T extends SelectListOption>(event: MouseEvent, index: number, list: FilterableSelectList<T>, item: T): void {
         if (event.shiftKey && list.lastClickedOption && !(item.code === list.lastClickedOption.code)) {
             this.shiftClick(index, list, item, list.lastClickedOption);
         } else if (event.ctrlKey) {
@@ -25,19 +25,19 @@ export class PicklistActionService {
         }
     }
 
-    public onItemDoubleClicked<T extends SelectListOption>(event: MouseEvent, list: FilterableSelectList<T>, item: T) {
+    public onItemDoubleClicked<T extends SelectListOption>(event: MouseEvent, list: FilterableSelectList<T>, item: T): void {
         this.selectNone();
         this.selectItem(list, item);
     }
 
-    public onValuesetCaretClicked(event: MouseEvent, valueset: ValueSetListOption) {
+    public onValuesetCaretClicked(event: MouseEvent, valueset: ValueSetListOption): void {
         if (!valueset.showValues && valueset.subValuesSelectList.filteredOptions.length === 0) {
             this.listService.loadValuesForValueset(valueset);
         }
         valueset.showValues = !valueset.showValues;
     }
 
-    public selectAll() {
+    public selectAll(): void {
         this.valueSetList.filteredOptions.forEach(v => {
             this.clearListSelection(v.subValuesSelectList);
         }); // deselect sublist items
@@ -45,7 +45,7 @@ export class PicklistActionService {
         this.selectAllInList(this.valueSetList);
     }
 
-    public selectNone() {
+    public selectNone(): void {
         this.valueSetList.filteredOptions.forEach(v => {
             this.clearListSelection(v.subValuesSelectList);
         });
@@ -53,7 +53,7 @@ export class PicklistActionService {
         this.clearListSelection(this.valueSetList);
     }
 
-    public selectAllInList<T extends SelectListOption>(list: FilterableSelectList<T>) {
+    public selectAllInList<T extends SelectListOption>(list: FilterableSelectList<T>): void {
         if (!list.isActive) {
             return;
         }

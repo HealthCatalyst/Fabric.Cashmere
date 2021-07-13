@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit, Input, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Event, NavigationEnd, Params, PRIMARY_OUTLET, Router} from '@angular/router';
+import { Subscription } from 'rxjs';
 
 /**
  * IBreadcrumb interface is used to store all required data for each breadcrumb element
@@ -25,7 +26,7 @@ export type QueryParamsHandling = 'merge' | 'preserve' | '';
 })
 export class BreadcrumbsComponent implements OnInit, OnDestroy {
     public _breadcrumbs: IBreadcrumb[] = [];
-    public _routerSubscription: any;
+    public _routerSubscription: Subscription;
     _backURL = '';
     _backShow = 'none';
     _locationLabel = '';
@@ -43,8 +44,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
 
-    ngOnInit() {
-        const ROUTE_DATA_BREADCRUMB = 'breadcrumb';
+    ngOnInit(): void {
         // Add the first breadcrumb for the base page
         const root: ActivatedRoute = this.activatedRoute.root;
         this._breadcrumbs = this.getBreadcrumbs(root);
@@ -95,6 +95,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
             }
 
             // verify the custom data property "breadcrumb" is specified on the route
+            // eslint-disable-next-line no-prototype-builtins
             if (!child.snapshot.data.hasOwnProperty(ROUTE_DATA_BREADCRUMB)) {
                 return this.getBreadcrumbs(child, url, breadcrumbs);
             }

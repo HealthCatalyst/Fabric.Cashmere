@@ -1,11 +1,11 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 
-export function throwErrorForMissingSurveyUri() {
+export function throwErrorForMissingSurveyUri(): Error {
     throw Error(`SurveyUri must be specified on element hc-typeform-survey`);
 }
 
 export class TypeformWindow {
-    public typeformEmbed: any;
+    public typeformEmbed: unknown;
 }
 
 @Component({
@@ -53,11 +53,12 @@ export class TypeformSurveyComponent {
     /**
      * Opens the survey specified in the surveyUri
      */
-    public open() {
+    public open(): void {
         if (!document.getElementById(this._id)) {
             this.getScripts();
         } else {
-            ((window as unknown) as TypeformWindow).typeformEmbed.makePopup(this._fullUri, {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).typeformEmbed.makePopup(this._fullUri, {
                 mode: 'drawer_right',
                 autoOpen: true,
                 opacity: 100,

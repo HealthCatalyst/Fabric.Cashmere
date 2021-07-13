@@ -53,11 +53,11 @@ export class SearchResultsComponent implements AfterViewInit {
     };
 
     @HostListener('window:resize')
-    _pagResize() {
+    _pagResize(): void {
         this.pagWidth = (this.pagContainer.nativeElement.offsetWidth < 522) ? 'sm' : 'md';
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         // String lists that take the values from the categories and types FormGroups
         let filterValues: string[] = ["foundations", "components", "guides", "bits", "content", "analytics"];
         let typeFilterValues: string[] = ["doc", "example", "api", "usage", "persona"];
@@ -153,7 +153,7 @@ export class SearchResultsComponent implements AfterViewInit {
     }
 
     /**Filters the results from miniSearch based on the filter values */
-    displayResults(filterValues, typeFilterValues) {
+    displayResults(filterValues: string[], typeFilterValues: string[]): void {
         //  Checks if the searchBarContent value is empty or not
         if (this.searchBarContent.value !== '') {
             const res = this.searchService.miniSearch.search(this.searchBarContent.value, {
@@ -193,7 +193,7 @@ export class SearchResultsComponent implements AfterViewInit {
         }
     }
 
-    resultPaging( setting: PageEvent ) {
+    resultPaging(setting: PageEvent): void {
         this.pagSize = setting.pageSize;
         this.pagNum = setting.pageNumber;
         const tempStartIndex = setting.pageSize * (setting.pageNumber - 1);
@@ -201,7 +201,7 @@ export class SearchResultsComponent implements AfterViewInit {
         this.ref.detectChanges();
     }
 
-    resetFilters() {
+    resetFilters(): void {
         this.categories.setValue({ components: true, guides: true, foundations: true, bits: true });
         this.types.setValue({ doc: true, example: true, api: true, usage: true });
     }

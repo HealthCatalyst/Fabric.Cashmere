@@ -120,17 +120,17 @@ describe('CalendarComponent', () => {
             calendarInstance.updateTodaysDate();
             fixture.detectChanges();
 
-            let todayCell = calendarElement.querySelector('.hc-calendar-body-today')!;
+            let todayCell = calendarElement.querySelector('.hc-calendar-body-today');
             expect(todayCell).not.toBeNull();
-            expect(todayCell.innerHTML.trim()).toBe('1');
+            expect(todayCell?.innerHTML.trim()).toBe('1');
 
             fakeToday = new Date(2018, 0, 10);
             calendarInstance.updateTodaysDate();
             fixture.detectChanges();
 
-            todayCell = calendarElement.querySelector('.hc-calendar-body-today')!;
+            todayCell = calendarElement.querySelector('.hc-calendar-body-today');
             expect(todayCell).not.toBeNull();
-            expect(todayCell.innerHTML.trim()).toBe('10');
+            expect(todayCell?.innerHTML.trim()).toBe('10');
         }));
 
         it('should be in month view with specified month active', () => {
@@ -227,7 +227,7 @@ describe('CalendarComponent', () => {
                 });
 
                 it('should not move focus to the active cell on init', () => {
-                    const activeCell = calendarBodyEl.querySelector('.hc-calendar-body-active')! as HTMLElement;
+                    const activeCell = calendarBodyEl.querySelector('.hc-calendar-body-active') as HTMLElement;
 
                     spyOn(activeCell, 'focus').and.callThrough();
                     fixture.detectChanges();
@@ -237,7 +237,7 @@ describe('CalendarComponent', () => {
                 });
 
                 it('should move focus to the active cell when the view changes', () => {
-                    const activeCell = calendarBodyEl.querySelector('.hc-calendar-body-active')! as HTMLElement;
+                    const activeCell = calendarBodyEl.querySelector('.hc-calendar-body-active') as HTMLElement;
 
                     spyOn(activeCell, 'focus').and.callThrough();
                     fixture.detectChanges();

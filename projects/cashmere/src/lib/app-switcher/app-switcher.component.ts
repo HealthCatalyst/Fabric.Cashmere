@@ -22,7 +22,7 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     private _serviceName = '';
     private _version = '';
 
-    private ngUnsubscribe: any = new Subject();
+    private ngUnsubscribe = new Subject();
 
     /** Sets the height of the app thumbnail icons, width is auto (defaults to 100px) */
     @Input()
@@ -52,16 +52,16 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     }
     constructor(@Inject(APP_SWITCHER_SERVICE) public appSwitcherService: IAppSwitcherService, private workTracker: WorkTrackerService) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.loadApplications();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next();
         this.ngUnsubscribe.complete();
     }
 
-    public loadApplications() {
+    public loadApplications(): void {
         try {
             this.loadApplicationFromDiscoveryService();
         } catch (error) {
@@ -75,27 +75,27 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
                 .getApplications()
                 .pipe(takeUntil(this.ngUnsubscribe))
                 .subscribe(
-                    (response: any) => {
+                    (response) => {
                         this.loadFailed = false;
                         this.applications = response.value;
                     },
-                    (error: any) => {
+                    (error) => {
                         this.handleError(error);
                     }
                 )
         );
     }
 
-    private handleError(error: any) {
+    private handleError(error: Error) {
         console.error('Failed to load applications from the app switcher service.', error);
         this.loadFailed = true;
     }
 
-    linkIfNotMe(app: any): string {
+    linkIfNotMe(app: IDiscoveryApplication): string | null {
         return this.appIsMe(app) ? null : app.ServiceUrl;
     }
 
-    appIsMe(app: IDiscoveryApplication) {
+    appIsMe(app: IDiscoveryApplication): boolean {
         return app.ServiceName === this.serviceName && `${app.Version}` === this.serviceVersion;
     }
 }

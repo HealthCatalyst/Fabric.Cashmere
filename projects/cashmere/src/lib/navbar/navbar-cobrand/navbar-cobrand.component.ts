@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core';
 
 /** Element to add a co-branding image to the right of the navbar */

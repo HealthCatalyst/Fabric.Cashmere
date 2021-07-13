@@ -80,7 +80,7 @@ describe("ScrollNavLinkDirective", (): void => {
 
         it("should use the default nativeElement", (): void => {
             expect(directive.nativeElement).toBeTruthy();
-            expect(directive.nativeElement.getAttribute("hcScrollLink")).toMatch("a1");
+            expect((directive.nativeElement as HTMLElement).getAttribute("hcScrollLink")).toMatch("a1");
         });
 
         it("should have hc-scroll-nav-link class", (): void => {

@@ -29,10 +29,18 @@ export class TestAccordionComponent {
     triggerVal = true;
     openVal = false;
 
-    onOpenStart: (event?: Event) => void = () => {};
-    onOpen: (event?: Event) => void = () => {};
-    onCloseStart: (event?: Event) => void = () => {};
-    onClosed: (event?: Event) => void = () => {};
+    onOpenStart: (event?: Event) => void = () => {
+        // do nothing
+    };
+    onOpen: (event?: Event) => void = () => {
+        // do nothing
+    };
+    onCloseStart: (event?: Event) => void = () => {
+        // do nothing
+    };
+    onClosed: (event?: Event) => void = () => {
+        // do nothing
+    };
 }
 
 describe('AccordionComponent', () => {

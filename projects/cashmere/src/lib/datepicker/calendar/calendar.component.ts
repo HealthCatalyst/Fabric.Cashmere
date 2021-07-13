@@ -193,10 +193,10 @@ export class CalendarHeaderComponent {
 export class CalendarComponent implements AfterContentInit, AfterViewChecked, OnDestroy, OnChanges {
     /** An input indicating the type of the header component, if set. */
     @Input()
-    headerComponent: ComponentType<any>;
+    headerComponent: ComponentType<unknown>;
 
     /** A portal containing the header component type for this calendar. */
-    _calendarHeaderPortal: Portal<any>;
+    _calendarHeaderPortal: Portal<unknown>;
 
     /** Stores the current am/pm value */
     _period: FormControl = new FormControl('am');
@@ -397,7 +397,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         }
     }
 
-    _periodChange() {
+    _periodChange(): void {
         if (this.selected) {
             const tempDate = new Date(this.selected.getTime());
             const curHours = tempDate.getHours();
@@ -433,7 +433,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         });
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._calendarHeaderPortal = new ComponentPortal(this.headerComponent || CalendarHeaderComponent);
         this.activeDate = this.startAt || this._dateAdapter.today();
 
@@ -441,19 +441,19 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         this._currentView = this.startView;
     }
 
-    ngAfterViewChecked() {
+    ngAfterViewChecked(): void {
         if (this._moveFocusOnNextTick) {
             this._moveFocusOnNextTick = false;
             this.focusActiveCell();
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._intlChanges.unsubscribe();
         this.stateChanges.complete();
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         const change = changes.minDate || changes.maxDate || changes.dateFilter;
 
         if (change && !change.firstChange) {
@@ -470,14 +470,14 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         this.stateChanges.next();
     }
 
-    focusActiveCell() {
+    focusActiveCell(): void {
         if (this.mode !== 'time') {
             this._getCurrentViewComponent()._focusActiveCell();
         }
     }
 
     /** Updates today's date after an update of the active date */
-    updateTodaysDate() {
+    updateTodaysDate(): void {
         const view = this.currentView === 'month' ? this.monthView : this.currentView === 'year' ? this.yearView : this.multiYearView;
 
         view.ngAfterContentInit();
@@ -491,12 +491,12 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
 
     /** Handles year selection in the multiyear view. */
-    _yearSelectedInMultiYearView(normalizedYear: D) {
+    _yearSelectedInMultiYearView(normalizedYear: D): void {
         this.yearSelected.emit(normalizedYear);
     }
 
     /** Handles month selection in the year view. */
-    _monthSelectedInYearView(normalizedMonth: D) {
+    _monthSelectedInYearView(normalizedMonth: D): void {
         this.monthSelected.emit(normalizedMonth);
     }
 
@@ -514,6 +514,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
      * @param obj The object to check.
      * @returns The given object if it is both a date instance and valid, otherwise null.
      */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private _getValidDateOrNull(obj: any): D | null {
         return this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj) ? obj : null;
     }
@@ -523,7 +524,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         return this.monthView || this.yearView || this.multiYearView;
     }
 
-    _hoursUp() {
+    _hoursUp(): void {
         if (!this.hours) {
             this.hours = this._hourCycle > 12 ? '0' : '1';
         } else {
@@ -538,7 +539,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         }
     }
 
-    _hoursDown() {
+    _hoursDown(): void {
         if (!this.hours) {
             this.hours = this._hourCycle > 12 ? '23' : '12';
         } else {
@@ -553,13 +554,13 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         }
     }
 
-    _changeMeridiem(curHour, hourChange) {
+    _changeMeridiem(curHour: number, hourChange: number): void {
         if (curHour === hourChange) {
             this._period.setValue(this._period.value > 'am' ? 'am' : 'pm');
         }
     }
 
-    _minutesUp() {
+    _minutesUp(): void {
         if (!this.minutes) {
             this.minutes = '00';
         } else {
@@ -572,7 +573,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         }
     }
 
-    _minutesDown() {
+    _minutesDown(): void {
         if (!this.minutes) {
             this.minutes = '59';
         } else {

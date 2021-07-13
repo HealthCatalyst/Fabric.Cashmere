@@ -122,7 +122,7 @@ export class HcCellResizer implements OnInit, OnDestroy {
     }
 
     // isResizing can be set to true only when the component is not disabled
-    @HostListener('mousedown', ['$event']) _startResizing(event: MouseEvent) {
+    @HostListener('mousedown', ['$event']) _startResizing(event: MouseEvent): void {
         this.isResizing = !this.disabled;
 
         this._mouseX = event.screenX;
@@ -141,5 +141,5 @@ export class HcCellResizer implements OnInit, OnDestroy {
     // Must be present for AOT compilation to work, even if empty
     // Otherwise 'ng build --prod' will optimize away any calls to ngOnDestroy,
     // even if the method is added by the untilDestroyed operator
-    public ngOnDestroy() {}
+    public ngOnDestroy(): void { return; }
 }

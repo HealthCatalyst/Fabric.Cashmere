@@ -20,6 +20,7 @@ import {Observable} from 'rxjs';
 import {take} from 'rxjs/operators';
 
 function WrappingDecorator(): PropertyDecorator {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (target: any, propertyName: string | symbol) => {
         const descriptor = Reflect.getOwnPropertyDescriptor(target, propertyName);
 

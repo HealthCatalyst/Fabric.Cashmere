@@ -15,11 +15,11 @@ export class BannerOverviewExampleComponent {
     readonly bannerClick = new FormControl(false);
     bannerHide = false;
 
-    hideBanner() {
+    hideBanner(): void {
         this.bannerHide = true;
     }
 
-    showBanner() {
+    showBanner(): void {
         this.bannerHide = false;
     }
 }

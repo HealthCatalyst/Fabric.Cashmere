@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {EllipsisPipe} from './ellipsis.pipe';
 
 describe('EllipsisPipe.transform', () => {

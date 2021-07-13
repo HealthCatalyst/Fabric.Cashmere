@@ -6,7 +6,7 @@ import {CheckboxModule} from './checkbox.module';
 import {By} from '@angular/platform-browser';
 
 describe('CheckboxComponent', () => {
-    let fixture: ComponentFixture<any>;
+    let fixture: ComponentFixture<unknown>;
 
     beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
@@ -267,8 +267,12 @@ export class SingleCheckboxComponent {
     checkboxValue = 'single_checkbox';
     alignVal = "top";
 
-    onCheckboxClick: (event?: Event) => void = () => {};
-    onCheckboxChange: (event?: CheckboxChangeEvent) => void = () => {};
+    onCheckboxClick: (event?: Event) => void = () => {
+        // do nothing
+    };
+    onCheckboxChange: (event?: CheckboxChangeEvent) => void = () => {
+        // do nothing
+    };
 }
 
 @Component({

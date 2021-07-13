@@ -7,7 +7,7 @@ import {By} from '@angular/platform-browser';
 import {MenuItemDirective} from '../../pop/directives/menu-item.directive';
 
 describe('SplitButtonComponent', () => {
-    let fixture: ComponentFixture<any>;
+    let fixture: ComponentFixture<unknown>;
     let splitButtonDebugElement: DebugElement;
 
     beforeEach(waitForAsync(() => {

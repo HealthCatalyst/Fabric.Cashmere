@@ -167,8 +167,8 @@ export class NavbarComponent implements OnDestroy {
         }
     }
 
-    _menuClick(event): void {
-        const clickTarget: string = event.target.outerHTML;
+    _menuClick(event: Event): void {
+        const clickTarget: string = event?.target?.['outerHTML'];
 
         // Verify that the click in the mobile menu came from a navigation item
         if (clickTarget.indexOf('hclistline') >= 0 && clickTarget.indexOf('menu-dropdown') === -1) {
