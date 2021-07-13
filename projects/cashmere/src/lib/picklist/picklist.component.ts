@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     Component,
     OnDestroy,
@@ -197,7 +199,7 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
         _elementRef: ElementRef<HTMLElement>,
         private picklistService: PicklistService,
         private _cd: ChangeDetectorRef,
-        @Attribute('autofocus') private autoFocus: unknown) {
+        @Attribute('autofocus') private autoFocus: any) {
             this._el = _elementRef.nativeElement;
     }
 

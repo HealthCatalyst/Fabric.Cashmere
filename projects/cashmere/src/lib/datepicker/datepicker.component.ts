@@ -232,7 +232,7 @@ export class DatepickerComponent implements OnDestroy {
         @Optional() private _dir: Directionality,
         @Optional()
         @Inject(DOCUMENT)
-        private _document: Document
+        private _document: any
     ) {
         if (!this._dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
