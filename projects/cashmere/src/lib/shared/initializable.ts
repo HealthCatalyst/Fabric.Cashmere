@@ -23,7 +23,7 @@ export abstract class Initializable {
         if (this._isInitialized) {
             this._notifySubscriber(subscriber);
         } else {
-            this._pendingSubscribers!.push(subscriber);
+            this._pendingSubscribers?.push(subscriber);
         }
     });
 
@@ -39,7 +39,7 @@ export abstract class Initializable {
 
         this._isInitialized = true;
 
-        this._pendingSubscribers!.forEach(this._notifySubscriber);
+        this._pendingSubscribers?.forEach(this._notifySubscriber);
         this._pendingSubscribers = null;
     }
 

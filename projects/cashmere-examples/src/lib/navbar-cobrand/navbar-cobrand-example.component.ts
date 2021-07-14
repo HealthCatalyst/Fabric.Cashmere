@@ -15,7 +15,7 @@ export class NavbarCobrandExampleComponent {
     brandingVal = 'light';
     brandImg = './assets/MillrockLogo_light.png';
 
-    brandChange( brandStyle: SelectChangeEvent ) {
+    brandChange(brandStyle: SelectChangeEvent): void {
         this.brandingVal = brandStyle.value;
         this.brandImg = './assets/MillrockLogo_' + brandStyle.value + '.png';
     }

@@ -24,15 +24,23 @@ import {By} from '@angular/platform-browser';
     `
 })
 export class TestAccordionComponent {
-    alignVal: string = 'left';
-    hideVal: boolean = false;
-    triggerVal: boolean = true;
-    openVal: boolean = false;
+    alignVal = 'left';
+    hideVal = false;
+    triggerVal = true;
+    openVal = false;
 
-    onOpenStart: (event?: Event) => void = () => {};
-    onOpen: (event?: Event) => void = () => {};
-    onCloseStart: (event?: Event) => void = () => {};
-    onClosed: (event?: Event) => void = () => {};
+    onOpenStart: (event?: Event) => void = () => {
+        // do nothing
+    };
+    onOpen: (event?: Event) => void = () => {
+        // do nothing
+    };
+    onCloseStart: (event?: Event) => void = () => {
+        // do nothing
+    };
+    onClosed: (event?: Event) => void = () => {
+        // do nothing
+    };
 }
 
 describe('AccordionComponent', () => {
@@ -53,7 +61,7 @@ describe('AccordionComponent', () => {
     });
 
     it('should open the accordion when the open value is changed programtically', () => {
-        let accordionComponent = fixture.debugElement.query(By.directive(AccordionComponent));
+        const accordionComponent = fixture.debugElement.query(By.directive(AccordionComponent));
         expect(accordionComponent.nativeElement.classList.contains('hc-accordion-opened')).toBe(false);
 
         component.openVal = true;
@@ -63,7 +71,7 @@ describe('AccordionComponent', () => {
     });
 
     it('should emit open events when the accordion open animation is complete', () => {
-        let accordionComponent = fixture.debugElement.query(By.directive(AccordionComponent));
+        const accordionComponent = fixture.debugElement.query(By.directive(AccordionComponent));
         spyOn(component, 'onOpen');
         spyOn(component, 'onOpenStart');
 
@@ -77,7 +85,7 @@ describe('AccordionComponent', () => {
     });
 
     it('should emit closed events when the accordion close animation is complete', () => {
-        let accordionComponent = fixture.debugElement.query(By.directive(AccordionComponent));
+        const accordionComponent = fixture.debugElement.query(By.directive(AccordionComponent));
         spyOn(component, 'onClosed');
         spyOn(component, 'onCloseStart');
 
@@ -93,7 +101,7 @@ describe('AccordionComponent', () => {
     });
 
     it('should update two-way binding of the open property after calling the toggle() function', () => {
-        let accordionComponent = fixture.debugElement.query(By.directive(AccordionComponent));
+        const accordionComponent = fixture.debugElement.query(By.directive(AccordionComponent));
         accordionComponent.componentInstance.toggle();
         fixture.detectChanges();
 
@@ -126,7 +134,7 @@ describe('AccordionComponent', () => {
         component.triggerVal = false;
         fixture.detectChanges();
 
-        let toolbarComponent = fixture.debugElement.query(By.directive(AccordionToolbarComponent));
+        const toolbarComponent = fixture.debugElement.query(By.directive(AccordionToolbarComponent));
         toolbarComponent.nativeElement.click();
 
         expect(component.openVal).toBe(false);

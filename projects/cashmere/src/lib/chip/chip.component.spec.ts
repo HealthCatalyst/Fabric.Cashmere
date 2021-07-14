@@ -9,8 +9,8 @@ import {By} from '@angular/platform-browser';
     `
 })
 export class TestChipComponent {
-    colorValue: string = 'red';
-    closeValue: boolean = false;
+    colorValue = 'red';
+    closeValue = false;
 }
 
 describe('ChipComponent', () => {
@@ -31,7 +31,7 @@ describe('ChipComponent', () => {
     });
 
     it('should set the chip style based on the color parameter', () => {
-        let chipComponent = fixture.debugElement.query(By.css('div'));
+        const chipComponent = fixture.debugElement.query(By.css('div'));
         expect(chipComponent.nativeElement.classList.contains('hc-chip-red')).toBe(true);
     });
 
@@ -43,7 +43,7 @@ describe('ChipComponent', () => {
     });
 
     it('should not include a close button if action is false', () => {
-        let closeSpans = fixture.debugElement.queryAll(By.css('span'));
+        const closeSpans = fixture.debugElement.queryAll(By.css('span'));
         expect(closeSpans.length).toBe(1);
     });
 
@@ -51,7 +51,7 @@ describe('ChipComponent', () => {
         component.closeValue = true;
         fixture.detectChanges();
 
-        let closeSpan = fixture.debugElement.queryAll(By.css('span'));
+        const closeSpan = fixture.debugElement.queryAll(By.css('span'));
         expect(closeSpan[1].nativeElement.classList.contains('hc-chip-close')).toBe(true);
         expect(closeSpan[2].nativeElement.classList.contains('hc-chip-close-icon')).toBe(true);
     });
@@ -66,7 +66,7 @@ describe('ChipComponent', () => {
     `
 })
 export class TestChipRowComponent {
-    wrapValue: boolean = false;
+    wrapValue = false;
 }
 
 describe('ChipRowComponent', () => {
@@ -87,7 +87,7 @@ describe('ChipRowComponent', () => {
     });
 
     it('should display single or multi line based on the wrap parameter', () => {
-        let rowComponent = fixture.debugElement.query(By.css('div'));
+        const rowComponent = fixture.debugElement.query(By.css('div'));
         expect(rowComponent.nativeElement.classList.contains('hc-chip-single-row')).toBe(true);
 
         component.wrapValue = true;

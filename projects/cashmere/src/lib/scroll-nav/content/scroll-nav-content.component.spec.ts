@@ -87,7 +87,7 @@ class TestAppReference {
 }
 
 let testApp: TestAppReference;
-let renderer: any;
+let renderer;
 
 const SCROLL_TARGET_ATTRIBUTE = 'hcScrollTarget';
 
@@ -128,7 +128,7 @@ describe('HcScrollNavContentComponent', () => {
     });
 
     it('should call _setActiveSectionById in nav when scrolling', waitForAsync(() => {
-        let setActiveSectionSpy: jasmine.Spy = spyOn(testApp.contentComponent.nav, '_setActiveSectionById');
+        const setActiveSectionSpy: jasmine.Spy = spyOn(testApp.contentComponent.nav, '_setActiveSectionById');
 
         testApp.contentComponent._cdkScrollableElement
             .elementScrolled()
@@ -177,7 +177,7 @@ describe('HcScrollNavContentComponent', () => {
         });
 
         it("should call refreshScrollNavTargets if hasDynamicContent is true", () => {
-            let refreshScrollNavTargetsSpy: jasmine.Spy = spyOn(testApp.contentComponent, "refreshScrollNavTargets");
+            const refreshScrollNavTargetsSpy: jasmine.Spy = spyOn(testApp.contentComponent, "refreshScrollNavTargets");
             testApp.contentComponent.hasDynamicContent = true;
 
             testApp.contentComponent.ngAfterViewInit();
@@ -188,10 +188,10 @@ describe('HcScrollNavContentComponent', () => {
 
     describe('refreshScrollNavTargets', () => {
         it('should reset targets if list of ScrollNavTargetDirectives are passed in', () => {
-            let scrollNavLinkDirectives: ScrollNavTargetDirective[] =
+            const scrollNavLinkDirectives: ScrollNavTargetDirective[] =
                 [new ScrollNavTargetDirective(testApp.fixture.nativeElement.querySelector(`[${SCROLL_TARGET_ATTRIBUTE}]`), renderer)];
-            let targetsResetSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'reset');
-            let targetNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'notifyOnChanges');
+            const targetsResetSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'reset');
+            const targetNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'notifyOnChanges');
 
             testApp.contentComponent.refreshScrollNavTargets(scrollNavLinkDirectives);
 
@@ -200,20 +200,20 @@ describe('HcScrollNavContentComponent', () => {
         });
 
         it('should add directives from targets if hcScrollTarget list has more targets than targets', () => {
-            let scrollTargetElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_TARGET_ATTRIBUTE}]`);
-            let scrollTargetHTMLElements: HTMLElement[] = [];
+            const scrollTargetElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_TARGET_ATTRIBUTE}]`);
+            const scrollTargetHTMLElements: HTMLElement[] = [];
             scrollTargetElements.forEach((element: HTMLElement) => {
                 scrollTargetHTMLElements.push(element);
             });
 
-            let newElement: Node | undefined = scrollTargetElements.item(0)?.cloneNode(true);
+            const newElement: Node | undefined = scrollTargetElements.item(0)?.cloneNode(true);
             if (newElement) {
                 (newElement as HTMLElement).id = "z1";
                 scrollTargetHTMLElements.push(newElement as HTMLElement);
             }
 
-            let targetsResetSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'reset').and.callThrough();
-            let targetsNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'notifyOnChanges').and.callThrough();
+            const targetsResetSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'reset').and.callThrough();
+            const targetsNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'notifyOnChanges').and.callThrough();
 
             spyOn(testApp.contentComponent["_elementRef"].nativeElement, 'querySelectorAll').and.returnValue(scrollTargetHTMLElements);
 
@@ -225,11 +225,11 @@ describe('HcScrollNavContentComponent', () => {
         });
 
         it('should remove directives from targets if hcScrollTarget list has fewer targets than targets', () => {
-            let scrollTargetElement: Node = testApp.fixture.nativeElement.querySelector(`[${SCROLL_TARGET_ATTRIBUTE}]`).cloneNode(true);
+            const scrollTargetElement: Node = testApp.fixture.nativeElement.querySelector(`[${SCROLL_TARGET_ATTRIBUTE}]`).cloneNode(true);
             (scrollTargetElement as HTMLElement).id = "z1";
 
-            let targetsResetSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'reset').and.callThrough();
-            let targetsNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'notifyOnChanges').and.callThrough();
+            const targetsResetSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'reset').and.callThrough();
+            const targetsNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'notifyOnChanges').and.callThrough();
 
             spyOn(testApp.contentComponent["_elementRef"].nativeElement, 'querySelectorAll').and.returnValue([scrollTargetElement]);
 
@@ -241,15 +241,15 @@ describe('HcScrollNavContentComponent', () => {
         });
 
         it('should update directives from targets if hcScrollTarget list has different hcScrollTarget', () => {
-            let scrollTargetElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_TARGET_ATTRIBUTE}]`);
-            let newNodeArray: Node[] = [];
+            const scrollTargetElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_TARGET_ATTRIBUTE}]`);
+            const newNodeArray: Node[] = [];
             scrollTargetElements.forEach((node) => {
                 newNodeArray.push(node.cloneNode(true));
             });
             (newNodeArray[0] as HTMLElement).id = "z1";
 
-            let targetsResetSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'reset').and.callThrough();
-            let targetsNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'notifyOnChanges').and.callThrough();
+            const targetsResetSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'reset').and.callThrough();
+            const targetsNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'notifyOnChanges').and.callThrough();
 
             spyOn(testApp.contentComponent["_elementRef"].nativeElement, 'querySelectorAll').and.returnValue(newNodeArray);
 
@@ -262,10 +262,10 @@ describe('HcScrollNavContentComponent', () => {
         });
 
         it('should not update directives from targets if hcScrollTarget list has the same hcScrollTargets', () => {
-            let scrollTargetElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_TARGET_ATTRIBUTE}]`);
+            const scrollTargetElements: NodeList = testApp.fixture.nativeElement.querySelectorAll(`[${SCROLL_TARGET_ATTRIBUTE}]`);
 
-            let targetsResetSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'reset').and.callThrough();
-            let targetsNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'notifyOnChanges').and.callThrough();
+            const targetsResetSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'reset').and.callThrough();
+            const targetsNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'notifyOnChanges').and.callThrough();
 
             spyOn(testApp.contentComponent["_elementRef"].nativeElement, 'querySelectorAll').and.returnValue(scrollTargetElements);
 

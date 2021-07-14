@@ -18,7 +18,7 @@ export class ComponentUsageComponent {
         });
     }
 
-    docLoaded() {
+    docLoaded(): void {
         const preTags: Array<ElementRef> = this.el.nativeElement.getElementsByTagName('pre');
         for (const pre of preTags) {
             const syntaxHighlight = new HighlightDirective( pre );

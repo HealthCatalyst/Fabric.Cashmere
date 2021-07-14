@@ -6,11 +6,11 @@ import {highlightBlock} from 'highlight.js';
 })
 export class HighlightDirective implements AfterViewInit {
     @Input()
-    lineNumbers: boolean = true;
+    lineNumbers = true;
 
     constructor(private el: ElementRef) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         const highlightElement: HTMLPreElement = this.el.nativeElement ? this.el.nativeElement : this.el;
         highlightBlock(highlightElement);
         if (this.lineNumbers) {

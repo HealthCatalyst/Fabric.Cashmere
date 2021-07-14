@@ -56,7 +56,7 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
         this._ngZone.runOutsideAngular(() => this._doCheckSubject.next());
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         // debounceTime allows the component to render before the margins are calculated
         this._doCheckSubject
             .pipe(
@@ -135,7 +135,7 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
     }
 
     _validateDrawers(): void {
-        for (let drawer of this._drawers.toArray()) {
+        for (const drawer of this._drawers.toArray()) {
             if (drawer.align === 'right') {
                 if (this._rightDrawer != null) {
                     throwDrawerContainerError('right');

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /**
  * @license
  * Copyright Health Catalyst All Rights Reserved.
@@ -23,7 +25,7 @@ export function HC_DATE_LOCALE_FACTORY(): string {
 /** Adapts type `D` to be usable as a date by cdk-based components that work with dates. */
 export abstract class DateAdapter<D> {
     /** The locale to use for all dates. */
-    protected locale: any;
+    protected locale;
 
     /** A stream that emits when the locale changes. */
     get localeChanges(): Observable<void> {

@@ -59,7 +59,7 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         return this._readonly;
     }
 
-    set readonly(isReadOnly) {
+    set readonly(isReadOnly: boolean) {
         this._readonly = parseBooleanAttribute(isReadOnly);
     }
 
@@ -74,7 +74,7 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         return this._isDisabled;
     }
 
-    set disabled(disabledInput) {
+    set disabled(disabledInput: boolean) {
         this._isDisabled = parseBooleanAttribute(disabledInput);
 
         if (this._focused) {
@@ -89,7 +89,7 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         return this._isRequired;
     }
 
-    set required(requiredInput) {
+    set required(requiredInput: boolean) {
         this._isRequired = parseBooleanAttribute(requiredInput);
     }
 
@@ -119,12 +119,12 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
     }
 
     @HostListener('blur')
-    _onBlur() {
+    _onBlur(): void {
         this._changeFocus(false);
     }
 
     @HostListener('focus')
-    _onFocus() {
+    _onFocus(): void {
         this._changeFocus(true);
     }
 
@@ -141,7 +141,7 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
     }
 
     @HostListener('input')
-    _inputEvent() {
+    _inputEvent(): void {
         // causes angular to run change detection on input event
     }
 

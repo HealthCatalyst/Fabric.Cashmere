@@ -7,14 +7,14 @@ import { isDefined } from '../util';
 export class PicklistService {
     availablePane: PickPaneComponent;
     selectedPane: PickPaneComponent;
-    public reset(availablePane: PickPaneComponent, selectedPane: PickPaneComponent) {
+    public reset(availablePane: PickPaneComponent, selectedPane: PickPaneComponent): void {
         this.availablePane = availablePane;
         this.selectedPane = selectedPane;
     }
 
     /** When the option/items are updated, update corresponding selected options in the selected pane.
      *  Make sure they aren't duplicated in the available pane */
-    public mapIncomingOptionsToSelected(bindValue?: string) {
+    public mapIncomingOptionsToSelected(bindValue?: string): void {
         if (!isDefined(this.availablePane) || !isDefined(this.selectedPane)) { return; }
         const selectedItems = this.selectedPane.itemsList.items.filter(i => !i.isParent);
         selectedItems.forEach(selected => {

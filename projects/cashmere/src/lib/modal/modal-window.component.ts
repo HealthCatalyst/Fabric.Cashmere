@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Component, ElementRef, HostBinding, HostListener, Input, ViewEncapsulation} from '@angular/core';
 import {ActiveModal} from './active-modal';
@@ -16,7 +18,6 @@ import {ActiveModal} from './active-modal';
         </div>
     `,
     encapsulation: ViewEncapsulation.None,
-    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-modal-window'},
     styleUrls: ['./modal-window.component.scss'],
     animations: [
@@ -42,17 +43,17 @@ export class ModalWindowComponent {
     constructor(private activeModal: ActiveModal, private el: ElementRef) {}
 
     @HostBinding('@fadeInOut')
-    _fadeInOut() {
+    _fadeInOut(): unknown {
         return state;
     }
 
     @HostListener('mousedown', ['$event'])
-    _overlayClick(event: any) {
+    _overlayClick(event: unknown): void {
         let modalContentNotPresent = true;
-        let path = this._eventPath(event);
-        let modalWindowTargetIncluded = path.findIndex(p => p === this.el.nativeElement) > -1;
-        let classList: (DOMTokenList | undefined)[] = path.map(p => p.classList);
-        for (let cl of classList) {
+        const path = this._eventPath(event);
+        const modalWindowTargetIncluded = path.findIndex(p => p === this.el.nativeElement) > -1;
+        const classList: (DOMTokenList | undefined)[] = path.map(p => p.classList);
+        for (const cl of classList) {
             if (cl) {
                 if (cl.contains('hc-modal-content')) {
                     modalContentNotPresent = false;
@@ -73,8 +74,8 @@ export class ModalWindowComponent {
     }
 
     // Serves as a polyfill for Event.composedPath() or Event.Path
-    _eventPath(evt: any) {
-        let path = (evt.composedPath && evt.composedPath()) || evt.path,
+    _eventPath(evt: any): typeof globalThis[] {
+        const path = (evt.composedPath && evt.composedPath()) || evt.path,
             target = evt.target;
 
         if (path != null) {
@@ -88,7 +89,7 @@ export class ModalWindowComponent {
 
         function _getParents(node, memo?) {
             memo = memo || [];
-            let parentNode = node.parentNode;
+            const parentNode = node.parentNode;
 
             if (!parentNode) {
                 return memo;

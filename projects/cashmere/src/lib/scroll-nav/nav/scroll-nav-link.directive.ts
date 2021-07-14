@@ -11,7 +11,7 @@ export class ScrollNavLinkDirective {
     _hostClass = true;
 
     /** The `nativeElement` of the corresponding `hcScrollTarget` that you would like to link to. */
-    public nativeElement: any;
+    public nativeElement: HTMLElement;
 
     private readonly CLICKED_SUBSECTION_CLASS = 'hc-scroll-nav-clicked-subsection';
     private readonly SECTION_TAG_NAME = 'SECTION';
@@ -23,7 +23,7 @@ export class ScrollNavLinkDirective {
     }
 
     public _setDirectiveToNode(node: Node): void {
-        this.nativeElement = node;
+        this.nativeElement = node as HTMLElement;
         this.hcScrollLink = (node as HTMLElement).getAttribute('hcScrollLink');
         this.renderer.addClass(node, 'hc-scroll-nav-link');
 
@@ -40,13 +40,13 @@ export class ScrollNavLinkDirective {
         });
     }
 
-    @HostListener('keydown.enter') _onEnter() {
+    @HostListener('keydown.enter') _onEnter(): void {
         if (this.hcScrollLink) {
             this.navigateToSection(this.hcScrollLink);
         }
     }
 
-    @HostListener('click') _onClick() {
+    @HostListener('click') _onClick(): void {
         if (this.hcScrollLink) {
             this.navigateToSection(this.hcScrollLink);
         }

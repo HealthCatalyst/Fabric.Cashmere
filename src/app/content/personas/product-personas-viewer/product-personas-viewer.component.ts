@@ -10,7 +10,7 @@ import {ProductCentricIndexService, ProductFile} from '../product-centric-index-
     styleUrls: ['./product-personas-viewer.component.scss']
 })
 export class ProductPersonasViewerComponent implements OnInit, OnDestroy {
-    public document: string = '';
+    public document = '';
     public orgChart = false;
     private unsubscribe = new Subject<void>();
 
@@ -20,7 +20,7 @@ export class ProductPersonasViewerComponent implements OnInit, OnDestroy {
         public productCentricIndexService: ProductCentricIndexService
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.activatedRoute.paramMap.pipe(takeUntil(this.unsubscribe)).subscribe(queryParams => {
             const route = queryParams.get('id');
             const selectedProduct: ProductFile | undefined = this.productCentricIndexService.productPersonasLists.find(

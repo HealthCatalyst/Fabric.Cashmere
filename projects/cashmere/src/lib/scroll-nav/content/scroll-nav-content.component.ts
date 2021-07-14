@@ -37,14 +37,14 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
      * target the last item with css. *Defaults to true.* */
     @Input() public makeLastTargetFullHeight = true;
     /** Adjust the min height of the last target */
-    @Input() public lastTargetMinHeightAdjustment: number = 0;
+    @Input() public lastTargetMinHeightAdjustment = 0;
     /** Number in pixels, used to give a little leeway in the shifting of the active nav when scrolling. *Defaults to 0.*
      * Example: If set to 40, if showing just the bottom 40 pixels of the section before, count the next section as active. */
     @Input() public bufferSpace = this.DEFAULT_BUFFER;
     /** If true, applies smooth scrolling via css. *Defaults to true.* */
     @Input() public shouldAnimateScroll = true;
     /** Set to true to enable the component to change for dynamic content changes that might not be picked up by Angular */
-    @Input() public hasDynamicContent: boolean = false;
+    @Input() public hasDynamicContent = false;
     /** Fires when a new section is scrolled into view. Broadcasts the id of that section. */
     @Output() public newSectionInView: EventEmitter<string> = new EventEmitter<string>();
     @ViewChild('scrollContainer', {read: CdkScrollable, static: false}) public _cdkScrollableElement: CdkScrollable;
@@ -59,8 +59,8 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     private minHeightForLastTargetSet = false;
     private systemScrollToElementId: string | undefined;
     private lastElementScrolledTo: HTMLElement;
-    private systemScrollCount: number = 0;
-    private dynamicInterval: any;
+    private systemScrollCount = 0;
+    private dynamicInterval;
 
     private readonly SCROLL_TARGET_ATTRIBUTE = 'hcScrollTarget';
 
@@ -93,8 +93,8 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
         });
 
         document.onclick = (event: MouseEvent) => {
-            let element: HTMLElement | null = (event.target as HTMLElement).closest('li[hcscrolllink]');
-            let scrollLinkAttribute: string | null | undefined = element?.getAttribute('hcscrolllink');
+            const element: HTMLElement | null = (event.target as HTMLElement).closest('li[hcscrolllink]');
+            const scrollLinkAttribute: string | null | undefined = element?.getAttribute('hcscrolllink');
             if (scrollLinkAttribute) {
                 this.systemScrollToElementId = scrollLinkAttribute;
             }
@@ -107,7 +107,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
         }
     }
 
-    @HostListener('window:resize') _onWindowResize() {
+    @HostListener('window:resize') _onWindowResize(): void {
         if (this.makeLastTargetFullHeight) {
             this.minHeightForLastTargetSet = false;
         }
@@ -122,16 +122,16 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
             return;
         }
 
-        let scrollTargetNodeList: NodeList = this._elementRef.nativeElement.querySelectorAll(`[${this.SCROLL_TARGET_ATTRIBUTE}]`);
+        const scrollTargetNodeList: NodeList = this._elementRef.nativeElement.querySelectorAll(`[${this.SCROLL_TARGET_ATTRIBUTE}]`);
 
         // create array to make the difference calculation off of
-        let scrollTargetList: CombinedTargetList[] = [];
+        const scrollTargetList: CombinedTargetList[] = [];
         scrollTargetNodeList.forEach((dynamicTarget: HTMLElement) => {
             scrollTargetList.push({ id: dynamicTarget.id, targetElement: dynamicTarget });
         });
 
         if (this.targets.length !== scrollTargetList.length || differenceBy(scrollTargetList, this._scrollTargets, 'id').length > 0) {
-            let scrollTargetDirectiveArray: ScrollNavTargetDirective[] = [];
+            const scrollTargetDirectiveArray: ScrollNavTargetDirective[] = [];
             scrollTargetList.forEach((dynamicTarget) => {
                 const scrollNavTargetDirective: ScrollNavTargetDirective = new ScrollNavTargetDirective(<ElementRef>{}, this.renderer);
                 scrollNavTargetDirective._setDirectiveToNode(dynamicTarget.targetElement);
@@ -144,20 +144,20 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     }
 
     /** Scroll to top and reset the 'automatic full height for the last item' setting. */
-    public refresh() {
+    public refresh(): void {
         this.scrollToTop();
         this.minHeightForLastTargetSet = false;
     }
 
     /** Helper function to scroll to the top of the content area. */
-    public scrollToTop() {
+    public scrollToTop(): void {
         this._cdkScrollableElement.scrollTo({top: 0});
     }
 
     /** Will update the navigation state. */
-    public checkActiveSection() {
+    public checkActiveSection(): void {
         if (this._scrollTargets.length > 0) {
-            let offset: number = this._cdkScrollableElement.measureScrollOffset('top') + this._scrollTargets[0].offsetTop;
+            const offset: number = this._cdkScrollableElement.measureScrollOffset('top') + this._scrollTargets[0].offsetTop;
 
             this._scrollTargets.forEach((target, index) => {
                 const el = target;
@@ -165,11 +165,11 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
                 let nextOffset = 0;
 
                 if (index > 0) {
-                    initialOffset = el.offsetTop - this.bufferSpace;
+                    initialOffset = (el as HTMLElement).offsetTop - this.bufferSpace;
                 }
                 if (index + 1 < this._scrollTargets.length) {
                     const nextEl = this._scrollTargets[index + 1];
-                    nextOffset = nextEl.offsetTop;
+                    nextOffset = (nextEl as HTMLElement).offsetTop;
                 }
 
                 if (
@@ -177,8 +177,8 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
                     (initialOffset && !nextOffset && offset >= initialOffset) ||
                     (!initialOffset && nextOffset && offset < nextOffset)
                 ) {
-                    this.lastElementScrolledTo = el;
-                    this.setActiveSection(el.getAttribute('id') || '');
+                    this.lastElementScrolledTo = el as HTMLElement;
+                    this.setActiveSection((el as HTMLElement).getAttribute('id') || '');
 
                 }
             });

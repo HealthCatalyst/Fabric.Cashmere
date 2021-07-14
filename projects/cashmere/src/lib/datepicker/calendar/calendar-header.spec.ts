@@ -9,8 +9,6 @@ import {CalendarComponent} from './calendar.component';
 import {JAN, FEB, DEC} from '../../utils/month-constants';
 import {yearsPerPage} from '../multi-year-view/multi-year-view.component';
 
-// tslint:disable:no-non-null-assertion
-// tslint:disable:component-class-suffix
 @Component({
     template: `
         <hc-calendar

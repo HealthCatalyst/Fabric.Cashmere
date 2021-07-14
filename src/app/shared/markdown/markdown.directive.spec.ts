@@ -1,4 +1,3 @@
-// tslint:disable:max-classes-per-file
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MarkdownDirective} from './markdown.directive';
@@ -9,7 +8,7 @@ import {MarkdownDirective} from './markdown.directive';
     `
 })
 class Test1Component {
-    markdownInput: string = `hello world`;
+    markdownInput = `hello world`;
     highlight: boolean;
     lineNumbers: boolean;
 }
@@ -20,10 +19,10 @@ class Test1Component {
     `
 })
 class Test2Component {
-    markdownInput: string = `hello world`;
+    markdownInput = `hello world`;
     sanitize: boolean;
-    highlight: boolean = true;
-    lineNumbers: boolean = true;
+    highlight = true;
+    lineNumbers = true;
 }
 
 describe('MarkdownDirective', () => {
@@ -31,7 +30,7 @@ describe('MarkdownDirective', () => {
     let el: HTMLElement;
     let comp: Test1Component | Test2Component;
 
-    function getHtml(selector: string = 'div'): string | undefined {
+    function getHtml(selector = 'div'): string | undefined {
         const ret = el && el.querySelector && el.querySelector(selector);
         if (ret) {
             return ret.innerHTML;
@@ -39,7 +38,7 @@ describe('MarkdownDirective', () => {
         return undefined;
     }
 
-    function getHtmlCount(selector: string = 'div'): number {
+    function getHtmlCount(selector = 'div'): number {
         const ret = el && el.querySelectorAll && el.querySelectorAll(selector);
         if (ret) {
             return ret.length;
@@ -47,7 +46,7 @@ describe('MarkdownDirective', () => {
         return 0;
     }
 
-    function getText(selector: string = 'div'): string | undefined {
+    function getText(selector = 'div'): string | undefined {
         const ret = el && el.querySelector && el.querySelector(selector);
         if (ret) {
             return ret.textContent || undefined;

@@ -1,7 +1,6 @@
 // script for generating a new example
 // main function is newExample() below
 
-// tslint:disable:no-console - as this is run from the CLI we are OK with console logging
 import chalk from 'chalk';
 import * as yargs from 'yargs';
 import {readdirSync, lstatSync, mkdirSync, readFileSync, writeFileSync, existsSync} from 'fs';

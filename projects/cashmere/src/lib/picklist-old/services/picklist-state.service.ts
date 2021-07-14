@@ -15,7 +15,7 @@ export class PicklistStateService {
 
     public constructor(private localFilterService: PicklistFilterLocalService) {}
 
-    public reset(settings: PicklistSettings, optionsSource: PicklistOptionsSource, pane: PicklistPaneComponent) {
+    public reset(settings: PicklistSettings, optionsSource: PicklistOptionsSource, pane: PicklistPaneComponent): void {
         this.picklist = settings;
         this.pane = pane;
         this.optionsSource = optionsSource;
@@ -23,14 +23,14 @@ export class PicklistStateService {
         this.clearList(this.valueSetList);
     }
 
-    public updateValueList(options: IValueOption[], searchTokens: string[] = []) {
+    public updateValueList(options: IValueOption[], searchTokens: string[] = []): void {
         const listOptions = options.map(v => new ValueListOption(v, v.code));
         const companionList = this.pane.companion ? this.pane.companion.valueList : null;
         this.valueList.sort = this.picklist.sort;
         this.updateList(listOptions, this.valueList, companionList, searchTokens);
     }
 
-    public updateValueSetList(options: IValueSetOption[], searchTokens: string[] = []) {
+    public updateValueSetList(options: IValueSetOption[], searchTokens: string[] = []): void {
         const listOptions = new Array<ValueSetListOption>();
         const companionList = this.pane.companion ? this.pane.companion.valueSetList : null;
         options.forEach(v => {
@@ -44,7 +44,7 @@ export class PicklistStateService {
         this.updateList(listOptions, this.valueSetList, companionList, searchTokens);
     }
 
-    public clearList<T extends SelectListOption>(list: FilterableSelectList<T>) {
+    public clearList<T extends SelectListOption>(list: FilterableSelectList<T>): void {
         list.options.clear();
         list.filteredOptions.length = 0;
         list.selectedOptions.clear();

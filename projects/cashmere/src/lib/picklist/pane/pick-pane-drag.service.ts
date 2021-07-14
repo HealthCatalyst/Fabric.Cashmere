@@ -10,25 +10,25 @@ import { PickOption } from '../pick.types';
 export class PickPaneDragService {
     private pane: PickPaneComponent;
 
-    public reset(pane: PickPaneComponent) {
+    public reset(pane: PickPaneComponent): void {
         this.pane = pane;
     }
 
-    public drag(event: DragEvent, list: ItemsList, item: PickOption) {
+    public drag(event: DragEvent, list: ItemsList, item: PickOption): void {
         event.stopPropagation();
         if (!item.selected) { list.clearSelected(true); }
         list.select(item);
         this.pane._isDragging = true;
     }
 
-    public allowDrop(event: DragEvent) {
+    public allowDrop(event: DragEvent): void {
         if (!this.pane._isDragging) {
             event.preventDefault();
             this.pane._willAcceptDrop = true;
         }
     }
 
-    public drop(event: DragEvent) {
+    public drop(event: DragEvent): void {
         if (this.pane._willAcceptDrop) {
             event.preventDefault();
             this.pane._companionPane.triggerMove.emit();
@@ -38,12 +38,12 @@ export class PickPaneDragService {
         this.dragEnd();
     }
 
-    public dragEnd() {
+    public dragEnd(): void {
         this.pane._isDragging = false;
         this.pane._companionPane._isDragging = false;
     }
 
-    public dragLeave() {
+    public dragLeave(): void {
         this.pane._willAcceptDrop = false;
         this.pane._companionPane._willAcceptDrop = false;
         this.pane.detectChanges();

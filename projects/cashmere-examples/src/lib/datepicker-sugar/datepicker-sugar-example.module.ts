@@ -9,7 +9,7 @@ import * as sugar from 'sugar';
 
 @Injectable()
 export class SugarDateAdapter extends NativeDateAdapter {
-    parse(value: any): Date | null {
+    parse(value: string | number | Date | undefined): Date | null {
         return sugar.Date.create(value);
     }
 }

@@ -44,7 +44,7 @@ export class PickPaneListComponent implements OnInit, OnChanges, OnDestroy {
     @Input() bufferAmount: number;
     @Input() virtualScroll = false;
     @Input() filterValue: string;
-    @Output() update = new EventEmitter<any[]>();
+    @Output() update = new EventEmitter<PickOption[]>();
     @Output() scroll = new EventEmitter<{ start: number; end: number }>();
     @Output() scrollToEnd = new EventEmitter<void>();
     @ViewChild('content', { read: ElementRef, static: true }) contentElementRef: ElementRef;
@@ -86,27 +86,27 @@ export class PickPaneListComponent implements OnInit, OnChanges, OnDestroy {
         return 0;
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._virtualPadding = this.paddingElementRef.nativeElement;
         this._scrollablePanel = this.scrollElementRef.nativeElement;
         this._contentPanel = this.contentElementRef.nativeElement;
         this._handleScroll();
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         if (changes.items) {
             const change = changes.items;
             this._onItemsChange(change.currentValue, change.firstChange);
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroy$.next();
         this._destroy$.complete();
         this._destroy$.unsubscribe();
     }
 
-    scrollTo(option: PickOption, startFromOption = false) {
+    scrollTo(option: PickOption, startFromOption = false): void {
         if (!option) {
             return;
         }
@@ -131,12 +131,12 @@ export class PickPaneListComponent implements OnInit, OnChanges, OnDestroy {
         }
     }
 
-    scrollToCustomOption() {
+    scrollToCustomOption(): void {
         const panel = this._scrollablePanel;
         panel.scrollTop = panel.scrollHeight - panel.clientHeight;
     }
 
-    public refreshListLayout(isInitialList: boolean) {
+    public refreshListLayout(isInitialList: boolean): void {
         if (this.virtualScroll) {
             this._updateItemsRange(isInitialList);
         } else {

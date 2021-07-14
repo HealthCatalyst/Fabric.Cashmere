@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class NullOrEmptyStringPipe implements PipeTransform {
 
-    public transform(value: any, altText: string): string | any {
+    public transform(value: unknown, altText: string): string | unknown {
         if (typeof(value) === 'string') {
             value = value.trim();
             return value ? value : altText;

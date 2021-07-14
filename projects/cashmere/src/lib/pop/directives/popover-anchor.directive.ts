@@ -32,7 +32,7 @@ import { parseBooleanAttribute } from '../../util';
 export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDestroy {
     /** Reference to the popover instance. */
     @Input('hcPop')
-    get attachedPopover() {
+    get attachedPopover(): HcPopComponent {
         return this._attachedPopover;
     }
     set attachedPopover(value: HcPopComponent) {
@@ -45,7 +45,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
 
     /** A string of text to display as a tooltip above an element */
     @Input('hcTooltip')
-    get tooltipText() {
+    get tooltipText(): string {
         return this._tooltipText;
     }
     set tooltipText(value: string) {
@@ -67,7 +67,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
      * Accepts `click`, `mousedown`, `hover`, `rightclick`, or `none`.
      * Note: if "hover" is selected, the backdrop for the popover will be disabled. */
     @Input()
-    get trigger() {
+    get trigger(): HcPopoverTrigger {
         return this._trigger;
     }
     set trigger(val: HcPopoverTrigger) {
@@ -83,7 +83,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
      * Delay is measured in milliseconds.
      */
     @Input()
-    get popoverDelay() {
+    get popoverDelay(): number {
         return this._popoverDelay;
     }
 
@@ -91,14 +91,14 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         this._popoverDelay = Number(val);
     }
 
-    private _popoverDelay: number = 0;
+    private _popoverDelay = 0;
 
     /** Timer that delays togglePopover on hover. */
     private hoverInterval: number;
 
     /** Constrains the content of a popover to a standard css string value; *Defaults to `none`.* */
     @Input()
-    get maxWidth() {
+    get maxWidth(): string {
         return this._attachedPopover.maxWidth;
     }
 
@@ -121,17 +121,17 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
 
     /** Object or value that can be passed into the popover to customize its content */
     @Input()
-    get context() {
+    get context(): unknown {
         return this._anchoring._context;
     }
-    set context(val: any) {
+    set context(val: unknown) {
         this._anchoring._context = val;
     }
 
     /** Alignment of the popover on the horizontal axis. Can be `before`, `start`, `center`, `end`, `after`, or `mouse`.
      * *Defaults to `center`.* */
     @Input()
-    get horizontalAlign() {
+    get horizontalAlign(): HcPopoverHorizontalAlign {
         return this._attachedPopover.horizontalAlign;
     }
     set horizontalAlign(val: HcPopoverHorizontalAlign) {
@@ -143,7 +143,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     /** Alignment of the popover on the vertical axis. Can be `above`, `start`, `center`, `end`, `below`, or `mouse`.
      * *Defaults to `"below"`.* */
     @Input()
-    get verticalAlign() {
+    get verticalAlign(): HcPopoverVerticalAlign {
         return this._attachedPopover.verticalAlign;
     }
     set verticalAlign(val: HcPopoverVerticalAlign) {
@@ -159,7 +159,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     @Output() popoverOpened = new EventEmitter<void>();
 
     /** Emits when the popover is closed. */
-    @Output() popoverClosed = new EventEmitter<any>();
+    @Output() popoverClosed = new EventEmitter<unknown>();
 
     /** Instance of notification service. Will be undefined until attached to a popover. */
     _notifications: PopoverNotificationService;
@@ -175,7 +175,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         private _componentFactoryResolver: ComponentFactoryResolver
     ) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         // Re-emit open and close events
         const opened$ = this._anchoring.popoverOpened.pipe(tap(() => this.popoverOpened.emit()));
         const closed$ = this._anchoring.popoverClosed.pipe(tap(value => this.popoverClosed.emit(value)));
@@ -184,11 +184,11 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
             .subscribe();
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._setupKeyboardEvents();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         clearTimeout(this.hoverInterval);
         this._onDestroy.next();
         this._onDestroy.complete();
@@ -262,10 +262,10 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         }, this.popoverDelay);
     }
 
-    @HostListener('touchend', ['$event'])
-    @HostListener('touchcancel', ['$event'])
-    @HostListener('mouseleave', ['$event'])
-    _hideOnLeave($event: MouseEvent): void {
+    @HostListener('touchend')
+    @HostListener('touchcancel')
+    @HostListener('mouseleave')
+    _hideOnLeave(): void {
         if (this.trigger !== 'hover') {
             return;
         }
@@ -313,7 +313,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     }
 
     /** Closes the popover. */
-    closePopover(value?: any, neighborSubMenusAreOpen: boolean = false): void {
+    closePopover(value?: unknown, neighborSubMenusAreOpen = false): void {
         clearTimeout(this.hoverInterval);
         this._anchoring.closePopover(value, neighborSubMenusAreOpen);
     }

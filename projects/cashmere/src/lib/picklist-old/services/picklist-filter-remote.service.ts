@@ -37,7 +37,7 @@ export class PicklistFilterRemoteService {
 
     public constructor(private stateService: PicklistStateService) {}
 
-    public reset(filterService: PicklistFilterService) {
+    public reset(filterService: PicklistFilterService): void {
         this.filterService = filterService;
         this.currentValuePage = 1;
         this.currentValueSetPage = 1;

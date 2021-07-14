@@ -12,7 +12,7 @@ import { TileHeaderDirective, TileHeaderType } from './tile-header.directive';
     `
 })
 class TestComponent {
-    headerType: string = 'blue';
+    headerType = 'blue';
 }
 
 describe('TileHeaderDirective', () => {

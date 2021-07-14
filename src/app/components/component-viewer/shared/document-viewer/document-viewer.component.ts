@@ -1,5 +1,3 @@
-/* tslint:disable:no-host-metadata-property */
-
 import {Component, ElementRef, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 

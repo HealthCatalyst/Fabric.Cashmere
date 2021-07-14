@@ -6,5 +6,5 @@ import {Directive, HostBinding} from '@angular/core';
 })
 export class SubnavRightDirective {
     @HostBinding('class.hc-subnav-right')
-    _hostClass: boolean = true;
+    _hostClass = true;
 }

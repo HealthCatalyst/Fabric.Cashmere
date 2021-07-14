@@ -7,7 +7,9 @@ import {PickerOverlayComponent} from './picker-overlay.component';
 import {RadioButtonComponent} from '../../radio-button/radio';
 
 class MockOverlayRef {
-    dispose() {}
+    dispose() {
+        // do nothing
+    }
 }
 
 describe('RangeComponent', () => {

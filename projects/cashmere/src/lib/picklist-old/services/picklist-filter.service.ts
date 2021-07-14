@@ -31,12 +31,12 @@ export class PicklistFilterService {
         private localFilterService: PicklistFilterLocalService
     ) {}
 
-    public reset() {
+    public reset(): void {
         this.remoteFilterService.reset(this);
         this.searchTerm = '';
     }
 
-    public runFilter(searchTerm: string) {
+    public runFilter(searchTerm: string): void {
         this.searchTerm = searchTerm;
         if (!this.stateService.optionsSource.isPaged) {
             this.localFilterService.filter(this.valueList, this.searchTokens);
@@ -53,7 +53,7 @@ export class PicklistFilterService {
         return this.remoteFilterService.filter(type, shouldAppend, selectAllCount);
     }
 
-    public loadMore(type: PicklistValueType = 'both', autoLoadMore = false) {
+    public loadMore(type: PicklistValueType = 'both', autoLoadMore = false): void {
         if (type === 'both' || type === 'values') {
             this.remoteFilterService.currentValuePage++;
         }
@@ -70,7 +70,7 @@ export class PicklistFilterService {
         return loading$;
     }
 
-    public reloadIfEmpty() {
+    public reloadIfEmpty(): void {
         const valuesNeedReload = this.valueList.options.size === 0 && this.valueList.additionalRemoteOptions > 0;
         const valueSetsNeedReload = this.valueSetList.options.size === 0 && this.valueSetList.additionalRemoteOptions > 0;
         if (valuesNeedReload || valueSetsNeedReload) {
@@ -78,7 +78,7 @@ export class PicklistFilterService {
         }
     }
 
-    public preFilterOptionsForRemoteMode(valuesMap: Map<string, SelectListOption>, list: FilterableSelectList<SelectListOption>) {
+    public preFilterOptionsForRemoteMode(valuesMap: Map<string, SelectListOption>, list: FilterableSelectList<SelectListOption>): void {
         // if server is handling filtering, but I want to avoid the round trip to the server when moving options
         // I need to double check that those options belong before adding them, or risk errant option counts
         valuesMap.forEach(v => {
@@ -88,7 +88,7 @@ export class PicklistFilterService {
         });
     }
 
-    public showListLoadingIndicators(workTracker: Observable<boolean>, type: PicklistValueType = 'both', isAppending = false) {
+    public showListLoadingIndicators(workTracker: Observable<boolean>, type: PicklistValueType = 'both', isAppending = false): void {
         if (type === 'both' || type === 'values') {
             this.showLoadingIndicatorForList(this.valueList, workTracker, isAppending);
         }

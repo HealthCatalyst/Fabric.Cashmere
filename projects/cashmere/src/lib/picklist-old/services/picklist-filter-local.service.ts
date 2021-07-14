@@ -3,7 +3,7 @@ import {FilterableSelectList, SelectListOption} from '../pane/picklist-pane.mode
 
 @Injectable()
 export class PicklistFilterLocalService {
-    public filter<T extends SelectListOption>(list: FilterableSelectList<T>, searchTokens: string[]) {
+    public filter<T extends SelectListOption>(list: FilterableSelectList<T>, searchTokens: string[]): void {
         list.filteredOptions = [];
         list.options.forEach(item => {
             if (this.itemHasSearchTokens(list, item, searchTokens)) {
@@ -21,6 +21,7 @@ export class PicklistFilterLocalService {
         return searchTokens.every(token => valuesToSearchIn.some(value => value.toLocaleLowerCase().indexOf(token) > -1));
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private getSortFunc<T extends SelectListOption>(list: FilterableSelectList<T>): (a: any, b: any) => number {
         const sortField = list.codeIsSignificant ? 'code' : 'title';
         return (a, b) => a.option[sortField].localeCompare(b.option[sortField]) * (list.sort === "asc" ? -1 : 1);

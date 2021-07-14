@@ -4,7 +4,7 @@ import {PicklistPaneComponent} from './pane/picklist-pane.component';
 import {IPicklistOptions, IPicklistSettings, IValueOption, PicklistOptionsSource, PicklistSettings} from './picklist-old.model';
 
 const supportedSortModes = ['asc', 'desc', 'none'];
-export function validateSortInput(inputStr: string) {
+export function validateSortInput(inputStr: string): void {
     if (supportedSortModes.indexOf(inputStr) < 0) {
         throw Error('Unsupported sort input value: ' + inputStr);
     }
@@ -121,15 +121,15 @@ export class PicklistOldComponent implements ControlValueAccessor {
             return this.picklistSettings.selected;
         }
     }
-    public onChange: any = () => {};
-    public onTouched: any = () => {};
-    public registerOnChange(fn: any) {
+    public onChange: (value: unknown) => void = () => undefined;
+    public onTouch: () => unknown = () => undefined;
+    public registerOnChange(fn: (value: unknown) => void): void {
         this.onChange = fn;
     }
-    public registerOnTouched(fn: any) {
-        this.onTouched = fn;
+    public registerOnTouched(fn: () => unknown): void {
+        this.onTouch = fn;
     }
-    public writeValue(value: IPicklistOptions | string[]) {
+    public writeValue(value: IPicklistOptions | string[]): void {
         if (value) {
             this.value = value;
         }
@@ -138,7 +138,7 @@ export class PicklistOldComponent implements ControlValueAccessor {
     /**
      * Will update the picklist with the given settings, maintaining any previous settings that have not been overridden.
      */
-    public update(settings: IPicklistSettings) {
+    public update(settings: IPicklistSettings): void {
         const updatedSettings = Object.assign(this.picklistSettings, settings);
         this.reset(updatedSettings);
     }
@@ -146,9 +146,9 @@ export class PicklistOldComponent implements ControlValueAccessor {
     /**
      * Will reset the picklist settings with the given settings. (Clears out any previous settings.)
      */
-    public reset(settings: IPicklistSettings = new PicklistSettings()) {
+    public reset(settings: IPicklistSettings = new PicklistSettings()): void {
         this.picklistSettings = Object.assign(new PicklistSettings(), settings);
-        this.resetPanes(this.picklistSettings);
+        this.resetPanes();
         this.setActiveValueType(this.picklistSettings.useValuesets ? 'valueSets' : 'values');
         this.applyChangeToModel();
     }
@@ -156,7 +156,7 @@ export class PicklistOldComponent implements ControlValueAccessor {
     /**
      * Will change the active tab. (Will do nothing if `settings.useValuesets` is false.)
      */
-    public setActiveValueType(type: 'values' | 'valueSets') {
+    public setActiveValueType(type: 'values' | 'valueSets'): void {
         if (!this._available) {
             console.warn('Available picklist pane not available yet.');
             return;
@@ -175,7 +175,7 @@ export class PicklistOldComponent implements ControlValueAccessor {
      * Will move all selected items from the given pane into its companion pane. Used internally by the left and right arrow buttons.
      * @param pane the pane from which we are moving items out of
      */
-    public moveSelectedItems(pane: PicklistPaneComponent) {
+    public moveSelectedItems(pane: PicklistPaneComponent): void {
         const shouldBreakValuesets = pane === this._confirmed;
         const selectedOptions = pane.listService.moveOutSelectedOptions(shouldBreakValuesets);
         if (pane.companion) {
@@ -193,7 +193,7 @@ export class PicklistOldComponent implements ControlValueAccessor {
         this.update({options: {values: valueOptions || []}});
     }
 
-    private resetPanes(settings: IPicklistSettings) {
+    private resetPanes() {
         if (!(this._available && this._confirmed)) {
             console.warn('Picklist panes not available yet.');
             return;
@@ -222,7 +222,7 @@ export class PicklistOldComponent implements ControlValueAccessor {
 
         this.changed.emit();
         this.onChange(this.value);
-        this.onTouched();
+        this.onTouch();
     }
 
     private convertStringsToValueOptions(vals: Array<string> | null): IValueOption[] | null {

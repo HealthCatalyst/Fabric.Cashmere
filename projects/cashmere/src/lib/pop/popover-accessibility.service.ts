@@ -15,11 +15,11 @@ export class HcPopoverAccessibilityService implements OnDestroy {
         window.addEventListener('keydown', this.handleKeydown);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy():void {
         window.removeEventListener('keydown', this.handleKeydown);
     }
 
-    registerNotifier(notifier: HcPopKeyboardNotifier) {
+    registerNotifier(notifier: HcPopKeyboardNotifier): void {
         this.notifiers.push(notifier);
     }
 

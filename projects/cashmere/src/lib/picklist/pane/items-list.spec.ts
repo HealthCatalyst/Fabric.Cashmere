@@ -4,7 +4,7 @@ import { DefaultSelectionModel } from './selection-model';
 import { PickPaneDragService } from './pick-pane-drag.service';
 import { PicklistService } from '../picklist.service';
 import { PickOption } from '../pick.types';
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, ElementRef } from '@angular/core';
 
 let list: ItemsList;
 let cmp: PickPaneComponent;
@@ -494,7 +494,7 @@ describe('ItemsList', () => {
         });
         it('converts raw object value into an option', () => {
             const result = list._createHcOption({ countVal: 3 });
-            expect((result.value as Object)['countVal']).toBe(3);
+            expect((result.value as Record<string, unknown>)['countVal']).toBe(3);
         });
         it('use given index', () => {
             const result = list._createHcOption(3, 2);
@@ -522,7 +522,7 @@ describe('ItemsList', () => {
     function ngSelectFactory(): PickPaneComponent {
         return new PickPaneComponent(
             () => new DefaultSelectionModel(),
-            {} as any,
+            new ElementRef<HTMLElement>(document.createElement('div')),
             new PicklistService,
             (null as unknown) as ChangeDetectorRef,
             new PickPaneDragService());

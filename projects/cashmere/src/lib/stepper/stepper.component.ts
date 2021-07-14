@@ -2,7 +2,7 @@ import {Component, Input, AfterContentInit, HostBinding, ViewEncapsulation, Outp
 import {Router, NavigationEnd, Params, UrlSerializer} from '@angular/router';
 import {parseBooleanAttribute} from '../util';
 
-export function throwErrorForMissingRouterLink(stepsWithoutRouterLink: StepInterface[]) {
+export function throwErrorForMissingRouterLink(stepsWithoutRouterLink: StepInterface[]): void {
     const stepLabels = stepsWithoutRouterLink.map(step => step.label);
     throw Error(`Routerlink missing on ${stepLabels.join(',')}`);
 }
@@ -61,7 +61,7 @@ export class StepperComponent implements AfterContentInit {
     get showStepCount(): boolean {
         return this._showStepCount;
     }
-    set showStepCount(value) {
+    set showStepCount(value: boolean) {
         this._showStepCount = parseBooleanAttribute(value);
     }
     private _showStepCount = false;
@@ -71,7 +71,7 @@ export class StepperComponent implements AfterContentInit {
     get useRouterOutlet(): boolean {
         return this._useRouterOutlet;
     }
-    set useRouterOutlet(value) {
+    set useRouterOutlet(value: boolean) {
         this._useRouterOutlet = parseBooleanAttribute(value);
     }
     private _useRouterOutlet = true;
@@ -111,14 +111,14 @@ export class StepperComponent implements AfterContentInit {
         });
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._checkForRouterUse();
         if (this._routerEnabled) {
             this.findCurrentStep();
         }
     }
 
-    _stepClick(index: number | undefined) {
+    _stepClick(index: number | undefined): void {
         if (!this._routerEnabled && index !== undefined && this.steps[index].disabled !== true) {
             this._activeIndex = index;
             this.activeIndexChange.emit(this._activeIndex);
@@ -136,7 +136,7 @@ export class StepperComponent implements AfterContentInit {
     }
 
     /** Can be used to activate the current step following @Input() steps routerLink or queryParams updates  */
-    findCurrentStep() {
+    findCurrentStep(): void {
         const foundActiveRouteIndex = this.steps.findIndex(step => {
             const urlTree = this.router.createUrlTree([step.routerLink], {queryParams: step.queryParams});
             const stepURL = this.urlSerializer.serialize(urlTree);

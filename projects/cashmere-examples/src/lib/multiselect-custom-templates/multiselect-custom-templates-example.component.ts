@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
+interface Transport { name: string, icon: string, color: string, type: string | null }
+
 /**
  * @title Multiselect with customized templates
  */
@@ -11,7 +13,7 @@ import {FormControl} from '@angular/forms';
 })
 export class MultiselectCustomTemplatesExampleComponent {
     readonly selected = new FormControl([]);
-    transportOptions = [
+    transportOptions: Transport[] = [
         {name: 'Bus', icon: 'bus', color: 'blue', type: 'land'},
         {name: 'Train', icon: 'train', color: 'green', type: 'land'},
         {name: 'Ferry', icon: 'ship', color: 'teal', type: 'sea'},
@@ -20,8 +22,8 @@ export class MultiselectCustomTemplatesExampleComponent {
         {name: 'Space Shuttle', icon: 'space-shuttle', color: 'dark-blue', type: 'air'}
     ];
 
-    customSearchFn(term: string, item: any) {
+    customSearchFn(term: string, item: Transport): boolean {
         term = term.toLowerCase();
-        return item.name.toLowerCase().indexOf(term) > -1 || item.type.toLowerCase().indexOf(term) > -1;
+        return item.name.toLowerCase().indexOf(term) > -1 || (!!item.type && item.type.toLowerCase().indexOf(term) > -1);
     }
 }

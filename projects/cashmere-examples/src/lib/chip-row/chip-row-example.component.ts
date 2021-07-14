@@ -21,7 +21,7 @@ export class ChipRowExampleComponent {
         'ER Visit (3)'
     ];
 
-    closeChip(chip: string) {
+    closeChip(chip: string): void {
         for (let i = 0; i < this.chipset.length; i++) {
             if (chip === this.chipset[i]) {
                 this.chipset.splice(i, 1);

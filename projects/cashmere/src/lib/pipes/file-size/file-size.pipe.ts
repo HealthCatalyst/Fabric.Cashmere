@@ -6,7 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class FileSizePipe implements PipeTransform {
     private units: string[] = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
 
-    public transform(bytes: number, precision: number = 2): string {
+    public transform(bytes: number, precision = 2): string {
         const originalInput = bytes;
         if (typeof bytes === 'string') {
             bytes = +bytes;
@@ -28,7 +28,7 @@ export class FileSizePipe implements PipeTransform {
             precision = 100;
         }
 
-        let unit: number = 0;
+        let unit = 0;
 
         while (bytes >= 1024) {
             bytes /= 1024;

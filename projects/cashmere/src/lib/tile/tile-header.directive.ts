@@ -11,13 +11,13 @@ export class TileHeaderDirective {
     private _type: TileHeaderType = 'blue';
 
     @HostBinding('class.hc-tile-header-blue')
-    _headerBlue: boolean = true;
+    _headerBlue = true;
 
     @HostBinding('class.hc-tile-header-title')
-    _headerTitle: boolean = false;
+    _headerTitle = false;
 
     @HostBinding('class.hc-tile-header-center')
-    _headerCenter: boolean = false;
+    _headerCenter = false;
 
     /** Sets the styling of the header, choices include `blue`, `center`, and `title`; defaults to `blue` */
     @Input()

@@ -45,18 +45,18 @@ describe('ModalService', () => {
         });
 
         it('should open a modal with options and set the size', () => {
-            let options: ModalOptions = {size: 'lg'};
+            const options: ModalOptions = {size: 'lg'};
             mockModalRef = service.open( ModalOverviewExampleModalComponent, options);
 
-            let div = mockModalRef.window?.location.nativeElement.querySelector('hc-modal');
+            const div = mockModalRef.window?.location.nativeElement.querySelector('hc-modal');
             expect(div.className).toContain('hc-modal-lg');
         });
 
         it('should open a modal with options and set to resizable', () => {
-            let options: ModalOptions = {isResizable: true};
+            const options: ModalOptions = {isResizable: true};
             mockModalRef = service.open( ModalOverviewExampleModalComponent, options);
 
-            let div = mockModalRef.window?.location.nativeElement.querySelector('hc-modal');
+            const div = mockModalRef.window?.location.nativeElement.querySelector('hc-modal');
             expect(div.className).toContain('hc-modal-resizable');
         });
     });

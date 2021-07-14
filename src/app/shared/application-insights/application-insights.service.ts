@@ -21,13 +21,13 @@ export class ApplicationInsightsService {
         }
     }
 
-    logPageView(name?: string, uri?: string) {
+    logPageView(name?: string, uri?: string): void {
         if ('instrumentationKey' in environment) {
             this.appInsights.trackPageView({name, uri});
         }
     }
 
-    logEvent(trigger: string, target: string) {
+    logEvent(trigger: string, target: string): void {
         if ('instrumentationKey' in environment) {
             this.appInsights.trackEvent({name: 'Example Click', properties: {example: trigger, target: target}});
         }

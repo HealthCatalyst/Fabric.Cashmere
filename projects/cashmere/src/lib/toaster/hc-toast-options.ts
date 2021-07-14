@@ -17,7 +17,7 @@ export interface HcToastOptions {
      * to the right side for standard types. Defaults to false.*/
     clickDismiss?: boolean;
     /** Function to be called when the toast is closed*/
-    toastClosed?: Function;
+    toastClosed?: () => unknown;
     /** Width of the toast in pixels. Minimum is 300px. Or, pass in 0 for an unconstrained width. Defaults to 300px.*/
     width?: number;
     /** When set to true, a progress bar is added to the bottom of the toast. The default is false.

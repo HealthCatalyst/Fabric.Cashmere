@@ -45,6 +45,7 @@ describe('HcBannerComponent', () => {
         });
         describe('when a value is set', () => {
             beforeEach(() => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 component.clickDismiss = ('true' as any) as boolean;
             });
             it('the value is sanitized using parseBooleanAttribute', () => {

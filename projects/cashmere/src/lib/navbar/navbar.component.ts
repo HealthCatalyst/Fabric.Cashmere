@@ -30,11 +30,11 @@ import {NavbarDropdownComponent} from './navbar-dropdown/navbar-dropdown.compone
 export class NavbarComponent implements OnDestroy {
     /** Display name of current user */
     @Input()
-    user: string = '';
+    user = '';
 
     /** Url to application logo image file */
     @Input()
-    appIcon: string = '';
+    appIcon = '';
 
     /** Either url to brand icon image file or HcIcon object for a font glyph */
     @Input()
@@ -42,11 +42,11 @@ export class NavbarComponent implements OnDestroy {
 
     /** Router link triggered when home icon is clicked */
     @Input()
-    homeUri: any[] | string = '';
+    homeUri: unknown[] | string = '';
 
     /** Fixes the position of navbar to the top of the page. *Default is false.* */
     @Input()
-    fixedTop: boolean = false;
+    fixedTop = false;
 
     @ContentChildren(NavbarMobileMenuComponent)
     _mobileMenu: QueryList<NavbarMobileMenuComponent>;
@@ -65,15 +65,15 @@ export class NavbarComponent implements OnDestroy {
 
     private unsubscribe$ = new Subject<void>();
 
-    private _menuOpen: boolean = false;
+    private _menuOpen = false;
     private _linkWidths: Array<number> = [];
-    private _linksTotalWidth: number = 0;
-    public _collapse: boolean = false;
+    private _linksTotalWidth = 0;
+    public _collapse = false;
     public _moreList: Array<MoreItem> = [];
 
     /** Runs the initial calculation of navlink widths after the page has fully rendered */
     @HostListener('window:load')
-    _setupNavLinks() {
+    _setupNavLinks(): void {
         this.refreshNavLinks();
 
         // If links are added dynamically, recheck the navbar link sizing
@@ -83,7 +83,7 @@ export class NavbarComponent implements OnDestroy {
     /** Forces a recalculation of the navbar links to determine how many should be rolling into a More menu.
      * Call this if you've updated the contents of any navbar links. */
     @HostListener('window:resize')
-    refreshNavLinks() {
+    refreshNavLinks(): void {
         if (this._navbarMore) {
             this._navbarMore.closePopover();
         }
@@ -99,15 +99,15 @@ export class NavbarComponent implements OnDestroy {
             return;
         }
 
-        let linksContainerWidth: number = this.navContent.nativeElement.offsetWidth;
-        let curLinks: number = 0;
+        const linksContainerWidth: number = this.navContent.nativeElement.offsetWidth;
+        let curLinks = 0;
 
         // Step through the links until we hit the end of the container, then collapse the
         // remaining into a more menu
         this._navLinks.forEach((t, i) => {
             curLinks += this._linkWidths[i];
 
-            let moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
+            const moreWidth: number = this._linksTotalWidth > linksContainerWidth ? 116 : 0;
             if (curLinks + moreWidth < linksContainerWidth) {
                 t.show();
                 // Reset the parent and positioning of any dropdown popovers that aren't in the More menu
@@ -152,12 +152,12 @@ export class NavbarComponent implements OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
     }
 
-    _toggleMobileMenu() {
+    _toggleMobileMenu(): void {
         if (this._menuOpen) {
             this._mobileMenu.first.hide();
             this._menuOpen = false;
@@ -167,8 +167,8 @@ export class NavbarComponent implements OnDestroy {
         }
     }
 
-    _menuClick(event: any) {
-        let clickTarget: string = event.target.outerHTML;
+    _menuClick(event: Event): void {
+        const clickTarget: string = event?.target?.['outerHTML'];
 
         // Verify that the click in the mobile menu came from a navigation item
         if (clickTarget.indexOf('hclistline') >= 0 && clickTarget.indexOf('menu-dropdown') === -1) {
@@ -180,7 +180,7 @@ export class NavbarComponent implements OnDestroy {
         return this._menuOpen ? 'fa-times' : 'fa-bars';
     }
 
-    _moreClick() {
+    _moreClick(): void {
         if (this._navbarMore) {
             this._navbarMore.closePopover();
         }

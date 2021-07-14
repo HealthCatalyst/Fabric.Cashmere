@@ -13,5 +13,5 @@ import {transformPopover} from '../popover.animations';
 export class HcTooltipComponent extends HcPopComponent {
     /** The content to be display in the tooltip */
     @Input()
-    tooltipContent: string = '';
+    tooltipContent = '';
 }

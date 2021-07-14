@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 
@@ -32,7 +34,7 @@ export class PopoverNotificationService {
     private store = new Subject<PopoverNotification>();
 
     /** Dispatch a notification to all subscribers. */
-    dispatch(notification: PopoverNotification) {
+    dispatch(notification: PopoverNotification): void {
         this.store.next(notification);
     }
 

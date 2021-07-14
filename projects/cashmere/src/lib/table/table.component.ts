@@ -1,5 +1,3 @@
-/* tslint:disable:component-class-suffix no-host-metadata-property */
-
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -61,7 +59,7 @@ export class HcTable<T> extends CdkTable<T> {
         return this._hostHcBordersClass;
     }
 
-    set borders(hasBorders) {
+    set borders(hasBorders: boolean) {
         this._hostHcBordersClass = parseBooleanAttribute(hasBorders);
     }
 
@@ -70,7 +68,7 @@ export class HcTable<T> extends CdkTable<T> {
     get tight(): boolean {
         return this._hostHcTableSmall;
     }
-    set tight(value) {
+    set tight(value: boolean) {
         this._hostHcTableSmall = parseBooleanAttribute(value);
     }
 }

@@ -20,32 +20,33 @@ export function parseBooleanAttribute(value: boolean | string): boolean {
 
 /** Accepts a string, return that string with HTML tag escaped. */
 const helperEl = document.createElement('p');
-export function escapeHTML(string: string) {
+export function escapeHTML(string: string): string {
     helperEl.innerText = string; // Setting inner text causes escaping
     return helperEl.innerHTML;
 }
 
 /** Return true if given value is not null and not undefined. */
-export function isDefined(value: any) {
+export function isDefined(value: unknown): boolean {
     return value !== undefined && value !== null;
 }
 
 /** Return true if given value is an object that is defined. */
-export function isObject(value: any) {
+export function isObject(value: unknown): boolean {
     return typeof value === 'object' && isDefined(value);
 }
 
 /** Return true if given value is a promise. */
-export function isPromise(value: any) {
+export function isPromise(value: unknown): boolean {
     return value instanceof Promise;
 }
 
 /** Return true if given value is a function. */
-export function isFunction(value: any) {
+export function isFunction(value: unknown): boolean {
     return value instanceof Function;
 }
 
 /* Open Source `take-until-destroy` operator from: https://github.com/NetanelBasal/ngx-take-until-destroy */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const untilDestroyed = (componentInstance, destroyMethodName = 'ngOnDestroy') => <T>(source: Observable<T>) => {
     const originalDestroy = componentInstance[destroyMethodName];
     if (isFunction(originalDestroy) === false) {
@@ -55,6 +56,7 @@ export const untilDestroyed = (componentInstance, destroyMethodName = 'ngOnDestr
         componentInstance['__takeUntilDestroy'] = new Subject();
 
         componentInstance[destroyMethodName] = function () {
+            // eslint-disable-next-line prefer-rest-params
             isFunction(originalDestroy) && originalDestroy.apply(this, arguments);
             componentInstance['__takeUntilDestroy'].next(true);
             componentInstance['__takeUntilDestroy'].complete();

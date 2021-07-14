@@ -44,10 +44,10 @@ export class CheckboxGroup extends HcFormControlComponent {
     private _checkboxes: QueryList<CheckboxComponent>;
     private _checkboxesArray: CheckboxComponent[];
 
-    _groupState: boolean = false;
-    _parentLabel: string = "Parent Checkbox";
-    _disableParent: boolean = false;
-    _isIndeterminate: boolean = true;
+    _groupState = false;
+    _parentLabel = "Parent Checkbox";
+    _disableParent = false;
+    _isIndeterminate = true;
 
     /** gets all children and subscribes to their events */
     @ContentChildren(
@@ -87,7 +87,7 @@ export class CheckboxGroup extends HcFormControlComponent {
     }
 
     /** Function to handle the indeterminate checkbox */
-    updateParentState() {
+    updateParentState(): void {
         if (this.checkboxes) {
             const checkedCount = this.checkboxes.filter(c => c.checked).length;
             if (checkedCount === this.checkboxes.length) {
@@ -112,7 +112,7 @@ export class CheckboxGroup extends HcFormControlComponent {
     }
 
     /** Function that handles the parent checkbox functionality */
-    toggleCheckAll() {
+    toggleCheckAll(): void {
         if (this._groupState === true) {
             this.checkboxes.filter(c => c.checked = false);
         } else {
@@ -133,9 +133,9 @@ export class CheckboxGroup extends HcFormControlComponent {
 export class CheckboxComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
     private _uniqueId = `hc-checkbox-${nextCheckboxId++}`;
     private _form: NgForm | FormGroupDirective | null;
-    private _checked: boolean = false;
+    private _checked = false;
     private _tabIndex: number;
-    private _parent: boolean = false;
+    private _parent = false;
     private readonly checkboxGroup: CheckboxGroup | null;
     _componentId = this._uniqueId;
 
@@ -167,7 +167,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     get tight(): boolean {
         return this._tight;
     }
-    set tight(value) {
+    set tight(value: boolean) {
         this._tight = parseBooleanAttribute(value);
     }
 
@@ -215,7 +215,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         return this._isRequired;
     }
 
-    set required(requiredVal) {
+    set required(requiredVal: boolean) {
         this._isRequired = parseBooleanAttribute(requiredVal);
     }
 
@@ -228,7 +228,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         return this._isDisabled;
     }
 
-    set disabled(disabledVal) {
+    set disabled(disabledVal: boolean) {
         this._isDisabled = parseBooleanAttribute(disabledVal);
     }
 
@@ -264,13 +264,9 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         this._tabIndex = value == null ? 0 : value;
     }
 
-    get _inputId() {
+    get _inputId(): string {
         return `${this.id || this._uniqueId}-input`;
     }
-
-    private _onChangeFunc: (value: any) => void = () => {};
-
-    private _onTouchFunc: () => any = () => {};
 
     constructor(
         @Attribute('tabindex') tabindex: string,
@@ -294,16 +290,17 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         }
     }
 
-    writeValue(value: any): void {
+    writeValue(value: unknown): void {
         this.checked = !!value;
     }
 
-    registerOnChange(fn: (value: any) => void): void {
-        this._onChangeFunc = fn;
+    public onChange: (value: unknown) => void = () => undefined;
+    public onTouch: () => unknown = () => undefined;
+    public registerOnChange(fn: (value: unknown) => void): void {
+        this.onChange = fn;
     }
-
-    registerOnTouched(fn: () => any): void {
-        this._onTouchFunc = fn;
+    public registerOnTouched(fn: () => unknown): void {
+        this.onTouch = fn;
     }
 
     setDisabledState(disabledVal: boolean): void {
@@ -312,11 +309,11 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     }
 
     /** Toggles the current checked state of the checkbox */
-    toggle() {
+    toggle(): void {
         this.checked = !this.checked;
     }
 
-    _clickEvent(event: Event) {
+    _clickEvent(event: Event): void {
         event.stopPropagation(); // prevent native click event from being dispatched
         if (!this.disabled) {
             if (this.checkboxGroup && this._parent) {
@@ -327,17 +324,17 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         }
     }
 
-    _stopChangeEvent(event: Event) {
+    _stopChangeEvent(event: Event): void {
         event.stopPropagation(); // prevent native change event from emitting its own object through output 'change'
     }
 
     private _emitChangeEvent(): void {
-        this._onChangeFunc(this.checked);
+        this.onChange(this.checked);
         this.change.emit(new CheckboxChangeEvent(this, this.checked));
     }
 
-    _onBlur() {
-        this._onTouchFunc();
+    _onBlur(): void {
+        this.onTouch();
     }
 
     ngDoCheck(): void {

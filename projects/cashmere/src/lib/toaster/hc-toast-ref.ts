@@ -57,6 +57,7 @@ export class HcToastRef {
                     this._afterClosed.next();
                     this._afterClosed.complete();
                     this.componentInstance._componentInstance.unsubscribe();
+                    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                     this.componentInstance = null!;
                 });
 

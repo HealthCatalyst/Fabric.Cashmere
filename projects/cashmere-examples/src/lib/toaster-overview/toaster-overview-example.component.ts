@@ -25,14 +25,14 @@ export class ToasterOverviewExampleComponent {
 
     constructor(private toasterService: HcToasterService) {}
 
-    showToast(content: TemplateRef<any>) {
+    showToast(content: TemplateRef<unknown>): void {
         let showProgress = false;
         if (parseInt(this.toastProgress.value, 10) > 0) {
             showProgress = true;
         }
 
         let toastOutput: HcToastRef;
-        let options: HcToastOptions = {
+        const options: HcToastOptions = {
             header: this.toastHeader.value,
             body: this.toastBody.value,
             position: this.toastPosition.value,
@@ -47,8 +47,8 @@ export class ToasterOverviewExampleComponent {
             options.type = 'custom';
             toastOutput = this.toasterService.addToast(options, content);
         } else if (this.toastType.value === 'custom-component') {
-            let colorArray: Array<string> = ['#00acac', '#007bff', '#f05323', '#a94c9d', '#e7c447', '#776c7f'];
-            let iconArray: Array<string> = ['fa-pied-piper', 'fa-pied-piper-alt', 'fa-leaf', 'fa-coffee', 'fa-beer', 'fa-birthday-cake'];
+            const colorArray: Array<string> = ['#00acac', '#007bff', '#f05323', '#a94c9d', '#e7c447', '#776c7f'];
+            const iconArray: Array<string> = ['fa-pied-piper', 'fa-pied-piper-alt', 'fa-leaf', 'fa-coffee', 'fa-beer', 'fa-birthday-cake'];
 
             options.type = 'custom';
 
@@ -74,11 +74,11 @@ export class ToasterOverviewExampleComponent {
         }
     }
 
-    closeLastToast() {
+    closeLastToast(): void {
         this.toasterService.closeLastToast();
     }
 
-    closeAllToasts() {
+    closeAllToasts(): void {
         this.toasterService.closeAllToasts();
     }
 }

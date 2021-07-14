@@ -35,8 +35,8 @@ export class SearchService {
         });
     }
 
-    loadSearchIndex(): Observable<any> {
-        return this.http.get<any>( './assets/docs/search/search.json' )
+    loadSearchIndex(): Observable<Array<unknown>> {
+        return this.http.get<Array<unknown>>( './assets/docs/search/search.json' )
             .pipe(
                 retry(3), // retry a failed request up to 3 times
                 catchError(this.handleError) // then handle the error

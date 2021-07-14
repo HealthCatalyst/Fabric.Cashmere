@@ -9,7 +9,6 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
     selector: 'hc-toaster',
     templateUrl: './hc-toast.component.html',
     styleUrls: ['./hc-toast.component.scss'],
-    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-toaster'},
     animations: [
         trigger('fade', [
@@ -22,44 +21,45 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
     encapsulation: ViewEncapsulation.None
 })
 export class HcToastComponent {
-    _styleType: string = 'success';
-    _toastIcon: string = 'fa-check-circle';
+    _styleType = 'success';
+    _toastIcon = 'fa-check-circle';
     _headerText: string;
     _bodyText: string;
     _animationState: 'void' | 'enter' | 'leave' = 'enter';
     _animationStateChanged = new EventEmitter<AnimationEvent>();
     _closeClick = new EventEmitter<MouseEvent>();
-    _canDismiss: boolean = false;
-    _toastPortal: Portal<any>;
-    _width: number = 300;
-    _hasProgressBar: boolean = false;
+    _canDismiss = false;
+    _toastPortal: Portal<unknown>;
+    _width = 300;
+    _hasProgressBar = false;
     _progressVal: number;
-    _progressWidth: string = '100%';
+    _progressWidth = '100%';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     readonly _componentInstance = new BehaviorSubject<any>(null);
 
-    get _widthStr() {
+    get _widthStr(): string {
         return this._width ? `${this._width}px` : 'auto';
     }
 
     constructor(public _el: ElementRef, public _viewContainerRef: ViewContainerRef, public _changeRef: ChangeDetectorRef) {}
 
-    _onAnimationStart(event: AnimationEvent) {
+    _onAnimationStart(event: AnimationEvent): void {
         this._animationStateChanged.emit(event);
     }
 
-    _onAnimationDone(event: AnimationEvent) {
+    _onAnimationDone(event: AnimationEvent): void {
         this._animationStateChanged.emit(event);
     }
 
-    _startExitAnimation() {
+    _startExitAnimation(): void {
         this._animationState = 'leave';
     }
 
-    _dismissClick(event: MouseEvent) {
+    _dismissClick(event: MouseEvent): void {
         this._closeClick.emit(event);
     }
 
-    _customComponentAttached(ref: CdkPortalOutletAttachedRef) {
+    _customComponentAttached(ref: CdkPortalOutletAttachedRef): void {
         if (ref instanceof ComponentRef) {
             this._componentInstance.next(ref.instance);
         }

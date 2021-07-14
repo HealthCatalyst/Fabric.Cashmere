@@ -152,16 +152,16 @@ export class MonthViewComponent implements AfterContentInit {
         this._activeDate = this._dateAdapter.today();
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._init();
     }
 
     /** Handles when a new date is selected. */
-    _dateSelected(date: number) {
+    _dateSelected(date: number): void {
         if (this._selectedDate !== date) {
             const selectedYear = this._dateAdapter.getYear(this.activeDate);
             const selectedMonth = this._dateAdapter.getMonth(this.activeDate);
-            let selectedDate = this._dateAdapter.createDate(selectedYear, selectedMonth, date);
+            const selectedDate = this._dateAdapter.createDate(selectedYear, selectedMonth, date);
 
             if (this._selected) {
                 selectedDate.setHours(this._selected.getHours());
@@ -239,7 +239,7 @@ export class MonthViewComponent implements AfterContentInit {
     }
 
     /** Initializes this month view. */
-    _init() {
+    _init(): void {
         this._selectedDate = this._getDateInCurrentMonth(this.selected);
         this._todayDate = this._getDateInCurrentMonth(this._dateAdapter.today());
         this._monthLabel = this._dateAdapter.getMonthNames('short')[this._dateAdapter.getMonth(this.activeDate)].toLocaleUpperCase();
@@ -257,7 +257,7 @@ export class MonthViewComponent implements AfterContentInit {
     }
 
     /** Focuses the active cell after the microtask queue is empty. */
-    _focusActiveCell() {
+    _focusActiveCell(): void {
         this._hcCalendarBody._focusActiveCell();
     }
 
@@ -316,6 +316,7 @@ export class MonthViewComponent implements AfterContentInit {
      * @param obj The object to check.
      * @returns The given object if it is both a date instance and valid, otherwise null.
      */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private _getValidDateOrNull(obj: any): D | null {
         return this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj) ? obj : null;
     }

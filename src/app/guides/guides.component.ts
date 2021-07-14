@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {GuidesService, IGuide} from './guides.service';
+import {GuidesService} from './guides.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
@@ -22,7 +22,7 @@ export class GuidesComponent implements OnDestroy {
         // Listen for vertical tab bar navigation and update the select component
         this.router.events.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
             if (event instanceof NavigationEnd) {
-                for (let entry of this.guidesService.guides) {
+                for (const entry of this.guidesService.guides) {
                     if (event.urlAfterRedirects === `/web/guides/${entry.route}`) {
                         this.thisPage = entry.title;
                         this.appInsights.logPageView(this.thisPage, event.urlAfterRedirects);
@@ -48,8 +48,8 @@ export class GuidesComponent implements OnDestroy {
     }
 
     // Handle changes to the select component and navigate
-    selectUpdate(event: any) {
-        for (let entry of this.guidesService.guides) {
+    selectUpdate(event: string): void {
+        for (const entry of this.guidesService.guides) {
             if (event === entry.title) {
                 this.router.navigate(['/web/guides/' + entry.route]);
                 window.scrollTo(0, 0);
@@ -59,7 +59,7 @@ export class GuidesComponent implements OnDestroy {
     }
 
     // Handle nav changes via the sidebar
-    navUpdate(page: any) {
+    navUpdate(page: string): void {
         this.router.navigate(['/web/guides/' + page]);
         window.scrollTo(0, 0);
     }

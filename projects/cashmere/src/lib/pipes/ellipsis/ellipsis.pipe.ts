@@ -23,14 +23,14 @@ export class EllipsisPipe implements PipeTransform {
         return truncated + EllipsisPipe.ELLIPSIS;
     }
 
-    private firstNWords(value: string, n: number): string {
+    private firstNWords(value: string, n: number): string | undefined {
         const words = value.split(/\s+/g);
         if (words.length <= n) {
             return value;
         }
 
         const pattern = new RegExp('^' + words.slice(0, n).join('\\s+'));
-        return pattern.exec(value)![0];
+        return pattern.exec(value)?.[0];
     }
 
     private firstNCharacters(value: string, n: number): string {

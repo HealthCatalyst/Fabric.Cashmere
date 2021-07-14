@@ -17,7 +17,7 @@ export class NumberAbbreviatorPipe implements PipeTransform {
      * @param threshold represents the number at which we should start abbreviating;
      * if the threshold is 1 million, we'll leave number less than 1 million as is (aside from adding commas or decimal points)
      */
-    public transform(value: number, decimalPoints: number = 2, threshold: number = 1000000): string {
+    public transform(value: number, decimalPoints = 2, threshold = 1000000): string {
         if (value === null) { return value; }
 
         // use defaults if given funky parameters
@@ -49,7 +49,7 @@ export class NumberAbbreviatorPipe implements PipeTransform {
         return (isNegative ? "-" : "") + roundedStringVal + key;
     }
 
-    private roundValue(value: number, decimalPoints: number = 2): number {
+    private roundValue(value: number, decimalPoints = 2): number {
         const rounder = Math.pow(10, decimalPoints);
         return Math.round(value * rounder) / rounder;
     }

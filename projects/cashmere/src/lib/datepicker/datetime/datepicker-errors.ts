@@ -7,7 +7,7 @@
  */
 
 /** @docs-private */
-export function createMissingDateImplError(provider: string) {
+export function createMissingDateImplError(provider: string): Error {
     return Error(
         `Datepicker: No provider found for ${provider}. You must import one of the following ` +
             `modules at your application root: HcNativeDateModule, MatMomentDateModule, or provide a ` +

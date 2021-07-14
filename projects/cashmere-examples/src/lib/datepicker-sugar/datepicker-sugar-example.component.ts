@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
 @Component({
@@ -6,10 +6,6 @@ import {FormControl} from '@angular/forms';
     templateUrl: './datepicker-sugar-example.component.html',
     styleUrls: ['./datepicker-sugar-example.component.scss']
 })
-export class DatepickerSugarExampleComponent implements OnInit {
+export class DatepickerSugarExampleComponent {
     readonly dateControl = new FormControl(new Date(2020, 1, 1));
-
-    constructor() {}
-
-    ngOnInit() {}
 }

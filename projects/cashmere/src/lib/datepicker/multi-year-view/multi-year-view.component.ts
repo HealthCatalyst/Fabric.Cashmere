@@ -118,12 +118,12 @@ export class MultiYearViewComponent implements AfterContentInit {
         this._activeDate = this._dateAdapter.today();
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._init();
     }
 
     /** Initializes this multi-year view. */
-    _init() {
+    _init(): void {
         this._todayYear = this._dateAdapter.getYear(this._dateAdapter.today());
         const activeYear = this._dateAdapter.getYear(this._activeDate);
         const activeOffset = activeYear % yearsPerPage;
@@ -139,7 +139,7 @@ export class MultiYearViewComponent implements AfterContentInit {
     }
 
     /** Handles when a new year is selected. */
-    _yearSelected(year: number) {
+    _yearSelected(year: number): void {
         this.yearSelected.emit(this._dateAdapter.createDate(year, 0, 1));
         const month = this._dateAdapter.getMonth(this.activeDate);
         const daysInMonth = this._dateAdapter.getNumDaysInMonth(this._dateAdapter.createDate(year, month, 1));
@@ -210,7 +210,7 @@ export class MultiYearViewComponent implements AfterContentInit {
     }
 
     /** Focuses the active cell after the microtask queue is empty. */
-    _focusActiveCell() {
+    _focusActiveCell(): void {
         this._hcCalendarBody._focusActiveCell();
     }
 
@@ -253,6 +253,7 @@ export class MultiYearViewComponent implements AfterContentInit {
      * @param obj The object to check.
      * @returns The given object if it is both a date instance and valid, otherwise null.
      */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private _getValidDateOrNull(obj: any): D | null {
         return this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj) ? obj : null;
     }

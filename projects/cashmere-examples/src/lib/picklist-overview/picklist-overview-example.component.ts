@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+interface Doc { id: number, name: string, department: string , disabled?: boolean}
 @Component({
     selector: 'hc-picklist-overview-example',
     templateUrl: './picklist-overview-example.component.html',
@@ -8,7 +9,7 @@ import { FormControl } from '@angular/forms';
 })
 export class PicklistOverviewExampleComponent {
     readonly selectedDoctors = new FormControl([]);
-    doctors = [
+    doctors: Doc[] = [
         { id: 1, name: 'Myrtle Higgins', department: "Oncology"},
         { id: 2, name: 'Thomas McCall', department: "Oncology", disabled: true },
         { id: 3, name: 'Virginia Garner', department: "Oncology" },
@@ -42,12 +43,12 @@ export class PicklistOverviewExampleComponent {
     rightHeaderText = "Selected Doctors";
 
     _customItemId = 12;
-    customItemFn(term: string) {
+    customItemFn(term: string): Doc {
         return { id: this._customItemId++, name: term, department: "Resident" };
     }
 
-    toggleDisabled() {
-        const doc: any = this.doctors[1];
+    toggleDisabled(): void {
+        const doc = this.doctors[1];
         doc.disabled = !doc.disabled;
         this.doctors = [...this.doctors];
     }

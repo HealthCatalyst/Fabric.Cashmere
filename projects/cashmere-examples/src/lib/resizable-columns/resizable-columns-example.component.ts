@@ -53,8 +53,8 @@ export class ResizableColumnsExampleComponent {
     isResizing = false;
 
     columnResized(column: number, cellChange: CellResizeEvent): void {
-        let sizeChange = this.columnObjects[column].width - cellChange.width;
-        let direction = cellChange.directionLeft ? -1 : 1;
+        const sizeChange = this.columnObjects[column].width - cellChange.width;
+        const direction = cellChange.directionLeft ? -1 : 1;
 
         if (
             cellChange.width >= this.columnObjects[column].minWidth &&

@@ -2,7 +2,7 @@ import {Component, Input, ViewEncapsulation} from '@angular/core';
 
 const supportedColors = ['blue', 'green', 'purple', 'orange', 'red', 'gray', 'white'];
 
-export function validateColorInput(inputStr: string) {
+export function validateColorInput(inputStr: string): void {
     if (supportedColors.indexOf(inputStr) < 0) {
         throw Error('Unsupported progress spinner color value: ' + inputStr);
     }
@@ -44,7 +44,7 @@ export class ProgressSpinnerComponent {
     public set progress(progress: number) {
         this.setProgress(progress);
     }
-    public get progress() {
+    public get progress(): number {
         return this._progress;
     }
 

@@ -26,7 +26,7 @@ export class AnalyticsTemplateComponent {
         if ( activatedRoute.snapshot.data['category'] ) {
             this.platform = activatedRoute.snapshot.data['category'];
 
-            let versionSub = this.getVersions().subscribe( versions => {
+            const versionSub = this.getVersions().subscribe( versions => {
                 this.versionList = versions;
                 versionSub.unsubscribe();
             });

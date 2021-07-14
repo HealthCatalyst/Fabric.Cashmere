@@ -41,7 +41,7 @@ export class PersonaListComponent extends BaseDemoComponent implements OnDestroy
         });
     }
 
-    comparePersonas(a: PersonaFile, b: PersonaFile) {
+    comparePersonas(a: PersonaFile, b: PersonaFile): number {
         let comparison = 0;
         if (a.title > b.title) {
             comparison = 1;
@@ -51,7 +51,7 @@ export class PersonaListComponent extends BaseDemoComponent implements OnDestroy
         return comparison;
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     }
