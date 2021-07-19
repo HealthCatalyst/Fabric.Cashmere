@@ -10,7 +10,7 @@ import {By} from '@angular/platform-browser';
     `
 })
 export class TestIconComponent {
-    iconValue: string = 'fa-snowflake-o';
+    iconValue = 'fa-snowflake-o';
 }
 
 describe('IconComponent', () => {
@@ -31,7 +31,7 @@ describe('IconComponent', () => {
     });
 
     it('should update the font class when the fontIcon value is changed', () => {
-        let subnavComponent = fixture.debugElement.query(By.directive(IconComponent));
+        const subnavComponent = fixture.debugElement.query(By.directive(IconComponent));
         expect(subnavComponent.nativeElement.classList.contains('fa-snowflake-o')).toBe(true);
 
         component.iconValue = 'fa-pied-piper';
@@ -41,12 +41,12 @@ describe('IconComponent', () => {
     });
 
     it('should add the hc-icon-lg class when the hcIconLg directive is included', () => {
-        let subnavComponent = fixture.debugElement.query(By.directive(IconComponent));
+        const subnavComponent = fixture.debugElement.query(By.directive(IconComponent));
         expect(subnavComponent.nativeElement.classList.contains('hc-icon-lg')).toBe(true);
     });
 
     it('should add the aria hidden attribute', () => {
-        let subnavComponent = fixture.debugElement.query(By.directive(IconComponent));
+        const subnavComponent = fixture.debugElement.query(By.directive(IconComponent));
         expect(subnavComponent.nativeElement.getAttribute('aria-hidden')).toEqual('true');
     });
 });

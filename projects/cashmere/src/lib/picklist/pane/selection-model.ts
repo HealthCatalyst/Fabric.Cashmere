@@ -2,7 +2,7 @@ import { PickOption } from '../pick.types';
 
 export type SelectionModelFactory = () => PickSelectionModel;
 
-export function DefaultSelectionModelFactory() {
+export function DefaultSelectionModelFactory(): DefaultSelectionModel {
     return new DefaultSelectionModel();
 }
 
@@ -21,7 +21,7 @@ export class DefaultSelectionModel implements PickSelectionModel {
 
     get value(): PickOption[] { return this._selected; }
 
-    select(item: PickOption) {
+    select(item: PickOption): void {
         item.selected = true;
         if (!item.isParent) {
             this._selected.push(item);
@@ -35,7 +35,7 @@ export class DefaultSelectionModel implements PickSelectionModel {
         }
     }
 
-    unselect(item: PickOption) {
+    unselect(item: PickOption): void {
         this._selected = this._selected.filter(x => x !== item);
         item.selected = false;
         if (item.isChild && item?.parent?.selected) {
@@ -50,11 +50,11 @@ export class DefaultSelectionModel implements PickSelectionModel {
         }
     }
 
-    clear(keepDisabled: boolean) {
+    clear(keepDisabled: boolean): void {
         this._selected = keepDisabled ? this._selected.filter(x => x.disabled) : [];
     }
 
-    selectAll(items: Array<PickOption>, canSelectGroup: boolean) {
+    selectAll(items: Array<PickOption>, canSelectGroup: boolean): void {
         this._selected = items.filter(i => !i.disabled && !i.children);
         items.filter(i => !i.disabled && (canSelectGroup || !i.children)).forEach(i => i.selected = true);
     }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {ChangeCasePipe} from './change-case.pipe';
 import {ChangeCaseLib} from './change-case-lib';
 
@@ -12,7 +13,7 @@ describe('ChangeCasePipe', () => {
 
     describe('when provided a valid case parameter', () => {
         it('(pascalCase) should transform the input to PascalCase', () => {
-            const result = pipe.transform('hello world', 'pascalCase');
+            pipe.transform('hello world', 'pascalCase');
             expect(changeCaseLib.pascalCase).toHaveBeenCalled();
         });
     });

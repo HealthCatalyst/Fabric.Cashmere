@@ -5,7 +5,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
-const expectedDirection: string = 'horizontal';
+const expectedDirection = 'horizontal';
 
 @Component({
     template: `
@@ -55,7 +55,7 @@ describe('TabSetComponent', () => {
             expect(component.direction).toBe(expectedDirection);
         });
 
-        it('should be set for all children from parent input after second change detection cycle', (done: any) => {
+        it('should be set for all children from parent input after second change detection cycle', (done) => {
             setTimeout(() => {
                 fixture.detectChanges();
                 component._tabs.forEach(t => expect(t._direction).toBe(expectedDirection));
@@ -91,7 +91,7 @@ describe('TabSetComponent', () => {
         });
 
         it('should trigger selectedTabChange event', (done: () => void) => {
-            const expectedIndex: number = 0;
+            const expectedIndex = 0;
             const expectedTab: TabComponent = component._tabs.first;
             component.selectedTabChange.subscribe((e: TabChangeEvent) => {
                 expect(e.index).toEqual(expectedIndex);

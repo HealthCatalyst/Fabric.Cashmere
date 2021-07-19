@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {ModalSize} from './modal-options';
 import {Component, ElementRef, HostBinding, HostListener, Input, ViewEncapsulation} from '@angular/core';
 import {ActiveModal} from './active-modal';
 
 @Component({
     selector: 'hc-modal-window',
     template: `
-        <div class="hc-modal hc-modal-{{_size}} {{_disableFullScreen ? '' : 'hc-modal-responsive'}}" cdkDrag [cdkDragDisabled]="!_isDraggable" cdkDragBoundary=".hc-modal-window">
+        <div class="hc-modal {{_disableFullScreen ? '' : 'hc-modal-responsive'}}" cdkDrag [cdkDragDisabled]="!_isDraggable" cdkDragBoundary=".hc-modal-window">
             <div *ngIf="_isDraggable" class="hc-modal-drag-handle" cdkDragHandle>
                 <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
@@ -17,7 +18,6 @@ import {ActiveModal} from './active-modal';
         </div>
     `,
     encapsulation: ViewEncapsulation.None,
-    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-modal-window'},
     styleUrls: ['./modal-window.component.scss'],
     animations: [
@@ -36,8 +36,6 @@ export class ModalWindowComponent {
     @Input()
     _ignoreOverlayClick = false;
     @Input()
-    _size: ModalSize = 'auto';
-    @Input()
     _isDraggable = false;
     @Input()
     _disableFullScreen = false;
@@ -45,17 +43,17 @@ export class ModalWindowComponent {
     constructor(private activeModal: ActiveModal, private el: ElementRef) {}
 
     @HostBinding('@fadeInOut')
-    _fadeInOut() {
+    _fadeInOut(): unknown {
         return state;
     }
 
     @HostListener('mousedown', ['$event'])
-    _overlayClick(event: any) {
+    _overlayClick(event: unknown): void {
         let modalContentNotPresent = true;
-        let path = this._eventPath(event);
-        let modalWindowTargetIncluded = path.findIndex(p => p === this.el.nativeElement) > -1;
-        let classList: (DOMTokenList | undefined)[] = path.map(p => p.classList);
-        for (let cl of classList) {
+        const path = this._eventPath(event);
+        const modalWindowTargetIncluded = path.findIndex(p => p === this.el.nativeElement) > -1;
+        const classList: (DOMTokenList | undefined)[] = path.map(p => p.classList);
+        for (const cl of classList) {
             if (cl) {
                 if (cl.contains('hc-modal-content')) {
                     modalContentNotPresent = false;
@@ -76,8 +74,8 @@ export class ModalWindowComponent {
     }
 
     // Serves as a polyfill for Event.composedPath() or Event.Path
-    _eventPath(evt: any) {
-        let path = (evt.composedPath && evt.composedPath()) || evt.path,
+    _eventPath(evt: any): typeof globalThis[] {
+        const path = (evt.composedPath && evt.composedPath()) || evt.path,
             target = evt.target;
 
         if (path != null) {
@@ -91,7 +89,7 @@ export class ModalWindowComponent {
 
         function _getParents(node, memo?) {
             memo = memo || [];
-            let parentNode = node.parentNode;
+            const parentNode = node.parentNode;
 
             if (!parentNode) {
                 return memo;

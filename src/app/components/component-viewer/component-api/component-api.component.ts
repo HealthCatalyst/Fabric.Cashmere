@@ -16,7 +16,7 @@ export class ComponentApiComponent {
         });
     }
 
-    docLoaded() {
+    docLoaded(): void {
         if ( this.section ) {
             const el = document.getElementById(this.section);
             if ( el ) {

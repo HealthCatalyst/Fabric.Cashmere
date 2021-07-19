@@ -3,7 +3,7 @@ import {waitForAsync, ComponentFixture, TestBed, fakeAsync} from '@angular/core/
 import {CalendarWrapperComponent} from './calendar-wrapper.component';
 import {ConfigStoreService} from '../services/config-store.service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
-import {HcDatepickerInputEvent} from '../../datepicker/datepicker-input/datepicker-input.directive';
+import {DatepickerInputDirective, HcDatepickerInputEvent} from '../../datepicker/datepicker-input/datepicker-input.directive';
 import {DateRangeOptions} from '../model/model';
 import {InputModule} from '../../input/input.module';
 import {FormFieldModule} from '../../form-field/hc-form-field.module';
@@ -50,7 +50,8 @@ describe('CalendarWrapperComponent', () => {
         component.selectedDateChange.subscribe(val => {
             expect(val instanceof Date).toBeTruthy();
         });
-        component.datePickerInput = <any>{value: new Date()};
+        component.datePickerInput = <DatepickerInputDirective>{value: new Date()};
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const change: HcDatepickerInputEvent = new HcDatepickerInputEvent(component.datePickerInput, <any>null);
         component._onInputChange(change);
     }));

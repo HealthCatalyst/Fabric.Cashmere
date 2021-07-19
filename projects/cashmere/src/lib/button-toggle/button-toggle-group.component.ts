@@ -35,12 +35,12 @@ import { HcFormControlComponent } from '../form-field/hc-form-control.component'
 })
 export class ButtonToggleGroupComponent extends HcFormControlComponent implements AfterContentInit, OnDestroy, ControlValueAccessor {
     private _disabled = false;
-    private _style: string = 'secondary';
-    private _size: string = 'md';
-    private _valueRequired: boolean = false;
-    private _multiple: boolean = false;
+    private _style = 'secondary';
+    private _size = 'md';
+    private _valueRequired = false;
+    private _multiple = false;
     private unsubscribe$ = new Subject<void>();
-    private _value: any;
+    private _value;
 
     @HostBinding('class.hc-button-toggle-group') _hostClass = true;
 
@@ -67,14 +67,14 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
     }
 
     @Input()
-    get value(): any {
+    get value(): unknown {
         return this._value;
     }
 
-    set value(newValue: any) {
+    set value(newValue: unknown) {
         if ( newValue !== undefined && this._value !== newValue) {
             this._value = newValue;
-            this._onChangeFn(newValue);
+            this.onChange(newValue);
         }
     }
 
@@ -95,7 +95,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
     get multiple(): boolean {
         return this._multiple;
     }
-    set multiple(val) {
+    set multiple(val: boolean) {
         this._multiple = parseBooleanAttribute(val);
     }
 
@@ -104,7 +104,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
     get valueRequired(): boolean {
         return this._valueRequired;
     }
-    set valueRequired(required) {
+    set valueRequired(required: boolean) {
         this._valueRequired = parseBooleanAttribute(required);
     }
 
@@ -114,7 +114,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         return this._disabled;
     }
 
-    set disabled(isDisabled) {
+    set disabled(isDisabled: boolean) {
         this._disabled = parseBooleanAttribute(isDisabled);
         if (this._buttons) {
             this._buttons.forEach((button: ButtonToggleComponent) => button._parentDisabled = this._disabled);
@@ -122,10 +122,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         this._updateButtonStyle();
     }
 
-    private _onChangeFn: (value: any) => void = () => {};
-    private _onTouchFn: () => any = () => {};
-
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._connectToButtonChildren();
         setTimeout(() => {
             this._setInitalModelAsNeeded();
@@ -135,35 +132,36 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
     }
 
-    writeValue(value: any): void {
+    writeValue(value: unknown): void {
         this._value = value;
         this._updateButtonStateFromModel();
     }
 
-    registerOnChange(fn: (value: any) => void): void {
-        this._onChangeFn = fn;
+    public onChange: (value: unknown) => void = () => undefined;
+    public onTouch: () => unknown = () => undefined;
+    public registerOnChange(fn: (value: unknown) => void): void {
+        this.onChange = fn;
     }
-
-    registerOnTouched(fn: () => any): void {
-        this._onTouchFn = fn;
+    public registerOnTouched(fn: () => unknown): void {
+        this.onTouch = fn;
     }
 
     setDisabledState(state: boolean): void {
         this.disabled = state;
     }
 
-    _touch() {
-        if (this._onTouchFn) {
-            this._onTouchFn();
+    _touch(): void {
+        if (this.onTouch) {
+            this.onTouch();
         }
     }
 
-    _updateButtonStyle() {
+    _updateButtonStyle(): void {
         if (this._buttons) {
             this._buttons.forEach((button: ButtonToggleComponent) => {
                 const checkedClass = button.selected ? 'hc-toggle-checked' : '';
@@ -174,7 +172,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         }
     }
 
-    _updateButtonStateFromModel() {
+    _updateButtonStateFromModel(): void {
         this._buttons?.forEach((button: ButtonToggleComponent) => {
             if (this.multiple) {
                 button._selected = this._value?.some(v => v === button.value);
@@ -190,7 +188,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         this._updateButtonStyle();
     }
 
-    _updateValueOnClick(targetButton: ButtonToggleComponent) {
+    _updateValueOnClick(targetButton: ButtonToggleComponent): void {
         if (!this.multiple) {
             this._buttons.forEach((button: ButtonToggleComponent) => {
                 if (button !== targetButton) {
@@ -211,7 +209,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         // if multiple = true, _value is an array, if not, _value should be a single value.
         const selectedValues = this._buttons.filter((btn: ButtonToggleComponent) => btn.selected).map(val => val.value);
         this.value = this.multiple ? selectedValues : selectedValues[0];
-        this._onChangeFn(this.value);
+        this.onChange(this.value);
 
         this._updateButtonStyle();
     }
@@ -221,16 +219,16 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         this._value = this._value || (this.multiple ? [] : this.value);
         this._buttons.forEach((button: ButtonToggleComponent) => {
             if (button.selected) {
-                if (this.multiple && !this.value.includes(button.value)) {
-                    this.value.push(button.value);
+                if (this.multiple && !(this.value as Array<unknown>)?.includes(button.value)) {
+                    (this.value as Array<unknown>)?.push(button.value);
                 }
 
                 if (!this.multiple) {
                     this.value = button.value;
                 }
             } else {
-                if (this.multiple && this.value.includes(button.value)) {
-                    this.value.splice(this.value.indexOf(button.value, 1));
+                if (this.multiple && (this.value as Array<unknown>)?.includes(button.value)) {
+                    (this.value as Array<unknown>)?.splice((this.value as Array<unknown>)?.indexOf(button.value, 1));
                 }
             }
         });

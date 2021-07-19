@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {ElementRef, Injectable, NgZone, OnDestroy, Optional, ViewContainerRef} from '@angular/core';
 import {
     ConnectionPositionPair,
@@ -77,7 +78,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
 
     constructor(private _overlay: Overlay, private _ngZone: NgZone, @Optional() private _dir: Directionality) {}
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         // Destroy popover before terminating subscriptions so that any resulting
         // detachments update 'closed state'
         this._destroyPopover();
@@ -136,7 +137,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
     }
 
     /** Closes the popover. */
-    closePopover(value?: any, neighborSubMenusAreOpen: boolean = false): void {
+    closePopover(value?: unknown, neighborSubMenusAreOpen = false): void {
         if (this._popover._componentOverlay) {
             this._saveClosedState(value, neighborSubMenusAreOpen);
             this._popover._componentOverlay.detach();
@@ -252,6 +253,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
                     this.togglePopover();
                     break;
                 case NotificationAction.REPOSITION:
+                    break;
                 // TODO: When the overlay's position can be dynamically changed, do not destroy
                 case NotificationAction.UPDATE_CONFIG:
                     this._destroyPopoverOnceClosed();
@@ -325,7 +327,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
     }
 
     /** Save the closed state of the popover and emit. */
-    private _saveClosedState(value?: any, neighborSubMenusAreOpen: boolean = false): void {
+    private _saveClosedState(value?: any, neighborSubMenusAreOpen = false): void {
         if (this._popoverOpen) {
             this._popover._open = this._popoverOpen = false;
             if ( this._popover.parent ) {

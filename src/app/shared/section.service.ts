@@ -5,13 +5,13 @@ import {Router} from '@angular/router';
 export class SectionService {
     constructor(private router: Router) {}
 
-    currentSection() {
+    currentSection(): string | null {
         const url = this.router.url;
         const parsed = this.router.parseUrl(url);
         return parsed.queryParamMap.get('section');
     }
 
-    scrollToSection() {
+    scrollToSection(): void {
         const section = this.currentSection();
         if (!section) {
             return;

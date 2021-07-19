@@ -8,7 +8,6 @@ import {JAN} from '../../utils/month-constants';
 import {dispatchFakeEvent, dispatchEvent} from '../../utils/dispatch-events';
 import {CalendarBodyComponent} from '../calendar-body/calendar-body.component';
 
-/* tslint:disable */
 describe('HcMultiYearView', () => {
     let dir: {value: Direction};
 
@@ -44,13 +43,13 @@ describe('HcMultiYearView', () => {
         });
 
         it('has correct number of years', () => {
-            const cellEls = multiYearViewNativeElement.querySelectorAll('.hc-calendar-body-cell')!;
+            const cellEls = multiYearViewNativeElement.querySelectorAll('.hc-calendar-body-cell');
             expect(cellEls.length).toBe(yearsPerPage);
         });
 
         it('shows selected year if in same range', () => {
-            const selectedEl = multiYearViewNativeElement.querySelector('.hc-calendar-body-selected')!;
-            expect(selectedEl.innerHTML.trim()).toBe('2020');
+            const selectedEl = multiYearViewNativeElement.querySelector('.hc-calendar-body-selected');
+            expect(selectedEl?.innerHTML.trim()).toBe('2020');
         });
 
         it('does not show selected year if in different range', () => {
@@ -66,8 +65,8 @@ describe('HcMultiYearView', () => {
             (cellEls[cellEls.length - 1] as HTMLElement).click();
             fixture.detectChanges();
 
-            const selectedEl = multiYearViewNativeElement.querySelector('.hc-calendar-body-selected')!;
-            expect(selectedEl.innerHTML.trim()).toBe('2039');
+            const selectedEl = multiYearViewNativeElement.querySelector('.hc-calendar-body-selected');
+            expect(selectedEl?.innerHTML.trim()).toBe('2039');
         });
 
         it('should emit the selected year on cell clicked', () => {

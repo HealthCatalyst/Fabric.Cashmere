@@ -8,7 +8,7 @@ describe('HighlightPipe', () => {
     });
 
     describe('when text and search contain no HTML', () => {
-        const text: string = 'the quick brown fox jumps over the lazy dog';
+        const text = 'the quick brown fox jumps over the lazy dog';
 
         describe('when search term is found in the string', () => {
             it('should wrap the match with a highlight span', () => {
@@ -68,7 +68,7 @@ describe('HighlightPipe', () => {
     });
 
     describe('when text contains HTML', () => {
-        const text: string = 'the quick brown <span class="hc-text-highlight">fox</span> jumps over the lazy dog';
+        const text = 'the quick brown <span class="hc-text-highlight">fox</span> jumps over the lazy dog';
 
         it('should highlight matches on the escaped HTML', () => {
             const result: string = highlightPipe.transform(text, 'highlight');

@@ -44,7 +44,7 @@ export class PicklistOldService {
         private stateService: PicklistStateService
     ) {}
 
-    public reset(settings: PicklistSettings, optionsSource: PicklistOptionsSource, pane: PicklistPaneComponent) {
+    public reset(settings: PicklistSettings, optionsSource: PicklistOptionsSource, pane: PicklistPaneComponent): void {
         this.stateService.reset(settings, optionsSource, pane);
         this.filterService.reset();
 
@@ -60,7 +60,7 @@ export class PicklistOldService {
         }
     }
 
-    public addOptions(listOptions: PicklistValueOptions) {
+    public addOptions(listOptions: PicklistValueOptions): void {
         if (!this.optionsSource.optionsAreLocal()) {
             this.filterService.preFilterOptionsForRemoteMode(listOptions.values, this.valueList);
             this.filterService.preFilterOptionsForRemoteMode(listOptions.valueSets, this.valueSetList);
@@ -77,8 +77,8 @@ export class PicklistOldService {
         this.pane.selectNone();
     }
 
-    public moveOutSelectedOptions(shouldBreakValuesets: boolean = false): PicklistValueOptions {
-        let optionsToMove = new PicklistValueOptions();
+    public moveOutSelectedOptions(shouldBreakValuesets = false): PicklistValueOptions {
+        const optionsToMove = new PicklistValueOptions();
         this.valueList.selectedOptions.forEach(o => {
             optionsToMove.values.set(o.code, o);
             this.valueList.options.delete(o.code);
@@ -92,7 +92,7 @@ export class PicklistOldService {
         return optionsToMove;
     }
 
-    public loadValuesForValueset(valueset: ValueSetListOption) {
+    public loadValuesForValueset(valueset: ValueSetListOption): void {
         valueset.loadingValues = true;
         if (!this.optionsSource.getValuesForValueset) {
             return;

@@ -1,5 +1,4 @@
-/* tslint:disable:directive-selector */
-
+/* eslint-disable @angular-eslint/directive-selector */
 import {Directive, Input, ElementRef, Optional, Host, Renderer2, OnDestroy} from '@angular/core';
 import {SelectComponent, _buildValueString} from './select.component';
 
@@ -20,7 +19,7 @@ export class HcOptionDirective implements OnDestroy {
 
     /** Tracks the value bound to the option element. Unlike the value binding, ngValue supports binding to objects. */
     @Input('ngValue')
-    set ngValue(value: any) {
+    set ngValue(value: unknown) {
         if (this._select == null) { return; }
         this._select._optionMap.set(this._id, value);
         this._setElementValue(_buildValueString(this._id, value));
@@ -29,7 +28,7 @@ export class HcOptionDirective implements OnDestroy {
 
     /** Tracks simple string values bound to the option element. For objects, use the `ngValue` input binding. */
     @Input('value')
-    set value(value: any) {
+    set value(value: string) {
         this._setElementValue(value);
         if (this._select) { this._select.writeValue(this._select.value); }
     }

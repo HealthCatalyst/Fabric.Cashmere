@@ -13,31 +13,25 @@ export class HcModal<T> {
     /** Allows direct access to window component which holds the component/template */
     window: ComponentRef<ModalWindowComponent> | null;
 
-    /** Adds a drag handle to the top right of the modal and allows the modal to be repositioned */
-    isDraggable?: boolean;
-
-    /** The modal will disable the full-screen feature on mobile devices when set to true */
-    disableFullScreen?: boolean;
-
     /** Subscribe to result in order to get access to modal result values passed in ActiveModal.close() */
-    get result(): Observable<any> {
+    get result(): Observable<unknown> {
         return this._result.asObservable();
     }
 
-    private _result: Subject<any> = new Subject<any>();
+    private _result: Subject<unknown> = new Subject<unknown>();
 
     _removeOpenClass: (() => void) | null;
 
     _modalClose = new EventEmitter();
 
     /** Data that was passed in through ModalOptions */
-    data?: any;
+    data?: unknown;
 
     /** Closes the modal with a result.
      * Use this close method when opening a modal using a TemplateRef.
      * To close a modal that was created from a Component, inject ActiveModal and use the close method
      * on ActiveModal */
-    close(result?: any): void {
+    close(result?: unknown): void {
         this.removeModalElements();
         this._result.next(result);
     }

@@ -10,14 +10,14 @@ import {PersonaFile, PersonaService} from '../persona-list.service';
     styleUrls: ['./persona-viewer.component.scss']
 })
 export class PersonaViewerComponent implements OnInit, OnDestroy {
-    public document: string = '';
-    public referrer: string = '/content/personas';
-    public backText: string = 'Back to Persona List';
+    public document = '';
+    public referrer = '/content/personas';
+    public backText = 'Back to Persona List';
     private unsubscribe = new Subject<void>();
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router, public personaService: PersonaService) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.activatedRoute.paramMap.pipe(takeUntil(this.unsubscribe)).subscribe(queryParams => {
             const route = queryParams.get('id');
             const selectedPersona: PersonaFile | undefined = this.personaService.personas.find(persona => persona.route === route);

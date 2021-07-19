@@ -5,11 +5,11 @@ import { SectionService } from '../shared/section.service';
 export class BaseDemoComponent implements AfterViewInit {
     constructor(protected sectionService: SectionService) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.loaded();
     }
 
-    loaded() {
+    loaded(): void {
         this.sectionService.scrollToSection();
     }
 }

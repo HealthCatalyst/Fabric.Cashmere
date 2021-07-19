@@ -14,16 +14,16 @@ import {RadioButtonModule} from './radio-button.module';
     `
 })
 class TestRadioGroupComponent {
-    oneChecked: boolean = true;
-    twoChecked: boolean = false;
-    oneValue: string = 'radio_one';
-    twoValue: string = 'radio_two';
+    oneChecked = true;
+    twoChecked = false;
+    oneValue = 'radio_one';
+    twoValue = 'radio_two';
     groupId: string | null = 'simple-radio-group';
     groupName: string | null = 'radio-group-name';
-    groupValue: string = 'radio_one';
-    isDisabled: boolean = false;
+    groupValue = 'radio_one';
+    isDisabled = false;
 
-    onGroupChange: (event?: RadioButtonChangeEvent) => void = () => {};
+    onGroupChange: (event?: RadioButtonChangeEvent) => void = () => null;
 }
 
 describe('RadioGroupComponent', () => {
@@ -130,7 +130,7 @@ describe('RadioGroupComponent', () => {
     it('should set the value of the group when a radio button is clicked', () => {
         const directiveInstance = el.injector.get(RadioGroupDirective);
 
-        let inputElement = <HTMLInputElement>directiveInstance.radios.last._elementRef.nativeElement.querySelector('input');
+        const inputElement = <HTMLInputElement>directiveInstance.radios.last._elementRef.nativeElement.querySelector('input');
         inputElement.click();
 
         fixture.detectChanges();
@@ -140,10 +140,9 @@ describe('RadioGroupComponent', () => {
 
     it('should set the selected property of the group when a radio button is clicked', () => {
         const directiveInstance = el.injector.get(RadioGroupDirective);
-        let inputElement = <HTMLInputElement>directiveInstance.radios.last._elementRef.nativeElement.querySelector('input');
+        const inputElement = <HTMLInputElement>directiveInstance.radios.last._elementRef.nativeElement.querySelector('input');
         inputElement.click();
 
-        let newValue = directiveInstance.selected;
         fixture.detectChanges();
 
         expect(directiveInstance.selected).not.toBeNull();
@@ -167,7 +166,7 @@ describe('RadioGroupComponent', () => {
 
         expect(directiveInstance.radios.last.checked).toBe(false);
 
-        let inputElement = <HTMLInputElement>directiveInstance.radios.last._elementRef.nativeElement.querySelector('input');
+        const inputElement = <HTMLInputElement>directiveInstance.radios.last._elementRef.nativeElement.querySelector('input');
         inputElement.click();
         fixture.detectChanges();
 
@@ -186,7 +185,7 @@ describe('RadioGroupComponent', () => {
     `
 })
 class RadioWithNgModelComponent {
-    isGood: string = 'one';
+    isGood = 'one';
 }
 
 describe('RadioGroups with ngModel', () => {
@@ -213,7 +212,7 @@ describe('RadioGroups with ngModel', () => {
     it('should set a value correctly using ngModel', () => {
         const directiveInstance = el.injector.get(RadioGroupDirective);
 
-        let inputElement = <HTMLInputElement>directiveInstance.radios.last._elementRef.nativeElement.querySelector('input');
+        const inputElement = <HTMLInputElement>directiveInstance.radios.last._elementRef.nativeElement.querySelector('input');
         inputElement.click();
         fixture.detectChanges();
 

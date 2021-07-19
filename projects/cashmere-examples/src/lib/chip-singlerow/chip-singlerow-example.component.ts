@@ -11,7 +11,7 @@ import {Component} from '@angular/core';
 export class ChipSinglerowExampleComponent {
     chipset: string[] = ['Payer (11)', 'Clinical Program (103)', 'Care Process (4)', 'Discharge Status (37)', 'Gender (1)', 'ER Visit (3)'];
 
-    closeChip(chip: string) {
+    closeChip(chip: string): void {
         for (let i = 0; i < this.chipset.length; i++) {
             if (chip === this.chipset[i]) {
                 this.chipset.splice(i, 1);

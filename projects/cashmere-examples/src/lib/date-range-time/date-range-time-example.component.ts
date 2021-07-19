@@ -9,7 +9,7 @@ export class DateRangeTimeExampleComponent implements OnInit {
     range: DateRange = {fromDate: new Date(2019, 1, 1, 9, 30), toDate: new Date(2019, 1, 1, 17, 15)};
     options: DateRangeOptions;
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.options = {
             format: 'shortTime',
             mode: 'time',
@@ -21,7 +21,7 @@ export class DateRangeTimeExampleComponent implements OnInit {
         };
     }
 
-    updateRange(range: DateRange) {
+    updateRange(range: DateRange): void {
         this.range = range;
     }
 }

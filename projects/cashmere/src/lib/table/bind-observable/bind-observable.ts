@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* Copyright 2017 PSanetra <code@psanetra.de>
 
 Open Source typescript decorator which binds class properties to observable companion properties.
@@ -20,11 +22,11 @@ import {BindObservableOpts, isBindObservableOpts} from './bind-observable-option
 
 type SubjectByProp = Map<string, ReplaySubject<any>>;
 
-const subjects: WeakMap<Object, SubjectByProp> = new WeakMap();
+const subjects: WeakMap<Record<string, unknown>, SubjectByProp> = new WeakMap();
 
 type ValueByProp = Map<string, any>;
 
-const values: WeakMap<Object, ValueByProp> = new WeakMap();
+const values: WeakMap<Record<string, unknown>, ValueByProp> = new WeakMap();
 
 function subject(instance: any, key: string): ReplaySubject<any> {
     let subjectByProp = subjects.get(instance);
@@ -55,7 +57,7 @@ function valueMap(instance: any): ValueByProp {
     return _valueMap;
 }
 
-function defineObservableProperty(target: Object, observableKey: string): void {
+function defineObservableProperty(target: Record<string, unknown>, observableKey: string): void {
     Object.defineProperty(target, observableKey, {
         configurable: true,
         enumerable: false,
@@ -80,7 +82,7 @@ function redefineSimpleProperty(target: any, propertyKey: string, observableKey:
 }
 
 function redefineAccessorProperty(
-    target: Object,
+    target: Record<string, unknown>,
     propertyKey: string,
     observableKey: string,
     emitRawSetterValue: boolean,
@@ -120,7 +122,7 @@ function redefineAccessorProperty(
  * but will not emit undefined if undefined is not explicitly assigned on initialization.
  */
 export function BindObservable(observableKeyOrOpts?: string | BindObservableOpts) {
-    return (target: any, propertyKey: string) => {
+    return (target: any, propertyKey: string): void => {
         const opts: BindObservableOpts = isBindObservableOpts(observableKeyOrOpts) ? observableKeyOrOpts : {};
 
         if (typeof observableKeyOrOpts === 'string') {

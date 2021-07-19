@@ -4,7 +4,7 @@ export interface ModalOptions {
      * Options are: `auto`, `sm`, `md`, `lg`, and `xl`.*/
     size?: ModalSize;
     /** Optional. Specify data that will be available on the active modal context. */
-    data?: any;
+    data?: unknown;
     /** Optional. Specify a different HTML element to append the modal overlay and modal window.
      * If not specified the modal elements will be added to the body. */
     container?: HTMLElement;
@@ -14,6 +14,9 @@ export interface ModalOptions {
     ignoreEscapeKey?: boolean;
     /** Defaults to false. When set to true, a drag handle is added to the top-right corner which can be used to reposition the modal. */
     isDraggable?: boolean;
+    /** Defaults to false. When set to true, a resize handle is added to the bottom-right corner which can be used to adjust the dimensions
+     * of the modal. Browser support - https://caniuse.com/mdn-css_selectors_-webkit-resizer */
+    isResizable?: boolean;
     /** Defaults to false. When set to true, the modal will no longer display in full-screen for mobile devices. */
     disableFullScreen?: boolean;
 }

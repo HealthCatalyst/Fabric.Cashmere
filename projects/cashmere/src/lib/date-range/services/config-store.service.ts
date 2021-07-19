@@ -50,7 +50,7 @@ export class ConfigStoreService {
                 };
             }),
             tap((options: DateRangeOptions) => {
-                if (!!options.excludeWeekends) {
+                if (options.excludeWeekends) {
                     this.weekendFilter = this.excludeWeekendFilter;
                 } else {
                     this.weekendFilter = this.emptyWeekendFilter;
@@ -62,15 +62,15 @@ export class ConfigStoreService {
         this.presetUpdate$ = this.presetUpdateSubject.pipe();
     }
 
-    updateDateRangeOptions(options: DateRangeOptions) {
+    updateDateRangeOptions(options: DateRangeOptions): void {
         this.dateRangeOptionsSubject.next(options);
     }
 
-    updateRange(dateRange: DateRange) {
+    updateRange(dateRange: DateRange): void {
         this.rangeUpdateSubject.next(dateRange);
     }
 
-    updatePreset(value: number | DateRange) {
+    updatePreset(value: number | DateRange): void {
         this.presetUpdateSubject.next(value);
     }
 }

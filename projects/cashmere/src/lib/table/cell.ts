@@ -1,5 +1,4 @@
-/* tslint:disable:directive-class-suffix directive-selector no-host-metadata-property no-input-rename*/
-
+/* eslint-disable @angular-eslint/directive-selector */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -50,7 +49,7 @@ export class HcFooterCellDef extends CdkFooterCellDef {}
     providers: [{provide: CdkColumnDef, useExisting: HcColumnDef}]
 })
 export class HcColumnDef extends CdkColumnDef {
-    private _justify: string = 'left';
+    private _justify = 'left';
 
     /** Unique name for this column. */
     @Input('hcColumnDef')

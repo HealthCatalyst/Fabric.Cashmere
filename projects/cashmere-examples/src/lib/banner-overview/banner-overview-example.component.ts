@@ -13,13 +13,13 @@ import {FormControl} from '@angular/forms';
 export class BannerOverviewExampleComponent {
     readonly _bannerType = new FormControl('info');
     readonly bannerClick = new FormControl(false);
-    bannerHide: boolean = false;
+    bannerHide = false;
 
-    hideBanner() {
+    hideBanner(): void {
         this.bannerHide = true;
     }
 
-    showBanner() {
+    showBanner(): void {
         this.bannerHide = false;
     }
 }

@@ -1,12 +1,12 @@
 import {PicklistFilterLocalService} from './picklist-filter-local.service';
 import {FilterableSelectList, ValueListOption} from '../pane/picklist-pane.model';
 
-let service = new PicklistFilterLocalService();
+const service = new PicklistFilterLocalService();
 
 describe('Picklist', () => {
-    let listItem = new ValueListOption({code: 'testing1212', title: 'This is not a test zy'}, 'testing1212');
-    let listItem2 = new ValueListOption({code: 'zyzyzy', title: 'zyzyzy'}, 'zyzyzy');
-    let list = new FilterableSelectList<ValueListOption>();
+    const listItem = new ValueListOption({code: 'testing1212', title: 'This is not a test zy'}, 'testing1212');
+    const listItem2 = new ValueListOption({code: 'zyzyzy', title: 'zyzyzy'}, 'zyzyzy');
+    const list = new FilterableSelectList<ValueListOption>();
 
     beforeEach(() => {
         list.codeIsSignificant = true;

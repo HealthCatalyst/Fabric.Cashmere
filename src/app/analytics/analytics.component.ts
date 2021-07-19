@@ -32,9 +32,9 @@ export class AnalyticsComponent implements OnDestroy {
         });
 
         // Populate the responsive select component with the router information
-        let root = this.activatedRoute.routeConfig;
+        const root = this.activatedRoute.routeConfig;
         if ( root && root.children ) {
-            for (let entry of root.children ) {
+            for (const entry of root.children ) {
                 if (entry.data && entry.data.title) {
                     this.selectOptions.push(entry);
                     if ( entry.data.category && !this.categories.includes( entry.data.category )) {
@@ -62,9 +62,9 @@ export class AnalyticsComponent implements OnDestroy {
     }
 
     // Handle changes to the select component and navigate
-    selectUpdate(event: any) {
+    selectUpdate(event: string): void {
         if (this.selectOptions.length) {
-            for (let entry of this.selectOptions) {
+            for (const entry of this.selectOptions) {
                 if (entry.data && event === entry.data.category + ' - ' + entry.data.title) {
                     this.router.navigate(['/analytics/' + entry.path]);
                     window.scrollTo(0, 0);
@@ -75,7 +75,7 @@ export class AnalyticsComponent implements OnDestroy {
     }
 
     // Handle nav changes via the sidebar
-    navUpdate(page: any) {
+    navUpdate(page: string): void {
         this.router.navigate(['/analytics/' + page]);
         window.scrollTo(0, 0);
     }
