@@ -1,4 +1,4 @@
-import {OnInit, Output, EventEmitter, Input, OnDestroy, ElementRef, Directive, HostListener, OnChanges, SimpleChanges} from '@angular/core';
+import {Output, EventEmitter, Input, OnDestroy, ElementRef, Directive, HostListener, OnChanges, SimpleChanges} from '@angular/core';
 import {DatePipe} from '@angular/common';
 import {OverlayRef} from '@angular/cdk/overlay';
 import {CalendarOverlayService} from '../services/calendar-overlay.service';
@@ -9,7 +9,7 @@ import {ConfigStoreService} from '../services/config-store.service';
     selector: '[hcDateRange]',
     providers: [CalendarOverlayService, ConfigStoreService, DatePipe]
 })
-export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
+export class DateRangeDirective implements OnDestroy, OnChanges {
     /** Emits when date range is been changed. */
     @Output()
     readonly selectedDateRangeChanged: EventEmitter<DateRange> = new EventEmitter<DateRange>();
@@ -41,9 +41,7 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
         });
     }
 
-    ngOnInit() {}
-
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if (this._overlayRef) {
             this._overlayRef.detach();
         }
@@ -66,7 +64,7 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
     }
 
     @HostListener('click')
-    _onClick() {
-        this._overlayRef = this.calendarOverlayService.open(this._elementRef, this.options.center!);
+    _onClick(): void {
+        this._overlayRef = this.calendarOverlayService.open(this._elementRef, this.options.center);
     }
 }

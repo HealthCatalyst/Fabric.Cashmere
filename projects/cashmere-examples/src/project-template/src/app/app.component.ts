@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-selector */
 import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({

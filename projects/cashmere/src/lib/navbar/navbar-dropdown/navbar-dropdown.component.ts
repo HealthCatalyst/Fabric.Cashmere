@@ -18,7 +18,7 @@ export class NavbarDropdownComponent extends NavbarLinkComponent implements Afte
     /** Reference to hcMenuItems (if the content contains them) */
     @ContentChildren(MenuItemDirective, {descendants: true}) _menuItems: QueryList<MenuItemDirective>;
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         // Update the popover's reference to menu items included in this component's content
         this._menuPop._menuItems = this._menuItems;
     }

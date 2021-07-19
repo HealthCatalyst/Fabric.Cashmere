@@ -7,7 +7,7 @@
  */
 
 /** Creates a browser MouseEvent with the specified options. */
-export function createMouseEvent(type: string, x = 0, y = 0, button = 0) {
+export function createMouseEvent(type: string, x = 0, y = 0, button = 0): MouseEvent {
     const event = document.createEvent('MouseEvent');
 
     event.initMouseEvent(
@@ -36,7 +36,7 @@ export function createMouseEvent(type: string, x = 0, y = 0, button = 0) {
 }
 
 /** Creates a fake event object with any desired event type. */
-export function createFakeEvent(type: string, canBubble = false, cancelable = true) {
+export function createFakeEvent(type: string, canBubble = false, cancelable = true): Event {
     const event = document.createEvent('Event');
     event.initEvent(type, canBubble, cancelable);
     return event;

@@ -22,7 +22,7 @@ export class DrawerPromiseResult {
 
 const supportedModes = ['over', 'push', 'side'];
 
-export function validateModeInput(inputStr: string) {
+export function validateModeInput(inputStr: string): void {
     if (supportedModes.indexOf(inputStr) < 0) {
         throw Error('Unsupported drawer mode value: ' + inputStr);
     }
@@ -30,7 +30,7 @@ export function validateModeInput(inputStr: string) {
 
 const supportedAligns = ['left', 'right'];
 
-export function validateAlignInput(inputStr: string) {
+export function validateAlignInput(inputStr: string): void {
     if (supportedAligns.indexOf(inputStr) < 0) {
         throw Error('Unsupported drawer alignment value: ' + inputStr);
     }
@@ -83,11 +83,11 @@ const closeStateAnimation = '0.7s .05s ease';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Drawer implements AfterContentInit {
-    private _mode: string = 'push';
-    private _align: string = 'left';
+    private _mode = 'push';
+    private _align = 'left';
 
     /** Defaults to false. Set to true to disable the closure of drawer by pressing the escape key. */
-    @Input() ignoreEscapeKey: boolean = false;
+    @Input() ignoreEscapeKey = false;
 
     /** Mode of the drawer: `over`, `push` or `side` */
     @Input()
@@ -116,7 +116,9 @@ export class Drawer implements AfterContentInit {
     get openStart(): Observable<void> {
         return this._animationStarted.pipe(
             filter(event => event.fromState === 'void' && event.toState.startsWith('open-') ),
-            map(() => {})
+            map(() => {
+                // do nothing.
+            })
         );
     }
 
@@ -125,7 +127,9 @@ export class Drawer implements AfterContentInit {
     get closeStart(): Observable<void> {
         return this._animationStarted.pipe(
             filter(event => event.fromState.startsWith('open-') && event.toState === 'void'),
-            map(() => {})
+            map(() => {
+                // do nothing.
+            })
         );
     }
 
@@ -143,7 +147,9 @@ export class Drawer implements AfterContentInit {
     private _animationDisabled = true;
     private _drawerOpened = false;
     private _animationPromise: Promise<DrawerPromiseResult> | null;
-    private _resolveAnimationPromise: () => void = () => {};
+    private _resolveAnimationPromise: () => void = () => {
+        // do nothing.
+    };
 
     /** Whether the drawer is opened. */
     @Input()
@@ -151,7 +157,7 @@ export class Drawer implements AfterContentInit {
         return this._drawerOpened;
     }
 
-    set opened(opened) {
+    set opened(opened: boolean) {
         if ( opened !== this._drawerOpened ) {
             this.toggle(parseBooleanAttribute(opened));
         }
@@ -162,27 +168,27 @@ export class Drawer implements AfterContentInit {
     }
 
     @HostBinding('class.hc-drawer-opened')
-    get _isOpened() {
+    get _isOpened(): boolean {
         return this._drawerOpened && !this._animationPromise;
     }
 
     @HostBinding('class.hc-drawer-opening')
-    get _isOpening() {
+    get _isOpening(): boolean {
         return this._drawerOpened && !!this._animationPromise;
     }
 
     @HostBinding('class.hc-drawer-closed')
-    get _isClosed() {
+    get _isClosed(): boolean {
         return !this._drawerOpened && !this._animationPromise;
     }
 
     @HostBinding('class.hc-drawer-closing')
-    get _isClosing() {
+    get _isClosing() : boolean{
         return !this._drawerOpened && !!this._animationPromise;
     }
 
     @HostBinding('class.hc-drawer-right')
-    get _isRight() {
+    get _isRight(): boolean {
         return this._align === 'right';
     }
 
@@ -199,23 +205,25 @@ export class Drawer implements AfterContentInit {
     }
 
     @HostListener('@openState.start', ['$event'])
-    _onAnimationStart(event: AnimationEvent) {
+    _onAnimationStart(event: AnimationEvent): void {
         this._animationStarted.emit(event);
     }
 
-    @HostListener('@openState.done', ['$event'])
-    _onAnimationEnd(event: AnimationEvent) {
+    @HostListener('@openState.done')
+    _onAnimationEnd(): void {
         this.openedChange.next(this.opened);
 
         if (this._animationPromise) {
             this._resolveAnimationPromise();
-            this._resolveAnimationPromise = () => {};
+            this._resolveAnimationPromise = () => {
+                // do nothing.
+            };
             this._animationPromise = null;
         }
     }
 
     @HostListener('keydown', ['$event'])
-    _onKeyDown(event: KeyboardEvent) {
+    _onKeyDown(event: KeyboardEvent): void {
         if (event.key === 'Escape' && !this.ignoreEscapeKey) {
             this.toggleClose();
             event.stopPropagation();
@@ -224,10 +232,12 @@ export class Drawer implements AfterContentInit {
 
     constructor(protected elementRef: ElementRef) {}
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         if (this._animationPromise) {
             this._resolveAnimationPromise();
-            this._resolveAnimationPromise = () => {};
+            this._resolveAnimationPromise = () => {
+                // do nothing.
+            };
             this._animationPromise = null;
         }
         this._animationDisabled = false;
@@ -244,7 +254,7 @@ export class Drawer implements AfterContentInit {
     }
 
     /** Toggles the drawer */
-    toggle(isOpen: boolean = !this.opened): Promise<DrawerPromiseResult> {
+    toggle(isOpen = !this.opened): Promise<DrawerPromiseResult> {
         if (!this._animationPromise) {
             this._drawerOpened = isOpen;
 

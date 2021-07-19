@@ -14,7 +14,7 @@ export class SelectValidationExampleComponent {
 
     selectControl = new FormControl('qlik');
 
-    toggleValidate() {
+    toggleValidate(): void {
         this.validCheck = !this.validCheck;
         if (this.validCheck) {
             this.selectControl.setErrors({incorrect: true});

@@ -17,9 +17,9 @@ export class StepperOverviewExampleComponent implements OnInit {
     readonly currentTypeController = new FormControl('arrow');
     typeOptions: string[] = ['arrow', 'isolated'];
     readonly showStepsController = new FormControl(true);
-    currentStep: number = 2;
+    currentStep = 2;
 
-    ngOnInit() {
+    ngOnInit(): void {
         // To use with a router, add a `routerLink` to each step
         this.progressSteps = [
             {label: 'Winter', iconSet: 'fa', icon: 'fa-check'},

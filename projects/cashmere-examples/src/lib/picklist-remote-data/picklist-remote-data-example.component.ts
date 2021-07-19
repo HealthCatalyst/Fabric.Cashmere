@@ -20,11 +20,11 @@ export class PicklistRemoteDataExampleComponent implements OnInit {
 
     constructor(public dataService: PicklistRemoteDataService) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.loadPeople();
     }
 
-    trackByFn(item: Person) {
+    trackByFn(item: Person): string {
         return item.id;
     }
 
@@ -38,7 +38,7 @@ export class PicklistRemoteDataExampleComponent implements OnInit {
         return customItem;
     }
 
-    onChange() {
+    onChange(): void {
         this.remoteCount = this.dataService.mockPeople.length - this.selectedPersons.length;
         if (this.picklist.leftPaneIsEmpty && this.remoteCount > 0) {
             this.peopleLoading = true;

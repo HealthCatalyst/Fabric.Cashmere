@@ -61,7 +61,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
     filteredData: T[];
 
     /** Array of data that should be rendered by the table, where each object represents one row. */
-    get data() {
+    get data(): T[] {
         return this._data.value;
     }
     set data(data: T[]) {
@@ -122,7 +122,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * @param sortHeaderId The name of the column that represents the data.
      */
     sortingDataAccessor: (data: T, sortHeaderId: string) => string | number = (data: T, sortHeaderId: string): string | number => {
-        const value: any = data[sortHeaderId];
+        const value = data[sortHeaderId];
 
         if (_isNumberValue(value)) {
             const numberValue = Number(value);
@@ -167,8 +167,8 @@ export class HcTableDataSource<T> extends DataSource<T> {
         }
 
         return data.sort((a, b) => {
-            let valueA = this.sortingDataAccessor(a, active);
-            let valueB = this.sortingDataAccessor(b, active);
+            const valueA = this.sortingDataAccessor(a, active);
+            const valueB = this.sortingDataAccessor(b, active);
 
             // If both valueA and valueB exist (truthy), then compare the two. Otherwise, check if
             // one value exists while the other doesn't. In this case, existing value should come first.
@@ -226,7 +226,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * changes occur, process the current state of the filter, sort, and pagination along with
      * the provided base data and send it to the table for rendering.
      */
-    _updateChangeSubscription() {
+    _updateChangeSubscription(): void {
         // Sorting and/or pagination should be watched if HcSort and/or BasePaginationComponent are provided.
         // The events should emit whenever the component emits a change or initializes, or if no
         // component is provided, a stream with just a null event should be provided.
@@ -260,7 +260,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * the result of the filterTermAccessor function. If no filter is set, returns the data array
      * as provided.
      */
-    _filterData(data: T[]) {
+    _filterData(data: T[]): T[] {
         // If there is a filter string, filter out data that does not contain it.
         // Each data object is converted to a string using the function defined by filterTermAccessor.
         // May be overridden for customization.
@@ -306,7 +306,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * index does not exceed the paginator's last page. Values are changed in a resolved promise to
      * guard against making property changes within a round of change detection.
      */
-    _updatePaginator(filteredDataLength: number) {
+    _updatePaginator(filteredDataLength: number): void {
         Promise.resolve().then(() => {
             if (!this.paginator) {
                 return;
@@ -326,7 +326,7 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * Used by the HcTable. Called when it connects to the data source.
      * @docs-private
      */
-    connect() {
+    connect(): BehaviorSubject<T[]> {
         return this._renderData;
     }
 
@@ -334,5 +334,5 @@ export class HcTableDataSource<T> extends DataSource<T> {
      * Used by the HcTable. Called when it is destroyed. No-op.
      * @docs-private
      */
-    disconnect() {}
+    disconnect(): void { return; }
 }

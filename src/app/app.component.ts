@@ -1,10 +1,11 @@
-import { Component, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, OnDestroy, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SearchService } from './shared/search.service';
 import { HcPopComponent } from '@healthcatalyst/cashmere';
 import { NavigationEnd, Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { SearchResult } from 'minisearch';
 
 @Component({
     selector: 'hc-root',
@@ -14,7 +15,7 @@ import { Subject } from 'rxjs';
 
 export class AppComponent implements AfterViewInit, OnDestroy {
     @ViewChild('search') search: HcPopComponent;
-    @ViewChild('searchInput') input: any;
+    @ViewChild('searchInput') input: ElementRef;
 
     navSearchBar = new FormControl('');
     webActive = false;
@@ -40,10 +41,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         });
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.navSearchBar.valueChanges.subscribe((val) => {
             if (val !== '') {
-                let tempResults = this.getItems(val);
+                const tempResults = this.getItems(val);
                 this.searchResults = tempResults.slice(0, 5);
             } else {
                 this.searchResults = [];
@@ -57,16 +58,16 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         });
     }
 
-    getItems = (value: string) => {
-        let results = this.searchService.miniSearch.search(value);
+    getItems = (value: string): SearchResult[] => {
+        const results = this.searchService.miniSearch.search(value);
         return results;
     }
 
-    setInputFocus() {
+    setInputFocus(): void {
         this.input.nativeElement.focus();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     }

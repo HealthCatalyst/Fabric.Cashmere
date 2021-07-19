@@ -1,6 +1,3 @@
-/* tslint:disable:component-selector */
-/* tslint:disable:no-host-metadata-property */
-
 import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 
@@ -8,13 +5,13 @@ export const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutra
 const supportedColors = ['blue', 'green', 'purple', 'red', 'orange', 'ruby-red', 'deep-red', 'red-orange', 'magenta', 'pink', 'light-pink', 'azure', 'teal', 'dark-green', 'brown', 'purple-gray', 'yellow', 'yellow-orange', 'tan'];
 const supportedSizes = ['sm', 'md', 'lg'];
 
-export function validateStyleInput(style: string, component: string) {
+export function validateStyleInput(style: string, component: string): void {
     if (supportedStyles.indexOf(style) < 0 && supportedColors.indexOf(style) < 0) {
         throw Error('Unsupported buttonStyle attribute value on ' + component + ': ' + style);
     }
 }
 
-export function validateSizeInput(size: string, component: string) {
+export function validateSizeInput(size: string, component: string): void {
     if (supportedSizes.indexOf(size) < 0) {
         throw Error('Unsupported size attribute value on ' + component + ': ' + size);
     }
@@ -24,6 +21,7 @@ const buttonAttributes = ['hc-icon-button', 'hc-button'];
 
 /** Cashmere styled button */
 @Component({
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: 'button[hc-button], button[hc-icon-button]',
     template: '<ng-content></ng-content>',
     styleUrls: ['./button.component.scss'],
@@ -73,7 +71,7 @@ export class ButtonComponent {
         return this._disabled;
     }
 
-    set disabled(isDisabled) {
+    set disabled(isDisabled: boolean) {
         this._disabled = parseBooleanAttribute(isDisabled);
     }
 

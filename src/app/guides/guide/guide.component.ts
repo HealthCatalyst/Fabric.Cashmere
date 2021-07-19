@@ -16,11 +16,11 @@ import {SectionService} from 'src/app/shared/section.service';
     ]
 })
 export class GuideComponent implements OnInit {
-    public document: string = '';
+    public document = '';
 
     constructor(private activatedRoute: ActivatedRoute, public guidesService: GuidesService, private sectionService: SectionService) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.activatedRoute.paramMap.subscribe(queryParams => {
             const route = queryParams.get('id');
             const selectedGuide: IGuide | undefined = this.guidesService.guides.find(guide => guide.route === route);
@@ -30,7 +30,7 @@ export class GuideComponent implements OnInit {
         });
     }
 
-    loaded() {
+    loaded(): void {
         this.sectionService.scrollToSection();
     }
 }

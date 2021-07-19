@@ -10,7 +10,7 @@ export class ScrollNavTargetDirective {
     _hostClass = true;
 
     /** The `nativeElement` of the corresponding `hcScrollTarget` that you would like to link to. */
-    public nativeElement: any;
+    public nativeElement: HTMLElement;
 
     constructor(element: ElementRef, private renderer: Renderer2) {
         if (element) {
@@ -19,7 +19,7 @@ export class ScrollNavTargetDirective {
     }
 
     public _setDirectiveToNode(node: Node): void {
-        this.nativeElement = node;
+        this.nativeElement = node as HTMLElement;
         this.renderer.addClass(node, 'hc-scroll-nav-target');
     }
 }

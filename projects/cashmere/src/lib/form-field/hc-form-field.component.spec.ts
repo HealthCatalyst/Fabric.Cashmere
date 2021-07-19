@@ -1,5 +1,4 @@
-/* tslint:disable:component-class-suffix */
-
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 
 import {getControlMissing, HcFormFieldComponent} from './hc-form-field.component';
@@ -10,7 +9,7 @@ import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angula
 import {By} from '@angular/platform-browser';
 
 describe('HcFormFieldComponent', () => {
-    let fixture: ComponentFixture<any>;
+    let fixture: ComponentFixture<unknown>;
 
     beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
@@ -123,8 +122,8 @@ describe('HcFormFieldComponent', () => {
 })
 class SimpleInput {
     inputId: string | null = 'test-id';
-    isDisabled: boolean = false;
-    isRequired: boolean = true;
+    isDisabled = false;
+    isRequired = true;
     inputLabel: string | null = 'hola';
 }
 

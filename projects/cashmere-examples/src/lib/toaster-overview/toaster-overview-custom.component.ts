@@ -31,7 +31,7 @@ import {Component} from '@angular/core';
     ]
 })
 export class ToasterOverviewCustomComponent {
-    randomID: Number = 0;
-    randomColor: String = '#ffffff';
-    randomIcon: String = 'fa-file-text';
+    randomID = 0;
+    randomColor = '#ffffff';
+    randomIcon = 'fa-file-text';
 }

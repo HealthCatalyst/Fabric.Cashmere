@@ -21,7 +21,9 @@ export class TestButtonToggleGroup {
     @ViewChild('two', {static: false})
     toggleTwo: ButtonToggleComponent;
 
-    changedEvent: (event?: ButtonToggleChangeEvent) => void = () => {};
+    changedEvent: (event?: ButtonToggleChangeEvent) => void = () => {
+        // do nothing
+    };
 }
 
 describe('ButtonToggleGroup', () => {

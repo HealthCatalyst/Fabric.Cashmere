@@ -43,7 +43,7 @@ export class ScrollNavTargetComponent extends AbstractHcScrollTargetComponent {
     </hc-scroll-nav-content>`
 })
 export class ScrollNavTargetDynamicComponent extends AbstractHcScrollTargetComponent {
-    public showContent: boolean = true;
+    public showContent = true;
 }
 
 describe("ScrollNavTargetDirective", (): void => {
@@ -93,7 +93,7 @@ describe("ScrollNavTargetDirective", (): void => {
         let directive: ScrollNavTargetDirective;
 
         beforeEach(() => {
-            let node: Node = scrollNavTargetDynamicComponent.nativeElement.querySelector(`[hcscrolltarget]`);
+            const node: Node = scrollNavTargetDynamicComponent.nativeElement.querySelector(`[hcscrolltarget]`);
 
             directive = new ScrollNavTargetDirective(<ElementRef>{}, scrollNavTargetDynamicComponent.componentInstance.renderer);
             directive._setDirectiveToNode(node);

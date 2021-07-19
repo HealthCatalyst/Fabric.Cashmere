@@ -18,11 +18,11 @@ export class SelectFormsExampleComponent {
 
     selectControl = new FormControl(this.locations[0]);
 
-    setInsurance() {
+    setInsurance(): void {
         this.selectControl.setValue(this.locations[1], {onlySelf: true});
     }
 
-    toggleActive() {
+    toggleActive(): void {
         if (this.selectControl.disabled) {
             this.selectControl.enable();
         } else {

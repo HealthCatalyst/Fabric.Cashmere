@@ -1,14 +1,13 @@
-import {Injectable, ComponentRef, Injector, TemplateRef, Type, ComponentFactory} from '@angular/core';
+import {Injectable, ComponentRef, Injector, TemplateRef, Type} from '@angular/core';
 import {Overlay, OverlayConfig, OverlayRef, PositionStrategy} from '@angular/cdk/overlay';
 import {ComponentPortal, PortalInjector, TemplatePortal} from '@angular/cdk/portal';
 import {HcToastComponent} from './hc-toast.component';
 import {HcToastOptions} from './hc-toast-options';
 import {HcToastRef} from './hc-toast-ref';
-import {filter, take, takeUntil} from 'rxjs/operators';
-import {Subject, Observable} from 'rxjs';
+import {filter, take} from 'rxjs/operators';
 
 export type ComponentSetup<T> = Partial<T> | ((instance: T) => void);
-export type ToastContentType<T> = Type<T> | TemplateRef<any>;
+export type ToastContentType<T> = Type<T> | TemplateRef<unknown>;
 
 /** Toasts provide users with instant feedback on actions they've taken. For more general information,
  * use a `hc-banner`. */
@@ -23,7 +22,7 @@ export class HcToasterService {
      * create entirely custom toasts, but only if the type in toastOptions is set to `custom`. Be sure to set `border-radius: 5px`
      * in the style of your custom content template so it matches the toast container. If your custom toast is
      * using a component, the `componentSetup` parameter accepts an object or function to configure that component. */
-    addToast<T = any>(toastOptions?: HcToastOptions, toastContent?: ToastContentType<T>, componentSetup?: ComponentSetup<T>): HcToastRef {
+    addToast<T>(toastOptions?: HcToastOptions, toastContent?: ToastContentType<T>, componentSetup?: ComponentSetup<T>): HcToastRef {
         const defaultOptions: HcToastOptions = {
             type: 'success',
             position: 'bottom-right',
@@ -135,7 +134,7 @@ export class HcToasterService {
     }
 
     /** Closes the most recent toast displayed */
-    closeLastToast() {
+    closeLastToast(): void {
         if (this._toasts.length > 0) {
             const element = this._toasts[this._toasts.length - 1];
             if (element) {
@@ -145,8 +144,8 @@ export class HcToasterService {
     }
 
     /** Closes currently visible toasts */
-    closeAllToasts() {
-        let len = this._toasts.length;
+    closeAllToasts(): void {
+        const len = this._toasts.length;
         for (let index = 0; index < len; index++) {
             const element = this._toasts[index];
             if (element) {
@@ -179,7 +178,7 @@ export class HcToasterService {
 
     private _getOverlayConfig(config: HcToastOptions): OverlayConfig {
         let overlayConfig;
-        let positionStrategy = this._getPositionStrategy(String(config.position), this._toasts.length);
+        const positionStrategy = this._getPositionStrategy(String(config.position), this._toasts.length);
 
         if (config.position === 'top-full-width' || config.position === 'bottom-full-width') {
             overlayConfig = new OverlayConfig({positionStrategy, width: '96%', panelClass: 'overlay-pointer-events'});
@@ -192,7 +191,7 @@ export class HcToasterService {
 
     private _getPositionStrategy(position: string, index: number): PositionStrategy {
         let positionStrategy: PositionStrategy;
-        let toastIndex: number = this._getLastToast(position, index);
+        const toastIndex: number = this._getLastToast(position, index);
 
         switch (position) {
             case 'top-right':
@@ -379,7 +378,7 @@ export class HcToasterService {
 
     // Returns one toast back from the index provided in the position provided
     private _getLastToast(toastPos: string, startIndex: number): number {
-        let toastIndex: number = -1;
+        let toastIndex = -1;
 
         for (let index = startIndex - 1; index >= 0; index--) {
             if (this._toasts[index]._toastPosition === toastPos) {

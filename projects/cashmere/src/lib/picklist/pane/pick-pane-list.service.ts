@@ -24,7 +24,7 @@ export class PickPaneListService {
         itemsPerViewport: 0
     };
 
-    get dimensions() {
+    get dimensions(): PanelDimensions {
         return this._dimensions;
     }
 
@@ -57,7 +57,7 @@ export class PickPaneListService {
         };
     }
 
-    setDimensions(itemHeight: number, panelHeight: number) {
+    setDimensions(itemHeight: number, panelHeight: number): void {
         const itemsPerViewport = Math.max(1, Math.floor(panelHeight / itemHeight));
         this._dimensions = {
             itemHeight,
@@ -66,7 +66,7 @@ export class PickPaneListService {
         };
     }
 
-    getScrollTo(itemTop: number, itemHeight: number, lastScroll: number) {
+    getScrollTo(itemTop: number, itemHeight: number, lastScroll: number): number | null {
         const { panelHeight } = this.dimensions;
         const itemBottom = itemTop + itemHeight;
         const top = lastScroll;

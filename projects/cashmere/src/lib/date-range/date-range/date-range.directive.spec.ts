@@ -45,7 +45,10 @@ class TestComponent {
     updateRange(range: DateRange) {
         this.range = range;
     }
-    updatePreset(index: number|DateRange) {}
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    updatePreset(index: number|DateRange) {
+        // do nothing
+    }
 }
 
 describe('DateRangeDirective', () => {
@@ -86,7 +89,6 @@ describe('DateRangeDirective', () => {
     });
 
     it('should reset dates as per input', () => {
-        // tslint:disable no-shadowed-variable
         const today = new Date();
         const currMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
         const currMonthEnd = new Date(today.getFullYear(), today.getMonth() + 1, 0);

@@ -21,7 +21,7 @@ describe('a[hc-button]', () => {
 
     describe('when not disabled', () => {
         it('should handle click events', () => {
-            let inlineStyles = getComputedStyle(fixture.nativeElement);
+            const inlineStyles = getComputedStyle(fixture.nativeElement);
             expect( inlineStyles['pointer-events'] ).toBe('auto');
         });
 
