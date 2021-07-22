@@ -1,4 +1,5 @@
-export class ActiveModal<T = unknown, U = unknown> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export class ActiveModal<T = any, U = any> {
     /** Data that was passed in through ModalOptions */
     public data?: T;
     /** Closes the modal with an optional result.
