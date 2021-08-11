@@ -5,7 +5,7 @@ import {PipeTransform, Pipe} from '@angular/core';
     pure: true
 })
 export class HighlightPipe implements PipeTransform {
-    transform(text: string, search?: string, preserveHTML: boolean = false): string {
+    transform(text: string, search?: string, preserveHTML = false): string {
         if (search && text) {
             // eslint-disable-next-line no-useless-escape
             let pattern: string = this.escapeTags(search).replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
