@@ -5,7 +5,7 @@ import {PipeTransform, Pipe} from '@angular/core';
     pure: true
 })
 export class HighlightPipe implements PipeTransform {
-    transform(text: string, search?: string): string {
+    transform(text: string, search?: string, preserveHTML: boolean = false): string {
         if (search && text) {
             // eslint-disable-next-line no-useless-escape
             let pattern: string = this.escapeTags(search).replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
@@ -17,13 +17,19 @@ export class HighlightPipe implements PipeTransform {
                 .join('|');
             const regex = new RegExp(pattern, 'gi');
 
-            return this.escapeTags(text).replace(regex, match => `<span class="hc-text-highlight">${match}</span>`);
+            const highlightedText = this.escapeTags(text).replace(regex, match => `<span class="hc-text-highlight">${match}</span>`)
+
+            return preserveHTML ? this.reverseEscapeTags( highlightedText ) : highlightedText;
         } else {
-            return this.escapeTags(text);
+            return preserveHTML ? text : this.escapeTags(text);
         }
     }
 
     escapeTags(input: string): string {
         return (input || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    reverseEscapeTags( input: string ): string {
+        return (input || '').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
     }
 }
