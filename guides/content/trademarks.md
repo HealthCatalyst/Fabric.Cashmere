@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated April 15, 2021
+###### Last updated August 19, 2021
 
 :::
 
@@ -9,18 +9,19 @@
 Registered Marks (currently in use) – **Apply ®**:
 
 -   [[FLAME]](https://cashmere.healthcatalyst.net/styles/logo) Design Mark
--   CORUS
+-   CORUS (now called Health Catalyst PowerCosting™)
 -   Health Catalyst _(only when followed by a product or services description; when you are just referring to the company/entity, do not use ®)_
 -   HAS
 -   HealthCatalyst
 -   Healthfinch
--   Ignite Change 
+-   Ignite Change (minimal use)
 -   Leading Wisely
--   Medicity 
+-   Medicity (not in use)
 -	Touchstone
 -   Vitalware
 -   VitalCDM
 -   VitalKnowledge
+-   VW [and Design]
 
 :::
 
@@ -31,37 +32,45 @@ Registered Marks (currently in use) – **Apply ®**:
 Unregistered Marks (currently in use, examples) – **Apply ™** symbol:
 _The ™ symbol can be applied to any unregistered trademark_
 
--   Able Health
--   Catalyst.AI
--   Charlie (use ™ with both text and image)
--   Closed-Loop Analytics
--   Community Orchestrate
 -   Data Science Adoption Model
 -   DOS
 -   DOS Mart and DOS Marts 
 -   Healthcare.AI
 -   HealthCatalyst.AI
 -   Healthcare Analytics Summit
+-   Health Catalyst Expert Data Collections
+-   Health Catalyst Financial Empowerment Suite
+-       Health Catalyst PowerBudget
+-       Health Catalyst PowerCosting
+-       Health Catalyst PowerLabor
+-   Health Catalyst Population Health Suite 
+-       Health Catalyst Care Management Suite
+-           Health Catalyst Care Flow
+-           Health Catalyst Pop Analyzer
+-           Health Catalyst Pop Insights
+-   Health Catalyst Embedded Suite
+-       Health Catalyst Embedded Care Gaps
+-       Health Catalyst Embedded Refills
+-   Health Catalyst Measures Suite
+-	    Health Catalyst Community Care
+-	    Health Catalyst Measurable (formerly Able Health)
+-   Health Catalyst Self Service Analytics Suite
+-       Health Catalyst IDEA
+-   Health Catalyst Value Optimizer
+-   Health Catalyst Research Network
 -   Health Catalyst University
+-   Hospital Price Index
 -   Ignite Outcomes Improvement 
--   Late-Binding
 -   Patient Safety Monitor
 -   Population Builder 
 -   Population Care Flow
--   Population Health Foundations Solution 
+-   Population Health Foundations Solution (Change to Propser)
+-   Self-Service Analytics
 -   Rapid Response Analytics Solution
 -   The Catalyst Awards 
+-   Twistle
+-   Twistle Patient Engagement by Health Catalyst
 -   VitalIntegrity
--   VitalAnalysis
--   VitalAssessment
--   Hospital Price Index
--   VitalView
--   VitalWorkflow
--   VitalAuditor
--   VitalCoder
--   VitalAlerts
--   Vital365
-
 :::
 
 :::
