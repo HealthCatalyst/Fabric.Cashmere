@@ -10,5 +10,5 @@
     (click)="_open($event)"
 >
     <ng-content select="[hcDatepickerToggleIcon]"></ng-content>
-    <hc-icon hcSuffix fontSet="fa" [fontIcon]="datepicker.mode === 'time' ? 'fa-clock-o' : 'fa-calendar'" *ngIf="!_customIcon"></hc-icon>
+    <hc-icon hcSuffix [fontIcon]="datepicker.mode === 'time' ? 'hc-calendar-ico-clock' : 'hc-calendar-ico-cal'" *ngIf="!_customIcon"></hc-icon>
 </button>

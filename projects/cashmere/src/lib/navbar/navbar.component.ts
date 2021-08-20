@@ -177,7 +177,7 @@ export class NavbarComponent implements OnDestroy {
     }
 
     get _mobileMenuIcon(): string {
-        return this._menuOpen ? 'fa-times' : 'fa-bars';
+        return this._menuOpen ? 'hc-navbar-mobile-ico-times' : 'hc-navbar-mobile-ico-bars';
     }
 
     _moreClick(): void {

@@ -1267,7 +1267,7 @@ describe('DatepickerComponent', () => {
                     'Expected custom icon to be rendered.'
                 );
 
-                expect(fixture.nativeElement.querySelector('.fa-calendar hc-icon')).toBeFalsy('Expected default icon to be removed.');
+                expect(fixture.nativeElement.querySelector('.hc-calendar-ico-cal hc-icon')).toBeFalsy('Expected default icon to be removed.');
             }));
         });
 

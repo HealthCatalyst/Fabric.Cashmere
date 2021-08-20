@@ -1,6 +1,7 @@
 @import "./colors";
 @import "./variables";
 @import "./mixins";
+@import "./icons";
 
 $navbar-color: $charcoal-blue !default;
 $navbar-brand: $primary-brand !default;
@@ -94,6 +95,21 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     @include media-breakpoint-down(md) {
         display: none;
     }
+}
+
+@mixin hc-navbar-ico-chevron-down {
+    background-image: url($ico-chev-down-grey);
+    background-repeat: no-repeat;
+}
+
+@mixin hc-navbar-mobile-ico-times {
+    background-image: url($ico-times-white);
+    background-repeat: no-repeat;
+}
+
+@mixin hc-navbar-mobile-ico-bars {
+    background-image: url($ico-bars-white);
+    background-repeat: no-repeat;
 }
 
 @mixin navbar-link {
@@ -242,6 +258,17 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         color: $navbar-text;
         font-weight: 600;
         border-bottom: 5px solid $navbar-brand;
+    }
+
+    &:hover:not(.active),
+    &.inactive:hover,
+    &:focus,
+    &.active:not(.inactive) {
+        .hc-navbar-ico-chevron-down {
+            background-image: url($ico-chev-down-white);
+            background-repeat: no-repeat;
+            display: inline-block;
+        }
     }
 
     // This piece of code allows to use the bold styling from the style guide, while

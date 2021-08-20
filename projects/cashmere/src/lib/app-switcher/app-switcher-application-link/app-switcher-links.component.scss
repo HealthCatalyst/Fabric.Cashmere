@@ -12,6 +12,10 @@
     @include hc-app-switcher-links-icon();
 }
 
+.hc-app-switcher-links-ico-th {
+    @include hc-app-switcher-links-ico-th();
+}
+
 .hc-app-switcher-links-text {
     @include hc-app-switcher-links-text();
 }

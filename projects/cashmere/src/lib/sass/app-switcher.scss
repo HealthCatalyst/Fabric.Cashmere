@@ -1,5 +1,6 @@
 @import './colors';
 @import './mixins';
+@import './icons';
 
 @mixin hc-app-switcher-outer() {
     height: 100%;
@@ -80,12 +81,16 @@
     width: 40px;
 }
 
+@mixin hc-app-switcher-links-ico-th() {
+    background-image: url($ico-th-grey);
+}
+
 @mixin hc-app-switcher-warning-icon() {
-    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA3OS41IDcwLjEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDc5LjUgNzAuMTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHRpdGxlPndhcm48L3RpdGxlPg0KPHBhdGggZD0iTTc4LjgsNjIuOEw0NCwyLjRjLTEuMy0yLjMtNC4zLTMuMS02LjctMS44Yy0wLjcsMC40LTEuNCwxLTEuOCwxLjhMMC43LDYyLjhjLTEuMywyLjMtMC41LDUuMywxLjgsNi43DQoJYzAuNywwLjQsMS42LDAuNywyLjQsMC43aDY5LjdjMi43LDAsNC45LTIuMiw0LjktNC45Qzc5LjUsNjQuNCw3OS4yLDYzLjUsNzguOCw2Mi44eiBNMzUuMiwyMC43aDkuMnYyNS43aC05LjJWMjAuN3ogTTM5LjcsNjAuOA0KCWMtMy4xLDAtNS42LTIuNS01LjYtNS42YzAtMy4xLDIuNS01LjYsNS42LTUuNmMzLjEsMCw1LjYsMi41LDUuNiw1LjZDNDUuNCw1OC4yLDQyLjgsNjAuOCwzOS43LDYwLjh6Ii8+DQo8L3N2Zz4NCg==');
+    background-image: url($ico-warning);
 }
 
 @mixin hc-app-switcher-empty-icon() {
-    background-image: url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5Ni45OSA4NC4xNSI+PHRpdGxlPmVtcHR5PC90aXRsZT48cGF0aCBkPSJNODcuMTQsMTEuNjVhNS41NCw1LjU0LDAsMCwwLTUtMy41N0gxOGE1LjU0LDUuNTQsMCwwLDAtNSwzLjU3TDEuNTYsNTIuM1Y4OC42N2EzLjU3LDMuNTcsMCwwLDAsMy41NywzLjU3SDk1YTMuNTcsMy41NywwLDAsMCwzLjU3LTMuNTdWNTIuM1pNODUuNzIsNTMuNzJINjguNnMtMi4xNC4xOC0yLjE0LDMuNTdsMC0uMDhhMTYuMzgsMTYuMzgsMCwwLDEtMzIuNzQsMGwwLC4wOGMwLTMuMzktMi4xNC0zLjU2LTIuMTQtMy41NkgxNC40Yy01LjcxLDAtMy41Ny01LTMuNTctNWw4LjU2LTMxLjM4QTMuODEsMy44MSwwLDAsMSwyMywxNC41SDc3Ljg3YTMuNzcsMy43NywwLDAsMSwzLjU3LDIuNzlsNy44NSwzMS4zMlM5MS40Miw1My43Miw4NS43Miw1My43MloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xLjU2IC04LjA4KSIvPjwvc3ZnPg==');
+    background-image: url($ico-empty);
 }
 
 @mixin hc-app-switcher-retry() {
