@@ -2,6 +2,7 @@
 @import './typography';
 @import './functions';
 @import './mixins';
+@import './icons';
 
 /* Datepicker */
 
@@ -88,6 +89,37 @@ $hc-calendar-next-icon-transform: translateX(-2px) rotate(45deg);
 
 @mixin hc-calendar-dropdown-caret-invert() {
     transform: rotate(180deg);
+}
+
+@mixin hc-calendar-ico-caret-up() {
+    position: relative;
+    top: -3px;
+    left: -3px;
+}
+
+@mixin hc-calendar-ico-caret-down() {
+    position: relative;
+    top: 3px;
+    left: -3px;
+}
+
+@mixin hc-calendar-ico-clock() {
+    background-image: url($ico-clock);
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+@mixin hc-calendar-datepicker-toggle-ico-clock() {
+    position: relative;
+    top: 3px;
+}
+
+@mixin hc-calendar-ico-cal() {
+    background-image: url($ico-cal);
+    background-repeat: no-repeat;
+    display: inline-block;
+    position: relative;
+    top: 2px;
 }
 
 @mixin hc-calendar-control-arrow() {

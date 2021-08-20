@@ -19,6 +19,10 @@
         @include hc-navbar-link-container();
     }
 
+    .hc-navbar-ico-chevron-down {
+        @include hc-navbar-ico-chevron-down();
+    }
+
     .navbar-link {
         @include navbar-link();
     }
@@ -57,5 +61,13 @@
 
     .hc-navbar-mobile-menu {
         @include hc-navbar-mobile-menu();
+    }
+
+    .hc-navbar-mobile-ico-bars {
+        @include hc-navbar-mobile-ico-bars();
+    }
+
+    .hc-navbar-mobile-ico-times {
+        @include hc-navbar-mobile-ico-times();
     }
 }

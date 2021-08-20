@@ -12,6 +12,21 @@
     @include hc-calendar-controls();
 }
 
+.hc-calendar-ico-clock {
+    @include hc-calendar-ico-clock();
+}
+
+.hc-calendar-ico-caret-down {
+    @include hc-calendar-dropdown-caret();
+    @include hc-calendar-ico-caret-down();
+}
+
+.hc-calendar-ico-caret-up {
+    @include hc-calendar-dropdown-caret();
+    @include hc-calendar-dropdown-caret-invert();
+    @include hc-calendar-ico-caret-up();
+}
+
 .hc-calendar-control-button {
     &.hc-calendar-period-button,
     &.hc-calendar-today-button {
