@@ -39,7 +39,7 @@
 </ng-container>
 
 <div *ngIf="mode !== 'date'" class="hc-calendar-time-picker">
-    <hc-icon class="hc-calendar-time-picker-icon" fontSet="fa" fontIcon="fa-clock-o"></hc-icon>
+    <hc-icon class="hc-calendar-time-picker-icon" fontIcon="hc-calendar-ico-clock"></hc-icon>
 
     <hc-form-field inline="true" class="hc-calendar-time-picker-field">
         <input
@@ -52,10 +52,10 @@
         />
         <span hcSuffix class="hc-calendar-time-controls">
             <button hc-button buttonStyle="minimal" size="sm" (click)="_hoursUp()" class="hc-calendar-time-controls-button">
-                <hc-icon fontSet="fa" fontIcon="fa-caret-up" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
+                <hc-icon fontIcon="hc-calendar-ico-caret-up" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
             </button>
             <button hc-button buttonStyle="minimal" size="sm" (click)="_hoursDown()" class="hc-calendar-time-controls-button">
-                <hc-icon fontSet="fa" fontIcon="fa-caret-down" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
+                <hc-icon fontIcon="hc-calendar-ico-caret-down" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
             </button>
         </span>
     </hc-form-field>
@@ -71,10 +71,10 @@
         />
         <span hcSuffix class="hc-calendar-time-controls">
             <button hc-button buttonStyle="minimal" size="sm" (click)="_minutesUp()" class="hc-calendar-time-controls-button">
-                <hc-icon fontSet="fa" fontIcon="fa-caret-up" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
+                <hc-icon fontIcon="hc-calendar-ico-caret-up" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
             </button>
             <button hc-button buttonStyle="minimal" size="sm" (click)="_minutesDown()" class="hc-calendar-time-controls-button">
-                <hc-icon fontSet="fa" fontIcon="fa-caret-down" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
+                <hc-icon fontIcon="hc-calendar-ico-caret-down" hcIconSm class="hc-calendar-controls-icon"></hc-icon>
             </button>
         </span>
     </hc-form-field>

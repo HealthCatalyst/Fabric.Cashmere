@@ -47,4 +47,12 @@
     .move-btns-wrap .hc-icon {
         @include hc-picklist-move-btn-icon();
     }
+
+    .hc-picklist-old-ico-arrow-right {
+        @include hc-picklist-old-ico-arrow-right();
+    }
+
+    .hc-picklist-old-ico-arrow-left {
+        @include hc-picklist-old-ico-arrow-left();
+    }
 }

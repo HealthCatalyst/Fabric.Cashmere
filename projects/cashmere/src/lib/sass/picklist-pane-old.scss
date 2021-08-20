@@ -1,5 +1,6 @@
 @import './colors';
 @import './variables';
+@import './icons';
 
 @mixin hc-picklist-pane-inner() {
     display: flex;
@@ -149,19 +150,11 @@
 }
 
 @mixin hc-picklist-pane-values-caret() {
-    &:before {
-        display: inline-block;
-        font-size: 13px;
-        position: relative;
-        top: -1px;
-        transition: transform 0.2s;
-    }
+    transition: transform 0.2s;
 }
 
 @mixin hc-picklist-pane-values-caret-showing-values() {
-    &:before {
-        transform: rotate(90deg);
-    }
+    transform: rotate(90deg);
 }
 
 @mixin hc-picklist-pane-values-caret-selected() {
@@ -170,11 +163,8 @@
 
 @mixin hc-picklist-pane-vs-folder() {
     left: -3px;
+    top: 1px;
     position: relative;
-}
-
-@mixin hc-picklist-pane-vs-folder-selected() {
-    color: $white;
 }
 
 @mixin hc-picklist-pane-loading-subvals() {
@@ -192,4 +182,31 @@
 
 @mixin hc-picklist-pane-valueset-code() {
     margin-right: 5px;
+}
+
+@mixin hc-picklist-old-ico-search() {
+    background-image: url($ico-search-grey);
+    height: 16px;
+    position: relative;
+    top: 3px;
+}
+
+@mixin hc-picklist-old-toggle-open() {
+    background-image: url($ico-folder-open);
+}
+
+@mixin hc-picklist-old-toggle-closed() {
+    background-image: url($ico-folder);
+}
+
+@mixin hc-picklist-old-toggle-caret() {
+    width: 0 !important;
+    height: 0 !important;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid #00aeff;
+    margin-right: 5px;
+    position: relative;
+    top: -2px;
+    display: inline-block;
 }

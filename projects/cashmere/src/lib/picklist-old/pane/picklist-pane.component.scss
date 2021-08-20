@@ -73,9 +73,6 @@
     .hc-table .vs-folder {
         @include hc-picklist-pane-vs-folder();
     }
-    .hc-table .selected .vs-folder {
-        @include hc-picklist-pane-vs-folder-selected();
-    }
     .hc-table .loading-subvals {
         @include hc-picklist-pane-loading-subvals();
     }
@@ -88,5 +85,21 @@
 
     .empty-table-msg {
         @include hc-picklist-pane-empty-table-msg();
+    }
+
+    .hc-picklist-old-ico-search {
+        @include hc-picklist-old-ico-search();
+    }
+
+    .hc-picklist-old-toggle-open {
+        @include hc-picklist-old-toggle-open();
+    }
+
+    .hc-picklist-old-toggle-closed {
+        @include hc-picklist-old-toggle-closed();
+    }
+
+    .hc-picklist-old-toggle-caret {
+        @include hc-picklist-old-toggle-caret();
     }
 }
