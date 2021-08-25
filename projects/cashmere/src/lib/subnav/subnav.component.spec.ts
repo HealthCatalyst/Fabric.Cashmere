@@ -11,7 +11,7 @@ import {SubnavRightDirective} from './subnav-right.directive';
     `
 })
 export class SubNavRightComponent {
-    fixedValue: boolean = false;
+    fixedValue = false;
 }
 
 describe('SubnavComponent', () => {
@@ -33,12 +33,12 @@ describe('SubnavComponent', () => {
         component.fixedValue = true;
         fixture.detectChanges();
 
-        let subnavComponent = fixture.debugElement.query(By.directive(SubnavComponent));
+        const subnavComponent = fixture.debugElement.query(By.directive(SubnavComponent));
         expect(subnavComponent.nativeElement.classList.contains('hc-subnav-fixed-top')).toBe(true);
     });
 
     it('should add hc-subnav-right css class when hcSubnavRight directive is included', () => {
-        let subnavRight = fixture.debugElement.query(By.directive(SubnavRightDirective));
+        const subnavRight = fixture.debugElement.query(By.directive(SubnavRightDirective));
         expect(subnavRight.nativeElement.classList.contains('hc-subnav-right')).toBe(true);
     });
 });

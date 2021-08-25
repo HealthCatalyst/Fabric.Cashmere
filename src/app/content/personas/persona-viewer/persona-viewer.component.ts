@@ -10,13 +10,14 @@ import {PersonaFile, PersonaService} from '../persona-list.service';
     styleUrls: ['./persona-viewer.component.scss']
 })
 export class PersonaViewerComponent implements OnInit, OnDestroy {
-    public document: string = '';
-    public orgChart = false;
+    public document = '';
+    public referrer = '/content/personas';
+    public backText = 'Back to Persona List';
     private unsubscribe = new Subject<void>();
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router, public personaService: PersonaService) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.activatedRoute.paramMap.pipe(takeUntil(this.unsubscribe)).subscribe(queryParams => {
             const route = queryParams.get('id');
             const selectedPersona: PersonaFile | undefined = this.personaService.personas.find(persona => persona.route === route);
@@ -28,7 +29,13 @@ export class PersonaViewerComponent implements OnInit, OnDestroy {
         const url = this.router.url;
         const parsed = this.router.parseUrl(url);
         if ( parsed.queryParamMap.get('referrer') ) {
-            this.orgChart = true;
+            if ( parsed.queryParamMap.get('referrer') === 'chart' ) {
+                this.referrer = '/content/org-chart';
+                this.backText = 'Back to Org Chart';
+            } else {
+                this.referrer = '/content/products/' + parsed.queryParamMap.get('referrer');
+                this.backText = 'Back to Product Persona Summary';
+            }
         }
     }
 

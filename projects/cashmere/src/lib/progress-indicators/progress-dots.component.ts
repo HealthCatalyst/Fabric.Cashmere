@@ -4,7 +4,7 @@ export type ProgressDotsColor = 'light' | 'dark';
 
 const supportedColors: ProgressDotsColor[] = ['light', 'dark'];
 
-export function validateColorInput(inputStr: ProgressDotsColor) {
+export function validateColorInput(inputStr: ProgressDotsColor): void {
     if (supportedColors.indexOf(inputStr) < 0) {
         throw Error('Unsupported progress dots color value: ' + inputStr);
     }

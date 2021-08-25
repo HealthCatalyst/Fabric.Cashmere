@@ -1,4 +1,5 @@
 @import './colors';
+@import './icons';
 $pane-header-height: 30px;
 
 @mixin hc-picklist() {
@@ -76,4 +77,14 @@ $pane-header-height: 30px;
 
 @mixin hc-picklist-move-btn-icon() {
     color: $white;
+}
+
+@mixin hc-picklist-old-ico-arrow-right() {
+    background-image: url($ico-arrow-right-white);
+    height: 16px !important;
+}
+
+@mixin hc-picklist-old-ico-arrow-left() {
+    background-image: url($ico-arrow-left-white);
+    height: 16px !important;
 }

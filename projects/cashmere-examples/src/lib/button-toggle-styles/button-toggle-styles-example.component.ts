@@ -7,10 +7,10 @@ import { ButtonToggleChangeEvent } from '@healthcatalyst/cashmere';
     styleUrls: ['button-toggle-styles-example.component.scss']
 })
 export class ButtonToggleStylesExampleComponent {
-    public selectedButtonToggleValue: string = '';
+    public selectedButtonToggleValue = '';
     public multiSelectedButtonToggleValues: string[];
-    public buttonStyle: string = 'secondary';
-    public size: string = 'md';
+    public buttonStyle = 'secondary';
+    public size = 'md';
 
     public sizeSelectionChangedEvent(event: ButtonToggleChangeEvent): void {
         this.size = event.selectedValues ? event.selectedValues[0] : '';

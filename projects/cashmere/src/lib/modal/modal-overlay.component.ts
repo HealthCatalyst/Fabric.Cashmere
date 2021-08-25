@@ -20,7 +20,6 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
             }
         `
     ],
-    // tslint:disable-next-line: no-host-metadata-property
     host: {class: 'hc-modal-overlay'},
     animations: [
         trigger('fadeInOut', [
@@ -41,12 +40,12 @@ export class ModalOverlayComponent {
     constructor(private activeModal: ActiveModal) {}
 
     @HostBinding('@fadeInOut')
-    _fadeInOut() {
+    _fadeInOut(): string | unknown {
         return state;
     }
 
-    @HostListener('document:keyup.escape', ['$event'])
-    _escapeKey(event: any) {
+    @HostListener('document:keyup.escape')
+    _escapeKey(): void {
         if (!this._ignoreEscapeKey) {
             this.activeModal.dismiss();
         }

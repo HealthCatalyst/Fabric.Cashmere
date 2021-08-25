@@ -8,7 +8,7 @@ import {Component} from '@angular/core';
     templateUrl: 'popover-right-click-example.component.html'
 })
 export class PopoverRightClickExampleComponent {
-    items: Object[] = [
+    items = [
         {name: 'List Item One', subtext: 'Right-click on this cell for a context menu'},
         {name: 'List Item Two', subtext: 'Right-click on this cell for another context menu'}
     ];

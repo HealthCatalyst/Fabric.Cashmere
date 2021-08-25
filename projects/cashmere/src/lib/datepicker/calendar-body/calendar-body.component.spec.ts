@@ -41,8 +41,6 @@ function createCell(value: number, cellClasses?: HcCalendarCellCssClasses) {
     return new HcCalendarCell(value, `${value}`, `${value}-label`, true, cellClasses);
 }
 
-// tslint:disable:no-non-null-assertion
-// tslint:disable:component-class-suffix
 describe('CalendarBodyComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
@@ -89,15 +87,15 @@ describe('CalendarBodyComponent', () => {
         });
 
         it('highlights today', () => {
-            const todayCell = calendarBodyNativeElement.querySelector('.hc-calendar-body-today')!;
+            const todayCell = calendarBodyNativeElement.querySelector('.hc-calendar-body-today');
             expect(todayCell).not.toBeNull();
-            expect(todayCell.innerHTML.trim()).toBe('3');
+            expect(todayCell?.innerHTML.trim()).toBe('3');
         });
 
         it('highlights selected', () => {
-            const selectedCell = calendarBodyNativeElement.querySelector('.hc-calendar-body-selected')!;
+            const selectedCell = calendarBodyNativeElement.querySelector('.hc-calendar-body-selected');
             expect(selectedCell).not.toBeNull();
-            expect(selectedCell.innerHTML.trim()).toBe('4');
+            expect(selectedCell?.innerHTML.trim()).toBe('4');
         });
 
         it('should set aria-selected correctly', () => {
@@ -117,7 +115,7 @@ describe('CalendarBodyComponent', () => {
             expect(rowEls.length).toBe(2);
             expect(labelEls.length).toBe(1);
             expect(cellEls.length).toBe(11);
-            expect(rowEls[0].firstElementChild!.classList).toContain('hc-calendar-body-label', 'first cell should be the label');
+            expect(rowEls[0].firstElementChild?.classList).toContain('hc-calendar-body-label', 'first cell should be the label');
             expect(labelEls[0].getAttribute('colspan')).toBe('3');
         });
 

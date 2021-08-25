@@ -3,7 +3,7 @@ import {parseBooleanAttribute} from '../util';
 
 const supportedColors = ['neutral', 'yellow', 'green', 'red', 'blue'];
 
-export function validateColorInput(inputStr: string) {
+export function validateColorInput(inputStr: string): void {
     if (supportedColors.indexOf(inputStr) < 0) {
         throw Error('Unsupported chip color value: ' + inputStr);
     }
@@ -17,8 +17,8 @@ export function validateColorInput(inputStr: string) {
     encapsulation: ViewEncapsulation.None
 })
 export class ChipComponent {
-    private _hasCloseButton: boolean = false;
-    private _color: string = 'neutral';
+    private _hasCloseButton = false;
+    private _color = 'neutral';
     _tight = false;
 
     /** Emitted when the 'X' close button is clicked. `(click)` may be used for clicks on the entire chip */
@@ -36,15 +36,13 @@ export class ChipComponent {
         this._color = colorType;
     }
 
-    constructor() {}
-
     /** If true, displays an X button on the right side of the chip which emits a `closeClick` event */
     @Input()
     get hasCloseButton(): boolean {
         return this._hasCloseButton;
     }
 
-    set hasCloseButton(hasButton) {
+    set hasCloseButton(hasButton: boolean) {
         this._hasCloseButton = parseBooleanAttribute(hasButton);
     }
 
@@ -54,16 +52,16 @@ export class ChipComponent {
         return this._tight;
     }
 
-    set tight(val) {
+    set tight(val: boolean) {
         this._tight = parseBooleanAttribute(val);
     }
 
     /** Allows you to customize the width of a chip (ie. `100%`, `250px`); defaults to `auto` */
     @Input()
-    width: string = 'auto';
+    width = 'auto';
 
     /** Called on a click of the X close button */
-    _closeClick(e: MouseEvent) {
+    _closeClick(e: MouseEvent): void {
         this.closeClick.emit(e);
     }
 }

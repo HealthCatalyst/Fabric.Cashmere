@@ -47,6 +47,12 @@ Pipe a `string` value to the Highlight pipe representing query. If the query is 
 <!-- will highlight At…at…  -->
 ```
 
+##### Preserving HTML tags
+
+By default, the highlight pipe will escape HTML tags and search on the escaped text.
+However, if you would prefer to preserve the HTML tags in your text along with highlighting, you may set the `preserveHTML` parameter on the pipe to true.
+
+
 ##### Edge cases
 
 *   When the Highlight Pipe search term is multiple words, it should wrap each adjacent word in the match with its own highlight span.

@@ -21,7 +21,7 @@ export class ProductCentricIndexComponent extends BaseDemoComponent implements O
         private activatedRoute: ActivatedRoute,
         private router: Router,
         sectionService: SectionService,
-        public productCentricIndexService : ProductCentricIndexService
+        public productCentricIndexService: ProductCentricIndexService
     ) {
         super(sectionService);
         this.productLists = productCentricIndexService.productPersonasLists;
@@ -41,7 +41,7 @@ export class ProductCentricIndexComponent extends BaseDemoComponent implements O
         });
     }
 
-    compareProducts(a: ProductFile, b: ProductFile) {
+    compareProducts(a: ProductFile, b: ProductFile): number {
         let comparison = 0;
         if (a.title > b.title) {
             comparison = 1;
@@ -51,7 +51,7 @@ export class ProductCentricIndexComponent extends BaseDemoComponent implements O
         return comparison;
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe.next();
         this.unsubscribe.complete();
     }

@@ -42,7 +42,7 @@ export class ExampleViewerComponent implements OnInit {
     }
 
     @Input()
-    get example() {
+    get example(): string {
         return this._example;
     }
     set example(example: string) {
@@ -52,11 +52,11 @@ export class ExampleViewerComponent implements OnInit {
         }
     }
 
-    get exampleTitle() {
+    get exampleTitle(): string {
         return titleCase(this._example);
     }
 
-    async ngOnInit() {
+    async ngOnInit(): Promise<void> {
         if (this.example) {
             await this.loadExample();
             this.isInitialized = true;
@@ -79,7 +79,7 @@ export class ExampleViewerComponent implements OnInit {
         }
     }
 
-    getTabTitle(fileName: string) {
+    getTabTitle(fileName: string): string {
         switch (fileName) {
             case 'example.component.ts':
                 return 'TS';
@@ -98,11 +98,11 @@ export class ExampleViewerComponent implements OnInit {
         return fileName;
     }
 
-    logClick(tab: string) {
+    logClick(tab: string): void {
         this.appInsights.logEvent(this._example, tab);
     }
 
-    async loadExample() {
+    async loadExample(): Promise<void> {
         if (this.exampleContainer.length) {
             this.exampleContainer.clear();
         }
@@ -113,7 +113,7 @@ export class ExampleViewerComponent implements OnInit {
         await this.loadExampleFiles();
     }
 
-    async loadExampleFiles() {
+    async loadExampleFiles(): Promise<void> {
         this.allExampleFiles = await this.httpClient.get<FileHash>(`/assets/docs/examples/${this.example}.json`).toPromise();
         const exampleRoot = `src/app/${this.example}/`;
         this.exampleFiles = Object.keys(this.allExampleFiles)
@@ -125,7 +125,7 @@ export class ExampleViewerComponent implements OnInit {
             .sort((a, b) => b.name.localeCompare(a.name));
     }
 
-    async launchStackBlitz() {
+    async launchStackBlitz(): Promise<void> {
         const exampleFiles = this.allExampleFiles;
         const containerPath = `src/app/example-container.component.ts`;
         exampleFiles[containerPath] = exampleFiles[containerPath].replace(/hc-example/g, `hc-${this.example}-example`);

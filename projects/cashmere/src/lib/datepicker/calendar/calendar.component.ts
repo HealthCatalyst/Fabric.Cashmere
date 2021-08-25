@@ -140,7 +140,7 @@ export class CalendarHeaderComponent {
     _todayEnabled(): boolean {
         let minDate;
         let maxDate;
-        let today = new Date(this._dateAdapter.today().toDateString());
+        const today = new Date(this._dateAdapter.today().toDateString());
 
         /** Normalize the compare dates to all be on the first day of the month because we are only concerned
          * about whether today falls outside of the month than min or max is in */
@@ -183,7 +183,6 @@ export class CalendarHeaderComponent {
     selector: 'hc-calendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['calendar.component.scss'],
-    // tslint:disable-next-line:no-host-metadata-property
     host: {
         class: 'hc-calendar'
     },
@@ -194,10 +193,10 @@ export class CalendarHeaderComponent {
 export class CalendarComponent implements AfterContentInit, AfterViewChecked, OnDestroy, OnChanges {
     /** An input indicating the type of the header component, if set. */
     @Input()
-    headerComponent: ComponentType<any>;
+    headerComponent: ComponentType<unknown>;
 
     /** A portal containing the header component type for this calendar. */
-    _calendarHeaderPortal: Portal<any>;
+    _calendarHeaderPortal: Portal<unknown>;
 
     /** Stores the current am/pm value */
     _period: FormControl = new FormControl('am');
@@ -241,7 +240,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
             throw Error('Unsupported hourCycle value: ' + value + '. Accepted values are 12 or 24.');
         }
     }
-    _hourCycle: number = 12;
+    _hourCycle = 12;
 
     /** The currently selected date. */
     @Input()
@@ -349,7 +348,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     /** A string containing the value of minutes for the current date */
     get minutes(): string | null {
         if (this.selected) {
-            let minVal = this.selected.getMinutes();
+            const minVal = this.selected.getMinutes();
             return minVal < 10 ? '0' + minVal : minVal.toString();
         } else {
             return this.selected;
@@ -357,7 +356,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
     set minutes(value: string | null) {
         if (value && !isNaN(+value)) {
-            let tempDate = this.selected ? new Date(this.selected.getTime()) : new Date();
+            const tempDate = this.selected ? new Date(this.selected.getTime()) : new Date();
             tempDate.setMinutes(+value);
             this.selectedChange.emit(tempDate);
             this._userSelected();
@@ -367,7 +366,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     /** A string containing the hour for the current date */
     get hours(): string | null {
         if (this.selected) {
-            let hourVal = this.selected.getHours();
+            const hourVal = this.selected.getHours();
             if (this._hourCycle === 12) {
                 if (hourVal > 11) {
                     return hourVal === 12 ? hourVal.toString() : (hourVal - 12).toString();
@@ -391,17 +390,17 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
                     hourVal = 0;
                 }
             }
-            let tempDate = this.selected ? new Date(this.selected.getTime()) : new Date();
+            const tempDate = this.selected ? new Date(this.selected.getTime()) : new Date();
             tempDate.setHours(hourVal);
             this.selectedChange.emit(tempDate);
             this._userSelected();
         }
     }
 
-    _periodChange() {
+    _periodChange(): void {
         if (this.selected) {
-            let tempDate = new Date(this.selected.getTime());
-            let curHours = tempDate.getHours();
+            const tempDate = new Date(this.selected.getTime());
+            const curHours = tempDate.getHours();
             if (this._period.value === 'pm') {
                 tempDate.setHours(curHours + 12);
             } else {
@@ -434,7 +433,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         });
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._calendarHeaderPortal = new ComponentPortal(this.headerComponent || CalendarHeaderComponent);
         this.activeDate = this.startAt || this._dateAdapter.today();
 
@@ -442,19 +441,19 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         this._currentView = this.startView;
     }
 
-    ngAfterViewChecked() {
+    ngAfterViewChecked(): void {
         if (this._moveFocusOnNextTick) {
             this._moveFocusOnNextTick = false;
             this.focusActiveCell();
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._intlChanges.unsubscribe();
         this.stateChanges.complete();
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         const change = changes.minDate || changes.maxDate || changes.dateFilter;
 
         if (change && !change.firstChange) {
@@ -471,14 +470,14 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         this.stateChanges.next();
     }
 
-    focusActiveCell() {
+    focusActiveCell(): void {
         if (this.mode !== 'time') {
             this._getCurrentViewComponent()._focusActiveCell();
         }
     }
 
     /** Updates today's date after an update of the active date */
-    updateTodaysDate() {
+    updateTodaysDate(): void {
         const view = this.currentView === 'month' ? this.monthView : this.currentView === 'year' ? this.yearView : this.multiYearView;
 
         view.ngAfterContentInit();
@@ -492,12 +491,12 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
 
     /** Handles year selection in the multiyear view. */
-    _yearSelectedInMultiYearView(normalizedYear: D) {
+    _yearSelectedInMultiYearView(normalizedYear: D): void {
         this.yearSelected.emit(normalizedYear);
     }
 
     /** Handles month selection in the year view. */
-    _monthSelectedInYearView(normalizedMonth: D) {
+    _monthSelectedInYearView(normalizedMonth: D): void {
         this.monthSelected.emit(normalizedMonth);
     }
 
@@ -515,6 +514,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
      * @param obj The object to check.
      * @returns The given object if it is both a date instance and valid, otherwise null.
      */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private _getValidDateOrNull(obj: any): D | null {
         return this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj) ? obj : null;
     }
@@ -524,7 +524,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         return this.monthView || this.yearView || this.multiYearView;
     }
 
-    _hoursUp() {
+    _hoursUp(): void {
         if (!this.hours) {
             this.hours = this._hourCycle > 12 ? '0' : '1';
         } else {
@@ -539,7 +539,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         }
     }
 
-    _hoursDown() {
+    _hoursDown(): void {
         if (!this.hours) {
             this.hours = this._hourCycle > 12 ? '23' : '12';
         } else {
@@ -554,33 +554,33 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
         }
     }
 
-    _changeMeridiem(curHour, hourChange) {
+    _changeMeridiem(curHour: number, hourChange: number): void {
         if (curHour === hourChange) {
             this._period.setValue(this._period.value > 'am' ? 'am' : 'pm');
         }
     }
 
-    _minutesUp() {
+    _minutesUp(): void {
         if (!this.minutes) {
             this.minutes = '00';
         } else {
             let curMin = +this.minutes;
             curMin++;
             if (curMin > 59) {
-                curMin = 59;
+                curMin = 0;
             }
             this.minutes = curMin.toString();
         }
     }
 
-    _minutesDown() {
+    _minutesDown(): void {
         if (!this.minutes) {
             this.minutes = '59';
         } else {
             let curMin = +this.minutes;
             curMin--;
-            if (curMin < 1) {
-                curMin = 1;
+            if (curMin < 0) {
+                curMin = 59;
             }
             this.minutes = curMin.toString();
         }

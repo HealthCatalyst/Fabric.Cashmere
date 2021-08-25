@@ -3,3 +3,15 @@
 .hc-calendar-toggle {
     @include hc-calendar-toggle();
 }
+
+.hc-calendar-ico-cal {
+    @include hc-calendar-ico-cal();
+}
+
+.hc-calendar-ico-clock {
+    @include hc-calendar-ico-clock();
+}
+
+.hc-calendar-toggle .hc-calendar-ico-clock {
+    @include hc-calendar-datepicker-toggle-ico-clock();
+}

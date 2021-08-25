@@ -21,21 +21,21 @@ import {By} from '@angular/platform-browser';
     `
 })
 export class SingleRadioComponent {
-    isChecked: boolean = false;
-    isRequired: boolean = false;
-    isIndeterminate: boolean = false;
-    isDisabled: boolean = false;
-    parentElementClicked: boolean = false;
-    parentElementKeyedUp: boolean = false;
+    isChecked = false;
+    isRequired = false;
+    isIndeterminate = false;
+    isDisabled = false;
+    parentElementClicked = false;
+    parentElementKeyedUp = false;
     radioId: string | null = 'simple-radio';
-    radioValue: string = 'single_radio';
+    radioValue = 'single_radio';
 
-    onRadioClick: (event?: Event) => void = () => {};
-    onRadioChange: (event?: RadioButtonChangeEvent) => void = () => {};
+    onRadioClick: (event?: Event) => void = () => null;
+    onRadioChange: (event?: RadioButtonChangeEvent) => void = () => null;
 }
 
 describe('RadioButtonComponent', () => {
-    let fixture: ComponentFixture<any>;
+    let fixture: ComponentFixture<unknown>;
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({

@@ -37,7 +37,7 @@ export class TableFilterExampleComponent implements OnInit {
         this.dataSource = new HcTableDataSource(ELEMENT_DATA);
     }
 
-    applyFilter(filter: string) {
+    applyFilter(filter: string): void {
         this.dataSource.filter = filter.trim().toLowerCase();
     }
 }

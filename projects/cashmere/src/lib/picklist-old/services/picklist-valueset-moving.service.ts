@@ -4,6 +4,7 @@ import {PicklistFilterService} from './picklist-filter.service';
 import {PicklistPaneComponent} from '../pane/picklist-pane.component';
 import {FilterableSelectList, PicklistValueOptions, ValueListOption, ValueSetListOption} from '../pane/picklist-pane.model';
 import {PicklistStateService} from './picklist-state.service';
+import {IValueOption} from '../picklist-old.model';
 
 @Injectable()
 export class PicklistValuesetMovingService {
@@ -16,7 +17,7 @@ export class PicklistValuesetMovingService {
 
     public constructor(private filterService: PicklistFilterService, private stateService: PicklistStateService) {}
 
-    public moveOutValuesets(optionsToMove: PicklistValueOptions, pane: PicklistPaneComponent, shouldBreakValuesets: boolean = false) {
+    public moveOutValuesets(optionsToMove: PicklistValueOptions, pane: PicklistPaneComponent, shouldBreakValuesets = false): void {
         this.valueSetList.selectedOptions.forEach(v => {
             v.showValues = false;
             optionsToMove.valueSets.set(v.code, v);
@@ -45,7 +46,7 @@ export class PicklistValuesetMovingService {
         valueset.subValuesSelectList.filteredOptions
             .filter(o => !o.selected)
             .forEach(o => {
-                unselectedSubValues.set(o.code, new ValueListOption(o.option, o.code));
+                unselectedSubValues.set(o.code, new ValueListOption(o.option as IValueOption, o.code));
             });
 
         if (!companionPane) {
@@ -60,8 +61,7 @@ export class PicklistValuesetMovingService {
             return;
         }
         valuesMap.forEach(o => {
-            // tslint:disable-next-line:no-non-null-assertion
-            sourcePane.companion!.valueList.options.set(o.code, new ValueListOption(o.option, o.code));
+            sourcePane.companion?.valueList.options.set(o.code, new ValueListOption(o.option as IValueOption, o.code));
         });
     }
 

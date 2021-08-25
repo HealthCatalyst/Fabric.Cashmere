@@ -20,9 +20,7 @@ export class TileComponent {
     get tight(): boolean {
         return this._tight;
     }
-    set tight(value) {
+    set tight(value: boolean) {
         this._tight = parseBooleanAttribute(value);
     }
-
-    constructor() {}
 }

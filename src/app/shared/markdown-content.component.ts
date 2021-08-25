@@ -10,7 +10,7 @@ import {BaseDemoComponent} from '../shared/base-demo.component';
     `
 })
 export class MarkdownContentComponent extends BaseDemoComponent {
-    markdownContent: Object;
+    markdownContent: Record<string, unknown>;
 
     constructor(sectionService: SectionService, private activatedRoute: ActivatedRoute) {
         super(sectionService);

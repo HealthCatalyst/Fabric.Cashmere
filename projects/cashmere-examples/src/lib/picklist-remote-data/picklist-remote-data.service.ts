@@ -20,7 +20,7 @@ export class PicklistRemoteDataService {
         };
     });
 
-    getPeople(term: string = "", selectedPersons: Array<Person>): Observable<Person[]> {
+    getPeople(term = "", selectedPersons: Array<Person>): Observable<Person[]> {
         let items = this.mockPeople.filter(mp => !selectedPersons.some(sp => sp.id === mp.id));
         if (term) {
             items = items.filter(x => x.name.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1).slice(0, 50);

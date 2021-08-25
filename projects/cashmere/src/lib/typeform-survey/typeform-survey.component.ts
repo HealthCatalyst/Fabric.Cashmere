@@ -1,11 +1,11 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 
-export function throwErrorForMissingSurveyUri() {
+export function throwErrorForMissingSurveyUri(): Error {
     throw Error(`SurveyUri must be specified on element hc-typeform-survey`);
 }
 
 export class TypeformWindow {
-    public typeformEmbed: any;
+    public typeformEmbed: unknown;
 }
 
 @Component({
@@ -46,18 +46,19 @@ export class TypeformSurveyComponent {
         return this._appVersion;
     }
     public _fullUri: string;
-    private _surveyUri: string = "";
+    private _surveyUri = "";
     private _appVersion: string;
-    private _id: string = 'typef_orm_share';
+    private _id = 'typef_orm_share';
 
     /**
      * Opens the survey specified in the surveyUri
      */
-    public open() {
+    public open(): void {
         if (!document.getElementById(this._id)) {
             this.getScripts();
         } else {
-            ((window as unknown) as TypeformWindow).typeformEmbed.makePopup(this._fullUri, {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (window as any).typeformEmbed.makePopup(this._fullUri, {
                 mode: 'drawer_right',
                 autoOpen: true,
                 opacity: 100,
@@ -68,7 +69,7 @@ export class TypeformSurveyComponent {
     }
 
     private refreshFullUri() {
-        let varChar: string = this.surveyUri.includes('?') ? '&' : '?';
+        const varChar: string = this.surveyUri.includes('?') ? '&' : '?';
         this._fullUri = this.appVersion ? this.surveyUri + varChar + 'app_version=' + this.appVersion : this.surveyUri;
     }
 

@@ -1,6 +1,3 @@
-// tslint:disable:directive-class-suffix use-input-property-decorator component-class-suffix
-// tslint:disable:no-host-metadata-property no-inputs-metadata-property
-
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.

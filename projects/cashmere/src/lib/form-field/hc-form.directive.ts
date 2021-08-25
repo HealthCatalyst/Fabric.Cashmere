@@ -10,7 +10,7 @@ import {Subject} from 'rxjs';
     selector: '[hcForm]'
 })
 export class HcFormDirective implements AfterContentInit, OnDestroy {
-    private _tight: boolean = false;
+    private _tight = false;
     private unsubscribe$ = new Subject<void>();
 
     @ContentChildren(HcFormFieldComponent)
@@ -21,7 +21,7 @@ export class HcFormDirective implements AfterContentInit, OnDestroy {
     get tight(): boolean {
         return this._tight;
     }
-    set tight(value) {
+    set tight(value: boolean) {
         this._tight = parseBooleanAttribute(value);
         this._updateTightFields();
     }
@@ -32,12 +32,12 @@ export class HcFormDirective implements AfterContentInit, OnDestroy {
         this._formFields.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => this._updateTightFields());
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
     }
 
-    _updateTightFields() {
+    _updateTightFields(): void {
         if (this._formFields) {
             this._formFields.forEach(field => {
                 field.tight = this._tight;

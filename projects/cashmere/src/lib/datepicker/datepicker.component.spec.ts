@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {Directionality} from '@angular/cdk/bidi';
 import {Overlay, OverlayContainer} from '@angular/cdk/overlay';
 import {ScrollDispatcher} from '@angular/cdk/scrolling';
 
 import {Component, FactoryProvider, Type, ValueProvider, ViewChild} from '@angular/core';
-import {ComponentFixture, fakeAsync, flush, inject, TestBed, tick} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, flush, inject, TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
@@ -23,7 +24,6 @@ import {InputModule} from '../input/input.module';
 import {IconModule} from '../icon/icon.module';
 import {HcFormFieldComponent} from '../form-field/hc-form-field.component';
 
-/* tslint:disable */
 @Component({
     template: `
         <input [hcDatepicker]="d" [value]="date" />
@@ -83,7 +83,9 @@ class DatepickerWithStartViewYear {
     @ViewChild('d')
     datepicker: DatepickerComponent;
 
-    onYearSelection() {}
+    onYearSelection() {
+        // do nothing
+    }
 }
 
 @Component({
@@ -97,7 +99,9 @@ class DatepickerWithStartViewMultiYear {
     @ViewChild('d')
     datepicker: DatepickerComponent;
 
-    onMultiYearSelection() {}
+    onMultiYearSelection(): void {
+        // do nothing
+    }
 }
 
 @Component({
@@ -210,13 +214,21 @@ class DatepickerWithChangeAndInputEvents {
     @ViewChild('d')
     datepicker: DatepickerComponent;
 
-    onChange() {}
+    onChange() {
+        // do nothing
+    }
 
-    onInput() {}
+    onInput() {
+        // do nothing
+    }
 
-    onDateChange() {}
+    onDateChange() {
+        // do nothing
+    }
 
-    onDateInput() {}
+    onDateInput() {
+        // do nothing
+    }
 }
 
 @Component({
@@ -328,7 +340,7 @@ class DatepickerWithTabindexOnToggle {}
 class DatepickerWithTime {
     @ViewChild('timepicker')
     datepicker: DatepickerComponent;
-    cycleVal: number = 12;
+    cycleVal = 12;
 }
 
 @Component({
@@ -448,15 +460,15 @@ describe('DatepickerComponent', () => {
                 fixture.detectChanges();
                 flush();
 
-                const popup = document.querySelector('.cdk-overlay-pane')!;
+                const popup = document.querySelector('.cdk-overlay-pane');
                 expect(popup).not.toBeNull();
-                expect(popup.clientHeight).not.toBe(0);
+                expect(popup?.clientHeight).not.toBe(0);
 
                 testComponent.datepicker.close();
                 fixture.detectChanges();
                 flush();
 
-                expect(popup.clientHeight).toBe(0);
+                expect(popup?.clientHeight).toBe(0);
             }));
 
             it('should close the popup when pressing ESCAPE', fakeAsync(() => {
@@ -479,9 +491,9 @@ describe('DatepickerComponent', () => {
                 fixture.detectChanges();
                 flush();
 
-                const popup = document.querySelector('.cdk-overlay-pane')!;
+                const popup = document.querySelector('.cdk-overlay-pane');
                 expect(popup).toBeTruthy();
-                expect(popup.getAttribute('role')).toBe('dialog');
+                expect(popup?.getAttribute('role')).toBe('dialog');
             }));
 
             it('setting selected via click should update input and close calendar', fakeAsync(() => {
@@ -638,7 +650,7 @@ describe('DatepickerComponent', () => {
 
                 const spy = jasmine.createSpy('close event spy');
                 const subscription = testComponent.datepicker.closedStream.subscribe(spy);
-                const backdrop = document.querySelector('.cdk-overlay-backdrop')! as HTMLElement;
+                const backdrop = document.querySelector('.cdk-overlay-backdrop') as HTMLElement;
 
                 backdrop.click();
                 fixture.detectChanges();
@@ -846,11 +858,11 @@ describe('DatepickerComponent', () => {
                 testComponent.datepicker.open();
                 fixture.detectChanges();
 
-                const firstCalendarCell = document.querySelector('.hc-calendar-body-cell')!;
+                const firstCalendarCell = document.querySelector('.hc-calendar-body-cell');
 
                 // When the calendar is in year view, the first cell should be for a month rather than
                 // for a date.
-                expect(firstCalendarCell.textContent!.trim()).toBe('JAN', 'Expected the calendar to be in year-view');
+                expect(firstCalendarCell?.textContent?.trim()).toBe('JAN', 'Expected the calendar to be in year-view');
             });
 
             it('should fire yearSelected when user selects calendar year in year view', fakeAsync(() => {
@@ -893,11 +905,11 @@ describe('DatepickerComponent', () => {
                 testComponent.datepicker.open();
                 fixture.detectChanges();
 
-                const firstCalendarCell = document.querySelector('.hc-calendar-body-cell')!;
+                const firstCalendarCell = document.querySelector('.hc-calendar-body-cell');
 
                 // When the calendar is in year view, the first cell should be for a month rather than
                 // for a date.
-                expect(firstCalendarCell.textContent!.trim()).toBe('2016', 'Expected the calendar to be in multi-year-view');
+                expect(firstCalendarCell?.textContent?.trim()).toBe('2016', 'Expected the calendar to be in multi-year-view');
             });
 
             it('should fire yearSelected when user selects calendar year in multiyear view', fakeAsync(() => {
@@ -1205,10 +1217,10 @@ describe('DatepickerComponent', () => {
                 fixture.componentInstance.datepicker.open();
                 fixture.detectChanges();
 
-                const pane = document.querySelector('.cdk-overlay-pane')!;
+                const pane = document.querySelector('.cdk-overlay-pane');
 
                 expect(pane).toBeTruthy('Expected calendar to be open.');
-                expect(pane.contains(document.activeElement)).toBe(true, 'Expected focus to be inside the calendar.');
+                expect(pane?.contains(document.activeElement)).toBe(true, 'Expected focus to be inside the calendar.');
 
                 fixture.componentInstance.datepicker.close();
                 fixture.detectChanges();
@@ -1255,7 +1267,7 @@ describe('DatepickerComponent', () => {
                     'Expected custom icon to be rendered.'
                 );
 
-                expect(fixture.nativeElement.querySelector('.fa-calendar hc-icon')).toBeFalsy('Expected default icon to be removed.');
+                expect(fixture.nativeElement.querySelector('.hc-calendar-ico-cal hc-icon')).toBeFalsy('Expected default icon to be removed.');
             }));
         });
 
@@ -1621,9 +1633,9 @@ describe('DatepickerComponent', () => {
                 fixture.componentInstance.datepicker.open();
                 fixture.detectChanges();
 
-                const overlay = document.querySelector('.cdk-overlay-connected-position-bounding-box')!;
+                const overlay = document.querySelector('.cdk-overlay-connected-position-bounding-box');
 
-                expect(overlay.getAttribute('dir')).toBe('rtl');
+                expect(overlay?.getAttribute('dir')).toBe('rtl');
             });
 
             it('should update the popup direction if the directionality value changes', fakeAsync(() => {
@@ -1643,9 +1655,9 @@ describe('DatepickerComponent', () => {
                 fixture.componentInstance.datepicker.open();
                 fixture.detectChanges();
 
-                let overlay = document.querySelector('.cdk-overlay-connected-position-bounding-box')!;
+                let overlay = document.querySelector('.cdk-overlay-connected-position-bounding-box');
 
-                expect(overlay.getAttribute('dir')).toBe('ltr');
+                expect(overlay?.getAttribute('dir')).toBe('ltr');
 
                 fixture.componentInstance.datepicker.close();
                 fixture.detectChanges();
@@ -1655,9 +1667,9 @@ describe('DatepickerComponent', () => {
                 fixture.componentInstance.datepicker.open();
                 fixture.detectChanges();
 
-                overlay = document.querySelector('.cdk-overlay-connected-position-bounding-box')!;
+                overlay = document.querySelector('.cdk-overlay-connected-position-bounding-box');
 
-                expect(overlay.getAttribute('dir')).toBe('rtl');
+                expect(overlay?.getAttribute('dir')).toBe('rtl');
             }));
         });
     });
@@ -1768,7 +1780,7 @@ describe('DatepickerComponent', () => {
             flush();
             fixture.detectChanges();
 
-            let formFields = document.querySelectorAll('hc-form-field');
+            const formFields = document.querySelectorAll('hc-form-field');
             expect(formFields.length).toBe(2);
         }));
     });

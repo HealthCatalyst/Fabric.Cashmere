@@ -8,11 +8,11 @@ import {ActiveModal} from '@healthcatalyst/cashmere';
 export class ModalOverviewExampleModalComponent {
     constructor(public activeModal: ActiveModal) {}
 
-    close() {
+    close(): void {
         this.activeModal.close();
     }
 
-    cancel() {
+    cancel(): void {
         this.activeModal.dismiss();
     }
 }

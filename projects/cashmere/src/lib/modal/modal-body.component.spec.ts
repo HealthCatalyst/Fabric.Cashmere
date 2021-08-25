@@ -31,7 +31,7 @@ describe('hc-modal-body', () => {
     });
 
     it('should detect no text within the modal base body component', () => {
-        let text: DebugElement = bodyFixture.debugElement.query(By.css('p'));
+        const text: DebugElement = bodyFixture.debugElement.query(By.css('p'));
         expect(text).toBeNull();
     });
 });

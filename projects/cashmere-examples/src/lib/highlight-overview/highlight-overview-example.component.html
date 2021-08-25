@@ -4,4 +4,4 @@
         <input hcInput [formControl]="highlightControl" />
     </hc-form-field>
 </div>
-<p [innerHTML]="text | highlight: highlightControl.value"></p>
+<p [innerHTML]="text | highlight: highlightControl.value:true"></p>

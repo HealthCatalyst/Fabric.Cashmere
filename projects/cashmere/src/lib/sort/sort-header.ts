@@ -1,5 +1,4 @@
-/* tslint:disable:component-selector no-host-metadata-property no-input-rename component-class-suffix */
-
+/* eslint-disable @angular-eslint/component-selector */
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -85,7 +84,7 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
      * Flag set to true when the indicator should be displayed while the sort is not active. Used to
      * provide an affordance that the header is sortable by showing on focus and hover.
      */
-    _showIndicatorHint: boolean = false;
+    _showIndicatorHint = false;
 
     /**
      * The view transition state of the arrow (translation/ opacity) - indicates its `from` and `to`
@@ -123,25 +122,25 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
         return this._disableClear;
     }
 
-    set disableClear(v) {
+    set disableClear(v: boolean) {
         this._disableClear = coerceBooleanProperty(v);
     }
 
     private _disableClear: boolean;
 
     @Input()
-    get disabled() {
+    get disabled(): boolean {
         return this._disabled;
     }
 
-    set disabled(value: any) {
+    set disabled(value: boolean) {
         this._disabled = coerceBooleanProperty(value);
     }
 
     @HostBinding('class.hc-sort-header')
     _hostClass = true;
 
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     constructor(
         public _intl: HcSortHeaderIntl,
@@ -168,7 +167,7 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (!this.id && this._cdkColumnDef) {
             this.id = this._cdkColumnDef.name;
         }
@@ -180,7 +179,7 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
         this._sort.register(this);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._sort.deregister(this);
         this._rerenderSubscription.unsubscribe();
     }
@@ -189,7 +188,7 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
      * Sets the "hint" state such that the arrow will be semi-transparently displayed as a hint to the
      * user showing what the active sort will become. If set to false, the arrow will fade away.
      */
-    _setIndicatorHintVisible(visible: boolean) {
+    _setIndicatorHintVisible(visible: boolean): void {
         // No-op if the sort header is disabled - should not make the hint visible.
         if (this._isDisabled() && visible) {
             return;
@@ -212,7 +211,7 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
      * `disableViewStateAnimation` flag is set to true, the `fromState` will be ignored so that
      * no animation appears.
      */
-    _setAnimationTransitionState(viewState: ArrowViewStateTransition) {
+    _setAnimationTransitionState(viewState: ArrowViewStateTransition): void {
         this._viewState = viewState;
 
         // If the animation for arrow position state (opacity/translation) should be disabled,
@@ -223,7 +222,7 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
     }
 
     /** Triggers the sort on this sort header and removes the indicator hint. */
-    _handleClick() {
+    _handleClick(): void {
         if (this._isDisabled()) {
             return;
         }
@@ -246,17 +245,17 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
     }
 
     /** Whether this HcSortHeader is currently sorted in either ascending or descending order. */
-    _isSorted() {
+    _isSorted(): boolean {
         return this._sort.active === this.id && (this._sort.direction === 'asc' || this._sort.direction === 'desc');
     }
 
     /** Returns the animation state for the arrow direction (indicator and pointers). */
-    _getArrowDirectionState() {
+    _getArrowDirectionState(): string {
         return `${this._isSorted() ? 'active-' : ''}${this._arrowDirection}`;
     }
 
     /** Returns the arrow position state (opacity, translation). */
-    _getArrowViewState() {
+    _getArrowViewState(): string {
         const fromState = this._viewState.fromState;
         return (fromState ? `${fromState}-to-` : '') + this._viewState.toState;
     }
@@ -271,11 +270,11 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
      * preserving its direction, even though the next sort direction is actually different and should
      * only be changed once the arrow displays again (hint or activation).
      */
-    _updateArrowDirection() {
+    _updateArrowDirection(): void {
         this._arrowDirection = this._isSorted() ? this._sort.direction : this.start || this._sort.start;
     }
 
-    _isDisabled() {
+    _isDisabled(): boolean {
         return this._sort.disabled || this.disabled;
     }
 
@@ -285,7 +284,7 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
      * says that the aria-sort property should only be present on one header at a time, so removing
      * ensures this is true.
      */
-    _getAriaSortAttribute() {
+    _getAriaSortAttribute(): string | null {
         if (!this._isSorted()) {
             return null;
         }

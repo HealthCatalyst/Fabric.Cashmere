@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { InjectionToken } from '@angular/core';
 import { SelectionModelFactory } from './pane/selection-model';
 
 /** @docs-private */
 export class PickOption {
-    [name: string]: any;
+    [name: string]: unknown;
     /** zero-based position in the list */
     index?: number;
     /** used as the id for the DOM element representing this option */
@@ -17,7 +18,7 @@ export class PickOption {
     /** the display name for the option */
     label?: string;
     /** the option given to the form or NgModel for this option */
-    value?: string | Object;
+    value?: any;
     /** reference to this option's parent option */
     parent?: PickOption;
 
@@ -37,7 +38,7 @@ export class PickOption {
         Object.assign(this, config);
     }
 
-    toggleOpenState(event: MouseEvent) {
+    toggleOpenState(event: MouseEvent): void {
         event.stopPropagation();
         this.isClosed = !this.isClosed;
     }
@@ -58,6 +59,8 @@ export enum KeyCode {
 export const SELECTION_MODEL_FACTORY = new InjectionToken<SelectionModelFactory>('ng-select-selection-model');
 export type AddCustomItemFn = ((term: string) => any | Promise<any>);
 export type CompareWithFn = (a: any, b: any) => boolean;
-export type GroupValueFn = (key: string | object, children: any[]) => string | object;
+export type GroupValueFn = (key: string | Record<string, any>, children: any[]) => string | Record<string, any>;
+export type GroupByFn = (item: any) => any;
 export type SortFn = (a: PickOption, b: PickOption) => number;
 export type SearchFn = (term: string, item: any) => boolean;
+export type TrackByFn = <U>(index: number, item: U) => U;

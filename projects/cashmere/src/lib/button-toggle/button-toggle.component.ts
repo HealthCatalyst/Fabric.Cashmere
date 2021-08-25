@@ -31,7 +31,7 @@ export class ButtonToggleComponent {
     get selected(): boolean {
         return this._selected;
     }
-    set selected(isSelected) {
+    set selected(isSelected: boolean) {
         this._selected = parseBooleanAttribute(isSelected);
         this._toggleClick.emit(this);
     }
@@ -41,7 +41,7 @@ export class ButtonToggleComponent {
     get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(isDisabled) {
+    set disabled(isDisabled: boolean) {
         this._disabled = parseBooleanAttribute(isDisabled);
         if ( this._disabled && !this._hostClass.includes( 'hc-toggle-disabled' )) {
             this._hostClass += ' hc-toggle-disabled';
@@ -52,7 +52,7 @@ export class ButtonToggleComponent {
     }
 
     @HostListener('click')
-    _onClick() {
+    _onClick(): void {
         if ( !this.disabled && !this._parentDisabled ) {
             this.selected = !this.selected;
         }

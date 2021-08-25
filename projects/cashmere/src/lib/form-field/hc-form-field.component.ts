@@ -32,8 +32,8 @@ export function getControlMissing(): Error {
     encapsulation: ViewEncapsulation.None
 })
 export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
-    private _inline: boolean = false;
-    private _tight: boolean = false;
+    private _inline = false;
+    private _tight = false;
     private unsubscribe$ = new Subject<void>();
 
     @ContentChild(HcFormControlComponent)
@@ -55,7 +55,7 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
     _classHcFormFieldClass = true;
 
     @HostBinding('class.hc-form-field-disabled')
-    get _disabledClass() {
+    get _disabledClass(): boolean {
         if (this._inputChildren.length > 0) {
             return this._inputChildren.first.disabled;
         } else {
@@ -81,7 +81,7 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
         return this._inline;
     }
 
-    set inline(isInline) {
+    set inline(isInline: boolean) {
         this._inline = parseBooleanAttribute(isInline);
     }
 
@@ -90,7 +90,7 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
     get tight(): boolean {
         return this._tight;
     }
-    set tight(value) {
+    set tight(value: boolean) {
         this._tight = parseBooleanAttribute(value);
         this._updateTightControls();
     }
@@ -114,12 +114,12 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
     }
 
-    _updateTightControls() {
+    _updateTightControls(): void {
         if (this._controls) {
             this._controls.forEach(control => {
                 control._tight = this._tight;
