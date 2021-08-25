@@ -32,7 +32,7 @@ Registered Marks (currently in use) – **Apply ®**:
 Unregistered Marks (currently in use, examples) – **Apply ™** symbol:
 _The ™ symbol can be applied to any unregistered trademark_
 
-Data Science Adoption Model
+- Data Science Adoption Model
 - DOS
 - DOS Mart and DOS Marts
 - Healthcare.AI
@@ -78,8 +78,6 @@ Data Science Adoption Model
 - VitalCoder
 - VitalAlerts
 - Vital365
-
-    :::
 
 :::
 
