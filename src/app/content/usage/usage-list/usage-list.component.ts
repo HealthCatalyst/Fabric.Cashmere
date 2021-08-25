@@ -62,7 +62,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     }
 
     ngOnInit(): void {
-        this.termList$ = this.googleSheetsDbService.get<IUsage>('18lD03x12tYE_DTqiXPX9oqR3sqRdMXEE_jhIGvTF_xk', 1, usageAttributesMapping);
+        this.termList$ = this.googleSheetsDbService.get<IUsage>('18lD03x12tYE_DTqiXPX9oqR3sqRdMXEE_jhIGvTF_xk', 'Sheet1', usageAttributesMapping);
         this.termList$.subscribe(data => {
             this.usageList = data;
             this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName > b.TermName ? 1 : -1));
