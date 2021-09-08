@@ -270,17 +270,17 @@ import { of, Observable } from 'rxjs';
 const environments: IEnvironmentResponse = {
     value: [
             {
-                id: '1234',
+                id: 1234,
                 tenantCode: "HCAT",
-                environmentName: "Production",
-                environmentShortName: "PROD",
+                name: "Production",
+                shortName: "PROD",
                 description: "Live customer environment.",
                 color: "#FFFFFF"
             },{
-                id: '5678',
+                id: 5678,
                 tenantCode: "HCAT",
-                environmentName: "Development",
-                environmentShortName: "DEV",
+                name: "Development",
+                shortName: "DEV",
                 description: "Environment for building and testing new features.",
                 color: "#E7C447"
             }

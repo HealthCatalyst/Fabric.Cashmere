@@ -99,16 +99,16 @@ describe('EnvSwitcherComponent', () => {
 
         it('updates badge text and color for a single environment', () => {
             component.canSelectMultiple = true;
-            component._stagedActiveEnvIds = ['1234'];
+            component._stagedActiveEnvIds = [1234];
             component._applyEnvs()
             const env = component.environments[0];
-            expect(component._badgeText).toBe(env.environmentShortName);
+            expect(component._badgeText).toBe(env.shortName);
             expect(component._badgeColor).toBe(env.badgeColorClass);
         });
 
         it('updates badge text and color for multiple environments', () => {
             component.canSelectMultiple = true;
-            component._stagedActiveEnvIds = ['1234', '5678'];
+            component._stagedActiveEnvIds = [1234, 5678];
             component._applyEnvs()
             expect(component._badgeText).toBe("2 Envs");
             expect(component._badgeColor).toBe('hc-badge-color-white');
@@ -116,7 +116,7 @@ describe('EnvSwitcherComponent', () => {
 
         it('updates badge text and color for all environments', () => {
             component.canSelectMultiple = true;
-            component._stagedActiveEnvIds = ['1234', '5678', '9012'];
+            component._stagedActiveEnvIds = [1234, 5678, 9012];
             component._applyEnvs();
             expect(component._badgeColor).toBe('hc-badge-color-white');
         });
@@ -168,36 +168,48 @@ describe('EnvSwitcherComponent', () => {
         it('should return true if given environment is in staging model', () => {
             component.canSelectMultiple = true;
             component._activeEnvIds = [];
-            component._stagedActiveEnvIds = ['1234'];
-            expect(component._isEnvSelected('1234')).toBeTrue();
+            component._stagedActiveEnvIds = [1234];
+            expect(component._isEnvSelected(1234)).toBeTrue();
         });
 
         it('should return false if given environment is NOT in staging model', () => {
             component.canSelectMultiple = true;
             component._activeEnvIds = [];
             component._stagedActiveEnvIds = [];
-            expect(component._isEnvSelected('1234')).toBeFalse();
+            expect(component._isEnvSelected(1234)).toBeFalse();
         });
 
         it('should return false if given environment is NOT in staging model, even if in activeEnvIds', () => {
             component.canSelectMultiple = true;
-            component._activeEnvIds = ['1234'];
+            component._activeEnvIds = [1234];
             component._stagedActiveEnvIds = [];
-            expect(component._isEnvSelected('1234')).toBeFalse();
+            expect(component._isEnvSelected(1234)).toBeFalse();
         });
     });
 
     describe('_isEnvSelected if canSelectMultiple is false', () => {
         it('should return true if given environment is in model', () => {
             component.canSelectMultiple = false;
-            component._activeEnvIds = ['1234'];
-            expect(component._isEnvSelected('1234')).toBeTrue();
+            component._activeEnvIds = [1234];
+            expect(component._isEnvSelected(1234)).toBeTrue();
         });
 
         it('should return false if given environment is NOT in model', () => {
             component.canSelectMultiple = false;
             component._activeEnvIds = [];
-            expect(component._isEnvSelected('1234')).toBeFalse();
+            expect(component._isEnvSelected(1234)).toBeFalse();
+        });
+    });
+
+    describe('_generateShortName', () => {
+        it('generates initials for a name with multiple words', () => {
+            expect(component._generateShortName('my test today 2')).toBe('MTT2');
+        });
+        it('generates initials for a name with one word', () => {
+            expect(component._generateShortName('test')).toBe('TEST');
+        });
+        it('generates initials for an empty string', () => {
+            expect(component._generateShortName('')).toBe('ENV');
         });
     });
 });

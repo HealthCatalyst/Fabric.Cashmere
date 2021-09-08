@@ -43,9 +43,9 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
     private _disabled = false;
 
     /** The ids of the selected metadata environments */
-    public _activeEnvIds = new Array<string>();
+    public _activeEnvIds = new Array<number>();
     /** In multiselect mode, track the ids of selected environments in this 'staging' model (and then actually apply them when the user is done) */
-    public _stagedActiveEnvIds = new Array<string>();
+    public _stagedActiveEnvIds = new Array<number>();
     public _badgeText = "No Env";
     public _badgeTooltip = "No environment selected";
     public _badgeColor = "hc-badge-color-white";
@@ -97,7 +97,7 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
 
     constructor(@Inject(ENV_SWITCHER_SERVICE) public envSwitcherService: IMetadataEnvironmentService, private workTracker: WorkTrackerService) {}
 
-    writeValue(selectedEnvs: string[]): void {
+    writeValue(selectedEnvs: number[]): void {
         if (this._initialized) {
             this.setActiveEnvironments(selectedEnvs || []);
         } else {
@@ -138,6 +138,7 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
                         this._environments = response.value.map(env => {
                             const envVM = Object.assign({}, env) as IMetadataEnvironmentVM;
                             envVM.badgeColorClass = this._getBadgeColorClass(env);
+                            envVM.shortName = env.shortName || this._generateShortName(env.name);
                             return envVM;
                         });
                         this.setActiveEnvironments(this._activeEnvIds);
@@ -160,7 +161,7 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
     }
 
     /** Convenience method for setting the current active environment(s). Invalid environment IDs will not be selected. */
-    public setActiveEnvironments(envs: string[]): void {
+    public setActiveEnvironments(envs: number[]): void {
         const envsToSet = envs.filter(givenEnvId => {
             const matchingEnv = this._environments.find(env => env.id === givenEnvId);
             if (matchingEnv) {
@@ -176,7 +177,7 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
         this._updateBadgeColor();
     }
 
-    public _isEnvSelected(envId: string): boolean {
+    public _isEnvSelected(envId: number): boolean {
         if (this.canSelectMultiple) {
             return this._stagedActiveEnvIds.findIndex(e => e === envId) > -1;
         }
@@ -236,7 +237,7 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
             this._badgeText = "No Env";
             this._badgeTooltip = "No environment selected";
         } else if (this._activeEnvIds.length === 1) {
-            this._badgeText = this.activeEnvironments[0].environmentShortName.trim().slice(0, 6);
+            this._badgeText = this.activeEnvironments[0].shortName.trim().slice(0, 6);
             this._badgeTooltip = `Active environment: ${this._buildActiveEnvList()}`;
         } else if (this._activeEnvIds.length === this.environments.length) {
             this._badgeText = "All";
@@ -249,7 +250,7 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
 
     /** Returns a list of the active environments */
     private _buildActiveEnvList(): string {
-        return this.activeEnvironments.map(e => e.environmentName).join(', ');
+        return this.activeEnvironments.map(e => e.name).join(', ');
     }
 
     /** Set the appropriate color for environment switcher badge displayed in the navbar */
@@ -265,5 +266,18 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
     private _getBadgeColorClass(env?: IMetadataEnvironment): string {
         const color = env?.color?.toLowerCase().replace('#', '') || 'ffffff';
         return this._colorClassesMap[color];
+    }
+
+    public _generateShortName(name: string): string {
+        if (!name) {
+            return 'ENV';
+        }
+        const tokens = name.trim().split(/\s+/g);
+
+        if (tokens.length > 1) {
+            return tokens.map(e => e.charAt(0).toLocaleUpperCase()).join('').slice(0, 4);
+        } else {
+            return name.trim().slice(0, 4).toLocaleUpperCase();
+        }
     }
 }

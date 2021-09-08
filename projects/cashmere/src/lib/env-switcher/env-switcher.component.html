@@ -18,8 +18,8 @@
                     <h2 class="hc-env-header">Environments</h2>
                     <div hcMenuItem *ngFor="let env of environments" class="hc-env-row" [class.hc-env-row-checked]="_isEnvSelected(env.id)" tabIndex="0" (click)="_envClicked(env)" (keydown.enter)="_envClicked(env)">
                         <hc-checkbox tight="true" [isStub]="true" [checked]="_isEnvSelected(env.id)" tabIndex="-1">
-                            <span class="hc-env-badge hc-env-badge-light-bg {{env.badgeColorClass}}">{{env.environmentShortName}}</span>
-                            {{env.environmentName}}
+                            <span class="hc-env-badge hc-env-badge-light-bg {{env.badgeColorClass}}">{{env.shortName}}</span>
+                            {{env.name}}
                         </hc-checkbox>
                         <span class="hc-env-row-icons">
                             <span class="hc-env-icon-info hc-env-row-icon" hcTooltip="{{env.description || 'No description provided'}}"

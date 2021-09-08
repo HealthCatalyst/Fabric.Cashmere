@@ -3,13 +3,13 @@ import {InjectionToken} from '@angular/core';
 
 export interface IMetadataEnvironment {
     /** unique identifier for the environment */
-    id: string;
+    id: number;
     /** identifier representing a given tenant (for example, a particular client) */
     tenantCode: string;
     /** full name of environment */
-    environmentName: string;
+    name: string;
     /** abbreviated environment name. used in environment badge ui element */
-    environmentShortName: string;
+    shortName: string;
     /** describes the environment */
     description: string;
     /** color associated with environment. use in environemnt badge ui element */
@@ -48,24 +48,24 @@ export class MockEnvSwitcherService implements IMetadataEnvironmentService {
         return of({
             value: [
                 {
-                    id: '1234',
+                    id: 1234,
                     tenantCode: "HCAT",
-                    environmentName: "Production",
-                    environmentShortName: "PROD",
+                    name: "Production",
+                    shortName: "PROD",
                     description: "Live customer environment.",
                     color: "#FFFFFF"
                 },{
-                    id: '5678',
+                    id: 5678,
                     tenantCode: "HCAT",
-                    environmentName: "Development",
-                    environmentShortName: "DEV",
+                    name: "Development",
+                    shortName: "DEV",
                     description: "Environment for building and testing new features.",
                     color: "#E7C447"
                 },{
-                    id: '9012',
+                    id: 9012,
                     tenantCode: "HCAT",
-                    environmentName: "Stage",
-                    environmentShortName: "STG",
+                    name: "Stage",
+                    shortName: "STG",
                     description: "Environment for preparing for production.",
                     color: "#EEA2C0"
                 }

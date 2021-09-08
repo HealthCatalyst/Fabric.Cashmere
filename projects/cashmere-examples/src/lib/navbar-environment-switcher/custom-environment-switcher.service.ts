@@ -9,24 +9,24 @@ import {IMetadataEnvironmentService, IEnvironmentResponse, IMetadataEnvironment}
  */
 const mockEnvs: IMetadataEnvironment[] = [
     {
-        id: '1234',
+        id: 1234,
         tenantCode: "HCAT",
-        environmentName: "Production",
-        environmentShortName: "PROD",
+        name: "Production",
+        shortName: "PROD",
         description: "Live customer environment.",
         color: "#FFFFFF"
     },{
-        id: '5678',
+        id: 5678,
         tenantCode: "HCAT",
-        environmentName: "Development",
-        environmentShortName: "DEV",
+        name: "Development",
+        shortName: "DEV",
         description: "Environment for building and testing new features.",
         color: "#E7C447"
     },{
-        id: '9012',
+        id: 9012,
         tenantCode: "HCAT",
-        environmentName: "Test",
-        environmentShortName: "TEST",
+        name: "Test",
+        shortName: "TEST",
         description: "Environment for integration testing.",
         color: "#F13C45"
     }
