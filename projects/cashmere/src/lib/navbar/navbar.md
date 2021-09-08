@@ -183,3 +183,130 @@ class CustomAppSwitcherService {
 export class NavbarExampleModule {}
 ...
 ```
+
+##### Metadata Environment Switcher
+
+The metadata environment switcher (`<hc-env-switcher>`) is another component that can live in the navbar. It allows Catalyst applications to share a common exeprience for switching across environment within an application. The component knows how to retrieve environments from MDS, how to display them, how to allow the user to interact with them, but it is up to the developer of each application to apply the appropriate headers for actually operating within the
+selected environment. For more information about working with metadata environments, contact the DOS team.
+
+The implementation of this component is similar to the implementation of the app switcher. You can provide the component with an MDS uri, or, provide a custom Environment Switcher service, as shown below.
+
+```html
+<hc-navbar>
+    ...
+    <!-- Environment Switcher -->
+    <hc-env-switcher
+        [(ngModel)]="currentEnvironments"
+        [canOpenInNewTab]="newTabFeatureEnabled"
+        [canSelectMultiple]="multipleSelectEnabled"
+        [disabled]="envSwitcherDisabled"
+        (openInNewTab)="onOpenInNewTab($event)"
+        (updateEnvironments)="onUpdateEnvironments($event)">
+    </hc-env-switcher>
+    ...
+</hc-navbar>
+```
+
+Providing an MDS uri:
+
+```Typescript
+import { NavbarModule, EnvSwitcherModule, IconModule, PopModule, ListModule,
+    SelectModule } from '@healthcatalyst/cashmere';
+
+@NgModule({
+    imports: [
+        EnvSwitcherModule.forRoot({
+            metadataServiceUri: 'http://localhost/mds/v3'
+        })
+    ],
+    exports: [NavbarModule, EnvSwitcherModule, IconModule, PopModule, ListModule, SelectModule]
+})
+export class CashmereModule {}
+...
+```
+
+When the MDS uri is determined at runtime (via configuration), you must register a custom Environment Switcher config provider.
+_(The reason you can't use `forRoot` for this is that the Angular AOT compiler will evaluate the expression (i.e. `window.metadataServiceUri`)
+at build-time using NodeJS and replace it with `null`.)_
+
+```Typescript
+import { NavbarModule, EnvSwitcherModule, IconModule, PopModule, ListModule,
+    SelectModule, ENV_SWITCHER_CONFIG, IEnvSwitcherConfig } from '@healthcatalyst/cashmere';
+
+@NgModule({
+    imports: [
+        EnvSwitcherModule
+    ],
+    providers: [
+        {provide: ENV_SWITCHER_CONFIG, useFactory: getEnvSwitcherConfig}
+    ],
+    exports: [EnvSwitcherModule, ...]
+})
+export class CashmereModule {}
+
+function getEnvSwitcherConfig() {
+    return {
+        metadataServiceUri: window.metadataServiceUri
+    } as IEnvSwitcherConfig;
+}
+...
+```
+
+A custom Environment Switcher service may also be used if you need more control over how environments are retrieved from MDS.
+
+```Typescript
+import {
+    NavbarModule,
+    EnvSwitcherModule,
+    IconModule,
+    PopModule,
+    ListModule,
+    SelectModule,
+    ENV_SWITCHER_SERVICE,
+    IDiscoveryRequest
+} from '@healthcatalyst/cashmere';
+import { of, Observable } from 'rxjs';
+
+const environments: IEnvironmentResponse = {
+    value: [
+            {
+                id: '1234',
+                tenantCode: "HCAT",
+                environmentName: "Production",
+                environmentShortName: "PROD",
+                description: "Live customer environment.",
+                color: "#FFFFFF"
+            },{
+                id: '5678',
+                tenantCode: "HCAT",
+                environmentName: "Development",
+                environmentShortName: "DEV",
+                description: "Environment for building and testing new features.",
+                color: "#E7C447"
+            }
+    ]
+};
+
+class CustomEnvSwitcherService {
+    getEnvironments(): Observable<IEnvironmentResponse> {
+        return of(environments);
+    }
+}
+
+@NgModule({
+    imports: [
+        EnvSwitcherModule.forRoot({
+            metadataServiceUri: 'http://localhost/mds/v3'
+        })
+    ],
+    exports: [NavbarModule, EnvSwitcherModule, IconModule, PopModule, ListModule, SelectModule],
+    providers: [
+        {
+            provide: ENV_SWITCHER_SERVICE,
+            useClass: CustomEnvSwitcherService
+        }
+    ]
+})
+export class NavbarExampleModule {}
+...
+```

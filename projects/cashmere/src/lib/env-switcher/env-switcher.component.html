@@ -1,0 +1,55 @@
+<!-- Navbar element -->
+<div *ngIf="!(loading | async) " [tabIndex]="disabled ? -1 : 0" class="hc-env-badge-wrapper" [class.hc-env-badge-disabled]="disabled"
+    (click)="_onBadgeClick()" (keydown.enter)="_onBadgeClick()" title="{{_badgeTooltip}}" [hcPop]="envSwitcherPop" trigger="none">
+    <span class="hc-env-badge hc-env-badge-navbar {{_badgeColor}}">{{_badgeText}}</span>
+</div>
+
+<!-- Navbar element - loading -->
+<div *ngIf="(loading | async)" class="hc-env-switcher-loading">
+    <hc-progress-dots color="light" [isMini]="true" [isCentered]="true"></hc-progress-dots>
+</div>
+
+<!-- Dropdown -->
+<hc-pop #envSwitcherPop [autoCloseOnContentClick]="false" [showArrow]="false" yAlign="below" xAlign="end" [autoFocus]="true">
+    <div hcMenu class="hc-env-switcher-dropdown" [class.hc-env-switcher-single-select]="!canSelectMultiple">
+        <ng-container *ngIf="!(loading | async)">
+            <ng-container *ngIf="!environmentsFailedToLoad" >
+                <ng-container *ngIf="environments?.length > 0">
+                    <h2 class="hc-env-header">Environments</h2>
+                    <div hcMenuItem *ngFor="let env of environments" class="hc-env-row" [class.hc-env-row-checked]="_isEnvSelected(env.id)" tabIndex="0" (click)="_envClicked(env)" (keydown.enter)="_envClicked(env)">
+                        <hc-checkbox tight="true" [isStub]="true" [checked]="_isEnvSelected(env.id)" tabIndex="-1">
+                            <span class="hc-env-badge hc-env-badge-light-bg {{env.badgeColorClass}}">{{env.environmentShortName}}</span>
+                            {{env.environmentName}}
+                        </hc-checkbox>
+                        <span class="hc-env-row-icons">
+                            <span class="hc-env-icon-info hc-env-row-icon" hcTooltip="{{env.description || 'No description provided'}}"
+                                (click)="$event.stopPropagation();"></span>
+                            <span *ngIf="canOpenInNewTab" class="hc-env-icon-new-tab-link hc-env-row-icon" hcTooltip="Open environment in new tab."
+                                (click)="openInNewTab.emit(env); $event.stopPropagation();"></span>
+                        </span>
+                    </div>
+                    <button *ngIf="canSelectMultiple" hcMenuItem hc-button (click)="_applyEnvs()" size="sm"
+                        title="Close menu and apply selected environments">Apply</button>
+                </ng-container>
+
+                <!-- No Envs Available -->
+                <div *ngIf="environments?.length === 0" class="hc-env-switcher-empty">
+                    <span class="hc-env-switcher-lg-icon hc-env-switcher-empty-icon"></span>
+                    <em>No environments available.</em>
+                </div>
+            </ng-container>
+
+            <!-- Load Failed -->
+            <div *ngIf="environmentsFailedToLoad" class="hc-env-switcher-empty">
+                <span class="hc-env-switcher-lg-icon hc-env-switcher-warning-icon"></span>
+                <em>Failed to load environments.</em>
+                <a class="hc-env-switcher-retry" hc-button buttonStyle="link" (click)="loadEnvironments()">Retry now.</a>
+            </div>
+        </ng-container>
+
+        <!-- Loading -->
+        <div *ngIf="loading | async" class="hc-env-switcher-empty hc-env-switcher-spinner-container">
+            <hc-progress-spinner diameter="60"></hc-progress-spinner>
+        </div>
+    </div>
+</hc-pop>

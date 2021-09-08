@@ -27,8 +27,8 @@ $cdk-z-index-overlay: $zindex-cdk-overlay;
     margin: 5px -16px;
 }
 
-button.hc-menu-item,
-a.hc-menu-item {
+button.hc-menu-item:not(.hc-button),
+a.hc-menu-item:not(.hc-button) {
     @include fontSize(14px);
     font-family: $default-font-family;
     color: $offblack;

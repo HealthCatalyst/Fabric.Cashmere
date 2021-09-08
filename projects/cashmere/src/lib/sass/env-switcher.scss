@@ -1,0 +1,213 @@
+@import './colors';
+@import './mixins';
+@import './icons';
+
+$hc-env-color-white: #ffffff;
+$hc-env-color-light-green: #7acb91;
+$hc-env-color-forest-green: #00acac;
+$hc-env-color-green: #00a859;
+$hc-env-color-gold: #e7c447;
+$hc-env-color-tan: #ebba82;
+$hc-env-color-orange: #f89012;
+$hc-env-color-pink: #eea2C0;
+$hc-env-color-purple: #a94c9d;
+$hc-env-color-blue: #3194fe;
+$hc-env-color-light-blue: #ace5ff;
+$hc-env-color-charcoal: $charcoal-blue;
+$hc-env-color-red: #f13c45;
+
+@mixin hc-env-badge-wrapper() {
+    height: 53px;
+    padding: 20px 0;
+
+
+}
+
+@mixin hc-env-navbar-badge() {
+    display: block;
+    margin: 0 10px;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+@mixin hc-env-switcher-loading() {
+    margin: 8px 20px 0;
+}
+
+@mixin hc-env-badge() {
+    line-height: 1;
+    height: 16px;
+    min-width: 40px;
+    margin: 0 5px 0 0;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 2px 4px;
+    @include fontSize(11px);
+    font-weight: 600;
+    background-color: $hc-env-color-white;
+    color: $charcoal-blue;
+    border-radius: 4px;
+
+    &.hc-env-badge-light-bg {
+        color: $white;
+    }
+
+    &.hc-env-color-white {
+        background-color: $hc-env-color-white;
+
+        // when showing white badge on a light background, invert it to charcoal blue
+        &.hc-env-badge-light-bg {
+            background-color: $hc-env-color-charcoal;
+        }
+    }
+    &.hc-env-color-light-green {
+        background-color: $hc-env-color-light-green;
+    }
+    &.hc-env-color-forest-green {
+        background-color: $hc-env-color-forest-green;
+    }
+    &.hc-env-color-green {
+        background-color: $hc-env-color-green;
+    }
+    &.hc-env-color-gold {
+        background-color: $hc-env-color-gold;
+    }
+    &.hc-env-color-tan {
+        background-color: $hc-env-color-tan;
+    }
+    &.hc-env-color-orange {
+        background-color: $hc-env-color-orange;
+    }
+    &.hc-env-color-pink {
+        background-color: $hc-env-color-pink;
+    }
+    &.hc-env-color-purple {
+        background-color: $hc-env-color-purple;
+    }
+    &.hc-env-color-blue {
+        background-color: $hc-env-color-blue;
+    }
+    &.hc-env-color-light-blue {
+        background-color: $hc-env-color-light-blue;
+    }
+    &.hc-env-color-red {
+        background-color: $hc-env-color-red;
+    }
+}
+
+@mixin hc-env-row() {
+    margin: 2px -16px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:hover, &:focus {
+        outline: none;
+        background-color: transparentize($blue, 0.8);
+    }
+
+    &:active {
+        background-color: transparentize($blue, 0.6);
+    }
+
+    &:hover {
+        .hc-checkbox-content .hc-checkbox-overlay {
+            border: 1px solid $blue;
+        }
+
+        .hc-env-row-icon {
+            opacity: 0.35;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+}
+
+@mixin hc-env-switcher-single-select-checkbox() {
+    display: none;
+}
+
+@mixin hc-env-switcher-single-select-row() {
+    border-left: 5px solid transparent;
+    padding: 0 16px 0 10px;
+}
+
+@mixin hc-env-switcher-single-select-row-checked() {
+    border-left: 5px solid $blue;
+    background-color: $slate-gray-100;
+
+    &:focus {
+        background-color: transparentize($blue, 0.8);
+    }
+}
+
+@mixin hc-env-switcher-button() {
+    margin: 10px 0;
+}
+
+@mixin hc-env-switcher-option-label() {
+    @include fontSize(14px);
+}
+
+
+@mixin hc-env-switcher-header() {
+    @include fontSize(12px);
+}
+
+@mixin hc-env-switcher-new-tab-ico() {
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    background-image: url($ico-external-link);
+}
+
+@mixin hc-env-switcher-info-ico() {
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    background-image: url($ico-info);
+}
+
+@mixin hc-env-switcher-row-icons() {
+    margin-left: 20px;
+}
+
+@mixin hc-env-switcher-row-icon() {
+    opacity: 0;
+    margin-left: 7px;
+    cursor: pointer;
+}
+
+@mixin hc-env-switcher-empty() {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    text-align: center;
+    width: 200px;
+    min-height: 120px;
+}
+
+@mixin hc-env-switcher-spinner-container() {
+    padding: 65px 0;
+}
+
+@mixin hc-env-switcher-lg-icon() {
+    background-repeat: no-repeat;
+    height: 40px;
+    opacity: 0.5;
+    width: 40px;
+}
+
+@mixin hc-env-switcher-empty-icon() {
+    background-image: url($ico-empty);
+}
+
+@mixin hc-env-switcher-warning-icon() {
+    background-image: url($ico-warning);
+}

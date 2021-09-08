@@ -58,7 +58,7 @@
     "navbar": {
         "name": "Navbar",
         "category": "nav",
-        "examples": ["navbar-overview", "navbar-app-switcher", "navbar-cobrand"],
+        "examples": ["navbar-overview", "navbar-app-switcher", "navbar-environment-switcher", "navbar-cobrand"],
         "usageDoc": true
     },
     "null-or-empty-string-pipe": {
