@@ -1,0 +1,92 @@
+@import '../sass/env-switcher.scss';
+@import '../sass/navbar.scss';
+
+hc-env-switcher {
+    .hc-env-badge-wrapper {
+        @include hc-env-badge-wrapper();
+
+        &:not(.hc-env-badge-disabled) {
+            @include navbar-item();
+        }
+    }
+
+    .hc-env-badge-navbar.hc-env-badge {
+        @include hc-env-navbar-badge();
+    }
+
+    .hc-env-switcher-loading {
+        @include hc-env-switcher-loading();
+    }
+}
+
+.hc-env-badge {
+    @include hc-env-badge();
+}
+
+.hc-env-switcher-dropdown {
+    .hc-env-row {
+        @include hc-env-row();
+    }
+
+    &.hc-env-switcher-single-select {
+        .hc-checkbox-content .hc-checkbox-overlay {
+            @include hc-env-switcher-single-select-checkbox();
+        }
+
+        .hc-env-row {
+            @include hc-env-switcher-single-select-row();
+        }
+
+        .hc-env-row.hc-env-row-checked {
+            @include hc-env-switcher-single-select-row-checked();
+        }
+    }
+
+    .hc-button {
+        @include hc-env-switcher-button();
+    }
+
+    .hc-checkbox-tight .hc-checkbox-label {
+        @include hc-env-switcher-option-label();
+    }
+
+    h2 {
+        @include hc-env-switcher-header();
+    }
+
+    .hc-env-icon-new-tab-link {
+        @include hc-env-switcher-new-tab-ico();
+    }
+
+    .hc-env-icon-info {
+        @include hc-env-switcher-info-ico();
+    }
+
+    .hc-env-row-icons {
+        @include hc-env-switcher-row-icons();
+    }
+
+    .hc-env-row-icon {
+        @include hc-env-switcher-row-icon();
+    }
+
+    .hc-env-switcher-empty {
+        @include hc-env-switcher-empty();
+    }
+
+    .hc-env-switcher-spinner-container {
+        @include hc-env-switcher-spinner-container();
+    }
+
+    .hc-env-switcher-lg-icon {
+        @include hc-env-switcher-lg-icon();
+    }
+
+    .hc-env-switcher-empty-icon {
+        @include hc-env-switcher-empty-icon();
+    }
+
+    .hc-env-switcher-warning-icon {
+        @include hc-env-switcher-warning-icon();
+    }
+}
