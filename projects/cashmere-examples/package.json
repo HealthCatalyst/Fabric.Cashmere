@@ -6,19 +6,14 @@
     "es2015": "./esm2015/cashmere-examples.js",
     "jsnext": "./esm2015/cashmere-examples.js",
     "typings": "./cashmere-examples.d.ts",
-    "dependencies": {
-        "tslib": "^2.0.0"
-    },
     "peerDependencies": {
         "@angular/common": "^11.2.14",
         "@angular/core": "~11.2.14",
         "@ng-select/ng-select": "^6.1.0",
         "sugar": "^2.0.6",
         "change-case": "^4.1.1",
-        "lodash": "^4.17.20"
+        "lodash": "^4.17.20",
+        "tslib": "^2.0.0"
     },
-    "devDependencies": {
-        "@bit/healthcatalyst.cashmere.change-case-pipe": "0.0.5",
-        "@healthcatalyst/cashmere": "*"
-    }
+    "devDependencies": {"@bit/healthcatalyst.cashmere.change-case-pipe": "0.0.5", "@healthcatalyst/cashmere": "*"}
 }

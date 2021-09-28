@@ -58,7 +58,7 @@
     "navbar": {
         "name": "Navbar",
         "category": "nav",
-        "examples": ["navbar-overview", "navbar-app-switcher", "navbar-environment-switcher", "navbar-cobrand"],
+        "examples": ["navbar-overview", "navbar-app-switcher", "navbar-cobrand"],
         "usageDoc": true
     },
     "null-or-empty-string-pipe": {
@@ -81,7 +81,12 @@
         "examples": ["pagination-load-more", "pagination-simple", "pagination-standard"],
         "usageDoc": true
     },
-    "picklist": {"name": "Picklist", "category": "forms", "examples": ["picklist-simple", "picklist-templates", "picklist-overview", "picklist-remote-data", "picklist-hc-pick-option"], "usageDoc": true},
+    "picklist": {
+        "name": "Picklist",
+        "category": "forms",
+        "examples": ["picklist-simple", "picklist-templates", "picklist-overview", "picklist-remote-data", "picklist-hc-pick-option"],
+        "usageDoc": true
+    },
     "pop": {
         "name": "Popover",
         "category": "popups",
@@ -114,5 +119,13 @@
     "tabs": {"name": "Tabs", "category": "layout", "examples": ["tabs-horizontal", "tabs-vertical"]},
     "tile": {"name": "Tile", "category": "layout", "examples": ["tile-overview"], "usageDoc": true},
     "toaster": {"name": "Toaster Messages", "category": "popups", "examples": ["toaster-overview"]},
-    "typeform-survey": {"name": "Typeform Survey", "category": "popups", "examples": ["typeform-survey-overview"], "usageDoc": true}
+    "typeform-survey": {"name": "Typeform Survey", "category": "popups", "examples": ["typeform-survey-overview"], "usageDoc": true},
+    "env-switcher": {
+        "category": "nav",
+        "name": "Environment Switcher",
+        "examples": ["environment-switcher-overview"],
+        "id": "env-switcher",
+        "usageDoc": false,
+        "hideApi": false
+    }
 }

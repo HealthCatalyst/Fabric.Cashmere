@@ -9,7 +9,7 @@ $hc-env-color-green: #00a859;
 $hc-env-color-gold: #e7c447;
 $hc-env-color-tan: #ebba82;
 $hc-env-color-orange: #f89012;
-$hc-env-color-pink: #eea2C0;
+$hc-env-color-pink: #eea2c0;
 $hc-env-color-purple: #a94c9d;
 $hc-env-color-blue: #3194fe;
 $hc-env-color-light-blue: #ace5ff;
@@ -19,8 +19,6 @@ $hc-env-color-red: #f13c45;
 @mixin hc-env-badge-wrapper() {
     height: 53px;
     padding: 20px 0;
-
-
 }
 
 @mixin hc-env-navbar-badge() {
@@ -31,11 +29,11 @@ $hc-env-color-red: #f13c45;
 }
 
 @mixin hc-env-switcher-loading() {
-    margin: 8px 20px 0;
+    margin: 8px 30px 0;
 }
 
 @mixin hc-env-badge() {
-    line-height: 1;
+    line-height: 1.2;
     height: 16px;
     min-width: 40px;
     margin: 0 5px 0 0;
@@ -51,6 +49,7 @@ $hc-env-color-red: #f13c45;
 
     &.hc-env-badge-light-bg {
         color: $white;
+        background-color: $hc-env-color-charcoal;
     }
 
     &.hc-env-color-white {
@@ -104,7 +103,8 @@ $hc-env-color-red: #f13c45;
     justify-content: space-between;
     cursor: pointer;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         outline: none;
         background-color: transparentize($blue, 0.8);
     }
@@ -152,8 +152,9 @@ $hc-env-color-red: #f13c45;
 
 @mixin hc-env-switcher-option-label() {
     @include fontSize(14px);
+    display: flex;
+    align-items: center;
 }
-
 
 @mixin hc-env-switcher-header() {
     @include fontSize(12px);
@@ -210,4 +211,8 @@ $hc-env-color-red: #f13c45;
 
 @mixin hc-env-switcher-warning-icon() {
     background-image: url($ico-warning);
+}
+
+@mixin hc-env-switcher-retry() {
+    min-width: 100px;
 }

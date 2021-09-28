@@ -89,4 +89,8 @@ hc-env-switcher {
     .hc-env-switcher-warning-icon {
         @include hc-env-switcher-warning-icon();
     }
+
+    .hc-env-switcher-retry {
+        @include hc-env-switcher-retry();
+    }
 }
