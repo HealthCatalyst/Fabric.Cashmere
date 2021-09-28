@@ -10,7 +10,7 @@ export interface IMetadataEnvironment {
     /** Describes the environment. */
     description: string;
     /** Hex code for the color associated with an environment. Used in the environment badge ui element.
-     * Color options include: `"ffffff", "7acb91", "00acac, "00a859, "e7c447, "ebba82, "f89012, "f13c45, "eea2C0, "a94c9d, "3194fe, "ace5ff"`.
+     * Color options include: `"#ffffff", "#7acb91", "#00acac", "#00a859", "#e7c447", "#ebba82", "#f89012", "#f13c45", "#eea2C0", "#a94c9d", "#3194fe", "#ace5ff"`.
      * If no color (or an invalid color) is provided, will default to white (#ffffff).*/
     color: string;
 }

@@ -33,7 +33,7 @@ $hc-env-color-red: #f13c45;
 }
 
 @mixin hc-env-badge() {
-    line-height: 1.2;
+    line-height: 12px;
     height: 16px;
     min-width: 40px;
     margin: 0 5px 0 0;

@@ -125,7 +125,7 @@
         "name": "Environment Switcher",
         "examples": ["environment-switcher-overview"],
         "id": "env-switcher",
-        "usageDoc": false,
+        "usageDoc": true,
         "hideApi": false
     }
 }

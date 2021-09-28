@@ -21,7 +21,7 @@ import {HcPopComponent} from '../pop/popover.component';
 })
 export class EnvSwitcherComponent implements OnDestroy, ControlValueAccessor {
     /** The currently active metadata environments.
-     * NgModel/FormValue is bound to the environment IDs, but you can access this property for the entire model. */
+     * NgModel/FormValue is bound to just the environment IDs, but you can access this property for an array with the entire environment model. */
     public get selectedEnvironments(): IMetadataEnvironment[] {
         const envs = new Array<IMetadataEnvironment>();
         this._activeEnvIds.forEach(id => {
@@ -108,7 +108,7 @@ export class EnvSwitcherComponent implements OnDestroy, ControlValueAccessor {
     @Output() updateEnvironments = new EventEmitter<Array<IMetadataEnvironment>>();
 
     /** Event that fires when the "open in new tab" action is triggered. Outputs the selected environment.
-     * Consuming app will need implement their own open in new tab functionality. */
+     * Consuming app will need implement functionality to actually open a new tab with the given environment active. */
     @Output() openInNewTab = new EventEmitter<IMetadataEnvironment>();
 
     /** Event that fires when users click a link to reload environments. This link is shown if `failedToLoad` is set to true. */
