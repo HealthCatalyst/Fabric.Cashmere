@@ -3,34 +3,53 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {EnvSwitcherComponent} from './env-switcher.component';
 import {PopModule} from '../pop/popover.module';
 import {PipesModule} from '../pipes/pipes.module';
-import {ENV_SWITCHER_SERVICE, MockEnvSwitcherService} from './env-switcher-interfaces';
 import {ProgressIndicatorsModule} from '../progress-indicators';
-import {WorkTrackerService} from '../shared/work-tracker.service';
-import { CheckboxModule } from '../checkbox/checkbox.module';
-import { ButtonModule } from '../button/button.module';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {CheckboxModule} from '../checkbox/checkbox.module';
+import {ButtonModule} from '../button/button.module';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('EnvSwitcherComponent', () => {
     let component: EnvSwitcherComponent;
     let fixture: ComponentFixture<EnvSwitcherComponent>;
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            imports: [PopModule, PipesModule, ProgressIndicatorsModule, CheckboxModule, ButtonModule, NoopAnimationsModule],
-            declarations: [EnvSwitcherComponent],
-            providers: [
-                {
-                    provide: ENV_SWITCHER_SERVICE,
-                    useClass: MockEnvSwitcherService
-                },
-                WorkTrackerService
-            ]
-        }).compileComponents();
-    }));
+    beforeEach(
+        waitForAsync(() => {
+            TestBed.configureTestingModule({
+                imports: [PopModule, PipesModule, ProgressIndicatorsModule, CheckboxModule, ButtonModule, NoopAnimationsModule],
+                declarations: [EnvSwitcherComponent]
+            }).compileComponents();
+        })
+    );
 
     beforeEach(() => {
         fixture = TestBed.createComponent(EnvSwitcherComponent);
         component = fixture.componentInstance;
+        component.environmentOptions = [
+            {
+                id: 1234,
+                tenantCode: 'HCAT',
+                name: 'Production',
+                shortName: 'PROD',
+                description: 'Live customer environment.',
+                color: '#FFFFFF'
+            },
+            {
+                id: 5678,
+                tenantCode: 'HCAT',
+                name: 'Development',
+                shortName: 'DEV',
+                description: 'Environment for building and testing new features.',
+                color: '#E7C447'
+            },
+            {
+                id: 9012,
+                tenantCode: 'HCAT',
+                name: 'Test',
+                shortName: 'TEST',
+                description: 'Environment for integration testing.',
+                color: 'garbagio'
+            }
+        ];
         fixture.detectChanges();
     });
 
@@ -38,30 +57,22 @@ describe('EnvSwitcherComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    describe('load applications', () => {
-        it('should set loadFail back to false after successful application load', () => {
-            component.environmentsFailedToLoad = true;
-            component.loadEnvironments();
-            expect(component.environmentsFailedToLoad).toBe(false);
-        });
-    });
-
     describe('openMenu', () => {
         it('if canSelectMultiple is true, should add selected env to staging model', () => {
             component.canSelectMultiple = true;
-            component._activeEnvIds = component.environments.map(e => e.id);
+            component._activeEnvIds = component._environmentOptionVMs.map(e => e.id);
             component._stagedActiveEnvIds = [];
-            component.openMenu()
+            component.openMenu();
             expect(component._stagedActiveEnvIds.length).toBe(3);
-            expect(component._stagedActiveEnvIds[0]).toBe(component.environments[0].id);
-            expect(component._stagedActiveEnvIds[1]).toBe(component.environments[1].id);
-            expect(component._stagedActiveEnvIds[2]).toBe(component.environments[2].id);
+            expect(component._stagedActiveEnvIds[0]).toBe(component._environmentOptionVMs[0].id);
+            expect(component._stagedActiveEnvIds[1]).toBe(component._environmentOptionVMs[1].id);
+            expect(component._stagedActiveEnvIds[2]).toBe(component._environmentOptionVMs[2].id);
         });
         it('if canSelectMultiple is false, should empty the staging model', () => {
             component.canSelectMultiple = false;
-            component._activeEnvIds = component.environments.map(e => e.id);
-            component._stagedActiveEnvIds = component.environments.map(e => e.id);
-            component.openMenu()
+            component._activeEnvIds = component._environmentOptionVMs.map(e => e.id);
+            component._stagedActiveEnvIds = component._environmentOptionVMs.map(e => e.id);
+            component.openMenu();
             expect(component._stagedActiveEnvIds.length).toBe(0);
         });
     });
@@ -69,8 +80,8 @@ describe('EnvSwitcherComponent', () => {
     describe('_envClicked when canSelectMultiple is true', () => {
         it('should add selected env to staging model if not already selected', () => {
             component.canSelectMultiple = true;
-            const env0 = component.environments[0];
-            const env1 = component.environments[1];
+            const env0 = component._environmentOptionVMs[0];
+            const env1 = component._environmentOptionVMs[1];
             component.setActiveEnvironments([env0.id]);
             component._envClicked(env1);
             expect(component._stagedActiveEnvIds.length).toBe(2);
@@ -79,8 +90,8 @@ describe('EnvSwitcherComponent', () => {
         });
         it('should remove selected env from staging model if already selected', () => {
             component.canSelectMultiple = true;
-            const env0 = component.environments[0];
-            const env1 = component.environments[1];
+            const env0 = component._environmentOptionVMs[0];
+            const env1 = component._environmentOptionVMs[1];
             component.setActiveEnvironments([env0.id, env1.id]);
             component._envClicked(env1);
             expect(component._stagedActiveEnvIds.length).toBe(1);
@@ -92,16 +103,16 @@ describe('EnvSwitcherComponent', () => {
         it('should move staging model over to active model', () => {
             component.canSelectMultiple = true;
             component._activeEnvIds = [];
-            component._stagedActiveEnvIds = component.environments.map(e => e.id);
-            component._applyEnvs()
+            component._stagedActiveEnvIds = component._environmentOptionVMs.map(e => e.id);
+            component._applyEnvs();
             expect(component._activeEnvIds.length).toBe(3);
         });
 
         it('updates badge text and color for a single environment', () => {
             component.canSelectMultiple = true;
             component._stagedActiveEnvIds = [1234];
-            component._applyEnvs()
-            const env = component.environments[0];
+            component._applyEnvs();
+            const env = component._environmentOptionVMs[0];
             expect(component._badgeText).toBe(env.shortName);
             expect(component._badgeColor).toBe(env.badgeColorClass);
         });
@@ -109,8 +120,8 @@ describe('EnvSwitcherComponent', () => {
         it('updates badge text and color for multiple environments', () => {
             component.canSelectMultiple = true;
             component._stagedActiveEnvIds = [1234, 5678];
-            component._applyEnvs()
-            expect(component._badgeText).toBe("2 Envs");
+            component._applyEnvs();
+            expect(component._badgeText).toBe('2 Envs');
             expect(component._badgeColor).toBe('hc-badge-color-white');
         });
 
@@ -131,11 +142,11 @@ describe('EnvSwitcherComponent', () => {
 
     describe('_envClicked when canSelectMultiple is true', () => {
         it('should apply selected environment to active model, wiping out previous value', () => {
-            const env0 = component.environments[0];
-            const env1 = component.environments[1];
+            const env0 = component._environmentOptionVMs[0];
+            const env1 = component._environmentOptionVMs[1];
             component.canSelectMultiple = false;
             component._activeEnvIds = [env0.id];
-            component._envClicked(env1)
+            component._envClicked(env1);
             expect(component._activeEnvIds.length).toBe(1);
             expect(component._activeEnvIds[0]).toBe(env1.id);
         });
@@ -144,19 +155,19 @@ describe('EnvSwitcherComponent', () => {
     describe('setActiveEnvironments', () => {
         it('should apply environment to active model, wiping out previous value', () => {
             component.canSelectMultiple = false;
-            const env0 = component.environments[0];
-            const env1 = component.environments[1];
+            const env0 = component._environmentOptionVMs[0];
+            const env1 = component._environmentOptionVMs[1];
             component._activeEnvIds = [env0.id];
-            component.setActiveEnvironments([env1.id])
+            component.setActiveEnvironments([env1.id]);
             expect(component._activeEnvIds.length).toBe(1);
             expect(component._activeEnvIds[0]).toBe(env1.id);
         });
         it('if canSelectMultiple is true, should apply environment to active model and staging model', () => {
             component.canSelectMultiple = true;
-            const env0 = component.environments[0];
-            const env1 = component.environments[1];
+            const env0 = component._environmentOptionVMs[0];
+            const env1 = component._environmentOptionVMs[1];
             component._activeEnvIds = [env0.id];
-            component.setActiveEnvironments([env1.id])
+            component.setActiveEnvironments([env1.id]);
             expect(component._activeEnvIds.length).toBe(1);
             expect(component._activeEnvIds[0]).toBe(env1.id);
             expect(component._stagedActiveEnvIds.length).toBe(1);

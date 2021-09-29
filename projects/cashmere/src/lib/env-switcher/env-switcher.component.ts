@@ -1,9 +1,7 @@
-import {takeUntil} from 'rxjs/operators';
-import {Component, Inject, OnDestroy, OnInit, Input, ViewEncapsulation, forwardRef, Output, EventEmitter, ViewChild} from '@angular/core';
-import {Subject, Observable} from 'rxjs';
+import {Component, OnDestroy, Input, ViewEncapsulation, Output, EventEmitter, ViewChild, forwardRef} from '@angular/core';
+import {Subject} from 'rxjs';
 
-import {IMetadataEnvironmentService, IMetadataEnvironment, ENV_SWITCHER_SERVICE, IMetadataEnvironmentVM, badgeColorClasses} from './env-switcher-interfaces';
-import {WorkTrackerService} from '../shared/work-tracker.service';
+import {IMetadataEnvironment, IMetadataEnvironmentVM, badgeColorClasses} from './env-switcher-interfaces';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {HcPopComponent} from '../pop/popover.component';
 
@@ -11,55 +9,61 @@ import {HcPopComponent} from '../pop/popover.component';
     selector: 'hc-env-switcher',
     templateUrl: './env-switcher.component.html',
     styleUrls: ['./env-switcher.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => EnvSwitcherComponent),
+            multi: true
+        }
+    ],
     host: {class: 'hc-env-switcher-container'},
-    providers: [{
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => EnvSwitcherComponent),
-        multi: true
-    }],
     encapsulation: ViewEncapsulation.None
 })
-export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAccessor {
-    /** The currently active metadata environments */
-    public get activeEnvironments(): IMetadataEnvironment[] {
+export class EnvSwitcherComponent implements OnDestroy, ControlValueAccessor {
+    /** The currently active metadata environments.
+     * NgModel/FormValue is bound to just the environment IDs, but you can access this property for an array with the entire environment model. */
+    public get selectedEnvironments(): IMetadataEnvironment[] {
         const envs = new Array<IMetadataEnvironment>();
         this._activeEnvIds.forEach(id => {
-            const matchingEnv = this.environments.find(e => e.id === id);
+            const matchingEnv = this.environmentOptions.find(e => e.id === id);
             if (matchingEnv) {
                 envs.push(matchingEnv);
             }
         });
         return envs;
     }
-    /** The available metadata environments */
-    public get environments(): IMetadataEnvironmentVM[] { return this._environments; }
-    private _environments: IMetadataEnvironmentVM[];
-    /** True while environments are loading from MDS */
-    public loading: Observable<boolean>;
-    /** True if component was unable to load environments from MDS */
-    public environmentsFailedToLoad = false;
-    /** When disabled, the environment switcher cannot be opened */
-    public get disabled(): boolean { return this._disabled; }
+    /** When disabled, the environment switcher cannot be opened. *Defaults to false.* */
+    public get disabled(): boolean {
+        return this._disabled;
+    }
     private _disabled = false;
 
     /** The ids of the selected metadata environments */
     public _activeEnvIds = new Array<number>();
     /** In multiselect mode, track the ids of selected environments in this 'staging' model (and then actually apply them when the user is done) */
     public _stagedActiveEnvIds = new Array<number>();
-    public _badgeText = "No Env";
-    public _badgeTooltip = "No environment selected";
-    public _badgeColor = "hc-badge-color-white";
-    public _initialized = false;
-    private _onChange = (_: unknown) => _;
-    private _canSelectMultiple = false;
-    private _canOpenInNewTab = false;
-    private _destroy$ = new Subject();
+    /** Text to show in the badge shown in the navbar. */
+    public _badgeText = 'No Env';
+    /** Tooltip shown when a user hover over the badge in the navbar. */
+    public _badgeTooltip = 'No environment selected';
+    /** Color of the badge in the navbar. */
+    public _badgeColor = 'hc-badge-color-white';
+    /** collection of allowed colors mapped to their matching css classes */
     private readonly _colorClassesMap = badgeColorClasses;
 
-    /** Reference to the popover containing the environment selection menu */
+    private _onChange = (_: unknown) => _;
+    private _destroy$ = new Subject();
+
+    /** Reference to the popover containing the environment selection menu. */
     @ViewChild('envSwitcherPop') pop: HcPopComponent;
 
-    /** If true, will allow multiple environments to be selected at once. */
+    /** Set to true while waiting for environments to load from MDS. *Defaults to false.* */
+    @Input() public loading = false;
+
+    /** Set to true if unable to load environments from MDS. A "Failed to load" message will be shown in the switcher. *Defaults to false.* */
+    @Input() public failedToLoad = false;
+
+    /** If true, will allow multiple environments to be selected at once. *Defaults to false.* */
     @Input()
     get canSelectMultiple(): boolean {
         return this._canSelectMultiple;
@@ -73,10 +77,11 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
 
         this._canSelectMultiple = canSelectMultiple;
     }
+    private _canSelectMultiple = false;
 
     /** If true, will show an icon that allows user to click to open an environment in a new tab.
      * When clicking this icon, a `(openInNewTab)` event will be fired that the consuming app will
-     * need to listen for and respond to.
+     * need to listen for and respond to. *Defaults to false.*
      */
     @Input()
     get canOpenInNewTab(): boolean {
@@ -86,23 +91,31 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
     set canOpenInNewTab(canOpenInNewTab: boolean) {
         this._canOpenInNewTab = canOpenInNewTab;
     }
+    private _canOpenInNewTab = false;
 
-    /** Fires when model is updated. Outputs an array of the currently selected environments.
+    /** The metadata environments to show in the switcher. */
+    @Input() public set environmentOptions(envs: IMetadataEnvironment[]) {
+        this._environmentOptionVMs = this._convertEnvsToVMs(envs);
+        this.setActiveEnvironments(this._activeEnvIds);
+    }
+    public get environmentOptions(): IMetadataEnvironment[] {
+        return this._environmentOptionVMs;
+    }
+    public _environmentOptionVMs: IMetadataEnvironmentVM[];
+
+    /** Event that fires when model is updated. Outputs an array of the currently selected environments.
      * Consuming app will need to set appropriate environment headers refresh elements on page as needed. */
     @Output() updateEnvironments = new EventEmitter<Array<IMetadataEnvironment>>();
 
-    /** Fires when 'open in new tab' action is triggered. Outputs the selected environment.
-     * Consuming app will need implement their own open in new tab functionality. */
+    /** Event that fires when the "open in new tab" action is triggered. Outputs the selected environment.
+     * Consuming app will need implement functionality to actually open a new tab with the given environment active. */
     @Output() openInNewTab = new EventEmitter<IMetadataEnvironment>();
 
-    constructor(@Inject(ENV_SWITCHER_SERVICE) public envSwitcherService: IMetadataEnvironmentService, private workTracker: WorkTrackerService) {}
+    /** Event that fires when users click a link to reload environments. This link is shown if `failedToLoad` is set to true. */
+    @Output() reloadEnvironments = new EventEmitter<void>();
 
     writeValue(selectedEnvs: number[]): void {
-        if (this._initialized) {
-            this.setActiveEnvironments(selectedEnvs || []);
-        } else {
-            this._activeEnvIds = selectedEnvs || [];
-        }
+        this.setActiveEnvironments(selectedEnvs || []);
     }
 
     registerOnChange(fn: () => null): void {
@@ -117,57 +130,30 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
         this._disabled = state;
     }
 
-    ngOnInit(): void {
-        this.loadEnvironments();
-    }
-
     ngOnDestroy(): void {
         this._destroy$.next();
         this._destroy$.complete();
     }
 
-    /** Load environment options from MDS. */
-    public loadEnvironments(): void {
-        this.loading = this.workTracker.startObservable(() =>
-            this.envSwitcherService
-                .getEnvironments()
-                .pipe(takeUntil(this._destroy$))
-                .subscribe(
-                    (response) => {
-                        this.environmentsFailedToLoad = false;
-                        this._environments = response.value.map(env => {
-                            const envVM = Object.assign({}, env) as IMetadataEnvironmentVM;
-                            envVM.badgeColorClass = this._getBadgeColorClass(env);
-                            envVM.shortName = env.shortName || this._generateShortName(env.name);
-                            return envVM;
-                        });
-                        this.setActiveEnvironments(this._activeEnvIds);
-                    },
-                    (error) => {
-                        console.error('Failed to load environments from the environment switcher service.', error);
-                        this.environmentsFailedToLoad = true;
-                    },
-                    () => {
-                        this._initialized = true;
-                    }
-                )
-        );
-    }
-
-    /** Open the app switcher menu. */
+    /** Manually open the app switcher menu. */
     public openMenu(): void {
         this._stagedActiveEnvIds = this.canSelectMultiple ? this._activeEnvIds.slice() : [];
         this.pop.open();
     }
 
-    /** Convenience method for setting the current active environment(s). Invalid environment IDs will not be selected. */
+    /** Manually close the app switcher menu. */
+    public closeMenu(): void {
+        this.pop.close();
+    }
+
+    /** Convenience method for setting the current active environment(s) by their Ids. Invalid environment Ids will not be selected. */
     public setActiveEnvironments(envs: number[]): void {
         const envsToSet = envs.filter(givenEnvId => {
-            const matchingEnv = this._environments.find(env => env.id === givenEnvId);
+            const matchingEnv = this._environmentOptionVMs.find(env => env.id === givenEnvId);
             if (matchingEnv) {
                 return matchingEnv;
             } else {
-                console.warn(`Attempted to set an environment as active that is not currently an option. ${givenEnvId}`)
+                console.warn(`Attempted to set an environment as active that is not currently an option. ${givenEnvId}`);
             }
         });
         this._activeEnvIds.length = 0;
@@ -185,7 +171,9 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
     }
 
     public _onBadgeClick(): void {
-        if (this._disabled) { return; }
+        if (this._disabled) {
+            return;
+        }
         this.openMenu();
     }
 
@@ -225,7 +213,7 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
 
     private _onEnvironmentsChanged(): void {
         this._onChange(this._activeEnvIds);
-        this.updateEnvironments.emit(this.activeEnvironments);
+        this.updateEnvironments.emit(this.selectedEnvironments);
         this._updateBadgeText();
         this._updateBadgeColor();
         this.pop.close();
@@ -233,39 +221,50 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
 
     /** Update the text displayed on the environment switcher badge in the navbar */
     private _updateBadgeText() {
-        if(this._activeEnvIds.length === 0) {
-            this._badgeText = "No Env";
-            this._badgeTooltip = "No environment selected";
+        if (this._activeEnvIds.length === 0) {
+            this._badgeText = 'No Env';
+            this._badgeTooltip = 'No environment selected';
         } else if (this._activeEnvIds.length === 1) {
-            this._badgeText = this.activeEnvironments[0].shortName.trim().slice(0, 6);
+            this._badgeText = this.selectedEnvironments[0].shortName.trim().slice(0, 6);
             this._badgeTooltip = `Active environment: ${this._buildActiveEnvList()}`;
-        } else if (this._activeEnvIds.length === this.environments.length) {
-            this._badgeText = "All";
-            this._badgeTooltip= `${this._activeEnvIds.length} active environments: ${this._buildActiveEnvList()}`;
+        } else if (this._activeEnvIds.length === this.environmentOptions.length) {
+            this._badgeText = 'All';
+            this._badgeTooltip = `${this._activeEnvIds.length} active environments: ${this._buildActiveEnvList()}`;
         } else if (this._activeEnvIds.length > 1) {
             this._badgeText = `${this._activeEnvIds.length} Envs`;
-            this._badgeTooltip= `${this._activeEnvIds.length} active environments: ${this._buildActiveEnvList()}`;
+            this._badgeTooltip = `${this._activeEnvIds.length} active environments: ${this._buildActiveEnvList()}`;
         }
     }
 
     /** Returns a list of the active environments */
     private _buildActiveEnvList(): string {
-        return this.activeEnvironments.map(e => e.name).join(', ');
+        return this.selectedEnvironments.map(e => e.name).join(', ');
     }
 
     /** Set the appropriate color for environment switcher badge displayed in the navbar */
     private _updateBadgeColor(): void {
         if (this._activeEnvIds.length === 0 || this._activeEnvIds.length > 1) {
-            this._badgeColor = "hc-badge-color-white";
+            this._badgeColor = 'hc-badge-color-white';
         } else {
-            this._badgeColor = this._getBadgeColorClass(this.activeEnvironments?.[0]);
+            this._badgeColor = this._getBadgeColorClass(this.selectedEnvironments?.[0]);
         }
     }
 
     /** Translate an environment's color code into an appropriate css class */
     private _getBadgeColorClass(env?: IMetadataEnvironment): string {
-        const color = env?.color?.toLowerCase().replace('#', '') || 'ffffff';
-        return this._colorClassesMap[color];
+        const defaultColor = 'ffffff';
+        const color = env?.color?.toLowerCase().replace('#', '') || defaultColor;
+        return this._colorClassesMap[color] || this._colorClassesMap[defaultColor];
+    }
+
+    /** Prepares given environment models into view models read for display in the UI. */
+    private _convertEnvsToVMs(envs: IMetadataEnvironment[]): IMetadataEnvironmentVM[] {
+        return envs.map(env => {
+            const envVM = Object.assign({}, env) as IMetadataEnvironmentVM;
+            envVM.badgeColorClass = this._getBadgeColorClass(env);
+            envVM.shortName = env.shortName || this._generateShortName(env.name);
+            return envVM;
+        });
     }
 
     public _generateShortName(name: string): string {
@@ -275,7 +274,10 @@ export class EnvSwitcherComponent implements OnInit, OnDestroy, ControlValueAcce
         const tokens = name.trim().split(/\s+/g);
 
         if (tokens.length > 1) {
-            return tokens.map(e => e.charAt(0).toLocaleUpperCase()).join('').slice(0, 4);
+            return tokens
+                .map(e => e.charAt(0).toLocaleUpperCase())
+                .join('')
+                .slice(0, 4);
         } else {
             return name.trim().slice(0, 4).toLocaleUpperCase();
         }

@@ -1,18 +1,17 @@
-import {Observable, of} from 'rxjs';
-import {InjectionToken} from '@angular/core';
-
 export interface IMetadataEnvironment {
-    /** unique identifier for the environment */
+    /** A unique identifier for the environment. */
     id: number;
-    /** identifier representing a given tenant (for example, a particular client) */
+    /** An identifier representing a given tenant. (For example, a particular client.) */
     tenantCode: string;
-    /** full name of environment */
+    /** The full name of environment. */
     name: string;
-    /** abbreviated environment name. used in environment badge ui element */
+    /** An abbreviated environment name. Used in environment badge ui element. */
     shortName: string;
-    /** describes the environment */
+    /** Describes the environment. */
     description: string;
-    /** color associated with environment. use in environemnt badge ui element */
+    /** Hex code for the color associated with an environment. Used in the environment badge ui element.
+     * Color options include: `"#ffffff", "#7acb91", "#00acac", "#00a859", "#e7c447", "#ebba82", "#f89012", "#f13c45", "#eea2C0", "#a94c9d", "#3194fe", "#ace5ff"`.
+     * If no color (or an invalid color) is provided, will default to white (#ffffff).*/
     color: string;
 }
 
@@ -21,71 +20,18 @@ export interface IMetadataEnvironmentVM extends IMetadataEnvironment {
     badgeColorClass: string;
 }
 
-/** The shape of the response from MDS when environments are requested */
-export interface IEnvironmentResponse {
-    value: IMetadataEnvironment[];
-}
-
-/** Apps with a custom metadata environment service must use this interface */
-export interface IMetadataEnvironmentService {
-    getEnvironments(): Observable<IEnvironmentResponse>;
-}
-
-/** Helps with injecting a custom metadata environment service to be provided */
-export const ENV_SWITCHER_SERVICE = new InjectionToken<IMetadataEnvironmentService>('IMetadataEnvironmentService');
-
-/** If not using a custom metadata envrionment service, must supply a metadata service uri */
-export interface IEnvSwitcherConfig {
-    metadataServiceUri: string;
-}
-
-/** Helps with injecting env switcher configuration with MDS uri */
-export const ENV_SWITCHER_CONFIG = new InjectionToken<IEnvSwitcherConfig>('IEnvSwitcherConfig');
-
-/** Used for testing */
-export class MockEnvSwitcherService implements IMetadataEnvironmentService {
-    getEnvironments(): Observable<IEnvironmentResponse> {
-        return of({
-            value: [
-                {
-                    id: 1234,
-                    tenantCode: "HCAT",
-                    name: "Production",
-                    shortName: "PROD",
-                    description: "Live customer environment.",
-                    color: "#FFFFFF"
-                },{
-                    id: 5678,
-                    tenantCode: "HCAT",
-                    name: "Development",
-                    shortName: "DEV",
-                    description: "Environment for building and testing new features.",
-                    color: "#E7C447"
-                },{
-                    id: 9012,
-                    tenantCode: "HCAT",
-                    name: "Stage",
-                    shortName: "STG",
-                    description: "Environment for preparing for production.",
-                    color: "#EEA2C0"
-                }
-            ]
-        });
-    }
-}
-
 /** map of color hex codes and their corresponding css classes. Allows UI to restrict which colors are used */
 export const badgeColorClasses = {
-    'ffffff': 'hc-env-color-white',
+    ffffff: 'hc-env-color-white',
     '7acb91': 'hc-env-color-light-green',
     '00acac': 'hc-env-color-forest-green',
     '00a859': 'hc-env-color-green',
-    'e7c447': 'hc-env-color-gold',
-    'ebba82': 'hc-env-color-tan',
-    'f89012': 'hc-env-color-orange',
-    'f13c45': 'hc-env-color-red',
-    'eea2C0': 'hc-env-color-pink',
-    'a94c9d': 'hc-env-color-purple',
+    e7c447: 'hc-env-color-gold',
+    ebba82: 'hc-env-color-tan',
+    f89012: 'hc-env-color-orange',
+    f13c45: 'hc-env-color-red',
+    eea2C0: 'hc-env-color-pink',
+    a94c9d: 'hc-env-color-purple',
     '3194fe': 'hc-env-color-blue',
-    'ace5ff': 'hc-env-color-light-blue'
-}
+    ace5ff: 'hc-env-color-light-blue'
+};
