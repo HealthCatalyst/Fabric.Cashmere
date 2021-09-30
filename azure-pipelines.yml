@@ -50,6 +50,9 @@ steps:
 - script: |
     npx semantic-release
   displayName: 'publish NPM package'
+  env:
+    GITHUB_TOKEN: $(GITHUB_TOKEN)
+    NPM_TOKEN: $(NPM_TOKEN)
 
 - script: |
     # fail the script if any errors occur
