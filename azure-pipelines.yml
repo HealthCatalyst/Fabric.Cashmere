@@ -4,6 +4,8 @@ trigger:
     include:
       - master
       - dev
+      # TODO: make `main` the main branch
+      - main 
 
 variables:
   isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
