@@ -66,6 +66,8 @@ steps:
     # Redirect Cashmere Url to CNAME file
     echo $CASHMERE_URL > "CNAME"
 
+    git config --global user.email "$(GIT_EMAIL)"
+    git config --global user.name "$(GIT_USER_NAME)"
     git init
     git add .
     git commit -m "Committing built docs for GitHub Pages"
