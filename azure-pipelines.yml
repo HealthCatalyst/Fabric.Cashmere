@@ -1,0 +1,73 @@
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+      - dev
+
+variables:
+  isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm ci
+  displayName: 'npm install'
+
+- script: |
+    npm run lint
+  displayName: 'npm run lint'
+
+- script: |
+    npm run test:unit
+  displayName: 'run unit tests'
+
+# TODO: have unit test run output test results that can be uploaded here (probably JUnit or XUnit format should work)
+# - task: PublishTestResults@2
+#   #condition: if the branch name is NOT master, then yes, do this task
+#   inputs:
+#     testResultsFormat: 'NUnit'
+#     testResultsFiles: '$(System.DefaultWorkingDirectory)/**/TEST-*.xml'
+#     testRunTitle: 'Pester Test Run'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura' # or may possibly be 'JaCoCo'
+    summaryFileLocation: 'coverage/lcov.info'
+    reportDirectory: 'coverage'
+
+- script: |
+    npm run build
+  displayName: 'build the library'
+
+- script: |
+    npx semantic-release
+  displayName: 'publish NPM package'
+
+- script: |
+    # fail the script if any errors occur
+    set -e
+
+    cd dist/user-guide/
+
+    # Copy redirection error page for Github Pages
+    cp index.html 404.html
+
+    # Redirect Cashmere Url to CNAME file
+    echo $CASHMERE_URL > "CNAME"
+
+    git init
+    git add .
+    git commit -m "Committing built docs for GitHub Pages"
+    git checkout -b gh-pages
+    git remote add origin https://$(GITHUB_TOKEN)@github.com/HealthCatalyst/Fabric.Cashmere.git
+    git push origin gh-pages --force
+  condition: and(succeeded(), eq(variables.isMain, 'true'))
+  displayName: 'publish GitHub pages (Docs site)'
