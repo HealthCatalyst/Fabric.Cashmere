@@ -457,6 +457,9 @@
 .hc-icons.hci-doctor:before {
   content: "\e93e";
 }
+.hc-icons.hci-doctors:before {
+    content: "\e91e";
+  }
 .hc-icons.hci-new-patient:before {
   content: "\e915";
 }
