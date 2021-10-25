@@ -459,6 +459,9 @@ $hc-icons-font-path: "." !default;
     &.hci-doctor:before {
         content: '\e93e';
     }
+    &.hci-doctors:before {
+        content: '\e91e';
+    }
     &.hci-new-patient:before {
         content: '\e915';
     }
