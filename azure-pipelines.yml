@@ -50,13 +50,6 @@ steps:
   displayName: 'build the library'
 
 - script: |
-    npx semantic-release
-  displayName: 'publish NPM package'
-  env:
-    GITHUB_TOKEN: $(GITHUB_TOKEN)
-    NPM_TOKEN: $(NPM_TOKEN)
-
-- script: |
     # fail the script if any errors occur
     set -e
 
@@ -78,3 +71,11 @@ steps:
     git push origin gh-pages --force
   condition: and(succeeded(), eq(variables.isMain, 'true'))
   displayName: 'publish GitHub pages (Docs site)'
+  
+- script: |
+    npx semantic-release
+  displayName: 'publish NPM package'
+  env:
+    GITHUB_TOKEN: $(GITHUB_TOKEN)
+    NPM_TOKEN: $(NPM_TOKEN)
+
