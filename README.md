@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/HealthCatalyst/Fabric.Cashmere.svg?branch=master)](https://travis-ci.org/HealthCatalyst/Fabric.Cashmere)
-[![Coverage Status](https://coveralls.io/repos/github/HealthCatalyst/Fabric.Cashmere/badge.svg?branch=master)](https://coveralls.io/github/HealthCatalyst/Fabric.Cashmere?branch=master)
+[![Build Status](https://dev.azure.com/healthcatalyst/CAP/_apis/build/status/HealthCatalyst.Fabric.Cashmere?branchName=refs%2Fpull%2F1701%2Fmerge)](https://dev.azure.com/healthcatalyst/CAP/_build/latest?definitionId=2105&branchName=refs%2Fpull%2F1701%2Fmerge)
 ![Cashmere Banner](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/CashmereBanner.png)
 
 Cashmere is Health Catalyst’s comprehensive design system. The Cashmere Angular UI library includes components and styles for Health Catalyst branded web applications.
