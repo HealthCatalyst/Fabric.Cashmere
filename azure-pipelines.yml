@@ -33,7 +33,7 @@ steps:
 
 - task: PublishTestResults@2
   inputs:
-    testResultsFormat: 'junit',
+    testResultsFormat: JUnit
     testResultsFiles: 'test-results/test-results.xml'
     testRunTitle: 'Angular Unit Test Run'
 
