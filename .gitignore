@@ -43,6 +43,7 @@ node_modules/
 /.sass-cache
 /connect.lock
 /coverage
+/test-results
 /libpeerconnection.log
 npm-debug.log
 testem.log
