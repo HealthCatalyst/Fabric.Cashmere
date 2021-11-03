@@ -9,6 +9,7 @@ const outputDir = 'dist/docs/usage';
 // plugin to add id values to header tags
 md.use(mdnh);
 
+console.log('rendering usage docs from Markdown...')
 glob('projects/@(cashmere|cashmere-bits)/src/lib/**/*.md', function(er, files) {
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir);
@@ -26,7 +27,8 @@ glob('projects/@(cashmere|cashmere-bits)/src/lib/**/*.md', function(er, files) {
             const fileContent = fs.readFileSync(mapping.path, 'utf8');
             const result = md.render(fileContent);
 
-            const distFD = fs.openSync(path.join(outputDir, mapping.outFile) + '.html', 'w');
-            fs.writeSync(distFD, result);
+            const distPath = path.join(outputDir, mapping.outFile) + '.html';
+            fs.writeFileSync(distPath, result);
+            console.log(`\t${distPath}`);
         });
 });
