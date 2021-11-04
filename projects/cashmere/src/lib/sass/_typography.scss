@@ -69,6 +69,12 @@ pre {
     background-color: $block-text-background;
     font-weight: 400;
 
+    &::selection,
+    *::selection {
+        background-color: shade($blue, 10%);
+        color: $white;
+    }
+
     > span {
         @include fontSize(14px);
         line-height: 1.4;
