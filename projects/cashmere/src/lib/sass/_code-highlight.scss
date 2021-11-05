@@ -15,7 +15,11 @@
     font-size: 14px;
 }
 
-.hljs > *::selection,
+.hljs > *::selection {
+    background-color: shade($blue, 10%);
+    color: $white;
+}
+
 .hljs-section {
     background-color: $white;
 }
@@ -29,7 +33,7 @@
 .hljs-selector-tag,
 .hljs-regexp,
 .hljs-meta {
-    color: $magenta
+    color: $magenta;
 }
 
 .hljs-string,
