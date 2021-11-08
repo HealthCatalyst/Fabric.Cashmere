@@ -145,6 +145,10 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
     padding: $infix-padding 10px;
 }
 
+@mixin hc-form-field-infix-mobile() {
+    font-size: calculateRem(16px);
+}
+
 @mixin hc-form-field-infix-tight() {
     padding: $infix-padding-tight 7px;
     font-size: calculateRem(13px);
