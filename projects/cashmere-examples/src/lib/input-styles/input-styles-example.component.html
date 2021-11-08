@@ -1,0 +1,14 @@
+
+<hc-form-field [inline]="inlineState.value" [tight]="tightState.value" class="input-form">
+    <hc-label>Minimum value:</hc-label>
+    <input hcInput placeholder="0-100" class="demo-input" [mobile]="mobileState.value">
+    <hc-icon hcSuffix fontSet="fa" fontIcon="fa-thermometer-0"></hc-icon>
+</hc-form-field>
+
+<hc-checkbox [formControl]="inlineState">Inline (label & input on the same line)</hc-checkbox>
+<hc-checkbox [formControl]="tightState">Tight (reduced font size and padding)</hc-checkbox>
+<hc-checkbox [formControl]="mobileState">Mobile (larger font size to prevent zooming)</hc-checkbox>
+
+<br>
+
+<em>Note that <code>inline</code> and <code>tight</code> are applied to the FormField, while <code>mobile</code> is applied to the Input.</em>

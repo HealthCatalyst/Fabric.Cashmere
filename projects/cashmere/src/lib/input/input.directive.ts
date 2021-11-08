@@ -18,6 +18,7 @@ const unsupportedTypes = ['button', 'checkbox', 'file', 'hidden', 'image', 'radi
 })
 export class InputDirective extends HcFormControlComponent implements DoCheck {
     private _focused = false;
+    private _mobile = false;
     private _uniqueInputId = `hc-input-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
 
@@ -144,6 +145,23 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
     _inputEvent(): void {
         // causes angular to run change detection on input event
     }
+
+    /** Sets whether the input should be sized for small screens (if true, overrides the `tight` param on FormField) */
+    @Input()
+    get mobile(): boolean {
+        return this._mobile;
+    }
+
+    set mobile(value: boolean) {
+        if ( value !== this._mobile ) {
+            this._mobile = value;
+            this.mobileChange.emit( this._mobile );
+        }
+    }
+
+    /** Output for two-way binding on the `mobile` param. Emits when the property is updated */
+    @Output()
+    mobileChange = new EventEmitter<boolean>();
 
     constructor(
         private _elementRef: ElementRef,

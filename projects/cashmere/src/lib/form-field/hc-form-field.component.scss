@@ -106,6 +106,10 @@
     @include hc-form-field-infix-tight();
 }
 
+.hc-form-field-infix-mobile {
+    @include hc-form-field-infix-mobile();
+}
+
 .hc-form-field-label-wrapper {
     @include hc-form-field-label-wrapper();
 

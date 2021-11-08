@@ -43,7 +43,7 @@
     "input": {
         "name": "Input",
         "category": "forms",
-        "examples": ["input-prefix", "input-required", "input-suffix", "input-text-area"],
+        "examples": ["input-styles", "input-prefix", "input-required", "input-text-area"],
         "usageDoc": true
     },
     "list": {"name": "List", "category": "layout", "examples": ["list-overview"]},
