@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import './colors';
 $animation-speed: 1.4s !default;
 $animation-delay: -0.16s !default;
@@ -13,8 +14,8 @@ $dots-diameter-mini: 4px !default;
         position: absolute;
         top: 50%;
         left: 50%;
-        margin-top: $dots-diameter / -2;
-        margin-left: $dots-diameter / -2;
+        margin-top: math.div($dots-diameter, -2);
+        margin-left: math.div($dots-diameter, -2);
     }
 }
 
