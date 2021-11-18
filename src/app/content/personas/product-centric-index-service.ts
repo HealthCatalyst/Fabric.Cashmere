@@ -21,6 +21,6 @@ export class ProductCentricIndexService {
             route: 'healthfinch',
             type: 'npi-app',
             document: require('raw-loader!../../../../guides/content/products/healthfinch.md')
-        },
+        }
     ];
 }
