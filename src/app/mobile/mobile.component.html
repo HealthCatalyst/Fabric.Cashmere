@@ -1,0 +1,39 @@
+<div class="hc-components-container" #contentContainer>
+    <hc-subnav class="responsive-subnav" fixedTop="true">
+        <div class="subnav-container">
+            <span class="subnav-label">Mobile Dev: </span>
+            <span class="subnav-select">
+                <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
+                    <optgroup *ngFor="let cat of categories" [label]="cat">
+                        <ng-container *ngFor="let option of selectOptions">
+                            <option *ngIf="option.data.category == cat" [value]="option.data.title" [selected]="option.data.title === thisPage">{{option.data.title}}</option>
+                        </ng-container>
+                    </optgroup>
+                </hc-select>
+            </span>
+        </div>
+    </hc-subnav>
+    <div class="hc-components-left-column">
+        <div class="hc-components-nav-container">
+            <hc-tile>
+                <div class="hc-components-nav-list">
+                    <ng-container *ngFor="let cat of categories; let i = index">
+                        <hc-accordion triggerAlign="right" open='true'>
+                            <hc-accordion-toolbar>{{cat}}</hc-accordion-toolbar>
+                            <ng-container *ngFor="let option of selectOptions">
+                                <div *ngIf="option.data.category == cat" class="hc-components-nav-link" [ngClass]="{'hc-components-nav-link-active': option.data.title == thisPage }" (click)="navUpdate(option.path)">{{option.data.title}}</div>
+                            </ng-container>
+                            <div class="hc-components-nav-spacer"></div>
+                        </hc-accordion>
+                        <div *ngIf="i !== categories.length - 1" class="hc-components-nav-divider"></div>
+                    </ng-container>
+                </div>
+            </hc-tile>
+        </div>
+    </div>
+    <div class="hc-components-right-column">
+        <hc-tab-set class="full-height" [defaultTab]="queryTab">
+            <hc-tab *ngFor="let tab of selectOptions" [tabTitle]="tab.data.title" [routerLink]="'/web/mobile/' + tab.path">{{tab.data.title}}</hc-tab>
+        </hc-tab-set>
+    </div>
+</div>

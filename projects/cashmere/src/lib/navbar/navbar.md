@@ -1,3 +1,7 @@
+##### Mobile Development Guide
+
+For information on configuring the navbar for responsive web applications, refer to the [mobile development guide](https://cashmere.healthcatalyst.net/web/mobile/mobile-navigation).
+
 ##### Help Menu
 
 All Health Catalyst apps should include a help menu in their navbar. This guide provides a standard menu for the content that should appear in that menu. A standard menu provides users with a consistent experience—they know what to expect from Health Catalyst applications. It also gives them the support and information they need to use the app. The help menu is included as a `hc-navbar-icon` that stays pinned to the right side and triggers a popover:

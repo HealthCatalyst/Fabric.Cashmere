@@ -28,7 +28,7 @@ function readGuideFiles() {
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir, { recursive: true });
     }
-    glob('guides/*.md', function (er, files) {
+    glob('{guides/*.md,guides/mobile/*.md}', function (er, files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -73,7 +73,7 @@ function readGuideFiles() {
                         title: changeCase.titleCase( sectionTitle ) + ' - ' + changeCase.titleCase( mapping.basename ),
                         // Remove all the markdown from the file content and set it so we can search through it
                         content: mdGetContent(element),
-                        link: 'web/guides/' + mapping.basename,
+                        link: mapping.path.includes('mobile') ? 'web/mobile/' + mapping.basename : 'web/guides/' + mapping.basename,
                         category: 'guides',
                         // Set displayName to basename for display purposes
                         displayName: mapping.basename,
