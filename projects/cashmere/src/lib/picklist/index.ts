@@ -6,8 +6,10 @@ export {
     PickOptionTemplateDirective,
     PickPaneHeaderLeftTemplateDirective,
     PickPaneHeaderRightTemplateDirective,
-    PickCustomItemTemplateDirective
+    PickCustomItemTemplateDirective,
+    PickItemLabelDirective
 } from './pick-templates.directive';
+export {PickPaneListComponent} from './pane/pick-pane-list.component';
 export {PickSelectionModel} from './pane/selection-model';
 export {PickOption} from './pick.types';
 export {PickPaneComponent} from './pane/pick-pane.component';

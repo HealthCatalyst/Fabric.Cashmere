@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import './variables';
 
 /// Slightly lighten a color
@@ -19,6 +20,6 @@
 /// Returns the rem value based on the px value that has been passed in
 /// @param {Size} $size - pixel based size to convert to rem
 @function calculateRem($size) {
-    $remSize: $size / $default-font-size;
+    $remSize: math.div($size, $default-font-size);
     @return #{$remSize}rem;
 }
