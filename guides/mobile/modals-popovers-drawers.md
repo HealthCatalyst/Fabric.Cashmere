@@ -22,11 +22,11 @@ The use of modals, drawers, and popovers is encouraged in Catalyst applications.
 
 ##### How to Use
 
-Identify all modals, drawers, and popovers that will be needed for mobile use cases and determine the needed adjustments. For most cases, modals and drawers can likely be made to use the full screen width and all (or most) of the screen height. This functionality is built into the Cashmere's `<hc-modal>` component. Insure users maintain a sense of context and have a clear path to dismiss these elements and return to where they started.
+Identify all modals, drawers, and popovers that will be needed for mobile use cases and determine the needed adjustments. For most cases, modals and drawers can likely be made to use the full screen width and all (or most) of the screen height. This functionality is built into the Cashmere's `<hc-modal>` component. Ensure users maintain a sense of context and have a clear path to dismiss these elements and return to where they started.
 
 Similarly, popovers need to be constrained by the height and width of the window. They also must be triggered by click (or tap) events rather than by hover events.
 
-In some instances, like for smaller confirmation modals or popovers, the element does not need to cover the entire screen. A modal can function and feel similar to a mobile device's native alert windows.
+In some instances, such as smaller confirmation modals or popovers, the element does not need to cover the entire screen. A modal can function and feel similar to a mobile device's native alert windows.
 
 <br>
 
