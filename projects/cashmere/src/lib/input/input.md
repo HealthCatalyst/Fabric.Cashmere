@@ -1,3 +1,7 @@
+##### Mobile Development Guide
+
+For information on configuring input elements for responsive web applications, refer to the mobile development guide for information on [mobile form fields](https://cashmere.healthcatalyst.net/web/mobile/form-fields) and [input tag types](https://cashmere.healthcatalyst.net/web/mobile/input-tag-types).
+
 ##### Input Text Formatting
 
 For input labels please use the following formatting:

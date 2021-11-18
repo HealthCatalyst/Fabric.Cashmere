@@ -43,7 +43,7 @@ After identifying places where help text will be a must, decide based on context
 
 ##### Examples
 
-_The desktop app uses a hover tooltip heree, but the mobile experience uses click to provide the helpful text:_
+_The desktop app uses a hover tooltip here, but the mobile experience uses click to provide the helpful text:_
 
 ![Click handler help text](./assets/guides/mobileHelp1.gif 'Click handler help text')
 

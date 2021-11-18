@@ -113,3 +113,7 @@ altogther by setting `shouldAnimate` to false.
     <!-- ... -->
 </hc-pop>
 ```
+
+##### Mobile Development Guide
+
+For information on configuring help text for responsive web applications, refer to the mobile development guide for information on [mobile help text](https://cashmere.healthcatalyst.net/web/mobile/help-text) and [popovers on small screens](https://cashmere.healthcatalyst.net/web/mobile/modals-popovers-drawers).
