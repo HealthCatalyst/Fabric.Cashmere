@@ -95,6 +95,8 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
         this._updateTightControls();
     }
 
+    public _mobileInput = false;
+
     constructor(private _elementRef: ElementRef<HTMLInputElement>) {}
 
     ngAfterContentInit(): void {
@@ -106,10 +108,14 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
             this._controls.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => this._updateTightControls());
         }
 
-        // wire up focus listener for hcInputs
+        // wire up focus and mobile listeners for hcInputs
         if (this.hasInput) {
             this._inputChildren.first.focusChanged.pipe(takeUntil(this.unsubscribe$)).subscribe(focused => {
                 this._hasFocusedInput = focused;
+            });
+
+            this._inputChildren.first.mobileChange.pipe(takeUntil(this.unsubscribe$)).subscribe(mobileVal => {
+                this._mobileInput = mobileVal;
             });
         }
     }
