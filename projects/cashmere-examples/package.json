@@ -7,7 +7,7 @@
     "jsnext": "./esm2015/cashmere-examples.js",
     "typings": "./cashmere-examples.d.ts",
     "dependencies": {
-        "tslib": "^2.0.0"
+        "tslib": "^2.3.1"
     },
     "peerDependencies": {
         "@angular/common": "^12.2.13",
