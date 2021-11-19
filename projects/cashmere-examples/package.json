@@ -17,5 +17,8 @@
         "change-case": "^4.1.1",
         "lodash": "^4.17.21"
     },
-    "devDependencies": {"@bit/healthcatalyst.cashmere.change-case-pipe": "0.0.5", "@healthcatalyst/cashmere": "*"}
+    "devDependencies": {
+        "@bit/healthcatalyst.cashmere.change-case-pipe": "0.0.5",
+        "@healthcatalyst/cashmere": "*"
+    }
 }
