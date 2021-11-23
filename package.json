@@ -71,7 +71,7 @@
     "markdown-it-container": "^2.0.0",
     "minisearch": "^2.5.1",
     "ng-google-sheets-db": "^2.0.0",
-    "notosans-fontface": "^1.2.3",
+    "notosans-fontface": "^1.2.4",
     "remove-markdown": "^0.3.0",
     "rxjs": "~6.6.0",
     "sugar": "^2.0.6",
