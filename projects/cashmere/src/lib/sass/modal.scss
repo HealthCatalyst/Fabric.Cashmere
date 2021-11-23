@@ -39,15 +39,8 @@ $modal-border: 1px solid $gray-200;
         }
     }
 
-    .hc-modal-body {
-        @include media-breakpoint-down(md) {
-            margin-bottom: $stacked-footer-height;
-        }
-    }
-
     .hc-modal-footer {
         @include media-breakpoint-down(md) {
-            position: fixed;
             flex-direction: column-reverse;
         }
 
@@ -63,7 +56,7 @@ $modal-border: 1px solid $gray-200;
         @include media-breakpoint-down(md) {
             // !important is necessary here to override inline height/width values set by resize
             height: calc(100% - 53px) !important;
-            width: auto !important;
+            width: 100vw !important;
             border-radius: 0;
         }
     }
@@ -106,7 +99,7 @@ $modal-border: 1px solid $gray-200;
 }
 
 @mixin hc-modal-lg() {
-    width: 800px;
+    width: 768px;
 }
 
 @mixin hc-modal-xl() {
@@ -146,9 +139,7 @@ $modal-border: 1px solid $gray-200;
 @mixin hc-modal-body() {
     overflow: auto;
     height: inherit;
-    min-height: 120px;
     padding: $modal-padding;
-    justify-content: space-between;
     margin-bottom: 0;
 }
 
@@ -179,7 +170,6 @@ $modal-border: 1px solid $gray-200;
     display: flex;
     width: 100%;
     border-top: $modal-border;
-    min-height: $header-footer-height;
     padding: $modal-padding;
     justify-content: flex-end;
     flex-direction: row;
@@ -195,7 +185,7 @@ $modal-border: 1px solid $gray-200;
     background-color: $white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     max-height: 100%;
     border-radius: 6px;
     height: auto;
@@ -217,4 +207,8 @@ $modal-border: 1px solid $gray-200;
     resize: both;
     overflow: hidden;
     min-width: 300px;
+}
+
+@mixin hc-modal-static() {
+    min-height: auto !important;
 }
