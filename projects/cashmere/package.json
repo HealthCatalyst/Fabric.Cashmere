@@ -24,7 +24,7 @@
         "@angular/core": ">= 12.2.13",
         "@angular/forms": ">= 12.2.13",
         "core-js": ">= 2.4.0 < 3",
-        "notosans-fontface": "^1.2.2",
+        "notosans-fontface": "^1.2.4",
         "rxjs": ">= 6.5.0",
         "zone.js": ">= 0.11.4"
     }
