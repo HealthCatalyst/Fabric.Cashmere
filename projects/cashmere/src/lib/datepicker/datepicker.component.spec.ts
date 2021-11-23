@@ -636,31 +636,6 @@ describe('DatepickerComponent', () => {
                 expect(() => fixture.detectChanges()).not.toThrow();
             });
 
-            it('should clear out the backdrop subscriptions on close', fakeAsync(() => {
-                for (let i = 0; i < 3; i++) {
-                    testComponent.datepicker.open();
-                    fixture.detectChanges();
-
-                    testComponent.datepicker.close();
-                    fixture.detectChanges();
-                }
-
-                testComponent.datepicker.open();
-                fixture.detectChanges();
-
-                const spy = jasmine.createSpy('close event spy');
-                const subscription = testComponent.datepicker.closedStream.subscribe(spy);
-                const backdrop = document.querySelector('.cdk-overlay-backdrop') as HTMLElement;
-
-                backdrop.click();
-                fixture.detectChanges();
-                flush();
-
-                expect(spy).toHaveBeenCalledTimes(1);
-                expect(testComponent.datepicker.opened).toBe(false);
-                subscription.unsubscribe();
-            }));
-
             it('should reset the datepicker when it is closed externally', fakeAsync(
                 inject([OverlayContainer], (oldOverlayContainer: OverlayContainer) => {
                     // Destroy the old container manually since resetting the testing module won't do it.
