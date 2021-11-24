@@ -19,18 +19,12 @@ import {
 import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
+import {SelectService, _buildValueString} from './select.service';
 
 let uniqueId = 1;
 
 export class SelectChangeEvent {
     constructor(public source: SelectComponent, public value: any) {}
-}
-
-/** Builds a value string to help with matching objects */
-export function _buildValueString(id: string|null, value: any): string {
-    if (id == null) { return `${value}`; }
-    if (value && typeof value === 'object') { value = 'Object'; }
-    return `${id}: ${value}`.slice(0, 50);
 }
 
 /** Select one of many options from a dropdown */
@@ -39,14 +33,15 @@ export function _buildValueString(id: string|null, value: any): string {
     templateUrl: 'select.component.html',
     styleUrls: ['select.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SelectComponent)}]
+    providers: [SelectService, {provide: HcFormControlComponent, useExisting: forwardRef(() => SelectComponent)}]
 })
 export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck, AfterViewInit {
     private _uniqueInputId = `hc-select-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
     private _value: any = '';
-    _optionIdCounter = 0; // tracks ids for select options
-    _optionMap: Map<string, any> = new Map<string, any>();
+    get _optionMap(): Map<string, any> {
+        return this.selectService._optionMap;
+    }
     _componentId = this._uniqueInputId; // contains id for the hc-select component
 
     @ViewChild('selectInput')
@@ -135,16 +130,17 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
      * The second is a value from the selection(model). A boolean should be returned. */
     @Input()
     set compareWith(fn: (o1: any, o2: any) => boolean) {
-      if (typeof fn !== 'function') {
-        throw new Error(`compareWith must be a function, but received ${JSON.stringify(fn)}`);
-      }
-      this._compareWith = fn;
+        if (typeof fn !== 'function') {
+            throw new Error(`compareWith must be a function, but received ${JSON.stringify(fn)}`);
+        }
+        this._compareWith = fn;
     }
 
     private _compareWith: (o1: any, o2: any) => boolean = Object.is;
 
     constructor(
         private _renderer: Renderer2,
+        private selectService: SelectService,
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
         @Optional()
@@ -178,8 +174,10 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     }
 
     _applyValueToNativeControl() {
-        const id: string|null = this._getOptionId(this._value);
-        if (!this._nativeSelect) { return; }
+        const id: string | null = this._getOptionId(this._value);
+        if (!this._nativeSelect) {
+            return;
+        }
         if (id == null) {
             const selectedIndex = this.placeholder ? 0 : -1;
             this._renderer.setProperty(this._nativeSelect.nativeElement, 'selectedIndex', selectedIndex);
@@ -202,11 +200,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         }
     }
 
-    _registerOption(): string {
-        return (this._optionIdCounter++).toString();
-    }
-
-    _getOptionId(value: any): string|null {
+    _getOptionId(value: any): string | null {
         for (const id of Array.from(this._optionMap.keys())) {
             if (this._compareWith(this._optionMap.get(id), value)) {
                 return id;
