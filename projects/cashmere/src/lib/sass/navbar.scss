@@ -123,22 +123,43 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     border-bottom: 5px solid transparent;
     transition: background-color 0.25s;
     outline: none;
-    &:hover:not(.active),
-    &.inactive:hover {
-        outline: none;
-        color: $navbar-text;
-        background-color: darken($navbar-color, 5%);
-    }
     &:focus {
         outline: none;
         color: $navbar-text;
         background-color: darken($navbar-color, 8%);
     }
-    &:active:not(.inactive),
-    &.active:not(.inactive) {
+    &:hover {
+        outline: none;
+        font-weight: 400;
+        color: $navbar-text;
+        background-color: darken($navbar-color, 5%);
+    }
+    &:active,
+    &.active,
+    &.force-active {
         color: $navbar-text;
         font-weight: 600;
         border-bottom: 5px solid $navbar-brand;
+    }
+
+    &.active:hover,
+    &.force-active:hover {
+        font-weight: 600;
+    }
+
+    &:active {
+        background-color: darken($navbar-color, 8%);
+    }
+
+    &.force-inactive {
+        color: $navbar-text-inactive;
+        font-weight: 400;
+        border-bottom: 5px solid transparent;
+
+        &:hover,
+        &:focus {
+            color: $navbar-text;
+        }
     }
 
     // This piece of code allows to use the bold styling from the style guide, while
@@ -176,7 +197,7 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     cursor: pointer;
     transition: background-color 0.25s;
     &:hover:not(.active),
-    &.inactive:hover {
+    &.force-inactive:hover {
         outline: none;
         color: $navbar-text;
         background-color: darken($navbar-color, 5%);
@@ -243,27 +264,48 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
         font-size: 13px !important;
     }
 
-    &:hover:not(.active),
-    &.inactive:hover {
-        outline: none;
-        color: $navbar-text;
-        background-color: darken($navbar-color, 5%);
-    }
     &:focus {
         outline: none;
         color: $navbar-text;
         background-color: darken($navbar-color, 8%);
     }
-    &.active:not(.inactive) {
+    &:hover {
+        outline: none;
+        font-weight: 400;
+        color: $navbar-text;
+        background-color: darken($navbar-color, 5%);
+    }
+    &.active,
+    &.force-active {
         color: $navbar-text;
         font-weight: 600;
         border-bottom: 5px solid $navbar-brand;
+
+        &:hover {
+            font-weight: 600;
+        }
     }
 
-    &:hover:not(.active),
-    &.inactive:hover,
+    &:active {
+        background-color: darken($navbar-color, 8%);
+    }
+
+    &.force-inactive {
+        color: $navbar-text-inactive;
+        font-weight: 400;
+        border-bottom: 5px solid transparent;
+
+        &:hover,
+        &:focus {
+            color: $navbar-text;
+        }
+    }
+
+    &:hover,
+    &.force-inactive:hover,
     &:focus,
-    &.active:not(.inactive) {
+    &.active,
+    &.force-active {
         .hc-navbar-ico-chevron-down {
             background-image: url($ico-chev-down-white);
             background-repeat: no-repeat;
