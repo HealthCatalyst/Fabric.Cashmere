@@ -33,7 +33,7 @@ export class EnvironmentSwitcherOverviewExampleComponent {
             tenantCode: 'HCAT',
             name: 'Test',
             shortName: 'TEST',
-            description: 'Environment for integration testing.',
+            description: '',
             color: '#F13C45'
         }
     ];
