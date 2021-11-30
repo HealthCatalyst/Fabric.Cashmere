@@ -17,4 +17,12 @@ export class MultiselectOverviewExampleComponent {
     });
     selectedCareTeamRoles = [];
     careTeamRoles = [{name: 'group 1'}, {name: 'group 2'}, {name: 'group 3'}];
+
+    toggleDisabled(): void {
+        if ( this.selectedCitiesControl.enabled ) {
+            this.selectedCitiesControl.disable();
+        } else {
+            this.selectedCitiesControl.enable();
+        }
+    }
 }
