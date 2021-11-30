@@ -1,17 +1,20 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SelectComponent} from './select.component';
+import {SelectService} from './select.service';
 
 describe('SelectComponent', () => {
     let component: SelectComponent;
     let fixture: ComponentFixture<SelectComponent>;
 
-    beforeEach(waitForAsync(() => {
-        TestBed.configureTestingModule({
-            imports: [],
-            providers: [],
-            declarations: [SelectComponent]
-        }).compileComponents();
-    }));
+    beforeEach(
+        waitForAsync(() => {
+            TestBed.configureTestingModule({
+                imports: [],
+                providers: [SelectService],
+                declarations: [SelectComponent]
+            }).compileComponents();
+        })
+    );
 
     beforeEach(() => {
         fixture = TestBed.createComponent(SelectComponent);

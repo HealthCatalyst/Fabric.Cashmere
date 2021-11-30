@@ -27,9 +27,8 @@
                             {{env.name}}
                         </hc-checkbox>
                         <span class="hc-env-row-icons">
-                            <span class="hc-env-icon-info hc-env-row-icon"
-                                hcTooltip="{{env.description || 'No description provided'}}"
-                                (click)="$event.stopPropagation();"></span>
+                            <span *ngIf="env.description" class="hc-env-icon-info hc-env-row-icon"
+                                hcTooltip="{{env.description}}" (click)="$event.stopPropagation();"></span>
                             <span *ngIf="canOpenInNewTab" class="hc-env-icon-new-tab-link hc-env-row-icon"
                                 hcTooltip="Open environment in new tab."
                                 (click)="openInNewTab.emit(env); $event.stopPropagation();"></span>

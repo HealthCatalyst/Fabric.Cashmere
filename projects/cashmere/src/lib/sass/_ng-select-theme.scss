@@ -50,7 +50,35 @@ $ng-select-value-font-size: 14px !default;
     }
     &.ng-select-disabled {
         > .ng-select-container {
-            background-color: $ng-select-disabled-text;
+            background-color: $slate-gray-100;
+            border-color: $gray-200;
+            cursor: not-allowed !important;
+
+            .ng-value {
+                opacity: 0.4;
+                cursor: not-allowed !important;
+            }
+
+            .ng-placeholder {
+                color: tint($text, 60%) !important;
+                cursor: not-allowed !important;
+            }
+        }
+        > .ng-select-container:hover {
+            background-color: $slate-gray-100;
+            border-color: $gray-200;
+        }
+        .ng-arrow-wrapper {
+            cursor: not-allowed !important;
+            opacity: 0.4;
+        }
+        input {
+            cursor: not-allowed !important;
+        }
+    }
+    &:not(.ng-select-disabled) {
+        input {
+            cursor: pointer !important;
         }
     }
     .ng-has-value .ng-placeholder {
@@ -62,6 +90,7 @@ $ng-select-value-font-size: 14px !default;
         border: $ng-select-border-width solid $ng-select-border;
         min-height: $ng-select-height;
         align-items: center;
+        cursor: pointer !important;
 
         &:hover {
             border-color: $ng-select-border-focus;
