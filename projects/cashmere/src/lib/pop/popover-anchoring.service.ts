@@ -252,9 +252,8 @@ export class HcPopoverAnchoringService implements OnDestroy {
                 case NotificationAction.TOGGLE:
                     this.togglePopover();
                     break;
-                case NotificationAction.REPOSITION:
-                    break;
                 // TODO: When the overlay's position can be dynamically changed, do not destroy
+                case NotificationAction.REPOSITION:
                 case NotificationAction.UPDATE_CONFIG:
                     this._destroyPopoverOnceClosed();
                     break;
