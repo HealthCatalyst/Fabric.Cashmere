@@ -59,7 +59,9 @@ export class ModalService {
             ignoreOverlayClick: false,
             isDraggable: false,
             isResizable: false,
-            disableFullScreen: false
+            disableFullScreen: false,
+            restoreFocus: true,
+            autoFocus: false
         };
         const options = {...defaultOptions, ...modalOptions};
         if (options.container) {
@@ -123,6 +125,8 @@ export class ModalService {
         window.instance._ignoreOverlayClick = options.ignoreOverlayClick;
         window.instance._isDraggable = options.isDraggable;
         window.instance._disableFullScreen = options.disableFullScreen;
+        window.instance._autoFocus = options.autoFocus;
+        window.instance._restoreFocus = options.restoreFocus;
 
         // Gives the child hc-modal component a new class of 'hc-modal-resizable' when the isResizable property is set to true
         const hcmodal = (window.location.nativeElement as HTMLElement).getElementsByTagName('hc-modal');
@@ -131,6 +135,10 @@ export class ModalService {
         this._applicationRef.attachView(window.hostView);
         container.appendChild(window.location.nativeElement);
         modal.window = window;
+
+        setTimeout(() => {
+            window.instance._trapFocus();
+        });
 
         activeModalRef.close = (result: unknown) => {
             modal.close(result);
@@ -142,8 +150,27 @@ export class ModalService {
         modal._modalClose.subscribe(() => {
             this._modalsOpen--;
             modal._modalClose.unsubscribe();
+
+            if ( modal.window ) {
+                this._restoreFocusAndDestroyTrap( modal.window.instance );
+            }
+
         });
 
         return modal;
+    }
+
+    /** Restore focus to the element focused before the popover opened. Also destroy trap. */
+    _restoreFocusAndDestroyTrap( modalWindow: ModalWindowComponent ): void {
+        const toFocus = modalWindow._previouslyFocusedElement;
+
+        // Must check active element is focusable for IE sake
+        if (toFocus && 'focus' in toFocus && modalWindow._restoreFocus) {
+            toFocus.focus();
+        }
+
+        if (modalWindow._focusTrap) {
+            modalWindow._focusTrap.destroy();
+        }
     }
 }

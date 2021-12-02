@@ -19,4 +19,8 @@ export interface ModalOptions {
     isResizable?: boolean;
     /** Defaults to false. When set to true, the modal will no longer display in full-screen for mobile devices. */
     disableFullScreen?: boolean;
+    /** Whether the modal should return focus to the previously focused element after closing. *Defaults to `true`.* */
+    restoreFocus?: boolean;
+    /** Whether the first focusable element should be focused on open. *Defaults to `false`.* */
+    autoFocus?: boolean;
 }
