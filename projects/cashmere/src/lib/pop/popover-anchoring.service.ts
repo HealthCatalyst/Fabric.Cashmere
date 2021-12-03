@@ -3,6 +3,7 @@ import {ElementRef, Injectable, NgZone, OnDestroy, Optional, ViewContainerRef} f
 import {
     ConnectionPositionPair,
     FlexibleConnectedPositionStrategy,
+    GlobalPositionStrategy,
     HorizontalConnectionPos,
     Overlay,
     OverlayConfig,
@@ -75,6 +76,9 @@ export class HcPopoverAnchoringService implements OnDestroy {
 
     /** Emits when the service is destroyed. */
     private _onDestroy = new Subject<void>();
+
+    /** Stores the fixed position coordinates */
+    _fixedPos: number[] = [];
 
     constructor(private _overlay: Overlay, private _ngZone: NgZone, @Optional() private _dir: Directionality) {}
 
@@ -168,6 +172,14 @@ export class HcPopoverAnchoringService implements OnDestroy {
         // Only override autoFocus as `false` if the option is explicitly `false`
         const autoFocus = options.autoFocus !== false;
         this._popover._autoFocusOverride = autoFocus;
+
+        // Set the fixed position coordinates if a x or y value is provided
+        if ( options.x || options.y ) {
+            this._destroyPopoverOnceClosed();
+
+            this._fixedPos[0] = options.x ? options.x : 0;
+            this._fixedPos[1] = options.y ? options.y : 0;
+        }
     }
 
     /** Create an overlay to be attached to the portal. */
@@ -188,10 +200,13 @@ export class HcPopoverAnchoringService implements OnDestroy {
 
             const overlayConfig = this._getOverlayConfig(popoverConfig, this._anchor);
 
-            this._subscribeToPositionChanges(overlayConfig.positionStrategy as FlexibleConnectedPositionStrategy);
+            // Only subscribe to position changes when the popover is not fixed position
+            if ( !this._fixedPos.length ) {
+                this._subscribeToPositionChanges(overlayConfig.positionStrategy as FlexibleConnectedPositionStrategy);
+            }
 
             this._overlayRef = this._overlay.create(overlayConfig);
-        } else if (this._popover.horizontalAlign === 'mouse' || this._popover.verticalAlign === 'mouse') {
+        } else if (this._popover.horizontalAlign === 'mouse' || this._popover.verticalAlign === 'mouse' && !this._fixedPos.length ) {
             /* If aligning to mouse clicks - adjust the strategy based on the most current click */
             this._overlayRef.updatePositionStrategy(
                 this._getPositionStrategy(
@@ -345,13 +360,15 @@ export class HcPopoverAnchoringService implements OnDestroy {
     /** Create and return a config for creating the overlay. */
     private _getOverlayConfig(config: PopoverConfig, anchor: HcPopoverAnchorDirective): OverlayConfig {
         return new OverlayConfig({
-            positionStrategy: this._getPositionStrategy(
-                config.horizontalAlign,
-                config.verticalAlign,
-                config.forceAlignment,
-                config.lockAlignment,
-                anchor._elementRef
-            ),
+            positionStrategy: this._fixedPos.length ?
+                this._getFixedPositionStrategy() :
+                this._getPositionStrategy(
+                    config.horizontalAlign,
+                    config.verticalAlign,
+                    config.forceAlignment,
+                    config.lockAlignment,
+                    anchor._elementRef
+                ),
             // make it hard for users to shoot themselves in the foot by disabling backdrop if hover is the trigger
             hasBackdrop: anchor.trigger !== 'hover' ? config.hasBackdrop : false,
 
@@ -429,6 +446,15 @@ export class HcPopoverAnchoringService implements OnDestroy {
         }
 
         return strategy.withPositions(positions);
+    }
+
+    /** Create and return a position strategy for a fixed position popover. */
+    private _getFixedPositionStrategy(): GlobalPositionStrategy {
+        return this._overlay
+            .position()
+            .global()
+            .left(this._fixedPos[0] + 'px')
+            .top(this._fixedPos[1] + 'px');
     }
 
     /** Get fallback positions based around target alignments. */
