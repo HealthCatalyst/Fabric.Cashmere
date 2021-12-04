@@ -6,7 +6,7 @@
 
 ##### All May Contribute
 
-We would love for you to contribute to Cashmere and be part of the community making this project better! To get started, follow the [Getting Started guide](http://cashmere.healthcatalyst.net/web/guides/getting-started).
+We would love for you to contribute to Cashmere! Follow the instructions below to get started. Contributing to open source projects can be daunting at first, so we welcome questions and requests for help. Reach out on [Github](https://github.com/HealthCatalyst/Fabric.Cashmere), or if you're a Health Catalyst employee, find us on Slack in the #cashmere channel. We want to see this project and its community continue to grow!
 
 :::
 
@@ -30,8 +30,11 @@ We would love for you to contribute to Cashmere and be part of the community mak
 ### While Developing
 
 1.  You may need to run `npm run build` before you start, especially if it's your first time running Cashmere.
-2.  Run `npm start`. This will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the Cashmere library.
-3.  To run locally in BrowserStack, run `npm run start-bs` and start up your local testing in BrowserStack. Enter bs-local.com:4200 as your url.
+2.  After the initial `npm run build`, if a fresh build is needed you are not developing a new cashmere Bit component, you can run `npm run build:dev`.
+3.  Run `npm start`. This will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the Cashmere library.
+4.  To run locally in BrowserStack, run `npm run start-bs` and start up your local testing in BrowserStack. Enter bs-local.com:4200 as your url.
+
+**Note**: There is a current known [build issue](https://github.com/HealthCatalyst/Fabric.Cashmere/issues/1750). After the initial npm run build is executed, executing it a subsequent time will break. If you need to run it again, you can either delete all `node_modules` folders (at the root and the ones under `projects/cashmere-examples`, `project/cashmere-bits`), rerun `npm i` and then run `npm run build`, or, you can simply run `npm run build:dev`. Subsequent runs of the build scripts are typically needed only for refreshing some usage guides, api pages, etc.
 
 ### Code Documentation
 
