@@ -29,6 +29,8 @@
     "prebuild:examples": "ts-node scripts/build-examples.ts",
     "build:examples": "ng build cashmere-examples --configuration production",
     "build": "npm run clean && npm run release-mode && npm run build:lib && npm run build:bit && npm run build:examples && npm run search-prep && npm run build:user",
+    "build:dev": "npx rimraf dist && npm run release-mode && npm run build:lib && npm run build:examples && npm run search-prep && npm run build:user",
+    "postbuild:dev": "npm run copy-assets",
     "postbuild": "npm run copy-assets",
     "precopy-assets": "npm run docs",
     "copy-assets": "node scripts/guide-copy-assets.js",
