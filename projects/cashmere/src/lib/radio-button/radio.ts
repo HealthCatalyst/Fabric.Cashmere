@@ -398,8 +398,8 @@ export class RadioButtonComponent implements OnInit {
             this.radioGroup.onChange(this.value);
             this.radioGroup._touch();
             if (valueChanged) {
-                this.radioGroup._emitChangeEvent();
                 this.radioGroup.value = this.value;
+                this.radioGroup._emitChangeEvent();
             }
         } else {
             this.checked = true;

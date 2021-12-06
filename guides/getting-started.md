@@ -12,10 +12,10 @@ npm install --save @healthcatalyst/cashmere
 ```
 
 ### B) Install [@angular/cdk](https://material.angular.io/cdk), a required peer dependency.
-*Note: Version 11.2.12 of the CDK, rather than the latest, is required for compatibility with Cashmere.*
+*Note: Version 12.2.13 of the CDK, rather than the latest, is required for compatibility with Cashmere.*
 
 ```BASH
-npm install --save @angular/cdk@11.2.12
+npm install --save @angular/cdk@12.2.13
 ```
 
 ### C) *(Optional)* Install additional dependencies as needed.

@@ -1,4 +1,5 @@
 import {ChangeDetectorRef, Component, ElementRef, Input, ViewEncapsulation} from '@angular/core';
+import {parseBooleanAttribute} from '../../util';
 
 /** Primary navigation links */
 @Component({
@@ -7,9 +8,16 @@ import {ChangeDetectorRef, Component, ElementRef, Input, ViewEncapsulation} from
     encapsulation: ViewEncapsulation.None
 })
 export class NavbarLinkComponent {
-    /** (optional) forces active state *Default is `null`.* */
+    _active: boolean | null;
+
+    /** Forces active state. Overrides router state when set; to remove the override set to null. *Default is `null`.* */
     @Input()
-    active?: boolean;
+    get active(): boolean | null {
+        return this._active;
+    }
+    set active(value: boolean | null) {
+        this._active = value !== null ? parseBooleanAttribute(value): null;
+    }
 
     /** RouterLink uri. See https://angular.io/api/router/RouterLink */
     @Input()

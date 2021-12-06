@@ -51,7 +51,7 @@
     "multiselect": {
         "name": "Multiselect & Typeahead",
         "category": "forms",
-        "examples": ["multiselect-custom-templates", "multiselect-embed-checkbox", "multiselect-overview"],
+        "examples": ["multiselect-overview", "multiselect-custom-templates", "multiselect-embed-checkbox"],
         "hideApi": true,
         "usageDoc": true
     },
@@ -90,7 +90,7 @@
     "pop": {
         "name": "Popover",
         "category": "popups",
-        "examples": ["popover-menu", "popover-overview", "popover-right-click", "popover-simple", "tooltip-overview"],
+        "examples": ["popover-simple", "popover-menu", "tooltip-overview", "popover-right-click", "popover-fixed-position", "popover-overview" ],
         "usageDoc": true
     },
     "progress-indicators": {

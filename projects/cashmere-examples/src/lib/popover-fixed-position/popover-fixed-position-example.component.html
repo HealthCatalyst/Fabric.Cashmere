@@ -1,0 +1,24 @@
+<div [hcPop]="fixedPop" trigger="none">
+
+    <p class="hc-font-sm">
+        Popovers may be set to fixed locations in the window. Set the position of the popover via the <code>open</code> function.
+        Attach the popover to <code>body</code> or any container and set the <code>trigger</code> to "none".
+    </p>
+
+    <div class="popover-fixed-inputs">
+        <hc-form-field>
+            <hc-label>Horizontal Position:</hc-label>
+            <input hcInput [formControl]="xPos" type="number"/>
+        </hc-form-field>
+
+        <hc-form-field>
+            <hc-label>Vertical Position:</hc-label>
+            <input hcInput [formControl]="yPos" type="number"/>
+        </hc-form-field>
+    </div>
+
+    <button hc-button buttonStyle="primary" (click)="fixedPop.open({ x: xPos.value, y: yPos.value })">Trigger</button>
+
+</div>
+
+<hc-pop #fixedPop [showArrow]="false">I'm a fixed position popover at location: ({{xPos.value}}px, {{yPos.value}}px).</hc-pop>

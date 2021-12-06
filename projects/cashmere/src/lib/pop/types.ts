@@ -19,4 +19,10 @@ export interface HcPopoverOpenOptions {
 
     /** Whether the first focusable element should be focused on open. Defaults to true. */
     autoFocus?: boolean;
+
+    /** The horizontal position for a fixed position popover. Defaults to 0 if `y` is set. */
+    x?: number;
+
+    /** The vertical position for a fixed position popover. Defaults to 0 if `x` is set. */
+    y?: number;
 }
