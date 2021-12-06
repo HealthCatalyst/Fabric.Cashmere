@@ -90,7 +90,7 @@
     "pop": {
         "name": "Popover",
         "category": "popups",
-        "examples": ["popover-menu", "popover-overview", "popover-right-click", "popover-simple", "tooltip-overview"],
+        "examples": ["popover-simple", "popover-menu", "tooltip-overview", "popover-right-click", "popover-fixed-position", "popover-overview" ],
         "usageDoc": true
     },
     "progress-indicators": {
