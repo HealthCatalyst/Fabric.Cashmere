@@ -30,7 +30,7 @@ We would love for you to contribute to Cashmere! Follow the instructions below t
 ### While Developing
 
 1.  You may need to run `npm run build` before you start, especially if it's your first time running Cashmere.
-2.  After the initial `npm run build`, if a fresh build is needed you are not developing a new cashmere Bit component, you can run `npm run build:dev`.
+2.  After the initial `npm run build`, if a fresh build is needed and you are not developing a new cashmere Bit component, you can run `npm run build:dev`.
 3.  Run `npm start`. This will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the Cashmere library.
 4.  To run locally in BrowserStack, run `npm run start-bs` and start up your local testing in BrowserStack. Enter bs-local.com:4200 as your url.
 
