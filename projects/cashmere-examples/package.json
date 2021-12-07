@@ -19,6 +19,6 @@
     },
     "devDependencies": {
         "@bit/healthcatalyst.cashmere.change-case-pipe": "0.0.5",
-        "@healthcatalyst/cashmere": "*"
+        "@healthcatalyst/cashmere": "^12.1.0"
     }
 }
