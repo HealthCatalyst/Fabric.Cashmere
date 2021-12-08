@@ -57,6 +57,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         popover.verticalAlign = 'above';
         popover.scrollStrategy = 'close';
         popover.restoreFocus = false;
+        popover.maxWidth = this._maxWidth;
         this.attachedPopover = popover;
         this.trigger = 'hover';
         this.popoverDelay = 300;
@@ -103,10 +104,13 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     }
 
     set maxWidth(val: string) {
+        this._maxWidth = val;
         if ( this.attachedPopover ) {
             this._attachedPopover.maxWidth = val;
         }
     }
+
+    private _maxWidth = 'none';
 
     /** Whether the popover should return focus to the previously focused element after closing.* */
     @Input()
