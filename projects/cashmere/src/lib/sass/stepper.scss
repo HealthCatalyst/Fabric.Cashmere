@@ -1,5 +1,3 @@
-@use 'sass:math';
-
 $track-space: 4rem;
 $isolated-disk-size: 2rem;
 $track-height: 0.5rem;
@@ -12,9 +10,9 @@ $track-height: 0.5rem;
     @if $right {
         border-right: $track-space * 0.05 solid $right;
     }
-    border-left: math.div($track-space, 4) solid transparent;
-    border-top: math.div($track-space, 2) solid $top-bottom;
-    border-bottom: math.div($track-space, 2) solid $top-bottom;
+    border-left: $track-space / 4 solid transparent;
+    border-top: $track-space / 2 solid $top-bottom;
+    border-bottom: $track-space / 2 solid $top-bottom;
     display: block;
     height: 0px;
     position: absolute;
@@ -49,10 +47,10 @@ $track-height: 0.5rem;
     display: block;
     height: $track-height;
     left: 0px;
-    margin-top: math.div($track-height, -2);
+    margin-top: $track-height / -2;
     position: absolute;
     right: 0px;
-    top: math.div($disk-size, 2);
+    top: $disk-size / 2;
     z-index: 1;
 }
 
@@ -158,7 +156,7 @@ $track-height: 0.5rem;
     height: $isolated-disk-size;
     left: 50%;
     line-height: $isolated-disk-size;
-    margin-left: math.div($isolated-disk-size, -2);
+    margin-left: $isolated-disk-size / -2;
     position: absolute;
     text-align: center;
     top: 0px;
