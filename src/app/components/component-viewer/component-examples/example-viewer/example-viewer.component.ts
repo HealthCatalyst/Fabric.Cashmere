@@ -143,7 +143,7 @@ export class ExampleViewerComponent implements OnInit {
             },
             {
                 openFile: `src/app/${this.example}/${this.example}-example.component.html`,
-                hideDevTools: true
+                hideDevTools: false
             }
         );
     }
