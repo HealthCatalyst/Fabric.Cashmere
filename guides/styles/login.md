@@ -37,7 +37,7 @@ The library does not ship with image assets, so the following images will need t
     <a href="#" class="new-account">Create a new acount</a>
   </div>
   <div class="hc-login-footer">
-    <ul>
+    <ul class="hc-login-footer-list">
       <li>
         <a target="_blank" href="https://www.healthcatalyst.com/terms-conditions/"> Terms of Use </a>
       </li>
