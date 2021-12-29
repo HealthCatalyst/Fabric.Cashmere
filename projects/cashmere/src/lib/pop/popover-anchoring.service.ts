@@ -295,7 +295,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
             .subscribe(() => this.closePopover());
 
         // Allow right-clicks to close an open popover
-        if ( this._overlayRef.backdropElement ) {
+        if ( this._overlayRef.backdropElement && this._popover.interactiveClose ) {
             this._overlayRef.backdropElement.addEventListener( 'contextmenu', event => {
                 event.preventDefault();
                 this._popover.backdropClicked.emit();
