@@ -13,7 +13,7 @@ export class HcFormDirective implements AfterContentInit, OnDestroy {
     private _tight = false;
     private unsubscribe$ = new Subject<void>();
 
-    @ContentChildren(HcFormFieldComponent)
+    @ContentChildren(HcFormFieldComponent, {descendants: true})
     _formFields: QueryList<HcFormFieldComponent>;
 
     /** Set the tight parameter on all enclosed HcFormFields. *Defaults to `false`.*  */
