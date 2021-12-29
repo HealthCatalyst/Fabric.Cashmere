@@ -13,7 +13,9 @@
 }
 
 .hc-form-field-wrapper-tight {
-    @include hc-form-field-wrapper-tight();
+    &:not(.hc-form-field-wrapper-inline) {
+        @include hc-form-field-wrapper-tight();
+    }
 }
 
 .hc-form-field-content-wrapper {
