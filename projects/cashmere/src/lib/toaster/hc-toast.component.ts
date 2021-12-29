@@ -29,6 +29,7 @@ export class HcToastComponent {
     _animationStateChanged = new EventEmitter<AnimationEvent>();
     _closeClick = new EventEmitter<MouseEvent>();
     _canDismiss = false;
+    _canClick = false;
     _toastPortal: Portal<unknown>;
     _width = 300;
     _hasProgressBar = false;

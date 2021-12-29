@@ -59,10 +59,16 @@ export class HcToasterService {
         }
 
         // Listen for click events to close the toast if the option is set
-        if (options.clickDismiss) {
-            _toastRef.componentInstance._canDismiss = options.clickDismiss;
+        if (options.clickDismiss || options.toastClicked) {
+            _toastRef.componentInstance._canClick = true;
+            _toastRef.componentInstance._canDismiss = options.clickDismiss ? options.clickDismiss : false;
             _toastRef.componentInstance._closeClick.subscribe(() => {
-                _toastRef.close();
+                if (options.toastClicked) {
+                    options.toastClicked();
+                }
+                if ( _toastRef.componentInstance._canDismiss ) {
+                    _toastRef.close();
+                }
             });
         }
 
