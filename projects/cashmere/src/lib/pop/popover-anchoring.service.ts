@@ -83,7 +83,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
     /** Function to remove a right-click event listener if added */
     private _unlistener: () => void;
 
-    constructor(private _overlay: Overlay, private renderer: Renderer2, private _ngZone: NgZone, @Optional() private _dir: Directionality) {}
+    constructor(private _overlay: Overlay, private _renderer: Renderer2, private _ngZone: NgZone, @Optional() private _dir: Directionality) {}
 
     ngOnDestroy(): void {
         // Destroy popover before terminating subscriptions so that any resulting
@@ -302,7 +302,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
 
         // Allow right-clicks to close an open popover
         if ( this._overlayRef.backdropElement && this._popover.interactiveClose ) {
-            this._unlistener = this.renderer.listen( this._overlayRef.backdropElement, 'contextmenu', event => {
+            this._unlistener = this._renderer.listen( this._overlayRef.backdropElement, 'contextmenu', event => {
                 event.preventDefault();
                 this._popover.backdropClicked.emit();
                 this.closePopover();
