@@ -8,6 +8,7 @@ $error-font-scale: 0.75;
 $infix-margin-top: 1.143em * $line-height * $label-font-scale;
 $infix-margin-top-tight: 1.143em * $line-height * 0.93;
 $prefix-suffix-icon-font-size: 125%;
+$prefix-suffix-icon-line-height: $line-height * 0.87;
 
 $infix-padding: 0.393em;
 $infix-padding-tight: $infix-padding / 2;
@@ -123,7 +124,7 @@ $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 @mixin hc-form-field-prefix-suffix-icon() {
     color: $gray-400;
     font-size: $prefix-suffix-icon-font-size;
-    line-height: $line-height;
+    line-height: $prefix-suffix-icon-line-height;
 }
 
 @mixin hc-form-field-suffix-pad() {
