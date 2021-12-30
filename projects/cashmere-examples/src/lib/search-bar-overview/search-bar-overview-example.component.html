@@ -1,0 +1,28 @@
+<hc-search-bar
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [showSearchIcon]="showSearchIcon"
+    [showClearIcon]="showClearIcon"
+    [autoSearch]="autoSearch"
+    (triggerSearch)="search($event)">
+</hc-search-bar>
+
+<hr />
+<h3>Component Options:</h3>
+<div class="property-form-group">
+    <hc-form-field>
+        <hc-label>Placeholder</hc-label>
+        <input hcInput [(ngModel)]="placeholder" />
+    </hc-form-field>
+</div>
+<div class="property-form-group checkbox-only-group">
+    <hc-checkbox id="showSearchIcon" [(ngModel)]="showSearchIcon">Show search icon</hc-checkbox>
+    <hc-checkbox id="showClearIcon" [(ngModel)]="showClearIcon">Show clear icon</hc-checkbox>
+    <hc-checkbox id="autoSearch" [(ngModel)]="autoSearch">Trigger search on key up</hc-checkbox>
+    <hc-checkbox id="disabled" [(ngModel)]="disabled">Disabled</hc-checkbox>
+</div>
+
+<br />
+<h3>Event Output:</h3>
+<pre><code>{{output}}</code></pre>
+

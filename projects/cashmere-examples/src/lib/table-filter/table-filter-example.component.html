@@ -1,7 +1,6 @@
-<hc-form-field>
-    <hc-label>Filter:</hc-label>
-    <input hcInput (keyup)="applyFilter($event.target.value)">
-</hc-form-field>
+
+<hc-search-bar placeholder="Search elements..." (triggerSearch)="applyFilter($event)">
+</hc-search-bar>
 
 <table hc-table [dataSource]="dataSource" borders="false">
 
