@@ -1,0 +1,9 @@
+@import '../sass/input';
+
+.hc-clear-input-btn {
+    @include hc-clear-btn();
+}
+
+.hc-clear-input-btn-show {
+    @include hc-clear-btn-show();
+}

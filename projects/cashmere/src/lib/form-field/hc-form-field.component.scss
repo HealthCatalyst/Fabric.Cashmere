@@ -90,6 +90,14 @@
     }
 }
 
+.hc-suffix:not(:first-child) {
+    @include hc-form-field-suffix-pad();
+}
+
+.hc-prefix:not(:last-child) {
+    @include hc-form-field-prefix-pad();
+}
+
 .hc-form-field-suffix {
     @include hc-form-field-suffix();
 }
