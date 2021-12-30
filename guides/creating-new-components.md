@@ -38,19 +38,18 @@ The Cashmere library is heavily built on it's component-based architecture. By a
 
 <strong>1.</strong> Start by openining the directory where you want the new component `projects/cashmere/src/lib`
 
-<strong>2.</strong> Run the comand `ng generate component "component-name" --skip-import`. (Don't include the "hc" prefix, this will be added automatically where needed.) Executing the command creates a folder, "component-name", in the project's `projects/cashmere/src/lib` path.The folder has the following files:
+<strong>2.</strong> Run the comand `ng generate component "component-name" --skip-import`. (Don't include the "hc" prefix, this will be added automatically where needed.) Executing the command creates a folder, "component-name", in the project's `projects/cashmere/src/lib` path. The folder has the following files:
 
 - **"component-name".component.ts**
 - **"component-name".component.css**
 - **"component-name".component.html**
 - **"component-name".component.spec.ts**
-- **index.ts**
 
 <strong>3.</strong> Create the ```"component-name.module".ts``` file.
 
 <strong>4.</strong> Import & export your new ```"component-name".module.ts``` in ```src/app/shared/cashmere.module.ts```
 
-<strong>5.</strong> Export your component's ```index.ts``` file from ```projects/cashmere/src/public_api.ts```
+<strong>5.</strong> Create the ```index.ts``` file and export it from ```projects/cashmere/src/public_api.ts```
 
 <strong>6.</strong> Create examples - see the [Working with Examples](https://cashmere.healthcatalyst.net/web/guides/working-with-examples) guide
 
