@@ -59,6 +59,7 @@
 
 @mixin hc-app-switcher-link-highlighted() {
     opacity: 0.5;
+    pointer-events: none;
 }
 
 @mixin hc-app-switcher-empty() {

@@ -58,7 +58,7 @@
     "navbar": {
         "name": "Navbar",
         "category": "nav",
-        "examples": ["navbar-overview", "navbar-app-switcher", "navbar-cobrand"],
+        "examples": ["navbar-overview", "navbar-cobrand"],
         "usageDoc": true
     },
     "null-or-empty-string-pipe": {
@@ -120,6 +120,7 @@
     "tile": {"name": "Tile", "category": "layout", "examples": ["tile-overview"], "usageDoc": true},
     "toaster": {"name": "Toaster Messages", "category": "popups", "examples": ["toaster-overview"]},
     "typeform-survey": {"name": "Typeform Survey", "category": "popups", "examples": ["typeform-survey-overview"], "usageDoc": true},
+    "app-switcher": {"category": "nav", "name": "App Switcher", "examples": ["navbar-app-switcher"], "usageDoc": true},
     "env-switcher": {
         "category": "nav",
         "name": "Environment Switcher",

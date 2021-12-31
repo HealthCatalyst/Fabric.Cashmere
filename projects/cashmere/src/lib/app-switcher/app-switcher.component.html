@@ -3,10 +3,10 @@
         Applications
         <a
             hc-button
-            *ngIf="appSwitcherService.allApplicationsUri"
+            *ngIf="_appSwitcherService.allApplicationsUri"
             buttonStyle="link-inline"
             class="hc-app-switcher-all-apps-link"
-            [href]="appSwitcherService.allApplicationsUri"
+            [href]="_appSwitcherService.allApplicationsUri"
             target="_blank"
         >
             View All
@@ -18,9 +18,10 @@
             <div class="hc-app-switcher-app" *ngFor="let app of applications">
                 <a
                     class="hc-app-switcher-link"
-                    [ngClass]="{'hc-app-switcher-link-highlighted': appIsMe(app)}"
-                    [title]="appIsMe(app) ? 'Current Application' : app.Description"
-                    [attr.href]="linkIfNotMe(app)"
+                    [ngClass]="{'hc-app-switcher-link-highlighted': _appIsMe(app)}"
+                    [title]="_appIsMe(app) ? 'Current Application' : app.Description"
+                    [attr.href]="_linkIfNotMe(app)"
+                    (click)="_appClick(app)"
                     target="_blank"
                 >
                     <div

@@ -37,11 +37,15 @@
 
 <br>
 
+<p>App Switcher Selection: <strong>{{switcherSelection}}</strong></p>
+
+<br>
+
 <p><em><strong>Note:</strong> the code for this example demonstrates how to setup a mobile menu in the navbar, however
     its display has been disabled here to prevent it from colliding with the Cashmere site navigation.</em></p>
 
 <hc-pop #appSwitcher [showArrow]="false" horizontalAlign="end" [autoFocus]="true">
-    <hc-app-switcher [serviceName]="currentAppName" [serviceVersion]="currentAppVersion"></hc-app-switcher>
+    <hc-app-switcher (appClick)="updateApp($event); appSwitcher.close();" [serviceName]="currentAppName" [serviceVersion]="currentAppVersion"></hc-app-switcher>
 </hc-pop>
 
 <hc-pop #options [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
