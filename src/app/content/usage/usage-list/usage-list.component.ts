@@ -16,8 +16,10 @@ import {IUsage, usageAttributesMapping} from '../usage';
 export class UsageListComponent extends BaseDemoComponent implements OnInit, AfterViewInit {
     filteredUsageList: IUsage[];
     usageList: IUsage[] = [];
-    categories = ['All', 'Health Catalyst', 'Industry', 'Technical'];
+    categories = ['All', 'Clinical', 'General', 'Health Catalyst', 'Industry', 'Technical'];
+    types = ['All', 'Abbreviation', 'General usage', 'UX/technical writing', 'Word choice']
     selectedCategoriesControl = new FormControl('All');
+    selectedTypesControl = new FormControl('All');
     searchControl = new FormControl();
     termList$: Observable<IUsage[]>;
     terms: IUsage[];
@@ -31,7 +33,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     @ViewChild('formTab') formTabRef: TabComponent;
     @ViewChild('formDirective') formDirective: FormGroupDirective;
 
-    displayedColumns: string[] = ['term', 'usage', 'edit'];
+    displayedColumns: string[] = ['term', 'usage', 'example', 'edit'];
     dataSource: HcTableDataSource<IUsage>;
     pageNumber = 1;
     pageOpts = [10, 20, 30];
@@ -65,7 +67,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         this.termList$ = this.googleSheetsDbService.get<IUsage>('18lD03x12tYE_DTqiXPX9oqR3sqRdMXEE_jhIGvTF_xk', 'Sheet1', usageAttributesMapping);
         this.termList$.subscribe(data => {
             this.usageList = data;
-            this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName > b.TermName ? 1 : -1));
+            this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName.toLowerCase() > b.TermName.toLowerCase() ? 1 : -1));
             this.dataSource = new HcTableDataSource(this.filteredUsageList);
             this.dataSource.filterPredicate = (filterData: IUsage, filter: string) => this.usageFilter(filterData, filter);
             this.dataSource.paginator = this.paginator;
@@ -83,11 +85,12 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
 
     usageFilter(data: IUsage, filter: string): boolean {
         const catMatch =
-            data.TermCategories.includes(this.selectedCategoriesControl.value) || this.selectedCategoriesControl.value === 'All';
+            data.TermCategories.toLowerCase().includes(this.selectedCategoriesControl.value.toLowerCase()) || this.selectedCategoriesControl.value === 'All';
+        const typeMatch = data.TermTypes.toLowerCase().includes(this.selectedTypesControl.value.toLowerCase()) || this.selectedTypesControl.value === 'All';
         const termMatch = data.TermName.toLowerCase().includes(filter) || filter === ' ';
         const defMatch = data.TermUsage.toLowerCase().includes(filter) || filter === ' ';
 
-        return catMatch && (termMatch || defMatch);
+        return catMatch && typeMatch && (termMatch || defMatch);
     }
 
     onCancel(): void {
