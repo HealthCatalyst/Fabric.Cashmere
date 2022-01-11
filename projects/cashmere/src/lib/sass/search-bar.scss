@@ -1,0 +1,25 @@
+@import './colors';
+@import './mixins';
+@import './icons';
+
+@mixin hc-search-bar() {
+    display: block;
+}
+
+@mixin hc-search-bar-form-field() {
+    display: block;
+    width: auto;
+    @include fontSize(15px);
+    line-height: 15px;
+}
+
+@mixin hc-search-bar-ico() {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    background-image: url($ico-search-grey);
+}
+
+@mixin hc-search-bar-field-wrapper() {
+    padding-bottom: 0;
+}

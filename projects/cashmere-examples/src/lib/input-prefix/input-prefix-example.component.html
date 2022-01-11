@@ -14,5 +14,11 @@
             <input hcInput placeholder="Enter password" class="demo-input" [formControl]='inputPrefix'>
             <hc-icon hcSuffix fontSet="fa" fontIcon="fa-key"></hc-icon>
         </hc-form-field>
+        <hc-form-field inline="true">
+            <hc-label>Clearable Input:</hc-label>
+            <hc-icon hcPrefix fontSet="fa" fontIcon="fa-snowflake-o"></hc-icon>
+            <input hcInput #clearableInput placeholder="Type something" class="demo-input">
+            <hc-clear-input-btn hcSuffix [inputEl]="clearableInput"></hc-clear-input-btn>
+        </hc-form-field>
     </div>
 </form>

@@ -1,0 +1,35 @@
+.property-form-group {
+    display: flex;
+    flex-wrap: wrap;
+
+    hc-form-field,
+    hc-checkbox {
+        margin-right: 20px;
+        width: 200px;
+    }
+
+    hc-checkbox {
+        margin-top: 27px;
+    }
+
+    &.checkbox-only-group {
+        margin-bottom: 24px;
+        hc-checkbox {
+            margin-top: 5px;
+        }
+    }
+}
+
+hr {
+    margin: 20px 0;
+}
+
+h3 {
+    margin: 0;
+}
+
+pre {
+    height: 100px;
+    overflow-y: auto;
+    margin-top: 0;
+}

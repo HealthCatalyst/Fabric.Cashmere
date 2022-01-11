@@ -90,7 +90,14 @@
     "pop": {
         "name": "Popover",
         "category": "popups",
-        "examples": ["popover-simple", "popover-menu", "tooltip-overview", "popover-right-click", "popover-fixed-position", "popover-overview" ],
+        "examples": [
+            "popover-simple",
+            "popover-menu",
+            "tooltip-overview",
+            "popover-right-click",
+            "popover-fixed-position",
+            "popover-overview"
+        ],
         "usageDoc": true
     },
     "progress-indicators": {
@@ -127,6 +134,14 @@
         "examples": ["environment-switcher-overview"],
         "id": "env-switcher",
         "usageDoc": true,
+        "hideApi": false
+    },
+    "search-bar": {
+        "category": "table",
+        "name": "Search Bar",
+        "examples": ["search-bar-overview"],
+        "id": "search-bar",
+        "usageDoc": false,
         "hideApi": false
     }
 }

@@ -28,6 +28,7 @@ export * from './lib/pop/index';
 export * from './lib/progress-indicators/index';
 export * from './lib/radio-button/index';
 export * from './lib/scroll-nav/index';
+export * from './lib/search-bar/index';
 export * from './lib/select/index';
 export * from './lib/sort/index';
 export * from './lib/stepper/index';

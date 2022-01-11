@@ -1,0 +1,17 @@
+@import '../sass/search-bar.scss';
+
+hc-search-bar {
+    @include hc-search-bar();
+}
+
+.hc-search-bar.hc-form-field {
+    @include hc-search-bar-form-field();
+
+    .hc-search-ico {
+        @include hc-search-bar-ico();
+    }
+
+    .hc-form-field-wrapper {
+        @include hc-search-bar-field-wrapper();
+    }
+}

@@ -1,0 +1,7 @@
+<hc-form-field class="hc-search-bar">
+    <input id="search-box" hcInput autocomplete="off" #searchFilter type="text" [disabled]="disabled"
+        (keyup)="_onKeyUp($event, searchFilter.value)" (keyup.enter)="_onEnter(searchFilter.value)"
+        placeholder="{{ placeholder }}" />
+    <hc-clear-input-btn *ngIf="showClearIcon" hcSuffix [inputEl]="searchFilter"></hc-clear-input-btn>
+    <span *ngIf="showSearchIcon" hcSuffix class="hc-search-ico"></span>
+</hc-form-field>
