@@ -46,7 +46,7 @@ describe('AppSwitcherComponent', () => {
             const anchorElements = fixture.debugElement.queryAll(By.css('.hc-app-switcher-link'));
             expect(anchorElements[0].nativeElement.getAttribute('href')).toEqual(null);
             expect(component.applications.length).toEqual(2);
-            expect(component.linkIfNotMe(component.applications[0])).toBeNull();
+            expect(component._linkIfNotMe(component.applications[0])).toBeNull();
         }));
 
         it('should return the link if the app is the current app', fakeAsync(() => {
@@ -58,7 +58,7 @@ describe('AppSwitcherComponent', () => {
             const anchorElements = fixture.debugElement.queryAll(By.css('.hc-app-switcher-link'));
             expect(anchorElements[1].nativeElement.getAttribute('href')).toEqual('http://anotherapp.com');
             expect(component.applications.length).toEqual(2);
-            expect(component.linkIfNotMe(component.applications[1])).toEqual('http://anotherapp.com');
+            expect(component._linkIfNotMe(component.applications[1])).toEqual('http://anotherapp.com');
         }));
     });
 

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {HcIcon} from '@healthcatalyst/cashmere';
+import {HcIcon, IDiscoveryApplication} from '@healthcatalyst/cashmere';
 
 /**
  * @title Navbar app switcher with mobile menu example
@@ -11,8 +11,13 @@ import {HcIcon} from '@healthcatalyst/cashmere';
 export class NavbarAppSwitcherExampleComponent {
     username = 'Christine K.';
     navIcon: HcIcon = {fontSet: "hc-icons", fontIcon: "hci-catalyst-logo", fontSize: 37};
+    switcherSelection = "None";
 
-    // These values should match what was registered with the discovery service. We're using Atlas as an example here.
+    /* These values should match what was registered with the discovery service. We're using Atlas as an example here. */
     currentAppName = 'Atlas4';
     currentAppVersion = '1';
+
+    updateApp( app: IDiscoveryApplication ): void {
+        this.switcherSelection = app.FriendlyName;
+    }
 }

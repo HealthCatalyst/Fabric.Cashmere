@@ -9,7 +9,9 @@ import {IAppSwitcherConfig, IAppSwitcherService, IDiscoveryRequest, APP_SWITCHER
  */
 @Injectable()
 export class AppSwitcherService implements IAppSwitcherService {
+    /** Optional URL for a separate page the app switcher can link to with a complete list of all available applications */
     readonly allApplicationsUri: string;
+
     private readonly discoveryServiceUri: string;
 
     constructor(private http: HttpClient, @Inject(APP_SWITCHER_CONFIG) private config: IAppSwitcherConfig) {

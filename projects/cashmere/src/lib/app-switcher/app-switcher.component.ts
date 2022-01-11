@@ -1,10 +1,13 @@
 import {takeUntil} from 'rxjs/operators';
-import {Component, Inject, OnDestroy, OnInit, Input, ViewEncapsulation} from '@angular/core';
-import {Subject, Subscription, Observable} from 'rxjs';
+import {Component, Inject, OnDestroy, OnInit, Input, ViewEncapsulation, Output, EventEmitter} from '@angular/core';
+import {Subject, Observable} from 'rxjs';
 
 import {IAppSwitcherService, IDiscoveryApplication, APP_SWITCHER_SERVICE} from './app-switcher-interfaces';
 import {WorkTrackerService} from '../shared/work-tracker.service';
 
+/**
+ * `hc-app-switcher` is typically included in a popover to display links to available apps from the Discovery Service
+ */
 @Component({
     selector: 'hc-app-switcher',
     templateUrl: './app-switcher.component.html',
@@ -13,18 +16,22 @@ import {WorkTrackerService} from '../shared/work-tracker.service';
     encapsulation: ViewEncapsulation.None
 })
 export class AppSwitcherComponent implements OnInit, OnDestroy {
+    /** The array of applications pulled from the Discovery Service */
     public applications: IDiscoveryApplication[];
-    public subscription: Subscription;
-    public brandBg = 'brand';
+
+    /** Whether the app switcher is currently loading data from the Discovery Service */
     public loading: Observable<boolean>;
+
+    /** Whether the load from the Discovery Service was successful */
     public loadFailed = false;
+
     private _iconHeight = 60;
     private _serviceName = '';
     private _version = '';
 
     private ngUnsubscribe = new Subject();
 
-    /** Sets the height of the app thumbnail icons, width is auto (defaults to 100px) */
+    /** Sets the height of the app thumbnail icons, width is auto (defaults to 60px) */
     @Input()
     get iconHeight(): number {
         return this._iconHeight;
@@ -34,6 +41,7 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
         this._iconHeight = heightVal;
     }
 
+    /** Used to disable switching for your own app. `serviceVersion` must also be set. */
     @Input()
     get serviceName(): string {
         return this._serviceName;
@@ -42,6 +50,8 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     set serviceName(serviceNameVal: string) {
         this._serviceName = serviceNameVal;
     }
+
+    /** Used to disable switching for your own app. `serviceName` must also be set. */
     @Input()
     get serviceVersion(): string | number {
         return this._version;
@@ -50,7 +60,12 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     set serviceVersion(serviceVersionVal: string | number) {
         this._version = `${serviceVersionVal}`;
     }
-    constructor(@Inject(APP_SWITCHER_SERVICE) public appSwitcherService: IAppSwitcherService, private workTracker: WorkTrackerService) {}
+
+    /** Event emitted when a user clicks an app in the app switcher */
+    @Output()
+    appClick = new EventEmitter<IDiscoveryApplication>();
+
+    constructor(@Inject(APP_SWITCHER_SERVICE) public _appSwitcherService: IAppSwitcherService, private workTracker: WorkTrackerService) {}
 
     ngOnInit(): void {
         this.loadApplications();
@@ -61,6 +76,7 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
         this.ngUnsubscribe.complete();
     }
 
+    /** Manually loads all applications from the configured Discovery Service */
     public loadApplications(): void {
         try {
             this.loadApplicationFromDiscoveryService();
@@ -71,7 +87,7 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
 
     private loadApplicationFromDiscoveryService() {
         this.loading = this.workTracker.startObservable(() =>
-            this.appSwitcherService
+            this._appSwitcherService
                 .getApplications()
                 .pipe(takeUntil(this.ngUnsubscribe))
                 .subscribe(
@@ -91,11 +107,15 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
         this.loadFailed = true;
     }
 
-    linkIfNotMe(app: IDiscoveryApplication): string | null {
-        return this.appIsMe(app) ? null : app.ServiceUrl;
+    _linkIfNotMe(app: IDiscoveryApplication): string | null {
+        return this._appIsMe(app) ? null : app.ServiceUrl;
     }
 
-    appIsMe(app: IDiscoveryApplication): boolean {
+    _appIsMe(app: IDiscoveryApplication): boolean {
         return app.ServiceName === this.serviceName && `${app.Version}` === this.serviceVersion;
+    }
+
+    _appClick( app: IDiscoveryApplication ): void {
+        this.appClick.emit( app );
     }
 }
