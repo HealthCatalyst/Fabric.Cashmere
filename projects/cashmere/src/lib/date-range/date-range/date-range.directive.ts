@@ -4,6 +4,8 @@ import {OverlayRef} from '@angular/cdk/overlay';
 import {CalendarOverlayService} from '../services/calendar-overlay.service';
 import {DateRange, DateRangeOptions} from '../model/model';
 import {ConfigStoreService} from '../services/config-store.service';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Directive({
     selector: '[hcDateRange]',
@@ -22,26 +24,37 @@ export class DateRangeDirective implements OnDestroy, OnChanges {
     @Output()
     readonly selectedPresetChanged: EventEmitter<number | DateRange> = new EventEmitter<number | DateRange>();
 
+    /** Emits after the popover is closed; returns `null` on cancel or dismiss and a `DateRange` on apply */
+    @Output()
+    readonly closed: EventEmitter<null | DateRange> = new EventEmitter<null | DateRange>();
+
     /** Configuration to setup behavior of component. */
     @Input()
     options: DateRangeOptions;
 
     private _overlayRef: OverlayRef;
+    private unsubscribe$ = new Subject<void>();
 
     constructor(
         private _elementRef: ElementRef<HTMLInputElement>,
         private calendarOverlayService: CalendarOverlayService,
         public configStoreService: ConfigStoreService
     ) {
-        configStoreService.rangeUpdate$.subscribe((daterange: DateRange) => {
+        configStoreService.rangeUpdate$.pipe(takeUntil(this.unsubscribe$)).subscribe((daterange: DateRange) => {
             this.selectedDateRangeChanged.emit(daterange);
         });
-        configStoreService.presetUpdate$.subscribe((preset: number | DateRange) => {
+        configStoreService.presetUpdate$.pipe(takeUntil(this.unsubscribe$)).subscribe((preset: number | DateRange) => {
             this.selectedPresetChanged.emit(preset);
+        });
+        calendarOverlayService._dismissed.pipe(takeUntil(this.unsubscribe$)).subscribe( saved => {
+            this.closed.emit( saved ? this.configStoreService.currentSelection() : null );
         });
     }
 
     ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
+
         if (this._overlayRef) {
             this._overlayRef.detach();
         }
