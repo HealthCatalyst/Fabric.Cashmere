@@ -1,3 +1,11 @@
+::ng-deep .term-field li {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 2px;
+    text-indent: -21px;
+    padding-left: 10px;
+}
+
 .icon-left,
 .usage-submit-btn {
     margin-right: 10px;
@@ -14,17 +22,18 @@
 
 .usage-table-filters {
     display: inline-flex;
+    justify-content: space-between;
     margin: 20px 0;
+    width: 100%
 }
 
-.usage-table-filters-input {
-    margin-right: 20px;
+.usage-table-filters_categories {
+    display: inline-flex;
 }
 
 .usage-table-filters-filter {
-    padding-right: 20px;
+    padding-left: 20px;
     min-width: 200px;
-    align-items: right;
 }
 
 .product-icon {
