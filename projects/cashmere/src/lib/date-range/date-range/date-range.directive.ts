@@ -7,6 +7,7 @@ import {ConfigStoreService} from '../services/config-store.service';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
+/** Trigger the date range selector using the `hcDateRange` directive on a button or other clickable element  */
 @Directive({
     selector: '[hcDateRange]',
     providers: [CalendarOverlayService, ConfigStoreService, DatePipe]
@@ -38,16 +39,16 @@ export class DateRangeDirective implements OnDestroy, OnChanges {
     constructor(
         private _elementRef: ElementRef<HTMLInputElement>,
         private calendarOverlayService: CalendarOverlayService,
-        public configStoreService: ConfigStoreService
+        public _configStoreService: ConfigStoreService
     ) {
-        configStoreService.rangeUpdate$.pipe(takeUntil(this.unsubscribe$)).subscribe((daterange: DateRange) => {
+        _configStoreService.rangeUpdate$.pipe(takeUntil(this.unsubscribe$)).subscribe((daterange: DateRange) => {
             this.selectedDateRangeChanged.emit(daterange);
         });
-        configStoreService.presetUpdate$.pipe(takeUntil(this.unsubscribe$)).subscribe((preset: number | DateRange) => {
+        _configStoreService.presetUpdate$.pipe(takeUntil(this.unsubscribe$)).subscribe((preset: number | DateRange) => {
             this.selectedPresetChanged.emit(preset);
         });
         calendarOverlayService._dismissed.pipe(takeUntil(this.unsubscribe$)).subscribe( saved => {
-            this.closed.emit( saved ? this.configStoreService.currentSelection() : null );
+            this.closed.emit( saved ? this._configStoreService.currentSelection() : null );
         });
     }
 
@@ -63,15 +64,15 @@ export class DateRangeDirective implements OnDestroy, OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['options']) {
             const options: DateRangeOptions = changes['options'].currentValue;
-            this.configStoreService.updateDateRangeOptions(options);
+            this._configStoreService.updateDateRangeOptions(options);
         }
         if (changes['selectedDate']) {
             const selectedDate: number | DateRange = changes['selectedDate'].currentValue;
 
             if ( typeof selectedDate === 'number' ) {
-                this.configStoreService.updatePreset(selectedDate);
+                this._configStoreService.updatePreset(selectedDate);
             } else {
-                this.configStoreService.updateRange(selectedDate);
+                this._configStoreService.updateRange(selectedDate);
             }
         }
     }

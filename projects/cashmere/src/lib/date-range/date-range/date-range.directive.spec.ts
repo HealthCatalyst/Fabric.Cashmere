@@ -8,6 +8,9 @@ import {By} from '@angular/platform-browser';
 
 class MockOverlayService {
     open = jasmine.createSpy('open');
+    _dismissed = jasmine.createSpyObj('_dismissed', {
+        'pipe': jasmine.createSpyObj( 'subscribe', {'subscribe': 'subscribe'})
+    });
 }
 
 @Component({
@@ -85,7 +88,7 @@ describe('DateRangeDirective', () => {
     });
 
     it('should set options in config', () => {
-        expect(directive.configStoreService.dateRangeOptions$).toBeTruthy();
+        expect(directive._configStoreService.dateRangeOptions$).toBeTruthy();
     });
 
     it('should reset dates as per input', () => {
