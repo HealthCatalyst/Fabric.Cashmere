@@ -73,4 +73,8 @@ export class ConfigStoreService {
     updatePreset(value: number | DateRange): void {
         this.presetUpdateSubject.next(value);
     }
+
+    currentSelection(): DateRange {
+        return this.rangeUpdateSubject.value;
+    }
 }

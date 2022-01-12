@@ -1,11 +1,16 @@
-import {Injectable, ElementRef, Injector} from '@angular/core';
+import {Injectable, ElementRef, Injector, EventEmitter, OnDestroy} from '@angular/core';
 import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
 import {ComponentPortal, PortalInjector} from '@angular/cdk/portal';
 import {PickerOverlayComponent} from '../picker-overlay/picker-overlay.component';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Injectable()
-export class CalendarOverlayService {
+export class CalendarOverlayService implements OnDestroy {
     private hostElemRef: ElementRef;
+
+    readonly _dismissed: EventEmitter<boolean> = new EventEmitter<boolean>();
+    private unsubscribe$ = new Subject<void>();
 
     constructor(private overlay: Overlay, private injector: Injector) {}
 
@@ -14,9 +19,16 @@ export class CalendarOverlayService {
         const overlayRef = this._createOverlay(center);
         const portalInjector = this._createInjector(overlayRef);
         const calendarPortal = new ComponentPortal(PickerOverlayComponent, null, portalInjector);
-        overlayRef.attach(calendarPortal);
+        const compRef = overlayRef.attach(calendarPortal);
 
-        overlayRef.backdropClick().subscribe(() => overlayRef.dispose());
+        overlayRef.backdropClick().pipe(takeUntil(this.unsubscribe$)).subscribe(() => {
+            this._dismissed.emit( false );
+            overlayRef.dispose();
+        });
+
+        compRef.instance._dismissed.pipe(takeUntil(this.unsubscribe$)).subscribe( saved => {
+            this._dismissed.emit( saved );
+        });
 
         return overlayRef;
     }
@@ -87,5 +99,10 @@ export class CalendarOverlayService {
         injectionTokens.set(OverlayRef, overlayRef);
 
         return new PortalInjector(this.injector, injectionTokens);
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 }

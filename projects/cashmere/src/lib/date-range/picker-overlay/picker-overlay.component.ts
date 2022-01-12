@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChildren, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChildren, ChangeDetectionStrategy, ChangeDetectorRef, EventEmitter} from '@angular/core';
 import type {QueryList} from '@angular/core';
 import {DateRangeOptions, PresetItem} from '../model/model';
 import {OverlayRef} from '@angular/cdk/overlay';
@@ -33,6 +33,8 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
     __toDate: D | undefined;
     __selectedPreset: number | null;
     __rangeIsInvalid = false; // if true, the fromDate is after the toDate and save will not be allowed
+
+    readonly _dismissed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     @ViewChildren(CalendarWrapperComponent)
     calendarWrappers: QueryList<CalendarWrapperComponent>;
@@ -136,6 +138,7 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
             } else {
                 this.configStoreService.updatePreset({fromDate: this._fromDate, toDate: this._toDate});
             }
+            this._dismissed.emit( true );
         }
         this.overlayRef.dispose();
     }
@@ -145,6 +148,7 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
     }
 
     _discardNewDates(): void {
+        this._dismissed.emit( false );
         this.overlayRef.dispose();
     }
 }
