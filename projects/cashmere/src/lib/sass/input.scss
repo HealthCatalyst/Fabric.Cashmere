@@ -1,5 +1,6 @@
 @import './colors';
 @import './form-field';
+@import './icons';
 
 @mixin hc-input() {
     font: inherit;
@@ -49,3 +50,23 @@
     padding: 2px 0;
     margin: -2px 0;
 }
+
+@mixin hc-clear-btn() {
+    height: 16px;
+    width: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: 0;
+    background-image: url($ico-clear-gray);
+}
+
+
+@mixin hc-clear-btn-show() {
+    opacity: 0.7;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+

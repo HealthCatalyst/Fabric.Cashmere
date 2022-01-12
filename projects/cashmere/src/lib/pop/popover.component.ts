@@ -242,7 +242,7 @@ export class HcPopComponent implements OnInit, OnDestroy {
         }
         this._parentMenu = val;
         if ( this._parentMenu ) {
-            this._parentClose = this._parentMenu.closed.subscribe(function() {
+            this._parentClose = this._parentMenu.closed.subscribe(() => {
                 if (this.isOpen()) {
                     this.close();
                 }

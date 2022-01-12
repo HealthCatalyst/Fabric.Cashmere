@@ -6,31 +6,46 @@
                     <hc-label>Filter:</hc-label>
                     <input hcInput (keyup)="applyFilter()" [formControl]="searchControl" placeholder="Search" />
                 </hc-form-field>
-                <hc-form-field class="usage-table-filters-filter" inline>
-                    <hc-label>Category:</hc-label>
-                    <hc-select [formControl]="selectedCategoriesControl" (change)="applyFilter()">
-                        <option *ngFor="let cat of categories" [ngValue]="cat">{{ cat }}</option>
-                    </hc-select>
-                </hc-form-field>
+                <div class="usage-table-filters_categories">
+                    <hc-form-field class="usage-table-filters-filter" inline>
+                        <hc-label>Term Type:</hc-label>
+                        <hc-select [formControl]="selectedTypesControl" (change)="applyFilter()">
+                            <option *ngFor="let type of types" [ngValue]="type">{{ type }}</option>
+                        </hc-select>
+                    </hc-form-field>
+                    <hc-form-field class="usage-table-filters-filter" inline>
+                        <hc-label>Category:</hc-label>
+                        <hc-select [formControl]="selectedCategoriesControl" (change)="applyFilter()">
+                            <option *ngFor="let cat of categories" [ngValue]="cat">{{ cat }}</option>
+                        </hc-select>
+                    </hc-form-field>
+                </div>
+
             </div>
 
-            <table hc-table *ngIf="termList$ | async; else emptyList" [dataSource]="dataSource" style="border: none;">
+            <table hc-table *ngIf="termList$ | async; else emptyList" [dataSource]="dataSource">
                 <!-- Term Column -->
                 <ng-container hcColumnDef="term">
-                    <th hc-header-cell *hcHeaderCellDef>Term</th>
-                    <td hc-cell *hcCellDef="let usageItem">{{ usageItem.TermName }}</td>
+                    <th hc-header-cell style="width: 15%;" *hcHeaderCellDef>Term</th>
+                    <td hc-cell style="width: 15%;" *hcCellDef="let usageItem"><span [innerHTML]='usageItem.TermName'></span></td>
                 </ng-container>
 
                 <!-- Usage Column -->
                 <ng-container hcColumnDef="usage">
-                    <th hc-header-cell style="border-right-style: none;" *hcHeaderCellDef>Definition or Usage Guideline</th>
-                    <td hc-cell style="border-right-style: none;" *hcCellDef="let usageItem">{{ usageItem.TermUsage }}</td>
+                    <th hc-header-cell style="" *hcHeaderCellDef>Definition or Guideline</th>
+                    <td hc-cell *hcCellDef="let usageItem"><span class="term-field" [innerHTML]='usageItem.TermUsage'></span></td>
+                </ng-container>
+
+                <!-- Example Column -->
+                <ng-container hcColumnDef="example">
+                    <th hc-header-cell style="width: 37%;" *hcHeaderCellDef>Usage Example</th>
+                    <td hc-cell style="width: 37%;" *hcCellDef="let usageItem"><span class="term-field" [innerHTML]='usageItem.TermExample'></span></td>
                 </ng-container>
 
                 <!-- Edit Buttons -->
                 <ng-container hcColumnDef="edit">
-                    <th hc-header-cell *hcHeaderCellDef style="border-left-style: none;"></th>
-                    <td hc-cell *hcCellDef="let usageItem" style="border-left-style: none;">
+                    <th hc-header-cell style="width: 3%;" *hcHeaderCellDef style="border-left-style: none;">Edit</th>
+                    <td hc-cell style="width: 3%;" *hcCellDef="let usageItem" style="border-left-style: none;">
                         <button *ngIf=true hc-icon-button (click)="getFormFillData(usageItem)"><hc-icon fontSet="hc-icons" fontIcon="hci-scratch-pad" hcIconMd disabled = true></hc-icon></button>
                     </td>
                 </ng-container>
@@ -44,7 +59,7 @@
                     <hc-progress-spinner color="purple" diameter="75"></hc-progress-spinner>
                 </div>
             </ng-template>
-            <div style="padding-top: 10px; font-size: 12px;">The asterisk (*) denotes that the abbreviation is acceptable on first use.</div>
+            <div style="padding-top: 10px; font-size: 12px;">The asterisk (*) on an abbreviation denotes that it is acceptable without a definition on first use.</div>
 
             <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="10" [hidePageSize]="false" [pageSizeOptions]="pageOpts"></hc-pagination>
         </div>

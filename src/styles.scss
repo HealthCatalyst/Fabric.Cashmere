@@ -92,7 +92,14 @@ body {
 }
 
 .subnav-label {
-    @include fontSize(16px);
+    @include fontSize(14px);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+
+    hc-icon {
+        margin-right: 5px;
+    }
 }
 
 .subnav-select {
@@ -124,12 +131,8 @@ body {
 }
 
 @include media-breakpoint-down(sm) {
-    .subnav-label {
-        display: none;
-    }
     .subnav-select {
         width: 100%;
-        margin-left: 0;
     }
     .persona-header {
         flex-wrap: wrap;

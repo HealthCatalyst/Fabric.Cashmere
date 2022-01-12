@@ -1,7 +1,14 @@
 <div class="hc-components-container">
     <hc-subnav class="responsive-subnav" fixedTop="true">
         <div class="subnav-container">
-            <span class="subnav-label">Components:</span>
+            <span class="subnav-label">
+                <ng-container *ngIf="docType !== 'bits'">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-code"></hc-icon>Components:
+                </ng-container>
+                <ng-container *ngIf="docType === 'bits'">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-puzzle-piece"></hc-icon>Cashmere Bits:
+                </ng-container>
+            </span>
             <span class="subnav-select">
                 <hc-select (change)="navUpdate($event.value)" [value]="activeItem?.id">
                     <ng-container *ngFor="let category of categorizedDocItems">
@@ -20,6 +27,14 @@
 
     <div class="hc-components-left-column">
         <div class="hc-components-nav-container">
+            <h2>
+                <ng-container *ngIf="docType !== 'bits'">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-code"></hc-icon> Components
+                </ng-container>
+                <ng-container *ngIf="docType === 'bits'">
+                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-puzzle-piece"></hc-icon> Cashmere Bits
+                </ng-container>
+            </h2>
             <div class="hc-components-chip-wrapper" *ngIf="docType === 'bits'">
                 <hc-chip color="blue" tight="true" width="100%">
                     <div class="hc-components-chip-content">

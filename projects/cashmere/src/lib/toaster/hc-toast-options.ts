@@ -16,8 +16,10 @@ export interface HcToastOptions {
     /** When set to true, the user may click the Toast to dismiss it and a close icon is added
      * to the right side for standard types. Defaults to false.*/
     clickDismiss?: boolean;
-    /** Function to be called when the toast is closed*/
+    /** Function to be called when the toast is closed either via timeout or click*/
     toastClosed?: () => unknown;
+    /** Function to be called when a click is detected anywhere in the body of the toast*/
+    toastClicked?: () => unknown;
     /** Width of the toast in pixels. Minimum is 300px. Or, pass in 0 for an unconstrained width. Defaults to 300px.*/
     width?: number;
     /** When set to true, a progress bar is added to the bottom of the toast. The default is false.

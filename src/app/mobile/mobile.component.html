@@ -1,7 +1,7 @@
 <div class="hc-components-container" #contentContainer>
     <hc-subnav class="responsive-subnav" fixedTop="true">
         <div class="subnav-container">
-            <span class="subnav-label">Mobile Dev: </span>
+            <span class="subnav-label"><hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-chrome"></hc-icon>Mobile Dev:</span>
             <span class="subnav-select">
                 <hc-select [(ngModel)]="thisPage" (ngModelChange)="selectUpdate($event)">
                     <optgroup *ngFor="let cat of categories" [label]="cat">
@@ -15,6 +15,9 @@
     </hc-subnav>
     <div class="hc-components-left-column">
         <div class="hc-components-nav-container">
+            <h2>
+                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-chrome"></hc-icon> Mobile Development
+            </h2>
             <hc-tile>
                 <div class="hc-components-nav-list">
                     <ng-container *ngFor="let cat of categories; let i = index">

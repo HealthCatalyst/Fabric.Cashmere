@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {ElementRef, Injectable, NgZone, OnDestroy, Optional, ViewContainerRef} from '@angular/core';
+import {ElementRef, Injectable, NgZone, OnDestroy, Optional, Renderer2, ViewContainerRef} from '@angular/core';
 import {
     ConnectionPositionPair,
     FlexibleConnectedPositionStrategy,
@@ -80,7 +80,10 @@ export class HcPopoverAnchoringService implements OnDestroy {
     /** Stores the fixed position coordinates */
     _fixedPos: number[] = [];
 
-    constructor(private _overlay: Overlay, private _ngZone: NgZone, @Optional() private _dir: Directionality) {}
+    /** Function to remove a right-click event listener if added */
+    private _unlistener: () => void;
+
+    constructor(private _overlay: Overlay, private _renderer: Renderer2, private _ngZone: NgZone, @Optional() private _dir: Directionality) {}
 
     ngOnDestroy(): void {
         // Destroy popover before terminating subscriptions so that any resulting
@@ -142,6 +145,9 @@ export class HcPopoverAnchoringService implements OnDestroy {
 
     /** Closes the popover. */
     closePopover(value?: unknown, neighborSubMenusAreOpen = false): void {
+        if ( this._unlistener ) {
+            this._unlistener();
+        }
         if (this._popover._componentOverlay) {
             this._saveClosedState(value, neighborSubMenusAreOpen);
             this._popover._componentOverlay.detach();
@@ -293,6 +299,15 @@ export class HcPopoverAnchoringService implements OnDestroy {
                 takeUntil(this._onDestroy)
             )
             .subscribe(() => this.closePopover());
+
+        // Allow right-clicks to close an open popover
+        if ( this._overlayRef.backdropElement && this._popover.interactiveClose ) {
+            this._unlistener = this._renderer.listen( this._overlayRef.backdropElement, 'contextmenu', event => {
+                event.preventDefault();
+                this._popover.backdropClicked.emit();
+                this.closePopover();
+            });
+        }
     }
 
     /** Close popover when escape keydown event occurs. */
