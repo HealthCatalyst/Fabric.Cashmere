@@ -68,7 +68,7 @@
     "classlist.js": "^1.1.20150312",
     "file-system": "^2.2.2",
     "font-awesome": "^4.7.0",
-    "markdown-it": "^8.4.1",
+    "markdown-it": "^12.3.2",
     "markdown-it-container": "^2.0.0",
     "minisearch": "^2.5.1",
     "ng-google-sheets-db": "^2.0.0",
