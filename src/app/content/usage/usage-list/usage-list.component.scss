@@ -1,9 +1,14 @@
 ::ng-deep .term-field li {
-    list-style-type: disc;
-    margin-left: 20px;
+    list-style-type: none;
+    margin-left: 8px;
     margin-bottom: 2px;
-    text-indent: -21px;
-    padding-left: 10px;
+    display: table;
+}
+
+::ng-deep .term-field li::before {
+    content: "\2022 ";
+    display: table-cell;
+    padding-right: 10px;
 }
 
 .icon-left,
