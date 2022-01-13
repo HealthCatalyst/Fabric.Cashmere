@@ -63,6 +63,11 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         }
     }
 
+    resetSearch(): void {
+        this.searchControl.setValue(null);
+        this.applyFilter();
+    }
+
     ngOnInit(): void {
         this.termList$ = this.googleSheetsDbService.get<IUsage>('18lD03x12tYE_DTqiXPX9oqR3sqRdMXEE_jhIGvTF_xk', 'Sheet1', usageAttributesMapping);
         this.termList$.subscribe(data => {

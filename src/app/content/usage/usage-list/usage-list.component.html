@@ -5,6 +5,7 @@
                 <hc-form-field class="usage-table-filters-input" inline>
                     <hc-label>Filter:</hc-label>
                     <input hcInput (keyup)="applyFilter()" [formControl]="searchControl" placeholder="Search" />
+                    <hc-icon hcSuffix fontSet="fa" fontIcon="fa-times" (click)="resetSearch()"></hc-icon>
                 </hc-form-field>
                 <div class="usage-table-filters_categories">
                     <hc-form-field class="usage-table-filters-filter" inline>
@@ -59,7 +60,6 @@
                     <hc-progress-spinner color="purple" diameter="75"></hc-progress-spinner>
                 </div>
             </ng-template>
-            <div style="padding-top: 10px; font-size: 12px;">The asterisk (*) on an abbreviation denotes that it is acceptable without a definition on first use.</div>
 
             <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="10" [hidePageSize]="false" [pageSizeOptions]="pageOpts"></hc-pagination>
         </div>
