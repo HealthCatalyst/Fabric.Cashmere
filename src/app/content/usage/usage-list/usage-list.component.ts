@@ -26,13 +26,6 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     termList$: Observable<IUsage[]>;
     terms: IUsage[];
 
-    placeholder = 'Search';
-    disabled = false;
-    showSearchIcon = true;
-    showClearIcon = true;
-    autoSearch = true;
-    output = '';
-
     editListForm: FormGroup;
     formSubmitted = false;
     scriptURL = 'https://script.google.com/macros/s/AKfycbwWZCf0aBg1e5BFD9G-hVTb-zbSTXT1KGFSwoyRLwMhu7FZF2g/exec';

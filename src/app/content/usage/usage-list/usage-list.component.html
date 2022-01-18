@@ -2,7 +2,7 @@
     <hc-tab tabTitle="Term List" tabindex="2">
         <div>
             <div class="usage-table-filters">
-                <hc-search-bar [placeholder]="placeholder" [showSearchIcon]="showSearchIcon" [showClearIcon]="showClearIcon" (triggerSearch)="applyFilter($event)"></hc-search-bar>
+                <hc-search-bar (triggerSearch)="applyFilter($event)"></hc-search-bar>
                 <div class="usage-table-filters_categories">
                     <hc-form-field class="usage-table-filters-filter" inline>
                         <hc-label>Term Type:</hc-label>
