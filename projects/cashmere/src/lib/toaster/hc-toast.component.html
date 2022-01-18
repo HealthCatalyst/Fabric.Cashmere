@@ -10,7 +10,13 @@
     </div>
     <div *ngIf="_styleType !== 'custom'" class="hc-toast-content" [ngClass]="{'hc-toast-progress-offset': _hasProgressBar}">
         <div class="hc-toast-icon-container">
-            <div class="hc-toast-icon"></div>
+            <div *ngIf="_customImage && _imgIsURL(_customImage)">
+                <div class="hc-toast-custom-image" [style.background-image]="'url(' + _customImage + ')'"></div>
+            </div>
+            <div *ngIf="_customImage && !_imgIsURL(_customImage)">
+                <hc-icon class="hc-toast-custom-icon" [fontSet]="_customFontSet(_customImage)" [fontIcon]="_customFontIcon(_customImage)"></hc-icon>
+            </div>
+            <div *ngIf="!_customImage" class="hc-toast-icon"></div>
         </div>
         <div>
             <div class="hc-toast-header">{{_headerText}}</div>

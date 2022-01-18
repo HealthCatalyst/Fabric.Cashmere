@@ -1,3 +1,5 @@
+import { HcIcon } from "../icon/icon.component";
+
 export interface HcToastOptions {
     /** A string of header text to be included in the toast message.*/
     header?: string;
@@ -10,6 +12,9 @@ export interface HcToastOptions {
      * Options are: `top-right`, `top-center`, `top-left`, `top-full-width`,
      * `bottom-right`, `bottom-center`, `bottom-left`, `bottom-full-width`.*/
     position?: string;
+    /** A custom image for the toast that overrides the default for the type.
+     * Accepts either a URL for the image or a `HcIcon` object. */
+    image?: string | HcIcon;
     /** Timeout value in milliseconds sets the amount of time the toast is displayed.
      *  Defaults to 5000. A value of 0 means the toast will not auto-dismiss.*/
     timeout?: number;

@@ -21,7 +21,7 @@ export class ToasterOverviewExampleComponent {
     readonly toastWidth = new FormControl(400);
     readonly toastProgress = new FormControl('0');
     readonly progressValue = new FormControl(75);
-
+    readonly customImage = new FormControl(null);
 
     constructor(private toasterService: HcToasterService) {}
 
@@ -40,7 +40,8 @@ export class ToasterOverviewExampleComponent {
             clickDismiss: this.toastClick.value,
             type: this.toastType.value,
             width: this.toastWidth.value,
-            hasProgressBar: showProgress
+            hasProgressBar: showProgress,
+            image: this.customImage.value
         };
 
         if (this.toastType.value === 'custom-template') {

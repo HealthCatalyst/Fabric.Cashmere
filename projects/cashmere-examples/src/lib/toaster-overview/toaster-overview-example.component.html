@@ -69,6 +69,16 @@
         <input hcInput type="number" [formControl]="progressValue" [disabled]="toastProgress.value!='2'" />
     </hc-form-field>
 </div>
+<div class="progress-row">
+    <hc-form-field>
+        <hc-label>Custom Image:</hc-label>
+        <hc-radio-group [formControl]="customImage" inline="true">
+            <hc-radio-button [value]="null">None</hc-radio-button>
+            <hc-radio-button [value]="'./assets/avatars/avatar92.svg'">Image URL</hc-radio-button>
+            <hc-radio-button [value]="{fontSet:'fa', fontIcon:'fa-star'}">HC Icon Object</hc-radio-button>
+        </hc-radio-group>
+    </hc-form-field>
+</div>
 <div class="button-row">
     <button hc-button buttonStyle="primary" (click)="showToast(templateToast)" class="demo-button">Display Toaster Message</button>
     <button hc-button buttonStyle="secondary" (click)="closeLastToast()" class="demo-button">Close Last Toast</button>
