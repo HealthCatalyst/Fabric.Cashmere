@@ -7,6 +7,7 @@ import {PaginationComponent, HcTableDataSource, TabComponent, TabSetComponent} f
 import {SectionService} from 'src/app/shared/section.service';
 import {BaseDemoComponent} from '../../../shared/base-demo.component';
 import {IUsage, usageAttributesMapping} from '../usage';
+import { string } from 'yargs';
 
 @Component({
     selector: 'hc-usage-list',
@@ -16,13 +17,21 @@ import {IUsage, usageAttributesMapping} from '../usage';
 export class UsageListComponent extends BaseDemoComponent implements OnInit, AfterViewInit {
     filteredUsageList: IUsage[];
     usageList: IUsage[] = [];
-    categories = ['All', 'Clinical', 'General', 'Health Catalyst', 'Industry', 'Technical'];
-    types = ['All', 'Abbreviation', 'General usage', 'UX/technical writing', 'Word choice']
+    categories = ['All', 'Clinical', 'General', 'Health Catalyst', 'Industry', 'Life sciences', 'Technical'];
+    types = ['All', 'Abbreviation', 'General usage', 'UX/technical writing', 'Word choice'];
     selectedCategoriesControl = new FormControl('All');
     selectedTypesControl = new FormControl('All');
     searchControl = new FormControl();
+    searchTerm = '';
     termList$: Observable<IUsage[]>;
     terms: IUsage[];
+
+    placeholder = 'Search';
+    disabled = false;
+    showSearchIcon = true;
+    showClearIcon = true;
+    autoSearch = true;
+    output = '';
 
     editListForm: FormGroup;
     formSubmitted = false;
@@ -54,8 +63,8 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     @ViewChild(PaginationComponent)
     paginator: PaginationComponent;
 
-    applyFilter(): void {
-        const filterStr = this.searchControl.value;
+    applyFilter(searchTerm: string): void {
+        const filterStr = searchTerm;
         if (filterStr) {
             this.dataSource.filter = filterStr.trim().toLowerCase();
         } else {
@@ -63,10 +72,6 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         }
     }
 
-    resetSearch(): void {
-        this.searchControl.setValue(null);
-        this.applyFilter();
-    }
 
     ngOnInit(): void {
         this.termList$ = this.googleSheetsDbService.get<IUsage>('18lD03x12tYE_DTqiXPX9oqR3sqRdMXEE_jhIGvTF_xk', 'Sheet1', usageAttributesMapping);
