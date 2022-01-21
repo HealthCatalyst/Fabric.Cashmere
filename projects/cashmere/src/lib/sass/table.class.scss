@@ -1,4 +1,5 @@
 @import './table';
+@import './icons';
 
 .hc-table {
     @include hc-table();
@@ -178,5 +179,73 @@
         &.hc-row-selected {
             @include hc-no-hover-table-row-selected();
         }
+    }
+}
+
+// Table actions
+.hc-table-actions {
+    @include hc-table-actions();
+
+    .hc-elip-menu {
+        @include hc-table-elip-menu();
+    }
+
+    .hc-action-ico {
+        @include hc-action-ico();
+
+        &:hover {
+            @include hc-action-ico-hover();
+        }
+    }
+
+    .hc-action-ico:not(:last-of-type) {
+        @include hc-action-ico-margin();
+    }
+
+    .hc-action-ico-show {
+        @include hc-action-ico-show();
+    }
+}
+
+tr:hover .hc-table-actions .hc-action-ico,
+.hc-table-actions-show .hc-action-ico {
+    @include hc-action-ico-show();
+}
+
+.hc-table-small .hc-table-actions {
+    .hc-elip-menu {
+        @include hc-table-small-elip-menu();
+    }
+}
+
+// Table bulk actions
+.hc-table-bulk-actions {
+    @include hc-table-bulk-actions();
+    .selected-count {
+        @include hc-table-bulk-actions-selected();
+    }
+}
+
+// Empty table styles
+.hc-empty-table-block {
+    @include hc-empty-table-block();
+
+    .hc-empty-table-block-ico {
+        @include hc-empty-table-block-ico();
+    }
+
+    .hc-empty-ico {
+        @include hc-empty-ico();
+    }
+    .hc-warn-ico {
+        @include hc-warn-ico();
+    }
+
+    .hc-empty-table-block-msg {
+        @include hc-empty-table-block-msg();
+    }
+
+    button {
+        @include hc-empty-table-block-button();
     }
 }
