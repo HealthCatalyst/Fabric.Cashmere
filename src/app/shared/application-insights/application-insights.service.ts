@@ -32,4 +32,16 @@ export class ApplicationInsightsService {
             this.appInsights.trackEvent({name: 'Example Click', properties: {example: trigger, target: target}});
         }
     }
+
+    logFeedback( formData: FormData ): void {
+        if ('instrumentationKey' in environment) {
+            console.log( formData.get('currentUrl') );
+            this.appInsights.trackEvent({name: 'Feedback Form', properties: {
+                'url': formData.get('currentUrl'),
+                'helpful': formData.get('helpfulRating'),
+                'email': formData.get('yourEmail'),
+                'suggestions': formData.get('yourSuggestions')
+            }});
+        }
+    }
 }
