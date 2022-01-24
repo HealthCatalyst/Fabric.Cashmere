@@ -35,7 +35,6 @@ export class ApplicationInsightsService {
 
     logFeedback( formData: FormData ): void {
         if ('instrumentationKey' in environment) {
-            console.log( formData.get('currentUrl') );
             this.appInsights.trackEvent({name: 'Feedback Form', properties: {
                 'url': formData.get('currentUrl'),
                 'helpful': formData.get('helpfulRating'),
