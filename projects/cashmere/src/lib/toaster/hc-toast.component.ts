@@ -2,6 +2,7 @@ import {Component, EventEmitter, ElementRef, ViewContainerRef, ComponentRef, Cha
 import {trigger, state, style, transition, animate, AnimationEvent} from '@angular/animations';
 import {Portal, CdkPortalOutletAttachedRef} from '@angular/cdk/portal';
 import {BehaviorSubject} from 'rxjs';
+import {HcIcon} from '../icon/icon.component';
 
 const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
 
@@ -35,6 +36,7 @@ export class HcToastComponent {
     _hasProgressBar = false;
     _progressVal: number;
     _progressWidth = '100%';
+    _customImage: string | HcIcon;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     readonly _componentInstance = new BehaviorSubject<any>(null);
 
@@ -64,5 +66,19 @@ export class HcToastComponent {
         if (ref instanceof ComponentRef) {
             this._componentInstance.next(ref.instance);
         }
+    }
+
+    _imgIsURL( val:string | HcIcon ): boolean {
+        return typeof val === 'string';
+    }
+
+    _customFontSet( val: string | HcIcon ): string {
+        const icon = val as HcIcon;
+        return icon.fontSet;
+    }
+
+    _customFontIcon( val: string | HcIcon ): string {
+        const icon = val as HcIcon;
+        return icon.fontIcon;
     }
 }

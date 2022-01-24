@@ -64,6 +64,19 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         }
     }
 
+    /** Clear out search bar and trigger search. */
+    public clear(): void {
+        this.searchBar.nativeElement.value = '';
+        this.searchStream.next('');
+    }
+
+    /** Manually trigger search event. Optionally pass in a value to search for */
+    public search(term = ''): void {
+        term = term || this.searchBar.nativeElement.value;
+        this.setValue(term);
+        this.searchStream.next(term);
+    }
+
     public _onEnter(term: string): void {
         this.triggerSearch.emit(term);
     }

@@ -55,12 +55,7 @@
         "hideApi": true,
         "usageDoc": true
     },
-    "navbar": {
-        "name": "Navbar",
-        "category": "nav",
-        "examples": ["navbar-overview", "navbar-cobrand"],
-        "usageDoc": true
-    },
+    "navbar": {"name": "Navbar", "category": "nav", "examples": ["navbar-overview", "navbar-cobrand"], "usageDoc": true},
     "null-or-empty-string-pipe": {
         "name": "IfNullOrEmpty",
         "category": "pipes",
@@ -122,7 +117,12 @@
     "sort": {"name": "Sort", "category": "table", "examples": [], "usageDoc": true},
     "stepper": {"name": "Stepper", "category": "layout", "examples": ["stepper-overview"]},
     "subnav": {"name": "Subnav", "category": "nav", "examples": ["subnav-overview"]},
-    "table": {"name": "Table", "category": "table", "examples": ["resizable-columns", "table-filter", "table-sort"], "usageDoc": true},
+    "table": {
+        "name": "Table",
+        "category": "table",
+        "examples": ["resizable-columns", "table-filter", "table-sort", "more-table-styles"],
+        "usageDoc": true
+    },
     "tabs": {"name": "Tabs", "category": "layout", "examples": ["tabs-horizontal", "tabs-vertical"]},
     "tile": {"name": "Tile", "category": "layout", "examples": ["tile-overview"], "usageDoc": true},
     "toaster": {"name": "Toaster Messages", "category": "popups", "examples": ["toaster-overview"]},

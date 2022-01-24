@@ -83,6 +83,20 @@ $hc-header-font-size: 18px !default;
     }
 }
 
+.hc-toast-custom-image {
+    width: 60px;
+    height: 60px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hc-toast-custom-icon {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 30px !important;
+}
+
 .hc-toast-content {
     color: $white;
     display: flex;

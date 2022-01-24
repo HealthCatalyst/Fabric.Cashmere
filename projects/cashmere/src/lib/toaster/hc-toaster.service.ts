@@ -102,6 +102,11 @@ export class HcToasterService {
             _toastRef.componentInstance._bodyText = options.body;
         }
 
+        // Set the custom image if one is defined
+        if (options.image) {
+            _toastRef.componentInstance._customImage = options.image;
+        }
+
         // Store the positioning of the toast
         _toastRef._toastPosition = String(options.position);
 

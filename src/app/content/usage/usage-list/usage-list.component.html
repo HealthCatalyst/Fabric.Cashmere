@@ -2,20 +2,17 @@
     <hc-tab tabTitle="Term List" tabindex="2">
         <div>
             <div class="usage-table-filters">
-                <hc-form-field class="usage-table-filters-input" inline>
-                    <hc-label>Filter:</hc-label>
-                    <input hcInput (keyup)="applyFilter()" [formControl]="searchControl" placeholder="Search" />
-                </hc-form-field>
+                <hc-search-bar (triggerSearch)="applyFilter($event)"></hc-search-bar>
                 <div class="usage-table-filters_categories">
                     <hc-form-field class="usage-table-filters-filter" inline>
                         <hc-label>Term Type:</hc-label>
-                        <hc-select [formControl]="selectedTypesControl" (change)="applyFilter()">
+                        <hc-select [formControl]="selectedTypesControl" (change)="applyFilter(searchTerm)">
                             <option *ngFor="let type of types" [ngValue]="type">{{ type }}</option>
                         </hc-select>
                     </hc-form-field>
                     <hc-form-field class="usage-table-filters-filter" inline>
                         <hc-label>Category:</hc-label>
-                        <hc-select [formControl]="selectedCategoriesControl" (change)="applyFilter()">
+                        <hc-select [formControl]="selectedCategoriesControl" (change)="applyFilter(searchTerm)">
                             <option *ngFor="let cat of categories" [ngValue]="cat">{{ cat }}</option>
                         </hc-select>
                     </hc-form-field>
@@ -59,7 +56,6 @@
                     <hc-progress-spinner color="purple" diameter="75"></hc-progress-spinner>
                 </div>
             </ng-template>
-            <div style="padding-top: 10px; font-size: 12px;">The asterisk (*) on an abbreviation denotes that it is acceptable without a definition on first use.</div>
 
             <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="10" [hidePageSize]="false" [pageSizeOptions]="pageOpts"></hc-pagination>
         </div>

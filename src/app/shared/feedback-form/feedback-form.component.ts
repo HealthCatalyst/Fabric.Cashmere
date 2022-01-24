@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {NavigationEnd, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {ApplicationInsightsService} from '../application-insights/application-insights.service';
 
 @Component({
     selector: 'hc-feedback-form',
@@ -15,9 +16,12 @@ export class FeedbackFormComponent implements OnInit, OnDestroy {
     scriptURL = 'https://script.google.com/macros/s/AKfycby91RSaTB9bknujdz0nj021jGaeyVeg1jPQHikIptuhRKeAQwfdvrqIEQ/exec';
     notHelpful = false;
     thankYouMsg = false;
+    private appInsights: ApplicationInsightsService;
     private unsubscribe = new Subject<void>();
 
     constructor(private httpClient: HttpClient, private router: Router) {
+        this.appInsights = new ApplicationInsightsService();
+
         this.router.events.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
             if (event instanceof NavigationEnd) {
                 this.notHelpful = false;
@@ -71,6 +75,8 @@ export class FeedbackFormComponent implements OnInit, OnDestroy {
             res => console.log(res),
             err => console.log(err)
         );
+
+        this.appInsights.logFeedback( formData );
 
         this.feedbackForm.reset();
     }
