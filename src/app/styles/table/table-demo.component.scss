@@ -1,0 +1,14 @@
+@import 'scss/colors';
+
+.favorited {
+    color: $yellow-orange;
+
+    &:hover {
+        color: darken($yellow-orange, 7%);
+    }
+}
+
+.hc-table tr .checkbox-col {
+    padding-right: 0;
+    width: 20px;
+}

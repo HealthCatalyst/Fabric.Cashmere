@@ -1,14 +1,17 @@
 <div class="demo-content">
     <h1>Data Tables</h1>
-    <h6>Last updated Apr 15, 2019</h6>
+    <h6>Last updated Jan 20, 2022</h6>
 
     <hc-tile>
         <h5 id="basic-example">Basic Example</h5>
         <p>Add the base class
             <code>.hc-table</code> to an HTML
-            <code>&lt;table&gt;</code> to get the default Catalyst table stylings. Set the alignment of a cell
+            <code>&lt;table&gt;</code> to get the default Catalyst table stylings.
+        </p>
+        <p>Set the alignment of a cell
             using <code>.hc-table-justify-left</code> (default), <code>.hc-table-justify-center</code>, or
-            <code>.hc-table-justify-right</code>. Justify right is typically used for numerical values.</p>
+            <code>.hc-table-justify-right</code>. Justify right is typically used for numerical values.
+        </p>
         <table class="hc-table">
             <thead>
                 <tr>
@@ -51,8 +54,7 @@
             </tbody>
         </table>
 
-        <pre>
-        <code>
+        <pre><code>
     &lt;table class=&quot;hc-table&quot;&gt;
         &lt;thead&gt;
             &lt;tr&gt;
@@ -78,24 +80,28 @@
                 &lt;td&gt;Jan 14, 1954&lt;/td&gt;
                 &lt;td&gt;New York Life&lt;/td&gt;
             &lt;/tr&gt;
+
             ...
+
         &lt;/tbody&gt;
     &lt;/table&gt;
-        </code>
-        </pre>
+        </code></pre>
     </hc-tile>
 
     <hc-tile>
         <h5 id="sorting-indicators">Sorting Indicators</h5>
         <p>Add
             <code>.hc-col-sortable</code> to a
-            <code>&lt;th&gt;</code> so that it appears sortable.</p>
+            <code>&lt;th&gt;</code> so that it appears sortable.
+        </p>
         <ul>
             <li>Use
-                <code>.hc-active-sort</code> to designate the currently sorted column</li>
+                <code>.hc-active-sort</code> to designate the currently sorted column
+            </li>
             <li>Use
                 <code>.hc-sort-asc</code> and
-                <code>.hc-sort-desc</code> to designate sort direction</li>
+                <code>.hc-sort-desc</code> to designate sort direction
+            </li>
             <li>For a left aligned sort indicator, use
                 <code>.hc-col-sortable-left</code>
             </li>
@@ -136,8 +142,7 @@
             </tbody>
         </table>
 
-        <pre>
-        <code>
+        <pre><code>
     &lt;table class=&quot;hc-table&quot;&gt;
         &lt;thead&gt;
             &lt;tr&gt;
@@ -148,17 +153,19 @@
             &lt;th class=&quot;hc-col-sortable-left&quot;&gt;Left aligned&lt;/th&gt;
             &lt;/tr&gt;
         &lt;/thead&gt;
+
         ...
+
     &lt;/table&gt;
-        </code>
-        </pre>
+        </code></pre>
     </hc-tile>
 
     <hc-tile>
         <h5 id="condensed-table">Condensed Table</h5>
         <p>Add
             <code>.hc-table-small</code> (in addition to
-            <code>.hc-table</code>) for a smaller table.</p>
+            <code>.hc-table</code>) for a smaller table.
+        </p>
         <br>
         <table class="hc-table hc-table-small">
             <thead>
@@ -198,7 +205,9 @@
         <pre>
         <code>
     &lt;table class=&quot;hc-table hc-table-small&quot;&gt;
+
         ...
+
     &lt;/table&gt;
         </code>
         </pre>
@@ -208,8 +217,10 @@
         <h5 id="selected-row">Selected Row</h5>
         <p>Add
             <code>.hc-row-selected</code> to a
-            <code>&lt;tr&gt;</code> so it appears selected.</p>
-        <p>Also, you can add <code>.hc-action-row</code> to a <code>&lt;tr&gt;</code> or <code>.hc-action-table</code> to a <code>&lt;table&gt;</code> to get a blue hover effect on rows.</p>
+            <code>&lt;tr&gt;</code> so it appears selected.
+        </p>
+        <p>Also, you can add <code>.hc-action-row</code> to a <code>&lt;tr&gt;</code> or <code>.hc-action-table</code>
+            to a <code>&lt;table&gt;</code> to get a blue hover effect on rows.</p>
         <br>
         <table class="hc-table hc-action-table">
             <thead>
@@ -246,22 +257,25 @@
             </tbody>
         </table>
 
-        <pre>
-        <code>
+        <pre><code>
     &lt;table class=&quot;hc-table hc-action-table&quot;&gt;
+
         ...
+
         &lt;tr class=&quot;hc-row-selected&quot;&gt;...&lt;/tr&gt;
+
         ...
+
     &lt;/table&gt;
-        </code>
-        </pre>
+        </code></pre>
     </hc-tile>
 
     <hc-tile>
         <h5 id="borders">Borders</h5>
         <p>Add
             <code>.hc-table-borders</code> (in addition to
-            <code>.hc-table</code>) for borders all around.</p>
+            <code>.hc-table</code>) for borders all around.
+        </p>
         <br>
         <table class="hc-table hc-table-borders">
             <thead>
@@ -298,16 +312,346 @@
             </tbody>
         </table>
 
-        <pre>
-        <code>
+        <pre><code>
         &lt;table class=&quot;hc-table hc-table-borders&quot;&gt;
+
             ...
+
         &lt;/table&gt;
-            </code>
-        </pre>
+        </code></pre>
 
         <br>
 
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="table-action-icons">Table Action Icons</h5>
+        <p>For tables that have actions repeated on each row, we recommend showing those actions as icons that appear
+            when hovering
+            over the row. Designate an action icon with <code>.hc-action-ico</code>, and wrap those actions in
+            <code>.hc-table-actions</code>.
+        </p>
+        <p>
+            We recommend showing <strong>at most 3</strong> actions per row, and if there are more, put them in a
+            vertical ellipsis menu (<code>.hc-elip-menu</code>).
+            Each action icon should leverage <code>hcTooltip</code> so that a description of the action is shown in a
+            tooltip on hover.
+        </p>
+        <p>
+            If a single action icon should always be shown, whether the row is being hovered over or not, use
+            <code>.hc-action-ico-show</code>.
+            For mobile, all actions should always be shown. In that case you can apply
+            <code>.hc-table-actions-show</code> to the container.
+        </p>
+        <table class="hc-table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birth Date</th>
+                    <th>Payor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Samuel</td>
+                    <td>Walker</td>
+                    <td>Mar 27, 1978</td>
+                    <td>MetLife</td>
+                    <td>
+                        <div class="hc-table-actions">
+                            <span class="fa fa-star hc-action-ico" hcTooltip="Mark as favorite"></span>
+                            <span class="fa fa-info-circle hc-action-ico" hcTooltip="About this patient"></span>
+                            <button class="hc-elip-menu hc-action-ico" trigger="click" [hcPop]="patientDrop"
+                                title="More patient actions...">
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Whitney</td>
+                    <td>Allen</td>
+                    <td>Jan 14, 1954</td>
+                    <td>New York Life</td>
+                    <td>
+                        <div class="hc-table-actions">
+                            <span class="fa fa-star favorited hc-action-ico hc-action-ico-show"
+                                hcTooltip="Remove from favorites"></span>
+                            <span class="fa fa-info-circle hc-action-ico" hcTooltip="About this patient"></span>
+                            <button class="hc-elip-menu hc-action-ico" trigger="click" [hcPop]="patientDrop"
+                                title="More patient actions...">
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Kendra</td>
+                    <td>Jacobs</td>
+                    <td>Aug 27, 1990</td>
+                    <td>Prudential Financial</td>
+                    <td>
+                        <div class="hc-table-actions">
+                            <span class="fa fa-star hc-action-ico" hcTooltip="Mark as favorite"></span>
+                            <span class="fa fa-info-circle hc-action-ico" hcTooltip="About this patient"></span>
+                            <button class="hc-elip-menu hc-action-ico" trigger="click" [hcPop]="patientDrop"
+                                title="More patient actions...">
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gerald</td>
+                    <td>Lynch</td>
+                    <td>Mar 15, 1981</td>
+                    <td>MetLife</td>
+                    <td>
+                        <div class="hc-table-actions">
+                            <span class="fa fa-star hc-action-ico" hcTooltip="Mark as favorite"></span>
+                            <span class="fa fa-info-circle hc-action-ico" hcTooltip="About this patient"></span>
+                            <button class="hc-elip-menu hc-action-ico" trigger="click" [hcPop]="patientDrop"
+                                title="More patient actions...">
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hc-pop #patientDrop [autoCloseOnContentClick]="true" [showArrow]="false" [verticalAlign]="'below'"
+            [horizontalAlign]="'end'">
+            <div hcMenu>
+                <button hcButtonItem>
+                    <span hcMenuIcon class="fa fa-pencil"></span>
+                    <span hcMenuText>Edit entry</span>
+                </button>
+                <button hcButtonItem>
+                    <span hcMenuIcon class="fa fa-share"></span>
+                    <span hcMenuText>Share entry</span>
+                </button>
+                <div hcButtonItem hcDivider></div>
+                <button hcButtonItem>
+                    <span hcMenuIcon class="fa fa-trash"></span>
+                    <span hcMenuText>Delete entry</span>
+                </button>
+            </div>
+        </hc-pop>
+
+        <pre><code>
+        ...
+
+        &lt;tr&gt;
+            &lt;td&gt;Samuel&lt;/td&gt;
+            &lt;td&gt;Walker&lt;/td&gt;
+            &lt;td&gt;Mar 27, 1978&lt;/td&gt;
+            &lt;td&gt;MetLife&lt;/td&gt;
+            &lt;td&gt;
+                &lt;div class=&quot;hc-table-actions&quot;&gt;
+                    &lt;span class=&quot;fa fa-star hc-action-ico&quot; hcTooltip=&quot;Mark as favorite&quot;&gt;&lt;/span&gt;
+                    &lt;span class=&quot;fa fa-info-circle hc-action-ico&quot; hcTooltip=&quot;About this patient&quot;&gt;&lt;/span&gt;
+                    &lt;button class=&quot;hc-elip-menu hc-action-ico&quot; trigger=&quot;click&quot; [hcPop]=&quot;patientDrop&quot;
+                        title=&quot;More patient actions...&quot;&gt; &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+
+        ...
+
+        &lt;hc-pop #patientDrop [autoCloseOnContentClick]=&quot;true&quot; [showArrow]=&quot;false&quot; [verticalAlign]=&quot;'below'&quot;
+            [horizontalAlign]=&quot;'end'&quot;&gt;
+            &lt;div hcMenu&gt;
+                &lt;button hcButtonItem&gt;
+                    &lt;span hcMenuIcon class=&quot;fa fa-pencil&quot;&gt;&lt;/span&gt;
+                    &lt;span hcMenuText&gt;Edit entry&lt;/span&gt;
+                &lt;/button&gt;
+                &lt;button hcButtonItem&gt;
+                    &lt;span hcMenuIcon class=&quot;fa fa-share&quot;&gt;&lt;/span&gt;
+                    &lt;span hcMenuText&gt;Share entry&lt;/span&gt;
+                &lt;/button&gt;
+                &lt;div hcButtonItem hcDivider&gt;&lt;/div&gt;
+                &lt;button hcButtonItem&gt;
+                    &lt;span hcMenuIcon class=&quot;fa fa-trash&quot;&gt;&lt;/span&gt;
+                    &lt;span hcMenuText&gt;Delete entry&lt;/span&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/hc-pop&gt;
+
+        ...
+
+        </code></pre>
+    </hc-tile>
+
+
+    <hc-tile>
+        <h5 id="table-bulk-actions">Table Bulk Actions</h5>
+        <p>For cases where actions can be performed on multiple rows at once, use <code>.hc-table-bulk-actions</code>.
+            Use buttons with <code>buttonStyle="minimal" size="sm"</code>. Rows should be selectable using checkboxes.
+        </p>
+        <div class="hc-table-bulk-actions">
+            <span class="selected-count hc-font-em"
+                title="{{ bulkExampleSelectedCount === 0 ? 'Select entries from list to perform bulk actions' : '' }}">
+                ({{ bulkExampleSelectedCount || 0 }} entr{{ bulkExampleSelectedCount === 1 ? 'y' : 'ies' }} selected)
+            </span>
+            <button hc-button *ngIf="bulkExampleSelectedCount > 0" buttonStyle="minimal" size="sm"
+                hcTooltip="Edit selected entries">
+                <span class="fa fa-pencil hc-icon-left"></span>Edit
+            </button>
+
+            <button hc-button *ngIf="bulkExampleSelectedCount > 0" buttonStyle="minimal" size="sm"
+                hcTooltip="Export selected entries">
+                <span class="fa fa-download hc-icon-left"></span>Export
+            </button>
+
+            <button hc-button *ngIf="bulkExampleSelectedCount > 0" buttonStyle="minimal" size="sm"
+                hcTooltip="Delete selected entries">
+                <span class="fa fa-trash hc-icon-left"></span>Delete
+            </button>
+        </div>
+        <table class="hc-table">
+            <thead>
+                <tr>
+                    <th class="checkbox-col">
+                        <hc-checkbox [tight]="true" [class.hc-checkbox-indeterminate]="masterCheckboxIsIndeterminate"
+                            (click)="masterCheckboxClicked()" [checked]="allChecked" [isStub]="true"
+                            title="Click to {{ allChecked ? 'deselect' : 'select' }} all rows">
+                        </hc-checkbox>
+                    </th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birth Date</th>
+                    <th>Payor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="checkbox-col">
+                        <hc-checkbox [tight]="true" [(ngModel)]="bulkActionExampleState[0]"
+                            title="Select entry for bulk actions"></hc-checkbox>
+                    </td>
+                    <td>Samuel</td>
+                    <td>Walker</td>
+                    <td>Mar 27, 1978</td>
+                    <td>MetLife</td>
+                </tr>
+                <tr>
+                    <td class="checkbox-col">
+                        <hc-checkbox [tight]="true" [(ngModel)]="bulkActionExampleState[1]"
+                            title="Select entry for bulk actions"></hc-checkbox>
+                    </td>
+                    <td>Whitney</td>
+                    <td>Allen</td>
+                    <td>Jan 14, 1954</td>
+                    <td>New York Life</td>
+                </tr>
+                <tr>
+                    <td class="checkbox-col">
+                        <hc-checkbox [tight]="true" [(ngModel)]="bulkActionExampleState[2]"
+                            title="Select entry for bulk actions"></hc-checkbox>
+                    </td>
+                    <td>Kendra</td>
+                    <td>Jacobs</td>
+                    <td>Aug 27, 1990</td>
+                    <td>Prudential Financial</td>
+                </tr>
+                <tr>
+                    <td>
+                        <hc-checkbox [tight]="true" [(ngModel)]="bulkActionExampleState[3]"
+                            title="Select entry for bulk actions"></hc-checkbox>
+                    </td>
+                    <td>Gerald</td>
+                    <td>Lynch</td>
+                    <td>Mar 15, 1981</td>
+                    <td>MetLife</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <pre><code>
+    &lt;div class=&quot;hc-table-bulk-actions&quot;&gt;
+        &lt;span class=&quot;selected-count hc-font-em&quot; title=&quot;Select entries from list to perform bulk actions&quot;&gt;
+            (x row(s) selected)
+        &lt;/span&gt;
+        &lt;button hc-button *ngIf=&quot;bulkExampleSelectedCount &gt; 0&quot; buttonStyle=&quot;minimal&quot; size=&quot;sm&quot; hcTooltip=&quot;Edit selected entries&quot;&gt;
+            &lt;span class=&quot;fa fa-pencil hc-icon-left&quot;&gt;&lt;/span&gt;Edit
+        &lt;/button&gt;
+
+        &lt;button hc-button *ngIf=&quot;bulkExampleSelectedCount &gt; 0&quot; buttonStyle=&quot;minimal&quot; size=&quot;sm&quot; hcTooltip=&quot;Export selected entries&quot;&gt;
+            &lt;span class=&quot;fa fa-download hc-icon-left&quot;&gt;&lt;/span&gt;Export
+        &lt;/button&gt;
+
+        &lt;button hc-button *ngIf=&quot;bulkExampleSelectedCount &gt; 0&quot; buttonStyle=&quot;minimal&quot; size=&quot;sm&quot; hcTooltip=&quot;Delete selected entries&quot;&gt;
+            &lt;span class=&quot;fa fa-trash hc-icon-left&quot;&gt;&lt;/span&gt;Delete
+        &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;table class=&quot;hc-table&quot;&gt;
+
+    ...
+
+        </code></pre>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="empty-table-state">Empty Table State</h5>
+        <p>Also available are some helper styles to standarize the look of empty and error state tables
+            (<code>.hc-empty-table-block</code>).
+        </p>
+        <p>The messaging should be as specific as possible. For example, is the table empty because of an error, because
+            there are no items available at all, or just because searching or filtering returned no results?
+        </p>
+        <p>
+            If there's a specific action that would help the user along when facing an empty or error state, you should
+            provide it. For example, if no items have been added, you could provide a button to add one.
+        </p>
+        <table class="hc-table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birth Date</th>
+                    <th>Payor</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="hc-empty-table-block">
+            <span class="hc-empty-table-block-ico hc-empty-ico"></span>
+            <span class="hc-empty-table-block-msg">No entries to show.</span>
+            <button hc-button>Add entry</button>
+        </div>
+
+        <pre><code>
+    &lt;div class=&quot;hc-empty-table-block&quot;&gt;
+        &lt;span class=&quot;hc-empty-table-block-ico hc-empty-ico&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;hc-empty-table-block-msg&quot;&gt;No entries to show.&lt;/span&gt;
+        &lt;button hc-button&gt;Add entry&lt;/button&gt;
+    &lt;/div&gt;
+        </code></pre>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="empty-table-with-error-state">Empty Table Error State</h5>
+        <table class="hc-table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birth Date</th>
+                    <th>Payor</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="hc-empty-table-block">
+            <span class="hc-empty-table-block-ico hc-warn-ico"></span>
+            <span class="hc-empty-table-block-msg">Failed to load.</span>
+            <button hc-button>Try again</button>
+        </div>
+
+        <pre><code>
+        &lt;div class=&quot;hc-empty-table-block&quot;&gt;
+            &lt;span class=&quot;hc-empty-table-block-ico hc-warn-ico&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;hc-empty-table-block-msg&quot;&gt;No entries to show.&lt;/span&gt;
+            &lt;button hc-button&gt;Try again&lt;/button&gt;
+        &lt;/div&gt;
+        </code></pre>
     </hc-tile>
 
     <hc-feedback-form></hc-feedback-form>

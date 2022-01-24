@@ -1,4 +1,5 @@
 @import './variables';
+@import './icons';
 
 // override index for implementation inside a modal: https://github.com/HealthCatalyst/Fabric.Cashmere/issues/867
 $cdk-z-index-overlay-container: $zindex-cdk-overlay;
@@ -221,5 +222,29 @@ a.hc-menu-item:not(.hc-button) {
             margin-right: 0;
             color: $offblack;
         }
+    }
+}
+
+.hc-elip-menu {
+    transform: rotate(90deg);
+    background-color: transparent;
+    background-image: url($ico-elip-gray-600);
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: center;
+    height: 22px;
+    width: 28px;
+    padding: 0;
+    border-radius: 4px;
+    border: 2px solid transparent;
+
+    &:hover {
+        background-color: rgb(0 0 0 / 15%);
+        background-image: url($ico-elip-black);
+    }
+
+    &:focus {
+        outline: none;
+        border: 2px solid $blue;
     }
 }

@@ -1,5 +1,4 @@
-
-<hc-search-bar placeholder="Search elements..." (triggerSearch)="applyFilter($event)">
+<hc-search-bar #searchbar placeholder="Search elements..." (triggerSearch)="applyFilter($event)">
 </hc-search-bar>
 
 <table hc-table [dataSource]="dataSource" borders="false">
@@ -31,3 +30,9 @@
     <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
     <tr hc-row *hcRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<div *ngIf="dataSource.filteredData.length === 0" class="hc-empty-table-block">
+    <span class="hc-empty-table-block-ico hc-empty-ico"></span>
+    <span class="hc-empty-table-block-msg">No elements match your search term.</span>
+    <button hc-button buttonStyle="primary-alt" (click)="searchbar.clear()">Clear search</button>
+</div>
