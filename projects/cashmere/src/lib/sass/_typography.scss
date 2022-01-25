@@ -334,3 +334,9 @@ article table ul li ul li ul > li:last-child,
 article table ol li ol li ol > li:last-child {
     padding-bottom: 6px;
 }
+
+blockquote {
+    background-color: $slate-gray-200;
+    padding: 10px 20px;
+    border-left: 5px solid $slate-gray-400;
+}
