@@ -4,6 +4,7 @@ import {StylesComponent} from './styles.component';
 import {AboutModalComponent} from './about/about-modal.component';
 import {TableDemoComponent} from './table/table-demo.component';
 import {MarkdownContentComponent} from '../shared/markdown-content.component';
+import { IESupportComponent } from './ie-support/ie-support.component';
 
 const routes: Routes = [
     {
@@ -36,6 +37,11 @@ const routes: Routes = [
                     category: 'Login',
                     document: require('raw-loader!../../../guides/styles/error.md')
                 }
+            },
+            {
+                path: 'ie-support',
+                component: IESupportComponent,
+                data: {title: 'IE Support Messaging', category: 'Login'}
             },
             {
                 path: 'about',
