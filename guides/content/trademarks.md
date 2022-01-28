@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated August 19, 2021
+###### Last updated January 27, 2022
 
 :::
 
@@ -32,10 +32,10 @@ Registered Marks (currently in use) – **Apply ®**:
 Unregistered Marks (currently in use, examples) – **Apply ™** symbol:
 _The ™ symbol can be applied to any unregistered trademark_
 
-- Data Science Adoption Model
 - DOS
 - DOS Mart and DOS Marts
 - Healthcare.AI
+- Healthcare.AI Framework
 - HealthCatalyst.AI
 - Healthcare Analytics Summit
 - Health Catalyst Expert Data Collections
@@ -67,6 +67,7 @@ _The ™ symbol can be applied to any unregistered trademark_
 - Self-Service Analytics
 - Rapid Response Analytics Solution
 - The Catalyst Awards
+- Touchstone Match
 - Twistle
 - Twistle Patient Engagement by Health Catalyst
 - VitalIntegrity
