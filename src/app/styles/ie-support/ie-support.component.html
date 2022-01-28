@@ -1,0 +1,116 @@
+<div class="demo-content">
+    <h1>IE Support Messaging</h1>
+    <h6>Last updated Jan 26, 2022</h6>
+
+    <hc-tile>
+        <h5 id="basic-example">Internet Explorer Support</h5>
+        <p>Health Catalyst made the decision to drop support for Internet Explorer starting on June 15, 2022. This is in line with
+            <a href="https://blogs.windows.com/windowsexperience/2021/05/19/the-future-of-internet-explorer-on-windows-10-is-in-microsoft-edge/" target="_blank">
+                Microsoft's end-of-life date for the browser.
+            </a></p>
+        <p>
+            Because many healthcare organizations have not fully migrated to more modern browsers, we want to be sure to provide adequate warning within our applications.
+            Example snippets are below, which you can adjust as needed for your application.
+        </p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="basic-example">Before Dropping IE Support</h5>
+        <p>In releases of our applications <strong>before June 15th, 2022</strong>, if a user logs in using Internet Explorer, we want to provide a toast message explaining the upcoming change and linking to the
+            <a href="https://community.healthcatalyst.com/dos/b/news/posts/announcing-end-of-internet-explorer-support-for-health-catalyst-web-apps" target="_blank">
+                HC Community announcement
+            </a>.
+        </p>
+
+        <div id="ieToast"></div>
+
+        <h4>1. In your <code>app.component.html</code>, include this snippet of markup for the custom messaging toast:</h4>
+        <pre><code>
+    &lt;!-- Custom Toast Template --&gt;
+    &lt;ng-template #ieToastTemplate&gt;
+        &lt;div class=&quot;hc-toast-content&quot; style=&quot;background-color: #fff; color: #333; border-radius: 4px;&quot;&gt;
+            &lt;div class=&quot;hc-toast-icon-container&quot;&gt;
+                &lt;img class=&quot;hc-toast-custom-image&quot; style=&quot;height: 45px;&quot; src=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NS41OSA1NS41OSI+PGRlZnM+PHN0eWxlPi5hLC5iLC5ke2ZpbGw6bm9uZTt9LmIsLmR7c3Ryb2tlOiNjYzIwMjc7fS5ie3N0cm9rZS13aWR0aDo1cHg7fS5je2ZpbGw6IzAwNmQ5YTt9LmR7c3Ryb2tlLXdpZHRoOjZweDt9PC9zdHlsZT48L2RlZnM+PGNpcmNsZSBjbGFzcz0iYSIgY3g9IjI3Ljc5IiBjeT0iMjcuNzkiIHI9IjI3Ljc5Ii8+PGNpcmNsZSBjbGFzcz0iYiIgY3g9IjI3Ljc5IiBjeT0iMjcuNzkiIHI9IjI1LjI5Ii8+PHBhdGggY2xhc3M9ImMiIGQ9Ik00NC43OSwyOC40M2ExNi4xNSwxNi4xNSwwLDAsMC0yLTcuNzVjNS40NC0xMi4yMS01Ljc3LTEwLjQtNi40My0xMC40YTI4LjgsMjguOCwwLDAsMC02LjYsMi4xNWMtNy41OS0uMDktMTQuMTksNC0xNi4zMywxMi4zNyw0LTQuNDUsNi43Ni02LjI3LDguNDEtNi45M2wtMSwxYTQ5LjI1LDQ5LjI1LDAsMCwwLTYuNiw4LjA4Yy0xLjQsMi40Ny0zLDQuNjItMy43OSw3LjQyQzYsNTAuNTIsMjAsNDMuNzUsMjIsNDIuNmExNS43NiwxNS43NiwwLDAsMCw3LjEsMS42MywxNS45MywxNS45MywwLDAsMCwxNS0xMC41NUgzNS42N2MtNCw2LjI2LTEzLjM2LDMuNDYtMTMuNy0zLjNINDQuNzRhMTQuNjMsMTQuNjMsMCwwLDAsLjEzLTJabS0zLTE1LjY3YzEuMzcuOTIsMi40NywyLjMxLjU4LDcuMjZhMTQuOTEsMTQuOTEsMCwwLDAtNy43Ni02LjQ0YzEuNDctLjcxLDUuMTItMi4xNCw3LjI2LS44MlpNMTIuNjMsNDIuNjJjLTEuMTMtMS4xNC0xLjMyLTQsMS4xNS05LjA4QTE1LjU3LDE1LjU3LDAsMCwwLDIwLjcxLDQyYy0xLjYuODctNS43OCwyLjgtOC4wOC41NFptOS4yMy0xNi41YTcuMDgsNy4wOCwwLDAsMSw3LjI2LTYuNiw3LjA5LDcuMDksMCwwLDEsNy4yNiw2LjZaIi8+PGxpbmUgY2xhc3M9ImQiIHgxPSI0Ni43NSIgeTE9IjguMzgiIHgyPSI4LjM4IiB5Mj0iNDYuNTMiLz48L3N2Zz4=&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;div class=&quot;hc-toast-header&quot; style=&quot;color: #006d9a&quot;&gt;Internet Explorer Detected&lt;/div&gt;
+                &lt;div class=&quot;hc-toast-body&quot;&gt;
+                    &lt;div style=&quot;margin-bottom: 10px&quot;&gt;We're dropping support for Internet Explorer. After June 15, 2022, a modern web browser like Microsoft Edge or Google Chrome will be required to use this app.&lt;/div&gt;
+                    &lt;a hc-button href=&quot;https://community.healthcatalyst.com/dos/b/news/posts/announcing-end-of-internet-explorer-support-for-health-catalyst-web-apps&quot; target=&quot;_blank&quot; title=&quot;Learn more on HC Community&quot;&gt;Learn more&lt;/a&gt;
+                    &lt;a hc-button buttonStyle=&quot;link&quot; (click)=&quot;closeIEToast()&quot; title=&quot;Close this message&quot;&gt;Dismiss&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/ng-template&gt;
+        </code></pre>
+
+    <h4>2. In <code>app.component.ts</code>, trigger the toast when IE is detected:</h4>
+        <pre><code>
+    @ViewChild('ieToastTemplate', &#123; static: true &#125;) ieToastTemplate: TemplateRef&lt;any&gt;;
+    public ieToast;
+
+    public ngOnInit(): void &#123;
+        this.checkForIE();
+    &#125;
+
+    public closeIEToast(): void &#123;
+        this.ieToast.close();
+    &#125;
+
+    private checkForIE() &#123;
+        if (/(MSIE|Trident\/)/i.test(navigator.userAgent)) &#123;
+            this.ieToast = this.toaster.addToast(&#123;
+                position: 'bottom-right',
+                timeout: 0,
+                type: 'custom',
+                width: 410
+            &#125;, this.ieToastTemplate);
+        &#125;
+    &#125;
+        </code></pre>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="basic-example">After Dropping IE Support</h5>
+        <p>In releases of our applications <strong>after June 15th, 2022</strong>, if a user logs in using Internet Explorer, we want to
+            show a fullscreen message explaining that IE is no longer supported and they'll need to upgrade their browser.
+        </p>
+
+        <div id="ieFullscreenMsg"></div>
+
+        <h4>1. In your <code>angular.json</code>, include the needed Cashmere script in your application's build assets:</h4>
+        <pre><code>
+
+    &#39;build&#39;: &#123;
+
+        ...
+
+        &#39;options&#39;: &#123;
+
+            ...
+
+            &#39;assets&#39;: [
+                // your other assets
+                "node_modules/@healthcatalyst/cashmere/scripts/" // cashmere scripts
+            ]
+        &#125;
+    &#125;
+        </code></pre>
+
+        <h4>2. In your <code>index.html</code>, before importing other scripts:</h4>
+        <pre><code>
+    &lt;head&gt;
+
+        ...
+
+        &lt;!-- Show "No IE Support" message as needed --&gt;
+        &lt;script type=&#39;text/javascript&#39; src=&#39;assets/ie-unsupported.js&#39;&gt;&lt;/script&gt;
+
+        ...
+
+    &lt;/head&gt;
+        </code></pre>
+    </hc-tile>
+
+    <hc-feedback-form></hc-feedback-form>
+</div>
