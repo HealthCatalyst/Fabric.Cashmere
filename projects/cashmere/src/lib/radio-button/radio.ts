@@ -51,6 +51,7 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     private _uniqueName = `hc-radio-group-${nextUniqueId++}`;
     private _name = this._uniqueName;
     private _inline = false;
+    private _align: 'center' | 'top' | 'bottom' = 'center';
     private _initialized = false; // if value of radio group has been set to initial value
     private _selected: RadioButtonComponent | null = null; // the currently selected radio
     private _form: NgForm | FormGroupDirective | null;
@@ -147,9 +148,16 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     }
     set tight(value : boolean) {
         this._tight = parseBooleanAttribute(value);
-        if (this._initialized) {
-            setTimeout(() => this._markRadiosForCheck());
-        }
+    }
+
+    /** Sets the position all radios in the group relative to their associated label. *Defaults to `center`.*  */
+    @Input()
+    get align(): 'center' | 'top' | 'bottom' {
+        return this._align;
+    }
+    set align( value: 'center' | 'top' | 'bottom' ) {
+        this._align = value;
+        this._markRadiosForCheck();
     }
 
     constructor(
@@ -170,6 +178,7 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
 
     ngAfterContentInit(): void {
         this._initialized = true;
+        setTimeout(() => this._markRadiosForCheck());
     }
 
     writeValue(value: any): void {
@@ -286,6 +295,7 @@ export class RadioButtonComponent implements OnInit {
     private _required = false;
     private _disabled = false;
     private _tight = false;
+    private _align: 'center' | 'top' | 'bottom' = 'center';
     private readonly radioGroup: RadioGroupDirective | null;
 
     /** Value of radio buttons */
@@ -369,6 +379,24 @@ export class RadioButtonComponent implements OnInit {
     }
     set tight(value: boolean) {
         this._tight = parseBooleanAttribute(value);
+    }
+
+    /** Sets the position of the radio button relative to its associated label (if not already set in the group). *Defaults to `center`.*  */
+    @Input()
+    get align(): 'center' | 'top' | 'bottom' {
+        if (this.radioGroup !== null) {
+            return this.radioGroup.align;
+        } else {
+            return this._align;
+        }
+    };
+    set align( value: 'center' | 'top' | 'bottom' ) {
+        this._align = value;
+    }
+
+    get _overlayClass(): string {
+        const tightClass = this.tight ? '-tight' : '';
+        return 'hc-radio-overlay hc-radio-align-' + this.align + tightClass;
     }
 
     get _inputId(): string {

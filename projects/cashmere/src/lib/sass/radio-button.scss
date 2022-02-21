@@ -36,7 +36,6 @@
     height: 22px;
     left: 0;
     position: absolute;
-    top: 0;
     width: 22px;
 
     &:after {
@@ -50,6 +49,26 @@
         top: 5px;
         width: 8px;
     }
+}
+
+@mixin hc-radio-align-top {
+    top: 0;
+}
+
+@mixin hc-radio-align-center {
+    top: calc(50% - 11px);
+}
+
+@mixin hc-radio-align-bottom {
+    top: calc(100% - 21px);
+}
+
+@mixin hc-radio-align-center-tight {
+    top: calc(50% - 9px);
+}
+
+@mixin hc-radio-align-bottom-tight {
+    top: calc(100% - 19px);
 }
 
 @mixin hc-radio-overlay-tight() {
