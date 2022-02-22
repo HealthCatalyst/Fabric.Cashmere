@@ -13,7 +13,7 @@
            [checked]="checked"
            (change)="_onInputChange($event)"
            (click)="_onInputClick($event)"/>
-    <span class="hc-radio-overlay" [class.disabled]="disabled"></span>
+    <span [class]="_overlayClass" [class.disabled]="disabled"></span>
     <div class="hc-radio-content">
         <ng-content></ng-content>
     </div>
