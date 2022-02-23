@@ -1,0 +1,17 @@
+<hc-radio-group class="radio-align-group" inline="true" [align]="alignControl.value">
+    <hc-radio-button value="1" [checked]="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eget aliquet felis.</hc-radio-button>
+    <hc-radio-button value="2">In interdum sollicitudin augue, ac tincidunt dolor sollicitudin sed.</hc-radio-button>
+    <hc-radio-button value="3">Morbi faucibus venenatis ipsum, non consectetur eros viverra quis. In ex ligula, mattis in sem a, fringilla dignissim enim. </hc-radio-button>
+</hc-radio-group>
+
+<div class="radio-align-select">
+    <hc-form-field inline="true">
+        <hc-label>Radio group alignment:</hc-label>
+        <hc-select [formControl]="alignControl">
+            <option value="top">Top</option>
+            <option value="center">Center</option>
+            <option value="bottom">Bottom</option>
+        </hc-select>
+    </hc-form-field>
+</div>
+

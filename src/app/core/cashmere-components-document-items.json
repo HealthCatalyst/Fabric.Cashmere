@@ -104,7 +104,7 @@
     "radio-button": {
         "name": "Radio Button",
         "category": "forms",
-        "examples": ["radio-button-disabled", "radio-button-forms", "radio-button-standard"],
+        "examples": ["radio-button-standard", "radio-button-disabled", "radio-button-align", "radio-button-forms" ],
         "usageDoc": true
     },
     "scroll-nav": {"name": "ScrollNav", "category": "nav", "examples": ["scroll-nav"]},
