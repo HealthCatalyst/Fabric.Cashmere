@@ -17,7 +17,10 @@ const routes: Routes = [
             {
                 path: 'usage',
                 component: UsageComponent,
-                data: {title: 'Usage', category: 'Brand'}
+                data: {
+                    title: 'Usage', 
+                    category: 'Brand'
+                }
             },
             {
                 path: 'trademarks',
@@ -72,6 +75,54 @@ const routes: Routes = [
                         component: ProductPersonasViewerComponent
                     }
                 ]
+            },
+            {
+                path: 'ux-writing/overview',
+                component: MarkdownContentComponent,
+                data: {
+                    title: 'Overview',
+                    category: 'UX Writing',
+                    document: require('raw-loader!../../../guides/content/ux-writing/overview.md')
+
+                },
+            },
+            {
+                path: 'ux-writing/accessibility',
+                component: MarkdownContentComponent,
+                data: {
+                    title: 'Accessibility',
+                    category: 'UX Writing',
+                    document: require('raw-loader!../../../guides/content/ux-writing/accessibility.md')
+                },
+            },
+            {
+                path: 'ux-writing/writing-choices',
+                component: MarkdownContentComponent,
+                data: {
+                    title: 'Writing Choices',
+                    category: 'UX Writing',
+                    document: require('raw-loader!../../../guides/content/ux-writing/writing-choices.md')
+                },
+            },
+            {
+                path: 'ux-writing/ux-elements',
+                component: MarkdownContentComponent,
+                data: {
+                    title: 'UX Elements',
+                    category: 'UX Writing',
+                    document: require('raw-loader!../../../guides/content/ux-writing/ux-elements.md')
+
+                },
+            },
+            {
+                path: 'ux-writing/resources',
+                component: MarkdownContentComponent,
+                data: {
+                    title: 'Resources',
+                    category: 'UX Writing',
+                    document: require('raw-loader!../../../guides/content/ux-writing/resources.md')
+
+                },
             },
             {
                 path: '**',
