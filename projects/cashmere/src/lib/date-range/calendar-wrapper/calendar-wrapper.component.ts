@@ -53,6 +53,10 @@ export class CalendarWrapperComponent implements OnChanges {
     @Input()
     hourCycle = 12;
 
+    /** Whether the field is required to contain a value. Defaults to `true`. */
+    @Input()
+    required = true;
+
     /** Prefix label on top of component. */
     @Input()
     prefixLabel: string;
