@@ -1,0 +1,85 @@
+<div
+    class="hc-instance-switcher"
+    [@openState]="_openState">
+    <div #instancesContainer class="hc-instance-container">
+        <hc-measurable
+            *ngFor="let instance of instances; let i = index; trackBy: _instanceTrackBy"
+            [itemKey]="instance.instanceKey">
+            <hc-chip
+                hcMeasure
+                [hcTooltip]="_tooltipText.instanceText"
+                [trigger]="_tooltipText.instanceTrigger"
+                class="hc-instance-chip"
+                [class.hc-instance-selected]="_isSelected(instance.instanceKey, false, i)"
+                [hasCloseButton]="instance.instanceKey !== _selectedKey"
+                (click)="_instanceClick(instance.instanceKey)"
+                (closeClick)="_instanceClose(instance.instanceKey, $event)">
+                {{instance.displayText}}
+                <hc-icon
+                    hcIconSm
+                    fontSet="fa"
+                    fontIcon="fa-times"
+                    (click)="_instanceClose(instance.instanceKey, $event)">
+                </hc-icon>
+            </hc-chip>
+        </hc-measurable>
+        <button hc-button
+            #moreInstances="hcPopAnchor"
+            *ngIf="_moreInstances && _moreInstances.length"
+            class="hc-instance-switcher-more"
+            [class.hc-instance-more-button-selected]="_isMoreSelected()"
+            buttonStyle="neutral"
+            [hcPop]="popInstances">
+            More
+            <hc-icon
+                [@moreOpenState]="_moreOpenState"
+                hcIconSm
+                class="hc-instance-switcher-more-icon icon-right"
+                fontSet="fa"
+                fontIcon="fa-chevron-down">
+            </hc-icon>
+        </button>
+        <button
+            hc-button
+            [hcTooltip]="_tooltipText.addText"
+            [trigger]="_tooltipText.addTrigger"
+            class="hc-instance-switcher-add"
+            buttonStyle="neutral"
+            (click)="_instanceAdd()">
+            <hc-icon
+                hcIconSm
+                fontSet="fa"
+                fontIcon="fa-plus">
+            </hc-icon>
+        </button>
+    </div>
+    <button
+        *ngIf="_closable"
+        [hcTooltip]="_tooltipText.closeText"
+        [trigger]="_tooltipText.closeTrigger"
+        hc-icon-button
+        class="hc-instance-switcher-hide"
+        (click)="_closeClick()">
+        <hc-icon fontSet="fa" fontIcon="fa-times"></hc-icon>
+    </button>
+</div>
+
+<hc-pop #popInstances [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
+    <div hcMenu>
+        <button
+            *ngFor="let moreInstance of _moreInstances; index as i; trackBy: _instanceTrackBy"
+            class="hc-instance-switcher-more-menu-item"
+            [class.hc-instance-switcher-more-selected]="_isSelected(moreInstance.instanceKey, true, i)"
+            (click)="_instanceClick(moreInstance.instanceKey)"
+            hcMenuItem>
+            <span hcMenuText>{{moreInstance.displayText}}</span>
+            <hc-icon
+                hcMenuIcon
+                class="hc-instance-switcher-more-close"
+                (click)="_instanceClose(moreInstance.instanceKey, $event)"
+                fontSet="fa"
+                fontIcon="fa-times">
+            </hc-icon>
+        </button>
+    </div>
+</hc-pop>

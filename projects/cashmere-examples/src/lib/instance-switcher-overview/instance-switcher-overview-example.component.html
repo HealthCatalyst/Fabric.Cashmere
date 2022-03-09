@@ -1,0 +1,17 @@
+<div class="sample-container">
+    <hc-instance-switcher
+        [instances]="instances"
+        [selectedKey]="selectedKey"
+        [closable]="closable"
+        [isOpen]="isOpen"
+        [tooltipText]="tooltipText"
+        (selected)="onSelected($event)"
+        (added)="onAdded()"
+        (removed)="onClosed($event)"
+        (closed)="toggleOpen()">
+    </hc-instance-switcher>
+
+    <button hc-button (click)="toggleOpen()" class="demo-button">Toggle Open</button>
+    <button hc-button (click)="toggleClosable()" class="demo-button">Toggle Closable</button>
+    <button hc-button (click)="toggleTooltips()" class="demo-button">Toggle Tooltips</button>
+</div>
