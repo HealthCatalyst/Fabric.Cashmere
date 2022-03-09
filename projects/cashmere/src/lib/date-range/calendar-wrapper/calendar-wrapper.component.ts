@@ -91,6 +91,12 @@ export class CalendarWrapperComponent implements OnChanges {
                 this.selectedDateChange.emit(date);
             }
         }
+
+        // eslint-disable-next-line no-prototype-builtins
+        if (changes.hasOwnProperty('required')) {
+            const isRequired = changes.required.currentValue;
+            this.datePickerInput._allowsBlankValues = !isRequired;
+        }
     }
 
     _onCalendarChange(date: D): void {

@@ -176,6 +176,9 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     @Input() _mode: string;
     @Input() _hourCycle: number;
 
+    /** When true, this allows the date picker to validate with a blank value OR a valid date value. Defaults to false. */
+    @Input() _allowsBlankValues: boolean;
+
     /** Emits when the value changes (either due to user input or programmatic change). */
     _valueChange = new EventEmitter<D | null>();
 
@@ -259,6 +262,8 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
             // eslint-disable-next-line no-self-assign
             this.value = this.value;
         });
+
+        this._allowsBlankValues = false;
     }
 
     ngOnDestroy(): void {
@@ -354,7 +359,12 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
             }
         }
 
-        this._lastValueValid = !date || this._dateAdapter.isValid(date);
+        if (this._allowsBlankValues && value.trim() == '') {
+            this._lastValueValid = true;
+        } else {
+            this._lastValueValid = !date || this._dateAdapter.isValid(date);
+        }
+
         date = this._getValidDateOrNull(date);
 
         if (!this._dateAdapter.sameDate(date, this._value)) {
