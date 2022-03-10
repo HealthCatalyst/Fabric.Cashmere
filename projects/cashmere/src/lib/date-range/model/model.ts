@@ -44,4 +44,8 @@ export interface DateRangeOptions {
     invalidDateLabel?: string;
     /** Centers the DateRange component to the screen instead of the target. Default 'false' */
     center?: boolean;
+    /** Disabling this allows an open-ended date range from the distant past to 'endDate'. Default 'true' */
+    startDateIsRequired?: boolean;
+    /** Disabling this allows an open-ended date range from 'endDate' to the distant future. Default 'true' */
+    endDateIsRequired?: boolean;
 }

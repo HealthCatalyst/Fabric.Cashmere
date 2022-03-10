@@ -26,6 +26,7 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
     get _selectedPreset(): number | null { return this.__selectedPreset; }
     set _rangeIsInvalid(isInvalid: boolean) { this.__rangeIsInvalid = isInvalid; this.cd.markForCheck(); }
     get _rangeIsInvalid(): boolean { return this.__rangeIsInvalid; }
+    get _invalidRangeErrorMessage(): string | null { return this.__invalidRangeErrorMessage; }
     _presetValues: PresetItem[] | undefined;
     _skipRangeCheck = false;
 
@@ -33,6 +34,12 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
     __toDate: D | undefined;
     __selectedPreset: number | null;
     __rangeIsInvalid = false; // if true, the fromDate is after the toDate and save will not be allowed
+    __invalidRangeErrorMessage: string | null;
+    _fromDateIsRequired?: boolean = true;
+    _toDateIsRequired?: boolean = true;
+
+    __startDatePrefix: string | undefined;
+    __endDatePrefix: string | undefined;
 
     readonly _dismissed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -45,6 +52,10 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
 
     ngOnInit(): void {
         this.options$.subscribe((options: DateRangeOptions) => {
+            this._fromDateIsRequired = options.startDateIsRequired;
+            this._toDateIsRequired = options.endDateIsRequired;
+            this.__startDatePrefix = options.startDatePrefix;
+            this.__endDatePrefix = options.endDatePrefix;
             this._presetValues = options.presets;
             this.cd.markForCheck();
         });
@@ -129,22 +140,45 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
     }
 
     _applyNewDates(): void {
-        if (!!this._toDate && !!this._fromDate) {
-            this._validateRange();
-            if (this._rangeIsInvalid) { return; }
-            this.configStoreService.updateRange({fromDate: this._fromDate, toDate: this._toDate});
-            if (this._selectedPreset !== null) {
-                this.configStoreService.updatePreset(this._selectedPreset);
-            } else {
-                this.configStoreService.updatePreset({fromDate: this._fromDate, toDate: this._toDate});
-            }
-            this._dismissed.emit( true );
+        this._validateRange();
+        if (this._rangeIsInvalid) { return; }
+        this.configStoreService.updateRange({fromDate: this._fromDate, toDate: this._toDate});
+        if (this._selectedPreset !== null) {
+            this.configStoreService.updatePreset(this._selectedPreset);
+        } else {
+            this.configStoreService.updatePreset({fromDate: this._fromDate, toDate: this._toDate});
         }
+        this._dismissed.emit( true );
         this.overlayRef.dispose();
     }
 
     _validateRange(): void {
-        this._rangeIsInvalid = (!!this._fromDate && !!this._toDate) && this._fromDate > this._toDate;
+        let startLabel = this.__startDatePrefix ?? "Start date";
+        if (startLabel.endsWith(":")) {
+            startLabel = startLabel.slice(0,-1);
+        }
+
+        let endLabel = this.__endDatePrefix ?? "End date";
+        if (endLabel.endsWith(":")) {
+            endLabel = endLabel.slice(0,-1);
+        }
+
+        if (!this._fromDate && !this._toDate) {
+            this._rangeIsInvalid = true;
+            this.__invalidRangeErrorMessage = "You must choose a date.";
+        } else if (!!this._fromDate && !!this._toDate) {
+            this._rangeIsInvalid = this._fromDate > this._toDate;
+            this.__invalidRangeErrorMessage = `${startLabel} cannot be after ${endLabel}.`;
+        } else if (this._fromDateIsRequired && !this._fromDate) {
+            this._rangeIsInvalid = true;
+            this.__invalidRangeErrorMessage = `${startLabel} cannot be blank.`;
+        } else if (this._toDateIsRequired && !this._toDate) {
+            this._rangeIsInvalid = true;
+            this.__invalidRangeErrorMessage = `${endLabel} cannot be blank.`;
+        } else {
+            this._rangeIsInvalid = false;
+            this.__invalidRangeErrorMessage = null;
+        }        
     }
 
     _discardNewDates(): void {

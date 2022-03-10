@@ -11,12 +11,27 @@
         #pickerOne
     >
         <span class="label">Date range:</span>
-        <span class="value">{{ range.fromDate | date: 'MM/dd/yyyy' }} - {{ range.toDate | date: 'MM/dd/yyyy' }}</span>
+        <span class="value">
+            <span *ngIf="range.fromDate && range.toDate">
+                {{ range.fromDate | date: 'MM/dd/yyyy' }} - {{ range.toDate | date: 'MM/dd/yyyy' }}
+            </span>
+            <span *ngIf="range.fromDate && !range.toDate">
+                {{ range.fromDate | date: 'MM/dd/yyyy' }} or later
+            </span>
+            <span *ngIf="!range.fromDate && range.toDate">
+                {{ range.toDate | date: 'MM/dd/yyyy' }} or earlier
+            </span>
+            <span *ngIf="!range.fromDate && !range.toDate">
+                Invalid state
+            </span>
+        </span>
         <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="icon-right" hcIconSm></hc-icon>
     </button>
 
     <div class="demo-extras">
-        <hc-checkbox [formControl]="optionsControl">Don't allow weekend dates</hc-checkbox>
+        <hc-checkbox [formControl]="optionsControlExcludeWeekends">Don't allow weekend dates</hc-checkbox>
+        <hc-checkbox [formControl]="optionsControlStartDateRequired">Start date required</hc-checkbox>
+        <hc-checkbox [formControl]="optionsControlEndDateRequired">End date required</hc-checkbox>
         <div>
             Selected preset: <strong>{{ presetSelection }}</strong>
         </div>
