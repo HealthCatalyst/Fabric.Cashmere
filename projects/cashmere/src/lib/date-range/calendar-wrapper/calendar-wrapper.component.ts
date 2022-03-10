@@ -53,6 +53,10 @@ export class CalendarWrapperComponent implements OnChanges {
     @Input()
     hourCycle = 12;
 
+    /** Whether the field is required to contain a value. Defaults to `true`. */
+    @Input()
+    required = true;
+
     /** Prefix label on top of component. */
     @Input()
     prefixLabel: string;
@@ -86,6 +90,12 @@ export class CalendarWrapperComponent implements OnChanges {
                 this.datePickerInput.setDate(date);
                 this.selectedDateChange.emit(date);
             }
+        }
+
+        // eslint-disable-next-line no-prototype-builtins
+        if (changes.hasOwnProperty('required')) {
+            const isRequired = changes.required.currentValue;
+            this.datePickerInput._allowsBlankValues = !isRequired;
         }
     }
 

@@ -5,7 +5,7 @@
             hcInput
             hcDatepicker
             [(ngModel)]="selectedDate"
-            required
+            [required]="required"
             (dateChange)="_onInputChange($event)"
             [min]="minDate"
             [max]="maxDate"
