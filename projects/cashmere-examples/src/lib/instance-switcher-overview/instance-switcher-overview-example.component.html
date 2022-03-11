@@ -1,11 +1,9 @@
 <div class="sample-container">
     <hc-instance-switcher
         [instances]="instances"
-        [selectedKey]="selectedKey"
         [closable]="closable"
         [isOpen]="isOpen"
         [tooltipText]="tooltipText"
-        (selected)="onSelected($event)"
         (added)="onAdded()"
         (removed)="onClosed($event)"
         (closed)="toggleOpen()">

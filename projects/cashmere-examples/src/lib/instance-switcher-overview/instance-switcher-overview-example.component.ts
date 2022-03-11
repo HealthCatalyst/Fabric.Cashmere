@@ -28,8 +28,6 @@ export class InstanceSwitcherOverviewExampleComponent {
 
     private _currentNumber = 3;
 
-    private _previousSelected: string[] = [];
-
     selectedKey: string | null = 'instance1';
 
     closable = true;
@@ -55,14 +53,6 @@ export class InstanceSwitcherOverviewExampleComponent {
         }
     }
 
-    onSelected(key: string): void {
-        if (this.selectedKey) {
-            this._previousSelected.push(this.selectedKey);
-        }
-
-        this.selectedKey = key;
-    }
-
     onAdded(): void {
         const nextNumber = this._currentNumber++;
         this.instances = [
@@ -76,16 +66,5 @@ export class InstanceSwitcherOverviewExampleComponent {
 
     onClosed(key: string): void {
         this.instances = this.instances.filter(instance => instance.instanceKey !== key);
-        this._previousSelected = this._previousSelected.filter(previousKey => previousKey !== key);
-        if (this.selectedKey === key) {
-            if (this._previousSelected.length > 0) {
-                this.selectedKey = this._previousSelected.pop() ?? null;
-            } else if (this.instances.length > 0) {
-                this.selectedKey = this.instances[0].instanceKey;
-            }
-            else {
-                this.selectedKey = null;
-            }
-        }
     }
 }

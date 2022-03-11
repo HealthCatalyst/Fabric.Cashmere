@@ -61,7 +61,7 @@
         "name": "Instance Switcher",
         "examples": ["instance-switcher-overview"],
         "id": "instance-switcher",
-        "usageDoc": true,
+        "usageDoc": false,
         "hideApi": false
     },
     "null-or-empty-string-pipe": {

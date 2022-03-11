@@ -74,6 +74,7 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
     _instances: IInstance[] = [];
     _moreInstances: IInstance[] = [];
     _selectedKey: string | null = null;
+    _previouslySelected: string[] = [];
     _closable = true;
     _isOpen = true;
     _openState: 'void' | 'open' = 'open';
@@ -174,7 +175,7 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
      * is the unique key assigned to the instance.
      */
     @Output()
-    selected = new EventEmitter<string>();
+    selected = new EventEmitter<string | null>();
 
     /**
      * Empty event emitted when the add instance button is clicked.
@@ -277,17 +278,36 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
     }
 
     _closeClick(): void {
+        this.isOpen = false;
         this.closed.emit();
     }
 
     _instanceClick(key: string): void {
+        if (key !== this._selectedKey  && this._selectedKey) {
+            this._previouslySelected.push(this._selectedKey);
+        }
+
         this.selectedKey = key;
         this.selected.emit(key);
     }
 
     _instanceClose(key: string, event: MouseEvent): void {
-        this.removed.emit(key);
         event.stopPropagation();
+
+        this._instances = this._instances.filter(instance => instance.instanceKey !== key);
+        this._previouslySelected = this._previouslySelected.filter(prevKey => prevKey !== key);
+
+        if (this._previouslySelected.length > 0) {
+            this.selectedKey = this._previouslySelected.pop() ?? null;
+        } else if (this._instances.length > 0) {
+            this.selectedKey = this._instances[0].instanceKey;
+        } else {
+            this.selectedKey = null;
+        }
+
+        this.selected.emit(this.selectedKey);
+
+        this.removed.emit(key);
     }
 
     _instanceAdd(): void {
