@@ -1,0 +1,65 @@
+@import '../sass/instance-switcher.scss';
+
+.hc-instance-switcher {
+    @include hc-instance-switcher();
+
+    hc-measurable {
+        @include hc-instance-switcher-measurable();
+    }
+}
+
+.hc-instance-container {
+    @include hc-instance-container();
+}
+
+.hc-instance-chip:not(.hc-instance-selected) .hc-chip {
+    @include hc-instance-chip();
+
+    hc-icon {
+        @include hc-instance-chip-close-deselected();
+    }
+
+    .hc-chip-close {
+        @include hc-instance-chip-close();
+    }
+}
+
+.hc-instance-chip.hc-instance-selected .hc-chip {
+    @include hc-instance-chip-selected();
+
+    hc-icon {
+        @include hc-instance-button-icon();
+    }
+
+    .hc-chip-close {
+        @include hc-instance-chip-close();
+    }
+}
+
+.hc-chip.hc-chip-padding {
+    @include hc-instance-chip-padding();
+}
+
+button.hc-button.hc-instance-switcher-more {
+    @include hc-instance-more-button();
+
+    hc-icon {
+        @include hc-instance-button-icon();
+    }
+}
+
+button.hc-button.hc-instance-switcher-add {
+    @include hc-instance-add-button();
+}
+
+button.hc-icon-button.hc-instance-switcher-hide {
+    @include hc-instance-hide-button();
+}
+
+button.hc-menu-item.hc-instance-switcher-more-menu-item {
+    @include hc-instance-switcher-more();
+
+    hc-icon.hc-menu-icon.hc-instance-switcher-more-close {
+        @include hc-instance-switcher-more-close();
+    }
+}

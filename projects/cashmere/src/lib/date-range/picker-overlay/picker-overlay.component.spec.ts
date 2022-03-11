@@ -58,22 +58,63 @@ describe('RangeComponent', () => {
     });
 
     describe('_validateRange', () => {
-        it('will not mark range invalid if one or both dates are missing', waitForAsync(() => {
+        it('will mark the range invalid if one or both dates are missing', waitForAsync(() => {
             component._updateFromDate(new Date(2010, 1, 1));
             component._updateToDate(undefined);
             component._validateRange();
-            expect(component._rangeIsInvalid).toBeFalsy();
+            expect(component._rangeIsInvalid).toBeTruthy();
+            expect(component.__invalidRangeErrorMessage).toBe("End date cannot be blank.");
 
             component._updateFromDate(undefined);
             component._updateToDate(new Date(2010, 1, 1));
             component._validateRange();
-            expect(component._rangeIsInvalid).toBeFalsy();
+            expect(component._rangeIsInvalid).toBeTruthy();
+            expect(component.__invalidRangeErrorMessage).toBe("Start date cannot be blank.");
 
             component._updateFromDate(undefined);
             component._updateToDate(undefined);
             component._validateRange();
-            expect(component._rangeIsInvalid).toBeFalsy();
+            expect(component._rangeIsInvalid).toBeTruthy();
+            expect(component.__invalidRangeErrorMessage).toBe("You must choose a date.");
         }));
+
+        describe('_fromDateIsRequired == false', () => {
+            beforeEach(() => {
+                component._fromDateIsRequired = false;
+            });
+
+            it('will mark range valid if _toDate is not null', waitForAsync(() => {
+                component._updateToDate(new Date(2010, 1, 1));
+                component._validateRange();
+                expect(component._rangeIsInvalid).toBeFalsy();
+                expect(component.__invalidRangeErrorMessage).toBe(null);
+            }));
+
+            it('will mark range invalid if _toDate is null', waitForAsync(() => {
+                component._validateRange();
+                expect(component._rangeIsInvalid).toBeTruthy();
+                expect(component.__invalidRangeErrorMessage).toBe("You must choose a date.");
+            }));
+        });
+
+        describe('_toDateIsRequired == false', () => {
+            beforeEach(() => {
+                component._toDateIsRequired = false;
+            });
+
+            it('will mark range valid if _fromDate is not null', waitForAsync(() => {
+                component._updateFromDate(new Date(2010, 1, 1));
+                component._validateRange();
+                expect(component._rangeIsInvalid).toBeFalsy();
+                expect(component.__invalidRangeErrorMessage).toBe(null);
+            }));
+
+            it('will mark range invalid if _fromDate is null', waitForAsync(() => {
+                component._validateRange();
+                expect(component._rangeIsInvalid).toBeTruthy();
+                expect(component.__invalidRangeErrorMessage).toBe("You must choose a date.");
+            }));
+        });
 
         it('will not mark range invalid if fromDate is before toDate', waitForAsync(() => {
             component._updateFromDate(new Date(2010, 1, 1));
@@ -94,6 +135,7 @@ describe('RangeComponent', () => {
             component._updateToDate(new Date(2010, 1, 1));
             component._validateRange();
             expect(component._rangeIsInvalid).toBeTruthy();
+            expect(component.__invalidRangeErrorMessage).toBe("Start date cannot be after End date.");
         }));
     });
 

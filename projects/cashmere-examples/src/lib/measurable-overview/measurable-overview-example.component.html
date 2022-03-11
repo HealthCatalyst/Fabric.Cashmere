@@ -1,0 +1,48 @@
+<div class="sample-container">
+    <div #buttonContainer class="button-container">
+        <hc-measurable
+            *ngFor="let button of buttons"
+            [itemKey]="button.key">
+            <button hc-button>
+                {{button.text}}
+                <hc-icon
+                    hcIconSm
+                    fontSet="fa"
+                    fontIcon="fa-times"
+                    (click)="buttonClose(button.key, $event)">
+                </hc-icon>
+            </button>
+        </hc-measurable>
+        <button
+            hc-button
+            #moreButtons="hcPopAnchor"
+            *ngIf="moreButtons && moreButtons.length"
+            [hcPop]="popButtons">
+            More
+            <hc-icon
+                [@moreOpenState]="moreOpenState"
+                hcIconSm
+                fontSet="fa"
+                fontIcon="fa-chevron-down">
+            </hc-icon>
+        </button>
+    </div>
+    <button hc-button (click)="addButton()" class="demo-button">Add Button</button>
+    <button hc-button (click)="addButton(true)" class="demo-button">Add Long Button</button>
+</div>
+
+<hc-pop #popButtons [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
+    <div hcMenu>
+        <button
+            *ngFor="let button of moreButtons; index as i; trackBy: buttonTrackBy"
+            hcMenuItem>
+            <span hcMenuText>{{button.text}}</span>
+            <hc-icon
+                hcMenuIcon
+                (click)="buttonClose(button.key, $event)"
+                fontSet="fa"
+                fontIcon="fa-times">
+            </hc-icon>
+        </button>
+    </div>
+</hc-pop>

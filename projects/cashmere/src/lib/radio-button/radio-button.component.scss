@@ -24,6 +24,28 @@
     .hc-radio-content {
         @include hc-radio-content-tight();
     }
+
+    .hc-radio-align-top-tight {
+        @include hc-radio-align-top;
+    }
+    .hc-radio-align-center-tight {
+        @include hc-radio-align-center-tight;
+    }
+    .hc-radio-align-bottom-tight {
+        @include hc-radio-align-bottom-tight;
+    }
+}
+
+:not(.hc-radio-tight) {
+    .hc-radio-align-top {
+        @include hc-radio-align-top;
+    }
+    .hc-radio-align-center {
+        @include hc-radio-align-center;
+    }
+    .hc-radio-align-bottom {
+        @include hc-radio-align-bottom;
+    }
 }
 
 .hc-radio-overlay {

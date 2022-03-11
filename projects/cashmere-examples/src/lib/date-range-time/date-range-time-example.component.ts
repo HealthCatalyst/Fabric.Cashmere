@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {DateRangeOptions, DateRange} from '@healthcatalyst/cashmere';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { DateRangeOptions, DateRange } from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-date-range-time-example',
@@ -7,6 +8,7 @@ import {DateRangeOptions, DateRange} from '@healthcatalyst/cashmere';
 })
 export class DateRangeTimeExampleComponent implements OnInit {
     range: DateRange = {fromDate: new Date(2019, 1, 1, 9, 30), toDate: new Date(2019, 1, 1, 17, 15)};
+    timeControl: FormControl = new FormControl( this.range );
     options: DateRangeOptions;
 
     ngOnInit(): void {
@@ -19,9 +21,5 @@ export class DateRangeTimeExampleComponent implements OnInit {
             applyLabel: 'Apply',
             center: true
         };
-    }
-
-    updateRange(range: DateRange): void {
-        this.range = range;
     }
 }

@@ -1,0 +1,109 @@
+@import './colors';
+@import './button.scss';
+
+@mixin hc-instance-switcher() {
+    background-color: $slate-gray-200;
+    display: flex;
+    overflow: hidden;
+}
+
+@mixin hc-instance-switcher-measurable() {
+    display: inline-block;
+}
+
+@mixin hc-instance-container() {
+    flex: 1 1 auto;
+}
+
+@mixin hc-instance-chip() {
+    font-weight: 400;
+    background-color: $gray-100;
+    color: $gray-600;
+    border: 2px solid $gray-300;
+    cursor: pointer;
+
+    &:focus {
+        background-color: shade($gray-100, 5% * 2);
+        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
+    }
+
+    &:hover {
+        background-color: shade($gray-100, 5%);
+        color: $offblack;
+    }
+
+    &:active {
+        background-color: shade($gray-100, 5% * 2);
+        color: $white;
+    }
+
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus,
+    &[disabled]:active {
+        background-color: $gray-100;
+        opacity: 0.35;
+    }
+
+    &[disabled]:hover {
+        color: $gray-600;
+    }
+}
+
+@mixin hc-instance-chip-padding() {
+    padding: 0 9px;
+}
+
+$selected-blue: shade($blue, 30%);
+
+@mixin hc-instance-chip-selected() {
+    font-weight: 600;
+    background-color: $selected-blue;
+    color: $white;
+    border: 2px solid $selected-blue;
+}
+
+@mixin hc-instance-chip-close() {
+    display: none;
+}
+
+@mixin hc-instance-button-icon() {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+@mixin hc-instance-chip-close-deselected() {
+    @include hc-instance-button-icon();
+    color: $gray-400;
+}
+
+@mixin hc-instance-button() {
+    margin: 5px;
+}
+
+@mixin hc-instance-more-button() {
+    @include hc-instance-button();
+    min-width: 0;
+}
+
+@mixin hc-instance-add-button() {
+    @include hc-instance-button();
+    min-width: 35px;
+    padding: 0;
+}
+
+@mixin hc-instance-hide-button() {
+    @include hc-instance-button();
+    color: $gray-500;
+}
+
+@mixin hc-instance-switcher-more() {
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+@mixin hc-instance-switcher-more-close() {
+    color: $gray-400;
+    margin-right: 0;
+    margin-left: 10px;
+}
