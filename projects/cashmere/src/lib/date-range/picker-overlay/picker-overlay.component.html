@@ -11,6 +11,7 @@
             [invalidDateLabel]="options.invalidDateLabel"
             [mode]="options.mode"
             [hourCycle]="options.hourCycle"
+            [required]="options.startDateIsRequired"
         ></hc-calendar-wrapper>
     </div>
     <div class="hc-date-range-calendar-item hc-date-range-calendar-wrapper">
@@ -25,6 +26,7 @@
             [invalidDateLabel]="options.invalidDateLabel"
             [mode]="options.mode"
             [hourCycle]="options.hourCycle"
+            [required]="options.endDateIsRequired"
         ></hc-calendar-wrapper>
     </div>
     <div class="hc-date-range-calendar-item hc-date-range">
@@ -43,14 +45,14 @@
                     hc-button
                     buttonStyle="primary"
                     type="button"
-                    [disabled]="!(this._toDate && this._fromDate)"
+                    [disabled]="this._rangeIsInvalid"
                     (click)="_applyNewDates()"
                 >
                     {{ options.applyLabel }}
                 </button>
             </div>
             <hc-chip *ngIf="_rangeIsInvalid" color="red">
-                <span class="hc-date-range-warning-icon"></span>The start date cannot be after the end date.
+                <span class="hc-date-range-warning-icon"></span>{{ _invalidRangeErrorMessage }}
             </hc-chip>
         </div>
     </div>
