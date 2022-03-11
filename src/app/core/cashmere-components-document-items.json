@@ -56,6 +56,14 @@
         "usageDoc": true
     },
     "navbar": {"name": "Navbar", "category": "nav", "examples": ["navbar-overview", "navbar-cobrand"], "usageDoc": true},
+    "instance-switcher": {
+        "category": "nav",
+        "name": "Instance Switcher",
+        "examples": ["instance-switcher-overview"],
+        "id": "instance-switcher",
+        "usageDoc": false,
+        "hideApi": false
+    },
     "null-or-empty-string-pipe": {
         "name": "IfNullOrEmpty",
         "category": "pipes",
@@ -104,7 +112,7 @@
     "radio-button": {
         "name": "Radio Button",
         "category": "forms",
-        "examples": ["radio-button-standard", "radio-button-disabled", "radio-button-align", "radio-button-forms" ],
+        "examples": ["radio-button-standard", "radio-button-disabled", "radio-button-align", "radio-button-forms"],
         "usageDoc": true
     },
     "scroll-nav": {"name": "ScrollNav", "category": "nav", "examples": ["scroll-nav"]},
@@ -142,6 +150,14 @@
         "examples": ["search-bar-overview"],
         "id": "search-bar",
         "usageDoc": false,
+        "hideApi": false
+    },
+    "measurable": {
+        "category": "layout",
+        "name": "Measurable",
+        "examples": ["measurable-overview", "measurable-vertical"],
+        "id": "measurable",
+        "usageDoc": true,
         "hideApi": false
     }
 }
