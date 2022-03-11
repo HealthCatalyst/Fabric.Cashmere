@@ -86,12 +86,6 @@ $selected-blue: shade($blue, 30%);
     min-width: 0;
 }
 
-@mixin hc-instance-more-button-selected() {
-    font-weight: 600;
-    background-color: $selected-blue;
-    color: $white;
-}
-
 @mixin hc-instance-add-button() {
     @include hc-instance-button();
     min-width: 35px;
@@ -112,13 +106,4 @@ $selected-blue: shade($blue, 30%);
     color: $gray-400;
     margin-right: 0;
     margin-left: 10px;
-}
-
-@mixin hc-instance-switcher-more-close-selected() {
-    color: $white;
-}
-
-@mixin hc-instance-switcher-more-selected() {
-    background-color: $azure;
-    color: $white;
 }

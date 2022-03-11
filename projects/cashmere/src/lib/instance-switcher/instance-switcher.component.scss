@@ -43,10 +43,6 @@
 button.hc-button.hc-instance-switcher-more {
     @include hc-instance-more-button();
 
-    &.hc-instance-more-button-selected {
-        @include hc-instance-more-button-selected();
-    }
-
     hc-icon {
         @include hc-instance-button-icon();
     }
@@ -62,14 +58,6 @@ button.hc-icon-button.hc-instance-switcher-hide {
 
 button.hc-menu-item.hc-instance-switcher-more-menu-item {
     @include hc-instance-switcher-more();
-
-    &.hc-instance-switcher-more-selected {
-        @include hc-instance-switcher-more-selected();
-
-        hc-icon.hc-menu-icon.hc-instance-switcher-more-close {
-            @include hc-instance-switcher-more-close-selected();
-        }
-    }
 
     hc-icon.hc-menu-icon.hc-instance-switcher-more-close {
         @include hc-instance-switcher-more-close();

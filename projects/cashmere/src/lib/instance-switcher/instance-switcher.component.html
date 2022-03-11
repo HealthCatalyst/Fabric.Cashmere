@@ -27,7 +27,6 @@
             #moreInstances="hcPopAnchor"
             *ngIf="_moreInstances && _moreInstances.length"
             class="hc-instance-switcher-more"
-            [class.hc-instance-more-button-selected]="_isMoreSelected()"
             buttonStyle="neutral"
             [hcPop]="popInstances">
             More
@@ -69,7 +68,6 @@
         <button
             *ngFor="let moreInstance of _moreInstances; index as i; trackBy: _instanceTrackBy"
             class="hc-instance-switcher-more-menu-item"
-            [class.hc-instance-switcher-more-selected]="_isSelected(moreInstance.instanceKey, true, i)"
             (click)="_instanceClick(moreInstance.instanceKey)"
             hcMenuItem>
             <span hcMenuText>{{moreInstance.displayText}}</span>

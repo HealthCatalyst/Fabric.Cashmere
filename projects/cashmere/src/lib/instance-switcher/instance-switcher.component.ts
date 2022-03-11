@@ -142,6 +142,8 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
     set selectedKey(selectedKeyVal: string | null) {
         if (this._selectedKey !== selectedKeyVal) {
             this._selectedKey = selectedKeyVal;
+            this._ref.detectChanges();
+            this.refreshInstances();
         }
     }
 
@@ -218,9 +220,16 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
             return;
         }
 
+        const selectedInstance = this._instanceChips
+            .find(instance => instance.itemKey === this._selectedKey);
+
+        selectedInstance?.show();
+
+        const selectedSize = selectedInstance?.width ?? 0;
+
         const moreKeys = this._measurableService.fillContainer(
-            this._instanceChips.toArray(),
-            this._calculateAvailableSize(),
+            this._instanceChips.filter(instance => instance.itemKey !== this._selectedKey),
+            this._calculateAvailableSize() - selectedSize,
             112);
 
         this._moreInstances = this._instances.filter(instance => moreKeys.has(instance.instanceKey));
@@ -267,16 +276,12 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
             || (!isMore && index === 0 && !this.selectedKey);
     }
 
-    _isMoreSelected(): boolean {
-        return this._moreInstances.some(instance => instance.instanceKey === this.selectedKey);
-    }
-
     _closeClick(): void {
         this.closed.emit();
     }
 
     _instanceClick(key: string): void {
-        this._selectedKey = key;
+        this.selectedKey = key;
         this.selected.emit(key);
     }
 
