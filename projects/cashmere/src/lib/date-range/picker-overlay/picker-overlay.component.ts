@@ -163,7 +163,10 @@ export class PickerOverlayComponent implements OnInit, AfterViewInit {
             endLabel = endLabel.slice(0,-1);
         }
 
-        if (!this._fromDate && !this._toDate) {
+        const bothDatesNull = !this._fromDate && !this._toDate;
+        const isDateRequired = !!this._fromDateIsRequired || !!this._toDateIsRequired
+
+        if (bothDatesNull && isDateRequired) {
             this._rangeIsInvalid = true;
             this.__invalidRangeErrorMessage = "You must choose a date.";
         } else if (!!this._fromDate && !!this._toDate) {
