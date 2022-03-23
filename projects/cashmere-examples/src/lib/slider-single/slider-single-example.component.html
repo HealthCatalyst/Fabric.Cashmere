@@ -1,0 +1,21 @@
+<p>
+    For sliders, we recommend using a 3rd-party component,
+    <code>ngx-slider</code>
+    . We've created a Cashmere theme for the component to give it the proper look and feel. See usage tab for setup instructions.
+</p>
+
+<hc-form-field inline="true" class="demo-input">
+    <hc-label>Slider value:</hc-label>
+    <input hcInput (keyup)="updateSlider($event.target.value)" [value]="sliderControl.value">
+</hc-form-field>
+
+<hc-slider>
+    <ngx-slider [formControl]="sliderControl" [options]="options"></ngx-slider>
+</hc-slider>
+
+<strong class="demo-docs">API & other documentation:</strong>
+<ul>
+    <li><a href="https://angular-slider.github.io/ngx-slider/" target="_blank">Examples</a></li>
+    <li><a href="https://angular-slider.github.io/ngx-slider/docs" target="_blank">API</a></li>
+    <li><a href="https://github.com/angular-slider/ngx-slider" target="_blank">Github</a></li>
+</ul>

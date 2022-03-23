@@ -50,6 +50,7 @@
     "start-bs": "npm run dev-mode && ng serve -o --disable-host-check"
   },
   "dependencies": {
+    "@angular-slider/ngx-slider": "^2.0.4",
     "@angular/animations": "~12.2.13",
     "@angular/cdk": "^12.2.13",
     "@angular/common": "~12.2.13",
