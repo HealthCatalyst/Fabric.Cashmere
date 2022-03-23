@@ -1,0 +1,15 @@
+<hc-form-field class="demo-input">
+    <hc-label>Range slider in form field:</hc-label>
+    <hc-slider [valid]="sliderControl.valid" required>
+        <ngx-slider [formControl]="sliderControl" [options]="options" (valueChange)="resetValid()"></ngx-slider>
+    </hc-slider>
+    <hc-error>The slider is invalid</hc-error>
+</hc-form-field>
+
+<button hc-button title="Toggle component validation" (click)="toggleValid()">
+    Toggle Validate
+</button>
+
+<button hc-button title="Toggle component disabled" (click)="toggleDisabled()">
+    Toggle Disabled
+</button>

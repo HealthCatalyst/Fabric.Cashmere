@@ -32,6 +32,7 @@ export * from './lib/radio-button/index';
 export * from './lib/scroll-nav/index';
 export * from './lib/search-bar/index';
 export * from './lib/select/index';
+export * from './lib/slider/index';
 export * from './lib/sort/index';
 export * from './lib/stepper/index';
 export * from './lib/subnav/index';
