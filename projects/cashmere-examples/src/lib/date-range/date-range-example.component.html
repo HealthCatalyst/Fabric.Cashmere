@@ -22,7 +22,7 @@
                 {{ range.toDate | date: 'MM/dd/yyyy' }} or earlier
             </span>
             <span *ngIf="!range.fromDate && !range.toDate">
-                Invalid state
+                No dates selected
             </span>
         </span>
         <hc-icon fontSet="fa" fontIcon="fa-chevron-down" class="icon-right" hcIconSm></hc-icon>

@@ -9,6 +9,7 @@
             "sugar": "sugar",
             "lodash": "lodash",
             "@ng-select/ng-select": "@ng-select/ng-select",
+            "@angular-slider/ngx-slider": "@angular-slider/ngx-slider",
             "change-case": "change-case"
         }
     }
