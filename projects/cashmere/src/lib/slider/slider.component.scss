@@ -19,7 +19,8 @@
         @include hc-slider-pointer-active();
     }
 
-    .ngx-slider .ngx-slider-selection {
+    .ngx-slider .ngx-slider-selection,
+    .ngx-slider .ngx-slider-tick.ngx-slider-selected {
         @include hc-slider-selection();
     }
 }
@@ -30,7 +31,8 @@
             @include hc-slider-pointer-invalid();
         }
 
-        .ngx-slider .ngx-slider-selection {
+        .ngx-slider .ngx-slider-selection,
+        .ngx-slider .ngx-slider-tick.ngx-slider-selected {
             @include hc-slider-selection-invalid();
         }
     }
