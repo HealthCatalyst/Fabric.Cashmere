@@ -1,4 +1,4 @@
-# Login Form
+# Login Screen
 
 ###### Last updated Mar 10, 2020
 
@@ -58,7 +58,7 @@ The library does not ship with image assets, so the following images will need t
 
 ##### Layout
 
-To accomidate most needs, these styles can be used with or without angular. The examples just give an outline and can be customized as needed
+To accommodate most needs, these styles can be used with or without angular. The examples just give an outline and can be customized as needed
 <br>
 <br>
 
