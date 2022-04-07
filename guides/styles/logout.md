@@ -1,0 +1,82 @@
+# Logout Screen
+
+###### Last updated March 31, 2021
+
+:::
+
+##### Overview
+
+When logging out manually or being timed out due to inactivity, these are the recommended styles for the logout screen in a Cashmere application.
+
+
+:::
+
+<br>
+<style type="text/css">
+    .green-button { min-width: 215px; font-size: 15px; line-height: 35px; touch-action: manipulation; cursor: pointer; border-radius: 5px; background-color: #00a859; color: #ffffff; border: none; }
+    .green-button:hover { background-color: #05864a; }
+    #hcLogout { display: flex; flex-direction: column; align-items: center; justify-content: center; top: 0px; left: 0px; height: 400px; width: 100%; background-color: #2e3946; font-size: 14px; color: #fff; }
+    #triflame { height: 50px; width: 50px; margin: 10px 0 15px; }
+    #logo { width: 290px; height: 30px; background-size: cover; background-repeat: no-repeat; }
+    #hcLogout div { margin-bottom: 15px; }
+</style>
+<div id="hcLogout">
+    <svg id="logo" data-name="Cashmere" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 197.5 48.63"><defs><style>.cls-1{fill:#fff;}</style></defs><path class="cls-1" d="M23.41,11.23a39.16,39.16,0,0,0-6-.5C9.1,10.73,9,15.51,9,22s.06,11.27,8.33,11.27a38,38,0,0,0,6-.5l.48,4.08a33.15,33.15,0,0,1-7.72.85C6,37.7,3.55,32.92,3.55,22S6.05,6.31,16.17,6.31a33.76,33.76,0,0,1,7.72.84Z"/><path class="cls-1" d="M26.84,30.37c0-4.1,1.78-6.68,6.33-7.36a74.14,74.14,0,0,1,8.32-.62c0-3.26-1.42-4.9-5-4.9a68,68,0,0,0-8.17.59l-.41-3.67A54.67,54.67,0,0,1,37,13.56c5.17,0,9.43,1.41,9.43,7.4V31.32c0,1.55-.06,2.89-.19,4.32-2.63,1.48-6.13,2.06-10.51,2.06C29.34,37.7,26.84,35.2,26.84,30.37Zm14.65-4.71a35.79,35.79,0,0,0-6.38.57c-2.45.56-3.32,1.32-3.32,4.06,0,2.94,1.64,3.66,4.65,3.66a12.11,12.11,0,0,0,4.91-.81c.1-1,.14-2.1.14-3.15Z"/><path class="cls-1" d="M62.34,31c0-2.69-2.42-2.92-4.61-3.59-3.78-1.15-7.37-2.11-7.37-7.17s3.63-6.63,8.29-6.63a34.56,34.56,0,0,1,8.36.91l-.48,3.68a32,32,0,0,0-5.87-.63c-1.9,0-5.29,0-5.29,2.4s2.85,2.9,4.8,3.56c4,1.36,7.26,2.11,7.26,7.29,0,5.42-4,6.93-9.16,6.93a36.31,36.31,0,0,1-8.12-.93L50.63,33a39.79,39.79,0,0,0,6.25.65C58.75,33.66,62.34,33.72,62.34,31Z"/><path class="cls-1" d="M91.58,37.38h-5V22.9c0-3.75-.69-5.33-5.53-5.33a11.34,11.34,0,0,0-4.44.92V37.38h-5V4.79h5v9.65a19.31,19.31,0,0,1,5.81-.88c8.3,0,9.17,3.86,9.17,8.75Z"/><path class="cls-1" d="M114.81,37.38h-5V22.85c0-3.53-.85-5.32-4.65-5.32a9,9,0,0,0-3.6.78,28.93,28.93,0,0,0-.15,3.15V37.38h-5V19.93c0-1.54.07-2.89.2-4.32a23.38,23.38,0,0,1,9.78-2A9.72,9.72,0,0,1,112.21,15a21,21,0,0,1,7.58-1.47c7.35,0,8.43,4,8.43,8.75V37.38h-5V22.85c0-3.53-.85-5.32-4.65-5.32a9.36,9.36,0,0,0-4.13,1,15.43,15.43,0,0,1,.38,3.75Z"/><path class="cls-1" d="M137.62,28.13c.27,4.52,2.63,5.58,6.27,5.58a65.92,65.92,0,0,0,8.44-.61l.42,3.74a59,59,0,0,1-10.15.86c-7.88,0-9.95-5.11-9.95-12.08,0-8.53,2.64-12.06,10.46-12.06,8.46,0,10.27,4.46,10.27,11.47,0,.56,0,1.14-.06,1.74-2.7.47-8.31,1-11.55,1.17Zm4.6-3.65c1.73-.08,4.44-.3,6.07-.52a10.24,10.24,0,0,0,.05-1.1c0-3.58-1.32-5.53-5.23-5.53-5,0-5.62,3.13-5.62,7.38Z"/><path class="cls-1" d="M162.7,37.38h-5V19.93c0-1.54.07-2.89.2-4.32a19.74,19.74,0,0,1,9.24-2,21.74,21.74,0,0,1,2.19.09l-.4,4a16,16,0,0,0-1.79-.09,10.6,10.6,0,0,0-4.29.79,29,29,0,0,0-.15,3.16Z"/><path class="cls-1" d="M176.35,28.13c.26,4.52,2.62,5.58,6.27,5.58a65.75,65.75,0,0,0,8.43-.61l.42,3.74a58.87,58.87,0,0,1-10.15.86c-7.88,0-9.95-5.11-9.95-12.08,0-8.53,2.64-12.06,10.47-12.06,8.46,0,10.27,4.46,10.27,11.47,0,.56,0,1.14-.07,1.74-2.69.47-8.3,1-11.55,1.17Zm4.59-3.65c1.73-.08,4.45-.3,6.07-.52a10.24,10.24,0,0,0,.05-1.1c0-3.58-1.32-5.53-5.22-5.53-5,0-5.63,3.13-5.63,7.38Z"/></svg>
+    <svg id="triflame" class="fade" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 11.1 18.5" style="enable-background:new 0 0 11.1 18.5;" xml:space="preserve"><style type="text/css"> .st0{fill:#FFFFFF;} </style> <path class="st0" d="M5.7,18.3c-0.6-0.3-1.1-0.7-1.5-1.2c-0.4-0.5-0.8-1.1-1-1.8c-0.2-0.7-0.4-1.4-0.4-2.2c0-4.6,3.8-7,3.4-11.6 c0-0.3,0-0.5-0.1-0.8C5.9,0.5,5.8,0.3,5.7,0.2c0.6,0.3,1.1,0.7,1.5,1.2c0.4,0.5,0.8,1.1,1,1.8c0.2,0.7,0.4,1.4,0.4,2.2 c0,3.9-3.6,6.8-3.6,11c0,0.4,0.1,0.8,0.2,1.1C5.3,17.8,5.4,18.1,5.7,18.3"/> <path class="st0" d="M9.1,18.1c-0.4-0.2-0.7-0.5-1-0.8c-0.3-0.3-0.5-0.7-0.7-1.2c-0.2-0.4-0.2-0.9-0.2-1.5c0-3.1,2.8-4.8,2.4-8.7 c0.5,0.5,1,1.4,1.3,2C10.9,8.3,11,8.8,11,9.3c0,2.6-2.4,4.6-2.4,7.4c0,0.3,0,0.5,0.1,0.7C8.8,17.7,8.9,17.9,9.1,18.1"/> <path class="st0" d="M2,12.9c-0.4-0.2-0.7-0.5-1-0.8c-0.3-0.3-0.5-0.7-0.7-1.2C0.2,10.4,0.1,10,0.1,9.4c0-3.1,2.8-4.8,2.4-8.7 c0.5,0.5,1,1.4,1.3,2C3.9,3.2,4,3.6,4,4.2c0,2.6-2.4,4.6-2.4,7.4c0,0.3,0,0.5,0.1,0.7C1.8,12.5,1.9,12.7,2,12.9"/> </svg>
+    <div>You have been logged out.</div>
+    <button class="green-button" id="hcLoginButton">Log back in</button>
+</div>
+
+<br>
+<br>
+<br>
+
+:::
+##### How to Implement the Logout Screen
+
+#### 1. Implement the markup and css according to your application's set up
+Some logout screens are within the context of the angular application, while others live outside of it in a static HTML file. The markup provided will work for either, but if your logout case stays within the context of angular, you'll have the CSS already available via the cashmere styles, and you can use the `hc-button` component rather than a standard HTML button.
+
+Additionaly, the messaging on the button and just above it can change according to the use case. If you would like to more specific for a timeout case versus a manual logout you're encouraged to do so.
+
+#### 2. Add your logo.
+Replace the Cashmere logo with your own app's logo. The design team can provide this for you if you do not already have it. You can reference the file from your assets folder, inject SVG code directly, or use base64 encoding in a css background image.
+
+#### 3. Wire up the login button.
+The optimal experience is to have the "log back in" button take the user back where they were last within your application. This information can be passed to the logout page, or you can try looking for that information via javascript. An example:
+
+```javascript
+document.getElementById('hcLoginButton').addEventListener('click', function () {
+    if (document.referrer.startsWith(document.location.origin)) {
+        // if we landed on logout page from another page within the app (same origin),
+        // lets navigate back where we were
+        history.back();
+    } else {
+        // otherwise, navigate to the home page
+        window.location.href = document.location.origin;
+    }
+});
+```
+:::
+
+
+:::
+
+##### Example HTML and CSS
+
+```html
+<style type="text/css">
+    #hcLogout { font-family: 'Open Sans', Arial, Helvetica, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; top: 0px; left: 0px; position: fixed; height: 100%; width: 100%; margin: 0; background-color: #2e3946; color: #fff; font-size: 14px; }
+    #hcLogout div { margin-bottom: 15px; }
+    #logo { width: auto; height: 30px; background-size: cover; background-repeat: no-repeat; }
+    #triflame { height: 50px; width: 50px; margin: 10px 0 15px; }
+    .green-button { min-width: 215px; font-size: 15px; line-height: 35px; touch-action: manipulation; cursor: pointer; border-radius: 5px; background-color: #00a859; color: #ffffff; border: none; }
+    .green-button:hover { background-color: #05864a; }
+</style>
+<div id="hcLogout">
+    <svg id="logo" data-name="AppLogo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 747.7 110.52"><!-- your logo SVG code --></svg>
+    <svg id="triflame" class="fade" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 11.1 18.5" style="enable-background:new 0 0 11.1 18.5;" xml:space="preserve"><style type="text/css"> .st0{fill:#FFFFFF;} </style> <path class="st0" d="M5.7,18.3c-0.6-0.3-1.1-0.7-1.5-1.2c-0.4-0.5-0.8-1.1-1-1.8c-0.2-0.7-0.4-1.4-0.4-2.2c0-4.6,3.8-7,3.4-11.6 c0-0.3,0-0.5-0.1-0.8C5.9,0.5,5.8,0.3,5.7,0.2c0.6,0.3,1.1,0.7,1.5,1.2c0.4,0.5,0.8,1.1,1,1.8c0.2,0.7,0.4,1.4,0.4,2.2 c0,3.9-3.6,6.8-3.6,11c0,0.4,0.1,0.8,0.2,1.1C5.3,17.8,5.4,18.1,5.7,18.3"/> <path class="st0" d="M9.1,18.1c-0.4-0.2-0.7-0.5-1-0.8c-0.3-0.3-0.5-0.7-0.7-1.2c-0.2-0.4-0.2-0.9-0.2-1.5c0-3.1,2.8-4.8,2.4-8.7 c0.5,0.5,1,1.4,1.3,2C10.9,8.3,11,8.8,11,9.3c0,2.6-2.4,4.6-2.4,7.4c0,0.3,0,0.5,0.1,0.7C8.8,17.7,8.9,17.9,9.1,18.1"/> <path class="st0" d="M2,12.9c-0.4-0.2-0.7-0.5-1-0.8c-0.3-0.3-0.5-0.7-0.7-1.2C0.2,10.4,0.1,10,0.1,9.4c0-3.1,2.8-4.8,2.4-8.7 c0.5,0.5,1,1.4,1.3,2C3.9,3.2,4,3.6,4,4.2c0,2.6-2.4,4.6-2.4,7.4c0,0.3,0,0.5,0.1,0.7C1.8,12.5,1.9,12.7,2,12.9"/> </svg>
+    <div>You have been logged out.</div>
+    <button class="green-button" id="hcLoginButton">Log back in</button>
+</div>
+```

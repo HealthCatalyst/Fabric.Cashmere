@@ -16,7 +16,7 @@ const routes: Routes = [
                 component: MarkdownContentComponent,
                 data: {
                     title: 'Launch Screen',
-                    category: 'Login',
+                    category: 'Screens & Messaging',
                     document: require('raw-loader!../../../guides/styles/launch-screen.md')
                 }
             },
@@ -24,9 +24,18 @@ const routes: Routes = [
                 path: 'login',
                 component: MarkdownContentComponent,
                 data: {
-                    title: 'Login Form',
-                    category: 'Login',
+                    title: 'Login Screen',
+                    category: 'Screens & Messaging',
                     document: require('raw-loader!../../../guides/styles/login.md')
+                }
+            },
+            {
+                path: 'logout',
+                component: MarkdownContentComponent,
+                data: {
+                    title: 'Logout Screen',
+                    category: 'Screens & Messaging',
+                    document: require('raw-loader!../../../guides/styles/logout.md')
                 }
             },
             {
@@ -34,19 +43,19 @@ const routes: Routes = [
                 component: MarkdownContentComponent,
                 data: {
                     title: 'Error Pages',
-                    category: 'Login',
+                    category: 'Screens & Messaging',
                     document: require('raw-loader!../../../guides/styles/error.md')
                 }
             },
             {
                 path: 'ie-support',
                 component: IESupportComponent,
-                data: {title: 'IE Support Messaging', category: 'Login'}
+                data: {title: 'IE Support Messaging', category: 'Screens & Messaging'}
             },
             {
                 path: 'about',
                 component: AboutModalComponent,
-                data: {title: 'About Modal', category: 'User Interface'}
+                data: {title: 'About Modal', category: 'Screens & Messaging'}
             },
             {
                 path: 'breadcrumbs',
