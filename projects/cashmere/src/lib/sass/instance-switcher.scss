@@ -13,6 +13,8 @@
 
 @mixin hc-instance-container() {
     flex: 1 1 auto;
+    display: flex;
+    align-items: center;
 }
 
 @mixin hc-instance-chip() {
