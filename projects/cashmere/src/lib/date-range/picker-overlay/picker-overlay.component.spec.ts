@@ -78,6 +78,19 @@ describe('RangeComponent', () => {
             expect(component.__invalidRangeErrorMessage).toBe("You must choose a date.");
         }));
 
+        describe('_fromDateIsRequired == false && _toDateIsRequired == false', () => {
+            beforeEach(() => {
+                component._fromDateIsRequired = false;
+                component._toDateIsRequired = false;
+            });
+
+            it('will mark the range valid if both dates are null', waitForAsync(() => {
+                component._validateRange();
+                expect(component._rangeIsInvalid).toBeFalsy();
+                expect(component.__invalidRangeErrorMessage).toBe(null);
+            }));
+        });
+
         describe('_fromDateIsRequired == false', () => {
             beforeEach(() => {
                 component._fromDateIsRequired = false;

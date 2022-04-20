@@ -101,19 +101,20 @@
     &#125;
         </code></pre>
 
-        <h4>2. In your <code>index.html</code>, before importing other scripts:</h4>
+        <h4>2. In your <code>index.html</code>, before importing other scripts, reference the ie-unsupported.js script:</h4>
         <pre><code>
     &lt;head&gt;
 
         ...
 
-        &lt;!-- Show "No IE Support" message as needed --&gt;
+        &lt;!-- Show "No IE Support" message as needed. --&gt;
         &lt;script type=&#39;text/javascript&#39; src=&#39;scripts/ie-unsupported.js&#39;&gt;&lt;/script&gt;
 
         ...
 
     &lt;/head&gt;
         </code></pre>
+        <p class="hc-font-em">Note: The path you use to reference this script may vary depending on your build system or architecture.</p>
     </hc-tile>
 
     <hc-feedback-form></hc-feedback-form>

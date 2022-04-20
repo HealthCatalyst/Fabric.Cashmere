@@ -159,5 +159,13 @@
         "id": "measurable",
         "usageDoc": true,
         "hideApi": false
+    },
+    "slider": {
+        "category": "forms",
+        "name": "Slider",
+        "examples": ["slider-single", "slider-range"],
+        "id": "slider",
+        "usageDoc": true,
+        "hideApi": false
     }
 }

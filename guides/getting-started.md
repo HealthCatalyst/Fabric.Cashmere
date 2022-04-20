@@ -22,11 +22,11 @@ npm install --save @angular/cdk@12.2.13
 - [Font Awesome](https://fontawesome.com) - Recommended icon set. *(For healthcare-specific iconography, see step 3.)*
 - [Noto Sans](https://fonts.google.com/specimen/Noto+Sans) - Recommended font.
 - [Ng-select](https://github.com/ng-select/ng-select) - Needed only if using the multiselect/typeahead component.
-
+- [Ngx-slider](https://github.com/angular-slider/ngx-slider) - Needed only if using the slider component.
 
 
 ```BASH
-npm install --save font-awesome notosans-fontface @ng-select/ng-select
+npm install --save font-awesome notosans-fontface @ng-select/ng-select @angular-slider/ngx-slider
 ```
 :::
 

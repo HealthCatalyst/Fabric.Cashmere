@@ -1,0 +1,47 @@
+@import './colors';
+@import './variables';
+
+@mixin hc-slider() {
+    width: 100%;
+}
+
+@mixin hc-slider-limit-text() {
+    color: $text;
+}
+
+@mixin hc-slider-pointer() {
+    background-color: $primary-brand;
+
+    &:focus {
+        outline: none;
+        background-color: $dark-blue;
+        box-shadow: 0 0 4px 2px transparentize($primary-brand, 0.4);
+    }
+}
+
+@mixin hc-slider-pointer-invalid() {
+    background-color: $error;
+
+    &:focus {
+        outline: none;
+        background-color: $ruby-red;
+        box-shadow: 0 0 4px 2px transparentize($error, 0.4);
+    }
+}
+
+@mixin hc-slider-bubble() {
+    min-height: 25px;
+    color: $text;
+}
+
+@mixin hc-slider-pointer-active() {
+    background-color: $white;
+}
+
+@mixin hc-slider-selection() {
+    background: $primary-brand;
+}
+
+@mixin hc-slider-selection-invalid() {
+    background: $error;
+}
