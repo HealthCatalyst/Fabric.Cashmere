@@ -11,7 +11,7 @@
                 [trigger]="_tooltipText.instanceTrigger"
                 class="hc-instance-chip"
                 [class.hc-instance-selected]="_isSelected(instance.instanceKey, false, i)"
-                [hasCloseButton]="instance.instanceKey !== _selectedKey"
+                hasCloseButton="false"
                 (click)="_instanceClick(instance.instanceKey)"
                 (closeClick)="_instanceClose(instance.instanceKey, $event)">
                 {{instance.displayText}}
@@ -19,6 +19,7 @@
                     hcIconSm
                     fontSet="fa"
                     fontIcon="fa-times"
+                    *ngIf="instances.length > 1"
                     (click)="_instanceClose(instance.instanceKey, $event)">
                 </hc-icon>
             </hc-chip>
