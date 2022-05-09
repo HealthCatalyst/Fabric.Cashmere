@@ -1,18 +1,22 @@
-import { Component, AfterViewInit, ChangeDetectorRef, HostListener, ViewChild, ElementRef } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { SearchService } from '../shared/search.service';
-import { PageEvent } from '@healthcatalyst/cashmere';
-import { ActivatedRoute } from '@angular/router';
+import {Component, AfterViewInit, ChangeDetectorRef, HostListener, ViewChild, ElementRef} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {SearchService} from '../shared/search.service';
+import {PageEvent} from '@healthcatalyst/cashmere';
+import {ActivatedRoute} from '@angular/router';
+import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
 
 @Component({
     selector: 'hc-search-results',
     templateUrl: './search-results.component.html',
     styleUrls: ['./search-results.component.scss']
 })
-
 export class SearchResultsComponent implements AfterViewInit {
-
-    constructor(private route: ActivatedRoute, private ref: ChangeDetectorRef, private searchService: SearchService) { }
+    constructor(
+        private route: ActivatedRoute,
+        private ref: ChangeDetectorRef,
+        private searchService: SearchService,
+        private appInsights: ApplicationInsightsService
+    ) {}
 
     @ViewChild('pagContainer')
     pagContainer: ElementRef;
@@ -21,7 +25,7 @@ export class SearchResultsComponent implements AfterViewInit {
     pagWidth = 'md';
     pagSize = 5;
     pagNum = 1;
-    searchBarContent: FormControl = new FormControl("");
+    searchBarContent: FormControl = new FormControl('');
     searchResultsData;
     searchDisplay;
     length;
@@ -44,23 +48,23 @@ export class SearchResultsComponent implements AfterViewInit {
     });
 
     searchIcons = {
-        'components': { icon: 'fa-code' },
-        'guides': { icon: 'fa-graduation-cap' },
-        'foundations': { icon: 'fa-cogs' },
-        'bits': { icon: 'fa-puzzle-piece' },
-        'content': { icon: 'fa-file-text-o' },
-        'analytics': { icon: 'fa-bar-chart' }
+        components: {icon: 'fa-code'},
+        guides: {icon: 'fa-graduation-cap'},
+        foundations: {icon: 'fa-cogs'},
+        bits: {icon: 'fa-puzzle-piece'},
+        content: {icon: 'fa-file-text-o'},
+        analytics: {icon: 'fa-bar-chart'}
     };
 
     @HostListener('window:resize')
     _pagResize(): void {
-        this.pagWidth = (this.pagContainer.nativeElement.offsetWidth < 522) ? 'sm' : 'md';
+        this.pagWidth = this.pagContainer.nativeElement.offsetWidth < 522 ? 'sm' : 'md';
     }
 
     ngAfterViewInit(): void {
         // String lists that take the values from the categories and types FormGroups
-        let filterValues: string[] = ["foundations", "components", "guides", "bits", "content", "analytics"];
-        let typeFilterValues: string[] = ["doc", "example", "api", "usage", "persona"];
+        let filterValues: string[] = ['foundations', 'components', 'guides', 'bits', 'content', 'analytics'];
+        let typeFilterValues: string[] = ['doc', 'example', 'api', 'usage', 'persona'];
 
         // Listens for changes in the categories FormGroup
         this.categories.valueChanges.subscribe(categoryValues => {
@@ -92,12 +96,12 @@ export class SearchResultsComponent implements AfterViewInit {
         });
 
         // Listens for changes inside the search bar and returns the value when there are changes
-        this.searchBarContent.valueChanges.subscribe((val) => {
+        this.searchBarContent.valueChanges.subscribe(val => {
             // Checks to make sure the search value is not empty or undefined
             if (val !== '' && val !== undefined) {
                 const res = this.searchService.miniSearch.search(val, {
                     // Checks every result that matches the search value
-                    filter: (result) => {
+                    filter: result => {
                         let isCategory = false;
                         let isType = false;
                         // Goes through each result and checks if the results category
@@ -137,11 +141,11 @@ export class SearchResultsComponent implements AfterViewInit {
         //  Gets the search parameter value from the url
         this.route.queryParams.subscribe(params => {
             //  Sets the value of the searchBarContent to the search parameter value
-            if ( this.searchService.loaded.value ) {
+            if (this.searchService.loaded.value) {
                 this.searchBarContent.setValue(params['search']);
             } else {
-                const searchSub = this.searchService.isLoaded.subscribe( value => {
-                    if ( value ) {
+                const searchSub = this.searchService.isLoaded.subscribe(value => {
+                    if (value) {
                         this.searchBarContent.setValue(params['search']);
                         searchSub.unsubscribe();
                     }
@@ -158,7 +162,7 @@ export class SearchResultsComponent implements AfterViewInit {
         if (this.searchBarContent.value !== '') {
             const res = this.searchService.miniSearch.search(this.searchBarContent.value, {
                 // Checks every result that matches the search value
-                filter: (result) => {
+                filter: result => {
                     let isCategory = false;
                     let isType = false;
                     // Goes through each result and checks if the results category
@@ -202,7 +206,11 @@ export class SearchResultsComponent implements AfterViewInit {
     }
 
     resetFilters(): void {
-        this.categories.setValue({ components: true, guides: true, foundations: true, bits: true });
-        this.types.setValue({ doc: true, example: true, api: true, usage: true });
+        this.categories.setValue({components: true, guides: true, foundations: true, bits: true});
+        this.types.setValue({doc: true, example: true, api: true, usage: true});
+    }
+
+    logSearch(): void {
+        this.appInsights.logSiteSearch(this.searchBarContent.value);
     }
 }
