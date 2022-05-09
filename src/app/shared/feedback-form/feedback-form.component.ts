@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {NavigationEnd, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
@@ -13,13 +12,12 @@ import {ApplicationInsightsService} from '../application-insights/application-in
 })
 export class FeedbackFormComponent implements OnInit, OnDestroy {
     feedbackForm: FormGroup;
-    scriptURL = 'https://script.google.com/macros/s/AKfycby91RSaTB9bknujdz0nj021jGaeyVeg1jPQHikIptuhRKeAQwfdvrqIEQ/exec';
     notHelpful = false;
     thankYouMsg = false;
     private appInsights: ApplicationInsightsService;
     private unsubscribe = new Subject<void>();
 
-    constructor(private httpClient: HttpClient, private router: Router) {
+    constructor(private router: Router) {
         this.appInsights = new ApplicationInsightsService();
 
         this.router.events.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
@@ -71,13 +69,7 @@ export class FeedbackFormComponent implements OnInit, OnDestroy {
             this.feedbackForm.controls.yourSuggestions.value ? this.feedbackForm.controls.yourSuggestions.value : ''
         );
 
-        this.httpClient.post(this.scriptURL, formData).subscribe(
-            res => console.log(res),
-            err => console.log(err)
-        );
-
         this.appInsights.logFeedback( formData );
-
         this.feedbackForm.reset();
     }
 

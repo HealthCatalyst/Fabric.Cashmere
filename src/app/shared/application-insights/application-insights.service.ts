@@ -27,6 +27,24 @@ export class ApplicationInsightsService {
         }
     }
 
+    logSiteSearch( query: string ): void {
+        if ('instrumentationKey' in environment) {
+            this.appInsights.trackEvent({name: 'Site Search', properties: {query: query}});
+        }
+    }
+
+    logTermSearch( query: string ): void {
+        if ('instrumentationKey' in environment) {
+            this.appInsights.trackEvent({name: 'Term Search', properties: {query: query}});
+        }
+    }
+
+    logTemplateDownload( template: string ): void {
+        if ('instrumentationKey' in environment) {
+            this.appInsights.trackEvent({name: 'Template Download', properties: {template: template}});
+        }
+    }
+
     logEvent(trigger: string, target: string): void {
         if ('instrumentationKey' in environment) {
             this.appInsights.trackEvent({name: 'Example Click', properties: {example: trigger, target: target}});

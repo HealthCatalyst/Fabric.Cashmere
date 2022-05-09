@@ -7,7 +7,8 @@ import {PaginationComponent, HcTableDataSource, TabComponent, TabSetComponent} f
 import {SectionService} from 'src/app/shared/section.service';
 import {BaseDemoComponent} from '../../../shared/base-demo.component';
 import {IUsage, usageAttributesMapping} from '../usage';
-import { string } from 'yargs';
+import {ApplicationInsightsService} from '../../../shared/application-insights/application-insights.service';
+
 
 @Component({
     selector: 'hc-usage-list',
@@ -44,7 +45,8 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         sectionService: SectionService,
         private fb: FormBuilder,
         private httpClient: HttpClient,
-        private googleSheetsDbService: GoogleSheetsDbService
+        private googleSheetsDbService: GoogleSheetsDbService,
+        private appInsights: ApplicationInsightsService
     ) {
         super(sectionService);
     }
@@ -60,6 +62,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         const filterStr = searchTerm;
         if (filterStr) {
             this.dataSource.filter = filterStr.trim().toLowerCase();
+            this.appInsights.logTermSearch( this.dataSource.filter );
         } else {
             this.dataSource.filter = ' ';
         }

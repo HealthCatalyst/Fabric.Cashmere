@@ -26,7 +26,7 @@
         </div>
     </hc-navbar-dropdown>
     <hc-navbar-link uri="/analytics" linkText="Analytics"></hc-navbar-link>
-    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-search" [hcPop]="search" (click)="setInputFocus()"></hc-icon>
+    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-search" [hcPop]="search" (click)="setInputFocus()" (popoverClosed)="logSearch()"></hc-icon>
     <a class="hc-navbar-icon" title="View on GitHub" href="https://github.com/HealthCatalyst/Fabric.Cashmere" target="blank">
         <hc-icon class="hc-navbar-external-link" fontSet="fa" fontIcon="fa-github"></hc-icon>
     </a>

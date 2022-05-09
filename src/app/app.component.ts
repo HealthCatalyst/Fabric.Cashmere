@@ -6,6 +6,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { SearchResult } from 'minisearch';
+import { ApplicationInsightsService } from './shared/application-insights/application-insights.service';
 
 @Component({
     selector: 'hc-root',
@@ -17,6 +18,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     @ViewChild('search') search: HcPopComponent;
     @ViewChild('searchInput') input: ElementRef;
 
+    searchUpdated = false;
     navSearchBar = new FormControl('');
     webActive = false;
     private unsubscribe = new Subject<void>();
@@ -33,7 +35,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         'analytics': { icon: 'fa-bar-chart' }
     };
 
-    constructor( private router: Router, private searchService: SearchService ) {
+    constructor( private router: Router, private searchService: SearchService, private appInsights: ApplicationInsightsService ) {
         this.router.events.pipe(takeUntil(this.unsubscribe)).subscribe(event => {
             if (event instanceof NavigationEnd) {
                 this.webActive = event.url.includes( '/web' );
@@ -46,6 +48,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
             if (val !== '') {
                 const tempResults = this.getItems(val);
                 this.searchResults = tempResults.slice(0, 5);
+                this.searchUpdated = true;
             } else {
                 this.searchResults = [];
             }
@@ -65,6 +68,13 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
     setInputFocus(): void {
         this.input.nativeElement.focus();
+    }
+
+    logSearch(): void {
+        if ( this.searchUpdated ) {
+            this.appInsights.logSiteSearch( this.navSearchBar.value );
+        }
+        this.searchUpdated = false;
     }
 
     ngOnDestroy(): void {
