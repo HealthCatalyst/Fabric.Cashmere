@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DocItem, DocumentItemsService, DocItemType, DocItemCategory} from '../core/document-items.service';
+import {DocItem, DocumentItemsService, DocItemCategory} from '../core/document-items.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {takeUntil, tap, map} from 'rxjs/operators';
-import {Subject, merge} from 'rxjs';
+import {Subject} from 'rxjs';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
 
 @Component({
@@ -44,7 +44,6 @@ export class ComponentsComponent implements OnInit, OnDestroy {
     activeItem: DocItem | undefined;
     activeCategory = '';
     selectOptions: Array<string> = [];
-    docType: DocItemType;
     private unsubscribe = new Subject<void>();
     private appInsights: ApplicationInsightsService;
 
@@ -53,23 +52,16 @@ export class ComponentsComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        const docType$ = this.activatedRoute.data.pipe(tap(data => (this.docType = data.docType)));
         const id$ = this.activatedRoute.paramMap.pipe(
             map(paramMap => paramMap.get('id') as string),
             tap(id => (this.id = id))
         );
 
-        merge(docType$, id$)
-            .pipe(takeUntil(this.unsubscribe))
-            .subscribe(() => this.loadDocs());
+       id$.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.loadDocs());
     }
 
     loadDocs(): void {
-        if (!this.docType) {
-            return;
-        }
-
-        this.allDocItems = this.docItemService.getDocItems(this.docType);
+        this.allDocItems = this.docItemService.getDocItems();
         const categoriesWithItems = this.categorizedDocItems.filter(c => c.items && c.items.length);
         if (!this.id && categoriesWithItems[0]) {
             const items = categoriesWithItems[0].items
@@ -78,14 +70,14 @@ export class ComponentsComponent implements OnInit, OnDestroy {
         }
         this.activeItem = this.allDocItems.find(i => i.id === this.id);
         if (this.activeItem) {
-            this.appInsights.logPageView(this.activeItem.name, `/web/${this.docType}/` + this.id);
+            this.appInsights.logPageView(this.activeItem.name, `/web/components/` + this.id);
             this.activeCategory = this.activeItem.category;
         }
     }
 
     // Handle nav changes via the sidebar or mobile dropdown
     navUpdate(id: string): void {
-        this.router.navigate([`/web/${this.docType}/` + id]);
+        this.router.navigate([`/web/components/` + id]);
         window.scrollTo(0, 0);
     }
 

@@ -30,7 +30,6 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         'components': { icon: 'fa-code' },
         'guides': { icon: 'fa-graduation-cap' },
         'foundations': { icon: 'fa-cogs' },
-        'bits': { icon: 'fa-puzzle-piece' },
         'content': { icon: 'fa-file-text-o' },
         'analytics': { icon: 'fa-bar-chart' }
     };

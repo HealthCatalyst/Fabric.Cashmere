@@ -24,8 +24,6 @@ interface ExampleModuleInfo extends ExampleInfo {
 
 // paths we'll need later
 const examplesProjectRoot = path.join(__dirname, '../projects/cashmere-examples');
-const bitProjectRoot = path.join(__dirname, '../projects/cashmere-bits');
-const bitComponentRoot = path.join(bitProjectRoot, './src/lib/');
 const examplesRoot = path.join(examplesProjectRoot, 'src/lib');
 const projectTemplateRoot = path.join(examplesProjectRoot, 'src/project-template');
 const assetsRoot = path.join(__dirname, '../src/assets/');
@@ -45,8 +43,6 @@ cleanOutputDirectory();
 const projectTemplateFiles = getStackBlitzProjectTemplateFiles();
 const appModuleTemplate = projectTemplateFiles['src/app/app.module.ts'];
 const progress = new ProgressBar('[:bar] :percent :example', {total: exampleList.length + 4});
-progress.tick({example: 'analyzing Bit dependencies'});
-analyzeBitDependencies();
 for (let example of exampleList) {
     progress.tick({example});
     generateStackBlitzFiles(example);
@@ -73,13 +69,6 @@ function getStackBlitzProjectTemplateFiles() {
         prettier.format(cashmereModule, {...prettierConfig, filepath: 'cashmere.module.ts'})
     );
     const exampleFiles: FileHash = {};
-    // add all Bits to the StackBlitz since we can't install them in the StackBlitz
-    glob.sync('**/*', {dot: true, nodir: true, cwd: bitComponentRoot}).reduce((prev, curr) => {
-        const fullPath = path.join(bitComponentRoot, curr);
-        const content = fs.readFileSync(fullPath).toString();
-        prev[`src/bit/${curr}`] = content;
-        return prev;
-    }, exampleFiles);
     // add all project template files to the StackBlitz
     glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce((prev, curr) => {
         const fullPath = path.join(projectTemplateRoot, curr);
@@ -201,11 +190,6 @@ function generateStackBlitzFiles(exampleName: string) {
 
     const allFiles = Object.assign({}, projectTemplateFiles, exampleFiles, {
         'src/app/app.module.ts': prettier.format(appModuleContents, {...prettierConfig, filepath: 'app.module.ts'}),
-        // Bit doesn't work in StackBlitz, so have the CashmereModule reference relative path instead
-        'src/app/cashmere.module.ts': prettier.format(cashmereModule.replace(/@bit\/healthcatalyst\.cashmere\.([^']+)/g, '../bit/$1/$1.module'), {
-            ...prettierConfig,
-            filepath: 'cashmere.module.ts'
-        })
     });
     fs.writeFileSync(
         path.join(outputRoot, `${exampleName}.json`),
@@ -255,18 +239,6 @@ function generateCashmereModule() {
             filepath: 'cashmere.module.ts'
         })
     );
-}
-
-function analyzeBitDependencies() {
-    const bitPackageJson = JSON.parse(fs.readFileSync(path.join(bitProjectRoot, './package.json')).toString());
-    let examplePackageJson = JSON.parse(projectTemplateFiles['package.json']);
-    const exampleDependencies = Object.keys(examplePackageJson.dependencies);
-    Object.keys(bitPackageJson.peerDependencies)
-        .filter(d => !exampleDependencies.includes(d))
-        .forEach(d => {
-            examplePackageJson.dependencies[d] = bitPackageJson.peerDependencies[d];
-        });
-    projectTemplateFiles['package.json'] = prettier.format(JSON.stringify(examplePackageJson), {filepath: 'package.json'});
 }
 
 function generateExampleToComponentMappingsFile() {

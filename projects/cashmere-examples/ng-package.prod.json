@@ -5,12 +5,10 @@
         "entryFile": "src/public_api.ts",
         "umdModuleIds": {
             "@healthcatalyst/cashmere": "@healthcatalyst/cashmere",
-            "@bit/healthcatalyst.cashmere.change-case-pipe/dist": "@bit/healthcatalyst.cashmere.change-case-pipe",
             "sugar": "sugar",
             "lodash": "lodash",
             "@ng-select/ng-select": "@ng-select/ng-select",
-            "@angular-slider/ngx-slider": "@angular-slider/ngx-slider",
-            "change-case": "change-case"
+            "@angular-slider/ngx-slider": "@angular-slider/ngx-slider"
         }
     }
 }

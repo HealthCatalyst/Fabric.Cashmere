@@ -1,17 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import {PipeTransform, Pipe, Inject} from '@angular/core';
-import {ChangeCaseLib, CHANGE_CASE} from './change-case-lib';
+import {PipeTransform, Pipe } from '@angular/core';
+import * as changeCase from 'change-case';
 
 @Pipe({name: 'changeCase', pure: true})
 export class ChangeCasePipe implements PipeTransform {
-    constructor(@Inject(CHANGE_CASE) private changeCase: ChangeCaseLib) {}
-
     transform(value: string, caseFnName: string): string {
         // coerce input to a string
         value = (value === null || value === undefined ? '' : value).toString();
         // retrieve the case transform function from the change-case library
-        const caseFn = (this.changeCase as any)[caseFnName];
+        const caseFn = changeCase[caseFnName];
         if (typeof caseFn !== 'function') {
             throw new Error(
                 `Invalid case function: ${caseFnName}. This pipe only supports function names from the change-case NPM package.`
