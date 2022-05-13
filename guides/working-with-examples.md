@@ -30,7 +30,7 @@ The following files are used in the creation of examples for the Cashmere docume
 
 -   `projects/cashmere-examples/src/lib/{EXAMPLE_NAME}` - the directory containing all files for an example
 -   `src/app/shared/cashmere.module.ts` - the `CashmereModule` for the documentation site, which is also used in the examples
--   `src/app/core/cashmere-components-document-items.json` or `src/app/core/cashmere-bits-document-items.json` - the documentation metadata files
+-   `src/app/core/cashmere-components-document-items.json` - the documentation metadata file
 
 ### Files used in the build process (which you shouldn't need to modify)
 

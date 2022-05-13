@@ -22,9 +22,6 @@ const cashmereComponents = readdirSync(cashmereComponentDir)
         readdirSync(join(cashmereComponentDir, 'pipes')).filter(i => lstatSync(join(join(cashmereComponentDir, 'pipes'), i)).isDirectory())
     );
 
-const bitComponentDir = join(__dirname, '../projects/cashmere-bits/src/lib');
-const bitComponents = readdirSync(bitComponentDir).filter(i => lstatSync(join(bitComponentDir, i)).isDirectory());
-
 const examplesDir = join(__dirname, '../projects/cashmere-examples/src/lib');
 const existingExamples = readdirSync(examplesDir).filter(
     i => lstatSync(join(examplesDir, i)).isDirectory() && readdirSync(join(examplesDir, i)).length
@@ -48,7 +45,7 @@ let args = yargs
         alias: 'c',
         describe: `choose which component's documentation this example will be attached to`,
         required: false,
-        choices: cashmereComponents.concat(bitComponents)
+        choices: cashmereComponents
     })
     .option('name', {
         alias: 'n',
@@ -84,10 +81,9 @@ async function promptForMissingArguments() {
             name: 'component',
             message: `Which component is this example for?`,
             type: 'list',
-            choices: x => (x.category === 'bit' ? bitComponents : cashmereComponents),
+            choices: x => (cashmereComponents),
             // when the component isn't specified in args or the component that is specified in args is invalid for the specified category
-            when: x =>
-                !args.component || !((x.category || args.category) === 'bit' ? bitComponents : cashmereComponents).includes(args.component)
+            when: x => !args.component || !(cashmereComponents).includes(args.component)
         },
         {
             name: 'name',
@@ -197,8 +193,6 @@ async function registerWithDocumentItemsService() {
     let docItemsFile: string;
     if (args.category === 'cashmere') {
         docItemsFile = join(docItemsDirectory, './cashmere-components-document-items.json');
-    } else if (args.category === 'bit') {
-        docItemsFile = join(docItemsDirectory, './cashmere-bits-document-items.json');
     } else {
         console.warn(
             chalk.bold.yellowBright('Warning: cannot register with document items service since an unrecognized category was provided.')

@@ -459,9 +459,9 @@ function readAnalyticsFiles() {
     });
 }
 
-// Index the usage markdown files for components & bits
+// Index the usage markdown files for components
 function readComponentUsage() {
-    glob('projects/{cashmere,cashmere-bits}/src/lib/**/*.md', function (er, files) {
+    glob('projects/{cashmere}/src/lib/**/*.md', function (er, files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -497,7 +497,7 @@ function readComponentUsage() {
                     const pathArray = mapping.path.split('/');
                     let parentName = pathArray[ pathArray.length - 2 ];
                     parentName += mapping.path.includes('pipes') ? '-pipe' : '';
-                    const typeStr = mapping.path.includes('cashmere-bits') ? 'bits' : 'components';
+                    const typeStr = 'components';
                     const sectionObj = object = ({
                         // Set id to the sectionTitle in snake case
                         id: changeCase.snakeCase(sectionTitle),
@@ -569,13 +569,10 @@ function readComponentAPI() {
     });
 }
 
-// Index the code in the examples for components & bits
+// Index the code in the examples for components
 function readComponentExamples() {
     const componentItemsFile = 'src/app/core/cashmere-components-document-items.json';
     const componentExamples = JSON.parse(fs.readFileSync(componentItemsFile).toString());
-
-    const bitItemsFile = 'src/app/core/cashmere-bits-document-items.json';
-    const bitExamples = JSON.parse(fs.readFileSync(bitItemsFile).toString());
 
     glob('projects/cashmere-examples/src/lib/*/*.{ts,html,scss}', function (er, files) {
         files
@@ -594,19 +591,6 @@ function readComponentExamples() {
                 const parentName = pathArray[ pathArray.length - 2 ];
                 let parentItem = '';
                 let typeStr = '';
-
-                const bitKeys = Object.keys( bitExamples );
-                for ( let j = 0; j < bitKeys.length && parentItem === ''; j++ ) {
-                    if ( bitExamples[ bitKeys[j] ].examples ) {
-                        for ( let i = 0; i < bitExamples[ bitKeys[j] ].examples.length; i++ ) {
-                            if ( bitExamples[ bitKeys[j] ].examples[i] === parentName ) {
-                                parentItem = bitKeys[j];
-                                typeStr = 'bits';
-                                break;
-                            }
-                        }
-                    }
-                }
 
                 if ( parentItem === '' ) {
                     const componentKeys = Object.keys( componentExamples );

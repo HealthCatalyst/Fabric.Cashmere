@@ -36,7 +36,7 @@ Alternatively, you may want to consider using [Node Version Manager](https://git
 3.  Run `npm start`. This will fire up the user guide website, and rebuild/reload when changes are made to the user guide site or the Cashmere library.
 4.  To run locally in BrowserStack, run `npm run start-bs` and start up your local testing in BrowserStack. Enter bs-local.com:4200 as your url.
 
-**Note**: There is a current known [build issue](https://github.com/HealthCatalyst/Fabric.Cashmere/issues/1750). After the initial npm run build is executed, executing it a subsequent time will break. If you need to run it again, you can either delete all `node_modules` folders (at the root and the ones under `projects/cashmere-examples`, `project/cashmere-bits`), rerun `npm i` and then run `npm run build`, or, you can simply run `npm run build:dev`. Subsequent runs of the build scripts are typically needed only for refreshing some usage guides, api pages, etc.
+**Note**: There is a current known [build issue](https://github.com/HealthCatalyst/Fabric.Cashmere/issues/1750). After the initial npm run build is executed, executing it a subsequent time will break. If you need to run it again, you can either delete all `node_modules` folders (at the root and the one under `projects/cashmere-examples`), rerun `npm i` and then run `npm run build`, or, you can simply run `npm run build:dev`. Subsequent runs of the build scripts are typically needed only for refreshing some usage guides, api pages, etc.
 
 ### Code Documentation
 

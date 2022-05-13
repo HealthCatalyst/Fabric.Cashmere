@@ -64,12 +64,6 @@ export class GuidesService {
             route: 'working-with-examples',
             category: 'dev',
             document: require('raw-loader!../../../guides/working-with-examples.md')
-        },
-        {
-            title: 'Using Cashmere Bits',
-            route: 'using-cashmere-bits',
-            category: 'using',
-            document: require('raw-loader!../../../guides/using-cashmere-bits.md')
         }
     ];
 }
