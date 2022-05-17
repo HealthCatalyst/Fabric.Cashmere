@@ -461,7 +461,7 @@ function readAnalyticsFiles() {
 
 // Index the usage markdown files for components
 function readComponentUsage() {
-    glob('projects/{cashmere}/src/lib/**/*.md', function (er, files) {
+    glob('projects/cashmere/src/lib/**/*.md', function (er, files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));

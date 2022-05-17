@@ -31,16 +31,9 @@ const currentExampleDependencies = Object.keys(
     JSON.parse(readFileSync(join(__dirname, '../projects/cashmere-examples/package.json')).toString()).peerDependencies
 );
 
-const categories = ['cashmere', 'bit'];
 const exampleTypes = ['simple', 'module'];
 
 let args = yargs
-    .option('category', {
-        alias: 'cat',
-        describe: 'choose a component category ("cashmere" or "bit")',
-        choices: categories,
-        required: false
-    })
     .option('component', {
         alias: 'c',
         describe: `choose which component's documentation this example will be attached to`,
@@ -70,13 +63,6 @@ let args = yargs
 
 async function promptForMissingArguments() {
     const input = await inquirer.prompt([
-        {
-            name: 'category',
-            message: `Is this example for a component in the main Cashmere library or a Cashmere Bit?`,
-            type: 'list',
-            choices: categories,
-            when: () => !args.category
-        },
         {
             name: 'component',
             message: `Which component is this example for?`,
@@ -220,7 +206,7 @@ async function registerWithDocumentItemsService() {
             examples: [],
             id: args.component,
             usageDoc: existsSync(
-                join(args.type === 'bit' ? bitComponentDir : cashmereComponentDir, args.component!, `${args.component}.md`)
+                join(cashmereComponentDir, args.component!, `${args.component}.md`)
             ),
             hideApi: false
         } as DocItem;

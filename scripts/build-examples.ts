@@ -190,11 +190,6 @@ function generateStackBlitzFiles(exampleName: string) {
 
     const allFiles = Object.assign({}, projectTemplateFiles, exampleFiles, {
         'src/app/app.module.ts': prettier.format(appModuleContents, {...prettierConfig, filepath: 'app.module.ts'}),
-        // Bit doesn't work in StackBlitz, so have the CashmereModule reference relative path instead
-        'src/app/cashmere.module.ts': prettier.format(cashmereModule.replace(/@bit\/healthcatalyst\.cashmere\.([^']+)/g, '../bit/$1/$1.module'), {
-            ...prettierConfig,
-            filepath: 'cashmere.module.ts'
-        })
     });
     fs.writeFileSync(
         path.join(outputRoot, `${exampleName}.json`),
