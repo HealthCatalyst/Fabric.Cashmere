@@ -7,8 +7,9 @@ import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {parseBooleanAttribute} from '../../util';
 
+/** Object returned by a `selectedTabChange` event; a -1 index is returned if all tabs are deselected */
 export class TabChangeEvent {
-    constructor(public index: number, public tab: TabComponent) {}
+    constructor(public index: number, public tab: TabComponent | null) {}
 }
 
 export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabComponent[]): void {
@@ -39,7 +40,8 @@ export function invalidDefaultTab(tabVal: string | number): void {
     encapsulation: ViewEncapsulation.None
 })
 export class TabSetComponent implements AfterContentInit {
-    _routerEnabled = false;
+    private _routerEnabled = false;
+    private _routerDeselected = false;
     private _direction = 'vertical';
     private _defaultTab: string | number = 0;
     private _stopTabSubscriptionSubject: Subject<void> = new Subject();
@@ -48,7 +50,7 @@ export class TabSetComponent implements AfterContentInit {
      * This is read from the tab when it is selected.
      * Not used when this component uses routing.
      */
-    tabContent: TemplateRef<unknown>;
+    tabContent: TemplateRef<unknown> | null;
 
     @ContentChildren(TabComponent)
     _tabs: QueryList<TabComponent>;
@@ -141,10 +143,23 @@ export class TabSetComponent implements AfterContentInit {
         this._tabs.forEach(t => t.tabClick.pipe(takeUntil(this._stopTabSubscriptionSubject)).subscribe(() => this._setActive(t)));
     }
 
-    /** Sets the currently selected tab by either its numerical index or `TabComponent` object  */
+    /** Sets the currently selected tab by either its numerical index or `TabComponent` object.
+     * Passing a value of -1 will deselect all tabs in the set. */
     selectTab(tab: number | TabComponent): void {
-        const activeTab = typeof tab === 'number' ? this._tabs.toArray()[tab] : tab;
-        this._setActive(activeTab);
+        if ( tab === -1 ) {
+            this.tabContent = null;
+            if ( this._routerEnabled ) {
+                this._routerDeselected = true;
+            }
+            this._tabs.toArray().forEach(t => t._active = false);
+            this.selectedTabChange.emit(new TabChangeEvent(-1, null));
+        } else {
+            const activeTab = typeof tab === 'number' ? this._tabs.toArray()[tab] : tab;
+            if ( this._routerEnabled ) {
+                this.router.navigate([activeTab.routerLink], {relativeTo: this.route});
+            }
+            this._setActive(activeTab);
+        }
     }
 
     _setActive(tab: TabComponent): void {
@@ -157,6 +172,7 @@ export class TabSetComponent implements AfterContentInit {
         });
         tab._active = true;
         this.tabContent = tab.tabContent;
+        this._routerDeselected = false;
         this.selectedTabChange.emit(new TabChangeEvent(activeIndex, tab));
     }
 
