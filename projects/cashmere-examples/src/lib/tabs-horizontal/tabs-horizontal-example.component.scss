@@ -1,11 +1,16 @@
-.tab-content {
+.example-tab-content {
     padding: 55px 15px;
 }
 
 .tab-demo {
     border: 1px solid #e0e0e0;
+    height: 180px;
 }
 
 .selection-text {
     margin-left: 40px;
+}
+
+.deselect-button {
+    margin-left: 10px;
 }

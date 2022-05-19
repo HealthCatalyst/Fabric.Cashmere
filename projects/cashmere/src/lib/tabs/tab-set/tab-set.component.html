@@ -4,7 +4,9 @@
         <ng-content></ng-content>
     </div>
     <div *ngIf="_addContentContainer" class="hc-tab-content-{{direction}}">
-        <router-outlet *ngIf="_routerEnabled"></router-outlet>
-        <ng-container *ngIf="!_routerEnabled" [ngTemplateOutlet]="tabContent"></ng-container>
+        <div [hidden]="_routerDeselected">
+            <router-outlet *ngIf="_routerEnabled" ></router-outlet>
+        </div>
+        <ng-container *ngIf="!_routerEnabled && tabContent" [ngTemplateOutlet]="tabContent"></ng-container>
     </div>
 </div>
