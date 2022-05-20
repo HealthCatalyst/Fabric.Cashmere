@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
 @NgModule({
     imports: [CommonModule, CashmereModule, FormsModule, ReactiveFormsModule],
     declarations: [ToasterOverviewExampleComponent, ToasterOverviewCustomComponent],
-    exports: [ToasterOverviewExampleComponent, ToasterOverviewCustomComponent],
-    entryComponents: [ToasterOverviewExampleComponent, ToasterOverviewCustomComponent]
+    exports: [ToasterOverviewExampleComponent, ToasterOverviewCustomComponent]
 })
 export class ToasterOverviewExampleModule {}

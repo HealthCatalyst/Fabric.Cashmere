@@ -2,14 +2,6 @@
     "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
     "dest": "../../dist/cashmere-examples",
     "lib": {
-        "entryFile": "src/public_api.ts",
-        "umdModuleIds": {
-            "@healthcatalyst/cashmere": "@healthcatalyst/cashmere",
-            "sugar": "sugar",
-            "lodash": "lodash",
-            "@ng-select/ng-select": "@ng-select/ng-select",
-            "@angular-slider/ngx-slider": "@angular-slider/ngx-slider",
-            "change-case": "change-case"
-        }
+        "entryFile": "src/public_api.ts"
     }
 }

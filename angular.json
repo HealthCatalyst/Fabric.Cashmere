@@ -16,6 +16,27 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
+            "allowedCommonJsDependencies": [
+                "sugar",
+                "highlight.js",
+                "markdown-it-named-headers",
+                "camel-case",
+                "constant-case",
+                "dot-case",
+                "header-case",
+                "is-lower-case",
+                "is-upper-case",
+                "lower-case-first",
+                "no-case",
+                "param-case",
+                "pascal-case",
+                "path-case",
+                "sentence-case",
+                "snake-case",
+                "swap-case",
+                "title-case",
+                "upper-case-first"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "dist/cashmere"
@@ -99,18 +120,6 @@
               ]
             }
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -138,18 +147,6 @@
             "main": "projects/cashmere/src/test.ts",
             "tsConfig": "projects/cashmere/tsconfig.spec.json",
             "karmaConfig": "projects/cashmere/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/cashmere/tsconfig.lib.json",
-              "projects/cashmere/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
@@ -179,18 +176,6 @@
             "main": "projects/cashmere-examples/src/test.ts",
             "tsConfig": "projects/cashmere-examples/tsconfig.spec.json",
             "karmaConfig": "projects/cashmere-examples/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/cashmere-examples/tsconfig.lib.json",
-              "projects/cashmere-examples/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }

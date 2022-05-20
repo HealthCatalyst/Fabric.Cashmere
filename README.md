@@ -1,7 +1,11 @@
 [![Build Status](https://dev.azure.com/healthcatalyst/CAP/_apis/build/status/HealthCatalyst.Fabric.Cashmere?branchName=refs%2Fpull%2F1701%2Fmerge)](https://dev.azure.com/healthcatalyst/CAP/_build/latest?definitionId=2105&branchName=refs%2Fpull%2F1701%2Fmerge)
 ![Cashmere Banner](https://raw.githubusercontent.com/HealthCatalyst/Fabric.Cashmere/master/CashmereBanner.png)
 
-Cashmere is Health Catalyst’s comprehensive design system. The Cashmere Angular UI library includes components and styles for Health Catalyst branded web applications.
+Cashmere is Health Catalyst’s comprehensive design system. It includes:
+-   An Angular UI library with components and styles for Health Catalyst branded web applications
+-   General styling standards (colors, branding, iconography, typography, etc.)
+-   Content development guidelines (copywriting, terminology definitions, and a collection of user personas)
+-   Analytics development guidelines for Qlik, Tableau, and PowerBI
 
 ## Quick Links
 

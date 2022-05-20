@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 @NgModule({
     imports: [CommonModule, CashmereModule, FormsModule, NgSelectModule, ReactiveFormsModule],
     declarations: [MultiselectEmbedCheckboxExampleComponent],
-    exports: [MultiselectEmbedCheckboxExampleComponent],
-    entryComponents: [MultiselectEmbedCheckboxExampleComponent]
+    exports: [MultiselectEmbedCheckboxExampleComponent]
 })
 export class MultiselectEmbedCheckboxExampleModule {}

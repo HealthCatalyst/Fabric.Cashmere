@@ -16,7 +16,7 @@ export interface DocItem {
 export type DocItemType = 'components';
 
 const cashmereComponents: DocItem[] = Object.keys(cashmereComponentsDocumentItems)
-    .filter(name => name !== '$schema')
+    .filter(name => name !== '$schema' && name !== 'default')
     .map(name => ({...cashmereComponentsDocumentItems[name], id: name}));
 
 @Injectable()

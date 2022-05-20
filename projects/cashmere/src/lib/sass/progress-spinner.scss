@@ -1,5 +1,7 @@
 // Styles forked from http://polymer.github.io
 // This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+@use "sass:math";
+
 @import './colors';
 $diameter: 50px;
 
@@ -32,8 +34,8 @@ $circle-clipper-animation-timing: 1333ms;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: $diameter / -2;
-    margin-left: $diameter / -2;
+    margin-top: math.div($diameter, -2);
+    margin-left: math.div($diameter, -2);
 }
 
 .spinner-layer {

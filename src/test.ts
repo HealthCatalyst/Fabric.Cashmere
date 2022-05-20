@@ -7,7 +7,9 @@ import {BrowserDynamicTestingModule, platformBrowserDynamicTesting} from '@angul
 declare const require: { context: (a: string, b: boolean, c: RegExp) => { keys: () => { map: (a: unknown) => unknown }}; };
 
 // First, initialize the Angular testing environment.
-getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
+getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting(), {
+    teardown: { destroyAfterEach: false }
+});
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
