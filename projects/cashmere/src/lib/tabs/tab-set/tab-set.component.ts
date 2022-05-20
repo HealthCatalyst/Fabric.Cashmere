@@ -40,8 +40,8 @@ export function invalidDefaultTab(tabVal: string | number): void {
     encapsulation: ViewEncapsulation.None
 })
 export class TabSetComponent implements AfterContentInit {
-    private _routerEnabled = false;
-    private _routerDeselected = false;
+    _routerEnabled = false;
+    _routerDeselected = false;
     private _direction = 'vertical';
     private _defaultTab: string | number = 0;
     private _stopTabSubscriptionSubject: Subject<void> = new Subject();
