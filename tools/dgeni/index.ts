@@ -46,7 +46,7 @@ const outputDir = path.resolve(projectRootDir, 'dist/docs/api');
 const templateDir = path.resolve(__dirname, './templates');
 
 /** List of Cashmere packages that need to be documented. */
-const cashmerePackages = globSync(path.join(sourceDir, 'lib', '*/')).map(packagePath => path.basename(packagePath));
+const cashmerePackages = globSync(path.join(sourceDir, 'lib', '*/').split(path.sep).join("/")).map(packagePath => path.basename(packagePath));
 
 /**
  * Dgeni package for the Cashmere API docs. This just defines the package, but doesn't

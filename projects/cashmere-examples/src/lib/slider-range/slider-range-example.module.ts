@@ -8,7 +8,6 @@ import { SliderRangeExampleComponent} from './slider-range-example.component';
 @NgModule({
     imports: [CommonModule, CashmereModule, FormsModule, NgxSliderModule, ReactiveFormsModule],
     declarations: [SliderRangeExampleComponent],
-    exports: [SliderRangeExampleComponent],
-    entryComponents: [SliderRangeExampleComponent]
+    exports: [SliderRangeExampleComponent]
 })
 export class SliderRangeExampleModule {}

@@ -8,7 +8,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 @NgModule({
     imports: [CommonModule, CashmereModule, FormsModule, NgxSliderModule, ReactiveFormsModule],
     declarations: [SliderSingleExampleComponent],
-    exports: [SliderSingleExampleComponent],
-    entryComponents: [SliderSingleExampleComponent]
+    exports: [SliderSingleExampleComponent]
 })
 export class SliderSingleExampleModule {}
