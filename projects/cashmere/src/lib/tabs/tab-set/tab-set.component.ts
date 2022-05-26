@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, ContentChildren, Input, Output, ViewEncapsulation} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, ContentChildren, Input, Output, ViewEncapsulation} from '@angular/core';
 import type {QueryList} from '@angular/core';
 import {EventEmitter, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
@@ -39,7 +39,7 @@ export function invalidDefaultTab(tabVal: string | number): void {
     styleUrls: ['./tab-set.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class TabSetComponent implements AfterContentInit {
+export class TabSetComponent implements AfterContentInit, AfterViewInit {
     _routerEnabled = false;
     _routerDeselected = false;
     private _direction = 'vertical';
@@ -110,6 +110,10 @@ export class TabSetComponent implements AfterContentInit {
     private _tight = false;
 
     constructor(private router: Router, private route: ActivatedRoute) {}
+
+    ngAfterViewInit(): void {
+        this.setUpTabs();
+    }
 
     ngAfterContentInit(): void {
         this.setUpTabs();
