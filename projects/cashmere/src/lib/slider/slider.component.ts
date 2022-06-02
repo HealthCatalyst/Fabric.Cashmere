@@ -1,9 +1,8 @@
-import {Component, ContentChild, forwardRef, HostBinding, Input, ViewEncapsulation} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {Component, forwardRef, HostBinding, Input, ViewEncapsulation} from '@angular/core';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
 
-let uniqueId = 1;
+let uniqueSliderId = 1;
 
 /** Cashmere wrapper for the ngx-slider component  */
 @Component({
@@ -16,11 +15,8 @@ let uniqueId = 1;
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SliderComponent)}]
 })
 export class SliderComponent extends HcFormControlComponent {
-    private _uniqueInputId = `hc-select-${uniqueId++}`;
+    private _uniqueInputId = `hc-slider-${uniqueSliderId++}`;
     _componentId = this._uniqueInputId; // contains id for the hc-slider component
-
-    @ContentChild(FormControl)
-    _formControl: FormControl;
 
     @HostBinding('class.hc-slider')
     _hostClass = true;
