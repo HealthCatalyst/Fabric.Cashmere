@@ -206,3 +206,11 @@
     width: 100%;
     text-align: center;
 }
+
+@mixin hc-slide-toggle-background-invalid {
+    background-color: $error !important;
+}
+
+@mixin hc-slide-toggle-invalid-text {
+    color: $white;
+}

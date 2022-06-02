@@ -1,5 +1,9 @@
-import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, forwardRef, HostListener, Input, Optional, Output, Self, ViewEncapsulation} from '@angular/core';
+import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
+import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
+
+let nextToggleId = 1;
 
 export enum buttonSize {
     small = 'sm',
@@ -27,9 +31,12 @@ export function validateLabelType(inputStr: string): void {
     selector: 'hc-slide-toggle',
     templateUrl: 'slide-toggle.component.html',
     styleUrls: ['slide-toggle.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SlideToggleComponent)}]
 })
-export class SlideToggleComponent {
+export class SlideToggleComponent extends HcFormControlComponent {
+    private _uniqueId = `hc-slide-toggle-${nextToggleId++}`;
+    private _form: NgForm | FormGroupDirective | null;
     _disabled = false;
     _insideLabel = 'on';
     _insideLabelTypes = {
@@ -38,6 +45,16 @@ export class SlideToggleComponent {
         'true': ['TRUE','FALSE'],
         'yes': ['YES','NO']
     };
+
+    /** Unique id for the slide toggle element. If none is supplied, one will be auto-generated. */
+    @Input()
+    get id(): string {
+        return this._componentId || this._uniqueId;
+    }
+
+    set id(idVal: string) {
+        this._componentId = idVal ? idVal : this._uniqueId;
+    }
 
     /** An optional label positioned outside of the slide toggle. Use `labelPosition` to set which side. */
     @Input() sideLabel = '';
@@ -63,6 +80,16 @@ export class SlideToggleComponent {
         this._disabled = parseBooleanAttribute(val);
     }
 
+    /** Sets whether this is a required form element */
+    @Input()
+    get required(): boolean {
+        return this._isRequired;
+    }
+
+    set required( requiredVal: boolean | string ) {
+        this._isRequired = parseBooleanAttribute(requiredVal);
+    }
+
     /** Sets the size of slide toggle. Choose from: `'sm' | 'md' | 'lg' |`. *Defaults to `sm`.**/
     @Input() buttonSize: buttonSize = buttonSize.small;
 
@@ -79,6 +106,56 @@ export class SlideToggleComponent {
     @Output() buttonStateChanged = new EventEmitter<boolean>();
 
     _switchChanged(e: boolean): void {
+        this.onChange(e);
         this.buttonStateChanged.emit(e);
+    }
+
+    constructor(
+        @Optional() _parentForm: NgForm,
+        @Optional() _parentFormGroup: FormGroupDirective,
+        @Optional() @Self() public _ngControl: NgControl
+    ) {
+        super();
+
+        this._form = _parentForm || _parentFormGroup;
+        if (this._ngControl != null) {
+            this._ngControl.valueAccessor = this;
+        }
+    }
+
+    writeValue(value: unknown): void {
+        this.buttonState = !!value;
+        this.buttonStateChanged.emit(this.buttonState);
+    }
+
+    public onChange: (value: unknown) => void = () => undefined;
+    public onTouch: () => unknown = () => undefined;
+    public registerOnChange(fn: (value: unknown) => void): void {
+        this.onChange = fn;
+    }
+    public registerOnTouched(fn: () => unknown): void {
+        this.onTouch = fn;
+    }
+
+    ngDoCheck(): void {
+        // This needs to be checked every cycle because we can't subscribe to form submissions
+        if (this._ngControl) {
+            this._updateErrorState();
+        }
+    }
+
+    private _updateErrorState() {
+        const oldState = this._errorState;
+
+        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
+        const newState = !!(
+            this._ngControl &&
+            this._ngControl.invalid &&
+            (this._ngControl.touched || (this._form && this._form.submitted))
+        );
+
+        if (oldState !== newState) {
+            this._errorState = newState;
+        }
     }
 }

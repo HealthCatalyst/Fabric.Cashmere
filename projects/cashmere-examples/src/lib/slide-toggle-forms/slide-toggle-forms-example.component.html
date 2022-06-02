@@ -1,0 +1,18 @@
+<form>
+    <!-- Slide Toggles -->
+    <hc-form-field class="slide-toggle-example">
+        <hc-label>Slide toggle in form field:</hc-label>
+        <hc-slide-toggle buttonSize="md" [formControl]="slideControl" required (buttonStateChanged)="resetValid()"></hc-slide-toggle>
+        <hc-error>The slide toggle is invalid</hc-error>
+    </hc-form-field>
+
+    <!-- Options -->
+    <strong>Slide toggle value: </strong><code>{{slideControl.value}}</code>
+    <br>
+    <button hc-button title="Toggle slide validation" (click)="toggleValid()" type="submit">
+        Toggle Validate
+    </button>
+    <button hc-button title="Toggle slide state" (click)="toggleState()">
+        Toggle State
+    </button>
+</form>

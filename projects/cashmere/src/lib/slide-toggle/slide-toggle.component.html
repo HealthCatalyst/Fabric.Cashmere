@@ -1,5 +1,9 @@
 <div class="hc-slide-toggle-container" [class.hc-slide-toggle-container-reverse]="labelPosition === 'right'">
-    <span [class]="'hc-slide-toggle-label hc-slide-toggle-label-size-' + buttonSize" [class.hc-slide-toggle-disabled-label]="disabled">
+    <span
+        *ngIf="sideLabel"
+        [class]="'hc-slide-toggle-label hc-slide-toggle-label-size-' + buttonSize"
+        [class.hc-slide-toggle-disabled-label]="disabled"
+    >
         {{ sideLabel }}
     </span>
     <div [class]="'hc-slide-toggle hc-slide-toggle-' + buttonSize + ' hc-slide-toggle-'  + buttonStyle">

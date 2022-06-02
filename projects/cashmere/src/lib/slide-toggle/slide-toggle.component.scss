@@ -210,3 +210,17 @@ $large-toggle-buffer: 2px;
 .hc-slide-toggle-background {
     @include hc-slide-toggle-background();
 }
+
+.hc-form-field-invalid {
+    .hc-slide-toggle-checkbox ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-invalid();
+    }
+
+    .hc-slide-toggle-off-text {
+        @include hc-slide-toggle-invalid-text();
+    }
+
+    .hc-slide-toggle:focus-within {
+        @include hc-slide-toggle-focus($error);
+    }
+}
