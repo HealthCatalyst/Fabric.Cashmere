@@ -1,0 +1,212 @@
+@import '../sass/slide-toggle.scss';
+
+$small-toggle-height: 25px;
+$small-toggle-buffer: 1px;
+
+$medium-toggle-height: 35px;
+$medium-toggle-buffer: 2px;
+
+$large-toggle-height: 40px;
+$large-toggle-buffer: 2px;
+
+.hc-slide-toggle-disabled {
+    @include hc-slide-toggle-disabled();
+}
+
+.hc-slide-toggle-disabled-label {
+    @include hc-slide-toggle-disabled-label();
+}
+
+.hc-slide-toggle-container {
+    @include hc-slide-toggle-container();
+}
+
+.hc-slide-toggle-label {
+    @include hc-slide-toggle-label();
+}
+
+.hc-slide-toggle-label-size-sm {
+    @include hc-slide-toggle-label-size-sm();
+}
+
+.hc-slide-toggle-label-size-md {
+    @include hc-slide-toggle-label-size-md();
+}
+
+.hc-slide-toggle-label-size-lg {
+    @include hc-slide-toggle-label-size-lg();
+}
+
+.hc-slide-toggle {
+    @include hc-slide-toggle();
+}
+
+.hc-slide-toggle-blue {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($blue);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($blue);
+    }
+}
+
+.hc-slide-toggle-purple {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($purple);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($purple);
+    }
+}
+
+.hc-slide-toggle-green {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($green);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($green);
+    }
+}
+
+.hc-slide-toggle-sm {
+    @include hc-slide-toggle-height($small-toggle-height);
+}
+
+.hc-slide-toggle-md {
+    @include hc-slide-toggle-height($medium-toggle-height)
+}
+
+.hc-slide-toggle-lg {
+    @include hc-slide-toggle-height($large-toggle-height)
+}
+
+.hc-slide-toggle-knobs-handle-sm {
+    @include hc-slide-toggle-knobs-handle($small-toggle-height, $small-toggle-buffer);
+}
+
+.hc-slide-toggle-knobs-handle-md {
+    @include hc-slide-toggle-knobs-handle($medium-toggle-height, $medium-toggle-buffer);
+}
+
+.hc-slide-toggle-knobs-handle-lg {
+    @include hc-slide-toggle-knobs-handle($large-toggle-height, $large-toggle-buffer);
+}
+
+.hc-slide-toggle-checkbox:checked + .hc-slide-toggle-knobs > .hc-slide-toggle-knobs-handle-sm {
+    @include hc-slide-toggle-knobs-handle-checked($small-toggle-height, $small-toggle-buffer);
+}
+
+.hc-slide-toggle-checkbox:checked + .hc-slide-toggle-knobs > .hc-slide-toggle-knobs-handle-md {
+    @include hc-slide-toggle-knobs-handle-checked($medium-toggle-height, $medium-toggle-buffer);
+}
+
+.hc-slide-toggle-checkbox:checked + .hc-slide-toggle-knobs > .hc-slide-toggle-knobs-handle-lg {
+    @include hc-slide-toggle-knobs-handle-checked($large-toggle-height, $large-toggle-buffer);
+}
+
+.hc-slide-toggle-on-text,
+.hc-slide-toggle-off-text {
+    @include hc-slide-toggle-text();
+}
+
+.hc-slide-toggle-hide-label {
+    @include hc-slide-toggle-hide-label();
+}
+
+.hc-slide-toggle-on-text {
+    @include hc-slide-toggle-on-text();
+}
+
+.hc-slide-toggle-off-text {
+    @include hc-slide-toggle-off-text();
+}
+
+.hc-slide-toggle-on-text-padding-sm {
+    @include hc-slide-toggle-on-text-padding-sm();
+}
+
+.hc-slide-toggle-on-text-padding-md {
+    @include hc-slide-toggle-on-text-padding-md();
+}
+
+.hc-slide-toggle-on-text-padding-lg {
+    @include hc-slide-toggle-on-text-padding-lg();
+}
+
+.hc-slide-toggle-off-text-padding-sm {
+    @include hc-slide-toggle-off-text-padding-sm();
+}
+
+.hc-slide-toggle-off-text-padding-md {
+    @include hc-slide-toggle-off-text-padding-md();
+}
+
+.hc-slide-toggle-off-text-padding-lg {
+    @include hc-slide-toggle-off-text-padding-lg();
+}
+
+.hc-slide-toggle-inside-label-container {
+    @include hc-slide-toggle-inside-label-container();
+}
+
+.hc-slide-toggle-inside-label-none {
+    &.hc-slide-toggle-inside-label-sm {
+        @include hc-slide-toggle-inside-label-none-sm();
+    }
+
+    &.hc-slide-toggle-inside-label-md {
+        @include hc-slide-toggle-inside-label-none-md();
+    }
+
+    &.hc-slide-toggle-inside-label-lg {
+        @include hc-slide-toggle-inside-label-none-lg();
+    }
+}
+
+.hc-slide-toggle-inside-label-on,
+.hc-slide-toggle-inside-label-yes {
+    &.hc-slide-toggle-inside-label-sm {
+        @include hc-slide-toggle-inside-label-on-sm();
+    }
+
+    &.hc-slide-toggle-inside-label-md {
+        @include hc-slide-toggle-inside-label-on-md();
+    }
+
+    &.hc-slide-toggle-inside-label-lg {
+        @include hc-slide-toggle-inside-label-on-lg();
+    }
+}
+
+.hc-slide-toggle-inside-label-true {
+    &.hc-slide-toggle-inside-label-sm {
+        @include hc-slide-toggle-inside-label-true-sm();
+    }
+
+    &.hc-slide-toggle-inside-label-md {
+        @include hc-slide-toggle-inside-label-true-md();
+    }
+
+    &.hc-slide-toggle-inside-label-lg {
+        @include hc-slide-toggle-inside-label-true-lg();
+    }
+}
+
+.hc-slide-toggle-container-reverse {
+    @include hc-slide-toggle-container-reverse();
+
+    .hc-slide-toggle-label {
+        @include hc-slide-toggle-label-reverse();
+    }
+}
+
+.hc-slide-toggle-checkbox {
+    @include hc-slide-toggle-checkbox();
+}
+
+.hc-slide-toggle-background {
+    @include hc-slide-toggle-background();
+}
