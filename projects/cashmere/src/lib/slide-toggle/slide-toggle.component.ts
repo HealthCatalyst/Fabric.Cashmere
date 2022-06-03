@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, HostListener, Input, Optional, Output, Self, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, Optional, Output, Self, ViewEncapsulation} from '@angular/core';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
@@ -37,6 +37,7 @@ export function validateLabelType(inputStr: string): void {
 export class SlideToggleComponent extends HcFormControlComponent {
     private _uniqueId = `hc-slide-toggle-${nextToggleId++}`;
     private _form: NgForm | FormGroupDirective | null;
+    _buttonState = true;
     _disabled = false;
     _insideLabel = 'on';
     _insideLabelTypes = {
@@ -100,15 +101,19 @@ export class SlideToggleComponent extends HcFormControlComponent {
     @Input() labelPosition: labelPosition = labelPosition.left;
 
     /** Sets the on/off state of the toggle. Supports two-way binding. */
-    @Input() buttonState = true;
+    @Input()
+    get buttonState(): boolean {
+        return this._buttonState;
+    }
+
+    set buttonState( val: boolean ) {
+        this._buttonState = parseBooleanAttribute(val);
+        this.onChange(this._buttonState);
+        this.buttonStateChanged.emit(this._buttonState);
+    }
 
     /** Event fired with boolean value when the toggle state is changed. */
     @Output() buttonStateChanged = new EventEmitter<boolean>();
-
-    _switchChanged(e: boolean): void {
-        this.onChange(e);
-        this.buttonStateChanged.emit(e);
-    }
 
     constructor(
         @Optional() _parentForm: NgForm,
@@ -125,7 +130,6 @@ export class SlideToggleComponent extends HcFormControlComponent {
 
     writeValue(value: unknown): void {
         this.buttonState = !!value;
-        this.buttonStateChanged.emit(this.buttonState);
     }
 
     public onChange: (value: unknown) => void = () => undefined;
