@@ -1,0 +1,30 @@
+<div class="hc-slide-toggle-container" [class.hc-slide-toggle-container-reverse]="labelPosition === 'right'">
+    <span
+        *ngIf="sideLabel"
+        [class]="'hc-slide-toggle-label hc-slide-toggle-label-size-' + buttonSize"
+        [class.hc-slide-toggle-disabled-label]="disabled"
+    >
+        {{ sideLabel }}
+    </span>
+    <div [class]="'hc-slide-toggle hc-slide-toggle-' + buttonSize + ' hc-slide-toggle-'  + buttonStyle">
+        <div [class.hc-slide-toggle-disabled]="disabled"></div>
+        <div [class]="'hc-slide-toggle-inside-label-container hc-slide-toggle-inside-label-' + insideLabel + ' hc-slide-toggle-inside-label-' + buttonSize">
+            <span [class]="'hc-slide-toggle-on-text hc-slide-toggle-on-text-padding-' + buttonSize" [ngClass]="!buttonState ? 'hc-slide-toggle-hide-label' : ''">
+                {{_insideLabelTypes[insideLabel][0]}}
+            </span>
+            <span [class]="'hc-slide-toggle-off-text hc-slide-toggle-off-text-padding-' + buttonSize" [ngClass]="buttonState ? 'hc-slide-toggle-hide-label' : ''">
+                {{_insideLabelTypes[insideLabel][1]}}
+            </span>
+        </div>
+        <input
+            type="checkbox"
+            class="hc-slide-toggle-checkbox"
+            [(ngModel)]="buttonState"
+            [disabled]="disabled"
+        />
+        <div class="hc-slide-toggle-knobs">
+            <span [class]="'hc-slide-toggle-knobs-handle-' + buttonSize"></span>
+        </div>
+        <div class="hc-slide-toggle-background"></div>
+    </div>
+</div>

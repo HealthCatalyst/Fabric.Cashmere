@@ -1,0 +1,216 @@
+@import './colors';
+@import './mixins';
+
+@mixin hc-slide-toggle-height($buttonHeight) {
+    height: $buttonHeight;
+}
+
+@mixin hc-slide-toggle-knobs-handle($buttonHeight, $knobBuffer) {
+    position: absolute;
+    top: $knobBuffer;
+    transition: 0.2s ease-out all;
+    height: $buttonHeight - ($knobBuffer * 2);
+    width: $buttonHeight - ($knobBuffer * 2);
+    left: $knobBuffer;
+    background-color: $white;
+    z-index: 2;
+    border-radius: 50%;
+}
+
+@mixin hc-slide-toggle-knobs-handle-checked($buttonHeight, $knobBuffer) {
+    left: calc(100% - ($buttonHeight - $knobBuffer));
+    background-color: $white;
+}
+
+@mixin hc-slide-toggle-disabled() {
+    cursor: not-allowed;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $white;
+    z-index: 5;
+    opacity: 50%;
+}
+
+@mixin hc-slide-toggle-disabled-label() {
+    opacity: 50%;
+}
+
+@mixin hc-slide-toggle-container {
+    width: max-content;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+@mixin hc-slide-toggle-label {
+    color: $text;
+    padding-right: 8px;
+}
+
+@mixin hc-slide-toggle-label-size-sm {
+    @include fontSize(14px);
+}
+
+@mixin hc-slide-toggle-label-size-md {
+    @include fontSize(15px);
+}
+
+@mixin hc-slide-toggle-label-size-lg {
+    @include fontSize(17px);
+}
+
+@mixin hc-slide-toggle {
+    position: relative;
+    overflow: hidden;
+    border-radius: 100px;
+}
+
+@mixin hc-slide-toggle-focus( $color ) {
+    box-shadow: 0 0 4px 2px transparentize($color, 0.6);
+}
+
+@mixin hc-slide-toggle-background-color( $color ) {
+    background-color: $color;
+}
+
+@mixin hc-slide-toggle-hide-label {
+    display: none !important;
+}
+
+@mixin hc-slide-toggle-on-text {
+    display: inline;
+    opacity: 100%;
+    color: $white;
+}
+
+@mixin hc-slide-toggle-off-text {
+    color: $text;
+    opacity: 50%;
+    margin-left: auto;
+}
+
+@mixin hc-slide-toggle-background {
+    width: 100%;
+    background-color: $gray-200;
+    transition: 0.2s ease-out all;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+@mixin hc-slide-toggle-checkbox {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+@mixin hc-slide-toggle-container-reverse {
+    flex-direction: row-reverse;
+}
+
+@mixin hc-slide-toggle-label-reverse {
+    padding-right: 0;
+    padding-left: 8px;
+}
+
+@mixin hc-slide-toggle-inside-label-true-sm {
+    width: 66px;
+    @include fontSize(12px);
+}
+
+@mixin hc-slide-toggle-inside-label-true-md {
+    width: 90px;
+    @include fontSize(15px);
+}
+
+@mixin hc-slide-toggle-inside-label-true-lg {
+    width: 100px;
+    @include fontSize(17px);
+}
+
+@mixin hc-slide-toggle-inside-label-on-sm {
+    width: 54px;
+    @include fontSize(12px);
+}
+
+@mixin hc-slide-toggle-inside-label-on-md {
+    width: 75px;
+    @include fontSize(15px);
+}
+
+@mixin hc-slide-toggle-inside-label-on-lg {
+    width: 85px;
+    @include fontSize(17px);
+}
+
+@mixin hc-slide-toggle-inside-label-none-sm {
+    width: 40px;
+}
+
+@mixin hc-slide-toggle-inside-label-none-md {
+    width: 60px;
+}
+
+@mixin hc-slide-toggle-inside-label-none-lg {
+    width: 70px;
+}
+
+@mixin hc-slide-toggle-on-text-padding-sm {
+    padding-right: 20px;
+}
+
+@mixin hc-slide-toggle-on-text-padding-md {
+    padding-right: 29px;
+}
+
+@mixin hc-slide-toggle-on-text-padding-lg {
+    padding-right: 34px;
+}
+
+@mixin hc-slide-toggle-off-text-padding-sm {
+    padding-left: 20px;
+}
+
+@mixin hc-slide-toggle-off-text-padding-md {
+    padding-left: 29px;
+}
+
+@mixin hc-slide-toggle-off-text-padding-lg {
+    padding-left: 34px;
+}
+
+@mixin hc-slide-toggle-inside-label-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@mixin hc-slide-toggle-text {
+    height: max-content;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+}
+
+@mixin hc-slide-toggle-background-invalid {
+    background-color: $error !important;
+}
+
+@mixin hc-slide-toggle-invalid-text {
+    color: $white;
+}
