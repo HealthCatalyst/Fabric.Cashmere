@@ -1,0 +1,64 @@
+<!-- Slide Toggles -->
+<div class="slide-toggle-example">
+    <hc-slide-toggle
+        sideLabel="Small toggle"
+        [disabled]="toggleDisabled.value"
+        [buttonStyle]="toggleStyle.value"
+        [labelPosition]="toggleLabelPos.value"
+        [insideLabel]="toggleText.value"
+    >
+    </hc-slide-toggle>
+</div>
+
+<div class="slide-toggle-example">
+    <hc-slide-toggle
+        sideLabel="Medium toggle"
+        buttonSize="md"
+        [disabled]="toggleDisabled.value"
+        [buttonStyle]="toggleStyle.value"
+        [labelPosition]="toggleLabelPos.value"
+        [insideLabel]="toggleText.value"
+    >
+    </hc-slide-toggle>
+</div>
+
+<div class="slide-toggle-example">
+    <hc-slide-toggle
+        sideLabel="Large toggle"
+        buttonSize="lg"
+        [disabled]="toggleDisabled.value"
+        [buttonStyle]="toggleStyle.value"
+        [labelPosition]="toggleLabelPos.value"
+        [insideLabel]="toggleText.value"
+    >
+    </hc-slide-toggle>
+</div>
+
+<!-- Options -->
+<div class="example-options">
+    <hc-form-field>
+        <hc-label>Toggle style:</hc-label>
+        <hc-select [formControl]="toggleStyle">
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+            <option value="green">Green</option>
+        </hc-select>
+    </hc-form-field>
+    <hc-form-field>
+        <hc-label>Inside Text:</hc-label>
+        <hc-select [formControl]="toggleText">
+            <option value="none">None</option>
+            <option value="on">On/Off</option>
+            <option value="true">True/False</option>
+            <option value="yes">Yes/No</option>
+        </hc-select>
+    </hc-form-field>
+    <hc-form-field>
+        <hc-label>Outside Label Position:</hc-label>
+        <hc-select [formControl]="toggleLabelPos">
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+        </hc-select>
+    </hc-form-field>
+    <hc-checkbox [formControl]="toggleDisabled">Toggle disabled</hc-checkbox>
+</div>
