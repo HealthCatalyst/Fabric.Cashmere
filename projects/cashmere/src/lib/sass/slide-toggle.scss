@@ -18,7 +18,7 @@
 }
 
 @mixin hc-slide-toggle-knobs-handle-checked($buttonHeight, $knobBuffer) {
-    left: calc(100% - ($buttonHeight - $knobBuffer));
+    left: calc(100% - #{$buttonHeight - $knobBuffer});
     background-color: $white;
 }
 
