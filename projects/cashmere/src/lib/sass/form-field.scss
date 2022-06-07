@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import './colors';
 @import './functions';
 @import './variables';
@@ -11,8 +13,8 @@ $prefix-suffix-icon-font-size: 125%;
 $prefix-suffix-icon-line-height: $line-height * 0.87;
 
 $infix-padding: 0.393em;
-$infix-padding-tight: $infix-padding / 2;
-$error-margin-top: 0.4em / $error-font-scale;
+$infix-padding-tight: $infix-padding * 0.5;
+$error-margin-top: math.div(0.4em, $error-font-scale);
 $wrapper-padding-bottom: ($error-margin-top + $line-height) * $error-font-scale;
 
 @mixin hc-form-field() {

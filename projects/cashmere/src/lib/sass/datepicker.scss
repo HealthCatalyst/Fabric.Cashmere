@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import './colors';
 @import './typography';
 @import './functions';
@@ -285,7 +287,7 @@ $hc-calendar-body-label-padding-start: 5% !default;
 // the same amount of padding regardless of the number of columns. We align the header label with
 // the one third mark of the first cell, this was chosen somewhat arbitrarily to make it look
 // roughly like the mock. Half way is too far since the cell text is center aligned.
-$hc-calendar-body-label-side-padding: 33% / 7 !default;
+$hc-calendar-body-label-side-padding: math.div(33%, 7) !default;
 $hc-calendar-body-cell-min-size: 32px !default;
 $hc-calendar-body-cell-content-margin: 5% !default;
 $hc-calendar-body-cell-content-border-width: 1px !default;

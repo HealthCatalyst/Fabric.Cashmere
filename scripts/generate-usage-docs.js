@@ -10,9 +10,9 @@ const outputDir = 'dist/docs/usage';
 md.use(mdnh);
 
 console.log('rendering usage docs from Markdown...')
-glob('projects/@(cashmere|cashmere-bits)/src/lib/**/*.md', function(er, files) {
+glob('projects/@(cashmere)/src/lib/**/*.md', function(er, files) {
     if (!fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir);
+        fs.mkdirSync(outputDir, { recursive: true });
     }
     files
         .map(file => {

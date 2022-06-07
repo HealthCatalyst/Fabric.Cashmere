@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
     imports: [CommonModule, FormsModule, CashmereModule],
     declarations: [PicklistRemoteDataExampleComponent],
-    entryComponents: [PicklistRemoteDataExampleComponent],
     exports: [PicklistRemoteDataExampleComponent],
     providers: [PicklistRemoteDataService]
 })

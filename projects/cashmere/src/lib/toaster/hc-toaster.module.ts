@@ -10,7 +10,6 @@ import {IconModule} from '../icon/icon.module';
     imports: [CommonModule, PortalModule, OverlayModule, IconModule],
     exports: [HcToastComponent],
     declarations: [HcToastComponent],
-    providers: [HcToasterService],
-    entryComponents: [HcToastComponent]
+    providers: [HcToasterService]
 })
 export class ToasterModule {}

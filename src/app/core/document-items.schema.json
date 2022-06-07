@@ -48,13 +48,6 @@
                 "type": "boolean",
                 "examples": [true],
                 "default": false
-            },
-            "npmPackage": {
-                "$id": "#root/npmPackage",
-                "title": "NPM Package?",
-                "type": "string",
-                "examples": ["@bit/healthcatalyst.cashmere.change-case-pipe"],
-                "default": false
             }
         }
     }

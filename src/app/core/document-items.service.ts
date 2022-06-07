@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import * as cashmereComponentsDocumentItems from './cashmere-components-document-items.json';
-import * as cashmereBitsDocumentItems from './cashmere-bits-document-items.json';
 
 export type DocItemCategory = 'forms' | 'nav' | 'layout' | 'buttons' | 'popups' | 'table' | 'pipes';
 
@@ -14,14 +13,11 @@ export interface DocItem {
     npmPackage?: string;
 }
 
-export type DocItemType = 'components' | 'bits';
+export type DocItemType = 'components';
 
 const cashmereComponents: DocItem[] = Object.keys(cashmereComponentsDocumentItems)
-    .filter(name => name !== '$schema')
+    .filter(name => name !== '$schema' && name !== 'default')
     .map(name => ({...cashmereComponentsDocumentItems[name], id: name}));
-const cashmereBits: DocItem[] = Object.keys(cashmereBitsDocumentItems)
-    .filter(name => name !== '$schema')
-    .map(name => ({...cashmereBitsDocumentItems[name], id: name}));
 
 @Injectable()
 export class DocumentItemsService {
@@ -29,8 +25,6 @@ export class DocumentItemsService {
         switch (type) {
             case 'components':
                 return cashmereComponents;
-            case 'bits':
-                return cashmereBits;
             default:
                 throw new Error(`Unrecognized doc type: ${type}`);
         }

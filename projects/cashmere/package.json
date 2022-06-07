@@ -19,11 +19,10 @@
     },
     "typings": "./cashmere.d.ts",
     "peerDependencies": {
-        "@angular/cdk": "^12.2.13",
-        "@angular/common": ">= 12.2.13",
-        "@angular/core": ">= 12.2.13",
-        "@angular/forms": ">= 12.2.13",
-        "core-js": ">= 2.4.0",
+        "@angular/cdk": "^13.3.7",
+        "@angular/common": ">= 13.3.9",
+        "@angular/core": ">= 13.3.9",
+        "@angular/forms": ">= 13.3.9",
         "notosans-fontface": "^1.2.4",
         "rxjs": ">= 6.5.0",
         "zone.js": ">= 0.11.4"

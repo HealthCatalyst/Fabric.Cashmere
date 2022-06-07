@@ -9,7 +9,8 @@ p {
 .group-row {
     background-color: $slate-gray-100;
     color: $offblack;
-    @include fontSize(12px);
+    // 12px. We recommend using a cashmere mixin for generating font sizes. `@include fontSize(12px);`
+    font-size: 0.8571428571rem;
     margin: -8px -10px;
     padding: 5px 20px;
     text-transform: capitalize;

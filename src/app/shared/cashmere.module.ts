@@ -41,7 +41,6 @@ import {
     ToasterModule,
     TypeformSurveyModule
 } from '@healthcatalyst/cashmere';
-import {ChangeCasePipeModule} from '@bit/healthcatalyst.cashmere.change-case-pipe';
 
 @NgModule({
     exports: [
@@ -84,8 +83,7 @@ import {ChangeCasePipeModule} from '@bit/healthcatalyst.cashmere.change-case-pip
         TabsModule,
         TileModule,
         ToasterModule,
-        TypeformSurveyModule,
-        ChangeCasePipeModule
+        TypeformSurveyModule
     ]
 })
 export class CashmereModule { }

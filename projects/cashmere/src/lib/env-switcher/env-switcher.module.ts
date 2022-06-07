@@ -13,7 +13,6 @@ import {ButtonModule} from '../button/button.module';
 @NgModule({
     imports: [CommonModule, PopModule, HttpClientModule, PipesModule, IconModule, ProgressIndicatorsModule, CheckboxModule, ButtonModule],
     declarations: [EnvSwitcherComponent],
-    exports: [EnvSwitcherComponent],
-    entryComponents: [EnvSwitcherComponent]
+    exports: [EnvSwitcherComponent]
 })
 export class EnvSwitcherModule {}

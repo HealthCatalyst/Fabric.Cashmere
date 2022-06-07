@@ -2,11 +2,8 @@
     <hc-subnav class="responsive-subnav" fixedTop="true">
         <div class="subnav-container">
             <span class="subnav-label">
-                <ng-container *ngIf="docType !== 'bits'">
+                <ng-container>
                     <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-code"></hc-icon>Components:
-                </ng-container>
-                <ng-container *ngIf="docType === 'bits'">
-                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-puzzle-piece"></hc-icon>Cashmere Bits:
                 </ng-container>
             </span>
             <span class="subnav-select">
@@ -28,25 +25,10 @@
     <div class="hc-components-left-column">
         <div class="hc-components-nav-container">
             <h2>
-                <ng-container *ngIf="docType !== 'bits'">
+                <ng-container>
                     <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-code"></hc-icon> Components
                 </ng-container>
-                <ng-container *ngIf="docType === 'bits'">
-                    <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-puzzle-piece"></hc-icon> Cashmere Bits
-                </ng-container>
             </h2>
-            <div class="hc-components-chip-wrapper" *ngIf="docType === 'bits'">
-                <hc-chip color="blue" tight="true" width="100%">
-                    <div class="hc-components-chip-content">
-                        <hc-icon fontSet="hc-icons" fontIcon="hci-help" hcIconSm></hc-icon>
-                        What's a Bit?
-                        <p class="hc-components-chip-link">
-                            Learn about Cashmere Bits
-                            <a [routerLink]="'/web/guides/using-cashmere-bits'">in this guide</a>.
-                        </p>
-                    </div>
-                </hc-chip>
-            </div>
             <hc-tile>
                 <div class="hc-components-nav-list">
                     <ng-container *ngFor="let category of categorizedDocItems; let catNum = index">
