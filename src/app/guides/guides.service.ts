@@ -64,6 +64,12 @@ export class GuidesService {
             route: 'working-with-examples',
             category: 'dev',
             document: require('raw-loader!../../../guides/working-with-examples.md')
+        },
+        {
+            title: 'Linking a Local App to Cashmere',
+            route: 'linking-a-local-app-to-cashmere',
+            category: 'dev',
+            document: require('raw-loader!../../../guides/linking-a-local-app-to-cashmere.md')
         }
     ];
 }
