@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_305" data-name="Ellipse 305" cx="100" cy="100" r="100" fill="#00aeff"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.183" y1="0.206" x2="0.512" y2="0.583" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00455f"/>
+      <stop offset="0.37" stop-color="#006d93" stop-opacity="0.631"/>
+      <stop offset="0.801" stop-color="#0099d2" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#00aeef" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="clip-path-2">
+      <circle id="Ellipse_300" data-name="Ellipse 300" cx="122" cy="122" r="122" transform="translate(0 0.111)"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-2" x1="0.183" y1="0.206" x2="0.512" y2="0.583" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00455f"/>
+      <stop offset="0.37" stop-color="#006d93" stop-opacity="0.631"/>
+      <stop offset="0.801" stop-color="#0099d2" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#00aeef" stop-opacity="0.4"/>
+    </linearGradient>
+    <clipPath id="clip-Expert_Data_Collections">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="Expert_Data_Collections" data-name="Expert Data Collections" clip-path="url(#clip-Expert_Data_Collections)">
+    <circle id="Ellipse_299" data-name="Ellipse 299" cx="100" cy="100" r="100" fill="#00aeff"/>
+    <g id="Mask_Group_30" data-name="Mask Group 30" clip-path="url(#clip-path)">
+      <path id="Path_12711" data-name="Path 12711" d="M299.487,188.286,177.406,39.932l-38.994,75.843L55.682,120.4,182.6,248.191C181.334,252.607,299.676,188.412,299.487,188.286Z" transform="translate(-27.214 26.331)" opacity="0.8" fill="url(#linear-gradient)"/>
+    </g>
+    <path id="Union_11" data-name="Union 11" d="M5.233,85.5v-.057H1.816S-16.51,0,63.269,0c.633,0,1.249.005,1.857.016C65.734.005,66.35,0,66.983,0c79.78,0,61.453,85.444,61.453,85.444h-10.2V85.5Z" transform="translate(34.767 47.5)" fill="#365d6e"/>
+    <g id="Group_1066" data-name="Group 1066" transform="translate(-16 0.889)" clip-path="url(#clip-path-2)">
+      <path id="Path_12679" data-name="Path 12679" d="M339.579,180.907,211.615,72.5l-64.521,88.558L82,200.675,204.763,286.9C203.223,292.294,339.81,181.061,339.579,180.907Z" transform="translate(242.244 145.392)" fill="url(#linear-gradient-2)"/>
+    </g>
+    <rect id="Rectangle_520" data-name="Rectangle 520" width="30" height="81" rx="3" transform="translate(52 53)" fill="#86ca8e"/>
+    <rect id="Rectangle_521" data-name="Rectangle 521" width="43" height="100" rx="3" transform="translate(82 34)" fill="#f7a290"/>
+    <rect id="Rectangle_523" data-name="Rectangle 523" width="43" height="11" transform="translate(82 115)" fill="#de836f"/>
+    <path id="Path_12681" data-name="Path 12681" d="M3240.91,1329.336l8.488,75.027h-8.488Z" transform="translate(-3158.91 -1272.363)" opacity="0.216"/>
+    <rect id="Rectangle_530" data-name="Rectangle 530" width="142" height="14" transform="translate(29 132)" fill="#f4da80"/>
+    <rect id="Rectangle_522" data-name="Rectangle 522" width="30" height="52" transform="translate(52 67)" fill="#64ad6d"/>
+    <rect id="Rectangle_524" data-name="Rectangle 524" width="43" height="9" transform="translate(82 42)" fill="#de836f"/>
+    <rect id="Rectangle_525" data-name="Rectangle 525" width="20" height="74" rx="2" transform="translate(125 60)" fill="#2cc0d5"/>
+    <path id="Path_12682" data-name="Path 12682" d="M3282.094,1311.693l7.353,93.37h-7.353Z" transform="translate(-3157.003 -1273.204)" opacity="0.166"/>
+    <rect id="Rectangle_526" data-name="Rectangle 526" width="20" height="4" transform="translate(125 71)" fill="#0691a5"/>
+    <rect id="Rectangle_527" data-name="Rectangle 527" width="20" height="5" transform="translate(125 77)" fill="#0691a5"/>
+    <rect id="Rectangle_528" data-name="Rectangle 528" width="20" height="4" transform="translate(125 112)" fill="#0691a5"/>
+    <rect id="Rectangle_529" data-name="Rectangle 529" width="20" height="4" transform="translate(125 118)" fill="#0691a5"/>
+  </g>
+</svg>

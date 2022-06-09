@@ -38,11 +38,11 @@ _The ™ symbol can be applied to any unregistered trademark_
 - Healthcare.AI Framework
 - HealthCatalyst.AI
 - Healthcare Analytics Summit
-- Health Catalyst Expert Data Collections
-- Health Catalyst Financial Empowerment Suite
-  - Health Catalyst PowerBudget
+- Health Catalyst Business Decision Support
   - Health Catalyst PowerCosting (formerly CORUS Suite)
   - Health Catalyst PowerLabor
+  - Health Catalyst PowerPlanning
+- Health Catalyst Expert Data Collections
 - Health Catalyst Population Health Suite
   - Health Catalyst Care Management Suite
     - Health Catalyst Care Flow
