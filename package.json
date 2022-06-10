@@ -132,7 +132,7 @@
     "punycode": "~1.4.1",
     "raw-loader": "0.5.1",
     "rimraf": "^3.0.2",
-    "semantic-release": "^17.2.3",
+    "semantic-release": "^19.0.3",
     "ts-node": "^5.0.1",
     "typescript": "~4.6.4",
     "typescript-formatter": "^7.0.1",
