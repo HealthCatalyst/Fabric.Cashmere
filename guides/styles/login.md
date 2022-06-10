@@ -58,7 +58,7 @@ The following example does not use angular but a post css Preprocesser is needed
 
 -   Install and set css preprocessor like [gulp sass](https://github.com/dlmanning/gulp-sass) or [webpack with sass](https://github.com/webpack-contrib/sass-loader)
 -   Install cashmere npm package
--   Import styles `@import "~@healthcatalyst/cashmere/scss/login-page";`
+-   Import styles `@import "node_modules/@healthcatalyst/cashmere/scss/login-page";`
 -   Use html markup as needed
 
 ```html
