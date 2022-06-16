@@ -1,6 +1,6 @@
 # Getting Started
 
-###### Last updated January 22, 2021
+###### Last updated June 16, 2022
 
 :::
 ## Step 1: Install npm dependencies.
@@ -8,13 +8,13 @@
 ### A) Install Cashmere and the Angular CDK
 
 ```BASH
-npm install --save @healthcatalyst/cashmere @angular/cdk
+npm install --save @healthcatalyst/cashmere @angular/cdk@13.3.7
 ```
 
 ### B) *(Optional)* Install additional dependencies as needed.
 - [Font Awesome](https://fontawesome.com) - Recommended icon set. *(For healthcare-specific iconography, see step 3.)*
 - [Noto Sans](https://fonts.google.com/specimen/Noto+Sans) - Recommended font.
-- [Ng-select](https://github.com/ng-select/ng-select) - Needed only if using the multiselect/typeahead component.
+- [Ng-select](https://github.com/ng-select/ng-select) - Needed only if using the multiselect/typeahead component. Look [here](https://github.com/ng-select/ng-select) for which version of ng-select to install based on your Angular version.
 - [Ngx-slider](https://github.com/angular-slider/ngx-slider) - Needed only if using the slider component.
 
 
