@@ -5,9 +5,9 @@ $notosans-fontface-path: "node_modules/notosans-fontface/fonts";
 @import "~notosans-fontface/scss/notosans-fontface-allweight";
 
 $hc-icons-font-path: 'node_modules/@healthcatalyst/cashmere/hcicons';
-@import '~@healthcatalyst/cashmere/hcicons/hcicons';
+@import 'node_modules/@healthcatalyst/cashmere/hcicons/hcicons';
 
-@import '~@healthcatalyst/cashmere/scss/cashmere';
+@import 'node_modules/@healthcatalyst/cashmere/scss/cashmere';
 
 // global styles for stackblitz examples
 .demo-button {
