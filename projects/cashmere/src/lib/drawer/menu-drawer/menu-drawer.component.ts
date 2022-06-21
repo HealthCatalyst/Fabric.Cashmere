@@ -41,7 +41,7 @@ const closeStateAnimation = '0.7s .05s ease';
                 })
             ),
             state(
-                'void',
+                'void, close-instant',
                 style({
                     'box-shadow': 'none',
                     visibility: 'hidden'
@@ -49,6 +49,9 @@ const closeStateAnimation = '0.7s .05s ease';
             ),
             transition('void => open-instant', animate('0ms')),
             transition('open-instant => void', animate(openStateAnimation)),
+            transition('open-instant => close-instant', animate('0ms')),
+            transition('open-left => close-instant', animate('0ms')),
+            transition('open-right => close-instant', animate('0ms')),
             transition('void => open-left', [
                 animate('0ms', style({ transform: 'translate3d(-100%, 0, 0)' })),
                 animate(closeStateAnimation)

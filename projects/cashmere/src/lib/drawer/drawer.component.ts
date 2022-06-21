@@ -54,7 +54,7 @@ const closeStateAnimation = '0.7s .05s ease';
                 })
             ),
             state(
-                'void',
+                'void, close-instant',
                 style({
                     'box-shadow': 'none',
                     // overflow override included to prevent Safari from still showing the scrollbar when the drawer is closed
@@ -63,6 +63,9 @@ const closeStateAnimation = '0.7s .05s ease';
                 })
             ),
             transition('void => open-instant', animate('0ms')),
+            transition('open-instant => close-instant', animate('0ms')),
+            transition('open-left => close-instant', animate('0ms')),
+            transition('open-right => close-instant', animate('0ms')),
             transition('open-instant => void', animate(openStateAnimation)),
             transition('void => open-left', [
                 animate('0ms', style({ transform: 'translate3d(-100%, 0, 0)' })),
@@ -85,6 +88,7 @@ const closeStateAnimation = '0.7s .05s ease';
 export class Drawer implements AfterContentInit {
     private _mode = 'push';
     private _align = 'left';
+    _animated = false;
 
     /** Defaults to false. Set to true to disable the closure of drawer by pressing the escape key. */
     @Input() ignoreEscapeKey = false;
@@ -193,15 +197,15 @@ export class Drawer implements AfterContentInit {
     }
 
     @HostBinding('@openState')
-    get _openState(): 'void' | 'open-instant' | 'open-left' | 'open-right' {
+    get _openState(): 'void' | 'open-instant' | 'close-instant'| 'open-left' | 'open-right' {
         if (this._drawerOpened) {
-            if (this._animationDisabled) {
+            if (this._animationDisabled || !this._animated) {
                 return 'open-instant';
             }
 
             return this._align === 'right' ? 'open-right' : 'open-left';
         }
-        return 'void';
+        return this._animated ? 'void' : 'close-instant';
     }
 
     @HostListener('@openState.start', ['$event'])

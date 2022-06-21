@@ -1,6 +1,6 @@
 <div class="drawer-container">
-    <hc-drawer-container>
-        <hc-menu-drawer align="left" menuTheme="dark-theme" [ignoreEscapeKey]="true" #leftDrawer>
+    <hc-drawer-container [animated]="isAnimated.value">
+        <hc-menu-drawer align="left" mode="push" menuTheme="dark-theme" [ignoreEscapeKey]="true" #leftDrawer>
             <div hcDrawerToolbar>Filter Sets</div>
             <hc-drawer-item>
                 <div class="drawer-label">
@@ -68,6 +68,7 @@
                 [checked]="leftDrawer.ignoreEscapeKey"
                 (change)="leftDrawer.ignoreEscapeKey = !leftDrawer.ignoreEscapeKey"
             >Ignore escape key</hc-checkbox>
+            <hc-checkbox [formControl]="isAnimated">Animated drawer</hc-checkbox>
         </div>
     </hc-drawer-container>
 </div>
