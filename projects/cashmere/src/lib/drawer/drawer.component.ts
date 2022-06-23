@@ -88,7 +88,7 @@ const closeStateAnimation = '0.7s .05s ease';
 export class Drawer implements AfterContentInit {
     private _mode = 'push';
     private _align = 'left';
-    _animated = false;
+    _animated = true;
 
     /** Defaults to false. Set to true to disable the closure of drawer by pressing the escape key. */
     @Input() ignoreEscapeKey = false;
@@ -119,7 +119,7 @@ export class Drawer implements AfterContentInit {
     @Output()
     get openStart(): Observable<void> {
         return this._animationStarted.pipe(
-            filter(event => event.fromState === 'void' && event.toState.startsWith('open-') ),
+            filter(event => (event.fromState === 'void' || event.fromState === 'close-instant') && event.toState.startsWith('open-') ),
             map(() => {
                 // do nothing.
             })
@@ -130,7 +130,7 @@ export class Drawer implements AfterContentInit {
     @Output()
     get closeStart(): Observable<void> {
         return this._animationStarted.pipe(
-            filter(event => event.fromState.startsWith('open-') && event.toState === 'void'),
+            filter(event => event.fromState.startsWith('open-') && (event.toState === 'void' || event.toState === 'close-instant')),
             map(() => {
                 // do nothing.
             })
