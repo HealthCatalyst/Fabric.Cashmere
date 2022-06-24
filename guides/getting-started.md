@@ -60,7 +60,7 @@ Anywhere you import the Shared module, Cashmere components will also be availabl
 The root Cashmere stylesheet need to be imported in your app's global style sheet (`src/styles.scss`).
 
 ```scss
-@import "node_modules/@healthcatalyst/cashmere/scss/cashmere";
+@import "@healthcatalyst/cashmere/scss/cashmere";
 ```
 
 ### B) *(Optional)* Add Font Awesome & Noto Sans.
@@ -89,7 +89,7 @@ In `angular.json`, place references for each font in your project's build target
 If your app needs access to the [Health Catalyst icon font](/foundations/icons), add the following to your app's global style sheet (`src/styles.scss`):
 
 ```scss
-@import "node_modules/@healthcatalyst/cashmere/hcicons/hcicons";
+@import "@healthcatalyst/cashmere/hcicons/hcicons";
 ```
 
 :::

@@ -40,7 +40,7 @@ By importing the Cashmere styles in your app's global style sheet, you'll automa
 (It's likely you completed this step when installing cashmere.)
 
 ```
-@import "node_modules/@healthcatalyst/cashmere/scss/cashmere";
+@import "@healthcatalyst/cashmere/scss/cashmere";
 ```
 
 &nbsp;
