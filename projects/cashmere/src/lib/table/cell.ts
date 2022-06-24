@@ -135,3 +135,19 @@ export class HcCell extends CdkCell {
         elementRef.nativeElement.classList.add(`hc-table-justify-` + columnDef.justify);
     }
 }
+
+/** Row index cell template container that adds the right classes and role. */
+@Directive({
+    selector: 'hc-index-cell, td[hc-index-cell], th[hc-index-cell]',
+    host: {
+        class: 'hc-index-cell',
+        role: 'gridcell'
+    }
+})
+export class HcIndexCell extends CdkCell {
+    constructor(columnDef: HcColumnDef, elementRef: ElementRef) {
+        super(columnDef, elementRef);
+        elementRef.nativeElement.classList.add(`hc-column-${columnDef.cssClassFriendlyName}`);
+        elementRef.nativeElement.classList.add(`hc-table-justify-` + columnDef.justify);
+    }
+}

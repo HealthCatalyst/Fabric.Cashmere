@@ -13,6 +13,14 @@
         @include hc-table-header-cell();
     }
 
+    .hc-index-cell {
+        @include hc-table-cell-justify-center();
+    }
+
+    th.hc-index-cell:not(.hc-sort-header):not(.hc-col-sortable):not(.hc-col-sortable-left) {
+        @include hc-table-index-cell();
+    }
+
     tbody {
         @include hc-table-body();
     }
@@ -21,8 +29,13 @@
         @include hc-table-body-row();
     }
 
-    td {
+    td:not(.hc-index-cell) {
         @include hc-table-body-cell();
+    }
+
+    td.hc-index-cell {
+        @include hc-table-index-cell();
+        @include hc-table-index-body-cell();
     }
 
     tfoot {
@@ -42,6 +55,10 @@
         &.hc-col-sortable,
         &.hc-col-sortable-left {
             @include hc-small-table-header-sortable();
+        }
+
+        &.hc-index-cell:not(.hc-sort-header):not(.hc-col-sortable):not(.hc-col-sortable-left) {
+            @include hc-table-index-cell();
         }
     }
 }
