@@ -148,6 +148,5 @@ export class HcIndexCell extends CdkCell {
     constructor(columnDef: HcColumnDef, elementRef: ElementRef) {
         super(columnDef, elementRef);
         elementRef.nativeElement.classList.add(`hc-column-${columnDef.cssClassFriendlyName}`);
-        elementRef.nativeElement.classList.add(`hc-table-justify-` + columnDef.justify);
     }
 }
