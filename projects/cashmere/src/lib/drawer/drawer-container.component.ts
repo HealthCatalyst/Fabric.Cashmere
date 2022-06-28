@@ -6,6 +6,7 @@ import {
     DoCheck,
     ElementRef,
     HostBinding,
+    Input,
     NgZone,
     OnDestroy,
     Renderer2,
@@ -16,6 +17,7 @@ import {Drawer, DrawerPromiseResult} from './drawer.component';
 import {debounceTime, filter, startWith, takeUntil} from 'rxjs/operators';
 import {AnimationEvent} from '@angular/animations';
 import {Subject} from 'rxjs';
+import {parseBooleanAttribute} from '../util';
 
 function throwDrawerContainerError(align: string) {
     throw new Error(`A drawer was already declared for 'align="${align}"'`);
@@ -34,6 +36,7 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
 
     private _leftDrawer: Drawer;
     private _rightDrawer: Drawer;
+    private _animated = true;
 
     _contentMargins = {left: 0, right: 0};
 
@@ -42,6 +45,19 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
 
     @HostBinding('class.hc-drawer-container')
     _hostClass = true;
+
+    /** Defaults to true. Whether the content and drawers slide or snap open and closed. */
+    @Input()
+    get animated(): boolean {
+        return this._animated;
+    }
+
+    set animated(val: boolean) {
+        this._animated = parseBooleanAttribute(val);
+        if ( this._drawers ) {
+            this._drawers.forEach((drawer: Drawer) => drawer._animated = this._animated);
+        }
+    }
 
     constructor(
         private _elementRef: ElementRef,
@@ -57,6 +73,8 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
     }
 
     ngAfterContentInit(): void {
+        this._drawers.forEach((drawer: Drawer) => drawer._animated = this.animated);
+
         // debounceTime allows the component to render before the margins are calculated
         this._doCheckSubject
             .pipe(

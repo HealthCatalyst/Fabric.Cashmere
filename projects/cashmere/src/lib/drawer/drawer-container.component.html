@@ -1,7 +1,10 @@
 <ng-content select="hc-drawer,hc-menu-drawer"></ng-content>
 
-<div class="hc-drawer-content"
-     [style.margin-left.px]="_contentMargins.left"
-     [style.margin-right.px]="_contentMargins.right">
+<div
+    class="hc-drawer-content"
+    [style.margin-left.px]="_contentMargins.left"
+    [style.margin-right.px]="_contentMargins.right"
+    [class.hc-drawer-animation]="animated"
+>
     <ng-content></ng-content>
 </div>
