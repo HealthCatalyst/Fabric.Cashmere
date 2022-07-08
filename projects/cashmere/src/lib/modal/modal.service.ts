@@ -124,13 +124,11 @@ export class ModalService {
         this._renderer.setStyle(window.location.nativeElement, 'z-index', this._zIndexCounter + 1);
         window.instance._ignoreOverlayClick = options.ignoreOverlayClick;
         window.instance._isDraggable = options.isDraggable;
+        window.instance._isResizable = options.isResizable;
+        window.instance._size = options.size;
         window.instance._disableFullScreen = options.disableFullScreen;
         window.instance._autoFocus = options.autoFocus;
         window.instance._restoreFocus = options.restoreFocus;
-
-        // Gives the child hc-modal component a new class of 'hc-modal-resizable' when the isResizable property is set to true
-        const hcmodal = (window.location.nativeElement as HTMLElement).getElementsByTagName('hc-modal');
-        hcmodal[0].setAttribute('class', options.isResizable ? `hc-modal-resizable hc-modal-${options.size}` : `hc-modal-static hc-modal-${options.size}`);
 
         this._applicationRef.attachView(window.hostView);
         container.appendChild(window.location.nativeElement);
