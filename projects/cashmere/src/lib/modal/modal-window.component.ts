@@ -20,7 +20,6 @@ import {ActiveModal} from './active-modal';
         </div>
     `,
     encapsulation: ViewEncapsulation.None,
-    host: {class: 'hc-modal-window'},
     styleUrls: ['./modal-window.component.scss'],
     animations: [
         trigger('fadeInOut', [
@@ -42,6 +41,8 @@ export class ModalWindowComponent {
     _autoFocus = false;
     _previouslyFocusedElement: HTMLElement | null;
     _focusTrap: ConfigurableFocusTrap | undefined;
+
+    @HostBinding('class.hc-modal-window') _hostClass = true;
 
     constructor(
         private activeModal: ActiveModal,

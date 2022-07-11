@@ -7,7 +7,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Directive, ElementRef, Input} from '@angular/core';
+import {Directive, ElementRef, HostBinding, Input} from '@angular/core';
 import {CdkCell, CdkCellDef, CdkColumnDef, CdkFooterCell, CdkFooterCellDef, CdkHeaderCell, CdkHeaderCellDef} from '@angular/cdk/table';
 
 /**
@@ -90,13 +90,12 @@ export class HcColumnDef extends CdkColumnDef {
 
 /** Header cell template container that adds the right classes and role. */
 @Directive({
-    selector: 'hc-header-cell, th[hc-header-cell]',
-    host: {
-        class: 'hc-header-cell',
-        role: 'columnheader'
-    }
+    selector: 'hc-header-cell, th[hc-header-cell]'
 })
 export class HcHeaderCell extends CdkHeaderCell {
+    @HostBinding('class.hc-header-cell') _hostClass = true;
+    @HostBinding('attr.role') _role = 'columnheader';
+
     constructor(columnDef: HcColumnDef, elementRef: ElementRef) {
         super(columnDef, elementRef);
         elementRef.nativeElement.classList.add(`hc-column-${columnDef.cssClassFriendlyName}`);
@@ -106,13 +105,12 @@ export class HcHeaderCell extends CdkHeaderCell {
 
 /** Footer cell template container that adds the right classes and role. */
 @Directive({
-    selector: 'hc-footer-cell, td[hc-footer-cell]',
-    host: {
-        class: 'hc-footer-cell',
-        role: 'gridcell'
-    }
+    selector: 'hc-footer-cell, td[hc-footer-cell]'
 })
 export class HcFooterCell extends CdkFooterCell {
+    @HostBinding('class.hc-footer-cell') _hostClass = true;
+    @HostBinding('attr.role') _role = 'gridcell';
+
     constructor(columnDef: HcColumnDef, elementRef: ElementRef) {
         super(columnDef, elementRef);
         elementRef.nativeElement.classList.add(`hc-column-${columnDef.cssClassFriendlyName}`);
@@ -122,13 +120,12 @@ export class HcFooterCell extends CdkFooterCell {
 
 /** Cell template container that adds the right classes and role. */
 @Directive({
-    selector: 'hc-cell, td[hc-cell]',
-    host: {
-        class: 'hc-cell',
-        role: 'gridcell'
-    }
+    selector: 'hc-cell, td[hc-cell]'
 })
 export class HcCell extends CdkCell {
+    @HostBinding('class.hc-cell') _hostClass = true;
+    @HostBinding('attr.role') _role = 'gridcell';
+
     constructor(columnDef: HcColumnDef, elementRef: ElementRef) {
         super(columnDef, elementRef);
         elementRef.nativeElement.classList.add(`hc-column-${columnDef.cssClassFriendlyName}`);
@@ -138,13 +135,12 @@ export class HcCell extends CdkCell {
 
 /** Row index cell template container that adds the right classes and role. */
 @Directive({
-    selector: 'hc-index-cell, td[hc-index-cell], th[hc-index-cell]',
-    host: {
-        class: 'hc-index-cell',
-        role: 'gridcell'
-    }
+    selector: 'hc-index-cell, td[hc-index-cell], th[hc-index-cell]'
 })
 export class HcIndexCell extends CdkCell {
+    @HostBinding('class.hc-index-cell') _hostClass = true;
+    @HostBinding('attr.role') _role = 'gridcell';
+
     constructor(columnDef: HcColumnDef, elementRef: ElementRef) {
         super(columnDef, elementRef);
         elementRef.nativeElement.classList.add(`hc-column-${columnDef.cssClassFriendlyName}`);

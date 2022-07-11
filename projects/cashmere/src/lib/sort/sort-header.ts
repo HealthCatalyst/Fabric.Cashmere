@@ -18,7 +18,8 @@ import {
     OnInit,
     Optional,
     ViewEncapsulation,
-    HostBinding
+    HostBinding,
+    HostListener
 } from '@angular/core';
 import {merge, Subscription} from 'rxjs';
 import {HcSort, HcSortable} from './sort';
@@ -61,11 +62,6 @@ export interface ArrowViewStateTransition {
     exportAs: 'hcSortHeader',
     templateUrl: 'sort-header.html',
     styleUrls: ['sort-header.scss'],
-    host: {
-        '(click)': '_handleClick()',
-        '[attr.aria-sort]': '_getAriaSortAttribute()',
-        '[class.hc-sort-header-disabled]': '_isDisabled()'
-    },
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [
@@ -222,6 +218,7 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
     }
 
     /** Triggers the sort on this sort header and removes the indicator hint. */
+    @HostListener('click')
     _handleClick(): void {
         if (this._isDisabled()) {
             return;
@@ -274,6 +271,7 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
         this._arrowDirection = this._isSorted() ? this._sort.direction : this.start || this._sort.start;
     }
 
+    @HostBinding('class.hc-sort-header-disabled')
     _isDisabled(): boolean {
         return this._sort.disabled || this.disabled;
     }
@@ -284,6 +282,7 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
      * says that the aria-sort property should only be present on one header at a time, so removing
      * ensures this is true.
      */
+    @HostBinding('attr.aria-sort')
     _getAriaSortAttribute(): string | null {
         if (!this._isSorted()) {
             return null;

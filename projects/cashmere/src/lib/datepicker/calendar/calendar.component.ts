@@ -14,7 +14,8 @@ import {
     AfterContentInit,
     AfterViewChecked,
     OnDestroy,
-    OnChanges
+    OnChanges,
+    HostBinding
 } from '@angular/core';
 import {HcDatepickerIntl} from '../datepicker-intl';
 import {ComponentPortal, Portal, ComponentType} from '@angular/cdk/portal';
@@ -183,14 +184,13 @@ export class CalendarHeaderComponent {
     selector: 'hc-calendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['calendar.component.scss'],
-    host: {
-        class: 'hc-calendar'
-    },
     exportAs: 'hcCalendar',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CalendarComponent implements AfterContentInit, AfterViewChecked, OnDestroy, OnChanges {
+    @HostBinding('class.hc-calendar') _hostClass = true;
+
     /** An input indicating the type of the header component, if set. */
     @Input()
     headerComponent: ComponentType<unknown>;
