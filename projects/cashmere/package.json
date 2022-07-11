@@ -30,6 +30,7 @@
     "exports": {
         "./css": "./cashmere.css",
         "./hcicons/hcicons": "./hcicons/hcicons.scss",
+        "./hcicons/*": "./hcicons/*",
         "./scss/*": "./scss/*.scss"
     }
 }
