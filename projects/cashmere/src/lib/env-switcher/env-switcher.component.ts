@@ -1,4 +1,4 @@
-import {Component, OnDestroy, Input, ViewEncapsulation, Output, EventEmitter, ViewChild, forwardRef} from '@angular/core';
+import {Component, OnDestroy, Input, ViewEncapsulation, Output, EventEmitter, ViewChild, forwardRef, HostBinding} from '@angular/core';
 import {Subject} from 'rxjs';
 
 import {IMetadataEnvironment, IMetadataEnvironmentVM, badgeColorClasses} from './env-switcher-interfaces';
@@ -16,10 +16,11 @@ import {HcPopComponent} from '../pop/popover.component';
             multi: true
         }
     ],
-    host: {class: 'hc-env-switcher-container'},
     encapsulation: ViewEncapsulation.None
 })
 export class EnvSwitcherComponent implements OnDestroy, ControlValueAccessor {
+    @HostBinding('class.hc-env-switcher-container') _hostClass = true;
+
     /** The currently active metadata environments.
      * NgModel/FormValue is bound to just the environment IDs, but you can access this property for an array with the entire environment model. */
     public get selectedEnvironments(): IMetadataEnvironment[] {

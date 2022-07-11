@@ -1,16 +1,15 @@
-import {Component, ElementRef, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
     selector: 'hc-doc-viewer',
     template: '',
     styleUrls: ['document-viewer.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    host: {
-        '[class.hc-doc-viewer]': 'true'
-    }
+    encapsulation: ViewEncapsulation.None
 })
 export class DocumentViewerComponent {
+    @HostBinding('class.hc-doc-viewer') _hostClass = true;
+
     @Input()
     set documentUrl(docUrl: string) {
         this.fetchDocument(docUrl);

@@ -8,7 +8,7 @@
 
 import {NgModule} from '@angular/core';
 import {HcTable} from './table.component';
-import {HcCell, HcCellDef, HcColumnDef, HcFooterCell, HcFooterCellDef, HcHeaderCell, HcHeaderCellDef} from './cell';
+import {HcCell, HcCellDef, HcColumnDef, HcFooterCell, HcFooterCellDef, HcHeaderCell, HcHeaderCellDef, HcIndexCell} from './cell';
 import {HcFooterRow, HcFooterRowDef, HcHeaderRow, HcHeaderRowDef, HcRow, HcRowDef} from './row';
 import {HcCellResizer} from './cell-resizer.component';
 import {CdkTableModule} from '@angular/cdk/table';
@@ -31,6 +31,7 @@ const EXPORTED_DECLARATIONS = [
     HcHeaderCell,
     HcCell,
     HcFooterCell,
+    HcIndexCell,
 
     // Row directions
     HcHeaderRow,

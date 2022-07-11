@@ -1,4 +1,4 @@
-import {Component, EventEmitter, ElementRef, ViewContainerRef, ComponentRef, ChangeDetectorRef, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, ElementRef, ViewContainerRef, ComponentRef, ChangeDetectorRef, ViewEncapsulation, HostBinding} from '@angular/core';
 import {trigger, state, style, transition, animate, AnimationEvent} from '@angular/animations';
 import {Portal, CdkPortalOutletAttachedRef} from '@angular/cdk/portal';
 import {BehaviorSubject} from 'rxjs';
@@ -10,7 +10,6 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
     selector: 'hc-toaster',
     templateUrl: './hc-toast.component.html',
     styleUrls: ['./hc-toast.component.scss'],
-    host: {class: 'hc-toaster'},
     animations: [
         trigger('fade', [
             state('void', style({transform: 'none', opacity: 0})),
@@ -43,6 +42,8 @@ export class HcToastComponent {
     get _widthStr(): string {
         return this._width ? `${this._width}px` : 'auto';
     }
+
+    @HostBinding('class.hc-toaster') _hostClass = true;
 
     constructor(public _el: ElementRef, public _viewContainerRef: ViewContainerRef, public _changeRef: ChangeDetectorRef) {}
 

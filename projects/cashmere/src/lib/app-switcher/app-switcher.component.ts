@@ -1,5 +1,5 @@
 import {takeUntil} from 'rxjs/operators';
-import {Component, Inject, OnDestroy, OnInit, Input, ViewEncapsulation, Output, EventEmitter} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit, Input, ViewEncapsulation, Output, EventEmitter, HostBinding} from '@angular/core';
 import {Subject, Observable} from 'rxjs';
 
 import {IAppSwitcherService, IDiscoveryApplication, APP_SWITCHER_SERVICE} from './app-switcher-interfaces';
@@ -12,10 +12,11 @@ import {WorkTrackerService} from '../shared/work-tracker.service';
     selector: 'hc-app-switcher',
     templateUrl: './app-switcher.component.html',
     styleUrls: ['./app-switcher.component.scss'],
-    host: {class: 'hc-app-switcher-container'},
     encapsulation: ViewEncapsulation.None
 })
 export class AppSwitcherComponent implements OnInit, OnDestroy {
+    @HostBinding('class.hc-app-switcher-container') _hostClass = true;
+
     /** The array of applications pulled from the Discovery Service */
     public applications: IDiscoveryApplication[];
 

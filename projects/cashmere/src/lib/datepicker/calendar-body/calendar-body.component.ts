@@ -9,7 +9,8 @@ import {
     EventEmitter,
     ElementRef,
     NgZone,
-    SimpleChanges
+    SimpleChanges,
+    HostBinding
 } from '@angular/core';
 import {take} from 'rxjs/operators';
 
@@ -40,16 +41,15 @@ export class HcCalendarCell {
     selector: '[hc-calendar-body]',
     templateUrl: './calendar-body.component.html',
     styleUrls: ['calendar-body.component.scss'],
-    host: {
-        class: 'hc-calendar-body',
-        role: 'grid',
-        'aria-readonly': 'true'
-    },
     exportAs: 'hcCalendarBody',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CalendarBodyComponent implements OnChanges {
+    @HostBinding('class.hc-calendar-body') _hostClass = true;
+    @HostBinding('attr.role') _role = 'grid';
+    @HostBinding('attr.aria-readonly') _aria = true;
+
     /** The label for the table. (e.g. "Jan 2017"). */
     @Input()
     label: string;

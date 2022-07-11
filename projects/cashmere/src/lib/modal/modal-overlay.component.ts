@@ -20,7 +20,6 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
             }
         `
     ],
-    host: {class: 'hc-modal-overlay'},
     animations: [
         trigger('fadeInOut', [
             state('in', style({opacity: 0.5})),
@@ -36,6 +35,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 export class ModalOverlayComponent {
     @Input()
     _ignoreEscapeKey = false;
+
+    @HostBinding('class.hc-modal-overlay') _hostClass = true;
 
     constructor(private activeModal: ActiveModal) {}
 

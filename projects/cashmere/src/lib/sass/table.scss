@@ -77,6 +77,16 @@ $row-selected-border-color: $white;
     vertical-align: top;
 }
 
+@mixin hc-table-index-body-cell() {
+    background-color: $slate-gray-200;
+}
+
+@mixin hc-table-index-cell() {
+    padding-right: 12px;
+    padding-left: 12px;
+    width: 0;
+}
+
 @mixin hc-table-footer() {
     font-size: $thead-font-size;
     font-weight: 600;
