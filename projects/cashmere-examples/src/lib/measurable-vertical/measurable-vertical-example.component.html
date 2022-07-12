@@ -3,7 +3,7 @@
         <hc-measurable
             *ngFor="let button of buttons"
             [itemKey]="button.key">
-            <button hc-button>
+            <button hc-button buttonStyle="secondary">
                 {{button.text}}
                 <hc-icon
                     hcIconSm
@@ -14,7 +14,7 @@
             </button>
         </hc-measurable>
         <button
-            hc-button
+            hc-button buttonStyle="neutral"
             #moreButtons="hcPopAnchor"
             *ngIf="moreButtons && moreButtons.length"
             [hcPop]="popButtons">

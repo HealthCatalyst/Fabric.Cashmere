@@ -65,7 +65,9 @@ export class MeasurableVerticalExampleComponent {
 
     @HostListener('window:load')
     setupButtons(): void {
-        this.refreshButtons();
+        setTimeout(() => {
+            this.refreshButtons();
+        });
 
         this.buttonComponents.changes.pipe(
             takeUntil(this.unsubscribe$)

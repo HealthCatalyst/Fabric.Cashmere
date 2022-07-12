@@ -8,31 +8,31 @@
     @include hc-modal();
 }
 
-.hc-modal-auto {
+.hc-modal-auto hc-modal {
     @include hc-modal-auto();
 }
 
-.hc-modal-sm {
+.hc-modal-sm hc-modal {
     @include hc-modal-sm();
 }
 
-.hc-modal-md {
+.hc-modal-md hc-modal {
     @include hc-modal-md();
 }
 
-.hc-modal-lg {
+.hc-modal-lg hc-modal {
     @include hc-modal-lg();
 }
 
-.hc-modal-xl {
+.hc-modal-xl hc-modal {
     @include hc-modal-xl();
 }
 
-.hc-modal-resizable {
+.hc-modal-resizable hc-modal {
     @include hc-modal-resizable();
 }
 
-.hc-modal-static {
+.hc-modal-static hc-modal {
     @include hc-modal-static();
 }
 

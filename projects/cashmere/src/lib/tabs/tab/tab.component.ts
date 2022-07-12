@@ -8,10 +8,11 @@ import {Params} from '@angular/router';
     templateUrl: './tab.component.html',
     selector: `hc-tab`,
     styleUrls: ['./tab.component.scss'],
-    host: {class: 'hc-tab'},
     encapsulation: ViewEncapsulation.None
 })
 export class TabComponent implements AfterContentInit {
+    @HostBinding('class.hc-tab') _hostClass = true;
+
     /** Plain text title of the tab; for HTML support include a `hc-tab-title` element */
     @Input()
     tabTitle = '';

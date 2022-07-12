@@ -26,5 +26,11 @@
         "notosans-fontface": "^1.2.4",
         "rxjs": ">= 6.5.0",
         "zone.js": ">= 0.11.4"
+    },
+    "exports": {
+        "./css": "./cashmere.css",
+        "./hcicons/hcicons": "./hcicons/hcicons.scss",
+        "./hcicons/*": "./hcicons/*",
+        "./scss/*": "./scss/*.scss"
     }
 }

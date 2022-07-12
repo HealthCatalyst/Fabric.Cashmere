@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, Renderer2, ViewEncapsulation} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 
 export const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
@@ -25,9 +25,6 @@ const buttonAttributes = ['hc-icon-button', 'hc-button'];
     selector: 'button[hc-button], button[hc-icon-button]',
     template: '<ng-content></ng-content>',
     styleUrls: ['./button.component.scss'],
-    host: {
-        '[disabled]': 'disabled || null'
-    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None
 })
@@ -73,6 +70,11 @@ export class ButtonComponent {
 
     set disabled(isDisabled: boolean) {
         this._disabled = parseBooleanAttribute(isDisabled);
+    }
+
+    @HostBinding('attr.disabled')
+    get _disabledAttr(): string | null {
+        return this.disabled ? "disabled" : null;
     }
 
     constructor(public elementRef: ElementRef, private renderer: Renderer2) {

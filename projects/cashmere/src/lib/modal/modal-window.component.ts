@@ -6,10 +6,14 @@ import {DOCUMENT} from '@angular/common';
 import {Component, ElementRef, HostBinding, HostListener, Inject, Optional, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ActiveModal} from './active-modal';
 
+// hcmodal[0].setAttribute('class', options.isResizable ? `hc-modal-resizable hc-modal-${options.size}` : `hc-modal-static hc-modal-${options.size}`);
+
 @Component({
     selector: 'hc-modal-window',
     template: `
-        <div #focusTrapElement class="hc-modal {{_disableFullScreen ? '' : 'hc-modal-responsive'}}" cdkDrag [cdkDragDisabled]="!_isDraggable" cdkDragBoundary=".hc-modal-window">
+        <div #focusTrapElement
+            class="hc-modal {{_disableFullScreen ? '' : 'hc-modal-responsive'}} {{_isResizable ? 'hc-modal-resizable' : 'hc-modal-static'}} hc-modal-{{_size}}"
+            cdkDrag [cdkDragDisabled]="!_isDraggable" cdkDragBoundary=".hc-modal-window">
             <div *ngIf="_isDraggable" class="hc-modal-drag-handle" cdkDragHandle>
                 <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
@@ -20,7 +24,6 @@ import {ActiveModal} from './active-modal';
         </div>
     `,
     encapsulation: ViewEncapsulation.None,
-    host: {class: 'hc-modal-window'},
     styleUrls: ['./modal-window.component.scss'],
     animations: [
         trigger('fadeInOut', [
@@ -37,11 +40,15 @@ import {ActiveModal} from './active-modal';
 export class ModalWindowComponent {
     _ignoreOverlayClick = false;
     _isDraggable = false;
+    _isResizable = false;
+    _size = 'auto';
     _disableFullScreen = false;
     _restoreFocus = true;
     _autoFocus = false;
     _previouslyFocusedElement: HTMLElement | null;
     _focusTrap: ConfigurableFocusTrap | undefined;
+
+    @HostBinding('class.hc-modal-window') _hostClass = true;
 
     constructor(
         private activeModal: ActiveModal,

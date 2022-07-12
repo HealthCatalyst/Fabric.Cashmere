@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {ChangeDetectionStrategy, Component, Directive, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Directive, HostBinding, ViewEncapsulation} from '@angular/core';
 import {CDK_ROW_TEMPLATE, CdkFooterRow, CdkFooterRowDef, CdkHeaderRow, CdkHeaderRowDef, CdkRow, CdkRowDef} from '@angular/cdk/table';
 
 /**
@@ -47,43 +47,40 @@ export class HcRowDef<T> extends CdkRowDef<T> {}
 @Component({
     selector: 'hc-header-row, tr[hc-header-row]',
     template: CDK_ROW_TEMPLATE,
-    host: {
-        class: 'hc-header-row',
-        role: 'row'
-    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     exportAs: 'hcHeaderRow',
     providers: [{provide: CdkHeaderRow, useExisting: HcHeaderRow}]
 })
-export class HcHeaderRow extends CdkHeaderRow {}
+export class HcHeaderRow extends CdkHeaderRow {
+    @HostBinding('class.hc-header-row') _hostClass = true;
+    @HostBinding('attr.role') _role = 'row';
+}
 
 /** Footer template container that contains the cell outlet. Adds the right class and role. */
 @Component({
     selector: 'hc-footer-row, tr[hc-footer-row]',
     template: CDK_ROW_TEMPLATE,
-    host: {
-        class: 'hc-footer-row',
-        role: 'row'
-    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     exportAs: 'hcFooterRow',
     providers: [{provide: CdkFooterRow, useExisting: HcFooterRow}]
 })
-export class HcFooterRow extends CdkFooterRow {}
+export class HcFooterRow extends CdkFooterRow {
+    @HostBinding('class.hc-footer-row') _hostClass = true;
+    @HostBinding('attr.role') _role = 'row';
+}
 
 /** Data row template container that contains the cell outlet. Adds the right class and role. */
 @Component({
     selector: 'hc-row, tr[hc-row]',
     template: CDK_ROW_TEMPLATE,
-    host: {
-        class: 'hc-row',
-        role: 'row'
-    },
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     exportAs: 'hcRow',
     providers: [{provide: CdkRow, useExisting: HcRow}]
 })
-export class HcRow extends CdkRow {}
+export class HcRow extends CdkRow {
+    @HostBinding('class.hc-row') _hostClass = true;
+    @HostBinding('attr.role') _role = 'row';
+}

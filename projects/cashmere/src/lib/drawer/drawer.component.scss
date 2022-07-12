@@ -20,4 +20,8 @@
 
 .hc-drawer-content {
     @include hc-drawer-content();
+
+    &.hc-drawer-animation {
+        @include hc-drawer-animation();
+    }
 }

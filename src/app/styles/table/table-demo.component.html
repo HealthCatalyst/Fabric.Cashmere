@@ -214,6 +214,55 @@
     </hc-tile>
 
     <hc-tile>
+        <h5 id="condensed-table">Indexed Table</h5>
+        <p>Add
+            <code>.hc-index-cell</code> to all <code>td</code> and <code>th</code>
+            elements in a row number/index column (usually the first).
+        </p>
+        <br>
+        <table class="hc-table hc-table-small">
+            <thead>
+                <tr>
+                    <th class="hc-index-cell">#</th>
+                    <th>Name</th>
+                    <th>Weight</th>
+                    <th>Symbol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="hc-index-cell">1</td>
+                    <td>Hydrogen</td>
+                    <td>1.0079</td>
+                    <td>H</td>
+                </tr>
+                <tr>
+                    <td class="hc-index-cell">2</td>
+                    <td>Helium</td>
+                    <td>4.0026</td>
+                    <td>He</td>
+                </tr>
+                <tr>
+                    <td class="hc-index-cell">3</td>
+                    <td>Lithium</td>
+                    <td>6.941</td>
+                    <td>Li</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <pre>
+        <code>
+    &lt;th class=&quot;hc-index-cell&quot;&gt;#&lt;/th&gt;
+
+        ...
+
+    &lt;td class=&quot;hc-index-cell&quot;&gt;1&lt;/td&gt;
+        </code>
+        </pre>
+    </hc-tile>
+
+    <hc-tile>
         <h5 id="selected-row">Selected Row</h5>
         <p>Add
             <code>.hc-row-selected</code> to a

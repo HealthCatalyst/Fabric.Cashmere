@@ -43,7 +43,9 @@ $drawer-container-padding: 10px 20px;
     overflow: auto;
     padding: $drawer-container-padding;
     right: 0;
+}
 
+@mixin hc-drawer-animation() {
     transition: {
         duration: 0.7s;
         property: transform, margin-left, margin-right;

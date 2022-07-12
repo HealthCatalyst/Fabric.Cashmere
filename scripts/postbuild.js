@@ -3,7 +3,6 @@
 const fse = require('fs-extra');
 const path = require('path');
 const sass = require('sass');
-const tildeImporter = require('node-sass-tilde-importer');
 
 const projectName = 'cashmere';
 const libSrcDir = '../projects/cashmere';
@@ -28,8 +27,7 @@ Promise.all(copyAssets(resolveSrcDestPaths(assets)))
 sass.render(
     {
         outFile: './dist/cashmere/cashmere.css',
-        file: './projects/cashmere/src/lib/static.scss',
-        importer: tildeImporter
+        file: './projects/cashmere/src/lib/static.scss'
     },
     function(error, result) {
         if (error) {
