@@ -2,7 +2,9 @@
     <hc-tab-set direction="horizontal" (selectedTabChange)="selectionChanged($event)" #tabSet>
         <hc-tab tabTitle='Pending Tasks'>
             <div class="example-tab-content">
-                This is where pending tasks would go.
+                <em>If there are more tabs than can fit in the horizontal tab bar, they will be collected into a More menu.
+                The widths for the More menu are calculated on page load, component load, and page resize,
+                but can also be manually refreshed using the <code>refreshTabWidths()</code> function.</em>
             </div>
         </hc-tab>
         <hc-tab>
@@ -25,7 +27,7 @@
         </hc-tab>
         <hc-tab tabTitle="Overflow Tab One">
             <div class="example-tab-content">
-                Overflow Tab One. Tabs that don't fit in the container will collapse into a More menu.
+                Overflow Tab One
             </div>
         </hc-tab>
         <hc-tab>
