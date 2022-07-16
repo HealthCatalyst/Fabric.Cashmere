@@ -1,4 +1,4 @@
-import {Component, Input, ContentChildren, AfterContentInit, Output, ViewEncapsulation, HostBinding, HostListener} from '@angular/core';
+import {Component, Input, ContentChildren, AfterContentInit, Output, ViewEncapsulation, HostBinding, HostListener, ElementRef} from '@angular/core';
 import type {QueryList} from '@angular/core';
 import {EventEmitter, TemplateRef, ViewChild} from '@angular/core';
 import {HcTabTitleComponent} from './tab-title.component';
@@ -26,6 +26,10 @@ export class TabComponent implements AfterContentInit {
     @Input()
     queryParams: Params;
 
+    /** Tab widths default to fit content; use maxWidth to constrain and truncate the content to a fixed width (e.g. `150px`)*/
+    @Input()
+    maxWidth = 'none';
+
     /** If set to true, [routerLinkActiveOptions]="{exact: true}" is added */
     @Input()
     exactRouteMatch: boolean;
@@ -45,10 +49,13 @@ export class TabComponent implements AfterContentInit {
     _direction: string;
     _active = false;
     _tight = false;
+    _hidden = false;
     _htmlTitle: HcTabTitleComponent;
 
     @ContentChildren(HcTabTitleComponent)
     _tabTitle: QueryList<HcTabTitleComponent>;
+
+    constructor( private el: ElementRef ) {}
 
     ngAfterContentInit(): void {
         if (this._tabTitle) {
@@ -66,5 +73,21 @@ export class TabComponent implements AfterContentInit {
         event.stopPropagation();
 
         this.tabClick.emit();
+    }
+
+    _getWidth(): number {
+        return this.el.nativeElement.scrollWidth;
+    }
+
+    /** Disable visibility of component from view */
+    hide(): void {
+        this._hidden = true;
+        this._hostIndex = -1;
+    }
+
+    /** Enable visibility of component from view */
+    show(): void {
+        this._hidden = false;
+        this._hostIndex = 0;
     }
 }

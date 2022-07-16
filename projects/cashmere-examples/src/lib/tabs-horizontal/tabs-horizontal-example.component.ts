@@ -17,6 +17,6 @@ export class TabsHorizontalExampleComponent {
     }
 
     addTask(): void {
-        window.alert('The "Add Task" tab was clicked.');
+        window.alert('The "Click Handler" tab was clicked.');
     }
 }

@@ -23,3 +23,7 @@
 .hc-tab-content-vertical {
     @include hc-tab-set-content-vertical();
 }
+
+.hc-tab-bar-more {
+    @include hc-tab-bar-more();
+}

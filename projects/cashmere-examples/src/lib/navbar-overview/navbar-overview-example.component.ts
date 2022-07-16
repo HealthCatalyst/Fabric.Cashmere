@@ -21,6 +21,6 @@ export class NavbarOverviewExampleComponent implements AfterViewInit {
          * to ensure that the widths are correctly calculated for collapsing items into the More menu. */
         setTimeout(() => {
             this.exampleNavbar.refreshNavLinks();
-        }, 5);
+        }, 50);
     }
 }

@@ -1,6 +1,12 @@
 <div class="hc-{{direction}}-tab-container">
-    <div class="hc-tab-bar-{{direction}}">
+    <div #tabBar class="hc-tab-bar-{{direction}}">
         <ng-content select="hc-tab"></ng-content>
+        <div *ngIf="_collapse">
+            <div class="hc-tab-bar-more hc-text-ellipsis" tabindex="0" #moreLink="hcPopAnchor" [hcPop]="tabsetMore">
+                More
+                <hc-icon hcIconSm fontSet="fa" fontIcon="fa-chevron-down"></hc-icon>
+            </div>
+        </div>
         <ng-content></ng-content>
     </div>
     <div *ngIf="_addContentContainer" class="hc-tab-content-{{direction}}">
@@ -8,3 +14,17 @@
         <ng-container *ngIf="!_routerEnabled && tabContent" [ngTemplateOutlet]="tabContent"></ng-container>
     </div>
 </div>
+
+<hc-pop #tabsetMore [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end" [restoreFocus]="false">
+    <div hcMenu>
+        <ng-container *ngFor="let item of _moreList; let i = index">
+            <button hcMenuItem (click)="_moreClick($event, item)">
+                <span hcMenuText>
+                    <ng-container *ngIf="item._htmlTitle" [ngTemplateOutlet]="item._htmlTitle.tabTitle"></ng-container>
+                    {{ item.tabTitle }}
+                </span>
+            </button>
+            <div *ngIf="i != _moreList.length - 1" hcMenuItem hcDivider></div>
+        </ng-container>
+    </div>
+</hc-pop>

@@ -48,6 +48,7 @@
     background-color: inherit;
     color: $offblack;
     display: block;
+    width: fit-content;
     font-size: 14px;
     min-width: 100px;
     padding: 10px 20px;
@@ -106,4 +107,21 @@
 @mixin hc-tab-set-content-vertical() {
     background-color: $slate-gray-100;
     width: 80%;
+}
+
+@mixin hc-tab-bar-more() {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: $text;
+
+    &:hover {
+        background-color: $gray-200;
+    }
+
+    &:focus {
+        outline: none;
+        border-bottom: none;
+        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
+    }
 }
