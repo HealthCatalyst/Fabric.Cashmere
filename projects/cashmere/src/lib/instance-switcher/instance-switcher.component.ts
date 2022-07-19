@@ -15,12 +15,13 @@ import {
     AfterViewInit
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import { MeasurableService } from '../measurable';
 import { MeasurableComponent } from '../measurable/measurable.component';
 import { HcPopoverAnchorDirective } from '../pop';
 import { IInstance, IInstanceSwitcherTooltipText } from './instance-switcher-interfaces';
 import {parseBooleanAttribute} from '../util';
+import { FormControl } from '@angular/forms';
 
 type InstanceSwitcherTooltipConfig = IInstanceSwitcherTooltipText & {
     instanceTrigger: string;
@@ -74,6 +75,7 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
     _instances: IInstance[] = [];
     _moreInstances: IInstance[] = [];
     _selectedKey: string | null = null;
+    _editKey: string | null = null;
     _previouslySelected: string[] = [];
     _closable = true;
     _isOpen = true;
@@ -83,9 +85,16 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
         addTrigger: 'none',
         closeTrigger: 'none'
     };
+    _renameInstanceControl = new FormControl('');
+    _renameInstanceSize$ = this._renameInstanceControl.valueChanges.pipe(
+        map((instanceName: string) => Math.max(instanceName.length + 2, 4))
+    );
 
     private _unsubscribe$ = new Subject<void>();
     private _animationFrameCount = 0;
+    private _blurActive = false;
+    _instanceContextKey: string | null = null;
+    _instanceContextValue: string | null = null
 
     public _collapse = false;
     public _moreList: Array<IInstance> = [];
@@ -118,6 +127,15 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
         this._ref.detectChanges();
         this.refreshInstances();
     }
+
+    /**
+     * Controls whether or not the instance chips are
+     * editable. *Defaults to true.*
+     *
+     * @memberof InstanceSwitcherComponent
+     */
+    @Input()
+    editable = false;
 
     /**
      * Sets the Instance Switcher to either open or closed. *Defaults to true. Required if `closable` is also true.*
@@ -183,6 +201,9 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
     @Output()
     added = new EventEmitter<never>();
 
+    @Output()
+    edited = new EventEmitter<IInstance>();
+
     /**
      * Value emitted when the close button is clicked on an
      * instance tab. The value is the unique key assigned to the
@@ -206,6 +227,12 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
 
     @ViewChild('instancesContainer')
     _instancesContainer: ElementRef;
+
+    @ViewChild('instanceEditInput')
+    _instanceEditInput: ElementRef;
+
+    @ViewChildren('instance')
+    _instancePopovers: QueryList<HcPopoverAnchorDirective>;
 
     /**
      * Recalculates which instances should be shown, and which
@@ -277,6 +304,18 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
             || (!isMore && index === 0 && !this.selectedKey);
     }
 
+    _contextTrigger(): string {
+        return this._instances.length === 1 && !this.editable ? 'none' : 'rightclick';
+    }
+
+    _isEditable(key: string): boolean {
+        return this.editable && this._editKey === key;
+    }
+
+    _inputWidth(charCount: number): number {
+        return Math.max(charCount, 4);
+    }
+
     _closeClick(): void {
         this.isOpen = false;
         this.closed.emit();
@@ -291,8 +330,79 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
         this.selected.emit(key);
     }
 
-    _instanceClose(key: string, event: MouseEvent): void {
-        event.stopPropagation();
+    _instanceContextOpened(key: string, value: string): void {
+        this._instanceContextKey = key;
+        this._instanceContextValue = value;
+    }
+
+    _instanceEdit(key: string, value: string, clickEvent?: MouseEvent): void {
+        if (this.editable) {
+            if (clickEvent) {
+                clickEvent.stopPropagation();
+            }
+
+            const instancePopover = this._instancePopovers.first;
+
+            this._editKey = key;
+
+            setTimeout(() => {
+                this._renameInstanceControl.setValue(value);
+                this._renameInstanceControl.updateValueAndValidity();
+                if (instancePopover) {
+                    instancePopover.closePopover();
+                }
+
+                setTimeout(() => {
+                    this._instanceEditInput.nativeElement.focus();
+                    this._blurActive = true;
+                }, 0);
+            }, 0);
+        }
+    }
+
+    _cancelEdit(): void {
+        this._editKey = null;
+    }
+
+    _instanceBlur(key: string): void {
+        if (!this._blurActive) {
+            return;
+        }
+
+        this._blurActive = false;
+
+        const value = this._renameInstanceControl.value
+        if (value) {
+            if (key === this._editKey) {
+                this._editKey = null;
+            }
+
+            this.instances = this._instances.map(instance => {
+                if (instance.instanceKey === key) {
+                    return {
+                        ...instance,
+                        displayText: value
+                    };
+                }
+
+                return instance
+            });
+
+            this.edited.emit({
+                instanceKey: key,
+                displayText: value
+            });
+
+            this._instanceChips
+                .find(instance => instance.itemKey === key)
+                ?.reset();
+
+            this.refreshInstances();
+        }
+    }
+
+    _instanceClose(key: string, event?: MouseEvent): void {
+        event?.stopPropagation();
 
         this._instances = this._instances.filter(instance => instance.instanceKey !== key);
         this._previouslySelected = this._previouslySelected.filter(prevKey => prevKey !== key);

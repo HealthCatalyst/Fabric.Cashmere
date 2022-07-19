@@ -12,7 +12,7 @@
     @include hc-instance-container();
 }
 
-.hc-instance-chip:not(.hc-instance-selected) .hc-chip {
+.hc-instance-chip:not(.hc-instance-selected) {
     @include hc-instance-chip();
 
     hc-icon {
@@ -22,9 +22,13 @@
     .hc-chip-close {
         @include hc-instance-chip-close();
     }
+
+    input {
+        @include hc-instance-edit();
+    }
 }
 
-.hc-instance-chip.hc-instance-selected .hc-chip {
+.hc-instance-chip.hc-instance-selected {
     @include hc-instance-chip-selected();
 
     hc-icon {
@@ -33,6 +37,10 @@
 
     .hc-chip-close {
         @include hc-instance-chip-close();
+    }
+
+    input {
+        @include hc-instance-edit-selected();
     }
 }
 

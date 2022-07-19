@@ -32,9 +32,14 @@ export class InstanceSwitcherOverviewExampleComponent {
 
     closable = true;
     isOpen = true;
+    editable = true;
 
     toggleClosable(): void {
         this.closable = !this.closable;
+    }
+
+    toggleEditable(): void {
+        this.editable = !this.editable;
     }
 
     toggleOpen(): void {
@@ -62,6 +67,16 @@ export class InstanceSwitcherOverviewExampleComponent {
                 displayText: `Instance ${nextNumber}`
             }
         ];
+    }
+
+    onEdited(edited: IInstance): void {
+        this.instances = this.instances.map(instance => {
+            if (instance.instanceKey === edited.instanceKey) {
+                return edited
+            }
+
+            return instance;
+        })
     }
 
     onClosed(key: string): void {

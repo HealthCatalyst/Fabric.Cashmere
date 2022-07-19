@@ -14,7 +14,7 @@ export class MeasurableComponent {
     private _width = 0;
     private _height = 0;
 
-    _isShown = true;
+    _isShown = false;
     _itemKey: string | null;
 
     @ViewChild('measurableItem')
@@ -92,5 +92,10 @@ export class MeasurableComponent {
      hide(): void {
         this._isShown = false;
         this.ref.detectChanges();
+    }
+
+    reset(): void {
+        this._width = 0;
+        this._height = 0;
     }
 }
