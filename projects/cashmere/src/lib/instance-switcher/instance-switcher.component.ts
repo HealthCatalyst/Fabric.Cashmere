@@ -335,8 +335,8 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
         this._instanceContextValue = value;
     }
 
-    _instanceEdit(key: string | null, value: string, clickEvent?: MouseEvent): void {
-        if (this.editable && key) {
+    _instanceEdit(key: string | null, value: string | null, clickEvent?: MouseEvent): void {
+        if (this.editable && key && value) {
             if (clickEvent) {
                 clickEvent.stopPropagation();
             }
