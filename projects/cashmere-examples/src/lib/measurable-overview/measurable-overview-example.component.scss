@@ -1,3 +1,5 @@
+@import "@healthcatalyst/cashmere/scss/colors";
+
 hc-measurable {
     display: inline-block;
 
@@ -10,10 +12,6 @@ button.hc-button hc-icon.hc-icon {
     margin-left: 10px;
 }
 
-.demo-remove-button {
-    margin-left: auto;
-}
-
-.demo-more-text {
-    padding-right: 15px;
+.hc-menu-sub-text {
+    color: $text !important;
 }

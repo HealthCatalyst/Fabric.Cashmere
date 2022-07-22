@@ -35,9 +35,9 @@
         <button
             *ngFor="let button of moreButtons; index as i; trackBy: buttonTrackBy"
             hcMenuItem>
-            <span hcMenuText class="demo-more-text">{{button.text}}</span>
+            <span hcMenuText>{{button.text}}</span>
             <hc-icon
-                class="demo-remove-button"
+                hcMenuSubText
                 (click)="buttonClose(button.key, $event)"
                 fontSet="fa"
                 fontIcon="fa-times">
