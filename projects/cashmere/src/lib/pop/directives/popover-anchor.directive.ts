@@ -262,7 +262,11 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         this._attachedPopover._offsetPos[0] = this._attachedPopover.horizontalAlign === 'mouse' ? $event.offsetX : 0;
         this._attachedPopover._offsetPos[1] = this._attachedPopover.verticalAlign === 'mouse' ? $event.offsetY : 0;
         this.hoverInterval = window.setTimeout(() => {
-            this.togglePopover();
+            if ( this._hasSubmenu ) {
+                this.openPopover();
+            } else {
+                this.togglePopover();
+            }
         }, this.popoverDelay);
     }
 
@@ -273,7 +277,9 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         if (this.trigger !== 'hover') {
             return;
         }
-        this.closePopover();
+        if ( !this._hasSubmenu ) {
+            this.closePopover();
+        }
     }
 
     /** Handle keyboard navigation of a hcMenu using the arrow or tab keys */
