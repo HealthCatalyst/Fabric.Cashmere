@@ -392,7 +392,7 @@ export class HcPopoverAnchoringService implements OnDestroy {
             direction: this._getDirection(),
 
             // disable pointer events for hover popovers to avoid potential flickering issues
-            panelClass: anchor.trigger === 'hover' ? 'overlay-pointer-events' : ''
+            panelClass: anchor.trigger === 'hover' && !anchor._hasSubmenu ? 'overlay-pointer-events' : ''
         });
     }
 

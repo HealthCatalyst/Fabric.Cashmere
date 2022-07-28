@@ -262,7 +262,13 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         this._attachedPopover._offsetPos[0] = this._attachedPopover.horizontalAlign === 'mouse' ? $event.offsetX : 0;
         this._attachedPopover._offsetPos[1] = this._attachedPopover.verticalAlign === 'mouse' ? $event.offsetY : 0;
         this.hoverInterval = window.setTimeout(() => {
-            this.togglePopover();
+            // Hover triggers on hcMenu sub-menus should only ever open on mouseenter
+            // Toggle would cause the menu to close unexpectedly
+            if ( this._hasSubmenu ) {
+                this.openPopover();
+            } else {
+                this.togglePopover();
+            }
         }, this.popoverDelay);
     }
 
@@ -273,7 +279,11 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         if (this.trigger !== 'hover') {
             return;
         }
-        this.closePopover();
+        // For hcMenu sub-menus, closing on mouseleave would cause the sub-menu
+        // to close when you leave the anchor and try to move your mouse to the sub-menu
+        if ( !this._hasSubmenu ) {
+            this.closePopover();
+        }
     }
 
     /** Handle keyboard navigation of a hcMenu using the arrow or tab keys */

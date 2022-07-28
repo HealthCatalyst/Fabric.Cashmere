@@ -101,6 +101,34 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 export class AppModule { }
 ```
 
+##### Menus
+
+One common situation where popovers can be leveraged is to create menus within the app.
+Cashmere offers a standard way to present menus from any `hcPop` anchor.
+
+`hcMenu` supports sub-menus as well as keyboard navigation.
+For sub-menus, you add another `hcPop` to a menu item.
+The trigger for sub-menus will automatically be set to hover and cannot be overriden.
+
+```html
+<hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
+    <div hcMenu>
+        <a hcMenuItem href="http://example.com" target="_blank">
+            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-floppy-o"></hc-icon>
+            <span hcMenuText>Save document</span>
+            <span hcMenuSubText>Ctrl + S</span>
+        </a>
+        <button hcMenuItem [hcPop]="editmenu">
+            <span hcMenuIcon></span>
+            <span hcMenuText>Edit document</span>
+            <!-- hcMenuItems with a subMenu will automatically add a caret to the right -->
+        </button>
+    </div>
+</div>
+```
+
+&nbsp;
+
 #### Modifying Animations
 
 By default, the opening and closing animations of a popover are quick with a simple easing curve.
