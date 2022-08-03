@@ -38,12 +38,24 @@ export class InstanceSwitcherOverviewExampleComponent {
         this.closable = !this.closable;
     }
 
+    getClosableDescrition(): string {
+        return this.closable ? "Closable: On" : "Closable: Off";
+    }
+
     toggleEditable(): void {
         this.editable = !this.editable;
     }
 
+    getEditableDescription(): string {
+        return this.editable ? "Editable: On" : "Editable: Off";
+    }
+
     toggleOpen(): void {
         this.isOpen = !this.isOpen;
+    }
+
+    getOpenDescription(): string {
+        return this.isOpen ? "Close Instance Bar" : "Open Instance Bar";
     }
 
     toggleTooltips(): void {
@@ -56,6 +68,10 @@ export class InstanceSwitcherOverviewExampleComponent {
                 closeText: 'Close the Instance Switcher'
             };
         }
+    }
+
+    getTooltipDescription(): string {
+        return this.tooltipText.addText ? "Tooltips: On" : "Tooltips: Off";
     }
 
     onAdded(): void {

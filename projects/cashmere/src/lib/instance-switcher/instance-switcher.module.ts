@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { ButtonModule } from "../button/button.module";
 import { ChipModule } from "../chip/chip.module";
 import { IconModule } from "../icon/icon.module";
+import { InputModule } from "../input";
 import { MeasurableModule } from "../measurable/measurable.module";
 import { InstanceSwitcherComponent } from "./instance-switcher.component";
 
@@ -17,6 +18,7 @@ import { InstanceSwitcherComponent } from "./instance-switcher.component";
       ButtonModule,
       IconModule,
       MeasurableModule,
+      InputModule,
       ReactiveFormsModule
     ],
     exports: [

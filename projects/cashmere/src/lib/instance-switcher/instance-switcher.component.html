@@ -21,6 +21,7 @@
                     [trigger]="_tooltipText.instanceTrigger">
                     <input
                         #instanceEditInput
+                        hcInput
                         type="text"
                         [style.width.ch]="_renameInstanceSize$ | async"
                         *ngIf="_isEditable(instance.instanceKey); else notEditable"

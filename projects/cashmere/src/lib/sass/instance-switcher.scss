@@ -67,40 +67,10 @@
     }
 }
 
-@mixin hc-instance-edit-selected() {
-    color: inherit;
-    font-weight: 600;
-    @include fontSize(14px);
-    font-family: $default-font-family;
-    line-height: 1.5;
-    border: none;
-    background-image: none;
-    background-color: transparent;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-
-    &:focus {
-        outline: none;
-    }
-}
-
 @mixin hc-instance-edit() {
-    color: inherit;
-    font-weight: 400;
-    @include fontSize(14px);
-    font-family: $default-font-family;
-    line-height: 1.5;
-    border: none;
-    background-image: none;
-    background-color: transparent;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-
-    &:focus {
-        outline: none;
-    }
+    color: $offblack;
+    background-color: $white;
+    padding-left: 8px;
 }
 
 $selected-blue: shade($blue, 30%);
