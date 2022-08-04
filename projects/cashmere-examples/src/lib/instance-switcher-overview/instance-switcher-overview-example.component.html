@@ -3,13 +3,16 @@
         [instances]="instances"
         [closable]="closable"
         [isOpen]="isOpen"
+        [editable]="editable"
         [tooltipText]="tooltipText"
         (added)="onAdded()"
+        (edited)="onEdited($event)"
         (removed)="onClosed($event)"
         (closed)="toggleOpen()">
     </hc-instance-switcher>
 
-    <button hc-button (click)="toggleOpen()" class="demo-button">Toggle Open</button>
-    <button hc-button (click)="toggleClosable()" class="demo-button">Toggle Closable</button>
-    <button hc-button (click)="toggleTooltips()" class="demo-button">Toggle Tooltips</button>
+    <button hc-button (click)="toggleOpen()" class="demo-button">{{getOpenDescription()}}</button>
+    <button hc-button (click)="toggleEditable()" class="demo-button">{{getEditableDescription()}}</button>
+    <button hc-button (click)="toggleClosable()" class="demo-button">{{getClosableDescrition()}}</button>
+    <button hc-button (click)="toggleTooltips()" class="demo-button">{{getTooltipDescription()}}</button>
 </div>

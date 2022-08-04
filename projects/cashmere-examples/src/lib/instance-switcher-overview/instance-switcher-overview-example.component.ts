@@ -32,13 +32,30 @@ export class InstanceSwitcherOverviewExampleComponent {
 
     closable = true;
     isOpen = true;
+    editable = true;
 
     toggleClosable(): void {
         this.closable = !this.closable;
     }
 
+    getClosableDescrition(): string {
+        return this.closable ? "Closable: On" : "Closable: Off";
+    }
+
+    toggleEditable(): void {
+        this.editable = !this.editable;
+    }
+
+    getEditableDescription(): string {
+        return this.editable ? "Editable: On" : "Editable: Off";
+    }
+
     toggleOpen(): void {
         this.isOpen = !this.isOpen;
+    }
+
+    getOpenDescription(): string {
+        return this.isOpen ? "Close Instance Bar" : "Open Instance Bar";
     }
 
     toggleTooltips(): void {
@@ -53,6 +70,10 @@ export class InstanceSwitcherOverviewExampleComponent {
         }
     }
 
+    getTooltipDescription(): string {
+        return this.tooltipText.addText ? "Tooltips: On" : "Tooltips: Off";
+    }
+
     onAdded(): void {
         const nextNumber = this._currentNumber++;
         this.instances = [
@@ -62,6 +83,16 @@ export class InstanceSwitcherOverviewExampleComponent {
                 displayText: `Instance ${nextNumber}`
             }
         ];
+    }
+
+    onEdited(edited: IInstance): void {
+        this.instances = this.instances.map(instance => {
+            if (instance.instanceKey === edited.instanceKey) {
+                return edited
+            }
+
+            return instance;
+        })
     }
 
     onClosed(key: string): void {

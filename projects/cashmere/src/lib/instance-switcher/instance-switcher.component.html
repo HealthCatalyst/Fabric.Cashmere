@@ -5,24 +5,42 @@
         <hc-measurable
             *ngFor="let instance of instances; let i = index; trackBy: _instanceTrackBy"
             [itemKey]="instance.instanceKey">
-            <hc-chip
+            <div
+                #instance="hcPopAnchor"
                 hcMeasure
-                [hcTooltip]="_tooltipText.instanceText"
-                [trigger]="_tooltipText.instanceTrigger"
                 class="hc-instance-chip"
+                [hcPop]="instanceContext"
+                [trigger]="_contextTrigger()"
+                [context]="{ key: instance.instanceKey, value: instance.displayText }"
                 [class.hc-instance-selected]="_isSelected(instance.instanceKey, false, i)"
-                hasCloseButton="false"
                 (click)="_instanceClick(instance.instanceKey)"
+                (dblclick)="_instanceEdit(instance.instanceKey, instance.displayText)"
                 (closeClick)="_instanceClose(instance.instanceKey, $event)">
-                {{instance.displayText}}
-                <hc-icon
-                    hcIconSm
-                    fontSet="fa"
-                    fontIcon="fa-times"
-                    *ngIf="instances.length > 1"
-                    (click)="_instanceClose(instance.instanceKey, $event)">
-                </hc-icon>
-            </hc-chip>
+                <span
+                    #instanceTooltip="hcPopAnchor"
+                    [hcTooltip]="_tooltipText.instanceText"
+                    [trigger]="instance.instanceKey === _editKey ? 'none' : _tooltipText.instanceTrigger">
+                    <input
+                        #instanceEditInput
+                        hcInput
+                        type="text"
+                        [style.width.ch]="_renameInstanceSize$ | async"
+                        *ngIf="_isEditable(instance.instanceKey); else notEditable"
+                        (blur)="_instanceBlur(instance.instanceKey)"
+                        (keyup.enter)="_instanceBlur(instance.instanceKey)"
+                        (keyup.esc)="_cancelEdit()"
+                        [formControl]="_renameInstanceControl"
+                         />
+                    <ng-template #notEditable>{{instance.displayText}}</ng-template>
+                    <hc-icon
+                        hcIconSm
+                        fontSet="fa"
+                        fontIcon="fa-times"
+                        *ngIf="instances.length > 1"
+                        (click)="_instanceClose(instance.instanceKey, $event)">
+                    </hc-icon>
+                </span>
+            </div>
         </hc-measurable>
         <button hc-button
             #moreInstances="hcPopAnchor"
@@ -79,6 +97,39 @@
                 fontSet="fa"
                 fontIcon="fa-times">
             </hc-icon>
+        </button>
+    </div>
+</hc-pop>
+
+<hc-pop
+    #instanceContext
+    horizontalAlign="mouse"
+    verticalAlign="mouse"
+    (opened)="_instanceContextOpened($event.key, $event.value)"
+    [autoCloseOnContentClick]="true"
+    [showArrow]="false">
+    <div hcMenu>
+        <button
+            hcMenuItem
+            (click)="_instanceClose(_instanceContextKey ?? '')"
+            *ngIf="this._instances.length > 1">
+            <hc-icon
+                hcMenuIcon
+                fontSet="fa"
+                fontIcon="fa-times">
+            </hc-icon>
+            <span hcMenuText>Close</span>
+        </button>
+        <button
+            hcMenuItem
+            *ngIf="editable"
+            (click)="_instanceEdit(_instanceContextKey, _instanceContextValue, $event)">
+            <hc-icon
+                hcMenuIcon
+                fontSet="hc-icons"
+                fontIcon="hci-text-entry">
+            </hc-icon>
+            <span hcMenuText>Rename</span>
         </button>
     </div>
 </hc-pop>

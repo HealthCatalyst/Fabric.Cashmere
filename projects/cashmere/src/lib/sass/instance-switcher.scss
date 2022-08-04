@@ -1,5 +1,7 @@
 @import './colors';
+@import './mixins';
 @import './button.scss';
+@import './variables';
 
 @mixin hc-instance-switcher() {
     background-color: $slate-gray-200;
@@ -17,11 +19,24 @@
     align-items: center;
 }
 
+@mixin hc-instance-chip-padding() {
+    padding: 9px;
+    margin: 5px;
+}
+
+@mixin hc-instance-chip-common() {
+    @include hc-instance-chip-padding();
+    @include fontSize(14px);
+    display: inline-flex;
+    border: 2px solid $gray-300;
+    border-radius: 6px;
+}
+
 @mixin hc-instance-chip() {
+    @include hc-instance-chip-common();
     font-weight: 400;
     background-color: $gray-100;
     color: $gray-600;
-    border: 2px solid $gray-300;
     cursor: pointer;
 
     &:focus {
@@ -52,17 +67,20 @@
     }
 }
 
-@mixin hc-instance-chip-padding() {
-    padding: 0 9px;
+@mixin hc-instance-edit() {
+    color: $offblack;
+    background-color: $white;
+    padding-left: 8px;
 }
 
 $selected-blue: shade($blue, 30%);
 
 @mixin hc-instance-chip-selected() {
+    @include hc-instance-chip-common();
     font-weight: 600;
     background-color: $selected-blue;
     color: $white;
-    border: 2px solid $selected-blue;
+    border-color: $selected-blue;
 }
 
 @mixin hc-instance-chip-close() {
