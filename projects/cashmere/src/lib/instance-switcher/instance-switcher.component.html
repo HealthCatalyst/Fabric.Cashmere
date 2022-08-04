@@ -17,8 +17,9 @@
                 (dblclick)="_instanceEdit(instance.instanceKey, instance.displayText)"
                 (closeClick)="_instanceClose(instance.instanceKey, $event)">
                 <span
+                    #instanceTooltip="hcPopAnchor"
                     [hcTooltip]="_tooltipText.instanceText"
-                    [trigger]="_tooltipText.instanceTrigger">
+                    [trigger]="instance.instanceKey === _editKey ? 'none' : _tooltipText.instanceTrigger">
                     <input
                         #instanceEditInput
                         hcInput

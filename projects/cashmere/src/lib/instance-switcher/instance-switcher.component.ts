@@ -225,6 +225,9 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
     @ViewChild('moreInstances')
     _instancesMore: HcPopoverAnchorDirective;
 
+    @ViewChildren('instanceTooltip')
+    _instancesTooltips: QueryList<HcPopoverAnchorDirective>;
+
     @ViewChild('instancesContainer')
     _instancesContainer: ElementRef;
 
@@ -355,6 +358,12 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
                 setTimeout(() => {
                     this._instanceEditInput.nativeElement.focus();
                     this._blurActive = true;
+
+                    if (this._instancesTooltips) {
+                        this._instancesTooltips.forEach(tooltip => {
+                            tooltip.closePopover();
+                        });
+                    }
                 }, 0);
             }, 0);
         }
