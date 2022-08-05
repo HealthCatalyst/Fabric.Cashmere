@@ -3,7 +3,7 @@ import {Component, ViewEncapsulation, TemplateRef, ViewChild} from '@angular/cor
 /** Contains the HTML markup for tab titles */
 @Component({
     selector: 'hc-tab-title',
-    template: '<ng-template #tabTitle><ng-content></ng-content></ng-template>',
+    template: '<ng-content #tabTitle></ng-content>',
     encapsulation: ViewEncapsulation.None
 })
 export class HcTabTitleComponent {

@@ -1,6 +1,7 @@
 import {
     AfterContentInit,
     AfterViewInit,
+    ChangeDetectorRef,
     Component,
     ContentChildren,
     ElementRef,
@@ -18,6 +19,7 @@ import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {parseBooleanAttribute} from '../../util';
 import {HcPopoverAnchorDirective} from '../../pop';
+import { MeasurableComponent, MeasurableService } from '../../measurable';
 
 /** Object returned by a `selectedTabChange` event; a -1 index is returned if all tabs are deselected */
 export class TabChangeEvent {
@@ -55,6 +57,7 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
     _routerEnabled = false;
     _routerDeselected = false;
     private _direction = 'vertical';
+    private _currentSelectedTab = '-1';
     private _defaultTab: string | number = 0;
     private _stopTabSubscriptionSubject: Subject<void> = new Subject();
 
@@ -72,6 +75,8 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
 
     @ContentChildren(TabComponent)
     _tabs: QueryList<TabComponent>;
+
+    _measurables: MeasurableComponent[] = [];
 
     @ViewChild('tabBar') _tabBar: ElementRef;
 
@@ -132,7 +137,11 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
     }
     private _tight = false;
 
-    constructor(private router: Router, private route: ActivatedRoute) {}
+    constructor(
+        private router: Router,
+        private route: ActivatedRoute,
+        private measurableService: MeasurableService,
+        private ref: ChangeDetectorRef) {}
 
     ngAfterViewInit(): void {
         this.setUpTabs();
@@ -142,13 +151,24 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
             this.refreshTabWidths();
         }, 10);
 
-        // If links are added dynamically, recheck the navbar link sizing
-        this._tabs.changes.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.refreshTabWidths());
+        // If tabs are added dynamically, recheck the tabset link sizing
+        this._tabs.changes
+            .pipe(takeUntil(this.unsubscribe))
+            .subscribe((tabs: TabComponent[]) => {
+
+                this._measurables = tabs
+                    .map(tab => tab.measurable)
+                    .filter(tab => tab);
+
+                this.refreshTabWidths();
+            });
     }
 
     ngAfterContentInit(): void {
         this.setUpTabs();
-        this._tabs.changes.subscribe(() => this.setUpTabs());
+        this._tabs.changes
+            .pipe(takeUntil(this.unsubscribe))
+            .subscribe(() => this.setUpTabs());
     }
 
     /** Runs the initial calculation of tab widths after the page has fully rendered */
@@ -166,35 +186,29 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
         if (this._moreButton) {
             this._moreButton.closePopover();
         }
-        if ( this._tabsTotalWidth === 0 || this._tabWidths.length !== this._tabs.length ) {
-            this._collectTabWidths();
-        }
 
-        this._moreList = [];
-        this._collapse = false;
+        const measurables = this._tabs
+            .map(tab => tab.measurable)
+            .filter(measurable => measurable);
 
-        // If the tab bar has zero width, it is not currently visible and we should skip calculations
-        if (this._tabBar.nativeElement.clientWidth <= 0) {
+        if (measurables.length !== this._tabs.length) {
             return;
         }
 
-        const tabContainerWidth: number = this._tabBar.nativeElement.offsetWidth;
-        let curLinks = 0;
+        const selectedTab = measurables.find(tab => tab.itemKey === this._currentSelectedTab);
+        selectedTab?.show();
 
-        // Step through the links until we hit the end of the container, then collapse the
-        // remaining into a more menu
-        this._tabs.forEach((t, i) => {
-            curLinks += this._tabWidths[i];
+        const selectedSize = selectedTab?.width ?? 0;
 
-            const moreWidth: number = this._tabsTotalWidth > tabContainerWidth ? 116 : 0;
-            if (curLinks + moreWidth < tabContainerWidth) {
-                t.show();
-            } else {
-                t.hide();
-                this._collapse = true;
-                this._moreList.push(t);
-            }
-        });
+        const moreKeys = this.measurableService.fillContainer(
+            measurables.filter(measurable => measurable.itemKey !== this._currentSelectedTab),
+            this._tabBar.nativeElement.offsetWidth - selectedSize,
+            112
+        );
+
+        this._moreList = this._tabs.filter(tab => moreKeys.has(tab.tabId));
+
+        this.ref.detectChanges();
     }
 
     _moreClick(event: Event, tab: TabComponent): void {
@@ -255,7 +269,9 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
                 this._routerDeselected = true;
             }
             this._tabs.toArray().forEach(t => t._active = false);
+            this._currentSelectedTab = '-1';
             this.selectedTabChange.emit(new TabChangeEvent(-1, null));
+            this.refreshTabWidths();
         } else {
             const activeTab = typeof tab === 'number' ? this._tabs.toArray()[tab] : tab;
             if ( this._routerEnabled ) {
@@ -276,7 +292,9 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
         tab._active = true;
         this.tabContent = tab.tabContent;
         this._routerDeselected = false;
+        this._currentSelectedTab = tab.tabId;
         this.selectedTabChange.emit(new TabChangeEvent(activeIndex, tab));
+        this.refreshTabWidths();
     }
 
     private defaultToFirstTab() {

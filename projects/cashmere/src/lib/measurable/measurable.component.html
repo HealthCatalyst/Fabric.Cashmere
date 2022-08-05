@@ -1,3 +1,7 @@
 <div #measurableItem *ngIf="_isShown" class="hc-measurable-container">
-    <ng-content></ng-content>
+    <ng-container [ngTemplateOutlet]="measurableContent"></ng-container>
 </div>
+
+<ng-template #measurableContent>
+    <ng-content></ng-content>
+</ng-template>

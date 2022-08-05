@@ -1,7 +1,7 @@
 <div class="hc-{{direction}}-tab-container">
     <div #tabBar class="hc-tab-bar-{{direction}}">
         <ng-content select="hc-tab"></ng-content>
-        <div *ngIf="_collapse">
+        <div *ngIf="_moreList.length">
             <div class="hc-tab-bar-more hc-text-ellipsis" tabindex="0" #moreLink="hcPopAnchor" [hcPop]="tabsetMore">
                 More
                 <hc-icon hcIconSm fontSet="fa" fontIcon="fa-chevron-down"></hc-icon>

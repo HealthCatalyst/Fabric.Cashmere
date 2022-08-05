@@ -1,4 +1,4 @@
-<ng-container *ngIf="_direction && !_hidden">
+<hc-measurable [itemKey]="tabId" *ngIf="_direction">
     <a
         tabIndex="-1"
         *ngIf="routerLink; else tabWithoutRouting"
@@ -12,23 +12,29 @@
         [routerLinkActiveOptions]="exactRouteMatch ? {exact: true} : {}"
         (click)="tabClickHandler($event)"
     >
-        <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
+        <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_tabTitleTemplate"></ng-container>
         {{ tabTitle }}
     </a>
-</ng-container>
-<ng-template #tabWithoutRouting>
-    <a
-        tabIndex="-1"
-        class="hc-tab-{{ _direction }} hc-text-ellipsis"
-        [class.hc-tab-tight]="_tight"
-        [class.active]="_active"
-        [style.max-width]="maxWidth"
-        (click)="tabClickHandler($event)"
-    >
-        <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
-        {{ tabTitle }}
-    </a>
+
+    <ng-template #tabWithoutRouting>
+        <a
+            tabIndex="-1"
+            class="hc-tab-{{ _direction }} hc-text-ellipsis"
+            [class.hc-tab-tight]="_tight"
+            [class.active]="_active"
+            [style.max-width]="maxWidth"
+            (click)="tabClickHandler($event)"
+        >
+            <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_tabTitleTemplate"></ng-container>
+            {{ tabTitle }}
+        </a>
+    </ng-template>
+</hc-measurable>
+
+<ng-template #tabTitleTemplate>
+    <ng-content select="hc-tab-title"></ng-content>
 </ng-template>
+
 <ng-template #tabContent>
     <ng-content></ng-content>
 </ng-template>

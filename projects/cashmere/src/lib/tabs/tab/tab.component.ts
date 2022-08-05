@@ -3,6 +3,9 @@ import type {QueryList} from '@angular/core';
 import {EventEmitter, TemplateRef, ViewChild} from '@angular/core';
 import {HcTabTitleComponent} from './tab-title.component';
 import {Params} from '@angular/router';
+import { MeasurableComponent } from '../../measurable';
+
+let nextTabUniqueId = 0;
 
 @Component({
     templateUrl: './tab.component.html',
@@ -16,6 +19,14 @@ export class TabComponent implements AfterContentInit {
     /** Plain text title of the tab; for HTML support include a `hc-tab-title` element */
     @Input()
     tabTitle = '';
+
+    /**
+     * A unique ID string for this tab. If set to '-1', this will be populated
+     * by the containing TabSetComponent. *Defaults to '-1'.*
+     */
+    @Input()
+    tabId = `hc-tab-${nextTabUniqueId++}`;
+
     /** Router path that the tab routes to. If one tab uses the routerLink in a tab set, all must use the router link.
      * Can be specified as '/path/2' or ['path', '2']
      */
@@ -46,11 +57,17 @@ export class TabComponent implements AfterContentInit {
     @ViewChild('tabContent')
     tabContent: TemplateRef<unknown>;
 
+    @ViewChild(MeasurableComponent)
+    measurable: MeasurableComponent;
+
     _direction: string;
     _active = false;
     _tight = false;
     _hidden = false;
     _htmlTitle: HcTabTitleComponent;
+
+    @ViewChild('tabTitleTemplate')
+    _tabTitleTemplate: TemplateRef<unknown>;
 
     @ContentChildren(HcTabTitleComponent)
     _tabTitle: QueryList<HcTabTitleComponent>;

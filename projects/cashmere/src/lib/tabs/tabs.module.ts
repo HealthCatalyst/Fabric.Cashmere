@@ -6,9 +6,10 @@ import {HcTabTitleComponent} from './tab/tab-title.component';
 import {TabSetComponent} from './tab-set/tab-set.component';
 import {IconModule} from '../icon/icon.module';
 import {PopModule} from '../pop/popover.module';
+import { MeasurableModule } from '../measurable';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, IconModule, PopModule],
+    imports: [CommonModule, RouterModule, IconModule, PopModule, MeasurableModule],
     declarations: [TabComponent, HcTabTitleComponent, TabSetComponent],
     exports: [TabComponent, HcTabTitleComponent, TabSetComponent]
 })
