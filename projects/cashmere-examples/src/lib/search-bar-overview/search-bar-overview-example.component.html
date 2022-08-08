@@ -4,16 +4,30 @@
     [showSearchIcon]="showSearchIcon"
     [showClearIcon]="showClearIcon"
     [autoSearch]="autoSearch"
+    [tight]="styleControl.value === 'tight'"
+    [mobile]="styleControl.value === 'mobile'"
     (triggerSearch)="search($event)">
 </hc-search-bar>
 
 <hr />
 <h3>Component Options:</h3>
-<div class="property-form-group">
-    <hc-form-field>
-        <hc-label>Placeholder</hc-label>
-        <input hcInput [(ngModel)]="placeholder" />
-    </hc-form-field>
+<div class="property-example-row">
+    <div class="property-form-group">
+        <hc-form-field>
+            <hc-label>Placeholder text:</hc-label>
+            <input hcInput [(ngModel)]="placeholder" />
+        </hc-form-field>
+    </div>
+    <div class="property-form-group">
+        <hc-form-field>
+            <hc-label>Styling:</hc-label>
+            <hc-select [formControl]="styleControl">
+                <option value="normal">Normal</option>
+                <option value="tight">Tight</option>
+                <option value="mobile">Mobile</option>
+            </hc-select>
+        </hc-form-field>
+    </div>
 </div>
 <div class="property-form-group checkbox-only-group">
     <hc-checkbox id="showSearchIcon" [(ngModel)]="showSearchIcon">Show search icon</hc-checkbox>
