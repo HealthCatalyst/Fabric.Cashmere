@@ -3,8 +3,6 @@
 // tab
 
 @mixin hc-tab() {
-    min-width: 0;
-
     &:focus {
         outline: none;
 
@@ -73,6 +71,7 @@
 // tab-set
 
 @mixin hc-tab-set-container-horizontal() {
+    position: relative;
     height: auto;
     width: 100%;
 }
@@ -83,6 +82,12 @@
     border-bottom: 1px solid $slate-gray-300;
     display: flex;
     flex-direction: row;
+    overflow: hidden;
+
+    &.hc-tab-bar-arrow-overflow {
+        width: calc(100% - 68px);
+        margin-left: 34px;
+    }
 }
 
 @mixin hc-tab-set-content-horizontal() {
@@ -114,6 +119,36 @@
     border-radius: 5px;
     cursor: pointer;
     color: $text;
+
+    &:hover {
+        background-color: $gray-200;
+    }
+
+    &:focus {
+        outline: none;
+        border-bottom: none;
+        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
+    }
+}
+
+@mixin hc-tab-bar-arrows() {
+    padding: 10px 10px;
+    min-width: 34px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: $text;
+
+    &.hc-tab-bar-left-arrow {
+        position: absolute;
+        left: 0;
+        top: 5px;
+    }
+
+    &.hc-tab-bar-right-arrow {
+        position: absolute;
+        right: 0;
+        top: 5px;
+    }
 
     &:hover {
         background-color: $gray-200;

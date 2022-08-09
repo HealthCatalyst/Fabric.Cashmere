@@ -1,10 +1,16 @@
 <div class="hc-{{direction}}-tab-container">
-    <div #tabBar class="hc-tab-bar-{{direction}}">
+    <div #tabBar class="hc-tab-bar-{{direction}}" [class.hc-tab-bar-arrow-overflow]="_collapse && overflowStyle === 'arrows'">
+        <div *ngIf="_collapse && overflowStyle === 'arrows'" class="hc-tab-bar-arrows hc-tab-bar-left-arrow" tabindex="0" (mousedown)="_tabArrowClick(false)" (touchstart)="_tabArrowTouch(false)">
+            <hc-icon hcIconSm fontSet="fa" fontIcon="fa-chevron-left"></hc-icon>
+        </div>
         <ng-content select="hc-tab"></ng-content>
         <div *ngIf="_collapse">
-            <div class="hc-tab-bar-more hc-text-ellipsis" tabindex="0" #moreLink="hcPopAnchor" [hcPop]="tabsetMore">
+            <div *ngIf="overflowStyle === 'more'" class="hc-tab-bar-more hc-text-ellipsis" tabindex="0" #moreLink="hcPopAnchor" [hcPop]="tabsetMore">
                 More
                 <hc-icon hcIconSm fontSet="fa" fontIcon="fa-chevron-down"></hc-icon>
+            </div>
+            <div *ngIf="overflowStyle === 'arrows'" class="hc-tab-bar-arrows hc-tab-bar-right-arrow" tabindex="0" (mousedown)="_tabArrowClick(true)" (touchstart)="_tabArrowTouch(true)">
+                <hc-icon hcIconSm fontSet="fa" fontIcon="fa-chevron-right"></hc-icon>
             </div>
         </div>
         <ng-content></ng-content>

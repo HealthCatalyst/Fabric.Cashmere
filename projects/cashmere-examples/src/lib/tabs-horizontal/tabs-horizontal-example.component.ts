@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {TabChangeEvent} from '@healthcatalyst/cashmere';
 
 /**
@@ -11,6 +12,7 @@ import {TabChangeEvent} from '@healthcatalyst/cashmere';
 })
 export class TabsHorizontalExampleComponent {
     selectedIndex = 0;
+    overflowStyle = new FormControl('more');
 
     selectionChanged(event: TabChangeEvent): void {
         this.selectedIndex = event.index;

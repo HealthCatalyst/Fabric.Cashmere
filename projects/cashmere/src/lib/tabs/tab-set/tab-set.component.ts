@@ -14,7 +14,7 @@ import type {QueryList} from '@angular/core';
 import {EventEmitter, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subject} from 'rxjs';
+import {Subject, interval, Subscription, fromEvent} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {parseBooleanAttribute} from '../../util';
 import {HcPopoverAnchorDirective} from '../../pop';
@@ -34,6 +34,14 @@ const supportedDirections = ['horizontal', 'vertical'];
 export function validateDirectionInput(inputStr: string): void {
     if (supportedDirections.indexOf(inputStr) < 0) {
         throw Error('Unsupported tab direction value: ' + inputStr);
+    }
+}
+
+const supportedOverflow = ['more', 'arrows'];
+
+export function validateOverflowInput(inputStr: string): void {
+    if (supportedOverflow.indexOf(inputStr) < 0) {
+        throw Error('Unsupported tab overflow style: ' + inputStr);
     }
 }
 
@@ -57,6 +65,8 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
     private _direction = 'vertical';
     private _defaultTab: string | number = 0;
     private _stopTabSubscriptionSubject: Subject<void> = new Subject();
+    private _stopTabArrowSubject: Subject<void> = new Subject();
+    private _mouseUpSubscription: Subscription;
 
     private _tabWidths: Array<number> = [];
     private _tabsTotalWidth = 0;
@@ -132,6 +142,19 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
     }
     private _tight = false;
 
+    /** When horzontal tabs overflow the container, specify either 'more' or 'arrows' for navigation control. Defaults to `more` */
+    @Input()
+    get overflowStyle(): string {
+        return this._overflowStyle;
+    }
+
+    set overflowStyle(overflowType: string) {
+        validateOverflowInput(overflowType);
+        this._overflowStyle = overflowType;
+        this.refreshTabWidths();
+    }
+    private _overflowStyle = 'more';
+
     constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngAfterViewInit(): void {
@@ -163,6 +186,10 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
      * Call this if you've updated the contents of any tabs. */
      @HostListener('window:resize')
      refreshTabWidths(): void {
+        if ( !this._tabs || !this._tabBar ) {
+            return;
+        }
+
         if (this._moreButton) {
             this._moreButton.closePopover();
         }
@@ -186,13 +213,20 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
         this._tabs.forEach((t, i) => {
             curLinks += this._tabWidths[i];
 
-            const moreWidth: number = this._tabsTotalWidth > tabContainerWidth ? 116 : 0;
+            // Account for the width of either the more button or the two arrow buttons
+            const overflowType: number = this.overflowStyle === 'more' ? 93 : 68;
+            const moreWidth: number = this._tabsTotalWidth > tabContainerWidth ? overflowType : 0;
+
             if (curLinks + moreWidth < tabContainerWidth) {
                 t.show();
             } else {
-                t.hide();
                 this._collapse = true;
-                this._moreList.push(t);
+                if ( this.overflowStyle === 'more' ) {
+                    t.hide();
+                    this._moreList.push(t);
+                } else {
+                    t.show();
+                }
             }
         });
     }
@@ -203,6 +237,30 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
         }
 
         tab.tabClickHandler( event );
+    }
+
+    tabArrowInterval = interval(100);
+
+    _tabArrowClick( scrollRight: boolean ): void {
+        this._tabBar.nativeElement.scrollLeft += scrollRight ? 20 : -20;
+        this.tabArrowInterval.pipe(takeUntil(this._stopTabArrowSubject)).subscribe(() => {
+            this._tabBar.nativeElement.scrollLeft += scrollRight ? 20 : -20;
+            this._mouseUpSubscription = fromEvent<MouseEvent>(window.document, 'mouseup').subscribe(() => {
+                this._stopTabArrowSubject.next();
+                this._mouseUpSubscription.unsubscribe();
+            });
+        });
+    }
+
+    _tabArrowTouch( scrollRight: boolean ): void {
+        this._tabBar.nativeElement.scrollLeft += scrollRight ? 20 : -20;
+        this.tabArrowInterval.pipe(takeUntil(this._stopTabArrowSubject)).subscribe(() => {
+            this._tabBar.nativeElement.scrollLeft += scrollRight ? 20 : -20;
+            this._mouseUpSubscription = fromEvent<MouseEvent>(window.document, 'touchend').subscribe(() => {
+                this._stopTabArrowSubject.next();
+                this._mouseUpSubscription.unsubscribe();
+            });
+        });
     }
 
     private setUpTabs(): void {

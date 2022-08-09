@@ -27,3 +27,7 @@
 .hc-tab-bar-more {
     @include hc-tab-bar-more();
 }
+
+.hc-tab-bar-arrows {
+    @include hc-tab-bar-arrows();
+}

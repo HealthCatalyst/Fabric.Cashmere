@@ -1,9 +1,9 @@
 <div class="tab-demo">
-    <hc-tab-set direction="horizontal" (selectedTabChange)="selectionChanged($event)" #tabSet>
+    <hc-tab-set direction="horizontal" [overflowStyle]="overflowStyle.value" (selectedTabChange)="selectionChanged($event)" #tabSet>
         <hc-tab tabTitle='Pending Tasks'>
             <div class="example-tab-content">
-                <em>If there are more tabs than can fit in the horizontal tab bar, they will be collected into a More menu.
-                The widths for the More menu are calculated on page load, component load, and page resize,
+                <em>If there are more tabs than can fit in the horizontal tab bar, they will trigger an overflow state:
+                <code>more</code> or <code>arrows</code>. The tab widths are calculated on page load, component load, and page resize,
                 but can also be manually refreshed using the <code>refreshTabWidths()</code> function.</em>
             </div>
         </hc-tab>
@@ -58,3 +58,12 @@
     Deselect All Tabs
 </button>
 <span class="selection-text">Selected Tab Index: {{selectedIndex}}</span>
+<div class="overflow-select-container">
+    <hc-form-field inline>
+        <hc-label>Tab overflow style:</hc-label>
+        <hc-select [formControl]="overflowStyle">
+            <option value="more">More menu</option>
+            <option value="arrows">Arrow buttons</option>
+        </hc-select>
+    </hc-form-field>
+</div>
