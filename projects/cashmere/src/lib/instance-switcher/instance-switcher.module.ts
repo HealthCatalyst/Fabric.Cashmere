@@ -1,8 +1,10 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
 import { ButtonModule } from "../button/button.module";
 import { ChipModule } from "../chip/chip.module";
 import { IconModule } from "../icon/icon.module";
+import { InputModule } from "../input";
 import { MeasurableModule } from "../measurable/measurable.module";
 import { InstanceSwitcherComponent } from "./instance-switcher.component";
 
@@ -15,7 +17,9 @@ import { InstanceSwitcherComponent } from "./instance-switcher.component";
       ChipModule,
       ButtonModule,
       IconModule,
-      MeasurableModule
+      MeasurableModule,
+      InputModule,
+      ReactiveFormsModule
     ],
     exports: [
         InstanceSwitcherComponent

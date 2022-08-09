@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { SelectChangeEvent } from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-search-bar-overview-example',
@@ -12,6 +14,7 @@ export class SearchBarOverviewExampleComponent {
     showClearIcon = true;
     autoSearch = true;
     output = "";
+    styleControl = new FormControl("normal");
 
     search(term: string): void {
         this.output += `Search for '${term}'\n`;
