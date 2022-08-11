@@ -1,3 +1,5 @@
+@import "@healthcatalyst/cashmere/scss/colors";
+
 .button-container {
     height: 305px;
 }
@@ -8,4 +10,8 @@ hc-measurable button {
 
 button.hc-button hc-icon.hc-icon {
     margin-left: 10px;
+}
+
+.hc-menu-sub-text {
+    color: $text !important;
 }

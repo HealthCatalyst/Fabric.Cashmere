@@ -1,10 +1,11 @@
-<ng-container *ngIf="_direction">
+<ng-container *ngIf="_direction && !_hidden">
     <a
         tabIndex="-1"
         *ngIf="routerLink; else tabWithoutRouting"
         class="hc-tab-{{ _direction }} hc-text-ellipsis"
         [class.hc-tab-tight]="_tight"
         [class.active]="_active"
+        [style.max-width]="maxWidth"
         [routerLink]="routerLink"
         routerLinkActive="active"
         [queryParams]="queryParams"
@@ -21,6 +22,7 @@
         class="hc-tab-{{ _direction }} hc-text-ellipsis"
         [class.hc-tab-tight]="_tight"
         [class.active]="_active"
+        [style.max-width]="maxWidth"
         (click)="tabClickHandler($event)"
     >
         <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>

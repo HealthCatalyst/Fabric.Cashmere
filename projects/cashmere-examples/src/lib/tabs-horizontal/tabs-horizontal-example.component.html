@@ -1,32 +1,51 @@
 <div class="tab-demo">
-    <hc-tab-set direction="horizontal" (selectedTabChange)="selectionChanged($event)" #tabSet>
+    <hc-tab-set direction="horizontal" [overflowStyle]="overflowStyle.value" (selectedTabChange)="selectionChanged($event)" #tabSet>
         <hc-tab tabTitle='Pending Tasks'>
             <div class="example-tab-content">
-                This is where pending tasks would go.
+                <em>If there are more tabs than can fit in the horizontal tab bar, they will trigger an overflow state:
+                <code>more</code> or <code>arrows</code>. The tab widths are calculated on page load, component load, and page resize,
+                but can also be manually refreshed using the <code>refreshTabWidths()</code> function.</em>
             </div>
         </hc-tab>
         <hc-tab>
             <hc-tab-title>
-                <i class="fa fa-check" style="color: #00a859; font-size: 20px;"></i>  Complete Tasks
+                <i class="fa fa-check" style="color: #00a859; font-size: 20px;"></i>  Completed Tasks
             </hc-tab-title>
             <div class="example-tab-content">
                 These are completed tasks
             </div>
         </hc-tab>
-        <hc-tab>
-            <hc-tab-title>
-                <i class="fa fa-times" style="color: #f13c45; font-size: 20px;"></i> Incomplete Tasks
-            </hc-tab-title>
+        <hc-tab tabTitle="Truncated tab with a very long title" maxWidth="150px">
             <div class="example-tab-content">
-                Incomplete tasks belong here.
+                Use the <code>maxWidth</code> parameter on a tab to constrain the width of the title.
             </div>
         </hc-tab>
-        <hc-tab (tabClick)="addTask()">
-            <hc-tab-title>
-                <span style="color: #00aeff; font-weight: 600;"><i class="fa fa-plus"></i> Add Task</span>
-            </hc-tab-title>
+        <hc-tab (tabClick)="addTask()" tabTitle="Click Handler">
             <div class="example-tab-content">
                 This is an example of a click handler on a tab.
+            </div>
+        </hc-tab>
+        <hc-tab tabTitle="Overflow Tab One">
+            <div class="example-tab-content">
+                Overflow Tab One
+            </div>
+        </hc-tab>
+        <hc-tab>
+            <hc-tab-title>
+                <i class="fa fa-warning" style="font-size: 20px;"></i>  &nbsp;HTML <strong>Tab Title</strong>
+            </hc-tab-title>
+            <div class="example-tab-content">
+                Overflow Tab Two
+            </div>
+        </hc-tab>
+        <hc-tab tabTitle="Overflow Tab Three">
+            <div class="example-tab-content">
+                Overflow Tab Three
+            </div>
+        </hc-tab>
+        <hc-tab tabTitle="Overflow Tab Four">
+            <div class="example-tab-content">
+                Overflow Tab Four
             </div>
         </hc-tab>
     </hc-tab-set>
@@ -39,3 +58,12 @@
     Deselect All Tabs
 </button>
 <span class="selection-text">Selected Tab Index: {{selectedIndex}}</span>
+<div class="overflow-select-container">
+    <hc-form-field inline>
+        <hc-label>Tab overflow style:</hc-label>
+        <hc-select [formControl]="overflowStyle">
+            <option value="more">More menu</option>
+            <option value="arrows">Arrow buttons</option>
+        </hc-select>
+    </hc-form-field>
+</div>
