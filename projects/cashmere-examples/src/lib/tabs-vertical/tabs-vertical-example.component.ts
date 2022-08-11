@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { TabSetComponent } from '@healthcatalyst/cashmere';
 
 /**
  * @title Vertical and Horizontal Tabs
@@ -11,4 +12,15 @@ import { FormControl } from '@angular/forms';
 })
 export class TabsVerticalExampleComponent {
     readonly _tight = new FormControl(false);
+
+    @ViewChild('nestedTabs')
+    nestedTabs: TabSetComponent;
+
+    nestedTabMoreMenu(): void {
+        /** Use refreshTabWidths() to recalculate the widths for the More menu
+         * if tabs were not visible when the page or component loaded */
+        setTimeout(() => {
+            this.nestedTabs.refreshTabWidths();
+        });
+    }
 }

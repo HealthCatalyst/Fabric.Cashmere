@@ -1,5 +1,5 @@
 import {AfterViewInit, Directive, ElementRef, Input} from '@angular/core';
-import {highlightBlock} from 'highlight.js';
+import {highlightElement} from "highlight.js";
 
 @Directive({
     selector: '[hcHighlight]'
@@ -11,10 +11,10 @@ export class HighlightDirective implements AfterViewInit {
     constructor(private el: ElementRef) {}
 
     ngAfterViewInit(): void {
-        const highlightElement: HTMLPreElement = this.el.nativeElement ? this.el.nativeElement : this.el;
-        highlightBlock(highlightElement);
+        const htmlElement: HTMLPreElement = this.el.nativeElement ? this.el.nativeElement : this.el;
+        highlightElement(htmlElement);
         if (this.lineNumbers) {
-            this.addLines(highlightElement);
+            this.addLines(htmlElement);
         }
     }
 

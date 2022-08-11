@@ -20,6 +20,11 @@
     background-image: url($ico-search-grey);
 }
 
+@mixin hc-search-bar-ico-tight() {
+    height: 13px;
+    width: 13px;
+}
+
 @mixin hc-search-bar-field-wrapper() {
     padding-bottom: 0;
 }

@@ -21,6 +21,10 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     @Input() showClearIcon = true;
     /** If true, fire triggerSearch event on user keyup (with a built-in 100ms debounce). *Defaults to true.* */
     @Input() autoSearch = true;
+    /** Sets whether the input should be sized for small screens (if true, overrides the `tight` param) *Defaults to `false`.* */
+    @Input() mobile = false;
+    /** If true, condense the default padding and reduce the font size. *Defaults to `false`.*  */
+    @Input() tight = false;
     /** Fires when a search should be run. Outputs the search term. */
     @Output() triggerSearch = new EventEmitter<string>();
     @ViewChild('searchFilter', {static: true}) private searchBar: ElementRef;

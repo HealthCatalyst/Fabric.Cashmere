@@ -11,6 +11,10 @@ hc-search-bar {
         @include hc-search-bar-ico();
     }
 
+    .hc-form-field-wrapper-tight .hc-search-ico {
+        @include hc-search-bar-ico-tight();
+    }
+
     .hc-form-field-wrapper {
         @include hc-search-bar-field-wrapper();
     }
