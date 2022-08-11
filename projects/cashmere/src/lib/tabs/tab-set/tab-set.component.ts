@@ -62,6 +62,7 @@ export function invalidDefaultTab(tabVal: string | number): void {
 export class TabSetComponent implements AfterContentInit, AfterViewInit {
     _routerEnabled = false;
     _routerDeselected = false;
+    _tabArrowsEnabled = [true, true];
     private _direction = 'vertical';
     private _defaultTab: string | number = 0;
     private _stopTabSubscriptionSubject: Subject<void> = new Subject();
@@ -229,6 +230,12 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
                 }
             }
         });
+
+        if ( this.overflowStyle === 'arrows' && this._collapse ) {
+            setTimeout(() => {
+                this._tabArrowCheck();
+            });
+        }
     }
 
     _moreClick(event: Event, tab: TabComponent): void {
@@ -242,25 +249,34 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
     tabArrowInterval = interval(100);
 
     _tabArrowClick( scrollRight: boolean ): void {
-        this._tabBar.nativeElement.scrollLeft += scrollRight ? 20 : -20;
+        this._tabBar.nativeElement.scrollLeft += scrollRight ? 40 : -40;
+        this._tabArrowCheck();
         this.tabArrowInterval.pipe(takeUntil(this._stopTabArrowSubject)).subscribe(() => {
-            this._tabBar.nativeElement.scrollLeft += scrollRight ? 20 : -20;
-            this._mouseUpSubscription = fromEvent<MouseEvent>(window.document, 'mouseup').subscribe(() => {
-                this._stopTabArrowSubject.next();
-                this._mouseUpSubscription.unsubscribe();
-            });
+            this._tabBar.nativeElement.scrollLeft += scrollRight ? 40 : -40;
+            this._tabArrowCheck();
+        });
+        this._mouseUpSubscription = fromEvent<MouseEvent>(window.document, 'mouseup').subscribe(() => {
+            this._stopTabArrowSubject.next();
+            this._mouseUpSubscription.unsubscribe();
         });
     }
 
     _tabArrowTouch( scrollRight: boolean ): void {
-        this._tabBar.nativeElement.scrollLeft += scrollRight ? 20 : -20;
+        this._tabBar.nativeElement.scrollLeft += scrollRight ? 40 : -40;
+        this._tabArrowCheck();
         this.tabArrowInterval.pipe(takeUntil(this._stopTabArrowSubject)).subscribe(() => {
-            this._tabBar.nativeElement.scrollLeft += scrollRight ? 20 : -20;
-            this._mouseUpSubscription = fromEvent<MouseEvent>(window.document, 'touchend').subscribe(() => {
-                this._stopTabArrowSubject.next();
-                this._mouseUpSubscription.unsubscribe();
-            });
+            this._tabBar.nativeElement.scrollLeft += scrollRight ? 40 : -40;
+            this._tabArrowCheck();
         });
+        this._mouseUpSubscription = fromEvent<MouseEvent>(window.document, 'touchend').subscribe(() => {
+            this._stopTabArrowSubject.next();
+            this._mouseUpSubscription.unsubscribe();
+        });
+    }
+
+    _tabArrowCheck(): void {
+        this._tabArrowsEnabled[0] = this._tabBar.nativeElement.scrollLeft === 0 ? false : true;
+        this._tabArrowsEnabled[1] = this._tabBar.nativeElement.offsetWidth === this._tabBar.nativeElement.scrollWidth - this._tabBar.nativeElement.scrollLeft ? false : true;
     }
 
     private setUpTabs(): void {

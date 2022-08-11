@@ -1,6 +1,13 @@
 <div class="hc-{{direction}}-tab-container">
     <div #tabBar class="hc-tab-bar-{{direction}}" [class.hc-tab-bar-arrow-overflow]="_collapse && overflowStyle === 'arrows'">
-        <div *ngIf="_collapse && overflowStyle === 'arrows'" class="hc-tab-bar-arrows hc-tab-bar-left-arrow" tabindex="0" (mousedown)="_tabArrowClick(false)" (touchstart)="_tabArrowTouch(false)">
+        <div
+            *ngIf="_collapse && overflowStyle === 'arrows'"
+            class="hc-tab-bar-arrows hc-tab-bar-left-arrow"
+            [class.hc-tab-bar-arrow-disabled]="!_tabArrowsEnabled[0]"
+            tabindex="0"
+            (mousedown)="_tabArrowClick(false)"
+            (touchstart)="_tabArrowTouch(false)"
+        >
             <hc-icon hcIconSm fontSet="fa" fontIcon="fa-chevron-left"></hc-icon>
         </div>
         <ng-content select="hc-tab"></ng-content>
@@ -9,7 +16,14 @@
                 More
                 <hc-icon hcIconSm fontSet="fa" fontIcon="fa-chevron-down"></hc-icon>
             </div>
-            <div *ngIf="overflowStyle === 'arrows'" class="hc-tab-bar-arrows hc-tab-bar-right-arrow" tabindex="0" (mousedown)="_tabArrowClick(true)" (touchstart)="_tabArrowTouch(true)">
+            <div
+                *ngIf="overflowStyle === 'arrows'"
+                class="hc-tab-bar-arrows hc-tab-bar-right-arrow"
+                [class.hc-tab-bar-arrow-disabled]="!_tabArrowsEnabled[1]"
+                tabindex="0"
+                (mousedown)="_tabArrowClick(true)"
+                (touchstart)="_tabArrowTouch(true)"
+            >
                 <hc-icon hcIconSm fontSet="fa" fontIcon="fa-chevron-right"></hc-icon>
             </div>
         </div>

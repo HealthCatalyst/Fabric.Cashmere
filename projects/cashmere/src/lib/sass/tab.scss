@@ -150,6 +150,11 @@
         top: 5px;
     }
 
+    &.hc-tab-bar-arrow-disabled {
+        color: $slate-gray-300;
+        pointer-events: none;
+    }
+
     &:hover {
         background-color: $gray-200;
     }
