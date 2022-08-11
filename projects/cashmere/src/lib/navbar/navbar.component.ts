@@ -7,7 +7,8 @@ import {
     Input,
     ViewChild,
     ViewEncapsulation,
-    OnDestroy
+    OnDestroy,
+    AfterViewInit
 } from '@angular/core';
 import type {QueryList} from '@angular/core';
 import {HcPopoverAnchorDirective} from '../pop/directives/popover-anchor.directive';
@@ -27,7 +28,7 @@ import {NavbarDropdownComponent} from './navbar-dropdown/navbar-dropdown.compone
     styleUrls: ['./navbar.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class NavbarComponent implements OnDestroy {
+export class NavbarComponent implements AfterViewInit, OnDestroy {
     /** Display name of current user */
     @Input()
     user = '';
@@ -54,8 +55,8 @@ export class NavbarComponent implements OnDestroy {
     @ContentChildren(NavbarLinkComponent)
     _navLinks: QueryList<NavbarLinkComponent | NavbarDropdownComponent>;
 
-    @ViewChild('navbar') navbarContent: ElementRef;
-    @ViewChild('navlinks') navContent: ElementRef;
+    @ViewChild('navbar') _navbarContent: ElementRef;
+    @ViewChild('navlinks') _navContent: ElementRef;
 
     @ViewChild('moreLink')
     _navbarMore: HcPopoverAnchorDirective;
@@ -74,8 +75,13 @@ export class NavbarComponent implements OnDestroy {
     /** Runs the initial calculation of navlink widths after the page has fully rendered */
     @HostListener('window:load')
     _setupNavLinks(): void {
-        this.refreshNavLinks();
+        setTimeout(() => {
+            this.refreshNavLinks();
+        });
+    }
 
+    /** Subscribes to the changes to the set of links to refresh the More menu widths */
+    ngAfterViewInit(): void {
         // If links are added dynamically, recheck the navbar link sizing
         this._navLinks.changes.pipe(takeUntil(this.unsubscribe$)).subscribe(() => this.refreshNavLinks());
     }
@@ -95,11 +101,11 @@ export class NavbarComponent implements OnDestroy {
         this._collapse = false;
 
         // If links is zero the page is smaller than the first responsive breakpoint
-        if (this.navbarContent.nativeElement.clientWidth <= 0) {
+        if (this._navbarContent.nativeElement.clientWidth <= 0) {
             return;
         }
 
-        const linksContainerWidth: number = this.navContent.nativeElement.offsetWidth;
+        const linksContainerWidth: number = this._navContent.nativeElement.offsetWidth;
         let curLinks = 0;
 
         // Step through the links until we hit the end of the container, then collapse the

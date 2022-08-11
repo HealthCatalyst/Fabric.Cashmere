@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SelectChangeEvent } from '@healthcatalyst/cashmere';
+import { FormControl } from '@angular/forms';
 
 /**
  * @title Tile overview
@@ -10,9 +10,5 @@ import { SelectChangeEvent } from '@healthcatalyst/cashmere';
     styleUrls: ['tile-overview-example.component.scss']
 })
 export class TileOverviewExampleComponent {
-    headerType = 'blue';
-
-    typeChange( selectVal: SelectChangeEvent): void {
-        this.headerType = selectVal.value;
-    }
+    headerControl = new FormControl('blue');
 }
