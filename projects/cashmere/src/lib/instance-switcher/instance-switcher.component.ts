@@ -131,8 +131,6 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
     /**
      * Controls whether or not the instance chips are
      * editable. *Defaults to true.*
-     *
-     * @memberof InstanceSwitcherComponent
      */
     @Input()
     editable = false;
