@@ -10,10 +10,6 @@
         "type": "Git",
         "url": "https://github.com/HealthCatalyst/Fabric.Cashmere"
     },
-    "main": "./bundles/cashmere.umd.js",
-    "module": "./esm5/cashmere.js",
-    "es2015": "./esm2015/cashmere.js",
-    "jsnext": "./esm2015/cashmere.js",
     "dependencies": {
       "tslib": "^2.0.0"
     },
