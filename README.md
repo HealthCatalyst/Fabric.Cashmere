@@ -3,6 +3,7 @@
 
 Cashmere is Health Catalyst’s comprehensive design system. It includes:
 -   An Angular UI library with components and styles for Health Catalyst branded web applications
+-   A Cashmere-themed React library based on Material UI components
 -   General styling standards (colors, branding, iconography, typography, etc.)
 -   Content development guidelines (copywriting, terminology definitions, and a collection of user personas)
 -   Analytics development guidelines for Qlik, Tableau, and PowerBI
