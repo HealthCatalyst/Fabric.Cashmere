@@ -1,7 +1,17 @@
 <form>
-    <hc-radio-group>
+    <hc-radio-group (change)="updateSelectedOption($event)">
         <hc-radio-button value="1" [checked]="true">The Office</hc-radio-button>
         <hc-radio-button value="2">Parks and Rec</hc-radio-button>
         <hc-radio-button value="3">Arrested Development</hc-radio-button>
+        <hc-radio-button value="4">
+            <div class="example-radio-input-container">
+                Other:
+                <hc-form-field tight inline class="example-radio-input"><input hcInput type="number"/></hc-form-field>
+            </div>
+        </hc-radio-button>
     </hc-radio-group>
 </form>
+
+<div class="example-radio-selected">
+    Selected Value: {{ selectedOption }}
+</div>
