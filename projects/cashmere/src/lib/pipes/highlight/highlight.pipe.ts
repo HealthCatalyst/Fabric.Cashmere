@@ -17,11 +17,27 @@ export class HighlightPipe implements PipeTransform {
                 .join('|');
             const regex = new RegExp(pattern, 'gi');
 
-            const highlightedText = this.escapeTags(text).replace(regex, match => `<span class="hc-text-highlight">${match}</span>`)
+            if ( preserveHTML ) {
+                const parser = new DOMParser();
+                const htmlDoc = parser.parseFromString(text, 'text/html');
 
-            return preserveHTML ? this.reverseEscapeTags( highlightedText ) : highlightedText;
+                this.searchChildren( htmlDoc.children[0].children[1], regex );
+                return this.reverseEscapeTags(htmlDoc.children[0].children[1].innerHTML);
+            } else {
+                return this.escapeTags(text).replace(regex, match => `<span class="hc-text-highlight">${match}</span>`);
+            }
         } else {
             return preserveHTML ? text : this.escapeTags(text);
+        }
+    }
+
+    searchChildren( parent: ChildNode, regex: RegExp ): void {
+        if( parent.childNodes.length > 0 ){
+            parent.childNodes.forEach( child => this.searchChildren( child, regex ) );
+        } else {
+            if( parent.nodeValue ) {
+                parent.nodeValue = parent.nodeValue.replace(regex, match => `<span class="hc-text-highlight">${match}</span>`);
+            }
         }
     }
 
