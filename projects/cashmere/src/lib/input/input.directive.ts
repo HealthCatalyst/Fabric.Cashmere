@@ -94,7 +94,11 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         this._isRequired = parseBooleanAttribute(requiredInput);
     }
 
+    /** Fires when the input either gets focus or loses focus. */
     @Output() focusChanged = new EventEmitter<boolean>();
+
+    /** Fires on either a `change` or `input` event type from the input. */
+    @Output() inputEvent = new EventEmitter<Event>();
 
     @HostBinding('class.hc-input')
     _hostHcInputClass = true;
@@ -141,9 +145,14 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         }
     }
 
-    @HostListener('input')
-    _inputEvent(): void {
-        // causes angular to run change detection on input event
+    @HostListener('input', ['$event'])
+    _inputEvent(event: Event): void {
+        this.inputEvent.emit(event);
+    }
+
+    @HostListener('change', ['$event'])
+    _changeEvent(event: Event): void {
+        this.inputEvent.emit(event);
     }
 
     /** Sets whether the input should be sized for small screens (if true, overrides the `tight` param on FormField) */

@@ -1,10 +1,18 @@
 import {Component} from '@angular/core';
+import { RadioButtonChangeEvent } from '@healthcatalyst/cashmere';
 
 /**
  * @title Standard Radio Buttons
  */
 @Component({
     selector: 'hc-radio-button-standard-example',
-    templateUrl: 'radio-button-standard-example.component.html'
+    templateUrl: 'radio-button-standard-example.component.html',
+    styleUrls: ['radio-button-standard-example.component.scss']
 })
-export class RadioButtonStandardExampleComponent {}
+export class RadioButtonStandardExampleComponent {
+    selectedOption = '1';
+
+    updateSelectedOption(event: RadioButtonChangeEvent): void {
+        this.selectedOption = event.value;
+    }
+}

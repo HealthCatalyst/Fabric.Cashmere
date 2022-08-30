@@ -17,12 +17,17 @@ import {
     Output,
     DoCheck,
     Self,
-    ElementRef
+    ElementRef,
+    ContentChild,
+    OnDestroy
 } from '@angular/core';
 import type {QueryList} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
+import { InputDirective } from '../input';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 let nextUniqueId = 0;
 
@@ -279,7 +284,7 @@ export class RadioButtonChangeEvent {
     styleUrls: ['./radio-button.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RadioButtonComponent implements OnInit {
+export class RadioButtonComponent implements OnInit, AfterContentInit, OnDestroy {
     private _uniqueId = `hc-radio-button-${nextUniqueId++}`;
     /** Element id for the radio button. Auto-generated id will be used if none is set */
     @Input()
@@ -297,6 +302,11 @@ export class RadioButtonComponent implements OnInit {
     private _tight = false;
     private _align: 'center' | 'top' | 'bottom' = 'center';
     private readonly radioGroup: RadioGroupDirective | null;
+
+    private unsubscribe$ = new Subject<void>();
+
+    @ContentChild(InputDirective)
+    _inputChild: InputDirective;
 
     /** Value of radio buttons */
     @Input()
@@ -414,12 +424,29 @@ export class RadioButtonComponent implements OnInit {
         }
     }
 
+    ngAfterContentInit(): void {
+        if ( this._inputChild ) {
+            this._inputChild.focusChanged.pipe(takeUntil(this.unsubscribe$)).subscribe( state => {
+                if ( state ) {
+                    this._onInputChange();
+                }
+            });
+
+            this._inputChild.inputEvent.pipe(takeUntil(this.unsubscribe$)).subscribe( event => {
+                event.stopPropagation();
+                this._onInputChange();
+            });
+        }
+    }
+
     _onInputClick(event: Event): void {
         event.stopPropagation();
     }
 
-    _onInputChange(event: Event): void {
-        event.stopPropagation();
+    _onInputChange(event?: Event): void {
+        if ( event ) {
+            event.stopPropagation();
+        }
         const valueChanged = this.radioGroup && this.value !== this.radioGroup.value;
         this._emitChangeEvent();
         if (this.radioGroup !== null) {
@@ -440,5 +467,10 @@ export class RadioButtonComponent implements OnInit {
 
     _markForCheck(): void {
         this.cdRef.markForCheck();
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 }
