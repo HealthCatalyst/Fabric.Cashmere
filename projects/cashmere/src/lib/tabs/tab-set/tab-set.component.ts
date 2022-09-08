@@ -37,7 +37,7 @@ export function validateDirectionInput(inputStr: string): void {
     }
 }
 
-const supportedOverflow = ['more', 'arrows'];
+const supportedOverflow = ['more', 'arrows', 'none'];
 
 export function validateOverflowInput(inputStr: string): void {
     if (supportedOverflow.indexOf(inputStr) < 0) {
@@ -143,7 +143,7 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
     }
     private _tight = false;
 
-    /** When horzontal tabs overflow the container, specify either 'more' or 'arrows' for navigation control. Defaults to `more` */
+    /** When horzontal tabs overflow the container, specify either 'more', 'arrows', or 'none' for navigation control. Defaults to `more` */
     @Input()
     get overflowStyle(): string {
         return this._overflowStyle;
@@ -203,6 +203,12 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
 
         // If the tab bar has zero width, it is not currently visible and we should skip calculations
         if (this._tabBar.nativeElement.clientWidth <= 0) {
+            return;
+        }
+
+        // for cases where we want to just show what we can and hide the rest
+        if (this.overflowStyle === 'none') {
+            this._tabs.forEach(t => t.show());
             return;
         }
 
