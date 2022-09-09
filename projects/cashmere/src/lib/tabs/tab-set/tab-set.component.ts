@@ -213,11 +213,19 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
         }
 
         const tabContainerWidth: number = this._tabBar.nativeElement.offsetWidth;
-        let curLinks = 0;
+
+
+        // we'll make sure the selected tab is always shown, even if it was going to be in the overflow
+        const selectedTabIndex = this._tabs.toArray().findIndex(t => t._active);
+        let curLinks = selectedTabIndex > -1 ? this._tabWidths[selectedTabIndex] : 0;
 
         // Step through the links until we hit the end of the container, then collapse the
         // remaining into a more menu
         this._tabs.forEach((t, i) => {
+            if (t._active) {
+                t.show();
+                return;
+            }
             curLinks += this._tabWidths[i];
 
             // Account for the width of either the more button or the two arrow buttons
@@ -357,6 +365,7 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
         this.tabContent = tab.tabContent;
         this._routerDeselected = false;
         this.selectedTabChange.emit(new TabChangeEvent(activeIndex, tab));
+        this.refreshTabWidths();
     }
 
     private defaultToFirstTab() {
