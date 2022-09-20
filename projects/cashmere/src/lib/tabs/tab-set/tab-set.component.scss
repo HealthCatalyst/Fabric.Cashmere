@@ -31,3 +31,15 @@
 .hc-tab-bar-arrows {
     @include hc-tab-bar-arrows();
 }
+
+.more-chevron-down {
+    @include hc-more-chevron-down();
+}
+
+.ico-chevron-right {
+    @include hc-ico-chevron-right();
+}
+
+.ico-chevron-left {
+    @include hc-ico-chevron-left();
+}
