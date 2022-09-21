@@ -1,4 +1,5 @@
 @import './colors';
+@import './icons';
 
 // tab
 
@@ -90,6 +91,23 @@
     }
 }
 
+@mixin hc-more-chevron-down() {
+    background-image: url($ico-chev-down-black);
+    background-repeat: no-repeat;
+    position: relative;
+    top: 3px;
+}
+
+@mixin hc-ico-chevron-left() {
+    background-image: url($ico-chev-left);
+    background-repeat: no-repeat;
+}
+
+@mixin hc-ico-chevron-right() {
+    background-image: url($ico-chev-right);
+    background-repeat: no-repeat;
+}
+
 @mixin hc-tab-set-content-horizontal() {
     background-color: inherit;
     height: 100%;
@@ -151,7 +169,7 @@
     }
 
     &.hc-tab-bar-arrow-disabled {
-        color: $slate-gray-300;
+        opacity: 0.25;
         pointer-events: none;
     }
 
