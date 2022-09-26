@@ -8,13 +8,13 @@
             (mousedown)="_tabArrowClick(false)"
             (touchstart)="_tabArrowTouch(false)"
         >
-            <hc-icon hcIconSm fontSet="fa" fontIcon="fa-chevron-left"></hc-icon>
+            <hc-icon hcIconSm fontIcon="ico-chevron-left"></hc-icon>
         </div>
         <ng-content select="hc-tab"></ng-content>
         <div *ngIf="_collapse">
             <div *ngIf="overflowStyle === 'more'" class="hc-tab-bar-more hc-text-ellipsis" tabindex="0" #moreLink="hcPopAnchor" [hcPop]="tabsetMore">
                 More
-                <hc-icon hcIconSm fontSet="fa" fontIcon="fa-chevron-down"></hc-icon>
+                <hc-icon hcIconSm fontIcon="more-chevron-down"></hc-icon>
             </div>
             <div
                 *ngIf="overflowStyle === 'arrows'"
@@ -24,7 +24,7 @@
                 (mousedown)="_tabArrowClick(true)"
                 (touchstart)="_tabArrowTouch(true)"
             >
-                <hc-icon hcIconSm fontSet="fa" fontIcon="fa-chevron-right"></hc-icon>
+                <hc-icon hcIconSm fontIcon="ico-chevron-right"></hc-icon>
             </div>
         </div>
         <ng-content></ng-content>
