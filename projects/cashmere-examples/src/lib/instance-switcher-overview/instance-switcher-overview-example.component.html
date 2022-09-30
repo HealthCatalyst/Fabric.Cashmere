@@ -5,6 +5,7 @@
         [isOpen]="isOpen"
         [editable]="editable"
         [tooltipText]="tooltipText"
+        [maxWidth]="maxWidthControl.value"
         (added)="onAdded()"
         (edited)="onEdited($event)"
         (removed)="onClosed($event)"
@@ -15,4 +16,10 @@
     <button hc-button (click)="toggleEditable()" class="demo-button">{{getEditableDescription()}}</button>
     <button hc-button (click)="toggleClosable()" class="demo-button">{{getClosableDescrition()}}</button>
     <button hc-button (click)="toggleTooltips()" class="demo-button">{{getTooltipDescription()}}</button>
+    <div class="property-form-row">
+        <hc-form-field>
+            <hc-label>Max width (ex: 300px):</hc-label>
+            <input hcInput [formControl]="maxWidthControl" />
+        </hc-form-field>
+    </div>
 </div>

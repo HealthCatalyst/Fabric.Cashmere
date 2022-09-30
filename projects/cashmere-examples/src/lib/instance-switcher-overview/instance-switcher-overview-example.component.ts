@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { IInstance, IInstanceSwitcherTooltipText } from '@healthcatalyst/cashmere';
 
 /**
@@ -6,9 +7,11 @@ import { IInstance, IInstanceSwitcherTooltipText } from '@healthcatalyst/cashmer
  */
 @Component({
     selector: 'hc-instance-switcher-overview-example',
-    templateUrl: 'instance-switcher-overview-example.component.html'
+    templateUrl: 'instance-switcher-overview-example.component.html',
+    styleUrls: ['instance-switcher-overview-example.component.scss']
 })
 export class InstanceSwitcherOverviewExampleComponent {
+    readonly maxWidthControl = new FormControl('none');
     instances: IInstance[] = [
         {
             instanceKey: 'instance1',

@@ -186,6 +186,10 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
         return this._instancesMore?.isPopoverOpen() ? 'open' : 'closed';
     }
 
+    /** Configure the max width for the instance names. Default to fit content or `none`; use maxWidth to constrain and truncate the content to a fixed width (e.g. `150px`)*/
+    @Input()
+    maxWidth = 'none';
+
     /**
      * Value emitted when an instance tab is clicked. The value
      * is the unique key assigned to the instance.
@@ -379,6 +383,11 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
         this._blurActive = false;
 
         const value = this._renameInstanceControl.value
+        if(value === '') {
+            this._cancelEdit();
+            return;
+        }
+
         if (value) {
             if (key === this._editKey) {
                 this._editKey = null;
