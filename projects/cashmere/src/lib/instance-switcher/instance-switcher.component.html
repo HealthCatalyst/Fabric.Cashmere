@@ -11,7 +11,7 @@
                 class="hc-instance-chip"
                 [hcPop]="instanceContext"
                 [trigger]="_contextTrigger()"
-                [style.max-width]="maxWidth"
+                [style.max-width]="chipMaxWidth"
                 [context]="{ key: instance.instanceKey, value: instance.displayText }"
                 [class.hc-instance-selected]="_isSelected(instance.instanceKey, false, i)"
                 (click)="_instanceClick(instance.instanceKey)"

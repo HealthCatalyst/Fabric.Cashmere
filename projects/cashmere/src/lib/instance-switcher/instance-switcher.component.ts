@@ -188,7 +188,7 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
 
     /** Configure the max width for the instance names. Default to fit content or `none`; use maxWidth to constrain and truncate the content to a fixed width (e.g. `150px`)*/
     @Input()
-    maxWidth = 'none';
+    chipMaxWidth = 'none';
 
     /**
      * Value emitted when an instance tab is clicked. The value

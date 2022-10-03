@@ -5,7 +5,7 @@
         [isOpen]="isOpen"
         [editable]="editable"
         [tooltipText]="tooltipText"
-        [maxWidth]="maxWidthControl.value"
+        [chipMaxWidth]="maxChipWidthControl.value"
         (added)="onAdded()"
         (edited)="onEdited($event)"
         (removed)="onClosed($event)"
@@ -19,7 +19,7 @@
     <div class="property-form-row">
         <hc-form-field>
             <hc-label>Max width (ex: 300px):</hc-label>
-            <input hcInput [formControl]="maxWidthControl" />
+            <input hcInput [formControl]="maxChipWidthControl" />
         </hc-form-field>
     </div>
 </div>

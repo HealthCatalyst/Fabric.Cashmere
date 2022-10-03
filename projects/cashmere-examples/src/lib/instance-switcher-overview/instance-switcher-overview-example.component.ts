@@ -11,7 +11,7 @@ import { IInstance, IInstanceSwitcherTooltipText } from '@healthcatalyst/cashmer
     styleUrls: ['instance-switcher-overview-example.component.scss']
 })
 export class InstanceSwitcherOverviewExampleComponent {
-    readonly maxWidthControl = new FormControl('none');
+    readonly maxChipWidthControl = new FormControl('none');
     instances: IInstance[] = [
         {
             instanceKey: 'instance1',
