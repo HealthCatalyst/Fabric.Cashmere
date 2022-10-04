@@ -114,6 +114,8 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
                 this._hasFocusedInput = focused;
             });
 
+            this._mobileInput = this._inputChildren.first.mobile;
+
             this._inputChildren.first.mobileChange.pipe(takeUntil(this.unsubscribe$)).subscribe(mobileVal => {
                 this._mobileInput = mobileVal;
             });
