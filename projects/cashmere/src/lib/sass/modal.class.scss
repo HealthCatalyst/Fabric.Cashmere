@@ -4,12 +4,20 @@
     @include hc-modal-header();
 }
 
+.hc-modal-header-tight {
+    @include hc-modal-header-tight();
+}
+
 .hc-modal-drag-handle {
     @include hc-modal-drag-handle();
 }
 
 .hc-modal-body {
     @include hc-modal-body();
+}
+
+.hc-modal-body {
+    @include hc-modal-body-tight();
 }
 
 .hc-modal-close-button {
@@ -22,6 +30,10 @@
     .hc-button {
         @include hc-modal-button-footer();
     }
+}
+
+.hc-modal-footer-tight {
+    @include hc-modal-footer-tight();
 }
 
 .hc-modal-content {

@@ -9,8 +9,11 @@
     </hc-modal>
 </ng-template>
 
-<button hc-button buttonStyle="primary" (click)="open()" class="demo-button">
+<button hc-button buttonStyle="primary" (click)="openStandard()" class="demo-button">
     Open Standard Modal from Component
+</button>
+<button hc-button buttonStyle="primary" (click)="openTight()" class="demo-button">
+    Open Tight Modal from Component
 </button>
 <button hc-button buttonStyle="secondary" (click)="openTemplate(content)" class="demo-button">
     Open Draggable Resizable Modal from Template
