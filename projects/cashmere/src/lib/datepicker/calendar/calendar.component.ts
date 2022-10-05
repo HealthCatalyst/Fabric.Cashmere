@@ -120,9 +120,19 @@ export class CalendarHeaderComponent {
     }
 
     /** Handles clicks on the jump to today button */
-
     _todayClicked(): void {
-        this.calendar.activeDate = this._dateAdapter.today();
+        const selectedYear = this._dateAdapter.getYear(this._dateAdapter.today());
+        const selectedMonth = this._dateAdapter.getMonth(this._dateAdapter.today());
+        const selectedDate = this._dateAdapter.getDate(this._dateAdapter.today());
+        const todayDate = this._dateAdapter.createDate(selectedYear, selectedMonth, selectedDate);
+
+        if ( this.calendar.mode !== 'date' ) {
+            todayDate.setHours(this._dateAdapter.today().getHours());
+            todayDate.setMinutes(this._dateAdapter.today().getMinutes());
+        }
+
+        this.calendar._dateSelected(todayDate);
+        this.calendar._userSelection.emit(true);
     }
 
     /** Whether the previous period button is enabled. */
@@ -301,9 +311,9 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     @Output()
     readonly monthSelected: EventEmitter<D> = new EventEmitter<D>();
 
-    /** Emits when any date is selected. */
+    /** Emits when any date is selected; boolean indicates if Today button was clicked */
     @Output()
-    readonly _userSelection: EventEmitter<void> = new EventEmitter<void>();
+    readonly _userSelection: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     /** Reference to the current month view component. */
     @ViewChild(MonthViewComponent)
@@ -501,7 +511,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     }
 
     _userSelected(): void {
-        this._userSelection.emit();
+        this._userSelection.emit(false);
     }
 
     /** Handles year/month selection in the multi-year/year views. */
