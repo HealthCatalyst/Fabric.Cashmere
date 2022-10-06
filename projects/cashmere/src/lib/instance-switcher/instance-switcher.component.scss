@@ -1,4 +1,5 @@
 @import '../sass/instance-switcher.scss';
+@import '../../lib/sass/cashmere.scss';
 
 .hc-instance-switcher {
     @include hc-instance-switcher();

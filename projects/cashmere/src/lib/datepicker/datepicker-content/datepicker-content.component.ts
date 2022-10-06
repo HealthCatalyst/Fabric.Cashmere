@@ -38,8 +38,8 @@ export class DatepickerContentComponent implements AfterViewInit {
     }
 
     /** Close the datepicker automatically on selection only if in date mode */
-    autoClose(): void {
-        if (this.datepicker.mode === 'date') {
+    autoClose( todayClicked: boolean ): void {
+        if (this.datepicker.mode === 'date' || todayClicked ) {
             this.datepicker.close();
         }
     }

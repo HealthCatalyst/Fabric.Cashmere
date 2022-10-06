@@ -1,0 +1,9 @@
+.property-form-row {
+    display: flex;
+    flex-wrap: wrap;
+
+    hc-form-field{
+        margin-top: 10px;
+        width: 180px;
+    }
+}

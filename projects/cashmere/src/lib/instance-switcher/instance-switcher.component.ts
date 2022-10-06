@@ -95,6 +95,7 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
     private _blurActive = false;
     _instanceContextKey: string | null = null;
     _instanceContextValue: string | null = null
+    private _baseSize: number;
 
     public _collapse = false;
     public _moreList: Array<IInstance> = [];
@@ -186,6 +187,10 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
         return this._instancesMore?.isPopoverOpen() ? 'open' : 'closed';
     }
 
+    /** Configure the max width for the instance names. Default to fit content or `none`; use maxWidth to constrain and truncate the content to a fixed width (e.g. `150px`)*/
+    @Input()
+    chipMaxWidth = 'none';
+
     /**
      * Value emitted when an instance tab is clicked. The value
      * is the unique key assigned to the instance.
@@ -239,7 +244,6 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
      * Recalculates which instances should be shown, and which
      * ones should be moved to the more menu.
      */
-    @HostListener('window:resize')
     refreshInstances(): void {
         if (this._instancesMore) {
             this._instancesMore.closePopover();
@@ -275,6 +279,11 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
         this.checkContainerSize();
     }
 
+    @HostListener('window:resize')
+    _updateContainerSize(): void {
+        this._baseSize = this._instancesContainer.nativeElement.clientWidth;
+    }
+
     /**
      * Checks the container size a few times to see if the instances can be refreshed for the first
      * time. For more information about this approach, see the Usage tab on the website.
@@ -286,6 +295,7 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
         if (this._instancesContainer.nativeElement.clientWidth === 0 && this._animationFrameCount++ < 60) {
             requestAnimationFrame(() => this.checkContainerSize());
         } else {
+            this._updateContainerSize();
             // If the container element is loaded, or we have exceeded the try count, then refresh instances.
             this.refreshInstances();
 
@@ -379,6 +389,11 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
         this._blurActive = false;
 
         const value = this._renameInstanceControl.value
+        if(value === '') {
+            this._cancelEdit();
+            return;
+        }
+
         if (value) {
             if (key === this._editKey) {
                 this._editKey = null;
@@ -432,8 +447,7 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
     }
 
     _calculateAvailableSize(): number {
-        const baseSize = this._instancesContainer.nativeElement.clientWidth;
-        return baseSize - 45;
+        return this._baseSize - 45;
     }
 
     _instanceTrackBy(index: number, instance: IInstance): string {
