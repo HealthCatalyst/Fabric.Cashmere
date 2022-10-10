@@ -7,8 +7,8 @@
     <hc-env-switcher [(ngModel)]="selectedEnvironments" [environmentOptions]="environmentOptions"
         [canOpenInNewTab]="newTabFeatureEnabled" [canSelectMultiple]="multipleSelectEnabled"
         [disabled]="envSwitcherDisabled" [failedToLoad]="loadFailed" [loading]="loading"
-        (openInNewTab)="onOpenInNewTab($event)" (updateEnvironments)="onUpdateEnvironments($event)"
-        (reloadEnvironments)="onReloadEnvironments()">
+        [listHeader]="listHeader.value" (openInNewTab)="onOpenInNewTab($event)"
+        (updateEnvironments)="onUpdateEnvironments($event)" (reloadEnvironments)="onReloadEnvironments()">
     </hc-env-switcher>
 
     <hc-icon class="hc-navbar-icon" tabindex="0" fontSet="fa" fontIcon="fa-question-circle-o"
@@ -29,6 +29,7 @@
         <hc-checkbox [(ngModel)]="envSwitcherDisabled">Disable switcher</hc-checkbox>
         <hc-checkbox [(ngModel)]="loading">"Loading" state</hc-checkbox>
         <hc-checkbox [(ngModel)]="loadFailed">"Failed to load" state</hc-checkbox>
+        <hc-form-field inline="true"><hc-label>List header:</hc-label><input hcInput [formControl]="listHeader"/></hc-form-field>
     </div>
 
     <br>

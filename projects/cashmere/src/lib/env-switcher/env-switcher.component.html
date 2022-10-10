@@ -17,7 +17,7 @@
         <ng-container *ngIf="!loading">
             <ng-container *ngIf="!failedToLoad">
                 <ng-container *ngIf="_environmentOptionVMs?.length > 0">
-                    <h2 class="hc-env-header">Environments</h2>
+                    <h2 class="hc-env-header">{{listHeader}}</h2>
                     <div hcMenuItem *ngFor="let env of _environmentOptionVMs" class="hc-env-row"
                         [class.hc-env-row-checked]="_isEnvSelected(env.id)" tabIndex="0" (click)="_envClicked(env)"
                         (keydown.enter)="_envClicked(env)">
@@ -30,25 +30,25 @@
                             <span *ngIf="env.description" class="hc-env-icon-info hc-env-row-icon"
                                 hcTooltip="{{env.description}}" (click)="$event.stopPropagation();"></span>
                             <span *ngIf="canOpenInNewTab" class="hc-env-icon-new-tab-link hc-env-row-icon"
-                                hcTooltip="Open environment in new tab."
+                                hcTooltip="Open in new tab."
                                 (click)="openInNewTab.emit(env); $event.stopPropagation();"></span>
                         </span>
                     </div>
                     <button *ngIf="canSelectMultiple" hcMenuItem hc-button (click)="_applyEnvs()" size="sm"
-                        title="Close menu and apply selected environments">Apply</button>
+                        title="Close menu and apply selected">Apply</button>
                 </ng-container>
 
                 <!-- No Envs Available -->
                 <div *ngIf="_environmentOptionVMs?.length === 0" class="hc-env-switcher-empty">
                     <span class="hc-env-switcher-lg-icon hc-env-switcher-empty-icon"></span>
-                    <em>No environments available.</em>
+                    <em>No options available.</em>
                 </div>
             </ng-container>
 
             <!-- Load Failed -->
             <div *ngIf="failedToLoad" class="hc-env-switcher-empty">
                 <span class="hc-env-switcher-lg-icon hc-env-switcher-warning-icon"></span>
-                <em>Failed to load environments.</em>
+                <em>Failed to load.</em>
                 <button class="hc-env-switcher-retry" hc-button buttonStyle="primary-alt" size="sm"
                     (click)="reloadEnvironments.emit()">Reload</button>
             </div>
