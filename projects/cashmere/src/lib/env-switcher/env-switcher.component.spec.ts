@@ -121,7 +121,7 @@ describe('EnvSwitcherComponent', () => {
             component.canSelectMultiple = true;
             component._stagedActiveEnvIds = [1234, 5678];
             component._applyEnvs();
-            expect(component._badgeText).toBe('2 Envs');
+            expect(component._badgeText).toBe('2 Selected');
             expect(component._badgeColor).toBe('hc-badge-color-white');
         });
 
