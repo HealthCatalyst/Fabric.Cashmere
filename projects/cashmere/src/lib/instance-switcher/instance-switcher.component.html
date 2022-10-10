@@ -11,6 +11,7 @@
                 class="hc-instance-chip"
                 [hcPop]="instanceContext"
                 [trigger]="_contextTrigger()"
+                [style.max-width]="chipMaxWidth"
                 [context]="{ key: instance.instanceKey, value: instance.displayText }"
                 [class.hc-instance-selected]="_isSelected(instance.instanceKey, false, i)"
                 (click)="_instanceClick(instance.instanceKey)"
@@ -18,6 +19,7 @@
                 (closeClick)="_instanceClose(instance.instanceKey, $event)">
                 <span
                     #instanceTooltip="hcPopAnchor"
+                    class="hc-text-ellipsis"
                     [hcTooltip]="_tooltipText.instanceText"
                     [trigger]="instance.instanceKey === _editKey ? 'none' : _tooltipText.instanceTrigger">
                     <input
@@ -32,14 +34,14 @@
                         [formControl]="_renameInstanceControl"
                          />
                     <ng-template #notEditable>{{instance.displayText}}</ng-template>
-                    <hc-icon
-                        hcIconSm
-                        fontSet="fa"
-                        fontIcon="fa-times"
-                        *ngIf="instances.length > 1"
-                        (click)="_instanceClose(instance.instanceKey, $event)">
-                    </hc-icon>
                 </span>
+                <hc-icon
+                    hcIconSm
+                    fontSet="fa"
+                    fontIcon="fa-times"
+                    *ngIf="instances.length > 1"
+                    (click)="_instanceClose(instance.instanceKey, $event)">
+                </hc-icon>
             </div>
         </hc-measurable>
         <button hc-button
