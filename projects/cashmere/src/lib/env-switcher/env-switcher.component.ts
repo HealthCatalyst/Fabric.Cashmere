@@ -44,9 +44,9 @@ export class EnvSwitcherComponent implements OnDestroy, ControlValueAccessor {
     /** In multiselect mode, track the ids of selected environments in this 'staging' model (and then actually apply them when the user is done) */
     public _stagedActiveEnvIds = new Array<number>();
     /** Text to show in the badge shown in the navbar. */
-    public _badgeText = 'No Env';
+    public _badgeText = 'None';
     /** Tooltip shown when a user hover over the badge in the navbar. */
-    public _badgeTooltip = 'No environment selected';
+    public _badgeTooltip = 'None selected';
     /** Color of the badge in the navbar. */
     public _badgeColor = 'hc-badge-color-white';
     /** collection of allowed colors mapped to their matching css classes */
@@ -63,6 +63,9 @@ export class EnvSwitcherComponent implements OnDestroy, ControlValueAccessor {
 
     /** Set to true if unable to load environments from MDS. A "Failed to load" message will be shown in the switcher. *Defaults to false.* */
     @Input() public failedToLoad = false;
+
+    /** Header to display above the expanded list of environments. *Defaults to 'Environments'.* */
+    @Input() public listHeader = "Environments";
 
     /** If true, will allow multiple environments to be selected at once. *Defaults to false.* */
     @Input()
@@ -223,17 +226,17 @@ export class EnvSwitcherComponent implements OnDestroy, ControlValueAccessor {
     /** Update the text displayed on the environment switcher badge in the navbar */
     private _updateBadgeText() {
         if (this._activeEnvIds.length === 0) {
-            this._badgeText = 'No Env';
-            this._badgeTooltip = 'No environment selected';
+            this._badgeText = 'None';
+            this._badgeTooltip = 'None selected';
         } else if (this._activeEnvIds.length === 1) {
             this._badgeText = this.selectedEnvironments[0].shortName.trim().slice(0, 6);
-            this._badgeTooltip = `Active environment: ${this._buildActiveEnvList()}`;
+            this._badgeTooltip = `Active: ${this._buildActiveEnvList()}`;
         } else if (this._activeEnvIds.length === this.environmentOptions.length) {
             this._badgeText = 'All';
-            this._badgeTooltip = `${this._activeEnvIds.length} active environments: ${this._buildActiveEnvList()}`;
+            this._badgeTooltip = `${this._activeEnvIds.length} active: ${this._buildActiveEnvList()}`;
         } else if (this._activeEnvIds.length > 1) {
-            this._badgeText = `${this._activeEnvIds.length} Envs`;
-            this._badgeTooltip = `${this._activeEnvIds.length} active environments: ${this._buildActiveEnvList()}`;
+            this._badgeText = `${this._activeEnvIds.length} Selected`;
+            this._badgeTooltip = `${this._activeEnvIds.length} active: ${this._buildActiveEnvList()}`;
         }
     }
 
