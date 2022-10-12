@@ -7,6 +7,9 @@ export interface IInstance {
 
     /** The text that should be displayed on the instance switcher for this instance. */
     displayText: string;
+
+    /** Text displayed for a tooltip on the instance tab */
+    tooltipText?: string;
 }
 
 /**
@@ -14,9 +17,6 @@ export interface IInstance {
  * to various controls in the Instance Switcher.
  */
 export interface IInstanceSwitcherTooltipText {
-    /** The tooltip text for the instances. */
-    instanceText?: string;
-
     /** The tooltip text for the add button. */
     addText?: string;
 

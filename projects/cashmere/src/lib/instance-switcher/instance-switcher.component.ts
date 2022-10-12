@@ -24,7 +24,6 @@ import {parseBooleanAttribute} from '../util';
 import { FormControl } from '@angular/forms';
 
 type InstanceSwitcherTooltipConfig = IInstanceSwitcherTooltipText & {
-    instanceTrigger: string;
     addTrigger: string;
     closeTrigger: string;
 };
@@ -81,7 +80,6 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
     _isOpen = true;
     _openState: 'void' | 'open' = 'open';
     _tooltipText: InstanceSwitcherTooltipConfig = {
-        instanceTrigger: 'none',
         addTrigger: 'none',
         closeTrigger: 'none'
     };
@@ -177,7 +175,6 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
     set tooltipText(toolTipVal: IInstanceSwitcherTooltipText) {
         this._tooltipText = {
             ...toolTipVal,
-            instanceTrigger: toolTipVal.instanceText ? 'hover' : 'none',
             addTrigger: toolTipVal.addText ? 'hover' : 'none',
             closeTrigger: toolTipVal.closeText ? 'hover' : 'none'
         };
@@ -410,10 +407,11 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
                 return instance
             });
 
-            this.edited.emit({
-                instanceKey: key,
-                displayText: value
-            });
+            const editedInstance = this.instances.find(instance => instance.instanceKey === key);
+
+            this.edited.emit(
+                editedInstance
+            );
 
             this._instanceChips
                 .find(instance => instance.itemKey === key)
