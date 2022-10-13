@@ -20,8 +20,8 @@
                 <span
                     #instanceTooltip="hcPopAnchor"
                     class="hc-text-ellipsis"
-                    [hcTooltip]="_tooltipText.instanceText"
-                    [trigger]="instance.instanceKey === _editKey ? 'none' : _tooltipText.instanceTrigger">
+                    [hcTooltip]="instance.tooltipText"
+                    [trigger]="(instance.instanceKey === _editKey || !instance.tooltipText) ? 'none' : 'hover'">
                     <input
                         #instanceEditInput
                         hcInput
