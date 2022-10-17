@@ -38,47 +38,40 @@ _The ™ symbol can be applied to any unregistered trademark_
 - Healthcare.AI Framework
 - HealthCatalyst.AI
 - Healthcare Analytics Summit
-- Health Catalyst Business Decision Support
+- Health Catalyst Care Management Data Collection
+- Health Catalyst Expert Data Collections
+- Health Catalyst Analytics Suite
+  - IDEA
+  - Healthcare.AI
+  - Health Catalyst Pop Analyzer
+  - Health Catalyst Pop Insights
+- Health Catalyst Business Decision Support Suite
   - Health Catalyst PowerCosting (formerly CORUS Suite)
   - Health Catalyst PowerLabor
   - Health Catalyst PowerPlanning
-- Health Catalyst Expert Data Collections
 - Health Catalyst Population Health Suite
-  - Health Catalyst Care Management Suite
-    - Health Catalyst Care Flow
-    - Health Catalyst Pop Analyzer
-    - Health Catalyst Pop Insights
-- Health Catalyst Embedded Suite
+  - Health Catalyst Care Flow
   - Health Catalyst Embedded Care Gaps
   - Health Catalyst Embedded Refills
-- Health Catalyst Measures Suite
-  - Health Catalyst Community Care
-  - Health Catalyst MeasureAble (formerly Able Health)
-- Health Catalyst Self-Service Analytics Suite
-  - Health Catalyst IDEA
-- Health Catalyst Value Optimizer
+  - Health Catalyst Measurable
+  - Health Catalyst Pop Analyzer
+  - Health Catalyst Pop Insights
+  - Health Catalyst Value Optimizer
 - Health Catalyst Research Network
 - Health Catalyst University
 - Hospital Price Index
+- KPI Ninja by Health Catalyst
+- Ninja Universe
 - Patient Safety Monitor
 - Population Builder
-- Population Care Flow
 - Population Health Foundations Solution
 - Self-Service Analytics
 - Rapid Response Analytics Solution
 - The Catalyst Awards
+- The Health Catalyst Analytics Practice Model
 - Touchstone Match
 - Twistle
 - Twistle Patient Engagement by Health Catalyst
-- VitalIntegrity
-- VitalAnalysis
-- VitalAssessment
-- VitalView
-- VitalWorkflow
-- VitalAuditor
-- VitalCoder
-- VitalAlerts
-- Vital365
 
 :::
 
@@ -97,6 +90,7 @@ _The ™ symbol can be applied to any unregistered trademark_
 **Unregistered Marks No Longer in Use:**
 
 -   Ignite Outcomes – **Abandon application**
+-   Ignite Outcomes improvement (minimal use)
 
 :::
 
