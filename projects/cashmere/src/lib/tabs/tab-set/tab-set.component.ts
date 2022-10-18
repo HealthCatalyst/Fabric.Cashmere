@@ -14,7 +14,7 @@ import {EventEmitter, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subject, interval, Subscription, fromEvent} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {take, takeUntil} from 'rxjs/operators';
 import {parseBooleanAttribute} from '../../util';
 import {HcPopoverAnchorDirective} from '../../pop';
 
@@ -66,7 +66,6 @@ export class TabSetComponent implements AfterContentInit {
     private _defaultTab: string | number = 0;
     private _stopTabSubscriptionSubject: Subject<void> = new Subject();
     private _stopTabArrowSubject: Subject<void> = new Subject();
-    private _mouseUpSubscription: Subscription;
 
     private _tabWidths: Array<number> = [];
     private _tabsTotalWidth = 0;
@@ -257,6 +256,22 @@ export class TabSetComponent implements AfterContentInit {
 
     tabArrowInterval = interval(100);
 
+    _handleTabsWheel(event: WheelEvent): void {
+        const scrollDirection = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? Math.sign(event.deltaX) : Math.sign(event.deltaY);
+        const scrollDistance = Math.sqrt(Math.pow(event.deltaX, 2) + Math.pow(event.deltaY, 2)) * scrollDirection;
+        const scrollLeft = scrollDistance < 0 && this._tabBar.nativeElement.scrollLeft > 0;
+        const scrollRight = scrollDistance > 0
+            && this._tabBar.nativeElement.offsetWidth !== this._tabBar.nativeElement.scrollWidth - this._tabBar.nativeElement.scrollLeft;
+
+        if (scrollLeft || scrollRight) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            this._tabBar.nativeElement.scrollLeft += scrollDistance;
+            this._tabArrowCheck();
+        }
+    }
+
     _tabArrowClick( scrollRight: boolean ): void {
         this._tabBar.nativeElement.scrollLeft += scrollRight ? 40 : -40;
         this._tabArrowCheck();
@@ -264,9 +279,8 @@ export class TabSetComponent implements AfterContentInit {
             this._tabBar.nativeElement.scrollLeft += scrollRight ? 40 : -40;
             this._tabArrowCheck();
         });
-        this._mouseUpSubscription = fromEvent<MouseEvent>(window.document, 'mouseup').subscribe(() => {
+        fromEvent<MouseEvent>(window.document, 'mouseup').pipe(take(1)).subscribe(() => {
             this._stopTabArrowSubject.next();
-            this._mouseUpSubscription.unsubscribe();
         });
     }
 
@@ -277,9 +291,8 @@ export class TabSetComponent implements AfterContentInit {
             this._tabBar.nativeElement.scrollLeft += scrollRight ? 40 : -40;
             this._tabArrowCheck();
         });
-        this._mouseUpSubscription = fromEvent<MouseEvent>(window.document, 'touchend').subscribe(() => {
+        fromEvent<MouseEvent>(window.document, 'touchend').pipe(take(1)).subscribe(() => {
             this._stopTabArrowSubject.next();
-            this._mouseUpSubscription.unsubscribe();
         });
     }
 

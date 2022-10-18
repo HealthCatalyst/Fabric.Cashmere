@@ -1,5 +1,9 @@
 <div class="hc-{{direction}}-tab-container">
-    <div #tabBar class="hc-tab-bar-{{direction}}" [class.hc-tab-bar-arrow-overflow]="_collapse && overflowStyle === 'arrows'">
+    <div
+        #tabBar
+        class="hc-tab-bar-{{direction}}"
+        [class.hc-tab-bar-arrow-overflow]="_collapse && overflowStyle === 'arrows'"
+        (wheel)="_handleTabsWheel($event)">
         <div
             *ngIf="_collapse && overflowStyle === 'arrows'"
             class="hc-tab-bar-arrows hc-tab-bar-left-arrow"
