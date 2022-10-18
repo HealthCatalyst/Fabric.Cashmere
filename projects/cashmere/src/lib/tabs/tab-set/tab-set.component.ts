@@ -88,6 +88,18 @@ export class TabSetComponent implements AfterContentInit {
     @ViewChild('moreLink')
     _moreButton: HcPopoverAnchorDirective;
 
+    _selectedTab: number | TabComponent;
+
+    /** Specify which tab is currently selected. Does not fire a `selectedTabChange` emission. */
+    @Input()
+    get selectedTab(): number | TabComponent {
+        return this._selectedTab;
+    }
+
+    set selectedTab(selected: number | TabComponent) {
+        this.selectTab(selected, false);
+    }
+
     /** Emits when the selected tab is changed */
     @Output()
     selectedTabChange: EventEmitter<TabChangeEvent> = new EventEmitter();
@@ -331,14 +343,20 @@ export class TabSetComponent implements AfterContentInit {
 
     /** Sets the currently selected tab by either its numerical index or `TabComponent` object.
      * Passing a value of -1 will deselect all tabs in the set. */
-    selectTab(tab: number | TabComponent): void {
+    selectTab(tab: number | TabComponent, shouldEmit = true): void {
+        this._selectedTab = tab;
         if ( tab === -1 ) {
             this.tabContent = null;
+
             if ( this._routerEnabled ) {
                 this._routerDeselected = true;
             }
+
             this._tabs.toArray().forEach(t => t._active = false);
-            this.selectedTabChange.emit(new TabChangeEvent(-1, null));
+
+            if (shouldEmit) {
+                this.selectedTabChange.emit(new TabChangeEvent(-1, null));
+            }
         } else {
             const activeTab = typeof tab === 'number' ? this._tabs.toArray()[tab] : tab;
             if ( this._routerEnabled ) {
