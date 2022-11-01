@@ -177,7 +177,14 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     @Input() _hourCycle: number;
 
     /** When true, this allows the date picker to validate with a blank value OR a valid date value. Defaults to false. */
-    @Input() _allowsBlankValues: boolean;
+    @Input()
+    get allowsBlankValues(): boolean {
+        return this._allowsBlankValues;
+    }
+    set allowsBlankValues(value: boolean) {
+        this._allowsBlankValues = parseBooleanAttribute(value);
+    }
+    private _allowsBlankValues: boolean;
 
     /** Emits when the value changes (either due to user input or programmatic change). */
     _valueChange = new EventEmitter<D | null>();

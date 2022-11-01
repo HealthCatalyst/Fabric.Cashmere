@@ -67,6 +67,19 @@ export class DatepickerComponent implements OnDestroy {
     private _scrollStrategy: () => ScrollStrategy;
 
     /**
+     * Whether the datepicker can be set to a blank value (by deleting its contents). Defaults to `false`.
+     */
+    @Input('allows-blank-values')
+    get allowsBlankValues() {
+        return this._datepickerInput && this._datepickerInput.allowsBlankValues;
+    }
+    set allowsBlankValues(val) {
+        if (this._datepickerInput) {
+            this._datepickerInput.allowsBlankValues = val;
+        }
+    }
+
+    /**
      * Whether the datepicker includes the calendar, time selector, or both. Defaults to `date`.
      */
     @Input()

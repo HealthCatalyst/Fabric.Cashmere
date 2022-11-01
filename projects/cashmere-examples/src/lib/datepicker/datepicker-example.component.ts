@@ -14,6 +14,7 @@ export class DatepickerExampleComponent {
     });
 
     hourCycle = false;
+    allowsBlankValues = false;
 
     maxStr: string = this.dateControl2.value.toISOString();
 }
