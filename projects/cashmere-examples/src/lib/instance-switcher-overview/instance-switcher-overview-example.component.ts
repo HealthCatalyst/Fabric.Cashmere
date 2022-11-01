@@ -15,17 +15,18 @@ export class InstanceSwitcherOverviewExampleComponent {
     instances: IInstance[] = [
         {
             instanceKey: 'instance1',
-            displayText: 'Instance 1'
+            displayText: 'Instance 1',
+            tooltipText: 'Instance 1'
         },
         {
             instanceKey: 'instance2',
-            displayText: 'Instance 2'
+            displayText: 'Instance 2',
+            tooltipText: 'This is a separate tooltip text'
         }
     ];
 
     tooltipText: IInstanceSwitcherTooltipText = {
         addText: 'Add an instance',
-        instanceText: 'This is an instance!',
         closeText: 'Close the Instance Switcher'
     };
 
@@ -67,7 +68,6 @@ export class InstanceSwitcherOverviewExampleComponent {
         } else {
             this.tooltipText = {
                 addText: 'Add an instance',
-                instanceText: 'This is an instance!',
                 closeText: 'Close the Instance Switcher'
             };
         }
@@ -83,7 +83,8 @@ export class InstanceSwitcherOverviewExampleComponent {
             ...this.instances,
             {
                 instanceKey: `instance${nextNumber}`,
-                displayText: `Instance ${nextNumber}`
+                displayText: `Instance ${nextNumber}`,
+                tooltipText: `Instance Tooltip ${nextNumber}`
             }
         ];
     }
