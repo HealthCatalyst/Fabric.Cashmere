@@ -1,12 +1,26 @@
 <hc-modal>
     <hc-modal-header>Modal Header Title</hc-modal-header>
-    <hc-banner type="warning">
+    <hc-banner type="warning" *ngIf="activeModal.data.tight">
         <span hcBannerStamp>WARNING</span>
         You are about to export data which may include Protected Health Information (PHI)
     </hc-banner>
-    <hc-modal-body>Data: {{ activeModal.data }}</hc-modal-body>
+    <hc-modal-body>Data: {{ activeModal.data.content }}</hc-modal-body>
     <hc-modal-footer>
-        <button hc-button buttonStyle="link" (click)="cancel()">Cancel</button>
-        <button hc-button buttonStyle="primary" (click)="close()">OK</button>
+        <button
+            hc-button
+            buttonStyle="link"
+            (click)="cancel()"
+            [size]="activeModal.data.tight ? 'md' : 'sm'"
+            [class.tight-button]="!activeModal.data.tight">
+                Cancel
+        </button>
+        <button
+            hc-button
+            buttonStyle="primary"
+            (click)="close()"
+            [size]="activeModal.data.tight ? 'md' : 'sm'"
+            [class.tight-button]="!activeModal.data.tight">
+            OK
+        </button>
     </hc-modal-footer>
 </hc-modal>

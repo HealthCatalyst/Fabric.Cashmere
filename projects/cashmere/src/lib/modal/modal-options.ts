@@ -3,7 +3,7 @@ export interface ModalOptions {
     /** Optional size of the modal window. Defaults to auto sizing based on content.
      * Options are: `auto`, `sm`, `md`, `lg`, and `xl`.*/
     size?: ModalSize;
-    /** Optional. Set to true to reduce padding and title size of modal sections. */
+    /** Defaults to false. Set to true to reduce padding of modal sections and title font size. */
     tight?: boolean;
     /** Optional. Specify data that will be available on the active modal context. */
     data?: unknown;
