@@ -16,7 +16,7 @@ export class ModalComponent implements AfterContentInit {
     _modalWrapperClass = true;
     private _tight = false;
 
-    /** If true, condense the default padding on all elements and reduce the title font size. *Defaults to `false`.  */
+    /** If true, condense the default padding on all elements and reduce the title font size. *Defaults to `false`.*  */
     @Input()
     get tight(): boolean {
         return this._tight;

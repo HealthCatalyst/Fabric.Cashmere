@@ -5,6 +5,7 @@
 $modal-padding: 15px 25px;
 $modal-tight-padding: 15px;
 $header-footer-height: 55px;
+$header-footer-height-tight: 45px;
 $stacked-footer-height: 101px;
 $modal-border: 1px solid $gray-200;
 
@@ -139,6 +140,7 @@ $modal-border: 1px solid $gray-200;
 
 @mixin hc-modal-header-tight() {
     font-size: calculateRem(16px);
+    min-height: $header-footer-height-tight;
     padding: $modal-tight-padding;
 }
 
