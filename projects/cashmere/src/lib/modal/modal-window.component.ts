@@ -12,7 +12,8 @@ import {ActiveModal} from './active-modal';
     selector: 'hc-modal-window',
     template: `
         <div #focusTrapElement
-            class="hc-modal {{_disableFullScreen ? '' : 'hc-modal-responsive'}} {{_isResizable ? 'hc-modal-resizable' : 'hc-modal-static'}} hc-modal-{{_size}}"
+            class="hc-modal {{_disableFullScreen ? '' : 'hc-modal-responsive'}} {{_isResizable ? 'hc-modal-resizable' : 'hc-modal-static'}} hc-modal-{{_size}}
+            {{_tight ? 'hc-modal-tight' : ''}}"
             cdkDrag [cdkDragDisabled]="!_isDraggable" cdkDragBoundary=".hc-modal-window">
             <div *ngIf="_isDraggable" class="hc-modal-drag-handle" cdkDragHandle>
                 <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
@@ -42,6 +43,7 @@ export class ModalWindowComponent {
     _isDraggable = false;
     _isResizable = false;
     _size = 'auto';
+    _tight = false;
     _disableFullScreen = false;
     _restoreFocus = true;
     _autoFocus = false;

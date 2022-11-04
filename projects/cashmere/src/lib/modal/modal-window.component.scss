@@ -42,3 +42,18 @@
         @include hc-modal-responsive();
     }
 }
+
+// hc-modal-tight adjusts the padding values on the modal components
+.hc-modal-tight {
+    .hc-modal-header {
+        @include hc-modal-header-tight();
+    }
+
+    .hc-modal-body {
+        @include hc-modal-body-tight();
+    }
+
+    .hc-modal-footer {
+        @include hc-modal-footer-tight();
+    }
+}

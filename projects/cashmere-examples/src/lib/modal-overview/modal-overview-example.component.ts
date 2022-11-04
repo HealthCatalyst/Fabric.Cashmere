@@ -14,16 +14,32 @@ export class ModalOverviewExampleComponent {
 
     constructor(private modalService: ModalService) {}
 
-    open(): void {
+    openStandard(): void {
         const options: ModalOptions = {
-            data:
-                'This is a size lg modal. If isDraggable is set to true, it places a drag handle in the top right corner which you can use to reposition the modal. If isResizable is set to true, a resize handle appears in the bottom right to change the dimensions of the modal. They may be used together or separately.',
+            data: {
+                content: 'This is a size lg modal. If isDraggable is set to true, it places a drag handle in the top right corner which you can use to reposition the modal. If isResizable is set to true, a resize handle appears in the bottom right to change the dimensions of the modal. They may be used together or separately.',
+                tight: false
+            },
             ignoreEscapeKey: true,
             ignoreOverlayClick: true,
             size: 'lg'
         };
         const subModal: HcModal<ModalOverviewExampleModalComponent> = this.modalService.open(ModalOverviewExampleModalComponent, options);
         subModal.result.subscribe(res => (this.result = res));
+    }
+
+    openTight():void {
+        const options: ModalOptions = {
+            data: {
+                content: 'If tight is set to true, padding on the header, footer, and body will be set to 15px.',
+                tight: true
+            },
+            ignoreEscapeKey: true,
+            ignoreOverlayClick: true,
+            size: 'sm',
+            tight: true
+        };
+        this.modalService.open(ModalOverviewExampleModalComponent, options);
     }
 
     openTemplate(content: TemplateRef<unknown>): void {

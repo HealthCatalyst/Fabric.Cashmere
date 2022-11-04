@@ -56,6 +56,7 @@ export class ModalService {
             data: {},
             ignoreEscapeKey: false,
             size: 'auto',
+            tight: false,
             ignoreOverlayClick: false,
             isDraggable: false,
             isResizable: false,
@@ -126,6 +127,7 @@ export class ModalService {
         window.instance._isDraggable = options.isDraggable;
         window.instance._isResizable = options.isResizable;
         window.instance._size = options.size;
+        window.instance._tight = options.tight;
         window.instance._disableFullScreen = options.disableFullScreen;
         window.instance._autoFocus = options.autoFocus;
         window.instance._restoreFocus = options.restoreFocus;
