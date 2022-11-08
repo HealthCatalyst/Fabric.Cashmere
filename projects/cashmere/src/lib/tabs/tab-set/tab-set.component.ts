@@ -169,21 +169,21 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
 
     constructor(private router: Router, private route: ActivatedRoute) {}
 
-    ngAfterContentInit(): void {
-        this.checkForRouterUse();
-    }
-
     ngAfterViewInit(): void {
         this.setUpTabs();
 
         /** Backup call to calculate tab widths in case the tabs are presented after page load */
-        setTimeout(() => this.refreshTabWidths(), 10);
+        setTimeout(() => {
+            this.refreshTabWidths();
+        }, 10);
 
         // If links are added dynamically, recheck the navbar link sizing
-        this._tabs.changes.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
-            this.setUpTabs();
-            this.refreshTabWidths();
-        });
+        this._tabs.changes.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.refreshTabWidths());
+    }
+
+    ngAfterContentInit(): void {
+        this.setUpTabs();
+        this._tabs.changes.subscribe(() => this.setUpTabs());
     }
 
     /** Runs the initial calculation of tab widths after the page has fully rendered */
