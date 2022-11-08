@@ -1,5 +1,6 @@
 import {
     AfterContentInit,
+    AfterViewInit,
     Component,
     ContentChildren,
     ElementRef,
@@ -58,7 +59,7 @@ export function invalidDefaultTab(tabVal: string | number): void {
     styleUrls: ['./tab-set.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class TabSetComponent implements AfterContentInit {
+export class TabSetComponent implements AfterContentInit, AfterViewInit {
     _routerEnabled = false;
     _routerDeselected = false;
     _tabArrowsEnabled = [true, true];
@@ -169,6 +170,10 @@ export class TabSetComponent implements AfterContentInit {
     constructor(private router: Router, private route: ActivatedRoute) {}
 
     ngAfterContentInit(): void {
+        this.checkForRouterUse();
+    }
+
+    ngAfterViewInit(): void {
         this.setUpTabs();
 
         /** Backup call to calculate tab widths in case the tabs are presented after page load */
