@@ -1,4 +1,5 @@
-import {AfterContentInit, Component, ContentChild, HostBinding, ViewEncapsulation} from '@angular/core';
+import {AfterContentInit, Component, ContentChild, HostBinding, Input, ViewEncapsulation} from '@angular/core';
+import { parseBooleanAttribute } from '../util';
 import { ModalBodyComponent } from './modal-body.component';
 import { ModalFooterComponent } from './modal-footer.component';
 import { ModalHeaderComponent } from './modal-header.component';
@@ -13,6 +14,16 @@ import { ModalHeaderComponent } from './modal-header.component';
 export class ModalComponent implements AfterContentInit {
     @HostBinding('class.hc-modal-content')
     _modalWrapperClass = true;
+    private _tight = false;
+
+    /** If true, condense the default padding on all elements and reduce the title font size. *Defaults to `false`.*  */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value: boolean) {
+        this._tight = parseBooleanAttribute(value);
+    }
 
     /* For resizable modals - dynamically set the min-height based on whether the modal has a header, footer, and/or body */
     @HostBinding('style.min-height')
