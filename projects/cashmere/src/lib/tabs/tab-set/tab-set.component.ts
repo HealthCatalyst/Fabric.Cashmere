@@ -1,6 +1,6 @@
 import {
     AfterContentInit,
-    AfterViewInit,
+    ChangeDetectorRef,
     Component,
     ContentChildren,
     ElementRef,
@@ -59,7 +59,7 @@ export function invalidDefaultTab(tabVal: string | number): void {
     styleUrls: ['./tab-set.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class TabSetComponent implements AfterContentInit, AfterViewInit {
+export class TabSetComponent implements AfterContentInit {
     _routerEnabled = false;
     _routerDeselected = false;
     _tabArrowsEnabled = [true, true];
@@ -167,23 +167,20 @@ export class TabSetComponent implements AfterContentInit, AfterViewInit {
     }
     private _overflowStyle = 'more';
 
-    constructor(private router: Router, private route: ActivatedRoute) {}
-
-    ngAfterViewInit(): void {
-        this.setUpTabs();
-
-        /** Backup call to calculate tab widths in case the tabs are presented after page load */
-        setTimeout(() => {
-            this.refreshTabWidths();
-        }, 10);
-
-        // If links are added dynamically, recheck the navbar link sizing
-        this._tabs.changes.pipe(takeUntil(this.unsubscribe)).subscribe(() => this.refreshTabWidths());
-    }
+    constructor(private router: Router, private route: ActivatedRoute, public changeDetector: ChangeDetectorRef) {}
 
     ngAfterContentInit(): void {
         this.setUpTabs();
-        this._tabs.changes.subscribe(() => this.setUpTabs());
+
+        /** Backup call to calculate tab widths in case the tabs are presented after page load */
+        setTimeout(() => this.refreshTabWidths(), 10);
+
+        // If links are added dynamically, recheck the navbar link sizing
+        this._tabs.changes.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
+            this.setUpTabs();
+            this.refreshTabWidths();
+            this.changeDetector.detectChanges();
+        });
     }
 
     /** Runs the initial calculation of tab widths after the page has fully rendered */
