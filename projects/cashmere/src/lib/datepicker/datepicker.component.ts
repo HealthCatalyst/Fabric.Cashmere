@@ -73,9 +73,9 @@ export class DatepickerComponent implements OnDestroy {
     get allowsBlankValues() {
         return this._datepickerInput && this._datepickerInput.allowsBlankValues;
     }
-    set allowsBlankValues(val) {
+    set allowsBlankValues(val: boolean) {
         if (this._datepickerInput) {
-            this._datepickerInput.allowsBlankValues = val;
+            this._datepickerInput.allowsBlankValues = parseBooleanAttribute(val);
         }
     }
 
