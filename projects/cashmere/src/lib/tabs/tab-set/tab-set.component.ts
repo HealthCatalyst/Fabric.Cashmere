@@ -14,8 +14,8 @@ import type {QueryList} from '@angular/core';
 import {EventEmitter, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subject, interval, fromEvent} from 'rxjs';
-import {take, takeUntil} from 'rxjs/operators';
+import {Subject, interval, fromEvent, BehaviorSubject, combineLatest} from 'rxjs';
+import {distinctUntilChanged, filter, startWith, take, takeUntil} from 'rxjs/operators';
 import {parseBooleanAttribute} from '../../util';
 import {HcPopoverAnchorDirective} from '../../pop';
 
@@ -72,6 +72,7 @@ export class TabSetComponent implements AfterContentInit {
     private _tabsTotalWidth = 0;
     public _collapse = false;
     public _moreList: Array<TabComponent> = [];
+    private _selectedTabSubject = new BehaviorSubject<number | TabComponent>(0);
     private unsubscribe = new Subject<void>();
 
     /** The content to be displayed for the currently selected tab.
@@ -97,7 +98,7 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     set selectedTab(selected: number | TabComponent) {
-        this.selectTab(selected, false);
+        this._selectedTabSubject.next(selected);
     }
 
     /** Emits when the selected tab is changed */
@@ -170,10 +171,30 @@ export class TabSetComponent implements AfterContentInit {
     constructor(private router: Router, private route: ActivatedRoute, public changeDetector: ChangeDetectorRef) {}
 
     ngAfterContentInit(): void {
+        const selectedChanged$ = this._selectedTabSubject.pipe(
+            distinctUntilChanged(),
+            filter(nextTab => nextTab !== this.selectedTab)
+        );
+
+        combineLatest([selectedChanged$, this._tabs.changes.pipe(
+            startWith(this._tabs)
+        )]).pipe(
+            filter(([selectedTab, tabQuery]) => this.filterSetTabs(selectedTab, tabQuery)),
+            takeUntil(this.unsubscribe)
+        ).subscribe(([selectedTab, ]) => {
+            setTimeout(() => {
+                this.selectTab(selectedTab, false);
+                this.changeDetector.detectChanges();
+            });
+        });
+
         this.setUpTabs();
 
         /** Backup call to calculate tab widths in case the tabs are presented after page load */
-        setTimeout(() => this.refreshTabWidths(), 10);
+        setTimeout(() => {
+            this.refreshTabWidths();
+            this.changeDetector.detectChanges();
+        }, 10);
 
         // If links are added dynamically, recheck the navbar link sizing
         this._tabs.changes.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
@@ -377,11 +398,11 @@ export class TabSetComponent implements AfterContentInit {
             if ( this._routerEnabled ) {
                 this.router.navigate([activeTab.routerLink], {relativeTo: this.route});
             }
-            this._setActive(activeTab);
+            this._setActive(activeTab, shouldEmit);
         }
     }
 
-    _setActive(tab: TabComponent): void {
+    _setActive(tab: TabComponent, shouldEmit = true): void {
         let activeIndex = 0;
         this._tabs.toArray().forEach((t, index) => {
             t._active = false;
@@ -392,7 +413,11 @@ export class TabSetComponent implements AfterContentInit {
         tab._active = true;
         this.tabContent = tab.tabContent;
         this._routerDeselected = false;
-        this.selectedTabChange.emit(new TabChangeEvent(activeIndex, tab));
+
+        if (shouldEmit) {
+            this.selectedTabChange.emit(new TabChangeEvent(activeIndex, tab));
+        }
+
         this.refreshTabWidths();
     }
 
@@ -426,6 +451,17 @@ export class TabSetComponent implements AfterContentInit {
                 this.defaultToFirstRoute();
             }
         }
+    }
+
+    private filterSetTabs(selected: number | TabComponent, query: QueryList<TabComponent>): boolean {
+
+        if (query?.toArray()[Number(selected)]) {
+            return selected >= 0 && selected < query?.length;
+        } else if (selected === -1) {
+            return true;
+        }
+
+        return query?.some(tab => tab === selected) ?? false;
     }
 
     private defaultToFirstRoute() {
