@@ -95,7 +95,7 @@ export class CalendarWrapperComponent implements OnChanges {
         // eslint-disable-next-line no-prototype-builtins
         if (changes.hasOwnProperty('required')) {
             const isRequired = changes.required.currentValue;
-            this.datePickerInput._allowsBlankValues = !isRequired;
+            this.datePickerInput.allowsBlankValues = !isRequired;
         }
     }
 

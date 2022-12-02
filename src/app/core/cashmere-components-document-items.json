@@ -132,7 +132,7 @@
         "examples": ["table-sort", "table-filter", "resizable-columns", "more-table-styles"],
         "usageDoc": true
     },
-    "tabs": {"name": "Tabs", "category": "layout", "examples": ["tabs-horizontal", "tabs-vertical"]},
+    "tabs": {"name": "Tabs", "category": "layout", "examples": ["tabs-horizontal", "tabs-vertical", "selected-tab-input"]},
     "tile": {"name": "Tile", "category": "layout", "examples": ["tile-overview"], "usageDoc": true},
     "toaster": {"name": "Toaster Messages", "category": "popups", "examples": ["toaster-overview"]},
     "typeform-survey": {"name": "Typeform Survey", "category": "popups", "examples": ["typeform-survey-overview"], "usageDoc": true},

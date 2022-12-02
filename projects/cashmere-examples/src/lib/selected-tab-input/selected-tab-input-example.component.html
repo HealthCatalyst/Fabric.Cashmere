@@ -1,0 +1,34 @@
+<div class="tab-demo">
+    <hc-tab-set
+        direction="horizontal"
+        [selectedTab]="currentSelected"
+        (selectedTabChange)="selectionChanged($event)"
+    >
+        <hc-tab tabTitle="Example First Tab">
+            <div class="example-tab-content">
+                This is the first tab.
+            </div>
+        </hc-tab>
+        <hc-tab tabTitle="Example Second Tab">
+            <div class="example-tab-content">
+                This is the second tab.
+            </div>
+        </hc-tab>
+        <hc-tab tabTitle="Example Third Tab">
+            <div class="example-tab-content">
+                This is the third tab.
+            </div>
+        </hc-tab>
+    </hc-tab-set>
+</div>
+<div class="tab-select-container">
+    <hc-form-field inline>
+        <hc-label>Tab Selected:</hc-label>
+        <hc-select [formControl]="tabSelected">
+            <option value="0">First Tab</option>
+            <option value="1">Second Tab</option>
+            <option value="2">Third Tab</option>
+            <option value="-1">No Tab</option>
+        </hc-select>
+    </hc-form-field>
+</div>

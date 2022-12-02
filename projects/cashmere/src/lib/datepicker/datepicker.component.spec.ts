@@ -160,6 +160,18 @@ class DatepickerWithCustomIcon {}
 
 @Component({
     template: `
+        <input [hcDatepicker]="d" />
+        <hc-datepicker #d allows-blank-values="true"></hc-datepicker>
+    `
+})
+class DatepickerWithAllowsBlankValues {
+    @ViewChild('d')
+    datepicker: DatepickerComponent;
+    date: Date | null | undefined;
+}
+
+@Component({
+    template: `
         <hc-form-field>
             <input hcInput [hcDatepicker]="d" />
             <hc-datepicker #d></hc-datepicker>
@@ -1782,6 +1794,50 @@ describe('DatepickerComponent', () => {
 
             expect(document.querySelector('.hc-calendar-time-picker')).toBeTruthy();
             expect(document.querySelector('.hc-calendar-content')).toBeTruthy();
+        }));
+    });
+
+    describe('datepicker with allows blank values enabled', () => {
+        let fixture: ComponentFixture<DatepickerWithAllowsBlankValues>;
+        let testComponent: DatepickerWithAllowsBlankValues;
+
+        beforeEach(fakeAsync(() => {
+            fixture = createComponent(DatepickerWithAllowsBlankValues, [HcNativeDateModule]);
+            fixture.detectChanges();
+
+            testComponent = fixture.componentInstance;
+        }));
+
+        afterEach(fakeAsync(() => {
+            testComponent.datepicker.close();
+            fixture.detectChanges();
+        }));
+
+        it('should mark valid when value is valid', fakeAsync(() => {
+            testComponent.date = new Date(2017, JUL, 1);
+            fixture.detectChanges();
+            flush();
+            fixture.detectChanges();
+
+            expect(fixture.debugElement.query(By.css('input')).nativeElement.classList).not.toContain('ng-invalid');
+        }));
+
+        it('should mark valid when value is null', fakeAsync(() => {
+            testComponent.date = null;
+            fixture.detectChanges();
+            flush();
+            fixture.detectChanges();
+
+            expect(fixture.debugElement.query(By.css('input')).nativeElement.classList).not.toContain('ng-invalid');
+        }));
+
+        it('should mark valid when value is undefined', fakeAsync(() => {
+            testComponent.date = undefined;
+            fixture.detectChanges();
+            flush();
+            fixture.detectChanges();
+
+            expect(fixture.debugElement.query(By.css('input')).nativeElement.classList).not.toContain('ng-invalid');
         }));
     });
 });
