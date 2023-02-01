@@ -31,6 +31,7 @@
 
 @mixin hc-file-uploader-drag-target-over() {
     background-color: tint($blue, 92%);
+    border: 2px solid $blue;
 }
 
 @mixin hc-file-uploader-drag-icon() {
@@ -47,6 +48,15 @@
     position: relative;
 }
 
+@mixin hc-file-uploader-files-selected-tight() {
+    display: inline-block;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    width: 15px;
+    min-width: 15px;
+    height: 21px;
+}
+
 @mixin hc-file-uploader-multiple-files() {
     position: absolute;
     opacity: 0.4;
@@ -58,6 +68,28 @@
     color: $gray-400;
     @include fontSize(15px);
     margin-top: 10px;
+}
+
+@mixin hc-file-uploader-tight-drag-text() {
+    color: $gray-400;
+    @include fontSize(15px);
+    text-align: left;
+    margin-left: 10px;
+}
+
+@mixin hc-file-uploader-tight-container() {
+    display: flex;
+    align-items: center;
+    margin: 5px 10px;
+}
+
+@mixin hc-file-uploader-tight-icon() {
+    margin-top: 0;
+    background-size: 28px;
+    background-repeat: no-repeat;
+    width: 28px;
+    min-width: 28px;
+    height: 21px;
 }
 
 @mixin hc-file-uploader-drag-divider() {

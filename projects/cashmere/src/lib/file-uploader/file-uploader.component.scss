@@ -28,12 +28,28 @@
     @include hc-file-uploader-files-selected();
 }
 
+.hc-file-uploader-files-selected-tight {
+    @include hc-file-uploader-files-selected-tight();
+}
+
 .hc-file-uploader-multiple-files {
     @include hc-file-uploader-multiple-files();
 }
 
 .hc-file-uploader-drag-text {
     @include hc-file-uploader-drag-text();
+}
+
+.hc-file-uploader-tight-drag-text {
+    @include hc-file-uploader-tight-drag-text();
+}
+
+.hc-file-uploader-tight-container {
+    @include hc-file-uploader-tight-container();
+}
+
+.hc-file-uploader-tight-icon {
+    @include hc-file-uploader-tight-icon();
 }
 
 .hc-file-uploader-drag-divider {

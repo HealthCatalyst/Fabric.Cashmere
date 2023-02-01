@@ -20,7 +20,7 @@ These icons are base64 encoded and available in a single stylesheet: `@import '@
 
 ##### Icons
 
-| Icon                                            | Class name                     | Typical Usage                                                        |
+| Icon                                            | Class Name                     | Typical Usage                                                        |
 | ----------------------------------------------- | ------------------------------ | -------------------------------------------------------------------- |
 | <div class="hc-pdf-file-icon"></div>            | `.hc-pdf-file-icon`            | Any MIME types that include 'pdf'                                    |
 | <div class="hc-doc-file-icon"></div>            | `.hc-doc-file-icon`            | Any MIME types that include 'msword'                                 |

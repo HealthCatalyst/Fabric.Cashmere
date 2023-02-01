@@ -22,6 +22,7 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
     _fileTypes = '*';
     _fileNames: string[] = [];
     _multiple = false;
+    _tight = false;
     _disabled = false;
     _isRequired = false;
     _fileList: FileList;
@@ -58,6 +59,15 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
     }
     set multiple(value: boolean | string ) {
         this._multiple = parseBooleanAttribute( value );
+    }
+
+    /** Apply tight styling that condenses the controller to one line. Defaults to false. */
+    @Input()
+    get tight(): boolean {
+        return this._tight;
+    }
+    set tight(value: boolean | string ) {
+        this._tight = parseBooleanAttribute( value );
     }
 
     /** Whether the uploader is disabled. */
@@ -133,6 +143,12 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
         this._fileInputElement.nativeElement.dispatchEvent(new MouseEvent('click', {bubbles: true}));
     }
 
+    /** Clears any selected files and returns to the initial state */
+    reset(): void {
+        this._fileList = new FileList();
+        this._fileNames = [];
+    }
+
     _fileSelected(): void {
         const selectedFiles: FileList = this._fileInputElement.nativeElement.files;
         this._fileNames = [];
@@ -180,30 +196,28 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
     }
 
     _determineFileIcon(): void {
-        if ( this._fileList.length === 1 ) {
-            const mimeType = this._fileList[0].type;
+        const mimeType = this._fileList[0].type;
 
-            if ( mimeType.includes('image') ) {
-                this._fileIcon = 'hc-image-file-icon';
-            } else if ( mimeType.includes('pdf') ) {
-                this._fileIcon = 'hc-pdf-file-icon';
-            } else if ( mimeType.includes('csv') ) {
-                this._fileIcon = 'hc-csv-file-icon';
-            } else if ( mimeType.includes('msword') ) {
-                this._fileIcon = 'hc-doc-file-icon';
-            } else if ( this._fileList[0].name.includes('.docx') ) {
-                this._fileIcon = 'hc-docx-file-icon';
-            } else if ( this._fileList[0].name.includes('.xls') ) {
-                this._fileIcon = 'hc-xls-file-icon';
-            } else if ( mimeType.includes('xml') ) {
-                this._fileIcon = 'hc-xml-file-icon';
-            } else if ( mimeType === 'text/plain' ) {
-                this._fileIcon = 'hc-text-file-icon';
-            } else if ( mimeType.includes('text/') ) {
-                this._fileIcon = 'hc-text-clipping-file-icon';
-            } else {
-                this._fileIcon = 'hc-generic-file-icon';
-            }
+        if ( mimeType.includes('image') ) {
+            this._fileIcon = 'hc-image-file-icon';
+        } else if ( mimeType.includes('pdf') ) {
+            this._fileIcon = 'hc-pdf-file-icon';
+        } else if ( mimeType.includes('csv') ) {
+            this._fileIcon = 'hc-csv-file-icon';
+        } else if ( mimeType.includes('msword') ) {
+            this._fileIcon = 'hc-doc-file-icon';
+        } else if ( this._fileList[0].name.includes('.docx') ) {
+            this._fileIcon = 'hc-docx-file-icon';
+        } else if ( this._fileList[0].name.includes('.xls') ) {
+            this._fileIcon = 'hc-xls-file-icon';
+        } else if ( mimeType.includes('xml') ) {
+            this._fileIcon = 'hc-xml-file-icon';
+        } else if ( mimeType === 'text/plain' ) {
+            this._fileIcon = 'hc-text-file-icon';
+        } else if ( mimeType.includes('text/') ) {
+            this._fileIcon = 'hc-text-clipping-file-icon';
+        } else {
+            this._fileIcon = 'hc-generic-file-icon';
         }
     }
 

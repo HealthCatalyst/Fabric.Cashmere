@@ -11,6 +11,7 @@ import { FormControl } from '@angular/forms';
 export class FileUploaderOverviewExampleComponent {
     selectedFiles = new FormControl();
     multipleFiles = new FormControl(false);
+    controlTight = new FormControl(false);
 
     get selectedFileNames(): string {
         let printString = '';
