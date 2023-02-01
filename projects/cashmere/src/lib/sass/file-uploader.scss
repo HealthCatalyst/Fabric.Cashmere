@@ -1,0 +1,73 @@
+@import './colors';
+@import './mixins';
+@import './icons';
+@import './file-icons';
+
+@mixin hc-file-uploader() {
+    width: 100%;
+}
+
+@mixin hc-file-uploader-drag-target() {
+    width: 100%;
+    border-radius: 5px;
+    border: 2px dashed $gray-300;
+    text-align: center;
+}
+
+@mixin hc-file-uploader-file-name() {
+    font-weight: 600;
+    color: $text;
+    @include fontSize(15px);
+}
+
+@mixin hc-file-uploader-drag-target-invalid {
+    border: 2px dashed $error;
+}
+
+@mixin hc-file-uploader-disabled() {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+@mixin hc-file-uploader-drag-target-over() {
+    background-color: tint($blue, 92%);
+}
+
+@mixin hc-file-uploader-drag-icon() {
+    display: inline-block;
+    height: 48px;
+    width: 69px;
+    background-image: url($ico-upload-gray);
+    margin-top: 20px;
+}
+
+@mixin hc-file-uploader-files-selected() {
+    display: inline-block;
+    margin-top: 20px;
+    position: relative;
+}
+
+@mixin hc-file-uploader-multiple-files() {
+    position: absolute;
+    opacity: 0.4;
+    top: -5px;
+    right: -5px;
+}
+
+@mixin hc-file-uploader-drag-text() {
+    color: $gray-400;
+    @include fontSize(15px);
+    margin-top: 10px;
+}
+
+@mixin hc-file-uploader-drag-divider() {
+    color: $gray-400;
+    @include fontSize(15px);
+    margin: 10px 0;
+}
+
+@mixin hc-file-uploader-file-controls() {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}

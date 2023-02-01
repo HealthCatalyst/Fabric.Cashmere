@@ -1,4 +1,4 @@
-import {Component, EventEmitter, forwardRef, Input, Optional, Output, Self, ViewEncapsulation} from '@angular/core';
+import {Component, DoCheck, EventEmitter, forwardRef, Input, Optional, Output, Self, ViewEncapsulation} from '@angular/core';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
@@ -34,7 +34,7 @@ export function validateLabelType(inputStr: string): void {
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SlideToggleComponent)}]
 })
-export class SlideToggleComponent extends HcFormControlComponent {
+export class SlideToggleComponent extends HcFormControlComponent implements DoCheck {
     private _uniqueId = `hc-slide-toggle-${nextToggleId++}`;
     private _form: NgForm | FormGroupDirective | null;
     _buttonState = true;
@@ -77,7 +77,7 @@ export class SlideToggleComponent extends HcFormControlComponent {
         return this._disabled;
     }
 
-    set disabled(val: boolean) {
+    set disabled(val: boolean | string) {
         this._disabled = parseBooleanAttribute(val);
     }
 
@@ -106,7 +106,7 @@ export class SlideToggleComponent extends HcFormControlComponent {
         return this._buttonState;
     }
 
-    set buttonState( val: boolean ) {
+    set buttonState( val: boolean | string ) {
         this._buttonState = parseBooleanAttribute(val);
         this.onChange(this._buttonState);
         this.buttonStateChanged.emit(this._buttonState);

@@ -1,0 +1,14 @@
+<!-- Optional to include the uploader in a hc-form-field -->
+<hc-form-field>
+    <hc-label>Select a file to upload:</hc-label>
+    <hc-file-uploader [formControl]="selectedFiles" [multiple]="multipleFiles.value" (filesAdded)="checkFileSize()"></hc-file-uploader>
+    <hc-error>File too large. Only files under 2 MB are supported.</hc-error>
+</hc-form-field>
+
+<hc-checkbox [formControl]="multipleFiles">Allow multiple file selections</hc-checkbox>
+
+<p>
+    <strong>File names from <code>FormControl</code>:</strong><br>
+    {{selectedFileNames}}
+</p>
+

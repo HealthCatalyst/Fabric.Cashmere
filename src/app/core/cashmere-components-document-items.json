@@ -40,6 +40,7 @@
     },
     "highlight-pipe": {"name": "Highlight", "category": "pipes", "examples": ["highlight-overview"], "hideApi": true, "usageDoc": true},
     "icon": {"name": "Icon", "category": "buttons", "examples": ["icon-overview"]},
+    "file-uploader": {"name": "File Uploader", "category": "forms", "examples": ["file-uploader-overview"]},
     "input": {
         "name": "Input",
         "category": "forms",

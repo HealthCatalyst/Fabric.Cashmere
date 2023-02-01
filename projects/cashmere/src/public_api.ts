@@ -16,6 +16,7 @@ export * from './lib/drawer/index';
 export * from './lib/env-switcher/index';
 export * from './lib/form-field/index';
 export * from './lib/icon/index';
+export * from './lib/file-uploader/index';
 export * from './lib/input/index';
 export * from './lib/instance-switcher/index';
 export * from './lib/list/index';
