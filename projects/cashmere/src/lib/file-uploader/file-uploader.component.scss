@@ -65,3 +65,7 @@
         @include hc-file-uploader-drag-target-invalid();
     }
 }
+
+.hc-file-uploader-subtext {
+    @include hc-file-uploader-subtext();
+}

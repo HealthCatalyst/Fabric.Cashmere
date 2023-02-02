@@ -1,7 +1,13 @@
 <!-- Optional to include the uploader in a hc-form-field -->
 <hc-form-field>
     <hc-label>Select a file to upload:</hc-label>
-    <hc-file-uploader [formControl]="selectedFiles" [multiple]="multipleFiles.value" [tight]="controlTight.value" (filesAdded)="checkFileSize()"></hc-file-uploader>
+    <hc-file-uploader
+        [formControl]="selectedFiles"
+        [multiple]="multipleFiles.value"
+        [tight]="controlTight.value"
+        subtext="2 MB maximum"
+        (filesAdded)="checkFileSize()"
+    ></hc-file-uploader>
     <hc-error>File too large. Only files under 2 MB are supported.</hc-error>
 </hc-form-field>
 
