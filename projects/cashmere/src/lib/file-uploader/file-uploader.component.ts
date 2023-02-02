@@ -26,6 +26,7 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
     _disabled = false;
     _isRequired = false;
     _fileList: FileList;
+    _subtext: string;
 
     @HostBinding('class.hc-file-uploader')
     _baseClass = true;
@@ -88,6 +89,16 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
 
     set required( requiredVal: boolean | string ) {
         this._isRequired = parseBooleanAttribute(requiredVal);
+    }
+
+    /** Displays an optional string of text below the browse button - typically used for instructions or info about file constraints */
+    @Input()
+    get subtext(): string {
+        return this._subtext;
+    }
+
+    set subtext( val: string ) {
+        this._subtext = val;
     }
 
     constructor(

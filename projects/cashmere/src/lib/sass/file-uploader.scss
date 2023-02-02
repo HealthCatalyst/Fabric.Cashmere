@@ -100,6 +100,14 @@
 
 @mixin hc-file-uploader-file-controls() {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 25px;
+}
+
+@mixin hc-file-uploader-subtext() {
+    width: 100%;
+    color: $gray-400;
+    @include fontSize(13px);
+    margin-top: 5px;
 }
