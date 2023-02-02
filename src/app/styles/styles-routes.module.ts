@@ -67,6 +67,15 @@ const routes: Routes = [
                 }
             },
             {
+                path: 'file-icons',
+                component: MarkdownContentComponent,
+                data: {
+                    title: 'File Icons',
+                    category: 'User Interface',
+                    document: require('raw-loader!../../../guides/styles/file-icons.md')
+                }
+            },
+            {
                 path: 'table',
                 component: TableDemoComponent,
                 data: {title: 'Tables', category: 'User Interface'}

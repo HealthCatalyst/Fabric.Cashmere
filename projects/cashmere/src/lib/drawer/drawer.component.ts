@@ -259,6 +259,14 @@ export class Drawer implements AfterContentInit {
 
     /** Toggles the drawer */
     toggle(isOpen = !this.opened): Promise<DrawerPromiseResult> {
+        // If the current state of the drawer matches the desired state of the drawer,
+        // then return an already-resolved Promise whose result matches the current drawer
+        // state. Ideally, we'd punt and return null here, instead, but that would break the
+        // API contract defined by the Drawer, and that would be bad.
+        if (isOpen === this._drawerOpened) {
+            return Promise.resolve(new DrawerPromiseResult(isOpen ? 'open' : 'close'));
+        }
+
         if (!this._animationPromise) {
             this._drawerOpened = isOpen;
 

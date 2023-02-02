@@ -1,0 +1,62 @@
+<div
+    #dropZone
+    class="hc-file-uploader-drag-target"
+    [class.hc-file-uploader-disabled]="disabled"
+    (drop)="_onFileDrop($event)"
+    (dragover)="_allowDrop($event)"
+    (dragenter)="_highlight()"
+    (dragleave)="_unhighlight()"
+>
+    <div *ngIf="!_fileList && !tight">
+        <div class="hc-file-uploader-drag-icon"></div>
+        <div class="hc-file-uploader-drag-text">
+            {{multiple ? 'Drag files here to select them.' : 'Drag a file here to select it.'}}
+        </div>
+    </div>
+    <div *ngIf="!_fileList && tight" class="hc-file-uploader-tight-container">
+        <div class="hc-file-uploader-drag-icon hc-file-uploader-tight-icon"></div>
+        <div class="hc-file-uploader-tight-drag-text">
+            {{multiple ? 'Drag files here to select them' : 'Drag a file here to select it'}} or
+            <button hc-button buttonStyle="link-inline" (click)="browseFiles()">browse</button>.
+        </div>
+    </div>
+    <div *ngIf="_fileList && tight" class="hc-file-uploader-tight-container">
+        <div [class]="'hc-file-uploader-files-selected-tight ' + _fileIcon"></div>
+        <div class="hc-file-uploader-tight-drag-text">
+            {{_fileNames.length > 1 ? 'Multiple files (' + _fileNames.length + ') selected. Drag files here to replace': _fileNames[0] + ' selected. Drag a file here to replace'}} or
+            <button hc-button buttonStyle="link-inline" (click)="browseFiles()">browse</button>.
+        </div>
+    </div>
+    <div *ngIf="_fileList && _fileNames.length === 1 && !tight">
+        <div [class]="'hc-file-uploader-files-selected ' + _fileIcon">
+            <div class="hc-file-icon-checked"></div>
+        </div>
+        <div class="hc-file-uploader-file-name">
+            {{_fileNames[0]}}
+        </div>
+        <div class="hc-file-uploader-drag-text">
+            File selected. Drag a file here to replace.
+        </div>
+    </div>
+    <div *ngIf="_fileList && _fileNames.length > 1 && !tight">
+        <div class="hc-file-uploader-files-selected">
+            <div class="hc-file-uploader-multiple-files hc-generic-file-icon"></div>
+            <div class="hc-generic-file-icon">
+                <div class="hc-file-icon-checked"></div>
+            </div>
+        </div>
+        <div class="hc-file-uploader-file-name">
+            Multiple Files
+        </div>
+        <div class="hc-file-uploader-drag-text">
+            Files ({{_fileNames.length}}) selected. Drag files here to replace.
+        </div>
+    </div>
+    <div *ngIf="!tight" class="hc-file-uploader-drag-divider">
+        OR
+    </div>
+    <div *ngIf="!tight" class="hc-file-uploader-file-controls">
+        <button hc-button size="lg" (click)="browseFiles()">Browse Files</button>
+    </div>
+    <input type="file" [accept]="fileTypes" [multiple]="multiple" #fileInput [hidden]="true" (change)="_fileSelected()">
+</div>
