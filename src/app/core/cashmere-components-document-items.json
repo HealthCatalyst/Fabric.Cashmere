@@ -30,6 +30,7 @@
         "usageDoc": true
     },
     "drawer": {"name": "Drawer", "category": "layout", "examples": ["drawer-basic", "drawer-menu", "drawer-overlay", "drawer-side"]},
+    "drag-list": {"name": "Drag List", "category": "layout", "examples": ["drag-list-overview"]},
     "ellipsis-pipe": {"name": "Ellipsis", "category": "pipes", "examples": ["ellipsis-overview"], "hideApi": true, "usageDoc": true},
     "file-size-pipe": {"name": "File Size", "category": "pipes", "examples": ["file-size-overview"], "hideApi": true, "usageDoc": true},
     "form-field": {
@@ -87,7 +88,7 @@
     },
     "picklist": {
         "name": "Picklist",
-        "category": "forms",
+        "category": "layout",
         "examples": ["picklist-simple", "picklist-templates", "picklist-overview", "picklist-remote-data", "picklist-hc-pick-option"],
         "usageDoc": true
     },
