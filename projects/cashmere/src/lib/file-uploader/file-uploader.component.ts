@@ -22,7 +22,6 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
     _fileTypes = '*';
     _fileNames: string[] = [];
     _multiple = false;
-    _tight = false;
     _disabled = false;
     _isRequired = false;
     _fileList: FileList;
