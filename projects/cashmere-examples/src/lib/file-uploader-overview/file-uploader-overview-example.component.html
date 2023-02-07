@@ -1,10 +1,10 @@
 <!-- Optional to include the uploader in a hc-form-field -->
-<hc-form-field>
+<!-- When hc-form-field is used, set the `tight` param there instead of the component -->
+<hc-form-field [tight]="controlTight.value">
     <hc-label>Select a file to upload:</hc-label>
     <hc-file-uploader
         [formControl]="selectedFiles"
         [multiple]="multipleFiles.value"
-        [tight]="controlTight.value"
         subtext="2 MB maximum"
         (filesAdded)="checkFileSize()"
     ></hc-file-uploader>
