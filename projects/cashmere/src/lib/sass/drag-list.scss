@@ -2,5 +2,154 @@
 @import './mixins';
 
 @mixin hc-drag-list-container() {
-    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-height: 300px;
+
+    .preserve-whitespace {
+        white-space: pre;
+    }
+
+    .assignments {
+        min-width: 20px;
+        margin-right: 30px;
+
+        .target-name {
+            color: $offblack;
+            border: 1px solid $slate-gray-300;
+            background: $gray-200;
+            padding: 9px 5px 0px 5px;
+            font-weight: 500;
+            line-height: 18px;
+            height: 36px;
+
+            .hc-icon {
+                font-size: 90%;
+
+                &.fa-check {
+                    color: $green;
+                }
+
+                &.fa-lock {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        &:last-of-type .assignment {
+            border-bottom: 1px solid $gray-300;
+        }
+
+        .assignment {
+            color: $slate-gray-500;
+            border-left: 1px solid $gray-300;
+            border-right: 1px solid $gray-300;
+            padding: 10px 5px 10px 35px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            height: 36px;
+
+            &.placeholder {
+                color: $gray-400;
+            }
+
+            &.target-hover {
+                background: rgba(0, 174, 255, 0.05);
+                border: 0.5px solid #00aeff;
+                box-shadow: 0px 0px 5px rgba(0, 174, 255, 0.05);
+            }
+
+            .option {
+                display: flex;
+                width: 100%;
+            }
+        }
+    }
+
+    .targets {
+        width: 50%;
+        overflow-y: auto;
+
+        .targets-info {
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: $gray-500;
+            position: relative;
+            margin-right: 30px;
+
+            .hc-icon {
+                cursor: pointer;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }
+    }
+
+    .options {
+        width: 50%;
+        color: $gray-500;
+        display: flex;
+        flex-direction: column;
+
+        .options-info {
+            font-weight: 600;
+            color: $gray-500;
+        }
+
+        .options-container {
+            margin-top: 10px;
+            background: $white;
+            border: 1px solid $slate-gray-300;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .option {
+            border-bottom: 0.5px solid $slate-gray-300;
+            padding: 2px 5px 2px 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            height: 36px;
+
+            .hc-icon {
+                color: $slate-gray-300;
+                margin-top: 4px;
+            }
+
+            .option-name {
+                line-height: 28px;
+                padding-left: 20px;
+                color: $slate-gray-600;
+            }
+        }
+    }
+
+    .option {
+        &:not(.option-locked) {
+            cursor: grab;
+        }
+
+        &.option-locked {
+            cursor: not-allowed;
+            color: $slate-gray-300;
+        }
+
+        .option-name {
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-right: 5px;
+        }
+
+        .option-close {
+            padding: 2px 5px 0 5px;
+            margin: -2px 5px -3px 0;
+            cursor: pointer;
+        }
+    }
 }
