@@ -3,3 +3,47 @@
 .hc-drag-list-container {
     @include hc-drag-list-container();
 }
+
+.hc-drag-list-targets {
+    @include hc-drag-list-targets();
+}
+
+.hc-drag-list-targets-info {
+    @include hc-drag-list-targets-info();
+}
+
+.hc-drag-list-assignments {
+    @include hc-drag-list-assignments();
+}
+
+.hc-drag-list-target-name {
+    @include hc-drag-list-target-name();
+}
+
+.hc-drag-list-assignment {
+    @include hc-drag-list-assignment();
+}
+
+.hc-drag-list-options {
+    @include hc-drag-list-options();
+}
+
+.hc-drag-list-option-name {
+    @include hc-drag-list-option-name();
+}
+
+.hc-drag-list-options-info {
+    @include hc-drag-list-options-info();
+}
+
+.hc-drag-list-options-container {
+    @include hc-drag-list-options-container();
+}
+
+.hc-drag-list-option {
+    @include hc-drag-list-option();
+}
+
+.hc-drag-list-option-close {
+    @include hc-drag-list-option-close();
+}

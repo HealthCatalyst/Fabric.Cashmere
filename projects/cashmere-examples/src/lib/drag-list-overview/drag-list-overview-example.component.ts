@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {DragDropAssignment, DragListComponent} from 'projects/cashmere/src/lib/drag-list/drag-list.component';
+import {DragDropAssignment, DragListComponent} from '@healthcatalyst/cashmere';
 
 /**
  * @title Overview of Drag List functionality
@@ -37,8 +37,8 @@ export class DragListOverviewExampleComponent {
         }
     ];
 
-    saveSelections(selections: DragDropAssignment[]) {
+    saveSelections(selections: DragDropAssignment[]): void {
         console.log('SELECTIONS', selections);
-        window.alert('check console for received selections');
+        window.alert('Check console for received selections');
     }
 }

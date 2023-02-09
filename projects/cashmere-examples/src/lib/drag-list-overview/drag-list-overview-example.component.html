@@ -13,11 +13,10 @@ Target 3 = Option 3 (locked)"
     [requireAllAssignments]="false"
 ></hc-drag-list>
 <div class="buttons">
-    <button hc-button buttonStyle="secondary" size="lg" (click)="dragList.resetChanges()">Reset Changes</button>
+    <button hc-button buttonStyle="secondary" (click)="dragList.resetChanges()">Reset Changes</button>
     <button
         hc-button
         buttonStyle="primary"
-        size="lg"
         (click)="saveSelections(dragList.selections)"
         [disabled]="!(dragList || {}).submissionAllowed || false"
     >
