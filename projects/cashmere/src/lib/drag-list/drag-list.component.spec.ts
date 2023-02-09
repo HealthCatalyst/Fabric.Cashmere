@@ -46,10 +46,12 @@ describe('DragListTestComponent', () => {
     });
     it('submissionAllowed should be false if requireAllAssignments is true and there are unassigned targets', () => {
         component.assignments = assignments;
-        component._modifiedAssignments = (assignments || []).map(a => ({...a}));
-        component._modifiedAssignments[0].assignment = options[2];
         component.options = options;
         component.requireAllAssignments = true;
+
+        component._modifiedAssignments = (assignments || []).map(a => ({...a}));
+        component._modifiedAssignments[0].assignment = options[2];
+        component._optionIsAssigned[5] = false;
 
         fixture.detectChanges();
 
@@ -57,10 +59,12 @@ describe('DragListTestComponent', () => {
     });
     it('submissionAllowed should be true if requireAllAssignments is false and there are unassigned targets', () => {
         component.assignments = assignments;
-        component._modifiedAssignments = (assignments || []).map(a => ({...a}));
-        component._modifiedAssignments[0].assignment = options[2];
         component.options = options;
         component.requireAllAssignments = false;
+
+        component._modifiedAssignments = (assignments || []).map(a => ({...a}));
+        component._modifiedAssignments[0].assignment = options[2];
+        component._optionIsAssigned[5] = false;
 
         fixture.detectChanges();
 
