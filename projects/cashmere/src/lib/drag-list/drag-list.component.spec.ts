@@ -44,8 +44,10 @@ describe('DragListTestComponent', () => {
     it('should create the component without error', () => {
         expect(component).toBeTruthy();
     });
-    it('submissionAllowed should be invalid if requireAllAssignments is true and there are unassigned targets', () => {
+    it('submissionAllowed should be false if requireAllAssignments is true and there are unassigned targets', () => {
         component.assignments = assignments;
+        component._modifiedAssignments = (assignments || []).map(a => ({...a}));
+        component._modifiedAssignments[0].assignment = options[2];
         component.options = options;
         component.requireAllAssignments = true;
 
@@ -53,8 +55,10 @@ describe('DragListTestComponent', () => {
 
         expect(component.submissionAllowed).toBeFalse();
     });
-    it('submissionAllowed should be valid if requireAllAssignments is false and there are unassigned targets', () => {
+    it('submissionAllowed should be true if requireAllAssignments is false and there are unassigned targets', () => {
         component.assignments = assignments;
+        component._modifiedAssignments = (assignments || []).map(a => ({...a}));
+        component._modifiedAssignments[0].assignment = options[2];
         component.options = options;
         component.requireAllAssignments = false;
 

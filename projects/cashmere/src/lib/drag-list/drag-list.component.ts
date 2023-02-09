@@ -2,8 +2,13 @@ import {Component, Input, OnChanges, SimpleChanges, ViewEncapsulation} from '@an
 
 /** Interface for making/receiving assignments */
 export interface DragDropAssignment {
+    /** The target awaiting an option assignment. */
     target: any;
+
+    /** The assigned option. */
     assignment: any | null;
+
+    /** When `true` prevents modification. Use this if you have an assignment you want to lock. */
     locked?: boolean;
 }
 
