@@ -183,7 +183,7 @@ export class TabSetComponent implements AfterContentInit {
             takeUntil(this.unsubscribe)
         ).subscribe(([selectedTab, ]) => {
             setTimeout(() => {
-                this.selectTab(selectedTab, false);
+                this.selectTab(selectedTab, false, false);
                 this.changeDetector.detectChanges();
             });
         });
@@ -379,7 +379,7 @@ export class TabSetComponent implements AfterContentInit {
 
     /** Sets the currently selected tab by either its numerical index or `TabComponent` object.
      * Passing a value of -1 will deselect all tabs in the set. */
-    selectTab(tab: number | TabComponent, shouldEmit = true): void {
+    selectTab(tab: number | TabComponent, shouldEmit = true, scrollIntoView = true): void {
         this._selectedTab = tab;
         if ( tab === -1 ) {
             this.tabContent = null;
@@ -398,11 +398,11 @@ export class TabSetComponent implements AfterContentInit {
             if ( this._routerEnabled ) {
                 this.router.navigate([activeTab.routerLink], {relativeTo: this.route});
             }
-            this._setActive(activeTab, shouldEmit);
+            this._setActive(activeTab, shouldEmit, scrollIntoView);
         }
     }
 
-    _setActive(tab: TabComponent, shouldEmit = true): void {
+    _setActive(tab: TabComponent, shouldEmit = true, scrollIntoView = true): void {
         let activeIndex = 0;
         this._tabs.toArray().forEach((t, index) => {
             t._active = false;
@@ -413,6 +413,11 @@ export class TabSetComponent implements AfterContentInit {
         tab._active = true;
         this.tabContent = tab.tabContent;
         this._routerDeselected = false;
+
+        // For horizontal tabs with arrows overflow, scroll the selected tab into view if it's outside the scroll area
+        if ( this.overflowStyle === 'arrows' && this.direction === 'horizontal' && this._collapse && scrollIntoView ) {
+            tab.el.nativeElement.scrollIntoView({ block: 'nearest' });
+        }
 
         if (shouldEmit) {
             this.selectedTabChange.emit(new TabChangeEvent(activeIndex, tab));
