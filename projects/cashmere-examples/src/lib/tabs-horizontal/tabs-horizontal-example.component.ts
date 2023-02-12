@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {TabChangeEvent} from '@healthcatalyst/cashmere';
+import {TabChangeEvent, TabSetComponent} from '@healthcatalyst/cashmere';
 
 /**
  * @title Horizontal Tabs with Event Handling
@@ -12,7 +12,12 @@ import {TabChangeEvent} from '@healthcatalyst/cashmere';
 })
 export class TabsHorizontalExampleComponent {
     selectedIndex = 0;
+    tabHidden = false;
     overflowStyle = new FormControl('more');
+    dynamicTabs: string[] = [];
+
+    @ViewChild('tabSet')
+    tabSetRef: TabSetComponent;
 
     selectionChanged(event: TabChangeEvent): void {
         this.selectedIndex = event.index;
@@ -20,5 +25,16 @@ export class TabsHorizontalExampleComponent {
 
     addTask(): void {
         window.alert('The "Click Handler" tab was clicked.');
+    }
+
+    toggleHidden(): void {
+        this.tabHidden = !this.tabHidden;
+    }
+
+    addTab(): void {
+        this.dynamicTabs.push( "Dynamic Tab " + (this.dynamicTabs.length + 1));
+        setTimeout(() => {
+            this.tabSetRef.selectTab(7 + this.dynamicTabs.length);
+        });
     }
 }

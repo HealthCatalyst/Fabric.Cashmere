@@ -8,12 +8,13 @@
     min-height: 180px;
 }
 
-.selection-text {
-    margin-left: 40px;
-}
+.example-tab-action-buttons {
+    display: flex;
+    flex-wrap: wrap;
 
-.deselect-button {
-    margin-left: 10px;
+    button {
+        margin: 10px 10px 0 0;
+    }
 }
 
 .overflow-select-container {
