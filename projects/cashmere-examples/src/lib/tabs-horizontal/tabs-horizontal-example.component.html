@@ -59,8 +59,8 @@
 <div><strong>Selected Tab Index:</strong> {{selectedIndex}}</div>
 
 <div class="example-tab-action-buttons">
-    <button hc-button title="Set Selection" buttonStyle="secondary" (click)="tabSet.selectTab(1)">
-        Select Complete Tasks
+    <button hc-button title="Set Selection" buttonStyle="secondary" (click)="selectLastTab();">
+        Select Last Tab
     </button>
     <button hc-button title="Deselect Tabs" buttonStyle="secondary" (click)="tabSet.selectTab(-1)">
         Deselect All Tabs

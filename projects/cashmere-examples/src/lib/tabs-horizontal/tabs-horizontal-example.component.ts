@@ -34,7 +34,11 @@ export class TabsHorizontalExampleComponent {
     addTab(): void {
         this.dynamicTabs.push( "Dynamic Tab " + (this.dynamicTabs.length + 1));
         setTimeout(() => {
-            this.tabSetRef.selectTab(7 + this.dynamicTabs.length);
+            this.selectLastTab();
         });
+    }
+
+    selectLastTab(): void {
+        this.tabSetRef.selectTab(7 + this.dynamicTabs.length);
     }
 }

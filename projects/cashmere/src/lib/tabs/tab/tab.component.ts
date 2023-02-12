@@ -76,7 +76,7 @@ export class TabComponent implements AfterContentInit {
     @ContentChildren(HcTabTitleComponent)
     _tabTitle: QueryList<HcTabTitleComponent>;
 
-    constructor( private el: ElementRef ) {}
+    constructor( public el: ElementRef ) {}
 
     ngAfterContentInit(): void {
         if (this._tabTitle) {
