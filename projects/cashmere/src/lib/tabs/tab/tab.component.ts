@@ -72,7 +72,7 @@ export class TabComponent implements AfterContentInit {
         event.preventDefault();
         event.stopPropagation();
 
-        this.tabClick.emit();
+        this.tabClick.emit(event);
     }
 
     _getWidth(): number {
