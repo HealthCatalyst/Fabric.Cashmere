@@ -18,7 +18,8 @@ export class TabsHorizontalExampleComponent {
         this.selectedIndex = event.index;
     }
 
-    addTask(): void {
-        window.alert('The "Click Handler" tab was clicked.');
+    clickHandler(evt: Event): void {
+        const seconds = evt.timeStamp / 1000;
+        window.alert('The "Click Handler" tab was clicked ' + seconds + ' seconds after the page was loaded.');
     }
 }
