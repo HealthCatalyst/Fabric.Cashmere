@@ -1,4 +1,4 @@
-import { Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostBinding, Input, Optional, Output, Self, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, forwardRef, HostBinding, Input, Optional, Output, Self, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { HcFormControlComponent } from '../form-field/hc-form-control.component';
 import { parseBooleanAttribute } from '../util';
@@ -13,7 +13,7 @@ let nextUploaderId = 1;
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => FileUploaderComponent)}]
 })
-export class FileUploaderComponent extends HcFormControlComponent implements DoCheck {
+export class FileUploaderComponent extends HcFormControlComponent {
     @ViewChild('dropZone') _dropZone!: ElementRef<HTMLElement>;
     @ViewChild('fileInput') _fileInputElement: ElementRef;
     private _form: NgForm | FormGroupDirective | null;
@@ -126,26 +126,12 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
         this.onTouch = fn;
     }
 
-    ngDoCheck(): void {
-        // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this._ngControl) {
-            this._updateErrorState();
-        }
-    }
-
-    private _updateErrorState() {
-        const oldState = this._errorState;
-
-        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
-        const newState = !!(
+    get _errorState(): boolean {
+        return !!(
             this._ngControl &&
             this._ngControl.invalid &&
             (this._ngControl.touched || (this._form && this._form.submitted))
         );
-
-        if (oldState !== newState) {
-            this._errorState = newState;
-        }
     }
 
     /** Triggers the system file selection dialog to open */

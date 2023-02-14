@@ -1,4 +1,4 @@
-import {Directive, DoCheck, ElementRef, HostBinding, HostListener, Input, Optional, Self, forwardRef, Output, EventEmitter} from '@angular/core';
+import {Directive, ElementRef, HostBinding, HostListener, Input, Optional, Self, forwardRef, Output, EventEmitter} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
@@ -16,7 +16,7 @@ const unsupportedTypes = ['button', 'checkbox', 'file', 'hidden', 'image', 'radi
     selector: '[hcInput]',
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => InputDirective)}]
 })
-export class InputDirective extends HcFormControlComponent implements DoCheck {
+export class InputDirective extends HcFormControlComponent {
     private _focused = false;
     private _mobile = false;
     private _uniqueInputId = `hc-input-${uniqueId++}`;
@@ -145,6 +145,14 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         }
     }
 
+    get _errorState(): boolean {
+        return !!(
+            this._ngControl &&
+            this._ngControl.invalid &&
+            (this._ngControl.touched || (this._form && this._form.submitted))
+        );
+    }
+
     @HostListener('input', ['$event'])
     _inputEvent(event: Event): void {
         this.inputEvent.emit(event);
@@ -185,13 +193,6 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         this._form = _parentForm || _parentFormGroup;
     }
 
-    ngDoCheck(): void {
-        // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this._ngControl) {
-            this._updateErrorState();
-        }
-    }
-
     /** Sets the focus on the input element */
     focus(): void {
         this._elementRef.nativeElement.focus();
@@ -206,20 +207,5 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
 
     private _isTextArea(): boolean {
         return this._elementRef.nativeElement.nodeName.toLowerCase() !== 'textarea';
-    }
-
-    private _updateErrorState() {
-        const oldState = this._errorState;
-
-        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
-        const newState = !!(
-            this._ngControl &&
-            this._ngControl.invalid &&
-            (this._ngControl.touched || (this._form && this._form.submitted))
-        );
-
-        if (oldState !== newState) {
-            this._errorState = newState;
-        }
     }
 }

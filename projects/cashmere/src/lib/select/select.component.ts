@@ -8,7 +8,6 @@ import {
     ViewEncapsulation,
     ElementRef,
     Optional,
-    DoCheck,
     Self,
     Output,
     EventEmitter,
@@ -35,7 +34,7 @@ export class SelectChangeEvent {
     encapsulation: ViewEncapsulation.None,
     providers: [SelectService, {provide: HcFormControlComponent, useExisting: forwardRef(() => SelectComponent)}]
 })
-export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck, AfterViewInit {
+export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, AfterViewInit {
     private _uniqueInputId = `hc-select-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
     private _value: any = '';
@@ -104,6 +103,14 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     }
     set tight(value) {
         this._tight = parseBooleanAttribute(value);
+    }
+
+    get _errorState(): boolean {
+        return !!(
+            this._ngControl &&
+            this._ngControl.invalid &&
+            (this._ngControl.touched || (this._form && this._form.submitted))
+        );
     }
 
     @Output()
@@ -193,13 +200,6 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         this.change.emit(new SelectChangeEvent(this, this._value));
     }
 
-    ngDoCheck(): void {
-        // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this._ngControl) {
-            this._updateErrorState();
-        }
-    }
-
     _getOptionId(value: any): string | null {
         for (const id of Array.from(this._optionMap.keys())) {
             if (this._compareWith(this._optionMap.get(id), value)) {
@@ -216,20 +216,5 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
 
     _extractId(valueString: string): string {
         return valueString.split(':')[0];
-    }
-
-    private _updateErrorState() {
-        const oldState = this._errorState;
-
-        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
-        const newState = !!(
-            this._ngControl &&
-            this._ngControl.invalid &&
-            (this._ngControl.touched || (this._form && this._form.submitted))
-        );
-
-        if (oldState !== newState) {
-            this._errorState = newState;
-        }
     }
 }

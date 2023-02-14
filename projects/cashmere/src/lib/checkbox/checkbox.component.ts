@@ -11,7 +11,6 @@ import {
     ViewChild,
     Self,
     Optional,
-    DoCheck,
     ContentChildren,
     ViewEncapsulation,
 } from '@angular/core';
@@ -130,7 +129,7 @@ export class CheckboxGroup extends HcFormControlComponent {
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => CheckboxComponent)}],
     exportAs: 'hcCheckbox'
 })
-export class CheckboxComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
+export class CheckboxComponent extends HcFormControlComponent implements ControlValueAccessor {
     private _uniqueId = `hc-checkbox-${nextCheckboxId++}`;
     private _form: NgForm | FormGroupDirective | null;
     private _checked = false;
@@ -268,10 +267,17 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         return `${this.id || this._uniqueId}-input`;
     }
 
+    get _errorState(): boolean {
+        return !!(
+            this._ngControl &&
+            this._ngControl.invalid &&
+            (this._ngControl.touched || (this._form && this._form.submitted))
+        );
+    }
+
     constructor(
         @Attribute('tabindex') tabindex: string,
         private _renderer: Renderer2,
-        private _elementRef: ElementRef,
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
         @Optional() checkboxGroup: CheckboxGroup,
@@ -335,27 +341,5 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
 
     _onBlur(): void {
         this.onTouch();
-    }
-
-    ngDoCheck(): void {
-        // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this._ngControl) {
-            this._updateErrorState();
-        }
-    }
-
-    private _updateErrorState() {
-        const oldState = this._errorState;
-
-        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
-        const newState = !!(
-            this._ngControl &&
-            this._ngControl.invalid &&
-            (this._ngControl.touched || (this._form && this._form.submitted))
-        );
-
-        if (oldState !== newState) {
-            this._errorState = newState;
-        }
     }
 }

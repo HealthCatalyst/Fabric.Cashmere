@@ -15,7 +15,6 @@ import {
     OnInit,
     Optional,
     Output,
-    DoCheck,
     Self,
     ElementRef,
     ContentChild,
@@ -37,7 +36,7 @@ let nextUniqueId = 0;
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => RadioGroupDirective), multi: true}],
     exportAs: 'hcRadioGroup'
 })
-export class RadioGroupDirective extends HcFormControlComponent implements ControlValueAccessor, AfterContentInit, DoCheck {
+export class RadioGroupDirective extends HcFormControlComponent implements ControlValueAccessor, AfterContentInit {
     @HostBinding('class.hc-radio-group-vertical')
     _verticalClass = true;
     @HostBinding('class.hc-radio-group-horizontal')
@@ -245,26 +244,12 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         }
     }
 
-    ngDoCheck(): void {
-        // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this._ngControl) {
-            this._updateErrorState();
-        }
-    }
-
-    private _updateErrorState() {
-        const oldState = this._errorState;
-
-        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
-        const newState = !!(
+    get _errorState(): boolean {
+        return !!(
             this._ngControl &&
             this._ngControl.invalid &&
             (this._ngControl.touched || (this._form && this._form.submitted))
         );
-
-        if (oldState !== newState) {
-            this._errorState = newState;
-        }
     }
 }
 

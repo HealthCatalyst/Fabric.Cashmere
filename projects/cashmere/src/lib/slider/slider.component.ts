@@ -16,6 +16,7 @@ let uniqueSliderId = 1;
 })
 export class SliderComponent extends HcFormControlComponent {
     private _uniqueInputId = `hc-slider-${uniqueSliderId++}`;
+    private _valid = true;
     _componentId = this._uniqueInputId; // contains id for the hc-slider component
 
     @HostBinding('class.hc-slider')
@@ -34,11 +35,15 @@ export class SliderComponent extends HcFormControlComponent {
     /** Whether the slider is valid; triggers error messages in `hc-form-field` */
     @Input()
     get valid(): boolean {
-        return !this._errorState;
+        return this._valid;
     }
 
     set valid( val: boolean | string ) {
-        this._errorState = !parseBooleanAttribute(val);
+        this._valid = parseBooleanAttribute(val);
+    }
+
+    get _errorState(): boolean {
+        return !this.valid;
     }
 
     /** Sets whether this is a required form element */

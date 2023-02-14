@@ -1,8 +1,10 @@
 
 /** Wrapper component that textual form controls extend to work with hc-form-field */
 export abstract class HcFormControlComponent {
-    /** Whether the control should be displaying an associated error */
-    _errorState = false;
+    /** Accessor to determine whether the control should be displaying an associated error */
+    get _errorState(): boolean {
+        return false;
+    };
 
     /** An error message to be shown in the UI when there is an error state present */
     _errorMessage = '';

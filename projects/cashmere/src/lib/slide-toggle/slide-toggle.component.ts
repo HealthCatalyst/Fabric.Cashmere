@@ -1,4 +1,4 @@
-import {Component, DoCheck, EventEmitter, forwardRef, Input, Optional, Output, Self, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, Optional, Output, Self, ViewEncapsulation} from '@angular/core';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
@@ -34,7 +34,7 @@ export function validateLabelType(inputStr: string): void {
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SlideToggleComponent)}]
 })
-export class SlideToggleComponent extends HcFormControlComponent implements DoCheck {
+export class SlideToggleComponent extends HcFormControlComponent {
     private _uniqueId = `hc-slide-toggle-${nextToggleId++}`;
     private _form: NgForm | FormGroupDirective | null;
     _buttonState = true;
@@ -141,25 +141,11 @@ export class SlideToggleComponent extends HcFormControlComponent implements DoCh
         this.onTouch = fn;
     }
 
-    ngDoCheck(): void {
-        // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this._ngControl) {
-            this._updateErrorState();
-        }
-    }
-
-    private _updateErrorState() {
-        const oldState = this._errorState;
-
-        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
-        const newState = !!(
+    get _errorState(): boolean {
+        return !!(
             this._ngControl &&
             this._ngControl.invalid &&
             (this._ngControl.touched || (this._form && this._form.submitted))
         );
-
-        if (oldState !== newState) {
-            this._errorState = newState;
-        }
     }
 }
