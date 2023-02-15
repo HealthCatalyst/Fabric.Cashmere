@@ -15,7 +15,6 @@ import {
     OnInit,
     Optional,
     Output,
-    DoCheck,
     Self,
     ElementRef,
     ContentChild,
@@ -37,7 +36,7 @@ let nextUniqueId = 0;
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => RadioGroupDirective), multi: true}],
     exportAs: 'hcRadioGroup'
 })
-export class RadioGroupDirective extends HcFormControlComponent implements ControlValueAccessor, AfterContentInit, DoCheck {
+export class RadioGroupDirective extends HcFormControlComponent implements ControlValueAccessor, AfterContentInit, OnDestroy {
     @HostBinding('class.hc-radio-group-vertical')
     _verticalClass = true;
     @HostBinding('class.hc-radio-group-horizontal')
@@ -60,6 +59,7 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     private _initialized = false; // if value of radio group has been set to initial value
     private _selected: RadioButtonComponent | null = null; // the currently selected radio
     private _form: NgForm | FormGroupDirective | null;
+    private _unsubscribe = new Subject<void>();
 
     _componentId = this._name;
 
@@ -184,6 +184,13 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     ngAfterContentInit(): void {
         this._initialized = true;
         setTimeout(() => this._markRadiosForCheck());
+
+        if ( this._ngControl && this._ngControl.statusChanges ) {
+            this._ngControl.statusChanges.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        }
+        if ( this._form ) {
+            this._form.ngSubmit.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        }
     }
 
     writeValue(value: any): void {
@@ -204,6 +211,7 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         if (this.onTouch) {
             this.onTouch();
         }
+        this._updateErrorState();
     }
 
     _emitChangeEvent(): void {
@@ -245,13 +253,6 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         }
     }
 
-    ngDoCheck(): void {
-        // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this._ngControl) {
-            this._updateErrorState();
-        }
-    }
-
     private _updateErrorState() {
         const oldState = this._errorState;
 
@@ -265,6 +266,11 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         if (oldState !== newState) {
             this._errorState = newState;
         }
+    }
+
+    ngOnDestroy(): void {
+        this._unsubscribe.next();
+        this._unsubscribe.complete();
     }
 }
 

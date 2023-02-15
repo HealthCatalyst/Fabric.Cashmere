@@ -11,15 +11,17 @@ import {
     ViewChild,
     Self,
     Optional,
-    DoCheck,
     ContentChildren,
     ViewEncapsulation,
+    AfterViewInit,
+    OnDestroy,
 } from '@angular/core';
 import type {QueryList} from '@angular/core';
 import { ControlValueAccessor, NgForm, FormGroupDirective, NgControl } from '@angular/forms';
 import { HcFormControlComponent } from '../form-field/hc-form-control.component';
 import { parseBooleanAttribute } from '../util';
-import { filter } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 let nextCheckboxId = 1;
 
@@ -130,13 +132,14 @@ export class CheckboxGroup extends HcFormControlComponent {
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => CheckboxComponent)}],
     exportAs: 'hcCheckbox'
 })
-export class CheckboxComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
+export class CheckboxComponent extends HcFormControlComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
     private _uniqueId = `hc-checkbox-${nextCheckboxId++}`;
     private _form: NgForm | FormGroupDirective | null;
     private _checked = false;
     private _tabIndex: number;
     private _parent = false;
     private readonly checkboxGroup: CheckboxGroup | null;
+    private _unsubscribe = new Subject<void>();
     _componentId = this._uniqueId;
 
     /** Value attribute of the native checkbox */
@@ -268,10 +271,18 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         return `${this.id || this._uniqueId}-input`;
     }
 
+    ngAfterViewInit(): void {
+        if ( this._ngControl && this._ngControl.statusChanges ) {
+            this._ngControl.statusChanges.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        }
+        if ( this._form ) {
+            this._form.ngSubmit.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        }
+    }
+
     constructor(
         @Attribute('tabindex') tabindex: string,
         private _renderer: Renderer2,
-        private _elementRef: ElementRef,
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
         @Optional() checkboxGroup: CheckboxGroup,
@@ -335,13 +346,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
 
     _onBlur(): void {
         this.onTouch();
-    }
-
-    ngDoCheck(): void {
-        // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this._ngControl) {
-            this._updateErrorState();
-        }
+        this._updateErrorState();
     }
 
     private _updateErrorState() {
@@ -357,5 +362,10 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         if (oldState !== newState) {
             this._errorState = newState;
         }
+    }
+
+    ngOnDestroy(): void {
+        this._unsubscribe.next();
+        this._unsubscribe.complete();
     }
 }

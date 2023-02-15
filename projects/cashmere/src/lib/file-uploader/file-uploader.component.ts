@@ -1,5 +1,7 @@
-import { Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostBinding, Input, Optional, Output, Self, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, HostBinding, Input, OnDestroy, Optional, Output, Self, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { HcFormControlComponent } from '../form-field/hc-form-control.component';
 import { parseBooleanAttribute } from '../util';
 
@@ -13,10 +15,11 @@ let nextUploaderId = 1;
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => FileUploaderComponent)}]
 })
-export class FileUploaderComponent extends HcFormControlComponent implements DoCheck {
+export class FileUploaderComponent extends HcFormControlComponent implements AfterViewInit, OnDestroy {
     @ViewChild('dropZone') _dropZone!: ElementRef<HTMLElement>;
     @ViewChild('fileInput') _fileInputElement: ElementRef;
     private _form: NgForm | FormGroupDirective | null;
+    private _unsubscribe = new Subject<void>();
     private _uniqueId = `hc-file-uploader-${nextUploaderId++}`;
     _fileIcon = '';
     _fileTypes = '*';
@@ -100,6 +103,15 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
         this._subtext = val;
     }
 
+    ngAfterViewInit(): void {
+        if ( this._ngControl && this._ngControl.statusChanges ) {
+            this._ngControl.statusChanges.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        }
+        if ( this._form ) {
+            this._form.ngSubmit.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        }
+    }
+
     constructor(
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
@@ -124,13 +136,6 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
     }
     public registerOnTouched(fn: () => FileList): void {
         this.onTouch = fn;
-    }
-
-    ngDoCheck(): void {
-        // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this._ngControl) {
-            this._updateErrorState();
-        }
     }
 
     private _updateErrorState() {
@@ -168,6 +173,7 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
 
         this._fileList = selectedFiles;
         this.onChange( this._fileList );
+        this.onTouch();
         this.filesAdded.emit( selectedFiles );
 
         this._determineFileIcon();
@@ -242,5 +248,10 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
 
     _unhighlight(): void {
         this._dropZone?.nativeElement.classList.remove('hc-file-uploader-drag-target-over');
+    }
+
+    ngOnDestroy(): void {
+        this._unsubscribe.next();
+        this._unsubscribe.complete();
     }
 }
