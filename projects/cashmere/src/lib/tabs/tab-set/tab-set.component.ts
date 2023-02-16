@@ -14,8 +14,8 @@ import type {QueryList} from '@angular/core';
 import {EventEmitter, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subject, interval, fromEvent, BehaviorSubject, combineLatest, Subscription} from 'rxjs';
-import {distinctUntilChanged, filter, startWith, take, takeUntil} from 'rxjs/operators';
+import {Subject, interval, fromEvent, BehaviorSubject, Subscription} from 'rxjs';
+import {distinctUntilChanged, filter, take, takeUntil} from 'rxjs/operators';
 import {parseBooleanAttribute} from '../../util';
 import {HcPopoverAnchorDirective} from '../../pop';
 
@@ -189,20 +189,18 @@ export class TabSetComponent implements AfterContentInit {
         // If links are added dynamically, recheck the tab widths
         this._tabs.changes.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
             this.setUpTabs(true);
-
             setTimeout(() => {
                 // Make sure all tabs are visible any time we are going to update the tab width array
-                this._tabs.forEach(t => t.show());
-                this._collectTabWidths();
-                this.refreshTabWidths();
+                this._forceRecollect();
             });
         });
     }
 
     /** Forces a recalculation of the tabs to determine how many should be rolling into a More menu.
-     * Call this if you've updated the contents of any tabs. */
+     * By default the function will use cached values of the tab widths;
+     * if you've changed the title of a tab, set `forceRecalculate` to true to update the cache */
      @HostListener('window:resize')
-     refreshTabWidths(): void {
+     refreshTabWidths(forceRecalulate = false): void {
         if ( !this._tabs || !this._tabBar ) {
             return;
         }
@@ -229,14 +227,25 @@ export class TabSetComponent implements AfterContentInit {
             return;
         }
 
+        // The user is asking for an explicit recalculation of the cached tab widths
+        // so we need to unhide any tabs currently in the more menu
+        if ( forceRecalulate ) {
+            this._forceRecollect();
+        }
+
         // If the component hasn't fully rendered, start to loop to keep checking and only calculate widths when it has
         if ( this._tabWidths.length !== this._tabs.length || this._tabWidths.includes(0) ) {
             if ( !this._widthRecheckSub || this._widthRecheckSub.closed ) {
                 const recheckInterval = interval(10);
 
-                this._widthRecheckSub = recheckInterval.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
-                    this._collectTabWidths();
-                    this.refreshTabWidths();
+                this._widthRecheckSub = recheckInterval.pipe(takeUntil(this.unsubscribe)).subscribe(loopCount => {
+                    // If it's been a second and the tabs still haven't rendered, bailout and don't loop forever
+                    if ( loopCount < 100 ) {
+                        this._collectTabWidths();
+                        this.refreshTabWidths();
+                    } else {
+                        this._widthRecheckSub.unsubscribe();
+                    }
                 });
             }
             return;
@@ -306,9 +315,9 @@ export class TabSetComponent implements AfterContentInit {
     _handleTabsWheel(event: WheelEvent): void {
         const scrollDirection = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? Math.sign(event.deltaX) : Math.sign(event.deltaY);
         const scrollDistance = Math.sqrt(Math.pow(event.deltaX, 2) + Math.pow(event.deltaY, 2)) * scrollDirection;
-        const scrollLeft = scrollDistance < 0 && this._tabBar.nativeElement.scrollLeft > 0;
+        const scrollLeft = scrollDistance < 0 && Math.floor(this._tabBar.nativeElement.scrollLeft) > 0;
         const scrollRight = scrollDistance > 0
-            && this._tabBar.nativeElement.offsetWidth !== this._tabBar.nativeElement.scrollWidth - this._tabBar.nativeElement.scrollLeft;
+            && this._tabBar.nativeElement.scrollWidth - Math.ceil(this._tabBar.nativeElement.scrollLeft) > this._tabBar.nativeElement.offsetWidth;
 
         if (scrollLeft || scrollRight) {
             event.preventDefault();
@@ -344,8 +353,8 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     _tabArrowCheck(): void {
-        this._tabArrowsEnabled[0] = this._tabBar.nativeElement.scrollLeft === 0 ? false : true;
-        this._tabArrowsEnabled[1] = this._tabBar.nativeElement.offsetWidth === this._tabBar.nativeElement.scrollWidth - this._tabBar.nativeElement.scrollLeft ? false : true;
+        this._tabArrowsEnabled[0] = Math.floor(this._tabBar.nativeElement.scrollLeft) === 0 ? false : true;
+        this._tabArrowsEnabled[1] = this._tabBar.nativeElement.scrollWidth - Math.ceil(this._tabBar.nativeElement.scrollLeft) <= this._tabBar.nativeElement.offsetWidth ? false : true;
     }
 
     private setUpTabs(changeEvent: boolean): void {
@@ -361,7 +370,13 @@ export class TabSetComponent implements AfterContentInit {
         this.subscribeToTabEvents();
     }
 
-    private _collectTabWidths() {
+    private _forceRecollect(): void {
+        this._tabs.forEach(t => t.show());
+        this._collectTabWidths();
+        this.refreshTabWidths();
+    }
+
+    private _collectTabWidths(): void {
         this._tabWidths = [];
         this._tabsTotalWidth = 0;
         this._tabs.forEach(t => {

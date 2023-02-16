@@ -9,10 +9,16 @@
         </hc-tab>
         <hc-tab>
             <hc-tab-title>
-                <i class="fa fa-check" style="color: #00a859; font-size: 20px;"></i>  Completed Tasks
+                <i [class]="'fa ' + dynamicTabIcon" style="color: #00a859; font-size: 20px; margin-right: 5px;"></i>  {{dynamicTabName}}
             </hc-tab-title>
             <div class="example-tab-content">
-                These are completed tasks
+                <hc-form-field class="tab-rename-input">
+                    <hc-label>Enter a new name for this tab:</hc-label>
+                    <input hcInput [formControl]="tabNameControl">
+                </hc-form-field>
+                <button hc-button (click)="updateTabName()">
+                    Update
+                </button>
             </div>
         </hc-tab>
         <hc-tab tabTitle="Truncated tab with a very long title" maxWidth="150px">
