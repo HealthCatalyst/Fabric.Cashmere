@@ -1,5 +1,5 @@
 import { Component, DoCheck, ElementRef, EventEmitter, forwardRef, HostBinding, Input, Optional, Output, Self, ViewChild, ViewEncapsulation } from '@angular/core';
-import { FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { ControlValueAccessor, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { HcFormControlComponent } from '../form-field/hc-form-control.component';
 import { parseBooleanAttribute } from '../util';
 
@@ -13,7 +13,7 @@ let nextUploaderId = 1;
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => FileUploaderComponent)}]
 })
-export class FileUploaderComponent extends HcFormControlComponent implements DoCheck {
+export class FileUploaderComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
     @ViewChild('dropZone') _dropZone!: ElementRef<HTMLElement>;
     @ViewChild('fileInput') _fileInputElement: ElementRef;
     private _form: NgForm | FormGroupDirective | null;
@@ -124,6 +124,10 @@ export class FileUploaderComponent extends HcFormControlComponent implements DoC
     }
     public registerOnTouched(fn: () => FileList): void {
         this.onTouch = fn;
+    }
+
+    setDisabledState(disabledVal: boolean): void {
+        this.disabled = disabledVal;
     }
 
     ngDoCheck(): void {

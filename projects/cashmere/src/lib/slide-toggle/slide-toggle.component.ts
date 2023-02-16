@@ -1,5 +1,5 @@
 import {Component, DoCheck, EventEmitter, forwardRef, Input, Optional, Output, Self, ViewEncapsulation} from '@angular/core';
-import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
+import {ControlValueAccessor, FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
 
@@ -34,7 +34,7 @@ export function validateLabelType(inputStr: string): void {
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SlideToggleComponent)}]
 })
-export class SlideToggleComponent extends HcFormControlComponent implements DoCheck {
+export class SlideToggleComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck {
     private _uniqueId = `hc-slide-toggle-${nextToggleId++}`;
     private _form: NgForm | FormGroupDirective | null;
     _buttonState = true;
@@ -139,6 +139,10 @@ export class SlideToggleComponent extends HcFormControlComponent implements DoCh
     }
     public registerOnTouched(fn: () => unknown): void {
         this.onTouch = fn;
+    }
+
+    setDisabledState(disabledVal: boolean): void {
+        this.disabled = disabledVal;
     }
 
     ngDoCheck(): void {
