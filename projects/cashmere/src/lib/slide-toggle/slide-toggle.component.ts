@@ -158,6 +158,10 @@ export class SlideToggleComponent extends HcFormControlComponent implements Afte
         this._updateErrorState();
     }
 
+    setDisabledState(disabledVal: boolean): void {
+        this.disabled = disabledVal;
+    }
+
     private _updateErrorState() {
         const oldState = this._errorState;
 

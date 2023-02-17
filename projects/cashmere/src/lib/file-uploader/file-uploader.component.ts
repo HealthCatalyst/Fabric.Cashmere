@@ -138,6 +138,10 @@ export class FileUploaderComponent extends HcFormControlComponent implements Aft
         this.onTouch = fn;
     }
 
+    setDisabledState(disabledVal: boolean): void {
+        this.disabled = disabledVal;
+    }
+
     private _updateErrorState() {
         const oldState = this._errorState;
 
