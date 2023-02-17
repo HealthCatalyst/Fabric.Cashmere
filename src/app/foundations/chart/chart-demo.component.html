@@ -1,0 +1,136 @@
+<script src="https://unpkg.com/echarts@5.4.1/dist/echarts.min.js" type="javascript"></script>
+<div class="demo-content">
+    <h1>Chart Visualization Guidelines</h1>
+    <h6>Last updated Feb 17, 2023</h6>
+
+    <hc-tile>
+        <h5 id="overview">Overview</h5>
+        <p>
+            In an effort to unify the user experience there is an initiative to use <a href="https://echarts.apache.org/en/index.html" target="_blank">Apache Echarts</a> as our primary charting library.
+            We have put together a Health Catalyst theme for versions <code>v4.x</code> and <code>v5.x</code> of Apache Echart.
+        </p>
+        <article>
+            <ul>
+                <li><a href="https://echarts.apache.org/handbook/en/get-started/" target="_blank">Getting Started with Apache Echarts</a></li>
+                <li><a href="https://echarts.apache.org/examples/en/index.html" target="_blank">Chart Examples</a></li>
+                <li><a href="https://echarts.apache.org/en/option.html" target="_blank">Configuration Docs</a></li>
+            </ul>
+        </article>
+
+        <i>* The full Apache Echart library minified file size is about 1.0mb.</i>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="overview">Apache Echart Themes</h5>
+        <p>
+           If your application is already using Apache Echart then updating the theme should be as simple as using the basic Health Catalyst theme configurations below.
+        </p>
+        <br/>
+        <div class="row">
+            <div class="col">
+                <article>
+                    <strong>Apache Echart Version 5.x</strong>
+                    <ul>
+                        <li><a href="./assets/foundations/charts/healthcatalyst-light-echart-v5.x.json" target="_blank">Health Catalyst Apache Echart v5.x Light</a></li>
+                        <li><a href="./assets/foundations/charts/healthcatalyst-dark-echart-v5.x.json" target="_blank">Health Catalyst Apache Echart v5.x Dark</a></li>
+                    </ul>
+                </article>
+            </div>
+            <div class="col">
+                <article>
+                    <strong>Apache Echart Version 4.x</strong>
+                    <ul>
+                        <li><a href="./assets/foundations/charts/healthcatalyst-light-echart-v4.x.json" target="_blank">Health Catalyst Apache Echart v4.x Light</a></li>
+                        <li><a href="./assets/foundations/charts/healthcatalyst-dark-echart-v4.x.json" target="_blank">Health Catalyst Apache Echart v4.x Dark</a></li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="overview">Getting Started</h5>
+        <p>
+           Here you will find the minimum code necessary to get started with Apache Echarts. If you need more help getting started check out the wonderful documentation over at <a href="https://echarts.apache.org/handbook/en/get-started/" target="_blank">Apache Echarts</a>.
+        </p>
+        <br/>
+        <p><strong>Installation</strong></p>
+        <pre hcHighlight class="language-bash"><code>npm install echarts --save-dev</code></pre>
+        <br/>
+        <p><strong>Usage</strong></p>
+        <pre hcHighlight class="language-javascript"><code>// import the Apache Echart library
+import * as echarts from "echarts";
+
+// import the Health Catalyst Apache Echarts theme.
+import chartTheme from "./healthcatalyst-light-echart-v5.x.json";
+
+// In your render code, set up the chart and assign it to a DOM element.
+const chartContainer = document.getElementById("chart-container");
+const myChart = echarts.init(chartContainer, chartTheme); 
+
+// Configure your charts display properties and give it data.
+const options = {{ '{' }}
+    // ... Your chart configuration options.
+    // See example below for a sample configuration.
+{{ '\}' }}
+myChart.setOption(options);
+</code></pre>
+        <br/>
+        <p>
+            <strong>Things to Consider</strong><br/>
+            Calling <code>myChart.setOption()</code> will update the charts configuration without needing to destroy it. 
+            If your data is changing you will need to call <code>myChart.clear()</code> to force it to remove the old data.
+            <br/><br/>
+            Once rendered the charts will not be responsive. You will need to call <code>myChart.resize()</code> to get them to rerender to the new dimensions for the parent container.
+            You can monitor the charts container for sizing changes using the following code. <code>new ResizeObserver(() => myChart.resize()).observe(chartContainer);</code>
+        </p>
+    </hc-tile>
+    <hc-tile>
+        <h5 id="elements">Example Chart Configuration</h5>
+        <div class="chart-config-container">
+            <hc-form-field inline>
+                <hc-label>Theme:</hc-label>
+                <hc-select (change)="changeChartTheme($event)" value="light">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </hc-select>
+            </hc-form-field>
+        </div>
+        <div #chartContainer id="chart-container"></div>
+        <div class="chart-config-container">
+            <hc-form-field inline>
+                <hc-label>Chart Type:</hc-label>
+                <hc-select (change)="changeChartType($event)" value="bar">
+                    <option value="bar">Bar</option>
+                    <option value="line">Line</option>
+                </hc-select>
+            </hc-form-field>
+        </div>
+        <div class="chart-config-container">
+            <hc-form-field inline>
+                <hc-label>Dataset:</hc-label>
+                <hc-select (change)="changeChartData($event)" value="simple">
+                    <option value="simple">Daily Screen Time (simple)</option>
+                    <option value="grouped">Daily Screen Time by Weeks (grouped)</option>
+                    <option value="average">Weekly Screen Time Average (custom)</option>
+                </hc-select>
+            </hc-form-field>
+        </div>
+        <br/>
+        <div class="chart-config-container">
+            <hc-form-field inline>
+                <hc-label>Show Legend:</hc-label>
+                <hc-slide-toggle buttonSize="sm" (buttonStateChanged)="changeChartLegend()"></hc-slide-toggle>
+            </hc-form-field>
+        </div>
+        <div class="chart-config-container">
+            <hc-form-field inline>
+                <hc-label>Show Data Zoom:</hc-label>
+                <hc-slide-toggle buttonSize="sm" (buttonStateChanged)="changeChartZoom()"></hc-slide-toggle>
+            </hc-form-field>
+        </div>
+        <p><strong>Compiled Configuration Options</strong></p>
+        <div [hcMarkdown]="chartOptions" class="language-json chart"></div>
+    </hc-tile>
+    <hc-feedback-form></hc-feedback-form>
+</div>

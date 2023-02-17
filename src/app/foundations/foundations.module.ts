@@ -3,6 +3,7 @@ import {ColorDemoComponent} from './color/color-demo.component';
 import {IconGuideComponent} from './icons/icon-guide.component';
 import {TypographyDemoComponent} from './typography/typography-demo.component';
 import {CodeDemoComponent} from './code/code-demo.component';
+import {ChartDemoComponent} from './chart/chart-demo.component';
 import {SharedModule} from '../shared/shared.module';
 import {FoundationsRoutesModule} from './foundations-routes.module';
 import {FoundationsComponent} from './foundations.component';
@@ -21,6 +22,7 @@ import {ProductsDemoComponent} from './products/products-demo.component';
         IconGuideComponent,
         TypographyDemoComponent,
         CodeDemoComponent,
+        ChartDemoComponent,
         BrandColorDemoComponent,
         LogoDemoComponent,
         ProductsDemoComponent,

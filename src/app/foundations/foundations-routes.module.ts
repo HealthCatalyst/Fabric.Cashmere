@@ -5,6 +5,7 @@ import {ColorDemoComponent} from './color/color-demo.component';
 import {IconGuideComponent} from './icons/icon-guide.component';
 import {TypographyDemoComponent} from './typography/typography-demo.component';
 import {CodeDemoComponent} from './code/code-demo.component';
+import {ChartDemoComponent} from './chart/chart-demo.component';
 import {BrandColorDemoComponent} from './brand-colors/brand-color-demo.component';
 import {LogoDemoComponent} from './logo/logo-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
@@ -44,6 +45,11 @@ const routes: Routes = [
                 path: 'code',
                 component: CodeDemoComponent,
                 data: {title: 'Source Code', category: 'Typography'}
+            },
+            {
+                path: 'charts',
+                component: ChartDemoComponent,
+                data: {title: 'Charts', category: 'Data Visualization'}
             },
             {
                 path: 'logo',
