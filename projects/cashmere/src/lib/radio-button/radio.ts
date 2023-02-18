@@ -200,6 +200,10 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         this.onTouch = fn;
     }
 
+    setDisabledState(disabledVal: boolean): void {
+        this.disabled = disabledVal;
+    }
+
     _touch(): void {
         if (this.onTouch) {
             this.onTouch();
