@@ -4,7 +4,8 @@ import {StylesComponent} from './styles.component';
 import {AboutModalComponent} from './about/about-modal.component';
 import {TableDemoComponent} from './table/table-demo.component';
 import {MarkdownContentComponent} from '../shared/markdown-content.component';
-import { IESupportComponent } from './ie-support/ie-support.component';
+import {IESupportComponent} from './ie-support/ie-support.component';
+import {ChartDemoComponent} from './chart/chart-demo.component';
 
 const routes: Routes = [
     {
@@ -56,6 +57,11 @@ const routes: Routes = [
                 path: 'about',
                 component: AboutModalComponent,
                 data: {title: 'About Modal', category: 'Screens & Messaging'}
+            },
+            {
+                path: 'charts',
+                component: ChartDemoComponent,
+                data: {title: 'Charts', category: 'Data Visualization'}
             },
             {
                 path: 'breadcrumbs',

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {SectionService} from '../../shared/section.service';
 import {BaseDemoComponent} from '../../shared/base-demo.component';
-import { SelectChangeEvent } from '@healthcatalyst/cashmere';
+import {SelectChangeEvent} from '@healthcatalyst/cashmere';
 import {ViewChild, ElementRef} from '@angular/core';
 import * as echarts from 'echarts';
 import * as hcChartLight from '../../../assets/foundations/charts/healthcatalyst-light-echart-v5.x.json';
@@ -170,7 +170,7 @@ export class ChartDemoComponent extends BaseDemoComponent {
         this.chartType = chartType.value;
         this.updateChart();
     }
-    
+
     changeChartTheme(chartTheme: SelectChangeEvent): void {
         this.chartTheme = chartTheme.value;
         echarts.dispose(this.chartContainer.nativeElement);

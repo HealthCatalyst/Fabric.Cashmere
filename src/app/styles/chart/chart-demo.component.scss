@@ -1,10 +1,12 @@
+@import 'scss/colors';
+
 #chart-container {
     height: 300px;
     width: 100%;
     padding: 16px;
     margin-bottom: 16px;
     border-radius: 4px;
-    border: 1px solid #c0c5cc;
+    border: 1px solid $slate-gray-300;
 }
 
 .chart-config-container {
