@@ -4,8 +4,8 @@ import {BaseDemoComponent} from '../../shared/base-demo.component';
 import {SelectChangeEvent} from '@healthcatalyst/cashmere';
 import {ViewChild, ElementRef} from '@angular/core';
 import * as echarts from 'echarts';
-import * as hcChartLight from '../../../assets/foundations/charts/healthcatalyst-light-echart-v5.x.json';
-import * as hcChartDark from '../../../assets/foundations/charts/healthcatalyst-dark-echart-v5.x.json';
+import * as hcChartLight from '../../../assets/charts/healthcatalyst-light-echart-v5.x.json';
+import * as hcChartDark from '../../../assets/charts/healthcatalyst-dark-echart-v5.x.json';
 
 const exampleData = {
     simple: {

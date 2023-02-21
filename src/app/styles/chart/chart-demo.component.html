@@ -31,8 +31,8 @@
                 <article>
                     <strong>Apache Echart Version 5.x</strong>
                     <ul>
-                        <li><a href="./assets/foundations/charts/healthcatalyst-light-echart-v5.x.json" target="_blank">Health Catalyst Apache Echart v5.x Light</a></li>
-                        <li><a href="./assets/foundations/charts/healthcatalyst-dark-echart-v5.x.json" target="_blank">Health Catalyst Apache Echart v5.x Dark</a></li>
+                        <li><a href="./assets/charts/healthcatalyst-light-echart-v5.x.json" target="_blank">Health Catalyst Apache Echart v5.x Light</a></li>
+                        <li><a href="./assets/charts/healthcatalyst-dark-echart-v5.x.json" target="_blank">Health Catalyst Apache Echart v5.x Dark</a></li>
                     </ul>
                 </article>
             </div>
@@ -40,8 +40,8 @@
                 <article>
                     <strong>Apache Echart Version 4.x</strong>
                     <ul>
-                        <li><a href="./assets/foundations/charts/healthcatalyst-light-echart-v4.x.json" target="_blank">Health Catalyst Apache Echart v4.x Light</a></li>
-                        <li><a href="./assets/foundations/charts/healthcatalyst-dark-echart-v4.x.json" target="_blank">Health Catalyst Apache Echart v4.x Dark</a></li>
+                        <li><a href="./assets/charts/healthcatalyst-light-echart-v4.x.json" target="_blank">Health Catalyst Apache Echart v4.x Light</a></li>
+                        <li><a href="./assets/charts/healthcatalyst-dark-echart-v4.x.json" target="_blank">Health Catalyst Apache Echart v4.x Dark</a></li>
                     </ul>
                 </article>
             </div>
@@ -66,7 +66,7 @@ import chartTheme from "./healthcatalyst-light-echart-v5.x.json";
 
 // In your render code, set up the chart and assign it to a DOM element.
 const chartContainer = document.getElementById("chart-container");
-const myChart = echarts.init(chartContainer, chartTheme); 
+const myChart = echarts.init(chartContainer, chartTheme);
 
 // Configure your charts display properties and give it data.
 const options = {{ '{' }}
@@ -78,7 +78,7 @@ myChart.setOption(options);
         <br/>
         <p>
             <strong>Things to Consider</strong><br/>
-            Calling <code>myChart.setOption()</code> will update the charts configuration without needing to destroy it. 
+            Calling <code>myChart.setOption()</code> will update the charts configuration without needing to destroy it.
             If your data is changing you will need to call <code>myChart.clear()</code> to force it to remove the old data.
             <br/><br/>
             Once rendered the charts will not be responsive. You will need to call <code>myChart.resize()</code> to get them to rerender to the new dimensions for the parent container.
