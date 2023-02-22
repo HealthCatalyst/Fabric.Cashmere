@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated October 26, 2022
+###### Last updated February 21, 2023
 
 :::
 
@@ -9,14 +9,11 @@
 Registered Marks (currently in use) – **Apply ®**:
 
 -   [[FLAME]](https://cashmere.healthcatalyst.net/styles/logo) Design Mark
--   CORUS (now called Health Catalyst PowerCosting™)
 -   Health Catalyst _(only when followed by a product or services description; when you are just referring to the company/entity, do not use ®)_
 -   HAS
 -   HealthCatalyst
--   Healthfinch
 -   Ignite Change (minimal use)
 -   Leading Wisely
--   Medicity (not in use)
 -   Touchstone
 -   Vitalware
 -   VitalCDM
@@ -32,6 +29,7 @@ Registered Marks (currently in use) – **Apply ®**:
 Unregistered Marks (currently in use, examples) – **Apply ™** symbol:
 _The ™ symbol can be applied to any unregistered trademark_
 
+- ARMUS by Health Catalyst
 - DOS
 - DOS Mart and DOS Marts
 - Healthcare.AI
@@ -46,31 +44,28 @@ _The ™ symbol can be applied to any unregistered trademark_
   - Health Catalyst Pop Analyzer
   - Health Catalyst Pop Insights
 - Health Catalyst Business Decision Support Suite
-  - Health Catalyst PowerCosting (formerly CORUS Suite)
+  - Health Catalyst PowerCosting
   - Health Catalyst PowerLabor
   - Health Catalyst PowerPlanning
 - Health Catalyst Population Health Suite
   - Health Catalyst Care Flow
   - Health Catalyst Embedded Care Gaps
   - Health Catalyst Embedded Refills
-  - Health Catalyst Measurable
+  - Health Catalyst MeasureAble
   - Health Catalyst Pop Analyzer
   - Health Catalyst Pop Insights
   - Health Catalyst Value Optimizer
-- Health Catalyst Research Network
 - Health Catalyst University
 - Hospital Price Index
 - KPI Ninja by Health Catalyst
 - Ninja Universe
 - Patient Safety Monitor
-- Population Builder
 - Population Health Foundations Solution
 - Self-Service Analytics
 - Rapid Response Analytics Solution
 - The Catalyst Awards
 - The Health Catalyst Analytics Practice Model
-- Touchstone Match
-- Twistle
+- Twistle by Health Catalyst
 - Twistle Patient Engagement by Health Catalyst
 
 :::
@@ -82,15 +77,20 @@ _The ™ symbol can be applied to any unregistered trademark_
 **Registered Marks No Longer in Use:**
 
 -   Café
+-   CORUS
 -   Healthcare Quality Catalyst
--   Knowledge Edge (not in use)
--   KnowledgeEdge (not in use)
--   MBL – **Abandon**
+-   Healthfinch
+-   Knowledge Edge
+-   KnowledgeEdge
+-   MBL
+-   Medicity
 
 **Unregistered Marks No Longer in Use:**
 
--   Ignite Outcomes – **Abandon application**
+-   Health Catalyst Research Network
+-   Ignite Outcomes
 -   Ignite Outcomes improvement (minimal use)
+-   Touchstone Match
 
 :::
 
@@ -105,7 +105,7 @@ If any trademark (®/™) used above appears multiple times on a page or in a do
 Do not use trademarked terms as nouns—only use as an adjective. For example:
 
 -   **Yes:** The HAS® conference… or The CORUS™ Suite
--   **No:** HAS® is an awesome conference. CORUS™ is more than some outdated cost system.
+-   **No:** HAS® is an awesome conference. CORUS™ is more than some outdated costing system.
 
 &nbsp;
 
