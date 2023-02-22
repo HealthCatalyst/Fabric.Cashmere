@@ -1,7 +1,9 @@
-import {Directive, DoCheck, ElementRef, HostBinding, HostListener, Input, Optional, Self, forwardRef, Output, EventEmitter} from '@angular/core';
+import {Directive, ElementRef, HostBinding, HostListener, Input, Optional, Self, forwardRef, Output, EventEmitter, AfterViewInit, OnDestroy} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 export function getUnsupportedHCInputType(type: string): Error {
     return new Error(`hc-input doesn't support the following type: ${type}`);
@@ -16,11 +18,12 @@ const unsupportedTypes = ['button', 'checkbox', 'file', 'hidden', 'image', 'radi
     selector: '[hcInput]',
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => InputDirective)}]
 })
-export class InputDirective extends HcFormControlComponent implements DoCheck {
+export class InputDirective extends HcFormControlComponent implements AfterViewInit, OnDestroy {
     private _focused = false;
     private _mobile = false;
     private _uniqueInputId = `hc-input-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
+    private _unsubscribe = new Subject<void>();
 
     _componentId = this._uniqueInputId;
 
@@ -126,6 +129,7 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
     @HostListener('blur')
     _onBlur(): void {
         this._changeFocus(false);
+        this._updateErrorState();
     }
 
     @HostListener('focus')
@@ -172,6 +176,15 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
     @Output()
     mobileChange = new EventEmitter<boolean>();
 
+    ngAfterViewInit(): void {
+        if ( this._ngControl && this._ngControl.statusChanges ) {
+            this._ngControl.statusChanges.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        }
+        if ( this._form ) {
+            this._form.ngSubmit.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        }
+    }
+
     constructor(
         private _elementRef: ElementRef,
         @Optional() _parentForm: NgForm,
@@ -183,13 +196,6 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         super();
 
         this._form = _parentForm || _parentFormGroup;
-    }
-
-    ngDoCheck(): void {
-        // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this._ngControl) {
-            this._updateErrorState();
-        }
     }
 
     /** Sets the focus on the input element */
@@ -221,5 +227,10 @@ export class InputDirective extends HcFormControlComponent implements DoCheck {
         if (oldState !== newState) {
             this._errorState = newState;
         }
+    }
+
+    ngOnDestroy(): void {
+        this._unsubscribe.next();
+        this._unsubscribe.complete();
     }
 }

@@ -2,7 +2,7 @@
     <div class="select-sample">
         <hc-form-field tight="true">
             <hc-label>Select with tight styling:</hc-label>
-            <hc-select [formControl]="selectControl" required>
+            <hc-select [formControl]="selectControl" required (change)="resetValidate()">
                 <optgroup label="Business Intelligence Tools">
                     <option value="qlik" selected>QlikView</option>
                     <option value="tableau">Tableau</option>

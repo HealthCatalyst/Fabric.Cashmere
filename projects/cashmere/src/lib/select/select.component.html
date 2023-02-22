@@ -6,7 +6,7 @@
         [disabled]="disabled"
         (change)="_change($event, selectInput.value)"
         (focus)="focus.next()"
-        (blur)="blur.next()"
+        (blur)="_onBlur()"
         [required]="required"
     >
         <option *ngIf="placeholder" value="" selected disabled hidden>{{ placeholder }}</option>
