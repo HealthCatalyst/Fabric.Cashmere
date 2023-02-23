@@ -1,11 +1,38 @@
 @import '../sass/instance-switcher.scss';
-@import '../../lib/sass/cashmere.scss';
 
 .hc-instance-switcher {
     @include hc-instance-switcher();
 
     hc-measurable {
         @include hc-instance-switcher-measurable();
+    }
+
+    .hc-chip.hc-chip-padding {
+        @include hc-instance-chip-padding();
+    }
+
+    button.hc-button.hc-instance-switcher-more {
+        @include hc-instance-more-button();
+
+        hc-icon {
+            @include hc-instance-button-icon();
+        }
+    }
+
+    button.hc-button.hc-instance-switcher-add {
+        @include hc-instance-add-button();
+    }
+
+    button.hc-icon-button.hc-instance-switcher-hide {
+        @include hc-instance-hide-button();
+    }
+
+    button.hc-menu-item.hc-instance-switcher-more-menu-item {
+        @include hc-instance-switcher-more();
+
+        hc-icon.hc-menu-icon.hc-instance-switcher-more-close {
+            @include hc-instance-switcher-more-close();
+        }
     }
 }
 
@@ -42,33 +69,5 @@
 
     input {
         @include hc-instance-edit();
-    }
-}
-
-.hc-chip.hc-chip-padding {
-    @include hc-instance-chip-padding();
-}
-
-button.hc-button.hc-instance-switcher-more {
-    @include hc-instance-more-button();
-
-    hc-icon {
-        @include hc-instance-button-icon();
-    }
-}
-
-button.hc-button.hc-instance-switcher-add {
-    @include hc-instance-add-button();
-}
-
-button.hc-icon-button.hc-instance-switcher-hide {
-    @include hc-instance-hide-button();
-}
-
-button.hc-menu-item.hc-instance-switcher-more-menu-item {
-    @include hc-instance-switcher-more();
-
-    hc-icon.hc-menu-icon.hc-instance-switcher-more-close {
-        @include hc-instance-switcher-more-close();
     }
 }
