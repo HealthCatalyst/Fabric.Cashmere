@@ -110,9 +110,12 @@ export class SlideToggleComponent extends HcFormControlComponent implements Afte
     }
 
     set buttonState( val: boolean | string ) {
-        this._buttonState = parseBooleanAttribute(val);
-        this.onChange(this._buttonState);
-        this.buttonStateChanged.emit(this._buttonState);
+        const tempVal = parseBooleanAttribute(val);
+        if ( tempVal !== this._buttonState ) {
+            this._buttonState = parseBooleanAttribute(val);
+            this.onChange(this._buttonState);
+            this.buttonStateChanged.emit(this._buttonState);
+        }
     }
 
     /** Event fired with boolean value when the toggle state is changed. */
@@ -141,7 +144,10 @@ export class SlideToggleComponent extends HcFormControlComponent implements Afte
     }
 
     writeValue(value: unknown): void {
-        this.buttonState = !!value;
+        // Prevent the form control from trying to write a value when removing the control
+        if ( this.onChange.name !== 'noop' ) {
+            this.buttonState = !!value;
+        }
     }
 
     public onChange: (value: unknown) => void = () => undefined;

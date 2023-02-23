@@ -185,8 +185,11 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     }
 
     writeValue(value: any) {
-        this._value = value;
-        this._applyValueToNativeControl();
+        // Prevent the form control from trying to write a value when removing the control
+        if ( this.onChange.name !== 'noop' ) {
+            this._value = value;
+            this._applyValueToNativeControl();
+        }
     }
 
     _applyValueToNativeControl() {

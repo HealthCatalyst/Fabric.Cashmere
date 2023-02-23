@@ -126,7 +126,10 @@ export class FileUploaderComponent extends HcFormControlComponent implements Aft
     }
 
     writeValue(value: FileList): void {
-        this._fileList = value;
+        // Prevent the form control from trying to write a value on removing the control
+        if ( this.onChange.name !== 'noop' ) {
+            this._fileList = value;
+        }
     }
 
     public onChange: (value: FileList) => void = () => undefined;

@@ -302,7 +302,10 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     }
 
     writeValue(value: unknown): void {
-        this.checked = !!value;
+        // Prevent the form control from trying to write a value when removing the control
+        if ( this.onChange.name !== 'noop' ) {
+            this.checked = !!value;
+        }
     }
 
     public onChange: (value: unknown) => void = () => undefined;

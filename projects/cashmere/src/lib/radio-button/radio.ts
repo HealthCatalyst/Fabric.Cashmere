@@ -194,8 +194,11 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
     }
 
     writeValue(value: any): void {
-        this.value = value;
-        this._cdRef.markForCheck();
+        // Prevent the form control from trying to write a value when removing the control
+        if ( this.onChange.name !== 'noop' ) {
+            this.value = value;
+            this._cdRef.markForCheck();
+        }
     }
 
     public onChange: (value: unknown) => void = () => undefined;
