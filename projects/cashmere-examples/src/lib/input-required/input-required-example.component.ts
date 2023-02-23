@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {UntypedFormControl, Validators} from '@angular/forms';
 
 /**
  * @title Required Input
@@ -10,5 +10,5 @@ import {FormControl, Validators} from '@angular/forms';
     styleUrls: ['input-required-example.component.scss']
 })
 export class InputRequiredExampleComponent {
-    formDemo = new FormControl('', [Validators.email, Validators.required]);
+    formDemo = new UntypedFormControl('', [Validators.email, Validators.required]);
 }

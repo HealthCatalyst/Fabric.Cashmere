@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 /**
  * @title Disabled Inputs with Prefix and Suffix
@@ -10,5 +10,5 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['input-prefix-example.component.scss']
 })
 export class InputPrefixExampleComponent {
-    inputPrefix = new FormControl({value: 'disable working', disabled: true});
+    inputPrefix = new UntypedFormControl({value: 'disable working', disabled: true});
 }

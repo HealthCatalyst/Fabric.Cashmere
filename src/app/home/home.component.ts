@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApplicationInsightsService } from '../shared/application-insights/application-insights.service';
 
@@ -9,7 +9,7 @@ import { ApplicationInsightsService } from '../shared/application-insights/appli
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-    searchBar = new FormControl("");
+    searchBar = new UntypedFormControl("");
 
     constructor(private router: Router, private appInsights: ApplicationInsightsService) { }
 

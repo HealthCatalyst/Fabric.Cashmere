@@ -27,7 +27,7 @@ import {yearsPerPage, MultiYearViewComponent} from '../multi-year-view/multi-yea
 import {HcCalendarCellCssClasses} from '../calendar-body/calendar-body.component';
 import {MonthViewComponent} from '../month-view/month-view.component';
 import {YearViewComponent} from '../year-view/year-view.component';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 
 /**
  * Possible views for the calendar.
@@ -209,7 +209,7 @@ export class CalendarComponent implements AfterContentInit, AfterViewChecked, On
     _calendarHeaderPortal: Portal<unknown>;
 
     /** Stores the current am/pm value */
-    _period: FormControl = new FormControl('am');
+    _period: UntypedFormControl = new UntypedFormControl('am');
 
     private _intlChanges: Subscription;
 

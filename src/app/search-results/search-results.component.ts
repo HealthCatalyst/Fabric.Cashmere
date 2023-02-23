@@ -1,5 +1,5 @@
 import {Component, AfterViewInit, ChangeDetectorRef, HostListener, ViewChild, ElementRef} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {SearchService} from '../shared/search.service';
 import {PageEvent} from '@healthcatalyst/cashmere';
 import {ActivatedRoute} from '@angular/router';
@@ -25,25 +25,25 @@ export class SearchResultsComponent implements AfterViewInit {
     pagWidth = 'md';
     pagSize = 5;
     pagNum = 1;
-    searchBarContent: FormControl = new FormControl('');
+    searchBarContent: UntypedFormControl = new UntypedFormControl('');
     searchResultsData;
     searchDisplay;
     length;
 
-    categories = new FormGroup({
-        components: new FormControl(true),
-        guides: new FormControl(true),
-        foundations: new FormControl(true),
-        content: new FormControl(true),
-        analytics: new FormControl(true)
+    categories = new UntypedFormGroup({
+        components: new UntypedFormControl(true),
+        guides: new UntypedFormControl(true),
+        foundations: new UntypedFormControl(true),
+        content: new UntypedFormControl(true),
+        analytics: new UntypedFormControl(true)
     });
 
-    types = new FormGroup({
-        doc: new FormControl(true),
-        example: new FormControl(true),
-        api: new FormControl(true),
-        usage: new FormControl(true),
-        persona: new FormControl(true)
+    types = new UntypedFormGroup({
+        doc: new UntypedFormControl(true),
+        example: new UntypedFormControl(true),
+        api: new UntypedFormControl(true),
+        usage: new UntypedFormControl(true),
+        persona: new UntypedFormControl(true)
     });
 
     searchIcons = {

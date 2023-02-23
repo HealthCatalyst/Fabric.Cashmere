@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 /**
  * @title Slide Toggle overview
@@ -10,8 +10,8 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['slide-toggle-overview-example.component.scss']
 })
 export class SlideToggleOverviewExampleComponent {
-    toggleStyle: FormControl = new FormControl('blue');
-    toggleText: FormControl = new FormControl('on');
-    toggleLabelPos: FormControl = new FormControl('left');
-    toggleDisabled: FormControl = new FormControl(false);
+    toggleStyle: UntypedFormControl = new UntypedFormControl('blue');
+    toggleText: UntypedFormControl = new UntypedFormControl('on');
+    toggleLabelPos: UntypedFormControl = new UntypedFormControl('left');
+    toggleDisabled: UntypedFormControl = new UntypedFormControl(false);
 }

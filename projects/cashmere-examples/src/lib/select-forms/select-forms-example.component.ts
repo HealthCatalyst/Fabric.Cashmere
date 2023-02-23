@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 
 /**
  * @title Select using Angular forms
@@ -16,7 +16,7 @@ export class SelectFormsExampleComponent {
         {id: 3, dbaName: 'Environmental Quality'},
     ];
 
-    selectControl = new FormControl(this.locations[0]);
+    selectControl = new UntypedFormControl(this.locations[0]);
 
     setInsurance(): void {
         this.selectControl.setValue(this.locations[1], {onlySelf: true});

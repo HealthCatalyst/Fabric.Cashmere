@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { SelectChangeEvent } from '@healthcatalyst/cashmere';
 
 @Component({
@@ -14,7 +14,7 @@ export class SearchBarOverviewExampleComponent {
     showClearIcon = true;
     autoSearch = true;
     output = "";
-    styleControl = new FormControl("normal");
+    styleControl = new UntypedFormControl("normal");
 
     search(term: string): void {
         this.output += `Search for '${term}'\n`;

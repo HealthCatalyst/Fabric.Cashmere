@@ -5,7 +5,7 @@ import {ScrollDispatcher} from '@angular/cdk/scrolling';
 
 import {Component, FactoryProvider, Type, ValueProvider, ViewChild} from '@angular/core';
 import {ComponentFixture, fakeAsync, flush, inject, TestBed} from '@angular/core/testing';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {UntypedFormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -126,7 +126,7 @@ class DatepickerWithNgModel {
     `
 })
 class DatepickerWithFormControl {
-    formControl = new FormControl();
+    formControl = new UntypedFormControl();
     @ViewChild('d')
     datepicker: DatepickerComponent;
     @ViewChild(DatepickerInputDirective)

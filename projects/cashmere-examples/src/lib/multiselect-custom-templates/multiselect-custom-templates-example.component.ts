@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 
 interface Transport { name: string, icon: string, color: string, type: string | null }
 
@@ -12,7 +12,7 @@ interface Transport { name: string, icon: string, color: string, type: string | 
     styleUrls: ['multiselect-custom-templates-example.component.scss']
 })
 export class MultiselectCustomTemplatesExampleComponent {
-    readonly selected = new FormControl([]);
+    readonly selected = new UntypedFormControl([]);
     transportOptions: Transport[] = [
         {name: 'Bus', icon: 'bus', color: 'blue', type: 'land'},
         {name: 'Train', icon: 'train', color: 'green', type: 'land'},

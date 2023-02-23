@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 
 /**
  * @title Number Abbreviator Pipe overview example
@@ -9,7 +9,7 @@ import {FormControl} from '@angular/forms';
     templateUrl: 'number-abbreviator-overview-example.component.html'
 })
 export class NumberAbbreviatorOverviewExampleComponent {
-    number = new FormControl(123456789);
-    decimalPoints = new FormControl(2);
-    threshold = new FormControl(1000000);
+    number = new UntypedFormControl(123456789);
+    decimalPoints = new UntypedFormControl(2);
+    threshold = new UntypedFormControl(1000000);
 }

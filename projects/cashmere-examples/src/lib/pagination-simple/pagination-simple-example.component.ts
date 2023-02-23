@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 /**
  * @title Simple pagination
@@ -9,10 +9,10 @@ import { FormControl } from '@angular/forms';
     templateUrl: 'pagination-simple-example.component.html'
 })
 export class PaginationSimpleExampleComponent {
-    pageNumberControl = new FormControl(8);
-    pageSizeControl = new FormControl(100);
-    totalItemsControl = new FormControl(1000);
-    widthControl = new FormControl('lg');
+    pageNumberControl = new UntypedFormControl(8);
+    pageSizeControl = new UntypedFormControl(100);
+    totalItemsControl = new UntypedFormControl(1000);
+    widthControl = new UntypedFormControl('lg');
 
     get pageNumber(): number {
         return this.pageNumberControl.value;

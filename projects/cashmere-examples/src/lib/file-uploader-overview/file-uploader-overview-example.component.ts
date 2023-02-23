@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 /**
  * @title Overview of File Uploader functionality
@@ -9,9 +9,9 @@ import { FormControl } from '@angular/forms';
     templateUrl: 'file-uploader-overview-example.component.html'
 })
 export class FileUploaderOverviewExampleComponent {
-    selectedFiles = new FormControl();
-    multipleFiles = new FormControl(false);
-    controlTight = new FormControl(false);
+    selectedFiles = new UntypedFormControl();
+    multipleFiles = new UntypedFormControl(false);
+    controlTight = new UntypedFormControl(false);
 
     get selectedFileNames(): string {
         let printString = '';

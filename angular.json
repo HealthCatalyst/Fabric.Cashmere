@@ -181,7 +181,6 @@
       }
     }
   },
-  "defaultProject": "user-guide",
   "schematics": {
     "@schematics/angular:component": {
       "inlineStyle": false,

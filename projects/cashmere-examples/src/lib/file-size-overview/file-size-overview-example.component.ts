@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 /**
  * @title File Size Pipe overview example
@@ -9,6 +9,6 @@ import { FormControl } from '@angular/forms';
     templateUrl: 'file-size-overview-example.component.html'
 })
 export class FileSizeOverviewExampleComponent {
-    readonly bytes = new FormControl(123456789);
-    readonly precision = new FormControl(2);
+    readonly bytes = new UntypedFormControl(123456789);
+    readonly precision = new UntypedFormControl(2);
 }

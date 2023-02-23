@@ -5,7 +5,7 @@ import {getControlMissing, HcFormFieldComponent} from './hc-form-field.component
 import {Component, DebugElement, ElementRef, ViewChild} from '@angular/core';
 import {InputModule} from '../input/input.module';
 import {FormFieldModule} from '../form-field/hc-form-field.module';
-import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {UntypedFormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 
 describe('HcFormFieldComponent', () => {
@@ -149,7 +149,7 @@ class InputMissingHcInput {}
     `
 })
 class InputWithFormControl {
-    formControl = new FormControl('', Validators.required);
+    formControl = new UntypedFormControl('', Validators.required);
 
     @ViewChild('inputElement', {static: false})
     inputElement: ElementRef;

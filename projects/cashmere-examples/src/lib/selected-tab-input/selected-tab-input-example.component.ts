@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { TabChangeEvent } from '@healthcatalyst/cashmere';
 import { Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { map, takeUntil } from 'rxjs/operators';
 })
 export class SelectedTabInputExampleComponent implements OnInit, OnDestroy {
 
-    tabSelected = new FormControl(1);
+    tabSelected = new UntypedFormControl(1);
     currentSelected = 1;
     unsubscribe = new Subject<void>();
 

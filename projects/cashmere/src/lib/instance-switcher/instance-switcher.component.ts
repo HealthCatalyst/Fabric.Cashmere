@@ -21,7 +21,7 @@ import { MeasurableComponent } from '../measurable/measurable.component';
 import { HcPopoverAnchorDirective } from '../pop';
 import { IInstance, IInstanceSwitcherTooltipText } from './instance-switcher-interfaces';
 import {parseBooleanAttribute} from '../util';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 type InstanceSwitcherTooltipConfig = IInstanceSwitcherTooltipText & {
     addTrigger: string;
@@ -83,7 +83,7 @@ export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
         addTrigger: 'none',
         closeTrigger: 'none'
     };
-    _renameInstanceControl = new FormControl('');
+    _renameInstanceControl = new UntypedFormControl('');
     _renameInstanceSize$ = this._renameInstanceControl.valueChanges.pipe(
         map((instanceName: string) => Math.max(instanceName.length + 2, 4))
     );

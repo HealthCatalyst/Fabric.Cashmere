@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {TabChangeEvent, TabSetComponent} from '@healthcatalyst/cashmere';
 
 /**
@@ -13,10 +13,10 @@ import {TabChangeEvent, TabSetComponent} from '@healthcatalyst/cashmere';
 export class TabsHorizontalExampleComponent {
     selectedIndex = 0;
     tabHidden = false;
-    overflowStyle = new FormControl('more');
+    overflowStyle = new UntypedFormControl('more');
     dynamicTabName = 'Renaming Tabs';
     dynamicTabIcon = 'fa-check';
-    tabNameControl = new FormControl(this.dynamicTabName);
+    tabNameControl = new UntypedFormControl(this.dynamicTabName);
     dynamicTabs: string[] = [];
 
     @ViewChild('tabSet')

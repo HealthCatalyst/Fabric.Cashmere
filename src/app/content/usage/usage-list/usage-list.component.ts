@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, UntypedFormBuilder, Validators, FormGroupDirective} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {GoogleSheetsDbService} from 'ng-google-sheets-db';
 import {PaginationComponent, HcTableDataSource, TabComponent, TabSetComponent} from '@healthcatalyst/cashmere';
@@ -20,14 +20,14 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     usageList: IUsage[] = [];
     categories = ['All', 'Clinical', 'General', 'Health Catalyst', 'Industry', 'Life sciences', 'Technical'];
     types = ['All', 'Abbreviation', 'General usage', 'UX/technical writing', 'Word choice'];
-    selectedCategoriesControl = new FormControl('All');
-    selectedTypesControl = new FormControl('All');
-    searchControl = new FormControl();
+    selectedCategoriesControl = new UntypedFormControl('All');
+    selectedTypesControl = new UntypedFormControl('All');
+    searchControl = new UntypedFormControl();
     searchTerm = '';
     termList$: Observable<IUsage[]>;
     terms: IUsage[];
 
-    editListForm: FormGroup;
+    editListForm: UntypedFormGroup;
     formSubmitted = false;
     scriptURL = 'https://script.google.com/macros/s/AKfycbwWZCf0aBg1e5BFD9G-hVTb-zbSTXT1KGFSwoyRLwMhu7FZF2g/exec';
     editForm = document.forms['editListForm'];
@@ -43,7 +43,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
 
     constructor(
         sectionService: SectionService,
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         private httpClient: HttpClient,
         private googleSheetsDbService: GoogleSheetsDbService,
         private appInsights: ApplicationInsightsService

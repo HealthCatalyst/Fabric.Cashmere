@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {NavigationEnd, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
@@ -11,7 +11,7 @@ import {ApplicationInsightsService} from '../application-insights/application-in
     styleUrls: ['./feedback-form.component.scss']
 })
 export class FeedbackFormComponent implements OnInit, OnDestroy {
-    feedbackForm: FormGroup;
+    feedbackForm: UntypedFormGroup;
     notHelpful = false;
     thankYouMsg = false;
     private appInsights: ApplicationInsightsService;
@@ -32,10 +32,10 @@ export class FeedbackFormComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.feedbackForm = new FormGroup({
-            helpfulRating: new FormControl(''),
-            yourEmail: new FormControl('', [Validators.email]),
-            yourSuggestions: new FormControl('', [Validators.required, Validators.minLength(3)])
+        this.feedbackForm = new UntypedFormGroup({
+            helpfulRating: new UntypedFormControl(''),
+            yourEmail: new UntypedFormControl('', [Validators.email]),
+            yourSuggestions: new UntypedFormControl('', [Validators.required, Validators.minLength(3)])
         });
     }
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 /**
  * @title Range Slider
@@ -13,7 +13,7 @@ import { FormControl } from '@angular/forms';
 export class SliderRangeExampleComponent {
     private invalid = false;
     sliderDisabled = false;
-    sliderControl = new FormControl([20, 80]);
+    sliderControl = new UntypedFormControl([20, 80]);
     options: Options = {
         floor: 0,
         ceil: 250

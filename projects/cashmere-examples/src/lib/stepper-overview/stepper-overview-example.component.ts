@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StepInterface} from '@healthcatalyst/cashmere';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 
 /**
  * @title Stepper overview
@@ -12,11 +12,11 @@ import {FormControl} from '@angular/forms';
 })
 export class StepperOverviewExampleComponent implements OnInit {
     progressSteps: StepInterface[];
-    readonly currentColorController = new FormControl('green');
+    readonly currentColorController = new UntypedFormControl('green');
     colorOptions: string[] = ['green', 'blue', 'purple', 'orange', 'red'];
-    readonly currentTypeController = new FormControl('arrow');
+    readonly currentTypeController = new UntypedFormControl('arrow');
     typeOptions: string[] = ['arrow', 'isolated'];
-    readonly showStepsController = new FormControl(true);
+    readonly showStepsController = new UntypedFormControl(true);
     currentStep = 2;
 
     ngOnInit(): void {
