@@ -343,6 +343,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
     }
 
     private _emitChangeEvent(): void {
+        this.onTouch();
         this.onChange(this.checked);
         this.change.emit(new CheckboxChangeEvent(this, this.checked));
     }
