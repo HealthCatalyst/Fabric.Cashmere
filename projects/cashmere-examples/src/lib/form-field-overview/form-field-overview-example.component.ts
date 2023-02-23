@@ -16,10 +16,7 @@ export class FormFieldOverviewExampleComponent {
         selectControl: new FormControl('daily'),
         inputControl: new FormControl(''),
         radioControl: new FormControl('SM'),
-        checkOneControl: new FormControl(false),
-        checkTwoControl: new FormControl(false),
-        checkThreeControl: new FormControl(false),
-        checkFourControl: new FormControl(false),
+        checkControl: new FormControl(false),
         slideControl: new FormControl(true)
     });
 
@@ -36,10 +33,7 @@ export class FormFieldOverviewExampleComponent {
     invalidForm(): void {
         this.exampleForm.controls['inputControl'].setErrors({incorrect: true});
         this.exampleForm.controls['selectControl'].setErrors({incorrect: true});
-        this.exampleForm.controls['checkOneControl'].setErrors({incorrect: true});
-        this.exampleForm.controls['checkTwoControl'].setErrors({incorrect: true});
-        this.exampleForm.controls['checkThreeControl'].setErrors({incorrect: true});
-        this.exampleForm.controls['checkFourControl'].setErrors({incorrect: true});
+        this.exampleForm.controls['checkControl'].setErrors({incorrect: true});
         this.exampleForm.controls['radioControl'].setErrors({incorrect: true});
         this.exampleForm.controls['slideControl'].setErrors({incorrect: true});
     }
