@@ -138,8 +138,11 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
     }
 
     writeValue(value: unknown): void {
-        this._value = value;
-        this._updateButtonStateFromModel();
+        // Prevent the form control from trying to write a value when removing the control
+        if ( this.onChange.name !== 'noop' ) {
+            this._value = value;
+            this._updateButtonStateFromModel();
+        }
     }
 
     public onChange: (value: unknown) => void = () => undefined;

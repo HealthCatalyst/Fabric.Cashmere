@@ -8,15 +8,17 @@ import {
     ViewEncapsulation,
     ElementRef,
     Optional,
-    DoCheck,
     Self,
     Output,
     EventEmitter,
     ViewChild,
     Renderer2,
-    AfterViewInit
+    AfterViewInit,
+    OnDestroy
 } from '@angular/core';
 import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
 import {SelectService, _buildValueString} from './select.service';
@@ -35,9 +37,10 @@ export class SelectChangeEvent {
     encapsulation: ViewEncapsulation.None,
     providers: [SelectService, {provide: HcFormControlComponent, useExisting: forwardRef(() => SelectComponent)}]
 })
-export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, DoCheck, AfterViewInit {
+export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
     private _uniqueInputId = `hc-select-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
+    private _unsubscribe = new Subject<void>();
     private _value: any = '';
     get _optionMap(): Map<string, any> {
         return this.selectService._optionMap;
@@ -157,6 +160,19 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
 
     ngAfterViewInit() {
         this._applyValueToNativeControl();
+
+        if ( this._ngControl && this._ngControl.statusChanges ) {
+            this._ngControl.statusChanges.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        }
+        if ( this._form ) {
+            this._form.ngSubmit.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        }
+    }
+
+    _onBlur(): void {
+        this.onTouch();
+        this._updateErrorState();
+        this.blur.next();
     }
 
     public onChange: (value: unknown) => void = () => undefined;
@@ -169,8 +185,11 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     }
 
     writeValue(value: any) {
-        this._value = value;
-        this._applyValueToNativeControl();
+        // Prevent the form control from trying to write a value when removing the control
+        if ( this.onChange.name !== 'noop' ) {
+            this._value = value;
+            this._applyValueToNativeControl();
+        }
     }
 
     _applyValueToNativeControl() {
@@ -191,13 +210,6 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         this._value = this._getOptionValue(value);
         this.onChange(this._value);
         this.change.emit(new SelectChangeEvent(this, this._value));
-    }
-
-    ngDoCheck(): void {
-        // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this._ngControl) {
-            this._updateErrorState();
-        }
     }
 
     _getOptionId(value: any): string | null {
@@ -231,5 +243,10 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         if (oldState !== newState) {
             this._errorState = newState;
         }
+    }
+
+    ngOnDestroy(): void {
+        this._unsubscribe.next();
+        this._unsubscribe.complete();
     }
 }

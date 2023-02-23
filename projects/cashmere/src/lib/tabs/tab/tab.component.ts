@@ -3,6 +3,7 @@ import type {QueryList} from '@angular/core';
 import {EventEmitter, TemplateRef, ViewChild} from '@angular/core';
 import {HcTabTitleComponent} from './tab-title.component';
 import {Params} from '@angular/router';
+import {parseBooleanAttribute} from '../../util';
 
 @Component({
     templateUrl: './tab.component.html',
@@ -34,6 +35,26 @@ export class TabComponent implements AfterContentInit {
     @Input()
     exactRouteMatch: boolean;
 
+    /** Overrides the default Angular hidden behavior to support overflow states; ngIf is also supported to hide tabs */
+    @Input()
+    get hidden(): boolean {
+        return this._hidden || this._hideOverride;
+    }
+    set hidden( val: string | boolean ) {
+        if ( parseBooleanAttribute( val ) ) {
+            this.hide();
+            this._hideOverride = true;
+        } else {
+            this.show();
+            this._hideOverride = false;
+        }
+        this._tabHideChange.emit();
+    }
+    _hideOverride = false;
+
+    @Output()
+    _tabHideChange: EventEmitter<Event> = new EventEmitter();
+
     /** Emits when this tab is selected; use instead of `(click)` for click binding    */
     @Output()
     tabClick: EventEmitter<Event> = new EventEmitter();
@@ -55,7 +76,7 @@ export class TabComponent implements AfterContentInit {
     @ContentChildren(HcTabTitleComponent)
     _tabTitle: QueryList<HcTabTitleComponent>;
 
-    constructor( private el: ElementRef ) {}
+    constructor( public el: ElementRef ) {}
 
     ngAfterContentInit(): void {
         if (this._tabTitle) {
@@ -72,7 +93,7 @@ export class TabComponent implements AfterContentInit {
         event.preventDefault();
         event.stopPropagation();
 
-        this.tabClick.emit();
+        this.tabClick.emit(event);
     }
 
     _getWidth(): number {
