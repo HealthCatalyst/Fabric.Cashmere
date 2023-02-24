@@ -1,6 +1,6 @@
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 import {CheckboxChangeEvent, CheckboxComponent} from './checkbox.component';
-import {UntypedFormControl, FormsModule, NgModel, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormsModule, NgModel, ReactiveFormsModule} from '@angular/forms';
 import {Component, DebugElement} from '@angular/core';
 import {CheckboxModule} from './checkbox.module';
 import {By} from '@angular/platform-browser';
@@ -281,7 +281,7 @@ export class SingleCheckboxComponent {
     `
 })
 class CheckboxWithFormControlComponent {
-    formControl = new UntypedFormControl();
+    formControl = new FormControl();
 }
 
 @Component({

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 
 /**
  * @title Multiple Form Field Elements
@@ -12,12 +12,12 @@ import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 export class FormFieldOverviewExampleComponent {
     enabledState = true;
 
-    exampleForm: UntypedFormGroup = new UntypedFormGroup({
-        selectControl: new UntypedFormControl('daily'),
-        inputControl: new UntypedFormControl(''),
-        radioControl: new UntypedFormControl('SM'),
-        checkControl: new UntypedFormControl(false),
-        slideControl: new UntypedFormControl(true)
+    exampleForm: FormGroup = new FormGroup({
+        selectControl: new FormControl('daily', {nonNullable: true}),
+        inputControl: new FormControl('', {nonNullable: true}),
+        radioControl: new FormControl('SM', {nonNullable: true}),
+        checkControl: new FormControl(false, {nonNullable: true}),
+        slideControl: new FormControl(true, {nonNullable: true})
     });
 
     disableToggle(): void {

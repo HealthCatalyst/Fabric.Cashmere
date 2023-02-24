@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 interface Transport { name: string, icon: string, color: string, type: string | null }
 @Component({
@@ -9,7 +9,7 @@ interface Transport { name: string, icon: string, color: string, type: string | 
 })
 export class PicklistTemplatesExampleComponent {
 
-    readonly selected = new UntypedFormControl([]);
+    readonly selected = new FormControl([], {nonNullable: true});
     transportOptions: Transport[] = [
         {name: 'Train', icon: 'train', color: 'green', type: 'land'},
         {name: 'Bus', icon: 'bus', color: 'blue', type: 'land'},

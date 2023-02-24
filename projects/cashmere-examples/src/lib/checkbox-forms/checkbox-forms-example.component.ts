@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 /**
  * @title Forms Support
@@ -9,7 +9,7 @@ import { UntypedFormControl } from '@angular/forms';
     templateUrl: 'checkbox-forms-example.component.html'
 })
 export class CheckboxFormsExampleComponent {
-    readonly isCheckedControl = new UntypedFormControl(false);
+    readonly isCheckedControl = new FormControl(false, {nonNullable: true});
 
     getCheckboxText(): string {
         return `${this.isCheckedControl.value ? 'Disable' : 'Enable'} button`;

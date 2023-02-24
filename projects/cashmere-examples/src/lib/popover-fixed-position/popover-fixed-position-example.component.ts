@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 /**
  * @title Popover Fixed Position
@@ -10,6 +10,6 @@ import { UntypedFormControl } from '@angular/forms';
     styleUrls: ['./popover-fixed-position-example.component.scss']
 })
 export class PopoverFixedPositionExampleComponent {
-    xPos = new UntypedFormControl(250);
-    yPos = new UntypedFormControl(60);
+    xPos = new FormControl(250, {nonNullable: true});
+    yPos = new FormControl(60, {nonNullable: true});
 }

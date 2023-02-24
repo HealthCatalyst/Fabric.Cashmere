@@ -1,6 +1,6 @@
 import {HcIcon, IMetadataEnvironment} from '@healthcatalyst/cashmere';
 import {Component} from '@angular/core';
-import {UntypedFormControl} from "@angular/forms";
+import {FormControl} from "@angular/forms";
 
 @Component({
     selector: 'hc-environment-switcher-overview-example',
@@ -10,7 +10,7 @@ import {UntypedFormControl} from "@angular/forms";
 export class EnvironmentSwitcherOverviewExampleComponent {
     username = 'Christine K.';
     navIcon: HcIcon = {fontSet: 'hc-icons', fontIcon: 'hci-catalyst-logo', fontSize: 37};
-    listHeader: UntypedFormControl = new UntypedFormControl("Environments");
+    listHeader: FormControl = new FormControl("Environments");
 
     selectedEnvironments = [1234];
     environmentOptions: Array<IMetadataEnvironment> = [

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'hc-button-toggle-example',
@@ -7,7 +7,7 @@ import { UntypedFormControl } from '@angular/forms';
     styleUrls: ['button-toggle-example.component.scss']
 })
 export class ButtonToggleExampleComponent {
-    readonly isGridView = new UntypedFormControl(true);
-    readonly condiments = new UntypedFormControl(['Mustard', 'Ketchup']);
+    readonly isGridView = new FormControl(true, {nonNullable: true});
+    readonly condiments = new FormControl(['Mustard', 'Ketchup'], {nonNullable: true});
 }
 

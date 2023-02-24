@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 /**
  * @title Inline Radio Buttons using Form Controls
@@ -10,7 +10,7 @@ import {UntypedFormControl} from '@angular/forms';
 })
 export class RadioButtonFormsExampleComponent {
     shows = ['Silicon Valley', 'Game of Thrones', 'Better Call Saul'];
-    readonly favoriteShowControl = new UntypedFormControl('Silicon Valley');
+    readonly favoriteShowControl = new FormControl('Silicon Valley');
 
     reset(): void {
         this.favoriteShowControl.setValue(null);

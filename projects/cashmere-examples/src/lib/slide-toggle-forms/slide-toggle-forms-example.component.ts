@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 /**
  * @title Slide Toggle Forms
@@ -10,7 +10,7 @@ import { UntypedFormControl } from '@angular/forms';
     styleUrls: ['slide-toggle-forms-example.component.scss']
 })
 export class SlideToggleFormsExampleComponent {
-    slideControl: UntypedFormControl = new UntypedFormControl(false);
+    slideControl: FormControl = new FormControl(false);
     private invalid = false;
 
     toggleValid(): void {

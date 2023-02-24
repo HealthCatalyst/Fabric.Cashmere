@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { IInstance, IInstanceSwitcherTooltipText } from '@healthcatalyst/cashmere';
 
 /**
@@ -11,7 +11,7 @@ import { IInstance, IInstanceSwitcherTooltipText } from '@healthcatalyst/cashmer
     styleUrls: ['instance-switcher-overview-example.component.scss']
 })
 export class InstanceSwitcherOverviewExampleComponent {
-    readonly maxChipWidthControl = new UntypedFormControl('none');
+    readonly maxChipWidthControl = new FormControl('none');
     instances: IInstance[] = [
         {
             instanceKey: 'instance1',

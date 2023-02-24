@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 @Component({
     selector: 'hc-datepicker-sugar-example',
@@ -7,5 +7,5 @@ import {UntypedFormControl} from '@angular/forms';
     styleUrls: ['./datepicker-sugar-example.component.scss']
 })
 export class DatepickerSugarExampleComponent {
-    readonly dateControl = new UntypedFormControl(new Date(2020, 1, 1));
+    readonly dateControl = new FormControl(new Date(2020, 1, 1));
 }

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 /**
  * @title Popover Overview
@@ -10,16 +10,16 @@ import {UntypedFormControl} from '@angular/forms';
     styleUrls: ['popover-overview-example.component.scss']
 })
 export class PopoverOverviewExampleComponent {
-    readonly hAlignControl = new UntypedFormControl('center');
-    readonly vAlignControl = new UntypedFormControl('below');
-    readonly scrollStratControl = new UntypedFormControl('reposition');
-    readonly trigControl = new UntypedFormControl('click');
-    readonly popTextControl = new UntypedFormControl('NIFTY');
-    readonly hoverDelayControl = new UntypedFormControl(500);
-    readonly shouldAnimateControl = new UntypedFormControl(true);
-    readonly clickAwayControl = new UntypedFormControl(true);
-    readonly showArrowControl = new UntypedFormControl(true);
-    readonly forceAlignmentControl = new UntypedFormControl(false);
-    readonly lockAlignmentControl = new UntypedFormControl(false);
-    readonly maxWidthControl = new UntypedFormControl('none');
+    readonly hAlignControl = new FormControl('center');
+    readonly vAlignControl = new FormControl('below');
+    readonly scrollStratControl = new FormControl('reposition');
+    readonly trigControl = new FormControl('click');
+    readonly popTextControl = new FormControl('NIFTY');
+    readonly hoverDelayControl = new FormControl(500);
+    readonly shouldAnimateControl = new FormControl(true);
+    readonly clickAwayControl = new FormControl(true);
+    readonly showArrowControl = new FormControl(true);
+    readonly forceAlignmentControl = new FormControl(false);
+    readonly lockAlignmentControl = new FormControl(false);
+    readonly maxWidthControl = new FormControl('none');
 }

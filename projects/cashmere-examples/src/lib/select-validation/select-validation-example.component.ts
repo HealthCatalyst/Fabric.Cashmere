@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 /**
  * @title Component Validation
@@ -12,7 +12,7 @@ import {UntypedFormControl} from '@angular/forms';
 export class SelectValidationExampleComponent {
     private validCheck = false;
 
-    selectControl = new UntypedFormControl('qlik');
+    selectControl = new FormControl('qlik');
 
     resetValidate(): void {
         this.validCheck = false;

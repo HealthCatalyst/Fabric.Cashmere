@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 
 /**
  * @title Multiselect overview
@@ -11,8 +11,8 @@ import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 })
 export class MultiselectOverviewExampleComponent {
     cities = ['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando'];
-    readonly selectedCitiesControl = new UntypedFormControl([]);
-    multiselectGroup = new UntypedFormGroup({
+    readonly selectedCitiesControl = new FormControl([], {nonNullable: true});
+    multiselectGroup = new FormGroup({
         selectedCitiesControl: this.selectedCitiesControl
     });
     selectedCareTeamRoles = [];

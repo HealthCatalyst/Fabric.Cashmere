@@ -1,6 +1,6 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FileUploaderModule } from './file-uploader.module';
-import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
     `
 })
 export class FileUploaderFormComponent {
-    uploaderForm: UntypedFormControl = new UntypedFormControl( true );
+    uploaderForm: FormControl = new FormControl( true );
 
     onFileAdd: (event?: FileList) => void = () => null;
 }

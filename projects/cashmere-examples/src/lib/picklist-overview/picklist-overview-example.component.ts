@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 interface Doc { id: number, name: string, department: string , disabled?: boolean}
 @Component({
@@ -8,7 +8,7 @@ interface Doc { id: number, name: string, department: string , disabled?: boolea
     styleUrls: ['./picklist-overview-example.component.scss']
 })
 export class PicklistOverviewExampleComponent {
-    readonly selectedDoctors = new UntypedFormControl([]);
+    readonly selectedDoctors = new FormControl([], {nonNullable: true});
     doctors: Doc[] = [
         { id: 1, name: 'Myrtle Higgins', department: "Oncology"},
         { id: 2, name: 'Thomas McCall', department: "Oncology", disabled: true },

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 /**
  * @title Banner overview
@@ -11,8 +11,8 @@ import {UntypedFormControl} from '@angular/forms';
     styleUrls: ['banner-overview-example.component.scss']
 })
 export class BannerOverviewExampleComponent {
-    readonly _bannerType = new UntypedFormControl('info');
-    readonly bannerClick = new UntypedFormControl(false);
+    readonly _bannerType = new FormControl('info', {nonNullable: true});
+    readonly bannerClick = new FormControl(false, {nonNullable: true});
     bannerHide = false;
 
     hideBanner(): void {

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 /**
  * @title IfNullOrEmptyString Pipe Overview
@@ -9,5 +9,5 @@ import {UntypedFormControl} from '@angular/forms';
     templateUrl: 'null-or-empty-string-overview-example.component.html'
 })
 export class NullOrEmptyStringOverviewExampleComponent {
-    readonly valueControl = new UntypedFormControl('');
+    readonly valueControl = new FormControl('');
 }

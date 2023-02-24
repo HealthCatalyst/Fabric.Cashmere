@@ -1,7 +1,7 @@
 import {Component, TemplateRef} from '@angular/core';
 import {HcToasterService, HcToastOptions, HcToastRef} from '@healthcatalyst/cashmere';
 import {ToasterOverviewCustomComponent} from './toaster-overview-custom.component';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 /**
  * @title Toaster Messages overview
@@ -12,16 +12,16 @@ import { UntypedFormControl } from '@angular/forms';
     styleUrls: ['toaster-overview-example.component.scss']
 })
 export class ToasterOverviewExampleComponent {
-    readonly toastHeader = new UntypedFormControl('Success!');
-    readonly toastBody = new UntypedFormControl('You are awesome!');
-    readonly toastPosition = new UntypedFormControl('top-right');
-    readonly toastTimeout = new UntypedFormControl(5000);
-    readonly toastClick = new UntypedFormControl(false);
-    readonly toastType = new UntypedFormControl('success');
-    readonly toastWidth = new UntypedFormControl(400);
-    readonly toastProgress = new UntypedFormControl('0');
-    readonly progressValue = new UntypedFormControl(75);
-    readonly customImage = new UntypedFormControl(null);
+    readonly toastHeader = new FormControl('Success!', {nonNullable: true});
+    readonly toastBody = new FormControl('You are awesome!', {nonNullable: true});
+    readonly toastPosition = new FormControl('top-right', {nonNullable: true});
+    readonly toastTimeout = new FormControl(5000, {nonNullable: true});
+    readonly toastClick = new FormControl(false, {nonNullable: true});
+    readonly toastType = new FormControl('success', {nonNullable: true});
+    readonly toastWidth = new FormControl(400, {nonNullable: true});
+    readonly toastProgress = new FormControl('0', {nonNullable: true});
+    readonly progressValue = new FormControl(75, {nonNullable: true});
+    readonly customImage = new FormControl();
 
     constructor(private toasterService: HcToasterService) {}
 

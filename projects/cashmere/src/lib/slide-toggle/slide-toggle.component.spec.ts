@@ -3,7 +3,7 @@ import {SlideToggleModule} from './slide-toggle.module';
 import {SlideToggleComponent} from './slide-toggle.component';
 import {Component, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {UntypedFormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
     template: `
@@ -39,7 +39,7 @@ export class SlideToggleTestComponent {
     `
 })
 export class SlideToggleFormComponent {
-    slideForm: UntypedFormControl = new UntypedFormControl( true );
+    slideForm: FormControl = new FormControl( true );
 }
 
 describe('SlideToggleComponent', () => {

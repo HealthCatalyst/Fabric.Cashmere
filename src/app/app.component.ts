@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, ViewChild, OnDestroy, ElementRef } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { SearchService } from './shared/search.service';
 import { HcPopComponent } from '@healthcatalyst/cashmere';
 import { NavigationEnd, Router } from '@angular/router';
@@ -19,7 +19,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     @ViewChild('searchInput') input: ElementRef;
 
     searchUpdated = false;
-    navSearchBar = new UntypedFormControl('');
+    navSearchBar = new FormControl('', {nonNullable: true});
     webActive = false;
     private unsubscribe = new Subject<void>();
 

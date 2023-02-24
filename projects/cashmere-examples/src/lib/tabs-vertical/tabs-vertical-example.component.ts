@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { TabSetComponent } from '@healthcatalyst/cashmere';
 
 /**
@@ -11,7 +11,7 @@ import { TabSetComponent } from '@healthcatalyst/cashmere';
     styleUrls: ['tabs-vertical-example.component.scss']
 })
 export class TabsVerticalExampleComponent {
-    readonly _tight = new UntypedFormControl(false);
+    readonly _tight = new FormControl(false, {nonNullable: true});
 
     @ViewChild('nestedTabs')
     nestedTabs: TabSetComponent;

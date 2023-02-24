@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 /**
  * @title Single Slider
@@ -11,7 +11,7 @@ import { UntypedFormControl } from '@angular/forms';
     styleUrls: ['slider-single-example.component.scss']
 })
 export class SliderSingleExampleComponent {
-    sliderControl: UntypedFormControl = new UntypedFormControl(100);
+    sliderControl: FormControl = new FormControl(100);
     options: Options = {
         showSelectionBar: true,
         floor: 0,

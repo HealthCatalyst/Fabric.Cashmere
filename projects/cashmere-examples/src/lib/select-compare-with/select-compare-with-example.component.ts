@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 interface Topping {
     id: number;
@@ -16,7 +16,7 @@ interface Topping {
     styleUrls: ['select-compare-with-example.component.scss']
 })
 export class SelectCompareWithExampleComponent implements OnInit {
-    pizzaToppingForm: UntypedFormGroup;
+    pizzaToppingForm: FormGroup;
     toppings: Array<Topping> = [
         {id: 1, name: 'Pepperoni', price: "$0.59"},
         {id: 2, name: 'Olives', price: "$0.79"},
@@ -25,7 +25,7 @@ export class SelectCompareWithExampleComponent implements OnInit {
         {id: 5, name: 'Chicken', price: "$0.99"},
     ];
 
-    constructor(private formBuilder: UntypedFormBuilder) { }
+    constructor(private formBuilder: FormBuilder) { }
 
     public ngOnInit(): void {
         this.pizzaToppingForm = this.formBuilder.group({

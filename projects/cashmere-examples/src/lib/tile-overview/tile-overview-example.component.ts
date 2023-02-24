@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 /**
  * @title Tile overview
@@ -10,5 +10,5 @@ import { UntypedFormControl } from '@angular/forms';
     styleUrls: ['tile-overview-example.component.scss']
 })
 export class TileOverviewExampleComponent {
-    headerControl = new UntypedFormControl('blue');
+    headerControl = new FormControl('blue', {nonNullable: true});
 }

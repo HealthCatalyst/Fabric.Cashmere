@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 /**
  * @title Tight Form Field Elements
@@ -10,8 +10,8 @@ import {UntypedFormControl} from '@angular/forms';
     styleUrls: ['form-field-tight-example.component.scss']
 })
 export class FormFieldTightExampleComponent {
-    selectControl = new UntypedFormControl('daily');
-    inputControl = new UntypedFormControl('');
-    radioControl = new UntypedFormControl('SM');
-    checkControl = new UntypedFormControl('');
+    selectControl = new FormControl('daily', {nonNullable: true});
+    inputControl = new FormControl('', {nonNullable: true});
+    radioControl = new FormControl('SM', {nonNullable: true});
+    checkControl = new FormControl('', {nonNullable: true});
 }

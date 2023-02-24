@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { TabChangeEvent } from '@healthcatalyst/cashmere';
 import { Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
@@ -7,12 +7,11 @@ import { map, takeUntil } from 'rxjs/operators';
 @Component({
     selector: 'hc-selected-tab-input-example',
     templateUrl: 'selected-tab-input-example.component.html',
-    // TODO: delete the SCSS file if you don't need it in the example
     styleUrls: ['selected-tab-input-example.component.scss']
 })
 export class SelectedTabInputExampleComponent implements OnInit, OnDestroy {
 
-    tabSelected = new UntypedFormControl(1);
+    tabSelected = new FormControl(1);
     currentSelected = 1;
     unsubscribe = new Subject<void>();
 
