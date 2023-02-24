@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import {ChangeDetectorRef, Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { HcPopoverAnchorDirective, MeasurableComponent, MeasurableService } from '@healthcatalyst/cashmere';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -31,17 +31,8 @@ interface ButtonData {
         ])
     ]
 })
-export class MeasurableVerticalExampleComponent {
-    buttons: ButtonData[] = [
-        {
-            key: 'button1',
-            text: 'Button 1'
-        },
-        {
-            key: 'button2',
-            text: 'Button 2'
-        }
-    ];
+export class MeasurableVerticalExampleComponent implements AfterViewInit, OnDestroy {
+    buttons: ButtonData[] = [];
 
     moreButtons: ButtonData[] = [];
     moreSelected = false;
@@ -52,7 +43,7 @@ export class MeasurableVerticalExampleComponent {
 
     private unsubscribe$ = new Subject<void>();
 
-    private currentId = 3;
+    private currentId = 1;
 
     @ViewChildren(MeasurableComponent)
     buttonComponents: QueryList<MeasurableComponent>;
@@ -63,12 +54,7 @@ export class MeasurableVerticalExampleComponent {
     @ViewChild('buttonContainer')
     containerRef: ElementRef;
 
-    @HostListener('window:load')
-    setupButtons(): void {
-        setTimeout(() => {
-            this.refreshButtons();
-        });
-
+    ngAfterViewInit(): void {
         this.buttonComponents.changes.pipe(
             takeUntil(this.unsubscribe$)
         ).subscribe(() => this.refreshButtons());
