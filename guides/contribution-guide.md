@@ -14,14 +14,14 @@ We would love for you to contribute to Cashmere! Follow the instructions below t
 
 ##### Setup Environment
 
-1.  [Install Node 14 and NPM 6](https://nodejs.org/en/blog/release/v14.19.0/). You may experience some challenges getting your Cashmere development environment set up with newer versions of Node, including the latest LTS. See notes below for an alternative way to install and use Node 14.
+1.  [Install Node 16 and NPM 8](https://nodejs.org/en/blog/release/v16.19.1/). We currently build and test Cashmere with the Node 16 LTS release (codename "Gallium").
 2.  Fork the `@healthcatalyst/cashmere` repo.
 3.  Clone your fork. Recommendation: name your git remotes `upstream` for `@healthcatalyst/cashmere`
 4.  From the root of the project, run `npm install`
 5.  Running `npm run build` will build the entire project.
 6.  `npm start` will serve the default project which is `user-guide` (the documentation site)
 
-Alternatively, you may want to consider using [Node Version Manager](https://github.com/nvm-sh/nvm) (`nvm`) to install and manage Node 14. Node 14 can be installed via `nvm` by running the command `nvm install --lts=fermium`.
+You may want to consider using [Node Version Manager](https://github.com/nvm-sh/nvm) (`nvm`) to install and manage Node 16. Node 16 can be installed via `nvm` by running the command `nvm install --lts=gallium`.
 
 :::
 
