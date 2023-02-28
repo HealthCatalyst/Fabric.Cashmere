@@ -179,7 +179,7 @@ export class TabSetComponent implements AfterContentInit {
         const selectedChanged$ = this._selectedTabSubject.pipe(distinctUntilChanged(),filter(nextTab => nextTab !== this.selectedTab));
         selectedChanged$.pipe(takeUntil(this.unsubscribe)).subscribe(selectedTab => {
             setTimeout(() => {
-                this.selectTab(selectedTab, false, false);
+                this.selectTab(selectedTab, false);
                 this.changeDetector.detectChanges();
             });
         });
@@ -422,7 +422,7 @@ export class TabSetComponent implements AfterContentInit {
 
     /** Sets the currently selected tab by either its numerical index or `TabComponent` object.
      * Passing a value of -1 or a hidden tab will deselect all tabs in the set. */
-    selectTab(tab: number | TabComponent, shouldEmit = true, scrollIntoView = true): void {
+    selectTab(tab: number | TabComponent, shouldEmit = true): void {
         this._selectedTab = tab;
         const activeTab = typeof tab === 'number' ? this._tabs.toArray()[tab] : tab;
         if ( tab === -1 || activeTab._hideOverride ) {
@@ -442,11 +442,11 @@ export class TabSetComponent implements AfterContentInit {
                 const routeArray = Array.isArray(activeTab.routerLink) ? activeTab.routerLink : [activeTab.routerLink];
                 this.router.navigate(routeArray, {relativeTo: this.route, queryParams: activeTab.queryParams});
             }
-            this._setActive(activeTab, shouldEmit, scrollIntoView);
+            this._setActive(activeTab, shouldEmit);
         }
     }
 
-    _setActive(tab: TabComponent, shouldEmit = true, scrollIntoView = true): void {
+    _setActive(tab: TabComponent, shouldEmit = true): void {
         let activeIndex = 0;
         this._tabs.toArray().forEach((t, index) => {
             t._active = false;
@@ -459,7 +459,7 @@ export class TabSetComponent implements AfterContentInit {
         this._routerDeselected = false;
 
         // For horizontal tabs with arrows overflow, scroll the selected tab into view if it's outside the scroll area
-        if ( this.overflowStyle === 'arrows' && this.direction === 'horizontal' && this._collapse && scrollIntoView ) {
+        if ( this.overflowStyle === 'arrows' && this.direction === 'horizontal' && this._collapse ) {
             tab.el.nativeElement.scrollIntoView({ block: 'nearest' });
         }
 
