@@ -1,42 +1,21 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TabChangeEvent } from '@healthcatalyst/cashmere';
-import { Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'hc-selected-tab-input-example',
     templateUrl: 'selected-tab-input-example.component.html',
-    // TODO: delete the SCSS file if you don't need it in the example
     styleUrls: ['selected-tab-input-example.component.scss']
 })
-export class SelectedTabInputExampleComponent implements OnInit, OnDestroy {
-
-    tabSelected = new FormControl(1);
-    currentSelected = 1;
-    unsubscribe = new Subject<void>();
+export class SelectedTabInputExampleComponent {
+    tabSelected = new FormControl(2);
+    currentSelected = 2;
 
     selectionChanged(event: TabChangeEvent): void {
         this.tabSelected.setValue(event.index);
     }
 
-    ngOnInit(): void {
-        this.tabSelected.valueChanges.pipe(
-            map(value => {
-                if (value) {
-                    return Number(value);
-                }
-
-                return 0;
-            }),
-            takeUntil(this.unsubscribe)
-        ).subscribe(value => {
-            this.currentSelected = value;
-        });
-    }
-
-    ngOnDestroy(): void {
-        this.unsubscribe.next();
-        this.unsubscribe.complete();
+    controlChanged(): void {
+        this.currentSelected = Number(this.tabSelected.value);
     }
 }

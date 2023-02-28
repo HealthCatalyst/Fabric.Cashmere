@@ -14,7 +14,7 @@ import type {QueryList} from '@angular/core';
 import {EventEmitter, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subject, interval, fromEvent, BehaviorSubject, Subscription} from 'rxjs';
+import {Subject, interval, fromEvent, Subscription} from 'rxjs';
 import {distinctUntilChanged, filter, take, takeUntil} from 'rxjs/operators';
 import {parseBooleanAttribute} from '../../util';
 import {HcPopoverAnchorDirective} from '../../pop';
@@ -72,7 +72,7 @@ export class TabSetComponent implements AfterContentInit {
     private _tabsTotalWidth = 0;
     public _collapse = false;
     public _moreList: Array<TabComponent> = [];
-    private _selectedTabSubject = new BehaviorSubject<number | TabComponent>(0);
+    private _selectedTabSubject = new Subject<number | TabComponent>();
     private unsubscribe = new Subject<void>();
 
     /** The content to be displayed for the currently selected tab.
@@ -117,7 +117,8 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     /** Zero-based numerical value specifying which tab to select by default, setting to `none` means no tab
-     * will be immediately selected. Defaults to 0 (the first tab). */
+     * will be immediately selected. Defaults to 0 (the first tab).
+     * For tabs using routing, the default tab will be set by the url and use this value as a fallback if no tab routerLinks match the url. */
     @Input()
     get defaultTab(): string | number {
         return this._defaultTab;
@@ -178,13 +179,26 @@ export class TabSetComponent implements AfterContentInit {
         const selectedChanged$ = this._selectedTabSubject.pipe(distinctUntilChanged(),filter(nextTab => nextTab !== this.selectedTab));
         selectedChanged$.pipe(takeUntil(this.unsubscribe)).subscribe(selectedTab => {
             setTimeout(() => {
-                this.selectTab(selectedTab, false, false);
+                this.selectTab(selectedTab, false);
                 this.changeDetector.detectChanges();
             });
         });
 
         this.setUpTabs(false);
         this.refreshTabWidths();
+
+        // If using routing and routerLinkActive hasn't set any active tabs, default to the first route
+        if ( this._routerEnabled ) {
+            setTimeout(() => {
+                const noActiveTabs = !this._tabs.some(t => t._active);
+                if ( this.defaultTab !== 'none' && noActiveTabs ) {
+                    const tabArray = this._tabs.toArray();
+                    if ( tabArray[Number(this.defaultTab)] ) {
+                        this.selectTab( tabArray[Number(this.defaultTab)] );
+                    }
+                }
+            });
+        }
 
         // If links are added dynamically, recheck the tab widths
         this._tabs.changes.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
@@ -362,10 +376,12 @@ export class TabSetComponent implements AfterContentInit {
             throw tabComponentMissing();
         }
 
-        if (this.defaultTab !== 'none' && !changeEvent) {
+        this.checkForRouterUse();
+
+        if (!this._routerEnabled && this.defaultTab !== 'none' && !changeEvent) {
             this.defaultToFirstTab();
         }
-        this.checkForRouterUse();
+
         this.setTabDirection();
         this.subscribeToTabEvents();
     }
@@ -402,6 +418,14 @@ export class TabSetComponent implements AfterContentInit {
         this._stopTabSubscriptionSubject.next();
         this._tabs.forEach(t => t.tabClick.pipe(takeUntil(this._stopTabSubscriptionSubject)).subscribe(() => this._setActive(t)));
 
+        // If using tabs with routing, listen for changes to the routerLinkActive state
+        if ( this._routerEnabled ) {
+            this._tabs.forEach(t => t._routerActiveChange.pipe(takeUntil(this._stopTabSubscriptionSubject)).subscribe(tab => {
+                this._selectedTab = tab;
+                this._setActive(tab, false);
+            }));
+        }
+
         // Watch for changes to a tab's [hidden] param to remove it from overflow calculations
         this._tabs.forEach(t => t._tabHideChange.pipe(takeUntil(this._stopTabSubscriptionSubject)).subscribe(() => {
             if ( t.hidden && t._active ) {
@@ -414,12 +438,12 @@ export class TabSetComponent implements AfterContentInit {
 
             this.refreshTabWidths();
             this.changeDetector.detectChanges();
-    }));
+        }));
     }
 
     /** Sets the currently selected tab by either its numerical index or `TabComponent` object.
      * Passing a value of -1 or a hidden tab will deselect all tabs in the set. */
-    selectTab(tab: number | TabComponent, shouldEmit = true, scrollIntoView = true): void {
+    selectTab(tab: number | TabComponent, shouldEmit = true): void {
         this._selectedTab = tab;
         const activeTab = typeof tab === 'number' ? this._tabs.toArray()[tab] : tab;
         if ( tab === -1 || activeTab._hideOverride ) {
@@ -436,13 +460,14 @@ export class TabSetComponent implements AfterContentInit {
             }
         } else {
             if ( this._routerEnabled ) {
-                this.router.navigate([activeTab.routerLink], {relativeTo: this.route});
+                const routeArray = Array.isArray(activeTab.routerLink) ? activeTab.routerLink : [activeTab.routerLink];
+                this.router.navigate(routeArray, {relativeTo: this.route, queryParams: activeTab.queryParams});
             }
-            this._setActive(activeTab, shouldEmit, scrollIntoView);
+            this._setActive(activeTab, shouldEmit);
         }
     }
 
-    _setActive(tab: TabComponent, shouldEmit = true, scrollIntoView = true): void {
+    _setActive(tab: TabComponent, shouldEmit = true): void {
         let activeIndex = 0;
         this._tabs.toArray().forEach((t, index) => {
             t._active = false;
@@ -455,7 +480,7 @@ export class TabSetComponent implements AfterContentInit {
         this._routerDeselected = false;
 
         // For horizontal tabs with arrows overflow, scroll the selected tab into view if it's outside the scroll area
-        if ( this.overflowStyle === 'arrows' && this.direction === 'horizontal' && this._collapse && scrollIntoView ) {
+        if ( this.overflowStyle === 'arrows' && this.direction === 'horizontal' && this._collapse ) {
             tab.el.nativeElement.scrollIntoView({ block: 'nearest' });
         }
 
@@ -476,7 +501,10 @@ export class TabSetComponent implements AfterContentInit {
             // is triggered
             const tabArray = this._tabs.toArray();
             if (tabArray[Number(this.defaultTab)]) {
-                setTimeout(() => this._setActive(tabArray[Number(this.defaultTab)]));
+                setTimeout(() => {
+                    this._selectedTab = tabArray[Number(this.defaultTab)];
+                    this._setActive(tabArray[Number(this.defaultTab)]);
+                });
             } else {
                 invalidDefaultTab(this.defaultTab);
             }
@@ -492,37 +520,7 @@ export class TabSetComponent implements AfterContentInit {
 
         if (countUsingRouter === this._tabs.length) {
             this._routerEnabled = true;
-            if (this._defaultTab !== 'none') {
-                this.defaultToFirstRoute();
-            }
         }
-    }
-
-    private defaultToFirstRoute() {
-        const foundRoute = this._tabs
-            .map(tab => tab.routerLink)
-            .map(routerLink => this.mapRouterLinkToString(routerLink))
-            .find(routerLink => {
-                const currentRoute = this.router.url;
-                return currentRoute === routerLink || currentRoute.indexOf(`${routerLink}/`) > -1;
-            });
-
-        if (foundRoute) {
-            return;
-        }
-
-        const tabArray = this._tabs.toArray();
-        if (tabArray[Number(this.defaultTab)]) {
-            const firstRoute = this.mapRouterLinkToString(tabArray[Number(this.defaultTab)].routerLink);
-            this.router.navigate([firstRoute], {relativeTo: this.route});
-        }
-    }
-
-    private mapRouterLinkToString(routerLink: string | string[]): string {
-        if (routerLink instanceof Array) {
-            routerLink = routerLink.join('/').replace('//', '/');
-        }
-        return routerLink;
     }
 
     ngOnDestroy(): void {
