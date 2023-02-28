@@ -190,12 +190,7 @@ export class TabSetComponent implements AfterContentInit {
         // If using routing and routerLinkActive hasn't set any active tabs, default to the first route
         if ( this._routerEnabled ) {
             setTimeout(() => {
-                let noActiveTabs = true;
-                this._tabs.forEach(t => {
-                    if ( t._active ) {
-                        noActiveTabs = false;
-                    }
-                });
+                const noActiveTabs = !this._tabs.some(t => t._active);
                 if ( this.defaultTab !== 'none' && noActiveTabs ) {
                     const tabArray = this._tabs.toArray();
                     if ( tabArray[Number(this.defaultTab)] ) {
