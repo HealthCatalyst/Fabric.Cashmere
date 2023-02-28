@@ -14,7 +14,7 @@ import type {QueryList} from '@angular/core';
 import {EventEmitter, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subject, interval, fromEvent, BehaviorSubject, Subscription} from 'rxjs';
+import {Subject, interval, fromEvent, Subscription} from 'rxjs';
 import {distinctUntilChanged, filter, take, takeUntil} from 'rxjs/operators';
 import {parseBooleanAttribute} from '../../util';
 import {HcPopoverAnchorDirective} from '../../pop';
@@ -72,7 +72,7 @@ export class TabSetComponent implements AfterContentInit {
     private _tabsTotalWidth = 0;
     public _collapse = false;
     public _moreList: Array<TabComponent> = [];
-    private _selectedTabSubject = new BehaviorSubject<number | TabComponent>(0);
+    private _selectedTabSubject = new Subject<number | TabComponent>();
     private unsubscribe = new Subject<void>();
 
     /** The content to be displayed for the currently selected tab.
@@ -117,7 +117,8 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     /** Zero-based numerical value specifying which tab to select by default, setting to `none` means no tab
-     * will be immediately selected. Defaults to 0 (the first tab). */
+     * will be immediately selected. Defaults to 0 (the first tab).
+     * For tabs using routing, the default tab will be set by the url and use this value as a fallback if no tab routerLinks match the url. */
     @Input()
     get defaultTab(): string | number {
         return this._defaultTab;
@@ -436,7 +437,8 @@ export class TabSetComponent implements AfterContentInit {
             }
         } else {
             if ( this._routerEnabled ) {
-                this.router.navigate([activeTab.routerLink], {relativeTo: this.route});
+                const routeArray = Array.isArray(activeTab.routerLink) ? activeTab.routerLink : [activeTab.routerLink];
+                this.router.navigate(routeArray, {relativeTo: this.route, queryParams: activeTab.queryParams});
             }
             this._setActive(activeTab, shouldEmit, scrollIntoView);
         }
@@ -476,7 +478,10 @@ export class TabSetComponent implements AfterContentInit {
             // is triggered
             const tabArray = this._tabs.toArray();
             if (tabArray[Number(this.defaultTab)]) {
-                setTimeout(() => this._setActive(tabArray[Number(this.defaultTab)]));
+                setTimeout(() => {
+                    this._selectedTab = tabArray[Number(this.defaultTab)];
+                    this._setActive(tabArray[Number(this.defaultTab)]);
+                });
             } else {
                 invalidDefaultTab(this.defaultTab);
             }
@@ -499,22 +504,28 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     private defaultToFirstRoute() {
-        const foundRoute = this._tabs
-            .map(tab => tab.routerLink)
-            .map(routerLink => this.mapRouterLinkToString(routerLink))
-            .find(routerLink => {
-                const currentRoute = this.router.url;
-                return currentRoute === routerLink || currentRoute.indexOf(`${routerLink}/`) > -1;
-            });
+        const tabArray = this._tabs.toArray();
+        let routeTab = -1;
 
-        if (foundRoute) {
+        for ( let i=0; i < tabArray.length; i++ ) {
+            const routerLink = this.mapRouterLinkToString(tabArray[i].routerLink);
+            const currentRoute = this.router.url.split("?")[0];
+            if( currentRoute === routerLink || currentRoute.indexOf(`${routerLink}/`) > -1 ) {
+                routeTab = i;
+                break;
+            }
+        }
+
+        if ( routeTab >= 0 ) {
+            this._selectedTab = tabArray[routeTab];
             return;
         }
 
-        const tabArray = this._tabs.toArray();
         if (tabArray[Number(this.defaultTab)]) {
-            const firstRoute = this.mapRouterLinkToString(tabArray[Number(this.defaultTab)].routerLink);
-            this.router.navigate([firstRoute], {relativeTo: this.route});
+            const firstRouteLink = tabArray[Number(this.defaultTab)].routerLink;
+            const firstRouteArray = Array.isArray(firstRouteLink) ? firstRouteLink : [firstRouteLink];
+            this._selectedTab = tabArray[Number(this.defaultTab)];
+            this.router.navigate(firstRouteArray, {relativeTo: this.route, queryParams: tabArray[Number(this.defaultTab)].queryParams});
         }
     }
 
