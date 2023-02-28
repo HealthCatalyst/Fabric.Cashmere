@@ -12,7 +12,6 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 })
 export class GuidesComponent implements OnDestroy {
     thisPage = '';
-    queryTab = 0;
 
     private unsubscribe = new Subject<void>();
     private appInsights;
@@ -28,20 +27,6 @@ export class GuidesComponent implements OnDestroy {
                         this.appInsights.logPageView(this.thisPage, event.urlAfterRedirects);
                         break;
                     }
-                }
-            }
-        });
-
-        //  Gets the search parameter value from the url
-        this.route.queryParams.subscribe(() => {
-            let currentPath = this.router.url;
-            currentPath = currentPath.replace( '/web/guides/', '' );
-            const pathArray = currentPath.split( '?' );
-
-            for ( let i = 0; i < this.guidesService.guides.length; i++ ) {
-                if ( pathArray[0] === this.guidesService.guides[i].route ) {
-                    this.queryTab = i;
-                    break;
                 }
             }
         });

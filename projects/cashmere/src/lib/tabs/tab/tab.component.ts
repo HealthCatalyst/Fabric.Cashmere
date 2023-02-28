@@ -13,6 +13,7 @@ import {parseBooleanAttribute} from '../../util';
 })
 export class TabComponent implements AfterContentInit {
     @HostBinding('class.hc-tab') _hostClass = true;
+    @HostBinding('class.hc-tab-active') _active = false;
 
     /** Plain text title of the tab; for HTML support include a `hc-tab-title` element */
     @Input()
@@ -55,6 +56,9 @@ export class TabComponent implements AfterContentInit {
     @Output()
     _tabHideChange: EventEmitter<Event> = new EventEmitter();
 
+    @Output()
+    _routerActiveChange: EventEmitter<TabComponent> = new EventEmitter();
+
     /** Emits when this tab is selected; use instead of `(click)` for click binding    */
     @Output()
     tabClick: EventEmitter<Event> = new EventEmitter();
@@ -68,7 +72,6 @@ export class TabComponent implements AfterContentInit {
     tabContent: TemplateRef<unknown>;
 
     _direction: string;
-    _active = false;
     _tight = false;
     _hidden = false;
     _htmlTitle: HcTabTitleComponent;
@@ -98,6 +101,13 @@ export class TabComponent implements AfterContentInit {
 
     _getWidth(): number {
         return this.el.nativeElement.scrollWidth;
+    }
+
+    // Listens for changes to routerLinkActive and reports to TabSet
+    _isActiveChange( state: boolean ): void {
+        if ( state ) {
+            this._routerActiveChange.emit(this);
+        }
     }
 
     /** Disable visibility of component from view */

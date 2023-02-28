@@ -1,6 +1,7 @@
 <div class="tab-demo">
     <hc-tab-set
         direction="horizontal"
+        defaultTab="2"
         [selectedTab]="currentSelected"
         (selectedTabChange)="selectionChanged($event)"
     >
@@ -24,7 +25,7 @@
 <div class="tab-select-container">
     <hc-form-field inline>
         <hc-label>Tab Selected:</hc-label>
-        <hc-select [formControl]="tabSelected">
+        <hc-select [formControl]="tabSelected" (change)="controlChanged()">
             <option value="0">First Tab</option>
             <option value="1">Second Tab</option>
             <option value="2">Third Tab</option>
