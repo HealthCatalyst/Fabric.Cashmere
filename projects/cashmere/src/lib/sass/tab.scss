@@ -14,6 +14,10 @@
     }
 }
 
+@mixin hc-tab-active() {
+    pointer-events: none;
+}
+
 @mixin hc-tab-vertical() {
     background-color: $white;
     color: $offblack;

@@ -187,6 +187,24 @@ export class TabSetComponent implements AfterContentInit {
         this.setUpTabs(false);
         this.refreshTabWidths();
 
+        // If using routing and routerLinkActive hasn't set any active tabs, default to the first route
+        if ( this._routerEnabled ) {
+            setTimeout(() => {
+                let noActiveTabs = true;
+                this._tabs.forEach(t => {
+                    if ( t._active ) {
+                        noActiveTabs = false;
+                    }
+                });
+                if ( this.defaultTab !== 'none' && noActiveTabs ) {
+                    const tabArray = this._tabs.toArray();
+                    if ( tabArray[Number(this.defaultTab)] ) {
+                        this.selectTab( tabArray[Number(this.defaultTab)] );
+                    }
+                }
+            });
+        }
+
         // If links are added dynamically, recheck the tab widths
         this._tabs.changes.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
             this.setUpTabs(true);
@@ -405,6 +423,14 @@ export class TabSetComponent implements AfterContentInit {
         this._stopTabSubscriptionSubject.next();
         this._tabs.forEach(t => t.tabClick.pipe(takeUntil(this._stopTabSubscriptionSubject)).subscribe(() => this._setActive(t)));
 
+        // If using tabs with routing, listen for changes to the routerLinkActive state
+        if ( this._routerEnabled ) {
+            this._tabs.forEach(t => t._routerActiveChange.pipe(takeUntil(this._stopTabSubscriptionSubject)).subscribe(tab => {
+                this._selectedTab = tab;
+                this._setActive(tab, false);
+            }));
+        }
+
         // Watch for changes to a tab's [hidden] param to remove it from overflow calculations
         this._tabs.forEach(t => t._tabHideChange.pipe(takeUntil(this._stopTabSubscriptionSubject)).subscribe(() => {
             if ( t.hidden && t._active ) {
@@ -417,7 +443,7 @@ export class TabSetComponent implements AfterContentInit {
 
             this.refreshTabWidths();
             this.changeDetector.detectChanges();
-    }));
+        }));
     }
 
     /** Sets the currently selected tab by either its numerical index or `TabComponent` object.
@@ -499,56 +525,7 @@ export class TabSetComponent implements AfterContentInit {
 
         if (countUsingRouter === this._tabs.length) {
             this._routerEnabled = true;
-            if (this._defaultTab !== 'none') {
-                this.defaultToFirstRoute();
-            }
         }
-    }
-
-    private defaultToFirstRoute() {
-        const tabArray = this._tabs.toArray();
-        let routeTab = -1;
-
-        // Determine if there is a routerLink in our tabset that matches the current route
-        for ( let i=0; i < tabArray.length; i++ ) {
-            const routerLink = this.mapRouterLinkToString(tabArray[i].routerLink);
-            const currentRoute = this.router.url.split("?")[0];
-            if( currentRoute === routerLink ) {
-                routeTab = i;
-                break;
-            }
-        }
-
-        // If there is a match, select that tab and make it active
-        if ( routeTab >= 0 ) {
-            this._selectedTab = tabArray[routeTab];
-            this._setActive( tabArray[routeTab] );
-            return;
-        }
-
-        // If there isn't a match, navigate to the route of the default tab
-        if (tabArray[Number(this.defaultTab)]) {
-            const firstRouteLink = tabArray[Number(this.defaultTab)].routerLink;
-            const firstRouteArray = Array.isArray(firstRouteLink) ? firstRouteLink : [firstRouteLink];
-            this._selectedTab = tabArray[Number(this.defaultTab)];
-            this.router.navigate(firstRouteArray, {relativeTo: this.route, queryParams: tabArray[Number(this.defaultTab)].queryParams});
-        }
-    }
-
-    private mapRouterLinkToString(routerLink: string | string[]): string {
-        // Combine url arrays
-        if (routerLink instanceof Array) {
-            routerLink = routerLink.join('/').replace('//', '/');
-        }
-        // Resolve relative urls
-        if ( !routerLink.startsWith('/') ) {
-            const currentRoute = this.router.url.split("?")[0];
-            const routeParts = currentRoute.split('/');
-            routeParts.shift();
-            routeParts.pop();
-            routerLink = '/' + routeParts.join('/') + '/' + routerLink;
-        }
-        return routerLink;
     }
 
     ngOnDestroy(): void {
