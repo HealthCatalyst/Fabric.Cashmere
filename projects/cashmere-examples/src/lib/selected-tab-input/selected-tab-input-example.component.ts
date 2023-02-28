@@ -8,7 +8,7 @@ import { TabChangeEvent } from '@healthcatalyst/cashmere';
     styleUrls: ['selected-tab-input-example.component.scss']
 })
 export class SelectedTabInputExampleComponent {
-    tabSelected = new FormControl(1);
+    tabSelected = new FormControl(2);
     currentSelected = 2;
 
     selectionChanged(event: TabChangeEvent): void {

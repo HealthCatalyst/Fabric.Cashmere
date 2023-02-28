@@ -363,10 +363,12 @@ export class TabSetComponent implements AfterContentInit {
             throw tabComponentMissing();
         }
 
-        if (this.defaultTab !== 'none' && !changeEvent) {
+        this.checkForRouterUse();
+
+        if (!this._routerEnabled && this.defaultTab !== 'none' && !changeEvent) {
             this.defaultToFirstTab();
         }
-        this.checkForRouterUse();
+
         this.setTabDirection();
         this.subscribeToTabEvents();
     }
@@ -507,20 +509,24 @@ export class TabSetComponent implements AfterContentInit {
         const tabArray = this._tabs.toArray();
         let routeTab = -1;
 
+        // Determine if there is a routerLink in our tabset that matches the current route
         for ( let i=0; i < tabArray.length; i++ ) {
             const routerLink = this.mapRouterLinkToString(tabArray[i].routerLink);
             const currentRoute = this.router.url.split("?")[0];
-            if( currentRoute === routerLink || currentRoute.indexOf(`${routerLink}/`) > -1 ) {
+            if( currentRoute === routerLink ) {
                 routeTab = i;
                 break;
             }
         }
 
+        // If there is a match, select that tab and make it active
         if ( routeTab >= 0 ) {
             this._selectedTab = tabArray[routeTab];
+            this._setActive( tabArray[routeTab] );
             return;
         }
 
+        // If there isn't a match, navigate to the route of the default tab
         if (tabArray[Number(this.defaultTab)]) {
             const firstRouteLink = tabArray[Number(this.defaultTab)].routerLink;
             const firstRouteArray = Array.isArray(firstRouteLink) ? firstRouteLink : [firstRouteLink];
@@ -530,8 +536,17 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     private mapRouterLinkToString(routerLink: string | string[]): string {
+        // Combine url arrays
         if (routerLink instanceof Array) {
             routerLink = routerLink.join('/').replace('//', '/');
+        }
+        // Resolve relative urls
+        if ( !routerLink.startsWith('/') ) {
+            const currentRoute = this.router.url.split("?")[0];
+            const routeParts = currentRoute.split('/');
+            routeParts.shift();
+            routeParts.pop();
+            routerLink = '/' + routeParts.join('/') + '/' + routerLink;
         }
         return routerLink;
     }

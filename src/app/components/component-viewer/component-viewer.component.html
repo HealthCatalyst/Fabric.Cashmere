@@ -3,7 +3,7 @@
     <div class="npm-package-code">
         <code *ngIf="docItem?.npmPackage">{{ docItem!.npmPackage }}</code>
     </div>
-    <hc-tab-set direction="horizontal" class="overflow-visible" [defaultTab]="startSection" *ngIf="docItem">
+    <hc-tab-set direction="horizontal" class="overflow-visible" *ngIf="docItem">
         <hc-tab *ngFor="let section of sections" [tabTitle]="section" [routerLink]="section.toLowerCase()"></hc-tab>
     </hc-tab-set>
     <hc-feedback-form></hc-feedback-form>
