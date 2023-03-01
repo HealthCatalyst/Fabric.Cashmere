@@ -12,11 +12,12 @@ Each tab is a button that contains a bookmark link to another sheet.
 
 <div style="text-align:center"><br>
 
-![Power BI Tabs](./assets/analytics/powerbi/pbi-tabs.png "Power BI Tabs")
+![Power BI Tabs](./assets/analytics/powerbi/pbi-subnavbar-tabs.png "Power BI Tabs")
 
 </div><br>
 
 :::
+
 
 :::
 
@@ -35,7 +36,7 @@ Formatting of button text is as follows:
 The positioning of the floating line objects (Tab Selected, and Tab Set Underline) must be set manually.
 The Tab Set Underline width should extend from the left edge of the first tab to the right edge of the Spacer in the Tab Set container.
 
-It's formatted as
+It's formatted as:
 - **Height**: 1px
 - **Background**: slate-gray-300 `#c0c5cc`
 The y position of Tab Set Underline should be equal to the bottom of a tab, minus the padding.
@@ -45,5 +46,37 @@ The width of the Tab Selected highlight should match the width of the selected t
 - **Height**: 4px
 - **Background**: blue `#00aeff`
 For the y position, subtract 2 from the y position of the Tab Set Underline calculated above.
+
+:::
+
+
+:::
+
+##### Tab suggestions
+
+Here are some examples of the preformatted tabs you can find in the PowerBi template file for you to use. 
+
+Three buttons tab.
+<div style="text-align:center"><br>
+
+![Power BI Tabs](./assets/analytics/powerbi/pbi-tabs.png "Power BI Tabs")
+
+</div><br>
+
+A minimal string tab.
+
+<div style="text-align:center"><br>
+
+![Power BI Tabs](./assets/analytics/powerbi/pbi-two-tabs-minimal.png "Power BI Tabs")
+
+</div><br>
+
+Different states of a two-tab component.
+
+<div style="text-align:center"><br>
+
+![Power BI Tabs](./assets/analytics/powerbi/pbi-two-tabs-blue.png "Power BI Tabs")
+
+</div><br>
 
 :::
