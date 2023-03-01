@@ -54,7 +54,7 @@ For the y position, subtract 2 from the y position of the Tab Set Underline calc
 
 ##### Tab suggestions
 
-Here are some examples of the preformatted tabs you can find in the PowerBi template file for you to use. 
+Here are some examples of the preformatted tabs you can find in the PowerBi template file to use. 
 
 Three buttons tab.
 <div style="text-align:center"><br>
