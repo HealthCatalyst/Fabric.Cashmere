@@ -20,7 +20,7 @@
 
             </div>
 
-            <table hc-table *ngIf="termList$ | async; else emptyList" [dataSource]="dataSource">
+            <table hc-table [hidden]="termsLoading" [dataSource]="dataSource">
                 <!-- Term Column -->
                 <ng-container hcColumnDef="term">
                     <th hc-header-cell style="width: 15%;" *hcHeaderCellDef>Term</th>
@@ -29,7 +29,7 @@
 
                 <!-- Usage Column -->
                 <ng-container hcColumnDef="usage">
-                    <th hc-header-cell style="" *hcHeaderCellDef>Definition or Guideline</th>
+                    <th hc-header-cell *hcHeaderCellDef>Definition or Guideline</th>
                     <td hc-cell *hcCellDef="let usageItem"><span class="term-field" [innerHTML]='usageItem.TermUsage'></span></td>
                 </ng-container>
 
@@ -51,11 +51,9 @@
                 <tr hc-row *hcRowDef="let row; columns: displayedColumns"></tr>
             </table>
 
-            <ng-template #emptyList>
-                <div class="loading-message">
-                    <hc-progress-spinner color="purple" diameter="75"></hc-progress-spinner>
-                </div>
-            </ng-template>
+            <div *ngIf="termsLoading" class="loading-message">
+                <hc-progress-spinner color="purple" diameter="75"></hc-progress-spinner>
+            </div>
 
             <hc-pagination [length]="length" [(pageNumber)]="pageNumber" pageSize="10" [hidePageSize]="false" [pageSizeOptions]="pageOpts"></hc-pagination>
         </div>
