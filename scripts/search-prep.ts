@@ -194,14 +194,14 @@ function readFoundationsFiles() {
                 });
             });
 
-            readContentFiles();
+            readAdditionalStylesFiles();
     });
 }
 
-// Index the content section which is a combination of markdown and components
-function readContentFiles() {
-    // Start by parsing the main content markdown files
-    glob('guides/content/*.md', function (er, files) {
+// Index the web app additional styles section which is a combination of markdown and components
+function readAdditionalStylesFiles() {
+    // Start by parsing the style markdown files
+    glob('guides/styles/*.md', function (er, files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -246,11 +246,11 @@ function readContentFiles() {
                         title: changeCase.titleCase(sectionTitle) + ' - ' + changeCase.titleCase(mapping.basename),
                         // Remove all the markdown from the file content and set it so we can search through it
                         content: mdGetContent(element),
-                        link: 'content/' + mapping.basename,
-                        category: 'content',
+                        link: 'web/styles/' + mapping.basename,
+                        category: 'components',
                         // Set displayName to basename for display purposes
                         displayName: mapping.basename,
-                        type: 'doc',
+                        type: 'example',
                         section: changeCase.paramCase(sectionTitle)
                     });
                     // if the content is empty don't push it
@@ -261,8 +261,55 @@ function readContentFiles() {
             });
     });
 
-    // Then parse the user persona markdown files
-    glob('guides/content/personas/*.md', function (er, files) {
+    // Then parse the styles components
+    glob('src/app/styles/*/*.html', function (er, files) {
+        files
+            .map(file => {
+                const basename = path.basename(file, path.extname(file));
+                return {
+                    path: file,
+                    basename: basename,
+                    outFile: basename
+                };
+            })
+            .forEach(mapping => {
+                const fileContent = fs.readFileSync(mapping.path, 'utf8');
+                const pathArray = mapping.path.split('/');
+                const parentName = pathArray[ pathArray.length - 2 ];
+                let title = mapping.basename.split('.')[0];
+                title = title.replace( /-/g, ' ' );
+
+                // Split up the file content by header-link anchors
+                const sections = fileContent.split('<h5 id="');
+                sections.forEach((element, index) => {
+                    if ( index > 0 ) {
+                        const quoteIndex = element.indexOf('"');
+                        title = element.substr(0, quoteIndex);
+                    }
+
+                    const sectionObj = object = ({
+                        id: mapping.basename.split('.')[0],
+                        // Set the title to the title with propare capitalization
+                        title: changeCase.titleCase(title) + ' - ' + changeCase.titleCase(parentName.replace(/-/g, ' ')),
+                        content: exampleGetContent(element),
+                        link: 'web/styles/' + parentName,
+                        category: 'components',
+                        displayName: title,
+                        type: 'example',
+                        section: changeCase.paramCase(title)
+                    });
+                    searchArray.push(sectionObj);
+                });
+            });
+
+            readContentFiles();
+    });
+}
+
+// Index the content section which is a combination of markdown and components
+function readContentFiles() {
+    // Start by parsing the markdown files
+    glob('{guides/content/*.md,guides/content/*/*.md}', function (er, files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -289,18 +336,39 @@ function readContentFiles() {
                     });
                 }
 
-                const sectionObj = object = ({
-                    id: changeCase.snakeCase(mapping.basename),
-                    title: changeCase.titleCase(mapping.basename),
-                    content: mdGetContent(fileContent),
-                    link: 'content/personas/' + mapping.basename,
-                    category: 'content',
-                    displayName: mapping.basename,
-                    type: 'persona',
-                    section: changeCase.paramCase(mapping.basename)
+                // Split up the file content by title
+                const sections = fileContent.split(guideSectionRegex);
+                sections.forEach((element, index) => {
+                    let sectionTitle: string;
+                    if ( index > 0 ) {
+                        // Set the sectionTitle to the first index of the found array if null set to default path
+                        sectionTitle = found[index - 1] ? found[index - 1] : changeCase.noCase(mapping.path);
+                    } else {
+                        // The part element of a guide is its title which needs to be parsed differently
+                        const endOfLine = element.indexOf( '\n' );
+                        sectionTitle = element.substr( 2, endOfLine - 2);
+                    }
+                    const pathParts = mapping.path.split('/');
+                    pathParts.shift();
+                    pathParts[pathParts.length - 1] = mapping.basename;
+                    const sectionObj = object = ({
+                        // Set id to the sectionTitle in snake case
+                        id: changeCase.snakeCase(sectionTitle),
+                        title: changeCase.titleCase(sectionTitle) + ' - ' + changeCase.titleCase(mapping.basename),
+                        // Remove all the markdown from the file content and set it so we can search through it
+                        content: mdGetContent(element),
+                        link: pathParts.join('/'),
+                        category: 'content',
+                        // Set displayName to basename for display purposes
+                        displayName: mapping.basename,
+                        type: 'doc',
+                        section: changeCase.paramCase(sectionTitle)
+                    });
+                    // if the content is empty don't push it
+                    if (sectionObj["content"] !== "") {
+                        searchArray.push(sectionObj);
+                    }
                 });
-
-                searchArray.push(sectionObj);
             });
     });
 

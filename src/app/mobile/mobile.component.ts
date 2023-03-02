@@ -11,7 +11,6 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 })
 export class MobileDevComponent implements OnDestroy {
     thisPage = '';
-    queryTab = 0;
     selectOptions: Array<Data> = [];
     categories: Array<string> = [];
     private unsubscribe = new Subject<void>();
@@ -47,22 +46,6 @@ export class MobileDevComponent implements OnDestroy {
                 }
             }
         }
-
-        //  Gets the search parameter value from the url
-        this.activatedRoute.queryParams.subscribe(() => {
-            let currentPath = this.router.url;
-            currentPath = currentPath.replace( '/web/mobile/', '' );
-            const pathArray = currentPath.split( '?' );
-
-            if (this.selectOptions.length) {
-                for ( let i = 0; i < this.selectOptions.length; i++ ) {
-                    if (pathArray[0] === this.selectOptions[i].path) {
-                        this.queryTab = i;
-                        break;
-                    }
-                }
-            }
-        });
     }
 
     // Handle changes to the select component and navigate

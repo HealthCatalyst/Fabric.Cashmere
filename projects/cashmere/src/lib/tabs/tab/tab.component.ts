@@ -13,6 +13,7 @@ import {parseBooleanAttribute} from '../../util';
 })
 export class TabComponent implements AfterContentInit {
     @HostBinding('class.hc-tab') _hostClass = true;
+    @HostBinding('class.hc-tab-active') _active = false;
 
     /** Plain text title of the tab; for HTML support include a `hc-tab-title` element */
     @Input()
@@ -42,10 +43,10 @@ export class TabComponent implements AfterContentInit {
     }
     set hidden( val: string | boolean ) {
         if ( parseBooleanAttribute( val ) ) {
-            this.hide();
+            this._hide();
             this._hideOverride = true;
         } else {
-            this.show();
+            this._show();
             this._hideOverride = false;
         }
         this._tabHideChange.emit();
@@ -54,6 +55,9 @@ export class TabComponent implements AfterContentInit {
 
     @Output()
     _tabHideChange: EventEmitter<Event> = new EventEmitter();
+
+    @Output()
+    _routerActiveChange: EventEmitter<TabComponent> = new EventEmitter();
 
     /** Emits when this tab is selected; use instead of `(click)` for click binding    */
     @Output()
@@ -68,7 +72,6 @@ export class TabComponent implements AfterContentInit {
     tabContent: TemplateRef<unknown>;
 
     _direction: string;
-    _active = false;
     _tight = false;
     _hidden = false;
     _htmlTitle: HcTabTitleComponent;
@@ -76,7 +79,7 @@ export class TabComponent implements AfterContentInit {
     @ContentChildren(HcTabTitleComponent)
     _tabTitle: QueryList<HcTabTitleComponent>;
 
-    constructor( public el: ElementRef ) {}
+    constructor( public _el: ElementRef ) {}
 
     ngAfterContentInit(): void {
         if (this._tabTitle) {
@@ -85,10 +88,10 @@ export class TabComponent implements AfterContentInit {
     }
 
     @HostListener('keydown.enter', ['$event']) _onEnter($event: KeyboardEvent): void {
-        this.tabClickHandler($event);
+        this._tabClickHandler($event);
     }
 
-    tabClickHandler(event: Event): void {
+    _tabClickHandler(event: Event): void {
         // Prevent a tab anchor click from also calling the router on the host element
         event.preventDefault();
         event.stopPropagation();
@@ -97,17 +100,24 @@ export class TabComponent implements AfterContentInit {
     }
 
     _getWidth(): number {
-        return this.el.nativeElement.scrollWidth;
+        return this._el.nativeElement.scrollWidth;
     }
 
-    /** Disable visibility of component from view */
-    hide(): void {
+    // Listens for changes to routerLinkActive and reports to TabSet
+    _isActiveChange( state: boolean ): void {
+        if ( state ) {
+            this._routerActiveChange.emit(this);
+        }
+    }
+
+    /** Used by the overflow functionality to hide the tab */
+    _hide(): void {
         this._hidden = true;
         this._hostIndex = -1;
     }
 
-    /** Enable visibility of component from view */
-    show(): void {
+    /** Used by the overflow functionality to show the tab */
+    _show(): void {
         this._hidden = false;
         this._hostIndex = 0;
     }

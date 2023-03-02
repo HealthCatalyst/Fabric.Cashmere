@@ -71,7 +71,7 @@ export class ComponentsComponent implements OnInit, OnDestroy {
 
         this.allDocItems = this.docItemService.getDocItems(this.docType);
         const categoriesWithItems = this.categorizedDocItems.filter(c => c.items && c.items.length);
-        if (!this.id && categoriesWithItems[0]) {
+        if (this.id === null && categoriesWithItems[0]) {
             const items = categoriesWithItems[0].items
             this.navUpdate(items && items.length > 0 ? items[0].id : '');
             return;

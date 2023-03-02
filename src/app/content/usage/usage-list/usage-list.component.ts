@@ -1,12 +1,10 @@
 import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {GoogleSheetsDbService} from 'ng-google-sheets-db';
 import {PaginationComponent, HcTableDataSource, TabComponent, TabSetComponent} from '@healthcatalyst/cashmere';
 import {SectionService} from 'src/app/shared/section.service';
 import {BaseDemoComponent} from '../../../shared/base-demo.component';
-import {IUsage, usageAttributesMapping} from '../usage';
+import {IUsage} from '../usage';
 import {ApplicationInsightsService} from '../../../shared/application-insights/application-insights.service';
 
 
@@ -24,7 +22,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     selectedTypesControl = new FormControl('All', {nonNullable: true});
     searchControl = new FormControl();
     searchTerm = '';
-    termList$: Observable<IUsage[]>;
+    termsLoading = true;
     terms: IUsage[];
 
     editListForm: FormGroup;
@@ -45,7 +43,6 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         sectionService: SectionService,
         private fb: FormBuilder,
         private httpClient: HttpClient,
-        private googleSheetsDbService: GoogleSheetsDbService,
         private appInsights: ApplicationInsightsService
     ) {
         super(sectionService);
@@ -70,13 +67,32 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
 
 
     ngOnInit(): void {
-        this.termList$ = this.googleSheetsDbService.get<IUsage>('18lD03x12tYE_DTqiXPX9oqR3sqRdMXEE_jhIGvTF_xk', 'Sheet1', usageAttributesMapping);
-        this.termList$.subscribe(data => {
-            this.usageList = data;
-            this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName.toLowerCase() > b.TermName.toLowerCase() ? 1 : -1));
-            this.dataSource = new HcTableDataSource(this.filteredUsageList);
-            this.dataSource.filterPredicate = (filterData: IUsage, filter: string) => this.usageFilter(filterData, filter);
-            this.dataSource.paginator = this.paginator;
+        const docId = '18lD03x12tYE_DTqiXPX9oqR3sqRdMXEE_jhIGvTF_xk';
+        const sheetId = '&gid=0';
+        const url = `https://docs.google.com/spreadsheets/d/${docId}/gviz/tq?tqx=out:json${sheetId}`;
+        this.httpClient.get(url, {responseType: 'text',}).subscribe((response: string): void => {
+            const rawJSONText = response.match(/google\.visualization\.Query\.setResponse\(([\s\S\w]+)\)/);
+            if ( rawJSONText ) {
+                const json = JSON.parse(rawJSONText[1]);
+                json.table.rows.forEach(element => {
+                    const rowEntry: IUsage = {
+                        TermID: element.c[0] ? element.c[0].v : '',
+                        TermName: element.c[1] ? element.c[1].v : '',
+                        TermUsage: element.c[2] ? element.c[2].v : '',
+                        TermTypes: element.c[3] ? element.c[3].v : '',
+                        TermCategories: element.c[4] ? element.c[4].v : '',
+                        TermExample: element.c[5] ? element.c[5].v : '',
+                        TermDateAdded: element.c[6] ? element.c[6].v : ''
+                    }
+                    this.usageList.push( rowEntry );
+                });
+
+                this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName.toLowerCase() > b.TermName.toLowerCase() ? 1 : -1));
+                this.dataSource = new HcTableDataSource(this.filteredUsageList);
+                this.dataSource.filterPredicate = (filterData: IUsage, filter: string) => this.usageFilter(filterData, filter);
+                this.dataSource.paginator = this.paginator;
+                this.termsLoading = false;
+            }
         });
 
         this.editListForm = this.fb.group({
