@@ -1,6 +1,6 @@
 # Guidelines for Contribution
 
-###### Last updated February 28, 2022
+###### Last updated March 2, 2023
 
 :::
 
