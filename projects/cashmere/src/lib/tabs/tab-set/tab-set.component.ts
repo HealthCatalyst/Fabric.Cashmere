@@ -188,7 +188,7 @@ export class TabSetComponent implements AfterContentInit {
         this.setUpTabs(false);
         this.refreshTabWidths();
 
-        // If using routing, selectTab isn't set, and routerLinkActive hasn't set any active tabs, default to the first route
+        // If using routing, selectedTab isn't set, and routerLinkActive hasn't set any active tabs, default to the first route
         if ( this._routerEnabled ) {
             setTimeout(() => {
                 const noActiveTabs = !this._tabs.some(t => t._active);
