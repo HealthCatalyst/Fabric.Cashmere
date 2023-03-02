@@ -43,10 +43,10 @@ export class TabComponent implements AfterContentInit {
     }
     set hidden( val: string | boolean ) {
         if ( parseBooleanAttribute( val ) ) {
-            this.hide();
+            this._hide();
             this._hideOverride = true;
         } else {
-            this.show();
+            this._show();
             this._hideOverride = false;
         }
         this._tabHideChange.emit();
@@ -79,7 +79,7 @@ export class TabComponent implements AfterContentInit {
     @ContentChildren(HcTabTitleComponent)
     _tabTitle: QueryList<HcTabTitleComponent>;
 
-    constructor( public el: ElementRef ) {}
+    constructor( public _el: ElementRef ) {}
 
     ngAfterContentInit(): void {
         if (this._tabTitle) {
@@ -88,10 +88,10 @@ export class TabComponent implements AfterContentInit {
     }
 
     @HostListener('keydown.enter', ['$event']) _onEnter($event: KeyboardEvent): void {
-        this.tabClickHandler($event);
+        this._tabClickHandler($event);
     }
 
-    tabClickHandler(event: Event): void {
+    _tabClickHandler(event: Event): void {
         // Prevent a tab anchor click from also calling the router on the host element
         event.preventDefault();
         event.stopPropagation();
@@ -100,7 +100,7 @@ export class TabComponent implements AfterContentInit {
     }
 
     _getWidth(): number {
-        return this.el.nativeElement.scrollWidth;
+        return this._el.nativeElement.scrollWidth;
     }
 
     // Listens for changes to routerLinkActive and reports to TabSet
@@ -110,14 +110,14 @@ export class TabComponent implements AfterContentInit {
         }
     }
 
-    /** Disable visibility of component from view */
-    hide(): void {
+    /** Used by the overflow functionality to hide the tab */
+    _hide(): void {
         this._hidden = true;
         this._hostIndex = -1;
     }
 
-    /** Enable visibility of component from view */
-    show(): void {
+    /** Used by the overflow functionality to show the tab */
+    _show(): void {
         this._hidden = false;
         this._hostIndex = 0;
     }
