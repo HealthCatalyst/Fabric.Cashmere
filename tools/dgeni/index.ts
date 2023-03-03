@@ -79,10 +79,12 @@ apiDocsPackage.processor(new Categorizer());
 apiDocsPackage.processor(new ComponentGrouper());
 
 // Configure the log level of the API docs dgeni package.
-apiDocsPackage.config((log: any) => (log.level = 'info'));
+apiDocsPackage.config( function(log: any) {
+    log.level = 'info';
+});
 
 // Configure the processor for reading files from the file system.
-apiDocsPackage.config((readFilesProcessor: any, writeFilesProcessor: any) => {
+apiDocsPackage.config( function(readFilesProcessor: any, writeFilesProcessor: any) {
     readFilesProcessor.basePath = sourceDir;
     readFilesProcessor.$enabled = false; // disable for now as we are using readTypeScriptModules
 
@@ -90,10 +92,12 @@ apiDocsPackage.config((readFilesProcessor: any, writeFilesProcessor: any) => {
 });
 
 // Patches Dgeni's log service to not print warnings about unresolved mixin base symbols.
-apiDocsPackage.config((log: any) => patchLogService(log));
+apiDocsPackage.config( function(log: any) {
+    patchLogService(log);
+});
 
 // Configure the output path for written files (i.e., file names).
-apiDocsPackage.config((computePathsProcessor: any) => {
+apiDocsPackage.config( function(computePathsProcessor: any) {
     computePathsProcessor.pathTemplates = [
         {
             docTypes: ['componentGroup'],
@@ -104,12 +108,12 @@ apiDocsPackage.config((computePathsProcessor: any) => {
 });
 
 // Configure custom JsDoc tags.
-apiDocsPackage.config((parseTagsProcessor: any) => {
+apiDocsPackage.config( function(parseTagsProcessor: any) {
     parseTagsProcessor.tagDefinitions = parseTagsProcessor.tagDefinitions.concat([{name: 'docs-private'}, {name: 'deletion-target'}]);
 });
 
 // Configure the processor for understanding TypeScript.
-apiDocsPackage.config((readTypeScriptModules: ReadTypeScriptModules, tsParser: TsParser) => {
+apiDocsPackage.config( function(readTypeScriptModules: ReadTypeScriptModules, tsParser: TsParser) {
     readTypeScriptModules.basePath = sourceDir;
     readTypeScriptModules.ignoreExportsMatching = [/^_/];
     readTypeScriptModules.hidePrivateMembers = true;
@@ -131,7 +135,7 @@ apiDocsPackage.config((readTypeScriptModules: ReadTypeScriptModules, tsParser: T
 });
 
 // Configure processor for finding nunjucks templates.
-apiDocsPackage.config((templateFinder: any, templateEngine: any) => {
+apiDocsPackage.config( function(templateFinder: any, templateEngine: any) {
     // Where to find the templates for the doc rendering
     templateFinder.templateFolders = [templateDir];
 
