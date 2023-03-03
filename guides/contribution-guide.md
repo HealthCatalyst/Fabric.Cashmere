@@ -14,7 +14,7 @@ We would love for you to contribute to Cashmere! Follow the instructions below t
 
 ##### Setup Environment
 
-1.  [Install Node 16 and NPM 8](https://nodejs.org/en/blog/release/v16.19.1/). We currently build and test Cashmere with the Node 16 LTS release (codename "Gallium").
+1.  [Install Node 18 and NPM 9](https://nodejs.org/en/blog/release/v18.14.2/). We currently build and test Cashmere with the Node 18 LTS release.
 2.  Fork the `@healthcatalyst/cashmere` repo.
 3.  Clone your fork. Recommendation: name your git remotes `upstream` for `@healthcatalyst/cashmere`
 4.  From the root of the project, run `npm install`
