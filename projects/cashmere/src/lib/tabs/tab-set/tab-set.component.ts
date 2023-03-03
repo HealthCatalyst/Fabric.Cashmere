@@ -97,8 +97,9 @@ export class TabSetComponent implements AfterContentInit {
         if ( typeof selected === 'string' ) {
             selected = Number(selected);
         }
-        this._selectedTab = selected;
         this._selectedTabSubject.next(selected);
+        // Make sure _selectedTab is set even if we're not subscribed to _selectedTabSubject yet
+        this._selectedTab = selected;
     }
 
     /** Emits when the selected tab is changed. Use to keep track of the currently selected tab. */
