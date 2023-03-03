@@ -21,7 +21,7 @@ We would love for you to contribute to Cashmere! Follow the instructions below t
 5.  Running `npm run build` will build the entire project.
 6.  `npm start` will serve the default project which is `user-guide` (the documentation site)
 
-You may want to consider using [Node Version Manager](https://github.com/nvm-sh/nvm) (`nvm`) to install and manage Node 16. Node 16 can be installed via `nvm` by running the command `nvm install --lts=gallium`.
+You may want to consider using [Node Version Manager](https://github.com/nvm-sh/nvm) (`nvm`) to install and manage Node 18. Node 18 can be installed via `nvm` by running the command `nvm install 18.14.2`.
 
 :::
 
