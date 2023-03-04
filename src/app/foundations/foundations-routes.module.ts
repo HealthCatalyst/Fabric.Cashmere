@@ -9,6 +9,7 @@ import {BrandColorDemoComponent} from './brand-colors/brand-color-demo.component
 import {LogoDemoComponent} from './logo/logo-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
 import {FontsDemoComponent} from './fonts/fonts-demo.component';
+import { AIDemoComponent } from './ai/ai-demo.component';
 
 const routes: Routes = [
     {
@@ -54,6 +55,11 @@ const routes: Routes = [
                 path: 'products',
                 component: ProductsDemoComponent,
                 data: {title: 'Product Icons', category: 'Brand'}
+            },
+            {
+                path: 'ai-branding',
+                component: AIDemoComponent,
+                data: {title: 'Healthcare.AI Branding', category: 'Brand'}
             },
             {
                 path: '**',

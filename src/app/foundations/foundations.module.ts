@@ -11,6 +11,7 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 import {LogoDemoComponent} from './logo/logo-demo.component';
 import {FontsDemoComponent} from './fonts/fonts-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
+import { AIDemoComponent } from './ai/ai-demo.component';
 
 @NgModule({
     imports: [SharedModule, FoundationsRoutesModule],
@@ -23,6 +24,7 @@ import {ProductsDemoComponent} from './products/products-demo.component';
         CodeDemoComponent,
         BrandColorDemoComponent,
         LogoDemoComponent,
+        AIDemoComponent,
         ProductsDemoComponent,
         FontsDemoComponent
     ]
