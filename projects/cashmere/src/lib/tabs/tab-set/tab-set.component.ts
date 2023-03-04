@@ -14,8 +14,8 @@ import type {QueryList} from '@angular/core';
 import {EventEmitter, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab/tab.component';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subject, interval, fromEvent, BehaviorSubject, combineLatest} from 'rxjs';
-import {distinctUntilChanged, filter, startWith, take, takeUntil} from 'rxjs/operators';
+import {Subject, interval, fromEvent, Subscription} from 'rxjs';
+import {distinctUntilChanged, filter, take, takeUntil} from 'rxjs/operators';
 import {parseBooleanAttribute} from '../../util';
 import {HcPopoverAnchorDirective} from '../../pop';
 
@@ -67,12 +67,12 @@ export class TabSetComponent implements AfterContentInit {
     private _defaultTab: string | number = 0;
     private _stopTabSubscriptionSubject: Subject<void> = new Subject();
     private _stopTabArrowSubject: Subject<void> = new Subject();
-
+    private _widthRecheckSub: Subscription;
     private _tabWidths: Array<number> = [];
     private _tabsTotalWidth = 0;
     public _collapse = false;
     public _moreList: Array<TabComponent> = [];
-    private _selectedTabSubject = new BehaviorSubject<number | TabComponent>(0);
+    private _selectedTabSubject = new Subject<number | TabComponent>();
     private unsubscribe = new Subject<void>();
 
     /** The content to be displayed for the currently selected tab.
@@ -91,17 +91,18 @@ export class TabSetComponent implements AfterContentInit {
 
     _selectedTab: number | TabComponent;
 
-    /** Specify which tab is currently selected. Does not fire a `selectedTabChange` emission. */
+    /** **Write-only**: specify which tab is currently selected. Does not fire a `selectedTabChange` emission. */
     @Input()
-    get selectedTab(): number | TabComponent {
-        return this._selectedTab;
-    }
-
     set selectedTab(selected: number | TabComponent) {
+        if ( typeof selected === 'string' ) {
+            selected = Number(selected);
+        }
         this._selectedTabSubject.next(selected);
+        // Make sure _selectedTab is set even if we're not subscribed to _selectedTabSubject yet
+        this._selectedTab = selected;
     }
 
-    /** Emits when the selected tab is changed */
+    /** Emits when the selected tab is changed. Use to keep track of the currently selected tab. */
     @Output()
     selectedTabChange: EventEmitter<TabChangeEvent> = new EventEmitter();
 
@@ -117,7 +118,9 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     /** Zero-based numerical value specifying which tab to select by default, setting to `none` means no tab
-     * will be immediately selected. Defaults to 0 (the first tab). */
+     * will be immediately selected. Defaults to 0 (the first tab).
+     * For tabs using routing, the default tab will be set by the url and use this value as a fallback if no tab routerLinks match the url.
+     * **NOTE** - if using the `selectedTab` param, it will override this value. */
     @Input()
     get defaultTab(): string | number {
         return this._defaultTab;
@@ -164,58 +167,56 @@ export class TabSetComponent implements AfterContentInit {
     set overflowStyle(overflowType: string) {
         validateOverflowInput(overflowType);
         this._overflowStyle = overflowType;
+        if ( this._tabBar ) {
+            this._tabBar.nativeElement.scrollLeft = 0;
+        }
         this.refreshTabWidths();
     }
     private _overflowStyle = 'more';
 
-    constructor(private router: Router, private route: ActivatedRoute, public changeDetector: ChangeDetectorRef) {}
+    constructor(private router: Router, private route: ActivatedRoute, private changeDetector: ChangeDetectorRef, private el: ElementRef) {}
 
     ngAfterContentInit(): void {
-        const selectedChanged$ = this._selectedTabSubject.pipe(
-            distinctUntilChanged(),
-            filter(nextTab => nextTab !== this.selectedTab)
-        );
-
-        combineLatest([selectedChanged$, this._tabs.changes.pipe(
-            startWith(this._tabs)
-        )]).pipe(
-            filter(([selectedTab, tabQuery]) => this.filterSetTabs(selectedTab, tabQuery)),
-            takeUntil(this.unsubscribe)
-        ).subscribe(([selectedTab, ]) => {
+        // Listeners to support the selectedTab param
+        const selectedChanged$ = this._selectedTabSubject.pipe(distinctUntilChanged(),filter(nextTab => nextTab !== this._selectedTab));
+        selectedChanged$.pipe(takeUntil(this.unsubscribe)).subscribe(selectedTab => {
             setTimeout(() => {
                 this.selectTab(selectedTab, false);
                 this.changeDetector.detectChanges();
             });
         });
 
-        this.setUpTabs();
+        this.setUpTabs(false);
+        this.refreshTabWidths();
 
-        /** Backup call to calculate tab widths in case the tabs are presented after page load */
-        setTimeout(() => {
-            this.refreshTabWidths();
-            this.changeDetector.detectChanges();
-        }, 10);
+        // If using routing, selectedTab isn't set, and routerLinkActive hasn't set any active tabs, default to the first route
+        if ( this._routerEnabled ) {
+            setTimeout(() => {
+                const noActiveTabs = !this._tabs.some(t => t._active);
+                if ( this.defaultTab !== 'none' && noActiveTabs ) {
+                    const tabArray = this._tabs.toArray();
+                    if ( tabArray[Number(this.defaultTab)] ) {
+                        this.selectTab( tabArray[Number(this.defaultTab)] );
+                    }
+                }
+            });
+        }
 
-        // If links are added dynamically, recheck the navbar link sizing
+        // If links are added dynamically, recheck the tab widths
         this._tabs.changes.pipe(takeUntil(this.unsubscribe)).subscribe(() => {
-            this.setUpTabs();
-            this.refreshTabWidths();
-            this.changeDetector.detectChanges();
-        });
-    }
-
-    /** Runs the initial calculation of tab widths after the page has fully rendered */
-    @HostListener('window:load')
-    _setupTabWidths(): void {
-        setTimeout(() => {
-            this.refreshTabWidths();
+            this.setUpTabs(true);
+            setTimeout(() => {
+                // Make sure all tabs are visible any time we are going to update the tab width array
+                this._forceRecollect();
+            });
         });
     }
 
     /** Forces a recalculation of the tabs to determine how many should be rolling into a More menu.
-     * Call this if you've updated the contents of any tabs. */
+     * By default the function will use cached values of the tab widths;
+     * if you've changed the title of a tab, set `forceRecalculate` to true to update the cache */
      @HostListener('window:resize')
-     refreshTabWidths(): void {
+     refreshTabWidths(forceRecalulate = false): void {
         if ( !this._tabs || !this._tabBar ) {
             return;
         }
@@ -223,22 +224,51 @@ export class TabSetComponent implements AfterContentInit {
         if (this._moreButton) {
             this._moreButton.closePopover();
         }
-        if ( this._tabsTotalWidth === 0 || this._tabWidths.length !== this._tabs.length ) {
-            this._collectTabWidths();
-        }
 
         this._moreList = [];
         this._collapse = false;
 
-        // If the tab bar has zero width, it is not currently visible and we should skip calculations
-        if (this._tabBar.nativeElement.clientWidth <= 0) {
+        // If the tab bar is hidden, we should skip calculations
+        const tabStyles = getComputedStyle(this.el.nativeElement);
+        if ( tabStyles.display === 'none' || tabStyles.visibility === 'hidden' ) {
+            if ( this._widthRecheckSub ) {
+                this._widthRecheckSub.unsubscribe();
+            }
             return;
         }
 
         // for cases where we want to just show what we can and hide the rest
         if (this.overflowStyle === 'none') {
-            this._tabs.forEach(t => t.show());
+            this._tabs.forEach(t => t._show());
             return;
+        }
+
+        // The user is asking for an explicit recalculation of the cached tab widths
+        // so we need to unhide any tabs currently in the more menu
+        if ( forceRecalulate ) {
+            this._forceRecollect();
+        }
+
+        // If the component hasn't fully rendered, start to loop to keep checking and only calculate widths when it has
+        if ( this._tabWidths.length !== this._tabs.length || this._tabWidths.includes(0) ) {
+            if ( !this._widthRecheckSub || this._widthRecheckSub.closed ) {
+                const recheckInterval = interval(10);
+
+                this._widthRecheckSub = recheckInterval.pipe(takeUntil(this.unsubscribe)).subscribe(loopCount => {
+                    // If it's been a second and the tabs still haven't rendered, bailout and don't loop forever
+                    if ( loopCount < 100 ) {
+                        this._collectTabWidths();
+                        this.refreshTabWidths();
+                    } else {
+                        this._widthRecheckSub.unsubscribe();
+                    }
+                });
+            }
+            return;
+        } else {
+            if ( this._widthRecheckSub ) {
+                this._widthRecheckSub.unsubscribe();
+            }
         }
 
         const tabContainerWidth: number = this._tabBar.nativeElement.offsetWidth;
@@ -252,24 +282,31 @@ export class TabSetComponent implements AfterContentInit {
         // remaining into a more menu
         this._tabs.forEach((t, i) => {
             if (t._active) {
-                t.show();
+                t._show();
                 return;
             }
-            curLinks += this._tabWidths[i];
+            if ( !t._hideOverride ) {
+                curLinks += this._tabWidths[i];
+            }
 
             // Account for the width of either the more button or the two arrow buttons
             const overflowType: number = this.overflowStyle === 'more' ? 93 : 68;
             const moreWidth: number = this._tabsTotalWidth > tabContainerWidth ? overflowType : 0;
 
             if (curLinks + moreWidth < tabContainerWidth) {
-                t.show();
+                if ( !t._hideOverride ) {
+                    t._show();
+                }
             } else {
                 this._collapse = true;
                 if ( this.overflowStyle === 'more' ) {
-                    t.hide();
-                    this._moreList.push(t);
+                    t._hide();
+                    // Don't include a tab in the more menu that has its hidden param set to false
+                    if ( !t._hideOverride ) {
+                        this._moreList.push(t);
+                    }
                 } else {
-                    t.show();
+                    t._show();
                 }
             }
         });
@@ -286,17 +323,17 @@ export class TabSetComponent implements AfterContentInit {
             this._moreButton.closePopover();
         }
 
-        tab.tabClickHandler( event );
+        tab._tabClickHandler( event );
     }
 
-    tabArrowInterval = interval(100);
+    _tabArrowInterval = interval(100);
 
     _handleTabsWheel(event: WheelEvent): void {
         const scrollDirection = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? Math.sign(event.deltaX) : Math.sign(event.deltaY);
         const scrollDistance = Math.sqrt(Math.pow(event.deltaX, 2) + Math.pow(event.deltaY, 2)) * scrollDirection;
-        const scrollLeft = scrollDistance < 0 && this._tabBar.nativeElement.scrollLeft > 0;
+        const scrollLeft = scrollDistance < 0 && Math.floor(this._tabBar.nativeElement.scrollLeft) > 0;
         const scrollRight = scrollDistance > 0
-            && this._tabBar.nativeElement.offsetWidth !== this._tabBar.nativeElement.scrollWidth - this._tabBar.nativeElement.scrollLeft;
+            && this._tabBar.nativeElement.scrollWidth - Math.ceil(this._tabBar.nativeElement.scrollLeft) > this._tabBar.nativeElement.offsetWidth;
 
         if (scrollLeft || scrollRight) {
             event.preventDefault();
@@ -310,7 +347,7 @@ export class TabSetComponent implements AfterContentInit {
     _tabArrowClick( scrollRight: boolean ): void {
         this._tabBar.nativeElement.scrollLeft += scrollRight ? 40 : -40;
         this._tabArrowCheck();
-        this.tabArrowInterval.pipe(takeUntil(this._stopTabArrowSubject)).subscribe(() => {
+        this._tabArrowInterval.pipe(takeUntil(this._stopTabArrowSubject)).subscribe(() => {
             this._tabBar.nativeElement.scrollLeft += scrollRight ? 40 : -40;
             this._tabArrowCheck();
         });
@@ -322,7 +359,7 @@ export class TabSetComponent implements AfterContentInit {
     _tabArrowTouch( scrollRight: boolean ): void {
         this._tabBar.nativeElement.scrollLeft += scrollRight ? 40 : -40;
         this._tabArrowCheck();
-        this.tabArrowInterval.pipe(takeUntil(this._stopTabArrowSubject)).subscribe(() => {
+        this._tabArrowInterval.pipe(takeUntil(this._stopTabArrowSubject)).subscribe(() => {
             this._tabBar.nativeElement.scrollLeft += scrollRight ? 40 : -40;
             this._tabArrowCheck();
         });
@@ -332,33 +369,40 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     _tabArrowCheck(): void {
-        this._tabArrowsEnabled[0] = this._tabBar.nativeElement.scrollLeft === 0 ? false : true;
-        this._tabArrowsEnabled[1] = this._tabBar.nativeElement.offsetWidth === this._tabBar.nativeElement.scrollWidth - this._tabBar.nativeElement.scrollLeft ? false : true;
+        this._tabArrowsEnabled[0] = Math.floor(this._tabBar.nativeElement.scrollLeft) === 0 ? false : true;
+        this._tabArrowsEnabled[1] = this._tabBar.nativeElement.scrollWidth - Math.ceil(this._tabBar.nativeElement.scrollLeft) <= this._tabBar.nativeElement.offsetWidth ? false : true;
     }
 
-    private setUpTabs(): void {
+    private setUpTabs(changeEvent: boolean): void {
         if (this._tabs.length === 0) {
             throw tabComponentMissing();
         }
 
-        if (this.defaultTab !== 'none') {
+        this.checkForRouterUse();
+
+        if (!this._routerEnabled && this.defaultTab !== 'none' && !changeEvent) {
             this.defaultToFirstTab();
         }
-        this.checkForRouterUse();
+
         this.setTabDirection();
-        this.subscribeToTabClicks();
+        this.subscribeToTabEvents();
     }
 
-    private _collectTabWidths() {
+    private _forceRecollect(): void {
+        this._tabs.forEach(t => t._show());
+        this._collectTabWidths();
+        this.refreshTabWidths();
+    }
+
+    private _collectTabWidths(): void {
         this._tabWidths = [];
         this._tabsTotalWidth = 0;
         this._tabs.forEach(t => {
-            const isHidden = t._hidden;
-            t.show();
-            this._tabsTotalWidth += t._getWidth();
-            this._tabWidths.push(t._getWidth());
-            if (isHidden) {
-                t.hide();
+            const tabWidthVal = t._hideOverride ? 1 : t._getWidth();
+            this._tabsTotalWidth += tabWidthVal;
+            this._tabWidths.push(tabWidthVal);
+            if (t._hideOverride) {
+                t._hide();
             }
         });
     }
@@ -372,16 +416,38 @@ export class TabSetComponent implements AfterContentInit {
         );
     }
 
-    private subscribeToTabClicks(): void {
+    private subscribeToTabEvents(): void {
         this._stopTabSubscriptionSubject.next();
         this._tabs.forEach(t => t.tabClick.pipe(takeUntil(this._stopTabSubscriptionSubject)).subscribe(() => this._setActive(t)));
+
+        // If using tabs with routing, listen for changes to the routerLinkActive state
+        if ( this._routerEnabled ) {
+            this._tabs.forEach(t => t._routerActiveChange.pipe(takeUntil(this._stopTabSubscriptionSubject)).subscribe(tab => {
+                this._setActive(tab, false);
+            }));
+        }
+
+        // Watch for changes to a tab's [hidden] param to remove it from overflow calculations
+        this._tabs.forEach(t => t._tabHideChange.pipe(takeUntil(this._stopTabSubscriptionSubject)).subscribe(() => {
+            if ( t.hidden && t._active ) {
+                this.selectTab(-1);
+            }
+
+            // Make sure all tabs are visible any time we are going to update the tab width array
+            this._tabs.forEach(t => t._show());
+            this._collectTabWidths();
+
+            this.refreshTabWidths();
+            this.changeDetector.detectChanges();
+        }));
     }
 
     /** Sets the currently selected tab by either its numerical index or `TabComponent` object.
-     * Passing a value of -1 will deselect all tabs in the set. */
+     * Passing a value of -1 or a hidden tab will deselect all tabs in the set. */
     selectTab(tab: number | TabComponent, shouldEmit = true): void {
         this._selectedTab = tab;
-        if ( tab === -1 ) {
+        const activeTab = typeof tab === 'number' ? this._tabs.toArray()[tab] : tab;
+        if ( tab === -1 || activeTab._hideOverride ) {
             this.tabContent = null;
 
             if ( this._routerEnabled ) {
@@ -394,9 +460,9 @@ export class TabSetComponent implements AfterContentInit {
                 this.selectedTabChange.emit(new TabChangeEvent(-1, null));
             }
         } else {
-            const activeTab = typeof tab === 'number' ? this._tabs.toArray()[tab] : tab;
             if ( this._routerEnabled ) {
-                this.router.navigate([activeTab.routerLink], {relativeTo: this.route});
+                const routeArray = Array.isArray(activeTab.routerLink) ? activeTab.routerLink : [activeTab.routerLink];
+                this.router.navigate(routeArray, {relativeTo: this.route, queryParams: activeTab.queryParams});
             }
             this._setActive(activeTab, shouldEmit);
         }
@@ -414,6 +480,11 @@ export class TabSetComponent implements AfterContentInit {
         this.tabContent = tab.tabContent;
         this._routerDeselected = false;
 
+        // For horizontal tabs with arrows overflow, scroll the selected tab into view if it's outside the scroll area
+        if ( this.overflowStyle === 'arrows' && this.direction === 'horizontal' && this._collapse ) {
+            tab._el.nativeElement.scrollIntoView({ block: 'nearest' });
+        }
+
         if (shouldEmit) {
             this.selectedTabChange.emit(new TabChangeEvent(activeIndex, tab));
         }
@@ -430,10 +501,17 @@ export class TabSetComponent implements AfterContentInit {
             // embedded views are checked *before* AfterContentInit
             // is triggered
             const tabArray = this._tabs.toArray();
-            if (tabArray[Number(this.defaultTab)]) {
-                setTimeout(() => this._setActive(tabArray[Number(this.defaultTab)]));
+            // If the selectedTab param is being used, respect that value before defaultTab
+            if ( this._selectedTab ) {
+                this.selectTab( this._selectedTab );
             } else {
-                invalidDefaultTab(this.defaultTab);
+                if (tabArray[Number(this.defaultTab)]) {
+                    setTimeout(() => {
+                        this._setActive(tabArray[Number(this.defaultTab)]);
+                    });
+                } else {
+                    invalidDefaultTab(this.defaultTab);
+                }
             }
         }
     }
@@ -447,48 +525,12 @@ export class TabSetComponent implements AfterContentInit {
 
         if (countUsingRouter === this._tabs.length) {
             this._routerEnabled = true;
-            if (this._defaultTab !== 'none') {
-                this.defaultToFirstRoute();
+
+            // If the selectedTab param is being used, respect that value for the initially selected tab before the url or defaultTab
+            if ( this._selectedTab ) {
+                this.selectTab( this._selectedTab );
             }
         }
-    }
-
-    private filterSetTabs(selected: number | TabComponent, query: QueryList<TabComponent>): boolean {
-
-        if (query?.toArray()[Number(selected)]) {
-            return selected >= 0 && selected < query?.length;
-        } else if (selected === -1) {
-            return true;
-        }
-
-        return query?.some(tab => tab === selected) ?? false;
-    }
-
-    private defaultToFirstRoute() {
-        const foundRoute = this._tabs
-            .map(tab => tab.routerLink)
-            .map(routerLink => this.mapRouterLinkToString(routerLink))
-            .find(routerLink => {
-                const currentRoute = this.router.url;
-                return currentRoute === routerLink || currentRoute.indexOf(`${routerLink}/`) > -1;
-            });
-
-        if (foundRoute) {
-            return;
-        }
-
-        const tabArray = this._tabs.toArray();
-        if (tabArray[Number(this.defaultTab)]) {
-            const firstRoute = this.mapRouterLinkToString(tabArray[Number(this.defaultTab)].routerLink);
-            this.router.navigate([firstRoute], {relativeTo: this.route});
-        }
-    }
-
-    private mapRouterLinkToString(routerLink: string | string[]): string {
-        if (routerLink instanceof Array) {
-            routerLink = routerLink.join('/').replace('//', '/');
-        }
-        return routerLink;
     }
 
     ngOnDestroy(): void {

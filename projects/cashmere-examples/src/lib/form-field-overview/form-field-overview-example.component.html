@@ -1,15 +1,15 @@
-<form>
+<form [formGroup]="exampleForm">
     <div class="form-sample">
         <hc-form-field>
             <hc-label>Job name:</hc-label>
-            <input hcInput required [formControl]="inputControl">
+            <input hcInput required formControlName="inputControl">
             <hc-error>A job name is required</hc-error>
         </hc-form-field>
     </div>
 
     <hc-form-field inline="true" class="form-padding">
         <hc-label>Data source:</hc-label>
-        <hc-radio-group [formControl]="radioControl" inline="true">
+        <hc-radio-group formControlName="radioControl" inline="true">
             <hc-radio-button value="SM">Source mart</hc-radio-button>
             <hc-radio-button value="SAM">Subject area mart</hc-radio-button>
             <hc-radio-button value="Other">Other</hc-radio-button>
@@ -19,8 +19,8 @@
 
     <div class="form-sample">
         <hc-form-field>
-            <hc-label>How long has it been since your last ER or Urgent Care visit at one of our facilities?</hc-label>
-            <hc-select placeholder="Select answer" [formControl]="selectControl">
+            <hc-label>How long has it been since your last visit?</hc-label>
+            <hc-select placeholder="Select answer" formControlName="selectControl">
                 <option value="daily">Within the last week</option>
                 <option value="weekly">Within the last month</option>
                 <option value="monthly">Within the last 6 months</option>
@@ -33,15 +33,23 @@
     <div class="form-sample flex-column">
         <hc-form-field>
             <hc-label>Requested notifications:</hc-label>
-            <hc-checkbox [formControl]="checkControl">On failure</hc-checkbox>
-            <hc-checkbox [formControl]="checkControl">On success</hc-checkbox>
-            <hc-checkbox [formControl]="checkControl">On row-count mismatch</hc-checkbox>
-            <hc-checkbox [formControl]="checkControl">On dependency-wait timeout</hc-checkbox>
-            <hc-error>At least one notification must be selected</hc-error>
+            <hc-checkbox formControlName="checkControl">On failure</hc-checkbox>
+            <hc-error>Failure notifications not available</hc-error>
+        </hc-form-field>
+    </div>
+
+    <div class="form-sample flex-column">
+        <hc-form-field>
+            <hc-label>Allow notifications:</hc-label>
+            <hc-slide-toggle formControlName="slideControl"></hc-slide-toggle>
+            <hc-error>The notifications setting is invalid</hc-error>
         </hc-form-field>
     </div>
 
     <button hc-button buttonStyle="primary" class="demo-button" (click)="invalidForm()">
         Invalidate All Fields
+    </button>
+    <button hc-button buttonStyle="primary" class="demo-button" (click)="disableToggle()">
+        Toggle Form Enabled
     </button>
 </form>

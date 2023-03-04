@@ -5,7 +5,8 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 import {StylesComponent} from './styles.component';
 import {AboutModalComponent} from './about/about-modal.component';
 import {TableDemoComponent} from './table/table-demo.component';
-import { IESupportComponent } from './ie-support/ie-support.component';
+import {IESupportComponent} from './ie-support/ie-support.component';
+import {ChartDemoComponent} from '../styles/chart/chart-demo.component';
 
 @NgModule({
     imports: [SharedModule, StylesRoutesModule],
@@ -14,7 +15,8 @@ import { IESupportComponent } from './ie-support/ie-support.component';
         StylesComponent,
         AboutModalComponent,
         TableDemoComponent,
-        IESupportComponent
+        IESupportComponent,
+        ChartDemoComponent
     ]
 })
 export class StylesModule {}

@@ -1,4 +1,4 @@
-# UX Elements (pop-ups, grahics, etc.) 
+# UX Elements (pop-ups, graphics, etc.)
 <br>
 <br>
 

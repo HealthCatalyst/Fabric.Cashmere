@@ -1,0 +1,25 @@
+<hc-drag-list
+    [assignments]="assignments"
+    [options]="options"
+    targetDisplayNameField="name"
+    targetHelperText="Targets"
+    targetTooltip="Assign options to targets below.
+Example:
+Target 1 = Option 3
+Target 2 = Option 1
+Target 3 = Option 3 (locked)"
+    optionsHelperText="Drag options to targets on the left"
+    optionDisplayNameField="name"
+    [requireAllAssignments]="false"
+></hc-drag-list>
+<div class="buttons">
+    <button hc-button buttonStyle="secondary" (click)="dragList.resetChanges()">Reset Changes</button>
+    <button
+        hc-button
+        buttonStyle="primary"
+        (click)="saveSelections(dragList.selections)"
+        [disabled]="!(dragList || {}).submissionAllowed || false"
+    >
+        Save Selections
+    </button>
+</div>

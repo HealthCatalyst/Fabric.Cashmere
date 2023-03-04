@@ -13,6 +13,7 @@ export * from './lib/chip/index';
 export * from './lib/datepicker/index';
 export * from './lib/date-range/index';
 export * from './lib/drawer/index';
+export * from './lib/drag-list/index';
 export * from './lib/env-switcher/index';
 export * from './lib/form-field/index';
 export * from './lib/icon/index';

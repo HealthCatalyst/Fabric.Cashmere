@@ -1,5 +1,6 @@
 <div class="sample-container">
     <div #buttonContainer class="button-container">
+        <em class="sample-container-empty" *ngIf="buttons.length === 0">No buttons added</em>
         <hc-measurable
             *ngFor="let button of buttons"
             [itemKey]="button.key">

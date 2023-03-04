@@ -2,6 +2,8 @@
 
 .button-container {
     height: 305px;
+    padding: 5px;
+    border: 1px solid $slate-gray-300;
 }
 
 hc-measurable button {

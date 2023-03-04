@@ -2,7 +2,7 @@
 import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 
 import {getControlMissing, HcFormFieldComponent} from './hc-form-field.component';
-import {Component, DebugElement} from '@angular/core';
+import {Component, DebugElement, ElementRef, ViewChild} from '@angular/core';
 import {InputModule} from '../input/input.module';
 import {FormFieldModule} from '../form-field/hc-form-field.module';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -104,7 +104,9 @@ describe('HcFormFieldComponent', () => {
             expect(inputControl.valid).toBe(false, 'Expected form to be invalid');
             expect(nativeElement.querySelectorAll('hc-error').length).toBe(0, 'Expected no errors to be shown when untouched');
 
+            testComponent.inputElement.nativeElement.focus();
             inputControl.markAsTouched();
+            testComponent.inputElement.nativeElement.blur();
             fixture.detectChanges();
 
             expect(nativeElement.querySelectorAll('hc-error').length).toBe(1, 'Expected errors to be shown after being touched');
@@ -141,11 +143,14 @@ class InputMissingHcInput {}
     template: `
         <hc-form-field>
             <hc-label>Form Control Label:</hc-label>
-            <input hcInput [formControl]="formControl" />
+            <input hcInput [formControl]="formControl" #inputElement/>
             <hc-error>Input is required</hc-error>
         </hc-form-field>
     `
 })
 class InputWithFormControl {
     formControl = new FormControl('', Validators.required);
+
+    @ViewChild('inputElement', {static: false})
+    inputElement: ElementRef;
 }

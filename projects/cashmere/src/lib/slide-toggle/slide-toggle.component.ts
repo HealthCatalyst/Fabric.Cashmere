@@ -1,5 +1,7 @@
-import {Component, DoCheck, EventEmitter, forwardRef, Input, Optional, Output, Self, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, forwardRef, Input, OnDestroy, Optional, Output, Self, ViewEncapsulation} from '@angular/core';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
 
@@ -34,9 +36,10 @@ export function validateLabelType(inputStr: string): void {
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SlideToggleComponent)}]
 })
-export class SlideToggleComponent extends HcFormControlComponent implements DoCheck {
+export class SlideToggleComponent extends HcFormControlComponent implements AfterViewInit, OnDestroy {
     private _uniqueId = `hc-slide-toggle-${nextToggleId++}`;
     private _form: NgForm | FormGroupDirective | null;
+    private _unsubscribe = new Subject<void>();
     _buttonState = true;
     _disabled = false;
     _insideLabel = 'on';
@@ -107,13 +110,25 @@ export class SlideToggleComponent extends HcFormControlComponent implements DoCh
     }
 
     set buttonState( val: boolean | string ) {
-        this._buttonState = parseBooleanAttribute(val);
-        this.onChange(this._buttonState);
-        this.buttonStateChanged.emit(this._buttonState);
+        const tempVal = parseBooleanAttribute(val);
+        if ( tempVal !== this._buttonState ) {
+            this._buttonState = parseBooleanAttribute(val);
+            this.onChange(this._buttonState);
+            this.buttonStateChanged.emit(this._buttonState);
+        }
     }
 
     /** Event fired with boolean value when the toggle state is changed. */
     @Output() buttonStateChanged = new EventEmitter<boolean>();
+
+    ngAfterViewInit(): void {
+        if ( this._ngControl && this._ngControl.statusChanges ) {
+            this._ngControl.statusChanges.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        }
+        if ( this._form ) {
+            this._form.ngSubmit.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        }
+    }
 
     constructor(
         @Optional() _parentForm: NgForm,
@@ -129,7 +144,10 @@ export class SlideToggleComponent extends HcFormControlComponent implements DoCh
     }
 
     writeValue(value: unknown): void {
-        this.buttonState = !!value;
+        // Prevent the form control from trying to write a value when removing the control
+        if ( this.onChange.name !== 'noop' ) {
+            this.buttonState = !!value;
+        }
     }
 
     public onChange: (value: unknown) => void = () => undefined;
@@ -141,11 +159,13 @@ export class SlideToggleComponent extends HcFormControlComponent implements DoCh
         this.onTouch = fn;
     }
 
-    ngDoCheck(): void {
-        // This needs to be checked every cycle because we can't subscribe to form submissions
-        if (this._ngControl) {
-            this._updateErrorState();
-        }
+    _onBlur(): void {
+        this.onTouch();
+        this._updateErrorState();
+    }
+
+    setDisabledState(disabledVal: boolean): void {
+        this.disabled = disabledVal;
     }
 
     private _updateErrorState() {
@@ -161,5 +181,10 @@ export class SlideToggleComponent extends HcFormControlComponent implements DoCh
         if (oldState !== newState) {
             this._errorState = newState;
         }
+    }
+
+    ngOnDestroy(): void {
+        this._unsubscribe.next();
+        this._unsubscribe.complete();
     }
 }
