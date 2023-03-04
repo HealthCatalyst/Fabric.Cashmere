@@ -85,7 +85,10 @@ export class DateRangeDirective implements OnDestroy, OnChanges, ControlValueAcc
     }
 
     writeValue(value: number | DateRange): void {
-        this._updateSelected( value );
+        // Prevent the form control from trying to write a value when removing the control
+        if ( this.onChange.name !== 'noop' ) {
+            this._updateSelected( value );
+        }
     }
 
     _updateSelected( selectedDate: number | DateRange ): void {

@@ -1,0 +1,32 @@
+@import 'scss/colors';
+
+#chart-container {
+    height: 300px;
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border: 1px solid $slate-gray-300;
+}
+
+.chart-config-container {
+    display: inline-block;
+    min-width: 250px;
+    margin-bottom: 16px;
+    margin-right: 16px;
+}
+
+.row {
+    display: flex;
+    justify-content: start;
+}
+
+.col {
+    display: flex;
+    flex: auto;
+}
+
+.chart-options .hljs {
+    max-height: 350px;
+    overflow: auto;
+}

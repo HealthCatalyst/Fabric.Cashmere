@@ -32,8 +32,8 @@
         </div>
     </div>
     <div class="hc-components-right-column">
-        <hc-tab-set class="full-height" [defaultTab]="queryTab">
-            <hc-tab *ngFor="let tab of selectOptions" [tabTitle]="tab.data.title" [routerLink]="'/analytics/' + tab.path">{{tab.data.title}}</hc-tab>
+        <hc-tab-set class="full-height">
+            <hc-tab *ngFor="let tab of selectOptions" [tabTitle]="tab.data.title" [routerLink]="['/analytics',tab.path]">{{tab.data.title}}</hc-tab>
         </hc-tab-set>
     </div>
 </div>

@@ -19,6 +19,7 @@
         <input
             type="checkbox"
             class="hc-slide-toggle-checkbox"
+            (blur)="_onBlur()"
             [(ngModel)]="buttonState"
             [disabled]="disabled"
         />

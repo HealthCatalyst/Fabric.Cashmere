@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 
 /**
  * @title Multiple Form Field Elements
@@ -10,15 +10,31 @@ import {FormControl} from '@angular/forms';
     styleUrls: ['form-field-overview-example.component.scss']
 })
 export class FormFieldOverviewExampleComponent {
-    selectControl = new FormControl('daily');
-    inputControl = new FormControl('');
-    radioControl = new FormControl('SM');
-    checkControl = new FormControl('');
+    enabledState = true;
+
+    exampleForm: FormGroup = new FormGroup({
+        selectControl: new FormControl('daily'),
+        inputControl: new FormControl(''),
+        radioControl: new FormControl('SM'),
+        checkControl: new FormControl(false),
+        slideControl: new FormControl(true)
+    });
+
+    disableToggle(): void {
+        if ( this.enabledState ) {
+            this.enabledState = false;
+            this.exampleForm.disable();
+        } else {
+            this.enabledState = true;
+            this.exampleForm.enable();
+        }
+    }
 
     invalidForm(): void {
-        this.inputControl.setErrors({incorrect: true});
-        this.selectControl.setErrors({incorrect: true});
-        this.checkControl.setErrors({incorrect: true});
-        this.radioControl.setErrors({incorrect: true});
+        this.exampleForm.controls['inputControl'].setErrors({incorrect: true});
+        this.exampleForm.controls['selectControl'].setErrors({incorrect: true});
+        this.exampleForm.controls['checkControl'].setErrors({incorrect: true});
+        this.exampleForm.controls['radioControl'].setErrors({incorrect: true});
+        this.exampleForm.controls['slideControl'].setErrors({incorrect: true});
     }
 }

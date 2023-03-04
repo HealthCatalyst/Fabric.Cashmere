@@ -1,0 +1,276 @@
+{
+    "darkMode": true,
+    "color": [
+        "#00aeff",
+        "#6e53a3",
+        "#00a859",
+        "#f13c45",
+        "#f8961d",
+        "#553e36",
+        "#9fd4ae",
+        "#007bff",
+        "#951c1e",
+        "#e7c447",
+        "#006c4e",
+        "#f05323",
+        "#00acac",
+        "#776c7f",
+        "#a94c9d"
+    ],
+    "backgroundColor": "transparent",
+    "axisPointer": {
+        "lineStyle": {
+            "color": "rgba(255, 255, 255, 0.12)"
+        },
+        "crossStyle": {
+            "color": "rgba(255, 255, 255, 0.12)"
+        },
+        "label": {
+            "color": "rgba(255, 255, 255, 0.12)"
+        }
+    },
+    "legend": {
+        "textStyle": {
+            "color": "#fff"
+        }
+    },
+    "textStyle": {
+        "color": "rgba(255, 255, 255, 0.75)"
+    },
+    "title": {
+        "textStyle": {
+            "color": "#fff"
+        },
+        "subtextStyle": {
+            "color": "rgba(255, 255, 255, 0.75)"
+        }
+    },
+    "toolbox": {
+        "iconStyle": {
+            "borderColor": "rgba(255, 255, 255, 0.75)"
+        },
+        "emphasis": {
+            "iconStyle": {
+                "textFill": "#00aeff"
+            }
+        }
+    },
+    "dataZoom": {
+        "borderColor": "rgba(255, 255, 255, 0.5)",
+        "textStyle": {
+            "color": "#fff"
+        },
+        "brushStyle": {
+            "color": "rgba(0, 174, 255, 0.15)"
+        },
+        "handleStyle": {
+            "color": "rgb(127, 127, 127)",
+            "borderColor": "rgb(127, 127, 127)"
+        },
+        "moveHandleStyle": {
+            "color": "#00aeff",
+            "opacity": 0.3
+        },
+        "fillerColor": "rgba(0, 174, 255, 0.1)",
+        "emphasis": {
+            "handleStyle": {
+                "borderColor": "#00aeff",
+                "color": "#00aeff"
+            },
+            "moveHandleStyle": {
+                "color": "#00aeff",
+                "opacity": 0.7
+            }
+        },
+        "dataBackground": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.5)",
+                "width": 1
+            },
+            "areaStyle": {
+                "color": "rgba(255, 255, 255, 0.5)"
+            }
+        },
+        "selectedDataBackground": {
+            "lineStyle": {
+                "color": "rgba(0, 174, 255, 1)"
+            },
+            "areaStyle": {
+                "color": "rgba(0, 174, 255, 1)"
+            }
+        }
+    },
+    "visualMap": {
+        "textStyle": {
+            "color": "#fff"
+        },
+        "inRange": {
+            "color": [
+                "#00aeff",
+                "rgb(229, 246, 255)"
+            ]
+        }
+    },
+    "timeline": {
+        "lineStyle": {
+            "color": "#fff"
+        },
+        "label": {
+            "color": "#fff"
+        },
+        "controlStyle": {
+            "color": "#fff",
+            "borderColor": "#fff"
+        }
+    },
+    "calendar": {
+        "itemStyle": {
+            "color": "transparent"
+        },
+        "dayLabel": {
+            "color": "#fff"
+        },
+        "monthLabel": {
+            "color": "#fff"
+        },
+        "yearLabel": {
+            "color": "#fff"
+        }
+    },
+    "timeAxis": {
+        "axisLine": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.5)"
+            }
+        },
+        "splitLine": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.12)"
+            }
+        },
+        "splitArea": {
+            "areaStyle": {
+                "color": [
+                    "rgba(255, 255, 255, 0.12)",
+                    "rgba(255, 255, 255, 0.5)"
+                ]
+            }
+        },
+        "minorSplitLine": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.5)"
+            }
+        }
+    },
+    "logAxis": {
+        "axisLine": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.5)"
+            }
+        },
+        "splitLine": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.12)"
+            }
+        },
+        "splitArea": {
+            "areaStyle": {
+                "color": [
+                    "rgba(255, 255, 255, 0.12)",
+                    "rgba(255, 255, 255, 0.5)"
+                ]
+            }
+        },
+        "minorSplitLine": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.5)"
+            }
+        }
+    },
+    "valueAxis": {
+        "axisLine": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.5)"
+            }
+        },
+        "splitLine": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.12)"
+            }
+        },
+        "splitArea": {
+            "areaStyle": {
+                "color": [
+                    "rgba(255, 255, 255, 0.12)",
+                    "rgba(255, 255, 255, 0.5)"
+                ]
+            }
+        },
+        "minorSplitLine": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.5)"
+            }
+        }
+    },
+    "categoryAxis": {
+        "axisLine": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.5)"
+            }
+        },
+        "splitLine": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.12)"
+            },
+            "show": false
+        },
+        "splitArea": {
+            "areaStyle": {
+                "color": [
+                    "rgba(255, 255, 255, 0.12)",
+                    "rgba(255, 255, 255, 0.5)"
+                ]
+            }
+        },
+        "minorSplitLine": {
+            "lineStyle": {
+                "color": "rgba(255, 255, 255, 0.5)"
+            }
+        }
+    },
+    "line": {
+        "symbol": "circle"
+    },
+    "graph": {
+        "color": [
+            "#00aeff",
+            "#00a859",
+            "#6e53a3",
+            "#f13c45",
+            "#f8961d",
+            "#553e36",
+            "#9fd4ae",
+            "#007bff",
+            "#951c1e",
+            "#e7c447",
+            "#006c4e",
+            "#f05323",
+            "#00acac",
+            "#776c7f",
+            "#a94c9d"
+        ]
+    },
+    "gauge": {
+        "title": {
+            "color": "#fff"
+        }
+    },
+    "candlestick": {
+        "itemStyle": {
+            "color": "#f13c45",
+            "color0": "#00a859",
+            "borderColor": "#f13c45",
+            "borderColor0": "#00a859"
+        }
+    }
+}
