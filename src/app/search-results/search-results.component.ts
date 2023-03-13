@@ -204,8 +204,8 @@ export class SearchResultsComponent implements AfterViewInit {
     }
 
     resetFilters(): void {
-        this.categories.setValue({components: true, guides: true, foundations: true});
-        this.types.setValue({doc: true, example: true, api: true, usage: true});
+        this.categories.setValue({components: true, guides: true, foundations: true, content: true, analytics: true});
+        this.types.setValue({doc: true, example: true, api: true, usage: true, persona: true});
     }
 
     logSearch(): void {

@@ -8,7 +8,7 @@
 ### A) Install Cashmere and the Angular CDK
 
 ```BASH
-npm install --save @healthcatalyst/cashmere @angular/cdk@13.3.7
+npm install --save @healthcatalyst/cashmere @angular/cdk@14.2.7
 ```
 
 ### B) *(Optional)* Install additional dependencies as needed.
@@ -19,7 +19,7 @@ npm install --save @healthcatalyst/cashmere @angular/cdk@13.3.7
 
 
 ```BASH
-npm install --save font-awesome notosans-fontface @ng-select/ng-select @angular-slider/ngx-slider
+npm install --save font-awesome notosans-fontface @ng-select/ng-select@9.1.0 @angular-slider/ngx-slider
 ```
 :::
 

@@ -14,13 +14,13 @@ export class ProductCentricIndexService {
             title: 'Healthcare.AI',
             route: 'healthcare-ai',
             type: 'npi-app',
-            document: require('raw-loader!../../../../guides/content/products/healthcare-ai.md')
+            document: require('../../../../guides/content/products/healthcare-ai.md')
         },
         {
             title: 'healthfinch',
             route: 'healthfinch',
             type: 'npi-app',
-            document: require('raw-loader!../../../../guides/content/products/healthfinch.md')
+            document: require('../../../../guides/content/products/healthfinch.md')
         }
     ];
 }

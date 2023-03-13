@@ -9,7 +9,7 @@ import { ApplicationInsightsService } from '../shared/application-insights/appli
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-    searchBar = new FormControl("");
+    searchBar = new FormControl("", {nonNullable: true});
 
     constructor(private router: Router, private appInsights: ApplicationInsightsService) { }
 

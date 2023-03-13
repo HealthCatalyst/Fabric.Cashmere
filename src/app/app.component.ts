@@ -19,7 +19,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     @ViewChild('searchInput') input: ElementRef;
 
     searchUpdated = false;
-    navSearchBar = new FormControl('');
+    navSearchBar = new FormControl('', {nonNullable: true});
     webActive = false;
     private unsubscribe = new Subject<void>();
 

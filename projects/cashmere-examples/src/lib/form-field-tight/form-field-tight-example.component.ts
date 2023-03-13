@@ -10,8 +10,8 @@ import {FormControl} from '@angular/forms';
     styleUrls: ['form-field-tight-example.component.scss']
 })
 export class FormFieldTightExampleComponent {
-    selectControl = new FormControl('daily');
-    inputControl = new FormControl('');
-    radioControl = new FormControl('SM');
-    checkControl = new FormControl('');
+    selectControl = new FormControl('daily', {nonNullable: true});
+    inputControl = new FormControl('', {nonNullable: true});
+    radioControl = new FormControl('SM', {nonNullable: true});
+    checkControl = new FormControl('', {nonNullable: true});
 }

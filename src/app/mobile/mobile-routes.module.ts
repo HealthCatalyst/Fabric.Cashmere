@@ -14,7 +14,7 @@ const routes: Routes = [
                 data: {
                     title: 'Overview',
                     category: 'Foundations',
-                    document: require('raw-loader!../../../guides/mobile/overview.md')
+                    document: require('../../../guides/mobile/overview.md')
                 }
             },
             {
@@ -23,7 +23,7 @@ const routes: Routes = [
                 data: {
                     title: 'Viewport Meta Tags',
                     category: 'Foundations',
-                    document: require('raw-loader!../../../guides/mobile/viewport-meta-tags.md')
+                    document: require('../../../guides/mobile/viewport-meta-tags.md')
                 }
             },
             {
@@ -32,7 +32,7 @@ const routes: Routes = [
                 data: {
                     title: 'Responsive Breakpoints',
                     category: 'Foundations',
-                    document: require('raw-loader!../../../guides/mobile/responsive-breakpoints.md')
+                    document: require('../../../guides/mobile/responsive-breakpoints.md')
                 }
             },
             {
@@ -41,7 +41,7 @@ const routes: Routes = [
                 data: {
                     title: 'Font Sizes',
                     category: 'Foundations',
-                    document: require('raw-loader!../../../guides/mobile/font-sizes.md')
+                    document: require('../../../guides/mobile/font-sizes.md')
                 }
             },
             {
@@ -50,7 +50,7 @@ const routes: Routes = [
                 data: {
                     title: 'Keyboard Accessibility',
                     category: 'Foundations',
-                    document: require('raw-loader!../../../guides/mobile/keyboard-accessibility.md')
+                    document: require('../../../guides/mobile/keyboard-accessibility.md')
                 }
             },
             {
@@ -59,7 +59,7 @@ const routes: Routes = [
                 data: {
                     title: 'Anchor and Button Tags',
                     category: 'Foundations',
-                    document: require('raw-loader!../../../guides/mobile/anchor-button-tags.md')
+                    document: require('../../../guides/mobile/anchor-button-tags.md')
                 }
             },
             {
@@ -68,7 +68,7 @@ const routes: Routes = [
                 data: {
                     title: 'Deep Linking',
                     category: 'Foundations',
-                    document: require('raw-loader!../../../guides/mobile/deep-linking.md')
+                    document: require('../../../guides/mobile/deep-linking.md')
                 }
             },
             {
@@ -77,7 +77,7 @@ const routes: Routes = [
                 data: {
                     title: 'Input Tag Types',
                     category: 'Best Practices',
-                    document: require('raw-loader!../../../guides/mobile/input-tag-types.md')
+                    document: require('../../../guides/mobile/input-tag-types.md')
                 }
             },
             {
@@ -86,7 +86,7 @@ const routes: Routes = [
                 data: {
                     title: 'Mobile Navigation',
                     category: 'Best Practices',
-                    document: require('raw-loader!../../../guides/mobile/mobile-navigation.md')
+                    document: require('../../../guides/mobile/mobile-navigation.md')
                 }
             },
             {
@@ -95,7 +95,7 @@ const routes: Routes = [
                 data: {
                     title: 'Form Fields',
                     category: 'Best Practices',
-                    document: require('raw-loader!../../../guides/mobile/form-fields.md')
+                    document: require('../../../guides/mobile/form-fields.md')
                 }
             },
             {
@@ -104,7 +104,7 @@ const routes: Routes = [
                 data: {
                     title: 'Modals/Popovers/Drawers',
                     category: 'Best Practices',
-                    document: require('raw-loader!../../../guides/mobile/modals-popovers-drawers.md')
+                    document: require('../../../guides/mobile/modals-popovers-drawers.md')
                 }
             },
             {
@@ -113,7 +113,7 @@ const routes: Routes = [
                 data: {
                     title: 'Help Text',
                     category: 'Best Practices',
-                    document: require('raw-loader!../../../guides/mobile/help-text.md')
+                    document: require('../../../guides/mobile/help-text.md')
                 }
             },
             {

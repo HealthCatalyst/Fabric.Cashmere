@@ -12,7 +12,7 @@ interface Transport { name: string, icon: string, color: string, type: string | 
     styleUrls: ['multiselect-custom-templates-example.component.scss']
 })
 export class MultiselectCustomTemplatesExampleComponent {
-    readonly selected = new FormControl([]);
+    readonly selected = new FormControl([], {nonNullable: true});
     transportOptions: Transport[] = [
         {name: 'Bus', icon: 'bus', color: 'blue', type: 'land'},
         {name: 'Train', icon: 'train', color: 'green', type: 'land'},

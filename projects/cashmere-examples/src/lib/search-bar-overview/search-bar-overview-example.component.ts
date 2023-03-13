@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { SelectChangeEvent } from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-search-bar-overview-example',

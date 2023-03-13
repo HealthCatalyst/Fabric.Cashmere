@@ -11,7 +11,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class MultiselectOverviewExampleComponent {
     cities = ['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando'];
-    readonly selectedCitiesControl = new FormControl([]);
+    readonly selectedCitiesControl = new FormControl([], {nonNullable: true});
     multiselectGroup = new FormGroup({
         selectedCitiesControl: this.selectedCitiesControl
     });

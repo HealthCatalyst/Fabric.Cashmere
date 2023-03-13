@@ -12,16 +12,16 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['toaster-overview-example.component.scss']
 })
 export class ToasterOverviewExampleComponent {
-    readonly toastHeader = new FormControl('Success!');
-    readonly toastBody = new FormControl('You are awesome!');
-    readonly toastPosition = new FormControl('top-right');
-    readonly toastTimeout = new FormControl(5000);
-    readonly toastClick = new FormControl(false);
-    readonly toastType = new FormControl('success');
-    readonly toastWidth = new FormControl(400);
-    readonly toastProgress = new FormControl('0');
-    readonly progressValue = new FormControl(75);
-    readonly customImage = new FormControl(null);
+    readonly toastHeader = new FormControl('Success!', {nonNullable: true});
+    readonly toastBody = new FormControl('You are awesome!', {nonNullable: true});
+    readonly toastPosition = new FormControl('top-right', {nonNullable: true});
+    readonly toastTimeout = new FormControl(5000, {nonNullable: true});
+    readonly toastClick = new FormControl(false, {nonNullable: true});
+    readonly toastType = new FormControl('success', {nonNullable: true});
+    readonly toastWidth = new FormControl(400, {nonNullable: true});
+    readonly toastProgress = new FormControl('0', {nonNullable: true});
+    readonly progressValue = new FormControl(75, {nonNullable: true});
+    readonly customImage = new FormControl();
 
     constructor(private toasterService: HcToasterService) {}
 
