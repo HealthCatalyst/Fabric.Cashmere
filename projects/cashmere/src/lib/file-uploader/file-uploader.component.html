@@ -7,13 +7,13 @@
     (dragenter)="_highlight()"
     (dragleave)="_unhighlight()"
 >
-    <div *ngIf="!_fileList && !tight">
+    <div *ngIf="_fileNames.length === 0 && !tight">
         <div class="hc-file-uploader-drag-icon"></div>
         <div class="hc-file-uploader-drag-text">
             {{multiple ? 'Drag files here to select them.' : 'Drag a file here to select it.'}}
         </div>
     </div>
-    <div *ngIf="!_fileList && tight" class="hc-file-uploader-tight-container">
+    <div *ngIf="_fileNames.length === 0 && tight" class="hc-file-uploader-tight-container">
         <div class="hc-file-uploader-drag-icon hc-file-uploader-tight-icon"></div>
         <div class="hc-file-uploader-tight-drag-text">
             {{multiple ? 'Drag files here to select them' : 'Drag a file here to select it'}} or
@@ -21,7 +21,7 @@
             <span *ngIf="_subtext"> ({{subtext}})</span>.
         </div>
     </div>
-    <div *ngIf="_fileList && tight" class="hc-file-uploader-tight-container">
+    <div *ngIf="_fileNames.length > 0 && tight" class="hc-file-uploader-tight-container">
         <div [class]="'hc-file-uploader-files-selected-tight ' + _fileIcon"></div>
         <div class="hc-file-uploader-tight-drag-text">
             {{_fileNames.length > 1 ? 'Multiple files (' + _fileNames.length + ') selected. Drag files here to replace': _fileNames[0] + ' selected. Drag a file here to replace'}} or
@@ -29,7 +29,7 @@
             <span *ngIf="_subtext"> ({{subtext}})</span>.
         </div>
     </div>
-    <div *ngIf="_fileList && _fileNames.length === 1 && !tight">
+    <div *ngIf="_fileNames.length === 1 && !tight">
         <div [class]="'hc-file-uploader-files-selected ' + _fileIcon">
             <div class="hc-file-icon-checked"></div>
         </div>
@@ -40,7 +40,7 @@
             File selected. Drag a file here to replace.
         </div>
     </div>
-    <div *ngIf="_fileList && _fileNames.length > 1 && !tight">
+    <div *ngIf="_fileNames.length > 1 && !tight">
         <div class="hc-file-uploader-files-selected">
             <div class="hc-file-uploader-multiple-files hc-generic-file-icon"></div>
             <div class="hc-generic-file-icon">
