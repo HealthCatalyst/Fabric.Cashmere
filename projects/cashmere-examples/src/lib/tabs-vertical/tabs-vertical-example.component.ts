@@ -11,7 +11,7 @@ import { TabSetComponent } from '@healthcatalyst/cashmere';
     styleUrls: ['tabs-vertical-example.component.scss']
 })
 export class TabsVerticalExampleComponent {
-    readonly _tight = new FormControl(false);
+    readonly _tight = new FormControl(false, {nonNullable: true});
 
     @ViewChild('nestedTabs')
     nestedTabs: TabSetComponent;

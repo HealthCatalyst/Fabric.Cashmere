@@ -7,8 +7,8 @@ import {FormControl, FormGroup} from '@angular/forms';
     styleUrls: ['datepicker-example.component.scss']
 })
 export class DatepickerExampleComponent {
-    readonly dateControl1 = new FormControl(new Date(2010, 1, 1));
-    readonly dateControl2 = new FormControl(new Date());
+    readonly dateControl1 = new FormControl(new Date(2010, 1, 1), {nonNullable: true});
+    readonly dateControl2 = new FormControl(new Date(), {nonNullable: true});
     form = new FormGroup({
         dateForm: new FormControl(new Date('2010-01-01T20:15:00.00'))
     });

@@ -13,10 +13,10 @@ import {TabChangeEvent, TabSetComponent} from '@healthcatalyst/cashmere';
 export class TabsHorizontalExampleComponent {
     selectedIndex = 0;
     tabHidden = false;
-    overflowStyle = new FormControl('more');
+    overflowStyle = new FormControl('more', {nonNullable: true});
     dynamicTabName = 'Renaming Tabs';
     dynamicTabIcon = 'fa-check';
-    tabNameControl = new FormControl(this.dynamicTabName);
+    tabNameControl = new FormControl(this.dynamicTabName, {nonNullable: true});
     dynamicTabs: string[] = [];
 
     @ViewChild('tabSet')

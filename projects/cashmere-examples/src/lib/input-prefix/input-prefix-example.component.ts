@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 /**
  * @title Disabled Inputs with Prefix and Suffix

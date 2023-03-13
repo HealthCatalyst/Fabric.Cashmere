@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 /**
@@ -10,5 +10,5 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['radio-button-align-example.component.scss']
 })
 export class RadioButtonAlignExampleComponent {
-    alignControl = new FormControl('center');
+    alignControl = new FormControl('center', {nonNullable: true});
 }

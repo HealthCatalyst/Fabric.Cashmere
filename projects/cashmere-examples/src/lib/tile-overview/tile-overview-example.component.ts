@@ -10,5 +10,5 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['tile-overview-example.component.scss']
 })
 export class TileOverviewExampleComponent {
-    headerControl = new FormControl('blue');
+    headerControl = new FormControl('blue', {nonNullable: true});
 }

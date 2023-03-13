@@ -8,7 +8,7 @@ interface Doc { id: number, name: string, department: string , disabled?: boolea
     styleUrls: ['./picklist-overview-example.component.scss']
 })
 export class PicklistOverviewExampleComponent {
-    readonly selectedDoctors = new FormControl([]);
+    readonly selectedDoctors = new FormControl([], {nonNullable: true});
     doctors: Doc[] = [
         { id: 1, name: 'Myrtle Higgins', department: "Oncology"},
         { id: 2, name: 'Thomas McCall', department: "Oncology", disabled: true },

@@ -8,7 +8,7 @@ import {BaseDemoComponent} from '../../shared/base-demo.component';
     styleUrls: ['./about-modal.component.scss']
 })
 export class AboutModalComponent extends BaseDemoComponent {
-    public document: string = require('raw-loader!../../../../guides/styles/about.md');
+    public document: string = require('../../../../guides/styles/about.md');
 
     constructor(sectionService: SectionService) {
         super(sectionService);

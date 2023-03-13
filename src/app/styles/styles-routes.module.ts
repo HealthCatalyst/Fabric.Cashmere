@@ -18,7 +18,7 @@ const routes: Routes = [
                 data: {
                     title: 'Launch Screen',
                     category: 'Screens & Messaging',
-                    document: require('raw-loader!../../../guides/styles/launch-screen.md')
+                    document: require('../../../guides/styles/launch-screen.md')
                 }
             },
             {
@@ -27,7 +27,7 @@ const routes: Routes = [
                 data: {
                     title: 'Login Screen',
                     category: 'Screens & Messaging',
-                    document: require('raw-loader!../../../guides/styles/login.md')
+                    document: require('../../../guides/styles/login.md')
                 }
             },
             {
@@ -36,7 +36,7 @@ const routes: Routes = [
                 data: {
                     title: 'Logout Screen',
                     category: 'Screens & Messaging',
-                    document: require('raw-loader!../../../guides/styles/logout.md')
+                    document: require('../../../guides/styles/logout.md')
                 }
             },
             {
@@ -45,7 +45,7 @@ const routes: Routes = [
                 data: {
                     title: 'Error Pages',
                     category: 'Screens & Messaging',
-                    document: require('raw-loader!../../../guides/styles/error.md')
+                    document: require('../../../guides/styles/error.md')
                 }
             },
             {
@@ -69,7 +69,7 @@ const routes: Routes = [
                 data: {
                     title: 'Breadcrumbs',
                     category: 'User Interface',
-                    document: require('raw-loader!../../../guides/styles/breadcrumbs.md')
+                    document: require('../../../guides/styles/breadcrumbs.md')
                 }
             },
             {
@@ -78,7 +78,7 @@ const routes: Routes = [
                 data: {
                     title: 'File Icons',
                     category: 'User Interface',
-                    document: require('raw-loader!../../../guides/styles/file-icons.md')
+                    document: require('../../../guides/styles/file-icons.md')
                 }
             },
             {

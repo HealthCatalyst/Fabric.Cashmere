@@ -13,11 +13,11 @@ export class FormFieldOverviewExampleComponent {
     enabledState = true;
 
     exampleForm: FormGroup = new FormGroup({
-        selectControl: new FormControl('daily'),
-        inputControl: new FormControl(''),
-        radioControl: new FormControl('SM'),
-        checkControl: new FormControl(false),
-        slideControl: new FormControl(true)
+        selectControl: new FormControl('daily', {nonNullable: true}),
+        inputControl: new FormControl('', {nonNullable: true}),
+        radioControl: new FormControl('SM', {nonNullable: true}),
+        checkControl: new FormControl(false, {nonNullable: true}),
+        slideControl: new FormControl(true, {nonNullable: true})
     });
 
     disableToggle(): void {

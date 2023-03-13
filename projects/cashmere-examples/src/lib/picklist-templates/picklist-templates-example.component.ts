@@ -9,7 +9,7 @@ interface Transport { name: string, icon: string, color: string, type: string | 
 })
 export class PicklistTemplatesExampleComponent {
 
-    readonly selected = new FormControl([]);
+    readonly selected = new FormControl([], {nonNullable: true});
     transportOptions: Transport[] = [
         {name: 'Train', icon: 'train', color: 'green', type: 'land'},
         {name: 'Bus', icon: 'bus', color: 'blue', type: 'land'},

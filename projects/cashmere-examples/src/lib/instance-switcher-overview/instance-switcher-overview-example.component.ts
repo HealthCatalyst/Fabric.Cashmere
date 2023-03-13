@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { IInstance, IInstanceSwitcherTooltipText } from '@healthcatalyst/cashmere';
 

@@ -23,7 +23,7 @@ const routes: Routes = [
                 data: {
                     title: 'Foundations',
                     category: 'Power BI',
-                    document: require('raw-loader!../../../guides/analytics/powerbi/foundations.md')
+                    document: require('../../../guides/analytics/powerbi/foundations.md')
                 }
             },
             {
@@ -32,7 +32,7 @@ const routes: Routes = [
                 data: {
                     title: 'Navbar',
                     category: 'Power BI',
-                    document: require('raw-loader!../../../guides/analytics/powerbi/navbar.md')
+                    document: require('../../../guides/analytics/powerbi/navbar.md')
                 }
             },
             {
@@ -41,7 +41,7 @@ const routes: Routes = [
                 data: {
                     title: 'About Page',
                     category: 'Power BI',
-                    document: require('raw-loader!../../../guides/analytics/powerbi/about.md')
+                    document: require('../../../guides/analytics/powerbi/about.md')
                 }
             },
             {
@@ -50,7 +50,7 @@ const routes: Routes = [
                 data: {
                     title: 'Filters',
                     category: 'Power BI',
-                    document: require('raw-loader!../../../guides/analytics/powerbi/filters.md')
+                    document: require('../../../guides/analytics/powerbi/filters.md')
                 }
             },
             {
@@ -59,7 +59,7 @@ const routes: Routes = [
                 data: {
                     title: 'Tabs',
                     category: 'Power BI',
-                    document: require('raw-loader!../../../guides/analytics/powerbi/tabs.md')
+                    document: require('../../../guides/analytics/powerbi/tabs.md')
                 }
             },
             {
@@ -68,7 +68,7 @@ const routes: Routes = [
                 data: {
                     title: 'KPI Metrics',
                     category: 'Power BI',
-                    document: require('raw-loader!../../../guides/analytics/powerbi/kpi-metrics.md')
+                    document: require('../../../guides/analytics/powerbi/kpi-metrics.md')
                 }
             },
             {
@@ -77,7 +77,7 @@ const routes: Routes = [
                 data: {
                     title: 'Charts',
                     category: 'Power BI',
-                    document: require('raw-loader!../../../guides/analytics/powerbi/charts.md')
+                    document: require('../../../guides/analytics/powerbi/charts.md')
                 }
             },
             {
@@ -86,7 +86,7 @@ const routes: Routes = [
                 data: {
                     title: 'Tables',
                     category: 'Power BI',
-                    document: require('raw-loader!../../../guides/analytics/powerbi/tables.md')
+                    document: require('../../../guides/analytics/powerbi/tables.md')
                 }
             },
             {
@@ -103,7 +103,7 @@ const routes: Routes = [
                 data: {
                     title: 'Foundations',
                     category: 'Tableau',
-                    document: require('raw-loader!../../../guides/analytics/tableau/foundations.md')
+                    document: require('../../../guides/analytics/tableau/foundations.md')
                 }
             },
             {
@@ -112,7 +112,7 @@ const routes: Routes = [
                 data: {
                     title: 'Navbar',
                     category: 'Tableau',
-                    document: require('raw-loader!../../../guides/analytics/tableau/navbar.md')
+                    document: require('../../../guides/analytics/tableau/navbar.md')
                 }
             },
             {
@@ -121,7 +121,7 @@ const routes: Routes = [
                 data: {
                     title: 'About Page',
                     category: 'Tableau',
-                    document: require('raw-loader!../../../guides/analytics/tableau/about.md')
+                    document: require('../../../guides/analytics/tableau/about.md')
                 }
             },
             {
@@ -130,7 +130,7 @@ const routes: Routes = [
                 data: {
                     title: 'Filters',
                     category: 'Tableau',
-                    document: require('raw-loader!../../../guides/analytics/tableau/filters.md')
+                    document: require('../../../guides/analytics/tableau/filters.md')
                 }
             },
             {
@@ -139,7 +139,7 @@ const routes: Routes = [
                 data: {
                     title: 'Tabs',
                     category: 'Tableau',
-                    document: require('raw-loader!../../../guides/analytics/tableau/tabs.md')
+                    document: require('../../../guides/analytics/tableau/tabs.md')
                 }
             },
             {
@@ -148,7 +148,7 @@ const routes: Routes = [
                 data: {
                     title: 'KPI Metrics',
                     category: 'Tableau',
-                    document: require('raw-loader!../../../guides/analytics/tableau/kpi-metrics.md')
+                    document: require('../../../guides/analytics/tableau/kpi-metrics.md')
                 }
             },
             {
@@ -157,7 +157,7 @@ const routes: Routes = [
                 data: {
                     title: 'Charts',
                     category: 'Tableau',
-                    document: require('raw-loader!../../../guides/analytics/tableau/charts.md')
+                    document: require('../../../guides/analytics/tableau/charts.md')
                 }
             },
             {
@@ -166,7 +166,7 @@ const routes: Routes = [
                 data: {
                     title: 'Tables',
                     category: 'Tableau',
-                    document: require('raw-loader!../../../guides/analytics/tableau/tables.md')
+                    document: require('../../../guides/analytics/tableau/tables.md')
                 }
             },
             {
@@ -183,7 +183,7 @@ const routes: Routes = [
                 data: {
                     title: 'Foundations',
                     category: 'Qlik',
-                    document: require('raw-loader!../../../guides/analytics/qlik/foundations.md')
+                    document: require('../../../guides/analytics/qlik/foundations.md')
                 }
             },
             {
@@ -192,7 +192,7 @@ const routes: Routes = [
                 data: {
                     title: 'Navbar',
                     category: 'Qlik',
-                    document: require('raw-loader!../../../guides/analytics/qlik/navbar.md')
+                    document: require('../../../guides/analytics/qlik/navbar.md')
                 }
             },
             {
@@ -201,7 +201,7 @@ const routes: Routes = [
                 data: {
                     title: 'About Page',
                     category: 'Qlik',
-                    document: require('raw-loader!../../../guides/analytics/qlik/about.md')
+                    document: require('../../../guides/analytics/qlik/about.md')
                 }
             },
             {
@@ -210,7 +210,7 @@ const routes: Routes = [
                 data: {
                     title: 'Filters',
                     category: 'Qlik',
-                    document: require('raw-loader!../../../guides/analytics/qlik/filters.md')
+                    document: require('../../../guides/analytics/qlik/filters.md')
                 }
             },
             {
@@ -219,7 +219,7 @@ const routes: Routes = [
                 data: {
                     title: 'Tabs',
                     category: 'Qlik',
-                    document: require('raw-loader!../../../guides/analytics/qlik/tabs.md')
+                    document: require('../../../guides/analytics/qlik/tabs.md')
                 }
             },
             {
@@ -228,7 +228,7 @@ const routes: Routes = [
                 data: {
                     title: 'KPI Metrics',
                     category: 'Qlik',
-                    document: require('raw-loader!../../../guides/analytics/qlik/kpi-metrics.md')
+                    document: require('../../../guides/analytics/qlik/kpi-metrics.md')
                 }
             },
             {
@@ -237,7 +237,7 @@ const routes: Routes = [
                 data: {
                     title: 'Charts',
                     category: 'Qlik',
-                    document: require('raw-loader!../../../guides/analytics/qlik/charts.md')
+                    document: require('../../../guides/analytics/qlik/charts.md')
                 }
             },
             {
@@ -246,7 +246,7 @@ const routes: Routes = [
                 data: {
                     title: 'Tables',
                     category: 'Qlik',
-                    document: require('raw-loader!../../../guides/analytics/qlik/tables.md')
+                    document: require('../../../guides/analytics/qlik/tables.md')
                 }
             },
             {
@@ -255,7 +255,7 @@ const routes: Routes = [
                 data: {
                     title: 'Qlik Sense',
                     category: 'Qlik',
-                    document: require('raw-loader!../../../guides/analytics/qlik/qliksense.md')
+                    document: require('../../../guides/analytics/qlik/qliksense.md')
                 }
             },
             {

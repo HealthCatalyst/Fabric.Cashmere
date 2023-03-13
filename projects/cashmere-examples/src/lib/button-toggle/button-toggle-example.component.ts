@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['button-toggle-example.component.scss']
 })
 export class ButtonToggleExampleComponent {
-    readonly isGridView = new FormControl(true);
-    readonly condiments = new FormControl(['Mustard', 'Ketchup']);
+    readonly isGridView = new FormControl(true, {nonNullable: true});
+    readonly condiments = new FormControl(['Mustard', 'Ketchup'], {nonNullable: true});
 }
 

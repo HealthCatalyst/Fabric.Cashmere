@@ -20,7 +20,7 @@ import { MeasurableService } from '../measurable';
 import { MeasurableComponent } from '../measurable/measurable.component';
 import { HcPopoverAnchorDirective } from '../pop';
 import { IInstance, IInstanceSwitcherTooltipText } from './instance-switcher-interfaces';
-import {parseBooleanAttribute} from '../util';
+import { parseBooleanAttribute } from '../util';
 import { FormControl } from '@angular/forms';
 
 type InstanceSwitcherTooltipConfig = IInstanceSwitcherTooltipText & {

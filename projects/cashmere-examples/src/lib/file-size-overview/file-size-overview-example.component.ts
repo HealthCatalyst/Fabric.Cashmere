@@ -9,6 +9,6 @@ import { FormControl } from '@angular/forms';
     templateUrl: 'file-size-overview-example.component.html'
 })
 export class FileSizeOverviewExampleComponent {
-    readonly bytes = new FormControl(123456789);
-    readonly precision = new FormControl(2);
+    readonly bytes = new FormControl(123456789, {nonNullable: true});
+    readonly precision = new FormControl(2, {nonNullable: true});
 }

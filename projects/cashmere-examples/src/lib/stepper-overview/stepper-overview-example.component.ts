@@ -12,11 +12,11 @@ import {FormControl} from '@angular/forms';
 })
 export class StepperOverviewExampleComponent implements OnInit {
     progressSteps: StepInterface[];
-    readonly currentColorController = new FormControl('green');
+    currentColorController = new FormControl('green');
     colorOptions: string[] = ['green', 'blue', 'purple', 'orange', 'red'];
-    readonly currentTypeController = new FormControl('arrow');
+    currentTypeController = new FormControl('arrow');
     typeOptions: string[] = ['arrow', 'isolated'];
-    readonly showStepsController = new FormControl(true);
+    showStepsController = new FormControl(true);
     currentStep = 2;
 
     ngOnInit(): void {

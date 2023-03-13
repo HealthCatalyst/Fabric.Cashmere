@@ -28,7 +28,7 @@ const routes: Routes = [
                 data: {
                     title: 'Trademarks',
                     category: 'Brand',
-                    document: require('raw-loader!../../../guides/content/trademarks.md')
+                    document: require('../../../guides/content/trademarks.md')
                 }
             },
             {
@@ -37,7 +37,7 @@ const routes: Routes = [
                 data: {
                     title: 'References',
                     category: 'Brand',
-                    document: require('raw-loader!../../../guides/content/references.md')
+                    document: require('../../../guides/content/references.md')
                 }
             },
             {
@@ -82,7 +82,7 @@ const routes: Routes = [
                 data: {
                     title: 'Overview',
                     category: 'UX Writing',
-                    document: require('raw-loader!../../../guides/content/ux-writing-overview.md')
+                    document: require('../../../guides/content/ux-writing-overview.md')
                 }
             },
             {
@@ -91,7 +91,7 @@ const routes: Routes = [
                 data: {
                     title: 'Accessibility',
                     category: 'UX Writing',
-                    document: require('raw-loader!../../../guides/content/ux-writing-accessibility.md')
+                    document: require('../../../guides/content/ux-writing-accessibility.md')
                 }
             },
             {
@@ -100,7 +100,7 @@ const routes: Routes = [
                 data: {
                     title: 'Writing Choices',
                     category: 'UX Writing',
-                    document: require('raw-loader!../../../guides/content/ux-writing-writing-choices.md')
+                    document: require('../../../guides/content/ux-writing-writing-choices.md')
                 }
             },
             {
@@ -109,7 +109,7 @@ const routes: Routes = [
                 data: {
                     title: 'UX Elements',
                     category: 'UX Writing',
-                    document: require('raw-loader!../../../guides/content/ux-writing-ux-elements.md')
+                    document: require('../../../guides/content/ux-writing-ux-elements.md')
                 }
             },
             {
@@ -118,7 +118,7 @@ const routes: Routes = [
                 data: {
                     title: 'Resources',
                     category: 'UX Writing',
-                    document: require('raw-loader!../../../guides/content/ux-writing-resources.md')
+                    document: require('../../../guides/content/ux-writing-resources.md')
                 }
             },
             {

@@ -11,9 +11,9 @@ export class DateRangeExampleComponent implements OnInit {
     range: DateRange = {fromDate: new Date(), toDate: new Date()};
     selected: number | DateRange = this.range;
     options: DateRangeOptions;
-    optionsControlExcludeWeekends = new FormControl(false);
-    optionsControlStartDateRequired = new FormControl(true);
-    optionsControlEndDateRequired = new FormControl(true);
+    optionsControlExcludeWeekends = new FormControl(false, {nonNullable: true});
+    optionsControlStartDateRequired = new FormControl(true, {nonNullable: true});
+    optionsControlEndDateRequired = new FormControl(true, {nonNullable: true});
     presets: Array<PresetItem> = [];
     presetSelection = 'None';
 

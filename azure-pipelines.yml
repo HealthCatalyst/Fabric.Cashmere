@@ -5,7 +5,7 @@ trigger:
       - master
       - dev
       # TODO: make `main` the main branch
-      - main 
+      - main
 
 variables:
   isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
@@ -73,7 +73,7 @@ steps:
     git push origin gh-pages --force
   condition: and(succeeded(), eq(variables.isMain, 'true'))
   displayName: 'publish GitHub pages (Docs site)'
-  
+
 - script: |
     npx semantic-release
   displayName: 'publish NPM package'

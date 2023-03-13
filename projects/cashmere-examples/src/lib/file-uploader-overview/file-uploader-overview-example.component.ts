@@ -10,8 +10,8 @@ import { FormControl } from '@angular/forms';
 })
 export class FileUploaderOverviewExampleComponent {
     selectedFiles = new FormControl();
-    multipleFiles = new FormControl(false);
-    controlTight = new FormControl(false);
+    multipleFiles = new FormControl(false, {nonNullable: true});
+    controlTight = new FormControl(false, {nonNullable: true});
 
     get selectedFileNames(): string {
         let printString = '';
