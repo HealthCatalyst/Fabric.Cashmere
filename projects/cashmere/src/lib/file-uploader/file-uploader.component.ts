@@ -167,7 +167,8 @@ export class FileUploaderComponent extends HcFormControlComponent implements Aft
 
     /** Clears any selected files and returns to the initial state */
     reset(): void {
-        this._fileList = new FileList();
+        this._fileInputElement.nativeElement.value = '';
+        this._fileList = this._fileInputElement.nativeElement.files;
         this._fileNames = [];
     }
 

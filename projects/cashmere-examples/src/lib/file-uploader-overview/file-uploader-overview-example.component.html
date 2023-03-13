@@ -3,6 +3,7 @@
 <hc-form-field [tight]="controlTight.value">
     <hc-label>Select a file to upload:</hc-label>
     <hc-file-uploader
+        #fileUploaderControl
         [formControl]="selectedFiles"
         [multiple]="multipleFiles.value"
         subtext="2 MB maximum"
@@ -10,6 +11,8 @@
     ></hc-file-uploader>
     <hc-error>File too large. Only files under 2 MB are supported.</hc-error>
 </hc-form-field>
+
+<button hc-button buttonStyle="secondary" (click)="fileUploaderControl.reset()" class="reset-button">Reset Control</button>
 
 <hc-checkbox [formControl]="multipleFiles">Allow multiple file selections</hc-checkbox>
 
