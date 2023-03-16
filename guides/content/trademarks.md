@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated February 21, 2023
+###### Last updated March 15, 2023
 
 :::
 
@@ -13,8 +13,8 @@ Registered Marks (currently in use) – **Apply ®**:
 -   HAS
 -   HealthCatalyst
 -   Ignite Change (minimal use)
--   Leading Wisely
 -   Touchstone
+-   Twistle
 -   Vitalware
 -   VitalCDM
 -   VitalKnowledge
@@ -80,6 +80,7 @@ _The ™ symbol can be applied to any unregistered trademark_
 -   CORUS
 -   Healthcare Quality Catalyst
 -   Healthfinch
+-   Leading Wisely
 -   Knowledge Edge
 -   KnowledgeEdge
 -   MBL
@@ -104,15 +105,15 @@ If any trademark (®/™) used above appears multiple times on a page or in a do
 
 Do not use trademarked terms as nouns—only use as an adjective. For example:
 
--   **Yes:** The HAS® conference… or The CORUS™ Suite
--   **No:** HAS® is an awesome conference. CORUS™ is more than some outdated costing system.
+-   **Yes:** The HAS® conference… or Healthcare.AI™ technology.
+-   **No:** HAS® is an awesome conference. Healthcare.AI™ provides one-button AI access into existing BI tools and applications.
 
 &nbsp;
 
 Further, use the mark as a proper adjective modifying a noun that identifies the kind of product offered. Use the trademark together with the generic name of the product/service.
 
--   **Yes:** Health systems that value a next-generation costing system rely on the CORUS™ software.
--   **No:** Health systems that value a next-generation costing system rely on CORUS™.
+-   **Yes:** Health systems looking for a transformational AI solution choose the Healthcare.AI™ offering.
+-   **No:** Health systems looking for a transformational AI solution choose Healthcare.AI™.
 
 &nbsp;
 
