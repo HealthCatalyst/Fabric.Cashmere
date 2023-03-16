@@ -11,13 +11,11 @@ Make sure to install the ng-select version compatible with the angular version i
 
 | Angular| ng-select|
 | ------|:------:|
+| >=14.0.0 <15.0.0 *(latest version of Cashmere)* | v9.x |
+| >=13.0.0 <14.0.0 | v8.x |
 | >=12.0.0 <13.0.0 | v7.x |
 | >=11.0.0 <12.0.0 | v6.x |
 | >=10.0.0 <11.0.0 | v5.x |
-| >=9.0.0 <10.0.0  | v4.x |
-| >=8.0.0 <9.0.0   | v3.x |
-| >=6.0.0 <8.0.0   | v2.x |
-| v5.x.x           | v1.x |
 
 
 ### Step 2: Import NgSelectModule and FormsModule.
