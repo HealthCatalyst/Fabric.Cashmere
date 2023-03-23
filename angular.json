@@ -19,23 +19,8 @@
             "allowedCommonJsDependencies": [
                 "sugar",
                 "highlight.js",
-                "markdown-it-named-headers",
-                "camel-case",
-                "constant-case",
-                "dot-case",
-                "header-case",
-                "is-lower-case",
-                "is-upper-case",
-                "lower-case-first",
-                "no-case",
-                "param-case",
-                "pascal-case",
-                "path-case",
-                "sentence-case",
-                "snake-case",
-                "swap-case",
-                "title-case",
-                "upper-case-first"
+                "markdown-it-container",
+                "markdown-it-named-headers"
             ],
             "customWebpackConfig": {
                 "path": "./webpack.config.js",

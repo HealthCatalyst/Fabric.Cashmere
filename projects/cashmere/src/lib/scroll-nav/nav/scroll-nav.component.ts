@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewEncapsulation, AfterViewInit, QueryList, ContentChildren, Renderer2, ViewChild, Input, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { some, find, map, differenceBy } from 'lodash';
+import { some, find, map, differenceBy } from 'lodash-es';
 import { ScrollNavLinkDirective } from './scroll-nav-link.directive';
 import { CdkScrollable } from '@angular/cdk/overlay';
 

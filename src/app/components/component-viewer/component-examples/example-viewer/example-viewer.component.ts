@@ -1,11 +1,10 @@
-import { Component, Input, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { titleCase } from 'change-case';
+import {Component, Input, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import stackblitz from '@stackblitz/sdk';
-import { EXAMPLE_COMPONENTS } from '@healthcatalyst/cashmere-examples';
-import { ApplicationInsightsService } from '../../../../shared/application-insights/application-insights.service';
-import { ActivatedRoute } from '@angular/router';
-import { TabSetComponent } from 'projects/cashmere/src/lib/tabs';
+import {EXAMPLE_COMPONENTS} from '@healthcatalyst/cashmere-examples';
+import {ApplicationInsightsService} from '../../../../shared/application-insights/application-insights.service';
+import {ActivatedRoute} from '@angular/router';
+import {TabSetComponent} from 'projects/cashmere/src/lib/tabs';
 
 @Component({
     selector: 'hc-example-viewer',
@@ -13,7 +12,7 @@ import { TabSetComponent } from 'projects/cashmere/src/lib/tabs';
     styleUrls: ['example-viewer.component.scss']
 })
 export class ExampleViewerComponent implements OnInit {
-    @ViewChild('exampleContainer', { read: ViewContainerRef, static: true })
+    @ViewChild('exampleContainer', {read: ViewContainerRef, static: true})
     exampleContainer: ViewContainerRef;
     @ViewChild('tabSet') _tabSet: TabSetComponent;
 
@@ -23,7 +22,7 @@ export class ExampleViewerComponent implements OnInit {
     private appInsights;
     private selected: string;
     private section: string;
-    exampleFiles: Array<{ name: string; contents: string }> = [];
+    exampleFiles: Array<{name: string; contents: string}> = [];
 
     constructor(
         private httpClient: HttpClient,
@@ -53,7 +52,7 @@ export class ExampleViewerComponent implements OnInit {
     }
 
     get exampleTitle(): string {
-        return titleCase(this._example);
+        return this.titleCase(this._example);
     }
 
     async ngOnInit(): Promise<void> {
@@ -66,12 +65,12 @@ export class ExampleViewerComponent implements OnInit {
                     const found = this._tabSet._tabs.toArray().find(t => t.tabTitle === this.selected);
                     this._tabSet.selectTab(found ? found : 0);
                     const el = document.getElementById(this.section);
-                    if ( el ) {
+                    if (el) {
                         el.scrollIntoView();
                     }
                 } else if (this._example === this.section) {
                     const el = document.getElementById(this.section);
-                    if ( el ) {
+                    if (el) {
                         el.scrollIntoView();
                     }
                 }
@@ -146,6 +145,37 @@ export class ExampleViewerComponent implements OnInit {
                 hideDevTools: false
             }
         );
+    }
+
+    titleCase(input: string): string {
+        const SMALL_WORDS = /\b(?:an?d?|a[st]|because|but|by|en|for|i[fn]|neither|nor|o[fnr]|only|over|per|so|some|tha[tn]|the|to|up|upon|vs?\.?|versus|via|when|with|without|yet)\b/i;
+        const TOKENS = /[^\s:–—-]+|./g;
+        const WHITESPACE = /\s/;
+        const IS_MANUAL_CASE = /.(?=[A-Z]|\..)/;
+        const ALPHANUMERIC_PATTERN = /[A-Za-z0-9\u00C0-\u00FF]/;
+        let result = '';
+        let m: RegExpExecArray | null;
+
+        while ((m = TOKENS.exec(input)) !== null) {
+            const {0: token, index} = m;
+
+            if (
+                // Ignore already capitalized words.
+                !IS_MANUAL_CASE.test(token) &&
+                // Ignore small words except at beginning or end.
+                (!SMALL_WORDS.test(token) || index === 0 || index + token.length === input.length) &&
+                // Ignore URLs.
+                (input.charAt(index + token.length) !== ':' || WHITESPACE.test(input.charAt(index + token.length + 1)))
+            ) {
+                // Find and uppercase first word character, skips over *modifiers*.
+                result += token.replace(ALPHANUMERIC_PATTERN, m => m.toUpperCase());
+                continue;
+            }
+
+            result += token;
+        }
+
+        return result;
     }
 }
 
