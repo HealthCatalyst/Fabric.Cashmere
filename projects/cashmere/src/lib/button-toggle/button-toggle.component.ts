@@ -47,7 +47,7 @@ export class ButtonToggleComponent {
             this._hostClass += ' hc-toggle-disabled';
         }
         if ( !this._disabled && this._hostClass.includes( 'hc-toggle-disabled' )) {
-            this._hostClass.replace( ' hc-toggle-disabled', '' );
+            this._hostClass = this._hostClass.replace( ' hc-toggle-disabled', '' );
         }
     }
 
