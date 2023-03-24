@@ -121,7 +121,7 @@
     "select": {
         "name": "Select",
         "category": "forms",
-        "examples": ["select-standard", "select-forms", "select-disabled", "select-validation", "select-compare-with"],
+        "examples": ["select-standard", "select-forms", "select-placeholder", "select-validation", "select-compare-with"],
         "usageDoc": true
     },
     "slide-toggle": {"name": "Slide Toggle", "category": "forms", "examples": ["slide-toggle-overview", "slide-toggle-forms"], "usageDoc": false},
