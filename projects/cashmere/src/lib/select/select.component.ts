@@ -42,6 +42,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     private _form: NgForm | FormGroupDirective | null;
     private _unsubscribe = new Subject<void>();
     private _value: any = '';
+    private _placeholderValue: any = '';
     get _optionMap(): Map<string, any> {
         return this.selectService._optionMap;
     }
@@ -50,9 +51,26 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     @ViewChild('selectInput')
     _nativeSelect: ElementRef;
 
+    @ViewChild('selectPlaceholder')
+    _nativePlaceholder: ElementRef;
+
     /** Optional string of text to appear before selection is made */
     @Input()
     placeholder: string;
+
+    /** Optional value for when the placeholder should appear -
+     * defaults to the empty string, but could be set to `null` or `undefined` */
+    @Input()
+    get placeholderValue(): any {
+        return this._placeholderValue;
+    }
+    set placeholderValue( val: any ) {
+        if ( this.placeholder && this._nativePlaceholder ) {
+            this._placeholderValue = val;
+            this._renderer.setProperty( this._nativePlaceholder.nativeElement, 'value', val );
+            this._applyValueToNativeControl();
+        }
+    }
 
     /** Enables or disables the component */
     @Input()

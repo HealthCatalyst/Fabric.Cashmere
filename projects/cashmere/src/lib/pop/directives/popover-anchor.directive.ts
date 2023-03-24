@@ -59,7 +59,8 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         popover.restoreFocus = false;
         popover.maxWidth = this._maxWidth;
         this.attachedPopover = popover;
-        this.trigger = 'hover';
+        // Don't enable the tooltip if the content string is empty
+        this.trigger = value ? 'hover' : 'none';
         this.popoverDelay = 300;
     }
     private _tooltipText: string;

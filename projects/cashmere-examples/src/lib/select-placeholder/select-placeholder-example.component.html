@@ -1,0 +1,25 @@
+<div class="select-sample">
+    <hc-form-field inline>
+        <hc-label>Select your facility:</hc-label>
+        <hc-select placeholder="Select a city" [placeholderValue]="phVal" [formControl]="selectVal">
+            <option value="1">Philadelphia</option>
+            <option value="2">Atlanta</option>
+        </hc-select>
+    </hc-form-field>
+    <button hc-button (click)="reset()">Reset to Empty String</button>
+</div>
+
+<em>
+    The placeholder option will default to a value of <code>""</code>.
+    But if you can set it another value as needed.
+    Note that changing the placeholder value below deselects the placeholder.
+</em>
+
+<hc-form-field inline>
+    <hc-label>Placeholder value:</hc-label>
+    <hc-radio-group (change)="updatePlaceholderVal($event)" [inline]="true">
+        <hc-radio-button value="1" [checked]="true">Empty String</hc-radio-button>
+        <hc-radio-button value="2">Null</hc-radio-button>
+        <hc-radio-button value="3">Undefined</hc-radio-button>
+    </hc-radio-group>
+</hc-form-field>
