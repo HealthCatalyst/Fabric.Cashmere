@@ -8,18 +8,22 @@ import {ModalHeaderComponent} from './modal-header.component';
 import {ModalBodyComponent} from './modal-body.component';
 import {ModalComponent} from './modal.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {ConfirmationModalService} from './confirmation-modal/confirmation-modal.service';
+import { ConfirmationModalComponent } from './confirmation-modal/confirmation-modal.component';
+import { ButtonModule } from '../button/button.module';
 
 @NgModule({
-    imports: [CommonModule, DragDropModule],
+    imports: [CommonModule, DragDropModule, ButtonModule],
     declarations: [
         ModalOverlayComponent,
         ModalWindowComponent,
         ModalHeaderComponent,
         ModalBodyComponent,
         ModalFooterComponent,
-        ModalComponent
+        ModalComponent,
+        ConfirmationModalComponent
     ],
     exports: [ModalHeaderComponent, ModalBodyComponent, ModalFooterComponent, ModalComponent],
-    providers: [ModalService]
+    providers: [ModalService, ConfirmationModalService]
 })
 export class ModalModule {}

@@ -2,6 +2,8 @@ export {ActiveModal} from './active-modal';
 export {ModalComponent} from './modal.component';
 export {ModalModule} from './modal.module';
 export {ModalService, ModalContentType} from './modal.service';
+export {ConfirmationModalService} from './confirmation-modal/confirmation-modal.service';
+export {ConfirmationOptions} from './confirmation-modal/confirmation-modal-options.model';
 export {HcModal} from './modal';
 export {ModalBodyComponent} from './modal-body.component';
 export {ModalFooterComponent} from './modal-footer.component';

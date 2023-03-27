@@ -1,0 +1,82 @@
+@import './colors';
+@import './functions';
+@import './mixins';
+@import './icons';
+
+@mixin hc-confirm-modal-header-inner() {
+    display: flex;
+    align-items: center;
+}
+
+@mixin hc-confirm-message-container() {
+    display: flex;
+    align-items: start;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+@mixin hc-confirm-modal-minimal-body() {
+    margin-top: 24px;
+
+    .hc-confirm-message-container {
+        font-size: 18px;
+    }
+}
+
+// ### Icons
+@mixin hc-confirm-modal-icons() {
+    .hc-ico-question, .hc-ico-trash {
+        display: inline-block;
+        height: 18px;
+        width: 18px;
+        opacity: 0.8;
+        background-repeat: no-repeat;
+    }
+
+    .hc-ico-question {
+        background-image: url($ico-question);
+    }
+
+    .hc-ico-trash {
+        background-image: url($ico-trash);
+    }
+}
+
+@mixin hc-confirm-modal-body-ico() {
+    opacity: 0.3;
+    margin-right: 16px;
+    margin-top: -2px;
+    width: 28px;
+    height: 28px;
+    font-size: 28px;
+}
+
+// ### Footer
+@mixin hc-confirm-modal-footer-container() {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin hc-confirm-modal-minimal-footer() {
+    border-top: none;
+}
+
+@mixin hc-confirm-modal-cancel-btn() {
+    min-width: 120px;
+}
+
+@mixin hc-confirm-modal-info-hover() {
+    height: 16px;
+    width: 16px;
+    opacity: 0.5;
+    display: inline-block;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url($ico-info);
+
+    &:hover {
+        opacity: 0.7;
+    }
+}

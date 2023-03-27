@@ -1,0 +1,34 @@
+@import '@healthcatalyst/cashmere/scss/colors';
+
+.example-column {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 3%;
+    width: 30%;
+}
+
+@media only screen and (max-width: 576px) {
+    .example-column {
+        margin-right: 0;
+        width: 100%;
+    }
+}
+
+.example-field {
+    width: 100%;
+    display: block;
+}
+
+.example-field-half {
+    width: 45%;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+text-area {
+    height: 200px;
+}
+
+.example-field-toggle {
+    margin-top: 18px;
+}

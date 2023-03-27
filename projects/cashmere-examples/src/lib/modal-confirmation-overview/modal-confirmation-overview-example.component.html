@@ -1,0 +1,86 @@
+<div class="example-column">
+    <hc-form-field class="example-field" [tight]="true">
+        <hc-label>Header Text:</hc-label>
+        <input hcInput [formControl]="headerText" />
+    </hc-form-field>
+
+    <hc-form-field class="example-field" [tight]="true">
+        <hc-label>Footer Tooltip Help Text:</hc-label>
+        <input hcInput [formControl]="footerTooltipText" />
+    </hc-form-field>
+
+    <hc-form-field class="example-field" [tight]="true">
+        <hc-label>Confirm Button Text:</hc-label>
+        <input hcInput [formControl]="confirmButtonText" />
+    </hc-form-field>
+
+    <hc-form-field class="example-field" [tight]="true">
+        <hc-label>Cancel Button Text:</hc-label>
+        <input hcInput [formControl]="cancelButtonText" />
+    </hc-form-field>
+</div>
+
+<div class="example-column">
+    <hc-form-field class="example-field" [tight]="true">
+        <hc-label>Icon:</hc-label>
+        <hc-select [formControl]="icon">
+            <option value="fa fa-bolt">Bolt</option>
+            <option value="fa fa-bell">Bell</option>
+            <option value="fa fa-star">Star</option>
+            <option value="fa fa-bug">Bug</option>
+            <option value="fa fa-cube">Cube</option>
+            <option value="fa fa-globe">Globe</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field class="example-field" [tight]="true">
+        <hc-label>Confirm Button Icon:</hc-label>
+        <hc-select [formControl]="confirmButtonIcon">
+            <option value="fa fa-bolt">Bolt</option>
+            <option value="fa fa-bell">Bell</option>
+            <option value="fa fa-star">Star</option>
+            <option value="fa fa-bug">Bug</option>
+            <option value="fa fa-cube">Cube</option>
+            <option value="fa fa-globe">Globe</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field class="example-field" [tight]="true">
+        <hc-label>Modal Size:</hc-label>
+        <hc-select [formControl]="modalSize">
+            <option value="auto">Auto</option>
+            <option value="sm">Small</option>
+            <option value="md">Medium</option>
+            <option value="lg">Large</option>
+            <option value="xl">Extra Large</option>
+        </hc-select>
+    </hc-form-field>
+
+    <hc-form-field class="example-field example-field-toggle" [tight]="true">
+        <hc-slide-toggle
+            sideLabel="Action is Destructive"
+            insideLabel="yes"
+            buttonStyle="purple"
+            [formControl]="confirmButtonIsDestructive"
+        ></hc-slide-toggle>
+    </hc-form-field>
+</div>
+
+<div class="example-column">
+    <hc-form-field class="example-field">
+        <hc-label>Confirmation Message:</hc-label>
+        <textarea hcInput rows="6" [formControl]="messageHTML"></textarea>
+    </hc-form-field>
+
+    <hc-form-field class="example-field-half" [tight]="true">
+        <hc-checkbox [formControl]="modalIsResizable">Resizable</hc-checkbox>
+    </hc-form-field>
+
+    <hc-form-field class="example-field-half" [tight]="true">
+        <hc-checkbox [formControl]="modalIsDraggable">Draggable</hc-checkbox>
+    </hc-form-field>
+</div>
+
+<button hc-button buttonStyle="primary-alt" (click)="open()" class="demo-button">
+    Open modal
+</button>
