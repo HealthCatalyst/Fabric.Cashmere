@@ -18,7 +18,7 @@ import {CdkScrollable} from '@angular/cdk/scrolling';
 import {Subject} from 'rxjs';
 import {HcScrollNavComponent} from '../nav/scroll-nav.component';
 import {takeUntil} from 'rxjs/operators';
-import {differenceBy} from 'lodash-es';
+import {differenceBy} from 'lodash';
 import {ScrollNavTargetDirective} from './scroll-nav-target.directive';
 
 /** Contains scrollable content that is navigable via `hc-scroll-nav` links. */
