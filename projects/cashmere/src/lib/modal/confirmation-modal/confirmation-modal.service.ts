@@ -7,7 +7,7 @@ import { ConfirmationOptions } from './confirmation-modal-options.model';
 import { ConfirmationModalComponent } from './confirmation-modal.component';
 
 /**
- * Convenient service for generating modals requesting a confirm/cancel response.
+ * Convenient service for presenting confirmation modals (with minimal code). No markup or new files required.
  */
 @Injectable({
     providedIn: 'root'
@@ -28,7 +28,7 @@ export class ConfirmationModalService {
 
 
     // Default options for the content of a delete confirmation modal
-    private get defaultDeleteOptions(): ConfirmationOptions {
+    private get defaultDestructiveOptions(): ConfirmationOptions {
         return {
             message: 'Are you sure you want to delete this item?',
             headerText: 'Delete item?',
@@ -47,13 +47,13 @@ export class ConfirmationModalService {
     }
 
     /**
-     * Opens a confirmation modal pre-populated with default delete options.
+     * Opens a confirmation modal pre-populated with default options for a destructive action.
      * @param contentOptions Options to configure the content of the confirmation modal
      * @param modalOptions Options to configure the modal window itself
      * @returns True if the user confirmed the action, false if they cancelled
      */
-    confirmDelete(contentOptions: ConfirmationOptions, modalOptions?: ModalOptions): Observable<boolean> {
-        const mergedDeleteContentOptions = Object.assign(this.defaultDeleteOptions, contentOptions);
+    confirmDestructive(contentOptions: ConfirmationOptions, modalOptions?: ModalOptions): Observable<boolean> {
+        const mergedDeleteContentOptions = Object.assign(this.defaultDestructiveOptions, contentOptions);
         return this.confirm(mergedDeleteContentOptions, modalOptions);
     }
 

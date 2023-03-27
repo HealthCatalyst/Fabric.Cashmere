@@ -50,7 +50,7 @@ export class ModalConfirmationSimpleExampleComponent {
 
         // call confirmDelete() to present modal with deletion styles, subscribe to the result
         this.confirmService
-            .confirmDelete(options)
+            .confirmDestructive(options)
             .subscribe(confirmed => {
                 if(confirmed) {
                     console.log("Delete the thing.");
