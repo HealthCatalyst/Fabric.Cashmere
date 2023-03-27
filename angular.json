@@ -19,6 +19,7 @@
             "allowedCommonJsDependencies": [
                 "sugar",
                 "highlight.js",
+                "lodash",
                 "markdown-it-container",
                 "markdown-it-named-headers"
             ],
