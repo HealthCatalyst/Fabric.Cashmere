@@ -1,0 +1,47 @@
+@import "../../sass/modal-confirm.scss";
+
+.hc-confirm-modal-header-inner {
+    @include hc-confirm-modal-header-inner();
+}
+
+.hc-confirm-message-container {
+    @include hc-confirm-message-container();
+}
+
+.hc-confirm-modal-body {
+    @include hc-confirm-modal-body();
+}
+
+.hc-modal-body.hc-confirm-modal-minimal-body {
+    @include hc-confirm-modal-minimal-body();
+}
+
+// ### Icons
+.hc-confirm-modal {
+    @include hc-confirm-modal-icons();
+
+    .hc-confirm-modal-body-ico {
+        @include hc-confirm-modal-body-ico();
+    }
+}
+
+.hc-confirm-modal-header-ico {
+    @include hc-confirm-modal-header-ico();
+}
+
+// ### Footer
+.hc-confirm-modal-footer-container {
+    @include hc-confirm-modal-footer-container();
+}
+
+.hc-modal-footer.hc-confirm-modal-minimal-footer {
+    @include hc-confirm-modal-minimal-footer();
+}
+
+.hc-confirm-modal-cancel-btn {
+    @include hc-confirm-modal-cancel-btn();
+}
+
+.hc-confirm-modal-info-hover {
+    @include hc-confirm-modal-info-hover();
+}
