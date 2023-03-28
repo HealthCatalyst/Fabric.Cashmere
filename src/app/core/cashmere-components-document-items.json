@@ -49,7 +49,7 @@
         "usageDoc": true
     },
     "list": {"name": "List", "category": "layout", "examples": ["list-overview"]},
-    "modal": {"name": "Modal", "category": "popups", "examples": ["modal-overview"]},
+    "modal": {"name": "Modal", "category": "popups", "examples": ["modal-overview", "modal-simple", "modal-simple-overview"]},
     "multiselect": {
         "name": "Multiselect & Typeahead",
         "category": "forms",

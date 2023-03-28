@@ -1,0 +1,31 @@
+<hc-modal class="hc-confirm-modal">
+    <hc-modal-header *ngIf="options.headerText">
+        <span class="hc-confirm-modal-header-inner">
+            <span *ngIf="options.icon" [ngClass]="[options.icon, 'hc-confirm-modal-header-ico']"></span>
+            {{ options.headerText }}
+        </span>
+    </hc-modal-header>
+    <hc-modal-body [class.hc-confirm-modal-minimal-body]="!options.headerText" [class.hc-confirm-modal-preserve-whitespace]="options.preserveMessageWhitespace" class="hc-confirm-modal-body">
+        <div class="hc-confirm-message-container">
+            <span *ngIf="options.icon && !options.headerText" [ngClass]="[options.icon, 'hc-confirm-modal-body-ico']"></span>
+            <div *ngIf="options.messageHTML" [innerHtml]="options.messageHTML"></div>
+            <div *ngIf="!options.messageHTML">{{ options.message }}</div>
+        </div>
+    </hc-modal-body>
+    <hc-modal-footer [class.hc-confirm-modal-minimal-footer]="!options.headerText" class="hc-confirm-modal-footer-container">
+        <div>
+            <span *ngIf="options.footerTooltipText" class="hc-confirm-modal-info-hover" [hcTooltip]="options.footerTooltipText"></span>
+        </div>
+        <div>
+            <button *ngIf="options.cancelButtonText" hc-button class="hc-confirm-modal-cancel-btn" [buttonStyle]="options.cancelButtonStyle || 'link'" (click)="cancel()">{{ options.cancelButtonText }}</button>
+            <button
+                hc-button
+                [buttonStyle]="options.confirmButtonStyle || (options.confirmButtonIsDestructive ? 'destructive' : 'primary')"
+                (click)="confirm()"
+            >
+                <span *ngIf="options.confirmButtonIcon" [ngClass]="[options.confirmButtonIcon, 'hc-icon-left']"></span>
+                {{ options.confirmButtonText }}
+            </button>
+        </div>
+    </hc-modal-footer>
+</hc-modal>

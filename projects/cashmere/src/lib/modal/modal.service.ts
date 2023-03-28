@@ -14,6 +14,10 @@ import {
 } from '@angular/core';
 import {ModalOptions} from './modal-options';
 import {ActiveModal} from './active-modal';
+import { getDefaultAlertOptions, getDefaultConfirmationOptions, getDefaultDestructiveOptions, getDefaultModalOptions, SimpleModalOptions } from './simple-modal/simple-modal-options.model';
+import { Observable } from 'rxjs';
+import { SimpleModalComponent } from './simple-modal/simple-modal.component';
+import { map } from 'rxjs/operators';
 
 export type ModalContentType = Type<unknown> | TemplateRef<unknown>;
 
@@ -158,6 +162,51 @@ export class ModalService {
         });
 
         return modal;
+    }
+
+    /**
+     * Opens a confirmation modal pre-populated with default options for a destructive action.
+     * @param contentOptions Options to configure the content of the confirmation modal
+     * @param modalOptions Options to configure the modal window itself
+     * @returns True if the user confirmed the action, false if they cancelled
+     */
+    confirmDestructive(contentOptions: SimpleModalOptions, modalOptions?: ModalOptions): Observable<boolean> {
+        const mergedDeleteContentOptions = Object.assign(getDefaultDestructiveOptions(), contentOptions);
+        return this.confirm(mergedDeleteContentOptions, modalOptions);
+    }
+
+    /**
+     * Opens a simple confirmation modal with a confirm and cancel button.
+     * @param contentOptions Options to configure the content of the confirmation modal
+     * @param modalOptions Options to configure the modal window itself
+     * @returns True if the user confirmed the action, false if they cancelled
+     */
+    confirm(contentOptions: SimpleModalOptions, modalOptions?: ModalOptions): Observable<boolean> {
+        const mergedContentOptions = Object.assign(getDefaultConfirmationOptions(), contentOptions);
+        return this._openSimpleModal(mergedContentOptions, modalOptions);
+    }
+
+    /**
+     * Opens a simple alert modal
+     * @param contentOptions Options to configure the content of the confirmation modal
+     * @param modalOptions Options to configure the modal window itself
+     * @returns True when the user confirms
+     */
+    alert(contentOptions: SimpleModalOptions, modalOptions?: ModalOptions): Observable<boolean> {
+        const mergedContentOptions = Object.assign(getDefaultAlertOptions(), contentOptions);
+        const mergedModalOptions = Object.assign({size: 'sm'}, modalOptions);
+        return this._openSimpleModal(mergedContentOptions, mergedModalOptions);
+    }
+
+    /** Convenience function for opening a simple alert or confirmation modal w/ minimal boilerplate */
+    _openSimpleModal(contentOptions: SimpleModalOptions, modalOptions?: ModalOptions): Observable<boolean> {
+        const mergedContentOptions = Object.assign(getDefaultConfirmationOptions(), contentOptions);
+
+        const mergedModalOptions = Object.assign(getDefaultModalOptions(), modalOptions);
+        mergedModalOptions.data = mergedContentOptions;
+
+        const modalRef = this.open(SimpleModalComponent, mergedModalOptions);
+        return modalRef.result.pipe(map(result => result as boolean));
     }
 
     /** Restore focus to the element focused before the popover opened. Also destroy trap. */

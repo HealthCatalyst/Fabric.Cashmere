@@ -8,16 +8,19 @@ import {ModalHeaderComponent} from './modal-header.component';
 import {ModalBodyComponent} from './modal-body.component';
 import {ModalComponent} from './modal.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { SimpleModalComponent } from './simple-modal/simple-modal.component';
+import { ButtonModule } from '../button/button.module';
 
 @NgModule({
-    imports: [CommonModule, DragDropModule],
+    imports: [CommonModule, DragDropModule, ButtonModule],
     declarations: [
         ModalOverlayComponent,
         ModalWindowComponent,
         ModalHeaderComponent,
         ModalBodyComponent,
         ModalFooterComponent,
-        ModalComponent
+        ModalComponent,
+        SimpleModalComponent
     ],
     exports: [ModalHeaderComponent, ModalBodyComponent, ModalFooterComponent, ModalComponent],
     providers: [ModalService]
