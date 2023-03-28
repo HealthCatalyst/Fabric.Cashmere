@@ -5,7 +5,7 @@
             {{ options.headerText }}
         </span>
     </hc-modal-header>
-    <hc-modal-body [class.hc-confirm-modal-minimal-body]="!options.headerText" class="hc-confirm-modal-body">
+    <hc-modal-body [class.hc-confirm-modal-minimal-body]="!options.headerText" [class.hc-confirm-modal-preserve-whitespace]="options.preserveMessageWhitespace" class="hc-confirm-modal-body">
         <div class="hc-confirm-message-container">
             <span *ngIf="options.icon && !options.headerText" [ngClass]="[options.icon, 'hc-confirm-modal-body-ico']"></span>
             <div *ngIf="options.messageHTML" [innerHtml]="options.messageHTML"></div>

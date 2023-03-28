@@ -36,7 +36,7 @@ export class ModalSimpleOverviewExampleComponent {
             confirmButtonText: this.confirmButtonText.value,
             confirmButtonIcon: this.confirmButtonIcon.value,
             confirmButtonIsDestructive: this.confirmButtonIsDestructive.value,
-            footerTooltipText: this.footerTooltipText.value,
+            footerTooltipText: this.footerTooltipText.value
         };
 
         // set options for modal window

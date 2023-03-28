@@ -31,6 +31,8 @@ export class SimpleModalOptions {
     cancelButtonStyle? = false;
     /** Text for an optional informational tooltip that will be in the footer. */
     footerTooltipText?: string;
+    /** If true, will preserve white-space in the message of the modal */
+    preserveMessageWhitespace? = false;
 }
 
 // Default options for the content of a confirmation modal
