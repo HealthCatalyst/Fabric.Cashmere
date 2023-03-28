@@ -1,14 +1,9 @@
-<p>This example demonstrates available configuration options for modals created by the <code>ConfirmationModalService</code>.</p>
+<p>This example demonstrates available options for <code>alert()</code>, <code>confirm()</code>, and <code>confirmDestructive()</code>.</p>
 
 <div class="example-column">
     <hc-form-field class="example-field" [tight]="true">
         <hc-label>Header Text:</hc-label>
         <input hcInput [formControl]="headerText" />
-    </hc-form-field>
-
-    <hc-form-field class="example-field" [tight]="true">
-        <hc-label>Footer Tooltip Help Text:</hc-label>
-        <input hcInput [formControl]="footerTooltipText" />
     </hc-form-field>
 
     <hc-form-field class="example-field" [tight]="true">
@@ -20,6 +15,11 @@
         <hc-label>Cancel Button Text:</hc-label>
         <input hcInput [formControl]="cancelButtonText" />
     </hc-form-field>
+
+    <hc-form-field class="example-field" [tight]="true">
+        <hc-label>Footer Tooltip Help Text:</hc-label>
+        <input hcInput [formControl]="footerTooltipText" />
+    </hc-form-field>
 </div>
 
 <div class="example-column">
@@ -28,10 +28,10 @@
         <hc-select [formControl]="icon">
             <option value="fa fa-bolt">Bolt</option>
             <option value="fa fa-bell">Bell</option>
-            <option value="fa fa-star">Star</option>
+            <option value="hc-ico-info">Info</option>
             <option value="fa fa-bug">Bug</option>
-            <option value="fa fa-cube">Cube</option>
-            <option value="fa fa-globe">Globe</option>
+            <option value="hc-ico-warn">Warn</option>
+            <option value="fa fa-dollar">Dollar</option>
         </hc-select>
     </hc-form-field>
 
@@ -40,10 +40,10 @@
         <hc-select [formControl]="confirmButtonIcon">
             <option value="fa fa-bolt">Bolt</option>
             <option value="fa fa-bell">Bell</option>
-            <option value="fa fa-star">Star</option>
+            <option value="hc-ico-info">Info</option>
             <option value="fa fa-bug">Bug</option>
             <option value="fa fa-cube">Cube</option>
-            <option value="fa fa-globe">Globe</option>
+            <option value="fa fa-dollar">Dollar</option>
         </hc-select>
     </hc-form-field>
 
@@ -68,10 +68,14 @@
     </hc-form-field>
 </div>
 
-<div class="example-column">
+<div class="example-column message-column">
+    <hc-form-field class="allow-html-field" [tight]="true">
+        <hc-checkbox [formControl]="shouldAllowHTML">Allow HTML</hc-checkbox>
+    </hc-form-field>
+
     <hc-form-field class="example-field">
-        <hc-label>Confirmation Message:</hc-label>
-        <textarea hcInput rows="6" [formControl]="messageHTML"></textarea>
+        <hc-label>Message:</hc-label>
+        <textarea hcInput rows="6" [formControl]="message"></textarea>
     </hc-form-field>
 
     <hc-form-field class="example-field-half" [tight]="true">

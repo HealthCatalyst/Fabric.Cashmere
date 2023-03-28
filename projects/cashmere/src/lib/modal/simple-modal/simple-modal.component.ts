@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActiveModal } from '../active-modal';
-import { ConfirmationOptions } from './confirmation-modal-options.model';
+import { SimpleModalOptions } from './simple-modal-options.model';
 
 @Component({
-    selector: 'hc-confirmation-modal',
-    templateUrl: './confirmation-modal.component.html',
-    styleUrls: ['./confirmation-modal.component.scss']
+    selector: 'hc-simple-modal',
+    templateUrl: './simple-modal.component.html',
+    styleUrls: ['./simple-modal.component.scss']
 })
-export class ConfirmationModalComponent implements OnInit {
-    public options: ConfirmationOptions;
+export class SimpleModalComponent implements OnInit {
+    public options: SimpleModalOptions;
     constructor(private activeModal: ActiveModal) {}
 
     ngOnInit(): void {

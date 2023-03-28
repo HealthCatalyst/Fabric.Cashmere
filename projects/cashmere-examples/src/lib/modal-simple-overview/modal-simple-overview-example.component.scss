@@ -32,3 +32,14 @@ text-area {
 .example-field-toggle {
     margin-top: 18px;
 }
+
+.message-column {
+    position: relative;
+}
+
+.allow-html-field {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 1;
+}

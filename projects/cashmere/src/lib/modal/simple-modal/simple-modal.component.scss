@@ -8,6 +8,10 @@
     @include hc-confirm-message-container();
 }
 
+.hc-confirm-modal-body {
+    @include hc-confirm-modal-body();
+}
+
 .hc-modal-body.hc-confirm-modal-minimal-body {
     @include hc-confirm-modal-minimal-body();
 }
@@ -19,6 +23,10 @@
     .hc-confirm-modal-body-ico {
         @include hc-confirm-modal-body-ico();
     }
+}
+
+.hc-confirm-modal-header-ico {
+    @include hc-confirm-modal-header-ico();
 }
 
 // ### Footer

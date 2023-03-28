@@ -11,7 +11,7 @@
 @mixin hc-confirm-message-container() {
     display: flex;
     align-items: start;
-    font-size: 16px;
+    @include fontSize(16px);
     line-height: 1.4;
 }
 
@@ -19,13 +19,18 @@
     margin-top: 24px;
 
     .hc-confirm-message-container {
-        font-size: 18px;
+        @include fontSize(18px);
     }
+}
+
+@mixin hc-confirm-modal-body() {
+    @include fontSize(16px);
+    max-height: 70vh;
 }
 
 // ### Icons
 @mixin hc-confirm-modal-icons() {
-    .hc-ico-question, .hc-ico-trash {
+    .hc-ico-question, .hc-ico-trash, .hc-ico-info, .hc-ico-warn {
         display: inline-block;
         height: 18px;
         width: 18px;
@@ -40,6 +45,14 @@
     .hc-ico-trash {
         background-image: url($ico-trash);
     }
+
+    .hc-ico-info {
+        background-image: url($ico-info);
+    }
+
+    .hc-ico-warn {
+        background-image: url($ico-warning);
+    }
 }
 
 @mixin hc-confirm-modal-body-ico() {
@@ -49,6 +62,11 @@
     width: 28px;
     height: 28px;
     font-size: 28px;
+    flex: 0 0 auto;
+}
+
+@mixin hc-confirm-modal-header-ico() {
+    margin-right: 10px;
 }
 
 // ### Footer

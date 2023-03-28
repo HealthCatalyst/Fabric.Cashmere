@@ -1,0 +1,29 @@
+<p>To implement simple modals with minimal code, use <code>alert()</code>, <code>confirm()</code>, or <code>confirmDestructive()</code>:</p>
+
+<pre><code>
+this.modalService.confirm(options)
+    .pipe(take(1), filter(confirmed => confirmed))
+    .subscribe(() => &lcub;
+        console.log("Confirmed. Go do the thing now.");
+    &rcub;);
+</code></pre>
+
+<br />
+<button hc-button buttonStyle="primary" (click)="confirm()" title="Uses confirm()">
+    Confirm
+</button>
+<br />
+<br />
+<button hc-button buttonStyle="secondary" (click)="confirmNoHeader()" title="Uses confirm() but doesn't have a header">
+    Simple Confirm
+</button>
+<br />
+<br />
+<button hc-button buttonStyle="destructive" (click)="confirmDelete()" title="Uses confirmDestructive()">
+    Confirm delete
+</button>
+<br />
+<br />
+<button hc-button buttonStyle="primary-alt" (click)="alert()" title="Uses alert()">
+    Alert
+</button>
