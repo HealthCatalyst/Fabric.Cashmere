@@ -25,7 +25,7 @@
     "@angular-slider/ngx-slider": "^2.0.4",
     "core-js": "^2.5.4",
     "rxjs": "^6.6.0",
-    "zone.js": "~0.12.0",
+    "zone.js": "~0.13.0",
     "@healthcatalyst/cashmere": "*",
     "notosans-fontface": "^1.3.0",
     "font-awesome": "4.7.0",
