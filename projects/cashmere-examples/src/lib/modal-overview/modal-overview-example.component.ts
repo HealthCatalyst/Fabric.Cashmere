@@ -18,7 +18,7 @@ export class ModalOverviewExampleComponent {
         const options: ModalOptions = {
             data: {
                 content: 'This is a size lg modal. If isDraggable is set to true, it places a drag handle in the top right corner which you can use to reposition the modal. If isResizable is set to true, a resize handle appears in the bottom right to change the dimensions of the modal. They may be used together or separately.',
-                tight: false
+                isTightExample: false
             },
             ignoreEscapeKey: true,
             ignoreOverlayClick: true,
@@ -32,7 +32,7 @@ export class ModalOverviewExampleComponent {
         const options: ModalOptions = {
             data: {
                 content: 'If tight is set to true, padding on the header, footer, and body will be set to 15px.',
-                tight: true
+                isTightExample: true
             },
             ignoreEscapeKey: true,
             ignoreOverlayClick: true,
@@ -49,6 +49,14 @@ export class ModalOverviewExampleComponent {
             ignoreOverlayClick: true,
             isDraggable: true,
             isResizable: true
+        };
+        this.modalService.open(content, options);
+    }
+
+    openViewer(content: TemplateRef<unknown>): void {
+        const options: ModalOptions = {
+            size: 'lg',
+            closeIcon: true
         };
         this.modalService.open(content, options);
     }

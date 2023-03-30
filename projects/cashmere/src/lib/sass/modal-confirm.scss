@@ -10,7 +10,7 @@
 
 @mixin hc-confirm-message-container() {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     @include fontSize(16px);
     line-height: 1.4;
 }
