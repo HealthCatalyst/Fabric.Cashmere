@@ -1,6 +1,7 @@
 @import './colors';
 @import './functions';
 @import './mixins';
+@import './icons';
 
 $modal-padding: 15px 25px;
 $modal-tight-padding: 15px;
@@ -120,6 +121,11 @@ $modal-border: 1px solid $gray-200;
     width: 74px;
     height: 54px;
 
+    // Position the drag handle on the left of the header if a close icon is present
+    &.hc-modal-drag-handle-close {
+        left: 0;
+    }
+
     // Drag handle is hidden when the modal switches to full-screen on smaller breakpoints
     @include media-breakpoint-down(md) {
         display: none;
@@ -142,6 +148,11 @@ $modal-border: 1px solid $gray-200;
     font-size: calculateRem(16px);
     min-height: $header-footer-height-tight;
     padding: $modal-tight-padding;
+}
+
+@mixin hc-modal-header-drag-close() {
+    // Account for the drag handle on the top left of the modal header if a close icon is present
+    padding-left: 75px;
 }
 
 @mixin hc-modal-body() {
@@ -192,6 +203,11 @@ $modal-border: 1px solid $gray-200;
     padding: $modal-tight-padding;
 }
 
+@mixin hc-modal-footer-minimal() {
+    padding: 0 !important;
+    min-height: 15px;
+}
+
 @mixin hc-modal-button-footer() {
     margin-left: 10px;
     width: auto;
@@ -227,4 +243,28 @@ $modal-border: 1px solid $gray-200;
 
 @mixin hc-modal-static() {
     min-height: auto !important;
+}
+
+@mixin hc-modal-close-icon() {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background-image: url($ico-times-gray);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    // Reposition the close icon button for fullscreen modals
+    @include media-breakpoint-down(md) {
+        top: 65px;
+    }
+}
+
+@mixin hc-modal-close-icon-tight() {
+    top: 7px;
+    right: 5px;
+
+    // Reposition the close icon button for fullscreen modals
+    @include media-breakpoint-down(md) {
+        top: 59px;
+    }
 }

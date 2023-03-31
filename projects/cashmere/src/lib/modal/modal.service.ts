@@ -66,7 +66,8 @@ export class ModalService {
             isResizable: false,
             disableFullScreen: false,
             restoreFocus: true,
-            autoFocus: false
+            autoFocus: false,
+            closeIcon: false
         };
         const options = {...defaultOptions, ...modalOptions};
         if (options.container) {
@@ -132,6 +133,7 @@ export class ModalService {
         window.instance._isResizable = options.isResizable;
         window.instance._size = options.size;
         window.instance._tight = options.tight;
+        window.instance._closeIcon = options.closeIcon;
         window.instance._disableFullScreen = options.disableFullScreen;
         window.instance._autoFocus = options.autoFocus;
         window.instance._restoreFocus = options.restoreFocus;

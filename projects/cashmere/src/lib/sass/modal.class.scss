@@ -36,6 +36,10 @@
     @include hc-modal-footer-tight();
 }
 
+.hc-modal-footer-minimal {
+    @include hc-modal-footer-minimal();
+}
+
 .hc-modal-content {
     @include hc-modal-content();
 }
