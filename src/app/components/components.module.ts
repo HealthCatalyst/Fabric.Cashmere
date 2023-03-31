@@ -10,9 +10,10 @@ import {ComponentUsageComponent} from './component-viewer/component-usage/compon
 import {ComponentsComponent} from './components.component';
 import {ComponentsRouterModule} from './components-router.module';
 import {ApplicationInsightsService} from '../shared/application-insights/application-insights.service';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
-    imports: [SharedModule, ExampleModule, ComponentsRouterModule],
+    imports: [SharedModule, ExampleModule, ComponentsRouterModule, ScrollingModule],
     providers: [ApplicationInsightsService],
     declarations: [
         ComponentsComponent,

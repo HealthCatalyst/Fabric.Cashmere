@@ -101,6 +101,21 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 export class AppModule { }
 ```
 
+#### Modifying Animations
+
+By default, the opening and closing animations of a popover are quick with a simple easing curve.
+You can modify these animation curves using `openTransition` and `closeTransition`. Or, you can disable animation
+altogther by setting `shouldAnimate` to false.
+
+```html
+<!-- open slowly but close quickly -->
+<hc-pop #mySlowPopover openTransition="1000ms ease-out" closeTransition="100ms ease-in">
+    <!-- ... -->
+</hc-pop>
+```
+
+&nbsp;
+
 ##### Menus
 
 One common situation where popovers can be leveraged is to create menus within the app.
@@ -129,18 +144,28 @@ The trigger for sub-menus will automatically be set to hover and cannot be overr
 
 &nbsp;
 
-#### Modifying Animations
+##### Scroll Behavior
 
-By default, the opening and closing animations of a popover are quick with a simple easing curve.
-You can modify these animation curves using `openTransition` and `closeTransition`. Or, you can disable animation
-altogther by setting `shouldAnimate` to false.
+When using `hcTooltip` or `hcPop` with a hover trigger, you may encounter some challenges with page scrolling.
+Particularly when using a mouse wheel or trackpad, the tooltip may stay open even though you have scrolled off the target.
+This can be particularly problematic with scroll containers that include tooltips or hover pops - elements with a fixed size that have `overflow: auto`.
 
-```html
-<!-- open slowly but close quickly -->
-<hc-pop #mySlowPopover openTransition="1000ms ease-out" closeTransition="100ms ease-in">
-    <!-- ... -->
-</hc-pop>
+The problem centers around the Angular CDK not having awareness of scroll events unless the app explictly defines scroll containers.
+To do so, you may add the `cdkScrollable` directive to any scrollable container that will contain tooltips or hover popovers.
+To use that directive you'll need to import the following in your module:
+
+`import {ScrollingModule} from '@angular/cdk/scrolling';`
+
+Below is an example of how to use the directive:
+
+```(html)
+<div cdkScrollable>
+    This element is a scroll container which includes
+    <u hcTooltip="I'm a tooltip">any tooltips you are using</u>.
+</div>
 ```
+
+&nbsp;
 
 ##### Mobile Development Guide
 
