@@ -1,4 +1,4 @@
-$hc-icons-font-path: "." !default;
+$hc-icons-font-path: '.' !default;
 
 @font-face {
     font-family: 'hcicons';
@@ -503,5 +503,53 @@ $hc-icons-font-path: "." !default;
     }
     &.hci-vitals:before {
         content: '\e9c5';
+    }
+    &.hci-change-orientation-bottom:before {
+        content: '\e91f';
+    }
+    &.hci-change-orientation-side:before {
+        content: '\e920';
+    }
+    &.hci-collapse-all:before {
+        content: '\e921';
+    }
+    &.hci-detail:before {
+        content: '\e924';
+    }
+    &.hci-manage-columns:before {
+        content: '\e925';
+    }
+    &.hci-new-line-item:before {
+        content: '\e926';
+    }
+    &.hci-new-request:before {
+        content: '\e927';
+    }
+    &.hci-reset-grid:before {
+        content: '\e92d';
+    }
+    &.hci-right-panel-hide-alt:before {
+        content: '\e93f';
+    }
+    &.hci-right-panel-hide:before {
+        content: '\e940';
+    }
+    &.hci-right-panel-show-alt:before {
+        content: '\e945';
+    }
+    &.hci-right-panel-show:before {
+        content: '\e949';
+    }
+    &.hci-southpanel-hide-alt:before {
+        content: '\e94f';
+    }
+    &.hci-southpanel-hide:before {
+        content: '\e951';
+    }
+    &.hci-southpanel-show-alt:before {
+        content: '\e952';
+    }
+    &.hci-southpanel-show-alt:before {
+        content: '\e954';
     }
 }
