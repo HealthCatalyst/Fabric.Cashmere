@@ -13,14 +13,15 @@ import {ActiveModal} from './active-modal';
     template: `
         <div #focusTrapElement
             class="hc-modal {{_disableFullScreen ? '' : 'hc-modal-responsive'}} {{_isResizable ? 'hc-modal-resizable' : 'hc-modal-static'}} hc-modal-{{_size}}
-            {{_tight ? 'hc-modal-tight' : ''}}"
+            {{_tight ? 'hc-modal-tight' : ''}} {{_isDraggable && _closeIcon ? 'hc-modal-drag-close' : ''}}"
             cdkDrag [cdkDragDisabled]="!_isDraggable" cdkDragBoundary=".hc-modal-window">
-            <div *ngIf="_isDraggable" class="hc-modal-drag-handle" cdkDragHandle>
+            <div *ngIf="_isDraggable" [class]="_closeIcon? 'hc-modal-drag-handle hc-modal-drag-handle-close' : 'hc-modal-drag-handle'" cdkDragHandle>
                 <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
                     <path d="M0 0h24v24H0z" fill="none"></path>
                 </svg>
             </div>
+            <button *ngIf="_closeIcon" class="hc-modal-close-icon" hc-icon-button (click)="_dismiss()"></button>
             <ng-content></ng-content>
         </div>
     `,
@@ -44,6 +45,7 @@ export class ModalWindowComponent {
     _isResizable = false;
     _size = 'auto';
     _tight = false;
+    _closeIcon = false;
     _disableFullScreen = false;
     _restoreFocus = true;
     _autoFocus = false;
@@ -144,5 +146,10 @@ export class ModalWindowComponent {
         if (this._autoFocus && this._focusTrap) {
             this._focusTrap.focusInitialElementWhenReady();
         }
+    }
+
+    /** Dismiss the modal from a click on the close icon */
+    _dismiss(): void {
+        this.activeModal.dismiss();
     }
 }

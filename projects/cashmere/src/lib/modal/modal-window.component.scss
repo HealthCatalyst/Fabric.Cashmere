@@ -56,4 +56,18 @@
     .hc-modal-footer {
         @include hc-modal-footer-tight();
     }
+
+    .hc-modal-close-icon {
+        @include hc-modal-close-icon-tight();
+    }
+}
+
+.hc-modal-close-icon {
+    @include hc-modal-close-icon();
+}
+
+.hc-modal-drag-close {
+    .hc-modal-header {
+        @include hc-modal-header-drag-close();
+    }
 }

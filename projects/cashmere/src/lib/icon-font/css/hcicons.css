@@ -458,8 +458,8 @@
   content: "\e93e";
 }
 .hc-icons.hci-doctors:before {
-    content: "\e91e";
-  }
+  content: "\e91e";
+}
 .hc-icons.hci-new-patient:before {
   content: "\e915";
 }
@@ -501,4 +501,52 @@
 }
 .hc-icons.hci-vitals:before {
   content: "\e9c5";
+}
+.hc-icons.hci-change-orientation-bottom:before {
+  content: "\e91f";
+}
+.hc-icons.hci-change-orientation-side:before {
+  content: "\e920";
+}
+.hc-icons.hci-collapse-all:before {
+  content: "\e921";
+}
+.hc-icons.hci-detail:before {
+  content: "\e924";
+}
+.hc-icons.hci-manage-columns:before {
+  content: "\e925";
+}
+.hc-icons.hci-new-line-item:before {
+  content: "\e926";
+}
+.hc-icons.hci-new-request:before {
+  content: "\e927";
+}
+.hc-icons.hci-reset-grid:before {
+  content: "\e92d";
+}
+.hc-icons.hci-right-panel-hide-alt:before {
+  content: "\e93f";
+}
+.hc-icons.hci-right-panel-hide:before {
+  content: "\e940";
+}
+.hc-icons.hci-right-panel-show-alt:before {
+  content: "\e945";
+}
+.hc-icons.hci-right-panel-show:before {
+  content: "\e949";
+}
+.hc-icons.hci-southpanel-hide-alt:before {
+  content: "\e94f";
+}
+.hc-icons.hci-southpanel-hide:before {
+  content: "\e951";
+}
+.hc-icons.hci-southpanel-show-alt:before {
+  content: "\e952";
+}
+.hc-icons.hci-southpanel-show-alt:before {
+  content: "\e954";
 }

@@ -25,4 +25,6 @@ export interface ModalOptions {
     restoreFocus?: boolean;
     /** Whether the first focusable element should be focused on open. *Defaults to `false`.* */
     autoFocus?: boolean;
+    /** Adds a close icon to the right side of the header that dismisses the modal *Defaults to `false`.* */
+    closeIcon?: boolean;
 }

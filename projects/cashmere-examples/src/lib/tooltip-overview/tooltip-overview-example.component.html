@@ -1,7 +1,12 @@
-This is an example of a bottom-aligned
-<u hcTooltip="I'm a tooltip" verticalAlign="below">tooltip in action</u>.
+This is an example of a bottom-aligned <u hcTooltip="I'm a tooltip" verticalAlign="below">tooltip in action</u>.
 <br><br>
 This is a <u [hcTooltip]="veryLongString" maxWidth="400px">very large tooltip</u> with a constrained width.
 <br><br>
 And this is a <u hcTooltip="">tooltip with an empty string</u> which means it won't be displayed.
-<br><br>
+<br><br><br>
+<em>
+    Note that when displaying tooltips in scrollable containers, it may be necessary to add a <code>cdkScrollable</code>
+    directive to the container to ensure that tooltips close correctly on scroll. See the
+    <a href="/web/components/pop/usage?section=scroll-behavior">usage docs</a>
+    for more information.
+</em>

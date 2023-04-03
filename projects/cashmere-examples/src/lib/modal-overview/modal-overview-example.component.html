@@ -9,14 +9,28 @@
     </hc-modal>
 </ng-template>
 
+<ng-template #modalViewer>
+    <hc-modal>
+        <hc-modal-header> Modal with Close Icon </hc-modal-header>
+        <hc-modal-body style="padding: 0;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Blue_Marble_2002.png/1200px-Blue_Marble_2002.png">
+        </hc-modal-body>
+        <hc-modal-footer [minimal]="true"></hc-modal-footer>
+    </hc-modal>
+</ng-template>
+
 <button hc-button buttonStyle="primary" (click)="openStandard()" class="demo-button">
-    Open Standard Modal from Component
+    Standard Modal from Component
 </button>
 <br>
 <button hc-button buttonStyle="secondary" (click)="openTight()" class="demo-button">
-    Open Tight Modal from Component
+    Tight Modal from Component
 </button>
 <br>
 <button hc-button buttonStyle="secondary" (click)="openTemplate(content)" class="demo-button">
-    Open Draggable Resizable Modal from Template
+    Draggable Resizable Modal from Template
+</button>
+<br>
+<button hc-button buttonStyle="secondary" (click)="openViewer(modalViewer)" class="demo-button">
+    Modal with Close Icon and Minimal Footer
 </button>
