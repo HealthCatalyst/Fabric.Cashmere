@@ -19,7 +19,7 @@
     "@angular/forms": "^14.2.12",
     "@angular/platform-browser": "^14.2.12",
     "@angular/platform-browser-dynamic": "^14.2.12",
-    "@angular/platform-server": "14.2.12",
+    "@angular/platform-server": "14.3.0",
     "@angular/router": "^14.2.12",
     "@ng-select/ng-select": "^9.1.0",
     "@angular-slider/ngx-slider": "^2.0.4",
