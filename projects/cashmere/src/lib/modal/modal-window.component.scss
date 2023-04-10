@@ -49,6 +49,16 @@
         @include hc-modal-header-tight();
     }
 
+    &.hc-modal-drag-header {
+        .hc-modal-header {
+            @include hc-modal-header-drag-tight();
+        }
+    }
+
+    .hc-modal-drag-handle {
+        @include hc-modal-drag-handle-tight();
+    }
+
     .hc-modal-body {
         @include hc-modal-body-tight();
     }
@@ -64,10 +74,4 @@
 
 .hc-modal-close-icon {
     @include hc-modal-close-icon();
-}
-
-.hc-modal-drag-close {
-    .hc-modal-header {
-        @include hc-modal-header-drag-close();
-    }
 }
