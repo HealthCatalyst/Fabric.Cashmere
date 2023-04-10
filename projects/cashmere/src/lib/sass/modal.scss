@@ -111,25 +111,24 @@ $modal-border: 1px solid $gray-200;
 
 @mixin hc-modal-drag-handle() {
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $gray-300;
     cursor: move;
-    width: 74px;
+    width: 25px;
     height: 54px;
 
-    // Position the drag handle on the left of the header if a close icon is present
-    &.hc-modal-drag-handle-close {
-        left: 0;
-    }
+    background-image: url($ico-grip);
+    background-repeat: no-repeat;
+    background-position: center;
 
     // Drag handle is hidden when the modal switches to full-screen on smaller breakpoints
     @include media-breakpoint-down(md) {
         display: none;
     }
+}
+
+@mixin hc-modal-drag-handle-tight {
+    height: 46px !important;
 }
 
 @mixin hc-modal-header() {
@@ -150,9 +149,9 @@ $modal-border: 1px solid $gray-200;
     padding: $modal-tight-padding;
 }
 
-@mixin hc-modal-header-drag-close() {
+@mixin hc-modal-header-drag-tight() {
     // Account for the drag handle on the top left of the modal header if a close icon is present
-    padding-left: 75px;
+    padding-left: 25px;
 }
 
 @mixin hc-modal-body() {
