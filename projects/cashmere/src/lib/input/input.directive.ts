@@ -128,6 +128,9 @@ export class InputDirective extends HcFormControlComponent implements AfterViewI
 
     @HostListener('blur')
     _onBlur(): void {
+        if ( this._ngControl && this._ngControl.control) {
+            this._ngControl.control.markAsTouched();
+        }
         this._changeFocus(false);
         this._updateErrorState();
     }
