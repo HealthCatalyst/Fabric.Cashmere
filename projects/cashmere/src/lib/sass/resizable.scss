@@ -1,0 +1,7 @@
+@import './colors';
+@import './mixins';
+
+@mixin hc-resizable-container() {
+    height: 300px;
+    display: block;
+}
