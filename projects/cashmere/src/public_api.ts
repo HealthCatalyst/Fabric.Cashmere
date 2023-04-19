@@ -23,6 +23,7 @@ export * from './lib/instance-switcher/index';
 export * from './lib/list/index';
 export * from './lib/measurable/index';
 export * from './lib/modal/index';
+export * from './lib/multiselect/index';
 export * from './lib/navbar/index';
 export * from './lib/pagination/index';
 export * from './lib/pipes/index';

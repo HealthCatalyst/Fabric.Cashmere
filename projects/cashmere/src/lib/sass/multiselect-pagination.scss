@@ -1,0 +1,7 @@
+@import './colors';
+@import './mixins';
+
+@mixin hc-multiselect-pagination-container() {
+    height: 100px;
+    display: block;
+}
