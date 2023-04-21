@@ -1,3 +1,15 @@
-<div class="hc-resizable-container">
-    <h1>Resizable Component</h1>
-</div>
+<ng-content></ng-content>
+<ng-container *ngIf="isResizable">
+    <div
+        class="resizable-handle"
+        [class]="className"
+        cdkDrag
+        (cdkDragStarted)="dragStarted()"
+        (cdkDragEnded)="dragEnded($event)"
+        (cdkDragMoved)="dragMoved($event)"
+    >
+    </div>
+    <span class="resizable-handle-selector" [class]="classNameSelector">
+        <div *ngIf="subscription$ | async"></div>
+    </span>
+</ng-container>
