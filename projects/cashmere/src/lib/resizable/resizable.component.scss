@@ -1,0 +1,5 @@
+@import '../sass/resizable.scss';
+
+.hc-resizable-container {
+    @include hc-resizable-container();
+}
