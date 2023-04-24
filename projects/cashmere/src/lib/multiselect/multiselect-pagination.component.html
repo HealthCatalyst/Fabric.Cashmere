@@ -1,3 +1,49 @@
 <div class="hc-multiselect-pagination-container">
-    <h1>Multiselect Pagination Component</h1>
+    <div *ngIf="totalPages > 0" class="paginator">
+        <button class="minimal-button" hc-button buttonStyle="minimal" [disabled]="currentPage === 1" (click)="onSkipToStartClicked()">
+            <hc-icon fontSet="fa" fontIcon="fa-chevrons-left" hcIconSm></hc-icon>
+        </button>
+        <button class="minimal-button" hc-button buttonStyle="minimal" [disabled]="currentPage === 1" (click)="onPrevClicked()">
+            <hc-icon fontSet="fa" fontIcon="fa-chevron-left" hcIconSm></hc-icon>
+        </button>
+        <div class="page">
+            <div class="paginator-info">Page</div>
+            <hc-form-field class="page-number-form-field" [tight]="true">
+                <input
+                    hcInput
+                    [formControl]="pageControl"
+                    type="number"
+                    (change)="onPageChange($event)"
+                    (keydown)="onKeyDown($event)"
+                    (paste)="onPaste($event)"
+                    autocomplete="off"
+                />
+            </hc-form-field>
+            <div class="paginator-info">of {{ totalPages }}</div>
+        </div>
+        <button class="minimal-button" hc-button buttonStyle="minimal" [disabled]="currentPage === totalPages" (click)="onNextClicked()">
+            <hc-icon fontSet="fa" fontIcon="fa-chevron-right" hcIconSm></hc-icon>
+        </button>
+        <button
+            class="minimal-button"
+            hc-button
+            buttonStyle="minimal"
+            [disabled]="currentPage === totalPages"
+            (click)="onSkipToEndClicked()"
+        >
+            <hc-icon fontSet="fa" fontIcon="fa-chevrons-right" hcIconSm></hc-icon>
+        </button>
+        <div class="refresh-button-container">
+            <button
+                class="refresh-button minimal-button"
+                hc-button
+                hcTooltip="Refresh"
+                size="sm"
+                buttonStyle="secondary"
+                (click)="onRefreshClicked()"
+            >
+                <hc-icon fontSet="fa" fontIcon="fa-refresh" class="icon-left" hcIconSm></hc-icon>
+            </button>
+        </div>
+    </div>
 </div>

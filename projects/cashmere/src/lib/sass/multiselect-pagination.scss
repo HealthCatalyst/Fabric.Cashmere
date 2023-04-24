@@ -2,6 +2,64 @@
 @import './mixins';
 
 @mixin hc-multiselect-pagination-container() {
-    height: 100px;
     display: block;
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.minimal-button {
+    min-width: 28px;
+    width: 28px;
+    height: 28px;
+    padding: 5px;
+
+    &:disabled {
+        cursor: default;
+
+        hc-icon {
+            color: $gray-300;
+        }
+    }
+}
+
+.paginator {
+    display: flex;
+
+    .page {
+        display: flex;
+
+        .page-number-form-field {
+            height: 26px;
+            width: 50px;
+            margin: auto 5px;
+
+            input {
+                -moz-appearance: textfield;
+            }
+        }
+
+        .paginator-info {
+            margin: auto 0;
+        }
+
+        ::ng-deep .hc-form-field-wrapper {
+            padding-bottom: 0px;
+        }
+    }
+
+    .refresh-button-container {
+        margin: auto 0 auto auto;
+
+        hc-icon {
+            color: $gray-600;
+        }
+    }
+
+    hc-icon {
+        color: $blue;
+    }
+}
 }
