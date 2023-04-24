@@ -43,6 +43,28 @@ By importing the Cashmere styles in your app's global style sheet, you'll automa
 
 &nbsp;
 
+### Step 4: Import the pagination component (optional)
+
+If you are using the typeahead capabilites of `ng-select` and are expecting the potential results to be large,
+you can improve the user experience by paginating those results. Cashmere includes a standard pagination component
+to make that easier. Import the `MultiselectPaginationModule`:
+
+```
+import { MultiselectPaginationModule } from '@healthcatalyst/cashmere';
+```
+
+and then add the `<hc-multiselect-pagination>` component to your `ng-select` template:
+
+```typescript
+    <ng-select>
+        <ng-template>
+            <hc-multiselect-pagination></hc-multiselect-pagination>
+        </ng-template>
+    </ng-select>
+```
+
+&nbsp;
+
 ##### Things to Look Out For
 
 **Don't miss the `[appendTo]` property.** This property is helpful for cases where you need to use `ng-select` inside of a scrollable container,

@@ -1,0 +1,5 @@
+@import '../sass/multiselect-pagination.scss';
+
+.hc-multiselect-pagination-container {
+    @include hc-multiselect-pagination-container();
+}
