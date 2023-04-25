@@ -273,7 +273,12 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
 
     ngAfterViewInit(): void {
         if ( this._ngControl && this._ngControl.statusChanges ) {
-            this._ngControl.statusChanges.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+            this._ngControl.statusChanges.pipe(takeUntil(this._unsubscribe)).subscribe(() => {
+                // setTimeout is necessary to make sure any form or control state changes have been applied before rechecking error states
+                setTimeout(() => {
+                    this._updateErrorState();
+                });
+            });
         }
         if ( this._form ) {
             this._form.ngSubmit.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
