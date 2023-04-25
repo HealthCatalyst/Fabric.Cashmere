@@ -18,7 +18,7 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
 import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {delay, takeUntil} from 'rxjs/operators';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {parseBooleanAttribute} from '../util';
 import {SelectService, _buildValueString} from './select.service';
@@ -179,13 +179,9 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     ngAfterViewInit() {
         this._applyValueToNativeControl();
 
-        if ( this._ngControl && this._ngControl.statusChanges ) {
-            this._ngControl.statusChanges.pipe(takeUntil(this._unsubscribe)).subscribe(() => {
-                // setTimeout is necessary to make sure any form or control state changes have been applied before rechecking error states
-                setTimeout(() => {
-                    this._updateErrorState();
-                });
-            });
+        if ( this._ngControl?.statusChanges ) {
+            // delay() is necessary to make sure any form or control state changes have been applied before rechecking error states
+            this._ngControl.statusChanges.pipe(delay(0), takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
         }
         if ( this._form ) {
             this._form.ngSubmit.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
