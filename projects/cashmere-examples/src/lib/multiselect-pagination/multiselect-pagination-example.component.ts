@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { IPaginatorState } from 'projects/cashmere/src/lib/multiselect/multiselect-pagination.component';
+import { MultiselectPaginatorState } from '@healthcatalyst/cashmere';
 
 /**
  * @title Multiselect with pagination
@@ -11,11 +11,12 @@ import { IPaginatorState } from 'projects/cashmere/src/lib/multiselect/multisele
     styleUrls: ['multiselect-pagination-example.component.scss']
 })
 export class MultiselectPaginationExampleComponent {
-    paginatorState: IPaginatorState = {
+    paginatorState: MultiselectPaginatorState = {
         skip: 0,
         take: 10,
         total: 30
     };
+
     selectedCareTeamRoles = new FormControl([], {nonNullable: true});
     careTeamRoles = [
         { name: "Care Team A" },

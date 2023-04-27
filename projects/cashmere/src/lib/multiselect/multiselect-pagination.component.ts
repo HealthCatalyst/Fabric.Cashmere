@@ -1,9 +1,12 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
-export interface IPaginatorState {
+export interface MultiselectPaginatorState {
+    /** Number of items to skip from the start of the list */
     skip: number;
+    /** Number of items to put on a page */
     take: number;
+    /** Total number of items */
     total: number;
 }
 
@@ -17,15 +20,15 @@ export interface IPaginatorState {
 
 export class MultiselectPaginationComponent {
     @Input()
-    public paginatorState: IPaginatorState;
+    public paginatorState: MultiselectPaginatorState;
 
     @Output()
     public refresh: EventEmitter<void> = new EventEmitter<void>();
 
     @Output()
-    public stateChange: EventEmitter<IPaginatorState> = new EventEmitter<IPaginatorState>();
+    public stateChange: EventEmitter<MultiselectPaginatorState> = new EventEmitter<MultiselectPaginatorState>();
 
-    public pageControl: UntypedFormControl = new UntypedFormControl();
+    public pageControl: FormControl = new FormControl(0);
     public currentPage = 1;
     public totalPages = 0;
 
@@ -116,7 +119,7 @@ export class MultiselectPaginationComponent {
         this.refresh.emit();
     }
 
-    private _initializePaginator(paginatorState: IPaginatorState): void {
+    private _initializePaginator(paginatorState: MultiselectPaginatorState): void {
         if (paginatorState.take > 0) {
             this.totalPages = Math.max(Math.ceil(paginatorState.total / this.paginatorState.take), 1);
             this.currentPage = Math.min(Math.floor(paginatorState.skip / paginatorState.take) + 1, this.totalPages);
