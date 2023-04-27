@@ -1,7 +1,7 @@
 <ng-content></ng-content>
-<ng-container *ngIf="isResizable">
+<ng-container *ngIf="isResizable" class="hc-resizable-container">
     <div
-        class="resizable-handle"
+        class="hc-resizable-handle"
         [class]="className"
         cdkDrag
         (cdkDragStarted)="dragStarted()"
@@ -9,7 +9,7 @@
         (cdkDragMoved)="dragMoved($event)"
     >
     </div>
-    <span class="resizable-handle-selector" [class]="classNameSelector">
+    <span class="hc-resizable-handle-selector" [class]="classNameSelector">
         <div *ngIf="subscription$ | async"></div>
     </span>
 </ng-container>

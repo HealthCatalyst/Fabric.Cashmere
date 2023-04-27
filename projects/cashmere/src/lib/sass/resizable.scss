@@ -10,94 +10,97 @@ $handle-margin: calc(#{$handle-size} * -0.5 - 2px);
 @mixin hc-resizable-container() {
     height: 300px;
     display: block;
-
-    .resizable-max-height {
-        max-height: 100%;
-    }
-
-    .resizable-max-width {
-        max-width: 100%;
-    }
-
-    .resizable-handle {
-        position: absolute;
-
-        &.resizable-handle-bottom,
-        &.resizable-handle-top {
-            cursor: row-resize;
-            height: $handle-size;
-            left: 0;
-            width: 100%;
-        }
-
-        &.resizable-handle-left,
-        &.resizable-handle-right {
-            cursor: col-resize;
-            height: 100%;
-            top: 0;
-            width: $handle-size;
-        }
-
-        &.resizable-handle-bottom {
-            bottom: 0;
-            margin-bottom: $handle-margin;
-        }
-
-        &.resizable-handle-left {
-            margin-left: $handle-margin;
-            left: 0;
-        }
-
-        &.resizable-handle-right {
-            margin-right: $handle-margin;
-            right: 0;
-        }
-
-        &.resizable-handle-top {
-            margin-top: $handle-margin;
-            top: 0;
-        }
-
-        &:hover + .resizable-handle-selector,
-        &.border-highlight + .resizable-handle-selector {
-            background-color: $handle-color;
-            pointer-events: none;
-            position: absolute;
-
-            &.resizable-handle-selector-bottom,
-            &.resizable-handle-selector-top {
-                height: $handle-selector;
-                left: 0;
-                width: 100%;
-            }
-
-            &.resizable-handle-selector-left,
-            &.resizable-handle-selector-right {
-                height: 100%;
-                top: 0;
-                width: $handle-selector;
-            }
-
-            &.resizable-handle-selector-bottom {
-                margin-bottom: $handle-selector-margin;
-                bottom: 0;
-            }
-
-            &.resizable-handle-selector-left {
-                margin-left: $handle-selector-margin;
-                left: 0;
-            }
-
-            &.resizable-handle-selector-right {
-                margin-right: $handle-selector-margin;
-                right: 0;
-            }
-
-            &.resizable-handle-selector-top {
-                margin-top: $handle-selector-margin;
-                top: 0;
-            }
-        }
-    }
 }
 
+@mixin hc-resizable-max-height() {
+    max-height: 100%;
+}
+
+@mixin hc-resizable-max-width() {
+    max-width: 100%;
+}
+
+@mixin hc-resizable-handle() {
+    position: absolute;
+    display: block;
+    height: 20px;
+    width: 100px;
+}
+
+// @mixin hc-resizable-handle-resizable-handle-bottom(),
+//     &.resizable-handle-top {
+//         cursor: row-resize;
+//         height: $handle-size;
+//         left: 0;
+//         width: 100%;
+//     }
+
+//     &.resizable-handle-left,
+//     &.resizable-handle-right {
+//         cursor: col-resize;
+//         height: 100%;
+//         top: 0;
+//         width: $handle-size;
+//     }
+
+//     &.resizable-handle-bottom {
+//         bottom: 0;
+//         margin-bottom: $handle-margin;
+//     }
+
+//     &.resizable-handle-left {
+//         margin-left: $handle-margin;
+//         left: 0;
+//     }
+
+//     &.resizable-handle-right {
+//         margin-right: $handle-margin;
+//         right: 0;
+//     }
+
+//     &.resizable-handle-top {
+//         margin-top: $handle-margin;
+//         top: 0;
+//     }
+
+//     &:hover + .resizable-handle-selector,
+//     &.border-highlight + .resizable-handle-selector {
+//         background-color: $handle-color;
+//         pointer-events: none;
+//         position: absolute;
+
+//         &.resizable-handle-selector-bottom,
+//         &.resizable-handle-selector-top {
+//             height: $handle-selector;
+//             left: 0;
+//             width: 100%;
+//         }
+
+//         &.resizable-handle-selector-left,
+//         &.resizable-handle-selector-right {
+//             height: 100%;
+//             top: 0;
+//             width: $handle-selector;
+//         }
+
+//         &.resizable-handle-selector-bottom {
+//             margin-bottom: $handle-selector-margin;
+//             bottom: 0;
+//         }
+
+//         &.resizable-handle-selector-left {
+//             margin-left: $handle-selector-margin;
+//             left: 0;
+//         }
+
+//         &.resizable-handle-selector-right {
+//             margin-right: $handle-selector-margin;
+//             right: 0;
+//         }
+
+//         &.resizable-handle-selector-top {
+//             margin-top: $handle-selector-margin;
+//             top: 0;
+//         }
+//     }
+// }

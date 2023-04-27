@@ -3,3 +3,16 @@
 .hc-resizable-container {
     @include hc-resizable-container();
 }
+
+.hc-resizable-max-height {
+    @include hc-resizable-max-height();
+}
+
+.hc-resizable-max-width {
+    @include hc-resizable-max-width();
+}
+
+.hc-resizable-handle {
+    @include hc-resizable-handle();
+
+}

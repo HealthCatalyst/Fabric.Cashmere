@@ -18,6 +18,7 @@ import { ResizableMetadata as Meta } from './resizable.meta';
 
 /** A container that the user can resize the dimensions of */
 @Component({
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: '[hc-resizable]',
     templateUrl: './resizable.component.html',
     styleUrls: ['./resizable.component.scss'],
@@ -68,6 +69,7 @@ export class ResizableComponent implements OnChanges {
     dragStarted(): void {
         this.className = `${this.className}${Meta.highlight}`;
         this._startSize$.next(this._element.nativeElement.getBoundingClientRect());
+        console.log('hi');
     }
 
     dragEnded($event: CdkDragEnd): void {
@@ -97,8 +99,8 @@ export class ResizableComponent implements OnChanges {
         const classes = this._element.nativeElement.className ?? '';
         if (this._isHorizontal() && !Meta.regexMaxWidth.test(classes)) {
             this._element.nativeElement.className = `${classes} ${Meta.maxWidthClass}`;
-        } else if (this._isVertical() && !Meta.regexMaxHeigth.test(classes)) {
-            this._element.nativeElement.className = `${classes} ${Meta.maxHeigthClass}`;
+        } else if (this._isVertical() && !Meta.regexMaxHeight.test(classes)) {
+            this._element.nativeElement.className = `${classes} ${Meta.maxHeightClass}`;
         }
     }
 }
