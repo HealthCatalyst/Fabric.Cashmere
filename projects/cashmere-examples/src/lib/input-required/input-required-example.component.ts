@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {Component, ViewChild} from '@angular/core';
+import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 
 /**
  * @title Required Input
@@ -10,5 +10,15 @@ import {FormControl, Validators} from '@angular/forms';
     styleUrls: ['input-required-example.component.scss']
 })
 export class InputRequiredExampleComponent {
-    formDemo = new FormControl('', [Validators.email, Validators.required]);
+    @ViewChild('exampleForm') exampleForm: NgForm;
+
+    exampleFormGroup = new FormGroup({
+        exampleInput: new FormControl('', [Validators.email, Validators.required])
+    });
+
+    // To reset the error state on a form, you must set the submitted state of the form to false
+    // resetForm on a NgForm and/or a type="reset" button in the form will accomplish that
+    resetForm(): void {
+        this.exampleForm.resetForm();
+    }
 }

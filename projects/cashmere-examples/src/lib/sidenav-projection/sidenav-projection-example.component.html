@@ -1,0 +1,23 @@
+<div class="sidenav-example-app-shell">
+
+    <hc-sidenav
+        [tabs]="tabs"
+        [canToggle]="false"
+        [showFavorites]="false"
+    >
+        <!-- Projected header -->
+        <div hcSidenavHeader class="example-sidenav-header">
+            <h2><span class="fa fa-bank hc-icon-left"></span>Weather Data Bank</h2>
+        </div>
+
+        <!-- Projected content -->
+        <button hc-button buttonStyle="deep-red" class="example-report-widget">
+            <span class="fa fa-bullhorn hc-icon-left"></span>Report weather
+        </button>
+
+    </hc-sidenav>
+
+    <div class="example-app-content">
+        <p>This example demonstrates using content projection to add a <strong>header</strong> and <strong>report widget.</strong></p>
+    </div>
+</div>

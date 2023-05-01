@@ -1,0 +1,31 @@
+@keyframes HCSubtleFadePulse {
+    0% {
+        opacity: 0.1;
+    }
+    50% {
+        opacity: 0.35;
+    }
+    100% {
+        opacity: 0.1;
+    }
+}
+
+@keyframes HCSlideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes HCFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
