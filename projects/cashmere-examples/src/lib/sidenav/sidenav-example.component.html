@@ -1,0 +1,24 @@
+<div class="sidenav-example-app-shell">
+
+    <hc-sidenav
+        [tabs]="tabs"
+        [isLoadingTabs]="isLoadingTabs.value"
+        (tabClicked)="onTabClick($event)"
+        [favorites]="favs"
+        [isLoadingFavorites]="isLoadingFavs.value"
+        (favoriteClicked)="onFavClick($event)"
+        (favoriteItemIconClicked)="unfavorite($event)"
+    >
+    </hc-sidenav>
+
+    <div class="example-app-content">
+        <hc-checkbox [formControl]="isLoadingTabs">Simulate tabs loading</hc-checkbox>
+        <hc-checkbox [formControl]="isLoadingFavs">Simulate favorites loading</hc-checkbox>
+        <h4>Events:</h4>
+        <div class="event-log">
+            <div *ngFor="let event of eventsLog">
+                {{event}}
+            </div>
+        </div>
+    </div>
+</div>

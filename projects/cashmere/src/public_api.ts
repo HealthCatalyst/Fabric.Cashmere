@@ -36,6 +36,7 @@ export * from './lib/search-bar/index';
 export * from './lib/select/index';
 export * from './lib/slide-toggle/index';
 export * from './lib/slider/index';
+export * from './lib/sidenav/index';
 export * from './lib/sort/index';
 export * from './lib/stepper/index';
 export * from './lib/subnav/index';
