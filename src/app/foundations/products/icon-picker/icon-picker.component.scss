@@ -1,0 +1,33 @@
+@import 'scss/colors';
+
+.hc-icon-picker-body {
+    margin-bottom: 25px;
+    display: flex;
+
+    hr {
+        margin: 20px 0;
+    }
+
+    em {
+        display: block;
+        margin: 0 0 5px;
+    }
+
+    hc-icon {
+        margin-right: 8px;
+    }
+
+    img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.hc-icon-picker-left-column {
+    border-right: 1px solid $gray-200;
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+    padding-right: 40px;
+    padding-left: 25px;
+}
