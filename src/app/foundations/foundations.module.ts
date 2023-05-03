@@ -13,10 +13,11 @@ import {FontsDemoComponent} from './fonts/fonts-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
 import { AIDemoComponent } from './ai/ai-demo.component';
 import { IconPickerComponent } from './products/icon-picker/icon-picker.component';
+import { ModalService } from 'projects/cashmere/src/lib/modal';
 
 @NgModule({
     imports: [SharedModule, FoundationsRoutesModule],
-    providers: [ApplicationInsightsService],
+    providers: [ApplicationInsightsService, ModalService],
     declarations: [
         FoundationsComponent,
         ColorDemoComponent,
