@@ -13,6 +13,7 @@
                     [class.disabled-tab]="tab.disabled"
                     [title]="tab.description"
                     [routerLink]="tab.routerLink"
+                    [routerLinkActive]="routerLinkActiveClass"
                     (click)="onTabClick($event, tab)"
                     [hcPop]="tabPop" [trigger]="collapsed ? 'hover' : 'none'" [context]="tab.title"
                 >

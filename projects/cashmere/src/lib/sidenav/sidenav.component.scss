@@ -22,10 +22,6 @@
     .hc-sidenav-tab-inner {
         @include hc-sidenav-tab-inner();
     }
-
-    .hc-sidenav-tab-name {
-        @include hc-sidenav-tab-name();
-    }
 }
 
 .skeleton-tab {

@@ -13,6 +13,7 @@ import { SidenavLink, SidenavLinkClickEvent } from '@healthcatalyst/cashmere';
 export class SidenavExampleComponent {
     isLoadingTabs: FormControl = new FormControl(false);
     isLoadingFavs: FormControl = new FormControl(false);
+    collapsed = false;
     eventsLog: string[] = [];
     tabs: SidenavLink[] = [
         new SidenavLink({title: 'Home', iconClass: 'fa fa-home', description: 'User\'s home dashboard'}),
