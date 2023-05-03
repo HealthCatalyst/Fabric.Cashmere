@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { SectionService } from '../../shared/section.service';
 import { BaseDemoComponent } from '../../shared/base-demo.component';
-import { ModalOptions, ModalService } from 'projects/cashmere/src/lib/modal';
 import { IconPickerComponent } from './icon-picker/icon-picker.component';
+import { ModalOptions, ModalService } from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-products',
