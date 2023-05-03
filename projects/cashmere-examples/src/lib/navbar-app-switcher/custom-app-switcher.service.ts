@@ -60,7 +60,7 @@ export class CustomAppSwitcherService {
                     mockApps[1].Icon = opsIcon;
                     mockApps[2].Icon = ideaIcon;
 
-                    this.appSubject.next({value: mockApplications});
+                    this.appSubject.next({value: mockApps});
                     this.appSubject.complete();
                 });
             });       
