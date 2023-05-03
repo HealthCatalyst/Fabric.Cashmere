@@ -69,7 +69,6 @@ export class ResizableComponent implements OnChanges {
     dragStarted(): void {
         this.className = `${this.className}${Meta.highlight}`;
         this._startSize$.next(this._element.nativeElement.getBoundingClientRect());
-        console.log('hi');
     }
 
     dragEnded($event: CdkDragEnd): void {

@@ -1,5 +1,21 @@
-div {
-    height: 100px;
-    width: 100px;
-    background-color: black;
+@import '@healthcatalyst/cashmere/scss/_colors';
+
+.resizable-container {
+    height: 400px;
+    width: 400px;
+    border: 1px solid $gray-400;
+    background-color: $slate-gray-200;
+    position: relative;
+}
+
+.example-options {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    .pos-selector {
+        width: 220px;
+        display: block;
+        margin-right: 24px;
+    }
 }

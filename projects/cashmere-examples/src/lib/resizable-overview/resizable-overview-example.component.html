@@ -1,1 +1,17 @@
-<div hc-resizable position="top" isResizable="true"></div>
+<div class="example-options">
+    <hc-form-field class="pos-selector">
+        <hc-label>Position:</hc-label>
+        <hc-select [formControl]="resizablePosition">
+            <option value="top" [selected]="resizablePosition.value === 'top'">Top</option>
+            <option value="right" [selected]="resizablePosition.value === 'right'">Right</option>
+            <option value="bottom" [selected]="resizablePosition.value === 'bottom'">Bottom</option>
+            <option value="left" [selected]="resizablePosition.value === 'left'">Left</option>
+        </hc-select>
+    </hc-form-field>
+    <button hc-button buttonStyle="primary" class="reset-button" (click)="resetContainer()">
+        Reset Container
+    </button>
+</div>
+<div hc-resizable [position]="resizablePosition.value" isResizable="true" class="resizable-container" id="resizable-container"></div>
+
+

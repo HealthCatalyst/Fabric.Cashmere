@@ -14,5 +14,40 @@
 
 .hc-resizable-handle {
     @include hc-resizable-handle();
+}
 
+.hc-resizable-handle-bottom {
+    @include hc-resizable-handle-bottom();
+}
+
+.hc-resizable-handle-top {
+    @include hc-resizable-handle-top();
+}
+
+.hc-resizable-handle-left {
+    @include hc-resizable-handle-left();
+}
+
+.hc-resizable-handle-right {
+    @include hc-resizable-handle-right();
+}
+
+.hc-resizable-handle-selector {
+    @include hc-resizable-handle-selector();
+}
+
+.hc-resizable-handle-selector-bottom {
+    @include hc-resizable-handle-selector-bottom();
+}
+
+.hc-resizable-handle-selector-top {
+    @include hc-resizable-handle-selector-top();
+}
+
+.hc-resizable-handle-selector-left {
+    @include hc-resizable-handle-selector-left();
+}
+
+.hc-resizable-handle-selector-right {
+    @include hc-resizable-handle-selector-right();
 }
