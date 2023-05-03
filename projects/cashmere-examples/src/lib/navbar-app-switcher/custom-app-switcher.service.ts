@@ -55,12 +55,11 @@ export class CustomAppSwitcherService {
         this.http.get('https://cashmere.healthcatalyst.net/assets/product-icons/Atlas.txt', {responseType: 'text'}).subscribe( atlasIcon => {
             this.http.get('https://cashmere.healthcatalyst.net/assets/product-icons/OpsConsole.txt', {responseType: 'text'}).subscribe( opsIcon => {
                 this.http.get('https://cashmere.healthcatalyst.net/assets/product-icons/IDEA.txt', {responseType: 'text'}).subscribe( ideaIcon => {
-                    const mockApps = mockApplications;
-                    mockApps[0].Icon = atlasIcon;
-                    mockApps[1].Icon = opsIcon;
-                    mockApps[2].Icon = ideaIcon;
+                    mockApplications[0].Icon = atlasIcon;
+                    mockApplications[1].Icon = opsIcon;
+                    mockApplications[2].Icon = ideaIcon;
 
-                    this.appSubject.next({value: mockApps});
+                    this.appSubject.next({value: mockApplications});
                     this.appSubject.complete();
                 });
             });       
