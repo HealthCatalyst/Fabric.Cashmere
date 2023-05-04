@@ -13,6 +13,7 @@ export class SidenavComponent {
     @Input() containerCssClass = '';
     /** If true, collapse the sidebar to a minimal width. Defaults to false. */
     @Input() collapsed = false;
+    /** Event triggered when the sidebar is expanded or collapsed. */
     @Output() collapsedChange = new EventEmitter<boolean>();
     /** If true, sidebar can toggle between collapsed and expanded. Will have an expand/collapse button. Defaults to true. */
     @Input() canToggle = true;
@@ -31,8 +32,10 @@ export class SidenavComponent {
     @Output() tabClicked = new EventEmitter<SidenavLinkClickEvent>();
     /** Key of the tab that should be marked as active. */
     @Input() activeTabKey = '';
-    /** If using routerLinks, routerLinkActiveClass can be used to set appropariate class for the active route */
-    @Input() routerLinkActiveClass = 'active-tab';
+    /** If using routerLinks, routerLinkActiveClass can be used to set appropriate class for the active route.
+     * If used, the `activeTabKey` property will be ignored.
+     * If a class besides `active-tab` is used, you'll need to provide your own css. */
+    @Input() routerLinkActiveClass = '';
 
     /** True to show scrollable favorites section. */
     @Input() showFavorites = true;

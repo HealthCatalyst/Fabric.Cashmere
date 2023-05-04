@@ -11,7 +11,7 @@
 .hc-sidenav-tab {
     @include hc-sidenav-tab();
 
-    &.active-tab {
+    &.active-tab, &.hc-sidenav-active-tab {
         @include hc-sidenav-tab-active();
     }
 
