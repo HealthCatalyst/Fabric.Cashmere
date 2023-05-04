@@ -8,12 +8,14 @@
         [isLoadingFavorites]="isLoadingFavs.value"
         (favoriteClicked)="onFavClick($event)"
         (favoriteItemIconClicked)="unfavorite($event)"
+        [(collapsed)]="collapsed"
     >
     </hc-sidenav>
 
     <div class="example-app-content">
         <hc-checkbox [formControl]="isLoadingTabs">Simulate tabs loading</hc-checkbox>
         <hc-checkbox [formControl]="isLoadingFavs">Simulate favorites loading</hc-checkbox>
+        <hc-slide-toggle buttonSize="sm" [(ngModel)]="collapsed" insideLabel="yes" sideLabel="Collapsed"></hc-slide-toggle>
         <h4>Events:</h4>
         <div class="event-log">
             <div *ngFor="let event of eventsLog">

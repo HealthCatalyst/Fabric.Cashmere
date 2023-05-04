@@ -83,10 +83,6 @@ $sidenav-width: 260px !default;
     align-items: center;
 }
 
-@mixin hc-sidenav-tab-name() {
-        transition: all 0.3s;
-}
-
 @mixin hc-sidenav-skeleton-tab() {
     height: 40px;
     background-color: $slate-gray-300;
@@ -221,6 +217,7 @@ $sidenav-width: 260px !default;
     position: relative;
     display: inline-block;
     top: 3px;
+    margin-left: 5px;
 }
 
 @mixin hc-sidenav-ico-star-filled() {
@@ -303,6 +300,7 @@ $sidenav-width: 260px !default;
 
 @mixin hc-sidenav-collapsed-favs-menu-ico-star() {
     top: 0;
+    margin-left: 0;
 }
 
 @mixin hc-sidenav-state-btn() {
