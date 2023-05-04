@@ -9,11 +9,13 @@
             <ng-container *ngFor="let tab of tabs">
                 <div
                     class="hc-sidenav-tab"
-                    [class.active-tab]="tab.key === activeTabKey"
+                    [class.hc-sidenav-active-tab]="!routerLinkActiveClass ? tab.key === activeTabKey : false"
                     [class.disabled-tab]="tab.disabled"
                     [title]="tab.description"
                     [routerLink]="tab.routerLink"
-                    [routerLinkActive]="routerLinkActiveClass"
+                    [routerLinkActive]="routerLinkActiveClass || 'active-tab'"
+                    tabindex="0"
+                    (keydown.enter)="onTabClick($event, tab)"
                     (click)="onTabClick($event, tab)"
                     [hcPop]="tabPop" [trigger]="collapsed ? 'hover' : 'none'" [context]="tab.title"
                 >
@@ -47,6 +49,8 @@
                         *ngFor="let fav of favorites; trackBy: trackContentItem"
                         class="hc-sidenav-fav-item"
                         [class.disabled-fav-item]="fav.disabled"
+                        tabindex="0"
+                        (keydown.enter)="onFavoriteClicked($event, fav)"
                         (click)="onFavoriteClicked($event, fav)"
                         [routerLink]="fav.routerLink"
                         title="{{fav.description}}"
