@@ -79,9 +79,9 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
                         TermID: element.c[0] ? element.c[0].v : '',
                         TermName: element.c[1] ? element.c[1].v : '',
                         TermUsage: element.c[2] ? element.c[2].v : '',
-                        TermTypes: element.c[3] ? element.c[3].v : '',
-                        TermCategories: element.c[4] ? element.c[4].v : '',
-                        TermExample: element.c[5] ? element.c[5].v : '',
+                        TermTypes: element.c[4] ? element.c[4].v : '',
+                        TermCategories: element.c[5] ? element.c[5].v : '',
+                        TermExample: element.c[3] ? element.c[3].v : '',
                         TermDateAdded: element.c[6] ? element.c[6].v : ''
                     }
                     this.usageList.push( rowEntry );
