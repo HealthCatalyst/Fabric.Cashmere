@@ -33,7 +33,6 @@ $sidenav-width: 260px !default;
 
 @mixin hc-sidenav-tabs() {
     flex: 0 1 auto;
-    overflow-y: auto;
     overflow-x: hidden;
 }
 
@@ -144,6 +143,7 @@ $sidenav-width: 260px !default;
 @mixin hc-sidenav-favs-list-container-inner() {
     overflow-y: auto;
     scrollbar-gutter: stable;
+    padding-left: 3px;
 }
 
 @mixin hc-sidenav-fav-item() {
@@ -161,6 +161,12 @@ $sidenav-width: 260px !default;
     }
 
     &:active {
+        background-color: transparentize($blue, 0.6);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $blue;
         background-color: transparentize($blue, 0.6);
     }
 }
@@ -192,7 +198,7 @@ $sidenav-width: 260px !default;
     display: flex;
     align-items: center;
     margin-right: 7px;
-    padding: 5px;
+    padding: 5px 5px 5px 2px;
 }
 
 @mixin hc-sidenav-fav-loading() {
