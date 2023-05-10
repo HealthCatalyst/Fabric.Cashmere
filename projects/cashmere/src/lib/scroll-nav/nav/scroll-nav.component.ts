@@ -16,7 +16,7 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
     /** Set to true to enable scrolling the nav link pane as the content pane scrolls */
     @Input() public scrollNavWithContent = false;
     /** Set to true to enable the component to change for dynamic content changes that might not be picked up by Angular */
-    @Input() public hasDynamicContent = false
+    @Input() public hasDynamicContent = false;
     @Output() _scrollEvent = new EventEmitter<HTMLElement>();
     @ViewChild('scrollContainer', {read: CdkScrollable, static: false}) public _cdkScrollableElement: CdkScrollable;
     @ContentChildren(ScrollNavLinkDirective, { descendants: true }) private linkList: QueryList<ScrollNavLinkDirective>;
