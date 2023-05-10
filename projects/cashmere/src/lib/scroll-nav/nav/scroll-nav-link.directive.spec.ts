@@ -14,7 +14,7 @@ export class AbstractHcScrollLinkComponent {
     template: `
     <hc-scroll-nav #ScrollNav>
         <ul>
-            <li hcScrollLink='a1'>
+            <li hcScrollLink='a1' (navClick)="testNavEvent($event)">
                 Test 1
             </li>
         </ul>
@@ -26,10 +26,14 @@ export class AbstractHcScrollLinkComponent {
     </hc-scroll-nav-content>`
 })
 export class ScrollNavLinkComponent extends AbstractHcScrollLinkComponent {
+    testNavEvent(event: HTMLElement): HTMLElement {
+        return event;
+    };
 }
 
 @Component({
-    template: `<hc-scroll-nav #ScrollNav>
+    template: `
+    <hc-scroll-nav #ScrollNav>
         <ul>
             <li [attr.hcScrollLink]='"a2"'>
                 Test 1
@@ -43,6 +47,9 @@ export class ScrollNavLinkComponent extends AbstractHcScrollLinkComponent {
     </hc-scroll-nav-content>`
 })
 export class ScrollNavLinkDynamicComponent extends AbstractHcScrollLinkComponent {
+    testNavEvent(event: HTMLElement): HTMLElement {
+        return event;
+    };
 }
 
 describe("ScrollNavLinkDirective", (): void => {
@@ -87,14 +94,14 @@ describe("ScrollNavLinkDirective", (): void => {
             expect(directive.nativeElement.className.includes("hc-scroll-nav-link")).toBeTruthy();
         });
 
-        it("click should call scrollIntoView", (): void => {
+        it("click should emit a navClick event", (): void => {
             const contentElement: HTMLElement = scrollNavLinkComponent.debugElement.query(By.css("#a1")).nativeElement;
             spyOn(document, "getElementById").and.returnValue(contentElement);
-            const scrollIntoViewSpy: jasmine.Spy = spyOn(contentElement, "scrollIntoView");
-
+            spyOn( scrollNavLinkComponent.componentInstance, 'testNavEvent' );
+            
             directive.nativeElement.click();
 
-            expect(scrollIntoViewSpy).toHaveBeenCalled();
+            expect(scrollNavLinkComponent.componentInstance.testNavEvent).toHaveBeenCalledWith(contentElement);
         });
     });
 
@@ -119,12 +126,14 @@ describe("ScrollNavLinkDirective", (): void => {
             expect(directive.nativeElement.className.includes("hc-scroll-nav-link")).toBeTruthy();
         });
 
-        it("click should call scrollIntoView", (): void => {
-            const scrollIntoViewSpy: jasmine.Spy = spyOn(scrollNavLinkDynamicComponent.nativeElement.querySelector(`#${directive.hcScrollLink}`), "scrollIntoView");
+        it("click should emit a navClick event", (): void => {
+            directive.navClick.subscribe( event => scrollNavLinkDynamicComponent.componentInstance.testNavEvent(event) );
 
+            spyOn( scrollNavLinkDynamicComponent.componentInstance, 'testNavEvent' );
+            
             directive.nativeElement.click();
 
-            expect(scrollIntoViewSpy).toHaveBeenCalled();
+            expect(scrollNavLinkDynamicComponent.componentInstance.testNavEvent).toHaveBeenCalled();
         });
     });
 });

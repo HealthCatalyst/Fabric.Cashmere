@@ -1,4 +1,4 @@
-import {Directive, HostBinding, ElementRef, Input, HostListener, Renderer2} from '@angular/core';
+import {Directive, HostBinding, ElementRef, Input, HostListener, Renderer2, Output, EventEmitter} from '@angular/core';
 
 /** Marks the host element as a link within an `hc-scroll-nav`. */
 @Directive({
@@ -7,6 +7,10 @@ import {Directive, HostBinding, ElementRef, Input, HostListener, Renderer2} from
 export class ScrollNavLinkDirective {
     /** The `id` of the corresponding `hcScrollTarget` that you would like to link to. */
     @Input() public hcScrollLink: string | null;
+
+    /** Emits the associated content element when a nav link is clicked */
+    @Output() navClick = new EventEmitter<HTMLElement>();
+
     @HostBinding('class.hc-scroll-nav-link')
     _hostClass = true;
 
@@ -54,14 +58,14 @@ export class ScrollNavLinkDirective {
 
     private navigateToSection(id: string) {
         const el = document.getElementById(id);
-
+        
         if (!el) {
             throw new Error(`Failed to navigate. Could not find the element with the id: ${id}.`);
         } else {
             this.setSubsectionClass(el);
 
             if (!this.hasClickedSubsection(el)) {
-                el.scrollIntoView();
+                this.navClick.emit( el );
             }
         }
     }
