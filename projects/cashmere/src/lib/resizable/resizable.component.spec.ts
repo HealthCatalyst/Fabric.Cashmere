@@ -1,5 +1,5 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,7 +9,7 @@ import { ResizableMetadata as Meta } from './resizable.meta';
 
 @Component({
     template: `
-        <div hc-resizable isResizable="isResizable" position="position">
+        <div hc-resizable [disabled]="disabled" [position]="position" #resizableInstance>
             <p>
                 Sed eget porttitor velit. Ut ac efficitur ligula. Aliquam erat volutpat. Donec quis varius ipsum. Etiam
                 justo eros, vestibulum sit amet metus ut, sodales tincidunt velit. Cras feugiat vulputate urna sed
@@ -19,8 +19,9 @@ import { ResizableMetadata as Meta } from './resizable.meta';
     `
 })
 export class ResizableHostComponent {
-    isResizable = true;
+    disabled = false;
     position: string;
+    @ViewChild('resizableInstance', {static: false}) resizableInstance: ResizableComponent;
 }
 
 const componentHasClass = (fixture: DebugElement, testClass: string) => {
@@ -45,10 +46,10 @@ describe('ResizableComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-    declarations: [ResizableComponent, ResizableHostComponent],
-    imports: [BrowserAnimationsModule, DragDropModule],
-    teardown: { destroyAfterEach: false }
-}).compileComponents();
+            declarations: [ResizableComponent, ResizableHostComponent],
+            imports: [BrowserAnimationsModule, DragDropModule],
+            teardown: { destroyAfterEach: false }
+        }).compileComponents();
     });
 
     beforeEach(
@@ -98,7 +99,7 @@ describe('ResizableComponent', () => {
         const resizable = getComponent(fixture, 'div > div');
         const attributeAllowTag = getComponentAttribute(resizable, 'ng-reflect-position');
 
-        const hasClass = componentHasClass(resizable, Meta.maxHeigthClass);
+        const hasClass = componentHasClass(resizable, Meta.maxHeightClass);
 
         expect(attributeAllowTag).toEqual('top');
         expect(hasClass).toEqual(true);
@@ -111,7 +112,7 @@ describe('ResizableComponent', () => {
         const resizable = getComponent(fixture, 'div > div');
         const attributeAllowTag = getComponentAttribute(resizable, 'ng-reflect-position');
 
-        const hasClass = componentHasClass(resizable, Meta.maxHeigthClass);
+        const hasClass = componentHasClass(resizable, Meta.maxHeightClass);
 
         expect(attributeAllowTag).toEqual('bottom');
         expect(hasClass).toEqual(true);
@@ -121,79 +122,35 @@ describe('ResizableComponent', () => {
         component.position = 'right';
         fixture.detectChanges();
 
-        const resizable = getComponent(fixture, 'div > div > div');
-        const attributeAllowTag = getComponentAttribute(resizable, 'class');
-
-        expect(attributeAllowTag).toContain('resizable-handle-right');
+        expect(component.resizableInstance._className).toContain('resizable-handle-right');
     });
 
     it('should add class for left position', () => {
         component.position = 'left';
         fixture.detectChanges();
 
-        const resizable = getComponent(fixture, 'div > div > div');
-        const attributeAllowTag = getComponentAttribute(resizable, 'class');
-
-        expect(attributeAllowTag).toContain('resizable-handle-left');
+        expect(component.resizableInstance._className).toContain('resizable-handle-left');
     });
 
     it('should add class for top position', () => {
         component.position = 'top';
         fixture.detectChanges();
 
-        const resizable = getComponent(fixture, 'div > div > div');
-        const attributeAllowTag = getComponentAttribute(resizable, 'class');
-
-        expect(attributeAllowTag).toContain('resizable-handle-top');
+        expect(component.resizableInstance._className).toContain('resizable-handle-top');
     });
 
     it('should add class for bottom position', () => {
         component.position = 'bottom';
         fixture.detectChanges();
 
-        const resizable = getComponent(fixture, 'div > div > div');
-        const attributeAllowTag = getComponentAttribute(resizable, 'class');
-
-        expect(attributeAllowTag).toContain('resizable-handle-bottom');
+        expect(component.resizableInstance._className).toContain('resizable-handle-bottom');
     });
 
-    it('should be null if left position and isResizable is false', () => {
+    it('should be null if left position and disabled is true', () => {
         component.position = 'left';
-        component.isResizable = false;
+        component.disabled = true;
         fixture.detectChanges();
 
-        const resizable = getComponent(fixture, 'div > div > div');
-
-        expect(resizable).toBeNull();
-    });
-
-    it('should be null if right position and isResizable is false', () => {
-        component.position = 'right';
-        component.isResizable = false;
-        fixture.detectChanges();
-
-        const resizable = getComponent(fixture, 'div > div > div');
-
-        expect(resizable).toBeNull();
-    });
-
-    it('should be null if top position and isResizable is false', () => {
-        component.position = 'top';
-        component.isResizable = false;
-        fixture.detectChanges();
-
-        const resizable = getComponent(fixture, 'div > div > div');
-
-        expect(resizable).toBeNull();
-    });
-
-    it('should be null if bottom position and isResizable is false', () => {
-        component.position = 'bottom';
-        component.isResizable = false;
-        fixture.detectChanges();
-
-        const resizable = getComponent(fixture, 'div > div > div');
-
-        expect(resizable).toBeNull();
+        expect(component.resizableInstance._element.nativeElement.querySelector('div')).toBeNull();
     });
 });

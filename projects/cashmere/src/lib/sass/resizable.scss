@@ -8,8 +8,7 @@ $handle-size: 10px;
 $handle-margin: calc(#{$handle-size} * -0.5 - 2px);
 
 @mixin hc-resizable-container() {
-    height: 300px;
-    display: block;
+    position: relative;
 }
 
 @mixin hc-resizable-max-height() {

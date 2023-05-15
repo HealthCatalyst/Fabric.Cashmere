@@ -1,7 +1,7 @@
 <div class="example-options">
     <hc-form-field class="pos-selector">
         <hc-label>Position:</hc-label>
-        <hc-select [formControl]="resizablePosition">
+        <hc-select [formControl]="resizablePosition" (change)="resetContainer()">
             <option value="top" [selected]="resizablePosition.value === 'top'">Top</option>
             <option value="right" [selected]="resizablePosition.value === 'right'">Right</option>
             <option value="bottom" [selected]="resizablePosition.value === 'bottom'">Bottom</option>
@@ -12,6 +12,23 @@
         Reset Container
     </button>
 </div>
-<div hc-resizable [position]="resizablePosition.value" isResizable="true" class="resizable-container" id="resizable-container"></div>
 
+<hc-slide-toggle sideLabel="Resizing enabled" insideLabel="true" [formControl]="resizeableEnabled" class="example-toggle"></hc-slide-toggle>
+
+
+<div class="example-layout-container" [style.flex-direction]="containerOrient">
+    <div class="static-container" *ngIf="topContainer">Static Container</div>
+    <div 
+        hc-resizable
+        [position]="resizablePosition.value"
+        isResizable="true"
+        [disabled]="!resizeableEnabled.value"
+        class="example-resizable-container" 
+        #resizableContainer
+        [min]="100"
+    >
+        <div class="example-content">Resizable Container</div>
+    </div>
+    <div class="static-container" *ngIf="!topContainer">Static Container</div>
+</div>
 

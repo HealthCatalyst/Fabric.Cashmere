@@ -1,5 +1,6 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ResizableComponent } from '@healthcatalyst/cashmere';
 
 /**
  * @title Overview of Resizable Container functionality
@@ -10,10 +11,23 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['./resizable-overview-example.component.scss']
 })
 export class ResizableOverviewExampleComponent {
-    readonly resizablePosition = new FormControl('top', {nonNullable: true});
-    @ViewChild('resizableContainer') resizableContainer: ElementRef<HTMLElement>;
+    resizablePosition = new FormControl('top', {nonNullable: true});
+    resizeableEnabled = new FormControl(true, {nonNullable: true});
+    @ViewChild('resizableContainer') resizableContainer: ResizableComponent;
+
+    get topContainer(): boolean {
+        return this.resizablePosition.value === 'top' || this.resizablePosition.value === 'left';
+    }
+
+    get containerOrient(): string {
+        if ( this.resizablePosition.value === 'top' || this.resizablePosition.value === 'bottom' ) {
+            return 'column';
+        } else {
+            return 'row';
+        }
+    }
 
     resetContainer(): void {
-        this.resizableContainer.nativeElement.style.height = '300px';
+        this.resizableContainer.reset();
     }
 }

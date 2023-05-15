@@ -1,10 +1,9 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ResizableComponent} from './resizable.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ResizableComponent } from './resizable.component';
 
 @NgModule({
-    imports: [CommonModule, DragDropModule],
+    imports: [CommonModule],
     exports: [ResizableComponent],
     declarations: [ResizableComponent]
 })

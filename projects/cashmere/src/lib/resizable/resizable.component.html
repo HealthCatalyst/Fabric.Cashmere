@@ -1,15 +1,5 @@
+<div *ngIf="!disabled">
+    <div [class]="_className" (mousedown)="_dragStarted($event)"></div>
+    <span class="hc-resizable-handle-selector" [class]="_classNameSelector"></span>
+</div>
 <ng-content></ng-content>
-<ng-container *ngIf="isResizable" class="hc-resizable-container">
-    <div
-        class="hc-resizable-handle"
-        [class]="className"
-        cdkDrag
-        (cdkDragStarted)="dragStarted()"
-        (cdkDragEnded)="dragEnded($event)"
-        (cdkDragMoved)="dragMoved($event)"
-    >
-    </div>
-    <span class="hc-resizable-handle-selector" [class]="classNameSelector">
-        <div *ngIf="subscription$ | async"></div>
-    </span>
-</ng-container>
