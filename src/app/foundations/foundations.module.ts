@@ -12,6 +12,7 @@ import {LogoDemoComponent} from './logo/logo-demo.component';
 import {FontsDemoComponent} from './fonts/fonts-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
 import { AIDemoComponent } from './ai/ai-demo.component';
+import { IconPickerComponent } from './products/icon-picker/icon-picker.component';
 
 @NgModule({
     imports: [SharedModule, FoundationsRoutesModule],
@@ -26,6 +27,7 @@ import { AIDemoComponent } from './ai/ai-demo.component';
         LogoDemoComponent,
         AIDemoComponent,
         ProductsDemoComponent,
+        IconPickerComponent,
         FontsDemoComponent
     ]
 })

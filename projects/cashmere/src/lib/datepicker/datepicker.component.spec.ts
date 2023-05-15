@@ -4,7 +4,7 @@ import {Overlay, OverlayContainer} from '@angular/cdk/overlay';
 import {ScrollDispatcher} from '@angular/cdk/scrolling';
 
 import {Component, FactoryProvider, Type, ValueProvider, ViewChild} from '@angular/core';
-import {ComponentFixture, fakeAsync, flush, inject, TestBed} from '@angular/core/testing';
+import {ComponentFixture, discardPeriodicTasks, fakeAsync, flush, inject, TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
@@ -1758,6 +1758,8 @@ describe('DatepickerComponent', () => {
 
             expect(document.querySelector('.hc-calendar-time-picker')).toBeTruthy();
             expect(document.querySelector('.hc-calendar-content')).toBeFalsy();
+
+            discardPeriodicTasks();
         }));
 
         it('should not display the AM/PM select with a 24 hour cycle', fakeAsync(() => {
@@ -1769,6 +1771,8 @@ describe('DatepickerComponent', () => {
 
             const formFields = document.querySelectorAll('hc-form-field');
             expect(formFields.length).toBe(2);
+
+            discardPeriodicTasks();
         }));
     });
 
@@ -1794,6 +1798,8 @@ describe('DatepickerComponent', () => {
 
             expect(document.querySelector('.hc-calendar-time-picker')).toBeTruthy();
             expect(document.querySelector('.hc-calendar-content')).toBeTruthy();
+
+            discardPeriodicTasks();
         }));
     });
 

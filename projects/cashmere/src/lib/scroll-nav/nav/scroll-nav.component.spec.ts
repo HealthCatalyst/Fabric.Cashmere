@@ -248,49 +248,8 @@ describe('HcScrollNavComponent', () => {
                 expect(scrollToSpy).toHaveBeenCalled();
             });
 
-            it('should not call scrollTo if element is under scroll view area but isScrolling is true', () => {
-                const scrollToSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "scrollTo");
-                testApp.linksComponent.scrollNavWithContent = true;
-                testApp.linksComponent.isScrolling = true;
-                testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
-                testApp.detectChanges();
-
-                testApp.linksComponent._setActiveSectionById('b3');
-
-                expect(scrollToSpy).not.toHaveBeenCalled();
-            });
-
-            it('should call scrollIntoView if element is above scroll view area and isScrolling is false', () => {
-                testApp.linksComponent.isScrolling = false;
-                testApp.linksComponent.scrollNavWithContent = true;
-                testApp.linksComponent._setActiveSectionById('a2');
-
-                const scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
-                testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
-                testApp.detectChanges();
-
-                testApp.linksComponent._setActiveSectionById('a1');
-
-                expect(scrollIntoViewSpy).toHaveBeenCalled();
-            });
-
-            it('should not call scrollIntoView if element is above scroll view area and isScrolling is true', () => {
-                const scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
-                testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
-                testApp.detectChanges();
-
-                spyOn(testApp.linksComponent._cdkScrollableElement, "measureScrollOffset").and.returnValue(126);
-                testApp.linksComponent.isScrolling = true;
-                testApp.linksComponent.scrollNavWithContent = true;
-
-                testApp.linksComponent._setActiveSectionById('a1');
-
-                expect(scrollIntoViewSpy).not.toHaveBeenCalled();
-            });
-
             it('should not scroll if element is in the scroll view area', () => {
                 const scrollToSpy: jasmine.Spy = spyOn(testApp.linksComponent._cdkScrollableElement, "scrollTo");
-                const scrollIntoViewSpy: jasmine.Spy = spyOn(testApp.linksComponent._elementRef.nativeElement.querySelector(`[${SCROLL_LINK_ATTRIBUTE}='a1']`), "scrollIntoView");
 
                 testApp.linksComponent._elementRef.nativeElement.querySelector(`.${LINKS_CONTAINER_CLASS}`).style.height = '200px';
                 testApp.linksComponent.scrollNavWithContent = true;
@@ -298,7 +257,6 @@ describe('HcScrollNavComponent', () => {
                 testApp.linksComponent._setActiveSectionById('a1');
 
                 expect(scrollToSpy).not.toHaveBeenCalled();
-                expect(scrollIntoViewSpy).not.toHaveBeenCalled();
             });
         });
     });

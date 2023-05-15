@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewEncapsulation, AfterViewInit, QueryList, ContentChildren, Renderer2, ViewChild, Input, OnDestroy } from '@angular/core';
+import { Component, ElementRef, ViewEncapsulation, AfterViewInit, QueryList, ContentChildren, Renderer2, ViewChild, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { some, find, map, differenceBy } from 'lodash';
@@ -17,6 +17,7 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
     @Input() public scrollNavWithContent = false;
     /** Set to true to enable the component to change for dynamic content changes that might not be picked up by Angular */
     @Input() public hasDynamicContent = false;
+    @Output() _scrollEvent = new EventEmitter<HTMLElement>();
     @ViewChild('scrollContainer', {read: CdkScrollable, static: false}) public _cdkScrollableElement: CdkScrollable;
     @ContentChildren(ScrollNavLinkDirective, { descendants: true }) private linkList: QueryList<ScrollNavLinkDirective>;
     public get _links(): Array<HTMLElement> {
@@ -48,6 +49,8 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
         if (this.dynamicInterval) {
             clearInterval(this.dynamicInterval);
         }
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
     }
 
     public ngAfterViewInit(): void {
@@ -118,6 +121,10 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
                         rtnLink = scrollNavLinkDirective;
                     }
 
+                    rtnLink.navClick.pipe(takeUntil(this.unsubscribe$)).subscribe( element => {
+                        this._scrollEvent.emit( element );
+                    })
+
                     return rtnLink;
                 }
             );
@@ -157,6 +164,12 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
                     `Failed to mark active section. Could not find the element with the data target for id: ${firstScrollLink}.`
                 );
             }
+
+            this.linkList.forEach( link => {
+                link.navClick.pipe(takeUntil(this.unsubscribe$)).subscribe( element => {
+                    this._scrollEvent.emit( element );
+                });
+            });
 
             if (isInit) {
                 this._setActiveSectionById(firstScrollLink);
@@ -210,7 +223,7 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
                     this._cdkScrollableElement.scrollTo({ bottom: scrollHeight - offsetTop - elementClientHeight });
                 }
             } else if (this.previousElementPosition > currentElementPosition) { // scroll up
-                element.scrollIntoView();
+                this._cdkScrollableElement.scrollTo({ bottom: scrollHeight - offsetTop - elementClientHeight });
             }
         }
 

@@ -25,7 +25,7 @@ import {parseBooleanAttribute} from '../util';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
 import { InputDirective } from '../input';
-import { takeUntil } from 'rxjs/operators';
+import { delay, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 let nextUniqueId = 0;
@@ -185,8 +185,9 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
         this._initialized = true;
         setTimeout(() => this._markRadiosForCheck());
 
-        if ( this._ngControl && this._ngControl.statusChanges ) {
-            this._ngControl.statusChanges.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
+        if ( this._ngControl?.statusChanges ) {
+            // delay() is necessary to make sure any form or control state changes have been applied before rechecking error states
+            this._ngControl.statusChanges.pipe(delay(0), takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
         }
         if ( this._form ) {
             this._form.ngSubmit.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());

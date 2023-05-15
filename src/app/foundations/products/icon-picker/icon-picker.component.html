@@ -1,0 +1,40 @@
+<hc-modal>
+    <hc-modal-header>
+        <span>Select Icon Type</span>
+    </hc-modal-header>
+    <hc-modal-body class="hc-icon-picker-body">
+        <div class="hc-icon-picker-left-column">
+            <img [src]="'./assets/product-icons/' + productName + '.svg'" />
+        </div>
+        <div>
+            <h2>SVG</h2>
+            <em>A vector format most commonly used in web applications</em>
+            <br>
+            <a hc-button buttonStyle="primary-alt" target="_blank" [href]="'./assets/product-icons/' + productName + '.svg'">
+                <hc-icon fontSet="fa" fontIcon="fa-file-text-o"></hc-icon>
+                Download SVG
+            </a>
+
+            <hr>
+
+            <h2>PNG</h2>
+            <em>A raster format often used in PowerPoint slides or presentations</em>
+            <br>
+            <a hc-button buttonStyle="primary-alt" target="_blank" [href]="'./assets/product-icons/' + productName + '.png'">
+                <hc-icon fontSet="fa" fontIcon="fa-file-image-o"></hc-icon>
+                Download PNG
+            </a>
+
+            <hr>
+
+            <h2>Base64</h2>
+            <em>A compressed text format used in css stylesheets</em>
+            <br>
+            <a hc-button buttonStyle="primary-alt" target="_blank" [href]="'./assets/product-icons/' + productName + '.txt'">
+                <hc-icon fontSet="fa" fontIcon="fa-file-code-o"></hc-icon>
+                Download Base64
+            </a>
+        </div>
+        
+     </hc-modal-body>
+</hc-modal>
