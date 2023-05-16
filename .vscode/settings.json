@@ -2,5 +2,9 @@
     "editor.detectIndentation": false,
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "yaml.customTags": [
+        "!script"
+    ],
+    "angular.enable-strict-mode-prompt": false
 }

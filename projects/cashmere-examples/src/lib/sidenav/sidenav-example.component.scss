@@ -1,0 +1,61 @@
+@import "@healthcatalyst/cashmere/scss/_colors";
+
+// Example skeleton layout
+.sidenav-example-app-shell {
+    display: flex;
+    height: 500px;
+
+    ::ng-deep .hc-sidenav {
+        height: 100%;
+    }
+
+    .example-app-content {
+        flex: 1 0 auto;
+        padding: 16px;
+        background-color: $slate-gray-100;
+    }
+
+    h4 {
+        margin-bottom: 4px;
+    }
+
+    // logging output
+    .event-log {
+        border: 1px solid $gray-200;
+        background-color: darken($slate-gray-100, 2%);
+        width: 50%;
+        min-width: 250px;
+        height: 300px;
+        overflow-y: auto;
+        border-radius: 4px;
+        padding: 8px;
+        line-height: 1.3;
+        font-family: monospace;
+    }
+}
+
+::ng-deep {
+    &.fav-travel-ico {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        color: $white;
+        width: 22px !important;
+        height: 22px !important;
+        font-size: 12px !important;
+        align-items: center;
+    }
+
+    &.fav-ico-blue {
+        background-color: $dark-blue;
+    }
+
+    &.fav-ico-teal {
+        background-color: $teal;
+    }
+
+    &.fav-ico-green {
+        background-color: $green;
+    }
+}

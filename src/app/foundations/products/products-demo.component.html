@@ -14,91 +14,84 @@
             as any websites that reference the app (Health Catalyst Community, Docs, etc).
         </p>
         <p>
-            Click any of the icons below to download a zip containing an SVG and PNG of that icon. Or use the purple
-            button to download the entire collection.
+            Click any of the icons below to select a format to download.
         </p>
-        <br>
-        <a hc-button buttonStyle="primary-alt" download href="./assets/product-icons/Product_Icons_Full.zip"
-            title="Download icon set">
-            <hc-icon fontSet="fa" fontIcon="fa-file-zip-o" class="icon-left"></hc-icon>
-            Download All Product Icons
-        </a>
     </hc-tile>
 
     <hc-tile>
         <h5 id="software-applications">Software Applications</h5>
         <div class="icon-row">
-            <a class="product-icon" href="./assets/product-icons/ARMUS.zip">
+            <a class="product-icon" (click)="openIconPicker('ARMUS')">
                 <img src="./assets/product-icons/ARMUS.svg" />
                 <p>ARMUS™</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/PowerCosting.zip">
+            <a class="product-icon" (click)="openIconPicker('PowerCosting')">
                 <img src="./assets/product-icons/PowerCosting.svg" />
                 <p>Business Decision Support - PowerCosting™</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/PowerLabor.zip">
+            <a class="product-icon" (click)="openIconPicker('PowerLabor')">
                 <img src="./assets/product-icons/PowerLabor.svg" />
                 <p>Business Decision Support - PowerLabor™</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/PowerPlanning.zip">
+            <a class="product-icon" (click)="openIconPicker('PowerPlanning')">
                 <img src="./assets/product-icons/PowerPlanning.svg" />
                 <p>Business Decision Support - PowerPlanning™</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/CareManagement.zip">
+            <a class="product-icon" (click)="openIconPicker('CareManagement')">
                 <img src="./assets/product-icons/CareManagement.svg" />
                 <p>Care Management Suite</p>
             </a>
         </div>
         <div class="icon-row">
-            <a class="product-icon" href="./assets/product-icons/HealthCatalystEmbedded.zip">
+            <a class="product-icon" (click)="openIconPicker('HealthCatalystEmbedded')">
                 <img src="./assets/product-icons/HealthCatalystEmbedded.svg" />
                 <p>Health Catalyst Embedded</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/Interoperability.zip">
+            <a class="product-icon" (click)="openIconPicker('Interoperability')">
                 <img src="./assets/product-icons/Interoperability.svg" />
                 <p>Interoperability</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/KPINinja.zip">
+            <a class="product-icon" (click)="openIconPicker('KPINinja')">
                 <img src="./assets/product-icons/KPINinja.svg" />
                 <p>KPI Ninja™</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/AbleHealth.zip">
+            <a class="product-icon" (click)="openIconPicker('AbleHealth')">
                 <img src="./assets/product-icons/AbleHealth.svg" />
                 <p>MeasureAble™</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/PatientSafety.zip">
+            <a class="product-icon" (click)="openIconPicker('PatientSafety')">
                 <img src="./assets/product-icons/PatientSafety.svg" />
                 <p>Patient Safety Monitor™</p>
             </a>
         </div>
         <div class="icon-row">
-            <a class="product-icon" href="./assets/product-icons/PopulationBuilder.zip">
+            <a class="product-icon" (click)="openIconPicker('PopulationBuilder')">
                 <img src="./assets/product-icons/PopulationBuilder.svg" />
                 <p>Pop Analyzer™</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/LeadingWisely.zip">
+            <a class="product-icon" (click)="openIconPicker('LeadingWisely')">
                 <img src="./assets/product-icons/LeadingWisely.svg" />
                 <p>Pop Insights™</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/PopHealth.zip">
+            <a class="product-icon" (click)="openIconPicker('PopHealth')">
                 <img src="./assets/product-icons/PopHealth.svg" />
                 <p>Population Health Foundations Solution™</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/Touchstone.zip">
+            <a class="product-icon" (click)="openIconPicker('Touchstone')">
                 <img src="./assets/product-icons/Touchstone.svg" />
                 <p>Touchstone®</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/Twistle.zip">
+            <a class="product-icon" (click)="openIconPicker('Twistle')">
                 <img src="./assets/product-icons/Twistle.svg" />
                 <p>Twistle® Patient Engagement</p>
             </a>
         </div>
         <div class="icon-row">
-            <a class="product-icon" href="./assets/product-icons/PopHealth.zip">
+            <a class="product-icon" (click)="openIconPicker('PopHealth')">
                 <img src="./assets/product-icons/PopHealth.svg" />
                 <p>Value Optimizer™</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/Vitalware.zip">
+            <a class="product-icon" (click)="openIconPicker('Vitalware')">
                 <img src="./assets/product-icons/Vitalware.svg" />
                 <p>Vitalware®</p>
             </a>
@@ -108,85 +101,85 @@
     <hc-tile>
         <h5 id="data-operating-system">Data Operating System</h5>
         <div class="icon-row">
-            <a class="product-icon" href="./assets/product-icons/Atlas.zip">
+            <a class="product-icon" (click)="openIconPicker('Atlas')">
                 <img src="./assets/product-icons/Atlas.svg" />
                 <p>Atlas</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/Cashmere.zip">
+            <a class="product-icon" (click)="openIconPicker('Cashmere')">
                 <img src="./assets/product-icons/Cashmere.svg" />
                 <p>Cashmere</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/EngineExtensibility.zip">
+            <a class="product-icon" (click)="openIconPicker('EngineExtensibility')">
                 <img src="./assets/product-icons/EngineExtensibility.svg" />
                 <p>Engine Extensibility</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/DataMartConfig.zip">
+            <a class="product-icon" (click)="openIconPicker('DataMartConfig')">
                 <img src="./assets/product-icons/DataMartConfig.svg" />
                 <p>Data Mart Config Manager</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/DOS.zip">
+            <a class="product-icon" (click)="openIconPicker('DOS')">
                 <img src="./assets/product-icons/DOS.svg" />
                 <p>Data Operating System (DOS™)</p>
             </a>
         </div>
         <div class="icon-row">
-            <a class="product-icon" href="./assets/product-icons/AccessControl.zip">
+            <a class="product-icon" (click)="openIconPicker('AccessControl')">
                 <img src="./assets/product-icons/AccessControl.svg" />
                 <p>DOS Access Control</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/DOS-CLI.zip">
+            <a class="product-icon" (click)="openIconPicker('DOS-CLI')">
                 <img src="./assets/product-icons/DOS-CLI.svg" />
                 <p>DOS CLI</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/OpsConsole.zip">
+            <a class="product-icon" (click)="openIconPicker('OpsConsole')">
                 <img src="./assets/product-icons/OpsConsole.svg" />
                 <p>DOS Operations Console</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/EDWConsole.zip">
+            <a class="product-icon" (click)="openIconPicker('EDWConsole')">
                 <img src="./assets/product-icons/EDWConsole.svg" />
                 <p>EDW Console</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/ETL.zip">
+            <a class="product-icon" (click)="openIconPicker('ETL')">
                 <img src="./assets/product-icons/ETL.svg" />
                 <p>ETL</p>
             </a>
         </div>
         <div class="icon-row">
-            <a class="product-icon" href="./assets/product-icons/Grid.zip">
+            <a class="product-icon" (click)="openIconPicker('Grid')">
                 <img src="./assets/product-icons/Grid.svg" />
                 <p>Grid</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/IDEA.zip">
+            <a class="product-icon" (click)="openIconPicker('IDEA')">
                 <img src="./assets/product-icons/IDEA.svg" />
                 <p>IDEA</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/InstallChecklist.zip">
+            <a class="product-icon" (click)="openIconPicker('InstallChecklist')">
                 <img src="./assets/product-icons/InstallChecklist.svg" />
                 <p>Install Checklists</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/Installer.zip">
+            <a class="product-icon" (click)="openIconPicker('Installer')">
                 <img src="./assets/product-icons/Installer.svg" />
                 <p>Installers</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/SAMD.zip">
+            <a class="product-icon" (click)="openIconPicker('SAMDesigner')">
                 <img src="./assets/product-icons/SAMDesigner.svg" />
                 <p>SAM Designer</p>
             </a>
         </div>
         <div class="icon-row">
-            <a class="product-icon" href="./assets/product-icons/SMD.zip">
+            <a class="product-icon" (click)="openIconPicker('SourceMartDesigner')">
                 <img src="./assets/product-icons/SourceMartDesigner.svg" />
                 <p>Source Mart Designer</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/Telemetry.zip">
+            <a class="product-icon" (click)="openIconPicker('Telemetry')">
                 <img src="./assets/product-icons/Telemetry.svg" />
                 <p>Telemetry</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/ValueSets.zip">
+            <a class="product-icon" (click)="openIconPicker('ValueSets')">
                 <img src="./assets/product-icons/ValueSets.svg" />
                 <p>Value Sets</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/ServiceDesk.zip">
+            <a class="product-icon" (click)="openIconPicker('ServiceDesk')">
                 <img src="./assets/product-icons/ServiceDesk.svg" />
                 <p>Service Desk</p>
             </a>
@@ -196,15 +189,15 @@
     <hc-tile class="icon-tile">
         <h5 id="analytics">Data</h5>
         <div class="icon-row">
-            <a class="product-icon" href="./assets/product-icons/DataQuality.zip">
+            <a class="product-icon" (click)="openIconPicker('DataQuality')">
                 <img src="./assets/product-icons/DataQuality.svg" />
                 <p>Data Quality</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/DOSMarts.zip">
+            <a class="product-icon" (click)="openIconPicker('DOSMarts')">
                 <img src="./assets/product-icons/DOSMarts.svg" />
                 <p>DOS Marts™</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/ExpertDataCollections.zip">
+            <a class="product-icon" (click)="openIconPicker('ExpertDataCollections')">
                 <img src="./assets/product-icons/ExpertDataCollections.svg" />
                 <p>Expert Data Collections™</p>
             </a>
@@ -214,63 +207,63 @@
     <hc-tile class="icon-tile">
         <h5 id="analytics">Analytics</h5>
         <div class="icon-row">
-            <a class="product-icon" href="./assets/product-icons/ACO.zip">
+            <a class="product-icon" (click)="openIconPicker('ACO')">
                 <img src="./assets/product-icons/ACO.svg" />
                 <p>Accountable Care Organizations</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/AnalyticsAccelerators.zip">
+            <a class="product-icon" (click)="openIconPicker('AnalyticsAccelerators')">
                 <img src="./assets/product-icons/AnalyticsAccelerators.svg" />
                 <p>Analytics Accelerators</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/ClinicalAnalytics.zip">
+            <a class="product-icon" (click)="openIconPicker('ClinicalAnalytics')">
                 <img src="./assets/product-icons/ClinicalAnalytics.svg" />
                 <p>Clinical Analytics</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/COVID.zip">
+            <a class="product-icon" (click)="openIconPicker('COVID')">
                 <img src="./assets/product-icons/COVID.svg" />
                 <p>COVID-19</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/Documentation.zip">
+            <a class="product-icon" (click)="openIconPicker('Documentation')">
                 <img src="./assets/product-icons/Documentation.svg" />
                 <p>Documentation</p>
             </a>
         </div>
         <div class="icon-row">
-            <a class="product-icon" href="./assets/product-icons/Financial.zip">
+            <a class="product-icon" (click)="openIconPicker('Financial')">
                 <img src="./assets/product-icons/Financial.svg" />
                 <p>Financial</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/healthcareAI.zip">
+            <a class="product-icon" (click)="openIconPicker('healthcareAI')">
                 <img src="./assets/product-icons/healthcareAI.svg" />
                 <p>Healthcare.AI Suite™</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/HCCommunity.zip">
+            <a class="product-icon" (click)="openIconPicker('HCCommunity')">
                 <img src="./assets/product-icons/HCCommunity.svg" />
                 <p>Health Catalyst Community</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/Operations.zip">
+            <a class="product-icon" (click)="openIconPicker('Operations')">
                 <img src="./assets/product-icons/Operations.svg" />
                 <p>Operational</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/PartnerProducts.zip">
+            <a class="product-icon" (click)="openIconPicker('PartnerProducts')">
                 <img src="./assets/product-icons/PartnerProducts.svg" />
                 <p>Partner Products</p>
             </a>
         </div>
         <div class="icon-row">
-            <a class="product-icon" href="./assets/product-icons/Services.zip">
+            <a class="product-icon" (click)="openIconPicker('Services')">
                 <img src="./assets/product-icons/Services.svg" />
                 <p>Professional Services</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/RapidResponseAnalytics.zip">
+            <a class="product-icon" (click)="openIconPicker('RapidResponseAnalytics')">
                 <img src="./assets/product-icons/RapidResponseAnalytics.svg" />
                 <p>Self-Service Analytics Suite</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/Tech-EnabledManagedServices.zip">
+            <a class="product-icon" (click)="openIconPicker('Tech-EnabledManagedServices')">
                 <img src="./assets/product-icons/Tech-EnabledManagedServices.svg" />
                 <p>Tech-Enabled Managed Services</p>
             </a>
-            <a class="product-icon" href="./assets/product-icons/UserExperience.zip">
+            <a class="product-icon" (click)="openIconPicker('UserExperience')">
                 <img src="./assets/product-icons/UserExperience.svg" />
                 <p>User Experience</p>
             </a>

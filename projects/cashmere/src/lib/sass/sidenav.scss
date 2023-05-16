@@ -1,0 +1,364 @@
+@import './colors';
+@import './mixins';
+@import './animations';
+@import './icons';
+
+$sidenav-width: 260px !default;
+
+@mixin hc-sidenav() {
+    background-color: $white;
+    width: $sidenav-width;
+    padding: 8px 0 20px;
+    height: calc(100vh - 53px);
+    box-shadow: 0 0 7px $shadow;
+    position: relative;
+    z-index: 2;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.3s;
+    flex-direction: column;
+    display: flex;
+
+    // Styles for collapsed nav
+    &.hc-sidenav-collapsed {
+        flex: 0 0 55px;
+        width: 55px;
+        padding-top: 0;
+
+        .hc-sidenav-tab-name {
+            opacity: 0;
+        }
+    }
+}
+
+@mixin hc-sidenav-tabs() {
+    flex: 0 1 auto;
+    overflow-x: hidden;
+}
+
+@mixin hc-sidenav-tab() {
+    @include fontSize(15px);
+    height: 40px;
+    border-left: 5px transparent solid;
+    display: flex;
+    align-items: center;
+    padding: 0 16px 0 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    &:hover {
+        background-color: $slate-gray-200;
+    }
+
+    &:active {
+        background-color: darken($slate-gray-200, 4%);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $blue;
+        background-color: $slate-gray-200;
+    }
+}
+
+@mixin hc-sidenav-tab-active() {
+    border-left-color: $blue;
+    font-weight: 600;
+    background-color: $slate-gray-100;
+}
+
+@mixin hc-sidenav-tab-disabled(){
+    cursor: not-allowed;
+    color: $gray-300;
+    &:hover, &:active {
+        background-color: transparent;
+    }
+}
+
+@mixin hc-sidenav-tab-inner(){
+    display: flex;
+    align-items: center;
+}
+
+@mixin hc-sidenav-skeleton-tab() {
+    height: 40px;
+    background-color: $slate-gray-300;
+    &:nth-child(2) {
+        background-color: lighten($slate-gray-300, 5%);
+    }
+    &:nth-child(3) {
+        background-color: lighten($slate-gray-300, 10%);
+    }
+}
+
+@mixin hc-sidenav-tab-ico() {
+    @include fontSize(18px);
+    margin-right: 7px;
+    width: 24px;
+    display: inline-flex;
+    justify-content: center;
+}
+
+@mixin hc-sidenav-tab-subtext() {
+    @include fontSize(12px);
+    text-transform: uppercase;
+    color: $slate-gray-300;
+}
+
+@mixin hc-sidenav-favs() {
+    padding: 20px 0 20px 20px;
+    margin: 0 0 24px -10px;
+    @include fontSize(15px);
+    flex: 1 1 230px;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin hc-sidenav-favs-header() {
+    padding-bottom: 5px;
+    font-weight: 600;
+    pointer-events: none;
+    animation: HCFadeIn 0.3s;
+    border-bottom: 1px solid $slate-gray-100;
+    margin-right: 16px;
+}
+
+@mixin hc-sidenav-favs-list-container() {
+    flex: 1 1 auto;
+    padding-top: 5px;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin hc-sidenav-favs-bottom() {
+    border-bottom: 1px solid $slate-gray-100;
+    margin-right: 16px;
+}
+
+@mixin hc-sidenav-favs-list-container-inner() {
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    padding-left: 3px;
+}
+
+@mixin hc-sidenav-fav-item() {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2px 0;
+    cursor: pointer;
+    line-height: 1.4;
+    color: $offblack;
+    animation: HCSlideInUp 0.3s;
+
+    &:hover {
+        background-color: transparentize($blue, 0.75);
+    }
+
+    &:active {
+        background-color: transparentize($blue, 0.6);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px $blue;
+        background-color: transparentize($blue, 0.6);
+    }
+}
+
+@mixin hc-sidenav-fav-item-disabled() {
+    cursor: not-allowed;
+    color: $gray-300;
+    &:hover, &:active {
+        background-color: transparent;
+    }
+}
+
+@mixin hc-sidenav-fav-item-ico() {
+    @include fontSize(14px);
+    margin-right: 7px;
+    width: 16px;
+    display: inline-flex;
+    justify-content: center;
+    animation: HCFadeIn 0.3s;
+}
+
+@mixin hc-sidenav-fav-item-subtext() {
+    @include fontSize(12px);
+    text-transform: uppercase;
+    color: $slate-gray-300;
+}
+
+@mixin hc-sidenav-fav-item-inner() {
+    display: flex;
+    align-items: center;
+    margin-right: 7px;
+    padding: 5px 5px 5px 2px;
+}
+
+@mixin hc-sidenav-fav-loading() {
+    height: 100px;
+    position: absolute;
+    left: 50%;
+}
+
+
+@mixin hc-sidenav-fav-action-ico-btn() {
+    height: 100%;
+    display: inline-block;
+    width: 20px;
+}
+
+@mixin hc-sidenav-ico-star() {
+    background-image: url($ico-star);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 18px;
+    width: 18px;
+    position: relative;
+    display: inline-block;
+    top: 3px;
+    margin-left: 5px;
+}
+
+@mixin hc-sidenav-ico-star-filled() {
+    background-image: url($ico-star-filled);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+}
+
+@mixin hc-sidenav-fav-action-ico-btn() {
+    height: 32px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover .hc-ico-star-filled {
+        filter: brightness(90%);
+    }
+}
+
+@mixin hc-sidenav-empty-msg() {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 0 0 -20px;
+    animation: HCFadeIn 0.3s;
+}
+
+@mixin hc-sidenav-pop-menu() {
+    margin: 0;
+}
+
+@mixin hc-sidenav-empty-ico() {
+    margin-bottom: 12px;
+    height: 32px;
+    width: 32px;
+    opacity: 0.5;
+    &:before {
+        @include fontSize(36px);
+    }
+}
+
+@mixin hc-sidenav-empty-description() {
+    @include fontSize(12px);
+    margin: 12px 30px;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+@mixin hc-sidenav-collapsed-favs() {
+    height: auto;
+}
+
+@mixin hc-sidenav-collapsed-favs-menu-btn() {
+    margin: -20px 0 0 -10px;
+}
+
+@mixin hc-sidenav-collapsed-favs-menu-ico() {
+    animation: HCFadeIn 0.3s;
+    cursor: pointer;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: $slate-gray-200;
+    }
+
+    &:active {
+        background-color: darken($slate-gray-200, 4%);
+    }
+}
+
+@mixin hc-sidenav-collapsed-favs-menu-ico-star() {
+    top: 0;
+    margin-left: 0;
+}
+
+@mixin hc-sidenav-state-btn() {
+    width: 40px;
+    min-width: auto;
+    height: 40px;
+    border: 1px solid $gray-100;
+    box-shadow: 0 0 3px $shadow;
+    color: $blue;
+    position: absolute;
+    bottom: 12px;
+    left: 7px;
+    padding: 0;
+    transition: all 0.1s;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: darken($blue, 5%);
+    }
+
+    &:hover {
+        box-shadow: 0 0 5px $shadow;
+        background-color: $slate-gray-100;
+        border: 1px solid $gray-200;
+    }
+
+    &:active {
+        box-shadow: 0 0 0 $shadow;
+        background-color: darken($slate-gray-200, 3%);
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 2px $blue;
+    }
+}
+
+@mixin hc-subtle-pulse() {
+    animation: HCSubtleFadePulse 2.5s ease-out infinite;
+}
+
+@mixin hc-ico-chev-blue-collapsed() {
+    background-image: url($ico-chev-right-blue);
+    background-repeat: no-repeat;
+    height: 15px;
+    width: 10px;
+    position: relative;
+    top: 1px;
+}
+
+@mixin hc-ico-chev-blue-expanded() {
+    transform: rotate(180deg);
+    position: relative;
+    right: 1px;
+}

@@ -1,10 +1,13 @@
-<form>
+<form [formGroup]="exampleFormGroup" #exampleForm="ngForm">
     <div class="form-container">
         <hc-form-field>
             <hc-label>Validate an email address:</hc-label>
-            <input hcInput [formControl]="formDemo" required>
+            <input hcInput formControlName="exampleInput" required>
             <hc-error>A valid email address is required</hc-error>
         </hc-form-field>
     </div>
+    <button hc-button title="Reset Form" buttonStyle="secondary" type="reset">Form Reset</button>
     <button hc-button title="Submit Form" buttonStyle="primary" type="submit">Submit</button>
 </form>
+
+<button hc-button title="NgForm Reset" buttonStyle="secondary" (click)="resetForm()">NgForm Reset</button>

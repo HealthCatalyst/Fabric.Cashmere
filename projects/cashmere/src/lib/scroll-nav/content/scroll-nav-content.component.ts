@@ -226,6 +226,10 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
             }
         });
 
+        this.nav._scrollEvent.pipe(takeUntil(this.unsubscribe$)).subscribe( element => {
+            this._cdkScrollableElement.scrollTo({top: element.offsetTop});
+        });
+
         this.insureMinHeightForLastTarget();
     }
 

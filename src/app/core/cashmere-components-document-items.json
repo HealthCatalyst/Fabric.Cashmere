@@ -125,6 +125,7 @@
         "usageDoc": true
     },
     "slide-toggle": {"name": "Slide Toggle", "category": "forms", "examples": ["slide-toggle-overview", "slide-toggle-forms"], "usageDoc": false},
+    "sidenav": {"name": "Sidenav", "category": "nav", "examples": ["sidenav", "sidenav-projection"]},
     "sort": {"name": "Sort", "category": "table", "examples": [], "usageDoc": true},
     "stepper": {"name": "Stepper", "category": "layout", "examples": ["stepper-overview"]},
     "subnav": {"name": "Subnav", "category": "nav", "examples": ["subnav-overview"]},

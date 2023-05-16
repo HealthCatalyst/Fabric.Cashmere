@@ -1,0 +1,145 @@
+@import '../sass/sidenav.scss';
+
+.hc-sidenav {
+    @include hc-sidenav();
+}
+
+.hc-sidenav-tabs {
+    @include hc-sidenav-tabs();
+}
+
+.hc-sidenav-tab {
+    @include hc-sidenav-tab();
+
+    &.active-tab, &.hc-sidenav-active-tab {
+        @include hc-sidenav-tab-active();
+    }
+
+    &.disabled-tab {
+        @include hc-sidenav-tab-disabled();
+    }
+
+    .hc-sidenav-tab-inner {
+        @include hc-sidenav-tab-inner();
+    }
+}
+
+.skeleton-tab {
+    @include hc-sidenav-skeleton-tab();
+}
+
+.hc-sidenav-tab-ico {
+    @include hc-sidenav-tab-ico();
+}
+
+.hc-sidenav-tab-subtext {
+    @include hc-sidenav-tab-subtext();
+}
+
+.hc-sidenav-favs {
+    @include hc-sidenav-favs();
+
+    .hc-sidenav-favs-header {
+        @include hc-sidenav-favs-header();
+    }
+
+    .hc-sidenav-favs-list-container {
+        @include hc-sidenav-favs-list-container();
+    }
+
+    .hc-sidenav-fav-bottom {
+        @include hc-sidenav-favs-bottom();
+    }
+
+    .hc-sidenav-favs-list-container-inner {
+        @include hc-sidenav-favs-list-container-inner();
+    }
+
+    .hc-sidenav-fav-item {
+        @include hc-sidenav-fav-item();
+
+        &.disabled-fav-item {
+            @include hc-sidenav-fav-item-disabled();
+        }
+    }
+
+    .hc-sidenav-fav-item-ico {
+        @include hc-sidenav-fav-item-ico();
+    }
+
+    .hc-sidenav-fav-subtext {
+        @include hc-sidenav-fav-item-subtext();
+    }
+
+    .hc-sidenav-fav-item-inner {
+        @include hc-sidenav-fav-item-inner();
+    }
+
+    hc-progress-dots {
+        @include hc-sidenav-fav-loading();
+    }
+}
+
+.hc-sidenav-fav-action-ico-btn {
+    @include hc-sidenav-fav-action-ico-btn();
+}
+
+.hc-ico-star {
+    @include hc-sidenav-ico-star();
+}
+
+.hc-ico-star-filled {
+    @include hc-sidenav-ico-star-filled();
+}
+
+.hc-sidenav-fav-action-ico-btn {
+    @include hc-sidenav-fav-action-ico-btn();
+}
+
+.hc-sidenav-empty-msg {
+    @include hc-sidenav-empty-msg();
+
+    &.popover-menu {
+        @include hc-sidenav-pop-menu();
+    }
+
+    .hc-sidenav-empty-ico {
+        @include hc-sidenav-empty-ico();
+    }
+
+    .hc-sidenav-empty-description {
+        @include hc-sidenav-empty-description();
+    }
+}
+
+.hc-sidenav-collapsed .hc-sidenav-favs hc-progress-dots {
+    @include hc-sidenav-collapsed-favs();
+}
+
+.hc-sidenav-favs-collapsed-menu-btn {
+    @include hc-sidenav-collapsed-favs-menu-btn();
+}
+
+.hc-sidenav-favs-collapsed-menu-ico {
+    @include hc-sidenav-collapsed-favs-menu-ico();
+
+    .hc-ico-star {
+        @include hc-sidenav-collapsed-favs-menu-ico-star();
+    }
+}
+
+.hc-button.hc-sidenav-state-btn.hc-md {
+    @include hc-sidenav-state-btn();
+}
+
+.hc-subtle-pulse {
+    @include hc-subtle-pulse();
+}
+
+.hc-ico-chev-right-blue {
+    @include hc-ico-chev-blue-collapsed();
+
+    &.hc-sidenav-state-btn-expanded {
+        @include hc-ico-chev-blue-expanded();
+    }
+}
