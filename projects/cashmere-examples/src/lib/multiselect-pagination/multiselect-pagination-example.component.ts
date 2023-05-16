@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 /**
  * @title Multiselect with pagination
@@ -10,7 +11,7 @@ import { Subject } from 'rxjs';
     templateUrl: 'multiselect-pagination-example.component.html',
     styleUrls: ['multiselect-pagination-example.component.scss']
 })
-export class MultiselectPaginationExampleComponent implements OnInit {
+export class MultiselectPaginationExampleComponent implements OnInit, OnDestroy {
     // The complete list of available items
     encounterIDs: string[] = [];
     // The current page of items
@@ -20,6 +21,7 @@ export class MultiselectPaginationExampleComponent implements OnInit {
     // Event that fires on typeahead to trigger our custom function
     encounterSearch = new Subject<string>();
 
+    private unsubscribe = new Subject<void>();
     selectedEncounter = new FormControl();
     pageNumber = 1;
     pageSize = 4;
@@ -33,7 +35,7 @@ export class MultiselectPaginationExampleComponent implements OnInit {
         this.refreshEncounters();
 
         // Custom typeahead function to search the entire list rather than just the current page
-        this.encounterSearch.subscribe( (term) => {
+        this.encounterSearch.pipe(takeUntil(this.unsubscribe)).subscribe( (term) => {
             if ( term ) {
                 this.filteredEncounters = [];
                 this.pageNumber = 1;
@@ -72,5 +74,10 @@ export class MultiselectPaginationExampleComponent implements OnInit {
         }
 
         this.updateDisplayedEncounters();
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribe.next();
+        this.unsubscribe.complete();
     }
 }
