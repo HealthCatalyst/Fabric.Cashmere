@@ -7,7 +7,7 @@ import { parseBooleanAttribute, untilDestroyed } from '../util';
 /** A container that the user can resize the dimensions of */
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
-    selector: '[hc-resizable]',
+    selector: '[hcResizable]',
     templateUrl: './resizable.component.html',
     styleUrls: ['./resizable.component.scss'],
     encapsulation: ViewEncapsulation.None
