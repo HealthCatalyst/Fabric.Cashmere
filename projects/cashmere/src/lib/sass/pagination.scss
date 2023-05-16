@@ -6,8 +6,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 15px;
     width: 100%;
+
+    &:not(.hc-pagination-container-tight) {
+        margin-top: 15px;
+    }
 }
 
 @mixin hc-page-detail-container() {
@@ -40,7 +43,10 @@
 
 @mixin hc-page-btns-container() {
     display: inline-flex;
-    padding: 5px 0;
+
+    &:not(.hc-page-btns-container-tight) {
+        padding: 5px 0;
+    }
 }
 
 @mixin hc-page-button() {

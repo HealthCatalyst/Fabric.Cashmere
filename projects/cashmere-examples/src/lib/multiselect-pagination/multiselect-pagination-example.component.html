@@ -1,0 +1,37 @@
+<p>
+    For multiselects where a large number of options are expected, you may use <code>hc-pagination</code> in your template.
+</p>
+
+<div class="example-container">
+    <ng-select 
+        [items]="displayedEncounters"
+        [typeahead]="encounterSearch"
+        [multiple]="false"
+        placeholder="Select an encounter ID" 
+        [formControl]="selectedEncounter"
+        dropdownPosition="bottom"
+    >
+        <ng-template ng-option-tmp let-item="item" let-item$="item$">
+            {{ item }}
+        </ng-template>
+        <ng-template ng-footer-tmp>
+            <div class="pagination-footer">
+                <hc-pagination 
+                    [length]="length"
+                    [(pageNumber)]="pageNumber"
+                    [pageSize]="pageSize"
+                    [hidePageSize]="true"
+                    displayWidth="md"
+                    [tight]="true"
+                    (pageNumberChange)="updateDisplayedEncounters()"
+                >
+                </hc-pagination>
+                <button hc-button buttonStyle="pagination" class="refresh-button" (click)="refreshEncounters()">
+                    <hc-icon fontSet="fa" fontIcon="fa-refresh"></hc-icon>
+                </button>
+            </div>
+        </ng-template>
+    </ng-select>
+
+    <p class="dropdown-buffer">Selected: <code>{{selectedEncounter.value}}</code></p>
+</div>
