@@ -19,11 +19,11 @@ export class ResizableOverviewExampleComponent {
         return this.resizablePosition.value === 'top' || this.resizablePosition.value === 'left';
     }
 
-    get containerOrient(): string {
+    get isVertical(): boolean {
         if ( this.resizablePosition.value === 'top' || this.resizablePosition.value === 'bottom' ) {
-            return 'column';
+            return true;
         } else {
-            return 'row';
+            return false;
         }
     }
 

@@ -51,3 +51,15 @@
 .hc-resizable-handle-selector-right {
     @include hc-resizable-handle-selector-right();
 }
+
+.hc-resizable-container-parent-horizontal {
+    @include hc-resizable-container-parent-horizontal();
+}
+
+.hc-resizable-container-parent-vertical {
+    @include hc-resizable-container-parent-vertical();
+}
+
+.hc-resizable-static {
+    @include hc-resizable-static();
+}

@@ -16,8 +16,8 @@
 <hc-slide-toggle sideLabel="Resizing enabled" insideLabel="true" [formControl]="resizeableEnabled" class="example-toggle"></hc-slide-toggle>
 
 
-<div class="example-layout-container" [style.flex-direction]="containerOrient">
-    <div class="static-container" *ngIf="topContainer">Static Container</div>
+<div hcResizableContainer class="example-layout-container" [vertical]="isVertical">
+    <div hcResizableStatic class="example-static-container" *ngIf="topContainer">Static Container</div>
     <div 
         hc-resizable
         [position]="resizablePosition.value"
@@ -29,6 +29,6 @@
     >
         <div class="example-content">Resizable Container</div>
     </div>
-    <div class="static-container" *ngIf="!topContainer">Static Container</div>
+    <div hcResizableStatic class="example-static-container" *ngIf="!topContainer">Static Container</div>
 </div>
 

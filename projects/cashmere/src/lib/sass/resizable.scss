@@ -101,3 +101,19 @@ $handle-margin: calc(#{$handle-size} * -0.5 - 2px);
     margin-right: $handle-selector-margin;
     right: 0;
 }
+
+@mixin hc-resizable-container-parent-horizontal() {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+@mixin hc-resizable-container-parent-vertical() {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+@mixin hc-resizable-static() {
+    flex: 1;
+}

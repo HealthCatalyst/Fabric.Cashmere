@@ -4,8 +4,6 @@
     width: 400px;
     height: 400px;
     border: 1px solid $gray-400;
-    display: flex;
-    overflow: hidden;
 }
 
 .example-resizable-container {
@@ -25,8 +23,7 @@
     padding: 50px;
 }
 
-.static-container {
-    flex: 1;
+.example-static-container {
     border: 1px solid $gray-400;
     background-color: $slate-gray-100;
     font-size: 18px;
