@@ -1,0 +1,51 @@
+<div class="demo-content">
+    <h1>Favicon Guidelines</h1>
+    <h6>Last updated May 17, 2023</h6>
+
+    <hc-tile>
+        <h5 id="overview">Overview</h5>
+        <p>
+            Favicons are the small icons displayed in the browser's address bar next to the page's title. They're also used for bookmarks. We have a standard look and feel for favicons using Cashmere <code>$blue</code> overlayed with either the app's initials or the Health Catalyst triflame.
+        </p>
+        <div class="overview-img-container">
+            <img src="./assets/foundations/favico-example1.png" alt="App initials on $blue background" />
+            <img src="./assets/foundations/favico-example2.png" alt="Health Catalyst triflame on $blue background" />
+            <img src="./assets/foundations/favico-example3.png" alt="Favicons in browser tabs" />
+        </div>
+
+        <p>The Health Catalyst design team has a template to create these, so you can request one from them in <strong>#design</strong> on slack.</p>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="setup">Setup Instructions</h5>
+        <ol>
+            <li>Obtain a 260x260 pixel png favicon from the design team.</li>
+            <li>Go to <a href="https://realfavicongenerator.net/">Real
+                Favicon Generator</a> and upload your favicon. We'll use this tool to generate all the needed assets.</li>
+            <li>After confirming the image, you'll be presented with configuration. We'll leave things as is except for the output path.
+                <div class="well">
+                    <ol type="i">
+                        <li>Scroll down to the bottom of the configuration page to change the path. <em>Favicon Generator Options > Path</em>.</li>
+                        <li>Select <em>"I cannot or do not want to place favicon files at the root..."</em></li>
+                        <li>Create a new folder in your codebase under to house the files the generator will create. Something like <em>src/assets/favico</em>.</li>
+                        <li>Enter the path to your newly created favico folder:</li>
+                    </ol>
+                    <img src="./assets/foundations/favico-config.png" alt="Configuration for favicon folder structure" />
+                </div>
+            </li>
+            <li>Click the Generate button.</li>
+            <li>Download the generated .zip file and extract it into the folder referenced above. We do this to avoid muddying up the root directory.
+                    <ul>
+                        <li>As a <a href="https://stackoverflow.com/a/21359390/2311702" target="_blank">fallback</a>, also add a copy of favico.ico to the root of your app (right next to index.html).</li>
+                    </ul>
+                    <img src="./assets/foundations/favico-dir.png" alt="Favicon folder structure" />
+            </li>
+            <li>Grab the generated HTML and stick it in the <code>&lt;head&gt;</code> of your index.html file.
+                <img src="./assets/foundations/favico-markup.png" alt="Favicon Markup" />
+            </li>
+            <li><em>[Optional]</em> Consider linking to this process in your readme in case future updates are needed.</li>
+        </ol>
+    </hc-tile>
+
+    <hc-feedback-form></hc-feedback-form>
+</div>

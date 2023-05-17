@@ -10,6 +10,7 @@ import {LogoDemoComponent} from './logo/logo-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
 import {FontsDemoComponent} from './fonts/fonts-demo.component';
 import { AIDemoComponent } from './ai/ai-demo.component';
+import { FaviconDemoComponent } from './favicons/favicon-demo.component';
 
 const routes: Routes = [
     {
@@ -40,6 +41,11 @@ const routes: Routes = [
                 path: 'icons',
                 component: IconGuideComponent,
                 data: {title: 'Icons', category: 'Typography'}
+            },
+            {
+                path: 'Favicons',
+                component: FaviconDemoComponent,
+                data: {title: 'Favicon', category: 'Branding'}
             },
             {
                 path: 'code',
