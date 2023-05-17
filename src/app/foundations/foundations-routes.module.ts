@@ -45,7 +45,7 @@ const routes: Routes = [
             {
                 path: 'Favicons',
                 component: FaviconDemoComponent,
-                data: {title: 'Favicon', category: 'Branding'}
+                data: {title: 'Favicon', category: 'Brand'}
             },
             {
                 path: 'code',
