@@ -53,7 +53,7 @@
     "multiselect": {
         "name": "Multiselect & Typeahead",
         "category": "forms",
-        "examples": ["multiselect-overview", "multiselect-custom-templates", "multiselect-embed-checkbox"],
+        "examples": ["multiselect-overview", "multiselect-custom-templates", "multiselect-embed-checkbox", "multiselect-wrapped"],
         "hideApi": true,
         "usageDoc": true
     },

@@ -1,0 +1,39 @@
+@import '../sass/slider.scss';
+
+.hc-slider {
+    @include hc-slider();
+
+    .ngx-slider .ngx-slider-bubble.ngx-slider-limit {
+        @include hc-slider-limit-text();
+    }
+
+    .ngx-slider .ngx-slider-pointer {
+        @include hc-slider-pointer();
+    }
+
+    .ngx-slider .ngx-slider-bubble {
+        @include hc-slider-bubble();
+    }
+
+    .ngx-slider .ngx-slider-pointer.ngx-slider-active::after {
+        @include hc-slider-pointer-active();
+    }
+
+    .ngx-slider .ngx-slider-selection,
+    .ngx-slider .ngx-slider-tick.ngx-slider-selected {
+        @include hc-slider-selection();
+    }
+}
+
+.hc-form-field-invalid {
+    .hc-slider {
+        .ngx-slider .ngx-slider-pointer {
+            @include hc-slider-pointer-invalid();
+        }
+
+        .ngx-slider .ngx-slider-selection,
+        .ngx-slider .ngx-slider-tick.ngx-slider-selected {
+            @include hc-slider-selection-invalid();
+        }
+    }
+}
