@@ -13,6 +13,7 @@ import {FontsDemoComponent} from './fonts/fonts-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
 import { AIDemoComponent } from './ai/ai-demo.component';
 import { IconPickerComponent } from './products/icon-picker/icon-picker.component';
+import { FaviconDemoComponent } from './favicons/favicon-demo.component';
 
 @NgModule({
     imports: [SharedModule, FoundationsRoutesModule],
@@ -23,6 +24,7 @@ import { IconPickerComponent } from './products/icon-picker/icon-picker.componen
         IconGuideComponent,
         TypographyDemoComponent,
         CodeDemoComponent,
+        FaviconDemoComponent,
         BrandColorDemoComponent,
         LogoDemoComponent,
         AIDemoComponent,
