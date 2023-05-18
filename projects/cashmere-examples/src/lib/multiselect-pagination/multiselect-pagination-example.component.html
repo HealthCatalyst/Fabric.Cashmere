@@ -26,7 +26,14 @@
                     (pageNumberChange)="updateDisplayedEncounters()"
                 >
                 </hc-pagination>
-                <button hc-button buttonStyle="pagination" class="refresh-button" (click)="refreshEncounters()">
+                <!-- This is an example of optional additional buttons you can add to extend the footer to your specific use case -->
+                <button 
+                    hc-button 
+                    buttonStyle="pagination" 
+                    class="refresh-button" 
+                    (click)="refreshEncounters()"
+                    hcTooltip="Add buttons like this if you need additional functionality in the footer"
+                >
                     <hc-icon fontSet="fa" fontIcon="fa-refresh"></hc-icon>
                 </button>
             </div>
