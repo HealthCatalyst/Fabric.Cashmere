@@ -1,0 +1,49 @@
+@import 'scss/colors';
+h1,
+h2,
+h3,
+h4,
+p {
+    &.no-margin {
+        margin: 0;
+    }
+}
+
+.demo-content ul {
+    margin: 0;
+}
+.demo-content li {
+    margin: 16px 0;
+
+    ul li {
+        margin-left: 32px;
+    }
+}
+
+.overview-img-container {
+    display: flex;
+    align-items: flex-start;
+
+    img {
+        margin-right: 16px;
+        height: 140px;
+    }
+
+    img:last-child {
+        margin-right: 0;
+        height: auto;
+    }
+}
+
+.demo-content h3 {
+    margin: 30px 0 0;
+}
+
+.well {
+    background-color: #f0f3f6;
+    padding: 4px 24px 16px;
+    margin-top: 12px;
+    border-radius: 4px;
+    border: 1px solid #e0e3e6;
+}
+

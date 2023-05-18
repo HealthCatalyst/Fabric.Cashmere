@@ -1,0 +1,25 @@
+<hc-form-field class="demo-input">
+    <hc-label>Choose country:</hc-label>
+    <hc-multiselect [valid]="multiselectControl.valid" required>
+        <ng-select
+            [items]="countries"
+            [addTag]="true"
+            [multiple]="true"
+            appendTo="body"
+            dropdownPosition="bottom"
+            addTagText="Add country"
+            placeholder="Search for countries..."
+            [formControl]="multiselectControl"
+            [readonly]="multiselectDisabled"
+        ></ng-select>
+    </hc-multiselect>
+    <hc-error>The ng-select field is invalid</hc-error>
+</hc-form-field>
+
+<button hc-button title="Toggle component validation" (click)="toggleValid()">
+    Toggle Validate
+</button>
+
+<button hc-button title="Toggle component disabled" (click)="toggleDisabled()">
+    Toggle Disabled
+</button>
