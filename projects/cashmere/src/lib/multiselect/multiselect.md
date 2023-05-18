@@ -43,7 +43,30 @@ By importing the Cashmere styles in your app's global style sheet, you'll automa
 
 &nbsp;
 
+### Step 4: Use the component
+
+You can use the component in a standalone fashion or wrapped within an hc-form-field:
+
+
+```
+<hc-form-field>
+    <hc-label>Choose country:</hc-label>
+    <hc-multiselect [valid]="multiselectControl.valid">
+        <ng-select
+            [items]="countries"
+            [formControl]="multiselectControl"
+            [readonly]="multiselectDisabled"
+        ></ng-select>
+    </hc-multiselect>
+    <hc-error>The ng-select field is invalid</hc-error>
+</hc-form-field>
+```
+
+&nbsp;
+
 ##### Things to Look Out For
+
+The easiest way to have `ng-select` fit well into a Cashmere form is to use the `hc-multiselect` wrapper. When doing so, the `valid` and `required` properties are set on `hc-multiselect`, but `disabled` is set on the `ng-select` itself using the `[readonly]` property.
 
 **Don't miss the `[appendTo]` property.** This property is helpful for cases where you need to use `ng-select` inside of a scrollable container,
 like a modal window. It allows you to choose where the dropdown will be inserted into the DOM. By default, its added as a child of the component, but to
