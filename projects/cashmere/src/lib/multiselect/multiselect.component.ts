@@ -7,7 +7,6 @@ let uniqueMultiselectId = 1;
 /** Cashmere wrapper for the ng-select component */
 @Component({
     selector: 'hc-multiselect',
-    styleUrls: ['multiselect.component.scss'],
     template: `
         <ng-content></ng-content>
     `,
