@@ -156,6 +156,7 @@ $modal-border: 1px solid $gray-200;
 
 @mixin hc-modal-body() {
     overflow: auto;
+    max-height: 70vh;
     height: inherit;
     padding: $modal-padding;
     margin-bottom: 0;
