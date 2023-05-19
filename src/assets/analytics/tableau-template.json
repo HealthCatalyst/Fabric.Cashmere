@@ -4,7 +4,6 @@
         "releasedate": "January 21, 2020",
         "requirements": "Tableau 2020.1 or greater. Access to the demo site requires you to reach out to the Health Catalyst Visualization Infrastructure team since there are a very limited number of licenses. Downloading the Tableau template file requires a basic Azure DevOps license, granted by Health Catalyst.",
         "download": "https://dev.azure.com/healthcatalyst/Analytic%20Solutions/_git/ASO?path=%2F_references%2FHC-Tableau-Template%2F1.0.0&version=GBmaster",
-        "demo": "https://hcs-tableau.hqcatalyst.local/#/views/HCAT_Template_Reference_v1_0_0/Summary",
         "notes": [
             "Initial release of Cashmere template",
             "Navbar leverages text buttons, which are not available in versions of Tableau before 2020.",
