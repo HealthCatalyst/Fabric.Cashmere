@@ -16,7 +16,7 @@
     {
         "version": "1.0.0",
         "releasedate": "January 22, 2021",
-        "requirements": "Power BI 2.87.261.0 or greater. Access to the Power BI template requires a Power BI license via a Health Catalyst ticket. Access to the Power BI download file requires an Azure DevOps basic license from Health Catalyst.",
+        "requirements": "Power BI 2.87.261.0 or greater. Access to the Power BI template requires a Power BI license via a Health Catalyst ticket.",
         "download": "https://community.healthcatalyst.com/accelerators-bi/bi-tool-template-archive/m/archive/9565/download",
         "notes": [
             "Initial release of Cashmere template",
