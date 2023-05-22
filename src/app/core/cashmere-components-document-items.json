@@ -132,7 +132,7 @@
     "table": {
         "name": "Table",
         "category": "table",
-        "examples": ["table-sort", "table-filter", "resizable-columns", "more-table-styles"],
+        "examples": ["table-sort", "table-filter", "resizable-columns", "table-sticky", "more-table-styles"],
         "usageDoc": true
     },
     "tabs": {"name": "Tabs", "category": "layout", "examples": ["tabs-horizontal", "tabs-vertical", "selected-tab-input"]},

@@ -374,6 +374,242 @@
     </hc-tile>
 
     <hc-tile>
+        <h5 id="table-action-icons">Sticky Headers & Columns</h5>
+        <p>For sticky headers or columns, first wrap the table in a div with <code>.hc-table-container</code>.
+            That element will be scrollable when the table extends beyond it's height. The element needs to have a height
+            constraint applied. This can be done with the "max-height" or "height" css properties, or by other methods, like a flexbox layout.
+        </p>
+        <p>
+            For a sticky header, you'll apply<code>.hc-sticky-header</code> to the row.
+            For a sticky column, apply <code>.hc-sticky-col</code> to each cell in the column.
+        </p>
+        <br>
+        <div class="hc-table-container" style="height: 200px;">
+            <table class="hc-table">
+                <thead>
+                    <tr class="hc-sticky-header">
+                        <th class="hc-sticky-col">Rank</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Population</th>
+                        <th>Founded</th>
+                        <th>Size</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="hc-sticky-col">1</td>
+                        <td>New York City</td>
+                        <td>New York</td>
+                        <td>7,888,121</td>
+                        <td>1624</td>
+                        <td>302.6</td>
+                        <td>Known for the Statue of Liberty, Empire State Building, Central Park, Times Square, Museums, and the Met</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">2</td>
+                    <td>Los Angeles</td>
+                    <td>California</td>
+                    <td>3,792,621</td>
+                    <td>1781</td>
+                    <td>468.7</td>
+                    <td>Known for Hollywood, Entertainment, Celebrities, and the Beach</td>
+                    </tr>
+                    <tr>
+                        <td class="hc-sticky-col">3</td>
+                        <td>Chicago</td>
+                        <td>Illinois</td>
+                        <td>2,695,598</td>
+                        <td>1837</td>
+                        <td>227.6</td>
+                        <td>Known for the Sears (Willis) Tower, the Magnificent Mile, Deep Dish Pizza, and the Cubs</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">4</td>
+                    <td>Houston</td>
+                    <td>Texas</td>
+                    <td>2,100,263</td>
+                    <td>1837</td>
+                    <td>599.6</td>
+                    <td>Known for NASA, the Astros, and the Rockets</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">5</td>
+                    <td>Philadelphia</td>
+                    <td>Pennsylvania</td>
+                    <td>1,526,006</td>
+                    <td>1682</td>
+                    <td>134.1</td>
+                    <td>Known for the Liberty Bell, Independence Hall, and the Philly Cheesesteak</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">6</td>
+                    <td>Phoenix</td>
+                    <td>Arizona</td>
+                    <td>1,445,632</td>
+                    <td>1881</td>
+                    <td>516.7</td>
+                    <td>Known for the Heat, the Suns, and the Grand Canyon</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">7</td>
+                    <td>San Antonio</td>
+                    <td>Texas</td>
+                    <td>1,327,407</td>
+                    <td>1718</td>
+                    <td>460.9</td>
+                    <td>Known for the Alamo, the River Walk, and the Spurs</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">8</td>
+                    <td>San Diego</td>
+                    <td>California</td>
+                    <td>1,307,402</td>
+                    <td>1769</td>
+                    <td>325.2</td>
+                    <td>Known for the Zoo, Sea World, and the Beach</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">9</td>
+                    <td>Dallas</td>
+                    <td>Texas</td>
+                    <td>1,197,816</td>
+                    <td>1841</td>
+                    <td>340.9</td>
+                    <td>Known for the Cowboys, the Mavericks, and the Rangers</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">10</td>
+                    <td>San Jose</td>
+                    <td>California</td>
+                    <td>945,942</td>
+                    <td>1777</td>
+                    <td>176.5</td>
+                    <td>Known for Silicon Valley, Tech Companies, and the Sharks</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">11</td>
+                    <td>Austin</td>
+                    <td>Texas</td>
+                    <td>790,390</td>
+                    <td>1839</td>
+                    <td>322.48</td>
+                    <td>Known for the Longhorns, the State Capital, and the Music Scene</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">12</td>
+                    <td>Indianapolis</td>
+                    <td>Indiana</td>
+                    <td>843,393</td>
+                    <td>1821</td>
+                    <td>361.5</td>
+                    <td>Known for the Indy 500, the Colts, and the Pacers</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">13</td>
+                    <td>Jacksonville</td>
+                    <td>Florida</td>
+                    <td>842,583</td>
+                    <td>1822</td>
+                    <td>747.0</td>
+                    <td>Known for the Jaguars, the Beaches, and the Navy</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">14</td>
+                    <td>San Francisco</td>
+                    <td>California</td>
+                    <td>837,442</td>
+                    <td>1776</td>
+                    <td>231.9</td>
+                    <td>Known for the Golden Gate Bridge, Alcatraz, and the Cable Cars</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">15</td>
+                    <td>Columbus</td>
+                    <td>Ohio</td>
+                    <td>822553</td>
+                    <td>1812</td>
+                    <td>210.3</td>
+                    <td>Has the largest university in the United States</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">16</td>
+                    <td>Charlotte</td>
+                    <td>North Carolina</td>
+                    <td>792,862</td>
+                    <td>1768</td>
+                    <td>297.7</td>
+                    <td>Known for NASCAR, the Hornets, and the Panthers</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">17</td>
+                    <td>Fort Worth</td>
+                    <td>Texas</td>
+                    <td>792,727</td>
+                    <td>1849</td>
+                    <td>339.8</td>
+                    <td>Known for the Stockyards, the Cowboys, and the Rangers</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">18</td>
+                    <td>Detroit</td>
+                    <td>Michigan</td>
+                    <td>688,701</td>
+                    <td>1701</td>
+                    <td>138.8</td>
+                    <td>Home of the Big Three Automakers</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">19</td>
+                    <td>El Paso</td>
+                    <td>Texas</td>
+                    <td>674,433</td>
+                    <td>1850</td>
+                    <td>256.8</td>
+                    <td>Home to the University of Texas at El Paso</td>
+                    </tr>
+                    <tr>
+                    <td class="hc-sticky-col">20</td>
+                    <td>Memphis</td>
+                    <td>Tennessee</td>
+                    <td>653,450</td>
+                    <td>1819</td>
+                    <td>315.1</td>
+                    <td>Famous for Elvis Presley, Graceland, and the Blues</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <pre><code>
+            &#x3C;div class=&#x22;hc-table-container&#x22; style=&#x22;height: 200px;&#x22;&#x3E;
+            &#x3C;table class=&#x22;hc-table&#x22;&#x3E;
+                &#x3C;thead&#x3E;
+                    &#x3C;tr class=&#x22;hc-sticky-header&#x22;&#x3E;
+                        &#x3C;th class=&#x22;hc-sticky-col&#x22;&#x3E;Rank&#x3C;/th&#x3E;
+                        &#x3C;th&#x3E;City&#x3C;/th&#x3E;
+                        &#x3C;th&#x3E;State&#x3C;/th&#x3E;
+                        &#x3C;th&#x3E;Population&#x3C;/th&#x3E;
+                        &#x3C;th&#x3E;Founded&#x3C;/th&#x3E;
+                        &#x3C;th&#x3E;Size&#x3C;/th&#x3E;
+                        &#x3C;th&#x3E;Notes&#x3C;/th&#x3E;
+                    &#x3C;/tr&#x3E;
+                &#x3C;/thead&#x3E;
+                &#x3C;tbody&#x3E;
+                    &#x3C;tr&#x3E;
+                        &#x3C;td class=&#x22;hc-sticky-col&#x22;&#x3E;1&#x3C;/td&#x3E;
+                        &#x3C;td&#x3E;New York City&#x3C;/td&#x3E;
+                        &#x3C;td&#x3E;New York&#x3C;/td&#x3E;
+                        &#x3C;td&#x3E;7,888,121&#x3C;/td&#x3E;
+                        &#x3C;td&#x3E;1624&#x3C;/td&#x3E;
+                        &#x3C;td&#x3E;302.6&#x3C;/td&#x3E;
+
+                ...
+        </code></pre>
+    </hc-tile>
+
+    <hc-tile>
         <h5 id="table-action-icons">Table Action Icons</h5>
         <p>For tables that have actions repeated on each row, we recommend showing those actions as icons that appear
             when hovering
