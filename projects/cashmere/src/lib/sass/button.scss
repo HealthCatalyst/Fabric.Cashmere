@@ -150,6 +150,44 @@ $btn-icon-sz: 18px;
     }
 }
 
+@mixin hc-button-pagination() {
+    text-transform: uppercase;
+    background-color: $white;
+    border: solid 2px $gray-200;
+    color: $primary-brand;
+    font-weight: bold;
+    margin-right: 0;
+    min-width: 40px;
+
+    &:hover {
+        background-color: $white;
+        &[disabled] {
+            color: $blue;
+        }
+        &:not([disabled]) {
+            color: darken($primary-brand, 10%);
+        }
+    }
+
+    &:focus {
+        background-color: $white;
+        outline: none;
+        box-shadow: 0 0 0 2px transparentize($primary-brand, 0.6);
+    }
+
+    &[disabled] {
+        cursor: not-allowed;
+        border-bottom-color: transparentize($gray-300, 0.65);
+        border-top-color: transparentize($gray-300, 0.65);
+        color: transparentize($primary-brand, 0.65);
+        opacity: 1;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
 // Link button
 
 @mixin hc-button-link() {

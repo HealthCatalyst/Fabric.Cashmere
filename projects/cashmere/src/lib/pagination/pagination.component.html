@@ -1,4 +1,4 @@
-<div class="hc-pagination-container">
+<div class="hc-pagination-container" [class.hc-pagination-container-tight]="tight">
     <div *ngIf="!hidePageSize" class="hc-font-sm hc-page-detail-container">
         <label class="hc-page-detail-label">Showing:</label>
         <hc-select class="hc-page-detail-select" [formControl]="_pageSizeControl" (change)="_changePageSize($event.value)" (focus)="isFocused = true" (blur)="isFocused = false">
@@ -10,7 +10,7 @@
         >
     </div>
 
-    <div class="hc-page-btns-container">
+    <div class="hc-page-btns-container" [class.hc-page-btns-container-tight]="tight">
         <button
             hc-button
             buttonStyle="secondary"

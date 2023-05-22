@@ -19,6 +19,9 @@
     &.hc-secondary {
         @include hc-button-secondary();
     }
+    &.hc-pagination {
+        @include hc-button-pagination();
+    }
     &.hc-minimal {
         @include hc-button-minimal();
     }
