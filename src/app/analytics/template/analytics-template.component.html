@@ -10,7 +10,6 @@
             <h5 id="latest-version">Current Version</h5>
             <h3 class="template-version-header">
                 Version: {{versionList[0].version}}
-                <span>(<a [href]="versionList[0].demo" target="_blank">Live Demo</a>)</span>
             </h3>
             <div class="template-version-details">
                 <strong>Release date:</strong> {{versionList[0].releasedate}}<br>
@@ -29,14 +28,14 @@
         </hc-tile>
 
         <hc-tile *ngIf="versionList.length > 1">
-            <h5 id="previous-versions">Previous Versions</h5>
+            <h5 id="previous-versions" class="template-version-previous-header">Previous Versions</h5>
             <p>
-                <em>The following versions are no longer supported and are supplied only for history and compatibility. Please download the latest version above.</em>
+                <em class="template-version-disclaimer">The following versions are no longer supported and are supplied only for history and compatibility.</em>
             </p>
-            <hr>
+            <hr class="template-version-hr">
             <ng-container *ngFor="let version of versionList; let i=index">
                 <div *ngIf="i > 0">
-                    <h3 class="template-version-header">
+                    <h3 class="template-version-header-previous">
                         <a [href]="version.download">Version: {{version.version}}</a>
                     </h3>
                     <div class="template-version-details">
@@ -49,7 +48,7 @@
                             <li *ngFor="let line of version.notes">{{line}}</li>
                         </ul>
                     </article>
-                    <hr *ngIf="i < versionList.length - 1">
+                    <hr *ngIf="i < versionList.length - 1" class="template-version-hr">
                 </div>
             </ng-container>
         </hc-tile>

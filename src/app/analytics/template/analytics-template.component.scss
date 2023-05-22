@@ -37,3 +37,25 @@
 .template-version-details {
     line-height: 1.5;
 }
+
+.template-version-header-previous {
+    margin-top: 5px;
+    font-size: 16px;
+
+    span {
+        font-weight: 400;
+        font-size: 20px;
+    }
+}
+
+.template-version-hr {
+    margin: 20px 0;
+}
+
+.template-version-disclaimer {
+    font-size: 14px;
+}
+
+.template-version-previous-header {
+    margin-bottom: 10px;
+}

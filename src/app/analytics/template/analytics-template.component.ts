@@ -10,7 +10,6 @@ export interface Version {
     releasedate: string;
     download: string;
     requirements: string;
-    demo: string;
     notes: string[];
 }
 
