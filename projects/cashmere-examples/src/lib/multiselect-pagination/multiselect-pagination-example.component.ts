@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { NgSelectComponent } from '@ng-select/ng-select';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -20,6 +21,9 @@ export class MultiselectPaginationExampleComponent implements OnInit, OnDestroy 
     filteredEncounters: string[] = [];
     // Event that fires on typeahead to trigger our custom function
     encounterSearch = new Subject<string>();
+
+    // Access ng-select for our example refresh function
+    @ViewChild(NgSelectComponent) ngSelectComponent: NgSelectComponent;
 
     private unsubscribe = new Subject<void>();
     selectedEncounter = new FormControl();
@@ -74,6 +78,11 @@ export class MultiselectPaginationExampleComponent implements OnInit, OnDestroy 
         }
 
         this.updateDisplayedEncounters();
+
+        // Clear any existing search strings
+        if ( this.ngSelectComponent ) {
+            this.ngSelectComponent.handleClearClick();
+        }
     }
 
     ngOnDestroy(): void {
