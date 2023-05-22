@@ -4,7 +4,7 @@
         "releasedate": "May 18, 2023",
         "requirements": "Power BI 2.87.261.0 or later. Access to the Power BI template requires a valid Power BI license through a Health Catalyst ticket.",
         "download": "https://community.healthcatalyst.com/accelerators-bi/m/files/9570",
-        "releasenotes": [
+        "notes": [
             "A fully refurbished release of the Cashmere template.",
             "The template aligns with the Cashmere web standards to provide a consistent experience.",
             "The template contains sample data to explore and build on the functionality of the Cashmere-type tooltips, filters, charts, and tables.",
