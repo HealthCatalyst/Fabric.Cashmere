@@ -22,8 +22,8 @@ export function validateMenuDrawerTheme(menuTheme: string): void {
     }
 }
 
-const openStateAnimation = '0.75s ease';
-const closeStateAnimation = '0.7s .05s ease';
+const openStateAnimation = '0.3s ease';
+const closeStateAnimation = '0.25s .05s ease';
 
 /** Menu drawer that provides default themes */
 @Component({
