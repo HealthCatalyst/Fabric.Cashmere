@@ -49,6 +49,14 @@
         "usageDoc": true
     },
     "list": {"name": "List", "category": "layout", "examples": ["list-overview"]},
+    "measurable": {
+        "category": "layout",
+        "name": "Measurable",
+        "examples": ["measurable-overview", "measurable-vertical"],
+        "id": "measurable",
+        "usageDoc": true,
+        "hideApi": false
+    },
     "modal": {"name": "Modal", "category": "popups", "examples": ["modal-overview", "modal-simple", "modal-simple-overview"]},
     "multiselect": {
         "name": "Multiselect & Typeahead",
@@ -90,6 +98,12 @@
         "name": "Picklist",
         "category": "layout",
         "examples": ["picklist-simple", "picklist-templates", "picklist-overview", "picklist-remote-data", "picklist-hc-pick-option"],
+        "usageDoc": true
+    },
+    "resizable": {
+        "category": "layout",
+        "name": "Resizable Container",
+        "examples": ["resizable-overview"],
         "usageDoc": true
     },
     "pop": {
@@ -154,14 +168,6 @@
         "examples": ["search-bar-overview"],
         "id": "search-bar",
         "usageDoc": false,
-        "hideApi": false
-    },
-    "measurable": {
-        "category": "layout",
-        "name": "Measurable",
-        "examples": ["measurable-overview", "measurable-vertical"],
-        "id": "measurable",
-        "usageDoc": true,
         "hideApi": false
     },
     "slider": {

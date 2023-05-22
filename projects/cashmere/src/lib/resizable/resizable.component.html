@@ -1,0 +1,5 @@
+<div *ngIf="!disabled">
+    <div [class]="_className" (mousedown)="_dragStarted($event)"></div>
+    <span class="hc-resizable-handle-selector" [class]="_classNameSelector"></span>
+</div>
+<ng-content></ng-content>
