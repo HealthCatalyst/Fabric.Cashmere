@@ -1,0 +1,119 @@
+@import './colors';
+@import './mixins';
+
+$handle-color: $blue;
+$handle-selector: 3px;
+$handle-selector-margin: -1px;
+$handle-size: 10px;
+$handle-margin: calc(#{$handle-size} * -0.5 - 2px);
+
+@mixin hc-resizable-container() {
+    position: relative;
+}
+
+@mixin hc-resizable-max-height() {
+    max-height: 100%;
+}
+
+@mixin hc-resizable-max-width() {
+    max-width: 100%;
+}
+
+@mixin hc-resizable-handle() {
+    position: absolute;
+
+    &:hover + .hc-resizable-handle-selector,
+    &.hc-resizable-border-highlight + .hc-resizable-handle-selector {
+        background-color: $handle-color;
+        pointer-events: none;
+        position: absolute;
+    }
+}
+
+@mixin hc-resizable-handle-bottom() {
+    cursor: row-resize;
+    height: $handle-size;
+    left: 0;
+    width: 100%;
+    margin-bottom: $handle-margin;
+    bottom: 0;
+}
+
+@mixin hc-resizable-handle-top() {
+    cursor: row-resize;
+    height: $handle-size;
+    left: 0;
+    width: 100%;
+    margin-top: $handle-margin;
+    top: 0;
+}
+
+@mixin hc-resizable-handle-left() {
+    cursor: col-resize;
+    height: 100%;
+    top: 0;
+    width: $handle-size;
+    margin-left: $handle-margin;
+    left: 0;
+}
+
+@mixin hc-resizable-handle-right() {
+    cursor: col-resize;
+    height: 100%;
+    top: 0;
+    width: $handle-size;
+    margin-right: $handle-margin;
+    right: 0;
+}
+
+@mixin hc-resizable-handle-selector() {
+    position: absolute;
+}
+
+@mixin hc-resizable-handle-selector-bottom() {
+    height: $handle-selector;
+    left: 0;
+    width: 100%;
+    margin-bottom: $handle-selector-margin;
+    bottom: 0;
+}
+
+@mixin hc-resizable-handle-selector-top() {
+    height: $handle-selector;
+    left: 0;
+    width: 100%;
+    margin-top: $handle-selector-margin;
+    top: 0;
+}
+
+@mixin hc-resizable-handle-selector-left() {
+    height: 100%;
+    top: 0;
+    width: $handle-selector;
+    margin-left: $handle-selector-margin;
+    left: 0;
+}
+
+@mixin hc-resizable-handle-selector-right() {
+    height: 100%;
+    top: 0;
+    width: $handle-selector;
+    margin-right: $handle-selector-margin;
+    right: 0;
+}
+
+@mixin hc-resizable-container-parent-horizontal() {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+@mixin hc-resizable-container-parent-vertical() {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+@mixin hc-resizable-static() {
+    flex: 1;
+}

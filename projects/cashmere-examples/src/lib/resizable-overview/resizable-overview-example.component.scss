@@ -1,0 +1,52 @@
+@import '@healthcatalyst/cashmere/scss/_colors';
+
+.example-layout-container {
+    width: 400px;
+    height: 400px;
+    border: 1px solid $gray-400;
+}
+
+.example-resizable-container {
+    border: 1px solid $gray-400;
+    background-color: $slate-gray-300;
+}
+
+.example-content {
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+    padding: 50px;
+}
+
+.example-static-container {
+    border: 1px solid $gray-400;
+    background-color: $slate-gray-100;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.example-options {
+    display: flex;
+    align-items: center;
+
+    .pos-selector {
+        width: 220px;
+        display: block;
+        margin-right: 24px;
+    }
+}
+
+.example-toggle {
+    display: block;
+    margin-bottom: 15px;
+}

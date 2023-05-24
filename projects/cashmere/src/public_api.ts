@@ -2,6 +2,8 @@
  * Public API Surface of cashmere
  */
 
+import { from } from 'rxjs';
+
 export * from './lib/accordion/index';
 export * from './lib/app-switcher/index';
 export * from './lib/banner/index';
@@ -23,6 +25,7 @@ export * from './lib/instance-switcher/index';
 export * from './lib/list/index';
 export * from './lib/measurable/index';
 export * from './lib/modal/index';
+export * from './lib/multiselect/index';
 export * from './lib/navbar/index';
 export * from './lib/pagination/index';
 export * from './lib/pipes/index';
@@ -31,6 +34,7 @@ export * from './lib/picklist/index';
 export * from './lib/pop/index';
 export * from './lib/progress-indicators/index';
 export * from './lib/radio-button/index';
+export * from './lib/resizable/index';
 export * from './lib/scroll-nav/index';
 export * from './lib/search-bar/index';
 export * from './lib/select/index';

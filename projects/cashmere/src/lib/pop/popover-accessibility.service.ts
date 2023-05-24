@@ -7,7 +7,9 @@ export interface HcPopKeyboardNotifier {
     onKeyDown: (event: KeyboardEvent) => void;
 }
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class HcPopoverAccessibilityService implements OnDestroy {
     private notifiers: HcPopKeyboardNotifier[] = [];
 

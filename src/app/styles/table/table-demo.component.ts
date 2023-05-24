@@ -8,6 +8,10 @@ import {BaseDemoComponent} from '../../shared/base-demo.component';
     styleUrls: ['./table-demo.component.scss']
 })
 export class TableDemoComponent extends BaseDemoComponent {
+    hasBorders = false;
+    stickyHead = true;
+    stickyCol = true;
+
     constructor(sectionService: SectionService) {
         super(sectionService);
     }

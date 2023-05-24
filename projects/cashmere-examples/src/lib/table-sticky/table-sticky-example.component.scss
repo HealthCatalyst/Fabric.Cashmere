@@ -1,0 +1,33 @@
+@import "@healthcatalyst/cashmere/scss/_colors";
+
+.example-intro {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+td {
+    white-space: nowrap;
+}
+
+th {
+    text-transform: capitalize;
+}
+
+.example-checkboxes {
+    display: flex;
+
+    hc-checkbox {
+        margin-left: 8px;
+    }
+}
+
+.example-wrapper {
+    padding: 24px;
+    border-radius: 4px;
+    border: 2px solid $slate-gray-100;
+}
+
+.gray-example-bg {
+    background-color: $slate-gray-100;
+}

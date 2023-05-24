@@ -45,6 +45,9 @@ export class PaginationComponent extends BasePaginationComponent implements OnIn
     }
     private _hidePageSize = false;
 
+    /** If true, remove all default padding and margin. *Defaults to `false`.*  */
+    @Input() tight = false;
+
     ngOnInit(): void {
         this._updateDisplayedPageSizeOptions();
         super.ngOnInit();

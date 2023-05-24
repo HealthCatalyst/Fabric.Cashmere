@@ -10,7 +10,7 @@ $sidenav-width: 260px !default;
     width: $sidenav-width;
     padding: 8px 0 20px;
     height: calc(100vh - 53px);
-    box-shadow: 0 0 7px $shadow;
+    box-shadow: 0 0 8px $shadow;
     position: relative;
     z-index: 2;
     overflow-y: auto;

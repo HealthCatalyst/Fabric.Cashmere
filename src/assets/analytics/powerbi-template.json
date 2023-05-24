@@ -1,10 +1,23 @@
 [
+    {   
+        "version": "2.0.0",
+        "releasedate": "May 18, 2023",
+        "requirements": "Power BI 2.87.261.0 or later. Access to the Power BI template requires a valid Power BI license through a Health Catalyst ticket.",
+        "download": "https://community.healthcatalyst.com/accelerators-bi/m/files/9570",
+        "notes": [
+            "A fully refurbished release of the Cashmere template.",
+            "The template aligns with the Cashmere web standards to provide a consistent experience.",
+            "The template contains sample data to explore and build on the functionality of the Cashmere-type tooltips, filters, charts, and tables.",
+            "On-page hidden filters removed to take advantage of the built-in filtering experience",
+            "New ready-to-use: KPI style updates, clickable KPIs, horizontal and vertical KPI panel suggestions",
+            "Improved and aligned with Cashmere components: buttons, tabs and chicklets"
+        ]
+    },
     {
         "version": "1.0.0",
         "releasedate": "January 22, 2021",
-        "requirements": "Power BI 2.87.261.0 or greater. Access to the Power BI template requires a Power BI license via a Health Catalyst ticket. Access to the Power BI download file requires an Azure DevOps basic license from Health Catalyst.",
+        "requirements": "Power BI 2.87.261.0 or greater. Access to the Power BI template requires a Power BI license via a Health Catalyst ticket.",
         "download": "https://community.healthcatalyst.com/accelerators-bi/bi-tool-template-archive/m/archive/9565/download",
-        "demo": "https://app.powerbi.com/groups/198d37a8-4bad-4783-b6d2-4996c5422132/reports/de2c04ad-f2d8-4471-ab08-8fdc26a8c3d0/ReportSectionf33fad71c0b55b12b3a9",
         "notes": [
             "Initial release of Cashmere template",
             "Sub-navbar includes static population metrics and other info that had been in the filters pane",
@@ -12,4 +25,4 @@
             "Tool-tips, charts, tables, and other objects align fonts, colors, pop-up styles"
         ]
     }
-]
+]  

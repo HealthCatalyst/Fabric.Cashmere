@@ -4,3 +4,4 @@ export {HcHeaderRowDef, HcFooterRowDef, HcRowDef, HcHeaderRow, HcFooterRow, HcRo
 export {HcCellResizer, CellResizeEvent} from './cell-resizer.component';
 export {HcTable} from './table.component';
 export {HcTableDataSource} from './table-data-source';
+export {TableContainerDirective} from './table-container.directive';
