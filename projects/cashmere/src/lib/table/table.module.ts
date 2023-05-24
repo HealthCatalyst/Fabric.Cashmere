@@ -13,6 +13,7 @@ import {HcFooterRow, HcFooterRowDef, HcHeaderRow, HcHeaderRowDef, HcRow, HcRowDe
 import {HcCellResizer} from './cell-resizer.component';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CommonModule} from '@angular/common';
+import { TableContainerDirective } from './table-container.directive';
 
 const EXPORTED_DECLARATIONS = [
     // HcTable
@@ -37,6 +38,9 @@ const EXPORTED_DECLARATIONS = [
     HcHeaderRow,
     HcRow,
     HcFooterRow,
+
+    // table directive
+    TableContainerDirective,
 
     // Cell resizer
     HcCellResizer
