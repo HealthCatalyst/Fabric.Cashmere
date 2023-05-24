@@ -16,6 +16,7 @@ export class TableStickyExampleComponent implements OnInit {
     hasBorders = false;
     stickyHead = true;
     stickyCol = true;
+    hasGrayBg = false;
 
     ngOnInit(): void {
       this.dataSource = new HcTableDataSource(CITY_DATA);

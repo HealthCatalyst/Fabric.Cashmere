@@ -287,8 +287,20 @@ td, th:first-child {
      }
 }
 
-th.hc-table-sticky-border-elem-left.hc-table-sticky-border-elem-top, tr.hc-sticky-header th.hc-sticky-col:first-child {
-    @include th-sticky-row-and-col();
+.hc-table-container-gray {
+    th.hc-table-sticky.hc-table-sticky-border-elem-top, .hc-sticky-header th{
+        @include th-header-sticky-gray();
+
+        &:first-child {
+            @include th-header-sticky-first-child-gray();
+        }
+    }
+}
+
+.hc-table-container-gray, :not(.hc-table-container-gray) {
+    th.hc-table-sticky-border-elem-left.hc-table-sticky-border-elem-top, tr.hc-sticky-header th.hc-sticky-col:first-child {
+        @include th-sticky-row-and-col();
+    }
 }
 
 // sticky w borders

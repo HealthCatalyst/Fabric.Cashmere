@@ -379,9 +379,12 @@
             That element will be scrollable when the table extends beyond it's height. The element needs to have a height
             constraint applied. This can be done with the "max-height" or "height" css properties, or by other methods, like a flexbox layout.
         </p>
-        <p>
-            For a sticky header, you'll apply<code>.hc-sticky-header</code> to the row.
-            For a sticky column, apply <code>.hc-sticky-col</code> to each cell in the column.
+        <ul>
+            <li>For a sticky header, you'll apply<code>.hc-sticky-header</code> to the row.</li>
+            <li>For a sticky column, apply <code>.hc-sticky-col</code> to each cell in the column.</li>
+        </ul>
+        <p>By default, these table styles are meant for tables on a white background, but you can use <code>.hc-table-container-gray</code> for a <code>$slate-gray-100</code>
+            background, or override the colors as needed.
         </p>
         <span class="example-checkboxes">
             <hc-checkbox [(ngModel)]="hasBorders" [tight]="true">Has borders</hc-checkbox>

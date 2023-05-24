@@ -21,3 +21,13 @@ th {
         margin-left: 8px;
     }
 }
+
+.example-wrapper {
+    padding: 24px;
+    border-radius: 4px;
+    border: 2px solid $slate-gray-100;
+}
+
+.gray-example-bg {
+    background-color: $slate-gray-100;
+}

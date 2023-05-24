@@ -397,6 +397,10 @@ $row-selected-border-color: $white;
     box-shadow: 1px 0 2px $shadow;
 }
 
+@mixin th-header-sticky-gray() {
+    background-color: $slate-gray-100;
+}
+
 @mixin th-header-sticky-first-child() {
     z-index: 101;
 
@@ -409,6 +413,12 @@ $row-selected-border-color: $white;
         position: absolute;
         left: -1px;
         top: 0;
+    }
+}
+
+@mixin th-header-sticky-first-child-gray() {
+    &:before {
+        background-color: $slate-gray-100;
     }
 }
 
