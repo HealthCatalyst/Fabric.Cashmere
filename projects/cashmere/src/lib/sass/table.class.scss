@@ -279,6 +279,10 @@ th.hc-table-sticky.hc-table-sticky-border-elem-top, .hc-sticky-header th{
     &:first-child {
         @include th-header-sticky-first-child();
     }
+
+    &:last-child {
+        @include th-header-sticky-last-child();
+    }
 }
 
 td, th:first-child {
@@ -293,6 +297,10 @@ td, th:first-child {
 
         &:first-child {
             @include th-header-sticky-first-child-gray();
+        }
+
+        &:last-child {
+            @include th-header-sticky-last-child-gray();
         }
     }
 }

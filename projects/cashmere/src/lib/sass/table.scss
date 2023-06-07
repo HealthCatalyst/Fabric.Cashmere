@@ -416,8 +416,28 @@ $row-selected-border-color: $white;
     }
 }
 
+@mixin th-header-sticky-last-child() {
+    &:after {
+        content: ' ';
+        height: 100%;
+        width: 2px;
+        background-color: $white;
+        display: inline-block;
+        position: absolute;
+        right: -1px;
+        top: 0;
+    }
+}
+
+
 @mixin th-header-sticky-first-child-gray() {
     &:before {
+        background-color: $slate-gray-100;
+    }
+}
+
+@mixin th-header-sticky-last-child-gray() {
+    &:after {
         background-color: $slate-gray-100;
     }
 }
@@ -439,6 +459,10 @@ $row-selected-border-color: $white;
     &:first-child:before {
         content: none;
     }
+
+    &:last-child:after {
+        content: none;
+    }
 }
 
 // sticky w borders
@@ -448,6 +472,10 @@ $row-selected-border-color: $white;
     border: 1px solid $slate-gray-300;
     border-bottom: none;
     &:first-child:before {
+        content: none;
+    }
+
+    &:last-child:after {
         content: none;
     }
 }
