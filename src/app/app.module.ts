@@ -5,6 +5,7 @@ import { ContentModule } from './content/content.module';
 import { StylesModule } from './styles/styles.module';
 import { AnalyticsModule } from './analytics/analytics.module';
 import { GuidesModule } from './guides/guides.module';
+import { AccessibilityModule } from './accessibility/accessibility.module';
 import { MobileDevModule } from './mobile/mobile.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,6 +28,7 @@ import { SearchResultsModule } from './search-results/search-results.module';
         FoundationsModule,
         ContentModule,
         GuidesModule,
+        AccessibilityModule,
         MobileDevModule,
         SearchResultsModule,
         AppRoutesModule
