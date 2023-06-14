@@ -5,7 +5,7 @@ import {NgModule} from '@angular/core';
 
 const routes: Routes = [
     {
-        path: 'web/accessibility',
+        path: 'accessibility',
         component: AccessibilityComponent,
         children: [
             {
@@ -15,6 +15,15 @@ const routes: Routes = [
                     title: 'Overview',
                     category: 'Foundations',
                     document: require('../../../guides/accessibility/overview.md')
+                }
+            },
+            {
+                path: 'ux-writing',
+                component: MarkdownContentComponent,
+                data: {
+                    title: 'Ux Writing',
+                    category: 'Foundations',
+                    document: require('../../../guides/accessibility/ux-writing.md')
                 }
             },
             {

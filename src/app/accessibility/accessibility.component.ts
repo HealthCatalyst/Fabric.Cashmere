@@ -53,7 +53,7 @@ export class AccessibilityComponent implements OnDestroy {
         if (this.selectOptions.length) {
             for (const entry of this.selectOptions) {
                 if (entry.data && event === entry.data.title) {
-                    this.router.navigate(['/web/accessibility/' + entry.path]);
+                    this.router.navigate(['/accessibility/' + entry.path]);
                     break;
                 }
             }
@@ -62,7 +62,7 @@ export class AccessibilityComponent implements OnDestroy {
 
     // Handle nav changes via the sidebar
     navUpdate(page: string): void {
-        this.router.navigate(['/web/accessibility/' + page]);
+        this.router.navigate(['/accessibility/' + page]);
     }
 
     ngOnDestroy(): void {
