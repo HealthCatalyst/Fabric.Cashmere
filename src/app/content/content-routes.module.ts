@@ -86,15 +86,6 @@ const routes: Routes = [
                 }
             },
             {
-                path: 'ux-writing-accessibility',
-                component: MarkdownContentComponent,
-                data: {
-                    title: 'Accessibility',
-                    category: 'UX Writing',
-                    document: require('../../../guides/content/ux-writing-accessibility.md')
-                }
-            },
-            {
                 path: 'ux-writing-writing-choices',
                 component: MarkdownContentComponent,
                 data: {

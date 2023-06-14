@@ -1,5 +1,5 @@
 # Accessibility
-<br><br>
+###### Last updated June 14, 2023
 
 In general, follow the Microsoft Style Guide [Accessibility guidelines and requirements](https://docs.microsoft.com/en-us/style-guide/accessibility/accessibility-guidelines-requirements). Common guidance is highlighted below.
 
