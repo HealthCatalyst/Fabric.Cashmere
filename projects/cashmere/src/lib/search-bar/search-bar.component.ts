@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
 
@@ -8,7 +8,7 @@ import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
     styleUrls: ['search-bar.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class SearchBarComponent implements OnInit, OnDestroy {
+export class SearchBarComponent implements OnInit, OnDestroy, OnChanges {
     /** Placeholder text for the search bar. *Defaults to `Search`.* */
     @Input() placeholder = 'Search';
     /** If true, disables the search bar. *Defaults to `false`.* */
@@ -44,14 +44,16 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     }
 
     public ngOnInit(): void {
-        this.searchStream
-            .pipe(debounceTime(this.debounce), distinctUntilChanged())
-            .pipe(takeUntil(this.destroy$))
-            .subscribe(t => {
-                this.triggerSearch.emit(t);
-            });
+        this.setupSearchStream();
+
         if (this.initialSearchTerm) {
             this.setValue(this.initialSearchTerm);
+        }
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.debounce) {
+            this.setupSearchStream();
         }
     }
 
@@ -86,5 +88,16 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
     public _onEnter(term: string): void {
         this.triggerSearch.emit(term);
+    }
+
+    private setupSearchStream() {
+        this.destroy$.next();
+
+        this.searchStream
+        .pipe(debounceTime(this.debounce), distinctUntilChanged())
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(t => {
+            this.triggerSearch.emit(t);
+        });
     }
 }
