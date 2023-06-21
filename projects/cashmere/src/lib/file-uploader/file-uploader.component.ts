@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, HostBinding, Input, OnDestroy, Optional, Output, Self, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, HostBinding, Input, OnDestroy, Optional, Output, Self, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { delay, takeUntil } from 'rxjs/operators';
@@ -116,7 +116,8 @@ export class FileUploaderComponent extends HcFormControlComponent implements Aft
     constructor(
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
-        @Optional() @Self() public _ngControl: NgControl
+        @Optional() @Self() public _ngControl: NgControl,
+        private _changeRef: ChangeDetectorRef
     ) {
         super();
 
@@ -158,6 +159,7 @@ export class FileUploaderComponent extends HcFormControlComponent implements Aft
 
         if (oldState !== newState) {
             this._errorState = newState;
+            this._changeRef.detectChanges();
         }
     }
 

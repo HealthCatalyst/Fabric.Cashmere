@@ -12,6 +12,7 @@ export class SearchBarOverviewExampleComponent {
     showSearchIcon = true;
     showClearIcon = true;
     autoSearch = true;
+    debounce = 100;
     output = "";
     styleControl = new FormControl("normal");
 

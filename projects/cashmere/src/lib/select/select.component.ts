@@ -14,7 +14,8 @@ import {
     ViewChild,
     Renderer2,
     AfterViewInit,
-    OnDestroy
+    OnDestroy,
+    ChangeDetectorRef
 } from '@angular/core';
 import {ControlValueAccessor, NgForm, FormGroupDirective, NgControl} from '@angular/forms';
 import {Subject} from 'rxjs';
@@ -166,7 +167,8 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         @Optional() _parentFormGroup: FormGroupDirective,
         @Optional()
         @Self()
-        public _ngControl: NgControl
+        public _ngControl: NgControl,
+        private _changeRef: ChangeDetectorRef
     ) {
         super();
 
@@ -261,6 +263,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
 
         if (oldState !== newState) {
             this._errorState = newState;
+            this._changeRef.detectChanges();
         }
     }
 
