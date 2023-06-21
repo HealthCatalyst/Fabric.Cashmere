@@ -15,8 +15,9 @@ import {
     ViewEncapsulation,
     AfterViewInit,
     OnDestroy,
+    ChangeDetectorRef, 
+    QueryList
 } from '@angular/core';
-import type {QueryList} from '@angular/core';
 import { ControlValueAccessor, NgForm, FormGroupDirective, NgControl } from '@angular/forms';
 import { HcFormControlComponent } from '../form-field/hc-form-control.component';
 import { parseBooleanAttribute } from '../util';
@@ -289,7 +290,8 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         @Optional() checkboxGroup: CheckboxGroup,
         @Optional()
         @Self()
-        public _ngControl: NgControl
+        public _ngControl: NgControl,
+        private _changeRef: ChangeDetectorRef
     ) {
         super();
 
@@ -366,6 +368,7 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
 
         if (oldState !== newState) {
             this._errorState = newState;
+            this._changeRef.detectChanges();
         }
     }
 
