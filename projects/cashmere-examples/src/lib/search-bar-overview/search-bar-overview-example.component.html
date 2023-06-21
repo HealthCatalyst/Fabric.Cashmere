@@ -1,5 +1,6 @@
 <hc-search-bar
     [placeholder]="placeholder"
+    [debounce]="debounce"
     [disabled]="disabled"
     [showSearchIcon]="showSearchIcon"
     [showClearIcon]="showClearIcon"
@@ -34,6 +35,13 @@
     <hc-checkbox id="showClearIcon" [(ngModel)]="showClearIcon">Show clear icon</hc-checkbox>
     <hc-checkbox id="autoSearch" [(ngModel)]="autoSearch">Trigger search on key up</hc-checkbox>
     <hc-checkbox id="disabled" [(ngModel)]="disabled">Disabled</hc-checkbox>
+</div>
+
+<div class="property-form-group">
+    <hc-form-field>
+        <hc-label>Debounce (ms):</hc-label>
+        <input hcInput [(ngModel)]="debounce" />
+    </hc-form-field>
 </div>
 
 <br />
