@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, forwardRef, Input, OnDestroy, Optional, Output, Self, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnDestroy, Optional, Output, Self, ViewEncapsulation} from '@angular/core';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {delay, takeUntil} from 'rxjs/operators';
@@ -134,7 +134,8 @@ export class SlideToggleComponent extends HcFormControlComponent implements Afte
     constructor(
         @Optional() _parentForm: NgForm,
         @Optional() _parentFormGroup: FormGroupDirective,
-        @Optional() @Self() public _ngControl: NgControl
+        @Optional() @Self() public _ngControl: NgControl,
+        private _changeRef: ChangeDetectorRef
     ) {
         super();
 
@@ -181,6 +182,7 @@ export class SlideToggleComponent extends HcFormControlComponent implements Afte
 
         if (oldState !== newState) {
             this._errorState = newState;
+            this._changeRef.detectChanges();
         }
     }
 

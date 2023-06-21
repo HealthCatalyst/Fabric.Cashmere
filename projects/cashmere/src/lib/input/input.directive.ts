@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostBinding, HostListener, Input, Optional, Self, forwardRef, Output, EventEmitter, AfterViewInit, OnDestroy} from '@angular/core';
+import {Directive, ElementRef, HostBinding, HostListener, Input, Optional, Self, forwardRef, Output, EventEmitter, AfterViewInit, OnDestroy, ChangeDetectorRef} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
@@ -195,7 +195,8 @@ export class InputDirective extends HcFormControlComponent implements AfterViewI
         @Optional() _parentFormGroup: FormGroupDirective,
         @Optional()
         @Self()
-        public _ngControl: NgControl
+        public _ngControl: NgControl,
+        private _changeRef: ChangeDetectorRef
     ) {
         super();
 
@@ -230,6 +231,7 @@ export class InputDirective extends HcFormControlComponent implements AfterViewI
 
         if (oldState !== newState) {
             this._errorState = newState;
+            this._changeRef.detectChanges();
         }
     }
 

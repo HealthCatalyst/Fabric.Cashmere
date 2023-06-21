@@ -273,6 +273,7 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
 
         if (oldState !== newState) {
             this._errorState = newState;
+            this._cdRef.detectChanges();
         }
     }
 
