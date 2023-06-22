@@ -1,0 +1,27 @@
+<button size="lg" class="hc-grid-col-menu-btn hc-simple-ico-btn" hc-icon-button [hcPop]="columns" title="Configure columns" (click)="onMenuIconClick.emit($event)">
+    <hc-icon fontIcon="ico-table-cog hc-grid-col-menu-btn-ico"></hc-icon>
+</button>
+
+<hc-pop #columns>
+    <div hcMenu [formGroup]="colSelectionForm" cdkDropList (cdkDropListDropped)="columnDropped($event, false)">
+        <div class="hc-grid-col-menu-header"><span class="ico-table-cog hc-icon-left"></span>Configure Columns</div>
+        <div class="hc-grid-col-menu-subheader">
+            <button hc-button buttonStyle="link" size="sm" (click)="selectAll()">Select all</button>
+            <button hc-button buttonStyle="link" size="sm" (click)="clearAll()">Clear all</button>
+        </div>
+        <ng-container *ngFor="let column of dynamicCols">
+            <div hcMenuItem class="hc-grid-col-menu-item" cdkDrag [title]="column.description || (_interpretOptionalBoolean(column.isHidable) ? 'Drag to rearrange columns, click to toggle' : 'Drag to rearrange. Column is not togglable.')">
+                <span class="ico-grip"></span>
+                <ng-container *ngIf="_interpretOptionalBoolean(column.isHidable)">
+                    <hc-checkbox [formControlName]="column.name" [tight]="true" (change)="_onColChange()">{{column.title}}</hc-checkbox>
+                </ng-container>
+                <ng-container *ngIf="!_interpretOptionalBoolean(column.isHidable)">
+                    <hc-checkbox [tight]="true" class="hc-grid-col-menu-cannot-hide" [disabled]="true" [checked]="true">{{column.title}}</hc-checkbox>
+                </ng-container>
+            </div>
+        </ng-container>
+        <div class="hc-grid-col-menu-footer">
+            <button hc-button buttonStyle="primary" size="sm" (click)="columns.close()">Done</button>
+        </div>
+    </div>
+</hc-pop>

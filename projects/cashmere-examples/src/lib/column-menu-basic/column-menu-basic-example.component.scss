@@ -1,0 +1,25 @@
+@import "@healthcatalyst/cashmere/scss/_colors";
+
+h3 {
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fa-check-circle {
+    color: $green;
+}
+
+p, ul {
+    font-size: 14px;
+}
+
+p {
+    margin-top: 0;
+}
+
+ul {
+    margin-top: -4px;
+    margin-left: 24px;
+}

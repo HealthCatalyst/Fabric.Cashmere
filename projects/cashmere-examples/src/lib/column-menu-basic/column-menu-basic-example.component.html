@@ -1,0 +1,25 @@
+<p>Basic usage of a menu component for hiding, showing, and reordering data grid columns. Menu is accessed via the table-cog icon.</p>
+
+<h3>HCAT Video Game Collection
+    <hc-column-menu #colMenu [dynamicCols]="columns"></hc-column-menu>
+</h3>
+<table hc-table [dataSource]="dataSource">
+    <ng-container *ngFor="let column of columns" [hcColumnDef]="column.name">
+        <th hc-header-cell *hcHeaderCellDef>{{ column.title }}</th>
+        <td hc-cell *hcCellDef="let element">
+            <ng-container [ngSwitch]="column.name">
+                <span *ngSwitchCase="'copiesSold'">{{element.copiesSold.toLocaleString()}}</span>
+
+                <span *ngSwitchCase="'multiplayer'" [title]="element.multiplayer ? 'Multiplayer game' : 'Single-player game'">
+                    <span class="fa fa-gamepad"></span>
+                    <span *ngIf="element.multiplayer" class="fa fa-gamepad hc-icon-right"></span>
+                </span>
+
+                <span *ngSwitchDefault>{{element[column.name]}}</span>
+            </ng-container>
+        </td>
+    </ng-container>
+
+    <tr hc-header-row *hcHeaderRowDef="colMenu.displayedColumns"></tr>
+    <tr hc-row *hcRowDef="let row; columns: colMenu.displayedColumns;"></tr>
+</table>
