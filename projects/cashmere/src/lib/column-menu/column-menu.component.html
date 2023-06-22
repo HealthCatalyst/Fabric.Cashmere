@@ -3,7 +3,7 @@
 </button>
 
 <hc-pop #columns>
-    <div hcMenu [formGroup]="colSelectionForm" cdkDropList (cdkDropListDropped)="columnDropped($event, false)">
+    <div hcMenu [formGroup]="_colSelectionForm" cdkDropList (cdkDropListDropped)="columnDropped($event, false)">
         <div class="hc-grid-col-menu-header"><span class="ico-table-cog hc-icon-left"></span>Configure Columns</div>
         <div class="hc-grid-col-menu-subheader">
             <button hc-button buttonStyle="link" size="sm" (click)="selectAll()">Select all</button>

@@ -12,14 +12,15 @@ import { readFromStorage, writeToStorage } from '../utils/local-storage';
     styleUrls: ['./column-menu.component.scss'],
 })
 export class ColumnMenuComponent<T> implements OnInit {
+    /** Reference to the popover menu. */
     @ViewChild('columns') menu!: HcPopComponent;
     /** Every time column settings are changed, emits an array of displayed columns in their proper order. */
     @Output() displayedColumnChange: EventEmitter<string[]> = new EventEmitter<string[]>();
     /** Fires when button to open menu is clicked. */
     @Output() onMenuIconClick: EventEmitter<void> = new EventEmitter<void>();
-    /** Key used to cache the setting for column order and display in local storage. If not provided, these setting will not cache. */
+    /** Key used when caching the column order and display settings in local storage. If not provided, these settings will not be cached. */
     @Input() cacheKey = '';
-    /** Keys for columns that cannot be moved or hidden and sit at the start of the row */
+    /** Keys for columns that cannot be moved or hidden and sit at the start of the row. */
     @Input() set staticPrefixCols(prefixCols: string[]) {
         this._staticPrefixCols = prefixCols;
         this._refreshCols();
@@ -27,7 +28,7 @@ export class ColumnMenuComponent<T> implements OnInit {
     get staticPrefixCols(): string[] { return this._staticPrefixCols; }
     private _staticPrefixCols: string[] = [];
 
-    /** Keys for columns that cannot be moved or hidden and sit at the end of the row */
+    /** Keys for columns that cannot be moved or hidden and sit at the end of the row. */
     @Input() set staticSuffixCols(suffixCols: string[]) {
         this._staticSuffixCols = suffixCols;
         this._refreshCols();
@@ -35,7 +36,7 @@ export class ColumnMenuComponent<T> implements OnInit {
     get staticSuffixCols(): string[] { return this._staticSuffixCols; }
     private _staticSuffixCols: string[] = [];
 
-    /** Collection of columns that can be hidden and reordered. */
+    /** Collection of columns that can be hidden and/or reordered. */
     @Input() set dynamicCols(cols: Array<HcDynamicColumn>) {
         this._dynamicCols = cols;
         this._generateColumnSelectionForms(cols);
@@ -45,10 +46,12 @@ export class ColumnMenuComponent<T> implements OnInit {
     private _dynamicCols = new Array<HcDynamicColumn>();
 
     /** An array of the currently displayed column keys sorted in their proper order. */
-    displayedColumns: string[];
+    get displayedColumns(): string[] { return this._displayedColumns; }
+    _displayedColumns: string[] = [];
 
     /** Collection of the sortable/hidable column forms. */
-    colSelectionForm = new FormGroup({});
+    get colSelectionForm(): FormGroup { return this._colSelectionForm; }
+    _colSelectionForm = new FormGroup({});
 
     ngOnInit(): void {
         this._generateColumnSelectionForms(this._dynamicCols);
@@ -57,18 +60,18 @@ export class ColumnMenuComponent<T> implements OnInit {
 
     /** Returns true if every hideable column is currently hidden. */
     get allHidden(): boolean {
-        return !Object.values(this.colSelectionForm.controls).some(c => (c as FormControl).value);
+        return !Object.values(this._colSelectionForm.controls).some(c => (c as FormControl).value);
     }
 
     /** Show all columns */
     selectAll(): void {
-        Object.values(this.colSelectionForm.controls).forEach(c => (c as FormControl).setValue(true));
+        Object.values(this._colSelectionForm.controls).forEach(c => (c as FormControl).setValue(true));
         this._onColChange();
     }
 
     /** Hide all columns */
     clearAll(): void {
-        Object.values(this.colSelectionForm.controls).forEach(c => (c as FormControl).setValue(false));
+        Object.values(this._colSelectionForm.controls).forEach(c => (c as FormControl).setValue(false));
         this._onColChange();
     }
 
@@ -88,9 +91,9 @@ export class ColumnMenuComponent<T> implements OnInit {
     }
 
     _generateColumnSelectionForms(cols: Array<HcDynamicColumn>): void {
-        this.colSelectionForm = new FormGroup({});
+        this._colSelectionForm = new FormGroup({});
         cols.filter(c => this._interpretOptionalBoolean(c.isHidable)).forEach((c) => {
-            this.colSelectionForm.addControl(c.name, new FormControl(this._interpretOptionalBoolean(c.isShownByDefault)));
+            this._colSelectionForm.addControl(c.name, new FormControl(this._interpretOptionalBoolean(c.isShownByDefault)));
         });
         this._refreshCols();
     }
@@ -101,18 +104,18 @@ export class ColumnMenuComponent<T> implements OnInit {
 
     _refreshCols(): string[] {
         // merge user controlled columns with static columns
-        this.displayedColumns = this.staticPrefixCols
+        this._displayedColumns = this.staticPrefixCols
             .concat(this._getDisplayedColumns())
             .concat(this.staticSuffixCols);
 
-        setTimeout(() => this.displayedColumnChange.emit(this.displayedColumns));
-        return this.displayedColumns;
+        setTimeout(() => this.displayedColumnChange.emit(this._displayedColumns));
+        return this._displayedColumns;
     }
 
     _getDisplayedColumns(): string[] {
         return this.dynamicCols
         .filter((col) =>
-        this._interpretOptionalBoolean(col.isHidable) ? this.colSelectionForm.get(col.name)?.value : true
+        this._interpretOptionalBoolean(col.isHidable) ? this._colSelectionForm.get(col.name)?.value : true
         )
         .map((cd) => cd.name as string);
     }
@@ -129,7 +132,7 @@ export class ColumnMenuComponent<T> implements OnInit {
                 event.previousIndex;
             const adjustedIndexForPrefixes = event.currentIndex + this.staticPrefixCols.length;
             const newIndex = isInDataGrid ?
-                this._dynamicCols.findIndex( c => c.name === this.displayedColumns[adjustedIndexForPrefixes]) :
+                this._dynamicCols.findIndex( c => c.name === this._displayedColumns[adjustedIndexForPrefixes]) :
                 event.currentIndex;
             moveItemInArray(this._dynamicCols, prevIndex, newIndex);
             this._refreshCols();
@@ -138,12 +141,12 @@ export class ColumnMenuComponent<T> implements OnInit {
     }
 
     /**
-     * Save ordered list of columns with their display status
+     * Save ordered list of columns with their display status to local storage
      */
     saveCachedPreferences(): void {
         if (!this.cacheKey) { return; } // don't save if no key is provided
         const cachedColumns: HcCachedColumn[] = this.dynamicCols
-            .map((col) => ({ key: col.name, isHidden: !this.colSelectionForm.get(col.name?.toString())?.value}));
+            .map((col) => ({ key: col.name, isHidden: !this._colSelectionForm.get(col.name?.toString())?.value}));
         writeToStorage(this.cacheKey, cachedColumns);
     }
 
@@ -159,7 +162,7 @@ export class ColumnMenuComponent<T> implements OnInit {
             if(!existingColumn) { return; } // watch for columns that don't exist anymore
 
             // if the cached column still exists, set display status & add at correct index
-            this.colSelectionForm.get(col.key)?.setValue(!col.isHidden);
+            this._colSelectionForm.get(col.key)?.setValue(!col.isHidden);
             orderedAvailableColumns.push(existingColumn);
         });
 
