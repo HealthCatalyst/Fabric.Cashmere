@@ -11,7 +11,7 @@ import { readFromStorage, writeToStorage } from '../utils/local-storage';
     templateUrl: './column-menu.component.html',
     styleUrls: ['./column-menu.component.scss'],
 })
-export class ColumnMenuComponent<T> implements OnInit {
+export class ColumnMenuComponent implements OnInit {
     /** Reference to the popover menu. */
     @ViewChild('columns') menu!: HcPopComponent;
     /** Every time column settings are changed, emits an array of displayed columns in their proper order. */
@@ -157,7 +157,7 @@ export class ColumnMenuComponent<T> implements OnInit {
         if (!this.cacheKey) { return; } // don't load if no key is provided
         const cachedColumns: HcCachedColumn[] = readFromStorage(this.cacheKey) || new Array<HcCachedColumn>();
         const orderedAvailableColumns = new Array<HcDynamicColumn>();
-        cachedColumns?.forEach((col, cachedIndex) => {
+        cachedColumns?.forEach((col) => {
             const existingColumn = this._dynamicCols.find(c => c.name === col.key);
             if(!existingColumn) { return; } // watch for columns that don't exist anymore
 
