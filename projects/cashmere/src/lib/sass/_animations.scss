@@ -29,3 +29,95 @@
         opacity: 1;
     }
 }
+
+@keyframes HCProgressShift {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+
+@keyframes HCFillUnfillRotate {
+    12.5% {
+        transform: rotate(135deg);
+    } /* 0.5 * ARCSIZE */
+    25% {
+        transform: rotate(270deg);
+    } /* 1   * ARCSIZE */
+    37.5% {
+        transform: rotate(405deg);
+    } /* 1.5 * ARCSIZE */
+    50% {
+        transform: rotate(540deg);
+    } /* 2   * ARCSIZE */
+    62.5% {
+        transform: rotate(675deg);
+    } /* 2.5 * ARCSIZE */
+    75% {
+        transform: rotate(810deg);
+    } /* 3   * ARCSIZE */
+    87.5% {
+        transform: rotate(945deg);
+    } /* 3.5 * ARCSIZE */
+    to {
+        transform: rotate(1080deg);
+    } /* 4   * ARCSIZE */
+}
+
+@keyframes HCContainerRotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes HCLeftSpin {
+    from {
+        transform: rotate(130deg);
+    }
+    50% {
+        transform: rotate(-5deg);
+    }
+    to {
+        transform: rotate(130deg);
+    }
+}
+
+@keyframes HCRightSpin {
+    from {
+        transform: rotate(-130deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    to {
+        transform: rotate(-130deg);
+    }
+}
+
+@keyframes HCDotsLoader {
+    0%,
+    80%,
+    100% {
+        background-color: transparentize($charcoal-blue, 0.8);
+    }
+    40% {
+        background-color: $charcoal-blue;
+    }
+}
+
+@keyframes HCDotsLoaderLight {
+    0%,
+    80%,
+    100% {
+        background-color: transparentize($white, 0.8);
+    }
+    40% {
+        background-color: transparentize($white, 0.2);
+    }
+}
