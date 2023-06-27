@@ -1,0 +1,140 @@
+@import './colors';
+@import './functions';
+@import './mixins';
+@import './icons';
+
+@mixin hc-grid-col-menu-btn() {
+    height: 30px;
+    width: 30px;
+}
+
+@mixin hc-grid-col-menu-btn-ico() {
+    color: $dark-blue;
+    position: relative;
+    top: -2px;
+}
+
+@mixin ico-grip() {
+    background-image: url($ico-grip);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+}
+
+@mixin ico-table-cog() {
+    background-image: url($ico-table-cog);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 18px;
+    width: 22px;
+    position: relative;
+    left: 2px;
+    cursor: pointer;
+}
+
+@mixin hc-grid-col-menu-header() {
+    font-weight: 500;
+    color: $dark-blue;
+    @include fontSize(15px);
+    display: flex;
+    align-items: baseline;
+    margin: 8px 0;
+}
+
+@mixin hc-grid-col-menu-header-ico() {
+    @include fontSize(20px);
+    margin-right: 3px;
+}
+
+@mixin hc-grid-col-menu-item() {
+    position: relative;
+    padding: 2px 0 2px 18px;
+
+    .ico-grip {
+        position: absolute;
+        left: 6px;
+        top: 6px;
+        color: $slate-gray-400;
+        opacity: 0;
+    }
+
+    &:hover {
+        background-color: transparentize($blue, 0.7);
+    }
+
+    &:hover, &.cdk-drag-preview {
+        .ico-grip {
+            opacity: 1;
+            cursor: move;
+        }
+    }
+
+    ::ng-deep {
+        .hc-checkbox-content, .hc-checkbox-label {
+            width: 100%
+        }
+    }
+}
+
+@mixin hc-grid-col-menu-item-drag() {
+    transform: translate3d(0px, 0px, 0px) !important;
+}
+
+@mixin hc-grid-col-menu-item-drag-hover() {
+    background-color: transparentize($azure, 0.6) !important;
+    border-radius: 4px;
+    .ico-grip {
+        opacity: 0;
+    }
+}
+
+@mixin hc-grid-col-menu-item-drag-preview() {
+    position: absolute;
+    z-index: 2110 !important;
+    padding: 2px 0 2px 18px;
+}
+
+@mixin hc-grid-col-menu-subheader() {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $slate-gray-100;
+    border-radius: 4px;
+}
+
+@mixin hc-grid-col-menu-subheader-button() {
+    font-weight: 500;
+    @include fontSize(12px);
+}
+
+@mixin hc-grid-col-menu-footer() {
+    margin: 8px 0;
+}
+
+@mixin hc-grid-col-menu-footer-button() {
+    width: 100%;
+    min-width: 220px;
+}
+
+@mixin cdk-drag-dragging() {
+    transform: translate3d(0px, 0px, 0px) !important;
+}
+
+@mixin cdk-drag-preview() {
+    display: inline-block;
+    background-color: $white;
+    padding: 8px 16px;
+    border: 1px solid $slate-gray-100;
+    border-radius: 4px;
+    box-shadow: 0 0 3px $shadow;
+    opacity: 0.9;
+    color: $dark-blue;
+}
+
+@mixin cdk-drag-placeholder() {
+    transform: translate3d(0px, 0px, 0px) !important;
+}
