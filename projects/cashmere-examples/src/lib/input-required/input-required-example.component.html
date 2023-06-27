@@ -2,12 +2,24 @@
     <div class="form-container">
         <hc-form-field>
             <hc-label>Validate an email address:</hc-label>
-            <input hcInput formControlName="exampleInput" required>
+            <input hcInput [validationType]="validationControl.value" formControlName="exampleInput" required>
             <hc-error>A valid email address is required</hc-error>
         </hc-form-field>
     </div>
     <button hc-button title="Reset Form" buttonStyle="secondary" type="reset">Form Reset</button>
     <button hc-button title="Submit Form" buttonStyle="primary" type="submit">Submit</button>
 </form>
+
+<hr class="example-divider">
+
+<div class="example-radio-group">
+    <hc-form-field inline="true">
+        <hc-label>Validation Type:</hc-label>
+        <hc-radio-group [formControl]="validationControl" inline="true">
+            <hc-radio-button value="onBlur">On Blur</hc-radio-button>
+            <hc-radio-button value="onChange">On Change</hc-radio-button>
+        </hc-radio-group>
+    </hc-form-field>
+</div>
 
 <button hc-button title="NgForm Reset" buttonStyle="secondary" (click)="resetForm()">NgForm Reset</button>

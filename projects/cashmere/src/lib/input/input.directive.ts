@@ -9,9 +9,16 @@ export function getUnsupportedHCInputType(type: string): Error {
     return new Error(`hc-input doesn't support the following type: ${type}`);
 }
 
+export function validateValidationType(type: string): void {
+    if (supportedValidation.indexOf(type) < 0) {
+        throw Error('Unsupported validation type: ' + type);
+    }
+}
+
 let uniqueId = 1;
 
 const unsupportedTypes = ['button', 'checkbox', 'file', 'hidden', 'image', 'radio', 'reset'];
+const supportedValidation = ['onBlur', 'onChange'];
 
 /** Directive that allows a native input to work inside a HcFormFieldComponent */
 @Directive({
@@ -21,6 +28,7 @@ const unsupportedTypes = ['button', 'checkbox', 'file', 'hidden', 'image', 'radi
 export class InputDirective extends HcFormControlComponent implements AfterViewInit, OnDestroy {
     private _focused = false;
     private _mobile = false;
+    private _validationType = 'onBlur';
     private _uniqueInputId = `hc-input-${uniqueId++}`;
     private _form: NgForm | FormGroupDirective | null;
     private _unsubscribe = new Subject<void>();
@@ -160,6 +168,20 @@ export class InputDirective extends HcFormControlComponent implements AfterViewI
     @HostListener('change', ['$event'])
     _changeEvent(event: Event): void {
         this.inputEvent.emit(event);
+        if ( this.validationType === 'onChange' ) {
+            this._updateErrorState();
+        }
+    }
+
+    /** Determines when validation checks run. Choose from: `'onBlur' | 'onChange' |`. *Defaults to `onBlur`.* */
+    @Input()
+    get validationType(): string {
+        return this._validationType;
+    }
+
+    set validationType(type: string) {
+        validateValidationType(type);
+        this._validationType = type;
     }
 
     /** Sets whether the input should be sized for small screens (if true, overrides the `tight` param on FormField) */
@@ -221,12 +243,10 @@ export class InputDirective extends HcFormControlComponent implements AfterViewI
 
     private _updateErrorState() {
         const oldState = this._errorState;
-
-        // TODO: this could be abstracted out as an @Input() if we need this to be configurable
         const newState = !!(
             this._ngControl &&
             this._ngControl.invalid &&
-            (this._ngControl.touched || (this._form && this._form.submitted))
+            (this._ngControl.touched || (this._form && this._form.submitted) || this.validationType === 'onChange')
         );
 
         if (oldState !== newState) {
