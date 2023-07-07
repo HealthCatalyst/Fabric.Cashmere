@@ -2,6 +2,6 @@
     <input id="search-box" hcInput autocomplete="off" #searchFilter type="text" [disabled]="disabled" [mobile]="mobile"
         (keyup)="_onKeyUp($event, searchFilter.value)" (keyup.enter)="_onEnter(searchFilter.value)"
         placeholder="{{ placeholder }}" />
-    <hc-clear-input-btn *ngIf="showClearIcon" hcSuffix [inputEl]="searchFilter"></hc-clear-input-btn>
+    <hc-clear-input-btn *ngIf="showClearIcon" hcSuffix [inputEl]="searchFilter" (clearClicked)="clearClicked.emit()"></hc-clear-input-btn>
     <span *ngIf="showSearchIcon" hcSuffix class="hc-search-ico"></span>
 </hc-form-field>
