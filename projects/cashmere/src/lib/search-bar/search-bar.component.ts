@@ -30,6 +30,8 @@ export class SearchBarComponent implements OnInit, OnDestroy, OnChanges {
     public debounce = 100;
     /** Fires when a search should be run. Outputs the search term. */
     @Output() triggerSearch = new EventEmitter<string>();
+    /** Fires when clear icon is clicked. */
+    @Output() clearClicked = new EventEmitter<void>();
     @ViewChild('searchFilter', {static: true}) private searchBar: ElementRef;
     /** Returns the current search term. */
     public get value(): string {

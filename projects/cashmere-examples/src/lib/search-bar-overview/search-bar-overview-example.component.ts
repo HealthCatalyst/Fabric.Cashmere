@@ -19,4 +19,8 @@ export class SearchBarOverviewExampleComponent {
     search(term: string): void {
         this.output += `Search for '${term}'\n`;
     }
+
+    clearClicked(): void {
+        this.output += `Clear clicked\n`;
+    }
 }

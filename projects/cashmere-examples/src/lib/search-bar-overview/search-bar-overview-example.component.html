@@ -7,7 +7,8 @@
     [autoSearch]="autoSearch"
     [tight]="styleControl.value === 'tight'"
     [mobile]="styleControl.value === 'mobile'"
-    (triggerSearch)="search($event)">
+    (triggerSearch)="search($event)"
+    (clearClicked)="clearClicked()">
 </hc-search-bar>
 
 <hr />
