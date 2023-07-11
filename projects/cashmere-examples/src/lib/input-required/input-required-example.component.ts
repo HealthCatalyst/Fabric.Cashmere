@@ -22,4 +22,9 @@ export class InputRequiredExampleComponent {
     resetForm(): void {
         this.exampleForm.resetForm();
     }
+
+    // Calling markAsTouched on an input formControl will fire an error state check
+    markAsTouched(): void {
+        this.exampleFormGroup.markAllAsTouched();
+    }
 }
