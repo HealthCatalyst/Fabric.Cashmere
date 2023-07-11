@@ -280,6 +280,25 @@ export class CheckboxComponent extends HcFormControlComponent implements Control
         if ( this._form ) {
             this._form.ngSubmit.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
         }
+
+        /** Monkey patching the markAsTouched function to call error state checking because there is not an event for touched changes */
+        if ( this._ngControl && this._ngControl.control ) {
+            // eslint-disable-next-line @typescript-eslint/no-this-alias
+            const self = this;
+            const originalMarkMethod = this._ngControl.control.markAsTouched;
+            this._ngControl.control.markAsTouched = function () {
+                // eslint-disable-next-line prefer-rest-params
+                originalMarkMethod.apply(this, arguments);
+                self._updateErrorState();
+            };
+
+            const originalMarkAllMethod = this._ngControl.control.markAllAsTouched;
+            this._ngControl.control.markAllAsTouched = function () {
+                // eslint-disable-next-line prefer-rest-params
+                originalMarkAllMethod.apply(this, arguments);
+                self._updateErrorState();
+            };
+        }
     }
 
     constructor(
