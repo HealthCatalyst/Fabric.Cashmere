@@ -12,6 +12,7 @@ export * from './lib/button/index';
 export * from './lib/button-toggle/index';
 export * from './lib/checkbox/index';
 export * from './lib/chip/index';
+export * from './lib/column-menu/index';
 export * from './lib/datepicker/index';
 export * from './lib/date-range/index';
 export * from './lib/drawer/index';
