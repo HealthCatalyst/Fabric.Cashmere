@@ -24,4 +24,17 @@ export class SwatchDemoComponent {
     public pantone: string;
     @Input()
     public gradient: string[] = [];
+
+    gradientString(): string {
+        let gradString = 'linear-gradient(to right, ';
+        for ( let i=0; i < this.gradient.length; i++ ) {
+            if ( i !== 0 ) {
+                gradString += ' , '; 
+            }
+            gradString += this.gradient[i];
+        }
+        gradString += ')';
+
+        return gradString;
+    }
 }
