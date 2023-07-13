@@ -133,7 +133,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
         if (this.targets.length !== scrollTargetList.length || differenceBy(scrollTargetList, this._scrollTargets, 'id').length > 0) {
             const scrollTargetDirectiveArray: ScrollNavTargetDirective[] = [];
             scrollTargetList.forEach((dynamicTarget) => {
-                const scrollNavTargetDirective: ScrollNavTargetDirective = new ScrollNavTargetDirective(<ElementRef>{}, this.renderer);
+                const scrollNavTargetDirective: ScrollNavTargetDirective = new ScrollNavTargetDirective(<ElementRef>{});
                 scrollNavTargetDirective._setDirectiveToNode(dynamicTarget.targetElement);
                 scrollTargetDirectiveArray.push(scrollNavTargetDirective);
             });
