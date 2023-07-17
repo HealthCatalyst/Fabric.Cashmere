@@ -9,15 +9,12 @@
         "experimentalDecorators": true,
         "strictNullChecks": true,
         "resolveJsonModule": true,
-        "target": "es2015",
+        "target": "es2022",
         "typeRoots": ["node_modules/@types"],
         "lib": ["es2017", "dom"],
         "paths": {
             "@healthcatalyst/cashmere": ["projects/cashmere/src"],
             "@healthcatalyst/cashmere-examples": ["projects/cashmere-examples/src"]
         }
-    },
-    "angularCompilerOptions": {
-        "enableIvy": true
     }
 }

@@ -8,9 +8,7 @@ export interface Person {
     name: string;
 }
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class PicklistRemoteDataService {
     mockPeople = names.map((n, index) => {
         return {

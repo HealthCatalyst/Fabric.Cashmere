@@ -14,5 +14,5 @@ In some cases, like before the application is loaded, you may want to use the pr
 </div>
 
 // for dots
-<div class="hc-dots-loader"><div class="loader-animate"></div></div>
+<div class="hc-HCDotsLoader"><div class="loader-animate"></div></div>
 ```

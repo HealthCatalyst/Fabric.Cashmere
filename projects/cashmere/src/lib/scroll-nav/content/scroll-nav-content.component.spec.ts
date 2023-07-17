@@ -189,7 +189,7 @@ describe('HcScrollNavContentComponent', () => {
     describe('refreshScrollNavTargets', () => {
         it('should reset targets if list of ScrollNavTargetDirectives are passed in', () => {
             const scrollNavLinkDirectives: ScrollNavTargetDirective[] =
-                [new ScrollNavTargetDirective(testApp.fixture.nativeElement.querySelector(`[${SCROLL_TARGET_ATTRIBUTE}]`), renderer)];
+                [new ScrollNavTargetDirective(testApp.fixture.nativeElement.querySelector(`[${SCROLL_TARGET_ATTRIBUTE}]`))];
             const targetsResetSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'reset');
             const targetNotifyOnChangesSpy: jasmine.Spy = spyOn(testApp.contentComponent['targets'], 'notifyOnChanges');
 
