@@ -13,8 +13,8 @@ export class PicklistRemoteDataExampleComponent implements OnInit {
     people$: Observable<Person[]>;
     peopleLoading = true;
     peopleInput$ = new Subject<string>();
-    selectedPersons: Person[] = this.dataService.mockPeople.slice(0, 2);
-    remoteCount = this.dataService.mockPeople.length - this.selectedPersons.length;
+    selectedPersons: Person[] = [];
+    remoteCount = 125;
     // using .bind() to maintain a scope that allows me access to the dataService in a callback function
     addCustomItemFn = this.addCustomItem.bind(this);
 

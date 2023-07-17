@@ -166,7 +166,7 @@ $hc-header-font-size: 18px !default;
 
 .hc-toast-progress-indeterminate {
     &:before {
-        animation: ProgressShift 2.5s ease-in-out infinite;
+        animation: HCProgressShift 2.5s ease-in-out infinite;
     }
 }
 
@@ -183,14 +183,4 @@ $hc-header-font-size: 18px !default;
     background-color: darken($green, 10%);
 }
 
-@keyframes ProgressShift {
-    0% {
-        transform: translateX(-100%);
-    }
-    50% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
+

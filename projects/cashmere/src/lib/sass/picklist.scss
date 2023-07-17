@@ -7,7 +7,7 @@ $hc-pick-border: $gray-300 !default;
 $hc-pick-border-radius: 4px !default;
 $hc-pick-bg: $white !default;
 $hc-pick-selected: $hc-pick-highlight !default;
-$hc-pick-hover: tint($blue, 75) !default;
+$hc-pick-hover: tint($blue, 75%) !default;
 $hc-pick-height: 36px !default;
 
 $folder-icon: "%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 2048 1792' style='enable-background:new 0 0 2048 1792;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%2300AEFF;%7D%0A%3C/style%3E%3Cpath class='st0' d='M1600,1312V608c0-26.7-9.3-49.3-28-68s-41.3-28-68-28H800c-26.7,0-49.3-9.3-68-28s-28-41.3-28-68v-64 c0-26.7-9.3-49.3-28-68s-41.3-28-68-28H288c-26.7,0-49.3,9.3-68,28s-28,41.3-28,68v960c0,26.7,9.3,49.3,28,68s41.3,28,68,28h1216 c26.7,0,49.3-9.3,68-28S1600,1338.7,1600,1312z M1728,608v704c0,61.3-22,114-66,158s-96.7,66-158,66H288c-61.3,0-114-22-158-66 s-66-96.7-66-158V352c0-61.3,22-114,66-158s96.7-66,158-66h320c61.3,0,114,22,158,66s66,96.7,66,158v32h672c61.3,0,114,22,158,66 S1728,546.7,1728,608z'/%3E%3C/svg%3E%0A";
@@ -26,7 +26,7 @@ $pick-search-clear: "%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/
     justify-content: space-between;
     align-items: stretch;
 }
-    
+
 
 @mixin hc-picklist-pane-container() {
     width: 45%;

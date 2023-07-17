@@ -29,7 +29,8 @@
             },
             "stylePreprocessorOptions": {
               "includePaths": [
-                "dist/cashmere"
+                "dist/cashmere",
+                "projects/cashmere-examples/node_modules"
               ]
             },
             "assets": [

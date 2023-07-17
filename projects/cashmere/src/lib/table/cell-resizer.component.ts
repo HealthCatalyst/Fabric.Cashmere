@@ -12,10 +12,8 @@ import {
     Output,
     ViewEncapsulation
 } from '@angular/core';
-import {BindObservable} from './bind-observable/bind-observable';
 import {untilDestroyed} from '../util';
-import {fromEvent, Observable, Subscription} from 'rxjs';
-import {skip} from 'rxjs/operators';
+import {fromEvent, ReplaySubject, Subscription} from 'rxjs';
 
 export class CellResizeEvent {
     constructor(public width: number, public directionLeft: boolean) {}
@@ -58,8 +56,8 @@ export class HcCellResizer implements OnInit, OnDestroy {
      */
     @Output() public resized = new EventEmitter<CellResizeEvent>();
 
-    @BindObservable() private isResizing = false;
-    private isResizing$!: Observable<boolean>;
+    private isResizing = false;
+    private isResizing$ = new ReplaySubject<boolean>(1);
 
     /**
      * Emits a boolean value of true while a cell is being resized
@@ -72,7 +70,6 @@ export class HcCellResizer implements OnInit, OnDestroy {
         this.isResizing$
             .pipe(
                 // Skip default value
-                skip(1),
                 untilDestroyed(this)
             )
             .subscribe(isResizing => {
@@ -119,11 +116,13 @@ export class HcCellResizer implements OnInit, OnDestroy {
     // Same problems that mousemove listener have
     private _stopResizing() {
         this.isResizing = false;
+        this.isResizing$.next(this.isResizing);
     }
 
     // isResizing can be set to true only when the component is not disabled
     @HostListener('mousedown', ['$event']) _startResizing(event: MouseEvent): void {
         this.isResizing = !this.disabled;
+        this.isResizing$.next(this.isResizing);
 
         this._mouseX = event.screenX;
 

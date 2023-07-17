@@ -11,7 +11,7 @@ $dots-diameter-mini: 4px !default;
     width: 100%;
     position: relative;
 
-    &.center-dots .hc-dots-loader {
+    &.center-dots .hc-HCDotsLoader {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -20,11 +20,11 @@ $dots-diameter-mini: 4px !default;
     }
 }
 
-.hc-dots-loader {
+.hc-HCDotsLoader {
     .loader-animate {
         background-color: $charcoal-blue;
         position: relative;
-        animation: dots-loader $animation-speed ease-in-out infinite;
+        animation: HCDotsLoader $animation-speed ease-in-out infinite;
         animation-delay: $animation-delay;
 
         &,
@@ -40,7 +40,7 @@ $dots-diameter-mini: 4px !default;
             position: absolute;
             top: 0px;
             left: $dots-diameter * -2;
-            animation: dots-loader $animation-speed ease-in-out infinite;
+            animation: HCDotsLoader $animation-speed ease-in-out infinite;
             animation-delay: $animation-delay * 2;
         }
 
@@ -50,22 +50,22 @@ $dots-diameter-mini: 4px !default;
             top: 0px;
             left: $dots-diameter * 2;
             border-radius: 50%;
-            animation: dots-loader $animation-speed ease-in-out infinite;
+            animation: HCDotsLoader $animation-speed ease-in-out infinite;
             animation-delay: 0s;
         }
     }
 
     &.loader-light .loader-animate {
-        animation: dots-loader-light $animation-speed ease-in-out infinite;
+        animation: HCDotsLoaderLight $animation-speed ease-in-out infinite;
         animation-delay: $animation-delay;
 
         &:before {
-            animation: dots-loader-light $animation-speed ease-in-out infinite;
+            animation: HCDotsLoaderLight $animation-speed ease-in-out infinite;
             animation-delay: $animation-delay * 2;
         }
 
         &:after {
-            animation: dots-loader-light $animation-speed ease-in-out infinite;
+            animation: HCDotsLoaderLight $animation-speed ease-in-out infinite;
             animation-delay: 0s;
         }
     }
@@ -86,24 +86,4 @@ $dots-diameter-mini: 4px !default;
     }
 }
 
-@keyframes dots-loader {
-    0%,
-    80%,
-    100% {
-        background-color: transparentize($charcoal-blue, 0.8);
-    }
-    40% {
-        background-color: $charcoal-blue;
-    }
-}
 
-@keyframes dots-loader-light {
-    0%,
-    80%,
-    100% {
-        background-color: transparentize($white, 0.8);
-    }
-    40% {
-        background-color: transparentize($white, 0.2);
-    }
-}

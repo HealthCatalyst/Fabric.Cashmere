@@ -95,7 +95,7 @@ describe("ScrollNavTargetDirective", (): void => {
         beforeEach(() => {
             const node: Node = scrollNavTargetDynamicComponent.nativeElement.querySelector(`[hcscrolltarget]`);
 
-            directive = new ScrollNavTargetDirective(<ElementRef>{}, scrollNavTargetDynamicComponent.componentInstance.renderer);
+            directive = new ScrollNavTargetDirective(<ElementRef>{});
             directive._setDirectiveToNode(node);
 
             scrollNavTargetDynamicComponent.detectChanges();
