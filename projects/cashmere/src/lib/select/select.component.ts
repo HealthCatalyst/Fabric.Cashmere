@@ -278,6 +278,10 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         return valueString.split(':')[0];
     }
 
+    _onContentUpdated(): void {
+        this._applyValueToNativeControl();
+    }
+
     private _updateErrorState() {
         const oldState = this._errorState;
 

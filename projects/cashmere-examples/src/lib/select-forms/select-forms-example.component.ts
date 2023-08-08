@@ -13,13 +13,13 @@ export class SelectFormsExampleComponent {
     locations = [
         {id: 1, dbaName: 'Tax Commission'},
         {id: 2, dbaName: 'Insurance Department'},
-        {id: 3, dbaName: 'Environmental Quality'},
+        {id: 3, dbaName: 'Environmental Quality'}
     ];
 
-    selectControl = new FormControl(this.locations[0]);
+    selectControl = new FormControl(this.locations[0].id);
 
     setInsurance(): void {
-        this.selectControl.setValue(this.locations[1], {onlySelf: true});
+        this.selectControl.setValue(this.locations[1].id, {onlySelf: true});
     }
 
     toggleActive(): void {
@@ -28,5 +28,13 @@ export class SelectFormsExampleComponent {
         } else {
             this.selectControl.disable();
         }
+    }
+
+    changeOptions(): void {
+        this.locations = [
+            {id: 1, dbaName: 'Tax Commission (updated)'},
+            {id: 2, dbaName: 'Insurance Department (updated)'},
+            {id: 3, dbaName: 'Environmental Quality (updated)'}
+        ];
     }
 }
