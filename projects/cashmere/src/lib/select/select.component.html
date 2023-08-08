@@ -9,7 +9,7 @@
         (blur)="_onBlur()"
         [required]="required"
     >
-        <option *ngIf="placeholder" [value]="placeholderValue" selected disabled hidden #selectPlaceholder>{{ placeholder }}</option>
+        <option *ngIf="placeholder" [ngValue]="placeholderValue" selected disabled hidden #selectPlaceholder>{{ placeholder }}</option>
         <ng-content></ng-content>
     </select>
 </div>
