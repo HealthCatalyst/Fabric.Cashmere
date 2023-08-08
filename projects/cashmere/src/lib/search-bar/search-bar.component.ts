@@ -25,6 +25,8 @@ export class SearchBarComponent implements OnInit, OnDestroy, OnChanges {
     @Input() mobile = false;
     /** If true, condense the default padding and reduce the font size. *Defaults to `false`.*  */
     @Input() tight = false;
+     /** If true, trigger search when search icon is clicked. *Defaults to `true`.*  */
+     @Input() triggerSearchOnSearchIcoClick = true;
     /** Sets the time in milliseconds to wait before triggering a search. *Defaults to `100`. */
     @Input()
     public debounce = 100;
@@ -32,6 +34,8 @@ export class SearchBarComponent implements OnInit, OnDestroy, OnChanges {
     @Output() triggerSearch = new EventEmitter<string>();
     /** Fires when clear icon is clicked. */
     @Output() clearClicked = new EventEmitter<void>();
+    /** Fires when search icon is clicked. */
+    @Output() searchIconClicked = new EventEmitter<void>();
     @ViewChild('searchFilter', {static: true}) private searchBar: ElementRef;
     /** Returns the current search term. */
     public get value(): string {
@@ -90,6 +94,12 @@ export class SearchBarComponent implements OnInit, OnDestroy, OnChanges {
 
     public _onEnter(term: string): void {
         this.triggerSearch.emit(term);
+    }
+
+    public _onSearchIconClicked(): void {
+        this.focus();
+        this.searchIconClicked.emit();
+        if (this.triggerSearchOnSearchIcoClick) { this.search(); }
     }
 
     private setupSearchStream() {

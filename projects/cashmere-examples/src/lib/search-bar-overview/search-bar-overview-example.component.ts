@@ -23,4 +23,8 @@ export class SearchBarOverviewExampleComponent {
     clearClicked(): void {
         this.output += `Clear clicked\n`;
     }
+
+    searchIconClicked(): void {
+        this.output += `Search icon clicked\n`;
+    }
 }
