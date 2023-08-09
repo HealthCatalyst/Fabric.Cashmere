@@ -8,8 +8,9 @@
         (focus)="focus.next()"
         (blur)="_onBlur()"
         [required]="required"
+        (cdkObserveContent)="_onContentUpdated()"
     >
-        <option *ngIf="placeholder" [value]="placeholderValue" selected disabled hidden #selectPlaceholder>{{ placeholder }}</option>
+        <option *ngIf="placeholder" [ngValue]="placeholderValue" selected disabled hidden #selectPlaceholder>{{ placeholder }}</option>
         <ng-content></ng-content>
     </select>
 </div>

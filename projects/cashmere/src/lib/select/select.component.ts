@@ -65,12 +65,11 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     get placeholderValue(): any {
         return this._placeholderValue;
     }
-    set placeholderValue( val: any ) {
-        if ( this.placeholder && this._nativePlaceholder ) {
-            this._placeholderValue = val;
-            this._renderer.setProperty( this._nativePlaceholder.nativeElement, 'value', val );
-            this._applyValueToNativeControl();
-        }
+
+    set placeholderValue(val: any) {
+        this._placeholderValue = val;
+        this._applyPlaceholderValueToNativeControl();
+        this._applyValueToNativeControl();
     }
 
     /** Enables or disables the component */
@@ -179,18 +178,19 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     }
 
     ngAfterViewInit() {
+        this._applyPlaceholderValueToNativeControl();
         this._applyValueToNativeControl();
 
-        if ( this._ngControl?.statusChanges ) {
+        if (this._ngControl?.statusChanges) {
             // delay() is necessary to make sure any form or control state changes have been applied before rechecking error states
             this._ngControl.statusChanges.pipe(delay(0), takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
         }
-        if ( this._form ) {
+        if (this._form) {
             this._form.ngSubmit.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
         }
 
         /** Monkey patching the markAsTouched function to call error state checking because there is not an event for touched changes */
-        if ( this._ngControl && this._ngControl.control ) {
+        if (this._ngControl && this._ngControl.control) {
             // eslint-disable-next-line @typescript-eslint/no-this-alias
             const self = this;
             const originalMarkMethod = this._ngControl.control.markAsTouched;
@@ -226,7 +226,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
 
     writeValue(value: any) {
         // Prevent the form control from trying to write a value when removing the control
-        if ( this.onChange.name !== 'noop' ) {
+        if (this.onChange.name !== 'noop') {
             this._value = value;
             this._applyValueToNativeControl();
         }
@@ -243,6 +243,14 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         }
         const valueString = _buildValueString(id, this._value);
         this._renderer.setProperty(this._nativeSelect.nativeElement, 'value', valueString);
+    }
+
+    _applyPlaceholderValueToNativeControl() {
+        if (!this._nativePlaceholder) {
+            return;
+        }
+
+        this._renderer.setProperty(this._nativePlaceholder.nativeElement, 'value', this._placeholderValue);
     }
 
     _change(event: Event, value: any) {
@@ -268,6 +276,10 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
 
     _extractId(valueString: string): string {
         return valueString.split(':')[0];
+    }
+
+    _onContentUpdated(): void {
+        this._applyValueToNativeControl();
     }
 
     private _updateErrorState() {
