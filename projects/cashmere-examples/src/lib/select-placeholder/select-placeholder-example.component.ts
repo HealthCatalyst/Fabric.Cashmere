@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { RadioButtonChangeEvent } from '@healthcatalyst/cashmere';
+import {Component, OnInit} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {RadioButtonChangeEvent} from '@healthcatalyst/cashmere';
 
 /**
  * @title Select Component Placeholder
@@ -10,18 +10,31 @@ import { RadioButtonChangeEvent } from '@healthcatalyst/cashmere';
     templateUrl: 'select-placeholder-example.component.html',
     styleUrls: ['select-placeholder-example.component.scss']
 })
-export class SelectPlaceholderExampleComponent {
-    phVal: any = "";
-    selectVal = new FormControl("");
+export class SelectPlaceholderExampleComponent implements OnInit {
+    cities = [
+        {
+            name: 'Philadelphia'
+        },
+        {
+            name: 'Atlanta'
+        }
+    ];
 
-    reset(): void {
-        this.selectVal.setValue("");
+    phVal: any = undefined;
+    selectVal = new FormControl();
+
+    ngOnInit(): void {
+        this.selectVal.setValue(undefined);
     }
 
-    updatePlaceholderVal( selected: RadioButtonChangeEvent ): void {
-        if ( selected.value === "1" ) {
-            this.phVal = "";
-        } else if ( selected.value === "2" ) {
+    reset(value: any): void {
+        this.selectVal.setValue(value);
+    }
+
+    updatePlaceholderVal(selected: RadioButtonChangeEvent): void {
+        if (selected.value === '1') {
+            this.phVal = '';
+        } else if (selected.value === '2') {
             this.phVal = null;
         } else {
             this.phVal = undefined;
