@@ -79,6 +79,12 @@ export class SidenavComponent {
         this.collapsedChange.emit(this.collapsed);
     }
 
+    _onRouterLinkActiveChange(isActive: boolean, tab: SidenavLink) {
+        if (isActive) {
+            this.activeTabKey = tab.key;
+        }
+    }
+
     /** @docs-private */
     onTabClick(event: MouseEvent, link: SidenavLink): void {
         if (link.disabled) { return; }
