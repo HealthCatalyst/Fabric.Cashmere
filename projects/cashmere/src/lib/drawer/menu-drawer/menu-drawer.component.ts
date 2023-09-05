@@ -13,6 +13,7 @@ import {
 import {Drawer} from '../drawer.component';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {DrawerToolbar} from './drawer-header.directive';
+import { DrawerContainer } from '../drawer-container.component';
 
 const drawerThemes = ['dark-theme'];
 
@@ -96,8 +97,8 @@ export class MenuDrawer extends Drawer implements AfterContentInit {
     @HostBinding('class.hc-menu-drawer')
     _hostClass = true;
 
-    constructor(elementRef: ElementRef, private renderer: Renderer2) {
-        super(elementRef);
+    constructor(elementRef: ElementRef, container: DrawerContainer, private renderer: Renderer2) {
+        super(elementRef, container);
         this.menuTheme = 'dark-theme';
     }
 

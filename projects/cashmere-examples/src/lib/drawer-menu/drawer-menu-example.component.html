@@ -1,6 +1,6 @@
 <div class="drawer-container">
-    <hc-drawer-container [animated]="isAnimated.value">
-        <hc-menu-drawer align="left" mode="push" menuTheme="dark-theme" [ignoreEscapeKey]="true" #leftDrawer>
+    <hc-drawer-container [animated]="isAnimated.value" [useBackdrop]="useBackdrop.value">
+        <hc-menu-drawer align="left" [mode]="useBackdrop.value ? 'over' : 'push'" menuTheme="dark-theme" [ignoreEscapeKey]="true" #leftDrawer>
             <div hcDrawerToolbar>Filter Sets</div>
             <hc-drawer-item>
                 <div class="drawer-label">
@@ -69,6 +69,7 @@
                 (change)="leftDrawer.ignoreEscapeKey = !leftDrawer.ignoreEscapeKey"
             >Ignore escape key</hc-checkbox>
             <hc-checkbox [formControl]="isAnimated">Animated drawer</hc-checkbox>
+            <hc-checkbox [formControl]="useBackdrop">Use backdrop</hc-checkbox>
         </div>
     </hc-drawer-container>
 </div>
