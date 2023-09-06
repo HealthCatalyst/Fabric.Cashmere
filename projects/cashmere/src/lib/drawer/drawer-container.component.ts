@@ -36,7 +36,7 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
     @ContentChildren(Drawer)
     _drawers: QueryList<Drawer>;
 
-    @ViewChild(BackdropHostDirective, {static: true}) backdropHost: BackdropHostDirective;
+    @ViewChild(BackdropHostDirective, {static: true}) _backdropHost: BackdropHostDirective;
 
     private _leftDrawer: Drawer;
     private _rightDrawer: Drawer;
@@ -198,13 +198,13 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
             return;
         }
 
-        this.backdropHost.ignoreEscapeKey = drawer.ignoreEscapeKey;
-        this.backdropHost.onClose.pipe(takeUntil(this._destroyed)).subscribe(() => drawer.toggleClose());
-        this.backdropHost.showBackdrop();
+        this._backdropHost.ignoreEscapeKey = drawer.ignoreEscapeKey;
+        this._backdropHost.onClose.pipe(takeUntil(this._destroyed)).subscribe(() => drawer.toggleClose());
+        this._backdropHost.showBackdrop();
     }
 
     _hideBackdrop(): void {
-        this.backdropHost.hideBackdrop();
+        this._backdropHost.hideBackdrop();
     }
 
     ngOnDestroy(): void {

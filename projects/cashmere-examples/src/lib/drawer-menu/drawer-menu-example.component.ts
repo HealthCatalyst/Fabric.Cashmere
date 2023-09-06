@@ -12,4 +12,5 @@ import {FormControl} from '@angular/forms';
 export class DrawerMenuExampleComponent {
     isAnimated = new FormControl(true, {nonNullable: true});
     useBackdrop = new FormControl(false, {nonNullable: true});
+    isOpen = false;
 }
