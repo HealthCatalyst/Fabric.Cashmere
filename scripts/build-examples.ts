@@ -70,7 +70,7 @@ function getStackBlitzProjectTemplateFiles() {
     );
     const exampleFiles: FileHash = {};
     // add all project template files to the StackBlitz
-    glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot}).reduce((prev, curr) => {
+    glob.sync('**/*', {dot: true, nodir: true, cwd: projectTemplateRoot, posix: true}).reduce((prev, curr) => {
         const fullPath = path.join(projectTemplateRoot, curr);
         const content = fs.readFileSync(fullPath).toString();
         prev[curr] = content;
