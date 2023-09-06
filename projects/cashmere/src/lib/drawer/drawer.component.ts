@@ -8,7 +8,8 @@ import {
     HostListener,
     Input,
     Output,
-    ViewEncapsulation} from '@angular/core';
+    ViewEncapsulation
+} from '@angular/core';
 import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
 import {parseBooleanAttribute} from '../util';
 import {filter, map} from 'rxjs/operators';
@@ -82,7 +83,7 @@ const closeStateAnimation = '0.25s .05s ease';
             ])
         ])
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Drawer implements AfterContentInit {
     private _mode = 'push';

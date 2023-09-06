@@ -13,7 +13,6 @@ import {
 import {Drawer} from '../drawer.component';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {DrawerToolbar} from './drawer-header.directive';
-import { DrawerContainer } from '../drawer-container.component';
 
 const drawerThemes = ['dark-theme'];
 
