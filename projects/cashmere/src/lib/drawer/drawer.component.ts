@@ -7,15 +7,12 @@ import {
     HostBinding,
     HostListener,
     Input,
-    Optional,
     Output,
-    ViewEncapsulation
-} from '@angular/core';
+    ViewEncapsulation} from '@angular/core';
 import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
 import {parseBooleanAttribute} from '../util';
 import {filter, map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import { DrawerContainer } from './drawer-container.component';
 
 /** Result of opening or closing the drawer */
 export class DrawerPromiseResult {
@@ -85,7 +82,7 @@ const closeStateAnimation = '0.25s .05s ease';
             ])
         ])
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Drawer implements AfterContentInit {
     private _mode = 'push';
@@ -236,7 +233,7 @@ export class Drawer implements AfterContentInit {
         }
     }
 
-    constructor(protected elementRef: ElementRef, @Optional() private container: DrawerContainer) {}
+    constructor(protected elementRef: ElementRef) {}
 
     ngAfterContentInit(): void {
         if (this._animationPromise) {
@@ -247,9 +244,6 @@ export class Drawer implements AfterContentInit {
             this._animationPromise = null;
         }
         this._animationDisabled = false;
-
-        this.openStart.subscribe(() => this.showBackdrop());
-        this.closeStart.subscribe(() => this.hideBackdrop());
     }
 
     /** Toggles the drawer open */
@@ -280,21 +274,5 @@ export class Drawer implements AfterContentInit {
             });
         }
         return this._animationPromise;
-    }
-
-    private showBackdrop(): void {
-        if (!this.container) {
-            return;
-        }
-
-        this.container._showBackdrop(this);
-    }
-
-    private hideBackdrop(): void {
-        if (!this.container) {
-            return;
-        }
-
-        this.container._hideBackdrop();
     }
 }

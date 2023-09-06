@@ -97,8 +97,8 @@ export class MenuDrawer extends Drawer implements AfterContentInit {
     @HostBinding('class.hc-menu-drawer')
     _hostClass = true;
 
-    constructor(elementRef: ElementRef, container: DrawerContainer, private renderer: Renderer2) {
-        super(elementRef, container);
+    constructor(elementRef: ElementRef, private renderer: Renderer2) {
+        super(elementRef);
         this.menuTheme = 'dark-theme';
     }
 

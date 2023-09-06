@@ -118,6 +118,8 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
                         this._setContainerClass(false);
                     }
                 });
+                drawer.openStart.pipe(takeUntil(this._drawers.changes)).subscribe(() => this._showBackdrop(drawer));
+                drawer.closeStart.pipe(takeUntil(this._drawers.changes)).subscribe(() => this._hideBackdrop());
             });
 
             if (!this._drawers.length || this._isDrawerOpen(this._leftDrawer) || this._isDrawerOpen(this._rightDrawer)) {
