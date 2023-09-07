@@ -10,6 +10,7 @@ import {
     NgZone,
     OnDestroy,
     Renderer2,
+    ViewChild,
     ViewEncapsulation
 } from '@angular/core';
 import type {QueryList} from '@angular/core';
@@ -18,6 +19,7 @@ import {debounceTime, filter, startWith, takeUntil} from 'rxjs/operators';
 import {AnimationEvent} from '@angular/animations';
 import {Subject} from 'rxjs';
 import {parseBooleanAttribute} from '../util';
+import { BackdropHostDirective } from '../backdrop/backdrop-host.directive';
 
 function throwDrawerContainerError(align: string) {
     throw new Error(`A drawer was already declared for 'align="${align}"'`);
@@ -34,9 +36,12 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
     @ContentChildren(Drawer)
     _drawers: QueryList<Drawer>;
 
+    @ViewChild(BackdropHostDirective, {static: true}) _backdropHost: BackdropHostDirective;
+
     private _leftDrawer: Drawer;
     private _rightDrawer: Drawer;
     private _animated = true;
+    private _useBackdrop = false;
 
     _contentMargins = {left: 0, right: 0};
 
@@ -57,6 +62,16 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
         if ( this._drawers ) {
             this._drawers.forEach((drawer: Drawer) => drawer._animated = this._animated);
         }
+    }
+
+    /** Whether to use a backdrop, which closes the drawer when clicked */
+    @Input()
+    get useBackdrop(): boolean {
+        return this._useBackdrop;
+    }
+
+    set useBackdrop(useBackdrop: boolean) {
+        this._useBackdrop = useBackdrop;
     }
 
     constructor(
@@ -103,6 +118,8 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
                         this._setContainerClass(false);
                     }
                 });
+                drawer.openStart.pipe(takeUntil(this._drawers.changes)).subscribe(() => this._showBackdrop(drawer));
+                drawer.closeStart.pipe(takeUntil(this._drawers.changes)).subscribe(() => this._hideBackdrop());
             });
 
             if (!this._drawers.length || this._isDrawerOpen(this._leftDrawer) || this._isDrawerOpen(this._rightDrawer)) {
@@ -174,6 +191,20 @@ export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
         } else {
             this._renderer.removeClass(this._elementRef.nativeElement, 'hc-drawer-opened');
         }
+    }
+
+    _showBackdrop(drawer: Drawer): void {
+        if (!this._useBackdrop) {
+            return;
+        }
+
+        this._backdropHost.ignoreEscapeKey = drawer.ignoreEscapeKey;
+        this._backdropHost.onClose.pipe(takeUntil(this._destroyed)).subscribe(() => drawer.toggleClose());
+        this._backdropHost.showBackdrop();
+    }
+
+    _hideBackdrop(): void {
+        this._backdropHost.hideBackdrop();
     }
 
     ngOnDestroy(): void {

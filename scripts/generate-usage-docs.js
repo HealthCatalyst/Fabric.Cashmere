@@ -1,6 +1,6 @@
 const md = require('markdown-it')({html: true});
 const mdnh = require('markdown-it-named-headers');
-const glob = require('glob');
+const glob = require('glob').glob;
 const path = require('path');
 const fs = require('fs');
 
@@ -10,7 +10,7 @@ const outputDir = 'dist/docs/usage';
 md.use(mdnh);
 
 console.log('rendering usage docs from Markdown...')
-glob('projects/@(cashmere)/src/lib/**/*.md', function(er, files) {
+glob('projects/@(cashmere)/src/lib/**/*.md', {posix: true}).then(function(files) {
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir, { recursive: true });
     }

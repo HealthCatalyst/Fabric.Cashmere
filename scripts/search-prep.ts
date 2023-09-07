@@ -1,6 +1,6 @@
 import * as fs from 'file-system';
 import * as path from 'path';
-import * as glob from 'glob';
+import {glob} from 'glob';
 import * as removeMd from 'remove-markdown';
 import * as changeCase from 'change-case';
 
@@ -28,7 +28,7 @@ function readGuideFiles() {
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir, { recursive: true });
     }
-    glob('{guides/*.md,guides/mobile/*.md}', function (er, files) {
+    glob('{guides/*.md,guides/mobile/*.md}', {posix: true}).then(function (files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -93,7 +93,7 @@ function readGuideFiles() {
 // Index the foundations content which is a combination of markdown and components
 function readFoundationsFiles() {
     // Start by parsing the style markdown files
-    glob('guides/foundations/*.md', function (er, files) {
+    glob('guides/foundations/*.md', {posix: true}).then(function (files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -154,7 +154,7 @@ function readFoundationsFiles() {
     });
 
     // Then parse the foundations components
-    glob('src/app/foundations/*/*.html', function (er, files) {
+    glob('src/app/foundations/*/*.html', {posix: true}).then(function (files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -201,7 +201,7 @@ function readFoundationsFiles() {
 // Index the web app additional styles section which is a combination of markdown and components
 function readAdditionalStylesFiles() {
     // Start by parsing the style markdown files
-    glob('guides/styles/*.md', function (er, files) {
+    glob('guides/styles/*.md', {posix: true}).then(function (files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -262,7 +262,7 @@ function readAdditionalStylesFiles() {
     });
 
     // Then parse the styles components
-    glob('src/app/styles/*/*.html', function (er, files) {
+    glob('src/app/styles/*/*.html', {posix: true}).then(function (files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -309,7 +309,7 @@ function readAdditionalStylesFiles() {
 // Index the content section which is a combination of markdown and components
 function readContentFiles() {
     // Start by parsing the markdown files
-    glob('{guides/content/*.md,guides/content/*/*.md}', function (er, files) {
+    glob('{guides/content/*.md,guides/content/*/*.md}', {posix: true}).then(function (files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -373,7 +373,7 @@ function readContentFiles() {
     });
 
     // Then parse the content components
-    glob('src/app/content/*/*.html', function (er, files) {
+    glob('src/app/content/*/*.html', {posix: true}).then(function (files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -420,7 +420,7 @@ function readContentFiles() {
 // Index the analytics section which is a combination of markdown and components
 function readAnalyticsFiles() {
     // Start by parsing the main content markdown files
-    glob('guides/analytics/*/*.md', function (er, files) {
+    glob('guides/analytics/*/*.md', {posix: true}).then(function (files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -483,7 +483,7 @@ function readAnalyticsFiles() {
     });
 
     // Then parse the analytics components
-    glob('src/app/analytics/*/*.html', function (er, files) {
+    glob('src/app/analytics/*/*.html', {posix: true}).then(function (files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -529,7 +529,7 @@ function readAnalyticsFiles() {
 
 // Index the usage markdown files for components
 function readComponentUsage() {
-    glob('projects/cashmere/src/lib/**/*.md', function (er, files) {
+    glob('projects/cashmere/src/lib/**/*.md', {posix: true}).then(function (files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -592,7 +592,7 @@ function readComponentUsage() {
 
 // Index the generated API docs for Cashmere components
 function readComponentAPI() {
-    glob('dist/docs/api/*.html', function (er, files) {
+    glob('dist/docs/api/*.html', {posix: true}).then(function (files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
@@ -642,7 +642,7 @@ function readComponentExamples() {
     const componentItemsFile = 'src/app/core/cashmere-components-document-items.json';
     const componentExamples = JSON.parse(fs.readFileSync(componentItemsFile).toString());
 
-    glob('projects/cashmere-examples/src/lib/*/*.{ts,html,scss}', function (er, files) {
+    glob('projects/cashmere-examples/src/lib/*/*.{ts,html,scss}', {posix: true}).then(function (files) {
         files
             .map(file => {
                 const basename = path.basename(file, path.extname(file));
