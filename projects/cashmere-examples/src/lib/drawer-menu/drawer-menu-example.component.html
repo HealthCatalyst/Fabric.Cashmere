@@ -1,59 +1,49 @@
 <div class="drawer-container">
-    <hc-drawer-container [animated]="isAnimated.value">
-        <hc-menu-drawer align="left" mode="push" menuTheme="dark-theme" [ignoreEscapeKey]="true" #leftDrawer>
+    <hc-drawer-container [animated]="isAnimated.value" [useBackdrop]="useBackdrop.value">
+        <hc-menu-drawer
+            align="left"
+            [mode]="useBackdrop.value ? 'over' : 'push'"
+            menuTheme="dark-theme"
+            [ignoreEscapeKey]="true"
+            (openStart)="isOpen = true"
+            (closeStart)="isOpen = false"
+            #leftDrawer
+        >
             <div hcDrawerToolbar>Filter Sets</div>
             <hc-drawer-item>
-                <div class="drawer-label">
-                    Clinical Program
-                </div>
+                <div class="drawer-label">Clinical Program</div>
                 <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
             </hc-drawer-item>
             <hc-drawer-item>
-                <div class="drawer-label">
-                    Care Process Family
-                </div>
+                <div class="drawer-label">Care Process Family</div>
                 <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
             </hc-drawer-item>
             <hc-drawer-item>
-                <div class="drawer-label">
-                    Care Process
-                </div>
+                <div class="drawer-label">Care Process</div>
                 <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
             </hc-drawer-item>
             <hc-drawer-item>
-                <div class="drawer-label">
-                    Sub-Care Process
-                </div>
+                <div class="drawer-label">Sub-Care Process</div>
                 <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
             </hc-drawer-item>
             <hc-drawer-item>
-                <div class="drawer-label">
-                    MS-DRG
-                </div>
+                <div class="drawer-label">MS-DRG</div>
                 <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
             </hc-drawer-item>
             <hc-drawer-item>
-                <div class="drawer-label">
-                    Discharge Status
-                </div>
+                <div class="drawer-label">Discharge Status</div>
                 <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
             </hc-drawer-item>
             <hc-drawer-item>
-                <div class="drawer-label">
-                    ER Visit
-                </div>
+                <div class="drawer-label">ER Visit</div>
                 <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
             </hc-drawer-item>
             <hc-drawer-item>
-                <div class="drawer-label">
-                    Payer
-                </div>
+                <div class="drawer-label">Payer</div>
                 <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
             </hc-drawer-item>
             <hc-drawer-item>
-                <div class="drawer-label">
-                    Age
-                </div>
+                <div class="drawer-label">Age</div>
                 <hc-icon fontSet="fa" fontIcon="fa-plus"></hc-icon>
             </hc-drawer-item>
         </hc-menu-drawer>
@@ -64,11 +54,11 @@
                 <span *ngIf="leftDrawer.opened">Hide Filters</span>
                 <span *ngIf="!leftDrawer.opened">Show Filters</span>
             </button>
-            <hc-checkbox
-                [checked]="leftDrawer.ignoreEscapeKey"
-                (change)="leftDrawer.ignoreEscapeKey = !leftDrawer.ignoreEscapeKey"
-            >Ignore escape key</hc-checkbox>
+            <hc-checkbox [checked]="leftDrawer.ignoreEscapeKey" (change)="leftDrawer.ignoreEscapeKey = !leftDrawer.ignoreEscapeKey">
+                Ignore escape key
+            </hc-checkbox>
             <hc-checkbox [formControl]="isAnimated">Animated drawer</hc-checkbox>
+            <hc-checkbox [formControl]="useBackdrop" [disabled]="isOpen">Use backdrop</hc-checkbox>
         </div>
     </hc-drawer-container>
 </div>
