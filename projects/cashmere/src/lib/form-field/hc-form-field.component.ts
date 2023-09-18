@@ -122,6 +122,12 @@ export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
         }
     }
 
+    iconClicked(): void {
+        if (this.hasInput) {
+            this._inputChildren.first.focus();
+        }
+    }
+
     ngOnDestroy(): void {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
