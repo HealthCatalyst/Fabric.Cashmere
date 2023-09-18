@@ -67,6 +67,10 @@
         @include hc-sidenav-fav-item-ico();
     }
 
+    .hc-sidenav-fav-item-name-wrapper {
+        @include hc-sidenav-fav-item-name-wrapper();
+    }
+
     .hc-sidenav-fav-subtext {
         @include hc-sidenav-fav-item-subtext();
     }
