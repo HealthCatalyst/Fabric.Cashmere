@@ -1,12 +1,12 @@
-import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {FormControl, FormGroup, FormBuilder, Validators, FormGroupDirective} from '@angular/forms';
-import {PaginationComponent, HcTableDataSource, TabComponent, TabSetComponent} from '@healthcatalyst/cashmere';
-import {SectionService} from 'src/app/shared/section.service';
+import {Component, OnInit, ViewChild, AfterViewInit, TemplateRef} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {PaginationComponent, HcTableDataSource, ModalOptions, ModalService, HcToasterService, HcToastOptions} from '@healthcatalyst/cashmere';
+import {SectionService} from '../../../shared/section.service';
 import {BaseDemoComponent} from '../../../shared/base-demo.component';
 import {IUsage} from '../usage';
+import {environment} from '../../../../environments/environment';
 import {ApplicationInsightsService} from '../../../shared/application-insights/application-insights.service';
-
 
 @Component({
     selector: 'hc-usage-list',
@@ -16,34 +16,42 @@ import {ApplicationInsightsService} from '../../../shared/application-insights/a
 export class UsageListComponent extends BaseDemoComponent implements OnInit, AfterViewInit {
     filteredUsageList: IUsage[];
     usageList: IUsage[] = [];
-    categories = ['All', 'Clinical', 'General', 'Health Catalyst', 'Industry', 'Life sciences', 'Technical'];
+    categories = ['All', 'Clinical', 'General', 'Health Catalyst', 'Industry', 'Technical'];
     types = ['All', 'Abbreviation', 'General usage', 'UX/technical writing', 'Word choice'];
     selectedCategoriesControl = new FormControl('All', {nonNullable: true});
     selectedTypesControl = new FormControl('All', {nonNullable: true});
     searchControl = new FormControl();
     searchTerm = '';
     termsLoading = true;
+    loadFailed = false;
     terms: IUsage[];
 
     editListForm: FormGroup;
     formSubmitted = false;
-    scriptURL = 'https://script.google.com/macros/s/AKfycbwdNQMjALHxUAJq3Sy7PnafMwy1f9xiyu-Wv-7mbrnSIP1NwBk1ZblQ3GDc-W_5HTBG/exec';
     editForm = document.forms['editListForm'];
     showErrors = false;
-    @ViewChild('tabSetElement') tabSetRef: TabSetComponent;
-    @ViewChild('formTab') formTabRef: TabComponent;
-    @ViewChild('formDirective') formDirective: FormGroupDirective;
 
     displayedColumns: string[] = ['term', 'usage', 'example', 'edit'];
     dataSource: HcTableDataSource<IUsage>;
     pageNumber = 1;
     pageOpts = [10, 20, 30];
 
+    addChangeControl = new FormGroup({
+        id: new FormControl('', {nonNullable: true}),
+        name: new FormControl('', {nonNullable: true, validators: [Validators.required]}),
+        usage: new FormControl('', {nonNullable: true, validators: [Validators.required]}),
+        comments: new FormControl('', {nonNullable: true}),
+        contributorName: new FormControl<string>('', {nonNullable: true, validators: [Validators.required]}),
+        contributorEmail: new FormControl<string>('', {nonNullable: true, validators: [Validators.required, Validators.email]})
+    });
+
     constructor(
         sectionService: SectionService,
         private fb: FormBuilder,
         private httpClient: HttpClient,
-        private appInsights: ApplicationInsightsService
+        private appInsights: ApplicationInsightsService,
+        private modalService: ModalService,
+        private toasterService: HcToasterService
     ) {
         super(sectionService);
     }
@@ -65,35 +73,43 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         }
     }
 
-
     ngOnInit(): void {
-        const docId = '18lD03x12tYE_DTqiXPX9oqR3sqRdMXEE_jhIGvTF_xk';
-        const sheetId = '&gid=0';
-        const url = `https://docs.google.com/spreadsheets/d/${docId}/gviz/tq?tqx=out:json${sheetId}`;
-        this.httpClient.get(url, {responseType: 'text',}).subscribe((response: string): void => {
-            const rawJSONText = response.match(/google\.visualization\.Query\.setResponse\(([\s\S\w]+)\)/);
-            if ( rawJSONText ) {
-                const json = JSON.parse(rawJSONText[1]);
-                json.table.rows.forEach(element => {
-                    const rowEntry: IUsage = {
-                        TermID: element.c[0] ? element.c[0].v : '',
-                        TermName: element.c[1] ? element.c[1].v : '',
-                        TermUsage: element.c[2] ? element.c[2].v : '',
-                        TermTypes: element.c[4] ? element.c[4].v : '',
-                        TermCategories: element.c[5] ? element.c[5].v : '',
-                        TermExample: element.c[3] ? element.c[3].v : '',
-                        TermDateAdded: element.c[6] ? element.c[6].v : ''
-                    }
-                    this.usageList.push( rowEntry );
-                });
+        this.termsLoading = true;
+        this.loadFailed = false;
 
-                this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName.toLowerCase() > b.TermName.toLowerCase() ? 1 : -1));
-                this.dataSource = new HcTableDataSource(this.filteredUsageList);
-                this.dataSource.filterPredicate = (filterData: IUsage, filter: string) => this.usageFilter(filterData, filter);
-                this.dataSource.paginator = this.paginator;
-                this.termsLoading = false;
-            }
-        });
+        let headers = new HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        const options = {headers: headers};
+
+        this.httpClient.get<any>( environment.productCatalog.url + '/terms', options)
+            .subscribe({
+                next: data => {
+                    data.forEach((term) => {
+                        const rowEntry: IUsage = {
+                            TermID: term.termID,
+                            TermName: term.name,
+                            TermUsage: term.usage,
+                            TermTypes: term.types,
+                            TermCategories: term.categories,
+                            TermExample: term.example,
+                            TermDateAdded: term.dateAdded ? new Date(term.dateAdded) : null
+                        }
+                        this.usageList.push( rowEntry );
+                    });
+                    
+                    this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName.toLowerCase() > b.TermName.toLowerCase() ? 1 : -1));
+                    this.dataSource = new HcTableDataSource(this.filteredUsageList);
+                    this.dataSource.filterPredicate = (filterData: IUsage, filter: string) => this.usageFilter(filterData, filter);
+                    this.dataSource.paginator = this.paginator;
+                    this.termsLoading = false;
+                    this.loadFailed = false;
+                },
+                error: msg => { 
+                    this.loadFailed = true;
+                    this.termsLoading = false;
+                    console.log( msg );
+                }
+            });
 
         this.editListForm = this.fb.group({
             addTerm: ['', Validators.required],
@@ -115,43 +131,68 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         return catMatch && typeMatch && (termMatch || defMatch);
     }
 
-    onCancel(): void {
-        this.editListForm.reset();
-        this.formDirective.resetForm();
-        this.formSubmitted = false;
-        this.showErrors = false;
-    }
-
-    onSubmit(): void {
-        if (this.editListForm.invalid) {
-            this.showErrors = true;
-            return;
+    getFormFillData(termItem: IUsage | null, content: TemplateRef<any>): void {
+        if ( termItem ) {
+            this.addChangeControl.patchValue({
+                id: termItem.TermID,
+                name: termItem.TermName,
+                usage: termItem.TermUsage,
+                comments: '',
+                contributorName: '',
+                contributorEmail: ''
+            });
+        } else {
+            this.addChangeControl.reset();
         }
-
-        this.formSubmitted = true;
-        const formData = new FormData();
-        formData.append('addTerm', this.editListForm.controls.addTerm.value);
-        formData.append('addDef', this.editListForm.controls.addDef.value);
-        formData.append('yourName', this.editListForm.controls.yourName.value);
-        formData.append('yourEmail', this.editListForm.controls.yourEmail.value);
-        formData.append('comment', this.editListForm.controls.comment.value);
-        formData.append('addNew', this.editListForm.controls.addNew.value);
-
-        this.httpClient.post(this.scriptURL, formData).subscribe(
-            res => console.log(res),
-            err => console.log(err)
-        );
-
-        this.editListForm.reset();
-        this.formDirective.resetForm();
+        
+        const options: ModalOptions = {
+            size: 'md',
+            data: termItem
+        };
+        this.modalService.open(content, options);
     }
 
-    getFormFillData(termItem: IUsage): void {
-        this.tabSetRef._setActive(this.formTabRef);
-        this.editListForm.patchValue({
-            addTerm: termItem.TermName,
-            addDef: termItem.TermUsage,
-            addNew: 'false'
+    submitRequest(): void {
+        let headers = new HttpHeaders();
+        headers = headers.append('Content-Type', 'application/json');
+        const options = {headers: headers};
+
+        const postSub = this.httpClient.post<any>( environment.productCatalog.url + '/termchange.add',
+            {
+                id: null,
+                submitDate: new Date(),
+                publishDate: null,
+                term: this.addChangeControl.controls['id'].value !== '' ? Number(this.addChangeControl.controls['id'].value) : null,
+                name: this.addChangeControl.controls['name'].value,
+                usage: this.addChangeControl.controls['usage'].value,
+                comment: this.addChangeControl.controls['comments'].value,
+                contributorName: this.addChangeControl.controls['contributorName'].value,
+                contributorEmail: this.addChangeControl.controls['contributorEmail'].value
+            },
+            options
+        )
+        .subscribe({
+            next: () => {
+                const options: HcToastOptions = {
+                    header: 'Change Request Submitted',
+                    body: this.addChangeControl.controls['name'].value + " successfully submitted.",
+                    type: 'success',
+                    position: 'bottom-right'
+                };
+                this.toasterService.addToast(options);
+                postSub.unsubscribe();
+            },
+            error: msg => {
+                const options: HcToastOptions = {
+                    header: 'Request Failed',
+                    body: "Unable to add term change request. Try again later.",
+                    type: 'alert',
+                    position: 'bottom-right'
+                };
+                this.toasterService.addToast(options);
+                console.log( msg );
+                postSub.unsubscribe();
+            }
         });
     }
 }
