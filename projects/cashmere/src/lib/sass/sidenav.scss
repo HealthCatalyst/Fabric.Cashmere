@@ -28,6 +28,10 @@ $sidenav-width: 260px !default;
         .hc-sidenav-tab-name {
             opacity: 0;
         }
+
+        .hc-sidenav-tab-inner {
+            overflow: visible;
+        }
     }
 }
 
@@ -80,6 +84,15 @@ $sidenav-width: 260px !default;
 @mixin hc-sidenav-tab-inner(){
     display: flex;
     align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .hc-sidenav-tab-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 
 @mixin hc-sidenav-skeleton-tab() {
@@ -99,6 +112,7 @@ $sidenav-width: 260px !default;
     width: 24px;
     display: inline-flex;
     justify-content: center;
+    flex: 0 0 24px;
 }
 
 @mixin hc-sidenav-tab-subtext() {
@@ -186,6 +200,13 @@ $sidenav-width: 260px !default;
     display: inline-flex;
     justify-content: center;
     animation: HCFadeIn 0.3s;
+    flex: 0 0 auto;
+}
+
+@mixin hc-sidenav-fav-item-name-wrapper() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 @mixin hc-sidenav-fav-item-subtext() {
@@ -212,6 +233,7 @@ $sidenav-width: 260px !default;
     height: 100%;
     display: inline-block;
     width: 20px;
+    flex: 0 0 auto;
 }
 
 @mixin hc-sidenav-ico-star() {
@@ -242,6 +264,7 @@ $sidenav-width: 260px !default;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 0 0 auto;
 
     &:hover .hc-ico-star-filled {
         filter: brightness(90%);

@@ -5,5 +5,5 @@ export interface IUsage {
     TermTypes: string;
     TermCategories: string;
     TermExample: string;
-    TermDateAdded: string;
+    TermDateAdded: Date | null;
 }

@@ -20,13 +20,13 @@
             [class.hc-form-field-invalid]="_shouldShowErrorMessages()"
             [class.hc-form-field-flex-focused]="_hasFocusedInput"
         >
-            <div class="hc-form-field-prefix" *ngIf="_prefixChildren.length">
+            <div class="hc-form-field-prefix" *ngIf="_prefixChildren.length" (click)="iconClicked()">
                 <ng-content select="[hcPrefix]"></ng-content>
             </div>
             <div #inputs class="hc-form-field-infix" [class.hc-form-field-infix-tight]="tight && !_mobileInput" [class.hc-form-field-infix-mobile]="_mobileInput">
                 <ng-content select="[hcInput]"></ng-content>
             </div>
-            <div class="hc-form-field-suffix" *ngIf="_suffixChildren.length">
+            <div class="hc-form-field-suffix" *ngIf="_suffixChildren.length" (click)="iconClicked()">
                 <ng-content select="[hcSuffix]"></ng-content>
             </div>
         </div>
