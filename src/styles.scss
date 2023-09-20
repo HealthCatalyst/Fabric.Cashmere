@@ -22,6 +22,10 @@ ul.hc-example-list {
     li {
         margin-left: 24px;
         list-style-type: disc;
+
+        li {
+            list-style-type: circle;
+        }
     }
 }
 
