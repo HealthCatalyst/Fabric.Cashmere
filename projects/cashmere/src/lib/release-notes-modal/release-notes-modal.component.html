@@ -1,0 +1,24 @@
+<hc-modal class="hc-rn-modal">
+    <hc-modal-header>
+        <h1><span class="hc-ico-bullhorn hc-icon-left"></span>What's New {{ _data.appName ? 'in ' + _data.appName : '' }}</h1>
+        <a *ngIf="_data.headerLinkUrl" [href]="_data.headerLinkUrl" class="hc-rn-modal-header-link">{{_data.headerLinkText}}
+            <span class="hc-ico-external-link hc-icon-right"></span></a>
+    </hc-modal-header>
+    <hc-modal-body>
+        <ng-container *ngFor="let release of _data.releaseNotes; let index = index;">
+            <hc-accordion [disabled]="_data.releaseNotes.length < 2" #accordion [open]="release.isOpen" (openStart)="_onReleaseOpened(index)" class="hc-rn-modal-accordion">
+                <hc-accordion-toolbar>
+                    <div class="hc-accordion-toolbar-inner">
+                        <span class="hc-rn-modal-version">{{release.version}} Release</span>
+                        <span class="hc-rn-modal-date">{{release.releaseDateStr}}</span>
+                    </div>
+                </hc-accordion-toolbar>
+                <div [innerHTML]="release.notesHTML"></div>
+            </hc-accordion>
+        </ng-container>
+    </hc-modal-body>
+    <hc-modal-footer>
+        <span *ngIf="_data.showNotice" class="hc-font-em hc-rn-modal-view-again-notice">To view these changes again, click “What’s New” in the help menu</span>
+        <button hc-button (click)="close()">OK</button>
+    </hc-modal-footer>
+</hc-modal>

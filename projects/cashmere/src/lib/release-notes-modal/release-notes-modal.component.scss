@@ -1,0 +1,127 @@
+@import "../sass/release-notes.scss";
+
+.hc-rn-modal {
+    hc-modal-header, hc-modal-footer, .hc-accordion-toolbar-inner {
+        @include hc-rn-flex();
+    }
+
+    .hc-modal-body {
+        @include hc-rn-modal-body();
+    }
+
+    .hc-modal-header .hc-icon-left {
+        @include hc-rn-modal-header-icon();
+    }
+
+    h1 {
+        @include hc-rn-modal-h1();
+    }
+
+    .hc-rn-modal-header-link {
+        @include hc-rn-modal-header-link();
+    }
+
+    .hc-ico-bullhorn {
+        @include hc-rn-modal-ico-base();
+        @include hc-rn-modal-ico-bullhorn();
+    }
+
+    .hc-ico-external-link {
+        @include hc-rn-modal-ico-base();
+        @include hc-rn-modal-ico-external-link();
+    }
+
+    .hc-ico-gift {
+        @include hc-rn-modal-ico-base();
+        @include hc-rn-modal-ico-gift();
+    }
+
+    .hc-ico-cog {
+        @include hc-rn-modal-ico-base();
+        @include hc-rn-modal-ico-cog();
+    }
+
+    .hc-ico-bugfix {
+        @include hc-rn-modal-ico-base();
+        @include hc-rn-modal-ico-bugfix();
+    }
+
+    .hc-rn-modal-accordion {
+        @include hc-rn-modal-accordion();
+    }
+
+    h2 {
+        @include hc-rn-modal-h2();
+    }
+
+    ul {
+        @include hc-rn-modal-ul();
+    }
+
+    h3 {
+        @include hc-rn-modal-h3();
+    }
+
+    h4 {
+        @include hc-rn-modal-h4();
+    }
+
+    p, li, .items{
+        @include hc-rn-modal-simple-el();
+    }
+
+    .fa, .hc-ico {
+        @include hc-rn-modal-ico();
+    }
+
+
+    hr {
+        @include hc-rn-modal-hr();
+    }
+
+    li li {
+        @include hc-rn-modal-double-li();
+    }
+
+    /* make sure wide images don't scale PDF contents unexpectedly */
+
+    img {
+        @include hc-rn-modal-img();
+    }
+
+    /* fix to avoid issues when pages breaks occur inside tables */
+
+    table th,
+    table td {
+        @include hc-rn-modal-table-cell();
+    }
+
+    table {
+        @include hc-rn-modal-table();
+    }
+
+    thead {
+        @include hc-rn-modal-thead();
+    }
+
+    tfoot {
+        @include hc-rn-modal-tfoot();
+    }
+
+    tr {
+        @include hc-rn-modal-tr();
+    }
+
+    /*Used to snuggle together lines when needed for layout purposes*/
+    .tight {
+        @include hc-rn-modal-tight();
+    }
+
+    .hc-rn-modal-view-again-notice {
+        @include hc-rn-modal-view-again();
+    }
+
+    p {
+        @include hc-rn-modal-p();
+    }
+}

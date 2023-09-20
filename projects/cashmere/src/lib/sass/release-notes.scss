@@ -1,0 +1,244 @@
+@import './colors';
+@import './mixins';
+@import './icons';
+
+
+@mixin hc-rn-flex() {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin hc-rn-modal-body {
+    padding: 0;
+    margin: 0;
+}
+
+@mixin hc-rn-modal-header-icon() {
+    margin-right: 8px;
+}
+
+@mixin hc-rn-modal-h1() {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+    display: flex;
+}
+
+@mixin hc-rn-modal-header-link() {
+    font-size: 13px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+}
+
+@mixin hc-rn-modal-ico-base() {
+    display: inline-block;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@mixin hc-rn-modal-ico-bullhorn() {
+    background-image: url($ico-bullhorn);
+    background-size: 21px 21px;
+    height: 21px;
+    width: 21px;
+}
+
+@mixin hc-rn-modal-ico-external-link() {
+    background-image: url($ico-external-link-blue);
+    background-size: 14px 14px;
+    height: 14px;
+    width: 14px;
+}
+
+@mixin hc-rn-modal-ico-gift() {
+    position: relative;
+    top: 1px;
+    background-image: url($ico-gift-blue);
+    background-size: 16px 16px;
+    height: 16px;
+    width: 16px;
+}
+
+@mixin hc-rn-modal-ico-cog() {
+    position: relative;
+    top: 1px;
+    background-image: url($ico-cog-blue);
+    background-size: 16px 16px;
+    height: 16px;
+    width: 16px;
+}
+
+@mixin hc-rn-modal-ico-bugfix() {
+    position: relative;
+    top: 1px;
+    background-image: url($ico-bugfix-blue);
+    background-size: 16px 16px;
+    height: 16px;
+    width: 16px;
+}
+
+@mixin hc-rn-modal-accordion() {
+    .hc-accordion-toolbar-wrapper {
+        margin: 0 0 2px 0;
+        padding: 0 24px 0 16px;
+        height: 32px;
+        background-color: $slate-gray-150;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: darken($slate-gray-150, 5%);
+        }
+
+        &:active {
+            background-color: darken($slate-gray-150, 5%);
+        }
+    }
+
+    .hc-accordion-trigger {
+        height: 18px;
+        width: 18px;
+        margin: 0 8px 0 5px;
+        position: relative;
+        top: -1px;
+    }
+
+    .hc-accordion-content {
+        padding: 12px 24px;
+        line-height: 1.5;
+        font-size:15px;
+    }
+
+    &.hc-accordion-opened, &.hc-accordion-opening {
+        .hc-accordion-toolbar-wrapper {
+            background-color: $dark-blue;
+            color: $white;
+
+            .hc-accordion-trigger:after {
+                background-image: url($ico-chev-up-white);
+            }
+        }
+    }
+
+    .hc-rn-modal-date {
+        margin-left: 3px;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .hc-accordion-toolbar-inner {
+        width: 100%;
+    }
+}
+
+@mixin hc-rn-modal-h2() {
+    font-weight: 600;
+    margin: 24px 0 0 0;
+    font-size: 18px;
+    line-height:1.5;
+    color: $dark-blue;
+    padding-bottom: 0px!important;
+    margin-bottom: 0px!important;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+@mixin hc-rn-modal-ul() {
+    margin: 8px 0 8px 36px;
+    list-style: disc;
+}
+
+@mixin hc-rn-modal-h3() {
+    font-weight: 600;
+    font-size: 15px;
+    margin: 16px 0 0 0;
+    color: #515353;
+    line-height: 1.5;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+}
+
+@mixin hc-rn-modal-h4() {
+    font-weight: 600;
+    margin: 16px 0 0 0;
+    font-size: 15px;
+    line-height: 1.5;
+    page-break-after: avoid;
+    page-break-before: avoid;
+}
+
+@mixin hc-rn-modal-simple-el() {
+    font-size: 15px;
+    line-height: 1.5;
+    page-break-inside: avoid;
+    margin-bottom: 2px;
+}
+
+@mixin hc-rn-modal-ico() {
+    font-weight: 450;
+    margin-right: 8px;
+}
+
+
+@mixin hc-rn-modal-hr() {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    page-break-before: avoid;
+    margin: 8px 0;
+}
+
+@mixin hc-rn-modal-double-li() {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    page-break-inside: avoid;
+}
+
+@mixin hc-rn-modal-img() {
+    max-width: 100%;
+}
+
+@mixin hc-rn-modal-table-cell() {
+    border: none!important;
+}
+
+@mixin hc-rn-modal-table() {
+    width: 100%;
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+@mixin hc-rn-modal-thead() {
+    display: table-header-group;
+}
+
+@mixin hc-rn-modal-tfoot() {
+    display: table-row-group;
+}
+
+@mixin hc-rn-modal-tr() {
+    page-break-inside: avoid;
+}
+
+/*Used to snuggle together lines when needed for layout purposes*/
+@mixin hc-rn-modal-tight() {
+    padding-bottom: 0px!important;
+    margin-bottom: 0px!important;
+}
+
+@mixin hc-rn-modal-view-again() {
+    font-size: 13px;
+}
+
+@mixin hc-rn-modal-p() {
+    margin: 0 0 8px;
+}
+

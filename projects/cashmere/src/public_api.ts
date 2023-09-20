@@ -35,6 +35,7 @@ export * from './lib/picklist/index';
 export * from './lib/pop/index';
 export * from './lib/progress-indicators/index';
 export * from './lib/radio-button/index';
+export * from './lib/release-notes-modal/index';
 export * from './lib/resizable/index';
 export * from './lib/scroll-nav/index';
 export * from './lib/search-bar/index';

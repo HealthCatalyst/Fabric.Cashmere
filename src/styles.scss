@@ -18,6 +18,13 @@ body {
     padding-top: 53px;
 }
 
+ul.hc-example-list {
+    li {
+        margin-left: 24px;
+        list-style-type: disc;
+    }
+}
+
 .demo-content {
     width: 95%;
     max-width: 1000px;
