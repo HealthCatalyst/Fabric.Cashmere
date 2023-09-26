@@ -23,6 +23,8 @@ We would love for you to contribute to Cashmere! Follow the instructions below t
 
 You may want to consider using [Node Version Manager](https://github.com/nvm-sh/nvm) (`nvm`) to install and manage Node 18. Node 18 can be installed via `nvm` by running the command `nvm install 18.14.2`.
 
+<iframe width="100%" height="620" src="https://www.youtube.com/embed/FwXPYR0Auds?rel=0&modestbranding=0" title="Introduction to Cashmere Development" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 :::
 
 :::
