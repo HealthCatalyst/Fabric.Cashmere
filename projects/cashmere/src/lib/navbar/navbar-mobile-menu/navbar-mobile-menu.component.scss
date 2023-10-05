@@ -15,6 +15,10 @@
         @include hc-navbar-mobile-list-item();
     }
 
+    hc-list .hc-list-text {
+        @include hc-navbar-mobile-list-text();
+    }
+
     hc-list .active-link {
         @include hc-navbar-mobile-active-link();
     }
