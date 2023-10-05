@@ -11,7 +11,7 @@
                     class="hc-sidenav-tab"
                     [class.hc-sidenav-active-tab]="!routerLinkActiveClass ? tab.key === activeTabKey : false"
                     [class.disabled-tab]="tab.disabled"
-                    [title]="tab.description"
+                    [title]="tab.description || ''"
                     [routerLink]="tab.routerLink"
                     [routerLinkActive]="routerLinkActiveClass || 'active-tab'"
                     (isActiveChange)="_onRouterLinkActiveChange($event, tab)"
@@ -54,7 +54,7 @@
                         (keydown.enter)="onFavoriteClicked($event, fav)"
                         (click)="onFavoriteClicked($event, fav)"
                         [routerLink]="fav.routerLink"
-                        title="{{fav.description}}"
+                        title="{{fav.description || ''}}"
                     >
                         <div class="hc-sidenav-fav-item-inner hc-text-ellipsis">
                             <span class="hc-sidenav-fav-item-ico {{ fav.iconClass }}"></span>
@@ -64,7 +64,7 @@
                             </span>
                         </div>
                         <span class="hc-sidenav-fav-action-ico-btn"
-                            title="{{favoritesItemActionIconTooltip}}" (click)="onFavoriteItemIconClicked($event, fav)">
+                            title="{{favoritesItemActionIconTooltip || ''}}" (click)="onFavoriteItemIconClicked($event, fav)">
                                 <span class="hc-sidenav-fav-item-action-ico {{favoritesItemActionIconClass}}"></span>
                         </span>
                     </div>
