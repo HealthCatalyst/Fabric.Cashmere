@@ -345,7 +345,14 @@ $navbar-fixed-shadow: 0px 2px 6px $shadow;
     hc-icon {
         font-size: 25px !important;
         height: 25px !important;
-        width: 25px !important;
+    }
+
+    .hc-navbar-mobile-ico-bars {
+        width: 22px !important;
+    }
+
+    .hc-navbar-mobile-ico-times {
+        width: 17px !important;
     }
 
     @include media-breakpoint-down(md) {
