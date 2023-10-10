@@ -89,7 +89,8 @@ $sidenav-width: 260px !default;
     white-space: nowrap;
 
     .hc-sidenav-tab-name {
-        overflow: visible;
+        overflow: hidden;
+        line-height: 1.5;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
