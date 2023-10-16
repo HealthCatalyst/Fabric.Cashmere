@@ -61,6 +61,7 @@
 .hc-components-nav-link-active {
     color: $primary-brand;
     font-weight: 700;
+    pointer-events: none;
 }
 
 .hc-components-nav-spacer {
