@@ -1,13 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { DocItem } from '../../core/document-items.service';
+import { TabSetComponent } from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-component-viewer',
     templateUrl: 'component-viewer.component.html',
     styleUrls: ['component-viewer.component.scss']
 })
-export class ComponentViewerComponent {
+export class ComponentViewerComponent implements AfterViewInit {
     private _docItem: DocItem | undefined;
+    examplesHidden = false;
+    apiHidden = false;
+    usageHidden = false;
+
+    @ViewChild('tabSet')
+    tabSetRef: TabSetComponent;
+    
     @Input()
     get docItem(): DocItem | undefined {
         return this._docItem;
@@ -16,24 +24,33 @@ export class ComponentViewerComponent {
         this._docItem = value;
         this.loadDocs();
     }
-    sections: Set<string>;
 
     private loadDocs() {
-        let availableSections: string[] = [];
-
         if (this.docItem) {
             const examples = this.docItem.examples;
-            if (examples && examples.length > 0) {
-                availableSections = ['Examples'];
-            }
-            if (!this.docItem.hideApi) {
-                availableSections.push('API');
-            }
-            if (this.docItem.usageDoc) {
-                availableSections.push('Usage');
+            this.examplesHidden = !(examples && examples.length > 0);
+            this.apiHidden = this.docItem.hideApi ? this.docItem.hideApi : false;
+            this.usageHidden = !this.docItem.usageDoc;
+            this.selectFirstTab();
+        }
+    }
+
+    ngAfterViewInit(): void {
+        this.selectFirstTab();
+    }
+
+    selectFirstTab(): void {
+        if ( this.tabSetRef ) {
+            let selected = 0;
+            if ( this.examplesHidden && !this.apiHidden ) {
+                selected = 1;
+            } else if ( this.examplesHidden && this.apiHidden ) {
+                selected = 2;
             }
 
-            this.sections = new Set<string>(availableSections);
+            setTimeout(() => {
+                this.tabSetRef.selectTab( selected );
+            });
         }
     }
 }

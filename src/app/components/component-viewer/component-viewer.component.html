@@ -3,8 +3,10 @@
     <div class="npm-package-code">
         <code *ngIf="docItem?.npmPackage">{{ docItem!.npmPackage }}</code>
     </div>
-    <hc-tab-set direction="horizontal" class="overflow-visible" *ngIf="docItem">
-        <hc-tab *ngFor="let section of sections" [tabTitle]="section" [routerLink]="section.toLowerCase()"></hc-tab>
+    <hc-tab-set direction="horizontal" class="overflow-visible" *ngIf="docItem" #tabSet>
+        <hc-tab tabTitle="Examples" routerLink="examples" [hidden]="examplesHidden"></hc-tab>
+        <hc-tab tabTitle="API" routerLink="api" [hidden]="apiHidden"></hc-tab>
+        <hc-tab tabTitle="Usage" routerLink="usage" [hidden]="usageHidden"></hc-tab>
     </hc-tab-set>
     <hc-feedback-form></hc-feedback-form>
 </div>
