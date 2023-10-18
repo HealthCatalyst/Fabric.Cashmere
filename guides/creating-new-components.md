@@ -6,7 +6,7 @@
 
 ##### Overview
 
-The Cashmere library is heavily built on it's component-based architecture. By adding new and exciting components to this library you are only enriching what it has to offer to it's developers. Here are some things to remember when creating new components.
+The Cashmere library is heavily built on its component-based architecture. By adding new and exciting components to this library you are only enriching what it has to offer to its developers. Here are some things to remember when creating new components.
 
 :::
 
@@ -36,9 +36,9 @@ The Cashmere library is heavily built on it's component-based architecture. By a
 
 ##### Creating the Component With Commands
 
-<strong>1.</strong> Start by openining the directory where you want the new component `projects/cashmere/src/lib`
+<strong>1.</strong> Start by opening the directory where you want the new component `projects/cashmere/src/lib`
 
-<strong>2.</strong> Run the comand `ng generate component "component-name" --skip-import`. (Don't include the "hc" prefix, this will be added automatically where needed.) Executing the command creates a folder, "component-name", in the project's `projects/cashmere/src/lib` path. The folder has the following files:
+<strong>2.</strong> Run the command `ng generate component "component-name" --skip-import`. (Don't include the "hc" prefix, this will be added automatically where needed.) Executing the command creates a folder, "component-name", in the project's `projects/cashmere/src/lib` path. The folder has the following files:
 
 - **"component-name".component.ts**
 - **"component-name".component.css**

@@ -37,7 +37,7 @@ When logging out manually or being timed out due to inactivity, these are the re
 #### 1. Implement the markup and css according to your application's set up
 Some logout screens are within the context of the angular application, while others live outside of it in a static HTML file. The markup provided will work for either, but if your logout case stays within the context of angular, you'll have the CSS already available via the cashmere styles, and you can use the `hc-button` component rather than a standard HTML button.
 
-Additionaly, the messaging on the button and just above it can change according to the use case. If you would like to more specific for a timeout case versus a manual logout you're encouraged to do so.
+Additionally, the messaging on the button and just above it can change according to the use case. If you would like to be more specific for a timeout case versus a manual logout you're encouraged to do so.
 
 #### 2. Add your logo.
 Replace the Cashmere logo with your own app's logo. The design team can provide this for you if you do not already have it. You can reference the file from your assets folder, inject SVG code directly, or use base64 encoding in a css background image.

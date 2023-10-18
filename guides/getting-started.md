@@ -57,7 +57,7 @@ Anywhere you import the Shared module, Cashmere components will also be availabl
 ## Step 3: Add the styles.
 
 ### A) Import baseline Cashmere styles.
-The root Cashmere stylesheet need to be imported in your app's global style sheet (`src/styles.scss`).
+The root Cashmere stylesheet needs to be imported in your app's global style sheet (`src/styles.scss`).
 
 ```scss
 @import "@healthcatalyst/cashmere/scss/cashmere";
