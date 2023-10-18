@@ -44,14 +44,14 @@ Cashmere applications have a recommended look and feel for the initial loading s
 ##### How to Implement the Launch Screen
 
 #### 1. Add the needed markup and css to your index.html file.
-Contrary to typical best practices, in this case it's preferrable to put the raw CSS/HTML for the launch screen directly into the index.html file. This allows the styles to be immediately available, avoiding a blank page while waiting for the needed HTTP requests to complete.
+Contrary to typical best practices, in this case it's preferable to put the raw CSS/HTML for the launch screen directly into the index.html file. This allows the styles to be immediately available, avoiding a blank page while waiting for the needed HTTP requests to complete.
 
 In Angular applications, this code can be placed within the root element tags (illustrated below), and will be replaced when the root component is ready.
 
 #### 2. Add your logo.
 Replace the SVG XML inside the `#logoContainer` with your own app logo. The design team can provide this for you, or if you already have the logo, you can use an online tool to convert the SVG into XML (or base64).
 
-#### 3. _[Optional]_ Edit (or remove) splash screen message.
+#### 3. _[Optional]_ Edit (or remove) the splash screen message.
 In this example, the text is "Loading Application". The message might change during the bootstrap process, perhaps to something like "Authenticating", or "Loading the things...".
 
 #### 4. Wire in launch styles elsewhere as needed.

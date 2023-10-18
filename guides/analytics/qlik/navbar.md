@@ -37,7 +37,7 @@ Brand is an image of the [Health Catalyst tri-flame](/foundations/logo) formatte
 
 ##### App Name
 
-App Name is the second fixed-width image object in the navbar, also containing one PNG image, fomatted with the following values:
+App Name is the second fixed-width image object in the navbar, also containing one PNG image, formatted with the following values:
 
 - **Type**: image
 - **Height**: 50px
@@ -67,7 +67,7 @@ Links is a flexible series of horizontal text objects that contain page navigati
 - **Border**: None
 - **Type**: text object with actions
 - **Height**: 35px
-- **Weidth**: 100px
+- **Width**: 100px
 - **Font alignment**: horizontally centered
 - **Position**: To the right of the logo, with vertical sides touching, and centered vertically within the Navbar
 - **Image stretch**: Keep Aspect
