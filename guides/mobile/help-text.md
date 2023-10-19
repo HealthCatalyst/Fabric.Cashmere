@@ -14,7 +14,7 @@ _Sometimes I struggle to learn a new UI, and from my phone it seems impossible t
 
 ##### Explanation
 
-In a perfect world, applications are so intuitive and users so saavy that no help text is needed. That's a great goal to reach for, but in the real world some folks will always need extra guidance.
+In a perfect world, applications are so intuitive and users so savvy that no help text is needed. That's a great goal to reach for, but in the real world some folks will always need extra guidance.
 
 With limited space and no mouse (so no hover events!), we need to be more creative and tactical in the ways we provide help text. In many cases help text will transfer nicely from a desktop experience to a mobile experience, but in others it will not.
 
@@ -24,7 +24,7 @@ With limited space and no mouse (so no hover events!), we need to be more creati
 
 ##### How to Use
 
-First assess where users tend to rely on help text to navigate through the interface. If working on an exisiting desktop application, be sure to make note of places that currently use `[title]` attributes or hover-based popovers (`[hcPop]` or `[hcTooltip]`) to provide vital help.
+First assess where users tend to rely on help text to navigate through the interface. If working on an existing desktop application, be sure to make note of places that currently use `[title]` attributes or hover-based popovers (`[hcPop]` or `[hcTooltip]`) to provide vital help.
 
 After identifying places where help text will be a must, decide based on context how to best provide it.
 
@@ -65,6 +65,6 @@ _This example has help text describing the use of markdown, with more guidance a
 
 ##### Next Steps
 
--   [Designing Better Tooltips For Mobile User Interfaces, Smashing Magizine](https://www.smashingmagazine.com/2021/02/designing-tooltips-mobile-user-interfaces/)
+-   [Designing Better Tooltips For Mobile User Interfaces, Smashing Magazine](https://www.smashingmagazine.com/2021/02/designing-tooltips-mobile-user-interfaces/)
 
 :::

@@ -29,7 +29,7 @@ Refer to that **Tile Header** and **Divider** sections of that page for specific
 ### Layout
 Format the content within the tile as follows:
 
-- **Text alignnment**: Centered horizontally
+- **Text alignment**: Centered horizontally
 - **Font color**: offblack `#333333 RGB(51,51,51)`
 - **Font (primary value)**: Arial, 24pt
 

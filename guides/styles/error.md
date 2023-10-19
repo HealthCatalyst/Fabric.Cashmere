@@ -6,7 +6,7 @@
 
 ##### Overview
 
-One of the most common errors users can come across while working with web apps is a 404 or Page Not Found error. This error often occurs when the user follows a broken link or if they type in a website address that doesn’t exist. A 404 page error appears when a website is active, but the specific page within it doesn’t exist. This guide illustrates the our styling for error pages - which may be used for 404 errors or extended to any other errors that an app needs to catch.
+One of the most common errors users can come across while working with web apps is a 404 or Page Not Found error. This error often occurs when the user follows a broken link or if they type in a website address that doesn’t exist. A 404 page error appears when a website is active, but the specific page within it doesn’t exist. This guide illustrates our styling for error pages - which may be used for 404 errors or extended to any other errors that an app needs to catch.
 :::
 
 :::
