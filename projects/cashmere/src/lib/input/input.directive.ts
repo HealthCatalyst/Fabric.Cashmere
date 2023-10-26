@@ -1,4 +1,18 @@
-import {Directive, ElementRef, HostBinding, HostListener, Input, Optional, Self, forwardRef, Output, EventEmitter, AfterViewInit, OnDestroy, ChangeDetectorRef} from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    HostBinding,
+    HostListener,
+    Input,
+    Optional,
+    Self,
+    forwardRef,
+    Output,
+    EventEmitter,
+    AfterViewInit,
+    OnDestroy,
+    ChangeDetectorRef
+} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 import {HcFormControlComponent} from '../form-field/hc-form-control.component';
 import {FormGroupDirective, NgControl, NgForm} from '@angular/forms';
@@ -136,7 +150,7 @@ export class InputDirective extends HcFormControlComponent implements AfterViewI
 
     @HostListener('blur')
     _onBlur(): void {
-        if ( this._ngControl && this._ngControl.control) {
+        if (this._ngControl && this._ngControl.control) {
             this._ngControl.control.markAsTouched();
         }
         this._changeFocus(false);
@@ -162,13 +176,17 @@ export class InputDirective extends HcFormControlComponent implements AfterViewI
 
     @HostListener('input', ['$event'])
     _inputEvent(event: Event): void {
+        if (this.validationType === 'onChange') {
+            this._ngControl.control?.markAsTouched();
+        }
+
         this.inputEvent.emit(event);
     }
 
     @HostListener('change', ['$event'])
     _changeEvent(event: Event): void {
         this.inputEvent.emit(event);
-        if ( this.validationType === 'onChange' ) {
+        if (this.validationType === 'onChange') {
             this._updateErrorState();
         }
     }
@@ -191,9 +209,9 @@ export class InputDirective extends HcFormControlComponent implements AfterViewI
     }
 
     set mobile(value: boolean) {
-        if ( value !== this._mobile ) {
+        if (value !== this._mobile) {
             this._mobile = value;
-            this.mobileChange.emit( this._mobile );
+            this.mobileChange.emit(this._mobile);
         }
     }
 
@@ -202,16 +220,16 @@ export class InputDirective extends HcFormControlComponent implements AfterViewI
     mobileChange = new EventEmitter<boolean>();
 
     ngAfterViewInit(): void {
-        if ( this._ngControl?.statusChanges ) {
+        if (this._ngControl?.statusChanges) {
             // delay() is necessary to make sure any form or control state changes have been applied before rechecking error states
             this._ngControl.statusChanges.pipe(delay(0), takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
         }
-        if ( this._form ) {
+        if (this._form) {
             this._form.ngSubmit.pipe(takeUntil(this._unsubscribe)).subscribe(() => this._updateErrorState());
         }
-        
+
         /** Monkey patching the markAsTouched function to call error state checking because there is not an event for touched changes */
-        if ( this._ngControl && this._ngControl.control ) {
+        if (this._ngControl && this._ngControl.control) {
             // eslint-disable-next-line @typescript-eslint/no-this-alias
             const self = this;
             const originalMarkMethod = this._ngControl.control.markAsTouched;
@@ -265,7 +283,7 @@ export class InputDirective extends HcFormControlComponent implements AfterViewI
         const newState = !!(
             this._ngControl &&
             this._ngControl.invalid &&
-            (this._ngControl.touched || (this._form && this._form.submitted) || this.validationType === 'onChange')
+            (this._ngControl.touched || (this._form && this._form.submitted))
         );
 
         if (oldState !== newState) {

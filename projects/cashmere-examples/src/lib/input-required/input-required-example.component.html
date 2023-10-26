@@ -6,7 +6,8 @@
             <hc-error>A valid email address is required</hc-error>
         </hc-form-field>
     </div>
-    <button hc-button title="Reset Form" buttonStyle="secondary" type="reset">Form Reset</button>
+    <button hc-button title="Mark as touched" buttonStyle="secondary" (click)="markAsTouched()">Mark as Touched</button>
+    <button hc-button title="NgForm Reset" buttonStyle="secondary" (click)="resetForm()" type="button">Reset</button>
     <button hc-button title="Submit Form" buttonStyle="primary" type="submit">Submit</button>
 </form>
 
@@ -21,6 +22,3 @@
         </hc-radio-group>
     </hc-form-field>
 </div>
-
-<button hc-button title="NgForm Reset" buttonStyle="secondary" (click)="resetForm()">NgForm Reset</button>
-<button hc-button title="Mark as touched" buttonStyle="secondary" (click)="markAsTouched()">Mark as Touched</button>
