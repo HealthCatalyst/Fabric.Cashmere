@@ -373,8 +373,7 @@ describe('DatepickerComponent', () => {
     function createComponent(
         component: Type<any>,
         imports: Type<any>[] = [],
-        providers: (FactoryProvider | ValueProvider)[] = [],
-        entryComponents: Type<any>[] = []
+        providers: (FactoryProvider | ValueProvider)[] = []
     ): ComponentFixture<any> {
         TestBed.configureTestingModule({
             imports: [
@@ -388,14 +387,10 @@ describe('DatepickerComponent', () => {
                 ...imports
             ],
             providers,
-            declarations: [component, ...entryComponents]
+            declarations: [component]
         });
 
-        TestBed.overrideModule(BrowserDynamicTestingModule, {
-            set: {
-                entryComponents: [entryComponents]
-            }
-        }).compileComponents();
+        TestBed.overrideModule(BrowserDynamicTestingModule, {}).compileComponents();
 
         return TestBed.createComponent(component);
     }
@@ -605,41 +600,6 @@ describe('DatepickerComponent', () => {
             it('should attach popup to native input', () => {
                 const attachToRef = testComponent.datepickerInput.getConnectedOverlayOrigin();
                 expect(attachToRef.nativeElement.tagName.toLowerCase()).toBe('input', 'popup should be attached to native input');
-            });
-
-            // test purposely skipped. hc input doesn't support aria-owns, yet...
-            xit('input should aria-owns calendar after opened in non-touch mode', fakeAsync(() => {
-                const inputEl = fixture.debugElement.query(By.css('input')).nativeElement;
-                expect(inputEl.getAttribute('ccc-owns')).toBeNull();
-
-                testComponent.datepicker.open();
-                fixture.detectChanges();
-                flush();
-
-                const ownedElementId = inputEl.getAttribute('aria-owns');
-                expect(ownedElementId).not.toBeNull();
-
-                const ownedElement = document.getElementById(ownedElementId);
-                expect(ownedElement).not.toBeNull();
-                expect((ownedElement as Element).tagName.toLowerCase()).toBe('hc-calendar');
-            }));
-
-            // test purposely skipped. hc input doesn't support aria-owns, yet...
-            xit('input should aria-owns calendar after opened in touch mode', () => {
-                fixture.detectChanges();
-
-                const inputEl = fixture.debugElement.query(By.css('input')).nativeElement;
-                expect(inputEl.getAttribute('aria-owns')).toBeNull();
-
-                testComponent.datepicker.open();
-                fixture.detectChanges();
-
-                const ownedElementId = inputEl.getAttribute('aria-owns');
-                expect(ownedElementId).not.toBeNull();
-
-                const ownedElement = document.getElementById(ownedElementId);
-                expect(ownedElement).not.toBeNull();
-                expect((ownedElement as Element).tagName.toLowerCase()).toBe('hc-calendar');
             });
 
             it('should not throw when given wrong data type', () => {
@@ -1021,6 +981,7 @@ describe('DatepickerComponent', () => {
                 if (SUPPORTS_INTL) {
                     // Skip this test if the internationalization API is not supported in the current
                     // browser. Browsers like Safari 9 do not support the "Intl" API.
+                    expect(true).toBeTruthy(); // avoid a warning about no expectations
                     return;
                 }
 
@@ -1708,7 +1669,7 @@ describe('DatepickerComponent', () => {
         let testComponent: DatepickerWithCustomHeader;
 
         beforeEach(fakeAsync(() => {
-            fixture = createComponent(DatepickerWithCustomHeader, [HcNativeDateModule], [], [CustomHeaderForDatepicker]);
+            fixture = createComponent(DatepickerWithCustomHeader, [HcNativeDateModule], []);
             fixture.detectChanges();
             testComponent = fixture.componentInstance;
         }));

@@ -33,7 +33,7 @@ describe('ModalService', () => {
                 declarations: [ModalOverviewExampleModalComponent],
                 providers: [ModalService, HcModal],
             })
-            .overrideModule(BrowserDynamicTestingModule, { set: { entryComponents: [ModalOverviewExampleModalComponent] } })
+            .overrideModule(BrowserDynamicTestingModule, {})
             .compileComponents();
         }));
 
