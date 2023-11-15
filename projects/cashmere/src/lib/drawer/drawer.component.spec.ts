@@ -10,7 +10,7 @@ describe('DrawerComponent', () => {
         // do nothing.
     }});
 
-    beforeEach(async done => {
+    beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [Drawer],
             imports: [NoopAnimationsModule],
@@ -20,7 +20,6 @@ describe('DrawerComponent', () => {
         component = fixture.componentInstance;
         fixture.detectChanges();
         await fixture.whenStable();
-        done();
     });
     it('should create the component without error', () => {
         expect(component).toBeTruthy();

@@ -74,6 +74,6 @@ All text in the tooltip should be set to:
 
 Info tooltips are optional on table tiles because the data being displayed may be self explanatory.
 A tooltip is useful to include if instruction is needed for additional controls on the table, or to explain the source of the data in the table.
-If a tooltip is included, it should follow the formating instructions in the [Foundations section](/analytics/tableau-foundations)
+If a tooltip is included, it should follow the formatting instructions in the [Foundations section](/analytics/tableau-foundations)
 
 :::

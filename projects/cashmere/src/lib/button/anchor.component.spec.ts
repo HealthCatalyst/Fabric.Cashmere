@@ -5,7 +5,7 @@ describe('a[hc-button]', () => {
     let component: AnchorComponent;
     let fixture: ComponentFixture<AnchorComponent>;
 
-    beforeEach(async done => {
+    beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [AnchorComponent]
         }).compileComponents();
@@ -13,7 +13,6 @@ describe('a[hc-button]', () => {
         component = fixture.componentInstance;
         fixture.detectChanges();
         await fixture.whenStable();
-        done();
     });
     it('should create the component without error', () => {
         expect(component).toBeTruthy();

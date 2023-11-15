@@ -14,7 +14,7 @@ If your issue appears to be a bug and hasn't been reported, open a new issue. He
 -   **Angular and Cashmere version**. Note which versions are affected.
 -   **Motivation or use case**. Explain what you are trying to do and why the current behavior is a bug for you.
 -   **Browsers and operating systems**. Answer "Is this a problem with all browsers?"
--   **Reproduce the error**. Provide a live example (using CodePen, JsBin, Plunker, etc.) or a unambiguous set of steps.
+-   **Reproduce the error**. Provide a live example (using CodePen, JsBin, Plunker, etc.) or an unambiguous set of steps.
 -   **Screenshots**. Due to the visual nature of Cashmere, screenshots help the team triage issues far more quickly than a text description.
 -   **Related issues**. Answer "Has a similar issue been reported before?"
 -   **Suggest a fix**. If you can't fix the bug yourself, point to what might be causing the problem (e.g., a line of code or commit).

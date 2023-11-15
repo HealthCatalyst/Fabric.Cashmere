@@ -6,7 +6,7 @@
 
 ##### Overview
 
-The login styles provide a unified experience when a user first enters an application. The following examples can be customized for each applications needs. The component is mobile friendly and will adapt for smaller screen sizes.
+The login styles provide a unified experience when a user first enters an application. The following examples can be customized for each application's needs. The component is mobile friendly and will adapt for smaller screen sizes.
 
 The logo and background images are encoded in the css, but you can download them directly here if needed: [Logo](https://cashmere.healthcatalyst.net/assets/HealthCatalyst_Horizontal.svg) and [Background](https://cashmere.healthcatalyst.net/assets/login_bg.jpg)
 
@@ -48,7 +48,7 @@ The logo and background images are encoded in the css, but you can download them
 
 ##### Layout
 
-To accommodate most needs, these styles can be used with or without angular. The examples just give an outline and can be customized as needed
+To accommodate most needs, these styles can be used with or without angular. The examples just give an outline and can be customized as needed.
 <br>
 <br>
 
@@ -56,8 +56,8 @@ To accommodate most needs, these styles can be used with or without angular. The
 
 The following example does not use angular but a post css Preprocesser is needed. Here are general steps to setup and use these styles:
 
--   Install and set css preprocessor like [gulp sass](https://github.com/dlmanning/gulp-sass) or [webpack with sass](https://github.com/webpack-contrib/sass-loader)
--   Install cashmere npm package
+-   Install and set the css preprocessor like [gulp sass](https://github.com/dlmanning/gulp-sass) or [webpack with sass](https://github.com/webpack-contrib/sass-loader)
+-   Install the Cashmere npm package
 -   Import styles `@import "@healthcatalyst/cashmere/scss/login-page";`
 -   Use html markup as needed
 
@@ -93,7 +93,7 @@ The following example does not use angular but a post css Preprocesser is needed
 
 ##### Angular version using Cashmere components
 
-The following example uses angular and cashmere and is the preffered method. It uses `ButtonModule` and `InputModule` and must be imported into the app.module
+The following example uses angular and cashmere and is the preferred method. It uses `ButtonModule` and `InputModule` and must be imported into the app.module.
 
 ```html
 <div class="hc-login-container">

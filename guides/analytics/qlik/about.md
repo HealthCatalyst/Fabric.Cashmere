@@ -101,7 +101,7 @@ Each button requires:
 - **Border color**: slate-gray-300 `#c0c5cc RGB(192,197,204)`
 - **Font**: Arial (Bold)
 - **Font size**: 11pt
-- **Text alignment**: Vertically and horiztonally centered and aligned
+- **Text alignment**: Vertically and horizontally centered and aligned
 
 Selected buttons are formatted as:
 

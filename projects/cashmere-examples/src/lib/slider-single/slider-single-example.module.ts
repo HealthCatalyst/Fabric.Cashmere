@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {SliderSingleExampleComponent} from './slider-single-example.component';
 import {CashmereModule} from '../cashmere.module';
 import {CommonModule} from '@angular/common';
-import {NgxSliderModule} from '@angular-slider/ngx-slider';
+import {NgxSliderModule} from 'ngx-slider-v2';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({

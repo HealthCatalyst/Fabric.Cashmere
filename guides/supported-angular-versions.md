@@ -16,6 +16,6 @@ We plan to keep Cashmere up-to-date with the latest LTS version of Angular.  Thi
 
 Even though Cashmere currently _targets_ Angular version `n`, we aim to make it compatible with all released versions `>n` as well.  In the example above, you don't have to wait until August 6, 2120 to upgrade from Angular 78 to 79.  We encourage all teams to keep up to date with the latest Angular version as much as possible.
 
-If you find any incompatibilites with the latest Angular version, please log an issue.
+If you find any incompatibilities with the latest Angular version, please log an issue.
 
 :::

@@ -6,7 +6,7 @@ import * as yargs from 'yargs';
 import {readdirSync, lstatSync, mkdirSync, readFileSync, writeFileSync, existsSync} from 'fs';
 import {join} from 'path';
 import {execSync} from 'child_process';
-import inquirer = require('inquirer');
+import * as inquirer from 'inquirer';
 import {paramCase, pascalCase, titleCase} from 'change-case';
 import {DocItem, DocItemCategory} from 'src/app/core/document-items.service';
 import * as prettier from 'prettier';
@@ -163,8 +163,7 @@ import {${componentName}} from './${args.name}-example.component';
 @NgModule({
 imports: [CommonModule, CashmereModule],
 declarations: [${componentName}],
-exports: [${componentName}],
-entryComponents: [${componentName}]
+exports: [${componentName}]
 })
 export class ${pascalCase(args.name)}ExampleModule {
 }

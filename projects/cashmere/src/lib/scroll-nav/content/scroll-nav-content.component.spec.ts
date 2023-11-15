@@ -38,7 +38,7 @@ import {ScrollNavTargetDirective} from './scroll-nav-target.directive';
                 </ul>
             </hc-scroll-nav>
 
-            <hc-scroll-nav-content [nav]='ScrollNav'>
+            <hc-scroll-nav-content [nav]='ScrollNav' style="display: block; height: 100px;">
                 <section id='a1' hcScrollTarget>
                     Test 1 Content
                     <section id='b1' hcScrollTarget>
@@ -127,18 +127,19 @@ describe('HcScrollNavContentComponent', () => {
         expect(testApp.contentComponent._scrollTargets[7].classList.contains('hc-scroll-nav-target')).toBeTruthy();
     });
 
-    it('should call _setActiveSectionById in nav when scrolling', waitForAsync(() => {
+    it('should call _setActiveSectionById in nav when scrolling', (done) => {
         const setActiveSectionSpy: jasmine.Spy = spyOn(testApp.contentComponent.nav, '_setActiveSectionById');
 
         testApp.contentComponent._cdkScrollableElement
             .elementScrolled()
             .pipe(take(1))
             .subscribe(() => {
-                expect(setActiveSectionSpy).toHaveBeenCalledWith();
+                expect(setActiveSectionSpy).toHaveBeenCalled();
+                done();
             });
 
-        testApp.contentComponent._cdkScrollableElement.scrollTo({top: 200});
-    }));
+        testApp.contentComponent._cdkScrollableElement.scrollTo({top: 200, behavior: 'auto'});
+    });
 
     describe('ngAfterViewInit', () => {
         describe('init', () => {

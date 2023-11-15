@@ -29,21 +29,6 @@ describe('SplitButtonComponent', () => {
             splitButtonDebugElement = fixture.debugElement.query(By.directive(SplitButtonComponent));
             triggerButton = splitButtonDebugElement.query(By.css('.hc-split-button-toggle')).nativeElement;
         });
-
-        xit('should not trigger primary button click when a menu item is clicked', () => {
-            expect(testComponent.isPrimaryClicked).toBe(false);
-            expect(testComponent.isMenuItemClicked).toBe(false);
-
-            triggerButton.click();
-            fixture.detectChanges();
-
-            const buttonItems = fixture.debugElement.queryAll(By.directive(MenuItemDirective));
-            buttonItems[0].nativeElement.click();
-            fixture.detectChanges();
-
-            expect(testComponent.isPrimaryClicked).toBe(false);
-            expect(testComponent.isMenuItemClicked).toBe(true);
-        });
     });
 });
 

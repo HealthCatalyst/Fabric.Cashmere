@@ -8,18 +8,18 @@
 ### A) Install Cashmere and the Angular CDK
 
 ```BASH
-npm install --save @healthcatalyst/cashmere @angular/cdk@15.2.9
+npm install --save @healthcatalyst/cashmere @angular/cdk@16.2.8
 ```
 
 ### B) *(Optional)* Install additional dependencies as needed.
 - [Font Awesome](https://fontawesome.com) - Recommended icon set. *(For healthcare-specific iconography, see step 3.)*
 - [Noto Sans](https://fonts.google.com/specimen/Noto+Sans) - Recommended font.
 - [Ng-select](https://github.com/ng-select/ng-select) - Needed only if using the multiselect/typeahead component. Look [here](https://github.com/ng-select/ng-select) for which version of ng-select to install based on your Angular version.
-- [Ngx-slider](https://github.com/angular-slider/ngx-slider) - Needed only if using the slider component.
+- [Ngx-slider](https://github.com/danisss9/ngx-slider) - Needed only if using the slider component. We're currently on a forked version because the original does not support angular's modern Ivy compilation.
 
 
 ```BASH
-npm install --save font-awesome notosans-fontface @ng-select/ng-select@10.0.4 @angular-slider/ngx-slider
+npm install --save font-awesome notosans-fontface @ng-select/ng-select@11.2.0 @angular-slider/ngx-slider-v2
 ```
 :::
 
@@ -57,7 +57,7 @@ Anywhere you import the Shared module, Cashmere components will also be availabl
 ## Step 3: Add the styles.
 
 ### A) Import baseline Cashmere styles.
-The root Cashmere stylesheet need to be imported in your app's global style sheet (`src/styles.scss`).
+The root Cashmere stylesheet needs to be imported in your app's global style sheet (`src/styles.scss`).
 
 ```scss
 @import "@healthcatalyst/cashmere/scss/cashmere";
