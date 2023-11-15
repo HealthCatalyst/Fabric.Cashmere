@@ -45,7 +45,7 @@ export class PersonaListComponent extends BaseDemoComponent implements OnDestroy
         let comparison = 0;
         if (a.title > b.title) {
             comparison = 1;
-        } else if (a.title < a.title) {
+        } else if (a.title < b.title) {
             comparison = -1;
         }
         return comparison;
