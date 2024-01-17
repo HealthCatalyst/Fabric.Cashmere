@@ -1,11 +1,16 @@
 @import './colors';
 @import './mixins';
 
+@mixin hc-drag-list() {
+    display: flex;
+    flex-direction: column;
+}
+
 @mixin hc-drag-list-container() {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    max-height: 300px;
+    overflow-y: hidden;
 
     .preserve-whitespace {
         white-space: pre;
@@ -13,8 +18,9 @@
 }
 
 @mixin hc-drag-list-targets() {
+    display: flex;
+    flex-direction: column;
     width: 50%;
-    overflow-y: auto;
 }
 
 @mixin hc-drag-list-targets-info() {
@@ -30,6 +36,10 @@
         right: 0;
         top: 0;
     }
+}
+
+@mixin hc-drag-list-targets-container() {
+    overflow-y: auto;
 }
 
 @mixin hc-drag-list-assignments() {
