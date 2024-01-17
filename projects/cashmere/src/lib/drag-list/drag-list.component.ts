@@ -16,6 +16,9 @@ export interface DragDropAssignment {
 @Component({
     selector: 'hc-drag-list',
     templateUrl: './drag-list.component.html',
+    host: {
+        class: 'hc-drag-list'
+    },
     styleUrls: ['./drag-list.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
