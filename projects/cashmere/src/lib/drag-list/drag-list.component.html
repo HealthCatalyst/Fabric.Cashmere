@@ -13,69 +13,71 @@
                 <div class="preserve-whitespace" style="white-space: pre">{{ targetTooltip }}</div>
             </hc-pop>
         </div>
-        <div *ngFor="let assignment of _modifiedAssignments" class="hc-drag-list-assignments">
-            <div class="hc-drag-list-target-name" [title]="assignment.target[targetHoverTextField] ?? ''">
-                <hc-icon
-                    fontSet="fa"
-                    fontIcon="fa-check"
-                    *ngIf="!assignment.locked"
-                    [style.visibility]="!!assignment.assignment ? 'visible' : 'hidden'"
-                ></hc-icon>
-                <hc-icon fontSet="fa" fontIcon="fa-lock" [hcPop]="lockedText" trigger="hover" *ngIf="!!assignment.locked"></hc-icon>
-                <hc-pop #lockedText>{{ optionLockedText }}</hc-pop>
-                {{ assignment.target[targetDisplayNameField] }}
-            </div>
-
-            <div
-                class="hc-drag-list-assignment hc-drag-list-placeholder"
-                (dragenter)="_dragenter($event)"
-                (dragleave)="_dragleave($event)"
-                *ngIf="!assignment.assignment && !assignment.locked"
-                [attr.data-target-id]="assignment.target[targetIdField]"
-                (drop)="_makeAssignment($event)"
-                (dragover)="_dragover($event)"
-            >
-                {{ targetPlaceholder }}
-            </div>
-            <div
-                class="hc-drag-list-assignment"
-                (dragenter)="_dragenter($event)"
-                (dragleave)="_dragleave($event)"
-                *ngIf="!!assignment.assignment && !assignment.locked"
-                [attr.data-target-id]="assignment.target[targetIdField]"
-                [attr.data-option-id]="assignment.assignment[optionIdField]"
-                (drop)="_makeAssignment($event)"
-                (dragover)="_dragover($event)"
-            >
+        <div class="hc-drag-list-targets-container">
+            <div *ngFor="let assignment of _modifiedAssignments" class="hc-drag-list-assignments">
+                <div class="hc-drag-list-target-name" [title]="assignment.target[targetHoverTextField] ?? ''">
+                    <hc-icon
+                        fontSet="fa"
+                        fontIcon="fa-check"
+                        *ngIf="!assignment.locked"
+                        [style.visibility]="!!assignment.assignment ? 'visible' : 'hidden'"
+                    ></hc-icon>
+                    <hc-icon fontSet="fa" fontIcon="fa-lock" [hcPop]="lockedText" trigger="hover" *ngIf="!!assignment.locked"></hc-icon>
+                    <hc-pop #lockedText>{{ optionLockedText }}</hc-pop>
+                    {{ assignment.target[targetDisplayNameField] }}
+                </div>
+    
                 <div
-                    class="hc-drag-list-option"
+                    class="hc-drag-list-assignment hc-drag-list-placeholder"
+                    (dragenter)="_dragenter($event)"
+                    (dragleave)="_dragleave($event)"
+                    *ngIf="!assignment.assignment && !assignment.locked"
+                    [attr.data-target-id]="assignment.target[targetIdField]"
+                    (drop)="_makeAssignment($event)"
+                    (dragover)="_dragover($event)"
+                >
+                    {{ targetPlaceholder }}
+                </div>
+                <div
+                    class="hc-drag-list-assignment"
+                    (dragenter)="_dragenter($event)"
+                    (dragleave)="_dragleave($event)"
+                    *ngIf="!!assignment.assignment && !assignment.locked"
                     [attr.data-target-id]="assignment.target[targetIdField]"
                     [attr.data-option-id]="assignment.assignment[optionIdField]"
-                    [title]="_tooltipsByOptionId[assignment.assignment[optionIdField]]"
-                    draggable="true"
-                    (dragstart)="_dragstart($event)"
+                    (drop)="_makeAssignment($event)"
+                    (dragover)="_dragover($event)"
                 >
-                    <div class="hc-drag-list-option-name">
-                        {{ assignment.assignment[optionDisplayNameField] }}
-                    </div>
-                    <div class="hc-drag-list-option-close" (click)="_unassign(assignment)">
-                        <svg width="10" height="10" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1 7.03906L4 4.03906L7 7.03906M7 1.03906L3.99943 4.03906L1 1.03906"
-                                stroke="#C0C5CC"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
+                    <div
+                        class="hc-drag-list-option"
+                        [attr.data-target-id]="assignment.target[targetIdField]"
+                        [attr.data-option-id]="assignment.assignment[optionIdField]"
+                        [title]="_tooltipsByOptionId[assignment.assignment[optionIdField]]"
+                        draggable="true"
+                        (dragstart)="_dragstart($event)"
+                    >
+                        <div class="hc-drag-list-option-name">
+                            {{ assignment.assignment[optionDisplayNameField] }}
+                        </div>
+                        <div class="hc-drag-list-option-close" (click)="_unassign(assignment)">
+                            <svg width="10" height="10" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1 7.03906L4 4.03906L7 7.03906M7 1.03906L3.99943 4.03906L1 1.03906"
+                                    stroke="#C0C5CC"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="hc-drag-list-assignment" *ngIf="!!assignment.assignment && !!assignment.locked">
-                <div class="hc-drag-list-option hc-drag-list-option-locked" [title]="_tooltipsByOptionId[assignment.assignment[optionIdField]]">
-                    <div class="hc-drag-list-option-name">
-                        {{ assignment.assignment[optionDisplayNameField] }}
+    
+                <div class="hc-drag-list-assignment" *ngIf="!!assignment.assignment && !!assignment.locked">
+                    <div class="hc-drag-list-option hc-drag-list-option-locked" [title]="_tooltipsByOptionId[assignment.assignment[optionIdField]]">
+                        <div class="hc-drag-list-option-name">
+                            {{ assignment.assignment[optionDisplayNameField] }}
+                        </div>
                     </div>
                 </div>
             </div>

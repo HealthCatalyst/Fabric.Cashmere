@@ -1,5 +1,9 @@
 @import '../sass/drag-list.scss';
 
+.hc-drag-list {
+    @include hc-drag-list();
+}
+
 .hc-drag-list-container {
     @include hc-drag-list-container();
 }
@@ -10,6 +14,10 @@
 
 .hc-drag-list-targets-info {
     @include hc-drag-list-targets-info();
+}
+
+.hc-drag-list-targets-container {
+    @include hc-drag-list-targets-container();
 }
 
 .hc-drag-list-assignments {
