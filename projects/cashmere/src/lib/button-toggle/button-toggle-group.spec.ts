@@ -61,7 +61,7 @@ describe('ButtonToggleGroup', () => {
             describe('when set to an invalid value', () => {
                 it('should throw an error', () => {
                     const wrap = () => (component.toggleGroup.buttonStyle = 'not-a-valid-style');
-                    expect(wrap).toThrowError('Unsupported buttonStyle attribute value on ButtonToggleGroupComponent: not-a-valid-style');
+                    expect(wrap).toThrowError();
                 });
             });
             describe('when set to a valid value', () => {
@@ -86,7 +86,7 @@ describe('ButtonToggleGroup', () => {
             describe('when set to an invalid value', () => {
                 it('should throw an error', () => {
                     const wrap = () => (component.toggleGroup.size = 'not-a-valid-style');
-                    expect(wrap).toThrowError('Unsupported size attribute value on ButtonToggleGroupComponent: not-a-valid-style');
+                    expect(wrap).toThrowError();
                 });
             });
             describe('when set to a valid value', () => {

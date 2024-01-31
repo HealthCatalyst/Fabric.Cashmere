@@ -56,3 +56,52 @@ $neutral-action: $gray-500;
 $error: $deep-red;
 $text: $offblack;
 $block-text-background: $slate-gray-100;
+
+
+// sets the background color with the given color variable and sets the appropriate foreground color to pair with it
+@mixin hc-color-bg($color) {
+    color: map-get($color-pairing, $color);
+    background-color: $color;
+}
+
+$color-pairing: (
+    $blue: $white,
+    $green: $white,
+    $purple: $white,
+    $red: $white,
+    $orange: $white,
+    $ruby-red: $white,
+    $deep-red: $white,
+    $red-orange: $white,
+    $magenta: $white,
+    $pink: $white,
+    $light-pink: $white,
+    $azure: $white,
+    $teal: $white,
+    $ai-green: $white,
+    $dark-green: $white,
+    $light-green: $white,
+    $brown: $white,
+    $purple-gray: $white,
+    $yellow: $offblack,
+    $yellow-orange: $white,
+    $tan: $white,
+    $white: $offblack,
+    $black: $white,
+    $offblack: $white,
+    $shadow: $offblack,
+    $dark-blue: $white,
+    $charcoal-blue: $white,
+    $slate-gray-100: $offblack,
+    $slate-gray-200: $offblack,
+    $slate-gray-300: $white,
+    $slate-gray-400: $white,
+    $slate-gray-500: $white,
+    $slate-gray-600: $white,
+    $gray-100: $offblack,
+    $gray-200: $offblack,
+    $gray-300: $white,
+    $gray-400: $white,
+    $gray-500: $white,
+    $gray-600: $white
+) !default;

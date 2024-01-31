@@ -1,6 +1,8 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {validateStyleInput} from '../button/button.component';
+import {supportedStyles} from '../button/button.component';
 import {BasePaginationComponent} from './base-pagination';
+import { supportedColors } from '../utils/supported-colors';
+import { validateInput } from '../util';
 
 /** A simple "load more" pagination button. */
 @Component({
@@ -25,7 +27,7 @@ export class LoadMorePaginationComponent extends BasePaginationComponent impleme
     }
 
     set buttonStyle(btnStyle: string) {
-        validateStyleInput(btnStyle, 'LoadMorePaginationComponent');
+        validateInput(btnStyle, supportedColors.concat(supportedStyles), 'buttonStyle', 'LoadMorePaginationComponent');
         this._style = btnStyle;
     }
     private _style = 'secondary';

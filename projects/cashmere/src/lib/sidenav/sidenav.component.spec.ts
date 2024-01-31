@@ -1,6 +1,10 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SidenavComponent } from './sidenav.component';
 import { SidenavModule } from './sidenav.module';
+import { ActivatedRoute } from '@angular/router';
+class MockActivateRoute {
+    snapshot = {};
+}
 
 describe('SidenavComponent', () => {
     let component: SidenavComponent;
@@ -8,7 +12,8 @@ describe('SidenavComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [SidenavModule]
+            imports: [SidenavModule],
+            providers: [{provide: ActivatedRoute, useClass: MockActivateRoute}]
         }).compileComponents();
     }));
 

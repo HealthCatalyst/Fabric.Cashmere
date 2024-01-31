@@ -13,16 +13,15 @@ $sidenav-width: 260px !default;
     box-shadow: 0 0 8px $shadow;
     position: relative;
     z-index: 2;
-    overflow-y: auto;
-    overflow-x: hidden;
     transition: all 0.3s;
     flex-direction: column;
     display: flex;
+    color: $offblack;
 
     // Styles for collapsed nav
     &.hc-sidenav-collapsed {
-        flex: 0 0 55px;
-        width: 55px;
+        flex: 0 0 55px !important;
+        width: 55px !important;
         padding-top: 0;
 
         .hc-sidenav-tab-name {
@@ -35,13 +34,48 @@ $sidenav-width: 260px !default;
     }
 }
 
+@mixin hc-sidenav-inner() {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 44px;
+    height: 100%;
+    border-bottom: 1px solid transparentize($slate-gray-300, 0.75);
+}
+
+@mixin hc-sidenav-dark() {
+    background-color: $charcoal-blue;
+    color: $white;
+}
+
+@mixin hc-sidenav-tab-dark() {
+    &:hover {
+        background-color: darken($charcoal-blue, 10%);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px transparentize($blue, 0.75) inset;
+        background-color: darken($charcoal-blue, 10%);
+    }
+
+    &:active {
+        background-color: darken($charcoal-blue, 15%);
+    }
+}
+
+@mixin hc-sidenav-tab-active-dark() {
+    border-left-color: $blue;
+    font-weight: 600;
+    background-color: darken($charcoal-blue, 8%);
+}
+
 @mixin hc-sidenav-tabs() {
     flex: 0 1 auto;
-    overflow-x: hidden;
 }
 
 @mixin hc-sidenav-tab() {
     @include fontSize(15px);
+    position: relative;
     height: 40px;
     border-left: 5px transparent solid;
     display: flex;
@@ -56,14 +90,14 @@ $sidenav-width: 260px !default;
         background-color: $slate-gray-200;
     }
 
-    &:active {
-        background-color: darken($slate-gray-200, 4%);
-    }
-
     &:focus {
         outline: none;
-        box-shadow: 0 0 0 2px $blue;
+        box-shadow: 0 0 0 2px transparentize($blue, 0.75) inset;
         background-color: $slate-gray-200;
+    }
+
+    &:active {
+        background-color: darken($slate-gray-200, 4%);
     }
 }
 
@@ -81,12 +115,20 @@ $sidenav-width: 260px !default;
     }
 }
 
+@mixin hc-sidenav-tab-unclickable(){
+    cursor: default;
+    &:hover, &:active {
+        background-color: transparent;
+    }
+}
+
 @mixin hc-sidenav-tab-inner(){
     display: flex;
     align-items: center;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    flex: 1 0 0;
 
     .hc-sidenav-tab-name {
         overflow: hidden;
@@ -120,107 +162,49 @@ $sidenav-width: 260px !default;
     @include fontSize(12px);
     text-transform: uppercase;
     color: $slate-gray-300;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-@mixin hc-sidenav-favs() {
-    padding: 20px 0 20px 20px;
-    margin: 0 0 24px -10px;
+@mixin hc-sidenav-tab-group() {
+    padding: 0;
+    margin: 24px 0 0 0;
     @include fontSize(15px);
-    flex: 1 1 230px;
-    min-height: 230px;
     display: flex;
     flex-direction: column;
 }
 
-@mixin hc-sidenav-favs-header() {
-    padding-bottom: 5px;
-    font-weight: 600;
-    pointer-events: none;
-    animation: HCFadeIn 0.3s;
-    border-bottom: 1px solid $slate-gray-100;
-    margin-right: 16px;
-}
-
-@mixin hc-sidenav-favs-list-container() {
-    flex: 1 1 auto;
-    padding-top: 5px;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-@mixin hc-sidenav-favs-bottom() {
-    border-bottom: 1px solid $slate-gray-100;
-    margin-right: 16px;
-}
-
-@mixin hc-sidenav-favs-list-container-inner() {
-    overflow-y: auto;
-    scrollbar-gutter: stable;
-    padding-left: 3px;
-}
-
-@mixin hc-sidenav-fav-item() {
+@mixin hc-sidenav-tab-group-header() {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 2px 0;
-    cursor: pointer;
-    line-height: 1.4;
-    color: $offblack;
-    animation: HCSlideInUp 0.3s;
-
-    &:hover {
-        background-color: transparentize($blue, 0.75);
-    }
-
-    &:active {
-        background-color: transparentize($blue, 0.6);
-    }
-
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px $blue;
-        background-color: transparentize($blue, 0.6);
-    }
-}
-
-@mixin hc-sidenav-fav-item-disabled() {
-    cursor: not-allowed;
-    color: $gray-300;
-    &:hover, &:active {
-        background-color: transparent;
-    }
-}
-
-@mixin hc-sidenav-fav-item-ico() {
-    @include fontSize(14px);
-    margin-right: 7px;
-    width: 16px;
-    display: inline-flex;
-    justify-content: center;
+    padding-bottom: 5px;
+    margin-left: 18px;
+    font-weight: 500;
+    pointer-events: none;
     animation: HCFadeIn 0.3s;
-    flex: 0 0 auto;
+    border-bottom: 1px solid transparentize($slate-gray-300, 0.75);
+    margin-right: 16px;
 }
 
-@mixin hc-sidenav-fav-item-name-wrapper() {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-@mixin hc-sidenav-fav-item-subtext() {
-    @include fontSize(12px);
-    text-transform: uppercase;
-    color: $slate-gray-300;
-}
-
-@mixin hc-sidenav-fav-item-inner() {
+@mixin hc-sidenav-tab-group-list-container() {
+    flex: 1 1 auto;
+    padding: 5px 0;
     display: flex;
-    align-items: center;
-    margin-right: 7px;
-    padding: 5px 5px 5px 2px;
+    flex-direction: column;
+}
+
+@mixin hc-sidenav-tab-group-list-container-inner() {
+    margin: 0 15px 0 8px;
+}
+
+@mixin hc-sidenav-favs-item() {
+    border-left: 0;
+    padding: 0 0 0 2px;
+    margin-left: 8px;
+    height: 32px;
+    font-weight: 400;
 }
 
 @mixin hc-sidenav-fav-loading() {
@@ -243,10 +227,12 @@ $sidenav-width: 260px !default;
     background-size: contain;
     height: 18px;
     width: 18px;
-    position: relative;
     display: inline-block;
-    top: 3px;
-    margin-left: 5px;
+    margin: 0 2px;
+}
+
+@mixin hc-sidenav-ico-star-dark() {
+    background-image: url($ico-star-white);
 }
 
 @mixin hc-sidenav-ico-star-filled() {
@@ -274,12 +260,18 @@ $sidenav-width: 260px !default;
 
 @mixin hc-sidenav-empty-msg() {
     height: 200px;
+    min-width: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin: 0 0 0 -20px;
     animation: HCFadeIn 0.3s;
+    color: darken($charcoal-blue, 20%);
+}
+
+@mixin hc-sidenav-empty-msg-dark() {
+    color: transparentize($slate-gray-300, 0.15);
 }
 
 @mixin hc-sidenav-pop-menu() {
@@ -291,6 +283,8 @@ $sidenav-width: 260px !default;
     height: 32px;
     width: 32px;
     opacity: 0.5;
+    background-image: url($ico-empty);
+    background-repeat: no-repeat;
     &:before {
         @include fontSize(36px);
     }
@@ -301,17 +295,22 @@ $sidenav-width: 260px !default;
     margin: 12px 30px;
     font-style: italic;
     white-space: nowrap;
+    color: $slate-gray-300;
 }
 
-@mixin hc-sidenav-collapsed-favs() {
+@mixin hc-sidenav-empty-description-dark() {
+    color: transparentize($slate-gray-300, 0.45);
+}
+
+@mixin hc-sidenav-collapsed-tab-group() {
     height: auto;
 }
 
-@mixin hc-sidenav-collapsed-favs-menu-btn() {
-    margin: -20px 0 0 -10px;
+@mixin hc-sidenav-collapsed-tab-group-menu-btn() {
+    margin: -24px 0 0 0;
 }
 
-@mixin hc-sidenav-collapsed-favs-menu-ico() {
+@mixin hc-sidenav-collapsed-tab-group-menu-ico() {
     animation: HCFadeIn 0.3s;
     cursor: pointer;
     height: 40px;
@@ -325,6 +324,17 @@ $sidenav-width: 260px !default;
 
     &:active {
         background-color: darken($slate-gray-200, 4%);
+    }
+}
+
+@mixin hc-sidenav-collapsed-favs-menu-ico-dark() {
+
+    &:hover {
+        background-color: darken($charcoal-blue, 10%);
+    }
+
+    &:active {
+        background-color: darken($charcoal-blue, 15%);
     }
 }
 
@@ -368,6 +378,28 @@ $sidenav-width: 260px !default;
     }
 }
 
+@mixin hc-sidenav-state-btn-dark() {
+    border: none;
+    color: $white;
+    background-color: darken($charcoal-blue, 8%);
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: darken($charcoal-blue, 12%);
+        color: $white;
+        border: none;
+    }
+
+    &:active {
+        background-color: darken($charcoal-blue, 14%);
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 2px darken($charcoal-blue, 15%);
+    }
+}
+
 @mixin hc-subtle-pulse() {
     animation: HCSubtleFadePulse 2.5s ease-out infinite;
 }
@@ -385,4 +417,410 @@ $sidenav-width: 260px !default;
     transform: rotate(180deg);
     position: relative;
     right: 1px;
+}
+
+@mixin hc-sidenav-child-tabs() {
+    padding-right: 36px;
+}
+
+@mixin hc-sidenav-tab-children() {
+    height: 0px;
+    overflow: hidden;
+    position: relative;
+}
+
+@mixin hc-sidenav-tab-open() {
+    height: auto;
+}
+
+@mixin hc-sidenav-no-collapse-nested-links() {
+    height: auto;
+}
+
+@mixin hc-sidenav-collapsed-children() {
+    display: none;
+}
+
+@mixin nested-link-submenu-children() {
+    display: block;
+}
+
+@mixin nested-link-submenu-chev-container() {
+    display: inline-flex;
+}
+
+@mixin nested-link-submenu-tab-name() {
+    opacity: 1;
+}
+
+@mixin hc-sidenav-child-tab() {
+    padding-left: 38px;
+    height: 32px;
+    position: relative;
+}
+
+@mixin hc-sidenav-child-tab-ico() {
+    margin-right: 2px;
+    @include fontSize(14px);
+}
+
+@mixin hc-sidenav-tab-chev-container() {
+    display: inline-flex;
+    width: 36px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+
+    &:hover {
+        background-color: transparentize($slate-gray-300, 0.5);
+        .hc-sidenav-tab-chevron {
+            opacity: 0.8;
+        }
+    }
+
+    &:active {
+        background-color: transparentize($slate-gray-300, 0.7);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px transparentize($blue, 0.75) inset;
+        background-color: transparentize($slate-gray-300, 0.5);
+    }
+}
+
+@mixin hc-sidenav-tab-chev-container-hover-chev() {
+    opacity: 0.8;
+}
+
+@mixin hc-sidenav-tab-chevron() {
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    background-image: url($ico-chev-up);
+    background-repeat: no-repeat;
+    position: relative;
+    transform: rotate(180deg);
+    right: 1px;
+    opacity: 0.6;
+}
+
+@mixin hc-sidenav-chev-tab-open() {
+    transform: rotate(0);
+}
+
+@mixin hc-sidenav-tab-child-tab-2() { padding-left: 62px; }
+@mixin hc-sidenav-tab-child-tab-3() { padding-left: 86px; }
+@mixin hc-sidenav-tab-child-tab-4() { padding-left: 110px; }
+@mixin hc-sidenav-tab-child-tab-5() { padding-left: 134px; }
+@mixin hc-sidenav-tab-child-tab-6() { padding-left: 158px; }
+
+@mixin hc-sidenav-tab-tree-line-vert-nested() {
+    position: relative;
+    &:before {
+        content: ' ';
+        display: inline-block;
+        position: absolute;
+        z-index: 2;
+        width: 2px;
+        height: 100%;
+        background-color: $slate-gray-150;
+        left: 26px;
+    }
+
+    &:last-child:before {
+        background-color: transparent;
+    }
+
+    .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-horz:after {
+        left: -13px;
+    }
+}
+
+@mixin hc-sidenav-tab-tree-line-vert-last-child-helper() {
+    content: " ";
+    display: inline-block;
+    height: 50%;
+    width: 2px;
+    position: absolute;
+    left: -17px;
+    background-color: $slate-gray-150;
+}
+
+@mixin hc-sidenav-tab-tree-line-vert-last-child-helper2() {
+    left: -13px;
+}
+
+@mixin hc-sidenav-tab-tree-line-vert-line-2() { left: 54px; }
+@mixin hc-sidenav-tab-tree-line-vert-line-3() { left: 78px; }
+@mixin hc-sidenav-tab-tree-line-vert-line-4() { left: 102px; }
+@mixin hc-sidenav-tab-tree-line-vert-line-5() { left: 126px; }
+@mixin hc-sidenav-tab-tree-line-vert-line-6() { left: 150px; }
+
+@mixin hc-sidenav-tab-tree-line-horz-container() {
+    position: absolute;
+    height: 100%;
+}
+
+@mixin hc-sidenav-tab-tree-line-horz() {
+    content: " ";
+    display: inline-block;
+    height: 2px;
+    width: 14px;
+    position: absolute;
+    left: -16px;
+    top: 15px;
+    background-color: $slate-gray-150;
+}
+
+@mixin hc-sidenav-tab-tree-line-horz2() {
+    width: 10px;
+    left: -12px;
+}
+
+@mixin hc-sidenav-no-tree-lines() {
+    display: none;
+}
+
+@mixin hc-sidenav-tree-lines-dark() {
+    background-color: lighten($charcoal-blue, 12%);
+}
+
+@mixin hc-sidenav-chev-dark-container() {
+    &:hover { background-color: darken($charcoal-blue, 15%); }
+    &:active { background-color: darken($charcoal-blue, 20%); }
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px transparentize($blue, 0.75) inset;
+        background-color: darken($charcoal-blue, 15%);
+    }
+}
+
+@mixin hc-sidenav-chev-dark() {
+    background-image: url($ico-chev-down-white);
+    transform: rotate(0);
+}
+
+@mixin hc-sidenav-chev-dark-open() {
+    transform: rotate(180deg);
+}
+
+@mixin hc-sidenav-tab-tree-line-vert() {
+    position: relative;
+}
+
+@mixin hc-sidenav-nested-link-submenu-container() {
+    display: none;
+}
+
+@mixin hc-sidenav-nested-link-submenu-header() {
+    font-size: 14px;
+    margin: -10px -12px 0;
+    padding: 6px 8px 6px 17px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $slate-gray-150;
+}
+
+@mixin hc-sidenav-nested-link-submenu-header-clickable() {
+    cursor: pointer;
+
+    &:hover {
+        background-color: $slate-gray-200;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px transparentize($blue, 0.75) inset;
+        background-color: $slate-gray-200;
+    }
+
+    &:active {
+        background-color: darken($slate-gray-200, 4%);
+    }
+}
+
+@mixin hc-sidenav-nested-link-submenu-header-ico() {
+    font-size: 14px;
+    margin: 0 3px 0 0;
+    height: 14px;
+    width: 14px;
+}
+
+@mixin hc-sidenav-nested-link-submenu() {
+    max-height: 50vh;
+    width: 240px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: $white;
+    margin: 0 -12px;
+}
+
+@mixin hc-sidenav-nested-link-submenu-nonembedded() {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    border: 1px solid $slate-gray-150;
+    box-shadow: 1px 1px 5px $shadow;
+    border-radius: 4px;
+    padding: 12px 0;
+    margin: 0;
+}
+
+@mixin hc-sidenav-nested-link-submenu-child-tab() {
+    padding-right: 36px;
+}
+
+@mixin hc-sidenav-nested-link-hidden-tree-lines() {
+    display: none;
+}
+
+@mixin hc-sidenav-nested-link-shown-tree-lines() {
+    display: inline-block;
+}
+
+@mixin hc-sidenav-menu-items-show() {
+    display: block;
+}
+
+@mixin hc-sidenav-badge() {
+    height: 16px;
+    min-width: 16px;
+    border-radius: 3px;
+    padding: 0 2px;
+    margin-left: 2px;
+    @include fontSize(12px);
+    color: $white;
+    background-color: $slate-gray-300;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &.hc-sidenav-badge-blue {
+        @include hc-color-bg($blue);
+    }
+    &.hc-sidenav-badge-green {
+        @include hc-color-bg($green);
+    }
+    &.hc-sidenav-badge-purple {
+        @include hc-color-bg($purple);
+    }
+    &.hc-sidenav-badge-red {
+        @include hc-color-bg($red);
+    }
+    &.hc-sidenav-badge-orange {
+        @include hc-color-bg($orange);
+    }
+    &.hc-sidenav-badge-ruby-red {
+        @include hc-color-bg($ruby-red);
+    }
+    &.hc-sidenav-badge-deep-red {
+        @include hc-color-bg($deep-red);
+    }
+    &.hc-sidenav-badge-red-orange {
+        @include hc-color-bg($red-orange);
+    }
+    &.hc-sidenav-badge-magenta {
+        @include hc-color-bg($magenta);
+    }
+    &.hc-sidenav-badge-pink {
+        @include hc-color-bg($pink);
+    }
+    &.hc-sidenav-badge-light-pink {
+        @include hc-color-bg($light-pink);
+    }
+    &.hc-sidenav-badge-azure {
+        @include hc-color-bg($azure);
+    }
+    &.hc-sidenav-badge-teal {
+        @include hc-color-bg($teal);
+    }
+    &.hc-sidenav-badge-ai-green {
+        @include hc-color-bg($ai-green);
+    }
+    &.hc-sidenav-badge-dark-green {
+        @include hc-color-bg($dark-green);
+    }
+    &.hc-sidenav-badge-light-green {
+        @include hc-color-bg($light-green);
+    }
+    &.hc-sidenav-badge-brown {
+        @include hc-color-bg($brown);
+    }
+    &.hc-sidenav-badge-purple-gray {
+        @include hc-color-bg($purple-gray);
+    }
+    &.hc-sidenav-badge-yellow {
+        @include hc-color-bg($yellow);
+        color: $offblack;
+    }
+    &.hc-sidenav-badge-yellow-orange {
+        @include hc-color-bg($yellow-orange);
+    }
+    &.hc-sidenav-badge-tan {
+        @include hc-color-bg($tan);
+    }
+    &.hc-sidenav-badge-white {
+        @include hc-color-bg($white);
+        color: $offblack;
+    }
+    &.hc-sidenav-badge-black {
+        @include hc-color-bg($black);
+    }
+    &.hc-sidenav-badge-offblack {
+        @include hc-color-bg($offblack);
+    }
+    &.hc-sidenav-badge-shadow {
+        @include hc-color-bg($shadow);
+        color: $offblack;
+    }
+    &.hc-sidenav-badge-dark-blue {
+        @include hc-color-bg($dark-blue);
+    }
+    &.hc-sidenav-badge-charcoal-blue {
+        @include hc-color-bg($charcoal-blue);
+    }
+    &.hc-sidenav-badge-slate-gray-100 {
+        @include hc-color-bg($slate-gray-100);
+        color: $offblack;
+    }
+    &.hc-sidenav-badge-slate-gray-200 {
+        @include hc-color-bg($slate-gray-200);
+        color: $offblack;
+    }
+    &.hc-sidenav-badge-slate-gray-300 {
+        @include hc-color-bg($slate-gray-300);
+    }
+    &.hc-sidenav-badge-slate-gray-400 {
+        @include hc-color-bg($slate-gray-400);
+    }
+    &.hc-sidenav-badge-slate-gray-500 {
+        @include hc-color-bg($slate-gray-500);
+    }
+    &.hc-sidenav-badge-slate-gray-600 {
+        @include hc-color-bg($slate-gray-600);
+    }
+    &.hc-sidenav-badge-gray-100 {
+        @include hc-color-bg($gray-100);
+        color: $offblack;
+    }
+    &.hc-sidenav-badge-gray-200 {
+        @include hc-color-bg($gray-200);
+        color: $offblack;
+    }
+    &.hc-sidenav-badge-gray-300 {
+        @include hc-color-bg($gray-300);
+    }
+    &.hc-sidenav-badge-gray-400 {
+        @include hc-color-bg($gray-400);
+    }
+    &.hc-sidenav-badge-gray-500 {
+        @include hc-color-bg($gray-500);
+    }
+    &.hc-sidenav-badge-gray-600 {
+        @include hc-color-bg($gray-600);
+    }
 }

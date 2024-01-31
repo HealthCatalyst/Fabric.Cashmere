@@ -13,14 +13,16 @@ import { SidenavLink, SidenavLinkClickEvent } from '@healthcatalyst/cashmere';
 export class SidenavExampleComponent {
     isLoadingTabs: FormControl = new FormControl(false);
     isLoadingFavs: FormControl = new FormControl(false);
+    isDarkMode: FormControl = new FormControl(false);
+    width: FormControl = new FormControl('260px');
     collapsed = false;
     eventsLog: string[] = [];
     tabs: SidenavLink[] = [
-        new SidenavLink({title: 'Home', iconClass: 'fa fa-home', description: 'User\'s home dashboard'}),
+        new SidenavLink({title: 'Home', iconClass: 'fa fa-home', description: 'User\'s home dashboard', badgeHTML: '<span title="I am number 4">4</span>', badgeColor: 'slate-gray-300'}),
         new SidenavLink({title: 'Land', iconClass: 'fa fa-car', description: 'Travel by land', subText: "$"}),
         new SidenavLink({title: 'Sky', iconClass: 'fa fa-plane', description: 'Travel by sky', subText: "$$"}),
         new SidenavLink({title: 'Sea', iconClass: 'fa fa-ship', description: 'Travel by sea', subText: "$"}),
-        new SidenavLink({title: 'Space', iconClass: 'fa fa-rocket', description: 'Travel amongst the stars', subText: "$$$"}),
+        new SidenavLink({title: 'Space', labelHTML: '<em>Space</em>', iconClass: 'fa fa-rocket', description: 'Travel amongst the stars', subText: "$$$"}),
     ]
     favs: SidenavLink[] = [
         new SidenavLink({title: 'Toyota Tacoma', iconClass: 'fa fa-car fav-travel-ico fav-ico-teal', description: 'Solid mid-size pickup'}),

@@ -83,8 +83,14 @@
     &.hc-button-teal {
         @include hc-button-custom( $teal );
     }
+    &.hc-button-ai-green {
+        @include hc-button-custom( $ai-green );
+    }
     &.hc-button-dark-green {
         @include hc-button-custom( $dark-green );
+    }
+    &.hc-button-light-green {
+        @include hc-button-custom( $light-green );
     }
     &.hc-button-brown {
         @include hc-button-custom( $brown );
@@ -100,6 +106,60 @@
     }
     &.hc-button-tan {
         @include hc-button-custom( $tan );
+    }
+    &.hc-button-white {
+        @include hc-button-custom( $white );
+    }
+    &.hc-button-black {
+        @include hc-button-custom( $black);
+    }
+    &.hc-button-offblack {
+        @include hc-button-custom( $offblack );
+    }
+    &.hc-button-shadow {
+        @include hc-button-custom( $shadow );
+    }
+    &.hc-button-dark-blue {
+        @include hc-button-custom( $dark-blue );
+    }
+    &.hc-button-charcoal-blue {
+        @include hc-button-custom( $charcoal-blue );
+    }
+    &.hc-button-slate-gray-100 {
+        @include hc-button-custom( $slate-gray-100 );
+    }
+    &.hc-button-slate-gray-200 {
+        @include hc-button-custom( $slate-gray-200 );
+    }
+    &.hc-button-slate-gray-300 {
+        @include hc-button-custom( $slate-gray-300);
+    }
+    &.hc-button-slate-gray-400 {
+        @include hc-button-custom( $slate-gray-400);
+    }
+    &.hc-button-slate-gray-500 {
+        @include hc-button-custom( $slate-gray-500);
+    }
+    &.hc-button-slate-gray-600 {
+        @include hc-button-custom( $slate-gray-600);
+    }
+    &.hc-button-gray-100 {
+        @include hc-button-custom( $gray-100 );
+    }
+    &.hc-button-gray-200 {
+        @include hc-button-custom( $gray-200 );
+    }
+    &.hc-button-gray-300 {
+        @include hc-button-custom( $gray-300);
+    }
+    &.hc-button-gray-400 {
+        @include hc-button-custom( $gray-400);
+    }
+    &.hc-button-gray-500 {
+        @include hc-button-custom( $gray-500);
+    }
+    &.hc-button-gray-600 {
+        @include hc-button-custom( $gray-600);
     }
 }
 

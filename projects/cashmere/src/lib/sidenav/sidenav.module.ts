@@ -6,10 +6,12 @@ import { ProgressIndicatorsModule } from '../progress-indicators';
 import { ButtonModule } from '../button';
 import { PopModule } from '../pop';
 import { SidenavHeaderDirective } from './sidenav-header.directive';
+import { SidenavBodyDirective } from './sidenav-body.directive';
+import { SidenavFooterDirective } from './sidenav-footer.directive';
 
 @NgModule({
     imports: [CommonModule, ProgressIndicatorsModule, ButtonModule, PopModule, RouterModule],
-    exports: [SidenavComponent, SidenavHeaderDirective],
-    declarations: [SidenavComponent, SidenavHeaderDirective]
+    exports: [SidenavComponent, SidenavHeaderDirective, SidenavBodyDirective, SidenavFooterDirective],
+    declarations: [SidenavComponent, SidenavHeaderDirective, SidenavBodyDirective, SidenavFooterDirective]
 })
 export class SidenavModule {}

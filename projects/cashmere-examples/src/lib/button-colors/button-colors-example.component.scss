@@ -5,3 +5,13 @@ button {
 .example-color-description {
     font-size: 14px;
 }
+
+.you-choose-button-color {
+    display: flex;
+    background-color: #f0f3f6;
+    padding: 16px;
+    width: 400px;
+    align-items: center;
+    margin-top: 16px;
+    border-radius: 4px;
+}

@@ -11,10 +11,11 @@ import {
     ContentChildren
 } from '@angular/core';
 import type {QueryList} from '@angular/core';
-import {parseBooleanAttribute} from '../../util';
-import {validateStyleInput, validateSizeInput, ButtonComponent} from '../button.component';
+import {parseBooleanAttribute, validateInput} from '../../util';
+import {ButtonComponent, supportedSizes} from '../button.component';
 import {HcPopComponent} from '../../pop/popover.component';
 import {MenuItemDirective} from '../../pop/directives/menu-item.directive';
+import { supportedColors } from '../../utils/supported-colors';
 
 const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline'];
 
@@ -92,7 +93,7 @@ export class SplitButtonComponent {
     }
 
     set buttonStyle(btnStyle: string) {
-        validateStyleInput(btnStyle, 'SplitButtonComponent');
+        validateInput(btnStyle, supportedColors.concat(supportedStyles), 'buttonStyle', 'SplitButtonComponent');
         if ( supportedStyles.indexOf(btnStyle) < 0 ) {
             btnStyle = "button-" + btnStyle;
         }
@@ -106,7 +107,7 @@ export class SplitButtonComponent {
     }
 
     set size(size: string) {
-        validateSizeInput(size, 'SplitButtonComponent');
+        validateInput(size, supportedSizes, 'size', 'SplitButtonComponent');
         this._size = size;
     }
 

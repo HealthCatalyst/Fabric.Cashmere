@@ -64,3 +64,14 @@ export const untilDestroyed = (componentInstance, destroyMethodName = 'ngOnDestr
     }
     return source.pipe(takeUntil<T>(componentInstance['__takeUntilDestroy']));
 };
+
+export function hcClassify(style: string): string {
+    return `hc-${style}`;
+}
+
+export function validateInput<T>(input: T, validOptions: T[], inputName: string, component: string): void {
+    if (validOptions.indexOf(input) < 0) {
+        throw Error(`Unsupported ${inputName || 'input'} attribute value on ${component || 'cashmere component'}: ${input} \n
+        The following are valid options: ${validOptions.join(', ')}`);
+    }
+}
