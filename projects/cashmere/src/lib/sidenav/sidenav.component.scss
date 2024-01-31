@@ -4,8 +4,45 @@
     @include hc-sidenav();
 }
 
+.hc-sidenav-inner {
+    @include hc-sidenav-inner();
+}
+
 .hc-sidenav-tabs {
     @include hc-sidenav-tabs();
+}
+
+.hc-sidenav-dark {
+    @include hc-sidenav-dark();
+
+    .hc-sidenav-tab {
+        @include hc-sidenav-tab-dark();
+
+        &.active-tab, &.hc-sidenav-active-tab {
+            @include hc-sidenav-tab-active-dark();
+        }
+    }
+    .hc-sidenav-empty-msg .hc-sidenav-empty-ico.hc-ico-star,
+    .hc-ico-star {
+        @include hc-sidenav-ico-star();
+        @include hc-sidenav-ico-star-dark();
+    }
+
+    .hc-button.hc-sidenav-state-btn.hc-md {
+        @include hc-sidenav-state-btn-dark();
+    }
+
+    .hc-sidenav-favs-collapsed-menu-ico, .hc-sidenav-tab-group-collapsed-menu-ico {
+        @include hc-sidenav-collapsed-favs-menu-ico-dark();
+    }
+
+    .hc-sidenav-empty-msg {
+        @include hc-sidenav-empty-msg-dark();
+    }
+
+    .hc-sidenav-empty-msg .hc-sidenav-empty-description {
+        @include hc-sidenav-empty-description-dark();
+    }
 }
 
 .hc-sidenav-tab {
@@ -15,8 +52,12 @@
         @include hc-sidenav-tab-active();
     }
 
-    &.disabled-tab {
+    &.hc-sidenav-disabled-tab {
         @include hc-sidenav-tab-disabled();
+    }
+
+    &.hc-sidenav-unclickable-tab {
+        @include hc-sidenav-tab-unclickable();
     }
 
     .hc-sidenav-tab-inner {
@@ -37,46 +78,22 @@
 }
 
 .hc-sidenav-favs {
-    @include hc-sidenav-favs();
+    @include hc-sidenav-tab-group();
 
     .hc-sidenav-favs-header {
-        @include hc-sidenav-favs-header();
+        @include hc-sidenav-tab-group-header();
     }
 
     .hc-sidenav-favs-list-container {
-        @include hc-sidenav-favs-list-container();
-    }
-
-    .hc-sidenav-fav-bottom {
-        @include hc-sidenav-favs-bottom();
+        @include hc-sidenav-tab-group-list-container();
     }
 
     .hc-sidenav-favs-list-container-inner {
-        @include hc-sidenav-favs-list-container-inner();
+        @include hc-sidenav-tab-group-list-container-inner();
     }
 
-    .hc-sidenav-fav-item {
-        @include hc-sidenav-fav-item();
-
-        &.disabled-fav-item {
-            @include hc-sidenav-fav-item-disabled();
-        }
-    }
-
-    .hc-sidenav-fav-item-ico {
-        @include hc-sidenav-fav-item-ico();
-    }
-
-    .hc-sidenav-fav-item-name-wrapper {
-        @include hc-sidenav-fav-item-name-wrapper();
-    }
-
-    .hc-sidenav-fav-subtext {
-        @include hc-sidenav-fav-item-subtext();
-    }
-
-    .hc-sidenav-fav-item-inner {
-        @include hc-sidenav-fav-item-inner();
+    .hc-sidenav-tab {
+        @include hc-sidenav-favs-item();
     }
 
     hc-progress-dots {
@@ -88,6 +105,7 @@
     @include hc-sidenav-fav-action-ico-btn();
 }
 
+.hc-sidenav-empty-msg .hc-sidenav-empty-ico.hc-ico-star,
 .hc-ico-star {
     @include hc-sidenav-ico-star();
 }
@@ -117,19 +135,43 @@
 }
 
 .hc-sidenav-collapsed .hc-sidenav-favs hc-progress-dots {
-    @include hc-sidenav-collapsed-favs();
+    @include hc-sidenav-collapsed-tab-group();
 }
 
-.hc-sidenav-favs-collapsed-menu-btn {
-    @include hc-sidenav-collapsed-favs-menu-btn();
+.hc-sidenav-favs-collapsed-menu-btn,
+.hc-sidenav-tab-group-collapsed-menu-btn {
+    @include hc-sidenav-collapsed-tab-group-menu-btn();
 }
 
-.hc-sidenav-favs-collapsed-menu-ico {
-    @include hc-sidenav-collapsed-favs-menu-ico();
+.hc-sidenav-favs-collapsed-menu-ico,
+.hc-sidenav-tab-group-collapsed-menu-ico {
+    @include hc-sidenav-collapsed-tab-group-menu-ico();
 
     .hc-ico-star {
         @include hc-sidenav-collapsed-favs-menu-ico-star();
     }
+}
+
+/** tab groups */
+.hc-sidenav-tab-group {
+    @include hc-sidenav-tab-group();
+
+    .hc-sidenav-tab-group-header {
+        @include hc-sidenav-tab-group-header();
+    }
+
+    .hc-sidenav-tab-group-list-container {
+        @include hc-sidenav-tab-group-list-container();
+    }
+
+    .hc-sidenav-tab-group-list-container-inner {
+        @include hc-sidenav-tab-group-list-container-inner();
+    }
+}
+
+/** badges */
+.hc-sidenav-badge {
+    @include hc-sidenav-badge();
 }
 
 .hc-button.hc-sidenav-state-btn.hc-md {
@@ -146,4 +188,177 @@
     &.hc-sidenav-state-btn-expanded {
         @include hc-ico-chev-blue-expanded();
     }
+}
+
+/** child tabs */
+.hc-sidenav-tabs-nested .hc-sidenav-tab,
+.hc-sidenav-tab-group-nested .hc-sidenav-tab {
+    @include hc-sidenav-child-tabs();
+}
+
+.hc-sidenav-tab-children {
+    @include hc-sidenav-tab-children();
+
+    &.hc-sidenav-tab-open {
+        @include hc-sidenav-tab-open();
+    }
+}
+
+.hc-sidenav-no-collapsing-links .hc-sidenav-tab-children {
+    @include hc-sidenav-no-collapse-nested-links();
+}
+
+.hc-sidenav-collapsed {
+    .hc-sidenav-tab-children,
+    .hc-sidenav-tab-chev-container {
+        @include hc-sidenav-collapsed-children();
+    }
+
+    .nested-link-submenu-container {
+        .hc-sidenav-tab-children { @include nested-link-submenu-children(); }
+        .hc-sidenav-tab-chev-container { @include nested-link-submenu-chev-container(); }
+        .hc-sidenav-tab-name {
+            @include nested-link-submenu-tab-name();
+        }
+    }
+}
+
+.hc-sidenav-tab-children .hc-sidenav-tab {
+    @include hc-sidenav-child-tab();
+
+    .hc-sidenav-tab-ico {
+        @include hc-sidenav-child-tab-ico();
+    }
+}
+
+.hc-sidenav-tab-chev-container {
+    @include hc-sidenav-tab-chev-container();
+
+    &:hover .hc-sidenav-tab-chevron {
+        @include hc-sidenav-tab-chev-container-hover-chev();
+    }
+
+    .hc-sidenav-tab-chevron {
+        @include hc-sidenav-tab-chevron();
+
+        &.hc-sidenav-chev-tab-open {
+            @include hc-sidenav-chev-tab-open();
+        }
+    }
+}
+
+// spacing nested tabs
+.hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab { @include hc-sidenav-tab-child-tab-2(); }
+.hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab { @include hc-sidenav-tab-child-tab-3(); }
+.hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab { @include hc-sidenav-tab-child-tab-4(); }
+.hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab { @include hc-sidenav-tab-child-tab-5(); }
+.hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab-children .hc-sidenav-tab { @include hc-sidenav-tab-child-tab-6(); }
+
+// drawing tree node lines
+.hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert {
+    @include hc-sidenav-tab-tree-line-vert-nested();
+
+    &:last-child {
+        .hc-sidenav-tab-tree-line-horz:after {
+            @include hc-sidenav-tab-tree-line-vert-last-child-helper()
+        }
+    }
+
+    .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-horz:after {
+        @include hc-sidenav-tab-tree-line-vert-last-child-helper2();
+    }
+}
+
+.hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert:before { @include hc-sidenav-tab-tree-line-vert-line-2(); }
+.hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert:before { @include hc-sidenav-tab-tree-line-vert-line-3(); }
+.hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert:before { @include hc-sidenav-tab-tree-line-vert-line-4(); }
+.hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert:before { @include hc-sidenav-tab-tree-line-vert-line-5(); }
+.hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert:before { @include hc-sidenav-tab-tree-line-vert-line-6(); }
+
+.hc-sidenav-tab-tree-line-horz {
+    @include hc-sidenav-tab-tree-line-horz-container();
+}
+
+.hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-horz:before {
+    @include hc-sidenav-tab-tree-line-horz();
+}
+
+
+.hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-horz:before {
+    @include hc-sidenav-tab-tree-line-horz2();
+}
+
+.hc-sidenav-tab-tree-line-vert.hc-sidenav-no-tree-lines {
+    &:before,
+    .hc-sidenav-tab-tree-line-vert:last-child .hc-sidenav-tab-tree-line-horz:after,
+    .hc-sidenav-tab-tree-line-horz:before { @include hc-sidenav-no-tree-lines(); }
+}
+
+.hc-sidenav-dark {
+    .hc-sidenav-tab-tree-line-vert {
+        &:before,
+        .hc-sidenav-tab-tree-line-vert:last-child .hc-sidenav-tab-tree-line-horz:after,
+        .hc-sidenav-tab-tree-line-horz:before { @include hc-sidenav-tree-lines-dark(); }
+    }
+
+    .hc-sidenav-tab-chev-container {
+        .hc-sidenav-tab-chevron {
+            @include hc-sidenav-chev-dark();
+
+            &.hc-sidenav-chev-tab-open {
+                @include hc-sidenav-chev-dark-open();
+            }
+        }
+
+        @include hc-sidenav-chev-dark-container();
+    }
+}
+
+.hc-sidenav-tab-tree-line-vert {
+    @include hc-sidenav-tab-tree-line-vert();
+}
+
+.nested-link-submenu-container {
+    @include hc-sidenav-nested-link-submenu-container();
+}
+
+.nested-link-submenu-header {
+    @include hc-sidenav-nested-link-submenu-header();
+
+    .nested-link-submenu-header-ico {
+        @include hc-sidenav-nested-link-submenu-header-ico();
+    }
+
+    &.nest-link-submenu-header-clickable {
+        @include hc-sidenav-nested-link-submenu-header-clickable();
+    }
+}
+
+.nested-link-submenu {
+    @include hc-sidenav-nested-link-submenu();
+
+    &:not(.nested-link-submenu-embedded) {
+        @include hc-sidenav-nested-link-submenu-nonembedded();
+    }
+
+    .hc-sidenav-tab-children .hc-sidenav-tab {
+        @include hc-sidenav-nested-link-submenu-child-tab();
+    }
+
+    .hc-sidenav-tab-tree-line-vert:before,
+    .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-horz:before,
+    .hc-sidenav-tab-tree-line-vert:last-child .hc-sidenav-tab-tree-line-horz:after {
+        @include hc-sidenav-nested-link-hidden-tree-lines();
+    }
+
+    .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert:before,
+    .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert:last-child .hc-sidenav-tab-tree-line-horz:after,
+    .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-vert .hc-sidenav-tab-tree-line-horz:before {
+        @include hc-sidenav-nested-link-shown-tree-lines();
+    }
+}
+
+.hc-sidenav-tab-tree-line-vert:hover > .nested-link-submenu-container,
+.hc-sidenav-link-menu-item:hover > .nested-link-submenu-container {
+    @include hc-sidenav-menu-items-show();
 }

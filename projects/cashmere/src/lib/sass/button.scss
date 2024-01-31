@@ -10,9 +10,8 @@ $btn-icon-sz: 18px;
 /// @param {Number} $darken-pct - percentage amount by which to darken color in hover(1x) and active(2x) states
 /// @return {Color}
 
-@mixin hc-color-button($color, $darken-pct: 10%, $text-color: $white) {
-    color: $text-color;
-    background-color: $color;
+@mixin hc-color-button($color, $darken-pct: 10%) {
+    @include hc-color-bg($color);
 
     &:focus {
         background-color: shade($color, $darken-pct * 2);
@@ -20,11 +19,9 @@ $btn-icon-sz: 18px;
     }
     &:hover {
         background-color: shade($color, $darken-pct);
-        color: $text-color;
     }
     &:active {
         background-color: shade($color, $darken-pct * 2);
-        color: $text-color;
     }
 
     &[disabled],
@@ -369,6 +366,6 @@ $btn-icon-sz: 18px;
 
 // Additional color options when more than the standards are needed
 
-@mixin hc-button-custom( $color, $darken-pct: 10%, $text-color: $white ) {
-    @include hc-color-button( $color, 10%, $text-color );
+@mixin hc-button-custom( $color, $darken-pct: 10%) {
+    @include hc-color-button( $color, 10%);
 }

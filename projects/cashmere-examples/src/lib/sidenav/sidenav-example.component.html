@@ -2,6 +2,8 @@
 
     <hc-sidenav
         [tabs]="tabs"
+        [width]="width.value"
+        [darkMode]="isDarkMode.value"
         [isLoadingTabs]="isLoadingTabs.value"
         (tabClicked)="onTabClick($event)"
         [favorites]="favs"
@@ -15,6 +17,11 @@
     <div class="example-app-content">
         <hc-checkbox [formControl]="isLoadingTabs">Simulate tabs loading</hc-checkbox>
         <hc-checkbox [formControl]="isLoadingFavs">Simulate favorites loading</hc-checkbox>
+        <hc-checkbox [formControl]="isDarkMode">Dark mode</hc-checkbox>
+        <hc-form-field [inline]="true" [tight]="true">
+            <hc-label>Width</hc-label>
+            <input hcInput [formControl]="width" placeholder="260px"/>
+        </hc-form-field>
         <hc-slide-toggle buttonSize="sm" [(ngModel)]="collapsed" insideLabel="yes" sideLabel="Collapsed"></hc-slide-toggle>
         <h4>Events:</h4>
         <div class="event-log">

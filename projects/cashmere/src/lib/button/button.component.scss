@@ -99,7 +99,7 @@
         @include hc-button-custom( $purple-gray );
     }
     &.hc-button-yellow {
-        @include hc-button-custom( $yellow, 10%, $offblack );
+        @include hc-button-custom( $yellow );
     }
     &.hc-button-yellow-orange {
         @include hc-button-custom( $yellow-orange );
@@ -108,7 +108,7 @@
         @include hc-button-custom( $tan );
     }
     &.hc-button-white {
-        @include hc-button-custom( $white, 10%, $offblack );
+        @include hc-button-custom( $white );
     }
     &.hc-button-black {
         @include hc-button-custom( $black);
@@ -117,7 +117,7 @@
         @include hc-button-custom( $offblack );
     }
     &.hc-button-shadow {
-        @include hc-button-custom( $shadow, 10%, $offblack );
+        @include hc-button-custom( $shadow );
     }
     &.hc-button-dark-blue {
         @include hc-button-custom( $dark-blue );
@@ -126,10 +126,10 @@
         @include hc-button-custom( $charcoal-blue );
     }
     &.hc-button-slate-gray-100 {
-        @include hc-button-custom( $slate-gray-100, 10%, $offblack );
+        @include hc-button-custom( $slate-gray-100 );
     }
     &.hc-button-slate-gray-200 {
-        @include hc-button-custom( $slate-gray-200, 10%, $offblack );
+        @include hc-button-custom( $slate-gray-200 );
     }
     &.hc-button-slate-gray-300 {
         @include hc-button-custom( $slate-gray-300);
@@ -144,10 +144,10 @@
         @include hc-button-custom( $slate-gray-600);
     }
     &.hc-button-gray-100 {
-        @include hc-button-custom( $gray-100, 10%, $offblack );
+        @include hc-button-custom( $gray-100 );
     }
     &.hc-button-gray-200 {
-        @include hc-button-custom( $gray-200, 10%, $offblack );
+        @include hc-button-custom( $gray-200 );
     }
     &.hc-button-gray-300 {
         @include hc-button-custom( $gray-300);

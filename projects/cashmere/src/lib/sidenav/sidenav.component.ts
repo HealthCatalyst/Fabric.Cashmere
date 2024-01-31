@@ -1,5 +1,7 @@
 import {Component, Input, ViewEncapsulation, EventEmitter, Output} from '@angular/core';
-import { SidenavLink, SidenavLinkClickEvent } from './sidenav.models';
+import { LinkParent, SidenavLink, SidenavLinkClickEvent, SidenavTabGroup } from './sidenav.models';
+import { isDefined } from '../util';
+import { HcPopComponent } from '../pop';
 
 /** Component for standard sidebar navigation */
 @Component({
@@ -11,21 +13,65 @@ import { SidenavLink, SidenavLinkClickEvent } from './sidenav.models';
 export class SidenavComponent {
     /** Add a custom css class to the sidebar container. */
     @Input() containerCssClass = '';
+    /** Set width of the sidebar. Include unit. Can be pixels, rem, em, etc. Default is 260px */
+    @Input() width = '260px';
+    /** True for a darker sidebar navigation. *Defaults to `false`.* */
+    @Input() public darkMode = false;
     /** If true, collapse the sidebar to a minimal width. Defaults to false. */
     @Input() collapsed = false;
     /** Event triggered when the sidebar is expanded or collapsed. */
     @Output() collapsedChange = new EventEmitter<boolean>();
     /** If true, sidebar can toggle between collapsed and expanded. Will have an expand/collapse button. Defaults to true. */
     @Input() canToggle = true;
-    /** Collection of objects representing the links in the sidenav. */
+    /** True if nested children should be shown by default. *Defaults to `false`.* */
+    @Input() set openChildrenByDefault(openByDefault: boolean) {
+        this.toggleAllNestedLinks(openByDefault);
+        this._openChildrenByDefault = isDefined(openByDefault) ? openByDefault : false;
+    }
+    get openChildrenByDefault(): boolean {
+        return this._openChildrenByDefault;
+    }
+    private _openChildrenByDefault = false;
+    /** True if nested children should be hideable. Overrides `openChildrenByDefault` and `openChildrenWhenActive`. *Defaults to `true`.* */
+    @Input() set collapsibleChildren(collapsible: boolean) {
+        this._collapsibleChildren = isDefined(collapsible) ? collapsible : true;
+        if (!this._collapsibleChildren) {
+            this.openAllNestedLinks();
+        }
+    }
+    get collapsibleChildren(): boolean {
+        return this._collapsibleChildren;
+    }
+    private _collapsibleChildren = true;
+
+    /** True if nested children should be shown if the link is active. Overrides `openChildrenByDefault`. *Defaults to `true`.* */
+    @Input() openChildrenWhenActivated = true;
+    /** True to show lines of tree structure. *Defaults to `true`.* */
+    @Input() showTreeLines = true
+    /** Collection of objects representing the main links in the sidenav. */
     @Input() set tabs(tabs: SidenavLink[]) {
         this._tabs = tabs;
         this.activeTabKey = this.activeTabKey || tabs[0]?.key || '';
+        this.hasNestedLinks = this.tabs.some(tab => tab.children?.length > 0);
+        this.toggleAllNestedLinks(this.openChildrenByDefault);
     }
     get tabs(): SidenavLink[] {
         return this._tabs;
     }
     private _tabs: SidenavLink[] = [];
+
+    /** Collection of tabGroups. These are styled like the main tabs, but are grouped together under a separate header. */
+    @Input() set tabGroups(tabGroups: SidenavTabGroup[]) {
+        this._tabGroups = tabGroups;
+    }
+    get tabGroups(): SidenavTabGroup[] {
+        return this._tabGroups;
+    }
+    private _tabGroups: SidenavTabGroup[] = [];
+
+    /** @docs-private */
+    hasNestedLinks = false;
+
     /** True to show loading indicator for tabs. Use while data is loading to show tabs */
     @Input() isLoadingTabs = false;
     /** Event triggered when a tab is clicked. */
@@ -60,6 +106,8 @@ export class SidenavComponent {
 
     /** @docs-private */
     tabTooltipText = ''
+    /** @docs-private */
+    menuContext: {links?: SidenavLink[], title?: string, titleIco?: string, parent?: LinkParent, isFav: boolean};
 
     /** Expand the sidebar to full width. */
     open(): void {
@@ -86,10 +134,15 @@ export class SidenavComponent {
     }
 
     /** @docs-private */
-    onTabClick(event: MouseEvent, link: SidenavLink): void {
-        if (link.disabled) { return; }
+    onTabClick(event: MouseEvent, link: SidenavLink, isInsideMenu = false): void {
+        const tabTriggersMenu = !isInsideMenu && this.collapsed && link.children?.length > 0 && !link.parent;
+        if (link.disabled || !link.clickable || tabTriggersMenu) { return; }
         this.tabClicked.emit({event, link});
         this.activeTabKey = link.key;
+
+        if (link.children?.length > 0 && this.openChildrenWhenActivated) {
+            link.open = true;
+        }
 
         if (!link.onClick) { return; }
         link.onClick(event, link);
@@ -97,7 +150,7 @@ export class SidenavComponent {
 
     /** @docs-private */
     onFavoriteClicked(event: MouseEvent, link: SidenavLink): void {
-        if (link.disabled) { return; }
+        if (link.disabled || !link.clickable) { return; }
         this.favoriteClicked.emit({event, link});
 
         if (!link.onClick) { return; }
@@ -113,5 +166,33 @@ export class SidenavComponent {
     /** @docs-private */
     public trackContentItem(index: number, item: SidenavLink): string | undefined {
         return item.key;
+    }
+
+    /** @docs-private */
+    public childrenChevClicked(tab: SidenavLink, event: MouseEvent): void {
+        event.stopPropagation();
+        if (this.collapsibleChildren) {
+            tab.open = !tab.open;
+        }
+    }
+
+    public toggleAllNestedLinks(shouldOpen = true): void {
+        this.tabs.forEach(tab => this.toggleLinkAndChildren(tab, shouldOpen));
+    }
+
+    public collapseAllNestedLinks(): void {
+        if(!this.collapsibleChildren) {
+            return;
+        }
+        this.toggleAllNestedLinks(false);
+    }
+
+    public openAllNestedLinks(): void {
+        this.toggleAllNestedLinks(true);
+    }
+
+    private toggleLinkAndChildren(link: SidenavLink, shouldOpen: boolean): void {
+        link.open = shouldOpen;
+        link.children?.forEach(child => this.toggleLinkAndChildren(child, shouldOpen));
     }
 }

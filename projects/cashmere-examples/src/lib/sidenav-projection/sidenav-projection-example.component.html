@@ -1,7 +1,6 @@
 <div class="sidenav-example-app-shell">
 
     <hc-sidenav
-        [tabs]="tabs"
         [canToggle]="false"
         [showFavorites]="false"
     >
@@ -10,14 +9,42 @@
             <h2><span class="fa fa-bank hc-icon-left"></span>Weather Data Bank</h2>
         </div>
 
-        <!-- Projected content -->
-        <button hc-button buttonStyle="deep-red" class="example-report-widget">
+        <!-- Projected body -->
+        <div hcSidenavBody class="example-sidenav-body">
+            <h4>Weather Conditions</h4>
+            <div class="sq-example-btn-container">
+                <button hc-button buttonStyle="minimal" class="sq-example-btn">
+                    <span class="fa fa-sun-o hc-icon-left"></span>Sunny
+                </button>
+                <button hc-button buttonStyle="minimal" class="sq-example-btn">
+                    <span class="fa fa-cloud hc-icon-left"></span>Cloudy
+                </button>
+                <button hc-button buttonStyle="minimal" class="sq-example-btn">
+                    <span class="fa fa-bolt hc-icon-left"></span>Stormy
+                </button>
+                <button hc-button buttonStyle="minimal" class="sq-example-btn">
+                    <span class="fa fa-snowflake-o hc-icon-left"></span>Snowy
+                </button>
+                <button hc-button buttonStyle="minimal" class="sq-example-btn">
+                    <span class="fa fa-thermometer-half hc-icon-left"></span>Temp
+                </button>
+                <button hc-button buttonStyle="minimal" class="sq-example-btn">
+                    <span class="fa fa-tint hc-icon-left"></span>Humidity
+                </button>
+                <button hc-button buttonStyle="minimal" class="sq-example-btn">
+                    <span class="fa fa-tachometer hc-icon-left"></span>Wind
+                </button>
+            </div>
+        </div>
+
+        <!-- Projected footer -->
+        <button hcSidenavFooter hc-button buttonStyle="deep-red" class="example-report-widget">
             <span class="fa fa-bullhorn hc-icon-left"></span>Report weather
         </button>
 
     </hc-sidenav>
 
     <div class="example-app-content">
-        <p>This example demonstrates using content projection to add a <strong>header</strong> and <strong>report widget.</strong></p>
+        <p>This example demonstrates using content projection to add a custom <strong>header</strong>, <strong>body</strong>, and <strong>footer</strong>.</p>
     </div>
 </div>
