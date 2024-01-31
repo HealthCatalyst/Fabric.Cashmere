@@ -13,11 +13,12 @@ import type { QueryList } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ButtonToggleChangeEvent } from './button-toggle-change-event';
-import { parseBooleanAttribute } from '../util';
+import { parseBooleanAttribute, validateInput } from '../util';
 import { ButtonToggleComponent } from './button-toggle.component';
-import { validateStyleInput, validateSizeInput, supportedStyles } from '../button/button.component';
+import { supportedSizes, supportedStyles } from '../button/button.component';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { HcFormControlComponent } from '../form-field/hc-form-control.component';
+import { supportedColors } from '../utils/supported-colors';
 
 
 /** `hc-button-toggle-group` components are on/off toggles with the appearance of an `hc-button`.
@@ -58,7 +59,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         return this._style;
     }
     set buttonStyle(val: string) {
-        validateStyleInput(val, 'ButtonToggleGroupComponent');
+        validateInput(val, supportedColors.concat(supportedStyles), 'buttonStyle', 'ButtonToggleComponent');
         if (supportedStyles.indexOf(val) < 0) {
             val = "button-" + val;
         }
@@ -85,7 +86,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
     }
 
     set size(size: string) {
-        validateSizeInput(size, 'ButtonToggleGroupComponent');
+        validateInput(size, supportedSizes, 'size', 'ButtonToggleGroupComponent');
         this._size = size;
         this._updateButtonStyle();
     }

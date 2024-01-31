@@ -1,22 +1,9 @@
 import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, Renderer2, ViewEncapsulation} from '@angular/core';
-import {parseBooleanAttribute} from '../util';
+import {parseBooleanAttribute, validateInput, hcClassify} from '../util';
+import {supportedColors} from '../utils/supported-colors';
 
 export const supportedStyles = ['primary', 'primary-alt', 'destructive', 'neutral', 'secondary', 'minimal', 'link', 'link-inline', 'pagination'];
-const supportedColors = ['blue', 'green', 'purple', 'red', 'orange', 'ruby-red', 'deep-red', 'red-orange', 'magenta', 'pink', 'light-pink', 'azure', 'teal', 'dark-green', 'brown', 'purple-gray', 'yellow', 'yellow-orange', 'tan'];
-const supportedSizes = ['sm', 'md', 'lg'];
-
-export function validateStyleInput(style: string, component: string): void {
-    if (supportedStyles.indexOf(style) < 0 && supportedColors.indexOf(style) < 0) {
-        throw Error('Unsupported buttonStyle attribute value on ' + component + ': ' + style);
-    }
-}
-
-export function validateSizeInput(size: string, component: string): void {
-    if (supportedSizes.indexOf(size) < 0) {
-        throw Error('Unsupported size attribute value on ' + component + ': ' + size);
-    }
-}
-
+export const supportedSizes = ['sm', 'md', 'lg'];
 const buttonAttributes = ['hc-icon-button', 'hc-button'];
 
 /** Cashmere styled button */
@@ -35,14 +22,14 @@ export class ButtonComponent {
 
     /** Sets style of button. Choose from: `'primary' | 'primary-alt' | 'destructive' |
      * 'neutral' | 'secondary' | 'minimal' | link' | 'link-inline'`. If needed, colors from
-     * the primary or secondary palette may be used as well (e.g. 'pink', 'red-orange', etc) */
+     * the primary, secondary, or neutral palette may be used as well (e.g. 'pink', 'red-orange', etc) */
     @Input()
     get buttonStyle(): string {
         return this._style;
     }
 
     set buttonStyle(btnStyle: string) {
-        validateStyleInput(btnStyle, 'ButtonComponent');
+        validateInput(btnStyle, supportedColors.concat(supportedStyles), 'buttonStyle', 'ButtonComponent');
         if ( supportedStyles.indexOf(btnStyle) < 0 ) {
             btnStyle = "button-" + btnStyle;
         }
@@ -57,7 +44,7 @@ export class ButtonComponent {
     }
 
     set size(size: string) {
-        validateSizeInput(size, 'ButtonComponent');
+        validateInput(size, supportedSizes, 'size', 'ButtonComponent');
         this.setHostClass(this._size, size);
         this._size = size;
     }
@@ -96,13 +83,11 @@ export class ButtonComponent {
     private setHostClass(previous: string, current) {
         if (previous !== current) {
             if (previous) {
-                this.renderer.removeClass(this.elementRef.nativeElement, this._hcClassify(previous));
+                this.renderer.removeClass(this.elementRef.nativeElement, hcClassify(previous));
             }
-            this.renderer.addClass(this.elementRef.nativeElement, this._hcClassify(current));
+            this.renderer.addClass(this.elementRef.nativeElement, hcClassify(current));
         }
     }
 
-    private _hcClassify(style: string): string {
-        return `hc-${style}`;
-    }
+
 }

@@ -1,0 +1,28 @@
+@import "@healthcatalyst/cashmere/scss/_colors";
+
+// Example skeleton layout
+.sidenav-example-app-shell {
+    display: flex;
+    height: 500px;
+
+    ::ng-deep .hc-sidenav {
+        height: 100%;
+    }
+
+    .example-app-content {
+        flex: 1 0 auto;
+        padding: 16px;
+        background-color: $slate-gray-100;
+    }
+
+    h4 {
+        margin-bottom: 4px;
+    }
+
+    button {
+        margin-top: 8px;
+    }
+    p {
+        margin-bottom: 24px;
+    }
+}

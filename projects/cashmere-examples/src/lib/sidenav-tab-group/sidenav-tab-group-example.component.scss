@@ -10,7 +10,7 @@
     }
 
     .example-app-content {
-        flex: 1 0 auto;
+        flex: 1 0 calc(100% - 260px);
         padding: 16px;
         background-color: $slate-gray-100;
     }
@@ -19,18 +19,13 @@
         margin-bottom: 4px;
     }
 
-    hc-slide-toggle {
-        display: inline-block;
-        margin-top: 8px;
-    }
-
     // logging output
     .event-log {
         border: 1px solid $gray-200;
         background-color: darken($slate-gray-100, 2%);
-        width: 100%;
+        width: 50%;
         min-width: 250px;
-        height: 240px;
+        height: 275px;
         overflow-y: auto;
         border-radius: 4px;
         padding: 8px;

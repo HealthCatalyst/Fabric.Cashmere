@@ -29,6 +29,35 @@
     }
 }
 
+.example-sidenav-body {
+    padding: 8px;
+
+    h4 {
+        margin: 0 8px;
+    }
+
+    .sq-example-btn-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.sq-example-btn {
+    width: 64px;
+    height: 64px;
+    border: 1px solid #ccc;
+    margin: 8px;
+    min-width: 0px;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+
+    span.fa {
+        font-size: 20px;
+        margin: 4px 0 4px 0;
+    }
+}
+
 .example-report-widget {
     position: absolute;
     bottom: 0;
