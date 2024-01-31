@@ -129,13 +129,13 @@
             [class.hc-sidenav-unclickable-tab]="!tab.clickable"
             [class.last-leaf-node]="tab.isLastLeafNode"
             [title]="tab.description || ''"
-            [routerLink]="((collapsed && tab.children?.length > 0) || !clickable) ? null : tab.routerLink"
+            [routerLink]="((collapsed && tab.children?.length > 0) || !tab.clickable) ? null : tab.routerLink"
             [routerLinkActive]="routerLinkActiveClass || 'active-tab'"
             (isActiveChange)="_onRouterLinkActiveChange($event, tab)"
             tabindex="0"
             (keydown.enter)="onTabClick($event, tab)"
             (click)="onTabClick($event, tab)"
-            [hcPop]="tabPop" [trigger]="collapsed && !tab.parent && !isFav && !tab.childern?.length > 0 ? 'hover' : 'none'"
+            [hcPop]="tabPop" [trigger]="collapsed && !tab.parent && !isFav && !(tab.children?.length > 0) ? 'hover' : 'none'"
             [context]="tab.title || ''"
         >
             <span class="hc-sidenav-tab-tree-line-horz"></span>
