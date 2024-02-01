@@ -17,7 +17,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     filteredUsageList: IUsage[];
     usageList: IUsage[] = [];
     categories = ['All', 'Clinical', 'General', 'Health Catalyst', 'Industry', 'Technical'];
-    types = ['All', 'Abbreviation', 'General usage', 'UX/technical writing', 'Word choice'];
+    types = ['All', 'Abbreviation', 'General usage'];
     selectedCategoriesControl = new FormControl('All', {nonNullable: true});
     selectedTypesControl = new FormControl('All', {nonNullable: true});
     searchControl = new FormControl();
