@@ -135,7 +135,7 @@
             tabindex="0"
             (keydown.enter)="onTabClick($event, tab)"
             (click)="onTabClick($event, tab)"
-            [hcPop]="tabPop" [trigger]="collapsed && !tab.parent && !isFav && !(tab.children?.length > 0) ? 'hover' : 'none'"
+            [hcPop]="tabPop" [trigger]="collapsed && !tab.parent && !isFav ? 'hover' : 'none'"
             [context]="tab.title || ''"
         >
             <span class="hc-sidenav-tab-tree-line-horz"></span>
