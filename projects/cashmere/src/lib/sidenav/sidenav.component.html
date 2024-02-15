@@ -133,8 +133,8 @@
             [routerLinkActive]="routerLinkActiveClass || 'active-tab'"
             (isActiveChange)="_onRouterLinkActiveChange($event, tab)"
             tabindex="0"
-            (keydown.enter)="onTabClick($event, tab)"
-            (click)="onTabClick($event, tab)"
+            (keydown.enter)="onTabClick($event, tab, false, isFav)"
+            (click)="onTabClick($event, tab, false, isFav)"
             [hcPop]="tabPop" [trigger]="collapsed && !tab.parent && !isFav ? 'hover' : 'none'"
             [context]="tab.title || ''"
         >
@@ -182,8 +182,8 @@
         title="{{menuContext?.parent?.description || menuContext?.title}}"
         [routerLink]="menuContext?.parent?.routerLink"
         tabindex="0"
-        (keydown.enter)="menuContext?.parent && onTabClick($event, menuContext?.parent, true)"
-        (click)="menuContext?.parent && onTabClick($event, menuContext?.parent, true)"
+        (keydown.enter)="menuContext?.parent && onTabClick($event, menuContext?.parent, true, menuContext?.isFav)"
+        (click)="menuContext?.parent && onTabClick($event, menuContext?.parent, true, menuContext?.isFav)"
     >
         <span *ngIf="menuContext?.parent?.labelHTML" [innerHTML]="menuContext?.parent?.labelHTML"></span>
         <span *ngIf="menuContext?.parent?.iconClass || menuContext?.titleIco" class="{{menuContext?.parent?.iconClass || menuContext?.titleIco}} nested-link-submenu-header-ico"></span>

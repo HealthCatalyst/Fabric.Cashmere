@@ -134,9 +134,10 @@ export class SidenavComponent {
     }
 
     /** @docs-private */
-    onTabClick(event: MouseEvent, link: SidenavLink, isInsideMenu = false): void {
-        const tabTriggersMenu = !isInsideMenu && this.collapsed && link.children?.length > 0 && !link.parent;
+    onTabClick(event: MouseEvent, link: SidenavLink, isMenuHeader = false, isFavorite = false): void {
+        const tabTriggersMenu = !isMenuHeader && this.collapsed && link.children?.length > 0 && !link.parent;
         if (link.disabled || !link.clickable || tabTriggersMenu) { return; }
+        if (isFavorite) { this.onFavoriteClicked(event, link); return; }
         this.tabClicked.emit({event, link});
         this.activeTabKey = link.key;
 
@@ -150,7 +151,6 @@ export class SidenavComponent {
 
     /** @docs-private */
     onFavoriteClicked(event: MouseEvent, link: SidenavLink): void {
-        if (link.disabled || !link.clickable) { return; }
         this.favoriteClicked.emit({event, link});
 
         if (!link.onClick) { return; }
