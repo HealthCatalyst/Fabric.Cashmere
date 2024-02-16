@@ -1,0 +1,52 @@
+<div class="demo-content">
+    <h1>App Title Generator</h1>
+    <h6>Last updated February 15, 2024</h6>
+
+    <hc-tile>
+        <h5 id="overview">Overview</h5>
+        <p>
+            The App Title Generator is a tool to create the application
+            title followed just after the Health Catalyst icon in the navbar.
+            For example "Cashmere" in the top navbar of this page is the
+            application title.
+        </p>
+        <p>
+            Use the configuration options below to make your own application
+            title image:
+        </p>
+
+        <div class="property-form-group">
+            <hc-form-field>
+                <hc-label>Theme:</hc-label>
+                <hc-select [(ngModel)]="theme" (change)="generateLogo()">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </hc-select>
+            </hc-form-field>
+
+            <hc-form-field>
+                <hc-label>Primary Normal Text:</hc-label>
+                <input hcInput [(ngModel)]="slimText" (change)="generateLogo()" />
+            </hc-form-field>
+            <hc-form-field>
+                <hc-label>Secondary Bold Text:</hc-label>
+                <input hcInput [(ngModel)]="boldText" (change)="generateLogo()" />
+            </hc-form-field>
+        </div>
+
+        <div id="image-container">
+            <canvas #canvasContainer id="canvas-container" width="2113" height="203"></canvas>
+            <img #imageOutput id="image-output" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+        </div>
+
+        <p class="hint-text">
+            The produced image is transparent. Use the theme appropriate theme for the backdrop the image will be placed on.
+        </p>
+
+        <a hc-button id="download-button" buttonStyle="primary-alt" download href="">
+            <hc-icon fontSet="fa" fontIcon="fa-download" class="icon-left"></hc-icon>&nbsp;
+            Download Application Title Image
+        </a>
+    </hc-tile>
+
+</div>
