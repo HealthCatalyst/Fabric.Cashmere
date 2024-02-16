@@ -17,7 +17,7 @@
 #image-output {
     font-family: BrandFont, "Noto Sans", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     border: 1px solid #cccccc;
-    max-height: 91px;
+    height: 91px;
     background-position: 0 0;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -34,4 +34,10 @@
 
 .brand-font {
     font-family: BrandFont, "Noto Sans", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.format-container {
+    width: 22%;
+    display: inline-block;
+    margin-right: 16px;
 }
