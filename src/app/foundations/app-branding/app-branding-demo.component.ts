@@ -37,32 +37,34 @@ export class AppBrandingDemoComponent extends BaseDemoComponent {
             textColor = "#ffffff";
             this.imageOutput.nativeElement.style.backgroundColor = "#384655";
         }
-        const baseFont = "182px CarnasLight";
-        const slimTextLetterSpacing = ".75px";
-        const boldTextLetterSpacing = "4px";
-        ctx.font = baseFont;
+        const fontFace = "BrandFont";
+        const slimTextFont = "182px " + fontFace;
+        const boldTextFont = "bold 181px " + fontFace;
+        const slimTextLetterSpacing = "-2.5px";
+        const boldTextLetterSpacing = "-2.5px";
+        ctx.font = slimTextFont;
         ctx.letterSpacing = slimTextLetterSpacing;
         const slimTextRect = ctx.measureText(this.slimText);
-        ctx.font = "bold " + baseFont;
+        ctx.font = boldTextFont;
         ctx.letterSpacing = boldTextLetterSpacing;
         const boldTextRect = ctx.measureText(this.boldText);
         canvas.width = slimTextRect.width + 2 + boldTextRect.width;
         canvas.height = 203;
 
         const textOffsetX = 0;
-        const textOffsetY = 156; //slimTextRect.fontBoundingBoxAscent-21;
+        const textOffsetY = 157; //slimTextRect.fontBoundingBoxAscent-21;
 
         // slim text
-        ctx.font = baseFont;
+        ctx.font = slimTextFont;
         ctx.letterSpacing = slimTextLetterSpacing;
         ctx.fillStyle = textColor; // setting font resets fillStyle :P
         ctx.fillText(this.slimText, textOffsetX, textOffsetY);
 
         //bold text
-        ctx.font = "bold " + baseFont;
+        ctx.font = boldTextFont;
         ctx.letterSpacing = boldTextLetterSpacing;
         ctx.fillStyle = textColor; // setting font resets fillStyle :P
-        ctx.fillText(this.boldText, textOffsetX + slimTextRect.width, textOffsetY);
+        ctx.fillText(this.boldText, textOffsetX + slimTextRect.width - 6 , textOffsetY);
 
         // create data url
         const dataUrl = canvas.toDataURL();
