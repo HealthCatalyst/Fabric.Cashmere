@@ -189,15 +189,15 @@ class FormFieldDatepicker {
 
 @Component({
     template: `
-        <input [hcDatepicker]="d" [(ngModel)]="date" [min]="minDate" [max]="maxDate" />
+        <input [formControl]="formControl" [hcDatepicker]="d" [min]="minDate" [max]="maxDate" />
         <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
         <hc-datepicker #d></hc-datepicker>
     `
 })
 class DatepickerWithMinAndMaxValidation {
+    formControl = new FormControl();
     @ViewChild('d')
     datepicker: DatepickerComponent;
-    date: Date | null;
     minDate = new Date(2010, JAN, 1);
     maxDate = new Date(2020, JAN, 1);
 }
@@ -1278,7 +1278,9 @@ describe('DatepickerComponent', () => {
             });
 
             it('should mark invalid when value is before min', fakeAsync(() => {
-                testComponent.date = new Date(2009, DEC, 31);
+                testComponent.formControl = new FormControl(new Date(2009, DEC, 31));
+                testComponent.formControl.markAsDirty();
+
                 fixture.detectChanges();
                 flush();
                 fixture.detectChanges();
@@ -1287,17 +1289,18 @@ describe('DatepickerComponent', () => {
             }));
 
             it('should mark invalid when value is after max', fakeAsync(() => {
-                testComponent.date = new Date(2020, JAN, 2);
+                testComponent.formControl = new FormControl(new Date(2020, JAN, 2));
+                testComponent.formControl.markAsDirty();
+
                 fixture.detectChanges();
                 flush();
-
                 fixture.detectChanges();
 
                 expect(fixture.debugElement.query(By.css('input')).nativeElement.classList).toContain('ng-invalid');
             }));
 
             it('should not mark invalid when value equals min', fakeAsync(() => {
-                testComponent.date = testComponent.datepicker._minDate;
+                testComponent.formControl = new FormControl(testComponent.datepicker._minDate);
                 fixture.detectChanges();
                 flush();
                 fixture.detectChanges();
@@ -1306,7 +1309,7 @@ describe('DatepickerComponent', () => {
             }));
 
             it('should not mark invalid when value equals max', fakeAsync(() => {
-                testComponent.date = testComponent.datepicker._maxDate;
+                testComponent.formControl = new FormControl(testComponent.datepicker._maxDate);
                 fixture.detectChanges();
                 flush();
                 fixture.detectChanges();
@@ -1315,7 +1318,7 @@ describe('DatepickerComponent', () => {
             }));
 
             it('should not mark invalid when value is between min and max', fakeAsync(() => {
-                testComponent.date = new Date(2010, JAN, 2);
+                testComponent.formControl = new FormControl(new Date(2010, JAN, 2));
                 fixture.detectChanges();
                 flush();
                 fixture.detectChanges();
