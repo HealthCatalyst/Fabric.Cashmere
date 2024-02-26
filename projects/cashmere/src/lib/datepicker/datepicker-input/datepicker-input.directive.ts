@@ -219,7 +219,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     /** The form control validator for the min date. */
     private _minValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
         const controlValue = this._getValidDateOrNull(this._dateAdapter.deserialize(control.value));
-        return !this.min || !controlValue || this._dateAdapter.compareDate(this.min, controlValue) <= 0
+        return !this.min || control.pristine || !controlValue || this._dateAdapter.compareDate(this.min, controlValue) <= 0
             ? null
             : {hcDatepickerMin: {min: this.min, actual: controlValue}};
     };
@@ -227,7 +227,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     /** The form control validator for the max date. */
     private _maxValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
         const controlValue = this._getValidDateOrNull(this._dateAdapter.deserialize(control.value));
-        return !this.max || !controlValue || this._dateAdapter.compareDate(this.max, controlValue) >= 0
+        return !this.max || control.pristine || !controlValue || this._dateAdapter.compareDate(this.max, controlValue) >= 0
             ? null
             : {hcDatepickerMax: {max: this.max, actual: controlValue}};
     };
