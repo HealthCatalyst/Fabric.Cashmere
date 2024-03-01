@@ -1,0 +1,43 @@
+@import 'scss/colors';
+
+@font-face {
+    font-family: "BrandFont"; //"Flexo-Regular";
+    src: url("https://db.onlinewebfonts.com/t/51ba22ae06790efd464bde752a2cd9d1.eot");
+    src: url("https://db.onlinewebfonts.com/t/51ba22ae06790efd464bde752a2cd9d1.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/51ba22ae06790efd464bde752a2cd9d1.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/51ba22ae06790efd464bde752a2cd9d1.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/51ba22ae06790efd464bde752a2cd9d1.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/51ba22ae06790efd464bde752a2cd9d1.svg#Flexo-Regular")format("svg");
+}
+
+#canvas-container {
+    display: none;
+}
+
+#image-output {
+    font-family: BrandFont, "Noto Sans", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: 1px solid #cccccc;
+    height: 91px;
+    background-position: 0 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    //background-image: url(); // use this to test the image against a known application title
+}
+
+.hint-text {
+    font-family: BrandFont, "Noto Sans", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-style: italic;
+    color: $gray-400;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.brand-font {
+    font-family: BrandFont, "Noto Sans", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.format-container {
+    width: 22%;
+    display: inline-block;
+    margin-right: 16px;
+}

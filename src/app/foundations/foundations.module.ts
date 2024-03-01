@@ -11,9 +11,10 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 import {LogoDemoComponent} from './logo/logo-demo.component';
 import {FontsDemoComponent} from './fonts/fonts-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
-import { AIDemoComponent } from './ai/ai-demo.component';
-import { IconPickerComponent } from './products/icon-picker/icon-picker.component';
-import { FaviconDemoComponent } from './favicons/favicon-demo.component';
+import {AIDemoComponent} from './ai/ai-demo.component';
+import {AppBrandingDemoComponent} from './app-branding/app-branding-demo.component';
+import {IconPickerComponent} from './products/icon-picker/icon-picker.component';
+import {FaviconDemoComponent} from './favicons/favicon-demo.component';
 
 @NgModule({
     imports: [SharedModule, FoundationsRoutesModule],
@@ -28,6 +29,7 @@ import { FaviconDemoComponent } from './favicons/favicon-demo.component';
         BrandColorDemoComponent,
         LogoDemoComponent,
         AIDemoComponent,
+        AppBrandingDemoComponent,
         ProductsDemoComponent,
         IconPickerComponent,
         FontsDemoComponent

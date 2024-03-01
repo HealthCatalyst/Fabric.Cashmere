@@ -10,6 +10,7 @@ import {LogoDemoComponent} from './logo/logo-demo.component';
 import {ProductsDemoComponent} from './products/products-demo.component';
 import {FontsDemoComponent} from './fonts/fonts-demo.component';
 import { AIDemoComponent } from './ai/ai-demo.component';
+import { AppBrandingDemoComponent } from './app-branding/app-branding-demo.component';
 import { FaviconDemoComponent } from './favicons/favicon-demo.component';
 
 const routes: Routes = [
@@ -61,6 +62,11 @@ const routes: Routes = [
                 path: 'products',
                 component: ProductsDemoComponent,
                 data: {title: 'Product Icons', category: 'Brand'}
+            },
+            {
+                path: 'app-branding',
+                component: AppBrandingDemoComponent,
+                data: {title: 'App Title Generator', category: 'Brand'}
             },
             {
                 path: 'ai-branding',
