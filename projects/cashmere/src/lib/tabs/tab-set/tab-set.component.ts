@@ -447,7 +447,8 @@ export class TabSetComponent implements AfterContentInit {
     selectTab(tab: number | TabComponent, shouldEmit = true): void {
         this._selectedTab = tab;
         const activeTab = typeof tab === 'number' ? this._tabs.toArray()[tab] : tab;
-        if ( tab === -1 || activeTab._hideOverride ) {
+
+        if ( tab === -1 || activeTab?._hideOverride ) {
             this.tabContent = null;
 
             if ( this._routerEnabled ) {
@@ -459,7 +460,7 @@ export class TabSetComponent implements AfterContentInit {
             if (shouldEmit) {
                 this.selectedTabChange.emit(new TabChangeEvent(-1, null));
             }
-        } else {
+        } else if(!!activeTab) {
             if ( this._routerEnabled ) {
                 const routeArray = Array.isArray(activeTab.routerLink) ? activeTab.routerLink : [activeTab.routerLink];
                 this.router.navigate(routeArray, {relativeTo: this.route, queryParams: activeTab.queryParams});
