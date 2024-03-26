@@ -60,7 +60,7 @@
     "@webcomponents/custom-elements": "^1.5.1",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.21",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^13.0.2",
     "markdown-it-container": "^3.0.0",
     "minisearch": "^2.5.1",
     "ngx-slider-v2": "^16.0.2",
