@@ -48,6 +48,7 @@ $sidenav-width: 260px !default;
 }
 
 @mixin hc-sidenav-tab-dark() {
+    color: $white;
     &:hover {
         background-color: darken($charcoal-blue, 10%);
     }
@@ -85,19 +86,24 @@ $sidenav-width: 260px !default;
     white-space: nowrap;
     align-items: center;
     justify-content: space-between;
+    color: $offblack;
+    text-decoration: none;
 
     &:hover {
         background-color: $slate-gray-200;
+        color: $offblack;
     }
 
     &:focus {
         outline: none;
         box-shadow: 0 0 0 2px transparentize($blue, 0.75) inset;
         background-color: $slate-gray-200;
+        color: $offblack;
     }
 
     &:active {
         background-color: darken($slate-gray-200, 4%);
+        color: $offblack;
     }
 }
 
@@ -107,22 +113,24 @@ $sidenav-width: 260px !default;
     background-color: $slate-gray-100;
 }
 
-@mixin hc-sidenav-tab-disabled(){
+@mixin hc-sidenav-tab-disabled() {
     cursor: not-allowed;
     color: $gray-300;
-    &:hover, &:active {
+    &:hover,
+    &:active {
         background-color: transparent;
     }
 }
 
-@mixin hc-sidenav-tab-unclickable(){
+@mixin hc-sidenav-tab-unclickable() {
     cursor: default;
-    &:hover, &:active {
+    &:hover,
+    &:active {
         background-color: transparent;
     }
 }
 
-@mixin hc-sidenav-tab-inner(){
+@mixin hc-sidenav-tab-inner() {
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -212,7 +220,6 @@ $sidenav-width: 260px !default;
     position: absolute;
     left: 50%;
 }
-
 
 @mixin hc-sidenav-fav-action-ico-btn() {
     height: 100%;
@@ -328,7 +335,6 @@ $sidenav-width: 260px !default;
 }
 
 @mixin hc-sidenav-collapsed-favs-menu-ico-dark() {
-
     &:hover {
         background-color: darken($charcoal-blue, 10%);
     }
@@ -511,11 +517,21 @@ $sidenav-width: 260px !default;
     transform: rotate(0);
 }
 
-@mixin hc-sidenav-tab-child-tab-2() { padding-left: 62px; }
-@mixin hc-sidenav-tab-child-tab-3() { padding-left: 86px; }
-@mixin hc-sidenav-tab-child-tab-4() { padding-left: 110px; }
-@mixin hc-sidenav-tab-child-tab-5() { padding-left: 134px; }
-@mixin hc-sidenav-tab-child-tab-6() { padding-left: 158px; }
+@mixin hc-sidenav-tab-child-tab-2() {
+    padding-left: 62px;
+}
+@mixin hc-sidenav-tab-child-tab-3() {
+    padding-left: 86px;
+}
+@mixin hc-sidenav-tab-child-tab-4() {
+    padding-left: 110px;
+}
+@mixin hc-sidenav-tab-child-tab-5() {
+    padding-left: 134px;
+}
+@mixin hc-sidenav-tab-child-tab-6() {
+    padding-left: 158px;
+}
 
 @mixin hc-sidenav-tab-tree-line-vert-nested() {
     position: relative;
@@ -540,7 +556,7 @@ $sidenav-width: 260px !default;
 }
 
 @mixin hc-sidenav-tab-tree-line-vert-last-child-helper() {
-    content: " ";
+    content: ' ';
     display: inline-block;
     height: 50%;
     width: 2px;
@@ -553,11 +569,21 @@ $sidenav-width: 260px !default;
     left: -13px;
 }
 
-@mixin hc-sidenav-tab-tree-line-vert-line-2() { left: 54px; }
-@mixin hc-sidenav-tab-tree-line-vert-line-3() { left: 78px; }
-@mixin hc-sidenav-tab-tree-line-vert-line-4() { left: 102px; }
-@mixin hc-sidenav-tab-tree-line-vert-line-5() { left: 126px; }
-@mixin hc-sidenav-tab-tree-line-vert-line-6() { left: 150px; }
+@mixin hc-sidenav-tab-tree-line-vert-line-2() {
+    left: 54px;
+}
+@mixin hc-sidenav-tab-tree-line-vert-line-3() {
+    left: 78px;
+}
+@mixin hc-sidenav-tab-tree-line-vert-line-4() {
+    left: 102px;
+}
+@mixin hc-sidenav-tab-tree-line-vert-line-5() {
+    left: 126px;
+}
+@mixin hc-sidenav-tab-tree-line-vert-line-6() {
+    left: 150px;
+}
 
 @mixin hc-sidenav-tab-tree-line-horz-container() {
     position: absolute;
@@ -565,7 +591,7 @@ $sidenav-width: 260px !default;
 }
 
 @mixin hc-sidenav-tab-tree-line-horz() {
-    content: " ";
+    content: ' ';
     display: inline-block;
     height: 2px;
     width: 14px;
@@ -589,8 +615,12 @@ $sidenav-width: 260px !default;
 }
 
 @mixin hc-sidenav-chev-dark-container() {
-    &:hover { background-color: darken($charcoal-blue, 15%); }
-    &:active { background-color: darken($charcoal-blue, 20%); }
+    &:hover {
+        background-color: darken($charcoal-blue, 15%);
+    }
+    &:active {
+        background-color: darken($charcoal-blue, 20%);
+    }
     &:focus {
         outline: none;
         box-shadow: 0 0 0 2px transparentize($blue, 0.75) inset;
