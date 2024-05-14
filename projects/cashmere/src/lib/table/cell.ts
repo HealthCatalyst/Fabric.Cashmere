@@ -76,7 +76,12 @@ export class HcColumnDef extends CdkColumnDef {
 
     /** Whether this column should be sticky positioned at the start of the row */
     @Input()
-    sticky: boolean;
+    public get sticky(): boolean {
+        return super.sticky
+    }
+    public set sticky(value: boolean) {
+        super.sticky = value;
+    }
 
     /** Whether this column should be sticky positioned on the end of the row */
     @Input()

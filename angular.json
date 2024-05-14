@@ -87,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "user-guide:build"
+            "buildTarget": "user-guide:build"
           }
         },
         "test": {
