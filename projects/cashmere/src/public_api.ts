@@ -2,8 +2,6 @@
  * Public API Surface of cashmere
  */
 
-import { from } from 'rxjs';
-
 export * from './lib/accordion/index';
 export * from './lib/app-switcher/index';
 export * from './lib/banner/index';

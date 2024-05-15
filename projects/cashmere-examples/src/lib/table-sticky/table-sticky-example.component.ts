@@ -12,6 +12,7 @@ import {HcTableDataSource} from '@healthcatalyst/cashmere';
 export class TableStickyExampleComponent implements OnInit {
     cols = ['name', 'state', 'population', 'founded', 'size', 'notes'];
     allCols = ['rank', ...this.cols];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dataSource: HcTableDataSource<any>;
     hasBorders = false;
     stickyHead = true;

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {Component, Input, OnChanges, SimpleChanges, ViewEncapsulation} from '@angular/core';
 
 /** Interface for making/receiving assignments */

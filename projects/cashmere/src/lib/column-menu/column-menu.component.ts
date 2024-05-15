@@ -125,6 +125,7 @@ export class ColumnMenuComponent implements OnInit {
      * @param event contains data from the drag and drop event
      * @param isInDataGrid if true, we need to take in account the fact that some columns may currently be hidden
      */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     columnDropped(event: CdkDragDrop<any>, isInDataGrid = true): void {
         if (event) {
             const prevIndex = isInDataGrid ?
