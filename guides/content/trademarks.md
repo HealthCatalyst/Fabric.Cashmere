@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated March 15, 2023
+###### Last updated May 13, 2024
 
 :::
 
@@ -12,6 +12,7 @@ Registered Marks (currently in use) – **Apply ®**:
 -   Health Catalyst _(only when followed by a product or services description; when you are just referring to the company/entity, do not use ®)_
 -   HAS
 -   HealthCatalyst
+-   Health Catalyst Ignite
 -   Ignite Change (minimal use)
 -   Touchstone
 -   Twistle
@@ -30,6 +31,7 @@ Unregistered Marks (currently in use, examples) – **Apply ™** symbol:
 _The ™ symbol can be applied to any unregistered trademark_
 
 - ARMUS by Health Catalyst
+- CRStar by Health Catalyst
 - DOS
 - DOS Mart and DOS Marts
 - Healthcare.AI
@@ -67,6 +69,7 @@ _The ™ symbol can be applied to any unregistered trademark_
 - The Health Catalyst Analytics Practice Model
 - Twistle by Health Catalyst
 - Twistle Patient Engagement by Health Catalyst
+- Vitalware by Health Catalyst
 
 :::
 
