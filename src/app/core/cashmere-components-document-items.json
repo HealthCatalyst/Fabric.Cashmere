@@ -122,7 +122,7 @@
     "progress-indicators": {
         "name": "Progress Indicators",
         "category": "buttons",
-        "examples": ["progress-dots", "progress-spinner"],
+        "examples": ["progress-dots", "progress-spinner", "progress-bar"],
         "usageDoc": true
     },
     "radio-button": {

@@ -1,0 +1,38 @@
+<div class="progress-bar-example">
+    <!-- Options -->
+    <div class="progress-bar-col-1">
+        <hc-form-field>
+            <hc-label>Color:</hc-label>
+            <hc-select [formControl]="barColor">
+                <option value="blue" [selected]="barColor.value === 'blue'">Blue</option>
+                <option value="green" [selected]="barColor.value === 'green'">Green</option>
+                <option value="purple" [selected]="barColor.value === 'purple'">Purple</option>
+                <option value="orange" [selected]="barColor.value === 'orange'">Orange</option>
+                <option value="red" [selected]="barColor.value === 'red'">Red</option>
+                <option value="gray" [selected]="barColor.value === 'gray'">Gray</option>
+                <option value="white" [selected]="barColor.value === 'white'">White</option>
+            </hc-select>
+        </hc-form-field>
+        <hc-checkbox [formControl]="hasLabel">Has label</hc-checkbox>
+        <hc-checkbox [formControl]="hasValue">Show progress value</hc-checkbox>
+        <hr>
+        <hc-checkbox [formControl]="barIsDeterminate">Determinate</hc-checkbox>
+        <hc-form-field inline>
+            <hc-label>Progress (0-100%):</hc-label>
+            <input hcInput type="number" min="0" max="100" class="form-control" [formControl]="barProgress" [disabled]="!barIsDeterminate.value">
+        </hc-form-field>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar-col-2">
+        <div class="progress-bar-example-container" [ngClass]="{'dark-bg': barColor.value === 'white'}">
+            <hc-progress-bar
+                [color]="barColor.value"
+                [isDeterminate]="barIsDeterminate.value"
+                [progress]="barProgress.value"
+                [showValue]="hasValue.value"
+                [label]="hasLabel.value ? 'You can add a dynamic label here': null">
+            </hc-progress-bar>
+        </div>
+    </div>
+</div>
