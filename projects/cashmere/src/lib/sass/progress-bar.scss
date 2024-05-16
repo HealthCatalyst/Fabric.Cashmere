@@ -25,6 +25,7 @@
     display: block;
     border-radius: 500px;
     height: 100%;
+    min-height: 8px;
 
     &.bar-blue {
         background-color: $blue;
@@ -73,6 +74,7 @@
 
 .hc-progress-bar-indeterminate {
     height: auto;
+    min-height: auto;
 }
 
 .hc-progress-bar-indeterminate:before {
