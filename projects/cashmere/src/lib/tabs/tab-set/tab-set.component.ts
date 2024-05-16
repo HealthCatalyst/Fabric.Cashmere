@@ -460,7 +460,7 @@ export class TabSetComponent implements AfterContentInit {
             if (shouldEmit) {
                 this.selectedTabChange.emit(new TabChangeEvent(-1, null));
             }
-        } else if(!!activeTab) {
+        } else if ( activeTab ) {
             if ( this._routerEnabled ) {
                 const routeArray = Array.isArray(activeTab.routerLink) ? activeTab.routerLink : [activeTab.routerLink];
                 this.router.navigate(routeArray, {relativeTo: this.route, queryParams: activeTab.queryParams});
