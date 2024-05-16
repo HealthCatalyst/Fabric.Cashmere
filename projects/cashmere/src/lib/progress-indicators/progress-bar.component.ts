@@ -16,7 +16,7 @@ export function validateColorInput(inputStr: string): void {
 export class ProgressBarComponent {
     private _color = 'blue';
 
-    /** Color of the spinner: `blue`, `green`, `purple`, `orange`, `red`, `gray`, `white` */
+    /** Color of the bar: `blue`, `green`, `purple`, `orange`, `red`, `gray`, `white` */
     @Input()
     get color(): string {
         return this._color;
