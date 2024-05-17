@@ -1,0 +1,10 @@
+<div class="hc-progress-bar-wrapper">
+    <div class="hc-progress-bar-container bar-{{color}}">
+        <div class="hc-progress-bar-fill bar-{{color}}"
+            [class.hc-progress-bar-indeterminate]="!isDeterminate"
+            [style.width]="isDeterminate ? progress + '%' : '100%'">
+                <span *ngIf="showValue && isDeterminate" class="hc-progress-bar-value bar-{{color}}">{{progress}}%</span>
+        </div>
+    </div>
+    <div class="hc-progress-bar-label bar-{{color}}" *ngIf="label">{{label}}</div>
+</div>
