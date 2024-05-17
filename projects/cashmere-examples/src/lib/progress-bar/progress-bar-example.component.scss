@@ -1,0 +1,33 @@
+@import "@healthcatalyst/cashmere/scss/_colors";
+
+.progress-bar-example {
+    display: flex;
+    margin-top: 20px;
+}
+
+.progress-bar-col-2 {
+    flex: 1 0 auto;
+    margin-left: 20px;
+}
+
+.progress-bar-example-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    padding: 15px;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.progress-bar-example-container.dark-bg {
+    background-color: $charcoal-blue;
+}
+
+
+label,
+hc-checkbox {
+    margin: 20px 0 5px;
+    display: block;
+}
