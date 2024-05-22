@@ -8,18 +8,17 @@
 
 Registered Marks (currently in use) – **Apply ®**:
 
--   [[FLAME]](https://cashmere.healthcatalyst.net/styles/logo) Design Mark
--   Health Catalyst _(only when followed by a product or services description; when you are just referring to the company/entity, do not use ®)_
--   HAS
--   HealthCatalyst
--   Health Catalyst Ignite
--   Ignite Change (minimal use)
--   Touchstone
--   Twistle
--   Vitalware
--   VitalCDM
--   VitalKnowledge
--   VW [and Design]
+- [[FLAME]](https://cashmere.healthcatalyst.net/styles/logo) Design Mark
+- Health Catalyst _(only when followed by a product or services description; when you are just referring to the company/entity, do not use ®)_
+- HAS
+- HealthCatalyst
+- Ignite Change (minimal use)
+- Touchstone
+- Twistle
+- Vitalware
+- VitalCDM
+- VitalKnowledge
+- VW [and Design]
 
 :::
 
@@ -49,6 +48,7 @@ _The ™ symbol can be applied to any unregistered trademark_
   - Health Catalyst PowerCosting
   - Health Catalyst PowerLabor
   - Health Catalyst PowerPlanning
+- Health Catalyst Ignite
 - Health Catalyst Population Health Suite
   - Health Catalyst Care Flow
   - Health Catalyst Embedded Care Gaps
@@ -79,22 +79,22 @@ _The ™ symbol can be applied to any unregistered trademark_
 
 **Registered Marks No Longer in Use:**
 
--   Café
--   CORUS
--   Healthcare Quality Catalyst
--   Healthfinch
--   Leading Wisely
--   Knowledge Edge
--   KnowledgeEdge
--   MBL
--   Medicity
+- Café
+- CORUS
+- Healthcare Quality Catalyst
+- Healthfinch
+- Leading Wisely
+- Knowledge Edge
+- KnowledgeEdge
+- MBL
+- Medicity
 
 **Unregistered Marks No Longer in Use:**
 
--   Health Catalyst Research Network
--   Ignite Outcomes
--   Ignite Outcomes improvement (minimal use)
--   Touchstone Match
+- Health Catalyst Research Network
+- Ignite Outcomes
+- Ignite Outcomes improvement (minimal use)
+- Touchstone Match
 
 :::
 
@@ -108,22 +108,22 @@ If any trademark (®/™) used above appears multiple times on a page or in a do
 
 Do not use trademarked terms as nouns—only use as an adjective. For example:
 
--   **Yes:** The HAS® conference… or Healthcare.AI™ technology.
--   **No:** HAS® is an awesome conference. Healthcare.AI™ provides one-button AI access into existing BI tools and applications.
+- **Yes:** The HAS® conference… or Healthcare.AI™ technology.
+- **No:** HAS® is an awesome conference. Healthcare.AI™ provides one-button AI access into existing BI tools and applications.
 
 &nbsp;
 
 Further, use the mark as a proper adjective modifying a noun that identifies the kind of product offered. Use the trademark together with the generic name of the product/service.
 
--   **Yes:** Health systems looking for a transformational AI solution choose the Healthcare.AI™ offering.
--   **No:** Health systems looking for a transformational AI solution choose Healthcare.AI™.
+- **Yes:** Health systems looking for a transformational AI solution choose the Healthcare.AI™ offering.
+- **No:** Health systems looking for a transformational AI solution choose Healthcare.AI™.
 
 &nbsp;
 
 Never alter a trademark. Do not make it possessive. Do not add prefixes, hyphens, or otherwise modify.
 
--   **Yes:** The reliability of Health Catalyst® services means that health systems can count on…
--   **No:** Health Catalyst’s service and reliability means that health systems can count on…
+- **Yes:** The reliability of Health Catalyst® services means that health systems can count on…
+- **No:** Health Catalyst’s service and reliability means that health systems can count on…
 
 &nbsp;
 
