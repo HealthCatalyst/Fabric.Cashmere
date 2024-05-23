@@ -60,7 +60,7 @@ export class FeedbackFormComponent implements OnInit, OnDestroy {
         let headers = new HttpHeaders();
         headers = headers.append('Content-Type', 'application/json');
         const options = {headers: headers};
-
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const postSub = this.httpClient.post<any>( environment.productCatalog.url + '/feedback.add',
             {
                 source: 'Cashmere',

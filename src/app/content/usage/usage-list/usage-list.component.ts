@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {Component, OnInit, ViewChild, AfterViewInit, TemplateRef} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
@@ -96,7 +97,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
                         }
                         this.usageList.push( rowEntry );
                     });
-                    
+
                     this.filteredUsageList = this.usageList.sort((a, b) => (a.TermName.toLowerCase() > b.TermName.toLowerCase() ? 1 : -1));
                     this.dataSource = new HcTableDataSource(this.filteredUsageList);
                     this.dataSource.filterPredicate = (filterData: IUsage, filter: string) => this.usageFilter(filterData, filter);
@@ -104,7 +105,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
                     this.termsLoading = false;
                     this.loadFailed = false;
                 },
-                error: msg => { 
+                error: msg => {
                     this.loadFailed = true;
                     this.termsLoading = false;
                     console.log( msg );
@@ -144,7 +145,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
         } else {
             this.addChangeControl.reset();
         }
-        
+
         const options: ModalOptions = {
             size: 'md',
             data: termItem

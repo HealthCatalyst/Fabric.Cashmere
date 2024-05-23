@@ -20,14 +20,14 @@ export class SelectPlaceholderExampleComponent implements OnInit {
         }
     ];
 
-    phVal: any = undefined;
+    phVal: string | null | undefined = undefined;
     selectVal = new FormControl();
 
     ngOnInit(): void {
         this.selectVal.setValue(undefined);
     }
 
-    reset(value: any): void {
+    reset(value: string | null | undefined): void {
         this.selectVal.setValue(value);
     }
 

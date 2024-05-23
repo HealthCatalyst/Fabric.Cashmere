@@ -87,7 +87,6 @@ class TestAppReference {
 }
 
 let testApp: TestAppReference;
-let renderer;
 
 const SCROLL_TARGET_ATTRIBUTE = 'hcScrollTarget';
 
@@ -100,7 +99,6 @@ describe('HcScrollNavContentComponent', () => {
         }).compileComponents();
 
         testApp = new TestAppReference();
-        renderer = TestBed.inject(Renderer2);
         testApp.detectChanges();
     }));
 

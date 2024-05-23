@@ -1,7 +1,6 @@
 import {Component, Input, ViewEncapsulation, EventEmitter, Output} from '@angular/core';
 import { LinkParent, SidenavLink, SidenavLinkClickEvent, SidenavTabGroup } from './sidenav.models';
 import { isDefined } from '../util';
-import { HcPopComponent } from '../pop';
 
 /** Component for standard sidebar navigation */
 @Component({

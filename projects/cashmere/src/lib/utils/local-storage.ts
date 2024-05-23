@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function writeToStorage(key: string, value: any): void {
     window.localStorage.setItem(key, JSON.stringify(value));
 }
