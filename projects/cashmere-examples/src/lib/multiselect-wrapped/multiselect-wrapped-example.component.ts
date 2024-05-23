@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Options } from 'ngx-slider-v2';
 import { FormControl } from '@angular/forms';
 
 /**

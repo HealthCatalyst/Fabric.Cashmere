@@ -1,5 +1,5 @@
-import {TestBed, waitForAsync, inject} from '@angular/core/testing';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {TestBed, waitForAsync} from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {AppSwitcherService} from './app-switcher.service';
 import {APP_SWITCHER_CONFIG} from './app-switcher-interfaces';
 

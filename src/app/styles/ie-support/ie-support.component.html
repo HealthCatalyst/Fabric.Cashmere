@@ -46,7 +46,7 @@
 
     <h4>2. In <code>app.component.ts</code>, trigger the toast when IE is detected:</h4>
         <pre><code>
-    @ViewChild('ieToastTemplate', &#123; static: true &#125;) ieToastTemplate: TemplateRef&lt;any&gt;;
+    &#64;ViewChild('ieToastTemplate', &#123; static: true &#125;) ieToastTemplate: TemplateRef&lt;any&gt;;
     public ieToast;
 
     public ngOnInit(): void &#123;
@@ -93,7 +93,7 @@
                 // your other assets
                 &#123;
                     "glob": "**/*",
-                    "input": "./node_modules/@healthcatalyst/cashmere/scripts/",
+                    "input": "./node_modules/&#64;healthcatalyst/cashmere/scripts/",
                     "output": "./scripts"
                 &#125;
             ]
