@@ -51,16 +51,19 @@ $sidenav-width: 260px !default;
     color: $white;
     &:hover {
         background-color: darken($charcoal-blue, 10%);
+        color: $white;
     }
 
     &:focus {
         outline: none;
         box-shadow: 0 0 0 2px transparentize($blue, 0.75) inset;
         background-color: darken($charcoal-blue, 10%);
+        color: $white;
     }
 
     &:active {
         background-color: darken($charcoal-blue, 15%);
+        color: $white;
     }
 }
 
