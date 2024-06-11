@@ -27,12 +27,12 @@
         <!-- #### Tab groups -->
         <div *ngFor="let tabGroup of tabGroups" class="hc-sidenav-tab-group"
             [class.hc-sidenav-tab-group-nested]="tabGroup.hasNestedLinks">
-            <ng-container *ngIf="!collapsed">
+            <ng-container *ngIf="!collapsed || !tabGroup.hideChildrenOnCollapse">
                 <div class="hc-sidenav-tab-group-container">
-                    <div class="hc-sidenav-tab-group-header" title="{{tabGroup.description}}">
+                    <div class="hc-sidenav-tab-group-header {{tabGroup.tabCSSClass}}" title="{{tabGroup.description}}" (click)="onTabGroupHeaderClick($event, tabGroup)">
                         <span *ngIf="tabGroup.labelHTML" [innerHTML]="tabGroup.labelHTML"></span>
-                        <span *ngIf="!tabGroup.labelHTML">{{ tabGroup.title }}</span>
-                        <span *ngIf="tabGroup.iconClass" class="{{tabGroup.iconClass}}"></span>
+                        <span *ngIf="!tabGroup.labelHTML" class="hc-sidenav-tab-group-header-title">{{ tabGroup.title }}</span>
+                        <span *ngIf="tabGroup.iconClass" class="{{tabGroup.iconClass}} hc-sidenav-tab-group-header-icon"></span>
                     </div>
                     <!-- Tab group items -->
                     <ng-container *ngIf="!isLoadingTabs">
@@ -49,9 +49,9 @@
             </ng-container>
 
             <!-- Tab group menu button in collapsed sidebar-->
-            <ng-container *ngIf="collapsed">
+            <ng-container *ngIf="collapsed && tabGroup.hideChildrenOnCollapse">
                 <div [hcPop]="tabPop" [context]="tabGroup.title || ''" [trigger]="'hover'"
-                    class="hc-sidenav-tab-group-collapsed-menu-btn">
+                    class="hc-sidenav-tab-group-collapsed-menu-btn {{tabGroup.tabCSSClass}}">
                     <span class="hc-sidenav-tab-group-collapsed-menu-ico" [hcPop]="tabLinkPop"
                         [context]="{parent: tabGroup}">
                         <span [class]="tabGroup.iconClass"></span>
@@ -123,7 +123,7 @@
     <div class="hc-sidenav-tab-tree-line-vert" [class.hc-sidenav-no-tree-lines]="!showTreeLines"
         [class.hc-sidenav-no-collapsing-links]="!collapsibleChildren" [hcPop]="tabLinkPop" [context]="{parent: tab}"
         [trigger]="(collapsed && tab.children?.length > 0 && !tab.parent) ? 'click' : 'none'">
-        <a class="hc-sidenav-tab"
+        <a class="hc-sidenav-tab {{tab.tabCSSClass}}"
             [class.hc-sidenav-active-tab]="!routerLinkActiveClass ? tab.key === activeTabKey && !isFav : false"
             [class.hc-sidenav-disabled-tab]="tab.disabled" [class.hc-sidenav-unclickable-tab]="!tab.clickable"
             [class.last-leaf-node]="tab.isLastLeafNode" [title]="tab.description || ''"

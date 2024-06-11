@@ -1,7 +1,6 @@
 import {Component, Input, ViewEncapsulation, EventEmitter, Output} from '@angular/core';
 import { LinkParent, SidenavLink, SidenavLinkClickEvent, SidenavTabGroup } from './sidenav.models';
 import { isDefined } from '../util';
-import { HcPopComponent } from '../pop';
 
 /** Component for standard sidebar navigation */
 @Component({
@@ -68,6 +67,8 @@ export class SidenavComponent {
         return this._tabGroups;
     }
     private _tabGroups: SidenavTabGroup[] = [];
+    /** Event triggered when a tab group header is clicked. */
+    @Output() tabGroupHeaderClicked = new EventEmitter<SidenavLinkClickEvent>();
 
     /** @docs-private */
     hasNestedLinks = false;
@@ -147,6 +148,11 @@ export class SidenavComponent {
 
         if (!link.onClick) { return; }
         link.onClick(event, link);
+    }
+
+    /** @docs-private */
+    onTabGroupHeaderClick(event: MouseEvent, link: SidenavLink): void {
+        this.tabGroupHeaderClicked.emit({event, link});
     }
 
     /** @docs-private */

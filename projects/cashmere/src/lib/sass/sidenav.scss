@@ -193,10 +193,13 @@ $sidenav-width: 260px !default;
     padding-bottom: 5px;
     margin-left: 18px;
     font-weight: 500;
-    pointer-events: none;
     animation: HCFadeIn 0.3s;
     border-bottom: 1px solid transparentize($slate-gray-300, 0.75);
     margin-right: 16px;
+}
+
+@mixin hc-sidenav-group-header-icon() {
+    animation: HCFadeIn 0.2s;
 }
 
 @mixin hc-sidenav-tab-group-list-container() {
@@ -314,6 +317,31 @@ $sidenav-width: 260px !default;
 
 @mixin hc-sidenav-collapsed-tab-group() {
     height: auto;
+}
+
+@mixin hc-sidenav-collapsed-tab-group-header() {
+    @include fontSize(10px);
+    margin: 0;
+    padding: 0px 3px 4px;
+    min-width: 0;
+    overflow: hidden;
+    justify-content: center;
+
+    span {
+        min-width: 0;
+        text-overflow: ellipsis;
+        text-align: center;
+        overflow: hidden;
+        text-wrap: nowrap;
+    }
+
+    .hc-sidenav-tab-group-header-title {
+        width: 100%;
+    }
+}
+
+@mixin hc-sidenav-collapsed-tab-group-header-icon() {
+    display: none;
 }
 
 @mixin hc-sidenav-collapsed-tab-group-menu-btn() {
