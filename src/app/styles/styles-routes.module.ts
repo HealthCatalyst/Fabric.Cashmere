@@ -6,6 +6,7 @@ import {TableDemoComponent} from './table/table-demo.component';
 import {MarkdownContentComponent} from '../shared/markdown-content.component';
 import {IESupportComponent} from './ie-support/ie-support.component';
 import {ChartDemoComponent} from './chart/chart-demo.component';
+import { InfoIconsDemoComponent } from './info-icons/info-icons-demo.component';
 
 const routes: Routes = [
     {
@@ -80,6 +81,11 @@ const routes: Routes = [
                     category: 'User Interface',
                     document: require('../../../guides/styles/file-icons.md')
                 }
+            },
+            {
+                path: 'info-icons',
+                component: InfoIconsDemoComponent,
+                data: { title: 'Info Icons & Help Text', category: 'User Interface' }
             },
             {
                 path: 'table',
