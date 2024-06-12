@@ -277,7 +277,7 @@ tr:hover .hc-table-actions .hc-action-ico,
 
 
 // sticky no borders
-th.hc-table-sticky.hc-table-sticky-border-elem-top, .hc-sticky-header th{
+th.hc-table-sticky.hc-table-sticky-border-elem-top, .hc-sticky-header th, .hc-sticky-header th.hc-col-sortable-left, .hc-sticky-header th.hc-col-sortable{
     @include th-header-sticky();
 
     &:first-child {
@@ -317,7 +317,7 @@ td, th:first-child {
 
 // sticky w borders
 .hc-table-borders {
-    th.hc-table-sticky, .hc-sticky-header th {
+    th.hc-table-sticky, .hc-sticky-header th, .hc-sticky-header th.hc-col-sortable-left, .hc-sticky-header th.hc-col-sortable {
         @include th-border-header-sticky();
 
         &.hc-table-sticky-border-elem-left {
