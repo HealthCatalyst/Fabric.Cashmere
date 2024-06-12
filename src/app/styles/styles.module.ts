@@ -7,6 +7,7 @@ import {AboutModalComponent} from './about/about-modal.component';
 import {TableDemoComponent} from './table/table-demo.component';
 import {IESupportComponent} from './ie-support/ie-support.component';
 import {ChartDemoComponent} from '../styles/chart/chart-demo.component';
+import { InfoIconsDemoComponent } from './info-icons/info-icons-demo.component';
 
 @NgModule({
     imports: [SharedModule, StylesRoutesModule],
@@ -15,6 +16,7 @@ import {ChartDemoComponent} from '../styles/chart/chart-demo.component';
         StylesComponent,
         AboutModalComponent,
         TableDemoComponent,
+        InfoIconsDemoComponent,
         IESupportComponent,
         ChartDemoComponent
     ]

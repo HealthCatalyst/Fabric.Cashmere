@@ -1,0 +1,91 @@
+<div class="demo-content">
+    <h1>Info Icons & Help Text</h1>
+    <h6>Last updated Jun 12, 2024</h6>
+
+    <hc-tile>
+        <h5 id="intro">Why Info Icons?<span class="hc-icon-right hc-info-ico fa fa-info-circle" hcTooltip="To give extra context!"></span></h5>
+        <p>Information icons provide in-context UI help. They're ideal for cases where the supplmental info is A) not critical, or B) verbose enough that it would clutter the UI if displayed all the time.</p>
+
+        <p>Use them generously in form controls, in tables, or in any other place where the user may benefit from some additional context.</p>
+
+        <h4>To use Cashmere styled info icons:</h4>
+        <ol>
+            <li>Add the <code>.hc-info-ico</code> class to a <code>span</code> or <code>hc-icon</code> with an appropriate icon.</li>
+            <li>Use <code>[hcTooltip]</code> or <code>[hcPop]</code>, or trigger a modal to deliver the helpful info.</li>
+        </ol>
+
+        <br><br>
+        <div id="tooltipExample"></div>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="intro">Use with HcTooltip</h5>
+        <hc-form-field>
+            <hc-form-field>
+                <hc-label>Name <span class="hc-icon-right hc-info-ico fa fa-info-circle" hcTooltip="Some helpful context"></span></hc-label>
+                <input hcInput placeholder="Enter name"/>
+            </hc-form-field>
+        </hc-form-field>
+
+        <pre><code>
+&lt;hc-form-field&gt;
+    &lt;hc-form-field&gt;
+        &lt;hc-label&gt;
+            Name
+            &lt;span class=&quot;hc-icon-left hc-info-ico fa fa-info-circle&quot;
+                hcTooltip=&quot;Some helpful context&quot;&gt;
+            &lt;/span&gt;&lt;/hc-label&gt;
+        &lt;input hcInput placeholder=&quot;Enter name&quot;/&gt;
+    &lt;/hc-form-field&gt;
+&lt;/hc-form-field&gt;
+        </code></pre>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="intro">Use with HcPop</h5>
+        <hc-tile>
+            <strong>Sepsis Dashboard<span class="hc-icon-right hc-info-ico fa fa-info-circle" [hcPop]="helpPop"></span></strong>
+        </hc-tile>
+        <hc-pop #helpPop>
+            <strong>Helpful Context</strong>
+            <p>Some <strong>helpful context</strong> that the user might need to know.</p>
+            <button hc-button>Thanks for the help!</button>
+        </hc-pop>
+
+        <pre><code>
+&lt;hc-form-field&gt;
+    &lt;hc-form-field&gt;
+        &lt;hc-label&gt;
+            Name
+            &lt;span class=&quot;hc-icon-left hc-info-ico fa fa-info-circle&quot;
+                hcPop=&quot;helpPop&quot;&gt;
+            &lt;/span&gt;&lt;/hc-label&gt;
+        &lt;input hcInput placeholder=&quot;Enter name&quot;/&gt;
+    &lt;/hc-form-field&gt;
+&lt;/hc-form-field&gt;
+
+&lt;hc-pop #helpPop&gt;
+    &lt;strong&gt;Helpful Context&lt;/strong&gt;
+    &lt;p&gt;Some &lt;strong&gt;helpful context&lt;/strong&gt; that the user might need to know.&lt;/p&gt;
+    &lt;button hc-button&gt;Thanks for the help!&lt;/button&gt;
+&lt;/hc-pop&gt;
+        </code></pre>
+    </hc-tile>
+
+    <hc-tile>
+        <h5 id="intro">Other Options for Help Text</h5>
+        <h3>HTML <code>title</code> attributes:</h3>
+        <p>Use these for less intrusive hover tooltips. They're great for quick,
+            one-line explanations &mdash; "hover to discover" style. If the user hesitates on a button you can explain to them in another
+            way the ramifications of clicking that button. You should almost always include these on clickable elements by default
+            if you're not already using an <code>hcTooltip</code>.
+        </p>
+        <div id="titleAttributeExample"></div>
+
+        <h3>On-Screen Help</h3>
+        <p>For cases where the guidance is critical for success, and isn't easily learnable in any other way,
+            it's good to just include the helpful instructions there in place. Be sure to keep it as quick and concise as possible.
+        </p>
+        <div id="inContextHelp"></div>
+    </hc-tile>
+</div>
