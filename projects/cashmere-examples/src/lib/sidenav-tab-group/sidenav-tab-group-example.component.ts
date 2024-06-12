@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { SidenavLink, SidenavTabGroup } from '@healthcatalyst/cashmere';
 
 /**
@@ -10,6 +11,12 @@ import { SidenavLink, SidenavTabGroup } from '@healthcatalyst/cashmere';
     styleUrls: ['sidenav-tab-group-example.component.scss']
 })
 export class SidenavTabGroupExampleComponent {
+    hideChildrenOnCollapse: FormControl = new FormControl(true);
+
+    constructor() {
+        this.hideChildrenOnCollapse.valueChanges.subscribe(() => this.toggleGroupCollapse());
+    }
+
     tabs: SidenavLink[] = [
         new SidenavLink({title: 'GitHub', iconClass: 'fa fa-github', description: 'Source code repositories'}),
         new SidenavLink({title: 'Stack Overflow', iconClass: 'fa fa-stack-overflow', description: 'Q&A site for developers'}),
@@ -26,4 +33,10 @@ export class SidenavTabGroupExampleComponent {
             new SidenavLink({title: 'Edge', iconClass: 'fa fa-edge', description: 'The new IE'})
         ]})
     ];
+
+    toggleGroupCollapse() {
+        this.tabGroups.forEach(group => {
+            group.hideChildrenOnCollapse = this.hideChildrenOnCollapse.value;
+        });
+    }
 }
