@@ -160,6 +160,10 @@
         @include hc-sidenav-tab-group-header();
     }
 
+    .hc-sidenav-tab-group-header-icon {
+        @include hc-sidenav-group-header-icon();
+    }
+
     .hc-sidenav-tab-group-list-container {
         @include hc-sidenav-tab-group-list-container();
     }
@@ -220,6 +224,14 @@
         .hc-sidenav-tab-name {
             @include nested-link-submenu-tab-name();
         }
+    }
+
+    .hc-sidenav-tab-group-header {
+        @include hc-sidenav-collapsed-tab-group-header();
+    }
+
+    .hc-sidenav-tab-group-header-icon {
+        @include hc-sidenav-collapsed-tab-group-header-icon();
     }
 }
 

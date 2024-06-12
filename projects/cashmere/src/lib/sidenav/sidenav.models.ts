@@ -8,6 +8,7 @@ export interface LinkParent {
     labelHTML: string;
     children: SidenavLink[];
     parent?: LinkParent;
+    tabCSSClass?: string;
 }
 
 export class SidenavLink implements LinkParent {
@@ -25,6 +26,8 @@ export class SidenavLink implements LinkParent {
     public description: string;
     /** Passed to routerLink */
     public routerLink?: string;
+    /** Additional CSS class to apply */
+    public tabCSSClass?: string;
     /** Instead of a route, can provide a callback function.
      * Alternative is to listen to SideNav's tabClicked or favoriteClicked `@Output` events. */
     public onClick?: (e: MouseEvent, link: SidenavLink) => void;
@@ -73,11 +76,15 @@ export class SidenavTabGroup implements LinkParent {
     public labelHTML: string;
     /** Nested links for this section*/
     public children: SidenavLink[];
+    /** If true, will put child links into popover menu when the sidenav is collapsed */
+    public hideChildrenOnCollapse = true;
+    /** Additional CSS class to apply */
+    public tabCSSClass?: string;
 
     /** @docs-private */
     public hasNestedLinks: boolean;
 
-    constructor(partial: Partial<SidenavLink>) {
+    constructor(partial: Partial<SidenavTabGroup>) {
         Object.assign(this, partial);
         this.hasNestedLinks = this.children.some(child => child.children?.length > 0);
         this.children?.forEach(child => child.parent = this);

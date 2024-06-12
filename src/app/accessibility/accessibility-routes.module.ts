@@ -18,12 +18,12 @@ const routes: Routes = [
                 }
             },
             {
-                path: 'ux-writing',
+                path: 'writing-for-accessibility',
                 component: MarkdownContentComponent,
                 data: {
-                    title: 'Ux Writing',
+                    title: 'Writing for Accessibility',
                     category: 'Foundations',
-                    document: require('../../../guides/accessibility/ux-writing.md')
+                    document: require('../../../guides/accessibility/writing-for-accessibility.md')
                 }
             },
             {
