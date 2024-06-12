@@ -246,12 +246,13 @@ $modal-border: 1px solid $gray-200;
 }
 
 @mixin hc-modal-close-icon() {
-    position: absolute;
+    // !important tag necessary to override hc-icon-button class styles
+    position: absolute !important;
     top: 10px;
     right: 15px;
-    background-image: url($ico-times-gray);
-    background-repeat: no-repeat;
-    background-position: center;
+    background-image: url($ico-times-gray) !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
 
     // Reposition the close icon button for fullscreen modals
     @include media-breakpoint-down(md) {
