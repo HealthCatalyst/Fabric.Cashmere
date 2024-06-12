@@ -417,7 +417,7 @@ $row-selected-border-color: $white;
 }
 
 @mixin th-header-sticky-last-child() {
-    &:after {
+    &:before {
         content: ' ';
         height: 100%;
         width: 2px;
@@ -437,7 +437,7 @@ $row-selected-border-color: $white;
 }
 
 @mixin th-header-sticky-last-child-gray() {
-    &:after {
+    &:before {
         background-color: $slate-gray-100;
     }
 }
