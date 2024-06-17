@@ -30,6 +30,7 @@ Unregistered Marks (currently in use, examples) – **Apply ™** symbol:
 _The ™ symbol can be applied to any unregistered trademark_
 
 - ARMUS by Health Catalyst
+- Carevive by Health Catalyst
 - CRStar by Health Catalyst
 - DOS
 - DOS Mart and DOS Marts
