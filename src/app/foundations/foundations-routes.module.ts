@@ -56,7 +56,7 @@ const routes: Routes = [
             {
                 path: 'logo',
                 component: LogoDemoComponent,
-                data: {title: 'Logo', category: 'Brand'}
+                data: {title: 'Logos', category: 'Brand'}
             },
             {
                 path: 'products',
