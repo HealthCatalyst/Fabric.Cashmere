@@ -117,6 +117,13 @@ $hc-header-font-size: 18px !default;
     align-items: center;
 }
 
+.hc-toast-content-container {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .hc-toast-close {
     padding-left: 20px;
     padding-right: 3px;
