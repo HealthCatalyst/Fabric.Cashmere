@@ -70,10 +70,14 @@ export class SidenavTabGroup implements LinkParent {
     iconClass?: string;
     /** Name of the link section. Used as the primary label in the UI. */
     public title: string;
+    /** Alternate name of the link section to show when sidenav is collapsed. */
+    public collapsedTitle: string;
     /** Name of the link section. shown on hover */
     public description: string;
     /** Serves as the primary label in the UI. Will override "title". **WARNING:** You are responsible to sanitize any unsafe user input. */
     public labelHTML: string;
+    /** Alternate markup to serve as the primary label in the UI when the sidenav is collapsed. Will override other title or label properties. **WARNING:** You are responsible to sanitize any unsafe user input. */
+    public collapsedLabelHTML: string;
     /** Nested links for this section*/
     public children: SidenavLink[];
     /** If true, will put child links into popover menu when the sidenav is collapsed */

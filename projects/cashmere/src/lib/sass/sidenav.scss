@@ -322,7 +322,8 @@ $sidenav-width: 260px !default;
 @mixin hc-sidenav-collapsed-tab-group-header() {
     @include fontSize(10px);
     margin: 0;
-    padding: 0px 3px 4px;
+    padding: 0px 3px 3px;
+    line-height: 1.2;
     min-width: 0;
     overflow: hidden;
     justify-content: center;

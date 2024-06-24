@@ -30,8 +30,14 @@
             <ng-container *ngIf="!collapsed || !tabGroup.hideChildrenOnCollapse">
                 <div class="hc-sidenav-tab-group-container">
                     <div class="hc-sidenav-tab-group-header {{tabGroup.tabCSSClass}}" title="{{tabGroup.description}}" (click)="onTabGroupHeaderClick($event, tabGroup)">
-                        <span *ngIf="tabGroup.labelHTML" [innerHTML]="tabGroup.labelHTML"></span>
-                        <span *ngIf="!tabGroup.labelHTML" class="hc-sidenav-tab-group-header-title">{{ tabGroup.title }}</span>
+                        <ng-container *ngIf="collapsed && (tabGroup.collapsedTitle || tabGroup.collapsedLabelHTML); else standardGroupLabel">
+                            <span *ngIf="tabGroup.collapsedLabelHTML" [innerHTML]="tabGroup.collapsedLabelHTML"></span>
+                            <span *ngIf="!tabGroup.collapsedLabelHTML" class="hc-sidenav-tab-group-header-title">{{ tabGroup.collapsedTitle }}</span>
+                        </ng-container>
+                        <ng-template #standardGroupLabel>
+                            <span *ngIf="tabGroup.labelHTML" [innerHTML]="tabGroup.labelHTML"></span>
+                            <span *ngIf="!tabGroup.labelHTML" class="hc-sidenav-tab-group-header-title">{{ tabGroup.title }}</span>
+                        </ng-template>
                         <span *ngIf="tabGroup.iconClass" class="{{tabGroup.iconClass}} hc-sidenav-tab-group-header-icon"></span>
                     </div>
                     <!-- Tab group items -->
