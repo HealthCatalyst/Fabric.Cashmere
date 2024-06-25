@@ -138,11 +138,13 @@ $hc-header-font-size: 18px !default;
     @include fontSize($hc-header-font-size);
     margin-bottom: 4px;
     word-break: break-word;
+    line-height: 1.1;
 }
 
 .hc-toast-body {
     @include fontSize($hc-body-font-size);
     word-break: break-word;
+    line-height: 1.2;
 }
 
 .hc-toast-progress {
