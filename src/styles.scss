@@ -41,6 +41,10 @@ ul.hc-example-list {
         ul {
             margin: 0;
         }
+
+        li {
+            margin-left: 24px;
+        }
     }
 
     :not(article) > ol {
