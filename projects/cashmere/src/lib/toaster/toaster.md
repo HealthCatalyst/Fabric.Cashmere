@@ -34,7 +34,7 @@ Following are some guidelines and suggestions for effectively using toasts in yo
     - *Double check your job settings* or *Contact your admin if the problem continues*
 
 ### More writing tips:
-https://cashmere.healthcatalyst.net/content/ux-writing-writing-choices
+[Check out our UX writing guide](https://cashmere.healthcatalyst.net/content/ux-writing-writing-choices)
 
 ### Do I always need a header AND message for my toast?
 Nope. You can use just the header or just the message. For cases where there’s one 1-3 words you want to give, just a header would be appropriate. If there are just 4-7 words, a message alone would be appropriate.
