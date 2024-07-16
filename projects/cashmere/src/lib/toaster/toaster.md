@@ -23,18 +23,19 @@ Following are some guidelines and suggestions for effectively using toasts in yo
 - Include extra detail that may be helpful to describe what happened
     - If multiple things were impacted
         - Consider including the count of objects affected in numerical form: *”Successfully updated 6 jobs”*
-        - Use proper pluralization instead of hardcoding *”job”* or *“jobs”* instead of *“job(s)”*
-    - If one (or just a few) things were impacted, include the name of the thing. *“Successfully updated ‘My Awesome Job’”*
-<br>
-**For errors**
-- Don’t include technical details that aren’t appropriate or helpful for the audience *"Unable to connect. Port 5001 seems to be blocked”*
-- Concisely explain the implications
-    - *Unable to add Job 7 to the queue. Jobs 8 and on will not be run.*
-- Offer remediation steps if available
-    - *Double check your job settings* or *Contact your admin if the problem continues*
+        - Use proper pluralization instead of hardcoding: *”job”* or *“jobs”* instead of *“job(s)”*
+    - If one (or just a few) things were impacted, include the name of the thing: *“Successfully updated ‘My Awesome Job’”*
 
-### More writing tips:
-[Check out our UX writing guide](https://cashmere.healthcatalyst.net/content/ux-writing-writing-choices)
+- **For errors**
+  - Don’t include technical details that aren’t appropriate or helpful for the audience:
+    - *"Unable to connect. Port 5001 seems to be blocked”*
+  - Concisely explain the implications:
+      - *"Unable to add Job 7 to the queue. Jobs 8 and on will not be run."*
+  - Offer remediation steps if available:
+      - *"Double check your job settings"* or *"Contact your admin if the problem continues"*
+
+- **More writing tips:**
+  - [Check out our UX writing guide](https://cashmere.healthcatalyst.net/content/ux-writing-writing-choices)
 
 ### Do I always need a header AND message for my toast?
 Nope. You can use just the header or just the message. For cases where there’s one 1-3 words you want to give, just a header would be appropriate. If there are just 4-7 words, a message alone would be appropriate.
