@@ -5,6 +5,7 @@ import {ConfigurableFocusTrap, ConfigurableFocusTrapFactory} from '@angular/cdk/
 import {DOCUMENT} from '@angular/common';
 import {Component, ElementRef, HostBinding, HostListener, Inject, Optional, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ActiveModal} from './active-modal';
+import { ButtonComponent } from '../button';
 
 // hcmodal[0].setAttribute('class', options.isResizable ? `hc-modal-resizable hc-modal-${options.size}` : `hc-modal-static hc-modal-${options.size}`);
 
@@ -16,7 +17,7 @@ import {ActiveModal} from './active-modal';
             {{_tight ? 'hc-modal-tight' : ''}} {{_isDraggable && _tight ? 'hc-modal-drag-header' : ''}}"
             cdkDrag [cdkDragDisabled]="!_isDraggable" cdkDragBoundary=".hc-modal-window">
             <div *ngIf="_isDraggable" class="hc-modal-drag-handle" cdkDragHandle></div>
-            <button *ngIf="_closeIcon" class="hc-modal-close-icon" hc-icon-button (click)="_dismiss()"></button>
+            <button *ngIf="_closeIcon" #closeBtn class="hc-modal-close-icon" hc-icon-button (click)="_dismiss()"></button>
             <ng-content></ng-content>
         </div>
     `,
@@ -59,6 +60,10 @@ export class ModalWindowComponent {
     /** Reference to the element to build a focus trap around. */
     @ViewChild('focusTrapElement')
     private _focusTrapElement: ElementRef;
+
+    /** Reference to the close button. */
+    @ViewChild('closeBtn')
+    private _closeBtn: ButtonComponent;
 
     @HostBinding('@fadeInOut')
     _fadeInOut(): unknown {
@@ -139,7 +144,16 @@ export class ModalWindowComponent {
         }
 
         if (this._autoFocus && this._focusTrap) {
-            this._focusTrap.focusInitialElementWhenReady();
+            this._focusTrap.focusInitialElementWhenReady().then(() => {
+                this._avoidInitialFocusOnCloseButton();
+            });
+
+        }
+    }
+
+    _avoidInitialFocusOnCloseButton() {
+        if (this._closeBtn && this._closeBtn.elementRef.nativeElement === document.activeElement) {
+            this._closeBtn.elementRef.nativeElement.blur();
         }
     }
 
