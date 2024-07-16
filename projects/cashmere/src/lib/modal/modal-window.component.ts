@@ -17,7 +17,7 @@ import { ButtonComponent } from '../button';
             {{_tight ? 'hc-modal-tight' : ''}} {{_isDraggable && _tight ? 'hc-modal-drag-header' : ''}}"
             cdkDrag [cdkDragDisabled]="!_isDraggable" cdkDragBoundary=".hc-modal-window">
             <div *ngIf="_isDraggable" class="hc-modal-drag-handle" cdkDragHandle></div>
-            <button *ngIf="_closeIcon" #closeBtn class="hc-modal-close-icon" tabIndex="100" hc-icon-button (click)="_dismiss()"></button>
+            <button *ngIf="_closeIcon" #closeBtn class="hc-modal-close-icon" hc-icon-button (click)="_dismiss()"></button>
             <ng-content></ng-content>
         </div>
     `,
