@@ -61,6 +61,7 @@ _The ™ symbol can be applied to any unregistered trademark_
 - Health Catalyst University
 - Hospital Price Index
 - KPI Ninja by Health Catalyst
+- Lumeon by Health Catalyst
 - Ninja Universe
 - Patient Safety Monitor
 - Population Health Foundations Solution
