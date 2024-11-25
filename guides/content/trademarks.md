@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated May 13, 2024
+###### Last updated November 22, 2024
 
 :::
 
@@ -9,6 +9,8 @@
 Registered Marks (currently in use) – **Apply ®**:
 
 - [[FLAME]](https://cashmere.healthcatalyst.net/styles/logo) Design Mark
+- Carevive Prompt
+- Carevive Smart Data
 - Health Catalyst _(only when followed by a product or services description; when you are just referring to the company/entity, do not use ®)_
 - HAS
 - HealthCatalyst
@@ -31,6 +33,7 @@ _The ™ symbol can be applied to any unregistered trademark_
 
 - ARMUS by Health Catalyst
 - Carevive by Health Catalyst
+- Carevive SmartAlerts
 - CRStar by Health Catalyst
 - DOS
 - DOS Mart and DOS Marts
