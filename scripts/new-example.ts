@@ -28,7 +28,7 @@ const existingExamples = readdirSync(examplesDir).filter(
 );
 
 const currentExampleDependencies = Object.keys(
-    JSON.parse(readFileSync(join(__dirname, '../projects/cashmere-examples/package.json')).toString()).peerDependencies
+    JSON.parse(readFileSync(join(__dirname, '../projects/cashmere-examples/package.json')).toString()).peerDependencies || []
 );
 
 const exampleTypes = ['simple', 'module'];
@@ -241,6 +241,13 @@ function installAdditionalPackages() {
     delete packageJson.dependencies;
     const jsonString = JSON.stringify(packageJson);
     writeFileSync(packageJsonPath, prettier.format(jsonString, {...prettierConfig, parser: 'json'}));
+
+    console.info(chalk.gray('removing packages from package-lock...'));
+    const packageLockJsonPath = join(cashmereExamplesProjectDir, 'package-lock.json');
+    const packageLockJson = JSON.parse(readFileSync(packageLockJsonPath).toString());
+    delete packageLockJson.packages;
+    const jsonLockString = JSON.stringify(packageLockJson);
+    writeFileSync(packageLockJsonPath, prettier.format(jsonLockString, {...prettierConfig, parser: 'json'}));
 }
 
 function runBuild() {
