@@ -63,6 +63,7 @@ _The ™ symbol can be applied to any unregistered trademark_
   - Health Catalyst Value Optimizer
 - Health Catalyst University
 - Hospital Price Index
+- Intraprise Health by Health Catalyst
 - KPI Ninja by Health Catalyst
 - Lumeon by Health Catalyst
 - Ninja Universe
