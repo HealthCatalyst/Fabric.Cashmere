@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import {EnvSwitcherComponent} from './env-switcher.component';
 import {PopModule} from '../pop/popover.module';
@@ -10,9 +10,6 @@ import {IconModule} from '../icon/icon.module';
 import {CheckboxModule} from '../checkbox/checkbox.module';
 import {ButtonModule} from '../button/button.module';
 
-@NgModule({
-    imports: [CommonModule, PopModule, HttpClientModule, PipesModule, IconModule, ProgressIndicatorsModule, CheckboxModule, ButtonModule],
-    declarations: [EnvSwitcherComponent],
-    exports: [EnvSwitcherComponent]
-})
+@NgModule({ declarations: [EnvSwitcherComponent],
+    exports: [EnvSwitcherComponent], imports: [CommonModule, PopModule, PipesModule, IconModule, ProgressIndicatorsModule, CheckboxModule, ButtonModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class EnvSwitcherModule {}

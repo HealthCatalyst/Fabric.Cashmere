@@ -1,7 +1,7 @@
 import {Observable, Subject} from 'rxjs';
 import {IDiscoveryRequest, IDiscoveryApplication} from '@healthcatalyst/cashmere';
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * If your app has access to the Health Catalyst DiscoveryService, you won't need to implement a

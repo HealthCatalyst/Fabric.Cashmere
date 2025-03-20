@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {Component, OnInit, ViewChild, AfterViewInit, TemplateRef} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {PaginationComponent, HcTableDataSource, ModalOptions, ModalService, HcToasterService, HcToastOptions} from '@healthcatalyst/cashmere';
 import {SectionService} from '../../../shared/section.service';
