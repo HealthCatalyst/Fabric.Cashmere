@@ -1,6 +1,6 @@
 # Getting Started
 
-###### Last updated May 14, 2024
+###### Last updated Mar 20, 2025
 
 :::
 ## Step 1: Install npm dependencies.
@@ -15,11 +15,11 @@ npm install --save @healthcatalyst/cashmere @angular/cdk
 - [Font Awesome](https://fontawesome.com) - Recommended icon set. *(For healthcare-specific iconography, see step 3.)*
 - [Noto Sans](https://fonts.google.com/specimen/Noto+Sans) - Recommended font.
 - [Ng-select](https://github.com/ng-select/ng-select) - Needed only if using the multiselect/typeahead component. Look [here](https://github.com/ng-select/ng-select) for which version of ng-select to install based on your Angular version.
-- [Ngx-slider](https://github.com/danisss9/ngx-slider) - Needed only if using the slider component. We're currently on a forked version because the original does not support angular's modern Ivy compilation.
+- [Ngx-slider](https://www.npmjs.com/package/@angular-slider/ngx-slider) - Needed only if using the slider component.
 
 
 ```BASH
-npm install --save font-awesome notosans-fontface @ng-select/ng-select @angular-slider/ngx-slider-v2
+npm install --save font-awesome notosans-fontface @ng-select/ng-select @angular-slider/ngx-slider
 ```
 :::
 

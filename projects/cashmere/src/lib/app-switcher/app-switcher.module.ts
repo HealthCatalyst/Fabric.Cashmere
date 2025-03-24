@@ -1,6 +1,6 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import {AppSwitcherComponent} from './app-switcher.component';
 import {PopModule} from '../pop/popover.module';
@@ -12,18 +12,15 @@ import {IAppSwitcherConfig, APP_SWITCHER_CONFIG, APP_SWITCHER_SERVICE} from './a
 import {AppSwitcherLinksComponent} from './app-switcher-application-link/app-switcher-links.component';
 import {IconModule} from '../icon/icon.module';
 
-@NgModule({
-    imports: [CommonModule, PopModule, HttpClientModule, PipesModule, IconModule, ProgressIndicatorsModule],
-    declarations: [AppSwitcherComponent, AppSwitcherLinksComponent],
-    exports: [AppSwitcherComponent, AppSwitcherLinksComponent],
-    providers: [
+@NgModule({ declarations: [AppSwitcherComponent, AppSwitcherLinksComponent],
+    exports: [AppSwitcherComponent, AppSwitcherLinksComponent], imports: [CommonModule, PopModule, PipesModule, IconModule, ProgressIndicatorsModule], providers: [
         {
             provide: APP_SWITCHER_SERVICE,
             useClass: AppSwitcherService
         },
-        WorkTrackerService
-    ]
-})
+        WorkTrackerService,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppSwitcherModule {
     static forRoot(config: IAppSwitcherConfig): ModuleWithProviders<AppSwitcherModule> {
         return {
