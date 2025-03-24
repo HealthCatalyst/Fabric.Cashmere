@@ -1,5 +1,5 @@
 import {Component, Input, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import stackblitz from '@stackblitz/sdk';
 import {EXAMPLE_COMPONENTS} from '@healthcatalyst/cashmere-examples';
 import {ApplicationInsightsService} from '../../../../shared/application-insights/application-insights.service';

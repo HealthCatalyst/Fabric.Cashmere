@@ -9,7 +9,7 @@ npm install --save @angular-slider/ngx-slider
 
 ### Step 2: Import NgxSliderModule.
 ```typescript
-    import { NgxSliderModule } from 'ngx-slider-v2';
+    import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
     @NgModule({
         declarations: [AppComponent],

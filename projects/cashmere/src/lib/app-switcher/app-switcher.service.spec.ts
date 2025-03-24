@@ -1,7 +1,8 @@
 import {TestBed, waitForAsync} from '@angular/core/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import {AppSwitcherService} from './app-switcher.service';
 import {APP_SWITCHER_CONFIG} from './app-switcher-interfaces';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('AppSwitcherService', () => {
     describe('when initialized with a discoveryServiceUri ending in a version', () => {
@@ -9,9 +10,9 @@ describe('AppSwitcherService', () => {
 
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                imports: [HttpClientTestingModule],
-                providers: [AppSwitcherService, {provide: APP_SWITCHER_CONFIG, useValue: {discoveryServiceUri: 'foo://bar/baz/v1'}}]
-            });
+    imports: [],
+    providers: [AppSwitcherService, { provide: APP_SWITCHER_CONFIG, useValue: { discoveryServiceUri: 'foo://bar/baz/v1' } }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
         }));
 
         beforeEach(() => (service = TestBed.inject(AppSwitcherService)));
@@ -26,9 +27,9 @@ describe('AppSwitcherService', () => {
 
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                imports: [HttpClientTestingModule],
-                providers: [AppSwitcherService, {provide: APP_SWITCHER_CONFIG, useValue: {discoveryServiceUri: 'foo://bar/baz/v1/'}}]
-            });
+    imports: [],
+    providers: [AppSwitcherService, { provide: APP_SWITCHER_CONFIG, useValue: { discoveryServiceUri: 'foo://bar/baz/v1/' } }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
         }));
 
         beforeEach(() => (service = TestBed.inject(AppSwitcherService)));
@@ -43,9 +44,9 @@ describe('AppSwitcherService', () => {
 
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                imports: [HttpClientTestingModule],
-                providers: [AppSwitcherService, {provide: APP_SWITCHER_CONFIG, useValue: {discoveryServiceUri: 'foo://bar/baz/'}}]
-            });
+    imports: [],
+    providers: [AppSwitcherService, { provide: APP_SWITCHER_CONFIG, useValue: { discoveryServiceUri: 'foo://bar/baz/' } }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
         }));
 
         beforeEach(() => (service = TestBed.inject(AppSwitcherService)));
@@ -60,9 +61,9 @@ describe('AppSwitcherService', () => {
 
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                imports: [HttpClientTestingModule],
-                providers: [AppSwitcherService, {provide: APP_SWITCHER_CONFIG, useValue: {discoveryServiceUri: 'foo://bar/baz'}}]
-            });
+    imports: [],
+    providers: [AppSwitcherService, { provide: APP_SWITCHER_CONFIG, useValue: { discoveryServiceUri: 'foo://bar/baz' } }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
         }));
 
         beforeEach(() => (service = TestBed.inject(AppSwitcherService)));
@@ -75,9 +76,9 @@ describe('AppSwitcherService', () => {
     describe('when not provided an APP_SWITCHER_CONFIG', () => {
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                imports: [HttpClientTestingModule],
-                providers: [AppSwitcherService]
-            });
+    imports: [],
+    providers: [AppSwitcherService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
         }));
         it('should throw an error', () => {
             expect(() => TestBed.inject(AppSwitcherService)).toThrowError();
@@ -87,9 +88,9 @@ describe('AppSwitcherService', () => {
     describe('when provided an APP_SWITCHER_CONFIG without a discoveryServiceUri', () => {
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                imports: [HttpClientTestingModule],
-                providers: [AppSwitcherService, {provide: APP_SWITCHER_CONFIG, useValue: {}}]
-            });
+    imports: [],
+    providers: [AppSwitcherService, { provide: APP_SWITCHER_CONFIG, useValue: {} }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
         }));
         it('should throw an error', () => {
             expect(() => TestBed.inject(AppSwitcherService)).toThrowError();

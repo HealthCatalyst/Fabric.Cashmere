@@ -1,6 +1,6 @@
 import {Observable} from 'rxjs';
 
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {Inject, Injectable} from '@angular/core';
 import {IAppSwitcherConfig, IAppSwitcherService, IDiscoveryRequest, APP_SWITCHER_CONFIG} from './app-switcher-interfaces';
 
