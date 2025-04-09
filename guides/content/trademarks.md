@@ -1,6 +1,6 @@
 # Trademarks & Registered Marks Usage
 
-###### Last updated November 22, 2024
+###### Last updated April 7, 2025
 
 :::
 
@@ -53,6 +53,7 @@ _The ™ symbol can be applied to any unregistered trademark_
   - Health Catalyst PowerLabor
   - Health Catalyst PowerPlanning
 - Health Catalyst Ignite
+- Health Catalyst Ignite Spark
 - Health Catalyst Population Health Suite
   - Health Catalyst Care Flow
   - Health Catalyst Embedded Care Gaps
