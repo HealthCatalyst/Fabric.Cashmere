@@ -32,7 +32,7 @@ export class TabsHorizontalExampleComponent {
     }
 
     updateTabName(): void {
-        const iconArray: Array<string> = ['fa-pied-piper', 'fa-pied-piper-alt', 'fa-leaf', 'fa-coffee', 'fa-beer', 'fa-birthday-cake'];
+        const iconArray: Array<string> = ['fa-spider', 'fa-pizza-slice', 'fa-leaf', 'fa-mug-hot', 'fa-beer-mug-empty', 'fa-cake-candles'];
 
         this.dynamicTabName = this.tabNameControl.value;
         this.dynamicTabIcon = iconArray[Math.floor(Math.random() * iconArray.length)];

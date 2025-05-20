@@ -17,7 +17,7 @@ Include line numbers for blocks of code longer than than three lines. Line numbe
 ```html
 <hc-list>
     <hc-list-item>
-        <hc-icon fontSet="fa" fontIcon="fa-snowflake-o" hcListIcon></hc-icon>
+        <hc-icon fontSet="fa-solid" fontIcon="fa-snowflake" hcListIcon></hc-icon>
         <h4 hcListLine>SnowFlake</h4>
         <span hcListLine>Second Line</span>
     </hc-list-item>

@@ -19,7 +19,7 @@ export class MultiselectCustomTemplatesExampleComponent {
         {name: 'Ferry', icon: 'ship', color: 'teal', type: 'sea'},
         {name: 'Plane', icon: 'plane', color: 'purple', type: 'air'},
         {name: 'Rocket', icon: 'rocket', color: 'orange', type: 'air'},
-        {name: 'Space Shuttle', icon: 'space-shuttle', color: 'dark-blue', type: 'air'}
+        {name: 'Space Shuttle', icon: 'shuttle-space', color: 'dark-blue', type: 'air'}
     ];
 
     customSearchFn(term: string, item: Transport): boolean {

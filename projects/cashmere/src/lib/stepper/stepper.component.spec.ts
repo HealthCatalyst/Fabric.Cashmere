@@ -25,9 +25,9 @@ export class TestStepperComponent {
     currentStep = 1;
 
     stepsVal: StepInterface[] = [
-        {label: 'One', iconSet: 'fa', icon: 'fa-check'},
+        {label: 'One', iconSet: 'icon', icon: 'icon-check'},
         {label: 'Two'},
-        {label: 'Three', iconSet: 'fa', icon: 'fa-lock', disabled: true}
+        {label: 'Three', iconSet: 'icon', icon: 'icon-lock', disabled: true}
     ];
 }
 

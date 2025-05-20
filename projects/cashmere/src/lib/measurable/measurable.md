@@ -24,7 +24,7 @@ The steps to set up the `hc-measurable` are:
         More
         <hc-icon
             hcIconSm
-            fontSet="fa"
+            fontSet="fa-solid"
             fontIcon="fa-chevron-down">
         </hc-icon>
     </button>

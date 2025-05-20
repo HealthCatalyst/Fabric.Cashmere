@@ -6,31 +6,31 @@
     <hc-navbar-dropdown [active]="webActive" linkText="Web Apps">
         <div hcMenu>
             <a hcMenuItem routerLink="web/components">
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-code"></hc-icon>
+                <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-code"></hc-icon>
                 <span hcMenuText>Angular Components</span>
             </a>
             <a hcMenuItem href="https://healthcatalyst.github.io/react-cashmere/" target="_blank">
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-code"></hc-icon>
+                <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-code"></hc-icon>
                 <span hcMenuText>React Components</span>
             </a>
             <a hcMenuItem routerLink="web/styles">
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-paint-brush" hcIconSm></hc-icon>
+                <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-paintbrush" hcIconSm></hc-icon>
                 <span hcMenuText>Additional Styles</span>
             </a>
             <a hcMenuItem routerLink="web/mobile">
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-chrome"></hc-icon>
+                <hc-icon hcMenuIcon fontSet="fa-brands" fontIcon="fa-chrome"></hc-icon>
                 <span hcMenuText>Mobile Development</span>
             </a>
             <a hcMenuItem routerLink="web/guides">
-                <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-graduation-cap"></hc-icon>
+                <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-graduation-cap"></hc-icon>
                 <span hcMenuText>Developer Guides</span>
             </a>
         </div>
     </hc-navbar-dropdown>
     <hc-navbar-link uri="/analytics" linkText="Analytics"></hc-navbar-link>
-    <hc-icon class="hc-navbar-icon" fontSet="fa" fontIcon="fa-search" [hcPop]="search" (click)="setInputFocus()" (popoverClosed)="logSearch()"></hc-icon>
+    <hc-icon class="hc-navbar-icon" fontSet="fa-solid" fontIcon="fa-magnifying-glass" [hcPop]="search" (click)="setInputFocus()" (popoverClosed)="logSearch()"></hc-icon>
     <a class="hc-navbar-icon" title="View on GitHub" href="https://github.com/HealthCatalyst/Fabric.Cashmere" target="blank">
-        <hc-icon class="hc-navbar-external-link" fontSet="fa" fontIcon="fa-github"></hc-icon>
+        <hc-icon class="hc-navbar-external-link" fontSet="fa-brands" fontIcon="fa-github"></hc-icon>
     </a>
     <hc-navbar-mobile-menu appSwitcher="false">
         <hc-list>
@@ -82,14 +82,14 @@
     class="hc-navbar-search-popover">
     <div hcMenu class="hc-search-menu">
         <hc-form-field class="hc-navbar-search-wrapper">
-            <hc-icon hcPrefix fontSet="fa" fontIcon="fa-search" class="searchIcon"></hc-icon>
+            <hc-icon hcPrefix fontSet="fa-solid" fontIcon="fa-magnifying-glass" class="searchIcon"></hc-icon>
             <input #searchInput hcInput [formControl]="navSearchBar" autocomplete="off"
                 placeholder="Search the Cashmere docs" class="searchBar" id='hc-nav-search-input' />
         </hc-form-field>
         <hc-list class="hc-navbar-search-results">
             <hc-list-item *ngFor="let item of searchResults" class="hc-navbar-search-results-items"
                 [routerLink]="'/' + item.link" [queryParams]="{section: item.section, selected: item.displayName}" (click)="search.toggle()">
-                    <hc-icon fontSet="fa" [fontIcon]="searchIcons[item.category].icon" hcListIcon class="results-icon"></hc-icon>
+                    <hc-icon fontSet="fa-solid" [fontIcon]="searchIcons[item.category].icon" hcListIcon class="results-icon"></hc-icon>
                     <div hcListLine class="result-title hc-text-ellipsis">{{item.title}}</div>
                     <div hcListLine class="result-sub-text">{{item.link}}</div>
             </hc-list-item>

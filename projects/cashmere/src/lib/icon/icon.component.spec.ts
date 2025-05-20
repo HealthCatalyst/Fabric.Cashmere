@@ -6,7 +6,7 @@ import {By} from '@angular/platform-browser';
 
 @Component({
     template: `
-        <hc-icon fontSet="fa" [fontIcon]="iconValue" hcIconLg></hc-icon>
+        <hc-icon fontSet="fa-solid" [fontIcon]="iconValue" hcIconLg></hc-icon>
     `
 })
 export class TestIconComponent {

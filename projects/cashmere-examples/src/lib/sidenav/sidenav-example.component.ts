@@ -18,18 +18,18 @@ export class SidenavExampleComponent {
     collapsed = false;
     eventsLog: string[] = [];
     tabs: SidenavLink[] = [
-        new SidenavLink({title: 'Home', iconClass: 'fa fa-home', description: 'User\'s home dashboard', badgeHTML: '<span title="I am number 4">4</span>', badgeColor: 'slate-gray-300'}),
-        new SidenavLink({title: 'Land', iconClass: 'fa fa-car', description: 'Travel by land', subText: "$"}),
-        new SidenavLink({title: 'Sky', iconClass: 'fa fa-plane', description: 'Travel by sky', subText: "$$"}),
-        new SidenavLink({title: 'Sea', iconClass: 'fa fa-ship', description: 'Travel by sea', subText: "$"}),
-        new SidenavLink({title: 'Space', labelHTML: '<em>Space</em>', iconClass: 'fa fa-rocket', description: 'Travel amongst the stars', subText: "$$$"}),
+        new SidenavLink({title: 'Home', iconClass: 'fa-solid fa-house', description: 'User\'s home dashboard', badgeHTML: '<span title="I am number 4">4</span>', badgeColor: 'slate-gray-300'}),
+        new SidenavLink({title: 'Land', iconClass: 'fa-solid fa-car', description: 'Travel by land', subText: "$"}),
+        new SidenavLink({title: 'Sky', iconClass: 'fa-solid fa-plane', description: 'Travel by sky', subText: "$$"}),
+        new SidenavLink({title: 'Sea', iconClass: 'fa-solid fa-ship', description: 'Travel by sea', subText: "$"}),
+        new SidenavLink({title: 'Space', labelHTML: '<em>Space</em>', iconClass: 'fa-solid fa-rocket', description: 'Travel amongst the stars', subText: "$$$"}),
     ]
     favs: SidenavLink[] = [
-        new SidenavLink({title: 'Toyota Tacoma', iconClass: 'fa fa-car fav-travel-ico fav-ico-teal', description: 'Solid mid-size pickup'}),
-        new SidenavLink({title: 'Land Rover', iconClass: 'fa fa-car fav-travel-ico fav-ico-green', description: 'Travel in style'}),
-        new SidenavLink({title: 'S.S. TugsAlot', iconClass: 'fa fa-ship fav-travel-ico fav-ico-teal', description: 'Tugboat'}),
-        new SidenavLink({title: 'Boeing 737', iconClass: 'fa fa-plane fav-travel-ico fav-ico-blue', description: 'Fly the friendly skies'}),
-        new SidenavLink({title: 'Falcon Heavy', iconClass: 'fa fa-rocket fav-travel-ico fav-ico-blue', description: 'Fly me to the moon'}),
+        new SidenavLink({title: 'Toyota Tacoma', iconClass: 'fa-solid fa-car fav-travel-ico fav-ico-teal', description: 'Solid mid-size pickup'}),
+        new SidenavLink({title: 'Land Rover', iconClass: 'fa-solid fa-car fav-travel-ico fav-ico-green', description: 'Travel in style'}),
+        new SidenavLink({title: 'S.S. TugsAlot', iconClass: 'fa-solid fa-ship fav-travel-ico fav-ico-teal', description: 'Tugboat'}),
+        new SidenavLink({title: 'Boeing 737', iconClass: 'fa-solid fa-plane fav-travel-ico fav-ico-blue', description: 'Fly the friendly skies'}),
+        new SidenavLink({title: 'Falcon Heavy', iconClass: 'fa-solid fa-rocket fav-travel-ico fav-ico-blue', description: 'Fly me to the moon'}),
     ]
 
     onTabClick(event: SidenavLinkClickEvent): void {

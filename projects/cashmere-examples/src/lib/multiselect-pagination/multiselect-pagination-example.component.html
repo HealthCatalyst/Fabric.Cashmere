@@ -3,11 +3,11 @@
 </p>
 
 <div class="example-container">
-    <ng-select 
+    <ng-select
         [items]="displayedEncounters"
         [typeahead]="encounterSearch"
         [multiple]="false"
-        placeholder="Select an encounter ID" 
+        placeholder="Select an encounter ID"
         [formControl]="selectedEncounter"
         dropdownPosition="bottom"
     >
@@ -16,7 +16,7 @@
         </ng-template>
         <ng-template ng-footer-tmp>
             <div class="pagination-footer">
-                <hc-pagination 
+                <hc-pagination
                     [length]="length"
                     [(pageNumber)]="pageNumber"
                     [pageSize]="pageSize"
@@ -27,13 +27,13 @@
                 >
                 </hc-pagination>
                 <!-- This is an example of optional additional buttons you can add to extend the footer to your specific use case -->
-                <button 
-                    hc-button 
-                    buttonStyle="pagination" 
-                    class="refresh-button" 
+                <button
+                    hc-button
+                    buttonStyle="pagination"
+                    class="refresh-button"
                     (click)="refreshEncounters()"
                 >
-                    <hc-icon fontSet="fa" fontIcon="fa-refresh"></hc-icon>
+                    <hc-icon fontSet="fa-solid" fontIcon="fa-rotate"></hc-icon>
                 </button>
             </div>
         </ng-template>

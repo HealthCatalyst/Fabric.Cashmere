@@ -129,7 +129,7 @@ The trigger for sub-menus will automatically be set to hover and cannot be overr
 <hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
     <div hcMenu>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-floppy-o"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-save"></hc-icon>
             <span hcMenuText>Save document</span>
             <span hcMenuSubText>Ctrl + S</span>
         </a>

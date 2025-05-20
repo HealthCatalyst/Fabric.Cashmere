@@ -24,7 +24,7 @@
                     <span *ngSwitchCase="'pages'">{{element.pages.toLocaleString()}}</span>
 
                     <span *ngSwitchCase="'isInCosmere'">
-                        <span *ngIf="element.isInCosmere" class="fa fa-check-circle"></span>
+                        <span *ngIf="element.isInCosmere" class="fa-solid fa-circle-check"></span>
                         <span *ngIf="!element.isInCosmere" class="hc-font-em">-</span>
                     </span>
 
@@ -42,8 +42,8 @@
             <th hc-header-cell *hcHeaderCellDef></th>
             <td hc-cell *hcCellDef="let element">
                 <div class="hc-table-actions">
-                    <span class="fa fa-star-o hc-action-ico" hcTooltip="Add to favorites"></span>
-                    <span class="fa fa-shopping-cart hc-action-ico" hcTooltip="Add to cart"></span>
+                    <span class="fa fa-star hc-action-ico" hcTooltip="Add to favorites"></span>
+                    <span class="fa fa-cart-shopping hc-action-ico" hcTooltip="Add to cart"></span>
                     <span class="fa fa-search hc-action-ico" hcTooltip="Preview"></span>
                 </div>
             </td>

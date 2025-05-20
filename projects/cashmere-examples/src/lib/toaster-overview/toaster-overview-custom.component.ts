@@ -33,5 +33,5 @@ import {Component} from '@angular/core';
 export class ToasterOverviewCustomComponent {
     randomID = 0;
     randomColor = '#ffffff';
-    randomIcon = 'fa-file-text';
+    randomIcon = 'fa-file-lines';
 }

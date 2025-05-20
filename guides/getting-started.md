@@ -12,14 +12,13 @@ npm install --save @healthcatalyst/cashmere @angular/cdk
 ```
 
 ### B) *(Optional)* Install additional dependencies as needed.
-- [Font Awesome](https://fontawesome.com) - Recommended icon set. *(For healthcare-specific iconography, see step 3.)*
 - [Noto Sans](https://fonts.google.com/specimen/Noto+Sans) - Recommended font.
 - [Ng-select](https://github.com/ng-select/ng-select) - Needed only if using the multiselect/typeahead component. Look [here](https://github.com/ng-select/ng-select) for which version of ng-select to install based on your Angular version.
 - [Ngx-slider](https://www.npmjs.com/package/@angular-slider/ngx-slider) - Needed only if using the slider component.
 
 
 ```BASH
-npm install --save font-awesome notosans-fontface @ng-select/ng-select @angular-slider/ngx-slider
+npm install --save notosans-fontface @ng-select/ng-select @angular-slider/ngx-slider
 ```
 :::
 
@@ -74,7 +73,6 @@ In `angular.json`, place references for each font in your project's build target
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "styles": [
-                "./node_modules/font-awesome/css/font-awesome.css",
                 "./node_modules/notosans-fontface/css/notosans-fontface-allweight.css",
                 "src/styles.scss" // your app's global stylesheet
             ]

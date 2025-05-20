@@ -1,5 +1,8 @@
-$fa-font-path: 'node_modules/font-awesome/fonts';
-@import '~font-awesome/scss/font-awesome';
+$fa-font-path: '../webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
 
 $notosans-fontface-path: "node_modules/notosans-fontface/fonts";
 @import "~notosans-fontface/scss/notosans-fontface-allweight";

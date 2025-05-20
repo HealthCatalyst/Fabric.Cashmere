@@ -22,7 +22,7 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
 })
 export class HcToastComponent {
     _styleType = 'success';
-    _toastIcon = 'fa-check-circle';
+    _toastIcon = 'fa-circle-check';
     _headerText: string;
     _bodyText: string;
     _animationState: 'void' | 'enter' | 'leave' = 'enter';
