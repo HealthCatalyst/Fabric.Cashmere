@@ -37,7 +37,8 @@ const supportedValidation = ['onBlur', 'onChange'];
 /** Directive that allows a native input to work inside a HcFormFieldComponent */
 @Directive({
     selector: '[hcInput]',
-    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => InputDirective)}]
+    providers: [{ provide: HcFormControlComponent, useExisting: forwardRef(() => InputDirective) }],
+    standalone: false
 })
 export class InputDirective extends HcFormControlComponent implements AfterViewInit, OnDestroy {
     private _focused = false;

@@ -17,7 +17,8 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
             (buttonStateChanged)="onSlideChange($event)"
         >
         </hc-slide-toggle>
-    `
+    `,
+    standalone: false
 })
 export class SlideToggleTestComponent {
     disabledVal = false;
@@ -36,7 +37,8 @@ export class SlideToggleTestComponent {
 @Component({
     template: `
         <hc-slide-toggle [formControl]="slideForm"></hc-slide-toggle>
-    `
+    `,
+    standalone: false
 })
 export class SlideToggleFormComponent {
     slideForm: FormControl = new FormControl( true );

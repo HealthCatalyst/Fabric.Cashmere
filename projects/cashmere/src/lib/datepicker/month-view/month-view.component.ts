@@ -28,7 +28,8 @@ const DAYS_PER_WEEK = 7;
     templateUrl: './month-view.component.html',
     exportAs: 'hcMonthView',
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MonthViewComponent implements AfterContentInit {
     /**

@@ -8,7 +8,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-slider-single-example',
     templateUrl: 'slider-single-example.component.html',
-    styleUrls: ['slider-single-example.component.scss']
+    styleUrls: ['slider-single-example.component.scss'],
+    standalone: false
 })
 export class SliderSingleExampleComponent {
     sliderControl: FormControl = new FormControl(100);

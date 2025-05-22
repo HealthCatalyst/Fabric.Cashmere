@@ -5,7 +5,10 @@ import { By } from "@angular/platform-browser";
 import { ScrollNavLinkDirective } from "./scroll-nav-link.directive";
 import { ScrollNavModule } from "../scroll-nav.module";
 
-@Component({ "template": "" })
+@Component({
+    "template": "",
+    standalone: false
+})
 export class AbstractHcScrollLinkComponent {
   constructor(public renderer: Renderer2) {}
 }
@@ -23,7 +26,8 @@ export class AbstractHcScrollLinkComponent {
         <section id='a1' hcScrollTarget>
             <h1>Test 1 Section</h1>
         </section>
-    </hc-scroll-nav-content>`
+    </hc-scroll-nav-content>`,
+    standalone: false
 })
 export class ScrollNavLinkComponent extends AbstractHcScrollLinkComponent {
     testNavEvent(event: HTMLElement): HTMLElement {
@@ -44,7 +48,8 @@ export class ScrollNavLinkComponent extends AbstractHcScrollLinkComponent {
         <section [id]='"a2"' hcScrollTarget>
             <h1>Test 1 Section</h1>
         </section>
-    </hc-scroll-nav-content>`
+    </hc-scroll-nav-content>`,
+    standalone: false
 })
 export class ScrollNavLinkDynamicComponent extends AbstractHcScrollLinkComponent {
     testNavEvent(event: HTMLElement): HTMLElement {

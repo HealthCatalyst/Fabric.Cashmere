@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ComponentViewerComponent } from '../component-viewer.component';
 
 @Component({
-    templateUrl: 'component-api.component.html'
+    templateUrl: 'component-api.component.html',
+    standalone: false
 })
 export class ComponentApiComponent {
     private section: string;

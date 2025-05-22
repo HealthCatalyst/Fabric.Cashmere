@@ -7,7 +7,8 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'hc-popover-overview-example',
     templateUrl: 'popover-overview-example.component.html',
-    styleUrls: ['popover-overview-example.component.scss']
+    styleUrls: ['popover-overview-example.component.scss'],
+    standalone: false
 })
 export class PopoverOverviewExampleComponent {
     readonly hAlignControl = new FormControl('center');

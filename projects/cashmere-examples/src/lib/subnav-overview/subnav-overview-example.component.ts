@@ -6,6 +6,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-subnav-overview-example',
     templateUrl: 'subnav-overview-example.component.html',
-    styleUrls: ['subnav-overview-example.component.scss']
+    styleUrls: ['subnav-overview-example.component.scss'],
+    standalone: false
 })
 export class SubnavOverviewExampleComponent {}

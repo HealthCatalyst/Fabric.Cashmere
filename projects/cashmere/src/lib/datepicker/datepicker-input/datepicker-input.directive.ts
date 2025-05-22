@@ -67,8 +67,9 @@ export class HcDatepickerInputEvent {
     providers: [
         HC_DATEPICKER_VALUE_ACCESSOR,
         HC_DATEPICKER_VALIDATORS,
-        {provide: HcFormControlComponent, useExisting: forwardRef(() => DatepickerInputDirective)}
-    ]
+        { provide: HcFormControlComponent, useExisting: forwardRef(() => DatepickerInputDirective) }
+    ],
+    standalone: false
 })
 export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy, Validator {
     /** The datepicker that this input is associated with. */

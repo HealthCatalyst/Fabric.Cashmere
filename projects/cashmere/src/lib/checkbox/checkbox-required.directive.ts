@@ -11,7 +11,8 @@ export const HC_CHECKBOX_REQUIRED_VALIDATOR: Provider = {
 @Directive({
     // eslint-disable-next-line @angular-eslint/directive-selector
     selector: `hc-checkbox[required][formControlName],hc-checkbox[required][formControl],hc-checkbox[required][ngModel]`,
-    providers: [HC_CHECKBOX_REQUIRED_VALIDATOR]
+    providers: [HC_CHECKBOX_REQUIRED_VALIDATOR],
+    standalone: false
 })
 export class HcCheckboxRequiredValidatorDirective implements Validator {
     private _required = false;

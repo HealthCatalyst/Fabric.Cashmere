@@ -7,7 +7,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-popover-fixed-position-example',
     templateUrl: 'popover-fixed-position-example.component.html',
-    styleUrls: ['./popover-fixed-position-example.component.scss']
+    styleUrls: ['./popover-fixed-position-example.component.scss'],
+    standalone: false
 })
 export class PopoverFixedPositionExampleComponent {
     xPos = new FormControl(250, {nonNullable: true});

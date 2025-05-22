@@ -41,7 +41,8 @@ export type CalendarViewComponent = 'month' | 'year' | 'multi-year';
     templateUrl: 'calendar-header.html',
     exportAs: 'hcCalendarHeader',
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CalendarHeaderComponent {
     constructor(
@@ -196,7 +197,8 @@ export class CalendarHeaderComponent {
     styleUrls: ['calendar.component.scss'],
     exportAs: 'hcCalendar',
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CalendarComponent implements AfterContentInit, AfterViewChecked, OnDestroy, OnChanges {
     @HostBinding('class.hc-calendar') _hostClass = true;

@@ -7,7 +7,8 @@ import {HcTableDataSource} from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-table-sticky-example',
     templateUrl: 'table-sticky-example.component.html',
-    styleUrls: ['table-sticky-example.component.scss']
+    styleUrls: ['table-sticky-example.component.scss'],
+    standalone: false
 })
 export class TableStickyExampleComponent implements OnInit {
     cols = ['name', 'state', 'population', 'founded', 'size', 'notes'];

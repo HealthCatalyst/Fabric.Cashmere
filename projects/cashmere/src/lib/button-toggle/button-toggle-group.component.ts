@@ -28,11 +28,12 @@ import { supportedColors } from '../utils/supported-colors';
     template: '<ng-content></ng-content>',
     styleUrls: ['./button-toggle.component.scss'],
     providers: [{
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => ButtonToggleGroupComponent),
-        multi: true
-    }],
-    encapsulation: ViewEncapsulation.None
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => ButtonToggleGroupComponent),
+            multi: true
+        }],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ButtonToggleGroupComponent extends HcFormControlComponent implements AfterContentInit, OnDestroy, ControlValueAccessor {
     private _disabled = false;

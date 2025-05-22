@@ -7,7 +7,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-slide-toggle-forms-example',
     templateUrl: 'slide-toggle-forms-example.component.html',
-    styleUrls: ['slide-toggle-forms-example.component.scss']
+    styleUrls: ['slide-toggle-forms-example.component.scss'],
+    standalone: false
 })
 export class SlideToggleFormsExampleComponent {
     slideControl: FormControl = new FormControl(false);

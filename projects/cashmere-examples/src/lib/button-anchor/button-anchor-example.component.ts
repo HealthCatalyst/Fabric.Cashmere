@@ -6,6 +6,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-button-anchor-example',
     templateUrl: 'button-anchor-example.component.html',
-    styleUrls: ['button-anchor-example.component.scss']
+    styleUrls: ['button-anchor-example.component.scss'],
+    standalone: false
 })
 export class ButtonAnchorExampleComponent {}

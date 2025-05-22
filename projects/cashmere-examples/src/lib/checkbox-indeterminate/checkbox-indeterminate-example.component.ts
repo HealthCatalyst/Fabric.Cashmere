@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
  */
 @Component({
     selector: 'hc-checkbox-indeterminate-example',
-    templateUrl: 'checkbox-indeterminate-example.component.html'
+    templateUrl: 'checkbox-indeterminate-example.component.html',
+    standalone: false
 })
 export class CheckboxIndeterminateExampleComponent {}

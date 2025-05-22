@@ -34,7 +34,8 @@ export function validateLabelType(inputStr: string): void {
     templateUrl: 'slide-toggle.component.html',
     styleUrls: ['slide-toggle.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SlideToggleComponent)}]
+    providers: [{ provide: HcFormControlComponent, useExisting: forwardRef(() => SlideToggleComponent) }],
+    standalone: false
 })
 export class SlideToggleComponent extends HcFormControlComponent implements AfterViewInit, OnDestroy {
     private _uniqueId = `hc-slide-toggle-${nextToggleId++}`;

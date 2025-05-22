@@ -33,7 +33,7 @@ export class CheckboxChangeEvent {
 @Component({
     selector: 'hc-checkbox-group',
     styleUrls: ['./checkbox.component.scss'],
-    providers: [{ provide: HcFormControlComponent, useExisting: forwardRef(() => CheckboxGroup)}],
+    providers: [{ provide: HcFormControlComponent, useExisting: forwardRef(() => CheckboxGroup) }],
     exportAs: 'hcCheckboxGroup',
     template: `
         <hc-checkbox *ngIf="!_disableParent" [checked]="_groupState" [indeterminate]="_isIndeterminate" (change)="toggleCheckAll()">{{_parentLabel}}</hc-checkbox>
@@ -41,6 +41,7 @@ export class CheckboxChangeEvent {
             <ng-content></ng-content>
         </div>
         `,
+    standalone: false
 })
 export class CheckboxGroup extends HcFormControlComponent {
     /** A list of all the checkboxes included in the group */
@@ -130,8 +131,9 @@ export class CheckboxGroup extends HcFormControlComponent {
     templateUrl: './checkbox.component.html',
     styleUrls: ['./checkbox.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => CheckboxComponent)}],
-    exportAs: 'hcCheckbox'
+    providers: [{ provide: HcFormControlComponent, useExisting: forwardRef(() => CheckboxComponent) }],
+    exportAs: 'hcCheckbox',
+    standalone: false
 })
 export class CheckboxComponent extends HcFormControlComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
     private _uniqueId = `hc-checkbox-${nextCheckboxId++}`;

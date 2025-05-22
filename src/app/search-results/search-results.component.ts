@@ -8,7 +8,8 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 @Component({
     selector: 'hc-search-results',
     templateUrl: './search-results.component.html',
-    styleUrls: ['./search-results.component.scss']
+    styleUrls: ['./search-results.component.scss'],
+    standalone: false
 })
 export class SearchResultsComponent implements AfterViewInit {
     constructor(

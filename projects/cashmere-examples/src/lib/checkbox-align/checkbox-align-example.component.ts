@@ -6,7 +6,8 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-checkbox-align-example',
     templateUrl: 'checkbox-align-example.component.html',
-    styleUrls: ['checkbox-align-example.component.scss']
+    styleUrls: ['checkbox-align-example.component.scss'],
+    standalone: false
 })
 export class CheckboxAlignExampleComponent {
     checkboxLabels = [

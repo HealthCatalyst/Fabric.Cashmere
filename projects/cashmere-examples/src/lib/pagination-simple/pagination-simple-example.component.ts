@@ -6,7 +6,8 @@ import { FormControl } from '@angular/forms';
  */
 @Component({
     selector: 'hc-pagination-simple-example',
-    templateUrl: 'pagination-simple-example.component.html'
+    templateUrl: 'pagination-simple-example.component.html',
+    standalone: false
 })
 export class PaginationSimpleExampleComponent {
     pageNumberControl = new FormControl(8, {nonNullable: true});

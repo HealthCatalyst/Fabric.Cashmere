@@ -43,7 +43,8 @@ export class HcCalendarCell {
     styleUrls: ['calendar-body.component.scss'],
     exportAs: 'hcCalendarBody',
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CalendarBodyComponent implements OnChanges {
     @HostBinding('class.hc-calendar-body') _hostClass = true;

@@ -11,7 +11,8 @@ import { ApplicationInsightsService } from './shared/application-insights/applic
 @Component({
     selector: 'hc-root',
     styleUrls: ['./app.component.scss'],
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
+    standalone: false
 })
 
 export class AppComponent implements AfterViewInit, OnDestroy {

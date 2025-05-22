@@ -63,7 +63,8 @@ import {ScrollNavTargetDirective} from './scroll-nav-target.directive';
                 </section>
             </hc-scroll-nav-content>
         </div>
-    `
+    `,
+    standalone: false
 })
 class TestAppComponent {}
 

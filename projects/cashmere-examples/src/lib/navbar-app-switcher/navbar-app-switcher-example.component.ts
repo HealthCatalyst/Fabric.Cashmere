@@ -6,7 +6,8 @@ import {HcIcon, IDiscoveryApplication} from '@healthcatalyst/cashmere';
  */
 @Component({
     selector: 'hc-navbar-app-switcher-example',
-    templateUrl: 'navbar-app-switcher-example.component.html'
+    templateUrl: 'navbar-app-switcher-example.component.html',
+    standalone: false
 })
 export class NavbarAppSwitcherExampleComponent {
     username = 'Christine K.';

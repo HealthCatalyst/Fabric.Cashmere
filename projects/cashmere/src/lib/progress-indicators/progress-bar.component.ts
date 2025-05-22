@@ -11,7 +11,8 @@ export function validateColorInput(inputStr: string): void {
 @Component({
     selector: 'hc-progress-bar',
     templateUrl: 'progress-bar.component.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ProgressBarComponent {
     private _color = 'blue';

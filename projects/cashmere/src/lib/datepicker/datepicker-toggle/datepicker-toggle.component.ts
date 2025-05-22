@@ -21,7 +21,8 @@ import {ButtonComponent} from '../../button/button.component';
 
 /** Can be used to override the icon of a `hcDatepickerToggle`. */
 @Directive({
-    selector: '[hcDatepickerToggleIcon]'
+    selector: '[hcDatepickerToggleIcon]',
+    standalone: false
 })
 export class DatepickerToggleIconDirective {}
 
@@ -39,7 +40,8 @@ export class DatepickerToggleIconDirective {}
     },
     exportAs: 'hcDatepickerToggle',
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DatepickerToggleComponent implements AfterContentInit, OnChanges, OnDestroy {
     private _stateChanges = Subscription.EMPTY;

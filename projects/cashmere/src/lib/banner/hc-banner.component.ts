@@ -10,7 +10,8 @@ const bannerTypes: BannerType[] = ['success', 'info', 'warning', 'alert'];
     selector: 'hc-banner',
     templateUrl: './hc-banner.html',
     styleUrls: ['./hc-banner.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class HcBannerComponent {
     private _type: BannerType = 'info';

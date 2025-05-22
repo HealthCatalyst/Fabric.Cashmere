@@ -22,7 +22,8 @@ export type QueryParamsHandling = 'merge' | 'preserve' | '';
 @Component({
     selector: 'hc-breadcrumbs',
     templateUrl: './breadcrumbs.component.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class BreadcrumbsComponent implements OnInit, OnDestroy {
     public _breadcrumbs: IBreadcrumb[] = [];

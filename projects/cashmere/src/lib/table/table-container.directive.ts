@@ -2,7 +2,8 @@ import {Directive, ElementRef, HostBinding, Input} from '@angular/core';
 
 /** Use `hcTableContainer` to wrap around tables that have sticky headers/columns or other advanced use cases. */
 @Directive({
-    selector: '[hcTableContainer]'
+    selector: '[hcTableContainer]',
+    standalone: false
 })
 export class TableContainerDirective {
     private readonly onlyNumbersRegex = /^\d+$/;

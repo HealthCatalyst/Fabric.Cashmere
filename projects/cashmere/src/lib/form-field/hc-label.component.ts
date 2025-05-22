@@ -4,6 +4,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 @Component({
     selector: 'hc-label',
     template: '<ng-content></ng-content>',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class HcLabelComponent {}

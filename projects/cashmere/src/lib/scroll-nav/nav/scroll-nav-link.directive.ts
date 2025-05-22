@@ -2,7 +2,8 @@ import {Directive, HostBinding, ElementRef, Input, HostListener, Renderer2, Outp
 
 /** Marks the host element as a link within an `hc-scroll-nav`. */
 @Directive({
-    selector: '[hcScrollLink]'
+    selector: '[hcScrollLink]',
+    standalone: false
 })
 export class ScrollNavLinkDirective {
     /** The `id` of the corresponding `hcScrollTarget` that you would like to link to. */

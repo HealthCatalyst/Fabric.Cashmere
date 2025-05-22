@@ -21,7 +21,8 @@ import {By} from '@angular/platform-browser';
             <hc-accordion-toolbar>Toolbar</hc-accordion-toolbar>
             Content
         </hc-accordion>
-    `
+    `,
+    standalone: false
 })
 export class TestAccordionComponent {
     alignVal = 'left';

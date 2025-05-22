@@ -5,7 +5,8 @@ import {BaseDemoComponent} from '../../shared/base-demo.component';
 @Component({
     selector: 'hc-about-modal',
     templateUrl: `./about-modal.component.html`,
-    styleUrls: ['./about-modal.component.scss']
+    styleUrls: ['./about-modal.component.scss'],
+    standalone: false
 })
 export class AboutModalComponent extends BaseDemoComponent {
     public document: string = require('../../../../guides/styles/about.md');

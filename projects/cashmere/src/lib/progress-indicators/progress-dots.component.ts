@@ -13,7 +13,8 @@ export function validateColorInput(inputStr: ProgressDotsColor): void {
 @Component({
     selector: 'hc-progress-dots',
     templateUrl: 'progress-dots.component.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ProgressDotsComponent {
     private _color: ProgressDotsColor = 'dark';

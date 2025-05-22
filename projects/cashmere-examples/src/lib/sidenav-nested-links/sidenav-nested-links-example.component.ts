@@ -8,7 +8,8 @@ import { SidenavComponent, SidenavLink } from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-sidenav-nested-links-example',
     templateUrl: 'sidenav-nested-links-example.component.html',
-    styleUrls: ['sidenav-nested-links-example.component.scss']
+    styleUrls: ['sidenav-nested-links-example.component.scss'],
+    standalone: false
 })
 export class SidenavNestedLinksExampleComponent {
     @ViewChild(SidenavComponent, {static: false}) sidenav: SidenavComponent;

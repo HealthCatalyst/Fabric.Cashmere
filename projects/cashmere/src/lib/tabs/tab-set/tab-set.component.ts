@@ -57,7 +57,8 @@ export function invalidDefaultTab(tabVal: string | number): void {
     selector: `hc-tab-set`,
     templateUrl: './tab-set.component.html',
     styleUrls: ['./tab-set.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class TabSetComponent implements AfterContentInit {
     _routerEnabled = false;

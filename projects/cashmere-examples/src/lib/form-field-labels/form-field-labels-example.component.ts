@@ -6,6 +6,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-form-field-labels-example',
     templateUrl: 'form-field-labels-example.component.html',
-    styleUrls: ['form-field-labels-example.component.scss']
+    styleUrls: ['form-field-labels-example.component.scss'],
+    standalone: false
 })
 export class FormFieldLabelsExampleComponent {}

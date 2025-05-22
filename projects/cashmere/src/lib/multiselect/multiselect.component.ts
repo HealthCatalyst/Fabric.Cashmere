@@ -11,7 +11,8 @@ let uniqueMultiselectId = 1;
         <ng-content></ng-content>
     `,
     encapsulation: ViewEncapsulation.None,
-    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => MultiselectComponent)}]
+    providers: [{ provide: HcFormControlComponent, useExisting: forwardRef(() => MultiselectComponent) }],
+    standalone: false
 })
 export class MultiselectComponent extends HcFormControlComponent {
     private _uniqueInputId = `hc-multiselect-${uniqueMultiselectId++}`;

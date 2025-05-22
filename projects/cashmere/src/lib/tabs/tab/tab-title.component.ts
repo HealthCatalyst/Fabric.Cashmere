@@ -4,7 +4,8 @@ import {Component, ViewEncapsulation, TemplateRef, ViewChild} from '@angular/cor
 @Component({
     selector: 'hc-tab-title',
     template: '<ng-template #tabTitle><ng-content></ng-content></ng-template>',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class HcTabTitleComponent {
     @ViewChild('tabTitle')

@@ -18,7 +18,8 @@ import {By} from '@angular/platform-browser';
                 Simple radio button
             </hc-radio-button>
         </div>
-    `
+    `,
+    standalone: false
 })
 export class SingleRadioComponent {
     isChecked = false;

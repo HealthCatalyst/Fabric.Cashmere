@@ -16,7 +16,8 @@ import { ModalService } from './modal.service';
                 <button hc-button buttonStyle="primary" (click)="close()">OK</button>
             </hc-modal-footer>
         </hc-modal>
-    `
+    `,
+    standalone: false
 })
 class ModalOverviewExampleModalComponent {
     constructor(public modalRef: HcModal<ModalOverviewExampleModalComponent>) {}

@@ -12,10 +12,11 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 @Directive({
     selector: '[hcDateRange]',
     providers: [{
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => DateRangeDirective),
-        multi: true
-    }, CalendarOverlayService, ConfigStoreService, DatePipe]
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DateRangeDirective),
+            multi: true
+        }, CalendarOverlayService, ConfigStoreService, DatePipe],
+    standalone: false
 })
 export class DateRangeDirective implements OnDestroy, OnChanges, ControlValueAccessor {
     /** Emits when date range is been changed. */

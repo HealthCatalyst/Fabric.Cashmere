@@ -33,7 +33,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
     selector: 'hc-resizable-columns-example',
     templateUrl: 'resizable-columns-example.component.html',
-    styleUrls: ['resizable-columns-example.component.scss']
+    styleUrls: ['resizable-columns-example.component.scss'],
+    standalone: false
 })
 export class ResizableColumnsExampleComponent {
     columnObjects: ColumnModel[] = [

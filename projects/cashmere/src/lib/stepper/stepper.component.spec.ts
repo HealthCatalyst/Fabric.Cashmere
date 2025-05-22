@@ -15,7 +15,8 @@ import {By} from '@angular/platform-browser';
         [useRouterOutlet]="routerVal"
         [(activeIndex)]="currentStep">
     </hc-stepper>
-    `
+    `,
+    standalone: false
 })
 export class TestStepperComponent {
     colorVal = 'red';

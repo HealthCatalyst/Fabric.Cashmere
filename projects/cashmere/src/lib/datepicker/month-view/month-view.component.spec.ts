@@ -318,7 +318,8 @@ describe('HcMonthView', () => {
 @Component({
     template: `
         <hc-month-view [(activeDate)]="date" [(selected)]="selected"></hc-month-view>
-    `
+    `,
+    standalone: false
 })
 class StandardMonthView {
     date = new Date(2017, JAN, 5);
@@ -328,7 +329,8 @@ class StandardMonthView {
 @Component({
     template: `
         <hc-month-view [activeDate]="activeDate" [dateFilter]="dateFilter"></hc-month-view>
-    `
+    `,
+    standalone: false
 })
 class MonthViewWithDateFilter {
     activeDate = new Date(2017, JAN, 1);
@@ -340,7 +342,8 @@ class MonthViewWithDateFilter {
 @Component({
     template: `
         <hc-month-view [activeDate]="activeDate" [dateClass]="dateClass"></hc-month-view>
-    `
+    `,
+    standalone: false
 })
 class MonthViewWithDateClass {
     activeDate = new Date(2017, JAN, 1);

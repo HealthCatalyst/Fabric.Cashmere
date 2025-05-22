@@ -18,7 +18,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
                 </hc-list>
             </hc-navbar-mobile-menu>
         </hc-navbar>
-    `
+    `,
+    standalone: false
 })
 class TestAppComponent {
     @ViewChild(NavbarComponent)

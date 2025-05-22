@@ -17,12 +17,13 @@ import {_DisposeViewRepeaterStrategy, _VIEW_REPEATER_STRATEGY} from '@angular/cd
     template: CDK_TABLE_TEMPLATE,
     styleUrls: ['table.component.scss'],
     providers: [
-        {provide: _VIEW_REPEATER_STRATEGY, useClass: _DisposeViewRepeaterStrategy},
-        {provide: _COALESCED_STYLE_SCHEDULER, useClass: _CoalescedStyleScheduler},
-        {provide: CDK_TABLE, useExisting: HcTable}
+        { provide: _VIEW_REPEATER_STRATEGY, useClass: _DisposeViewRepeaterStrategy },
+        { provide: _COALESCED_STYLE_SCHEDULER, useClass: _CoalescedStyleScheduler },
+        { provide: CDK_TABLE, useExisting: HcTable }
     ],
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class HcTable<T> extends CdkTable<T> {
     /** Overrides the sticky CSS class set by the `CdkTable`. */

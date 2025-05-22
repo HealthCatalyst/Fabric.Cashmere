@@ -21,7 +21,8 @@ const expectedDirection = 'horizontal';
                 <div>Content 3</div>
             </hc-tab>
         </hc-tab-set>
-    `
+    `,
+    standalone: false
 })
 export class TestTabSetComponent {
     @ViewChild(TabSetComponent)

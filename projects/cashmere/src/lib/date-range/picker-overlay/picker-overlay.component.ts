@@ -14,7 +14,8 @@ import {Observable} from 'rxjs';
     templateUrl: './picker-overlay.component.html',
     styleUrls: ['./picker-overlay.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PickerOverlayComponent implements OnInit, AfterViewInit {
     options$: Observable<DateRangeOptions>;

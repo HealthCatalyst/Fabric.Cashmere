@@ -8,7 +8,8 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 @Component({
     selector: 'hc-demo-components',
     templateUrl: './components.component.html',
-    styleUrls: ['../shared/base-demo.component.scss']
+    styleUrls: ['../shared/base-demo.component.scss'],
+    standalone: false
 })
 export class ComponentsComponent implements OnInit, OnDestroy {
     readonly categorizedDocItems: Array<{category: DocItemCategory | 'misc'; displayName: string; items?: DocItem[]}> = [

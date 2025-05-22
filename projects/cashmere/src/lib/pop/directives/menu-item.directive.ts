@@ -2,7 +2,8 @@ import {Directive, HostBinding, ElementRef, HostListener, Output, EventEmitter} 
 
 /** Use `hcMenuItem` for a selectable item in an hcMenu. */
 @Directive({
-    selector: '[hcMenuItem], [hcButtonItem]'
+    selector: '[hcMenuItem], [hcButtonItem]',
+    standalone: false
 })
 export class MenuItemDirective {
     @HostBinding('class.hc-menu-item')

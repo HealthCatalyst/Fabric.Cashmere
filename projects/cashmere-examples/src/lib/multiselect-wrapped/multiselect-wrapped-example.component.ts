@@ -7,7 +7,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-multiselect-wrapped-example',
     templateUrl: 'multiselect-wrapped-example.component.html',
-    styleUrls: ['multiselect-wrapped-example.component.scss']
+    styleUrls: ['multiselect-wrapped-example.component.scss'],
+    standalone: false
 })
 export class MultiselectWrappedExampleComponent {
     private invalid = false;

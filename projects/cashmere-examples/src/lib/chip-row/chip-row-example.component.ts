@@ -6,7 +6,8 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-chip-row-example',
     templateUrl: 'chip-row-example.component.html',
-    styleUrls: ['chip-row-example.component.scss']
+    styleUrls: ['chip-row-example.component.scss'],
+    standalone: false
 })
 export class ChipRowExampleComponent {
     chipset: string[] = [
