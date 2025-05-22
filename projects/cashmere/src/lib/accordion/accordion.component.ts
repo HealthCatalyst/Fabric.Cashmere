@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
+import {AfterContentInit, Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
 import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
 import {parseBooleanAttribute} from '../util';
 
@@ -40,6 +40,8 @@ export class AccordionComponent implements AfterContentInit {
     private _triggerAlign = 'left';
     private __isOpen = false;
     private _disabled = false;
+
+    constructor(public elementRef: ElementRef) {}
 
     /** Side the accordion trigger is attached to: `left` or `right` */
     @Input()

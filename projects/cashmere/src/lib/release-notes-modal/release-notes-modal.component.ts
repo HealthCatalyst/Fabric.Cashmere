@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActiveModal } from '../modal/active-modal';
 import { ReleaseNotesModalData } from './release-notes.model';
 
@@ -14,10 +14,15 @@ export class ReleaseNotesModalComponent implements OnInit {
     constructor(private activeModal: ActiveModal) {}
 
 
-    _onReleaseOpened(releaseIndex: number): void {
+    _onReleaseOpened(releaseIndex: number, modalBody: ElementRef, accordion: ElementRef): void {
         this._data.releaseNotes.forEach((rn, index) => {
             rn.isOpen = index === releaseIndex;
         });
+        // scroll open accordion to the top of the modal body
+        setTimeout(() => {
+            const top = accordion.nativeElement.offsetTop - modalBody.nativeElement.offsetTop;
+            modalBody.nativeElement.scroll({ top: top, behavior: 'smooth' });
+        }, 500);
     }
 
     ngOnInit(): void {
