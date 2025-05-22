@@ -13,10 +13,6 @@
         @include hc-rn-modal-header-icon();
     }
 
-    h1 {
-        @include hc-rn-modal-h1();
-    }
-
     .hc-rn-modal-header-link {
         @include hc-rn-modal-header-link();
     }
@@ -50,33 +46,44 @@
         @include hc-rn-modal-accordion();
     }
 
-    h2 {
-        @include hc-rn-modal-h2();
-    }
+    &.hc-modal-content {
 
-    ul {
-        @include hc-rn-modal-ul();
-    }
+        h1 {
+            @include hc-rn-modal-h1();
+        }
 
-    h3 {
-        @include hc-rn-modal-h3();
-    }
+        h2 {
+            @include hc-rn-modal-h2();
+        }
 
-    h4 {
-        @include hc-rn-modal-h4();
-    }
+        ul {
+            @include hc-rn-modal-ul();
+        }
 
-    p, li, .items{
-        @include hc-rn-modal-simple-el();
-    }
+        h3 {
+            @include hc-rn-modal-h3();
+        }
 
-    .fa, .hc-ico {
-        @include hc-rn-modal-ico();
-    }
+        h4 {
+            @include hc-rn-modal-h4();
+        }
+
+        h3 + h4 {
+            @include hc-rn-modal-h3-h4();
+        }
+
+        p, li, .items{
+            @include hc-rn-modal-simple-el();
+        }
+
+        .fa, .hc-ico {
+            @include hc-rn-modal-ico();
+        }
 
 
-    hr {
-        @include hc-rn-modal-hr();
+        hr {
+            @include hc-rn-modal-hr();
+        }
     }
 
     li li {
