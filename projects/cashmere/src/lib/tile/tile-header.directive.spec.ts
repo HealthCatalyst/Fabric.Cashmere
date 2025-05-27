@@ -9,7 +9,8 @@ import { TileHeaderDirective, TileHeaderType } from './tile-header.directive';
         <hc-tile>
             <div hcTileHeader [type]="headerType">Header</div>
         </hc-tile>
-    `
+    `,
+    standalone: false
 })
 class TestComponent {
     headerType = 'blue';

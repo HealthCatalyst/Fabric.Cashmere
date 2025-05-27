@@ -13,7 +13,8 @@ const buttonAttributes = ['hc-icon-button', 'hc-button'];
     template: '<ng-content></ng-content>',
     styleUrls: ['./button.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ButtonComponent {
     private _disabled = false;

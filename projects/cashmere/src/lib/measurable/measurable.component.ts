@@ -5,9 +5,10 @@ import { ChangeDetectorRef, Component, ElementRef, Input, ViewChild, ViewEncapsu
  * overflows components into a more menu.
  */
 @Component({
-  selector: 'hc-measurable',
-  templateUrl: './measurable.component.html',
-  encapsulation: ViewEncapsulation.None
+    selector: 'hc-measurable',
+    templateUrl: './measurable.component.html',
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class MeasurableComponent {
 

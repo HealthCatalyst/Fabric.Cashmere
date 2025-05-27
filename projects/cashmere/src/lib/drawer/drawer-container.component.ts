@@ -30,7 +30,8 @@ function throwDrawerContainerError(align: string) {
     selector: 'hc-drawer-container',
     templateUrl: 'drawer-container.component.html',
     styleUrls: ['drawer.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class DrawerContainer implements AfterContentInit, DoCheck, OnDestroy {
     @ContentChildren(Drawer)

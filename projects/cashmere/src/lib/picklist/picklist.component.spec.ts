@@ -707,7 +707,8 @@ function createTestingModule<T>(cmp: Type<T>, template: string): ComponentFixtur
 }
 
 @Component({
-    template: ``
+    template: ``,
+    standalone: false
 })
 class HcPicklistTestCmp {
     @ViewChild(PicklistComponent, { static: false }) picklist: PicklistComponent;

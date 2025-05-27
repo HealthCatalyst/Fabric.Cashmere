@@ -10,6 +10,7 @@ import { readFromStorage, writeToStorage } from '../utils/local-storage';
     selector: 'hc-column-menu',
     templateUrl: './column-menu.component.html',
     styleUrls: ['./column-menu.component.scss'],
+    standalone: false
 })
 export class ColumnMenuComponent implements OnInit {
     /** Reference to the popover menu. */

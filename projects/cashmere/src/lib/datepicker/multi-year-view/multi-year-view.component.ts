@@ -25,7 +25,8 @@ export const yearsPerRow = 4;
     templateUrl: './multi-year-view.component.html',
     exportAs: 'hcMultiYearView',
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MultiYearViewComponent implements AfterContentInit {
     /** The date to display in this multi-year view (everything other than the year is ignored). */

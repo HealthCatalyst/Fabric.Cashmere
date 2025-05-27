@@ -6,7 +6,8 @@ import { FormControl } from '@angular/forms';
  */
 @Component({
     selector: 'hc-ellipsis-overview-example',
-    templateUrl: 'ellipsis-overview-example.component.html'
+    templateUrl: 'ellipsis-overview-example.component.html',
+    standalone: false
 })
 export class EllipsisOverviewExampleComponent {
     readonly value = new FormControl(`Lorem ipsum dolor sit amet, consectetur adipiscing elit.

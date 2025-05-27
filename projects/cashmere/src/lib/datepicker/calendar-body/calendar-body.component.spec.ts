@@ -17,7 +17,8 @@ import {HcCalendarCellCssClasses, HcCalendarCell} from './calendar-body.componen
             [activeCell]="10"
             (selectedValueChange)="onSelect($event)"
         ></table>
-    `
+    `,
+    standalone: false
 })
 class StandardCalendarBody {
     label = 'Jan 2017';

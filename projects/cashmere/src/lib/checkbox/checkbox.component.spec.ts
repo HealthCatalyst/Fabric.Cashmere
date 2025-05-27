@@ -254,7 +254,8 @@ describe('CheckboxComponent', () => {
                 Simple checkbox
             </hc-checkbox>
         </div>
-    `
+    `,
+    standalone: false
 })
 export class SingleCheckboxComponent {
     isChecked = false;
@@ -278,7 +279,8 @@ export class SingleCheckboxComponent {
 @Component({
     template: `
         <hc-checkbox [formControl]="formControl"></hc-checkbox>
-    `
+    `,
+    standalone: false
 })
 class CheckboxWithFormControlComponent {
     formControl = new FormControl();
@@ -287,7 +289,8 @@ class CheckboxWithFormControlComponent {
 @Component({
     template: `
         <hc-checkbox [required]="isRequired" [(ngModel)]="isGood">Be good</hc-checkbox>
-    `
+    `,
+    standalone: false
 })
 class CheckboxWithNgModelComponent {
     isGood = false;

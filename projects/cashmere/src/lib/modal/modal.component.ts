@@ -8,7 +8,8 @@ import { ModalHeaderComponent } from './modal-header.component';
     template: `
         <ng-content></ng-content>
     `,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ModalComponent implements AfterContentInit {
     @HostBinding('class.hc-modal-content')

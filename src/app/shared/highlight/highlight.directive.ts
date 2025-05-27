@@ -2,7 +2,8 @@ import {AfterViewInit, Directive, ElementRef, Input} from '@angular/core';
 import {highlightElement} from "highlight.js";
 
 @Directive({
-    selector: '[hcHighlight]'
+    selector: '[hcHighlight]',
+    standalone: false
 })
 export class HighlightDirective implements AfterViewInit {
     @Input()

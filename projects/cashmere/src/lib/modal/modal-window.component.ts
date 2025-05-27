@@ -25,7 +25,7 @@ import { ButtonComponent } from '../button';
     styleUrls: ['./modal-window.component.scss'],
     animations: [
         trigger('fadeInOut', [
-            state('in', style({opacity: 1})),
+            state('in', style({ opacity: 1 })),
             transition('void <=> *', [
                 style({
                     opacity: 0
@@ -33,7 +33,8 @@ import { ButtonComponent } from '../button';
                 animate('0.2s ease-in-out')
             ])
         ])
-    ]
+    ],
+    standalone: false
 })
 export class ModalWindowComponent {
     _ignoreOverlayClick = false;

@@ -6,7 +6,8 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'hc-release-notes-modal-example',
-    templateUrl: 'release-notes-modal-example.component.html'
+    templateUrl: 'release-notes-modal-example.component.html',
+    standalone: false
 })
 export class ReleaseNotesModalExampleComponent {
     constructor(private releaseNoteService: ReleaseNotesService) {}

@@ -7,7 +7,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-slide-toggle-overview-example',
     templateUrl: 'slide-toggle-overview-example.component.html',
-    styleUrls: ['slide-toggle-overview-example.component.scss']
+    styleUrls: ['slide-toggle-overview-example.component.scss'],
+    standalone: false
 })
 export class SlideToggleOverviewExampleComponent {
     toggleStyle: FormControl = new FormControl('blue');

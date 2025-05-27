@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'hc-button-link-example',
-    templateUrl: 'button-link-example.component.html'
+    templateUrl: 'button-link-example.component.html',
+    standalone: false
 })
 export class ButtonLinkExampleComponent {}

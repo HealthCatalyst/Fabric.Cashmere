@@ -9,7 +9,8 @@ import { validateInput } from '../util';
     selector: 'hc-load-more-pagination',
     templateUrl: './load-more-pagination.component.html',
     styleUrls: ['./load-more-pagination.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class LoadMorePaginationComponent extends BasePaginationComponent implements OnInit {
     /**

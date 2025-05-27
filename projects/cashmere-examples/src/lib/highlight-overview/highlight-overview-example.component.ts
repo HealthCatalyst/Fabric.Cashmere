@@ -3,7 +3,8 @@ import {FormControl} from '@angular/forms';
 
 @Component({
     selector: 'hc-highlight-overview-example',
-    templateUrl: 'highlight-overview-example.component.html'
+    templateUrl: 'highlight-overview-example.component.html',
+    standalone: false
 })
 export class HighlightOverviewExampleComponent {
     highlightControl = new FormControl('', {nonNullable: true});

@@ -63,7 +63,8 @@ import { ScrollNavModule } from '../scroll-nav.module';
                 </section>
             </hc-scroll-nav-content>
         </div>
-    `
+    `,
+    standalone: false
 })
 class TestAppComponent {}
 

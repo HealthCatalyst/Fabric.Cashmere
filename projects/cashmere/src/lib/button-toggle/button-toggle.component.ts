@@ -8,7 +8,8 @@ import { parseBooleanAttribute } from '../util';
     selector: 'hc-button-toggle',
     template: '<ng-content></ng-content>',
     styleUrls: ['./button-toggle.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 
 export class ButtonToggleComponent {

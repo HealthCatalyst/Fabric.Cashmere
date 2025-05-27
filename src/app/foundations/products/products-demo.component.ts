@@ -7,7 +7,8 @@ import { ModalOptions, ModalService } from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-products',
     templateUrl: './products-demo.component.html',
-    styleUrls: ['./products-demo.component.scss']
+    styleUrls: ['./products-demo.component.scss'],
+    standalone: false
 })
 export class ProductsDemoComponent extends BaseDemoComponent {
     constructor(sectionService: SectionService, private modalService: ModalService) {

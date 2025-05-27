@@ -5,7 +5,8 @@ import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
     selector: 'hc-list',
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ListComponent {
     @HostBinding('class.hc-list')

@@ -33,7 +33,8 @@ import { SortFn, GroupValueFn, CompareWithFn, AddCustomItemFn, SELECTION_MODEL_F
     templateUrl: './pick-pane.component.html',
     providers: [PickPaneListService, PickPaneDragService],
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 /** A single pane containing the searchbar, toolbar, items list, and footer.
 */

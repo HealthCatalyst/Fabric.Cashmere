@@ -5,7 +5,8 @@ import {BaseDemoComponent} from '../../shared/base-demo.component';
 @Component({
     selector: 'hc-logo',
     templateUrl: './logo-demo.component.html',
-    styleUrls: ['./logo-demo.component.scss']
+    styleUrls: ['./logo-demo.component.scss'],
+    standalone: false
 })
 export class LogoDemoComponent extends BaseDemoComponent {
     constructor(sectionService: SectionService) {

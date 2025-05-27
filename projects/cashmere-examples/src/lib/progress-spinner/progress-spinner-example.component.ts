@@ -7,7 +7,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-progress-spinner-example',
     templateUrl: 'progress-spinner-example.component.html',
-    styleUrls: ['progress-spinner-example.component.scss']
+    styleUrls: ['progress-spinner-example.component.scss'],
+    standalone: false
 })
 export class ProgressSpinnerExampleComponent {
     readonly spinnerIsDeterminate = new FormControl(false, {nonNullable: true});

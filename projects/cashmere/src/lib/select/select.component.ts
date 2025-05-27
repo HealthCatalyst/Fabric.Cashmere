@@ -36,7 +36,8 @@ export class SelectChangeEvent {
     templateUrl: 'select.component.html',
     styleUrls: ['select.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    providers: [SelectService, {provide: HcFormControlComponent, useExisting: forwardRef(() => SelectComponent)}]
+    providers: [SelectService, { provide: HcFormControlComponent, useExisting: forwardRef(() => SelectComponent) }],
+    standalone: false
 })
 export class SelectComponent extends HcFormControlComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
     private _uniqueInputId = `hc-select-${uniqueId++}`;

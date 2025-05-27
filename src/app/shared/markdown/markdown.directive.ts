@@ -5,7 +5,8 @@ import * as mdnh from 'markdown-it-named-headers';
 import {HighlightDirective} from '../highlight/highlight.directive';
 
 @Directive({
-    selector: '[hcMarkdown]'
+    selector: '[hcMarkdown]',
+    standalone: false
 })
 export class MarkdownDirective implements OnChanges {
     @Input()

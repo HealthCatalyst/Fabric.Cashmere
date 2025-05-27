@@ -7,7 +7,8 @@ import { isDefined } from '../util';
     selector: 'hc-sidenav',
     templateUrl: 'sidenav.component.html',
     styleUrls: ['sidenav.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class SidenavComponent {
     /** Add a custom css class to the sidebar container. */

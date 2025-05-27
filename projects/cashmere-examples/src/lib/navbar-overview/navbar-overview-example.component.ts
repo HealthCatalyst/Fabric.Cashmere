@@ -6,7 +6,8 @@ import { NavbarComponent } from '@healthcatalyst/cashmere';
  */
 @Component({
     selector: 'hc-navbar-overview-example',
-    templateUrl: 'navbar-overview-example.component.html'
+    templateUrl: 'navbar-overview-example.component.html',
+    standalone: false
 })
 export class NavbarOverviewExampleComponent implements AfterViewInit {
     username = 'Christine K.';

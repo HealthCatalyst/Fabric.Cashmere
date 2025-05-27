@@ -5,7 +5,8 @@ import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 
 @Directive({
-    selector: '[backdropHost]'
+    selector: '[backdropHost]',
+    standalone: false
 })
 export class BackdropHostDirective implements OnDestroy {
     private _ignoreEscapeKey = false;

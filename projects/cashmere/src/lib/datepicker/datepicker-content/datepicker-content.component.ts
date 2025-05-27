@@ -20,7 +20,8 @@ import {DatepickerComponent} from '../datepicker.component';
     animations: [HcDatepickerAnimations.transformPanel, HcDatepickerAnimations.fadeInCalendar],
     exportAs: 'hcDatepickerContent',
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DatepickerContentComponent implements AfterViewInit {
     /** Reference to the internal calendar component. */

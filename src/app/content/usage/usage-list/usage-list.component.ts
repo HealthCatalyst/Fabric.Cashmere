@@ -12,7 +12,8 @@ import {ApplicationInsightsService} from '../../../shared/application-insights/a
 @Component({
     selector: 'hc-usage-list',
     templateUrl: './usage-list.component.html',
-    styleUrls: ['./usage-list.component.scss']
+    styleUrls: ['./usage-list.component.scss'],
+    standalone: false
 })
 export class UsageListComponent extends BaseDemoComponent implements OnInit, AfterViewInit {
     filteredUsageList: IUsage[];

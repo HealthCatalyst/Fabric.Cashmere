@@ -28,7 +28,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
     selector: 'hc-table-sort-example',
     templateUrl: 'table-sort-example.component.html',
-    styleUrls: ['table-sort-example.component.scss']
+    styleUrls: ['table-sort-example.component.scss'],
+    standalone: false
 })
 export class TableSortExampleComponent implements OnInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'discovered', 'symbol'];

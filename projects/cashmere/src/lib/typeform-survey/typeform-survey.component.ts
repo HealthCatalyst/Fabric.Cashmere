@@ -22,7 +22,8 @@ export class TypeformWindow {
         ></a>
     `,
     styles: [],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class TypeformSurveyComponent {
     /**

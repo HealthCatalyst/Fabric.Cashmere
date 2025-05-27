@@ -5,18 +5,20 @@ import { HcModal } from './modal';
 import { ModalOptions } from './modal-options';
 import { ModalModule } from './modal.module';
 import { ModalService } from './modal.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
     template: `
         <hc-modal>
             <hc-modal-header>Modal Header Title</hc-modal-header>
-            <hc-modal-body>Data: {{ activeModal.data }}</hc-modal-body>
+            <hc-modal-body>Data: {{ activeModal?.data }}</hc-modal-body>
             <hc-modal-footer>
                 <button hc-button buttonStyle="link" (click)="cancel()">Cancel</button>
                 <button hc-button buttonStyle="primary" (click)="close()">OK</button>
             </hc-modal-footer>
         </hc-modal>
-    `
+    `,
+    standalone: false
 })
 class ModalOverviewExampleModalComponent {
     constructor(public modalRef: HcModal<ModalOverviewExampleModalComponent>) {}
@@ -29,7 +31,7 @@ describe('ModalService', () => {
 
         beforeEach(waitForAsync(() => {
             TestBed.configureTestingModule({
-                imports: [ModalModule],
+                imports: [ModalModule, BrowserAnimationsModule],
                 declarations: [ModalOverviewExampleModalComponent],
                 providers: [ModalService, HcModal],
             })

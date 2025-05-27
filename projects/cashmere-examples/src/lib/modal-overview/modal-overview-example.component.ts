@@ -7,7 +7,8 @@ import {ModalOverviewExampleModalComponent} from './modal-overview-example-modal
  */
 @Component({
     selector: 'hc-modal-overview-example',
-    templateUrl: 'modal-overview-example.component.html'
+    templateUrl: 'modal-overview-example.component.html',
+    standalone: false
 })
 export class ModalOverviewExampleComponent {
     result: unknown;

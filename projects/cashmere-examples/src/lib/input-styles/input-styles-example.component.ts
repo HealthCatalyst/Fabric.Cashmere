@@ -7,7 +7,8 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'hc-input-styles-example',
     templateUrl: 'input-styles-example.component.html',
-    styleUrls: ['input-styles-example.component.scss']
+    styleUrls: ['input-styles-example.component.scss'],
+    standalone: false
 })
 export class InputStylesExampleComponent {
     inlineState = new FormControl(false, {nonNullable: true});

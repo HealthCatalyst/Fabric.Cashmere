@@ -27,7 +27,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
     selector: 'hc-table-filter-example',
     templateUrl: 'table-filter-example.component.html',
-    styleUrls: ['table-filter-example.component.scss']
+    styleUrls: ['table-filter-example.component.scss'],
+    standalone: false
 })
 export class TableFilterExampleComponent implements OnInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];

@@ -16,7 +16,8 @@ import {HcPopComponent} from '../pop/popover.component';
             multi: true
         }
     ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class EnvSwitcherComponent implements OnDestroy, ControlValueAccessor {
     @HostBinding('class.hc-env-switcher-container') _hostClass = true;

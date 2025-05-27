@@ -3,7 +3,8 @@ import { parseBooleanAttribute } from '../util';
 
 /** Can be added to the parent element containing resizable and static elements */
 @Directive({
-    selector: '[hcResizableContainer]'
+    selector: '[hcResizableContainer]',
+    standalone: false
 })
 export class ResizableContainerDirective {
     _vertical = true;

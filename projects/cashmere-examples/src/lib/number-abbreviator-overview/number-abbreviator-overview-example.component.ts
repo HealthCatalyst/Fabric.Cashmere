@@ -6,7 +6,8 @@ import {FormControl} from '@angular/forms';
  */
 @Component({
     selector: 'hc-number-abbreviator-overview-example',
-    templateUrl: 'number-abbreviator-overview-example.component.html'
+    templateUrl: 'number-abbreviator-overview-example.component.html',
+    standalone: false
 })
 export class NumberAbbreviatorOverviewExampleComponent {
     number = new FormControl(123456789, {nonNullable: true});

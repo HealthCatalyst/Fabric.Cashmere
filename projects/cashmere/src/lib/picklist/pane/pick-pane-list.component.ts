@@ -33,7 +33,8 @@ const SCROLL_SCHEDULER = typeof requestAnimationFrame !== 'undefined' ? animatio
                     <ng-content></ng-content>
             </div>
         </div>
-    `
+    `,
+    standalone: false
 })
 /** Component that contains that displays options list and manages virtual scroll as needed.
  * @docs-private

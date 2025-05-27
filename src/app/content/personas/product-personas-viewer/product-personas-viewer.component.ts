@@ -7,7 +7,8 @@ import {ProductCentricIndexService, ProductFile} from '../product-centric-index-
 @Component({
     selector: 'hc-product-personas-viewer',
     templateUrl: './product-personas-viewer.component.html',
-    styleUrls: ['./product-personas-viewer.component.scss']
+    styleUrls: ['./product-personas-viewer.component.scss'],
+    standalone: false
 })
 export class ProductPersonasViewerComponent implements OnInit, OnDestroy {
     public document = '';

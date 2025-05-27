@@ -33,20 +33,14 @@ const closeStateAnimation = '0.25s .05s ease';
     styleUrls: ['../drawer.component.scss', 'menu-drawer.component.scss'],
     animations: [
         trigger('openState', [
-            state(
-                'open-left, open-right, open-instant',
-                style({
-                    transform: 'translate3d(0, 0, 0)',
-                    visibility: 'visible'
-                })
-            ),
-            state(
-                'void, close-instant',
-                style({
-                    'box-shadow': 'none',
-                    visibility: 'hidden'
-                })
-            ),
+            state('open-left, open-right, open-instant', style({
+                transform: 'translate3d(0, 0, 0)',
+                visibility: 'visible'
+            })),
+            state('void, close-instant', style({
+                'box-shadow': 'none',
+                visibility: 'hidden'
+            })),
             transition('void => open-instant', animate('0ms')),
             transition('open-instant => void', animate(openStateAnimation)),
             transition('open-instant => close-instant', animate('0ms')),
@@ -60,7 +54,7 @@ const closeStateAnimation = '0.25s .05s ease';
                 animate(openStateAnimation, style({ transform: 'translate3d(-100%, 0, 0)' }))
             ]),
             transition('void => open-right', [
-                animate('0ms', style({ transform: 'translate3d(100%, 0, 0)'})),
+                animate('0ms', style({ transform: 'translate3d(100%, 0, 0)' })),
                 animate(closeStateAnimation)
             ]),
             transition('open-right => void', [
@@ -69,7 +63,8 @@ const closeStateAnimation = '0.25s .05s ease';
         ])
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: Drawer, useExisting: forwardRef(() => MenuDrawer)}]
+    providers: [{ provide: Drawer, useExisting: forwardRef(() => MenuDrawer) }],
+    standalone: false
 })
 export class MenuDrawer extends Drawer implements AfterContentInit {
     private _previousTheme: string | null = null;

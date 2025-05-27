@@ -8,7 +8,8 @@ import {SubnavRightDirective} from './subnav-right.directive';
 @Component({
     template: `
         <hc-subnav [fixedTop]="fixedValue"><div hcSubnavRight></div></hc-subnav>
-    `
+    `,
+    standalone: false
 })
 export class SubNavRightComponent {
     fixedValue = false;

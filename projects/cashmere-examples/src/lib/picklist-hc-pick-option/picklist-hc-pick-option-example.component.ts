@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'hc-picklist-hc-pick-option-example',
     templateUrl: './picklist-hc-pick-option-example.component.html',
+    standalone: false
 })
 export class PicklistHcPickOptionExampleComponent {
 

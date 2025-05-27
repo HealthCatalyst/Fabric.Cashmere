@@ -17,7 +17,8 @@ import {yearsPerPage} from '../multi-year-view/multi-year-view.component';
             (yearSelected)="selectedYear = $event"
             (monthSelected)="selectedMonth = $event"
         ></hc-calendar>
-    `
+    `,
+    standalone: false
 })
 class StandardCalendar {
     selected: Date;

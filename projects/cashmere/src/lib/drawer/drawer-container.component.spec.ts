@@ -11,7 +11,8 @@ import {Component, ViewChild} from '@angular/core';
             <hc-drawer align="left" #leftDrawer></hc-drawer>
             <hc-drawer align="right" #rightDrawer></hc-drawer>
         </hc-drawer-container>
-    `
+    `,
+    standalone: false
 })
 export class TestDrawerContainer {
     @ViewChild('d', {static: false})
@@ -27,7 +28,8 @@ export class TestDrawerContainer {
         <hc-drawer-container #d>
             <hc-drawer *ngFor="let drawer of drawers"></hc-drawer>
         </hc-drawer-container>
-    `
+    `,
+    standalone: false
 })
 export class InvalidDrawerContainer {
     @ViewChild('d', {static: false})

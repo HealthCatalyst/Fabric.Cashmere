@@ -7,7 +7,8 @@ import {PersonaFile, PersonaService} from '../persona-list.service';
 @Component({
     selector: 'hc-persona-viewer',
     templateUrl: './persona-viewer.component.html',
-    styleUrls: ['./persona-viewer.component.scss']
+    styleUrls: ['./persona-viewer.component.scss'],
+    standalone: false
 })
 export class PersonaViewerComponent implements OnInit, OnDestroy {
     public document = '';

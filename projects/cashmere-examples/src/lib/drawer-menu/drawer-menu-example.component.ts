@@ -7,7 +7,8 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'hc-drawer-menu-example',
     templateUrl: 'drawer-menu-example.component.html',
-    styleUrls: ['drawer-menu-example.component.scss']
+    styleUrls: ['drawer-menu-example.component.scss'],
+    standalone: false
 })
 export class DrawerMenuExampleComponent {
     isAnimated = new FormControl(true, {nonNullable: true});

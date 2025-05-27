@@ -11,7 +11,8 @@ export function validateColorInput(inputStr: string): void {
 @Component({
     selector: 'hc-progress-spinner',
     templateUrl: 'progress-spinner.component.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ProgressSpinnerComponent {
     private _color = 'blue';

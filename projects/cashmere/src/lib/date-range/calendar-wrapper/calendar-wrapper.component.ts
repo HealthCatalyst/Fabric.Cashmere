@@ -22,7 +22,8 @@ import {D} from '../../datepicker/datetime/date-formats';
     templateUrl: './calendar-wrapper.component.html',
     styleUrls: ['./calendar-wrapper.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class CalendarWrapperComponent implements OnChanges {
     @HostBinding('class.hc-calendar-wrapper')

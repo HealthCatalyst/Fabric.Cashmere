@@ -5,7 +5,8 @@ import {MarkdownDirective} from './markdown.directive';
 @Component({
     template: `
         <div [hcMarkdown]="markdownInput"></div>
-    `
+    `,
+    standalone: false
 })
 class Test1Component {
     markdownInput = `hello world`;
@@ -16,7 +17,8 @@ class Test1Component {
 @Component({
     template: `
         <div [hcMarkdown]="markdownInput" [sanitize]="sanitize" [highlight]="highlight" [lineNumbers]="lineNumbers"></div>
-    `
+    `,
+    standalone: false
 })
 class Test2Component {
     markdownInput = `hello world`;

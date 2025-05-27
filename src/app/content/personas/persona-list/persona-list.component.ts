@@ -10,7 +10,8 @@ import {Subject} from 'rxjs';
 @Component({
     selector: 'hc-persona-list',
     templateUrl: './persona-list.component.html',
-    styleUrls: ['./persona-list.component.scss']
+    styleUrls: ['./persona-list.component.scss'],
+    standalone: false
 })
 export class PersonaListComponent extends BaseDemoComponent implements OnDestroy {
     private unsubscribe = new Subject<void>();

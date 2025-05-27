@@ -7,7 +7,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-multiselect-embed-checkbox-example',
     templateUrl: 'multiselect-embed-checkbox-example.component.html',
-    styleUrls: ['multiselect-embed-checkbox-example.component.scss']
+    styleUrls: ['multiselect-embed-checkbox-example.component.scss'],
+    standalone: false
 })
 export class MultiselectEmbedCheckboxExampleComponent {
     selectedCareTeamRoles = new FormControl([], {nonNullable: true});

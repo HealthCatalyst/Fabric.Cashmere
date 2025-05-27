@@ -8,7 +8,8 @@ import {RadioButtonChangeEvent} from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-select-placeholder-example',
     templateUrl: 'select-placeholder-example.component.html',
-    styleUrls: ['select-placeholder-example.component.scss']
+    styleUrls: ['select-placeholder-example.component.scss'],
+    standalone: false
 })
 export class SelectPlaceholderExampleComponent implements OnInit {
     cities = [

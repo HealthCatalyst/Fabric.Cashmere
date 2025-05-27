@@ -6,7 +6,8 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-chip-action-example',
     templateUrl: 'chip-action-example.component.html',
-    styleUrls: ['chip-action-example.component.scss']
+    styleUrls: ['chip-action-example.component.scss'],
+    standalone: false
 })
 export class ChipActionExampleComponent {
     chips: boolean[] = [true, true];

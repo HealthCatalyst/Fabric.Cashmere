@@ -22,7 +22,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     ],
     animations: [
         trigger('fadeInOut', [
-            state('in', style({opacity: 0.5})),
+            state('in', style({ opacity: 0.5 })),
             transition('void <=> *', [
                 style({
                     opacity: 0
@@ -30,7 +30,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
                 animate('0.2s ease-in-out')
             ])
         ])
-    ]
+    ],
+    standalone: false
 })
 export class ModalOverlayComponent {
     @Input()

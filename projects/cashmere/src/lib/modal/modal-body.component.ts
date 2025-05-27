@@ -5,7 +5,8 @@ import {Component, ElementRef, HostBinding, ViewEncapsulation} from '@angular/co
     template: `
         <ng-content></ng-content>
     `,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ModalBodyComponent {
     @HostBinding('class.hc-modal-body')

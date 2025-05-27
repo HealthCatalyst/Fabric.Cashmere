@@ -16,7 +16,8 @@ export interface Version {
 @Component({
     selector: 'hc-analytics-template',
     templateUrl: './analytics-template.component.html',
-    styleUrls: ['./analytics-template.component.scss']
+    styleUrls: ['./analytics-template.component.scss'],
+    standalone: false
 })
 export class AnalyticsTemplateComponent {
     platform: string;

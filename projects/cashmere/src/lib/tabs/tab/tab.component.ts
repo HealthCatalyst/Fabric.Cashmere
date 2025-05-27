@@ -9,7 +9,8 @@ import {parseBooleanAttribute} from '../../util';
     templateUrl: './tab.component.html',
     selector: `hc-tab`,
     styleUrls: ['./tab.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class TabComponent implements AfterContentInit {
     @HostBinding('class.hc-tab') _hostClass = true;

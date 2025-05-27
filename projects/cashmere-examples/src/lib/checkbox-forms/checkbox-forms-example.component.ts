@@ -6,7 +6,8 @@ import { FormControl } from '@angular/forms';
  */
 @Component({
     selector: 'hc-checkbox-forms-example',
-    templateUrl: 'checkbox-forms-example.component.html'
+    templateUrl: 'checkbox-forms-example.component.html',
+    standalone: false
 })
 export class CheckboxFormsExampleComponent {
     readonly isCheckedControl = new FormControl(false, {nonNullable: true});

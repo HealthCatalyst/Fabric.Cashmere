@@ -7,7 +7,8 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 @Component({
     selector: 'hc-demo-foundations',
     templateUrl: './foundations.component.html',
-    styleUrls: ['../shared/base-demo.component.scss']
+    styleUrls: ['../shared/base-demo.component.scss'],
+    standalone: false
 })
 export class FoundationsComponent implements OnDestroy {
     thisPage = '';

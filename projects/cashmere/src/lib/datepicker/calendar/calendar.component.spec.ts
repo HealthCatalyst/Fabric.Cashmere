@@ -18,7 +18,8 @@ import {HcDatepickerIntl} from '../datepicker-intl';
             (yearSelected)="selectedYear = $event"
             (monthSelected)="selectedMonth = $event"
         ></hc-calendar>
-    `
+    `,
+    standalone: false
 })
 class StandardCalendar {
     selected: Date;
@@ -30,7 +31,8 @@ class StandardCalendar {
 @Component({
     template: `
         <hc-calendar [startAt]="startAt" [minDate]="minDate" [maxDate]="maxDate"></hc-calendar>
-    `
+    `,
+    standalone: false
 })
 class CalendarWithMinMax {
     startAt: Date;
@@ -41,7 +43,8 @@ class CalendarWithMinMax {
 @Component({
     template: `
         <hc-calendar [startAt]="startDate" [(selected)]="selected" [dateFilter]="dateFilter"></hc-calendar>
-    `
+    `,
+    standalone: false
 })
 class CalendarWithDateFilter {
     selected: Date;
@@ -55,7 +58,8 @@ class CalendarWithDateFilter {
 @Component({
     template: `
         <hc-calendar [startAt]="startAt" (selectedChange)="select($event)" [selected]="selected" [minDate]="selected"></hc-calendar>
-    `
+    `,
+    standalone: false
 })
 class CalendarWithSelectableMinDate {
     startAt = new Date(2018, JUL, 0);

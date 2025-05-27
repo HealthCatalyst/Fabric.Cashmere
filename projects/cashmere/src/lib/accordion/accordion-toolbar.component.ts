@@ -5,7 +5,8 @@ import {ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation} from
     selector: 'hc-accordion-toolbar',
     template: '<ng-content></ng-content>',
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccordionToolbarComponent {
     @HostBinding('class.hc-accordion-toolbar')

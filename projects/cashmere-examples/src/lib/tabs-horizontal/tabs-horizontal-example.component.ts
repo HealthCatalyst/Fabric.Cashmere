@@ -8,7 +8,8 @@ import {TabChangeEvent, TabSetComponent} from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-tabs-horizontal-example',
     templateUrl: 'tabs-horizontal-example.component.html',
-    styleUrls: ['tabs-horizontal-example.component.scss']
+    styleUrls: ['tabs-horizontal-example.component.scss'],
+    standalone: false
 })
 export class TabsHorizontalExampleComponent {
     selectedIndex = 0;

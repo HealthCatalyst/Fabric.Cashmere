@@ -5,7 +5,8 @@ const tileHeaderTypes: TileHeaderType[] = ['blue', 'title', 'center'];
 
 /** Applies one of the Cashmere standard tile header stylings to an element */
 @Directive({
-    selector: '[hcTileHeader]'
+    selector: '[hcTileHeader]',
+    standalone: false
 })
 export class TileHeaderDirective {
     private _type: TileHeaderType = 'blue';

@@ -6,7 +6,8 @@ import { ApplicationInsightsService } from '../shared/application-insights/appli
 @Component({
     selector: 'hc-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+    styleUrls: ['./home.component.scss'],
+    standalone: false
 })
 export class HomeComponent {
     searchBar = new FormControl("", {nonNullable: true});

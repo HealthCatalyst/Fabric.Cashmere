@@ -6,6 +6,7 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-icon-overview-example',
     templateUrl: 'icon-overview-example.component.html',
-    styleUrls: ['icon-overview-example.component.scss']
+    styleUrls: ['icon-overview-example.component.scss'],
+    standalone: false
 })
 export class IconOverviewExampleComponent {}

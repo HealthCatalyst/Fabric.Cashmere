@@ -10,7 +10,8 @@ import {environment} from '../../../environments/environment';
 @Component({
     selector: 'hc-feedback-form',
     templateUrl: './feedback-form.component.html',
-    styleUrls: ['./feedback-form.component.scss']
+    styleUrls: ['./feedback-form.component.scss'],
+    standalone: false
 })
 export class FeedbackFormComponent implements OnInit, OnDestroy {
     feedbackForm: FormGroup;

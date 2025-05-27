@@ -61,7 +61,8 @@ export class HcDatepickerContentBase {
     exportAs: 'hcDatepicker',
     styleUrls: ['datepicker.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class DatepickerComponent implements OnDestroy {
     private _scrollStrategy: () => ScrollStrategy;

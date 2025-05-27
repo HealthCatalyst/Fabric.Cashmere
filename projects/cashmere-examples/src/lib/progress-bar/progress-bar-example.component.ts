@@ -7,7 +7,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-progress-bar-example',
     templateUrl: 'progress-bar-example.component.html',
-    styleUrls: ['progress-bar-example.component.scss']
+    styleUrls: ['progress-bar-example.component.scss'],
+    standalone: false
 })
 export class ProgressBarExampleComponent {
     readonly barIsDeterminate = new FormControl(false, {nonNullable: true});

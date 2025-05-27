@@ -11,7 +11,8 @@ import {Component, ViewChild} from '@angular/core';
             <hc-button-toggle value='one' #one>one</hc-button-toggle>
             <hc-button-toggle value='two' #two>two</hc-button-toggle>
         </hc-button-toggle-group>
-    `
+    `,
+    standalone: false
 })
 export class TestButtonToggleGroup {
     @ViewChild('group', {static: false})

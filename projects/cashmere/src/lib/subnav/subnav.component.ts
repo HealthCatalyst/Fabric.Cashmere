@@ -6,7 +6,8 @@ import {Component, HostBinding, Input, ViewEncapsulation} from '@angular/core';
     template: `
         <ng-content></ng-content>
     `,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class SubnavComponent {
     @HostBinding('class.hc-subnav')

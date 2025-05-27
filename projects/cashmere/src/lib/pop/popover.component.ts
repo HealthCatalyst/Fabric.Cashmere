@@ -50,7 +50,8 @@ const EMPTY_TRANSITION = '0ms linear';
     encapsulation: ViewEncapsulation.None,
     animations: [transformPopover],
     styleUrls: ['./popover.component.scss'],
-    templateUrl: './popover.component.html'
+    templateUrl: './popover.component.html',
+    standalone: false
 })
 export class HcPopComponent implements OnInit, OnDestroy {
     /** Whether or not to disable default popover container styles. *Defaults to `false`.* */

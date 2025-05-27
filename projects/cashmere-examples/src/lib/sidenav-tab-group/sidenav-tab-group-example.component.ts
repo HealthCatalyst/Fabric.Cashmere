@@ -8,7 +8,8 @@ import { SidenavLink, SidenavTabGroup } from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-sidenav-tab-group-example',
     templateUrl: 'sidenav-tab-group-example.component.html',
-    styleUrls: ['sidenav-tab-group-example.component.scss']
+    styleUrls: ['sidenav-tab-group-example.component.scss'],
+    standalone: false
 })
 export class SidenavTabGroupExampleComponent {
     hideChildrenOnCollapse: FormControl = new FormControl(true);

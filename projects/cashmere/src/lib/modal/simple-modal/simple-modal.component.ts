@@ -5,7 +5,8 @@ import { SimpleModalOptions } from './simple-modal-options.model';
 @Component({
     selector: 'hc-simple-modal',
     templateUrl: './simple-modal.component.html',
-    styleUrls: ['./simple-modal.component.scss']
+    styleUrls: ['./simple-modal.component.scss'],
+    standalone: false
 })
 export class SimpleModalComponent implements OnInit {
     public options: SimpleModalOptions;
