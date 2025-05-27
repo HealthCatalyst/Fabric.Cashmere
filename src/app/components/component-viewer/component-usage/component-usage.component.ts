@@ -5,7 +5,8 @@ import { HighlightDirective } from '../../../shared/highlight/highlight.directiv
 
 @Component({
     templateUrl: 'component-usage.component.html',
-    styleUrls: ['component-usage.component.scss']
+    styleUrls: ['component-usage.component.scss'],
+    standalone: false
 })
 export class ComponentUsageComponent {
     private section: string;

@@ -9,7 +9,8 @@ interface Transport { name: string, icon: string, color: string, type: string | 
 @Component({
     selector: 'hc-multiselect-custom-templates-example',
     templateUrl: 'multiselect-custom-templates-example.component.html',
-    styleUrls: ['multiselect-custom-templates-example.component.scss']
+    styleUrls: ['multiselect-custom-templates-example.component.scss'],
+    standalone: false
 })
 export class MultiselectCustomTemplatesExampleComponent {
     readonly selected = new FormControl([], {nonNullable: true});

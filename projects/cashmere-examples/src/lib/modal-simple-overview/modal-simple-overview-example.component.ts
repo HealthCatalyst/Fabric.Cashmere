@@ -8,7 +8,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-modal-simple-overview-example',
     templateUrl: 'modal-simple-overview-example.component.html',
-    styleUrls: ['modal-simple-overview-example.component.scss']
+    styleUrls: ['modal-simple-overview-example.component.scss'],
+    standalone: false
 })
 export class ModalSimpleOverviewExampleComponent {
     constructor(private modalService: ModalService) {}

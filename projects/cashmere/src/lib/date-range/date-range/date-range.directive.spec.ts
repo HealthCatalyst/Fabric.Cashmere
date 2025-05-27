@@ -24,7 +24,8 @@ class MockOverlayService {
         >
             Click Me
         </button>
-    `
+    `,
+    standalone: false
 })
 class TestComponent {
     options: DateRangeOptions;

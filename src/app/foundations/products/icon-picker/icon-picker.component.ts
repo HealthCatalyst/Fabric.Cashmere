@@ -6,7 +6,8 @@ import { ActiveModal } from '@healthcatalyst/cashmere';
     selector: 'hc-icon-picker',
     templateUrl: './icon-picker.component.html',
     styleUrls: ['./icon-picker.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class IconPickerComponent {
     productName: string;

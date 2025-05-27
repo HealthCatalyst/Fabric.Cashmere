@@ -7,7 +7,8 @@ import {MenuItemDirective} from './menu-item.directive';
 
 /** The `hcMenu` directive provides a standard way of displaying a series of selectable elements in a popover. */
 @Directive({
-    selector: '[hcMenu]'
+    selector: '[hcMenu]',
+    standalone: false
 })
 export class MenuDirective implements AfterContentInit, OnDestroy {
     @HostBinding('class.hc-menu-panel')

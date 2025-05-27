@@ -5,7 +5,8 @@ interface Transport { name: string, icon: string, color: string, type: string | 
 @Component({
     selector: 'hc-picklist-templates-example',
     templateUrl: './picklist-templates-example.component.html',
-    styleUrls: ['./picklist-templates-example.component.scss']
+    styleUrls: ['./picklist-templates-example.component.scss'],
+    standalone: false
 })
 export class PicklistTemplatesExampleComponent {
 

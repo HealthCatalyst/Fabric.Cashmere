@@ -7,7 +7,8 @@ import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 @Component({
     selector: 'hc-input-required-example',
     templateUrl: 'input-required-example.component.html',
-    styleUrls: ['input-required-example.component.scss']
+    styleUrls: ['input-required-example.component.scss'],
+    standalone: false
 })
 export class InputRequiredExampleComponent {
     @ViewChild('exampleForm') exampleForm: NgForm;

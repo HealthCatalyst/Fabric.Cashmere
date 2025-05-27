@@ -15,7 +15,8 @@ export interface PickOptionStateChange { value: boolean; disabled: boolean; labe
 @Component({
     selector: 'hc-pick-option',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `<ng-content></ng-content>`
+    template: `<ng-content></ng-content>`,
+    standalone: false
 })
 export class PickOptionComponent implements OnChanges, AfterViewChecked, OnDestroy {
     /** Value for this option. */

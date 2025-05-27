@@ -4,7 +4,8 @@ import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
 @Component({
     selector: 'hc-error',
     template: '<ng-content></ng-content>',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class HcErrorComponent {
     @HostBinding('class.hc-error')

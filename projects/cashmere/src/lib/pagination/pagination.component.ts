@@ -10,7 +10,8 @@ import {FormControl} from '@angular/forms';
     selector: 'hc-pagination',
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class PaginationComponent extends BasePaginationComponent implements OnInit {
     /** The set of provided page size options to display to the user. *Defaults to [10, 20, 50].* */

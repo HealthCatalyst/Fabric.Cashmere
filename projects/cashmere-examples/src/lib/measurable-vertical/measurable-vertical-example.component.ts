@@ -15,21 +15,16 @@ interface ButtonData {
     styleUrls: ['measurable-vertical-example.component.scss'],
     animations: [
         trigger('moreOpenState', [
-            state(
-                'open',
-                style({
-                    transform: 'rotate(180deg)'
-                })
-            ),
-            state(
-                'closed',
-                style({
-                    transform: 'rotate(0deg)'
-                })
-            ),
+            state('open', style({
+                transform: 'rotate(180deg)'
+            })),
+            state('closed', style({
+                transform: 'rotate(0deg)'
+            })),
             transition('open <=> closed', animate('500ms cubic-bezier(0.25, 0.8, 0.25, 1)'))
         ])
-    ]
+    ],
+    standalone: false
 })
 export class MeasurableVerticalExampleComponent implements AfterViewInit, OnDestroy {
     buttons: ButtonData[] = [];

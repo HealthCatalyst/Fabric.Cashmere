@@ -37,7 +37,8 @@ export interface Sort {
 /** Container for HcSortables to manage the sort state and provide default sort parameters. */
 @Directive({
     selector: '[hcSort]',
-    exportAs: 'hcSort'
+    exportAs: 'hcSort',
+    standalone: false
 })
 export class HcSort extends Initializable implements OnChanges, OnDestroy, OnInit {
     /** Collection of all registered sortables that this directive manages. */

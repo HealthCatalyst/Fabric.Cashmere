@@ -4,7 +4,8 @@ import {BaseDemoComponent} from '../../shared/base-demo.component';
 
 @Component({
     selector: 'hc-ie-support-demo',
-    templateUrl: './ie-support.component.html'
+    templateUrl: './ie-support.component.html',
+    standalone: false
 })
 export class IESupportComponent extends BaseDemoComponent {
     constructor(sectionService: SectionService) {

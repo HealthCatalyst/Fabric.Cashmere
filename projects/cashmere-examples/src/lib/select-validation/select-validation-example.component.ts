@@ -7,7 +7,8 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'hc-select-validation-example',
     templateUrl: 'select-validation-example.component.html',
-    styleUrls: ['select-validation-example.component.scss']
+    styleUrls: ['select-validation-example.component.scss'],
+    standalone: false
 })
 export class SelectValidationExampleComponent {
     private validCheck = false;

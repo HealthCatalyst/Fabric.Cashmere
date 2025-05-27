@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'hc-picklist-simple-example',
-    templateUrl: 'picklist-simple-example.component.html'
+    templateUrl: 'picklist-simple-example.component.html',
+    standalone: false
 })
 export class PicklistSimpleExampleComponent {
     cars = [

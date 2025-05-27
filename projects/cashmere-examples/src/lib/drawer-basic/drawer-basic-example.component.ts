@@ -6,7 +6,8 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-drawer-basic-example',
     templateUrl: 'drawer-basic-example.component.html',
-    styleUrls: ['drawer-basic-example.component.scss']
+    styleUrls: ['drawer-basic-example.component.scss'],
+    standalone: false
 })
 export class DrawerBasicExampleComponent {
     leftState = false;

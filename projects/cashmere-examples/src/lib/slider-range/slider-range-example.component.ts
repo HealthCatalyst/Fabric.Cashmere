@@ -8,7 +8,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-slider-range-example',
     templateUrl: 'slider-range-example.component.html',
-    styleUrls: ['slider-range-example.component.scss']
+    styleUrls: ['slider-range-example.component.scss'],
+    standalone: false
 })
 export class SliderRangeExampleComponent {
     private invalid = false;

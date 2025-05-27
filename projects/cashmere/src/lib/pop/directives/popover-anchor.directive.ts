@@ -27,7 +27,8 @@ import { parseBooleanAttribute } from '../../util';
 @Directive({
     selector: '[hcPop],[hcTooltip]',
     exportAs: 'hcPopAnchor',
-    providers: [HcPopoverAnchoringService]
+    providers: [HcPopoverAnchoringService],
+    standalone: false
 })
 export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDestroy {
     /** Reference to the popover instance. */

@@ -7,7 +7,8 @@ import { By } from '@angular/platform-browser';
 @Component({
     template: `
         <hc-file-uploader [formControl]="uploaderForm" (filesAdded)="onFileAdd($event)"></hc-file-uploader>
-    `
+    `,
+    standalone: false
 })
 export class FileUploaderFormComponent {
     uploaderForm: FormControl = new FormControl( true );

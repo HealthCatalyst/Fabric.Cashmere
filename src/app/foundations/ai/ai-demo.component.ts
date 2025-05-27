@@ -5,7 +5,8 @@ import {BaseDemoComponent} from '../../shared/base-demo.component';
 @Component({
     selector: 'hc-ai-demo',
     templateUrl: './ai-demo.component.html',
-    styleUrls: ['./ai-demo.component.scss']
+    styleUrls: ['./ai-demo.component.scss'],
+    standalone: false
 })
 export class AIDemoComponent extends BaseDemoComponent {
     constructor(sectionService: SectionService) {

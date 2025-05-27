@@ -7,7 +7,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 @Component({
     selector: 'hc-multiselect-overview-example',
     templateUrl: 'multiselect-overview-example.component.html',
-    styleUrls: ['multiselect-overview-example.component.scss']
+    styleUrls: ['multiselect-overview-example.component.scss'],
+    standalone: false
 })
 export class MultiselectOverviewExampleComponent {
     cities = ['Philadelphia', 'Atlanta', 'Salt Lake City', 'Chicago', 'Orlando'];

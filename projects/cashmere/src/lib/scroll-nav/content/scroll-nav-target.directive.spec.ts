@@ -5,7 +5,10 @@ import { By } from "@angular/platform-browser";
 import { ScrollNavTargetDirective } from "./scroll-nav-target.directive";
 import { ScrollNavModule } from "../scroll-nav.module";
 
-@Component({ "template": "" })
+@Component({
+    "template": "",
+    standalone: false
+})
 export class AbstractHcScrollTargetComponent {
   constructor(public renderer: Renderer2) {}
 }
@@ -23,7 +26,8 @@ export class AbstractHcScrollTargetComponent {
         <section id='a1' hcScrollTarget>
             <h1>Test 1 Section</h1>
         </section>
-    </hc-scroll-nav-content>`
+    </hc-scroll-nav-content>`,
+    standalone: false
 })
 export class ScrollNavTargetComponent extends AbstractHcScrollTargetComponent {
 }
@@ -40,7 +44,8 @@ export class ScrollNavTargetComponent extends AbstractHcScrollTargetComponent {
         <section [id]='"a2"' [attr.hcScrollTarget]="showContent">
             <h1>Test 1 Section</h1>
         </section>
-    </hc-scroll-nav-content>`
+    </hc-scroll-nav-content>`,
+    standalone: false
 })
 export class ScrollNavTargetDynamicComponent extends AbstractHcScrollTargetComponent {
     public showContent = true;

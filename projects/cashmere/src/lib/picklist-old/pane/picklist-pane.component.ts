@@ -27,7 +27,8 @@ import {FilterableSelectList, SelectListOption, ValueListOption, ValueSetListOpt
         PicklistFilterLocalService,
         WorkTrackerService
     ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class PicklistPaneComponent {
     @Input()

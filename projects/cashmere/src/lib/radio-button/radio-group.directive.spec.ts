@@ -11,7 +11,8 @@ import {RadioButtonModule} from './radio-button.module';
             <hc-radio-button [value]="oneValue" [checked]="oneChecked">Radio One</hc-radio-button>
             <hc-radio-button [value]="twoValue" [checked]="twoChecked">Radio Two</hc-radio-button>
         </hc-radio-group>
-    `
+    `,
+    standalone: false
 })
 class TestRadioGroupComponent {
     oneChecked = true;
@@ -182,7 +183,8 @@ describe('RadioGroupComponent', () => {
             <hc-radio-button value="one">One</hc-radio-button>
             <hc-radio-button value="two">Two</hc-radio-button>
         </hc-radio-group>
-    `
+    `,
+    standalone: false
 })
 class RadioWithNgModelComponent {
     isGood = 'one';

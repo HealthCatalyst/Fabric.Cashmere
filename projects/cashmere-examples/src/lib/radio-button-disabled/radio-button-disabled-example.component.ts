@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'hc-radio-button-disabled-example',
-    templateUrl: 'radio-button-disabled-example.component.html'
+    templateUrl: 'radio-button-disabled-example.component.html',
+    standalone: false
 })
 export class RadioButtonDisabledExampleComponent {}

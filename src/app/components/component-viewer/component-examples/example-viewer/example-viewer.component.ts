@@ -9,7 +9,8 @@ import {TabSetComponent} from 'projects/cashmere/src/lib/tabs';
 @Component({
     selector: 'hc-example-viewer',
     templateUrl: 'example-viewer.component.html',
-    styleUrls: ['example-viewer.component.scss']
+    styleUrls: ['example-viewer.component.scss'],
+    standalone: false
 })
 export class ExampleViewerComponent implements OnInit {
     @ViewChild('exampleContainer', {read: ViewContainerRef, static: true})

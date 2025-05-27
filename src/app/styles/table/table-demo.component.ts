@@ -5,7 +5,8 @@ import {BaseDemoComponent} from '../../shared/base-demo.component';
 @Component({
     selector: 'hc-table-demo',
     templateUrl: './table-demo.component.html',
-    styleUrls: ['./table-demo.component.scss']
+    styleUrls: ['./table-demo.component.scss'],
+    standalone: false
 })
 export class TableDemoComponent extends BaseDemoComponent {
     hasBorders = false;

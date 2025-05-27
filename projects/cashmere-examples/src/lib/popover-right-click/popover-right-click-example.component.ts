@@ -5,7 +5,8 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'hc-popover-right-click-example',
-    templateUrl: 'popover-right-click-example.component.html'
+    templateUrl: 'popover-right-click-example.component.html',
+    standalone: false
 })
 export class PopoverRightClickExampleComponent {
     items = [

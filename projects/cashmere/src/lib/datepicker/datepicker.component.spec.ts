@@ -28,7 +28,8 @@ import {HcFormFieldComponent} from '../form-field/hc-form-field.component';
     template: `
         <input [hcDatepicker]="d" [value]="date" />
         <hc-datepicker #d [disabled]="disabled" [opened]="opened"></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class StandardDatepicker {
     opened = false;
@@ -45,14 +46,16 @@ class StandardDatepicker {
         <input [hcDatepicker]="d" />
         <input [hcDatepicker]="d" />
         <hc-datepicker #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class MultiInputDatepicker {}
 
 @Component({
     template: `
         <hc-datepicker #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class NoInputDatepicker {
     @ViewChild('d')
@@ -63,7 +66,8 @@ class NoInputDatepicker {
     template: `
         <input [hcDatepicker]="d" [value]="date" />
         <hc-datepicker #d [startAt]="startDate"></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithStartAt {
     date = new Date(2020, JAN, 1);
@@ -76,7 +80,8 @@ class DatepickerWithStartAt {
     template: `
         <input [hcDatepicker]="d" [value]="date" />
         <hc-datepicker #d startView="year" (monthSelected)="onYearSelection()"></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithStartViewYear {
     date = new Date(2020, JAN, 1);
@@ -92,7 +97,8 @@ class DatepickerWithStartViewYear {
     template: `
         <input [hcDatepicker]="d" [value]="date" />
         <hc-datepicker #d startView="multi-year" (yearSelected)="onMultiYearSelection()"></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithStartViewMultiYear {
     date = new Date(2020, JAN, 1);
@@ -108,7 +114,8 @@ class DatepickerWithStartViewMultiYear {
     template: `
         <input [(ngModel)]="selected" [hcDatepicker]="d" />
         <hc-datepicker #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithNgModel {
     selected: Date | null = null;
@@ -123,7 +130,8 @@ class DatepickerWithNgModel {
         <input [formControl]="formControl" [hcDatepicker]="d" />
         <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
         <hc-datepicker #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithFormControl {
     formControl = new FormControl();
@@ -140,7 +148,8 @@ class DatepickerWithFormControl {
         <input [hcDatepicker]="d" />
         <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
         <hc-datepicker #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithToggle {
     @ViewChild('d')
@@ -154,7 +163,8 @@ class DatepickerWithToggle {
         <input [hcDatepicker]="d" />
         <hc-datepicker-toggle [for]="d"><hc-icon class="custom-icon" hcDatepickerToggleIcon></hc-icon></hc-datepicker-toggle>
         <hc-datepicker #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithCustomIcon {}
 
@@ -162,7 +172,8 @@ class DatepickerWithCustomIcon {}
     template: `
         <input [hcDatepicker]="d" />
         <hc-datepicker #d allows-blank-values="true"></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithAllowsBlankValues {
     @ViewChild('d')
@@ -176,7 +187,8 @@ class DatepickerWithAllowsBlankValues {
             <input hcInput [hcDatepicker]="d" />
             <hc-datepicker #d></hc-datepicker>
         </hc-form-field>
-    `
+    `,
+    standalone: false
 })
 class FormFieldDatepicker {
     @ViewChild('d')
@@ -192,7 +204,8 @@ class FormFieldDatepicker {
         <input [formControl]="formControl" [hcDatepicker]="d" [min]="minDate" [max]="maxDate" />
         <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
         <hc-datepicker #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithMinAndMaxValidation {
     formControl = new FormControl();
@@ -207,7 +220,8 @@ class DatepickerWithMinAndMaxValidation {
         <input [hcDatepicker]="d" [(ngModel)]="date" [hcDatepickerFilter]="filter" />
         <hc-datepicker-toggle [for]="d"></hc-datepicker-toggle>
         <hc-datepicker #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithFilterAndValidation {
     @ViewChild('d')
@@ -220,7 +234,8 @@ class DatepickerWithFilterAndValidation {
     template: `
         <input [hcDatepicker]="d" (change)="onChange()" (input)="onInput()" (dateChange)="onDateChange()" (dateInput)="onDateInput()" />
         <hc-datepicker #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithChangeAndInputEvents {
     @ViewChild('d')
@@ -247,7 +262,8 @@ class DatepickerWithChangeAndInputEvents {
     template: `
         <input [hcDatepicker]="d" [(ngModel)]="date" />
         <hc-datepicker #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithi18n {
     date: Date | null = new Date(2010, JAN, 1);
@@ -261,7 +277,8 @@ class DatepickerWithi18n {
     template: `
         <input [hcDatepicker]="d" [(ngModel)]="value" [min]="min" [max]="max" />
         <hc-datepicker #d [startAt]="startAt"></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithISOStrings {
     value = new Date(2017, JUN, 1).toISOString();
@@ -278,7 +295,8 @@ class DatepickerWithISOStrings {
     template: `
         <input [(ngModel)]="selected" [hcDatepicker]="d" />
         <hc-datepicker (opened)="openedSpy()" (closed)="closedSpy()" #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithEvents {
     selected: Date | null = null;
@@ -292,7 +310,8 @@ class DatepickerWithEvents {
     template: `
         <input (focus)="d.open()" [hcDatepicker]="d" />
         <hc-datepicker #d="hcDatepicker"></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerOpeningOnFocus {
     @ViewChild(DatepickerComponent)
@@ -303,7 +322,8 @@ class DatepickerOpeningOnFocus {
     template: `
         <input [hcDatepicker]="ch" />
         <hc-datepicker #ch [calendarHeaderComponent]="customHeaderForDatePicker"></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithCustomHeader {
     @ViewChild('ch')
@@ -315,7 +335,8 @@ class DatepickerWithCustomHeader {
     template: `
         <div class="custom-element">Custom element</div>
         <hc-calendar-header></hc-calendar-header>
-    `
+    `,
+    standalone: false
 })
 class CustomHeaderForDatepicker {}
 
@@ -323,7 +344,8 @@ class CustomHeaderForDatepicker {}
     template: `
         <input [hcDatepicker]="assignedDatepicker" [value]="date" />
         <hc-datepicker #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DelayedDatepicker {
     @ViewChild('d')
@@ -339,7 +361,8 @@ class DelayedDatepicker {
         <input [hcDatepicker]="d" />
         <hc-datepicker-toggle tabIndex="7" [for]="d"><div class="custom-icon" hcDatepickerToggleIcon></div></hc-datepicker-toggle>
         <hc-datepicker #d></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithTabindexOnToggle {}
 
@@ -347,7 +370,8 @@ class DatepickerWithTabindexOnToggle {}
     template: `
         <input [hcDatepicker]="timepicker" />
         <hc-datepicker #timepicker mode="time" [hourCycle]="cycleVal"></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithTime {
     @ViewChild('timepicker')
@@ -359,7 +383,8 @@ class DatepickerWithTime {
     template: `
         <input [hcDatepicker]="datetimepicker" />
         <hc-datepicker #datetimepicker mode="date-time"></hc-datepicker>
-    `
+    `,
+    standalone: false
 })
 class DatepickerWithDateTime {
     @ViewChild('datetimepicker')

@@ -8,7 +8,8 @@ import { SidenavLink, SidenavLinkClickEvent } from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-sidenav-example',
     templateUrl: 'sidenav-example.component.html',
-    styleUrls: ['sidenav-example.component.scss']
+    styleUrls: ['sidenav-example.component.scss'],
+    standalone: false
 })
 export class SidenavExampleComponent {
     isLoadingTabs: FormControl = new FormControl(false);

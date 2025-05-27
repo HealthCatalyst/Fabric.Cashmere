@@ -316,7 +316,8 @@ describe('HcYearView', () => {
 @Component({
     template: `
         <hc-year-view [(activeDate)]="date" [(selected)]="selected" (monthSelected)="selectedMonth = $event"></hc-year-view>
-    `
+    `,
+    standalone: false
 })
 class StandardYearView {
     date = new Date(2017, JAN, 5);
@@ -330,7 +331,8 @@ class StandardYearView {
 @Component({
     template: `
         <hc-year-view [activeDate]="activeDate" [dateFilter]="dateFilter"></hc-year-view>
-    `
+    `,
+    standalone: false
 })
 class YearViewWithDateFilter {
     activeDate = new Date(2017, JAN, 1);

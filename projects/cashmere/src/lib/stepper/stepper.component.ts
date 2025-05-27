@@ -31,7 +31,8 @@ export type StepType = 'arrow' | 'isolated';
     selector: 'hc-stepper',
     templateUrl: './stepper.component.html',
     styleUrls: ['./stepper.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class StepperComponent implements AfterContentInit {
     _routerEnabled = false;

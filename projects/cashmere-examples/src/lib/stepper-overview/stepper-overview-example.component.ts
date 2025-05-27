@@ -8,7 +8,8 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'hc-stepper-overview-example',
     templateUrl: 'stepper-overview-example.component.html',
-    styleUrls: ['stepper-overview-example.component.scss']
+    styleUrls: ['stepper-overview-example.component.scss'],
+    standalone: false
 })
 export class StepperOverviewExampleComponent implements OnInit {
     progressSteps: StepInterface[];

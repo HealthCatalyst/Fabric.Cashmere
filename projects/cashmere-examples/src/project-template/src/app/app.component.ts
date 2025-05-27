@@ -5,6 +5,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
     selector: 'app-root',
     template: '<router-outlet></router-outlet>',
     styleUrls: ['../styles.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class AppComponent {}

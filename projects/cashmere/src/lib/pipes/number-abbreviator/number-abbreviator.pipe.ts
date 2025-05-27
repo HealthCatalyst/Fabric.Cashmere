@@ -1,7 +1,10 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
 /** Creates an abbreviated number for display. 1,234,234 => 1.23M */
-@Pipe({ name: "abbreviateNumber" })
+@Pipe({
+    name: "abbreviateNumber",
+    standalone: false
+})
 export class NumberAbbreviatorPipe implements PipeTransform {
     public static powers = [
         { key: "Q", value: Math.pow(10, 15) },

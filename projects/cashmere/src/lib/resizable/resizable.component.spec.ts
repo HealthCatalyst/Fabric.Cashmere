@@ -16,7 +16,8 @@ import { ResizableMetadata as Meta } from './resizable.meta';
                 mollis. eleifend.
             </p>
         </div>
-    `
+    `,
+    standalone: false
 })
 export class ResizableHostComponent {
     disabled = false;

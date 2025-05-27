@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
     selector: 'hc-doc-viewer',
     template: '',
     styleUrls: ['document-viewer.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class DocumentViewerComponent {
     @HostBinding('class.hc-doc-viewer') _hostClass = true;

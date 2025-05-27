@@ -852,7 +852,8 @@ function createTestingModule<T>(cmp: Type<T>, template: string): ComponentFixtur
 }
 
 @Component({
-    template: ``
+    template: ``,
+    standalone: false
 })
 class HcPickPaneTestCmp {
     @ViewChild(PickPaneComponent, { static: false }) pickPane: PickPaneComponent;
@@ -909,6 +910,7 @@ class HcPickPaneTestCmp {
 
 @Component({
     template: ``,
+    standalone: false
 })
 class HcPickPaneGroupingTestCmp {
     @ViewChild(PickPaneComponent, { static: true }) pickPane: PickPaneComponent;

@@ -16,7 +16,8 @@ import {CdkCell, CdkCellDef, CdkColumnDef, CdkFooterCell, CdkFooterCellDef, CdkH
  */
 @Directive({
     selector: '[hcCellDef]',
-    providers: [{provide: CdkCellDef, useExisting: HcCellDef}]
+    providers: [{ provide: CdkCellDef, useExisting: HcCellDef }],
+    standalone: false
 })
 export class HcCellDef extends CdkCellDef {}
 
@@ -26,7 +27,8 @@ export class HcCellDef extends CdkCellDef {}
  */
 @Directive({
     selector: '[hcHeaderCellDef]',
-    providers: [{provide: CdkHeaderCellDef, useExisting: HcHeaderCellDef}]
+    providers: [{ provide: CdkHeaderCellDef, useExisting: HcHeaderCellDef }],
+    standalone: false
 })
 export class HcHeaderCellDef extends CdkHeaderCellDef {}
 
@@ -36,7 +38,8 @@ export class HcHeaderCellDef extends CdkHeaderCellDef {}
  */
 @Directive({
     selector: '[hcFooterCellDef]',
-    providers: [{provide: CdkFooterCellDef, useExisting: HcFooterCellDef}]
+    providers: [{ provide: CdkFooterCellDef, useExisting: HcFooterCellDef }],
+    standalone: false
 })
 export class HcFooterCellDef extends CdkFooterCellDef {}
 
@@ -46,7 +49,8 @@ export class HcFooterCellDef extends CdkFooterCellDef {}
  */
 @Directive({
     selector: '[hcColumnDef]',
-    providers: [{provide: CdkColumnDef, useExisting: HcColumnDef}]
+    providers: [{ provide: CdkColumnDef, useExisting: HcColumnDef }],
+    standalone: false
 })
 export class HcColumnDef extends CdkColumnDef {
     private _justify = 'left';
@@ -95,7 +99,8 @@ export class HcColumnDef extends CdkColumnDef {
 
 /** Header cell template container that adds the right classes and role. */
 @Directive({
-    selector: 'hc-header-cell, th[hc-header-cell]'
+    selector: 'hc-header-cell, th[hc-header-cell]',
+    standalone: false
 })
 export class HcHeaderCell extends CdkHeaderCell {
     @HostBinding('class.hc-header-cell') _hostClass = true;
@@ -110,7 +115,8 @@ export class HcHeaderCell extends CdkHeaderCell {
 
 /** Footer cell template container that adds the right classes and role. */
 @Directive({
-    selector: 'hc-footer-cell, td[hc-footer-cell]'
+    selector: 'hc-footer-cell, td[hc-footer-cell]',
+    standalone: false
 })
 export class HcFooterCell extends CdkFooterCell {
     @HostBinding('class.hc-footer-cell') _hostClass = true;
@@ -125,7 +131,8 @@ export class HcFooterCell extends CdkFooterCell {
 
 /** Cell template container that adds the right classes and role. */
 @Directive({
-    selector: 'hc-cell, td[hc-cell]'
+    selector: 'hc-cell, td[hc-cell]',
+    standalone: false
 })
 export class HcCell extends CdkCell {
     @HostBinding('class.hc-cell') _hostClass = true;
@@ -140,7 +147,8 @@ export class HcCell extends CdkCell {
 
 /** Row index cell template container that adds the right classes and role. */
 @Directive({
-    selector: 'hc-index-cell, td[hc-index-cell], th[hc-index-cell]'
+    selector: 'hc-index-cell, td[hc-index-cell], th[hc-index-cell]',
+    standalone: false
 })
 export class HcIndexCell extends CdkCell {
     @HostBinding('class.hc-index-cell') _hostClass = true;

@@ -7,7 +7,8 @@ import {HcIcon, SelectChangeEvent} from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-navbar-cobrand-example',
     templateUrl: 'navbar-cobrand-example.component.html',
-    styleUrls: ['navbar-cobrand-example.component.scss']
+    styleUrls: ['navbar-cobrand-example.component.scss'],
+    standalone: false
 })
 export class NavbarCobrandExampleComponent {
     username = 'Christine K.';

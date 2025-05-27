@@ -7,7 +7,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-tile-overview-example',
     templateUrl: 'tile-overview-example.component.html',
-    styleUrls: ['tile-overview-example.component.scss']
+    styleUrls: ['tile-overview-example.component.scss'],
+    standalone: false
 })
 export class TileOverviewExampleComponent {
     headerControl = new FormControl('blue', {nonNullable: true});

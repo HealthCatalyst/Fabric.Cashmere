@@ -5,7 +5,8 @@ import {BaseDemoComponent} from '../../shared/base-demo.component';
 @Component({
     selector: 'hc-info-icons-demo',
     templateUrl: './info-icons-demo.component.html',
-    styleUrls: ['./info-icons-demo.component.scss']
+    styleUrls: ['./info-icons-demo.component.scss'],
+    standalone: false
 })
 export class InfoIconsDemoComponent extends BaseDemoComponent {
     constructor(sectionService: SectionService) {

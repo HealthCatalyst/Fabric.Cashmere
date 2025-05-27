@@ -7,7 +7,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-progress-dots-example',
     templateUrl: 'progress-dots-example.component.html',
-    styleUrls: ['progress-dots-example.component.scss']
+    styleUrls: ['progress-dots-example.component.scss'],
+    standalone: false
 })
 export class ProgressDotsExampleComponent {
     readonly dotsColor = new FormControl('light', {nonNullable: true});

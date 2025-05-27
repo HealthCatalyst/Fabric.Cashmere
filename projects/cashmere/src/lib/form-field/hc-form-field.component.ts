@@ -29,7 +29,8 @@ export function getControlMissing(): Error {
     selector: 'hc-form-field',
     templateUrl: './hc-form-field.component.html',
     styleUrls: ['./hc-form-field.component.scss', '../input/input.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class HcFormFieldComponent implements AfterContentInit, OnDestroy {
     private _inline = false;

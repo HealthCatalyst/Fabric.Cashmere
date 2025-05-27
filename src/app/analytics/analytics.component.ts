@@ -7,7 +7,8 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 @Component({
     selector: 'hc-demo-analytics',
     templateUrl: './analytics.component.html',
-    styleUrls: ['../shared/base-demo.component.scss']
+    styleUrls: ['../shared/base-demo.component.scss'],
+    standalone: false
 })
 export class AnalyticsComponent implements OnDestroy {
     thisPage = '';

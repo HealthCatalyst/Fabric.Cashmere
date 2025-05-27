@@ -8,7 +8,8 @@ import { ResizableComponent } from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-resizable-overview-example',
     templateUrl: 'resizable-overview-example.component.html',
-    styleUrls: ['./resizable-overview-example.component.scss']
+    styleUrls: ['./resizable-overview-example.component.scss'],
+    standalone: false
 })
 export class ResizableOverviewExampleComponent {
     resizablePosition = new FormControl('top', {nonNullable: true});

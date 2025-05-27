@@ -5,7 +5,8 @@ import {FormControl} from "@angular/forms";
 @Component({
     selector: 'hc-environment-switcher-overview-example',
     templateUrl: 'environment-switcher-overview-example.component.html',
-    styleUrls: ['environment-switcher-overview-example.component.scss']
+    styleUrls: ['environment-switcher-overview-example.component.scss'],
+    standalone: false
 })
 export class EnvironmentSwitcherOverviewExampleComponent {
     username = 'Christine K.';

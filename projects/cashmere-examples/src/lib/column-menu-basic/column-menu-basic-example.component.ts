@@ -7,7 +7,8 @@ import { HcTableDataSource, HcDynamicColumn } from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-column-menu-basic-example',
     templateUrl: 'column-menu-basic-example.component.html',
-    styleUrls: ['column-menu-basic-example.component.scss']
+    styleUrls: ['column-menu-basic-example.component.scss'],
+    standalone: false
 })
 export class ColumnMenuBasicExampleComponent {
     dataSource: HcTableDataSource<VideoGame>;

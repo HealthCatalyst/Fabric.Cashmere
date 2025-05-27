@@ -120,7 +120,8 @@ describe('HcFormFieldComponent', () => {
             <hc-label>{{ inputLabel }}</hc-label>
             <input hcInput [id]="inputId" [disabled]="isDisabled" [required]="isRequired" />
         </hc-form-field>
-    `
+    `,
+    standalone: false
 })
 class SimpleInput {
     inputId: string | null = 'test-id';
@@ -135,7 +136,8 @@ class SimpleInput {
             <hc-label>Simple:</hc-label>
             <input />
         </hc-form-field>
-    `
+    `,
+    standalone: false
 })
 class InputMissingHcInput {}
 
@@ -146,7 +148,8 @@ class InputMissingHcInput {}
             <input hcInput [formControl]="formControl" #inputElement/>
             <hc-error>Input is required</hc-error>
         </hc-form-field>
-    `
+    `,
+    standalone: false
 })
 class InputWithFormControl {
     formControl = new FormControl('', Validators.required);

@@ -5,7 +5,8 @@ import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
     template: `
         <ng-content></ng-content>
     `,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ModalHeaderComponent {
     @HostBinding('class.hc-modal-header')

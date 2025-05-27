@@ -2,7 +2,8 @@ import {Directive, HostBinding} from '@angular/core';
 
 /** Prepends an avatar styled element to the beginning of a `<hc-list-item>`. */
 @Directive({
-    selector: '[hcListAvatar]'
+    selector: '[hcListAvatar]',
+    standalone: false
 })
 export class ListAvatarDirective {
     @HostBinding('class.hc-list-avatar')

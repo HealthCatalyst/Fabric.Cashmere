@@ -3,7 +3,10 @@ import {SectionService} from '../../shared/section.service';
 import {BaseDemoComponent} from '../../shared/base-demo.component';
 import {SelectChangeEvent} from '@healthcatalyst/cashmere';
 import {ViewChild, ElementRef} from '@angular/core';
-import * as echarts from 'echarts';
+import * as echarts from 'echarts/core';
+import { BarChart, GaugeChart, LineChart } from 'echarts/charts';
+import { GridComponent, LegendComponent, TooltipComponent, DataZoomComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import * as hcChartLight from '../../../assets/charts/healthcatalyst-light-echart-v5.x.json';
 import * as hcChartDark from '../../../assets/charts/healthcatalyst-dark-echart-v5.x.json';
 
@@ -78,7 +81,8 @@ const exampleData = {
 @Component({
     selector: 'hc-chart',
     templateUrl: './chart-demo.component.html',
-    styleUrls: ['./chart-demo.component.scss']
+    styleUrls: ['./chart-demo.component.scss'],
+    standalone: false
 })
 
 export class ChartDemoComponent extends BaseDemoComponent {
@@ -96,6 +100,16 @@ export class ChartDemoComponent extends BaseDemoComponent {
     constructor(sectionService: SectionService) {
         super(sectionService);
         this.buildChartOptions();
+        echarts.use([
+            BarChart,
+            CanvasRenderer,
+            GaugeChart,
+            GridComponent,
+            LineChart,
+            LegendComponent,
+            TooltipComponent,
+            DataZoomComponent
+        ]);
     }
 
     ngAfterViewInit(): void {

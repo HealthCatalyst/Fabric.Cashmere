@@ -7,7 +7,8 @@ import {ButtonModule} from './button.module';
     template: `
         <button hc-button [buttonStyle]="buttonStyle" [disabled]="isDisabled" (click)="buttonClick()">Button</button>
         <a hc-button [buttonStyle]="buttonStyle" [disabled]="isDisabled" href="https://www.healthcatalyst.com">Link</a>
-    `
+    `,
+    standalone: false
 })
 class TestAppComponent {
     buttonStyle = 'primary';

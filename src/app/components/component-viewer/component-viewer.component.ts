@@ -5,7 +5,8 @@ import { TabSetComponent } from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-component-viewer',
     templateUrl: 'component-viewer.component.html',
-    styleUrls: ['component-viewer.component.scss']
+    styleUrls: ['component-viewer.component.scss'],
+    standalone: false
 })
 export class ComponentViewerComponent implements AfterViewInit {
     private _docItem: DocItem | undefined;

@@ -9,7 +9,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-toaster-overview-example',
     templateUrl: 'toaster-overview-example.component.html',
-    styleUrls: ['toaster-overview-example.component.scss']
+    styleUrls: ['toaster-overview-example.component.scss'],
+    standalone: false
 })
 export class ToasterOverviewExampleComponent {
     readonly toastHeader = new FormControl('Success!', {nonNullable: true});

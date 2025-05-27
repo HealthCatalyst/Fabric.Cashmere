@@ -6,7 +6,8 @@ import { ReleaseNotesModalData } from './release-notes.model';
     selector: 'hc-release-notes-modal',
     templateUrl: './release-notes-modal.component.html',
     styleUrls: ['./release-notes-modal.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ReleaseNotesModalComponent implements OnInit {
     public _data: ReleaseNotesModalData;

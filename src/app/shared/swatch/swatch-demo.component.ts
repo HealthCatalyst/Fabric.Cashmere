@@ -3,7 +3,8 @@ import {Component, Input} from '@angular/core';
 @Component({
     selector: 'hc-swatch-demo-component',
     templateUrl: './swatch-demo.component.html',
-    styleUrls: ['./swatch-demo.component.scss']
+    styleUrls: ['./swatch-demo.component.scss'],
+    standalone: false
 })
 export class SwatchDemoComponent {
     @Input()

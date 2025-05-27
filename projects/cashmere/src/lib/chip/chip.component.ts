@@ -14,7 +14,8 @@ export function validateColorInput(inputStr: string): void {
     selector: 'hc-chip',
     templateUrl: './chip.component.html',
     styleUrls: ['./chip.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ChipComponent {
     private _hasCloseButton = false;

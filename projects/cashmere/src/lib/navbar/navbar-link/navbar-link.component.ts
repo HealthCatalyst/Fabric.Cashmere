@@ -5,7 +5,8 @@ import {parseBooleanAttribute} from '../../util';
 @Component({
     selector: 'hc-navbar-link',
     templateUrl: './navbar-link.component.html',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class NavbarLinkComponent {
     _active: boolean | null;

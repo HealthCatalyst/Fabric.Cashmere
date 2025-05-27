@@ -6,7 +6,8 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-button-colors-example',
     templateUrl: 'button-colors-example.component.html',
-    styleUrls: ['button-colors-example.component.scss']
+    styleUrls: ['button-colors-example.component.scss'],
+    standalone: false
 })
 export class ButtonColorsExampleComponent {
     color = "ruby-red"

@@ -7,7 +7,8 @@ import {Subject} from 'rxjs';
 
 /** `hcForm` directive that allows settings to be applied to all included HcFormFields */
 @Directive({
-    selector: '[hcForm]'
+    selector: '[hcForm]',
+    standalone: false
 })
 export class HcFormDirective implements AfterContentInit, OnDestroy {
     private _tight = false;

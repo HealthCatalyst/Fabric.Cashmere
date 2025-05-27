@@ -15,7 +15,8 @@ export interface HcIcon {
     selector: 'hc-icon',
     template: '<ng-content></ng-content>',
     styleUrls: ['./icon.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class IconComponent implements OnChanges {
     private _fontIcon = '';

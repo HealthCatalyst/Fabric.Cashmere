@@ -6,7 +6,8 @@ import { PicklistComponent } from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-picklist-remote-data-example',
-    templateUrl: './picklist-remote-data-example.component.html'
+    templateUrl: './picklist-remote-data-example.component.html',
+    standalone: false
 })
 export class PicklistRemoteDataExampleComponent implements OnInit {
     @ViewChild(PicklistComponent) picklist: PicklistComponent;

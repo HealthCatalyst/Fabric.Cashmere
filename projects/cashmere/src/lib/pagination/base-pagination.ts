@@ -7,7 +7,8 @@ import {PageEvent} from './page-event';
  * Base Pagination class for shared functionality
  * */
 @Component({
-    template: ''
+    template: '',
+    standalone: false
 })
 export class BasePaginationComponent extends Initializable implements OnInit {
     public static _DEFAULT_PAGE_SIZE = 20;

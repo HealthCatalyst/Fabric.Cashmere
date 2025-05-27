@@ -6,7 +6,8 @@ import {Component} from '@angular/core';
 
 @Component({
     selector: 'hc-accordion-overview-example',
-    templateUrl: 'accordion-overview-example.component.html'
+    templateUrl: 'accordion-overview-example.component.html',
+    standalone: false
 })
 export class AccordionOverviewExampleComponent {
     alignment = 'left';

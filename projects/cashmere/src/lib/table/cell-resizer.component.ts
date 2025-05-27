@@ -24,7 +24,8 @@ export class CellResizeEvent {
     template: '<div class="hc-cell-resizer-left"></div><div class="hc-cell-resizer-right"></div>',
     styleUrls: [],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class HcCellResizer implements OnInit, OnDestroy {
     /**
