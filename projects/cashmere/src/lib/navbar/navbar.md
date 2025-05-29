@@ -30,32 +30,32 @@ You may not have all these items available. However, include what you have in th
 <hc-pop #helpMenu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
     <div hcMenu>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="icon-book"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-book"></hc-icon>
             <span hcMenuText>Read the docs</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="icon-lightbulb"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-lightbulb"></hc-icon>
             <span hcMenuText>Request a feature</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="icon-users"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-users"></hc-icon>
             <span hcMenuText>Ask the community</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="icon-bullhorn"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-bullhorn"></hc-icon>
             <span hcMenuText>Find out what's new</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="icon-bug"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-bug"></hc-icon>
             <span hcMenuText>Report an issue</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="icon-comments"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-comments"></hc-icon>
             <span hcMenuText>Send feedback</span>
         </a>
         <div hcMenuItem hcDivider></div>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="icon-info"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-info"></hc-icon>
             <span hcMenuText>About</span>
         </button>
     </div>

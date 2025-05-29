@@ -3,7 +3,7 @@
 <hc-pop #menu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
     <div hcMenu>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-floppy-disk"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-save"></hc-icon>
             <span hcMenuText>Save document</span>
             <span hcMenuSubText>Ctrl + S</span>
         </a>
@@ -23,11 +23,11 @@
         </button>
         <div hcMenuItem hcDivider></div>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-circle-down"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-arrow-down"></hc-icon>
             <span hcMenuText>Press an arrow key</span>
         </button>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-keyboard"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-keyboard"></hc-icon>
             <span hcMenuText>Or the tab key</span>
             <span hcMenuSubText>Ctrl + P</span>
         </button>
@@ -37,23 +37,23 @@
 <hc-pop #editmenu [autoCloseOnContentClick]="true" [showArrow]="false" [parent]="menu" horizontalAlign="after" verticalAlign="start">
     <div hcMenu>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-scissors"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-scissors"></hc-icon>
             <span hcMenuText>Cut</span>
             <span hcMenuSubText>Ctrl + X</span>
         </button>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-copy"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-copy"></hc-icon>
             <span hcMenuText>Copy</span>
             <span hcMenuSubText>Ctrl + C</span>
         </button>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-paste"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-clipboard-assign"></hc-icon>
             <span hcMenuText>Paste</span>
             <span hcMenuSubText>Ctrl + V</span>
         </button>
         <div hcMenuItem hcDivider></div>
         <button hcMenuItem [hcPop]="searchMenu">
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-search"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-search"></hc-icon>
             <span hcMenuText>Search</span>
         </button>
     </div>

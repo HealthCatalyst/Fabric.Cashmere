@@ -11,12 +11,12 @@
         (updateEnvironments)="onUpdateEnvironments($event)" (reloadEnvironments)="onReloadEnvironments()">
     </hc-env-switcher>
 
-    <hc-icon class="hc-navbar-icon" tabindex="0" fontSet="hc-icons" fontIcon="hci-help"
+    <hc-icon class="hc-navbar-icon" tabindex="0" fontSet="hc-icons" fontIcon="icon-help"
         hcTooltip="Help menu goes here." trigger="click"></hc-icon>
     <span class="hc-navbar-vertical-separator"></span>
     <div class="hc-navbar-username" hcTooltip="User menu goes here." trigger="click" tabindex="0">
         <span class="hc-text-ellipsis">{{ username }}</span>
-        <hc-icon fontSet="fa-solid" fontIcon="fa-angle-down"></hc-icon>
+        <hc-icon fontIcon="icon-caret-down"></hc-icon>
     </div>
 </hc-navbar>
 

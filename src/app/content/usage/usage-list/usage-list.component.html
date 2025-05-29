@@ -2,7 +2,7 @@
     <hc-tab-set direction="horizontal" [addContentContainer]="false">
         <hc-tab tabTitle="Term List"></hc-tab>
         <button hc-button buttonStyle="link" size="sm" (click)="getFormFillData(null, addRequestModal)">
-            <hc-icon fontSet="fa-solid" fontIcon="fa-plus" hcIconSm class="hc-icon-left"></hc-icon>
+            <hc-icon fontIcon="icon-add" hcIconSm class="hc-icon-left"></hc-icon>
             Add Term
         </button>
     </hc-tab-set>
@@ -31,7 +31,7 @@
 
     <!-- Error loading content -->
     <div *ngIf="!termsLoading && loadFailed" class="terminology-load-error">
-        <hc-icon fontSet="fa-solid" fontIcon="fa-triangle-exclamation"></hc-icon>
+        <hc-icon fontIcon="icon-warn"></hc-icon>
         There was an error loading the term list. Click below try again.
         <button hc-button size="lg" (click)="ngOnInit()">Reload Terms</button>
     </div>
@@ -60,7 +60,7 @@
             <ng-container hcColumnDef="edit">
                 <th hc-header-cell style="width: 3%;" *hcHeaderCellDef style="border-left-style: none;">Edit</th>
                 <td hc-cell style="width: 3%;" *hcCellDef="let usageItem" style="border-left-style: none;">
-                    <button *ngIf=true hc-icon-button (click)="getFormFillData(usageItem, addRequestModal)"><hc-icon fontSet="hc-icons" fontIcon="hci-scratch-pad" hcIconMd></hc-icon></button>
+                    <button *ngIf=true hc-icon-button (click)="getFormFillData(usageItem, addRequestModal)"><hc-icon fontSet="hc-icons" fontIcon="icon-pencil" hcIconMd></hc-icon></button>
                 </td>
             </ng-container>
 

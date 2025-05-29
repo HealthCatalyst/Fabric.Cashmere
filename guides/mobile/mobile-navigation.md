@@ -70,15 +70,15 @@ To group navigation elements into a dropdown menu, use the `<hc-navbar-dropdown>
 <hc-navbar-dropdown linkText="Reports">
     <div hcMenu>
         <button hcMenuItem>
-                <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-building-columns"></hc-icon>
+                <hc-icon hcMenuIcon fontIcon="icon-building-columns"></hc-icon>
                 <span hcMenuText>Finance</span>
         </button>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-scale-balanced"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-scale-balanced"></hc-icon>
             <span hcMenuText>Legal</span>
         </button>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa-solid" fontIcon="fa-hospital"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-hospital"></hc-icon>
             <span hcMenuText>Clinical</span>
         </button>
     </div>

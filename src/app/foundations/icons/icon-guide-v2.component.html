@@ -1,0 +1,150 @@
+<div class="demo-content">
+    <h1>Icons v2</h1>
+    <h6>Last updated May 27, 2025</h6>
+
+    <hc-tile>
+        <h5 id="overview">Overview</h5>
+        <p>
+            When you need an icon, start with our recommended set. If you can’t find what you need, check
+            <a href="https://fontawesome.com/v6/icons" target="_blank">Font Awesome v6</a> or consult your designer.
+        </p>
+        <p>
+            Our icon set is meant to create a consistent visual language across our apps. Actions like
+            <code><span class="cd-icon-left icon-pencil"></span>edits</code> or <code><span class="cd-icon-left icon-trash"></span>deletes</code>,
+            and concepts like <code><span class="cd-icon-left icon-data-source"></span>data sources</code> or <code><span class="cd-icon-left icon-bell-o"></span>notifications</code> should look the same wherever you go. To help maintain this
+            continuity, refer to the icon descriptors, reference usage in other apps, and reach out to your designer for help.
+        </p>
+        <div class="demo-btn-container">
+            <a hc-button buttonStyle="primary-alt" download href="./assets/hcicons-v2.zip" title="Download zip file with icon fonts, image assets, css files, & readme">
+                <span class="hc-icon-left icon-download"></span>
+                Download icon set
+            </a>
+            <a hc-button buttonStyle="secondary" href="./foundations/icons/#webAppUsage" title="Jump to documentation on how to use in web apps">
+                See web usage guide
+                <span class="hc-icon-right icon-chev-right"></span>
+            </a>
+        </div>
+    </hc-tile>
+
+    <div class="ico-view-toggle">
+        <label>View icons in:</label>
+        <hc-button-toggle-group [formControl]="isGridView" [valueRequired]="true" size="sm">
+            <hc-button-toggle [value]="true"><span class="hc-icon-left icon-grid"></span>Grid</hc-button-toggle>
+            <hc-button-toggle [value]="false"><span class="hc-icon-left icon-list-alt"></span>List</hc-button-toggle>
+        </hc-button-toggle-group>
+    </div>
+
+    @for (cat of iconCategories; track $index) {
+        <hc-tile>
+            <h5>{{cat.name}} ({{cat.count}}) <span *ngIf="isGridView.value" class="hover-msg">Hover over icons for more usage guidance.</span></h5>
+            <div class="ico-container">
+                    @if (isGridView.value) {
+                        @for (icon of cat.icons; track $index) {
+                            <div class="ico-example" [hcTooltip]="icon.description">
+                                <hc-icon fontIcon="{{icon.icon}}" hcIconLg></hc-icon>
+                                <span class="ico-name">{{icon.name}}</span>
+                                <span class="unicode"> [{{icon.unicode}}]</span>
+                                <span class="alt-text">{{icon.keywords.join(', ')}}</span>
+                            </div>
+                        }
+                    } @else {
+                         <table class="hc-table">
+                            <thead>
+                                <tr>
+                                    <th>Icon</th>
+                                    <th>Name</th>
+                                    <th>Unicode</th>
+                                    <th>Keywords</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @for (icon of cat.icons; track $index) {
+                                <tr class="ico-example-list">
+                                    <td><hc-icon fontIcon="{{icon.icon}}"></hc-icon></td>
+                                    <td><span class="ico-name">{{icon.name}}</span></td>
+                                    <td><span class="unicode"> [{{icon.unicode}}]</span></td>
+                                    <td><span class="alt-text">{{icon.keywords.join(', ')}}</span></td>
+                                    <td><span class="desc">{{icon.description}}</span></td>
+                                </tr>
+                            }
+                            </tbody>
+                         </table>
+                    }
+            </div>
+        </hc-tile>
+    }
+
+
+    <hc-tile>
+        <h5 id="webAppUsage">Web App Usage</h5>
+        <p>
+            The suggested approach for icons in web apps is to create a custom icon font with <a href="https://icomoon.io/app">IcoMoon</a>. Developers can collect
+            the SVGs needed for their app, generate a font, and then store & reference those assets in their code repository.
+        </p>
+        <p>
+            We recommend including the following instructions in your client-side README.md. (Make sure to update the font name,
+            abbrevations, and paths to suit your app.)
+        </p>
+        <hc-chip color="blue" class="chip-note">
+            <span class="chip-inner">
+                <span class="hc-icon-left icon-bullhorn"></span>
+                <span>NOTE: The Cashmere library does not have a dependency on a specific icon font.
+                    All glyphs used in the components are encoded in the styles. This gives development teams the flexibility
+                    to use any icon set alongside Cashmere without conflict.</span>
+            </span>
+        </hc-chip>
+        <pre><code>
+## Icons
+
+We are using a custom icon font (`app-icons.ttf`) for our icon system. The svg icons that comprise this icon set are found in `path/to/svgs.`
+
+To use an icon, apply the `icon-[nameoficon]` class to an element, and that icon will be added to a `:before` psuedo element:
+
+    ```
+&lt;h3&gt;&lt;span class=&quot;icon-wrench&quot;&gt;&lt;/span&gt;Configuration&lt;/h3&gt;
+```
+
+Available icons can be looked up in `path/to/generated/demo.html`. Never make a manual change to anything in `path/to/generated`,
+as those files are generated by the IcoMoon app.
+
+_**Note**: Only icons should ever use a class prefixed with "icon-". That prefix is the selector for applying the proper icon-font
+as the font-family for the element. That selector looks like this -
+`[class^=&quot;icon-&quot;], [class*=&quot; icon-&quot;] &#123; font-family: &#39;[icon-font-nm]&#39;; ... &#125;`_
+
+### Icon Helper Styles
+
+There are helper css styles for icons located in the `path/to/icons` directory. These files can be edited/added to as needed. A few examples of what is included there:
+
+-   **Sizing classes**. `app-ico-lg`, `app-ico-sm`
+-   **Spacing classes**. For example, use `icon-left` for an icon position on the left side of a button. Will add a bit of padding on the icon's right side.
+-   **Animation classes**. `app-ico-spin`
+-   **Transformation classes**. `app-ico-rotate-180`, `app-ico-flip-horizonatal`
+
+### Adding New Icons
+
+To add an icon, follow this process:
+
+1. Convert your new icon to an SVG file and add it to `path/to/svgs`. Make sure it is approved for use by the UX team. Icons from [FontAwesome version 6](https://fontawesome.com/icons) or [hc-icons](https://cashmere.healthcatalyst.net/foundations/icons) are generally approved.
+2. Visit https://icomoon.io/app/ and upload all of our icons from the `path/to/svgs` directory.
+3. Select all the icons you've uploaded, and then click "Generate Font."
+4. On this next screen, click on the settings button (should be next to download button), and then do the following:
+    1. Enter "app-icons" for the font name.
+    2. Uncheck support for IE8 and lower. We aren't supporting these, so we'll simplify the code that's about to be generated.
+    3. Activate the option to generate SASS.
+5. Click "Download".
+6. Extract all files from the downloaded .zip.
+7. Move the contents of the .zip to `path/to/generated`
+        </code></pre>
+    </hc-tile>
+
+    <hc-tile>
+        <h5>Direct Web App Reference</h5>
+        <p>If a team elects not to create a custom font, they can also include the full <strong>hcicons2</strong> font set by referencing it from the Cashmere npm package.
+            To do so, add the following line to the app's global sass stylesheet:<br><br>
+            <code>&#64;import "&#64;healthcatalyst/cashmere/hcicons2/hcicons2";</code>
+        </p>
+    </hc-tile>
+
+    <hc-feedback-form></hc-feedback-form>
+</div>

@@ -28,11 +28,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     showAll = false;
     searchValue = '';
     searchIcons = {
-        'components': { icon: 'fa-code' },
-        'guides': { icon: 'fa-graduation-cap' },
-        'foundations': { icon: 'fa-gears' },
-        'content': { icon: 'fa-file-lines' },
-        'analytics': { icon: 'fa-chart-bar' }
+        'components': { icon: 'icon-code' },
+        'guides': { icon: 'icon-grad' },
+        'foundations': { icon: 'icon-cogs' },
+        'content': { icon: 'icon-file-lines' },
+        'analytics': { icon: 'icon-chart-bar' }
     };
 
     constructor( private router: Router, private searchService: SearchService, private appInsights: ApplicationInsightsService ) {

@@ -10,7 +10,7 @@ import {FormControl} from "@angular/forms";
 })
 export class EnvironmentSwitcherOverviewExampleComponent {
     username = 'Christine K.';
-    navIcon: HcIcon = {fontSet: 'hc-icons', fontIcon: 'hci-catalyst-logo', fontSize: 37};
+    navIcon: HcIcon = {fontSet: 'hc-icons', fontIcon: 'icon-catalyst-logo', fontSize: 37};
     listHeader: FormControl = new FormControl("Environments");
 
     selectedEnvironments = [1234];

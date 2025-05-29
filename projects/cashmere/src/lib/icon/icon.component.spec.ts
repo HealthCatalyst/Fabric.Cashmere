@@ -6,12 +6,12 @@ import {By} from '@angular/platform-browser';
 
 @Component({
     template: `
-        <hc-icon fontSet="fa-solid" [fontIcon]="iconValue" hcIconLg></hc-icon>
+        <hc-icon [fontIcon]="iconValue" hcIconLg></hc-icon>
     `,
     standalone: false
 })
 export class TestIconComponent {
-    iconValue = 'fa-snowflake-o';
+    iconValue = 'icon-medicine';
 }
 
 describe('IconComponent', () => {
@@ -33,7 +33,7 @@ describe('IconComponent', () => {
 
     it('should update the font class when the fontIcon value is changed', () => {
         const subnavComponent = fixture.debugElement.query(By.directive(IconComponent));
-        expect(subnavComponent.nativeElement.classList.contains('fa-snowflake-o')).toBe(true);
+        expect(subnavComponent.nativeElement.classList.contains('icon-medicine')).toBe(true);
 
         component.iconValue = 'fa-pied-piper';
         fixture.detectChanges();

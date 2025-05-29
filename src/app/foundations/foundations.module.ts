@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {ColorDemoComponent} from './color/color-demo.component';
-import {IconGuideComponent} from './icons/icon-guide.component';
+import {IconGuideV1Component} from './icons/icon-guide-v1.component';
+import {IconGuideV2Component} from './icons/icon-guide-v2.component';
 import {TypographyDemoComponent} from './typography/typography-demo.component';
 import {CodeDemoComponent} from './code/code-demo.component';
 import {SharedModule} from '../shared/shared.module';
@@ -22,7 +23,8 @@ import {FaviconDemoComponent} from './favicons/favicon-demo.component';
     declarations: [
         FoundationsComponent,
         ColorDemoComponent,
-        IconGuideComponent,
+        IconGuideV1Component,
+        IconGuideV2Component,
         TypographyDemoComponent,
         CodeDemoComponent,
         FaviconDemoComponent,

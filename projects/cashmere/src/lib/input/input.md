@@ -37,6 +37,6 @@ Icons may be included in an input box to indicate its function. Use a `hc-icon` 
 ```html
 <hc-form-field>
     <input hcInput placeholder="Enter username" />
-    <hc-icon hcSuffix fontSet="fa-solid" fontIcon="fa-circle-user"></hc-icon>
+    <hc-icon hcSuffix fontIcon="icon-circle-user"></hc-icon>
 </hc-form-field>
 ```

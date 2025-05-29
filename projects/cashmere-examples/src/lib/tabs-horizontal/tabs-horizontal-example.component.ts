@@ -16,7 +16,7 @@ export class TabsHorizontalExampleComponent {
     tabHidden = false;
     overflowStyle = new FormControl('more', {nonNullable: true});
     dynamicTabName = 'Renaming Tabs';
-    dynamicTabIcon = 'fa-check';
+    dynamicTabIcon = 'icon-circle-check';
     tabNameControl = new FormControl(this.dynamicTabName, {nonNullable: true});
     dynamicTabs: string[] = [];
 

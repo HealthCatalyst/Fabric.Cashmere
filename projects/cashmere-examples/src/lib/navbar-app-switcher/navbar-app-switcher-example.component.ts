@@ -11,7 +11,7 @@ import {HcIcon, IDiscoveryApplication} from '@healthcatalyst/cashmere';
 })
 export class NavbarAppSwitcherExampleComponent {
     username = 'Christine K.';
-    navIcon: HcIcon = {fontSet: "hc-icons", fontIcon: "hci-catalyst-logo", fontSize: 37};
+    navIcon: HcIcon = {fontSet: "hc-icons", fontIcon: "icon-catalyst-logo", fontSize: 37};
     switcherSelection = "None";
 
     /* These values should match what was registered with the discovery service. We're using Atlas as an example here. */

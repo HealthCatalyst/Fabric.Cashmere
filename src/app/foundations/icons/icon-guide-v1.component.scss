@@ -1,13 +1,27 @@
 @import 'scss/colors';
 
-.icon-container {
+.ico-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 30px;
 }
 
-.icon-example {
+.chip-note {
+    margin: -16px -5px -5px -5px;
+    display: flex;
+
+    .chip-inner {
+        display: block;
+        width: 100%;
+        padding: 4px 0;
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.ico-example {
     display: flex;
     width: 170px;
     height: 120px;
@@ -42,6 +56,6 @@
     }
 }
 
-.icon-left {
+.hc-icon-left {
     margin-right: 10px;
 }

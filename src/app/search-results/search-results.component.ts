@@ -48,11 +48,11 @@ export class SearchResultsComponent implements AfterViewInit {
     });
 
     searchIcons = {
-        components: {icon: 'fa-code'},
-        guides: {icon: 'fa-graduation-cap'},
-        foundations: {icon: 'fa-gears'},
-        content: {icon: 'fa-file-lines'},
-        analytics: {icon: 'fa-chart-bar'}
+        components: {icon: 'icon-code'},
+        guides: {icon: 'icon-grad'},
+        foundations: {icon: 'icon-cogs'},
+        content: {icon: 'icon-file-lines'},
+        analytics: {icon: 'icon-chart-bar'}
     };
 
     @HostListener('window:resize')

@@ -3,12 +3,12 @@ import {SectionService} from '../../shared/section.service';
 import {BaseDemoComponent} from '../../shared/base-demo.component';
 
 @Component({
-    selector: 'hc-icon-guide',
-    templateUrl: './icon-guide.component.html',
-    styleUrls: ['./icon-guide.component.scss'],
+    selector: 'hc-icon-guide-v1',
+    templateUrl: './icon-guide-v1.component.html',
+    styleUrls: ['./icon-guide-v1.component.scss'],
     standalone: false
 })
-export class IconGuideComponent extends BaseDemoComponent {
+export class IconGuideV1Component extends BaseDemoComponent {
     constructor(sectionService: SectionService) {
         super(sectionService);
     }

@@ -13,20 +13,20 @@ Add `.subnav` class to the root element with an `<ol>` element with `.breadcrumb
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <a href="/foundations/breadcrumbs#">First</a>
-            <i class="fa-solid fa-chevron-right breadcrumb-arrow"></i>
+            <i class="icon-chev-right breadcrumb-arrow"></i>
         </li>
         <li class="breadcrumb-item">
             <a href="/foundations/breadcrumbs#">Second</a>
-            <i class="fa-solid fa-chevron-right breadcrumb-arrow"></i>
+            <i class="icon-chev-right breadcrumb-arrow"></i>
         </li>
         <li class="breadcrumb-item">
             <span>Third</span>
-            <i class="fa-solid fa-chevron-right breadcrumb-arrow"></i>
+            <i class="icon-chev-right breadcrumb-arrow"></i>
         </li>
     </ol>
     <div class="breadcrumb-responsive-container">
         <a class="breadcrumb-back-button">
-            <i class="fa-solid fa-chevron-left"></i>
+            <i class="icon-chev-left"></i>
             <span>Back</span>
         </a>
     </div>
@@ -39,20 +39,20 @@ Add `.subnav` class to the root element with an `<ol>` element with `.breadcrumb
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
             <a href="/foundations/breadcrumbs#">First</a>
-            <i class="fa-solid fa-chevron-right breadcrumb-arrow"></i>
+            <i class="icon-chev-right breadcrumb-arrow"></i>
         </li>
         <li class="breadcrumb-item">
             <a href="/foundations/breadcrumbs#">Second</a>
-            <i class="fa-solid fa-chevron-right breadcrumb-arrow"></i>
+            <i class="icon-chev-right breadcrumb-arrow"></i>
         </li>
         <li class="breadcrumb-item">
             <span>Third</span>
-            <i class="fa-solid fa-chevron-right breadcrumb-arrow"></i>
+            <i class="icon-chev-right breadcrumb-arrow"></i>
         </li>
     </ol>
     <div class="breadcrumb-responsive-container">
         <a class="breadcrumb-back-button">
-            <i class="fa-solid fa-chevron-left"></i>
+            <i class="icon-chev-left"></i>
             <span>Back</span>
         </a>
     </div>

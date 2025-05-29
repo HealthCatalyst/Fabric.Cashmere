@@ -23,12 +23,12 @@ export class StepperOverviewExampleComponent implements OnInit {
     ngOnInit(): void {
         // To use with a router, add a `routerLink` to each step
         this.progressSteps = [
-            {label: 'Winter', iconSet: 'fa-solid', icon: 'fa-check'},
-            {label: 'January', iconSet: 'fa-solid', icon: 'fa-check'},
+            {label: 'Winter', iconSet: 'hcicons2', icon: 'icon-check'},
+            {label: 'January', iconSet: 'hcicons2', icon: 'icon-check'},
             {label: 'Spring'},
             {label: 'Summer'},
-            {label: 'Fall', iconSet: 'fa-solid', icon: 'fa-lock', disabled: true},
-            {label: 'Year Round', iconSet: 'fa-solid', icon: 'fa-lock', disabled: true}
+            {label: 'Fall', iconSet: 'hcicons2', icon: 'icon-lock', disabled: true},
+            {label: 'Year Round', iconSet: 'hcicons2', icon: 'icon-lock', disabled: true}
         ];
     }
 }
