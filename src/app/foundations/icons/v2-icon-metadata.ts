@@ -21,7 +21,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate the action of adding or creating something',
         keywords: ['plus', 'create', 'new'],
         category: 'ui',
-        unicode: "\e900"
+        unicode: '\e900'
     },
     {
         name: 'ambulance',
@@ -29,7 +29,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent emergency medical services or urgent medical transportation',
         keywords: ['emergency', 'medical', 'healthcare'],
         category: 'medical',
-        unicode: "\e901"
+        unicode: '\e901'
     },
     {
         name: 'analytics',
@@ -37,7 +37,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent data analysis or insights',
         keywords: ['data', 'analysis', 'insights'],
         category: 'data & analytics',
-        unicode: "\e902"
+        unicode: '\e902'
     },
     {
         name: 'anchor',
@@ -45,7 +45,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent stability, grounding, or maritime-related concepts',
         keywords: ['marine', 'ship', 'boat'],
         category: 'other symbols',
-        unicode: "\e903"
+        unicode: '\e903'
     },
     {
         name: 'app card',
@@ -53,7 +53,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an application card or tile',
         keywords: ['application', 'card', 'tile'],
         category: 'ui',
-        unicode: "\e904"
+        unicode: '\e904'
     },
     {
         name: 'apple',
@@ -61,7 +61,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent health, nutrition, or educational concepts',
         keywords: ['fruit', 'food', 'healthy'],
         category: 'other symbols',
-        unicode: "\e905"
+        unicode: '\e905'
     },
     {
         name: 'archive',
@@ -69,7 +69,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent archiving, removing, or retiring an item but keeping it recoverable',
         keywords: ['storage', 'files', 'soft delete'],
         category: 'files & folders',
-        unicode: "\e906"
+        unicode: '\e906'
     },
     {
         name: 'arrow-down',
@@ -77,7 +77,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate downward movement or decreasing values',
         keywords: ['movement', 'direction', 'down'],
         category: 'arrows',
-        unicode: "\e908"
+        unicode: '\e908'
     },
     {
         name: 'arrow-left',
@@ -85,7 +85,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate leftward movement or navigation to previous items',
         keywords: ['movement', 'direction', 'left'],
         category: 'arrows',
-        unicode: "\e90a"
+        unicode: '\e90a'
     },
     {
         name: 'arrow-right',
@@ -93,7 +93,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate rightward movement or navigation to next items',
         keywords: ['movement', 'direction', 'right'],
         category: 'arrows',
-        unicode: "\e90c"
+        unicode: '\e90c'
     },
     {
         name: 'arrow-up',
@@ -101,7 +101,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate upward movement or increasing values',
         keywords: ['movement', 'direction', 'up'],
         category: 'arrows',
-        unicode: "\e910"
+        unicode: '\e910'
     },
     {
         name: 'arrow-down-alt',
@@ -109,7 +109,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Alternative style arrow icon to indicate downward movement or decreasing values',
         keywords: ['movement', 'direction', 'down'],
         category: 'arrows',
-        unicode: "\e907"
+        unicode: '\e907'
     },
     {
         name: 'arrow-left-alt',
@@ -117,7 +117,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Alternative style arrow icon to indicate leftward movement or previous navigation',
         keywords: ['movement', 'direction', 'left'],
         category: 'arrows',
-        unicode: "\e909"
+        unicode: '\e909'
     },
     {
         name: 'arrow-right-alt',
@@ -125,7 +125,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Alternative style arrow icon to indicate rightward movement or next navigation',
         keywords: ['movement', 'direction', 'right'],
         category: 'arrows',
-        unicode: "\e90b"
+        unicode: '\e90b'
     },
     {
         name: 'arrow-up-alt',
@@ -133,7 +133,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Alternative style arrow icon to indicate upward movement or increasing values',
         keywords: ['movement', 'direction', 'up'],
         category: 'arrows',
-        unicode: "\e90f"
+        unicode: '\e90f'
     },
     {
         name: 'arrow-turn-down-left',
@@ -141,7 +141,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate a return or back action with a downward emphasis',
         keywords: ['movement', 'direction', 'down-left'],
         category: 'arrows',
-        unicode: "\e90d"
+        unicode: '\e90d'
     },
     {
         name: 'arrow-turn-down-right',
@@ -149,7 +149,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate drilling down or going deeper into a specific area',
         keywords: ['movement', 'direction', 'enter'],
         category: 'arrows',
-        unicode: "\e90e"
+        unicode: '\e90e'
     },
     {
         name: 'atom',
@@ -157,7 +157,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent scientific concepts, research, or atomic/molecular structures',
         keywords: ['science', 'molecule', 'ai'],
         category: 'medical',
-        unicode: "\e911"
+        unicode: '\e911'
     },
     {
         name: 'avg',
@@ -165,7 +165,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent average or mean values in data analysis',
         keywords: ['average', 'mean', 'data'],
         category: 'data & analytics',
-        unicode: "\e912"
+        unicode: '\e912'
     },
     {
         name: 'baby-carriage',
@@ -173,7 +173,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent childcare, pediatrics, or family-related concepts',
         keywords: ['baby', 'child', 'parenting'],
         category: 'other symbols',
-        unicode: "\e913"
+        unicode: '\e913'
     },
     {
         name: 'bacterium',
@@ -181,7 +181,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent microbiology, infection, or bacterial concepts in healthcare',
         keywords: ['bacteria', 'germs', 'microorganism'],
         category: 'medical',
-        unicode: "\e914"
+        unicode: '\e914'
     },
     {
         name: 'ban',
@@ -189,7 +189,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate a disabled action, or a logical exclusion',
         keywords: ['exclude', 'forbid', 'disabled'],
         category: 'ui',
-        unicode: "\e915"
+        unicode: '\e915'
     },
     {
         name: 'baseball-field',
@@ -197,7 +197,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent sports facilities or athletic venues',
         keywords: ['sports', 'play', 'game'],
         category: 'other symbols',
-        unicode: "\e916"
+        unicode: '\e916'
     },
     {
         name: 'baseball',
@@ -205,7 +205,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent sports, games, or recreational activities',
         keywords: ['sports', 'play', 'game'],
         category: 'other symbols',
-        unicode: "\e917"
+        unicode: '\e917'
     },
     {
         name: 'bed-pulse',
@@ -213,7 +213,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent patient monitoring or vital signs in a medical setting',
         keywords: ['hospital', 'medical', 'vitals'],
         category: 'medical',
-        unicode: "\e918"
+        unicode: '\e918'
     },
     {
         name: 'bed',
@@ -221,7 +221,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent hospital beds, inpatient care, or accommodation',
         keywords: ['hospital', 'patient', 'sleep'],
         category: 'medical',
-        unicode: "\e919"
+        unicode: '\e919'
     },
     {
         name: 'bell-o',
@@ -229,7 +229,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a notification',
         keywords: ['notifications', 'alert', 'reminder'],
         category: 'ui',
-        unicode: "\e91a"
+        unicode: '\e91a'
     },
     {
         name: 'bell-slash',
@@ -237,7 +237,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate notification(s) that are muted or disabled',
         keywords: ['notifications', 'mute', 'disabled'],
         category: 'ui',
-        unicode: "\e91b"
+        unicode: '\e91b'
     },
     {
         name: 'bell',
@@ -245,7 +245,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a notification',
         keywords: ['notifications', 'alert', 'reminder'],
         category: 'ui',
-        unicode: "\e91c"
+        unicode: '\e91c'
     },
     {
         name: 'bicycle',
@@ -253,7 +253,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent transportation, fitness, or recreational activities',
         keywords: ['transportation', 'bike', 'exercise'],
         category: 'other symbols',
-        unicode: "\e91d"
+        unicode: '\e91d'
     },
     {
         name: 'biohazard',
@@ -261,7 +261,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent biological hazards or dangerous medical materials',
         keywords: ['hazard', 'danger', 'warning'],
         category: 'medical',
-        unicode: "\e91e"
+        unicode: '\e91e'
     },
     {
         name: 'bolt',
@@ -269,7 +269,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent energy, power, or quick actions',
         keywords: ['speed', 'power', 'action'],
         category: 'nature',
-        unicode: "\e91f"
+        unicode: '\e91f'
     },
     {
         name: 'bone',
@@ -277,7 +277,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent orthopedics, skeletal system, or bone-related medical concepts',
         keywords: ['anatomy', 'healthcare', 'skeleton'],
         category: 'medical',
-        unicode: "\e920"
+        unicode: '\e920'
     },
     {
         name: 'book-bookmark',
@@ -285,7 +285,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent saved documentation, guides, or educational materials',
         keywords: ['read', 'education', 'docs'],
         category: 'ui',
-        unicode: "\e921"
+        unicode: '\e921'
     },
     {
         name: 'book',
@@ -293,7 +293,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent documentation, guides, or educational materials',
         keywords: ['read', 'education', 'docs'],
         category: 'ui',
-        unicode: "\e922"
+        unicode: '\e922'
     },
     {
         name: 'bookmark',
@@ -301,7 +301,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent saved items or important references',
         keywords: ['save', 'mark', 'education'],
         category: 'ui',
-        unicode: "\e923"
+        unicode: '\e923'
     },
     {
         name: 'brain',
@@ -309,7 +309,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent neurology, mental health, or cognitive functions',
         keywords: ['anatomy', 'healthcare', 'smart'],
         category: 'medical',
-        unicode: "\e924"
+        unicode: '\e924'
     },
     {
         name: 'bridge',
@@ -317,7 +317,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent connections, infrastructure, or linking concepts',
         keywords: ['construction', 'connect', 'structure'],
         category: 'other symbols',
-        unicode: "\e925"
+        unicode: '\e925'
     },
     {
         name: 'brush',
@@ -325,7 +325,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent customization, design, or artistic tools',
         keywords: ['art', 'design', 'paint'],
         category: 'tools',
-        unicode: "\e926"
+        unicode: '\e926'
     },
     {
         name: 'bug',
@@ -333,7 +333,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent software issues, defects, or system problems',
         keywords: ['error', 'issue', 'problem'],
         category: 'nature',
-        unicode: "\e927"
+        unicode: '\e927'
     },
     {
         name: 'building-columns',
@@ -341,7 +341,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent institutions, organizations, or official buildings',
         keywords: ['library', 'building', 'structure'],
         category: 'other symbols',
-        unicode: "\e928"
+        unicode: '\e928'
     },
     {
         name: 'building',
@@ -349,7 +349,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent businesses, offices, or physical locations',
         keywords: ['structure', 'office', 'company'],
         category: 'other symbols',
-        unicode: "\e929"
+        unicode: '\e929'
     },
     {
         name: 'bullhorn',
@@ -357,7 +357,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an announcement or alert',
         keywords: ['announcement', 'information', 'alert'],
         category: 'other symbols',
-        unicode: "\e92a"
+        unicode: '\e92a'
     },
     {
         name: 'cake',
@@ -365,7 +365,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a birthday/birthdate',
         keywords: ['birthday', 'celebration', 'dessert'],
         category: 'other symbols',
-        unicode: "\e92b"
+        unicode: '\e92b'
     },
     {
         name: 'calculate',
@@ -373,7 +373,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent calculation or math',
         keywords: ['math', 'numbers', 'science'],
         category: 'data & analytics',
-        unicode: "\e92c"
+        unicode: '\e92c'
     },
     {
         name: 'calendar-clock-add',
@@ -381,7 +381,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent scheduling or adding an event',
         keywords: ['time', 'schedule', 'event'],
         category: 'date & time',
-        unicode: "\e92d"
+        unicode: '\e92d'
     },
     {
         name: 'calendar-clock',
@@ -389,7 +389,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a date and time',
         keywords: ['datetime', 'schedule', 'event'],
         category: 'date & time',
-        unicode: "\e92e"
+        unicode: '\e92e'
     },
     {
         name: 'calendar-edit',
@@ -397,15 +397,15 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent editing a scheduled event',
         keywords: ['schedule', 'event', 'edit'],
         category: 'date & time',
-        unicode: "\e92f"
+        unicode: '\e92f'
     },
     {
         name: 'calendar-heart',
         icon: 'icon-calendar-heart',
-        description: 'Use to represent a special date, also a measure of type \'episode\'',
+        description: 'Use to represent a special date, also a measure of type "episode"',
         keywords: ['episode', 'date', 'event'],
         category: 'date & time',
-        unicode: "\e930"
+        unicode: '\e930'
     },
     {
         name: 'calendar',
@@ -413,7 +413,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a date or event',
         keywords: ['date', 'event', 'schedule'],
         category: 'date & time',
-        unicode: "\e931"
+        unicode: '\e931'
     },
     {
         name: 'camera',
@@ -421,7 +421,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent image capture, photography, or visual media',
         keywords: ['photography', 'photo', 'image'],
         category: 'other symbols',
-        unicode: "\e932"
+        unicode: '\e932'
     },
     {
         name: 'car',
@@ -429,7 +429,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent transportation, travel, or automotive concepts',
         keywords: ['vehicle', 'transportation', 'drive'],
         category: 'other symbols',
-        unicode: "\e933"
+        unicode: '\e933'
     },
     {
         name: 'caret-down',
@@ -437,7 +437,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for minimal dropdowns',
         keywords: ['dropdown', 'expand', 'direction'],
         category: 'arrows',
-        unicode: "\e934"
+        unicode: '\e934'
     },
     {
         name: 'caret-left',
@@ -445,7 +445,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for minimal navigation elements pointing left',
         keywords: ['direction', 'left', 'arrow'],
         category: 'arrows',
-        unicode: "\e935"
+        unicode: '\e935'
     },
     {
         name: 'caret-right',
@@ -453,7 +453,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for minimal navigation elements pointing right',
         keywords: ['direction', 'right', 'arrow'],
         category: 'arrows',
-        unicode: "\e936"
+        unicode: '\e936'
     },
     {
         name: 'caret-up',
@@ -461,7 +461,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for minimal navigation elements pointing up',
         keywords: ['direction', 'up', 'arrow'],
         category: 'arrows',
-        unicode: "\e937"
+        unicode: '\e937'
     },
     {
         name: 'change-orientation-bottom',
@@ -469,7 +469,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent changing layout orientation to bottom alignment',
         keywords: ['rotate', 'reorient', 'bottom'],
         category: 'vitalware',
-        unicode: "\e938"
+        unicode: '\e938'
     },
     {
         name: 'change-orientation-side',
@@ -477,7 +477,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent changing layout orientation to side alignment',
         keywords: ['rotate', 'reorient', 'side'],
         category: 'vitalware',
-        unicode: "\e939"
+        unicode: '\e939'
     },
     {
         name: 'chart-area',
@@ -485,7 +485,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent area charts or cumulative data visualization',
         keywords: ['analytics', 'data', 'visualization'],
         category: 'data & analytics',
-        unicode: "\e93a"
+        unicode: '\e93a'
     },
     {
         name: 'chart-bar-horiz',
@@ -493,7 +493,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent horizontal bar charts or comparative data visualization',
         keywords: ['analytics', 'data', 'visualization'],
         category: 'data & analytics',
-        unicode: "\e93b"
+        unicode: '\e93b'
     },
     {
         name: 'chart-bar-simple',
@@ -501,7 +501,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent basic bar charts or simple data visualization',
         keywords: ['analytics', 'data', 'visualization'],
         category: 'data & analytics',
-        unicode: "\e93c"
+        unicode: '\e93c'
     },
     {
         name: 'chart-bar',
@@ -509,7 +509,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent bar charts or categorical data visualization',
         keywords: ['analytics', 'data', 'visualization'],
         category: 'data & analytics',
-        unicode: "\e93d"
+        unicode: '\e93d'
     },
     {
         name: 'chart-line-down',
@@ -517,7 +517,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent declining trends or negative data visualization',
         keywords: ['analytics', 'data', 'visualization'],
         category: 'data & analytics',
-        unicode: "\e93e"
+        unicode: '\e93e'
     },
     {
         name: 'chart-line',
@@ -525,7 +525,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent line charts or trend visualization',
         keywords: ['analytics', 'data', 'visualization'],
         category: 'data & analytics',
-        unicode: "\e93f"
+        unicode: '\e93f'
     },
     {
         name: 'chart-pie',
@@ -533,7 +533,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent pie charts or part-to-whole data visualization',
         keywords: ['analytics', 'data', 'visualization'],
         category: 'data & analytics',
-        unicode: "\e940"
+        unicode: '\e940'
     },
     {
         name: 'chart-scatter',
@@ -541,7 +541,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a scatter plot data visualization',
         keywords: ['analytics', 'data', 'visualization'],
         category: 'data & analytics',
-        unicode: "\e941"
+        unicode: '\e941'
     },
     {
         name: 'check',
@@ -549,7 +549,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a success state or completed task',
         keywords: ['checkmark', 'ok', 'success'],
         category: 'status',
-        unicode: "\e942"
+        unicode: '\e942'
     },
     {
         name: 'chev-double-down',
@@ -557,7 +557,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate moving an item to the bottom of a list',
         keywords: ['direction', 'down', 'arrow'],
         category: 'arrows',
-        unicode: "\e943"
+        unicode: '\e943'
     },
     {
         name: 'chev-double-left',
@@ -565,7 +565,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate moving an item to the start of a list',
         keywords: ['direction', 'left', 'arrow'],
         category: 'arrows',
-        unicode: "\e944"
+        unicode: '\e944'
     },
     {
         name: 'chev-double-right',
@@ -573,7 +573,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate skipping or moving an item to the end of a list',
         keywords: ['direction', 'right', 'arrow'],
         category: 'arrows',
-        unicode: "\e945"
+        unicode: '\e945'
     },
     {
         name: 'chev-double-up',
@@ -581,7 +581,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate moving an item to the top of a list',
         keywords: ['direction', 'up', 'arrow'],
         category: 'arrows',
-        unicode: "\e946"
+        unicode: '\e946'
     },
     {
         name: 'chev-down',
@@ -589,7 +589,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for select boxes, dropdowns, and accordions',
         keywords: ['direction', 'down', 'arrow'],
         category: 'arrows',
-        unicode: "\e947"
+        unicode: '\e947'
     },
     {
         name: 'chev-left',
@@ -597,7 +597,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate moving back to the previous screen',
         keywords: ['direction', 'left', 'arrow'],
         category: 'arrows',
-        unicode: "\e948"
+        unicode: '\e948'
     },
     {
         name: 'chev-right',
@@ -605,7 +605,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for breadrumbs, and at the end of links to indicate moving to another screen',
         keywords: ['direction', 'right', 'arrow'],
         category: 'arrows',
-        unicode: "\e949"
+        unicode: '\e949'
     },
     {
         name: 'chev-up',
@@ -613,7 +613,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for open accordions and other similar elements',
         keywords: ['direction', 'up', 'arrow'],
         category: 'arrows',
-        unicode: "\e94a"
+        unicode: '\e94a'
     },
     {
         name: 'circle-cancelled',
@@ -621,7 +621,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an inactive or cancelled state',
         keywords: ['status', 'inactive', 'cancelled'],
         category: 'status',
-        unicode: "\e94b"
+        unicode: '\e94b'
     },
     {
         name: 'circle-check-ast',
@@ -629,7 +629,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an ammended success state',
         keywords: ['status', 'success', 'checkmark'],
         category: 'status',
-        unicode: "\e94c"
+        unicode: '\e94c'
     },
     {
         name: 'circle-check-o',
@@ -637,7 +637,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a success state',
         keywords: ['status', 'success', 'checkmark'],
         category: 'status',
-        unicode: "\e94d"
+        unicode: '\e94d'
     },
     {
         name: 'circle-check',
@@ -645,7 +645,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a success state',
         keywords: ['status', 'success', 'checkmark'],
         category: 'status',
-        unicode: "\e94e"
+        unicode: '\e94e'
     },
     {
         name: 'circle-close',
@@ -653,7 +653,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for closing or removing items',
         keywords: ['deactivate', 'remove', 'cancel'],
         category: 'status',
-        unicode: "\e94f"
+        unicode: '\e94f'
     },
     {
         name: 'circle-exclamation-ast',
@@ -661,7 +661,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an ammended warning/failure state',
         keywords: ['status', 'warning', 'error'],
         category: 'status',
-        unicode: "\e950"
+        unicode: '\e950'
     },
     {
         name: 'circle-exclamation',
@@ -669,7 +669,15 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a warning or error state',
         keywords: ['status', 'warning', 'error'],
         category: 'status',
-        unicode: "\e951"
+        unicode: '\e952'
+    },
+    {
+        name: 'circle-exclamation-o',
+        icon: 'icon-circle-exclamation-o',
+        description: 'Use to represent a warning or error state',
+        keywords: ['status', 'warning', 'error'],
+        category: 'status',
+        unicode: '\e951'
     },
     {
         name: 'circle-minus-o',
@@ -677,7 +685,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent zooming out or removing an item',
         keywords: ['remove', 'zoom out', 'subtract'],
         category: 'status',
-        unicode: "\e952"
+        unicode: '\e953'
     },
     {
         name: 'circle-minus',
@@ -685,7 +693,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent zooming out or removing an item',
         keywords: ['remove', 'zoom out', 'subtract'],
         category: 'status',
-        unicode: "\e953"
+        unicode: '\e954'
     },
     {
         name: 'circle-plus-o',
@@ -693,7 +701,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent zooming in or adding an item',
         keywords: ['add', 'zoom in', 'create'],
         category: 'status',
-        unicode: "\e954"
+        unicode: '\e955'
     },
     {
         name: 'circle-plus',
@@ -701,7 +709,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent zooming in or adding an item',
         keywords: ['add', 'zoom in', 'create'],
         category: 'status',
-        unicode: "\e955"
+        unicode: '\e956'
     },
     {
         name: 'circle-processing',
@@ -709,7 +717,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a busy or processing state',
         keywords: ['status', 'busy', 'loading'],
         category: 'status',
-        unicode: "\e956"
+        unicode: '\e957'
     },
     {
         name: 'circle-queued',
@@ -717,7 +725,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a queued or waiting state',
         keywords: ['status', 'waiting', 'paused'],
         category: 'status',
-        unicode: "\e957"
+        unicode: '\e958'
     },
     {
         name: 'circle-skipped',
@@ -725,7 +733,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a skipped or ignored state',
         keywords: ['status', 'missed', 'jumped'],
         category: 'status',
-        unicode: "\e958"
+        unicode: '\e959'
     },
     {
         name: 'circle-warn',
@@ -733,7 +741,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a warning state',
         keywords: ['status', 'issue', 'alert'],
         category: 'status',
-        unicode: "\e959"
+        unicode: '\e95a'
     },
     {
         name: 'city',
@@ -741,7 +749,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a metro area',
         keywords: ['urban', 'town', 'metropolis'],
         category: 'other symbols',
-        unicode: "\e95a"
+        unicode: '\e95b'
     },
     {
         name: 'clipboard-assign',
@@ -749,7 +757,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent assigning or allocating items or tasks',
         keywords: ['allocate', 'task', 'work'],
         category: 'clipboards & lists',
-        unicode: "\e95b"
+        unicode: '\e95c'
     },
     {
         name: 'clipboard-check',
@@ -757,7 +765,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a completed task or approved item',
         keywords: ['sucess', 'done', 'checkmark'],
         category: 'clipboards & lists',
-        unicode: "\e95c"
+        unicode: '\e95d'
     },
     {
         name: 'clipboard-elip',
@@ -765,7 +773,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a work item in process',
         keywords: ['pending', 'working', 'options'],
         category: 'clipboards & lists',
-        unicode: "\e95d"
+        unicode: '\e95e'
     },
     {
         name: 'clipboard-exclamation',
@@ -773,7 +781,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a work item in an error or warning state',
         keywords: ['failure', 'task', 'alert'],
         category: 'clipboards & lists',
-        unicode: "\e95e"
+        unicode: '\e95f'
     },
     {
         name: 'clipboard-heart',
@@ -781,7 +789,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a favorite or medical related work item',
         keywords: ['task', 'favorite', 'healthcare'],
         category: 'clipboards & lists',
-        unicode: "\e95f"
+        unicode: '\e960'
     },
     {
         name: 'clipboard-list',
@@ -789,7 +797,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent detailed information, note taking, or a task list',
         keywords: ['tasks', 'details', 'checklist'],
         category: 'clipboards & lists',
-        unicode: "\e960"
+        unicode: '\e961'
     },
     {
         name: 'clipboard-medical-alt',
@@ -797,7 +805,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent diagnosis, medical notes, or medical work items',
         keywords: ['task', 'notes', 'healthcare'],
         category: 'medical',
-        unicode: "\e961"
+        unicode: '\e962'
     },
     {
         name: 'clipboard-medical',
@@ -805,7 +813,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent diagnosis, medical notes, or medical work items',
         keywords: ['task', 'notes', 'healthcare'],
         category: 'medical',
-        unicode: "\e962"
+        unicode: '\e963'
     },
     {
         name: 'clipboard-search',
@@ -813,7 +821,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent reviewing work items',
         keywords: ['task', 'review'],
         category: 'clipboards & lists',
-        unicode: "\e963"
+        unicode: '\e964'
     },
     {
         name: 'clipboard-text',
@@ -821,7 +829,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent detailed information or note taking',
         keywords: ['tasks', 'details', 'checklist'],
         category: 'clipboards & lists',
-        unicode: "\e964"
+        unicode: '\e965'
     },
     {
         name: 'clipboard',
@@ -829,7 +837,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent detailed information, note taking, or a task',
         keywords: ['tasks', 'details', 'checklist'],
         category: 'clipboards & lists',
-        unicode: "\e965"
+        unicode: '\e966'
     },
     {
         name: 'clock-add',
@@ -837,7 +845,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent adding a time, schedule, or event',
         keywords: ['time', 'create', 'event'],
         category: 'date & time',
-        unicode: "\e966"
+        unicode: '\e967'
     },
     {
         name: 'clock-edit',
@@ -845,7 +853,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent managing a time, schedule, or event',
         keywords: ['time', 'change', 'event'],
         category: 'date & time',
-        unicode: "\e967"
+        unicode: '\e968'
     },
     {
         name: 'clock-slash',
@@ -853,7 +861,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a disabled time, schedule, or event',
         keywords: ['time', 'disabled', 'event'],
         category: 'date & time',
-        unicode: "\e968"
+        unicode: '\e969'
     },
     {
         name: 'clock',
@@ -861,7 +869,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a time, schedule, or event',
         keywords: ['time', 'event', 'schedule'],
         category: 'date & time',
-        unicode: "\e969"
+        unicode: '\e96a'
     },
     {
         name: 'clone',
@@ -869,7 +877,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for creating a copy of items',
         keywords: ['copy', 'duplicate', 'replicate'],
         category: 'ui',
-        unicode: "\e96a"
+        unicode: '\e96b'
     },
     {
         name: 'close',
@@ -877,7 +885,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent closing, canceling, or removing items',
         keywords: ['times', 'cancel', 'remove'],
         category: 'ui',
-        unicode: "\e96b"
+        unicode: '\e96c'
     },
     {
         name: 'cloud',
@@ -885,7 +893,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent cloud computing, storage, or weather concepts',
         keywords: ['storage', 'data', 'cloudy'],
         category: 'nature',
-        unicode: "\e96c"
+        unicode: '\e96d'
     },
     {
         name: 'code',
@@ -893,7 +901,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent programming, development, or source code',
         keywords: ['html', 'programming', 'development'],
         category: 'ui',
-        unicode: "\e96d"
+        unicode: '\e96e'
     },
     {
         name: 'cog',
@@ -901,7 +909,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent settings or configuration',
         keywords: ['gear', 'settings', 'config'],
         category: 'ui',
-        unicode: "\e96e"
+        unicode: '\e96f'
     },
     {
         name: 'cogs',
@@ -909,15 +917,15 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent settings, configuration, or a processing status',
         keywords: ['gears', 'settings', 'config'],
         category: 'ui',
-        unicode: "\e96f"
+        unicode: '\e970'
     },
     {
         name: 'comment-alt',
         icon: 'icon-comment-alt',
-        description: 'Use to represent alternative messaging or communication',
+        description: 'Use to represent messaging, comments, or communication',
         keywords: ['message', 'chat', 'text'],
         category: 'ui',
-        unicode: "\e970"
+        unicode: '\e971'
     },
     {
         name: 'comment',
@@ -925,7 +933,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent messaging, comments, or communication',
         keywords: ['message', 'chat', 'text'],
         category: 'ui',
-        unicode: "\e971"
+        unicode: '\e972'
     },
     {
         name: 'comments',
@@ -933,7 +941,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent multiple messages or group communication',
         keywords: ['messages', 'chat', 'text'],
         category: 'ui',
-        unicode: "\e972"
+        unicode: '\e973'
     },
     {
         name: 'compare',
@@ -941,7 +949,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent comparison or analysis between items',
         keywords: ['analyze', 'contrast'],
         category: 'arrows',
-        unicode: "\e973"
+        unicode: '\e974'
     },
     {
         name: 'compass',
@@ -949,7 +957,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent navigation, direction, or exploration',
         keywords: ['navigation', 'direction', 'explore'],
         category: 'other symbols',
-        unicode: "\e974"
+        unicode: '\e975'
     },
     {
         name: 'compress',
@@ -957,7 +965,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent minimizing, collapsing, or compressing content',
         keywords: ['minimize', 'collapse', 'compress'],
         category: 'arrows',
-        unicode: "\e975"
+        unicode: '\e976'
     },
     {
         name: 'construction',
@@ -965,7 +973,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent work in progress, maintenance, or development',
         keywords: ['barrier', 'block', 'warning'],
         category: 'other symbols',
-        unicode: "\e976"
+        unicode: '\e977'
     },
     {
         name: 'contacts',
@@ -973,7 +981,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent contact information, addresses, or directory listings',
         keywords: ['address', 'directory', 'people'],
         category: 'ui',
-        unicode: "\e977"
+        unicode: '\e978'
     },
     {
         name: 'copy',
@@ -981,7 +989,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent duplicating, copying, or replicating items',
         keywords: ['duplicate', 'clone', 'replicate'],
         category: 'files & folders',
-        unicode: "\e978"
+        unicode: '\e979'
     },
     {
         name: 'count',
@@ -989,7 +997,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent counting or tallying items',
         keywords: ['numbers', '123', 'numeric'],
         category: 'data & analytics',
-        unicode: "\e979"
+        unicode: '\e97a'
     },
     {
         name: 'crown',
@@ -997,7 +1005,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent royalty, leadership, or high status',
         keywords: ['king', 'queen', 'royalty'],
         category: 'other symbols',
-        unicode: "\e97a"
+        unicode: '\e97b'
     },
     {
         name: 'crutch',
@@ -1005,7 +1013,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent medical assistance, support, or recovery',
         keywords: ['healthcare', 'medical', 'injury'],
         category: 'medical',
-        unicode: "\e97b"
+        unicode: '\e97c'
     },
     {
         name: 'cube',
@@ -1013,7 +1021,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent components of EDCs (HCAT data models)',
         keywords: ['model', 'block', 'design'],
         category: 'data & analytics',
-        unicode: "\e97c"
+        unicode: '\e97d'
     },
     {
         name: 'cubes',
@@ -1021,7 +1029,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an EDC (HCAT data model)',
         keywords: ['model', 'blocks', 'design'],
         category: 'data & analytics',
-        unicode: "\e97d"
+        unicode: '\e97e'
     },
     {
         name: 'data-mart-entry',
@@ -1029,7 +1037,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent data entry, and IDEA (Ignite Data Entry Apps) in particular',
         keywords: ['database', 'input'],
         category: 'data & analytics',
-        unicode: "\e97e"
+        unicode: '\e97f'
     },
     {
         name: 'data-mart-lock',
@@ -1037,7 +1045,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent secure data storage, access control, or permissions',
         keywords: ['database', 'secure', 'permissions'],
         category: 'data & analytics',
-        unicode: "\e97f"
+        unicode: '\e980'
     },
     {
         name: 'data-mart',
@@ -1045,7 +1053,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent data marts in the Ignite ecosystem',
         keywords: ['database', 'storage'],
         category: 'data & analytics',
-        unicode: "\e980"
+        unicode: '\e981'
     },
     {
         name: 'data-profiling',
@@ -1053,7 +1061,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent data analysis, monitoring, or quality assurance',
         keywords: ['analytics', 'monitoring'],
         category: 'data & analytics',
-        unicode: "\e981"
+        unicode: '\e982'
     },
     {
         name: 'data-source-add',
@@ -1061,7 +1069,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent adding a new data source connection',
         keywords: ['database', 'ingestion', 'create'],
         category: 'data & analytics',
-        unicode: "\e982"
+        unicode: '\e983'
     },
     {
         name: 'data-source-edit',
@@ -1069,7 +1077,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to representing editing or managing a data source connection',
         keywords: ['database', 'ingestion', 'modify'],
         category: 'data & analytics',
-        unicode: "\e983"
+        unicode: '\e984'
     },
     {
         name: 'data-source',
@@ -1077,7 +1085,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent data source connections, particularly in the context of data ingestion',
         keywords: ['database', 'ingestion', 'ETL'],
         category: 'data & analytics',
-        unicode: "\e984"
+        unicode: '\e985'
     },
     {
         name: 'database-add',
@@ -1085,7 +1093,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent adding a new data source or connection',
         keywords: ['data', 'storage', 'create'],
         category: 'data & analytics',
-        unicode: "\e985"
+        unicode: '\e986'
     },
     {
         name: 'database-edit',
@@ -1093,7 +1101,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent editing or modifying a data source connection',
         keywords: ['data', 'storage', 'modify'],
         category: 'data & analytics',
-        unicode: "\e986"
+        unicode: '\e987'
     },
     {
         name: 'database-lock',
@@ -1101,7 +1109,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent secure data storage, access control, or permissions',
         keywords: ['data', 'storage', 'secure'],
         category: 'data & analytics',
-        unicode: "\e987"
+        unicode: '\e988'
     },
     {
         name: 'database-search',
@@ -1109,7 +1117,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent searching or querying data sources',
         keywords: ['data', 'storage', 'query'],
         category: 'data & analytics',
-        unicode: "\e988"
+        unicode: '\e989'
     },
     {
         name: 'database-solid',
@@ -1117,7 +1125,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a solid data source or database',
         keywords: ['data', 'storage', 'source'],
         category: 'data & analytics',
-        unicode: "\e989"
+        unicode: '\e98a'
     },
     {
         name: 'database-user',
@@ -1125,7 +1133,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent database users, administrators, or stewards',
         keywords: ['data', 'steward', 'manager'],
         category: 'data & analytics',
-        unicode: "\e98a"
+        unicode: '\e98b'
     },
     {
         name: 'database',
@@ -1133,7 +1141,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a database or data storage system. ',
         keywords: ['data', 'storage', 'source'],
         category: 'data & analytics',
-        unicode: "\e98b"
+        unicode: '\e98c'
     },
     {
         name: 'databricks',
@@ -1141,7 +1149,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'This icon represents Databricks, a cloud-based data platform',
         keywords: ['dbx', 'platform'],
         category: 'data & analytics',
-        unicode: "\e98c"
+        unicode: '\e98d'
     },
     {
         name: 'desktop',
@@ -1149,7 +1157,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a desktop computer or workstation',
         keywords: ['computer', 'workspace', 'office'],
         category: 'data & analytics',
-        unicode: "\e98d"
+        unicode: '\e98e'
     },
     {
         name: 'diagram-alt',
@@ -1157,7 +1165,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a flowchart or process diagram',
         keywords: ['flow', 'process', 'visualization'],
         category: 'data & analytics',
-        unicode: "\e98e"
+        unicode: '\e98f'
     },
     {
         name: 'diagram',
@@ -1165,7 +1173,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a flowchart or process diagram',
         keywords: ['flow', 'process', 'visualization'],
         category: 'data & analytics',
-        unicode: "\e98f"
+        unicode: '\e990'
     },
     {
         name: 'diamond',
@@ -1173,7 +1181,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent advanced features, premium content, or valuable items',
         keywords: ['advanced', 'premium', 'gem'],
         category: 'other symbols',
-        unicode: "\e990"
+        unicode: '\e991'
     },
     {
         name: 'disconnected',
@@ -1181,7 +1189,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent network issues, offline status, or broken connections',
         keywords: ['offline', 'error', 'broken'],
         category: 'data & analytics',
-        unicode: "\e991"
+        unicode: '\e992'
     },
     {
         name: 'doctor',
@@ -1189,7 +1197,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent medical professionals, healthcare providers, or physicians',
         keywords: ['nurse', 'user', 'MD'],
         category: 'medical',
-        unicode: "\e992"
+        unicode: '\e993'
     },
     {
         name: 'doctors',
@@ -1197,7 +1205,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent multiple medical professionals or healthcare teams',
         keywords: ['nurses', 'users', 'MDs'],
         category: 'medical',
-        unicode: "\e993"
+        unicode: '\e994'
     },
     {
         name: 'dollar',
@@ -1205,7 +1213,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent currency, financial matters, or monetary values',
         keywords: ['money', 'currency', 'finance'],
         category: 'other symbols',
-        unicode: "\e994"
+        unicode: '\e995'
     },
     {
         name: 'dove',
@@ -1213,7 +1221,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent peace, freedom, or spiritual concepts',
         keywords: ['bird', 'peace', 'animal'],
         category: 'nature',
-        unicode: "\e995"
+        unicode: '\e996'
     },
     {
         name: 'download',
@@ -1221,7 +1229,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent downloading, saving, or obtaining files',
         keywords: ['export', 'extract', 'save'],
         category: 'arrows',
-        unicode: "\e996"
+        unicode: '\e997'
     },
     {
         name: 'droplet',
@@ -1229,7 +1237,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent liquids, water, or color selection',
         keywords: ['water', 'liquid', 'purity'],
         category: 'nature',
-        unicode: "\e997"
+        unicode: '\e998'
     },
     {
         name: 'earth',
@@ -1237,7 +1245,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent global concepts, world-wide scope, or environmental themes',
         keywords: ['planet', 'globe', 'world'],
         category: 'nature',
-        unicode: "\e998"
+        unicode: '\e999'
     },
     {
         name: 'ellipses-v',
@@ -1245,7 +1253,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for menus with additional actions or options',
         keywords: ['menu', 'options', 'vertical'],
         category: 'ui',
-        unicode: "\e999"
+        unicode: '\e99a'
     },
     {
         name: 'ellipses',
@@ -1253,7 +1261,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for menus with additional actions or options',
         keywords: ['menu', 'options', 'horizontal'],
         category: 'ui',
-        unicode: "\e99a"
+        unicode: '\e99b'
     },
     {
         name: 'email',
@@ -1261,7 +1269,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent email, communication, or contact information',
         keywords: ['message', 'communication', 'contact'],
         category: 'ui',
-        unicode: "\e99c"
+        unicode: '\e99d'
     },
     {
         name: 'email-o',
@@ -1269,7 +1277,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent email or message that has been read',
         keywords: ['email', 'read', 'communication'],
         category: 'ui',
-        unicode: "\e99b"
+        unicode: '\e99c'
     },
     {
         name: 'empty',
@@ -1277,7 +1285,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an empty state or no data',
         keywords: ['blank', 'missing', 'not found'],
         category: 'ui',
-        unicode: "\e99d"
+        unicode: '\e99e'
     },
     {
         name: 'error',
@@ -1285,7 +1293,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an error or issue',
         keywords: ['alert', 'issue', 'problem'],
         category: 'status',
-        unicode: "\e99e"
+        unicode: '\e99f'
     },
     {
         name: 'expand',
@@ -1293,15 +1301,15 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent expanding or maximizing a window',
         keywords: ['maximize', 'fullscreen'],
         category: 'arrows',
-        unicode: "\e99f"
+        unicode: '\e9a0'
     },
     {
         name: 'external-link',
         icon: 'icon-external-link',
         description: 'Use to represent a link to an external resource',
         keywords: ['navigate', 'website', 'hyperlink'],
-        category: 'ui',
-        unicode: "\e9a0"
+        category: 'arrows',
+        unicode: '\e9a1'
     },
     {
         name: 'eye-slash',
@@ -1309,7 +1317,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a hidden or invisible item',
         keywords: ['hidden', 'invisible', 'private'],
         category: 'ui',
-        unicode: "\e9a1"
+        unicode: '\e9a2'
     },
     {
         name: 'eye',
@@ -1317,7 +1325,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a visible or visible item',
         keywords: ['visible', 'see', 'view'],
         category: 'ui',
-        unicode: "\e9a2"
+        unicode: '\e9a3'
     },
     {
         name: 'fan',
@@ -1325,7 +1333,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a support system or fan base',
         keywords: ['sports', 'cheer', 'support'],
         category: 'other symbols',
-        unicode: "\e9a3"
+        unicode: '\e9a4'
     },
     {
         name: 'feather',
@@ -1333,7 +1341,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a feather or light, soft item',
         keywords: ['bird', 'light', 'soft'],
         category: 'nature',
-        unicode: "\e9a4"
+        unicode: '\e9a5'
     },
     {
         name: 'field',
@@ -1341,7 +1349,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent data fields, form inputs, or database columns',
         keywords: ['data', 'column', 'attribute'],
         category: 'data & analytics',
-        unicode: "\e9a5"
+        unicode: '\e9a6'
     },
     {
         name: 'file-lines',
@@ -1349,7 +1357,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent text documents or files with content',
         keywords: ['document', 'text', 'content'],
         category: 'files & folders',
-        unicode: "\e9a6"
+        unicode: '\e9a7'
     },
     {
         name: 'file',
@@ -1357,7 +1365,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent generic files or documents',
         keywords: ['document', 'attachment', 'information'],
         category: 'files & folders',
-        unicode: "\e9a7"
+        unicode: '\e9a8'
     },
     {
         name: 'filters',
@@ -1365,7 +1373,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent filters for a data grid or table',
         keywords: ['sliders', 'settings', 'refine'],
         category: 'ui',
-        unicode: "\e9a8"
+        unicode: '\e9a9'
     },
     {
         name: 'fire',
@@ -1373,7 +1381,15 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent trending items, hot topics, or emergency situations',
         keywords: ['heat', 'flame', 'burn'],
         category: 'nature',
-        unicode: "\e9a9"
+        unicode: '\e9aa'
+    },
+    {
+        name: 'fish',
+        icon: 'icon-fish',
+        description: 'Use to represent a fish, aquatic life, or seafood',
+        keywords: ['fish', 'aquatic', 'seafood'],
+        category: 'nature',
+        unicode: '\e9ab'
     },
     {
         name: 'flag',
@@ -1381,7 +1397,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent notifications, markers, or important items',
         keywords: ['issue', 'milestone', 'banner'],
         category: 'other symbols',
-        unicode: "\e9aa"
+        unicode: '\e9ac'
     },
     {
         name: 'folder-bookmark',
@@ -1389,7 +1405,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'In a measures context, this icon represent a measures program',
         keywords: ['program', 'collection', 'directory'],
         category: 'files & folders',
-        unicode: "\e9ab"
+        unicode: '\e9ad'
     },
     {
         name: 'folder-home',
@@ -1397,7 +1413,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'This icon represents a home folder or directory',
         keywords: ['directory', 'user home'],
         category: 'files & folders',
-        unicode: "\e9ac"
+        unicode: '\e9ae'
     },
     {
         name: 'folder-move',
@@ -1405,7 +1421,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent moving or transferring a folder',
         keywords: ['directory', 'transfer', 'relocate'],
         category: 'files & folders',
-        unicode: "\e9ad"
+        unicode: '\e9af'
     },
     {
         name: 'folder-new',
@@ -1413,7 +1429,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent creating a new folder',
         keywords: ['directory', 'create'],
         category: 'files & folders',
-        unicode: "\e9ae"
+        unicode: '\e9b0'
     },
     {
         name: 'folder-open',
@@ -1421,7 +1437,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'This icon can be used to represent an empty state',
         keywords: ['directory', 'empty', 'missing'],
         category: 'files & folders',
-        unicode: "\e9af"
+        unicode: '\e9b1'
     },
     {
         name: 'folder-shared',
@@ -1429,7 +1445,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a shared folder or directory',
         keywords: ['directory', 'collaborate'],
         category: 'files & folders',
-        unicode: "\e9b0"
+        unicode: '\e9b2'
     },
     {
         name: 'folder-shortcut',
@@ -1437,7 +1453,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a folder shortcut or linked directory',
         keywords: ['directory', 'symlink'],
         category: 'files & folders',
-        unicode: "\e9b1"
+        unicode: '\e9b3'
     },
     {
         name: 'folder-tree',
@@ -1445,7 +1461,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a file hierarchy',
         keywords: ['directory', 'hierarchy', 'file structure'],
         category: 'files & folders',
-        unicode: "\e9b2"
+        unicode: '\e9b4'
     },
     {
         name: 'folder-user',
@@ -1453,7 +1469,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a user-owned folder',
         keywords: ['directory', 'home'],
         category: 'files & folders',
-        unicode: "\e9b3"
+        unicode: '\e9b5'
     },
     {
         name: 'folder',
@@ -1461,7 +1477,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent directories, collections, or file organization',
         keywords: ['directory', 'files', 'documents'],
         category: 'files & folders',
-        unicode: "\e9b4"
+        unicode: '\e9b6'
     },
     {
         name: 'formula',
@@ -1469,7 +1485,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent mathematical equations, calculations, or formulas',
         keywords: ['math', 'calculation', 'equation'],
         category: 'data & analytics',
-        unicode: "\e9b5"
+        unicode: '\e9b7'
     },
     {
         name: 'fullscreen-enter',
@@ -1477,7 +1493,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent entering fullscreen mode or maximizing a window',
         keywords: ['expand', 'maximize'],
         category: 'ui',
-        unicode: "\e9b6"
+        unicode: '\e9b8'
     },
     {
         name: 'fullscreen-exit',
@@ -1485,7 +1501,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent exiting fullscreen mode or restoring window size',
         keywords: ['collapse', 'minimize'],
         category: 'ui',
-        unicode: "\e9b7"
+        unicode: '\e9b9'
     },
     {
         name: 'funnel',
@@ -1493,7 +1509,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent filtering, refining, or narrowing down results',
         keywords: ['filter', 'refine'],
         category: 'tools',
-        unicode: "\e9b8"
+        unicode: '\e9ba'
     },
     {
         name: 'gauge',
@@ -1501,7 +1517,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a measure or performance metric',
         keywords: ['speed', 'performance', 'measure'],
         category: 'data & analytics',
-        unicode: "\e9b9"
+        unicode: '\e9bb'
     },
     {
         name: 'gem',
@@ -1509,7 +1525,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent premium features, valuable items, or high-quality content',
         keywords: ['jewel', 'precious', 'valuable'],
         category: 'other symbols',
-        unicode: "\e9ba"
+        unicode: '\e9bc'
     },
     {
         name: 'genome',
@@ -1517,7 +1533,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent genetic information, DNA analysis, or genomic data',
         keywords: ['DNA', 'genetics', 'biology'],
         category: 'medical',
-        unicode: "\e9bb"
+        unicode: '\e9bd'
     },
     {
         name: 'gift',
@@ -1525,7 +1541,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent new software features or updates',
         keywords: ['present', 'new', 'features'],
         category: 'other symbols',
-        unicode: "\e9bc"
+        unicode: '\e9be'
     },
     {
         name: 'globe-checkmark',
@@ -1533,7 +1549,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a global or public status',
         keywords: ['global', 'public', 'published'],
         category: 'ui',
-        unicode: "\e9bd"
+        unicode: '\e9bf'
     },
     {
         name: 'globe-up-arrow',
@@ -1541,7 +1557,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent the action of publishing or sharing an item globally',
         keywords: ['global', 'publish', 'share'],
         category: 'ui',
-        unicode: "\e9be"
+        unicode: '\e9c0'
     },
     {
         name: 'globe',
@@ -1549,7 +1565,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a global or public location',
         keywords: ['global', 'public', 'published'],
         category: 'ui',
-        unicode: "\e9bf"
+        unicode: '\e9c1'
     },
     {
         name: 'goal',
@@ -1557,7 +1573,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a target or objective',
         keywords: ['target', 'objective'],
         category: 'other symbols',
-        unicode: "\e9c0"
+        unicode: '\e9c2'
     },
     {
         name: 'grad',
@@ -1565,7 +1581,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent learning, expert knowledge, or academic achievement',
         keywords: ['gradution', 'education', 'expert'],
         category: 'other symbols',
-        unicode: "\e9c1"
+        unicode: '\e9c3'
     },
     {
         name: 'grid-sm',
@@ -1573,7 +1589,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a compact grid view or small thumbnail layout',
         keywords: ['categories', 'apps'],
         category: 'ui',
-        unicode: "\e9c2"
+        unicode: '\e9c4'
     },
     {
         name: 'grid',
@@ -1581,7 +1597,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to to represent the app switcher',
         keywords: ['categories', 'apps'],
         category: 'ui',
-        unicode: "\e9c3"
+        unicode: '\e9c5'
     },
     {
         name: 'grip-resize',
@@ -1589,7 +1605,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use on elements that can be resized',
         keywords: ['drag', 'handle'],
         category: 'ui',
-        unicode: "\e9c4"
+        unicode: '\e9c6'
     },
     {
         name: 'grip',
@@ -1597,7 +1613,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use on elements that can be move or reordered via drag and drop functionality',
         keywords: ['drag', 'handle', 'move'],
         category: 'ui',
-        unicode: "\e9c5"
+        unicode: '\e9c7'
     },
     {
         name: 'group',
@@ -1605,7 +1621,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent teams, user groups, or collaborative settings',
         keywords: ['users', 'people', 'team'],
         category: 'users',
-        unicode: "\e9c6"
+        unicode: '\e9c8'
     },
     {
         name: 'guitar',
@@ -1613,7 +1629,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent music, entertainment, or artistic activities',
         keywords: ['music', 'instrument', 'strings'],
         category: 'other symbols',
-        unicode: "\e9c7"
+        unicode: '\e9c9'
     },
     {
         name: 'hamburger',
@@ -1621,7 +1637,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent menu navigation or food-related content',
         keywords: ['menu', 'food', 'meal'],
         category: 'other symbols',
-        unicode: "\e9c8"
+        unicode: '\e9ca'
     },
     {
         name: 'hammer',
@@ -1629,7 +1645,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent tools, construction, or system maintenance',
         keywords: ['tool', 'construction', 'repair'],
         category: 'tools',
-        unicode: "\e9c9"
+        unicode: '\e9cb'
     },
     {
         name: 'hand-holding-heart',
@@ -1637,7 +1653,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent care and compassion',
         keywords: ['healthcare', 'support', 'charity'],
         category: 'medical',
-        unicode: "\e9ca"
+        unicode: '\e9cc'
     },
     {
         name: 'hand-holding-plus',
@@ -1645,7 +1661,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent support and growth',
         keywords: ['healthcare', 'support', 'medical'],
         category: 'medical',
-        unicode: "\e9cb"
+        unicode: '\e9cd'
     },
     {
         name: 'handshake',
@@ -1653,7 +1669,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent agreement, cooperation, or partnership',
         keywords: ['agreement', 'cooperate', 'partnership'],
         category: 'other symbols',
-        unicode: "\e9cc"
+        unicode: '\e9ce'
     },
     {
         name: 'hdd',
@@ -1661,7 +1677,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent storage devices, hard drives, or system resources',
         keywords: ['storage', 'system', 'computer'],
         category: 'data & analytics',
-        unicode: "\e9cd"
+        unicode: '\e9cf'
     },
     {
         name: 'headphones',
@@ -1669,7 +1685,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent audio, sound, or listening devices',
         keywords: ['audio', 'sound', 'support'],
         category: 'other symbols',
-        unicode: "\e9ce"
+        unicode: '\e9d0'
     },
     {
         name: 'heart-exclamation',
@@ -1677,7 +1693,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'In a measures context, this icon represents a care gap',
         keywords: ['healthcare', 'alert', 'warning'],
         category: 'medical',
-        unicode: "\e9cf"
+        unicode: '\e9d1'
     },
     {
         name: 'heart-o',
@@ -1685,7 +1701,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a favorite item',
         keywords: ['healthcare', 'medical', 'cardiology'],
         category: 'medical',
-        unicode: "\e9d0"
+        unicode: '\e9d2'
     },
     {
         name: 'heart-plus',
@@ -1693,7 +1709,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'In a measures context, this icon represents a closed care gap',
         keywords: ['healthcare', 'support', 'medical'],
         category: 'medical',
-        unicode: "\e9d1"
+        unicode: '\e9d3'
     },
     {
         name: 'heart',
@@ -1701,7 +1717,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a favorite item',
         keywords: ['healthcare', 'medical', 'cardiology'],
         category: 'medical',
-        unicode: "\e9d2"
+        unicode: '\e9d4'
     },
     {
         name: 'help',
@@ -1709,7 +1725,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent contextual help',
         keywords: ['information', 'details', 'guidance'],
         category: 'ui',
-        unicode: "\e9d3"
+        unicode: '\e9d5'
     },
     {
         name: 'highlighter-line',
@@ -1717,15 +1733,15 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to suggest findings, evidence, or research',
         keywords: ['evidence', 'mark', 'pen'],
         category: 'tools',
-        unicode: "\e9d4"
+        unicode: '\e9d6'
     },
     {
         name: 'history',
         icon: 'icon-history',
         description: 'Use to represent a timeline, past, or record',
         keywords: ['timeline', 'past', 'record'],
-        category: 'ui',
-        unicode: "\e9d5"
+        category: 'arrows',
+        unicode: '\e9d7'
     },
     {
         name: 'home',
@@ -1733,7 +1749,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Could represent a home page, dashboard, or landing page',
         keywords: ['house', 'building', 'residence'],
         category: 'ui',
-        unicode: "\e9d6"
+        unicode: '\e9d8'
     },
     {
         name: 'hospital-alt',
@@ -1741,7 +1757,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a hospital, medical center, or healthcare facility',
         keywords: ['healthcare', 'medical', 'facility'],
         category: 'medical',
-        unicode: "\e9d7"
+        unicode: '\e9d9'
     },
     {
         name: 'hospital',
@@ -1749,7 +1765,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a hospital, medical center, or healthcare facility',
         keywords: ['healthcare', 'medical', 'facility'],
         category: 'medical',
-        unicode: "\e9d8"
+        unicode: '\e9da'
     },
     {
         name: 'id-badge',
@@ -1757,7 +1773,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'In a security context, this icon represents a user role',
         keywords: ['role', 'profile'],
         category: 'users',
-        unicode: "\e9d9"
+        unicode: '\e9db'
     },
     {
         name: 'image',
@@ -1765,7 +1781,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a picture, photo, or graphic',
         keywords: ['picture', 'photo', 'graphic'],
         category: 'ui',
-        unicode: "\e9da"
+        unicode: '\e9dc'
     },
     {
         name: 'import-file',
@@ -1773,7 +1789,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent importing a file or data',
         keywords: ['upload', 'data', 'transform'],
         category: 'files & folders',
-        unicode: "\e9db"
+        unicode: '\e9dd'
     },
     {
         name: 'info',
@@ -1781,7 +1797,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for contextual help',
         keywords: ['information', 'details', 'help'],
         category: 'ui',
-        unicode: "\e9dc"
+        unicode: '\e9de'
     },
     {
         name: 'key',
@@ -1789,7 +1805,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent security or access controls',
         keywords: ['security', 'access', 'permissions'],
         category: 'ui',
-        unicode: "\e9dd"
+        unicode: '\e9df'
     },
     {
         name: 'keyboard',
@@ -1797,7 +1813,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a keyboard, input, or typing',
         keywords: ['input', 'typing', 'computer'],
         category: 'data & analytics',
-        unicode: "\e9de"
+        unicode: '\e9e0'
     },
     {
         name: 'lab',
@@ -1805,7 +1821,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent medical lab tests',
         keywords: ['microscope', 'science', 'research'],
         category: 'medical',
-        unicode: "\e9df"
+        unicode: '\e9e1'
     },
     {
         name: 'laptop',
@@ -1813,7 +1829,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a computer, device, or software',
         keywords: ['computer', 'app', 'software'],
         category: 'data & analytics',
-        unicode: "\e9e0"
+        unicode: '\e9e2'
     },
     {
         name: 'layers',
@@ -1821,7 +1837,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a stack of layers, levels, or hierarchy',
         keywords: ['stack', 'levels', 'hierarchy'],
         category: 'ui',
-        unicode: "\e9e1"
+        unicode: '\e9e3'
     },
     {
         name: 'life-saver',
@@ -1829,7 +1845,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a life-saving device, medical emergency, or rescue operation',
         keywords: ['healthcare', 'medical', 'rescue'],
         category: 'medical',
-        unicode: "\e9e2"
+        unicode: '\e9e4'
     },
     {
         name: 'lightbulb',
@@ -1837,7 +1853,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an idea, insight, or new concept',
         keywords: ['idea', 'insight', 'new'],
         category: 'other symbols',
-        unicode: "\e9e3"
+        unicode: '\e9e5'
     },
     {
         name: 'link',
@@ -1845,7 +1861,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a hyperlink, connection, or reference',
         keywords: ['hyperlink', 'connect', 'reference'],
         category: 'ui',
-        unicode: "\e9e4"
+        unicode: '\e9e6'
     },
     {
         name: 'list-alt',
@@ -1853,7 +1869,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a list of tasks or information',
         keywords: ['tasks', 'details', 'checklist'],
         category: 'clipboards & lists',
-        unicode: "\e9e5"
+        unicode: '\e9e7'
     },
     {
         name: 'list-bolt',
@@ -1861,7 +1877,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use in an IDEA context to represent a quick list',
         keywords: ['tasks', 'details', 'checklist'],
         category: 'clipboards & lists',
-        unicode: "\e9e6"
+        unicode: '\e9e8'
     },
     {
         name: 'list-search',
@@ -1869,7 +1885,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent searching throught a data set',
         keywords: ['discovery', 'query', 'search'],
         category: 'clipboards & lists',
-        unicode: "\e9e7"
+        unicode: '\e9e9'
     },
     {
         name: 'list',
@@ -1877,7 +1893,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a list of tasks or information',
         keywords: ['tasks', 'details', 'checklist'],
         category: 'clipboards & lists',
-        unicode: "\e9e8"
+        unicode: '\e9ea'
     },
     {
         name: 'lock-open',
@@ -1885,7 +1901,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an unlocked item, access, or permission',
         keywords: ['unlock', 'open', 'access'],
         category: 'ui',
-        unicode: "\e9e9"
+        unicode: '\e9eb'
     },
     {
         name: 'lock',
@@ -1893,7 +1909,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a locked item or to suggest that something is secure',
         keywords: ['secure', 'permissions', 'access'],
         category: 'ui',
-        unicode: "\e9ea"
+        unicode: '\e9ec'
     },
     {
         name: 'logic-and',
@@ -1901,7 +1917,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a logical AND operation, conjunction, or intersection',
         keywords: ['boolean', 'expression'],
         category: 'data & analytics',
-        unicode: "\e9eb"
+        unicode: '\e9ed'
     },
     {
         name: 'logic-or',
@@ -1909,7 +1925,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a logical OR operation, disjunction, or union',
         keywords: ['boolean', 'expression'],
         category: 'data & analytics',
-        unicode: "\e9ec"
+        unicode: '\e9ee'
     },
     {
         name: 'lungs',
@@ -1917,7 +1933,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a respiratory system, breathing, or oxygenation',
         keywords: ['healthcare', 'medical', 'respiratory'],
         category: 'medical',
-        unicode: "\e9ed"
+        unicode: '\e9ef'
     },
     {
         name: 'map-marker-plus',
@@ -1925,7 +1941,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'In a measures context, this icon represents an encounter',
         keywords: ['location', 'pin', 'encounter'],
         category: 'medical',
-        unicode: "\e9ee"
+        unicode: '\e9f0'
     },
     {
         name: 'map-marker',
@@ -1933,7 +1949,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a phyiscal location or address',
         keywords: ['location', 'pin', 'address'],
         category: 'ui',
-        unicode: "\e9ef"
+        unicode: '\e9f1'
     },
     {
         name: 'medical-briefcase',
@@ -1941,7 +1957,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a medical kit or medical supplies',
         keywords: ['healthcare', 'medical', 'procedure'],
         category: 'medical',
-        unicode: "\e9f0"
+        unicode: '\e9f2'
     },
     {
         name: 'medicine',
@@ -1949,7 +1965,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a medical organization, healthcare provider, or healthcare generally',
         keywords: ['organization', 'healthcare', 'staff'],
         category: 'medical',
-        unicode: "\e9f2"
+        unicode: '\e9f4'
     },
     {
         name: 'metric',
@@ -1957,7 +1973,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a metric, measurement, or data point',
         keywords: ['chart', 'data', 'measure'],
         category: 'data & analytics',
-        unicode: "\e9f3"
+        unicode: '\e9f5'
     },
     {
         name: 'money-bill',
@@ -1965,7 +1981,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent currency, money, or financial matters',
         keywords: ['dollar', 'currency', 'finance'],
         category: 'other symbols',
-        unicode: "\e9f4"
+        unicode: '\e9f6'
     },
     {
         name: 'waveform-cog',
@@ -1973,7 +1989,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a configuration of monitoring',
         keywords: ['monitor', 'settings', 'tracking'],
         category: 'data & analytics',
-        unicode: "\ea5a"
+        unicode: '\ea64'
     },
     {
         name: 'waveform',
@@ -1981,7 +1997,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent monitoring',
         keywords: ['screen', 'monitor', 'tracking'],
         category: 'data & analytics',
-        unicode: "\ea5b"
+        unicode: '\ea65'
     },
     {
         name: 'moon',
@@ -1989,7 +2005,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a moon, night, or dark sky',
         keywords: ['night', 'dark', 'space'],
         category: 'nature',
-        unicode: "\e9f5"
+        unicode: '\e9f7'
     },
     {
         name: 'number',
@@ -1997,7 +2013,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a number, digit, or count',
         keywords: ['numeric', 'digit', 'count'],
         category: 'data & analytics',
-        unicode: "\e9f6"
+        unicode: '\e9f8'
     },
     {
         name: 'paint-brush',
@@ -2005,7 +2021,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent art or design',
         keywords: ['art', 'design', 'color'],
         category: 'tools',
-        unicode: "\e9f9"
+        unicode: '\e9fb'
     },
     {
         name: 'palette',
@@ -2013,7 +2029,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent art, design, or color selection',
         keywords: ['art', 'design', 'color'],
         category: 'tools',
-        unicode: "\e9fa"
+        unicode: '\e9fc'
     },
     {
         name: 'paper-plane',
@@ -2021,7 +2037,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent sending a message, email, or notification',
         keywords: ['send', 'message', 'communication'],
         category: 'other symbols',
-        unicode: "\e9fb"
+        unicode: '\e9fd'
     },
     {
         name: 'paperclip',
@@ -2029,7 +2045,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an attachment, link, or connection',
         keywords: ['attachment', 'link', 'connect'],
         category: 'ui',
-        unicode: "\e9fc"
+        unicode: '\e9fe'
     },
     {
         name: 'patient',
@@ -2037,7 +2053,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a patient, user, or care recipient',
         keywords: ['user', 'care', 'health'],
         category: 'medical',
-        unicode: "\e9fd"
+        unicode: '\e9ff'
     },
     {
         name: 'patients',
@@ -2045,7 +2061,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent multiple patients, users, or care recipients',
         keywords: ['users', 'care', 'health'],
         category: 'medical',
-        unicode: "\e9fe"
+        unicode: '\ea00'
     },
     {
         name: 'pause',
@@ -2053,7 +2069,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a pause, stop, or break',
         keywords: ['wait', 'video', 'audio'],
         category: 'ui',
-        unicode: "\e9ff"
+        unicode: '\ea01'
     },
     {
         name: 'paw',
@@ -2061,7 +2077,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an animal, pet, or pet care',
         keywords: ['animal', 'pet'],
         category: 'nature',
-        unicode: "\ea00"
+        unicode: '\ea02'
     },
     {
         name: 'pencil',
@@ -2069,7 +2085,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent editing',
         keywords: ['edit', 'write', 'draw'],
         category: 'tools',
-        unicode: "\ea01"
+        unicode: '\ea03'
     },
     {
         name: 'percent',
@@ -2077,7 +2093,23 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a percentage',
         keywords: ['percentage', 'ratio', 'fraction'],
         category: 'data & analytics',
-        unicode: "\ea02"
+        unicode: '\ea04'
+    },
+    {
+        name: 'person',
+        icon: 'icon-person',
+        description: 'Use to represent a person, user, or care recipient',
+        keywords: ['person', 'avatar', 'user'],
+        category: 'users',
+        unicode: '\ea06'
+    },
+    {
+        name: 'person-dress',
+        icon: 'icon-person-dress',
+        description: 'Use to represent a person, user, or care recipient',
+        keywords: ['person', 'avatar', 'user'],
+        category: 'users',
+        unicode: '\ea05'
     },
     {
         name: 'phone',
@@ -2085,7 +2117,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to indicate a phone number',
         keywords: ['call', 'communication', 'contact'],
         category: 'other symbols',
-        unicode: "\ea03"
+        unicode: '\ea07'
     },
     {
         name: 'pill',
@@ -2093,7 +2125,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a medication or drug',
         keywords: ['healthcare', 'drugs', 'medicine'],
         category: 'medical',
-        unicode: "\ea04"
+        unicode: '\ea08'
     },
     {
         name: 'plane',
@@ -2101,7 +2133,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent travel',
         keywords: ['travel', 'airplane', 'flight'],
         category: 'other symbols',
-        unicode: "\ea05"
+        unicode: '\ea09'
     },
     {
         name: 'plant',
@@ -2109,7 +2141,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent outdoor, nature, or plant life',
         keywords: ['nature', 'environment', 'growth'],
         category: 'nature',
-        unicode: "\ea06"
+        unicode: '\ea0a'
     },
     {
         name: 'play',
@@ -2117,7 +2149,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent starting an operation or process',
         keywords: ['start', 'run', 'go'],
         category: 'ui',
-        unicode: "\ea07"
+        unicode: '\ea0b'
     },
     {
         name: 'plug-circle-bolt',
@@ -2125,7 +2157,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a power source or connection',
         keywords: ['power', 'energy', 'connected'],
         category: 'data & analytics',
-        unicode: "\ea08"
+        unicode: '\ea0c'
     },
     {
         name: 'plug-circle-check',
@@ -2133,7 +2165,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an active power source or connection',
         keywords: ['power', 'energy', 'connected'],
         category: 'data & analytics',
-        unicode: "\ea09"
+        unicode: '\ea0d'
     },
     {
         name: 'plug',
@@ -2141,7 +2173,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a power source or connection',
         keywords: ['power', 'energy', 'connected'],
         category: 'data & analytics',
-        unicode: "\ea0a"
+        unicode: '\ea0e'
     },
     {
         name: 'power-off',
@@ -2149,7 +2181,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent deactivating or shutting down a system or operation',
         keywords: ['stop', 'start', 'shutdown'],
         category: 'ui',
-        unicode: "\ea0b"
+        unicode: '\ea0f'
     },
     {
         name: 'prescription-bottle',
@@ -2157,7 +2189,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a prescription, medicine, or drug',
         keywords: ['medicine', 'healthcare', 'drugs'],
         category: 'medical',
-        unicode: "\ea0c"
+        unicode: '\ea10'
     },
     {
         name: 'print',
@@ -2165,7 +2197,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent the action of printing a document',
         keywords: ['document', 'output'],
         category: 'ui',
-        unicode: "\ea0d"
+        unicode: '\ea11'
     },
     {
         name: 'medical-hammer',
@@ -2173,7 +2205,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a medical procedure, test, or treatment',
         keywords: ['procedure', 'healthcare', 'test'],
         category: 'medical',
-        unicode: "\e9f1"
+        unicode: '\e9f3'
     },
     {
         name: 'nurse',
@@ -2181,7 +2213,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a nurse, medical assistant, or healthcare provider',
         keywords: ['doctor', 'PA', 'user'],
         category: 'medical',
-        unicode: "\e9f7"
+        unicode: '\e9f9'
     },
     {
         name: 'nurses',
@@ -2189,7 +2221,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent multiple nurses, medical assistants, or healthcare providers',
         keywords: ['doctor', 'PA', 'user'],
         category: 'medical',
-        unicode: "\e9f8"
+        unicode: '\e9fa'
     },
     {
         name: 'queue',
@@ -2197,7 +2229,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a queue or sequence',
         keywords: ['list', 'order', 'sequence'],
         category: 'clipboards & lists',
-        unicode: "\ea0e"
+        unicode: '\ea12'
     },
     {
         name: 'radiation',
@@ -2205,7 +2237,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent radiation, radioactive material, or exposure',
         keywords: ['radioactive', 'danger', 'chemo'],
         category: 'medical',
-        unicode: "\ea0f"
+        unicode: '\ea13'
     },
     {
         name: 'recycle',
@@ -2213,7 +2245,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent recovering deleted items, or environmental responsibility',
         keywords: ['environment', 'sustainability', 'recover'],
         category: 'arrows',
-        unicode: "\ea10"
+        unicode: '\ea14'
     },
     {
         name: 'redo',
@@ -2221,7 +2253,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent redoing an action or operation',
         keywords: ['repeat', 'action'],
         category: 'arrows',
-        unicode: "\ea11"
+        unicode: '\ea15'
     },
     {
         name: 'refresh',
@@ -2229,7 +2261,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent reloading or updating a page, data, or system',
         keywords: ['reload', 'update', 'sync'],
         category: 'arrows',
-        unicode: "\ea12"
+        unicode: '\ea16'
     },
     {
         name: 'report',
@@ -2237,7 +2269,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'This icon represents an analytics report in the Ignite ecosystem',
         keywords: ['analytics', 'data', 'charts'],
         category: 'data & analytics',
-        unicode: "\ea13"
+        unicode: '\ea17'
     },
     {
         name: 'ribbon',
@@ -2245,7 +2277,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent cancer support',
         keywords: ['cancer', 'support'],
         category: 'medical',
-        unicode: "\ea14"
+        unicode: '\ea18'
     },
     {
         name: 'right-panel-hide',
@@ -2253,7 +2285,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent hiding a panel or section',
         keywords: ['vitalware', 'ui', 'toggle'],
         category: 'vitalware',
-        unicode: "\ea15"
+        unicode: '\ea19'
     },
     {
         name: 'right-panel-hide-alt',
@@ -2261,7 +2293,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent hiding a panel or section',
         keywords: ['vitalware', 'ui', 'toggle'],
         category: 'vitalware',
-        unicode: "\ea16"
+        unicode: '\ea1a'
     },
     {
         name: 'right-panel-show',
@@ -2269,7 +2301,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent showing a panel or section',
         keywords: ['vitalware', 'ui', 'toggle'],
         category: 'vitalware',
-        unicode: "\ea17"
+        unicode: '\ea1b'
     },
     {
         name: 'right-panel-show-alt',
@@ -2277,7 +2309,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent showing a panel or section',
         keywords: ['vitalware', 'ui', 'toggle'],
         category: 'vitalware',
-        unicode: "\ea18"
+        unicode: '\ea1c'
     },
     {
         name: 'umbrella',
@@ -2285,7 +2317,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent weather or protection from risk',
         keywords: ['weather', 'risk', 'protection'],
         category: 'nature',
-        unicode: "\ea4b"
+        unicode: '\ea52'
     },
     {
         name: 'rocket',
@@ -2293,7 +2325,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent launching an action or process or exploring something',
         keywords: ['launch', 'travel', 'explore'],
         category: 'other symbols',
-        unicode: "\ea19"
+        unicode: '\ea1d'
     },
     {
         name: 'run',
@@ -2301,7 +2333,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'This icon represents the action of running a process or task',
         keywords: ['play', 'go', 'execute'],
         category: 'ui',
-        unicode: "\ea1a"
+        unicode: '\ea1e'
     },
     {
         name: 'save',
@@ -2309,7 +2341,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent the action of saving a file, data, or document',
         keywords: ['floppy', 'disk', 'store'],
         category: 'ui',
-        unicode: "\ea1b"
+        unicode: '\ea1f'
     },
     {
         name: 'scale-balanced',
@@ -2317,7 +2349,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a balanced comparison or equality/fairness',
         keywords: ['justice', 'compare', 'equal'],
         category: 'other symbols',
-        unicode: "\ea1c"
+        unicode: '\ea20'
     },
     {
         name: 'scale-unbalanced',
@@ -2325,7 +2357,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an unbalanced comparison or inequality',
         keywords: ['justice', 'compare'],
         category: 'other symbols',
-        unicode: "\ea1d"
+        unicode: '\ea21'
     },
     {
         name: 'scissors',
@@ -2333,7 +2365,23 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent cutting or removing something',
         keywords: ['tool', 'cut', 'remove'],
         category: 'tools',
-        unicode: "\eea1d"
+        unicode: '\ea22'
+    },
+    {
+        name: 'screwdriver',
+        icon: 'icon-screwdriver',
+        description: 'Use to represent repair, maintenance, or editing settings',
+        keywords: ['tool', 'repair', 'maintenance'],
+        category: 'tools',
+        unicode: '\ea24'
+    },
+    {
+        name: 'screwdriver-wrench',
+        icon: 'icon-screwdriver-wrench',
+        description: 'Use to represent repair, maintenance, or editing settings',
+        keywords: ['tool', 'repair', 'maintenance'],
+        category: 'tools',
+        unicode: '\ea24'
     },
     {
         name: 'search',
@@ -2341,7 +2389,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent searching for something',
         keywords: ['magnifying glass', 'find'],
         category: 'ui',
-        unicode: "\ea1e"
+        unicode: '\ea25'
     },
     {
         name: 'share',
@@ -2349,7 +2397,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent sharing something',
         keywords: ['send', 'arrow'],
         category: 'arrows',
-        unicode: "\ea20"
+        unicode: '\ea26'
     },
     {
         name: 'shared',
@@ -2357,7 +2405,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a shared item, collaboration, or team',
         keywords: ['users', 'collaborate', 'team'],
         category: 'users',
-        unicode: "\ea21"
+        unicode: '\ea27'
     },
     {
         name: 'shield-check',
@@ -2365,7 +2413,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a secure, verified, or trusted item',
         keywords: ['secure', 'permissions', 'access'],
         category: 'ui',
-        unicode: "\ea22"
+        unicode: '\ea28'
     },
     {
         name: 'shuffle',
@@ -2373,7 +2421,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent shuffling or mixing something',
         keywords: ['switch', 'mix', 'random'],
         category: 'arrows',
-        unicode: "\ea23"
+        unicode: '\ea29'
     },
     {
         name: 'sign-out',
@@ -2381,7 +2429,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent logging out or exiting a session',
         keywords: ['logout', 'exit', 'leave'],
         category: 'arrows',
-        unicode: "\ea24"
+        unicode: '\ea2a'
     },
     {
         name: 'sort-ascend',
@@ -2389,7 +2437,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent sorting in ascending order',
         keywords: ['order', 'ascending'],
         category: 'arrows',
-        unicode: "\ea25"
+        unicode: '\ea2b'
     },
     {
         name: 'sort-descend',
@@ -2397,7 +2445,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent sorting in descending order',
         keywords: ['order', 'descending'],
         category: 'arrows',
-        unicode: "\ea26"
+        unicode: '\ea2c'
     },
     {
         name: 'sort',
@@ -2405,7 +2453,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent sorting or ordering',
         keywords: ['sortable', 'order'],
         category: 'arrows',
-        unicode: "\ea27"
+        unicode: '\ea2d'
     },
     {
         name: 'southpanel-hide',
@@ -2413,7 +2461,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent hiding a panel or section',
         keywords: ['vitalware', 'ui', 'toggle'],
         category: 'vitalware',
-        unicode: "\ea28"
+        unicode: '\ea2e'
     },
     {
         name: 'southpanel-hide-alt',
@@ -2421,7 +2469,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent hiding a panel or section',
         keywords: ['vitalware', 'ui', 'toggle'],
         category: 'vitalware',
-        unicode: "\ea29"
+        unicode: '\ea2f'
     },
     {
         name: 'southpanel-show-alt',
@@ -2429,7 +2477,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent showing a panel or section',
         keywords: ['vitalware', 'ui', 'toggle'],
         category: 'vitalware',
-        unicode: "\ea2a"
+        unicode: '\ea30'
     },
     {
         name: 'southpanel-show-alt-copy',
@@ -2437,7 +2485,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent showing a panel or section',
         keywords: ['vitalware', 'ui', 'toggle'],
         category: 'vitalware',
-        unicode: "\ea2b"
+        unicode: '\ea31'
     },
     {
         name: 'square-check',
@@ -2445,7 +2493,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent approval, confirmation, or acceptance',
         keywords: ['approval', 'confirm', 'checkmark'],
         category: 'status',
-        unicode: "\ea2c"
+        unicode: '\ea32'
     },
     {
         name: 'square-minus',
@@ -2453,7 +2501,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent minimizing or collapsing something, or the status of being removed',
         keywords: ['minimize', 'collapse', 'remove'],
         category: 'status',
-        unicode: "\ea2d"
+        unicode: '\ea33'
     },
     {
         name: 'square-plus',
@@ -2461,7 +2509,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent adding or expanding something, or the status of being added',
         keywords: ['add', 'increase', 'expand'],
         category: 'status',
-        unicode: "\ea2e"
+        unicode: '\ea34'
     },
     {
         name: 'star-o',
@@ -2469,7 +2517,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use for the action of favoriting an item',
         keywords: ['favorite', 'rating'],
         category: 'ui',
-        unicode: "\ea2f"
+        unicode: '\ea35'
     },
     {
         name: 'star',
@@ -2477,7 +2525,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a favorite or starred item',
         keywords: ['favorited', 'rating'],
         category: 'ui',
-        unicode: "\ea30"
+        unicode: '\ea36'
     },
     {
         name: 'stethoscope',
@@ -2485,7 +2533,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a stethoscope, medical instrument, or medical procedure',
         keywords: ['healthcare', 'medical', 'doctor'],
         category: 'medical',
-        unicode: "\ea31"
+        unicode: '\ea37'
     },
     {
         name: 'stopwatch',
@@ -2493,7 +2541,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a timer, or duration',
         keywords: ['duration', 'time', 'clock'],
         category: 'date & time',
-        unicode: "\ea32"
+        unicode: '\ea38'
     },
     {
         name: 'sum',
@@ -2501,7 +2549,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a math function or the total of a collection',
         keywords: ['function', 'math', 'addition'],
         category: 'data & analytics',
-        unicode: "\ea33"
+        unicode: '\ea39'
     },
     {
         name: 'sun',
@@ -2509,7 +2557,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a sun, day, or light',
         keywords: ['weather', 'day', 'light'],
         category: 'nature',
-        unicode: "\ea34"
+        unicode: '\ea3a'
     },
     {
         name: 'syringe',
@@ -2517,7 +2565,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a medical instrument or medication administration',
         keywords: ['healthcare', 'vaccine', 'injection'],
         category: 'medical',
-        unicode: "\ea35"
+        unicode: '\ea3b'
     },
     {
         name: 'table-add',
@@ -2525,7 +2573,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent adding a new table',
         keywords: ['datagrid', 'insert', 'add'],
         category: 'data & analytics',
-        unicode: "\ea36"
+        unicode: '\ea3c'
     },
     {
         name: 'table-cog',
@@ -2533,7 +2581,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent configuring a table or its columns',
         keywords: ['datagrid', 'settings', 'configure'],
         category: 'data & analytics',
-        unicode: "\ea37"
+        unicode: '\ea3d'
     },
     {
         name: 'table-edit',
@@ -2541,7 +2589,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent editing a table',
         keywords: ['datagrid', 'settings', 'modify'],
         category: 'data & analytics',
-        unicode: "\ea38"
+        unicode: '\ea3e'
     },
     {
         name: 'table-rows',
@@ -2549,7 +2597,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent rows or entries in a data grid',
         keywords: ['datagrid', 'entries', 'data'],
         category: 'data & analytics',
-        unicode: "\ea39"
+        unicode: '\ea3f'
     },
     {
         name: 'table',
@@ -2557,7 +2605,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a table, data grid, or data entity',
         keywords: ['datagrid', 'data'],
         category: 'data & analytics',
-        unicode: "\ea3a"
+        unicode: '\ea40'
     },
     {
         name: 'tables-add',
@@ -2565,7 +2613,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent adding multiple tables or configurations',
         keywords: ['datagrid', 'insert', 'add'],
         category: 'data & analytics',
-        unicode: "\ea3b"
+        unicode: '\ea41'
     },
     {
         name: 'tables-edit',
@@ -2573,7 +2621,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent editing multiple tables or entities in bulk',
         keywords: ['datagrid', 'settings', 'modify'],
         category: 'data & analytics',
-        unicode: "\ea3c"
+        unicode: '\ea42'
     },
     {
         name: 'tables',
@@ -2581,7 +2629,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent multiple tables or data grids',
         keywords: ['datagrids', 'data', 'entities'],
         category: 'data & analytics',
-        unicode: "\ea3d"
+        unicode: '\ea43'
     },
     {
         name: 'tag',
@@ -2589,7 +2637,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a tag, label, or category',
         keywords: ['property', 'label', 'category'],
         category: 'ui',
-        unicode: "\ea3e"
+        unicode: '\ea44'
     },
     {
         name: 'tags',
@@ -2597,7 +2645,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent multiple tags, labels, or categories',
         keywords: ['property', 'label', 'category'],
         category: 'ui',
-        unicode: "\ea3f"
+        unicode: '\ea45'
     },
     {
         name: 'thumbs-down',
@@ -2605,7 +2653,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a negative rating or dislike',
         keywords: ['dislike', 'negative', 'rating'],
         category: 'ui',
-        unicode: "\ea40"
+        unicode: '\ea46'
     },
     {
         name: 'thumbs-up',
@@ -2613,7 +2661,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a positive rating or like',
         keywords: ['like', 'positive', 'rating'],
         category: 'ui',
-        unicode: "\ea41"
+        unicode: '\ea47'
     },
     {
         name: 'thumbtack',
@@ -2621,7 +2669,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a pin, attachment, or something tokeep',
         keywords: ['pin', 'attach', 'keep'],
         category: 'ui',
-        unicode: "\ea42"
+        unicode: '\ea48'
     },
     {
         name: 'toggle-off',
@@ -2629,7 +2677,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an inactive state, or the action of turning something off',
         keywords: ['switch', 'off', 'inactive'],
         category: 'ui',
-        unicode: "\ea43"
+        unicode: '\ea49'
     },
     {
         name: 'toggle-on',
@@ -2637,7 +2685,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an active state, or the action of turning something on',
         keywords: ['switch', 'on', 'active'],
         category: 'ui',
-        unicode: "\ea44"
+        unicode: '\ea4a'
     },
     {
         name: 'toolbox-add',
@@ -2645,7 +2693,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent adding a new job',
         keywords: ['job', 'create', 'add'],
         category: 'tools',
-        unicode: "\ea45"
+        unicode: '\ea4b'
     },
     {
         name: 'toolbox-solid',
@@ -2653,7 +2701,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a job or workflow in Ignite',
         keywords: ['job', 'process'],
         category: 'tools',
-        unicode: "\ea46"
+        unicode: '\ea4c'
     },
     {
         name: 'toolbox',
@@ -2661,7 +2709,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a job or workflow in Ignite',
         keywords: ['job', 'process'],
         category: 'tools',
-        unicode: "\ea47"
+        unicode: '\ea4d'
     },
     {
         name: 'trash',
@@ -2669,7 +2717,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent the action of deleting an item',
         keywords: ['delete', 'remove', 'bin'],
         category: 'ui',
-        unicode: "\ea48"
+        unicode: '\ea4e'
     },
     {
         name: 'triflame',
@@ -2677,7 +2725,15 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use this Health Catalyst logo to represent the company',
         keywords: ['logo', 'brand', 'company'],
         category: 'ui',
-        unicode: "\ea49"
+        unicode: '\ea50'
+    },
+    {
+        name: 'tree',
+        icon: 'icon-tree',
+        description: 'Use to represent a tree, plant, or natural element',
+        keywords: ['tree', 'plant', 'natural'],
+        category: 'nature',
+        unicode: '\ea4f'
     },
     {
         name: 'trophy',
@@ -2685,7 +2741,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an award, achievement, or highly ranked item',
         keywords: ['award', 'achievement', 'success'],
         category: 'other symbols',
-        unicode: "\ea4a"
+        unicode: '\ea51'
     },
     {
         name: 'undo',
@@ -2693,7 +2749,15 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent undoing an action or operation',
         keywords: ['reverse', 'action'],
         category: 'arrows',
-        unicode: "\ea4c"
+        unicode: '\ea53'
+    },
+    {
+        name: 'universal-access',
+        icon: 'icon-universal-access',
+        description: 'Use to represent accessibility or inclusion',
+        keywords: ['accessibility', 'inclusion', 'equal'],
+        category: 'users',
+        unicode: '\ea54'
     },
     {
         name: 'upload',
@@ -2701,7 +2765,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent uploading a file, data, or document',
         keywords: ['import', 'data', 'transfer'],
         category: 'arrows',
-        unicode: "\ea4d"
+        unicode: '\ea55'
     },
     {
         name: 'user-add',
@@ -2709,7 +2773,23 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent the action of adding a new user or sharing content',
         keywords: ['person', 'new', 'create'],
         category: 'users',
-        unicode: "\ea4e"
+        unicode: '\ea56'
+    },
+    {
+        name: 'user-minus',
+        icon: 'icon-user-minus',
+        description: 'Use to represent the action of removing a user from a list',
+        keywords: ['person', 'remove', 'unshare'],
+        category: 'users',
+        unicode: '\ea5a'
+    },
+    {
+        name: 'user-check',
+        icon: 'icon-user-check',
+        description: 'Use to represent a user who has been approved or verified',
+        keywords: ['person', 'remove', 'unshare'],
+        category: 'users',
+        unicode: '\ea57'
     },
     {
         name: 'user-circle',
@@ -2717,7 +2797,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a user profile or account',
         keywords: ['person', 'profile', 'account'],
         category: 'users',
-        unicode: "\ea4f"
+        unicode: '\ea58'
     },
     {
         name: 'user-cog',
@@ -2725,7 +2805,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent user settings or configuration',
         keywords: ['person', 'settings', 'profile'],
         category: 'users',
-        unicode: "\ea50"
+        unicode: '\ea59'
     },
     {
         name: 'user',
@@ -2733,7 +2813,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a user profile or account',
         keywords: ['person', 'profile', 'account'],
         category: 'users',
-        unicode: "\ea51"
+        unicode: '\ea5b'
     },
     {
         name: 'users',
@@ -2741,7 +2821,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a group of users or people',
         keywords: ['group', 'people', 'team'],
         category: 'users',
-        unicode: "\ea52"
+        unicode: '\ea5c'
     },
     {
         name: 'vial',
@@ -2749,7 +2829,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a sample or medical lab',
         keywords: ['test', 'sample', 'lab'],
         category: 'medical',
-        unicode: "\ea53"
+        unicode: '\ea5d'
     },
     {
         name: 'vials',
@@ -2757,7 +2837,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a sample or medical lab',
         keywords: ['test', 'sample', 'lab'],
         category: 'medical',
-        unicode: "\ea54"
+        unicode: '\ea5e'
     },
     {
         name: 'virus',
@@ -2765,7 +2845,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a virus, bacteria, or infection',
         keywords: ['bacteria', 'germs', 'infection'],
         category: 'medical',
-        unicode: "\ea55"
+        unicode: '\ea5f'
     },
     {
         name: 'viruses',
@@ -2773,7 +2853,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a virus, bacteria, or infection',
         keywords: ['bacteria', 'germs', 'infection'],
         category: 'medical',
-        unicode: "\ea56"
+        unicode: '\ea60'
     },
     {
         name: 'vitals',
@@ -2781,15 +2861,15 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a vital sign or health metric',
         keywords: ['heart', 'healthcare', 'monitor'],
         category: 'medical',
-        unicode: "\ea57"
+        unicode: '\ea61'
     },
     {
         name: 'walking',
         icon: 'icon-walking',
         description: 'Use to represent walking, exercise, or movement',
         keywords: ['exxercise', 'activity', 'movement'],
-        category: 'other symbols',
-        unicode: "\ea58"
+        category: 'users',
+        unicode: '\ea62'
     },
     {
         name: 'warn',
@@ -2797,7 +2877,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a warning or alert',
         keywords: ['caution', 'alert', 'warning'],
         category: 'status',
-        unicode: "\ea59"
+        unicode: '\ea63'
     },
     {
         name: 'workspace',
@@ -2805,7 +2885,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a workspace, desk, or office',
         keywords: ['desk', 'office', 'computer'],
         category: 'data & analytics',
-        unicode: "\ea5c"
+        unicode: '\ea66'
     },
     {
         name: 'wrench',
@@ -2813,7 +2893,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent a tool or setting',
         keywords: ['manage', 'tool', 'settings'],
         category: 'tools',
-        unicode: "\ea5d"
+        unicode: '\ea67'
     },
     {
         name: 'x-ray',
@@ -2821,6 +2901,6 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         description: 'Use to represent an x-ray, medical imaging, or diagnostic tool',
         keywords: ['healthcare', 'medical', 'imaging'],
         category: 'medical',
-        unicode: "\ea5e"
-    }
-]
+        unicode: '\ea68'
+    },
+];

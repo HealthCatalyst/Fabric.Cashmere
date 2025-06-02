@@ -90,4 +90,6 @@ If your app needs access to the [Health Catalyst icon font](/foundations/icons),
 @import "@healthcatalyst/cashmere/hcicons2/hcicons2";
 ```
 
+<span class="icon-bullhorn hc-icon-left"></span>Note: The recommended approach is to hand pick only needed icons and [generate your own icon font](./foundations/icons/#webAppUsage), but direct reference as illustrated above is available as a fallback approach.
+
 :::
