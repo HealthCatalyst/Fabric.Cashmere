@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NO_ERRORS_SCHEMA, Component} from '@angular/core';
 import {CalendarOverlayService} from '../services/calendar-overlay.service';
 import {ConfigStoreService} from '../services/config-store.service';
@@ -61,7 +61,7 @@ describe('DateRangeDirective', () => {
     let fixture: ComponentFixture<TestComponent>;
     let overlay: MockOverlayService;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         overlay = new MockOverlayService();
 
         TestBed.configureTestingModule({

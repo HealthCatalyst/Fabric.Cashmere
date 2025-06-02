@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { DragDropAssignment, DragListComponent } from './drag-list.component';
 import { DragListModule } from './drag-list.module';
 
@@ -31,7 +31,7 @@ describe('DragListTestComponent', () => {
         }
     ];
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             imports:[DragListModule],
             declarations: [DragListComponent]

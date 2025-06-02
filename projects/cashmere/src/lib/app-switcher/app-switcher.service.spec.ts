@@ -1,4 +1,4 @@
-import {TestBed, waitForAsync} from '@angular/core/testing';
+import {TestBed, fakeAsync} from '@angular/core/testing';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import {AppSwitcherService} from './app-switcher.service';
 import {APP_SWITCHER_CONFIG} from './app-switcher-interfaces';
@@ -8,7 +8,7 @@ describe('AppSwitcherService', () => {
     describe('when initialized with a discoveryServiceUri ending in a version', () => {
         let service: AppSwitcherService;
 
-        beforeEach(waitForAsync(() => {
+        beforeEach(fakeAsync(() => {
             TestBed.configureTestingModule({
     imports: [],
     providers: [AppSwitcherService, { provide: APP_SWITCHER_CONFIG, useValue: { discoveryServiceUri: 'foo://bar/baz/v1' } }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
@@ -25,7 +25,7 @@ describe('AppSwitcherService', () => {
     describe('when initialized with a discoveryServiceUri ending in a version and a slash', () => {
         let service: AppSwitcherService;
 
-        beforeEach(waitForAsync(() => {
+        beforeEach(fakeAsync(() => {
             TestBed.configureTestingModule({
     imports: [],
     providers: [AppSwitcherService, { provide: APP_SWITCHER_CONFIG, useValue: { discoveryServiceUri: 'foo://bar/baz/v1/' } }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
@@ -42,7 +42,7 @@ describe('AppSwitcherService', () => {
     describe('when initialized with a discoveryServiceUri not ending in a version', () => {
         let service: AppSwitcherService;
 
-        beforeEach(waitForAsync(() => {
+        beforeEach(fakeAsync(() => {
             TestBed.configureTestingModule({
     imports: [],
     providers: [AppSwitcherService, { provide: APP_SWITCHER_CONFIG, useValue: { discoveryServiceUri: 'foo://bar/baz/' } }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
@@ -59,7 +59,7 @@ describe('AppSwitcherService', () => {
     describe('when initialized with a discoveryServiceUri not ending in a slash', () => {
         let service: AppSwitcherService;
 
-        beforeEach(waitForAsync(() => {
+        beforeEach(fakeAsync(() => {
             TestBed.configureTestingModule({
     imports: [],
     providers: [AppSwitcherService, { provide: APP_SWITCHER_CONFIG, useValue: { discoveryServiceUri: 'foo://bar/baz' } }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
@@ -74,7 +74,7 @@ describe('AppSwitcherService', () => {
     });
 
     describe('when not provided an APP_SWITCHER_CONFIG', () => {
-        beforeEach(waitForAsync(() => {
+        beforeEach(fakeAsync(() => {
             TestBed.configureTestingModule({
     imports: [],
     providers: [AppSwitcherService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
@@ -86,7 +86,7 @@ describe('AppSwitcherService', () => {
     });
 
     describe('when provided an APP_SWITCHER_CONFIG without a discoveryServiceUri', () => {
-        beforeEach(waitForAsync(() => {
+        beforeEach(fakeAsync(() => {
             TestBed.configureTestingModule({
     imports: [],
     providers: [AppSwitcherService, { provide: APP_SWITCHER_CONFIG, useValue: {} }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]

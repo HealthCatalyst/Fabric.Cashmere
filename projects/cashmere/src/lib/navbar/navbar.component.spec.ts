@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {ListModule} from '../list/list.module';
@@ -30,7 +30,7 @@ describe('NavbarComponent', () => {
     let testHostComponent: TestAppComponent;
     let testHostFixture: ComponentFixture<TestAppComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             imports: [RouterTestingModule, NavbarModule, ListModule, BrowserAnimationsModule],
             declarations: [TestAppComponent]

@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed, tick} from '@angular/core/testing';
 import {Component, Renderer2} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
@@ -92,7 +92,7 @@ let testApp: TestAppReference;
 const SCROLL_TARGET_ATTRIBUTE = 'hcScrollTarget';
 
 describe('HcScrollNavContentComponent', () => {
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             imports: [ScrollNavModule],
             declarations: [TestAppComponent],

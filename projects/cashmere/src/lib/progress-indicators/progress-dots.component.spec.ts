@@ -1,11 +1,11 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProgressDotsComponent, ProgressDotsColor } from './progress-dots.component';
 
 describe('ProgressDotsComponent', () => {
     let component: ProgressDotsComponent;
     let fixture: ComponentFixture<ProgressDotsComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [ProgressDotsComponent]
         }).compileComponents();

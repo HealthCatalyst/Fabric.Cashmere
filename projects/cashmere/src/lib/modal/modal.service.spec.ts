@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { TestBed, fakeAsync } from '@angular/core/testing';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { HcModal } from './modal';
 import { ModalOptions } from './modal-options';
@@ -29,7 +29,7 @@ describe('ModalService', () => {
         let service: ModalService;
         let mockModalRef: HcModal<ModalOverviewExampleModalComponent>;
 
-        beforeEach(waitForAsync(() => {
+        beforeEach(fakeAsync(() => {
             TestBed.configureTestingModule({
                 imports: [ModalModule, BrowserAnimationsModule],
                 declarations: [ModalOverviewExampleModalComponent],
