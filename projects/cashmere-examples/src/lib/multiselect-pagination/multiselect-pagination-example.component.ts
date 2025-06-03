@@ -10,7 +10,8 @@ import { takeUntil } from 'rxjs/operators';
 @Component({
     selector: 'hc-multiselect-pagination-example',
     templateUrl: 'multiselect-pagination-example.component.html',
-    styleUrls: ['multiselect-pagination-example.component.scss']
+    styleUrls: ['multiselect-pagination-example.component.scss'],
+    standalone: false
 })
 export class MultiselectPaginationExampleComponent implements OnInit, OnDestroy {
     // The complete list of available items

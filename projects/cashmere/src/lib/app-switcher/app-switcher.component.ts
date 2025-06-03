@@ -12,7 +12,8 @@ import {WorkTrackerService} from '../shared/work-tracker.service';
     selector: 'hc-app-switcher',
     templateUrl: './app-switcher.component.html',
     styleUrls: ['./app-switcher.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class AppSwitcherComponent implements OnInit, OnDestroy {
     @HostBinding('class.hc-app-switcher-container') _hostClass = true;

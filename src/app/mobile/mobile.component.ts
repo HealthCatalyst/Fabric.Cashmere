@@ -7,7 +7,8 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 @Component({
     selector: 'hc-mobile-dev',
     templateUrl: './mobile.component.html',
-    styleUrls: ['../shared/base-demo.component.scss']
+    styleUrls: ['../shared/base-demo.component.scss'],
+    standalone: false
 })
 export class MobileDevComponent implements OnDestroy {
     thisPage = '';

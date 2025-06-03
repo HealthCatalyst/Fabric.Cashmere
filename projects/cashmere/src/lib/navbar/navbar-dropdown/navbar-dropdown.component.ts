@@ -9,7 +9,8 @@ import { MenuItemDirective } from '../../pop/directives/menu-item.directive';
     selector: 'hc-navbar-dropdown',
     templateUrl: './navbar-dropdown.component.html',
     encapsulation: ViewEncapsulation.None,
-    providers: [{provide: NavbarLinkComponent, useExisting: forwardRef(() => NavbarDropdownComponent)}],
+    providers: [{ provide: NavbarLinkComponent, useExisting: forwardRef(() => NavbarDropdownComponent) }],
+    standalone: false
 })
 export class NavbarDropdownComponent extends NavbarLinkComponent implements AfterViewInit {
     @ViewChild('menuPop')

@@ -6,7 +6,8 @@ import {parseBooleanAttribute} from '../util';
 @Component({
     selector: 'hc-tile',
     template: '<ng-content></ng-content>',
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class TileComponent {
     @HostBinding('class.hc-tile')

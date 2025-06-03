@@ -10,7 +10,8 @@ import { parseBooleanAttribute, untilDestroyed } from '../util';
     selector: '[hcResizable]',
     templateUrl: './resizable.component.html',
     styleUrls: ['./resizable.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 
 export class ResizableComponent implements OnChanges {

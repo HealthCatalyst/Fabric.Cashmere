@@ -9,7 +9,8 @@ import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
     selector: 'hc-list-item',
     templateUrl: './list-item.component.html',
     styleUrls: ['./list-item.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ListItemComponent {
     @HostBinding('class.hc-list-item')

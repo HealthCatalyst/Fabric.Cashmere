@@ -12,17 +12,18 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
     styleUrls: ['./hc-toast.component.scss'],
     animations: [
         trigger('fade', [
-            state('void', style({transform: 'none', opacity: 0})),
-            state('enter', style({transform: 'none', opacity: 1})),
-            state('leave', style({transform: 'none', opacity: 0})),
+            state('void', style({ transform: 'none', opacity: 0 })),
+            state('enter', style({ transform: 'none', opacity: 1 })),
+            state('leave', style({ transform: 'none', opacity: 0 })),
             transition('* => *', animate(ANIMATION_TIMINGS))
         ])
     ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class HcToastComponent {
     _styleType = 'success';
-    _toastIcon = 'fa-check-circle';
+    _toastIcon = 'icon-check';
     _headerText: string;
     _bodyText: string;
     _animationState: 'void' | 'enter' | 'leave' = 'enter';

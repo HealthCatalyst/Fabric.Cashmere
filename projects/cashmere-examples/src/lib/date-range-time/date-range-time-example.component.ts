@@ -4,7 +4,8 @@ import { DateRangeOptions, DateRange } from '@healthcatalyst/cashmere';
 
 @Component({
     selector: 'hc-date-range-time-example',
-    templateUrl: './date-range-time-example.component.html'
+    templateUrl: './date-range-time-example.component.html',
+    standalone: false
 })
 export class DateRangeTimeExampleComponent implements OnInit {
     range: DateRange = {fromDate: new Date(2019, 1, 1, 9, 30), toDate: new Date(2019, 1, 1, 17, 15)};

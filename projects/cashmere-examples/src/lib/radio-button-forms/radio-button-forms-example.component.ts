@@ -6,7 +6,8 @@ import {FormControl} from '@angular/forms';
  */
 @Component({
     selector: 'hc-radio-button-forms-example',
-    templateUrl: 'radio-button-forms-example.component.html'
+    templateUrl: 'radio-button-forms-example.component.html',
+    standalone: false
 })
 export class RadioButtonFormsExampleComponent {
     shows = ['Silicon Valley', 'Game of Thrones', 'Better Call Saul'];

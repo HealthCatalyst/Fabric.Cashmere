@@ -12,7 +12,8 @@ let uniqueSliderId = 1;
         <ng-content></ng-content>
     `,
     encapsulation: ViewEncapsulation.None,
-    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => SliderComponent)}]
+    providers: [{ provide: HcFormControlComponent, useExisting: forwardRef(() => SliderComponent) }],
+    standalone: false
 })
 export class SliderComponent extends HcFormControlComponent {
     private _uniqueInputId = `hc-slider-${uniqueSliderId++}`;

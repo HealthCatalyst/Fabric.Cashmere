@@ -37,7 +37,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
     selector: 'hc-pagination-standard-example',
     templateUrl: 'pagination-standard-example.component.html',
-    styleUrls: ['pagination-standard-example.component.scss']
+    styleUrls: ['pagination-standard-example.component.scss'],
+    standalone: false
 })
 export class PaginationStandardExampleComponent implements AfterViewInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];

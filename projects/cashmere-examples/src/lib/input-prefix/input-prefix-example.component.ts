@@ -7,7 +7,8 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'hc-input-prefix-example',
     templateUrl: 'input-prefix-example.component.html',
-    styleUrls: ['input-prefix-example.component.scss']
+    styleUrls: ['input-prefix-example.component.scss'],
+    standalone: false
 })
 export class InputPrefixExampleComponent {
     inputPrefix = new FormControl({value: 'disable working', disabled: true});

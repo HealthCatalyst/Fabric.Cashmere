@@ -76,11 +76,11 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "user-guide:build"
+            "buildTarget": "user-guide:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "user-guide:build:production"
+              "buildTarget": "user-guide:build:production"
             }
           }
         },

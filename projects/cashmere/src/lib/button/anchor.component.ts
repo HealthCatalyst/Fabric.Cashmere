@@ -10,7 +10,8 @@ import {ButtonComponent} from './button.component';
     template: '<ng-content></ng-content>',
     styleUrls: ['./button.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class AnchorComponent extends ButtonComponent {
     @HostBinding('attr.aria-disabled')

@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SlideToggleModule} from './slide-toggle.module';
 import {SlideToggleComponent} from './slide-toggle.component';
 import {Component, ViewChild} from '@angular/core';
@@ -17,7 +17,8 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
             (buttonStateChanged)="onSlideChange($event)"
         >
         </hc-slide-toggle>
-    `
+    `,
+    standalone: false
 })
 export class SlideToggleTestComponent {
     disabledVal = false;
@@ -36,7 +37,8 @@ export class SlideToggleTestComponent {
 @Component({
     template: `
         <hc-slide-toggle [formControl]="slideForm"></hc-slide-toggle>
-    `
+    `,
+    standalone: false
 })
 export class SlideToggleFormComponent {
     slideForm: FormControl = new FormControl( true );
@@ -48,7 +50,7 @@ describe('SlideToggleComponent', () => {
     let formComponent: SlideToggleFormComponent;
     let formFixture: ComponentFixture<SlideToggleFormComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [SlideToggleTestComponent, SlideToggleFormComponent],
             imports: [SlideToggleModule, FormsModule, ReactiveFormsModule]

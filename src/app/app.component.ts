@@ -11,7 +11,8 @@ import { ApplicationInsightsService } from './shared/application-insights/applic
 @Component({
     selector: 'hc-root',
     styleUrls: ['./app.component.scss'],
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
+    standalone: false
 })
 
 export class AppComponent implements AfterViewInit, OnDestroy {
@@ -27,11 +28,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     showAll = false;
     searchValue = '';
     searchIcons = {
-        'components': { icon: 'fa-code' },
-        'guides': { icon: 'fa-graduation-cap' },
-        'foundations': { icon: 'fa-cogs' },
-        'content': { icon: 'fa-file-text-o' },
-        'analytics': { icon: 'fa-bar-chart' }
+        'components': { icon: 'icon-code' },
+        'guides': { icon: 'icon-grad' },
+        'foundations': { icon: 'icon-cogs' },
+        'content': { icon: 'icon-file-lines' },
+        'analytics': { icon: 'icon-chart-bar' }
     };
 
     constructor( private router: Router, private searchService: SearchService, private appInsights: ApplicationInsightsService ) {

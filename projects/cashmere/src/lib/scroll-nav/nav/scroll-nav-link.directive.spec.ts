@@ -1,11 +1,14 @@
 import { Component, ElementRef, Renderer2 } from "@angular/core";
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { ComponentFixture, TestBed, fakeAsync } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
 
 import { ScrollNavLinkDirective } from "./scroll-nav-link.directive";
 import { ScrollNavModule } from "../scroll-nav.module";
 
-@Component({ "template": "" })
+@Component({
+    "template": "",
+    standalone: false
+})
 export class AbstractHcScrollLinkComponent {
   constructor(public renderer: Renderer2) {}
 }
@@ -23,7 +26,8 @@ export class AbstractHcScrollLinkComponent {
         <section id='a1' hcScrollTarget>
             <h1>Test 1 Section</h1>
         </section>
-    </hc-scroll-nav-content>`
+    </hc-scroll-nav-content>`,
+    standalone: false
 })
 export class ScrollNavLinkComponent extends AbstractHcScrollLinkComponent {
     testNavEvent(event: HTMLElement): HTMLElement {
@@ -44,7 +48,8 @@ export class ScrollNavLinkComponent extends AbstractHcScrollLinkComponent {
         <section [id]='"a2"' hcScrollTarget>
             <h1>Test 1 Section</h1>
         </section>
-    </hc-scroll-nav-content>`
+    </hc-scroll-nav-content>`,
+    standalone: false
 })
 export class ScrollNavLinkDynamicComponent extends AbstractHcScrollLinkComponent {
     testNavEvent(event: HTMLElement): HTMLElement {
@@ -56,7 +61,7 @@ describe("ScrollNavLinkDirective", (): void => {
     let scrollNavLinkComponent: ComponentFixture<ScrollNavLinkComponent>;
     let scrollNavLinkDynamicComponent: ComponentFixture<ScrollNavLinkDynamicComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             "declarations": [ScrollNavLinkComponent, ScrollNavLinkDynamicComponent],
             "imports": [ScrollNavModule],
@@ -98,7 +103,7 @@ describe("ScrollNavLinkDirective", (): void => {
             const contentElement: HTMLElement = scrollNavLinkComponent.debugElement.query(By.css("#a1")).nativeElement;
             spyOn(document, "getElementById").and.returnValue(contentElement);
             spyOn( scrollNavLinkComponent.componentInstance, 'testNavEvent' );
-            
+
             directive.nativeElement.click();
 
             expect(scrollNavLinkComponent.componentInstance.testNavEvent).toHaveBeenCalledWith(contentElement);
@@ -130,7 +135,7 @@ describe("ScrollNavLinkDirective", (): void => {
             directive.navClick.subscribe( event => scrollNavLinkDynamicComponent.componentInstance.testNavEvent(event) );
 
             spyOn( scrollNavLinkDynamicComponent.componentInstance, 'testNavEvent' );
-            
+
             directive.nativeElement.click();
 
             expect(scrollNavLinkDynamicComponent.componentInstance.testNavEvent).toHaveBeenCalled();

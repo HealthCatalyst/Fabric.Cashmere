@@ -4,7 +4,8 @@ export type EllipsisMode = 'characters' | 'words';
 
 @Pipe({
     name: 'ellipsis',
-    pure: true
+    pure: true,
+    standalone: false
 })
 export class EllipsisPipe implements PipeTransform {
     static readonly ELLIPSIS = '…';

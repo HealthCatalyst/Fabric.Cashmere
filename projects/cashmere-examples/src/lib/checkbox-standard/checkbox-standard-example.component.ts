@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'hc-checkbox-standard-example',
-    templateUrl: 'checkbox-standard-example.component.html'
+    templateUrl: 'checkbox-standard-example.component.html',
+    standalone: false
 })
 export class CheckboxStandardExampleComponent {}

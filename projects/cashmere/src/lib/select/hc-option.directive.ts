@@ -4,7 +4,8 @@ import {SelectService, _buildValueString} from './select.service';
 
 /** Utility directive to hold objects used in ngValue */
 @Directive({
-    selector: 'option'
+    selector: 'option',
+    standalone: false
 })
 export class HcOptionDirective implements OnDestroy {
     /** id of the option element, use in identifying stringifyied values */

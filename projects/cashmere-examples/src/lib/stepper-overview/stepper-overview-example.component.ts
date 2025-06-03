@@ -8,7 +8,8 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'hc-stepper-overview-example',
     templateUrl: 'stepper-overview-example.component.html',
-    styleUrls: ['stepper-overview-example.component.scss']
+    styleUrls: ['stepper-overview-example.component.scss'],
+    standalone: false
 })
 export class StepperOverviewExampleComponent implements OnInit {
     progressSteps: StepInterface[];
@@ -22,12 +23,12 @@ export class StepperOverviewExampleComponent implements OnInit {
     ngOnInit(): void {
         // To use with a router, add a `routerLink` to each step
         this.progressSteps = [
-            {label: 'Winter', iconSet: 'fa', icon: 'fa-check'},
-            {label: 'January', iconSet: 'fa', icon: 'fa-check'},
+            {label: 'Winter', iconSet: 'hcicons2', icon: 'icon-check'},
+            {label: 'January', iconSet: 'hcicons2', icon: 'icon-check'},
             {label: 'Spring'},
             {label: 'Summer'},
-            {label: 'Fall', iconSet: 'fa', icon: 'fa-lock', disabled: true},
-            {label: 'Year Round', iconSet: 'fa', icon: 'fa-lock', disabled: true}
+            {label: 'Fall', iconSet: 'hcicons2', icon: 'icon-lock', disabled: true},
+            {label: 'Year Round', iconSet: 'hcicons2', icon: 'icon-lock', disabled: true}
         ];
     }
 }

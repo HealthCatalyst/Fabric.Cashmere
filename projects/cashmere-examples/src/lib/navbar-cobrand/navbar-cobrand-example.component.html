@@ -1,10 +1,10 @@
 <hc-navbar appIcon="https://cashmere.healthcatalyst.net/assets/CashmereAppLogo.svg" [brandIcon]="navIcon" [homeUri]="undefined" [fixedTop]="false">
     <hc-navbar-link [active]="true" uri="undefined" linkText="Dashboard"></hc-navbar-link>
-    <hc-icon class="hc-navbar-icon" tabindex="0" fontSet="fa" fontIcon="fa-question-circle-o" [hcPop]="options"></hc-icon>
+    <hc-icon class="hc-navbar-icon" tabindex="0" fontSet="hc-icons" fontIcon="icon-help" [hcPop]="options"></hc-icon>
     <span class="hc-navbar-vertical-separator"></span>
     <div class="hc-navbar-username" *ngIf="user" [hcPop]="user" tabindex="0">
         <span class="hc-text-ellipsis">{{ username }}</span>
-        <hc-icon fontSet="fa" fontIcon="fa-angle-down"></hc-icon>
+        <hc-icon fontIcon="icon-chev-down"></hc-icon>
     </div>
     <hc-navbar-cobrand [color]="brandingVal" [src]="brandImg"></hc-navbar-cobrand>
 </hc-navbar>
@@ -24,32 +24,32 @@
 <hc-pop #options [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
     <div hcMenu>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-book"></hc-icon>
             <span hcMenuText>Read the docs</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-lightbulb-o"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-lightbulb"></hc-icon>
             <span hcMenuText>Request a feature</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-users"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-users"></hc-icon>
             <span hcMenuText>Ask the community</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bullhorn"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-bullhorn"></hc-icon>
             <span hcMenuText>Find out what's new</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bug"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-bug"></hc-icon>
             <span hcMenuText>Report an issue</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-comments"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-comments"></hc-icon>
             <span hcMenuText>Send feedback</span>
         </a>
         <div hcMenuItem hcDivider></div>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-info-circle"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-info"></hc-icon>
             <span hcMenuText>About</span>
         </button>
     </div>
@@ -58,7 +58,7 @@
 <hc-pop #user [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
     <div hcMenu>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="hc-icons" fontIcon="hci-sign-out"></hc-icon>
+            <hc-icon hcMenuIcon fontSet="hc-icons" fontIcon="icon-sign-out"></hc-icon>
             <span hcMenuText>Log out of this App</span>
         </button>
     </div>

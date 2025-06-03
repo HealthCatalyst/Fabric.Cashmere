@@ -21,7 +21,8 @@ export interface DragDropAssignment {
         class: 'hc-drag-list'
     },
     styleUrls: ['./drag-list.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class DragListComponent implements OnChanges {
     /** Current assignments, refer to the `DragDropAssignment` interface. Pass in your targets and their current assignments with this. */

@@ -9,6 +9,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
         </div>
         <hr class="hc-drawer-divider" />
     `,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class DrawerItem {}

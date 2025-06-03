@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'hc-popover-menu-example',
-    templateUrl: 'popover-menu-example.component.html'
+    templateUrl: 'popover-menu-example.component.html',
+    standalone: false
 })
 export class PopoverMenuExampleComponent {}

@@ -7,7 +7,8 @@ import { Component, ViewEncapsulation, Input, HostBinding } from '@angular/core'
     selector: 'hc-navbar-cobrand',
     template: `<img [src]="src" [ngStyle]="{height:_imgHeight, 'width':_imgWidth}" (load)="_checkRatio($event)">`,
     styleUrls: ['./navbar-cobrand.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class NavbarCobrandComponent {
     _color: 'light' | 'dark' = 'light';

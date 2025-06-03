@@ -19,7 +19,7 @@
         <div class="hc-pick-optgroup-inner group-row">
             <span>{{ item.value.name }}</span>
             <span> ({{item.children.length}})</span>
-            <span class="fa transport-group-icon" [class.fa-chevron-down]="!item.isClosed" [class.fa-chevron-up]="item.isClosed" 
+            <span class="transport-group-icon" [class.icon-chev-down]="!item.isClosed" [class.icon-chev-up]="item.isClosed"
                 (dblclick)="$event.stopPropagation()" (click)="item.toggleOpenState($event)">
             </span>
         </div>
@@ -28,7 +28,7 @@
     <!-- Option row template -->
     <ng-template hcPickOptionTmp let-item="item" let-search="searchTerm">
         <div class="opt-row" title="Travel by {{ item.type }}: {{ item.name }}">
-            <span class="icon-wrapper {{ item.color || 'slate-gray' }}"><hc-icon fontSet="fa" fontIcon="fa-{{ item.icon || item.name }}" hcIconSm></hc-icon></span>
+            <span class="ico-wrapper {{ item.color || 'slate-gray' }}"><hc-icon fontSet="fa-solid" fontIcon="fa-{{ item.icon || item.name }}" hcIconSm></hc-icon></span>
             {{ item.name }}
         </div>
     </ng-template>
@@ -36,17 +36,17 @@
     <!-- Left pane header template -->
     <ng-template hcPaneHeaderLeftTmp>
         <div class="custom-header">
-            <div class="header-text"><span class="fa fa-suitcase"></span>Available Transportation</div>
+            <div class="header-text"><span class="fa fa-suitcase-rolling"></span>Available Transportation</div>
         </div>
     </ng-template>
 
     <!-- Right pane header template -->
     <ng-template hcPaneHeaderRightTmp>
         <div class="custom-header">
-            <div class="header-text"><span class="fa fa-suitcase"></span>Selected Transportation</div>
+            <div class="header-text"><span class="fa fa-suitcase-rolling"></span>Selected Transportation</div>
         </div>
     </ng-template>
-    
+
     <!-- Pane toolbar template -->
     <ng-template hcPaneToolbarTmp let-itemsList="itemsList" let-searchTerm="searchTerm">
         <div class="custom-toolbar">

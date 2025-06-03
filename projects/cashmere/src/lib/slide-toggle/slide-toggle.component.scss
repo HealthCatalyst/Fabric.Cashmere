@@ -71,6 +71,117 @@ $large-toggle-buffer: 2px;
     }
 }
 
+.hc-slide-toggle-red {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($red);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($red);
+    }
+}
+
+.hc-slide-toggle-orange {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($orange);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($orange);
+    }
+}
+
+.hc-slide-toggle-ruby-red {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($ruby-red);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($ruby-red);
+    }
+}
+
+.hc-slide-toggle-deep-red {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($deep-red);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($deep-red);
+    }
+}
+
+.hc-slide-toggle-red-orange {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($red-orange);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($red-orange);
+    }
+}
+
+.hc-slide-toggle-magenta {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($magenta);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($magenta);
+    }
+}
+
+.hc-slide-toggle-azure {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($azure);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($azure);
+    }
+}
+
+.hc-slide-toggle-teal {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($teal);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($teal);
+    }
+}
+
+.hc-slide-toggle-dark-green {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($dark-green);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($dark-green);
+    }
+}
+
+.hc-slide-toggle-yellow-orange {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($yellow-orange);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($yellow-orange);
+    }
+}
+
+.hc-slide-toggle-dark-blue {
+    .hc-slide-toggle-checkbox:checked ~ .hc-slide-toggle-background {
+        @include hc-slide-toggle-background-color($dark-blue);
+    }
+
+    &:focus-within {
+        @include hc-slide-toggle-focus($dark-blue);
+    }
+}
+
+
 .hc-slide-toggle-sm {
     @include hc-slide-toggle-height($small-toggle-height);
 }

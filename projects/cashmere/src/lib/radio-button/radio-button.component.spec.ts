@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RadioButtonComponent, RadioButtonChangeEvent} from './radio';
 import {RadioButtonModule} from './radio-button.module';
 import {Component, DebugElement} from '@angular/core';
@@ -18,7 +18,8 @@ import {By} from '@angular/platform-browser';
                 Simple radio button
             </hc-radio-button>
         </div>
-    `
+    `,
+    standalone: false
 })
 export class SingleRadioComponent {
     isChecked = false;
@@ -37,7 +38,7 @@ export class SingleRadioComponent {
 describe('RadioButtonComponent', () => {
     let fixture: ComponentFixture<unknown>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             imports: [RadioButtonModule],
             declarations: [SingleRadioComponent]

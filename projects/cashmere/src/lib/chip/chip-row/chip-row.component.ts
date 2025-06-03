@@ -12,7 +12,8 @@ import {parseBooleanAttribute} from '../../util';
         </div>
     `,
     styleUrls: ['../chip.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ChipRowComponent {
     private _wrap = true;

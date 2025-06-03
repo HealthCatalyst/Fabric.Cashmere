@@ -37,38 +37,27 @@ type InstanceSwitcherTooltipConfig = IInstanceSwitcherTooltipText & {
     styleUrls: ['./instance-switcher.component.scss'],
     animations: [
         trigger('openState', [
-            state(
-                'open',
-                style({
-                    height: '*'
-                })
-            ),
-            state(
-                'void',
-                style({
-                    height: '0px',
-                    visibility: 'hidden'
-                })
-            ),
+            state('open', style({
+                height: '*'
+            })),
+            state('void', style({
+                height: '0px',
+                visibility: 'hidden'
+            })),
             transition('void <=> open', animate('400ms ease'))
         ]),
         trigger('moreOpenState', [
-            state(
-                'open',
-                style({
-                    transform: 'rotate(180deg)'
-                })
-            ),
-            state(
-                'closed',
-                style({
-                    transform: 'rotate(0deg)'
-                })
-            ),
+            state('open', style({
+                transform: 'rotate(180deg)'
+            })),
+            state('closed', style({
+                transform: 'rotate(0deg)'
+            })),
             transition('open <=> closed', animate('500ms cubic-bezier(0.25, 0.8, 0.25, 1)'))
         ])
     ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class InstanceSwitcherComponent implements OnDestroy, AfterViewInit {
     _instances: IInstance[] = [];

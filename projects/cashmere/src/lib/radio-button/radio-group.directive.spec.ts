@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
 import {FormsModule} from '@angular/forms';
 import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -11,7 +11,8 @@ import {RadioButtonModule} from './radio-button.module';
             <hc-radio-button [value]="oneValue" [checked]="oneChecked">Radio One</hc-radio-button>
             <hc-radio-button [value]="twoValue" [checked]="twoChecked">Radio Two</hc-radio-button>
         </hc-radio-group>
-    `
+    `,
+    standalone: false
 })
 class TestRadioGroupComponent {
     oneChecked = true;
@@ -30,7 +31,7 @@ describe('RadioGroupComponent', () => {
     let component: TestRadioGroupComponent;
     let fixture: ComponentFixture<TestRadioGroupComponent>;
     let el: DebugElement;
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestRadioGroupComponent],
             imports: [FormsModule, RadioButtonModule]
@@ -182,7 +183,8 @@ describe('RadioGroupComponent', () => {
             <hc-radio-button value="one">One</hc-radio-button>
             <hc-radio-button value="two">Two</hc-radio-button>
         </hc-radio-group>
-    `
+    `,
+    standalone: false
 })
 class RadioWithNgModelComponent {
     isGood = 'one';
@@ -193,7 +195,7 @@ describe('RadioGroups with ngModel', () => {
     let fixture: ComponentFixture<RadioWithNgModelComponent>;
     let el: DebugElement;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [RadioWithNgModelComponent],
             imports: [RadioButtonModule, FormsModule]

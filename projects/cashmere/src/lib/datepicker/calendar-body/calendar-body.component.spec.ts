@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {CalendarBodyComponent} from '..';
@@ -17,7 +17,8 @@ import {HcCalendarCellCssClasses, HcCalendarCell} from './calendar-body.componen
             [activeCell]="10"
             (selectedValueChange)="onSelect($event)"
         ></table>
-    `
+    `,
+    standalone: false
 })
 class StandardCalendarBody {
     label = 'Jan 2017';
@@ -42,7 +43,7 @@ function createCell(value: number, cellClasses?: HcCalendarCellCssClasses) {
 }
 
 describe('CalendarBodyComponent', () => {
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [
                 CalendarBodyComponent,

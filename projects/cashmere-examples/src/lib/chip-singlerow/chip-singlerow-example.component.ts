@@ -6,7 +6,8 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-chip-singlerow-example',
     templateUrl: 'chip-singlerow-example.component.html',
-    styleUrls: ['chip-singlerow-example.component.scss']
+    styleUrls: ['chip-singlerow-example.component.scss'],
+    standalone: false
 })
 export class ChipSinglerowExampleComponent {
     chipset: string[] = ['Payer (11)', 'Clinical Program (103)', 'Care Process (4)', 'Discharge Status (37)', 'Gender (1)', 'ER Visit (3)'];

@@ -5,7 +5,8 @@ interface Doc { id: number, name: string, department: string , disabled?: boolea
 @Component({
     selector: 'hc-picklist-overview-example',
     templateUrl: './picklist-overview-example.component.html',
-    styleUrls: ['./picklist-overview-example.component.scss']
+    styleUrls: ['./picklist-overview-example.component.scss'],
+    standalone: false
 })
 export class PicklistOverviewExampleComponent {
     readonly selectedDoctors = new FormControl([], {nonNullable: true});

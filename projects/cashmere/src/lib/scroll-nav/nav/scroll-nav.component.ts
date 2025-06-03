@@ -10,7 +10,8 @@ import { CdkScrollable } from '@angular/cdk/overlay';
     selector: 'hc-scroll-nav',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['scroll-nav.component.scss'],
-    templateUrl: 'scroll-nav.component.html'
+    templateUrl: 'scroll-nav.component.html',
+    standalone: false
 })
 export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
     /** Set to true to enable scrolling the nav link pane as the content pane scrolls */

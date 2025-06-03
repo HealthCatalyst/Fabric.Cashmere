@@ -7,7 +7,8 @@ import { RadioButtonChangeEvent } from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-radio-button-standard-example',
     templateUrl: 'radio-button-standard-example.component.html',
-    styleUrls: ['radio-button-standard-example.component.scss']
+    styleUrls: ['radio-button-standard-example.component.scss'],
+    standalone: false
 })
 export class RadioButtonStandardExampleComponent {
     selectedOption = '1';

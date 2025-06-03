@@ -5,7 +5,8 @@ interface Transport { name: string, icon: string, color: string, type: string | 
 @Component({
     selector: 'hc-picklist-templates-example',
     templateUrl: './picklist-templates-example.component.html',
-    styleUrls: ['./picklist-templates-example.component.scss']
+    styleUrls: ['./picklist-templates-example.component.scss'],
+    standalone: false
 })
 export class PicklistTemplatesExampleComponent {
 
@@ -17,7 +18,7 @@ export class PicklistTemplatesExampleComponent {
         {name: 'Space Shuttle', icon: 'space-shuttle', color: 'slate-gray', type: 'air'},
         {name: 'Plane', icon: 'plane', color: 'deep-red', type: 'air'},
         {name: 'Rocket', icon: 'rocket', color: 'orange', type: 'air'},
-        {name: 'Sled', icon: 'snowflake-o', color: 'purple', type: null }
+        {name: 'Sled', icon: 'snowflake', color: 'purple', type: null }
     ];
 
     groupByFn = (item: Transport ): string | null => item.type;

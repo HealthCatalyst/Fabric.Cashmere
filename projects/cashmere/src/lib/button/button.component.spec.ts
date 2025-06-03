@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {ButtonModule} from './button.module';
@@ -7,7 +7,8 @@ import {ButtonModule} from './button.module';
     template: `
         <button hc-button [buttonStyle]="buttonStyle" [disabled]="isDisabled" (click)="buttonClick()">Button</button>
         <a hc-button [buttonStyle]="buttonStyle" [disabled]="isDisabled" href="https://www.healthcatalyst.com">Link</a>
-    `
+    `,
+    standalone: false
 })
 class TestAppComponent {
     buttonStyle = 'primary';
@@ -46,7 +47,7 @@ class TestAppReference {
 }
 
 describe('ButtonComponent', () => {
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             imports: [ButtonModule],
             declarations: [TestAppComponent]

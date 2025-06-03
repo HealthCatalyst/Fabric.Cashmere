@@ -13,7 +13,8 @@ let nextUploaderId = 1;
     templateUrl: './file-uploader.component.html',
     styleUrls: ['./file-uploader.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => FileUploaderComponent)}]
+    providers: [{ provide: HcFormControlComponent, useExisting: forwardRef(() => FileUploaderComponent) }],
+    standalone: false
 })
 export class FileUploaderComponent extends HcFormControlComponent implements AfterViewInit, OnDestroy {
     @ViewChild('dropZone') _dropZone!: ElementRef<HTMLElement>;

@@ -1,6 +1,6 @@
 import {TabComponent} from '../tab/tab.component';
 import {TabSetComponent, TabChangeEvent} from './tab-set.component';
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Component, ViewChild} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -21,7 +21,8 @@ const expectedDirection = 'horizontal';
                 <div>Content 3</div>
             </hc-tab>
         </hc-tab-set>
-    `
+    `,
+    standalone: false
 })
 export class TestTabSetComponent {
     @ViewChild(TabSetComponent)
@@ -33,7 +34,7 @@ describe('TabSetComponent', () => {
     let testHostComponent: TestTabSetComponent;
     let fixture: ComponentFixture<TestTabSetComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             imports: [RouterTestingModule, TabsModule],
             declarations: [TabSetComponent, TabComponent, TestTabSetComponent]

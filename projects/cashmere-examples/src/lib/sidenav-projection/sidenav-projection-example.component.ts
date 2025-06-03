@@ -5,7 +5,8 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'hc-sidenav-projection-example',
     templateUrl: 'sidenav-projection-example.component.html',
-    styleUrls: ['sidenav-projection-example.component.scss']
+    styleUrls: ['sidenav-projection-example.component.scss'],
+    standalone: false
 })
 export class SidenavProjectionExampleComponent {
 }

@@ -5,7 +5,8 @@ import {Component} from '@angular/core';
  */
 @Component({
     selector: 'hc-typeform-survey-overview-example',
-    templateUrl: 'typeform-survey-overview-example.component.html'
+    templateUrl: 'typeform-survey-overview-example.component.html',
+    standalone: false
 })
 export class TypeformSurveyOverviewExampleComponent {
     surveyUri = 'https://healthcatalyst.typeform.com/to/bGDyIK?productname=Fabric.Cashmere';

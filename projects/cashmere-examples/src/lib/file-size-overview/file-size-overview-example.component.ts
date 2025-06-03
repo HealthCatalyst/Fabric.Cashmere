@@ -6,7 +6,8 @@ import { FormControl } from '@angular/forms';
  */
 @Component({
     selector: 'hc-file-size-overview-example',
-    templateUrl: 'file-size-overview-example.component.html'
+    templateUrl: 'file-size-overview-example.component.html',
+    standalone: false
 })
 export class FileSizeOverviewExampleComponent {
     readonly bytes = new FormControl(123456789, {nonNullable: true});

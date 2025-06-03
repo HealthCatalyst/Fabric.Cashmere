@@ -33,8 +33,9 @@ let nextUniqueId = 0;
 /** Groups single radio buttons together into a set for which only one can be selected */
 @Directive({
     selector: 'hc-radio-group',
-    providers: [{provide: HcFormControlComponent, useExisting: forwardRef(() => RadioGroupDirective), multi: true}],
-    exportAs: 'hcRadioGroup'
+    providers: [{ provide: HcFormControlComponent, useExisting: forwardRef(() => RadioGroupDirective), multi: true }],
+    exportAs: 'hcRadioGroup',
+    standalone: false
 })
 export class RadioGroupDirective extends HcFormControlComponent implements ControlValueAccessor, AfterContentInit, OnDestroy {
     @HostBinding('class.hc-radio-group-vertical')
@@ -316,7 +317,8 @@ export class RadioButtonChangeEvent {
     selector: 'hc-radio-button',
     templateUrl: './radio-button.component.html',
     styleUrls: ['./radio-button.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RadioButtonComponent implements OnInit, AfterContentInit, OnDestroy {
     private _uniqueId = `hc-radio-button-${nextUniqueId++}`;

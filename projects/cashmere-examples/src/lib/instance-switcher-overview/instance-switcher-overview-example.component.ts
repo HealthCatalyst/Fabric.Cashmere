@@ -8,7 +8,8 @@ import { IInstance, IInstanceSwitcherTooltipText } from '@healthcatalyst/cashmer
 @Component({
     selector: 'hc-instance-switcher-overview-example',
     templateUrl: 'instance-switcher-overview-example.component.html',
-    styleUrls: ['instance-switcher-overview-example.component.scss']
+    styleUrls: ['instance-switcher-overview-example.component.scss'],
+    standalone: false
 })
 export class InstanceSwitcherOverviewExampleComponent {
     readonly maxChipWidthControl = new FormControl('none');

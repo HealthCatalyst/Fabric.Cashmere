@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
 import {Drawer} from './drawer.component';
 import {DrawerContainer} from './drawer-container.component';
 import {DrawerModule} from './drawer.module';
@@ -11,7 +11,8 @@ import {Component, ViewChild} from '@angular/core';
             <hc-drawer align="left" #leftDrawer></hc-drawer>
             <hc-drawer align="right" #rightDrawer></hc-drawer>
         </hc-drawer-container>
-    `
+    `,
+    standalone: false
 })
 export class TestDrawerContainer {
     @ViewChild('d', {static: false})
@@ -27,7 +28,8 @@ export class TestDrawerContainer {
         <hc-drawer-container #d>
             <hc-drawer *ngFor="let drawer of drawers"></hc-drawer>
         </hc-drawer-container>
-    `
+    `,
+    standalone: false
 })
 export class InvalidDrawerContainer {
     @ViewChild('d', {static: false})
@@ -40,7 +42,7 @@ describe('DrawerContainer', () => {
     let component: TestDrawerContainer;
     let fixture: ComponentFixture<TestDrawerContainer>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestDrawerContainer, InvalidDrawerContainer],
             imports: [DrawerModule, NoopAnimationsModule]

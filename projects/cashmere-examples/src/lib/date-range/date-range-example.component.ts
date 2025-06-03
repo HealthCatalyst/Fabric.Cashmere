@@ -5,7 +5,8 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'hc-date-range-example',
     templateUrl: './date-range-example.component.html',
-    styleUrls: ['date-range-example.component.scss']
+    styleUrls: ['date-range-example.component.scss'],
+    standalone: false
 })
 export class DateRangeExampleComponent implements OnInit {
     range: DateRange = {fromDate: new Date(), toDate: new Date()};

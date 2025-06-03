@@ -8,7 +8,8 @@ import { TabSetComponent } from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-tabs-vertical-example',
     templateUrl: 'tabs-vertical-example.component.html',
-    styleUrls: ['tabs-vertical-example.component.scss']
+    styleUrls: ['tabs-vertical-example.component.scss'],
+    standalone: false
 })
 export class TabsVerticalExampleComponent {
     readonly _tight = new FormControl(false, {nonNullable: true});

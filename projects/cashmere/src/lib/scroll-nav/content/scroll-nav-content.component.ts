@@ -26,7 +26,8 @@ import {ScrollNavTargetDirective} from './scroll-nav-target.directive';
     selector: 'hc-scroll-nav-content',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['scroll-nav-content.component.scss'],
-    templateUrl: 'scroll-nav-content.component.html'
+    templateUrl: 'scroll-nav-content.component.html',
+    standalone: false
 })
 export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
     private readonly DEFAULT_BUFFER = 0;

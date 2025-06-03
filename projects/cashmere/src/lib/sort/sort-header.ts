@@ -71,7 +71,8 @@ export interface ArrowViewStateTransition {
         hcSortAnimations.arrowOpacity,
         hcSortAnimations.arrowPosition,
         hcSortAnimations.allowChildren
-    ]
+    ],
+    standalone: false
 })
 export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
     private _rerenderSubscription: Subscription;

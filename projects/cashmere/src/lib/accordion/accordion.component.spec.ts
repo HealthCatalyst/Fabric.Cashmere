@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
 import {AccordionComponent} from './accordion.component';
 import {AccordionToolbarComponent} from './accordion-toolbar.component';
 import {AccordionModule} from './accordion.module';
@@ -21,7 +21,8 @@ import {By} from '@angular/platform-browser';
             <hc-accordion-toolbar>Toolbar</hc-accordion-toolbar>
             Content
         </hc-accordion>
-    `
+    `,
+    standalone: false
 })
 export class TestAccordionComponent {
     alignVal = 'left';
@@ -47,7 +48,7 @@ describe('AccordionComponent', () => {
     let component: TestAccordionComponent;
     let fixture: ComponentFixture<TestAccordionComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestAccordionComponent],
             imports: [AccordionModule, NoopAnimationsModule]

@@ -45,12 +45,13 @@ import { SortFn, GroupValueFn, CompareWithFn, AddCustomItemFn, SearchFn, GroupBy
     templateUrl: './picklist.component.html',
     styleUrls: ['./picklist.component.scss'],
     providers: [{
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => PicklistComponent),
-        multi: true
-    }, PicklistService],
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => PicklistComponent),
+            multi: true
+        }, PicklistService],
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValueAccessor {
     /** If options are objects, this matches the object property to use for display in the list.

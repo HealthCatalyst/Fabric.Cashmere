@@ -10,7 +10,8 @@ import {Subject} from 'rxjs';
 @Component({
     selector: 'hc-product-centric-index',
     templateUrl: './product-centric-index.component.html',
-    styleUrls: ['./product-centric-index.component.scss']
+    styleUrls: ['./product-centric-index.component.scss'],
+    standalone: false
 })
 export class ProductCentricIndexComponent extends BaseDemoComponent implements OnDestroy {
     private unsubscribe = new Subject<void>();

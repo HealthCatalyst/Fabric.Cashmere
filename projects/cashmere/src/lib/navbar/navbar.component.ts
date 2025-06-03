@@ -26,7 +26,8 @@ import {NavbarDropdownComponent} from './navbar-dropdown/navbar-dropdown.compone
     selector: 'hc-navbar',
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class NavbarComponent implements AfterViewInit, OnDestroy {
     /** Display name of current user */

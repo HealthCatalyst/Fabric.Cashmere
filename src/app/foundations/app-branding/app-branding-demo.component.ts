@@ -5,7 +5,8 @@ import {BaseDemoComponent} from '../../shared/base-demo.component';
 @Component({
     selector: 'hc-app-branding-demo',
     templateUrl: './app-branding-demo.component.html',
-    styleUrls: ['./app-branding-demo.component.scss']
+    styleUrls: ['./app-branding-demo.component.scss'],
+    standalone: false
 })
 export class AppBrandingDemoComponent extends BaseDemoComponent {
 

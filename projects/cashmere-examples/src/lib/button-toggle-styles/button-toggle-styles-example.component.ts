@@ -4,7 +4,8 @@ import { ButtonToggleChangeEvent } from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-button-toggle-styles-example',
     templateUrl: 'button-toggle-styles-example.component.html',
-    styleUrls: ['button-toggle-styles-example.component.scss']
+    styleUrls: ['button-toggle-styles-example.component.scss'],
+    standalone: false
 })
 export class ButtonToggleStylesExampleComponent {
     public selectedButtonToggleValue = '';

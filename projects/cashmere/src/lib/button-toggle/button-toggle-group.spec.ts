@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
 import {ButtonToggleGroupComponent} from './button-toggle-group.component';
 import {ButtonToggleComponent} from './button-toggle.component';
 import {ButtonToggleChangeEvent} from './button-toggle-change-event';
@@ -11,7 +11,8 @@ import {Component, ViewChild} from '@angular/core';
             <hc-button-toggle value='one' #one>one</hc-button-toggle>
             <hc-button-toggle value='two' #two>two</hc-button-toggle>
         </hc-button-toggle-group>
-    `
+    `,
+    standalone: false
 })
 export class TestButtonToggleGroup {
     @ViewChild('group', {static: false})
@@ -30,7 +31,7 @@ describe('ButtonToggleGroup', () => {
     let component: TestButtonToggleGroup;
     let fixture: ComponentFixture<TestButtonToggleGroup>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestButtonToggleGroup],
             imports: [ButtonToggleModule]

@@ -8,16 +8,17 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-modal-simple-overview-example',
     templateUrl: 'modal-simple-overview-example.component.html',
-    styleUrls: ['modal-simple-overview-example.component.scss']
+    styleUrls: ['modal-simple-overview-example.component.scss'],
+    standalone: false
 })
 export class ModalSimpleOverviewExampleComponent {
     constructor(private modalService: ModalService) {}
     readonly message = new FormControl(`<p>Are you sure you to purchase this <strong>Didgeridoo</strong>?</p><p>It is a <em>really cool</em> wind instrument, played with vibrating lips to produce a continuous drone while using a special breathing technique called circular breathing.</p>`, {nonNullable: true});
     readonly headerText = new FormControl('Buy a Didgeridoo?', {nonNullable: true});
-    readonly icon = new FormControl('fa fa-dollar', {nonNullable: true});
+    readonly icon = new FormControl('icon-dollar', {nonNullable: true});
     readonly cancelButtonText = new FormControl('Cancel', {nonNullable: true});
     readonly confirmButtonText = new FormControl('Buy didgeridoo', {nonNullable: true});
-    readonly confirmButtonIcon = new FormControl('fa fa-dollar', {nonNullable: true});
+    readonly confirmButtonIcon = new FormControl('icon-dollar', {nonNullable: true});
     readonly confirmButtonIsDestructive = new FormControl(false, {nonNullable: true});
     readonly footerTooltipText = new FormControl('Help is on the way...', {nonNullable: true});
     readonly modalSize = new FormControl('lg', {nonNullable: true});

@@ -28,10 +28,11 @@ import {Component} from '@angular/core';
                 width: 319px;
             }
         `
-    ]
+    ],
+    standalone: false
 })
 export class ToasterOverviewCustomComponent {
     randomID = 0;
     randomColor = '#ffffff';
-    randomIcon = 'fa-file-text';
+    randomIcon = 'icon-file-lines';
 }

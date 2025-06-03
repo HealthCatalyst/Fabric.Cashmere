@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {IconModule} from './icon.module';
 import {IconComponent} from './icon.component';
 import {Component} from '@angular/core';
@@ -6,18 +6,19 @@ import {By} from '@angular/platform-browser';
 
 @Component({
     template: `
-        <hc-icon fontSet="fa" [fontIcon]="iconValue" hcIconLg></hc-icon>
-    `
+        <hc-icon [fontIcon]="iconValue" hcIconLg></hc-icon>
+    `,
+    standalone: false
 })
 export class TestIconComponent {
-    iconValue = 'fa-snowflake-o';
+    iconValue = 'icon-medicine';
 }
 
 describe('IconComponent', () => {
     let component: TestIconComponent;
     let fixture: ComponentFixture<TestIconComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestIconComponent],
             imports: [IconModule]
@@ -32,7 +33,7 @@ describe('IconComponent', () => {
 
     it('should update the font class when the fontIcon value is changed', () => {
         const subnavComponent = fixture.debugElement.query(By.directive(IconComponent));
-        expect(subnavComponent.nativeElement.classList.contains('fa-snowflake-o')).toBe(true);
+        expect(subnavComponent.nativeElement.classList.contains('icon-medicine')).toBe(true);
 
         component.iconValue = 'fa-pied-piper';
         fixture.detectChanges();

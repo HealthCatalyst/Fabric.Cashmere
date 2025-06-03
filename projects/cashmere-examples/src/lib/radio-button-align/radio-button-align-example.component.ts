@@ -7,7 +7,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-radio-button-align-example',
     templateUrl: 'radio-button-align-example.component.html',
-    styleUrls: ['radio-button-align-example.component.scss']
+    styleUrls: ['radio-button-align-example.component.scss'],
+    standalone: false
 })
 export class RadioButtonAlignExampleComponent {
     alignControl = new FormControl('center', {nonNullable: true});

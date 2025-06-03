@@ -30,7 +30,8 @@ export class SplitButtonClickEvent {
     templateUrl: './split-button.component.html',
     styleUrls: ['../button.component.scss', './split-button.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class SplitButtonComponent {
     private _tabIndex: number;

@@ -6,7 +6,8 @@ import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
     selector: 'hc-search-bar',
     templateUrl: 'search-bar.component.html',
     styleUrls: ['search-bar.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class SearchBarComponent implements OnInit, OnDestroy, OnChanges {
     /** Placeholder text for the search bar. *Defaults to `Search`.* */

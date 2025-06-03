@@ -26,7 +26,8 @@ import {DateAdapter} from '../datetime/date-adapter';
     templateUrl: './year-view.component.html',
     exportAs: 'hcYearView',
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class YearViewComponent implements AfterContentInit {
     /** The date to display in this year view (everything other than the year is ignored). */

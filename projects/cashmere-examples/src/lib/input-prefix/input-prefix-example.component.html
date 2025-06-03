@@ -3,20 +3,20 @@
         <!-- Disabling the form field via the 'disabled' attribute-->
         <hc-form-field inline="true">
             <hc-label>Username (usually your email):</hc-label>
-            <hc-icon hcPrefix fontSet="fa" fontIcon="fa-plus-circle"></hc-icon>
+            <hc-icon hcPrefix fontIcon="icon-circle-plus-o"></hc-icon>
             <input hcInput placeholder="Enter username" class="demo-input" disabled>
-            <hc-icon hcSuffix fontSet="fa" fontIcon="fa-user-circle-o"></hc-icon>
+            <hc-icon hcSuffix fontIcon="icon-circle-user"></hc-icon>
         </hc-form-field>
         <!-- Disabling the form field via formControl -->
         <hc-form-field inline="true">
             <hc-label>Password:</hc-label>
-            <hc-icon hcPrefix fontSet="fa" fontIcon="fa-plus-circle"></hc-icon>
+            <hc-icon hcPrefix fontIcon="icon-circle-plus-o"></hc-icon>
             <input hcInput placeholder="Enter password" class="demo-input" [formControl]='inputPrefix'>
-            <hc-icon hcSuffix fontSet="fa" fontIcon="fa-key"></hc-icon>
+            <hc-icon hcSuffix fontIcon="icon-key"></hc-icon>
         </hc-form-field>
         <hc-form-field inline="true">
             <hc-label>Clearable Input:</hc-label>
-            <hc-icon hcPrefix fontSet="fa" fontIcon="fa-snowflake-o"></hc-icon>
+            <hc-icon hcPrefix fontIcon="icon-medicine"></hc-icon>
             <input hcInput #clearableInput placeholder="Type something" class="demo-input">
             <hc-clear-input-btn hcSuffix [inputEl]="clearableInput"></hc-clear-input-btn>
         </hc-form-field>

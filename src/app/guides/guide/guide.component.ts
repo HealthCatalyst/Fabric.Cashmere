@@ -13,7 +13,8 @@ import {SectionService} from 'src/app/shared/section.service';
                 vertical-align: middle;
             }
         `
-    ]
+    ],
+    standalone: false
 })
 export class GuideComponent implements OnInit {
     public document = '';

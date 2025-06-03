@@ -7,7 +7,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 @Component({
     selector: 'hc-form-field-overview-example',
     templateUrl: 'form-field-overview-example.component.html',
-    styleUrls: ['form-field-overview-example.component.scss']
+    styleUrls: ['form-field-overview-example.component.scss'],
+    standalone: false
 })
 export class FormFieldOverviewExampleComponent {
     enabledState = true;

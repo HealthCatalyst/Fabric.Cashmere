@@ -7,15 +7,7 @@ npm install --save @ng-select/ng-select
 ```
 
 **Version Compatibility**
-Make sure to install the ng-select version compatible with the angular version in your app.
-
-| Angular| ng-select|
-| ------|:------:|
-| >=14.0.0 <15.0.0 *(latest version of Cashmere)* | v9.x |
-| >=13.0.0 <14.0.0 | v8.x |
-| >=12.0.0 <13.0.0 | v7.x |
-| >=11.0.0 <12.0.0 | v6.x |
-| >=10.0.0 <11.0.0 | v5.x |
+Make sure to install the ng-select version compatible with the angular version in your app. [See the version chart](https://github.com/ng-select/ng-select).
 
 
 ### Step 2: Import NgSelectModule and FormsModule.

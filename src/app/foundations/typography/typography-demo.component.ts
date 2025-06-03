@@ -5,7 +5,8 @@ import {BaseDemoComponent} from '../../shared/base-demo.component';
 @Component({
     selector: 'hc-typography',
     templateUrl: './typography-demo.component.html',
-    styleUrls: ['./typography-demo.component.scss']
+    styleUrls: ['./typography-demo.component.scss'],
+    standalone: false
 })
 export class TypographyDemoComponent extends BaseDemoComponent {
     constructor(sectionService: SectionService) {

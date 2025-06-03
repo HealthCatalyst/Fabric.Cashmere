@@ -7,7 +7,8 @@ import { filter, take } from 'rxjs/operators';
  */
 @Component({
     selector: 'hc-modal-simple-example',
-    templateUrl: 'modal-simple-example.component.html'
+    templateUrl: 'modal-simple-example.component.html',
+    standalone: false
 })
 export class ModalSimpleExampleComponent {
     constructor(private modalService: ModalService) {}

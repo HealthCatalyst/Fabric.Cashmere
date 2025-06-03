@@ -4,8 +4,8 @@
             <span>{{ targetHelperText }}</span>
             <hc-icon
                 *ngIf="!!targetTooltip"
-                fontSet="fa"
-                fontIcon="fa-info-circle"
+                fontSet="hc-icons"
+                fontIcon="hci-info"
                 [hcPop]="productStandardLevelNamesPop"
                 trigger="hover"
             ></hc-icon>
@@ -17,16 +17,16 @@
             <div *ngFor="let assignment of _modifiedAssignments" class="hc-drag-list-assignments">
                 <div class="hc-drag-list-target-name" [title]="assignment.target[targetHoverTextField] ?? ''">
                     <hc-icon
-                        fontSet="fa"
+                        fontSet="fa-solid"
                         fontIcon="fa-check"
                         *ngIf="!assignment.locked"
                         [style.visibility]="!!assignment.assignment ? 'visible' : 'hidden'"
                     ></hc-icon>
-                    <hc-icon fontSet="fa" fontIcon="fa-lock" [hcPop]="lockedText" trigger="hover" *ngIf="!!assignment.locked"></hc-icon>
+                    <hc-icon fontSet="fa-solid" fontIcon="fa-lock" [hcPop]="lockedText" trigger="hover" *ngIf="!!assignment.locked"></hc-icon>
                     <hc-pop #lockedText>{{ optionLockedText }}</hc-pop>
                     {{ assignment.target[targetDisplayNameField] }}
                 </div>
-    
+
                 <div
                     class="hc-drag-list-assignment hc-drag-list-placeholder"
                     (dragenter)="_dragenter($event)"
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="hc-drag-list-assignment" *ngIf="!!assignment.assignment && !!assignment.locked">
                     <div class="hc-drag-list-option hc-drag-list-option-locked" [title]="_tooltipsByOptionId[assignment.assignment[optionIdField]]">
                         <div class="hc-drag-list-option-name">

@@ -47,21 +47,15 @@ const closeStateAnimation = '0.25s .05s ease';
     encapsulation: ViewEncapsulation.None,
     animations: [
         trigger('openState', [
-            state(
-                'open-left, open-right, open-instant',
-                style({
-                    visibility: 'visible'
-                })
-            ),
-            state(
-                'void, close-instant',
-                style({
-                    'box-shadow': 'none',
-                    // overflow override included to prevent Safari from still showing the scrollbar when the drawer is closed
-                    'overflow-y': 'hidden',
-                    visibility: 'hidden'
-                })
-            ),
+            state('open-left, open-right, open-instant', style({
+                visibility: 'visible'
+            })),
+            state('void, close-instant', style({
+                'box-shadow': 'none',
+                // overflow override included to prevent Safari from still showing the scrollbar when the drawer is closed
+                'overflow-y': 'hidden',
+                visibility: 'hidden'
+            })),
             transition('void => open-instant', animate('0ms')),
             transition('open-instant => close-instant', animate('0ms')),
             transition('open-left => close-instant', animate('0ms')),
@@ -75,7 +69,7 @@ const closeStateAnimation = '0.25s .05s ease';
                 animate(openStateAnimation, style({ transform: 'translate3d(-100%, 0, 0)' }))
             ]),
             transition('void => open-right', [
-                animate('0ms', style({ transform: 'translate3d(100%, 0, 0)'})),
+                animate('0ms', style({ transform: 'translate3d(100%, 0, 0)' })),
                 animate(closeStateAnimation)
             ]),
             transition('open-right => void', [
@@ -83,7 +77,8 @@ const closeStateAnimation = '0.25s .05s ease';
             ])
         ])
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class Drawer implements AfterContentInit {
     private _mode = 'push';

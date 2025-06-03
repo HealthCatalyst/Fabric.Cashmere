@@ -8,7 +8,8 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'hc-banner-overview-example',
     templateUrl: 'banner-overview-example.component.html',
-    styleUrls: ['banner-overview-example.component.scss']
+    styleUrls: ['banner-overview-example.component.scss'],
+    standalone: false
 })
 export class BannerOverviewExampleComponent {
     readonly _bannerType = new FormControl('info', {nonNullable: true});

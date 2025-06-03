@@ -7,7 +7,8 @@ import {DragDropAssignment, DragListComponent} from '@healthcatalyst/cashmere';
 @Component({
     selector: 'hc-drag-list-overview-example',
     templateUrl: 'drag-list-overview-example.component.html',
-    styleUrls: ['./drag-list-overview-example.component.scss']
+    styleUrls: ['./drag-list-overview-example.component.scss'],
+    standalone: false
 })
 export class DragListOverviewExampleComponent {
     @ViewChild(DragListComponent) dragList: DragListComponent;

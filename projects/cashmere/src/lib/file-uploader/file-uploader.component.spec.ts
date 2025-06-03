@@ -1,4 +1,4 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FileUploaderModule } from './file-uploader.module';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
@@ -7,7 +7,8 @@ import { By } from '@angular/platform-browser';
 @Component({
     template: `
         <hc-file-uploader [formControl]="uploaderForm" (filesAdded)="onFileAdd($event)"></hc-file-uploader>
-    `
+    `,
+    standalone: false
 })
 export class FileUploaderFormComponent {
     uploaderForm: FormControl = new FormControl( true );
@@ -19,7 +20,7 @@ describe('FileUploaderComponent', () => {
     let formComponent: FileUploaderFormComponent;
     let formFixture: ComponentFixture<FileUploaderFormComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [FileUploaderFormComponent],
             imports: [FileUploaderModule, FormsModule, ReactiveFormsModule]

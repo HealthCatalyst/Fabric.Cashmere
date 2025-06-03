@@ -7,7 +7,8 @@ import {FormControl} from '@angular/forms';
 @Component({
     selector: 'hc-select-forms-example',
     templateUrl: 'select-forms-example.component.html',
-    styleUrls: ['select-forms-example.component.scss']
+    styleUrls: ['select-forms-example.component.scss'],
+    standalone: false
 })
 export class SelectFormsExampleComponent {
     locations = [

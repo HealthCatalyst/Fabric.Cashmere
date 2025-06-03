@@ -13,7 +13,8 @@ interface Topping {
 @Component({
     selector: 'hc-select-compare-with-example',
     templateUrl: 'select-compare-with-example.component.html',
-    styleUrls: ['select-compare-with-example.component.scss']
+    styleUrls: ['select-compare-with-example.component.scss'],
+    standalone: false
 })
 export class SelectCompareWithExampleComponent implements OnInit {
     pizzaToppingForm: FormGroup;

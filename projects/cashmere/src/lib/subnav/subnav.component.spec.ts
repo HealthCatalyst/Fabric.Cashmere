@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SubnavModule} from './subnav.module';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -8,7 +8,8 @@ import {SubnavRightDirective} from './subnav-right.directive';
 @Component({
     template: `
         <hc-subnav [fixedTop]="fixedValue"><div hcSubnavRight></div></hc-subnav>
-    `
+    `,
+    standalone: false
 })
 export class SubNavRightComponent {
     fixedValue = false;
@@ -18,7 +19,7 @@ describe('SubnavComponent', () => {
     let component: SubNavRightComponent;
     let fixture: ComponentFixture<SubNavRightComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [SubNavRightComponent],
             imports: [SubnavModule]

@@ -8,7 +8,8 @@ import {transformPopover} from '../popover.animations';
     templateUrl: './tooltip.component.html',
     animations: [transformPopover],
     styleUrls: ['../popover.component.scss', './tooltip.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class HcTooltipComponent extends HcPopComponent {
     /** The content to be display in the tooltip */

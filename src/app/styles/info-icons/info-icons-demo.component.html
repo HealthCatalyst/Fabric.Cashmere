@@ -3,7 +3,7 @@
     <h6>Last updated Jun 12, 2024</h6>
 
     <hc-tile>
-        <h5 id="intro">Why Info Icons?<span class="hc-icon-right hc-info-ico fa fa-info-circle" hcTooltip="To give extra context!"></span></h5>
+        <h5 id="intro">Why Info Icons?<span class="hc-icon-right hc-info-ico hc-icons icon-info" hcTooltip="To give extra context!"></span></h5>
         <p>Information icons provide in-context UI help. They're ideal for cases where the supplmental info is A) not critical, or B) verbose enough that it would clutter the UI if displayed all the time.</p>
 
         <p>Use them generously in form controls, in tables, or in any other place where the user may benefit from some additional context.</p>
@@ -22,7 +22,7 @@
         <h5 id="intro">Use with HcTooltip</h5>
         <hc-form-field>
             <hc-form-field>
-                <hc-label>Name <span class="hc-icon-right hc-info-ico fa fa-info-circle" hcTooltip="Some helpful context"></span></hc-label>
+                <hc-label>Name <span class="hc-icon-right hc-info-ico hc-icons icon-info" hcTooltip="Some helpful context"></span></hc-label>
                 <input hcInput placeholder="Enter name"/>
             </hc-form-field>
         </hc-form-field>
@@ -32,7 +32,7 @@
     &lt;hc-form-field&gt;
         &lt;hc-label&gt;
             Name
-            &lt;span class=&quot;hc-icon-left hc-info-ico fa fa-info-circle&quot;
+            &lt;span class=&quot;hc-icon-left hc-info-ico hc-icons icon-info&quot;
                 hcTooltip=&quot;Some helpful context&quot;&gt;
             &lt;/span&gt;&lt;/hc-label&gt;
         &lt;input hcInput placeholder=&quot;Enter name&quot;/&gt;
@@ -44,7 +44,7 @@
     <hc-tile>
         <h5 id="intro">Use with HcPop</h5>
         <hc-tile>
-            <strong>Sepsis Dashboard<span class="hc-icon-right hc-info-ico fa fa-info-circle" [hcPop]="helpPop"></span></strong>
+            <strong>Sepsis Dashboard<span class="hc-icon-right hc-info-ico hc-icons icon-info" [hcPop]="helpPop"></span></strong>
         </hc-tile>
         <hc-pop #helpPop>
             <strong>Helpful Context</strong>
@@ -57,7 +57,7 @@
     &lt;hc-form-field&gt;
         &lt;hc-label&gt;
             Name
-            &lt;span class=&quot;hc-icon-left hc-info-ico fa fa-info-circle&quot;
+            &lt;span class=&quot;hc-icon-left hc-info-ico hc-icons icon-info&quot;
                 hcPop=&quot;helpPop&quot;&gt;
             &lt;/span&gt;&lt;/hc-label&gt;
         &lt;input hcInput placeholder=&quot;Enter name&quot;/&gt;

@@ -8,7 +8,8 @@ import {ApplicationInsightsService} from '../shared/application-insights/applica
 @Component({
     selector: 'hc-search-results',
     templateUrl: './search-results.component.html',
-    styleUrls: ['./search-results.component.scss']
+    styleUrls: ['./search-results.component.scss'],
+    standalone: false
 })
 export class SearchResultsComponent implements AfterViewInit {
     constructor(
@@ -47,11 +48,11 @@ export class SearchResultsComponent implements AfterViewInit {
     });
 
     searchIcons = {
-        components: {icon: 'fa-code'},
-        guides: {icon: 'fa-graduation-cap'},
-        foundations: {icon: 'fa-cogs'},
-        content: {icon: 'fa-file-text-o'},
-        analytics: {icon: 'fa-bar-chart'}
+        components: {icon: 'icon-code'},
+        guides: {icon: 'icon-grad'},
+        foundations: {icon: 'icon-cogs'},
+        content: {icon: 'icon-file-lines'},
+        analytics: {icon: 'icon-chart-bar'}
     };
 
     @HostListener('window:resize')

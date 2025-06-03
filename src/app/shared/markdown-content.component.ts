@@ -7,7 +7,8 @@ import {BaseDemoComponent} from '../shared/base-demo.component';
     selector: 'hc-markdown-demo',
     template: `
         <div class="demo-content"><div [hcMarkdown]="markdownContent" (loaded)="loaded()"></div><hc-feedback-form></hc-feedback-form></div>
-    `
+    `,
+    standalone: false
 })
 export class MarkdownContentComponent extends BaseDemoComponent {
     markdownContent: Record<string, unknown>;

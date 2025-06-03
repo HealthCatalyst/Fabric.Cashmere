@@ -4,7 +4,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-search-bar-overview-example',
     templateUrl: 'search-bar-overview-example.component.html',
-    styleUrls: ['search-bar-overview-example.component.scss']
+    styleUrls: ['search-bar-overview-example.component.scss'],
+    standalone: false
 })
 export class SearchBarOverviewExampleComponent {
     placeholder = "Search";

@@ -24,6 +24,12 @@
 
         hc-icon {
             margin-right: 8px;
+
+            &.icon-code {
+                font-size: 16px;
+                position: relative;
+                top: 2px;
+            }
         }
     }
 }

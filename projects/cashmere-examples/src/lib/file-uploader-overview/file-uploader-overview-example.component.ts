@@ -7,7 +7,8 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'hc-file-uploader-overview-example',
     templateUrl: 'file-uploader-overview-example.component.html',
-    styleUrls: ['file-uploader-overview-example.component.scss']
+    styleUrls: ['file-uploader-overview-example.component.scss'],
+    standalone: false
 })
 export class FileUploaderOverviewExampleComponent {
     selectedFiles = new FormControl();

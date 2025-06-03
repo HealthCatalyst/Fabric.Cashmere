@@ -5,7 +5,8 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
     template: `
         <div class="hc-clear-input-btn" [class.hc-clear-input-btn-show]="inputEl?.value.length > 0" title="Clear" (click)="clear()"></div>
     `,
-    styleUrls: ['clear-input.component.scss']
+    styleUrls: ['clear-input.component.scss'],
+    standalone: false
 })
 export class ClearInputComponent {
     /** A reference to the HTML input element */

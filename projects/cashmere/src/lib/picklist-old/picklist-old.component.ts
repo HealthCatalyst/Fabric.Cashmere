@@ -21,7 +21,8 @@ export function validateSortInput(inputStr: string): void {
             useExisting: forwardRef(() => PicklistOldComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class PicklistOldComponent implements ControlValueAccessor {
     /**

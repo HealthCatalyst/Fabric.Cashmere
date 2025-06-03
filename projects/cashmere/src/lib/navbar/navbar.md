@@ -8,7 +8,7 @@ All Health Catalyst apps should include a help menu in their navbar. This guide 
 
 ```html
 <hc-navbar-icon>
-    <hc-icon fontSet="fa" fontIcon="fa-question-circle-o" [hcPop]="helpMenu"></hc-icon>
+    <hc-icon fontIcon="icon-help" [hcPop]="helpMenu"></hc-icon>
 </hc-navbar-icon>
 ```
 
@@ -18,44 +18,44 @@ All Health Catalyst apps should include a help menu in their navbar. This guide 
 
 You may not have all these items available. However, include what you have in this order:
 
--   [fa-book] **Read the docs** (link to the [docs site](https://www.healthcatalyst.com/docs/) or your help docs repository on HCC)
--   [fa-lightbulb] **Request a feature** (link to your feature request page on Health Catalyst Community)
--   [fa-users] **Ask the community** (link to your Q&A page on Health Catalyst Community)
--   [fa-bullhorn] **Find out what's new** (link to your release notes on Health Catalyst Community)
--   [fa-bug] **Report an issue** (link to open a new ticket on the Support Portal)
--   [fa-comments] **Send feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/web/components/typeform-survey/examples))
--   [fa-info-circle] **About** see the [associated style page](https://cashmere.healthcatalyst.net/foundations/about) for guidelines)
+-   [icon-book] **Read the docs** (link to the [docs site](https://www.healthcatalyst.com/docs/) or your help docs repository on HCC)
+-   [icon-lightbulb] **Request a feature** (link to your feature request page on Health Catalyst Community)
+-   [icon-users] **Ask the community** (link to your Q&A page on Health Catalyst Community)
+-   [icon-bullhorn] **Find out what's new** (link to your release notes on Health Catalyst Community)
+-   [icon-bug] **Report an issue** (link to open a new ticket on the Support Portal)
+-   [icon-comments] **Send feedback** (see the [User Feedback Guide](https://cashmere.healthcatalyst.net/web/components/typeform-survey/examples))
+-   [icon-info] **About** see the [associated style page](https://cashmere.healthcatalyst.net/foundations/about) for guidelines)
 
 ```html
 <hc-pop #helpMenu [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">
     <div hcMenu>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-book"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-book"></hc-icon>
             <span hcMenuText>Read the docs</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-lightbulb-o"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-lightbulb"></hc-icon>
             <span hcMenuText>Request a feature</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-users"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-users"></hc-icon>
             <span hcMenuText>Ask the community</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bullhorn"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-bullhorn"></hc-icon>
             <span hcMenuText>Find out what's new</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-bug"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-bug"></hc-icon>
             <span hcMenuText>Report an issue</span>
         </a>
         <a hcMenuItem href="http://example.com" target="_blank">
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-comments"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-comments"></hc-icon>
             <span hcMenuText>Send feedback</span>
         </a>
         <div hcMenuItem hcDivider></div>
         <button hcMenuItem>
-            <hc-icon hcMenuIcon fontSet="fa" fontIcon="fa-info-circle"></hc-icon>
+            <hc-icon hcMenuIcon fontIcon="icon-info"></hc-icon>
             <span hcMenuText>About</span>
         </button>
     </div>

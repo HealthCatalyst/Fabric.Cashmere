@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
+import {AfterContentInit, Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
 import {animate, AnimationEvent, state, style, transition, trigger} from '@angular/animations';
 import {parseBooleanAttribute} from '../util';
 
@@ -18,24 +18,19 @@ export function validateAlignInput(inputStr: string): void {
     exportAs: 'hcAccordion',
     animations: [
         trigger('openState', [
-            state(
-                'open, open-instant',
-                style({
-                    height: '*'
-                })
-            ),
-            state(
-                'void',
-                style({
-                    height: '0px',
-                    visibility: 'hidden'
-                })
-            ),
+            state('open, open-instant', style({
+                height: '*'
+            })),
+            state('void', style({
+                height: '0px',
+                visibility: 'hidden'
+            })),
             transition('void => open-instant', animate('0ms')),
             transition('void <=> open', animate('400ms ease'))
         ])
     ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class AccordionComponent implements AfterContentInit {
     private _animationDisabled = false;
@@ -45,6 +40,8 @@ export class AccordionComponent implements AfterContentInit {
     private _triggerAlign = 'left';
     private __isOpen = false;
     private _disabled = false;
+
+    constructor(public elementRef: ElementRef) {}
 
     /** Side the accordion trigger is attached to: `left` or `right` */
     @Input()

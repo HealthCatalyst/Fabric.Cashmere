@@ -5,11 +5,12 @@ import {FormControl} from "@angular/forms";
 @Component({
     selector: 'hc-environment-switcher-overview-example',
     templateUrl: 'environment-switcher-overview-example.component.html',
-    styleUrls: ['environment-switcher-overview-example.component.scss']
+    styleUrls: ['environment-switcher-overview-example.component.scss'],
+    standalone: false
 })
 export class EnvironmentSwitcherOverviewExampleComponent {
     username = 'Christine K.';
-    navIcon: HcIcon = {fontSet: 'hc-icons', fontIcon: 'hci-catalyst-logo', fontSize: 37};
+    navIcon: HcIcon = {fontSet: 'hc-icons', fontIcon: 'icon-catalyst-logo', fontSize: 37};
     listHeader: FormControl = new FormControl("Environments");
 
     selectedEnvironments = [1234];

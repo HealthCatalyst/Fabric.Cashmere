@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChipModule} from './chip.module';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -6,7 +6,8 @@ import {By} from '@angular/platform-browser';
 @Component({
     template: `
         <hc-chip [color]="colorValue" [hasCloseButton]="closeValue">Test Chip</hc-chip>
-    `
+    `,
+    standalone: false
 })
 export class TestChipComponent {
     colorValue = 'red';
@@ -17,7 +18,7 @@ describe('ChipComponent', () => {
     let component: TestChipComponent;
     let fixture: ComponentFixture<TestChipComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestChipComponent],
             imports: [ChipModule]
@@ -63,7 +64,8 @@ describe('ChipComponent', () => {
             <hc-chip>Chip One</hc-chip>
             <hc-chip>Chip Two</hc-chip>
         </hc-chip-row>
-    `
+    `,
+    standalone: false
 })
 export class TestChipRowComponent {
     wrapValue = false;
@@ -73,7 +75,7 @@ describe('ChipRowComponent', () => {
     let component: TestChipRowComponent;
     let fixture: ComponentFixture<TestChipRowComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestChipRowComponent],
             imports: [ChipModule]

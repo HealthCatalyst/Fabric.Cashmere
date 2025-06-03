@@ -1,6 +1,6 @@
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {IconModule} from '../../icon/icon.module';
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {NavbarMobileMenuComponent} from './navbar-mobile-menu.component';
 
@@ -8,7 +8,7 @@ describe('NavbarMobileMenuComponent', () => {
     let component: NavbarMobileMenuComponent;
     let fixture: ComponentFixture<NavbarMobileMenuComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [NavbarMobileMenuComponent],
             imports: [IconModule, BrowserAnimationsModule]

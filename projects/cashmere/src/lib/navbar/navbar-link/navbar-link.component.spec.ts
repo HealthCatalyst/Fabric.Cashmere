@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NavbarLinkComponent} from './navbar-link.component';
 import {RouterModule} from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
@@ -9,7 +9,8 @@ import {By} from '@angular/platform-browser';
     selector: `hc-host-component`,
     template: `
         <hc-navbar-link></hc-navbar-link>
-    `
+    `,
+    standalone: false
 })
 class TestHostComponent {
     @ViewChild(NavbarLinkComponent)
@@ -19,7 +20,7 @@ describe('NavbarLinkComponent', () => {
     let testHostComponent: TestHostComponent;
     let testHostFixture: ComponentFixture<TestHostComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             imports: [RouterModule.forRoot([{ path: '', component: NavbarLinkComponent }], {})],
             declarations: [NavbarLinkComponent, TestHostComponent],
