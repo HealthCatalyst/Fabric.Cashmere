@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CalendarWrapperComponent} from './calendar-wrapper.component';
 import {ConfigStoreService} from '../services/config-store.service';
@@ -18,7 +18,7 @@ describe('CalendarWrapperComponent', () => {
         applyLabel: 'Submit'
     };
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             imports: [InputModule, FormFieldModule],
             declarations: [CalendarWrapperComponent],

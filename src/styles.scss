@@ -1,8 +1,13 @@
-@import '/node_modules/font-awesome/scss/font-awesome';
+$fa-font-path: '../webfonts';
+@import '/node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
+@import '/node_modules/@fortawesome/fontawesome-free/scss/regular';
+@import '/node_modules/@fortawesome/fontawesome-free/scss/solid';
+@import '/node_modules/@fortawesome/fontawesome-free/scss/brands';
 
 @import '/node_modules/notosans-fontface/scss/notosans-fontface-allweight';
 
 @import 'hcicons/hcicons';
+@import 'hcicons2/hcicons2';
 
 @import 'scss/cashmere';
 

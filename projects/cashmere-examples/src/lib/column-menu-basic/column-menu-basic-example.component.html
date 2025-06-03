@@ -11,8 +11,8 @@
                 <span *ngSwitchCase="'copiesSold'">{{element.copiesSold.toLocaleString()}}</span>
 
                 <span *ngSwitchCase="'multiplayer'" [title]="element.multiplayer ? 'Multiplayer game' : 'Single-player game'">
-                    <span class="fa fa-gamepad"></span>
-                    <span *ngIf="element.multiplayer" class="fa fa-gamepad hc-icon-right"></span>
+                    <span class="fa-solid fa-gamepad"></span>
+                    <span *ngIf="element.multiplayer" class="fa-solid fa-gamepad hc-icon-right"></span>
                 </span>
 
                 <span *ngSwitchDefault>{{element[column.name]}}</span>

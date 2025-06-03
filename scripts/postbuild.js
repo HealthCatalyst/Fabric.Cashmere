@@ -14,6 +14,7 @@ const assets = [
     [libSrcDir + '/src/lib/sass/', libOutDir + '/scss'],
     [libSrcDir + '/src/lib/scripts/', libOutDir + '/scripts'],
     [libSrcDir + '/src/lib/icon-font/', libOutDir + '/hcicons'],
+    [libSrcDir + '/src/lib/icon-font2/', libOutDir + '/hcicons2'],
     [libSrcDir + '/README.md', libOutDir + '/README.md'],
     ['../LICENSE', libOutDir + '/LICENSE'],
     ['../CashmereBanner.png', libOutDir + '/CashmereBanner.png']

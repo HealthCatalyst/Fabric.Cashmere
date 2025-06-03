@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component, Type, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +11,7 @@ import { PicklistComponent } from './picklist.component';
 describe('PicklistComponent', () => {
 
     describe('custom templates', () => {
-        it('should display custom option template', waitForAsync(() => {
+        it('should display custom option template', fakeAsync(() => {
             const fixture = createTestingModule(
                 HcPicklistTestCmp,
                 `<hc-picklist [items]="cities" [(ngModel)]="selectedCities">
@@ -28,7 +28,7 @@ describe('PicklistComponent', () => {
             });
         }));
 
-        it('should display custom header templates', waitForAsync(() => {
+        it('should display custom header templates', fakeAsync(() => {
             const fixture = createTestingModule(
                 HcPicklistTestCmp,
                 `<hc-picklist [items]="cities" [(ngModel)]="selectedCities">
@@ -46,7 +46,7 @@ describe('PicklistComponent', () => {
             });
         }));
 
-        it('should display custom footer and toolbar template', waitForAsync(() => {
+        it('should display custom footer and toolbar template', fakeAsync(() => {
             const fixture = createTestingModule(
                 HcPicklistTestCmp,
                 `<hc-picklist [items]="cities" [(ngModel)]="selectedCities">
@@ -68,7 +68,7 @@ describe('PicklistComponent', () => {
             });
         }));
 
-        it('should display custom item template', waitForAsync(() => {
+        it('should display custom item template', fakeAsync(() => {
             const fixture = createTestingModule(
                 HcPicklistTestCmp,
                 `<hc-picklist [items]="cities" [(ngModel)]="selectedCities" [addCustomItem]="true">
@@ -87,7 +87,7 @@ describe('PicklistComponent', () => {
             });
         }));
 
-        it('should display custom pane headers', waitForAsync(() => {
+        it('should display custom pane headers', fakeAsync(() => {
             const fixture = createTestingModule(
                 HcPicklistTestCmp,
                 `<hc-picklist [items]="cities" [(ngModel)]="selectedCities" [addCustomItem]="true">

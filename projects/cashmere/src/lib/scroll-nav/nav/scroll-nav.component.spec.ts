@@ -1,4 +1,4 @@
-import { waitForAsync, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { fakeAsync, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
@@ -117,7 +117,7 @@ export class MockNode extends Node {
 }
 
 describe('HcScrollNavComponent', () => {
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestAppComponent],
             imports: [ScrollNavModule],

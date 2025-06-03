@@ -36,8 +36,8 @@
                     class="valueset-option value-option-row"><td>
                         <div>
                             <span class="valueset-value-toggle" (click)="onValuesetCaretClicked($event, item)">
-                                <hc-icon hcIconSm class="values-caret" fontSet="fa" [ngClass]="{'values-caret-showing-values': item.showValues}" fontIcon="hc-picklist-old-toggle-caret"></hc-icon>
-                                <hc-icon hcIconSm class="vs-folder" fontSet="fa" [fontIcon]="item.showValues ? 'hc-picklist-old-toggle-open' : 'hc-picklist-old-toggle-closed'"></hc-icon>
+                                <hc-icon hcIconSm class="values-caret" [ngClass]="{'values-caret-showing-values': item.showValues}" fontIcon="hc-picklist-old-toggle-caret"></hc-icon>
+                                <hc-icon hcIconSm class="vs-folder" [fontIcon]="item.showValues ? 'hc-picklist-old-toggle-open' : 'hc-picklist-old-toggle-closed'"></hc-icon>
                             </span>
                             <!-- TODO: more deets for the valueset -->
                             <span class="vs-title">{{item.option.title || "Untitled"}} ({{item.option.subValueCount}})</span>

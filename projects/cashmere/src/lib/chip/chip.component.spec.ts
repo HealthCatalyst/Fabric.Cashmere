@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChipModule} from './chip.module';
 import {Component} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -18,7 +18,7 @@ describe('ChipComponent', () => {
     let component: TestChipComponent;
     let fixture: ComponentFixture<TestChipComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestChipComponent],
             imports: [ChipModule]
@@ -75,7 +75,7 @@ describe('ChipRowComponent', () => {
     let component: TestChipRowComponent;
     let fixture: ComponentFixture<TestChipRowComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestChipRowComponent],
             imports: [ChipModule]

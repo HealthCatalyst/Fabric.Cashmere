@@ -50,7 +50,7 @@ export class ToasterOverviewExampleComponent {
             toastOutput = this.toasterService.addToast(options, content);
         } else if (this.toastType.value === 'custom-component') {
             const colorArray: Array<string> = ['#00acac', '#007bff', '#f05323', '#a94c9d', '#e7c447', '#776c7f'];
-            const iconArray: Array<string> = ['fa-pied-piper', 'fa-pied-piper-alt', 'fa-leaf', 'fa-coffee', 'fa-beer', 'fa-birthday-cake'];
+            const iconArray: Array<string> = ['fa-spider', 'fa-pizza-slice', 'fa-leaf', 'fa-mug-hot', 'fa-beer-mug-empty', 'fa-cake-candles'];
 
             options.type = 'custom';
 

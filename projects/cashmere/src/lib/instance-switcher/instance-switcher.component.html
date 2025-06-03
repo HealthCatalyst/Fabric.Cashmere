@@ -37,8 +37,8 @@
                 </span>
                 <hc-icon
                     hcIconSm
-                    fontSet="fa"
-                    fontIcon="fa-times"
+                    fontSet="fa-solid fa"
+                    fontIcon="fa-xmark"
                     *ngIf="instances.length > 1"
                     (click)="_instanceClose(instance.instanceKey, $event)">
                 </hc-icon>
@@ -55,7 +55,7 @@
                 [@moreOpenState]="_moreOpenState"
                 hcIconSm
                 class="hc-instance-switcher-more-icon icon-right"
-                fontSet="fa"
+                fontSet="fa-solid fa"
                 fontIcon="fa-chevron-down">
             </hc-icon>
         </button>
@@ -68,7 +68,7 @@
             (click)="_instanceAdd()">
             <hc-icon
                 hcIconSm
-                fontSet="fa"
+                fontSet="fa-solid fa"
                 fontIcon="fa-plus">
             </hc-icon>
         </button>
@@ -80,7 +80,7 @@
         hc-icon-button
         class="hc-instance-switcher-hide"
         (click)="_closeClick()">
-        <hc-icon fontSet="fa" fontIcon="fa-times"></hc-icon>
+        <hc-icon fontSet="fa-solid fa" fontIcon="fa-times"></hc-icon>
     </button>
 </div>
 
@@ -96,7 +96,7 @@
                 hcMenuIcon
                 class="hc-instance-switcher-more-close"
                 (click)="_instanceClose(moreInstance.instanceKey, $event)"
-                fontSet="fa"
+                fontSet="fa-solid fa"
                 fontIcon="fa-times">
             </hc-icon>
         </button>
@@ -117,7 +117,7 @@
             *ngIf="this._instances.length > 1">
             <hc-icon
                 hcMenuIcon
-                fontSet="fa"
+                fontSet="fa-solid fa"
                 fontIcon="fa-times">
             </hc-icon>
             <span hcMenuText>Close</span>

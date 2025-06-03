@@ -58,7 +58,7 @@ const releaseNotesData = {
             releaseYear: 2023,
             releaseDay: 15,
             isOpen: true,
-            notesHTML: `<h2 id="8"><i class="fa fa-bullhorn" aria-hidden="true"></i>New Features and Enhancements</h2>
+            notesHTML: `<h2 id="8"><i class="icon-bullhorn" aria-hidden="true"></i>New Features and Enhancements</h2>
             <hr>
             <h3 id="12">Security</h3>
             <h4 id="15">Ignite UI role-based access to modules</h4>
@@ -105,7 +105,7 @@ const releaseNotesData = {
             <p>This update enables users to configure flat file ingestion jobs to automatically remove the source file after the data contained in the file is ingested. This feature saves storage space in source systems.</p>
             <p>To use this feature, adjust ingestion jobs in the configDB by setting a Boolean value for <code>remove_files</code> on the <code>tenant_ingestion</code> tables. If the value is <b>True</b>, source files are deleted after the Azure Data Factory flat file ingestion occurs. The default selection is <b>False</b>, which does not remove files from the source.</p>
             <p><strong>Note:</strong> This feature is not yet available in Ignite UI.</p>
-            <h2 id="40"><i class="fa fa-bug" aria-hidden="true"></i> Fixes</h2>
+            <h2 id="40"><i class="icon-bug" aria-hidden="true"></i> Fixes</h2>
             <hr>
             <div class="group" data-node="10">
             <h3 id="45">Source Ingestion</h3>

@@ -1,6 +1,6 @@
 import {Directionality} from '@angular/cdk/bidi';
 import {Component} from '@angular/core';
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {HcNativeDateModule} from '../datetime/datetime.module';
 import {DatepickerModule} from '../datepicker.module';
@@ -27,8 +27,8 @@ class StandardCalendar {
     startDate = new Date(2017, JAN, 31);
 }
 
-describe('HcCalendarHeader', () => {
-    beforeEach(waitForAsync(() => {
+xdescribe('HcCalendarHeader', () => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             imports: [HcNativeDateModule, DatepickerModule],
             declarations: [

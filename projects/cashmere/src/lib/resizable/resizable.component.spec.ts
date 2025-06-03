@@ -1,6 +1,6 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { Component, DebugElement, ViewChild } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -54,7 +54,7 @@ describe('ResizableComponent', () => {
     });
 
     beforeEach(
-        waitForAsync(() => {
+        fakeAsync(() => {
             fixture = TestBed.createComponent(ResizableHostComponent);
             component = fixture.componentInstance;
             fixture.detectChanges();

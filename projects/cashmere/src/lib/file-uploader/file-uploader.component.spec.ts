@@ -1,4 +1,4 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FileUploaderModule } from './file-uploader.module';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
@@ -20,7 +20,7 @@ describe('FileUploaderComponent', () => {
     let formComponent: FileUploaderFormComponent;
     let formFixture: ComponentFixture<FileUploaderFormComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [FileUploaderFormComponent],
             imports: [FileUploaderModule, FormsModule, ReactiveFormsModule]

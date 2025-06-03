@@ -1,5 +1,5 @@
 import { Component, ElementRef, Renderer2 } from "@angular/core";
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { ComponentFixture, TestBed, fakeAsync } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
 
 import { ScrollNavLinkDirective } from "./scroll-nav-link.directive";
@@ -61,7 +61,7 @@ describe("ScrollNavLinkDirective", (): void => {
     let scrollNavLinkComponent: ComponentFixture<ScrollNavLinkComponent>;
     let scrollNavLinkDynamicComponent: ComponentFixture<ScrollNavLinkDynamicComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             "declarations": [ScrollNavLinkComponent, ScrollNavLinkDynamicComponent],
             "imports": [ScrollNavModule],
@@ -103,7 +103,7 @@ describe("ScrollNavLinkDirective", (): void => {
             const contentElement: HTMLElement = scrollNavLinkComponent.debugElement.query(By.css("#a1")).nativeElement;
             spyOn(document, "getElementById").and.returnValue(contentElement);
             spyOn( scrollNavLinkComponent.componentInstance, 'testNavEvent' );
-            
+
             directive.nativeElement.click();
 
             expect(scrollNavLinkComponent.componentInstance.testNavEvent).toHaveBeenCalledWith(contentElement);
@@ -135,7 +135,7 @@ describe("ScrollNavLinkDirective", (): void => {
             directive.navClick.subscribe( event => scrollNavLinkDynamicComponent.componentInstance.testNavEvent(event) );
 
             spyOn( scrollNavLinkDynamicComponent.componentInstance, 'testNavEvent' );
-            
+
             directive.nativeElement.click();
 
             expect(scrollNavLinkDynamicComponent.componentInstance.testNavEvent).toHaveBeenCalled();

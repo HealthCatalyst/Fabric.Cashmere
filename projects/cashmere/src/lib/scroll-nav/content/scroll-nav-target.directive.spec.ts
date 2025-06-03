@@ -1,5 +1,5 @@
 import { Component, ElementRef, Renderer2 } from "@angular/core";
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { ComponentFixture, TestBed, fakeAsync } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
 
 import { ScrollNavTargetDirective } from "./scroll-nav-target.directive";
@@ -55,7 +55,7 @@ describe("ScrollNavTargetDirective", (): void => {
     let scrollNavTargetComponent: ComponentFixture<ScrollNavTargetComponent>;
     let scrollNavTargetDynamicComponent: ComponentFixture<ScrollNavTargetDynamicComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             "declarations": [ScrollNavTargetComponent, ScrollNavTargetDynamicComponent],
             "imports": [ScrollNavModule],

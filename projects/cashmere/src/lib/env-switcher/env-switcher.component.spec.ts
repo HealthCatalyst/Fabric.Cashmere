@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
 
 import {EnvSwitcherComponent} from './env-switcher.component';
 import {PopModule} from '../pop/popover.module';
@@ -13,7 +13,7 @@ describe('EnvSwitcherComponent', () => {
     let fixture: ComponentFixture<EnvSwitcherComponent>;
 
     beforeEach(
-        waitForAsync(() => {
+        fakeAsync(() => {
             TestBed.configureTestingModule({
                 imports: [PopModule, PipesModule, ProgressIndicatorsModule, CheckboxModule, ButtonModule, NoopAnimationsModule],
                 declarations: [EnvSwitcherComponent]

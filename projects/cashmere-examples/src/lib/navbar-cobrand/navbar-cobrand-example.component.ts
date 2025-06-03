@@ -12,7 +12,7 @@ import {HcIcon, SelectChangeEvent} from '@healthcatalyst/cashmere';
 })
 export class NavbarCobrandExampleComponent {
     username = 'Christine K.';
-    navIcon: HcIcon = {fontSet: "hc-icons", fontIcon: "hci-catalyst-logo", fontSize: 37};
+    navIcon: HcIcon = {fontSet: "hc-icons", fontIcon: "icon-catalyst-logo", fontSize: 37};
     brandingVal = 'light';
     brandImg = './assets/MillrockLogo_light.png';
 

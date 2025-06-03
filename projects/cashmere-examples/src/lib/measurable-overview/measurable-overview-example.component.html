@@ -8,8 +8,7 @@
                 {{button.text}}
                 <hc-icon
                     hcIconSm
-                    fontSet="fa"
-                    fontIcon="fa-times"
+                    fontIcon="icon-close"
                     (click)="buttonClose(button.key, $event)">
                 </hc-icon>
             </button>
@@ -23,8 +22,7 @@
             <hc-icon
                 [@moreOpenState]="moreOpenState"
                 hcIconSm
-                fontSet="fa"
-                fontIcon="fa-chevron-down">
+                fontIcon="icon-chev-down">
             </hc-icon>
         </button>
     </div>
@@ -41,8 +39,7 @@
             <hc-icon
                 hcMenuSubText
                 (click)="buttonClose(button.key, $event)"
-                fontSet="fa"
-                fontIcon="fa-times">
+                fontIcon="icon-close">
             </hc-icon>
         </button>
     </div>

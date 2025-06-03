@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SelectComponent} from './select.component';
 import {SelectService} from './select.service';
 
@@ -7,7 +7,7 @@ describe('SelectComponent', () => {
     let fixture: ComponentFixture<SelectComponent>;
 
     beforeEach(
-        waitForAsync(() => {
+        fakeAsync(() => {
             TestBed.configureTestingModule({
                 imports: [],
                 providers: [SelectService],

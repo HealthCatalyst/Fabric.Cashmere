@@ -26,7 +26,9 @@
     "exports": {
         "./css": "./cashmere.css",
         "./hcicons/hcicons": "./hcicons/hcicons.scss",
+        "./hcicons2/hcicons2": "./hcicons2/hcicons2.scss",
         "./hcicons/*": "./hcicons/*",
+        "./hcicons2/*": "./hcicons2/*",
         "./scss/*": "./scss/*.scss"
     }
 }

@@ -1,4 +1,4 @@
-import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {StepInterface} from './stepper.component';
 import {StepperModule} from './stepper.module';
@@ -26,9 +26,9 @@ export class TestStepperComponent {
     currentStep = 1;
 
     stepsVal: StepInterface[] = [
-        {label: 'One', iconSet: 'fa', icon: 'fa-check'},
+        {label: 'One', iconSet: 'icon', icon: 'icon-check'},
         {label: 'Two'},
-        {label: 'Three', iconSet: 'fa', icon: 'fa-lock', disabled: true}
+        {label: 'Three', iconSet: 'icon', icon: 'icon-lock', disabled: true}
     ];
 }
 
@@ -36,7 +36,7 @@ describe('StepperComponent', () => {
     let component: TestStepperComponent;
     let fixture: ComponentFixture<TestStepperComponent>;
 
-    beforeEach(waitForAsync(() => {
+    beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({
             declarations: [TestStepperComponent],
             imports: [StepperModule, RouterTestingModule]

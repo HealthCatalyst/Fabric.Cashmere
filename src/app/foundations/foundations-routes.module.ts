@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FoundationsComponent} from './foundations.component';
 import {ColorDemoComponent} from './color/color-demo.component';
-import {IconGuideComponent} from './icons/icon-guide.component';
+import {IconGuideV1Component} from './icons/icon-guide-v1.component';
 import {TypographyDemoComponent} from './typography/typography-demo.component';
 import {CodeDemoComponent} from './code/code-demo.component';
 import {BrandColorDemoComponent} from './brand-colors/brand-color-demo.component';
@@ -12,6 +12,7 @@ import {FontsDemoComponent} from './fonts/fonts-demo.component';
 import { AIDemoComponent } from './ai/ai-demo.component';
 import { AppBrandingDemoComponent } from './app-branding/app-branding-demo.component';
 import { FaviconDemoComponent } from './favicons/favicon-demo.component';
+import { IconGuideV2Component } from './icons/icon-guide-v2.component';
 
 const routes: Routes = [
     {
@@ -40,8 +41,13 @@ const routes: Routes = [
             },
             {
                 path: 'icons',
-                component: IconGuideComponent,
-                data: {title: 'Icons', category: 'Typography'}
+                component: IconGuideV2Component,
+                data: {title: 'Icons v2', category: 'Typography'}
+            },
+            {
+                path: 'icons-legacy',
+                component: IconGuideV1Component,
+                data: {title: 'Icons v1 (Deprecated)', category: 'Typography'}
             },
             {
                 path: 'Favicons',
