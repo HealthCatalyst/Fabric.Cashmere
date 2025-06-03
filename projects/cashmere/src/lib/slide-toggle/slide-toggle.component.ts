@@ -15,7 +15,18 @@ export enum buttonSize {
 export enum buttonStyle {
     blue = 'blue',
     purple = 'purple',
-    green = 'green'
+    green = 'green',
+    red = 'red',
+    orange = 'orange',
+    rubyred = 'ruby-red',
+    deepred = 'deep-red',
+    redorange = 'red-orange',
+    magenta = 'magenta',
+    azure = 'azure',
+    teal = 'teal',
+    darkgreen = 'dark-green',
+    yelloworange = 'yellow-orange',
+    darkblue = 'dark-blue',
 }
 export enum labelPosition {
     left = 'left',
@@ -98,7 +109,7 @@ export class SlideToggleComponent extends HcFormControlComponent implements Afte
     /** Sets the size of slide toggle. Choose from: `'sm' | 'md' | 'lg' |`. *Defaults to `sm`.**/
     @Input() buttonSize: buttonSize = buttonSize.small;
 
-    /** Sets the style of the slide toggle. Choose from: `'blue' | 'purple' | 'green' |`. *Defaults to `blue`.**/
+    /** Sets the style of the slide toggle. Choose from: `'blue' | 'purple' | 'green' |` 'red' | 'orange' | 'ruby-red' | 'deep-red' | 'red-orange' | 'magenta' | 'azure' | 'teal' | 'dark-green' | 'yellow-orange' | 'dark-blue'. *Defaults to `blue`.**/
     @Input() buttonStyle: buttonStyle = buttonStyle.blue;
 
     /** Sets which side of slide toggle the outside label is positioned on. Choose from: `'left' | 'right' |`. *Defaults to `left`.**/
