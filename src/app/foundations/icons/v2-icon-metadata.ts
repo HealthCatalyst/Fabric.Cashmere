@@ -48,7 +48,7 @@ export const ICON_OPTIONS: Array<IconLibraryEntry> = [
         unicode: '\e903'
     },
     {
-        name: 'app card',
+        name: 'app-card',
         icon: 'icon-app-card',
         description: 'Use to represent an application card or tile',
         keywords: ['application', 'card', 'tile'],
