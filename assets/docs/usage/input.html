@@ -1,0 +1,25 @@
+<h5 id="mobile-development-guide">Mobile Development Guide</h5>
+<p>For information on configuring input elements for responsive web applications, refer to the mobile development guide for information on <a href="https://cashmere.healthcatalyst.net/web/mobile/form-fields">mobile form fields</a> and <a href="https://cashmere.healthcatalyst.net/web/mobile/input-tag-types">input tag types</a>.</p>
+<h5 id="input-text-formatting">Input Text Formatting</h5>
+<p>For input labels please use the following formatting:</p>
+<p>Capitalize first word only, except in cases where the selection is an actual program name or proper name (e.g. Patient non-adherence or challenges in care management; Duplicate patient; Algorithm incorrect; Comprehensive HIV AIDS Management Program (CHAMP), Grace Program, LSU Diabetes, Salt Lake City, etc.).</p>
+<p> </p>
+<h5 id="input-labels">Input Labels</h5>
+<p>Use a colon at the end of input labels (e.g. Email address:). A colon implies a direct connection between the label text and a particular control or set of controls. The only situation where a colon should not be used is when the label and control work together to form a single sentence.</p>
+<p> </p>
+<h5 id="form-fields">Form Fields</h5>
+<p>To use the input element you must include [hcInput] on an input element and nest the input element within a hc-form-field component. hc-form-field acts as a coordinator between multiple components and is essential to be able to use all of the features of hcInput</p>
+<p>To add a label use an hc-label within a hc-form-field. If the input is required add the required attribute and an asterisk will be shown next to the label.</p>
+<pre><code class="language-html">&lt;hc-form-field&gt;
+    &lt;hc-label&gt;Validate an email address:&lt;/hc-label&gt;
+    &lt;input hcInput [formControl]=&quot;formDemo&quot; required /&gt;
+    &lt;hc-error&gt;Email address is required&lt;/hc-error&gt;
+&lt;/hc-form-field&gt;
+</code></pre>
+<h5 id="inputs-and-icons">Inputs and Icons</h5>
+<p>Icons may be included in an input box to indicate its function. Use a <code>hc-icon</code> component along with either [hcPrefix] or [hcSuffix] to add an icon</p>
+<pre><code class="language-html">&lt;hc-form-field&gt;
+    &lt;input hcInput placeholder=&quot;Enter username&quot; /&gt;
+    &lt;hc-icon hcSuffix fontIcon=&quot;icon-circle-user&quot;&gt;&lt;/hc-icon&gt;
+&lt;/hc-form-field&gt;
+</code></pre>
