@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-Immuta">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="Immuta" clip-path="url(#clip-Immuta)">
+    <g id="Group_973" data-name="Group 973" transform="translate(-72.355 -266.588)">
+      <path id="Path_12352" data-name="Path 12352" d="M172.3,266.588a100,100,0,1,1-100,100,100,100,0,0,1,100-100" fill="#00aeff"/>
+    </g>
+    <path id="Path_12762" data-name="Path 12762" d="M72.281,18.794H91.075V96.135H72.281ZM0,115.651H115.65V0H0Z" transform="translate(42 42.174)" fill="#fff"/>
+  </g>
+</svg>

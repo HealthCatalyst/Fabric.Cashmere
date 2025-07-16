@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_547" data-name="Rectangle 547" width="130" height="122.878" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-Azure">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="Azure" clip-path="url(#clip-Azure)">
+    <g id="Group_973" data-name="Group 973" transform="translate(-72.355 -266.588)">
+      <path id="Path_12352" data-name="Path 12352" d="M172.3,266.588a100,100,0,1,1-100,100,100,100,0,0,1,100-100" fill="#00aeff"/>
+    </g>
+    <g id="Group_1126" data-name="Group 1126" transform="translate(35 33.496)">
+      <g id="Group_1125" data-name="Group 1125" clip-path="url(#clip-path)">
+        <path id="Path_12758" data-name="Path 12758" d="M121.215,122.878a8.774,8.774,0,0,0,8.32-11.591L93.974,5.974A8.773,8.773,0,0,0,85.667,0H44.326a8.773,8.773,0,0,0-8.31,5.974L.465,111.292a8.774,8.774,0,0,0,8.32,11.586H34.465A8.774,8.774,0,0,0,42.78,116.9l5.293-15.665,26.792,19.907a8.766,8.766,0,0,0,5.234,1.733M63.393,55l19.629,58.163a2.924,2.924,0,0,1-2.763,3.861H80.1a2.924,2.924,0,0,1-1.746-.575L28.05,79.082H54.337M88.52,117.03a8.686,8.686,0,0,0,.039-5.731L53.027,5.974l-.039-.109H85.672a2.923,2.923,0,0,1,2.773,1.984l35.543,105.318a2.924,2.924,0,0,1-1.831,3.706" transform="translate(0)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>
