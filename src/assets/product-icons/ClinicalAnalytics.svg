@@ -8,7 +8,7 @@
     </clipPath>
   </defs>
   <g id="Clinical_Analytics" data-name="Clinical Analytics" clip-path="url(#clip-Clinical_Analytics)">
-    <circle id="Ellipse_24" data-name="Ellipse 24" cx="100" cy="100" r="100" fill="#00aeff"/>
+    <circle id="Blue_300_Bg" data-name="Blue 300 Bg" cx="100" cy="100" r="100" transform="translate(0 -0.1)" fill="#005cb7"/>
     <g id="Group_153" data-name="Group 153" transform="translate(-12.5 1.754)">
       <g id="Mask_Group_4" data-name="Mask Group 4" clip-path="url(#clip-path)">
         <g id="Group_152" data-name="Group 152" transform="translate(22.5)">
@@ -21,12 +21,12 @@
             <path id="Path_203" data-name="Path 203" d="M14.328,26.564a2.18,2.18,0,0,1-2.264,2.264,2.264,2.264,0,1,1,0-4.528A2.18,2.18,0,0,1,14.328,26.564Z" transform="translate(8.691 -20.715)" fill="#01bacc"/>
           </g>
           <g id="Group_150" data-name="Group 150" transform="translate(-23.396 51.321)">
-            <path id="Path_204" data-name="Path 204" d="M44.251,65.6H28.591L.1,104.468H15.949Z" transform="translate(-0.1 6.853)" fill="#ff9d27"/>
-            <path id="Path_205" data-name="Path 205" d="M109.881,27.2,109.5,58.9H72.9Z" transform="translate(64.458 -27.2)" fill="#ff9d27"/>
-            <path id="Path_206" data-name="Path 206" d="M48.219,89.185,30.86,65.6H15.2L32.558,89.185Z" transform="translate(13.291 6.853)" fill="#b2743a"/>
-            <path id="Path_207" data-name="Path 207" d="M40.06,103.485,79.117,49.9H63.457L24.4,103.485Z" transform="translate(21.449 -7.07)" fill="#ff9d27"/>
-            <path id="Path_208" data-name="Path 208" d="M88.574,88.391,60.46,49.9H44.8L72.725,88.391Z" transform="translate(39.54 -7.07)" fill="#b2743a"/>
-            <path id="Path_209" data-name="Path 209" d="M75.06,96.638,115.815,40.6h-15.66L59.4,96.638Z" transform="translate(52.487 -15.317)" fill="#ff9d27"/>
+            <path id="Path_204" data-name="Path 204" d="M44.251,65.6H28.591L.1,104.468H15.949Z" transform="translate(-0.1 6.853)" fill="#5c97d1"/>
+            <path id="Path_205" data-name="Path 205" d="M109.881,27.2,109.5,58.9H72.9Z" transform="translate(64.458 -27.2)" fill="#5c97d1"/>
+            <path id="Path_206" data-name="Path 206" d="M48.219,89.185,30.86,65.6H15.2L32.558,89.185Z" transform="translate(13.291 6.853)" fill="#1365b5"/>
+            <path id="Path_207" data-name="Path 207" d="M40.06,103.485,79.117,49.9H63.457L24.4,103.485Z" transform="translate(21.449 -7.07)" fill="#5c97d1"/>
+            <path id="Path_208" data-name="Path 208" d="M88.574,88.391,60.46,49.9H44.8L72.725,88.391Z" transform="translate(39.54 -7.07)" fill="#1365b5"/>
+            <path id="Path_209" data-name="Path 209" d="M75.06,96.638,115.815,40.6h-15.66L59.4,96.638Z" transform="translate(52.487 -15.317)" fill="#5c97d1"/>
           </g>
         </g>
       </g>

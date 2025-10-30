@@ -77,6 +77,7 @@ _The ™ symbol can be applied to any unregistered trademark_
 - Twistle by Health Catalyst
 - Twistle Patient Engagement by Health Catalyst
 - Vitalware by Health Catalyst
+- Upfront by Health Catalyst
 
 :::
 
