@@ -27,12 +27,12 @@
     <pattern id="pattern-4" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 103 85">
       <image width="103" height="85" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAABVCAYAAABU8/pfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAArrSURBVHhe7ZmJrtxGEgTtvff/P3bv9ToHCiGcrm6SM5ynZ6wSCFSxSfaRqZFh6seffvrph+/6nPrdl/pdn1Dfw/nE+s39tfbjz/rSXtbPZ/1NHfZThfOK8XfpMwX4TcP5DGEc6VuG9eHhXAzkI8I7bcBHB/Uh4ZwMZPXMuwLaHfzQlI8I6q3hHIQy3fvIgFYH7/GtQe8M6S3hXAiln5veOzvXSmdDQB7vZ8Z33hXQ7eEsgtmFcLVv7e6tDrcz/Wr/VXeHdFs4J0I56lc1co+msZWmQ05mr2q0G/uqOwO6JZyDYCaTp7q7h9xHfT2pDziZO9XdPdfI/UN3hPRyOEMwk5muu97X1B6L3J/Rysj0XE+9r6nTmOtXvRrQS+Fsgplq97sxiLpH7o/kQ6bneuqb6Mw1cv9SQE+HczIYiHz9DJH7yP1KbaDrHUSr+tCzAT0VzsVgVuSL+O56R0Q9kg+Y/gz/XfQ9Fnk86vrQMwFdDucgmO5hCoKxVT0iou5ks3Zg+Nm6Iur60NWALoXzRDCT4embHu93duxkk1bY9O5316ndQ9T1feFcDKYNdg2/V7/D7644Ug64og3/j8Z2TO8yJ0RdLwX0bDj0rmBTu3co9F1XeA1zpBywaYOBcBzSNNZ4ThO5f+hsQKfCWfxqGKMPmNjGBocAq2tX8PwQUSdhTNPmBocAfc2Ynwfm7bVCRH1rODalsZnQxsMf6nqi5wq9ZkS1MKaxodABTPxbvd/xPMzfa4aIeiqgw3BuCsYkFIJZVWAOzzmtHVqYYmwkYDIQwlQdkOk5vV5qxNhXHQX0TDhcp2KWa7DBQChHTO8G5mYPTQszjA3E1NRVEDvynPHc0OtH1NfCOfmrwTTASBuN8X8c+q48z7sm87Km9xBRIxsRMMrG2djJ/PCvRQXPAV6D9ZuH7g7HRtgoaDNjMsR8BzHh50PPxzpenz21bEawaQEzbXZwECv6HYcTWIN1vY+Iug3obDiuBrNCG4nBUwjhT1XB4QTP6fV6Ly3MCDYK81Lb5CmIf1Y1ftfhsEYHYx56KpyLvxobGDDWpocEYTzm53iXcFJZx2uzr9CyERgFGOhQqMGBNL4fmCM4nEA4VIioy4CuhmMcDJVQAPOp4c+LPhAOwRjWMewlokY2wAZhWKpNDZjdYfxjGIMpoOB1vL73Rf9SOK5gg2IaYKRNtvmEkQoeD373bDihhQEhxgDBOKApGEJJnXqYAsrcwLreDzx0KZzFryZKbYM6mNChBAcS/qKe+6m8O4XTAbE39mdhAMYQDHQwDsdh/P1LbXg2eI5VOB1Q9Kh3hGOOgnE4BACEkroLCDocAmIfqRE1wgDAHJvW4WA0xqcSTFfTATHvFE7AcPb20BTQM+EQzBROB4PhHYjxfZ5njikc1mUvqRG1D48hqR0M4WAuZqcmCIdiGHM4zOG5CYfKnsxDz4TjGjDDJgUH43BWgcBfv9Q8ZwgGWMPrej8RNfLhQ4xZhYOphAIdSPibep7hPeZxQKzH+lNAD03h5HBXZTMmMqeDA34BDtC9g3FQwQHST2O+Bo/7fo/1Hry/wP6Bc3Fe054g91Ff/0KZ6Ei7RRhnQ95gcDiBg3FYDo4RmAI2qo3rMfrVM32/K7Anw77BZ/J58WPFJWXCX6j+e9PyIq7Bm/OGfRAgmK4Bg1xtGtc9Rr96pu+fGQsEApzBZzR4ECYxvrr/VZnsGXmBpjcbHIzxoScjTJu2g+dX703jrAPTfqezweSFibpulUmfVS8ceaw3DxzSh8aMNmhien5698p8R/QZGp8bImrk/lea/sbKxHeIDR3Rh1oxGWR2z/Q9rqd65tlmOteKl5TF7tK0OeOD0XPgxs+dHeu+n5sqPeye5RnzVmXRj5QPtTvcdPjp3R7r+xHjDdrdi3zd9/vZW/XR4US/+p+thfo5X9OnrnrEeGNxvbsX9b236iPD4eBn8P9JP9unenyFn++xJqJG7m/XneH4ECtsxBn49OFPIP4ksuv7+RU81+813v8ZXtar4bCJ3pjpQ07YLH+T6nHf6970WD9v/MyE9+g9h+m8zSnd9W0t8sL0TR8EODSmrOADYn9M9HXf62f8XI+D36Fnf+x1wmeazh8i1x7b6o5fTuNNw3S4gBnQxvlLb/qz9BzT+IT3QM/evO/pjJMXIaJG09ioX4Uz/byk3NvRG/aBAgf1wTHDBtrQwCf5s/DZv9/zWN9jXfYTvE/oM/WZJ1+e0plfzmoRrn0/TKEEH5DD2xxoAw3/jnK29/XuGfA+2B979f6Dz7YLprH6+hd69h/bUv3Zg+9UfETki3A+x/NvJ/43FuNneM9fiP0NjHW9D+8x4kCYgWmYiKH8IUl1KA4rIU5wbwrUQTo4YF/w0PQ31t3/TE1ANjmmQwdCH3jWwRAO6xAMsKeIyoE4fMAYggGHk77DcQgOxqyCmcLxnuChu8IJHU5wOLuAwMEEnuVd5prCYQ/ek8WhUjFlCicGYirhTAGBfy1UBxM6GKr34v0t/zt/JZwoFVMwysbZUBsdHIJDYQzyDnOkMi9rpXYwoYUJIaaAgwGb2wG59zXP+V0HQyjGewoPXQonUkCugEE2jD/hmGpsvgPyePA7mQcyr4MJ3k9EjThUKqZgEMY5IBscMN4huAe/08EE1mQPzUOvhBPZCLBRmEc44HCoEzwHvMt8BENl/dSIatkEmxQ6HCAYB+TeY8ZzrIKhhoh6SzjUYIOAcDC0AwoE0dX43cCcXiuwlzAJIwCjMG4KqE13EFMowe9PwYTeS3hoFUy0DCe6+OsJRwG5n/A7wcFQWdf7mGQjQhuGkUcBQd/zO2EXDDViPw/dHU6UaqMMhoY2OxDCqvKe5+k12AtMshk2CRxOaLMdyFQD7zGH54esayLqreFQG0zDSBsbYraNn34lgft+l7mN146oyCaYNg5TAdPP0O8Gz816rB253wYTbcOJDn49MBlog8EBTP2E52Qt1o2okzADbB5MJmO+gzgbCvTaIaK+JZyubRpGBhtM30H0Nc+6QuZvdsIUMxmJwW26w3DvZz0PTOtG1MNgosNwok1ADQbaUBtMAKbHeXai14uokzCmmQwNk/kN9/weMLfXitw/9K5wojbHYGIbCx1Ijzeec2KnNgdspLHpHUQHkmvP4Xkh6noqmOhUONHm10M1NrV7s/uleJ4dO9mYCYx9FuZwDVH3D50NJjodTvRkQO4xfrrucd7dgdxHPpQNmrC5cPbaFaLuv+qjwom4dp2w2Q6hrz1+hNXXfSgbNTEZnb7HfX+6jrr/qivBRJfCiS4GFKW26UfXOyIq6us+VJuV2hwZ39cTUdeHrgYTXQ4nOhkQ9Q6i7q9oMu5Vouna9aFngomeCic6EVCUHiJfr8Yg6t71qlYGpk5ER+PRqj70bDDR0+FEm4CiydRdv7rnGrm/Ih+0jUzd9at7rpH7l4KJXgonGgKKdqZOdXcPrfoz6kNOhqa679pj0TT20KvBRC+HEx0EFB31qxq5R9PYkfqgvqbfjU33IvcP3RFMdEs46ERI0cp4+t3z1mq8tTpgj3O9Go9W/VfdFUx0azjRIiDke2dCWM21W2PS6pDTeI8dXT90Zyjo9nDQhZDQXUFc0erwpwKJ3hEKels46CAk9C2CiXaH3xrzzlDQ28OxTgaF3h2MddqEjwgFfWg41sWgvpk+MozWNwun9VnC+pZhtD5NOEe6K7zPZP6RfjPh/D8qn+q/65PqezifVj/88D/NBe6Sfx0LAAAAAABJRU5ErkJggg=="/>
     </pattern>
-    <clipPath id="clip-HC_Service_Desk">
+    <clipPath id="clip-Service_Desk">
       <rect width="200" height="200"/>
     </clipPath>
   </defs>
-  <g id="HC_Service_Desk" data-name="HC Service Desk" clip-path="url(#clip-HC_Service_Desk)">
-    <path id="Path_12649" data-name="Path 12649" d="M100,0A100,100,0,1,1,0,100,100,100,0,0,1,100,0" fill="#00aeff"/>
+  <g id="Service_Desk" data-name="Service Desk" clip-path="url(#clip-Service_Desk)">
+    <path id="Path_12649" data-name="Path 12649" d="M100,0A100,100,0,1,1,0,100,100,100,0,0,1,100,0" fill="#005cb7"/>
     <g id="Group_1065" data-name="Group 1065" transform="translate(17.982 22.342)">
       <g id="Group_1064" data-name="Group 1064" transform="translate(-0.489 -0.114)" clip-path="url(#clip-path)">
         <g id="Group_1063" data-name="Group 1063">
@@ -48,10 +48,10 @@
                 </g>
               </g>
             </g>
-            <path id="Path_12673" data-name="Path 12673" d="M27.647,179.864H24.615a5.674,5.674,0,0,0-5.658,5.657v19.35a5.674,5.674,0,0,0,5.658,5.657h3.032Z" transform="translate(-11.008 -108.847)" fill="#ff9d27"/>
+            <path id="Path_12673" data-name="Path 12673" d="M27.647,179.864H24.615a5.674,5.674,0,0,0-5.658,5.657v19.35a5.674,5.674,0,0,0,5.658,5.657h3.032Z" transform="translate(-11.008 -108.847)" fill="#b8d2eb"/>
             <g id="Group_1051" data-name="Group 1051" transform="translate(12.638)" opacity="0.3" style="mix-blend-mode: multiply;isolation: isolate">
               <g id="Group_1050" data-name="Group 1050" transform="translate(0)">
-                <g id="Group_1049" data-name="Group 1049" clip-path="url(#clip-path-5)">
+                <g id="Mask_Group_1049" data-name="Mask Group 1049" clip-path="url(#clip-path-5)">
                   <g id="Group_1048" data-name="Group 1048">
                     <g id="Group_1047" data-name="Group 1047" clip-path="url(#clip-path-5)">
                       <rect id="Rectangle_508" data-name="Rectangle 508" width="149" height="153" transform="translate(-0.131 -0.228)" fill="url(#pattern-2)"/>
@@ -72,7 +72,7 @@
                 </g>
               </g>
             </g>
-            <path id="Path_12675" data-name="Path 12675" d="M380.4,210.529h3.032a5.674,5.674,0,0,0,5.658-5.657v-19.35a5.674,5.674,0,0,0-5.658-5.657H380.4Z" transform="translate(-229.965 -108.847)" fill="#ff9d27"/>
+            <path id="Path_12675" data-name="Path 12675" d="M380.4,210.529h3.032a5.674,5.674,0,0,0,5.658-5.657v-19.35a5.674,5.674,0,0,0-5.658-5.657H380.4Z" transform="translate(-229.965 -108.847)" fill="#b8d2eb"/>
             <g id="Group_1061" data-name="Group 1061" transform="translate(69.023 121.519)" opacity="0.3" style="mix-blend-mode: multiply;isolation: isolate">
               <g id="Group_1060" data-name="Group 1060" transform="translate(0 0)">
                 <g id="Group_1059" data-name="Group 1059" clip-path="url(#clip-path-9)">
@@ -84,7 +84,7 @@
                 </g>
               </g>
             </g>
-            <path id="Path_12676" data-name="Path 12676" d="M210.12,333.367v.289a5.884,5.884,0,0,1-5.867,5.867h-7.385A5.884,5.884,0,0,1,191,333.657v-.289a5.884,5.884,0,0,1,5.867-5.867h7.385a5.884,5.884,0,0,1,5.867,5.867" transform="translate(-115.228 -198.282)" fill="#ff9d27"/>
+            <path id="Path_12676" data-name="Path 12676" d="M210.12,333.367v.289a5.884,5.884,0,0,1-5.867,5.867h-7.385A5.884,5.884,0,0,1,191,333.657v-.289a5.884,5.884,0,0,1,5.867-5.867h7.385a5.884,5.884,0,0,1,5.867,5.867" transform="translate(-115.228 -198.282)" fill="#b8d2eb"/>
           </g>
         </g>
       </g>

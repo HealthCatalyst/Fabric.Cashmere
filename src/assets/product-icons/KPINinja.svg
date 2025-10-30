@@ -1,28 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
   <defs>
-    <clipPath id="clip-path">
-      <circle id="Background" cx="100" cy="100" r="100" fill="#00aeff"/>
-    </clipPath>
-    <linearGradient id="linear-gradient" x1="0.408" y1="0.022" x2="0.511" y2="0.844" gradientUnits="objectBoundingBox">
-      <stop offset="0" stop-color="#00455f"/>
-      <stop offset="0.37" stop-color="#006d93" stop-opacity="0.631"/>
-      <stop offset="0.792" stop-color="#0099d2" stop-opacity="0.2"/>
-      <stop offset="1" stop-color="#00aeef" stop-opacity="0"/>
-    </linearGradient>
     <clipPath id="clip-KPI_Ninja">
       <rect width="200" height="200"/>
     </clipPath>
   </defs>
   <g id="KPI_Ninja" data-name="KPI Ninja" clip-path="url(#clip-KPI_Ninja)">
-    <circle id="Background-2" data-name="Background" cx="100" cy="100" r="100" fill="#00aeff"/>
-    <g id="Mask_Group_33" data-name="Mask Group 33" clip-path="url(#clip-path)">
-      <path id="Path_12710" data-name="Path 12710" d="M210.536,141.589l-49.39-21.08H40.7l75.882,71.182S210.712,141.706,210.536,141.589Z" transform="translate(-10.179 34.532)" opacity="0.321" fill="url(#linear-gradient)"/>
-    </g>
-    <g id="KPI_Ninja_by_Health_Catalyst_Logo_Brandmark_Full-Color_" data-name="KPI_Ninja_by_Health_Catalyst_Logo(Brandmark_Full-Color)" transform="translate(-53.967 -62.032)">
-      <rect id="Rectangle_546" data-name="Rectangle 546" width="36" height="27" transform="translate(167.967 105.032)" fill="#fff"/>
-      <path id="Path_12714" data-name="Path 12714" d="M143.608,152h36.71v81.842H139.4V156.208A4.209,4.209,0,0,1,143.608,152Z" transform="translate(-15.093 -15.095)" fill="#b565a7"/>
-      <path id="Path_12715" data-name="Path 12715" d="M87.6,208.01h36.71v40.917H87.6a4.209,4.209,0,0,1-4.208-4.208v-32.5A4.209,4.209,0,0,1,87.6,208.01Z" transform="translate(0 -30.188)" fill="#0085ca"/>
-      <path id="Path_12716" data-name="Path 12716" d="M236.327,106.814v-.387l9.409-5.866-4.654-4.58-4.756,6.779v-2.681a4.108,4.108,0,0,0-4.091-4.091H199.5a4.108,4.108,0,0,0-4.091,4.091V218.747h36.826a4.1,4.1,0,0,0,4.091-4.091V109.225l13.588,4.427,4.814-5.369-18.4-1.461Zm-5.114,8.416h-.058a.107.107,0,0,1,.058.037v11.893h-30.69V115.266s.044-.037.058-.037h-.058v-3.287l6.275,2.382v6.056h6.056v-6.056l-11.236-3.061a30.607,30.607,0,0,1,28.352-.08l-11.389,3.1v6.063h6.063V114.28l6.494-2.455h.015a.1.1,0,0,1,.058.044v3.368Zm-23.027,4.3V116.26h3.258v3.273Zm15.064-3.324v3.273h-3.266v-3.273h3.266Z" transform="translate(-30.185)" fill="#68478d"/>
+    <circle id="Background" cx="100" cy="100" r="100" fill="#005cb7"/>
+    <g id="Group_1245" data-name="Group 1245" transform="translate(-9.25 -112.312)">
+      <path id="Path_12863" data-name="Path 12863" d="M69.027,171.1h38.242v81.538H66.5V173.627a2.539,2.539,0,0,1,2.527-2.527Z" transform="translate(17.539 17.539)" fill="#fff" opacity="0.72"/>
+      <path id="Path_12864" data-name="Path 12864" d="M45.8,194.33H84.039V235.1H45.8a2.539,2.539,0,0,1-2.527-2.527V196.857A2.539,2.539,0,0,1,45.8,194.33Z" transform="translate(0 35.078)" fill="#fff" opacity="0.36"/>
+      <path id="Path_12865" data-name="Path 12865" d="M130.5,158.663v-.386l9.372-5.844-4.633-4.563-4.739,6.757v-2.668a4.086,4.086,0,0,0-4.072-4.072H93.8a4.086,4.086,0,0,0-4.072,4.072V270.194h36.7a4.075,4.075,0,0,0,4.072-4.072V161.085l13.531,4.405,4.791-5.353-18.34-1.457Zm-5.09,8.389h-.053a.062.062,0,0,1,.053.035v11.846H94.837V167.087l.053-.035h-.053V163.77l6.248,2.369v6.037h6.037V166.14l-11.2-3.054A30.526,30.526,0,0,1,124.181,163l-11.337,3.089v6.037h6.037v-6.037l6.476-2.439h0s.035,0,.053.053v3.352Zm-22.938,4.282V168.07h3.247v3.264Zm15.005-3.317v3.264h-3.264v-3.264Z" transform="translate(35.078)" fill="#fff"/>
     </g>
   </g>
 </svg>

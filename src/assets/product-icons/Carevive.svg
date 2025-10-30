@@ -45,13 +45,13 @@
     <clipPath id="clip-path-53">
       <rect id="Rectangle_610" data-name="Rectangle 610" width="8.418" height="9.963" fill="none"/>
     </clipPath>
-    <clipPath id="clip-CareVive">
+    <clipPath id="clip-Carevive">
       <rect width="200" height="200"/>
     </clipPath>
   </defs>
-  <g id="CareVive" clip-path="url(#clip-CareVive)">
+  <g id="Carevive" clip-path="url(#clip-Carevive)">
     <g id="Product_Icon_Ignite" data-name="Product Icon Ignite" transform="translate(0)">
-      <path id="Path_12746" data-name="Path 12746" d="M200,100a104.15,104.15,0,0,1-.733,12.167,98.551,98.551,0,0,1-3.133,15.467A100.058,100.058,0,0,1,100,199.967c-45.633,0-7.233-.2-10.8-.567A99.79,99.79,0,0,1,0,100C0,52.267,44.767,0,100,0A99.994,99.994,0,0,1,200,100Z" fill="#00aeff"/>
+      <path id="Path_12746" data-name="Path 12746" d="M200,100a104.15,104.15,0,0,1-.733,12.167,98.551,98.551,0,0,1-3.133,15.467A100.058,100.058,0,0,1,100,199.967c-45.633,0-7.233-.2-10.8-.567A99.79,99.79,0,0,1,0,100C0,52.267,44.767,0,100,0A99.994,99.994,0,0,1,200,100Z" fill="#005cb7"/>
     </g>
     <g id="CareVive-Logo-White" transform="translate(-82.565 -42.396)">
       <g id="Group_1228" data-name="Group 1228" transform="translate(115.565 73.396)">

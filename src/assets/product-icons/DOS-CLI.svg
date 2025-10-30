@@ -1,43 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 139 139" style="enable-background:new 0 0 139 139;" xml:space="preserve">
-<style type="text/css">
-	.st0{clip-path:url(#SVGID_00000104701349181760727800000009770077027112597384_);}
-	.st1{fill:#00AEFF;}
-	.st2{opacity:0.3;fill:url(#Intersection_1_00000061457016049222056330000009675986990398668961_);enable-background:new    ;}
-	.st3{fill:#FF9D27;}
-	.st4{fill:#FFFFFF;}
-	.st5{fill:#E58B22;}
-</style>
-<g>
-	<defs>
-		<rect id="SVGID_1_" width="139" height="139"/>
-	</defs>
-	<clipPath id="SVGID_00000008123032696590740940000006759713390242450320_">
-		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-	</clipPath>
-	<g id="Artboard_2" style="clip-path:url(#SVGID_00000008123032696590740940000006759713390242450320_);">
-		<circle id="Ellipse_8" class="st1" cx="69.5" cy="69.5" r="69.1"/>
-		
-			<linearGradient id="Intersection_1_00000015330187188126344330000006441833738426760579_" gradientUnits="userSpaceOnUse" x1="-179.6997" y1="319.5103" x2="-179.3436" y2="318.5148" gradientTransform="matrix(94.691 0 0 -76.589 17087.125 24533.9961)">
-			<stop  offset="0" style="stop-color:#333333"/>
-			<stop  offset="1" style="stop-color:#333333;stop-opacity:0"/>
-		</linearGradient>
-		
-			<path id="Intersection_1" style="opacity:0.3;fill:url(#Intersection_1_00000015330187188126344330000006441833738426760579_);enable-background:new    ;" d="
-			M49.4,135.4L31.1,103h80.4c5,0,9-4,9-9V52.5l17,30c-6.7,32-34.5,56-67.8,56C62.8,138.5,56,137.5,49.4,135.4z"/>
-		<g id="Group_3" transform="translate(39.691 54.329)">
-			<path id="terminal" class="st3" d="M16.4,16.5L1.3,31.7c-0.7,0.7-1.9,0.7-2.6,0l-1.8-1.8c-0.7-0.7-0.7-1.9,0-2.6l12-12.1
-				l-12-12.1c-0.7-0.7-0.7-1.9,0-2.6l1.8-1.8c0.7-0.7,1.9-0.7,2.6,0l15.2,15.2C17.2,14.6,17.2,15.8,16.4,16.5L16.4,16.5z"/>
-			<path id="terminal-2" class="st4" d="M46.3,30.8v-2.5c0-1-0.8-1.9-1.9-1.9H20.7c-1,0-1.9,0.8-1.9,1.9v2.5c0,1,0.8,1.9,1.9,1.9
-				h23.7C45.4,32.7,46.3,31.8,46.3,30.8z"/>
-		</g>
-		<path id="Subtraction_10" class="st5" d="M39.7,86.7c-0.5,0-1-0.2-1.3-0.5l-1.8-1.8c-0.7-0.7-0.7-1.9,0-2.6l12-12.1h8.1
-			c0,0.5-0.2,1-0.5,1.3L41,86.2C40.6,86.5,40.1,86.7,39.7,86.7z"/>
-		<path id="Rectangle_157" class="st4" d="M30.7,40.9c-3.1,0-5.6,2.5-5.6,5.6v48.3c0,3.1,2.5,5.6,5.6,5.6h80.9
-			c3.1,0,5.6-2.5,5.6-5.6V46.5c0-3.1-2.5-5.6-5.6-5.6H30.7 M30.7,37.5h80.9c5,0,9,4,9,9v48.3c0,5-4,9-9,9H30.7c-5,0-9-4-9-9V46.5
-			C21.8,41.5,25.8,37.5,30.7,37.5z"/>
-	</g>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-DOS_CLI">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="DOS_CLI" data-name="DOS CLI" clip-path="url(#clip-DOS_CLI)">
+    <circle id="Blue_300_Bg" data-name="Blue 300 Bg" cx="100" cy="100" r="100" transform="translate(0 -0.1)" fill="#005cb7"/>
+    <g id="Group_3" transform="translate(50.868 75.508)">
+      <path id="terminal" d="M25.174,24.529,3.458,46.388a2.692,2.692,0,0,1-3.739,0L-2.87,43.8a2.692,2.692,0,0,1,0-3.739l17.258-17.4L-2.87,5.258a2.692,2.692,0,0,1,0-3.739L-.281-1.07a2.692,2.692,0,0,1,3.739,0l21.86,21.86a2.569,2.569,0,0,1-.144,3.739Z" transform="translate(3.625 1.825)" fill="#b8d2eb"/>
+      <path id="terminal-2" d="M58.349,32.728v-3.6A2.731,2.731,0,0,0,55.616,26.4H21.532A2.731,2.731,0,0,0,18.8,29.132v3.6a2.731,2.731,0,0,0,2.732,2.732H55.616A2.829,2.829,0,0,0,58.349,32.728Z" transform="translate(13.45 14.191)" fill="#fff"/>
+    </g>
+    <path id="Subtraction_10" d="M41.288,94.148a2.734,2.734,0,0,1-1.87-.719L36.83,90.84a2.692,2.692,0,0,1,0-3.739L54.088,69.7H65.736a2.734,2.734,0,0,1-.719,1.87l-21.86,21.86A3.386,3.386,0,0,1,41.288,94.148Z" transform="translate(14.805 30.538)" fill="#5c97d1"/>
+    <path id="Rectangle_157" d="M34.643,42.39a8.04,8.04,0,0,0-8.054,8.054V119.9a8.04,8.04,0,0,0,8.054,8.054H150.988a8.04,8.04,0,0,0,8.054-8.054V50.443a8.04,8.04,0,0,0-8.054-8.054H34.643m0-4.89H150.988a12.889,12.889,0,0,1,12.943,12.943V119.9a12.889,12.889,0,0,1-12.943,12.943H34.643A12.889,12.889,0,0,1,21.7,119.9V50.443A13.075,13.075,0,0,1,34.643,37.5Z" transform="translate(8.507 16.43)" fill="#fff"/>
+  </g>
 </svg>
