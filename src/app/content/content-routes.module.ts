@@ -35,7 +35,7 @@ const routes: Routes = [
                 path: 'references',
                 component: MarkdownContentComponent,
                 data: {
-                    title: 'References',
+                    title: 'Editorial Stylebook',
                     category: 'Brand',
                     document: require('../../../guides/content/references.md')
                 }
