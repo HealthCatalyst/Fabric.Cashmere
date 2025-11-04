@@ -21,7 +21,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     categories = ['All', 'Clinical', 'General', 'Health Catalyst', 'Industry', 'Technical'];
     types = ['All', 'Abbreviation', 'General usage'];
     selectedCategoriesControl = new FormControl('All', {nonNullable: true});
-    selectedTypesControl = new FormControl('All', {nonNullable: true});
+    selectedTypesControl = new FormControl('General usage', {nonNullable: true});
     searchControl = new FormControl();
     searchTerm = '';
     termsLoading = true;
@@ -36,7 +36,7 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
     displayedColumns: string[] = ['term', 'usage', 'example', 'edit'];
     dataSource: HcTableDataSource<IUsage>;
     pageNumber = 1;
-    pageOpts = [10, 20, 30];
+    pageOpts = [10, 30, 50];
 
     addChangeControl = new FormGroup({
         id: new FormControl('', {nonNullable: true}),
@@ -105,6 +105,9 @@ export class UsageListComponent extends BaseDemoComponent implements OnInit, Aft
                     this.dataSource.paginator = this.paginator;
                     this.termsLoading = false;
                     this.loadFailed = false;
+                    setTimeout(() => {
+                        this.applyFilter('');
+                    });
                 },
                 error: msg => {
                     this.loadFailed = true;

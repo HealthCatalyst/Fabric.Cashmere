@@ -1,4 +1,4 @@
-# References & Citations Usage
+# Editorial Stylebook
 
 ###### Last updated November 3, 2025
 
