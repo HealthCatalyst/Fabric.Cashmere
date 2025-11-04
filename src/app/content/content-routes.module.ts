@@ -18,7 +18,7 @@ const routes: Routes = [
                 path: 'usage',
                 component: UsageComponent,
                 data: {
-                    title: 'Usage',
+                    title: 'Style and Usage',
                     category: 'Brand'
                 }
             },
