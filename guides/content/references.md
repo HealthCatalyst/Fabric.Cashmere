@@ -91,7 +91,7 @@ Our voice reflects **trusted healthcare expertise, clarity, and compassion**. We
 
 - Use **title case** for titles and subheads.
 - Capitalize: All nouns, pronouns, verbs, adjectives, adverb.
-- Prepositions of four or more letters.
+- Prepositions of five or more letters.
 
 Example: *Driving Improvement Through Data and Insight*
 
