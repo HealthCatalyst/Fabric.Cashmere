@@ -1,6 +1,6 @@
 import {Injectable, ComponentRef, Injector, TemplateRef, Type} from '@angular/core';
 import {Overlay, OverlayConfig, OverlayRef, PositionStrategy} from '@angular/cdk/overlay';
-import {ComponentPortal, PortalInjector, TemplatePortal} from '@angular/cdk/portal';
+import {ComponentPortal, TemplatePortal} from '@angular/cdk/portal';
 import {HcToastComponent} from './hc-toast.component';
 import {HcToastOptions} from './hc-toast-options';
 import {HcToastRef} from './hc-toast-ref';
@@ -179,12 +179,13 @@ export class HcToasterService {
         return containerRef.instance;
     }
 
-    private _createInjector(toastRef: HcToastRef): PortalInjector {
-        const injectionTokens = new WeakMap();
-
-        injectionTokens.set(HcToastRef, toastRef);
-
-        return new PortalInjector(this.injector, injectionTokens);
+    private _createInjector(toastRef: HcToastRef): Injector {
+        return Injector.create({
+            providers: [
+                { provide: HcToastRef, useValue: toastRef }
+            ],
+            parent: this.injector
+        });
     }
 
     private _getOverlayConfig(config: HcToastOptions): OverlayConfig {

@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {CDK_TABLE, CDK_TABLE_TEMPLATE, CdkTable, _COALESCED_STYLE_SCHEDULER, _CoalescedStyleScheduler} from '@angular/cdk/table';
+import {CDK_TABLE, CdkTable} from '@angular/cdk/table';
 import {ChangeDetectionStrategy, Component, ViewEncapsulation, HostBinding, Input} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
 import {_DisposeViewRepeaterStrategy, _VIEW_REPEATER_STRATEGY} from '@angular/cdk/collections';
@@ -14,11 +14,17 @@ import {_DisposeViewRepeaterStrategy, _VIEW_REPEATER_STRATEGY} from '@angular/cd
 @Component({
     selector: 'hc-table, table[hc-table]',
     exportAs: 'matTable',
-    template: CDK_TABLE_TEMPLATE,
+    template: `
+        <ng-content select="caption"></ng-content>
+        <ng-content select="colgroup, col"></ng-content>
+        <ng-container headerRowOutlet></ng-container>
+        <ng-container rowOutlet></ng-container>
+        <ng-container noDataRowOutlet></ng-container>
+        <ng-container footerRowOutlet></ng-container>
+    `,
     styleUrls: ['table.component.scss'],
     providers: [
         { provide: _VIEW_REPEATER_STRATEGY, useClass: _DisposeViewRepeaterStrategy },
-        { provide: _COALESCED_STYLE_SCHEDULER, useClass: _CoalescedStyleScheduler },
         { provide: CDK_TABLE, useExisting: HcTable }
     ],
     encapsulation: ViewEncapsulation.None,

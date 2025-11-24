@@ -1,23 +1,24 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-    Component,
-    ElementRef,
-    EventEmitter,
-    Inject,
-    Input,
-    ViewChild,
-    ViewEncapsulation,
-    TemplateRef,
-    OnDestroy,
-    OnInit,
-    Optional,
-    Output,
-    ContentChildren,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Inject,
+  Input,
+  ViewChild,
+  ViewEncapsulation,
+  TemplateRef,
+  OnDestroy,
+  OnInit,
+  Optional,
+  Output,
+  ContentChildren,
+  DOCUMENT
 } from '@angular/core';
 import type {QueryList} from '@angular/core';
 import {AnimationEvent} from '@angular/animations';
-import {DOCUMENT} from '@angular/common';
+
 import {ConfigurableFocusTrapFactory, ConfigurableFocusTrap} from '@angular/cdk/a11y';
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {transformPopover} from './popover.animations';

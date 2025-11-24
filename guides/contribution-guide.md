@@ -1,6 +1,6 @@
 # Guidelines for Contribution
 
-###### Last updated March 2, 2023
+###### Last updated November 24, 2025
 
 :::
 
@@ -14,14 +14,14 @@ We would love for you to contribute to Cashmere! Follow the instructions below t
 
 ##### Setup Environment
 
-1.  [Install Node 18 and NPM 9](https://nodejs.org/en/blog/release/v18.14.2/). We currently build and test Cashmere with the Node 18 LTS release.
+1.  [Install Node v20.19.0 and NPM 10.8.2](https://nodejs.org/en/blog/release/v20.19.0/). We currently build and test Cashmere with the Node 20 LTS release.
 2.  Fork the `@healthcatalyst/cashmere` repo.
 3.  Clone your fork. Recommendation: name your git remotes `upstream` for `@healthcatalyst/cashmere`
 4.  From the root of the project, run `npm install`
 5.  Running `npm run build` will build the entire project.
 6.  `npm start` will serve the default project which is `user-guide` (the documentation site)
 
-You may want to consider using [Node Version Manager](https://github.com/nvm-sh/nvm) (`nvm`) to install and manage Node 18. Node 18 can be installed via `nvm` by running the command `nvm install 18.14.2`.
+You may want to consider using [Node Version Manager](https://github.com/nvm-sh/nvm) (`nvm`) to install and manage Node 20. Node 20 can be installed via `nvm` by running the command `nvm install 20.19.0`.
 
 <iframe width="100%" height="620" src="https://www.youtube.com/embed/FwXPYR0Auds?rel=0&modestbranding=0" title="Introduction to Cashmere Development" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

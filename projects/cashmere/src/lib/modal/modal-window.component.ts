@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ConfigurableFocusTrap, ConfigurableFocusTrapFactory} from '@angular/cdk/a11y';
-import {DOCUMENT} from '@angular/common';
-import {Component, ElementRef, HostBinding, HostListener, Inject, Optional, ViewChild, ViewEncapsulation} from '@angular/core';
+
+import {Component, ElementRef, HostBinding, HostListener, Inject, Optional, ViewChild, ViewEncapsulation, DOCUMENT} from '@angular/core';
 import {ActiveModal} from './active-modal';
 import { ButtonComponent } from '../button';
 
