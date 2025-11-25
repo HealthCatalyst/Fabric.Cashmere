@@ -17,10 +17,16 @@ import {_DisposeViewRepeaterStrategy, _VIEW_REPEATER_STRATEGY} from '@angular/cd
     template: `
         <ng-content select="caption"></ng-content>
         <ng-content select="colgroup, col"></ng-content>
-        <ng-container headerRowOutlet></ng-container>
-        <ng-container rowOutlet></ng-container>
-        <ng-container noDataRowOutlet></ng-container>
-        <ng-container footerRowOutlet></ng-container>
+        <thead>
+            <ng-container headerRowOutlet></ng-container>
+        </thead>
+        <tbody>
+            <ng-container rowOutlet></ng-container>
+            <ng-container noDataRowOutlet></ng-container>
+        </tbody>
+        <tfoot>
+            <ng-container footerRowOutlet></ng-container>
+        </tfoot>
     `,
     styleUrls: ['table.component.scss'],
     providers: [
