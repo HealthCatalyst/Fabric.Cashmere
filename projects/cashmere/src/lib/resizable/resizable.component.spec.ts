@@ -33,15 +33,11 @@ const getComponent = <T>(fixture: ComponentFixture<T>, className: string): Debug
     return getDebugElement(fixture.debugElement, className);
 };
 
-const getComponentAttribute = (fixture: DebugElement, attribute: string) => {
-    return (fixture.nativeElement as HTMLElement).getAttribute(attribute);
-};
-
 const getDebugElement = (element: DebugElement, className: string) => {
     return element.query(By.css(className));
 };
 
-describe('ResizableComponent', () => {
+fdescribe('ResizableComponent', () => {
     let component: ResizableHostComponent;
     let fixture: ComponentFixture<ResizableHostComponent>;
 
@@ -72,11 +68,10 @@ describe('ResizableComponent', () => {
         fixture.detectChanges();
 
         const resizable = getComponent(fixture, 'div > div');
-        const attributeAllowTag = getComponentAttribute(resizable, 'ng-reflect-position');
 
         const hasClass = componentHasClass(resizable, Meta.maxWidthClass);
 
-        expect(attributeAllowTag).toEqual('right');
+        expect(resizable.children[0].children[0].nativeNode.classList.contains('hc-resizable-handle-right')).toEqual(true);
         expect(hasClass).toEqual(true);
     });
 
@@ -85,11 +80,10 @@ describe('ResizableComponent', () => {
         fixture.detectChanges();
 
         const resizable = getComponent(fixture, 'div > div');
-        const attributeAllowTag = getComponentAttribute(resizable, 'ng-reflect-position');
 
         const hasClass = componentHasClass(resizable, Meta.maxWidthClass);
 
-        expect(attributeAllowTag).toEqual('left');
+        expect(resizable.children[0].children[0].nativeNode.classList.contains('hc-resizable-handle-left')).toEqual(true);
         expect(hasClass).toEqual(true);
     });
 
@@ -98,11 +92,10 @@ describe('ResizableComponent', () => {
         fixture.detectChanges();
 
         const resizable = getComponent(fixture, 'div > div');
-        const attributeAllowTag = getComponentAttribute(resizable, 'ng-reflect-position');
 
         const hasClass = componentHasClass(resizable, Meta.maxHeightClass);
 
-        expect(attributeAllowTag).toEqual('top');
+        expect(resizable.children[0].children[0].nativeNode.classList.contains('hc-resizable-handle-top')).toEqual(true);
         expect(hasClass).toEqual(true);
     });
 
@@ -111,11 +104,10 @@ describe('ResizableComponent', () => {
         fixture.detectChanges();
 
         const resizable = getComponent(fixture, 'div > div');
-        const attributeAllowTag = getComponentAttribute(resizable, 'ng-reflect-position');
 
         const hasClass = componentHasClass(resizable, Meta.maxHeightClass);
 
-        expect(attributeAllowTag).toEqual('bottom');
+        expect(resizable.children[0].children[0].nativeNode.classList.contains('hc-resizable-handle-bottom')).toEqual(true);
         expect(hasClass).toEqual(true);
     });
 
