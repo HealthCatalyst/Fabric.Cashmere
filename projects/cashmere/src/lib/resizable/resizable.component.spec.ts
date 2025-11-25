@@ -37,7 +37,7 @@ const getDebugElement = (element: DebugElement, className: string) => {
     return element.query(By.css(className));
 };
 
-fdescribe('ResizableComponent', () => {
+describe('ResizableComponent', () => {
     let component: ResizableHostComponent;
     let fixture: ComponentFixture<ResizableHostComponent>;
 
