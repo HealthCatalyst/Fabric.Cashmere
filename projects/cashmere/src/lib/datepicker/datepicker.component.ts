@@ -1,20 +1,21 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-    Component,
-    ViewEncapsulation,
-    Output,
-    EventEmitter,
-    Optional,
-    InjectionToken,
-    ElementRef,
-    ChangeDetectionStrategy,
-    OnDestroy,
-    Input,
-    ComponentRef,
-    NgZone,
-    ViewContainerRef,
-    Inject
+  Component,
+  ViewEncapsulation,
+  Output,
+  EventEmitter,
+  Optional,
+  InjectionToken,
+  ElementRef,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  Input,
+  ComponentRef,
+  NgZone,
+  ViewContainerRef,
+  Inject,
+  DOCUMENT
 } from '@angular/core';
 import {D} from './datetime/date-formats';
 import {DateAdapter} from './datetime/date-adapter';
@@ -27,7 +28,7 @@ import {DatepickerContentComponent} from './datepicker-content/datepicker-conten
 import {ComponentPortal} from '@angular/cdk/portal';
 import {DatepickerInputDirective} from './datepicker-input/datepicker-input.directive';
 import {Directionality} from '@angular/cdk/bidi';
-import {DOCUMENT} from '@angular/common';
+
 import {take, filter} from 'rxjs/operators';
 
 /** Used to generate a unique ID for each datepicker instance. */

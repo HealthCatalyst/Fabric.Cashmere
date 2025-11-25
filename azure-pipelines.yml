@@ -16,7 +16,7 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: 18.x
+    versionSpec: 20.19
   displayName: install Node.js
 
 - script: |
