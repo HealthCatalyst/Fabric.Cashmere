@@ -1,7 +1,13 @@
 export {HcPopoverAnchorDirective} from './directives/popover-anchor.directive';
 export {PopModule} from './popover.module';
 export {HcPopComponent} from './popover.component';
-export {HcPopoverOpenOptions} from './types';
+export {
+    HcPopoverOpenOptions,
+    HcPopoverScrollStrategy,
+    HcPopoverTrigger,
+    HcPopoverHorizontalAlign,
+    HcPopoverVerticalAlign
+} from './types';
 export {MenuDirective} from './directives/menu.directive';
 export {MenuItemDirective} from './directives/menu-item.directive';
 export {MenuIconDirective} from './directives/menu-icon.directive';
