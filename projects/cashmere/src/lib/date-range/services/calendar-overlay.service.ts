@@ -1,6 +1,6 @@
 import {Injectable, ElementRef, Injector, EventEmitter, OnDestroy} from '@angular/core';
 import {Overlay, OverlayConfig, OverlayRef} from '@angular/cdk/overlay';
-import {ComponentPortal, PortalInjector} from '@angular/cdk/portal';
+import {ComponentPortal} from '@angular/cdk/portal';
 import {PickerOverlayComponent} from '../picker-overlay/picker-overlay.component';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -94,11 +94,13 @@ export class CalendarOverlayService implements OnDestroy {
         return overlayConfig;
     }
 
-    private _createInjector(overlayRef: OverlayRef): PortalInjector {
-        const injectionTokens = new WeakMap();
-        injectionTokens.set(OverlayRef, overlayRef);
-
-        return new PortalInjector(this.injector, injectionTokens);
+    private _createInjector(overlayRef: OverlayRef): Injector {
+        return Injector.create({
+            providers: [
+                { provide: OverlayRef, useValue: overlayRef }
+            ],
+            parent: this.injector
+        });
     }
 
     ngOnDestroy(): void {
