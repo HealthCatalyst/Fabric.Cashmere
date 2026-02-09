@@ -95,6 +95,7 @@
     "@types/yargs": "^15.0.5",
     "@typescript-eslint/eslint-plugin": "^7.9.0",
     "@typescript-eslint/parser": "^7.9.0",
+    "baseline-browser-mapping": "^2.9.19",
     "chalk": "^2.3.0",
     "change-case": "^3.0.2",
     "codelyzer": "^6.0.0",
@@ -141,7 +142,7 @@
   },
   "config": {
     "commitizen": {
-        "path": "cz-conventional-changelog"
+      "path": "cz-conventional-changelog"
     }
   }
 }
