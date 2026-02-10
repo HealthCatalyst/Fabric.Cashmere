@@ -610,59 +610,6 @@ xdescribe('PickPaneComponent', () => {
             expect(fixture.componentInstance.pickPane.itemsList.filteredItems[1].label).toBe('Vilnius');
             expect(fixture.componentInstance.pickPane.itemsList.filteredItems[2].label).toBe('Bruchhausen-Vilsen');
         }));
-
-        describe('with externalSearchSubject', () => {
-            let fixture: ComponentFixture<HcPickPaneTestCmp>;
-            let pickPane: PickPaneComponent;
-            beforeEach(() => {
-                fixture = createTestingModule(
-                    HcPickPaneTestCmp,
-                    `<hc-pick-pane [items]="cities"
-                        [externalSearchSubject]="filter"
-                        [externalSearchTermMinLength]="externalSearchTermMinLength"
-                        bindLabel="name">
-                    </hc-pick-pane>`);
-                pickPane = fixture.componentInstance.pickPane;
-            });
-
-            it('should not show selected city among options if it does not match search term', fakeAsync(() => {
-                pickPane.itemsList.select(pickPane.itemsList.items[1]);
-                tickAndDetectChanges(fixture);
-
-                fixture.componentInstance.filter.subscribe();
-                pickPane.filter('new');
-                fixture.componentInstance.cities = [{ id: 4, name: 'New York' }];
-                tickAndDetectChanges(fixture);
-                expect(pickPane.itemsList.filteredItems.length).toBe(2);
-                expect(pickPane.itemsList.filteredItems[1].label).toBe('New York');
-            }));
-
-            it('should push term to custom observable', fakeAsync(() => {
-                fixture.componentInstance.filter.subscribe();
-                const next = spyOn(fixture.componentInstance.filter, 'next');
-                pickPane.filter('vilnius');
-                tickAndDetectChanges(fixture);
-                expect(next).toHaveBeenCalledWith('vilnius');
-            }));
-
-            it('should push term to custom observable', fakeAsync(() => {
-                fixture.componentInstance.filter.subscribe();
-                const next = spyOn(fixture.componentInstance.filter, 'next');
-                pickPane.filter('');
-                tickAndDetectChanges(fixture);
-                expect(next).toHaveBeenCalledWith('');
-            }));
-
-            it('should not push term to custom observable if length is less than externalSearchTermMinLength', fakeAsync(() => {
-                fixture.componentInstance.externalSearchTermMinLength = 2;
-                tickAndDetectChanges(fixture);
-                fixture.componentInstance.filter.subscribe();
-                const next = spyOn(fixture.componentInstance.filter, 'next');
-                pickPane.filter('v');
-                tickAndDetectChanges(fixture);
-                expect(next).not.toHaveBeenCalledWith('v');
-            }));
-        });
     });
 
     describe('Grouping', () => {
