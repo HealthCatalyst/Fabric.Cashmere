@@ -1,0 +1,35 @@
+<h5 id="overview">Overview</h5>
+<p>The File Size pipe is used to transform a number of bytes into the largest possible unit (up to petabyte).</p>
+<h5 id="api">API</h5>
+<pre><code class="language-ts">transform(bytes: number, precision: number = 2): string
+</code></pre>
+<p><code>bytes</code>: the number of bytes</p>
+<p><code>precision</code>: the number of decimal points to display (defaults to <code>2</code>)</p>
+<h5 id="importing-the-file-size-pipe">Importing the File Size Pipe</h5>
+<p>To use the <code>FileSizePipe</code>, import the <code>FileSizePipeModule</code> into your app's <code>CashmereModule</code> (which in turn is imported into your app):</p>
+<pre><code class="language-ts">import {NgModule} from '@angular/core';
+import {FileSizePipeModule} from '@healthcatalyst/cashmere';
+
+@NgModule({
+    exports: [FileSizePipeModule]
+})
+export class CashmereModule {}
+</code></pre>
+<p>Alternatively, each pipe in Cashmere is also exported from <code>PipesModule</code>, if you wish to import all pipes from the <code>@healthcatalyst/cashmere</code> package:</p>
+<pre><code class="language-ts">import {NgModule} from '@angular/core';
+import {PipesModule} from '@healthcatalyst/cashmere';
+
+@NgModule({
+    exports: [PipesModule]
+})
+export class CashmereModule {}
+</code></pre>
+<h5 id="using-the-file-size-pipe">Using the File Size pipe</h5>
+<p>Pipe a <code>number</code> value to the File Size pipe representing the number of bytes. You can optionally specify the number of decimal places to truncate the value to. If the number divides evenly into the unit, the value is returned as an integer.</p>
+<pre><code class="language-html">{{ 230 | fileSize }}
+&lt;!-- will output '230 bytes' --&gt;
+{{ 123456789 | fileSize : 3 }}
+&lt;!-- will output '117.738 MB' --&gt;
+</code></pre>
+<h5 id="edge-cases">Edge cases</h5>
+<p>If the File Size Pipe is given a value other than a nonnegative number, it returns the given value as a string.</p>

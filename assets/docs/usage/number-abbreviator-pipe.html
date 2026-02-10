@@ -1,0 +1,51 @@
+<h5 id="overview">Overview</h5>
+<p>The Number Abbreviator pipe is used to format numbers in a shortened form using common character abbreviation formats,
+like so `</p>
+<ul>
+<li>Quadrillions: Q</li>
+<li>Trillions: T</li>
+<li>Billions: B</li>
+<li>Millions: M</li>
+<li>Thousands: K</li>
+</ul>
+<h5 id="api">API</h5>
+<pre><code class="language-ts">transform(value: number, decimalPoints: number = 2, threshold: number = 1000000): string
+</code></pre>
+<p><code>value</code>: the number to be abbreviated</p>
+<p><code>decimalPoints</code>: how many decimal points to round to</p>
+<p><code>threshold</code>: represents the number at which we should start abbreviating; if the threshold is 1 million, numbers less than 1 million will NOT be abbreviated (but will be formatted with commas &amp; decimal points)</p>
+<h5 id="importing-the-number-abbreviator-pipe">Importing the Number Abbreviator Pipe</h5>
+<p>To use the <code>NumberAbbreviatorPipe</code>, import the <code>NumberAbbreviatorPipeModule</code> into your app's <code>CashmereModule</code> (which in turn is imported into your app):</p>
+<pre><code class="language-ts">import {NgModule} from '@angular/core';
+import {NumberAbbreviatorPipeModule} from '@healthcatalyst/cashmere';
+
+@NgModule({
+    exports: [NumberAbbreviatorPipeModule]
+})
+export class CashmereModule {}
+</code></pre>
+<p>Alternatively, each pipe in Cashmere is also exported from <code>PipesModule</code>, if you wish to import all pipes from the <code>@healthcatalyst/cashmere</code> package:</p>
+<pre><code class="language-ts">import {NgModule} from '@angular/core';
+import {PipesModule} from '@healthcatalyst/cashmere';
+
+@NgModule({
+    exports: [PipesModule]
+})
+export class CashmereModule {}
+</code></pre>
+<h5 id="using-the-number-abbreviator-pipe">Using the Number Abbreviator pipe</h5>
+<p>Pass a <code>number</code> value to the Number Abbreviator pipe to have it translated. Numbers into the quarillions are supported.
+Regardless of size, numbers will be formatted with needed commas or decimal points. You can optionally specify the number of decimal places to round the value to, or the threshold at which numbers should be abbreviated.</p>
+<pre><code class="language-html">{{ 1234234 | abbreviateNumber }}
+&lt;!-- will output '1.23M' --&gt;
+
+{{ 1940 | abbreviateNumber }}
+&lt;!-- will output '1,940' --&gt;
+
+{{ 1234567890 | abbreviateNumber : 3 }}
+&lt;!-- will output '1.235B' --&gt;
+
+{{ 8467 | abbreviateNumber : 2 : 999 }}
+&lt;!-- will output '8.47K' --&gt;
+
+</code></pre>

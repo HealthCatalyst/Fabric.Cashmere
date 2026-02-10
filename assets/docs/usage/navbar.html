@@ -1,0 +1,58 @@
+<h5 id="mobile-development-guide">Mobile Development Guide</h5>
+<p>For information on configuring the navbar for responsive web applications, refer to the <a href="https://cashmere.healthcatalyst.net/web/mobile/mobile-navigation">mobile development guide</a>.</p>
+<h5 id="help-menu">Help Menu</h5>
+<p>All Health Catalyst apps should include a help menu in their navbar. This guide provides a standard menu for the content that should appear in that menu. A standard menu provides users with a consistent experience—they know what to expect from Health Catalyst applications. It also gives them the support and information they need to use the app. The help menu is included as a <code>hc-navbar-icon</code> that stays pinned to the right side and triggers a popover:</p>
+<pre><code class="language-html">&lt;hc-navbar-icon&gt;
+    &lt;hc-icon fontIcon=&quot;icon-help&quot; [hcPop]=&quot;helpMenu&quot;&gt;&lt;/hc-icon&gt;
+&lt;/hc-navbar-icon&gt;
+</code></pre>
+<p> </p>
+<h5 id="what-items-should-go-in-the-help-menu">What items should go in the help menu?</h5>
+<p>You may not have all these items available. However, include what you have in this order:</p>
+<ul>
+<li>[icon-book] <strong>Read the docs</strong> (link to the <a href="https://www.healthcatalyst.com/docs/">docs site</a> or your help docs repository on HCC)</li>
+<li>[icon-lightbulb] <strong>Request a feature</strong> (link to your feature request page on Health Catalyst Community)</li>
+<li>[icon-users] <strong>Ask the community</strong> (link to your Q&amp;A page on Health Catalyst Community)</li>
+<li>[icon-bullhorn] <strong>Find out what's new</strong> (link to your release notes on Health Catalyst Community)</li>
+<li>[icon-bug] <strong>Report an issue</strong> (link to open a new ticket on the Support Portal)</li>
+<li>[icon-comments] <strong>Send feedback</strong> (see the <a href="https://cashmere.healthcatalyst.net/web/components/typeform-survey/examples">User Feedback Guide</a>)</li>
+<li>[icon-info] <strong>About</strong> see the <a href="https://cashmere.healthcatalyst.net/foundations/about">associated style page</a> for guidelines)</li>
+</ul>
+<pre><code class="language-html">&lt;hc-pop #helpMenu [autoCloseOnContentClick]=&quot;true&quot; [showArrow]=&quot;false&quot; horizontalAlign=&quot;end&quot;&gt;
+    &lt;div hcMenu&gt;
+        &lt;a hcMenuItem href=&quot;http://example.com&quot; target=&quot;_blank&quot;&gt;
+            &lt;hc-icon hcMenuIcon fontIcon=&quot;icon-book&quot;&gt;&lt;/hc-icon&gt;
+            &lt;span hcMenuText&gt;Read the docs&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a hcMenuItem href=&quot;http://example.com&quot; target=&quot;_blank&quot;&gt;
+            &lt;hc-icon hcMenuIcon fontIcon=&quot;icon-lightbulb&quot;&gt;&lt;/hc-icon&gt;
+            &lt;span hcMenuText&gt;Request a feature&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a hcMenuItem href=&quot;http://example.com&quot; target=&quot;_blank&quot;&gt;
+            &lt;hc-icon hcMenuIcon fontIcon=&quot;icon-users&quot;&gt;&lt;/hc-icon&gt;
+            &lt;span hcMenuText&gt;Ask the community&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a hcMenuItem href=&quot;http://example.com&quot; target=&quot;_blank&quot;&gt;
+            &lt;hc-icon hcMenuIcon fontIcon=&quot;icon-bullhorn&quot;&gt;&lt;/hc-icon&gt;
+            &lt;span hcMenuText&gt;Find out what's new&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a hcMenuItem href=&quot;http://example.com&quot; target=&quot;_blank&quot;&gt;
+            &lt;hc-icon hcMenuIcon fontIcon=&quot;icon-bug&quot;&gt;&lt;/hc-icon&gt;
+            &lt;span hcMenuText&gt;Report an issue&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;a hcMenuItem href=&quot;http://example.com&quot; target=&quot;_blank&quot;&gt;
+            &lt;hc-icon hcMenuIcon fontIcon=&quot;icon-comments&quot;&gt;&lt;/hc-icon&gt;
+            &lt;span hcMenuText&gt;Send feedback&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;div hcMenuItem hcDivider&gt;&lt;/div&gt;
+        &lt;button hcMenuItem&gt;
+            &lt;hc-icon hcMenuIcon fontIcon=&quot;icon-info&quot;&gt;&lt;/hc-icon&gt;
+            &lt;span hcMenuText&gt;About&lt;/span&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/hc-pop&gt;
+</code></pre>
+<p> </p>
+<h5 id="app-switcher">App Switcher</h5>
+<p>In addition to the help menu, all Heath Catalyst applications should also include the app switcher in their navbar to the left of the help menu.
+For examples and information on adding and configuring the app switcher, visit the <a href="https://cashmere.healthcatalyst.net/web/components/app-switcher">App Switcher component</a> page.</p>

@@ -1,0 +1,33 @@
+<h5 id="setup">Setup</h5>
+<p>The <code>options</code> takes a <code>DateRangeOptions</code> object as a parameter to configure the date range component. This is typically setup for each component:</p>
+<pre><code class="language-typescript">@Component({
+...
+})
+export class MyComponent implements OnInit{
+     options: DateRangeOptions;
+     ngOnInit() {
+        this.options = {
+            presets: [],
+            format: 'mediumDate',
+            range: { fromDate: today, toDate: today },
+            applyLabel: 'Apply',
+            ...
+        };
+    }
+}
+</code></pre>
+<pre><code class="language-html">&lt;button hc-button hcDateRange [options]=&quot;options&quot;&gt;
+    Click Me
+&lt;/button&gt;
+</code></pre>
+<p>The default if options are not setup</p>
+<pre><code class="language-typescript">{
+    excludeWeekends: false,
+    locale: 'en-US',
+    fromMinMax: { fromDate: undefined, toDate: undefined },
+    toMinMax: { fromDate: undefined, toDate: undefined },
+    presets: [],
+    format: '',
+    range: { fromDate: undefined, toDate: undefined }
+}
+</code></pre>

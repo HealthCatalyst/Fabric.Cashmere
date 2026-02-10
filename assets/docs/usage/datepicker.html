@@ -1,0 +1,469 @@
+<h5 id="overview">Overview</h5>
+<p>The datepicker allows users to enter a date, time, or both either through text input, or by choosing a date from
+the calendar. It is made up of several components and directives that work together.</p>
+<h5 id="connecting-a-datepicker-to-an-input">Connecting a datepicker to an input</h5>
+<p>A datepicker is composed of a text input and a calendar pop-up, connected via the <code>hcDatepicker</code>
+property on the text input.</p>
+<pre><code class="language-html">&lt;input [hcDatepicker]=&quot;myDatepicker&quot; /&gt;
+&lt;hc-datepicker #myDatepicker&gt;&lt;/hc-datepicker&gt;
+</code></pre>
+<p>An optional datepicker toggle button is available. A toggle can be added to the example above:</p>
+<pre><code class="language-html">&lt;input [hcDatepicker]=&quot;myDatepicker&quot; /&gt;
+&lt;hc-datepicker-toggle [for]=&quot;myDatepicker&quot;&gt;&lt;/hc-datepicker-toggle&gt;
+&lt;hc-datepicker #myDatepicker&gt;&lt;/hc-datepicker&gt;
+</code></pre>
+<p>This works exactly the same with an input that is part of an <code>&lt;hc-form-field&gt;</code> and the toggle
+can easily be used as a prefix or suffix on the <code>hcInput</code>:</p>
+<pre><code class="language-html">&lt;hc-form-field&gt;
+    &lt;input hcInput [hcDatepicker]=&quot;myDatepicker&quot; /&gt;
+    &lt;hc-datepicker-toggle hcSuffix [for]=&quot;myDatepicker&quot;&gt;&lt;/hc-datepicker-toggle&gt;
+    &lt;hc-datepicker #myDatepicker&gt;&lt;/hc-datepicker&gt;
+&lt;/hc-form-field&gt;
+</code></pre>
+<p>If you want to customize the icon that is rendered inside the <code>hc-datepicker-toggle</code>, you can do so
+by using the <code>hcDatepickerToggleIcon</code> directive:</p>
+<pre><code class="language-html">&lt;hc-form-field&gt;
+  &lt;input hcInput [hcDatepicker]=&quot;picker&quot; placeholder=&quot;Choose a date&quot;&gt;
+  &lt;hc-datepicker-toggle hcSuffix [for]=&quot;picker&quot;&gt;
+    &lt;hc-icon hcDatepickerToggleIcon fontIcon=&quot;icon-medicine&quot;&gt;
+  &lt;/hc-datepicker-toggle&gt;
+  &lt;hc-datepicker #picker&gt;&lt;/hc-datepicker&gt;
+&lt;/hc-form-field&gt;
+</code></pre>
+<h5 id="setting-the-datepicker-mode">Setting the datepicker mode</h5>
+<p>The datepicker may be used to select a calendar date, a time, or both. This is set via the <code>mode</code>
+parameter on the <code>hc-datepicker</code> element. The three available options are  <code>date</code>, <code>time</code>, or <code>date-time</code>.
+If using either <code>time</code> or <code>date-time</code> modes, you may also set the <code>hourCycle</code> property to 12 or 24 depending
+on whether you would like a clock with AM/PM.</p>
+<h5 id="setting-the-calendar-starting-view">Setting the calendar starting view</h5>
+<p>The <code>startView</code> property of <code>&lt;hc-datepicker&gt;</code> can be used to set the view that will show up when
+the calendar first opens. It can be set to <code>month</code>, <code>year</code>, or <code>multi-year</code>; by default it will open
+to month view.</p>
+<p>The month, year, or range of years that the calendar opens to is determined by first checking if any
+date is currently selected, if so it will open to the month or year containing that date. Otherwise
+it will open to the month or year containing today's date. This behavior can be overridden by using
+the <code>startAt</code> property of <code>&lt;hc-datepicker&gt;</code>. In this case the calendar will open to the month or
+year containing the <code>startAt</code> date.</p>
+<pre><code class="language-html">&lt;hc-form-field&gt;
+    &lt;input hcInput [hcDatepicker]=&quot;picker&quot; placeholder=&quot;Choose a date&quot; /&gt;
+    &lt;hc-datepicker-toggle hcSuffix [for]=&quot;picker&quot;&gt;&lt;/hc-datepicker-toggle&gt;
+    &lt;hc-datepicker #picker startView=&quot;year&quot; [startAt]=&quot;startDate&quot;&gt;&lt;/hc-datepicker&gt;
+&lt;/hc-form-field&gt;
+</code></pre>
+<pre><code class="language-typescript">import {Component} from '@angular/core';
+
+/** @title Datepicker start date */
+@Component({
+    selector: 'datepicker-start-view-example',
+    templateUrl: 'datepicker-start-view-example.html',
+    styleUrls: ['datepicker-start-view-example.css']
+})
+export class DatepickerStartViewExample {
+    startDate = new Date(1990, 0, 1);
+}
+</code></pre>
+<h5 id="watching-the-views-for-changes-on-selected-years-and-months">Watching the views for changes on selected years and months</h5>
+<p>When a year or a month is selected in <code>multi-year</code> and <code>year</code> views respectively, the <code>yearSelected</code>
+and <code>monthSelected</code> outputs emit a normalized date representing the chosen year or month. By
+&quot;normalized&quot; we mean that the dates representing years will have their month set to January and
+their day set to the 1st. Dates representing months will have their day set to the 1st of the
+month. For example, if <code>&lt;hc-datepicker&gt;</code> is configured to work with javascript native Date
+objects, the <code>yearSelected</code> will emit <code>new Date(2017, 0, 1)</code> if the user selects 2017 in
+<code>multi-year</code> view. Similarly, <code>monthSelected</code> will emit <code>new Date(2017, 1, 1)</code> if the user
+selects <strong>February</strong> in <code>year</code> view and the current date value of the connected <code>&lt;input&gt;</code> was
+set to something like <code>new Date(2017, MM, dd)</code> when the calendar was opened (the month and day are
+irrelevant in this case).</p>
+<p>Notice that the emitted value does not affect the current value in the connected <code>&lt;input&gt;</code>, which
+is only bound to the selection made in the <code>month</code> view. So if the end user closes the calendar
+after choosing a year in <code>multi-view</code> mode (by pressing the <code>ESC</code> key, for example), the selected
+year, emitted by <code>yearSelected</code> output, will not cause any change in the value of the date in the
+associated <code>&lt;input&gt;</code>.</p>
+<h5 id="setting-the-selected-date">Setting the selected date</h5>
+<p>The type of values that the datepicker expects depends on the type of <code>DateAdapter</code> provided in your
+application. The <code>NativeDateAdapter</code>, for example, works directly with plain JavaScript <code>Date</code>
+objects.</p>
+<p>Depending on the <code>DateAdapter</code> being used, the datepicker may automatically deserialize certain date
+formats for you as well. For example, the <code>NativeDateAdapter</code> allows
+<a href="https://tools.ietf.org/html/rfc3339">ISO 8601</a> strings to be passed to the datepicker and
+automatically converted to the proper object type. This can be convenient when binding data directly
+from your backend to the datepicker. However, the datepicker will not accept date strings formatted
+in user format such as <code>&quot;1/2/2017&quot;</code> as this is ambiguous and will mean different things depending on
+the locale of the browser running the code.</p>
+<p>As with other types of <code>&lt;input&gt;</code>, the datepicker works with <code>@angular/forms</code> directives such as
+<code>formGroup</code>, <code>formControl</code>, <code>ngModel</code>, etc.</p>
+<h5 id="date-validation">Date validation</h5>
+<p>Date validation will only occur if the <code>input</code> element is bound via <code>ngModel</code> or <code>formControl</code>. The validator will check to see if the value entered is a valid date. Beyond that, there are three properties that add additional date validation to the datepicker input. The first two are the
+<code>min</code> and <code>max</code> properties. In addition to enforcing validation on the input, these properties will
+disable all dates on the calendar popup before or after the respective values and prevent the user
+from advancing the calendar past the <code>month</code> or <code>year</code> (depending on current view) containing the
+<code>min</code> or <code>max</code> date.</p>
+<p>The second way to add date validation is using the <code>hcDatepickerFilter</code> property of the datepicker
+input. This property accepts a function of <code>&lt;D&gt; =&gt; boolean</code> (where <code>&lt;D&gt;</code> is the date type used by
+the datepicker, see
+<a href="/web/components/datepicker/usage#choosing-date-implementation">Choosing a date implementation</a>.
+A result of <code>true</code> indicates that the date is valid and a result of <code>false</code> indicates that it is
+not. Again this will also disable the dates on the calendar that are invalid. However, one important
+difference between using <code>hcDatepickerFilter</code> vs using <code>min</code> or <code>max</code> is that filtering out all
+dates before or after a certain point, will not prevent the user from advancing the calendar past
+that point.</p>
+<p>In this example the user can back past 2005, but all of the dates before then will be unselectable.
+They will not be able to go further back in the calendar than 2000. If they manually type in a date
+that is before the min, after the max, or filtered out, the input will have validation errors.</p>
+<p>Each validation property has a different error that can be checked:</p>
+<ul>
+<li>A value that violates the <code>min</code> property will have a <code>hcDatepickerMin</code> error.</li>
+<li>A value that violates the <code>max</code> property will have a <code>hcDatepickerMax</code> error.</li>
+<li>A value that violates the <code>hcDatepickerFilter</code> property will have a <code>hcDatepickerFilter</code> error.</li>
+</ul>
+<p>The input's native <code>(input)</code> and <code>(change)</code> events will only trigger due to user interaction with
+the input element; they will not fire when the user selects a date from the calendar popup.
+Therefore, the datepicker input also has support for <code>(dateInput)</code> and <code>(dateChange)</code> events. These
+trigger when the user interacts with either the input or the popup.</p>
+<p>The <code>(dateInput)</code> event will fire whenever the value changes due to the user typing or selecting a
+date from the calendar. The <code>(dateChange)</code> event will fire whenever the user finishes typing input
+(on <code>&lt;input&gt;</code> blur), or when the user chooses a date from the calendar.</p>
+<h5 id="disabling-parts-of-the-datepicker">Disabling parts of the datepicker</h5>
+<p>As with any standard <code>&lt;input&gt;</code>, it is possible to disable the datepicker input by adding the
+<code>disabled</code> property. By default, the <code>&lt;hc-datepicker&gt;</code> and <code>&lt;hc-datepicker-toggle&gt;</code> will inherit
+their disabled state from the <code>&lt;input&gt;</code>, but this can be overridden by setting the <code>disabled</code>
+property on the datepicker or toggle elements. This can be useful if you want to disable text input
+but allow selection via the calendar or vice-versa.</p>
+<h5 id="manually-opening-and-closing-the-calendar">Manually opening and closing the calendar</h5>
+<p>The calendar popup can be programmatically controlled using the <code>open</code> and <code>close</code> methods on the
+<code>&lt;hc-datepicker&gt;</code>. It also has an <code>opened</code> property that reflects the status of the popup.</p>
+<h5 id="internationalization">Internationalization</h5>
+<p>Internationalization of the datepicker is configured via four aspects:</p>
+<ol>
+<li>The date locale.</li>
+<li>The date implementation that the datepicker accepts.</li>
+<li>The display and parse formats used by the datepicker.</li>
+<li>The message strings used in the datepicker's UI.</li>
+</ol>
+<h5 id="setting-the-locale-code">Setting the locale code</h5>
+<p>By default, the <code>HC_DATE_LOCALE</code> injection token will use the existing <code>LOCALE_ID</code> locale code
+from <code>@angular/core</code>. If you want to override it, you can provide a new value for the
+<code>HC_DATE_LOCALE</code> token:</p>
+<pre><code class="language-ts">@NgModule({
+    providers: [{provide: HC_DATE_LOCALE, useValue: 'en-GB'}]
+})
+export class MyApp {}
+</code></pre>
+<p><a name="choosing-date-implementation"></a>It's also possible to set the locale at runtime using the <code>setLocale</code> method of the <code>DateAdapter</code>.</p>
+<h5 id="choosing-a-date-implementation-and-date-format-settings">Choosing a date implementation and date format settings</h5>
+<p>The datepicker was built to be date implementation agnostic. This means that it can be made to work
+with a variety of different date implementations. However it also means that developers need to make
+sure to provide the appropriate pieces for the datepicker to work with their chosen implementation.
+The easiest way to ensure this is just to import one of the pre-made modules:</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Date type</th>
+<th>Supported locales</th>
+<th>Dependencies</th>
+<th>Import from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HcNativeDateModule</code></td>
+<td><code>Date</code></td>
+<td>en-US</td>
+<td>None</td>
+<td><code>@healthcatalyst/cashmere</code></td>
+</tr>
+</tbody>
+</table>
+<p>These modules include providers for <code>DateAdapter</code> and <code>HC_DATE_FORMATS</code></p>
+<pre><code class="language-ts">@NgModule({
+    imports: [DatepickerModule, HcNativeDateModule]
+})
+export class MyApp {}
+</code></pre>
+<p>Because <code>DateAdapter</code> is a generic class, <code>HcDatepicker</code> and <code>HcDatepickerInput</code> also need to be
+made generic. When working with these classes (for example as a <code>ViewChild</code>) you should include the
+appropriate generic type that corresponds to the <code>DateAdapter</code> implementation you are using. For
+example:</p>
+<pre><code class="language-ts">@Component({...})
+export class MyComponent {
+  @ViewChild(HcDatepicker) datepicker: HcDatepicker&lt;Date&gt;;
+}
+</code></pre>
+<p>_Please note: <code>HcNativeDateModule</code> is based off of the functionality available in JavaScript's
+native <code>Date</code> object, and is thus not suitable for many locales. One of the biggest shortcomings of
+the native <code>Date</code> object is the inability to set the parse format.</p>
+<p><a href="https://sugarjs.com/dates/#/Parsing">SugarJS</a> is a JavaScript library used by many Health
+Catalyst applications to handle parsing user input into Date objects.  It handles a wide variety of
+input formats and supports multiple languages.  To use SugarJS with the Cashmere DatePicker,
+you need to declare a Sugar Date Adapter as demonstrated in the example below.  See the <strong>Datepicker Sugar</strong>
+example on the examples tab for more information.</p>
+<pre><code class="language-ts">export class SugarDateAdapter extends NativeDateAdapter {
+    parse(value: any): Date | null {
+        return createDate(value);
+    }
+}
+</code></pre>
+<p>It is also possible to create your own <code>DateAdapter</code> that works with any date format your app
+requires. This is accomplished by subclassing <code>DateAdapter</code> and providing your subclass as the
+<code>DateAdapter</code> implementation. You will also want to make sure that the <code>HC_DATE_FORMATS</code> provided
+in your app are formats that can be understood by your date implementation. See
+<a href="/web/components/datepicker/usage#customizing-parse">Customizing the parse and display formats</a> for more
+information about <code>HC_DATE_FORMATS</code>.</p>
+<pre><code class="language-ts">@NgModule({
+    imports: [DatepickerModule],
+    providers: [
+        {provide: DateAdapter, useClass: MyDateAdapter},
+        {provide: HC_DATE_FORMATS, useValue: MY_DATE_FORMATS}
+    ]
+})
+export class MyApp {}
+</code></pre>
+<p><a name="customizing-parse" style="height:25px; display: block;"></a></p>
+<h5 id="customizing-the-parse-and-display-formats">Customizing the parse and display formats</h5>
+<p>The <code>HC_DATE_FORMATS</code> object is just a collection of formats that the datepicker uses when parsing
+and displaying dates. These formats are passed through to the <code>DateAdapter</code> so you will want to make
+sure that the format objects you're using are compatible with the <code>DateAdapter</code> used in your app.</p>
+<p>If you want use one of the <code>DateAdapters</code> that ships with Cashmere, but use your own
+<code>HC_DATE_FORMATS</code>, you can import the <code>NativeDateModule</code>. This module is
+identical to the &quot;Hc&quot;-prefixed version (<code>HcNativeDateModule</code>) except
+they do not include the default formats. For example:</p>
+<pre><code class="language-ts">@NgModule({
+    imports: [DatepickerModule, NativeDateModule],
+    providers: [{provide: HC_DATE_FORMATS, useValue: MY_NATIVE_DATE_FORMATS}]
+})
+export class MyApp {}
+</code></pre>
+<h5 id="customizing-the-calendar-header">Customizing the calendar header</h5>
+<p>The header section of the calendar (the part containing the view switcher and previous and next
+buttons) can be replaced with a custom component if desired. This is accomplished using the
+<code>calendarHeaderComponent</code> property of <code>&lt;hc-datepicker&gt;</code>. It takes a component class and constructs
+an instance of the component to use as the header.</p>
+<p>In order to interact with the calendar in your custom header component, you can inject the parent
+<code>HcCalendar</code> in the constructor. To make sure your header stays in sync with the calendar,
+subscribe to the <code>stateChanges</code> observable of the calendar and mark your header component for change
+detection.</p>
+<h5 id="localizing-labels-and-messages">Localizing labels and messages</h5>
+<p>The various text strings used by the datepicker are provided through <code>HcDatepickerIntl</code>.
+Localization of these messages can be done by providing a subclass with translated values in your
+application root module.</p>
+<pre><code class="language-ts">@NgModule({
+    imports: [DatepickerModule, HcNativeDateModule],
+    providers: [{provide: HcDatepickerIntl, useClass: MyIntl}]
+})
+export class MyApp {}
+</code></pre>
+<h5 id="highlighting-specific-dates">Highlighting specific dates</h5>
+<p>If you want to apply one or more CSS classes to some dates in the calendar (e.g. to highlight a
+holiday), you can do so with the <code>dateClass</code> input. It accepts a function which will be called
+with each of the dates in the calendar and will apply any classes that are returned. The return
+value can be anything that is accepted by <code>ngClass</code>.</p>
+<h5 id="accessibility">Accessibility</h5>
+<p>The <code>HcDatepickerInput</code> and <code>HcDatepickerToggle</code> directives add the <code>aria-haspopup</code> attribute to
+the native input and toggle button elements respectively, and they trigger a calendar dialog with
+<code>role=&quot;dialog&quot;</code>.</p>
+<p><code>HcDatepickerIntl</code> includes strings that are used for <code>aria-label</code>s. The datepicker input
+should have a placeholder or be given a meaningful label via <code>aria-label</code>, <code>aria-labelledby</code> or
+<code>HcDatepickerIntl</code>.</p>
+<h5 id="keyboard-shortcuts">Keyboard shortcuts</h5>
+<p>The datepicker supports the following keyboard shortcuts:</p>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ALT</code> + <code>DOWN_ARROW</code></td>
+<td>Open the calendar pop-up</td>
+</tr>
+<tr>
+<td><code>ESCAPE</code></td>
+<td>Close the calendar pop-up</td>
+</tr>
+</tbody>
+</table>
+<p>In month view:</p>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LEFT_ARROW</code></td>
+<td>Go to previous day</td>
+</tr>
+<tr>
+<td><code>RIGHT_ARROW</code></td>
+<td>Go to next day</td>
+</tr>
+<tr>
+<td><code>UP_ARROW</code></td>
+<td>Go to same day in the previous week</td>
+</tr>
+<tr>
+<td><code>DOWN_ARROW</code></td>
+<td>Go to same day in the next week</td>
+</tr>
+<tr>
+<td><code>HOME</code></td>
+<td>Go to the first day of the month</td>
+</tr>
+<tr>
+<td><code>END</code></td>
+<td>Go to the last day of the month</td>
+</tr>
+<tr>
+<td><code>PAGE_UP</code></td>
+<td>Go to the same day in the previous month</td>
+</tr>
+<tr>
+<td><code>ALT</code> + <code>PAGE_UP</code></td>
+<td>Go to the same day in the previous year</td>
+</tr>
+<tr>
+<td><code>PAGE_DOWN</code></td>
+<td>Go to the same day in the next month</td>
+</tr>
+<tr>
+<td><code>ALT</code> + <code>PAGE_DOWN</code></td>
+<td>Go to the same day in the next year</td>
+</tr>
+<tr>
+<td><code>ENTER</code></td>
+<td>Select current date</td>
+</tr>
+</tbody>
+</table>
+<p>In year view:</p>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LEFT_ARROW</code></td>
+<td>Go to previous month</td>
+</tr>
+<tr>
+<td><code>RIGHT_ARROW</code></td>
+<td>Go to next month</td>
+</tr>
+<tr>
+<td><code>UP_ARROW</code></td>
+<td>Go up a row (back 4 months)</td>
+</tr>
+<tr>
+<td><code>DOWN_ARROW</code></td>
+<td>Go down a row (forward 4 months)</td>
+</tr>
+<tr>
+<td><code>HOME</code></td>
+<td>Go to the first month of the year</td>
+</tr>
+<tr>
+<td><code>END</code></td>
+<td>Go to the last month of the year</td>
+</tr>
+<tr>
+<td><code>PAGE_UP</code></td>
+<td>Go to the same month in the previous year</td>
+</tr>
+<tr>
+<td><code>ALT</code> + <code>PAGE_UP</code></td>
+<td>Go to the same month 10 years back</td>
+</tr>
+<tr>
+<td><code>PAGE_DOWN</code></td>
+<td>Go to the same month in the next year</td>
+</tr>
+<tr>
+<td><code>ALT</code> + <code>PAGE_DOWN</code></td>
+<td>Go to the same month 10 years forward</td>
+</tr>
+<tr>
+<td><code>ENTER</code></td>
+<td>Select current month</td>
+</tr>
+</tbody>
+</table>
+<p>In multi-year view:</p>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LEFT_ARROW</code></td>
+<td>Go to previous year</td>
+</tr>
+<tr>
+<td><code>RIGHT_ARROW</code></td>
+<td>Go to next year</td>
+</tr>
+<tr>
+<td><code>UP_ARROW</code></td>
+<td>Go up a row (back 4 years)</td>
+</tr>
+<tr>
+<td><code>DOWN_ARROW</code></td>
+<td>Go down a row (forward 4 years)</td>
+</tr>
+<tr>
+<td><code>HOME</code></td>
+<td>Go to the first year in the current range</td>
+</tr>
+<tr>
+<td><code>END</code></td>
+<td>Go to the last year in the current range</td>
+</tr>
+<tr>
+<td><code>PAGE_UP</code></td>
+<td>Go back 24 years</td>
+</tr>
+<tr>
+<td><code>ALT</code> + <code>PAGE_UP</code></td>
+<td>Go back 240 years</td>
+</tr>
+<tr>
+<td><code>PAGE_DOWN</code></td>
+<td>Go forward 24 years</td>
+</tr>
+<tr>
+<td><code>ALT</code> + <code>PAGE_DOWN</code></td>
+<td>Go forward 240 years</td>
+</tr>
+<tr>
+<td><code>ENTER</code></td>
+<td>Select current year</td>
+</tr>
+</tbody>
+</table>
+<h5 id="troubleshooting">Troubleshooting</h5>
+<h4 id="error-hcdatepicker-no-provider-found-for-dateadapterhc-date-formats">Error: HcDatepicker: No provider found for DateAdapter/HC_DATE_FORMATS</h4>
+<p>This error is thrown if you have not provided all of the injectables the datepicker needs to work.
+The easiest way to resolve this is to import the <code>HcNativeDateModule</code> in
+your application's root module. See
+<a href="/web/components/datepicker/usage#choosing-date-implementation">Choosing a date implementation</a> for
+more information.</p>
+<h4 id="error-a-hcdatepicker-can-only-be-associated-with-a-single-input">Error: A HcDatepicker can only be associated with a single input</h4>
+<p>This error is thrown if more than one <code>&lt;input&gt;</code> tries to claim ownership over the same
+<code>&lt;hc-datepicker&gt;</code> (via the <code>hcDatepicker</code> attribute on the input). A datepicker can only be
+associated with a single input.</p>
+<h4 id="error-attempted-to-open-an-hcdatepicker-with-no-associated-input">Error: Attempted to open an HcDatepicker with no associated input.</h4>
+<p>This error occurs if your <code>&lt;hc-datepicker&gt;</code> is not associated with any <code>&lt;input&gt;</code>. To associate an
+input with your datepicker, create a template reference for the datepicker and assign it to the
+<code>hcDatepicker</code> attribute on the input:</p>
+<pre><code class="language-html">&lt;input [hcDatepicker]=&quot;picker&quot; /&gt;
+&lt;hc-datepicker #picker&gt;&lt;/hc-datepicker&gt;
+</code></pre>

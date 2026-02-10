@@ -1,0 +1,15 @@
+<h5 id="special-usage">Special Usage</h5>
+<p>In some cases, like before the application is loaded, you may want to use the progress indicators without using the angular component. To do so, import the appropriate sass file (sass/progress-spinner.scss or sass/progress-dots.scss) and use the following HTML:</p>
+<pre><code class="language-html">// for spinner
+&lt;div class=&quot;hc-spinner indeterminate-spin&quot;&gt;
+    &lt;div class=&quot;spinner-layer spinner-blue spinner-base&quot;&gt;
+        &lt;div class=&quot;circle base-circle&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;circle-clipper left&quot;&gt;&lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;gap-patch&quot;&gt;&lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;circle-clipper right&quot;&gt;&lt;div class=&quot;circle&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+// for dots
+&lt;div class=&quot;hc-HCDotsLoader&quot;&gt;&lt;div class=&quot;loader-animate&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+</code></pre>

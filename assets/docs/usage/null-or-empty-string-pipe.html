@@ -1,0 +1,36 @@
+<h5 id="overview">Overview</h5>
+<p>The NullOrEmptyStringPipe pipe is used to quickly check a string variable for a value, and supply an alternate if it is empty. For this pipe, empty means either an empty string, a whitespace only string, <code>null</code>, or <code>undefined</code>.</p>
+<h5 id="api">API</h5>
+<pre><code class="language-ts">transform(value: string, altText: string): string
+</code></pre>
+<p><code>value</code>: the <code>string</code> value to evaluate</p>
+<p><code>altText</code>: the alternate value to return if the string is empty</p>
+<h5 id="importing-the-nulloremptystringpipe-pipe">Importing the NullOrEmptyStringPipe Pipe</h5>
+<p>To use the <code>NullOrEmptyStringPipe</code>, import the <code>NullOrEmptyStringPipeModule</code> into your app's <code>CashmereModule</code> (which in turn is imported into your app):</p>
+<pre><code class="language-ts">import {NgModule} from '@angular/core';
+import {NullOrEmptyStringPipeModule} from '@healthcatalyst/cashmere';
+
+@NgModule({
+    exports: [NullOrEmptyStringPipeModule]
+})
+export class CashmereModule {}
+</code></pre>
+<p>Alternatively, each pipe in Cashmere is also exported from <code>PipesModule</code>, if you wish to import all pipes from the <code>@healthcatalyst/cashmere</code> package:</p>
+<pre><code class="language-ts">import {NgModule} from '@angular/core';
+import {PipesModule} from '@healthcatalyst/cashmere';
+
+@NgModule({
+    exports: [PipesModule]
+})
+export class CashmereModule {}
+</code></pre>
+<h5 id="edge-cases">Edge cases</h5>
+<p>Given the following snippet of markup:
+<code>{{ myStringValue | ifNullOrEmpty: 'alternate value' }}</code></p>
+<p>This would be the result from various inputs:</p>
+<p><code>' '</code> => <code>'{{' ' | ifNullOrEmpty: 'alternate value'}}'</code></p>
+<p><code>'\n'</code> => <code>'{{'\n' | ifNullOrEmpty: 'alternate value'}}'</code></p>
+<p><code>null</code> => <code>'{{null | ifNullOrEmpty: 'alternate value'}}'</code></p>
+<p><code>undefined</code> => <code>'{{undefined | ifNullOrEmpty: 'alternate value'}}'</code></p>
+<p><code>'hello world'</code> => <code>'{{'hello world' | ifNullOrEmpty: 'alternate value'}}'</code></p>
+<p><code>1234</code> => <code>'{{1234 | ifNullOrEmpty: 'alternate value'}}'</code></p>

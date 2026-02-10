@@ -1,0 +1,49 @@
+<h5 id="overview">Overview</h5>
+<p>The Highlight pipe is used to identify any text from the user's query.</p>
+<h5 id="api">API</h5>
+<pre><code class="language-ts">transform(value: string): string
+</code></pre>
+<p><code>value</code>: the <code>string</code> value to query</p>
+<h5 id="importing-the-highlight-pipe">Importing the Highlight Pipe</h5>
+<p>To use the <code>HighlightPipe</code>, import the <code>HighlightPipeModule</code> into your app's <code>CashmereModule</code> (which in turn is imported into your app):</p>
+<pre><code class="language-ts">import {NgModule} from '@angular/core';
+import {HighlightPipeModule} from '@healthcatalyst/cashmere';
+
+@NgModule({
+    exports: [HighlightPipeModule]
+})
+export class CashmereModule {}
+</code></pre>
+<p>Alternatively, each pipe in Cashmere is also exported from <code>PipesModule</code>, if you wish to import all pipes from the <code>@healthcatalyst/cashmere</code> package:</p>
+<pre><code class="language-ts">import {NgModule} from '@angular/core';
+import {PipesModule} from '@healthcatalyst/cashmere';
+
+@NgModule({
+    exports: [PipesModule]
+})
+export class CashmereModule {}
+</code></pre>
+<h5 id="case-sensitivity">Case Sensitivity</h5>
+<p>Pipe a <code>string</code> value to the Highlight pipe representing query. If the query is found in the text, the value is then highlighted disregarding case sensitivity.</p>
+<pre><code class="language-html">{{ 'at' }}
+&lt;!-- will highlight At…at…  --&gt;
+{{ 'At' }}
+&lt;!-- will highlight At…at…  --&gt;
+</code></pre>
+<h5 id="preserving-html-tags">Preserving HTML tags</h5>
+<p>By default, the highlight pipe will escape HTML tags and search on the escaped text.
+However, if you would prefer to preserve the HTML tags in your text along with highlighting, you may set the <code>preserveHTML</code> parameter on the pipe to true.</p>
+<h5 id="edge-cases">Edge cases</h5>
+<ul>
+<li>When the Highlight Pipe search term is multiple words, it should wrap each adjacent word in the match with its own highlight span.</li>
+<li>When the Highlight Pipe search term is multiple words and if those multiple words are not adjacent in the text, should wrap each matching word from the search in its own highlight span.</li>
+<li>When the Highlight Pipe search term is a partial word found in the string, it should wrap the match with a highlight span.</li>
+<li>When the Highlight Pipe search term is found multiple times in the string, it should wrap all matches with highlight spans.</li>
+<li>When the Highlight Pipe search term is not found in the string, it should return the input string.</li>
+<li>When the Highlight Pipe search term is <code>undefined</code>, it should return the input string.</li>
+<li>When the Highlight Pipe text contains HTML, it should highlight matches on the escaped HTML.</li>
+<li>When the Highlight Pipe search term contains HTML, it should highlight matches on the escaped HTML.</li>
+<li>When the Highlight Pipe search term is blank, it should still escape the HTML in the text.</li>
+<li>When the Highlight Pipe text is <code>undefined</code>, it should return the empty string.</li>
+<li>When the Highlight Pipe search term and text are <code>undefined</code>, it should return the empty string.</li>
+</ul>
