@@ -52,8 +52,8 @@ module.exports = function (config) {
     // keep these high to prevent "full page reload" warnings in watch mode
     browserDisconnectTimeout: 30000,
     browserDisconnectTolerance: 3,
-    browserNoActivityTimeout: 300000,
-    captureTimeout: 120000,
+    browserNoActivityTimeout: 60000,
+    captureTimeout: 60000,
     browsers: ['Chrome'],
     customLaunchers: {
       ChromeHeadlessCI: {

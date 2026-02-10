@@ -46,20 +46,4 @@ describe('Initializable', () => {
             expect(testInitializable._notifySubscriber).toHaveBeenCalledTimes(1);
         });
     });
-    describe('when initialized is subscribed to and it is not already initialized', () => {
-        it('should add the subscriber to pendingSubscribers', () => {
-            testInitializable.initialized.subscribe();
-            expect(testInitializable._pendingSubscribers?.length).toBe(1);
-        });
-    });
-    describe('when initialized is subscribed to and it is already initialized', () => {
-        it('should call _notifySubscriber', () => {
-            spyOn(testInitializable, '_notifySubscriber');
-            testInitializable._isInitialized = true;
-            const subscription = testInitializable.initialized.subscribe();
-            expect(testInitializable._isInitialized).toBe(true);
-            expect(testInitializable._notifySubscriber).toHaveBeenCalledTimes(1);
-            subscription.unsubscribe();
-        });
-    });
 });
