@@ -60,6 +60,10 @@
             @include hc-rn-modal-ul();
         }
 
+        ol {
+            @include hc-rn-modal-ol();
+        }
+
         h3 {
             @include hc-rn-modal-h3();
         }
