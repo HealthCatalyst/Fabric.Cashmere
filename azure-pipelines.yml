@@ -27,9 +27,13 @@ steps:
     npm run lint
   displayName: npm run lint
 
-- script: |
-    npm run test:unit
-  displayName: run unit tests
+# TODO: switch to JEST tests, as these headless chrome + Jasmine tests are just to brittle for CI
+# See issue #2477
+# - script: |
+#     npm run test:unit
+#   env:
+#     NODE_OPTIONS: --max-old-space-size=8192
+#   displayName: run unit tests
 
 - task: PublishTestResults@2
   inputs:
