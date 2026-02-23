@@ -65,8 +65,14 @@ module.exports = function (config) {
           '--disable-dev-shm-usage',
           '--disable-setuid-sandbox',
           '--remote-debugging-port=9222',
-          '--js-flags=--max-old-space-size=8192',  // increase V8 heap
-          '--single-process'
+          '--js-flags=--max-old-space-size=8192',
+          '--disable-extensions',
+          '--disable-translate',
+          '--disable-background-networking',
+          '--safebrowsing-disable-auto-update',
+          '--disable-sync',
+          '--disable-default-apps',
+          '--mute-audio'
         ]
       }
     }
