@@ -151,9 +151,17 @@
     }
 }
 
-@mixin hc-rn-modal-ul() {
+@mixin hc-rn-modal-list-base() {
     margin: 8px 0 8px 36px;
+}
+
+@mixin hc-rn-modal-ul() {
+    @include hc-rn-modal-list-base();
     list-style: disc;
+}
+
+@mixin hc-rn-modal-ol() {
+    @include hc-rn-modal-list-base();
 }
 
 @mixin hc-rn-modal-h3() {
