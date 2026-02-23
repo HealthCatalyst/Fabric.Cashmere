@@ -7,7 +7,8 @@ Cashmere is Health Catalyst’s comprehensive design system. It includes:
 -   General styling standards (colors, branding, iconography, typography, etc.)
 -   Content development guidelines (copywriting, terminology definitions, and a collection of user personas)
 -   Accessibility guidelines
--   Analytics development guidelines for Qlik, Tableau, and PowerBI
+-   Analytics development g
+-   uidelines for Qlik, Tableau, and PowerBI
 
 ## Quick Links
 
@@ -19,6 +20,7 @@ Cashmere is Health Catalyst’s comprehensive design system. It includes:
 -   [Guidelines for Contribution](http://cashmere.healthcatalyst.net/web/guides/contribution-guide)
 -   [Submit an Issue](http://cashmere.healthcatalyst.net/web/guides/submit-an-issue)
 -   [Supported Browsers](http://cashmere.healthcatalyst.net/web/guides/supported-browsers)
+
 
 ## Installing to an Existing Project
 
