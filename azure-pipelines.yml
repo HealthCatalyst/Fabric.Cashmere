@@ -29,6 +29,8 @@ steps:
 
 - script: |
     npm run test:unit
+  env:
+    NODE_OPTIONS: --max-old-space-size=8192
   displayName: run unit tests
 
 - task: PublishTestResults@2

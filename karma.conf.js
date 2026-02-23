@@ -14,7 +14,7 @@ module.exports = function (config) {
     ],
     client: {
       captureConsole: true,
-      clearContext: false,
+      clearContext: process.env.CI === 'true',
       jasmine: {
         random: false,
         timeoutInterval: 15000
@@ -64,7 +64,9 @@ module.exports = function (config) {
           '--disable-gpu',
           '--disable-dev-shm-usage',
           '--disable-setuid-sandbox',
-          '--remote-debugging-port=9222'
+          '--remote-debugging-port=9222',
+          '--js-flags=--max-old-space-size=8192',  // increase V8 heap
+          '--single-process'
         ]
       }
     }
