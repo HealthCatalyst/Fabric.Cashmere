@@ -20,6 +20,7 @@ Cashmere is Health Catalyst’s comprehensive design system. It includes:
 -   [Submit an Issue](http://cashmere.healthcatalyst.net/web/guides/submit-an-issue)
 -   [Supported Browsers](http://cashmere.healthcatalyst.net/web/guides/supported-browsers)
 
+
 ## Installing to an Existing Project
 
 -   Refer to the instructions in our [Getting Started](http://cashmere.healthcatalyst.net/web/guides/getting-started) guide.
