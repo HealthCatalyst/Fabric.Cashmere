@@ -18,16 +18,16 @@ const routes: Routes = [
     {
         path: 'foundations',
         component: FoundationsComponent,
-        children: [
-            {
-                path: 'color',
-                component: ColorDemoComponent,
-                data: {title: 'UI Colors', category: 'Colors'}
-            },
+        children: [   
             {
                 path: 'brand-colors',
                 component: BrandColorDemoComponent,
                 data: {title: 'Brand Colors', category: 'Colors'}
+            },
+            {
+                path: 'color',
+                component: ColorDemoComponent,
+                data: {title: 'UI Colors', category: 'Colors'}
             },
             {
                 path: 'fonts',
@@ -81,7 +81,7 @@ const routes: Routes = [
             },
             {
                 path: '**',
-                redirectTo: 'color'
+                redirectTo: 'brand-colors'
             }
         ]
     }
