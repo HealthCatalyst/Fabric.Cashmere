@@ -78,7 +78,7 @@ describe("NumberAbbreviatorPipe - ",
 
             it("rounds them to correct number of decimal points",
                 () => {
-                    expect(pipe.transform(1.1111111111111111111)).toBe("1.11");
+                    expect(pipe.transform(1.11111)).toBe("1.11");
                     expect(pipe.transform(999.1439, 3)).toBe("999.144");
                     expect(pipe.transform(-3.345)).toBe("-3.35");
                 });

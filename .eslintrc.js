@@ -24,6 +24,10 @@ module.exports = {
                 prefix: 'hc',
                 style: 'camelCase'
             }
-        ]
+        ],
+        // The docs site uses webpack's require() to bundle markdown content for routes/services.
+        // These are deliberate asset loads, not module imports, so the typescript-eslint v8
+        // default for this rule does not apply.
+        '@typescript-eslint/no-require-imports': 'off'
     }
 };

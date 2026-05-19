@@ -184,7 +184,11 @@ export class DatepickerComponent implements OnDestroy {
         return this._opened;
     }
     set opened(value: boolean) {
-        value ? this.open() : this.close();
+        if (value) {
+            this.open();
+        } else {
+            this.close();
+        }
     }
     private _opened = false;
 
