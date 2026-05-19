@@ -1,30 +1,20 @@
 <div class="sample-container">
     <div #buttonContainer class="button-container">
-        <em class="sample-container-empty" *ngIf="buttons.length === 0">No buttons added</em>
-        <hc-measurable
-            *ngFor="let button of buttons"
-            [itemKey]="button.key">
+        @if (buttons.length === 0) {
+        <em class="sample-container-empty">No buttons added</em>
+        } @for (button of buttons; track button) {
+        <hc-measurable [itemKey]="button.key">
             <button hc-button buttonStyle="secondary">
-                {{button.text}}
-                <hc-icon
-                    hcIconSm
-                    fontIcon="icon-close"
-                    (click)="buttonClose(button.key, $event)">
-                </hc-icon>
+                {{ button.text }}
+                <hc-icon hcIconSm fontIcon="icon-close" (click)="buttonClose(button.key, $event)"></hc-icon>
             </button>
         </hc-measurable>
-        <button
-            hc-button buttonStyle="neutral"
-            #moreButtons="hcPopAnchor"
-            *ngIf="moreButtons && moreButtons.length"
-            [hcPop]="popButtons">
+        } @if (moreButtons && moreButtons.length) {
+        <button hc-button buttonStyle="neutral" #moreButtons="hcPopAnchor" [hcPop]="popButtons">
             More
-            <hc-icon
-                [@moreOpenState]="moreOpenState"
-                hcIconSm
-                fontIcon="icon-chev-down">
-            </hc-icon>
+            <hc-icon [@moreOpenState]="moreOpenState" hcIconSm fontIcon="icon-chev-down"></hc-icon>
         </button>
+        }
     </div>
     <button hc-button (click)="addButton()" class="demo-button">Add Button</button>
     <button hc-button (click)="addButton(true)" class="demo-button">Add Long Button</button>
@@ -32,15 +22,11 @@
 
 <hc-pop #popButtons [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
     <div hcMenu>
-        <button
-            *ngFor="let button of moreButtons; index as i; trackBy: buttonTrackBy"
-            hcMenuItem>
-            <span hcMenuText>{{button.text}}</span>
-            <hc-icon
-                hcMenuSubText
-                (click)="buttonClose(button.key, $event)"
-                fontIcon="icon-close">
-            </hc-icon>
+        @for (button of moreButtons; track buttonTrackBy(i, button); let i = $index) {
+        <button hcMenuItem>
+            <span hcMenuText>{{ button.text }}</span>
+            <hc-icon hcMenuSubText (click)="buttonClose(button.key, $event)" fontIcon="icon-close"></hc-icon>
         </button>
+        }
     </div>
 </hc-pop>

@@ -1,11 +1,12 @@
-<div class="hc-{{direction}}-tab-container">
+<div class="hc-{{ direction }}-tab-container">
     <div
         #tabBar
-        class="hc-tab-bar-{{direction}}"
+        class="hc-tab-bar-{{ direction }}"
         [class.hc-tab-bar-arrow-overflow]="_collapse && overflowStyle === 'arrows'"
-        (wheel)="_handleTabsWheel($event)">
+        (wheel)="_handleTabsWheel($event)"
+    >
+        @if (_collapse && overflowStyle === 'arrows') {
         <div
-            *ngIf="_collapse && overflowStyle === 'arrows'"
             class="hc-tab-bar-arrows hc-tab-bar-left-arrow"
             [class.hc-tab-bar-arrow-disabled]="!_tabArrowsEnabled[0]"
             tabindex="0"
@@ -14,14 +15,17 @@
         >
             <hc-icon hcIconSm fontIcon="ico-chevron-left"></hc-icon>
         </div>
+        }
         <ng-content select="hc-tab"></ng-content>
-        <div *ngIf="_collapse">
-            <div *ngIf="overflowStyle === 'more'" class="hc-tab-bar-more hc-text-ellipsis" tabindex="0" #moreLink="hcPopAnchor" [hcPop]="tabsetMore">
+        @if (_collapse) {
+        <div>
+            @if (overflowStyle === 'more') {
+            <div class="hc-tab-bar-more hc-text-ellipsis" tabindex="0" #moreLink="hcPopAnchor" [hcPop]="tabsetMore">
                 More
                 <hc-icon hcIconSm fontIcon="more-chevron-down"></hc-icon>
             </div>
+            } @if (overflowStyle === 'arrows') {
             <div
-                *ngIf="overflowStyle === 'arrows'"
                 class="hc-tab-bar-arrows hc-tab-bar-right-arrow"
                 [class.hc-tab-bar-arrow-disabled]="!_tabArrowsEnabled[1]"
                 tabindex="0"
@@ -30,25 +34,35 @@
             >
                 <hc-icon hcIconSm fontIcon="ico-chevron-right"></hc-icon>
             </div>
+            }
         </div>
+        }
         <ng-content></ng-content>
     </div>
-    <div *ngIf="_addContentContainer" class="hc-tab-content-{{direction}}">
-        <router-outlet *ngIf="_routerEnabled && !_routerDeselected"></router-outlet>
-        <ng-container *ngIf="!_routerEnabled && tabContent" [ngTemplateOutlet]="tabContent"></ng-container>
+    @if (_addContentContainer) {
+    <div class="hc-tab-content-{{ direction }}">
+        @if (_routerEnabled && !_routerDeselected) {
+        <router-outlet></router-outlet>
+        } @if (!_routerEnabled && tabContent) {
+        <ng-container [ngTemplateOutlet]="tabContent"></ng-container>
+        }
     </div>
+    }
 </div>
 
 <hc-pop #tabsetMore [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end" [restoreFocus]="false">
     <div hcMenu>
-        <ng-container *ngFor="let item of _moreList; let i = index">
-            <button hcMenuItem (click)="_moreClick($event, item)">
-                <span hcMenuText>
-                    <ng-container *ngIf="item._htmlTitle" [ngTemplateOutlet]="item._htmlTitle.tabTitle"></ng-container>
-                    {{ item.tabTitle }}
-                </span>
-            </button>
-            <div *ngIf="i != _moreList.length - 1" hcMenuItem hcDivider></div>
-        </ng-container>
+        @for (item of _moreList; track item; let i = $index) {
+        <button hcMenuItem (click)="_moreClick($event, item)">
+            <span hcMenuText>
+                @if (item._htmlTitle) {
+                <ng-container [ngTemplateOutlet]="item._htmlTitle.tabTitle"></ng-container>
+                }
+                {{ item.tabTitle }}
+            </span>
+        </button>
+        @if (i != _moreList.length - 1) {
+        <div hcMenuItem hcDivider></div>
+        } }
     </div>
 </hc-pop>

@@ -1,15 +1,22 @@
-<hc-navbar appIcon="https://cashmere.healthcatalyst.net/assets/CashmereAppLogo.svg" [brandIcon]="navIcon" [homeUri]="undefined" [fixedTop]="false">
+<hc-navbar
+    appIcon="https://cashmere.healthcatalyst.net/assets/CashmereAppLogo.svg"
+    [brandIcon]="navIcon"
+    [homeUri]="undefined"
+    [fixedTop]="false"
+>
     <hc-navbar-link [active]="true" uri="undefined" linkText="Dashboard"></hc-navbar-link>
     <hc-icon class="hc-navbar-icon" tabindex="0" fontSet="hc-icons" fontIcon="icon-help" [hcPop]="options"></hc-icon>
     <span class="hc-navbar-vertical-separator"></span>
-    <div class="hc-navbar-username" *ngIf="user" [hcPop]="user" tabindex="0">
+    @if (user) {
+    <div class="hc-navbar-username" [hcPop]="user" tabindex="0">
         <span class="hc-text-ellipsis">{{ username }}</span>
         <hc-icon fontIcon="icon-chev-down"></hc-icon>
     </div>
+    }
     <hc-navbar-cobrand [color]="brandingVal" [src]="brandImg"></hc-navbar-cobrand>
 </hc-navbar>
 
-<br>
+<br />
 
 <div class="navbar-cobrand-select">
     <hc-form-field inline>

@@ -1,38 +1,38 @@
-<hc-search-bar #searchbar placeholder="Search elements..." (triggerSearch)="applyFilter($event)">
-</hc-search-bar>
+<hc-search-bar #searchbar placeholder="Search elements..." (triggerSearch)="applyFilter($event)"></hc-search-bar>
 
 <table hc-table [dataSource]="dataSource" borders="false">
-
     <!-- Position Column -->
     <ng-container hcColumnDef="position">
         <th hc-index-cell *hcHeaderCellDef>#</th>
-        <td hc-index-cell *hcCellDef="let element">{{element.position}}</td>
+        <td hc-index-cell *hcCellDef="let element">{{ element.position }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container hcColumnDef="name">
         <th hc-header-cell *hcHeaderCellDef>Name</th>
-        <td hc-cell *hcCellDef="let element">{{element.name}}</td>
+        <td hc-cell *hcCellDef="let element">{{ element.name }}</td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container hcColumnDef="weight">
         <th hc-header-cell *hcHeaderCellDef>Weight</th>
-        <td hc-cell *hcCellDef="let element">{{element.weight}}</td>
+        <td hc-cell *hcCellDef="let element">{{ element.weight }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container hcColumnDef="symbol">
         <th hc-header-cell *hcHeaderCellDef>Symbol</th>
-        <td hc-cell *hcCellDef="let element">{{element.symbol}}</td>
+        <td hc-cell *hcCellDef="let element">{{ element.symbol }}</td>
     </ng-container>
 
     <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
-    <tr hc-row *hcRowDef="let row; columns: displayedColumns;"></tr>
+    <tr hc-row *hcRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
-<div *ngIf="dataSource.filteredData.length === 0" class="hc-empty-table-block">
+@if (dataSource.filteredData.length === 0) {
+<div class="hc-empty-table-block">
     <span class="hc-empty-table-block-ico hc-empty-ico"></span>
     <span class="hc-empty-table-block-msg">No elements match your search term.</span>
     <button hc-button buttonStyle="primary-alt" (click)="searchbar.clear()">Clear search</button>
 </div>
+}

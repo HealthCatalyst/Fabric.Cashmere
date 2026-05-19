@@ -1,17 +1,17 @@
+@if (!_hidden) {
 <a
-    *ngIf="!_hidden"
-    title="{{linkText}}"
+    title="{{ linkText }}"
     routerLinkActive="active"
     class="navbar-dropdown"
     [ngClass]="{'force-active': this.active === true, 'force-inactive': this.active === false}"
     [hcPop]="menuPop"
     tabindex="0"
 >
-    {{linkText}}
+    {{ linkText }}
     <hc-icon fontIcon="hc-navbar-ico-chevron-down" hcIconSm></hc-icon>
 </a>
+}
 
 <hc-pop #menuPop [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
     <ng-content></ng-content>
 </hc-pop>
-

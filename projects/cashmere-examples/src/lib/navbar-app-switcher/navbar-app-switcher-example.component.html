@@ -1,4 +1,9 @@
-<hc-navbar appIcon="https://cashmere.healthcatalyst.net/assets/CashmereAppLogo.svg" [brandIcon]="navIcon" [homeUri]="undefined" [fixedTop]="false">
+<hc-navbar
+    appIcon="https://cashmere.healthcatalyst.net/assets/CashmereAppLogo.svg"
+    [brandIcon]="navIcon"
+    [homeUri]="undefined"
+    [fixedTop]="false"
+>
     <hc-navbar-link [active]="true" uri="undefined" linkText="Home"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Oncology"></hc-navbar-link>
     <hc-navbar-link [active]="false" uri="undefined" linkText="Surgery"></hc-navbar-link>
@@ -9,13 +14,15 @@
     <hc-icon class="hc-navbar-icon" tabindex="0" fontSet="hc-icons" fontIcon="icon-app-switcher" [hcPop]="appSwitcher"></hc-icon>
     <hc-icon class="hc-navbar-icon" tabindex="0" fontSet="hc-icons" fontIcon="icon-help" [hcPop]="options"></hc-icon>
     <span class="hc-navbar-vertical-separator"></span>
-    <div class="hc-navbar-username" *ngIf="user" [hcPop]="user" tabindex="0">
+    @if (user) {
+    <div class="hc-navbar-username" [hcPop]="user" tabindex="0">
         <span class="hc-text-ellipsis">{{ username }}</span>
         <hc-icon fontIcon="icon-chev-down"></hc-icon>
     </div>
+    }
     <!-- Inline style is added for example only to prevent its mobile menu from colliding with Cashmere site navigation -->
     <!-- Do NOT include style="display: none;" in your hc-navbar-mobile-menu tag -->
-    <hc-navbar-mobile-menu style="display: none;">
+    <hc-navbar-mobile-menu style="display: none">
         <hc-list>
             <hc-list-item routerLink="undefined" routerLinkActive="active-link"><span hcListLine>Home</span></hc-list-item>
             <hc-list-item routerLink="undefined" routerLinkActive="active-link"><span hcListLine>Oncology</span></hc-list-item>
@@ -35,17 +42,29 @@
     </hc-navbar-mobile-menu>
 </hc-navbar>
 
-<br>
+<br />
 
-<p>App Switcher Selection: <strong>{{switcherSelection}}</strong></p>
+<p>
+    App Switcher Selection:
+    <strong>{{ switcherSelection }}</strong>
+</p>
 
-<br>
+<br />
 
-<p><em><strong>Note:</strong> the code for this example demonstrates how to setup a mobile menu in the navbar, however
-    its display has been disabled here to prevent it from colliding with the Cashmere site navigation.</em></p>
+<p>
+    <em>
+        <strong>Note:</strong>
+        the code for this example demonstrates how to setup a mobile menu in the navbar, however its display has been disabled here to
+        prevent it from colliding with the Cashmere site navigation.
+    </em>
+</p>
 
 <hc-pop #appSwitcher [showArrow]="false" horizontalAlign="end" [autoFocus]="true">
-    <hc-app-switcher (appClick)="updateApp($event); appSwitcher.close();" [serviceName]="currentAppName" [serviceVersion]="currentAppVersion"></hc-app-switcher>
+    <hc-app-switcher
+        (appClick)="updateApp($event); appSwitcher.close()"
+        [serviceName]="currentAppName"
+        [serviceVersion]="currentAppVersion"
+    ></hc-app-switcher>
 </hc-pop>
 
 <hc-pop #options [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">

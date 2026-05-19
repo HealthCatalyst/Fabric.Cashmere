@@ -4,13 +4,21 @@
 
     <hc-tile>
         <h5 id="basic-example">Basic Example</h5>
-        <p>Add the base class
-            <code>.hc-table</code> to an HTML
-            <code>&lt;table&gt;</code> to get the default Catalyst table stylings.
+        <p>
+            Add the base class
+            <code>.hc-table</code>
+            to an HTML
+            <code>&lt;table&gt;</code>
+            to get the default Catalyst table stylings.
         </p>
-        <p>Set the alignment of a cell
-            using <code>.hc-table-justify-left</code> (default), <code>.hc-table-justify-center</code>, or
-            <code>.hc-table-justify-right</code>. Justify right is typically used for numerical values.
+        <p>
+            Set the alignment of a cell using
+            <code>.hc-table-justify-left</code>
+            (default),
+            <code>.hc-table-justify-center</code>
+            , or
+            <code>.hc-table-justify-right</code>
+            . Justify right is typically used for numerical values.
         </p>
         <table class="hc-table">
             <thead>
@@ -55,58 +63,67 @@
         </table>
 
         <pre><code>
-    &lt;table class=&quot;hc-table&quot;&gt;
-        &lt;thead&gt;
-            &lt;tr&gt;
-                &lt;th&gt;First Name&lt;/th&gt;
-                &lt;th&gt;Last Name&lt;/th&gt;
-                &lt;th&gt;MRN&lt;/th&gt;
-                &lt;th&gt;Birth Date&lt;/th&gt;
-                &lt;th&gt;Payor&lt;/th&gt;
-            &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;
-            &lt;tr&gt;
-                &lt;td&gt;Samuel&lt;/td&gt;
-                &lt;td&gt;Walker&lt;/td&gt;
-                &lt;td&gt;Z1223334444&lt;/td&gt;
-                &lt;td&gt;Mar 27, 1978&lt;/td&gt;
-                &lt;td&gt;MetLife&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;Whitney&lt;/td&gt;
-                &lt;td&gt;Allen&lt;/td&gt;
-                &lt;td&gt;Z5223335555&lt;/td&gt;
-                &lt;td&gt;Jan 14, 1954&lt;/td&gt;
-                &lt;td&gt;New York Life&lt;/td&gt;
-            &lt;/tr&gt;
+      &lt;table class=&quot;hc-table&quot;&gt;
+      &lt;thead&gt;
+      &lt;tr&gt;
+      &lt;th&gt;First Name&lt;/th&gt;
+      &lt;th&gt;Last Name&lt;/th&gt;
+      &lt;th&gt;MRN&lt;/th&gt;
+      &lt;th&gt;Birth Date&lt;/th&gt;
+      &lt;th&gt;Payor&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+      &lt;tr&gt;
+      &lt;td&gt;Samuel&lt;/td&gt;
+      &lt;td&gt;Walker&lt;/td&gt;
+      &lt;td&gt;Z1223334444&lt;/td&gt;
+      &lt;td&gt;Mar 27, 1978&lt;/td&gt;
+      &lt;td&gt;MetLife&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+      &lt;td&gt;Whitney&lt;/td&gt;
+      &lt;td&gt;Allen&lt;/td&gt;
+      &lt;td&gt;Z5223335555&lt;/td&gt;
+      &lt;td&gt;Jan 14, 1954&lt;/td&gt;
+      &lt;td&gt;New York Life&lt;/td&gt;
+      &lt;/tr&gt;
 
-            ...
+      ...
 
-        &lt;/tbody&gt;
-    &lt;/table&gt;
-        </code></pre>
+      &lt;/tbody&gt;
+      &lt;/table&gt;
+    </code></pre>
     </hc-tile>
 
     <hc-tile>
         <h5 id="sorting-indicators">Sorting Indicators</h5>
-        <p>Add
-            <code>.hc-col-sortable</code> to a
-            <code>&lt;th&gt;</code> so that it appears sortable.
+        <p>
+            Add
+            <code>.hc-col-sortable</code>
+            to a
+            <code>&lt;th&gt;</code>
+            so that it appears sortable.
         </p>
         <ul>
-            <li>Use
-                <code>.hc-active-sort</code> to designate the currently sorted column
+            <li>
+                Use
+                <code>.hc-active-sort</code>
+                to designate the currently sorted column
             </li>
-            <li>Use
-                <code>.hc-sort-asc</code> and
-                <code>.hc-sort-desc</code> to designate sort direction
+            <li>
+                Use
+                <code>.hc-sort-asc</code>
+                and
+                <code>.hc-sort-desc</code>
+                to designate sort direction
             </li>
-            <li>For a left aligned sort indicator, use
+            <li>
+                For a left aligned sort indicator, use
                 <code>.hc-col-sortable-left</code>
             </li>
         </ul>
-        <br>
+        <br />
         <table class="hc-table">
             <thead>
                 <tr>
@@ -143,30 +160,33 @@
         </table>
 
         <pre><code>
-    &lt;table class=&quot;hc-table&quot;&gt;
+        &lt;table class=&quot;hc-table&quot;&gt;
         &lt;thead&gt;
-            &lt;tr&gt;
-            &lt;th class=&quot;hc-col-sortable&quot;&gt;Sortable&lt;/th&gt;
-            &lt;th class=&quot;hc-col-sortable hc-active-sort hc-sort-asc&quot;&gt;Active Sort (Ascending)&lt;/th&gt;
-            &lt;th&gt;Nope&lt;/th&gt;
-            &lt;th class=&quot;hc-col-sortable hc-active-sort hc-sort-desc&quot;&gt;Active Sort (Descending)&lt;/th&gt;
-            &lt;th class=&quot;hc-col-sortable-left&quot;&gt;Left aligned&lt;/th&gt;
-            &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;th class=&quot;hc-col-sortable&quot;&gt;Sortable&lt;/th&gt;
+        &lt;th class=&quot;hc-col-sortable hc-active-sort hc-sort-asc&quot;&gt;Active Sort (Ascending)&lt;/th&gt;
+        &lt;th&gt;Nope&lt;/th&gt;
+        &lt;th class=&quot;hc-col-sortable hc-active-sort hc-sort-desc&quot;&gt;Active Sort (Descending)&lt;/th&gt;
+        &lt;th class=&quot;hc-col-sortable-left&quot;&gt;Left aligned&lt;/th&gt;
+        &lt;/tr&gt;
         &lt;/thead&gt;
 
         ...
 
-    &lt;/table&gt;
-        </code></pre>
+        &lt;/table&gt;
+      </code></pre>
     </hc-tile>
 
     <hc-tile>
         <h5 id="condensed-table">Condensed Table</h5>
-        <p>Add
-            <code>.hc-table-small</code> (in addition to
-            <code>.hc-table</code>) for a smaller table.
+        <p>
+            Add
+            <code>.hc-table-small</code>
+            (in addition to
+            <code>.hc-table</code>
+            ) for a smaller table.
         </p>
-        <br>
+        <br />
         <table class="hc-table hc-table-small">
             <thead>
                 <tr>
@@ -203,23 +223,28 @@
         </table>
 
         <pre>
-        <code>
-    &lt;table class=&quot;hc-table hc-table-small&quot;&gt;
+          <code>
+            &lt;table class=&quot;hc-table hc-table-small&quot;&gt;
 
-        ...
+            ...
 
-    &lt;/table&gt;
-        </code>
+            &lt;/table&gt;
+          </code>
         </pre>
     </hc-tile>
 
     <hc-tile>
         <h5 id="condensed-table">Indexed Table</h5>
-        <p>Add
-            <code>.hc-index-cell</code> to all <code>td</code> and <code>th</code>
+        <p>
+            Add
+            <code>.hc-index-cell</code>
+            to all
+            <code>td</code>
+            and
+            <code>th</code>
             elements in a row number/index column (usually the first).
         </p>
-        <br>
+        <br />
         <table class="hc-table hc-table-small">
             <thead>
                 <tr>
@@ -252,25 +277,37 @@
         </table>
 
         <pre>
-        <code>
-    &lt;th class=&quot;hc-index-cell&quot;&gt;#&lt;/th&gt;
+            <code>
+              &lt;th class=&quot;hc-index-cell&quot;&gt;#&lt;/th&gt;
 
-        ...
+              ...
 
-    &lt;td class=&quot;hc-index-cell&quot;&gt;1&lt;/td&gt;
-        </code>
-        </pre>
+              &lt;td class=&quot;hc-index-cell&quot;&gt;1&lt;/td&gt;
+            </code>
+          </pre>
     </hc-tile>
 
     <hc-tile>
         <h5 id="selected-row">Selected Row</h5>
-        <p>Add
-            <code>.hc-row-selected</code> to a
-            <code>&lt;tr&gt;</code> so it appears selected.
+        <p>
+            Add
+            <code>.hc-row-selected</code>
+            to a
+            <code>&lt;tr&gt;</code>
+            so it appears selected.
         </p>
-        <p>Also, you can add <code>.hc-action-row</code> to a <code>&lt;tr&gt;</code> or <code>.hc-action-table</code>
-            to a <code>&lt;table&gt;</code> to get a blue hover effect on rows.</p>
-        <br>
+        <p>
+            Also, you can add
+            <code>.hc-action-row</code>
+            to a
+            <code>&lt;tr&gt;</code>
+            or
+            <code>.hc-action-table</code>
+            to a
+            <code>&lt;table&gt;</code>
+            to get a blue hover effect on rows.
+        </p>
+        <br />
         <table class="hc-table hc-action-table">
             <thead>
                 <tr>
@@ -307,25 +344,28 @@
         </table>
 
         <pre><code>
-    &lt;table class=&quot;hc-table hc-action-table&quot;&gt;
+              &lt;table class=&quot;hc-table hc-action-table&quot;&gt;
 
-        ...
+              ...
 
-        &lt;tr class=&quot;hc-row-selected&quot;&gt;...&lt;/tr&gt;
+              &lt;tr class=&quot;hc-row-selected&quot;&gt;...&lt;/tr&gt;
 
-        ...
+              ...
 
-    &lt;/table&gt;
-        </code></pre>
+              &lt;/table&gt;
+            </code></pre>
     </hc-tile>
 
     <hc-tile>
         <h5 id="borders">Borders</h5>
-        <p>Add
-            <code>.hc-table-borders</code> (in addition to
-            <code>.hc-table</code>) for borders all around.
+        <p>
+            Add
+            <code>.hc-table-borders</code>
+            (in addition to
+            <code>.hc-table</code>
+            ) for borders all around.
         </p>
-        <br>
+        <br />
         <table class="hc-table hc-table-borders">
             <thead>
                 <tr>
@@ -362,28 +402,41 @@
         </table>
 
         <pre><code>
-        &lt;table class=&quot;hc-table hc-table-borders&quot;&gt;
+                &lt;table class=&quot;hc-table hc-table-borders&quot;&gt;
 
-            ...
+                ...
 
-        &lt;/table&gt;
-        </code></pre>
+                &lt;/table&gt;
+              </code></pre>
 
-        <br>
-
+        <br />
     </hc-tile>
 
     <hc-tile>
         <h5 id="table-action-icons">Sticky Headers & Columns</h5>
-        <p>For sticky headers or columns, first wrap the table in a div with <code>.hc-table-container</code>.
-            That element will be scrollable when the table extends beyond it's height. The element needs to have a height
-            constraint applied. This can be done with the "max-height" or "height" css properties, or by other methods, like a flexbox layout.
+        <p>
+            For sticky headers or columns, first wrap the table in a div with
+            <code>.hc-table-container</code>
+            . That element will be scrollable when the table extends beyond it's height. The element needs to have a height constraint
+            applied. This can be done with the "max-height" or "height" css properties, or by other methods, like a flexbox layout.
         </p>
         <ul>
-            <li>For a sticky header, you'll apply<code>.hc-sticky-header</code> to the row.</li>
-            <li>For a sticky column, apply <code>.hc-sticky-col</code> to each cell in the column.</li>
+            <li>
+                For a sticky header, you'll apply
+                <code>.hc-sticky-header</code>
+                to the row.
+            </li>
+            <li>
+                For a sticky column, apply
+                <code>.hc-sticky-col</code>
+                to each cell in the column.
+            </li>
         </ul>
-        <p>By default, these table styles are meant for tables on a white background, but you can use <code>.hc-table-container-gray</code> for a <code>$slate-gray-100</code>
+        <p>
+            By default, these table styles are meant for tables on a white background, but you can use
+            <code>.hc-table-container-gray</code>
+            for a
+            <code>$slate-gray-100</code>
             background, or override the colors as needed.
         </p>
         <span class="example-checkboxes">
@@ -391,8 +444,8 @@
             <hc-checkbox [(ngModel)]="stickyHead" [tight]="true">Sticky header</hc-checkbox>
             <hc-checkbox [(ngModel)]="stickyCol" [tight]="true">Sticky column</hc-checkbox>
         </span>
-        <br>
-        <div class="hc-table-container" [class.hc-table-borders]="hasBorders" style="height: 200px;">
+        <br />
+        <div class="hc-table-container" [class.hc-table-borders]="hasBorders" style="height: 200px">
             <table class="hc-table">
                 <thead>
                     <tr [class.hc-sticky-header]="stickyHead">
@@ -416,13 +469,13 @@
                         <td>Known for the Statue of Liberty, Empire State Building, Central Park, Times Square, Museums, and the Met</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">2</td>
-                    <td>Los Angeles</td>
-                    <td>California</td>
-                    <td>3,792,621</td>
-                    <td>1781</td>
-                    <td>468.7</td>
-                    <td>Known for Hollywood, Entertainment, Celebrities, and the Beach</td>
+                        <td [class.hc-sticky-col]="stickyCol">2</td>
+                        <td>Los Angeles</td>
+                        <td>California</td>
+                        <td>3,792,621</td>
+                        <td>1781</td>
+                        <td>468.7</td>
+                        <td>Known for Hollywood, Entertainment, Celebrities, and the Beach</td>
                     </tr>
                     <tr>
                         <td [class.hc-sticky-col]="stickyCol">3</td>
@@ -434,207 +487,214 @@
                         <td>Known for the Sears (Willis) Tower, the Magnificent Mile, Deep Dish Pizza, and the Cubs</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">4</td>
-                    <td>Houston</td>
-                    <td>Texas</td>
-                    <td>2,100,263</td>
-                    <td>1837</td>
-                    <td>599.6</td>
-                    <td>Known for NASA, the Astros, and the Rockets</td>
+                        <td [class.hc-sticky-col]="stickyCol">4</td>
+                        <td>Houston</td>
+                        <td>Texas</td>
+                        <td>2,100,263</td>
+                        <td>1837</td>
+                        <td>599.6</td>
+                        <td>Known for NASA, the Astros, and the Rockets</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">5</td>
-                    <td>Philadelphia</td>
-                    <td>Pennsylvania</td>
-                    <td>1,526,006</td>
-                    <td>1682</td>
-                    <td>134.1</td>
-                    <td>Known for the Liberty Bell, Independence Hall, and the Philly Cheesesteak</td>
+                        <td [class.hc-sticky-col]="stickyCol">5</td>
+                        <td>Philadelphia</td>
+                        <td>Pennsylvania</td>
+                        <td>1,526,006</td>
+                        <td>1682</td>
+                        <td>134.1</td>
+                        <td>Known for the Liberty Bell, Independence Hall, and the Philly Cheesesteak</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">6</td>
-                    <td>Phoenix</td>
-                    <td>Arizona</td>
-                    <td>1,445,632</td>
-                    <td>1881</td>
-                    <td>516.7</td>
-                    <td>Known for the Heat, the Suns, and the Grand Canyon</td>
+                        <td [class.hc-sticky-col]="stickyCol">6</td>
+                        <td>Phoenix</td>
+                        <td>Arizona</td>
+                        <td>1,445,632</td>
+                        <td>1881</td>
+                        <td>516.7</td>
+                        <td>Known for the Heat, the Suns, and the Grand Canyon</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">7</td>
-                    <td>San Antonio</td>
-                    <td>Texas</td>
-                    <td>1,327,407</td>
-                    <td>1718</td>
-                    <td>460.9</td>
-                    <td>Known for the Alamo, the River Walk, and the Spurs</td>
+                        <td [class.hc-sticky-col]="stickyCol">7</td>
+                        <td>San Antonio</td>
+                        <td>Texas</td>
+                        <td>1,327,407</td>
+                        <td>1718</td>
+                        <td>460.9</td>
+                        <td>Known for the Alamo, the River Walk, and the Spurs</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">8</td>
-                    <td>San Diego</td>
-                    <td>California</td>
-                    <td>1,307,402</td>
-                    <td>1769</td>
-                    <td>325.2</td>
-                    <td>Known for the Zoo, Sea World, and the Beach</td>
+                        <td [class.hc-sticky-col]="stickyCol">8</td>
+                        <td>San Diego</td>
+                        <td>California</td>
+                        <td>1,307,402</td>
+                        <td>1769</td>
+                        <td>325.2</td>
+                        <td>Known for the Zoo, Sea World, and the Beach</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">9</td>
-                    <td>Dallas</td>
-                    <td>Texas</td>
-                    <td>1,197,816</td>
-                    <td>1841</td>
-                    <td>340.9</td>
-                    <td>Known for the Cowboys, the Mavericks, and the Rangers</td>
+                        <td [class.hc-sticky-col]="stickyCol">9</td>
+                        <td>Dallas</td>
+                        <td>Texas</td>
+                        <td>1,197,816</td>
+                        <td>1841</td>
+                        <td>340.9</td>
+                        <td>Known for the Cowboys, the Mavericks, and the Rangers</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">10</td>
-                    <td>San Jose</td>
-                    <td>California</td>
-                    <td>945,942</td>
-                    <td>1777</td>
-                    <td>176.5</td>
-                    <td>Known for Silicon Valley, Tech Companies, and the Sharks</td>
+                        <td [class.hc-sticky-col]="stickyCol">10</td>
+                        <td>San Jose</td>
+                        <td>California</td>
+                        <td>945,942</td>
+                        <td>1777</td>
+                        <td>176.5</td>
+                        <td>Known for Silicon Valley, Tech Companies, and the Sharks</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">11</td>
-                    <td>Austin</td>
-                    <td>Texas</td>
-                    <td>790,390</td>
-                    <td>1839</td>
-                    <td>322.48</td>
-                    <td>Known for the Longhorns, the State Capital, and the Music Scene</td>
+                        <td [class.hc-sticky-col]="stickyCol">11</td>
+                        <td>Austin</td>
+                        <td>Texas</td>
+                        <td>790,390</td>
+                        <td>1839</td>
+                        <td>322.48</td>
+                        <td>Known for the Longhorns, the State Capital, and the Music Scene</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">12</td>
-                    <td>Indianapolis</td>
-                    <td>Indiana</td>
-                    <td>843,393</td>
-                    <td>1821</td>
-                    <td>361.5</td>
-                    <td>Known for the Indy 500, the Colts, and the Pacers</td>
+                        <td [class.hc-sticky-col]="stickyCol">12</td>
+                        <td>Indianapolis</td>
+                        <td>Indiana</td>
+                        <td>843,393</td>
+                        <td>1821</td>
+                        <td>361.5</td>
+                        <td>Known for the Indy 500, the Colts, and the Pacers</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">13</td>
-                    <td>Jacksonville</td>
-                    <td>Florida</td>
-                    <td>842,583</td>
-                    <td>1822</td>
-                    <td>747.0</td>
-                    <td>Known for the Jaguars, the Beaches, and the Navy</td>
+                        <td [class.hc-sticky-col]="stickyCol">13</td>
+                        <td>Jacksonville</td>
+                        <td>Florida</td>
+                        <td>842,583</td>
+                        <td>1822</td>
+                        <td>747.0</td>
+                        <td>Known for the Jaguars, the Beaches, and the Navy</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">14</td>
-                    <td>San Francisco</td>
-                    <td>California</td>
-                    <td>837,442</td>
-                    <td>1776</td>
-                    <td>231.9</td>
-                    <td>Known for the Golden Gate Bridge, Alcatraz, and the Cable Cars</td>
+                        <td [class.hc-sticky-col]="stickyCol">14</td>
+                        <td>San Francisco</td>
+                        <td>California</td>
+                        <td>837,442</td>
+                        <td>1776</td>
+                        <td>231.9</td>
+                        <td>Known for the Golden Gate Bridge, Alcatraz, and the Cable Cars</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">15</td>
-                    <td>Columbus</td>
-                    <td>Ohio</td>
-                    <td>822553</td>
-                    <td>1812</td>
-                    <td>210.3</td>
-                    <td>Has the largest university in the United States</td>
+                        <td [class.hc-sticky-col]="stickyCol">15</td>
+                        <td>Columbus</td>
+                        <td>Ohio</td>
+                        <td>822553</td>
+                        <td>1812</td>
+                        <td>210.3</td>
+                        <td>Has the largest university in the United States</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">16</td>
-                    <td>Charlotte</td>
-                    <td>North Carolina</td>
-                    <td>792,862</td>
-                    <td>1768</td>
-                    <td>297.7</td>
-                    <td>Known for NASCAR, the Hornets, and the Panthers</td>
+                        <td [class.hc-sticky-col]="stickyCol">16</td>
+                        <td>Charlotte</td>
+                        <td>North Carolina</td>
+                        <td>792,862</td>
+                        <td>1768</td>
+                        <td>297.7</td>
+                        <td>Known for NASCAR, the Hornets, and the Panthers</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">17</td>
-                    <td>Fort Worth</td>
-                    <td>Texas</td>
-                    <td>792,727</td>
-                    <td>1849</td>
-                    <td>339.8</td>
-                    <td>Known for the Stockyards, the Cowboys, and the Rangers</td>
+                        <td [class.hc-sticky-col]="stickyCol">17</td>
+                        <td>Fort Worth</td>
+                        <td>Texas</td>
+                        <td>792,727</td>
+                        <td>1849</td>
+                        <td>339.8</td>
+                        <td>Known for the Stockyards, the Cowboys, and the Rangers</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">18</td>
-                    <td>Detroit</td>
-                    <td>Michigan</td>
-                    <td>688,701</td>
-                    <td>1701</td>
-                    <td>138.8</td>
-                    <td>Home of the Big Three Automakers</td>
+                        <td [class.hc-sticky-col]="stickyCol">18</td>
+                        <td>Detroit</td>
+                        <td>Michigan</td>
+                        <td>688,701</td>
+                        <td>1701</td>
+                        <td>138.8</td>
+                        <td>Home of the Big Three Automakers</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">19</td>
-                    <td>El Paso</td>
-                    <td>Texas</td>
-                    <td>674,433</td>
-                    <td>1850</td>
-                    <td>256.8</td>
-                    <td>Home to the University of Texas at El Paso</td>
+                        <td [class.hc-sticky-col]="stickyCol">19</td>
+                        <td>El Paso</td>
+                        <td>Texas</td>
+                        <td>674,433</td>
+                        <td>1850</td>
+                        <td>256.8</td>
+                        <td>Home to the University of Texas at El Paso</td>
                     </tr>
                     <tr>
-                    <td [class.hc-sticky-col]="stickyCol">20</td>
-                    <td>Memphis</td>
-                    <td>Tennessee</td>
-                    <td>653,450</td>
-                    <td>1819</td>
-                    <td>315.1</td>
-                    <td>Famous for Elvis Presley, Graceland, and the Blues</td>
+                        <td [class.hc-sticky-col]="stickyCol">20</td>
+                        <td>Memphis</td>
+                        <td>Tennessee</td>
+                        <td>653,450</td>
+                        <td>1819</td>
+                        <td>315.1</td>
+                        <td>Famous for Elvis Presley, Graceland, and the Blues</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
         <pre><code>
-            &#x3C;div class=&#x22;hc-table-container&#x22; style=&#x22;height: 200px;&#x22;&#x3E;
-            &#x3C;table class=&#x22;hc-table&#x22;&#x3E;
+                &#x3C;div class=&#x22;hc-table-container&#x22; style=&#x22;height: 200px;&#x22;&#x3E;
+                &#x3C;table class=&#x22;hc-table&#x22;&#x3E;
                 &#x3C;thead&#x3E;
-                    &#x3C;tr class=&#x22;hc-sticky-header&#x22;&#x3E;
-                        &#x3C;th class=&#x22;hc-sticky-col&#x22;&#x3E;Rank&#x3C;/th&#x3E;
-                        &#x3C;th&#x3E;City&#x3C;/th&#x3E;
-                        &#x3C;th&#x3E;State&#x3C;/th&#x3E;
-                        &#x3C;th&#x3E;Population&#x3C;/th&#x3E;
-                        &#x3C;th&#x3E;Founded&#x3C;/th&#x3E;
-                        &#x3C;th&#x3E;Size&#x3C;/th&#x3E;
-                        &#x3C;th&#x3E;Notes&#x3C;/th&#x3E;
-                    &#x3C;/tr&#x3E;
+                &#x3C;tr class=&#x22;hc-sticky-header&#x22;&#x3E;
+                &#x3C;th class=&#x22;hc-sticky-col&#x22;&#x3E;Rank&#x3C;/th&#x3E;
+                &#x3C;th&#x3E;City&#x3C;/th&#x3E;
+                &#x3C;th&#x3E;State&#x3C;/th&#x3E;
+                &#x3C;th&#x3E;Population&#x3C;/th&#x3E;
+                &#x3C;th&#x3E;Founded&#x3C;/th&#x3E;
+                &#x3C;th&#x3E;Size&#x3C;/th&#x3E;
+                &#x3C;th&#x3E;Notes&#x3C;/th&#x3E;
+                &#x3C;/tr&#x3E;
                 &#x3C;/thead&#x3E;
                 &#x3C;tbody&#x3E;
-                    &#x3C;tr&#x3E;
-                        &#x3C;td class=&#x22;hc-sticky-col&#x22;&#x3E;1&#x3C;/td&#x3E;
-                        &#x3C;td&#x3E;New York City&#x3C;/td&#x3E;
-                        &#x3C;td&#x3E;New York&#x3C;/td&#x3E;
-                        &#x3C;td&#x3E;7,888,121&#x3C;/td&#x3E;
-                        &#x3C;td&#x3E;1624&#x3C;/td&#x3E;
-                        &#x3C;td&#x3E;302.6&#x3C;/td&#x3E;
+                &#x3C;tr&#x3E;
+                &#x3C;td class=&#x22;hc-sticky-col&#x22;&#x3E;1&#x3C;/td&#x3E;
+                &#x3C;td&#x3E;New York City&#x3C;/td&#x3E;
+                &#x3C;td&#x3E;New York&#x3C;/td&#x3E;
+                &#x3C;td&#x3E;7,888,121&#x3C;/td&#x3E;
+                &#x3C;td&#x3E;1624&#x3C;/td&#x3E;
+                &#x3C;td&#x3E;302.6&#x3C;/td&#x3E;
 
                 ...
-        </code></pre>
+              </code></pre>
     </hc-tile>
 
     <hc-tile>
         <h5 id="table-action-icons">Table Action Icons</h5>
-        <p>For tables that have actions repeated on each row, we recommend showing those actions as icons that appear
-            when hovering
-            over the row. Designate an action icon with <code>.hc-action-ico</code>, and wrap those actions in
-            <code>.hc-table-actions</code>.
+        <p>
+            For tables that have actions repeated on each row, we recommend showing those actions as icons that appear when hovering over
+            the row. Designate an action icon with
+            <code>.hc-action-ico</code>
+            , and wrap those actions in
+            <code>.hc-table-actions</code>
+            .
         </p>
         <p>
-            We recommend showing <strong>at most 3</strong> actions per row, and if there are more, put them in a
-            vertical ellipsis menu (<code>.hc-elip-menu</code>).
-            Each action icon should leverage <code>hcTooltip</code> so that a description of the action is shown in a
-            tooltip on hover.
+            We recommend showing
+            <strong>at most 3</strong>
+            actions per row, and if there are more, put them in a vertical ellipsis menu (
+            <code>.hc-elip-menu</code>
+            ). Each action icon should leverage
+            <code>hcTooltip</code>
+            so that a description of the action is shown in a tooltip on hover.
         </p>
         <p>
             If a single action icon should always be shown, whether the row is being hovered over or not, use
-            <code>.hc-action-ico-show</code>.
-            For mobile, all actions should always be shown. In that case you can apply
-            <code>.hc-table-actions-show</code> to the container.
+            <code>.hc-action-ico-show</code>
+            . For mobile, all actions should always be shown. In that case you can apply
+            <code>.hc-table-actions-show</code>
+            to the container.
         </p>
         <table class="hc-table">
             <thead>
@@ -655,9 +715,12 @@
                         <div class="hc-table-actions">
                             <span class="icon-star-o hc-action-ico" hcTooltip="Mark as favorite"></span>
                             <span class="icon-info hc-action-ico" hcTooltip="About this patient"></span>
-                            <button class="hc-elip-menu hc-action-ico" trigger="click" [hcPop]="patientDrop"
-                                title="More patient actions...">
-                            </button>
+                            <button
+                                class="hc-elip-menu hc-action-ico"
+                                trigger="click"
+                                [hcPop]="patientDrop"
+                                title="More patient actions..."
+                            ></button>
                         </div>
                     </td>
                 </tr>
@@ -668,12 +731,14 @@
                     <td>New York Life</td>
                     <td>
                         <div class="hc-table-actions">
-                            <span class="icon-star-o favorited hc-action-ico hc-action-ico-show"
-                                hcTooltip="Remove from favorites"></span>
+                            <span class="icon-star-o favorited hc-action-ico hc-action-ico-show" hcTooltip="Remove from favorites"></span>
                             <span class="icon-info hc-action-ico" hcTooltip="About this patient"></span>
-                            <button class="hc-elip-menu hc-action-ico" trigger="click" [hcPop]="patientDrop"
-                                title="More patient actions...">
-                            </button>
+                            <button
+                                class="hc-elip-menu hc-action-ico"
+                                trigger="click"
+                                [hcPop]="patientDrop"
+                                title="More patient actions..."
+                            ></button>
                         </div>
                     </td>
                 </tr>
@@ -686,9 +751,12 @@
                         <div class="hc-table-actions">
                             <span class="icon-star-o hc-action-ico" hcTooltip="Mark as favorite"></span>
                             <span class="icon-info hc-action-ico" hcTooltip="About this patient"></span>
-                            <button class="hc-elip-menu hc-action-ico" trigger="click" [hcPop]="patientDrop"
-                                title="More patient actions...">
-                            </button>
+                            <button
+                                class="hc-elip-menu hc-action-ico"
+                                trigger="click"
+                                [hcPop]="patientDrop"
+                                title="More patient actions..."
+                            ></button>
                         </div>
                     </td>
                 </tr>
@@ -701,17 +769,19 @@
                         <div class="hc-table-actions">
                             <span class="icon-star-o hc-action-ico" hcTooltip="Mark as favorite"></span>
                             <span class="icon-info hc-action-ico" hcTooltip="About this patient"></span>
-                            <button class="hc-elip-menu hc-action-ico" trigger="click" [hcPop]="patientDrop"
-                                title="More patient actions...">
-                            </button>
+                            <button
+                                class="hc-elip-menu hc-action-ico"
+                                trigger="click"
+                                [hcPop]="patientDrop"
+                                title="More patient actions..."
+                            ></button>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
 
-        <hc-pop #patientDrop [autoCloseOnContentClick]="true" [showArrow]="false" [verticalAlign]="'below'"
-            [horizontalAlign]="'end'">
+        <hc-pop #patientDrop [autoCloseOnContentClick]="true" [showArrow]="false" [verticalAlign]="'below'" [horizontalAlign]="'end'">
             <div hcMenu>
                 <button hcButtonItem>
                     <span hcMenuIcon class="icon-pencil"></span>
@@ -730,83 +800,94 @@
         </hc-pop>
 
         <pre><code>
-        ...
+                ...
 
-        &lt;tr&gt;
-            &lt;td&gt;Samuel&lt;/td&gt;
-            &lt;td&gt;Walker&lt;/td&gt;
-            &lt;td&gt;Mar 27, 1978&lt;/td&gt;
-            &lt;td&gt;MetLife&lt;/td&gt;
-            &lt;td&gt;
+                &lt;tr&gt;
+                &lt;td&gt;Samuel&lt;/td&gt;
+                &lt;td&gt;Walker&lt;/td&gt;
+                &lt;td&gt;Mar 27, 1978&lt;/td&gt;
+                &lt;td&gt;MetLife&lt;/td&gt;
+                &lt;td&gt;
                 &lt;div class=&quot;hc-table-actions&quot;&gt;
-                    &lt;span class=&quot;icon-star-o hc-action-ico&quot; hcTooltip=&quot;Mark as favorite&quot;&gt;&lt;/span&gt;
-                    &lt;span class=&quot;icon-info hc-action-ico&quot; hcTooltip=&quot;About this patient&quot;&gt;&lt;/span&gt;
-                    &lt;button class=&quot;hc-elip-menu hc-action-ico&quot; trigger=&quot;click&quot; [hcPop]=&quot;patientDrop&quot;
-                        title=&quot;More patient actions...&quot;&gt; &lt;/button&gt;
+                &lt;span class=&quot;icon-star-o hc-action-ico&quot; hcTooltip=&quot;Mark as favorite&quot;&gt;&lt;/span&gt;
+                &lt;span class=&quot;icon-info hc-action-ico&quot; hcTooltip=&quot;About this patient&quot;&gt;&lt;/span&gt;
+                &lt;button class=&quot;hc-elip-menu hc-action-ico&quot; trigger=&quot;click&quot; [hcPop]=&quot;patientDrop&quot;
+                title=&quot;More patient actions...&quot;&gt; &lt;/button&gt;
                 &lt;/div&gt;
-            &lt;/td&gt;
-        &lt;/tr&gt;
+                &lt;/td&gt;
+                &lt;/tr&gt;
 
-        ...
+                ...
 
-        &lt;hc-pop #patientDrop [autoCloseOnContentClick]=&quot;true&quot; [showArrow]=&quot;false&quot; [verticalAlign]=&quot;'below'&quot;
-            [horizontalAlign]=&quot;'end'&quot;&gt;
-            &lt;div hcMenu&gt;
+                &lt;hc-pop #patientDrop [autoCloseOnContentClick]=&quot;true&quot; [showArrow]=&quot;false&quot; [verticalAlign]=&quot;'below'&quot;
+                [horizontalAlign]=&quot;'end'&quot;&gt;
+                &lt;div hcMenu&gt;
                 &lt;button hcButtonItem&gt;
-                    &lt;span hcMenuIcon class=&quot;icon-pencil&quot;&gt;&lt;/span&gt;
-                    &lt;span hcMenuText&gt;Edit entry&lt;/span&gt;
+                &lt;span hcMenuIcon class=&quot;icon-pencil&quot;&gt;&lt;/span&gt;
+                &lt;span hcMenuText&gt;Edit entry&lt;/span&gt;
                 &lt;/button&gt;
                 &lt;button hcButtonItem&gt;
-                    &lt;span hcMenuIcon class=&quot;icon-share&quot;&gt;&lt;/span&gt;
-                    &lt;span hcMenuText&gt;Share entry&lt;/span&gt;
+                &lt;span hcMenuIcon class=&quot;icon-share&quot;&gt;&lt;/span&gt;
+                &lt;span hcMenuText&gt;Share entry&lt;/span&gt;
                 &lt;/button&gt;
                 &lt;div hcButtonItem hcDivider&gt;&lt;/div&gt;
                 &lt;button hcButtonItem&gt;
-                    &lt;span hcMenuIcon class=&quot;icon-trash&quot;&gt;&lt;/span&gt;
-                    &lt;span hcMenuText&gt;Delete entry&lt;/span&gt;
+                &lt;span hcMenuIcon class=&quot;icon-trash&quot;&gt;&lt;/span&gt;
+                &lt;span hcMenuText&gt;Delete entry&lt;/span&gt;
                 &lt;/button&gt;
-            &lt;/div&gt;
-        &lt;/hc-pop&gt;
+                &lt;/div&gt;
+                &lt;/hc-pop&gt;
 
-        ...
+                ...
 
-        </code></pre>
+              </code></pre>
     </hc-tile>
-
 
     <hc-tile>
         <h5 id="table-bulk-actions">Table Bulk Actions</h5>
-        <p>For cases where actions can be performed on multiple rows at once, use <code>.hc-table-bulk-actions</code>.
-            Use buttons with <code>buttonStyle="minimal" size="sm"</code>. Rows should be selectable using checkboxes.
+        <p>
+            For cases where actions can be performed on multiple rows at once, use
+            <code>.hc-table-bulk-actions</code>
+            . Use buttons with
+            <code>buttonStyle="minimal" size="sm"</code>
+            . Rows should be selectable using checkboxes.
         </p>
         <div class="hc-table-bulk-actions">
-            <span class="selected-count hc-font-em"
-                title="{{ bulkExampleSelectedCount === 0 ? 'Select entries from list to perform bulk actions' : '' }}">
+            <span
+                class="selected-count hc-font-em"
+                title="{{ bulkExampleSelectedCount === 0 ? 'Select entries from list to perform bulk actions' : '' }}"
+            >
                 ({{ bulkExampleSelectedCount || 0 }} entr{{ bulkExampleSelectedCount === 1 ? 'y' : 'ies' }} selected)
             </span>
-            <button hc-button *ngIf="bulkExampleSelectedCount > 0" buttonStyle="minimal" size="sm"
-                hcTooltip="Edit selected entries">
-                <span class="icon-pencil hc-icon-left"></span>Edit
+            @if (bulkExampleSelectedCount > 0) {
+            <button hc-button buttonStyle="minimal" size="sm" hcTooltip="Edit selected entries">
+                <span class="icon-pencil hc-icon-left"></span>
+                Edit
             </button>
-
-            <button hc-button *ngIf="bulkExampleSelectedCount > 0" buttonStyle="minimal" size="sm"
-                hcTooltip="Export selected entries">
-                <span class="icon-download hc-icon-left"></span>Export
+            } @if (bulkExampleSelectedCount > 0) {
+            <button hc-button buttonStyle="minimal" size="sm" hcTooltip="Export selected entries">
+                <span class="icon-download hc-icon-left"></span>
+                Export
             </button>
-
-            <button hc-button *ngIf="bulkExampleSelectedCount > 0" buttonStyle="minimal" size="sm"
-                hcTooltip="Delete selected entries">
-                <span class="icon-trash hc-icon-left"></span>Delete
+            } @if (bulkExampleSelectedCount > 0) {
+            <button hc-button buttonStyle="minimal" size="sm" hcTooltip="Delete selected entries">
+                <span class="icon-trash hc-icon-left"></span>
+                Delete
             </button>
+            }
         </div>
         <table class="hc-table">
             <thead>
                 <tr>
                     <th class="checkbox-col">
-                        <hc-checkbox [tight]="true" [class.hc-checkbox-indeterminate]="masterCheckboxIsIndeterminate"
-                            (click)="masterCheckboxClicked()" [checked]="allChecked" [isStub]="true"
-                            title="Click to {{ allChecked ? 'deselect' : 'select' }} all rows">
-                        </hc-checkbox>
+                        <hc-checkbox
+                            [tight]="true"
+                            [class.hc-checkbox-indeterminate]="masterCheckboxIsIndeterminate"
+                            (click)="masterCheckboxClicked()"
+                            [checked]="allChecked"
+                            [isStub]="true"
+                            title="Click to {{ allChecked ? 'deselect' : 'select' }} all rows"
+                        ></hc-checkbox>
                     </th>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -817,8 +898,11 @@
             <tbody>
                 <tr>
                     <td class="checkbox-col">
-                        <hc-checkbox [tight]="true" [(ngModel)]="bulkActionExampleState[0]"
-                            title="Select entry for bulk actions"></hc-checkbox>
+                        <hc-checkbox
+                            [tight]="true"
+                            [(ngModel)]="bulkActionExampleState[0]"
+                            title="Select entry for bulk actions"
+                        ></hc-checkbox>
                     </td>
                     <td>Samuel</td>
                     <td>Walker</td>
@@ -827,8 +911,11 @@
                 </tr>
                 <tr>
                     <td class="checkbox-col">
-                        <hc-checkbox [tight]="true" [(ngModel)]="bulkActionExampleState[1]"
-                            title="Select entry for bulk actions"></hc-checkbox>
+                        <hc-checkbox
+                            [tight]="true"
+                            [(ngModel)]="bulkActionExampleState[1]"
+                            title="Select entry for bulk actions"
+                        ></hc-checkbox>
                     </td>
                     <td>Whitney</td>
                     <td>Allen</td>
@@ -837,8 +924,11 @@
                 </tr>
                 <tr>
                     <td class="checkbox-col">
-                        <hc-checkbox [tight]="true" [(ngModel)]="bulkActionExampleState[2]"
-                            title="Select entry for bulk actions"></hc-checkbox>
+                        <hc-checkbox
+                            [tight]="true"
+                            [(ngModel)]="bulkActionExampleState[2]"
+                            title="Select entry for bulk actions"
+                        ></hc-checkbox>
                     </td>
                     <td>Kendra</td>
                     <td>Jacobs</td>
@@ -847,8 +937,11 @@
                 </tr>
                 <tr>
                     <td>
-                        <hc-checkbox [tight]="true" [(ngModel)]="bulkActionExampleState[3]"
-                            title="Select entry for bulk actions"></hc-checkbox>
+                        <hc-checkbox
+                            [tight]="true"
+                            [(ngModel)]="bulkActionExampleState[3]"
+                            title="Select entry for bulk actions"
+                        ></hc-checkbox>
                     </td>
                     <td>Gerald</td>
                     <td>Lynch</td>
@@ -859,41 +952,44 @@
         </table>
 
         <pre><code>
-    &lt;div class=&quot;hc-table-bulk-actions&quot;&gt;
-        &lt;span class=&quot;selected-count hc-font-em&quot; title=&quot;Select entries from list to perform bulk actions&quot;&gt;
-            (x row(s) selected)
-        &lt;/span&gt;
-        &lt;button hc-button *ngIf=&quot;bulkExampleSelectedCount &gt; 0&quot; buttonStyle=&quot;minimal&quot; size=&quot;sm&quot; hcTooltip=&quot;Edit selected entries&quot;&gt;
-            &lt;span class=&quot;icon-pencil hc-icon-left&quot;&gt;&lt;/span&gt;Edit
-        &lt;/button&gt;
+              &lt;div class=&quot;hc-table-bulk-actions&quot;&gt;
+              &lt;span class=&quot;selected-count hc-font-em&quot; title=&quot;Select entries from list to perform bulk actions&quot;&gt;
+              (x row(s) selected)
+              &lt;/span&gt;
+              &lt;button hc-button *ngIf=&quot;bulkExampleSelectedCount &gt; 0&quot; buttonStyle=&quot;minimal&quot; size=&quot;sm&quot; hcTooltip=&quot;Edit selected entries&quot;&gt;
+              &lt;span class=&quot;icon-pencil hc-icon-left&quot;&gt;&lt;/span&gt;Edit
+              &lt;/button&gt;
 
-        &lt;button hc-button *ngIf=&quot;bulkExampleSelectedCount &gt; 0&quot; buttonStyle=&quot;minimal&quot; size=&quot;sm&quot; hcTooltip=&quot;Export selected entries&quot;&gt;
-            &lt;span class=&quot;icon-download hc-icon-left&quot;&gt;&lt;/span&gt;Export
-        &lt;/button&gt;
+              &lt;button hc-button *ngIf=&quot;bulkExampleSelectedCount &gt; 0&quot; buttonStyle=&quot;minimal&quot; size=&quot;sm&quot; hcTooltip=&quot;Export selected entries&quot;&gt;
+              &lt;span class=&quot;icon-download hc-icon-left&quot;&gt;&lt;/span&gt;Export
+              &lt;/button&gt;
 
-        &lt;button hc-button *ngIf=&quot;bulkExampleSelectedCount &gt; 0&quot; buttonStyle=&quot;minimal&quot; size=&quot;sm&quot; hcTooltip=&quot;Delete selected entries&quot;&gt;
-            &lt;span class=&quot;icon-trash hc-icon-left&quot;&gt;&lt;/span&gt;Delete
-        &lt;/button&gt;
-    &lt;/div&gt;
+              &lt;button hc-button *ngIf=&quot;bulkExampleSelectedCount &gt; 0&quot; buttonStyle=&quot;minimal&quot; size=&quot;sm&quot; hcTooltip=&quot;Delete selected entries&quot;&gt;
+              &lt;span class=&quot;icon-trash hc-icon-left&quot;&gt;&lt;/span&gt;Delete
+              &lt;/button&gt;
+              &lt;/div&gt;
 
-    &lt;table class=&quot;hc-table&quot;&gt;
+              &lt;table class=&quot;hc-table&quot;&gt;
 
-    ...
+              ...
 
-        </code></pre>
+            </code></pre>
     </hc-tile>
 
     <hc-tile>
         <h5 id="empty-table-state">Empty Table State</h5>
-        <p>Also available are some helper styles to standarize the look of empty and error state tables
-            (<code>.hc-empty-table-block</code>).
-        </p>
-        <p>The messaging should be as specific as possible. For example, is the table empty because of an error, because
-            there are no items available at all, or just because searching or filtering returned no results?
+        <p>
+            Also available are some helper styles to standarize the look of empty and error state tables (
+            <code>.hc-empty-table-block</code>
+            ).
         </p>
         <p>
-            If there's a specific action that would help the user along when facing an empty or error state, you should
-            provide it. For example, if no items have been added, you could provide a button to add one.
+            The messaging should be as specific as possible. For example, is the table empty because of an error, because there are no items
+            available at all, or just because searching or filtering returned no results?
+        </p>
+        <p>
+            If there's a specific action that would help the user along when facing an empty or error state, you should provide it. For
+            example, if no items have been added, you could provide a button to add one.
         </p>
         <table class="hc-table">
             <thead>
@@ -912,12 +1008,12 @@
         </div>
 
         <pre><code>
-    &lt;div class=&quot;hc-empty-table-block&quot;&gt;
-        &lt;span class=&quot;hc-empty-table-block-ico hc-empty-ico&quot;&gt;&lt;/span&gt;
-        &lt;span class=&quot;hc-empty-table-block-msg&quot;&gt;No entries to show.&lt;/span&gt;
-        &lt;button hc-button&gt;Add entry&lt;/button&gt;
-    &lt;/div&gt;
-        </code></pre>
+              &lt;div class=&quot;hc-empty-table-block&quot;&gt;
+              &lt;span class=&quot;hc-empty-table-block-ico hc-empty-ico&quot;&gt;&lt;/span&gt;
+              &lt;span class=&quot;hc-empty-table-block-msg&quot;&gt;No entries to show.&lt;/span&gt;
+              &lt;button hc-button&gt;Add entry&lt;/button&gt;
+              &lt;/div&gt;
+            </code></pre>
     </hc-tile>
 
     <hc-tile>
@@ -939,12 +1035,12 @@
         </div>
 
         <pre><code>
-        &lt;div class=&quot;hc-empty-table-block&quot;&gt;
-            &lt;span class=&quot;hc-empty-table-block-ico hc-warn-ico&quot;&gt;&lt;/span&gt;
-            &lt;span class=&quot;hc-empty-table-block-msg&quot;&gt;Try again&lt;/span&gt;
-            &lt;button hc-button&gt;Try again&lt;/button&gt;
-        &lt;/div&gt;
-        </code></pre>
+              &lt;div class=&quot;hc-empty-table-block&quot;&gt;
+              &lt;span class=&quot;hc-empty-table-block-ico hc-warn-ico&quot;&gt;&lt;/span&gt;
+              &lt;span class=&quot;hc-empty-table-block-msg&quot;&gt;Try again&lt;/span&gt;
+              &lt;button hc-button&gt;Try again&lt;/button&gt;
+              &lt;/div&gt;
+            </code></pre>
     </hc-tile>
 
     <hc-feedback-form></hc-feedback-form>

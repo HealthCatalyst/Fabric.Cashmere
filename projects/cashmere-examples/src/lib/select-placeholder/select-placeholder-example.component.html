@@ -2,9 +2,11 @@
     <hc-form-field inline>
         <hc-label>Select your facility:</hc-label>
         <hc-select placeholder="Select a city" [placeholderValue]="phVal" [formControl]="selectVal">
-            <option *ngFor="let city of cities" [ngValue]="city">
+            @for (city of cities; track city) {
+            <option [ngValue]="city">
                 {{ city.name }}
             </option>
+            }
         </hc-select>
     </hc-form-field>
     <button hc-button class="demo-button" (click)="reset('')">Set to Empty String</button>
