@@ -10,7 +10,9 @@
         [required]="required"
         (cdkObserveContent)="_onContentUpdated()"
     >
-        <option *ngIf="placeholder" [ngValue]="placeholderValue" selected disabled hidden #selectPlaceholder>{{ placeholder }}</option>
+        @if (placeholder) {
+        <option [ngValue]="placeholderValue" selected disabled hidden #selectPlaceholder>{{ placeholder }}</option>
+        }
         <ng-content></ng-content>
     </select>
 </div>

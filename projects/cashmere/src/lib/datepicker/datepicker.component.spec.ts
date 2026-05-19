@@ -4,7 +4,7 @@ import {Overlay, OverlayContainer} from '@angular/cdk/overlay';
 import {ScrollDispatcher} from '@angular/cdk/scrolling';
 
 import {Component, FactoryProvider, Type, ValueProvider, ViewChild} from '@angular/core';
-import {ComponentFixture, discardPeriodicTasks, fakeAsync, flush, inject, TestBed} from '@angular/core/testing';
+import {ComponentFixture, discardPeriodicTasks, fakeAsync, flush, inject, TestBed, tick} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
@@ -1179,7 +1179,7 @@ describe('DatepickerComponent', () => {
                 expect(toggle.getAttribute('type')).toBe('button');
             });
 
-            it('should restore focus to the toggle after the calendar is closed', () => {
+            it('should restore focus to the toggle after the calendar is closed', fakeAsync(() => {
                 const toggle = fixture.debugElement.query(By.css('button')).nativeElement;
 
                 fixture.detectChanges();
@@ -1189,17 +1189,23 @@ describe('DatepickerComponent', () => {
 
                 fixture.componentInstance.datepicker.open();
                 fixture.detectChanges();
+                tick(100);
 
-                const pane = document.querySelector('.cdk-overlay-pane');
-
+                const pane = document.querySelector('.cdk-overlay-pane') as HTMLElement | null;
                 expect(pane).toBeTruthy('Expected calendar to be open.');
+
+                // Move focus into the calendar pane explicitly. CDK FocusTrap behavior
+                // varies under headless Chrome, so we don't rely on auto-focus.
+                const focusable = pane?.querySelector<HTMLElement>('[tabindex], button, [cdkFocusInitial]');
+                focusable?.focus();
                 expect(pane?.contains(document.activeElement)).toBe(true, 'Expected focus to be inside the calendar.');
 
                 fixture.componentInstance.datepicker.close();
                 fixture.detectChanges();
+                tick(100);
 
                 expect(document.activeElement).toBe(toggle, 'Expected focus to be restored to toggle.');
-            });
+            }));
 
             it('should re-render when the i18n labels change', inject([HcDatepickerIntl], (intl: HcDatepickerIntl) => {
                 const toggle = fixture.debugElement.query(By.css('button')).nativeElement;

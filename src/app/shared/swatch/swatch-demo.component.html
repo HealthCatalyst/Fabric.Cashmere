@@ -1,12 +1,21 @@
 <div class="swatch-container">
-    <div *ngIf="gradient.length === 0" class="swatch" [ngClass]="{'large': isLarge, 'add-border': needsBorder}" [style.backgroundColor]="hex">
+    @if (gradient.length === 0) {
+    <div class="swatch" [ngClass]="{large: isLarge, 'add-border': needsBorder}" [style.backgroundColor]="hex">
         <ng-content></ng-content>
     </div>
-    <div *ngIf="gradient.length !== 0" class="swatch" [ngClass]="{'large': isLarge, 'add-border': needsBorder}" [style.background-image]="gradientString()"></div>
-    <div *ngIf="name" [ngClass]="{'name': rgb || cmyk}">{{name}}</div>
-    <div class="hex">{{hex}}</div>
-    <div *ngIf="rgb" class="hex" >RGB {{rgb}}</div>
-    <div *ngIf="cmyk" class="hex" >CMYK {{cmyk}}</div>
-    <div *ngIf="lab" class="hex" >LAB {{lab}}</div>
-    <div *ngIf="pantone" class="hex" >Pantone {{pantone}}</div>
+    } @if (gradient.length !== 0) {
+    <div class="swatch" [ngClass]="{large: isLarge, 'add-border': needsBorder}" [style.background-image]="gradientString()"></div>
+    } @if (name) {
+    <div [ngClass]="{name: rgb || cmyk}">{{ name }}</div>
+    }
+    <div class="hex">{{ hex }}</div>
+    @if (rgb) {
+    <div class="hex">RGB {{ rgb }}</div>
+    } @if (cmyk) {
+    <div class="hex">CMYK {{ cmyk }}</div>
+    } @if (lab) {
+    <div class="hex">LAB {{ lab }}</div>
+    } @if (pantone) {
+    <div class="hex">Pantone {{ pantone }}</div>
+    }
 </div>

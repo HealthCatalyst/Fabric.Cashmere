@@ -2,37 +2,56 @@
     [class.hc-form-field-wrapper-inline]="inline"
     [class.hc-form-field-wrapper]="!inline"
     [class.hc-form-field-no-label]="!hasLabel"
-    [class.hc-form-field-wrapper-tight]="tight" >
-    <span *ngIf="hasLabel" [ngClass]="inline ? 'hc-form-field-label-wrapper-inline' : 'hc-form-field-label-wrapper'" [class.hc-form-field-label-wrapper-tight]="tight && !_mobileInput">
-        <label [ngClass]="inline ? 'hc-form-field-label-inline' : 'hc-form-field-label'" [class.hc-form-field-label-tight]="tight" [attr.for]="_control._componentId">
+    [class.hc-form-field-wrapper-tight]="tight"
+>
+    @if (hasLabel) {
+    <span
+        [ngClass]="inline ? 'hc-form-field-label-wrapper-inline' : 'hc-form-field-label-wrapper'"
+        [class.hc-form-field-label-wrapper-tight]="tight && !_mobileInput"
+    >
+        <label
+            [ngClass]="inline ? 'hc-form-field-label-inline' : 'hc-form-field-label'"
+            [class.hc-form-field-label-tight]="tight"
+            [attr.for]="_control._componentId"
+        >
             <ng-content select="hc-label"></ng-content>
-            <span class="hc-required-marker" aria-hidden="true" *ngIf="_control._isRequired && !_control._isDisabled">&nbsp;*</span>
+            @if (_control._isRequired && !_control._isDisabled) {
+            <span class="hc-required-marker" aria-hidden="true">&nbsp;*</span>
+            }
         </label>
     </span>
+    }
     <div class="hc-form-field-content-wrapper">
-
         <ng-content select="hc-label-ext"></ng-content>
 
+        @if (hasInput) {
         <div
-            *ngIf="hasInput"
             [class.hc-form-field-flex]="!inline"
             [class.hc-form-field-flex-inline]="inline"
             [class.hc-form-field-invalid]="_shouldShowErrorMessages()"
             [class.hc-form-field-flex-focused]="_hasFocusedInput"
         >
-            <div class="hc-form-field-prefix" *ngIf="_prefixChildren.length" (click)="iconClicked()">
+            @if (_prefixChildren.length) {
+            <div class="hc-form-field-prefix" (click)="iconClicked()">
                 <ng-content select="[hcPrefix]"></ng-content>
             </div>
-            <div #inputs class="hc-form-field-infix" [class.hc-form-field-infix-tight]="tight && !_mobileInput" [class.hc-form-field-infix-mobile]="_mobileInput">
+            }
+            <div
+                #inputs
+                class="hc-form-field-infix"
+                [class.hc-form-field-infix-tight]="tight && !_mobileInput"
+                [class.hc-form-field-infix-mobile]="_mobileInput"
+            >
                 <ng-content select="[hcInput]"></ng-content>
             </div>
-            <div class="hc-form-field-suffix" *ngIf="_suffixChildren.length" (click)="iconClicked()">
+            @if (_suffixChildren.length) {
+            <div class="hc-form-field-suffix" (click)="iconClicked()">
                 <ng-content select="[hcSuffix]"></ng-content>
             </div>
+            }
         </div>
-
+        } @if (!hasInput) {
         <div
-            *ngIf="!hasInput"
             [class.hc-form-field-non-input]="!inline"
             [class.hc-form-field-non-input-inline]="inline"
             [class.hc-form-field-non-input-inline-tight]="inline && tight"
@@ -40,9 +59,13 @@
         >
             <ng-content></ng-content>
         </div>
-        <div class="hc-form-field-error-wrapper" *ngIf="_shouldShowErrorMessages()">
-            <hc-error *ngIf="_control._errorMessage && _control._errorMessage.length">{{ _control._errorMessage }}</hc-error>
+        } @if (_shouldShowErrorMessages()) {
+        <div class="hc-form-field-error-wrapper">
+            @if (_control._errorMessage && _control._errorMessage.length) {
+            <hc-error>{{ _control._errorMessage }}</hc-error>
+            }
             <ng-content select="hc-error"></ng-content>
         </div>
+        }
     </div>
 </div>

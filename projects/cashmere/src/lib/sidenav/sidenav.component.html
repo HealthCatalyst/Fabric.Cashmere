@@ -1,112 +1,130 @@
-<div class="hc-sidenav {{containerCssClass}} {{darkMode ? 'hc-sidenav-dark' : ''}}"
-    [class.hc-sidenav-collapsed]="collapsed" [class.hc-sidenav-has-collapsible-nested-links] [style.width]="width">
-
+<div
+    class="hc-sidenav {{ containerCssClass }} {{ darkMode ? 'hc-sidenav-dark' : '' }}"
+    [class.hc-sidenav-collapsed]="collapsed"
+    [class.hc-sidenav-has-collapsible-nested-links]
+    [style.width]="width"
+>
     <div class="hc-sidenav-inner">
-
         <!-- #### Projected header -->
         <ng-content select="[hcSidenavHeader]"></ng-content>
 
         <!-- #### Tabs -->
-        <div class="hc-sidenav-tabs" [class.hc-sidenav-tabs-nested]="hasNestedLinks" *ngIf="tabs.length > 0">
-            <ng-container *ngIf="!isLoadingTabs">
-                <ng-container *ngFor="let tab of tabs">
-                    <ng-container *ngTemplateOutlet="sidenavTab; context: {tab: tab}"></ng-container>
-                </ng-container>
-            </ng-container>
-
-            <div *ngIf="isLoadingTabs" class="hc-sidenav-tabs-loading hc-subtle-pulse">
+        @if (tabs.length > 0) {
+        <div class="hc-sidenav-tabs" [class.hc-sidenav-tabs-nested]="hasNestedLinks">
+            @if (!isLoadingTabs) { @for (tab of tabs; track tab) {
+            <ng-container *ngTemplateOutlet="sidenavTab; context: {tab: tab}"></ng-container>
+            } } @if (isLoadingTabs) {
+            <div class="hc-sidenav-tabs-loading hc-subtle-pulse">
                 <div class="skeleton-tab"></div>
                 <div class="skeleton-tab"></div>
                 <div class="skeleton-tab"></div>
             </div>
+            }
         </div>
+        }
 
         <!-- #### Projected body -->
         <ng-content select="[hcSidenavBody]"></ng-content>
 
         <!-- #### Tab groups -->
-        <div *ngFor="let tabGroup of tabGroups" class="hc-sidenav-tab-group"
-            [class.hc-sidenav-tab-group-nested]="tabGroup.hasNestedLinks">
-            <ng-container *ngIf="!collapsed || !tabGroup.hideChildrenOnCollapse">
-                <div class="hc-sidenav-tab-group-container">
-                    <div class="hc-sidenav-tab-group-header {{tabGroup.tabCSSClass}}" title="{{tabGroup.description}}" (click)="onTabGroupHeaderClick($event, tabGroup)">
-                        <ng-container *ngIf="collapsed && (tabGroup.collapsedTitle || tabGroup.collapsedLabelHTML); else standardGroupLabel">
-                            <span *ngIf="tabGroup.collapsedLabelHTML" [innerHTML]="tabGroup.collapsedLabelHTML"></span>
-                            <span *ngIf="!tabGroup.collapsedLabelHTML" class="hc-sidenav-tab-group-header-title">{{ tabGroup.collapsedTitle }}</span>
-                        </ng-container>
-                        <ng-template #standardGroupLabel>
-                            <span *ngIf="tabGroup.labelHTML" [innerHTML]="tabGroup.labelHTML"></span>
-                            <span *ngIf="!tabGroup.labelHTML" class="hc-sidenav-tab-group-header-title">{{ tabGroup.title }}</span>
-                        </ng-template>
-                        <span *ngIf="tabGroup.iconClass" class="{{tabGroup.iconClass}} hc-sidenav-tab-group-header-icon"></span>
-                    </div>
-                    <!-- Tab group items -->
-                    <ng-container *ngIf="!isLoadingTabs">
-                        <ng-container *ngFor="let tab of tabGroup.children">
-                            <ng-container *ngTemplateOutlet="sidenavTab; context: {tab: tab}"></ng-container>
-                        </ng-container>
-                    </ng-container>
+        @for (tabGroup of tabGroups; track tabGroup) {
+        <div class="hc-sidenav-tab-group" [class.hc-sidenav-tab-group-nested]="tabGroup.hasNestedLinks">
+            @if (!collapsed || !tabGroup.hideChildrenOnCollapse) {
+            <div class="hc-sidenav-tab-group-container">
+                <div
+                    class="hc-sidenav-tab-group-header {{ tabGroup.tabCSSClass }}"
+                    title="{{ tabGroup.description }}"
+                    (click)="onTabGroupHeaderClick($event, tabGroup)"
+                >
+                    @if (collapsed && (tabGroup.collapsedTitle || tabGroup.collapsedLabelHTML)) { @if (tabGroup.collapsedLabelHTML) {
+                    <span [innerHTML]="tabGroup.collapsedLabelHTML"></span>
+                    } @if (!tabGroup.collapsedLabelHTML) {
+                    <span class="hc-sidenav-tab-group-header-title">{{ tabGroup.collapsedTitle }}</span>
+                    } } @else { @if (tabGroup.labelHTML) {
+                    <span [innerHTML]="tabGroup.labelHTML"></span>
+                    } @if (!tabGroup.labelHTML) {
+                    <span class="hc-sidenav-tab-group-header-title">{{ tabGroup.title }}</span>
+                    } } @if (tabGroup.iconClass) {
+                    <span class="{{ tabGroup.iconClass }} hc-sidenav-tab-group-header-icon"></span>
+                    }
                 </div>
-                <!-- Empty tab group -->
-                <div *ngIf="tabGroup.children.length === 0" class="hc-sidenav-empty-msg">
-                    <span class="hc-sidenav-empty-ico"></span>
-                    <span>Nothing to show.</span>
-                </div>
-            </ng-container>
-
+                <!-- Tab group items -->
+                @if (!isLoadingTabs) { @for (tab of tabGroup.children; track tab) {
+                <ng-container *ngTemplateOutlet="sidenavTab; context: {tab: tab}"></ng-container>
+                } }
+            </div>
+            <!-- Empty tab group -->
+            @if (tabGroup.children.length === 0) {
+            <div class="hc-sidenav-empty-msg">
+                <span class="hc-sidenav-empty-ico"></span>
+                <span>Nothing to show.</span>
+            </div>
+            } }
             <!-- Tab group menu button in collapsed sidebar-->
-            <ng-container *ngIf="collapsed && tabGroup.hideChildrenOnCollapse">
-                <div [hcPop]="tabPop" [context]="tabGroup.title || ''" [trigger]="'hover'"
-                    class="hc-sidenav-tab-group-collapsed-menu-btn {{tabGroup.tabCSSClass}}">
-                    <span class="hc-sidenav-tab-group-collapsed-menu-ico" [hcPop]="tabLinkPop"
-                        [context]="{parent: tabGroup}">
-                        <span [class]="tabGroup.iconClass"></span>
-                    </span>
-                </div>
-            </ng-container>
+            @if (collapsed && tabGroup.hideChildrenOnCollapse) {
+            <div
+                [hcPop]="tabPop"
+                [context]="tabGroup.title || ''"
+                [trigger]="'hover'"
+                class="hc-sidenav-tab-group-collapsed-menu-btn {{ tabGroup.tabCSSClass }}"
+            >
+                <span class="hc-sidenav-tab-group-collapsed-menu-ico" [hcPop]="tabLinkPop" [context]="{parent: tabGroup}">
+                    <span [class]="tabGroup.iconClass"></span>
+                </span>
+            </div>
+            }
         </div>
+        }
         <!-- #### End tab groups -->
 
         <!-- #### Favorites -->
-        <div *ngIf="showFavorites" class="hc-sidenav-favs">
-            <ng-container *ngIf="!collapsed">
-                <div *ngIf="favorites.length > 0 && !isLoadingFavorites" class="hc-sidenav-favs-list-container">
-                    <div class="hc-sidenav-favs-header" title="{{favoritesDescription}}">
-                        <span>
-                            {{favoritesTitleLabel}}
-                            <ng-container *ngIf="!isLoadingFavorites">({{ favorites.length }})</ng-container>
-                        </span>
-                        <span class="{{favoritesTitleIconClass}}"></span>
-                    </div>
-                    <!-- Favorites list -->
-                    <div *ngIf="!isLoadingFavorites" class="hc-sidenav-favs-list-container-inner">
-                        <ng-container *ngFor="let fav of favorites">
-                            <ng-container
-                                *ngTemplateOutlet="sidenavTab; context: {tab: fav, isFav: true}"></ng-container>
-                        </ng-container>
-                    </div>
-                </div>
-                <!-- Empty favorites list -->
-                <div *ngIf="!isLoadingFavorites && favorites.length === 0" class="hc-sidenav-empty-msg">
-                    <span class="{{favoritesTitleIconClass}} hc-sidenav-empty-ico"></span>
-                    <span>Nothing to show.</span>
-                    <span class="hc-sidenav-empty-description">{{favoritesDescription}}</span>
-                </div>
-            </ng-container>
-
-            <!-- Fav menu button in collapsed sidebar-->
-            <ng-container *ngIf="collapsed && !isLoadingFavorites">
-                <div [hcPop]="tabPop" [context]="favoritesTitleLabel" [trigger]="'hover'"
-                    class="hc-sidenav-favs-collapsed-menu-btn">
-                    <span class="hc-sidenav-favs-collapsed-menu-ico" [hcPop]="tabLinkPop"
-                        [context]="{isFav: true, links: favorites, title: favoritesTitleLabel, titleIco: favoritesTitleIconClass}">
-                        <span [class]="favoritesTitleIconClass"></span>
+        @if (showFavorites) {
+        <div class="hc-sidenav-favs">
+            @if (!collapsed) { @if (favorites.length > 0 && !isLoadingFavorites) {
+            <div class="hc-sidenav-favs-list-container">
+                <div class="hc-sidenav-favs-header" title="{{ favoritesDescription }}">
+                    <span>
+                        {{ favoritesTitleLabel }}
+                        @if (!isLoadingFavorites) { ({{ favorites.length }}) }
                     </span>
+                    <span class="{{ favoritesTitleIconClass }}"></span>
                 </div>
-            </ng-container>
+                <!-- Favorites list -->
+                @if (!isLoadingFavorites) {
+                <div class="hc-sidenav-favs-list-container-inner">
+                    @for (fav of favorites; track fav) {
+                    <ng-container *ngTemplateOutlet="sidenavTab; context: {tab: fav, isFav: true}"></ng-container>
+                    }
+                </div>
+                }
+            </div>
+            }
+            <!-- Empty favorites list -->
+            @if (!isLoadingFavorites && favorites.length === 0) {
+            <div class="hc-sidenav-empty-msg">
+                <span class="{{ favoritesTitleIconClass }} hc-sidenav-empty-ico"></span>
+                <span>Nothing to show.</span>
+                <span class="hc-sidenav-empty-description">{{ favoritesDescription }}</span>
+            </div>
+            } }
+            <!-- Fav menu button in collapsed sidebar-->
+            @if (collapsed && !isLoadingFavorites) {
+            <div [hcPop]="tabPop" [context]="favoritesTitleLabel" [trigger]="'hover'" class="hc-sidenav-favs-collapsed-menu-btn">
+                <span
+                    class="hc-sidenav-favs-collapsed-menu-ico"
+                    [hcPop]="tabLinkPop"
+                    [context]="{isFav: true, links: favorites, title: favoritesTitleLabel, titleIco: favoritesTitleIconClass}"
+                >
+                    <span [class]="favoritesTitleIconClass"></span>
+                </span>
+            </div>
+            }
             <!-- Loading State -->
-            <hc-progress-dots *ngIf="isLoadingFavorites" color="dark" [isMini]="collapsed"></hc-progress-dots>
+            @if (isLoadingFavorites) {
+            <hc-progress-dots color="dark" [isMini]="collapsed"></hc-progress-dots>
+            }
         </div>
+        }
         <!-- #### End favorites -->
 
         <!-- #### Other projected content -->
@@ -116,89 +134,130 @@
         <ng-content select="[hcSidenavFooter]"></ng-content>
 
         <!-- #### Expand/Collapse Button -->
-        <button *ngIf="canToggle" hc-button class="hc-sidenav-state-btn" buttonStyle="minimal"
-            [class.hc-sidenav-collapsed]="collapsed" title="{{collapsed ? 'Expand' : 'Collapse'}}" (click)="toggle()">
+        @if (canToggle) {
+        <button
+            hc-button
+            class="hc-sidenav-state-btn"
+            buttonStyle="minimal"
+            [class.hc-sidenav-collapsed]="collapsed"
+            title="{{ collapsed ? 'Expand' : 'Collapse' }}"
+            (click)="toggle()"
+        >
             <span class="hc-ico-chev-right-blue" [class.hc-sidenav-state-btn-expanded]="!collapsed"></span>
         </button>
-
+        }
     </div>
 </div>
 
 <!-- #### Template for tabs -->
 <ng-template #sidenavTab let-tab="tab" let-isFav="isFav">
-    <div class="hc-sidenav-tab-tree-line-vert" [class.hc-sidenav-no-tree-lines]="!showTreeLines"
-        [class.hc-sidenav-no-collapsing-links]="!collapsibleChildren" [hcPop]="tabLinkPop" [context]="{parent: tab}"
-        [trigger]="(collapsed && tab.children?.length > 0 && !tab.parent) ? 'click' : 'none'">
-        <a class="hc-sidenav-tab {{tab.tabCSSClass}}"
+    <div
+        class="hc-sidenav-tab-tree-line-vert"
+        [class.hc-sidenav-no-tree-lines]="!showTreeLines"
+        [class.hc-sidenav-no-collapsing-links]="!collapsibleChildren"
+        [hcPop]="tabLinkPop"
+        [context]="{parent: tab}"
+        [trigger]="collapsed && tab.children?.length > 0 && !tab.parent ? 'click' : 'none'"
+    >
+        <a
+            class="hc-sidenav-tab {{ tab.tabCSSClass }}"
             [class.hc-sidenav-active-tab]="!routerLinkActiveClass ? tab.key === activeTabKey && !isFav : false"
-            [class.hc-sidenav-disabled-tab]="tab.disabled" [class.hc-sidenav-unclickable-tab]="!tab.clickable"
-            [class.last-leaf-node]="tab.isLastLeafNode" [title]="tab.description || ''"
-            [routerLink]="((collapsed && tab.children?.length > 0) || !tab.clickable) ? null : tab.routerLink"
+            [class.hc-sidenav-disabled-tab]="tab.disabled"
+            [class.hc-sidenav-unclickable-tab]="!tab.clickable"
+            [class.last-leaf-node]="tab.isLastLeafNode"
+            [title]="tab.description || ''"
+            [routerLink]="(collapsed && tab.children?.length > 0) || !tab.clickable ? null : tab.routerLink"
             [routerLinkActive]="routerLinkActiveClass || 'active-tab'"
-            (isActiveChange)="_onRouterLinkActiveChange($event, tab)" tabindex="0"
-            (keydown.enter)="onTabClick($event, tab, false, isFav)" (click)="onTabClick($event, tab, false, isFav)"
-            [hcPop]="tabPop" [trigger]="collapsed && !tab.parent && !isFav ? 'hover' : 'none'"
-            [context]="tab.title || ''">
+            (isActiveChange)="_onRouterLinkActiveChange($event, tab)"
+            tabindex="0"
+            (keydown.enter)="onTabClick($event, tab, false, isFav)"
+            (click)="onTabClick($event, tab, false, isFav)"
+            [hcPop]="tabPop"
+            [trigger]="collapsed && !tab.parent && !isFav ? 'hover' : 'none'"
+            [context]="tab.title || ''"
+        >
             <span class="hc-sidenav-tab-tree-line-horz"></span>
             <span class="hc-sidenav-tab-inner">
                 <span class="hc-sidenav-tab-ico {{ tab.iconClass }}"></span>
-                <span *ngIf="tab.labelHTML" class="hc-sidenav-tab-name" [innerHTML]="tab.labelHTML"></span>
-                <span *ngIf="!tab.labelHTML" class="hc-sidenav-tab-name">{{ tab.title }}</span>
+                @if (tab.labelHTML) {
+                <span class="hc-sidenav-tab-name" [innerHTML]="tab.labelHTML"></span>
+                } @if (!tab.labelHTML) {
+                <span class="hc-sidenav-tab-name">{{ tab.title }}</span>
+                }
             </span>
-            <div *ngIf="tab.subText || tab.badgeHTML" class="hc-text-ellipsis hc-sidenav-tab-subtext">
-                {{tab.subText}}<span *ngIf="tab.badgeHTML" [innerHTML]="tab.badgeHTML"
-                    class="hc-sidenav-badge hc-sidenav-badge-{{tab.badgeColor}}"></span>
+            @if (tab.subText || tab.badgeHTML) {
+            <div class="hc-text-ellipsis hc-sidenav-tab-subtext">
+                {{ tab.subText }}@if (tab.badgeHTML) {
+                <span [innerHTML]="tab.badgeHTML" class="hc-sidenav-badge hc-sidenav-badge-{{ tab.badgeColor }}"></span>
+                }
             </div>
-            <span *ngIf="isFav" class="hc-sidenav-fav-action-ico-btn" title="{{favoritesItemActionIconTooltip || ''}}"
-                (click)="onFavoriteItemIconClicked($event, tab)">
-                <span class="hc-sidenav-fav-item-action-ico {{favoritesItemActionIconClass}}"></span>
+            } @if (isFav) {
+            <span
+                class="hc-sidenav-fav-action-ico-btn"
+                title="{{ favoritesItemActionIconTooltip || '' }}"
+                (click)="onFavoriteItemIconClicked($event, tab)"
+            >
+                <span class="hc-sidenav-fav-item-action-ico {{ favoritesItemActionIconClass }}"></span>
             </span>
-            <div *ngIf="tab.children?.length > 0 && collapsibleChildren" class="hc-sidenav-tab-chev-container"
-                (click)="childrenChevClicked(tab, $event)" tabindex="0"
-                (keydown.enter)="childrenChevClicked(tab, $event)" title="{{tab.open ? 'Collapse' : 'Expand'}} section">
+            } @if (tab.children?.length > 0 && collapsibleChildren) {
+            <div
+                class="hc-sidenav-tab-chev-container"
+                (click)="childrenChevClicked(tab, $event)"
+                tabindex="0"
+                (keydown.enter)="childrenChevClicked(tab, $event)"
+                title="{{ tab.open ? 'Collapse' : 'Expand' }} section"
+            >
                 <span class="hc-sidenav-tab-chevron" [class.hc-sidenav-chev-tab-open]="tab.open"></span>
             </div>
+            }
         </a>
-        <div *ngIf="tab.children?.length > 0 && tab.open" class="hc-sidenav-tab-children"
-            [class.hc-sidenav-tab-open]="tab.open">
-            <ng-container *ngFor="let child of tab.children">
-                <ng-container *ngTemplateOutlet="sidenavTab; context: {tab: child}"></ng-container>
-            </ng-container>
+        @if (tab.children?.length > 0 && tab.open) {
+        <div class="hc-sidenav-tab-children" [class.hc-sidenav-tab-open]="tab.open">
+            @for (child of tab.children; track child) {
+            <ng-container *ngTemplateOutlet="sidenavTab; context: {tab: child}"></ng-container>
+            }
         </div>
+        }
     </div>
 </ng-template>
 <!-- #### End tab template -->
 
 <!-- #### Tab tooltips for collapsed sidebar-->
-<hc-pop #tabPop xAlign="after" yAlign="center" [disableStyle]="true" (opened)="tabTooltipText = $event"><span
-        class="hc-tooltip">{{tabTooltipText}}</span>
+<hc-pop #tabPop xAlign="after" yAlign="center" [disableStyle]="true" (opened)="tabTooltipText = $event">
+    <span class="hc-tooltip">{{ tabTooltipText }}</span>
 </hc-pop>
 
 <!-- #### Menu for collapsed sidebar link/group/favs -->
-<hc-pop #tabLinkPop xAlign="after" yAlign="start" [autoCloseOnContentClick]="true" [showArrow]="false"
-    (opened)="menuContext = $event">
+<hc-pop #tabLinkPop xAlign="after" yAlign="start" [autoCloseOnContentClick]="true" [showArrow]="false" (opened)="menuContext = $event">
     <!-- Menu Title -->
-    <div class="nested-link-submenu-header"
+    <div
+        class="nested-link-submenu-header"
         [class.nest-link-submenu-header-clickable]="menuContext?.parent?.clickable && !menuContext?.parent?.disabled"
-        title="{{menuContext?.parent?.description || menuContext?.title}}"
-        [routerLink]="menuContext?.parent?.routerLink" tabindex="0"
+        title="{{ menuContext?.parent?.description || menuContext?.title }}"
+        [routerLink]="menuContext?.parent?.routerLink"
+        tabindex="0"
         (keydown.enter)="menuContext?.parent && onTabClick($event, menuContext?.parent, true, menuContext?.isFav)"
-        (click)="menuContext?.parent && onTabClick($event, menuContext?.parent, true, menuContext?.isFav)">
-        <span *ngIf="menuContext?.parent?.labelHTML" [innerHTML]="menuContext?.parent?.labelHTML"></span>
-        <span *ngIf="menuContext?.parent?.iconClass || menuContext?.titleIco"
-            class="{{menuContext?.parent?.iconClass || menuContext?.titleIco}} nested-link-submenu-header-ico"></span>
-        <span *ngIf="!menuContext?.parent?.labelHTML">{{ menuContext?.parent?.title || menuContext?.title}}</span>
+        (click)="menuContext?.parent && onTabClick($event, menuContext?.parent, true, menuContext?.isFav)"
+    >
+        @if (menuContext?.parent?.labelHTML) {
+        <span [innerHTML]="menuContext?.parent?.labelHTML"></span>
+        } @if (menuContext?.parent?.iconClass || menuContext?.titleIco) {
+        <span class="{{ menuContext?.parent?.iconClass || menuContext?.titleIco }} nested-link-submenu-header-ico"></span>
+        } @if (!menuContext?.parent?.labelHTML) {
+        <span>{{ menuContext?.parent?.title || menuContext?.title }}</span>
+        }
     </div>
     <div class="nested-link-submenu nested-link-submenu-embedded">
         <!-- Menu links -->
-        <ng-container *ngFor="let tab of menuContext?.links || menuContext?.parent?.children">
-            <ng-container *ngTemplateOutlet="sidenavTab; context: {tab: tab, isFav: menuContext?.isFav}"></ng-container>
-        </ng-container>
+        @for (tab of menuContext?.links || menuContext?.parent?.children; track tab) {
+        <ng-container *ngTemplateOutlet="sidenavTab; context: {tab: tab, isFav: menuContext?.isFav}"></ng-container>
+        }
         <!-- Empty list -->
-        <div *ngIf="!((menuContext?.links || menuContext?.parent?.children)?.length > 0)"
-            class="hc-sidenav-empty-msg popover-menu">
+        @if (!((menuContext?.links || menuContext?.parent?.children)?.length > 0)) {
+        <div class="hc-sidenav-empty-msg popover-menu">
             <span class="hc-sidenav-empty-ico"></span>
             <span>Nothing to show.</span>
         </div>
+        }
     </div>
 </hc-pop>

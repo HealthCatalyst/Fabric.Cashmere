@@ -5,33 +5,55 @@
     <li>Draggable table headers to reorder columns.</li>
 </ul>
 
-<h3>Brandon Sanderson Books
-    <hc-column-menu #colMenu
+<h3>
+    Brandon Sanderson Books
+    <hc-column-menu
+        #colMenu
         [dynamicCols]="columns"
         [staticPrefixCols]="staticPrefixCols"
         [staticSuffixCols]="staticSuffixCols"
-        [cacheKey]="cacheKey">
-    </hc-column-menu>
+        [cacheKey]="cacheKey"
+    ></hc-column-menu>
 </h3>
 <div hcTableContainer tableHeight="400">
-    <table hc-table [dataSource]="dataSource" [borders]="false"
-        cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="colMenu.columnDropped($event)">
-        <ng-container *ngFor="let column of columns" [hcColumnDef]="column.name">
-            <th hc-header-cell *hcHeaderCellDef cdkDrag [cdkDragData]="{name: column.name}" class="hc-draggable-header" title="Drag to rearrange columns, or click to sort">
-                <span class="ico-grip"></span>{{ column.title }}</th>
+    <table
+        hc-table
+        [dataSource]="dataSource"
+        [borders]="false"
+        cdkDropList
+        cdkDropListOrientation="horizontal"
+        (cdkDropListDropped)="colMenu.columnDropped($event)"
+    >
+        @for (column of columns; track column) {
+        <ng-container [hcColumnDef]="column.name">
+            <th
+                hc-header-cell
+                *hcHeaderCellDef
+                cdkDrag
+                [cdkDragData]="{name: column.name}"
+                class="hc-draggable-header"
+                title="Drag to rearrange columns, or click to sort"
+            >
+                <span class="ico-grip"></span>
+                {{ column.title }}
+            </th>
             <td hc-cell *hcCellDef="let element">
-                <ng-container [ngSwitch]="column.name">
-                    <span *ngSwitchCase="'pages'">{{element.pages.toLocaleString()}}</span>
-
-                    <span *ngSwitchCase="'isInCosmere'">
-                        <span *ngIf="element.isInCosmere" class="icon-circle-check"></span>
-                        <span *ngIf="!element.isInCosmere" class="hc-font-em">-</span>
-                    </span>
-
-                    <span *ngSwitchDefault>{{element[column.name].toString()}}</span>
-                </ng-container>
+                @switch (column.name) { @case ('pages') {
+                <span>{{ element.pages.toLocaleString() }}</span>
+                } @case ('isInCosmere') {
+                <span>
+                    @if (element.isInCosmere) {
+                    <span class="icon-circle-check"></span>
+                    } @if (!element.isInCosmere) {
+                    <span class="hc-font-em">-</span>
+                    }
+                </span>
+                } @default {
+                <span>{{ element[column.name].toString() }}</span>
+                } }
             </td>
         </ng-container>
+        }
 
         <ng-container hcColumnDef="checkbox">
             <th hc-header-cell *hcHeaderCellDef><hc-checkbox [tight]="true"></hc-checkbox></th>
@@ -49,7 +71,7 @@
             </td>
         </ng-container>
 
-        <tr hc-header-row *hcHeaderRowDef="colMenu.displayedColumns;"></tr>
-        <tr hc-row *hcRowDef="let row; columns: colMenu.displayedColumns;"></tr>
+        <tr hc-header-row *hcHeaderRowDef="colMenu.displayedColumns"></tr>
+        <tr hc-row *hcRowDef="let row; columns: colMenu.displayedColumns"></tr>
     </table>
 </div>

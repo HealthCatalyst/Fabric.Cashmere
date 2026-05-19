@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {ButtonToggleGroupComponent} from './button-toggle-group.component';
 import {ButtonToggleComponent} from './button-toggle.component';
 import {ButtonToggleChangeEvent} from './button-toggle-change-event';
@@ -53,11 +53,14 @@ describe('ButtonToggleGroup', () => {
 
         describe('.buttonStyle', () => {
             describe('by default', () => {
-                it('all children should be set to "secondary"', async () => {
-                    await fixture.whenStable();
-                    expect(component.toggleOne._hostClass).toContain('hc-secondary');
-                    expect(component.toggleTwo._hostClass).toContain('hc-secondary');
-                });
+                it('all children should be set to "secondary"', fakeAsync(() => {
+                    const fakeFixture = TestBed.createComponent(TestButtonToggleGroup);
+                    const fakeComponent = fakeFixture.componentInstance;
+                    fakeFixture.detectChanges();
+                    tick();
+                    expect(fakeComponent.toggleOne._hostClass).toContain('hc-secondary');
+                    expect(fakeComponent.toggleTwo._hostClass).toContain('hc-secondary');
+                }));
             });
             describe('when set to an invalid value', () => {
                 it('should throw an error', () => {
@@ -78,11 +81,14 @@ describe('ButtonToggleGroup', () => {
 
         describe('.size', () => {
             describe('by default', () => {
-                it('all children should be set to "md"', async () => {
-                    await fixture.whenStable();
-                    expect(component.toggleOne._hostClass).toContain('hc-md');
-                    expect(component.toggleTwo._hostClass).toContain('hc-md');
-                });
+                it('all children should be set to "md"', fakeAsync(() => {
+                    const fakeFixture = TestBed.createComponent(TestButtonToggleGroup);
+                    const fakeComponent = fakeFixture.componentInstance;
+                    fakeFixture.detectChanges();
+                    tick();
+                    expect(fakeComponent.toggleOne._hostClass).toContain('hc-md');
+                    expect(fakeComponent.toggleTwo._hostClass).toContain('hc-md');
+                }));
             });
             describe('when set to an invalid value', () => {
                 it('should throw an error', () => {

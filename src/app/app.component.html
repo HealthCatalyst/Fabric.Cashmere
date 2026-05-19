@@ -28,7 +28,13 @@
         </div>
     </hc-navbar-dropdown>
     <hc-navbar-link uri="/analytics" linkText="Analytics"></hc-navbar-link>
-    <hc-icon class="hc-navbar-icon" fontIcon="icon-search" [hcPop]="search" (click)="setInputFocus()" (popoverClosed)="logSearch()"></hc-icon>
+    <hc-icon
+        class="hc-navbar-icon"
+        fontIcon="icon-search"
+        [hcPop]="search"
+        (click)="setInputFocus()"
+        (popoverClosed)="logSearch()"
+    ></hc-icon>
     <a class="hc-navbar-icon" title="View on GitHub" href="https://github.com/HealthCatalyst/Fabric.Cashmere" target="blank">
         <hc-icon class="hc-navbar-external-link" fontSet="fa-brands" fontIcon="fa-github"></hc-icon>
     </a>
@@ -78,25 +84,46 @@
         </hc-list>
     </hc-navbar-mobile-menu>
 </hc-navbar>
-<hc-pop #search [autoCloseOnContentClick]="false" [showArrow]="false" horizontalAlign="end" verticalAlign="below"
-    class="hc-navbar-search-popover">
+<hc-pop
+    #search
+    [autoCloseOnContentClick]="false"
+    [showArrow]="false"
+    horizontalAlign="end"
+    verticalAlign="below"
+    class="hc-navbar-search-popover"
+>
     <div hcMenu class="hc-search-menu">
         <hc-form-field class="hc-navbar-search-wrapper">
             <hc-icon hcPrefix fontIcon="icon-search" class="searchIcon"></hc-icon>
-            <input #searchInput hcInput [formControl]="navSearchBar" autocomplete="off"
-                placeholder="Search the Cashmere docs" class="searchBar" id='hc-nav-search-input' />
+            <input
+                #searchInput
+                hcInput
+                [formControl]="navSearchBar"
+                autocomplete="off"
+                placeholder="Search the Cashmere docs"
+                class="searchBar"
+                id="hc-nav-search-input"
+            />
         </hc-form-field>
         <hc-list class="hc-navbar-search-results">
-            <hc-list-item *ngFor="let item of searchResults" class="hc-navbar-search-results-items"
-                [routerLink]="'/' + item.link" [queryParams]="{section: item.section, selected: item.displayName}" (click)="search.toggle()">
-                    <hc-icon fontSet="fa-solid" [fontIcon]="searchIcons[item.category].icon" hcListIcon class="results-icon"></hc-icon>
-                    <div hcListLine class="result-title hc-text-ellipsis">{{item.title}}</div>
-                    <div hcListLine class="result-sub-text">{{item.link}}</div>
+            @for (item of searchResults; track item) {
+            <hc-list-item
+                class="hc-navbar-search-results-items"
+                [routerLink]="'/' + item.link"
+                [queryParams]="{section: item.section, selected: item.displayName}"
+                (click)="search.toggle()"
+            >
+                <hc-icon fontSet="fa-solid" [fontIcon]="searchIcons[item.category].icon" hcListIcon class="results-icon"></hc-icon>
+                <div hcListLine class="result-title hc-text-ellipsis">{{ item.title }}</div>
+                <div hcListLine class="result-sub-text">{{ item.link }}</div>
             </hc-list-item>
+            }
         </hc-list>
-        <div *ngIf="showAll" routerLink="/results" [queryParams]="{search: searchValue}" (click)="search.toggle()" class="hc-navbar-search-show-all">
+        @if (showAll) {
+        <div routerLink="/results" [queryParams]="{search: searchValue}" (click)="search.toggle()" class="hc-navbar-search-show-all">
             Show all search results
         </div>
+        }
     </div>
 </hc-pop>
 <router-outlet></router-outlet>

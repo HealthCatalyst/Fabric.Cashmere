@@ -26,7 +26,9 @@ export class TestDrawerContainer {
 @Component({
     template: `
         <hc-drawer-container #d>
-            <hc-drawer *ngFor="let drawer of drawers"></hc-drawer>
+            @for (drawer of drawers; track drawer) {
+            <hc-drawer></hc-drawer>
+            }
         </hc-drawer-container>
     `,
     standalone: false
@@ -35,7 +37,7 @@ export class InvalidDrawerContainer {
     @ViewChild('d', {static: false})
     drawerContainer: DrawerContainer;
 
-    drawers = ["one"];
+    drawers = ['one'];
 }
 
 describe('DrawerContainer', () => {
@@ -56,15 +58,15 @@ describe('DrawerContainer', () => {
     });
 
     it('should open all included drawers when open is called', async () => {
-        expect( component.leftDrawer.opened ).toBe(false);
-        expect( component.rightDrawer.opened ).toBe(false);
+        expect(component.leftDrawer.opened).toBe(false);
+        expect(component.rightDrawer.opened).toBe(false);
 
         component.drawerContainer.open();
         fixture.detectChanges();
 
         await fixture.whenStable();
-        expect( component.leftDrawer.opened ).toBe(true);
-        expect( component.rightDrawer.opened ).toBe(true);
+        expect(component.leftDrawer.opened).toBe(true);
+        expect(component.rightDrawer.opened).toBe(true);
     });
 
     it('should close all included drawers when closed is called', async () => {
@@ -73,22 +75,24 @@ describe('DrawerContainer', () => {
         fixture.detectChanges();
 
         await fixture.whenStable();
-        expect( component.leftDrawer.opened ).toBe(true);
-        expect( component.rightDrawer.opened ).toBe(true);
+        expect(component.leftDrawer.opened).toBe(true);
+        expect(component.rightDrawer.opened).toBe(true);
 
         component.drawerContainer.close();
         fixture.detectChanges();
 
         await fixture.whenStable();
-        expect( component.leftDrawer.opened ).toBe(false);
-        expect( component.rightDrawer.opened ).toBe(false);
+        expect(component.leftDrawer.opened).toBe(false);
+        expect(component.rightDrawer.opened).toBe(false);
     });
 
     it('should throw an error if multiple drawers are assigned to the same side', () => {
         const invalidFixture = TestBed.createComponent(InvalidDrawerContainer);
         invalidFixture.detectChanges();
 
-        invalidFixture.componentInstance.drawers.push("two");
-        expect( () => invalidFixture.componentInstance.drawerContainer._validateDrawers() ).toThrowError(/A drawer was already declared for .*/);
+        invalidFixture.componentInstance.drawers.push('two');
+        expect(() => invalidFixture.componentInstance.drawerContainer._validateDrawers()).toThrowError(
+            /A drawer was already declared for .*/
+        );
     });
 });

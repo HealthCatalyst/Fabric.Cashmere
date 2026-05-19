@@ -9,7 +9,6 @@
 import {CDK_TABLE, CdkTable} from '@angular/cdk/table';
 import {ChangeDetectionStrategy, Component, ViewEncapsulation, HostBinding, Input} from '@angular/core';
 import {parseBooleanAttribute} from '../util';
-import {_DisposeViewRepeaterStrategy, _VIEW_REPEATER_STRATEGY} from '@angular/cdk/collections';
 
 @Component({
     selector: 'hc-table, table[hc-table]',
@@ -30,7 +29,6 @@ import {_DisposeViewRepeaterStrategy, _VIEW_REPEATER_STRATEGY} from '@angular/cd
     `,
     styleUrls: ['table.component.scss'],
     providers: [
-        { provide: _VIEW_REPEATER_STRATEGY, useClass: _DisposeViewRepeaterStrategy },
         { provide: CDK_TABLE, useExisting: HcTable }
     ],
     encapsulation: ViewEncapsulation.None,

@@ -1,21 +1,36 @@
-<ng-container *ngIf="_direction && !_hidden">
-    <a
-        tabIndex="-1"
-        *ngIf="routerLink; else tabWithoutRouting"
-        class="hc-tab-{{ _direction }} hc-text-ellipsis"
-        [class.hc-tab-tight]="_tight"
-        [style.max-width]="maxWidth"
-        [routerLink]="routerLink"
-        routerLinkActive="active"
-        (isActiveChange)="_isActiveChange($event)"
-        [queryParams]="queryParams"
-        [routerLinkActiveOptions]="exactRouteMatch ? {exact: true} : {}"
-        (click)="_tabClickHandler($event)"
-    >
-        <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
-        {{ tabTitle }}
-    </a>
-</ng-container>
+@if (_direction && !_hidden) { @if (routerLink) {
+<a
+    tabIndex="-1"
+    class="hc-tab-{{ _direction }} hc-text-ellipsis"
+    [class.hc-tab-tight]="_tight"
+    [style.max-width]="maxWidth"
+    [routerLink]="routerLink"
+    routerLinkActive="active"
+    (isActiveChange)="_isActiveChange($event)"
+    [queryParams]="queryParams"
+    [routerLinkActiveOptions]="exactRouteMatch ? {exact: true} : {}"
+    (click)="_tabClickHandler($event)"
+>
+    @if (_htmlTitle) {
+    <ng-container [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
+    }
+    {{ tabTitle }}
+</a>
+} @else {
+<a
+    tabIndex="-1"
+    class="hc-tab-{{ _direction }} hc-text-ellipsis"
+    [class.hc-tab-tight]="_tight"
+    [class.active]="_active"
+    [style.max-width]="maxWidth"
+    (click)="_tabClickHandler($event)"
+>
+    @if (_htmlTitle) {
+    <ng-container [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
+    }
+    {{ tabTitle }}
+</a>
+} }
 <ng-template #tabWithoutRouting>
     <a
         tabIndex="-1"
@@ -25,7 +40,9 @@
         [style.max-width]="maxWidth"
         (click)="_tabClickHandler($event)"
     >
-        <ng-container *ngIf="_htmlTitle" [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
+        @if (_htmlTitle) {
+        <ng-container [ngTemplateOutlet]="_htmlTitle.tabTitle"></ng-container>
+        }
         {{ tabTitle }}
     </a>
 </ng-template>

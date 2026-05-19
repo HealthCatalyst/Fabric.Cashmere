@@ -6,19 +6,23 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of items">
+        @for (item of items; track item) {
+        <tr>
             <td>{{ item.name }}</td>
             <td [hcPop]="contextmenu" trigger="rightclick" [context]="item">{{ item.subtext }}</td>
         </tr>
+        }
     </tbody>
 </table>
 
-<hc-pop #contextmenu
+<hc-pop
+    #contextmenu
     horizontalAlign="mouse"
     verticalAlign="mouse"
     (opened)="context = $event"
     [autoCloseOnContentClick]="true"
-    [showArrow]="false">
+    [showArrow]="false"
+>
     <div hcMenu>
         <button hcMenuItem>
             <hc-icon hcMenuIcon fontSet="hc-icons" fontIcon="icon-copy"></hc-icon>

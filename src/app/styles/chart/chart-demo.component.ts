@@ -123,7 +123,7 @@ export class ChartDemoComponent extends BaseDemoComponent {
 
     ngOnDestroy(): void {
         echarts.dispose(this.chartContainer.nativeElement);
-        this.resizeObserver && this.resizeObserver.disconnect();
+        this.resizeObserver?.disconnect();
     }
 
     buildChartOptions(): Record<string, unknown> {

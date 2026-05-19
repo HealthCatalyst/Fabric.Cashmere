@@ -56,8 +56,10 @@ export const untilDestroyed = (componentInstance, destroyMethodName = 'ngOnDestr
         componentInstance['__takeUntilDestroy'] = new Subject();
 
         componentInstance[destroyMethodName] = function () {
-            // eslint-disable-next-line prefer-rest-params
-            isFunction(originalDestroy) && originalDestroy.apply(this, arguments);
+            if (isFunction(originalDestroy)) {
+                // eslint-disable-next-line prefer-rest-params
+                originalDestroy.apply(this, arguments);
+            }
             componentInstance['__takeUntilDestroy'].next(true);
             componentInstance['__takeUntilDestroy'].complete();
         };

@@ -119,12 +119,14 @@ describe('PicklistComponent', () => {
 
             availablePane.select(availablePane.itemsList.items[1]);
             availablePane.select(availablePane.itemsList.items[2]);
+            fixture.componentInstance.picklist._detectChanges();
             tickAndDetectChanges(fixture);
             expect(arrowIcon.nativeElement.disabled).toBeFalsy();
             fixture.componentInstance.picklist.moveLeftToRight();
             tickAndDetectChanges(fixture);
 
             availablePane.select(availablePane.itemsList.items[1]);
+            fixture.componentInstance.picklist._detectChanges();
             tickAndDetectChanges(fixture);
 
             expect(arrowIcon.nativeElement.disabled).toBeTruthy();
