@@ -1,7 +1,9 @@
 <table class="hc-calendar-table">
     <thead class="hc-calendar-table-header">
         <tr>
-            <th *ngFor="let day of _weekdays" [attr.aria-label]="day.long">{{ day.narrow }}</th>
+            @for (day of _weekdays; track day) {
+            <th [attr.aria-label]="day.long">{{ day.narrow }}</th>
+            }
         </tr>
         <tr>
             <th class="hc-calendar-table-header-divider" colspan="7" aria-hidden="true"></th>

@@ -1,4 +1,5 @@
-<div *ngIf="calendar.mode!=='time'" class="hc-calendar-header">
+@if (calendar.mode!=='time') {
+<div class="hc-calendar-header">
     <div class="hc-calendar-controls">
         <button
             hc-button
@@ -12,7 +13,6 @@
         >
             Today
         </button>
-
         <span>
             <button
                 hc-button
@@ -24,9 +24,7 @@
                 [attr.aria-label]="prevButtonLabel"
                 [title]="prevButtonLabel"
             ></button>
-            <span class="hc-calendar-month-label">
-                {{ monthButtonText }}
-            </span>
+            <span class="hc-calendar-month-label">{{ monthButtonText }}</span>
             <button
                 hc-button
                 buttonStyle="link"
@@ -38,9 +36,7 @@
                 [title]="nextButtonLabel"
             ></button>
         </span>
-
         <ng-content></ng-content>
-
         <button
             hc-button
             buttonStyle="link"
@@ -55,3 +51,4 @@
         </button>
     </div>
 </div>
+}

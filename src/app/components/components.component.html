@@ -3,20 +3,21 @@
         <div class="subnav-container">
             <span class="subnav-label">
                 <ng-container>
-                    <hc-icon hcMenuIcon fontIcon="icon-code"></hc-icon>Components:
+                    <hc-icon hcMenuIcon fontIcon="icon-code"></hc-icon>
+                    Components:
                 </ng-container>
             </span>
             <span class="subnav-select">
                 <hc-select (change)="navUpdate($event.value)" [value]="activeItem?.id">
-                    <ng-container *ngFor="let category of categorizedDocItems">
-                        <ng-container *ngIf="category.items?.length">
-                            <optgroup [label]="category.displayName">
-                                <option *ngFor="let option of category.items" [value]="option.id">
-                                    {{ option.name }}
-                                </option>
-                            </optgroup>
-                        </ng-container>
-                    </ng-container>
+                    @for (category of categorizedDocItems; track category) { @if (category.items?.length) {
+                    <optgroup [label]="category.displayName">
+                        @for (option of category.items; track option) {
+                        <option [value]="option.id">
+                            {{ option.name }}
+                        </option>
+                        }
+                    </optgroup>
+                    } }
                 </hc-select>
             </span>
         </div>
@@ -26,29 +27,29 @@
         <div class="hc-components-nav-container">
             <h2>
                 <ng-container>
-                    <hc-icon hcMenuIcon fontIcon="icon-code"></hc-icon> Components
+                    <hc-icon hcMenuIcon fontIcon="icon-code"></hc-icon>
+                    Components
                 </ng-container>
             </h2>
             <hc-tile>
                 <div class="hc-components-nav-list">
-                    <ng-container *ngFor="let category of categorizedDocItems; let catNum = index">
-                        <ng-container *ngIf="category.items?.length">
-                            <hc-accordion triggerAlign="right" [open]="activeCategory == category.category">
-                                <hc-accordion-toolbar>{{ category.displayName }}</hc-accordion-toolbar>
-                                <ng-container *ngFor="let option of category.items">
-                                    <div
-                                        class="hc-components-nav-link"
-                                        [ngClass]="{'hc-components-nav-link-active': option.id == activeItem?.id}"
-                                        (click)="navUpdate(option.id)"
-                                    >
-                                        {{ option.name }}
-                                    </div>
-                                </ng-container>
-                                <div class="hc-components-nav-spacer"></div>
-                            </hc-accordion>
-                            <div *ngIf="catNum < categorizedDocItems.length - 2" class="hc-components-nav-divider"></div>
-                        </ng-container>
-                    </ng-container>
+                    @for (category of categorizedDocItems; track category; let catNum = $index) { @if (category.items?.length) {
+                    <hc-accordion triggerAlign="right" [open]="activeCategory == category.category">
+                        <hc-accordion-toolbar>{{ category.displayName }}</hc-accordion-toolbar>
+                        @for (option of category.items; track option) {
+                        <div
+                            class="hc-components-nav-link"
+                            [ngClass]="{'hc-components-nav-link-active': option.id == activeItem?.id}"
+                            (click)="navUpdate(option.id)"
+                        >
+                            {{ option.name }}
+                        </div>
+                        }
+                        <div class="hc-components-nav-spacer"></div>
+                    </hc-accordion>
+                    @if (catNum < categorizedDocItems.length - 2) {
+                    <div class="hc-components-nav-divider"></div>
+                    } } }
                 </div>
             </hc-tile>
         </div>

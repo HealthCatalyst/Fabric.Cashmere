@@ -1,14 +1,27 @@
 <div class="hc-pagination-container" [class.hc-pagination-container-tight]="tight">
-    <div *ngIf="!hidePageSize" class="hc-font-sm hc-page-detail-container">
+    @if (!hidePageSize) {
+    <div class="hc-font-sm hc-page-detail-container">
         <label class="hc-page-detail-label">Showing:</label>
-        <hc-select class="hc-page-detail-select" [formControl]="_pageSizeControl" (change)="_changePageSize($event.value)" (focus)="isFocused = true" (blur)="isFocused = false">
-            <option *ngFor="let pageSizeOption of _displayedPageSizeOptions" [value]="pageSizeOption">
+        <hc-select
+            class="hc-page-detail-select"
+            [formControl]="_pageSizeControl"
+            (change)="_changePageSize($event.value)"
+            (focus)="isFocused = true"
+            (blur)="isFocused = false"
+        >
+            @for (pageSizeOption of _displayedPageSizeOptions; track pageSizeOption) {
+            <option [value]="pageSizeOption">
                 {{ isFocused ? pageSizeOption : pageSize === pageSizeOption && pageSizeOption > length ? 'all' : pageSizeOption }}
             </option>
+            }
         </hc-select>
-        <label class="hc-page-detail-entries">of <strong>{{ length }}</strong> entries</label
-        >
+        <label class="hc-page-detail-entries">
+            of
+            <strong>{{ length }}</strong>
+            entries
+        </label>
     </div>
+    }
 
     <div class="hc-page-btns-container" [class.hc-page-btns-container-tight]="tight">
         <button
@@ -22,35 +35,39 @@
             <span>PREV</span>
         </button>
         <!-- large width page navigation buttons -->
-        <ng-container *ngIf="displayWidth === 'lg'">
-            <button
-                hc-button
-                buttonStyle="secondary"
-                class="hc-page-button hc-page-inner-button"
-                *ngFor="let page of _visiblePages"
-                [disabled]="!page"
-                [class.hc-page-button-current]="page === pageNumber"
-                (click)="_goToPage(page)"
-            >
-                <span *ngIf="!!page">{{ page }}</span>
-                <span *ngIf="!page" class="hc-page-button-ellipsis"></span>
-            </button>
-        </ng-container>
+        @if (displayWidth === 'lg') { @for (page of _visiblePages; track page) {
+        <button
+            hc-button
+            buttonStyle="secondary"
+            class="hc-page-button hc-page-inner-button"
+            [disabled]="!page"
+            [class.hc-page-button-current]="page === pageNumber"
+            (click)="_goToPage(page!)"
+        >
+            @if (!!page) {
+            <span>{{ page }}</span>
+            } @if (!page) {
+            <span class="hc-page-button-ellipsis"></span>
+            }
+        </button>
+        } }
         <!-- medium width page navigation buttons -->
-        <ng-container *ngIf="displayWidth === 'md'">
-            <button
-                hc-button
-                buttonStyle="secondary"
-                class="hc-page-button hc-page-inner-button"
-                *ngFor="let page of _collapsedVisiblePages"
-                [disabled]="!page"
-                [class.hc-page-button-current]="page === pageNumber"
-                (click)="_goToPage(page)"
-            >
-                <span *ngIf="!!page">{{ page }}</span>
-                <span *ngIf="!page" class="hc-page-button-ellipsis"></span>
-            </button>
-        </ng-container>
+        @if (displayWidth === 'md') { @for (page of _collapsedVisiblePages; track page) {
+        <button
+            hc-button
+            buttonStyle="secondary"
+            class="hc-page-button hc-page-inner-button"
+            [disabled]="!page"
+            [class.hc-page-button-current]="page === pageNumber"
+            (click)="_goToPage(page!)"
+        >
+            @if (!!page) {
+            <span>{{ page }}</span>
+            } @if (!page) {
+            <span class="hc-page-button-ellipsis"></span>
+            }
+        </button>
+        } }
         <button
             hc-button
             buttonStyle="secondary"

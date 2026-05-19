@@ -2,47 +2,45 @@
     <div class="hc-drag-list-targets">
         <div class="hc-drag-list-targets-info">
             <span>{{ targetHelperText }}</span>
-            <hc-icon
-                *ngIf="!!targetTooltip"
-                fontSet="hc-icons"
-                fontIcon="hci-info"
-                [hcPop]="productStandardLevelNamesPop"
-                trigger="hover"
-            ></hc-icon>
+            @if (!!targetTooltip) {
+            <hc-icon fontSet="hc-icons" fontIcon="hci-info" [hcPop]="productStandardLevelNamesPop" trigger="hover"></hc-icon>
+            }
             <hc-pop #productStandardLevelNamesPop>
                 <div class="preserve-whitespace" style="white-space: pre">{{ targetTooltip }}</div>
             </hc-pop>
         </div>
         <div class="hc-drag-list-targets-container">
-            <div *ngFor="let assignment of _modifiedAssignments" class="hc-drag-list-assignments">
+            @for (assignment of _modifiedAssignments; track assignment) {
+            <div class="hc-drag-list-assignments">
                 <div class="hc-drag-list-target-name" [title]="assignment.target[targetHoverTextField] ?? ''">
+                    @if (!assignment.locked) {
                     <hc-icon
                         fontSet="fa-solid"
                         fontIcon="fa-check"
-                        *ngIf="!assignment.locked"
                         [style.visibility]="!!assignment.assignment ? 'visible' : 'hidden'"
                     ></hc-icon>
-                    <hc-icon fontSet="fa-solid" fontIcon="fa-lock" [hcPop]="lockedText" trigger="hover" *ngIf="!!assignment.locked"></hc-icon>
+                    } @if (!!assignment.locked) {
+                    <hc-icon fontSet="fa-solid" fontIcon="fa-lock" [hcPop]="lockedText" trigger="hover"></hc-icon>
+                    }
                     <hc-pop #lockedText>{{ optionLockedText }}</hc-pop>
                     {{ assignment.target[targetDisplayNameField] }}
                 </div>
-
+                @if (!assignment.assignment && !assignment.locked) {
                 <div
                     class="hc-drag-list-assignment hc-drag-list-placeholder"
                     (dragenter)="_dragenter($event)"
                     (dragleave)="_dragleave($event)"
-                    *ngIf="!assignment.assignment && !assignment.locked"
                     [attr.data-target-id]="assignment.target[targetIdField]"
                     (drop)="_makeAssignment($event)"
                     (dragover)="_dragover($event)"
                 >
                     {{ targetPlaceholder }}
                 </div>
+                } @if (!!assignment.assignment && !assignment.locked) {
                 <div
                     class="hc-drag-list-assignment"
                     (dragenter)="_dragenter($event)"
                     (dragleave)="_dragleave($event)"
-                    *ngIf="!!assignment.assignment && !assignment.locked"
                     [attr.data-target-id]="assignment.target[targetIdField]"
                     [attr.data-option-id]="assignment.assignment[optionIdField]"
                     (drop)="_makeAssignment($event)"
@@ -72,22 +70,27 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="hc-drag-list-assignment" *ngIf="!!assignment.assignment && !!assignment.locked">
-                    <div class="hc-drag-list-option hc-drag-list-option-locked" [title]="_tooltipsByOptionId[assignment.assignment[optionIdField]]">
+                } @if (!!assignment.assignment && !!assignment.locked) {
+                <div class="hc-drag-list-assignment">
+                    <div
+                        class="hc-drag-list-option hc-drag-list-option-locked"
+                        [title]="_tooltipsByOptionId[assignment.assignment[optionIdField]]"
+                    >
                         <div class="hc-drag-list-option-name">
                             {{ assignment.assignment[optionDisplayNameField] }}
                         </div>
                     </div>
                 </div>
+                }
             </div>
+            }
         </div>
     </div>
     <div class="hc-drag-list-options">
         <div class="hc-drag-list-options-info">{{ optionsHelperText }}</div>
         <div class="hc-drag-list-options-container" (drop)="_returnToOptionsList($event)" (dragover)="_dragover($event)">
+            @for (option of _unassignedOptions; track option) {
             <div
-                *ngFor="let option of _unassignedOptions"
                 class="hc-drag-list-option"
                 [attr.data-option-id]="option[optionIdField]"
                 [title]="_tooltipsByOptionId[option[optionIdField]]"
@@ -99,6 +102,7 @@
                 </div>
                 <hc-icon fontSet="hc-icons" fontIcon="hci-grip"></hc-icon>
             </div>
+            }
         </div>
     </div>
 </div>

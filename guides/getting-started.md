@@ -1,6 +1,6 @@
 # Getting Started
 
-###### Last updated Mar 20, 2025
+###### Last updated May 18, 2026
 
 :::
 ## Step 1: Install npm dependencies.

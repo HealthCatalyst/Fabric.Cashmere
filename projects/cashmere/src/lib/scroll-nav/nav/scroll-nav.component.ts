@@ -233,8 +233,11 @@ export class HcScrollNavComponent implements AfterViewInit, OnDestroy {
 
     private handleActiveParentSections(element: HTMLElement, isActive: boolean): void {
         if (element.parentElement) {
-            element.className.includes(this.PARENT_SECTION_CLASS) ?
-                this.setActiveParentSection(element, isActive) : this.setActiveParentSection(element.parentElement, isActive);
+            if (element.className.includes(this.PARENT_SECTION_CLASS)) {
+                this.setActiveParentSection(element, isActive);
+            } else {
+                this.setActiveParentSection(element.parentElement, isActive);
+            }
         } else if (element.className.includes(this.PARENT_SECTION_CLASS)) {
             this.setActiveParentSection(element, isActive);
         }

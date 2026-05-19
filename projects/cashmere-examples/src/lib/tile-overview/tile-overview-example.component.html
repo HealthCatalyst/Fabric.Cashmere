@@ -1,11 +1,12 @@
 <hc-tile>
     <div hcTileHeader [type]="headerControl.value">
-        <ng-container *ngIf="headerControl.value !== 'center'">Example Tile Header</ng-container>
-        <div *ngIf="headerControl.value === 'center'" class="tile-example-center">
+        @if (headerControl.value !== 'center') { Example Tile Header } @if (headerControl.value === 'center') {
+        <div class="tile-example-center">
             <hc-icon fontSet="hc-icons" fontIcon="icon-medicine" hcIconLg></hc-icon>
             <div>Example Tile Header</div>
             <p>Example tile subheader description text</p>
         </div>
+        }
     </div>
 
     <div class="tile-example-select">
@@ -19,10 +20,20 @@
         </hc-form-field>
     </div>
 
-    <p>This paragraph is contained within a <code>hc-tile</code> component. The header uses the <code>hcTileHeader</code> directive.</p>
+    <p>
+        This paragraph is contained within a
+        <code>hc-tile</code>
+        component. The header uses the
+        <code>hcTileHeader</code>
+        directive.
+    </p>
 </hc-tile>
 
 <hc-tile tight="true">
     <h5 hcTileHeader>Tight Tile</h5>
-    <p>This is a tile with <code>tight</code> styling. It has less padding.</p>
+    <p>
+        This is a tile with
+        <code>tight</code>
+        styling. It has less padding.
+    </p>
 </hc-tile>

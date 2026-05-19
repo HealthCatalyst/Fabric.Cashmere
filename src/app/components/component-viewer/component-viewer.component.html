@@ -1,12 +1,16 @@
 <div class="demo-content">
     <h1>{{ docItem?.name }}</h1>
     <div class="npm-package-code">
-        <code *ngIf="docItem?.npmPackage">{{ docItem!.npmPackage }}</code>
+        @if (docItem?.npmPackage) {
+        <code>{{ docItem!.npmPackage }}</code>
+        }
     </div>
-    <hc-tab-set direction="horizontal" class="overflow-visible" *ngIf="docItem" #tabSet>
+    @if (docItem) {
+    <hc-tab-set direction="horizontal" class="overflow-visible" #tabSet>
         <hc-tab tabTitle="Examples" routerLink="examples" [hidden]="examplesHidden"></hc-tab>
         <hc-tab tabTitle="API" routerLink="api" [hidden]="apiHidden"></hc-tab>
         <hc-tab tabTitle="Usage" routerLink="usage" [hidden]="usageHidden"></hc-tab>
     </hc-tab-set>
+    }
     <hc-feedback-form></hc-feedback-form>
 </div>

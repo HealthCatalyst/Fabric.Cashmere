@@ -51,8 +51,11 @@
         <div class="drawer-content">
             <button hc-button title="Filters" buttonStyle="primary-alt" (click)="leftDrawer.toggle()">
                 <hc-icon fontSet="hc-icons" fontIcon="icon-filters" class="hc-icon-left" hcIconSm></hc-icon>
-                <span *ngIf="leftDrawer.opened">Hide Filters</span>
-                <span *ngIf="!leftDrawer.opened">Show Filters</span>
+                @if (leftDrawer.opened) {
+                <span>Hide Filters</span>
+                } @if (!leftDrawer.opened) {
+                <span>Show Filters</span>
+                }
             </button>
             <hc-checkbox [checked]="leftDrawer.ignoreEscapeKey" (change)="leftDrawer.ignoreEscapeKey = !leftDrawer.ignoreEscapeKey">
                 Ignore escape key

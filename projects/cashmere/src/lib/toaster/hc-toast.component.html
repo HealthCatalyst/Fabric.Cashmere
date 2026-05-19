@@ -1,33 +1,46 @@
-<div class="hc-toast hc-toast-{{_styleType}}"
+<div
+    class="hc-toast hc-toast-{{ _styleType }}"
     [@fade]="_animationState"
     (@fade.start)="_onAnimationStart($event)"
     (@fade.done)="_onAnimationDone($event)"
     (click)="_dismissClick($event)"
     [style.width]="_widthStr"
-    [ngClass]="{'hc-toast-dismiss': _canClick}">
-    <div *ngIf="_styleType === 'custom'">
+    [ngClass]="{'hc-toast-dismiss': _canClick}"
+>
+    @if (_styleType === 'custom') {
+    <div>
         <ng-template (attached)="_customComponentAttached($event)" [cdkPortalOutlet]="_toastPortal"></ng-template>
     </div>
-    <div *ngIf="_styleType !== 'custom'" class="hc-toast-content" [ngClass]="{'hc-toast-progress-offset': _hasProgressBar}">
+    } @if (_styleType !== 'custom') {
+    <div class="hc-toast-content" [ngClass]="{'hc-toast-progress-offset': _hasProgressBar}">
         <div class="hc-toast-icon-container">
-            <div *ngIf="_customImage && _imgIsURL(_customImage)">
+            @if (_customImage && _imgIsURL(_customImage)) {
+            <div>
                 <div class="hc-toast-custom-image" [style.background-image]="'url(' + _customImage + ')'"></div>
             </div>
-            <div *ngIf="_customImage && !_imgIsURL(_customImage)">
-                <hc-icon class="hc-toast-custom-icon" [fontSet]="_customFontSet(_customImage)" [fontIcon]="_customFontIcon(_customImage)"></hc-icon>
+            } @if (_customImage && !_imgIsURL(_customImage)) {
+            <div>
+                <hc-icon
+                    class="hc-toast-custom-icon"
+                    [fontSet]="_customFontSet(_customImage)"
+                    [fontIcon]="_customFontIcon(_customImage)"
+                ></hc-icon>
             </div>
-            <div *ngIf="!_customImage" class="hc-toast-icon"></div>
+            } @if (!_customImage) {
+            <div class="hc-toast-icon"></div>
+            }
         </div>
         <div class="hc-toast-content-container">
-            <div class="hc-toast-header">{{_headerText}}</div>
-            <div class="hc-toast-body">{{_bodyText}}</div>
+            <div class="hc-toast-header">{{ _headerText }}</div>
+            <div class="hc-toast-body">{{ _bodyText }}</div>
         </div>
-        <div *ngIf="_canDismiss" class="hc-toast-close">
+        @if (_canDismiss) {
+        <div class="hc-toast-close">
             <div class="hc-toast-close-icon"></div>
         </div>
+        }
     </div>
-    <div *ngIf="_hasProgressBar" class="hc-toast-progress"
-        [ngClass]="{'hc-toast-progress-indeterminate': !_progressVal}"
-        [ngStyle]="{'width': _progressWidth}">
-    </div>
+    } @if (_hasProgressBar) {
+    <div class="hc-toast-progress" [ngClass]="{'hc-toast-progress-indeterminate': !_progressVal}" [ngStyle]="{width: _progressWidth}"></div>
+    }
 </div>

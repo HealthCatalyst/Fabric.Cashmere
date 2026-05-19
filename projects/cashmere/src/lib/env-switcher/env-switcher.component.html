@@ -1,62 +1,82 @@
 <!-- Navbar element -->
-<div *ngIf="!loading" [tabIndex]="disabled ? -1 : 0" class="hc-env-badge-wrapper"
-    [class.hc-env-badge-disabled]="disabled" (click)="_onBadgeClick()" (keydown.enter)="_onBadgeClick()"
-    title="{{_badgeTooltip}}" [hcPop]="envSwitcherPop" trigger="none">
-    <span class="hc-env-badge hc-env-badge-navbar {{_badgeColor}}">{{_badgeText}}</span>
+@if (!loading) {
+<div
+    [tabIndex]="disabled ? -1 : 0"
+    class="hc-env-badge-wrapper"
+    [class.hc-env-badge-disabled]="disabled"
+    (click)="_onBadgeClick()"
+    (keydown.enter)="_onBadgeClick()"
+    title="{{ _badgeTooltip }}"
+    [hcPop]="envSwitcherPop"
+    trigger="none"
+>
+    <span class="hc-env-badge hc-env-badge-navbar {{ _badgeColor }}">{{ _badgeText }}</span>
 </div>
+}
 
 <!-- Navbar element - loading -->
-<div *ngIf="loading" class="hc-env-switcher-loading">
+@if (loading) {
+<div class="hc-env-switcher-loading">
     <hc-progress-dots color="light" [isMini]="true" [isCentered]="true"></hc-progress-dots>
 </div>
+}
 
 <!-- Dropdown -->
-<hc-pop #envSwitcherPop [autoCloseOnContentClick]="false" [showArrow]="false" yAlign="below" xAlign="end"
-    [autoFocus]="true">
+<hc-pop #envSwitcherPop [autoCloseOnContentClick]="false" [showArrow]="false" yAlign="below" xAlign="end" [autoFocus]="true">
     <div hcMenu class="hc-env-switcher-dropdown" [class.hc-env-switcher-single-select]="!canSelectMultiple">
-        <ng-container *ngIf="!loading">
-            <ng-container *ngIf="!failedToLoad">
-                <ng-container *ngIf="_environmentOptionVMs?.length > 0">
-                    <h2 class="hc-env-header">{{listHeader}}</h2>
-                    <div hcMenuItem *ngFor="let env of _environmentOptionVMs" class="hc-env-row"
-                        [class.hc-env-row-checked]="_isEnvSelected(env.id)" tabIndex="0" (click)="_envClicked(env)"
-                        (keydown.enter)="_envClicked(env)">
-                        <hc-checkbox tight="true" [isStub]="true" [checked]="_isEnvSelected(env.id)" tabIndex="-1">
-                            <span
-                                class="hc-env-badge hc-env-badge-light-bg {{env.badgeColorClass}}">{{env.shortName}}</span>
-                            {{env.name}}
-                        </hc-checkbox>
-                        <span class="hc-env-row-icons">
-                            <span *ngIf="env.description" class="hc-env-icon-info hc-env-row-icon"
-                                hcTooltip="{{env.description}}" (click)="$event.stopPropagation();"></span>
-                            <span *ngIf="canOpenInNewTab" class="hc-env-icon-new-tab-link hc-env-row-icon"
-                                hcTooltip="Open in new tab."
-                                (click)="openInNewTab.emit(env); $event.stopPropagation();"></span>
-                        </span>
-                    </div>
-                    <button *ngIf="canSelectMultiple" hcMenuItem hc-button (click)="_applyEnvs()" size="sm"
-                        title="Close menu and apply selected">Apply</button>
-                </ng-container>
-
-                <!-- No Envs Available -->
-                <div *ngIf="_environmentOptionVMs?.length === 0" class="hc-env-switcher-empty">
-                    <span class="hc-env-switcher-lg-icon hc-env-switcher-empty-icon"></span>
-                    <em>No options available.</em>
-                </div>
-            </ng-container>
-
-            <!-- Load Failed -->
-            <div *ngIf="failedToLoad" class="hc-env-switcher-empty">
-                <span class="hc-env-switcher-lg-icon hc-env-switcher-warning-icon"></span>
-                <em>Failed to load.</em>
-                <button class="hc-env-switcher-retry" hc-button buttonStyle="primary-alt" size="sm"
-                    (click)="reloadEnvironments.emit()">Reload</button>
-            </div>
-        </ng-container>
+        @if (!loading) { @if (!failedToLoad) { @if (_environmentOptionVMs?.length > 0) {
+        <h2 class="hc-env-header">{{ listHeader }}</h2>
+        @for (env of _environmentOptionVMs; track env) {
+        <div
+            hcMenuItem
+            class="hc-env-row"
+            [class.hc-env-row-checked]="_isEnvSelected(env.id)"
+            tabIndex="0"
+            (click)="_envClicked(env)"
+            (keydown.enter)="_envClicked(env)"
+        >
+            <hc-checkbox tight="true" [isStub]="true" [checked]="_isEnvSelected(env.id)" tabIndex="-1">
+                <span class="hc-env-badge hc-env-badge-light-bg {{ env.badgeColorClass }}">{{ env.shortName }}</span>
+                {{ env.name }}
+            </hc-checkbox>
+            <span class="hc-env-row-icons">
+                @if (env.description) {
+                <span class="hc-env-icon-info hc-env-row-icon" hcTooltip="{{ env.description }}" (click)="$event.stopPropagation()"></span>
+                } @if (canOpenInNewTab) {
+                <span
+                    class="hc-env-icon-new-tab-link hc-env-row-icon"
+                    hcTooltip="Open in new tab."
+                    (click)="openInNewTab.emit(env); $event.stopPropagation()"
+                ></span>
+                }
+            </span>
+        </div>
+        } @if (canSelectMultiple) {
+        <button hcMenuItem hc-button (click)="_applyEnvs()" size="sm" title="Close menu and apply selected">Apply</button>
+        } }
+        <!-- No Envs Available -->
+        @if (_environmentOptionVMs?.length === 0) {
+        <div class="hc-env-switcher-empty">
+            <span class="hc-env-switcher-lg-icon hc-env-switcher-empty-icon"></span>
+            <em>No options available.</em>
+        </div>
+        } }
+        <!-- Load Failed -->
+        @if (failedToLoad) {
+        <div class="hc-env-switcher-empty">
+            <span class="hc-env-switcher-lg-icon hc-env-switcher-warning-icon"></span>
+            <em>Failed to load.</em>
+            <button class="hc-env-switcher-retry" hc-button buttonStyle="primary-alt" size="sm" (click)="reloadEnvironments.emit()">
+                Reload
+            </button>
+        </div>
+        } }
 
         <!-- Loading -->
-        <div *ngIf="loading" class="hc-env-switcher-empty hc-env-switcher-spinner-container">
+        @if (loading) {
+        <div class="hc-env-switcher-empty hc-env-switcher-spinner-container">
             <hc-progress-spinner diameter="60"></hc-progress-spinner>
         </div>
+        }
     </div>
 </hc-pop>

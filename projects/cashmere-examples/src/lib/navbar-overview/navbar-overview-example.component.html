@@ -38,7 +38,8 @@
     <hc-navbar-link uri="undefined" linkText="Applications"></hc-navbar-link>
     <hc-icon class="hc-navbar-icon" fontSet="hc-icons" fontIcon="icon-help" [hcPop]="options" tabindex="0"></hc-icon>
     <span class="hc-navbar-vertical-separator"></span>
-    <div class="hc-navbar-username" *ngIf="user" [hcPop]="user" tabindex="0">
+    @if (user) {
+    <div class="hc-navbar-username" [hcPop]="user" tabindex="0">
         <span>
             <span>{{ username }}</span>
             <br />
@@ -46,6 +47,7 @@
         </span>
         <hc-icon fontIcon="icon-chev-down"></hc-icon>
     </div>
+    }
 </hc-navbar>
 
 <hc-pop #options [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="end">

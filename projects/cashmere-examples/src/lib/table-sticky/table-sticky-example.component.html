@@ -8,27 +8,28 @@
     </span>
 </div>
 <div [class.gray-example-bg]="hasGrayBg" class="example-wrapper">
-
     <!-- Scrollable table container (to define height) -->
     <div hcTableContainer tableHeight="200" [hasGrayBg]="hasGrayBg">
-    <table hc-table [dataSource]="dataSource" [borders]="hasBorders">
-        <!-- Sticky column [sticky]="true"-->
-        <ng-container hcColumnDef="rank" [sticky]="stickyCol">
-        <th hc-index-cell *hcHeaderCellDef>Rank</th>
-        <td hc-index-cell *hcCellDef="let element">{{ element.rank }}</td>
-        </ng-container>
+        <table hc-table [dataSource]="dataSource" [borders]="hasBorders">
+            <!-- Sticky column [sticky]="true"-->
+            <ng-container hcColumnDef="rank" [sticky]="stickyCol">
+                <th hc-index-cell *hcHeaderCellDef>Rank</th>
+                <td hc-index-cell *hcCellDef="let element">{{ element.rank }}</td>
+            </ng-container>
 
-        <!-- Other columns -->
-        <ng-container *ngFor="let col of cols" [hcColumnDef]="col">
-        <th hc-header-cell *hcHeaderCellDef>{{ col }}</th>
-        <td hc-cell *hcCellDef="let element">{{ element[col] }}</td>
-        </ng-container>
+            <!-- Other columns -->
+            @for (col of cols; track col) {
+            <ng-container [hcColumnDef]="col">
+                <th hc-header-cell *hcHeaderCellDef>{{ col }}</th>
+                <td hc-cell *hcCellDef="let element">{{ element[col] }}</td>
+            </ng-container>
+            }
 
-        <!-- Sticky headers "... sticky: true"-->
-        <tr hc-header-row *hcHeaderRowDef="allCols; sticky: stickyHead"></tr>
+            <!-- Sticky headers "... sticky: true"-->
+            <tr hc-header-row *hcHeaderRowDef="allCols; sticky: stickyHead"></tr>
 
-        <!-- Rows -->
-        <tr hc-row *hcRowDef="let row; columns: allCols"></tr>
-    </table>
+            <!-- Rows -->
+            <tr hc-row *hcRowDef="let row; columns: allCols"></tr>
+        </table>
     </div>
 </div>

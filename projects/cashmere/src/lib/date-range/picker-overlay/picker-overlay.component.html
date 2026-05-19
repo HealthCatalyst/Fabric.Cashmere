@@ -1,4 +1,5 @@
-<div class="hc-date-range-calendar-container" *ngIf="options$ | async as options">
+@if (options$ | async; as options) {
+<div class="hc-date-range-calendar-container">
     <div class="hc-date-range-calendar-item hc-date-range-calendar-wrapper">
         <hc-calendar-wrapper
             [prefixLabel]="options.startDatePrefix"
@@ -32,9 +33,11 @@
     <div class="hc-date-range-calendar-item hc-date-range">
         <div class="hc-date-range-menu">
             <hc-radio-group class="presets" [(ngModel)]="_selectedPreset">
-                <hc-radio-button *ngFor="let p of options.presets; let i = index" [value]="i" (change)="_updateRangeByPreset(i)">
+                @for (p of options.presets; track p; let i = $index) {
+                <hc-radio-button [value]="i" (change)="_updateRangeByPreset(i)">
                     {{ p.presetLabel }}
                 </hc-radio-button>
+                }
             </hc-radio-group>
             <div class="hc-date-range-controls">
                 <button class="hc-date-range-control" hc-button buttonStyle="link" type="button" (click)="_discardNewDates()">
@@ -51,11 +54,13 @@
                     {{ options.applyLabel }}
                 </button>
             </div>
-            <hc-chip *ngIf="_rangeIsInvalid" color="red">
-                <span class="hc-date-range-warning-icon"></span>{{ _invalidRangeErrorMessage }}
+            @if (_rangeIsInvalid) {
+            <hc-chip color="red">
+                <span class="hc-date-range-warning-icon"></span>
+                {{ _invalidRangeErrorMessage }}
             </hc-chip>
+            }
         </div>
     </div>
 </div>
-
-
+}

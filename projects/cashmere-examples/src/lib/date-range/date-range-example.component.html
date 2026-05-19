@@ -12,18 +12,15 @@
     >
         <span class="label">Date range:</span>
         <span class="value">
-            <span *ngIf="range.fromDate && range.toDate">
-                {{ range.fromDate | date: 'MM/dd/yyyy' }} - {{ range.toDate | date: 'MM/dd/yyyy' }}
-            </span>
-            <span *ngIf="range.fromDate && !range.toDate">
-                {{ range.fromDate | date: 'MM/dd/yyyy' }} or later
-            </span>
-            <span *ngIf="!range.fromDate && range.toDate">
-                {{ range.toDate | date: 'MM/dd/yyyy' }} or earlier
-            </span>
-            <span *ngIf="!range.fromDate && !range.toDate">
-                No dates selected
-            </span>
+            @if (range.fromDate && range.toDate) {
+            <span>{{ range.fromDate | date: 'MM/dd/yyyy' }} - {{ range.toDate | date: 'MM/dd/yyyy' }}</span>
+            } @if (range.fromDate && !range.toDate) {
+            <span>{{ range.fromDate | date: 'MM/dd/yyyy' }} or later</span>
+            } @if (!range.fromDate && range.toDate) {
+            <span>{{ range.toDate | date: 'MM/dd/yyyy' }} or earlier</span>
+            } @if (!range.fromDate && !range.toDate) {
+            <span>No dates selected</span>
+            }
         </span>
         <hc-icon fontIcon="icon-chev-down" class="hc-icon-right" hcIconSm></hc-icon>
     </button>
@@ -33,7 +30,8 @@
         <hc-checkbox [formControl]="optionsControlStartDateRequired">Start date required</hc-checkbox>
         <hc-checkbox [formControl]="optionsControlEndDateRequired">End date required</hc-checkbox>
         <div>
-            Selected preset: <strong>{{ presetSelection }}</strong>
+            Selected preset:
+            <strong>{{ presetSelection }}</strong>
         </div>
     </div>
 </div>

@@ -1,10 +1,7 @@
-<div
-    class="hc-instance-switcher"
-    [@openState]="_openState">
+<div class="hc-instance-switcher" [@openState]="_openState">
     <div #instancesContainer class="hc-instance-container">
-        <hc-measurable
-            *ngFor="let instance of instances; let i = index; trackBy: _instanceTrackBy"
-            [itemKey]="instance.instanceKey">
+        @for (instance of instances; track _instanceTrackBy(i, instance); let i = $index) {
+        <hc-measurable [itemKey]="instance.instanceKey">
             <div
                 #instance="hcPopAnchor"
                 hcMeasure
@@ -12,94 +9,93 @@
                 [hcPop]="instanceContext"
                 [trigger]="_contextTrigger()"
                 [style.max-width]="chipMaxWidth"
-                [context]="{ key: instance.instanceKey, value: instance.displayText }"
+                [context]="{key: instance.instanceKey, value: instance.displayText}"
                 [class.hc-instance-selected]="_isSelected(instance.instanceKey, false, i)"
                 (click)="_instanceClick(instance.instanceKey)"
                 (dblclick)="_instanceEdit(instance.instanceKey, instance.displayText)"
-                (closeClick)="_instanceClose(instance.instanceKey, $event)">
+                (closeClick)="_instanceClose(instance.instanceKey, $event)"
+            >
                 <span
                     #instanceTooltip="hcPopAnchor"
                     class="hc-text-ellipsis"
                     [hcTooltip]="instance.tooltipText"
-                    [trigger]="(instance.instanceKey === _editKey || !instance.tooltipText) ? 'none' : 'hover'">
+                    [trigger]="instance.instanceKey === _editKey || !instance.tooltipText ? 'none' : 'hover'"
+                >
+                    @if (_isEditable(instance.instanceKey)) {
                     <input
                         #instanceEditInput
                         hcInput
                         type="text"
                         [style.width.ch]="_renameInstanceSize$ | async"
-                        *ngIf="_isEditable(instance.instanceKey); else notEditable"
                         (blur)="_instanceBlur(instance.instanceKey)"
                         (keyup.enter)="_instanceBlur(instance.instanceKey)"
                         (keyup.esc)="_cancelEdit()"
                         [formControl]="_renameInstanceControl"
-                         />
-                    <ng-template #notEditable>{{instance.displayText}}</ng-template>
+                    />
+                    } @else {
+                    {{ instance.displayText }}
+                    }
                 </span>
+                @if (instances.length > 1) {
                 <hc-icon
                     hcIconSm
                     fontSet="fa-solid fa"
                     fontIcon="fa-xmark"
-                    *ngIf="instances.length > 1"
-                    (click)="_instanceClose(instance.instanceKey, $event)">
-                </hc-icon>
+                    (click)="_instanceClose(instance.instanceKey, $event)"
+                ></hc-icon>
+                }
             </div>
         </hc-measurable>
-        <button hc-button
-            #moreInstances="hcPopAnchor"
-            *ngIf="_moreInstances && _moreInstances.length"
-            class="hc-instance-switcher-more"
-            buttonStyle="neutral"
-            [hcPop]="popInstances">
+        } @if (_moreInstances && _moreInstances.length) {
+        <button hc-button #moreInstances="hcPopAnchor" class="hc-instance-switcher-more" buttonStyle="neutral" [hcPop]="popInstances">
             More
             <hc-icon
                 [@moreOpenState]="_moreOpenState"
                 hcIconSm
                 class="hc-instance-switcher-more-icon icon-right"
                 fontSet="fa-solid fa"
-                fontIcon="fa-chevron-down">
-            </hc-icon>
+                fontIcon="fa-chevron-down"
+            ></hc-icon>
         </button>
+        }
         <button
             hc-button
             [hcTooltip]="_tooltipText.addText"
             [trigger]="_tooltipText.addTrigger"
             class="hc-instance-switcher-add"
             buttonStyle="neutral"
-            (click)="_instanceAdd()">
-            <hc-icon
-                hcIconSm
-                fontSet="fa-solid fa"
-                fontIcon="fa-plus">
-            </hc-icon>
+            (click)="_instanceAdd()"
+        >
+            <hc-icon hcIconSm fontSet="fa-solid fa" fontIcon="fa-plus"></hc-icon>
         </button>
     </div>
+    @if (_closable) {
     <button
-        *ngIf="_closable"
         [hcTooltip]="_tooltipText.closeText"
         [trigger]="_tooltipText.closeTrigger"
         hc-icon-button
         class="hc-instance-switcher-hide"
-        (click)="_closeClick()">
+        (click)="_closeClick()"
+    >
         <hc-icon fontSet="fa-solid fa" fontIcon="fa-times"></hc-icon>
     </button>
+    }
 </div>
 
 <hc-pop #popInstances [autoCloseOnContentClick]="true" [showArrow]="false" horizontalAlign="start">
     <div hcMenu>
-        <button
-            *ngFor="let moreInstance of _moreInstances; index as i; trackBy: _instanceTrackBy"
-            class="hc-instance-switcher-more-menu-item"
-            (click)="_instanceClick(moreInstance.instanceKey)"
-            hcMenuItem>
-            <span hcMenuText>{{moreInstance.displayText}}</span>
+        @for (moreInstance of _moreInstances; track _instanceTrackBy(i, moreInstance); let i = $index) {
+        <button class="hc-instance-switcher-more-menu-item" (click)="_instanceClick(moreInstance.instanceKey)" hcMenuItem>
+            <span hcMenuText>{{ moreInstance.displayText }}</span>
             <hc-icon
                 hcMenuIcon
                 class="hc-instance-switcher-more-close"
                 (click)="_instanceClose(moreInstance.instanceKey, $event)"
                 fontSet="fa-solid fa"
-                fontIcon="fa-times">
-            </hc-icon>
+                fontIcon="fa-times"
+            ></hc-icon>
         </button>
+        }
     </div>
 </hc-pop>
 
@@ -109,29 +105,19 @@
     verticalAlign="mouse"
     (opened)="_instanceContextOpened($event.key, $event.value)"
     [autoCloseOnContentClick]="true"
-    [showArrow]="false">
+    [showArrow]="false"
+>
     <div hcMenu>
-        <button
-            hcMenuItem
-            (click)="_instanceClose(_instanceContextKey ?? '')"
-            *ngIf="this._instances.length > 1">
-            <hc-icon
-                hcMenuIcon
-                fontSet="fa-solid fa"
-                fontIcon="fa-times">
-            </hc-icon>
+        @if (this._instances.length > 1) {
+        <button hcMenuItem (click)="_instanceClose(_instanceContextKey ?? '')">
+            <hc-icon hcMenuIcon fontSet="fa-solid fa" fontIcon="fa-times"></hc-icon>
             <span hcMenuText>Close</span>
         </button>
-        <button
-            hcMenuItem
-            *ngIf="editable"
-            (click)="_instanceEdit(_instanceContextKey, _instanceContextValue, $event)">
-            <hc-icon
-                hcMenuIcon
-                fontSet="hc-icons"
-                fontIcon="hci-text-entry">
-            </hc-icon>
+        } @if (editable) {
+        <button hcMenuItem (click)="_instanceEdit(_instanceContextKey, _instanceContextValue, $event)">
+            <hc-icon hcMenuIcon fontSet="hc-icons" fontIcon="hci-text-entry"></hc-icon>
             <span hcMenuText>Rename</span>
         </button>
+        }
     </div>
 </hc-pop>

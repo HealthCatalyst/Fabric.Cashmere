@@ -1,7 +1,19 @@
 <hc-form-field class="hc-search-bar" [tight]="tight">
-    <input id="search-box" hcInput autocomplete="off" #searchFilter type="text" [disabled]="disabled" [mobile]="mobile"
-        (keyup)="_onKeyUp($event, searchFilter.value)" (keyup.enter)="_onEnter(searchFilter.value)"
-        placeholder="{{ placeholder }}" />
-    <hc-clear-input-btn *ngIf="showClearIcon" hcSuffix [inputEl]="searchFilter" (clearClicked)="clearClicked.emit()"></hc-clear-input-btn>
-    <span *ngIf="showSearchIcon" hcSuffix class="hc-search-ico" (click)="_onSearchIconClicked()"></span>
+    <input
+        id="search-box"
+        hcInput
+        autocomplete="off"
+        #searchFilter
+        type="text"
+        [disabled]="disabled"
+        [mobile]="mobile"
+        (keyup)="_onKeyUp($event, searchFilter.value)"
+        (keyup.enter)="_onEnter(searchFilter.value)"
+        placeholder="{{ placeholder }}"
+    />
+    @if (showClearIcon) {
+    <hc-clear-input-btn hcSuffix [inputEl]="searchFilter" (clearClicked)="clearClicked.emit()"></hc-clear-input-btn>
+    } @if (showSearchIcon) {
+    <span hcSuffix class="hc-search-ico" (click)="_onSearchIconClicked()"></span>
+    }
 </hc-form-field>

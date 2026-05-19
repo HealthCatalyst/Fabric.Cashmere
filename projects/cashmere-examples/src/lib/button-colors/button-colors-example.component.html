@@ -1,6 +1,9 @@
 <p class="example-color-description">
     Less commonly, additional button colors may be needed beyond the standard set. If that comes up, you may set
-    <code>buttonStyle</code> to any of the colors from the <a href="/foundations/color">primary, secondary, or neutral palettes</a>.
+    <code>buttonStyle</code>
+    to any of the colors from the
+    <a href="/foundations/color">primary, secondary, or neutral palettes</a>
+    .
 </p>
 
 <button hc-button title="Red Orange Button" buttonStyle="red-orange">Red Orange</button>
@@ -10,6 +13,8 @@
 <div class="you-choose-button-color">
     <button hc-button title="Custom Button" [buttonStyle]="color">You choose!</button>
     <hc-select [(ngModel)]="color">
-        <option *ngFor="let c of colorOptions" [value]="c">{{c}}</option>
+        @for (c of colorOptions; track c) {
+        <option [value]="c">{{ c }}</option>
+        }
     </hc-select>
 </div>

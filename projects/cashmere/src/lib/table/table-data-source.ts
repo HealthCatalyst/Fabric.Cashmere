@@ -36,8 +36,7 @@ export function _isLoadMorePaginator(pager: BasePaginationComponent): pager is L
  * properties are accessed. Also allows for filter customization by overriding filterTermAccessor,
  * which defines how row data is converted to a string for filter matching.
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
-export class HcTableDataSource<T extends {}> extends DataSource<T> {
+export class HcTableDataSource<T extends object> extends DataSource<T> {
     /** Stream that emits when a new data array is set on the data source. */
     private readonly _data: BehaviorSubject<T[]>;
 

@@ -2,14 +2,18 @@
     <hc-form-field>
         <hc-label>Stepper type:</hc-label>
         <hc-select [formControl]="currentTypeController">
-            <option *ngFor="let type of typeOptions" [value]="type">{{ type | titlecase }}</option>
+            @for (type of typeOptions; track type) {
+            <option [value]="type">{{ type | titlecase }}</option>
+            }
         </hc-select>
     </hc-form-field>
 
     <hc-form-field>
         <hc-label>Stepper color:</hc-label>
         <hc-select [formControl]="currentColorController">
-            <option *ngFor="let color of colorOptions" [value]="color">{{ color | titlecase }}</option>
+            @for (color of colorOptions; track color) {
+            <option [value]="color">{{ color | titlecase }}</option>
+            }
         </hc-select>
     </hc-form-field>
 

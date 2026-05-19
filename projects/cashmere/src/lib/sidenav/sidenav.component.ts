@@ -152,8 +152,8 @@ export class SidenavComponent {
     }
 
     /** @docs-private */
-    onTabGroupHeaderClick(event: MouseEvent, link: SidenavLink): void {
-        this.tabGroupHeaderClicked.emit({event, link});
+    onTabGroupHeaderClick(event: MouseEvent, tabGroup: SidenavTabGroup): void {
+        this.tabGroupHeaderClicked.emit({event, link: tabGroup as unknown as SidenavLink});
     }
 
     /** @docs-private */

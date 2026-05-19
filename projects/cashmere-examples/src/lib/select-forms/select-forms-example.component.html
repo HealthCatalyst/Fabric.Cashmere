@@ -1,6 +1,8 @@
 <form>
     <hc-select [formControl]="selectControl">
-        <option *ngFor="let location of locations" [ngValue]="location.id">{{ location.dbaName }}</option>
+        @for (location of locations; track location) {
+        <option [ngValue]="location.id">{{ location.dbaName }}</option>
+        }
     </hc-select>
 </form>
 

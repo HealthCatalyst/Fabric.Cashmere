@@ -12,29 +12,37 @@
             <hc-form-field class="usage-table-filters-filter" inline>
                 <hc-label>Term Type:</hc-label>
                 <hc-select [formControl]="selectedTypesControl" (change)="applyFilter(searchTerm)">
-                    <option *ngFor="let type of types" [ngValue]="type">{{ type }}</option>
+                    @for (type of types; track type) {
+                    <option [ngValue]="type">{{ type }}</option>
+                    }
                 </hc-select>
             </hc-form-field>
             <hc-form-field class="usage-table-filters-filter" inline>
                 <hc-label>Category:</hc-label>
                 <hc-select [formControl]="selectedCategoriesControl" (change)="applyFilter(searchTerm)">
-                    <option *ngFor="let cat of categories" [ngValue]="cat">{{ cat }}</option>
+                    @for (cat of categories; track cat) {
+                    <option [ngValue]="cat">{{ cat }}</option>
+                    }
                 </hc-select>
             </hc-form-field>
         </div>
     </div>
 
     <!-- Spinner while terminology is being loaded -->
-    <div *ngIf="termsLoading && !loadFailed" class="loading-message">
+    @if (termsLoading && !loadFailed) {
+    <div class="loading-message">
         <hc-progress-spinner color="purple" [diameter]="75"></hc-progress-spinner>
     </div>
+    }
 
     <!-- Error loading content -->
-    <div *ngIf="!termsLoading && loadFailed" class="terminology-load-error">
+    @if (!termsLoading && loadFailed) {
+    <div class="terminology-load-error">
         <hc-icon fontIcon="icon-warn"></hc-icon>
         There was an error loading the term list. Click below try again.
         <button hc-button size="lg" (click)="ngOnInit()">Reload Terms</button>
     </div>
+    }
 
     <div [hidden]="termsLoading || loadFailed">
         <table hc-table [dataSource]="dataSource">
@@ -60,7 +68,7 @@
             <ng-container hcColumnDef="edit">
                 <th hc-header-cell style="width: 3%;" *hcHeaderCellDef style="border-left-style: none;">Edit</th>
                 <td hc-cell style="width: 3%;" *hcCellDef="let usageItem" style="border-left-style: none;">
-                    <button *ngIf=true hc-icon-button (click)="getFormFillData(usageItem, addRequestModal)"><hc-icon fontSet="hc-icons" fontIcon="icon-pencil" hcIconMd></hc-icon></button>
+                    <button hc-icon-button (click)="getFormFillData(usageItem, addRequestModal)"><hc-icon fontSet="hc-icons" fontIcon="icon-pencil" hcIconMd></hc-icon></button>
                 </td>
             </ng-container>
 
