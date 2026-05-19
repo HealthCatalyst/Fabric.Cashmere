@@ -1,0 +1,587 @@
+<!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="hc-tile">
+    <h3 class="docs-header-link docs-api-h3">
+        Module Import
+    </h3>
+
+    <p class="docs-api-module-import">
+        <code>
+            import {MeasurableModule} from '@healthcatalyst/cashmere';
+        </code>
+    </p>
+</div><div class="hc-tile">
+    <h3 id="services" class="docs-header-link docs-api-h3">
+        <span header-link="services"></span>
+        Services
+    </h3>
+    
+        <!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.-->
+
+
+
+<h4 id="MeasurableService" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="MeasurableService"></span>
+  MeasurableService
+  
+</h4><p class="docs-api-class-description"><p>This service provides the logic to fill up a container
+with components contained inside Measurable Components.</p>
+</p><!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.-->
+
+
+<!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.--><h5 class="docs-api-h5 docs-api-method-header">Methods</h5>
+  
+    <!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.-->
+
+
+
+<table class="docs-api-method-table">
+  <thead>
+    <tr class="docs-api-method-name-row">
+      <th colspan="2" class="docs-api-method-name-cell">
+        <code>fillContainer(components: MeasurableComponent[], availableSize: number, moreSize: number, direction: &quot;horizontal&quot; | &quot;vertical&quot; = &#39;horizontal&#39;, showFunc: (component, hideFunc: (component)
+      </th>
+    </tr>
+  </thead><tr class="docs-api-method-description-row">
+    <td colspan="2" class="docs-api-method-description-cell">
+      <p>Fills a container with as many components as will fit. See usage for more details.</p>
+
+    </td>
+  </tr>
+  <thead>
+    <tr class="docs-api-method-parameters-header-row">
+      <th colspan="2" class="docs-api-method-parameters-header-cell">Parameter Detail</th>
+    </tr>
+  </thead>
+  <tr class="docs-api-method-parameter-row">
+        <td class="docs-api-method-parameter-cell">
+        <p class="docs-api-method-parameter-name">
+            components: <code class="docs-api-method-parameter-type">MeasurableComponent[]</code>
+        </p>
+        </td>
+        <td class="docs-api-method-parameter-description-cell">
+        <p class="docs-api-method-parameter-description">
+            <p>The array of components to try and fill the container.</p>
+
+        </p>
+        </td>
+    </tr><tr class="docs-api-method-parameter-row">
+        <td class="docs-api-method-parameter-cell">
+        <p class="docs-api-method-parameter-name">
+            availableSize: <code class="docs-api-method-parameter-type">number</code>
+        </p>
+        </td>
+        <td class="docs-api-method-parameter-description-cell">
+        <p class="docs-api-method-parameter-description">
+            <p>The available width or height in the container to fill with the given components.</p>
+
+        </p>
+        </td>
+    </tr><tr class="docs-api-method-parameter-row">
+        <td class="docs-api-method-parameter-cell">
+        <p class="docs-api-method-parameter-name">
+            moreSize: <code class="docs-api-method-parameter-type">number</code>
+        </p>
+        </td>
+        <td class="docs-api-method-parameter-description-cell">
+        <p class="docs-api-method-parameter-description">
+            <p>The width or height of a more control.</p>
+
+        </p>
+        </td>
+    </tr><tr class="docs-api-method-parameter-row">
+        <td class="docs-api-method-parameter-cell">
+        <p class="docs-api-method-parameter-name">
+            direction: <code class="docs-api-method-parameter-type">&quot;horizontal&quot; | &quot;vertical&quot; = &#39;horizontal&#39;</code>
+        </p>
+        </td>
+        <td class="docs-api-method-parameter-description-cell">
+        <p class="docs-api-method-parameter-description">
+            <p>Which way to fill the container, either horizontally or vertically.</p>
+
+        </p>
+        </td>
+    </tr><tr class="docs-api-method-parameter-row">
+        <td class="docs-api-method-parameter-cell">
+        <p class="docs-api-method-parameter-name">
+            showFunc: <code class="docs-api-method-parameter-type">(component</code>
+        </p>
+        </td>
+        <td class="docs-api-method-parameter-description-cell">
+        <p class="docs-api-method-parameter-description">
+            <p>Additional actions to take on a component that is shown. <em>Defaults to a function that does nothing.</em></p>
+
+        </p>
+        </td>
+    </tr><tr class="docs-api-method-parameter-row">
+        <td class="docs-api-method-parameter-cell">
+        <p class="docs-api-method-parameter-name">
+            hideFunc: <code class="docs-api-method-parameter-type">(component</code>
+        </p>
+        </td>
+        <td class="docs-api-method-parameter-description-cell">
+        <p class="docs-api-method-parameter-description">
+            <p>Additional actions to take on a component that is hidden. <em>Defaults to a function that does nothing.</em></p>
+
+        </p>
+        </td>
+    </tr><thead>
+    <tr class="docs-api-method-returns-header-row">
+      <th colspan="2" class="docs-api-method-returns-header-cell">Returns</th>
+    </tr>
+  </thead>
+  <tr>
+    <td class="docs-api-method-returns-type-cell">
+      <code class="docs-api-method-returns-type">Set&lt;string&gt;</code>
+    </td>
+    <td class="docs-api-method-returns-description-cell">
+      <p class="docs-api-method-returns-description">
+        <p>A set containing all of the keys of components that were hidden.</p>
+
+      </p>
+    </td>
+  </tr></table>
+
+
+  
+
+
+<div class="directive-spacer"></div>
+
+
+    
+</div><div class="hc-tile">
+    <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+        <span header-link="additional_classes"></span>
+        Additional classes
+    </h3>
+    
+        <!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.-->
+
+
+
+<h4 id="MeasurableComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="MeasurableComponent"></span>
+  MeasurableComponent
+  
+</h4><p class="docs-api-class-description"><p>Helper component for creating a container which automatically
+overflows components into a more menu.</p>
+</p><!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.--><h5 class="docs-api-h5 docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      <!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.-->
+
+
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>height: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>Calculates and returns the measured height of this container.
+The height is cached for future calls to this property.</p>
+</td>
+</tr>
+
+
+    
+      <!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.-->
+
+
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>itemKey: string</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>The unique key of the item displayed inside this measurable component.</p>
+</td>
+</tr>
+
+
+    
+      <!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.-->
+
+
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property-name">
+      <code>width: number</code>
+    </p>
+  </td>
+  <td class="docs-api-property-description"><p>Calculates and returns the measured width of this container.
+The width is cached for future calls to this property.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.--><h5 class="docs-api-h5 docs-api-method-header">Methods</h5>
+  
+    <!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.-->
+
+
+
+<table class="docs-api-method-table">
+  <thead>
+    <tr class="docs-api-method-name-row">
+      <th colspan="2" class="docs-api-method-name-cell">
+        <code>hide()
+      </th>
+    </tr>
+  </thead><tr class="docs-api-method-description-row">
+    <td colspan="2" class="docs-api-method-description-cell">
+      <p>Hides the contents of this container, forcing a change detection
+cycle to run.</p>
+
+    </td>
+  </tr>
+  </table>
+
+
+  
+    <!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.-->
+
+
+
+<table class="docs-api-method-table">
+  <thead>
+    <tr class="docs-api-method-name-row">
+      <th colspan="2" class="docs-api-method-name-cell">
+        <code>reset()
+      </th>
+    </tr>
+  </thead>
+  </table>
+
+
+  
+    <!--The MIT License-->
+
+<!--Copyright (c) 2018 Google LLC.-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy-->
+<!--of this software and associated documentation files (the "Software"), to deal-->
+<!--in the Software without restriction, including without limitation the rights-->
+<!--to use, copy, modify, merge, publish, distribute, sublicense, and/or sell-->
+<!--copies of the Software, and to permit persons to whom the Software is-->
+<!--furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in-->
+<!--all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR-->
+<!--IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,-->
+<!--FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE-->
+<!--AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER-->
+<!--LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,-->
+<!--OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN-->
+<!--THE SOFTWARE.-->
+
+
+
+<table class="docs-api-method-table">
+  <thead>
+    <tr class="docs-api-method-name-row">
+      <th colspan="2" class="docs-api-method-name-cell">
+        <code>show()
+      </th>
+    </tr>
+  </thead><tr class="docs-api-method-description-row">
+    <td colspan="2" class="docs-api-method-description-cell">
+      <p>Shows the contents of this container, forcing a change detection
+cycle to run.</p>
+
+    </td>
+  </tr>
+  </table>
+
+
+  
+
+
+<div class="directive-spacer"></div>
+
+
+    
+</div>

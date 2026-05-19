@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-Immuta">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="Immuta" clip-path="url(#clip-Immuta)">
+    <circle id="Blue_300_Bg" data-name="Blue 300 Bg" cx="100" cy="100" r="100" transform="translate(0 -0.1)" fill="#005cb7"/>
+    <path id="Path_12762" data-name="Path 12762" d="M72.281,18.794H91.075V96.135H72.281ZM0,115.651H115.65V0H0Z" transform="translate(42 42.174)" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,122 @@
+<h5 id="custom-templates">Custom Templates</h5>
+<p>The appearance of the picklist is highly customizable using template directives:</p>
+<p> </p>
+<table>
+<thead>
+<tr>
+<th>Template Directive</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hcPaneHeaderLeftTmp</code></td>
+<td>Header above the left picklist pane. <em>Default is &quot;Available&quot;.</em></td>
+</tr>
+<tr>
+<td><code>hcPaneHeaderRightTmp</code></td>
+<td>Header above the right picklist pane. <em>Default is &quot;Selected&quot;.</em></td>
+</tr>
+<tr>
+<td><code>hcPickOptionTmp</code></td>
+<td>An individual option row.</td>
+</tr>
+<tr>
+<td><code>hcPickOptgroupTmp</code></td>
+<td>A header row for grouped options.</td>
+</tr>
+<tr>
+<td><code>hcPaneToolbarTmp</code></td>
+<td>The space just above an option list. <em>Default contains count of options and Select All/Select None buttons.</em></td>
+</tr>
+<tr>
+<td><code>hcPaneFooterTmp</code></td>
+<td>The space just below an option list. <em>Default contains count highlighted options.</em></td>
+</tr>
+<tr>
+<td><code>hcPickCustomItemTmp</code></td>
+<td>When configuraed to allow for custom options, this template appears when search term doesn't have an exact match.</td>
+</tr>
+</tbody>
+</table>
+<p>At a bare minimum, you simply need to use the appropriate attribute directive on an ng-template element within the <code>&lt;hc-picklist&gt;</code> element.</p>
+<pre><code class="language-HTML">&lt;hc-picklist [items]=&quot;myItems&quot;&gt;
+    &lt;ng-template hcPaneFooterTmp&gt;&lt;!-- Custom footer content here. --&gt;&lt;/ng-template&gt;
+&lt;/hc-picklist&gt;
+</code></pre>
+<p>Within those <code>&lt;ng-template&gt;</code> tags, you can nest additional elements, components, and directives. You can apply your own CSS classes and custom styling.</p>
+<p>Some template directives also expose variables via the <code>let</code> template syntax. For example, in the directive for option templates (<code>hcPickOptionTmp</code>), you can access values like the option's value and index.</p>
+<pre><code class="language-HTML">&lt;hc-picklist [items]=&quot;myItems&quot;&gt;
+    &lt;ng-template hcPickOptionTmp let-item=&quot;item&quot; let-search=&quot;searchTerm&quot; let-index=&quot;index&quot;&gt;
+        &lt;strong&gt;{{index}}&lt;/strong&gt;&lt;span class=&quot;my-custom-class&quot;&gt;{{ item.name }}&lt;/span&gt;
+    &lt;/ng-template&gt;
+&lt;/hc-picklist&gt;
+</code></pre>
+<p>You can see more extensive implementations under the <strong>Picklist Templates</strong> example.</p>
+<p> </p>
+<h5 id="migrating-from-old-picklist">Migrating from Old Picklist</h5>
+<p>In Cashmere version 9.x and earlier, there was a previous iteration of <code>&lt;hc-picklist&gt;</code> with a different API. That original component has been
+deprecated. If needed, you can still use the old component, but it is now referenced as <code>&lt;hc-picklist-old&gt;</code>. We highly encourage migrating to the newer version of picklist as soon as possible.</p>
+<p>For the simpleset of use cases, migration is very simple:</p>
+<pre><code class="language-HTML">&lt;!-- In the typescript file: simpleModelControl = new FormControl([]); --&gt;
+
+&lt;!-- Old picklist --&gt;
+&lt;hc-picklist [formControl]=&quot;simpleModelControl&quot; [simpleOptions]=&quot;['North', 'East', 'South', 'West']&quot;&gt;&lt;/hc-picklist&gt;
+
+&lt;!-- New Picklist --&gt;
+&lt;hc-picklist [formControl]=&quot;simpleModelControl&quot; [items]=&quot;['North', 'East', 'South', 'West']&quot;&gt;&lt;/hc-picklist&gt;
+
+</code></pre>
+<p>For most cases, a bit more work is required. The previous picklist had a <code>[config]</code> input that accepted an object of type <code>IPicklistSettings</code>. Following is a table of <code>IPicklistSettings</code> properties and either an equivalent property or a note on how to migrate.</p>
+<table>
+<thead>
+<tr>
+<th>Old Picklist</th>
+<th>New Picklist</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.codeIsSignificant</code></td>
+<td>Not available. Simply include the code or id in your template. (Use <code>hcPickOptionTmp</code> or <code>&lt;hc-pick-option&gt;</code>.)</td>
+</tr>
+<tr>
+<td><code>config.leftHeaderText</code></td>
+<td>Use <code>[leftHeaderText]</code> input. Can also use <code>hcPaneHeaderLeftTmp</code> directive to customized header further.</td>
+</tr>
+<tr>
+<td><code>config.rightHeaderText</code></td>
+<td>Use <code>[rightHeaderText]</code> input. Can also use <code>hcPaneHeaderRightTmp</code> directive to customized header further.</td>
+</tr>
+<tr>
+<td><code>config.options</code></td>
+<td>Use <code>[items]</code> input for prefetched options. Options in the array can now take any shape, object or primitive.</td>
+</tr>
+<tr>
+<td><code>config.selected</code></td>
+<td>Not available. Use <code>[(ngModel)]</code> or <code>[formControl]</code>.</td>
+</tr>
+<tr>
+<td><code>config.showHeaderText</code></td>
+<td>Use <code>[hasHeader]</code> input.</td>
+</tr>
+<tr>
+<td><code>config.sort</code></td>
+<td>Not available. Use <code>[sortFn]</code> input and provide a custom sort function logic instead of asc/desc strings.</td>
+</tr>
+<tr>
+<td><code>config.useValuesets</code></td>
+<td>Not available. Use <code>[groupBy]</code>, possibly along with related group input <code>[canSelectGroup]</code>, <code>[groupValue]</code>, etc.</td>
+</tr>
+</tbody>
+</table>
+<p>If you were previously retrieving options over HTTP with <code>IPicklistOptionsSource</code>, you should reference the <strong>Picklist Remote Data</strong> example. As always, don't hesitate to reach out to the Cashmere steering committee on Slack.</p>
+<p> </p>
+<h5 id="inspired-by-ng-select">Inspired by Ng-Select</h5>
+<p>This component was heavily inspired by the open source ng-select component. Their API's are very similar, so you can find many applicable explanations
+and examples in their robust docs site:</p>
+<ul>
+<li><a href="https://ng-select.github.io/ng-select">Examples</a></li>
+<li><a href="https://github.com/ng-select/ng-select#api">API</a></li>
+<li><a href="https://github.com/ng-select/ng-select">Github</a></li>
+</ul>

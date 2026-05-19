@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-Twistle">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="Twistle" clip-path="url(#clip-Twistle)">
+    <circle id="Blue_300_Bg" data-name="Blue 300 Bg" cx="100" cy="100" r="100" transform="translate(0 -0.1)" fill="#005cb7"/>
+    <path id="Path_12866" data-name="Path 12866" d="M162.9,99.8a57.4,57.4,0,0,0-114.8,0c0,31.8,5.8,28.5,15.1,38.6L26,157.2h81.3A57.256,57.256,0,0,0,163,99.8Z" transform="translate(0.1)" fill="#fff"/>
+    <path id="Path_12867" data-name="Path 12867" d="M163,99.8a56.938,56.938,0,0,0-41-54.9A57.406,57.406,0,0,1,95.4,152.4H35.8l-9.7,5h81.3A57.394,57.394,0,0,0,163,99.9h0Z" transform="translate(0.1)" fill="#b8d2eb"/>
+  </g>
+</svg>

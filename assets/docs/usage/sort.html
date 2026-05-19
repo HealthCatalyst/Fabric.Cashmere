@@ -1,0 +1,28 @@
+<h5 id="overview">Overview</h5>
+<p>The <code>hcSort</code> and <code>hc-sort-header</code> are used, respectively, to add sorting state and display
+to tabular data.</p>
+<h5 id="adding-sort-to-table-headers">Adding sort to table headers</h5>
+<p>To add sorting behavior and styling to a set of table headers, add the <code>&lt;hc-sort-header&gt;</code> component
+to each header and provide an <code>id</code> that will identify it. These headers should be contained within a
+parent element with the <code>hcSort</code> directive, which will emit an <code>hcSortChange</code> event when the user
+triggers sorting on the header.</p>
+<p>Users can trigger the sort header through a mouse click or keyboard action. When this happens, the
+<code>hcSort</code> will emit an <code>hcSortChange</code> event that contains the ID of the header triggered and the
+direction to sort (<code>asc</code> or <code>desc</code>).</p>
+<h5 id="changing-the-sort-order">Changing the sort order</h5>
+<p>By default, a sort header starts its sorting at <code>asc</code> and then <code>desc</code>. Triggering the sort header
+after <code>desc</code> will remove sorting.</p>
+<p>To reverse the sort order for all headers, set the <code>hcSortStart</code> to <code>desc</code> on the <code>hcSort</code>
+directive. To reverse the order only for a specific header, set the <code>start</code> input only on the header
+instead.</p>
+<p>To prevent the user from clearing the sort sort state from an already sorted column, set
+<code>hcSortDisableClear</code> to <code>true</code> on the <code>hcSort</code> to affect all headers, or set <code>disableClear</code> to
+<code>true</code> on a specific header.</p>
+<h5 id="disabling-sorting">Disabling sorting</h5>
+<p>If you want to prevent the user from changing the sorting order of any column, you can use the
+<code>hcSortDisabled</code> binding on the <code>hc-sort</code>, or the <code>disabled</code> on an single <code>hc-sort-header</code>.</p>
+<h5 id="using-sort-with-the-hc-table">Using sort with the hc-table</h5>
+<p>When used on an <code>hc-table</code> header, it is not required to set an <code>hc-sort-header</code> id on because
+by default it will use the id of the column.</p>
+<h5 id="accessibility">Accessibility</h5>
+<p>The <code>aria-label</code> for the sort button can be set in <code>HcSortHeaderIntl</code>.</p>
