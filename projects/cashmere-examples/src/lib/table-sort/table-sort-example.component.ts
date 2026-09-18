@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {HcSort, HcTableDataSource} from '@healthcatalyst/cashmere';
+import {AfterViewInit, Component, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {HcSort, HcSortable, HcTableDataSource} from '@healthcatalyst/cashmere';
 
 export interface PeriodicElement {
     name: string;
@@ -7,6 +7,11 @@ export interface PeriodicElement {
     weight: number;
     discovered: Date;
     symbol: string;
+}
+
+interface SortMenuContext {
+    sort?: HcSort;
+    sortable?: HcSortable;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -22,6 +27,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
     {position: 10, name: 'Neon', weight: 20.1797, discovered: new Date('January 1 1898'), symbol: 'Ne'}
 ];
 
+const MULTI_SORT_DATA: PeriodicElement[] = [
+    {position: 1, name: 'Hydrogen', weight: 4, discovered: new Date('January 1 1776'), symbol: 'H'},
+    {position: 2, name: 'Hydrogen', weight: 2, discovered: new Date('January 1 1776'), symbol: 'H'},
+    {position: 3, name: 'Hydrogen', weight: 1, discovered: new Date('January 1 1776'), symbol: 'H'},
+    {position: 4, name: 'Helium', weight: 3, discovered: new Date('January 1 1895'), symbol: 'He'},
+    {position: 5, name: 'Helium', weight: 1, discovered: new Date('January 1 1895'), symbol: 'He'},
+    {position: 6, name: 'Lithium', weight: 2, discovered: new Date('January 1 1817'), symbol: 'Li'}
+];
+
 /**
  * @title Table sorting
  */
@@ -31,15 +45,24 @@ const ELEMENT_DATA: PeriodicElement[] = [
     styleUrls: ['table-sort-example.component.scss'],
     standalone: false
 })
-export class TableSortExampleComponent implements OnInit {
+export class TableSortExampleComponent implements AfterViewInit, OnInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'discovered', 'symbol'];
-    dataSource: HcTableDataSource<PeriodicElement>;
+    multiSortColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+    dataSource!: HcTableDataSource<PeriodicElement>;
+    multiSortDataSource!: HcTableDataSource<PeriodicElement>;
+    sortMenuContext: SortMenuContext = {};
 
-    @ViewChild(HcSort, {static: true})
-    sort: HcSort;
+    @ViewChildren(HcSort)
+    sorts!: QueryList<HcSort>;
 
     ngOnInit(): void {
         this.dataSource = new HcTableDataSource(ELEMENT_DATA);
-        this.dataSource.sort = this.sort;
+        this.multiSortDataSource = new HcTableDataSource(MULTI_SORT_DATA);
+    }
+
+    ngAfterViewInit(): void {
+        const sortList = this.sorts.toArray();
+        this.dataSource.sort = sortList[0];
+        this.multiSortDataSource.sort = sortList[1];
     }
 }

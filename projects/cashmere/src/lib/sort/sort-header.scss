@@ -15,8 +15,9 @@
 .hc-sort-header-position-before {
     @include hc-sort-header-before();
 
-    .hc-sort-header-icon {
-        @include hc-sort-header-before-icon();
+    .hc-sort-header-indicator {
+        margin-left: 0;
+        margin-right: 15px;
     }
 }
 
@@ -32,6 +33,22 @@
     @include hc-sort-header-icon();
 }
 
+.hc-sort-header-indicator {
+    align-items: center;
+    display: inline-flex;
+    height: 16px;
+    justify-content: center;
+    margin-left: 5px;
+    min-width: 28px;
+    width: 28px;
+}
+
+.hc-sort-header-indicator .hc-sort-header-icon {
+    align-self: center;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
 .hc-sort-header-asc {
     @include hc-sort-header-asc();
 }
@@ -42,4 +59,36 @@
 
 .hc-sort-header-off {
     @include hc-sort-header-off();
+}
+
+.hc-sort-header-priority {
+    align-items: center;
+    background-color: $thead-active-font-color;
+    border-radius: 8px;
+    color: $white;
+    display: inline-flex;
+    gap: 2px;
+    height: 18px;
+    justify-content: center;
+    margin-bottom: 2px;
+    box-sizing: border-box;
+    min-width: 28px;
+    padding: 0 5px;
+}
+
+.hc-sort-header-priority-icon {
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: block;
+    filter: brightness(0) invert(1);
+    height: 12px;
+    flex: 0 0 12px;
+    width: 12px;
+}
+
+.hc-sort-header-priority-number {
+    flex: 0 0 auto;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
 }

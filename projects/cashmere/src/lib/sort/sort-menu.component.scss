@@ -1,0 +1,32 @@
+@import '../sass/menu';
+@import '../sass/table';
+
+.hc-sort-menu-priority {
+    align-items: center;
+    display: flex;
+    gap: 4px;
+    padding: 5px 14px 7px;
+
+    > span {
+        color: $text;
+        font-size: 11px;
+        margin-right: 2px;
+    }
+
+    > button {
+        background: $white;
+        border: 1px solid $gray-300;
+        border-radius: 3px;
+        color: $text;
+        cursor: pointer;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 2px 10px;
+    }
+
+    > .hc-sort-menu-priority-active {
+        background: $thead-active-font-color;
+        border-color: $thead-active-font-color;
+        color: $white;
+    }
+}

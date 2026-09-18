@@ -32,6 +32,9 @@ export interface Sort {
 
     /** The sort direction. */
     direction: SortDirection;
+
+    /** The priority of this sort when multi-level sorting is enabled. */
+    priority?: number;
 }
 
 /** Container for HcSortables to manage the sort state and provide default sort parameters. */
@@ -93,6 +96,26 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
     }
     private _disabled = false;
 
+    /** Whether this sort manages a primary and secondary sort. *Defaults to false.* */
+    @Input('hcSortMulti')
+    get multiSort(): boolean {
+        return this._multiSort;
+    }
+    set multiSort(value: boolean | string) {
+        const multiSort = coerceBooleanProperty(value);
+        if (multiSort && !this._multiSort && this.active && this.direction) {
+            this._sorts = [{active: this.active, direction: this.direction, priority: 1}];
+        }
+        this._multiSort = multiSort;
+    }
+    private _multiSort = false;
+
+    /** The active sorts ordered from highest to lowest priority. */
+    get sorts(): Sort[] {
+        return this._sorts.map(sort => ({...sort}));
+    }
+    private _sorts: Sort[] = [];
+
     /** Event emitted when the user changes either the active sort or sort direction. */
     @Output('hcSortChange')
     readonly sortChange: EventEmitter<Sort> = new EventEmitter<Sort>();
@@ -122,6 +145,11 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
 
     /** Sets the active sort id and determines the new sort direction. */
     sort(sortable: HcSortable): void {
+        if (this.multiSort) {
+            this._sortMulti(sortable);
+            return;
+        }
+
         if (this.active !== sortable.id) {
             this.active = sortable.id;
             this.direction = sortable.start ? sortable.start : this.start;
@@ -130,6 +158,69 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
         }
 
         this.sortChange.emit({active: this.active, direction: this.direction});
+    }
+
+    /** Adds or replaces a secondary sort and emits the updated primary sort. */
+    addSecondarySort(sortable: HcSortable, direction: SortDirection = sortable.start || this.start): void {
+        if (!this.multiSort || !direction || this._sorts.some(sort => sort.active === sortable.id) || this._sorts.length >= 2) {
+            return;
+        }
+
+        this._sorts = [...this._sorts, {active: sortable.id, direction, priority: this._sorts.length + 1}];
+        this._syncPrimarySort();
+        this._emitSortChange();
+    }
+
+    /** Sets the direction for an active sort or makes the column the primary sort. */
+    setSortDirection(sortable: HcSortable, direction: 'asc' | 'desc'): void {
+        if (!this.multiSort) {
+            this.active = sortable.id;
+            this.direction = direction;
+            this.sortChange.emit({active: this.active, direction: this.direction});
+            return;
+        }
+
+        const currentSort = this.getSort(sortable.id);
+        this._sorts = currentSort
+            ? this._sorts.map(sort => sort.active === sortable.id ? {...sort, direction} : sort)
+            : [{active: sortable.id, direction, priority: 1}];
+        this._syncPrimarySort();
+        this._emitSortChange();
+    }
+
+    /** Removes a sort while keeping one active sort in place. */
+    removeSort(id: string): void {
+        if (!this.multiSort || this._sorts.length <= 1) {
+            return;
+        }
+
+        this._sorts = this._sorts.filter(sort => sort.active !== id).map((sort, index) => ({...sort, priority: index + 1}));
+        this._syncPrimarySort();
+        this._emitSortChange();
+    }
+
+    /** Swaps the priority of the selected sort with the other active sort. */
+    setSortPriority(id: string, priority: number): void {
+        if (!this.multiSort || this._sorts.length !== 2 || priority < 1 || priority > 2) {
+            return;
+        }
+
+        const selectedIndex = this._sorts.findIndex(sort => sort.active === id);
+        if (selectedIndex === -1 || selectedIndex === priority - 1) {
+            return;
+        }
+
+        const reordered = [...this._sorts];
+        const [selected] = reordered.splice(selectedIndex, 1);
+        reordered.splice(priority - 1, 0, selected);
+        this._sorts = reordered.map((sort, index) => ({...sort, priority: index + 1}));
+        this._syncPrimarySort();
+        this._emitSortChange();
+    }
+
+    /** Returns the active sort for a column, if one exists. */
+    getSort(id: string): Sort | undefined {
+        return this._sorts.find(sort => sort.active === id);
     }
 
     /** Returns the next sort direction of the active sortable, checking for potential overrides. */
@@ -150,7 +241,40 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
         return sortDirectionCycle[nextDirectionIndex];
     }
 
+    private _sortMulti(sortable: HcSortable): void {
+        const currentSort = this.getSort(sortable.id);
+        if (!currentSort) {
+            if (this._sorts.length === 1) {
+                this.addSecondarySort(sortable);
+                return;
+            }
+            this._sorts = [{active: sortable.id, direction: sortable.start || this.start, priority: 1}];
+        } else {
+            this._sorts = this._sorts.map(sort =>
+                sort.active === sortable.id
+                    ? {...sort, direction: sort.direction === 'asc' ? 'desc' : 'asc'}
+                    : sort
+            );
+        }
+
+        this._syncPrimarySort();
+        this._emitSortChange();
+    }
+
+    private _syncPrimarySort(): void {
+        const primarySort = this._sorts[0];
+        this.active = primarySort?.active;
+        this.direction = primarySort?.direction || '';
+    }
+
+    private _emitSortChange(): void {
+        this.sortChange.emit(this._sorts[0] || {active: this.active, direction: this.direction});
+    }
+
     ngOnInit(): void {
+        if (this.multiSort && this.active && this.direction) {
+            this._sorts = [{active: this.active, direction: this.direction, priority: 1}];
+        }
         this._markInitialized();
     }
 
