@@ -1,6 +1,10 @@
 <p>This is an example of a sortable table with <code>tight</code> styling.</p>
 
-<table hc-table [dataSource]="dataSource" tight="true" hcSort>
+<hc-pop #sortMenu horizontalAlign="mouse" verticalAlign="mouse" [showArrow]="false" [autoCloseOnContentClick]="true" (opened)="sortMenuContext = $event">
+    <hc-sort-menu *ngIf="sortMenuContext.sort && sortMenuContext.sortable" [sort]="sortMenuContext.sort" [sortable]="sortMenuContext.sortable"></hc-sort-menu>
+</hc-pop>
+
+<table hc-table [dataSource]="dataSource" tight="true" hcSort #singleSort="hcSort">
 
     <!-- Position Column -->
     <ng-container hcColumnDef="position">
@@ -34,4 +38,31 @@
 
     <tr hc-header-row *hcHeaderRowDef="displayedColumns"></tr>
     <tr hc-row *hcRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<h4>Multi-level sorting with duplicate values</h4>
+<p>Sort by <strong>Name</strong>, then sort by <strong>Weight</strong> to see secondary tie-breaking.</p>
+
+<table hc-table [dataSource]="multiSortDataSource" tight="true" hcSort #multiSort="hcSort" hcSortMulti>
+    <ng-container hcColumnDef="position">
+        <th hc-index-cell *hcHeaderCellDef>#</th>
+        <td hc-index-cell *hcCellDef="let element">{{element.position}}</td>
+    </ng-container>
+
+    <ng-container hcColumnDef="name">
+        <th hc-header-cell *hcHeaderCellDef hc-sort-header [hcPop]="sortMenu" trigger="rightclick" [context]="{sort: multiSort, sortable: multiSort.sortables.get('name')}">Name</th>
+        <td hc-cell *hcCellDef="let element">{{element.name}}</td>
+    </ng-container>
+
+    <ng-container hcColumnDef="weight">
+        <th hc-header-cell *hcHeaderCellDef hc-sort-header [hcPop]="sortMenu" trigger="rightclick" [context]="{sort: multiSort, sortable: multiSort.sortables.get('weight')}">Weight</th>
+        <td hc-cell *hcCellDef="let element">{{element.weight}}</td>
+    </ng-container>
+
+    <ng-container hcColumnDef="symbol">
+        <th hc-header-cell *hcHeaderCellDef hc-sort-header [hcPop]="sortMenu" trigger="rightclick" [context]="{sort: multiSort, sortable: multiSort.sortables.get('symbol')}">Symbol</th>
+        <td hc-cell *hcCellDef="let element">{{element.symbol}}</td>
+    </ng-container>
+
+    <tr hc-header-row *hcHeaderRowDef="multiSortColumns"></tr>
+    <tr hc-row *hcRowDef="let row; columns: multiSortColumns;"></tr>
 </table>

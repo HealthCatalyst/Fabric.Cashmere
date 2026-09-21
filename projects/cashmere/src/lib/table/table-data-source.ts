@@ -161,35 +161,34 @@ export class HcTableDataSource<T extends object> extends DataSource<T> {
      * @param sort The connected HcSort that holds the current sort state.
      */
     sortData: (data: T[], sort: HcSort) => T[] = (data: T[], sort: HcSort): T[] => {
-        const active = sort.active;
-        const direction = sort.direction;
-        if (!active || direction === '') {
+        const activeSorts = sort.multiSort && sort.sorts.length > 0 ? sort.sorts : [{active: sort.active, direction: sort.direction}];
+        if (!activeSorts[0].active || activeSorts[0].direction === '') {
             return data;
         }
 
         return data.sort((a, b) => {
-            const valueA = this.sortingDataAccessor(a, active);
-            const valueB = this.sortingDataAccessor(b, active);
-
-            // If both valueA and valueB exist (truthy), then compare the two. Otherwise, check if
-            // one value exists while the other doesn't. In this case, existing value should come first.
-            // This avoids inconsistent results when comparing values to undefined/null.
-            // If neither value exists, return 0 (equal).
-            let comparatorResult = 0;
-            if (valueA != null && valueB != null) {
-                // Check if one value is greater than the other; if equal, comparatorResult should remain 0.
-                if (valueA > valueB) {
+            for (const activeSort of activeSorts) {
+                const valueA = this.sortingDataAccessor(a, activeSort.active);
+                const valueB = this.sortingDataAccessor(b, activeSort.active);
+                let comparatorResult = 0;
+                if (valueA != null && valueB != null) {
+                    if (valueA > valueB) {
+                        comparatorResult = 1;
+                    } else if (valueA < valueB) {
+                        comparatorResult = -1;
+                    }
+                } else if (valueA != null) {
                     comparatorResult = 1;
-                } else if (valueA < valueB) {
+                } else if (valueB != null) {
                     comparatorResult = -1;
                 }
-            } else if (valueA != null) {
-                comparatorResult = 1;
-            } else if (valueB != null) {
-                comparatorResult = -1;
+
+                if (comparatorResult !== 0) {
+                    return comparatorResult * (activeSort.direction === 'asc' ? 1 : -1);
+                }
             }
 
-            return comparatorResult * (direction === 'asc' ? 1 : -1);
+            return 0;
         });
     };
 

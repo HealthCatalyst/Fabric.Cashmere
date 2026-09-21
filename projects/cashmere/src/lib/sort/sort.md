@@ -27,6 +27,19 @@ To prevent the user from clearing the sort sort state from an already sorted col
 `hcSortDisableClear` to `true` on the `hcSort` to affect all headers, or set `disableClear` to
 `true` on a specific header.
 
+##### Multi-level sorting
+
+Set `hcSortMulti` to `true` to allow one primary and one secondary sort. The primary sort is
+available through `active` and `direction`, while the ordered `sorts` collection contains both
+sorts and their priorities.
+
+Use `addSecondarySort`, `removeSort`, and `setSortPriority` to update the secondary sort from a
+context menu or other application control. Removing the final active sort is ignored, and a
+multi-sort header cycles between ascending and descending without an off state.
+
+Use `hc-sort-menu` inside an `hc-pop` with `trigger="rightclick"` to provide standard sort actions.
+Consumer-specific actions can be projected after the standard sort actions.
+
 ##### Disabling sorting
 
 If you want to prevent the user from changing the sorting order of any column, you can use the

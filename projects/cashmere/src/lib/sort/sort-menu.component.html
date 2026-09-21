@@ -1,0 +1,26 @@
+<div hcMenu>
+    <button hcMenuItem type="button" (click)="sortAscending()">
+        <hc-icon hcMenuIcon fontIcon="icon-sort-ascend"></hc-icon>
+        <span hcMenuText>Sort ascending</span>
+    </button>
+    <button hcMenuItem type="button" (click)="sortDescending()">
+        <hc-icon hcMenuIcon fontIcon="icon-sort-descend"></hc-icon>
+        <span hcMenuText>Sort descending</span>
+    </button>
+    <div *ngIf="canAddSecondarySort" hcMenuItem hcDivider></div>
+    <button *ngIf="canAddSecondarySort" hcMenuItem type="button" (click)="addSecondarySort()">
+        <hc-icon hcMenuIcon fontIcon="icon-sort-ascend"></hc-icon>
+        <span hcMenuText>Add as secondary sort</span>
+    </button>
+    <div *ngIf="canRemoveSort" hcMenuItem hcDivider></div>
+    <button *ngIf="canRemoveSort" hcMenuItem type="button" (click)="removeSort()">
+        <hc-icon hcMenuIcon fontIcon="icon-ban"></hc-icon>
+        <span hcMenuText>Remove sort</span>
+    </button>
+    <div *ngIf="canRemoveSort" class="hc-sort-menu-priority">
+        <span>Priority:</span>
+        <button hcMenuItem type="button" [class.hc-sort-menu-priority-active]="priority === 1" (click)="setPriority(1)">1st</button>
+        <button hcMenuItem type="button" [class.hc-sort-menu-priority-active]="priority === 2" (click)="setPriority(2)">2nd</button>
+    </div>
+    <ng-content></ng-content>
+</div>

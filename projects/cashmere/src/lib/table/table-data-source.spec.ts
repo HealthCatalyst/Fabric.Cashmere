@@ -141,6 +141,26 @@ describe('HcTableDataSource', () => {
                 ].toString()
             );
         });
+
+        it('uses the secondary sort when primary values match', () => {
+            const sort = new HcSort();
+            sort.multiSort = true;
+            sort.sortables.set('name', {id: 'name', start: 'asc', disableClear: true});
+            sort.sortables.set('weight', {id: 'weight', start: 'desc', disableClear: true});
+            sort.sort(sort.sortables.get('name')!);
+            sort.addSecondarySort(sort.sortables.get('weight')!);
+
+            const result = dataSource.sortData(
+                [
+                    {id: 1, name: 'Hydrogen', weight: 2, discoveryDate: new Date('January 1 1900')},
+                    {id: 2, name: 'Hydrogen', weight: 4, discoveryDate: new Date('January 1 1900')},
+                    {id: 3, name: 'Helium', weight: 1, discoveryDate: new Date('January 1 1900')}
+                ],
+                sort
+            );
+
+            expect(result.map(element => element.id)).toEqual([3, 2, 1]);
+        });
     });
 
     describe('filterPredicate()', () => {
