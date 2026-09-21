@@ -147,17 +147,9 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
     sort(sortable: HcSortable): void {
         if (this.multiSort) {
             this._sortMulti(sortable);
-            return;
-        }
-
-        if (this.active !== sortable.id) {
-            this.active = sortable.id;
-            this.direction = sortable.start ? sortable.start : this.start;
         } else {
-            this.direction = this.getNextSortDirection(sortable);
+            this._sortSingle(sortable);
         }
-
-        this.sortChange.emit({active: this.active, direction: this.direction});
     }
 
     /** Adds or replaces a secondary sort and emits the updated primary sort. */
@@ -173,19 +165,11 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
 
     /** Sets the direction for an active sort or makes the column the primary sort. */
     setSortDirection(sortable: HcSortable, direction: 'asc' | 'desc'): void {
-        if (!this.multiSort) {
-            this.active = sortable.id;
-            this.direction = direction;
-            this.sortChange.emit({active: this.active, direction: this.direction});
-            return;
+        if (this.multiSort) {
+            this._setMultiSortDirection(sortable, direction);
+        } else {
+            this._setSingleSortDirection(sortable, direction);
         }
-
-        const currentSort = this.getSort(sortable.id);
-        this._sorts = currentSort
-            ? this._sorts.map(sort => sort.active === sortable.id ? {...sort, direction} : sort)
-            : [{active: sortable.id, direction, priority: 1}];
-        this._syncPrimarySort();
-        this._emitSortChange();
     }
 
     /** Removes a sort while keeping one active sort in place. */
@@ -241,6 +225,17 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
         return sortDirectionCycle[nextDirectionIndex];
     }
 
+    private _sortSingle(sortable: HcSortable): void {
+        if (this.active !== sortable.id) {
+            this.active = sortable.id;
+            this.direction = sortable.start ? sortable.start : this.start;
+        } else {
+            this.direction = this.getNextSortDirection(sortable);
+        }
+
+        this._emitSortChange();
+    }
+
     private _sortMulti(sortable: HcSortable): void {
         const currentSort = this.getSort(sortable.id);
         if (!currentSort) {
@@ -257,6 +252,21 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
             );
         }
 
+        this._syncPrimarySort();
+        this._emitSortChange();
+    }
+
+    private _setSingleSortDirection(sortable: HcSortable, direction: 'asc' | 'desc'): void {
+        this.active = sortable.id;
+        this.direction = direction;
+        this._emitSortChange();
+    }
+
+    private _setMultiSortDirection(sortable: HcSortable, direction: 'asc' | 'desc'): void {
+        const currentSort = this.getSort(sortable.id);
+        this._sorts = currentSort
+            ? this._sorts.map(sort => sort.active === sortable.id ? {...sort, direction} : sort)
+            : [{active: sortable.id, direction, priority: 1}];
         this._syncPrimarySort();
         this._emitSortChange();
     }
