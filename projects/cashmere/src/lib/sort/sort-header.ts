@@ -244,7 +244,19 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
 
     /** Whether this HcSortHeader is currently sorted in either ascending or descending order. */
     _isSorted(): boolean {
-        return this._sort.active === this.id && (this._sort.direction === 'asc' || this._sort.direction === 'desc');
+        const sort = this._sort.getSort(this.id);
+        return this._sort.multiSort
+            ? !!sort && (sort.direction === 'asc' || sort.direction === 'desc')
+            : this._sort.active === this.id && (this._sort.direction === 'asc' || this._sort.direction === 'desc');
+    }
+
+    /** Returns this header's priority when two sorts are active. */
+    _getSortPriority(): number | null {
+        if (!this._sort.multiSort || this._sort.sorts.length < 2) {
+            return null;
+        }
+
+        return this._sort.getSort(this.id)?.priority || null;
     }
 
     /** Returns the animation state for the arrow direction (indicator and pointers). */
@@ -269,7 +281,12 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
      * only be changed once the arrow displays again (hint or activation).
      */
     _updateArrowDirection(): void {
-        this._arrowDirection = this._isSorted() ? this._sort.direction : this.start || this._sort.start;
+        const sort = this._sort.getSort(this.id);
+        this._arrowDirection = this._isSorted() && this._sort.multiSort
+            ? sort?.direction || ''
+            : this._isSorted()
+                ? this._sort.direction
+                : this.start || this._sort.start;
     }
 
     @HostBinding('class.hc-sort-header-disabled')
@@ -285,10 +302,11 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
      */
     @HostBinding('attr.aria-sort')
     _getAriaSortAttribute(): string | null {
-        if (!this._isSorted()) {
+        if (!this._isSorted() || (this._sort.multiSort && this._getSortPriority() !== 1)) {
             return null;
         }
 
-        return this._sort.direction === 'asc' ? 'ascending' : 'descending';
+        const direction = this._sort.multiSort ? this._sort.getSort(this.id)?.direction : this._sort.direction;
+        return direction === 'asc' ? 'ascending' : 'descending';
     }
 }

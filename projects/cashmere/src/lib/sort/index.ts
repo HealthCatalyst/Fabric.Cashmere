@@ -4,3 +4,4 @@ export {ArrowViewState, ArrowViewStateTransition, HcSortHeader} from './sort-hea
 export {HcSortHeaderIntl} from './sort-header-intl';
 export {HcSortable, Sort, HcSort} from './sort';
 export {hcSortAnimations} from './sort-animations';
+export {HcSortMenuComponent} from './sort-menu.component';
