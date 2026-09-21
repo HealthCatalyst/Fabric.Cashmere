@@ -52,6 +52,66 @@ describe('HcSort', () => {
         ]);
     });
 
+    it('sets an unsorted multi-sort column as the primary sort direction', () => {
+        const sort = new HcSort();
+        sort.multiSort = true;
+
+        sort.setSortDirection(name, 'desc');
+
+        expect(sort.sorts).toEqual([{active: 'name', direction: 'desc', priority: 1}]);
+    });
+
+    it('syncs multi-sort state when active and direction inputs change', () => {
+        const sort = new HcSort();
+        sort.multiSort = true;
+        sort.active = 'name';
+        sort.direction = 'asc';
+        sort.ngOnInit();
+
+        sort.active = 'weight';
+        sort.direction = 'desc';
+        sort.ngOnChanges();
+
+        expect(sort.sorts).toEqual([{active: 'weight', direction: 'desc', priority: 1}]);
+    });
+
+    it('keeps the secondary sort when removing the primary sort', () => {
+        const sort = new HcSort();
+        sort.multiSort = true;
+        sort.sort(name);
+        sort.addSecondarySort(weight);
+
+        sort.removeSort('name');
+
+        expect(sort.sorts).toEqual([{active: 'weight', direction: 'desc', priority: 1}]);
+    });
+
+    it('keeps the primary sort when removing the secondary sort', () => {
+        const sort = new HcSort();
+        sort.multiSort = true;
+        sort.sort(name);
+        sort.addSecondarySort(weight);
+
+        sort.removeSort('weight');
+
+        expect(sort.sorts).toEqual([{active: 'name', direction: 'asc', priority: 1}]);
+    });
+
+    it('ignores invalid priority changes', () => {
+        const sort = new HcSort();
+        sort.multiSort = true;
+        sort.sort(name);
+        sort.addSecondarySort(weight);
+
+        sort.setSortPriority('weight', 3);
+        sort.setSortPriority('unknown', 1);
+
+        expect(sort.sorts).toEqual([
+            {active: 'name', direction: 'asc', priority: 1},
+            {active: 'weight', direction: 'desc', priority: 2}
+        ]);
+    });
+
     it('does not remove the final active sort', () => {
         const sort = new HcSort();
         sort.multiSort = true;

@@ -281,14 +281,19 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
         this.sortChange.emit(this._sorts[0] || {active: this.active, direction: this.direction});
     }
 
-    ngOnInit(): void {
+    private _syncMultiSortFromInputs(): void {
         if (this.multiSort && this.active && this.direction) {
             this._sorts = [{active: this.active, direction: this.direction, priority: 1}];
         }
+    }
+
+    ngOnInit(): void {
+        this._syncMultiSortFromInputs();
         this._markInitialized();
     }
 
     ngOnChanges(): void {
+        this._syncMultiSortFromInputs();
         this._stateChanges.next();
     }
 

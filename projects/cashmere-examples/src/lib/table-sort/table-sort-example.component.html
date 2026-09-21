@@ -4,7 +4,7 @@
     <hc-sort-menu *ngIf="sortMenuContext.sort && sortMenuContext.sortable" [sort]="sortMenuContext.sort" [sortable]="sortMenuContext.sortable"></hc-sort-menu>
 </hc-pop>
 
-<table hc-table [dataSource]="dataSource" tight="true" hcSort>
+<table hc-table [dataSource]="dataSource" tight="true" hcSort #singleSort="hcSort">
 
     <!-- Position Column -->
     <ng-container hcColumnDef="position">

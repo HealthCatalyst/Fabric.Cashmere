@@ -19,8 +19,8 @@
     </button>
     <div *ngIf="canRemoveSort" class="hc-sort-menu-priority">
         <span>Priority:</span>
-        <button type="button" [class.hc-sort-menu-priority-active]="priority === 1" (click)="setPriority(1)">1st</button>
-        <button type="button" [class.hc-sort-menu-priority-active]="priority === 2" (click)="setPriority(2)">2nd</button>
+        <button hcMenuItem type="button" [class.hc-sort-menu-priority-active]="priority === 1" (click)="setPriority(1)">1st</button>
+        <button hcMenuItem type="button" [class.hc-sort-menu-priority-active]="priority === 2" (click)="setPriority(2)">2nd</button>
     </div>
     <ng-content></ng-content>
 </div>

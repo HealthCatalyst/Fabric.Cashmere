@@ -11,10 +11,10 @@ import {HcSort, HcSortable} from './sort';
 })
 export class HcSortMenuComponent {
     /** The sort controller that owns the column state. */
-    @Input() sort: HcSort;
+    @Input() sort?: HcSort;
 
     /** The column represented by this menu. */
-    @Input() sortable: HcSortable;
+    @Input() sortable?: HcSortable;
 
     /** Whether this column currently has an active sort. */
     get isSorted(): boolean {
@@ -39,21 +39,45 @@ export class HcSortMenuComponent {
 
     /** Current priority of this column, if it is sorted. */
     get priority(): number | null {
-        return this.sort?.getSort(this.sortable?.id)?.priority || null;
+        return this._hasSortContext() ? this.sort.getSort(this.sortable.id)?.priority || null : null;
     }
 
     /** Sets ascending order for this column. */
-    sortAscending(): void { this.sort.setSortDirection(this.sortable, 'asc'); }
+    sortAscending(): void {
+        if (this._hasSortContext()) {
+            this.sort.setSortDirection(this.sortable, 'asc');
+        }
+    }
 
     /** Sets descending order for this column. */
-    sortDescending(): void { this.sort.setSortDirection(this.sortable, 'desc'); }
+    sortDescending(): void {
+        if (this._hasSortContext()) {
+            this.sort.setSortDirection(this.sortable, 'desc');
+        }
+    }
 
     /** Adds this column as the secondary sort. */
-    addSecondarySort(): void { this.sort.addSecondarySort(this.sortable); }
+    addSecondarySort(): void {
+        if (this._hasSortContext()) {
+            this.sort.addSecondarySort(this.sortable);
+        }
+    }
 
     /** Removes this column from the active sorts. */
-    removeSort(): void { this.sort.removeSort(this.sortable.id); }
+    removeSort(): void {
+        if (this._hasSortContext()) {
+            this.sort.removeSort(this.sortable.id);
+        }
+    }
 
     /** Changes this column's sort priority. */
-    setPriority(priority: number): void { this.sort.setSortPriority(this.sortable.id, priority); }
+    setPriority(priority: number): void {
+        if (this._hasSortContext()) {
+            this.sort.setSortPriority(this.sortable.id, priority);
+        }
+    }
+
+    private _hasSortContext(): this is this & { sort: HcSort; sortable: HcSortable } {
+        return !!this.sort && !!this.sortable;
+    }
 }

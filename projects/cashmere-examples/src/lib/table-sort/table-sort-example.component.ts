@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {HcSort, HcSortable, HcTableDataSource} from '@healthcatalyst/cashmere';
 
 export interface PeriodicElement {
@@ -52,8 +52,11 @@ export class TableSortExampleComponent implements AfterViewInit, OnInit {
     multiSortDataSource!: HcTableDataSource<PeriodicElement>;
     sortMenuContext: SortMenuContext = {};
 
-    @ViewChildren(HcSort)
-    sorts!: QueryList<HcSort>;
+    @ViewChild('singleSort', {static: false})
+    singleSort!: HcSort;
+
+    @ViewChild('multiSort', {static: false})
+    multiSort!: HcSort;
 
     ngOnInit(): void {
         this.dataSource = new HcTableDataSource(ELEMENT_DATA);
@@ -61,8 +64,7 @@ export class TableSortExampleComponent implements AfterViewInit, OnInit {
     }
 
     ngAfterViewInit(): void {
-        const sortList = this.sorts.toArray();
-        this.dataSource.sort = sortList[0];
-        this.multiSortDataSource.sort = sortList[1];
+        this.dataSource.sort = this.singleSort;
+        this.multiSortDataSource.sort = this.multiSort;
     }
 }

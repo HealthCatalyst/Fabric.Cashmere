@@ -10,15 +10,23 @@
   </button>
 
   <div class="hc-sort-header-indicator">
-    <div *ngIf="!_sort.multiSort" class="hc-sort-header-icon" [ngClass]="{'hc-sort-header-asc': _getArrowDirectionState() === 'active-asc', 'hc-sort-header-desc': _getArrowDirectionState() === 'active-desc', 'hc-sort-header-off': !_isSorted() }"></div>
-    <div *ngIf="_sort.multiSort">
-              <div *ngIf="_getSortPriority() as priority" class="hc-sort-header-priority">
-                      <span class="hc-sort-header-priority-icon" [ngClass]="{'hc-sort-header-asc': _sort.getSort(id)?.direction === 'asc', 'hc-sort-header-desc': _sort.getSort(id)?.direction === 'desc'}"></span>
-                              <span class="hc-sort-header-priority-number">{{priority}}</span>
-                                    </div>
-                                          <div *ngIf="!_getSortPriority()" class="hc-sort-header-icon" [ngClass]="{'hc-sort-header-asc': _getArrowDirectionState() === 'active-asc', 'hc-sort-header-desc': _getArrowDirectionState() === 'active-desc', 'hc-sort-header-off': !_isSorted() }"></div>
-                                              </div>
-                                                </div>
+    <ng-container *ngIf="_sort.multiSort; else singleSortIcon">
+      <ng-container *ngIf="_sort.getSort(id) as sort; else multiSortIcon">
+        <div *ngIf="_sort.sorts.length > 1 && sort.priority as priority; else multiSortIcon" class="hc-sort-header-priority">
+          <span class="hc-sort-header-priority-icon" [ngClass]="{'hc-sort-header-asc': sort.direction === 'asc', 'hc-sort-header-desc': sort.direction === 'desc'}"></span>
+          <span class="hc-sort-header-priority-number">{{priority}}</span>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
 </div>
+
+<ng-template #singleSortIcon>
+  <div class="hc-sort-header-icon" [ngClass]="{'hc-sort-header-asc': _getArrowDirectionState() === 'active-asc', 'hc-sort-header-desc': _getArrowDirectionState() === 'active-desc', 'hc-sort-header-off': !_isSorted() }"></div>
+</ng-template>
+
+<ng-template #multiSortIcon>
+  <div class="hc-sort-header-icon" [ngClass]="{'hc-sort-header-asc': _getArrowDirectionState() === 'active-asc', 'hc-sort-header-desc': _getArrowDirectionState() === 'active-desc', 'hc-sort-header-off': !_isSorted() }"></div>
+</ng-template>
 
 <ng-content select="hc-cell-resizer"></ng-content>
