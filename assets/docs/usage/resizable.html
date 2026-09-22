@@ -1,0 +1,15 @@
+<h5 id="resizable-overview">Resizable overview</h5>
+<p>The <code>hcResizable</code> component can be used anywhere that you want to give the user the ability to change the <code>width</code> or <code>height</code> of an element.
+It can be applied as a directive to any html element.
+To work, the display type of that element needs to be <code>block</code> or another type that is affected by setting the width or height styles.
+<code>hcResizable</code> can be used with both horizontal or vertical layouts by setting the <code>position</code> property.
+You may also constrain the resizing using the <code>min</code> or <code>max</code> properties (set to numerical pixel values).</p>
+<h5 id="optional-directives">Optional directives</h5>
+<p>The most common use of <code>hcResizable</code> is in flexible layouts either on sidebar or bottom panel.
+In such a situation, you can take advantages of two optional convenience directives.
+<code>hcResizableContainer</code> can be added to the parent element containing both resizable and static layout elements.
+<code>hcResizableStatic</code> can be added to any other containers in the parent that don't need a resizable handle.</p>
+<h5 id="static-and-resizable-elements-together">Static and resizable elements together</h5>
+<p>Note that as in the component example, if you have two elements in a container, you don't need both of them to be resizable.
+You can apply the <code>hcResizable</code> component to one and <code>hcResizableStatic</code> to the other and it will create a flexible space.
+The <code>hcResizable</code> element is the one that will have the drag handle added, the static one will adjust its size based on dimensions of the resized element.</p>

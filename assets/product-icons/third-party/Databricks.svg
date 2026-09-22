@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-Databricks">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="Databricks" clip-path="url(#clip-Databricks)">
+    <circle id="Blue_300_Bg" data-name="Blue 300 Bg" cx="100" cy="100" r="100" transform="translate(0 -0.1)" fill="#005cb7"/>
+    <path id="Path_12759" data-name="Path 12759" d="M65,0,0,36.882v4.235L65,77.688l58.347-32.647V58.335L65,91.294,3.33,56.235.006,58.047,0,83.435l65,36.582,58.347-32.647v13L65,133.306,3.33,98.247.006,100.059v4.529L65,141.176,130,104.6V79.206l-3.029-1.818L65,112.459,6.959,79.206v-13L65,98.853l65-36.577v-25.1l-3.029-1.812L65,70.435,9.983,39.3,65,8.165l45.647,25.694,3.929-2.418V28.112Z" transform="translate(35 29)" fill="#fff"/>
+  </g>
+</svg>

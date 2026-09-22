@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-Expert_Data_Collections">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="Expert_Data_Collections" data-name="Expert Data Collections" clip-path="url(#clip-Expert_Data_Collections)">
+    <circle id="Blue_300_Bg" data-name="Blue 300 Bg" cx="100" cy="100" r="100" transform="translate(0 -0.1)" fill="#005cb7"/>
+    <rect id="Rectangle_520" data-name="Rectangle 520" width="30" height="81" rx="3" transform="translate(52 53)" fill="#043d66"/>
+    <rect id="Rectangle_521" data-name="Rectangle 521" width="43" height="100" rx="3" transform="translate(82 34)" fill="#b8d2eb"/>
+    <rect id="Rectangle_523" data-name="Rectangle 523" width="43" height="11" transform="translate(82 115)" fill="#043d66"/>
+    <path id="Path_12681" data-name="Path 12681" d="M3240.91,1329.336l8.488,75.027h-8.488Z" transform="translate(-3158.91 -1272.363)" opacity="0.216"/>
+    <rect id="Rectangle_522" data-name="Rectangle 522" width="30" height="52" transform="translate(52 67)" fill="#b8d2eb"/>
+    <rect id="Rectangle_524" data-name="Rectangle 524" width="43" height="9" transform="translate(82 42)" fill="#043d66"/>
+    <rect id="Rectangle_525" data-name="Rectangle 525" width="20" height="74" rx="2" transform="translate(125 60)" fill="#043d66"/>
+    <path id="Path_12682" data-name="Path 12682" d="M3282.094,1311.693l7.353,93.37h-7.353Z" transform="translate(-3157.003 -1273.204)" opacity="0.166"/>
+    <rect id="Rectangle_526" data-name="Rectangle 526" width="20" height="4" transform="translate(125 71)" fill="#b8d2eb"/>
+    <rect id="Rectangle_527" data-name="Rectangle 527" width="20" height="5" transform="translate(125 77)" fill="#b8d2eb"/>
+    <rect id="Rectangle_528" data-name="Rectangle 528" width="20" height="4" transform="translate(125 112)" fill="#b8d2eb"/>
+    <rect id="Rectangle_529" data-name="Rectangle 529" width="20" height="4" transform="translate(125 118)" fill="#b8d2eb"/>
+    <rect id="Rectangle_530" data-name="Rectangle 530" width="142" height="14" transform="translate(29 132)" fill="#5c97d1"/>
+  </g>
+</svg>

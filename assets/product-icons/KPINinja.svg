@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-KPI_Ninja">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="KPI_Ninja" data-name="KPI Ninja" clip-path="url(#clip-KPI_Ninja)">
+    <circle id="Background" cx="100" cy="100" r="100" fill="#005cb7"/>
+    <g id="Group_1245" data-name="Group 1245" transform="translate(-9.25 -112.312)">
+      <path id="Path_12863" data-name="Path 12863" d="M69.027,171.1h38.242v81.538H66.5V173.627a2.539,2.539,0,0,1,2.527-2.527Z" transform="translate(17.539 17.539)" fill="#fff" opacity="0.72"/>
+      <path id="Path_12864" data-name="Path 12864" d="M45.8,194.33H84.039V235.1H45.8a2.539,2.539,0,0,1-2.527-2.527V196.857A2.539,2.539,0,0,1,45.8,194.33Z" transform="translate(0 35.078)" fill="#fff" opacity="0.36"/>
+      <path id="Path_12865" data-name="Path 12865" d="M130.5,158.663v-.386l9.372-5.844-4.633-4.563-4.739,6.757v-2.668a4.086,4.086,0,0,0-4.072-4.072H93.8a4.086,4.086,0,0,0-4.072,4.072V270.194h36.7a4.075,4.075,0,0,0,4.072-4.072V161.085l13.531,4.405,4.791-5.353-18.34-1.457Zm-5.09,8.389h-.053a.062.062,0,0,1,.053.035v11.846H94.837V167.087l.053-.035h-.053V163.77l6.248,2.369v6.037h6.037V166.14l-11.2-3.054A30.526,30.526,0,0,1,124.181,163l-11.337,3.089v6.037h6.037v-6.037l6.476-2.439h0s.035,0,.053.053v3.352Zm-22.938,4.282V168.07h3.247v3.264Zm15.005-3.317v3.264h-3.264v-3.264Z" transform="translate(35.078)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

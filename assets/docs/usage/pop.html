@@ -1,0 +1,120 @@
+<h5 id="basic-usage">Basic Usage</h5>
+<p>Wrap any component you want to display in a popover with an <code>&lt;hc-pop&gt;</code> component.</p>
+<pre><code class="language-html">&lt;hc-pop&gt;
+    &lt;app-contact-overview [contact]=&quot;myContact&quot;&gt;&lt;/app-contact-overview&gt;
+&lt;/hc-pop&gt;
+</code></pre>
+<p>Next, hook the popover to an anchor element.</p>
+<pre><code class="language-html">&lt;button [hcPop]=&quot;contactPopover&quot;&gt;
+    See Contact Details
+&lt;/button&gt;
+
+&lt;hc-pop #contactPopover&gt;
+    &lt;app-contact-overview [contact]=&quot;myContact&quot;&gt;&lt;/app-contact-overview&gt;
+&lt;/hc-pop&gt;
+</code></pre>
+<p> </p>
+<h5 id="focus-behavior">Focus behavior</h5>
+<p>By default, the popover will apply focus to the first tabbable element when opened and trap focus
+within the popover until closed. If the popover does not contain any focusable elements, focus
+will remain on the most recently focused element.</p>
+<p>You can target a different element for initial focus using the <code>cdkFocusInitial</code> attribute.</p>
+<p>To prevent focus from automatically moving into the popover, you can set the <code>autoFocus</code> property
+to <code>false</code>.</p>
+<pre><code class="language-html">&lt;hc-pop [autoFocus]=&quot;false&quot;&gt;
+    &lt;!-- ... --&gt;
+&lt;/hc-pop&gt;
+</code></pre>
+<p>Once the popover is closed, focus will return to the most recently focused element prior to
+opening the popover. To disable this, you can set the <code>restoreFocus</code> property to <code>false</code>.</p>
+<pre><code class="language-html">&lt;hc-pop [restoreFocus]=&quot;false&quot;&gt;
+    &lt;!-- ... --&gt;
+&lt;/hc-pop&gt;
+</code></pre>
+<p>Alternatively the <code>open</code> and <code>openPopover</code> methods support an optional <code>HcPopoverOpenOptions</code>
+object where <code>autoFocus</code> and <code>restoreFocus</code> options can be set while opening the popover. Note
+that these options do no take precendence over the component inputs. For example, if <code>restoreFocus</code>
+is set to <code>false</code> either in the open options or via the component input, focus will not be
+restored.</p>
+<pre><code class="language-html">&lt;button [hcPop]=&quot;myPopover&quot; (click)=&quot;myPopover.open({ restoreFocus: false })&quot;&gt;
+    Open
+&lt;/button&gt;
+</code></pre>
+<p> </p>
+<h5 id="styles">Styles</h5>
+<p>The <code>&lt;hc-pop&gt;</code> component by default provides some basic styling, but these can be turned off with <code>disableStyle</code>.
+This allows for the popover to be used in some very customized and interesting ways. In the case that the basic styles
+are disabled, it is the responsibility of the elements you project inside the popover to style themselves. This
+includes background color, box shadows, margin offsets, etc.</p>
+<p> </p>
+<h5 id="animations">Animations</h5>
+<h4 id="setup">Setup</h4>
+<p>If you want the popover animations to work, you must include <code>BrowserAnimationsModule</code> in your app.</p>
+<pre><code class="language-ts">import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  ...
+  imports: [ BrowserAnimationsModule ],
+  ...
+})
+export class AppModule { }
+</code></pre>
+<p>If you prefer to not have animations, you can include <code>NoopAnimationsModule</code>.</p>
+<pre><code class="language-ts">import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  ...
+  imports: [ NoopAnimationsModule ],
+  ...
+})
+export class AppModule { }
+</code></pre>
+<h4 id="modifying-animations">Modifying Animations</h4>
+<p>By default, the opening and closing animations of a popover are quick with a simple easing curve.
+You can modify these animation curves using <code>openTransition</code> and <code>closeTransition</code>. Or, you can disable animation
+altogther by setting <code>shouldAnimate</code> to false.</p>
+<pre><code class="language-html">&lt;!-- open slowly but close quickly --&gt;
+&lt;hc-pop #mySlowPopover openTransition=&quot;1000ms ease-out&quot; closeTransition=&quot;100ms ease-in&quot;&gt;
+    &lt;!-- ... --&gt;
+&lt;/hc-pop&gt;
+</code></pre>
+<p> </p>
+<h5 id="menus">Menus</h5>
+<p>One common situation where popovers can be leveraged is to create menus within the app.
+Cashmere offers a standard way to present menus from any <code>hcPop</code> anchor.</p>
+<p><code>hcMenu</code> supports sub-menus as well as keyboard navigation.
+For sub-menus, you add another <code>hcPop</code> to a menu item.
+The trigger for sub-menus will automatically be set to hover and cannot be overriden.</p>
+<pre><code class="language-html">&lt;hc-pop #menu [autoCloseOnContentClick]=&quot;true&quot; [showArrow]=&quot;false&quot; horizontalAlign=&quot;start&quot;&gt;
+    &lt;div hcMenu&gt;
+        &lt;a hcMenuItem href=&quot;http://example.com&quot; target=&quot;_blank&quot;&gt;
+            &lt;hc-icon hcMenuIcon fontIcon=&quot;icon-save&quot;&gt;&lt;/hc-icon&gt;
+            &lt;span hcMenuText&gt;Save document&lt;/span&gt;
+            &lt;span hcMenuSubText&gt;Ctrl + S&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;button hcMenuItem [hcPop]=&quot;editmenu&quot;&gt;
+            &lt;span hcMenuIcon&gt;&lt;/span&gt;
+            &lt;span hcMenuText&gt;Edit document&lt;/span&gt;
+            &lt;!-- hcMenuItems with a subMenu will automatically add a caret to the right --&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p> </p>
+<h5 id="scroll-behavior">Scroll Behavior</h5>
+<p>When using <code>hcTooltip</code> or <code>hcPop</code> with a hover trigger, you may encounter some challenges with page scrolling.
+Particularly when using a mouse wheel or trackpad, the tooltip may stay open even though you have scrolled off the target.
+This can be particularly problematic with scroll containers that include tooltips or hover pops - elements with a fixed size that have <code>overflow: auto</code>.</p>
+<p>The problem centers around the Angular CDK not having awareness of scroll events unless the app explictly defines scroll containers.
+To do so, you may add the <code>cdkScrollable</code> directive to any scrollable container that will contain tooltips or hover popovers.
+To use that directive you'll need to import the following in your module:</p>
+<p><code>import {ScrollingModule} from '@angular/cdk/scrolling';</code></p>
+<p>Below is an example of how to use the directive:</p>
+<pre><code class="language-(html)">&lt;div cdkScrollable&gt;
+    This element is a scroll container which includes
+    &lt;u hcTooltip=&quot;I'm a tooltip&quot;&gt;any tooltips you are using&lt;/u&gt;.
+&lt;/div&gt;
+</code></pre>
+<p> </p>
+<h5 id="mobile-development-guide">Mobile Development Guide</h5>
+<p>For information on configuring help text for responsive web applications, refer to the mobile development guide for information on <a href="https://cashmere.healthcatalyst.net/web/mobile/help-text">mobile help text</a> and <a href="https://cashmere.healthcatalyst.net/web/mobile/modals-popovers-drawers">popovers on small screens</a>.</p>

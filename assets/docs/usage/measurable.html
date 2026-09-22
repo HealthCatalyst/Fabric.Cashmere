@@ -1,0 +1,147 @@
+<p>The <code>hc-measurable</code> component is a helper component to fill a container with components with possibly variable sizes. Nested components that will overflow the container are hidden, and can be shown inside a more menu.</p>
+<h5 id="setting-up-a-component-to-use-measurable">Setting up a component to use measurable</h5>
+<p>The steps to set up the <code>hc-measurable</code> are:</p>
+<ol>
+<li>Create a container element that has a size in the direction you want the measurables to go. For example, if you want the measurables to stack in a horizontal direction, then the container needs to have a width. If the width is <code>auto</code>, then the container will either grow with new elements added, or it will put everything into the more menu. Also add a template reference variable to the container so you can get a reference to it in the component.</li>
+<li>Add an <code>hc-measurable</code>, with an <code>ngFor</code> directive applied to show your list of items. Make sure to include a <code>trackBy</code> function, since the sizes are cached inside the <code>hc-measurable</code>s. Without a <code>trackBy</code>, the <code>hc-measurable</code>s will be recreated each time the <code>ngFor</code> runs, causing the <code>MeasurableComponent</code>s to recalculate the size. Also make sure to provide a unique <code>string</code> as an input to the <code>hc-measurable</code> (bound into the <code>itemKey</code> input).</li>
+<li>Add the component to fill the container inside of the <code>hc-measurable</code>.</li>
+<li>Optionally add a more button that opens up a menu. After this step, your template should look something like this:</li>
+</ol>
+<pre><code class="language-html">&lt;div #measurableContainer class=&quot;measurable-container&quot;&gt;
+    &lt;hc-measurable
+        *ngFor=&quot;let item of items; index as i; trackBy: itemTrackBy&quot;
+        [itemKey]=&quot;item.key&quot;&gt;
+        &lt;my-component [item]=&quot;item&quot;&gt;
+        &lt;/my-component&gt;
+    &lt;/hc-measurable&gt;
+    &lt;button
+        hc-button
+        #moreItems=&quot;hcPopAnchor&quot;
+        *ngIf=&quot;moreInstances &amp;&amp; moreInstances.length&quot;
+        [hcPop]=&quot;popItems&quot;&gt;
+        More
+        &lt;hc-icon
+            hcIconSm
+            fontIcon=&quot;icon-chev-down&quot;&gt;
+        &lt;/hc-icon&gt;
+    &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;hc-pop
+    #popItems
+    [autoCloseOnContentClick]=&quot;true&quot;
+    [showArrow]=&quot;false&quot;
+    horizontalAlign=&quot;start&quot;&gt;
+    &lt;div hcMenu&gt;
+        &lt;button
+            *ngFor=&quot;let moreItem of moreItems; index as i; trackBy: itemTrackBy&quot;
+            hcMenuItem&gt;
+            &lt;span hcMenuText&gt;{{moreItem.displayText}}&lt;/span&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/hc-pop&gt;
+</code></pre>
+<ol start="5">
+<li>You will need a <code>ViewChild</code> property referencing the container (to get the size) and a <code>ViewChildren</code> property referencing the <code>MeasurableComponents</code> to be able to send those to the service call. If you include a  Add properties similar to the following to the component containing the <code>hc-measurables</code>.</li>
+</ol>
+<pre><code class="language-typescript">@ViewChild('measurableContainer')
+measurableContainer: ElementRef;
+
+@ViewChildren(MeasurableComponent)
+measurables: QueryList&lt;MeasurableComponent&gt;;
+
+// Include this if you have the More button
+@ViewChild('moreItems')
+moreTrigger: HcPopoverAnchorDirective;
+</code></pre>
+<ol start="6">
+<li>Inject a <code>MeasurableService</code> and a <code>ChangeDetectorRef</code> in the constructor of the component:</li>
+</ol>
+<pre><code class="language-typescript">constructor(
+    private measurableService: MeasurableService,
+    private ref: ChangeDetectorRef
+) {}
+</code></pre>
+<ol start="7">
+<li>Create a method that will recalculate whether the components are shown in the container or in the more menu. This can be called whenever there are updates that need to be taken into account. You should apply a <code>@HostListener(window:resize)</code> annotation to this method so it is called whenever the window is resized. The method can look like this:</li>
+</ol>
+<pre><code class="language-typescript">@HostListener('window:resize')
+refreshItems(): void {
+    // Close the popover more menu if it is currently open.
+    if (this.moreTrigger) {
+        this.moreTrigger.closePopover();
+    }
+
+    // If there are no items, then nothing can be done.
+    if (!this.items) {
+        return;
+    }
+
+    // Show and hide the measurable components as needed, then
+    // return the keys of components that were hidden.
+    const moreKeys = this.measurableService.fillContainer(
+        // Pass in an array of type MeasurableComponent[].
+        this.measurables.toArray(),
+        // Get the available size through either the clientWidth
+        // or clientHeight from the measurable container.
+        this.measurableContainer.nativeElement.clientWidth,
+        // Send in how much space in pixels should be allotted for
+        // the More button in case it needs to be shown.
+        116,
+        // Optional. Defaults to 'horizontal', but can be 'vertical'.
+        'horizontal',
+        // Optional. Defaults to a function that does nothing. This
+        // is an action called for each MeasurableComponent
+        // that fits in the container.
+        (mc: MeasurableComponent) =&gt; { console.log(mc); },
+        // Optional. Defaults to a function that does nothing. This
+        // is an action called for each MeasurableComponent
+        // that does not fit in the container.
+        (mc: MeasurableComponent) =&gt; { console.log(mc); }
+    );
+
+    // Set the items that should show up in the more menu.
+    this.moreItems = this.items.filter(item =&gt; moreKeys.has(item.key));
+
+    // Run a change detection cycle to display the changes in the UI.
+    this.ref.detectChanges();
+}
+</code></pre>
+<ol start="8">
+<li>Call the refresh method whenever something changes that may require a recalculation. If the component is always displayed in the app (for example, in the case of the navbar), then a <code>@HostListener('window.load')</code> annotation on a method is a good place to run setup logic. If the component is only displayed at certain routes (for example, in the case of the Instance Switcher), the <code>window.load</code> event may not fire when the component shows up on the screen. In this case, it is better to add the logic shown in the &quot;Initializing Measurables on Component Load&quot; to the <code>ngAfterViewInit</code> method. Other places that can be of use is in the <code>ngOnChanges</code> (especially if all inputs need to trigger a refresh), or in setters on some of the inputs.</li>
+</ol>
+<h5 id="adding-spacing-between-measurables">Adding spacing between measurables</h5>
+<p>If you need to add some spacing between elements in the container, it is best to add a margin or padding to the element inside of the <code>hc-measurable</code>. Anything applied to the <code>hc-measurable</code> itself will not be included in the calculations for how much space it takes up, which will lead to over or underflow of the container.</p>
+<h5 id="initializing-measurables-on-component-load">Initializing Measurables on Component Load</h5>
+<p>It is a little tricky finding a good place to call the refresh method for the first time on component load. All of the component lifecycle hooks run before the component is actually rendered to the screen, so the expression in the above example</p>
+<pre><code class="language-typescript">this.measurableContainer.nativeElement.clientWidth
+</code></pre>
+<p>would return zero in all of the lifecycle hooks. If the component is on every page of the app (for example, a navbar), then adding a Host Listener like the following should be enough:</p>
+<pre><code class="language-typescript">@HostListener('window:load')
+_setupInstances(): void {
+    this.refreshItems();
+
+    this.measurables.changes.pipe(
+        takeUntil(this.unsubscribe$)
+    ).subscribe(() =&gt; this.refreshItems());
+}
+</code></pre>
+<p>Note that any Cashmere components do not fall into this category, since the documentation pages are not on the screen for the full time.</p>
+<p>Any components that are not on the screen need to have the refresh method called after the component is rendered. There are not currently any lifecycle hooks that run after the page is rendered, so the approach taken in the Instance Switcher component is the following:</p>
+<pre><code class="language-typescript">ngAfterViewInit(): void {
+    this.checkContainerSize();
+}
+
+private checkContainerSize() {
+    if (this._instancesContainer.nativeElement.clientWidth === 0 &amp;&amp; this._animationFrameCount++ &lt; 60) {
+        requestAnimationFrame(() =&gt; this.checkContainerSize());
+    } else {
+        this.refreshInstances();
+
+        this._instanceChips.changes.pipe(
+            takeUntil(this._unsubscribe$)
+        ).subscribe(() =&gt; this.refreshInstances());
+    }
+}
+</code></pre>
+<p>This will check on a few animation frames until the width is a positive number, and then it will run the refresh and subscribe to changes in the view. If it gets to a certain threshold, then it will also exit the loop by running the refresh and subscribing to changes in the view. This method should work to wait until the rendering of the page is complete before calculating which components should be shown or hidden.</p>
