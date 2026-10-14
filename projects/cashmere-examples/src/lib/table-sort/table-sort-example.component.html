@@ -40,7 +40,11 @@
     <tr hc-row *hcRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 <h4>Multi-level sorting with duplicate values</h4>
-<p>Sort by <strong>Name</strong>, then sort by <strong>Weight</strong> to see secondary tie-breaking.</p>
+<p>
+    First sort by <strong>Name</strong>, then right-click <strong>Weight</strong> and choose
+    <strong>Add as secondary sort</strong>
+    to see secondary tie-breaking for duplicate names. Clicking a column sets it as the primary sort.
+</p>
 
 <table hc-table [dataSource]="multiSortDataSource" tight="true" hcSort #multiSort="hcSort" hcSortMulti>
     <ng-container hcColumnDef="position">

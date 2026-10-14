@@ -27,15 +27,47 @@ describe('HcSort', () => {
         ]);
     });
 
-    it('adds an unsorted header as the secondary sort', () => {
+    it('makes a clicked unsorted header the sole primary sort', () => {
         const sort = new HcSort();
         sort.sort(name);
         sort.multiSort = true;
 
         sort.sort(weight);
 
+        expect(sort.sorts).toEqual([{active: 'weight', direction: 'desc', priority: 1}]);
+    });
+
+    it('toggles a clicked secondary header without changing either sort priority', () => {
+        const sort = new HcSort();
+        sort.multiSort = true;
+        sort.sort(name);
+        sort.addSecondarySort(weight);
+
+        sort.sort(weight);
+
         expect(sort.sorts).toEqual([
             {active: 'name', direction: 'asc', priority: 1},
+            {active: 'weight', direction: 'asc', priority: 2}
+        ]);
+
+        sort.sort(weight);
+
+        expect(sort.sorts).toEqual([
+            {active: 'name', direction: 'asc', priority: 1},
+            {active: 'weight', direction: 'desc', priority: 2}
+        ]);
+    });
+
+    it('toggles a clicked primary header without changing the secondary sort', () => {
+        const sort = new HcSort();
+        sort.multiSort = true;
+        sort.sort(name);
+        sort.addSecondarySort(weight);
+
+        sort.sort(name);
+
+        expect(sort.sorts).toEqual([
+            {active: 'name', direction: 'desc', priority: 1},
             {active: 'weight', direction: 'desc', priority: 2}
         ]);
     });

@@ -33,8 +33,10 @@ Set `hcSortMulti` to `true` to allow one primary and one secondary sort. The pri
 available through `active` and `direction`, while the ordered `sorts` collection contains both
 sorts and their priorities.
 
-Use `addSecondarySort`, `removeSort`, and `setSortPriority` to update the secondary sort from a
-context menu or other application control. Removing the final active sort is ignored, and a
+Clicking an unsorted header replaces the active sort set with that column as the sole primary sort.
+Clicking an already sorted header toggles its direction without changing its priority or the other
+sort. Use `addSecondarySort`, `removeSort`, and `setSortPriority` from a context menu or other
+application control to manage secondary sorting. Removing the final active sort is ignored, and a
 multi-sort header cycles between ascending and descending without an off state.
 
 Use `hc-sort-menu` inside an `hc-pop` with `trigger="rightclick"` to provide standard sort actions.

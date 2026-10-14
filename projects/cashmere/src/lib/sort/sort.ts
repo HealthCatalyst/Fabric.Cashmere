@@ -239,10 +239,6 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
     private _sortMulti(sortable: HcSortable): void {
         const currentSort = this.getSort(sortable.id);
         if (!currentSort) {
-            if (this._sorts.length === 1) {
-                this.addSecondarySort(sortable);
-                return;
-            }
             this._sorts = [{active: sortable.id, direction: sortable.start || this.start, priority: 1}];
         } else {
             this._sorts = this._sorts.map(sort =>
