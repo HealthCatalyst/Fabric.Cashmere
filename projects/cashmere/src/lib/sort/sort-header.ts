@@ -301,12 +301,13 @@ export class HcSortHeader implements HcSortable, OnDestroy, OnInit {
      * ensures this is true.
      */
     @HostBinding('attr.aria-sort')
-    _getAriaSortAttribute(): string | null {
-        if (!this._isSorted() || (this._sort.multiSort && this._getSortPriority() !== 1)) {
+    get ariaSort(): string | null {
+        const sort = this._sort.getSort(this.id);
+        if (!this._isSorted() || (this._sort.multiSort && sort?.priority !== 1)) {
             return null;
         }
 
-        const direction = this._sort.multiSort ? this._sort.getSort(this.id)?.direction : this._sort.direction;
+        const direction = this._sort.multiSort ? sort?.direction : this._sort.direction;
         return direction === 'asc' ? 'ascending' : 'descending';
     }
 }
