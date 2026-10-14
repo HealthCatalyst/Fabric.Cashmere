@@ -1,0 +1,20 @@
+<h5 id="select-text-formatting">Select Text Formatting</h5>
+<p>For both the label on select boxes and their contents, please use the following formatting:</p>
+<p>Capitalize first word only, except in cases where the selection is an actual program name or proper name (e.g. Patient non-adherence or challenges in care management; Duplicate patient; Algorithm incorrect; Comprehensive HIV AIDS Management Program (CHAMP), Grace Program, LSU Diabetes, Salt Lake City, etc.).</p>
+<p> </p>
+<h5 id="select-labels">Select Labels</h5>
+<p>Use a colon at the end of select box labels (e.g. Email address:). A colon implies a direct connection between the label text and a particular control or set of controls. The only situation where a colon should not be used is when the label and control work together to form a single sentence.</p>
+<p> </p>
+<h5 id="form-fields">Form Fields</h5>
+<p>The hc-select component may be nested within a hc-form-field component. hc-form-field acts as a coordinator between multiple components including label and error elements.</p>
+<p>Note that for IE11 compatibility, a value must be specified for each <code>&lt;option&gt;</code> in <code>&lt;hc-select&gt;</code>. Otherwise the select box will not display the selected option.</p>
+<p>To add a label use an hc-label within a hc-form-field. If the select box is required add the required attribute and an asterisk will be shown next to the label.</p>
+<pre><code class="language-html">&lt;hc-form-field&gt;
+    &lt;hc-label&gt;Select your facility:&lt;/hc-label&gt;
+    &lt;hc-select required placeholder=&quot;Select a city:&quot;&gt;
+        &lt;option value=&quot;1&quot;&gt;Philadelphia&lt;/option&gt;
+        &lt;option value=&quot;2&quot;&gt;Atlanta&lt;/option&gt;
+    &lt;/hc-select&gt;
+    &lt;hc-error&gt;Facility is required&lt;/hc-error&gt;
+&lt;/hc-form-field&gt;
+</code></pre>

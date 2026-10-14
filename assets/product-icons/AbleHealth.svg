@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="clip-Able_Health">
+      <rect width="200" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="Able_Health" data-name="Able Health" clip-path="url(#clip-Able_Health)">
+    <circle id="Blue_300_Bg" data-name="Blue 300 Bg" cx="100" cy="100" r="100" transform="translate(0 -0.1)" fill="#005cb7"/>
+    <g id="manometer" transform="translate(-27.005 -26.671)">
+      <path id="Path_12279" data-name="Path 12279" d="M255.714,77l-.143,0V181.675H294.9A59.67,59.67,0,0,0,255.714,77Z" transform="translate(-128.709 -9.666)" fill="none" opacity="0.29"/>
+      <circle id="Ellipse_160" data-name="Ellipse 160" cx="9" cy="9" r="9" transform="translate(118.005 117.671)" fill="#fff"/>
+      <path id="Path_12280" data-name="Path 12280" d="M280.406,186.643l-4.715-4.715-16.422,16.423a8.972,8.972,0,0,0-3.555-.731c-.048,0-.1,0-.143,0v17.994c.048,0,.1,0,.143,0a9,9,0,0,0,8.27-12.556Z" transform="translate(-128.709 -79.616)" fill="#fff"/>
+      <path id="Path_12281" data-name="Path 12281" d="M127,62.5A64.5,64.5,0,0,0,84.647,175.653l1.365,1.189H168l1.365-1.189A64.5,64.5,0,0,0,127,62.5Zm37.328,104.675H89.677a54.85,54.85,0,0,1-17.4-36.836H82.891v-6.667H72.272A54.613,54.613,0,0,1,85.963,90.678l7.491,7.491,4.714-4.715-7.491-7.491a54.613,54.613,0,0,1,32.993-13.692V82.891h6.667V72.272a54.612,54.612,0,0,1,32.993,13.692l-7.49,7.49,4.714,4.715,7.49-7.49a54.614,54.614,0,0,1,13.692,32.993H171.12v6.667h10.617A54.849,54.849,0,0,1,164.333,167.175Z" fill="#fff"/>
+      <path id="Path_12282" data-name="Path 12282" d="M255.714,62.5l-.143,0V82.89h3.477V72.272a54.613,54.613,0,0,1,32.993,13.692l-7.49,7.49,4.714,4.715,7.49-7.49a54.614,54.614,0,0,1,13.692,32.993H299.829v6.667h10.617a54.848,54.848,0,0,1-17.4,36.836H255.571v9.667h41.135l1.365-1.189A64.5,64.5,0,0,0,255.714,62.5Z" transform="translate(-128.709)" fill="#fff"/>
+      <rect id="Rectangle_352" data-name="Rectangle 352" width="56.894" height="13.778" transform="translate(98.559 146.563)" fill="#b8d2eb"/>
+      <rect id="Rectangle_358" data-name="Rectangle 358" width="28.894" height="13.778" transform="translate(126.559 146.563)" fill="#5c97d1"/>
+    </g>
+  </g>
+</svg>

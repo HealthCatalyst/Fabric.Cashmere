@@ -1,0 +1,44 @@
+<h5 id="getting-started-with-ng-select">Getting Started with ng-select</h5>
+<h3 id="step-1-install-3rd-party-library">Step 1: Install 3rd-party library.</h3>
+<pre><code>npm install --save @ng-select/ng-select
+</code></pre>
+<p><strong>Version Compatibility</strong>
+Make sure to install the ng-select version compatible with the angular version in your app. <a href="https://github.com/ng-select/ng-select">See the version chart</a>.</p>
+<h3 id="step-2-import-ngselectmodule-and-formsmodule">Step 2: Import NgSelectModule and FormsModule.</h3>
+<pre><code class="language-typescript">    import { NgSelectModule } from '@ng-select/ng-select';
+    import { FormsModule } from '@angular/forms';
+
+    @NgModule({
+        declarations: [AppComponent],
+        imports: [NgSelectModule, FormsModule],
+        bootstrap: [AppComponent]
+    })
+    export class AppModule {}
+</code></pre>
+<h3 id="step-3-include-the-cashmere-theme">Step 3: Include the Cashmere theme.</h3>
+<p>By importing the Cashmere styles in your app's global style sheet, you'll automatically include the <code>ng-select</code> theming.
+(It's likely you completed this step when installing cashmere.)</p>
+<pre><code>@import &quot;@healthcatalyst/cashmere/scss/cashmere&quot;;
+</code></pre>
+<p> </p>
+<h3 id="step-4-use-the-component">Step 4: Use the component</h3>
+<p>You can use the component in a standalone fashion or wrapped within an hc-form-field:</p>
+<pre><code>&lt;hc-form-field&gt;
+    &lt;hc-label&gt;Choose country:&lt;/hc-label&gt;
+    &lt;hc-multiselect [valid]=&quot;multiselectControl.valid&quot;&gt;
+        &lt;ng-select
+            [items]=&quot;countries&quot;
+            [formControl]=&quot;multiselectControl&quot;
+            [readonly]=&quot;multiselectDisabled&quot;
+        &gt;&lt;/ng-select&gt;
+    &lt;/hc-multiselect&gt;
+    &lt;hc-error&gt;The ng-select field is invalid&lt;/hc-error&gt;
+&lt;/hc-form-field&gt;
+</code></pre>
+<p> </p>
+<h5 id="things-to-look-out-for">Things to Look Out For</h5>
+<p>The easiest way to have <code>ng-select</code> fit well into a Cashmere form is to use the <code>hc-multiselect</code> wrapper. When doing so, the <code>valid</code> and <code>required</code> properties are set on <code>hc-multiselect</code>, but <code>disabled</code> is set on the <code>ng-select</code> itself using the <code>[readonly]</code> property.</p>
+<p><strong>Don't miss the <code>[appendTo]</code> property.</strong> This property is helpful for cases where you need to use <code>ng-select</code> inside of a scrollable container,
+like a modal window. It allows you to choose where the dropdown will be inserted into the DOM. By default, it's added as a child of the component, but to
+avoid odd scrolling issues, setting <code>appendTo=&quot;body&quot;</code> can be useful. This will make sure the dropdown appears on top of everything else. For more detail,
+visit the ng-select docs: <a href="https://ng-select.github.io/ng-select#/append-to-element">https://ng-select.github.io/ng-select#/append-to-element</a></p>

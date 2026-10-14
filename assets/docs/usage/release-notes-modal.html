@@ -1,0 +1,24 @@
+<h5 id="preparing-release-notes">Preparing Release Notes</h5>
+<p>Work with the content writing team to craft your release notes for each release. They can provide you with standardardized HTML that you'll pass into the <code>notesHTML</code> property of your configuration data.</p>
+<h4 id="recommendations">Recommendations:</h4>
+<ol>
+<li>Break your notes into 2 main sections, &quot;Features &amp; Enhancements&quot; and &quot;Fixes&quot;. You can add other sections as needed.</li>
+<li>Use screenshots and animated gifs liberally.</li>
+<li>Keep a few prior versions worth of release notes available.</li>
+</ol>
+<p>Here's an example of standard release note markup that uses built-in Cashmere styles:</p>
+<pre><code class="language-html">    &lt;!-- New features section. --&gt;
+    &lt;h2&gt;&lt;i class=&quot;hc-ico hc-ico-gift&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;New Features and Enhancements&lt;/h2&gt;
+    &lt;hr&gt;
+    &lt;h3&gt;Enhanced Patient Portal&lt;/h3&gt;
+    &lt;p&gt;Patients can now securely access medical records, test results, and appointment history directly from the user-friendly dashboard.&lt;/p&gt;
+    &lt;!-- Note: images can be base64 encoded. The content team can help with this.--&gt;
+    &lt;img width=&quot;500&quot; src=&quot;/assets/screenshots/release-note-example-1.png&quot; /&gt;
+
+    &lt;!-- Bugfix section. --&gt;
+    &lt;h2&gt;&lt;i class=&quot;hc-ico hc-ico-bugfix&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;Fixes&lt;/h2&gt;
+    &lt;hr&gt;
+    &lt;h3&gt;Diagnosis History&lt;/h3&gt;
+    &lt;p&gt;In this update, we've resolved a critical bug that was impacting some users' ability to access their diagnosis history.&lt;/p&gt;
+    &lt;img width=&quot;500&quot; src=&quot;/assets/screenshots/release-note-example-2.png&quot; /&gt;
+</code></pre>

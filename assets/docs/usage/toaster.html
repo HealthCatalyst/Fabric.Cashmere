@@ -1,0 +1,112 @@
+<h5 id="using-toast-messages">Using Toast Messages</h5>
+<p>Toast messages are an awesome way to provide quick, unobtrusive feedback to the user. They can be used to confirm successful actions, warn of potential issues, and inform the user of errors, among other things.</p>
+<p>Following are some guidelines and suggestions for effectively using toasts in your application.</p>
+<img src="./assets/usage/toast-diagram.png" height="200px">
+<h3 id="toast-header">Toast Header</h3>
+<ul>
+<li>Always use title case.</li>
+<li>Keep it short. Preferably use 2-3 words, but can use more.</li>
+<li>Don’t use contractions.</li>
+<li><strong>For success messages</strong>, write the action first, then the object second. <em>“Saved Job”</em> instead of <em>“Job Saved”</em>
+<ul>
+<li>Why? In most cases, the user is aware of the object they are interacting with, so the action word ought to go first. That way with the very first word they read, users are likely given all they need to know that what they expected to happen did happen.</li>
+</ul>
+</li>
+<li><strong>For error messages</strong>
+<ul>
+<li>If the error is the direct result of a user action on an object, you can leave off the object name, and then just clarify the type of object in the error message. <em>“Save Failed”</em> instead of <em>“Failed to Save Job”</em>.</li>
+<li>If the error isn’t the direct result of a user-triggered action, the name of the object becomes more important to include in the header. As an example, a user navigates to a job page and the page attempts to load job type options but fails to do so. <em>“Failed to Load Job Types”</em>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="toast-message">Toast Message</h3>
+<ul>
+<li>
+<p>Use sentence case</p>
+</li>
+<li>
+<p>Be consistent with the use of punctuation for one-sentence messages (Either do or don’t use it throughout your application). Always use punctuation if there’s more than one sentence.</p>
+</li>
+<li>
+<p>Include extra detail that may be helpful to describe what happened</p>
+<ul>
+<li>If multiple things were impacted
+<ul>
+<li>Consider including the count of objects affected in numerical form: <em>”Successfully updated 6 jobs”</em></li>
+<li>Use proper pluralization instead of hardcoding: <em>”job”</em> or <em>“jobs”</em> instead of <em>“job(s)”</em></li>
+</ul>
+</li>
+<li>If one (or just a few) things were impacted, include the name of the thing: <em>“Successfully updated ‘My Awesome Job’”</em></li>
+</ul>
+</li>
+<li>
+<p><strong>For errors</strong></p>
+<ul>
+<li>Don’t include technical details that aren’t appropriate or helpful for the audience:
+<ul>
+<li><em>&quot;Unable to connect. Port 5001 seems to be blocked”</em></li>
+</ul>
+</li>
+<li>Concisely explain the implications:
+<ul>
+<li><em>&quot;Unable to add Job 7 to the queue. Jobs 8 and on will not be run.&quot;</em></li>
+</ul>
+</li>
+<li>Offer remediation steps if available:
+<ul>
+<li><em>&quot;Double check your job settings&quot;</em> or <em>&quot;Contact your admin if the problem continues&quot;</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>More writing tips:</strong></p>
+<ul>
+<li><a href="https://cashmere.healthcatalyst.net/content/ux-writing-writing-choices">Check out our UX writing guide</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="do-i-always-need-a-header-and-message-for-my-toast">Do I always need a header AND message for my toast?</h3>
+<p>Nope. You can use just the header or just the message. For cases where there’s one 1-3 words you want to give, just a header would be appropriate. If there are just 4-7 words, a message alone would be appropriate.</p>
+<p>If you’re not providing any additional information or clarification, DON’T use both. A bad example- Header: <em>“Saved Job”</em> Message: <em>“The job was saved.”</em></p>
+<p>If you’re providing more than 5-7 words, you should consider using both header and message so that the user can have a quickly scannable header to help them decide if they want to read on.</p>
+<h3 id="colors-ornaments-actions">Colors, Ornaments, &amp; Actions</h3>
+<ul>
+<li>
+<p>Green for success
+<br>
+<img src="./assets/usage/toast-success.png"></p>
+</li>
+<li>
+<p>Red for error
+<br>
+<img src="./assets/usage/toast-error.png"></p>
+</li>
+<li>
+<p>Orange for warning
+<br>
+<img src="./assets/usage/toast-warning.png"></p>
+</li>
+<li>
+<p>Blue or white for informational
+<br>
+<img src="./assets/usage/toast-info.png"></p>
+</li>
+<li>
+<p>You can consider adding buttons or links if there's somewhere to navigate, a modal to open, or actions to take. If adding clickable elements to your toast, use a white custom toast
+<br>
+<img src="./assets/usage/toast-action-1.png">
+<br>
+<img src="./assets/usage/toast-action-2.png"></p>
+</li>
+<li>
+<p>You can consider adding a more specific icon as appropriate
+<br>
+<img src="./assets/usage/toast-custom-icon.png"></p>
+</li>
+<li>
+<p>For long-running, non-blocking actions, consider using a toast with a progress bar.
+<br>
+<img src="./assets/usage/toast-progress-bar.png"></p>
+</li>
+</ul>

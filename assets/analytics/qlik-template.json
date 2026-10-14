@@ -1,0 +1,15 @@
+[
+    {
+        "version": "1.0.0",
+        "releasedate": "January 22, 2021",
+        "requirements": "QlikView 12.30.20100 or greater. Access to the Qlik template requires a basic Azure DevOps license from Health Catalyst",
+        "download": "https://dev.azure.com/healthcatalyst/Analytic%20Solutions/_git/ASO?path=%2F_references%2Fhc-qlik-template%2F1.0.0",
+        "notes": [
+            "Initial release of Cashmere template",
+            "Colors within all visualization objects consistently match each other and Cashmere",
+            "Selection indicator is HC blue instead of lime green",
+            "About page easier to edit",
+            "Load script only includes unique, non-repetitive variables"
+        ]
+    }
+]
